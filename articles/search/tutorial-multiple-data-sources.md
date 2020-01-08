@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: fbe3b9ada556f26bd559f040bf2ba5b22367abd0
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 12/23/2019
+ms.openlocfilehash: aac5dc300009ec682ef1599ad654415f5c4ad190
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112220"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495022"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-cognitive-search-index"></a>C#Kurz: kombinování dat z více zdrojů dat v jednom indexu Azure Kognitivní hledání
 
@@ -38,15 +38,15 @@ V tomto rychlém startu se používají následující služby, nástroje a data
 
 - [Vytvořte účet Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) pro uložení ukázkových údajů o hotelu.
 
-- [Vytvořte účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) pro ukládání ukázkových dat BLOB JSON.
+- [Vytvořte účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) pro ukládání ukázkových dat místnosti.
 
-- [Nainstalujte Visual Studio](https://visualstudio.microsoft.com/) pro použití jako rozhraní IDE.
+- [Nainstalujte Visual Studio 2019](https://visualstudio.microsoft.com/) pro použití jako integrované vývojové prostředí (IDE).
 
 ### <a name="install-the-project-from-github"></a>Instalace projektu z GitHubu
 
 1. Vyhledejte ukázkové úložiště na GitHubu: [Azure-Search-dotnet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 1. Vyberte **klonovat nebo stáhnout** a udělejte si soukromou místní kopii úložiště.
-1. Otevřete Visual Studio a nainstalujte balíček NuGet Microsoft Azure Kognitivní hledání, pokud ještě není nainstalovaný. V nabídce **nástroje** vyberte **Správce balíčků NuGet** a pak **spravujte balíčky NuGet pro řešení...** . Na kartě **Procházet** vyhledejte a pak nainstalujte **Microsoft. Azure. Search** (verze 9.0.1 nebo novější). K dokončení instalace budete muset kliknout na další dialogová okna.
+1. Otevřete Visual Studio 2019 a nainstalujte balíček NuGet Microsoft Azure Kognitivní hledání, pokud ještě není nainstalovaný. V nabídce **nástroje** vyberte **Správce balíčků NuGet** a pak **spravujte balíčky NuGet pro řešení...** . Na kartě **Procházet** vyhledejte a pak nainstalujte **Microsoft. Azure. Search** (verze 9.0.1 nebo novější). K dokončení instalace budete muset kliknout na další dialogová okna.
 
     ![Přidání knihoven Azure pomocí NuGet](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
 
@@ -56,7 +56,7 @@ V tomto rychlém startu se používají následující služby, nástroje a data
 
 Abyste mohli komunikovat se službou Azure Kognitivní hledání, budete potřebovat adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali Azure Kognitivní hledání, postupujte podle těchto kroků a získejte potřebné informace:
 
-1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
 1. V části **nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
@@ -68,37 +68,37 @@ Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odesla
 
 Tato ukázka používá dvě malé sady dat, které popisují sedm fiktivních hotelů. Jedna sada popisuje hotely samotné a načte se do databáze Azure Cosmos DB. Druhá sada obsahuje podrobnosti o hotelu místností a poskytuje se jako sedm samostatných souborů JSON, které se mají nahrát do Azure Blob Storage.
 
-1. [Přihlaste se k Azure Portal](https://portal.azure.com)a potom přejděte na stránku přehled účtu Azure Cosmos DB.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a potom přejděte na stránku přehled účtu Azure Cosmos DB.
 
-1. V řádku nabídek klikněte na přidat kontejner. Zadejte "vytvořit novou databázi" a použijte název **Hotel-místnosti – DB**. Zadejte **hotely** pro název kolekce a **/HotelId** pro klíč oddílu. Kliknutím na tlačítko **OK** vytvořte databázi a kontejner.
+1. Vyberte **Průzkumník dat** a pak vyberte **Nová databáze**.
 
-   ![Přidat Azure Cosmos DB kontejner](media/tutorial-multiple-data-sources/cosmos-add-container.png "Přidání kontejneru Azure Cosmos DB")
+   ![Vytvoření nové databáze](media/tutorial-multiple-data-sources/cosmos-newdb.png "Vytvoření nové databáze")
 
-1. Přejít na Cosmos DB Průzkumník dat a vyberte element **Items** v kontejneru **hotely** v rámci databáze **hotelových místností** . Pak na panelu příkazů klikněte na **nahrát položku** .
+1. Zadejte název **hotelu-místnosti-DB**. Přijměte výchozí hodnoty pro zbývající nastavení.
+
+   ![Konfigurace databáze](media/tutorial-multiple-data-sources/cosmos-dbname.png "Konfigurace databáze")
+
+1. Vytvořte nový kontejner. Použijte existující databázi, kterou jste právě vytvořili. Zadejte **hotely** pro název kontejneru a použijte **/HotelId** pro klíč oddílu.
+
+   ![Přidat kontejner](media/tutorial-multiple-data-sources/cosmos-add-container.png "Přidání kontejneru")
+
+1. Vyberte **položky** v části **hotely**a pak klikněte na tlačítko **nahrát položku** na panelu příkazů. Přejděte na a potom ve složce projektu vyberte soubor **cosmosdb/HotelsDataSubset_CosmosDb. JSON** .
 
    ![Nahrát do kolekce Azure Cosmos DB](media/tutorial-multiple-data-sources/cosmos-upload.png "Nahrát do kolekce Cosmos DB")
-
-1. Na panelu nahrání klikněte na tlačítko Složka a pak ve složce projektu přejděte do souboru **cosmosdb/HotelsDataSubset_CosmosDb. JSON** . Kliknutím na **OK** zahajte nahrávání.
-
-   ![Vyberte soubor, který se má nahrát.](media/tutorial-multiple-data-sources/cosmos-upload2.png "Vyberte soubor, který se má nahrát.")
 
 1. Pomocí tlačítka Aktualizovat aktualizujte zobrazení položek v kolekci hotelů. Měli byste vidět sedm nových databázových dokumentů uvedených v seznamu.
 
 ## <a name="prepare-sample-blob-data"></a>Příprava ukázkových dat objektů BLOB
 
-1. [Přihlaste se k Azure Portal](https://portal.azure.com), přejděte k účtu úložiště Azure, klikněte na **objekty blob**a pak klikněte na **+ kontejner**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com), přejděte k účtu úložiště Azure, klikněte na **objekty blob**a pak klikněte na **+ kontejner**.
 
 1. [Vytvořte kontejner objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) s názvem **hotelové místnosti** pro uložení ukázkových souborů JSON pro hotelovou místnost. Úroveň veřejného přístupu můžete nastavit na libovolnou z jeho platných hodnot.
 
    ![Vytvoření kontejneru objektů BLOB](media/tutorial-multiple-data-sources/blob-add-container.png "Vytvoření kontejneru objektů blob")
 
-1. Po vytvoření kontejneru ho otevřete a na panelu příkazů vyberte **nahrát** .
+1. Po vytvoření kontejneru ho otevřete a na panelu příkazů vyberte **nahrát** . Přejděte do složky, která obsahuje ukázkové soubory. Vyberte všechny z nich a pak klikněte na **nahrát**.
 
-   ![Nahrát na panel příkazů](media/search-semi-structured-data/upload-command-bar.png "Nahrát na panel příkazů")
-
-1. Přejděte do složky, která obsahuje ukázkové soubory. Vyberte všechny z nich a pak klikněte na **nahrát**.
-
-   ![Nahrání souborů](media/tutorial-multiple-data-sources/blob-upload.png "Nahrání souborů")
+   ![Nahrání souborů](media/tutorial-multiple-data-sources/blob-upload.png "Nahrávání souborů")
 
 Až se nahrávání dokončí, soubory by se měly zobrazit v seznamu datového kontejneru.
 
@@ -129,11 +129,11 @@ Další položky určují názvy účtů a připojovací řetězec pro Azure Blo
 
 V Azure Kognitivní hledání pole klíč jednoznačně identifikuje každý dokument v indexu. Každý index vyhledávání musí mít přesně jedno pole Key typu `Edm.String`. Toto pole klíče musí být k dispozici pro každý dokument ve zdroji dat, který je přidán do indexu. (Ve skutečnosti je to jediné povinné pole.)
 
-Při indexování dat z více zdrojů dat musí být každá hodnota klíče zdroje dat namapována na stejné klíčové pole v kombinovaném indexu. Často vyžaduje některé předem plánované plánování, které identifikují smysluplný klíč dokumentu pro váš index, a ujistěte se, že existuje v každém zdroji dat.
+Při indexování dat z více zdrojů dat použijte společný klíč dokumentu ke sloučení dat ze dvou fyzicky odlišných zdrojových dokumentů do nového dokumentu vyhledávání v kombinovaném indexu. Často vyžaduje některé předem plánované plánování pro identifikaci smysluplného klíče dokumentu pro váš index a zajistěte, aby existovaly v obou zdrojích dat. V této ukázce je klíč HotelId pro každý Hotel v Cosmos DB také přítomen v objektech blob JSON pro místnosti v úložišti objektů BLOB.
 
 Indexery Azure Kognitivní hledání můžou použít mapování polí k přejmenování a dokonce formátování datových polí během procesu indexování, aby se zdrojová data mohla směrovat do správného pole indexu.
 
-Například v našem příkladu Azure Cosmos DB data se identifikátor hotelu nazývá **HotelId**. V souborech objektů BLOB JSON se ale pro hotelové místnosti identifikátor hotelu nazývá **ID**. Program to pořídí mapováním pole **ID** z objektů blob na pole klíče **HotelId** v indexu.
+Například v našem příkladu Azure Cosmos DB data se identifikátor hotelu nazývá **`HotelId`** . Ale v souborech objektů BLOB JSON pro hotelové místnosti má identifikátor hotelu název **`Id`** . Program to pořídí mapováním pole **`Id`** z objektů blob na pole **`HotelId`** klíče v indexu.
 
 > [!NOTE]
 > Ve většině případů automaticky generované klíče dokumentů, například ty, které byly vytvořeny ve výchozím nastavení některými indexery, nevytvářejte vhodné klíče dokumentů pro kombinované indexy. Obecně budete chtít použít smysluplnou, jedinečnou hodnotu klíče, která již existuje v, nebo může být snadno přidána do zdrojů dat.
@@ -143,11 +143,11 @@ Například v našem příkladu Azure Cosmos DB data se identifikátor hotelu na
 Jakmile jsou data a nastavení konfigurace na místě, vzorový program v **AzureSearchMultipleDataSources. sln** by měl být připravený k sestavování a spouštění.
 
 Tato jednoduchá C#Konzolová aplikace/.NET provádí následující úlohy:
-* Vytvoří nový index služby Azure Kognitivní hledání na základě struktury dat třídy C# hotelu (která také odkazuje na třídy adres a místností).
-* Vytvoří zdroj dat Azure Cosmos DB a indexer, který mapuje Azure Cosmos DB data na pole indexu.
-* Spustí indexer Azure Cosmos DB, který načte data hotelu.
-* Vytvoří zdroj dat služby Azure Blob Storage a indexer, který mapuje data objektů BLOB JSON na pole indexu.
-* Spustí indexer služby Azure Blob Storage, který načte data místností.
+* Vytvoří nový index na základě struktury dat třídy C# hotelu (která také odkazuje na třídy adres a místností).
+* Vytvoří nový zdroj dat a indexer, který mapuje Azure Cosmos DB data na pole indexu. Jedná se o oba objekty v Azure Kognitivní hledání.
+* Spustí indexer, aby se načetla data hotelu z Cosmos DB.
+* Vytvoří druhý zdroj dat a indexer, který mapuje data objektu BLOB JSON na indexová pole.
+* Spustí druhý indexer, který načte data místností z úložiště objektů BLOB.
 
  Před spuštěním programu si prostudujte kód a definice indexu a indexeru pro tuto ukázku. Důležitý kód je ve dvou souborech:
 
@@ -300,7 +300,7 @@ Po vytvoření zdroje dat program nastaví indexer objektů BLOB s názvem **hot
     await searchService.Indexers.CreateOrUpdateAsync(blobIndexer);
 ```
 
-Objekty blob JSON obsahují klíčové pole s názvem **ID** , nikoli **HotelId**. Kód používá třídu `FieldMapping` k oznámení indexeru k nasměrování hodnoty pole **ID** na klíč dokumentu **HotelId** v indexu.
+Objekty blob JSON obsahují klíčové pole s názvem **`Id`** místo **`HotelId`** . Kód používá třídu `FieldMapping` k oznámení indexeru, aby nasměroval hodnotu **`Id`** pole na klíč dokumentu **`HotelId`** v indexu.
 
 Indexery BLOB Storage můžou používat parametry, které identifikují režim analýzy, který se má použít. Režim analýzy se liší u objektů blob, které reprezentují jediný dokument, nebo více dokumentů v rámci stejného objektu BLOB. V tomto příkladu každý objekt BLOB představuje jeden indexový dokument, takže kód používá parametr `IndexingParameters.ParseJson()`.
 
@@ -350,8 +350,3 @@ Existuje několik přístupů a několik možností indexování objektů BLOB J
 
 > [!div class="nextstepaction"]
 > [Indexování objektů BLOB JSON pomocí indexeru Azure Kognitivní hledání BLOB](search-howto-index-json-blobs.md)
-
-Je možné, že budete chtít rozšířit strukturovaná data indexu z jednoho zdroje dat s obohacenými daty z nestrukturovaných objektů BLOB nebo fulltextového obsahu. V následujícím kurzu se dozvíte, jak používat Cognitive Services společně s Azure Kognitivní hledání pomocí sady .NET SDK.
-
-> [!div class="nextstepaction"]
-> [Volání rozhraní API služeb Cognitive Services v kanálu indexování Kognitivní hledání Azure](cognitive-search-tutorial-blob-dotnet.md)

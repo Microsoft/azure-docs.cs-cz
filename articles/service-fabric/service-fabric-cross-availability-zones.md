@@ -1,54 +1,45 @@
 ---
-title: Nasazení clusteru Azure Service Fabric napříč zónami dostupnosti | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit cluster Azure Service Fabric napříč zónami dostupnosti.
-services: service-fabric
-documentationcenter: .net
+title: Nasazení clusteru napříč Zóny dostupnosti
+description: Naučte se, jak vytvořit cluster Azure Service Fabric napříč Zóny dostupnosti.
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: b664c3d655ab45c89a65a0aea31622f57ddc8d9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6da9517f822c9c157d26a1bda8dab2c694b08b12
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65077452"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609974"
 ---
-# <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Nasazení clusteru Azure Service Fabric napříč zónami dostupnosti
-Zóny dostupnosti v Azure je vysoká dostupnost služeb, které chrání vaše aplikace a data z datacenter selhání. Zóny dostupnosti je jedinečný fyzické umístění vybavených nezávislým napájením, chlazení a sítě v rámci oblasti Azure.
+# <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Nasazení clusteru Azure Service Fabric napříč Zóny dostupnosti
+Zóny dostupnosti v Azure je nabídka s vysokou dostupností, která chrání vaše aplikace a data při selhání datacentra. Zóna dostupnosti je jedinečné fyzické umístění vybavené nezávislým napájením, chlazením a sítí v oblasti Azure.
 
-Service Fabric podporuje clustery, které jsou rozmístěny napříč zónami dostupnosti nasazením typy uzlů, které jsou připojené do určité zóny. Tím se zajistí vysokou dostupnost vašich aplikací. Zóny dostupnosti Azure jsou dostupné pouze ve vybraných oblastech. Další informace najdete v tématu [Přehled zón dostupnosti Azure](https://docs.microsoft.com/azure/availability-zones/az-overview).
+Service Fabric podporuje clustery, které jsou rozloženy mezi Zóny dostupnosti nasazením typů uzlů, které jsou připnuté na konkrétní zóny. Tím zajistíte vysokou dostupnost vašich aplikací. Zóny dostupnosti Azure jsou k dispozici pouze ve vybraných oblastech. Další informace najdete v tématu [přehled zóny dostupnosti Azure](https://docs.microsoft.com/azure/availability-zones/az-overview).
 
-Ukázkové šablony jsou k dispozici: [Service Fabric pro různé šablony zóny dostupnosti](https://github.com/Azure-Samples/service-fabric-cluster-templates)
+K dispozici jsou ukázkové šablony: [Service Fabric šablonu zóny pro různé dostupnosti](https://github.com/Azure-Samples/service-fabric-cluster-templates) .
 
-## <a name="recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones"></a>Doporučená topologie pro primární typ uzlu clusterů Azure Service Fabric pokrývání uzlů napříč zónami dostupnosti
-Cluster Service Fabric distribuované napříč zónami dostupnosti zajistí vysokou dostupnost clusteru ve stavu. Cluster Service Fabric rozložit napříč zónami, musíte vytvořit typ primárního uzlu v každé zóně dostupnosti oblast nepodporuje. Počáteční uzly to bude distribuovat rovnoměrně napříč jednotlivých typů primárního uzlu.
+## <a name="recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones"></a>Doporučená topologie pro typ primárního uzlu clusterů Azure Service Fabric rozložená mezi Zóny dostupnosti
+Cluster Service Fabric distribuovaný napříč Zóny dostupnosti zajišťuje vysokou dostupnost stavu clusteru. Pokud chcete Service Fabric cluster mezi zónami, musíte v každé zóně dostupnosti, kterou oblast podporuje, vytvořit primární typ uzlu. Tím dojde k rovnoměrné distribuci dosazení uzlů napříč každým primárním typem uzlu.
 
-Doporučená topologie pro primární typ uzlu vyžaduje prostředcích níže:
+Doporučená topologie pro typ primárního uzlu vyžaduje prostředky uvedené níže:
 
-* Úroveň spolehlivosti clusteru nastavena na hodnotu Platinum.
-* Tři typy uzlů označený jako primární.
-    * Každý typ uzlu musí být mapováno na svůj vlastní škálovací sadu virtuálních počítačů umístěné v různých oblastech.
-    * Každou škálovací sadu virtuálních počítačů by měl mít aspoň pět uzlů (Silver odolnosti).
-* Jeden prostředek veřejné IP pomocí standardní SKU.
-* Jeden prostředek nástroje pro vyrovnávání zatížení pomocí standardní SKU.
-* Skupina NSG odkazuje na podsíť, ve kterém nasadíte škálovací sady virtuálních počítačů.
+* Úroveň spolehlivosti clusteru je nastavena na hodnotu Platina.
+* Tři typy uzlů označené jako primární.
+    * Každý typ uzlu by měl být namapován na svou vlastní sadu škálování virtuálního počítače umístěnou v různých zónách.
+    * Každá sada škálování virtuálního počítače musí mít aspoň pět uzlů (odolnost stříbrného).
+* Jeden prostředek veřejné IP adresy, který používá standardní SKU.
+* Jeden Load Balancer prostředek pomocí standardní SKU.
+* NSG, na který odkazuje podsíť, ve které nasadíte služby Virtual Machine Scale Sets.
 
 >[!NOTE]
-> Škálovací sada virtuálních počítačů, které jeden umístění skupiny vlastnost musí být nastavena na hodnotu true, protože Service Fabric nepodporuje jeden virtuální počítač škálovací sady, která zahrnuje zóny.
+> Vlastnost skupiny s jedním umístěním sady škálování virtuálního počítače musí být nastavená na hodnotu true, protože Service Fabric nepodporuje jednu sadu škálování virtuálního počítače, která zahrnuje zóny.
 
- ![Architektura zóny dostupnosti prostředků infrastruktury služby Azure][sf-architecture]
+ ![Architektura zón dostupnosti služby Azure Service Fabric][sf-architecture]
 
 ## <a name="networking-requirements"></a>Požadavky na síť
-### <a name="public-ip-and-load-balancer-resource"></a>Veřejná IP adresa a prostředek nástroje pro vyrovnávání zatížení
-Povolit zóny na škálovací sadu virtuálních počítačů nastavenou prostředků, nástroje pro vyrovnávání zatížení a prostředek IP odkazuje této škálovací sadě virtuálních počítačů musí obě být používají *standardní* SKU. Vytvoření nástroje pro vyrovnávání zatížení nebo IP prostředku bez vlastností SKU se vytvoří základní SKU, která nepodporuje zóny dostupnosti. Nástroj pro vyrovnávání zatížení standardní SKU bude blokovat veškerý provoz z vnějšku ve výchozím nastavení; Povolit mimo provoz, se musí nasadit skupinu NSG k podsíti.
+### <a name="public-ip-and-load-balancer-resource"></a>Prostředek veřejné IP adresy a Load Balancer
+Pokud chcete povolit vlastnost Zones na prostředku sady škálování virtuálních počítačů, musí se vyrovnávání zatížení a prostředek IP, na který odkazuje tato sada škálování virtuálních počítačů, používat *standardní* SKU. Vytvořením nástroje pro vyrovnávání zatížení nebo prostředku IP bez vlastnosti SKU se vytvoří základní skladová položka, která nepodporuje Zóny dostupnosti. Nástroj pro vyrovnávání zatížení Standard SKU bude ve výchozím nastavení blokovat veškerý provoz mimo rámec. aby bylo možné povolení mimo provoz, musí být do podsítě nasazený NSG.
 
 ```json
 {
@@ -96,10 +87,10 @@ Povolit zóny na škálovací sadu virtuálních počítačů nastavenou prostř
 ```
 
 >[!NOTE]
-> Není možné provést změnu na místě skladové položky na veřejné IP adresy a zatížení prostředků nástroje pro vyrovnávání. Pokud provádíte migraci z existujících prostředků, které mají základní SKU, naleznete v části migrace z tohoto článku.
+> U prostředků veřejné IP adresy a nástroje pro vyrovnávání zatížení není možné provést místní změnu skladové položky. Pokud migrujete ze stávajících prostředků, které mají základní SKU, přečtěte si část migrace v tomto článku.
 
-### <a name="virtual-machine-scale-set-nat-rules"></a>Škálovací sady virtuálních počítačů pravidla NAT
-Nástroje pro vyrovnávání zatížení příchozích pravidel NAT by měl odpovídat fondy NAT ze škálovací sady virtuálních počítačů. Každá sada škálování virtuálního počítače musí mít jedinečný fondu příchozího překladu adres.
+### <a name="virtual-machine-scale-set-nat-rules"></a>Pravidla překladu adres NAT služby Virtual Machine Scale set
+Příchozí pravidla NAT nástroje pro vyrovnávání zatížení by se měla shodovat s fondy NAT ze sady škálování virtuálních počítačů. Každá sada škálování virtuálního počítače musí mít jedinečný fond příchozího překladu adres (NAT).
 
 ```json
 {
@@ -144,18 +135,18 @@ Nástroje pro vyrovnávání zatížení příchozích pravidel NAT by měl odpo
 }
 ```
 
-### <a name="standard-sku-load-balancer-outbound-rules"></a>Standardní SKU nástroje pro vyrovnávání zatížení odchozí pravidla
-Standardní nástroj pro vyrovnávání zatížení a standardní veřejnou IP adresu představí nové možnosti a různé chování odchozí připojení ve srovnání s použitím základní SKU. Pokud chcete odchozí připojení při práci s standardní SKU, je nutné explicitně definovat ho pomocí standardní veřejné IP adresy nebo veřejného Load Balanceru úrovně Standard. Další informace najdete v tématu [odchozí připojení](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatexhaust) a [Azure Load balancer úrovně Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
+### <a name="standard-sku-load-balancer-outbound-rules"></a>Odchozí pravidla Load Balancer Standard SKU
+Standard Load Balancer a standardní veřejná IP adresa přináší do odchozího připojení nové možnosti a různá chování při porovnání s použitím základních SKU. Pokud chcete odchozí připojení při práci se standardními SKU, musíte ho explicitně definovat buď se standardními veřejnými IP adresami, nebo se standardními veřejnými Load Balancer. Další informace najdete v tématu [odchozí připojení](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatexhaust) a [Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
 
 >[!NOTE]
-> Standardní šablona odkazuje na skupinu zabezpečení sítě, které umožňuje veškerý odchozí provoz ve výchozím nastavení. Příchozí provoz je omezený na porty, které jsou požadovány pro operace správy Service Fabric. Pravidla skupiny zabezpečení sítě můžete upravit tak, aby splňovaly vaše požadavky.
+> Standardní šablona odkazuje na NSG, který ve výchozím nastavení povoluje veškerý odchozí provoz. Příchozí provoz je omezen na porty, které jsou požadovány pro Service Fabric operace správy. Pravidla NSG se dají upravit tak, aby splňovala vaše požadavky.
 
-### <a name="enabling-zones-on-a-virtual-machine-scale-set"></a>Nastavení povolení zóny na škálovací sadu virtuálních počítačů
-Chcete-li povolit zóny, na škálovací sadu virtuálních počítačů můžete nastavit musí obsahovat následující tři hodnoty v prostředku škálovací sady virtuálního počítače.
+### <a name="enabling-zones-on-a-virtual-machine-scale-set"></a>Povolení zón v sadě škálování virtuálního počítače
+Pokud chcete povolit zónu, v sadě škálování virtuálního počítače musíte do prostředku sady škálování virtuálního počítače zahrnout následující tři hodnoty.
 
-* První hodnota **zóny** vlastnost, která určuje, které zónu dostupnosti, nasadí škálovací sadu virtuálních počítačů.
-* Druhá hodnota představuje vlastnost "singlePlacementGroup", který musí být nastaven na hodnotu true.
-* Třetí hodnota je vlastnost "faultDomainOverride" v rozšíření škálovací sady virtuálních počítačů Service Fabric. Hodnota této vlastnosti by měly zahrnovat oblasti a zóny, v níž budou umístěny této škálovací sadě virtuálních počítačů. Příklad: "faultDomainOverride": "eastus/az1" všechny škálovací sady virtuálních počítačů prostředky musí být umístěné ve stejné oblasti pro různé oblasti podpory nemají clustery Azure Service Fabric.
+* První hodnotou je vlastnost **zóny** , která určuje, do které zóny dostupnosti bude sada škálování virtuálního počítače nasazena.
+* Druhá hodnota je vlastnost "singlePlacementGroup", která musí být nastavena na hodnotu true.
+* Třetí hodnotou je vlastnost "faultDomainOverride" v rozšíření sady škálování virtuálního počítače v Service Fabric. Hodnota této vlastnosti by měla zahrnovat oblast a zónu, do které bude tato sada škálování virtuálního počítače umístěna. Příklad: "faultDomainOverride": "eastus/az1" všechny prostředky sady škálování virtuálního počítače musí být umístěné ve stejné oblasti, protože clustery Azure Service Fabric nepodporují mezioblasti.
 
 ```json
 {
@@ -195,8 +186,8 @@ Chcete-li povolit zóny, na škálovací sadu virtuálních počítačů můžet
 }
 ```
 
-### <a name="enabling-multiple-primary-node-types-in-the-service-fabric-cluster-resource"></a>Povolení více primární typy uzlů v clusteru Service Fabric prostředku
-Pokud chcete nastavit jeden nebo více typů uzlů jako primární v prostředku clusteru, nastavte vlastnost "isPrimary" na hodnotu "true". Při nasazování clusteru Service Fabric napříč zónami dostupnosti, měli byste mít tři typy uzlů v různých oblastech.
+### <a name="enabling-multiple-primary-node-types-in-the-service-fabric-cluster-resource"></a>Povolení více typů primárních uzlů v prostředku Service Fabric clusteru
+Chcete-li v prostředku clusteru nastavit jeden nebo více typů uzlů jako primární, nastavte vlastnost "primární" na hodnotu "true". Při nasazování clusteru Service Fabric v rámci Zóny dostupnosti byste měli mít tři typy uzlů v různých zónách.
 
 ```json
 {
@@ -254,20 +245,20 @@ Pokud chcete nastavit jeden nebo více typů uzlů jako primární v prostředku
 }
 ```
 
-## <a name="migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>Migrace na použití zón dostupnosti z clusteru pomocí základní SKU nástroje pro vyrovnávání zatížení a základní SKU IP
-Chcete-li Migrace clusteru, který se pomocí nástroje pro vyrovnávání zatížení a IP základní skladovou Položku, musíte nejdřív vytvořit zcela nový nástroj pro vyrovnávání zatížení a IP prostředku pomocí standardního SKU. Není možné k aktualizaci těchto prostředků v místě.
+## <a name="migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>Migrace na použití Zóny dostupnosti z clusteru s použitím základní SKU Load Balancer a základní IP adresy SKU
+K migraci clusteru, který používal Load Balancer a IP adresu se základní SKU, je nutné nejprve vytvořit zcela nový Load Balancer a prostředek IP pomocí standardní SKU. Tyto prostředky není možné aktualizovat místně.
 
-Nové LB a IP by měly odkazovat v nové různé typy uzlů zónu dostupnosti, které chcete použít. V příkladu výše, tři nové virtuální počítače škálovací sady prostředků byly přidány do zóny 1, 2 a 3. Tyto virtuální počítače škálovací sady odkaz na nově vytvořený LB a IP a jsou označeny jako typy primárního uzlu v prostředku clusteru Service Fabric.
+Nový typ a IP adresa by měly být odkazovány v nových typech uzlů pro oblast vzájemné dostupnosti, které byste chtěli použít. V předchozím příkladu byly přidány tři nové prostředky sady škálování virtuálních počítačů do zón 1, 2 a 3. Tyto sady škálování virtuálních počítačů odkazují na nově vytvořenou odinstalaci a IP adresu a v prostředku clusteru Service Fabric jsou označené jako primární typy uzlů.
 
-Pokud chcete začít, je potřeba přidat nové prostředky do existující šablonu Resource Manageru. Tyto prostředky zahrnují:
-* Veřejný IP prostředek pomocí standardní SKU.
-* Prostředek nástroje pro vyrovnávání zatížení pomocí standardní SKU.
-* Skupina NSG odkazuje na podsíť, ve kterém nasadíte škálovací sady virtuálních počítačů.
-* Tři typy uzlů označený jako primární.
-    * Každý typ uzlu musí být mapováno na svůj vlastní škálovací sadu virtuálních počítačů umístěné v různých oblastech.
-    * Každou škálovací sadu virtuálních počítačů by měl mít aspoň pět uzlů (Silver odolnosti).
+Chcete-li začít, budete muset přidat nové prostředky do existující šablony Správce prostředků. Mezi tyto prostředky patří:
+* Prostředek veřejné IP adresy, který používá standardní SKU.
+* Load Balancer prostředek pomocí standardní SKU.
+* NSG, na který odkazuje podsíť, ve které nasadíte služby Virtual Machine Scale Sets.
+* Tři typy uzlů označené jako primární.
+    * Každý typ uzlu by měl být namapován na svou vlastní sadu škálování virtuálního počítače umístěnou v různých zónách.
+    * Každá sada škálování virtuálního počítače musí mít aspoň pět uzlů (odolnost stříbrného).
 
-Příkladem těchto prostředků najdete v [Ukázková šablona](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-Ubuntu-2-NodeType-Secure).
+Příklad těchto prostředků najdete v [ukázkové šabloně](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-Ubuntu-2-NodeType-Secure).
 
 ```powershell
 New-AzureRmResourceGroupDeployment `
@@ -276,7 +267,7 @@ New-AzureRmResourceGroupDeployment `
     -TemplateParameterFile $Parameters
 ```
 
-Po dokončení nasazení prostředky můžete začít zakázat uzlů v primární typ uzlu z původního clusteru. Jako uzly jsou zakázané, systémové služby migrovat na nový typ primárního uzlu, které nasadil v předchozím kroku.
+Po dokončení nasazení prostředků můžete začít s zakázáním uzlů v primárním uzlu typu z původního clusteru. Po zakázání uzlů budou systémové služby migrovány na nový typ primárního uzlu, který byl nasazen v kroku výše.
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterName `
@@ -298,7 +289,7 @@ foreach($name in $nodeNames) {
 }
 ```
 
-Jakmile se uzly jsou všechny zakázané, při primární typ uzlu, který se pak rozdělí mezi zónami poběží systémových služeb. Následně můžete odebrat zakázané uzlů z clusteru. Po odebrání uzlů původní IP nástroje pro vyrovnávání zatížení, můžete odebrat a škálovací sady virtuálních počítačů prostředky.
+Po zakázání všech uzlů budou systémové služby spuštěny na primárním typu uzlu, který je rozložen mezi zóny. Zakázané uzly pak můžete odebrat z clusteru. Po odebrání uzlů můžete odebrat původní IP, Load Balancer a prostředky sady škálování virtuálního počítače.
 
 ```powershell
 foreach($name in $nodeNames){
@@ -318,9 +309,9 @@ Remove-AzureRmLoadBalancer -Name $lbname -ResourceGroupName $groupname -Force
 Remove-AzureRmPublicIpAddress -Name $oldPublicIpName -ResourceGroupName $groupname -Force
 ```
 
-Potom byste měli odebrat odkazy na tyto prostředky z šablony Resource Manageru, který má nasazený.
+Měli byste pak odebrat odkazy na tyto prostředky ze šablony Správce prostředků, kterou jste nasadili.
 
-V posledním kroku bude zahrnovat aktualizuje název DNS a veřejnou IP adresu.
+Poslední krok bude zahrnovat aktualizaci názvu DNS a veřejné IP adresy.
 
 ```powershell
 $oldprimaryPublicIP = Get-AzureRmPublicIpAddress -Name $oldPublicIpName  -ResourceGroupName $groupname

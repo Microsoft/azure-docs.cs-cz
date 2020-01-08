@@ -2,23 +2,25 @@
 title: Připojení soukromě k účtu úložiště pomocí privátního koncového bodu Azure
 description: Naučte se připojit soukromě k účtu úložiště v Azure pomocí privátního koncového bodu.
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 2a2a96a823867ea7700933c8253a0ba500b0e1cf
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 96edbd62dcb95fa8f24ea5a8a6f0716c1fefdcd8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899813"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357562"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Připojení soukromě k účtu úložiště pomocí privátního koncového bodu Azure
 Privátní koncový bod Azure je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako jsou virtuální počítače (VM), komunikovat soukromě s prostředky privátního propojení.
 
 V tomto rychlém startu se dozvíte, jak vytvořit virtuální počítač ve službě Azure Virtual Network, účet úložiště s privátním koncovým bodem pomocí Azure Portal. Pak můžete z virtuálního počítače bezpečně přistupovat k účtu úložiště.
 
+> [!NOTE]
+> Ve spojení s koncovými body služby ve stejné podsíti nejsou povolené privátní koncové body.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -60,7 +62,7 @@ V této části vytvoříte virtuální síť a podsíť pro hostování virtuá
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.  |
     | **PODROBNOSTI INSTANCE** |  |
     | Název virtuálního počítače | Zadejte *myVm*. |
-    | Oblast | Vyberte **WestCentralUS**. |
+    | Region (Oblast) | Vyberte **WestCentralUS**. |
     | Možnosti dostupnosti | Nechte výchozí nastavení **bez nutnosti redundance infrastruktury**. |
     | Obrázek | Vyberte **Windows Server 2019 Datacenter**. |
     | Velikost | Ponechte výchozí hodnotu **Standard DS1 v2**. |
@@ -108,7 +110,7 @@ V této části vytvoříte privátním koncovým bodem privátního účtu úlo
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     | **PODROBNOSTI INSTANCE** |  |
     | Název účtu úložiště  | Zadejte *mystorageaccount*. Pokud se tento název povede, vytvořte jedinečný název. |
-    | Oblast | Vyberte **WestCentralUS**. |
+    | Region (Oblast) | Vyberte **WestCentralUS**. |
     | Výkon| Ponechte výchozí **Standard**. |
     | Account kind (Druh účtu) | Ponechte výchozí **úložiště (pro obecné účely v2)** . |
     | Replikace | Vyberte **geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)** . |
@@ -184,9 +186,9 @@ V této části se soukromě připojíte k účtu úložiště pomocí privátn�
 4. Vyberte **účty úložiště** kliknutím pravým tlačítkem myši.
 5. Vyberte **připojit k úložišti Azure**.
 6. Vyberte **Použít připojovací řetězec**.
-7. Vyberte **Další**.
+7. Vyberte **Next** (Další).
 8. Vložte připojovací řetězec vložením dříve zkopírovaných informací.
-9. Vyberte **Další**.
+9. Vyberte **Next** (Další).
 10. Vyberte **Connect** (Připojit).
 11. Procházení kontejnerů objektů BLOB z mystorageaccount 
 12. Volitelně Vytvořte složky nebo nahrajte soubory do *mystorageaccount*. 

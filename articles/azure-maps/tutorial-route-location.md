@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c9e407b271fd77397723ee49f530339847096749
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: efc60acae78c96983e79044ae1ba7399154f3568
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106616"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613597"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Kurz: směrování do bodu zájmu pomocí Azure Maps
 
@@ -23,11 +23,11 @@ V tomto kurzu se dozvíte, jak pomocí účtu Azure Maps a sady SDK Route Servic
 > [!div class="checklist"]
 > * Vytvořit novou webovou stránku s použitím rozhraní API pro mapové ovládací prvky
 > * Nastavit souřadnice pro adresu
-> * Zadání dotazu na rozhraní API Route Service ohledně trasy k bodu zájmu
+> * Zadat dotaz na rozhraní API Route Service ohledně trasy k bodu zájmu
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než budete pokračovat, postupujte podle pokynů v části [Správa účtu](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) a vytvořte předplatné účtu Azure Maps s cenovou úrovní S1 a podle kroků v části [získání primárního klíče](./tutorial-search-location.md#getkey) Získejte primární klíč předplatného pro váš účet.
+Než budete pokračovat, postupujte podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) a vytvořte předplatné účtu Azure Maps s cenovou úrovní S1 a podle kroků v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) Získejte primární klíč pro svůj účet. Další podrobnosti o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
 <a id="getcoordinates"></a>
 
@@ -36,7 +36,7 @@ Než budete pokračovat, postupujte podle pokynů v části [Správa účtu](htt
 Následující kroky ukazují, jak vytvořit statickou stránku HTML s vloženým rozhraním API pro mapové ovládací prvky.
 
 1. Na místním počítači vytvořte nový soubor s názvem **MapRoute.html**.
-2. Přidejte do souboru následující součásti HTML:
+2. Přidejte do souboru následující komponenty HTML:
 
     ```HTML
     <!DOCTYPE html>

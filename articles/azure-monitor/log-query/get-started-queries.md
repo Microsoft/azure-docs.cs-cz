@@ -7,12 +7,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: 0503ebc7a585210f95eb58b0f11ae1dd0a835264
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: b3b176a6027b0f03c3802867df7be1e339286df2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278611"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365321"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Začínáme s dotazy protokolu v Azure Monitor
 
@@ -40,7 +40,7 @@ Sledujte níže uvedenou verzi videa v tomto kurzu:
 Dotazy mohou začít buď s názvem tabulky, nebo s příkazem *hledání* . Měli byste začít s názvem tabulky, protože definuje pro dotaz jasný rozsah a zvyšuje výkon dotazů a relevanci výsledků.
 
 > [!NOTE]
-> Dotazovací jazyk Kusto používaný Azure Monitor rozlišuje velká a malá písmena. Klíčová slova jazyka se většinou zapisují do malých písmen. Při použití názvů tabulek nebo sloupců v dotazu se ujistěte, že používáte správný případ, jak je znázorněno v podokně schématu.
+> Dotazovací jazyk Kusto používaný službou Azure Monitor rozlišuje velká a malá písmena. Klíčová slova jazyka se obvykle zapisují malými písmeny. Při použití názvů tabulek nebo sloupců v dotazu se ujistěte, že používáte správný případ, jak je znázorněno v podokně schématu.
 
 ### <a name="table-based-queries"></a>Dotazy založené na tabulkách
 Azure Monitor uspořádá data protokolu v tabulkách, z nichž každý se skládá z více sloupců. Všechny tabulky a sloupce se zobrazí v podokně schématu v Log Analytics na portálu Analytics. Identifikujte tabulku, na kterou vás zajímáte, a pak se podívejte na bitovou část dat:
@@ -105,7 +105,7 @@ SecurityEvent
 
 Při psaní podmínek filtrování můžete použít následující výrazy:
 
-| Výraz | Popis | Příklad |
+| Expression | Popis | Příklad: |
 |:---|:---|:---|
 | == | Kontrolovat rovnost<br>(rozlišuje velká a malá písmena) | `Level == 8` |
 | =~ | Kontrolovat rovnost<br>(nerozlišuje velká a malá písmena) | `EventSourceName =~ "microsoft-windows-security-auditing"` |

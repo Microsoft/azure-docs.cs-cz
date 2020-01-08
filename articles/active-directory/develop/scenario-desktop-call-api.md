@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce8cf2d75257bb3d751de1c3b251a9a3326bce0a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 75bb919b73791b78084e82351d7d6b7d93edc322
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920153"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423869"
 ---
 # <a name="desktop-app-that-calls-web-apis---call-a-web-api"></a>Aplikace klasické pracovní plochy, která volá webové rozhraní API – volá webové rozhraní API.
 
@@ -100,7 +100,7 @@ task.resume()
 
 Pokud pro stejného uživatele potřebujete zavolat několik rozhraní API, stačí, když máte token pro první rozhraní API, můžete volat jenom `AcquireTokenSilent`a získáte token pro další rozhraní API tiše v tichém čase.
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
                       .ExecuteAsync();
 
@@ -113,7 +113,7 @@ Případy, kdy je interakce požadována, je:
 - Uživatel souhlasil s prvním rozhraním API, ale teď musí souhlasit s více obory (postupný souhlas).
 - První rozhraní API nevyžadovalo vícenásobné ověřování, ale ten další.
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
                       .ExecuteAsync();
 

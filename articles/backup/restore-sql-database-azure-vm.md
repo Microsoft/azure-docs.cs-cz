@@ -3,12 +3,12 @@ title: Obnovení databází SQL Server na virtuálním počítači Azure
 description: Tento článek popisuje, jak obnovit SQL Server databáze, které běží na virtuálním počítači Azure a které se zálohují s Azure Backup.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 0dbf5c48884dc665355d2806ff343facfbeffc29
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 58525069af28be250c3536db076a38fb350bc1da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171904"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390766"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Obnovení databází SQL Server na virtuálních počítačích Azure
 
@@ -110,7 +110,15 @@ Chcete-li obnovit data zálohy jako soubory. bak místo databáze, vyberte možn
 
 1. V nabídce **obnovit konfiguraci** v části **kde se má obnovení**vybrat **Obnovit jako soubory**.
 2. Vyberte název SQL Server, pro který chcete obnovit záložní soubory.
-3. V **cílové cestě na serveru** zadejte cestu ke složce na serveru vybrané v kroku 2. Toto je umístění, ve kterém bude služba vypsat všechny nezbytné soubory zálohy. Cesta ke sdílené složce v síti, nebo cesta připojené sdílené složky Azure, pokud je zadaná jako cílová cesta, umožňuje snazší přístup k těmto souborům jiným počítačům ve stejné síti nebo se stejnou sdílenou složkou Azure, která je v nich namontovaná.
+3. V **cílové cestě na serveru** zadejte cestu ke složce na serveru vybrané v kroku 2. Toto je umístění, ve kterém bude služba vypsat všechny nezbytné soubory zálohy. Cesta ke sdílené složce v síti, nebo cesta připojené sdílené složky Azure, pokud je zadaná jako cílová cesta, umožňuje snazší přístup k těmto souborům jiným počítačům ve stejné síti nebo se stejnou sdílenou složkou Azure, která je v nich namontovaná.<BR>
+
+>Pokud chcete obnovit záložní soubory databáze ve sdílené složce Azure připojené k cílovému registrovanému virtuálnímu počítači, ujistěte se, že NT AUTHORITY\SYSTEM má přístup ke sdílené složce. Pomocí níže uvedených kroků můžete udělit oprávnění ke čtení a zápisu pro službu AFS připojenou k virtuálnímu počítači:
+>- Spuštění `PsExec -s cmd` pro zadání NT AUTHORITY\SYSTEM Shell
+>   - Spusťte příkaz `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>`.
+>   - Ověřit přístup pomocí `dir \\<storageacct>.file.core.windows.net\<filesharename>`
+>- Zahájí obnovení souborů z trezoru služby Backup, aby se `\\<storageacct>.file.core.windows.net\<filesharename>` jako cesta.<BR>
+PsExec můžete stáhnout přes <https://docs.microsoft.com/sysinternals/downloads/psexec>
+
 4. Vyberte **OK**.
 
 ![Vybrat obnovit jako soubory](./media/backup-azure-sql-database/restore-as-files.png)

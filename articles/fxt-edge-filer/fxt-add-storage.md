@@ -1,17 +1,17 @@
 ---
-title: Přidání úložiště back-endu do clusteru Microsoft Azure FXT Edge souborového
+title: 'Kurz: Přidání úložiště do clusteru Azure FXT Edge souborového'
 description: Jak nakonfigurovat back-end úložiště a klientské pseudonamespace pro Azure FXT Edge souborového
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: ecc246368cae74440ada782940931b3588193975
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 3f736942627d088e3a639f89bef5438714c2608b
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256064"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551960"
 ---
 # <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Kurz: přidání back-endu úložiště a konfigurace virtuálního oboru názvů 
 

@@ -4,15 +4,15 @@ description: Azure Monitor pro virtuální počítače automaticky zjišťuje ko
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: f1acf3c1574fd94606d75c6250dedd40a9c7ea4d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a8d0e0980b0d3634626bc1332e8219bdca7fbe01
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849815"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402625"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>Integrace System Center Operations Manager s funkcí map Azure Monitor pro virtuální počítače
 
@@ -21,7 +21,7 @@ V Azure Monitor pro virtuální počítače můžete zobrazit zjištěné souč�
 >[!NOTE]
 >Pokud jste již nasadili Service Map, můžete zobrazit vaše mapy v Azure Monitor pro virtuální počítače, které obsahují další funkce pro monitorování stavu a výkonu virtuálních počítačů. Funkce map Azure Monitor pro virtuální počítače je určena k nahrazení samostatného řešení Service Map. Další informace najdete v tématu [přehled Azure monitor pro virtuální počítače](vminsights-overview.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * System Center Operations Manager skupina pro správu (2012 R2 nebo novější).
 * Pracovní prostor Log Analytics nakonfigurovaný pro podporu Azure Monitor pro virtuální počítače.

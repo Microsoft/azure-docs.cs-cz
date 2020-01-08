@@ -1,7 +1,6 @@
 ---
-title: Řešení potíží s dotazy Azure Stream Analytics
-description: Tento článek popisuje postupy řešení potíží s dotazy v úlohách Azure Stream Analytics.
-services: stream-analytics
+title: Řešení potíží s Azure Stream Analytics dotazy
+description: Tento článek popisuje techniky řešení potíží s dotazy v úlohách Azure Stream Analytics.
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -9,92 +8,92 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 586ddb237144daddf0cbfd19785fcba7658469a0
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 22e542715afa8c87ffb742bec6c22f758cd16587
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621478"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354264"
 ---
-# <a name="troubleshoot-azure-stream-analytics-queries"></a>Řešení potíží s dotazy Azure Stream Analytics
+# <a name="troubleshoot-azure-stream-analytics-queries"></a>Řešení potíží s Azure Stream Analytics dotazy
 
-Tento článek popisuje běžné problémy s vývojem dotazů Stream Analytics a postupy jejich řešení.
+Tento článek popisuje běžné problémy při vývoji Stream Analytics dotazů a jejich řešení.
 
-## <a name="query-is-not-producing-expected-output"></a>Dotaz není vytváření očekávaný výstup 
-1.  Zkontrolujte chyby při testování místně:
-    - Na **dotazu** kartu, vyberte možnost **Test**. Použijte stažené ukázková data do [otestujte dotaz](stream-analytics-test-query.md). Zkontrolujte případné chyby a pokuste se je opravit.   
-    - Můžete také [otestovat dotaz přímo na živé vstupní](stream-analytics-live-data-local-testing.md) pomocí Stream Analytics tools pro Visual Studio.
+## <a name="query-is-not-producing-expected-output"></a>Dotaz nevyrábí očekávaný výstup. 
+1.  Kontrola chyb pomocí místního testování:
+    - Na kartě **dotaz** vyberte **test**. K [otestování dotazu](stream-analytics-test-query.md)použijte stažená ukázková data. Prověřte případné chyby a pokuste se je opravit.   
+    - Dotaz můžete také [testovat přímo na živém vstupu](stream-analytics-live-data-local-testing.md) pomocí Stream Analyticsch nástrojů pro Visual Studio.
 
-2.  Pokud používáte [ **Timestamp By**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics), ověřte, že všechny události mají časové razítko větší, než [úlohy počáteční čas](stream-analytics-out-of-order-and-late-events.md).
+2.  Pokud používáte [**časové razítko**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics), ověřte, zda mají události časové razítko větší, než je [čas spuštění úlohy](stream-analytics-out-of-order-and-late-events.md).
 
-3.  Vylučte běžné nástrahy, jako například:
-    - A [ **kde** ](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) klauzule v dotazu vyfiltrovala všechny události, brání generován žádný výstup.
-    - A [ **PŘETYPOVÁNÍ** ](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) selže, což způsobí selhání úlohy funkce. Aby se zabránilo selhání přetypování typu, použijte [ **TRY_CAST** ](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) místo.
-    - Při použití funkcí okna, počkejte po dobu celé okno výstup z dotazu.
-    - Časové razítko pro události předchází časem spuštění úlohy, a proto se události vypustí.
+3.  Odstraňte běžné nástrah, například:
+    - Klauzule [**WHERE**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) v dotazu vyfiltroval všechny události, což znemožňuje vygenerování všech výstupů.
+    - Funkce [**cast**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) selže, což způsobí selhání úlohy. Chcete-li se vyhnout chybám přetypování typů, použijte místo toho [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) .
+    - Při použití funkcí okna počkejte na celou dobu trvání okna, aby se zobrazil výstup dotazu.
+    - Časové razítko pro události předchází času zahájení úlohy a proto se události vynechává.
 
-4.  Zajistěte, aby zásady pořadí událostí jsou nakonfigurované podle očekávání. Přejděte **nastavení** a vyberte [ **řazení událostí**](stream-analytics-out-of-order-and-late-events.md). Tato zásada je *není* použitý při použití **testování** tlačítko a otestujte dotaz. Tento výsledek je jedním z rozdílů mezi testováním v prohlížeči a spuštěním úlohy v produkčním prostředí. 
+4.  Zajistěte, aby byly zásady řazení událostí nakonfigurované podle očekávání. Přejít do **Nastavení** a vybrat [**řazení událostí**](stream-analytics-out-of-order-and-late-events.md). Zásada *se nepoužije,* když použijete tlačítko **test** k otestování dotazu. Výsledkem je jeden rozdíl mezi testováním v prohlížeči a spuštění úlohy v produkčním prostředí. 
 
-5. Ladění pomocí auditování a diagnostické protokoly:
-    - Použití [protokoly auditu](../azure-resource-manager/resource-group-audit.md)a filtr k identifikaci a ladit chyby.
-    - Použití [úlohy diagnostické protokoly](stream-analytics-job-diagnostic-logs.md) k identifikaci a ladit chyby.
+5. Ladit pomocí protokolů auditu a diagnostiky:
+    - K identifikaci a ladění chyb použijte [protokoly auditu](../azure-resource-manager/resource-group-audit.md)a filtr.
+    - K identifikaci a ladění chyb použijte [protokoly diagnostiky úlohy](stream-analytics-job-diagnostic-logs.md) .
 
-## <a name="job-is-consuming-too-many-streaming-units"></a>Úloha spotřebovává příliš mnoho jednotek streamování
-Zajistěte, aby že mohli využívat paralelního zpracování v Azure Stream Analytics. Můžete naučit [škálování s využitím paralelizace dotazů](stream-analytics-parallelization.md) úlohy Stream Analytics pomocí konfigurace vstupního oddíly a ladění definice dotazu analýzy.
+## <a name="job-is-consuming-too-many-streaming-units"></a>Úloha spotřebovává příliš mnoho jednotek streamování.
+Zajistěte, abyste využili výhod paralelního využívání Azure Stream Analytics. Můžete se dozvědět, jak [škálovat pomocí paralelního zpracování dotazů](stream-analytics-parallelization.md) Stream Analytics úloh, a to konfigurací vstupních oddílů a optimalizací definice analytického dotazu.
 
-## <a name="debug-queries-progressively"></a>Postupně ladění dotazů
+## <a name="debug-queries-progressively"></a>Postupně ladit dotazy
 
-Při zpracování dat v reálném čase vědět, co vypadá uprostřed dotazu může být užitečné. Protože vstupy nebo kroky úlohy Azure Stream Analytics může číst více než jednou, můžete napsat další příkazy SELECT INTO. Uděláte výstupů dočasných dat do služby storage a umožňuje zkontrolovat správnost dat, stejně jako *sledovat proměnné* udělat při ladění programu.
+Při zpracování dat v reálném čase může být užitečné, aby data vypadala uprostřed dotazu. Vzhledem k tomu, že vstupy nebo kroky Azure Stream Analytics úlohy je možné přečíst vícekrát, můžete napsat nadbytečné příkazy SELECT INTO. Tím dojde k výstupování mezilehlých dat do úložiště a umožní vám zkontrolovat správnost dat, stejně jako *sledované proměnné* , při ladění programu.
 
-Následující příklad dotazu v úloze Azure Stream Analytics je zadání jednoho datového proudu, dvě referenční datové výstupy a výstup do služby Azure Table Storage. Dotaz spojuje data z centra událostí a dvě referenční přes bloby až po získání informací o názvů a kategorie:
+Následující příklad dotazu v úloze Azure Stream Analytics má jeden vstup streamu, dva vstupy referenčních dat a výstup do Azure Table Storage. Dotaz spojuje data z centra událostí a dva objekty blob odkazů, aby získal informace o názvu a kategorii:
 
-![Příklad Stream Analytics dotaz SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
+![Příklad Stream Analytics výběru do dotazu](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
 
-Všimněte si, že je úloha spuštěná, ale žádné události jsou vytvořených ve výstupu. Na **monitorování** dlaždice zobrazené, uvidíte, že vstup je vytváření dat, ale si nejste jisti, který krok **připojte se k** způsobil všechny události zavěšení.
+Všimněte si, že úloha je spuštěná, ale ve výstupu nejsou vytvářeny žádné události. Na dlaždici **monitorování** můžete vidět, že vstup vyrábí data, ale nevíte, který krok **spojení** způsobil, že všechny události mají být vyřazeny.
 
 ![Dlaždice monitorování Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
  
-V takovém případě můžete přidat několik dalších příkazech SELECT INTO "přihlásit" mezilehlé výsledky spojení a data, která je načtený ze vstupu.
+V této situaci můžete přidat několik příkazů SELECT INTO do log (protokol). výsledky mezilehlého spojení a data, která jsou čtena ze vstupu.
 
-V tomto příkladu jsme přidali dvě nové "dočasné výstupy." Mohou být libovolné jímky, kolikrát chcete. Tady používáme jako příklad služby Azure Storage:
+V tomto příkladu jsme přidali dva nové "dočasné výstupy". Může to být jakákoli jímka, kterou si přejete. Tady používáme Azure Storage jako příklad:
 
-![Přidání dalších příkazech SELECT INTO do dotazu Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-outputs.png)
+![Přidání dalších příkazů SELECT INTO do Stream Analytics dotazů](./media/stream-analytics-select-into/stream-analytics-select-into-outputs.png)
 
-Potom můžete přepište dotaz následujícím způsobem:
+Pak můžete tento dotaz přepsat tímto způsobem:
 
-![Přepsaný dotazu vyberte do Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-query2.png)
+![Přepsaný výběr do Stream Analyticsho dotazu](./media/stream-analytics-select-into/stream-analytics-select-into-query2.png)
 
-Nyní spusťte znovu úlohu a nechat běžet několik minut. Potom zadejte dotaz temp1 a temp2 pomocí Průzkumníka cloudu Visual Studio k vytvoření následujících tabulek:
+Nyní spusťte úlohu znovu a nechte ji běžet po dobu několika minut. Pak proveďte dotazování temp1 a Temp2 pomocí Průzkumníka cloudu sady Visual Studio a vytvořte následující tabulky:
 
-**Tabulka temp1**
-![dotaz SELECT INTO temp1 tabulky Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
+**tabulka temp1**
+![vybrat do tabulky temp1 Stream Analytics dotaz](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
 
-**Tabulka temp2**
-![dotaz SELECT INTO temp2 tabulky Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
+**tabulka temp2**
+![vybrat do tabulky Temp2 Stream Analytics dotaz](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
 
-Jak je vidět, temp1 a temp2 mají data a název sloupce je v temp2 správně zadána. Ale protože ve výstupu ještě neexistuje žádná data, něco se nepovedlo:
+Jak vidíte, temp1 a Temp2 obojí mají data a sloupec Name se v Temp2 vyplní správně. Protože však ve výstupu stále nejsou žádná data, je něco špatného:
 
-![Příkaz SELECT INTO tabulku output1 se žádná data dotazu Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-out-table-1.png)
+![VYBRAT do tabulky output1 bez dotazu na data Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-out-table-1.png)
 
-Vzorkování dat, můžete si být téměř jisti, že problém s druhou spojení. Můžete stáhnout z objektu blob referenčních dat a podívejte se:
+Vzorkováním dat můžete být skoro jisti, že se jedná o problém s druhým připojením. Můžete si stáhnout referenční data z objektu BLOB a prohlédnout si je:
 
-![Dotaz SELECT INTO ref tabulky Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-1.png)
+![VYBRAT do referenční tabulky Stream Analytics dotaz](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-1.png)
 
-Jak je vidět, se liší od formátu formát čísla GUID v této referenční data [sloupec v temp2 z]. To je důvod, proč data nebyla doručení output1 podle očekávání.
+Jak vidíte, formát identifikátoru GUID v těchto referenčních datech se liší od formátu sloupce [from] v Temp2. To je důvod, proč se data nedostala do output1 podle očekávání.
 
-Můžete opravit formát dat, nahrajte ho odkazovat na objekt blob, a zkuste to znovu:
+Můžete opravit formát dat, odeslat ho do referenčního objektu BLOB a zkusit to znovu:
 
-![Příkaz SELECT INTO dotazu Stream Analytics dočasné tabulky](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
+![VYBRAT do dočasné tabulky Stream Analytics dotaz](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
 
-Tentokrát, data ve výstupu jsou ve formátu a vyplní podle očekávání.
+Tentokrát se data ve výstupu naformátují a vyplní podle očekávání.
 
-![Dotaz SELECT INTO konečná tabulka takto Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
+![VYBRAT do konečné tabulky Stream Analytics dotaz](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání nápovědy
 
 Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)

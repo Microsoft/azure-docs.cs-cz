@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 0f5964472b738bd3868bbf361b85fa4ad1f13b5c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 7039cd73263388f206075a53d7898e0d15da6b03
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109604"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613682"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Kurz: směrování elektrických vozidel pomocí Azure Notebooks (Python)
 
@@ -24,7 +24,7 @@ Rozhraní REST API pro Azure Maps se dají volat z jazyků, jako je Python a R, 
 
 V tomto kurzu se seznámíte se scénářem, který vám může pomoci strojvedoucímu, který má za následek nízké zatížení baterie elektrického vozidla, na základě času jednotky z umístění vozidla.
 
-V tomto kurzu se naučíte:
+V tomto kurzu provedete následující:
 
 > [!div class="checklist"]
 > * Vytvořte a spusťte Poznámkový blok Jupyter v [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) v cloudu.
@@ -39,9 +39,11 @@ V tomto kurzu se naučíte:
 
 Abyste mohli tento kurz dokončit, musíte nejdřív vytvořit účet Azure Maps a získat primární klíč (klíč předplatného). 
 
-Pokud chcete vytvořit předplatné účtu Azure Maps v cenové úrovni S1, postupujte podle pokynů v části [Správa účtu Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account). 
+Pokud chcete vytvořit předplatné účtu Azure Maps v cenové úrovni S1, postupujte podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) a vytvořte Azure Maps předplatné s cenovou úrovní S1. 
 
-Pokud chcete získat primární klíč předplatného pro svůj účet, postupujte podle pokynů v části [Vytvoření účtu a získání klíče](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-and-get-your-key).
+Pokud chcete získat primární klíč předplatného pro svůj účet, postupujte podle pokynů v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account).
+
+Další podrobnosti o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 
 ## <a name="create-an-azure-notebook"></a>Vytvoření poznámkového bloku Azure
 
@@ -111,7 +113,7 @@ Vzhledem k tomu, že se společnost upřednostňuje používat trasy, které vy�
 Chcete-li určit hranice pro dostupný rozsah elektrického vozidla, spusťte skript v následující buňce:
 
 ```python
-subscriptionKey = "Your Azure Maps primary subscription key"
+subscriptionKey = "Your Azure Maps key"
 currentLocation = [34.028115,-118.5184279]
 session = aiohttp.ClientSession()
 
@@ -398,6 +400,6 @@ Pokud chcete prozkoumat rozhraní API Azure Maps používaná v tomto kurzu, př
 * [Vyjednaná matice směrování](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
 * [Získat směr směrování](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
 
-Úplný seznam Azure Maps rozhraní REST API najdete v tématu [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/#reference).
+Úplný seznam Azure Maps rozhraní REST API najdete v tématu [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model).
 
 Další informace o Azure Notebooks najdete v tématu [Azure Notebooks](https://docs.microsoft.com/azure/notebooks).

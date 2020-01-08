@@ -3,12 +3,12 @@ title: Kurz – vytvoření clusteru virtuálních počítačů Azure s Terrafor
 description: Použití Terraformu a HCL k vytvoření clusteru virtuálních počítačů se systémem Linux s nástrojem pro vyrovnávání zatížení v Azure
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: f28cbbf13015d07c9d789ed258a9e2b0582ba1da
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 1ff13f05a5be463ed7477b4bbbc3e1f977a04a75
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159265"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665359"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Kurz: Vytvoření clusteru virtuálních počítačů Azure s Terraformu a HCL
 
@@ -208,7 +208,7 @@ V této části vytvoříte soubor obsahující definice prostředků pro vaši 
       disable_password_authentication = false
     }
 
-    tags {
+    tags = {
       environment = "staging"
     }
    }
@@ -260,10 +260,10 @@ Ve výchozím nastavení se Terraformu pokusil najít soubor proměnných násle
 - Soubor s názvem `terraform.tfvars`
 - Soubor s názvem s použitím následujícího vzoru: `*.auto.tfvars`
 
-Soubor proměnných ale nemusí následovat po obou předchozích konvencích. V takovém případě zadejte název souboru proměnných s parametrem `-var-file`. Následující příklad ilustruje tento bod:
+Soubor proměnných ale nemusí následovat po obou předchozích konvencích. V takovém případě zadejte název souboru proměnných s parametrem `-var-file`, kde název souboru proměnné nemá příponu. Následující příklad ilustruje tento bod:
 
 ```hcl
-terraform plan -var-file <my-variables-file.tf>
+terraform plan -var-file <my-variables-file>
 ```
 
 Terraformu určuje akce potřebné k dosažení stavu určeného v konfiguračním souboru.

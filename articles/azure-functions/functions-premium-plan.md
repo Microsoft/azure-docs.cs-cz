@@ -5,16 +5,16 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 9c1a9a9e3b9e1c12c3960a8586c25436c8d937e0
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 5f6825243b7e410b49b54d04a028b5d71610ea68
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532904"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561950"
 ---
 # <a name="azure-functions-premium-plan"></a>Plán Azure Functions Premium
 
-Plán Azure Functions Premium je možnost hostování pro aplikace Function App. Plán Premium poskytuje funkce, jako je připojení k virtuální síti, žádný studený start a špičkový hardware.  Do stejného plánu Premium se dá nasadit víc aplikací Function App a plán vám umožní nakonfigurovat velikost instance COMPUTE, velikost základního plánu a maximální velikost plánu.  Porovnání plánu Premium a dalších typů plánování a hostování najdete v tématu [možnosti škálování a hostování funkcí](functions-scale.md).
+Plán Azure Functions Premium (někdy označovaný jako elastický plán Premium) je možnost hostování pro aplikace Function App. Plán Premium poskytuje funkce, jako je připojení k virtuální síti, žádný studený start a špičkový hardware.  Do stejného plánu Premium se dá nasadit víc aplikací Function App a plán vám umožní nakonfigurovat velikost instance COMPUTE, velikost základního plánu a maximální velikost plánu.  Porovnání plánu Premium a dalších typů plánování a hostování najdete v tématu [možnosti škálování a hostování funkcí](functions-scale.md).
 
 ## <a name="create-a-premium-plan"></a>Vytvořit plán Premium
 
@@ -45,7 +45,7 @@ Počet předem zavedených instancí můžete v Azure Portal nakonfigurovat tak,
 
 ![Nastavení elastického škálování](./media/functions-premium-plan/scale-out.png)
 
-Můžete taky nakonfigurovat předem zavedené instance pro aplikaci pomocí Azure CLI.
+V Azure CLI můžete také nakonfigurovat předem zavedené instance pro aplikaci.
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
@@ -76,7 +76,7 @@ Při vytváření plánu nakonfigurujete dvě nastavení: minimální počet ins
 
 Pokud vaše aplikace vyžaduje instance nad rámec velikosti vašeho plánu, může pokračovat horizontální navýšení kapacity, dokud počet instancí nedosáhne maximálního limitu shlukování.  Účtují se za instance přesahující váš plán jenom v době, kdy jsou spuštěné a pronajaté.  Připravujeme úsilí, aby se vaše aplikace přihlásila na vymezený maximální limit, zatímco pro vaši aplikaci jsou zaručené minimální instance plánu.
 
-Velikost plánu a maximum v Azure Portal můžete nakonfigurovat tak, že vyberete možnosti **horizontálního** navýšení kapacity v plánu nebo aplikaci Function App nasazené do tohoto plánu (v části **funkce platformy**).
+Velikost plánu a maximum v Azure Portal můžete nakonfigurovat výběrem možností **horizontálního** navýšení kapacity v plánu nebo aplikace Function App nasazené do tohoto plánu (v části **funkce platformy**).
 
 Můžete taky zvýšit maximální limit shluku z Azure CLI:
 
@@ -88,7 +88,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Při vytváření nebo škálování plánu si můžete vybrat mezi třemi velikostmi instancí.  Bude se vám účtovat celkový počet jader a využité paměti za sekundu.  Vaše aplikace se může podle potřeby automaticky škálovat na více instancí.  
 
-|Skladová položka|Jádra|Paměť|Úložiště|
+|Skladová položka|Jádra|Paměť|Storage|
 |--|--|--|--|
 |EP1|1\. místo|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
@@ -98,32 +98,33 @@ Při vytváření nebo škálování plánu si můžete vybrat mezi třemi velik
 
 Níže jsou uvedené aktuálně podporované oblasti pro každý operační systém.
 
-|Oblast| Windows | Linux |
+|Region (Oblast)| Windows | Linux |
 |--| -- | -- |
 |Austrálie – střed| ✔<sup>1</sup> | |
 |Austrálie – střed 2| ✔<sup>1</sup> | |
 |Austrálie – východ| ✔ | |
-|Austrálie – jihovýchod | ✔ | ✔ |
+|Austrálie – jihovýchod | ✔ | ✔<sup>1</sup> |
 |Brazílie – jih| ✔<sup>2</sup> |  |
-|Kanada – střed| ✔ |  |
+|Střední Kanada| ✔ |  |
 |Střední USA| ✔ |  |
 |Východní Asie| ✔ |  |
-|USA – východ | ✔ | ✔ |
+|Východní USA | ✔ | ✔<sup>1</sup> |
 |Východ USA 2| ✔ |  |
 |Francie – střed| ✔ |  |
-|Japonsko – východ| ✔ | ✔ |
+|Německo – středozápad| ✔ | |
+|Japonsko – východ| ✔ | ✔<sup>1</sup> |
 |Japonsko – západ| ✔ | |
 |Korea – střed| ✔ |  |
 |Středoseverní USA| ✔ |  |
-|Severní Evropa| ✔ | ✔ |
-|Středojižní USA| ✔ |  |
+|Severní Evropa| ✔ | ✔<sup>1</sup> |
+|Středojižní USA| ✔ | ✔<sup>1</sup> |
 |Jižní Indie | ✔ | |
-|Jihovýchodní Asie| ✔ | ✔ |
-|Velká Británie – jih| ✔ | |
+|Jihovýchodní Asie| ✔ | ✔<sup>1</sup> |
+|Spojené království – jih| ✔ | |
 |Velká Británie – západ| ✔ |  |
-|Západní Evropa| ✔ | ✔ |
+|Západní Evropa| ✔ | ✔<sup>1</sup> |
 |Západní Indie| ✔ |  |
-|Západní USA| ✔ | ✔ |
+|Západní USA| ✔ | ✔<sup>1</sup> |
 |Západní USA 2| ✔ |  |
 
 <sup>1</sup> Maximální horizontální navýšení kapacity je omezené na 20 instancí.  

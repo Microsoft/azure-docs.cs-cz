@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 12372c1f00e994382338adf9bd078018ba702da1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 01/06/2020
+ms.openlocfilehash: 0c2441aaf0cffd357f917a8c600f7399b339bfb6
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213348"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689107"
 ---
 # <a name="create-a-new-saas-offer"></a>Vytvořit novou nabídku SaaS
 
@@ -22,21 +22,21 @@ Pokud chcete začít vytvářet nabídky software jako služba (SaaS), ujistěte
 ![Řídicí panel komerčního tržiště v partnerském centru](./media/new-offer-overview.png)
 
 >[!Note]
-> Po publikování nabídky se úpravy nabídky provedené v partnerském centru aktualizují jenom v systému a po opětovném publikování se uloží i přední. Po provedení změn Prosím zajistěte odeslání nabídky k publikování.
+> Po publikování nabídky se úpravy nabídky provedené v partnerském centru aktualizují jenom v systému a po opětovném publikování se uloží i přední. Až provedete změny, nezapomeňte tuto nabídku odeslat pro publikování.
 
-Vyberte nabídku + **Nová...** a potom vyberte položku nabídky **software jako služba** . 
+Vyberte nabídku + **Nová...** a potom vyberte položku nabídky **software jako služba** .
 
 Pokud vyberete jiný typ nabídky, budete možná přesměrováni na starší [portál partnerů cloudu](https://cloudpartner.azure.com/). V tomto okamžiku jsou na portálu pro komerční tržiště k dispozici pouze nabídky SaaS a Dynamics 365 v partnerském centru.
 
 ![Vytvořit okno nabídky na partnerském centru](./media/new-offer-click.png)
 
-Zobrazí se dialogové okno **Nová nabídka** . 
+Zobrazí se dialogové okno **Nová nabídka** .
 
 ![Dialogové okno Nová nabídka](./media/new-offer-popup.png)
 
 ## <a name="offer-id-and-alias"></a>ID nabídky a alias
 
-- **ID nabídky**: jedinečný identifikátor pro každou nabídku ve vašem účtu. Toto ID uvidí zákazníci v adrese URL pro nabídku Marketplace a šablony Azure Resource Manager (pokud jsou k dispozici). ID nabídky musí být malé, alfanumerické (včetně spojovníků a podtržítka, ale bez mezer). Tato možnost je omezená na 50 znaků a po výběru *vytvořit*se nedá změnit.  
+- **ID nabídky**: jedinečný identifikátor pro každou nabídku ve vašem účtu. Toto ID uvidí zákazníci v adrese URL pro nabídku Marketplace a šablony Azure Resource Manager (pokud jsou k dispozici). ID nabídky musí být malé, alfanumerické (včetně spojovníků a podtržítka, ale bez mezer). **ID nabídky** je omezené na 50 znaků a po výběru *vytvořit*se nedá změnit.  
 Příklad: test-nabídka-1
 <br>Výsledkem je adresa URL: `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
 
@@ -52,14 +52,14 @@ Vyberte **Vytvořit**.  Pro tuto nabídku se vytvoří stránka s **přehledem n
 
 ## <a name="offer-overview"></a>Přehled nabídky
 
-Stránka **Přehled nabídky** obsahuje: 
+Stránka **Přehled nabídky** obsahuje:
 
-- **Stav publikování** zobrazí vizuální znázornění kroků požadovaných k publikování této nabídky a dobu, po kterou bude každý krok trvat. Nedokončené ikony kroků publikování budou šedé. 
+- **Stav publikování** zobrazí vizuální znázornění kroků požadovaných k publikování této nabídky a dobu, po kterou bude každý krok trvat. Nedokončené ikony kroků publikování budou šedé.
 
 - Nabídka **Přehled** nabídky obsahuje seznam odkazů pro provádění operací s touto nabídkou. Tento seznam operací se změní v závislosti na výběru provedeném pro vaši nabídku.  
-    - Pokud je nabídka koncept-odstranit koncept 
-    - Pokud je nabídka živá, přestat prodávat nabídku 
-    - Pokud je nabídka ve verzi Preview – přejít do provozu 
+    - Pokud je nabídka koncept-odstranit koncept
+    - Pokud je nabídka živá, přestat prodávat nabídku
+    - Pokud je nabídka ve verzi Preview – přejít do provozu
     - Pokud jste nedokončili registraci vydavatele, zrušte publikování
 
 ## <a name="offer-setup"></a>Nastavení nabídky
@@ -68,7 +68,7 @@ Karta **nastavení nabídky** požádá o následující informace. Po dokončen
 
 - **Chtěli byste prodávat přes Microsoft?** (Ano/ne)
     - **Ano**, vaši nabídku byste mohli prodávat prostřednictvím Microsoftu, s hostováním transakcí Marketplace Microsoftu pro váš účet; ani 
-    - **Ne**, budete chtít, abyste si mohli jenom vypsat nabídku prostřednictvím Marketplace a zpracovávat peněžní transakce nezávisle na Microsoftu.    
+    - **Ne**, budete chtít, abyste si mohli jenom vypsat nabídku prostřednictvím Marketplace a zpracovávat peněžní transakce nezávisle na Microsoftu.
 
 ### <a name="sell-through-microsoft"></a>Prodej prostřednictvím Microsoftu
 
@@ -87,7 +87,7 @@ S SaaS řešeními, která běží v předplatném Azure vydavatele, zahrnují l
 
 SaaS nabízí podporu měsíčních nebo ročních faktur na základě paušálního poplatku za uživatele nebo poplatků za využití pomocí účtované fakturační služby. Komerční tržiště Microsoftu pracuje na modelu agentury, na kterém vydavatelé nastavili ceny, zákazníky s Microsoftem a společnost Microsoft za to, že vystavuje poplatky za platební poplatek, účtuje.
 
-Následující tabulka ukazuje příklad rozdělení nákladů a výběrů k předvedení modelu agentury.
+Následující tabulka ukazuje příklad rozdělení nákladů a výběrů za účelem předvedení modelu agentury.
 
 |**Náklady na licenci**|**$100 za měsíc**|
 |:---|:---|
@@ -102,11 +102,11 @@ Následující tabulka ukazuje příklad rozdělení nákladů a výběrů k př
 - Partneři, kteří mají nárok na **snížený poplatek za službu Marketplace** , uvidí za snížený poplatek za transakce SaaS z května 2019 do června 2020. V tomto scénáři Microsoft účtuje $100,00 pro vaši softwarovou licenci a vyplatí $90,00 vydavateli.
 
 > [!NOTE]
-> **Omezený poplatek za službu Marketplace**: u některých nabídek SaaS, které jste publikovali na našem komerčním tržišti, společnost Microsoft sníží poplatek za službu Marketplace z 20% (jak je popsáno v tématu smlouva Microsoft Publisher Agreement) na 10%. Aby vaše nabídka mohla být kvalifikována, musí být alespoň jedna z vašich nabídek označena Microsoftem jako přizpůsobená priorita nebo prodej IP.  Aby bylo možné získat tento snížený poplatek za službu Marketplace na daný měsíc, musí být nárok splněn nejméně pět (5) pracovních dnů před koncem každého kalendářního měsíce.  Snížený poplatek za službu Marketplace se nevztahuje na virtuální počítače, spravované aplikace ani žádné jiné produkty, které jsou dostupné prostřednictvím našeho komerčního tržiště.  Snížený poplatek za službu Marketplace bude dostupný jenom pro kvalifikované nabídky pro poplatky za licence shromážděné Microsoftem mezi 1. května 2019 a 30. června 2020.  Po uplynutí této doby se poplatek za službu Marketplace vrátí do normálního množství. 
+> **Omezený poplatek za službu Marketplace**: u některých nabídek SaaS, které jste publikovali na našem komerčním tržišti, společnost Microsoft sníží poplatek za službu Marketplace z 20% (jak je popsáno v tématu smlouva Microsoft Publisher Agreement) na 10%. Aby vaše nabídka mohla být kvalifikována, musí být alespoň jedna z vašich nabídek označena Microsoftem jako přizpůsobená priorita nebo prodej IP.  Aby bylo možné získat tento snížený poplatek za službu Marketplace na daný měsíc, musí být nárok splněn nejméně pět (5) pracovních dnů před koncem každého kalendářního měsíce.  Snížený poplatek za službu Marketplace se nevztahuje na virtuální počítače, spravované aplikace ani žádné jiné produkty, které jsou dostupné prostřednictvím našeho komerčního tržiště.  Snížený poplatek za službu Marketplace bude dostupný jenom pro kvalifikované nabídky pro poplatky za licence shromážděné Microsoftem mezi 1. května 2019 a 30. června 2020.  Po uplynutí této doby se poplatek za službu Marketplace vrátí do normálního množství.
 
 ### <a name="list-through-microsoft"></a>Seznam prostřednictvím Microsoftu
 
-Vytvořte seznam na webu Marketplace a zvyšte své podnikání pomocí Microsoftu. Výběrem této nabídky zobrazíte pouze seznam a nikoli transakční prostřednictvím Microsoftu znamená, že se společnost Microsoft neúčastní přímo v transakcích licencí na software. Není k dispozici žádný přidružený transakční poplatek a vydavatel udržuje 100% jakýchkoli licenčních poplatků za software shromážděných od zákazníka. Vydavatel je však zodpovědný za podporu všech aspektů licenčních transakcí softwaru, mimo jiné: splnění objednávek, měření, fakturace, fakturace, platby a shromažďování. 
+Vytvořte seznam na webu Marketplace a zvyšte své podnikání pomocí Microsoftu. Výběrem této nabídky zobrazíte pouze seznam a nikoli transakční prostřednictvím Microsoftu znamená, že se společnost Microsoft neúčastní přímo v transakcích licencí na software. Není k dispozici žádný přidružený transakční poplatek a vydavatel udržuje 100% jakýchkoli licenčních poplatků za software shromážděných od zákazníka. Vydavatel je však zodpovědný za podporu všech aspektů licenčních transakcí softwaru, mimo jiné: splnění objednávek, měření, fakturace, fakturace, platby a shromažďování.
 
 - **Jak chcete potenciálním zákazníkům pracovat s touto nabídkou pro výpis?**
 
@@ -120,7 +120,7 @@ Seznamte se s vaší nabídkou pro zákazníky s odkazem na bezplatnou zkušebn�
 > Tokeny, které vaše aplikace získá prostřednictvím zkušebního připojení, se dají použít jenom k získání informací o uživateli přes Azure AD k automatizaci vytváření účtů ve vaší aplikaci. Pro ověřování pomocí tohoto tokenu se nepodporují účty Microsoft (MSA).
 
 ##### <a name="contact-me"></a>Kontaktujte mě
-Shromažďovat kontaktní údaje zákazníka propojením systému pro správu vztahů se zákazníky (CRM). Zákazník bude požádán o oprávnění ke sdílení svých informací. Tyto podrobnosti o zákaznících spolu s názvem nabídky, ID a zdrojem Marketplace, kde si vaši nabídku našli, budou odeslány do systému CRM, který jste nakonfigurovali. Další informace o konfiguraci CRM najdete v tématu [připojení správy zájemců](#connect-lead-management). 
+Shromažďovat kontaktní údaje zákazníka propojením systému pro správu vztahů se zákazníky (CRM). Zákazník bude požádán o oprávnění ke sdílení svých informací. Tyto podrobnosti o zákaznících spolu s názvem nabídky, ID a zdrojem Marketplace, kde si vaši nabídku našli, budou odeslány do systému CRM, který jste nakonfigurovali. Další informace o konfiguraci CRM najdete v tématu [připojení správy zájemců](#connect-lead-management).
 
 ## <a name="example-marketplace-offer-listing"></a>Příklad seznamu nabídek Marketplace
 
@@ -157,40 +157,68 @@ Povolením testovacích jednotek budete požádáni o konfiguraci demonstrační
 - [Běžné chyby konfigurace potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
 - [Přehled řízení vedoucích – jeden pager](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
 
-Před přechodem k další části si nezapomeňte **Uložit** .
+Nezapomeňte **Uložit** před přechodem k další části.
 
 ## <a name="properties"></a>Vlastnosti
-Karta **vlastnosti** vás vyzve k definování kategorií a odvětví používaných k seskupení vaší nabídky na tržištích, platných smluv podporujících vaši nabídku a verze vaší aplikace. 
 
-Po dokončení těchto polí vyberte **Uložit** . 
+Karta **vlastnosti** vás vyzve k definování kategorií a odvětví používaných k seskupení vaší nabídky na tržištích, platných smluv podporujících vaši nabídku a verze vaší aplikace.
+
+Po dokončení těchto polí vyberte **Uložit** .
 
 ### <a name="category"></a>Kategorie
-Vyberte minimálně jednu (1) a maximálně tři (3) kategorie použité pro seskupení nabídek do příslušných oblastí hledání na webu Marketplace. Zavolejte prosím, jak vaše nabídka podporuje tyto kategorie v popisu nabídky. 
+
+Vyberte minimálně jednu (1) a maximálně tři (3) kategorie použité pro seskupení nabídek do příslušných oblastí hledání na webu Marketplace. V popisu nabídky zavolejte, jak vaše nabídka podporuje tyto kategorie.
 
 ### <a name="industry"></a>Odvětví
 
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>verze aplikace
-Toto je volitelné pole, které se používá na webu AppSource Marketplace k identifikaci čísla verze vaší nabídky. 
 
-### <a name="standard-contract"></a>Standardní kontrakt
+Toto je volitelné pole, které se používá na webu AppSource Marketplace k identifikaci čísla verze vaší nabídky.
 
-- **Používáte standardní smlouvu?**
+### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Smlouva standard pro komerční tržiště Microsoftu
 
-Pro zjednodušení procesu nákupu pro zákazníky a omezení právní složitosti pro dodavatele softwaru nabízí společnost Microsoft standardní šablonu smlouvy, aby usnadnila transakci na webu Marketplace. 
+Společnost Microsoft poskytuje standardní šablonu smlouvy.
 
-Místo vytváření vlastních podmínek a ujednání můžou Azure Marketplace vydavatelé zvolit, že mají nabízet svůj software v rámci standardní smlouvy, které zákazníci potřebují, aby je Vet a přijali jenom jednou. 
+- **Pro komerční tržiště Microsoftu použijte standardní smlouvu?**
 
-Standardní kontrakt najdete tady: https://go.microsoft.com/fwlink/?linkid=2041178.
+Pro zjednodušení procesu nákupu pro zákazníky a omezení právní složitosti pro dodavatele softwaru nabízí společnost Microsoft standardní smlouvu pro komerční tržiště Microsoftu, která usnadňuje transakce na webu Marketplace. Místo toho, aby si mohli vlastní podmínky a ujednání, můžou si komerční vydavatelé na webu Marketplace vybrat svůj software v rámci standardní smlouvy, kteří zákazníci potřebují Vet a přijmout jenom jednou. Standardní kontrakt najdete tady: https://go.microsoft.com/fwlink/?linkid=2041178.
 
-#### <a name="terms-of-use"></a>Podmínky použití
+Výběrem možnosti použít standardní smlouvu pro komerční web Marketplace můžete vybrat, že se má používat standardní smlouva místo poskytování vlastních podmínek a ujednání.
 
-Pokud se vaše licenční smlouvy liší od standardní smlouvy, můžete zde zadat vlastní právní podmínku použití. Můžete je zadat jako prostý text nebo jako jednu adresu URL, která se připojuje k vašim licenčním podmínkám.
+![Pomocí zaškrtávacího políčka standardní smlouva](./media/use-standard-contract.png)
 
-Zákazníci musí tyto podmínky přijmout, aby mohli svoji aplikaci vyzkoušet. 
+> [!NOTE]
+> Po publikování nabídky pomocí standardní smlouvy pro komerční tržiště společnosti Microsoft nemůžete používat vlastní podmínky a ujednání. Jedná se o scénář "nebo". Vaše řešení si buď nabídnete v rámci standardní smlouvy, **nebo** podle vašich vlastních podmínek. Pokud chcete upravit podmínek standardní smlouvy, můžete to udělat prostřednictvím standardních změn smlouvy.
 
-Před přechodem k další části si nezapomeňte **Uložit** .
+#### <a name="standard-contract-amendments"></a>Změny smlouvy Standard
+
+Změny smlouvy Standard umožňují vydavatelům vybrat standardní smluvní smlouvy pro jednoduchost a přizpůsobit si pro svůj produkt nebo firmu obory podmínek. Zákazníci si musí jenom projít změny smlouvy, pokud už zkontrolovali a přijali standardní kontrakt společnosti Microsoft.
+
+K dispozici jsou dva druhy změn pro komerční vydavatele na webu Marketplace:
+
+- Univerzální změny: tyto změny se aplikují všeobecně na standardní smlouvu pro všechny zákazníky. Univerzální změny se zobrazují každému zákazníkovi nabídky v toku nákupu. Zákazníci musí přijmout podmínky standardní smlouvy a dodatku, aby mohli používat vaši nabídku.
+- Vlastní změny: tyto změny představují zvláštní změny standardní smlouvy, které jsou zaměřené na konkrétní zákazníky jenom prostřednictvím ID tenanta Azure. Vydavatelé můžou zvolit tenanta, na který chtějí cílit. S vlastními podmínkami změny v nákupním toku nabídky se zobrazí pouze zákazníci z tenanta.  Zákazníci musí přijmout podmínky smlouvy Standard a jejich změny, aby mohli používat vaši nabídku.
+
+>[!NOTE]
+> Tyto dva typy změn zásobníků jsou navzájem navzájem. Zákazníci, na které cílíte vlastní změny, získají při nákupu také univerzální změnu standardní smlouvy.
+
+**Univerzální pozměňovací výrazy ke standardní smlouvě pro komerční tržiště Microsoftu**: do tohoto pole zadejte univerzální výrazy pro změnu. Pro každou nabídku můžete zadat jednu univerzální změnu. Do tohoto pole můžete zadat neomezený počet znaků. Ty se zobrazí zákazníkům v AppSource, Azure Marketplace a/nebo Azure Portal během toku zjišťování a nákupu.
+
+**Vlastní výrazy pro změny standardní smlouvy pro komerční tržiště Microsoftu**: Začněte tím, že vyberete **Přidat vlastní výrazy pro změnu**. Pro každou nabídku můžete zadat až 10 vlastních podmínek pro změnu.
+
+- **Vlastní výrazy pro změnu**: do pole vlastní výrazy pro změnu zadejte vlastní vlastní údaje. Do tohoto pole můžete zadat neomezený počet znaků. Pouze zákazníkům z ID tenanta, které zadáte pro tyto vlastní výrazy, se zobrazí vlastní výrazy změny v toku nákupu nabídky v Azure Portal.  
+- **ID klientů** (povinné): každé vlastní změně může být až 20 ID klientů. Pokud přidáte vlastní změnu, musíte zadat aspoň jedno ID tenanta. ID tenanta identifikuje zákazníka v Azure. U zákazníka můžete požádat o toto ID a získat ho tak, že přejdete na portal.azure.com > Azure Active Directory > Vlastnosti. Hodnota ID adresáře je ID tenanta (např. 50c464d3-4930-494c-963c-1e951d15360e). ID tenanta organizace zákazníka můžete také vyhledat pomocí adresy URL svého názvu domény v umístění [moje Microsoft Azure a ID tenanta Office 365?](https://www.whatismytenantid.com).
+- **Popis** (volitelné): Volitelně můžete zadat popis ID tenanta, který vám pomůže identifikovat zákazníka, kterému cílíte na změnu.
+
+#### <a name="terms-and-conditions"></a>Podmínky a ujednání
+
+Pokud chcete zadat vlastní podmínky a ujednání, můžete je vybrat do pole podmínky a ujednání. Do tohoto pole můžete zadat až 10 000 znaků textu. Pokud vaše podmínky a ujednání vyžadují delší popis, zadejte do tohoto pole odkaz na jednu adresu URL, kde se dají podmínky a ujednání najít. Zobrazí se zákazníkům jako aktivní odkaz.
+
+Zákazníci musí tyto podmínky přijmout, aby mohli svoji nabídku vyzkoušet.
+
+Nezapomeňte **Uložit** před přechodem k další části.
 
 ## <a name="offer-listing"></a>Seznam nabídek
 
@@ -208,28 +236,28 @@ Zadejte podrobnosti, které se mají zobrazit na webu Marketplace, včetně popi
 - **Popis** (povinné): zadejte popis nabídky, která se má zobrazit v seznamech Marketplace. Vezměte v úvahu zahrnutí hodnot do kategorií, klíčových výhod, jakékoli kategorie nebo přidružení oboru, možností nákupu v aplikaci, všech potřebných zveřejnění a odkazu na Další informace.
 Do tohoto pole lze zadat až 3 000 znaků textu. Další tipy najdete v článku o [zápisu skvělého popisu aplikace](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
 - **Hledaná klíčová slova**: Zadejte až tři klíčová slova pro hledání, která můžou zákazníci použít k vyhledání vaší nabídky na webu Marketplace.
-- Úvodní **pokyny** (povinné): Vysvětlete, jak nakonfigurovat a začít používat vaši aplikaci pro potenciální zákazníky.  Tento rychlý Start může obsahovat odkazy na podrobnější online dokumentaci. Do tohoto pole lze zadat až 3 000 znaků textu. 
+- Úvodní **pokyny** (povinné): Vysvětlete, jak nakonfigurovat a začít používat vaši aplikaci pro potenciální zákazníky.  Tento rychlý Start může obsahovat odkazy na podrobnější online dokumentaci. Do tohoto pole lze zadat až 3 000 znaků textu.
 
 #### <a name="description"></a>**Popis**
 
-Toto je povinné pole. Položky, které se mají zahrnout do popisu: 
+Toto pole je povinné. Položky, které se mají zahrnout do popisu:
 
 * Jasně popište, jak se má v prvních několika větách popisu v této nabídce vyhodnotit.  
 * Mějte na paměti, že ve výsledcích vyhledávacího modulu se může zobrazit několik prvních vět.  
 * Nespoléhá se na funkce a funkce k prodeji vašeho produktu. Místo toho se zaměřte na hodnotu, kterou doručujete.  
-* Používejte co nejvíc slovníků specifických pro konkrétní obor nebo využití s výhodami. 
+* Používejte co nejvíc slovníků specifických pro konkrétní obor nebo využití s výhodami.
 
-Základní komponenty pro vaši polohu hodnoty by měly obsahovat následující informace: 
+Základní komponenty pro vaši polohu hodnoty by měly obsahovat následující informace:
 
-* Popis produktu 
-* Typ uživatele, který je z produktu přínosný 
-* Zákaznické potřeby nebo bolesti adres produktů. 
+* Popis produktu
+* Typ uživatele, který je z produktu přínosný
+* Zákaznické potřeby nebo bolesti adres produktů.
 
-Aby bylo možné podrobnější popis nabídky, můžete k formátování popisu použít značky HTML. 
+Aby bylo možné podrobnější popis nabídky, můžete k formátování popisu použít značky HTML.
 
 1. Pokud chcete vytvořit odstavce, přidejte `<p>` do BEGGING textu a přidejte `</p>` na konci.
 
-    **Příklad:** 
+    **Příklad**:
 
     `<p>` Toto je můj první odstavec. `</p>` <br>
     `<p>` se jedná o můj druhý odstavec. `</p>` <br>
@@ -239,46 +267,46 @@ Aby bylo možné podrobnější popis nabídky, můžete k formátování popisu
     <p> Toto je můj první odstavec. </p>
     <p> Toto je můj druhý odstavec. </p>
 
-1. Chcete-li přidat **seznam položek s odrážkami**, umístěte text do značky `<li>` níže. V rámci značky `<ul>` a `</ul>` můžete kopírovat a vkládat další položky s odrážkami (položky mezi `<li>` a `</li>` značky). Ujistěte se, že jste přidali `<ul></ul>`. 
+1. Chcete-li přidat **seznam položek s odrážkami**, umístěte text do značky `<li>` níže. V rámci značky `<ul>` a `</ul>` můžete kopírovat a vkládat další položky s odrážkami (položky mezi `<li>` a `</li>` značky). Ujistěte se, že jste přidali `<ul></ul>`.
 
-    **Příklad:**
+    **Příklad**:
 
     ```
     <ul> 
-        <li>add text here</li> 
-        <li> add text here </li> 
-        <li> add text here </li> 
-    </ul> 
+        <li>add text here</li>
+        <li> add text here </li>
+        <li> add text here </li>
+    </ul>
     ```
 
     Výše uvedená by vypadala takto:
     <ul> 
-        <li>sem přidejte text</li> 
-        <li> sem přidejte text </li> 
-        <li> sem přidejte text </li> 
+        <li>sem přidejte text</li>
+        <li> sem přidejte text </li>
+        <li> sem přidejte text </li>
     </ul> 
 
-1. Do **tučného** obsahu přidejte `<b>` na začátku textu, který chcete formátovat tučně, a přidejte `</b>` na konci textu, který chcete tučně zadat. 
+1. Do **tučného** obsahu přidejte `<b>` na začátku textu, který chcete formátovat tučně, a přidejte `</b>` na konci textu, který chcete tučně zadat.
 
     **Příklad**: `<b>` bezplatné zkušební `</b>`
     
-    Výše uvedená by způsobila, že se slova bezplatné zkušební verze budou zobrazovat tučně v popisu nabídky v prezentace. 
+    Výše uvedená by způsobila, že se slova bezplatné zkušební verze budou zobrazovat tučně v popisu nabídky v prezentace.
 
     **BEZPLATNÁ ZKUŠEBNÍ VERZE**
 
-1. Chcete-li přidat **zalomení řádků** mezi vaším obsahem, přidejte `<br>` před obsah, který chcete spustit na novém řádku. Pokud chcete opustit mezeru a ujistit se, že obsah začíná na novém řádku, přidejte `<br><br>` před obsah. 
+1. Chcete-li přidat **zalomení řádků** mezi vaším obsahem, přidejte `<br>` před obsah, který chcete spustit na novém řádku. Pokud chcete opustit mezeru a ujistit se, že obsah začíná na novém řádku, přidejte `<br><br>` před obsah.
 
-    **Příklad:**
+    **Příklad**:
 
-    Toto je textový řádek. `<br>` je to textový řádek, který začne na novém řádku. `<br><br>` se jedná o řádek, který spustí dva řádky níže. 
+    Toto je textový řádek. `<br>` je to textový řádek, který začne na novém řádku. `<br><br>` se jedná o řádek, který spustí dva řádky níže.
 
     Výše uvedená by vypadala takto:
 
-    Toto je textový řádek. <br> Toto je textový řádek, který začne na novém řádku. <br><br> Jedná se o řádek, který spustí dva řádky níže. 
+    Toto je textový řádek. <br> Toto je textový řádek, který začne na novém řádku. <br><br> Jedná se o řádek, který spustí dva řádky níže.
 
-1. Chcete-li **zvětšit velikost textu**, vyberte nejprve, jak velký má být text. Použijte níže uvedené příklady. Po výběru velikosti textu přidejte odpovídající značky `<H*></H*>` na začátek a konec textu. 
+1. Chcete-li **zvětšit velikost textu**, vyberte nejprve, jak velký má být text. Použijte níže uvedené příklady. Po výběru velikosti textu přidejte odpovídající značky `<H*></H*>` na začátek a konec textu.
 
-    **Příklad:**
+    **Příklad**:
 
     `<h1>`je to nadpis 1`</h1>` <br>
     `<h2>`je to Nadpis 2`</h2>` <br>
@@ -299,7 +327,7 @@ Aby bylo možné podrobnější popis nabídky, můžete k formátování popisu
 
 #### <a name="contact-information"></a>Kontaktní informace
 
-- **Kontakty**: u každého kontaktu zákazníka zadejte **jméno** zaměstnance, **telefonní číslo**a **e-mailovou** adresu.  (Nebudou *se* zobrazovat veřejně). Pro skupinu **kontaktů podpory** je také vyžadována **Adresa URL podpory** .  (Tyto informace *se* zobrazí veřejně).
+- **Kontakty**: u každého kontaktu zákazníka zadejte **jméno**zaměstnance, **telefonní číslo**a **e-mailovou** adresu.  (Nebudou *se* zobrazovat veřejně). Pro skupinu **kontaktů podpory** je také vyžadována **Adresa URL podpory** .  (Tyto informace *se* zobrazí veřejně).
 
 **Kontakt podpory** (povinné): pro obecné dotazy týkající se podpory.
 
@@ -310,11 +338,11 @@ Technický **kontakt** (povinné): pro technické dotazy.
 #### <a name="files-and-images"></a>Soubory a image
 
 - **Dokumenty** (povinné): přidejte související marketingové dokumenty pro vaši nabídku ve formátu PDF, který poskytuje minimálně jeden (1) a maximálně tři (3) dokumentů na jednu nabídku.
-- **Obrázky** (volitelné): k dispozici je několik míst, kde se na webu Marketplace můžou zobrazit obrázky loga vaší nabídky, což vyžaduje následující velikosti: 48 × 48 pixelů _(povinné),_ střední: 90 × 90 pixelů, velká: 216 x 216 pixelů _( požadováno),_ roztažitelné: 255 x 115 pixelů a Hero: 815 × 290 pixelů. Všechny obrázky musí být v. Formát PNG.
+- **Obrázky** (volitelné): k dispozici je několik míst, kde se na webu Marketplace můžou zobrazit obrázky loga vaší nabídky, vyžadují následující velikosti – malá: 48 x 48 pixelů _(povinné),_ střední: 90 × 90 pixelů, velká: 216 x 216 pixelů _(povinné),_ široké: 255 x 115 pixelů a Hero: 815 x 290 pixelů. Všechny obrázky musí být v. Formát PNG.
 - **Snímky obrazovky** (povinné): přidejte snímky obrazovky, které demonstrují vaši nabídku. Je možné přidat maximálně pět (5) snímků obrazovky a velikost by měla být 1280 × 720 pixelů. Všechny obrázky musí být v. Formát PNG.
 - **Videa** (volitelné): Přidejte odkazy na videa, která demonstrují vaši nabídku. Můžete použít odkazy na videa YouTube nebo Vimeo, která se zobrazí spolu s vaší nabídkou pro zákazníky. Budete taky muset zadat miniaturu videa, ve formátu PNG se velikost nastaví na 1280 x 720 pixelů. Můžete zobrazit maximálně čtyři videa na jednu nabídku.
 
-Před přechodem k další části si nezapomeňte **Uložit** .
+Nezapomeňte **Uložit** před přechodem k další části.
 
 #### <a name="additional-marketplace-listing-resources"></a>Další prostředky pro výpis Marketplace
 
@@ -425,7 +453,7 @@ Vyberte frekvenci, kterou zákazníci musí platit v uvedené ceně. Musí se za
 - **Cena**: USD za měsíc nebo USD za rok
 
 Ceny nastavené v místní měně (USD = USA dolar) se převedou na místní měnu všech vybraných trhů pomocí aktuálních kurzů pro Exchange, které jsou k dispozici během instalace. Před publikováním tyto ceny ověřte, a to tak, že vyexportujete tabulku cen a zkontrolujete cenu na každém trhu. Pokud chcete nastavit vlastní ceny v individuálním trhu, upravte a importujte tabulku s cenami. Zodpovídáte za ověřování těchto cen a jejich nastavení.
-*\*musíte nejdřív Uložit změny cen, abyste mohli exportovat data o cenách.*
+*\*Aby bylo možné exportovat data o cenách, musíte nejdřív Uložit změny cen.*
 
 Před publikováním pečlivě zkontrolujte své ceny, protože existují určitá omezení, co se může po publikování plánu změnit:
 
@@ -476,7 +504,7 @@ Pokud tuto nabídku publikujete poprvé, můžete:
 
 - Podívejte se na téma stav dokončení pro jednotlivé části nabídky.
     - *Nespuštěno* – znamená, že se oddíl nedotkl a je potřeba ho dokončit.
-    - *Nedokončeno* – znamená, že oddíl obsahuje chyby, které je potřeba opravit, nebo vyžaduje, aby se poskytly další informace. Vraťte se prosím k oddílům a aktualizujte je.
+    - *Nedokončeno* – znamená, že oddíl obsahuje chyby, které je potřeba opravit, nebo vyžaduje, aby se poskytly další informace. Budete se muset vrátit k oddílu a aktualizovat ho.
     - *Complete* – znamená, že část je dokončena, byla zadána všechna požadovaná data a nejsou k dispozici žádné chyby. Aby bylo možné nabídku odeslat, musí být všechny oddíly nabídky v úplném stavu.
 - Poskytněte pokyny k testování certifikačního týmu, abyste měli jistotu, že vaše aplikace je testována správně, kromě doplňkových poznámek, které jsou užitečné pro porozumění vaší aplikaci.
 - Kliknutím na **Odeslat**nabídku pro publikování odešlete. Pošleme vám e-mail s oznámením, že je k dispozici verze Preview vaší nabídky, kterou si můžete prohlédnout a schválit. Je nutné, abyste se vrátili do partnerského centra **a vybrali možnost pro publikování** nabídky na veřejném webu (nebo v případě soukromé nabídky pro privátní cílovou skupinu).

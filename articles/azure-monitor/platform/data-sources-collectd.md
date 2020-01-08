@@ -4,15 +4,15 @@ description: Shromažďováno je open source démon pro Linux, který pravideln�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/27/2018
-ms.openlocfilehash: 4bf58a7e446cb13366a230a35c83e6bf0acaa09a
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 277e6c9736266b64fd717b719dc740525047ae88
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932525"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395875"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Shromažďovat data shromážděná v agentech Linux v Azure Monitor
 [Shromažďováno](https://collectd.org/) je open source démon pro Linux, který pravidelně shromažďuje metriky výkonu z aplikací a informací na úrovni systému. Příklady aplikací zahrnují prostředí Java Virtual Machine (JVM), MySQL server a Nginx. Tento článek poskytuje informace o shromažďování údajů o výkonu ze sběru Azure Monitor.
@@ -101,7 +101,7 @@ Níže jsou uvedené základní kroky ke konfiguraci shromažďování shromáž
 
 3. Pomocí následujících příkazů restartujte shromáždit a Log Analytics agenta pro Linux.
 
-    Služba sudo se shromáždila restartování sudo restartování/opt/Microsoft/omsagent/bin/service_control
+    sudo služba sudoed restart/opt/Microsoft/omsagent/bin/service_control restartovat
 
 ## <a name="collectd-metrics-to-azure-monitor-schema-conversion"></a>Shromážděné metriky pro převod schématu Azure Monitor
 Aby bylo možné udržovat známý model mezi metrikami infrastruktury již shromážděnými nástrojem Log Analytics Agent pro Linux a nové metriky shromážděné pomocí následujícího mapování schématu, je použito:
@@ -110,13 +110,13 @@ Aby bylo možné udržovat známý model mezi metrikami infrastruktury již shro
 |:--|:--|
 | `host` | Počítač |
 | `plugin` | Žádné |
-| `plugin_instance` | Název instance<br>Pokud má plugin_instance *hodnotu null* , pak klikněte na InstanceName = " *_Total*". |
+| `plugin_instance` | Název instance<br>Pokud **plugin_instance** má *hodnotu null* , pak je hodnota InstanceName = " *_Total*". |
 | `type` | ObjectName |
-| `type_instance` | CounterName<br>Pokud má type_instance *hodnotu null* , pak CounterName =**blank** |
+| `type_instance` | CounterName<br>Pokud **type_instance** má *hodnotu null* , CounterName =**blank** |
 | `dsnames[]` | CounterName |
 | `dstypes` | Žádné |
 | `values[]` | CounterValue |
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení. 
-* Použijte [vlastní pole](custom-fields.md) k analýze dat ze záznamů syslog do jednotlivých polí.
+* Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
+* Použití [vlastní pole](custom-fields.md) analyzovat data ze záznamů protokolu syslog do jednotlivých polí.

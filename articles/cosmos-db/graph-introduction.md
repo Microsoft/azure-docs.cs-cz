@@ -7,16 +7,16 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/18/2019
 ms.author: lbosq
-ms.openlocfilehash: 1f46eb1995e2e7cb098098ebd22eedbd194dc6a6
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 9151b54d7fa0b64a465aa8384cb4bfdb8e72c482
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310238"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500000"
 ---
-# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Úvod do služby Azure Cosmos DB: Rozhraní Gremlin API
+# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Úvod do služby Azure Cosmos DB: rozhraní Gremlin API
 
-[](introduction.md)AzureCosmosDB je globálně distribuovaná databázová služba pro více modelů od Microsoftu pro klíčové aplikace. Je to databáze s více modely a podporuje datové modely typu dokument, klíč-hodnota, graf a řada sloupců. Rozhraní Azure Cosmos DB API Gremlin se používá k ukládání a práci s daty grafu na plně spravovanou databázovou službu určenou pro libovolné škálování.  
+[Azure Cosmos DB](introduction.md) je globálně distribuovaná databázová služba pro více modelů od Microsoftu pro klíčové aplikace. Je to databáze s více modely a podporuje datové modely typu dokument, klíč-hodnota, graf a řada sloupců. Rozhraní Azure Cosmos DB API Gremlin se používá k ukládání a práci s daty grafu na plně spravovanou databázovou službu určenou pro libovolné škálování.  
 
 ![Architektura grafu služby Azure Cosmos DB](./media/graph-introduction/cosmosdb-graph-architecture.png)
 
@@ -56,7 +56,7 @@ Níže jsou uvedené odlišné funkce Azure Cosmos DB Gremlin API nabízí:
 
 * **Kompatibilita s Apache TinkerPop**
 
-  Azure Cosmos DB podporuje [Open Source Standard Apache TinkerPop](http://tinkerpop.apache.org/). Tinkerpop Standard má rozsáhlou ekosystém aplikací a knihoven, které je možné snadno integrovat s Gremlin rozhraním API Azure Cosmos DB. 
+  Azure Cosmos DB podporuje [Open Source Standard Apache TinkerPop](https://tinkerpop.apache.org/). Tinkerpop Standard má rozsáhlou ekosystém aplikací a knihoven, které je možné snadno integrovat s Gremlin rozhraním API Azure Cosmos DB. 
 
 * **Přizpůsobitelné úrovně konzistence**
 
@@ -105,17 +105,17 @@ Ukázkový graf vám pomůže pochopit, jak lze v jazyce Gremlin vyjádřit dota
 
 Tento graf má následující typy *vrcholu* (označované jako "jmenovka" v Gremlin):
 
-- **Lidé**: Graf má tři lidi, Robin, Tomáš a Robert.
-- **Zájmy**: Jejich zájmy, v tomto příkladu hry Fotbal
-- **Zařízení**: Zařízení, která uživatelé používají
-- **Operační systémy**: Operační systémy, ve kterých se zařízení spouštějí
+- **Lidé**: graf má tři lidi, Robin, Tomáš a Robert.
+- **Zájmy**: jejich zájmy v tomto příkladu se hrou fotbalu
+- **Zařízení**: zařízení, která uživatelé používají
+- **Operační systémy**: operační systémy, ve kterých se zařízení spouštějí
 
 Znázorňuje vztahy mezi těmito entitami prostřednictvím následujících typů nebo popisků *Edge* :
 
-- **Ví**: Například "Tomáš ví s dotazem"
-- **Zajímá**vás: Aby reprezentovala zájmy lidí v našem grafu, například "Robert se zajímá o fotbal."
-- **RunsOS**: Přenosný počítač spouští operační systém Windows.
-- **Používá**: Který představuje zařízení, které osoba používá. Robin například používá telefon Motorola se sériovým číslem 77.
+- **Ví**: například "Tomáš ví s dotazem"
+- **Zúčastněte**se: k vyjádření zájmů lidí v našem grafu, například "Robert se zajímá o fotbal."
+- **RunsOS**: laptop spouští operační systém Windows.
+- **Používá**: k vyjádření zařízení, které osoba používá. Robin například používá telefon Motorola se sériovým číslem 77.
 
 Nyní pomocí [konzoly Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#gremlin-console) spustíme u tohoto grafu několik operací. K jejich provedení můžete také použít ovladače Gremlin na platformě dle vlastního výběru (Java, Node.js, Python nebo .NET).  Než se podíváme na to, co Azure Cosmos DB podporuje, projděme si několik příkladů, abychom se blíže seznámili se syntaxí.
 
@@ -142,7 +142,7 @@ Graf je užitečný zejména v případě, kdy potřebujete získat odpověď na
 :> g.V('thomas.1').out('knows').out('uses').out('runsos').group().by('name').by(count())
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o podpoře grafů ve službě Azure Cosmos DB najdete tady:
 
 * Začněte [kurzem věnovaným grafu služby Azure Cosmos DB](create-graph-dotnet.md).

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 7224c6a77df496624903830f0a2cbd8d193517cc
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: cab63a17ddfed49684cc37609d9f2ae5bde9bdd3
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178190"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689369"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>IP adresy API Management Azure
 
@@ -89,6 +89,8 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 }
 ```
 
+API Management používá veřejnou IP adresu pro připojení mimo virtuální síť a soukromou IP adresu pro připojení v rámci virtuální sítě.
+
 ## <a name="ip-addresses-of-consumption-tier-api-management-service"></a>IP adresy služby API Management úrovně spotřeby
 
 Pokud vaše služba API Management je služba na úrovni spotřeby, nemá vyhrazenou IP adresu. Služba na úrovni spotřeby běží na sdílené infrastruktuře a bez deterministické IP adresy. 
@@ -100,7 +102,7 @@ Pro účely omezení provozu můžete použít rozsah IP adres datových center 
 V API Management úrovně pro vývojáře, Basic, Standard a Premium jsou veřejné IP adresy (VIP) pro celou dobu životnosti služby statické, s následujícími výjimkami:
 
 * Služba se odstraní a pak znovu vytvoří.
-* Předplatné služby je pozastavené nebo se [varuje](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) (například pro nedoplatk) a pak se znovu obnoví. [](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)
+* Předplatné služby je [pozastavené](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) nebo se [varuje](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) (například pro nedoplatk) a pak se znovu obnoví.
 * Služba Azure Virtual Network je do služby přidána nebo odebrána.
 * Služba API Management se přepnula mezi režimem nasazení externí a interní virtuální sítě.
 

@@ -3,13 +3,13 @@ title: Referenční dokumentace pro vývojáře JavaScriptu pro Azure Functions
 description: Naučte se vyvíjet funkce pomocí JavaScriptu.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
-ms.date: 02/24/2019
-ms.openlocfilehash: b6b7db4c5f13a264b76dcab02dba51c464297307
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/17/2019
+ms.openlocfilehash: 506f71664616686a66227af7e55fe3f4046376f2
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226711"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561911"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions příručka pro vývojáře JavaScriptu
 
@@ -267,9 +267,9 @@ Umožňuje zapisovat do protokolů funkcí streamování na výchozí úrovni tr
 
 | Metoda                 | Popis                                |
 | ---------------------- | ------------------------------------------ |
-| **Chyba (_zpráva_)**   | Zapisuje do protokolování na úrovni chyb nebo snižuje.   |
-| **upozornit (_zpráva_)**    | Zapíše do protokolování na úrovni upozornění nebo sníží. |
-| **informace (_zpráva_)**    | Provede zápis do protokolování na úrovni informací nebo nižší.    |
+| **error(_message_)**   | Zapisuje do protokolování na úrovni chyb nebo snižuje.   |
+| **warn(_message_)**    | Zapíše do protokolování na úrovni upozornění nebo sníží. |
+| **info(_message_)**    | Provede zápis do protokolování na úrovni informací nebo nižší.    |
 | **verbose (_zpráva_)** | Zapisuje do protokolování na úrovni podrobností.           |
 
 Následující příklad zapíše protokol na úrovni trasování upozornění:
@@ -344,12 +344,12 @@ Objekt `context.req` (Request) má následující vlastnosti:
 
 | Vlastnost      | Popis                                                    |
 | ------------- | -------------------------------------------------------------- |
-| _těles_        | Objekt, který obsahuje tělo žádosti.               |
+| _body_        | Objekt, který obsahuje tělo žádosti.               |
 | _záhlaví_     | Objekt, který obsahuje hlavičky požadavku.                   |
-| _Metoda_      | Metoda HTTP požadavku.                                |
+| _method_      | Metoda HTTP požadavku.                                |
 | _originalUrl_ | Adresa URL požadavku.                                        |
 | _params_      | Objekt, který obsahuje parametry směrování požadavku. |
-| _zadávání_       | Objekt, který obsahuje parametry dotazu.                  |
+| _query_       | Objekt, který obsahuje parametry dotazu.                  |
 | _rawBody_     | Tělo zprávy jako řetězec.                           |
 
 
@@ -359,10 +359,10 @@ Objekt `context.res` (Response) má následující vlastnosti:
 
 | Vlastnost  | Popis                                               |
 | --------- | --------------------------------------------------------- |
-| _těles_    | Objekt, který obsahuje tělo odpovědi.         |
+| _body_    | Objekt, který obsahuje tělo odpovědi.         |
 | _záhlaví_ | Objekt, který obsahuje hlavičky odpovědi.             |
 | _isRaw_   | Indikuje, že pro odpověď se přeskočilo formátování.    |
-| _stav_  | Stavový kód protokolu HTTP odpovědi.                     |
+| _status_  | Stavový kód protokolu HTTP odpovědi.                     |
 
 ### <a name="accessing-the-request-and-response"></a>Přístup k žádosti a odpovědi 
 
@@ -405,6 +405,16 @@ Když pracujete s triggery HTTP, můžete získat přístup k objektům požadav
     res = { status: 201, body: "Insert succeeded." };
     context.done(null, res);   
     ```  
+
+## <a name="scaling-and-concurrency"></a>Škálování a souběžnost
+
+Ve výchozím nastavení Azure Functions automaticky monitoruje zatížení aplikace a v případě potřeby vytvoří další instance hostitele pro Node. js. Funkce používá předdefinované (neuživatelsky konfigurovatelné) prahové hodnoty pro různé typy triggerů k rozhodnutí, kdy přidat instance, například stáří zpráv a velikost fronty pro QueueTrigger. Další informace najdete v tématu [Jak fungují plány spotřeby a Premium](functions-scale.md#how-the-consumption-and-premium-plans-work).
+
+Toto chování škálování je dostatečné pro mnoho aplikací Node. js. Pro aplikace vázané na procesor můžete zvýšit výkon pomocí více pracovních procesů v jazyce.
+
+Ve výchozím nastavení má každá instance hostitele Functions pracovní proces s jedním jazykem. Počet pracovních procesů na hostitele můžete zvýšit (až 10) pomocí nastavení aplikace [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) . Azure Functions se pak pokusí rovnoměrně distribuovat souběžná volání funkcí mezi tyto pracovní procesy. 
+
+FUNCTIONS_WORKER_PROCESS_COUNT se vztahuje na každého hostitele, který funkce vytvoří při horizontálním navýšení kapacity aplikace, aby splňovala požadavky. 
 
 ## <a name="node-version"></a>Verze uzlu
 
@@ -477,7 +487,7 @@ Při místním spuštění se nastavení aplikace čtou ze souboru [Local. Setti
 
 Vlastnosti `function.json` `scriptFile` a `entryPoint` lze použít ke konfiguraci umístění a názvu exportované funkce. Tyto vlastnosti mohou být důležité při překládání JavaScriptu.
 
-### <a name="using-scriptfile"></a>Použití `scriptFile`
+### <a name="using-scriptfile"></a>Použití metody `scriptFile`
 
 Ve výchozím nastavení je funkce JavaScriptu spouštěna z `index.js`, soubor, který sdílí stejný nadřazený adresář jako odpovídající `function.json`.
 
@@ -506,7 +516,7 @@ FunctionApp
 }
 ```
 
-### <a name="using-entrypoint"></a>Použití `entryPoint`
+### <a name="using-entrypoint"></a>Použití metody `entryPoint`
 
 V `scriptFile` (nebo `index.js`) se musí funkce exportovat pomocí `module.exports`, aby se daly vyhledat a spustit. Ve výchozím nastavení je funkce, která se spustí, když se aktivuje, jediný export z tohoto souboru, export s názvem `run`nebo export s názvem `index`.
 
@@ -683,7 +693,7 @@ module.exports = async function (context) {
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících zdrojích:
+Další informace najdete v následujících materiálech:
 
 + [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 + [Referenční informace pro vývojáře Azure Functions](functions-reference.md)

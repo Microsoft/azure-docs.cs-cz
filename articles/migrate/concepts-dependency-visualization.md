@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: hamusa
-ms.openlocfilehash: 17ba06d6ac09f220b4343092292275a1cc315377
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 828f3078c992bed4fa556a374468e69dd58ebc04
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489213"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494503"
 ---
 # <a name="dependency-visualization"></a>Vizualizace závislostí
 
@@ -32,7 +32,7 @@ Vizualizace závislostí vám pomůže pochopit závislosti mezi počítači, kt
 
 Existují dvě možnosti nasazení Vizualizace závislostí:
 
-- **Vizualizace závislostí bez agentů**: Tato možnost je aktuálně ve verzi Preview. Nevyžaduje, abyste v počítačích nainstalovali žádné agenty. 
+- **Vizualizace závislostí bez agentů**: Tato možnost je momentálně ve verzi Preview a je dostupná jenom pro virtuální počítače VMware. Nevyžaduje, abyste v počítačích nainstalovali žádné agenty. 
     - Funguje tak, že zachytává data připojení TCP z počítačů, pro které je povolená. [Další informace](how-to-create-group-machine-dependencies-agentless.md).
 Po spuštění zjišťování závislostí zařízení shromáždí data z počítačů v intervalu dotazování po dobu pěti minut.
     - Shromažďují se následující data:

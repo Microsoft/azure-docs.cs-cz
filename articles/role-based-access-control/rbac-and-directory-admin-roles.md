@@ -15,12 +15,12 @@ ms.date: 10/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 1fe1d50f24c70c89ea0fbaa952673cdeacc4f1bf
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 8dbccdfdcf2a309c8324328f46336bab74839da4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803161"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357514"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Role klasického správce předplatného, role Azure RBAC a role správce Azure AD
 
@@ -50,7 +50,7 @@ Správce účtu, správce služeb a spolusprávce jsou tři role klasického spr
 
 V Azure Portal můžete spravovat spolusprávce nebo zobrazit správce služby pomocí karty **Classic Administrators** .
 
-![Správci předplatného Azure Classic v Azure Portal](./media/rbac-and-directory-admin-roles/classic-administrators.png)
+![Správci předplatného Azure Classic v Azure Portal](./media/rbac-and-directory-admin-roles/subscription-view-classic-administrators.png)
 
 V Azure Portal můžete zobrazit nebo změnit správce služby nebo zobrazit správce účtu v okně vlastností předplatného.
 
@@ -70,7 +70,7 @@ Každé předplatné je přidruženo k adresáři služby Azure AD. Pokud chcete
 
 ## <a name="azure-rbac-roles"></a>Role Azure RBAC
 
-Azure RBAC je systém autorizace založený na [Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md), který poskytuje podrobnou správu přístupu k prostředkům Azure, jako jsou výpočetní služby a úložiště. Azure RBAC zahrnuje více než 70 předdefinovaných rolí. Existují čtyři základní role RBAC. První tři se vztahují ke všem typům prostředků:
+Azure RBAC je systém autorizace založený na [Azure Resource Manageru](../azure-resource-manager/management/overview.md), který poskytuje podrobnou správu přístupu k prostředkům Azure, jako jsou výpočetní služby a úložiště. Azure RBAC zahrnuje více než 70 předdefinovaných rolí. Existují čtyři základní role RBAC. První tři se vztahují ke všem typům prostředků:
 
 | Role Azure RBAC | Oprávnění | Poznámky |
 | --- | --- | --- |

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1b9d8c98391e7e2bac3492dcf696f098f5c6cf57
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 7553499dc9aba8d20bee126204b6d19f2386d295
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903184"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408429"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Rychlý Start: vytvoření interaktivní vyhledávací mapy pomocí Azure Maps
 
@@ -26,24 +26,38 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlásit se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
-## <a name="create-an-account-and-get-your-key"></a>Vytvoření účtu a získání klíče
+<a id="createaccount"></a>
 
-1. V levém horním rohu [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek**.
-2. Do pole **Hledat na Marketplace** zadejte **Maps**.
-3. Ve **výsledcích** vyberte **Maps**. Vyberte tlačítko **vytvořit** , které se zobrazí pod mapou.
-4. Na stránce **vytvořit Azure Maps účet** zadejte následující hodnoty:
-   - **Název** vašeho nového účtu.
-   - **Předplatné**, které chcete pro tento účet použít.
-   - **Skupinu prostředků** pro tento účet. Můžete se rozhodnout **vytvořit novou** nebo **použít existující** skupinu prostředků.
-   - Vyberte **cenovou úroveň** dle vašeho výběru.
-   - Přečtěte si prohlášení o **licencích** a **zásadách ochrany osobních údajů**. Zaškrtnutím políčka přijměte podmínky.
-   - Nakonec klikněte na tlačítko **vytvořit** .
+## <a name="create-an-account-with-azure-maps"></a>Vytvoření účtu s Azure Maps
 
-     ![Vytvoření účtu Azure Maps na portálu](./media/quick-demo-map-app/create-account.png)
+Pomocí následujících kroků vytvořte nový účet Maps:
 
-5. Po úspěšném vytvoření účtu ho otevřete a vyhledejte část nastavení v nabídce účet. Vyberte **ověřování** pro zobrazení primárního a sekundárního klíče pro váš účet Azure Maps. Zkopírujte do místní schránky hodnotu **primárního klíče** pro použití v následující části.
+1. V levém horním rohu webu [Azure Portal](https://portal.azure.com) klikněte na **Vytvořit prostředek**.
+2. Do pole *Hledat na Marketplace* zadejte **Maps**.
+3. Ve *výsledcích* vyberte **Maps**. Klikněte na tlačítko **Vytvořit**, které se zobrazí pod mapou.
+4. Na stránce **Vytvořit účet Maps** zadejte následující hodnoty:
+    * *Předplatné*, které chcete pro tento účet použít.
+    * Název *skupiny prostředků* pro tento účet. Můžete zvolit možnost *Vytvořit novou* nebo *Použít existující* skupinu prostředků.
+    * *Název* vašeho nového účtu.
+    * *Cenová úroveň* pro tento účet.
+    * Přečtěte si *Licenční podmínky* a *Prohlášení o zásadách ochrany osobních údajů* a zaškrtnutím příslušného políčka podmínky přijměte.
+    * Klikněte na tlačítko **Vytvořit**.
+
+![Vytvoření účtu Maps na portálu](./media/quick-demo-map-app/create-account.png)
+
+<a id="getkey"></a>
+
+## <a name="get-the-primary-key-for-your-account"></a>Získání primárního klíče pro váš účet
+
+Po úspěšném vytvoření účtu Maps načtěte klíč, který vám umožní dotazovat rozhraní Maps API. Při volání služeb Azure Maps doporučujeme použít primární klíč vašeho účtu jako klíč předplatného.
+
+1. Otevřete svůj účet Maps na portálu.
+2. V části nastavení vyberte **ověřování**.
+3. Zkopírujte do schránky **Primární klíč**. Místně ho uložte, abyste ho mohli použít později v tomto kurzu.
+
+![Získání primárního klíče na portálu](./media/quick-demo-map-app/get-key.png)
 
 ## <a name="download-the-application"></a>Stažení aplikace
 

@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – vlastnost sfctl | Microsoft Docs
-description: Popisuje příkazy vlastnosti Service Fabric CLI sfctl.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – vlastnost sfctl
+description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro zadávání scénářů a dotazování na vlastnosti.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 368dad54c611e4532b46f11669bcf8e363b9a740
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d9129f07db9f3499b51707965d10426dbc3d3c12
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901062"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639101"
 ---
 # <a name="sfctl-property"></a>sfctl property
 Uložení a dotazování vlastností pod názvy Service Fabric.
@@ -29,9 +20,9 @@ Uložení a dotazování vlastností pod názvy Service Fabric.
 |Příkaz|Popis|
 | --- | --- |
 | delete | Odstraní zadanou vlastnost Service Fabric. |
-| Čtěte | Získá zadanou vlastnost Service Fabric. |
+| získat | Získá zadanou vlastnost Service Fabric. |
 | list | Získá informace o všech vlastnostech Service Fabric pod daným názvem. |
-| převést | Vytvoří nebo aktualizuje vlastnost Service Fabric. |
+| put | Vytvoří nebo aktualizuje vlastnost Service Fabric. |
 
 ## <a name="sfctl-property-delete"></a>odstranění vlastnosti sfctl
 Odstraní zadanou vlastnost Service Fabric.

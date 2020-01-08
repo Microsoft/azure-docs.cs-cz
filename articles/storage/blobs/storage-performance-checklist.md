@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 24d601dc2116b7daf315bb3c6f20c4dc0b6f6ce5
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d75f12953c0ec767dba8a49b3ed76c176223b30c
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72382048"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613886"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro úložiště objektů BLOB
 
@@ -25,7 +25,7 @@ Azure Storage má cíle škálovatelnosti a výkonu pro kapacitu, rychlost trans
 
 Tento článek organizuje osvědčené postupy pro výkon do kontrolního seznamu, který můžete sledovat při vývoji aplikace BLOB Storage.
 
-| Hotovo | Kategorie | Aspekt návrhu |
+| Hotovo | Kategorie | Faktor návrhu |
 | --- | --- | --- |
 | &nbsp; |Cíle škálovatelnosti |[Můžete navrhnout aplikaci tak, aby nepoužívala více než maximální počet účtů úložiště?](#maximum-number-of-storage-accounts) |
 | &nbsp; |Cíle škálovatelnosti |[Nechcete se vyhnout přístupu k kapacitě a omezením transakcí?](#capacity-and-transaction-targets) |
@@ -42,7 +42,7 @@ Tento článek organizuje osvědčené postupy pro výkon do kontrolního seznam
 | &nbsp; |Konfigurace .NET |[Nakonfigurovali jste klienta tak, aby používal dostatečný počet souběžných připojení?](#increase-default-connection-limit) |
 | &nbsp; |Konfigurace .NET |[Pro aplikace .NET jste nakonfigurovali .NET pro použití dostatečného počtu vláken?](#increase-minimum-number-of-threads) |
 | &nbsp; |Paralelismu |[Měli byste zajistit, aby byl paralelismu správně ohraničený, takže nebudete přetěžovat možnosti svého klienta nebo se přiblížíte cílům škálovatelnosti?](#unbounded-parallelism) |
-| &nbsp; |Nástroje |[Používáte nejnovější verze klientských knihoven a nástrojů od společnosti Microsoft?](#client-libraries-and-tools) |
+| &nbsp; |nástroje |[Používáte nejnovější verze klientských knihoven a nástrojů od společnosti Microsoft?](#client-libraries-and-tools) |
 | &nbsp; |Opakování |[Používáte zásady opakování s exponenciálním omezení rychlosti pro omezení chyb a časových limitů?](#timeout-and-server-busy-errors) |
 | &nbsp; |Opakování |[Vyloučí vaše aplikace opakované pokusy o neopakující se chyby?](#non-retryable-errors) |
 | &nbsp; |Kopírování objektů BLOB |[Kopírujete objekty blob nejúčinnějším způsobem?](#blob-copy-apis) |
@@ -52,13 +52,13 @@ Tento článek organizuje osvědčené postupy pro výkon do kontrolního seznam
 | &nbsp; |Použití metadat |[Ukládáte často používaná metadata o objektech blob v jejich metadatech?](#use-metadata) |
 | &nbsp; |Rychlé nahrávání |[Při rychlém nahrání jednoho objektu BLOB se bloky nahrávají paralelně?](#upload-one-large-blob-quickly) |
 | &nbsp; |Rychlé nahrávání |[Při rychlém nahrávání mnoha objektů BLOB se nahrávají objekty blob paralelně?](#upload-many-blobs-quickly) |
-| &nbsp; |Typ objektu BLOB |[Používáte objekty blob stránky nebo objekty blob bloku, pokud je to vhodné?](#choose-the-correct-type-of-blob) |
+| &nbsp; |Typ objektu blob |[Používáte objekty blob stránky nebo objekty blob bloku, pokud je to vhodné?](#choose-the-correct-type-of-blob) |
 
 ## <a name="scalability-targets"></a>Cíle škálovatelnosti
 
 Pokud vaše aplikace přistupuje k některým cílům škálovatelnosti nebo překročí, může dojít ke zvýšené latenci transakcí nebo omezování. Když aplikace Azure Storage omezí vaši aplikaci, začne služba vracet kódy chyb 503 (zaneprázdněný serverem) nebo 500 (časový limit operace). Zamezení těchto chyb zachováním omezení cílů škálovatelnosti je důležitou součástí zvýšení výkonu aplikace.
 
-Další informace o cílech škálovatelnosti pro Služba front najdete v tématu [Azure Storage cíle škálovatelnosti a výkonu](/azure/storage/common/storage-scalability-targets?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).
+Další informace o cílech škálovatelnosti pro Služba front najdete v tématu [Azure Storage cíle škálovatelnosti a výkonu](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage).
 
 ### <a name="maximum-number-of-storage-accounts"></a>Maximální počet účtů úložiště
 
@@ -99,7 +99,7 @@ Porozumět způsobu, jakým Azure Storage oddíly dat objektů BLOB jsou užite�
 
 Úložiště objektů BLOB používá schéma dělení na základě rozsahu pro škálování a vyrovnávání zatížení. Každý objekt BLOB má klíč oddílu tvořený úplným názvem objektu BLOB (Account + Container + BLOB). Klíč oddílu se používá k rozdělení dat objektů blob do rozsahů. Rozsahy se pak vyrovnávají zatížením napříč úložištěm objektů BLOB.
 
-Dělení na základě rozsahu znamená, že konvence pojmenování, které používají lexikální řazení (například *mypayroll*, *myperformance*, *myemployees*atd.) nebo časová razítka (*log20160101*, *log20160102*, *log20160102* atd.) je pravděpodobnější, že se oddíly společně nacházejí na stejném serveru oddílu. , dokud zvýšené zatížení nevyžaduje, aby byly rozděleny do menších rozsahů. Společné umísťování objektů blob na stejném oddílu serveru vylepšuje výkon, takže důležitou součástí zvýšení výkonu je, že se objekty blob pojmenují způsobem, který je bude efektivně organizovat.
+Dělení na základě rozsahu znamená, že konvence pojmenování, které používají lexikální řazení (například *mypayroll*, *myperformance*, *myemployees*atd.) nebo časová razítka (*log20160101*, *log20160102*, *log20160102*atd.), jsou pravděpodobnější v tom, že se oddíly společně nacházejí na stejném serveru oddílu. , dokud zvýšené zatížení nevyžaduje, aby byly rozděleny do menších rozsahů. Společné umísťování objektů blob na stejném oddílu serveru vylepšuje výkon, takže důležitou součástí zvýšení výkonu je, že se objekty blob pojmenují způsobem, který je bude efektivně organizovat.
 
 Například všechny objekty BLOB v kontejneru může obsluhovat jeden server, dokud zatížení těchto objektů BLOB nevyžaduje další nové vyrovnávání rozsahů oddílů. Podobně skupina lehce načtených účtů, jejichž názvy jsou uspořádány v lexikálním pořadí, mohou být obsluhovány jediným serverem, dokud zatížení jednoho nebo všech těchto účtů nevyžaduje, aby byly rozděleny mezi servery s více oddíly.
 
@@ -242,7 +242,7 @@ Pokud chcete kopírovat data v rámci stejného účtu úložiště, použijte o
 
 ### <a name="use-azcopy"></a>Použití AzCopy
 
-Nástroj příkazového řádku AzCopy je jednoduchá a efektivní možnost pro hromadné přenosy objektů blob do, z a napříč účty úložiště. AzCopy je pro tento scénář optimalizované a může dosáhnout vysoké míry přenosů. AzCopy verze 10 používá k kopírování dat objektů BLOB napříč účty úložiště operaci `Put Block From URL`. Další informace najdete v tématu [kopírování nebo přesun dat do Azure Storage pomocí nástroje AzCopy v10 za účelem](/azure/storage/common/storage-use-azcopy-v10).  
+Nástroj příkazového řádku AzCopy je jednoduchá a efektivní možnost pro hromadné přenosy objektů blob do, z a napříč účty úložiště. AzCopy je pro tento scénář optimalizované a může dosáhnout vysoké míry přenosů. AzCopy verze 10 používá operaci `Put Block From URL` ke kopírování dat objektů BLOB napříč účty úložiště. Další informace najdete v tématu [kopírování nebo přesun dat do Azure Storage pomocí nástroje AzCopy v10 za účelem](/azure/storage/common/storage-use-azcopy-v10).  
 
 ### <a name="use-azure-data-box"></a>Použít Azure Data Box
 
@@ -285,5 +285,5 @@ Objekty blob stránky jsou vhodné, pokud aplikace potřebuje pro data provádě
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Storage škálovatelnost a výkonnostní cíle pro účty úložiště](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Cíle škálovatelnosti a výkonnosti pro účty úložiště Azure Storage](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [Stavové a chybové kódy](/rest/api/storageservices/Status-and-Error-Codes2)

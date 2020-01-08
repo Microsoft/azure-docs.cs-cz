@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 5f260ab1df5341a981a388533b06cbcda400e4da
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: 65fa8502be43076e06cea18b2499ceed9d7d770e
+ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74941827"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75667533"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -127,9 +127,8 @@ Následující kroky používají [apt](https://wiki.debian.org/Apt) k instalaci
 
 1. V souboru `/etc/apt/sources.list.d/dotnetdev.list` vyhledejte jeden z odpovídajících řetězců verze Linux uvedených níže:
 
-    | Linuxové distribuce | Version |
+    | Linuxové distribuce | Verze |
     | --------------- | ----------- |
-    | Debian 10 | `buster` |
     | Debian 9 | `stretch` |
     | Debian 8 | `jessie` |
     | Ubuntu 18.10    | `cosmic`    |
@@ -155,7 +154,7 @@ Následující kroky používají [apt](https://wiki.debian.org/Apt) k instalaci
 
 Adresář projektu Functions obsahuje soubory [Host. JSON](functions-host-json.md) a [Local. Settings. JSON](#local-settings-file)spolu s podsložkami, které obsahují kód pro jednotlivé funkce. Tento adresář je ekvivalentem aplikace Function App v Azure. Další informace o struktuře složek Functions najdete v příručce pro [vývojáře Azure Functions](functions-reference.md#folder-structure).
 
-Verze 2. x vyžaduje, abyste při inicializaci vybrali výchozí jazyk pro projekt a všechny přidané funkce používaly výchozí jazykové šablony. Ve verzi 1. x určíte jazyk pokaždé, když vytvoříte funkci.
+Verze 2. x vyžaduje, abyste při inicializaci vybrali výchozí jazyk pro svůj projekt. Ve verzi 2. x se všechny přidané funkce použijí jako výchozí jazykové šablony. Ve verzi 1. x určíte jazyk pokaždé, když vytvoříte funkci.
 
 V okně terminálu nebo z příkazového řádku spusťte následující příkaz, který vytvoří projekt a místní úložiště Git:
 
@@ -203,7 +202,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 | **`--python`**  | Inicializuje projekt v jazyce [Python](functions-reference-python.md). |
 | **`--source-control`** | Určuje, zda je vytvořeno úložiště Git. Ve výchozím nastavení není úložiště vytvořeno. Při `true`se vytvoří úložiště. |
 | **`--typescript`**  | Inicializuje [projekt TypeScript](functions-reference-node.md#typescript). |
-| **`--worker-runtime`** | Nastaví jazykový modul runtime pro projekt. Podporovány jsou následující hodnoty: `csharp`, `dotnet`, `java`, `javascript`,`node` (JavaScript), `powershell`, `python`a `typescript`. Pokud není nastavena, zobrazí se výzva k výběru modulu runtime během inicializace. |
+| **`--worker-runtime`** | Nastaví jazykový modul runtime pro projekt. Podporovány jsou následující hodnoty: `csharp`, `dotnet`, `java`, `javascript`,`node` (JavaScript), `powershell`, `python`a `typescript`. Pokud není nastaven, budete vyzváni k výběru modulu runtime během inicializace. |
 
 > [!IMPORTANT]
 > Ve výchozím nastavení verze 2. x základních nástrojů vytváří projekty aplikací funkcí pro modul runtime .NET jako [ C# třídy projektů](functions-dotnet-class-library.md) (. csproj). Tyto C# projekty, které lze použít se sadou Visual Studio nebo Visual Studio Code, jsou kompilovány během testování a při publikování do Azure. Pokud místo toho chcete vytvořit a pracovat se stejnými C# soubory skriptu (. csx), které byly vytvořeny ve verzi 1. x a na portálu, je při vytváření a nasazování funkcí nutné zahrnout parametr `--csx`.
@@ -227,7 +226,7 @@ Pokud není nastaven žádný platný připojovací řetězec úložiště pro [
 
 ### <a name="get-your-storage-connection-strings"></a>Získání připojovacích řetězců úložiště
 
-I když používáte emulátor úložiště pro vývoj, budete možná chtít testovat pomocí skutečného připojení úložiště. Za předpokladu, že jste již [vytvořili účet úložiště](../storage/common/storage-create-storage-account.md), můžete získat platný připojovací řetězec úložiště jedním z následujících způsobů:
+I při použití Emulátor úložiště Microsoft Azure pro vývoj budete možná chtít testovat pomocí skutečného připojení úložiště. Za předpokladu, že jste již [vytvořili účet úložiště](../storage/common/storage-create-storage-account.md), můžete získat platný připojovací řetězec úložiště jedním z následujících způsobů:
 
 - V [Azure Portal]vyhledejte a vyberte **účty úložiště**. 
   ![vybrat účty úložiště z Azure Portal](./media/functions-run-local/select-storage-accounts.png)
@@ -352,7 +351,7 @@ func host start
 | **`--cert`** | Cesta k souboru. pfx, který obsahuje privátní klíč. Používá se jenom pro `--useHttps`. Pouze verze 2. x. |
 | **`--cors-credentials`** | Povolte pouze ověřené požadavky mezi zdroji (tj. soubory cookie a záhlaví ověřování) pouze verze 2. x. |
 | **`--cors`** | Čárkami oddělený seznam původů CORS bez mezer. |
-| **`--language-worker`** | Argumenty pro konfiguraci modulu Language Worker. Pouze verze 2. x. |
+| **`--language-worker`** | Argumenty pro konfiguraci modulu Language Worker. Můžete například povolit ladění pro Language Worker tím, že poskytnete [port ladění a další požadované argumenty](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers). Pouze verze 2. x. |
 | **`--nodeDebugPort -n`** | Port pro použití ladicího programu uzlu. Výchozí: hodnota ze sady Launch. JSON nebo 5858. Pouze verze 1. x. |
 | **`--password`** | Buď heslo, nebo soubor, který obsahuje heslo pro soubor. pfx. Používá se jenom pro `--cert`. Pouze verze 2. x. |
 | **`--port -p`** | Místní port, na kterém má naslouchat. Výchozí hodnota: 7071. |
@@ -474,7 +473,7 @@ Následující možnosti publikování platí pro obě verze, 1. x a 2. x:
 
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |
-| **`--publish-local-settings -i`** |  Publikování nastavení v Local. Settings. JSON do Azure, zobrazení výzvy k přepsání, pokud už nastavení existuje. Pokud používáte emulátor úložiště, změňte nejprve nastavení aplikace na [skutečné připojení úložiště](#get-your-storage-connection-strings). |
+| **`--publish-local-settings -i`** |  Publikování nastavení v Local. Settings. JSON do Azure, zobrazení výzvy k přepsání, pokud už nastavení existuje. Pokud používáte Emulátor úložiště Microsoft Azure, změňte nejprve nastavení aplikace na [skutečné připojení úložiště](#get-your-storage-connection-strings). |
 | **`--overwrite-settings -y`** | Potlačí výzvu k přepsání nastavení aplikace při použití `--publish-local-settings -i`.|
 
 Následující možnosti publikování jsou podporovány pouze ve verzi 2. x:
@@ -516,9 +515,9 @@ K dispozici jsou následující možnosti nasazení vlastního kontejneru:
 
 Doporučený způsob, jak monitorovat provádění vašich funkcí, je integrace s Azure Application Insights. Do svého místního počítače můžete také streamovat protokoly spouštění. Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
 
-### <a name="enable-application-insights-integration"></a>Povolit integraci Application Insights
+### <a name="application-insights-integration"></a>Integrace Application Insights
 
-Při vytváření aplikace Function App v Azure Portal se ve výchozím nastavení pro vás Application Insights integrace provede. Když ale vytvoříte aplikaci Function App pomocí Azure CLI, integrace ve vaší aplikaci Function App v Azure se nedokončila.
+Při vytváření aplikace Function App v Azure by měla být povolená integrace Application Insights. Pokud z nějakého důvodu vaše aplikace Function není připojená k instanci Application Insights, můžete tuto integraci snadno provést v Azure Portal. 
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
@@ -530,7 +529,7 @@ Proud souborů protokolu generovaných funkcemi můžete zobrazit v relaci pří
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
-Tento typ protokolů streamování vyžaduje, abyste [povolili Application Insights integraci](#enable-application-insights-integration) aplikace Function App.   
+Tento typ protokolů streamování vyžaduje, aby byla pro aplikaci Function App povolená Application Insights integrace.   
 
 
 ## <a name="next-steps"></a>Další kroky

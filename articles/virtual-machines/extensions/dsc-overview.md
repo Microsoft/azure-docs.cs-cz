@@ -7,7 +7,7 @@ author: bobbytreed
 manager: carmonm
 editor: ''
 tags: azure-resource-manager
-keywords: našly
+keywords: dsc
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
 ms.service: virtual-machines-windows
 ms.topic: article
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 7e309237589dfaf037114401172fc8f928a30077
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 8f243527461a95d963854d8d018602dd81115482
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176655"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497274"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Úvod k obslužné rutině rozšíření konfigurace požadovaného stavu Azure
 
@@ -82,7 +82,7 @@ Tyto informace se dají zobrazit v [Azure Portal](../../automation/automation-ds
 
 V případě názvu konfigurace uzlu se ujistěte, že konfigurace uzlu existuje v konfiguraci stavu Azure.  Pokud tomu tak není, nasazení rozšíření vrátí chybu.  Také se ujistěte, že používáte název *konfigurace uzlu* , a ne konfiguraci.
 Konfigurace je definována ve skriptu, který se používá [ke kompilaci konfigurace uzlu (soubor MOF)](https://docs.microsoft.com/azure/automation/automation-dsc-compile).
-Název bude vždycky konfigurace následovaná tečkou `.` a buď `localhost`, nebo konkrétním názvem počítače.
+Název bude vždycky konfigurace následovaná tečkou `.` a buď `localhost` nebo konkrétního názvu počítače.
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>Rozšíření DSC v šablonách Správce prostředků
 
@@ -115,7 +115,7 @@ Důležité informace o rutinách rozšíření DSC Správce prostředků:
 
 Rozšíření Azure DSC může použít konfigurační dokumenty DSC k přímé konfiguraci virtuálních počítačů Azure během nasazování. Tento krok neregistruje uzel do automatizace. Uzel *není centrálně* spravovaný.
 
-Následující příklad ukazuje jednoduchý příklad konfigurace. Místní konfiguraci uložte jako IisInstall. ps1.
+Následující příklad ukazuje jednoduchý příklad konfigurace. Místní konfiguraci uložte jako iisInstall. ps1.
 
 ```powershell
 configuration IISInstall
@@ -131,7 +131,7 @@ configuration IISInstall
 }
 ```
 
-Následující příkazy umístí skript IisInstall. ps1 na zadaný virtuální počítač. Příkazy také spustí konfiguraci a následně nahlásí stav zpět na.
+Následující příkazy umístí skript iisInstall. ps1 na zadaný virtuální počítač. Příkazy také spustí konfiguraci a následně nahlásí stav zpět na.
 
 ```powershell
 $resourceGroup = 'dscVmDemo'
@@ -143,7 +143,7 @@ Publish-AzVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupN
 Set-AzVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate -ConfigurationName 'IISInstall'
 ```
 
-## <a name="azure-cli-deployment"></a>Nasazení Azure CLI
+## <a name="azure-cli-deployment"></a>Nasazení v Azure CLI
 
 Rozhraní příkazového řádku Azure můžete použít k nasazení rozšíření DSC do existujícího virtuálního počítače.
 
@@ -176,7 +176,7 @@ az vm extension set \
 Nastavení DSC na portálu:
 
 1. Přejít na virtuální počítač.
-2. V části **Nastavení**vyberte **rozšíření**.
+2. V části **Nastavení** vyberte **Rozšíření**.
 3. Na nově vytvořené stránce vyberte **+ Přidat**a pak vyberte **Konfigurace požadovaného stavu prostředí PowerShell**.
 4. V dolní části stránky s informacemi o rozšíření klikněte na **vytvořit** .
 
@@ -198,7 +198,7 @@ Portál shromažďuje následující vstup:
 
 - **Dílčí verze automatického upgradu**: Toto pole se mapuje na přepínač **AutoUpdate** v rutinách a umožňuje rozšíření při instalaci automaticky aktualizovat na nejnovější verzi. Hodnota **Ano** vydá pokyn obslužné rutině rozšíření k použití nejnovější dostupné verze a hodnota **ne** vynutí instalaci **verze** určeného k instalaci. Výběr možnosti **ne** **není stejný, ale** **ne** .
 
-## <a name="logs"></a>Protokolování
+## <a name="logs"></a>Protokoly
 
 Protokoly pro rozšíření jsou uložené v následujícím umístění: `C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>`
 

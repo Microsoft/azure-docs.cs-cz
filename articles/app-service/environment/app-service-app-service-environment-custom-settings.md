@@ -4,15 +4,15 @@ description: Nakonfigurujte nastavení, která se vztahují na celé Azure App S
 author: stefsch
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
-ms.date: 01/16/2018
+ms.date: 12/19/2019
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 36208b4662242b37c135eaffc745a819c11fa015
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 42a06724274288955b11c3daf9cbf33d72ddf75d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687329"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430490"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>Vlastní nastavení konfigurace pro App Service prostředí
 ## <a name="overview"></a>Přehled
@@ -56,6 +56,19 @@ Alternativně můžete App Service Environment aktualizovat pomocí [Azure Resou
 
 Tuto změnu můžete ale odeslat přibližně 30 minut vynásobený počtem front-endy v App Service Environment, aby se změna projevila.
 Například pokud má App Service Environment čtyři front-endy, bude trvat přibližně dvě hodiny, než se aktualizace konfigurace dokončí. Během změny konfigurace se nemůžou provádět žádné další operace škálování ani operace změny konfigurace v App Service Environment.
+
+## <a name="enable-internal-encryption"></a>Povolit interní šifrování
+
+App Service Environment funguje jako černý rámeček, kde nelze zobrazit interní součásti nebo komunikaci v rámci systému. Pokud chcete povolit vyšší propustnost, šifrování není ve výchozím nastavení povolené mezi interními součástmi. Systém je zabezpečený, protože provoz je zcela nepřístupný ke sledování nebo přístupu. Pokud máte požadavek na dodržování předpisů, přestože vyžaduje úplné šifrování cesty k datům z koncového konce, existuje způsob, jak to povolit s clusterSetting.  
+
+        "clusterSettings": [
+            {
+                "name": "InternalEncryption",
+                "value": "1"
+            }
+        ],
+ 
+Jakmile je InternalEncryption clusterSetting povolený, může to mít dopad na výkon systému. Když provedete změnu a povolíte InternalEncryption, váš pomocný stav bude v nestabilním stavu, dokud se změna zcela nerozšíří. Dokončení šíření změny může trvat několik hodin, a to v závislosti na tom, kolik instancí jste v pomocném mechanismu. Důrazně doporučujeme, abyste tuto možnost nepovolili u pomocného mechanismu, když se používá. Pokud potřebujete tuto možnost povolit u aktivně využívaného mechanismu přihlašování, důrazně doporučujeme, abyste přepnuli provoz do prostředí zálohování, dokud se operace nedokončí. 
 
 ## <a name="disable-tls-10-and-tls-11"></a>Zakázat TLS 1,0 a TLS 1,1
 

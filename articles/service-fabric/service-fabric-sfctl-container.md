@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – kontejner sfctl | Microsoft Docs
-description: Popisuje příkazy kontejneru Service Fabric CLI sfctl.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – kontejner sfctl
+description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro kontejnery.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 13de6ff7b3e5a41eced5ca49a3af38fab60ba0a0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 316715e65af07176b3dc276d47979a5fa3dc1d6f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901300"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639135"
 ---
 # <a name="sfctl-container"></a>sfctl container
 Spusťte příkazy související s kontejnerem na uzlu clusteru.
@@ -42,11 +33,11 @@ Vyvolá rozhraní API kontejneru na kontejneru nasazeném na Service Fabric uzlu
 | --Code-Package-instance-ID [požadováno] | ID, které jednoznačně identifikuje instanci balíčku kódu nasazenou v uzlu Service Fabric. <br><br> Dá se načíst pomocí kódu "Service-Package-list". |
 | --Code-Package-Name [povinné] | Název balíčku kódu zadaný v manifestu služby zaregistrovaný jako součást typu aplikace v clusteru Service Fabric. |
 | --Container-API-URI-cesta [požadováno] | Cesta k identifikátoru URI REST API kontejneru, místo názvu nebo ID kontejneru použijte {ID}. |
-| --Node-Name [povinné] | Název uzlu. |
+| --Node-Name [povinné] | Název uzlu |
 | --Service-manifest-název [povinné] | Název manifestu služby registrovaného jako součást typu aplikace v clusteru Service Fabric. |
-| --Container-rozhraní API – tělo | Text požadavku HTTP pro REST API kontejneru |
-| --Container-API-Content-Type | Typ obsahu pro REST API kontejnerů, výchozí hodnota je Application/JSON. |
-| --Container-API-http-příkaz | Příkaz HTTP pro REST API kontejnerů, výchozí nastavení se získá. |
+| --container-api-body | Text požadavku HTTP pro REST API kontejneru |
+| --container-api-content-type | Typ obsahu pro REST API kontejnerů, výchozí hodnota je Application/JSON. |
+| --container-api-http-verb | Příkaz HTTP pro REST API kontejnerů, výchozí nastavení se získá. |
 | --Timeout-t | Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
@@ -69,7 +60,7 @@ Získá protokoly kontejneru pro kontejner nasazený na uzlu Service Fabric.
 | --ID aplikace [povinné] | Identita aplikace <br><br> Obvykle se jedná o úplný název aplikace bez schématu identifikátoru URI\:Fabric. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Například pokud je název aplikace "Fabric\:/MyApp/app1", identita aplikace by byla "MyApp\~app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
 | --Code-Package-instance-ID [požadováno] | ID instance balíčku kódu, kterou lze načíst pomocí příkazu Service Code-Package-list. |
 | --Code-Package-Name [povinné] | Název balíčku kódu zadaný v manifestu služby zaregistrovaný jako součást typu aplikace v clusteru Service Fabric. |
-| --Node-Name [povinné] | Název uzlu. |
+| --Node-Name [povinné] | Název uzlu |
 | --Service-manifest-název [povinné] | Název manifestu služby registrovaného jako součást typu aplikace v clusteru Service Fabric. |
 | --konec | Počet řádků, které se mají zobrazit na konci protokolů Výchozí hodnota je 100. All pro zobrazení úplných protokolů. |
 | --Timeout-t | Výchozí\: 60. |

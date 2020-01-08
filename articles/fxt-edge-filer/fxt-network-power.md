@@ -1,23 +1,23 @@
 ---
-title: Microsoft Azure FXT Edge souborového síťová připojení a zdroj napájení
+title: 'Kurz: připojení kabelů k Azure FXT Edge souborového'
 description: Jak zapojovat síťové porty a připojit napájení pro Azure FXT Edge souborového hardware
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: rohogue
-ms.openlocfilehash: 474172284383bc9ba0e5b5c11c66e1b990010184
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 1e3c60fd955bd899955c46b7670acd3f088d0f86
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254857"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550940"
 ---
 # <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Kurz: vytvoření síťových připojení a napájení do uzlu Azure FXT Edge souborového
 
 V tomto kurzu se dozvíte, jak kabelové připojení k síti pro uzel FXT Edge souborového pro Azure.
 
-V tomto kurzu se naučíte: 
+V tomto kurzu se dozvíte: 
 
 > [!div class="checklist"]
 > * Jak zvolit typ síťového kabelu pro vaše prostředí
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 > * Postup směrování kabelů přes ARM pro správu kabelů (CMA)
 > * Jak připojit napájení k zamontovanému zařízení a zapnout ho
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Před zahájením tohoto kurzu by se Azure FXT Edge souborového měl nainstalovat do racku Standard Equipment. CMA by měl být nainstalovaný na uzlu souborového. 
 
@@ -35,7 +35,7 @@ Identifikujte různé porty na zadní straně Azure FXT Edge souborového.
  
 ![Zpětně zapojené zařízení](media/fxt-back-annotated.png)
 
-## <a name="cable-the-device"></a>Zapojení zařízení do kabelu
+## <a name="cable-the-device"></a>Zapojení kabeláže zařízení
 
 * Připojte porty RJ-45 k síťovému zdroji datového centra, jak je popsáno v části [síťové porty](#network-ports).  
 * [Port iDRAC](#idrac-port) bezpečně připojte k samostatné síti pomocí zabezpečeného serveru DHCP. 

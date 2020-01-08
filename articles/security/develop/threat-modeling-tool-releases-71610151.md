@@ -1,31 +1,23 @@
 ---
-title: Verze Threat Modeling Tool – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool verze 10/16/2019 – Azure
 description: Dokumentující poznámky k verzi pro nástroj pro modelování hrozeb
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2019
-ms.author: jegeib
-ms.openlocfilehash: ba18989b72f0c3f44099031a6949acc54ce41db0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 452b44653775a1bcb9456b62e1587b5ff2dff874
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233828"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552045"
 ---
 # <a name="threat-modeling-tool-update-release-71610151---10162019"></a>Threat Modeling Tool, vydání aktualizace 7.1.61015.1 – 16. 10. 2019
 
 7\.1.61015.1 verze Microsoft Threat Modeling Tool (TMT) byla vydána v říjnu 16 2019 a obsahuje následující změny:
 
-- Vylepšení usnadnění
+- Vylepšení přístupnosti
 - Opravy chyb
 - Nové vzorníky pro Azure Logic Apps a Azure Průzkumník dat
 
@@ -55,7 +47,7 @@ Někteří zákazníci oznámili, že při otevírání souborů vytvořených v
 
 Tento problém je v šetření.
 
-## <a name="system-requirements"></a>Systémové požadavky
+## <a name="system-requirements"></a>Požadavky na systém
 
 - Podporované operační systémy
   - [Microsoft Windows 10 – aktualizace pro výročí](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) nebo novější

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 47da2524f719e53edcbd89686a1a0b76fa6e79cd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3624c8fd8b15f6d35917f4ead676221d93a26ddc
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802714"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646485"
 ---
 # <a name="plan-virtual-networks"></a>Plánování virtuálních sítí
 
@@ -39,9 +39,9 @@ Všechny prostředky Azure se vytvářejí v oblasti a předplatném Azure. Pros
 
 ## <a name="subscriptions"></a>Předplatná
 
-V rámci každého předplatného můžete nasadit libovolný počet virtuálních sítí, a to až do [limitu](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Některé organizace mají různá předplatná pro různá oddělení, například. Další informace a požadavky týkající se předplatných najdete v tématu zásady [správného řízení předplatného](/azure/architecture/cloud-adoption-guide/subscription-governance#define-your-hierarchy).
+V rámci každého předplatného můžete nasadit libovolný počet virtuálních sítí, a to až do [limitu](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Některé organizace mají různá předplatná pro různá oddělení, například. Další informace a požadavky týkající se předplatných najdete v tématu zásady [správného řízení předplatného](/azure/architecture/cloud-adoption-guide/subscription-governance#define-your-hierarchy).
 
-## <a name="segmentation"></a>Segmentace
+## <a name="segmentation"></a>Segmentation
 
 Můžete vytvořit více virtuálních sítí pro každé předplatné a jednotlivé oblasti. V každé virtuální síti můžete vytvořit několik podsítí. Následující pokyny vám pomůžou určit, kolik virtuálních sítí a podsítí budete potřebovat:
 
@@ -51,14 +51,14 @@ Virtuální síť je virtuální izolovaná část veřejné sítě Azure. Každ
 
 - Existují všechny požadavky na zabezpečení organizace pro izolaci provozu do samostatných virtuálních sítí? Můžete se rozhodnout připojit virtuální sítě nebo ne. Pokud propojíte virtuální sítě, můžete implementovat síťové virtuální zařízení, jako je třeba brána firewall, abyste mohli řídit tok přenosů mezi virtuálními sítěmi. Další informace najdete v tématu [zabezpečení](#security) a [připojení](#connectivity).
 - Existují všechny požadavky organizace pro izolaci virtuálních sítí do samostatných [předplatných](#subscriptions) nebo [oblastí](#regions)?
-- [Síťové rozhraní](virtual-network-network-interface.md) umožňuje virtuálním počítačům komunikovat s dalšími prostředky. Každé síťové rozhraní má přiřazenou jednu nebo více privátních IP adres. Kolik síťových rozhraní a [privátních IP adres](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) vyžadujete ve virtuální síti? Existují [omezení](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) počtu síťových rozhraní a privátních IP adres, které můžete mít v rámci virtuální sítě.
+- [Síťové rozhraní](virtual-network-network-interface.md) umožňuje virtuálním počítačům komunikovat s dalšími prostředky. Každé síťové rozhraní má přiřazenou jednu nebo více privátních IP adres. Kolik síťových rozhraní a [privátních IP adres](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) vyžadujete ve virtuální síti? Existují [omezení](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) počtu síťových rozhraní a privátních IP adres, které můžete mít v rámci virtuální sítě.
 - Chcete virtuální síť připojit k jiné virtuální síti nebo místní síti? Můžete se rozhodnout připojit některé virtuální sítě k ostatním nebo místním sítím, ale ne k ostatním. Další informace najdete v tématu věnovaném [připojení](#connectivity). Každá virtuální síť, kterou se připojujete k jiné virtuální síti nebo místní síti, musí mít jedinečný adresní prostor. Každá virtuální síť má jeden nebo více rozsahů veřejných nebo privátních adres přiřazených k adresnímu prostoru. Rozsah adres je určený ve formátu CIDR (Internet Domain Routing), například 10.0.0.0/16. Přečtěte si další informace o [rozsahu adres](manage-virtual-network.md#add-or-remove-an-address-range) pro virtuální sítě.
 - Máte k prostředkům v různých virtuálních sítích nějaké požadavky na správu organizace? V takovém případě můžete prostředky oddělit do samostatné virtuální sítě, aby se zjednodušilo [přiřazení oprávnění](#permissions) jednotlivcům ve vaší organizaci nebo k přiřazování různých zásad k různým virtuálním sítím.
 - Když nasadíte některé prostředky služeb Azure do virtuální sítě, vytvoří se jejich vlastní virtuální síť. Pokud chcete zjistit, jestli služba Azure vytvoří svou vlastní virtuální síť, přečtěte si informace pro každou [službu Azure, kterou je možné nasadit do virtuální sítě](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network).
 
 ### <a name="subnets"></a>Podsítě
 
-Virtuální síť je možné rozdělit do jedné nebo víc podsítí až do [limitů](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Co je potřeba vzít v úvahu při rozhodování, zda vytvořit jednu podsíť nebo více virtuálních sítí v rámci předplatného:
+Virtuální síť je možné rozdělit do jedné nebo víc podsítí až do [limitů](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Co je potřeba vzít v úvahu při rozhodování, zda vytvořit jednu podsíť nebo více virtuálních sítí v rámci předplatného:
 
 - Každá podsíť musí mít jedinečný rozsah adres, který je určený ve formátu CIDR, v rámci adresního prostoru virtuální sítě. Rozsah adres se nesmí překrývat s ostatními podsítěmi ve virtuální síti.
 - Pokud plánujete nasadit některé prostředky služeb Azure do virtuální sítě, může to vyžadovat nebo vytvořit vlastní podsíť, takže pro ně musí být dostatek volného místa. Pokud chcete zjistit, jestli služba Azure vytvoří svou vlastní podsíť, přečtěte si informace pro každou [službu Azure, kterou je možné nasadit do virtuální sítě](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network). Pokud například připojujete virtuální síť k místní síti pomocí VPN Gateway Azure, musí mít virtuální síť vyhrazenou podsíť pro bránu. Přečtěte si další informace o [podsítích brány](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub).
@@ -107,9 +107,9 @@ Prostředky v jedné virtuální síti nemůžou přeložit názvy prostředků 
 
 ## <a name="permissions"></a>Oprávnění
 
-Azure využívá [řízení přístupu na základě role](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) k prostředkům. Oprávnění jsou přiřazena k [oboru](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) v následující hierarchii: skupina pro správu, předplatné, skupina prostředků a jednotlivé prostředky. Další informace o hierarchii najdete v tématu [uspořádání prostředků](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud chcete pracovat s virtuálními sítěmi Azure a všemi jejich souvisejícími možnostmi, jako je například partnerský vztah, skupiny zabezpečení sítě, koncové body služby a směrovací tabulky, můžete členům vaší organizace přiřadit integrovaného [vlastníka](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [přispěvatele](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)nebo [ Role přispěvatele sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) a potom přiřaďte roli příslušnému oboru. Pokud chcete přiřadit konkrétní oprávnění k podmnožině možností virtuální sítě, vytvořte [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a přiřaďte specifická oprávnění požadovaná pro [virtuální sítě](manage-virtual-network.md#permissions), [podsítě a koncové body služby](virtual-network-manage-subnet.md#permissions), [Síťová rozhraní. ](virtual-network-network-interface.md#permissions), [partnerské vztahy](virtual-network-manage-peering.md#permissions), [skupiny zabezpečení sítě a aplikace](manage-network-security-group.md#permissions)nebo [směrovací tabulky](manage-route-table.md#permissions) k roli.
+Azure využívá [řízení přístupu na základě role](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) k prostředkům. Oprávnění jsou přiřazena k [oboru](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) v následující hierarchii: skupina pro správu, předplatné, skupina prostředků a jednotlivé prostředky. Další informace o hierarchii najdete v tématu [uspořádání prostředků](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud chcete pracovat s virtuálními sítěmi Azure a všemi jejich souvisejícími možnostmi, jako je například partnerský vztah, skupiny zabezpečení sítě, koncové body služby a směrovací tabulky, můžete členům vaší organizace přiřadit předdefinované role [](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner) [přispěvatele](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) , [přispěvatele](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)nebo sítě a potom přiřadit roli příslušnému oboru. Pokud chcete přiřadit konkrétní oprávnění k podmnožině možností virtuální sítě, vytvořte [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a přiřaďte specifická oprávnění požadovaná pro [virtuální sítě](manage-virtual-network.md#permissions), [podsítě a koncové body služby](virtual-network-manage-subnet.md#permissions), [Síťová rozhraní](virtual-network-network-interface.md#permissions), [partnerské vztahy](virtual-network-manage-peering.md#permissions), [skupiny zabezpečení sítě a aplikace](manage-network-security-group.md#permissions)nebo [směrovací tabulky](manage-route-table.md#permissions) k roli.
 
-## <a name="policy"></a>Zásada
+## <a name="policy"></a>Zásady
 
 Azure Policy vám umožní vytvářet, přiřazovat a spravovat definice zásad. Definice zásad pro vaše prostředky vynutila různá pravidla, takže prostředky zůstávají v souladu se standardy vaší organizace a smlouvami o úrovni služeb. Azure Policy spouští vyhodnocení vašich prostředků, hledá prostředky, které nejsou kompatibilní s definicemi zásad, které máte. Můžete například definovat a použít zásadu, která umožňuje vytváření virtuálních sítí jenom v konkrétní skupině prostředků nebo oblasti. Jiná zásada může vyžadovat, aby každá podsíť měla přidruženou skupinu zabezpečení sítě. Zásady se pak vyhodnotí při vytváření a aktualizaci prostředků.
 

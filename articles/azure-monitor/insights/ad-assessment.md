@@ -4,15 +4,15 @@ description: Řešení kontroly stavu služby Active Directory můžete použít
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: bdc84a9213bd98981040775d3fec90f45edac54f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f0de484d58085f598988589d18495c9a6fe1b374
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899191"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406142"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimalizujte prostředí Active Directory pomocí řešení kontroly stavu služby Active Directory v Azure Monitor
 
@@ -34,9 +34,9 @@ Po přidání řešení a dokončení kontroly se na řídicím panelu **kontrol
 
 ![Obrázek řídicího panelu kontroly stavu služby AD](./media/ad-assessment/ad-healthcheck-dashboard-01.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Řešení kontroly stavu služby Active Directory vyžaduje podporovanou verzi .NET Framework 4.5.2 nebo novější na každém počítači, který má agenta Log Analytics pro Windows (také označovaný jako Microsoft Monitoring Agent (MMA)).  Agent používá System Center 2016-Operations Manager, Operations Manager 2012 R2 a Azure Monitor.
+* Řešení kontroly stavu služby Active Directory vyžaduje, aby na každém počítači, který má Log Analytics agenta pro Windows (také označovaný jako Microsoft Monitoring Agent (MMA)), byla nainstalovaná podporovaná verze .NET Framework 4.6.2 nebo vyšší.  Agent používá System Center 2016-Operations Manager, Operations Manager 2012 R2 a Azure Monitor.
 * Řešení podporuje řadiče domény se systémy Windows Server 2008 a 2008 R2, Windows Server 2012 a 2012 R2 a Windows Server 2016.
 * Pracovní prostor Log Analytics pro přidání řešení kontroly stavu služby Active Directory z webu Azure Marketplace v Azure Portal. Není vyžadována žádná další konfigurace.
 
@@ -49,7 +49,7 @@ Aby bylo možné provést kontrolu stavu proti řadičům domény, které jsou �
 
 1. Nainstalujte [agenta Log Analytics pro systém Windows](../../azure-monitor/platform/agent-windows.md) , pokud řadič domény ještě není monitorovaný pomocí nástroje System Center 2016-Operations Manager nebo Operations Manager 2012 R2.
 2. Pokud je monitorovaná pomocí nástroje System Center 2016-Operations Manager nebo Operations Manager 2012 R2 a skupina pro správu není integrována s Azure Monitor, může být řadič domény s Azure Monitor pro shromažďování dat a přeposílání do služby s více adresami a stále Monitorujte Operations Manager.  
-3. V opačném případě, pokud je vaše skupina pro správu Operations Manager integrovaná se službou, je třeba přidat řadiče domény pro shromažďování dat službou podle kroků v části [Přidání počítačů spravovaných agentem](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) po povolení řešení v stejných.  
+3. V opačném případě, pokud je vaše skupina pro správu Operations Manager integrovaná se službou, je nutné přidat řadiče domény pro shromažďování dat službou podle kroků v části [Přidání počítačů spravovaných agentem](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) po povolení řešení ve vašem pracovním prostoru.  
 
 Agent na vašem řadiči domény, který hlásí skupinu pro správu Operations Manager, shromažďuje data, přepošle jim přiřazenou management server a pak se pošle přímo z management server do Azure Monitor.  Data nejsou zapsána do databází Operations Manager.  
 
@@ -58,13 +58,13 @@ Agent na vašem řadiči domény, který hlásí skupinu pro správu Operations 
 Při kontrole stavu služby Active Directory se shromažďují data z následujících zdrojů pomocí agenta, který jste povolili:
 
 - Registr
-- ADRESÁŘOVÝ
+- LDAP
 - .NET Framework
 - Protokol událostí
 - Rozhraní ADSI (Active Directory Service Interfaces)
 - Windows PowerShell
 - Data souborů
-- Rozhraní WMI (Windows Management Instrumentation) (WMI)
+- Služba WMI (Windows Management Instrumentation)
 - Rozhraní API nástroje DCDIAG
 - Rozhraní API služby replikace souborů (NTFRS)
 - Vlastní C# kód
@@ -185,7 +185,7 @@ Po dalším naplánovaném spuštění kontroly stavu každých 7 dnů jsou uved
 
 *Jaký je název procesu, který provádí shromažďování dat?*
 
-* AdvisorAssessment. exe
+* AdvisorAssessment.exe
 
 *Jak dlouho trvá shromažďování dat?*
 

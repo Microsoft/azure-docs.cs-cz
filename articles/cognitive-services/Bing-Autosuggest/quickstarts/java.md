@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a Java'
+title: 'Rychlý Start: návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a Java'
 titleSuffix: Azure Cognitive Services
 description: Naučte se, jak rychle začít navrhovat hledané výrazy v reálném čase pomocí rozhraní API pro automatické návrhy Bingu.
 services: cognitive-services
@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 0a0fb1e8f79587223ae1f25ca8a7e0d6dc7cc5bb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1593d4079cf7f50d5473f24ecf57351c9d7786e9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565843"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384913"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Rychlý start: Návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a Java
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Rychlý Start: návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a Java
 
 
-Pomocí tohoto rychlého startu můžete začít volat rozhraní API pro automatické návrhy Bingu a získat odpověď JSON. Tato jednoduchá aplikace Java pošle do rozhraní API částečný vyhledávací dotaz a vrátí návrhy pro hledání. Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici [](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java) na GitHubu.
+Pomocí tohoto rychlého startu můžete začít volat rozhraní API pro automatické návrhy Bingu a získat odpověď JSON. Tato jednoduchá aplikace Java pošle do rozhraní API částečný vyhledávací dotaz a vrátí návrhy pro hledání. Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java) .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -44,7 +44,7 @@ Pomocí tohoto rychlého startu můžete začít volat rozhraní API pro automat
     import com.google.gson.JsonParser;
     ```
 
-2. Vytvořte proměnné pro svůj klíč předplatného, hostitele rozhraní API a cestu, [kód na trhu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)a vyhledávací dotaz.
+2. Vytvořte proměnné pro svůj klíč předplatného, hostitele rozhraní API a cestu, [kód na trhu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)a vyhledávací dotaz. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
     
     ```java
     static String subscriptionKey = "enter key here";
@@ -57,7 +57,7 @@ Pomocí tohoto rychlého startu můžete začít volat rozhraní API pro automat
 
 ## <a name="format-the-response"></a>Formátování odpovědi
 
-Vytvořte metodu pojmenovanou `prettify()` k formátování odpovědi vrácené z rozhraní Bing video API. Použijte knihovnu `JsonParser` gson k převzetí řetězce JSON a převeďte jej na objekt. Pak použijte `GsonBuilder()` a `toJson()` k vytvoření formátovaného řetězce.
+Vytvořte metodu s názvem `prettify()` a naformátujte odpověď vrácenou z rozhraní API pro video Bing. Použijte `JsonParser` knihovny gson k převzetí řetězce JSON a převeďte jej na objekt. Pak použijte `GsonBuilder()` a `toJson()` k vytvoření formátovaného řetězce.
 
 ```java
 // pretty-printer for JSON; uses GSON parser to parse and re-serialize
@@ -73,7 +73,7 @@ public static String prettify(String json_text) {
 
 1. Vytvořte novou metodu s názvem `get_suggestions()` a proveďte následující kroky:
 
-   1. Vytvořte adresu URL pro vaši žádost kombinací hostitele rozhraní API, cesty a kódování vyhledávacího dotazu. Před připojením dotazu nezapomeňte dotaz zakódovat. Vytvořte řetězec parametrů pro dotaz připojením kódu na trhu k `mkt=` parametru a dotazem `q=` na parametr.
+   1. Vytvořte adresu URL pro vaši žádost kombinací hostitele rozhraní API, cesty a kódování vyhledávacího dotazu. Před připojením dotazu nezapomeňte dotaz zakódovat. Vytvořte řetězec parametrů pro dotaz připojením kódu na trhu k parametru `mkt=` a dotazem na parametr `q=`.
     
       ```java
   
@@ -92,7 +92,7 @@ public static String prettify(String json_text) {
        //...
        ```
     
-   3. Vytvořte objekt a použijte `openConnection()` k vytvoření připojení. `HttpsURLConnection` Nastavte metodu Request na `GET`a přidejte do `Ocp-Apim-Subscription-Key` hlavičky klíč předplatného.
+   3. Vytvořte objekt `HttpsURLConnection` a pomocí `openConnection()` vytvořte připojení. Nastavte metodu Request na `GET`a přidejte svůj klíč předplatného do hlavičky `Ocp-Apim-Subscription-Key`.
 
       ```java
        //...
@@ -103,7 +103,7 @@ public static String prettify(String json_text) {
        //...
       ```
 
-   4. Přečtěte si v odpovědi rozhraní API `StringBuilder`na. Po zachycení odpovědi zavřete `InputStreamReader` datový proud a vraťte odpověď.
+   4. Přečtěte si odpověď rozhraní API na `StringBuilder`. Po zachycení odpovědi zavřete `InputStreamReader` Stream a vraťte odpověď.
 
        ```java
        //...
@@ -119,7 +119,7 @@ public static String prettify(String json_text) {
        return response.toString();
        ```
 
-2. V hlavní funkci aplikace zavolejte `get_suggestions()`a vytiskněte odpověď pomocí. `prettify()`
+2. V hlavní funkci aplikace zavolejte `get_suggestions()`a vytiskněte odpověď pomocí `prettify()`.
     
     ```java
     public static void main(String[] args) {
@@ -201,7 +201,7 @@ public static String prettify(String json_text) {
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Vytvoření jednostránkové webové aplikace](../tutorials/autosuggest.md)

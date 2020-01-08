@@ -1,6 +1,6 @@
 ---
-title: Optimalizace propustnosti sítě virtuálních počítačů | Dokumentace Microsoftu
-description: Zjistěte, jak optimalizovat propustnost sítě virtuálních počítačů Azure.
+title: Optimalizace propustnosti sítě virtuálních počítačů | Microsoft Docs
+description: Naučte se optimalizovat propustnost sítě virtuálních počítačů Azure.
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: steveesp
-ms.openlocfilehash: 50d7ca73e5e18f88f5d789e12fc7f26908e8b8f0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: be5f38bdeaf51dbe23006ecf30b4deb66aa7402a
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67202905"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690884"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Optimalizace propustnosti sítě pro virtuální počítače Azure
 
-Virtuální počítače Azure (VM) mají výchozí nastavení sítě, které lze dále optimalizovat propustnost sítě. Tento článek popisuje, jak optimalizovat propustnost sítě pro Microsoft Windows Azure a virtuální počítače s Linuxem, včetně hlavních distribuce, jako jsou Red Hat, Ubuntu a CentOS.
+Virtuální počítače Azure mají výchozí nastavení sítě, které je možné dále optimalizovat pro propustnost sítě. Tento článek popisuje, jak optimalizovat propustnost sítě pro Microsoft Azure virtuální počítače s Windows a Linux, včetně hlavních distribucí, jako jsou Ubuntu, CentOS a Red Hat.
 
 ## <a name="windows-vm"></a>Virtuální počítač s Windows
 
-Pokud je váš virtuální počítač Windows podporuje [Akcelerovanými síťovými službami](create-vm-accelerated-networking-powershell.md), povolením této funkce by být optimální propustnosti. U všech ostatních Windows virtuálních počítačů může přijímat na straně příjmu (RSS) pomocí dosáhnout vyšší maximální propustnost než virtuální počítač bez RSS. RSS může být v virtuálního počítače s Windows ve výchozím nastavení zakázaná. Pokud chcete zjistit, jestli je povolené RSS a ho povolit, pokud je aktuálně zakázaná, proveďte následující kroky:
+Pokud váš virtuální počítač s Windows podporuje [akcelerované síťové služby](create-vm-accelerated-networking-powershell.md), bude mít tato funkce optimální konfiguraci pro propustnost. U všech ostatních virtuálních počítačů s Windows může použití škálování na straně příjmu (RSS) dosáhnout vyšší maximální propustnosti než u virtuálního počítače bez RSS. Na virtuálním počítači s Windows může být standard RSS zakázaný. Pokud chcete zjistit, jestli je povolený RSS, a povolte ho, pokud je v tuto chvíli zakázaný, proveďte následující kroky:
 
-1. Zobrazit, pokud je technologie RSS zapnutá pro síťový adaptér s podporou `Get-NetAdapterRss` příkaz prostředí PowerShell. Následující ukázkový výstup vrácený `Get-NetAdapterRss`, RSS není povolená.
+1. Podívejte se, jestli je povolený RSS pro síťový adaptér s příkazem `Get-NetAdapterRss` PowerShellu. V následujícím příkladu výstupu vráceného z `Get-NetAdapterRss`není RSS povoleno.
 
     ```powershell
     Name                    : Ethernet
@@ -41,8 +41,8 @@ Pokud je váš virtuální počítač Windows podporuje [Akcelerovanými síťov
     ```powershell
     Get-NetAdapter | % {Enable-NetAdapterRss -Name $_.Name}
     ```
-    Předchozí příkaz nemá výstup. Příkaz změnit nastavení síťového adaptéru, způsobí ztrátu dočasné připojení pro přibližně jednu minutu. Při ztrátě připojení se zobrazí dialogové okno znovu připojíte. Připojení je obvykle obnoví po třetí pokus.
-3. Potvrďte, že byla povolená technologie RSS ve virtuálním počítači tak, že zadáte `Get-NetAdapterRss` příkaz znovu. V případě úspěchu se vrátí následující příklad výstupu:
+    Předchozí příkaz neobsahuje výstup. Příkaz změnil nastavení síťové karty, což způsobí ztrátu dočasného připojení asi o jednu minutu. Během ztráty připojení se zobrazí dialogové okno pro opětovné připojení. Připojení se obvykle obnoví po třetím pokusu.
+3. Potvrďte, že je na virtuálním počítači povolený RSS, zadáním příkazu `Get-NetAdapterRss` znovu. V případě úspěchu se vrátí následující příklad výstupu:
 
     ```powershell
     Name                    : Ethernet
@@ -50,13 +50,13 @@ Pokud je váš virtuální počítač Windows podporuje [Akcelerovanými síťov
     Enabled                  : True
     ```
 
-## <a name="linux-vm"></a>Virtuální počítači s Linuxem
+## <a name="linux-vm"></a>Virtuální počítač s Linuxem
 
-RSS je vždy povolena ve výchozím nastavení ve virtuálním počítači Azure s Linuxem. Linuxová jádra všeobecně dostupné od října 2017 zahrnout nové možnosti optimalizace sítě, které umožňují virtuálního počítače s Linuxem, abyste dosáhli vyšší propustnosti sítě.
+Ve výchozím nastavení je na virtuálním počítači Azure Linux vždy povolený RSS. Jádra Linux vydané od října 2017 obsahují nové možnosti optimalizace sítě, které umožňují virtuálnímu počítači se systémem Linux dosáhnout vyšší propustnosti sítě.
 
 ### <a name="ubuntu-for-new-deployments"></a>Ubuntu pro nová nasazení
 
-Jádra Ubuntu Azure poskytuje nejlepší výkon sítě v Azure a byl výchozí jádra od 21. září 2017. Chcete-li získat tento jádra, nejprve nainstalujte nejnovější podporovanou verzi 16.04 LTS, následujícím způsobem:
+Jádro Azure Ubuntu poskytuje nejlepší výkon sítě v Azure a je výchozím jádrem od 21. září 2017. Chcete-li získat toto jádro, nejprve nainstalujte nejnovější podporovanou verzi 16,04-LTS, a to následujícím způsobem:
 
 ```json
 "Publisher": "Canonical",
@@ -65,7 +65,7 @@ Jádra Ubuntu Azure poskytuje nejlepší výkon sítě v Azure a byl výchozí j
 "Version": "latest"
 ```
 
-Po vytvoření se zobrazí, zadejte následující příkazy, chcete-li získat nejnovější aktualizace. Tento postup funguje i pro virtuální počítače aktuálně spuštěné jádru Azure s Ubuntu.
+Až se vytváření dokončí, zadejte následující příkazy, které vám pomohou získat nejnovější aktualizace. Tyto kroky také fungují pro virtuální počítače, které aktuálně běží na Ubuntu jádru Azure.
 
 ```bash
 #run as root or preface with sudo
@@ -74,7 +74,7 @@ apt-get -y upgrade
 apt-get -y dist-upgrade
 ```
 
-Následující volitelný příkaz sady mohou být užitečné pro existující nasazení Ubuntu, které už máte Azure jádra, ale, která se nepodařilo další aktualizace s chybami.
+Následující volitelná sada příkazů může být užitečná pro existující nasazení Ubuntu, která již mají jádro Azure, ale která selhala při dalších aktualizacích s chybami.
 
 ```bash
 #optional steps may be helpful in existing deployments with the Azure kernel
@@ -87,9 +87,9 @@ apt-get -y upgrade
 apt-get -y dist-upgrade
 ```
 
-#### <a name="ubuntu-azure-kernel-upgrade-for-existing-vms"></a>Upgrade Azure s Ubuntu jádra pro stávající virtuální počítače
+#### <a name="ubuntu-azure-kernel-upgrade-for-existing-vms"></a>Ubuntu upgrade jádra Azure pro existující virtuální počítače
 
-Díky upgradu na jádru Azure s Linuxem můžete dosáhnout výrazné propustnost. Pokud chcete ověřit, zda je nutné tento jádra, zkontrolujte svoji verzi jádra.
+Významný výkon propustnosti je možné dosáhnout upgradem na jádro Azure Linux. Pokud chcete ověřit, jestli máte toto jádro, zkontrolujte verzi jádra.
 
 ```bash
 #Azure kernel name ends with "-azure"
@@ -99,7 +99,7 @@ uname -r
 #4.13.0-1007-azure
 ```
 
-Pokud váš virtuální počítač nemá žádné Azure jádra, číslo verze obvykle začíná řetězcem "4.4." Pokud virtuální počítač nemá žádné Azure jádra, jako kořenové spusťte následující příkazy:
+Pokud váš virtuální počítač nemá jádro Azure, číslo verze obvykle začíná řetězcem "4,4". Pokud virtuální počítač nemá jádro Azure, spusťte následující příkazy jako kořen:
 
 ```bash
 #run as root or preface with sudo
@@ -112,7 +112,7 @@ reboot
 
 ### <a name="centos"></a>CentOS
 
-Pokud chcete získat nejnovější optimalizace, je nejlepší vytvořit virtuální počítač s nejnovější podporovanou verzi tak, že zadáte následující parametry:
+Aby bylo možné získat nejnovější optimalizace, je nejlepší vytvořit virtuální počítač s nejnovější podporovanou verzí, a to zadáním následujících parametrů:
 
 ```json
 "Publisher": "OpenLogic",
@@ -121,7 +121,7 @@ Pokud chcete získat nejnovější optimalizace, je nejlepší vytvořit virtuá
 "Version": "latest"
 ```
 
-Nové i stávající virtuální počítače můžete těžit z instalace nejnovější Linux Integration Services (LIS). Optimalizace propustnosti se LIS od 4.2.2-2, i když novější verze obsahuje další vylepšení. Zadejte následující příkazy, abyste nainstalovali nejnovější LIS:
+Nové a stávající virtuální počítače můžou využívat výhod instalace nejnovějších služeb Linux Integration Services (LIS). Optimalizace propustnosti je v LIS, počínaje od 4.2.2-2, i když novější verze obsahují další vylepšení. Chcete-li nainstalovat nejnovější verzi LIS, zadejte následující příkazy:
 
 ```bash
 sudo yum update
@@ -131,7 +131,7 @@ sudo yum install microsoft-hyper-v
 
 ### <a name="red-hat"></a>Red Hat
 
-Abyste získali optimalizace, je nejlepší vytvořit virtuální počítač s nejnovější podporovanou verzi tak, že zadáte následující parametry:
+Aby bylo možné získat optimalizace, je nejlepší vytvořit virtuální počítač s nejnovější podporovanou verzí, a to zadáním následujících parametrů:
 
 ```json
 "Publisher": "RedHat"
@@ -140,20 +140,18 @@ Abyste získali optimalizace, je nejlepší vytvořit virtuální počítač s n
 "Version": "latest"
 ```
 
-Nové i stávající virtuální počítače můžete těžit z instalace nejnovější Linux Integration Services (LIS). Optimalizace propustnosti se LIS od 4.2. Zadejte následující příkazy ke stažení a instalaci služeb LIS:
+Nové a stávající virtuální počítače můžou využívat výhod instalace nejnovějších služeb Linux Integration Services (LIS). Optimalizace propustnosti je v LIS, od 4,2. Chcete-li stáhnout a nainstalovat LIS, zadejte následující příkazy:
 
 ```bash
-mkdir lis4.2.3-5
-cd lis4.2.3-5
-wget https://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-5.tar.gz
-tar xvzf lis-rpms-4.2.3-5.tar.gz
+wget https://aka.ms/lis
+tar xvf lis
 cd LISISO
-install.sh #or upgrade.sh if prior LIS was previously installed
+sudo ./install.sh #or upgrade.sh if prior LIS was previously installed
 ```
 
-Další informace o systému Linux Integration Services verze 4.2 pro technologii Hyper-V zobrazení [stránce pro stažení](https://www.microsoft.com/download/details.aspx?id=55106).
+Další informace o integračních službách Linux verze 4,2 pro Hyper-V najdete na [stránce pro stažení](https://www.microsoft.com/download/details.aspx?id=55106).
 
-## <a name="next-steps"></a>Další postup
-* Zobrazení optimalizovaných výsledku s [propustnost šířky pásma nebo testování virtuálních počítačů Azure](virtual-network-bandwidth-testing.md) pro váš scénář.
-* Přečtěte si, jak [šířky pásma je přidělen k virtuálním počítačům](virtual-machine-network-throughput.md)
-* Další informace najdete [Azure Virtual Network – nejčastější dotazy (FAQ)](virtual-networks-faq.md)
+## <a name="next-steps"></a>Další kroky
+* Podívejte se na optimalizovaný výsledek s [testováním šířky pásma a propustnosti virtuálního počítače Azure](virtual-network-bandwidth-testing.md) pro váš scénář.
+* Přečtěte si o tom [, jak je šířka pásma přidělena virtuálním počítačům](virtual-machine-network-throughput.md) .
+* Další informace o [nejčastějších dotazech k Azure Virtual Network (FAQ)](virtual-networks-faq.md)

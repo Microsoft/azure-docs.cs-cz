@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
-ms.openlocfilehash: 71edb9a32254eeee123b874305dd25b699e05cc1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 29f90508bf0bdd77f02d78cbcba8fdfe7009f0d2
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227028"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562047"
 ---
 # <a name="azure-functions-diagnostics-overview"></a>Přehled diagnostiky Azure Functions
 
@@ -26,11 +26,11 @@ Přístup k diagnostice Azure Functions:
 3. Vyberte možnost **diagnostikovat a vyřešit problémy** pod **správou prostředků**, která otevře diagnostiku Azure Functions.
 4. Vyberte kategorii, která nejlépe popisuje problém vaší aplikace Function pomocí klíčových slov na dlaždici domovské stránky. Můžete také zadat klíčové slovo, které nejlépe popisuje váš problém na panelu hledání. Můžete například zadat `execution` pro zobrazení seznamu diagnostických sestav souvisejících se spouštěním aplikace Function App a jejich otevření přímo z domovské stránky.
 
-![Domovské stránky](./media/functions-diagnostics/homepage.png)
+![Domovská stránka](./media/functions-diagnostics/homepage.png)
 
 ## <a name="use-the-interactive-interface"></a>Použití interaktivního rozhraní
 
-Jakmile vyberete kategorii domovské stránky, která nejlépe odpovídá vašemu problému aplikace Function App, Azure Functions interaktivní rozhraní Genie Diagnostics, které vám pomůže s diagnostikou a řešením problémů s vaší aplikací. Pomocí klávesových zkratek, které poskytuje Genie, můžete zobrazit úplnou diagnostickou sestavu kategorie problému, kterou vás zajímá. Zástupci dlaždic poskytují přímý způsob přístupu k diagnostickým metrikám.
+Jakmile vyberete kategorii domovské stránky, která nejlépe odpovídá vašemu problému aplikace Function App, Azure Functions interaktivní rozhraní Genie Diagnostics, které vám pomůže s diagnostikou a řešením problémů s vaší aplikací. Pomocí klávesových zkratek, které poskytuje Genie, můžete zobrazit úplnou diagnostickou sestavu kategorie problému, o které se zajímáte. Zástupci dlaždic poskytují přímý způsob přístupu k diagnostickým metrikám.
 
 ![Genie](./media/functions-diagnostics/genie.png)
 
@@ -40,11 +40,11 @@ Po výběru dlaždice se zobrazí seznam témat souvisejících s problémem pop
 
 ## <a name="view-a-diagnostic-report"></a>Zobrazit diagnostickou sestavu
 
-Po výběru tématu si můžete zobrazit diagnostickou zprávu specifickou pro vaši aplikaci Function App. Diagnostické sestavy používají ikony stavu k označení, jestli některé konkrétní problémy s vaší aplikací. Zobrazí se podrobný popis problému, doporučené akce, související metriky a užitečné dokumenty. Přizpůsobené diagnostické zprávy se generují z řady kontrol spuštěných ve vaší aplikaci Function App. Diagnostické sestavy můžou být užitečným nástrojem pro zakládání problémů v aplikaci Function App a při řešení tohoto problému.
+Po výběru tématu si můžete zobrazit diagnostickou zprávu specifickou pro vaši aplikaci Function App. Diagnostické sestavy používají ikony stavu k označení, zda existují konkrétní problémy s vaší aplikací. Zobrazí se podrobný popis problému, doporučené akce, související metriky a užitečné dokumenty. Přizpůsobené diagnostické zprávy se generují z řady kontrol spuštěných ve vaší aplikaci Function App. Diagnostické sestavy můžou být užitečným nástrojem pro zakládání problémů v aplikaci Function App a při řešení tohoto problému.
 
 ## <a name="find-the-problem-code"></a>Vyhledejte kód problému. 
 
-V případě funkcí založených na skriptech můžete použít **spouštění funkcí** a **chyby v části Function App dolů nebo hlášení chyb** a zúžit tak rozsah kódu, který způsobuje výjimky nebo chyby. Tato funkce může být užitečným nástrojem pro získání hlavní příčiny a řešení problémů z konkrétního řádku kódu. Tato možnost není k dispozici pro C# předkompilování a funkce jazyka Java.
+V případě funkcí založených na skriptech můžete použít **spouštění funkcí** a **chyby** v části **Function App dolů nebo hlášení chyb** a zúžit tak rozsah kódu, který způsobuje výjimky nebo chyby. Tato funkce může být užitečným nástrojem pro získání hlavní příčiny a řešení problémů z konkrétního řádku kódu. Tato možnost není k dispozici pro C# předkompilování a funkce jazyka Java.
 
 ![Diagnostická zpráva o chybách spuštění funkce](./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png)
 

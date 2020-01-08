@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: 16b0fdcbae51b30e14fbf7ea4d98699dfaf19804
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 6df7eebae0f0e7cfab790a4fca12dbb6ee5a5acf
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035736"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638982"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Přizpůsobení clusterů Azure HDInsight pomocí akcí skriptů
 
@@ -144,7 +144,7 @@ Skripty akcí skriptů lze použít prostřednictvím následujících nástroj�
 
 HDInsight poskytuje skripty pro instalaci následujících komponent do clusterů HDInsight:
 
-| Název | Skript |
+| Name (Název) | Skript |
 | --- | --- |
 | Přidat účet Azure Storage |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Viz [Přidání dalších účtů úložiště do služby HDInsight](hdinsight-hadoop-add-storage.md). |
 | Instalace rozhraní Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Viz [instalace a použití odstínu v clusterech HDInsight Hadoop](hdinsight-hadoop-hue-linux.md). |
@@ -170,7 +170,7 @@ V této části jsou vysvětleny různé způsoby, jak můžete při vytvářen�
     | Vlastnost | Hodnota |
     | --- | --- |
     | Vybrat skript | Chcete-li použít vlastní skript, vyberte možnost __vlastní__. V opačném případě vyberte jeden ze zadaných skriptů. |
-    | Název |Zadejte název akce skriptu. |
+    | Name (Název) |Zadejte název akce skriptu. |
     | Identifikátor URI skriptu bash |Zadejte identifikátor URI skriptu. |
     | Vedoucí/pracovní proces/ZooKeeper |Zadejte uzly, na kterých je spuštěn skript: **head**, **Worker**nebo **Zookeeper**. |
     | Parametry |Zadejte parametry, pokud to skript vyžaduje. |
@@ -250,7 +250,7 @@ Přejít na [Azure Portal](https://portal.azure.com):
     | Vlastnost | Hodnota |
     | --- | --- |
     | Vybrat skript | Chcete-li použít vlastní skript, vyberte možnost __vlastní__. V opačném případě vyberte poskytnutý skript. |
-    | Název |Zadejte název akce skriptu. |
+    | Name (Název) |Zadejte název akce skriptu. |
     | Identifikátor URI skriptu bash |Zadejte identifikátor URI skriptu. |
     | Vedoucí/pracovní proces/Zookeeper |Zadejte uzly, na kterých je spuštěn skript: **head**, **Worker**nebo **Zookeeper**. |
     | Parametry |Zadejte parametry, pokud to skript vyžaduje. |
@@ -328,7 +328,7 @@ Příklad použití sady .NET SDK pro použití skriptů v clusteru najdete v t�
 
 ### <a name="the-azure-portal"></a>Azure Portal
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. V nabídce vlevo přejděte na **všechny služby** > **Analytics** > **clustery HDInsight**.
 
@@ -350,7 +350,7 @@ Příklad použití sady .NET SDK pro použití skriptů v clusteru najdete v t�
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-| rutiny | Funkce |
+| Rutina  prostředí | Funkce |
 | --- | --- |
 | `Get-AzHDInsightPersistedScriptAction` |Načte informace o trvalých akcích skriptu. |
 | `Get-AzHDInsightScriptActionHistory` |Načtěte historii akcí skriptu použitých pro cluster nebo podrobnosti konkrétního skriptu. |
@@ -366,7 +366,7 @@ Následující příklad skriptu ukazuje použití rutin pro povýšení a pak s
 
 ### <a name="the-azure-classic-cli"></a>Rozhraní příkazového řádku Azure Classic
 
-| rutiny | Funkce |
+| Rutina  prostředí | Funkce |
 | --- | --- |
 | `azure hdinsight script-action persisted list <clustername>` |Načte seznam trvalých akcí skriptu. |
 | `azure hdinsight script-action persisted show <clustername> <scriptname>` |Načte informace o konkrétní trvalé akci skriptu. |
@@ -422,7 +422,7 @@ K zobrazení informací protokolovaných akcemi skriptů můžete použít webov
 
 ### <a name="the-apache-ambari-web-ui"></a>Webové uživatelské rozhraní Apache Ambari
 
-1. V prohlížeči přejdete na https://CLUSTERNAME.azurehdinsight.net. Nahraďte **CLUSTERNAME** názvem clusteru HDInsight.
+1. V prohlížeči přejděte na `https://CLUSTERNAME.azurehdinsight.net`. Nahraďte **CLUSTERNAME** názvem clusteru HDInsight.
 
     Po zobrazení výzvy zadejte název účtu správce, **správce**a heslo pro cluster. Je možné, že bude nutné znovu zadat přihlašovací údaje správce ve webovém formuláři.
 
@@ -458,7 +458,7 @@ Pokud se vytvoření clusteru nepovede kvůli chybě skriptu, protokoly se uchov
 
 * Je možné opakovaně vytvořit cluster akcí skriptu se stejným názvem. V takovém případě můžete rozlišovat příslušné protokoly na základě názvu složky **data** . Například struktura složek pro cluster **mycluster**vytvořená v různých datech vypadá podobně jako v následujících záznamech protokolu:
 
-    `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-04` `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-05`
+    `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-04``\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-05`
 
 * Pokud vytvoříte cluster akcí skriptu se stejným názvem ve stejném dni, můžete k identifikaci relevantních souborů protokolu použít jedinečnou předponu.
 

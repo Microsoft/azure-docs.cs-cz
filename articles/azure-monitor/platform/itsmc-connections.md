@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JYOTHIRMAISURI
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: d800f20826723d3a626d9a0f5f83664927c1185c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4dbc830ea106dee7ef21a28eb3aee63c94680be2
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927598"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75664855"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Připojení ITSM produktů/služeb ke službě IT Service Management Connector
 Tento článek poskytuje informace o tom, jak nakonfigurovat připojení mezi ITSM produktem/službou a konektorem Service Management Connector (ITSMC) v Log Analytics pro centrální správu vašich pracovních položek. Další informace o ITSMC najdete v tématu [Přehled](../../azure-monitor/platform/itsmc-overview.md).
@@ -32,7 +32,7 @@ Podporují se tyto ITSM produkty nebo služby. Výběrem produktu zobrazíte pod
 
 Následující části obsahují podrobné informace o tom, jak připojit System Center Service Manager produkt k ITSMC v Azure.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že jsou splněné následující předpoklady:
 
@@ -160,7 +160,7 @@ Pomocí následujícího postupu můžete nakonfigurovat nastavení naslouchací
 
 3. Přihlaste se pomocí svých přihlašovacích údajů Azure a vyberte předplatné, ve kterém se hybridní připojení vytvořilo.
 
-4. Klikněte na **Uložit**.
+4. Klikněte na možnost **Uložit**.
 
 Vaše hybridní připojení se úspěšně připojilo.
 
@@ -177,10 +177,10 @@ Následující vzorový obrázek ukazuje podrobné informace o úspěšném při
 
 Následující části obsahují podrobné informace o tom, jak připojit produkt ServiceNow k ITSMC v Azure.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 Ujistěte se, že jsou splněné následující předpoklady:
 - ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution).
-- Podporované verze ServiceNow: Madrid, Londýn, Kingston, Jakarta, Istanbul, Helsinky, Ženeva.
+- Podporované verze ServiceNow: New York, Madrid, Londýn, Kingston, Jakarta, Istanbul, Helsinky, Ženeva.
 
 **Správci ServiceNow musí v rámci své instance ServiceNow provádět následující**:
 - Vygenerujte ID klienta a tajný klíč klienta pro produkt ServiceNow. Informace o tom, jak vygenerovat ID a tajný kód klienta, najdete v následujících informacích:
@@ -283,7 +283,7 @@ Po úspěšném vytvoření uživatele se stav **kontrolního seznamu kontroly i
 Následující části obsahují podrobné informace o tom, jak připojit produkt pro prokázání do ITSMC v Azure.
 
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že jsou splněné následující předpoklady:
 
@@ -336,7 +336,7 @@ Další informace: [vytvoření pracovních položek ITSM z výstrah Azure](../.
 
 Následující části obsahují podrobné informace o tom, jak připojit produkt Cherwell k ITSMC v Azure.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že jsou splněné následující předpoklady:
 

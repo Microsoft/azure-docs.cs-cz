@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 11/01/2019
-ms.openlocfilehash: 19414a6f09f4bc61cd9b1b09ae98ea070e577d7f
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 9eebb181ed7aa1ac5898646c29e308f85dbe0f8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995877"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354904"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparentní šifrování dat pro SQL Database a datový sklad
 
@@ -79,7 +79,7 @@ Pokud chcete pomocí Azure Portal nakonfigurovat transparentní šifrování dat
 
 Transparentní šifrování dat můžete zapnout a vypnout na úrovni databáze. Pokud chcete v databázi povolit transparentní šifrování dat, navštivte [Azure Portal](https://portal.azure.com) a přihlaste se pomocí správce Azure nebo účtu přispěvatele. V uživatelské databázi Najděte nastavení transparentního šifrování dat. Ve výchozím nastavení se používá transparentní šifrování dat spravované službou. Transparentní certifikát pro šifrování dat se automaticky vygeneruje pro server, který obsahuje databázi. Pro spravovanou instanci Azure SQL použijte T-SQL pro zapnutí a vypnutí transparentního šifrování dat v databázi.
 
-![Transparentní šifrování dat spravované službou](./media/transparent-data-encryption-azure-sql/service-managed-tde.png)  
+![Transparentní šifrování dat spravované službou](./media/transparent-data-encryption-azure-sql/service-managed-transparent-data-encryption.png)  
 
 Na úrovni serveru jste nastavili hlavní klíč transparentního šifrování dat, označovaný také jako ochrana transparentního šifrování dat. Pokud chcete používat transparentní šifrování dat s podporou Bring Your Own Key a chránit vaše databáze pomocí klíče z Key Vault, otevřete na svém serveru nastavení transparentního šifrování dat.
 

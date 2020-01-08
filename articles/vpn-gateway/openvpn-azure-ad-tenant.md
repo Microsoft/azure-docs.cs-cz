@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 01/03/2020
 ms.author: alzam
-ms.openlocfilehash: 73c379d914f37de351165c19e3d73425e9a202b2
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 2e62708c98ac86354777cf1bdd93a3deff943b98
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151870"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665348"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Vytvoření tenanta Azure Active Directory pro připojení protokolu P2S OpenVPN
 
@@ -54,7 +54,7 @@ Postup v [tomto článku](../active-directory/fundamentals/add-users-azure-activ
 
 4. Pak poskytněte souhlas správce. Zkopírujte a vložte adresu URL, která se vztahuje k umístění vašeho nasazení, do adresního řádku v prohlížeči:
 
-    Public
+    Veřejné
 
     ```
     https://login.microsoftonline.com/common/oauth2/authorize?client_id=41b23e61-6c1e-4545-b367-cd054e0ed4b4&response_type=code&redirect_uri=https://portal.azure.com&nonce=1234&prompt=admin_consent
@@ -84,7 +84,7 @@ Postup v [tomto článku](../active-directory/fundamentals/add-users-azure-activ
 
 6. Po zobrazení výzvy vyberte **přijmout** .
 
-    ![Vyjádřit](./media/openvpn-create-azure-ad-tenant/accept.jpg)
+    ![Přijmout](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
 7. V rámci Azure AD se v **podnikových aplikacích**zobrazí uvedená služba **Azure VPN** .
 
@@ -95,10 +95,10 @@ Postup v [tomto článku](../active-directory/fundamentals/add-users-azure-activ
     ```azurepowershell-interactive
     $gw = Get-AzVirtualNetworkGateway -Name <name of VPN gateway> -ResourceGroupName <Resource group>
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientRootCertificates @()
-    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.microsoftonline.com/<your Directory ID>" -AadAudienceId "41b23e61-6c1e-4545-b367-cd054e0ed4b4" -AadIssuerUri "https://sts.windows.net/<your Directory ID>/"
+    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.microsoftonline.com/<your Directory ID>" -AadAudienceId "41b23e61-6c1e-4545-b367-cd054e0ed4b4" -AadIssuerUri "https://sts.windows.net/<your Directory ID>/" -VpnClientAddressPool 192.168.0.0/24 -VpnClientProtocol OpenVPN
     ```
 
-9. Vytvořte a Stáhněte si profil spuštěním následujících příkazů. Změňte hodnoty-ResourcGroupName a-Name tak, aby odpovídaly vašemu vlastním.
+9. Vytvořte a Stáhněte si profil spuštěním následujících příkazů. Změňte hodnoty-ResourceGroupName a-Name tak, aby odpovídaly vašemu vlastním.
 
     ```azurepowershell-interactive
     $profile = New-AzVpnClientConfiguration -Name <name of VPN gateway> -ResourceGroupName <Resource group> -AuthenticationMethod "EapTls"

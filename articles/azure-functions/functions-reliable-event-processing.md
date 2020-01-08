@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: 019c44cedba166dc1ac06a0244fa2b2e7930e673
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e4f35495d8a01146068cffb9159c29c46c3c0d29
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230372"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561863"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions spolehlivé zpracování událostí
 
@@ -82,7 +82,7 @@ Záruka, že se každá zpráva zpracovává aspoň jednou, znamená, že někte
 
 ## <a name="stop-and-restart-execution"></a>Zastavení a restartování provádění
 
-I když může být přijatelné několik chyb, co když vaše aplikace dochází k významným chybám? Je možné, že budete chtít zastavit aktivaci na události, dokud systém nedosáhne stavu v pořádku. Zpracování pozastavení příležitostí se často dosahuje pomocí vzoru pro přestávku okruhu. Vzorek přerušení obvodu umožňuje aplikaci přerušit okruh procesu události a později ho obnovit.
+I když může být přijatelné několik chyb, co když vaše aplikace dochází k významným chybám? Je možné, že budete chtít zastavit aktivaci na události, dokud systém nedosáhne stavu v pořádku. Možnost pozastavit zpracování se často dosahuje pomocí vzoru pro přestávku okruhu. Vzorek přerušení obvodu umožňuje aplikaci přerušit okruh procesu události a později ho obnovit.
 
 K implementaci přerušení okruhu v procesu události se vyžadují dvě části:
 
@@ -120,14 +120,14 @@ Příjemce e-mailu může prozkoumat stav okruhu a v případě potřeby restart
 
 Při použití tohoto přístupu se neztratí žádné zprávy, všechny zprávy jsou zpracovávány v daném pořadí a okruh můžete v případě potřeby rozdělit na dlouhou dobu.
 
-## <a name="resources"></a>Zdroje informací
+## <a name="resources"></a>Materiály
 
 - [Ukázky spolehlivých zpracování událostí](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
 - [Přepínací modul okruhů Azure Durable Functions](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících zdrojích:
+Další informace najdete v následujících materiálech:
 
 - [Zpracování chyb Azure Functions](./functions-bindings-error-pages.md)
 - [Automatizace změny velikosti nahraných obrázků s využitím služby Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json&tabs=dotnet)

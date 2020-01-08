@@ -1,25 +1,14 @@
 ---
-title: Service Fabric upgrade aplikace pomocí PowerShellu | Microsoft Docs
+title: Upgrade aplikace Service Fabric pomocí PowerShellu
 description: Tento článek vás provede nasazením aplikace Service Fabric, změnou kódu a zavedením upgradu pomocí prostředí PowerShell.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 9bc75748-96b0-49ca-8d8a-41fe08398f25
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: db0627c72ea6e7e3b272b818697b8e61b485be78
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: b113b5a1042518e3b0d86e53796c5fe49afed418
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167517"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426786"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Service Fabric upgrade aplikace pomocí PowerShellu
 > [!div class="op_single_selector"]

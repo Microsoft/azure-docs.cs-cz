@@ -4,12 +4,12 @@ description: Tokeny Azure blockchain jsou platforma jako služba (PaaS) pro vyst
 ms.date: 11/04/2019
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: c1c18298ba82775c9b10bb79c420704bd462e2b4
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e7c106ffee8ea06c7c0ce738aa8be0aba96a38ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326089"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75387169"
 ---
 # <a name="what-is-azure-blockchain-tokens"></a>Co je služba Azure Blockchain Tokens?
 
@@ -40,6 +40,14 @@ Další informace o správě účtů tokenů Azure blockchain najdete v tématu 
 ## <a name="token-taxonomy-framework"></a>Rozhraní taxonomie tokenů
 
 Tokeny Azure blockchain jsou založené na standardizovaných základech s názvem token taxonomie (TTF). TTF je sada dodávek vytvořených z pracovní skupiny tokenů pro TTI ( [token taxonomie](https://entethalliance.org/participate/token-taxonomy-initiative/) ). Pracovní skupina TTI definuje obchodní taxonomii pro tokeny a jejich chování, které lze použít ve všech hlavních knihách, včetně Ethereem, kvora, šňůry a prostředků infrastruktury hlavní knihy. Cílem pracovní skupiny je vytvořit architekturu, která bude standardizovat použití tokenů z obchodní perspektivy pro účely zjednodušení a vývoje na základě tokenu Demokratizujte. Tím, že umožníte odvětví definovat tyto tokeny a jejich chování na úrovni firmy, je podrobná implementace tokenů z obchodní logiky, která zpracovává tokeny, abstraktní.
+
+## <a name="support-and-feedback"></a>Podpora a zpětná vazba
+
+Novinky ke službě Azure blockchain News najdete na [blogu Azure blockchain](https://azure.microsoft.com/blog/topics/blockchain/) , abyste měli přehled o nabídkách služeb blockchain a informacích od týmu Azure blockchain Engineering.
+
+Pokud chcete získat přístup k tokenům Azure blockchain ve verzi Preview, [obraťte se na tým tokenů Azure blockchain](https://aka.ms/PreviewForm).
+
+Pokud chcete poskytnout zpětnou vazbu k produktu nebo požádat o nové funkce, Vyhlaste si hlasování na nápad prostřednictvím [fóra Azure Feedback pro blockchain](https://aka.ms/blockchainuservoice).
 
 ## <a name="next-steps"></a>Další kroky
 

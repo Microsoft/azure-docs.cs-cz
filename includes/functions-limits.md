@@ -4,19 +4,19 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: eb61bf5734d0aea1534735b23a2b95b52000f5ad
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8946da455b4a395814d4cb5a833932c2e3d56f0a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322913"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75658521"
 ---
 | Prostředek | [Plán spotřeby](../articles/azure-functions/functions-scale.md#consumption-plan) | [Plán Premium](../articles/azure-functions/functions-scale.md#premium-plan) | [App Service plán](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
-| Horizontální navýšení kapacity | Řízená událostmi | Řízená událostmi | [Ruční nebo automatické škálování](../articles/app-service/manage-scale-up.md) | 
+| Horizontální navýšení kapacity | Řízení událostmi | Řízení událostmi | [Ruční nebo automatické škálování](../articles/app-service/manage-scale-up.md) | 
 | Max. instancí | 200 | 100 | 10-20 |
-|Výchozí doba [Trvání vyprší](../articles/azure-functions/functions-scale.md#timeout) (min.) |5 | 30 |30<sup>2</sup> |
-|Maximální [Doba trvání vypršela](../articles/azure-functions/functions-scale.md#timeout) (min.) |10 | 60 | neohraničené<sup>3</sup> |
+|Výchozí [Doba trvání časového limitu](../articles/azure-functions/functions-scale.md#timeout) (min.) |5 | 30 |30<sup>2</sup> |
+|Maximální [Doba trvání časového limitu](../articles/azure-functions/functions-scale.md#timeout) (min.) |10 | 60 | neohraničené<sup>3</sup> |
 | Maximální počet odchozích připojení (na instanci) | 600 aktivní (celkem 1200) | Unbounded | Unbounded |
 | Maximální velikost požadavku (MB)<sup>4</sup> | 100 | 100 | 100 |
 | Maximální délka řetězce dotazu<sup>4</sup> | 4 096 | 4 096 | 4 096 |
@@ -29,7 +29,7 @@ ms.locfileid: "74322913"
 | Vlastní domény na aplikaci</a> |500<sup>7</sup> |500 |500 |
 | [Podpora protokolu SSL](../articles/app-service/configure-ssl-bindings.md) vlastní domény |zahrnuto do nevázaného SNI SSL připojení | neohraničená SNI SSL a jsou zahrnutá 1 IP SSL připojení. |neohraničená SNI SSL a jsou zahrnutá 1 IP SSL připojení. | 
 
-<sup>1</sup> Pokud chcete určit omezení pro různé možnosti plánu App Service, přečtěte si [omezení App Service plánu](../articles/azure-subscription-service-limits.md#app-service-limits).  
+<sup>1</sup> Pokud chcete určit omezení pro různé možnosti plánu App Service, přečtěte si [omezení App Service plánu](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).  
 <sup>2</sup> ve výchozím nastavení je časový limit pro modul runtime Functions 1. x v plánu App Service neohraničený.  
 <sup>3</sup> vyžaduje, aby byl plán App Service nastavený na [vždycky zapnutý](../articles/azure-functions/functions-scale.md#always-on). Platíte za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/).  
 <sup>4</sup> tato omezení se [nastavují na hostiteli](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config).  

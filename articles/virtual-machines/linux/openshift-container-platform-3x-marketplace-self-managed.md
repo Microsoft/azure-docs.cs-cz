@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 20a17e52064c5beb09ce4db5815ddd6faf7cbcba
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 235efd746562ea4bd52b9cb57da0d8165d60de02
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035528"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561316"
 ---
 # <a name="configure-prerequisites"></a>Konfigurovat požadavky
 
@@ -28,7 +28,7 @@ Než začnete používat nabídku Marketplace k nasazení samostatného clusteru
  
 ## <a name="deploy-using-the-marketplace-offer"></a>Nasazení pomocí nabídky Marketplace
 
-Nejjednodušší způsob, jak nasadit cluster OpenShift Container Platform 3,11 do Azure, je použití [nabídky Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview).
+Nejjednodušší způsob, jak nasadit cluster OpenShift Container Platform 3,11 do Azure, je použití [nabídky Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy).
 
 Tato možnost je nejjednodušší, ale má také omezené možnosti přizpůsobení. Nabídka Marketplace nasadí OpenShift kontejnerové platformy 3.11.82 a obsahuje následující možnosti konfigurace:
 
@@ -189,7 +189,7 @@ Potvrďte kontaktní údaje na stránce koupit a kliknutím na **koupit** přijm
 
 ## <a name="connect-to-the-openshift-cluster"></a>Připojení ke clusteru OpenShift
 
-Až se nasazení dokončí, načtěte připojení z části výstup nasazení. Pomocí **adresy URL konzoly OpenShift**se připojte ke konzole OpenShift pomocí prohlížeče. k hostiteli bastionu můžete také přissh. Tady je příklad, kde uživatelské jméno správce je clusteradmin a plně kvalifikovaný název domény DNS bastionu pro veřejnou IP adresu je bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
+Až se nasazení dokončí, načtěte připojení z části výstup nasazení. Pomocí **adresy URL konzoly OpenShift**se připojte ke konzole OpenShift pomocí prohlížeče. K hostiteli bastionu můžete také přissh. Tady je příklad, kde uživatelské jméno správce je clusteradmin a plně kvalifikovaný název domény DNS bastionu pro veřejnou IP adresu je bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
 
 ```bash
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com

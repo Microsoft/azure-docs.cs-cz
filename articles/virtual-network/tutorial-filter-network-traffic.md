@@ -14,12 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: a700cc83c6bd34f5f726b9cc1c97bd7e1476963b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b5a136ae05b3cd410ca252b6d5a1df443aff6f7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73519264"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350143"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Kurz: filtrování síťového provozu pomocí skupiny zabezpečení sítě pomocí Azure Portal
 
@@ -41,7 +41,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**. 
+1. V nabídce webu Azure Portal nebo na **domovské** stránce vyberte **Vytvořit prostředek**. 
 2. Vyberte **Sítě** a pak vyberte **Virtuální síť**.
 3. Zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **Vytvořit**:
 
@@ -59,7 +59,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými funkcemi, například webové servery.
 
-1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**. 
+1. V nabídce webu Azure Portal nebo na **domovské** stránce vyberte **Vytvořit prostředek**. 
 2. Do pole **Hledat na Marketplace** zadejte *Skupina zabezpečení aplikace*. Jakmile se ve výsledcích hledání zobrazí **Skupina zabezpečení aplikace**, vyberte ji. V části **Všechno** vyberte **Skupina zabezpečení aplikace** a pak vyberte **Vytvořit**.
 3. Zadejte nebo vyberte následující informace a pak vyberte **Vytvořit**:
 
@@ -68,7 +68,7 @@ Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými funkc
     | Name (Název)           | myAsgWebServers                                               |
     | Předplatné   | Vyberte své předplatné.                                     |
     | Skupina prostředků | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
-    | Umístění       | USA – východ                                                       |
+    | Umístění       | Východní USA                                                       |
 
 4. Zopakujte 3. krok s použitím následujících hodnot:
 
@@ -77,11 +77,11 @@ Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými funkc
     | Name (Název)           | myAsgMgmtServers                                              |
     | Předplatné   | Vyberte své předplatné.                                     |
     | Skupina prostředků | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
-    | Umístění       | USA – východ                                                       |
+    | Umístění       | Východní USA                                                       |
 
 ## <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 
-1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**. 
+1. V nabídce webu Azure Portal nebo na **domovské** stránce vyberte **Vytvořit prostředek**. 
 2. Vyberte **Sítě** a pak **Skupina zabezpečení sítě**.
 3. Zadejte nebo vyberte následující informace a pak vyberte **Vytvořit**:
 
@@ -90,7 +90,7 @@ Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými funkc
     |Name (Název)|myNsg|
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků | Vyberte **Použít existující** a pak vyberte *myResourceGroup*.|
-    |Umístění|USA – východ|
+    |Umístění|Východní USA|
 
 ## <a name="associate-network-security-group-to-subnet"></a>Přidružení skupiny zabezpečení sítě k podsíti
 
@@ -138,7 +138,7 @@ Vytvořte ve virtuální síti dva virtuální počítače.
 
 ### <a name="create-the-first-vm"></a>Vytvoření prvního virtuálního počítače
 
-1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**. 
+1. V nabídce webu Azure Portal nebo na **domovské** stránce vyberte **Vytvořit prostředek**. 
 2. Vyberte **Compute** a potom vyberte **Windows Server 2016 Datacenter**.
 3. Zadejte nebo vyberte následující informace a přijměte výchozí hodnoty pro zbývající nastavení:
 
@@ -159,8 +159,8 @@ Vytvořte ve virtuální síti dva virtuální počítače.
     |Nastavení|Hodnota|
     |---|---|
     |Virtuální síť |Vyberte **myVirtualNetwork**.|
-    |Skupina zabezpečení sítě NIC |Vyberte **Upřesnit**.|
-    |Veřejné příchozí porty|Vyberte **žádné**. |
+    |Skupina zabezpečení sítě NIC |Vyberte **Žádná**.|
+  
 
 6. V dolním levém rohu vyberte **zkontrolovat + vytvořit** , vyberte **vytvořit** a spusťte nasazení virtuálního počítače.
 

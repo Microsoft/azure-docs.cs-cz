@@ -1,25 +1,16 @@
 ---
-title: Modul plug-in Azure Service Fabric pro Eclipse | Microsoft Docs
-description: Začínáme s modulem plug-in Service Fabric pro Eclipse.
-services: service-fabric
-documentationcenter: java
+title: Modul plug-in Azure Service Fabric pro zatmění
+description: Přečtěte si o zahájení práce s Azure Service Fabric v Java pomocí zatmění a modulu plug-in poskytovaných Service Fabric.
 author: rapatchi
-manager: chackdan
-editor: ''
-ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: c15ca6d68512bc79ce4e5a27f5ce4f7ea6bc3080
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: b779873488f1fff754d4105249b28f545738c11b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035446"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645697"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Modul plug-in Service Fabric pro vývoj aplikací v Eclipse Javě
 Eclipse je jedním z nejčastěji používaných integrovaných vývojových prostředí (IDE) pro vývojáře v jazyce Java. V tomto článku probereme možnosti nastavení vývojového prostředí Eclipse pro práci s Azure Service Fabric. Zjistíte, jak v Eclipse nainstalovat modul plug-in Service Fabric, vytvořit aplikaci Service Fabric a nasadit ji do místního nebo vzdáleného clusteru Service Fabric. 
@@ -40,12 +31,12 @@ Modul plug-in Service Fabric můžete nainstalovat do Eclipse. Tento modul plug-
 
 Nainstalujte Eclipse Neon nebo novější verzi z [webu Eclipse](https://www.eclipse.org).  Nainstalujte také Buildship verze 2.2.1 nebo novější (modul plug-in Service Fabric není kompatibilní se staršími verzemi Buildshipu):
 -   Verze nainstalovaných komponent můžete v Eclipse zkontrolovat v části **Help** > **About Eclipse** > **Installation Details** (Nápověda > O Eclipse > Podrobnosti o instalaci).
--   Pokud chcete aktualizovat sestavení, přečtěte si téma sestavování v [pozatmění: Moduly plug-in zatmění pro][buildship-update]Gradle.
+-   Pokud chcete aktualizovat sestavení, přečtěte si téma [buildy zatmění: moduly plug-in pro Gradle][buildship-update].
 -   Pokud chcete zkontrolovat a nainstalovat aktualizace pro Eclipse, přejděte do části **Help** > **Check for Updates** (Nápověda > Vyhledat aktualizace).
 
 Pokud chcete nainstalovat modul plug-in Service Fabric v Eclipse, přejděte do části **Help** > **Install New Software** (Nápověda > Instalace nového softwaru).
-1. Do pole **work with (pracovat s** ) zadejte\/https:/dl.Microsoft.com/Eclipse.
-2. Klikněte na **Přidat**.
+1. Do pole **work with (pracovat s** ) zadejte https:\//dl.Microsoft.com/Eclipse.
+2. Klikněte na tlačítko **Add** (Přidat).
 
    ![Modul plug-in Service Fabric pro Eclipse][sf-eclipse-plugin-install]
 3. Vyberte modul plug-in Service Fabric a potom klikněte na **Další**.
@@ -57,7 +48,7 @@ Pokud už máte modul plug-in Service Fabric nainstalovaný, nainstalujte nejnov
 3. Jakmile aktualizujete modul plug-in Service Fabric, aktualizujte také projekt Gradle.  Klikněte pravým tlačítkem na **build.gradle** a vyberte **Aktualizovat**.
 
 > [!NOTE]
-> Pokud je instalace nebo aktualizace modulu plug-in Service Fabric pomalá, může být důvodem nastavení Eclipse. Eclipse shromažďuje metadata o všech změnách, aby aktualizoval weby, které jsou registrované pro vaši instanci Eclipse. Pokud chcete proces vyhledávání a instalace aktualizace modulu plug-in Service Fabric urychlit, přejděte k části **Available Software Sites** (Dostupné softwarové servery). Zrušte zaškrtnutí políček pro všechny weby kromě toho, který odkazuje na umístění modulu plug-in Service Fabric (https:\//dl.Microsoft.com/Eclipse/Azure/servicefabric).
+> Pokud je instalace nebo aktualizace modulu plug-in Service Fabric pomalá, může být důvodem nastavení Eclipse. Eclipse shromažďuje metadata o všech změnách, aby aktualizoval weby, které jsou registrované pro vaši instanci Eclipse. Pokud chcete proces vyhledávání a instalace aktualizace modulu plug-in Service Fabric urychlit, přejděte k části **Available Software Sites** (Dostupné softwarové servery). Zrušte zaškrtnutí políček pro všechny weby kromě toho, který odkazuje na umístění modulu plug-in Service Fabric (https:\//dl.microsoft.com/eclipse/azure/servicefabric).
 
 > [!NOTE]
 >Pokud Eclipse nefunguje na vašem počítači Mac podle očekávání nebo vyžaduje spuštění od superuživatele, přepněte se do složky **ECLIPSE_INSTALLATION_PATH** a přejděte do podsložky **Eclipse.app/Contents/MacOS**. Spusťte Eclipse spuštěním příkazu `./eclipse`.
@@ -111,7 +102,7 @@ Po vytvoření aplikace Service Fabric postupujte podle těchto kroků a nasaďt
 
 3.  V místní nabídce klikněte na **nasadit aplikaci**.
 4.  Průběh operace nasazení můžete sledovat v okně konzoly.
-5.  Pokud chcete ověřit, jestli je vaše aplikace spuštěná, otevřete Service Fabric Explorer v místním clusteru v okně [http://localhost:19080/Explorer](http://localhost:19080/Explorer)prohlížeče. Rozbalte uzel **aplikace** a zajistěte, aby byla aplikace spuštěná. 
+5.  Pokud chcete ověřit, jestli je vaše aplikace spuštěná, otevřete Service Fabric Explorer v místním clusteru v okně prohlížeče [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Rozbalte uzel **aplikace** a zajistěte, aby byla aplikace spuštěná. 
 
 Informace o tom, jak ladit aplikaci v zatmění pomocí místního clusteru, najdete [v tématu ladění služby Java v zatmění](./service-fabric-debugging-your-application-java.md).
 
@@ -135,14 +126,14 @@ K publikování aplikace v cloudu použijte následující postup:
     openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
     ```
 
-   Pokud soubor PFX není chráněný heslem, použijte `--passin pass:` pro poslední parametr.
+   Pokud soubor PFX není chráněný heslem, použijte pro poslední parametr `--passin pass:`.
 
 2. V adresáři **PublishProfiles** otevřete soubor **Cloud. JSON** . Pro váš cluster budete muset nakonfigurovat koncový bod clusteru a přihlašovací údaje zabezpečení.
 
-   - `ConnectionIPOrURL` Pole obsahuje IP adresu nebo adresu URL vašeho clusteru. Všimněte si, že hodnota neobsahuje schéma adresy URL (`https://`).
-   - Ve výchozím nastavení `ConnectionPort` by mělo být `19080`pole, pokud jste tento port pro cluster výslovně nezměnili.
-   - `ClientKey` Pole by mělo ukazovat na PEM soubor. pem nebo. Key na místním počítači, který obsahuje privátní klíč pro certifikát klienta nebo clusteru.
-   - `ClientCert` Pole by mělo ukazovat na PEM soubor. pem nebo. CRT na místním počítači, který obsahuje data certifikátu pro klienta nebo cluster. certifikát. 
+   - Pole `ConnectionIPOrURL` obsahuje IP adresu nebo adresu URL vašeho clusteru. Všimněte si, že hodnota neobsahuje schéma adresy URL (`https://`).
+   - Ve výchozím nastavení by mělo být pole `ConnectionPort` `19080`, pokud jste tento port pro cluster výslovně nezměnili.
+   - Pole `ClientKey` by mělo odkazovat na PEM soubor. pem nebo. Key na místním počítači, který obsahuje privátní klíč pro certifikát klienta nebo clusteru.
+   - Pole `ClientCert` by mělo odkazovat na PEM soubor. pem nebo. CRT na vašem místním počítači, který obsahuje data certifikátu pro klienta nebo cluster. Certifikát. 
 
      ```bash
      {
@@ -168,13 +159,13 @@ K publikování aplikace v cloudu použijte následující postup:
 
 Pokud vaše aplikace obsahuje služby Reliable Services Services, je třeba v systému zabezpečit clustery se systémem Linux nakonfigurovat certifikát, který mohou vaše služby používat k volání rozhraní API modulu runtime Service Fabric. Další informace najdete v tématu [Konfigurace aplikace Reliable Services pro spouštění v clusterech se systémem Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).
 
-Stručné informace o tom, jak nasadit Service Fabric Reliable Services aplikaci napsanou v jazyce Java do zabezpečeného clusteru se systémem Linux [, najdete v tématu rychlý Start: Nasaďte aplikaci](./service-fabric-quickstart-java-reliable-services.md)Reliable Services Java.
+Stručné informace o tom, jak nasadit Service Fabric Reliable Services aplikaci napsanou v jazyce Java do zabezpečeného clusteru se systémem Linux, najdete v tématu [rychlý Start: nasazení aplikace Reliable Services Java](./service-fabric-quickstart-java-reliable-services.md).
 
 ## <a name="deploy-a-service-fabric-application-by-using-eclipse-run-configurations"></a>Nasazení aplikace Service Fabric pomocí konfigurací spuštění zatmění
 
 Existuje alternativní způsob nasazení aplikace Service Fabric pomocí konfigurací spuštění Eclipse.
 
-1. V zatmění klikněte na **Spustit** > **Konfigurace spuštění**.
+1. V zatmění klikněte na **spustit** > **Konfigurace spuštění**.
 2. Vyberte konfiguraci spuštění **ServiceFabricDeployer** v části **Gradle Project** (Projekt Gradle).
 3. V pravém podokně na kartě **argumenty** ověřte, zda jsou parametry **IP**, **port**, **clientCert**a **clientKey** nastaveny odpovídajícím způsobem pro vaše nasazení. Ve výchozím nastavení jsou parametry nastaveny pro nasazení na místní cluster, jako na následujícím snímku obrazovky. Pokud chcete publikovat aplikaci do Azure, můžete změnit parametry tak, aby obsahovaly podrobnosti koncového bodu a přihlašovací údaje zabezpečení pro váš cluster Azure. Další informace najdete v předchozí části, [publikování aplikace Service Fabric do Azure pomocí zatmění](#publish-your-service-fabric-application-to-azure-with-eclipse).
 
@@ -233,7 +224,7 @@ Nedávno jsme přesunuli knihovny Service Fabric Java ze sady Service Fabric Jav
 
 ## <a name="next-steps"></a>Další kroky
 
-- Rychlé kroky při vytváření aplikací spolehlivé služby Java a jejich nasazení v místním prostředí a do Azure najdete [v tématu rychlý Start: Nasaďte aplikaci](./service-fabric-quickstart-java-reliable-services.md)Reliable Services Java.
+- Rychlé kroky při vytváření aplikací spolehlivé služby Java a jejich nasazování místně a do Azure najdete v tématu [rychlý Start: nasazení aplikace Reliable Services Java](./service-fabric-quickstart-java-reliable-services.md).
 - Informace o tom, jak ladit aplikaci Java v místním clusteru, najdete v tématu [ladění služby Java v zatmění](./service-fabric-debugging-your-application-java.md).
 - Informace o tom, jak monitorovat a diagnostikovat Service Fabric aplikací, najdete v tématu [monitorování a diagnostika služeb v nastavení pro vývoj na místním počítači](./service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md).
 

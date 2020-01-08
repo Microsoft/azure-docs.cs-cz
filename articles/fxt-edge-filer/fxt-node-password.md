@@ -1,17 +1,17 @@
 ---
-title: Inicializovat hardware – Microsoft Azure FXT Edge souborového
+title: 'Kurz: inicializace hardwaru – Azure FXT Edge souborového'
 description: Jak nastavit počáteční heslo na uzlech souborového Azure FXT Edge
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: 080aa05af77b996bc0eb71287a3dfef25c24629a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 8cb5f639deb0630575c46db30efe70ad967324a8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256012"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550887"
 ---
 # <a name="tutorial-set-hardware-passwords"></a>Kurz: Nastavení hardwarových hesel
 
@@ -23,7 +23,7 @@ Tento krok proveďte po instalaci a propojení uzlu, ale před tím, než se pok
 
 V tomto kurzu se dozvíte, jak se připojit k uzlu hardwaru a nastavit heslo. 
 
-V tomto kurzu se naučíte, jak: 
+V tomto kurzu se naučíte: 
 
 > [!div class="checklist"]
 > * Připojte klávesnici a monitor k uzlu a zapněte ho.
@@ -34,7 +34,7 @@ Opakujte tyto kroky pro každý uzel, který budete používat ve vašem cluster
 
 Dokončení tohoto kurzu trvá přibližně 15 minut. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před zahájením tohoto kurzu proveďte tyto kroky: 
 
@@ -94,7 +94,7 @@ Re-enter password:**********
 Loading AvereOS......
 ```
 
-Po zadání hesla systém pokračuje v spouštění. Až se dokončí, zobrazí se výzva ``login:``. 
+Po zadání hesla systém pokračuje v spouštění. Po dokončení se zobrazí výzva ``login:``. 
 
 ## <a name="sign-in-as-root"></a>Přihlásit se jako kořen
 

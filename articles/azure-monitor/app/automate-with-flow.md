@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/29/2019
-ms.openlocfilehash: ff0896498c0270b8eb43b762228916985f924def
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 7d9c966051c2756d7936fa079a0aac68e694425d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678326"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407544"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Automatizace procesů Azure Application Insights pomocí konektoru pro Microsoft Flow
 
@@ -117,9 +117,9 @@ Když vytváříte vlastní dotazy, ověřte, že správně fungují v analytick
 
 ### <a name="step-7-save-and-test-your-flow"></a>Krok 7: úspora a testování toku
 
-Klikněte na **Uložit**.
+Klikněte na možnost **Uložit**.
 
-Můžete počkat, až aktivační událost spustí tuto akci, nebo můžete kliknout na ![beaker ikonu testu ](./media/automate-with-flow/testicon.png) **test** v horní části.
+Můžete počkat, až aktivační událost spustí tuto akci, nebo můžete kliknout na ![ikonu testu kádinky](./media/automate-with-flow/testicon.png) **test** v horní části.
 
 Po výběru **testu**:
 

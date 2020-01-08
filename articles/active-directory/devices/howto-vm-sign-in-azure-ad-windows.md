@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba8f4f715856538b9555b1bcb8c8a812503fabd2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 77e24fa41c5f716460d82e1079659e6aee5e9a9b
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842403"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561146"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -36,6 +36,9 @@ K přihlášení k virtuálním počítačům s Windows v Azure přinášíme sp
    - Multi-Factor Authentication
    - Kontroly rizika přihlašování
 - Automatizujte a škálujte připojení Azure AD k virtuálním počítačům Azure s Windows, které jsou součástí nasazení infrastruktury virtuálních klientských počítačů.
+
+> [!NOTE]
+> Jakmile tuto možnost povolíte, vaše virtuální počítače s Windows v Azure budou připojené ke službě Azure AD. Nemůžete ho připojit k jiné doméně, třeba k Prem AD nebo Azure služba AD DS. Pokud to budete potřebovat, budete muset odpojit virtuální počítač od svého tenanta Azure AD odinstalováním rozšíření.
 
 ## <a name="requirements"></a>Požadavky
 
@@ -200,7 +203,7 @@ Před autorizací přístupu k virtuálním počítačům s Windows v Azure, kte
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Přihlášení pomocí přihlašovacích údajů Azure AD k virtuálnímu počítači s Windows
 
 > [!IMPORTANT]
-> Vzdálené připojení k virtuálním počítačům připojeným ke službě Azure AD je povolené jenom z počítačů s Windows 10, které jsou připojené ke službě Azure AD nebo které je služba Azure AD připojená ke **stejnému** adresáři jako virtuální počítač. Navíc k protokolu RDP pomocí přihlašovacích údajů Azure AD musí uživatel patřit do jedné ze dvou rolí RBAC, přihlášení správce virtuálního počítače nebo přihlášení uživatele virtuálního počítače.
+> Vzdálené připojení k virtuálním počítačům připojeným ke službě Azure AD je povolené jenom z počítačů s Windows 10, které jsou připojené ke službě Azure AD nebo které je služba Azure AD připojená ke **stejnému** adresáři jako virtuální počítač. Navíc k protokolu RDP pomocí přihlašovacích údajů Azure AD musí uživatel patřit do jedné ze dvou rolí RBAC, přihlášení správce virtuálního počítače nebo přihlášení uživatele virtuálního počítače. V tuto chvíli se Azure bastionu nedá použít k přihlášení pomocí Azure Active Directory ověřování s rozšířením AADLoginForWindows. Podporován je pouze přímý protokol RDP.
 
 Přihlášení k virtuálnímu počítači s Windows serverem 2019 pomocí Azure AD: 
 

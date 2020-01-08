@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/17/2019
-ms.openlocfilehash: 09d2c1d063c542583dc11fab0805a9392661426f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 01/02/2020
+ms.openlocfilehash: 10149c6eb06e6d2994233aa365f237e6d9330c48
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930344"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644748"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Transformace spojení v toku dat mapování
 
@@ -25,11 +25,14 @@ Mapování toků dat aktuálně podporuje pět různých typů spojení.
 
 ### <a name="inner-join"></a>Vnitřní spojení
 
-Vnitřní spojení pouze zapisuje pouze řádky, které mají odpovídající hodnoty v obou tabulkách.
+Vnitřní spojení pouze obsahuje řádky, které mají v obou tabulkách odpovídající hodnoty.
 
 ### <a name="left-outer"></a>Levé vnější
 
 Levé vnější spojení vrátí všechny řádky z levého proudu a odpovídající záznamy z pravého datového proudu. Pokud řádek z levého datového proudu neodpovídá, výstupní sloupce z pravého datového proudu jsou nastaveny na hodnotu NULL. Výstupem budou řádky vrácené vnitřním spojením a nespárované řádky z levého streamu.
+
+> [!NOTE]
+> Modul Spark používaný datovými toky občas umožní kartézském produkty v podmínkách připojení. V takovém případě můžete přepnout na vlastní vzájemné spojení a zadat podmínku JOIN ručně. Výsledkem může být pomalejší výkon datových toků, protože spouštěcí modul může potřebovat vypočítat všechny řádky z obou stran relace a potom filtrovat řádky.
 
 ### <a name="right-outer"></a>Pravé vnější
 
@@ -39,9 +42,16 @@ Pravé vnější spojení vrátí všechny řádky z pravého proudu a odpovída
 
 Úplné vnější spojení vyprodukuje všechny sloupce a řádky z obou stran s hodnotami NULL pro sloupce, které se neshodují.
 
-### <a name="cross-join"></a>Křížové spojení
+### <a name="custom-cross-join"></a>Vlastní vzájemné spojení
 
-V případě vzájemného spojení se v závislosti na podmínce vytvoří výstup z obou datových proudů mezi různými produkty. Pokud používáte podmínku, která není rovnost, zadejte jako podmínku vzájemného spojení vlastní výraz. Výstupní datový proud bude obsahovat všechny řádky, které splňují podmínku spojení. Pokud chcete vytvořit kartézském produkt, který vypíše všechny kombinace řádků, zadejte jako podmínku JOIN `true()`.
+V případě vzájemného spojení se v závislosti na podmínce vytvoří výstup z obou datových proudů mezi různými produkty. Pokud používáte podmínku, která není rovnost, zadejte jako podmínku vzájemného spojení vlastní výraz. Výstupní datový proud bude obsahovat všechny řádky, které splňují podmínku spojení.
+
+Tento typ spojení můžete použít pro spojení neekvivalentních a ```OR```ch podmínek.
+
+Pokud chcete explicitně vytvořit úplný kartézském produkt, použijte transformaci odvozeného sloupce v každém ze dvou nezávislých datových proudů předtím, než se připojíte k vytvoření syntetického klíče, který se má shodovat. Můžete například vytvořit nový sloupec v odvozeném sloupci v každém datovém proudu s názvem ```SyntheticKey``` a nastavit jej jako ```1```. Pak jako vlastní výraz JOIN použijte ```a.SyntheticKey == b.SyntheticKey```.
+
+> [!NOTE]
+> Nezapomeňte do vlastního vzájemného spojení zahrnout alespoň jeden sloupec z každé strany levého a pravého vztahu. Výsledkem provádění vzájemného spojení se statickými hodnotami místo sloupců z každé strany je úplné prověřování celé datové sady, což způsobí, že tok dat nebude dostatečně fungovat.
 
 ## <a name="configuration"></a>Konfigurace
 
@@ -104,9 +114,9 @@ TripData, TripFare
     )~> JoinMatchedData
 ```
 
-### <a name="cross-join-example"></a>Příklad vzájemného spojení
+### <a name="custom-cross-join-example"></a>Příklad vlastního vzájemného propojení
 
-Níže uvedený příklad je transformační transformace s názvem `CartesianProduct`, která přebírá levý Stream `TripData` a `TripFare`pravého streamu. Tato transformace přebírá dva proudy a vrací kartézském produkt jejich řádků. Podmínka spojení je `true()`, protože výstupem je plný kartézském produkt. `joinType` je `cross`. Povolujeme vysílání pouze v levém datovém proudu, takže `broadcast` má `'left'`hodnoty.
+Níže uvedený příklad je transformační transformace s názvem `JoiningColumns`, která přebírá levý Stream `LeftStream` a `RightStream`pravého streamu. Tato transformace přebírá dva proudy a spojuje všechny řádky, kde sloupec `leftstreamcolumn` je větší než `rightstreamcolumn`sloupce. `joinType` je `cross`. Všesměrové vysílání není povolené, `broadcast` má `'none'`hodnoty.
 
 V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 
@@ -115,12 +125,12 @@ V uživatelském prostředí Data Factory Tato transformace vypadá jako na nás
 Skript toku dat pro tuto transformaci je v následujícím fragmentu kódu:
 
 ```
-TripData, TripFare
+LeftStream, RightStream
     join(
-        true(),
+        leftstreamcolumn > rightstreamcolumn,
         joinType:'cross',
-        broadcast: 'left'
-    )~> CartesianProduct
+        broadcast: 'none'
+    )~> JoiningColumns
 ```
 
 ## <a name="next-steps"></a>Další kroky

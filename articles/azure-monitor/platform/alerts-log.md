@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d540912d280302d2ae2166b75fb2d163458d7a61
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: c8d9128e6956c460094be76eccce8d350ed41547
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677831"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658130"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor
 
@@ -36,7 +36,7 @@ Podrobný návod, jak používat výstrahy protokolu pomocí rozhraní Azure Por
 
 1. Na [portálu](https://portal.azure.com/)vyberte **monitorování** a v části Monitorování – zvolte **výstrahy**.
 
-    ![Monitorování](media/alerts-log/AlertsPreviewMenu.png)
+    ![Sledování](media/alerts-log/AlertsPreviewMenu.png)
 
 1. Kliknutím na tlačítko **nové pravidlo výstrahy** vytvoříte novou výstrahu v Azure.
 
@@ -90,7 +90,7 @@ Podrobný návod, jak používat výstrahy protokolu pomocí rozhraní Azure Por
 1. Jako třetí a poslední krok určete, jestli se má pro pravidlo upozornění při splnění podmínky upozornění aktivovat jakákoli **Skupina akcí** . Můžete zvolit libovolnou existující skupinu akcí s výstrahou nebo vytvořit novou skupinu akcí. V závislosti na vybrané skupině akcí se při aktivaci výstrahy Azure: Odeslat e-mail, poslat SMS, zavolat webhookům, opravit je pomocí runbooků Azure, nahrajte ho do nástroje ITSM atd. Přečtěte si další informace o [skupinách akcí](action-groups.md).
 
     > [!NOTE]
-    > Omezení počtu datových částí sady Runbook aktivovaných pro výstrahy protokolu pomocí skupin akcí Azure najdete v tématu [omezení služby předplatného Azure](../../azure-subscription-service-limits.md) .
+    > Omezení počtu datových částí sady Runbook aktivovaných pro výstrahy protokolu pomocí skupin akcí Azure najdete v tématu [omezení služby předplatného Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md) .
 
     Pro **výstrahy protokolu** jsou k dispozici některé další funkce pro přepsání výchozích akcí:
 
@@ -106,7 +106,7 @@ Podrobný návod, jak používat výstrahy protokolu pomocí rozhraní Azure Por
 
      Během několika minut je výstraha aktivní a triggery, jak je popsáno výše.
 
-Uživatelé také mohou v [Log Analytics](../log-query/portals.md) absolvovat své analytické dotazy a potom je po vytvoření výstrahy vytvořit pomocí tlačítka nastavit výstrahu – potom postupujte podle pokynů v kroku 6 výše v předchozím kurzu.
+Uživatelé můžou také dokončit dotaz Analytics v [Log Analytics](../log-query/portals.md) a pak ho vložit, aby se vytvořila výstraha prostřednictvím tlačítka nastavit výstrahu. potom postupujte podle pokynů v kroku 6 výše v předchozím kurzu.
 
  ![Výstraha Log Analytics-set](media/alerts-log/AlertsAnalyticsCreate.png)
 
@@ -202,7 +202,7 @@ Následuje struktura šablony prostředků založené na [vytváření pravidel 
 
 ```
 
-Vzorový JSON výše se dá uložit jako (řekněme) sampleScheduledQueryRule. JSON pro účely tohoto procházení a dá se nasadit pomocí [Azure Resource Manager v Azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
+Vzorový JSON výše se dá uložit jako (řekněme) sampleScheduledQueryRule. JSON pro účely tohoto procházení a dá se nasadit pomocí [Azure Resource Manager v Azure Portal](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
 
 ### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>Výstraha protokolu s dotazem mezi prostředky pomocí šablony prostředků Azure
@@ -299,7 +299,7 @@ Následuje struktura šablony prostředků založené na [vytváření pravidel 
 > [!IMPORTANT]
 > Při použití dotazu mezi prostředky v upozornění protokolu je použití [authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) povinné a uživatel musí mít přístup k seznamu uvedených prostředků.
 
-Vzorový JSON výše se dá uložit jako (řekněme) sampleScheduledQueryRule. JSON pro účely tohoto procházení a dá se nasadit pomocí [Azure Resource Manager v Azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
+Vzorový JSON výše se dá uložit jako (řekněme) sampleScheduledQueryRule. JSON pro účely tohoto procházení a dá se nasadit pomocí [Azure Resource Manager v Azure Portal](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
 ## <a name="managing-log-alerts-using-powershell"></a>Správa výstrah protokolu pomocí prostředí PowerShell
 

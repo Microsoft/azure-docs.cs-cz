@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: d8d5ecd64ba689dc9cce342513702d8359038162
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9080a0f327aae50a87b5e69ec157a46181a38a65
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682259"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640937"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Plánování kapacity pro clustery HDInsight
 
@@ -47,7 +47,7 @@ Pokud už máte účet úložiště nebo Data Lake Storage obsahující vaše da
 
 Po nasazení clusteru HDInsight můžete připojit další účty Azure Storage nebo získat přístup k jiným Data Lake Storage. Všechny vaše účty úložiště se musí nacházet ve stejném umístění jako váš cluster. Data Lake Storage může být v jiném umístění, i když to může způsobit latenci čtení a zápisu dat.
 
-Azure Storage má některá [omezení kapacity](../azure-subscription-service-limits.md#storage-limits), zatímco Data Lake Storage Gen1 je prakticky neomezené.
+Azure Storage má některá [omezení kapacity](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits), zatímco Data Lake Storage Gen1 je prakticky neomezené.
 
 Cluster má přístup k kombinaci různých účtů úložiště. Mezi typické příklady patří:
 
@@ -92,9 +92,19 @@ K chybám může dojít v důsledku paralelního spouštění více map a sníž
 
 ## <a name="quotas"></a>Kvóty
 
-Po určení velikosti virtuálního počítače clusteru, škálování a typu ověřte aktuální limity kapacity vašeho předplatného. Pokud dosáhnete limitu kvóty, možná nebudete moct nasadit nové clustery nebo škálovat existující clustery přidáním dalších pracovních uzlů. Jedinou omezenou kvótou je kvóta PROCESORových jader, která existuje na úrovni oblasti pro každé předplatné. Například vaše předplatné může mít v Východní USA oblasti 30 jader omezení. Pokud potřebujete požádat o zvýšení kvóty, proveďte následující kroky:
+Po určení velikosti virtuálního počítače clusteru, škálování a typu ověřte aktuální limity kapacity vašeho předplatného. Pokud dosáhnete limitu kvóty, možná nebudete moct nasadit nové clustery nebo škálovat existující clustery přidáním dalších pracovních uzlů. Jedinou omezenou kvótou je kvóta PROCESORových jader, která existuje na úrovni oblasti pro každé předplatné. Například vaše předplatné může mít v Východní USA oblasti 30 jader omezení. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Chcete-li zjistit dostupné jádra, proveďte následující kroky:
+
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+2. Přejděte na stránku **Přehled** pro cluster HDInsight. 
+3. V nabídce vlevo klikněte na možnost **limity kvót**.
+
+   Na stránce se zobrazí počet používaných jader, počet dostupných jader a celkový počet jader.
+
+Pokud potřebujete požádat o zvýšení kvóty, proveďte následující kroky:
+
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 1. V levé dolní části stránky vyberte **help + support** .
 1. Vyberte **Nová žádost o podporu**.
 1. Na stránce **Nová žádost o podporu** na kartě **základy** vyberte následující možnosti:
@@ -115,7 +125,7 @@ Po určení velikosti virtuálního počítače clusteru, škálování a typu o
 
 Můžete [kontaktovat podporu a požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
-Existují však omezení pevné kvóty, například jedno předplatné Azure může mít maximálně 10 000 jader. Podrobnosti o těchto omezeních najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+Existují však omezení pevné kvóty, například jedno předplatné Azure může mít maximálně 10 000 jader. Podrobnosti o těchto omezeních najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 
 ## <a name="next-steps"></a>Další kroky
 

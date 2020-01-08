@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: rohogue
-ms.openlocfilehash: 07aba1b1536635e414fc5fab4ece148683909188
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 793a80e7019e72c1cb3087da02d5642639cb8d5e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74168584"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647152"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Vytvoření mezipaměti prostředí Azure HPC
 
@@ -36,7 +36,7 @@ V části **Podrobnosti o službě**nastavte název mezipaměti a tyto ostatní 
 
 Na stránce **mezipaměť** musíte nastavit kapacitu mezipaměti. Nastavené hodnoty určují, kolik dat vaše mezipaměť může uchovávat a jak rychle může obsluhovat požadavky klientů.
 
-Po období verze Public Preview ovlivní kapacita také náklady na mezipaměť.
+Kapacita má vliv také na náklady na mezipaměť.
 
 Určete kapacitu nastavením těchto dvou hodnot:
 

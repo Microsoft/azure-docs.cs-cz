@@ -1,5 +1,5 @@
 ---
-title: Vlastní pole v Azure Monitor | Microsoft Docs
+title: Vlastní pole v Azure Monitor (Preview) | Microsoft Docs
 description: Funkce vlastní pole Azure Monitor umožňuje vytvořit vlastní hledaná pole ze záznamů v pracovním prostoru Log Analytics, který se přidává do vlastností shromážděného záznamu.  Tento článek popisuje proces vytvoření vlastního pole a poskytuje podrobný návod s ukázkovou událostí.
 ms.service: azure-monitor
 ms.subservice: logs
@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: 1fa8fb8ee944103626966839def358e68a55d8ac
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 880d3ffa9914a8fc6f27edce06c5d353d7903db4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932615"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396887"
 ---
-# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Vytváření vlastních polí v pracovním prostoru Log Analytics v Azure Monitor
+# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Vytváření vlastních polí v pracovním prostoru Log Analytics v Azure Monitor (Preview)
 
 > [!NOTE]
 > Tento článek popisuje, jak analyzovat textová data v Log Analytics pracovním prostoru při jejich shromažďování. Po shromáždění textu podle pokynů popsaných v tématu [Analýza textových dat v Azure monitor](../log-query/parse-text.md)doporučujeme analyzovat textová data ve filtru dotazu. Nabízí několik výhod používání vlastních polí.
@@ -93,7 +93,7 @@ Otevře se **Průvodce extrakcí polí** a pole **EventLog** a **ID události** 
 
 ![Hlavní příklad](media/custom-fields/main-example.png)
 
-Ve vlastnosti **RenderedDescription** se zvýrazní název služby a k identifikaci názvu služby používá **službu** .  Vlastní pole se nazývá **Service_CF**. Typ pole v tomto případě je řetězec, takže ho můžeme nechat beze změny.
+Ve vlastnosti **RenderedDescription** se zvýrazní název služby a k identifikaci názvu služby používá **službu** .  Vlastní pole bude voláno **Service_CF**. Typ pole v tomto případě je řetězec, takže ho můžeme nechat beze změny.
 
 ![Název pole](media/custom-fields/field-title.png)
 
@@ -113,15 +113,15 @@ Vidíte, že položky pro **adaptér výkonu WMI** byly opraveny, a Log Analytic
 
 ![Výsledky hledání](media/custom-fields/search-results-02.png)
 
-Teď můžeme spustit dotaz, který ověří **Service_CF** , ale ještě není přidaný do žádných záznamů. Důvodem je skutečnost, že vlastní pole nefunguje u stávajících záznamů, takže musíme počkat na shromáždění nových záznamů.
+Teď můžeme spustit dotaz, který ověří **Service_CF** je vytvořený, ale ještě není přidaný do žádných záznamů. Důvodem je skutečnost, že vlastní pole nefunguje u stávajících záznamů, takže musíme počkat na shromáždění nových záznamů.
 
 ![Počáteční počet](media/custom-fields/initial-count.png)
 
-Po uplynutí určité doby se budou shromažďovat nové události, abychom zjistili, že pole **Service_CF** se teď přidávají do záznamů, které odpovídají kritériím.
+Po uplynutí určité doby se budou shromažďovat nové události, můžeme vidět, že pole **Service_CF** se teď přidávají do záznamů, které odpovídají kritériím.
 
 ![Konečné výsledky](media/custom-fields/final-results.png)
 
-Nyní můžeme použít vlastní pole jako jakoukoli jinou vlastnost záznamu.  Pro ilustraci vytvoříme dotaz, který seskupí podle nového pole **Service_CF** , aby se zkontrolovaly, které služby jsou v nejvyšším případě aktivní.
+Nyní můžeme použít vlastní pole jako jakoukoli jinou vlastnost záznamu.  Pro ilustraci vytvoříme dotaz, který seskupí podle pole New **Service_CF** , aby se zkontrolovaly, které služby jsou v nejvyšším případě aktivní.
 
 ![Seskupit podle dotazu](media/custom-fields/query-group.png)
 

@@ -1,18 +1,14 @@
 ---
-title: Azure Service Fabric – nasazení aplikace Azure Service Fabric se spravovanou identitou přiřazenou systémem | Microsoft Docs
+title: Nasazení aplikace Service Fabric se systémem MI přiřazeným
 description: V tomto článku se dozvíte, jak přiřadit spravovanou identitu přiřazenou systémem k aplikaci Azure Service Fabric.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: cf971d71c2566d91bc5a2490d47521725c62b17d
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: d5a14722363d642957904f9c7c699d3cf1d66c0f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973414"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614821"
 ---
 # <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>Nasazení aplikace Service Fabric pomocí spravované identity přiřazené systémem (Preview)
 
@@ -47,7 +43,7 @@ Chcete-li povolit aplikaci se spravovanou identitou přiřazenou systémem, při
       }
     }
 ```
-Tato vlastnost deklaruje (pro Azure Resource Manager a poskytovatele prostředků spravované identity a Service Fabric, v uvedeném pořadí, že tento prostředek musí mít implicitní (`system assigned`) spravovanou identitu.
+Tato vlastnost deklaruje (pro Azure Resource Manager a poskytovatele prostředků spravované identity a Service Fabric, v uvedeném pořadí, že tento prostředek musí mít spravovanou identitu (`system assigned`).
 
 ### <a name="application-and-service-package"></a>Balíček aplikace a služby
 
@@ -76,7 +72,7 @@ Tato vlastnost deklaruje (pro Azure Resource Manager a poskytovatele prostředk�
         </ServiceManifestImport>
       ```
 
-    Tento prvek přiřadí identitu aplikace ke službě. bez tohoto přiřazení nebude služba moci získat přístup k identitě aplikace. Ve fragmentu kódu výše je identita `SystemAssigned` (což je rezervované klíčové slovo) namapována na definici služby pod popisným názvem `WebAdmin`.
+    Tento prvek přiřadí identitu aplikace ke službě. bez tohoto přiřazení nebude služba moci získat přístup k identitě aplikace. Ve fragmentu kódu výše je `SystemAssigned` identita (což je rezervované klíčové slovo) namapována na definici služby v rámci popisného názvu `WebAdmin`.
 
 3. Aktualizujte manifest služby pro přidání elementu **ManagedIdentity** do oddílu **Resources** s názvem, který odpovídá hodnotě nastavení `ServiceIdentityRef` z definice `IdentityBindingPolicy` v manifestu aplikace:
 

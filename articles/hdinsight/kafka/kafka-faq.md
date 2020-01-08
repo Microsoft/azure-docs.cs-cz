@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 057c77d4ddb4a760e196c0dc8d508efe15e6699d
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: c8d2ef0330a32d5cab88355cc749322ec3a5ea30
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69520124"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530931"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Nejčastější dotazy týkající se Apache Kafka ve službě Azure HDInsight
 
@@ -38,7 +38,7 @@ Podrobnější popis různých typů uzlů najdete v tématu [Architektura virtu
 
 ## <a name="do-apache-kafka-apis-work-with-hdinsight"></a>Funguje v HDInsight Apache Kafka rozhraní API?
 
-Ano, HDInsight používá nativní rozhraní Kafka API. Kód klientské aplikace nemusí být změněn. Viz [kurz: Pomocí rozhraní API](./apache-kafka-producer-consumer-api.md) pro Apache Kafka výrobce a zákaznických spotřebitelů zjistíte, jak můžete s vaším clusterem používat rozhraní API pro producenta a příjemce založená na jazyce Java.
+Ano, HDInsight používá nativní rozhraní Kafka API. Kód klientské aplikace nemusí být změněn. Viz [kurz: použití rozhraní API pro Apache Kafka výrobce a spotřebitele](./apache-kafka-producer-consumer-api.md) k zobrazení, jak můžete v clusteru používat rozhraní API pro producenta a příjemce založená na jazyce Java.
 
 ## <a name="can-i-change-cluster-configurations"></a>Můžu změnit konfiguraci clusteru?
 
@@ -46,7 +46,7 @@ Ano, prostřednictvím portálu Ambari. Každá součást na portálu má **konf
 
 ## <a name="what-type-of-authentication-does-hdinsight-support-for-apache-kafka"></a>Jaký typ ověřování podporuje HDInsight pro Apache Kafka?
 
-Pomocí [balíček zabezpečení podniku (ESP)](../domain-joined/apache-domain-joined-architecture.md)můžete pro své clustery Kafka získat zabezpečení na úrovni tématu. Viz [kurz: Další informace najdete v konfiguraci zásad Apache Kafka v HDInsight pomocí](../domain-joined/apache-domain-joined-run-kafka.md)balíček zabezpečení podniku (Preview).
+Pomocí [balíček zabezpečení podniku (ESP)](../domain-joined/apache-domain-joined-architecture.md)můžete pro své clustery Kafka získat zabezpečení na úrovni tématu. Další informace najdete v tématu [kurz: Konfigurace zásad Apache Kafka v HDInsight pomocí balíček zabezpečení podniku (Preview)](../domain-joined/apache-domain-joined-run-kafka.md).
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>Jsou moje data zašifrovaná? Můžu používat vlastní klíče?
 
@@ -65,6 +65,10 @@ Aby mohli klienti Kafka komunikovat s Kafka brokery, musí být schopni kontakto
 ## <a name="can-i-add-more-disk-space-on-an-existing-cluster"></a>Můžu přidat další místo na disku v existujícím clusteru?
 
 Pokud chcete zvýšit množství volného místa dostupného pro Kafka zprávy, můžete zvýšit počet uzlů. V současné době se nepodporují přidání dalších disků do existujícího clusteru.
+
+## <a name="can-a-kafka-cluster-work-with-databricks"></a>Může cluster Kafka pracovat s datacihly? 
+
+Ano, clustery Kafka můžou pracovat s datacihly, pokud jsou ve stejné virtuální síti. Pokud chcete použít cluster Kafka s datacihly, vytvořte virtuální síť s clusterem HDInsight Kafka a pak tuto virtuální síť zadejte při vytváření pracovního prostoru datacihly a používání injektáže virtuální sítě. Další informace najdete v tématu [nasazení Azure Databricks ve službě Azure Virtual Network (vkládání virtuální sítě)](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject). Při vytváření pracovního prostoru datacihly bude nutné zadat názvy zprostředkovatelů spuštění clusteru Kafka. Informace o načtení názvů zprostředkovatelů Kafka najdete v tématu [získání informací o hostiteli Apache Zookeeper a Broker](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started#getkafkainfo).
 
 ## <a name="how-can-i-have-maximum-data-durability"></a>Jak můžu mít maximální odolnost dat?
 

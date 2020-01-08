@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 3e344afc29ae398394a1aa2aa527f2f32e24eef7
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 51b4ef06806e2a6647975a373f1bc4bd58740b7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997186"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355569"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Správa přístupu k virtuálnímu počítači pomocí za běhu
 
@@ -99,7 +99,7 @@ Z Security Center můžete nakonfigurovat zásady JIT a požádat o přístup k 
       - 5986 – WinRM
 6. Můžete taky nakonfigurovat vlastní porty:
 
-      1. Klikněte na tlačítko **Přidat**. Otevře se okno **Přidat konfiguraci portu** .
+      1. Klikněte na tlačítko **Add** (Přidat). Otevře se okno **Přidat konfiguraci portu** .
       2. Pro každý port, který se rozhodnete nakonfigurovat, můžete nastavit výchozí i vlastní, abyste mohli přizpůsobit následující nastavení:
 
     - **Typ protokolu**– protokol, který je na tomto portu povolený, když je žádost schválená.
@@ -108,7 +108,7 @@ Z Security Center můžete nakonfigurovat zásady JIT a požádat o přístup k 
 
      3. Klikněte na **OK**.
 
-1. Klikněte na **Uložit**.
+1. Klikněte na možnost **Uložit**.
 
 > [!NOTE]
 >Když je pro virtuální počítač povolený přístup k virtuálnímu počítači JIT, Azure Security Center vytvoří pravidla odepřít veškerý příchozí provoz pro vybrané porty ve skupinách zabezpečení sítě, které jsou k ní přidružené a Azure Firewall. Pokud se pro vybrané porty vytvořila jiná pravidla, stávající pravidla mají přednost před novými pravidly odepřít všechna příchozí provoz. Pokud na vybraných portech neexistují žádná pravidla, nová pravidla odepřít všechna příchozí přenosy mají ve skupinách zabezpečení sítě a Azure Firewall nejvyšší prioritu.

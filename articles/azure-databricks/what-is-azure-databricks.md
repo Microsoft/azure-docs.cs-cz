@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/08/2019
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: 1e86658422e444cb7104c3e3428a74d31d453a72
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ed93f332c6361d2f7cd5189ee5fedf3d9f5cf82d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605973"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410452"
 ---
 # <a name="what-is-azure-databricks"></a>Co je Azure Databricks?
 
@@ -23,7 +23,7 @@ Azure Databricks je analytická platforma založená na Apache Spark a optimaliz
 
 ![Co je Azure Databricks?](./media/what-is-azure-databricks/azure-databricks-overview.png "Co je Azure Databricks?")
 
-Azure Databricks je rychlá a snadná analytická služba založená na Apache Spark a spolupráci. V případě kanálu pro velké objemy dat se data (hrubá nebo strukturovaná) ingestují do Azure prostřednictvím Azure Data Factory v dávkách nebo se streamují téměř v reálném čase s využitím Kafka, centra událostí nebo IoT Hub. Tato data se nacházejí v Data Lake pro dlouhodobé trvalé úložiště v Azure Blob Storage nebo Azure Data Lake Storage. Jako součást pracovního postupu analýzy použijte Azure Databricks ke čtení dat z více zdrojů dat, jako je [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md), [Azure Data Lake Storage](../data-lake-store/index.md), [Azure Cosmos DB](../cosmos-db/index.yml)nebo [Azure SQL Data Warehouse](../sql-data-warehouse/index.yml) , a převeďte je na průlom. přehledy pomocí Sparku
+Azure Databricks je rychlá a snadná analytická služba založená na Apache Spark a spolupráci. V případě kanálu pro velké objemy dat se data (hrubá nebo strukturovaná) ingestují do Azure prostřednictvím Azure Data Factory v dávkách nebo se streamují téměř v reálném čase s využitím Kafka, centra událostí nebo IoT Hub. Tato data se nacházejí v Data Lake pro dlouhodobé trvalé úložiště v Azure Blob Storage nebo Azure Data Lake Storage. V rámci vašeho pracovního postupu analýzy použijte Azure Databricks ke čtení dat z více zdrojů dat, jako je [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md), [Azure Data Lake Storage](../data-lake-store/index.md), [Azure Cosmos DB](../cosmos-db/index.yml)nebo [Azure SQL Data Warehouse](../sql-data-warehouse/index.yml) , a převeďte je na převratné přehledy pomocí Sparku.
 
 ![Kanál datacihly](./media/what-is-azure-databricks/databricks-pipeline.png)
 
@@ -37,7 +37,7 @@ Azure Databricks zahrnuje kompletní opensourcové možnosti a technologie clust
 
 * **Streamování:** Zpracování dat a analýzy v reálném čase pro analytické a interaktivní aplikace. Integruje se s HDFS, Flume a Kafka.
 
-* **MLib:** Knihovna Machine Learning, která se skládá z běžných algoritmů a nástrojů strojového učení, včetně klasifikace, regrese, clusteringu, filtrování založeného na spolupráci, snížení počtu dimenzí a také základních primitiv optimalizace.
+* **MLlib**: knihovna Machine Learning skládající se ze společného výukového algoritmu a nástrojů, včetně klasifikace, regrese, clusteringu, filtrování spolupráce, snížení počtu dimenzí a také základních primitiv optimalizace.
 
 * **GraphX:** Grafy a grafické výpočetní funkce pro širokou škálu případů použití od kognitivních analýz až po zkoumání dat.
 

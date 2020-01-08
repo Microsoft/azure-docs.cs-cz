@@ -2,19 +2,15 @@
 title: Podřízené runbooky v Azure Automation
 description: Popisuje různé metody spuštění sady Runbook v Azure Automation z jiné sady Runbook a sdílení informací mezi nimi.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 01/17/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: e7341a8c270d16497430a70c2a1b21354a775787
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a35ee69e6a167f4907294c88710d0484353d4cb2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850444"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367005"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Podřízené runbooky v Azure Automation
 

@@ -8,12 +8,12 @@ ms.topic: include
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/18/2019
-ms.openlocfilehash: 08833f869a7838fe893b8e941072078f89033c2b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e3cb977871af2e6cd7a59dd48505090dd29e8a76
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517849"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75541800"
 ---
 1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com).
 
@@ -38,5 +38,5 @@ ms.locfileid: "73517849"
 
 - **Importovat data** nebo **exportovat datové** moduly
         
-    Pokud v experimentu máte modul **importu dat** nebo **exportu dat** , budete muset zdroj dat aktualizovat tak, aby používal úložiště dat. Informace o tom, jak vytvořit úložiště dat, najdete v tématu [Jak získat přístup k datům ve službě Azure Storage](../articles/machine-learning/service/how-to-access-data.md). Informace o vašem účtu cloudového úložiště se přidaly do komentářů k vašemu usnadnění **importu dat** nebo modulu **exportu dat** . 
+    Pokud v experimentu máte modul **importu dat** nebo **exportu dat** , budete muset zdroj dat aktualizovat tak, aby používal úložiště dat. Informace o tom, jak vytvořit úložiště dat, najdete v tématu [Jak získat přístup k datům ve službě Azure Storage](../articles/machine-learning/how-to-access-data.md). Informace o vašem účtu cloudového úložiště se přidaly do komentářů k vašemu usnadnění **importu dat** nebo modulu **exportu dat** . 
       

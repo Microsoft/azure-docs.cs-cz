@@ -7,12 +7,12 @@ ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 6526f27177b5fb8640deb5302d8cb3aa4acf1a97
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e5b1880a12cda440a5772de80b8ec67b8f7ed5c3
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824272"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665380"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy týkající se souborů Azure
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol SMB (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure můžete připojit souběžně na cloudové nebo místní nasazení systémů Windows, Linux a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko místa, kde se data používají.
@@ -127,20 +127,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
 * <a id="afs-files-excluded"></a>
   **které soubory nebo složky jsou automaticky vyloučeny pomocí Azure File Sync?**  
-    Ve výchozím nastavení Azure File Sync vyloučí následující soubory:
-  * desktop.ini
-  * miniatury. DB
-  * ehThumbs. DB
-  * ~$\*.\*
-  * \*.laccdb
-  * \*. tmp
-  * 635D02A9D91C401B97884B82B3BCDAEA.\*
-
-    Ve výchozím nastavení jsou vyloučené také následující složky:
-
-  * \System Volume Information
-  * \$recyklovat. BIN
-  * \SyncShareState
+  Zobrazení [souborů bylo vynecháno](storage-sync-files-planning.md#files-skipped).
 
 * <a id="afs-os-support"></a>
   můžu **použít Azure File Sync se systémem Windows Server 2008 R2, Linux nebo moje zařízení úložiště připojené k síti (NAS)?**  
@@ -374,7 +361,7 @@ můžu **připojit sdílenou složku Azure na instanci kontejneru Azure?**
 
 * <a id="rest-rename"></a>
 **je v REST API operace přejmenování?**  
-    V tuto chvíli to není možné.
+    V současnosti ne.
 
 * <a id="nested-shares"></a>
 **můžu nastavit vnořené sdílené složky? Jinými slovy, sdílená složka ve sdílené složce?**  
@@ -384,7 +371,7 @@ můžu **připojit sdílenou složku Azure na instanci kontejneru Azure?**
 **návody používat soubory Azure s IBM MQ?**  
     Společnost IBM vydala dokument, který pomáhá zákazníkům IBM MQ nakonfigurovat soubory Azure pomocí služby IBM. Další informace najdete v tématu [jak nastavit správce front více instancí IBM MQ pomocí služby Microsoft Azure Files](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Řešení potíží se soubory Azure v systému Windows](storage-troubleshoot-windows-file-connection-problems.md)
 * [Řešení potíží se soubory Azure v systému Linux](storage-troubleshoot-linux-file-connection-problems.md)
 * [Řešení potíží se Synchronizací souborů Azure](storage-sync-files-troubleshoot.md)

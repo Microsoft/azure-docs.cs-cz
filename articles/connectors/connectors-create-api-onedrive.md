@@ -1,22 +1,22 @@
 ---
-title: Připojení k OneDrivu
-description: Nahrávání a Správa souborů pomocí rozhraní REST API pro OneDrive a Azure Logic Apps
+title: Přístup a Správa souborů na Microsoft OneDrive
+description: Nahrávání a Správa souborů na OneDrivu vytvořením automatizovaných pracovních postupů v Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
-ms.openlocfilehash: 93528e257ab45644a79c58fbf600dca10317eb0b
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: edfbf090c3409d583cda6fd2c9957c37be5dfb7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789679"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378428"
 ---
-# <a name="get-started-with-the-onedrive-connector"></a>Začínáme s konektorem OneDrive
+# <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>Přístup k souborům v konektoru OneDrive a jejich správa pomocí Azure Logic Apps
 
-Připojte se k OneDrivu, abyste mohli spravovat svoje soubory, včetně nahrávání, získávání, odstraňování souborů a dalších. S OneDrivem můžete provádět tyto úlohy:
+Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru OneDrive](/connectors/onedriveconnector/)můžete vytvářet automatizované úlohy a pracovní postupy pro správu souborů, včetně nahrávání, získávání, odstraňování souborů a dalších. S OneDrivem můžete provádět tyto úlohy:
 
 * Sestavte pracovní postup uložením souborů na OneDrivu nebo aktualizujte stávající soubory na OneDrivu. 
 * Pomocí aktivačních procedur spustíte pracovní postup při vytvoření nebo aktualizaci souboru na OneDrivu.
@@ -38,7 +38,7 @@ Předtím, než vaše aplikace logiky bude mít přístup k jakékoli službě, 
 
 Trigger je událost, která se dá použít ke spuštění pracovního postupu definovaného v aplikaci logiky. Aktivuje službu cyklického dotazování služby v intervalu a četnosti, které chcete. [Další informace o aktivačních událostech](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-1. V aplikaci logiky zadejte "OneDrive", abyste získali seznam aktivačních událostí:  
+1. V návrháři aplikace logiky zadejte `onedrive` a získejte seznam aktivačních událostí:  
 
    ![](./media/connectors-create-api-onedrive/onedrive-1.png)
 
@@ -66,7 +66,7 @@ Akce je operace prováděná pracovním postupem, který je definován v aplikac
 
 2. Vyberte **přidat akci**.
 
-3. Do textového pole zadejte "OneDrive", abyste získali seznam všech dostupných akcí.
+3. Do vyhledávacího pole zadejte `onedrive` pro získání seznamu všech dostupných akcí.
 
    ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 

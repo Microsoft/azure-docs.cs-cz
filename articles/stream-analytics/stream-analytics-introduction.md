@@ -3,17 +3,17 @@ title: Přehled služby Azure Stream Analytics
 description: Přečtěte si o službě Stream Analytics, která umožňuje v reálném čase analyzovat data streamovaná z platformy Internet věcí (IOT).
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 0982cc90d26c9f04e8d547c7d634e09280d7fca2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3399cc47af20df05d6315a4bd77965f799eaf5f9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467914"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426173"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Co je Azure Stream Analytics?
 
@@ -39,7 +39,7 @@ Každá úloha obsahuje výstup pro transformovaná data a můžete řídit, co 
 
 Následující obrázek ukazuje, jak jsou odesílána data Stream Analytics, analyzována a odeslána pro jiné akce, jako je například ukládání nebo prezentace:
 
-![Stream Analytics úvodní kanál](./media/stream-analytics-introduction/stream-analytics-intro-pipeline.png)
+![Kanál Stream Analytics (úvod)](./media/stream-analytics-introduction/stream-analytics-intro-pipeline.png)
 
 ## <a name="key-capabilities-and-benefits"></a>Klíčové funkce a výhody
 
@@ -61,7 +61,7 @@ Azure Stream Analytics používá jednoduchý dotazovací jazyk založený na ja
 
 Dotazovací jazyk Stream Analytics nabízí nejrůznější funkce pro analýzu a zpracování streamních dat. Tento dotazovací jazyk podporuje jednoduché funkce pro manipulaci s daty, agregační funkce a složité geoprostorové funkce. Dotazy můžete upravovat na portálu a testovat je pomocí ukázkových dat extrahovaných z živého datového proudu.
 
-Možnosti dotazovacího jazyka můžete rozšířit definováním a vyvoláním dalších funkcí. Můžete definovat volání funkcí v Azure Machine Learning, abyste mohli využít výhod Azure Machine Learning řešení a integrovat JavaScript nebo C# uživatelsky definované funkce (UDF) nebo uživatelsky definované agregace k provádění složitých výpočtů jako součást streamu. Dotaz Analytics.
+Možnosti dotazovacího jazyka můžete rozšířit definováním a vyvoláním dalších funkcí. Můžete definovat volání funkcí v Azure Machine Learning, abyste mohli využít výhod Azure Machine Learning řešení a integrovat JavaScript nebo C# uživatelsky definované funkce (UDF) nebo uživatelsky definované agregace k provádění složitých výpočtů jako součást Stream Analyticsho dotazu.
 
 ## <a name="fully-managed"></a>Plně spravovaná
 

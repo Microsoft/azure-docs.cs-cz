@@ -1,47 +1,38 @@
 ---
-title: Monitorování události clusteru Linux v Azure Service Fabric | Dokumentace Microsoftu
-description: Další informace o monitorování události clusteru Linux z protokolu Syslog
-services: service-fabric
-documentationcenter: .net
+title: Monitorování událostí clusteru se systémem Linux v Azure Service Fabric
+description: Naučte se monitorovat události clusteru Service Fabric Linux tak, že zapíšete Service Fabric události platformy do protokolu syslog.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: 402e3dfe018c94ef068caf918b38aaad00064a49
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5bd3bda71943b2ba8a34cd4fbd0b20917b875670
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62118374"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645748"
 ---
-# <a name="service-fabric-linux-cluster-events-in-syslog"></a>Události clusteru Service Fabric s Linuxem v procesu Syslog
+# <a name="service-fabric-linux-cluster-events-in-syslog"></a>Události clusteru Service Fabric Linux v protokolu syslog
 
-Service Fabric poskytuje sadu událostí platformy, které informují o důležitých aktivit ve vašem clusteru. Úplný seznam událostí, které jsou vystaveny je k dispozici [tady](service-fabric-diagnostics-event-generation-operational.md). Existují různé způsoby, pomocí kterého můžete využívat tyto události. V tomto článku budeme diskutovat o tom, jak nakonfigurovat Service Fabric zapsat tyto události do protokolu Syslog.
+Service Fabric zveřejňuje sadu událostí platformy, které informují o důležité aktivitě v clusteru. Úplný seznam událostí, které jsou zpřístupněny, je k dispozici [zde](service-fabric-diagnostics-event-generation-operational.md). Existuje mnoho způsobů, jak lze tyto události spotřebovat. V tomto článku se podíváme, jak nakonfigurovat Service Fabric pro zápis těchto událostí do protokolu syslog.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="introduction"></a>Úvod
+## <a name="introduction"></a>Představení
 
-6\.4 verze SyslogConsumer zavedl k odeslání události platformy Service Fabric s protokolem Syslog pro Linuxové clustery. Po zapnutí událostí bude automaticky směrovat do Syslog, které můžete shromažďovat a odesílaných agenta Log Analytics.
+Ve verzi 6,4 byla představena SyslogConsumer, aby odesílala události Service Fabric platformy do protokolu syslog pro clustery Linux. Po zapnutí budou události automaticky převedeny do protokolu syslog, který je možné shromažďovat a odesílat pomocí agenta Log Analytics.
 
-Každá událost procesu Syslog má 4 komponenty
+Každá událost syslog má 4 součásti
 * Zařízení
 * Identita
-* Message
-* Severity
+* Zpráva
+* Závažnost
 
-SyslogConsumer zapisuje všechny události platformy pomocí zařízení `Local0`. Jakékoli platné zařízení můžete aktualizovat změnou konfigurace config. Je identita používaná `ServiceFabric`. Pole zprávy obsahuje celou událost serializovanou ve formátu JSON tak, aby se jde dotazovat a používané celou řadu nástrojů. 
+SyslogConsumer zapisuje všechny události platforem pomocí `Local0`ů zařízení. Změnou konfigurace konfigurace můžete aktualizovat na jakékoli platné zařízení. Použitá identita je `ServiceFabric`. Pole zpráva obsahuje celou událost serializovanou ve formátu JSON, aby mohla být dotazována a spotřebována řadou nástrojů. 
 
 ## <a name="enable-syslogconsumer"></a>Povolit SyslogConsumer
 
-Povolit SyslogConsumer, budete muset provést upgrade vašeho clusteru. `fabricSettings` Části je potřeba aktualizovat následujícím kódem. Všimněte si, že tento kód obsahuje jenom části týkající se SyslogConsumer
+Pokud chcete SyslogConsumer povolit, musíte provést upgrade clusteru. Oddíl `fabricSettings` je třeba aktualizovat pomocí následujícího kódu. Všimněte si, že tento kód obsahuje jenom oddíly týkající se SyslogConsumer.
 
 ```json
     "fabricSettings": [
@@ -83,10 +74,10 @@ Povolit SyslogConsumer, budete muset provést upgrade vašeho clusteru. `fabricS
     ],
 ```
 
-Tady jsou změny provádět volání
-1. V části společné je nový parametr s názvem `LinuxStructuredTracesEnabled`. **To se vyžaduje pro Linux se události strukturované a serializovat, když je odeslána s protokolem Syslog.**
-2. V části Diagnostika nové ConsumerInstance: SyslogConsumer se přidala. Platforma říká, že existuje jiný příjemce událostí. 
-3. Nový oddíl SyslogConsumer musí mít `IsEnabled` jako `true`. To je nakonfigurován pro použití zařízení Local0 automaticky. Toto můžete přepsat tak, že přidáte jiný parametr.
+Tady jsou změny, které se mají zavolat.
+1. V části Common je k dispozici nový parametr s názvem `LinuxStructuredTracesEnabled`. **To je nutné, aby při odeslání do protokolu syslog byly strukturované a serializované události systému Linux.**
+2. V části Diagnostika byl přidán nový ConsumerInstance: SyslogConsumer. To oznamuje platformě další příjemce událostí. 
+3. Nový oddíl SyslogConsumer musí mít `IsEnabled` jako `true`. Je nakonfigurovaná tak, aby se zařízení Local0 automaticky používalo. To můžete přepsat přidáním dalšího parametru.
 
 ```json
     {
@@ -96,32 +87,32 @@ Tady jsou změny provádět volání
 ```
 
 ## <a name="azure-monitor-logs-integration"></a>Integrace protokolů Azure Monitor
-Můžete číst tyto události protokolu Syslog v monitorovacího nástroje, jako jsou protokoly Azure monitoru. Pracovní prostor Log Analytics můžete vytvořit pomocí webu Azure Marketplace pomocí těchto [pokynů]. (.. / azure-monitor/learn/quick-create-workspace.md) budete také muset přidat agenta Log Analytics ke svému clusteru pro shromažďování a odesílání dat do pracovního prostoru. Toto je stejný agent, kterého používá ke shromažďování čítačů výkonu. 
+Tyto události syslog můžete číst v monitorovacím nástroji, jako jsou protokoly Azure Monitor. Pracovní prostor Log Analytics můžete vytvořit pomocí Azure Marketplace pomocí těchto [pokynů]. (.. /Azure-monitor/Learn/Quick-Create-Workspace.MD) je také potřeba přidat agenta Log Analytics do clusteru, aby bylo možné tato data shromažďovat a odesílat do pracovního prostoru. To je stejný agent, který se používá ke shromažďování čítačů výkonu. 
 
-1. Přejděte `Advanced Settings` okno
+1. Přejít na okno `Advanced Settings`
 
     ![Nastavení pracovního prostoru](media/service-fabric-diagnostics-oms-syslog/workspace-settings.png)
 
 2. Klikněte na `Data`.
 3. Klikněte na `Syslog`.
-4. Nakonfigurujte Local0 jako zařízení ke sledování. Pokud jste změnili v nastavení fabricSettings můžete přidat další zařízení
+4. Nakonfigurujte Local0 jako zařízení, které se má sledovat. Pokud jste změnili v fabricSettings, můžete přidat další zařízení.
 
     ![Konfigurovat Syslog](media/service-fabric-diagnostics-oms-syslog/syslog-configure.png)
-5. Přejděte do Průzkumníka dotazů kliknutím `Logs` v nabídce prostředku pracovního prostoru ke spuštění dotazu
+5. Přejděte do Průzkumníku dotazů kliknutím na `Logs` v nabídce prostředku pracovního prostoru a spusťte dotazování.
 
     ![Protokoly pracovního prostoru](media/service-fabric-diagnostics-oms-syslog/workspace-logs.png)
-6. Můžete dotazovat `Syslog` tabulky hledáte `ServiceFabric` jako název procesu. Dotaz níže je příklad toho, jak k parsování formátu JSON v události a zobrazení jeho obsahu
+6. Můžete zadat dotaz na tabulku `Syslog`, kde se `ServiceFabric` jako Process. Níže uvedený dotaz ukazuje, jak analyzovat JSON v události a zobrazit jeho obsah.
 
 ```kusto
     Syslog | where ProcessName == "ServiceFabric" | extend $payload = parse_json(SyslogMessage) | project $payload
 ```
 
-![Dotaz Syslog](media/service-fabric-diagnostics-oms-syslog/syslog-query.png)
+![Dotaz syslog](media/service-fabric-diagnostics-oms-syslog/syslog-query.png)
 
-V příkladu výše je NodeDown události. Můžete zobrazit úplný seznam událostí [tady](service-fabric-diagnostics-event-generation-operational.md).
+Výše uvedený příklad je NodeDown události. Úplný seznam událostí můžete zobrazit [zde](service-fabric-diagnostics-event-generation-operational.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Nasadit agenta Log Analytics](service-fabric-diagnostics-oms-agent.md) na svých uzlech shromažďování čítačů výkonu a shromáždit statistiky dockeru a protokoly pro vaše kontejnery
-* Seznamte se s [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) funkce nabízí jako součást protokoly Azure monitoru
-* [Použít návrháře zobrazení pro vytváření vlastních zobrazení v protokoly Azure monitoru](../log-analytics/log-analytics-view-designer.md)
-* Referenční informace o [protokoly Azure monitoru integrace se Syslogem](../log-analytics/log-analytics-data-sources-syslog.md).
+* Seznámení s funkcemi [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) , které nabízí jako součást protokolů Azure monitor
+* [Použití návrháře zobrazení k vytváření vlastních zobrazení v protokolech Azure Monitor](../log-analytics/log-analytics-view-designer.md)
+* Referenční informace o tom, jak [Azure monitor protokoly integrace s protokolem SYSLOG](../log-analytics/log-analytics-data-sources-syslog.md).

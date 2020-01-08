@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 684c067f393b1f6037e67d3b49a861341f3353c8
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 24738e4d6a9f18bccdbc775fa20cccec222a85fb
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706128"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561622"
 ---
 # <a name="what-are-durable-functions"></a>Co je Durable Functions?
 
@@ -48,7 +48,7 @@ Ve vzoru zřetězení funkcí se posloupnost funkcí provádí v určitém pořa
 
 Můžete použít Durable Functions k implementaci vzor řetězení funkcí stručně, jak je znázorněno v následujícím příkladu.
 
-V tomto příkladu jsou hodnoty `F1`, `F2`, `F3`a `F4` názvy dalších funkcí v aplikaci Function App. Tok řízení lze implementovat pomocí normálních imperativních konstrukcí kódování. Kód se spustí shora dolů. Kód může zahrnovat stávající sémantiku toku řízení jazyka, jako jsou podmínky a smyčky. Můžete zahrnout logiku zpracování chyb v `try`/`catch`bloky /`finally`.
+V tomto příkladu jsou hodnoty `F1`, `F2`, `F3`a `F4` názvy dalších funkcí ve stejné aplikaci Function App. Tok řízení lze implementovat pomocí normálních imperativních konstrukcí kódování. Kód se spustí shora dolů. Kód může zahrnovat stávající sémantiku toku řízení jazyka, jako jsou podmínky a smyčky. Můžete zahrnout logiku zpracování chyb v `try`/`catch`bloky /`finally`.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -353,7 +353,7 @@ Externí klient může doručovat oznámení události do čekající funkce Orc
 curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/ApprovalEvent -H "Content-Type: application/json"
 ```
 
-Událost lze také vyvolat pomocí trvalého klienta Orchestration z jiné funkce:
+Událost se dá taky vyvolat pomocí trvalého klienta Orchestration z jiné funkce ve stejné aplikaci Function App:
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -507,7 +507,7 @@ Za účelem zajištění spolehlivých a dlouhotrvajících záruk spouštění 
 
 ## <a name="billing"></a>Vyúčtování
 
-Durable Functions se účtují stejně jako Azure Functions. Další informace najdete v tématu [Azure Functions ceny](https://azure.microsoft.com/pricing/details/functions/). Při provádění funkcí Orchestrator v plánu Azure Functions [spotřeby](../functions-scale.md#consumption-plan)existují některá nastavení fakturace, o kterých je potřeba vědět. Další informace o tomto chování najdete v článku o [fakturaci Durable Functions](durable-functions-billing.md) .
+Durable Functions se účtují stejně jako Azure Functions. Další informace najdete v tématu [ceny Azure Functions](https://azure.microsoft.com/pricing/details/functions/). Při provádění funkcí Orchestrator v plánu Azure Functions [spotřeby](../functions-scale.md#consumption-plan)existují některá nastavení fakturace, o kterých je potřeba vědět. Další informace o tomto chování najdete v článku o [fakturaci Durable Functions](durable-functions-billing.md) .
 
 ## <a name="jump-right-in"></a>Skok přímo v
 

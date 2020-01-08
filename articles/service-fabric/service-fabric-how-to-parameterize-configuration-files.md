@@ -1,23 +1,16 @@
 ---
-title: Parametrizovat konfigurační soubory v Azure Service Fabric | Microsoft Docs
-description: Naučte se, jak parametrizovat konfigurační soubory v Service Fabric.
-documentationcenter: .net
+title: Parametrizovat konfigurační soubory v Azure Service Fabric
+description: Naučte se, jak parametrizovat konfigurační soubory v Service Fabric, což je užitečná technika při správě více prostředí.
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/09/2018
 ms.author: mikhegn
-ms.openlocfilehash: dad497978de7187177998524db3b2f2ee448c717
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 4e96a732cffd70b0a5c24e7ebafe214297a72720
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464787"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644626"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Jak parametrizovat konfigurační soubory v Service Fabric
 
@@ -27,7 +20,7 @@ V tomto článku se dozvíte, jak parametrizovat konfigurační soubor v Service
 
 V tomto příkladu přepíšete konfigurační hodnotu pomocí parametrů ve vašem nasazení aplikace.
 
-1. V projektu služby otevřete soubor  *mojesluzba>\PackageRoot\Config\Settings.XML.\<*
+1. V projektu služby otevřete soubor *\<mojesluzba > \PackageRoot\Config\Settings.XML* .
 1. Přidáním následujícího kódu XML nastavte název a hodnotu konfiguračního parametru, například velikost mezipaměti rovnou 25.
 
    ```xml
@@ -37,15 +30,15 @@ V tomto příkladu přepíšete konfigurační hodnotu pomocí parametrů ve va�
    ```
 
 1. Uložte soubor a zavřete ho.
-1. Otevřete soubor MyApplication > \ApplicationPackageRoot\ApplicationManifest.XML.  *\<*
-1. V souboru souboru ApplicationManifest. XML deklarujte parametr a výchozí hodnotu v `Parameters` elementu.  Doporučuje se, aby název parametru obsahoval název služby (například "Mojesluzba").
+1. Otevřete soubor *\<MyApplication > \ApplicationPackageRoot\ApplicationManifest.XML* .
+1. V souboru souboru ApplicationManifest. XML deklarujte parametr a výchozí hodnotu v elementu `Parameters`.  Doporučuje se, aby název parametru obsahoval název služby (například "Mojesluzba").
 
    ```xml
     <Parameters>
       <Parameter Name="MyService_CacheSize" DefaultValue="80" />
     </Parameters>
    ```
-1. V části souboru souboru ApplicationManifest. XML `ConfigOverrides` přidejte element and `ConfigOverride` , který odkazuje na konfigurační balíček, část a parametr. `ServiceManifestImport`
+1. V části `ServiceManifestImport` souboru souboru ApplicationManifest. xml přidejte element `ConfigOverrides` a `ConfigOverride`, odkazování na konfigurační balíček, část a parametr.
 
    ```xml
     <ConfigOverrides>
@@ -64,5 +57,5 @@ V tomto příkladu přepíšete konfigurační hodnotu pomocí parametrů ve va�
 >
 >
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Informace o dalších možnostech správy aplikací, které jsou k dispozici v sadě Visual Studio, najdete v tématu [Správa aplikací Service Fabric v sadě Visual Studio](service-fabric-manage-application-in-visual-studio.md).

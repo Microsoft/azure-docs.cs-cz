@@ -1,50 +1,41 @@
 ---
-title: Dostupnost služeb Service Fabric | Dokumentace Microsoftu
-description: Popisuje detekce selhání, převzetí služeb při selhání a obnovení služby
-services: service-fabric
-documentationcenter: .net
+title: Dostupnost služeb Service Fabric Services
+description: Popisuje detekci chyb, převzetí služeb při selhání a obnovení služby v aplikaci Azure Service Fabric.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 279ba4a4-f2ef-4e4e-b164-daefd10582e4
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: dd10af0d3c8a57168a27a039286ea0ec4c1dad02
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5306439184561e8dec8303a7b149f51d6c2f6e08
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60310940"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551858"
 ---
-# <a name="availability-of-service-fabric-services"></a>Dostupnost služeb Service Fabric
-Tento článek obsahuje základní informace o tom, jak Azure Service Fabric udržuje dostupnosti služby.
+# <a name="availability-of-service-fabric-services"></a>Dostupnost služeb Service Fabric Services
+Tento článek poskytuje přehled o tom, jak Azure Service Fabric udržuje dostupnost služby.
 
-## <a name="availability-of-service-fabric-stateless-services"></a>Dostupnost bezstavové služby Service Fabric
-Služby Service Fabric může být Stavový nebo bezstavový. Bezstavová služba je aplikační služby, který nemá [místní stavu](service-fabric-concepts-state.md) , který musí být vysoce dostupné a spolehlivé.
+## <a name="availability-of-service-fabric-stateless-services"></a>Dostupnost bezstavových služeb Service Fabric
+Služba Service Fabric Services může být buď stavová, nebo Bezstavová. Bezstavová služba je Aplikační služba, která nemá [místní stav](service-fabric-concepts-state.md) , který musí být vysoce dostupný nebo spolehlivý.
 
-Vytvoření bezstavové služby vyžaduje definování `InstanceCount`. Počet instancí definuje počet instancí aplikace logiky bezstavové služby, který by měl být spuštěn v clusteru. Zvýšení počtu instancí je doporučený způsob horizontální navýšení kapacity bezstavovou službu.
+Vytvoření bezstavové služby vyžaduje definování `InstanceCount`. Počet instancí definuje počet instancí aplikační logiky bez stavové služby, které by měly být spuštěny v clusteru. Zvýšení počtu instancí je doporučený způsob škálování bezstavové služby.
 
-Při selhání instance bezstavové služby s názvem, je vytvořena nová instance na oprávněné uzlu v clusteru. Například instance bezstavové služby může selhat v Node1 a znovu vytvořit na počítač Uzel5.
+V případě, že dojde k neúspěšnému výskytu instance pojmenované služby, vytvoří se nová instance v oprávněném uzlu v clusteru. Například instance bezstavové služby může selhat na Uzel1 a znovu vytvořit v počítač Uzel5.
 
-## <a name="availability-of-service-fabric-stateful-services"></a>Dostupnost stavové služby Service Fabric
-Stavová služba má stav s ním spojená. V Service Fabric je modelovaná stavové služby jako sady replik. Každá replika je spuštěna instance kódu služby. Replika má také kopii stavu za danou službu. Čtení a zápis, operace se provádějí na jednu repliku, volá se, *primární*. Operace zápisu změn do stavu z *replikovat* do jiné repliky sady replik, volá *aktivní sekundární databáze*a použít. 
+## <a name="availability-of-service-fabric-stateful-services"></a>Dostupnost stavových služeb Service Fabric
+Stavová služba je přidružená k ní. V Service Fabric je stavová služba modelována jako sada replik. Každá replika je spuštěná instance kódu služby. Replika má také kopii stavu pro tuto službu. Operace čtení a zápisu se provádějí v jedné replice, která se nazývá *primární*. Změny stavu z operací zápisu se *replikují* do ostatních replik v sadě repliky, označované jako *aktivní sekundární*a použité. 
 
-Může existovat pouze jedna primární replika, ale může existovat více aktivní sekundární repliky. Je možné konfigurovat počet aktivní sekundární repliky a větší počet replik může tolerovat vyšší počet souběžných softwaru a selhání hardwaru.
+Může existovat jenom jedna primární replika, ale může existovat několik aktivních sekundárních replik. Počet aktivních sekundárních replik je konfigurovatelný a vyšší počet replik může tolerovat větší počet souběžných selhání softwaru a hardwaru.
 
-Pokud je primární replika přestane fungovat, Service Fabric zajišťuje jeden aktivní sekundární repliky novou primární repliku. Tato aktivní sekundární replika už má aktualizovanou verzi stavu, prostřednictvím *replikace*, a může pokračovat v další zpracování operace čtení a zápisu. Tento proces se označuje jako *Rekonfigurace* a je popsáno dále v [Rekonfigurace](service-fabric-concepts-reconfiguration.md) článku.
+Pokud dojde k výpadku primární repliky, Service Fabric vytvoří jednu z aktivních sekundárních replik nové primární repliky. Tato aktivní sekundární replika již má aktualizovanou verzi stavu prostřednictvím *replikace*a může pokračovat ve zpracování dalších operací čtení a zápisu. Tento proces se označuje jako *rekonfigurace* a je podrobněji popsaný v článku o [Překonfiguraci](service-fabric-concepts-reconfiguration.md) .
 
-Koncept je buď primární, nebo aktivní sekundární repliky se označuje jako *role repliky*. Tyto repliky jsou popsány dále v [replik a instancí](service-fabric-concepts-replica-lifecycle.md) článku. 
+Koncept repliky, která je buď primární nebo aktivní sekundární, se označuje jako *role repliky*. Tyto repliky jsou podrobněji popsány v článku [repliky a instance](service-fabric-concepts-replica-lifecycle.md) . 
 
-## <a name="next-steps"></a>Další postup
-Další informace o konceptech Service Fabric najdete v následujících článcích:
+## <a name="next-steps"></a>Další kroky
+Další informace o Service Fabric konceptech najdete v následujících článcích:
 
-- [Škálování služby Service Fabric](service-fabric-concepts-scalability.md)
-- [Dělení služeb Service Fabric](service-fabric-concepts-partitioning.md)
-- [Definování a správa stavu](service-fabric-concepts-state.md)
+- [Škálování služby Service Fabric Services](service-fabric-concepts-scalability.md)
+- [Dělení Service Fabric služeb](service-fabric-concepts-partitioning.md)
+- [Definování a Správa stavu](service-fabric-concepts-state.md)
 - [Reliable Services](service-fabric-reliable-services-introduction.md)
 

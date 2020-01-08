@@ -1,7 +1,7 @@
 ---
-title: Rychlý start – Vytvoření škálovací sady virtuálních počítačů na webu Azure Portal | Microsoft Docs
-description: Zjistěte, jak rychle vytvořit škálovací sadu virtuálních počítačů na webu Azure Portal.
-services: virtual-machine-scale-sets
+title: Rychlý Start – vytvoření sady škálování virtuálního počítače v Azure Portal
+description: Začněte s nasazeními a Naučte se, jak rychle vytvořit virtuální počítač škáluje Azure Portal.
+services: virtual-machine-scale-sets.
 author: cynthn
 manager: gwallace
 tags: azure-resource-manager
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 1bbbef6d8037b819c557e1c7fc3fff6248507986
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5a44aad7471c29a387337a5ee988e66287fca3ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466380"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351145"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Rychlý start: Vytvoření škálovací sady virtuálních počítačů na webu Azure Portal
 
@@ -33,7 +33,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 [Nástroj pro vyrovnávání zatížení](../load-balancer/load-balancer-overview.md) Azure distribuuje příchozí provoz mezi instance virtuálních počítačů v pořádku. 
 
-Nejprve pomocí portálu Vytvořte veřejnou základní Load Balancer. Název a veřejná IP adresa, které vytvoříte, se automaticky nakonfigurují jako front-end nástroje pro vyrovnávání zatížení.
+Nejprve pomocí portálu Vytvořte veřejnou základní Load Balancer. Název a veřejnou IP adresu, kterou jste vytvořili, se automaticky nakonfiguruje jako front-endu nástroje pro vyrovnávání zatížení.
 
 1. Do vyhledávacího pole zadejte **Nástroj pro vyrovnávání zatížení**. V části **Marketplace** ve výsledcích hledání zvolte **Nástroj pro vyrovnávání zatížení**.
 1. Na kartě **základy** na stránce **vytvořit nástroj pro vyrovnávání zatížení** zadejte nebo vyberte následující informace:
@@ -43,12 +43,12 @@ Nejprve pomocí portálu Vytvořte veřejnou základní Load Balancer. Název a 
     | Předplatné  | Vyberte své předplatné.    |    
     | Skupina prostředků | Vyberte **vytvořit nový** a do textového pole zadejte *myVMSSResourceGroup* .|
     | Name (Název)           | *myLoadBalancer*         |
-    | Oblast         | Vyberte **USA – východ**.       |
-    | Typ          | Vyberte možnost **veřejné**.       |
+    | Region (Oblast)         | Vyberte **USA – východ**.       |
+    | Typ          | Vyberte **Veřejný**.       |
     | Skladová položka           | Vyberte **Standard**.       |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
     | Název veřejné IP adresy  | *MyPip*   |
-    | přiřazení| Statický |
+    | Přiřazení| Statický |
 
 1. Až budete hotovi, vyberte **zkontrolovat + vytvořit** . 
 1. Jakmile ověření projde, vyberte **vytvořit**. 

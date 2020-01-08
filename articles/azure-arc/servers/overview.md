@@ -10,12 +10,12 @@ keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu,
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: d091b89342570b73ccde5fe496a3432102617918
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 06e3b490f4f9cef64ae8bca5aed4d0518f10ba0e
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951424"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659617"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>Co je Azure ARC pro servery
 
@@ -41,7 +41,7 @@ Verze Public Preview je navržená pro účely vyhodnocení a neměla by se pou�
 
 ## <a name="azure-subscription-and-service-limits"></a>Omezení předplatného a služeb Azure
 
-Ujistěte se prosím, že jste si přečetli omezení Azure Resource Manager a naplánujete počet počítačů, které se mají připojit, podle pokynů uvedených pro [předplatné](../../azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)a pro [skupiny prostředků](../../azure-subscription-service-limits.md#resource-group-limits). Ve výchozím nastavení je pro každou skupinu prostředků povolený limit 800 serverů.
+Ujistěte se prosím, že jste si přečetli omezení Azure Resource Manager a naplánujete počet počítačů, které se mají připojit, podle pokynů uvedených pro [předplatné](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)a pro [skupiny prostředků](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits). Ve výchozím nastavení je pro každou skupinu prostředků povolený limit 800 serverů.
 
 ## <a name="networking-configuration"></a>Konfigurace sítě
 
@@ -107,7 +107,7 @@ az provider register --namespace 'Microsoft.HybridCompute'
 az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
-Poskytovatele prostředků můžete také zaregistrovat pomocí portálu podle kroků v části [Azure Portal](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
+Poskytovatele prostředků můžete také zaregistrovat pomocí portálu podle kroků v části [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
 ## <a name="machine-changes-after-installing-the-agent"></a>Změny počítače po instalaci agenta
 

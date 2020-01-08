@@ -1,5 +1,5 @@
 ---
-title: Převod úložiště Azure Managed disks z úrovně Standard na Premium nebo Premium na standard
+title: Převod úložiště spravovaných disků mezi Standard a SSD
 description: Jak převést službu Azure Managed disks z úrovně Standard na Premium nebo Premium na standard pomocí Azure PowerShell.
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b63d4d0247fd640e961d03d336d6b211473c48fb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cbc2d09429c0a36992167b8c8251d0a570ffbae3
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033929"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563305"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Aktualizace typu úložiště spravovaného disku
 
@@ -113,7 +113,7 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 
 Postupujte následovně:
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Vyberte virtuální počítač ze seznamu **virtuálních počítačů** na portálu.
 3. Pokud se virtuální počítač nezastavil, v horní části podokna **přehledu** virtuálních počítačů vyberte **zastavit** a počkejte, než se virtuální počítač zastaví.
 3. V podokně pro virtuální počítač vyberte z nabídky **disky** .
@@ -122,7 +122,7 @@ Postupujte následovně:
 6. Změňte **typ účtu** z **HDD úrovně Standard** na **SSD úrovně Premium**.
 7. Klikněte na **Uložit**a zavřete podokno disk.
 
-Převod typu disku je okamžitý. Po převodu můžete restartovat virtuální počítač.
+Převod typu disku je okamžitý. Po převodu můžete spustit virtuální počítač.
 
 ## <a name="switch-managed-disks-between-standard-hdd-and-standard-ssd"></a>Přepínat spravované disky mezi HDD úrovně Standard a SSD úrovně Standard 
 

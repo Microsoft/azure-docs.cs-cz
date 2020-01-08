@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: b655181f41aeda71364edd061b7c81db23e59990
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 26516b99f3ffd9a16a24a4d5d1906ed781a8034a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951135"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396524"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Přehled výstrah v Microsoft Azure 
 
@@ -71,8 +71,8 @@ Dříve byly Azure Monitor metriky, Application Insights, Log Analytics a Servic
 
 | **Zdroj monitorování** | **Typ signálu**  | **Popis** | 
 |-------------|----------------|-------------|
-| Stav služby | Protokol aktivit  | Nepodporuje se. Viz téma [vytváření výstrah protokolu aktivit u oznámení služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
-| Application Insights | Testy dostupnosti webu | Nepodporuje se. Podívejte se na téma [výstrahy webového testu](../../azure-monitor/app/monitor-web-app-availability.md). K dispozici pro všechny weby, které jsou instrumentované pro posílání dat Application Insights. Dostanou oznámení, pokud je dostupnost nebo odezva webu nižší než očekávání. |
+| Stav služby | Protokol aktivit  | Není podporováno. Viz téma [vytváření výstrah protokolu aktivit u oznámení služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
+| Application Insights | Testy dostupnosti webu | Není podporováno. Podívejte se na téma [výstrahy webového testu](../../azure-monitor/app/monitor-web-app-availability.md). K dispozici pro všechny weby, které jsou instrumentované pro posílání dat Application Insights. Dostanou oznámení, pokud je dostupnost nebo odezva webu nižší než očekávání. |
 
 ## <a name="manage-alerts"></a>Správa upozornění
 Můžete nastavit stav výstrahy, chcete-li určit, kde se nachází v procesu řešení. Když jsou splněna kritéria zadaná v pravidle výstrahy, je vytvořena nebo aktivována výstraha a stav *nového*. Stav můžete změnit, když potvrdíte výstrahu a při jejím zavření. Všechny změny stavu jsou uloženy v historii výstrahy.
@@ -184,23 +184,23 @@ Spotřeba a Správa instancí výstrah vyžaduje, aby uživatel měl předdefino
 
 Pro výstrahy generované proti vašemu předplatnému můžete chtít dotazovat programově. Může se jednat o vytváření vlastních zobrazení mimo Azure Portal nebo k analýze výstrah pro identifikaci vzorců a trendů.
 
-Pomocí [Alert Management REST API](https://aka.ms/alert-management-api) nebo pomocí [grafu prostředků Azure REST API pro výstrahy](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)se můžete dotazovat na výstrahy vygenerované proti vašemu předplatnému.
+Můžete zadat dotaz na výstrahy vygenerované na základě předplatného, a to buď pomocí [REST API Alert Management](https://aka.ms/alert-management-api) , nebo pomocí [grafu prostředků Azure](../../governance/resource-graph/overview.md) a [REST API pro prostředky](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources).
 
-[Graf prostředků Azure REST API pro výstrahy](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)) umožňuje dotazovat se na instance výstrah ve velkém měřítku. To se doporučuje, když budete muset spravovat výstrahy vygenerované v mnoha předplatných. 
+Graf prostředků REST API pro prostředky vám umožní dotazování na instance výstrah ve velkém měřítku. To se doporučuje, když budete muset spravovat výstrahy vygenerované v mnoha předplatných. 
 
-Následující vzorový požadavek na rozhraní API vrátí počet výstrah v rámci jednoho předplatného:
+Následující vzorový požadavek na graf prostředků REST API vrátí počet výstrah v rámci jednoho předplatného:
 
 ```json
 {
   "subscriptions": [
     <subscriptionId>
   ],
-  "query": "where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()",
-  "options": {
-            "dataset":"alerts"
-  }
+  "query": "AlertsManagementResources | where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()"
 }
 ```
+
+Výsledek dotazu na graf prostředku můžete zobrazit také na portálu pomocí Průzkumníka Azure Resource graphu: [Portal.Azure.com](https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/AlertsManagementResources%20%7C%20where%20type%20%3D~%20%27Microsoft.AlertsManagement%2Falerts%27%20%7C%20summarize%20count())
+
 Můžete zadat dotaz na výstrahy pro jejich [důležitá](alerts-common-schema-definitions.md#essentials) pole.
 
 Pomocí [REST API Alert Management](https://aka.ms/alert-management-api) můžete získat další informace o konkrétních výstrahách, včetně jejich [kontextových polí výstrahy](alerts-common-schema-definitions.md#alert-context) .

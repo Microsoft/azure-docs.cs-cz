@@ -2,26 +2,26 @@
 title: Povolit výpisy haldy pro Apache Hadoop služby ve službě HDInsight – Azure
 description: Povolte výpisy haldy pro Apache Hadoop služby z clusterů HDInsight se systémem Linux pro účely ladění a analýzy.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/27/2018
-ms.author: hrasheed
-ms.openlocfilehash: 90de0b4bfad4c5096ebc38eb3d31fc41bca6649b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 01/02/2020
+ms.openlocfilehash: 9134eb6922b0ed37bbe6051b138da2c7c082b175
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494853"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658793"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Povolit výpisy haldy pro Apache Hadoop služby v HDInsight se systémem Linux
 
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
-Výpisy haldy obsahují snímek paměti aplikace, včetně hodnot proměnných v době, kdy byl vytvořen výpis paměti. To je užitečné pro diagnostiku problémů, ke kterým dochází v době běhu.
+Výpisy haldy obsahují snímek paměti aplikace, včetně hodnot proměnných v době, kdy byl vytvořen výpis paměti. Jsou užitečné pro diagnostiku problémů, ke kterým dochází v době běhu.
 
-## <a name="whichServices"></a>Orgány
+## <a name="services"></a>Služby
 
 Můžete povolit výpisy paměti haldy pro následující služby:
 
@@ -33,7 +33,7 @@ Můžete povolit výpisy paměti haldy pro následující služby:
 
 Můžete také povolit výpisy paměti haldy pro mapu a snížit procesy spuštěné službou HDInsight.
 
-## <a name="configuration"></a>Principy konfigurace výpisu paměti haldy
+## <a name="understanding-heap-dump-configuration"></a>Principy konfigurace výpisu paměti haldy
 
 Výpisy haldy jsou povolené předáním možností (někdy označované jako výslovný nebo parametry) do JVM při spuštění služby. U většiny [Apache Hadoop](https://hadoop.apache.org/) Services můžete upravit skript prostředí používaný ke spuštění služby a předat tyto možnosti.
 
@@ -41,8 +41,8 @@ V každém skriptu je k dispozici export pro **\*\_výslovný**, který obsahuje
 
 Mapování a snížení procesů se mírně liší, protože tyto operace jsou podřízeným procesem služby MapReduce. Každá mapa nebo omezení procesu běží v podřízeném kontejneru a existují dvě položky, které obsahují JVM možnosti. Obojí je obsaženo v **souboru mapred-site. XML**:
 
-* **MapReduce. admin. map. Child. Java. výslovný**
-* **MapReduce. admin. redukovat. Child. Java. výslovný**
+* **mapreduce.admin.map.child.java.opts**
+* **mapreduce.admin.reduce.child.java.opts**
 
 > [!NOTE]  
 > K úpravě nastavení skriptů a mapred-site. XML doporučujeme použít [Apache Ambari](https://ambari.apache.org/) , protože Ambari zpracovává replikaci změn napříč uzly v clusteru. Konkrétní postup najdete v části [použití Apache Ambari](#using-apache-ambari) .
@@ -81,12 +81,7 @@ Skript můžete také aktivovat, když dojde k **OutOfMemoryError** . Napříkla
 
 Chcete-li upravit konfiguraci služby, použijte následující postup:
 
-1. Otevřete webové uživatelské rozhraní Ambari pro váš cluster. Adresa URL je https://YOURCLUSTERNAME.azurehdinsight.net.
-
-    Po zobrazení výzvy proveďte ověření v lokalitě pomocí názvu účtu HTTP (výchozí: admin) a hesla pro váš cluster.
-
-   > [!NOTE]  
-   > K uživatelskému jménu a heslu se může Ambari považovat za druhý čas. Pokud ano, zadejte stejný název účtu a heslo.
+1. Ve webovém prohlížeči přejděte na `https://CLUSTERNAME.azurehdinsight.net`, kde `CLUSTERNAME` je název vašeho clusteru.
 
 2. Pomocí seznamu na levé straně vyberte oblast služby, kterou chcete upravit. Příklad: **HDFS**. V prostřední oblasti vyberte kartu **Konfigurace** .
 
@@ -121,4 +116,3 @@ Chcete-li upravit konfiguraci služby, použijte následující postup:
    > Položky tlačítka pro **restartování** se mohou lišit pro jiné služby.
 
 8. Po restartování služeb můžete **režim údržby**vypnout pomocí tlačítka **Akce služby** . Tento Ambari obnoví monitorování výstrah pro službu.
-

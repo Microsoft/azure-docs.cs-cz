@@ -1,24 +1,17 @@
 ---
-title: Co je konfigurace aplikací Azure? | Dokumenty Microsoft
+title: Co je konfigurace aplikací Azure?
 description: Přehled služby Azure App Configuration Service.
-services: azure-app-configuration
-documentationcenter: ''
 author: yegu-ms
-manager: balans
-editor: ''
+ms.author: yegu
 ms.service: azure-app-configuration
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
-ms.author: yegu
-ms.openlocfilehash: 01644054868ffc08738e67654ba181c76e7aed39
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 40630bbbbcea344fb74d8ad971eb4c808bf0c142
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185066"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495245"
 ---
 # <a name="what-is-azure-app-configuration"></a>Co je konfigurace aplikací Azure?
 
@@ -60,12 +53,12 @@ Doplňková konfigurace aplikace [Azure Key Vault](https://azure.microsoft.com/s
 
 Nejjednodušší způsob, jak přidat úložiště konfigurace aplikace do vaší aplikace, je prostřednictvím klientské knihovny, kterou poskytuje společnost Microsoft. Na základě programovacího jazyka a architektury jsou pro vás k dispozici následující nejlepší metody.
 
-| Programovací jazyk a architektura | Jak se připojit |
+| Programovací jazyk a architektura | Jak připojit |
 |---|---|
 | .NET Core a ASP.NET Core | Poskytovatel konfigurace aplikace pro .NET Core |
 | .NET Framework a ASP.NET | Tvůrce konfigurace aplikací pro .NET |
 | Java Spring | Klient konfigurace aplikace pro jarní Cloud |
-| Ostatní | REST API konfigurace aplikace |
+| Další | REST API konfigurace aplikace |
 
 ## <a name="next-steps"></a>Další kroky
 

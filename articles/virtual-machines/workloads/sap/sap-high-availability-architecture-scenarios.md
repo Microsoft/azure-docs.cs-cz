@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f4352fbf71b23aedc1dddd3e454b58196d4f5a6e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1a52977a46c1222a1626fa5a4dcb4de7dd84f8dd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078473"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638200"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Architektura a scénáře s vysokou dostupností pro SAP NetWeaver
 
@@ -37,8 +37,8 @@ ms.locfileid: "70078473"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -224,16 +224,16 @@ ms.locfileid: "70078473"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
 
 ## <a name="terminology-definitions"></a>Definice terminologie
 
-**Vysoká dostupnost:** Odkazuje na sadu technologií, které minimalizují přerušení provozu tím, že zajišťuje kontinuitu podnikových služeb IT prostřednictvím redundantních součástí, odolných proti chybám nebo převzetí služeb při selhání ve *stejném* datovém centru. V našem případě se datové centrum nachází v jedné oblasti Azure.
+**Vysoká dostupnost**: odkazuje na sadu technologií, které minimalizují přerušení provozu tím, že zajišťuje kontinuitu podnikových služeb IT prostřednictvím redundantních součástí, odolných proti chybám nebo převzetí služeb při selhání ve *stejném* datovém centru. V našem případě se datové centrum nachází v jedné oblasti Azure.
 
-**Zotavení po havárii**: Také odkazuje na minimalizaci přerušení služeb IT a jejich obnovení, ale v *různých* datových centrech, které mohou být od sebe od sebe stovky kilometrů. V našem případě se datová centra můžou nacházet v různých oblastech Azure v rámci stejné geopolitické oblasti nebo v místech, jak si ji zavedli jako zákazník.
+**Zotavení po havárii**: také odkazuje na minimalizaci přerušení služeb IT a jejich obnovení, ale v *různých* datových centrech, které mohou být od sebe od sebe stovky kilometrů. V našem případě se datová centra můžou nacházet v různých oblastech Azure v rámci stejné geopolitické oblasti nebo v místech, jak si ji zavedli jako zákazník.
 
 
 ## <a name="overview-of-high-availability"></a>Přehled vysoké dostupnosti
@@ -306,7 +306,7 @@ Dostupnost virtuálních počítačů můžou ovlivnit dva typy událostí platf
 
 * **Plánované události údržby** jsou pravidelné aktualizace prováděné Microsoftem na základní platformu Azure. Tyto aktualizace zlepšují celkovou spolehlivost, výkon a zabezpečení infrastruktury platformy, na které běží vaše virtuální počítače.
 
-* K neplánovaným událostem **údržby** dochází, když se hardwarová nebo fyzická infrastruktura na virtuálním počítači nějakým způsobem nezdařila. Může to zahrnovat selhání místní sítě, selhání místního disku nebo jiné chyby na úrovni racku. Když se takové selhání detekuje, platforma Azure automaticky migruje virtuální počítač z nesprávného fyzického serveru, který hostuje váš virtuální počítač, na fyzický server, který je v pořádku. Tyto události jsou vzácné, ale můžou taky způsobit, že se virtuální počítač restartuje.
+* K **neplánovaným** událostem údržby dochází, když se hardwarová nebo fyzická infrastruktura na virtuálním počítači nějakým způsobem nezdařila. Může to zahrnovat selhání místní sítě, selhání místního disku nebo jiné chyby na úrovni racku. Když se takové selhání detekuje, platforma Azure automaticky migruje virtuální počítač z nesprávného fyzického serveru, který hostuje váš virtuální počítač, na fyzický server, který je v pořádku. Tyto události jsou vzácné, ale můžou taky způsobit, že se virtuální počítač restartuje.
 
 Další informace najdete v tématu [Správa dostupnosti virtuálních počítačů s Windows v Azure][azure-virtual-machines-manage-availability].
 
@@ -349,7 +349,7 @@ V dalších částech se podíváte, jak dosáhnout vysoké dostupnosti pro vše
 
 Obvykle nepotřebujete pro instance aplikačního serveru SAP a dialogových serverů SAP konkrétní řešení s vysokou dostupností. Dosáhnete vysoké dostupnosti redundancí a nakonfigurujete několik instancí dialogů v různých instancích virtuálních počítačů Azure. Ve dvou instancích virtuálních počítačů Azure byste měli mít nainstalované aspoň dvě instance aplikace SAP.
 
-![Obrázek 1: Aplikační Server SAP s vysokou dostupností][sap-ha-guide-figure-2000]
+![Obrázek 1: aplikační Server SAP s vysokou dostupností][sap-ha-guide-figure-2000]
 
 _**Obrázek 1:** Aplikační Server SAP s vysokou dostupností_
 
@@ -367,8 +367,8 @@ Počet domén aktualizace a selhání, které může použít Skupina dostupnost
 
 Pokud ve svých vyhrazených virtuálních počítačích nasadíte několik instancí aplikačního serveru SAP za předpokladu, že máme pět aktualizačních domén, objeví se následující obrázek. Skutečný maximální počet domén aktualizace a selhání v rámci skupiny dostupnosti se může v budoucnu změnit:
 
-![Obrázek 2: Vysoká dostupnost aplikačních serverů SAP v sadě][planning-guide-figure-3000]
-_dostupnosti Azure na**obrázku 2:** Vysoká dostupnost aplikačních serverů SAP v sadě dostupnosti Azure_
+![obrázek 2: vysoká dostupnost aplikačních serverů SAP v sadě dostupnosti Azure][planning-guide-figure-3000]
+_ **Obrázek 2:** vysoká dostupnost aplikačních serverů SAP v sadě dostupnosti Azure_
 
 Další informace najdete v tématu [Správa dostupnosti virtuálních počítačů s Windows v Azure][azure-virtual-machines-manage-availability].
 
@@ -387,9 +387,9 @@ Další informace najdete v části [skupiny dostupnosti Azure][planning-guide-3
 
 K ochraně instance SAP ASCS/SCS můžete použít řešení služby WSFC. Řešení má dvě varianty:
 
-* **Vytvoření clusteru instance SAP ASCS/SCS pomocí clusterovaných sdílených disků**: Další informace o této architektuře najdete v tématu věnovaném [vytvoření instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdíleného disku clusteru][sap-high-availability-guide-wsfc-shared-disk].   
+* **Vytvoření clusteru instance SAP ASCS/SCS pomocí clusterovaných sdílených disků**: Další informace o této architektuře najdete v tématu věnovaném [vytvoření instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání systému Windows pomocí sdíleného disku clusteru][sap-high-availability-guide-wsfc-shared-disk].   
 
-* **Vytvoření clusteru instance SAP ASCS/SCS pomocí sdílené složky**: Další informace o této architektuře najdete v tématu věnovaném vytvoření [instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání systému Windows pomocí sdílené složky][sap-high-availability-guide-wsfc-file-share].
+* Vytvořte **cluster instance SAP ASCS/SCS pomocí sdílené složky**: Další informace o této architektuře najdete v tématu věnovaném vytvoření [instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání systému Windows pomocí sdílené složky][sap-high-availability-guide-wsfc-file-share].
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Architektura vysoké dostupnosti pro instanci SAP ASCS/SCS v systému Linux
 
@@ -416,7 +416,7 @@ Další informace o clusteringu instance SAP ASCS/SCS pomocí architektury syst�
 
 DBMS je také jedním kontaktním bodem v systému SAP. Budete je muset chránit pomocí řešení s vysokou dostupností. Následující obrázek ukazuje řešení vysoce dostupného AlwaysOn SQL Server v Azure s clusteringem s podporou převzetí služeb při selhání Windows serveru a interním nástrojem pro vyrovnávání zatížení Azure. SQL Server AlwaysOn replikuje DBMS data a soubory protokolu pomocí vlastní replikace systému DBMS. V takovém případě nepotřebujete sdílený disk clusteru, což zjednodušuje celou instalaci.
 
-![Obrázek 3: Příklad vysoce dostupného systému SAP DBMS s SQL Server AlwaysOn][sap-ha-guide-figure-2003]
+![Obrázek 3: příklad vysoce dostupného systému SAP DBMS s SQL Server AlwaysOn][sap-ha-guide-figure-2003]
 
 _**Obrázek 3:** Příklad vysoce dostupného systému SAP DBMS s SQL Server AlwaysOn_
 

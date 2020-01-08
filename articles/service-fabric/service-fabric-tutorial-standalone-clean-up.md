@@ -1,30 +1,21 @@
 ---
-title: Kurz čištění samostatného clusteru Service Fabric – Azure Service Fabric | Microsoft Docs
-description: V tomto kurzu se naučíte vyčistit samostatný cluster.
-services: service-fabric
-documentationcenter: .net
+title: Vyčištění samostatného clusteru
+description: V tomto kurzu se naučíte vyčistit prostředky AWS nebo Azure v samostatném clusteru Service Fabric.
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: bebe3a2dc83b651e713ee80d7b11068b13096e04
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bfb23ca5f5eb9540491fbd05efdfd6997db15e6b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385157"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639016"
 ---
-# <a name="tutorial-clean-up-your-standalone-cluster"></a>Kurz: Vyčištění samostatného clusteru
+# <a name="tutorial-clean-up-your-standalone-cluster"></a>Kurz: Čištění samostatného clusteru
 
-Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „libovolný OS a libovolný cloud“. V této sérii kurzů vytvoříte samostatný cluster hostovaný na AWS nebo Azure a nainstalujete do něj aplikaci.
+Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „jakýkoli operační systém a cloud“. V této sérii kurzů vytvoříte samostatný cluster hostovaný na AWS nebo Azure a nainstalujete do něj aplikaci.
 
 Tento kurz je čtvrtou částí série. V této části kurzu se dozvíte, jak vyčistit prostředky AWS nebo Azure, které jste vytvořili pro hostování Service Fabricho clusteru.
 
@@ -45,7 +36,7 @@ Ve čtvrté části této série se naučíte:
   .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
   ```
 
-5. Po `Y` zobrazení výzvy zadejte, že pokud bylo úspěšné, váš výstup bude vypadat jako následující s vašimi vlastními IP adresami, které jsou nahrazeny v:
+5. Po zobrazení výzvy zadejte `Y`, pokud bylo úspěšné, váš výstup bude vypadat jako v následujícím seznamu s vašimi vlastními IP adresami, které jsou nahrazeny v:
 
   ```powershell
   Best Practices Analyzer completed successfully.
@@ -63,7 +54,7 @@ Ve čtvrté části této série se naučíte:
 1. Přihlaste se ke svému účtu AWS.
 2. Přejděte na konzolu EC2.
 3. Vyberte tři uzly, které jste vytvořili v první části kurzu.
-4. Klikněte na položku **Akce** > **ukončit** **stav** > instance.
+4. Klikněte na **akce** > **stav instance** > **ukončit**.
 
 ## <a name="clean-up-azure-resources"></a>Vyčištění prostředků Azure
 
@@ -72,7 +63,7 @@ Ve čtvrté části této série se naučíte:
 3. Zaškrtněte políčka pro tři uzly, které jste vytvořili v první části kurzu.
 4. Klikněte na **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Ve čtvrté části této série se naučíte čistit prostředky, které jste vytvořili v předchozích krocích.
 

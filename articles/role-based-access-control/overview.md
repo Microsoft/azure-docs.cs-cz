@@ -1,5 +1,5 @@
 ---
-title: Co je řízení přístupu na základě role (RBAC) pro prostředky Azure? | Microsoft Docs
+title: Co je řízení přístupu na základě role (RBAC) pro prostředky Azure? | Dokumentace Microsoftu
 description: Získejte přehled řízení přístupu na základě role (RBAC) pro prostředky Azure. K řízení přístupu k prostředkům Azure použijte přiřazení rolí.
 services: active-directory
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.workload: identity
 ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1b40f8e070606a4c21def592fb6104e42e25f9f6
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 2ef528438591006be6e4cdec508dd15a7fb0a143
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707936"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357677"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Co je řízení přístupu na základě role (RBAC) pro prostředky Azure?
 
 Správa přístupu ke cloudovým prostředkům je velmi důležitou funkcí pro jakoukoli organizaci, která používá cloud. Řízení přístupu na základě role (RBAC) pomáhá spravovat, kdo má přístup k prostředkům Azure, co může s těmito prostředky dělat a k jakým oblastem má přístup.
 
-RBAC je autorizační systém založený na [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) , který poskytuje jemně odstupňovanou správu přístupu k prostředkům Azure.
+RBAC je autorizační systém založený na [Azure Resource Manager](../azure-resource-manager/management/overview.md) , který poskytuje jemně odstupňovanou správu přístupu k prostředkům Azure.
 
 ## <a name="what-can-i-do-with-rbac"></a>Co mi RBAC umožňuje?
 
@@ -84,7 +84,7 @@ V Azure můžete zadat obor na více úrovních: na úrovni [skupiny pro správu
 
 ![Obor přiřazení role](./media/overview/rbac-scope.png)
 
-Když udělíte přístup na úrovni nadřízeného oboru, podřízené obory zdědí příslušná oprávnění. Například:
+Když udělíte přístup na úrovni nadřízeného oboru, podřízené obory zdědí příslušná oprávnění. Příklad:
 
 - Pokud uživateli přiřadíte roli [Vlastník](built-in-roles.md#owner) na úrovni oboru skupiny pro správu, může tento uživatel spravovat vše ve všech předplatných v příslušné skupině pro správu.
 - Pokud přiřadíte roli [Čtenář](built-in-roles.md#reader) skupině v oboru předplatného, členové takové skupiny mohou zobrazit všechny skupiny prostředků a prostředky v daném předplatném.

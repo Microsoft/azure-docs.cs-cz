@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/28/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4b2dcf8f156f231041d7636d103eea59816ec65f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 09179ff0cf8275e96cb87e0c183eb4a384dcb37b
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008453"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75564748"
 ---
 Je důležité pochopit, jak a kde se virtuální počítače (VM) v Azure provozují, a také vědět, jaké máte možnosti pro zajištění maximálního výkonu, dostupnosti a redundance. Tento článek poskytuje přehled funkcí redundance a dostupnosti Azure.
 
@@ -29,7 +29,7 @@ Azure má některé zvláštní oblasti, které můžete chtít použít při vy
 * **US Gov – Iowa** a **US Gov – Virginie**.
   * Fyzická a logická síťově izolovaná instance Azure pro partnery a úřady státní správy USA, která je obsluhovaná prověřenými občany USA. Zahrnuje další certifikace dodržování předpisů, jako je [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP) a [DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA). Další informace o službě [Azure Government](https://azure.microsoft.com/features/gov/)
 * **Severní Čína** a **Východní Čína**
-  * Tyto oblasti jsou dostupné prostřednictvím jedinečného partnerství mezi společnostmi Microsoft a 21Vianet, kdy společnost Microsoft nespravuje tato datová centra přímo. Přečtěte si další informace o [Azure Čína 21Vianet](http://www.windowsazure.cn/).
+  * Tyto oblasti jsou dostupné prostřednictvím jedinečného partnerství mezi společnostmi Microsoft a 21Vianet, kdy společnost Microsoft nespravuje tato datová centra přímo. Přečtěte si další informace o [Azure Čína 21Vianet](https://www.windowsazure.cn/).
 * **Střední Německo** a **Severovýchodní Německo**
   * Tyto oblasti jsou k dispozici prostřednictvím modelu důvěryhodného data, kde se data zákazníků nacházejí v Německu pod kontrolou T-Systems, Telekom společnosti, která slouží jako důvěryhodný datový zplnomocněnec.
 
@@ -80,7 +80,7 @@ V následující tabulce najdete stručný přehled rozdílů jednotlivých typ�
 
 Další informace o [možnostech replikace služby Azure Storage najdete tady](../articles/storage/common/storage-redundancy.md). Další informace o spravovaných discích najdete v tématu [Přehled služby Azure Managed Disks](../articles/virtual-machines/windows/managed-disks-overview.md).
 
-### <a name="storage-costs"></a>Cena za uložení
+### <a name="storage-costs"></a>Náklady na úložiště
 Ceny se liší v závislosti na zvolené dostupnosti a typu úložiště.
 
 **Spravované disky Azure**

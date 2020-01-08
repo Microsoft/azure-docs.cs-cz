@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/27/2019
 ms.author: memildin
-ms.openlocfilehash: c3134988452efe16044ab7b7740cafd02e8cf27a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 46ed2af51f34a25c1cdc1abb6152169feedd989e
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201921"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666291"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Správa a reakce na výstrahy zabezpečení v Azure Security Center
 
@@ -65,7 +65,7 @@ Security Center automaticky shromažďuje, analyzuje a integruje data protokolu 
     > [!NOTE]
     >V některých případech není zdrojová IP adresa k dispozici, některé protokoly událostí zabezpečení systému Windows neobsahují IP adresu.
 
-1. Postup oprav, který navrhuje Security Center, se liší podle výstrahy zabezpečení. Sledujte je u každé výstrahy. V některých případech může být nutné použít jiné ovládací prvky nebo služby Azure k implementaci Doporučené nápravy. 
+1. Postup nápravy navrhovaný službou Security Center se liší podle výstrahy zabezpečení. Sledujte je u každé výstrahy. V některých případech může být nutné použít jiné ovládací prvky nebo služby Azure k implementaci Doporučené nápravy. 
 
     Následující témata vás provedou různými výstrahami v závislosti na typech prostředků:
     
@@ -76,9 +76,9 @@ Security Center automaticky shromažďuje, analyzuje a integruje data protokolu 
     Následující témata vysvětlují, jak Security Center používá jinou telemetrii, kterou shromažďuje z integrace s infrastrukturou Azure, aby bylo možné použít další vrstvy ochrany pro prostředky nasazené v Azure:
     
     * [Výstrahy vrstvy služeb](security-center-alerts-service-layer.md)
-    * [Integrace s produkty zabezpečení Azure](security-center-alerts-integration.md)
+    * [Detekce hrozeb pro Azure WAF a Azure DDoS Protection](security-center-alerts-integration.md)
     
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 V tomto dokumentu jste zjistili, jak ve službě Security Center konfigurovat zásady zabezpečení. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 

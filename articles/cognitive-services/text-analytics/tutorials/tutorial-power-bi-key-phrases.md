@@ -1,23 +1,23 @@
 ---
-title: 'Kurz: Integrace Power BI se službou Analýza textu pro rozpoznávání'
+title: 'Kurz: Integrace Power BI do Analýzy textu službou Cognitive Service'
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak pomocí Analýzy textu extrahovat klíčové fráze z textu uloženého v Power BI.
+description: Naučte se používat rozhraní API pro analýzu textu k extrakci klíčových frází z textu uloženého v Power BI.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 07/30/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 97245a10602f763c3269218d87c6b1a5ba309817
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 2398bfa2ce828e716831cc7ce438bd1c241ca5f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241013"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378530"
 ---
-# <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Kurz: Integrace Power BI se službou Analýza textu pro rozpoznávání
+# <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Kurz: Integrace Power BI do Analýzy textu službou Cognitive Service
 
 Microsoft Power BI Desktop je bezplatná aplikace, se kterou se můžete připojit k datům abyste je mohli transformovat a vizualizovat. Služba Analýza textu je součástí služby Microsoft Azure Cognitive Services. Umožňuje zpracovat jazyk v jeho přirozené podobě. Služba dokáže z nezpracovaného a nestrukturovaného textu extrahovat nejdůležitější fráze, analyzovat mínění a identifikovat známé prvky, jako jsou značky. Společně vám tyto služby můžou pomoct rychle zjistit, o čem mluví vaši zákazníci a jak se při tom cítí.
 
@@ -114,7 +114,7 @@ V seznamu dotazů se zobrazí nový dotaz s počátečním názvem `Query1`. Dva
 Na pásu karet **Domů** ve skupině **Dotaz** klikněte na **Rozšířený editor**. Otevře se okno rozšířeného editoru. Odstraňte kód, který okno už obsahuje, a vložte následující kód. 
 
 > [!NOTE]
-> Nahraďte níže uvedený ukázkový koncový bod `<your-custom-subdomain>`(obsahující) koncovým bodem vygenerovaným pro váš analýza textu prostředek. Tento koncový bod můžete najít tak, že se přihlásíte k [Azure Portal](https://azure.microsoft.com/features/azure-portal/), vyberete předplatné analýza textu a `Quick start`vyberete.
+> Nahraďte níže uvedený ukázkový koncový bod (obsahující `<your-custom-subdomain>`) koncovým bodem vygenerovaným pro váš prostředek Analýza textu. Tento koncový bod můžete najít tak, že se přihlásíte k [Azure Portal](https://azure.microsoft.com/features/azure-portal/), vyberete předplatné analýza textu a vyberete `Quick start`.
 
 
 ```fsharp
@@ -145,7 +145,7 @@ V Power BI Desktopu se v okně Editoru dotazů vraťte zpět k dotazu `FabrikamC
 
 Zobrazí se dialogové okno Vyvolat vlastní funkci. Do pole **Nový název sloupce** zadejte `keyphrases`. V poli **Dotaz na funkci** vyberte vlastní funkci `KeyPhrases`, kterou jste vytvořili.
 
-V dialogovém okně se zobrazí nové pole **text (volitelné)** . Toto pole se ptá, jaký sloupec chcete použít k zadání hodnot parametru `text` rozhraní API pro klíčové fráze (nezapomeňte, že jste hodnoty parametrů `language` a `id` už pevně zadali). V rozevírací nabídce vyberte `Merged` (sloupec jste vytvořili [dříve](#PreparingData) sloučením polí předmětu a zprávy).
+V dialogovém okně se zobrazí nové pole **text (volitelné)** . Toto pole se ptá, jaký sloupec chcete použít k zadání hodnot parametru `text` rozhraní API pro klíčové fráze (Nezapomeňte, že již pevně zakódované hodnoty pro parametry `language` a `id`.) Vyberte `Merged` (sloupec, který jste [předtím](#PreparingData) vytvořili, sloučením polí předmět a zpráva) z rozevírací nabídky.
 
 ![[Vyvolání vlastní funkce]](../media/tutorials/power-bi/invoke-custom-function.png)
 
@@ -168,7 +168,7 @@ Klikněte na **Upravit přihlašovací údaje**, v dialogovém okně se ujistět
 > [!div class="mx-imgBorder"]
 > ![[nastavení ověřování na anonymní]](../media/tutorials/power-bi/access-web-content.png)
 
-Pokud se banner Upravit přihlašovací údaje zobrazuje i po zvolení anonymního přístupu, možná jste do kódu [vlastní funkce](#CreateCustomFunction) `KeyPhrases` zapomněli vložit svůj přístupový klíč Analýzy textu.
+Pokud se po volbě anonymního přístupu zobrazí nápis upravit přihlašovací údaje, možná jste zapomněli vložit svůj Analýza textu přístupový klíč do kódu ve [vlastní funkci](#CreateCustomFunction)`KeyPhrases`.
 
 Dále se může zobrazit banner s výzvou k zadání informací o ochraně osobních údajů u vašich zdrojů dat. 
 
@@ -217,7 +217,7 @@ Kliknutím na nástroj Detailní režim v sestavě získáte lepší zobrazení 
 
 Služba Analýza textu, což je jedna ze služeb Cognitive Services, které Microsoft Azure nabízí, poskytuje také analýzu mínění a rozpoznávání jazyka. Rozpoznávání jazyka je užitečné hlavně v případě, že zpětná vazba od vašich zákazníků není vždy v angličtině.
 
-Obě tato rozhraní API jsou podobná rozhraní API pro klíčové fráze. To znamená, že je můžete integrovat do Power BI Desktopu pomocí vlastních funkcí, které jsou skoro stejné jako funkce vytvořená v tomto kurzu. Stačí vytvořit prázdný dotaz a stejně jako předtím do Rozšířeného editoru vložit odpovídající kód uvedený níže. (Nezapomeňte na svůj přístupový klíč!) Pak stejně jako předtím použijte funkci, která do tabulky přidá nový sloupec.
+Obě tato rozhraní API jsou podobná rozhraní API pro klíčové fráze. To znamená, že je můžete integrovat do Power BI Desktopu pomocí vlastních funkcí, které jsou skoro stejné jako funkce vytvořená v tomto kurzu. Stačí vytvořit prázdný dotaz a stejně jako předtím do Rozšířeného editoru vložit odpovídající kód uvedený níže. (Nezapomeňte použít přístupový klíč!) Stejně jako dřív použijte funkci k přidání nového sloupce do tabulky.
 
 Následující funkce Analýzy mínění vrátí skóre značící, jak pozitivní je mínění vyjádřené v textu.
 

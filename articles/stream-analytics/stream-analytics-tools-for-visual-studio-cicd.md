@@ -1,19 +1,18 @@
 ---
 title: Použití balíčku NuGet pro Azure Stream Analytics CI/CD
 description: Tento článek popisuje, jak pomocí Azure Stream Analytics balíčku CI/CD NuGet nastavit proces průběžné integrace a nasazování.
-services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 6f5ba06841af580cd80b3b46bec972f717ded044
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 11e68aaa7c70d4f888c0009bc28d9bb90f431f3b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934244"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354443"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>Použití balíčku NuGet Azure Stream Analytics CI/CD pro integraci a vývoj 
 Tento článek popisuje, jak použít balíček NuGet Azure Stream Analytics CI/CD, abyste nastavili proces průběžné integrace a nasazování.
@@ -26,7 +25,7 @@ K dispozici je balíček NuGet: [Microsoft. Azure. Stream Analytics. CICD](https
 
 Další informace naleznete v tématu [Stream Analytics Tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
 
-## <a name="msbuild"></a>Nástroji
+## <a name="msbuild"></a>MSBuild
 Podobně jako standardní prostředí Visual Studio MSBuild pro sestavení projektu máte dvě možnosti. Můžete kliknout pravým tlačítkem na projekt a pak zvolit **sestavit**. Nástroj **MSBuild** můžete také použít v balíčku NuGet z příkazového řádku.
 ```
 ./build/msbuild /t:build [Your Project Full Path] /p:CompilerTaskAssemblyFile=Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll  /p:ASATargetsFilePath="[NuGet Package Local Path]\build\StreamAnalytics.targets"
@@ -94,5 +93,5 @@ Příklad:
 ## <a name="next-steps"></a>Další kroky
 
 * [Rychlý Start: vytvoření cloudové úlohy Azure Stream Analytics v aplikaci Visual Studio](stream-analytics-quick-create-vs.md)
-* [Testování Stream Analytics dotazů v místním prostředí se sadou Visual Studio](stream-analytics-vs-tools-local-run.md)
+* [Testování dotazů Stream Analytics místně pomocí sady Visual Studio](stream-analytics-vs-tools-local-run.md)
 * [Prozkoumejte Azure Stream Analytics úlohy pomocí sady Visual Studio](stream-analytics-vs-tools.md)

@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 12/30/2019
 ms.author: cabailey
-ms.openlocfilehash: af4095b41da4d7f5fca5d1f7ed72a0c0dbc5b1d1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ba5b560f068d453f07e2dbbfdf5140ca1f4ac2b8
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521046"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610433"
 ---
 # <a name="connect-trend-micro-deep-security"></a>Propojit Trend Micro hlubokého zabezpečení
 
 Pomocí konektoru trend Microed Security Connector můžete snadno propojit své podrobné protokoly zabezpečení se službou Azure Sentinel, zobrazit řídicí panely, vytvořit vlastní výstrahy a vylepšit šetření. Díky tomu získáte lepší přehled o sítích a systémech vaší organizace a zlepšuje možnosti vaší operace zabezpečení.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Oprávnění ke čtení a zápisu do pracovního prostoru Azure Sentinel.
 
@@ -42,4 +42,6 @@ Pomocí konektoru trend Microed Security Connector můžete snadno propojit své
 V tomto dokumentu jste zjistili, jak propojit Trend Micro hluboká zabezpečení s využitím Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
 - Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
+- [Pomocí sešitů](tutorial-monitor-your-data.md) můžete monitorovat data.
+
 

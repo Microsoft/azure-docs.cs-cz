@@ -3,22 +3,22 @@ title: Cloud Services a certifikáty pro správu | Microsoft Docs
 description: Naučte se vytvářet a používat certifikáty s Microsoft Azure
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: gwallace
-ms.openlocfilehash: 3c84c6832856986a45be7d275fb94a6c5fc066f0
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 783343dd8877bdf18e783494960c3052c293cc7c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359192"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361343"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Přehled certifikátů pro Azure Cloud Services
 Certifikáty se používají v Azure pro cloudové služby ([certifikáty služeb](#what-are-service-certificates)) a pro ověřování pomocí rozhraní API pro správu ([certifikáty pro správu](#what-are-management-certificates)). Toto téma obsahuje obecný přehled obou typů certifikátů, jak je [vytvořit](#create) a nasadit do Azure.
 
-Certifikáty, které se používají v Azure, jsou certifikáty x. 509 v3 a můžou být podepsané jiným důvěryhodným certifikátem nebo můžou být podepsané svým držitelem. Certifikát podepsaný svým držitelem je podepsaný vlastním tvůrcem, proto není ve výchozím nastavení důvěryhodný. Většina prohlížečů může tento problém ignorovat. Certifikáty podepsané svým držitelem byste měli používat jenom při vývoji a testování vašich cloudových služeb. 
+Certifikáty, které se používají v Azure, jsou certifikáty x. 509 v3 a můžou být podepsané jiným důvěryhodným certifikátem nebo můžou být podepsané svým držitelem. Certifikát podepsaný svým držitelem je podepsaný vlastním tvůrcem, proto není ve výchozím nastavení důvěryhodný. Většina prohlížečů tento problém ignoruje. Certifikáty podepsané svým držitelem byste měli používat jenom při vývoji a testování vašich cloudových služeb. 
 
 Certifikáty používané v Azure můžou obsahovat soukromý nebo veřejný klíč. Certifikáty mají kryptografický otisk, který poskytuje prostředky k jejich identifikaci jednoznačným způsobem. Tento kryptografický otisk se používá v [konfiguračním souboru](cloud-services-configure-ssl-certificate-portal.md) Azure k identifikaci certifikátu, který by měla cloudová služba používat. 
 
@@ -26,17 +26,17 @@ Certifikáty používané v Azure můžou obsahovat soukromý nebo veřejný kl�
 >Azure Cloud Services nepřijímá zašifrovaný certifikát AES256-SHA256.
 
 ## <a name="what-are-service-certificates"></a>Co jsou certifikáty služby?
-Certifikáty služeb jsou připojené ke cloudovým službám a umožňují zabezpečenou komunikaci do a ze služby. Pokud jste například nasadili webovou roli, měli byste dodat certifikát, který může ověřit vystavený koncový bod HTTPS. Certifikáty služby definované v definici služby se automaticky nasadí do virtuálního počítače, na kterém běží instance vaší role. 
+Certifikáty služeb jsou připojeny ke cloudovým službám a umožňují bezpečnou příchozí i odchozí komunikaci se službou. Pokud jste například nasadili webovou roli, měli byste dodat certifikát, který může ověřit vystavený koncový bod HTTPS. Certifikáty služby definované v definici služby se automaticky nasadí do virtuálního počítače, na kterém běží instance vaší role. 
 
-Certifikáty služby můžete do Azure nahrát buď pomocí Azure Portal, nebo pomocí modelu nasazení Classic. Certifikáty služeb jsou přidružené ke konkrétní cloudové službě. Jsou přiřazeny k nasazení v definičním souboru služby.
+Certifikáty služeb můžete do Azure nahrát pomocí webu Azure Portal nebo pomocí modelu nasazení Classic. Certifikáty služeb jsou přidruženy ke konkrétní cloudové službě. Jsou přiřazeny k nasazení v definičním souboru služby.
 
-Certifikáty služeb je možné spravovat odděleně od služeb a můžou je spravovat různí jednotlivci. Vývojář může například nahrát balíček služby, který odkazuje na certifikát, který správce IT předtím nahrál do Azure. Správce IT může tento certifikát spravovat a obnovovat (Změna konfigurace služby), aniž by musel nahrávat nový balíček služby. Aktualizace bez nového balíčku služby je možná, protože logický název, název úložiště a umístění certifikátu jsou v definičním souboru služby a i když je v konfiguračním souboru služby zadaný kryptografický otisk certifikátu. Chcete-li aktualizovat certifikát, je nutné odeslat nový certifikát a změnit hodnotu kryptografického otisku v konfiguračním souboru služby.
+Certifikáty služeb je možné spravovat odděleně od služeb a můžou je spravovat různí jednotlivci. Vývojář může například nahrát balíček služby, který odkazuje na certifikát, který správce IT předtím nahrál do Azure. Správce IT může tento certifikát spravovat a obnovovat (změnou konfigurace služby), aniž by musel nahrávat nový balíček služby. Aktualizace bez nového balíčku služby je možná, protože logický název, název úložiště a umístění certifikátu jsou v definičním souboru služby a i když je v konfiguračním souboru služby zadaný kryptografický otisk certifikátu. Pokud chcete aktualizovat certifikát, stačí nahrát nový certifikát a změnit hodnotu kryptografického otisku v konfiguračním souboru služby.
 
 >[!Note]
 >[Cloud Services nejčastější dotazy ke konfiguraci a správě](cloud-services-configuration-and-management-faq.md) obsahují některé užitečné informace o certifikátech.
 
 ## <a name="what-are-management-certificates"></a>Co jsou certifikáty pro správu?
-Certifikáty pro správu umožňují ověřování pomocí modelu nasazení Classic. Mnoho programů a nástrojů (například sadu Visual Studio nebo Azure SDK) tyto certifikáty používá k automatizaci konfigurace a nasazení různých služeb Azure. Nevztahují se ke cloudovým službám. 
+Certifikáty pro správu vám umožňují ověřit se pomocí modelu nasazení Classic. Mnoho programů a nástrojů (například Visual Studio nebo Azure SDK) používá tyto certifikáty k automatizaci konfigurace a nasazení různých služeb Azure. Nevztahují se ke cloudovým službám. 
 
 > [!WARNING]
 > Dej si pozor! Tyto typy certifikátů umožňují všem, kteří se s nimi ověřují, spravovat předplatné, ke kterému jsou přidružené. 
@@ -58,9 +58,9 @@ Můžete použít libovolný nástroj dostupný k vytvoření certifikátu podep
     > Nemůžete získat certifikát SSL pro cloudapp.net (nebo pro žádnou doménu související s Azure); název subjektu certifikátu se musí shodovat s názvem vlastní domény použitým pro přístup k vaší aplikaci. Například **contoso.NET**, ne **contoso.cloudapp.NET**.
 
 * Minimálně 2048 bitů šifrování.
-* **Jenom certifikát služby**: Certifikát na straně klienta se musí nacházet v *osobním* úložišti certifikátů.
+* **Pouze certifikát služby**: certifikát na straně klienta se musí nacházet v *osobním* úložišti certifikátů.
 
-Existují dva jednoduché způsoby, jak vytvořit certifikát ve Windows, a to pomocí `makecert.exe` nástroje nebo služby IIS.
+Existují dva jednoduché způsoby, jak vytvořit certifikát ve Windows, pomocí nástroje `makecert.exe` nebo služby IIS.
 
 ### <a name="makecertexe"></a>Makecert.exe
 Tento nástroj je zastaralý a již není dokumentován. Další informace najdete v [tomto článku na webu MSDN](/windows/desktop/SecCrypto/makecert).
@@ -82,7 +82,7 @@ Pokud chcete tento [certifikát použít s portálem pro správu](../azure-api-m
 Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
 ```
 
-### <a name="internet-information-services-iis"></a>Internetová informační služba (IIS)
+### <a name="internet-information-services-iis"></a>IIS (Internetová informační služba)
 Existuje mnoho stránek na internetu, které pokrývají, jak to provést se službou IIS. [Tady](https://www.sslshopper.com/article-how-to-create-a-self-signed-certificate-in-iis-7.html) je skvělé, který jsme našli, že je to v podstatě. 
 
 ### <a name="linux"></a>Linux
@@ -92,4 +92,7 @@ Existuje mnoho stránek na internetu, které pokrývají, jak to provést se slu
 [Nahrajte do Azure Portal certifikát služby](cloud-services-configure-ssl-certificate-portal.md).
 
 Nahrajte do Azure Portal [certifikát rozhraní API pro správu](../azure-api-management-certs.md) .
+
+
+
 

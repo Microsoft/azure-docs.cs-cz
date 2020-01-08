@@ -10,17 +10,17 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: d3b54941d38424e71ac800d2e750ac9bbc96cde9
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 3a06db1afd130d936af868d0d20632c3ec4fbfd2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086868"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358522"
 ---
 # <a name="troubleshoot-unexpected-reboots-of-vms-with-attached-vhds"></a>Řešení neočekávaných restartování virtuálních počítačů s připojenými virtuálními pevnými disky
 
-Pokud má virtuální počítač Azure velký počet připojených virtuálních pevných disků, které jsou ve stejném účtu úložiště, můžete překročit cíle škálovatelnosti pro jednotlivé účty úložiště, což způsobí neočekávané restartování virtuálního počítače. Podívejte se na minuty pro účet úložiště (**TotalRequests**/**totalbillablerequests**/**TotalEgress**) pro špičky, které překračují cíle škálovatelnosti pro účet úložiště. V tématu [metriky](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#metrics-show-an-increase-in-PercentThrottlingError) se dozvíte, jak na základě vašeho účtu úložiště získat pomoc při určování, jestli došlo k omezení PercentThrottlingError.
+Pokud má virtuální počítač Azure velký počet připojených virtuálních pevných disků, které jsou ve stejném účtu úložiště, můžete překročit cíle škálovatelnosti pro jednotlivé účty úložiště, což způsobí neočekávané restartování virtuálního počítače. Podívejte se na minutové metriky pro účet úložiště (**TotalRequests**/**totalbillablerequests**/**TotalEgress**) pro špičky, které překračují cíle škálovatelnosti pro účet úložiště. V tématu [metriky](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#metrics-show-an-increase-in-PercentThrottlingError) se dozvíte, jak na základě vašeho účtu úložiště získat pomoc při určování, jestli došlo k omezení PercentThrottlingError.
 
-Obecně platí, že každá jednotlivá operace vstupu a výstupu na virtuálním pevném disku z virtuálního počítače překládá operace **získání stránky** nebo **vložení operací stránkování** na podkladový objekt blob stránky. Proto můžete použít odhadované IOPS pro vaše prostředí, abyste nastavili počet virtuálních pevných disků, které můžete mít v jednom účtu úložiště na základě konkrétního chování vaší aplikace. Microsoft doporučuje mít v jednom účtu úložiště 40 nebo méně disků. Podrobnosti o cílech škálovatelnosti pro účty úložiště najdete v tématu [Azure Storage škálovatelnost a výkonnostní cíle](../../storage/common/storage-scalability-targets.md) , zejména celkové míry požadavků a celkové šířce pásma pro typ účtu úložiště, který používáte.
+Obecně platí, že každá jednotlivá operace vstupu a výstupu na virtuálním pevném disku z virtuálního počítače překládá operace **získání stránky** nebo **vložení operací stránkování** na podkladový objekt blob stránky. Proto můžete použít odhadované IOPS pro vaše prostředí, abyste nastavili počet virtuálních pevných disků, které můžete mít v jednom účtu úložiště na základě konkrétního chování vaší aplikace. Microsoft doporučuje mít v jednom účtu úložiště 40 nebo méně disků. Další informace o cílech škálovatelnosti pro účty úložiště úrovně Standard najdete v tématu [cíle škálovatelnosti pro účty úložiště úrovně Standard](../../storage/common/scalability-targets-standard-account.md). Další informace o cílech škálovatelnosti pro účty úložiště blob stránky úrovně Premium najdete v tématu [cíle škálovatelnosti pro účty úložiště objektů blob stránky úrovně Premium](../../storage/blobs/scalability-targets-premium-page-blobs.md).
 
 Pokud překročíte cíle škálovatelnosti svého účtu úložiště, můžete své virtuální pevné disky umístit do několika účtů úložiště a snížit tak aktivitu v každém jednotlivém účtu.

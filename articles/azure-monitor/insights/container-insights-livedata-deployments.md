@@ -1,19 +1,14 @@
 ---
 title: Zobrazit Azure Monitor pro nasazení kontejnerů (Preview) | Microsoft Docs
 description: Tento článek popisuje zobrazení Kubernetes nasazení v reálném čase bez použití kubectl v Azure Monitor pro kontejnery.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.author: magoedte
-ms.openlocfilehash: c7135aec98936b5247b39ae659e21735168bd289
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7d0344851e1db8c014a1bb16b228a0c2f76444d5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514378"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404778"
 ---
 # <a name="how-to-view-deployments-preview-in-real-time"></a>Postup zobrazení nasazení (Preview) v reálném čase
 
@@ -69,6 +64,6 @@ Můžete také filtrovat podle oboru názvů nebo událostí na úrovni clusteru
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud chcete pokračovat v učení, jak používat Azure Monitor a monitorovat další aspekty clusteru AKS, přečtěte si téma [zobrazení stavu služby Azure Kubernetes](container-insights-analyze.md).
+- Chcete-li pokračovat v učení, jak používat Azure Monitor a monitorovat další aspekty vašeho clusteru AKS, přečtěte si téma [zobrazení Azure Kubernetes Service health](container-insights-analyze.md).
 
 - Podívejte se na [příklady dotazů protokolu](container-insights-log-search.md#search-logs-to-analyze-data) , kde najdete předdefinované dotazy a příklady pro vytváření výstrah, vizualizací nebo provádění dalších analýz vašich clusterů.

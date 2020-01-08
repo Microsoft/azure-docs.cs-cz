@@ -1,18 +1,18 @@
 ---
 title: Používání řešení Service Map v Azure | Microsoft Docs
-description: Service Map je řešení v Azure, které automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikace mezi těmito službami. Tento článek poskytuje podrobné informace o nasazení Service Map ve vašem prostředí a jejich použití v nejrůznějších scénářích.
+description: Service Map je řešení v Azure, které automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikace mezi těmito službami. Tento článek obsahuje podrobnosti o nasazení řešení Service Map ve vašem prostředí a jejich použití v různých scénářích.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 00bb58c88b7dc535bf76e1a96e9748a2c366b338
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: d4fd443959604f1a50dffbcb646bbe66fa159f8d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554000"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402600"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Použití řešení Service Map v Azure
 
@@ -38,7 +38,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 1. Povolte řešení Service Map z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) nebo pomocí procesu popsaného v tématu [Přidání řešení monitorování z galerie řešení](solutions.md).
 1. [Nainstalujte agenta závislostí do systému Windows](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) nebo [nainstalujte agenta závislostí na Linux](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux) do každého počítače, kde chcete získat data. Závislý agent dokáže monitorovat připojení k bezprostředním sousedům, takže nepotřebujete mít agenta na každém počítači.
 
-Přístup k Service Map v Azure Portal z pracovního prostoru Log Analytics a v levém podokně vyberte **řešení** možností.<br><br> možnost řešení ![Select v pracovním prostoru ](./media/service-map/select-solution-from-workspace.png).<br> V seznamu řešení vyberte **ServiceMap (pracovní prostor)** a na stránce přehled řešení Service map klikněte na dlaždici Service map souhrn.<br><br> ](./media/service-map/service-map-summary-tile.png) dlaždici ![Service mapy
+Přístup k Service Map v Azure Portal z pracovního prostoru Log Analytics a v levém podokně vyberte **řešení** možností.<br><br> ![možnost vybrat řešení v pracovním prostoru](./media/service-map/select-solution-from-workspace.png).<br> V seznamu řešení vyberte **ServiceMap (pracovní prostor)** a na stránce přehled řešení Service map klikněte na dlaždici Service map souhrn.<br><br> ](./media/service-map/service-map-summary-tile.png)dlaždice ![Service Map souhrnu.
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Případy použití: Zajistěte, aby vaše IT procesy byly závislé na závislostech
 
@@ -114,7 +114,7 @@ Po vytvoření některých skupin si je můžete zobrazit tak, že kliknete na k
 ![Karta skupiny](media/service-map/machine-groups-tab.png)
 
 Pak vyberte název skupiny, chcete-li zobrazit mapu pro tuto skupinu počítačů.
-Skupina ![Machine ](media/service-map/machine-group.png) počítače, které patří do této skupiny, jsou v mapě vyznačené bíle.
+Skupina počítačů ![](media/service-map/machine-group.png) počítače, které patří do této skupiny, jsou v mapě vyznačené bíle.
 
 Rozbalením skupiny se zobrazí seznam počítačů, které tvoří skupinu počítačů.
 
@@ -274,16 +274,16 @@ V podokně **výkon počítače** se zobrazí standardní metriky výkonu pro vy
 Chcete-li zobrazit údaje o výkonu, bude pravděpodobně nutné [Povolit příslušné čítače výkonu Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters).  Čítače, které budete chtít povolit:
 
 Windows:
-- Procesor (*) \\% času procesoru
-- Paměť \\% používané svěřené bajty
-- Síťový adaptér (*) \\Bytes odeslaných za sekundu
-- Síťový adaptér (*) \\Bytes přijatých za sekundu
+- Procesor (*)\\% času procesoru
+- Paměť\\% používané svěřené bajty
+- Síťový adaptér (*)\\odeslaných bajtů za sekundu
+- Síťový adaptér (*)\\přijaté bajty/s
 
 Linux:
-- Procesor (*) \\% času procesoru
-- Paměť (*) \\% využité paměti
-- Síťový adaptér (*) \\Bytes odeslaných za sekundu
-- Síťový adaptér (*) \\Bytes přijatých za sekundu
+- Procesor (*)\\% času procesoru
+- Paměť (*)\\% využité paměti
+- Síťový adaptér (*)\\odeslaných bajtů za sekundu
+- Síťový adaptér (*)\\přijaté bajty/s
 
 Chcete-li získat údaje o výkonu sítě, musíte také povolit řešení Wire Data 2.0 ve vašem pracovním prostoru.
  
@@ -307,14 +307,14 @@ Podokno **aktualizace počítače** zobrazuje data z řešení Update Management
 
 Data inventáře Service Map počítačů a procesů jsou k dispozici pro [vyhledávání](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics. Tato data můžete použít ve scénářích, které zahrnují plánování migrace, analýzu kapacity, zjišťování a řešení potíží s výkonem na vyžádání.
 
-Jeden záznam je vygenerován za hodinu pro každý jedinečný počítač a proces, kromě záznamů, které jsou generovány při spuštění nebo zprovoznění procesu nebo počítače na Service Map. Tyto záznamy obsahují vlastnosti v následujících tabulkách. Pole a hodnoty v událostech ServiceMapComputer_CL se mapují na pole prostředku počítače v rozhraní API pro ServiceMap Azure Resource Manager. Pole a hodnoty v událostech ServiceMapProcess_CL se mapují na pole prostředku procesu v rozhraní API pro ServiceMap Azure Resource Manager. Pole ResourceName_s se shoduje s polem název v odpovídajícím prostředku Správce prostředků. 
+Jeden záznam je vygenerován za hodinu pro každý jedinečný počítač a proces, kromě záznamů, které jsou generovány při spuštění nebo zprovoznění procesu nebo počítače na Service Map. Tyto záznamy obsahují vlastnosti v následujících tabulkách. Pole a hodnoty v událostech ServiceMapComputer_CL se mapují na pole prostředku počítače v rozhraní API pro Azure Resource Manager ServiceMap. Pole a hodnoty v ServiceMapProcess_CLch událostech se mapují na pole prostředku procesu v rozhraní API pro Azure Resource Manager ServiceMap. Pole ResourceName_s se shoduje s polem název v odpovídajícím prostředku Správce prostředků. 
 
 >[!NOTE]
 >Jak Service Mapch funkcí roste, tato pole se mohou změnit.
 
 K dispozici jsou interně generované vlastnosti, které můžete použít k identifikaci jedinečných procesů a počítačů:
 
-- Počítač: pomocí *ResourceID* nebo *ResourceName_s* můžete jedinečně identifikovat počítač v rámci Log Analytics pracovního prostoru.
+- Počítač: k jednoznačné identifikaci počítače v pracovním prostoru Log Analytics použijte *ResourceID* nebo *ResourceName_s* .
 - Proces: použijte *ResourceID* k jednoznačné identifikaci procesu v rámci Log Analytics pracovního prostoru. *ResourceName_s* je jedinečný v rámci kontextu počítače, na kterém je spuštěný proces (MachineResourceName_s). 
 
 Vzhledem k tomu, že pro zadaný proces a počítač v zadaném časovém rozsahu může existovat více záznamů, můžou dotazy vracet více než jeden záznam pro stejný počítač nebo proces. Pokud chcete zahrnout jenom poslední záznam, přidejte | odstranění duplicitních dat ResourceId do dotazu.
@@ -391,7 +391,7 @@ Každá vlastnost RemoteIp v tabulce *VMConnection* je kontrolována na základ�
 | Vlastnost | Popis |
 |:--|:--|
 | `MaliciousIp` |Adresa RemoteIp |
-| `IndicatorThreadType` |Zjištěného indikátoru hrozby je jedna z následujících hodnot: *botnetu*, *C2*, *CryptoMining*, *adres darknetu*, *DDos*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *PUA*,  *Seznamu ke zhlédnutí*.   |
+| `IndicatorThreadType` |Zjištěného indikátoru hrozby je jedna z následujících hodnot: *botnetu*, *C2*, *CryptoMining*, *adres darknetu*, *DDos*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *PUA*, *seznamu ke zhlédnutí*.   |
 | `Description` |Popis pozorované hrozby. |
 | `TLPLevel` |Úroveň TLP (provoz Light Protocol) je jedna z definovaných hodnot, *bílá*, *zelená*, *oranžová*a *červená*. |
 | `Confidence` |Hodnoty jsou *0 – 100*. |
@@ -402,9 +402,9 @@ Každá vlastnost RemoteIp v tabulce *VMConnection* je kontrolována na základ�
 | `ReportReferenceLink` |Odkazuje na sestavy související s daným pozorovatelem. |
 | `AdditionalInformation` |Poskytuje další informace, pokud je to možné, o zjištěné hrozbě. |
 
-### <a name="servicemapcomputer_cl-records"></a>Záznamy ServiceMapComputer_CL
+### <a name="servicemapcomputer_cl-records"></a>ServiceMapComputer_CL záznamů
 
-Záznamy s typem *ServiceMapComputer_CL* obsahují data inventáře pro servery s Service map agenty. Tyto záznamy mají vlastnosti v následující tabulce:
+Záznamy s typem *ServiceMapComputer_CL* mají data inventáře pro servery s agenty Service map. Tyto záznamy mají vlastnosti v následující tabulce:
 
 | Vlastnost | Popis |
 |:--|:--|
@@ -462,11 +462,11 @@ ServiceMapComputer_CL | shrnout arg_max (TimeGenerated, *) podle ResourceId
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Vypíše kapacitu fyzické paměti pro všechny spravované počítače.
 
-ServiceMapComputer_CL | shrnout arg_max (TimeGenerated, *) podle ResourceId | projekt PhysicalMemory_d, ComputerName_s
+ServiceMapComputer_CL | shrnout arg_max (TimeGenerated, *) podle ResourceId | PhysicalMemory_d projektu, ComputerName_s
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>Vypíše název počítače, DNS, IP adresu a operační systém.
 
-ServiceMapComputer_CL | shrnout arg_max (TimeGenerated, *) podle ResourceId | projekt ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
+ServiceMapComputer_CL | shrnout arg_max (TimeGenerated, *) podle ResourceId | ComputerName_s projektu, OperatingSystemFullName_s, DnsNames_s Ipv4Addresses_s
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>Najde všechny procesy pomocí SQL na příkazovém řádku.
 
@@ -486,7 +486,7 @@ ServiceMapProcess_CL | kde MachineResourceName_s = = "m-559dbcd8-3130-454d-8d1d-
 
 ### <a name="list-all-computers-running-sql"></a>Vypsat všechny počítače se systémem SQL
 
-ServiceMapComputer_CL | kde ResourceName_s in (((ServiceMapProcess_CL) "\*sql \*" | DISTINCT MachineResourceName_s) | jedinečné ComputerName_s
+ServiceMapComputer_CL | kde ResourceName_s v ((ServiceMapProcess_CL)\*SQL\*| DISTINCT MachineResourceName_s)) | jedinečné ComputerName_s
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Vypíše všechny jedinečné verze produktu ve vaší datacentru.
 
@@ -494,7 +494,7 @@ ServiceMapProcess_CL | kde ExecutableName_s = = "kudrlinkou" | jedinečné Produ
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Vytvoření skupiny počítačů na všech počítačích se systémem CentOS
 
-ServiceMapComputer_CL | kde OperatingSystemFullName_s contains_cs "CentOS" | jedinečné ComputerName_s
+ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>Shrnutí odchozích připojení ze skupiny počítačů
 
@@ -543,11 +543,11 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 Všechna data serveru, procesu a závislostí v Service Map jsou k dispozici prostřednictvím [REST API Service map](https://docs.microsoft.com/rest/api/servicemap/).
 
-## <a name="diagnostic-and-usage-data"></a>Diagnostická data a data o využití
+## <a name="diagnostic-and-usage-data"></a>Diagnostická data a data použití
 
-Společnost Microsoft automaticky shromažďuje data o využití a výkonu prostřednictvím služby Service Map. Společnost Microsoft používá tato data k zajištění a zlepšení kvality, zabezpečení a integrity služby Service Map. Aby poskytovaly přesné a efektivní možnosti odstraňování potíží, obsahují data informace o konfiguraci softwaru, jako je například operační systém a verze, IP adresa, název DNS a název pracovní stanice. Společnost Microsoft neshromažďuje jména, adresy ani jiné kontaktní údaje.
+Microsoft automaticky shromažďuje data o využití a výkonu prostřednictvím vašeho používání služby Service Map. Tato data Microsoft používá k poskytování a vylepšování kvality, zabezpečení a integrity služby mapa služby. Aby poskytovaly přesné a efektivní možnosti odstraňování potíží, obsahují data informace o konfiguraci softwaru, jako je například operační systém a verze, IP adresa, název DNS a název pracovní stanice. Společnost Microsoft neshromažďuje jména, adresy ani jiné kontaktní údaje.
 
-Další informace o shromažďování a používání dat naleznete v tématu [prohlášení o zásadách ochrany osobních údajů služby Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
+Další informace o shromažďování a používání dat najdete v článku [prohlášení o ochraně osobních údajů Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -555,33 +555,33 @@ Přečtěte si další informace o [hledání v protokolu](../../azure-monitor/l
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud máte nějaké problémy s instalací nebo spuštěním Service Map, může vám tato část pomohlo. Pokud stále nemůžete problém vyřešit, kontaktujte prosím podpora Microsoftu.
+Pokud máte potíže s instalaci nebo spuštění řešení Service Map, tato část vám pomoct. Pokud stále nejde problém vyřešit, obraťte se prosím Microsoft Support.
 
-### <a name="dependency-agent-installation-problems"></a>Problémy s instalací agenta závislostí
+### <a name="dependency-agent-installation-problems"></a>Problémy instalace agenta závislostí
 
-#### <a name="installer-prompts-for-a-reboot"></a>Instalační program vyzve k restartování
-Agent závislostí *obvykle* nevyžaduje restart při instalaci nebo odebrání. V některých vzácných případech však Windows Server vyžaduje restart, aby bylo možné pokračovat v instalaci. K tomu dojde v případě, že závislost, obvykle C++ knihovna Microsoft Visual Redistributable Library, vyžaduje restart z důvodu zamčeného souboru.
+#### <a name="installer-prompts-for-a-reboot"></a>Instalační program zobrazí výzvu k restartování
+Agent závislostí *obvykle* nevyžaduje restart při instalaci nebo odebrání. Ale v některých výjimečných případech, Windows Server vyžaduje restartování počítače pokračujte s instalací. K tomu dojde v případě, že závislost, obvykle C++ knihovna Microsoft Visual Redistributable Library, vyžaduje restart z důvodu zamčeného souboru.
 
-#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>Zpráva "nepovedlo se nainstalovat agenta závislostí: nepovedlo se nainstalovat běhové knihovny Visual studia (kód = [code_number]).
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>Zpráva "nepovedlo se nainstalovat agenta závislostí: knihovny modulu Runtime Visual Studio se nepodařilo nainstalovat (kód = [číslo_účtu])" se zobrazí
 
-Microsoft Dependency Agent je postaven na knihovench modulu runtime Microsoft Visual Studio. Pokud dojde k potížím při instalaci knihoven, zobrazí se zpráva. 
+Agent Microsoft Dependency je založená na knihovnách modulu runtime Microsoft Visual Studio. Pokud dojde k problému při instalaci knihoven, zobrazí se zpráva. 
 
-Instalační programy knihovny runtime vytvoří protokoly ve složce%LOCALAPPDATA%\temp. Soubor je `dd_vcredist_arch_yyyymmddhhmmss.log`, kde je *oblouk* `x86` nebo `amd64` a *rrrrmmddhhmmss* je datum a čas (24hodinový čas), kdy byl protokol vytvořen. Protokol poskytuje podrobnosti o problému, který blokuje instalaci.
+Instalační programy knihovny runtime vytvářet protokoly ve složce %LOCALAPPDATA%\temp. Soubor je `dd_vcredist_arch_yyyymmddhhmmss.log`, kde je *oblouk* `x86` nebo `amd64` a *rrrrmmddhhmmss* je datum a čas (24hodinový čas), kdy byl protokol vytvořen. Protokol obsahuje podrobné informace o problému, který blokuje instalaci.
 
 Může být užitečné nejdřív nainstalovat [nejnovější knihovny modulu runtime](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) .
 
-V následující tabulce jsou uvedena čísla kódů a navrhovaná řešení.
+V následující tabulce jsou uvedeny čísly kódů a doporučená řešení.
 
-| Kód | Popis | Rozlišení |
+| kód | Popis | Rozlišení |
 |:--|:--|:--|
-| 0x17 | Instalační program knihovny vyžaduje aktualizaci Windows, která není nainstalovaná. | Podívejte se na nejnovější protokol instalačního programu knihovny.<br><br>Pokud je odkaz na `Windows8.1-KB2999226-x64.msu` následovaný řádkem `Error 0x80240017: Failed to execute MSU package,` nemáte požadavky na instalaci KB2999226. Postupujte podle pokynů v části požadavky v tématu [Universal C Runtime](https://support.microsoft.com/kb/2999226) v článku o systému Windows. Aby bylo možné nainstalovat požadavky, může být nutné spustit web Windows Update a restartovat několikrát.<br><br>Spusťte znovu instalační program agenta Microsoft Dependency agent. |
+| 0x17 | Instalační program knihovny vyžaduje aktualizaci Windows, která nebyla nainstalována. | Vyhledejte v protokolu nejnovější instalační program knihovny.<br><br>Pokud je odkaz na `Windows8.1-KB2999226-x64.msu` následovaný řádkem `Error 0x80240017: Failed to execute MSU package,` nemáte požadavky na instalaci KB2999226. Postupujte podle pokynů v části požadavky v tématu [Universal C Runtime](https://support.microsoft.com/kb/2999226) v článku o systému Windows. Může být potřeba spuštěním služby Windows Update a restartovat více než jednou. aby bylo možné nainstalujte příslušné požadované součásti.<br><br>Znovu spusťte instalační program agenta Microsoft Dependency. |
 
-### <a name="post-installation-issues"></a>Problémy po instalaci
+### <a name="post-installation-issues"></a>Po instalaci problémy
 
-#### <a name="server-doesnt-appear-in-service-map"></a>Server se nezobrazuje v Service Map
+#### <a name="server-doesnt-appear-in-service-map"></a>Server se nezobrazí v Service Map
 
 Pokud se instalace agenta závislostí zdařila, ale nevidíte počítač v řešení Service Map:
-* Je agent závislostí úspěšně nainstalován? Můžete to ověřit tak, že zkontrolujete, jestli je služba nainstalovaná a spuštěná.<br><br>
+* Agent závislostí úspěšné instalaci? Můžete si to ověřit tak, že kontroluje se, pokud je služba nainstalována a spuštěna.<br><br>
 **Windows**: vyhledejte službu s názvem **Microsoft Dependency agent**.
 **Linux**: vyhledejte běžící proces **Microsoft-Dependency-agent**.
 
@@ -593,13 +593,13 @@ Pokud se instalace agenta závislostí zdařila, ale nevidíte počítač v ře�
     Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
     ```
 
-Dostali jste ve výsledcích nejrůznější události? Jsou data nedávná? Pokud ano, Váš agent Log Analytics pracuje správně a komunikuje s pracovním prostorem. Pokud ne, ověřte agenta v počítači: [Log Analytics agenta pro řešení potíží s Windows](../platform/agent-windows-troubleshoot.md) nebo [agenta Log Analytics pro řešení potíží](../platform/agent-linux-troubleshoot.md)se systémem Linux.
+Obdrželi jste různých událostí ve výsledcích? Jsou data poslední? Pokud ano, Váš agent Log Analytics pracuje správně a komunikuje s pracovním prostorem. Pokud ne, ověřte agenta v počítači: [Log Analytics agenta pro řešení potíží s Windows](../platform/agent-windows-troubleshoot.md) nebo [agenta Log Analytics pro řešení potíží](../platform/agent-linux-troubleshoot.md)se systémem Linux.
 
-#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Server se zobrazuje v Service Map, ale nemá žádné procesy.
+#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Server se zobrazí v Service Map, ale nemá žádné procesy
 
 Pokud se Váš počítač nachází v Service Map, ale nemá žádná data o procesu nebo připojení, která indikuje, že je agent závislostí nainstalovaný a spuštěný, ale ovladač jádra se nenačetl. 
 
-Podívejte se na `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` (Windows) nebo `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux). Poslední řádky souboru by měly indikovat, proč se jádro nezátěže. Například pokud jste aktualizovali jádro, nemusí být jádro v systému Linux podporováno.
+Podívejte se na `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` (Windows) nebo `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux). Poslední řádek souboru by měla zobrazovat, proč se nenačetla jádra. Například jádra nemusí být podporovány v Linuxu, pokud jste aktualizovali vaši jádra.
 
 ## <a name="feedback"></a>Váš názor
 

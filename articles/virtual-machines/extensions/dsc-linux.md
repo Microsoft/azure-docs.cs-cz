@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: b631a370c64522c201f1208819b5a76895d83b09
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: d19b3d59c48cfc8fc91d4678c2f979b110575b1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457518"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359149"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Rozšíření DSC pro Linux (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -281,7 +281,7 @@ Rozšíření virtuálního počítače Azure je možné nasadit s využitím š
 
 Vzorová Správce prostředků šablona je [201-DSC-Linux-Azure-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) a [201-DSC-Linux-Public-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu).
 
-Další informace o šabloně Azure Resource Manager naleznete v tématu [authoring Azure Resource Manager Templates](../../azure-resource-manager/resource-group-authoring-templates.md).
+Další informace o šabloně Azure Resource Manager naleznete v tématu [authoring Azure Resource Manager Templates](../../azure-resource-manager/templates/template-syntax.md).
 
 
 ## <a name="azure-cli-deployment"></a>Nasazení v Azure CLI
@@ -289,7 +289,7 @@ Další informace o šabloně Azure Resource Manager naleznete v tématu [author
 ### <a name="use-azure-cliazure-cli"></a>Použití [Azure CLI] [Azure-CLI]
 Před nasazením rozšíření DSCForLinux nakonfigurujte své `public.json` a `protected.json` podle různých scénářů v oddílu 3.
 
-#### <a name="classic"></a>Classic
+#### <a name="classic"></a>Klasické
 Klasický režim nasazení se taky označuje jako režim správy služeb Azure. Můžete na něj přejít spuštěním:
 ```
 $ azure config mode asm
@@ -306,7 +306,7 @@ Pokud se chcete dozvědět, jak nejnovější dostupná verze rozšíření, spu
 $ azure vm extension list
 ```
 
-#### <a name="resource-manager"></a>Resource Manager
+#### <a name="resource-manager"></a>Správce prostředků
 Můžete přepnout na režim Azure Resource Manager spuštěním:
 ```
 $ azure config mode arm
@@ -324,7 +324,7 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 
 ### <a name="use-azure-powershellazure-powershell"></a>Použití [Azure PowerShell] [Azure-PowerShell]
 
-#### <a name="classic"></a>Classic
+#### <a name="classic"></a>Klasické
 
 Můžete se přihlásit ke svému účtu Azure v režimu správy služeb Azure spuštěním:
 
@@ -363,7 +363,7 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
   -PublicConfiguration $publicConfig | Update-AzureVM
 ```
 
-#### <a name="resource-manager"></a>Resource Manager
+#### <a name="resource-manager"></a>Správce prostředků
 
 Můžete se přihlásit ke svému účtu Azure v režimu Azure Resource Manager spuštěním:
 

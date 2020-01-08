@@ -1,6 +1,6 @@
 ---
 title: Řešení potíží se zřizováním cloudu Azure AD Connect
-description: Tento dokument popisuje, jak řešit problémy, které mohou nastat u agenta zřizování cloudu.
+description: Tento článek popisuje, jak řešit problémy, které mohou nastat u agenta zřizování cloudu.
 author: billmath
 ms.author: billmath
 manager: daveba
@@ -8,98 +8,101 @@ ms.date: 12/02/2019
 ms.topic: article
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 4100886e0a24fa961b9085bd507ae3f4ebfdd6eb
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e41be4b76245f2567015eb0ede317830120ee61a
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794234"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549481"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>Řešení potíží se zřizováním cloudu
 
-Zřizování cloudu se dotýká mnoha různých věcí a má mnoho různých závislostí.  Přirozeně to může vést k různým problémům.  Tento dokument je navržený tak, aby vám začal řešit tyto problémy.  Tento dokument vás seznámí se typickými oblastmi, které byste měli zaměřit na, jak získat další informace a různé techniky, které se dají použít ke sledování problémů.  
+Zřizování cloudu se dotýká mnoha různých věcí a má mnoho různých závislostí. Tento rozsáhlý rozsah může vést k různým problémům. Tento článek vám pomůže vyřešit tyto problémy. Zavádí typické oblasti, na které se můžete soustředit, jak získat další informace a různé techniky, které můžete použít ke sledování problémů.
 
 
 ## <a name="common-troubleshooting-areas"></a>Běžné oblasti odstraňování potíží
 
 |Name (Název)|Popis|
 |-----|-----|
-|[Problémy agenta](#agent-issues)|Ověřte, že je agent správně nainstalovaný a komunikuje s Azure AD.|
-|[Problémy synchronizace objektů](#object-synchronization-issues)|K řešení potíží se synchronizací objektů použijte protokoly zřizování.|
-|[Zřizování problémů karantény](#provisioning-quarantined-issues)|Informace o tom, jak zajistit problém karantény a jak je opravit|
+|[Problémy agenta](#agent-problems)|Ověřte, že je agent nainstalovaný správně a komunikuje s Azure Active Directory (Azure AD).|
+|[Problémy synchronizace objektů](#object-synchronization-problems)|K řešení problémů se synchronizací objektů použijte protokoly zřizování.|
+|[Zřizování problémů v karanténě](#provisioning-quarantined-problems)|Pochopení problémů se zřizováním karantény a jejich oprava.|
 
 
-## <a name="agent-issues"></a>Problémy agenta
+## <a name="agent-problems"></a>Problémy agenta
 Některé z prvních věcí, které chcete ověřit u agenta, jsou:
 
-
--  je nainstalováno?
--  běží agent místně?
--  je agent na portálu?
--  je agent označen jako dobrý?  
+-  Je nainstalováno?
+-  Běží agent místně?
+-  Je agent na portálu?
+-  Je agent označen jako dobrý?
 
 Tyto položky lze ověřit v Azure Portal a na místním serveru, na kterém je spuštěn Agent.
 
 ### <a name="azure-portal-agent-verification"></a>Ověřování agenta Azure Portal
 
-Pokud chcete ověřit, že je agent v Azure a je v pořádku, postupujte podle těchto kroků:
+Pokud chcete ověřit, jestli je agent v Azure a je v pořádku, postupujte podle těchto kroků.
 
 1. Přihlaste se k portálu Azure.
-2. Na levé straně vyberte **Azure Active Directory**, klikněte na **Azure AD Connect** a ve středu vyberte **Spravovat zřizování (Preview)** .
-3.  Na obrazovce **zřizování Azure AD (Preview)** klikněte na **zkontrolovat všechny agenty**.
- ![zřizování Azure AD](media/how-to-install/install7.png)</br>
+1. Na levé straně vyberte **Azure Active Directory** > **Azure AD Connect**. V centru vyberte **Spravovat zřizování (Preview)** .
+1. Na obrazovce **Azure AD zřizování (Preview)** vyberte **zkontrolovat všechny agenty**.
+
+   ![Zkontrolovat všechny agenty](media/how-to-install/install7.png)</br>
  
-4. Na **obrazovce místní zřizovací agenti** se zobrazí agenti, které jste nainstalovali.  Ověřte, jestli je na něm daný agent a označený jako **dobrý**.
- agenti zřizování ![](media/how-to-install/install8.png)</br>
+1. Na obrazovce místní **zřizovací agenti** uvidíte agenty, které jste nainstalovali. Ověřte, jestli je na něm daný agent a označený jako *dobrý*.
+
+   ![Obrazovka místních zřizovacích agentů](media/how-to-install/install8.png)</br>
 
 ### <a name="verify-the-port"></a>Ověření portu
 
-Pokud chcete ověřit, že Azure naslouchá na portu 443 a že s ním může komunikovat agent, můžete použít následující nástroj:
+Pokud chcete ověřit, že Azure naslouchá na portu 443 a že s ním může agent komunikovat, použijte následující nástroj:
 
 https://aadap-portcheck.connectorporttest.msappproxy.net/ 
 
-Tento test ověří, jestli můžou vaši agenti komunikovat s Azure přes port 443.  Otevřete prohlížeč a přejděte na adresu URL na serveru, na kterém je nainstalovaný agent.
- ![Služby](media/how-to-install/verify2.png)
+Tento test ověřuje, jestli můžou vaši agenti komunikovat s Azure přes port 443. Otevřete prohlížeč a na serveru, na kterém je nainstalovaný agent, se dostanete na předchozí adresu URL.
+
+![Ověření dostupnosti portů](media/how-to-install/verify2.png)
 
 ### <a name="on-the-local-server"></a>Na místním serveru
 
-Pokud chcete ověřit, jestli je agent spuštěný, postupujte takto:
+Pokud chcete ověřit, jestli je agent spuštěný, postupujte podle těchto kroků.
 
-1.  Na serveru s nainstalovaným agentem otevřete **služby** , a to tak, že k němu přejdete, nebo když přejdete na Start/Run/Services. msc.
-2.  V části **služby**se ujistěte, že je k dispozici aktualizace **agenta Microsoft Azure AD připojit** a **Microsoft Azure AD připojit agent zřizování** a že je stav **spuštěno**.
- ![Služby](media/how-to-troubleshoot/troubleshoot1.png)
+1. Na serveru s nainstalovaným agentem otevřete **služby** , a to tak, **že k němu** přejdete nebo spustíte > **spustíte** > **Services. msc**.
+1. V části **služby**se ujistěte, že je k dispozici aktualizace **agenta Microsoft Azure AD Connect** a **Microsoft Azure AD připojení zřizování** , a jejich stav je *spuštěný*.
 
-### <a name="common-agent-installation-issues"></a>Problémy s instalací běžných agentů
+   ![Obrazovka služby](media/how-to-troubleshoot/troubleshoot1.png)
 
-Níže jsou uvedeny některé běžné problémy s instalací agenta a vysvětlení typického řešení.
+### <a name="common-agent-installation-problems"></a>Problémy s instalací běžných agentů
+
+Následující části popisují některé běžné problémy s instalací agenta a typická řešení.
 
 #### <a name="agent-failed-to-start"></a>Agenta se nepodařilo spustit.
 
-Pokud se zobrazí chybová zpráva s oznámením, že:
+Může se zobrazit chybová zpráva s oznámením, že:
 
-**Nepovedlo se spustit službu Microsfoft Azure AD Connect zřízení agenta.  Ověřte, zda máte dostatečná oprávnění pro spouštění systémových služeb.** 
+**Službu Microsoft Azure AD Connect zřizování Agent se nepodařilo spustit. Ověřte, zda máte dostatečná oprávnění pro spouštění systémových služeb.** 
 
-To je obvykle způsobeno zásadami skupiny, které znemožňují použití oprávnění pro místní službu NT "přihlašovací účet" vytvořený instalačním programem (NT SERVICE\AADConnectProvisioningAgent). Tato oprávnění jsou nutná ke spuštění služby.
+K tomuto problému obvykle dochází v důsledku zásad skupiny, které znemožňují použití oprávnění na účet místního přihlášení služby NT vytvořeného instalačním programem (NT SERVICE\AADConnectProvisioningAgent). Tato oprávnění se vyžadují ke spuštění služby.
 
-Chcete-li tento problém vyřešit, použijte následující postup:
+Chcete-li tento problém vyřešit, postupujte podle následujících kroků.
 
-1.  Přihlaste se k serveru pomocí účtu správce.
-2.  Otevřete **služby** tak, že k němu přejdete nebo přejdete na Start/Run/Services. msc.
-3.  V části **služby** dvakrát klikněte na **Microsoft Azure AD připojit agent zřizování** .
-4. Na kartě změňte přihlašovací účet na správce domény a restartujte službu. 
+1. Přihlaste se k serveru pomocí účtu správce.
+1. Otevřete **služby** tak, **že k němu** přejdete nebo spustíte > **spustíte** > **Services. msc**.
+1. V části **služby**dvakrát klikněte na **Microsoft Azure AD připojit zřizovacího agenta**.
+1. Na kartě **přihlášení** změňte **Tento účet** na správce domény. Pak službu restartujte. 
 
- ![Služby](media/how-to-troubleshoot/troubleshoot3.png)
+   ![Karta přihlášení](media/how-to-troubleshoot/troubleshoot3.png)
 
 #### <a name="agent-times-out-or-certificate-is-invalid"></a>Vypršel časový limit agenta nebo je certifikát neplatný.
 
-Pokud se pokoušíte zaregistrovat agenta, může dojít k následujícím chybám.
+Při pokusu o registraci agenta se může zobrazit následující chybová zpráva.
 
- ![Služby](media/how-to-troubleshoot/troubleshoot4.png)
+![Chybová zpráva s časovým limitem](media/how-to-troubleshoot/troubleshoot4.png)
 
-To je obvykle způsobeno tím, že se Agent nemůže připojit ke službě hybridní identity a vyžaduje konfiguraci proxy serveru HTTP.  Pro vyřešení této konfigurace odchozího proxy serveru. 
+K tomuto problému obvykle dochází kvůli tomu, že se agent nedokáže připojit ke službě hybridní identity a vyžaduje, abyste nakonfigurovali proxy server HTTP. Pokud chcete tento problém vyřešit, nakonfigurujte odchozí proxy server. 
 
-Agent zřizování podporuje použití odchozího proxy serveru. Můžete ji nakonfigurovat úpravou konfiguračního souboru agenta **C:\Program Files\Microsoft Azure AD Connect zřizování Agent\AADConnectProvisioningAgent.exe.config**. Do sebe přidejte následující řádky na konci souboru těsně před uzavírací `</configuration>` značku.
-Nahraďte proměnné [proxy-server] a [proxy-port] svým názvem proxy server a hodnotami portů.
+Agent zřizování podporuje použití odchozího proxy serveru. Můžete ji nakonfigurovat úpravou konfiguračního souboru agenta *C:\Program Files\Microsoft Azure AD Connect zřizování Agent\AADConnectProvisioningAgent.exe.config*. Přidejte do něj následující řádky na konec souboru těsně před uzavírací `</configuration>` značku.
+Nahraďte proměnné `[proxy-server]` a `[proxy-port]` pomocí názvu proxy server a hodnot portů.
 
 ```xml
     <system.net>
@@ -115,85 +118,91 @@ Nahraďte proměnné [proxy-server] a [proxy-port] svým názvem proxy server a 
 
 #### <a name="agent-registration-fails-with-security-error"></a>Registrace agenta se nezdařila s chybou zabezpečení
 
-Při instalaci agenta zřizování cloudu se může zobrazit následující chyba.
+Při instalaci agenta zřizování cloudu se může zobrazit chybová zpráva.
 
-To je obvykle způsobeno tím, že Agent nemůže spustit registrační skripty PowerShellu z důvodu zásad spouštění v rámci místního prostředí PowerShell.
+K tomuto problému obvykle dochází v důsledku toho, že agent nedokáže spustit registrační skripty PowerShellu kvůli zásadám spouštění v prostředí PowerShell.
 
-Chcete-li tento problém vyřešit, změňte zásady spouštění prostředí PowerShell na serveru. Musíte mít zásady počítače a uživatele jako "undefined" nebo "RemoteSigned". Pokud se jedná o "unstricted", zobrazí se tato chyba.  Další informace najdete v tématu [zásady spouštění prostředí PowerShell](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6). 
+Chcete-li tento problém vyřešit, změňte zásady spouštění prostředí PowerShell na serveru. Je nutné, aby byly zásady počítače a uživatele nastaveny jako *nedefinované* nebo *RemoteSigned*. Pokud jsou nastavené jako *neomezená*, zobrazí se tato chyba. Další informace najdete v tématu [zásady spouštění prostředí PowerShell](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6). 
 
 ### <a name="log-files"></a>Soubory protokolu
 
-Ve výchozím nastavení Agent generuje velmi minimální chybové zprávy a informace o trasování zásobníku. Tyto protokoly trasování můžete najít ve složce: **C:\PROGRAMDATA\MICROSOFT\AZURE AD Connect Agent\Trace zřizování**
+Ve výchozím nastavení agent posílá minimální chybové zprávy a informace o trasování zásobníku. Tyto protokoly trasování najdete ve složce *C:\ProgramData\Microsoft\Azure zřizování služby AD Connect Agent\Trace*.
 
-Následující postup použijte k získání dalších podrobností pro řešení potíží souvisejících s agenty.
+Pokud chcete získat další podrobnosti o řešení problémů souvisejících s agentem, postupujte podle těchto kroků.
 
-1. Zastavit **agenta zřizování služby Microsoft Azure AD Connect**
-2. Vytvořte kopii původního konfiguračního souboru: **C:\Program Files\Microsoft Azure AD Connect zřizování Agent\AADConnectProvisioningAgent.exe.config**
-3. Nahraďte existující oddíl < System. Diagnostics > následujícím a všechny zprávy trasování budou přejít do souboru **ProvAgentTrace. log.**
+1. Zastavení služby **Microsoft Azure AD připojení agenta zřizování**.
+1. Vytvořte kopii původního konfiguračního souboru: *C:\Program Files\Microsoft Azure AD Connect zřizování Agent\AADConnectProvisioningAgent.exe.config*.
+1. Existující část `<system.diagnostics>` nahraďte následujícím a všechny zprávy trasování budou přejít do souboru *ProvAgentTrace. log*.
 
-      ```xml
-        <system.diagnostics>
-            <sources>
-            <source name="AAD Connect Provisioning Agent">
-                <listeners>
-                <add name="console"/>
-                <add name="etw"/>
-                <add name="textWriterListener"/>
-                </listeners>
-            </source>
-            </sources>
-            <sharedListeners>
-            <add name="console" type="System.Diagnostics.ConsoleTraceListener" initializeData="false"/>
-            <add name="etw" type="System.Diagnostics.EventLogTraceListener" initializeData="Azure AD Connect Provisioning Agent">
-                <filter type="System.Diagnostics.EventTypeFilter" initializeData="All"/>
-            </add>
-            <add name="textWriterListener" type="System.Diagnostics.TextWriterTraceListener" initializeData="C:/ProgramData/Microsoft/Azure AD Connect Provisioning Agent/Trace/ProvAgentTrace.log"/>
-            </sharedListeners>
-        </system.diagnostics>
-
-      ```
-4. Spusťte službu Service **Microsoft Azure AD Connect zřizování agent** .
-5. Následující příkaz můžete použít k zakončení souboru a ladění problémů: 
+   ```xml
+     <system.diagnostics>
+         <sources>
+         <source name="AAD Connect Provisioning Agent">
+             <listeners>
+             <add name="console"/>
+             <add name="etw"/>
+             <add name="textWriterListener"/>
+             </listeners>
+         </source>
+         </sources>
+         <sharedListeners>
+         <add name="console" type="System.Diagnostics.ConsoleTraceListener" initializeData="false"/>
+         <add name="etw" type="System.Diagnostics.EventLogTraceListener" initializeData="Azure AD Connect Provisioning Agent">
+             <filter type="System.Diagnostics.EventTypeFilter" initializeData="All"/>
+         </add>
+         <add name="textWriterListener" type="System.Diagnostics.TextWriterTraceListener" initializeData="C:/ProgramData/Microsoft/Azure AD Connect Provisioning Agent/Trace/ProvAgentTrace.log"/>
+         </sharedListeners>
+     </system.diagnostics>
+    
+   ```
+1. Spusťte službu **Microsoft Azure AD připojte agenta zřizování**.
+1. Použijte následující příkaz k zakončení souboru a ladění problémů. 
     ```
     Get-Content “C:/ProgramData/Microsoft/Azure AD Connect Provisioning Agent/Trace/ProvAgentTrace.log” -Wait
     ```
-## <a name="object-synchronization-issues"></a>Problémy synchronizace objektů
+## <a name="object-synchronization-problems"></a>Problémy synchronizace objektů
 
 Následující část obsahuje informace o řešení potíží se synchronizací objektů.
 
 ### <a name="provisioning-logs"></a>Protokoly zřizování
 
-V Azure Portal můžete použít protokoly zřizování, které vám pomohou sledovat problémy s synchronizací objektů a řešit potíže.  Protokoly zobrazíte tak, že vyberete **protokoly**.
- protokoly zřizování ![](media/how-to-troubleshoot/log1.png)
+V Azure Portal můžete použít protokoly zřizování, které vám pomohou sledovat problémy při synchronizaci objektů a řešit potíže. Protokoly zobrazíte tak, že vyberete **protokoly**.
 
-Protokoly zřizování poskytují spoustu informací o stavu synchronizovaných objektů mezi místním prostředím služby AD a Azure.
+![Tlačítko protokoly](media/how-to-troubleshoot/log1.png)
 
- ![Protokoly zřizování](media/how-to-troubleshoot/log2.png)
+Protokoly zřizování poskytují spoustu informací o stavu objektů, které se synchronizují mezi místním prostředím Active Directory a Azure.
 
-Můžete použít rozevírací seznam v horní části stránky a filtrovat zobrazení na nulu v konkrétních problémech, datech atd.  Poklikáním na jednotlivou událost se poskytnou další podrobné informace.
+![Obrazovka zřizovacích protokolů](media/how-to-troubleshoot/log2.png)
 
- ![Protokoly zřizování](media/how-to-troubleshoot/log3.png)
+V rozevíracích seznamech v horní části stránky můžete filtrovat zobrazení na nulu v konkrétních problémech, jako jsou například data. Dvojím kliknutím na jednotlivé události zobrazíte další informace.
 
-Tyto informace budou poskytovat podrobný postup a kde dochází k potížím se synchronizací.  Díky tomu můžete v a přesně určit přesný bod problému.
+![Informace rozevíracího seznamu protokolů zřizování](media/how-to-troubleshoot/log3.png)
+
+Tyto informace obsahují podrobný postup a kde dochází k potížím se synchronizací. Tímto způsobem můžete přesně určit přesný bod problému.
 
 
-## <a name="provisioning-quarantined-issues"></a>Zřizování problémů v karanténě
+## <a name="provisioning-quarantined-problems"></a>Zřizování problémů v karanténě
 
-Zřizování cloudu monitoruje stav konfigurace a umisťuje objekty, které nejsou v pořádku, do stavu "karanténa". Pokud se většina nebo všechna volání prováděná na cílovém systému konzistentně nedaří kvůli chybě, například neplatné přihlašovací údaje správce, je úloha zřizování označena jako v karanténě.
+Zřizování cloudu sleduje stav konfigurace a umisťuje objekty, které nejsou v pořádku, do karantény. Pokud se většina nebo všechna volání prováděná na cílovém systému konzistentně nezdařila kvůli chybě, například neplatné přihlašovací údaje správce, je úloha zřizování označena jako v karanténě.
 
- ![Umístit](media/how-to-troubleshoot/quarantine1.png)
+![Stav karantény](media/how-to-troubleshoot/quarantine1.png)
 
-Kliknutím na stav můžete zobrazit další informace o karanténě.  Můžete také získat kód chyby a zprávu.
+Výběrem stavu můžete zobrazit další informace o karanténě. Můžete také získat kód chyby a zprávu.
 
- ![Umístit](media/how-to-troubleshoot/quarantine2.png)
+![Informace o stavu karantény](media/how-to-troubleshoot/quarantine2.png)
 
-### <a name="resolving-a-quarantine"></a>Řešení karantény
+### <a name="resolve-a-quarantine"></a>Řešení karantény
 
 - Pomocí Azure Portal restartujte úlohu zřizování. Na stránce Konfigurace agenta vyberte **restartovat zřizování**.
 
-  ![Umístit](media/how-to-troubleshoot/quarantine3.png)
+  ![Restartovat zřizování](media/how-to-troubleshoot/quarantine3.png)
 
-- [Restartujte úlohu zřizování](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)pomocí Microsoft Graph. Budete mít plnou kontrolu nad tím, co restartujete. Můžete zvolit vymazání escrows (pro restartování čítače v úschově, který se bude přestavovat do karantény), vymazat karanténu (Pokud chcete aplikaci odebrat z karantény) nebo zrušit meze. Použijte následující požadavek:
+- [Restartujte úlohu zřizování](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)pomocí Microsoft Graph. Budete mít plnou kontrolu nad tím, co restartujete. Můžete zrušit výběr:
+  - Escrows pro restartování čítače v úschově, který se bude nabíhat směrem k karanténě stavu.
+  - Umístit do karantény, aby se aplikace odstranila z karantény.
+  - Vodoznaky. 
+  
+  Použijte následující žádost:
  
   `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`
 

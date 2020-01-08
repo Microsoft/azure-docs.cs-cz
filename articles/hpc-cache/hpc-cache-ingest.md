@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: a206b63b03bcb3bb17e201487f0e00bcb3926151
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a5625341e3dd279d93a59c57cd3325245351723e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582230"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646723"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Přesun dat do služby Azure Blob Storage
 
@@ -21,7 +21,7 @@ Tento článek vysvětluje nejlepší způsoby přesunu dat do úložiště obje
 
 Pamatujte na tyto skutečnosti:
 
-* Mezipaměť prostředí Azure HPC používá pro uspořádání dat v úložišti objektů BLOB specializované formáty úložiště. To je důvod, proč cíl úložiště BLOB musí být buď nový prázdný kontejner, nebo kontejner objektů blob, který se dřív používal pro data mezipaměti Azure HPC. ([Avere vFXT pro Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) taky používá tento cloudový souborový systém.)
+* Mezipaměť prostředí Azure HPC používá pro uspořádání dat v úložišti objektů BLOB specializované formáty úložiště. To je důvod, proč cíl úložiště BLOB musí být buď nový prázdný kontejner, nebo kontejner objektů blob, který se dřív používal pro data mezipaměti Azure HPC. <!--([Avere vFXT for Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) also uses this cloud file system.)-->
 
 * Kopírování dat prostřednictvím mezipaměti prostředí Azure HPC do cílového záložního úložiště je efektivnější, pokud používáte více klientů a paralelních operací. Jednoduchý příkaz kopírování z jednoho klienta přesune data pomalu.
 
@@ -31,7 +31,7 @@ Pokud nechcete použít nástroj pro načítání, nebo pokud chcete přidat obs
 
 ## <a name="pre-load-data-in-blob-storage-with-clfsload"></a>Předběžné načtení dat v úložišti objektů BLOB pomocí CLFSLoad
 
-Můžete použít <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> Avere CLFSLoad Utility ke zkopírování dat do nového kontejneru úložiště objektů BLOB předtím, než ho přidáte jako cíl úložiště. Tento nástroj běží na jednom systému Linux a zapisuje data ve speciálním formátu potřebném pro mezipaměť prostředí Azure HPC. CLFSLoad je nejúčinnější způsob, jak naplnit kontejner úložiště objektů BLOB pro použití s mezipamětí.
+Pomocí parametrů <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> Avere CLFSLoad Utility ke zkopírování dat do nového kontejneru úložiště objektů BLOB předtím, než ho přidáte jako cíl úložiště. Tento nástroj běží na jednom systému Linux a zapisuje data ve speciálním formátu potřebném pro mezipaměť prostředí Azure HPC. CLFSLoad je nejúčinnější způsob, jak naplnit kontejner úložiště objektů BLOB pro použití s mezipamětí.
 
 Nástroj avere CLFSLoad je k dispozici na vyžádání od týmu Azure HPC cache. Požádejte o pomoc svého týmu, nebo otevřete [lístek podpory](hpc-cache-support-ticket.md) , který vám požádá o pomoc.
 

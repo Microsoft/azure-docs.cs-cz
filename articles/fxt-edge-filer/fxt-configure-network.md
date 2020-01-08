@@ -1,25 +1,25 @@
 ---
-title: Úprava nastavení sítě pro cluster Microsoft Azure FXT Edge souborového
+title: 'Kurz: konfigurace sítě v clusteru Azure FXT Edge souborového'
 description: Přizpůsobení nastavení sítě po vytvoření clusteru Azure FXT Edge souborového
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: d250e566d884760244ee25e4c43d30fbe5323a7c
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: a40ff50dcb0934cbf1ea5222675bd75948ac1d03
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254894"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551059"
 ---
-# <a name="tutorial-configure-the-clusters-network-settings"></a>Kurz: Konfigurace nastavení sítě v clusteru 
+# <a name="tutorial-configure-the-clusters-network-settings"></a>Kurz: Konfigurace nastavení sítě v clusteru
 
 Předtím, než použijete nově vytvořený cluster Azure FXT Edge souborového, byste měli kontrolovat a upravovat několik nastavení sítě pro váš pracovní postup. 
 
 Tento kurz vysvětluje nastavení sítě, které může být potřeba upravit pro nový cluster. 
 
-Co se dozvíte: 
+Dozvíte se: 
 
 > [!div class="checklist"]
 > * Která síťová nastavení může být potřeba aktualizovat po vytvoření clusteru

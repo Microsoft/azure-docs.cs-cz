@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 12/30/2019
 ms.author: rkarlin
-ms.openlocfilehash: b2be563efa3c09cffaf14dec2b871f3881af1a7a
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: d5f3d24d10262f28023523668c22f4571799cff9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240038"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610467"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Připojení externího řešení pomocí protokolu syslog
 
@@ -35,7 +35,11 @@ Syslog je protokol protokolování událostí, které jsou společné pro Linux.
 Další informace najdete v tématu [zdroje dat syslog v Azure monitor](../azure-monitor/platform/data-sources-syslog.md).
 
 > [!NOTE]
-> Agent může shromažďovat protokoly z více zdrojů, ale musí být nainstalovaný na vyhrazeném proxy počítači.
+> - Agent může shromažďovat protokoly z více zdrojů, ale musí být nainstalovaný na vyhrazeném proxy počítači.
+> - Pokud chcete podporovat konektory pro CEF i syslog na jednom virtuálním počítači, postupujte podle následujících kroků, abyste se vyhnuli duplicitování dat:
+>    1. Postupujte podle pokynů pro [připojení CEF](connect-common-event-format.md).
+>    2. Pokud chcete připojit data syslogu, použijte **nastavení** > **pracovního prostoru** > **Upřesnit nastavení** > **data** > **syslog** a nastavte zařízení a jejich priority tak, aby se nepoužívaly jako zařízení a vlastnosti, které jste použili v konfiguraci CEF. <br></br>Pokud **na moje počítače vyberete použít**, použije se tato upravena vlastním nastavením na všechny virtuální počítače připojené k tomuto pracovnímu prostoru.
+
 
 ## <a name="connect-your-syslog-appliance"></a>Připojení zařízení syslog
 
@@ -55,7 +59,7 @@ Další informace najdete v tématu [zdroje dat syslog v Azure monitor](../azure
 
 5. V okně **Upřesnit nastavení** vyberte **data** > **syslog**. Pak přidejte zařízení, aby se konektor mohl shromažďovat.
     
-    Přidejte do svých hlaviček protokolů zařízení, která vaše zařízení syslog zahrnuje. Tuto konfiguraci můžete zobrazit v zařízení syslog ve `/etc/rsyslog.d/security-config-omsagent.conf` složce **syslog-d** a v **r-syslog** z. `/etc/syslog-ng/security-config-omsagent.conf`
+    Přidejte do svých hlaviček protokolů zařízení, která vaše zařízení syslog zahrnuje. Tuto konfiguraci můžete zobrazit v zařízení syslog ve složce **syslog-d** ve složce `/etc/rsyslog.d/security-config-omsagent.conf` a v **r-syslog** z `/etc/syslog-ng/security-config-omsagent.conf`.
     
     Pokud chcete použít zjišťování přihlášení neobvyklé SSH s daty, která shromáždíte, přidejte **auth** a **authpriv**. Další podrobnosti najdete v [následující části](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) .
 
@@ -86,7 +90,7 @@ Tato detekce vyžaduje specifickou konfiguraci konektoru dat syslog:
 1. V kroku 5 v předchozím postupu se ujistěte, že jsou jako zařízení, která chcete monitorovat, vybraná možnost **auth** i **authpriv** . U možností závažnosti nechte výchozí nastavení tak, aby byly všechny vybrané. Příklad:
     
     > [!div class="mx-imgBorder"]
-    > ![Zařízení požadovaná pro detekci přihlášení neobvyklé SSH](./media/connect-syslog/facilities-ssh-detection.png)
+    > ![požadovaná zařízení pro detekci přihlášení SSH v neobvyklé](./media/connect-syslog/facilities-ssh-detection.png)
 
 2. Umožněte shromažďování informací syslogu dostatek času. Pak přejděte do části **Azure Sentinel-logs**a zkopírujte a vložte následující dotaz:
     
@@ -96,9 +100,11 @@ Tato detekce vyžaduje specifickou konfiguraci konektoru dat syslog:
     
     Pokud je výsledný počet nula, potvrďte konfiguraci konektoru a monitorované počítače mají po dobu, kterou jste zadali pro dotaz, aktivitu úspěšného přihlášení.
     
-    Pokud je výsledný počet větší než nula, data syslogu jsou vhodná pro detekci přihlášení neobvyklé SSH. Toto zjišťování povolíte pomocí**šablon** > pravidel **analýz** >   **(Preview) neobvyklé zjišťování přihlášení SSH**.
+    Pokud je výsledný počet větší než nula, data syslogu jsou vhodná pro detekci přihlášení neobvyklé SSH. Toto zjišťování povolíte pomocí **šablon pravidel** >  **Analytics** >  **(Preview) neobvyklé zjišťování přihlášení SSH**.
 
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak připojit místní zařízení syslog ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
 - Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
+- [Pomocí sešitů](tutorial-monitor-your-data.md) můžete monitorovat data.
+

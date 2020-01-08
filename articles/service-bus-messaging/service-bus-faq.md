@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 8a2a704f39aa678be819a7297b30f8926e414e56
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: c303e2b691f8e7aa7ea3c8fcc69e39d7970ef54e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748448"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75352872"
 ---
 # <a name="service-bus-faq"></a>Nejčastější dotazy k Service Bus
 
@@ -45,7 +45,7 @@ Konvenční frontu nebo téma zpracovává jeden zprostředkovatel zpráv a ukl�
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Jaké porty potřebuji v bráně firewall otevřít? 
 K posílání a přijímání zpráv můžete použít následující protokoly s Azure Service Bus:
 
-- Rozšířený protokol řízení front zpráv (AMQP) (AMQP)
+- Rozšířený protokol řízení front zpráv (AMQP)
 - Protokol SBMP (Service Bus Messaging Protocol)
 - HTTP
 
@@ -113,7 +113,7 @@ Jakýkoli přenos dat v rámci dané oblasti Azure se poskytuje zdarma, stejně 
 Ne, Service Bus neúčtuje za úložiště. Existuje však kvóta, která omezuje maximální množství dat, která lze uchovávat pro jednotlivé fronty nebo témata. Podívejte se na další Nejčastější dotazy.
 
 ### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>Mám obor názvů Service Bus Standard. Proč se mi v rámci skupiny prostředků ' $system ' účtují poplatky?
-Azure Service Bus nedávno upgradovali komponenty fakturace. Z tohoto důvodu, pokud máte obor názvů Service Bus Standard, může se zobrazit položka řádku pro prostředek "/Subscriptions/< azure_subscription_id >/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system" v části Skupina prostředků $ systém.
+Azure Service Bus nedávno upgradovali komponenty fakturace. Z tohoto důvodu, pokud máte obor názvů Service Bus Standard, můžete zobrazit položky řádku pro prostředek "/Subscriptions/< azure_subscription_id >/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system" v části Skupina prostředků "$system".
 
 Tyto poplatky reprezentují základní poplatek za předplatné Azure, které zřídilo obor názvů Service Bus Standard. 
 
@@ -150,7 +150,7 @@ Obor názvů můžete přesunout z jednoho předplatného Azure do jiného, a to
 
 #### <a name="portal"></a>Portál
 
-Pokud chcete použít Azure Portal k migraci Service Bus oborů názvů do jiného předplatného, postupujte podle pokynů [zde](../azure-resource-manager/resource-group-move-resources.md#use-the-portal). 
+Pokud chcete použít Azure Portal k migraci Service Bus oborů názvů do jiného předplatného, postupujte podle pokynů [zde](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal). 
 
 #### <a name="powershell"></a>PowerShell
 

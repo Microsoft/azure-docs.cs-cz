@@ -2,17 +2,17 @@
 title: Co je model a balíček cloudové služby | Microsoft Docs
 description: Popisuje model cloudové služby (. csdef,. cscfg) a balíček (. cspkg) v Azure.
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: gwallace
-ms.openlocfilehash: 47d031e339b3677e0bf6ddcbad9456041c53c6e2
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 0d04236861287074087cc125d7b0d44dc65eccbf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359550"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360697"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Co je model cloudové služby a jak ho mám zabalit?
 Cloudová služba se vytvoří ze tří součástí, definice služby *(. csdef)* , konfigurace služby *(. cscfg)* a balíčku služby *(. cspkg)* . Soubory **ServiceDefinition. csdef** a **ServiceConfig. cscfg** jsou založené na jazyce XML a popisují strukturu cloudové služby a způsob jejich konfigurace. souhrnně označovaný jako model. **ServicePack. cspkg** je soubor zip, který je generován z **ServiceDefinition. csdef** a mimo jiné, obsahuje všechny požadované binární závislosti. Azure vytvoří cloudovou službu z nástroje **ServicePack. cspkg** a **ServiceConfig. cscfg**.
@@ -106,7 +106,7 @@ Obsahuje definice místních prostředků úložiště. Prostředek místního �
 **Objem**  
 Obsahuje definice pro importované moduly. Předchozí příklad kódu ukazuje moduly pro Připojení ke vzdálené ploše a Azure Connect.
 
-**Úvod**  
+**Startup**  
 Obsahuje úlohy, které se spouštějí při spuštění role. Úkoly jsou definovány v souboru. cmd nebo ve spustitelném souboru.
 
 <a name="cscfg"></a>
@@ -137,13 +137,13 @@ Konfigurační soubor služby není zabalený do aplikace, ale do Azure se nahra
 Můžete se podívat na [schéma konfigurace služby](/previous-versions/azure/reference/ee758710(v=azure.100)) pro lepší porozumění schématu XML, které se tady používá, ale tady je rychlé vysvětlení těchto elementů:
 
 **Instance**  
-Konfiguruje počet spuštěných instancí této role. Aby nedocházelo k nedostupnosti cloudové služby během upgradů, doporučujeme nasadit více než jednu instanci webových rolí. Nasazením víc než jedné instance dodržujete pokyny ve [službě Azure compute smlouva SLA (SLA)](https://azure.microsoft.com/support/legal/sla/), která garantuje 99,95% externí připojení k internetovým rolím, když se pro službu nasadí dvě nebo víc instancí role. .
+Konfiguruje počet spuštěných instancí této role. Aby nedocházelo k nedostupnosti cloudové služby během upgradů, doporučujeme nasadit více než jednu instanci webových rolí. Nasazením víc než jedné instance dodržujete pokyny ve [službě Azure compute smlouva SLA (SLA)](https://azure.microsoft.com/support/legal/sla/), která garantuje 99,95% externí konektivitu pro internetové role, když se pro službu nasadí dvě nebo víc instancí rolí.
 
 **ConfigurationSettings**  
-Konfiguruje nastavení pro spuštěné instance role. Název `<Setting>` elementů se musí shodovat s definicemi nastavení v definičním souboru služby.
+Konfiguruje nastavení pro spuštěné instance role. Název elementů `<Setting>` musí odpovídat definicím nastavení v definičním souboru služby.
 
 **Certifikáty**  
-Nakonfiguruje certifikáty používané službou. Předchozí příklad kódu ukazuje, jak definovat certifikát pro modul RemoteAccess. Hodnota atributu kryptografického *otisku* musí být nastavená na kryptografický otisk certifikátu, který se má použít.
+Nakonfiguruje certifikáty používané službou. Předchozí příklad kódu ukazuje, jak definovat certifikát pro modul RemoteAccess. Hodnota atributu *kryptografického otisku* musí být nastavená na kryptografický otisk certifikátu, který se má použít.
 
 <p/>
 
@@ -218,7 +218,7 @@ Konfiguraci cloudové služby můžete aktualizovat, když běží v Azure, ani�
 ## <a name="servicepackagecspkg"></a>ServicePackage.cspkg
 Pokud chcete nasadit aplikaci jako cloudovou službu v Azure, musíte nejdřív aplikaci zabalit v příslušném formátu. Pomocí nástroje příkazového řádku **CSPack** (nainstalovaného se sadou [Azure SDK](https://azure.microsoft.com/downloads/)) můžete vytvořit soubor balíčku jako alternativu k sadě Visual Studio.
 
-**CSPack** používá obsah souboru definice služby a konfiguračního souboru služby k definování obsahu balíčku. **CSPack** vygeneruje soubor balíčku aplikace (. cspkg), který můžete nahrát do Azure pomocí [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy). Ve výchozím nastavení je balíček pojmenován `[ServiceDefinitionFileName].cspkg`, ale můžete zadat jiný název `/out` pomocí možnosti **CSPack**.
+**CSPack** používá obsah souboru definice služby a konfiguračního souboru služby k definování obsahu balíčku. **CSPack** vygeneruje soubor balíčku aplikace (. cspkg), který můžete nahrát do Azure pomocí [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy). Ve výchozím nastavení se balíček jmenuje `[ServiceDefinitionFileName].cspkg`, ale můžete zadat jiný název pomocí možnosti `/out` **CSPack**.
 
 **CSPack** se nachází na  
 `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\[sdk-version]\bin\`
@@ -259,7 +259,7 @@ cspack [DirectoryName]\[ServiceDefinition]
 
 Kde proměnné jsou definovány takto:
 
-| Proměnná | Value |
+| Proměnná | Hodnota |
 | --- | --- |
 | \[DirectoryName\] |Podadresář v kořenovém adresáři projektu, který obsahuje soubor. csdef projektu Azure. |
 | \[ServiceDefinition\] |Název definičního souboru služby. Ve výchozím nastavení má tento soubor název ServiceDefinition. csdef. |
@@ -270,7 +270,7 @@ Kde proměnné jsou definovány takto:
 | \[PhysicalPath\] |Fyzické adresáře obsahu pro každou virtuální cestu definovanou v uzlu lokalita definice služby. |
 | \[RoleAssemblyName\] |Název binárního souboru pro roli. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Vytvářím balíček cloudové služby a chci...
 
 * [Nastavení vzdálené plochy pro instanci cloudové služby][remotedesktop]
@@ -289,3 +289,6 @@ Používám aplikaci Visual Studio a chci...
 [vs_deploy]: ../vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md
 [vs_reconfigure]: ../vs-azure-tools-configure-roles-for-cloud-service.md
 [vs_create]: ../vs-azure-tools-azure-project-create.md
+
+
+

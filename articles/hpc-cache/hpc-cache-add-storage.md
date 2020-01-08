@@ -4,14 +4,14 @@ description: Jak definovat cíle úložiště, aby mezipaměť prostředí Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 12/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 396ed84856604c297551c4593e0d7b82b92ac924
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 75d657fd9f3ee13c331450b324fd3b99e9cb6ca5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166679"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647206"
 ---
 # <a name="add-storage-targets"></a>Přidání cílů úložiště
 
@@ -33,6 +33,8 @@ Z Azure Portal otevřete instanci mezipaměti a na levém bočním panelu klikn�
 
 Nový cíl úložiště objektů BLOB potřebuje prázdný kontejner objektů BLOB nebo kontejner, který je naplněný daty ve formátu cloudového systému souborů mezipaměti HPC Azure HPC. Přečtěte si další informace o předběžném načítání kontejneru objektů BLOB v tématu [přesun dat do služby Azure Blob Storage](hpc-cache-ingest.md).
 
+Nový kontejner můžete z této stránky vytvořit těsně před tím, než ho přidáte.
+
 Pro definování kontejneru objektů BLOB v Azure zadejte tyto informace.
 
 ![snímek obrazovky s cílovou stránkou pro přidání cílení úložiště s informacemi o novém cíli úložiště Azure Blob Storage](media/hpc-cache-add-blob.png)
@@ -41,13 +43,15 @@ Pro definování kontejneru objektů BLOB v Azure zadejte tyto informace.
 
 * **Název cíle úložiště** – nastavte název, který identifikuje tento cíl úložiště v mezipaměti prostředí Azure HPC.
 * **Cílový typ** – vyberte **objekt BLOB**.
-* **Účet úložiště** – vyberte účet s kontejnerem, který chcete použít.
+* **Účet úložiště** – vyberte účet, který chcete použít.
 
   Pro přístup k účtu úložiště bude nutné autorizovat instanci mezipaměti, jak je popsáno v tématu [Přidání rolí přístupu](#add-the-access-control-roles-to-your-account).
 
   Informace o druhu účtu úložiště, který můžete použít, najdete v článku [požadavky na úložiště objektů BLOB](hpc-cache-prereqs.md#blob-storage-requirements).
 
-* **Kontejner úložiště** – vyberte kontejner objektů BLOB pro tento cíl.
+* **Kontejner úložiště** – vyberte kontejner objektů BLOB pro tento cíl nebo klikněte na **vytvořit nový**.
+
+  ![snímek obrazovky dialogového okna pro zadání názvu a úrovně přístupu (privátní) pro nový kontejner](media/add-blob-new-container.png)
 
 * **Cesta virtuálního oboru názvů** – nastavte cestu k souboru pro klienta pro tento cíl úložiště. Další informace o funkci virtuálního oboru názvů najdete v tématu [Konfigurace agregovaného oboru názvů](hpc-cache-namespace.md) .
 
@@ -146,9 +150,9 @@ Tato tabulka shrnuje rozdíly v modelu použití:
 
 | Model využití | Režim ukládání do mezipaměti | Ověření back-endu | Maximální zpoždění před zpětným zápisem |
 | ---- | ---- | ---- | ---- |
-| Čtení těžkých, nečastých zápisů | Pro čtení | Nikdy | Žádný |
-| Více než 15% zápisů | Čtení a zápis | Nikdy | 1 hodina |
-| Klienti obcházejí mezipaměť | Pro čtení | 30 sekund | Žádný |
+| Čtení těžkých, nečastých zápisů | Čtení | Nikdy | Žádné |
+| Více než 15% zápisů | Čtení/zápis | Nikdy | 1 hodina |
+| Klienti obcházejí mezipaměť | Čtení | 30 sekund | Žádné |
 
 ## <a name="next-steps"></a>Další kroky
 

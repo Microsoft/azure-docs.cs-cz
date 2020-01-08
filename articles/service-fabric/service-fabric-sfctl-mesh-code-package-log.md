@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – sfctl pro záznam o síti – balíček – protokol | Microsoft Docs
-description: Popisuje příkazy Service Fabric CLI sfctl pro rozhraní příkazového řádku-Package-log.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – sfctl pro kód sítě-balíček – protokol
+description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro získání protokolů pro zadaný balíček kódu.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: d1f0e34389a48b79c049f26e8b04c870f0f1a9a7
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 78edc9bb36b711f72300942bc9900b0fde7c51d2
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901266"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646139"
 ---
 # <a name="sfctl-mesh-code-package-log"></a>sfctl mesh code-package-log
 Načte protokoly pro kontejner zadaného balíčku kódu pro danou repliku služby.
@@ -28,7 +19,7 @@ Načte protokoly pro kontejner zadaného balíčku kódu pro danou repliku služ
 
 |Příkaz|Popis|
 | --- | --- |
-| Čtěte | Načte protokoly z kontejneru. |
+| získat | Načte protokoly z kontejneru. |
 
 ## <a name="sfctl-mesh-code-package-log-get"></a>sfctl – kód sítě – balíček – načíst protokol
 Načte protokoly z kontejneru.

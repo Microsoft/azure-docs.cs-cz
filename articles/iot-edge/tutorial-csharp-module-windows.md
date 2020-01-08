@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 041efc62b32e8d8c0c477d9d5715882fd7899cd9
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8ed622ff928fa612e6d33ba0647ce258bf4c1c21
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701942"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665211"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Kurz: vývoj modulu C# IoT Edge pro zařízení s Windows
 
@@ -43,7 +43,7 @@ Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení C# m
 | **Vývoj pro Windows AMD64** | ![Vývoj C# modulů pro WinAMD64 v vs Code](./media/tutorial-c-module/green-check.png) | ![Vývoj C# modulů pro WinAMD64 v aplikaci Visual Studio](./media/tutorial-c-module/green-check.png) |
 | **Ladění systému Windows AMD64** |   | ![Moduly C# ladění pro WinAMD64 v aplikaci Visual Studio](./media/tutorial-c-module/green-check.png) |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před zahájením tohoto kurzu byste měli projít předchozí kurz pro nastavení vývojového prostředí a [vytvořit modul IoT Edge pro zařízení s Windows](tutorial-develop-for-windows.md). Po dokončení tohoto kurzu už byste měli mít následující požadavky: 
 
@@ -78,7 +78,7 @@ Nástroje Azure IoT Edge poskytují šablony projektů pro všechny podporované
 
    | Pole | Hodnota |
    | ----- | ----- |
-   | Vybrat šablonu | Vyberte  **C# modul**. | 
+   | Vyberte šablonu | Vyberte  **C# modul**. | 
    | Název projektu modulu | Dejte modulu název **CSharpModule**. | 
    | Úložiště imagí Docker | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Vaše image kontejneru je předem vyplněná z hodnoty název projektu modulu. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br> Konečné úložiště imagí vypadá jako \<název registru\>. azurecr.io/csharpmodule. |
 
@@ -92,29 +92,30 @@ Manifest nasazení sdílí přihlašovací údaje pro váš registr kontejneru s
 
 1. V Průzkumníku řešení sady Visual Studio otevřete soubor **Deployment. template. JSON** . 
 
-2. V $edgeAgent požadovaných vlastnostech Najděte vlastnost **registryCredentials** . 
-
-3. Aktualizujte tuto vlastnost pomocí vašich přihlašovacích údajů, a to v následujícím formátu: 
+2. V $edgeAgent požadovaných vlastnostech Najděte vlastnost **registryCredentials** . Měla by mít vaše adresa registru vytvořená z informací, které jste zadali při vytváření projektu, a pole s uživatelským jménem a heslem by měla obsahovat názvy proměnných. Příklad: 
 
    ```json
    "registryCredentials": {
      "<registry name>": {
-       "username": "<username>",
-       "password": "<password>",
+       "username": "$CONTAINER_REGISTRY_USERNAME_<registry name>",
+       "password": "$CONTAINER_REGISTRY_PASSWORD_<registry name>",
        "address": "<registry name>.azurecr.io"
      }
    }
-   ```
 
-4. Uložte soubor Deployment. template. JSON. 
+3. Open the **.env** file in your module solution. (It's hidden by default in the Solution Explorer, so you might need to select the **Show All Files** button to display it.) The .env file should contain the same username and password variables that you saw in the deployment.template.json file. 
 
-### <a name="update-the-module-with-custom-code"></a>Aktualizace modulu pomocí vlastního kódu
+4. Add the **Username** and **Password** values from your Azure container registry. 
 
-Výchozí kód modulu přijímá zprávy ve vstupní frontě a předává je spolu s výstupní frontou. Pojďme přidat nějaký další kód, aby modul zpracoval zprávy na hranici před jejich přesměrováním na IoT Hub. Aktualizujte modul tak, aby analyzoval data o teplotě v každé zprávě, a pošle zprávu jenom IoT Hub, pokud teplota překročí určitou prahovou hodnotu. 
+5. Save your changes to the .env file.
 
-1. V aplikaci Visual Studio otevřete **CSharpModule** > **program.cs**.
+### Update the module with custom code
 
-2. Nahoře v oboru názvů **CSharpModule** přidejte tři příkazy **using** pro typy, které se použijí později:
+The default module code receives messages on an input queue and passes them along through an output queue. Let's add some additional code so that the module processes the messages at the edge before forwarding them to IoT Hub. Update the module so that it analyzes the temperature data in each message, and only sends the message to IoT Hub if the temperature exceeds a certain threshold. 
+
+1. In Visual Studio, open **CSharpModule** > **Program.cs**.
+
+2. At the top of the **CSharpModule** namespace, add three **using** statements for types that are used later:
 
     ```csharp
     using System.Collections.Generic;     // For KeyValuePair<>
@@ -282,7 +283,7 @@ Výchozí kód modulu přijímá zprávy ve vstupní frontě a předává je spo
        }
     ```
 
-    ![Přidat nevlákenný modul do šablony nasazení](./media/tutorial-csharp-module-windows/module-twin.png)
+    ![Dvojče zařízení přidat do šablony nasazení](./media/tutorial-csharp-module-windows/module-twin.png)
 
 11. Uložte soubor Deployment. template. JSON.
 

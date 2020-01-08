@@ -14,25 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
 ms.author: rkarlin
-ms.openlocfilehash: 0fbdba5c3fbfdfab5267407ccec9c611d74a5e02
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 640d1ff9e2ee1471706b7900e7e22dbc44920527
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463973"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610637"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Připojení externího řešení pomocí běžných formátů událostí
 
 
+Když připojujete externí řešení, které odesílá zprávy CEF, je třeba se připojit ke službě Azure Sentinel pomocí tří kroků:
 
-Tento článek vysvětluje, jak propojit službu Azure Sentinel s vašimi externími řešeními zabezpečení, která odesílají zprávy CEF (Common Event Format) nad syslog. 
+Krok 1: [připojení CEF nasazením agenta](connect-cef-agent.md) krok 2: [provedení kroků specifických pro řešení](connect-cef-solution-config.md) krok 3: [ověření připojení](connect-cef-verify.md)
+
+Tento článek popisuje, jak připojení funguje, nabízí požadavky a poskytuje kroky pro nasazení agenta v řešeních zabezpečení, která odesílají zprávy CEF (Common Event Format) do protokolu syslog. 
 
 > [!NOTE] 
 > Data se ukládají do geografického umístění pracovního prostoru, na kterém běží Azure Sentinel.
 
-## <a name="how-it-works"></a>Jak to funguje
-
-Musíte nasadit agenta na vyhrazený počítač se systémem Linux (virtuální počítač nebo místní), aby podporoval komunikaci mezi zařízením a službou Azure Sentinel. Následující diagram popisuje nastavení v případě virtuálního počítače se systémem Linux v Azure.
+Aby bylo možné vytvořit toto připojení, je nutné nasadit agenta na vyhrazeném počítači se systémem Linux (virtuální počítač nebo místní počítač), aby podporoval komunikaci mezi zařízením a službou Azure Sentinel. Následující diagram popisuje nastavení v případě virtuálního počítače se systémem Linux v Azure.
 
  ![CEF v Azure](./media/connect-cef/cef-syslog-azure.png)
 
@@ -41,7 +42,7 @@ Případně bude tato instalace existovat, pokud použijete virtuální počíta
  ![Místní CEF](./media/connect-cef/cef-syslog-onprem.png)
 
 
-## <a name="security-considerations"></a>Aspekty zabezpečení
+## <a name="security-considerations"></a>Informace o zabezpečení
 
 Nezapomeňte nakonfigurovat zabezpečení počítače podle zásad zabezpečení vaší organizace. Můžete třeba nakonfigurovat síť tak, aby byla v souladu se zásadami zabezpečení podnikové sítě, a změnit porty a protokoly v procesu démona tak, aby odpovídaly vašim požadavkům. Pomocí následujících pokynů můžete zlepšit konfiguraci zabezpečení počítače:  [zabezpečený virtuální počítač v Azure](../virtual-machines/linux/security-policy.md), [osvědčené postupy pro zabezpečení sítě](../security/fundamentals/network-best-practices.md).
 
@@ -51,7 +52,7 @@ Pokud chcete používat komunikaci TLS mezi řešením zabezpečení a počíta�
 ## <a name="prerequisites"></a>Požadavky
 Ujistěte se, že počítač se systémem Linux, který používáte jako proxy, používá jeden z následujících operačních systémů:
 
-- 64 – bit
+- 64 bitů
   - CentOS 6 a 7
   - Amazon Linux 2017.09
   - Oracle Linux 6 a 7
@@ -59,7 +60,7 @@ Ujistěte se, že počítač se systémem Linux, který používáte jako proxy,
   - Debian GNU/Linux 8 a 9
   - Ubuntu Linux 14,04 LTS, 16,04 LTS a 18,04 LTS
   - SUSE Linux Enterprise Server 12
-- 32 – bit
+- 32 bitů
    - CentOS 6
    - Oracle Linux 6
    - Red Hat Enterprise Linux Server 6
@@ -79,48 +80,7 @@ Ujistěte se, že váš počítač splňuje i následující požadavky:
     - Na počítači musíte mít zvýšená oprávnění (sudo). 
 - Požadavky na software
     - Ujistěte se, že je v počítači spuštěný Python.
-## <a name="step-1-deploy-the-agent"></a>Krok 1: nasazení agenta
 
-V tomto kroku musíte vybrat počítač se systémem Linux, který bude fungovat jako proxy server mezi službou Azure Sentinel a řešením zabezpečení. Na proxy počítači budete muset spustit skript, který:
-- Nainstaluje agenta Log Analytics a nakonfiguruje ho podle potřeby, aby naslouchal zprávy syslog.
-- Nakonfiguruje démon procesu Syslog k naslouchání zpráv syslog pomocí portu TCP 514 a přepošle pouze zprávy CEF agentovi Log Analytics pomocí portu TCP 25226.
-- Nastaví agenta syslog ke shromáždění dat a jeho bezpečnému odeslání do služby Azure Sentinel, kde je analyzovaný a obohacený.
- 
- 
-1. Na portálu Sentinel Azure klikněte na **datové konektory** a vyberte **Common Event Format (CEF)** a pak **otevřete stránku konektor**. 
-
-1. V části **instalace a konfigurace agenta SYSLOG**vyberte typ počítače, Azure, jiný Cloud nebo místní prostředí. 
-   > [!NOTE]
-   > Vzhledem k tomu, že skript v dalším kroku nainstaluje agenta Log Analytics a připojí počítač k pracovnímu prostoru Sentinel Azure, ujistěte se, že tento počítač není připojený k žádnému jinému pracovnímu prostoru.
-1. Na počítači musíte mít zvýšená oprávnění (sudo). Ujistěte se, že máte v počítači Python, a to pomocí následujícího příkazu: `python –version`
-
-1. Spusťte na proxy počítači následující skript.
-   `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
-1. Když je skript spuštěný, zkontrolujte, že nezískáváte žádné chybové zprávy ani upozornění.
-
-
-## <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>Krok 2: konfigurace řešení zabezpečení pro posílání zpráv CEF
-
-1. Na zařízení musíte nastavit tyto hodnoty tak, aby zařízení odesílalo potřebné protokoly v potřebném formátu do agenta Azure Sentinel syslog na základě agenta Log Analytics. Tyto parametry můžete upravit v zařízení, pokud je také upravíte v procesu démona syslog na agentu služby Azure Sentinel.
-    - Protokol = TCP
-    - Port = 514
-    - Format = CEF
-    - IP adresa – zajistěte odeslání zpráv CEF na IP adresu virtuálního počítače, který jste si pro tento účel vyhradi.
-
-   > [!NOTE]
-   > Toto řešení podporuje syslog RFC 3164 nebo RFC 5424.
-
-
-1. Pokud chcete použít příslušné schéma v Log Analytics pro události CEF, vyhledejte `CommonSecurityLog`.
-
-## <a name="step-3-validate-connectivity"></a>Krok 3: ověření připojení
-
-1. Otevřete Log Analytics a ujistěte se, že jsou protokoly přijaté pomocí schématu CommonSecurityLog.<br> Může trvat až 20 minut, než se vaše protokoly začnou zobrazovat v Log Analytics. 
-
-1. Před spuštěním skriptu doporučujeme, abyste odeslali zprávy z řešení zabezpečení, abyste se ujistili, že jsou předávány na počítač proxy syslog, který jste nakonfigurovali. 
-1. Na počítači musíte mít zvýšená oprávnění (sudo). Ujistěte se, že máte v počítači Python, a to pomocí následujícího příkazu: `python –version`
-1. Spuštěním následujícího skriptu zkontrolujete konektivitu mezi agentem, službou Azure Sentinel a vaším řešením zabezpečení. Kontroluje, zda je přesměrování démona správně nakonfigurováno, naslouchá na správných portech a zda nic neblokuje komunikaci mezi démonem a agentem Log Analytics. Skript také pošle příznakové zprávy "TestCommonEventFormat", aby zkontrolovala koncové připojení. <br>
- `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]`
 
 
 ## <a name="next-steps"></a>Další kroky

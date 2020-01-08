@@ -9,30 +9,87 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 5b8628a8a235e89614ab87dcc2020915db459f38
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 91ea2b68828ac54d4128a90550e9c60e065b719d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978420"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379421"
 ---
 # <a name="what-is-form-recognizer"></a>Co je služba Rozpoznávání formulářů?
 
-Nástroj pro rozpoznávání formulářů Azure je výtahová služba, která pomocí technologie strojového učení identifikuje a extrahuje páry klíč/hodnota a tabulková data z dokumentů formuláře. Jejím výstupem jsou strukturovaná data, která zahrnují relace z původního souboru. Vlastní model rozpoznávání formulářů můžete volat pomocí jednoduchého REST API, abyste snížili složitost a mohli se snadno integrovat do pracovního postupu nebo aplikace. Chcete-li začít, stačí pouze pět vyplněných dokumentů formuláře nebo dva vyplněné formuláře plus prázdná forma stejného typu jako vstupní materiál. Rychle získáte přesné výsledky, které jsou přizpůsobené vašemu konkrétnímu obsahu bez nutnosti ručních zásahů nebo rozsáhlých znalostí z oblasti datové vědy.
+Nástroj pro rozpoznávání formulářů Azure je výtahová služba, která pomocí technologie strojového učení identifikuje a extrahuje z dokumentů formuláře páry textů, dvojic klíč/hodnota a tabulková data. Ingestuje text z formulářů a vypíše strukturovaná data, která zahrnují relace v původním souboru. Rychle získáte přesné výsledky, které jsou přizpůsobené vašemu konkrétnímu obsahu bez nutnosti ručních zásahů nebo rozsáhlých znalostí z oblasti datové vědy. Nástroj pro rozpoznávání formulářů se skládá z vlastních modelů, předem připraveného modelu příjemek a rozhraní API pro rozložení. Můžete volat modely pro rozpoznávání formulářů pomocí REST API ke snížení složitosti a jejich integraci do pracovního postupu nebo aplikace.
+
+Nástroj pro rozpoznávání formulářů se skládá z následujících služeb:
+* **Vlastní modely** – z formulářů extrahuje páry klíč/hodnota a tabulková data. Tyto modely jsou vyškolené s vašimi vlastními daty, takže jsou přizpůsobené vašim formám.
+* **Model předem vytvořeného příjmu** – extrakce dat z prodejních příjmů v USA pomocí předem připraveného modelu.
+* **Rozhraní API pro rozložení** – rozbalí textové a tabulkové struktury spolu s jejich souřadnicemi ohraničovacího rámečku z dokumentů.
+
+<!-- add diagram -->
 
 ## <a name="custom-models"></a>Vlastní modely
 
-Vlastní model nástroje pro rozpoznávání, který je součástí vlastních dat, stačí pro spuštění pouze pěti vzorových vstupních formulářů. Když odesíláte vstupní data, algoritmus clusteruje formuláře podle typu, zjistí, jaké klíče a tabulky jsou k dispozici, a přidruží hodnoty k klíčům a záznamům k tabulkám. Jejím výstupem jsou strukturovaná data, která zahrnují relace z původního souboru. Po proškolování modelu můžete otestovat a znovu ho využít a nakonec ho použít k spolehlivé extrakci dat z dalších formulářů podle vašich potřeb.
+Vlastní modely pro rozpoznávání formulářů se spouštějí na vaše vlastní data a stačí, abyste mohli začít jenom pět vzorových vstupních formulářů. Vyškolený model může výstupovat strukturovaná data, která obsahují vztahy v původním dokumentu formuláře. Po proškolování modelu můžete otestovat a znovu ho využít a nakonec ho použít k spolehlivé extrakci dat z dalších formulářů podle vašich potřeb.
 
-Učení bez supervize umožňuje tomuto modelu porozumět relacím mezi poli a položkami a jejich rozložení a nevyžaduje se přitom ruční popisování dat ani náročné kódování nebo údržba. Naproti tomu modely strojového učení předem proškolenou data vyžadují standardizovaná data. Jsou méně přesné u vstupních materiálů, které se odchylují od tradičních formátů, jako jsou například formuláře specifické pro jednotlivé obory.
+Při výuce vlastních modelů máte k dispozici následující možnosti: školení s popisky dat a bez označení dat.
+
+### <a name="train-without-labels"></a>Výuka bez popisků
+
+Ve výchozím nastavení používá nástroj pro rozpoznávání formulářů nepod dohledem informace o rozložení a vztazích mezi poli a položkami ve formulářích. Když odešlete vstupní formuláře, algoritmus clusteruje formuláře podle typu, zjistí, jaké klíče a tabulky jsou k dispozici, a přidruží hodnoty k klíčům a záznamům k tabulkám. To nevyžaduje ruční označování dat nebo psaní kódu a údržby a doporučujeme tuto metodu vyzkoušet jako první.
+
+### <a name="train-with-labels"></a>Výuka s popisky
+
+Při výuce s povzorovými daty model předává pod dohledem učení o extrakci hodnot, které vás zajímají, pomocí popisků, které zadáte. Výsledkem je lepší provádění modelů a může způsobit vytváření modelů, které pracují se složitými formuláři nebo formuláři obsahujícími hodnoty bez klíčů.
+
+Nástroj pro rozpoznávání formulářů používá [rozhraní API pro rozložení](#layout-api) a zjišťuje očekávané velikosti a pozice vytištěných a ručně psaných textových prvků. Pak pomocí uživatelem zadaných popisků zjistí přidružení klíč/hodnota v dokumentech. Doporučujeme použít pět ručně označených forem stejného typu, abyste mohli začít při výuce nového modelu a přidávat další označená data, aby se zlepšila přesnost modelu.
 
 ## <a name="prebuilt-receipt-model"></a>Předem sestavený model příjmu
 
-Nástroj pro rozpoznávání formulářů obsahuje také model pro čtení prodejních příjmů. Tento model extrahuje klíčové informace, jako je čas a datum transakce, informace o obchodníkech, množství daní a součtů a další. Předem sestavený model příjmu je navíc vyškolen pro rozpoznání a vrácení veškerého textu na účtence.
+Nástroj pro rozpoznávání formulářů obsahuje také model pro čtení prodejních příjmů z USA&mdash;typ používaný v restauracích, čerpacích stanicích, maloobchodním prodeji atd. ([příjem vzorků](./media/contoso-receipt-small.png)). Tento model extrahuje klíčové informace, jako je čas a datum transakce, informace o obchodníkech, množství daní a součtů a další. Předem sestavený model příjmu je navíc vyškolen pro rozpoznání a vrácení veškerého textu na účtence.
 
-## <a name="what-it-includes"></a>Co zahrnuje
+## <a name="layout-api"></a>Rozhraní API pro rozložení
 
-Nástroj pro rozpoznávání formulářů je k dispozici jako REST API. Pomocí těchto rozhraní API můžete vytvořit, naučit a vyhodnotit vlastní model nebo získat přístup k předdefinovanému modelu. Pokud chcete, můžete v místním kontejneru Docker vytvořit vlastní modely a spustit je.
+Nástroj pro rozpoznávání formulářů také může extrahovat textovou a tabulkovou strukturu (čísla řádků a sloupců přidružených k tomuto textu) pomocí optického rozpoznávání znaků (OCR) s vysokým rozlišením. 
+
+## <a name="where-do-i-start"></a>Kde mám začít?
+
+**Krok 1:** Požádat o přístup:
+
+Nástroj pro rozpoznávání formulářů je k dispozici ve verzi Preview s omezeným přístupem. Chcete-li získat přístup k verzi Preview, vyplňte a odešlete formulář [žádosti o přístup pro rozpoznávání formulářů](https://aka.ms/FormRecognizerRequestAccess) . Formulář požaduje informace o vás, vaší společnosti a scénáři, ve kterém budete používat nástroj pro rozpoznávání formulářů.
+
+**Krok 2:** Vytvořte prostředek pro rozpoznávání formulářů v Azure Portal:
+
+Pokud jste udělili přístup k používání nástroje pro rozpoznávání formulářů, obdržíte uvítací e-mail s několika odkazy a prostředky. Pomocí odkazu Azure Portal v této zprávě otevřete Azure Portal a vytvořte prostředek pro rozpoznávání formulářů.
+
+**Krok 3:** Extrakce dat z formulářů:
+
+* Vlastní analýza modelu na vaše formuláře
+  * Výuka bez popisků
+    * [Rychlý Start: výuka modelu pro rozpoznávání formulářů a extrakce dat formuláře pomocí REST API s kudrlinkou](quickstarts/curl-train-extract.md)
+    * [Rychlý Start: výuka modelu pro rozpoznávání formulářů a extrakce dat formuláře pomocí REST API s Pythonem](quickstarts/python-train-extract.md)
+  * Výuka s popisky 
+    * [Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků](quickstarts/label-tool.md)
+    * [Výukový model pro rozpoznávání formulářů s popisky pomocí REST API a Pythonu](quickstarts/python-labeled-data.md) 
+* Předem připravené příjmy – extrakce dat z prodejních příjmů z USA
+  * [Rychlý Start: extrakce dat příjmu pomocí oblé](quickstarts/curl-receipts.md)
+  * [Rychlý Start: extrakce údajů o příjemcích pomocí Pythonu](quickstarts/python-receipts.md)
+* Rozložení – extrakce textu a struktury tabulky z formulářů
+  * [Rychlý Start: extrakce dat rozložení pomocí Pythonu](quickstarts/python-layout.md)
+
+Při učení technologie doporučujeme používat bezplatnou službu. Mějte na paměti, že počet bezplatných stránek je omezený na 500 za měsíc.
+
+**Krok 4:** Zkontrolujte rozhraní REST API:
+
+Pomocí následujících rozhraní API můžete vyškolit modely a extrahovat strukturovaná data z formulářů.
+
+|Name (Název) |Popis |
+|---|---|
+| **Vlastní model výuky**| Vytvořte nový model pro analýzu formulářů s použitím pěti forem stejného typu. Nastavte parametr _useLabelFile_ na `true` pro výuku pomocí ručně označených dat. |
+| **Analyzovat formulář** |Analyzujte jeden dokument předaný jako datový proud pro extrakci textu, párů klíč/hodnota a tabulek z formuláře pomocí vlastního modelu.  |
+| **Analyzovat příjem** |Analyzujte jeden příjmový doklad pro extrakci klíčových informací a dalšího textu příjmu.|
+| **Analyzovat rozložení** |Umožňuje analyzovat rozložení formuláře pro extrakci textu a struktury tabulky.|
+
+Další informace najdete v [referenční dokumentaci k REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) . Pokud jste obeznámeni s předchozí verzí rozhraní API, přečtěte si článek [co je nového](./whats-new.md) , kde se dozvíte o nejnovějších změnách.
 
 ## <a name="input-requirements"></a>Požadavky na vstup
 ### <a name="custom-model"></a>Vlastní model
@@ -49,38 +106,10 @@ Vstupní požadavky pro model příjemky se mírně liší.
 * Rozměry PDF musí být maximálně 17 × 17 palců, které odpovídají zákonným nebo a3 velikosti papíru a menšímu.
 * Pro PDF a TIFF se zpracovávají jenom první 200 stránky (s předplatným úrovně Free, zpracovávají se jenom první dvě stránky).
 
-## <a name="request-access"></a>Vyžádání přístup
-
-Nástroj pro rozpoznávání formulářů je k dispozici ve verzi Preview s omezeným přístupem. Chcete-li získat přístup k verzi Preview, vyplňte a odešlete formulář [žádosti o přístup pro rozpoznávání formulářů](https://aka.ms/FormRecognizerRequestAccess) . Formulář požaduje informace o vás, vaší společnosti a scénáři uživatele, pro které budete používat nástroj pro rozpoznávání formulářů. Pokud je váš požadavek schválen týmem Azure Cognitive Services, obdržíte e-mail s pokyny pro přístup ke službě.
-
-## <a name="where-do-i-start"></a>Kde mám začít?
-
-**Krok 1:** Vytvořte prostředek pro rozpoznávání formulářů v Azure Portal.
-
-**Krok 2:** Postupujte podle rychlého startu a použijte REST API:
-* [Rychlý Start: výuka modelu pro rozpoznávání formulářů a extrakce dat formuláře pomocí REST API s kudrlinkou](quickstarts/curl-train-extract.md)
-* [Rychlý Start: výuka modelu pro rozpoznávání formulářů a extrakce dat formuláře pomocí REST API s Pythonem](quickstarts/python-train-extract.md)
-* [Rychlý Start: extrakce dat příjmu pomocí oblé](quickstarts/curl-receipts.md)
-* [Rychlý Start: extrakce údajů o příjemcích pomocí Pythonu](quickstarts/python-receipts.md)
-
-Při učení technologie doporučujeme používat bezplatnou službu. Mějte na paměti, že počet bezplatných stránek je omezený na 500 za měsíc.
-
-**Krok 3:** Kontrola rozhraní REST API
-
-Pomocí následujících rozhraní API můžete vyškolit a extrahovat strukturovaná data z formulářů.
-
-|||
-|---|---|
-| Trénování modelu| Vytvořte nový model pro analýzu formulářů s použitím pěti forem stejného typu. Nebo se naučíte prázdným formulářem a dvěma vyplněnými formuláři.  |
-| Analyzovat formulář |Analyzujte jeden dokument předaný jako datový proud pro extrakci párů klíč/hodnota a tabulky z formuláře pomocí vlastního modelu.  |
-| Analyzovat příjem |Analyzujte jeden příjmový doklad pro extrakci klíčových informací a dalšího textu příjmu.|
-
-Další informace najdete v [referenční dokumentaci k REST API](https://aka.ms/form-recognizer/api) . 
-
 ## <a name="data-privacy-and-security"></a>Ochrana osobních údajů a zabezpečení dat
 
 Tato služba se nabízí jako [verze Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) služby Azure pod [podmínkami online služby](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31). Stejně jako u všech služeb rozpoznávání by měli vývojáři, kteří používají službu pro rozpoznávání formulářů, znát zásady Microsoftu u zákaznických dat. Další informace najdete na [stránce Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) v centru zabezpečení Microsoftu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Dokončete [rychlý Start](quickstarts/curl-train-extract.md) , abyste mohli začít s [rozhraními API pro rozpoznávání formulářů](https://aka.ms/form-recognizer/api).
+Dokončete [rychlý Start](quickstarts/curl-train-extract.md) , abyste mohli začít s [rozhraními API pro rozpoznávání formulářů](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm).

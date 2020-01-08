@@ -1,20 +1,20 @@
 ---
 title: Dávkové zpracování zpráv EDI jako skupiny
-description: Posílání a přijímání zpráv EDI jako dávek, skupin nebo kolekcí v Azure Logic Apps
+description: Posílání a přijímání zpráv EDI jako dávek, skupin nebo kolekcí pomocí dávkového zpracování v Azure Logic Apps
 services: logic-apps
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: 1c4b32bfec667620101d588974e0411a9c7438d2
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6fc0833f70e3e9cd98100f193b52e5a1bfa4d651
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792997"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666665"
 ---
-# <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>Posílání zpráv EDI v dávkách obchodním partnerům pomocí Azure Logic Apps
+# <a name="exchange-edi-messages-as-batches-or-groups-between-trading-partners-in-azure-logic-apps"></a>Zprávy EDI Exchange jako dávky nebo skupiny mezi obchodními partnery v Azure Logic Apps
 
 Ve scénářích B2B (Business to Business) partneři často vyměňují zprávy ve skupinách nebo *dávkách*. Při sestavování řešení Batch pomocí Logic Apps můžete posílat zprávy obchodním partnerům a zpracovávat tyto zprávy v dávkách. V tomto článku se dozvíte, jak můžete dávkové zpracování zpráv EDI pomocí X12 vytvořit jako příklad vytvořením aplikace logiky "Batch Sender" a aplikace logiky Batch Receiver. 
 
@@ -30,7 +30,7 @@ V tomto článku sestavíte řešení pro dávkování tak, že vytvoříte dvě
 
 Ujistěte se, že přijímač Batch a odesilatel dávky sdílejí stejné předplatné Azure *a* oblast Azure. Pokud ne, nemůžete při vytváření odesílatele Batch vybrat přijímače Batch, protože nejsou navzájem viditelné.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li postupovat podle tohoto příkladu, budete potřebovat tyto položky:
 
@@ -66,12 +66,12 @@ Pro tohoto přijímače Batch zadáte režim dávky, název, kritéria pro vydá
 
    | Vlastnost | Hodnota | Poznámky | 
    |----------|-------|-------|
-   | **Dávkový režim** | Řádkové |  |  
+   | **Dávkový režim** | vložené |  |  
    | **Název dávky** | TestBatch | K dispozici pouze s **vloženým** režimem dávky | 
    | **Kritéria uvolnění** | Založené na počtu zpráv, podle plánu | K dispozici pouze s **vloženým** režimem dávky | 
    | **Počet zpráv** | 10 | Dostupné jenom pro kritéria uvolnění **na základě počtu zpráv** | 
    | **Interval** | 10 | K dispozici pouze s kritérii vydání **podle plánu** | 
-   | **Frekvence** | za | K dispozici pouze s kritérii vydání **podle plánu** | 
+   | **Frekvence** | minute | K dispozici pouze s kritérii vydání **podle plánu** | 
    ||| 
 
    ![Zadat podrobnosti triggeru dávky](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-release-criteria.png)
@@ -96,9 +96,9 @@ Pro tohoto přijímače Batch zadáte režim dávky, název, kritéria pro vydá
       | Vlastnost | Popis |
       |----------|-------------|
       | **Název smlouvy X12** | Otevřete seznam a vyberte svou stávající smlouvu. <p>Pokud je seznam prázdný, ujistěte se, že jste provedli [propojení aplikace logiky s účtem pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account) s požadovanou smlouvou. | 
-      | **Batch** | Klikněte do tohoto pole a po zobrazení seznamu dynamický obsah vyberte token pro **název dávky** . | 
+      | **BatchName** | Klikněte do tohoto pole a po zobrazení seznamu dynamický obsah vyberte token pro **název dávky** . | 
       | **PartitionName** | Klikněte do tohoto pole a po zobrazení seznamu dynamický obsah vyberte možnost token **názvu oddílu** . | 
-      | **Položek** | Zavřete pole podrobnosti položky a potom klikněte do tohoto pole. Až se zobrazí seznam dynamického obsahu, vyberte token **dávkových položek** . | 
+      | **Položky** | Zavřete pole podrobnosti položky a potom klikněte do tohoto pole. Až se zobrazí seznam dynamického obsahu, vyberte token **dávkových položek** . | 
       ||| 
 
       ![Podrobnosti o akci dávkového kódování](./media/logic-apps-scenario-EDI-send-batch-messages/batch-encode-action-details.png)
@@ -126,7 +126,7 @@ Chcete-li se ujistit, že přijímač Batch funguje podle očekávání, můžet
    | Vlastnost | Popis | 
    |----------|-------------|
    | **Metoda** | Z tohoto seznamu vyberte **post**. | 
-   | **Identifikátor URI** | Vygenerujte identifikátor URI pro vaši žádost a potom do tohoto pole zadejte tento identifikátor URI. | 
+   | **Uri** | Vygenerujte identifikátor URI pro vaši žádost a potom do tohoto pole zadejte tento identifikátor URI. | 
    | **Text** | Klikněte do tohoto pole a po otevření seznamu dynamický obsah vyberte token **textu** , který se zobrazí v části. **Služba Batch zakóduje podle názvu smlouvy**. <p>Pokud se token **textu** nezobrazuje vedle **dávkového kódování podle názvu smlouvy**, vyberte **Zobrazit další**. | 
    ||| 
 

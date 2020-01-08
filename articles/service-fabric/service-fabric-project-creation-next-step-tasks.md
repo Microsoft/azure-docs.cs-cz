@@ -1,77 +1,66 @@
 ---
-title: Další kroky vytvoření projektu Service Fabric | Dokumentace Microsoftu
-description: Další informace o projekt aplikace, kterou jste právě vytvořili v sadě Visual Studio.  Naučte se sestavovat služby pomocí kurzy a další informace o vývoji služeb pro Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 299d1f97-1ca9-440d-9f81-d1d0dd2bf4df
-ms.service: service-fabric
-ms.devlang: dotNet
+title: Vytvoření projektu Service Fabric –další kroky
+description: Seznamte se s projektem aplikace, který jste právě vytvořili v aplikaci Visual Studio.  Naučte se vytvářet služby pomocí kurzů a získat další informace o vývoji služeb pro Service Fabric.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/07/2017
-ms.author: atsenthi
-ms.openlocfilehash: e5371cd3ea9de1993f0f824325f6cbf1e25343d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8fc105657bda6114851f4819be4658926ad621c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773039"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349402"
 ---
-# <a name="your-service-fabric-application-and-next-steps"></a>Aplikace Service Fabric a další kroky
-Aplikace Azure Service Fabric se vytvořil. Tento článek popisuje některé kurzy k vyzkoušení, strukturu projektu, některé další informace, které byste měli zájem a potenciální další kroky.
+# <a name="your-service-fabric-application-and-next-steps"></a>Vaše aplikace Service Fabric a další kroky
+Vaše aplikace Azure Service Fabric se vytvořila. Tento článek popisuje některé kurzy, které si vyzkoušíte, strukturu projektu, další informace, které vás mohou zajímat, a další možné kroky.
 
-## <a name="get-started-with-tutorials-walk-throughs-and-samples"></a>Začínáme s kurzy, kurzy a ukázky
+## <a name="get-started-with-tutorials-walk-throughs-and-samples"></a>Začínáme s kurzy, návodi a ukázkami
 Jste připravení začít?  
 
-Seznámení se základními kurzů k .NET aplikace. Zjistěte, jak [sestavit aplikaci](service-fabric-tutorial-create-dotnet-app.md) s front-endu ASP.NET Core a stavovým back endem, [nasazení aplikace](service-fabric-tutorial-deploy-app-to-party-cluster.md) do clusteru, [. konfigurace CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md), a [nastavení monitorování a Diagnostika](service-fabric-tutorial-monitoring-aspnet.md).
+Pracujte v kurzu aplikace .NET. Naučte se, jak [vytvořit aplikaci](service-fabric-tutorial-create-dotnet-app.md) s ASP.NET Core front-end a stavovým back-endu, [nasadit aplikaci](service-fabric-tutorial-deploy-app-to-party-cluster.md) do clusteru, [nakonfigurovat CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)a [nastavit monitorování a diagnostiku](service-fabric-tutorial-monitoring-aspnet.md).
 
-Vyzkoušejte si jednu z následujících návodů a první vytvoření...
-- [C#Služby Reliable Services na Windows](service-fabric-reliable-services-quick-start.md) 
-- [C#Služby Reliable Actors na Windows](service-fabric-reliable-actors-get-started.md) 
-- [Služby spustitelné hostem ve Windows](quickstart-guest-app.md) 
+Nebo si vyzkoušejte jeden z následujících podrobných pokynů a vytvořte si první...
+- [C#Služba Reliable Services ve Windows](service-fabric-reliable-services-quick-start.md) 
+- [C#Služba Reliable Actors ve Windows](service-fabric-reliable-actors-get-started.md) 
+- [Služba spustitelných souborů hosta ve Windows](quickstart-guest-app.md) 
 - [Aplikace typu kontejner pro Windows](service-fabric-get-started-containers.md) 
 
-Můžete mít také zájem o vyzkoušení navýšení kapacity našich [ukázkové aplikace](https://aka.ms/servicefabricsamples).
+Může vás taky zajímat, jak vyzkoušet naše [ukázkové aplikace](https://aka.ms/servicefabricsamples).
 
-## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>Máte otázky nebo připomínky?  Je potřeba nahlásit problém?
-Přečtěte si [běžné otázky](service-fabric-common-questions.md) a najít odpovědi na co můžete dělat Service Fabric a jak by měla sloužit.
+## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>Máte otázky nebo připomínky?  Potřebujete nahlásit problém?
+Přečtěte si [Nejčastější dotazy](service-fabric-common-questions.md) a vyhledejte odpovědi, které Service Fabric můžou dělat a jak se mají použít.
 
-[Možnosti podpory](service-fabric-support.md) uvádí fóra na StackOverflow a MSDN pro kladení otázek, jakož i možnosti pro vytváření sestav problémů, získání podpory a odesílání názor na produkt.
+[Možnosti podpory](service-fabric-support.md) vypisuje fóra na STACKOVERFLOW a MSDN, kde můžete klást otázky a také možnosti vytváření sestav, získat podporu a odesílat zpětnou vazbu k produktu.
 
 ## <a name="the-application-project"></a>Projekt aplikace
-Každá nová aplikace obsahuje projekt aplikace. Může být jeden nebo dva další projekty, v závislosti na typu zvolené služby.
+Každá nová aplikace zahrnuje projekt aplikace. V závislosti na zvoleném typu služby může existovat jeden nebo dva další projekty.
 
-Projekt aplikace se skládá ze:
+Projekt aplikace se skládá z těchto:
 
 * Sada odkazů na služby, které tvoří vaši aplikaci.
-* Tři profily (1 uzel místní 5 uzlu místní a cloudové), které vám umožní spravovat předvolby pro práci s různými prostředími – například preference týkající se koncový bod clusteru a zda chcete provést upgrade nasazení ve výchozím nastavení publikování.
-* Parametr tři aplikace soubory (stejně jako výše), že vám pomůže udržovat konfigurace specifických pro prostředí aplikací, jako je počet oddílů, chcete-li vytvořit pro službu. Zjistěte, jak [konfigurace aplikace pro víc prostředí](service-fabric-manage-multiple-environment-app-configuration.md).
-* Skript nasazení, který můžete použít k nasazení aplikace z příkazového řádku nebo jako součást automatizovaný kanál průběžné integrace a nasazování. Další informace o [nasazení aplikací pomocí prostředí PowerShell](service-fabric-deploy-remove-applications.md).
-* Manifest aplikace, která popisuje aplikace. Manifest můžete najít ve složce ApplicationPackageRoot. Další informace o [manifesty aplikace a služby](service-fabric-application-model.md).
+* Tři publikační profily (místní a 5 uzlů, místní a cloudové), které můžete použít k údržbě předvoleb pro práci s různými prostředími – jako jsou třeba předvolby související s koncovým bodem clusteru a zda se ve výchozím nastavení provádí nasazení upgradu.
+* Tři soubory parametrů aplikace (stejné jako výše), které můžete použít k údržbě konfigurací aplikací specifických pro prostředí, jako je počet oddílů, které se mají pro službu vytvořit. Naučte se [Konfigurovat aplikaci pro více prostředí](service-fabric-manage-multiple-environment-app-configuration.md).
+* Skript nasazení, který můžete použít k nasazení aplikace z příkazového řádku nebo v rámci automatizovaného kanálu pro průběžnou integraci a nasazení. Přečtěte si další informace o [nasazování aplikací pomocí PowerShellu](service-fabric-deploy-remove-applications.md).
+* Manifest aplikace, který popisuje aplikaci. Manifest najdete ve složce ApplicationPackageRoot. Přečtěte si další informace o [manifestech aplikací a služeb](service-fabric-application-model.md).
 
 
 
-## <a name="learn-more-about-the-programming-models"></a>Další informace o programovací modely
-Service Fabric nabízí několik způsobů, jak zapisovat a spravovat vaše služby.  Tady je přehled a koncepční informace [bezstavové a stavové služby Reliable](service-fabric-reliable-services-introduction.md), [Reliable Actors](service-fabric-reliable-actors-introduction.md), [kontejnery](service-fabric-containers-overview.md), [spustitelné soubory hosta ](service-fabric-guest-executables-introduction.md), a [bezstavové a stavové služby ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md).
+## <a name="learn-more-about-the-programming-models"></a>Další informace o programovacích modelech
+Service Fabric nabízí několik způsobů, jak psát a spravovat vaše služby.  Zde najdete přehled a koncepční informace o [bezstavovém a stavovém Reliable Services](service-fabric-reliable-services-introduction.md), [Reliable Actors](service-fabric-reliable-actors-introduction.md), [kontejnerech](service-fabric-containers-overview.md), [spustitelných souborech hosta](service-fabric-guest-executables-introduction.md)a [bezstavových a stavových ASP.NET Core službách](service-fabric-reliable-services-communication-aspnetcore.md).
 
-## <a name="learn-about-service-communication"></a>Další informace o komunikaci služby
-Aplikace Service Fabric se skládá z různých služeb, kde každá služba provádí specializované úlohy. Tyto služby mohou komunikovat mezi sebou a může být klientské aplikace mimo cluster připojit k a komunikace se službami. Zjistěte, jak [nastavit komunikaci s a mezi službami](service-fabric-connect-and-communicate-with-services.md) v Service Fabric. 
+## <a name="learn-about-service-communication"></a>Další informace o komunikaci se službou
+Service Fabric aplikace se skládá z různých služeb, kde každá služba provádí specializované úkoly. Tyto služby mohou vzájemně komunikovat a klientské aplikace mohou být mimo cluster, které se připojují ke službám a komunikují s nimi. Naučte se, jak [nastavit komunikaci s a mezi vašimi službami](service-fabric-connect-and-communicate-with-services.md) v Service Fabric. 
 
-## <a name="learn-about-configuring-application-security"></a>Další informace o konfiguraci zabezpečení aplikací
-Můžete zabezpečit aplikace, které jsou spuštěny v clusteru pod různými uživatelskými účty. Service Fabric také pomáhá je zabezpečit prostředky používané aplikacemi v okamžiku nasazení podle uživatelských účtů – například soubory, adresáře a certifikáty. Díky spouštění aplikací, i do sdíleného hostovaného prostředí, bezpečnější od sebe.  Zjistěte, jak [konfigurovat zásady zabezpečení pro vaši aplikaci](service-fabric-application-runas-security.md).
+## <a name="learn-about-configuring-application-security"></a>Informace o konfiguraci zabezpečení aplikací
+V rámci různých uživatelských účtů můžete zabezpečit aplikace spuštěné v clusteru. Service Fabric také pomáhá zabezpečit prostředky používané aplikacemi v době nasazení v rámci uživatelských účtů, například soubory, adresáře a certifikáty. Díky tomu jsou aplikace spuštěné, i ve sdíleném hostovaném prostředí, od druhé.  Přečtěte si, jak [nakonfigurovat zásady zabezpečení pro vaši aplikaci](service-fabric-application-runas-security.md).
 
-Vaše aplikace může obsahovat citlivé informace, jako je například úložiště připojovací řetězce, hesla nebo jiné hodnoty, které by neměly být zpracovat ve formátu prostého textu. Zjistěte, jak [spravovat tajné kódy ve vaší aplikaci](service-fabric-application-secret-management.md).
+Vaše aplikace může obsahovat citlivé informace, jako jsou například připojovací řetězce úložiště, hesla nebo jiné hodnoty, které by neměly být zpracovány v prostém textu. Naučte se [spravovat tajné klíče ve vaší aplikaci](service-fabric-application-secret-management.md).
 
 ## <a name="learn-about-the-application-lifecycle"></a>Další informace o životním cyklu aplikace
-Podle jiných platforem aplikací Service Fabric obvykle prochází následující fáze: návrh, vývoj, testování, nasazení, upgrade, údržbu a odebírání. [Tento článek](service-fabric-application-lifecycle.md) obsahuje základní informace o rozhraní API a jak se používají v různých rolích v průběhu fáze životního cyklu aplikací Service Fabric.
+Stejně jako u jiných platforem aplikace Service Fabric obvykle prochází následujícími fázemi: návrh, vývoj, testování, nasazení, upgrade, údržba a odebrání. [Tento článek](service-fabric-application-lifecycle.md) poskytuje přehled rozhraní API a způsob jejich používání různými rolemi v průběhu fáze životního cyklu Service Fabric aplikací.
 
-## <a name="next-steps"></a>Další postup
-- [Vytvoření clusteru s Windows v Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
-- Vizualizace clusteru, včetně nasazených aplikací a fyzické rozložení s [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
-- [Verze a upgrade služby](service-fabric-application-upgrade-tutorial.md)
+## <a name="next-steps"></a>Další kroky
+- [Vytvořte v Azure cluster Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
+- Pomocí [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)Vizualizujte cluster, včetně nasazených aplikací a fyzického rozložení.
+- [Verze a upgrade služeb](service-fabric-application-upgrade-tutorial.md)
 
 

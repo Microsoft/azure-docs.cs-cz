@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f98373fe8eab07519e665ab1eddfd7a9ce6b7e22
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 481e1762e805f162aa515dd4d12cc7b6b2e95d71
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847862"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560252"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Nasazení ochrany hesel Azure AD
 
@@ -129,11 +129,13 @@ Pro ochranu heslem Azure AD existují dvě požadované instalační programy. J
      Výsledek by měl zobrazovat **stav** "spuštěno".
 
 1. Zaregistrujte proxy server.
-   * Po dokončení kroku 3 se na počítači spustí proxy služba. Služba ale ještě nemá potřebná pověření ke komunikaci se službou Azure AD. Vyžaduje se registrace ve službě Azure AD:
+   * Po dokončení kroku 3 se na počítači spustí proxy služba, ale ještě nemá potřebná pověření ke komunikaci se službou Azure AD. Vyžaduje se registrace ve službě Azure AD:
 
      `Register-AzureADPasswordProtectionProxy`
 
-     Tato rutina vyžaduje pro vašeho tenanta Azure přihlašovací údaje globálního správce. V kořenové doméně doménové struktury budete také potřebovat místní oprávnění správce domény služby Active Directory. Po úspěšném provedení tohoto příkazu u proxy služby bude další vyvolání úspěšné, ale budou zbytečné.
+     Tato rutina vyžaduje pro vašeho tenanta Azure přihlašovací údaje globálního správce. V kořenové doméně doménové struktury budete také potřebovat místní oprávnění správce domény služby Active Directory. Tuto rutinu musíte spustit taky pomocí účtu s oprávněními místního správce.
+
+     Po úspěšném provedení tohoto příkazu u proxy služby bude další vyvolání úspěšné, ale budou zbytečné.
 
       Rutina `Register-AzureADPasswordProtectionProxy` podporuje následující tři režimy ověřování. První dva režimy podporují Azure Multi-Factor Authentication ale třetí režim ne. Další podrobnosti najdete níže v komentářích.
 
@@ -177,7 +179,9 @@ Pro ochranu heslem Azure AD existují dvě požadované instalační programy. J
    > Před dokončením této rutiny pro konkrétního tenanta Azure může nastat znatelné zpoždění. Pokud není nahlášená chyba, nedělejte si starosti s touto prodlevou.
 
 1. Zaregistrujte doménovou strukturu.
-   * Místní doménovou strukturu služby Active Directory musíte inicializovat pomocí nezbytných přihlašovacích údajů ke komunikaci s Azure pomocí rutiny `Register-AzureADPasswordProtectionForest` PowerShellu. Rutina vyžaduje pro vašeho tenanta Azure přihlašovací údaje globálního správce. Vyžaduje taky místní oprávnění podnikového Správce služby Active Directory. Tento krok se spouští jednou pro každou doménovou strukturu.
+   * Místní doménovou strukturu služby Active Directory musíte inicializovat pomocí nezbytných přihlašovacích údajů ke komunikaci s Azure pomocí rutiny `Register-AzureADPasswordProtectionForest` PowerShellu.
+
+      Rutina vyžaduje pro vašeho tenanta Azure přihlašovací údaje globálního správce.  Tuto rutinu musíte spustit taky pomocí účtu s oprávněními místního správce. Vyžaduje taky místní oprávnění podnikového Správce služby Active Directory. Tento krok se spouští jednou pro každou doménovou strukturu.
 
       Rutina `Register-AzureADPasswordProtectionForest` podporuje následující tři režimy ověřování. První dva režimy podporují Azure Multi-Factor Authentication ale třetí režim ne. Další podrobnosti najdete níže v komentářích.
 
@@ -302,7 +306,7 @@ Pro ochranu heslem Azure AD existují dvě požadované instalační programy. J
 
    Službu agenta DC můžete nainstalovat na počítač, který ještě není řadičem domény. V takovém případě se služba spustí a spustí, ale zůstane neaktivní, dokud nebude počítač povýšen na řadič domény.
 
-   Instalaci softwaru můžete automatizovat pomocí standardních postupů MSI. Například:
+   Instalaci softwaru můžete automatizovat pomocí standardních postupů MSI. Příklad:
 
    `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`
 

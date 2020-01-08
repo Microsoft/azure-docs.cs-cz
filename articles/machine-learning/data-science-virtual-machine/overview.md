@@ -8,21 +8,24 @@ ms.subservice: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
-ms.date: 02/22/2019
-ms.openlocfilehash: 8359a8407e93a2b31466342b82539cef04b0fe01
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.date: 12/31/2019
+ms.openlocfilehash: a63087620d50336c67472348da3b7f37fb380635
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802200"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611964"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Co je Azure Data Science Virtual Machine pro Linux a Windows?
 
 Data Science Virtual Machine (DSVM) je přizpůsobená image virtuálního počítače na cloudové platformě Azure sestavená speciálně pro účely datové vědy. Má spoustu oblíbených nástrojů pro datové vědy, které jsou předinstalované a předem nakonfigurované tak, aby rychlé zprovoznění vytváření inteligentních aplikací pro pokročilou analýzu. 
 
 DSVM je k dispozici na:
++ **Windows Server 2019 (Preview)**
++ **Ubuntu 18,04 LTS (Preview)**
 + Windows Server 2016
 + Ubuntu 16,04 LTS a CentOS 7,4
+
 
 > [!NOTE]
 > Všechny nástroje virtuálních počítačů pro obsáhlý Learning byly přeložené do Data Science Virtual Machine. 
@@ -63,7 +66,7 @@ Edice DSVM systému Windows Server 2016 je součástí předinstalovaného s ovl
 
 Edici DSVM, CentOS nebo Windows 2016 můžete nasadit taky na virtuální počítač Azure, který není založený na GPU. V takovém případě se všechny architektury hloubkového učení vrátí do režimu CPU.
  
-[Přečtěte si další informace o dostupných architekturách hloubkového učení a AI](dsvm-deep-learning-ai-frameworks.md).
+[Přečtěte si další informace o dostupných architekturách hloubkového učení a AI](dsvm-tools-deep-learning-frameworks.md).
 
 <a name="included"></a>
 

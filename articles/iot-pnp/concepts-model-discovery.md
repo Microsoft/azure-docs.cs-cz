@@ -3,18 +3,18 @@ title: Implementace zjišťování modelu IoT technologie Plug and Play Preview 
 description: Jako vývojář řešení se dozvíte, jak můžete ve vašem řešení implementovat zjišťování modelu IoT technologie Plug and Play.
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 07/17/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: c37446fd5a0cdc986044405a9aa3da32462d9c04
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 66da0321930ac38217a336380c9889963a433e67
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114273"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531356"
 ---
 # <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>Implementace zjišťování modelu IoT technologie Plug and Play Preview v řešení IoT
 

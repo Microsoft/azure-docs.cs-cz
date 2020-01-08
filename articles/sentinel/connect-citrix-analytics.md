@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 12/30/2019
 ms.author: cabailey
-ms.openlocfilehash: 36a0c36de7b3f6c6aa4932770e6264bc14c2790f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b4a720702cdadf641665c4c8dc3754edd1c42361
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518083"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610620"
 ---
 # <a name="connect-citrix-analytics-security"></a>Připojení Citrix Analytics (zabezpečení) 
 
@@ -27,7 +27,7 @@ Integrace Citrix Analytics (zabezpečení) s Azure Sentinel vám pomůže export
 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Oprávnění ke čtení a zápisu do pracovního prostoru Azure Sentinel.
 
@@ -46,4 +46,6 @@ Integrace Citrix Analytics (zabezpečení) s Azure Sentinel vám pomůže export
 V tomto dokumentu jste zjistili, jak připojit Citrix Analytics (zabezpečení) ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
 - Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
+- [Pomocí sešitů](tutorial-monitor-your-data.md) můžete monitorovat data.
+
 

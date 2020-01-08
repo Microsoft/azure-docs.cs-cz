@@ -1,23 +1,23 @@
 ---
-title: 'Kurz: Vytvoření jednostránkové aplikace Vvyhledávání videí Binguovou stránkou'
+title: 'Kurz: Sestavení jednostránkové aplikace s Vyhledáváním videí Bingu'
 titleSuffix: Azure Cognitive Services
-description: Vysvětluje, jak používat rozhraní API Bingu pro vyhledávání videí v jednostránkové webové aplikaci.
+description: V tomto kurzu se dozvíte, jak používat rozhraní API Bingu pro vyhledávání videí webové aplikace s jednou stránkou.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: d2cd3d37801fc1a42a9bcbd5f70a6a55e78aaf08
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 7c8485a5521709452217fb4ab1832b6a42cce9ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500064"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382459"
 ---
-# <a name="tutorial-single-page-video-search-app"></a>Kurz: Aplikace Vyhledávání videí s jednou stránkou
+# <a name="tutorial-single-page-video-search-app"></a>Kurz: Jednostránková aplikace s vyhledáváním videí
 Rozhraní API Bingu pro vyhledávání videí umožňuje hledat na webu a získávat výsledky videí relevantní pro vyhledávací dotaz. V tomto kurzu sestavíme jednostránkovou webovou aplikaci, která používá rozhraní API pro vyhledávání Bingu k zobrazení výsledků hledání na stránce. Aplikace zahrnuje komponenty HTML, CSS a JavaScriptu.
 
 <!-- Remove until it can be replaced with a sanitized version.
@@ -87,7 +87,7 @@ function getSubscriptionKey() {
     return key;
 }
 ```
-Značka HTML `<form>` `onsubmit` volá funkci `bingWebSearch` k vrácení výsledků hledání. `bingWebSearch` používá `getSubscriptionKey()` k ověření každého dotazu. Jak je vidět v předchozí definici, `getSubscriptionKey` vyzve uživatele k zadání klíče, pokud klíč nebyl zadán. Klíč se pak uloží pro další používání ze strany aplikace.
+Značka HTML `<form>``onsubmit` volá funkci `bingWebSearch` k vrácení výsledků hledání. `bingWebSearch` používá `getSubscriptionKey()` k ověření každého dotazu. Jak je vidět v předchozí definici, `getSubscriptionKey` vyzve uživatele k zadání klíče, pokud klíč nebyl zadán. Klíč se pak uloží pro další používání ze strany aplikace.
 
 ```html
 <form name="bing" onsubmit="this.offset.value = 0; return bingWebSearch(this.query.value, 
@@ -100,14 +100,14 @@ Následující obrázek znázorňuje textové pole dotazu a možnosti, které de
 
 Formulář HTML obsahuje prvky s těmito názvy:
 
-|Prvek|Popis|
+|Element|Popis|
 |-|-|
 | `where` | Rozevírací nabídka pro výběr trhu (polohy a jazyka) pro vyhledávání. |
 | `query` | Textového pole k zadání hledaných termínů. |
 | `modules` | Zaškrtávací políčka pro podporu konkrétních modulů výsledků, všech výsledků nebo souvisejících videí. |
 | `when` | Rozevírací nabídka pro volitelné omezení vyhledávání na poslední den, týden nebo měsíc. |
 | `safe` | Zaškrtávací políčko označující, jestli se má používat funkce Bingu Bezpečné hledání k filtrování výsledků „pro dospělé“. |
-| `count` | Skryté pole. Počet výsledků vyhledávání, které se mají vrátit pro jednotlivé požadavky. Můžete změnit, aby se na stránce zobrazovalo méně nebo více výsledků. |
+| `count` | Skryté pole. Počet výsledků hledání, který se má vrátit u jednotlivých žádostí. Můžete změnit, aby se na stránce zobrazovalo méně nebo více výsledků. |
 | `offset`|  Skryté pole. Posun prvního výsledku hledání v požadavku, sloužící ke stránkování. Při novém požadavku se resetuje na `0`. |
 
 > [!NOTE]
@@ -141,7 +141,7 @@ function bingSearchOptions(form) {
 Například parametr `SafeSearch` ve skutečném volání rozhraní API může být `strict`, `moderate` nebo `off` a výchozí hodnota je `moderate`. Náš formulář ale používá zaškrtávací políčko, které má jenom dva stavy. Kód JavaScriptu toto nastavení převede na `strict` nebo `off` (`moderate` se nepoužívá).
 
 ## <a name="performing-the-request"></a>Provedení požadavku
-Na základě dotazu, řetězce možností a klíče rozhraní API funkce `BingWebSearch` použije objekt `XMLHttpRequest` k provedení požadavku na koncový bod vyhledávání Bingu.
+Na základě dotazu, řetězce možností a klíče rozhraní API funkce `BingWebSearch` použije objekt `XMLHttpRequest` k provedení požadavku na koncový bod vyhledávání Bingu. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
 ```javascript
 // Search on the query, using search options, authenticated by the key.
@@ -261,7 +261,7 @@ function handleOnLoad() {
 
 Velká část kódu v obou předchozích funkcích je vyhrazená zpracování chyb. V následujících fázích můžou nastat chyby:
 
-|Fáze|Potenciální chyby|Čím se zpracuje|
+|Stage|Potenciální chyby|Čím se zpracují|
 |-|-|-|
 |Vytváření javascriptového objektu požadavku|Neplatná adresa URL|Blok `try`/`catch`|
 |Provedení žádosti|Chyby sítě, přerušená připojení|Obslužné rutiny událostí `error` a `abort`|
@@ -308,7 +308,7 @@ Výsledky hledání se v odpovědi JSON vrátí jako objekt `value` nejvyšší 
 
 Rozhraní API Bingu pro vyhledávání zpráv vrátí až čtyři různé druhy souvisejících výsledků, každý ve vlastním objektu nejvyšší úrovně. Jsou to tyto:
 
-|Vztah|Popis|
+|Relace|Popis|
 |-|-|
 |`pivotSuggestions`|Dotazy, které nahradí pivotové slovo v původním vyhledávání jiným. Pokud třeba vyhledáváte „červené květiny“, pivotové slovo může být „červené“ a pivotový návrh může být „žluté květiny“.|
 |`queryExpansions`|Dotazy, které původní hledání zúží přidáním dalších výrazů. Pokud třeba vyhledáváte „Microsoft Surface“, rozšíření dotazu může být „Microsoft Surface Pro“.|
@@ -373,16 +373,16 @@ Funkce rendereru:
 > * Vytvoří značky HTML `<a>`, které odkazují na obrázek a na stránku, která ho obsahuje.
 > * Vytvoří popis, který zobrazuje informace o obrázku a webu, na kterém se nachází.
 
-Velikost miniatury se používá ve značce `<img>` i v polích `h` a `w` v adrese URL miniatury. Bing vrátí miniaturu [](../bing-web-search/resize-and-crop-thumbnails.md) přesně této velikosti.
+Velikost miniatury se používá ve značce `<img>` i v polích `h` a `w` v adrese URL miniatury. Bing vrátí [miniaturu](../bing-web-search/resize-and-crop-thumbnails.md) přesně této velikosti.
 
 ## <a name="persisting-client-id"></a>Zachování ID klienta
 Odpovědi z rozhraní API pro vyhledávání Bingu můžou zahrnovat hlavičku `X-MSEdge-ClientID`, která by se měla odesílat zpět do rozhraní API v následných požadavcích. Pokud se používá více rozhraní API pro vyhledávání Bingu, mělo by se pro všechny používat stejné ID klienta, pokud je to možné.
 
 Poskytnutí hlavičky `X-MSEdge-ClientID` umožňuje rozhraním API Bingu spojit si všechna uživatelova vyhledávání. To má dvě důležité výhody.
 
-Zaprvé to umožňuje, aby vyhledávací web Bing na vyhledávání aplikoval minulý kontext a našel výsledky, které uživatele více uspokojí. Pokud uživatel v minulosti vyhledával třeba výrazy týkající se lodí, pozdější vyhledání „uzlů“ může přednostně vrátit informace o uzlech používaných při plavbě lodí.
+Zaprvé to umožňuje, aby vyhledávací web Bing na vyhledávání aplikoval minulý kontext a našel výsledky, které uživatele více uspokojí. Pokud uživatel v minulosti vyhledával třeba výrazy týkající se lodí, může pozdější vyhledání „uzlů“ přednostně vrátit informace o uzlech používaných při plavbě lodí.
 
-Za druhé může Bing náhodně vybírat uživatele k vyzkoušení nových funkcí, než budou všeobecně dostupné. Poskytnutí stejného ID klienta s každým požadavkem zajistí, že uživatelé, kteří tuto funkci vidí, ji vidí vždy. Bez ID klienta může uživatel funkci ve svých výsledcích hledání někdy vidět a jindy ne, zdánlivě náhodně.
+Za druhé může Bing náhodně vybírat uživatele k vyzkoušení nových funkcí, než budou všeobecně dostupné. Poskytnutí stejného ID klienta s každým požadavkem zajistí, že uživatelé, kteří tuto funkci vidí, ji vidí vždy. Bez ID klienta může uživatel funkci ve svých výsledcích hledání zdánlivě náhodně někdy vidět a jindy ne.
 
 Zásady zabezpečení prohlížeče (CORS) můžou bránit tomu, aby byla hlavička `X-MSEdge-ClientID` pro JavaScript dostupná. K tomuto omezení dochází, když odpověď na vyhledávání má jiný zdroj než stránka, která o ni požádala. V produkčním prostředí je potřeba tyto zásady vyřešit hostováním skriptu na straně serveru, který provádí volání rozhraní API ve stejné doméně jako webová stránka. Protože tento skript má stejný původ jako webová stránka, hlavička `X-MSEdge-ClientID` je pak pro JavaScript dostupná.
 
@@ -405,6 +405,6 @@ Nakonec spusťte proxy server CORS pomocí tohoto příkazu:
 
 Při používání ukázkové aplikace nechte příkazové okno otevřené. Zavřením okna se zastaví proxy server. V rozbalitelné sekci hlaviček HTTP pod výsledky hledání teď uvidíte hlavičku `X-MSEdge-ClientID` (mimo jiné) a můžete zkontrolovat, jestli je stejná pro každý požadavek.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
 > [Referenční informace k rozhraní API Bingu pro vyhledávání videí](//docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference)

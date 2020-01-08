@@ -1,7 +1,7 @@
 ---
 title: 'Převést na datovou sadu: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul převést na datovou sadu ve službě Azure Machine Learning k převodu vstupu dat na formát interní datové sady, který používá Microsoft Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul převést na datovou sadu v Azure Machine Learning k převodu vstupu dat na formát interní datové sady, který používá Microsoft Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 81eb71da43623f6478e267f55d6576789d494f9b
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a004fdf0ed01c97fe5c21cc9011c46f5e4c51648
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717256"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428575"
 ---
-# <a name="convert-to-dataset"></a>Převést na datovou sadu
+# <a name="convert-to-dataset"></a>Převod na datovou sadu
 
 Tento článek popisuje, jak použít modul převést na datovou sadu v Návrháři Azure Machine Learning (Preview) k převedení libovolných dat kanálu do interního formátu návrháře.
   
@@ -70,4 +70,4 @@ Než použijete převod na datovou sadu, doporučujeme použít modul [Upravit m
   
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro službu Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

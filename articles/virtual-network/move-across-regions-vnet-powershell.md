@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: 753c239f4bf4d6a8f31d4dc5ca771f312cd34578
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: dc316e5bbb88359ff8b1e8a4fc35a56541a577f6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828984"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646706"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>Přesuňte virtuální síť Azure do jiné oblasti pomocí Azure PowerShell
 
@@ -32,7 +32,7 @@ K dokončení přesunu virtuální sítě do jiné oblasti můžete použít ša
 
 - Ověřte, že vaše předplatné Azure umožňuje vytvářet virtuální sítě v cílové oblasti. Pokud chcete povolit požadovanou kvótu, obraťte se na podporu.
 
-- Ujistěte se, že vaše předplatné má dostatek prostředků na podporu přidání virtuálních sítí pro tento proces. Další informace najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Ujistěte se, že vaše předplatné má dostatek prostředků na podporu přidání virtuálních sítí pro tento proces. Další informace najdete v tématu [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
 ## <a name="prepare-for-the-move"></a>Příprava na přesun
@@ -60,7 +60,7 @@ Pokud chcete exportovat virtuální síť a nasadit cílovou virtuální síť p
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-1. Stažený soubor má stejný název jako skupina prostředků, ze které byl prostředek exportován. Vyhledejte soubor *\<resource-Group-name >. JSON* , který jste exportovali pomocí příkazu, a pak ho otevřete v editoru:
+1. Stažený soubor má stejný název jako skupina prostředků, ze které byl prostředek exportován. Vyhledejte soubor *\<Resource-Group-name >. JSON* , který jste exportovali pomocí příkazu, a pak ho otevřete v editoru:
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -105,7 +105,7 @@ Pokud chcete exportovat virtuální síť a nasadit cílovou virtuální síť p
     Get-AzLocation | format-table
     ```
 
-1. Volitelné V závislosti na vašich požadavcích můžete také změnit další parametry v souboru *\<resource-Group-name >. JSON* :
+1. Volitelné V závislosti na vašich požadavcích můžete také změnit další parametry v souboru *\<Resource-Group-name >. JSON* :
 
     * **Adresní prostor**: před uložením souboru můžete změnit adresní prostor virtuální sítě změnou oddílu **resources** > **addressSpace** a změnou vlastnosti **addressPrefixes** :
 
@@ -193,7 +193,7 @@ Pokud chcete exportovat virtuální síť a nasadit cílovou virtuální síť p
          ]
         ```
 
-1. Uložte soubor *\<resource-Group-name >. JSON* .
+1. Uložte soubor *\<Resource-Group-name >. JSON* .
 
 1. Vytvořte skupinu prostředků v cílové oblasti pro nasazení cílové virtuální sítě pomocí [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0):
     
@@ -201,7 +201,7 @@ Pokud chcete exportovat virtuální síť a nasadit cílovou virtuální síť p
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-1. Pomocí [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)nasaďte upravený soubor *\<resource-group-name >. JSON* do skupiny prostředků, kterou jste vytvořili v předchozím kroku:
+1. Do skupiny prostředků, kterou jste vytvořili v předchozím kroku, nasaďte upravený soubor *\<Resource-Group-name >* pomocí [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
 
     ```azurepowershell-interactive
 
@@ -231,7 +231,7 @@ Chcete-li odebrat skupinu prostředků, použijte [příkaz Remove-AzResourceGro
 Remove-AzResourceGroup -Name <target-resource-group-name>
 ```
 
-## <a name="clean-up"></a>Vyčistit
+## <a name="clean-up"></a>Vyčištění
 
 Chcete-li potvrdit změny a dokončit přesun virtuální sítě, proveďte jednu z následujících akcí:
 
@@ -252,5 +252,5 @@ Chcete-li potvrdit změny a dokončit přesun virtuální sítě, proveďte jedn
 
 V tomto kurzu jste přesunuli virtuální síť z jedné oblasti do druhé pomocí prostředí PowerShell a pak vyčistili nepotřebné zdrojové prostředky. Další informace o přesouvání prostředků mezi oblastmi a zotavení po havárii v Azure najdete tady:
 
-- [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
+- [Přesun prostředků do nové skupiny prostředků nebo předplatného](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
 - [Přesunutí virtuálních počítačů Azure do jiné oblasti](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)

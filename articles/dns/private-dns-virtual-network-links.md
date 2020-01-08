@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: c5675dea2676122d96276b7cdb90b4c3c5340c7a
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 9181ef93dfedbc28b297bef48a0bc37ba6d69798
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71961211"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646757"
 ---
 # <a name="what-is-a-virtual-network-link"></a>Co je propojení virtuální sítě?
 
@@ -31,11 +31,11 @@ Jedna privátní zóna DNS může mít více registračních virtuálních sít�
 Když vytvoříte odkaz na virtuální síť v privátní zóně DNS a zvolíte možnost nepovolit autoregistraci záznamů DNS, bude virtuální síť považována za virtuální síť jenom pro řešení. Záznamy DNS pro virtuální počítače nasazené v těchto sítích se automaticky nevytvoří v propojené privátní zóně DNS. Virtuální počítače nasazené v takové síti ale můžou úspěšně dotazovat záznamy DNS z privátní zóny DNS. Tyto záznamy můžete ručně vytvořit sami nebo můžete naplnit z jiných virtuálních sítí propojených jako registrační sítě s privátní zónou DNS.
 Jedna privátní zóna DNS může mít více virtuálních sítí pro řešení a virtuální síť může mít k sobě přidruženo více zón řešení.
 
-## <a name="limits"></a>Lhůty
+## <a name="limits"></a>Omezení
 
-Informace o tom, kolik sítí pro registraci a rozlišení, můžete propojit s privátními zónami DNS, najdete v tématu [omezení Azure DNS](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits) .
+Informace o tom, kolik sítí pro registraci a rozlišení, můžete propojit s privátními zónami DNS, najdete v tématu [omezení Azure DNS](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits) .
 
-## <a name="other-considerations"></a>Další požadavky
+## <a name="other-considerations"></a>Další aspekty
 
 * Virtuální sítě nasazené pomocí modelu nasazení Classic nejsou podporované.
 

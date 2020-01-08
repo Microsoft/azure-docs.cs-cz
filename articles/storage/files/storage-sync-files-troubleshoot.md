@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/8/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ee8d71cb913dd17bc72023326dbc2ce8a33a3776
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 861d62f40dc9d8ca2c80e295495df8538ea7cd8d
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976226"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659538"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -117,10 +117,10 @@ Pokud chcete zjistit, jestli má role uživatelského účtu požadovaná opráv
     * **Definice role** musí mít oprávnění **ke čtení** a **zápisu** .
 
 <a id="-2134375898"></a>**Vytvoření koncového bodu serveru se nezdařilo, došlo k této chybě: "MgmtServerJobFailed" (kód chyby:-2134375898 nebo 0x80c80226)**  
-K této chybě dochází, pokud je cesta koncového bodu serveru na systémovém svazku a je povolená vrstva cloudu. Na systémovém svazku není podporováno vrstvení cloudu. Pokud chcete vytvořit koncový bod serveru na systémovém svazku, zakažte při vytváření koncového bodu serveru vrstvení cloudu.
+K této chybě dochází v případě, že je cesta ke koncovému bodu serveru na systémovém svazku a je povolené vrstvení cloudu. Vrstvení cloudu se na systémovém svazku nepodporuje. Pokud chcete vytvořit koncový bod serveru na systémovém svazku, při vytváření koncového bodu serveru zakažte vrstvení cloudu.
 
 <a id="-2147024894"></a>**Vytvoření koncového bodu serveru se nezdařilo, došlo k této chybě: "MgmtServerJobFailed" (kód chyby:-2147024894 nebo 0x80070002)**  
-K této chybě dochází, pokud zadaná cesta koncového bodu serveru není platná. Ověřte, že zadaná cesta ke koncovému bodu serveru je místně připojený svazek NTFS. Poznámka: Azure File Sync nepodporuje namapované jednotky jako cestu koncového bodu serveru.
+K této chybě dochází v případě, že zadaná cesta ke koncovému bodu serveru není platná. Ověřte, že zadaná cesta ke koncovému bodu serveru odpovídá místně připojenému svazku NTFS. Poznámka: Azure File Sync nepodporuje namapované jednotky jako cestu koncového bodu serveru.
 
 <a id="-2134347507"></a>**Vytvoření koncového bodu serveru se nezdařilo, došlo k této chybě: "MgmtServerJobFailed" (kód chyby:-2134347507 nebo 0x80c8710d)**  
 K této chybě dochází, protože Synchronizace souborů Azure nepodporuje koncové body serveru na svazcích, které obsahují komprimovanou složku s informacemi o systémovém svazku. Pokud chcete tento problém vyřešit, dekomprimujte složku s informacemi o systémovém svazku. Pokud je složka s informacemi o systémovém svazku jedinou komprimovanou složkou na svazku, postupujte následovně:
@@ -132,10 +132,10 @@ K této chybě dochází, protože Synchronizace souborů Azure nepodporuje konc
     **Compact/u/s**
 
 <a id="-2134376345"></a>**Vytvoření koncového bodu serveru se nezdařilo, došlo k této chybě: "MgmtServerJobFailed" (kód chyby:-2134376345 nebo 0x80C80067)**  
-K této chybě dojde, pokud je dosaženo limitu počtu koncových bodů serveru na server. Azure File Sync aktuálně podporuje až 30 koncových bodů serveru na jeden server. Další informace najdete v tématu [Azure File Sync cíle škálování](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-file-sync-scale-targets).
+K této chybě dochází v případě, že dojde k dosažení limitu koncových bodů serverů na server. Synchronizace souborů Azure v současné době podporuje až 30 koncových bodů serveru na server. Další informace najdete v tématu [Azure File Sync cíle škálování](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-file-sync-scale-targets).
 
 <a id="-2134376427"></a>**Vytvoření koncového bodu serveru se nezdařilo, došlo k této chybě: "MgmtServerJobFailed" (kód chyby:-2134376427 nebo 0x80c80015)**  
-K této chybě dochází, pokud již jiný koncový bod serveru synchronizuje zadanou cestu koncového bodu serveru. Azure File Sync nepodporuje více koncových bodů serveru, které synchronizují stejný adresář nebo svazek.
+K této chybě dochází v případě, že se v zadané cestě ke koncovému bodu serveru již synchronizuje jiný koncový bod serveru. Synchronizace souborů Azure nepodporuje synchronizaci stejného adresáře nebo svazku několika koncovými body serveru.
 
 <a id="-2160590967"></a>**Vytvoření koncového bodu serveru se nezdařilo, došlo k této chybě: "MgmtServerJobFailed" (kód chyby:-2160590967 nebo 0x80c80077)**  
 K této chybě dochází, pokud cesta koncového bodu serveru obsahuje osamocené vrstvené soubory. Pokud byl koncový bod serveru nedávno odebraný, počkejte, až se dokončí čištění osamocených vrstvených souborů. Jakmile se spustí čištění osamocených vrstvených souborů, do protokolu událostí telemetrie se zaprotokoluje událost s ID 6662. Po dokončení čištění osamocených vrstvených souborů se protokoluje událost s ID 6661 a koncový bod serveru se dá znovu vytvořit pomocí cesty. Pokud se vytvoření koncového bodu serveru nepovede po přihlášení události s ID 6661, odeberte osamocené vrstvené soubory provedením kroků popsaných v [vrstvených souborech na serveru po odstranění oddílu koncového bodu serveru](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) .
@@ -283,25 +283,25 @@ Pokud se chcete podívat na tyto chyby, spusťte skript prostředí PowerShell *
 | HRESULT | HRESULT (desetinné číslo) | Text chyby | Problém | Náprava |
 |---------|-------------------|--------------|-------|-------------|
 | 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | Vrstvený soubor na serveru není dostupný. K tomuto problému dojde v případě, že se před odstraněním koncového bodu serveru neodvolal vrstvený soubor. | Pokud chcete tento problém vyřešit, najdete informace v části [vrstvené soubory nejsou po odstranění koncového bodu serveru dostupné na serveru](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint). |
-| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Změnu souboru nebo adresáře nelze ještě synchronizovat, protože není ještě synchronizovaná závislá složka. Tato položka bude synchronizována po synchronizaci závislých změn. | Není vyžadována žádná akce. |
-| 0x80c80284 | -2134375804 | ECS_E_SYNC_CONSTRAINT_CONFLICT_SESSION_FAILED | Změnu souboru nebo adresáře nelze ještě synchronizovat, protože závislá složka ještě není synchronizovaná a relace synchronizace selhala. Tato položka bude synchronizována po synchronizaci závislých změn. | Není vyžadována žádná akce. Pokud chyba přetrvává, prozkoumejte selhání relace synchronizace. |
+| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Změnu souboru nebo adresáře nelze ještě synchronizovat, protože není ještě synchronizovaná závislá složka. Tato položka bude synchronizována po synchronizaci závislých změn. | Nevyžaduje se žádná akce. |
+| 0x80c80284 | -2134375804 | ECS_E_SYNC_CONSTRAINT_CONFLICT_SESSION_FAILED | Změnu souboru nebo adresáře nelze ještě synchronizovat, protože závislá složka ještě není synchronizovaná a relace synchronizace selhala. Tato položka bude synchronizována po synchronizaci závislých změn. | Nevyžaduje se žádná akce. Pokud chyba přetrvává, prozkoumejte selhání relace synchronizace. |
 | 0x8007007b | -2147024773 | ERROR_INVALID_NAME | Název souboru nebo adresáře je neplatný. | Přejmenujte daný soubor nebo adresář. Další informace najdete v tématu [zpracování nepodporovaných znaků](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) . |
 | 0x80c80255 | -2134375851 | ECS_E_XSMB_REST_INCOMPATIBILITY | Název souboru nebo adresáře je neplatný. | Přejmenujte daný soubor nebo adresář. Další informace najdete v tématu [zpracování nepodporovaných znaků](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) . |
-| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Soubor nelze synchronizovat, protože se používá. Soubor se synchronizuje, až se přestane používat. | Není vyžadována žádná akce. Azure File Sync vytvoří dočasný snímek VSS jednou denně na serveru pro synchronizaci souborů s otevřenými popisovači. |
-| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Soubor se změnil, ale tato změna se ještě nezjistila synchronizací. Po zjištění této změny se synchronizace obnoví. | Není vyžadována žádná akce. |
-| chyby | -2147024894 | ERROR_FILE_NOT_FOUND | Soubor se odstranil a synchronizace o této změně nevíte. | Není vyžadována žádná akce. Synchronizace ukončí protokolování této chyby, jakmile zjišťování změn zjistí, že soubor byl odstraněn. |
-| 0x80070003 | -2147942403 | ERROR_PATH_NOT_FOUND | Odstranění souboru nebo adresáře nelze synchronizovat, protože položka již byla odstraněna v cíli a synchronizace neví o změně. | Není vyžadována žádná akce. Při synchronizaci se tato chyba zastaví, jakmile se v cíli spustí zjišťování změn a v synchronizaci zjistíte, že se položka odstranila. |
+| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Soubor nelze synchronizovat, protože se používá. Soubor se bude synchronizovat, jakmile se už nebude používat. | Nevyžaduje se žádná akce. Azure File Sync vytvoří dočasný snímek VSS jednou denně na serveru pro synchronizaci souborů s otevřenými popisovači. |
+| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Soubor se změnil, ale tato změna se ještě nezjistila synchronizací. Po zjištění této změny se synchronizace obnoví. | Nevyžaduje se žádná akce. |
+| chyby | -2147024894 | ERROR_FILE_NOT_FOUND | Soubor se odstranil a synchronizace o této změně nevíte. | Nevyžaduje se žádná akce. Synchronizace ukončí protokolování této chyby, jakmile zjišťování změn zjistí, že soubor byl odstraněn. |
+| 0x80070003 | -2147942403 | ERROR_PATH_NOT_FOUND | Odstranění souboru nebo adresáře nelze synchronizovat, protože položka již byla odstraněna v cíli a synchronizace neví o změně. | Nevyžaduje se žádná akce. Při synchronizaci se tato chyba zastaví, jakmile se v cíli spustí zjišťování změn a v synchronizaci zjistíte, že se položka odstranila. |
 | 0x80c80205 | -2134375931 | ECS_E_SYNC_ITEM_SKIP | Soubor nebo adresář se přeskočil, ale během příští relace synchronizace se synchronizuje. Pokud je tato chyba hlášena při stahování položky, název souboru nebo adresáře je více než nejspíš neplatných. | Pokud je při nahrávání souboru nahlášena Tato chyba, není vyžadována žádná akce. Pokud při stahování souboru dojde k chybě, přejmenujte příslušný soubor nebo adresář. Další informace najdete v tématu [zpracování nepodporovaných znaků](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) . |
-| 0x800700B7 | -2147024713 | ERROR_ALREADY_EXISTS | Vytvoření souboru nebo adresáře nelze synchronizovat, protože položka již v cíli existuje a synchronizace tyto změny neví. | Není vyžadována žádná akce. Při synchronizaci se tato chyba zastaví, jakmile se v cíli spustí zjišťování změn a tato nová položka ví o synchronizaci. |
-| 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Soubor nejde synchronizovat, protože se dosáhlo limitu sdílené složky Azure. | Pokud chcete tento problém vyřešit, přečtěte si část s [omezením úložiště sdílené složky Azure](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) v Průvodci odstraňováním potíží. |
-| 0x80c8027C | -2134375812 | ECS_E_ACCESS_DENIED_EFS | Soubor je zašifrovaný pomocí nepodporovaného řešení (třeba NTFS EFS). | Dešifrujte soubor a použijte podporované řešení šifrování. Seznam řešení podpory najdete v části [řešení šifrování](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions) v příručce plánování. |
-| 0x80c80283 | -2160591491 | ECS_E_ACCESS_DENIED_DFSRRO | Soubor se nachází ve složce replikace jen pro čtení DFS-R. | Soubor se nachází ve složce replikace jen pro čtení DFS-R. Služba Azure File Sync nepodporuje koncové body serveru v replikačních složkách jen pro čtení v systému souborů DFS-R. Další informace najdete v [příručce pro plánování](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs) . |
-| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Soubor je ve stavu čekání na odstranění. | Není vyžadována žádná akce. Až se všechny otevřené popisovače souborů zavřou, soubor se odstraní. |
+| 0x800700B7 | -2147024713 | ERROR_ALREADY_EXISTS | Vytvoření souboru nebo adresáře nelze synchronizovat, protože položka již v cíli existuje a synchronizace tyto změny neví. | Nevyžaduje se žádná akce. Při synchronizaci se tato chyba zastaví, jakmile se v cíli spustí zjišťování změn a tato nová položka ví o synchronizaci. |
+| 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Soubor není možné synchronizovat, protože došlo k dosažení limitu sdílené složky Azure. | Pokud chcete tento problém vyřešit, přečtěte si část s [omezením úložiště sdílené složky Azure](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) v Průvodci odstraňováním potíží. |
+| 0x80c8027C | -2134375812 | ECS_E_ACCESS_DENIED_EFS | Soubor je zašifrovaný pomocí nepodporovaného řešení (třeba NTFS EFS). | Dešifrujte soubor a použijte podporované řešení šifrování. Seznam podporovaných řešení najdete v průvodci plánováním v části [Šifrovací řešení](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions). |
+| 0x80c80283 | -2160591491 | ECS_E_ACCESS_DENIED_DFSRRO | Soubor se nachází ve složce replikace jen pro čtení DFS-R. | Soubor se nachází ve složce replikace jen pro čtení DFS-R. Synchronizace souborů Azure nepodporuje koncové body serveru ve složkách replikace DFS-R jen pro čtení. Další informace najdete v [příručce pro plánování](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs) . |
+| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Soubor je ve stavu čekání na odstranění. | Nevyžaduje se žádná akce. Až se všechny otevřené popisovače souborů zavřou, soubor se odstraní. |
 | 0x80c86044 | -2134351804 | ECS_E_AZURE_AUTHORIZATION_FAILED | Soubor nejde synchronizovat, protože je povolené nastavení brány firewall a virtuální sítě v účtu úložiště a server nemá přístup k účtu úložiště. | Pomocí postupu popsaného v části [Konfigurace brány firewall a nastavení virtuální sítě](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings) v Průvodci nasazením přidejte IP adresu serveru nebo virtuální síť. |
-| 0x80c80243 | -2134375869 | ECS_E_SECURITY_DESCRIPTOR_SIZE_TOO_LARGE | Soubor nelze synchronizovat, protože velikost popisovače zabezpečení překračuje limit 64 KiB. | Pokud chcete tento problém vyřešit, odeberte v souboru položky řízení přístupu (ACE), abyste snížili velikost popisovače zabezpečení. |
+| 0x80c80243 | -2134375869 | ECS_E_SECURITY_DESCRIPTOR_SIZE_TOO_LARGE | Soubor nelze synchronizovat, protože velikost popisovače zabezpečení překračuje limit 64 KiB. | Pokud chcete tento problém vyřešit, odeberte položky řízení přístupu (ACE) pro soubor, abyste snížili velikost popisovače zabezpečení. |
 | 0x8000ffff | -2147418113 | E_UNEXPECTED | Soubor nelze synchronizovat z důvodu neočekávané chyby. | Pokud chyba trvá několik dní, otevřete prosím případ podpory. |
-| 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | Soubor nelze synchronizovat, protože se používá. Soubor se synchronizuje, až se přestane používat. | Není vyžadována žádná akce. |
-| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Soubor se během synchronizace změnil, takže je potřeba ho synchronizovat znovu. | Není vyžadována žádná akce. |
+| 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | Soubor nelze synchronizovat, protože se používá. Soubor se bude synchronizovat, jakmile se už nebude používat. | Nevyžaduje se žádná akce. |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Soubor se během synchronizace změnil, takže je potřeba ho synchronizovat znovu. | Nevyžaduje se žádná akce. |
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | Soubor nelze synchronizovat, protože byl dosažen maximální počet souborů konfliktů. Azure File Sync podporuje soubory konfliktů 100 na jeden soubor. Další informace o konfliktech souborů najdete v tématu Azure File Sync [Nejčastější dotazy](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution). | Chcete-li tento problém vyřešit, snižte počet konfliktních souborů. Soubor se synchronizuje, jakmile bude počet konfliktních souborů menší než 100. |
 
 #### <a name="handling-unsupported-characters"></a>Zpracování nepodporovaných znaků
@@ -360,7 +360,7 @@ Není vyžadována žádná akce; Server se znovu pokusí. Pokud tato chyba trv�
 | **Řetězec chyby** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
 | **Požadována náprava** | Ne |
 
-Nevyžaduje se žádná akce. Když se soubor nebo sdílená složka (koncový bod cloudu) obnoví pomocí Azure Backup, synchronizace se zablokuje, dokud se zjišťování změn nedokončí ve sdílené složce Azure. Zjišťování změn se spouští ihned po dokončení obnovení a doba trvání vychází z počtu souborů ve sdílené složce.
+Nevyžaduje se žádná akce. Když se soubor nebo sdílená složka (koncový bod cloudu) obnoví pomocí Azure Backup, synchronizace se zablokuje, dokud se zjišťování změn nedokončí ve sdílené složce Azure. Detekce změn se spustí okamžitě po dokončení obnovení a délka jejího trvání závisí na počtu souborů ve sdílené složce.
 
 <a id="-2147216747"></a>**Synchronizace se nezdařila, protože synchronizovaná databáze byla uvolněna.**  
 
@@ -371,7 +371,7 @@ Nevyžaduje se žádná akce. Když se soubor nebo sdílená složka (koncový b
 | **Řetězec chyby** | SYNC_E_METADATA_INVALID_OPERATION |
 | **Požadována náprava** | Ne |
 
-K této chybě obvykle dochází, když zálohovací aplikace vytvoří snímek služby VSS a synchronizovaná databáze se uvolní. Pokud tato chyba trvá několik hodin, vytvořte žádost o podporu.
+K této chybě obvykle dochází v případě, že aplikace zálohování vytvoří snímek VSS a databáze synchronizace se uvolní. Pokud tato chyba trvá několik hodin, vytvořte žádost o podporu.
 
 <a id="-2134364065"></a>**Synchronizace nemá přístup ke sdílené složce Azure zadané v koncovém bodu cloudu.**  
 
@@ -382,12 +382,12 @@ K této chybě obvykle dochází, když zálohovací aplikace vytvoří snímek 
 | **Řetězec chyby** | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED |
 | **Požadována náprava** | Ano |
 
-K této chybě dochází, protože agent Azure File Sync nemá přístup ke sdílené složce Azure, což může být způsobeno tím, že sdílená složka Azure nebo účet úložiště, který hostuje, už neexistuje. Tuto chybu můžete vyřešit pomocí následujících kroků:
+K této chybě dochází, protože agent Synchronizace souborů Azure nemůže získat přístup ke sdílené složce Azure. Důvodem může být to, že sdílená složka Azure nebo účet úložiště, který je jejím hostitelem, již neexistují. Při řešení této chyby můžete použít následující postup:
 
 1. [Ověřte, že účet úložiště existuje.](#troubleshoot-storage-account)
 2. [Ujistěte se, že sdílená složka Azure existuje.](#troubleshoot-azure-file-share)
 3. [Ujistěte se, že Azure File Sync má přístup k účtu úložiště.](#troubleshoot-rbac)
-4. [Ověřte, že nastavení brány firewall a virtuální sítě v účtu úložiště jsou správně nakonfigurované (pokud jsou povolené).](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+4. [Ověřte, že jsou v účtu úložiště správně nakonfigurovaná nastavení brány firewall a virtuální sítě (pokud jsou povolená)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings).
 
 <a id="-2134364064"></a><a id="cannot-resolve-storage"></a>**Použitý název účtu úložiště nelze přeložit.**  
 
@@ -404,7 +404,7 @@ K této chybě dochází, protože agent Azure File Sync nemá přístup ke sdí
     Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 443
     ```
 2. [Ověřte, že účet úložiště existuje.](#troubleshoot-storage-account)
-3. [Ověřte, že nastavení brány firewall a virtuální sítě v účtu úložiště jsou správně nakonfigurované (pokud jsou povolené).](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+3. [Ověřte, že jsou v účtu úložiště správně nakonfigurovaná nastavení brány firewall a virtuální sítě (pokud jsou povolená)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings).
 
 <a id="-2134364022"></a><a id="storage-unknown-error"></a>**Při přístupu k účtu úložiště došlo k neznámé chybě.**  
 
@@ -416,7 +416,7 @@ K této chybě dochází, protože agent Azure File Sync nemá přístup ke sdí
 | **Požadována náprava** | Ano |
 
 1. [Ověřte, že účet úložiště existuje.](#troubleshoot-storage-account)
-2. [Ověřte, že nastavení brány firewall a virtuální sítě v účtu úložiště jsou správně nakonfigurované (pokud jsou povolené).](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+2. [Ověřte, že jsou v účtu úložiště správně nakonfigurovaná nastavení brány firewall a virtuální sítě (pokud jsou povolená)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings).
 
 <a id="-1906441138"></a>**Synchronizace se nezdařila z důvodu problému s databází synchronizace.**  
 
@@ -438,7 +438,7 @@ K této chybě dochází, pokud dojde k potížím s interní databází, kterou
 | **Řetězec chyby** | ECS_E_AGENT_VERSION_BLOCKED |
 | **Požadována náprava** | Ano |
 
-K této chybě dochází, pokud není podporována verze agenta Azure File Sync nainstalovaného na serveru. Pokud chcete tento problém vyřešit, [upgradujte]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#upgrade-paths) na [podporovanou verzi agenta]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions).
+K této chybě dochází v případě, že se verze agenta Synchronizace souborů Azure nainstalovaná na serveru nepodporuje. Pokud chcete tento problém vyřešit, [upgradujte]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#upgrade-paths) na [podporovanou verzi agenta]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions).
 
 <a id="-2134351810"></a>**Dosáhli jste limitu úložiště sdílené složky Azure.**  
 
@@ -449,7 +449,7 @@ K této chybě dochází, pokud není podporována verze agenta Azure File Sync 
 | **Řetězec chyby** | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED |
 | **Požadována náprava** | Ano |
 
-K této chybě dochází, pokud bylo dosaženo limitu úložiště sdílené složky Azure, ke kterému může dojít v případě, že se pro sdílenou složku Azure používá kvóta nebo pokud využití překračuje limity pro sdílenou složku Azure. Další informace najdete v tématu [Aktuální limity sdílené složky Azure](storage-files-scale-targets.md).
+K této chybě dochází při dosažení limitu úložiště sdílené složky Azure. K tomu může dojít v případě, že se pro sdílenou složku Azure použije kvóta nebo využití překročí limity pro sdílenou složku Azure. Další informace najdete v tématu [Aktuální limity sdílené složky Azure](storage-files-scale-targets.md).
 
 1. Přejděte do skupiny synchronizace v rámci služby synchronizace úložiště.
 2. V rámci skupiny synchronizace vyberte koncový bod cloudu.
@@ -460,11 +460,11 @@ K této chybě dochází, pokud bylo dosaženo limitu úložiště sdílené slo
 
 5. Vyberte **soubory** a zobrazte seznam sdílených složek.
 6. Klikněte na tři tečky na konci řádku pro sdílenou složku Azure, na kterou odkazuje koncový bod cloudu.
-7. Ověřte, že **využití** je pod **kvótou**. Poznámka: Pokud se nezadá alternativní kvóta, kvóta bude odpovídat [maximální velikosti sdílené složky Azure](storage-files-scale-targets.md).
+7. Ověřte, že **využití** nedosahuje **kvóty**. Poznámka: Pokud se nezadá alternativní kvóta, kvóta bude odpovídat [maximální velikosti sdílené složky Azure](storage-files-scale-targets.md).
 
     ![Snímek obrazovky vlastností sdílené složky Azure](media/storage-sync-files-troubleshoot/file-share-limit-reached-1.png)
 
-Pokud je sdílená složka plná a kvóta není nastavená, jedním z možných způsobů, jak tento problém vyřešit, je učinit jednotlivé podsložky aktuálního koncového bodu serveru do svého vlastního koncového bodu serveru ve svých vlastních samostatných skupinách synchronizace. Tímto způsobem se budou všechny podsložky synchronizovat s jednotlivými sdílenými složkami Azure.
+Pokud je sdílená složka plná a kvóta není nastavená, jedním z možných způsobů, jak tento problém vyřešit, je převést každou podsložku aktuálního koncového bodu serveru na samostatný koncový bod serveru v samostatné skupině synchronizace. Tímto způsobem se jednotlivé podsložky budou synchronizovat do samostatných sdílených složek Azure.
 
 <a id="-2134351824"></a>**Sdílenou složku Azure se nepovedlo najít.**  
 
@@ -475,7 +475,7 @@ Pokud je sdílená složka plná a kvóta není nastavená, jedním z možných 
 | **Řetězec chyby** | ECS_E_AZURE_FILE_SHARE_NOT_FOUND |
 | **Požadována náprava** | Ano |
 
-K této chybě dojde, pokud není sdílená složka Azure přístupná. Řešení potíží:
+K této chybě dochází v případě, že je sdílená složka Azure nepřístupná. Řešení potíží:
 
 1. [Ověřte, že účet úložiště existuje.](#troubleshoot-storage-account)
 2. [Ujistěte se, že sdílená složka Azure existuje.](#troubleshoot-azure-file-share)
@@ -491,7 +491,7 @@ Pokud se sdílená složka Azure odstranila, musíte vytvořit novou sdílenou s
 | **Řetězec chyby** | ECS_E_SYNC_BLOCKED_ON_SUSPENDED_SUBSCRIPTION |
 | **Požadována náprava** | Ano |
 
-K této chybě dojde, když je předplatné Azure pozastavené. Po obnovení předplatného Azure se synchronizace znovu aktivuje. Podívejte [se, proč je moje předplatné Azure zakázané a jak ho znovu aktivovat?](../../billing/billing-subscription-become-disable.md) Další informace.
+K této chybě dochází v případě, že dojde k pozastavení předplatného Azure. Synchronizace se znovu povolí po obnovení předplatného Azure. Podívejte [se, proč je moje předplatné Azure zakázané a jak ho znovu aktivovat?](../../billing/billing-subscription-become-disable.md) Další informace.
 
 <a id="-2134364052"></a>**Účet úložiště má nakonfigurovanou bránu firewall nebo virtuální sítě.**  
 
@@ -502,7 +502,7 @@ K této chybě dojde, když je předplatné Azure pozastavené. Po obnovení př
 | **Řetězec chyby** | ECS_E_MGMT_STORAGEACLSNOTSUPPORTED |
 | **Požadována náprava** | Ano |
 
-K této chybě dochází, pokud je sdílená složka Azure nepřístupná z důvodu brány firewall účtu úložiště nebo protože účet úložiště patří do virtuální sítě. Ověřte, že nastavení brány firewall a virtuální sítě v účtu úložiště jsou správně nakonfigurované. Další informace najdete v tématu [Konfigurace nastavení brány firewall a virtuální sítě](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings). 
+K této chybě dochází v případě, že je sdílená složka Azure nepřístupná kvůli bráně firewall účtu úložiště, nebo kvůli tomu, že účet úložiště patří do virtuální sítě. Ověřte, že nastavení brány firewall a virtuální sítě v účtu úložiště jsou správně nakonfigurované. Další informace najdete v tématu [Konfigurace nastavení brány firewall a virtuální sítě](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings). 
 
 <a id="-2134375911"></a>**Synchronizace se nezdařila z důvodu problému s databází synchronizace.**  
 
@@ -513,7 +513,7 @@ K této chybě dochází, pokud je sdílená složka Azure nepřístupná z dův
 | **Řetězec chyby** | ECS_E_SYNC_METADATA_WRITE_LOCK_TIMEOUT |
 | **Požadována náprava** | Ne |
 
-Tato chyba obvykle vyřeší sebe sama a může nastat, pokud jsou:
+Tato chyba se obvykle vyřeší sama a může k ní dojít v následujících případech:
 
 * Vysoký počet změn souborů mezi servery ve skupině synchronizace.
 * Velký počet chyb na jednotlivých souborech a adresářích.
@@ -565,7 +565,7 @@ Když nastavíte tuto hodnotu registru, agent Synchronizace souborů Azure přij
 | **Řetězec chyby** | ECS_E_SERVER_CREDENTIAL_NEEDED |
 | **Požadována náprava** | Ano |
 
-K této chybě obvykle dochází, protože čas serveru není správný. Pokud server běží na virtuálním počítači, zkontrolujte, jestli je čas hostitele správný.
+K této chybě obvykle dochází kvůli nesprávnému času na serveru. Pokud server běží na virtuálním počítači, zkontrolujte, jestli je čas hostitele správný.
 
 <a id="-2134364040"></a>**Synchronizace se nezdařila z důvodu vypršení platnosti certifikátu.**  
 
@@ -576,13 +576,13 @@ K této chybě obvykle dochází, protože čas serveru není správný. Pokud s
 | **Řetězec chyby** | ECS_E_AUTH_SRV_CERT_EXPIRED |
 | **Požadována náprava** | Ano |
 
-K této chybě dochází, protože vypršela platnost certifikátu použitého pro ověřování.
+K této chybě dochází, protože platnost certifikátu používaného k ověřování vypršela.
 
-K potvrzení vypršení platnosti certifikátu proveďte následující kroky:  
+Pokud chcete ověřit, jestli platnost certifikátu vypršela, proveďte následující kroky:  
 1. Otevřete modul snap-in Certifikáty konzoly MMC, vyberte účet počítače a přejděte na certifikáty (místní počítač) \Personal\Certificates.
 2. Ověřte, zda vypršela platnost certifikátu pro ověřování klientů.
 
-Pokud platnost certifikátu ověřování klienta vyprší, proveďte následující kroky a problém vyřešte:
+Pokud platnost certifikátu pro ověřování klientů vypršela, vyřešte problém provedením následujících kroků:
 
 1. Ověřte, že je nainstalovaná verze agenta Azure File Sync 4.0.1.0 nebo novější.
 2. Spusťte na serveru následující příkaz prostředí PowerShell:
@@ -600,7 +600,7 @@ Pokud platnost certifikátu ověřování klienta vyprší, proveďte následuj�
 | **Řetězec chyby** | ECS_E_AUTH_SRV_CERT_NOT_FOUND |
 | **Požadována náprava** | Ano |
 
-K této chybě dochází, protože nebyl nalezen certifikát používaný pro ověřování.
+K této chybě dochází, protože se nenašel certifikát používaný k ověřování.
 
 Při řešení tohoto problému postupujte následovně:
 
@@ -620,7 +620,7 @@ Při řešení tohoto problému postupujte následovně:
 | **Řetězec chyby** | ECS_E_AUTH_IDENTITY_NOT_FOUND |
 | **Požadována náprava** | Ano |
 
-K této chybě dochází, protože se nezdařilo odstranění koncového bodu serveru a koncový bod je nyní v částečně odstraněném stavu. Pokud chcete tento problém vyřešit, zkuste znovu odstranit koncový bod serveru.
+K této chybě dochází kvůli selhání odstranění koncového bodu serveru, který je teď ve stavu částečného odstranění. Pokud chcete tento problém vyřešit, zkuste koncový bod serveru odstranit znovu.
 
 <a id="-1906441711"></a><a id="-2134375654"></a><a id="doesnt-have-enough-free-space"></a>**Svazek, na kterém je umístěný koncový bod serveru, má nedostatek místa na disku.**  
 
@@ -636,7 +636,7 @@ K této chybě dochází, protože se nezdařilo odstranění koncového bodu se
 | **Řetězec chyby** | ECS_E_NOT_ENOUGH_LOCAL_STORAGE |
 | **Požadována náprava** | Ano |
 
-K této chybě dochází, protože svazek byl vyplněn. K této chybě obvykle dochází, protože soubory mimo koncový bod serveru používají místo na svazku. Uvolněte místo na svazku přidáním dalších koncových bodů serveru, přesunutím souborů na jiný svazek nebo zvětšením velikosti svazku, na kterém je koncový bod serveru zapnutý.
+K této chybě dochází kvůli zaplnění svazku. K této chybě obvykle dochází kvůli tomu, že soubory mimo koncový bod serveru využívají místo na svazku. Uvolněte místo na svazku přidáním dalších koncových bodů serveru, přesunutím souborů na jiný svazek nebo zvětšením velikosti svazku, na kterém je koncový bod serveru zapnutý.
 
 <a id="-2134364145"></a><a id="replica-not-ready"></a>**Služba ještě není připravená na synchronizaci s tímto koncovým bodem serveru.**  
 
@@ -647,9 +647,7 @@ K této chybě dochází, protože svazek byl vyplněn. K této chybě obvykle d
 | **Řetězec chyby** | ECS_E_REPLICA_NOT_READY |
 | **Požadována náprava** | Ne |
 
-K této chybě dochází, protože došlo ke změnám přímo ve sdílené složce Azure a probíhá zjišťování změn. Synchronizace se spustí, až se rozpoznávání změn dokončí.
-
-[!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
+K této chybě dochází, protože koncový bod cloudu byl vytvořen s obsahem již existujícím ve sdílené složce Azure. Než povolíte, aby koncový bod serveru mohl pokračovat v počáteční synchronizaci, Azure File Sync musí zkontrolovat sdílenou složku Azure pro veškerý obsah.
 
 <a id="-2134375877"></a><a id="-2134375908"></a><a id="-2134375853"></a>**Synchronizace se nezdařila z důvodu problémů s mnoha jednotlivými soubory.**  
 
@@ -695,7 +693,7 @@ Ujistěte se, že cesta existuje, je na místním svazku NTFS a není bodem rozb
 | **Řetězec chyby** | ECS_E_INCOMPATIBLE_FILTER_VERSION |
 | **Požadována náprava** | Ano |
 
-K této chybě dochází, protože načtená verze ovladače filtru (StorageSync. sys) cloudové vrstvy není kompatibilní se službou agenta synchronizace úložiště (FileSyncSvc). Pokud byl agent Azure File Sync upgradován, restartujte server, aby se instalace dokončila. Pokud k chybě dochází i nadále, odinstalujte agenta, restartujte server a přeinstalujte agenta Azure File Sync.
+K této chybě dochází, protože načtená verze ovladače filtru vrstvení cloudu (StorageSync.sys) není kompatibilní se službou agenta synchronizace úložiště (FileSyncSvc). Pokud došlo k upgradu agenta Synchronizace souborů Azure, restartováním serveru dokončete instalaci. Pokud chyba přetrvává, odinstalujte agenta, restartujte server a znovu nainstalujte agenta Synchronizace souborů Azure.
 
 <a id="-2134376373"></a>**Služba není momentálně k dispozici.**  
 
@@ -706,7 +704,7 @@ K této chybě dochází, protože načtená verze ovladače filtru (StorageSync
 | **Řetězec chyby** | ECS_E_SERVICE_UNAVAILABLE |
 | **Požadována náprava** | Ne |
 
-K této chybě dochází, protože služba Azure File Sync není k dispozici. Tato chyba bude automaticky vyřešena, jakmile bude služba Azure File Sync znovu dostupná.
+K této chybě dochází kvůli nedostupnosti služby Synchronizace souborů Azure. Tato chyba se automaticky vyřeší, jakmile bude služba Synchronizace souborů Azure opět dostupná.
 
 <a id="-2146233088"></a>**Synchronizace se nezdařila z důvodu výjimky.**  
 
@@ -717,7 +715,7 @@ K této chybě dochází, protože služba Azure File Sync není k dispozici. Ta
 | **Řetězec chyby** | COR_E_EXCEPTION |
 | **Požadována náprava** | Ne |
 
-K této chybě dochází, protože synchronizace se nezdařila z důvodu výjimky. Pokud chyba trvá několik hodin, vytvořte prosím žádost o podporu.
+K této chybě dochází, protože synchronizace selhala kvůli výjimce. Pokud chyba trvá několik hodin, vytvořte prosím žádost o podporu.
 
 <a id="-2134364045"></a>**Synchronizace se nezdařila, protože u účtu úložiště došlo k převzetí služeb při selhání do jiné oblasti.**  
 
@@ -728,7 +726,7 @@ K této chybě dochází, protože synchronizace se nezdařila z důvodu výjimk
 | **Řetězec chyby** | ECS_E_STORAGE_ACCOUNT_FAILED_OVER |
 | **Požadována náprava** | Ano |
 
-K této chybě dochází, protože u účtu úložiště došlo k převzetí služeb při selhání do jiné oblasti. Azure File Sync nepodporuje funkci převzetí služeb při selhání účtu úložiště. Účty úložiště obsahující sdílené složky Azure, které se používají jako koncové body cloudu v Azure File Sync by neměly přenášet služby při selhání. Tím dojde k tomu, že synchronizace přestane fungovat a může také způsobit neočekávanou ztrátu dat v případě nově vrstvených souborů. Pokud chcete tento problém vyřešit, přesuňte účet úložiště do primární oblasti.
+K této chybě dochází, protože došlo k převzetí služeb účtu úložiště při selhání do jiné oblasti. Synchronizace souborů funkci převzetí služeb účtu úložiště při selhání nepodporuje. U účtů úložiště obsahujících sdílené složky Azure, které se v Synchronizaci souborů Azure používají jako koncové body cloudu, by se nemělo provádět převzetí služeb při selhání. Pokud to uděláte, synchronizace přestane fungovat a v případě nově vrstvených souborů může dojít i k neočekávané ztrátě dat. Pokud chcete tento problém vyřešit, přesuňte účet úložiště do primární oblasti.
 
 <a id="-2134375922"></a>**Synchronizace se nezdařila z důvodu přechodného problému s databází synchronizace.**  
 
@@ -739,7 +737,7 @@ K této chybě dochází, protože u účtu úložiště došlo k převzetí slu
 | **Řetězec chyby** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
 | **Požadována náprava** | Ne |
 
-K této chybě dochází z důvodu interního problému s databází synchronizace. Tato chyba bude automaticky vyřešena při opakování synchronizace. Pokud tato chyba trvá déle, vytvořte žádost o podporu a budeme vás kontaktovat, abychom vám pomohli tento problém vyřešit.
+K této chybě dochází kvůli internímu problému s databází synchronizace. Tato chyba se automaticky vyřeší při opakování synchronizace. Pokud tato chyba trvá déle, vytvořte žádost o podporu a budeme vás kontaktovat, abychom vám pomohli tento problém vyřešit.
 
 <a id="-2134364024"></a>**Synchronizace se nezdařila z důvodu změny v Azure Active Directory tenant**  
 
@@ -750,12 +748,12 @@ K této chybě dochází z důvodu interního problému s databází synchroniza
 | **Řetězec chyby** | ECS_E_INVALID_AAD_TENANT |
 | **Požadována náprava** | Ano |
 
-K této chybě dochází, protože Azure File Sync v současné době nepodporuje přesun předplatného na jiného tenanta Azure Active Directory.
+K této chybě dochází, protože Synchronizace souborů Azure v současné době nepodporuje přesun předplatného do jiného tenanta Azure Active Directory.
  
-Chcete-li vyřešit tento problém, proveďte jednu z následujících možností:
+Při řešení tohoto problému použijte některou z následujících možností:
 
 - **Možnost 1 (doporučeno)** : přesunout předplatné zpátky na původní Azure Active Directory tenanta
-- **Možnost 2**: odstraňte a znovu vytvořte aktuální skupinu synchronizace. Pokud byla na koncovém bodu serveru povolená vrstva cloudu, odstraňte skupinu synchronizace a pak proveďte kroky popsané v [části vrstvení cloudu]( https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) a odstraňte osamocené vrstvené soubory před opětovným vytvořením skupin synchronizace. 
+- **Možnost 2**: odstraňte a znovu vytvořte aktuální skupinu synchronizace. Pokud na koncovém bodu serveru bylo povolené vrstvení cloudu, odstraňte skupinu synchronizace, provedením kroků popsaných v [části věnované vrstvení cloudu]( https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) odstraňte osamocené vrstvené soubory a teprve pak znovu vytvořte skupiny synchronizace. 
 
 <a id="-2134364010"></a>**Synchronizace se nezdařila z důvodu nekonfigurace výjimky brány firewall a virtuální sítě**  
 
@@ -766,7 +764,7 @@ Chcete-li vyřešit tento problém, proveďte jednu z následujících možnost�
 | **Řetězec chyby** | ECS_E_MGMT_STORAGEACLSBYPASSNOTSET |
 | **Požadována náprava** | Ano |
 
-K této chybě dochází, pokud jsou v účtu úložiště povolena nastavení brány firewall a virtuální sítě a možnost "Povolit důvěryhodným službám Microsoftu přístup k tomuto účtu úložiště" není zaškrtnuta. Pokud chcete tento problém vyřešit, postupujte podle kroků popsaných v části [Konfigurace brány firewall a nastavení virtuální sítě](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings) v Průvodci nasazením.
+K této chybě dochází, pokud jsou v účtu úložiště povolena nastavení brány firewall a virtuální sítě a možnost "Povolit důvěryhodným službám Microsoftu přístup k tomuto účtu úložiště" není zaškrtnuta. Pokud chcete tento problém vyřešit, postupujte podle kroků popsaných v průvodci nasazením v části [Konfigurace nastavení brány firewall a virtuální sítě](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings).
 
 <a id="-2147024891"></a>**Synchronizace se nezdařila, protože oprávnění ve složce System Volume Information jsou nesprávná.**  
 
@@ -777,15 +775,15 @@ K této chybě dochází, pokud jsou v účtu úložiště povolena nastavení b
 | **Řetězec chyby** | ERROR_ACCESS_DENIED |
 | **Požadována náprava** | Ano |
 
-K této chybě může dojít, pokud účet NT AUTHORITY\SYSTEM nemá oprávnění ke složce informací o systémovém svazku na svazku, kde je umístěný koncový bod serveru. Všimněte si, že pokud se nedaří synchronizovat jednotlivé soubory s ERROR_ACCESS_DENIED, proveďte kroky popsané v části [řešení potíží s chybami synchronizace podle souboru nebo adresáře](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshooting-per-filedirectory-sync-errors) .
+K této chybě může dojít v případě, že účet NT AUTHORITY\SYSTEM nemá oprávnění ke složce s informacemi o systémovém svazku na svazku, na kterém se nachází koncový bod serveru. Všimněte si, že pokud se nedaří synchronizovat jednotlivé soubory s ERROR_ACCESS_DENIED, proveďte kroky popsané v části [řešení potíží s chybami synchronizace podle souboru nebo adresáře](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshooting-per-filedirectory-sync-errors) .
 
 Při řešení tohoto problému postupujte následovně:
 
-1. Stáhněte si nástroj [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) .
+1. Stáhněte si nástroj [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec).
 2. Spuštěním následujícího příkazu z příkazového řádku se zvýšenými oprávněními spusťte příkazový řádek pomocí systémového účtu: **PsExec. exe-i-s-d cmd** 
-3. Z příkazového řádku spuštěného v účtu System spusťte následující příkaz, který potvrdí, že účet NT AUTHORITY\SYSTEM nemá přístup ke složce System Volume Information: **cacls "Písmeno_jednotky: \ System Volume Information"/T/c**
-4. Pokud účet NT AUTHORITY\SYSTEM nemá přístup ke složce System Volume Information, spusťte následující příkaz: **cacls "písmeno jednotky: \ System Volume Information"/T/E/g "NT AUTHORITY\SYSTEM: F"**
-    - Pokud se krok #4 nepovede s odepřením přístupu, spusťte následující příkaz, který převezme vlastnictví složky System Volume Information a pak opakujte krok #4: **takeown/A/R/f "písmeno jednotky: \ systémový svazek informace"**
+3. Spuštěním následujícího příkazu na příkazovém řádku pod systémovým účtem ověřte, jestli účet NT AUTHORITY\SYSTEM skutečně nemá přístup ke složce s informacemi o systémovém svazku: **cacls "<písmeno_jednotky>:\<složka_s_informacemi_o_systémovém_svazku>" /T /C**
+4. Pokud účet NT AUTHORITY\SYSTEM nemá přístup ke složce s informacemi o systémovém svazku, spusťte následující příkaz: **cacls "<písmeno_jednotky>:\<složka_s_informacemi_o_systémovém_svazku>" /T /E /G "NT AUTHORITY\SYSTEM:F"**
+    - Pokud krok 4 selže z důvodu odepření přístupu, spuštěním následujícího příkazu převezměte vlastnictví složky s informacemi o systémovém svazku a pak zopakujte krok 4: **takeown /A /R /F "<písmeno_jednotky>:\<složka_s_informacemi_o_systémovém_svazku>"**
 
 <a id="-2134375810"></a>**Synchronizace se nezdařila, protože sdílená složka Azure byla odstraněna a znovu vytvořena.**  
 
@@ -796,9 +794,9 @@ Při řešení tohoto problému postupujte následovně:
 | **Řetězec chyby** | ECS_E_SYNC_REPLICA_ROOT_CHANGED |
 | **Požadována náprava** | Ano |
 
-K této chybě dochází, protože Azure File Sync nepodporuje odstranění a opětovné vytvoření sdílené složky Azure ve stejné skupině synchronizace. 
+K této chybě dochází, protože Synchronizace souborů Azure nepodporuje odstranění a opětovné vytvoření sdílené složky Azure ve stejné skupině synchronizace. 
 
-Chcete-li tento problém vyřešit, odstraňte a znovu vytvořte skupinu synchronizace provedením následujících kroků:
+Pokud chcete tento problém vyřešit, provedením následujících kroků odstraňte a znovu vytvořte skupinu synchronizace:
 
 1. Odstraňte všechny koncové body serveru ve skupině synchronizace.
 2. Odstraňte koncový bod cloudu. 
@@ -941,7 +939,7 @@ if ($fileShare -eq $null) {
 
     Pokud se **Služba hybridní synchronizace souborů** v seznamu nezobrazí, proveďte následující kroky:
 
-    - Klikněte na tlačítko **Přidat**.
+    - Klikněte na tlačítko **Add** (Přidat).
     - V poli **role** vyberte **Čtenář a přístup k datům**.
     - Do pole **Vybrat** zadejte **Služba Hybrid synchronizace souborů Service**, vyberte roli a klikněte na **Uložit**.
 
@@ -1045,7 +1043,7 @@ Pokud se soubory nepodaří odvolat:
 
 | HRESULT | HRESULT (desetinné číslo) | Text chyby | Problém | Náprava |
 |---------|-------------------|--------------|-------|-------------|
-| 0x80070079 | -2147942521 | ERROR_SEM_TIMEOUT | Soubor se nepovedlo navrátit z důvodu vypršení časového limitu vstupu a výstupu. K tomuto problému může dojít z několika důvodů: omezení prostředků serveru, špatné připojení k síti nebo problém se službou Azure Storage (například omezování). | Není vyžadována žádná akce. Pokud chyba trvá několik hodin, otevřete prosím případ podpory. |
+| 0x80070079 | -2147942521 | ERROR_SEM_TIMEOUT | Soubor se nepovedlo navrátit z důvodu vypršení časového limitu vstupu a výstupu. K tomuto problému může dojít z několika důvodů: omezení prostředků serveru, špatné připojení k síti nebo problém se službou Azure Storage (například omezování). | Nevyžaduje se žádná akce. Pokud chyba trvá několik hodin, otevřete případ podpory. |
 | 0x80070036 | -2147024842 | ERROR_NETWORK_BUSY | Soubor se nepovedlo navrátit kvůli problému v síti.  | Pokud chyba přetrvává, Projděte si síťové připojení ke sdílené složce Azure. |
 | 0x80c80037 | -2134376393 | ECS_E_SYNC_SHARE_NOT_FOUND | Soubor se nepovedlo navrátit, protože koncový bod serveru se odstranil. | Pokud chcete tento problém vyřešit, najdete informace v části [vrstvené soubory nejsou po odstranění koncového bodu serveru dostupné na serveru](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint). |
 | 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Soubor se nepovedlo navrátit kvůli chybě odepření přístupu. K tomuto problému může dojít, pokud jsou povolena nastavení brány firewall a virtuální sítě v účtu úložiště a server nemá přístup k účtu úložiště. | Chcete-li tento problém vyřešit, přidejte IP adresu serveru nebo virtuální síť podle postupu popsaného v části [Konfigurace brány firewall a nastavení virtuální sítě](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings) v Průvodci nasazením. |

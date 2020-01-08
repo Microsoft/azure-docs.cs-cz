@@ -1,30 +1,22 @@
 ---
-title: Microsoft Threat Modeling Tool – Azure | Microsoft Docs
-description: Hlavní stránka pro Microsoft Threat Modeling Tool, která obsahuje informace o tom, jak začít s nástrojem, včetně procesu modelování hrozeb
-services: security
-documentationcenter: na
+title: Přehled Microsoft Threat Modeling Tool – Azure
+description: Přehled Microsoft Threat Modeling Tool, který obsahuje informace o tom, jak začít s nástrojem, včetně procesu modelování hrozeb.
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2017
-ms.author: jegeib
-ms.openlocfilehash: 47ae7661874bec211935315679e6e2c79e6d59ef
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0d800102b6f6ff77944a2b625d3bcecef69c1ee9
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727826"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548750"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool
 
-Threat Modeling Tool je základním prvkem Microsoft SDL (Security Development Lifecycle). Umožňuje softwarovým architektům včas identifikovat a zmírnit potenciální problémy se zabezpečením, když jsou poměrně jednoduché a nákladově efektivní. V důsledku toho významně snižuje celkové náklady na vývoj. Také jsme navrhli nástroj s odborníky mimo bezpečnostní specialisty, což usnadňuje modelování hrozeb všem vývojářům tím, že poskytuje jasné pokyny k vytváření a analýze modelů hrozeb. 
+Threat Modeling Tool je základní prvek Microsoft Security Development Lifecycle (SDL). Umožňuje softwarovým architektům včas identifikovat a zmírnit potenciální problémy se zabezpečením, když jsou poměrně jednoduché a nákladově efektivní. V důsledku toho významně snižuje celkové náklady na vývoj. Také jsme navrhli nástroj s odborníky mimo bezpečnostní specialisty, což usnadňuje modelování hrozeb všem vývojářům tím, že poskytuje jasné pokyny k vytváření a analýze modelů hrozeb. 
 
 Nástroj umožňuje komukoli:
 
@@ -36,12 +28,12 @@ Tady jsou některé možnosti nástrojů a inovace, stačí jenom pár názvů:
 
 * **Automatizace:** Doprovodné materiály a názory při sestavování modelu
 * **Rozteč na prvek:** Průvodce analýzou hrozeb a rizik
-* **Zpravodajský** Bezpečnostní aktivity a testování ve fázi ověřování
+* **Vytváření sestav:** Bezpečnostní aktivity a testování ve fázi ověřování
 * **Jedinečná metodologie:** Umožňuje uživatelům lépe vizualizovat a pochopit hrozby.
 * **Navrženo pro vývojáře a Centrované na software:** mnoho přístupů se zacentruje na prostředky nebo útočníci. Jsme zavedli software na střed. Sestavíme na aktivitách, které jsou známé pro všechny vývojáře a architekty softwaru – například vykreslování obrázků pro svou softwarovou architekturu.
 * **Zaměření na analýzu návrhu:** Pojem "modelování hrozeb" může odkazovat buď na požadavky, nebo na analytickou metodu návrhu. V některých případech odkazuje na komplexní směs těchto dvou. Koncepce přístupu k Microsoft SDL do modelování hrozeb je zaměřená na analytickou techniku návrhu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Následující tabulka obsahuje důležité odkazy, které vám pomohou začít s Threat Modeling Tool:
 
@@ -53,11 +45,11 @@ Následující tabulka obsahuje důležité odkazy, které vám pomohou začít 
 | **4** | [Další informace o generovaných kategoriích hrozeb](threat-modeling-tool-threats.md)   |
 | **5** | [Hledání rizik pro vygenerované hrozby](threat-modeling-tool-mitigations.md) |
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Materiály
 
 Tady je několik starších článků, které ještě jsou v současnosti relevantní pro modelování hrozeb:
 
-* [Článek o významu modelování hrozeb](https://msdn.microsoft.com/magazine/dd347831.aspx)
+* [Článek o významu modelování hrozeb](https://docs.microsoft.com/archive/msdn-magazine/2009/january/security-briefs-getting-started-with-the-sdl-threat-modeling-tool)
 * [Školení publikované důvěryhodným výpočetním prostředím](https://www.microsoft.com/download/details.aspx?id=16420)
 
 Podívejte se, co několik expertů Threat Modeling Tool udělalo:

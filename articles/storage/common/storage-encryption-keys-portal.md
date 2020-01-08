@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b1006fead92763c5c2e670527b5e232618b633e5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f592872e67ff8559060706ddb3b1e45839b6acaf
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895311"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665471"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault pomocí Azure Portal
 
@@ -23,9 +23,16 @@ ms.locfileid: "74895311"
 
 V tomto článku se dozvíte, jak nakonfigurovat Azure Key Vault s použitím klíčů spravovaných zákazníkem pomocí [Azure Portal](https://portal.azure.com/). Informace o tom, jak vytvořit Trezor klíčů pomocí Azure Portal, najdete v tématu [rychlý Start: nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure Portal](../../key-vault/quick-create-portal.md).
 
-> [!IMPORTANT]
-> Použití klíčů spravovaných zákazníkem s šifrováním Azure Storage vyžaduje, aby byly v trezoru klíčů nastaveny dvě vlastnosti, **obnovitelné odstranění** a **nemazatelné**. Tyto vlastnosti nejsou ve výchozím nastavení povolené. Pokud chcete tyto vlastnosti povolit, použijte PowerShell nebo rozhraní příkazového řádku Azure CLI.
-> Podporují se jenom klíče RSA a velikost klíče 2048.
+## <a name="configure-azure-key-vault"></a>Konfigurace Azure Key Vaultu
+
+Použití klíčů spravovaných zákazníkem s šifrováním Azure Storage vyžaduje, aby byly v trezoru klíčů nastaveny dvě vlastnosti, **obnovitelné odstranění** a **nemazatelné**. Tyto vlastnosti nejsou ve výchozím nastavení povolené, ale můžete je povolit pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI v novém nebo existujícím trezoru klíčů.
+
+Informace o tom, jak tyto vlastnosti v existujícím trezoru klíčů povolit, najdete v částech s názvem **Povolení obnovitelného odstranění** a **Povolení funkce vyprázdnit ochranu** v jednom z následujících článků:
+
+- [Jak používat obnovitelné odstranění pomocí prostředí PowerShell](../../key-vault/key-vault-soft-delete-powershell.md).
+- [Jak používat obnovitelné odstranění pomocí rozhraní](../../key-vault/key-vault-soft-delete-cli.md)PŘÍKAZového řádku
+
+Azure Storage šifrování podporují pouze klíče RSA o velikosti 2048. Další informace o klíčích najdete v tématu **Key Vault Keys** v tématu [informace o Azure Key Vaultch klíčích, tajných klíčích a certifikátech](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
 
 ## <a name="enable-customer-managed-keys"></a>Povolit klíče spravované zákazníkem
 
@@ -44,14 +51,18 @@ Po povolení klíčů spravovaných zákazníkem budete mít možnost zadat klí
 
 Pokud chcete zadat klíč jako identifikátor URI, použijte následující postup:
 
-1. Pokud chcete najít identifikátor URI klíče v Azure Portal, přejděte do trezoru klíčů a vyberte nastavení **klíče** . Vyberte požadovaný klíč a potom kliknutím na klíč zobrazte jeho nastavení. Zkopírujte hodnotu pole **identifikátor klíče** , které poskytuje identifikátor URI.
+1. Pokud chcete najít identifikátor URI klíče v Azure Portal, přejděte do trezoru klíčů a vyberte nastavení **klíče** . Vyberte požadovaný klíč a potom kliknutím na klíč zobrazte jeho verze. Vyberte verzi klíče a zobrazte nastavení této verze.
+1. Zkopírujte hodnotu pole **identifikátor klíče** , které poskytuje identifikátor URI.
 
     ![Snímek obrazovky s identifikátorem URI klíče trezoru klíčů](media/storage-encryption-keys-portal/key-uri-portal.png)
 
 1. V nastavení **šifrování** pro účet úložiště klikněte na možnost **zadat identifikátor URI klíče** .
-1. Do pole **identifikátor URI klíče** zadejte identifikátor URI.
+1. Vložte identifikátor URI, který jste zkopírovali do pole **identifikátor URI klíče** .
 
    ![Snímek obrazovky ukazující, jak zadat identifikátor URI klíče](./media/storage-encryption-keys-portal/ssecmk2.png)
+
+1. Zadejte předplatné, které obsahuje Trezor klíčů.
+1. Uložte provedené změny.
 
 ### <a name="specify-a-key-from-a-key-vault"></a>Zadat klíč z trezoru klíčů
 
@@ -63,12 +74,30 @@ Pokud chcete zadat klíč z trezoru klíčů, nejdřív se ujistěte, že máte 
 
    ![Snímek obrazovky s možností klíče spravovaného zákazníkem](./media/storage-encryption-keys-portal/ssecmk3.png)
 
+1. Uložte provedené změny.
+
 ## <a name="update-the-key-version"></a>Aktualizace verze klíče
 
-Když vytváříte novou verzi klíče, budete muset aktualizovat účet úložiště, aby používal novou verzi. Postupujte následovně:
+Když vytváříte novou verzi klíče, aktualizujte účet úložiště, aby používal novou verzi. Postupujte následovně:
 
 1. Přejděte k účtu úložiště a zobrazte nastavení **šifrování** .
 1. Zadejte identifikátor URI pro novou verzi klíče. Alternativně můžete vybrat Trezor klíčů a klíč znovu pro aktualizaci verze.
+1. Uložte provedené změny.
+
+## <a name="use-a-different-key"></a>Použít jiný klíč
+
+Pokud chcete změnit klíč, který se používá pro Azure Storage šifrování, postupujte takto:
+
+1. Přejděte k účtu úložiště a zobrazte nastavení **šifrování** .
+1. Zadejte identifikátor URI nového klíče. Alternativně můžete vybrat Trezor klíčů a zvolit nový klíč.
+1. Uložte provedené změny.
+
+## <a name="disable-customer-managed-keys"></a>Zakázat klíče spravované zákazníkem
+
+Když zakážete klíče spravované zákazníkem, váš účet úložiště se pak zašifruje pomocí klíčů spravovaných Microsoftem. K zakázání klíčů spravovaných zákazníkem použijte tento postup:
+
+1. Přejděte k účtu úložiště a zobrazte nastavení **šifrování** .
+1. Zrušte zaškrtnutí políčka u nastavení **použít vlastní klíč** .
 
 ## <a name="next-steps"></a>Další kroky
 

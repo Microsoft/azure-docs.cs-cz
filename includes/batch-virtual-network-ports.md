@@ -15,12 +15,12 @@ ms.workload: ''
 ms.date: 07/16/2019
 ms.author: lahugh
 ms.custom: include file
-ms.openlocfilehash: c8b25858556538835d6a84bf0d6699f9906f1438
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 98f5269c27643e7ce6c0aaf9b359503a124d9232
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68322655"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75663055"
 ---
 ### <a name="general-requirements"></a>Obecné požadavky
 
@@ -46,7 +46,7 @@ Další požadavky na virtuální síť se liší podle toho, jestli je fond Bat
 
 **Oprávnění** – Zkontrolujte, jestli vaše zásady zabezpečení nebo zámky na předplatném nebo skupině prostředků virtuální sítě neomezují oprávnění uživatele spravovat tuto virtuální síť.
 
-**Další síťové prostředky** – Batch automaticky přiděluje další síťové prostředky ve skupině prostředků obsahující virtuální síť. Pro každý 50 vyhrazený uzel (nebo každého 20 uzlů s nízkou prioritou) se dávka přiděluje: 1 skupina zabezpečení sítě (NSG), 1 veřejná IP adresa a 1 Nástroj pro vyrovnávání zatížení. Pro tyto prostředky platí omezení [kvót prostředků](../articles/azure-subscription-service-limits.md) předplatného. V případě velkých fondů možná bude potřeba požádat o navýšení kvóty pro jeden nebo několik z těchto prostředků.
+**Další síťové prostředky** – Batch automaticky přiděluje další síťové prostředky ve skupině prostředků obsahující virtuální síť. Za každých 50 vyhrazených uzlů (nebo každých 20 uzlů s nízkou prioritou) Batch přidělí: 1 skupinu zabezpečení sítě (NSG), 1 veřejnou IP adresu a 1 nástroj pro vyrovnávání zatížení. Pro tyto prostředky platí omezení [kvót prostředků](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) předplatného. V případě velkých fondů možná bude potřeba požádat o navýšení kvóty pro jeden nebo několik z těchto prostředků.
 
 #### <a name="network-security-groups"></a>Skupiny zabezpečení sítě
 
@@ -64,16 +64,16 @@ Nemusíte zadávat skupiny zabezpečení sítě na úrovni podsítě, protože B
 
 **Příchozí pravidla zabezpečení**
 
-| Zdrojové IP adresy | Značka zdrojové služby | Zdrojové porty | Cíl | Cílové porty | Protocol | Action |
+| Zdrojové IP adresy | Značka zdrojové služby | Zdrojové porty | Cíl | Cílové porty | Protocol (Protokol) | Akce |
 | --- | --- | --- | --- | --- | --- | --- |
-| Není k dispozici | `BatchNodeManagement`[Značka služby](../articles/virtual-network/security-overview.md#service-tags) | * | Any | 29876–29877 | TCP | Allow |
-| IP adresy zdroje uživatelů pro vzdálené přístup k výpočetním uzlům a/nebo podsíti výpočetních uzlů pro úlohy s víc instancemi pro Linux, pokud je to potřeba. | Není k dispozici | * | Any | 3389 (Windows), 22 (Linux) | TCP | Allow |
+| Nevztahuje se | [značka služby](../articles/virtual-network/security-overview.md#service-tags) `BatchNodeManagement` | * | Všechny | 29876–29877 | TCP | Povolit |
+| IP adresy zdroje uživatelů pro vzdálené přístup k výpočetním uzlům a/nebo podsíti výpočetních uzlů pro úlohy s víc instancemi pro Linux, pokud je to potřeba. | Nevztahuje se | * | Všechny | 3389 (Windows), 22 (Linux) | TCP | Povolit |
 
 **Odchozí pravidla zabezpečení**
 
-| Source | Zdrojové porty | Cíl | Značka cílové služby | Cílové porty | Protocol | Action |
+| Zdroj | Zdrojové porty | Cíl | Značka cílové služby | Cílové porty | Protocol (Protokol) | Akce |
 | --- | --- | --- | --- | --- | --- | --- |
-| Any | * | [Značka služby](../articles/virtual-network/security-overview.md#service-tags) | `Storage`(ve stejné oblasti jako účet Batch a virtuální síť) | 443 | TCP | Allow |
+| Všechny | * | [Značka služby](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (ve stejné oblasti jako účet Batch a virtuální síť) | 443 | TCP | Povolit |
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>Fondy v konfigurace služby Cloud Services
 
@@ -97,13 +97,13 @@ Pokud potřebujete povolit přístup protokolu RDP k uzlům fondu, nakonfigurujt
 
 **Příchozí pravidla zabezpečení**
 
-| Zdrojové IP adresy | Zdrojové porty | Cíl | Cílové porty | Protocol | Action |
+| Zdrojové IP adresy | Zdrojové porty | Cíl | Cílové porty | Protocol (Protokol) | Akce |
 | --- | --- | --- | --- | --- | --- |
-Any <br /><br />Přestože to efektivně vyžaduje „povolit vše“, služba Batch použije pravidlo seznamu ACL na úrovni každého uzlu, které filtruje všechny IP adresy, které nejsou služby Batch. | * | Any | 10100, 20100, 30100 | TCP | Allow |
-| Volitelné, aby bylo umožněno přístupu RDP k výpočetním uzlům. | * | Any | 3389 | TCP | Allow |
+Všechny <br /><br />Přestože to efektivně vyžaduje „povolit vše“, služba Batch použije pravidlo seznamu ACL na úrovni každého uzlu, které filtruje všechny IP adresy, které nejsou služby Batch. | * | Všechny | 10100, 20100, 30100 | TCP | Povolit |
+| Volitelné, aby bylo umožněno přístupu RDP k výpočetním uzlům. | * | Všechny | 3389 | TCP | Povolit |
 
 **Odchozí pravidla zabezpečení**
 
-| Source | Zdrojové porty | Cíl | Cílové porty | Protocol | Action |
+| Zdroj | Zdrojové porty | Cíl | Cílové porty | Protocol (Protokol) | Akce |
 | --- | --- | --- | --- | --- | --- |
-| Any | * | Any | 443  | Any | Allow |
+| Všechny | * | Všechny | 443  | Všechny | Povolit |

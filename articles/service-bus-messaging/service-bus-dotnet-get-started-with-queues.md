@@ -14,18 +14,18 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/27/2019
 ms.author: aschhab
-ms.openlocfilehash: c1f9c8a03a503444c7c45d5374b67e5b453a8931
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 49abd1b0542b1a658517561cf1ffead402fa93a5
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561607"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563390"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Začínáme s frontami služby Service Bus
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 V tomto kurzu vytvoříte konzolové aplikace .NET Core pro posílání zpráv a přijímání zpráv z fronty Service Bus.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs).
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) verze 2.0 nebo novější.
@@ -74,7 +74,7 @@ Spusťte Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Cor
 
     Jako proměnnou `ServiceBusConnectionString` zadejte připojovací řetězec pro obor názvů. Zadejte název fronty.
 
-1. Metodu `Main()` nahraďte následující **asynchronní** metodou `Main`. Volá metodu SendMessagesAsync, kterou přidáte v dalším kroku k odesílání zpráv do fronty. 
+1. Metodu `Main()` nahraďte následující **asynchronní** metodou `Main`. Volá metodu `SendMessagesAsync()`, kterou přidáte v dalším kroku k odesílání zpráv do fronty. 
 
     ```csharp
     public static async Task Main(string[] args)

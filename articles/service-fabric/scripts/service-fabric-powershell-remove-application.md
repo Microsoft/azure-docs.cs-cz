@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure PowerShell – odebrání aplikace z clusteru | Microsoft Docs
+title: Odebrání aplikace z clusteru v PowerShellu
 description: Ukázkový skript Azure PowerShell – odebrání aplikace z clusteru Service Fabric
 services: service-fabric
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: f572996b4e460480335dbe32c4599bde206251d4
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 9ac4c23468c74b5a2c6874de2cb6b8d0e6b9e7dd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035499"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610280"
 ---
-# <a name="remove-an-application-from-a-service-fabric-cluster"></a>Odebrání aplikace z clusteru Service Fabric
+# <a name="remove-an-application-from-a-service-fabric-cluster-using-powershell"></a>Odebrání aplikace z Service Fabricho clusteru pomocí prostředí PowerShell
 
 Tento ukázkový skript odstraní spuštěnou instanci aplikace Service Fabric a zruší registraci typu a verze aplikace z clusteru.  Odstraněním instance aplikace dojde také k odstranění všech spuštěných instancí služby přidružených dané aplikaci. Podle potřeby upravte parametry. 
 

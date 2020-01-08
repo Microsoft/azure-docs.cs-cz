@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 09/19/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1fec6de65fade0bbb35907f9c69334e16d9193bf
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 63070b2c1e6adbb0149446b218e6e58023b2d409
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671757"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666447"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravného prostředí v Azure App Service
 <a name="Overview"></a>
@@ -23,7 +23,7 @@ Nasazení aplikace do neprodukčního slotu má následující výhody:
 * Když nasadíte aplikaci do slotu a zaměníte ji do produkčního prostředí, zajistíte, aby se všechny instance slotu před jejich přepnutím do produkčního prostředí zahodily. Tím se eliminuje prostoje při nasazení aplikace. Přesměrování provozu je bezproblémové a žádné požadavky nejsou vyřazeny z důvodu operací prohození. Tento celý pracovní postup můžete automatizovat konfigurací [automatického prohození](#Auto-Swap) , pokud není nutné ověření předem.
 * Po prohození teď má slot s dřív připravenou aplikací předchozí produkční aplikaci. Pokud se změny vyměněné do produkčního slotu neočekávají, můžete stejnou záměnu provést hned a získat tak svůj "poslední známý dobrý web" zpátky.
 
-Každá úroveň plánu App Service podporuje jiný počet slotů nasazení. Za použití slotů nasazení se neúčtují žádné další poplatky. Pokud chcete zjistit počet slotů, které podporuje vrstva vaší aplikace, přečtěte si téma [omezení App Service](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits). 
+Každá úroveň plánu App Service podporuje jiný počet slotů nasazení. Za použití slotů nasazení se neúčtují žádné další poplatky. Pokud chcete zjistit počet slotů, které podporuje vrstva vaší aplikace, přečtěte si téma [omezení App Service](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#app-service-limits). 
 
 Pokud chcete aplikaci škálovat na jinou úroveň, ujistěte se, že cílová vrstva podporuje počet slotů, které už vaše aplikace používá. Pokud má vaše aplikace například více než pět slotů, nemůžete ji škálovat na úroveň **Standard** , protože úroveň **Standard** podporuje jenom pět slotů nasazení. 
 
@@ -32,11 +32,15 @@ Pokud chcete aplikaci škálovat na jinou úroveň, ujistěte se, že cílová v
 ## <a name="add-a-slot"></a>Přidat slot
 Aby bylo možné povolit více slotů nasazení, musí být aplikace spuštěná v úrovni **Standard**, **Premium**nebo **izolovaná** .
 
-1. V [Azure Portal](https://portal.azure.com/)otevřete [stránku prostředků](../azure-resource-manager/manage-resources-portal.md#manage-resources)vaší aplikace.
+
+1. v [Azure Portal](https://portal.azure.com/)vyhledejte a vyberte **App Services** a vyberte svou aplikaci. 
+   
+    ![Hledat App Services](./media/web-sites-staged-publishing/search-for-app-services.png)
+   
 
 2. V levém podokně vyberte **nasazovací sloty** > **Přidat slot**.
    
-    ![Přidat nový slot nasazení](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
+    ![Přidání nového slotu nasazení](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
    > Pokud aplikace ještě není v úrovni **Standard**, **Premium**nebo **izolovaná** , zobrazí se zpráva, která indikuje podporované úrovně pro povolení vystavení při dvoufázovém publikování. V tomto okamžiku máte možnost vybrat **upgrade** a před pokračováním přejít na kartu **škálování** aplikace.
@@ -166,7 +170,7 @@ Pokud dojde k nějakým chybám v cílové patici (například k produkčnímu s
 
 <a name="Auto-Swap"></a>
 
-## <a name="configure-auto-swap"></a>Konfigurovat automatické prohození
+## <a name="configure-auto-swap"></a>Konfigurace automatického prohození
 
 > [!NOTE]
 > Automatické prohození není podporováno ve webových aplikacích v systému Linux.
@@ -232,7 +236,7 @@ Postup automatického směrování provozních přenosů:
 
 1. Přejít na stránku prostředků vaší aplikace a vyberte **sloty nasazení**.
 
-2. Ve sloupci **provoz%** slotu, na který chcete směrovat, zadejte procento (mezi 0 a 100), které bude představovat objem celkového provozu, který chcete směrovat. Vyberte **Save** (Uložit).
+2. Ve sloupci **provoz%** slotu, na který chcete směrovat, zadejte procento (mezi 0 a 100), které bude představovat objem celkového provozu, který chcete směrovat. Vyberte **Uložit**.
 
     ![Nastavení procenta provozu](./media/web-sites-staged-publishing/RouteTraffic.png)
 
@@ -241,7 +245,7 @@ Po uložení nastavení se zadané procento klientů náhodně směruje do nepro
 Po automatickém směrování klienta na konkrétní slot je tento slot "připnuté" do této patice po celou dobu trvání této klientské relace. V klientském prohlížeči uvidíte, ke kterému slotu je vaše relace připnuté, a Prohlédněte si soubor cookie `x-ms-routing-name` v hlavičkách protokolu HTTP. Žádost, která je směrována do "přípravného" slotu, má soubor cookie `x-ms-routing-name=staging`. Požadavek, který je směrován do produkčního slotu, má `x-ms-routing-name=self`souborů cookie.
 
    > [!NOTE]
-   > Vedle webu Azure Portal můžete k nastavení procenta směrování z nástrojů CI/CD, jako jsou kanály DevOps nebo jiné systémy automatizace, použít také příkaz [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) v rozhraní příkazového řádku Azure CLI.
+   > Vedle Azure Portal můžete také pomocí příkazu [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) v Azure CLI nastavit procenta směrování z nástrojů CI/CD, jako jsou kanály DevOps nebo jiné systémy automatizace.
    > 
 
 ### <a name="route-production-traffic-manually"></a>Ruční směrování provozní provozu
@@ -268,7 +272,7 @@ Ve výchozím nastavení mají nové sloty pravidlo směrování `0%`, zobrazen�
 
 ## <a name="delete-a-slot"></a>Odstranění slotu
 
-Přejít na stránku prostředků vaší aplikace. Vyberte možnost **sloty nasazení** >  *\<slot pro odstranění >*  > **Overview**. Na panelu příkazů vyberte **Odstranit** .  
+Vyhledejte a vyberte svou aplikaci. Vyberte možnost **sloty nasazení** >  *\<slot pro odstranění >*  > **Overview**. Na panelu příkazů vyberte **Odstranit** .  
 
 ![Odstranění slotu nasazení](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
@@ -327,16 +331,16 @@ Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller Slo
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
-## <a name="automate-with-arm-templates"></a>Automatizace pomocí šablon ARM
+## <a name="automate-with-resource-manager-templates"></a>Automatizace pomocí šablon Správce prostředků
 
-[Šablony ARM](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) jsou DEKLARATIVNÍ soubory JSON, které slouží k automatizaci nasazení a konfigurace prostředků Azure. Chcete-li vyměnit sloty pomocí šablon ARM, nastavte dvě vlastnosti v prostředcích *Microsoft. Web/Web/sloty* a *Microsoft. Web/Sites* :
+[Šablony Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) jsou DEKLARATIVNÍ soubory JSON používané k automatizaci nasazení a konfigurace prostředků Azure. K prohození slotů pomocí Správce prostředků šablon nastavíte dvě vlastnosti na prostředky *Microsoft. Web/Sites/sloty* a *Microsoft. Web/Web* :
 
 - `buildVersion`: Jedná se o řetězcovou vlastnost, která představuje aktuální verzi aplikace nasazené ve slotu. Například: "v1", "1.0.0.1" nebo "2019-09-20T11:53:25.2887393-07:00".
 - `targetBuildVersion`: Jedná se o řetězcovou vlastnost, která určuje, co má `buildVersion` slot. Pokud se targetBuildVersion nerovná aktuálnímu `buildVersion`, aktivuje se operace přepnutí tím, že najde slot, který má zadanou `buildVersion`.
 
-### <a name="example-arm-template"></a>Příklad šablony ARM
+### <a name="example-resource-manager-template"></a>Příklad šablony Správce prostředků
 
-Následující šablona ARM aktualizuje `buildVersion` přípravného slotu a nastaví `targetBuildVersion` na produkční pozici. Tím se tyto dva sloty zahodí. Šablona předpokládá, že už máte vytvořenou WebApp s slotem s názvem "fázování".
+Následující šablona Správce prostředků aktualizuje `buildVersion` přípravného slotu a nastaví `targetBuildVersion` na produkčním slotu. Tím se tyto dva sloty zahodí. Šablona předpokládá, že už máte vytvořenou WebApp s slotem s názvem "fázování".
 
 ```json
 {
@@ -380,7 +384,7 @@ Následující šablona ARM aktualizuje `buildVersion` přípravného slotu a na
 }
 ```
 
-Tato šablona ARM je idempotentní, což znamená, že je možné ji provést opakovaně a získat stejný stav slotů. Po prvním spuštění bude `targetBuildVersion` odpovídat aktuálnímu `buildVersion`, takže se neaktivuje swap.
+Tato Správce prostředků šablona je idempotentní, což znamená, že je možné ji provést opakovaně a získat stejný stav slotů. Po prvním spuštění bude `targetBuildVersion` odpovídat aktuálnímu `buildVersion`, takže se neaktivuje swap.
 
 <!-- ======== Azure CLI =========== -->
 

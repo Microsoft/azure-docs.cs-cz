@@ -1,25 +1,16 @@
 ---
-title: Osvědčené postupy pro návrh aplikace Azure Service Fabric | Microsoft Docs
-description: Osvědčené postupy pro vývoj aplikací Service Fabric.
-services: service-fabric
-documentationcenter: .net
+title: Osvědčené postupy pro návrh aplikací pro Azure Service Fabric
+description: Osvědčené postupy a faktory návrhu pro vývoj aplikací a služeb s využitím Azure Service Fabric.
 author: markfussell
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/18/2019
 ms.author: mfussell
-ms.openlocfilehash: eec5daf0100d527886a508f5adbdb2b0e3010b09
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 755e3c1eb649bc6c8ecc084d18e9904cc90b1282
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262261"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551841"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Osvědčené postupy pro návrh aplikací pro Azure Service Fabric
 
@@ -65,28 +56,28 @@ Určete časový rámec uchovávání dat:
 - Odebráním závislostí v jiných službách můžete zlepšit dostupnost služby. Správa stavu s HA v clusteru izoluje vás od jiných výpadků služeb nebo problémů s latencí.
 
 ## <a name="how-to-work-with-reliable-services"></a>Jak pracovat s Reliable Services
-Service Fabric Reliable Services vám umožní snadno vytvářet bezstavové a stavové služby. Další informace najdete v úvodu [k Reliable Services](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-introduction).
-- Vždy vyhovět [token zrušení](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-lifecycle#stateful-service-primary-swaps) v `RunAsync()` metodě pro bezstavové a stavové služby a `ChangeRole()` metodu pro stavové služby. Pokud ne, Service Fabric nevíte, jestli je možné službu zavřít. Například pokud nedodržujete token zrušení, může dojít k mnohem delší dobu upgradu aplikace.
--   Včasné otevření a [](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication) ukončení komunikačních posluchačů a přijetí tokenů zrušení.
--   Nikdy nepoužívejte kombinaci synchronního kódu s asynchronním kódem. Například Nepoužívejte `.GetAwaiter().GetResult()` ve svých asynchronních voláních. Použijte asynchronní *použití* v zásobníku volání.
+Service Fabric Reliable Services vám umožní snadno vytvářet bezstavové a stavové služby. Další informace najdete v [úvodu k Reliable Services](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-introduction).
+- Pro bezstavové a stavové služby a metodu `ChangeRole()` pro stavové služby vždycky dodržíte [token zrušení](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-lifecycle#stateful-service-primary-swaps) v `RunAsync()` metodě. Pokud ne, Service Fabric nevíte, jestli je možné službu zavřít. Například pokud nedodržujete token zrušení, může dojít k mnohem delší dobu upgradu aplikace.
+-   Včasné otevření a ukončení [komunikačních posluchačů](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication) a přijetí tokenů zrušení.
+-   Nikdy nepoužívejte kombinaci synchronního kódu s asynchronním kódem. Nepoužívejte například `.GetAwaiter().GetResult()` v asynchronních voláních. Použijte asynchronní *použití v zásobníku* volání.
 
 ## <a name="how-to-work-with-reliable-actors"></a>Jak pracovat s Reliable Actors
-Service Fabric Reliable Actors umožňuje snadno vytvořit stavové a virtuální objekty actor. Další informace najdete v úvodu [k Reliable Actors](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction).
+Service Fabric Reliable Actors umožňuje snadno vytvořit stavové a virtuální objekty actor. Další informace najdete v [úvodu k Reliable Actors](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction).
 
 - Pro škálování vaší aplikace je vhodné zvážit použití zasílání zpráv z publikování a podsystému mezi vašimi aktéry. Mezi nástroje, které tuto službu poskytují, patří [Open-Source SoCreate Service Fabric Pub/sub](https://service-fabric-pub-sub.socreate.it/) a [Azure Service Bus](https://docs.microsoft.com/azure/service-bus/).
 - Nastavte stav objektu actor jako [podrobnějších možností](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-state-management#best-practices).
-- Umožňuje spravovat [životní cyklus objektu actor](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-state-management#best-practices). Pokud je nebudete používat znovu, odstraňte objekty actor. Odstranění nepotřebných aktérů je obzvláště důležité, pokud používáte nestálýho [poskytovatele stavu](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-state-management#state-persistence-and-replication), protože veškerý stav je uložený v paměti.
+- Umožňuje spravovat [životní cyklus objektu actor](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-state-management#best-practices). Pokud je nebudete používat znovu, odstraňte objekty actor. Odstranění nepotřebných aktérů je obzvláště důležité, pokud používáte [nestálýho poskytovatele stavu](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-state-management#state-persistence-and-replication), protože veškerý stav je uložený v paměti.
 - Vzhledem k jejich [souběžnosti](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction#concurrency), jsou objekty actor nejlépe používány jako nezávislé objekty. Nevytvářejte grafy více objektů Actor, synchronní volání metod (každý z nich se pravděpodobně nazývá samostatné síťové volání) nebo Vytvářejte kruhové požadavky objektu actor. Tato akce významně ovlivní výkon a škálování.
 - Nepoužívejte kombinaci synchronního kódu s asynchronním kódem. Používejte Async konzistentně, aby se zabránilo problémům s výkonem.
 - V aktérech neprovádějte dlouhotrvající volání. Dlouhotrvající volání zablokují jiná volání stejnému objektu actor z důvodu souběžnosti založené na zapínání.
-- Pokud komunikujete s jinými službami pomocí [Service Fabric vzdálené komunikace](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication-remoting) a vytváříte `ServiceProxyFactory`, vytvořte továrnu na úrovni [actor-Service](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-using) a *ne* na úrovni objektu actor.
+- Pokud komunikujete s jinými službami pomocí [Service Fabric vzdálené komunikace](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication-remoting) a vytváříte `ServiceProxyFactory`, vytvořte továrnu na úrovni objektu [actor](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-using) a *nikoli* na úrovni objektu actor.
 
 
 ## <a name="application-diagnostics"></a>Application Diagnostics
 Přidávejte důkladnější informace o přidávání [protokolování aplikací](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app) při voláních služby. Pomůže vám diagnostikovat scénáře, ve kterých se služby vzájemně volají. Například pokud volání B volá C volá D, volání se může podařit kdekoli. Pokud nemáte dostatečné protokolování, je obtížné diagnostikovat chyby. Pokud jsou služby protokolovány příliš daleko z důvodu počtu volání, nezapomeňte alespoň protokolovat chyby a upozornění.
 
 ## <a name="iot-and-messaging-applications"></a>Aplikace IoT a zasílání zpráv
-Když čtete zprávy z [azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) nebo [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/), použijte [ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/ServiceFabricProcessor). ServiceFabricProcessor se integruje s Service Fabric Reliable Services, aby zachoval stav čtení z oddílů centra událostí a přenáší nové zprávy do služeb prostřednictvím `IEventProcessor::ProcessEventsAsync()` metody.
+Když čtete zprávy z [azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) nebo [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/), použijte [ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/ServiceFabricProcessor). ServiceFabricProcessor se integruje s Service Fabric Reliable Services, aby udržoval stav čtení z oddílů centra událostí a nabízela nové zprávy vašim službám prostřednictvím metody `IEventProcessor::ProcessEventsAsync()`.
 
 
 ## <a name="design-guidance-on-azure"></a>Pokyny k návrhu v Azure

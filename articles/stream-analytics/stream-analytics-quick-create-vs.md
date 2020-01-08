@@ -1,18 +1,17 @@
 ---
 title: Rychlý Start – vytvoření úlohy Azure Stream Analytics pomocí sady Visual Studio
 description: V tomto rychlém startu se dozvíte, jak začít vytvořením úlohy Stream Analytics, konfigurací vstupů a výstupů a definicí dotazu pomocí sady Visual Studio.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: ec3318201fd3fe8f7daf78d05bf316fb88914daf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 21dbd4128cad7df11aeb713286d868879a58519b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707336"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431529"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí sady Visual Studio
 
@@ -41,9 +40,9 @@ Před definováním Stream Analytics úlohy byste měli připravit data, která 
    |**Nastavení**  |**Navrhovaná hodnota**  |**Popis**  |
    |---------|---------|---------|
    |Předplatné  | \<Vaše předplatné\> |  Vyberte předplatné Azure, které chcete použít. |
-   |Skupina prostředků   |   asaquickstart-resourcegroup  |   Vyberte**Vytvořit nový** a zadejte název nové skupiny prostředků pro váš účet. |
-   |Oblast  |  \<Vyberte oblast nejbližší vašim uživatelům.\> | Vyberte zeměpisnou polohu, kde můžete IoT Hub hostovat. Použijte umístění, které je nejblíže vašim uživatelům. |
-   |Název IoT Hub  | MyASAIoTHub  |   Vyberte název IoT Hub.   |
+   |Skupina prostředků   |   asaquickstart-resourcegroup  |   Vyberte **Vytvořit nový** a zadejte název nové skupiny prostředků pro váš účet. |
+   |Region (Oblast)  |  \<Vyberte oblast nejbližší vašim uživatelům.\> | Vyberte zeměpisnou polohu, kde můžete IoT Hub hostovat. Použijte umístění, které je nejblíže vašim uživatelům. |
+   |Název služby IoT Hub  | MyASAIoTHub  |   Vyberte název IoT Hub.   |
 
    ![Vytvořit IoT Hub](./media/stream-analytics-quick-create-vs/create-iot-hub.png)
 
@@ -170,7 +169,7 @@ Všimněte si prvků obsažených v projektu Azure Stream Analytics.
 
 3. Klikněte na **Run** (Spustit). Výstup by měl ukazovat data a zprávy snímače, které se odesílají do vašeho IoT Hub.
 
-   ![Simulátor Azure IoT online pro maliny PI](./media/stream-analytics-quick-create-portal/ras-pi-connection-string.png)
+   ![Online simulátor Raspberry Pi Azure IoT](./media/stream-analytics-quick-create-portal/ras-pi-connection-string.png)
 
 ## <a name="start-the-stream-analytics-job-and-check-output"></a>Spuštění úlohy Stream Analytics a kontrola výstupu
 
@@ -205,4 +204,4 @@ V tomto rychlém startu jste pomocí sady Visual Studio nasadili jednoduchou úl
 Další informace o nástrojích Azure Stream Analytics Tools for Visual Studio najdete v následujícím článku:
 
 > [!div class="nextstepaction"]
-> [Použití sady Visual Studio k zobrazení Azure Stream Analyticsch úloh](stream-analytics-vs-tools.md)
+> [Chcete-li zobrazit úlohy Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-vs-tools.md)

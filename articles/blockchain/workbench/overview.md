@@ -4,12 +4,12 @@ description: Přehled služby Azure blockchain Workbench Preview a jejích možn
 ms.date: 09/05/2019
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: 9c40f95aa1490362b9232ec8d87a199d7a41c731
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 88c162539e5d0480d7f938c674b96c2f396774e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74324548"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75387067"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Co je Azure Blockchain Workbench?
 
@@ -44,6 +44,20 @@ U stávajících blockchainových protokolů jsou blockchainové identity vyjád
 ## <a name="synchronize-on-chain-data-with-off-chain-storage"></a>Synchronizace zřetězených dat s nezřetězeným úložištěm
 
 Azure Blockchain Workbench usnadňuje analýzu blockchainových událostí a dat tím, že automaticky synchronizuje blockchainová data s nezřetězeným úložištěm. Místo extrahování dat přímo z blockchainu můžete vytvářet dotazy do nezřetězených databázových systémů, jako je SQL Server. Pro koncové uživatele, kteří provádějí úlohy analýzy dat, se blockchain odbornosti nevyžaduje.
+
+## <a name="support-and-feedback"></a>Podpora a zpětná vazba
+
+Novinky ke službě Azure blockchain News najdete na [blogu Azure blockchain](https://azure.microsoft.com/blog/topics/blockchain/) , abyste měli přehled o nabídkách služeb blockchain a informacích od týmu Azure blockchain Engineering.
+
+Pokud chcete poskytnout zpětnou vazbu k produktu nebo požádat o nové funkce, Vyhlaste si hlasování na nápad prostřednictvím [fóra Azure Feedback pro blockchain](https://aka.ms/blockchainuservoice).
+
+### <a name="community-support"></a>Podpora komunity
+
+Spolupracujte s odborníky z Microsoftu a komunitou Azure blockchain.
+
+* [Fórum MSDN pro Azure blockchain](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
+* [Technická komunita Microsoftu](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 
 ## <a name="next-steps"></a>Další kroky
 

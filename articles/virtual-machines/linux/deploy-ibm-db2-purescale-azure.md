@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 8eb8075454dc3a49e9525d566c34c64bab8be5a0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe6e581963753cac33092285fee0c8d16959bde8
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083449"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530098"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Nasazení IBM DB2 pureScale v Azure
 
@@ -27,7 +27,7 @@ Tento článek popisuje, jak nasadit [ukázkovou architekturu](ibm-db2-purescale
 
 Pokud chcete postupovat podle kroků používaných pro migraci, přečtěte si instalační skripty v úložišti [DB2onAzure](https://aka.ms/db2onazure) na GitHubu. Tyto skripty jsou založené na architektuře pro typickou úlohu zpracování online zpracování transakcí (OLTP).
 
-## <a name="get-started"></a>Začínáme
+## <a name="get-started"></a>Začít
 
 Pokud chcete nasadit tuto architekturu, Stáhněte a spusťte skript deploy.sh, který najdete v úložišti [DB2onAzure](https://aka.ms/db2onazure) na GitHubu.
 
@@ -44,29 +44,31 @@ Skript deploy.sh vytvoří a nakonfiguruje prostředky Azure pro tuto architektu
 
 -   Nastaví skupiny zabezpečení sítě a SSH pro prostředí.
 
--   Nastaví síťové adaptéry na virtuálních počítačích GlusterFS i DB2 pureScale.
+-   Nastaví více síťových adaptérů na sdíleném i virtuálním počítači DB2 pureScale.
 
--   Vytvoří virtuální počítače úložiště GlusterFS.
+-   Vytvoří virtuální počítače se sdíleným úložištěm. Pokud používáte Prostory úložiště s přímým přístupem nebo jiné řešení úložiště, přečtěte si téma [přehled prostory úložiště s přímým přístupem](/windows-server/storage/storage-spaces/storage-spaces-direct-overview).
 
 -   Vytvoří virtuální počítač s JumpBox.
 
 -   Vytvoří virtuální počítače DB2 pureScale.
 
--   Vytvoří virtuální počítač s kopií clusteru, který pureScale příkazy testu dostupnosti DB2.
+-   Vytvoří virtuální počítač s kopií clusteru, který pureScale otestuje. Tuto část nasazení přeskočte, pokud vaše verze Db2 pureScale nevyžaduje určující disk.
 
 -   Vytvoří virtuální počítač s Windows, který se má použít pro testování, ale neinstaluje na něj cokoli.
 
-V dalším kroku se skripty nasazení nastavily jako virtuální síť SAN (síti vSAN) iSCSI pro sdílené úložiště v Azure. V tomto příkladu se iSCSI připojí k GlusterFS. Toto řešení také nabízí možnost nainstalovat cíle iSCSI jako jeden uzel systému Windows. iSCSI poskytuje rozhraní sdíleného blokového úložiště přes protokol TCP/IP, které umožňuje, aby instalační program DB2 pureScale k připojení ke sdílenému úložišti používal rozhraní zařízení. Základní informace o GlusterFS najdete v [tématu Architektura: Téma typy svazků](https://docs.gluster.org/en/latest/Quick-Start-Guide/Architecture/) v Gluster docs.
+V dalším kroku se skripty nasazení nastavily jako virtuální síť SAN (síti vSAN) iSCSI pro sdílené úložiště v Azure. V tomto příkladu se iSCSI připojí ke clusteru sdíleného úložiště. V původním zákaznickém řešení se použilo GlusterFS. Společnost IBM už ale tento přístup nepodporuje. Aby bylo možné zachovat podporu od společnosti IBM, je nutné použít podporovaný systém souborů kompatibilní s technologií iSCSI. Microsoft nabízí Prostory úložiště s přímým přístupem (S2D) jako možnost.
+
+Toto řešení také nabízí možnost nainstalovat cíle iSCSI jako jeden uzel systému Windows. iSCSI poskytuje rozhraní sdíleného blokového úložiště přes protokol TCP/IP, které umožňuje, aby instalační program DB2 pureScale k připojení ke sdílenému úložišti používal rozhraní zařízení.
 
 Skripty nasazení spouštějí tyto obecné kroky:
 
-1.  Pomocí GlusterFS nastavte cluster sdíleného úložiště v Azure. Tento krok zahrnuje aspoň dva uzly Linux. Podrobné informace o instalaci najdete v tématu [Nastavení úložiště Red Hat Gluster ve Microsoft Azure](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/deployment_guide_for_public_cloud/chap-documentation-deployment_guide_for_public_cloud-azure-setting_up_rhgs_azure) v dokumentaci k Red Hat Gluster.
+1.  Nastavte cluster sdíleného úložiště v Azure. Tento krok zahrnuje aspoň dva uzly Linux.
 
-2.  Nastavte rozhraní iSCSI Direct na cílových serverech Linux pro GlusterFS. Podrobné informace o instalaci najdete v tématu [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/) v příručce pro správu GlusterFS.
+2.  Nastavte rozhraní iSCSI Direct na cílových serverech Linux pro sdílený cluster úložiště.
 
-3.  Nastavte iniciátor iSCSI na virtuálních počítačích se systémem Linux. Iniciátor bude přistupovat ke clusteru GlusterFS pomocí cíle iSCSI. Podrobné informace o instalaci najdete v tématu [Postup konfigurace cíle iSCSI a iniciátoru v systému Linux](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/) v dokumentaci k RootUsers.
+3.  Nastavte iniciátor iSCSI na virtuálních počítačích se systémem Linux. Iniciátor bude přistupovat ke clusteru sdíleného úložiště pomocí cíle iSCSI. Podrobné informace o instalaci najdete v tématu [Postup konfigurace cíle iSCSI a iniciátoru v systému Linux](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/) v dokumentaci k RootUsers.
 
-4.  Nainstalujte GlusterFS jako vrstvu úložiště pro rozhraní iSCSI.
+4.  Nainstalujte sdílenou vrstvu úložiště pro rozhraní iSCSI.
 
 Až skripty vytvoří zařízení iSCSI, posledním krokem je instalace DB2 pureScale. V rámci nastavení DB2 pureScale se v clusteru GlusterFS zkompiluje a nainstaluje [IBM spektrum](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0057167.html) (dřív označované jako GPFS). Tento clusterový systém souborů umožňuje DB2 pureScale sdílet data mezi virtuálními počítači, na kterých běží modul pureScale DB2. Další informace najdete v dokumentaci k [IBM spektra](https://www.ibm.com/support/knowledgecenter/en/STXKQY_4.2.0/ibmspectrumscale42_welcome.html) na webu IBM.
 
@@ -77,17 +79,17 @@ Až skripty vytvoří zařízení iSCSI, posledním krokem je instalace DB2 pure
 > [!NOTE]
 > Do úložiště [DB2onAzure](https://aka.ms/db2onazure) na GitHubu je zahrnut ukázkový soubor odezvy DB2server. rsp. Pokud tento soubor použijete, musíte ho před tím, než bude fungovat ve vašem prostředí, upravit.
 
-| Název obrazovky               | Pole                                        | Value                                                                                                 |
+| Název obrazovky               | Pole                                        | Hodnota                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| Vítej                   |                                              | Nová instalace                                                                                           |
+| Vítáme vás                   |                                              | Nová instalace                                                                                           |
 | Zvolit produkt          |                                              | 11.1.3.3 verze DB2 Edice serveru s DB2 pureScale                                              |
-| Konfiguraci             | Adresář                                    | /data1/opt/ibm/db2/V11.1                                                                              |
+| Konfigurace             | Adresář                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | Vyberte typ instalace.                 | Typické                                                                                               |
-|                           | Souhlasím s podmínkami IBM                     | Zaškrtnuto                                                                                               |
+|                           | Souhlasím s podmínkami IBM                     | Zaškrtnuté                                                                                               |
 | Vlastník instance            | Stávající uživatel instance, uživatelské jméno        | DB2sdin1                                                                                              |
 | Uživatel s ochranou               | Existující uživatel, uživatelské jméno                     | DB2sdfe1                                                                                              |
 | Systém souborů clusteru       | Cesta k zařízení oddílu sdíleného disku            | /dev/dm-2                                                                                             |
-|                           | Bod připojení                                  | /DB2sd\_1804a                                                                                         |
+|                           | Přípojný bod                                  | /DB2sd\_1804a                                                                                         |
 |                           | Sdílený disk pro data                         | /dev/dm-1                                                                                             |
 |                           | Přípojný bod (data)                           | /DB2fs/datafs1                                                                                        |
 |                           | Sdílený disk pro protokol                          | /dev/dm-0                                                                                             |
@@ -117,7 +119,7 @@ Až skripty vytvoří zařízení iSCSI, posledním krokem je instalace DB2 pure
 
 - Skripty pro instalaci používají aliasy pro disky iSCSI, aby se mohly snadno najít skutečné názvy.
 
-- Pokud je instalační skript spuštěn v D0, hodnoty **/dev/DM-\***  se mohou lišit v sestavách D1, cf0 a CF1. Rozdíl v hodnotách nemá vliv na nastavení pureScale DB2.
+- Pokud je instalační skript spuštěný v D0, **/dev/DM-hodnoty\*** můžou být odlišné od D1, cf0 a CF1. Rozdíl v hodnotách nemá vliv na nastavení pureScale DB2.
 
 ## <a name="troubleshooting-and-known-issues"></a>Řešení potíží a známé problémy
 
@@ -139,9 +141,7 @@ Až skripty vytvoří zařízení iSCSI, posledním krokem je instalace DB2 pure
 
 Další informace o těchto a dalších známých problémech najdete v souboru kb.md v úložišti [DB2onAzure](https://aka.ms/DB2onAzure) .
 
-## <a name="next-steps"></a>Další postup
-
--   [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
+## <a name="next-steps"></a>Další kroky
 
 -   [Vytváření požadovaných uživatelů pro instalaci funkce DB2 pureScale](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
 
@@ -151,6 +151,6 @@ Další informace o těchto a dalších známých problémech najdete v souboru 
 
 -   [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 
--   [Moderní Alliance pro platformy: IBM DB2 v Azure](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
+-   [Moderning Alliance pro platformy: IBM DB2 v Azure](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
 
 -   [Průvodce zvednutím a posunutím virtuálního datového centra Azure](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)

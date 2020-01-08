@@ -3,26 +3,26 @@ title: Co je vědecké zpracování týmových dat?
 description: Poskytuje metodologie pro datové vědy dodávat prediktivní analytická řešení a inteligentní aplikace.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 1/04/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3b4e8c78d7402c254c91c3e100814e1f3eafc41b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 124fe4f69396286dbe383f8823a36b4ba52d346c
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61429377"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665072"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Co je vědecké zpracování týmových dat?
 
-Zpracování vědy dat (TDSP) týmu je metodologie pro efektivně dodávat prediktivní analytická řešení a inteligentní aplikace agile, iterativní datové vědy. Vědecké zpracování týmových dat pomáhá vylepšit spolupráci a učení v rámci týmů. Obsahuje výtah osvědčených postupů a struktur od Microsoftu a dalších společností v tomto oboru, které usnadňují úspěšnou implementaci iniciativ datových věd. Cílem je umožnit společnostem plně využít výhod jejich analytického programu.
+Zpracování vědy dat (TDSP) týmu je metodologie pro efektivně dodávat prediktivní analytická řešení a inteligentní aplikace agile, iterativní datové vědy. TDSP pomáhá zdokonalit týmovou spolupráci a učení tím, že navrhuje, jak budou role týmu fungovat nejlépe dohromady. TDSP zahrnuje osvědčené postupy a struktury od Microsoftu a jiných průmyslových vedoucích, které vám pomůžou s úspěšnou implementací iniciativ pro datové vědy. Cílem je umožnit společnostem plně využít výhod jejich analytického programu.
 
-Tento článek obsahuje přehled TDSP a jeho hlavní komponenty. Poskytujeme obecný popis procesu tady, který je možné implementovat pomocí různých nástrojů. Podrobnější popis projektu úlohy a role zapojené do životního cyklu procesu najdete v dalších odkazovaných tématech. K dispozici je také pokyny, jak implementovat TDSP pomocí konkrétní sadu nástrojů Microsoft a infrastrukturou, která můžeme použít k implementaci TDSP v našich týmů.
+Tento článek obsahuje přehled TDSP a jeho hlavní komponenty. Poskytujeme obecný popis tohoto procesu, který se dá implementovat s různými druhy nástrojů. Podrobnější popis projektu úlohy a role zapojené do životního cyklu procesu najdete v dalších odkazovaných tématech. K dispozici je také pokyny, jak implementovat TDSP pomocí konkrétní sadu nástrojů Microsoft a infrastrukturou, která můžeme použít k implementaci TDSP v našich týmů.
 
 ## <a name="key-components-of-the-tdsp"></a>Klíčové komponenty TDSP
 
@@ -63,13 +63,13 @@ Cíle, úkoly a artefakty dokumentaci pro každou fázi životního cyklu v TDSP
 
 Následující diagram představuje zobrazení mřížky úloh (modře) a artefakty (zeleně), které jsou spojené s každou fázi životního cyklu (na vodorovné ose) pro tyto role (na svislé ose). 
 
-[![TDSP-roles-and-tasks](./media/overview/tdsp-tasks-by-roles.png)](./media/overview/tdsp-tasks-by-roles.png#lightbox)
+[![TDSP – role a – úkoly](./media/overview/tdsp-tasks-by-roles.png)](./media/overview/tdsp-tasks-by-roles.png#lightbox)
 
 ## <a name="standardized-project-structure"></a>Struktura standardizované projektu
 
 Všechny projekty, sdílet adresářovou strukturu a používat šablony pro dokumenty projektu s usnadňuje členům týmu vyhledat informace o jejich projektech. Všechny kódu a dokumenty jsou uloženy v systému správy verzí (VC), jako je Git, TFS nebo Subversion, umožňuje spolupráci mezi týmy. Sledování úloh a funkcí v projektu aplikace agile sledování systému jako Jira technologie Rally a Azure DevOps umožňuje blíže sledování kódu pro jednotlivé funkce. Tyto sledování také umožňuje týmům získat lepší odhady nákladů. TDSP doporučuje vytvoření oddělené úložiště pro každý projekt na virtuální Clustery pro správu verzí, zabezpečení informací a spolupráci. Standardizované strukturu pro všechny projekty pomáhá institucionální znalosti budovat celé organizace.
 
-Poskytujeme šablony pro strukturu složek a požadované dokumenty ve standardním umístění. Tuto strukturu složek uspořádá soubory, které obsahují kód pro zkoumání dat a extrakci funkce a, který si poznamenejte modelu iterací. Tyto šablony usnadňují členové týmu pochopit práci ostatních nebo přidání nových členů do teams. Je snadné k zobrazování a aktualizace šablony dokumentů ve formátu markdown. Pomocí šablon můžete poskytnout klíčových otázek pro každý projekt – pomáhat zajistit, že problém je dobře definovaný a, že výsledky splňují kvality očekává kontrolní seznamy. Příklady obsahují:
+Poskytujeme šablony pro strukturu složek a požadované dokumenty ve standardním umístění. Tuto strukturu složek uspořádá soubory, které obsahují kód pro zkoumání dat a extrakci funkce a, který si poznamenejte modelu iterací. Tyto šablony usnadňují členové týmu pochopit práci ostatních nebo přidání nových členů do teams. Je snadné k zobrazování a aktualizace šablony dokumentů ve formátu markdown. Pomocí šablon můžete poskytnout klíčových otázek pro každý projekt – pomáhat zajistit, že problém je dobře definovaný a, že výsledky splňují kvality očekává kontrolní seznamy. Patří mezi ně například:
 
 - Projekt gossmanem dokumentovat obchodního problému a rozsah projektu
 - sestavy dat dokumentu strukturu a statistiky nezpracovaných dat
@@ -77,16 +77,16 @@ Poskytujeme šablony pro strukturu složek a požadované dokumenty ve standardn
 - metriky výkonu modelu, jako je například křivky roc s více TŘÍDAMI nebo MSE
 
 
-[![Adresáře TDSP](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
+[![TDSP – adresáře](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
 
-Struktura adresářů můžete naklonovat z [Githubu](https://github.com/Azure/Azure-TDSP-ProjectTemplate).
+Adresářová struktura může být klonována z [GitHubu](https://github.com/Azure/Azure-TDSP-ProjectTemplate).
 
 ## <a name="infrastructure-and-resources-for-data-science-projects"></a>Infrastrukturu a prostředky pro projekty datových věd  
 
 TDSP poskytuje doporučení pro správu sdílené analýzy a infrastruktury úložiště, jako například:
 
 - systémy souborů cloudu pro ukládání datových sad 
-- databáze
+- databases
 - clustery velkých objemů dat (Hadoop nebo Spark) 
 - Služba Machine learning 
 
@@ -94,14 +94,14 @@ Analýzy a úložné infrastruktuře může být v cloudu nebo místně. To je, 
 
 Tady je příklad sdílení různých komponent infrastruktury cloudové analýzy a práce v několika projektech týmu.
 
-[![TDSP-infrastructure](./media/overview/tdsp-analytics-infra.png)](./media/overview/tdsp-analytics-infra.png#lightbox) 
+[![TDSP – infrastruktura](./media/overview/tdsp-analytics-infra.png)](./media/overview/tdsp-analytics-infra.png#lightbox) 
 
 
 ## <a name="tools-and-utilities-for-project-execution"></a>Nástroje pro spuštění projektu
 
-Úvod do procesů ve většině organizací je náročná. Nástroje poskytované implementace nápovědy data science procesu a životního cyklu nižší překážky a zvýšit konzistence jejich přijetí. TDSP obsahuje počáteční sadu nástrojů a skriptů k nastartování přijetí TDSP v rámci týmu. Pomáhá také automatizovat některé běžné úlohy v životního cyklu datové vědy například pro zkoumání a modelování směrného plánu. Není k dispozici pro jednotlivce přispívat sdílené nástroje a pomůcky do úložiště svého týmu sdíleným kódem dobře nastavené struktury. Tyto prostředky mohou pak využívat jiné projekty v rámci týmu nebo organizace. TDSP také v plánu povolit příspěvky nástroje celé komunitě. Nástroje TDSP můžete naklonovat z [Githubu](https://github.com/Azure/Azure-TDSP-Utilities).
+Úvod do procesů ve většině organizací je náročná. Nástroje poskytované implementace nápovědy data science procesu a životního cyklu nižší překážky a zvýšit konzistence jejich přijetí. TDSP obsahuje počáteční sadu nástrojů a skriptů k nastartování přijetí TDSP v rámci týmu. Pomáhá také automatizovat některé běžné úlohy v životního cyklu datové vědy například pro zkoumání a modelování směrného plánu. Není k dispozici pro jednotlivce přispívat sdílené nástroje a pomůcky do úložiště svého týmu sdíleným kódem dobře nastavené struktury. Tyto prostředky mohou pak využívat jiné projekty v rámci týmu nebo organizace. TDSP také v plánu povolit příspěvky nástroje celé komunitě. Nástroje TDSP se dají klonovat z [GitHubu](https://github.com/Azure/Azure-TDSP-Utilities).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Vědecké zpracování týmových dat: Role a úlohy](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) Toto téma popisuje role klíče pracovníky a jejich přidružených úloh pro datové vědy tým, který standardizuje o tomto procesu. 
+[Vědeckého zpracování týmových dat: Role a úlohy](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) Toto téma popisuje role klíče pracovníky a jejich přidružených úloh pro datové vědy tým, který standardizuje o tomto procesu. 

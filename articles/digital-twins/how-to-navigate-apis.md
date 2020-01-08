@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/27/2019
-ms.openlocfilehash: 135c760919f094f7b2d242ad37cc1cadb614e36e
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 12/27/2019
+ms.openlocfilehash: 86ade45cd00e82e8787a117c23003d2a74750cf0
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010003"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552164"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Jak používat rozhraní API pro správu digitálních vláken Azure
 
@@ -37,7 +37,7 @@ Následující seznam obsahuje komponenty rozhraní API digitálních vláken.
 
 * [/propertyKeys](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/PropertyKeys): pomocí těchto rozhraní API můžete vytvářet vlastní vlastnosti pro *prostory*, *zařízení*, *uživatele*a *senzory*. Tyto vlastnosti jsou vytvořeny jako páry klíč/hodnota. Můžete definovat datový typ pro tyto vlastnosti nastavením jejich *PrimitiveDataType*. Můžete například definovat vlastnost s názvem *BasicTemperatureDeltaProcessingRefreshTime* typu *uint* pro vaše senzory a potom přiřadit hodnotu pro tuto vlastnost pro každé ze senzorů. Můžete také přidat omezení pro tyto hodnoty při vytváření vlastnosti, jako jsou *minimální* a *maximální* rozsahy, a také povolené hodnoty jako *ValidationData*.
 
-* [/Matchers](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Matchers): Tato rozhraní API umožňují zadat podmínky, které chcete vyhodnotit ze svých příchozích dat zařízení. Další informace najdete v [tomto článku](concepts-user-defined-functions.md#matchers) . 
+* [/Matchers](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Matchers): Tato rozhraní API umožňují zadat podmínky, které chcete vyhodnotit ze svých příchozích dat zařízení. Další informace najdete v [tomto článku](concepts-user-defined-functions.md#matchers). 
 
 * [/userDefinedFunctions](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/UserDefinedFunctions): Tato rozhraní API umožňují vytvořit, odstranit nebo aktualizovat vlastní funkci, která se spustí, když dojde k podmínkám definovaným *odpovídajícími* , ke zpracování dat přicházejících z nastavení. Další informace o těchto vlastních funkcích, označovaných také jako *uživatelsky definované funkce*, najdete v [tomto článku](concepts-user-defined-functions.md#user-defined-functions) . 
 

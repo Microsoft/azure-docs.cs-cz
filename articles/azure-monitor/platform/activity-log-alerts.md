@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/17/2018
-ms.openlocfilehash: d3cb075d5ec0607453ca21f2574df7def02a4453
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 42a8b53f8d1fee2d657ccaa2d57e72b3edfdd4f3
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553719"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531050"
 ---
 # <a name="alerts-on-activity-log"></a>Výstrahy na protokol aktivit 
 
@@ -31,7 +31,7 @@ Jednoduchá analogie pro porozumění podmínkám, na kterých je možné vytvo�
 
 V obou případech se výstraha protokolu aktivit monitoruje jenom pro události v předplatném, ve kterém je tato výstraha vytvořená.
 
-Výstrahu protokolu aktivit můžete nakonfigurovat na základě libovolné vlastnosti nejvyšší úrovně v objektu JSON pro událost protokolu aktivit. Další informace najdete v tématu [Přehled protokolu aktivit Azure](./activity-logs-overview.md#categories-in-the-activity-log). Další informace o událostech stavu služby najdete v tématu [příjem výstrah protokolu aktivit v oznámeních o službě](./alerts-activity-log-service-notifications.md). 
+Výstrahu protokolu aktivit můžete nakonfigurovat na základě libovolné vlastnosti nejvyšší úrovně v objektu JSON pro událost protokolu aktivit. Další informace najdete v tématu [kategorie v protokolu aktivit](activity-log-view.md#categories-in-the-activity-log). Další informace o událostech stavu služby najdete v tématu [příjem výstrah protokolu aktivit v oznámeních o službě](alerts-activity-log-service-notifications.md). 
 
 Výstrahy protokolu aktivit mají několik běžných možností:
 

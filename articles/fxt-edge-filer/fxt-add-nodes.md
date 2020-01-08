@@ -1,19 +1,19 @@
 ---
-title: Konfigurace clusteru Microsoft Azure FXT Edge souborového – přidání uzlů
+title: 'Kurz: Přidání uzlů do clusteru Azure FXT Edge souborového'
 description: Postup přidání uzlů do mezipaměti úložiště Azure FXT Edge souborového
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: 85ab9aaa3e184af7aa71a31eb3d8de1a20639c2a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 6251fe8f88b7db25e3c09898540e07754d72fb0d
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254923"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551943"
 ---
-# <a name="tutorial-add-cluster-nodes"></a>Kurz: Přidání uzlů clusteru 
+# <a name="tutorial-add-cluster-nodes-to-an-azure-fxt-edge-filer-cluster"></a>Kurz: Přidání uzlů clusteru do clusteru Azure FXT Edge souborového
 
 Vytvoří se nový cluster Azure FXT Edge souborového jenom s jedním uzlem. Před provedením další konfigurace byste měli přidat aspoň dva další uzly a povolit vysokou dostupnost. 
 
@@ -68,7 +68,7 @@ Sloupec **Actions** obsahuje tlačítka, která umožňují přidat uzel do clus
 
 Všechny uzly v clusteru musí používat stejnou verzi operačního systému, ale před přidáním uzlu nemusíte tento software aktualizovat. Po kliknutí na tlačítko **pro připojení** se proces připojení clusteru automaticky zkontroluje a nainstaluje software operačního systému, který odpovídá verzi v clusteru.
 
-Další informace o možnostech na této stránce najdete v části [ **cluster** > **uzly FXT** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html) v Průvodci konfigurací clusteru.
+Další informace o možnostech na této stránce najdete v části [ **cluster** > **FXT Nodes** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html) v Průvodci konfigurací clusteru.
 
 ## <a name="3-click-the-allow-to-join-button"></a>3. klikněte na tlačítko "udělit připojení". 
 

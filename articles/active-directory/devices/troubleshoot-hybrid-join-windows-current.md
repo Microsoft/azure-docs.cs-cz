@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 932540c830940ec18c439352d54f671db7387b94
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7e0339f5118d4745b6abe0268f021f8284a5f11f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379160"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689123"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Řešení potíží s hybridními Azure Active Directory připojenými zařízeními 
 
@@ -102,7 +102,8 @@ Toto pole indikuje, jestli je zařízení zaregistrované ve službě Azure AD j
 
 #### <a name="azureadjoined--yes"></a>AzureAdJoined: Ano  
 
-Toto pole indikuje, jestli je zařízení připojené ke službě Azure AD. Pokud je hodnota **ne**, připojení ke službě Azure AD ještě není dokončené. 
+Toto pole indikuje, jestli je zařízení připojené. Pokud se jedná o zařízení připojené k Azure AD nebo k hybridnímu zařízení připojenému k Azure AD, bude tato hodnota **Ano** .
+Pokud je hodnota **ne**, připojení ke službě Azure AD ještě není dokončené. 
 
 Další kroky k odstraňování potíží můžete pokračovat v dalších krocích.
 
@@ -371,13 +372,13 @@ Pomocí protokolů Prohlížeč událostí vyhledejte fázi a kód chyby připoj
 
 ##### <a name="federated-join-server-errors"></a>Chyby serveru federovaného připojení
 
-| Kód chyby serveru | Chybová zpráva serveru | Možné důvody | Řešení |
+| Kód chyby serveru | Chybová zpráva serveru | Možné důvody | Rozlišení |
 | --- | --- | --- | --- |
 | DirectoryError | Vaše žádost se dočasně omezuje. Zkuste to prosím po 300 sekundách. | Očekávaná chyba. Je možné, že v důsledku rychlé úspěšnosti je potřeba provést několik žádostí o registraci. | Opakovaný pokus o připojení po cooldown období |
 
 ##### <a name="sync-join-server-errors"></a>Chyby serveru připojit se k synchronizaci
 
-| Kód chyby serveru | Chybová zpráva serveru | Možné důvody | Řešení |
+| Kód chyby serveru | Chybová zpráva serveru | Možné důvody | Rozlišení |
 | --- | --- | --- | --- |
 | DirectoryError | AADSTS90002: <UUID> tenanta se nenašel. K této chybě může dojít, pokud pro tenanta nejsou k dispozici žádná aktivní předplatná. Obraťte se na správce předplatného. | ID tenanta v objektu SCP je nesprávné. | Ujistěte se, že je objekt SCP nakonfigurovaný se správným ID tenanta Azure AD a s aktivním předplatným a že je přítomen v tenantovi. |
 | DirectoryError | Objekt zařízení se zadaným ID nebyl nalezen. | Očekávaná chyba připojení synchronizace. Objekt zařízení se nesynchronizoval ze služby AD do Azure AD. | Počkejte, než se Azure AD Connect synchronizace dokončí, a při dalším pokusu o připojení se problém vyřeší. |

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
 ms.reviewer: bensack
-ms.openlocfilehash: d76ea317271ae0e8eb0d54fcfee5dc005d836fc1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 156999c6b6d8451516ac1c0f095e1a864420d0b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984957"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354816"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen2-by-using-power-bi"></a>Analýza dat v Azure Data Lake Storage Gen2 pomocí Power BI
 
@@ -26,8 +26,9 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 > [!div class="checklist"]
 > * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 > * Účet úložiště, který má hierarchický obor názvů. Pokud ho chcete vytvořit, postupujte podle [těchto](data-lake-storage-quickstart-create-account.md) pokynů.
-> V tomto článku se předpokládá, že jste vytvořili účet `myadlsg2`s názvem.
-> * Ukázkový datový soubor s názvem `Drivers.txt` umístěný ve vašem účtu úložiště.
+> V tomto článku se předpokládá, že jste vytvořili účet s názvem `myadlsg2`.
+> * Pro účet úložiště se vám přidělila jedna z následujících rolí: **čtečka dat objektů**blob, **Přispěvatel dat objektu BLOB**nebo **vlastník dat objektu BLOB**.
+> * Ukázkový datový soubor s názvem `Drivers.txt` umístěný v účtu úložiště.
 > Tuto ukázku si můžete stáhnout z [Azure Data Lake úložiště Git](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)a pak tento soubor nahrát do svého účtu úložiště.
 > * **Power BI Desktop**. Můžete si ho stáhnout z [webu Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45331). 
 
@@ -39,9 +40,9 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 
     ![Stránka získat data](media/data-lake-storage-use-power-bi/get-data-page.png)
 
-4. V dialogovém okně **Azure Data Lake Storage Gen2** můžete zadat adresu URL účtu Azure Data Lake Storage Gen2, systému souborů nebo podsložky pomocí formátu koncového bodu kontejneru. Adresy URL pro data Lake Storage Gen2 mají následující vzor `https://<accountname>.dfs.core.windows.net/<filesystemname>/<subfolder>` a pak klikněte na tlačítko **OK**.
+4. V dialogovém okně **Azure Data Lake Storage Gen2** můžete zadat adresu URL účtu Azure Data Lake Storage Gen2, systému souborů nebo podsložky pomocí formátu koncového bodu kontejneru. Adresy URL pro Data Lake Storage Gen2 mají následující vzor `https://<accountname>.dfs.core.windows.net/<filesystemname>/<subfolder>` a pak klikněte na **OK**.
 
-    ![URL](media/data-lake-storage-use-power-bi/adls-url.png)
+    ![Adresa URL](media/data-lake-storage-use-power-bi/adls-url.png)
 
 5. V dalším dialogovém okně klikněte na **Přihlásit** se a přihlaste se k účtu úložiště. Budete přesměrováni na přihlašovací stránku vaší organizace. Podle pokynů se přihlaste k účtu.
 
@@ -95,7 +96,7 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 
     ![Výsečový graf](media/data-lake-storage-use-power-bi/pie-chart.png)
 
-14. Výběrem konkrétní země z filtrů na úrovni stránek teď můžete zobrazit počet ovladačů v každém městě vybrané země. Například na kartě vizualizace v části **filtry na úrovni stránky**vyberte **Brazílie**.
+14. Výběrem konkrétní země z filtrů na úrovni stránek teď můžete zobrazit počet ovladačů v každém městě vybrané země. Například na kartě **vizualizace** v části **filtry na úrovni stránky**vyberte **Brazílie**.
 
     ![Filtry stránky](media/data-lake-storage-use-power-bi/page-filters.png)
 

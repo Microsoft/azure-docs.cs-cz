@@ -1,28 +1,19 @@
 ---
-title: 'Správce prostředků Service Fabric clusteru: náklady na přesun | Microsoft Docs'
-description: Přehled nákladů na přesun pro služby Service Fabric Services
-services: service-fabric
-documentationcenter: .net
+title: 'Správce prostředků Service Fabric clusteru: náklady na přesun'
+description: Přečtěte si informace o nákladech na přesun pro Service Fabric Services a o tom, jak je můžete zadat, aby vyhovovaly libovolné potřebě architektury, včetně dynamické konfigurace.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: f022f258-7bc0-4db4-aa85-8c6c8344da32
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 80845fca8d163a4ebe9257f19825624acef3a815
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: af3e01d0d5a605c052be24eed8e14ee3449e2c79
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73243008"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563339"
 ---
 # <a name="service-movement-cost"></a>Náklady na přesun služeb
-Faktor, který Správce prostředků Cluster Service Fabric zvažuje při pokusu o určení toho, jaké změny provedete v clusteru, jsou náklady na tyto změny. Pojem "náklady" se nepodílí na tom, kolik clusteru je možné zlepšit. Náklady se připravují při přesunu služeb pro vyrovnávání, defragmentaci a další požadavky. Cílem je splnit požadavky alespoň na rušivý nebo nákladný způsob. 
+Faktor, který Správce prostředků Cluster Service Fabric zvažuje při pokusu o určení toho, jaké změny provedete v clusteru, jsou náklady na tyto změny. Pojem "náklady" se nepodílí na tom, kolik clusteru je možné zlepšit. Náklady se připravují při přesunu služeb pro vyrovnávání, defragmentaci a další požadavky. Cílem je splnit požadavky alespoň na rušivý nebo nákladný způsob.
 
 Přesun služeb má za nejnižší náklady na čas procesoru a šířku pásma sítě. Pro stavové služby je nutné zkopírovat stav těchto služeb a spotřebovat další paměť a disk. Minimalizace nákladů na řešení, která Správce prostředků cluster Azure Service Fabric, vám pomůže zajistit, že prostředky clusteru nestráví zbytečně. Nechcete ale také ignorovat řešení, která by významně vylepšila přidělení prostředků v clusteru.
 

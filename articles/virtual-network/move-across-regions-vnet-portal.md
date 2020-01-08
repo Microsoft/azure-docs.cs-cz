@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: d6f417e53e7d7a1a242a0c0dc56c2356f78f5344
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: c54725d9a947b0c912a822686d7b2cffe1a7b5c9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828952"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640784"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>Přesuňte virtuální síť Azure do jiné oblasti pomocí Azure Portal
 
@@ -32,7 +32,7 @@ K dokončení přesunu virtuální sítě do jiné oblasti můžete použít ša
 
 - Ověřte, že vaše předplatné Azure umožňuje vytvářet virtuální sítě v cílové oblasti. Pokud chcete povolit požadovanou kvótu, obraťte se na podporu.
 
-- Ujistěte se, že vaše předplatné má dostatek prostředků na podporu přidání virtuálních sítí pro tento proces. Další informace najdete v tématu [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Ujistěte se, že vaše předplatné má dostatek prostředků na podporu přidání virtuálních sítí pro tento proces. Další informace najdete v tématu [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
 ## <a name="prepare-for-the-move"></a>Příprava na přesun
@@ -194,13 +194,13 @@ Pokud chcete exportovat virtuální síť a nasadit cílovou virtuální síť p
 
 ## <a name="delete-the-target-virtual-network"></a>Odstranit cílovou virtuální síť
 
-Pokud chcete zrušit cílovou virtuální síť, odstraňte skupinu prostředků, která obsahuje cílovou virtuální síť. Postup:
+Pokud chcete zrušit cílovou virtuální síť, odstraňte skupinu prostředků, která obsahuje cílovou virtuální síť. Postupujte následovně:
 1. Na řídicím panelu Azure Portal vyberte skupinu prostředků.
 1. V horní části podokna **přehledu** vyberte **Odstranit**.
 
 ## <a name="clean-up"></a>Vyčištění
 
-Pokud chcete potvrdit změny a dokončit přesun virtuální sítě, odstraňte zdrojovou virtuální síť nebo skupinu prostředků. Postup:
+Pokud chcete potvrdit změny a dokončit přesun virtuální sítě, odstraňte zdrojovou virtuální síť nebo skupinu prostředků. Postupujte následovně:
 1. Na řídicím panelu Azure Portal vyberte virtuální síť nebo skupinu prostředků.
 1. V horní části každého podokna vyberte **Odstranit**.
 

@@ -1,18 +1,14 @@
 ---
-title: Azure Service Fabric – nasazení aplikace pomocí spravované identity přiřazené uživatelem | Microsoft Docs
+title: Nasazení aplikace pomocí spravované identity přiřazené uživatelem
 description: V tomto článku se dozvíte, jak nasadit aplikaci Service Fabric s uživatelem přiřazenou spravovanou identitou.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: article
-ms.date: 08/09/2019
-ms.author: atsenthi
-ms.openlocfilehash: 0cc1e51a4d5f9ad54866066a4247e1588da381a6
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 12/09/2019
+ms.openlocfilehash: a5eeaf0d6420fa36c0a78f7553ddfd82197d8ec4
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037489"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610331"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Nasazení aplikace Service Fabric s uživatelem přiřazenou spravovanou identitou (Preview)
 
@@ -22,7 +18,7 @@ Chcete-li nasadit aplikaci Service Fabric se spravovanou identitou, musí být a
 > 
 > Aplikace, které nejsou nasazené jako prostředek Azure, **nemůžou** mít spravované identity. 
 >
-> Nasazení aplikace Service Fabric se spravovanou identitou podporuje verze `"2019-06-01-preview"`rozhraní API. Můžete použít také stejnou verzi rozhraní API pro typ aplikace, verzi typu aplikace a prostředky služby.
+> Nasazení aplikace Service Fabric se spravovanou identitou podporuje rozhraní API verze `"2019-06-01-preview"`. Můžete použít také stejnou verzi rozhraní API pro typ aplikace, verzi typu aplikace a prostředky služby.
 >
 
 ## <a name="user-assigned-identity"></a>Identita přiřazená uživatelem
@@ -31,7 +27,7 @@ Chcete-li povolit aplikaci s uživatelem přiřazenou identitou, přidejte do pr
 
 ### <a name="application-template"></a>Šablona aplikace
 
-Chcete-li povolit aplikaci s identitou přiřazenou uživateli, přidejte do prostředku aplikace vlastnost **identity** s typem **userAssigned** a odkazovanými identitami přiřazenými uživatelem a přidejte objekt **managedIdentities** dovnitř  **oddíl vlastností** , který obsahuje seznam popisného názvu pro principalId mapování pro každou identitu přiřazenou uživatelem.
+Pokud chcete povolit aplikaci s identitou přiřazenou uživateli, nejdřív přidejte do prostředku aplikace vlastnost **identity** s typem **userAssigned** a odkazovanými identitami přiřazenými uživatelem a pak přidejte objekt **managedIdentities** do oddílu **Properties (vlastnosti** ), který obsahuje seznam popisného názvu pro principalId mapování pro každou identitu přiřazenou uživatelem.
 
     {
       "apiVersion": "2019-06-01-preview",
@@ -66,7 +62,7 @@ V předchozím příkladu se jako popisný název spravované identity aplikace 
 
 ### <a name="application-package"></a>Balíček aplikace
 
-1. Pro každou identitu definovanou v `managedIdentities` části šablony Azure Resource Manager `<ManagedIdentity>` přidejte značku v manifestu aplikace v části **objekty zabezpečení** . Atribut musí odpovídat vlastnosti definované v `managedIdentities`oddílu. `name` `Name`
+1. Pro každou identitu definovanou v části `managedIdentities` v šabloně Azure Resource Manager přidejte značku `<ManagedIdentity>` v manifestu aplikace v části **objekty zabezpečení** . Atribut `Name` musí odpovídat vlastnosti `name` definované v oddílu `managedIdentities`.
 
     **Souboru ApplicationManifest. XML**
 
@@ -90,7 +86,7 @@ V předchozím příkladu se jako popisný název spravované identity aplikace 
       </ServiceManifestImport>
     ```
 
-3. Aktualizujte manifest služby, aby přidal **ManagedIdentity** do části **Resources (prostředky** ) s `ServiceIdentityRef` názvem, `IdentityBindingPolicy` který odpovídá názvu v manifestu aplikace:
+3. Aktualizujte manifest služby, aby přidal **ManagedIdentity** do části **Resources (prostředky** ) s názvem, který odpovídá `ServiceIdentityRef` v `IdentityBindingPolicy` manifestu aplikace:
 
     **ServiceManifest. XML**
 
@@ -103,7 +99,7 @@ V předchozím příkladu se jako popisný název spravované identity aplikace 
       </Resources>
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Použití spravované identity v Service Fabric kódu aplikace](how-to-managed-identity-service-fabric-app-code.md)
 * [Postup udělení přístupu aplikace Service Fabric k jiným prostředkům Azure](how-to-grant-access-other-resources.md)

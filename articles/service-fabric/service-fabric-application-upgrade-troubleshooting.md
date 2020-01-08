@@ -1,25 +1,14 @@
 ---
-title: Řešení potíží s upgrady aplikací | Microsoft Docs
+title: Řešení potíží s upgrady aplikací
 description: Tento článek se zabývá některými běžnými problémy při upgradu aplikace Service Fabric a jejich řešení.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 19ad152e-ec50-4327-9f19-065c875c003c
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: f5df528c7e46a5cb2a5df98f0088a451eb08cd6a
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d462f2c2482e0fbb4d252967754a9675ed362674
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167536"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75377918"
 ---
 # <a name="troubleshoot-application-upgrades"></a>Řešení potíží s upgrady aplikací
 
@@ -201,7 +190,7 @@ Upgrade bude pokračovat z upgradovací domény, ve které byl naposledy pozasta
 
 Možná příčina 1:
 
-Service Fabric překládá všechny procentní podíly na skutečný počet entit (například repliky, oddíly a služby) pro hodnocení stavu a vždy zaokrouhluje na celé entity. Pokud je například maximální *MaxPercentUnhealthyReplicasPerPartition* 21% a existuje pět replik, pak Service Fabric umožňuje až dvě repliky, které nejsou v pořádku (tj. `Math.Ceiling (5*0.21)`). Proto by se měly zásady stavu nastavit odpovídajícím způsobem.
+Service Fabric překládá všechny procentní podíly na skutečný počet entit (například repliky, oddíly a služby) pro hodnocení stavu a vždy zaokrouhluje na celé entity. Pokud je například maximální *MaxPercentUnhealthyReplicasPerPartition* 21% a existuje pět replik, pak Service Fabric umožňuje až dvě repliky, které nejsou v pořádku (tj.`Math.Ceiling (5*0.21)`). Proto by se měly zásady stavu nastavit odpovídajícím způsobem.
 
 Možná příčina 2:
 
@@ -215,7 +204,7 @@ Pokud nejsou požadavky na upgrade poskytovány zásady stavu, jsou pořízeny z
 
 ### <a name="incorrect-time-outs-are-specified"></a>Jsou zadané nesprávné časové limity.
 
-Možná jste se přemýšlelii, co se stane, když časové limity nastavíte nekonzistentně. Například můžete mít *UpgradeTimeout* , který je menší než *UpgradeDomainTimeout*. Odpověď je vrácena chyba. Chyby jsou vraceny, pokud je *UpgradeDomainTimeout* menší než součet *HealthCheckWaitDuration* a *HealthCheckRetryTimeout*, nebo pokud *UpgradeDomainTimeout* je menší než součet *HealthCheckWaitDuration* a *HealthCheckStableDuration*.
+Možná jste se přemýšlelii, co se stane, když časové limity nastavíte nekonzistentně. Například můžete mít *UpgradeTimeout* , který je menší než *UpgradeDomainTimeout*. Odpověď je vrácena chyba. Pokud je *UpgradeDomainTimeout* menší než součet *HealthCheckWaitDuration* a *HealthCheckRetryTimeout*, nebo pokud *UpgradeDomainTimeout* je menší než součet *HealthCheckWaitDuration* a *HealthCheckStableDuration*, vrátí se chyby.
 
 ### <a name="my-upgrades-are-taking-too-long"></a>Mé upgrady trvají moc dlouho
 

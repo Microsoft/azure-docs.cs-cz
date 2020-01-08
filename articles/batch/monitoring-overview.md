@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: lahugh
-ms.openlocfilehash: 3ac852b1d69c0e9fa224b449d6261eba6abaff32
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: ef57e0f63f8cfad5bc5fa5710661657176171194
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260956"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530795"
 ---
 # <a name="monitor-batch-solutions"></a>Monitorování řešení Batch
 
@@ -25,11 +25,11 @@ Přehled komponent a služeb Azure, které jsou k dispozici pro monitorování p
 
 ## <a name="subscription-level-monitoring"></a>Monitorování na úrovni předplatného
 
-Na úrovni předplatného, která zahrnuje účty Batch, shromažďuje [Protokol aktivit Azure](../azure-monitor/platform/activity-logs-overview.md) data provozní události v [několika kategoriích](../azure-monitor/platform/activity-logs-overview.md#categories-in-the-activity-log).
+Na úrovni předplatného, která zahrnuje účty Batch, shromažďuje [Protokol aktivit Azure](../azure-monitor/platform/platform-logs-overview.md) data provozní události v [několika kategoriích](../azure-monitor/platform/activity-log-view.md#categories-in-the-activity-log).
 
 Pro účty Batch konkrétně protokol aktivit shromažďuje události související se vytvářením a odstraňováním účtů a správou klíčů.
 
-Jedním ze způsobů, jak načíst události z protokolu aktivit, je použít Azure Portal. Klikněte na **všechny služby** > **Protokol aktivit**. Nebo se můžete dotazovat na události pomocí rozhraní příkazového řádku Azure CLI, rutin PowerShellu nebo Azure Monitor REST API. Můžete také exportovat protokol aktivit nebo nakonfigurovat [výstrahy protokolu aktivit](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md).
+Jedním ze způsobů, jak načíst události z protokolu aktivit, je použít Azure Portal. Klikněte na **všechny služby** > **protokolu aktivit**. Nebo se můžete dotazovat na události pomocí rozhraní příkazového řádku Azure CLI, rutin PowerShellu nebo Azure Monitor REST API. Můžete také exportovat protokol aktivit nebo nakonfigurovat [výstrahy protokolu aktivit](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md).
 
 ## <a name="batch-account-level-monitoring"></a>Monitorování na úrovni účtu Batch
 

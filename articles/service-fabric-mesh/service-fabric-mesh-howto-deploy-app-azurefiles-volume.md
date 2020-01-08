@@ -1,25 +1,17 @@
 ---
-title: Použití svazku založeného na souborech Azure v aplikaci Service Fabric sítě | Microsoft Docs
+title: Použití svazku založeného na souborech Azure v aplikaci Service Fabricové sítě
 description: Naučte se ukládat stav do aplikace sítě Azure Service Fabric pomocí rozhraní příkazového řádku Azure CLI připojením svazku založeného na službě Azure Files v rámci služby.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e02afde27335e9a512d1e297880993b19fa4304e
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e2172c1808ddf72c09bc08efe680ed497f960b75
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034722"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497998"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Připojení svazku založeného na souborech Azure v aplikaci Service Fabric sítě 
 
@@ -42,7 +34,7 @@ PS C:\WINDOWS\system32> Mofcomp c:\windows\system32\wbem\smbwmiv2.mof
 
 K dokončení tohoto článku můžete použít Azure Cloud Shell nebo místní instalaci rozhraní příkazového řádku Azure. 
 
-Pokud chcete používat rozhraní příkazového řádku Azure v místním prostředí s `az --version` tímto článkem, `azure-cli (2.0.43)`Ujistěte se, že se vrátí aspoň.  Pomocí těchto [pokynů](service-fabric-mesh-howto-setup-cli.md)nainstalujte (nebo aktualizujte) modul rozšíření CLI pro Azure Service Fabric.
+Pokud chcete používat rozhraní příkazového řádku Azure v místním prostředí s tímto článkem, ujistěte se, že `az --version` vrátí aspoň `azure-cli (2.0.43)`.  Pomocí těchto [pokynů](service-fabric-mesh-howto-setup-cli.md)nainstalujte (nebo aktualizujte) modul rozšíření CLI pro Azure Service Fabric.
 
 Přihlaste se k Azure a nastavte své předplatné:
 
@@ -65,7 +57,7 @@ az storage share create --name myshare --quota 2048 --connection-string $current
 ```
 
 ## <a name="get-the-storage-account-name-and-key-and-the-file-share-name"></a>Získání názvu a klíče účtu úložiště a názvu sdílené složky
-Název účtu úložiště, klíč účtu úložiště a název sdílené složky jsou odkazovány jako `<storageAccountName>`, `<storageAccountKey>`a `<fileShareName>` v následujících oddílech. 
+Název účtu úložiště, klíč účtu úložiště a název sdílené složky se v následujících částech odkazují jako `<storageAccountName>`, `<storageAccountKey>`a `<fileShareName>`. 
 
 Zobrazte seznam účtů úložiště a získejte název účtu úložiště se sdílenou složkou, kterou chcete použít:
 ```azurecli-interactive
@@ -83,17 +75,17 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 ```
 
 Tyto hodnoty můžete najít také v [Azure Portal](https://portal.azure.com):
-* `<storageAccountName>`– V části **účty úložiště**se jedná o název účtu úložiště použitého k vytvoření sdílené složky.
-* `<storageAccountKey>`– Vyberte svůj účet úložiště v části **účty úložiště** a pak vyberte **přístupové klíče** a použijte hodnotu pod **klíč1**.
-* `<fileShareName>`– V části **účty úložiště** vyberte svůj účet úložiště a pak vyberte **soubory**. Název, který se má použít, je název sdílené složky, kterou jste vytvořili.
+* `<storageAccountName>` – v části **účty úložiště**název účtu úložiště, který jste použili k vytvoření sdílené složky.
+* `<storageAccountKey>` – vyberte účet úložiště v části **účty úložiště** a pak vyberte **přístupové klíče** a použijte hodnotu pod **klíč1**.
+* `<fileShareName>` – v části **účty úložiště** vyberte svůj účet úložiště a pak vyberte **soubory**. Název, který se má použít, je název sdílené složky, kterou jste vytvořili.
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>Deklarace prostředku svazku a aktualizace prostředku služby (JSON)
 
-Přidejte parametry pro `<fileShareName>`hodnoty, `<storageAccountName>`a `<storageAccountKey>` , které jste našli v předchozím kroku. 
+Přidejte parametry pro `<fileShareName>`, `<storageAccountName>`a `<storageAccountKey>` hodnoty, které jste našli v předchozím kroku. 
 
-Vytvořte prostředek svazku jako partnerský uzel prostředku aplikace. Zadejte název a poskytovatele ("SFAzureFile" pro použití svazku založeného na službě Azure Files). V `azureFileParameters`zadejte parametry `<fileShareName>`pro hodnoty, `<storageAccountName>`a `<storageAccountKey>` , které jste našli v předchozím kroku.
+Vytvořte prostředek svazku jako partnerský uzel prostředku aplikace. Zadejte název a poskytovatele ("SFAzureFile" pro použití svazku založeného na službě Azure Files). V `azureFileParameters`zadejte parametry pro `<fileShareName>`, `<storageAccountName>`a hodnoty `<storageAccountKey>`, které jste našli v předchozím kroku.
 
-Pokud chcete připojit svazek ve službě, přidejte `volumeRefs` `codePackages` do elementu služby.  `name`je ID prostředku pro svazek (nebo parametr šablony nasazení pro prostředek svazku) a název svazku deklarovaného v souboru prostředků Volume. yaml.  `destinationPath`je místní adresář, ke kterému bude svazek připojen.
+Pokud chcete připojit svazek ve službě, přidejte `volumeRefs` do `codePackages` elementu služby.  `name` je ID prostředku pro svazek (nebo parametr šablony nasazení pro prostředek svazku) a název svazku deklarovaného v souboru prostředků Volume. yaml.  `destinationPath` je místní adresář, ke kterému bude svazek připojen.
 
 ```json
 {
@@ -203,7 +195,7 @@ Pokud chcete připojit svazek ve službě, přidejte `volumeRefs` `codePackages`
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-yaml"></a>Deklarace prostředku svazku a aktualizace prostředku služby (YAML)
 
-Přidejte nový soubor *Volume. yaml* do adresáře *prostředků aplikace* pro vaši aplikaci.  Zadejte název a poskytovatele ("SFAzureFile" pro použití svazku založeného na službě Azure Files). `<fileShareName>`, `<storageAccountName>` a`<storageAccountKey>` jsou hodnoty, které jste našli v předchozím kroku.
+Přidejte nový soubor *Volume. yaml* do adresáře *prostředků aplikace* pro vaši aplikaci.  Zadejte název a poskytovatele ("SFAzureFile" pro použití svazku založeného na službě Azure Files). `<fileShareName>`, `<storageAccountName>`a `<storageAccountKey>` jsou hodnoty, které jste našli v předchozím kroku.
 
 ```yaml
 volume:
@@ -218,7 +210,7 @@ volume:
         accountKey: <storageAccountKey>
 ```
 
-Pokud chcete připojit svazek ve službě, aktualizujte soubor *Service. yaml* v adresáři *prostředků služby* .  `volumeRefs` Přidejte element`codePackages` do elementu.  `name`je ID prostředku pro svazek (nebo parametr šablony nasazení pro prostředek svazku) a název svazku deklarovaného v souboru prostředků Volume. yaml.  `destinationPath`je místní adresář, ke kterému bude svazek připojen.
+Pokud chcete připojit svazek ve službě, aktualizujte soubor *Service. yaml* v adresáři *prostředků služby* .  Přidejte prvek `volumeRefs` do prvku `codePackages`.  `name` je ID prostředku pro svazek (nebo parametr šablony nasazení pro prostředek svazku) a název svazku deklarovaného v souboru prostředků Volume. yaml.  `destinationPath` je místní adresář, ke kterému bude svazek připojen.
 
 ```yaml
 ## Service definition ##
@@ -254,8 +246,8 @@ application:
             - name: VolumeTestNetwork
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Podívejte se na ukázkovou aplikaci svazku soubory [](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter)Azure na GitHubu.
+- Podívejte se na ukázkovou aplikaci svazku soubory Azure na [GitHubu](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter).
 - Další informace o modelu prostředků Service Fabric najdete v článku o [modelu prostředků Service Fabric Mesh](service-fabric-mesh-service-fabric-resources.md).
 - Další informace o službě Service Fabric Mesh najdete v článku s [přehledem služby Service Fabric Mesh](service-fabric-mesh-overview.md).

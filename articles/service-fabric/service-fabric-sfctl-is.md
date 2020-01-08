@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – sfctl je | Microsoft Docs
-description: Popisuje příkazy Service Fabric CLI sfctl jsou příkazy.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – sfctl je
+description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro správu infrastruktury.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 9a09d8c36fd282450767880a9ad144e1192dcd2e
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c3c98e8da0c2a5449296a0fd108977ec0633f83d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901570"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639118"
 ---
 # <a name="sfctl-is"></a>sfctl is
 Dotazování a posílání příkazů do služby infrastruktury
@@ -41,7 +32,7 @@ V případě clusterů, které mají nakonfigurovanou jednu nebo více instancí
 |Argument|Popis|
 | --- | --- |
 | --příkaz [povinné] | Text příkazu, který má být vyvolán. Obsah příkazu je závislý na infrastruktuře. |
-| --Service-ID | Identita služby infrastruktury <br><br> Toto je úplný název služby infrastruktury bez schématu identifikátoru URI\:Fabric. Tento parametr je vyžadován pouze pro cluster, který má spuštěnu více než jednu instanci služby infrastruktury. |
+| --service-id | Identita služby infrastruktury <br><br> Toto je úplný název služby infrastruktury bez schématu identifikátoru URI\:Fabric. Tento parametr je vyžadován pouze pro cluster, který má spuštěnu více než jednu instanci služby infrastruktury. |
 | --Timeout-t | Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
@@ -64,7 +55,7 @@ V případě clusterů, které mají nakonfigurovanou jednu nebo více instancí
 |Argument|Popis|
 | --- | --- |
 | --příkaz [povinné] | Text příkazu, který má být vyvolán. Obsah příkazu je závislý na infrastruktuře. |
-| --Service-ID | Identita služby infrastruktury <br><br> Toto je úplný název služby infrastruktury bez schématu identifikátoru URI\:Fabric. Tento parametr je vyžadován pouze pro cluster, který má spuštěnu více než jednu instanci služby infrastruktury. |
+| --service-id | Identita služby infrastruktury <br><br> Toto je úplný název služby infrastruktury bez schématu identifikátoru URI\:Fabric. Tento parametr je vyžadován pouze pro cluster, který má spuštěnu více než jednu instanci služby infrastruktury. |
 | --Timeout-t | Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty

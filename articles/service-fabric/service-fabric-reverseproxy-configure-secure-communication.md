@@ -1,24 +1,16 @@
 ---
-title: Zabezpečená komunikace s reverzním proxy serverem Azure Service Fabric | Microsoft Docs
-description: Nakonfigurujte reverzní proxy tak, aby umožňoval zabezpečenou koncovou komunikaci.
-services: service-fabric
-documentationcenter: .net
+title: Zabezpečená komunikace služby Azure Service Fabric reverzní proxy
+description: Nakonfigurujte reverzní proxy tak, aby umožňoval zabezpečenou koncovou komunikaci v aplikaci Azure Service Fabric.
 author: kavyako
-manager: vipulm
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: e915e689f09ba7f5c92958ebf8531aa67eef4493
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4cfeaf34a39231ffa91ea970a61f66632bae40c7
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933954"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639390"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Připojení k zabezpečené službě pomocí reverzního proxy serveru
 
@@ -30,7 +22,7 @@ Postup konfigurace reverzního proxy serveru v Service Fabric najdete v tématu 
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Zabezpečené vytváření připojení mezi reverzním proxy serverem a službami 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>Reverzní proxy ověřování pro služby:
-Reverzní proxy server identifikuje sám sebe se službami pomocí jejího certifikátu. V případě clusterů Azure je certifikát zadaný pomocí vlastnosti ***reverseProxyCertificate*** v [části typ prostředku](../azure-resource-manager/resource-group-authoring-templates.md) [**Microsoft. ServiceFabric/clustery**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) v šabloně správce prostředků. U samostatných clusterů se certifikát zadává buď pomocí ***ReverseProxyCertificate*** , nebo pomocí vlastnosti ***ReverseProxyCertificateCommonNames*** v oddílu **zabezpečení** ClusterConfig. JSON. Další informace najdete v tématu [Povolení reverzního proxy na samostatných clusterech](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
+Reverzní proxy server identifikuje sám sebe se službami pomocí jejího certifikátu. V případě clusterů Azure je certifikát zadaný pomocí vlastnosti ***reverseProxyCertificate*** v [části typ prostředku](../azure-resource-manager/templates/template-syntax.md) [**Microsoft. ServiceFabric/clustery**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) v šabloně správce prostředků. U samostatných clusterů se certifikát zadává buď pomocí ***ReverseProxyCertificate*** , nebo pomocí vlastnosti ***ReverseProxyCertificateCommonNames*** v oddílu **zabezpečení** ClusterConfig. JSON. Další informace najdete v tématu [Povolení reverzního proxy na samostatných clusterech](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
 
 Služby můžou implementovat logiku, která ověří certifikát prezentovaný reverzním proxy serverem. Služby můžou určit podrobnosti přijímaného klientského certifikátu jako konfigurační nastavení v konfiguračním balíčku. To je možné číst za běhu a použít k ověření certifikátu prezentovaného reverzním proxy serverem. Chcete-li přidat nastavení konfigurace, přečtěte si téma [Správa parametrů aplikace](service-fabric-manage-multiple-environment-app-configuration.md) . 
 
@@ -63,7 +55,7 @@ V části [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings
    }
    ```
 
-- **ServiceCommonNameAndIssuer**: reverzní proxy ověří certifikát prezentovaný službou na základě běžného názvu certifikátu a kryptografického otisku bezprostředního vystavitele: zadejte **ApplicationCertificateValidationPolicy** s hodnotou **. ServiceCommonNameAndIssuer** v části [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) .
+- **ServiceCommonNameAndIssuer**: reverzní proxy ověří certifikát prezentovaný službou na základě běžného názvu certifikátu a kryptografického otisku bezprostředního vystavitele: zadejte **ApplicationCertificateValidationPolicy** s hodnotou **ServiceCommonNameAndIssuer** v části [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) .
 
    ```json
    {
@@ -110,7 +102,7 @@ V části [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings
    }
    ```
 
-- **ServiceCertificateThumbprints**: reverzní proxy ověří certifikát proxy služby na základě jeho kryptografického otisku. Tuto trasu můžete zvolit, pokud jsou služby nakonfigurované s certifikáty podepsanými svým vlastníkem: zadejte **ApplicationCertificateValidationPolicy** s hodnotou **ServiceCertificateThumbprints** v [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) section.
+- **ServiceCertificateThumbprints**: reverzní proxy ověří certifikát proxy služby na základě jeho kryptografického otisku. Tuto trasu můžete zvolit, pokud jsou služby nakonfigurované s certifikáty podepsanými svým vlastníkem: v části [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) zadejte **ApplicationCertificateValidationPolicy** s hodnotou **ServiceCertificateThumbprints** .
 
    ```json
    {

@@ -1,22 +1,22 @@
 ---
 title: Přehled webu Azure Portal | Dokumentace Microsoftu
-description: Naučte se, jak procházet Azure Portal a použít ji ke správě služeb.
+description: Azure Portal je grafické uživatelské rozhraní, které můžete použít ke správě služeb Azure. Naučte se procházet a hledat prostředky v Azure Portal.
 services: azure-portal
 keywords: portál
-author: kfollis
-ms.author: kfollis
-ms.date: 11/01/2019
+author: mblythe
+ms.author: mblythe
+ms.date: 12/20/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 90bbea1068bb237501daf5e0dfac865ca6b9a12a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 478b090cfe0bfd63bde37dc944cd9fad6e88f179
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579457"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75637605"
 ---
-# <a name="azure-portal-overview"></a>Přehled webu Azure Portal
+# <a name="azure-portal-overview"></a>Portál Azure Preview
 
 Tento článek zavádí Azure Portal, identifikuje prvky stránky portálu a pomůže vám seznámit se s prostředím pro Azure Portal správu.
 
@@ -66,7 +66,7 @@ Obrázek níže popisuje základní prvky Azure Portal, z nichž každá je pops
 
 |Klíč|Popis
 |:---:|---|
-|1|Záhlaví stránky Zobrazuje se v horní části každé stránky portálu a obsahuje globální prvky.|
+|1\. místo|Záhlaví stránky Zobrazuje se v horní části každé stránky portálu a obsahuje globální prvky.|
 |2| Globální vyhledávání. Panel hledání slouží k rychlému vyhledání konkrétního prostředku, služby nebo dokumentace.|
 |3|Globální ovládací prvky. Podobně jako u všech globálních prvků jsou tyto funkce na portálu trvalé a zahrnují: Cloud Shell, filtr předplatných, oznámení, nastavení portálu, pomoc a podpora a pošleme nám svůj názor.|
 |4|Váš účet. Zobrazte si informace o vašem účtu, přepněte si adresáře, odhlaste se nebo se přihlaste pomocí jiného účtu.|

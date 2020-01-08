@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/29/2019
-ms.openlocfilehash: 3ef2def6329dc31eb1b175133b4525f87de9181c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/23/2019
+ms.openlocfilehash: 43875b87d26f144b85454077fd3c044c820132bf
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494656"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494984"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Zvýšení výkonu Apache Spark úloh pomocí Azure HDInsight v/v cache
 
@@ -22,7 +22,7 @@ Většina SSD poskytuje více než 1 GByte za sekundu šířky pásma. Tato ší
 
 > [!Note]  
 > Vstupně-výstupní mezipaměť aktuálně používá RubiX jako součást pro ukládání do mezipaměti, ale ta se v budoucích verzích této služby může změnit. Použijte prosím rozhraní v/v mezipaměti a neprovádějte žádné závislosti přímo na implementaci RubiX.
->Mezipaměť v/v je v tuto chvíli podporována jenom s úložištěm Azure BLOB Storage. 
+>Mezipaměť v/v je v tuto chvíli podporována jenom s úložištěm Azure BLOB Storage.
 
 ## <a name="benefits-of-azure-hdinsight-io-cache"></a>Výhody Azure HDInsight v/v cache
 
@@ -32,21 +32,19 @@ Nemusíte dělat žádné změny v úlohách Sparku, abyste viděli zvýšení v
 
 ## <a name="getting-started"></a>Začínáme
 
-Služba Azure HDInsight IO cache je ve výchozím nastavení deaktivována ve verzi Preview. Mezipaměť v/v je dostupná v clusterech Azure HDInsight 3.6 + Spark, které spouštějí Apache Spark 2,3.  Pokud chcete aktivovat vstupně-výstupní mezipaměť, udělejte toto:
+Služba Azure HDInsight IO cache je ve výchozím nastavení deaktivována ve verzi Preview. Mezipaměť v/v je dostupná v clusterech Azure HDInsight 3.6 + Spark, které spouštějí Apache Spark 2,3.  Pokud chcete aktivovat vstupně-výstupní mezipaměť ve službě HDInsight 4,0, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com)vyberte svůj cluster HDInsight.
-
-1. Na stránce **Přehled** (ve výchozím nastavení otevřete, když vyberete cluster) vyberte v části **řídicí panely clusteru**položku **Ambari domů** .
+1. Ve webovém prohlížeči přejděte na `https://CLUSTERNAME.azurehdinsight.net`, kde `CLUSTERNAME` je název vašeho clusteru.
 
 1. Na levé straně vyberte službu **mezipaměti v/** v.
 
-1. Vyberte **Akce** a **aktivovat**.
+1. Vyberte **Akce** (**Akce služby** v HDI 3,6) a **aktivujte**.
 
     ![Povolení služby mezipaměti v/v v Ambari](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "Povolení služby mezipaměti v/v v Ambari")
 
 1. Potvrďte restart všech ovlivněných služeb v clusteru.
 
->[!NOTE]  
+> [!NOTE]  
 > I když se na indikátoru průběhu zobrazuje aktivováno, mezipaměť v/v není ve skutečnosti povolená, dokud nerestartujete ostatní ovlivněné služby.
 
 ## <a name="troubleshooting"></a>Řešení potíží
@@ -69,14 +67,14 @@ Po povolení vstupně-výstupních operací můžete získat chyby místa na dis
 
 1. V pravém horním rohu vyberte **Uložit** .
 
-1. Vyberte **restartovat**  > **všechny ovlivněné restartovat**.
+1. Vyberte **restartovat** > **všechny ovlivněné restartovat**.
 
-    ![Ambari restartování Apache All ovlivnilo](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Restartovat všechny ovlivněné")
+    ![Apache Ambari restartuje všechny ovlivněné](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Restartovat všechny ovlivněné")
 
 1. Vyberte **Potvrdit restartování vše**.
 
-Pokud to nefunguje, zakažte mezipaměť IO.
+Pokud to nepomůže, zakažte mezipaměť IO.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o mezipaměti v/v, včetně srovnávacích testů výkonu v tomto blogovém příspěvku: [Apache Spark úlohy pomůžou zrychlit až v 9x pomocí vstupně-výstupní mezipaměti HDInsight](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)
+Přečtěte si další informace o mezipaměti v/v, včetně srovnávacích testů výkonu v tomto blogovém příspěvku: [Apache Spark úlohy pomůžou zrychlit až v 9x pomocí vstupně-výstupní mezipaměti HDInsight](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)

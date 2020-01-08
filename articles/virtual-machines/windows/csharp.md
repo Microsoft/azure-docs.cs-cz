@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: fe838ade7a65161efaeb60b9e4d8de17a7080da1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bb0962991701dc780e50fec60982083b20d4ab0e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032794"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358373"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Vytváření a správa virtuálních počítačů s Windows v Azure pomocíC# #
 
@@ -111,7 +111,7 @@ Než začnete tento krok, ujistěte se, že máte přístup k [instančnímu obj
 
 ### <a name="create-the-resource-group"></a>Vytvoření skupiny prostředků
 
-Všechny prostředky musí být obsaženy ve [skupině prostředků](../../azure-resource-manager/resource-group-overview.md).
+Všechny prostředky musí být obsaženy ve [skupině prostředků](../../azure-resource-manager/management/overview.md).
 
 Chcete-li zadat hodnoty pro aplikaci a vytvořit skupinu prostředků, přidejte tento kód do metody Main:
 

@@ -1,24 +1,24 @@
 ---
 title: Struktura řídicích panelů Azure | Microsoft Docs
-description: Tento článek vysvětluje strukturu JSON řídicího panelu Azure.
+description: Projděte si strukturu JSON řídicího panelu Azure pomocí ukázkového řídicího panelu. Obsahuje odkaz na vlastnosti prostředku.
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
-manager: dougeby
+manager: mtillman
 editor: tysonn
 ms.service: azure-portal
 ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 09/01/2017
-ms.author: kfollis
-ms.openlocfilehash: 5933521993b598ae3758df6e2e7dbf61bf424779
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.date: 12/20/2019
+ms.author: mblythe
+ms.openlocfilehash: 18125e119e7ffdd2f8fa8ca3c5c1b12c8c9a94e0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832795"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640359"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Struktura řídicích panelů Azure
 Tento dokument projde strukturu řídicího panelu Azure pomocí následujícího řídicího panelu jako příklad:
@@ -312,13 +312,13 @@ Značky jsou běžnou funkcí prostředků Azure, které umožňují organizovat
 `"tags": { "hidden-title": "Created via API" }`
 
 ### <a name="the-properties-object"></a>Objekt Properties
-Objekt Properties obsahuje dvě vlastnosti, __rozptylová skla__ a __metadata__. Vlastnost __čočky__ obsahuje informace o dlaždicích (označuje se také jako části) na řídicím panelu.  Vlastnost __metadata__ je pro možné budoucí funkce.
+Objekt Properties obsahuje dvě vlastnosti, __rozptylová skla__ a __metadata__. Vlastnost __čočky__ obsahuje informace o dlaždicích na řídicím panelu.  Vlastnost __metadata__ je pro možné budoucí funkce.
 
 ### <a name="the-lenses-property"></a>Vlastnost čočky
 Vlastnost __čočky__ obsahuje řídicí panel. Všimněte si, že objekt čočky v tomto příkladu obsahuje jednu vlastnost s názvem "0". Rozptylová skla jsou koncept seskupení, který není v současnosti implementován v řídicích panelech. V současné době všechny řídicí panely mají tuto jedinou vlastnost objektu objektivu (s názvem "0").
 
 ### <a name="the-lens-object"></a>Objekt čočky
-Objekt pod "0" obsahuje dvě vlastnosti, __pořadí__ a __části__.  V aktuální verzi řídicích panelů je __objednávka__ vždycky 0. Vlastnost __Parts__ obsahuje objekt, který definuje jednotlivé části (označuje se také jako dlaždice) na řídicím panelu.
+Objekt pod "0" obsahuje dvě vlastnosti, __pořadí__ a __části__.  V aktuální verzi řídicích panelů je __objednávka__ vždycky 0. Vlastnost __Parts__ obsahuje objekt, který definuje jednotlivé části (také označované jako dlaždice) na řídicím panelu.
 
 Objekt __Parts__ obsahuje vlastnost pro každou část, kde název vlastnosti je číslo. Toto číslo není významné. 
 

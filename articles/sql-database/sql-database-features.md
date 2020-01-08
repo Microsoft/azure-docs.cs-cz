@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 8f078bdfa1c6c106bb12116f30dc69abce42baa0
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 33ecef4dde3787546afd28e5f5b31e8dd535fc7c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790466"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646360"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database funkce
 
@@ -65,7 +65,7 @@ V následující tabulce jsou uvedeny hlavní funkce SQL Server a poskytuje info
 | [Rozšířené události (XEvent)](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | Nějaké – viz [Rozšířené události v SQL Database](sql-database-xevent-db-diff-from-svr.md) | Ano – zobrazení [rozdílů rozšířených událostí](sql-database-managed-instance-transact-sql-information.md#extended-events) |
 | [Rozšířené uložené procedury](https://docs.microsoft.com/sql/relational-databases/extended-stored-procedures-programming/creating-extended-stored-procedures) | Ne | Ne |
 | [Soubory a skupiny souborů](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups) | Pouze primární skupina souborů | Ano. Cesty k souborům se přiřazují automaticky a umístění souboru nejde zadat v [příkazu](sql-database-managed-instance-transact-sql-information.md#alter-database-statement)`ALTER DATABASE ADD FILE`.  |
-| [Souborem](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) | Ne | [Ne](sql-database-managed-instance-transact-sql-information.md#filestream-and-filetable) |
+| [Filestream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) | Ne | [Ne](sql-database-managed-instance-transact-sql-information.md#filestream-and-filetable) |
 | [Fulltextové vyhledávání (ft)](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) |  Ano, ale nejsou podporované moduly pro dělení na slova třetích stran. | Ano, ale nejsou [podporované moduly pro dělení na slova třetích stran](sql-database-managed-instance-transact-sql-information.md#full-text-semantic-search) . |
 | [Functions](https://docs.microsoft.com/sql/t-sql/functions/functions) | Většina – viz jednotlivé funkce | Ano – viz [uložené procedury, funkce, rozdíly ve triggerech](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-and-triggers) |
 | [Optimalizace v paměti](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Úroveň Ano – [Premium a pro důležité obchodní informace podporuje jenom](sql-database-in-memory.md) omezené podpory pro netrvalé objekty v paměti, jako jsou typy tabulek. | [Pouze pro důležité obchodní informace úroveň](sql-database-managed-instance.md) Ano |
@@ -80,10 +80,10 @@ V následující tabulce jsou uvedeny hlavní funkce SQL Server a poskytuje info
 | [OPENDATASOURCE](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql)|Ne|Ano, jenom pro ostatní databáze SQL Azure a SQL servery. Viz [rozdíly v T-SQL](sql-database-managed-instance-transact-sql-information.md)|
 | [OPENQUERY](https://docs.microsoft.com/sql/t-sql/functions/openquery-transact-sql)|Ne|Ano, jenom pro ostatní databáze SQL Azure a SQL servery. Viz [rozdíly v T-SQL](sql-database-managed-instance-transact-sql-information.md)|
 | [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql)|Ano, jenom pro import ze služby Azure Blob Storage. |Ano, jenom pro ostatní databáze SQL Azure a SQL servery a importovat z Azure Blob Storage. Viz [rozdíly v T-SQL](sql-database-managed-instance-transact-sql-information.md)|
-| [Logické](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) | Většina – viz jednotlivé operátory |Ano – viz [rozdíly v T-SQL](sql-database-managed-instance-transact-sql-information.md) |
-| [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | Ne. Pomocí funkce `OPENROWSET` můžete zadávat dotazy na data v souborech, které jsou umístěné na Azure Blob Storage. | Ne. Pomocí funkce `OPENROWSET` můžete zadávat dotazy na data v souborech, které jsou umístěné na Azure Blob Storage. |
+| [Operátory](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) | Většina – viz jednotlivé operátory |Ano – viz [rozdíly v T-SQL](sql-database-managed-instance-transact-sql-information.md) |
+| [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | Ne. Pomocí funkce `OPENROWSET` můžete zadávat dotazy na data v souborech, které jsou umístěné na Azure Blob Storage. | Ne. Pomocí funkce `OPENROWSET` můžete zadávat dotazy na data v souborech, které jsou umístěné na Azure Blob Storage. |
 | [Oznámení dotazů](https://docs.microsoft.com/sql/relational-databases/native-client/features/working-with-query-notifications) | Ne | Ano |
-| [Služby R](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | Ano, ve [verzi Public Preview](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  | Ne |
+| [Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)(_dříve R Services_)| Ano, ve [verzi Public Preview](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  | Ne |
 | [Modely obnovení](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) | Podporuje se jenom úplné obnovení, které zaručuje vysokou dostupnost. Jednoduché a hromadně protokolované modely obnovení nejsou k dispozici. | Podporuje se jenom úplné obnovení, které zaručuje vysokou dostupnost. Jednoduché a hromadně protokolované modely obnovení nejsou k dispozici. | 
 | [Správce prostředků](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | Ne | Ano |
 | [Příkazy Restore](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | Ne | Ano, s povinnými možnostmi `FROM URL` pro soubory zálohy, které jsou umístěné na Azure Blob Storage. Zobrazit [rozdíly v obnovení](sql-database-managed-instance-transact-sql-information.md#restore-statement) |
@@ -108,7 +108,7 @@ V následující tabulce jsou uvedeny hlavní funkce SQL Server a poskytuje info
 | Ověřování systému Windows | Ne | Ne |
 | [Clustering s podporou převzetí služeb při selhání Windows serveru](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | Ne. Další techniky, které poskytují [vysokou dostupnost](sql-database-high-availability.md) , jsou součástí každé databáze. Zotavení po havárii je popsáno v tématu [Přehled provozní kontinuity pomocí Azure SQL Database](sql-database-business-continuity.md) | Ne. Další techniky, které poskytují [vysokou dostupnost](sql-database-high-availability.md) , jsou součástí každé databáze. Zotavení po havárii je popsáno v tématu [Přehled provozní kontinuity pomocí Azure SQL Database](sql-database-business-continuity.md) |
 
-## <a name="platform-capabilities"></a>Možnosti platformy
+## <a name="platform-capabilities"></a>Funkce platformy
 
 Platforma Azure poskytuje řadu funkcí PaaS, které se přidají do standardních databázových funkcí jako další hodnota. Existuje řada externích služeb, které lze použít s Azure SQL Database služby. 
 
@@ -137,14 +137,14 @@ Platforma Azure poskytuje řadu funkcí PaaS, které se přidají do standardní
 | [Analýza SQL](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Ano | Ano |
 | [Synchronizace dat SQL](sql-database-get-started-sql-data-sync.md) | Ano | Ne |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Ne, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) je samostatná cloudová služba Azure. | Ne, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) je samostatná cloudová služba Azure. |
-| [Služba SSIS (SQL Server Integration Services) (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Ano, pokud se spravované SSIS v prostředí Azure Data Factory (ADF), ve kterém jsou balíčky uložené v SSISDB hostovaném Azure SQL Database a spouštěné v Azure SSIS Integration Runtime (IR), přečtěte si téma [vytvoření Azure-SSIS IR v ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Pokud chcete porovnat funkce SSIS v SQL Database serveru a spravované instanci, přečtěte si téma [porovnání Azure SQL Database izolované databáze, elastického fondu a spravované instance](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance). | Ano, pomocí spravovaného prostředí SSIS v Azure Data Factory (ADF), kde jsou balíčky uložené v SSISDB hostovaném spravovanou instancí a spuštěny na Azure SSIS Integration Runtime (IR), přečtěte si téma [vytvoření Azure-SSIS IR v ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Pokud chcete porovnat funkce SSIS v SQL Database a Managed instance, přečtěte si téma [porovnání Azure SQL Database jedné databáze, elastického fondu a spravované instance](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance). |
+| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Ano, pokud se spravované SSIS v prostředí Azure Data Factory (ADF), ve kterém jsou balíčky uložené v SSISDB hostovaném Azure SQL Database a spouštěné v Azure SSIS Integration Runtime (IR), přečtěte si téma [vytvoření Azure-SSIS IR v ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Pokud chcete porovnat funkce SSIS v SQL Database serveru a spravované instanci, přečtěte si téma [porovnání Azure SQL Database izolované databáze, elastického fondu a spravované instance](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance). | Ano, pomocí spravovaného prostředí SSIS v Azure Data Factory (ADF), kde jsou balíčky uložené v SSISDB hostovaném spravovanou instancí a spuštěny na Azure SSIS Integration Runtime (IR), přečtěte si téma [vytvoření Azure-SSIS IR v ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Pokud chcete porovnat funkce SSIS v SQL Database a Managed instance, přečtěte si téma [porovnání Azure SQL Database jedné databáze, elastického fondu a spravované instance](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance). |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Ne – [viz Power BI](https://docs.microsoft.com/power-bi/) | Ne – [viz Power BI](https://docs.microsoft.com/power-bi/) |
 | [Query Performance Insights (QPI)](sql-database-query-performance.md) | Ano | Ne. Použijte předdefinované sestavy v SQL Server Management Studio a Azure Data Studio. |
 | [Virtuální síť](../virtual-network/virtual-networks-overview.md) | Částečně, umožňuje omezený přístup pomocí [koncových bodů virtuální](sql-database-vnet-service-endpoint-rule-overview.md) sítě. | Ano, spravovaná instance je vložena do virtuální sítě zákazníka. Zobrazit [podsíť](sql-database-managed-instance-transact-sql-information.md#subnet) a [virtuální síť](sql-database-managed-instance-transact-sql-information.md#vnet) |
 | Koncový bod služby virtuální sítě | [Ano](sql-database-vnet-service-endpoint-rule-overview.md) | Ne |
 | Globální partnerský vztah virtuální sítě | Ano, použití [privátních koncových bodů IP a služeb](sql-database-vnet-service-endpoint-rule-overview.md) | Ne, [spravovaná instance není podporovaná](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) kvůli [omezení nástroje pro vyrovnávání zatížení v globálním partnerském vztahu virtuální](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)sítě.
 
-## <a name="tools"></a>Nástroje
+## <a name="tools"></a>nástroje
 Azure SQL Database podporuje různé datové nástroje, které vám pomůžou se správou vašich dat.
 
 | **Nástroj** | **Izolované databáze a elastické fondy** | **Spravované instance a fondy instancí** |

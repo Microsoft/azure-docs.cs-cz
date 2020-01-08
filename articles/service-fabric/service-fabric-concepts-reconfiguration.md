@@ -1,65 +1,56 @@
 ---
-title: Změny konfigurace v Azure Service Fabric | Dokumentace Microsoftu
-description: Vysvětlení Rekonfigurace oddílů v Service Fabric
-services: service-fabric
-documentationcenter: .net
+title: Rekonfigurace v Azure Service Fabric
+description: Přečtěte si o konfiguracích pro repliky stavových služeb a o procesu Service Fabric změny konfigurace, který se používá k udržení konzistence a dostupnosti při změně.
 author: appi101
-manager: anuragg
-editor: ''
-ms.assetid: d5ab75ff-98b9-4573-a2e5-7f5ab288157a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/10/2018
 ms.author: aprameyr
-ms.openlocfilehash: a24aa6aa1695a3d1166816b7960bdd7b551e1a37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd46a7776495624affef77a44fcf68334750ba17
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60882193"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609991"
 ---
-# <a name="reconfiguration-in-azure-service-fabric"></a>Změny konfigurace v Azure Service Fabric
-A *konfigurace* je definován jako repliky a jejich rolí pro rozdělení stavové služby.
+# <a name="reconfiguration-in-azure-service-fabric"></a>Rekonfigurace v Azure Service Fabric
+*Konfigurace* je definovaná jako repliky a jejich role pro oddíl stavové služby.
 
-A *Rekonfigurace* je proces přechodu jedna konfigurace do jiné konfigurace. Odešle změnu sady replik pro rozdělení stavové služby. Původní konfigurace se nazývá *předchozí konfiguraci (PC)* , a aby se nová konfigurace se nazývá *aktuální konfiguraci (kopie)* . Protokol změny konfigurace v Azure Service Fabric zachová konzistence a udržuje dostupnost během změny do replik.
+*Překonfigurování* je proces přesunutí jedné konfigurace do jiné konfigurace. Provede změnu sady replik pro oddíl stavové služby. Stará konfigurace se nazývá *předchozí konfigurace (počítač)* a nová konfigurace se nazývá *aktuální konfigurace (CC)* . Protokol rekonfigurace v Azure Service Fabric zachovává konzistenci a udržuje dostupnost během jakýchkoli změn v sadě replik.
 
-Správce převzetí služeb při selhání iniciuje rekonfigurací v reakci na různé události v systému. Například pokud selže primární pak Rekonfigurace je zahájeno podporovat aktivní sekundární do primární. Dalším příkladem je v reakci na upgrady aplikací, když bude pravděpodobně nutné přesunout do jiného uzlu primární před upgradem uzlu.
+Správce převzetí služeb při selhání iniciuje překonfigurování v reakci na různé události v systému. Například pokud primární databáze dojde k chybě, inicializuje se znovu konfigurace, která zvýší úroveň aktivní sekundární na primární. Dalším příkladem je odezva na upgrady aplikace, kdy může být nutné přesunout primární uzel do jiného uzlu, aby bylo možné uzel upgradovat.
 
 ## <a name="reconfiguration-types"></a>Typy rekonfigurace
-Rekonfigurací je možné rozdělit do dvou typů:
+Rekonfigurace je možné klasifikovat do dvou typů:
 
-- Pokud se mění primární rekonfigurací:
-    - **Převzetí služeb při selhání**: Převzetí služeb při selhání jsou rekonfigurací v reakci na selhání primární spuštěné.
-    - **SwapPrimary**: Záměna jsou rekonfigurací, kde je třeba přesunout spuštěný primární v z jednoho uzlu do jiného, obvykle v reakci na Vyrovnávání zatížení Service Fabric nebo upgradu.
+- Změny konfigurace, u kterých probíhá změna primárního:
+    - **Převzetí služeb při**selhání: převzetí služeb při selhání je rekonfigurace v reakci na selhání spuštěné primární služby.
+    - **SwapPrimary**: prohození jsou rekonfigurace, kde Service Fabric musí přesunout běžící primární uzel z jednoho uzlu do druhého, obvykle v reakci na Vyrovnávání zatížení nebo upgrade.
 
-- Pokud není změněn primární rekonfigurací.
+- Změny konfigurace, u kterých se primární primární nemění.
 
-## <a name="reconfiguration-phases"></a>Fáze Rekonfigurace
-Rekonfigurace pokračuje v několika fázích:
+## <a name="reconfiguration-phases"></a>Fáze rekonfigurace
+Překonfigurování pokračuje v několika fázích:
 
-- **Phase0**: Tato fáze probíhá prohození primárního rekonfigurací kde aktuální primární přenese jeho stav na nový primární a přechody do aktivní sekundární.
+- **Phase0**: k této fázi dochází v prohození primárních konfigurací, kde aktuální primární primární přenos svého stavu na nový primární a přechod na aktivní sekundární.
 
-- **Phase1**: Tato fáze se stane během rekonfigurací, ve kterém se mění primární. V této fázi Service Fabric identifikuje správné primární mezi aktuálním repliky. Tato fáze není nutné během rekonfigurací primární odkládacího souboru, protože nový primární již byla vybrána. 
+- **Fáze 1**: Tato fáze probíhá během rekonfigurace, kdy se primární změna mění. V průběhu této fáze Service Fabric identifikuje správnou primární repliku mezi aktuálními replikami. Tato fáze není během přeměněných primárních konfigurací nutná, protože nová primární již byla vybrána. 
 
-- **Údajů Fáze 2**: V této fázi Service Fabric zajišťuje, že všechna data k dispozici ve většině repliky aktuální konfiguraci.
+- **Phase2**: v této fázi Service Fabric zajišťuje, aby všechna data byla k dispozici ve většině replik aktuální konfigurace.
 
-Existuje několik fází, které jsou jen pro interní použití.
+K dispozici je několik dalších fází, které jsou pouze pro interní použití.
 
-## <a name="stuck-reconfigurations"></a>Zablokované rekonfigurací
-Můžete získat rekonfigurací *zablokované* pro celou řadu důvodů. Mezi běžné příčiny patří:
+## <a name="stuck-reconfigurations"></a>Zablokované rekonfigurace
+Rekonfigurace se může *zablokovat* z nejrůznějších důvodů. Mezi běžné příčiny patří:
 
-- **Dolů repliky**: Fáze některé konfigurace vyžadují většinou repliky v konfiguraci dá zvládnout.
-- **Síť nebo komunikační problémy**: Rekonfigurací vyžadují připojení k síti mezi různými uzly.
-- **Rozhraní API selhání**: Změna konfigurace protokolu vyžaduje, že implementace služby dokončit určitých rozhraní API. Například není dodržením token zrušení v spolehlivé služby způsobí, že SwapPrimary rekonfigurací zaseknou.
+- **Nefunkční repliky**: některé fáze překonfigurování vyžadují většinu replik v konfiguraci.
+- **Problémy se sítí nebo komunikací**: překonfigurování vyžadují síťové připojení mezi různými uzly.
+- **Selhání rozhraní API**: protokol rekonfigurace vyžaduje, aby implementace služby dokončila určitá rozhraní API. Například nedodržení tokenu zrušení ve spolehlivé službě způsobí, že se SwapPrimary rekonfigurace zablokování.
 
-Použití sestav o stavu ze systémových komponent, jako je například System.FM – System.RA a System.RAP, se zasekne diagnostikovat tam, kde změny konfigurace. [Stránku sestavy stavu systému](service-fabric-understand-and-troubleshoot-with-system-health-reports.md) popisuje tyto sestavy stavu.
+Pomocí sestav o stavu ze systémových součástí, jako jsou System.FM, System. RA a System. RAP, můžete diagnostikovat, kde je znovu zablokovaná rekonfigurace. [Stránka sestavy stav systému](service-fabric-understand-and-troubleshoot-with-system-health-reports.md) popisuje tyto zprávy o stavu.
 
-## <a name="next-steps"></a>Další postup
-Další informace o konceptech Service Fabric najdete v následujících článcích:
+## <a name="next-steps"></a>Další kroky
+Další informace o Service Fabric konceptech najdete v následujících článcích:
 
 - [Životní cyklus Reliable Services – C#](service-fabric-reliable-services-lifecycle.md)
-- [Systémovými stavovými sestavami](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+- [Sestavy stavu systému](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 - [Repliky a instance](service-fabric-concepts-replica-lifecycle.md)

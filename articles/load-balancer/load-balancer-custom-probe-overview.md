@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: fdc7254b4c6e798c0f32f5fac3575474ed6ec1d0
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c093cea9f8719722cc44c9d6424c06039360e90f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077075"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690389"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy stavu Load Balanceru
 
-Pokud používáte pravidla vyrovnávání zatížení s Azure Load Balancer, je nutné zadat sondy stavu, aby bylo možné Load Balancer detekovat stav koncového bodu back-endu.  Konfigurace sondy stavu a odezvy sondy určují, které instance fondu back-end budou dostávat nové toky. Sondy stavu můžete použít k detekci selhání aplikace na koncovém bodu back-endu. Můžete také vygenerovat vlastní odpověď na sondu stavu a použít sondu stavu pro řízení toku ke správě zátěže nebo plánovaného výpadku. Pokud selže test stavu, Load Balancer zastaví odesílání nových toků do příslušné instance, která není v pořádku.
+Pokud používáte pravidla vyrovnávání zatížení s Azure Load Balancer, je nutné zadat sondy stavu, aby bylo možné Load Balancer detekovat stav koncového bodu back-endu.  Konfigurace sondy stavu a odezvy sondy určují, které instance fondu back-end budou dostávat nové toky. Sondy stavu můžete použít k detekci selhání aplikace na koncovém bodu back-endu. Můžete také vygenerovat vlastní odpověď na sondu stavu a použít sondu stavu pro řízení toku ke správě zátěže nebo plánovaného výpadku. Pokud selže test stavu, Load Balancer zastaví odesílání nových toků do příslušné instance, která není v pořádku. Odchozí připojení nemá vliv na jenom příchozí připojení.
 
 Sondy stavu podporují více protokolů. Dostupnost konkrétního protokolu sondy stavu se liší podle Load Balancer SKU.  Kromě toho se chování služby liší podle Load Balancer SKU, jak je znázorněno v této tabulce:
 
@@ -49,8 +49,8 @@ Konfigurace sondy stavu se skládá z následujících elementů:
 - Port testu
 - Cesta HTTP, která se má použít pro HTTP GET při použití sond HTTP (S)
 
-> [!NOTE]
-> Definice sondy není povinná ani při použití Azure PowerShell, Azure CLI, šablon nebo rozhraní API zaškrtnutá. Testy ověření sondy se provádějí jenom při použití webu Azure Portal.
+>[!NOTE]
+>Definice sondy není povinná ani při použití Azure PowerShell, Azure CLI, šablon nebo rozhraní API zaškrtnutá. Testy ověření sondy se provádějí jenom při použití webu Azure Portal.
 
 ## <a name="understanding-application-signal-detection-of-the-signal-and-reaction-of-the-platform"></a>Porozumění signalizaci aplikace, detekci signálu a reakci platformy
 
@@ -120,6 +120,9 @@ Následující příklad ukazuje, jak můžete vyjádřit tento druh konfigurace
 Testy HTTP a HTTPS se sestavují v testu TCP a vystavují HTTP GET se zadanou cestou. Obě tyto sondy HTTP GET podporu relativní cesty. HTTPS testy jsou stejné jako sondy protokolu HTTP a uveďte (TLS, dřív označované jako SSL) Transport Layer Security obálky. Sonda stavu je označen, pokud odpoví instance se stavem HTTP 200 v časovém limitu.  Sonda stavu se ve výchozím nastavení pokusí ověřit nakonfigurovaný port sondy stavu každých 15 sekund. Interval minimální testu je 5 sekund. Celková doba trvání všech intervalů nesmí překročit 120 sekund.
 
 Sondy HTTP/HTTPS můžete také využít k implementaci vlastní logiky k odebrání instancí z rotace nástroje pro vyrovnávání zatížení, pokud je port testu také naslouchací proces pro samotnou službu. Například můžete rozhodnout pro odebrání instance, pokud je vyšší než 90 % využití procesoru a vrátit stav 200 HTTP. 
+
+> [!NOTE] 
+> Test HTTPS vyžaduje použití certifikátů založených na minimální hodnotě hash signatury SHA256 v celém řetězci.
 
 Pokud používáte cloudové služby a webovými rolemi, které používají w3wp.exe, můžete také dosáhnout automatické monitorování vašeho webu. Chyby v kódu webu návratový stav než 200 pro test paměti nástroje pro vyrovnávání zatížení.
 
@@ -240,7 +243,7 @@ Pokud máte více rozhraní na virtuálním počítači, musíte zajistit, že v
 
 Nepovolujte [Časová razítka TCP](https://tools.ietf.org/html/rfc1323).  Povolení časových razítek TCP může způsobit selhání sond stavu kvůli tomu, že pakety TCP jsou vyřazeny z hostovaného operačního systému hostovaného operačního systému virtuálního počítače. výsledkem Load Balancer označení příslušného koncového bodu.  Ve výchozím nastavení jsou časová razítka TCP zapnutá u imagí s posíleným zabezpečením virtuálních počítačů a musí být zakázaná.
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 Veřejné i interní [Standard Load Balancer](load-balancer-standard-overview.md) zveřejňují stav testu stavu koncového bodu na koncovém bodu a koncovým bodem back-end jako multidimenzionální metriky prostřednictvím Azure monitor. Tyto metriky můžou využívat jiné služby Azure nebo partnerské aplikace. 
 

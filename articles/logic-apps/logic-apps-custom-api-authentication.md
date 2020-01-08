@@ -1,17 +1,17 @@
 ---
-title: Přidání ověřování do vlastních rozhraní API
-description: Nastavení ověřování pro volání vlastních rozhraní API z Azure Logic Apps
+title: Přidání ověřování pro zabezpečení volání vlastních rozhraní API
+description: Jak nastavit ověřování pro zabezpečení volání vlastních rozhraní API z Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: f6dfa98550dcfb092ca1fb52a5cf0bed32e697ad
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2f8b1cc002fe3f340ff6d5329329507316577885
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793156"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666886"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Zabezpečená volání vlastních rozhraní API z Azure Logic Apps
 
@@ -200,13 +200,13 @@ Otevřete definici aplikace logiky v zobrazení kódu, vyhledejte část definic
 | Vlastnost | Požaduje se | Popis | 
 | -------- | -------- | ----------- | 
 | tenant | Ano | Identifikátor GUID pro tenanta Azure AD | 
-| osoby | Ano | Identifikátor GUID cílového prostředku, ke kterému chcete získat přístup, což je ID klienta z identity aplikace pro webovou aplikaci nebo aplikaci API. | 
+| audience | Ano | Identifikátor GUID cílového prostředku, ke kterému chcete získat přístup, což je ID klienta z identity aplikace pro webovou aplikaci nebo aplikaci API. | 
 | clientId | Ano | Identifikátor GUID pro klienta požadujícího přístup, což je ID klienta z identity aplikace pro vaši aplikaci logiky. | 
 | Tajný kód | Ano | Klíč nebo heslo z identity aplikace pro klienta, který žádá o přístupový token | 
 | type | Ano | Typ ověřování. Pro ověřování ActiveDirectoryOAuth je hodnota `ActiveDirectoryOAuth`. | 
 |||| 
 
-Například:
+Příklad:
 
 ``` json
 {
@@ -234,7 +234,7 @@ Například:
 
 <a name="certificate"></a>
 
-#### <a name="certificate-authentication"></a>Ověřování certifikátu
+#### <a name="certificate-authentication"></a>Ověření certifikátu
 
 Pokud chcete ověřit příchozí požadavky z aplikace logiky do vaší webové aplikace nebo aplikace API, můžete použít klientské certifikáty. Chcete-li nastavit kód, zjistěte, [jak nakonfigurovat vzájemné ověřování TLS](../app-service/app-service-web-configure-tls-mutual-auth.md).
 

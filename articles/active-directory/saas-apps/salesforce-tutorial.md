@@ -4,24 +4,23 @@ description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: d2d7d420-dc91-41b8-a6b3-59579e043b35
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 12/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d137a96a967e017c67da7dfabf25502de32ba7a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 71521348c5510696add4399d3046833d3b42193c
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970002"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561881"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>Kurz: Azure Active Directory integraci jednotného přihlašování se službou Salesforce
 
@@ -33,7 +32,7 @@ V tomto kurzu se dozvíte, jak integrovat Salesforce s Azure Active Directory (A
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -70,17 +69,13 @@ Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Salesforc
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Salesforce, dokončete následující stavební bloky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
-    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-2. **[NAKONFIGURUJTE jednotné přihlašování Salesforce](#configure-salesforce-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    1. **[Vytvořte testovacího uživatele Salesforce](#create-salesforce-test-user)** , abyste měli protějšek B. Simon v Salesforce, který je propojený s reprezentací uživatele Azure AD.
-3. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
+    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[NAKONFIGURUJTE jednotné přihlašování Salesforce](#configure-salesforce-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    * **[Vytvořte testovacího uživatele Salesforce](#create-salesforce-test-user)** , abyste měli protějšek B. Simon v Salesforce, který je propojený s reprezentací uživatele Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
-
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
-
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Salesforce, proveďte následující kroky:
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -90,7 +85,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. V části **základní konfigurace SAML** proveďte následující kroky:
+1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
     a. Do textového pole **přihlašovací adresa URL** zadejte hodnotu pomocí následujícího vzoru:
 
@@ -107,11 +102,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a identifikátoru. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Salesforce](https://help.salesforce.com/support) .
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
     ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-1. V části **Nastavení Salesforce** zkopírujte příslušné adresy URL podle vašich požadavků.
+1. V části **Nastavení Salesforce** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
@@ -126,9 +121,6 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
-   
-    > [!NOTE]
-    > Atributy uživatele Salesforce rozlišují velká a malá písmena pro ověřování SAML.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -150,48 +142,56 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-salesforce-sso"></a>Konfigurace jednotného přihlašování Salesforce
 
-1. V prohlížeči otevřete novou kartu a přihlaste se ke svému účtu správce Salesforce.
+1. K automatizaci konfigurace v rámci Salesforce je potřeba nainstalovat rozšíření **prohlížeče pro zabezpečené přihlašování k aplikacím** kliknutím na **instalovat rozšíření**.
 
-2. Klikněte na **ikonu nastavení** **v pravém** horním rohu stránky.
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
+
+1. Po přidání rozšíření do prohlížeče klikněte na **nastavit Salesforce** . budete přesměrováni na aplikaci jednotného přihlašování Salesforce. Odtud zadejte přihlašovací údaje správce pro přihlášení do jednotného přihlašování Salesforce. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-13.
+
+    ![Konfigurace instalace](common/setup-sso.png)
+
+1. Pokud chcete nastavit Salesforce ručně, otevřete nové okno webového prohlížeče a přihlaste se k webu Salesforce společnosti jako správce a proveďte následující kroky:
+
+1. Klikněte na **ikonu nastavení** **v pravém** horním rohu stránky.
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-tutorial/configure1.png)
 
-3. Posuňte se dolů k **Nastavení** v navigačním podokně a kliknutím na **Identita** rozbalte související část. Pak klikněte na **nastavení jednotného přihlašování**.
+1. Posuňte se dolů k **Nastavení** v navigačním podokně a kliknutím na **Identita** rozbalte související část. Pak klikněte na **nastavení jednotného přihlašování**.
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-tutorial/sf-admin-sso.png)
 
-4. Na stránce **nastavení jednotného přihlašování** klikněte na tlačítko **Upravit** .
+1. Na stránce **nastavení jednotného přihlašování** klikněte na tlačítko **Upravit** .
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-tutorial/sf-admin-sso-edit.png)
 
     > [!NOTE]
     > Pokud pro svůj účet Salesforce nemůžete povolit nastavení jednotného přihlašování, možná budete muset kontaktovat [tým podpory klienta Salesforce](https://help.salesforce.com/support).
 
-5. Vyberte možnost **SAML povolena**a pak klikněte na tlačítko **Uložit**.
+1. Vyberte možnost **SAML povolena**a pak klikněte na tlačítko **Uložit**.
 
-      ![Konfigurace jednotného přihlašování](./media/salesforce-tutorial/sf-enable-saml.png)
+    ![Konfigurace jednotného přihlašování](./media/salesforce-tutorial/sf-enable-saml.png)
 
-6. Pokud chcete nakonfigurovat nastavení jednotného přihlašování SAML, klikněte na **Nový ze souboru metadat**.
+1. Pokud chcete nakonfigurovat nastavení jednotného přihlašování SAML, klikněte na **Nový ze souboru metadat**.
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-tutorial/sf-admin-sso-new.png)
 
-7. Kliknutím na **zvolit soubor** odešlete soubor XML s metadaty, který jste stáhli z Azure Portal, a kliknete na **vytvořit**.
+1. Kliknutím na **zvolit soubor** odešlete soubor XML s metadaty, který jste stáhli z Azure Portal, a kliknete na **vytvořit**.
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-tutorial/xmlchoose.png)
 
-8. Na stránce **nastavení jednotného přihlašování SAML** se automaticky naplní pole a klikněte na Uložit.
+1. Na stránce **nastavení jednotného přihlašování SAML** se automaticky naplní pole a klikněte na Uložit.
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-tutorial/salesforcexml.png)
 
-9. V levém navigačním podokně v Salesforce klikněte na **nastavení společnosti** a rozbalte související část a potom klikněte na **moje doména**.
+1. V levém navigačním podokně v Salesforce klikněte na **nastavení společnosti** a rozbalte související část a potom klikněte na **moje doména**.
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-tutorial/sf-my-domain.png)
 
-10. Přejděte dolů k části **Konfigurace ověřování** a klikněte na tlačítko **Upravit** .
+1. Přejděte dolů k části **Konfigurace ověřování** a klikněte na tlačítko **Upravit** .
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
-11. V části **Konfigurace ověřování** Zkontrolujte službu **AzureSSO** as **Authentication služby** konfigurace jednotného přihlašování SAML a pak klikněte na **Uložit**.
+1. V části **Konfigurace ověřování** Zkontrolujte službu **AzureSSO** as **Authentication služby** konfigurace jednotného přihlašování SAML a pak klikněte na **Uložit**.
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-tutorial/sf-auth-config.png)
 

@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: b9a5dbd8e24659493bbbefd50c3e234dca3dbdd9
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 800b51c8f900d2ea99900ea147b33010452348f5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129340"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639867"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Místní zotavení po havárii pro clustery Azure Databricks
 
@@ -21,7 +21,7 @@ Tento článek popisuje architekturu zotavení po havárii, která je užitečn�
 
 ## <a name="azure-databricks-architecture"></a>Architektura Azure Databricks
 
-Při vytváření pracovního prostoru Azure Databricks z Azure Portal se [spravované zařízení](../managed-applications/overview.md) nasadí jako prostředek Azure v rámci vašeho předplatného ve zvolené oblasti Azure (například západní USA). Toto zařízení je nasazené v [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) se [skupinou zabezpečení sítě](../virtual-network/manage-network-security-group.md) a účtem služby Azure Storage, který je ve vašem předplatném dostupný. Virtuální síť zajišťuje zabezpečení na úrovni hraničních prostředí pro pracovní prostor datacihly a je chráněn prostřednictvím skupiny zabezpečení sítě. V pracovním prostoru můžete vytvořit clustery datacihly poskytnutím typu VM Worker a Driver a verze modulu runtime datacihly. Trvalá data jsou dostupná ve vašem účtu úložiště, což může být Azure Blob Storage nebo Azure Data Lake Storage. Po vytvoření clusteru můžete úlohy spouštět pomocí poznámkových bloků, rozhraní REST API, koncových bodů ODBC/JDBC jejich připojením ke konkrétnímu clusteru.
+Při vytváření pracovního prostoru Azure Databricks z Azure Portal se [spravované zařízení](../azure-resource-manager/managed-applications/overview.md) nasadí jako prostředek Azure v rámci vašeho předplatného ve zvolené oblasti Azure (například západní USA). Toto zařízení je nasazené v [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) se [skupinou zabezpečení sítě](../virtual-network/manage-network-security-group.md) a účtem služby Azure Storage, který je ve vašem předplatném dostupný. Virtuální síť zajišťuje zabezpečení na úrovni hraničních prostředí pro pracovní prostor datacihly a je chráněn prostřednictvím skupiny zabezpečení sítě. V pracovním prostoru můžete vytvořit clustery datacihly poskytnutím typu VM Worker a Driver a verze modulu runtime datacihly. Trvalá data jsou dostupná ve vašem účtu úložiště, což může být Azure Blob Storage nebo Azure Data Lake Storage. Po vytvoření clusteru můžete úlohy spouštět pomocí poznámkových bloků, rozhraní REST API, koncových bodů ODBC/JDBC jejich připojením ke konkrétnímu clusteru.
 
 Rovina ovládacího prvku datacihly spravuje a monitoruje prostředí pracovního prostoru datacihly. Všechny operace správy, jako je vytvoření clusteru, se iniciují z plochy ovládacího prvku. Všechna metadata, například naplánované úlohy, jsou uložena v databázi Azure s geografickou replikací pro odolnost proti chybám.
 

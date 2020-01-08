@@ -1,5 +1,5 @@
 ---
-title: Aktivita toku dat v Azure Data Factory
+title: Aktivita toku dat
 description: Jak spouštět toky dat z kanálu služby Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 10/07/2019
-ms.openlocfilehash: 47126d1cf51f4b27863bb0b11e73cfe5592b8d57
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 01/02/2020
+ms.openlocfilehash: d0b9c59852175b91b4bf799a366ae5124fa0ae42
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929883"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644782"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Aktivita toku dat v Azure Data Factory
 
@@ -30,6 +30,10 @@ Aktivitu toku dat můžete použít k transformaci a přesunutí dat prostředni
       "dataflow": {
          "referenceName": "MyDataFlow",
          "type": "DataFlowReference"
+      },
+      "compute": {
+         "coreCount": 8,
+         "computeType": "General"
       },
       "staging": {
           "linkedService": {
@@ -51,7 +55,9 @@ Aktivitu toku dat můžete použít k transformaci a přesunutí dat prostředni
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
 toku dat | Odkaz na prováděný tok dat | DataFlowReference | Ano
-integrationRuntime | Výpočetní prostředí, na kterém se tok dat spouští | IntegrationRuntimeReference | Ano
+integrationRuntime | Výpočetní prostředí, na kterém se tok dat spouští. Pokud není zadaný, použije se automatické řešení Azure Integration runtime. | IntegrationRuntimeReference | Ne
+Compute. coreCount | Počet jader používaných v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | 8, 16, 32, 48, 80, 144, 272 | Ne
+Compute. computeType | Typ výpočetní služby použitý v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | "Obecné", "ComputeOptimized", "MemoryOptimized" | Ne
 Příprava. linkedService | Pokud používáte zdroj dat nebo jímku SQL DW, účet úložiště, který se používá pro základní fázování | LinkedServiceReference | Pouze v případě, že tok dat čte nebo zapisuje do SQL datového skladu
 Příprava. folderPath | Pokud používáte zdroj dat nebo jímku SQL DW, cesta ke složce v účtu BLOB Storage se používá pro základní fázování. | Řetězec | Pouze v případě, že tok dat čte nebo zapisuje do SQL datového skladu
 
@@ -59,7 +65,7 @@ Příprava. folderPath | Pokud používáte zdroj dat nebo jímku SQL DW, cesta 
 
 ### <a name="data-flow-integration-runtime"></a>Prostředí Integration runtime toku dat
 
-Vyberte, který Integration Runtime se má použít pro spuštění aktivity toku dat. Ve výchozím nastavení Data Factory používat prostředí Azure Integration runtime se čtyřmi jádry a bez TTL (Time to Live). Tento IR má pro výpočetní typ pro obecné účely a běží ve stejné oblasti jako vaše továrna. Můžete vytvářet vlastní prostředí Azure Integration runtime, která definují konkrétní oblasti, výpočetní typ, počty jader a hodnotu TTL pro spuštění aktivity toku dat.
+Vyberte, který Integration Runtime se má použít pro spuštění aktivity toku dat. Ve výchozím nastavení používá Data Factory k automatickému vyřešení prostředí Azure Integration runtime se čtyřmi jádry pracovního procesu a bez TTL (Time to Live). Tento IR má pro výpočetní typ pro obecné účely a běží ve stejné oblasti jako vaše továrna. Můžete vytvářet vlastní prostředí Azure Integration runtime, která definují konkrétní oblasti, výpočetní typ, počty jader a hodnotu TTL pro spuštění aktivity toku dat.
 
 V případě spuštění kanálu je cluster clusterem úloh, který trvá několik minut, než se spustí spuštění. Pokud není zadána hodnota TTL, je při každém spuštění kanálu vyžadován tento čas spuštění. Zadáte-li hodnotu TTL, zůstane aktivní fond clusterů aktivní po dobu zadanou po posledním spuštění, což bude mít za následek kratší dobu spouštění. Například pokud máte hodnotu TTL 60 minut a za každou hodinu spustíte tok dat, fond clusterů zůstane aktivní. Další informace najdete v tématu [prostředí Azure Integration runtime](concepts-integration-runtime.md).
 
@@ -85,6 +91,12 @@ Pokud datový tok používá parametrizované datové sady, nastavte hodnoty par
 Pokud je tok dat parametrizovaný, nastavte dynamické hodnoty parametrů toku dat na kartě **parametry** . K přiřazení hodnot parametrů Dynamic nebo Literal můžete použít jazyk výrazu kanálu ADF (jenom pro řetězcové typy) nebo jazyk výrazu toku dat. Další informace najdete v tématu [parametry toku dat](parameters-data-flow.md).
 
 ![Příklad spuštění parametru toku dat](media/data-flow/parameter-example.png "Příklad parametru")
+
+### <a name="parameterized-compute-properties"></a>Parametrizované výpočetní vlastnosti.
+
+Pokud použijete automatické řešení Azure Integration runtime a zadáte hodnoty Compute. coreCount a COMPUTE. computeType, můžete parametrizovat typ jádra nebo Compute.
+
+![Příklad spuštění parametru toku dat](media/data-flow/parameterize-compute.png "Příklad parametru")
 
 ## <a name="pipeline-debug-of-data-flow-activity"></a>Ladění kanálu aktivity toku dat
 

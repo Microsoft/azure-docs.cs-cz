@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: f2e9387af3c5922ec5eb0dded3d0d1d4bcee6a01
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084143"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376286"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -132,7 +132,7 @@ Pokud chcete přidat další síťovou kartu ke konfiguračnímu serveru, přide
 7. Zadejte přihlašovací údaje, které bude konfigurační server používat pro připojení k serveru VMware. Služba Site Recovery je použije k automatickému zjištění virtuálních počítačů VMware, které jsou dostupné pro replikaci. Vyberte **přidat** > **pokračovat**. Přihlašovací údaje, které tady zadáte, se uloží místně.
 8. V části **Konfigurovat přihlašovací údaje virtuálního počítače**zadejte uživatelské jméno a heslo virtuálních počítačů, do kterých se během replikace automaticky nainstaluje služba mobility. Pro počítače s **Windows** vyžaduje účet oprávnění místního správce na počítačích, které chcete replikovat. Pro **Linux**zadejte podrobnosti kořenového účtu.
 9. Vyberte **Dokončit konfiguraci** a dokončete registraci.
-10. Po dokončení registrace otevřete Azure Portal a ověřte, že je konfigurační server a server VMware uvedený v **Recovery Services trezoru** > **Spravovat** > **Site Recovery infrastruktury** >  **Konfigurační servery**.
+10. Po dokončení registrace otevřete Azure Portal a ověřte, že je konfigurační server a server VMware uvedený v **Recovery Services trezoru** > **Spravovat** > **Site Recovery infrastruktury** > **konfiguračních serverů**.
 
 ## <a name="upgrade-the-configuration-server"></a>Upgrade konfiguračního serveru
 
@@ -141,6 +141,10 @@ Chcete-li upgradovat konfigurační server na nejnovější verzi, přečtěte s
 ## <a name="manage-the-configuration-server"></a>Správa konfiguračního serveru
 
 Aby nedošlo k přerušení probíhající replikace, ujistěte se, že po registraci konfiguračního serveru do trezoru se IP adresa konfiguračního serveru nemění. Další informace o běžných úlohách správy konfiguračního serveru najdete v tématu [Správa konfiguračního serveru pro zotavení po havárii virtuálního počítače VMware](vmware-azure-manage-configuration-server.md).
+
+## <a name="troubleshoot-deployment-issues"></a>Řešení problémů při nasazování
+
+Řešení problémů s připojením & najdete v našem [článku o řešení potíží](vmware-azure-troubleshoot-configuration-server.md) .
 
 ## <a name="faqs"></a>Nejčastější dotazy
 
@@ -183,13 +187,11 @@ Aby nedošlo k přerušení probíhající replikace, ujistěte se, že po regis
 
     Nastavte konfigurační server v místním prostředí s přímým dohledem v centru a pro minimalizaci latencí přenosu dat. Můžete provést naplánované zálohování konfiguračního serveru pro [účely navrácení služeb po obnovení](vmware-azure-manage-configuration-server.md#failback-requirements).
 
+* Můžu změnit ovladač mezipaměti na konfiguračním serveru nebo procesovém serveru se škálováním na více instancí?
+
+    Ne, ovladač mezipaměti po dokončení instalace nelze změnit.
+
 Další Nejčastější dotazy týkající se konfiguračních serverů najdete v tématu [Nejčastější dotazy ke konfiguračnímu serveru](vmware-azure-common-questions.md#configuration-server).
-
-## <a name="troubleshoot-deployment-issues"></a>Řešení problémů s nasazením
-
-[!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
-
-
 
 ## <a name="next-steps"></a>Další kroky
 

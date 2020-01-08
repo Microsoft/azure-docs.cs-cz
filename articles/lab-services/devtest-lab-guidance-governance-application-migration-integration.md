@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 25342cfbb8ac7ad5538b1f009c75f1d101bfc047
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 14641e9096fa9366334e9f7460ae55cda0e6c2e8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560652"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644882"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Řízení Azure DevTest Labs infrastruktury – migrace a integrace aplikací
 Po navázání vývojového a testovacího prostředí je potřeba vzít v úvahu následující otázky:
@@ -93,7 +93,7 @@ Kdy je vhodné vytvořit novou virtuální síť pro prostředí DevTest Labs a 
 ### <a name="answer"></a>Odpověď
 Pokud vaše virtuální počítače potřebují komunikovat se stávající infrastrukturou, měli byste zvážit použití existující virtuální sítě v prostředí DevTest Labs. Pokud navíc používáte ExpressRoute, možná budete chtít minimalizovat množství virtuální sítě/podsítí, abyste nefragmentoval adresní prostor IP adres, který se přiřadí k použití v předplatných. Měli byste taky zvážit použití vzoru partnerského vztahu virtuálních sítí (hvězdicové model). Tento přístup umožňuje komunikaci VNet/Subnet napříč předplatnými v dané oblasti, i když partnerský vztah mezi oblastmi je funkce, která je součástí sítě Azure.
 
-V opačném případě by každé prostředí DevTest Labs mohlo mít vlastní virtuální síť. Upozorňujeme však, že existují [omezení](../azure-subscription-service-limits.md) počtu virtuálních sítí na jedno předplatné. Výchozí hodnota je 50, i když tento limit lze vystoupl na 100.
+V opačném případě by každé prostředí DevTest Labs mohlo mít vlastní virtuální síť. Upozorňujeme však, že existují [omezení](../azure-resource-manager/management/azure-subscription-service-limits.md) počtu virtuálních sítí na jedno předplatné. Výchozí hodnota je 50, i když tento limit lze vystoupl na 100.
 
 ## <a name="shared-public-or-private-ip"></a>Sdílená, veřejná nebo privátní IP adresa
 
@@ -117,7 +117,7 @@ Je nějaké pravidlo, které se dá nastavit na počet virtuálních počítač�
 Při zvažování počtu virtuálních počítačů na uživatele nebo na laboratorní prostředí existují tři hlavní aspekty:
 
 - **Celkové náklady** , které tým může strávit na prostředky v testovacím prostředí. Mnoho počítačů je snadné. Pro řízení nákladů jeden mechanismus omezí počet virtuálních počítačů na uživatele nebo na jedno testovací prostředí.
-- Celkový počet virtuálních počítačů v testovacím prostředí je ovlivněný dostupnými [kvótami na úrovni předplatného](../azure-subscription-service-limits.md) . Jedna z horních limitů je 800 skupin prostředků v rámci předplatného. DevTest Labs aktuálně pro každý virtuální počítač vytvoří novou skupinu prostředků (Pokud se nepoužívají sdílené veřejné IP adresy). Pokud je v předplatném 10 laboratoří, laboratoře můžou do každého testovacího prostředí umístit přibližně 79 virtuálních počítačů (800 horní limit – 10 skupin prostředků pro sebe sama o 10 laboratoří) = 79 virtuálních počítačů na testovací prostředí.
+- Celkový počet virtuálních počítačů v testovacím prostředí je ovlivněný dostupnými [kvótami na úrovni předplatného](../azure-resource-manager/management/azure-subscription-service-limits.md) . Jedna z horních limitů je 800 skupin prostředků v rámci předplatného. DevTest Labs aktuálně pro každý virtuální počítač vytvoří novou skupinu prostředků (Pokud se nepoužívají sdílené veřejné IP adresy). Pokud je v předplatném 10 laboratoří, laboratoře můžou do každého testovacího prostředí umístit přibližně 79 virtuálních počítačů (800 horní limit – 10 skupin prostředků pro sebe sama o 10 laboratoří) = 79 virtuálních počítačů na testovací prostředí.
 - Pokud je testovací prostředí připojené k místní síti přes Express Route (například), jsou **k dispozici definované adresní prostory IP adres** pro virtuální síť nebo podsíť. Aby se zajistilo, že se virtuální počítače v testovacím prostředí nedaří vytvořit (Chyba: nejde získat IP adresu), vlastníci testovacího prostředí můžou určit maximální počet virtuálních počítačů na testovací prostředí, které jsou zarovnané na adresní prostor IP adres.
 
 ## <a name="use-resource-manager-templates"></a>Používání šablon Správce prostředků

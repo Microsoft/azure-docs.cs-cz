@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: ed00a9df46660cc6bfb4ec5fd9a93c80f5d6653e
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: ff8cdf78d923394caf36610534eb5dcc7de571a4
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815326"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562540"
 ---
 # <a name="long-audio-api-preview"></a>Dlouhé zvukové rozhraní API (Preview)
 
@@ -42,15 +42,24 @@ Tento diagram poskytuje přehled o pracovním postupu na nejvyšší úrovni.
 Při přípravě textového souboru se ujistěte, že:
 
 * Je buď prostý text (. txt), nebo SSML text (. txt)
-  * U prostého textu je každý odstavec oddělený příkladem **zadání a návratového** [vstupu v prostém textu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) .
-  * V případě textu SSML se každý SSMLový kus považuje za odstavec. SSML kusy musí být oddělené různými odstavci – [Příklad textového vstupu SSML textu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt). Kód jazyka najdete v tématu [SSML (Speech syntéz Markup Language)](speech-synthesis-markup.md) .
 * Je kódovaný jako [UTF-8 s označením pořadí bajtů (BOM)](https://www.w3.org/International/questions/qa-utf8-bom.en#bom) .
-* Obsahuje více než 10 000 znaků nebo více než 50 odstavců.
 * Je jeden soubor, ne zip.
+* Obsahuje více než 400 znaků pro prostý text nebo 400 [fakturovatelných znaků](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech#pricing-note) pro text SSML a méně než 10 000 odstavců.
+  * U prostého textu je každý odstavec oddělený příkladem **zadání a návratového** [vstupu v prostém textu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) .
+  * V případě textu SSML se každý SSMLový kus považuje za odstavec. SSML části musí být oddělené různými odstavci – [Příklad textového vstupu SSML textu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)
+> [!NOTE]
+> Pro čínštinu (kontinentální), čínština (Hongkong), čínština (Tchaj-wan), japonština a korejština, se jedno slovo bude počítat jako dva znaky. 
+
+## <a name="submit-synthesis-requests"></a>Odeslání žádostí o Shrnutí
+
+Po přípravě vstupního obsahu postupujte podle pokynů k [rychlému startu pro přenos zvukové syntézy](https://aka.ms/long-audio-python) a odešlete žádost. Pokud máte více než jeden vstupní soubor, budete muset odeslat více požadavků. Je třeba mít na paměti některá omezení: 
+* Klient může pro každý účet předplatného Azure odeslat až 5 požadavků na server za sekundu. Pokud překročí omezení, klient obdrží kód chyby 429 (příliš mnoho požadavků). Snižte prosím částku žádosti za sekundu.
+* Server může spouštět a zařadit do fronty až 120 požadavků pro každý účet předplatného Azure. Pokud se překročí omezení, server vrátí kód chyby 429 (příliš mnoho požadavků). Počkejte prosím a zabraňte odeslání nové žádosti, dokud nebudou dokončeny některé žádosti.
+* Server bude pro každý účet předplatného Azure uchovávat až 20 000 požadavků. Pokud překročí omezení, před odesláním nových požadavků prosím odstraňte nějaké žádosti.
 
 ## <a name="audio-output-formats"></a>Formáty zvukového výstupu
 
-Rozhraní API pro dlouhé zvukové rozhraní podporuje následující formáty zvukového výstupu:
+Podporujeme flexibilní formáty zvukového výstupu. Můžete generovat zvukové výstupy na jeden odstavec nebo zřetězit zvuky do jednoho výstupu nastavením parametru ' concatenateResult '. Rozhraní API pro dlouhé zvukové rozhraní podporuje následující formáty zvukového výstupu:
 
 > [!NOTE]
 > Výchozí formát zvuku je RIFF-16khz-16bitový-mono-PCM.

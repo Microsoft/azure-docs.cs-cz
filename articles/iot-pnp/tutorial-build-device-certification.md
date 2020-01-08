@@ -3,18 +3,18 @@ title: Sestavení zařízení IoT technologie Plug and Play ve verzi Preview, kt
 description: Jako vývojář zařízení se dozvíte, jak můžete vytvořit zařízení IoT technologie Plug and Play ve verzi Preview, které je připravené k certifikaci.
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 06/28/2019
+ms.date: 12/28/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: e4dd5215812f0fd1a43afe0923601417bc8e6916
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 43fc928b1274159839dc0df395e86d065f84b4c7
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569637"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550262"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Sestavení zařízení IoT technologie Plug and Play ve verzi Preview, které je připravené k certifikaci
 
@@ -35,7 +35,7 @@ Pro absolvování tohoto kurzu potřebujete:
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - Sady [nástrojů Azure IoT pro rozšíření vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Extension Pack
 
-Budete také potřebovat zařízení IoT technologie Plug and Play, které vytvoříte v [rychlém startu: k vytvoření zařízení použijte model schopností zařízení](quickstart-create-pnp-device.md).
+Budete také potřebovat zařízení IoT technologie Plug and Play, které vytvoříte v [rychlém startu: k vytvoření zařízení použijte model schopností zařízení](quickstart-create-pnp-device-windows.md).
 
 ## <a name="store-a-capability-model-and-interfaces"></a>Uložení modelu a rozhraní schopností
 
@@ -58,7 +58,7 @@ K předání procesu certifikace musíte do svého modelu schopností zahrnout a
 ```
 
 > [!NOTE]
-> Pokud jste dokončili [rychlý Start: k vytvoření zařízení použít model schopností zařízení](quickstart-create-pnp-device.md), už jste do svého modelu zahrnuli rozhraní **informací o zařízení** .
+> Pokud jste dokončili [rychlý Start: k vytvoření zařízení použít model schopností zařízení](quickstart-create-pnp-device-windows.md), už jste do svého modelu zahrnuli rozhraní **informací o zařízení** .
 
 Chcete-li do modelu zařízení zahrnout **informace o rozhraní informací o zařízení** , přidejte ID rozhraní do vlastnosti `implements` modelu schopností:
 

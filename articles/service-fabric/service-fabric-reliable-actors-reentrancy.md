@@ -1,33 +1,24 @@
 ---
-title: Vícenásobný přístup v Azure Service Fabric actors | Dokumentace Microsoftu
-description: Úvod do vícenásobného přístupu pro Service Fabric Reliable Actors.
-services: service-fabric
-documentationcenter: .net
+title: Vícenásobný přístup v Azure Service Fabric Actors
+description: Úvod do Vícenásobný přístup pro Service Fabric Reliable Actors, způsob, jak logicky zabránit zablokování na základě kontextu volání.
 author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: be23464a-0eea-4eca-ae5a-2e1b650d365e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 46682787bac2d60d188384a4078ca2fa1f46ae7a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46ce91e607341e2fbdc0b6a3018e74cb24e76839
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725410"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645527"
 ---
-# <a name="reliable-actors-reentrancy"></a>Vícenásobný přístup Reliable Actors
-Modul runtime Reliable Actors ve výchozím nastavení, umožňuje vícenásobného přístupu na základě kontextu logické volání. To umožňuje koncepce actorů je naprosto vícenásobné, když jsou v tomtéž řetězu volání kontextu. Například objektu Actor A odešle zprávu do objektu Actor B, který odešle zprávu do objektu Actor C. Při zpracování zprávy Pokud objekt Actor C volání objektu Actor A zpráva je vícenásobné, tak bude možné. Další zprávy, které jsou součástí jiné volání kontextu se zablokuje na objektu Actor A dokud se nedokončí zpracování.
+# <a name="reliable-actors-reentrancy"></a>Reliable Actors Vícenásobný přístup
+Modul runtime Reliable Actors ve výchozím nastavení umožňuje logický volání Vícenásobný přístup na základě kontextu. To umožňuje, aby se aktéri znovu zavolaly, pokud jsou ve stejném řetězci kontextu volání. Například objekt actor A pošle zprávu objektu actor B, který pošle zprávu objektu actor C. V rámci zpracování zprávy, pokud objekt actor C volá objekt actor A, je zpráva znovu zavolána, takže bude povolena. Všechny ostatní zprávy, které jsou součástí jiného kontextu volání, budou blokovány u objektu actor A do doby, než dokončí zpracování.
 
-Existují dvě možnosti k dispozici pro objekt actor opětovný vstup definovaný v `ActorReentrancyMode` výčtu:
+Pro objekt actor Vícenásobný přístup definované ve výčtu `ActorReentrancyMode` jsou k dispozici dvě možnosti:
 
-* `LogicalCallContext` (výchozí nastavení)
-* `Disallowed` – Zakáže vícenásobného přístupu
+* `LogicalCallContext` (výchozí chování)
+* `Disallowed` – zakáže Vícenásobný přístup
 
 ```csharp
 public enum ActorReentrancyMode
@@ -43,9 +34,9 @@ public enum ActorReentrancyMode
     Disallowed(2)
 }
 ```
-Vícenásobný přístup se dá nakonfigurovat v `ActorService`pro nastavení během registrace. Toto nastavení platí pro všechny instance objektu actor v objektu actor service vytvoří.
+Vícenásobný přístup se dá nakonfigurovat v nastaveních `ActorService`během registrace. Nastavení platí pro všechny instance objektu actor vytvořené ve službě objektu actor.
 
-Následující příklad ukazuje služby objektu actor, který nastaví režim opětovný vstup do `ActorReentrancyMode.Disallowed`. V tomto případě, pokud prvek "actor" odešle zprávu vícenásobné na jiný objekt actor výjimku typu `FabricException` bude vyvolána výjimka.
+Následující příklad ukazuje službu objektu actor, která nastaví režim Vícenásobný přístup na `ActorReentrancyMode.Disallowed`. V tomto případě, pokud objekt actor odešle zprávu o předanému objektu jinému objektu actor, vyvolá se výjimka typu `FabricException`.
 
 ```csharp
 static class Program
@@ -110,5 +101,5 @@ static class Program
 ```
 
 
-## <a name="next-steps"></a>Další postup
-* Další informace o vícenásobný přístup v [referenční dokumentace rozhraní API objektu Actor](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+## <a name="next-steps"></a>Další kroky
+* Další informace o Vícenásobný přístup najdete v [referenční dokumentaci k rozhraní API actor](https://msdn.microsoft.com/library/azure/dn971626.aspx) .

@@ -7,17 +7,17 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 4c0d3822b5000611d1b5229924cb44d055795468
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 2bca4521184fa42002e6649a90bb9101fded595c
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688281"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658436"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Monitorování aplikací v Azure App Service
-[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) poskytuje integrované funkce monitorování pro webové aplikace, mobilní back-endy a aplikace API v [Azure Portal](https://portal.azure.com).
+[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) poskytuje integrované funkce monitorování pro webové aplikace, mobilní aplikace a aplikace API v [Azure Portal](https://portal.azure.com).
 
-V Azure Portal můžete zkontrolovat *kvóty* a *metriky* pro plán aplikací a App Service a nastavit *výstrahy* a *Automatické škálování* , které jsou založené na metrikách.
+V Azure Portal můžete zkontrolovat *kvóty* a *metriky* pro plán aplikací a App Service a nastavit *výstrahy* a automatické *škálování* , které jsou založeny na metrikách.
 
 ## <a name="understand-quotas"></a>Principy kvót
 
@@ -35,13 +35,13 @@ Kvóty pro bezplatné nebo sdílené aplikace jsou:
 | --- | --- |
 | **PROCESOR (krátký)** | Počet PROCESORů povolených pro tuto aplikaci v intervalu 5 minut. Tato kvóta se resetuje každých pět minut. |
 | **CPU (den)** | Celková velikost procesoru povoleného pro tuto aplikaci za den. Tato kvóta se resetuje každých 24 hodin v půlnoci UTC. |
-| **Rezident** | Celková velikost paměti, která je pro tuto aplikaci povolena. |
-| **Připojení** | Celková velikost odchozí šířky pásma, která je pro tuto aplikaci povolená za den. Tato kvóta se resetuje každých 24 hodin v půlnoci UTC. |
+| **Paměť** | Celková velikost paměti, která je pro tuto aplikaci povolena. |
+| **Šířka pásma** | Celková velikost odchozí šířky pásma, která je pro tuto aplikaci povolená za den. Tato kvóta se resetuje každých 24 hodin v půlnoci UTC. |
 | **Systému souborů** | Celková velikost povoleného úložiště. |
 
 Jediná kvóta platí pro aplikace, které jsou hostované v systému souborů *Basic*, *Standard*a *Premium* .
 
-Další informace o konkrétních kvótách, omezeních a funkcích, které jsou dostupné pro různé App Service SKU, najdete v tématu [omezení služby předplatného Azure](../azure-subscription-service-limits.md#app-service-limits).
+Další informace o konkrétních kvótách, omezeních a funkcích, které jsou dostupné pro různé App Service SKU, najdete v tématu [omezení služby předplatného Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).
 
 ### <a name="quota-enforcement"></a>Vynucení kvót
 
@@ -79,13 +79,13 @@ V případě aplikace jsou dostupné metriky:
 | **Generace paměti 1. generace** | Kolikrát jsou objekty generace 1 od spuštění procesu aplikace uvolněny z paměti. GC vyšší generace zahrnuje všechny GC nižší generace.|
 | **Uvolňování paměti 2. generace** | Kolikrát jsou objekty generace 2 od spuštění procesu aplikace uvolněny z paměti.|
 | **Počet popisovačů** | Celkový počet popisovačů aktuálně otevřených procesem aplikace.|
-| **2xx http** | Počet požadavků, které mají za následek stavový kód HTTP ≥ 200, ale < 300. |
-| **3xx http** | Počet požadavků, které mají za následek stavový kód HTTP ≥ 300, ale < 400. |
-| **HTTP 401** | Počet požadavků, které mají za následek stavový kód HTTP 401 |
-| **HTTP 403** | Počet požadavků, které mají za následek stavový kód HTTP 403 |
-| **HTTP 404** | Počet požadavků, které mají za následek stavový kód HTTP 404 |
+| **Http 2xx** | Počet požadavků, které mají za následek stavový kód HTTP ≥ 200, ale < 300. |
+| **Http 3xx** | Počet požadavků, které mají za následek stavový kód HTTP ≥ 300, ale < 400. |
+| **Http 401** | Počet požadavků, které mají za následek stavový kód HTTP 401 |
+| **Http 403** | Počet požadavků, které mají za následek stavový kód HTTP 403 |
+| **Http 404** | Počet požadavků, které mají za následek stavový kód HTTP 404 |
 | **Http 406** | Počet požadavků, které mají za následek stavový kód HTTP 406 |
-| **4xx http** | Počet požadavků, které mají za následek stavový kód HTTP ≥ 400, ale < 500. |
+| **Http 4xx** | Počet požadavků, které mají za následek stavový kód HTTP ≥ 400, ale < 500. |
 | **Chyby serveru http** | Počet požadavků, které mají za následek stavový kód HTTP ≥ 500, ale < 600. |
 | **IO – ostatní bajty za sekundu** | Rychlost, s jakou proces aplikace vydává bajty, do vstupně-výstupních operací, které neobsahují data, jako jsou například operace řízení.|
 | **V/v – ostatní operace za sekundu** | Frekvence, s jakou proces aplikace vystavuje vstupně-výstupní operace, které nejsou operacemi čtení nebo zápisu.|
@@ -130,7 +130,7 @@ K dispozici jsou dvě metriky, které odrážejí využití CPU:
 Metriky pro aplikaci a plán služby App Service jsou protokolovány a agregovány službou s následujícími podrobnostmi a zásadami uchovávání informací:
 
 * Metriky členitosti na **minuty** se uchovávají po dobu 30 hodin.
-* Metriky členitosti **hodin** se uchovávají po dobu 30 dnů.
+* Metriky členitosti **hodin** jsou uchovávány po dobu 30 dnů.
 * Metriky členitosti **dne** se uchovávají po dobu 30 dnů.
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Monitorování kvót a metrik v Azure Portal
@@ -144,19 +144,16 @@ Pokud chcete najít kvóty, vyberte **nastavení** > **kvóty**. V grafu můžet
 1. Jeho aktuální limit.
 1. Její aktuální hodnota.
 
-graf metriky ![v Azure Portal][metrics] můžete k metrikám přistupovat přímo ze stránky **prostředků** . Postup přizpůsobení grafu: 
-1. Vyberte graf.
-1. Vyberte **Upravit graf**.
-1. Upravte **časový rozsah**.
-1. Upravit **typ grafu**.
-1. Upravte metriky, které chcete zobrazit.  
+graf metriky ![v Azure Portal][metrics] můžete k metrikám přistupovat přímo ze stránky **Přehled** prostředků. Tady uvidíte grafy reprezentující některé metriky aplikací.
+
+Kliknutím na některý z těchto grafů přejdete k zobrazení metrik, kde můžete vytvářet vlastní grafy, dotazovat se na různé metriky a mnohem víc. 
 
 Další informace o metrikách najdete v tématu [monitorování metrik služby](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
 
 ## <a name="alerts-and-autoscale"></a>Výstrahy a automatické škálování
 Metriky pro aplikaci nebo plán App Service můžete připojit k výstrahám. Další informace naleznete v tématu [Doručování oznámení o upozorněních](../monitoring-and-diagnostics/insights-alerts-portal.md).
 
-App Service aplikace hostované v plánech Basic, Standard nebo Premium App Service podporují automatické škálování. Díky automatickému škálování můžete nakonfigurovat pravidla, která monitorují metriky App Service plánu. Pravidla mohou zvýšit nebo snížit počet instancí, což může poskytovat další prostředky podle potřeby. Pravidla vám také pomůžou ušetřit peníze při zřizování aplikace.
+App Service aplikace hostované v plánech Basic a vyšší App Service podporují automatické škálování. Díky automatickému škálování můžete nakonfigurovat pravidla, která monitorují metriky App Service plánu. Pravidla mohou zvýšit nebo snížit počet instancí, což může poskytovat další prostředky podle potřeby. Pravidla vám také pomůžou ušetřit peníze při zřizování aplikace.
 
 Další informace o automatickém škálování najdete v tématu [Jak škálovat](../monitoring-and-diagnostics/insights-how-to-scale.md) a [osvědčené postupy pro Azure monitor automatického škálování](../azure-monitor/platform/autoscale-best-practices.md).
 

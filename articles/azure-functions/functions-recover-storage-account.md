@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 212f10bd33479e5a9f7244d5b2090c0324f937c2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 358f26af8d990d29f226978387fdf8093d2b8644
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226762"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612968"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Řešení potíží s modulem runtime funkcí je nedosažitelný.
 
@@ -23,7 +23,7 @@ Tento dokument je určený k odstraňování potíží s následující chybou, 
 ### <a name="summary"></a>Souhrn
 K tomuto problému dochází, když Modul runtime služby Azure Functions nepůjde spustit. Nejběžnějším důvodem této chyby je, že aplikace Function App ztratí přístup k účtu úložiště. [Přečtěte si další informace o požadavcích na účet úložiště.](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
 
-### <a name="troubleshooting"></a>Poradce při potížích
+### <a name="troubleshooting"></a>Řešení potíží
 Projdeme si čtyři nejběžnější chybové případy, jak identifikovat a jak vyřešit jednotlivé případy.
 
 1. Účet úložiště se odstranil.
@@ -31,6 +31,8 @@ Projdeme si čtyři nejběžnější chybové případy, jak identifikovat a jak
 1. Přihlašovací údaje účtu úložiště nejsou platné.
 1. Účet úložiště není dostupný.
 1. Úplná kvóta spuštění plná
+1. Aplikace je za bránou firewall.
+
 
 ## <a name="storage-account-deleted"></a>Účet úložiště se odstranil.
 
@@ -48,7 +50,7 @@ Pokud jste v předchozím kroku neměli připojovací řetězec účtu úložiš
 
 ### <a name="required-application-settings"></a>Požadovaná nastavení aplikace
 
-* Požadováno
+* Požaduje se
     * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
 * Vyžadováno pro funkce plánu spotřeby
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
@@ -56,7 +58,7 @@ Pokud jste v předchozím kroku neměli připojovací řetězec účtu úložiš
 
 [Tady si přečtěte o těchto nastaveních aplikace.](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
-### <a name="guidance"></a>Doprovodné materiály
+### <a name="guidance"></a>Pokyny
 
 * U některého z těchto nastavení nezaškrtávejte možnost nastavení slotu. Při výměně slotů nasazení bude funkce přerušena.
 * Tato nastavení neměňte v rámci automatizovaných nasazení.
@@ -80,6 +82,12 @@ Pokud máte nakonfigurovanou denní kvótu spuštění, vaše Function App se do
 * Chcete-li ověřit, zkontrolujte funkce Open Platform > Nastavení Function App na portálu. Pokud překročíte kvótu, zobrazí se následující zpráva.
     * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
 * Pokud chcete tento problém vyřešit, odeberte kvótu a restartujte aplikaci.
+
+## <a name="app-is-behind-a-firewall"></a>Aplikace je za bránou firewall.
+
+Pokud je vaše aplikace Functions hostovaná s [interním vyrovnáváním zatížení App Service Environment](../app-service/environment/create-ilb-ase.md) a je nakonfigurovaná tak, aby blokovala příchozí internetový provoz, nebo má nakonfigurovaná [omezení příchozích IP adres](functions-networking-options.md#inbound-ip-restrictions) pro blokování přístupu k Internetu, nebude váš modul runtime vaší funkce dostupný. Azure Portal volá přímo do spuštěné aplikace, aby mohl načíst seznam funkcí a také volání http do koncového bodu KUDU. Nastavení na úrovni platformy na kartě `Platform Features` bude stále k dispozici.
+
+* Pokud chcete ověřit konfiguraci pomocného programu pro čtení, přejděte na NSG podsítě, kde se nachází Správce konfigurace, a ověřte příchozí pravidla, abyste umožnili provoz přicházející z veřejné IP adresy počítače, ve kterém přistupujete k aplikaci. Portál můžete použít taky z počítače připojeného k virtuální síti, na které běží vaše aplikace, nebo na virtuálním počítači spuštěném ve virtuální síti. [Tady si můžete přečíst další informace o konfiguraci příchozího pravidla.](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)
 
 ## <a name="next-steps"></a>Další kroky
 

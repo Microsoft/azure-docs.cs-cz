@@ -3,17 +3,17 @@ title: Generovat token zabezpečení pro přístup do úložiště IoT technolog
 description: Vygenerujte token sdíleného přístupového podpisu, který se použije při programovém přístupu do úložiště modelu IoT technologie Plug and Play Preview.
 author: Philmea
 ms.author: philmea
-ms.date: 08/06/2019
+ms.date: 12/27/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: f6c4f5b9784eeff9d03b6e93953674736fb78c6c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2530c5b3561ad90eac0556770a8a356cfaa6a52c
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976022"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531283"
 ---
 # <a name="generate-sas-token"></a>Generovat token SAS
 
@@ -74,7 +74,7 @@ public static string generateSasToken(string hostName, string repoId, string key
 
 ## <a name="use-the-sas-token"></a>Použít token SAS
 
-Po vygenerování tokenu SAS ho můžete použít k vytvoření požadavku HTTP POST. Například:
+Po vygenerování tokenu SAS ho můžete použít k vytvoření požadavku HTTP POST. Příklad:
 
 ```text
 POST https:///models/{modelId}?repositoryId={repositoryId}&api-version=2019-07-01-preview

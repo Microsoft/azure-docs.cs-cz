@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b53207802b84e63f08c26de254ccd86a6b4620e2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 679e033418fba34eddddd21ddca66b1d9bb2fd48
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100010"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645884"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení DBMS v počítačích Azure Virtual Machines s IBM DB2 pro úlohy SAP
 
@@ -77,8 +77,8 @@ ms.locfileid: "70100010"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide.md 
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
@@ -236,7 +236,7 @@ ms.locfileid: "70100010"
 
 [powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -250,7 +250,7 @@ ms.locfileid: "70100010"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -318,7 +318,7 @@ V této části najdete různé články o úlohách SAP v Azure, které jsou vy
 
 Následující poznámky SAP se týkají SAP v Azure, které se týkají oblasti popsané v tomto dokumentu:
 
-| Číslo poznámky | Název |
+| Číslo poznámky | Nadpis |
 | --- | --- |
 | [1928533] |Aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure |
 | [2015553] |SAP v Microsoft Azure: požadavky na podporu |
@@ -359,7 +359,7 @@ Alternativně můžete použít fondy úložiště Windows (k dispozici jenom ve
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
-Pro disky obsahující cesty úložiště Db2 pro adresáře sapdata a saptmp je nutné zadat velikost sektoru fyzického disku 512 KB. Při používání fondů úložiště Windows je potřeba vytvořit fondy úložiště ručně prostřednictvím rozhraní příkazového řádku pomocí parametru `-LogicalSectorSizeDefault`. Další informace naleznete v tématu <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
+Pro disky obsahující cesty úložiště Db2 pro adresáře sapdata a saptmp je nutné zadat velikost sektoru fyzického disku 512 KB. Při používání fondů úložiště Windows je potřeba vytvořit fondy úložiště ručně prostřednictvím rozhraní příkazového řádku pomocí parametru `-LogicalSectorSizeDefault`. Další informace naleznete v tématu <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
 U virtuálních počítačů Azure řady M-Series se při použití Azure Akcelerátor zápisu můžou latence zápisu do protokolů transakcí snížit podle faktorů v porovnání s výkonem Azure Premium Storage. Proto byste měli nasadit Azure Akcelerátor zápisu pro virtuální pevné disky, které tvoří svazek pro protokoly transakcí Db2. Podrobnosti lze přečíst v dokumentu [akcelerátor zápisu](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator).
 
@@ -382,7 +382,7 @@ Pokud chcete zvýšit počet cílů, na které se má zapisovat, můžete v záv
 >[!NOTE]
 >Db2 ve Windows nepodporuje technologii Windows VSS. V důsledku toho není možné využít zálohu služby Azure Backup pro virtuální počítače konzistentní s aplikacemi pro virtuální počítače, ve kterých je nasazený systém Db2 DBMS.
 
-### <a name="high-availability-and-disaster-recovery"></a>Vysoká dostupnost a zotavení po havárii
+### <a name="high-availability-and-disaster-recovery"></a>Vysoká dostupnost a obnovení po havárii
 Server Microsoft Clustering (MSCS) není podporován.
 
 Podporuje se zotavení po havárii Db2 s vysokou dostupností (HADR). Pokud virtuální počítače konfigurace HA obsahují překlad IP adres, nastavení v Azure se neliší od žádného nastavení, které se provádí v místním prostředí. Nedoporučuje se spoléhat jenom na rozlišení IP.
@@ -402,5 +402,5 @@ Pro disky obsahující cesty úložiště Db2 pro adresáře sapdata a saptmp je
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 
-### <a name="other"></a>Ostatní
+### <a name="other"></a>Jiné
 Všechny ostatní obecné oblasti, jako jsou skupiny dostupnosti Azure nebo monitorování SAP, jsou popsané v dokumentu [týkajícím se nasazení azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) pro nasazení virtuálních počítačů s využitím i databáze IBM.

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: 48bac68b518706cf3a23d2283da7cda49846e0a7
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: cde505e4c95de9b9693a0e9d260d7fa84f3e905b
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795832"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531475"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services a strojové učení
 
@@ -27,8 +27,8 @@ Cognitive Services poskytuje možnosti strojového učení, které řeší Obecn
 |[Rozhodnutí](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Kompilace aplikací, které zveřejňují doporučení pro informované a efektivní rozhodování|
 |[Jazyk](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Umožněte svým aplikacím, aby zpracovávaly přirozený jazyk s využitím předem sestavených skriptů, vyhodnocovaly subjektivní hodnocení a naučily se rozpoznávat, co uživatelé chtějí.|
 |[Search](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Přidejte do svých aplikací rozhraní API pro Vyhledávání Bingu a využijte možnosti pročesávat miliardy webů, obrázků, videí a novinek pomocí jediného volání rozhraní API.|
-|[Řečí](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|Převádějte řeč na text a text na přirozeně znějící řeč. Překládejte z jednoho jazyka do druhého a používejte možnost ověření a rozpoznání mluvčího.|
-|[Vidění](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Využijte možnost rozpoznávat, identifikovat, indexovat a moderovat vaše obrázky, videa a obsah digitálního rukopisu a opatřovat je titulky.|
+|[Řeč](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|Převádějte řeč na text a text na přirozeně znějící řeč. Překládejte z jednoho jazyka do druhého a používejte možnost ověření a rozpoznání mluvčího.|
+|[Vize](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Využijte možnost rozpoznávat, identifikovat, indexovat a moderovat vaše obrázky, videa a obsah digitálního rukopisu a opatřovat je titulky.|
 ||||
 
 Použijte Cognitive Services, když:
@@ -92,16 +92,16 @@ Následující data kategorizují každou službu podle druhu dat, která povolu
 |Služba rozpoznávání|Nevyžadují se žádné školicí údaje.|Poskytnete některá nebo všechna školicí data.|Shromažďování dat v reálném čase nebo téměř v reálném čase|
 |--|--|--|--|
 |[Detektor anomálií](./Anomaly-Detector/overview.md)|x|x|x|
-|Vyhledávání pomocí služby Bing |x|||
+|Vyhledávání Bingu |x|||
 |[Počítačové zpracování obrazu](./Computer-vision/Home.md)|x|||
 |[Content Moderator](./Content-Moderator/overview.md)|x||x|
 |[Custom Vision](./Custom-Vision-Service/home.md)||x||
-|[Plochy](./Face/Overview.md)|x|x||
+|[Rozpoznávání tváře](./Face/Overview.md)|x|x||
 |[Nástroj pro rozpoznávání formulářů](./form-recognizer/overview.md)||x||
 |[Moderní čtečka](./immersive-reader/overview.md)|x|||
 |[Rozpoznávání rukopisu](./Ink-recognizer/overview.md)|x|x||
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
-|[Přizpůsobení](./personalizer/what-is-personalizer.md)|znak|znak|x|
+|[Přizpůsobení](./personalizer/what-is-personalizer.md)|x*|x*|x|
 |[QnA Maker](./QnAMaker/Overview/overview.md)||x||
 |[Nástroj pro rozpoznávání mluvčího](./speaker-recognition/home.md)||x||
 |[Převod textu na řeč hlasu (TTS)](speech-service/text-to-speech.md)|x|x||
@@ -134,7 +134,7 @@ Cognitive Services, které poskytují exportované modely pro jiné nástroje pr
 ## <a name="learn-more"></a>Další informace
 
 * [Průvodce architekturou – Jaké jsou produkty pro strojové učení v Microsoftu?](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
-* [Machine Learning – Úvod do hloubkového učení vs. Machine Learning](../machine-learning/service/concept-deep-learning-vs-machine-learning.md)
+* [Machine Learning – Úvod do hloubkového učení vs. Machine Learning](../machine-learning/concept-deep-learning-vs-machine-learning.md)
 
 ## <a name="next-steps"></a>Další kroky
 

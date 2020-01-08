@@ -1,56 +1,47 @@
 ---
-title: Azure Service Fabric události agregace pomocí diagnostiky Azure pro Linux | Dokumentace Microsoftu
-description: Další informace o agregaci a shromažďování událostí pomocí LAD pro monitorování a diagnostiku clustery Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
+title: Agregace událostí pomocí Azure Diagnostics pro Linux
+description: Naučte se agregovat a shromažďovat události pomocí LAD pro monitorování a diagnostiku clusterů Azure Service Fabric.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 212158d9a76fa2e49c60be0b5c52f281497c155b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fdb78498d33416ef21b2e2b0f498e7afa6a58d99
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393125"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609957"
 ---
-# <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Agregace událostí a kolekce pomocí diagnostiky Azure Linux
+# <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Agregace a shromažďování událostí pomocí Azure Diagnostics pro Linux
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
 > * [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
 >
 >
 
-Když používáte cluster Azure Service Fabric, je vhodné pro shromažďování protokolů ze všech uzlů v centrálním umístění. S protokoly v centrálním umístění vám pomáhají analyzovat a řešit problémy ve vašem clusteru nebo problémy v aplikace a služby běžící v tomto clusteru.
+Pokud používáte cluster Azure Service Fabric, je vhodné shromáždit protokoly ze všech uzlů v centrálním umístění. Protokoly v centrálním umístění vám pomůžou analyzovat a řešit problémy v clusteru nebo problémy s aplikacemi a službami běžícími v tomto clusteru.
 
-Jeden způsob, jak nahrát a shromažďovat protokoly je použít rozšíření diagnostiky Azure Linux (LAD), nahraje protokoly do služby Azure Storage, který má také možnost odeslat protokoly do služby Azure Application Insights nebo Center událostí. Externí proces lze také použít ke čtení události ze služby storage a umístit je do o produkt poskytovaný analýzy platformy, jako [protokoly Azure monitoru](../log-analytics/log-analytics-service-fabric.md) nebo jiné řešení analýzy protokolů.
+Jedním ze způsobů, jak nahrávat a shromažďovat protokoly, je použít rozšíření Linux Azure Diagnostics (LAD), které nahrává protokoly k Azure Storage a má také možnost odesílat protokoly do Azure Application Insights nebo Event Hubs. Můžete také použít externí proces ke čtení událostí z úložiště a jejich umístění do produktu Analysis Platform, jako jsou [protokoly Azure monitor](../log-analytics/log-analytics-service-fabric.md) nebo jiné řešení pro analýzu protokolů.
 
 ## <a name="log-and-event-sources"></a>Zdroje protokolů a událostí
 
-### <a name="service-fabric-platform-events"></a>Události platformy Service Fabric
-Service Fabric vysílá několik protokolů out-of-the-box prostřednictvím [LTTng](https://lttng.org), včetně provozní události nebo běhové události. Tyto protokoly se ukládají v umístění, které určuje šablony Resource Manageru clusteru. Pro získání nebo nastavení podrobností účtu úložiště, vyhledá značku **AzureTableWinFabETWQueryable** a hledejte **StoreConnectionString**.
+### <a name="service-fabric-platform-events"></a>Service Fabric události platformy
+Service Fabric emituje několik bezplatných protokolů prostřednictvím [LTTng](https://lttng.org), včetně provozních událostí nebo běhových událostí. Tyto protokoly jsou uloženy v umístění, které určuje šablona Správce prostředků clusteru. Pokud chcete získat nebo nastavit podrobnosti účtu úložiště, vyhledejte tag **AzureTableWinFabETWQueryable** a vyhledejte **StoreConnectionString**.
 
 ### <a name="application-events"></a>Události aplikace
- Události generované z kódu vašich aplikací a služeb, jako jste je uvedli v při instrumentaci vašeho softwaru. Můžete použít žádné protokolování řešení, která zapisuje soubory založený na textu protokolu – například LTTng. Další informace najdete v dokumentaci LTTng na trasování pro tuto aplikaci.
+ Události emitované z kódu vašich aplikací a služeb, které jsou určeny při instrumentaci softwaru. Můžete použít jakékoli řešení protokolování, které zapisuje textové soubory protokolu – například LTTng. Další informace najdete v dokumentaci k LTTng o trasování vaší aplikace.
 
-[Monitorování a Diagnostika služeb v instalačním programu místním počítači vývoje](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md).
+[Monitorování a diagnostika služeb v nastavení pro vývoj v místním počítači](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
 
 ## <a name="deploy-the-diagnostics-extension"></a>Nasazení rozšíření diagnostiky
-Prvním krokem při shromažďování protokolů je k nasazení rozšíření diagnostiky na všech virtuálních počítačů v clusteru Service Fabric. Rozšíření diagnostiky shromažďuje protokoly na každém virtuálním počítači a odesílá je do účtu úložiště, který zadáte. 
+Prvním krokem při shromažďování protokolů je nasazení diagnostického rozšíření na každém virtuálním počítači v clusteru Service Fabric. Diagnostické rozšíření shromažďuje protokoly na každém virtuálním počítači a nahrává je do účtu úložiště, který zadáte. 
 
-Chcete-li nasadit rozšíření diagnostiky pro virtuální počítače v clusteru jako součást vytváření clusteru, nastavte **diagnostiky** k **na**. Po vytvoření clusteru nelze toto nastavení změnit pomocí portálu, takže budete muset provést potřebné změny v šabloně Resource Manageru.
+Pokud chcete v rámci vytváření clusteru nasadit diagnostické rozšíření na virtuální počítače v clusteru, nastavte **diagnostiku** na **zapnuto**. Po vytvoření clusteru nemůžete toto nastavení změnit pomocí portálu, takže budete muset provést příslušné změny v šabloně Správce prostředků.
 
-Tím se nakonfiguruje LAD agenta monitorování zadané soubory protokolu. Pokaždé, když se nový řádek je připojená k souboru, vytvoří záznam syslog, který je odeslán do služby storage (tabulky), který jste zadali.
+Tím se nakonfiguruje agent LAD pro sledování zadaných souborů protokolu. Pokaždé, když se do souboru připojí nový řádek, vytvoří se položka syslog, která se pošle do úložiště (tabulky), které jste zadali.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-1. Chcete-li podrobněji pochopit, jaké události byste měli zkontrolovat při řešení potíží, přečtěte si téma [LTTng dokumentaci](https://lttng.org/docs) a [pomocí LAD](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux).
-2. [Nastavení agenta Log Analytics](service-fabric-diagnostics-event-analysis-oms.md) pomůže shromažďovat metriky, monitorování kontejnerů v clusteru a vizualizovat vaše protokoly 
+1. Další informace o tom, jaké události byste měli prošetřit při řešení problémů, najdete v [dokumentaci k LTTng](https://lttng.org/docs) a [pomocí lad](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux).
+2. [Nastavte agenta Log Analytics](service-fabric-diagnostics-event-analysis-oms.md) , který vám umožní shromáždit metriky, monitorovat kontejnery nasazené v clusteru a vizualizovat protokoly. 

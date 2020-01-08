@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 11/08/2019
+ms.date: 01/02/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aea9fbb14d3892419af104c44c8bfd5528eef421
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6da6bffbc54bfa6e9c39ddace665eb7cfec58614
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021917"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638659"
 ---
 # <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>Rozhraní API pro Microsoft Graph pro Privileged Identity Management (Preview)
 
@@ -29,6 +29,8 @@ Podrobnosti o rozhraních API Microsoft Graph najdete v referenčních informac�
 
 > [!IMPORTANT]
 > Rozhraní API pod verzí/beta v Microsoft Graph jsou ve verzi Preview a mohou se měnit. Použití těchto rozhraní API v produkčních aplikacích není podporováno.
+>
+> I když jsou všechny operace PIM podporované prostřednictvím našich Graph APIch příkazů, používáme pro schvalování žádostí o aktivaci jiný systém. Graph API ke schválení se momentálně vyvíjí a vydávají se za několik následujících měsíců.
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 

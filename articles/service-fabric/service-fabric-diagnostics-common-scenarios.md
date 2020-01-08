@@ -1,29 +1,20 @@
 ---
-title: Azure Service Fabric diagnostikovat běžné scénáře | Microsoft Docs
-description: Naučte se řešit běžné scénáře s využitím Azure Service Fabric
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric – diagnostikování běžných scénářů
+description: Přečtěte si o řešení běžných scénářů monitorování a diagnostiky v rámci aplikací Azure Service Fabric.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 265aea1b8873d812859b39175c732c3e7118cbb5
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: b012e37bef7fe21e869fc3af415ca57b74c61dd8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60394121"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645782"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnostika běžných scénářů pomocí Service Fabric
 
-Tento článek popisuje běžné scénáře, se kterými se uživatelé setkali v oblasti monitorování a diagnostiky s Service Fabric. Uvedené scénáře zahrnují všechny 3 vrstvy Service Fabric: Aplikace, cluster a infrastruktura. Každé řešení používá protokoly Application Insights a Azure Monitor, nástroje pro monitorování Azure k dokončení jednotlivých scénářů. Kroky v jednotlivých řešeních dávají uživatelům úvodní informace o tom, jak používat protokoly Application Insights a Azure Monitor v kontextu Service Fabric.
+Tento článek popisuje běžné scénáře, se kterými se uživatelé setkali v oblasti monitorování a diagnostiky s Service Fabric. Uvedené scénáře zahrnují všechny 3 vrstvy Service Fabric: aplikace, cluster a infrastruktura. Každé řešení používá protokoly Application Insights a Azure Monitor, nástroje pro monitorování Azure k dokončení jednotlivých scénářů. Kroky v jednotlivých řešeních dávají uživatelům úvodní informace o tom, jak používat protokoly Application Insights a Azure Monitor v kontextu Service Fabric.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -56,7 +47,7 @@ Tento článek popisuje běžné scénáře, se kterými se uživatelé setkali 
 1. Ve stejném Application Insights prostředku můžete místo výjimek a zobrazení všech požadavků vytvořit filtrování požadavků.
 2. Pokud používáte sadu SDK Service Fabric Application Insights, uvidíte vizuální znázornění vašich služeb, které jsou připojené k druhému, a počet úspěšných a neúspěšných žádostí. Na levé straně klikněte na mapa aplikace.
 
-    ![Mapa aplikace AI okno](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![mapa aplikace AI](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
+    ![okno Mapa aplikací AI](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![mapa aplikace AI](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
 
     Další informace o mapě aplikace najdete v [dokumentaci k mapě aplikací](../azure-monitor/app/app-map.md) .
 

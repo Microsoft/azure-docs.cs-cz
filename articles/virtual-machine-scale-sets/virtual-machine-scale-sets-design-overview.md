@@ -1,7 +1,7 @@
 ---
-title: Aspekty návrhu pro Škálovací sady virtuálních počítačů Azure | Dokumentace Microsoftu
-description: Další informace o aspektech návrhu pro Škálovací sady virtuálních počítačů Azure
-keywords: virtuální počítač s linuxem, škálovacích sad virtuálních počítačů
+title: Faktory návrhu pro Azure Virtual Machine Scale Sets
+description: Přečtěte si o požadavcích na návrh pro Azure Virtual Machine Scale Sets. Porovnejte funkce sady škálování s funkcemi virtuálních počítačů.
+keywords: virtuální počítač Linux, sada škálování virtuálních počítačů
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -16,62 +16,62 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: manayar
-ms.openlocfilehash: 67bbad7e73f33d73d4c3f1d4f7e5599d2ef914e3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4238e96465a1fd7ad3e73c62134437cd819fba8a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60618468"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359439"
 ---
-# <a name="design-considerations-for-scale-sets"></a>Aspekty návrhu pro Škálovací sady
-Tento článek popisuje aspekty návrhu pro Škálovací sady virtuálních počítačů. Informace o tom, co jsou Škálovací sady virtuálních počítačů, [přehled škálovacích sad virtuálních počítačů](virtual-machine-scale-sets-overview.md).
+# <a name="design-considerations-for-scale-sets"></a>Požadavky na návrh pro sady škálování
+Tento článek popisuje požadavky návrhu pro Virtual Machine Scale Sets. Informace o tom, co Virtual Machine Scale Sets, najdete v tématu [Virtual Machine Scale Sets Overview](virtual-machine-scale-sets-overview.md).
 
-## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>Kdy použít škálovací sady místo virtuálních počítačů?
-Obecně platí, škálovací sady jsou užitečné při nasazování infrastrukturu s vysokou dostupností kde sadu počítačů má podobnou konfiguraci. Ale některé funkce jsou k dispozici pouze ve škálovacích sadách při další funkce jsou k dispozici ve virtuálních počítačích. Aby bylo možné provést informované rozhodnutí o tom, kdy používat jednotlivé technologie, byste měli provést nejdřív podívat na některé běžně používané funkce, které jsou k dispozici ve škálovacích sadách, ale ne virtuální počítače:
+## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>Kdy použít sady škálování místo virtuálních počítačů?
+Obecně platí, že sady škálování jsou užitečné pro nasazení infrastruktury s vysokou dostupností, kde sada počítačů má podobnou konfiguraci. Některé funkce jsou ale dostupné jenom v sadách škálování, ale jiné funkce jsou dostupné jenom na virtuálních počítačích. Aby bylo možné se rozhodnout, kdy používat jednotlivé technologie, měli byste se nejdřív podívat na některé běžně používané funkce, které jsou dostupné v sadě škálování, ale ne na virtuální počítače:
 
-### <a name="scale-set-specific-features"></a>Funkce specifické pro sadu škálování
+### <a name="scale-set-specific-features"></a>Funkce škály specifické pro sadu
 
-- Až zadáte škálovací sady konfigurace, můžete aktualizovat *kapacity* vlastnost nasazení více virtuálních počítačů současně. Tento proces je lepší než psaní skriptu pro orchestraci nasazování mnoho jednotlivých virtuálních počítačů současně.
-- Je možné [automatické škálování škálovací sady pomocí Azure Autoscale](./virtual-machine-scale-sets-autoscale-overview.md) , ale nikoli jednotlivým virtuálním počítačům.
-- Je možné [obnovení z Image škálovací sady virtuálních počítačů](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage) ale [není jednotlivým virtuálním počítačům](https://docs.microsoft.com/rest/api/compute/virtualmachines).
-- Je možné [nadměrné](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning) pro zvýšení spolehlivosti a rychlejší doba nasazení škálovací sady virtuálních počítačů. Jednotlivé virtuální počítače nelze značných, není-li napsat vlastní kód k provedení této akce.
-- Můžete zadat [zásad upgradu](./virtual-machine-scale-sets-upgrade-scale-set.md) usnadňuje zavedení upgrady napříč virtuálními počítači ve škálovací sadě. S jednotlivými virtuálními počítači je nutné orchestraci aktualizací sami.
+- Jakmile zadáte konfiguraci sady škálování, můžete aktualizovat vlastnost *Capacity* , aby se nasadilo více virtuálních počítačů paralelně. Tento proces je vhodnější než psaní skriptu pro orchestraci nasazení mnoha jednotlivých virtuálních počítačů paralelně.
+- Automatické škálování [Azure můžete použít k automatickému škálování sady škálování](./virtual-machine-scale-sets-autoscale-overview.md) , ale ne jednotlivých virtuálních počítačů.
+- [Virtuální počítače](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage) můžete obnovit přes image, ale [ne jednotlivé virtuální počítače](https://docs.microsoft.com/rest/api/compute/virtualmachines).
+- Pro zvýšení spolehlivosti a rychlejšího nasazení můžete [zajistit nadměrné zřízení](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning) virtuálních počítačů sady škálování. Pokud nevytvoříte vlastní kód k provedení této akce, nemůžete přezřizovat jednotlivé virtuální počítače.
+- Můžete určit [zásady upgradu](./virtual-machine-scale-sets-upgrade-scale-set.md) , které usnadňují zavedení upgradů mezi virtuálními počítači ve vaší sadě škálování. U jednotlivých virtuálních počítačů je nutné aktualizace orchestrovat sami.
 
-### <a name="vm-specific-features"></a>Funkce specifické pro virtuální počítač
+### <a name="vm-specific-features"></a>Funkce specifické pro virtuální počítače
 
-Některé funkce jsou aktuálně dostupné pouze ve virtuálních počítačích:
+Některé funkce jsou v tuto chvíli dostupné jenom na virtuálních počítačích:
 
-- Můžete zaznamenat bitovou kopii z konkrétního virtuálního počítače, ale ne z virtuálních počítačů ve škálovací sadě.
-- Konkrétního virtuálního počítače můžete migrovat z nativních disků na managed disks, ale nemůžete migrovat instance virtuálních počítačů ve škálovací sadě.
-- Můžete přiřadit veřejné IP adresy protokolu IPv6 pro jednotlivé virtuální počítač virtuální síťové karty (síťové adaptéry), ale nejde udělat pro instance virtuálních počítačů ve škálovací sadě. Můžete přiřadit veřejnou IP adresu IPv6 pro před buď jednotlivým virtuálním počítačům Vyrovnávání zatížení nebo škálovací sady virtuálních počítačů.
+- Image můžete zachytit z jednotlivého virtuálního počítače, ale ne z virtuálního počítače v sadě škálování.
+- Jednotlivé virtuální počítače můžete migrovat z nativních disků na Managed disks, ale nemůžete migrovat instance virtuálních počítačů do sady škálování.
+- Můžete přiřadit veřejné IP adresy IPv6 jednotlivým virtuálním síťovým kartám virtuálních počítačů (nic), ale nemůžou to udělat pro instance virtuálních počítačů v sadě škálování. Veřejné IP adresy IPv6 můžete přiřadit nástrojům pro vyrovnávání zatížení před jednotlivými virtuálními počítači nebo virtuálními počítači sady škálování.
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
-### <a name="scale-sets-with-azure-managed-disks"></a>Škálovací sady pomocí Azure Managed Disks
-Škálovací sady se dají vytvářet pomocí [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) místo účtů tradiční Azure storage. Spravované disky poskytují následující výhody:
-- Nemusíte předem vytvořit sadu účtů úložiště Azure pro škálovací sady virtuálních počítačů.
-- Můžete definovat [připojené datové disky](virtual-machine-scale-sets-attached-disks.md) pro virtuální počítače ve škálovací nastavit.
-- Škálovací sady lze nakonfigurovat pro [podporují až 1 000 virtuálních počítačů v sadě](virtual-machine-scale-sets-placement-groups.md). 
+### <a name="scale-sets-with-azure-managed-disks"></a>Škálování sad pomocí Azure Managed Disks
+Sady škálování je možné vytvořit s využitím [azure Managed disks](../virtual-machines/windows/managed-disks-overview.md) místo tradičních účtů úložiště Azure. Managed Disks poskytují následující výhody:
+- Nemusíte předem vytvářet sadu účtů úložiště Azure pro virtuální počítače sady škálování.
+- Můžete definovat [připojené datové disky](virtual-machine-scale-sets-attached-disks.md) pro virtuální počítače ve vaší sadě škálování.
+- Sady škálování je možné nakonfigurovat tak, aby [podporovaly až 1 000 virtuálních počítačů v sadě](virtual-machine-scale-sets-placement-groups.md). 
 
-Pokud máte existující šablonu, můžete také [aktualizovat šablonu, kterou chcete používat službu Managed Disks](virtual-machine-scale-sets-convert-template-to-md.md).
+Pokud máte existující šablonu, můžete [šablonu také aktualizovat tak, aby používala Managed disks](virtual-machine-scale-sets-convert-template-to-md.md).
 
-### <a name="user-managed-storage"></a>Cloudově spravovaného úložiště
-Škálovací sadu, která není definovaná s Azure Managed Disks závisí na účty úložiště vytvořené uživatelem pro ukládání disků operačního systému virtuálních počítačů v sadě. Doporučuje se poměr 20 virtuálními počítači na jeden účet úložiště nebo i rychleji dosáhnout maximální vstupně-výstupní operace a taky využít výhod _předimenzování_ (viz níže). Doporučuje se také, rozložit počáteční znaky v názvech účtů úložiště mezi abecedy. Provádí se tak pomáhá rozložit zatížení mezi různých interních systémů. 
+### <a name="user-managed-storage"></a>Úložiště spravované uživatelem
+Sada škálování, která není definovaná s Azure Managed Disks, spoléhá na uživatelem vytvořené účty úložiště pro ukládání disků s operačním systémem virtuálních počítačů v sadě. Poměr 20 virtuálních počítačů na účet úložiště nebo méně se doporučuje k dosažení maximální vstupně-výstupní operace a také k _využití výhod převzetí (viz_ níže). Doporučuje se také rozšířit počáteční znaky názvů účtů úložiště napříč abecedou. Díky tomu je možné rozprostření zatížení napříč různými interními systémy. 
 
 
 ## <a name="overprovisioning"></a>Předimenzování
-Škálovací sady aktuálně výchozí "předimenzování" virtuální počítače. S vypnutým předimenzováním zapnuté, škálování nastavte ve skutečnosti přede zprovoznit další virtuální počítače, než se zobrazí výzva pro a pak odstraní nadbytečné virtuální počítače po požadovaný počet virtuálních počítačů jsou úspěšně zřízený. Předimenzování úspěšnosti zřizování zvyšuje a snižuje čas nasazení. Se vám nic neúčtuje za další virtuální počítače a že se nepočítají do vaší kvóty.
+Služba Scale Sets je aktuálně ve výchozím nastavení nastavena na "nadměrné zřízení" virtuálních počítačů. Když je přebytečná zřizování zapnuté, sada škálování ve skutečnosti připíná více virtuálních počítačů, než jste požadovali, a potom po úspěšném zřízení požadovaného počtu virtuálních počítačů odstraní nadbytečné virtuální počítače. Přezřizování zlepšuje míry úspěšnosti zřizování a zkracuje dobu nasazení. Za další virtuální počítače se vám neúčtují žádné poplatky, které se nepočítají na vaše limity kvót.
 
-Zatímco předimenzování zvýšit úspěšnost zřizování, může to způsobit matoucí chování pro aplikace, která není určená pro zpracování nadbytečné virtuální počítače, povolí a potom zmizení. Chcete-li předimenzování vypnout, ujistěte se, máte následující řetězec v šabloně: `"overprovision": "false"`. Další podrobnosti najdete v [dokumentace k rozhraní API REST pro nastavení Škálovací](/rest/api/virtualmachinescalesets/create-or-update-a-set).
+I když přebytečná zřizování vylepší míry úspěšnosti zřizování, může způsobit matoucí chování aplikace, která není navržená tak, aby se zobrazovaly další virtuální počítače a pak zmizí. Pokud chcete zapnout převýšení, ujistěte se, že máte v šabloně následující řetězec: `"overprovision": "false"`. Další podrobnosti najdete v [dokumentaci k sadě škálování REST API](/rest/api/virtualmachinescalesets/create-or-update-a-set).
 
-Pokud vaše škálovací sada používá cloudově spravovaného úložiště a vypnete předimenzování, může mít více než 20 virtuálními počítači na jeden účet úložiště, ale nedoporučuje ambice 40 z důvodů výkonu vstupně-výstupních operací. 
+Pokud vaše sada škálování používá uživatelsky spravované úložiště a vypnete přebírání, můžete mít více než 20 virtuálních počítačů na jeden účet úložiště, ale nedoporučujeme jít nad rámec 40 z hlediska výkonu v/v. 
 
-## <a name="limits"></a>Limits
-Škálovací sadu založenou na image Marketplace (také označovaný jako image platformy) a nakonfigurovat tak, aby používat službu Azure Managed Disks podporuje kapacitu až 1 000 virtuálních počítačů. Pokud nakonfigurujete svou škálovací sadu pro podporu více než 100 virtuálních počítačů, ne všechny scénáře fungovat stejně (pro příklad Vyrovnávání zatížení). Další informace najdete v tématu [práce se škálovacími sadami virtuálních počítačů velké](virtual-machine-scale-sets-placement-groups.md). 
+## <a name="limits"></a>Omezení
+Sada škálování vytvořená na obrázku Marketplace (označovaná také jako image platformy) a nakonfigurovaná na použití Azure Managed Disks podporuje kapacitu až 1 000 virtuálních počítačů. Pokud nakonfigurujete sadu škálování tak, aby podporovala více než 100 virtuálních počítačů, nebudou všechny scénáře fungovat stejně (například vyrovnávání zatížení). Další informace najdete v tématu [práce s velkými sadami škálování virtuálních počítačů](virtual-machine-scale-sets-placement-groups.md). 
 
-Škálovací sady nakonfigurovaný s účty úložiště spravovaného uživatele je aktuálně omezena na 100 virtuálních počítačů (a 5 účty úložiště se doporučují pro tuto škálovací).
+Sada škálování nakonfigurovaná s uživatelsky spravovanými účty úložiště je aktuálně omezená na 100 virtuálních počítačů (a pro toto škálování se doporučuje 5 účtů úložiště).
 
-Škálovací sady využívající vlastní image (které jste sestavili sami je jeden) může mít kapacitu až 600 virtuálních počítačů, když je nakonfigurována s Azure Managed disks. Pokud škálovací sada je nakonfigurovaný s účty úložiště spravovaného uživatele, musíte vytvořit všechny VHD disku operačního systému v rámci jednoho účtu úložiště. V důsledku toho doporučuje maximální počet virtuálních počítačů ve škálovací sadě vytvořené na vlastní imagi a cloudově spravovaného úložiště je 20. Pokud vypnete předimenzování, můžete přejít až 40.
+Sada škálování vytvořená na vlastní imagi (vámi vytvořená vámi) může mít kapacitu až 600 virtuálních počítačů, pokud je nakonfigurovaná pomocí služby Azure Managed disks. Pokud je sada škálování nakonfigurovaná s uživatelskými účty úložiště, musí se v rámci jednoho účtu úložiště vytvořit všechny virtuální pevné disky s operačním systémem. Výsledkem je, že maximální doporučený počet virtuálních počítačů v sadě škálování postavené na vlastní imagi a v uživatelsky spravovaném úložišti je 20. Pokud vypnete přezřizování, můžete přejít až na 40.
 
-Pro virtuální počítače s více než tato omezení povolit, je třeba nasadit více škálovacích sadách, jak je znázorněno v [Tato šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale).
+Pro více virtuálních počítačů, než jsou tato omezení povolena, je nutné nasadit více sad škálování, jak je znázorněno v [této šabloně](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale).
 

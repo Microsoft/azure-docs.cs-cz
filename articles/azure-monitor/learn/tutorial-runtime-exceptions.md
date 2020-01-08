@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: 70ecc5dc95aced3eb901f24910339eb059ba0c17
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d56b81dbe8c78b9b48f122d79f4567d0b0f42e27
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900473"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398538"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Vyhledání a diagnostika výjimek za běhu pomocí Azure Application Insights
 
@@ -28,9 +28,9 @@ Azure Application Insights shromažďuje telemetrii z vaší aplikace, kterou m�
 > * Vytvoření nové pracovní položky pro opravu chybného kódu
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
 - Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s následujícími úlohami:
     - Vývoj pro ASP.NET a web
@@ -84,9 +84,9 @@ Snapshot Debugger shromažďuje snímky nejčastěji se vyskytujících výjimek
 
     ![Snímek ladění](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-4. Pak máte možnost stáhnout tento snímek do sady Visual Studio, kde můžeme najít skutečný kód, který je třeba opravit. Uděláte to tak, že kliknete na **Stáhnout snímek**.
+4. Pak máte možnost stáhnout tento snímek do sady Visual Studio a najít tak skutečný kód, který je třeba opravit. Chcete-li tak učinit, klikněte na tlačítko **Stáhnout snímek**.
 5. Snímek se načte do aplikace Visual Studio.
-6. Nyní můžete spustit relaci ladění v Visual Studio Enterprise, která rychle identifikuje řádek kódu, který způsobil výjimku.
+6. Nyní můžete spustit relaci ladění v sadě Visual Studio Enterprise, která rychle najde řádek kódu, který způsobil výjimku.
 
     ![Výjimka v kódu](media/tutorial-runtime-exceptions/exception-code.png)
 
@@ -96,7 +96,7 @@ Všechna data shromážděná pomocí Application Insights jsou uložená ve slu
 
 1. Kliknutím na informace CodeLens nad kódem zobrazíte telemetrii poskytovanou službou Application Insights.
 
-    ![Kód](media/tutorial-runtime-exceptions/codelens.png)
+    ![kód](media/tutorial-runtime-exceptions/codelens.png)
 
 1. Kliknutím na **Analyzovat dopad** otevřete analýzu Application Insights Analytics.  Otevře se s několika dotazy, které poskytují podrobné informace o neúspěšných požadavcích, například počet ovlivněných uživatelů, prohlížeče a oblasti.<br><br>![Analýzy](media/tutorial-runtime-exceptions/analytics.png)<br>
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: c93198848058bad8c9af6903cc68253e71e2d668
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 72c44f47060a745c5a5266a0ca7173276eb5cb66
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996645"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658300"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se Application Gateway
 
@@ -158,7 +158,7 @@ Viz [trasy definované uživatelem podporované v Application Gateway podsíti](
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Jaká jsou omezení pro Application Gateway? Můžu tato omezení zvýšit?
 
-Viz [omezení Application Gateway](../azure-subscription-service-limits.md#application-gateway-limits).
+Viz [omezení Application Gateway](../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits).
 
 ### <a name="can-i-simultaneously-use-application-gateway-for-both-external-and-internal-traffic"></a>Můžu současně Application Gateway použít pro externí i interní provoz?
 
@@ -200,6 +200,9 @@ Ne.
 
 Ano. Podrobnosti najdete v tématu [migrace služby Azure Application Gateway a firewall webových aplikací z verze V1 na verzi v2](migrate-v1-v2.md).
 
+### <a name="does-application-gateway-support-ipv6"></a>Podporuje Application Gateway IPv6?
+
+Application Gateway V2 v současné době nepodporuje protokol IPv6. Může pracovat ve virtuální síti s duálním zásobníkem jenom pomocí protokolu IPv4, ale podsíť brány musí být jenom IPv4. Application Gateway v1 nepodporuje duální virtuální sítě zásobníku. 
 
 ## <a name="configuration---ssl"></a>Konfigurace-SSL
 
@@ -380,6 +383,30 @@ Ano. Pokud vaše konfigurace odpovídá následujícímu scénáři, neuvidíte 
 - Nasadili jste Application Gateway v2
 - Máte NSGu v podsíti služby Application Gateway.
 - Povolili jste protokoly toku NSG na těchto NSG.
+
+### <a name="how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address"></a>Návody používat Application Gateway v2 s pouze soukromou front-end IP adresou?
+
+Application Gateway V2 v současné době nepodporuje pouze režim privátních IP adres. Podporuje následující kombinace
+* Privátní IP adresa a veřejná IP adresa
+* Jenom veřejná IP adresa
+
+Pokud ale chcete použít Application Gateway v2 jenom s privátní IP adresou, můžete postupovat podle následujícího postupu:
+1. Vytvoření Application Gateway s IP adresou veřejného i privátního front-endu
+2. Nevytvářejte žádné naslouchací procesy pro veřejnou IP adresu front-endu. Application Gateway nebude naslouchat jakémukoli provozu na veřejné IP adrese, pokud pro něj nebudou vytvořeny žádné naslouchací procesy.
+3. Vytvořte a připojte [skupinu zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview) pro Application Gateway podsíť s následující konfigurací v pořadí podle priority:
+    
+    a. Povolte provoz ze zdroje jako značky služby **GatewayManager** a cíle jako **libovolný** a cílový port jako **65200-65535**. Tento rozsah portů je nutný pro komunikaci s infrastrukturou Azure. Tyto porty jsou chráněné (jsou uzamčené) pomocí ověření certifikátu. Externí entity, včetně správců uživatelů brány, nemůžou iniciovat změny těchto koncových bodů bez příslušných certifikátů.
+    
+    b. Povolení provozu ze zdroje jako značky služby **AzureLoadBalancer** a cílového a cílového portu jako **libovolného**
+    
+    c. Zakažte veškerý příchozí provoz ze zdroje jako značky **internetové** služby a cílového a cílového portu **.** Dát tomuto pravidlu *nejnižší prioritu* pro příchozí pravidla
+    
+    d. Ponechte výchozí pravidla, jako je například povolování příchozího VirtualNetwork, aby přístup na privátní IP adrese není blokovaný.
+    
+    e. Odchozí připojení k Internetu nejde zablokovat. V opačném případě dojde k problémům s protokolováním, metrikami atd.
+
+Ukázka konfigurace NSG jenom pro soukromý IP přístup: ![Application Gateway v2 konfigurace NSG jenom pro privátní IP adresy](./media/application-gateway-faq/appgw-privip-nsg.png)
+
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,25 +1,14 @@
 ---
-title: Popisující aplikace a služby Azure Service Fabric | Microsoft Docs
+title: Popisující aplikace a služby Azure Service Fabric
 description: Popisuje, jak se používají manifesty k popisu Service Fabric aplikací a služeb.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: mani-ramaswamy
-ms.assetid: 17a99380-5ed8-4ed9-b884-e9b827431b02
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/12/2019
-ms.author: atsenthi
-ms.openlocfilehash: a5e452bf3dc9f35c345a5f27af829904b4839ece
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 6014ef6a9b6ec810aafd5e5be96223b8ed92d576
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977117"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349960"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric manifestů aplikací a služeb
 Tento článek popisuje, jak jsou definovány aplikace a služby Service Fabric a se správou verzí pomocí souborů souboru ApplicationManifest. XML a ServiceManifest. XML.  Podrobnější příklady najdete v tématu [Příklady manifestu aplikace a služby](service-fabric-manifest-examples.md).  Schéma XML pro tyto soubory manifestu je dokumentováno v [dokumentaci ke schématu ServiceFabricServiceModel. xsd](service-fabric-service-model-schema.md).
@@ -28,7 +17,7 @@ Tento článek popisuje, jak jsou definovány aplikace a služby Service Fabric 
 > Schéma souboru XML manifestu vynutilo správné pořadí podřízených elementů.  V případě částečného alternativního řešení otevřete při vytváření nebo úpravách Service Fabric manifestů "C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd" v aplikaci Visual Studio. To vám umožní kontrolovat pořadí podřízených elementů a poskytuje práci.
 
 ## <a name="describe-a-service-in-servicemanifestxml"></a>Popis služby v ServiceManifest. XML
-Manifest služby deklarativně definuje typ a verzi služby. Určuje metadata služby, jako je typ služby, vlastnosti stavu, metriky vyrovnávání zatížení, binární soubory služby a konfigurační soubory.  Jiným způsobem, popisuje kód, konfiguraci a balíčky dat, které tvoří balíček služby pro podporu jednoho nebo více typů služeb. Manifest služby může obsahovat více balíčků kódu, konfigurací a dat, které mohou být nezávislé na verzi. Tady je manifest služby pro ASP.NET Core webovou front-end službu pro [hlasovací ukázkovou aplikaci](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) (a tady jsou některé podrobnější [Příklady](service-fabric-manifest-examples.md)):
+Manifest služby deklarativně definuje typ a verzi služby. Určuje metadata služby, jako je typ služby, vlastnosti stavu, metriky vyrovnávání zatížení, binární soubory služby a konfigurační soubory.  Jiným způsobem, popisuje kód, konfiguraci a balíčky dat, které tvoří balíček služby pro podporu jednoho nebo více typů služeb. Manifest služby může obsahovat více balíčků kódu, konfigurací a dat, které mohou být nezávislé na verzi. Tady je manifest služby pro ASP.NET Core webovou front-end službu pro [hlasovací ukázkovou aplikaci](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) (a tady jsou některé [podrobnější příklady](service-fabric-manifest-examples.md)):
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -81,9 +70,9 @@ Typické scénáře použití **SetupEntryPoint** jsou při spuštění spustite
 
 Další informace o tom, jak nakonfigurovat SetupEntryPoint, najdete v tématu [Konfigurace zásad pro vstupní bod nastavení služby](service-fabric-application-runas-security.md) .
 
-**EnvironmentVariables** (Nenastaveno v předchozím příkladu) poskytuje seznam proměnných prostředí, které jsou nastaveny pro tento balíček kódu. Proměnné prostředí lze přepsat v `ApplicationManifest.xml` a poskytnout tak různé hodnoty pro různé instance služby. 
+**EnvironmentVariables** (není nastavené v předchozím příkladu) poskytuje seznam proměnných prostředí, které jsou nastavené pro tento balíček kódu. Proměnné prostředí lze v `ApplicationManifest.xml` přepsat tak, aby poskytovaly různé hodnoty pro různé instance služby. 
 
-**DataPackage** (Nenastaveno v předchozím příkladu) deklaruje složku, která je pojmenována atributem **Name** , který obsahuje libovolných statických dat, která má být zpracována procesem v době běhu.
+Datový **balíček** (není nastaven v předchozím příkladu) deklaruje složku s názvem atribut **Name** , která obsahuje libovolná statická data, která má proces za běhu spotřebovat.
 
 **ConfigPackage** deklaruje složku, která je pojmenována atributem **Name** , který obsahuje soubor *Settings. XML* . Soubor nastavení obsahuje oddíly nastavení dvojice klíč-hodnota, které proces načítá za běhu zpět. Pokud se během upgradu změnila jenom **verze** ConfigPackage, spuštěný proces se nerestartuje. Místo toho zpětné volání upozorní proces, že došlo ke změně nastavení konfigurace, aby bylo možné je znovu načíst dynamicky. Tady je příklad souboru s *nastavením. XML* :
 
@@ -115,7 +104,7 @@ For more information about other features supported by service manifests, refer 
 ## <a name="describe-an-application-in-applicationmanifestxml"></a>Popis aplikace v souboru ApplicationManifest. XML
 Manifest aplikace deklarativně popisuje typ a verzi aplikace. Určuje metadata složení služby, jako jsou například stabilní názvy, schéma dělení, počet instancí/faktor replikace, zásady zabezpečení/izolace, omezení umístění, přepsání konfigurace a typy služeb prvků. Jsou popsány také domény vyrovnávání zatížení, do kterých je aplikace umístěna.
 
-Proto manifest aplikace popisuje prvky na úrovni aplikace a odkazuje na jeden nebo více manifestů služby za účelem vytvoření typu aplikace. Tady je manifest aplikace pro [hlasovací ukázkovou aplikaci](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) (a tady jsou některé podrobnější [Příklady](service-fabric-manifest-examples.md)):
+Proto manifest aplikace popisuje prvky na úrovni aplikace a odkazuje na jeden nebo více manifestů služby za účelem vytvoření typu aplikace. Tady je manifest aplikace pro [hlasovací ukázkovou aplikaci](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) (a tady jsou některé [podrobnější příklady](service-fabric-manifest-examples.md)):
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -162,21 +151,21 @@ Podobně jako manifesty služeb jsou atributy **verze** nestrukturované řetěz
 
 **Parametry** definují parametry používané v rámci manifestu aplikace. Hodnoty těchto parametrů lze zadat, když je vytvořena instance aplikace a může přepsat nastavení konfigurace aplikace nebo služby.  Výchozí hodnota parametru se použije, pokud se hodnota během vytváření instance aplikace nemění. Informace o údržbě různých parametrů aplikací a služeb pro jednotlivá prostředí najdete v tématu [Správa parametrů aplikace pro více prostředí](service-fabric-manage-multiple-environment-app-configuration.md).
 
-**ServiceManifestImport** obsahuje odkazy na manifesty služby, které tvoří tento typ aplikace. Manifest aplikace může obsahovat více importů manifestu služby, každý z nich může být nezávisle. Importované manifesty služby určují, jaké typy služeb jsou platné v rámci tohoto typu aplikace. V rámci ServiceManifestImport přepíšete hodnoty konfigurace v souboru Settings. XML a proměnných prostředí v souborech ServiceManifest. XML. **Zásady** (Nenastaveno v předchozím příkladu) pro svázání koncových bodů, zabezpečení a přístup a sdílení balíčků lze nastavit u importovaných manifestů služby.  Další informace najdete v tématu [Konfigurace zásad zabezpečení pro vaši aplikaci](service-fabric-application-runas-security.md).
+**ServiceManifestImport** obsahuje odkazy na manifesty služby, které tvoří tento typ aplikace. Manifest aplikace může obsahovat více importů manifestu služby, každý z nich může být nezávisle. Importované manifesty služby určují, jaké typy služeb jsou platné v rámci tohoto typu aplikace. V rámci ServiceManifestImport přepíšete hodnoty konfigurace v souboru Settings. XML a proměnných prostředí v souborech ServiceManifest. XML. **Zásady** (nejsou nastavené v předchozím příkladu) pro vytváření koncových bodů, zabezpečení a přístup a sdílení balíčků lze nastavit u importovaných manifestů služby.  Další informace najdete v tématu [Konfigurace zásad zabezpečení pro vaši aplikaci](service-fabric-application-runas-security.md).
 
 **DefaultServices** deklaruje instance služby, které jsou automaticky vytvořeny pokaždé, když je vytvořena instance aplikace proti tomuto typu aplikace. Výchozí služby jsou v každém ohledu na pohodlí a chovají se jako běžné služby, a to po jejich vytvoření. Jsou upgradovány spolu s jinými službami v instanci aplikace a lze je také odebrat. Manifest aplikace může obsahovat několik výchozích služeb.
 
-**Certifikáty** (Nenastaveno v předchozím příkladu) deklaruje certifikáty používané k [nastavení koncových bodů https](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service) nebo k [šifrování tajných klíčů v manifestu aplikace](service-fabric-application-secret-management.md).
+**Certifikáty** (nenastavené v předchozím příkladu) deklaruje certifikáty používané k [nastavení koncových bodů https](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service) nebo k [šifrování tajných klíčů v manifestu aplikace](service-fabric-application-secret-management.md).
 
 **Omezení umístění** jsou příkazy, které definují, kde by měly být spouštěny služby. Tyto příkazy jsou připojeny k jednotlivým službám, které vyberete pro jednu nebo více vlastností uzlu. Další informace najdete v tématu [omezení umístění a syntaxe vlastností uzlů](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#placement-constraints-and-node-property-syntax) .
 
-**Zásady** (Nenastaveno v předchozím příkladu) popisuje shromažďování protokolů, [výchozí zásady spuštění jako](service-fabric-application-runas-security.md), [stavu](service-fabric-health-introduction.md#health-policies)a [zabezpečení](service-fabric-application-runas-security.md) pro nastavení na úrovni aplikace, včetně toho, jestli služba (y) má přístup k modulu runtime Service Fabric.
+**Zásady** (nenastavené v předchozím příkladu) popisují shromažďování protokolů, [výchozí zásady spuštění jako](service-fabric-application-runas-security.md), [stav](service-fabric-health-introduction.md#health-policies)a [přístup](service-fabric-application-runas-security.md) k nastavení na úrovni aplikace, včetně toho, jestli služba (y) má přístup k modulu runtime Service Fabric.
 
 > [!NOTE] 
 > Ve výchozím nastavení mají aplikace Service Fabric přístup k modulu runtime Service Fabric, ve formě koncového bodu, který přijímá požadavky specifické pro aplikaci, a proměnných prostředí odkazujících na cesty k souborům na hostiteli, který obsahuje prostředky infrastruktury a soubory specifické pro aplikaci. . Zvažte zakázání tohoto přístupu, pokud je aplikace hostitelem nedůvěryhodného kódu (tj. kód, jehož provenience je neznámá nebo který vlastník aplikace ví, že nebudete moci provádět zabezpečení). Další informace najdete [v tématu osvědčené postupy zabezpečení v Service Fabric](service-fabric-best-practices-security.md#platform-isolation). 
 >
 
-**Objekty zabezpečení** (Nenastaveno v předchozím příkladu) popíší objekty zabezpečení (uživatele nebo skupiny) potřebné ke [spouštění služeb a zabezpečených prostředků služby](service-fabric-application-runas-security.md).  Na objekty zabezpečení se odkazuje v oddílech **zásad** .
+**Objekty** zabezpečení (nejsou nastavené v předchozím příkladu) popisují objekty zabezpečení (uživatele nebo skupiny), které jsou potřebné ke [spouštění služeb a zabezpečení prostředků služby](service-fabric-application-runas-security.md).  Na objekty zabezpečení se odkazuje v oddílech **zásad** .
 
 
 

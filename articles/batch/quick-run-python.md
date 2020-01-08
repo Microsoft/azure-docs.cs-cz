@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý Start: spuštění úlohy Azure Batch – rozhraní Python API'
-description: Úlohu a úkoly služby Batch lze rychle spustit pomocí klientské knihovny Batch Python.
+description: Pomocí klientské knihovny Batch Pythonu rychle spustíte ukázkovou úlohu Azure Batch a úlohy. Seznamte se s klíčovými koncepty služby Batch.
 services: batch
 author: laurenhughes
 manager: gwallace
@@ -12,12 +12,12 @@ ms.author: lahugh
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 6c9690a74e8dff9978fa4e07883738d062238121
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ab628ebe81592e7d5b2e6c79de5a62b368ee772d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72437364"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390241"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí rozhraní Python API
 
@@ -29,7 +29,7 @@ Aplikace odešle několik vstupních datových souborů do služby Azure Storage
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Python verze 2.7 nebo 3.3 nebo novější](https://www.python.org/downloads/)
 
@@ -51,7 +51,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 git clone https://github.com/Azure-Samples/batch-python-quickstart.git
 ```
 
-Přejít do adresáře, který obsahuje skript Pythonu `python_quickstart_client.py`.
+V adresáři, který obsahuje skript Pythonu `python_quickstart_client.py`, přejít.
 
 Ve vývojovém prostředí Pythonu nainstalujte vyžadované balíčky pomocí `pip`.
 
@@ -59,7 +59,7 @@ Ve vývojovém prostředí Pythonu nainstalujte vyžadované balíčky pomocí `
 pip install -r requirements.txt
 ```
 
-Otevřete soubor `config.py`. Aktualizujte řetězce přihlašovacích údajů účtu Batch a účtu úložiště s hodnotami získanými pro účty. Například:
+Otevřete soubor `config.py`. Aktualizujte řetězce přihlašovacích údajů účtu Batch a účtu úložiště s hodnotami získanými pro účty. Příklad:
 
 ```Python
 _BATCH_ACCOUNT_NAME = 'mybatchaccount'
@@ -232,7 +232,7 @@ for task in tasks:
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Aplikace automaticky odstraní kontejner úložiště, který vytvoří, a dá vám možnost odstranit fond a úlohu služby Batch. Za fond, ve kterém jsou spuštěné uzly, se účtují poplatky, i když nejsou naplánované žádné úlohy. Až fond nebudete potřebovat, odstraňte ho. Při odstranění fondu se odstraní veškeré výstupy úkolů v uzlech. 
+Aplikace automaticky odstraní kontejner úložiště, který vytvoří, a dá vám možnost odstranit fond a úlohu služby Batch. Poplatky se účtují za fond, ve kterém jsou spuštěné uzly, i když nejsou naplánované žádné úlohy. Až fond nebudete potřebovat, odstraňte ho. Při odstranění fondu se odstraní veškeré výstupy úkolů v uzlech. 
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, účet Batch a účet úložiště. Provedete to tak, že v Azure Portal vyberete skupinu prostředků účtu Batch a vyberete **Odstranit skupinu prostředků**.
 

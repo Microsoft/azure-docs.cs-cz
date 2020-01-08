@@ -1,24 +1,26 @@
 ---
-title: K dispozici Poznámkový blok Jupyter jako prezentace v Azure
-description: Jak nakonfigurovat buňky pro režim prezentace v poznámkovém bloku Jupyter a pak prezentujte prezentace pomocí rozšíření VZESTUPU.
-ms.topic: article
+title: Prezentovat Jupyter Poznámkový blok jako prezentaci Azure Notebooks Preview
+description: Naučte se konfigurovat buňky pro režim prezentace v Jupyter poznámkovém bloku a pak prezentaci prezentovat pomocí rozšíření pro zvýšení počtu.
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: d180eaf571fa57191e3b0856020b02f05d05e344
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 05dd3d9c5580e208ecf6f9e6d762476b0b493a6c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277597"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647114"
 ---
-# <a name="run-a-notebook-slideshow"></a>Spusťte Poznámkový blok prezentace
+# <a name="run-a-notebook-slideshow-in-azure-notebooks-preview"></a>Spuštění prezentace poznámkového bloku v Azure Notebooks Preview
 
 Poznámkových bloků Azure je předem nakonfigurovaný pomocí Jupyter/IPython prezentace rozšíření (VZESTUPU), který umožňuje poznámkového bloku přímo jako prezentaci. V prezentaci buňky jsou obvykle zobrazené jeden po druhém použitím velikosti písma, která je vhodná pro prezentace na velkých obrazovkách a můžete se ještě může spustit kód, spíše než přepnutí na ukázku samostatné počítače.
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Zobrazení standardního Poznámkový blok, ve kterém uvidíte Markdown a buňky s kódem všechno dohromady na následujícím obrázku:
 
 ![Poznámkový blok v standardní zobrazení](media/slideshow/slideshow-notebook-view.png)
 
-Při zahájení prezentace je první buňka zvětšena tak, aby vyplnila prohlížeč, kde **X** v levém horním rohu prezentace opustí **?** v dolním levém zobrazí klávesové zkratky a šipky v pravém dolním přecházet mezi snímky:
+Při spuštění prezentaci první buňky se zvětší tak, aby vyplnil prohlížeče, kde **X** v levém horním rohu se ukončí prezentací, **?** v dolním levém zobrazí klávesové zkratky a šipky v pravém dolním přecházet mezi snímky:
 
 ![Poznámkový blok v režimu prezentace](media/slideshow/slideshow-slide-view.png)
 
@@ -32,11 +34,11 @@ Příprava poznámkového bloku pro prezentaci zahrnuje dvě primární aktivity
 
 Je-li provést náhodné Poznámkový blok a používat ho pro prezentaci, obvykle pro vás, že všechny buňky jsou neuspořádaná společně a většina obsahu je skrytý spodní část okna prohlížeče. Aby efektivní prezentace, musíte přiřadit typ prezentace jednotlivé buňky pomocí nástrojů buňky prezentace:
 
-1. V nabídce **zobrazení** vyberte **panel nástrojů buňky** > **prezentace**:
+1. Na **zobrazení** nabídce vyberte možnost **buňky nástrojů** > **prezentace**:
 
     ![Zapnutí nástrojů prezentace buňky](media/slideshow/slideshow-view-cell-toolbar.png)
 
-1. Rozevírací seznam **typ snímku** se zobrazí v pravém horním rohu každé buňky v poznámkovém bloku:
+1. A **typ snímku** rozevíracího seznamu se zobrazí v pravém horním rohu buňky v poznámkovém bloku:
 
     ![Panel nástrojů prezentace buňky](media/slideshow/slideshow-cell-toolbar.png)
 
@@ -51,13 +53,13 @@ Je-li provést náhodné Poznámkový blok a používat ho pro prezentaci, obvyk
     | Dílčí snímku | Buňka je "primární snímku, přejde na šipku dolů v ovládacím prvku navigace pomocí below". Na šipku nahoru vrátí primární snímku. Dílčí snímky se používají pro sekundární materiál může přeskočit na hlavní cestě prezentace, ale snadno dostupné v případě potřeby. |
     | Fragment | Při použití na šipku navigace (fragment odebere pomocí kláves Šipka nahoru), zobrazí se v rámci předchozího snímku nebo dílčí snímku obsah buňky. Fragment můžete použít s buňku kódu k Ujistěte se, že kód, který se zobrazí v rámci snímku, nebo můžete použít několik fragmentů aby text, který se zobrazí odrážky jeden po druhém (viz příklad v další části). Protože fragmenty sestavení na aktuálním snímku, nadbytečné fragmenty nebudou viditelné mimo dolní části okna prohlížeče. |
     | Přeskočit | Buňka se nezobrazí v prezentaci. |
-    | Poznámky: | V buňce jako poznámky lektora, které se nezobrazují v prezentaci. |
+    | Poznámky | V buňce jako poznámky lektora, které se nezobrazují v prezentaci. |
 
-1. Zpočátku je vhodné zvolit **snímek** pro každou buňku. Budete moct zprovoznit službu prezentaci a proveďte příslušné změny.
+1. Standardně je užitečné, chcete-li zvolit **snímků** pro každou buňku. Budete moct zprovoznit službu prezentaci a proveďte příslušné změny.
 
 ### <a name="example-fragment-cells-for-bullet-items"></a>Příklad: fragment buněk pro položky odrážky
 
-Aby se odrážky na snímku zobrazovaly po jednom, umístěte záhlaví snímku do buňky Markdownu s typem **snímku** a potom každou odrážku umístěte do samostatné buňky Markdownu s typem **fragmentu** :
+Aby odrážky na snímku snímku hlavička v Markdownu buňku s se zobrazí po jednom, místě **snímku** zadejte pak umístit každý odrážek v buňce samostatné Markdown s **Fragment** typ:
 
 ![Příklad vytvoření více buněk Markdownu pro položky s odrážkami](media/slideshow/slideshow-fragments.png)
 
@@ -65,13 +67,13 @@ Protože prezentaci vykreslí fragmenty s více svislé mezery než když jsou v
 
 ## <a name="run-the-slideshow"></a>Spuštění prezentaci
 
-1. Pokud jste upravovali všechny buňky Markdownu, ujistěte se, že je spouštíte pro vykreslování HTML, jinak se v prezentaci zobrazí *jako* Markdownu.
+1. Pokud jste upravili všechny buňky Markdownu, ujistěte se, že je k vykreslení jejich HTML, jinak se zobrazují spustit *jako* Markdownu v prezentaci.
 
-1. Jakmile nakonfigurujete **typ snímku** pro každou buňku, vyberte buňku, se kterou chcete prezentaci spustit, a pak na hlavním panelu nástrojů vyberte tlačítko pro vytvoření **přírůstku pro vložení/ukončení** :
+1. Po dokončení konfigurace **typ snímku** pro každou buňku, vyberte buňku, pomocí kterého se má spustit prezentaci a pak vyberte **Enter a její opuštění NARŮSTAT prezentace** tlačítko na hlavním panelu nástrojů:
 
     ![Zapne/ukončí NARŮSTAT prezentace tlačítko na hlavním panelu nástrojů](media/slideshow/slideshow-start.png)
 
-1. Přecházet mezi snímky, jakož i fragmenty, použijte v ovládacím prvku navigační šipky vlevo a vpravo. Text v ovládacím prvku zobrazuje číslo představující *snímek. dílčí snímek*.
+1. Přecházet mezi snímky, jakož i fragmenty, použijte v ovládacím prvku navigační šipky vlevo a vpravo. Text v ovládacím prvku zobrazuje číslo představující *slide.sub snímku*.
 
     ![Ovládací prvek navigace prezentace](media/slideshow/slideshow-navigation-control.png)
 
@@ -86,13 +88,13 @@ Protože prezentaci vykreslí fragmenty s více svislé mezery než když jsou v
     ![Zobrazí se výstup buňky kódu v prezentaci](media/slideshow/slideshow-run-code-cell-output.png)
 
     > [!Tip]
-    > Výstup buňky je považováno za součást buněk v prezentaci. Pokud spustíte buňky v poznámkovém bloku nebo zobrazení prezentace, se zobrazí v ostatních zobrazeních i výstup. Pokud chcete výstup vymazat, **použijte > ** **aktuální výstupy** > **Vymazat** příkaz (pro aktuální buňku) nebo **buňku** > **všechny výstupy** > **clear** (pro všechny buňky).
+    > Výstup buňky je považováno za součást buněk v prezentaci. Pokud spustíte buňky v poznámkovém bloku nebo zobrazení prezentace, se zobrazí v ostatních zobrazeních i výstup. Pokud chcete vymazat výstup, použijte **buňky** > **aktuální výstupy** > **vymazat** příkazu (pro aktuální buňka) nebo **buňky**  >  **Všechny výstupy** > **vymazat** (pro všechny buňky).
 
-1. Až budete s prezentací hotovi, použijte **X** k návratu do zobrazení Poznámkový blok.
+1. Jakmile budete hotovi s prezentaci, použijte **X** se vrátíte do zobrazení poznámkového bloku.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Postupy: konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
-- [Postupy: Instalace balíčků z poznámkového bloku](install-packages-jupyter-notebook.md)
+- [Postupy: Konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
+- [Postupy: instalace balíčků z v rámci poznámkového bloku](install-packages-jupyter-notebook.md)
 - [Postupy: práce s datovými soubory](work-with-project-data-files.md)
 - [Postupy: přístup k datovým prostředkům](access-data-resources-jupyter-notebooks.md)

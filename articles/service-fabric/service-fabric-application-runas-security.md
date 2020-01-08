@@ -1,25 +1,14 @@
 ---
-title: Spuštění služby Azure Service Fabric v rámci systémových a místních účtů zabezpečení | Microsoft Docs
+title: Spuštění služby pod systémovými a místními účty zabezpečení
 description: Naučte se, jak spustit aplikaci Service Fabric v části účty System a Local Security.  Vytvořte objekty zabezpečení a použijte zásady spustit jako pro bezpečné spouštění služeb.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/29/2018
-ms.author: atsenthi
-ms.openlocfilehash: 8b0ddc619a7e840b0379a790bd21e7beae812109
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 53212f8636602705899834b6db1d3f0d80b5fe4f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600051"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610113"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>Spusťte službu jako místní uživatelský účet nebo účet místního systému.
 Pomocí Azure Service Fabric můžete zabezpečit aplikace spuštěné v clusteru v rámci různých uživatelských účtů. Ve výchozím nastavení Service Fabric aplikace běží pod účtem, pod kterým běží proces Fabric. exe. Service Fabric taky nabízí možnost spouštět aplikace pod účtem místního uživatele nebo systému. Podporovány jsou typy místních systémových účtů **LocalUser**, **NetworkService**, **LocalService**a **LocalSystem**.  Pokud používáte Service Fabric v samostatném clusteru se systémem Windows, můžete spustit službu pod [účtem domény služby Active Directory](service-fabric-run-service-as-ad-user-or-group.md) nebo [skupinovými účty spravované služby](service-fabric-run-service-as-gmsa.md).
@@ -183,7 +172,7 @@ Následující příklad manifestu služby ukazuje povolování přesměrování
 ```
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Pochopení aplikačního modelu](service-fabric-application-model.md)
 * [Určení prostředků v manifestu služby](service-fabric-service-manifest-resources.md)
 * [Nasazení aplikace](service-fabric-deploy-remove-applications.md)

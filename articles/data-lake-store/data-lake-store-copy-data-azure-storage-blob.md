@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 0225405c5d3a511bbb2bbb08c1c13e5adedd5096
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: ad408df140be49da2e50ef810285dd850e9da6a1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903778"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638863"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Kopírování dat z objektů blob Azure Storage do Azure Data Lake Storage Gen1
 
@@ -90,7 +90,7 @@ Parametry v syntaxi jsou popsány níže:
 
 ### <a name="performance-considerations"></a>Otázky výkonu
 
-Pokud provádíte kopírování z účtu Azure Blob Storage, můžete se během kopírování na straně úložiště objektů BLOB omezit. Tím dojde ke snížení výkonu úlohy kopírování. Další informace o limitech Azure Blob Storage najdete v tématu omezení Azure Storage v rámci [předplatného a služeb Azure](../azure-subscription-service-limits.md).
+Pokud provádíte kopírování z účtu Azure Blob Storage, můžete se během kopírování na straně úložiště objektů BLOB omezit. Tím dojde ke snížení výkonu úlohy kopírování. Další informace o limitech Azure Blob Storage najdete v tématu omezení Azure Storage v rámci [předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 ## <a name="use-adlcopy-as-standalone-to-copy-data-from-another-data-lake-storage-gen1-account"></a>Použití AdlCopy (jako samostatné) ke kopírování dat z jiného Data Lake Storage Gen1 účtu
 
@@ -165,7 +165,7 @@ V této části se dozvíte, jak pomocí AdlCopy kopírovat data ze zdroje (v na
 
         AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/FoodInspectionData/ /dest adl://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== /Pattern *.csv
 
-## <a name="billing"></a>Fakturace
+## <a name="billing"></a>Vyúčtování
 
 * Pokud použijete nástroj AdlCopy jako samostatný, budou se vám účtovat náklady na výstup pro přesun dat, pokud zdrojový Azure Storage účet není ve stejné oblasti jako Data Lake Storage Gen1 účet.
 * Pokud použijete nástroj AdlCopy s vaším účtem Data Lake Analytics, budou platit standardní [Data Lake Analytics fakturační sazby](https://azure.microsoft.com/pricing/details/data-lake-analytics/) .

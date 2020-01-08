@@ -3,17 +3,17 @@ title: Použití sady Visual Studio a Visual Studio Code k sestavení zařízen�
 description: Pomocí sady Visual Studio a Visual Studio Code urychlíte tvorbu modelů zařízení IoT technologie Plug and Play a implementací kódu zařízení.
 author: liydu
 ms.author: liydu
-ms.date: 10/29/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 6ce5a93cdd44af7f199d59d459daa46b4adb0719
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b4325aa6f379dc0b281d06cb593c28448698c71b
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748039"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531322"
 ---
 # <a name="use-visual-studio-and-visual-studio-code-to-build-iot-plug-and-play-devices"></a>Použití sady Visual Studio a Visual Studio Code k sestavování zařízení IoT technologie Plug and Play
 
@@ -150,13 +150,13 @@ Sestavte kód zařízení společně se sadou SDK zařízení C Vcpkg pomocí CM
 
 ### <a name="windows"></a>Windows
 
-Chcete-li sestavit kód zařízení společně se sadou SDK zařízení C v systému Windows pomocí CMake a sady Visual StudioC++ C/compilers na příkazovém řádku, přečtěte si téma [rychlý start pro IoT technologie Plug and Play](./quickstart-create-pnp-device.md). Následující kroky ukazují, jak sestavovat kód zařízení spolu se sadou C SDK Vcpkg jako projekt CMake v sadě Visual Studio.
+Chcete-li sestavit kód zařízení společně se sadou SDK zařízení C v systému Windows pomocí CMake a sady Visual StudioC++ C/compilers na příkazovém řádku, přečtěte si téma [rychlý start pro IoT technologie Plug and Play](./quickstart-create-pnp-device-windows.md). Následující kroky ukazují, jak sestavovat kód zařízení spolu se sadou C SDK Vcpkg jako projekt CMake v sadě Visual Studio.
 
-1. Postupujte podle kroků v [rychlém](https://docs.microsoft.com/azure/iot-pnp/quickstart-create-pnp-device#prepare-the-development-environment) startu a nainstalujte sadu SDK pro zařízení Azure IoT pro jazyk C přes Vcpkg.
+1. Postupujte podle kroků v [rychlém](https://docs.microsoft.com/azure/iot-pnp/quickstart-create-pnp-device-windows#prepare-the-development-environment) startu a nainstalujte sadu SDK pro zařízení Azure IoT pro jazyk C přes Vcpkg.
 
 1. Instalace sady [Visual Studio 2019 (Community, Professional nebo Enterprise)](https://visualstudio.microsoft.com/downloads/) – Ujistěte se, že jste do úlohy zahrnuli komponentu **Správce balíčků NuGet** a **desktopový vývoj. C++**
 
-1. Otevřete Visual Studio, vyberte **soubor > otevřít > cmake.** Chcete-li otevřít `CMakeLists.txt` ve složce obsahuje generovaný kód.
+1. Otevřete sadu Visual Studio, vyberte **soubor > otevřít > cmake...** pro otevření `CMakeLists.txt` ve složce obsahuje generovaný kód.
 
 1. Na panelu nástrojů **Obecné** Najděte rozevírací seznam **Konfigurace** . Výběrem **možnosti spravovat konfiguraci** přidejte nastavení cmake pro svůj projekt.
 

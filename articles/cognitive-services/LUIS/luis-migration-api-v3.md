@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: bb2255a9a68a499ff3e77c1fbd35081a2474cf1d
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 8756d8e60e7612c1610e07b0567465e3a0ea8884
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961942"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531492"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Předpověď změn koncového bodu pro v3
 
@@ -63,7 +63,7 @@ Pokud používáte rozhraní bot Framework, Kontrola pravopisu Bingu v7 nebo chc
 
 Pokud víte, že žádná z vašich klientských aplikací nebo integrace (bot Framework a Kontrola pravopisu Bingu v7) je ovlivněná a vy budete mít na úmyslu migrovat vytváření aplikací LUIS a koncový bod předpovědi ve stejnou dobu, začněte používat koncový bod verze v3. Koncový bod verze v2 bude stále k dispozici a jedná se o dobrou strategii pro vrácení zpět. 
 
-## <a name="not-supported"></a>Nepodporuje se
+## <a name="not-supported"></a>Nepodporováno
 
 * Rozhraní API Bingu pro kontrolu pravopisu se v koncovém bodě verze V3 nepodporuje. pro opravy pravopisu je nadále používán koncový bod rozhraní v2 API v2.
 
@@ -88,7 +88,7 @@ Pokud se chcete dotazovat podle verze, musíte nejdřív [publikovat přes rozhr
 |V3|GET|https://<b>{region}</b>. api.cognitive.microsoft.com/luis/<b>předpověď</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Slots/<b>{slot-Name}</b>/Predict? dotaz =<b>{Query}</b>|
 |V3|POST|https://<b>{region}</b>. api.cognitive.microsoft.com/luis/<b>předpověď</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Slots/<b>{slot-Name}</b>/Predict|
 |V2|GET|https://<b>{region}</b>. api.cognitive.microsoft.com/luis/<b>předpověď</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Versions/<b>{Version-ID}</b>/Predict? dotaz =<b>{Query}</b>|
-|V2|POST|https://<b>{region}</b>. API.Cognitive.Microsoft.com/Luis/<b>předpověď</b><b>v 3.0</b>/Apps/<b>{App-ID}</b>/Versions/<b>{Version-ID}</b>/Predict|
+|V2|POST|https://<b>{region}</b>. api.cognitive.microsoft.com/luis/<b>předpověď</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Versions/<b>{Version-ID}</b>/Predict|
 
 |Platné hodnoty pro `SLOT-NAME`|
 |--|
@@ -101,14 +101,14 @@ Pokud se chcete dotazovat podle verze, musíte nejdřív [publikovat přes rozhr
 
 Rozhraní API V3 má jiné parametry řetězce dotazu.
 
-|Název param|Typ|Version|Výchozí|Účel|
+|Název param|Typ|Verze|Výchozí|Účel|
 |--|--|--|--|--|
 |`log`|Boolean|V2 & V3|false|Dotaz na uložení v souboru protokolu. Výchozí hodnota je false.| 
-|`query`|řetězec|Jenom V3|Žádná výchozí hodnota – v žádosti GET se vyžaduje.|**V v2**je utterance, který má být předpovězen, v parametru `q`. <br><br>**V v3**je funkce předána v parametru `query`.|
+|`query`|string|Jenom V3|Žádná výchozí hodnota – v žádosti GET se vyžaduje.|**V v2**je utterance, který má být předpovězen, v parametru `q`. <br><br>**V v3**je funkce předána v parametru `query`.|
 |`show-all-intents`|Boolean|Jenom V3|false|Vrátí všechny záměry s odpovídajícím skóre v objektu **předpověď. záměrs** . Záměry jsou vráceny jako objekty v nadřazeném objektu `intents`. To umožňuje programový přístup bez nutnosti najít záměr v poli: `prediction.intents.give`. V v2 byly vráceny v poli. |
 |`verbose`|Boolean|V2 & V3|false|**V v2**při nastavení na hodnotu true byly vráceny všechny předpovězené záměry. Pokud potřebujete všechny předvídatelné záměry, použijte parametr V3 `show-all-intents`.<br><br>**V v3**tento parametr poskytuje pouze podrobnosti o metadatech entit pro předpovědi entit.  |
-|`timezoneOffset`|řetězec|V2|-|Časové pásmo bylo použito pro datetimeV2 entity.|
-|`datetimeReference`|řetězec|V3|-|[Časové pásmo](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) bylo použito pro datetimeV2 entity. Nahradí `timezoneOffset` z v2.|
+|`timezoneOffset`|string|V2|-|Časové pásmo bylo použito pro datetimeV2 entity.|
+|`datetimeReference`|string|V3|-|[Časové pásmo](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) bylo použito pro datetimeV2 entity. Nahradí `timezoneOffset` z v2.|
 
 
 ### <a name="v3-post-body"></a>Tělo pro POST verze V3
@@ -125,13 +125,13 @@ Rozhraní API V3 má jiné parametry řetězce dotazu.
 }
 ```
 
-|Vlastnost|Typ|Version|Výchozí|Účel|
+|Vlastnost|Typ|Verze|Výchozí|Účel|
 |--|--|--|--|--|
 |`dynamicLists`|pole|Jenom V3|Není nutné.|[Dynamické seznamy](#dynamic-lists-passed-in-at-prediction-time) umožňují rozšiřování existující entity vyškolené a publikované seznamu, která už je v aplikaci Luis.|
 |`externalEntities`|pole|Jenom V3|Není nutné.|[Externí entity](#external-entities-passed-in-at-prediction-time) poskytují vaší aplikaci Luis schopnost identifikovat a označovat entity za běhu, které se dají použít jako funkce pro stávající entity. |
-|`options.datetimeReference`|řetězec|Jenom V3|Žádná výchozí|Používá se k určení [posunu datetimeV2](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity). Formát pro datetimeReference je [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
+|`options.datetimeReference`|string|Jenom V3|Žádná výchozí|Používá se k určení [posunu datetimeV2](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity). Formát pro datetimeReference je [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
 |`options.preferExternalEntities`|Boolean|Jenom V3|false|Určuje, jestli se použije [Externí entita uživatele (se stejným názvem jako existující entita)](#override-existing-model-predictions) , nebo jestli se existující entita v modelu používá pro předpověď. |
-|`query`|řetězec|Jenom V3|Povinná hodnota.|**V v2**je utterance, který má být předpovězen, v parametru `q`. <br><br>**V v3**je funkce předána v parametru `query`.|
+|`query`|string|Jenom V3|Povinná hodnota.|**V v2**je utterance, který má být předpovězen, v parametru `q`. <br><br>**V v3**je funkce předána v parametru `query`.|
 
 
 
@@ -408,7 +408,7 @@ Pokud je `preferExternalEntities` nastavená na `true`, LUIS vrátí odpověď, 
 
 
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 _Nepovinná_ vlastnost `resolution` se vrátí v odpovědi předpovědi, což vám umožní předat Metadata přidružená k externí entitě a pak ji znovu získat v odpovědi. 
 

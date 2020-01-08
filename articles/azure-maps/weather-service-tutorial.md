@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 8f641640ff6cf4174e2e1374404d47fc0760f79f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 809c188dc37aba64de27e89e38acd8692c7de032
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979900"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613563"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Kurz: spojení dat senzorů s daty předpovědi počasí pomocí Azure Notebooks (Python)
 
@@ -31,12 +31,15 @@ V tomto kurzu provedete následující:
 > * Vykreslí data prognózy v grafech.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu je nutné nejprve provést tyto kroky:
 
-1. Vytvořte předplatné účtu Azure Maps v cenové úrovni S0 podle pokynů v tématu [Správa účtu Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account).
-2. Získejte primární klíč předplatného pro váš účet, postupujte podle pokynů v části [získání primárního klíče pro váš účet](./tutorial-search-location.md#getkey).
+1. Vytvořte předplatné účtu Azure Maps v cenové úrovni S0 podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps).
+2. Získejte primární klíč předplatného pro váš účet, postupujte podle pokynů v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account).
+
+
+Další podrobnosti o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 
 Chcete-li se seznámit s poznámkovým blokům Azure a vědět, jak začít, postupujte podle pokynů v tématu [vytvoření poznámkového bloku Azure](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook).
 
@@ -68,7 +71,7 @@ V našem ukázkovém scénáři chceme pro každé umístění snímače požád
 
 
 ```python
-subscription_key = "Your Azure Maps primary subscription key"
+subscription_key = "Your Azure Maps key"
 
 # Get a lists of unique station IDs and their coordinates 
 station_ids = pd.unique(df[['StationID']].values.ravel())
@@ -172,7 +175,7 @@ windsPlot.set_xlabel("Date")
 windsPlot.set_ylabel("Wind direction")
 ```
 
-Níže uvedené grafy vizualizují data předpovědi pro změnu rychlosti větru (levý graf) a směr (vpravo graf) v následujících 15 dnech od aktuálního dne.
+Níže uvedené grafy vizualizují data předpovědi pro změnu rychlosti větru (levý graf) a směr (vpravo graf) v následujících 15 dnech od dne, kdy jsou data požadována.
 
 <center>
 
@@ -190,6 +193,6 @@ Pokud chcete prozkoumat rozhraní API Azure Maps používaná v tomto kurzu, př
 * [Denní prognóza](https://aka.ms/AzureMapsWeatherDailyForecast)
 * [Vykreslení – získat obrázek mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 
-Úplný seznam Azure Maps rozhraní REST API najdete v tématu [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/#reference).
+Úplný seznam Azure Maps rozhraní REST API najdete v tématu [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model).
 
 Další informace o Azure Notebooks najdete v tématu [Azure Notebooks](https://docs.microsoft.com/azure/notebooks).

@@ -10,12 +10,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
 ms.date: 07/29/2019
-ms.openlocfilehash: 6c4a99367c7fc6a864f6a16bc614e4c10663d0ff
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0f1140bbefc7508666e763fcd4f1a04ba48cdfdd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837182"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354944"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>Kurz: návrh relační databáze v jedné databázi v rámci Azure SQL Database C&#x23; a ADO.NET
 
@@ -40,7 +40,7 @@ Instalace sady [Visual Studio 2019](https://www.visualstudio.com/downloads/) neb
 
 ## <a name="create-a-blank-single-database"></a>Vytvoření prázdné jedné databáze
 
-Jedna databáze ve Azure SQL Database je vytvořena s definovanou sadou výpočetních prostředků a prostředků úložiště. Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a spravuje se pomocí [databázového serveru](sql-database-servers.md).
+Jedna databáze ve Azure SQL Database je vytvořena s definovanou sadou výpočetních prostředků a prostředků úložiště. Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) a spravuje se pomocí [databázového serveru](sql-database-servers.md).
 
 Pomocí těchto kroků můžete vytvořit prázdnou jedinou databázi.
 
@@ -101,7 +101,7 @@ Služba SQL Database vytvoří bránu firewall protokolu IP na úrovni serveru. 
 
 4. Kliknutím na **Přidat IP adresu klienta** na panelu nástrojů přidejte svoji aktuální IP adresu do nového pravidla brány firewall protokolu IP. Pravidlo brány firewall protokolu IP může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
 
-5. Klikněte na **Uložit**. Vytvoří se pravidlo brány firewall protokolu IP na úrovni serveru pro vaši aktuální IP adresu pro otevření portu 1433 na serveru SQL Database.
+5. Klikněte na možnost **Uložit**. Vytvoří se pravidlo brány firewall protokolu IP na úrovni serveru pro vaši aktuální IP adresu pro otevření portu 1433 na serveru SQL Database.
 
 6. Klikněte na **OK** a pak zavřete stránku **Nastavení brány firewall**.
 

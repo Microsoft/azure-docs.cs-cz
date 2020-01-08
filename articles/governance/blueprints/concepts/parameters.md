@@ -3,12 +3,12 @@ title: Použití parametrů k vytváření dynamických modrotisky
 description: Přečtěte si o statických a dynamických parametrech a jejich použití k vytváření zabezpečených a dynamických modrotisky.
 ms.date: 03/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: 31fff8fddd8e1969ef0d33047ae070f6302c9c83
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 68987b3e0f418721986003dc796f00ac1dd6dda1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128932"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644966"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Vytváření dynamických modrotisky prostřednictvím parametrů
 
@@ -40,7 +40,7 @@ Pokud přiřazení podrobného plánu používá **spravovanou identitu přiřaz
 Pokud přiřazení podrobného plánu používá **uživatelem přiřazenou spravovanou identitu**, odkazovaná Key Vault _mohou_ existovat v centralizovaném předplatném. Spravované identitě musí být před přiřazením podrobného plánu udělena příslušná práva k Key Vault.
 
 > [!IMPORTANT]
-> V obou případech musí Key Vault mít **povolený přístup k Azure Resource Manager nasazení šablony** nakonfigurované na stránce **zásady přístupu** . Pokyny k povolení této funkce naleznete v tématu [Key Vault-Enable Template Deployment](../../../managed-applications/key-vault-access.md#enable-template-deployment).
+> V obou případech musí Key Vault mít **povolený přístup k Azure Resource Manager nasazení šablony** nakonfigurované na stránce **zásady přístupu** . Pokyny k povolení této funkce naleznete v tématu [Key Vault-Enable Template Deployment](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment).
 
 Další informace o Azure Key Vault najdete v tématu [Key Vault Overview](../../../key-vault/key-vault-overview.md).
 
@@ -52,7 +52,7 @@ Hodnota parametru definovaná v definici podrobného plánu se nazývá **static
 
 #### <a name="setting-static-parameters-in-the-portal"></a>Nastavení statických parametrů na portálu
 
-1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
 
 1. Na levé straně stránky vyberte **definice** podrobného plánu.
 
@@ -169,7 +169,7 @@ Opakem statického parametru je **dynamický parametr**. Tento parametr není de
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>Nastavení dynamických parametrů na portálu
 
-1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
 
 1. Na levé straně stránky vyberte **definice** podrobného plánu.
 

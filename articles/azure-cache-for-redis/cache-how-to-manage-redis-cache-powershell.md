@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 06d1895a807b4e618be3dc1f816da2c1b3faaf3b
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 6eeabb279f5bd5165ebb249651b8bc926deb92a6
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122137"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530914"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Správa mezipaměti Azure pro Redis s využitím Azure PowerShell
 > [!div class="op_single_selector"]
@@ -70,13 +70,13 @@ Pokud se chcete připojit ke cloudu Azure Government, použijte jeden z následu
 
     Connect-AzAccount -EnvironmentName AzureUSGovernment
 
-nebo
+– nebo –
 
     Connect-AzAccount -Environment (Get-AzEnvironment -Name AzureUSGovernment)
 
 Pokud chcete vytvořit mezipaměť v cloudu Azure Government, použijte jedno z následujících umístění.
 
-* USGov) – Virginia
+* USGov Virginie
 * USGov Iowa
 
 Další informace o Azure Government cloudu najdete v tématu [Microsoft Azure Government](https://azure.microsoft.com/features/gov/) a [Microsoft Azure Government příručka pro vývojáře](../azure-government-developer-guide.md).
@@ -86,7 +86,7 @@ Pokud se chcete připojit ke cloudu Azure Čína, použijte jeden z následujíc
 
     Connect-AzAccount -EnvironmentName AzureChinaCloud
 
-nebo
+– nebo –
 
     Connect-AzAccount -Environment (Get-AzEnvironment -Name AzureChinaCloud)
 
@@ -95,7 +95,7 @@ Pokud chcete vytvořit mezipaměť v cloudu Azure Čína, použijte jedno z nás
 * Čína – východ
 * Čína – sever
 
-Další informace o cloudu Azure Čína najdete v tématu [AzureChinaCloud for Azure provozovaného společností 21Vianet v Číně](http://www.windowsazure.cn/).
+Další informace o cloudu Azure Čína najdete v tématu [AzureChinaCloud for Azure provozovaného společností 21Vianet v Číně](https://www.windowsazure.cn/).
 
 ### <a name="to-connect-to-microsoft-azure-germany"></a>Připojení k Microsoft Azure (Německo)
 Pokud se chcete připojit k Microsoft Azure (Německo), použijte jeden z následujících příkazů.
@@ -103,7 +103,7 @@ Pokud se chcete připojit k Microsoft Azure (Německo), použijte jeden z násle
     Connect-AzAccount -EnvironmentName AzureGermanCloud
 
 
-nebo
+– nebo –
 
     Connect-AzAccount -Environment (Get-AzEnvironment -Name AzureGermanCloud)
 
@@ -119,12 +119,12 @@ Následující tabulka obsahuje vlastnosti a popisy běžně používaných para
 
 | Parametr | Popis | Výchozí |
 | --- | --- | --- |
-| Název |Název mezipaměti | |
+| Name (Název) |Název mezipaměti | |
 | Umístění |Umístění mezipaměti | |
 | ResourceGroupName |Název skupiny prostředků, ve které se má mezipaměť vytvořit | |
 | Velikost |Velikost mezipaměti. Platné hodnoty jsou: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1 GB, 2,5 GB, 6 GB, 13GB, 26GB, 53GB. |1GB |
 | ShardCount |Počet horizontálních oddílů, které se mají vytvořit při vytváření mezipaměti Premium s povoleným clusteringem Platné hodnoty jsou: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. | |
-| Skladová položka |Určuje SKLADOVOU položku mezipaměti. Platné hodnoty jsou: Basic, Standard, Premium. |Standard |
+| Skladová položka |Určuje SKLADOVOU položku mezipaměti. Platné hodnoty jsou: Basic, Standard, Premium. |Úroveň Standard |
 | RedisConfiguration |Určuje nastavení konfigurace Redis. Podrobnosti o jednotlivých nastaveních najdete v následujících tabulkách [vlastností RedisConfiguration](#redisconfiguration-properties) . | |
 | EnableNonSslPort |Určuje, jestli je povolený port bez SSL. |Nepravda |
 | MaxMemoryPolicy |Tento parametr je zastaralý – místo toho použijte RedisConfiguration. | |
@@ -147,7 +147,7 @@ Následující tabulka obsahuje vlastnosti a popisy běžně používaných para
 | set-max-intset-entries |Konfiguruje [optimalizaci paměti](https://redis.io/topics/memory-optimization) pro malé agregované datové typy. |Standard a Premium |
 | zset-Max-ZipList-Entries |Konfiguruje [optimalizaci paměti](https://redis.io/topics/memory-optimization) pro malé agregované datové typy. |Standard a Premium |
 | zset-max-ziplist-value |Konfiguruje [optimalizaci paměti](https://redis.io/topics/memory-optimization) pro malé agregované datové typy. |Standard a Premium |
-| databáze |Konfiguruje počet databází. Tato vlastnost se dá nakonfigurovat jenom při vytváření mezipaměti. |Standard a Premium |
+| databases |Konfiguruje počet databází. Tato vlastnost se dá nakonfigurovat jenom při vytváření mezipaměti. |Standard a Premium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>Vytvoření mezipaměti Azure pro Redis
 Nová mezipaměť Azure pro instance Redis se vytvoří pomocí rutiny [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) .

@@ -17,12 +17,12 @@ ms.date: 12/09/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc996c7b5d8a63834f548689c83f7a72685120d2
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 256194d8b0b5e6b08210e9338d945774603ac328
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951169"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429758"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
@@ -37,7 +37,7 @@ Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) s
 
 Tento článek obsahuje přehled sestavy přihlášení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 
@@ -57,9 +57,15 @@ Sestava přihlášení uživatelů poskytuje odpovědi na následující otázky
 * Kolik uživatelů se přihlásilo za týden?
 * Jaký je stav těchto přihlášení?
 
-Začněte s [Azure Portal](https://portal.azure.com). Pokud chcete získat přístup k sestavě přihlášení, vyberte **přihlášení**a pokračujte **monitorováním.** Může trvat až dvě hodiny, než se některé záznamy přihlášení zobrazí na portálu.
+V nabídce [Azure Portal](https://portal.azure.com) vyberte **Azure Active Directory**nebo vyhledejte a vyberte **Azure Active Directory** na libovolné stránce.
 
-![Přihlašovací aktivita](./media/concept-sign-ins/reporting-azure-sign-in-screen.png "Aktivita přihlášení")
+![Vyberte Azure Active Directory](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
+
+V části **monitorování**vyberte **přihlášení** a otevřete [sestavu přihlášení](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns).
+
+![Přihlašovací aktivita](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "Aktivita přihlášení")
+
+Může trvat až dvě hodiny, než se některé záznamy přihlášení zobrazí na portálu.
 
 > [!IMPORTANT]
 > Sestava přihlášení zobrazí pouze **interaktivní** přihlášení, tedy přihlášení, kde se uživatel ručně přihlásí pomocí uživatelského jména a hesla. Neinteraktivní přihlášení, jako je ověřování služby-služba, se v sestavě přihlášení nezobrazí. 
@@ -79,7 +85,7 @@ Zobrazení seznamu můžete upravit kliknutím na **Sloupce** na panelu nástroj
 
 ![Přihlašovací aktivita](./media/concept-sign-ins/19.png "Aktivita přihlášení")
 
-Dialog **sloupce** vám umožní přístup k volitelným atributům. V sestavě přihlášení můžete mít pouze atributy, které nemají vztah 1: n k ostatním atributům jako sloupec.
+Dialog **sloupce** vám umožní přístup k volitelným atributům. V sestavě přihlášení nemůžete mít pole, která mají více než jednu hodnotu pro danou žádost o přihlášení jako sloupec. Jedná se například o hodnotu true pro podrobnosti o ověřování, data podmíněného přístupu a umístění v síti.   
 
 ![Přihlašovací aktivita](./media/concept-sign-ins/columns.png "Aktivita přihlášení")
 
@@ -153,7 +159,7 @@ Pokud do svého zobrazení přihlášení přidáte další pole, tato pole se a
 
 Klikněte na možnost **Stáhnout** a vytvořte soubor CSV nebo soubor JSON s nejnovějšími záznamy 250 000. Začněte [stažením přihlašovacích údajů](quickstart-download-sign-in-report.md) , pokud chcete s ní pracovat mimo Azure Portal.  
 
-![Stáhnout](./media/concept-sign-ins/71.png "Ke stažení")
+![Stáhnout](./media/concept-sign-ins/71.png "Stáhnout")
 
 > [!IMPORTANT]
 > Počet záznamů, které si můžete stáhnout, je omezený o [Azure Active Directory zásady uchovávání sestav](reference-reports-data-retention.md).  

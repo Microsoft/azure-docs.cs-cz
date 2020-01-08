@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c2ccfc2219c063a9cef25f82cef33f446993a02
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f446f1549b3efcd5f27752fac972dfd80c8650d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848370"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425411"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrujte svoji infrastrukturu VPN s Azure MFA pomocí rozšíření serveru NPS (Network Policy Server) pro Azure.
 
@@ -72,7 +72,7 @@ Když je rozšíření NPS pro Azure integrované s NPS, výsledky toku úspěš
 7. Jakmile je pokus o připojení ověřen i autorizován, server NPS, ve kterém je rozšíření nainstalováno, odesílá zprávu RADIUS *Access-Accept* na server VPN (klient RADIUS).
 8. Uživateli je udělen přístup k virtuálnímu portu na serveru VPN a vytvoří šifrované tunelové propojení VPN.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tato část podrobně popisuje požadavky, které je třeba provést před integrací vícefaktorového ověřování pomocí sítě VPN. Než začnete, musíte mít splněné následující předpoklady:
 
@@ -178,7 +178,7 @@ Ke konfiguraci serveru RADIUS můžete použít standardní možnost (založenou
 
     ![Zadání okna skupin uživatelů pro povolení nebo odepření přístupu](./media/howto-mfa-nps-extension-vpn/image7.png)
 
-9. Vyberte **Další**.
+9. Vyberte **Next** (Další).
 
 10. V okně **zadat filtry IP** vyberte **Další**.
 
@@ -326,13 +326,13 @@ V rámci konfigurace rozšíření serveru NPS musíte zadat přihlašovací úd
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako globální správce tenanta Azure.
 
-2. V levém podokně vyberte tlačítko **Azure Active Directory** .
+2. V nabídce Azure Portal vyberte **Azure Active Directory**nebo vyhledejte a vyberte **Azure Active Directory** na libovolné stránce.
 
 3. Vyberte **Vlastnosti**.
 
 4. Pokud chcete zkopírovat ID služby Azure AD, vyberte tlačítko **Kopírovat** .
 
-    ![ID adresáře Azure AD v Azure Portal](./media/howto-mfa-nps-extension-vpn/image35.png)
+    ![ID adresáře Azure AD v Azure Portal](./media/howto-mfa-nps-extension-vpn/azure-active-directory-id-in-azure-portal.png)
 
 ### <a name="install-the-nps-extension"></a>Instalace rozšíření serveru NPS
 

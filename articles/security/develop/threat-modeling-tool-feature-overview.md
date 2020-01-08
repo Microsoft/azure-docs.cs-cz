@@ -1,26 +1,18 @@
 ---
-title: Microsoft Threat Modeling Tool – Azure | Microsoft Docs
+title: Přehled funkcí Microsoft Threat Modeling Tool – Azure
 description: Přečtěte si o všech funkcích, které jsou k dispozici v Threat Modeling Tool
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: e3c6769cc832a897cfbab5548de5328d743884b2
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728586"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552113"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Přehled funkcí Threat Modeling Tool
 
@@ -58,11 +50,11 @@ Prostředí je podobné ostatním produktům společnosti Microsoft. Pojďme si 
 
 Symboly jsou zkratky pro nabídky nejvyšší úrovně:
 
-| Písmeno                               | Podrobnosti      |
+| Symbol                               | Podrobnosti      |
 | --------------------------------------- | ------------ |
 | **Otevřít** | Otevře nový soubor. |
-| **Uložit** | Uloží aktuální soubor. |
-| **Vytvořit** | Otevře zobrazení **Návrh** , kde můžete vytvářet modely. |
+| **Uložení** | Uloží aktuální soubor. |
+| **Návrh** | Otevře zobrazení **Návrh** , kde můžete vytvářet modely. |
 | **Analýza** | Zobrazuje vygenerované hrozby a jejich vlastnosti. |
 | **Přidat diagram** | Přidá nový diagram (podobně jako nové karty v Excelu). |
 | **Odstranit diagram** | Odstraní aktuální diagram. |
@@ -71,7 +63,7 @@ Symboly jsou zkratky pro nabídky nejvyšší úrovně:
 | **Přiblížení/oddálení** | Přiblížení a oddálení diagramu pro lepší zobrazení. |
 | **Váš názor** | Otevře Fórum MSDN. |
 
-### <a name="canvas"></a>Kreslicí
+### <a name="canvas"></a>Plátno
 
 Plátno je místo, kam přetahujete prvky. Přetahování je nejrychlejší a nejúčinnější způsob sestavování modelů. Můžete také kliknout pravým tlačítkem a vybrat položky z nabídky, chcete-li přidat obecné verze prvků, jak je znázorněno níže:
 
@@ -97,7 +89,7 @@ Na základě vámi vybrané šablony můžete najít všechny vzorníky, které 
 
 ### <a name="notesmessages"></a>Poznámky a zprávy
 
-| Komponenta                               | Podrobnosti      |
+| Součást                               | Podrobnosti      |
 | --------------------------------------- | ------------ |
 | **Zprávy** | Interní logika nástrojů, která upozorní uživatele vždy, když dojde k chybě, například bez toků dat mezi prvky. |
 | **Poznámky** | V rámci procesu návrhu a kontroly jsou do souboru přidány ruční poznámky. |
@@ -120,7 +112,7 @@ Když aplikaci otevřete, zobrazí se **uvítací** obrazovka.
 
 ### <a name="open-a-model"></a>Otevření modelu
 
-Najeďte myší na **Otevřít model** a odhalte dvě možnosti: **Z tohoto počítače otevřete** a **otevřete z OneDrivu**. První možnost otevře obrazovku **otevřít soubor** . Druhá možnost vás provede procesem přihlášení pro OneDrive. Po úspěšném ověření můžete vybrat složky a soubory.
+Najeďte myší na **Otevřít model** a odhalte dvě možnosti: **otevřít z tohoto počítače** a **otevřít z OneDrivu**. První možnost otevře obrazovku **otevřít soubor** . Druhá možnost vás provede procesem přihlášení pro OneDrive. Po úspěšném ověření můžete vybrat složky a soubory.
 
 ![Otevřít model](./media/threat-modeling-tool-feature-overview/openmodel.png)
 
@@ -130,25 +122,25 @@ Najeďte myší na **Otevřít model** a odhalte dvě možnosti: **Z tohoto poč
 
 Když vyberete **zpětnou vazbu, návrhy a problémy**, přejdete na Fórum MSDN pro nástroje SDL. Můžete si přečíst, co o nástroji říká další lidé, včetně řešení a nových nápadů.
 
-![Zpětná vazba](./media/threat-modeling-tool-feature-overview/feedback.png)
+![Váš názor](./media/threat-modeling-tool-feature-overview/feedback.png)
 
 ## <a name="design-view"></a>zobrazení Návrh
 
 Když otevřete nebo vytvoříte nový model, otevře se **návrhové** zobrazení.
 
-### <a name="add-elements"></a>Přidat elementy
+### <a name="add-elements"></a>Přidání prvků
 
 Prvky mřížky můžete přidat dvěma způsoby:
 
-- **Přetažení:** Přetáhněte požadovaný prvek do mřížky. Pak použijte vlastnosti prvku k poskytnutí dalších informací.
-- **Klikněte pravým tlačítkem na**: Klikněte pravým tlačítkem na libovolné místo v mřížce a v rozevírací nabídce vyberte položky. Obecná reprezentace prvku, který vyberete, se zobrazí na obrazovce.
+- **Přetažení: přetáhněte**požadovaný prvek do mřížky. Pak použijte vlastnosti prvku k poskytnutí dalších informací.
+- Klikněte **pravým tlačítkem**myši na libovolné místo v mřížce a vyberte položku z rozevírací nabídky. Obecná reprezentace prvku, který vyberete, se zobrazí na obrazovce.
 
 ### <a name="connect-elements"></a>Propojit prvky
 
 Prvky lze spojit dvěma způsoby:
 
-- **Přetažení:** Přetáhněte požadovaný tok dat do mřížky a oba elementy end připojte k odpovídajícím prvkům.
-- **Klikněte na + Shift**: Klikněte na první prvek (odeslání dat), stiskněte a podržte klávesu SHIFT a potom vyberte druhý prvek (příjem dat). Klikněte pravým tlačítkem a vyberte **připojit**. Pokud používáte obousměrný tok dat, pořadí není důležité.
+- **Přetažení**: přetáhněte požadovaný tok dat do mřížky a oba elementy end připojte k odpovídajícím prvkům.
+- **Klikněte na + Shift**: klikněte na první prvek (odesílá data), stiskněte a podržte klávesu SHIFT a potom vyberte druhý prvek (příjem dat). Klikněte pravým tlačítkem a vyberte **připojit**. Pokud používáte obousměrný tok dat, pořadí není důležité.
 
 ### <a name="properties"></a>Vlastnosti
 
@@ -182,11 +174,11 @@ Po sestavení diagramu vyberte symbol **analýzy** (Lupa) na panelu nástrojů z
 
 Když vyberete hrozbu, můžete použít tři různé funkce:
 
-| Funkce                               | Information      |
+| Funkce                               | Informace      |
 | --------------------------------------- | ------------ |
 | **Přečíst ukazatel** | <p>Hrozba je označena jako přečtená, která pomáhá sledovat položky, které jste zkontrolovali.</p><p>![Indikátor čtení a nepřečtené](./media/threat-modeling-tool-feature-overview/readmode.png)</p> |
 | **Fokus interakce** | <p>Je zvýrazněna interakce v diagramu, která patří k hrozbě.</p><p>![Fokus interakce](./media/threat-modeling-tool-feature-overview/interactionfocus.png)</p> |
-| **Vlastnosti hrozby** | <p>Další informace o hrozbě se zobrazí v okně **vlastnosti hrozby** .</p><p>![Vlastnosti hrozby](./media/threat-modeling-tool-feature-overview/threatproperties.png)</p> |
+| **Vlastnosti hrozby** | <p>Další informace o hrozbě se zobrazí v okně **vlastnosti hrozby** .</p><p>vlastnosti ![hrozeb](./media/threat-modeling-tool-feature-overview/threatproperties.png)</p> |
 
 ### <a name="priority-change"></a>Změna priority
 
@@ -206,7 +198,7 @@ Až dokončíte měnící se priority a aktualizujete stav každé vygenerované
 
 ![Zpráva](./media/threat-modeling-tool-feature-overview/report.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Pošlete své dotazy, komentáře a obavy do tmtextsupport@microsoft.com. Začněte **[stažením](https://aka.ms/threatmodelingtool)** Threat Modeling Tool.
+- Pošlete své dotazy, komentáře a problémy tmtextsupport@microsoft.com. Začněte **[stažením](https://aka.ms/threatmodelingtool)** Threat Modeling Tool.
 - Pokud chcete přispívat šablonu pro komunitu, podívejte se na naši stránku [GitHub](https://github.com/Microsoft/threat-modeling-templates) .

@@ -1,19 +1,19 @@
 ---
 title: Azure HDInsight SDK pro cestách
 description: Referenční materiál pro použití Azure HDInsight SDK for přejít a Apache Hadoop clusterů
-author: tylerfox
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/8/2019
-ms.author: tyfox
-ms.reviewer: jasonh
 ms.custom: seodec18
-ms.openlocfilehash: 60ac0509aed1fc83bc7f660783d4bdbd6cb7d976
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 01/03/2020
+ms.openlocfilehash: 065165ddb629f0629e9b895dbad5ee33605f8bc1
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077135"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658878"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK for (Preview)
 
@@ -23,25 +23,27 @@ Sada HDInsight SDK for přejít poskytuje třídy a funkce, které umožňují s
 > [!NOTE]  
 >Referenční materiál GoDoc pro tuto sadu SDK je také [k dispozici zde](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight).
 
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
 ## <a name="prerequisites"></a>Požadavky
 
-* Účet Azure. Pokud ho nemáte, [Získejte bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
+* [Nástroj`go get`](https://github.com/golang/go/wiki/GoGetTools).
 * [Přejít](https://golang.org/dl/).
 
 ## <a name="sdk-installation"></a>Instalace sady SDK
 
-Z umístění GOPATH tak spusťte`go get github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight`
+Z umístění GOPATH tak spusťte `go get github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight`
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Ověření
 
 Nejdřív je potřeba ověřit sadu SDK s vaším předplatným Azure.  Použijte následující příklad k vytvoření instančního objektu a použijte ho k ověření. Po dokončení budete mít instanci `ClustersClient`, která obsahuje mnoho funkcí (popsaných v níže uvedených částech), které lze použít k provádění operací správy.
 
 > [!NOTE]  
-> Kromě níže uvedeného příkladu můžete ověřit jiné způsoby, které by mohly být vhodnější pro vaše potřeby. Tady jsou uvedené všechny funkce: [Funkce ověřování v Azure SDK pro Go](https://docs.microsoft.com/azure/go/azure-sdk-go-authorization)
+> Kromě níže uvedeného příkladu můžete ověřit jiné způsoby, které by mohly být vhodnější pro vaše potřeby. Zde jsou uvedené všechny funkce: [ověřování funkcí v Azure SDK pro go](https://docs.microsoft.com/azure/go/azure-sdk-go-authorization)
 
 ### <a name="authentication-example-using-a-service-principal"></a>Příklad ověřování pomocí instančního objektu
 
-Nejdřív se přihlaste k [Azure Cloud Shell](https://shell.azure.com/bash). Ověřte, že aktuálně používáte předplatné, ve kterém chcete instanční objekt vytvořit. 
+Nejdřív se přihlaste k [Azure Cloud Shell](https://shell.azure.com/bash). Ověřte, že aktuálně používáte předplatné, ve kterém chcete objekt služby vytvořit.
 
 ```azurecli-interactive
 az account show
@@ -98,7 +100,8 @@ Hlavní informace o instančním objektu se zobrazí jako JSON.
   "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
-Zkopírujte následující fragment `TENANT_ID`kódu a vyplňte příkazy, `CLIENT_ID`, `CLIENT_SECRET`a `SUBSCRIPTION_ID` pomocí řetězců JSON, které byly vráceny po spuštění příkazu pro vytvoření instančního objektu.
+
+Zkopírujte následující fragment kódu a vyplňte `TENANT_ID`, `CLIENT_ID`, `CLIENT_SECRET`a `SUBSCRIPTION_ID` řetězce z formátu JSON, který jste vrátili po spuštění příkazu pro vytvoření instančního objektu.
 
 ```golang
 package main
@@ -134,15 +137,15 @@ func main() {
 ## <a name="cluster-management"></a>Správa clusteru
 
 > [!NOTE]  
-> V této části se předpokládá, že už máte ověřenou a vytvořenou `ClusterClient` instanci a uložíte ji do proměnné s názvem. `client` Pokyny pro ověřování a získání `ClusterClient` najdete v části ověřování výše.
+> V této části se předpokládá, že jste už ověřili a vytvořili instanci `ClusterClient` a uložíte ji do proměnné s názvem `client`. Pokyny pro ověřování a získání `ClusterClient` najdete v části ověřování výše.
 
 ### <a name="create-a-cluster"></a>Vytvoření clusteru
 
 Nový cluster lze vytvořit voláním `client.Create()`. 
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
-Tento příklad ukazuje, jak vytvořit cluster [Apache Spark](https://spark.apache.org/) se 2 hlavními uzly a 1 pracovním uzlem.
+Tento příklad ukazuje, jak vytvořit cluster [Apache Spark](https://spark.apache.org/) se dvěma hlavními uzly a jedním pracovním uzlem.
 
 > [!NOTE]  
 > Nejprve musíte vytvořit skupinu prostředků a účet úložiště, jak je vysvětleno níže. Pokud jste je již vytvořili, můžete tento postup přeskočit.
@@ -150,21 +153,27 @@ Tento příklad ukazuje, jak vytvořit cluster [Apache Spark](https://spark.apac
 ##### <a name="creating-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Skupinu prostředků můžete vytvořit pomocí [Azure Cloud Shell](https://shell.azure.com/bash) spuštěním
+
 ```azurecli-interactive
 az group create -l <Region Name (i.e. eastus)> --n <Resource Group Name>
 ```
+
 ##### <a name="creating-a-storage-account"></a>Vytváření účtu úložiště
 
 Účet úložiště můžete pomocí [Azure Cloud Shell](https://shell.azure.com/bash) vytvořit spuštěním:
+
 ```azurecli-interactive
 az storage account create -n <Storage Account Name> -g <Existing Resource Group Name> -l <Region Name (i.e. eastus)> --sku <SKU i.e. Standard_LRS>
 ```
+
 Nyní spusťte následující příkaz, který získá klíč pro váš účet úložiště (budete ho potřebovat pro vytvoření clusteru):
+
 ```azurecli-interactive
 az storage account keys list -n <Storage Account Name>
 ```
+
 ---
-Fragment kódu na obrázku níže vytvoří cluster Spark se 2 hlavními uzly a 1 pracovním uzlem. Vyplňte prázdné proměnné, jak je vysvětleno v komentářích a nebojte se změnit další parametry tak, aby vyhovovaly vašim konkrétním potřebám.
+Fragment kódu na obrázku níže vytvoří cluster Spark se dvěma hlavními uzly a jedním pracovním uzlem. Vyplňte prázdné proměnné, jak je vysvětleno v komentářích a nebojte se změnit další parametry tak, aby vyhovovaly vašim konkrétním potřebám.
 
 ```golang
 // The name for the cluster you are creating
@@ -253,9 +262,9 @@ Získání vlastností pro daný cluster:
 client.Get(context.Background(), "<Resource Group Name>", "<Cluster Name>")
 ```
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
-Můžete použít `get` k potvrzení, že jste úspěšně vytvořili cluster.
+Pomocí `get` můžete potvrdit, že jste úspěšně vytvořili cluster.
 
 ```golang
 cluster, err := client.Get(context.Background(), resourceGroupName, clusterName)
@@ -276,18 +285,22 @@ Výstup by měl vypadat takto:
 ### <a name="list-clusters"></a>Výpis clusterů
 
 #### <a name="list-clusters-under-the-subscription"></a>Výpis clusterů v rámci předplatného
+
 ```golang
 client.List()
 ```
+
 #### <a name="list-clusters-by-resource-group"></a>Vypíše clustery podle skupiny prostředků.
+
 ```golang
 client.ListByResourceGroup("<Resource Group Name>")
 ```
 
 > [!NOTE]  
-> `List()` A`ListByResourceGroup()` vrací strukturu`ClusterListResultPage` . Chcete-li získat další stránku, můžete zavolat `Next()`. To lze opakovat, dokud `ClusterListResultPage.NotDone()` se `false`nevrátí, jak je znázorněno v následujícím příkladu.
+> `List()` i `ListByResourceGroup()` vrací strukturu `ClusterListResultPage`. Chcete-li získat další stránku, můžete volat `Next()`. To lze opakovat, dokud `ClusterListResultPage.NotDone()` vrátí `false`, jak je znázorněno v následujícím příkladu.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
+
 Následující příklad vytiskne vlastnosti všech clusterů pro aktuální předplatné:
 
 ```golang
@@ -321,7 +334,8 @@ Značky daného clusteru můžete aktualizovat například takto:
 ```golang
 client.Update(context.Background(), "<Resource Group Name>", "<Cluster Name>", hdi.ClusterPatchParameters{<map[string]*string} of Tags>)
 ```
-#### <a name="example"></a>Příklad
+
+#### <a name="example"></a>Příklad:
 
 ```golang
 client.Update(context.Background(), "SDKTestRG", "SDKTest", hdi.ClusterPatchParameters{map[string]*string{"tag1Name" : to.StringPtr("tag1Value"), "tag2Name" : to.StringPtr("tag2Value")}})
@@ -339,7 +353,7 @@ client.Resize(context.Background(), "<Resource Group Name>", "<Cluster Name>", h
 
 Sadu SDK pro správu HDInsight můžete také použít ke správě monitorování clusterů přes Operations Management Suite (OMS).
 
-Podobně jako u způsobu, `ClusterClient` jakým jste vytvořili pro použití pro operace správy, je `ExtensionClient` potřeba vytvořit, aby se použily k monitorování operací. Po dokončení výše uvedeného oddílu ověřování můžete vytvořit `ExtensionClient` podobný postup:
+Podobně jako v případě, že jste vytvořili `ClusterClient` pro použití při operacích správy, je nutné vytvořit `ExtensionClient` pro použití pro operace monitorování. Po dokončení výše uvedeného oddílu ověřování můžete vytvořit `ExtensionClient` například:
 
 ```golang
 extClient := hdi.NewExtensionsClient(SUBSCRIPTION_ID)
@@ -347,12 +361,12 @@ extClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> V níže uvedených příkladech monitorování se předpokládá, že `ExtensionClient` jste `extClient` již inicializoval volání `Authorizer` a nastavili, jak je uvedeno výše.
+> Níže uvedené příklady monitorování předpokládají, že jste již inicializoval `ExtensionClient` s názvem `extClient` a nastavte jeho `Authorizer`, jak je uvedeno výše.
 
 ### <a name="enable-oms-monitoring"></a>Povolit monitorování OMS
 
 > [!NOTE]  
-> Chcete-li povolit monitorování OMS, je nutné mít existující Log Analytics pracovní prostor. Pokud jste ho ještě nevytvořili, můžete se dozvědět, jak to udělat: [V Azure Portal vytvořte pracovní prostor Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
+> Chcete-li povolit monitorování OMS, je nutné mít existující Log Analytics pracovní prostor. Pokud jste ho ještě nevytvořili, můžete se dozvědět, jak to udělat: [Vytvoření pracovního prostoru Log Analytics v Azure Portal](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
 
 Postup povolení monitorování OMS ve vašem clusteru:
 
@@ -381,7 +395,7 @@ extClient.DisableMonitoring(context.Background(), "<Resource Group Name", "Clust
 HDInsight poskytuje konfigurační funkci nazvanou akce skriptů, které vyvolávají vlastní skripty pro přizpůsobení clusteru.
 
 > [!NOTE]  
-> Další informace o tom, jak používat akce skriptů, najdete tady: [Přizpůsobení clusterů HDInsight se systémem Linux pomocí akcí skriptů](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)
+> Další informace o tom, jak použít akce skriptů, najdete tady: [Přizpůsobení clusterů HDInsight se systémem Linux pomocí akcí skriptů](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)
 
 ### <a name="execute-script-actions"></a>Spustit akce skriptu
 
@@ -392,7 +406,7 @@ var scriptAction1 = hdi.RuntimeScriptAction{Name: to.StringPtr("<Script Name>"),
 client.ExecuteScriptActions(context.Background(), "<Resource Group Name>", "<Cluster Name>", hdi.ExecuteScriptActionParameters{PersistOnSuccess: to.BoolPtr(true), ScriptActions: &[]hdi.RuntimeScriptAction{scriptAction1}}) //add more RuntimeScriptActions to the list to execute multiple scripts
 ```
 
-Pro operace odstranit skript Action a listovat trvalé akce skriptu je potřeba vytvořit `ScriptActionsClient`podobný způsob, jakým jste vytvořili `ClusterClient` pro použití při operacích správy. Po dokončení výše uvedeného oddílu ověření můžete vytvořit `ScriptActionsClient` podobný postup:
+Pro operace odstranit skript akce a vypsat trvalé akce skriptu je potřeba vytvořit `ScriptActionsClient`, podobně jako při vytváření `ClusterClient` použít pro operace správy. Po dokončení výše uvedeného oddílu ověřování můžete vytvořit `ScriptActionsClient` například:
 
 ```golang
 scriptActionsClient := hdi.NewScriptActionsClient(SUBSCRIPTION_ID)
@@ -400,7 +414,7 @@ scriptActionsClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> Níže uvedené příklady akcí skriptu předpokládají, že jste již inicializoval `ScriptActionsClient` volání `scriptActionsClient` a nastavili `Authorizer` , jak je uvedeno výše.
+> Níže uvedené příklady akcí skriptu předpokládají, že jste již inicializoval `ScriptActionsClient` s názvem `scriptActionsClient` a nastavte jeho `Authorizer`, jak je uvedeno výše.
 
 ### <a name="delete-script-action"></a>Akce odstranění skriptu
 
@@ -413,14 +427,14 @@ scriptActionsClient.Delete(context.Background(), "<Resource Group Name>", "<Clus
 ### <a name="list-persisted-script-actions"></a>Vypsat trvalé akce skriptu
 
 > [!NOTE]  
-> `ListByCluster()` Obě`ScriptActionsListPage` vrátí strukturu. Chcete-li získat další stránku, můžete zavolat `Next()`. To lze opakovat, dokud `ClusterListResultPage.NotDone()` se `false`nevrátí, jak je znázorněno v následujícím příkladu.
+> Oba `ListByCluster()` vrací strukturu `ScriptActionsListPage`. Chcete-li získat další stránku, můžete volat `Next()`. To lze opakovat, dokud `ClusterListResultPage.NotDone()` vrátí `false`, jak je znázorněno v následujícím příkladu.
 
 Pro vypsání všech trvalých akcí skriptu pro zadaný cluster:
 ```golang
 scriptActionsClient.ListByCluster(context.Background(), "<Resource Group Name>", "<Cluster Name>")
 ```
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 ```golang
 page, err := scriptActionsClient.ListByCluster(context.Background(), resourceGroupName, clusterName)
@@ -440,7 +454,7 @@ for (page.NotDone()) {
 
 ### <a name="list-all-scripts-execution-history"></a>Vypsat historii spuštění všech skriptů
 
-Pro tuto operaci je třeba vytvořit `ScriptExecutionHistoryClient`, podobně jako v případě, že jste vytvořili `ClusterClient` pro použití pro operace správy. Po dokončení výše uvedeného oddílu ověření můžete vytvořit `ScriptActionsClient` podobný postup:
+Pro tuto operaci je třeba vytvořit `ScriptExecutionHistoryClient`, podobně jako při vytváření `ClusterClient` použít pro operace správy. Po dokončení výše uvedeného oddílu ověřování můžete vytvořit `ScriptActionsClient` například:
 
 ```golang
 scriptExecutionHistoryClient := hdi.NewScriptExecutionHistoryClient(SUBSCRIPTION_ID)
@@ -448,7 +462,7 @@ scriptExecutionHistoryClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> Níže uvedený postup předpokládá, že jste již `ScriptExecutionHistoryClient` inicializovali volání `scriptExecutionHistoryClient` a `Authorizer` nastavili, jak je uvedeno výše.
+> Níže uvedený postup předpokládá, že jste již inicializoval `ScriptExecutionHistoryClient` s názvem `scriptExecutionHistoryClient` a nastavte jeho `Authorizer`, jak je uvedeno výše.
 
 Výpis historie spouštění všech skriptů pro zadaný cluster:
 
@@ -456,7 +470,7 @@ Výpis historie spouštění všech skriptů pro zadaný cluster:
 scriptExecutionHistoryClient.ListByCluster(context.Background(), "<Resource Group Name>", "<Cluster Name>")
 ```
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 Tento příklad vytiskne všechny podrobnosti pro všechny minulé spuštění skriptu.
 
@@ -476,6 +490,6 @@ for (page.NotDone()) {
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Prozkoumejte [referenční materiál GoDoc](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight). GoDocs poskytuje referenční dokumentaci pro všechny funkce v sadě SDK.
+Prozkoumejte [referenční materiál GoDoc](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight). GoDocs poskytuje referenční dokumentaci pro všechny funkce v sadě SDK.

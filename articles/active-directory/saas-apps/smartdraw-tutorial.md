@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 01/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a7d4a400681113736c52046fb6aa5c04098ddda
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: fe08f1523b4b61653d89a9b3472355dd3eeaf69f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893225"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640087"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smartdraw"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SmartDraw
 
@@ -33,7 +32,7 @@ V tomto kurzu se dozvíte, jak integrovat SmartDraw s Azure Active Directory (Az
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -44,13 +43,8 @@ Chcete-li začít, potřebujete následující položky:
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-
-
 * SmartDraw podporuje jednotné přihlašování (SSO) **a IDP** .
 * SmartDraw podporuje zřizování uživatelů **jenom v čase** .
-
-> [!NOTE]
-> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
 
 ## <a name="adding-smartdraw-from-the-gallery"></a>Přidání SmartDraw z Galerie
 
@@ -63,7 +57,6 @@ Pokud chcete nakonfigurovat integraci SmartDraw do služby Azure AD, musíte př
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **SmartDraw** .
 1. Na panelu výsledků vyberte **SmartDraw** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-smartdraw"></a>Konfigurace a testování jednotného přihlašování Azure AD pro SmartDraw
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí SmartDraw pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v SmartDraw.
@@ -71,10 +64,10 @@ Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí SmartDraw
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí SmartDraw, dokončete následující stavební bloky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
-    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
 1. **[Nakonfigurujte SMARTDRAW SSO](#configure-smartdraw-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    1. **[Vytvořte SmartDraw Test User](#create-smartdraw-test-user)** -to, abyste měli protějšek B. Simon v SmartDraw, která je propojená s reprezentací uživatele v Azure AD.
+    * **[Vytvořte SmartDraw Test User](#create-smartdraw-test-user)** -to, abyste měli protějšek B. Simon v SmartDraw, která je propojená s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
@@ -87,7 +80,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. V části **základní konfigurace SAML** je aplikace předem nakonfigurovaná v režimu iniciované  **IDP** a nezbytné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na tlačítko **uložit** .
+1. V **základní části Konfigurace SAML** nemusí uživatel provádět žádný krok, protože aplikace už je předem integrovaná s Azure.
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
@@ -96,11 +89,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Hodnota přihlašovací adresy URL není reálné číslo. Hodnotu adresy URL pro přihlášení aktualizujete pomocí skutečné přihlašovací adresy URL, která se vysvětluje později v tomto kurzu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
+1. Klikněte na možnost **Uložit**.
+
 1. SmartDraw aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
-1. Kromě toho očekává aplikace SmartDraw několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
+1. Kromě toho očekává aplikace SmartDraw několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
     | Name (Název) | Zdrojový atribut|
     | ---------------| --------------- |
@@ -116,7 +111,6 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 1. V části **Nastavení SmartDraw** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
-
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -150,20 +144,28 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-smartdraw-sso"></a>Konfigurace jednotného přihlašování SmartDraw
 
-1. V jiném okně webového prohlížeče se přihlaste k SmartDraw jako správce.
+1. Pokud chcete automatizovat konfiguraci v rámci SmartDraw, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
 
-2. V části Správa licence SmartDraw klikněte na **jednotné přihlašování** .
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
+
+1. Po přidání rozšíření do prohlížeče klikněte na **nastavit SmartDraw** , které vás přesměruje do aplikace SmartDraw. Odtud zadejte přihlašovací údaje správce, které se přihlásí k SmartDraw. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-5.
+
+    ![Konfigurace instalace](common/setup-sso.png)
+
+1. Pokud chcete nastavit SmartDraw ručně, otevřete nové okno webového prohlížeče a přihlaste se k webu SmartDraw společnosti jako správce a proveďte následující kroky:
+
+1. V části Správa licence SmartDraw klikněte na **jednotné přihlašování** .
 
     ![Konfigurace SmartDraw](./media/smartdraw-tutorial/configure01.png)
 
-3. Na stránce konfigurace proveďte následující kroky:
+1. Na stránce konfigurace proveďte následující kroky:
 
     ![Konfigurace SmartDraw](./media/smartdraw-tutorial/configure02.png)
 
     a. Do textového pole **vaše doména (například Acme.com)** zadejte svoji doménu.
 
     b. Zkopírujte **přihlašovací adresu URL iniciované** v rámci SP pro vaši instanci a vložte ji do textového pole přihlašovací adresa URL v **základní konfiguraci SAML** na Azure Portal.
-    
+
     c. Do textového pole **skupiny zabezpečení, které povolí přístup k SmartDraw** , zadejte **Everyone**.
 
     d. Do textového pole **Adresa URL vystavitele SAML** vložte hodnotu **identifikátoru služby Azure AD** , který jste zkopírovali z Azure Portal.
@@ -174,9 +176,9 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ### <a name="create-smartdraw-test-user"></a>Vytvořit testovacího uživatele SmartDraw
 
-V této části se v SmartDraw vytvoří uživatel s názvem Britta Simon. SmartDraw podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v SmartDraw neexistuje, vytvoří se po ověření nový.
+V této části se v SmartDraw vytvoří uživatel s názvem B. Simon. SmartDraw podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v SmartDraw neexistuje, vytvoří se po ověření nový.
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -191,4 +193,3 @@ Když na přístupovém panelu kliknete na dlaždici SmartDraw, měli byste se a
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Vyzkoušejte si SmartDraw s Azure AD](https://aad.portal.azure.com/)
-

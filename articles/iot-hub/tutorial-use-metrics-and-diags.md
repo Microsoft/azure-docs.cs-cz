@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 88101aacab8b4745ce6bc9180521e66500086edd
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: e6a2057eee6cf294e401f60c889bcf58ac6fbe32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084363"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429106"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Kurz: nastavení a použití metrik a diagnostických protokolů ve službě IoT Hub
 
@@ -50,7 +50,7 @@ Pro tento kurz potřebujete centrum IoT, účet úložiště a simulované zař�
 
 Jedná se o požadované kroky.
 
-1. Vytvořte [skupinu prostředků](../azure-resource-manager/resource-group-overview.md). 
+1. Vytvořte [skupinu prostředků](../azure-resource-manager/management/overview.md). 
 
 2. Vytvořte centrum IoT.
 
@@ -259,7 +259,7 @@ IoT Hub ještě neproběhla migrace na [metriky v Azure monitor](/azure/azure-mo
 
    **Příjemci oznámení e-mailem**: sem zadejte svou e-mailovou adresu. 
 
-   Kliknutím na tlačítko **OK** uložte pravidlo. 
+   Kliknutím na tlačítko **OK** pravidlo uložte. 
 
 5. V podokně výstrahy Classic by se teď měly zobrazit dvě výstrahy: 
 

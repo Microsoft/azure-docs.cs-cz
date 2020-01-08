@@ -4,16 +4,16 @@ description: V tomto kurzu se seznámíte s tím, jak Log Analytics řídicí pa
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/19/2019
 ms.custom: mvc
-ms.openlocfilehash: baa510e060a3bca46110842600262345072b1a18
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d06ead285321b780490c816dc3d902dac1b6916f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894799"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365559"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Vytváření a sdílená řídicích panelů s daty Log Analytics
 
@@ -33,7 +33,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 ## <a name="create-a-shared-dashboard"></a>Vytvoření sdíleného řídicího panelu
 Výběrem **řídicího panelu** otevřete výchozí [řídicí panel](../../azure-portal/azure-portal-dashboards.md). Řídicí panel bude vypadat jinak než v příkladu níže.
 
-![Řídicí panel Azure Portal](media/tutorial-logs-dashboards/log-analytics-portal-dashboard.png)
+![Řídicí panel Azure](media/tutorial-logs-dashboards/log-analytics-portal-dashboard.png)
 
 Tady můžete kombinovat provozní data všech prostředků Azure, která jsou nejdůležitější pro IT, včetně telemetrie z Azure Log Analytics.  Než se podíváme na vizualizaci dotazu protokolu, nejdřív vytvoříme řídicí panel a nasdílíme ho.  Pak se můžeme zaměřit na náš ukázkový dotaz protokolu výkonu, který se vykreslí jako spojnicový graf a přidá se na řídicí panel.  
 

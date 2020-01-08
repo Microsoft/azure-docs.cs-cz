@@ -6,28 +6,27 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/14/2019
-ms.openlocfilehash: 4e6b648ed70f6ff57a2d11cde43b8168b800fcb3
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 12/13/2019
+ms.openlocfilehash: 6fc0d4cfe29e0fb189c44b307576bd08d2da8a31
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806911"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638879"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>Spouštění Azure Machine Learning úloh pomocí automatizovaného strojového učení na Apache Spark ve službě HDInsight
 
 Azure Machine Learning zjednodušuje a zrychluje sestavování, školení a nasazení modelů strojového učení. V rámci automatizovaného strojového učení (AutoML) začnete s školicími daty, která mají definovanou cílovou funkci, a pak iterovat kombinací algoritmů a výběrů funkcí tak, aby automaticky vybrali nejlepší model pro vaše data na základě výsledků školení. HDInsight umožňuje zákazníkům zřídit clustery se stovkami uzlů. AutoML běžící na Sparku v clusteru HDInsight umožňuje uživatelům používat výpočetní kapacitu na těchto uzlech ke spouštění školicích úloh v rámci škálování a spouštění více školicích úloh paralelně. Díky tomu můžou uživatelé spouštět AutoML experimenty při sdílení výpočtů s ostatními úlohami s velkými objemy dat.
- 
 
 ## <a name="install-azure-machine-learning-on-an-hdinsight-cluster"></a>Instalace Azure Machine Learning v clusteru HDInsight
 
-Obecné kurzy k automatizovanému strojovém učení najdete v tématu [kurz: Použití automatizovaného strojového učení k sestavení regresního modelu](../../machine-learning/service/tutorial-auto-train-models.md).
-Všechny nové clustery HDInsight-Spark jsou předinstalované se sadou AutoML SDK. Pomocí tohoto [ukázkového poznámkového bloku Jupyter](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-hdi)můžete začít s AutoML ve službě HDInsight. Tento Jupyter Notebook ukazuje, jak používat automatizované třídění strojového učení pro jednoduchý problém klasifikace.
+Obecné kurzy k automatizovanému strojovém učení najdete v tématu [kurz: Použití automatizovaného strojového učení k sestavení regresního modelu](../../machine-learning/tutorial-auto-train-models.md).
+Všechny nové clustery HDInsight-Spark jsou předinstalované se sadou AutoML SDK.
 
 > [!Note]
 > Balíčky Azure Machine Learning se instalují do prostředí conda pro python3. Nainstalovaný Poznámkový blok Jupyter by se měl spustit pomocí jádra PySpark3.
 
-Případně můžete použít také poznámkové bloky Zeppelin k použití AutoML.
+Pomocí poznámkových bloků Zeppelin můžete také použít AutoML.
 
 > [!Note]
 > Zeppelin má [známý problém](https://community.hortonworks.com/content/supportkb/207822/the-livypyspark3-interpreter-uses-python-2-instead.html) , kdy PySpark3 nevybere správnou verzi Pythonu. Použijte prosím zdokumentované řešení.
@@ -46,6 +45,7 @@ auth_sp = ServicePrincipalAuthentication(
     service_principal_password='<Azure AD Application Key>'
 )
 ```
+
 Následující fragment kódu vytvoří ověřovací token pomocí **uživatele Azure AD**.
 
 ```python
@@ -76,5 +76,5 @@ V [automatizované konfiguraci machine learningu](/python/api/azureml-train-auto
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o motivaci na základě automatizovaného strojového učení najdete v tématu věnovaném [vydávání modelů na základě automatizovaného strojového učení od Microsoftu.](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/)
-* Další informace o používání funkcí automatizovaného ML v Azure ML najdete [v tématu nové možnosti automatizovaného strojového učení v Azure Machine Learning](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/) .
+* Další informace o používání funkcí automatizovaného ML v Azure ML najdete [v tématu nové možnosti automatizovaného strojového učení v Azure Machine Learning](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)
 * [Projekt AutoML z Microsoft Research](https://www.microsoft.com/research/project/automl/)

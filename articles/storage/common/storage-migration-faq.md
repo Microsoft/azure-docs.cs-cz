@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 1e2c899e0ef98266b5afd2f1bf21443a2debd281
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 8b805f01722c58d60e994a3a6b2440bb115b1bfa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666422"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351284"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Nejčastější dotazy týkající se migrace Azure Storage
 
@@ -47,7 +47,7 @@ Neexistuje možnost zálohovat celý účet úložiště přímo. Kontejner v to
 
 1.  Nainstalujte nástroj příkazového řádku [AzCopy](storage-use-azcopy.md) . Tento nástroj vám pomůže přesunout soubor VHD mezi účty úložiště.
 
-2.  Po instalaci AzCopy ve Windows pomocí instalačního programu otevřete okno příkazového řádku a přejděte do složky pro instalaci AzCopy na vašem počítači. Ve výchozím nastavení je AzCopy nainstalován do **% ProgramFiles (x86)% \ Microsoft SDKs\Azure\AzCopy** nebo **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy**.
+2.  Po instalaci AzCopy ve Windows pomocí instalačního programu otevřete okno příkazového řádku a přejděte do složky pro instalaci AzCopy na vašem počítači. Ve výchozím nastavení je nástroj AzCopy nainstalovaný na **% ProgramFiles (x86) %\Microsoft SDKs\Azure\AzCopy** nebo **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy**.
 
 3.  Spusťte následující příkaz pro přesunutí kontejneru. Je nutné nahradit text skutečnými hodnotami.   
      
@@ -259,7 +259,7 @@ Poskytnutí přístupu k prostředkům úložiště ostatním lidem:
 
 -   K poskytnutí přístupu k prostředku použijte token sdíleného přístupového podpisu (SAS). 
 
--   Zadejte uživatele s primárním nebo sekundárním klíčem pro účet úložiště. Další informace najdete v tématu [Správa účtu úložiště](storage-account-manage.md#access-keys).
+-   Zadejte uživatele s primárním nebo sekundárním klíčem pro účet úložiště. Další informace najdete v tématu [Správa přístupových klíčů účtu úložiště](storage-account-keys-manage.md).
 
 -   Změňte zásady přístupu tak, aby povolovaly anonymní přístup. Další informace najdete v tématu [udělení oprávnění anonymních uživatelů k kontejnerům a](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)objektům blob.
 
@@ -275,9 +275,9 @@ Poskytnutí přístupu k prostředkům úložiště ostatním lidem:
 
 -   Pokud používáte redundantní úložiště zóny nebo geograficky redundantní úložiště, nemůžete získat přístup k datům ze sekundární oblasti, pokud neinicializujete převzetí služeb při selhání této oblasti. Další informace o procesu převzetí služeb při selhání najdete [v tématu obnovení po havárii a převzetí služeb při selhání účtu úložiště (Preview) v Azure Storage](storage-disaster-recovery-guidance.md).
 
--   Pokud používáte geograficky redundantní úložiště s přístupem pro čtení, můžete kdykoli získat přístup k datům ze sekundární oblasti. Použijte jednu z následujících metod:  
+-   Pokud používáte geograficky redundantní úložiště s přístupem pro čtení, můžete kdykoli získat přístup k datům ze sekundární oblasti. Použijte jednu z následujících metod:  
       
-    - **AzCopy**: pro přístup k sekundárnímu koncovému bodu se připojí k názvu účtu úložiště v adrese URL **sekundární** . Například:  
+    - **AzCopy**: pro přístup k sekundárnímu koncovému bodu se připojí k názvu účtu úložiště v adrese URL **sekundární** . Příklad:  
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 

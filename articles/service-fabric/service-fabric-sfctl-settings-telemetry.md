@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – telemetrie nastavení sfctl | Microsoft Docs
-description: Popisuje příkazy telemetrie Service Fabric CLI sfctl Settings.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – telemetrie nastavení sfctl
+description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro konfiguraci telemetrie sfctl.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: d926c71ae8fd9e196b86c14c7fb96cc65b587b65
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: cdb4a44c8f19b31c164e2ba3ea5e16b7a09e743e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900983"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645272"
 ---
 # <a name="sfctl-settings-telemetry"></a>sfctl settings telemetry
 Nakonfigurujte nastavení telemetrie jako místní pro tuto instanci sfctl.

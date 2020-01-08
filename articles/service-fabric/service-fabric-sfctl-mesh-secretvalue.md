@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – sfctl sítě secretvalue | Microsoft Docs
-description: Popisuje příkazy Service Fabric sfctl CLI secretvalue.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – sfctl sítě secretvalue
+description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro získání a odstranění Service Fabricch secretvaluech sítí.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 96ce4efe00d89c136a0c11d445170b2f67be6fcd
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: a29d32dff9ad51942acb30dd834ad6fbd362ac65
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901179"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646105"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh secretvalue
 Získejte a odstraňte secretvalue prostředky sítě.

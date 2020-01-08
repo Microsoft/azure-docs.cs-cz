@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: aa86d6cf22562fa1fac7d45de20b28aa0eec33aa
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 616c5df38131d1b28387bcdda02c08b3a6825fb4
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261664"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530812"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch metriky, výstrahy a protokoly pro diagnostické hodnocení a monitorování
 
@@ -28,7 +28,7 @@ Tento článek vysvětluje, jak monitorovat pomocí funkce účtu Batch [Azure M
 
 ## <a name="batch-metrics"></a>Metriky služby batch
 
-Metriky jsou Azure telemetrická data (také nazývané čítače výkonu), protože ho vygeneroval vašich prostředků Azure, které se spotřebovávají služby Azure Monitor. Mezi příklady metrik v účtu Batch patří: Události vytvoření fondu, počet uzlů s nízkou prioritou a události dokončení úlohy. 
+Metriky jsou Azure telemetrická data (také nazývané čítače výkonu), protože ho vygeneroval vašich prostředků Azure, které se spotřebovávají služby Azure Monitor. Zahrnout metriky příklad v účtu Batch: události vytvoření fondu, počet uzlů s nízkou prioritou a události dokončení úkolu. 
 
 Zobrazit [seznam podporovaných metrik služby Batch](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts).
 
@@ -105,7 +105,7 @@ Ostatní volitelné cíle pro diagnostické protokoly:
 
     Když vyberete účet úložiště, volitelně nastavte zásady uchovávání informací. Pokud nechcete zadat počet dní pro uchovávání dat, data se uchovávají po dobu trvání účtu úložiště.
 
-4. Klikněte na **Uložit**.
+4. Klikněte na možnost **Uložit**.
 
     ![Diagnostika služby batch](media/batch-diagnostics/diagnostics-portal.png)
 
@@ -130,15 +130,15 @@ insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX
 RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/
 BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 ```
-Každý `PT1H.json` soubor objektu BLOB obsahuje události ve formátu JSON, ke kterým došlo během hodiny zadané v adrese URL objektu BLOB ( `h=12`například). Během této hodiny se události připojí k `PT1H.json` souboru, když k nim dojde. Hodnota minute (`m=00`) je vždy `00`, protože události diagnostického protokolu jsou v jednotlivých objektech blob za hodinu rozdělené. (Všechny časy jsou ve standardu UTC).
+Každý `PT1H.json` soubor BLOB obsahuje události ve formátu JSON, ke kterým došlo během hodiny zadané v adrese URL objektu BLOB (například `h=12`). Během této hodiny se události připojí k souboru `PT1H.json`, jak se vyskytují. Hodnota minute (`m=00`) je vždy `00`, protože události protokolu diagnostiky jsou v jednotlivých objektech blob za hodinu rozděleny. (Všechny časy jsou ve standardu UTC).
 
-Níže je uveden příklad `PoolResizeCompleteEvent` položky `PT1H.json` v souboru protokolu. Obsahuje informace o aktuálním a cílovém počtu vyhrazených uzlů a uzlů s nízkou prioritou a také o počátečním a koncovém času operace:
+Níže je uveden příklad položky `PoolResizeCompleteEvent` v souboru protokolu `PT1H.json`. Obsahuje informace o aktuálním a cílovém počtu vyhrazených uzlů a uzlů s nízkou prioritou a také o počátečním a koncovém času operace:
 
 ```
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
 ```
 
-Další informace o schématu diagnostické protokoly v aktuálním účtu úložiště najdete v tématu [archivace diagnostických protokolů Azure](../azure-monitor/platform/resource-logs-collect-storage.md#schema-of-resource-logs-in-storage-account). Pro přístup k protokolům ve vašem účtu úložiště prostřednictvím kódu programu, použijte rozhraní API služby Storage. 
+Další informace o schématu diagnostické protokoly v aktuálním účtu úložiště najdete v tématu [archivace diagnostických protokolů Azure](../azure-monitor/platform/resource-logs-collect-storage.md#schema-of-platform-logs-in-storage-account). Pro přístup k protokolům ve vašem účtu úložiště prostřednictvím kódu programu, použijte rozhraní API služby Storage. 
 
 ### <a name="service-log-events"></a>Služba Protokol událostí
 Azure protokoly služby Batch, je-li shromažďovat, obsahují události, protože ho pomocí služby Azure Batch po celou dobu životnosti jednotlivých prostředků Batch jako fondem nebo úlohou. Každou službou Batch byla vyvolána událost se protokoluje ve formátu JSON. To je například textu ukázku **událost vytvoření fondu**:
@@ -180,7 +180,7 @@ Služba Batch aktuálně vysílá následující události protokol služby. Ten
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o dostupných [rozhraních API a nástrojích služby Batch](batch-apis-tools.md) pro sestavování řešení Batch.
 * Další informace o [monitorování řešení Batch](monitoring-overview.md).

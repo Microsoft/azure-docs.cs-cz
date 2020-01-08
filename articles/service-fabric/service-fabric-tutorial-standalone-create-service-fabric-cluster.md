@@ -1,30 +1,21 @@
 ---
-title: Kurz instalace samostatného klienta Service Fabric – Azure Service Fabric | Microsoft Docs
+title: Nainstalovat samostatného klienta Service Fabric
 description: V tomto kurzu se dozvíte, jak nainstalovat samostatného klienta Service Fabric v clusteru, který jste vytvořili v předchozím článku kurzu.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 82358f4d5548464f1304d77a846d71863ed9efa1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bbaf7dfc546c739dfb858be7ef8372eccf60111b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385004"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613937"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Kurz: Instalace a vytvoření clusteru Service Fabric
 
-Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „libovolný OS a libovolný cloud“. V této sérii kurzů vytvoříte samostatný cluster hostovaný na AWS nebo Azure a nainstalujete do něj aplikaci.
+Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „jakýkoli operační systém a cloud“. V této sérii kurzů vytvoříte samostatný cluster hostovaný na AWS nebo Azure a nainstalujete do něj aplikaci.
 
 Tento kurz je druhá část série. Tento kurz vás provede kroky vytvoření samostatného clusteru Service Fabric.
 
@@ -129,7 +120,7 @@ Your cluster is successfully created! You can connect and manage your cluster us
 
 ### <a name="bring-up-service-fabric-explorer"></a>Vyvolání Service Fabric Exploreru
 
-Nyní se můžete připojit ke clusteru pomocí Service Fabric Explorer přímo z jednoho z počítačů pomocí protokolu HTTP\/:/localhost:19080/Explorer/index.html nebo vzdáleně pomocí protokolu http:\//<IPAddressofaMachine > : 19080/Explorer/index.html.
+Nyní se můžete připojit ke clusteru pomocí Service Fabric Explorer buď přímo z jednoho z počítačů s http:\//localhost:19080/Explorer/index.html nebo vzdáleně pomocí http:\//<*IPAddressofaMachine*>: 19080/Explorer/index. html.
 
 ## <a name="add-and-remove-nodes"></a>Přidávání a odebírání uzlů
 

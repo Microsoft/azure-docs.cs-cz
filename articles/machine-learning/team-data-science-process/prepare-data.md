@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d0754f7ac85976b5ef307bf1266d26a9380ab1c6
-ms.sourcegitcommit: 6e42ce0ca0a7ac572398e9d024fcf69906670d74
+ms.openlocfilehash: d17ca5d4bd709ec2529a771008e47ce6f1b68daf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74936033"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432141"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Úlohy k přípravě dat pro rozšířené strojové učení
 Předběžné zpracování a čištění dat jsou důležité úkoly, které obvykle musí být provedeny před datové sady se dá efektivně využít pro machine learning. Nezpracovaná data se často aktivní nebo nespolehlivé a může být chybějící hodnoty. Pomocí těchto dat pro modelování můžete vytvářet zavádějící výsledky. Tyto úlohy jsou součástí nástroje zpracování týmových dat vědy (TDSP) a obvykle postupujte podle počáteční zkoumání použít ke zjištění a plánování předběžného zpracování požadované datové sady. Další podrobné pokyny týkající se procesu TDSP, najdete v článku podle kroků uvedených v [vědecké zpracování týmových dat](overview.md).
 
-Předběžné zpracování a čištění úkoly, jako je úloha zkoumání dat, lze provádět v nejrůznějších prostředích, jako je SQL nebo Hive nebo Azure Machine Learning Studio a různé nástroje a jazyky, jako je R nebo Python, v závislosti, kde se vaše data uložená a jak je formátováno. Protože je iterativní ze své podstaty TDSP, tyto úlohy může proběhnout na různé kroky v procesu pracovního postupu.
+Úlohy předběžného zpracování a čištění, jako je třeba úloha zkoumání dat, se dají provádět v nejrůznějších prostředích, jako je SQL nebo podregistr nebo Azure Machine Learning Studio (Classic), a s různými nástroji a jazyky, jako je R nebo Python, v závislosti na tom, kde se data je uložený a jak je formátovaný. Protože je iterativní ze své podstaty TDSP, tyto úlohy může proběhnout na různé kroky v procesu pracovního postupu.
 
-V tomto článku se seznámíte s různými koncepty zpracování dat a úlohami, které je možné provést před nebo po ingestování dat do Azure ML Studio (Classic).
+V tomto článku se seznámíte s různými koncepty zpracování dat a úlohami, které je možné provést před nebo po ingestování dat do Azure Machine Learning Studio (Classic).
 
-Příklad zkoumání a předběžného zpracování dat v rámci Azure ML Studio (Classic) najdete v tématu [předzpracování datových](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) videí.
+Příklad zkoumání a předběžného zpracování dat v Azure Machine Learning Studio (Classic) najdete v tématu [předběžné zpracování datových](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) videí.
 
 ## <a name="why-pre-process-and-clean-data"></a>Proč předběžně zpracovat a vyčistit data?
 Shromáždění dat reálného světa z různých zdrojů a procesy a může obsahovat nesrovnalosti nebo poškozená data tím bylo narušeno kvalitu datové sady. Problémy s kvalitou typické dat, které vznikají jsou:
@@ -51,7 +51,7 @@ Obecné kvality dat můžete zkontrolovat tak, že zkontrolujete:
 
 Pokud narazíte na problémy s daty, **kroky zpracování** jsou nezbytné, což často zahrnuje vyčištění chybějících hodnot, data normalizace, diskretizace, zpracování textu můžete odebrat nebo nahradit vložené znaky, které může mít vliv na data v běžných zarovnání, různé datové typy, pole a další.
 
-**Využívá Azure Machine Learning ve správném formátu tabulková data**.  Pokud jsou data již v tabulkovém formátu, lze předběžné zpracování dat provést přímo s Azure ML Studio (Classic) v Machine Learning.  Pokud data nejsou ve formě tabulky, Řekněme, který je ve formátu XML, analýza kódu může být potřeba, abyste mohli data převést do formátu tabulky.  
+**Využívá Azure Machine Learning ve správném formátu tabulková data**.  Pokud jsou data již v tabulkovém formátu, lze předběžné zpracování dat provést přímo s Azure Machine Learning Studio (Classic) v Machine Learning.  Pokud data nejsou ve formě tabulky, Řekněme, který je ve formátu XML, analýza kódu může být potřeba, abyste mohli data převést do formátu tabulky.  
 
 ## <a name="what-are-some-of-the-major-tasks-in-data-pre-processing"></a>Jaké jsou některé z hlavních úloh v předběžné zpracování dat?
 * **Čištění dat**: vyplnit nebo chybějící hodnoty, zjistit a odebrat hlučného dat a odlehlé hodnoty.

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB kurz: vytvoření, dotazování a procházení v konzole Apache TinkerPops Gremlin'
+title: 'Dotazování pomocí Azure Cosmos DB Gremlin API pomocí konzoly TinkerPop Gremlin Console: kurz'
 description: Rychlý start ke službě Azure Cosmos DB vám pomůže s vytvářením vrcholů, okrajů a dotazů pomocí rozhraní Gremlin API služby Azure Cosmos DB.
 author: luisbosquez
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
-ms.openlocfilehash: 3f25bbbbc8b3f34bdb89ba8797b042826a88ca8d
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: b873cdc65ed483836dc4c3cf9904a8fab1d2f09f
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815955"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665176"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Rychlý Start: vytvoření, dotazování a procházení databáze Azure Cosmos DB graphu pomocí konzoly Gremlin
 
@@ -33,13 +33,13 @@ V tomto rychlém startu se dozvíte, jak vytvořit Azure Cosmos DB účet [rozhr
 
 Konzola Gremlin je založena na technologii Groovy nebo Java a běží v systémech Linux, Mac a Windows. Můžete si ji stáhnout z [webu Apache TinkerPop](https://tinkerpop.apache.org/downloads.html).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste si mohli vytvořit účet služby Azure Cosmos DB pro tento rychlý start, musíte mít předplatné Azure.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Musíte si také nainstalovat [konzolu Gremlin](https://tinkerpop.apache.org/). Použijte verzi 3.2.5 nebo vyšší. (Chcete-li použít konzolu Gremlin v systému Windows, je nutné nainstalovat [modul runtime Java](https://www.oracle.com/technetwork/java/javase/overview/index.html).)
+Musíte si také nainstalovat [konzolu Gremlin](https://tinkerpop.apache.org/downloads.html). **Doporučená verze je v 3.4.3** nebo starších verzích. (Pokud chcete použít konzolu Gremlin v systému Windows, musíte nainstalovat [Java Runtime](https://www.oracle.com/technetwork/java/javase/overview/index.html)).
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 2bd25ad823217c5e9260142912a3d2d748b9c15a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 0f444838c87e14fa88f2785030c29915df637cf8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767700"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552198"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Použití nástroje MirrorMaker k replikaci Apache Kafkach témat pomocí Kafka ve službě HDInsight
 
@@ -65,8 +65,8 @@ Tato architektura nabízí dva clustery v různých skupinách prostředků a vi
 
     |Skupina prostředků | Umístění |
     |---|---|
-    | Kafka – primární – RG | Střední USA |
-    | Kafka – sekundární – RG | Středoseverní USA |
+    | kafka-primary-rg | Střední USA |
+    | kafka-secondary-rg | Středoseverní USA |
 
 1. Vytvořte novou virtuální síť **Kafka-Primary-VNet** v **Kafka-Primary-RG**. Ponechte výchozí nastavení.
 1. Vytvořte novou virtuální síť **Kafka-Secondary-VNet** v **Kafka-Secondary-RG**, ale také s výchozím nastavením.
@@ -75,8 +75,8 @@ Tato architektura nabízí dva clustery v různých skupinách prostředků a vi
 
     | Název clusteru | Skupina prostředků | Virtual Network | Účet úložiště |
     |---|---|---|---|
-    | Kafka-Primary-cluster | Kafka – primární – RG | Kafka-Primary-VNet | kafkaprimarystorage |
-    | Kafka-Secondary-cluster | Kafka – sekundární – RG | Kafka-Secondary-VNet | kafkasecondarystorage |
+    | Kafka-Primary-cluster | kafka-primary-rg | Kafka-Primary-VNet | kafkaprimarystorage |
+    | kafka-secondary-cluster | kafka-secondary-rg | kafka-secondary-vnet | kafkasecondarystorage |
 
 1. Vytvořte partnerské vztahy virtuálních sítí. V tomto kroku vytvoříte dvě partnerské vztahy: jednu z **Kafka-Primary-** VNet na **Kafka-Secondary-VNet** a jednu zpět od **Kafka-Secondary-VNet** až **Kafka-Primary-VNet**.
     1. Vyberte virtuální síť **Kafka-Primary-VNet** .
@@ -86,36 +86,41 @@ Tato architektura nabízí dva clustery v různých skupinách prostředků a vi
 
         ![HDInsight Kafka Přidání partnerského vztahu virtuální sítě](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
-1. Konfigurace inzerce protokolu IP:
-    1. Pro primární cluster přejít na řídicí panel Ambari: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`.
-    1. Vyberte **služby** > **Kafka**. CliSelectck kartu **Konfigurace** .
-    1. Do dolní části **šablony Kafka-ENV** přidejte následující konfigurační řádky. Vyberte **Save** (Uložit).
+### <a name="configure-ip-advertising"></a>Konfigurace reklamy protokolu IP
 
-        ```
-        # Configure Kafka to advertise IP addresses instead of FQDN
-        IP_ADDRESS=$(hostname -i)
-        echo advertised.listeners=$IP_ADDRESS
-        sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
-        echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
-        ```
+Nakonfigurujte reklamu protokolu IP, aby se klient mohl připojit pomocí IP adres zprostředkovatele místo názvů domén.
 
-    1. Na obrazovce **Uložit konfiguraci** zadejte poznámku a klikněte na **Uložit**.
-    1. Pokud se zobrazí výzva s upozorněním konfigurace, klikněte **přesto na pokračovat**.
-    1. V části **Uložit změny konfigurace**vyberte **OK** .
-    1. Vyberte **restartovat** > v oznámení **vyžadovaném restartováním** **restartujte všechny ovlivněné** . Vyberte **Potvrdit restartování vše**.
+1. Pro primární cluster přejít na řídicí panel Ambari: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`.
+1. Vyberte **služby** > **Kafka**. CliSelectck kartu **Konfigurace** .
+1. Do dolní části **šablony Kafka-ENV** přidejte následující konfigurační řádky. Vyberte **Uložit**.
 
-        ![Ambari restartování Apache All ovlivnilo](./media/apache-kafka-mirroring/ambari-restart-notification.png)
+    ```
+    # Configure Kafka to advertise IP addresses instead of FQDN
+    IP_ADDRESS=$(hostname -i)
+    echo advertised.listeners=$IP_ADDRESS
+    sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    ```
 
-1. Nakonfigurujte Kafka, aby naslouchal na všech síťových rozhraních.
-    1. V části **služby** > **Kafka**zůstat na kartě **Konfigurace** . V části **Kafka Broker** nastavte vlastnost **listeners** na hodnotu `PLAINTEXT://0.0.0.0:9092`.
-    1. Vyberte **Save** (Uložit).
-    1. Vyberte **restartovat**a **potvrďte restart vše**.
+1. Na obrazovce **Uložit konfiguraci** zadejte poznámku a klikněte na **Uložit**.
+1. Pokud se zobrazí výzva s upozorněním konfigurace, klikněte **přesto na pokračovat**.
+1. V části **Uložit změny konfigurace**vyberte **OK** .
+1. Vyberte **restartovat** > v oznámení **vyžadovaném restartováním** **restartujte všechny ovlivněné** . Vyberte **Potvrdit restartování vše**.
 
-1. Zaznamenání IP adres zprostředkovatele a adres Zookeeper pro primární cluster.
-    1. Na řídicím panelu Ambari vyberte **hostitelé** .
-    1. Poznamenejte si IP adresy pro zprostředkovatele a uzly Zookeeper. Uzly zprostředkovatele **mají jako první** dvě písmena názvu hostitele a uzly Zookeeper mají **ZK** jako první dvě písmena názvu hostitele.
+    ![Ambari restartování Apache All ovlivnilo](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
-        ![IP adresy uzlů pro zobrazení Apache Ambari](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
+### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>Nakonfigurujte Kafka, aby naslouchal na všech síťových rozhraních.
+    
+1. V části **služby** > **Kafka**zůstat na kartě **Konfigurace** . V části **Kafka Broker** nastavte vlastnost **listeners** na hodnotu `PLAINTEXT://0.0.0.0:9092`.
+1. Vyberte **Uložit**.
+1. Vyberte **restartovat**a **potvrďte restart vše**.
+
+### <a name="record-broker-ip-addresses-and-zookeeper-addresses-for-primary-cluster"></a>Zaznamenání IP adres zprostředkovatele a adres Zookeeper pro primární cluster.
+
+1. Na řídicím panelu Ambari vyberte **hostitelé** .
+1. Poznamenejte si IP adresy pro zprostředkovatele a uzly Zookeeper. Uzly zprostředkovatele **mají jako první** dvě písmena názvu hostitele a uzly Zookeeper mají **ZK** jako první dvě písmena názvu hostitele.
+
+    ![IP adresy uzlů pro zobrazení Apache Ambari](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
 
 1. Opakujte předchozí tři kroky pro druhý cluster **Kafka-Secondary-cluster**: Nakonfigurujte reklamu protokolu IP, nastavte naslouchací procesy a poznamenejte si IP adresy zprostředkovatele a Zookeeper.
 

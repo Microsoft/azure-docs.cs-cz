@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d37d1ae3871e8b14a44540883b1d03c29b58d27e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 5879bbda9dba0d5484ffe6e7083243a299347f9c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950557"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367482"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Konfigurace požadavků na složitost pro hesla v Azure Active Directory B2C
 
@@ -38,9 +38,9 @@ Pokud používáte vlastní zásady, můžete ([nakonfigurovat složitost hesla 
 ## <a name="configure-password-complexity"></a>Konfigurace složitosti hesla
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-2. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
-3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
-4. Vyberte **toky uživatelů**.
+2. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
+3. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
+4. Vyberte **toky uživatelů (zásady)** .
 2. Vyberte tok uživatele a klikněte na **vlastnosti**.
 3. V části **složitost hesla**změňte složitost hesla pro tento tok uživatele na **jednoduché**, **silné**nebo **vlastní**.
 

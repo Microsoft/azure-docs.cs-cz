@@ -3,18 +3,18 @@ title: Povolení diagnostiky v Azure Cloud Services pomocí PowerShellu | Micros
 description: Naučte se, jak povolit diagnostiku pro cloudové služby pomocí PowerShellu.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
-ms.author: gwallace
-ms.openlocfilehash: f2b7e51971cc2e540ee7745b3b44571c58359613
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.author: tagore
+ms.openlocfilehash: 76cdffed813fd182980b36f848e0ae42f3226539
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860214"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386540"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Povolení diagnostiky v Azure Cloud Services s využitím PowerShellu
 Můžete shromažďovat diagnostická data, jako jsou protokoly aplikací, čítače výkonu atd. z cloudové služby pomocí rozšíření Azure Diagnostics. Tento článek popisuje, jak povolit rozšíření Azure Diagnostics pro cloudovou službu pomocí PowerShellu.  Potřebné předpoklady pro tento článek najdete v tématu [Postup instalace a konfigurace Azure PowerShell](/powershell/azure/overview) .
@@ -37,7 +37,7 @@ $workerrole_diagconfig = New-AzureServiceDiagnosticsExtensionConfig -Role "Worke
 New-AzureDeployment -ServiceName $service_name -Slot Production -Package $service_package -Configuration $service_config -ExtensionConfiguration @($webrole_diagconfig,$workerrole_diagconfig)
 ```
 
-Pokud konfigurační soubor diagnostiky Určuje `StorageAccount` element s názvem účtu úložiště, `New-AzureServiceDiagnosticsExtensionConfig` použije rutina automaticky tento účet úložiště. Aby to fungovalo, musí být účet úložiště ve stejném předplatném, jako je nasazená cloudová služba.
+Pokud konfigurační soubor diagnostiky určuje `StorageAccount` element s názvem účtu úložiště, použije rutina `New-AzureServiceDiagnosticsExtensionConfig` automaticky tento účet úložiště. Aby to fungovalo, musí být účet úložiště ve stejném předplatném, jako je nasazená cloudová služba.
 
 Z Azure SDK 2,6 další konfigurační soubory rozšíření generované výstupem cíle publikování MSBuild budou zahrnovat název účtu úložiště na základě konfiguračního řetězce pro diagnostiku, který je zadaný v konfiguračním souboru služby (. cscfg). Skript níže ukazuje, jak analyzovat konfigurační soubory rozšíření z výstupu cíle publikování a nakonfigurovat diagnostické rozšíření pro každou roli při nasazení cloudové služby.
 
@@ -82,7 +82,7 @@ New-AzureDeployment -ServiceName $service_name -Slot Production -Package $servic
 
 Visual Studio Online používá podobný přístup pro automatizované nasazení Cloud Services s diagnostickým rozšířením. Úplný příklad naleznete v tématu [Publish-AzureCloudDeployment. ps1](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureCloudPowerShellDeploymentV1/Publish-AzureCloudDeployment.ps1) .
 
-Pokud se `StorageAccount` v konfiguraci diagnostiky nezadal žádný, pak musíte rutinu předat parametr *StorageAccountName* . Je-li zadán parametr *StorageAccountName* , rutina vždy použije účet úložiště, který je zadán v parametru, a nikoli ten, který je zadán v konfiguračním souboru diagnostiky.
+Pokud se v konfiguraci diagnostiky nezadal žádný `StorageAccount`, je potřeba do rutiny předat parametr *StorageAccountName* . Je-li zadán parametr *StorageAccountName* , rutina vždy použije účet úložiště, který je zadán v parametru, a nikoli ten, který je zadán v konfiguračním souboru diagnostiky.
 
 Pokud je účet úložiště diagnostiky v jiném předplatném, než je cloudová služba, musíte explicitně předat parametry *StorageAccountName* a *StorageAccountKey* do rutiny. Parametr *StorageAccountKey* není potřeba, pokud je účet úložiště diagnostiky ve stejném předplatném, protože se rutina může automaticky dotazovat a nastavit hodnotu klíče při povolování diagnostického rozšíření. Pokud je však účet úložiště diagnostiky v jiném předplatném, rutina nemusí být schopna získat klíč automaticky a Vy musíte explicitně zadat klíč prostřednictvím parametru *StorageAccountKey* .
 
@@ -121,7 +121,7 @@ Pokud chcete vypnout diagnostiku v cloudové službě, můžete použít rutinu 
 Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
-Pokud jste povolili diagnostické rozšíření pomocí *set-AzureServiceDiagnosticsExtension* nebo *New-AzureServiceDiagnosticsExtensionConfig* bez parametru *role* , můžete rozšíření odebrat pomocí  *Remove-AzureServiceDiagnosticsExtension* bez parametru *role* . Pokud byl parametr *role* použit při povolení rozšíření, musí být použit také při odebrání rozšíření.
+Pokud jste povolili diagnostické rozšíření pomocí *set-AzureServiceDiagnosticsExtension* nebo *New-AzureServiceDiagnosticsExtensionConfig* bez parametru *role* , můžete rozšíření odebrat pomocí funkce *Remove-AzureServiceDiagnosticsExtension* bez parametru *role* . Pokud byl parametr *role* použit při povolení rozšíření, musí být použit také při odebrání rozšíření.
 
 Chcete-li odebrat rozšíření diagnostiky pro každou jednotlivou roli:
 
@@ -133,3 +133,6 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 * Další pokyny týkající se používání diagnostiky Azure a dalších postupů k řešení problémů najdete v tématu [Povolení diagnostiky v Azure Cloud Services a Virtual Machines](cloud-services-dotnet-diagnostics.md).
 * [Schéma konfigurace diagnostiky](/azure/azure-monitor/platform/diagnostics-extension-schema-1dot3) vysvětluje různé možnosti konfigurace XML pro diagnostické rozšíření.
 * Informace o tom, jak povolit rozšíření diagnostiky pro Virtual Machines, najdete v tématu [Vytvoření virtuálního počítače s Windows pomocí monitorování a diagnostiky pomocí šablony Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md) .
+
+
+

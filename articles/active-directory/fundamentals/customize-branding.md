@@ -1,5 +1,5 @@
 ---
-title: Přidat branding vaší organizace přihlašovací stránku – Azure Active Directory | Dokumentace Microsoftu
+title: Přidání brandingu na přihlašovací stránku vaší organizace – Azure AD
 description: Pokyny ohledně toho, jak přidat branding vaší organizace na přihlašovací stránku služby Azure Active Directory.
 services: active-directory
 author: msaburnley
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7caf6eff9f5bd497ab6c3a500f3940549b198576
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: ea0bc131f7eb3fc66f3b024b4c9902f8c73f9a7d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959042"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422820"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Přidat branding vaší organizace Azure Active Directory přihlašovací stránky
 Pomocí loga vaší organizace a vlastní barevná schémata poskytují konzistentní vzhled a představu o přihlašovacích stránek služby Azure Active Directory (Azure AD). Vaše přihlašovací stránky se zobrazí při přihlášení uživatele k vaší organizaci webové aplikace, jako je Office 365, který používá Azure AD jako zprostředkovatele identity.
@@ -29,7 +29,7 @@ Pomocí loga vaší organizace a vlastní barevná schémata poskytují konziste
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Přizpůsobit přihlašovací stránku Azure AD
 Můžete přizpůsobit vaší služby Azure AD přihlašovacích stránek služby, které se zobrazí, když se uživatelé přihlásí do aplikace specifickým pro tenanta vaší organizace, jako například [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com), nebo při předání proměnné domény, jako je například [ *https://passwordreset.microsoftonline.com/?whr=contoso.com* ](https://passwordreset.microsoftonline.com/?whr=contoso.com).
 
-Vaše vlastní branding se okamžitě nezobrazí, když uživatelé přejdou na weby, jako je například\.webová Office.com. Místo toho uživatel musí přihlásit před přizpůsobený branding se zobrazí. Až se uživatel přihlásí, branding může trvat 15 minut nebo déle. 
+Vaše vlastní branding se okamžitě nezobrazí, když uživatelé přejdou na weby, jako je například webová\.office.com. Místo toho uživatel musí přihlásit před přizpůsobený branding se zobrazí. Až se uživatel přihlásí, branding může trvat 15 minut nebo déle. 
 
 > [!NOTE]
 > Všechny značky elementů jsou volitelné. Například pokud zadáte banner s logem se žádný obrázek na pozadí, přihlašovací stránka zobrazí vaše logo s výchozí obrázek na pozadí z cílové lokality (třeba Office 365).<br><br>Kromě toho branding přihlašovací stránky se nepřenáší na osobní účty Microsoft. Pokud uživatelé nebo obchodní hosté přihlásí pomocí osobního účtu Microsoft, přihlašovací stránka nebude se Branding vaší organizace.
@@ -76,7 +76,7 @@ Vaše vlastní branding se okamžitě nezobrazí, když uživatelé přejdou na 
     
         - **Obrázek čtvercového loga, tmavé.** Stejné jako na obrázku čtvercového loga výše. Tento obrázek loga zaujímá místo obrázku čtvercového loga při použití s tmavého pozadí, například s obrazovkami připojený k Windows 10 Azure AD během prostředí out-of-box (OOBE).  Pokud vaše logo vypadá dobře na bílý tmavě modrá a černé pozadí, není nutné přidat tento obrázek. 
         
-        - **Zobrazit možnost zachovat přihlášení.** Můžete uživatelům zůstane přihlášený do služby Azure AD, dokud explicitně odhlášení. Pokud se rozhodnete **ne**, je tato volba skrytá a uživatelé musí přihlásit pokaždé, když je prohlížeč zavřít a znovu otevřít.
+        - **Zobrazit možnost zachovat přihlášení.** Můžete zvolit, aby vaši uživatelé měli zůstat přihlášení ke službě Azure AD, dokud se explicitně odhlásíte. Pokud zvolíte **ne**, tato možnost bude skrytá a uživatelé se musí přihlašovat pokaždé, když se prohlížeč zavře a znovu otevře.
         
             >[!Note]
             >Některé funkce služeb SharePoint Online a Office 2010 závisí na tom, jestli mají uživatelé možnost zůstat přihlášení. Pokud nastavíte **Ne**, můžou se vašim uživatelům zobrazovat další neočekávané výzvy k přihlášení.

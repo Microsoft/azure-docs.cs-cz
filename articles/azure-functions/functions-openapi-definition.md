@@ -1,16 +1,16 @@
 ---
-title: Vytvoření definice OpenAPI pro rozhraní API bez serveru s využitím Azure API Management
+title: Vystavte své funkce pomocí OpenAPI s využitím Azure API Management
 description: Vytvořte definici OpenAPI, která umožní ostatním aplikacím a službám volat vaši funkci v Azure.
 ms.topic: tutorial
 ms.date: 05/08/2019
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 659c05b3d31f5673e95cb27f10eaa8bd872e4be6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 56e2182b408b4e8b1f89eee7458a27c5dd54bb55
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226819"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562009"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Vytvoření definice OpenAPI pro rozhraní API bez serveru s využitím Azure API Management
 
@@ -39,7 +39,7 @@ V tomto kurzu se používá funkce aktivované protokolem HTTP, která přijím�
 * Odhadovaná doba k provedení opravy turbíny (v hodinách)
 * Kapacita turbíny v kilowatthodinách. 
 
-Funkce pak vypočítá náklady na opravu a jaký může být výnos turbíny za 24 hodin. Vytvoření funkce aktivované protokolem HTTP v [Azure Portal](https://portal.azure.com).
+Funkce pak vypočítá náklady na opravu a jaký může být výnos turbíny za 24 hodin. Postup vytvoření funkce aktivované protokolem HTTP v [Azure Portal](https://portal.azure.com):
 
 1. Rozbalte aplikaci funkcí a vyberte tlačítko **+** vedle položky **Funkce**. Vyberte > **pokračovat** **v portálu** .
 
@@ -139,23 +139,23 @@ Nyní jste připraveni vygenerovat definici OpenAPI.
     | ------------ |  ------- | -------------------------------------------------- |
     | **Název** | Globálně jedinečný název | Název se vygeneruje na základě názvu vaší aplikace Function App. |
     | **Předplatné** | Vaše předplatné | Předplatné, ve kterém je tento nový prostředek vytvořen. |  
-    | **[Skupina prostředků](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Stejný prostředek jako aplikace Function App, který by měl být nastaven za vás. |
+    | **[Skupina prostředků](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Stejný prostředek jako aplikace Function App, který by měl být nastaven za vás. |
     | **Umístění** | Západní USA | Vyberte umístění Západní USA. |
     | **Název organizace** | Contoso | Název organizace, který se používá na portálu pro vývojáře, a pro e-mailová oznámení. |
     | **E-mail správce** | Váš e-mail | E-mail, který přijal systémová oznámení z API Management. |
     | **Cenová úroveň** | Spotřeba (Preview) | Úroveň spotřeby je ve verzi Preview a není dostupná ve všech oblastech. Úplné podrobnosti o cenách najdete na [stránce s cenami API Management](https://azure.microsoft.com/pricing/details/api-management/) . |
 
-1. Zvolením možnosti **vytvořit** vytvořte instanci API Management, což může trvat několik minut.
+1. Volbou možnosti **Vytvořit** vytvořte instanci služby API Management, což může několik minut trvat.
 
 1. Vyberte **povolit Application Insights** pro posílání protokolů na stejné místo jako aplikace Functions, potom přijměte zbývající výchozí hodnoty a vyberte **propojit rozhraní API**.
 
-1. Otevře se **Azure Functions importu** se zvýrazněnou funkcí **TurbineRepair** . Pokračujte výběrem **možnosti vybrat** .
+1. Otevře se **Azure Functions importu** se zvýrazněnou funkcí **TurbineRepair** . Pokračujte volbou možnosti **Vybrat**.
 
     ![Importovat Azure Functions do API Management](media/functions-openapi-definition/import-function-openapi.png)
 
 1. Na stránce **vytvořit z Function App** přijměte výchozí hodnoty a vyberte **vytvořit** .
 
-    ![Vytvořit z Function App](media/functions-openapi-definition/create-function-openapi.png)
+    ![Vytvořit z aplikace funkcí](media/functions-openapi-definition/create-function-openapi.png)
 
 Rozhraní API se teď pro funkci vytvořilo.
 

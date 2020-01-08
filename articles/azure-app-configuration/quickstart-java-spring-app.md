@@ -1,25 +1,17 @@
 ---
-title: Rychlý Start, kde se dozvíte, jak používat konfiguraci aplikací Azure | Microsoft Docs
+title: Rychlý Start, kde se dozvíte, jak používat konfiguraci aplikací Azure
 description: Rychlý Start pro použití konfigurace aplikací Azure s aplikacemi pro pružinu v jazyce Java
-services: azure-app-configuration
-documentationcenter: ''
 author: yidon
-manager: jeffya
-editor: ''
-ms.assetid: ''
-ms.service: azure-app-configuration
-ms.devlang: java
-ms.topic: quickstart
-ms.tgt_pltfrm: Spring
-ms.workload: tbd
-ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: e8f6f9ca610c515deca6ed1bdbee54f40cacf427
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.service: azure-app-configuration
+ms.topic: quickstart
+ms.date: 12/17/2019
+ms.openlocfilehash: c4fee6c61ba58a8a1629b5c98d7eebdadfdf1a89
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184942"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495203"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace s pružinou v jazyce Java pomocí konfigurace aplikace Azure
 
@@ -45,7 +37,7 @@ V tomto rychlém startu zařadíte konfiguraci aplikace Azure do aplikace v pru�
 
 ## <a name="create-a-spring-boot-app"></a>Vytvoření aplikace pro spouštění pružiny
 
-Pomocí [jarního Initializru](https://start.spring.io/) vytvoříte nový projekt pro spuštění pružiny.
+Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt pro spuštění pružiny.
 
 1. Přejděte na <https://start.spring.io/>.
 
@@ -121,7 +113,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvoříte nový proje
 
 6. V adresáři Resources vaší aplikace vytvořte nový soubor s názvem `bootstrap.properties` a do souboru přidejte následující řádky. Nahraďte vzorové hodnoty odpovídajícími vlastnostmi úložiště konfigurace aplikace.
 
-    ```properties
+    ```CLI
     spring.cloud.azure.appconfiguration.stores[0].connection-string=[your-connection-string]
     ```
 
@@ -129,13 +121,13 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvoříte nový proje
 
 1. Sestavte aplikaci pro jarní spouštění pomocí Maven a spusťte ji například takto:
 
-    ```shell
+    ```CLI
     mvn clean package
     mvn spring-boot:run
     ```
 2. Po spuštění aplikace použijte k otestování aplikace *kudrlinkou* . Příklad:
 
-      ```shell
+      ```CLI
       curl -X GET http://localhost:8080/
       ```
     Zobrazí se zpráva, kterou jste zadali v úložišti konfigurace aplikace.

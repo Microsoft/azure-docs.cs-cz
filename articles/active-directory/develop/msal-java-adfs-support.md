@@ -1,5 +1,5 @@
 ---
-title: Podpora AD FS v knihovně Microsoft Authentication Library pro Java
+title: Podpora AD FS (MSAL for Java)
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o podpoře Active Directory Federation Services (AD FS) (AD FS) v knihovně Microsoft Authentication Library pro Java (MSAL4j).
 services: active-directory
@@ -14,16 +14,16 @@ ms.author: sagonzal
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 665cef55965f6871a654b9baceaad3e4f5d196c7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 04079a6e284deac076d7e296cc44774c97462534
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916651"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424352"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-java"></a>Podpora Active Directory Federation Services (AD FS) v MSAL pro Java
 
-Active Directory Federation Services (AD FS) (AD FS) ve Windows serveru vám umožní přidat ověřování a autorizaci na základě protokolu OAuth 2,0 pro aplikaci Microsoft Authentication Library pro Java (MSAL for Java). Po integraci aplikace může ověřit uživatele v AD FS federované prostřednictvím služby Azure AD. Další informace o scénářích najdete v tématu [AD FSch scénářů pro vývojáře](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers).
+Active Directory Federation Services (AD FS) (AD FS) ve Windows serveru vám umožní přidat ověřování a autorizaci na základě protokolu OAuth 2,0 pro aplikaci Microsoft Authentication Library pro Java (MSAL for Java). Po integraci aplikace může ověřit uživatele v AD FS federované prostřednictvím služby Azure AD. Další informace o scénářích najdete v tématu [AD FSch scénářů pro vývojáře](/windows-server/identity/ad-fs/ad-fs-development).
 
 Aplikace, která používá MSAL pro Java, bude komunikovat s Azure Active Directory (Azure AD), která pak federuje na AD FS.
 

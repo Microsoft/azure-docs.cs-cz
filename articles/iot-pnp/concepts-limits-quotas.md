@@ -3,30 +3,30 @@ title: Omezení a kvóty IoT technologie Plug and Play Preview | Microsoft Docs
 description: Seznamte se s limity, kvótami a omezeními, které platí při použití IoT technologie Plug and Play ve verzi Preview.
 author: miagdp
 ms.author: miag
-ms.date: 08/01/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 2df8a8820422a22b0512e24c4b052377cb0e61e0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 48ecaaba6d956efd9da75d0582fa06d231cb3f80
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879562"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531373"
 ---
 # <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>Limity, kvóty a omezení pro IoT technologie Plug and Play Preview
 
 V tomto článku se dozvíte o omezeních, kvótách a omezeních specifických pro IoT technologie Plug and Play, která se vztahují ve verzi Public Preview. Existují stávající [kvóty IoT Hub a omezení](../iot-hub/iot-hub-devguide-quotas-throttling.md) , které platí i pro ně.
 
-## <a name="iot-hub"></a>IoT Hub
+## <a name="iot-hub"></a>Centrum IoT
 
 Ve verzi Public Preview platí následující omezení a kvóty pro Centrum IoT:
 
-| Omezení, omezení a omezení | Value | Poznámky |
+| Omezení, omezení a omezení | Hodnota | Poznámky |
 |-----|-----|-----|
-| Počet modelů schopností zařízení (DCMs) nebo rozhraní, která se dají zaregistrovat pro jednotlivé rozbočovače | 1500 ||
+| Počet modelů schopností zařízení (DCMs) nebo rozhraní, která se dají zaregistrovat pro jednotlivé rozbočovače | 1 500 ||
 | Maximální počet rozhraní, která se dají zaregistrovat na zařízení | 40 ||
-| Maximální počet DCMs, které se můžou registrovat na zařízení | 1 ||
+| Maximální počet DCMs, které se můžou registrovat na zařízení | 1\. místo ||
 | Maximální velikost rozhraní/souboru DCM | 512 znaků ||
 | Maximální velikost názvu rozhraní | 256 znaků ||
 | Maximální velikost názvu vlastnosti  | 64 bajtů, 7 úrovní hloubky (a první úroveň je vyhrazena pro `$iotin`) | Povolené znaky: a-z, A-Z, 0-9 (nikoli jako první znak) a podtržítko. |
@@ -39,12 +39,12 @@ Ve verzi Public Preview platí následující omezení a kvóty pro Centrum IoT:
 
 Ve verzi Public Preview platí následující omezení a kvóty pro úložiště modelů:
 
-| Omezení, omezení a omezení| Value |
+| Omezení, omezení a omezení| Hodnota |
 |-----|-----|
-| Počet úložišť modelů společnosti na tenanta Azure Active Directory | 1 |
+| Počet úložišť modelů společnosti na tenanta Azure Active Directory | 1\. místo |
 | Počet autorizačních klíčů na úložiště modelu | 10  |
-| Počet modelů (DCMs nebo rozhraní) na úložiště modelů společnosti| 1500  |
-| Počet modelů (DCMs nebo rozhraní) ve veřejném úložišti modelu na tenanta Azure Active Directory| 1500  |
+| Počet modelů (DCMs nebo rozhraní) na úložiště modelů společnosti| 1 500  |
+| Počet modelů (DCMs nebo rozhraní) ve veřejném úložišti modelu na tenanta Azure Active Directory| 1 500  |
 | Počet DCMs nebo rozhraní, která se odstraňují v úložišti podnikového modelu | 10 dotazů za sekundu (QPS)|
 | Počet úložišť modelů, které vytváří nebo aktualizuje tenant| 1 QPS |
 | Počet autorizačních klíčů, které se vytváří, aktualizují nebo odstraňují v úložišti modelu | 1 QPS|

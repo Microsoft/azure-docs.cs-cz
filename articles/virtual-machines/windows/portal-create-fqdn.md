@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 727636b4b59bf4b31fd7592b1a0f2d52d5dbbfd3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: fa4e4bd7561a7a745e6eb0b70016144b9fb57998
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032994"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371271"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-windows-vm"></a>Vytvoření plně kvalifikovaného názvu domény v Azure Portal pro virtuální počítač s Windows
 
@@ -36,5 +36,5 @@ Nyní se můžete vzdáleně připojit k virtuálnímu počítači pomocí tohot
 ## <a name="next-steps"></a>Další kroky
 Když teď váš virtuální počítač má veřejnou IP adresu a název DNS, můžete nasadit společné aplikační architektury nebo služby, jako je IIS, SQL nebo SharePoint.
 
-Můžete si také přečíst další informace o [použití Správce prostředků](../../azure-resource-manager/resource-group-overview.md) pro tipy k vytváření nasazení Azure.
+Můžete si také přečíst další informace o [použití Správce prostředků](../../azure-resource-manager/management/overview.md) pro tipy k vytváření nasazení Azure.
 

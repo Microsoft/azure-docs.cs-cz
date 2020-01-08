@@ -4,15 +4,15 @@ description: Pomocí Surface Hub řešení můžete sledovat stav rozbočovačů
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 7ced5f678b9f8b2d4aa073a984276f41b8b7c4b9
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 32ac14a06230341d21ff1b14a33cbcdd0992e4fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900626"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400896"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Monitorujte rozbočovače Surface Azure Monitor, abyste mohli sledovat jejich stav.
 
@@ -66,7 +66,7 @@ Pokud ke správě svého prostředí nepoužíváte Intune, můžete zařízení
 
 Zobrazí se potvrzení o tom, jestli se konfigurace na zařízení úspěšně nastavila. Pokud k tomu došlo, zobrazí se zpráva oznamující, že se agent úspěšně připojil k Azure Monitor. Zařízení pak začne odesílat data do Azure Monitor, kde je můžete zobrazit a pracovat s nimi.
 
-## <a name="monitor-surface-hubs"></a>Monitorovat centra Surface
+## <a name="monitor-surface-hubs"></a>Monitor Surface Hubs
 Monitorování vašich Surface Hub pomocí Azure Monitor je podobně jako monitorování všech ostatních zaregistrovaných zařízení.
 
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]

@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 2da12bbc760ff06ad0737ed9d48e12ea81260655
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8238f2ea8395fc53044703db619d768918cb1834
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73674728"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644694"
 ---
 # <a name="azure-data-factory-faq"></a>Nejčastější dotazy k Azure Data Factory
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Data Factory.  
@@ -72,7 +72,7 @@ Pokud chcete přesunout úlohy SSIS, můžete vytvořit Data Factory a zřídit 
 ### <a name="sdks"></a>Sady SDK
 Pokud jste pokročilý uživatel a hledáte programové rozhraní, Data Factory poskytuje bohatou sadu sad SDK, které můžete použít k vytváření, správě a monitorování kanálů pomocí vašeho oblíbeného integrovaného vývojového prostředí (IDE). Podpora jazyků zahrnuje .NET, PowerShell, Python a REST.
 
-### <a name="monitoring"></a>Monitorování
+### <a name="monitoring"></a>Sledování
 Můžete monitorovat datové továrny prostřednictvím PowerShellu, sady SDK nebo nástrojů pro monitorování vizuálů v uživatelském rozhraní prohlížeče. Efektivním a efektivním způsobem můžete monitorovat a spravovat vlastní toky na vyžádání, na základě triggeru a hodiny. Zrušit stávající úlohy, Projděte si přehled o selháních, přejděte k podrobnostem a Získejte podrobné chybové zprávy a Nalaďte problémy, a to vše z jednoho podokna skla bez kontextu přepínání nebo navigace mezi obrazovkami. 
 
 ### <a name="new-features-for-ssis-in-data-factory"></a>Nové funkce pro SSIS v Data Factory
@@ -82,7 +82,7 @@ Od počáteční verze Public Preview v 2017 Data Factory přidali následujíc�
 -   SQL Database s koncovými body služby virtuální sítě
 -   Spravovaná instance
 -   Elastický fond
--   Podpora pro Azure Resource Manager virtuální sítě nad klasickými virtuálními sítěmi, která se v budoucnu už nepoužívá, umožňuje vložit/připojit Azure-SSIS Integration runtime k virtuální síti nakonfigurované pro SQL Database se službou Virtual Network. koncové body/MI/místní přístup k datům. Další informace najdete v tématu [připojení prostředí Azure-SSIS Integration runtime k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md).
+-   Podpora pro Azure Resource Manager virtuální sítě nad klasickými virtuálními sítěmi, která se v budoucnu už nepoužívá, umožňuje vložit nebo připojit Azure-SSIS Integration runtime k virtuální síti nakonfigurované pro SQL Database pomocí koncových bodů služby virtuální sítě/MI/místních přístupových dat. Další informace najdete v tématu [připojení prostředí Azure-SSIS Integration runtime k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md).
 -   Podpora ověřování pomocí Azure Active Directory (Azure AD) a ověřování SQL pro připojení k SSISDB, povolení ověřování Azure AD s vaší Data Factory spravovanou identitou pro prostředky Azure
 -   Podpora pro uvedení vlastní místní licence SQL Server k získání výrazné úspory nákladů z možnosti Zvýhodněné hybridní využití Azure
 -   Podpora Enterprise Edition prostředí Azure-SSIS Integration runtime, které umožňuje používat pokročilé a prémiové funkce, vlastní instalační rozhraní pro instalaci dalších komponent a rozšíření a partnerský ekosystém. Další informace najdete [v tématu edice Enterprise Edition, Custom Setup a rozšíření třetích stran pro SSIS v ADF](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/). 
@@ -101,13 +101,13 @@ Můžete nasadit jednu nebo více instancí prostředí Integration runtime, jak
 Další informace najdete v tématu [Prostředí Integration Runtime v Azure Data Factory](concepts-integration-runtime.md).
 
 ## <a name="what-is-the-limit-on-the-number-of-integration-runtimes"></a>Jaký je limit počtu prostředí Integration runtime?
-Neexistuje žádné pevné omezení počtu instancí prostředí Integration runtime, které můžete mít v datové továrně. Existují však omezení počtu jader virtuálních počítačů, které může prostředí Integration runtime použít pro každé předplatné pro spuštění balíčku SSIS. Další informace najdete v tématu [omezení Data Factory](../azure-subscription-service-limits.md#data-factory-limits).
+Neexistuje žádné pevné omezení počtu instancí prostředí Integration runtime, které můžete mít v datové továrně. Existují však omezení počtu jader virtuálních počítačů, které může prostředí Integration runtime použít pro každé předplatné pro spuštění balíčku SSIS. Další informace najdete v tématu [omezení Data Factory](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits).
 
 ## <a name="what-are-the-top-level-concepts-of-azure-data-factory"></a>Jaké jsou koncepty Azure Data Factory na nejvyšší úrovni?
 Předplatné Azure může obsahovat jednu nebo více instancí služby Azure Data Factory (neboli datových továren). Azure Data Factory obsahuje čtyři klíčové komponenty, které společně fungují jako platforma, na které můžete vytvářet pracovní postupy řízené daty s kroky pro přesun a transformaci dat.
 
 ### <a name="pipelines"></a>Kanály
-Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál je logické seskupení aktivit, které provádí pracovní jednotku. Aktivity v kanálu společně provádí úlohy. Kanál může například obsahovat skupinu aktivit, které ingestují data z objektu blob Azure a pak spustí dotaz na podregistr v clusteru HDInsight, aby data mohla rozdělit. Výhodou je, že pomocí kanálu můžete spravovat aktivity jako sadu, aniž byste museli spravovat jednotlivé aktivity jednotlivě. Můžete zřetězit aktivity v kanálu, abyste je mohli postupně provozovat, nebo je můžete provozovat samostatně, paralelně.
+Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál je logické seskupení aktivit, které provádí pracovní jednotku. Aktivity v kanálu společně provádí úlohy. Kanál může například obsahovat skupinu aktivit, které ingestují data z objektu blob Azure a pak spustit dotaz Hive v clusteru služby HDInsight pro rozdělení dat. Výhodou je, že pomocí kanálu můžete spravovat aktivity jako sadu, aniž byste museli spravovat jednotlivé aktivity jednotlivě. Můžete zřetězit aktivity v kanálu, abyste je mohli postupně provozovat, nebo je můžete provozovat samostatně, paralelně.
 
 ### <a name="data-flows"></a>Toky dat
 Toky dat jsou objekty, které sestavíte vizuálně v Data Factory které transformují data ve velkém měřítku na back-endové služby Spark. Nemusíte porozumět programování nebo interním seznámení s Sparkem. Stačí navrhnout svůj záměr transformace dat pomocí grafů (mapování) nebo tabulek (tahání).
@@ -126,8 +126,8 @@ Propojené služby mají dva účely v Data Factory:
 - Představuje *úložiště dat* , které zahrnuje, ale není omezené na místní instanci SQL Server, instanci databáze Oracle, sdílenou složku nebo účet úložiště objektů BLOB v Azure. Seznam podporovaných úložišť dat najdete [v tématu aktivita kopírování v Azure Data Factory](copy-activity-overview.md).
 - Představují *výpočetní prostředek*, který může hostovat provádění aktivity. Například aktivita podregistru HDInsight běží v clusteru HDInsight Hadoop. Seznam aktivit transformace a podporovaných výpočetních prostředí najdete v tématu [transformace dat v Azure Data Factory](transform-data.md).
 
-### <a name="triggers"></a>Triggery
-Triggery reprezentují jednotky zpracování, které určují, kdy se spustí spuštění kanálu. Pro různé typy událostí existují různé typy aktivačních událostí. 
+### <a name="triggers"></a>Aktivační události
+Aktivační události představují jednotky zpracování, které určují, kdy je spuštěna provádění zřetězeného příkazu. Pro různé typy událostí existují různé typy aktivačních událostí. 
 
 ### <a name="pipeline-runs"></a>Spuštění kanálu
 Spuštění kanálu je instance provádění kanálu. Spuštění kanálu je obvykle možné vytvořit předáním argumentů parametrům, které jsou definovány v kanálu. Argumenty můžete předat ručně nebo v rámci definice triggeru.
@@ -203,9 +203,9 @@ Tok dat tahání se v tuto chvíli podporuje v datových továrnách vytvořený
 
 * Austrálie – východ
 * Střední Kanada
-* Střed Indie
+* Střední Indie
 * Střední USA
-* Východ USA
+* Východní USA
 * Východ USA 2
 * Japonsko – východ
 * Severní Evropa
@@ -244,9 +244,9 @@ Azure Data Factory (ADF) je spravovaná služba pro integraci dat, která umož�
 
 Tok dat tahání podporuje v SQL následující datové typy. Při použití datového typu, který není podporován, se zobrazí chyba ověřování.
 
-* Dostatečná
+* short
 * double
-* nemovitostí
+* real
 * float
 * char
 * nchar
@@ -254,12 +254,12 @@ Tok dat tahání podporuje v SQL následující datové typy. Při použití dat
 * nvarchar
 * celé číslo
 * int
-* 40bitového
+* bit
 * Boolean
 * smallint
 * tinyint
 * bigint
-* Dlouhou
+* Long
 * text
 * date
 * datetime

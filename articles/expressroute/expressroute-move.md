@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: ganesr
-ms.openlocfilehash: f232e1e8a1f7121b047a846fc2c614b48e757f76
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c4fed30f7f4b723f04cd59b2a987b498e3d614a5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076647"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645901"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>Přesun okruhů ExpressRoute z modelu nasazení Classic do Resource Manager
 Tento článek obsahuje přehled toho, co znamená přesun okruhu Azure ExpressRoute z modelu nasazení Classic do Azure Resource Manager.
@@ -39,7 +39,7 @@ Můžete povolit, aby okruhy ExpressRoute, které jsou vytvořené v modelu nasa
 * Přístup k modelu nasazení Classic řídí parametr **allowClassicOperations** v okruhu ExpressRoute.
 
 > [!IMPORTANT]
-> Platí všechny kvóty, které jsou popsané na stránce [Omezení služby](../azure-subscription-service-limits.md). Například standardní okruh může mít maximálně 10 připojení virtuální sítě přes modely nasazení Classic i Resource Manager.
+> Platí všechny kvóty, které jsou popsané na stránce [Omezení služby](../azure-resource-manager/management/azure-subscription-service-limits.md). Například standardní okruh může mít maximálně 10 připojení virtuální sítě přes modely nasazení Classic i Resource Manager.
 > 
 > 
 

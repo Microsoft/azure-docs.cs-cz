@@ -7,12 +7,12 @@ ms.date: 06/19/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 5cadd0479a6ddc97cc7ee7d9b5aee1bbffba02bb
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: c4351afe7781f4340dfd943828d65e94efbdc0a7
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120961"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659300"
 ---
 # <a name="networking-limit-increase"></a>Zvýšení limitu sítě
 
@@ -27,9 +27,9 @@ Můžete požádat o zvýšení prostřednictvím okna **help + support** nebo o
 
 Podle pokynů níže vytvořte žádost o podporu prostřednictvím okna "Help + podpora" v Azure, které je dostupné v Azure Portal. 
 
-1. V https://portal.azure.comvyberte možnost **help + podpora**.
+1. V https://portal.azure.com vyberte možnost **help + podpora**.
 
-    ![Pomoc a podpora](./media/resource-manager-core-quotas-request/helpsupport.png)
+    ![Nápověda a podpora](./media/resource-manager-core-quotas-request/helpsupport.png)
  
 2.  Vyberte **Nová žádost o podporu**. 
 
@@ -64,7 +64,7 @@ Podle pokynů níže vytvořte žádost o podporu prostřednictvím okna "Help +
 
 Pomocí následujících pokynů můžete vytvořit žádost o podporu prostřednictvím okna Azure využití + kvóty dostupného v Azure Portal. 
 
-1. Z https://portal.azure.comvyberte **předplatná**.
+1. Z https://portal.azure.com vyberte **předplatná**.
 
     ![Předplatná](./media/resource-manager-core-quotas-request/subscriptions.png)
 
@@ -84,4 +84,4 @@ Pomocí následujících pokynů můžete vytvořit žádost o podporu prostřed
 
 ## <a name="about-networking-limits"></a>O omezeních sítě
 
-Další informace o omezeních sítě najdete v [části sítě](../azure-subscription-service-limits.md#networking-limits) na stránce omezení – Nejčastější dotazy.
+Další informace o omezeních sítě najdete v [části sítě](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) na stránce omezení – Nejčastější dotazy.

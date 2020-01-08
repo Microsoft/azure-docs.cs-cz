@@ -1,6 +1,6 @@
 ---
 title: Porozumění schématu a vlastním výrazům Azure AD
-description: Toto téma popisuje schéma služby Azure AD, atributy, které zřizovací agent a vlastní výrazy.
+description: Tento článek popisuje schéma Azure AD, atributy, které zřizovací agent poskytuje, a vlastní výrazy.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,45 +15,45 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eae594bcc20e3c4ed1c6fbd0333699de8c9f4452
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 5fc68626959daaccb5ddc05ce6148c5948052d41
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794494"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549376"
 ---
-# <a name="understanding-the-azure-ad-schema"></a>Principy schématu Azure AD
-Objekt v Azure AD, podobně jako libovolný adresář, je programovou datovou konstrukcí vysoké úrovně, která představuje takové věci jako uživatelé, skupiny a kontakty.  Když ve službě Azure AD vytvoříte nového uživatele nebo kontakt, vytváříte novou instanci tohoto objektu.  Tyto instance se můžou odlišit na základě jejich vlastností.
+# <a name="understand-the-azure-ad-schema"></a>Pochopení schématu Azure AD
+Objekt v Azure Active Directory (Azure AD), podobně jako jakýkoli adresář, je programovou datovou konstrukcí vysoké úrovně, která představuje takové věci jako uživatelé, skupiny a kontakty. Když vytvoříte nového uživatele nebo kontakt ve službě Azure AD, vytváříte novou instanci tohoto objektu. Tyto instance se můžou odlišit na základě jejich vlastností.
 
-Vlastnosti ve službě Azure AD jsou prvky zodpovědné za ukládání informací o instanci objektu ve službě Azure AD.  
+Vlastnosti ve službě Azure AD jsou prvky zodpovědné za ukládání informací o instanci objektu ve službě Azure AD.
 
-Schéma Azure AD definuje pravidla, pro která se můžou v položce použít vlastnosti, druhy hodnot, které tyto vlastnosti můžou mít, a jak se s těmito hodnotami můžou uživatelé pracovat. 
+Schéma Azure AD definuje pravidla, pro která se můžou v položce použít vlastnosti, druhy hodnot, které tyto vlastnosti můžou mít, a jak se můžou uživatelé s těmito hodnotami pracovat. 
 
-Azure AD má dva typy vlastností.  Mezi vlastnosti patří:
-- **Předdefinované vlastnosti** – vlastnosti, které jsou předem definované schématem Azure AD.  Tyto vlastnosti poskytují různá použití a mohou nebo nemusí být přístupné.
-- **Rozšíření adresáře** – vlastnosti, které jsou k dispozici, aby bylo možné Azure AD přizpůsobit pro vlastní použití.  Pokud jste například rozšířili místní službu Active Directory s určitým atributem a chcete tento atribut přesměrovat, můžete použít jednu z vlastních vlastností, které jsou k dispozici. 
+Azure AD má dva typy vlastností:
+- **Předdefinované vlastnosti**: vlastnosti, které jsou předdefinované schématem Azure AD. Tyto vlastnosti poskytují různá použití a mohou nebo nemusí být přístupné.
+- **Přípony adresářů**: k dispozici jsou vlastnosti, které vám umožní přizpůsobit Azure AD pro vlastní použití. Pokud jste například rozšířili místní službu Active Directory s určitým atributem a chcete tento atribut flowovat, můžete použít jednu z poskytnutých vlastních vlastností. 
 
 ## <a name="attributes-and-expressions"></a>Atributy a výrazy
-Když je objekt, například uživatel, zřízený do služby Azure AD, vytvoří se nová instance uživatelského objektu.  Tato tvorba zahrnuje vlastnosti daného objektu, které jsou také označovány jako atributy.  Zpočátku nově vytvořený objekt bude mít své atributy nastavené na hodnoty, které jsou určené pravidly synchronizace.  Tyto atributy se pak udržují v aktuálním stavu prostřednictvím agenta zřizování cloudu.
+Když je objekt, jako je uživatel, zřízený do Azure AD, vytvoří se nová instance uživatelského objektu. Tato tvorba zahrnuje vlastnosti daného objektu, které jsou také označovány jako atributy. Zpočátku má nově vytvořený objekt své atributy nastavené na hodnoty, které jsou určené pravidly synchronizace. Tyto atributy se pak udržují v aktuálním stavu prostřednictvím agenta zřizování cloudu.
 
-![](media/concept-attributes/attribute1.png)
+![Zřizování objektů](media/concept-attributes/attribute1.png)
 
-Pokud je například uživatel součástí marketingového oddělení, jeho atribut oddělení Azure AD se zpočátku vytvoří při zřízení a pak se hodnota nastaví na marketing.  Ale po šesti měsících se později změní na prodej.  Jejich místní atribut oddělení služby AD se změní na prodej.  Tato změna se pak synchronizuje do Azure AD a projeví se na svém objektu uživatele Azure AD.
+Uživatel může být například součástí marketingového oddělení. Při zřizování se zpočátku vytvoří jeho atribut oddělení Azure AD a hodnota je nastavená na marketing. Po šesti měsících, pokud se změní na prodej, změní se jejich místní atribut oddělení služby Active Directory na prodej. Tato změna se synchronizuje do Azure AD a projeví se v objektu uživatele Azure AD.
 
-Synchronizace atributů může být buď přímá, kde hodnota ve službě Azure AD je přímo nastavená na hodnotu atributu on-premises.  Nebo může existovat programový výraz, který zpracovává tuto synchronizaci.  V případech, kdy je potřeba provést určitou logiku nebo stanovení, aby se naplnila hodnota, by se vyžadoval programový výraz.
+Synchronizace atributů může být přímá, kde hodnota ve službě Azure AD je přímo nastavená na hodnotu atributu on-premises. Nebo, programový výraz může synchronizaci zpracovat. Programový výraz je zapotřebí v případech, kdy je nutné provést určitou logiku nebo určení k naplnění hodnoty.
 
-Například pokud mám můj atribut mail ("john.smith@contoso.com") a potřebuji vydělit část "@contoso.com" a flow pouze hodnotu "Jan. Smith", použijeme něco podobného:
+Pokud byste například měli atribut mail "john.smith@contoso.com" a museli jste vydělit část "@contoso.com" a flow pouze hodnotu "Jan. Smith", použijete něco podobného:
 
 `Replace([mail], "@contoso.com", , ,"", ,)`  
 
-**Vzorový vstup/výstup:** <br>
+**Ukázkový vstup/výstup:** <br>
 
-* **Vstup** (mail): "john.smith@contoso.com"
+* **VSTUP** (pošta): "john.smith@contoso.com"
 * **Výstup**: Jan. Smith
 
-Další informace o vytváření vlastních výrazů a syntaxi naleznete v tématu [výrazy zápisu pro mapování atributů v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data).
+Další informace o tom, jak napsat vlastní výrazy a syntaxi, najdete v tématu [zápis výrazů pro mapování atributů v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data).
 
-Následující seznam uvádí běžné atributy a jejich synchronizaci do Azure AD.
+V následující tabulce jsou uvedeny běžné atributy a jejich synchronizace do služby Azure AD.
 
 
 |Místní služby Active Directory|Typ mapování|Azure AD|
@@ -61,19 +61,19 @@ Následující seznam uvádí běžné atributy a jejich synchronizaci do Azure 
 |CN|Direct|commonName
 |countryCode|Direct|countryCode|
 |displayName|Direct|displayName|
-|givenName|Výraz|givenName|
+|givenName|Expression|givenName|
 |objectGUID|Direct|sourceAnchorBinary|  
-|Třídy|Direct|userPrincipalName (Hlavní název uživatele)|
-|ProxyAdress|Direct|proxyAddress|
+|userprincipalName|Direct|userPrincipalName (Hlavní název uživatele)|
+|ProxyAdress|Direct|ProxyAddress|
 
-## <a name="viewing-the-schema"></a>Zobrazení schématu
-Chcete-li zobrazit schéma a ověřit jej, proveďte následující kroky:
+## <a name="view-the-schema"></a>Zobrazit schéma
+Chcete-li zobrazit schéma a ověřit jej, postupujte podle těchto kroků.
 
-1.  Přejděte do [Průzkumníka grafů](https://developer.microsoft.com/graph/graph-explorer).
-2.  Přihlaste se pomocí účtu globálního správce.
-3.  Na levé straně klikněte na Upravit oprávnění a zajistěte, aby byl **adresář.** **nepřístupný** . všechno se poslalo.
-4.  Spusťte následující dotaz: https://graph.microsoft.com/beta/serviceprincipals/.  Tento dotaz vrátí seznam objektů služby.
-5.  Vyhledejte "appDisplayName": "Active Directory to Azure Active Directory Provisioning" a poznamenejte si hodnotu "ID:".
+1.  Přejít na [Průzkumník grafů](https://developer.microsoft.com/graph/graph-explorer).
+1.  Přihlaste se pomocí účtu globálního správce.
+1.  Na levé straně vyberte změnit oprávnění a zajistěte, aby byl adresář. **nepřístupný** **. všechno** se *poslalo*.
+1.  Spusťte dotaz https://graph.microsoft.com/beta/serviceprincipals/. Tento dotaz vrátí seznam objektů služby.
+1.  Vyhledejte `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` a poznamenejte si hodnotu `"id"`.
     ```
     "value": [
             {
@@ -146,8 +146,8 @@ Chcete-li zobrazit schéma a ověřit jej, proveďte následující kroky:
                 "passwordCredentials": []
             },
     ```
-6. Nahraďte {ID objektu služby} hodnotou a spusťte následující dotaz: `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/`
-7. Vyhledejte část "ID": "AD2AADProvisioning. fd1c9b9e8077402c8bc03a7186c8f976" a poznamenejte si "ID:".
+1. Nahraďte `{Service Principal id}` hodnotou a spusťte dotaz `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/`.
+1. Vyhledejte `"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"` a poznamenejte si hodnotu `"id"`.
     ```
     {
                 "id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976",
@@ -238,16 +238,17 @@ Chcete-li zobrazit schéma a ověřit jej, proveďte následující kroky:
                 ]
             }
     ```
-8. Nyní spusťte následující dotaz: `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema`
+1. Nyní spusťte dotaz `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema`.
  
     Příklad: https://graph.microsoft.com/beta/serviceprincipals/653c0018-51f4-4736-a3a3-94da5dcb6862/synchronization/jobs/AD2AADProvisioning.e9287a7367e444c88dc67a531c36d8ec/schema
 
- Nahraďte {ID objektu služby} a {AD2ADD ID zřizování} hodnotami.
+   Nahraďte `{Service Principal Id}` a `{AD2ADD Provisioning Id}` hodnotami.
 
-9. Tento dotaz vrátí schéma.
-  ![](media/concept-attributes/schema1.png)
+1. Tento dotaz vrátí schéma.
+
+   ![Vrácené schéma](media/concept-attributes/schema1.png)
  
-## <a name="next-steps"></a>Další kroky 
+## <a name="next-steps"></a>Další kroky
 
 - [Co je zřizování?](what-is-provisioning.md)
 - [Co je zřizování cloudu Azure AD Connect?](what-is-cloud-provisioning.md)

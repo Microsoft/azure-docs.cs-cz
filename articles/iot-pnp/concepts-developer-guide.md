@@ -3,16 +3,16 @@ title: Příručka pro vývojáře – IoT technologie Plug and Play Preview | M
 description: Popis modelování zařízení pro vývojáře IoT technologie Plug and Play
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/05/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6d8e0e9e675b88c69b74cdad261280f5dcaf7161
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 21001a22be6297595658ff347e9f8a7b04bb6faf
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581630"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531390"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>Příručka pro vývojáře pro modelování IoT technologie Plug and Play Preview
 
@@ -63,7 +63,7 @@ Každá položka v seznamu rozhraní v oddílu Implements má:
 
 K dispozici jsou další volitelná pole, která můžete použít k přidání dalších podrobností do modelu schopností, jako je například zobrazovaný název a popis. Rozhraní, která jsou deklarována v modelu schopností, lze představit jako komponenty zařízení. V případě verze Public Preview může mít seznam rozhraní pouze jednu položku pro každé schéma.
 
-## <a name="interface"></a>Prostředí
+## <a name="interface"></a>Rozhraní
 
 Pomocí DTDL popíšete možnosti svého zařízení pomocí rozhraní. Rozhraní popisují _vlastnosti_, _telemetrie_a _příkazy_ , které součást vašeho zařízení implementuje:
 
@@ -115,7 +115,7 @@ Nepoužívejte vlastnosti k odeslání telemetrie ze zařízení. Například vl
 
 U zapisovatelných vlastností aplikace zařízení vrátí stavový kód požadovaného stavu, verzi a popis, aby označoval, zda obdržel a používal hodnotu vlastnosti.
 
-### <a name="telemetry"></a>Telemetrická data
+### <a name="telemetry"></a>Telemetrie
 
 Ve výchozím nastavení IoT Hub směruje všechny zprávy telemetrie ze zařízení na [integrovaný koncový bod (**zprávy/události**)](../iot-hub/iot-hub-devguide-messages-read-builtin.md) , který je kompatibilní se službou [Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/).
 

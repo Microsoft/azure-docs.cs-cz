@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 09/10/2019
 ms.author: sngun
-ms.openlocfilehash: 0ed5824859b8463919a809861993f9f98a4f9251
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 581bc813ca27067b1f27ab9866a45df3084dbbcc
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327038"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644728"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Azure Cosmos DB kompatibilita Gremlin
 Modul Azure Cosmos DB Graph úzce sleduje specifikace kroků procházení [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) , ale existují i rozdíly.
@@ -23,19 +23,21 @@ Modul Azure Cosmos DB Graph úzce sleduje specifikace kroků procházení [Apach
 
 ## <a name="unsupported-features"></a>Nepodporované funkce
 
-* ***[Gremlin Bytecode](http://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** je na konkrétním programovacím jazyku nezávislá specifikace pro procházení grafů. Cosmos DB Graph ho ještě nepodporuje. Použijte ```GremlinClient.SubmitAsync()``` a předejte průchod jako textový řetězec.
+* ***[Gremlin Bytecode](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** je na konkrétním programovacím jazyku nezávislá specifikace pro procházení grafů. Cosmos DB Graph ho ještě nepodporuje. Použijte `GremlinClient.SubmitAsync()` a předejte průchod jako textový řetězec.
 
-* mohutnost ***```property(set, 'xyz', 1)```*** sady se ještě nepodporuje. Místo nich se používá ```property(list, 'xyz', 1)```.
+* mohutnost ***`property(set, 'xyz', 1)`*** sady se ještě nepodporuje. Místo toho použijte `property(list, 'xyz', 1)`. Další informace najdete v tématu [vlastnosti vrcholu pomocí TinkerPop](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties).
 
-* ***```match()```*** umožňuje dotazování grafů pomocí deklarativního porovnávání vzorů. Tato možnost není k dispozici.
+* ***`atch()`*** umožňuje dotazování grafů pomocí deklarativního porovnávání vzorů. Tato možnost není k dispozici.
 
 * ***Objekty jako vlastnosti*** na vrcholech nebo hranách nejsou podporovány. Vlastnosti můžou být pouze primitivní typy nebo pole.
 
-* ***Řazení podle vlastností pole*** ```.order().by(<array property>)``` není podporováno. Podporuje se řazení pouze podle primitivních typů.
+* ***Řazení podle vlastností pole*** `order().by(<array property>)` není podporováno. Podporuje se řazení pouze podle primitivních typů.
 
-* ***Neprimitivní typy JSON*** nejsou podporovány. Použijte ```string```typy ```false```, ```number```nebo ```true```/. ```null``` hodnoty nejsou podporovány. 
+* ***Neprimitivní typy JSON*** nejsou podporovány. Použijte `string`typy `false`, `number`nebo `true`/. `null` hodnoty nejsou podporovány. 
 
-* Serializátor ***GraphSONv3*** není dnes k dispozici.
+* Serializátor ***GraphSONv3*** se v tuto chvíli nepodporuje. V konfiguraci připojení použijte třídy serializátorů, čtecí modul a modul pro zápis `GraphSONv2`.
+
+* **Výrazy lambda a funkce** nejsou aktuálně podporovány. To zahrnuje `.map{<expression>}`, `.by{<expression>}`a `.filter{<expression>}` funkce. Další informace a informace o tom, jak je přepsat pomocí Gremlin kroků, najdete v [poznámce pro výrazy lambda](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas).
 
 * ***Transakce*** nejsou podporovány z důvodu distribuované povahy systému.  Nakonfigurujte vhodný model konzistence v účtu Gremlin na číst vlastní zápisy a pomocí optimistické souběžnosti vyřešte konfliktní zápisy.
 

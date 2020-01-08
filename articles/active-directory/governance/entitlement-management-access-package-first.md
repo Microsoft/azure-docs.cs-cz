@@ -1,5 +1,5 @@
 ---
-title: Kurz – vytvoření prvního balíčku přístupu ve správě nároků Azure AD – Azure Active Directory
+title: Kurz – vytvoření balíčku pro přístup – Správa nároků Azure AD
 description: Podrobný návod, jak vytvořit první balíček přístupu v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/22/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de4d4a1825149a512d7abdb192d8fb9d49e85a20
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: cd4feeb83acc3842874e7a2e4bbd32dacabcc00d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174874"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422660"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Kurz: vytvoření prvního balíčku přístupu ve správě nároků Azure AD
 
@@ -42,7 +42,7 @@ Podrobný příklad procesu nasazení správy opravňujících Azure Active Dire
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete používat správu nároků služby Azure AD, musíte mít jednu z těchto licencí:
 
@@ -190,7 +190,7 @@ V tomto kroku provedete kroky jako **interní žadatel** a vyžádáte přístup
 
     ![Můj portál přístupu – požádat o přístup](./media/entitlement-management-shared/my-access-request-access.png)
 
-1. Klikněte na **Odeslat**.
+1. Klikněte na **Submit** (Odeslat).
 
 1. V nabídce vlevo klikněte na **historie požadavků** a ověřte, zda byla žádost odeslána.
 

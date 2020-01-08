@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2019
+ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0cafc439a24c10c4c5a678219a0e0dce84476ff
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e2a243b11c2789afe0b2eb7ffd8de032dc10d8d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290856"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423335"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Volání rozhraní API Microsoft Graph z aplikace Univerzální platforma Windows (XAML)
 
@@ -55,7 +55,7 @@ Tato část obsahuje podrobné pokyny pro integraci aplikace Windows Desktop .NE
 Tato příručka vytvoří aplikaci, která zobrazí tlačítko s dotazem Graph API a tlačítkem k odhlášení. Zobrazuje také textová pole obsahující výsledky volání.
 
 > [!NOTE]
-> Chcete stáhnout tuto ukázkovou aplikaci Visual Studio, místo jejího vytváření? [Stáhněte si projekt](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip) a přejděte k kroku [Registrace aplikace](#register-your-application "akrok registrace plikace) , abyste před spuštěním nakonfigurovali vzorek kódu.
+> Chcete stáhnout tuto ukázkovou aplikaci Visual Studio, místo jejího vytváření? [Stáhněte si projekt](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip) a přejděte k kroku [Registrace aplikace](#register-your-application "krok registrace aplikace") , abyste před spuštěním nakonfigurovali vzorek kódu.
 
 ### <a name="create-your-application"></a>Vytvoření aplikace
 
@@ -68,7 +68,7 @@ Tato příručka vytvoří aplikaci, která zobrazí tlačítko s dotazem Graph 
 
 ### <a name="add-microsoft-authentication-library-to-your-project"></a>Přidat do projektu knihovnu Microsoft Authentication Library
 
-1. V sadě Visual Studio vyberte **Nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**.
+1. V sadě Visual Studio vyberte **Nástroje** > **Správce balíčků NuGet** > **Konzola správce balíčků**.
 1. Zkopírujte a vložte následující příkaz v okně **konzoly Správce balíčků** :
 
     ```powershell
@@ -109,7 +109,7 @@ V této části se dozvíte, jak pomocí MSAL získat token pro rozhraní Micros
     using System.Threading.Tasks;
     ```
 
-1. `MainPage` Třídu nahraďte následujícím kódem:
+1. Třídu `MainPage` nahraďte následujícím kódem:
 
     ```csharp
     public sealed partial class MainPage : Page
@@ -206,21 +206,21 @@ V této části se dozvíte, jak pomocí MSAL získat token pro rozhraní Micros
 
 #### Interaktivní získání tokenu uživatele<a name="more-information"></a>
 
-Výsledkem `AcquireTokenInteractive` metody je okno, které vyzve uživatele k přihlášení. Aplikace obvykle vyžadují, aby se uživatelé přihlásili interaktivně při prvním přístupu k chráněnému prostředku. Můžou se taky muset přihlásit, když se nezdařila tichá operace získání tokenu. Příkladem je vypršení platnosti hesla uživatele.
+Metoda `AcquireTokenInteractive` má za následek okno, které vyzve uživatele k přihlášení. Aplikace obvykle vyžadují, aby se uživatelé přihlásili interaktivně při prvním přístupu k chráněnému prostředku. Můžou se taky muset přihlásit, když se nezdařila tichá operace získání tokenu. Příkladem je vypršení platnosti hesla uživatele.
 
 #### <a name="get-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
 
-`AcquireTokenSilent` Metoda zpracovává získání a obnovení tokenů bez zásahu uživatele. Po `AcquireTokenInteractive` prvním spuštění a vyzvání uživatele k zadání přihlašovacích údajů `AcquireTokenSilent` použijte metodu k vyžádání tokenů pro pozdější volání. Tato metoda získává tokeny tiše. MSAL zpracovává mezipaměť a obnovení tokenu.
+Metoda `AcquireTokenSilent` zpracovává získání a obnovení tokenů bez zásahu uživatele. Po prvním spuštění `AcquireTokenInteractive` a vyzve uživatele k zadání přihlašovacích údajů, použijte metodu `AcquireTokenSilent` k vyžádání tokenů pro pozdější volání. Tato metoda získává tokeny tiše. MSAL zpracovává mezipaměť a obnovení tokenu.
 
-Nakonec se `AcquireTokenSilent` metoda nezdařila. Důvody k selhání zahrnují uživatele, který se odhlásil nebo změnil jeho heslo na jiném zařízení. Pokud MSAL zjistí, že problém vyžaduje interaktivní akci, vyvolá `MsalUiRequiredException` výjimku. Vaše aplikace může tuto výjimku zpracovat dvěma způsoby:
+Nakonec se metoda `AcquireTokenSilent` nezdařila. Důvody k selhání zahrnují uživatele, který se odhlásil nebo změnil jeho heslo na jiném zařízení. Pokud MSAL zjistí, že problém vyžaduje interaktivní akci, vyvolá výjimku `MsalUiRequiredException`. Vaše aplikace může tuto výjimku zpracovat dvěma způsoby:
 
-* Vaše aplikace volá `AcquireTokenInteractive` okamžitě. Výsledkem tohoto volání je dotazování uživatele na přihlášení. Tento přístup se obvykle používá pro online aplikace, kde pro uživatele není k dispozici žádný obsah offline. Ukázka vygenerovaná tímto průvodcem Setup se řídí vzorem. Při prvním spuštění ukázky se zobrazí v akci.
+* Vaše aplikace volá `AcquireTokenInteractive` hned. Výsledkem tohoto volání je dotazování uživatele na přihlášení. Tento přístup se obvykle používá pro online aplikace, kde pro uživatele není k dispozici žádný obsah offline. Ukázka vygenerovaná tímto průvodcem Setup se řídí vzorem. Při prvním spuštění ukázky se zobrazí v akci.
 
-   Vzhledem k tomu, že aplikace nepoužila žádného uživatele, `accounts.FirstOrDefault()` obsahuje hodnotu null a `MsalUiRequiredException` vyvolá výjimku.
+   Protože aplikace nepoužila žádného uživatele, `accounts.FirstOrDefault()` obsahuje hodnotu null a vyvolá výjimku `MsalUiRequiredException`.
 
    Kód v ukázce pak zpracovává výjimku voláním `AcquireTokenInteractive`. Výsledkem tohoto volání je dotazování uživatele na přihlášení.
 
-* Vaše aplikace prezentuje vizuální označení uživatelům, kteří se potřebují přihlašovat. Pak si můžou vybrat správný čas pro přihlášení. Aplikace se může opakovat `AcquireTokenSilent` později. Tento postup použijte, když uživatelé můžou používat jiné funkce aplikace bez přerušení. Příkladem je, když je offline obsah k dispozici v aplikaci. V takovém případě se uživatelé můžou rozhodnout, kdy se chtějí přihlásit. Aplikace se může pokusit znovu `AcquireTokenSilent` po dočasné nedostupnosti sítě.
+* Vaše aplikace prezentuje vizuální označení uživatelům, kteří se potřebují přihlašovat. Pak si můžou vybrat správný čas pro přihlášení. Aplikace se může pokusit o `AcquireTokenSilent` později. Tento postup použijte, když uživatelé můžou používat jiné funkce aplikace bez přerušení. Příkladem je, když je offline obsah k dispozici v aplikaci. V takovém případě se uživatelé můžou rozhodnout, kdy se chtějí přihlásit. Aplikace může po dočasném nedostupnosti sítě opakovat `AcquireTokenSilent`.
 
 ### <a name="call-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>Volání rozhraní API Microsoft Graph pomocí tokenu, který jste právě získali
 
@@ -254,11 +254,11 @@ Do *MainPage.XAML.cs*přidejte následující novou metodu:
     }
    ```
 
- Tato metoda vytvoří `GET` požadavek od Graph API `Authorization` pomocí hlavičky.
+ Tato metoda vytvoří požadavek `GET` z Graph API pomocí hlavičky `Authorization`.
 
 #### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>Další informace o tom, jak provést volání REST proti chráněnému rozhraní API
 
-V této ukázkové aplikaci `GetHttpContentWithToken` metoda vytvoří požadavek HTTP `GET` proti chráněnému prostředku, který vyžaduje token. Pak metoda vrátí obsah volajícímu. Tato metoda přidá získaný token v autorizační hlavičce **protokolu HTTP** . V této ukázce je prostředkem koncový bod Microsoft Graph API **já** , který zobrazuje informace o profilu uživatele.
+V této ukázkové aplikaci `GetHttpContentWithToken` metoda vytvořit žádost HTTP `GET` proti chráněnému prostředku, který vyžaduje token. Pak metoda vrátí obsah volajícímu. Tato metoda přidá získaný token v autorizační hlavičce **protokolu HTTP** . V této ukázce je prostředkem koncový bod Microsoft Graph API **já** , který zobrazuje informace o profilu uživatele.
 
 ### <a name="add-a-method-to-sign-out-the-user"></a>Přidejte metodu pro odhlášení uživatele.
 
@@ -291,11 +291,11 @@ Pokud chcete uživatele odhlásit, přidejte následující metodu do *MainPage.
    ```
 
 > [!NOTE]
-> MSAL.NET používá asynchronní metody k získání tokenů nebo manipulaci s účty. Ve vlákně UI musíte podporovat akce uživatelského rozhraní. To je důvod `Dispatcher.RunAsync` volání a preventivních opatření k volání `ConfigureAwait(false)`.
+> MSAL.NET používá asynchronní metody k získání tokenů nebo manipulaci s účty. Ve vlákně UI musíte podporovat akce uživatelského rozhraní. To je důvod, proč volání `Dispatcher.RunAsync` a bezpečnostní opatření pro volání `ConfigureAwait(false)`.
 
 #### Další informace o odhlášení<a name="more-information-on-sign-out"></a>
 
-`SignOutButton_Click` Metoda odebere uživatele z uživatelské mezipaměti MSAL. Tato metoda efektivně oznamuje MSAL, že aktuálnímu uživateli zapomene. Budoucí požadavek na získání tokenu je úspěšný jenom v případě, že je interaktivní.
+Metoda `SignOutButton_Click` odebere uživatele z mezipaměti uživatelů MSAL. Tato metoda efektivně oznamuje MSAL, že aktuálnímu uživateli zapomene. Budoucí požadavek na získání tokenu je úspěšný jenom v případě, že je interaktivní.
 
 Aplikace v této ukázce podporuje jednoho uživatele. MSAL podporuje scénáře, ve kterých se uživatel může přihlásit k více než jednomu účtu. Příkladem je e-mailová aplikace, kde má uživatel několik účtů.
 
@@ -320,7 +320,7 @@ Přidejte následující metodu do *MainPage.XAML.cs* k zobrazení základních 
 
 #### Další informace<a name="more-information-1"></a>
 
-Tokeny ID získané pomocí **OpenID Connect** také obsahují malou podmnožinu informací, které se vztahují k uživateli. `DisplayBasicTokenInfo`Zobrazí základní informace obsažené v tokenu. Tyto informace zahrnují zobrazované jméno a ID uživatele. Zahrnuje také datum vypršení platnosti tokenu a řetězec, který představuje samotný přístupový token. Pokud si vyberete tlačítko **rozhraní API pro volání Microsoft Graph** několikrát, uvidíte, že se stejný token znovu použil pro pozdější požadavky. Můžete také zobrazit datum vypršení platnosti, pokud MSAL rozhodne, že je čas obnovit token.
+Tokeny ID získané pomocí **OpenID Connect** také obsahují malou podmnožinu informací, které se vztahují k uživateli. `DisplayBasicTokenInfo` zobrazí základní informace obsažené v tokenu. Tyto informace zahrnují zobrazované jméno a ID uživatele. Zahrnuje také datum vypršení platnosti tokenu a řetězec, který představuje samotný přístupový token. Pokud si vyberete tlačítko **rozhraní API pro volání Microsoft Graph** několikrát, uvidíte, že se stejný token znovu použil pro pozdější požadavky. Můžete také zobrazit datum vypršení platnosti, pokud MSAL rozhodne, že je čas obnovit token.
 
 ### <a name="display-message"></a>Zobrazit zprávu
 
@@ -340,20 +340,20 @@ Do *MainPage.XAML.cs*přidejte následující novou metodu:
         }
    ```
 
-## <a name="register-your-application"></a>Zaregistrujte svoji aplikaci.
+## <a name="register-your-application"></a>Registrace vaší aplikace
 
 Nyní je nutné zaregistrovat aplikaci:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Vyberte **Azure Active Directory** > **registrace aplikací**.
 1. Vyberte **Nová registrace**. Zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například *UWP-App-Call-MSGraph*.
 1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft (např. Skype, Xbox)** a pokračujte kliknutím na **Registrovat** .
-1. Na stránce Přehled vyhledejte hodnotu **ID aplikace (klienta)** a zkopírujte ji. Vraťte se do sady `ClientId` Visual Studio, otevřete *MainPage.XAML.cs*a nahraďte hodnotu touto hodnotou.
+1. Na stránce Přehled vyhledejte hodnotu **ID aplikace (klienta)** a zkopírujte ji. Vraťte se do sady Visual Studio, otevřete *MainPage.XAML.cs*a nahraďte hodnotu `ClientId` touto hodnotou.
 
 Konfigurace ověřování pro vaši aplikaci:
 
 1. Zpátky v [Azure Portal](https://portal.azure.com)v části **Spravovat**vyberte **ověřování**.
-1. V seznamu **identifikátorů URI pro přesměrování** vyberte pro **typ**možnost **veřejný klient (mobilní & plocha)** a `urn:ietf:wg:oauth:2.0:oob` zadejte **identifikátor URI pro přesměrování**.
+1. V části **identifikátory URI pro přesměrování** | **Doporučené identifikátory URI pro přesměrování pro veřejné klienty (mobilní zařízení, stolní počítače)** , ověřte **https://login.microsoftonline.com/common/oauth2/nativeclient** .
 1. Vyberte **Uložit**.
 
 Konfigurace oprávnění rozhraní API pro aplikaci:
@@ -376,7 +376,7 @@ Pokud chcete povolit integrované ověřování Windows, když se používá s d
    * **Sdílené uživatelské certifikáty**
 
 > [!IMPORTANT]
-> [Integrované ověřování systému Windows](https://aka.ms/msal-net-iwa) není pro tuto ukázku standardně nakonfigurováno. Aplikace, které `Enterprise Authentication` vyžadují `Shared User Certificates` nebo poskytují požadavky na vyšší úroveň ověřování ve Windows Storu. Ne všichni vývojáři chtějí provádět vyšší úroveň ověřování. Toto nastavení povolte jenom v případě, že potřebujete integrované ověřování Windows s doménou federované služby Azure AD.
+> [Integrované ověřování systému Windows](https://aka.ms/msal-net-iwa) není pro tuto ukázku standardně nakonfigurováno. Aplikace, které vyžadují `Enterprise Authentication` nebo `Shared User Certificates` možnosti, vyžadují vyšší úroveň ověřování ve Windows Storu. Ne všichni vývojáři chtějí provádět vyšší úroveň ověřování. Toto nastavení povolte jenom v případě, že potřebujete integrované ověřování Windows s doménou federované služby Azure AD.
 
 ## <a name="test-your-code"></a>Testování kódu
 
@@ -398,7 +398,7 @@ Na obrazovce **výsledky volání rozhraní API** se zobrazí informace o profil
 
 ![Obrazovka výsledků volání rozhraní API](./media/tutorial-v2-windows-uwp/uwp-results-screen-vs2019.png)
 
-Zobrazí se také základní informace o tokenu získaném `AcquireTokenInteractive` prostřednictvím `AcquireTokenSilent` nebo v poli **informace** o tokenu:
+V poli **informace o tokenu** se zobrazí také základní informace o tokenu získaném pomocí `AcquireTokenInteractive` nebo `AcquireTokenSilent`:
 
 |Vlastnost  |Formát  |Popis |
 |---------|---------|---------|
@@ -407,9 +407,9 @@ Zobrazí se také základní informace o tokenu získaném `AcquireTokenInteract
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Další informace o oborech a delegovaných oprávněních
 
-Rozhraní Microsoft Graph API vyžaduje `user.read` , aby se v oboru četl profil uživatele. Tento obor se ve výchozím nastavení přidá v každé aplikaci, která je zaregistrovaná na portálu pro registraci aplikací. Další rozhraní API pro Microsoft Graph a vlastní rozhraní API pro back-end Server můžou vyžadovat další obory. Například Microsoft Graph rozhraní API vyžaduje `Calendars.Read` rozsah pro výpis kalendářů uživatele.
+Microsoft Graph rozhraní API vyžaduje, aby obor `user.read` četl profil uživatele. Tento obor se ve výchozím nastavení přidá v každé aplikaci, která je zaregistrovaná na portálu pro registraci aplikací. Další rozhraní API pro Microsoft Graph a vlastní rozhraní API pro back-end Server můžou vyžadovat další obory. Například Microsoft Graph rozhraní API vyžaduje `Calendars.Read` oboru pro výpis kalendářů uživatele.
 
-Chcete-li získat přístup k kalendářům uživatele v kontextu aplikace, přidejte `Calendars.Read` delegované oprávnění k informacím o registraci aplikace. Pak přidejte `Calendars.Read` obor `acquireTokenSilent` do volání.
+Chcete-li získat přístup k kalendářům uživatele v kontextu aplikace, přidejte `Calendars.Read` delegované oprávnění k informacím o registraci aplikace. Pak přidejte obor `Calendars.Read` do volání `acquireTokenSilent`.
 
 > [!NOTE]
 > Uživatelům se může zobrazit výzva k dalšímu souhlasu při zvýšení počtu oborů.
@@ -424,9 +424,9 @@ Při přihlášení aplikace ve federované doméně Azure AD se zobrazí jedna 
 * V úložišti certifikátů uživatele nebyly nalezeny žádné platné certifikáty.
 * Zkuste znovu vybrat jinou metodu ověřování.
 
-Příčina: Funkce Enterprise a Certificate nejsou povolené.
+Příčina: funkce Enterprise a Certificate nejsou povolené.
 
-Řešení Postupujte podle kroků v části [povolení integrovaného ověřování u federovaných domén (volitelné)](#enable-integrated-authentication-on-federated-domains-optional).
+Řešení: postupujte podle kroků v části [povolení integrovaného ověřování u federovaných domén (volitelné)](#enable-integrated-authentication-on-federated-domains-optional).
 
 ### <a name="issue-2"></a>Problém 2
 
@@ -434,7 +434,7 @@ Povolíte [integrované ověřování pro federované domény](#enable-integrate
 
 Příčina: Tento problém je známým omezením zprostředkovatele webového ověřování v aplikacích UWP, které běží na Windows 10 Desktop. V systému Windows 10 Mobile funguje správně.
 
-Alternativní řešení: Vyberte **Přihlásit se s dalšími možnostmi**. Pak vyberte **Přihlásit se pomocí uživatelského jména a hesla**. Vyberte **zadat heslo**. Pak Projděte proces ověřování pro telefon.
+Alternativní řešení: vyberte **Přihlásit se s dalšími možnostmi**. Pak vyberte **Přihlásit se pomocí uživatelského jména a hesla**. Vyberte **zadat heslo**. Pak Projděte proces ověřování pro telefon.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

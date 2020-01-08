@@ -1,25 +1,14 @@
 ---
-title: Rychlé nasazení existující aplikace do clusteru Azure Service Fabric
+title: Rychlé nasazení existující aplikace do clusteru
 description: Použijte cluster Azure Service Fabric k hostování existující aplikace Node.js pomocí sady Visual Studio.
-services: service-fabric
-documentationcenter: nodejs
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: atsenthi
-ms.openlocfilehash: 6cf9594e6e1db3e163d25843b1fec0c0ff98c250
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 9153fc4cd60cb892532db49bf4339b517320b1a6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592446"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614838"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Hostování aplikace Node.js na platformě Azure Service Fabric
 
@@ -83,7 +72,7 @@ Přehled obsahu projektu služby najdete v tématu [Začínáme se službami Rel
 
 Příklad aplikace Node.js, který nasazujeme, používá port **80** a platformě Service Fabric potřebujeme říct, že tento port potřebujeme zpřístupnit.
 
-Otevřete v projektu soubor **ServiceManifest.xml**. V dolní části manifestu existuje položka, která `<Resources> \ <Endpoints>` již byla definována. Upravte tuto položku a přidejte `Port`, `Protocol` a `Type`. 
+Otevřete v projektu soubor **ServiceManifest.xml**. V dolní části manifestu je `<Resources> \ <Endpoints>` s již definovanou položkou. Upravte tuto položku a přidejte `Port`, `Protocol` a `Type`. 
 
 ```xml
   <Resources>
@@ -96,7 +85,7 @@ Otevřete v projektu soubor **ServiceManifest.xml**. V dolní části manifestu 
   </Resources>
 ```
 
-## <a name="deploy-to-azure"></a>Nasazení do Azure
+## <a name="deploy-to-azure"></a>Nasadit do Azure
 
 Pokud stisknete klávesu **F5** a spustíte projekt, bude nasazena do místního clusteru. My jej ale místo toho nasadíme do Azure.
 
@@ -106,9 +95,9 @@ Klikněte na projekt pravým tlačítkem a zvolte **Publikovat...** , tím se ot
 
 Vyberte cílový profil **PublishProfiles\Cloud.xml**.
 
-Pokud jste to neudělali dříve, zvolte účet Azure, do kterého se má nasazení provést. Pokud ho ještě nemáte, zaregistrujte si [ho][create-account].
+Pokud jste to neudělali dříve, zvolte účet Azure, do kterého se má nasazení provést. Pokud ho ještě nemáte, [Zaregistrujte si ho][create-account].
 
-V části **Koncový bod připojení** vyberte cluster Service Fabric, do kterého se má nasazení provést. Pokud ho nemáte, vyberte **&lt;vytvořit nový cluster... otevře&gt;** se okno webového prohlížeče s Azure Portal. Další informace najdete v tématu popisujícím [vytvoření clusteru na portálu](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
+V části **Koncový bod připojení** vyberte cluster Service Fabric, do kterého se má nasazení provést. Pokud ho nemáte, vyberte **&lt;vytvořit nový cluster...&gt;** , který otevře okno webového prohlížeče na Azure Portal. Další informace najdete v tématu popisujícím [vytvoření clusteru na portálu](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
 
 Při vytváření clusteru Service Fabric nezapomeňte nastavit nastavení **Vlastní koncové body** na hodnotu **80**.
 
@@ -130,13 +119,13 @@ Zkontrolujte okno přehledu adresy služby. Použijte název domény z vlastnost
 
 ![Okno přehledu Service Fabric na webu Azure Portal][overview]
 
-Přejděte na tuto adresu, kde se zobrazí `HELLO WORLD` odpověď.
+Přejděte na tuto adresu, kde se zobrazí odpověď `HELLO WORLD`.
 
 ## <a name="delete-the-cluster"></a>Odstranění clusteru
 
 Nezapomeňte odstranit všechny prostředky, které jste pro tento rychlý Start vytvořili, podle toho, jak se vám účtují poplatky za tyto prostředky.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o [spustitelných souborech typu Host](service-fabric-guest-executables-introduction.md).
 
 <!-- Image References -->

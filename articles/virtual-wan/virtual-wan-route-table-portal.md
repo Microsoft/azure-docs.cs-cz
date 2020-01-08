@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 6b78b97004498fdacccdf9408d59158424ff6c07
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: c0681024b60827cf589906041c264d912ab209bb
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534140"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612356"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Vytvoření směrovací tabulky pro virtuální síť WAN pro síťová virtuální zařízení: Azure Portal
 
@@ -67,7 +67,7 @@ Vytvořte centrum. Pro účely tohoto cvičení můžete použít následující
 
 Aktualizujte centrum s tabulkou směrování na rozbočovači. Pro účely tohoto cvičení můžete použít následující hodnoty:
 
-* **Adresní prostory nepřímých propojení paprsků:** (VNet1 a VNet2) 10.0.2.0/24 a 10.0.3.0/24
+* **Adresní prostory virtuální sítě-paprsek:** (VNet1 a VNet2) 10.0.2.0/24 a 10.0.3.0/24
 * **Privátní IP adresa síťového rozhraní DMZ síťové virtuální zařízení:** 10.0.4.5
 
 1. Přejděte k virtuální síti WAN.

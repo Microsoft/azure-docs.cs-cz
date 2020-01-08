@@ -10,22 +10,22 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: f55b6e743ff82d4192cbdd91ba54c92efef432bc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 81e232e37e437c4fa9d23a49a720b88511423905
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838743"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427566"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio-classic"></a>Začínáme s programovacím jazykem R v Azure Machine Learning Studio (Classic)
 
 <!-- Stephen F Elston, Ph.D. -->
 
-## <a name="introduction"></a>Úvod
+## <a name="introduction"></a>Představení
 
-Tento kurz vám pomůže začít s rozšířením Azure Machine Learning Studio (Classic) pomocí programovacího jazyka R. Pomocí tohoto kurzu pro programování v R můžete vytvořit, otestovat a spustit kód R v rámci studia (Classic). Při práci v kurzu vytvoříte kompletní řešení předpovědi pomocí jazyka R v klasické verzi studia.  
+Tento kurz vám pomůže začít s rozšířením Azure Machine Learning Studio (Classic) pomocí programovacího jazyka R. Pomocí tohoto kurzu pro programování v R můžete vytvořit, otestovat a spustit kód R v rámci studia (Classic). Při práci v kurzu vytvoříte kompletní řešení předpovědi pomocí jazyka R v aplikaci Studio (Classic).  
 
-Klasická verze Azure Machine Learning Studio obsahuje mnoho výkonného strojového učení a modulů manipulace s daty. Výkonný jazyk R je popsaný jako lingua franca analýzy. Happily, analýzy a manipulace s daty v klasické verzi studia se dají rozšířit pomocí R. Tato kombinace nabízí škálovatelnost a snadné nasazení klasické verze studia s flexibilitou a hloubkovou analýzou jazyka R.
+Azure Machine Learning Studio (Classic) obsahuje mnoho výkonného strojového učení a modulů manipulace s daty. Výkonný jazyk R je popsaný jako lingua franca analýzy. Happily, analýzy a manipulace s daty v studiu (Classic) se dají rozšířit pomocí R. Tato kombinace nabízí škálovatelnost a snadné nasazení studia (Classic) s flexibilitou a hloubkovou analýzou jazyka R.
 
 ### <a name="forecasting-and-the-dataset"></a>Prognózování a datová sada
 
@@ -39,23 +39,23 @@ Data použitá v tomto článku spolu se skripty jazyka R lze stáhnout z [Machi
 
 ### <a name="organization"></a>Organizace
 
-Až se naučíte vytvářet, testovat a spouštět analýzy a kód R manipulace s daty v klasické verzi Azure Machine Learning Studio prostředí, budeme postupovat několika kroky.  
+Až se naučíte vytvářet, testovat a spouštět analýzy a kód R manipulace s daty v prostředí Azure Machine Learning Studio (Classic), budeme postupovat několika kroky.  
 
-* Nejprve se podíváme na základy používání jazyka R v klasické verzi Azure Machine Learning Studio prostředí.
-* Následně jsme provedli diskusi o různých aspektech vstupně-výstupních operací pro data, kód R a grafiku v klasické verzi Azure Machine Learning Studio prostředí.
+* Nejprve se podíváme na základy používání jazyka R v prostředí Azure Machine Learning Studio (Classic).
+* Následně jsme provedli diskusi o různých aspektech vstupně-výstupních operací pro data, kód R a grafiku v prostředí Azure Machine Learning Studio (Classic).
 * Pak vytvoříme první část našeho řešení předpovědi vytvořením kódu pro čištění a transformaci dat.
 * Naše data jsou připravená k analýze korelace mezi několika proměnnými v naší datové sadě.
 * Nakonec vytvoříme model předpovědi pro sezónní časovou řadu pro produkci mléka.
 
 ## <a id="mlstudio"></a>Interakce s jazykem R v Machine Learning Studio (Classic)
 
-V této části se seznámíte se základy práce s programovacím jazykem R v prostředí Machine Learning Studio (Classic). Jazyk R poskytuje výkonný nástroj pro vytváření přizpůsobených modulů analýzy a manipulace s daty v rámci klasické verze Azure Machine Learning Studio prostředí.
+V této části se seznámíte se základy práce s programovacím jazykem R v prostředí Machine Learning Studio (Classic). Jazyk R poskytuje výkonný nástroj pro vytváření přizpůsobených modulů analýzy a manipulace s daty v prostředí Azure Machine Learning Studio (Classic).
 
-Využijem RStudio k vývoji, testování a ladění kódu R v malém měřítku. Tento kód se pak vyjme a vloží do modulu [spuštění skriptu jazyka R][execute-r-script] , který je připravený ke spuštění v klasické verzi Machine Learning Studio.  
+Využijem RStudio k vývoji, testování a ladění kódu R v malém měřítku. Tento kód se pak vyjme a vloží do modulu [spuštění skriptu jazyka R][execute-r-script] , který je připravený ke spuštění v Azure Machine Learning Studio (Classic).  
 
 ### <a name="the-execute-r-script-module"></a>Modul spuštění skriptu jazyka R
 
-V rámci klasické verze Machine Learning Studio jsou skripty R spouštěny v modulu [spouštění skriptu jazyka r][execute-r-script] . Příkladem modulu [spuštění skriptu R][execute-r-script] v klasické verzi Machine Learning Studio je znázorněno na obrázku 1.
+V rámci Machine Learning Studio (Classic) se skripty R spouštějí v modulu [spuštění skriptu jazyka r][execute-r-script] . Příklad modulu [spuštění skriptu R][execute-r-script] v Machine Learning Studio (Classic) je znázorněn na obrázku 1.
 
  ![Programovací jazyk r: modul spuštění skriptu jazyka R vybraný v Machine Learning Studio (klasický)](./media/r-quickstart/fig1.png)
 
@@ -69,7 +69,7 @@ S odkazem na obrázek 1 se podíváme na některé z klíčových částí prost
 
 Budeme samozřejmě diskutovat o [skriptu Execute R][execute-r-script] podrobněji ve zbývající části tohoto článku.
 
-Když pracujete se složitými funkcemi jazyka R, doporučujeme, abyste v RStudio provedete úpravy, testování a ladění. Stejně jako u jakéhokoli vývoje softwaru rozšíříte kód přírůstkově a otestujete ho v malých jednoduchých testovacích případech. Potom tyto funkce vyjměte a vložte do okna skript R v modulu [spuštění skriptu jazyka r][execute-r-script] . Tento přístup umožňuje využít integrované vývojové prostředí (IDE) RStudio a výkon klasické verze Azure Machine Learning Studio.  
+Když pracujete se složitými funkcemi jazyka R, doporučujeme, abyste v RStudio provedete úpravy, testování a ladění. Stejně jako u jakéhokoli vývoje softwaru rozšíříte kód přírůstkově a otestujete ho v malých jednoduchých testovacích případech. Potom tyto funkce vyjměte a vložte do okna skript R v modulu [spuštění skriptu jazyka r][execute-r-script] . Tento přístup vám umožní využít integrované vývojové prostředí (IDE) RStudio a výkon Azure Machine Learning Studio (Classic).  
 
 #### <a name="execute-r-code"></a>Spustit kód R
 
@@ -77,17 +77,17 @@ Jakýkoli kód R v modulu [spouštění skriptu jazyka r][execute-r-script] se s
 
 #### <a name="defensive-r-coding-for-azure-machine-learning"></a>Obrannou linií R kódování pro Azure Machine Learning
 
-Pokud vyvíjíte kód R pro, řekněme, že webová služba používá klasickou verzi Azure Machine Learning Studio, měli byste bez omezení naplánovat, jak váš kód bude pracovat s neočekávaným vstupem a výjimkami dat. Aby se zachovala jasnost, nezahrnuli jsme do většiny zobrazených příkladů kódu mnoho možností kontroly nebo zpracování výjimek. Jak ale budeme pokračovat, nabídneme vám několik příkladů funkcí pomocí schopnosti zpracování výjimek jazyka R.  
+Pokud vyvíjíte kód R pro, řekněme, že webová služba používá Azure Machine Learning Studio (Classic), měli byste bez omezení naplánovat, jak váš kód bude pracovat s neočekávaným vstupem a výjimkami dat. Aby se zachovala jasnost, nezahrnuli jsme do většiny zobrazených příkladů kódu mnoho možností kontroly nebo zpracování výjimek. Jak ale budeme pokračovat, nabídneme vám několik příkladů funkcí pomocí schopnosti zpracování výjimek jazyka R.  
 
 Pokud potřebujete úplnější zpracování výjimek R, doporučujeme si přečíst si příslušné části knihy podle Wickham uvedeného níže v tématu Další informace o [čtení](#appendixb).
 
 #### <a name="debug-and-test-r-in-machine-learning-studio-classic"></a>Ladění a testování R v Machine Learning Studio (Classic)
 
-K opakování iterace doporučujeme testovat a ladit kód R v malém měřítku v RStudio. Existují však případy, kdy budete muset sledovat problémy s kódem R v samotném [spuštění skriptu jazyka r][execute-r-script] . Kromě toho je dobrým zvykem kontrolovat výsledky v klasické verzi Machine Learning Studio.
+K opakování iterace doporučujeme testovat a ladit kód R v malém měřítku v RStudio. Existují však případy, kdy budete muset sledovat problémy s kódem R v samotném [spuštění skriptu jazyka r][execute-r-script] . Kromě toho je dobrým zvykem kontrolovat výsledky v Machine Learning Studio (Classic).
 
-Výstup z provádění vašeho kódu R a klasické verze Azure Machine Learning Studio platformy najdete hlavně v části Output. log. Některé další informace se zobrazí v Error. log.  
+Výstup z provádění kódu R a na platformě Azure Machine Learning Studio (Classic) se najde primárně v části Output. log. Některé další informace se zobrazí v Error. log.  
 
-Pokud dojde k chybě v klasické verzi Machine Learning Studio při spuštění kódu R, měli byste se podívat na chybu. log v prvním postupu. Tento soubor může obsahovat užitečné chybové zprávy, které vám pomůžou pochopit a opravit chybu. Chcete-li zobrazit Error. log, vyberte **Zobrazit protokol chyb** v **podokně vlastnosti** pro [skript Execute R][execute-r-script] obsahující chybu.
+Pokud při spuštění kódu R dojde k chybě v Machine Learning Studio (Classic), měli byste se podívat na chybu. log v prvním postupu. Tento soubor může obsahovat užitečné chybové zprávy, které vám pomůžou pochopit a opravit chybu. Chcete-li zobrazit Error. log, vyberte **Zobrazit protokol chyb** v **podokně vlastnosti** pro [skript Execute R][execute-r-script] obsahující chybu.
 
 Například jsem spustil následující kód R s nedefinovanou proměnnou y v modulu [spuštění skriptu jazyka r][execute-r-script] :
 
@@ -149,9 +149,9 @@ V této části se dozvíte, jak získat data do a z modulu [spuštění skriptu
 
 #### <a id="loading"></a>Načíst datovou sadu
 
-Začneme tak, že načteme soubor **csdairydata. csv** do klasické verze Azure Machine Learning Studio.
+Začneme tak, že načteme soubor **csdairydata. csv** do Azure Machine Learning Studio (Classic).
 
-1. Spusťte klasickou verzi Azure Machine Learning Studioho prostředí.
+1. Spusťte prostředí Azure Machine Learning Studio (Classic).
 1. V levém dolním rohu obrazovky vyberte **+ Nový** a vyberte **datová sada**.
 1. Vyberte možnost **z místního souboru**a pak **procházením** vyberte soubor.
 1. Ujistěte se, že jste jako typ pro datovou sadu vybrali **obecný soubor CSV s hlavičkou (. csv)** .
@@ -160,7 +160,7 @@ Začneme tak, že načteme soubor **csdairydata. csv** do klasické verze Azure 
 
 #### <a name="create-an-experiment"></a>Vytvoření experimentu
 
-Teď, když máme nějaká data v klasické verzi Machine Learning Studio, musíme vytvořit experiment pro analýzu.  
+Teď, když máme nějaká data v Machine Learning Studio (Classic), musíme vytvořit experiment pro analýzu.  
 
 1. V levém dolním rohu vyberte **+ Nový** a vyberte **experiment**a pak **prázdný experiment**.
 1. Experiment můžete pojmenovat tak, že vyberete a upravíte v horní části stránky název experimentu, který jste **vytvořili...** . Například změna na **analýzu mléčných mléka certifikační autority**.
@@ -185,11 +185,11 @@ Pojďme se podívat na data, která jsme načetli do našeho experimentu. V expe
 
 *Obrázek 4. Souhrn datové sady cadairydata. csv*
 
-V tomto zobrazení se zobrazí spousta užitečných informací. Můžeme zobrazit prvních několik řádků této datové sady. Když vybereme sloupec, v části Statistika se zobrazí další informace o sloupci. Například řádek typ funkce zobrazuje, jaké typy dat jsou klasické verze Azure Machine Learning Studio přiřazené ke sloupci. Rychlý vzhled je dobrý správnosti před zahájením provádění všech závažných prací.
+V tomto zobrazení se zobrazí spousta užitečných informací. Můžeme zobrazit prvních několik řádků této datové sady. Když vybereme sloupec, v části Statistika se zobrazí další informace o sloupci. Například řádek typ funkce zobrazuje, jaké typy dat Azure Machine Learning Studio (Classic) přiřazené sloupci. Rychlý vzhled je dobrý správnosti před zahájením provádění všech závažných prací.
 
-### <a name="first-r-script"></a>První skript R
+### <a name="first-r-script"></a>První skript jazyka R
 
-Pojďme vytvořit jednoduchý první skript R pro experimentování s klasickou verzí Azure Machine Learning Studio. V RStudio jsem vytvořil a otestoval následující skript.  
+Pojďme vytvořit jednoduchý první skript R, který vám umožní experimentovat se v Azure Machine Learning Studio (Classic). V RStudio jsem vytvořil a otestoval následující skript.  
 
 ```R
 ## Only one of the following two lines should be used
@@ -204,7 +204,7 @@ pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = c
 maml.mapOutputPort('cadairydata')
 ```
 
-Nyní Potřebuji přenést tento skript na klasickou verzi Azure Machine Learning Studio. Můžu ho jednoduše vyjímat a vkládat. V tomto případě se ale skript R převede přes soubor zip.
+Nyní Potřebuji přenést tento skript do Azure Machine Learning Studio (Classic). Můžu ho jednoduše vyjímat a vkládat. V tomto případě se ale skript R převede přes soubor zip.
 
 ### <a name="data-input-to-the-execute-r-script-module"></a>Vstup dat do modulu spuštění skriptu jazyka R
 
@@ -224,7 +224,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 ```
 
 > [!NOTE]
-> Klasická verze Azure Machine Learning Studio považuje soubory na zip jako v případě, že jsou v souboru src/Directory, takže je třeba názvy souborů s tímto názvem zakládat jako předpony. Pokud například ZIP obsahuje soubory `yourfile.R` a `yourData.rdata` v kořenovém adresáři souboru zip, při použití `source` a `load`byste tyto adresy vyvolali jako `src/yourfile.R` a `src/yourData.rdata`.
+> Azure Machine Learning Studio (Classic) zpracovává soubory ve formátu zip, jako kdyby byly v souboru src/Directory, takže je nutné názvy souborů pro tento název adresáře předponovat. Pokud například ZIP obsahuje soubory `yourfile.R` a `yourData.rdata` v kořenovém adresáři souboru zip, při použití `source` a `load`byste tyto adresy vyvolali jako `src/yourfile.R` a `src/yourData.rdata`.
 
 Již jsme probrali načítání datových sad v [načtení datové](#loading)sady. Jakmile vytvoříte a otestujete skript R zobrazený v předchozí části, udělejte toto:
 
@@ -245,7 +245,7 @@ Již jsme probrali načítání datových sad v [načtení datové](#loading)sad
 
 1. Vytvořte soubor zip a zkopírujte skript do tohoto souboru ZIP. V systému Windows můžete kliknout pravým tlačítkem na soubor a vybrat **Odeslat do**a pak na **komprimovanou složku**. Tím se vytvoří nový soubor zip, který obsahuje "simpleplot". R "soubor.
 
-1. Přidejte soubor do **datových sad** v klasické verzi Machine Learning Studio, zadejte typ jako **zip**. V datových sadách by se teď měl zobrazit soubor zip.
+1. Přidejte soubor do **datových sad** v Azure Machine Learning Studio (Classic), zadejte typ jako **zip**. V datových sadách by se teď měl zobrazit soubor zip.
 
 1. Přetáhněte soubor zip z **datových sad** na **plátno ml Studio (Classic)** .
 
@@ -261,7 +261,7 @@ Po dokončení těchto kroků se v souboru ZIP při spuštění experimentu spus
 
 *Obrázek 5. Experimentujte pomocí skriptu zip R.*
 
-#### <a name="dataset1"></a>DataSet1.
+#### <a name="dataset1"></a>Dataset1
 
 Pomocí vstupu DataSet1. můžete předat obdélníkovou tabulku dat kódu jazyka R. V našem jednoduchém skriptu načte funkce `maml.mapInputPort(1)` data z portu 1. Tato data se pak přiřazují k názvu proměnné datového rámce v kódu. V našem jednoduchém skriptu provede první řádek kódu přiřazení.
 
@@ -374,7 +374,7 @@ Syntaxe pro některý z těchto převodů je jednoduchá: `as.datatype()`. Tyto 
 
 Podívejte se na datové typy sloupců, které zadáte v předchozí části: všechny sloupce jsou typu numeric, s výjimkou sloupce označeného ' month ', který je typu Character. Pojďme to převést na faktor a otestovat výsledky.  
 
-Odstranil (a) jsem řádek, který vytvořil matici scatterplot, a přidal (a) řádek, který převádí sloupec ' month ' na faktor. V mém experimentu budu jenom vyjímat a vkládat kód R do okna Code modulu [spouštěného skriptu jazyka R][execute-r-script] . Můžete také aktualizovat soubor zip a odeslat ho do klasické verze Azure Machine Learning Studio, ale toto nastavení trvá několik kroků.  
+Odstranil (a) jsem řádek, který vytvořil matici scatterplot, a přidal (a) řádek, který převádí sloupec ' month ' na faktor. V mém experimentu budu jenom vyjímat a vkládat kód R do okna Code modulu [spouštěného skriptu jazyka R][execute-r-script] . Můžete také aktualizovat soubor zip a odeslat ho do Azure Machine Learning Studio (Classic), ale toto nastavení trvá několik kroků.  
 
 ```R
 ## Only one of the following two lines should be used
@@ -468,7 +468,7 @@ Datový rámec R podporuje výkonné možnosti filtrování. Datové sady mohou 
 Pro naši datovou sadu bychom měli dělat jeden bit filtrování. Pokud se podíváte na sloupce v dataframe cadairydata, zobrazí se dva nepotřebné sloupce. První sloupec má pouze číslo řádku, což není velmi užitečné. Druhý sloupec year. Month obsahuje nadbytečné informace. Tyto sloupce můžeme snadno vyloučit pomocí následujícího kódu R.
 
 > [!NOTE]
-> Od tohoto oddílu teď v této části ukážeme jenom další kód, který přidáváte do modulu [spuštění skriptu jazyka R][execute-r-script] . Přidám všechny nové řádky **před** funkci `str()`. Pomocí této funkce lze ověřit výsledky v klasické verzi Azure Machine Learning Studio.
+> Od tohoto oddílu teď v této části ukážeme jenom další kód, který přidáváte do modulu [spuštění skriptu jazyka R][execute-r-script] . Přidám všechny nové řádky **před** funkci `str()`. Pomocí této funkce lze ověřit výsledky v Azure Machine Learning Studio (Classic).
 
 Do kódu R v modulu [spuštění skriptu jazyka r][execute-r-script] přidám následující řádek.
 
@@ -503,7 +503,7 @@ Spusťte tento kód v experimentu a Prohlédněte si výsledek z výstupního pr
 
 *Obrázek 11. Souhrn datového rámce se dvěma odebranými sloupci*
 
-Dobrá zpráva! Získáte očekávané výsledky.
+Máme pro vás dobré zprávy! Získáte očekávané výsledky.
 
 ### <a name="add-a-new-column"></a>Přidat nový sloupec
 
@@ -756,7 +756,7 @@ Spusťte tento kód a podívejte se, co se stane. Vykreslení vyprodukované na 
 
 Mezi těmito proměnnými jsou některé struktury s lichým vzhledem. To může být způsobeno trendy v datech a ze skutečnosti, že proměnné jsme nemuseli standardizovaně roznikat.
 
-### <a name="correlation-analysis"></a>Analýza korelace
+### <a name="correlation-analysis"></a>analýza korelací.
 
 Aby bylo možné provést analýzu korelace, musíme použít jak de-LINTREND, tak i standardizovat proměnné. Můžeme jednoduše použít funkci R `scale()`, která obě centra a škáluje proměnné. Tato funkce může být dobře spouštěna rychleji. Chci si ale zobrazit příklad programu obrannou linií v jazyce R.
 
@@ -1030,7 +1030,7 @@ Spuštění kódu vytvoří řadu časových řad z výstupu zařízení R, kter
 
 Když jste vytvořili objekt časové řady a museli jste se podívat na data, začali začít sestavovat model trendu pro data o produkci mléka v Kalifornii. Můžeme to provést s regresí časových řad. Je ale jasné, že z tohoto grafu nebudeme potřebovat více než sklon a zachytit k přesnému modelování pozorovaného trendu v školicích datech.
 
-Vzhledem k malé škále dat vytvoříme model pro vývoj v RStudio a pak vyjmete a vložíte výsledný model do klasické verze Azure Machine Learning Studio. RStudio poskytuje interaktivní prostředí pro tento typ interaktivní analýzy.
+Vzhledem k malé škále dat sestavíme model pro vývoj v RStudio a pak vyjmete a vložíte výsledný model do Azure Machine Learning Studio (Classic). RStudio poskytuje interaktivní prostředí pro tento typ interaktivní analýzy.
 
 Při prvním pokusu se pokusíte o polynomickou regresi s pravomocemi až na 3. Existují reálné nebezpečí přebudování těchto druhů modelů. Proto je nejlepší vyhnout se podmínkám vysokého řádu. Funkce `I()` znemožňuje výklad obsahu (interpretuje obsah "tak, jak je") a umožňuje v regresní rovnici napsat doslova interpretovaná funkce.
 
@@ -1094,7 +1094,7 @@ Tím vygenerujete následující.
 
 To vypadá lépe. Všechny tyto výrazy jsou významné. Hodnota 2E-16 je však výchozí hodnotou a neměla by být pořízena příliš vážně.  
 
-Jako správnosti test si probereme časovou řadu mléčných dat z Brna v Kalifornii pomocí zobrazené křivky trendu. Přidal (a) jsem následující kód v klasické verzi Azure Machine Learning Studio spustit model [skriptu R][execute-r-script] (ne RStudio) a vytvořit model a vytvořit vykreslení. Výsledek je znázorněn na obrázku 23.
+Jako správnosti test si probereme časovou řadu mléčných dat z Brna v Kalifornii pomocí zobrazené křivky trendu. Přidal (a) jsem následující kód v Azure Machine Learning Studio (Classic) [spuštění modelu skriptu R][execute-r-script] (ne RStudio) pro vytvoření modelu a vytvoření grafu. Výsledek je znázorněn na obrázku 23.
 
 ```R
 milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^3), data = cadairytrain)
@@ -1156,7 +1156,7 @@ Tím vygenerujete následující.
 
 Zjistili jsme, že model už nemá termín zachycení a má 12 významných měsíčních faktorů. To je přesně to, co jsme chtěli vidět.
 
-Pojďme udělat další graf časových řad v rámci produkčních dat v Kalifornii a zjistit, jak dobře funguje sezónní model. Přidal (a) jsem následující kód v klasické verzi Azure Machine Learning Studio spouští [skript R][execute-r-script] pro vytvoření modelu a vytvoření grafu.
+Pojďme udělat další graf časových řad v rámci produkčních dat v Kalifornii a zjistit, jak dobře funguje sezónní model. Přidal (a) jsem do [skriptu jazyka R][execute-r-script] Azure Machine Learning Studio (Classic) následující kód, který vytvoří model a vytvoří vykreslení.
 
 ```R
 milk.lm2 <- lm(Milk.Prod ~ Time + I(Month.Count^3) + Month - 1, data = cadairytrain)
@@ -1165,7 +1165,7 @@ plot(cadairytrain$Time, cadairytrain$Milk.Prod, xlab = "Time", ylab = "Log CA Mi
 lines(cadairytrain$Time, predict(milk.lm2, cadairytrain), lty = 2, col = 2)
 ```
 
-Spuštění tohoto kódu v klasické verzi Azure Machine Learning Studio vytvoří vykreslení znázorněné na obrázku 24.
+Spuštění tohoto kódu v Azure Machine Learning Studio (Classic) vytvoří vykreslení znázorněné na obrázku 24.
 
 ![Výroba mléka v Kalifornii s modelem včetně sezónních účinků](./media/r-quickstart/unnamed-chunk-20.png)
 
@@ -1310,10 +1310,10 @@ RStudio je poměrně dobře zdokumentovaná. Tady jsou některé odkazy na klí�
 
 ## <a id="appendixb"></a>Další čtení
 
-Tento kurz programování v R se zabývá základními informacemi o tom, co potřebujete k používání jazyka R s klasickou verzí Azure Machine Learning Studio. Pokud R neznáte, jsou v CRAN k dispozici dva úvody:
+Tento kurz programování v R se zabývá základními informacemi o tom, co potřebujete k používání jazyka R s Azure Machine Learning Studio (Classic). Pokud R neznáte, jsou v CRAN k dispozici dva úvody:
 
 * [R pro začátečníky](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) by Emmanuel Paradis je dobrým místem, kde začít.  
-* [Úvod do jazyka R](https://cran.r-project.org/doc/manuals/R-intro.html) pomocí W. N. Venables et VŠ. přejde do trochu větší hloubky.
+* [Úvod do jazyka R](https://cran.r-project.org/doc/manuals/R-intro.html) pomocí W. N. Venables et al. přejde do trochu větší hloubky.
 
 K dispozici je mnoho knih v jazyce R, které vám pomůžou začít. Tady je několik užitečných:
 

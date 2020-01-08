@@ -1,21 +1,21 @@
 ---
 title: 'Kurz: Získání výsledků kontroly pravopisu pomocí rozhraní API Bingu pro kontrolu pravopisu'
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu vytvoříme webovou stránku, která uživatelům umožní dotazovat se na rozhraní API Bingu pro kontrolu pravopisu a zobrazit výsledky.
+description: V tomto kurzu můžete vytvořit webovou stránku, která odešle dotazy do rozhraní API Bingu pro kontrolu pravopisu a zobrazí výsledky.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 12/20/2019
 ms.author: aahi
-ms.openlocfilehash: 4ef45d0d67d44ee1bcf0f06f41425ca5366ce46d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 038716f43c18432b1b8e7c86c3ffbcab46f1db8f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111446"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382792"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>Kurz: Sestavení klienta pro kontrolu pravopisu na webové stránce
 
@@ -37,7 +37,7 @@ Otevřete textový editor. Vytvořte nový soubor s názvem například spellche
 
 ## <a name="add-html-header"></a>Přidání hlavičky HTML
 
-Přidejte informace hlavičky HTML a začněte oddíl script tak, jak vidíte na následujícím obrázku.
+Přidejte informace hlavičky HTML a začněte část se skriptem tak, jak vidíte na následujícím obrázku.
 
 ```html
 <!DOCTYPE html>

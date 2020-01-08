@@ -3,24 +3,24 @@ title: Interakce se zařízením IoT technologie Plug and Play Preview z řešen
 description: Jako vývojář řešení se dozvíte, jak používat sadu SDK služby k interakci se zařízeními IoT technologie Plug and Play.
 author: Philmea
 ms.author: philmea
-ms.date: 07/24/2019
+ms.date: 12/26/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 543f332087aef4147c9274ca980cb56543a68112
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 485b17ff236de32eab5388629c1bb6044ba19197
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977586"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531339"
 ---
 # <a name="connect-to-and-interact-with-an-iot-plug-and-play-preview-device"></a>Připojení a interakce se zařízením IoT technologie Plug and Play Preview
 
 V této příručce se dozvíte, jak používat ukázky v sadě SDK pro Node Service, které ukazují, jak může vaše řešení IoT spolupracovat s IoT technologie Plug and Play ve verzi Preview.
 
-Pokud jste nedokončili [připojení zařízení IoT technologie Plug and Play k](quickstart-connect-pnp-device-solution.md) rychlému startu vašeho řešení, měli byste to udělat hned teď. V tomto rychlém startu se dozvíte, jak stáhnout a nainstalovat sadu SDK a jak spustit některé ukázky.
+Pokud jste nedokončili [připojení zařízení IoT technologie Plug and Play k](quickstart-connect-pnp-device-solution-node.md) rychlému startu vašeho řešení, měli byste to udělat hned teď. V tomto rychlém startu se dozvíte, jak stáhnout a nainstalovat sadu SDK a jak spustit některé ukázky.
 
 Než začnete s ukázkami služby, otevřete nový terminál, přejděte do kořenové složky naklonovaného úložiště, přejděte do složky **digitaltwins/rychlé zprovoznění/služba** a spuštěním následujícího příkazu nainstalujte závislosti:
 
@@ -82,7 +82,7 @@ select * from devices where HAS_CAPABILITYMODEL('id without version', version)
 
 ### <a name="creating-digital-twin-routes"></a>Vytváření digitálních dvojitých tras
 
-Vaše řešení může dostávat oznámení o digitálních událostech změny. Chcete-li se přihlásit k odběru těchto oznámení, použijte [funkci směrování IoT Hub](../iot-hub/iot-hub-devguide-endpoints.md) k odeslání oznámení do koncového bodu, například jako úložiště objektů blob, Event Hubs nebo frontu Service Bus.
+Vaše řešení může dostávat oznámení o digitálních událostech změny. Chcete-li se přihlásit k odběru těchto oznámení, použijte [funkci směrování IoT Hub](../iot-hub/iot-hub-devguide-endpoints.md) k odeslání oznámení do koncového bodu, jako je například úložiště objektů blob, Event Hubs nebo fronta Service Bus.
 
 Vytvoření digitální zdvojené trasy:
 
@@ -91,7 +91,7 @@ Vytvoření digitální zdvojené trasy:
 1. Na kartě **trasy** vyberte **Přidat**.
 1. Zadejte hodnotu do pole **název** a vyberte **koncový bod**. Pokud jste koncový bod nenakonfigurovali, vyberte **přidat koncový bod**.
 1. V rozevíracím seznamu **zdroj dat** vyberte možnost **digitální události změny**.
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 Následující JSON ukazuje příklad události digitálního vlákna změny:
 

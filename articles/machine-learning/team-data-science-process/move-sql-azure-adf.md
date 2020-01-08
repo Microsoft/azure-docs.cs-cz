@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 59f8b8b253fc914e5723a9c41475ec78bc3f376e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4b95fb8d5a0c05d2d66744a91f4200d58a71470d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61429344"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427367"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Přesun dat z místních SQL serveru do SQL Azure s Azure Data Factory
 
-Tento článek ukazuje, jak pro přesun dat z databáze v místním SQL serveru do databáze SQL Azure prostřednictvím služby Azure Blob Storage pomocí Azure Data Factory (ADF).
+V tomto článku se dozvíte, jak přesunout data z místní databáze SQL Server do databáze SQL Azure prostřednictvím služby Azure Blob Storage pomocí Azure Data Factory (ADF): Tato metoda je podporovaným starším přístupem, který má výhody replikované pracovní kopie, ale navrhujeme si, jak na [stránce migrace dat podívat na nejnovější možnosti](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1).
 
 Tabulka, která shrnuje různé možnosti pro přesun dat do služby Azure SQL Database, najdete v části [přesun dat do služby Azure SQL Database pro Azure Machine Learning](move-sql-azure.md).
 
@@ -43,16 +43,16 @@ Nastavíme kanál ADF, který lze kombinovat dvěma aktivitami data migrace. Spo
 * kopírování dat z účtu služby Azure Blob Storage do služby Azure SQL Database.
 
 > [!NOTE]
-> Zde uvedených kroků byly upraveny z podrobnější kurzu poskytované týmem ADF: [Kopírování dat z místní databáze systému SQL Server do Azure Blob storage](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) odkazy na relevantní části tohoto tématu jsou k dispozici v případě potřeby.
+> Postup je znázorněno zde byly upraveny z podrobnější kurzu poskytované týmem ADF: [kopírování dat z místní databáze systému SQL Server do Azure Blob storage](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) odkazy na relevantní části tohoto tématu jsou k dispozici při je to vhodné.
 >
 >
 
 ## <a name="prereqs"></a>Požadavky
 Tento kurz předpokládá, že máte:
 
-* **Předplatného Azure**. Pokud předplatné nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
-* **Účtu služby Azure storage**. Pro ukládání dat v tomto kurzu použijete účet úložiště Azure. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md). Po vytvoření účtu úložiště je třeba získat klíč účtu, který se používá pro přístup k účtu. Zobrazit [Správa přístupových klíčů úložiště](../../storage/common/storage-account-manage.md#access-keys).
-* Přístup **Azure SQL Database**. Pokud musíte nastavit Azure SQL Database, tématu [Začínáme s Microsoft Azure SQL Database](../../sql-database/sql-database-get-started.md) poskytuje informace o tom, jak zřídit novou instanci služby Azure SQL Database.
+* **Předplatného Azure**. Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* **Účtu služby Azure storage**. Pro ukládání dat v tomto kurzu použijete účet úložiště Azure. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md). Po vytvoření účtu úložiště je třeba získat klíč účtu, který se používá pro přístup k účtu. Viz [Správa přístupových klíčů účtu úložiště](../../storage/common/storage-account-keys-manage.md).
+* Přístup **Azure SQL Database**. Pokud musíte nastavit Azure SQL Database, téma [Začínáme s Microsoft Azure SQL Database](../../sql-database/sql-database-get-started.md) poskytuje informace o tom, jak zřídit novou instanci Azure SQL Database.
 * Nainstalovaný a nakonfigurovaný **prostředí Azure PowerShell** místně. Pokyny najdete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
 
 > [!NOTE]
@@ -71,14 +71,14 @@ Pokyny pro vytvoření nové datové továrny Azure a skupiny prostředků [webu
 ## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Instalace a konfigurace modulu Runtime integrace pro Azure Data Factory
 Prostředí Integration Runtime je infrastruktura integrace spravovaných dat zákazníka službou Azure Data Factory používá k poskytování možnosti integrace dat napříč různými síťovými prostředími. Tento modul runtime byl dříve se označovaly jako "Brána správy dat".
 
-Chcete-li nastavit, [postupujte podle pokynů pro vytvoření kanálu](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
+Pokud chcete nastavit, [postupujte podle pokynů pro vytvoření kanálu](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline) .
 
 ## <a name="adflinkedservices"></a>Vytvoření propojené služby pro připojení k datovým prostředkům
 Propojená služba definuje informace potřebné pro připojení ke zdroji dat služby Azure Data Factory. Máme tři prostředky v tomto scénáři, které jsou v případě propojené služby:
 
 1. Na místním SQL serveru
 2. Azure Blob Storage
-3. Databáze SQL Azure
+3. Databáze Azure SQL
 
 Podrobný postup pro vytvoření propojené služby je součástí [vytvoříte propojené služby,](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline).
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e4ebde6295c3f3467dd615b58d2140302aa86a61
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: db222515dae51fa5e0334430a3578816b1e8813d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949979"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367650"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Nastavte adresy URL pro přesměrování na b2clogin.com pro Azure Active Directory B2C
 
@@ -58,7 +58,7 @@ Pro adresy URL pro přesměrování b2clogin.com můžete použít dva formáty.
 https://{your-tenant-name}.b2clogin.com/{your-tenant-id}/oauth2/authresp
 ```
 
-Druhá možnost používá název domény tenanta ve formě `your-tenant-name.onmicrosoft.com`. Například:
+Druhá možnost používá název domény tenanta ve formě `your-tenant-name.onmicrosoft.com`. Příklad:
 
 ```
 https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp
@@ -74,7 +74,7 @@ Pro oba formáty:
 Kód ve vašich aplikacích a rozhraní API s podporou Azure AD B2C se může na několika místech vztahovat na `login.microsoftonline.com`. Kód může mít například odkazy na toky uživatelů a koncové body tokenu. Místo toho aktualizujte následující informace `your-tenant-name.b2clogin.com`:
 
 * Koncový bod autorizace
-* koncový bod tokenu
+* Koncový bod tokenu
 * Vydavatel tokenů
 
 Například koncový bod autority pro zásady registrace a přihlašování společnosti Contoso by měl být následující:
@@ -93,7 +93,7 @@ Informace o migraci rozhraní API služby Azure API Management chráněných pom
 
 Pokud používáte [MSAL.NET][msal-dotnet] v2 nebo starší, nastavte vlastnost **ValidateAuthority** tak, aby `false` při vytváření instancí klienta, aby bylo umožněno přesměrování na *b2clogin.com*. Toto nastavení není vyžadováno pro MSAL.NET v3 a novější.
 
-```CSharp
+```csharp
 ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication
 client.ValidateAuthority = false; // MSAL.NET v2 and earlier **ONLY**
 ```

@@ -1,6 +1,6 @@
 ---
-title: Spustit objekt pro vytváření image z Azure DevOps v Azure DevTest Labs | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit objekt pro vytváření vlastní image ve službě Azure DevTest Labs.
+title: Spuštění objektu pro vytváření imagí z Azure DevOps v Azure DevTest Labs | Microsoft Docs
+description: Naučte se, jak vytvořit vlastní objekt pro vytváření imagí v Azure DevTest Labs.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -12,119 +12,119 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: abb85d568e26e4b6f85b960a2560aae570daf201
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 101ed792f091a5074b42e3d06eed27d606d3d2a7
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61320312"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638948"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Spuštění objektu pro vytváření imagí z Azure DevOps
-Tento článek se týká všech přípravy potřebných ke spuštění objekt pro vytváření image z Azure DevOps (dřív Visual Studio Team Services).
+Tento článek pojednává o všech přípravcích potřebných ke spuštění objektu pro vytváření imagí z Azure DevOps (dříve Visual Studio Team Services).
 
 > [!NOTE]
-> Bude fungovat jakékoli orchestrační modul! Azure DevOps není povinné. Objekt pro vytváření image se spouští pomocí skriptů prostředí Azure PowerShell, takže je možné spustit ručně, pomocí plánovače úloh Windows, jinými systémy pro CI/CD a tak dále.
+> Všechny moduly orchestrace budou fungovat! Azure DevOps není povinný. Objekt pro vytváření imagí se spouští pomocí Azure PowerShell skriptů, takže ho můžete spustit ručně, a to pomocí Plánovač úloh Windows, dalších systémů CI/CD a tak dále.
 
-## <a name="create-a-lab-for-the-image-factory"></a>Vytvoření testovacího prostředí pro vytváření bitové kopie
-K vytvoření testovacího prostředí ve službě Azure DevTest Labs je první krok při nastavení objekt pro vytváření bitové kopie. Toto testovací prostředí je lab objekt pro vytváření bitové kopie, můžeme vytvořit virtuální počítače a uložení vlastních imagí. Toto testovací prostředí je nepovažuje za součást celkový proces objekt pro vytváření bitové kopie. Po vytvoření testovacího prostředí, nezapomeňte si uložit název, protože ho budete potřebovat později.
+## <a name="create-a-lab-for-the-image-factory"></a>Vytvoření testovacího prostředí pro objekt pro vytváření imagí
+Prvním krokem při nastavení továrny imagí je vytvoření testovacího prostředí v Azure DevTest Labs. Toto testovací prostředí je prostředí pro vytváření imagí, kde vytvoříme virtuální počítače a uložíme vlastní image. Tato laboratoř se považuje za součást celkového procesu vytváření imagí. Po vytvoření testovacího prostředí nezapomeňte název uložit, protože ho budete potřebovat později.
 
 ## <a name="scripts-and-templates"></a>Skripty a šablony
-Dalším krokem při přijímání objekt pro vytváření bitové kopie pro váš tým je pochopit, co je k dispozici. Jsou k dispozici veřejně v obrázku objekt pro vytváření skriptů a šablon [úložiště GitHub se vzorovými DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory). Tady je přehled části:
+Dalším krokem při přijímání továrny imagí pro váš tým je pochopit, co je k dispozici. Skripty a šablony pro vytváření imagí jsou veřejně dostupné v [úložišti GitHubu pro DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory). Tady je osnova těchto částí:
 
-- Objekt pro vytváření bitové kopie. To je kořenová složka.
-    - Konfigurace. Vstupy pro vytváření bitové kopie
-        - GoldenImages. Tato složka obsahuje soubory JSON, které představují definice vlastních imagí.
-        - Labs.json. Soubor, kde týmy zaregistrovat pro příjem konkrétních vlastních imagí.
-- Skripty. Modul pro vytváření bitové kopie.
+- Objekt pro vytváření imagí Jedná se o kořenovou složku.
+    - Configuration (Konfigurace): Vstupy do objektu pro vytváření imagí
+        - GoldenImages. Tato složka obsahuje soubory JSON, které reprezentují definice vlastních imagí.
+        - Labs.json. Soubor, ve kterém se týmy registrují pro příjem konkrétních vlastních imagí.
+- Znakové. Modul pro objekt pro vytváření imagí.
 
-Články v této části poskytují další podrobnosti o těchto skriptů a šablon.
+Články v této části poskytují další podrobnosti o těchto skriptech a šablonách.
 
-## <a name="create-an-azure-devops-team-project"></a>Vytvořit týmový projekt Azure DevOps
-Azure DevOps umožňují ukládat zdrojový kód, spusťte rutinu prostředí Azure PowerShell na jednom místě. Můžete naplánovat opakované spuštění aktualizovat Image. Nejsou k dispozici dobré zařízení pro protokolování výsledků diagnostikovat problémy.  Pomocí Azure DevOps, ale není vyžadováno, můžete použít jakékoli prostředí/modul, který se můžete připojit k Azure a můžete spustit prostředí Azure PowerShell.
+## <a name="create-an-azure-devops-team-project"></a>Vytvoření týmového projektu Azure DevOps
+Azure DevOps vám umožní uložit zdrojový kód, spustit Azure PowerShell na jednom místě. Můžete naplánovat opakovaná spuštění, aby se image udržovaly v aktuálním stavu. Existují vhodné možnosti pro protokolování výsledků za účelem diagnostiky problémů.  Používání Azure DevOps se ale nepožaduje, ale můžete použít libovolný modul, který se může připojit k Azure a může spustit Azure PowerShell.
 
-Pokud máte existující účet DevOps nebo projekt, který chcete použít místo toho, tento krok přeskočte.
+Pokud máte existující účet DevOps nebo projekt, který byste chtěli použít, tento krok přeskočte.
 
-Abyste mohli začít, vytvořte si bezplatný účet v Azure DevOps. Navštivte https://www.visualstudio.com/ a vyberte **začít zdarma** vpravo pod **Azure DevOps** (dříve VSTS). Budete muset Zvolte jedinečný název účtu a ujistěte se, že chcete spravovat kód pomocí Gitu. Jakmile se vytvoří, uložte adresu URL k vašemu týmovému projektu. Tady je ukázka adresy URL: `https://<accountname>.visualstudio.com/MyFirstProject`.
+Pokud chcete začít, vytvořte si bezplatný účet ve službě Azure DevOps. Přejděte na web https://www.visualstudio.com/ a v části **Azure DevOps** (dříve VSTS) vyberte začít hned **zdarma** . Budete muset zvolit jedinečný název účtu a ujistit se, že se rozhodnete spravovat kód pomocí Gitu. Po vytvoření uložte adresu URL do týmového projektu. Tady je ukázková adresa URL: `https://<accountname>.visualstudio.com/MyFirstProject`.
 
-## <a name="check-in-the-image-factory-to-git"></a>Zkontrolujte v objektu pro vytváření bitové kopie na Git
-Všechna prostředí PowerShell, šablony a konfigurace objektu pro vytváření bitové kopie jsou umístěny v [veřejného úložiště DevTest Labs GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory). Nejrychlejší způsob, jak získat kód do nového týmového projektu je importovat do úložiště. Tím zajistíte, že v celé úložiště DevTest Labs (tak získáte navíc dokumentů a ukázek).
+## <a name="check-in-the-image-factory-to-git"></a>Vrácení továrny imagí do Gitu
+Všechny prostředí PowerShell, šablony a konfigurace pro objekt pro vytváření imagí se nacházejí v [úložišti GitHub veřejné DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory). Nejrychlejší způsob, jak získat kód do nového týmového projektu, je importovat úložiště. Tato operace se vyžádá v celém úložišti DevTest Labs (takže získáte další dokumenty a ukázky).
 
-1. Navštivte projekt Azure DevOps, který jste vytvořili v předchozím kroku (adresa URL vypadá jako **https:\//\<accountname >.visualstudio.com/MyFirstProject**).
+1. Přejděte na projekt Azure DevOps, který jste vytvořili v předchozím kroku (adresa URL vypadá jako **https:\//\<Account. visualstudio >. VisualStudio. com/MyFirstProject**).
 2. Vyberte **importovat úložiště**.
-3. Zadejte **adresu URL klonování** úložiště DevTest Labs: `https://github.com/Azure/azure-devtestlab`.
-4. Vyberte **Import**.
+3. Zadejte **adresu URL klonu** úložiště DevTest Labs: `https://github.com/Azure/azure-devtestlab`.
+4. Vyberte **Import** (Importovat).
 
     ![Importovat úložiště Git](./media/set-up-devops-lab/import-git-repo.png)
 
-Pokud se rozhodnete jenom vrátit se změnami přesně toho, co je potřeba (objekt pro vytváření souborů obrázků), postupujte podle kroků [tady](https://www.visualstudio.com/en-us/docs/git/share-your-code-in-git-vs) a naklonujte úložiště Git push jenom soubory umístěné ve **skripty/ImageFactory** adresáře.
+Pokud se rozhodnete pouze přesně zjistit, co je potřeba (soubory pro vytváření imagí), naklonujte [](https://www.visualstudio.com/en-us/docs/git/share-your-code-in-git-vs) úložiště Git a nahrajte jenom soubory umístěné v adresáři **Scripts/ImageFactory** .
 
-## <a name="create-a-build-and-connect-to-azure"></a>Vytváření sestavení a připojte se k Azure
-V tomto okamžiku máte zdrojové soubory uložené v úložišti Git v Azure DevOps. Nyní musíte nastavit kanál ke spuštění prostředí Azure PowerShell. Existuje mnoho možností proveďte tyto kroky. V tomto článku použít definici sestavení pro zjednodušení, ale funguje s DevOps sestavení, vydání DevOps (jeden nebo více prostředími), další spuštění enginy jako Plánovač úloh Windows nebo jiné prostředí, která může spustit prostředí Azure PowerShell.
+## <a name="create-a-build-and-connect-to-azure"></a>Vytvoření sestavení a připojení k Azure
+V tomto okamžiku máte zdrojové soubory uložené v úložišti Git ve službě Azure DevOps. Teď je potřeba nastavit kanál pro spuštění Azure PowerShell. K dispozici je spousta možností, jak provést tyto kroky. V tomto článku použijete definici sestavení pro jednoduchost, ale spolupracuje s DevOps Build, DevOps vydáním (jedním nebo několika prostředími), jinými spouštěcími moduly, jako je Windows Plánovač úloh nebo jakýmkoli jiným způsobem, který může Azure PowerShell spustit.
 
 > [!NOTE]
-> Jeden důležitý bod mějte na paměti, že některé soubory Powershellu trvat dlouhou dobu spustit, když jsou mnohem (více než 10) vlastní Image k vytvoření. Bezplatné hostovaných agentů DevOps Buildů a vydání mají časový limit 30 minut, proto nelze použít bezplatný hostovaný agent, jakmile začnete vytvářet celou řadu imagí. Tuto výzvu vypršení časového limitu se vztahuje na libovolné harness rozhodnete použít, je vhodné ověřit, že můžete rozšířit typické vypršení časového limitu pro dlouho běžící skripty Azure Powershellu ještě před zahájením. V případě Azure DevOps můžete buď použít placené hostovaných agentů nebo pomocí vlastního agenta sestavení.
+> Důležité je, abyste měli na paměti, že spuštění některých souborů PowerShell trvá dlouhou dobu, když máte spoustu (10) vlastních imagí, které se mají vytvořit. Bezplatná hostované DevOps sestavení/vydání mají časový limit 30 minut, takže nemůžete používat bezplatného hostovaného agenta, když začnete sestavovat spoustu imagí. Tato výzva k vypršení platnosti se vztahuje na libovolný svazek, který se rozhodnete použít, je vhodné ověřit, že můžete prodloužit obvyklé časové limity pro dlouhé běžící Azure PowerShell skripty. V případě Azure DevOps můžete buď použít placené hostované agenty, nebo použít vlastního agenta sestavení.
 
-1. Pokud chcete začít, vyberte **nastavení sestavení** na domovské stránce projektu DevOps:
+1. Začněte výběrem **nastavit sestavení** na domovské stránce projektu DevOps:
 
     ![Tlačítko Nastavení sestavení](./media/set-up-devops-lab/setup-build-button.png)
-2. Zadejte **název** pro sestavení (například: Vytvářejte a dodávejte bitové kopie k DevTest Labs).
-3. Vyberte **prázdný** definice sestavení a vyberte **použít** k vytvoření sestavení.
-4. V této fázi můžete zvolit **hostovaná** agenta sestavení.
-5. **Uložit** definici sestavení.
+2. Zadejte **název** sestavení (například: Sestavte a doručovat images do DevTest Labs).
+3. Vyberte **prázdnou** definici sestavení a vyberte **použít** pro vytvoření sestavení.
+4. V této fázi můžete zvolit možnost **hostované** pro agenta sestavení.
+5. **Uložte** definici sestavení.
 
     ![Definice sestavení](./media/set-up-devops-lab/build-definition.png)
 
-## <a name="configure-the-build-variables"></a>Konfigurace proměnných sestavení
-Pro zjednodušení parametry příkazového řádku, zapouzdření klíčové hodnoty, které řídí objekt pro vytváření image pro sadu proměnných sestavení. Vyberte **proměnné** kartu a zobrazí se seznam několika výchozí proměnné. Tady je seznam proměnných, které zadáte v Azure DevOps:
+## <a name="configure-the-build-variables"></a>Konfigurovat proměnné sestavení
+Chcete-li zjednodušit parametry příkazového řádku, zapouzdřujte klíčové hodnoty, které řídí objekt pro vytváření imagí, do sady proměnných sestavení. Vyberte kartu **proměnné** a zobrazí se seznam několika výchozích proměnných. Tady je seznam proměnných, které se mají zadat do Azure DevOps:
 
 
 | Název proměnné | Hodnota | Poznámky |
 | ------------- | ----- | ----- |
-| ConfigurationLocation | /Scripts/ImageFactory/Configuration | Jedná se o úplnou cestu v úložišti, abyste **konfigurace** složky. Pokud jste naimportovali celé úložiště výše, hodnotu na levé straně je správná. Jinak aktualizujte tak, aby odkazoval na umístění konfigurace. |
-| DevTestLabName | MyImageFactory | Název testovacího prostředí ve službě Azure DevTest Labs k vytvoření Image použít jako objekt pro vytváření. Pokud ho nemáte, vytvořte si ho. Ujistěte se, že je testovací prostředí v rámci stejného předplatného, který má přístup ke koncovému bodu služby. |
-| ImageRetention | 1 | Počet imagí, které chcete uložit každého typu. Nastavte výchozí hodnotu na 1. |
-| MachinePassword | ******* | Integrované heslo správce pro virtuální počítače. Jedná se o přechodné účet, proto se ujistěte, že je zabezpečené. Vyberte malou ikonu zámku na pravé straně zajistit, že se že jedná zabezpečený řetězec. |
-| MachineUserName | ImageFactoryUser | Integrované účet uživatelské jméno správce pro virtuální počítače. Jedná se o přechodné účet. |
-| StandardTimeoutMinutes | 30 | Časový limit, kterou jsme čekat standardních operací Azure. |
-| SubscriptionId |  0000000000-0000-0000-0000-0000000000000 | ID předplatného, ve kterém testovacím prostředí existuje a zda má přístup ke koncovému bodu služby. |
-| VMSize | Standard_A3 | Velikost virtuálního počítače pro použití **vytvořit** kroku. Virtuální počítače vytvořené jsou přechodné. Velikost musí být takový, která [povolené pro testovací prostředí](devtest-lab-set-lab-policy.md). Potvrdit, že máte dostatek [kvótu jader předplatného](../azure-subscription-service-limits.md).
+| ConfigurationLocation | /Scripts/ImageFactory/Configuration | Toto je úplná cesta v úložišti ke složce **Konfigurace** . Pokud jste importovali celé úložiště výše, hodnota vlevo je správná. Jinak aktualizujte tak, aby odkazovaly na umístění konfigurace. |
+| DevTestLabName | MyImageFactory | Název testovacího prostředí v Azure DevTest Labs použitý jako továrna k vytváření imagí. Pokud ho ještě nemáte, vytvořte ho. Ujistěte se, že je testovací prostředí ve stejném předplatném, ke kterému má koncový bod služby přístup. |
+| ImageRetention | 1\. místo | Počet imagí, které chcete uložit u každého typu. Nastavte výchozí hodnotu na 1. |
+| MachinePassword | ******* | Předdefinované heslo účtu správce pro virtuální počítače. Toto je přechodný účet, proto se ujistěte, že je zabezpečený. Vyberte ikonu trochu zámku na pravé straně, abyste zajistili, že se jedná o zabezpečený řetězec. |
+| MachineUserName | ImageFactoryUser | Předdefinované uživatelské jméno účtu správce pro virtuální počítače. Toto je přechodný účet. |
+| StandardTimeoutMinutes | 30 | Časový limit, který by měl počkat na pravidelné operace Azure. |
+| SubscriptionId |  0000000000-0000-0000-0000-0000000000000 | ID předplatného, ve kterém testovací prostředí existuje a ke kterému má koncový bod služby přístup. |
+| VMSize | Standard_A3 | Velikost virtuálního počítače, který se má použít pro krok **Vytvoření** Vytvořené virtuální počítače jsou přechodné. Velikost musí být ta, která je [povolená pro testovací prostředí](devtest-lab-set-lab-policy.md). Potvrďte, že existuje dostatečná [kvóta jader předplatného](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
-![Vytvoření proměnné](./media/set-up-devops-lab/configure-build-variables.png)
+![Proměnné sestavení](./media/set-up-devops-lab/configure-build-variables.png)
 
 ## <a name="connect-to-azure"></a>Připojení k Azure
-Dalším krokem je nastavení instančního objektu služby Azure. Toto je identita v Azure Active Directory, která umožňuje agent sestavení DevOps v Azure provozují jménem uživatele. Ho nastavit začněte s přidáváním Azure Powershellu vytvořit nejdřív.
+Dalším krokem je nastavení instančního objektu. Jedná se o identitu v Azure Active Directory, která umožňuje agentovi sestavení DevOps provozovat v Azure jménem uživatele. Pokud ho chcete nastavit, Začněte přidáním prvního Azure PowerShell kroku sestavení.
 
-1. Vyberte **přidat úkol**.
-2. Vyhledejte **prostředí Azure PowerShell**.
-3. Jakmile pro vás, vyberte **přidat** přidání úkolu do sestavení. Když to uděláte, zobrazí se vám na levé straně se zobrazí při přidání úlohy.
+1. Vyberte **Přidat úlohu**.
+2. Vyhledejte **Azure PowerShell**.
+3. Jakmile ho najdete, vyberte **Přidat** a přidejte úkol do sestavení. Když to uděláte, zobrazí se na levé straně úkol, který se zobrazí jako přidaný.
 
-![Nastavení prostředí PowerShell kroku](./media/set-up-devops-lab/set-up-powershell-step.png)
+![Nastavení kroku prostředí PowerShell](./media/set-up-devops-lab/set-up-powershell-step.png)
 
-Nejrychlejší způsob, jak nastavit službu objektu zabezpečení je nechat DevOps Azure to udělá za nás.
+Nejrychlejší způsob, jak nastavit instanční objekt, je umožnit službě Azure DevOps to pro nás.
 
-1. Vyberte **úloh** jste právě přidali.
-2. Pro **typ připojení Azure**, zvolte **Azure Resource Manageru**.
-3. Vyberte **spravovat** odkaz na nastavení instančního objektu.
+1. Vyberte **úlohu** , kterou jste právě přidali.
+2. Jako **Typ připojení Azure**vyberte **Azure Resource Manager**.
+3. Pro nastavení instančního objektu vyberte odkaz pro **správu** .
 
-Další informace najdete v tomto [blogový příspěvek](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/). Když vyberete **spravovat** odkazu, budete přesměrováni na správném místě v DevOps (druhý snímek obrazovky v blogovém příspěvku) k nastavení připojení k Azure. Nezapomeňte vybrat **koncového bodu služby Azure Resource Manageru** při nastavování.
+Další informace najdete v tomto [příspěvku na blogu](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/). Když vyberete odkaz pro **správu** , budete mít na správném místě v DevOps (druhý snímek obrazovky v příspěvku blogu) a nastavíte připojení k Azure. Nezapomeňte při nastavování zvolit **Azure Resource Manager koncový bod služby** .
 
 ## <a name="complete-the-build-task"></a>Dokončení úlohy sestavení
-Pokud vyberete úlohu sestavení, zobrazí se vám všechny podrobnosti v pravém podokně, které by mělo být vyplněno.
+Pokud vyberete úlohu sestavení, zobrazí se všechny podrobnosti v pravém podokně, které by měly být vyplněny.
 
-1. Jméno úkol sestavení: **Vytvoření virtuálních počítačů**.
-2. Zvolte **instanční objekt služby** vytvoříte výběrem **Azure Resource Manageru**
-3. Zvolte **koncový bod služby**.
-4. Pro **cesta ke skriptu**vyberte **... (tři tečky)**  na pravé straně.
-5. Přejděte do **MakeGoldenImageVMs.ps1** skriptu.
-6. Parametry skriptu by měl vypadat nějak takto: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -DevTestLabName $(DevTestLabName) -vmSize $(VMSize) -machineUserName $(MachineUserName) -machinePassword (ConvertTo-SecureString -string '$(MachinePassword)' -AsPlainText -Force) -StandardTimeoutMinutes $(StandardTimeoutMinutes)`
+1. Nejprve pojmenujte úlohu sestavení: **vytvořit Virtual Machines**.
+2. Vyberte **objekt služby** , který jste vytvořili, volbou **Azure Resource Manager**
+3. Vyberte **koncový bod služby**.
+4. Jako **cestu ke skriptu**vyberte **... (tři tečky)** napravo.
+5. Přejděte do skriptu **MakeGoldenImageVMs. ps1** .
+6. Parametry skriptu by měly vypadat takto: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -DevTestLabName $(DevTestLabName) -vmSize $(VMSize) -machineUserName $(MachineUserName) -machinePassword (ConvertTo-SecureString -string '$(MachinePassword)' -AsPlainText -Force) -StandardTimeoutMinutes $(StandardTimeoutMinutes)`
 
-    ![Dokončení definice sestavení](./media/set-up-devops-lab/complete-build-definition.png)
+    ![Dokončete definici sestavení.](./media/set-up-devops-lab/complete-build-definition.png)
 
 
-## <a name="queue-the-build"></a>Zařaďte sestavení do fronty
-Pojďme ověřit, že máte všechno správně nastavené zařazením do nového sestavení. Je spuštěn sestavení, přepněte [webu Azure portal](https://portal.azure.com) a vyberte na **všechny virtuální počítače** ve vaší laboratoři objekt pro vytváření bitové kopie pro potvrzení, že všechno funguje správně. Měli byste vidět, že tři virtuální počítače vytvořené v testovacím prostředí.
+## <a name="queue-the-build"></a>Zařazení sestavení do fronty
+Pojďme si ověřit, jestli máte všechno správně nastavené, a to zařazením nového buildu do fronty. Když je sestavení spuštěné, přepněte na [Azure Portal](https://portal.azure.com) a v testovacím prostředí pro vytváření imagí vyberte **všechny Virtual Machines** , abyste ověřili, že vše funguje správně. V testovacím prostředí byste měli vidět tři virtuální počítače.
 
 ![Virtuální počítače v testovacím prostředí](./media/set-up-devops-lab/vms-in-lab.png)
 
-## <a name="next-steps"></a>Další postup
-Prvním krokem při nastavení objekt pro vytváření bitové kopie založené na službě Azure DevTest Labs je dokončena. V dalším článku v této sérii získáte ty virtuální počítače generalizovaných a uloží do vlastních imagí. Pak bude nutné je distribuován do všech dalších laboratoří. Zobrazit další článek v sérii: [Uložení vlastních imagí a distribuovat do více labs](image-factory-save-distribute-custom-images.md).
+## <a name="next-steps"></a>Další kroky
+První krok nastavení objektu pro vytváření imagí založený na Azure DevTest Labs je dokončený. V dalším článku v řadě získáte tyto virtuální počítače generalizované a uložené do vlastních imagí. Pak je budete distribuovat do všech ostatních cvičení. Podívejte se na další článek v řadě: [uložení vlastních imagí a distribuce do více cvičení](image-factory-save-distribute-custom-images.md).

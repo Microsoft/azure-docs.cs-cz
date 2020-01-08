@@ -1,47 +1,40 @@
 ---
-title: Proměnné prostředí Azure Service Fabric | Dokumentace Microsoftu
-description: Referenční dokumentace pro Service Fabric proměnné prostředí
-documentationcenter: .net
+title: Proměnné prostředí Azure Service Fabric
+description: Přečtěte si o proměnných prostředí v Azure Service Fabric. Obsahuje odkaz na úplný seznam proměnných a jejich použití.
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: reference
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/07/2017
 ms.author: mikhegn
-ms.openlocfilehash: 1c8400898dba59f312ba9d994ee711a5e241973a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b13522b1d9f2acd2aa3f7923c1b623fab696056d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60946718"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645680"
 ---
-# <a name="service-fabric-environment-variables"></a>Proměnné prostředí Service Fabric
+# <a name="service-fabric-environment-variables"></a>Service Fabric proměnných prostředí
 
-Service Fabric je integrované prostředí proměnné nastavené pro každou repliku služby. Úplný seznam proměnných prostředí je nižší než:
+Service Fabric má pro každou instanci služby nastavenou předdefinované proměnné prostředí. Úplný seznam proměnných prostředí je následující:
 
 | Proměnná prostředí                         | Popis                                                            | Příklad:                                                              |
 |----------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------|
-| Fabric_ApplicationName                       | Název identifikátoru uri prostředků infrastruktury aplikace                                 | Fabric: / MyApplication                                                |
-| Fabric_CodePackageName                       | Název balíčku kódu, ke kterému patří procesu              | Kód                                                                 |
-| Fabric_Endpoint\_IPOrFQDN\_*ServiceEndpointName*     | Ip adresa nebo plně kvalifikovaného názvu domény koncového bodu                                 | 10.0.0.1                                                     |
-| Fabric\_koncový bod\_*ServiceEndpointName*              | Číslo portu pro koncový bod                                  | 8234                                                                 |
-| Fabric_Folder_App_Log                        | Uloží do složky protokolů                                                             | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\log      |
-| Fabric_Folder_App_Temp                       | Dočasná složka                                                            | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\temp     |
-| Fabric_Folder_App_Work                       | Pracovní složky                                                            | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\work     |
-| Fabric_Folder_Application                    | Domovskou složku aplikace                                           | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12             |
-| Fabric_IsContainerHost                       | Hodnotu určující, jestli proces je kontejner                   | false (nepravda)                                                                |
-| Fabric_NodeId                                | ID uzlu uzlu spuštění procesu                            | bf865279ba277deb864a976fbf4c200e                                     |
-| Fabric_NodeIPOrFQDN                          | Soubor manifestu IP adresu nebo plně kvalifikovaný název domény uzlu, jak je uvedeno v clusteru. | localhost nebo 10.0.0.1                                                |
-| Fabric_NodeName                              | Název uzlu uzlu spuštění procesu                          | _Node_0                                                              |
-| Fabric_ServiceName                           | Název prostředků infrastruktury identifikátor uri služby, pokud je v režimu ExclusiveProcess hostované služby. Tato proměnná je k dispozici, pokud vytvoříte službu s ServicePackageActivationMode ExclusiveProcess pouze.  | Fabric: / MyApplication/Moje_služba                                               |
-| Fabric_ServicePackageActivationId            | The ServicePackageActivationId                                         | IDENTIFIKÁTOR GUID                                                               |
-| Fabric_ServicePackageName                    | Název balíčku služby procesu je součástí                     | Web1Pkg                                                              |
+| Fabric_ApplicationName                       | Název identifikátoru URI prostředků infrastruktury aplikace                                 | Fabric:/MyApplication                                                |
+| Fabric_CodePackageName                       | Název balíčku kódu, ke kterému patří proces              | kód                                                                 |
+| Fabric_Endpoint\_IPOrFQDN\_*ServiceEndpointName*     | IP adresa nebo plně kvalifikovaný název domény koncového bodu                                 | 10.0.0.1                                                     |
+| \_koncový bod prostředků *infrastruktury\_* koncového bodu              | Číslo portu pro koncový bod                                  | 8234                                                                 |
+| Fabric_Folder_App_Log                        | Složka protokolu                                                             | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\log      |
+| Fabric_Folder_App_Temp                       | Temp folder                                                            | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\temp     |
+| Fabric_Folder_App_Work                       | Pracovní složka                                                            | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\work     |
+| Fabric_Folder_Application                    | Domovská složka aplikací                                           | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12             |
+| Fabric_IsContainerHost                       | Logická hodnota určující, zda je proces kontejner                   | false                                                                |
+| Fabric_NodeId                                | ID uzlu, na kterém je spuštěný proces                            | bf865279ba277deb864a976fbf4c200e                                     |
+| Fabric_NodeIPOrFQDN                          | IP adresa nebo plně kvalifikovaný název domény uzlu, jak je uvedeno v souboru manifestu clusteru. | localhost nebo 10.0.0.1                                                |
+| Fabric_NodeName                              | Název uzlu, na kterém je spuštěn proces                          | _Node_0                                                              |
+| Fabric_ServiceName                           | Název identifikátoru URI prostředků infrastruktury služby, pokud je služba hostovaná v režimu ExclusiveProcess. Tato hodnota proměnné je k dispozici pouze v případě, že vytvoříte službu pomocí ServicePackageActivationMode ExclusiveProcess.  | Fabric:/MyApplication/Mojesluzba                                               |
+| Fabric_ServicePackageActivationId            | ServicePackageActivationId                                         | IDENTIFIKÁTOR GUID                                                               |
+| Fabric_ServicePackageName                    | Název balíčku služby, jehož součástí je proces                     | Web1Pkg                                                              |
 
-Interní systémové proměnné používané modul runtime Service Fabric:
+Interní proměnné prostředí používané modulem runtime Service Fabric:
 
 - Fabric_ApplicationHostId
 - Fabric_ApplicationHostType

@@ -1,28 +1,19 @@
 ---
-title: Kurz – Odebrání aplikace spuštěné ve službě Azure Service Fabric Mesh | Microsoft Docs
+title: Kurz – odebrání aplikace běžící v Azure Service Fabric sítě
 description: V tomto kurzu se naučíte odebrat aplikaci spuštěnou ve službě Service Fabric Mesh a odstranit prostředky.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: adc5b96f29f610c63bcfa24a3b5f761c04d41d5b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4780f81d23f0183837d2aafb9a8e5e2c41faa1cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810464"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351797"
 ---
-# <a name="tutorial-remove-an-application-and-resources"></a>Kurz: Odebrat aplikace a prostředky
+# <a name="tutorial-remove-an-application-and-resources"></a>Kurz: Odebrání aplikace a prostředků
 
 Tento kurz je čtvrtou částí série. Dozvíte se, jak odebrat spuštěnou aplikaci, která se [předtím nasadila do služby Service Fabric Mesh](service-fabric-mesh-tutorial-template-deploy-app.md). 
 
@@ -34,7 +25,7 @@ Ve čtvrté části této série se naučíte:
 
 V této sérii kurzů se naučíte:
 > [!div class="checklist"]
-> * [Nasazení aplikace do služby Service Fabric Mesh pomocí šablony](service-fabric-mesh-tutorial-template-deploy-app.md)
+> * [Nasadit aplikaci do služby Service Fabric Mesh pomocí šablony](service-fabric-mesh-tutorial-template-deploy-app.md)
 > * [Škálování aplikace spuštěné ve službě Service Fabric Mesh](service-fabric-mesh-tutorial-template-scale-services.md)
 > * [Upgrade aplikace spuštěné ve službě Service Fabric Mesh](service-fabric-mesh-tutorial-template-upgrade-app.md)
 > * Odebrání aplikace
@@ -81,7 +72,7 @@ Odstranění sítě:
 az mesh network delete --resource-group myResourceGroup --name todolistappNetwork
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V této části kurzu jste se naučili:
 

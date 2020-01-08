@@ -1,6 +1,6 @@
 ---
-title: Podporované prohlížeče a zařízení pro Azure portal | Dokumentace Microsoftu
-description: Popisuje prohlížečích a zařízeních, na kterých bude fungovat na webu Azure portal.
+title: Podporované prohlížeče a zařízení pro Azure Portal | Microsoft Docs
+description: Azure Portal můžete použít na všech moderních zařízeních a s nejnovějšími verzemi prohlížeče. V tomto článku najdete informace o tom, jestli je váš prohlížeč podporovaný.
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
@@ -12,23 +12,23 @@ ms.workload: multiple
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/27/2019
-ms.author: kfollis
+ms.date: 12/20/2019
+ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: 1595d744fbfda47a9db9ff27de09cd53c6f73ece
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 792864022cb7c1b2b4b43a4980d86e32b213525c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551146"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640100"
 ---
 # <a name="supported-devices"></a>Podporovaná zařízení
 
-[Webu Azure portal](https://portal.azure.com) je webová konzola a běží v prohlížeči všechny moderní stolní počítače a tablety. Pokud potřebujete ke správě prostředků Azure z mobilního zařízení, zkuste [mobilní aplikace Azure](https://azure.microsoft.com/features/azure-portal/mobile-app/). Je dostupná pro iOS a Android.
+[Azure Portal](https://portal.azure.com) je webová konzola a běží v prohlížeči všech moderních stolních počítačů a zařízení tabletů. Pokud potřebujete spravovat prostředky Azure z mobilního zařízení, zkuste [mobilní aplikace Azure](https://azure.microsoft.com/features/azure-portal/mobile-app/). Je k dispozici pro iOS a Android.
 
-## <a name="recommended-browsers"></a>Doporučenými prohlížeči
+## <a name="recommended-browsers"></a>Doporučené prohlížeče
 
-Doporučujeme vám, že používáte nejnovější prohlížeče, který je kompatibilní s operačním systémem. Podporují se následující prohlížeče:
+Doporučujeme používat nejnovější prohlížeč, který je kompatibilní s vaším operačním systémem. Podporovány jsou následující prohlížeče:
 
 * Microsoft Edge (nejnovější verze)
 * Internet Explorer 11

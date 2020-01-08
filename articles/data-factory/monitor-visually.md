@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: a4258b51acfa603c156bc35cdb2cbc3b16f37ab0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 85b1d6b532ba11819947558226291e62af6b5119
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278387"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690939"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Vizuálně monitorovat Azure Data Factory
 
@@ -31,11 +31,11 @@ Výchozí zobrazení monitorování je seznam spuštění kanálu ve vybraném �
 | --- | --- |
 | Název kanálu | Název kanálu |
 | Akce | Ikony, které umožňují zobrazit podrobnosti o aktivitě, zrušit nebo spustit kanál znovu |
-| Spustit spuštění | Počáteční datum a čas pro spuštění kanálu (MM/DD/RRRR, HH: MM: SS dop./odp.) |
-| Doba trvání | Doba trvání běhu (HH: MM: SS) |
+| Začátek spuštění | Počáteční datum a čas pro spuštění kanálu (MM/DD/RRRR, HH: MM: SS dop./odp.) |
+| Délka | Doba trvání běhu (HH: MM: SS) |
 | Aktivoval | Název triggeru, který spustil kanál |
-| Status | **Selhání**, **úspěšné**, **probíhající**, **zrušeno**nebo zařazení do **fronty** |
-| Anotac | Filtrovatelné značky přidružené k kanálu  |
+| Stav | **Selhání**, **úspěšné**, **probíhající**, **zrušeno**nebo zařazení do **fronty** |
+| Poznámky | Filtrovatelné značky přidružené k kanálu  |
 | Parametry | Parametry pro spuštění kanálu (páry název/hodnota) |
 | Chyba | Pokud se kanál nezdařil, Chyba spuštění |
 | ID běhu | ID spuštění kanálu |
@@ -55,9 +55,9 @@ Pokud chcete zobrazit spuštění aktivit pro každé spuštění kanálu, vyber
 | Název aktivity | Název aktivity uvnitř kanálu |
 | Typ aktivity | Typ aktivity, například **copy**, **ExecuteDataFlow**nebo **AzureMLExecutePipeline** |
 | Akce | Ikony, které vám umožní zobrazit vstupní informace JSON, informace o výstupu JSON nebo podrobné prostředí pro monitorování konkrétní aktivity | 
-| Spustit spuštění | Počáteční datum a čas pro spuštění aktivit (MM/DD/RRRR, HH: MM: SS dop./odp.) |
-| Doba trvání | Doba trvání běhu (HH: MM: SS) |
-| Status | **Došlo** **k**chybě, **úspěšné**, probíhající nebo **zrušené** |
+| Začátek spuštění | Počáteční datum a čas pro spuštění aktivit (MM/DD/RRRR, HH: MM: SS dop./odp.) |
+| Délka | Doba trvání běhu (HH: MM: SS) |
+| Stav | **Došlo** **k**chybě, **úspěšné**, probíhající nebo **zrušené** |
 | Integration Runtime | Který Integration Runtime aktivity běžely |
 | Vlastnosti uživatele | Uživatelem definované vlastnosti aktivity |
 | Chyba | Pokud se aktivita nezdařila, Chyba spuštění |
@@ -91,14 +91,14 @@ Přepněte na to, jestli se spuštění kanálu sestaví sestupně nebo vzestupn
 | **Název sloupce** | **Popis** |
 | --- | --- |
 | Název kanálu | Filtrovat podle názvu kanálu. |
-| Spustit spuštění |  Určete časový rozsah zobrazených spuštění kanálu. Mezi možnosti patří rychlé filtry za **posledních 24 hodin**, **minulý týden**a **posledních 30 dnů** nebo pro výběr vlastního data a času. |
+| Začátek spuštění |  Určete časový rozsah zobrazených spuštění kanálu. Mezi možnosti patří rychlé filtry za **posledních 24 hodin**, **minulý týden**a **posledních 30 dnů** nebo pro výběr vlastního data a času. |
 | Stav spuštění | Filtry se spouští podle stavu: **úspěšné**, **neúspěšné**, **zařazené do fronty**, **zrušené**nebo **probíhající**. |
-| Anotac | Filtrovat podle značek použitých u jednotlivých kanálů |
+| Poznámky | Filtrovat podle značek použitých u jednotlivých kanálů |
 | Spuštění | Filtrovat, jestli chcete zobrazit kanály Reran |
 
 ![Možnosti pro filtrování](media/monitor-visually/filter.png)
 
-### <a name="add-or-remove-columns"></a>Přidat nebo odebrat sloupce
+### <a name="add-or-remove-columns"></a>Přidání nebo odebrání sloupců
 Klikněte pravým tlačítkem na záhlaví zobrazení seznamu a vyberte sloupce, které se mají zobrazit v zobrazení seznamu.
 
 ![Možnosti pro sloupce](media/monitor-visually/columns.png)
@@ -113,6 +113,12 @@ V rámci kanálu můžete znovu spustit aktivity. Vyberte **Zobrazit spuštění
 ![Zobrazení spuštění aktivit](media/monitor-visually/rerun-activities-image1.png)
 
 ![Vybrat spuštění aktivit](media/monitor-visually/rerun-activities-image2.png)
+
+### <a name="rerun-from-failed-activity"></a>Znovu spustit z neúspěšné aktivity
+
+Pokud dojde k selhání aktivity, vypršení časového limitu nebo zrušení, můžete znovu spustit kanál z této neúspěšné aktivity výběrem možnosti **znovu spustit z neúspěšné aktivity**.
+
+![Znovu spustit neúspěšnou aktivitu](media/monitor-visually/rerun-failed-activity.png)
 
 ### <a name="view-rerun-history"></a>Zobrazit historii opětovného spuštění
 

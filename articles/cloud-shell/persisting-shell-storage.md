@@ -14,18 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2019
 ms.author: damaerte
-ms.openlocfilehash: 8e04e7c1919deaf60e083aba4588943147ebd6bf
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 0b3b0b2cc97c86fefe37055e0744b747d4f31687
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284815"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385552"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Zachovat soubory v Azure Cloud Shell
 Cloud Shell využívá službu Azure File Storage k uchování souborů napříč relacemi. Při počátečním spuštění vás Cloud Shell vyzve k přidružení nové nebo existující sdílené složky, která bude uchovávat soubory napříč relacemi.
 
 > [!NOTE]
 > Bash a prostředí PowerShell sdílí stejnou sdílenou složku. K automatickému připojení v Cloud Shell může být přidružena pouze jedna sdílená složka.
+
+> [!NOTE]
+> Brána firewall služby Azure Storage není podporovaná pro účty úložiště Cloud Shell.
 
 ## <a name="create-new-storage"></a>Vytvořit nové úložiště
 
@@ -136,7 +139,7 @@ Sdílená složka bude i nadále existovat, dokud ji neodstraníte ručně. Clou
 ![Spuštění clouddrive unmount'command](media/persisting-shell-storage/unmount-h.png)
 
 > [!WARNING]
-> I když se spustí tento příkaz, neodstraní žádné prostředky, ručně odstraní skupinu prostředků, účet úložiště nebo sdílenou složku, která je namapovaná na Cloud Shell vymaže vaši image disku `$Home` adresáře a všechny soubory ve sdílené složce. Tuto akci nelze vrátit zpět.
+> I když se spustí tento příkaz, neodstraní žádné prostředky, ručně odstraní skupinu prostředků, účet úložiště nebo sdílenou složku, která je namapovaná na Cloud Shell vymaže vaši image disku `$Home` adresáře a všechny soubory ve sdílené složce. Tuto akci nejde vrátit zpátky.
 ## <a name="powershell-specific-commands"></a>Příkazy specifické pro PowerShell
 
 ### <a name="list-clouddrive-azure-file-shares"></a>Vypsat `clouddrive` sdílené složky Azure

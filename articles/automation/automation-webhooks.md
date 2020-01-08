@@ -2,19 +2,15 @@
 title: Spuštění Azure Automation Runbooku pomocí Webhooku
 description: Webhook, který umožňuje klientovi spustit Runbook v Azure Automation z volání HTTP.  Tento článek popisuje, jak vytvořit Webhook a jak ho zavolat, aby se spustil Runbook.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/19/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: bc03425a64486e449b4df93ea187435a1e893dda
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fbf3a48d1e7cb3dd80b6c418d7c916184756b6fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849594"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75418976"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Spuštění Azure Automation Runbooku pomocí Webhooku
 
@@ -113,10 +109,10 @@ http://<Webhook Server>/token?=<Token Value>
 
 Klient obdrží z požadavku POST jeden z následujících návratových kódů.
 
-| Kód | Text | Popis |
+| kód | Text | Popis |
 |:--- |:--- |:--- |
 | 202 |Přijato |Požadavek byl přijat a sada Runbook byla úspěšně zařazena do fronty. |
-| 400 |Nesprávná žádost |Žádost nebyla přijata z některého z následujících důvodů: <ul> <li>Platnost Webhooku vypršela.</li> <li>Webhook je zakázaný.</li> <li>Token v adrese URL je neplatný.</li>  </ul> |
+| 400 |Chybný požadavek |Žádost nebyla přijata z některého z následujících důvodů: <ul> <li>Platnost Webhooku vypršela.</li> <li>Webhook je zakázaný.</li> <li>Token v adrese URL je neplatný.</li>  </ul> |
 | 404 |Nenalezeno |Žádost nebyla přijata z některého z následujících důvodů: <ul> <li>Webhook se nenašel.</li> <li>Runbook se nenašel.</li> <li>Účet nebyl nalezen.</li>  </ul> |
 | 500 |Vnitřní chyba serveru |Adresa URL byla platná, ale došlo k chybě. Odešlete prosím žádost znovu. |
 

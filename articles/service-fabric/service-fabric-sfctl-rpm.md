@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – sfctl ot./min. | Microsoft Docs
-description: Popisuje příkazy Service Fabric CLI sfctl ot./min.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – sfctl ot./min.
+description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro službu Repair Manager.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 9c37dc8131f14a3b35e68b3e88502c91f96810f6
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 674970276046034d13801db7c1bb4ab5175385fb
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901040"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639084"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 Dotazování a posílání příkazů do služby správce oprav.
@@ -87,7 +78,7 @@ Toto rozhraní API podporuje Service Fabric platformu; není určeno pro použit
 | --- | --- |
 | --prováděcí modul – filtr | Název prováděcího modulu, jehož deklarované úkoly by měly být uvedeny v seznamu. |
 | --State-Filter | Bitové nebo následující hodnoty určující, které stavy úloh by měly být zahrnuty v seznamu výsledků. <br> 1 – vytvořeno <br>2 – tvrzeno  <br>4 – Příprava  <br>8 – schváleno  <br>16 provedení  <br>32 – obnovování  <br>64 – dokončeno |
-| --Task-ID-Filter | Předpona ID úlohy opravy, která se má shodovat |
+| --task-id-filter | Předpona ID úlohy opravy, která se má shodovat |
 
 ### <a name="global-arguments"></a>Globální argumenty
 

@@ -1,17 +1,17 @@
 ---
 title: Použití Virtual Machines pro datové vědy v Azure
-description: Připojte se k Azure Data Science Virtual Machine (DSVM), abyste rozšířili výpočetní výkon, který je k dispozici pro Azure Notebooks.
+description: Přečtěte si, jak se připojit k Azure Data Science Virtual Machine (DSVM), abyste rozšířili výpočetní výkon dostupný pro Azure Notebooks Preview.
 author: getroyer
 manager: andneil
 ms.author: getroyer
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 0559442cb3f6c3937e6930082940e9354c43bc30
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7a47be46818c633c016c791d0c52eb9393029973
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277407"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646990"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Použití Virtual Machines pro datové vědy v Azure
 
@@ -19,6 +19,8 @@ Ve výchozím nastavení jsou projekty spouštěny na **bezplatné výpočetní*
 
 > [!Note]
 > Azure Notebooks se podporuje jenom v DSVMs vytvořených pomocí Image Ubuntu pro Linux. Poznámkové bloky nejsou podporované v imagí Windows 2012, Windows 2016 nebo Linux CentOS.
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="create-a-dsvm-instance"></a>Vytvoření instance DSVM
 
@@ -56,7 +58,7 @@ Když je projekt spuštěn na virtuálním počítači, soubory jsou připojeny 
 
 Pokud DSVM sdílí více uživatelů, můžete se vyhnout blokování tím, že vytvoříte a použijete uživatele DSVM pro každého uživatele poznámkového bloku:
 
-1. Na webu [Azure Portal](https://portal.azure.com)přejděte do svého virtuálního počítače.
+1. Na [Azure Portal](https://portal.azure.com)přejděte na svůj virtuální počítač.
 1. V části **Podpora a řešení potíží** na levém okraji vyberte **resetovat heslo**.
 1. Zadejte nové uživatelské jméno a heslo a pak vyberte **aktualizovat**. (Stávající uživatelská jména nejsou ovlivněna.)
 1. Opakujte předchozí krok pro všechny další uživatele.

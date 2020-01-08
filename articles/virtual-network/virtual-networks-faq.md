@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 5fae340ae933b8165a2ea9bb9f6337189fd576d6
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ef7e29351717daf91981f844f1d911a404cf9402
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457035"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646876"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Virtual Networku (FAQ)
 
@@ -35,7 +35,7 @@ Použít virtuální sítě k:
 
 * Povolte hybridní cloudové scénáře. Virtuální sítě vám nabízí flexibilitu při podpoře řady hybridních cloudových scénářů. Cloudové aplikace můžete bezpečně propojit s jakýmkoli typem místního systému, jako jsou sálové počítače a systémy UNIX.
 
-### <a name="how-do-i-get-started"></a>Jak mám začít?
+### <a name="how-do-i-get-started"></a>Jak začít?
 Začněte tím, že přejdete do dokumentace ke službě [Virtual Network](https://docs.microsoft.com/azure/virtual-network/) . Tento obsah poskytuje informace o přehledu a nasazení všech funkcí virtuální sítě.
 
 ### <a name="can-i-use-vnets-without-cross-premises-connectivity"></a>Můžu používat virtuální sítě bez připojení mezi místními místy?
@@ -49,7 +49,7 @@ Ano. [Virtuální zařízení pro optimalizaci sítě WAN](https://azuremarketpl
 ### <a name="what-tools-do-i-use-to-create-a-vnet"></a>Jaké nástroje slouží k vytvoření virtuální sítě?
 Virtuální síť můžete vytvořit nebo nakonfigurovat pomocí následujících nástrojů:
 
-* portál Azure
+* Portál Azure
 * PowerShell
 * Azure CLI
 * Konfigurační soubor sítě (jenom netcfg – jenom pro klasický virtuální sítě). Informace najdete v článku [Konfigurace sítě VNet pomocí konfiguračního souboru sítě](virtual-networks-using-network-configuration-file.md) .
@@ -66,7 +66,7 @@ Libovolný rozsah IP adres definovaný v [dokumentu RFC 1918](https://tools.ietf
 Ano. Další informace o rozsahech veřejných IP adres najdete v tématu [vytvoření virtuální sítě](manage-virtual-network.md#create-a-virtual-network). Veřejné IP adresy nejsou přímo dostupné z Internetu.
 
 ### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-vnet"></a>Existuje omezení počtu podsítí ve virtuální síti?
-Ano. Podrobnosti najdete v tématu [omezení Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) . Adresní prostory podsítě nemůžou překrývat sebe.
+Ano. Podrobnosti najdete v tématu [omezení Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) . Adresní prostory podsítě nemůžou překrývat sebe.
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Existují nějaká omezení používání IP adres v těchto podsítích?
 Ano. Azure si v každé podsíti vyhrazuje 5 IP adres. Jedná se o x. x. x. 0-x. x. x. 3 a poslední adresu podsítě. x. x. x. 1-x. x. x. 3 je v každé podsíti pro služby Azure rezervované.   
@@ -100,7 +100,7 @@ Ne.
 Ano. Podsítě lze kdykoli přidat do virtuální sítě, pokud rozsah adres podsítě není součástí jiné podsítě a v rozsahu adres virtuální sítě je dostupné místo.
 
 ### <a name="can-i-modify-the-size-of-my-subnet-after-i-create-it"></a>Můžu po vytvoření této podsítě změnit její velikost?
-Ano. Pokud v něm nejsou nasazené žádné virtuální počítače nebo služby, můžete přidat, odebrat, rozbalit nebo zmenšit podsíť.
+Ano. Podsíť můžete přidat, odebrat, rozšířit nebo zmenšit, pokud v ní nejsou nasazené virtuální počítače ani služby.
 
 ### <a name="can-i-modify-subnets-after-i-created-them"></a>Můžu po vytvoření upravit podsítě?
 Ano. Můžete přidávat, odebírat a upravovat bloky CIDR používané virtuální sítí.
@@ -128,7 +128,7 @@ Na stránce [pro překlad IP adres pro virtuální počítače a instance rolí]
 Ano. IP adresy serveru DNS můžete zadat v nastavení virtuální sítě. Toto nastavení se použije jako výchozí server DNS pro všechny virtuální počítače ve virtuální síti.
 
 ### <a name="how-many-dns-servers-can-i-specify"></a>Kolik serverů DNS lze zadat?
-Odkazy na [omezení Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
+Odkazy na [omezení Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
 
 ### <a name="can-i-modify-my-dns-servers-after-i-have-created-the-network"></a>Můžu po vytvoření sítě změnit svoje servery DNS?
 Ano. V každém okamžiku můžete seznam serverů DNS pro virtuální síť kdykoli změnit. Pokud změníte seznam serverů DNS, musíte provést obnovení zapůjčení DHCP u všech ovlivněných virtuálních počítačů ve virtuální síti, aby se nové nastavení DNS projevilo. Pro virtuální počítače s operačním systémem Windows to můžete provést zadáním `ipconfig /renew` přímo na virtuálním počítači. Další typy operačních systémů najdete v dokumentaci k obnovení zapůjčení DHCP pro konkrétní typ operačního systému. 
@@ -167,7 +167,7 @@ To záleží na okolnostech. Pokud byl virtuální počítač nasazen prostředn
 Ano, ale nedoporučuje se, pokud je to nutné, například při přiřazování více IP adres k virtuálnímu počítači. Podrobnosti najdete v tématu [Přidání více IP adres k virtuálnímu počítači](virtual-network-multiple-ip-addresses-portal.md#os-config). Pokud se změní IP adresa přiřazená k síťové kartě Azure připojené k virtuálnímu počítači a IP adresa v operačním systému virtuálního počítače je odlišná, ztratíte připojení k virtuálnímu počítači.
 
 ### <a name="if-i-stop-a-cloud-service-deployment-slot-or-shutdown-a-vm-from-within-the-operating-system-what-happens-to-my-ip-addresses"></a>Když zastavím slot nasazení cloudové služby nebo vypnete virtuální počítač z operačního systému, co se stane s IP adresami?
-Žádným. IP adresy (veřejné virtuální IP adresy, veřejné a privátní) zůstanou přiřazené k slotu nasazení cloudové služby nebo k virtuálnímu počítači.
+Nic. IP adresy (veřejné virtuální IP adresy, veřejné a privátní) zůstanou přiřazené k slotu nasazení cloudové služby nebo k virtuálnímu počítači.
 
 ### <a name="can-i-move-vms-from-one-subnet-to-another-subnet-in-a-vnet-without-redeploying"></a>Můžu přesunout virtuální počítače z jedné podsítě do jiné podsítě ve virtuální síti bez nutnosti opětovného nasazení?
 Ano. Další informace najdete v tématu [Postup přesunutí instance virtuálního počítače nebo role do jiné podsítě](virtual-networks-move-vm-role-to-subnet.md) .
@@ -184,7 +184,7 @@ Ano. Všechny virtuální počítače a Cloud Services instance rolí nasazené 
 ## <a name="azure-services-that-connect-to-vnets"></a>Služby Azure, které se připojují k virtuální sítě
 
 ### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>Můžu použít Azure App Service Web Apps s virtuální sítí?
-Ano. Můžete nasadit Web Apps v rámci virtuální sítě pomocí pomocného mechanismu řízení (App Service Environment), připojit back-end vašich aplikací k virtuální sítě s integrací virtuální sítě a uzamknout příchozí provoz do vaší aplikace pomocí koncových bodů služby. Další informace najdete v následujících článcích:
+Ano. Můžete nasadit Web Apps v rámci virtuální sítě pomocí pomocného mechanismu řízení (App Service Environment), připojit back-end vašich aplikací k virtuální sítě s integrací virtuální sítě a uzamknout příchozí provoz do vaší aplikace pomocí koncových bodů služby. Další informace najdete v těchto článcích:
 
 * [Funkce App Service sítě](../app-service/networking-features.md)
 * [Vytváření Web Apps v App Service Environment](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -232,7 +232,7 @@ Ano. Další informace o používání:
 - PowerShell pro správu virtuální sítě nasazených prostřednictvím modelů nasazení [Správce prostředků](/powershell/module/az.network) a [Classic](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) .
 - Rozhraní příkazového řádku Azure (CLI) pro nasazení a správu virtuální sítě nasazených prostřednictvím modelů nasazení [Správce prostředků](/cli/azure/network/vnet) a [Classic](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) .  
 
-## <a name="vnet-peering"></a>Partnerské vztahy virtuálních sítí
+## <a name="vnet-peering"></a>VNet Peering
 
 ### <a name="what-is-vnet-peering"></a>Co je partnerský vztah VNet?
 Partnerský vztah virtuálních sítí (nebo partnerský vztah virtuálních sítí) umožňuje propojit virtuální sítě. Připojení peer-to-VNet mezi virtuálními sítěmi umožňuje směrovat provoz mezi nimi soukromě prostřednictvím adres IPv4. Virtuální počítače v partnerských virtuální sítě můžou vzájemně komunikovat, jako kdyby byly ve stejné síti. Tyto virtuální sítě mohou být ve stejné oblasti nebo v různých oblastech (označuje se také jako globální partnerské vztahy virtuálních sítí). Připojení partnerských vztahů virtuální sítě je také možné vytvořit v rámci předplatných Azure.
@@ -254,7 +254,7 @@ Následující prostředky můžou používat základní nástroje pro vyrovnáv
 - Logic Apps
 - HDInsight
 -   Azure Batch
-- App Service Environment
+- Prostředí App Service
 
 K těmto prostředkům se můžete připojit prostřednictvím ExpressRoute nebo VNet-to-VNet prostřednictvím bran virtuální sítě.
 
@@ -405,7 +405,7 @@ Celkový počet koncových bodů služby virtuální sítě ve virtuální síti
 |Azure Storage| 100|
 |Azure SQL| 128|
 |Azure SQL Data Warehouse|  128|
-|Trezor klíčů Azure|    127|
+|Azure KeyVault|    127|
 |Azure Cosmos DB|   64|
 |Azure Event Hubs|   128|
 |Azure Service Bus| 128|

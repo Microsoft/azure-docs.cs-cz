@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: d37333c0ca3f8acab7a35c23bbab67beef056b72
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9c776a32b4a35c72fc40a16afb87db9896a763cf
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664387"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611062"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Přizpůsobení zásad SQL Information Protection v Azure Security Center (Preview)
  
 Můžete definovat a přizpůsobit zásady služby SQL Information Protection pro celý tenant Azure v Azure Security Center.
 
-Ochrana informací je pokročilá funkce zabezpečení pro zjišťování, klasifikaci, označování a ochranu citlivých dat v datových prostředcích Azure. Vyhledávání a klasifikace vašich citlivých dat (podniková, finanční, zdravotní péče, osobní údaje atd.) mohou hrát pivotovou roli v stature organizace Information Protection. Může sloužit jako infrastruktura pro:
+Ochrana informací je pokročilá funkce zabezpečení pro zjišťování, klasifikaci, označování a vytváření sestav citlivých dat v datových prostředcích Azure. Vyhledávání a klasifikace vašich citlivých dat (podniková, finanční, zdravotní péče, osobní údaje atd.) mohou hrát pivotovou roli v stature organizace Information Protection. Může sloužit jako infrastruktura na:
 - Pomoc se splněním standardů ochrany osobních údajů a požadavků na dodržování legislativních předpisů
 - Scénáře zabezpečení, jako je monitorování (auditování) a upozorňování na neobvyklé přístup k citlivým datům
 - Řízení přístupu a posílení zabezpečení úložišť dat obsahujících vysoce citlivá data
@@ -50,7 +50,7 @@ Chcete-li upravit zásady ochrany informací pro vašeho tenanta Azure, musíte 
  
 1. Můžete upravit nebo odstranit existující popisek nebo přidat nový popisek. Pokud chcete upravit existující popisek, vyberte tento popisek a pak klikněte na **Konfigurovat**, a to buď v horní části, nebo v místní nabídce napravo. Chcete-li přidat nový popisek, klikněte na tlačítko **vytvořit popisek** v horním řádku nabídky nebo v dolní části tabulky popisků.
 2. Na obrazovce pro **označení citlivosti konfigurace** můžete vytvořit nebo změnit název popisku a jeho popis. Můžete také nastavit, zda je popisek aktivní nebo zakázaný přepnutím přepínače **Enabled** zapnuto nebo vypnuto. Nakonec můžete přidat nebo odebrat typy informací přidružené k popisku. Všechna zjištěná data, která odpovídají danému typu informací, budou automaticky zahrnovat popisek související citlivosti v doporučeních klasifikace.
-3. Klikněte na tlačítko **OK**.
+3. Klikněte na **OK**.
  
    ![Konfigurovat popisek citlivosti](./media/security-center-info-protection-policy/config-sensitivity-label.png)
  

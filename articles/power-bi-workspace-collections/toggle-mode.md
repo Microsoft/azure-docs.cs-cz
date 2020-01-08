@@ -1,6 +1,6 @@
 ---
-title: Přepínání mezi zobrazením a upravit režimu pro sestavy v kolekcích pracovních prostorů Power BI | Dokumentace Microsoftu
-description: Informace o přepínání mezi zobrazením a upravit režimu pro sestavy v rámci kolekce pracovních prostorů Power BI.
+title: Přepínání mezi zobrazením a režimem úprav pro sestavy
+description: Přečtěte si, jak přepínat mezi zobrazením a režimem úprav sestav v rámci Power BI kolekce pracovních prostorů.
 services: power-bi-workspace-collections
 ms.service: power-bi-embedded
 author: rkarlin
@@ -8,26 +8,26 @@ ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 327f2fdcd4d1bc9e71e3aabb3541c6fd30f02811
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: b2696560b5d5013fe337b51ec61cbfac9e512610
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672371"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357660"
 ---
-# <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>Přepínání mezi zobrazením a upravit režimu pro sestavy v kolekcích pracovních prostorů Power BI
+# <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>Přepínání mezi zobrazením a režimem úprav pro sestavy v Power BI kolekce pracovních prostorů
 
-Informace o přepínání mezi zobrazením a upravit režimu pro sestavy v rámci kolekce pracovních prostorů Power BI.
+Přečtěte si, jak přepínat mezi zobrazením a režimem úprav sestav v rámci Power BI kolekce pracovních prostorů.
 
 > [!IMPORTANT]
 > Kolekce Pracovních prostorů Power BI jsou zastaralé a dostupné do června 2018 nebo do data uvedeného ve vaší smlouvě. Doporučujeme naplánovat migraci do Power BI Embedded, předejdete tak výpadkům vaší aplikace. Informace o postupu migrace dat do Power BI Embedded najdete v tématu [Migrace obsahu kolekcí Pracovních prostorů Power BI do Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
 
 ## <a name="creating-an-access-token"></a>Vytvoření přístupového tokenu
 
-Je potřeba vytvořit přístupový token, který vám dává možnost, jak zobrazit a upravit sestavu. Pokud chcete upravit a uložit sestavu, musíte **Report.ReadWrite** token oprávnění. Další informace najdete v tématu [ověřování a autorizace v kolekcích pracovních prostorů Power BI](app-token-flow.md).
+Musíte vytvořit přístupový token, který vám umožní zobrazit a upravit sestavu. Chcete-li sestavu upravit a uložit, budete potřebovat oprávnění k tokenu **sestavy.** Další informace najdete v tématu [ověřování a autorizace v Power BIch kolekcích pracovních prostorů](app-token-flow.md).
 
 > [!NOTE]
-> Můžete upravit a uložit změny do stávající sestavy. Pokud chcete také funkci podporu **uložit jako**, budete muset zadat další oprávnění. Další informace najdete v tématu [obory](app-token-flow.md#scopes).
+> To umožňuje upravit a uložit změny existující sestavy. Pokud chcete také jako funkci podpory **Uložit jako**, je třeba dodat další oprávnění. Další informace najdete v tématu [obory](app-token-flow.md#scopes).
 
 ```csharp
 using Microsoft.PowerBI.Security;
@@ -39,9 +39,9 @@ PowerBIToken embedToken = PowerBIToken.CreateReportEmbedTokenForCreation(workspa
 var token = embedToken.Generate("{access key}");
 ```
 
-## <a name="embed-configuration"></a>Konfigurace pro vložení
+## <a name="embed-configuration"></a>Vložení konfigurace
 
-Je třeba zadat oprávnění a viewMode, chcete-li zobrazit uložení tlačítko v režimu úprav. Další informace najdete v tématu [podrobnosti o konfiguraci pro vložení](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).
+Aby se v režimu úprav zobrazilo tlačítko Uložit, je potřeba, abyste zadali oprávnění a vlastnost ViewMode. Další informace najdete v tématu [vložení podrobností o konfiguraci](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).
 
 Například v jazyce JavaScript:
 
@@ -77,11 +77,11 @@ Například v jazyce JavaScript:
     </script>
 ```
 
-Tím je oznámeno vložení sestavy do režimu zobrazení na základě **viewMode** nastavena na **modely. ViewMode.View**.
+To znamená, že se sestava vloží do režimu zobrazení na základě **vlastnost ViewMode** nastaveného na **modely. Vlastnost ViewMode. View**.
 
 ## <a name="view-mode"></a>Režim zobrazení
 
-Chcete-li přepnout do režimu zobrazení, pokud jste v režimu úprav můžete použít následující jazyka JavaScript.
+Můžete použít následující JavaScript pro přepnutí do režimu zobrazení, pokud jste v režimu úprav.
 
 ```javascript
 // Get a reference to the embedded report HTML element
@@ -97,7 +97,7 @@ report.switchMode("view");
 
 ## <a name="edit-mode"></a>Režim úprav
 
-Pokud jste v zobrazení režimu, můžete použít následující JavaScript přepnout do režimu úprav.
+Pokud jste v režimu zobrazení, můžete přepnout do režimu úprav pomocí následujícího JavaScriptu.
 
 ```javascript
 // Get a reference to the embedded report HTML element
@@ -111,14 +111,14 @@ report.switchMode("edit");
 
 ```
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 [Začínáme s ukázkou](get-started-sample.md)  
 [Vložení sestavy](embed-report.md)  
 [Ověřování a autorizace v kolekcích Pracovních prostorů Power BI](app-token-flow.md)  
 [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN)  
 [Vložená ukázka JavaScriptu](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
-[PowerBI-CSharp Git Repo](https://github.com/Microsoft/PowerBI-CSharp)  
-[Power BI uzlu úložiště Git](https://github.com/Microsoft/PowerBI-Node)  
+[PowerBI-CSharp úložiště Git](https://github.com/Microsoft/PowerBI-CSharp)  
+[Úložiště Git uzlu PowerBI](https://github.com/Microsoft/PowerBI-Node)  
 
-Chcete se ještě na něco zeptat? [Vyzkoušejte komunitu Power BI](https://community.powerbi.com/)
+Chcete se na něco zeptat? [Vyzkoušejte komunitu Power BI](https://community.powerbi.com/)

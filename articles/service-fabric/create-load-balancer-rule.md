@@ -1,24 +1,14 @@
 ---
 title: Vytvoření pravidla Azure Load Balancer pro cluster
 description: Nakonfigurujte Azure Load Balancer pro otevření portů pro cluster Azure Service Fabric.
-services: service-fabric
-documentationcenter: na
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: atsenthi
-ms.openlocfilehash: 2e730ae8ecf6f1fab12aff23cab0ac3aa246233a
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 5cc392a74b8cf5ef92be8b5783b5b70289e602af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173364"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351483"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Otevření portů pro cluster Service Fabric
 
@@ -103,7 +93,7 @@ $lb.LoadBalancingRules.Add($lbrule)
 $lb | Set-AzLoadBalancer
 ```
 
-V `New-AzLoadBalancerRuleConfig` `-BackendPort` souvislosti s příkazem představuje port, který nástroj pro vyrovnávání zatížení zveřejňuje pro externí připojení, a představuje port, na který aplikace Service Fabric naslouchá. `-FrontendPort`
+V souvislosti s příkazem `New-AzLoadBalancerRuleConfig` představuje `-FrontendPort` port, který nástroj pro vyrovnávání zatížení zveřejňuje pro externí připojení, a `-BackendPort` představuje port, na který aplikace Service Fabric naslouchá.
 
 >[!NOTE]
 >Další informace o tom, jak vytvořit nástroj pro vyrovnávání zatížení pomocí PowerShellu, najdete v tématu [Vytvoření nástroje pro vyrovnávání zatížení pomocí PowerShellu](../load-balancer/load-balancer-get-started-internet-arm-ps.md).

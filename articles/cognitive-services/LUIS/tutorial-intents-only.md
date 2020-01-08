@@ -9,41 +9,36 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 11/20/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 4d096ee829a425af3763c212daf5049acccf9f19
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 508fa192a014501bad6488e5be8278731230913b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325930"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381558"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Kurz: Vytvoření aplikace v LUIS pro určení záměrů uživatele
 
-V tomto kurzu vytvoříte vlastní aplikaci, která předpovídá záměr uživatele na základě utterance (text). 
+V tomto kurzu vytvoříte vlastní aplikaci, která předpovídá záměr uživatele na základě utterance (text).
 
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
-
-**Co se v tomto kurzu naučíte:**
+**V tomto kurzu se naučíte:**
 
 > [!div class="checklist"]
-> * Vytvoření nové aplikace 
+> * Vytvoření nové aplikace
 > * Vytvořit záměry
 > * Přidat ukázkové promluvy
 > * Trénovat aplikaci
 > * Publikování aplikace
 > * Získat předpověď záměru z koncového bodu
 
-
-[!INCLUDE [LUIS Free account](includes/quickstart-tutorial-use-free-starter-key.md)]
-
 ## <a name="user-intentions-as-intents"></a>Záměry uživatelů jako záměrů
 
-Účelem aplikace je určit záměr konverzací, text přirozeného jazyka: 
+Účelem aplikace je určit záměr konverzací, text přirozeného jazyka:
 
 `I'd like to order a veggie pizza with a salad on the side.`
 
-Tyto záměry jsou zařazené do kategorie **Intents** (Záměry). 
+Tyto záměry jsou zařazené do kategorie **Intents** (Záměry).
 
 |Záměr|Účel|
 |--|--|
@@ -56,11 +51,11 @@ Tyto záměry jsou zařazené do kategorie **Intents** (Záměry).
 
 [!INCLUDE [Follow these steps to create a new LUIS app](includes/create-pizza-app.md)]
 
-## <a name="create-a-new-intent"></a>Vytvoření nového záměru 
+## <a name="create-a-new-intent"></a>Vytvoření nového záměru
 
 1. Na portálu uvnitř oddílu **Build** aplikace vyberte **+ vytvořit**. Zadejte název nového záměru `OrderPizza`a potom vyberte **Hotovo**.
 
-    Předpokládá se `OrderPizza` záměr, když: uživatel chce objednat Pizza. 
+    Předpokládá se `OrderPizza` záměr, když: uživatel chce objednat Pizza.
 
 1. Do tohoto záměru přidejte několik příkladů projevy, u kterých očekáváte, že se uživatel zeptá:
 
@@ -74,9 +69,9 @@ Tyto záměry jsou zařazené do kategorie **Intents** (Záměry).
 
     ![Přidat ukázkové promluvy](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 
-    Poskytnutím _ukázkového projevyu_budete školením Luis o tom, jaké druhy projevyy by se měly pro tento záměr odhadnout. 
+    Poskytnutím _ukázkového projevyu_budete školením Luis o tom, jaké druhy projevyy by se měly pro tento záměr odhadnout.
 
-    [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]    
+    [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]
 
 ## <a name="create-remaining-intents"></a>Vytvořit zbývající záměry
 
@@ -90,7 +85,7 @@ Tyto záměry jsou zařazené do kategorie **Intents** (Záměry).
     |`Start`|
     |`Begin`|
 
-1. Vytvořte `Confirm` záměr a přidejte následující příklad projevy. Cílem je zjistit, jestli je uživatel hotový, a přijmout podrobnosti objednávky. 
+1. Vytvořte `Confirm` záměr a přidejte následující příklad projevy. Cílem je zjistit, jestli je uživatel hotový, a přijmout podrobnosti objednávky.
 
     |`Confirm` příklad projevy|
     |--|
@@ -104,13 +99,13 @@ Tyto záměry jsou zařazené do kategorie **Intents** (Záměry).
 
 [!INCLUDE [Follow these steps to add the None intent to the app](includes/add-example-utterances-none-intent.md)]
 
-## <a name="train-the-app"></a>Trénování aplikace 
+## <a name="train-the-app"></a>Trénování aplikace
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="publish-the-app"></a>Publikování aplikace 
+## <a name="publish-the-app"></a>Publikování aplikace
 
-[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)] 
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
 ## <a name="get-intent-prediction"></a>Získat předpověď záměru
 
@@ -118,11 +113,11 @@ Tyto záměry jsou zařazené do kategorie **Intents** (Záměry).
 
 1. V adresním řádku přejděte na konec adresy URL a zadejte:
 
-    `get a medium vegetarian pizza for delivery` 
+    `get a medium vegetarian pizza for delivery`
 
     To není naprosto stejné jako u příkladu utterance, takže je dobrým testem zjistit, jestli se LUIS může naučit, co by mělo být s tímto záměrem předpověď.
 
-    Poslední parametr řetězce dotazu je `query`, což je **dotaz** promluvy. Tato promluva není stejná jako některá z ukázkových promluv. Jde o vhodný test a jako záměr s nejvyšším skóre by se měl vrátit záměr `OrderPizza`. 
+    Poslední parametr řetězce dotazu je `query`, což je **dotaz** promluvy. Tato promluva není stejná jako některá z ukázkových promluv. Jde o vhodný test a jako záměr s nejvyšším skóre by se měl vrátit záměr `OrderPizza`.
 
     ```JSON
     {
@@ -148,15 +143,15 @@ Tyto záměry jsou zařazené do kategorie **Intents** (Záměry).
     }
     ```
 
-    Pole entit je prázdné, protože tato aplikace v současné době neobsahuje žádné entity (v rámci utterance k extrakci dat). 
+    Pole entit je prázdné, protože tato aplikace v současné době neobsahuje žádné entity (v rámci utterance k extrakci dat).
 
-    Výsledek JSON identifikuje záměr s nejvyšším skóre jako vlastnost **`prediction.topIntent`** . Všechna skóre jsou mezi 1 a 0 a lepším skóre je blíže 1. 
+    Výsledek JSON identifikuje záměr s nejvyšším skóre jako vlastnost **`prediction.topIntent`** . Všechna skóre jsou mezi 1 a 0 a lepším skóre je blíže 1.
 
 1. Změňte parametr **dotazu** adresy URL tak, aby byl cílen na záměr **pozdravu** :
 
     `Howdy`
 
-    To není naprosto stejné jako u příkladu utterance, takže je dobrým testem zjistit, jestli se LUIS může naučit, co by mělo být s tímto záměrem předpověď. 
+    To není naprosto stejné jako u příkladu utterance, takže je dobrým testem zjistit, jestli se LUIS může naučit, co by mělo být s tímto záměrem předpověď.
 
     ```json
     {
@@ -179,14 +174,14 @@ Tyto záměry jsou zařazené do kategorie **Intents** (Záměry).
             },
             "entities": {}
         }
-    }    
+    }
     ```
- 
-    Tato předpověď má 44% spolehlivost. Chcete-li zvýšit míru spolehlivosti, přidejte mezi 15 a 30 příkladem projevy.  
+
+    Tato předpověď má 44% spolehlivost. Chcete-li zvýšit míru spolehlivosti, přidejte mezi 15 a 30 příkladem projevy.
 
 ## <a name="client-application-next-steps"></a>Klient-aplikace – další kroky
 
-Poté, co LUIS vrátí odpověď JSON, služba LUIS s touto žádostí skončila. Služba LUIS neposkytuje odpovědi na promluvy uživatelů, pouze identifikuje, na jaký typ informací směřuje dotaz v přirozeném jazyce. Následná následné konverzace poskytuje klientská aplikace, jako je třeba robot Azure. 
+Poté, co LUIS vrátí odpověď JSON, služba LUIS s touto žádostí skončila. Služba LUIS neposkytuje odpovědi na promluvy uživatelů, pouze identifikuje, na jaký typ informací směřuje dotaz v přirozeném jazyce. Následná následné konverzace poskytuje klientská aplikace, jako je třeba robot Azure.
 
 
 [!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
@@ -202,7 +197,7 @@ Poté, co LUIS vrátí odpověď JSON, služba LUIS s touto žádostí skončila
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili aplikaci LUIS, vytvořené záměry, Přidali jste vzorový projevy ke každému záměru a Přidali jste příklad projevy k záměru None, trained, Published a test na koncovém bodu. Toto jsou základní kroky vytvoření modelu LUIS. 
+V tomto kurzu jste vytvořili aplikaci LUIS, vytvořené záměry, Přidali jste vzorový projevy ke každému záměru a Přidali jste příklad projevy k záměru None, trained, Published a test na koncovém bodu. Toto jsou základní kroky vytvoření modelu LUIS.
 
 > [!div class="nextstepaction"]
 > [Přidat do této aplikace entitu s možností destavitele](tutorial-machine-learned-entity.md)

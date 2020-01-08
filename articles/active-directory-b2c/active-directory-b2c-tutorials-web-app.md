@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b4305e9b3cfdb5e05ce76ee1811dc0d2dcc265b7
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 6fa0379f2f8194356ed122e86b5a225f72adfe7d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950191"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367599"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Kurz: povolení ověřování ve webové aplikaci pomocí Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Vytvořte toky uživatelů](tutorial-create-user-flows.md) a povolte ve své aplikaci uživatelské prostředí.
 * Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s úlohou **vývoje ASP.NET a webu** .
@@ -51,7 +51,7 @@ K aktualizaci aplikace můžete použít aktuální prostředí **aplikací** ne
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **aplikace**a pak vyberte aplikaci *WebApp1* .
 1. V části **Adresa URL odpovědi**přidejte `https://localhost:44316`.
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 1. Na stránce Vlastnosti Poznamenejte ID aplikace pro použití v pozdějším kroku při konfiguraci webové aplikace.
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
@@ -92,9 +92,9 @@ Aktualizujte nastavení v souboru Web. config tak, aby fungovala s vaším uživ
 
 1. Otevřete řešení **B2C-WebAPI-DotNet** v sadě Visual Studio.
 1. V projektu **TaskWebApp** otevřete soubor **Web. config** .
-    1. Aktualizujte hodnotu `ida:Tenant` a `ida:AadInstance` název vytvořeného tenanta Azure AD B2C. Název `fabrikamb2c` nahraďte třeba názvem `contoso`.
+    1. Aktualizujte hodnotu `ida:Tenant` a `ida:AadInstance` název vytvořeného tenanta Azure AD B2C. `fabrikamb2c` například nahraďte `contoso`.
     1. Nahraďte hodnotu `ida:ClientId` číslem ID aplikace, kterou jste si poznamenali.
-    1. Nahraďte hodnotu `ida:ClientSecret` klíčem, který jste si poznamenali. Před přidáním tajného klíče klienta do souboru Web. config je nutné kód XML zakódovat.
+    1. Nahraďte hodnotu `ida:ClientSecret` klíčem, který jste si poznamenali. Pokud tajný klíč klienta obsahuje nějaké předdefinované entity XML, například menší než (`<`), větší než (`>`), ampersand (`&`) nebo dvojité uvozovky (`"`), musíte tyto znaky před přidáním do souboru Web. config zakódovat pomocí kódu XML – tajný klíč klienta.
     1. Hodnotu `ida:SignUpSignInPolicyId` nahraďte `b2c_1_signupsignin1`.
     1. Hodnotu `ida:EditProfilePolicyId` nahraďte `b2c_1_profileediting1`.
     1. Hodnotu `ida:ResetPasswordPolicyId` nahraďte `b2c_1_passwordreset1`.

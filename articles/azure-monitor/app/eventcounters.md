@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 1719c917ee2a4c0a11e4a79953a8b67e946d5931
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5a47f5c2f9c9d4e22e8205853d85214997a2bea7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889120"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406937"
 ---
 # <a name="eventcounters-introduction"></a>Úvod do EventCounters
 
@@ -55,7 +55,7 @@ Pro aplikace běžící v .NET Core 3,0 se sada SDK automaticky shromáždí ná
 |`Microsoft.AspNetCore.Hosting` | `failed-requests` |
 
 > [!NOTE]
-> Čítače kategorie Microsoft. AspNetCore. Hosting se přidávají jenom v aplikacích Asp.Net Core.
+> Čítače kategorie Microsoft. AspNetCore. Hosting se přidávají jenom v aplikacích ASP.NET Core.
 
 ## <a name="customizing-counters-to-be-collected"></a>Přizpůsobení čítačů, které se mají shromažďovat
 
@@ -95,19 +95,19 @@ Následující příklad ukazuje, jak přidat nebo odebrat čítače. Toto přiz
 
 ## <a name="event-counters-in-metric-explorer"></a>Čítače událostí v Průzkumníkovi metrik
 
-Pokud chcete v [Průzkumníkovi metriky](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)zobrazit EventCounter metriky, vyberte Application Insights prostředek a zvolte metriky založené na protokolu jako obor názvů metriky. Pak se metriky EventCounter zobrazí v kategorii PerformanceCounter.
+Pokud chcete v [Průzkumníkovi metriky](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)zobrazit EventCounter metriky, vyberte Application Insights prostředek a zvolte metriky založené na protokolu jako obor názvů metriky. Pak se metriky EventCounter zobrazí v kategorii vlastní.
 
 > [!div class="mx-imgBorder"]
 > čítače událostí ![hlášené v Application Insights](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Čítače událostí v analýzách
 
-V tabulce **čítače výkonu** můžete také vyhledávat a zobrazovat sestavy čítače událostí v části [analýzy](../../azure-monitor/app/analytics.md).
+V tabulce **customMetrics** můžete také vyhledávat a zobrazovat sestavy čítače událostí v části [analýzy](../../azure-monitor/app/analytics.md).
 
 Například spuštěním následujícího dotazu zjistíte, jaké čítače jsou shromažďovány a k dispozici pro dotaz:
 
 ```Kusto
-performanceCounters | summarize avg(value) by name
+customMetrics | summarize avg(value) by name
 ```
 
 > [!div class="mx-imgBorder"]
@@ -116,7 +116,7 @@ performanceCounters | summarize avg(value) by name
 Pokud chcete získat graf určitého čítače (například: `ThreadPool Completed Work Item Count`) za poslední období, spusťte následující dotaz.
 
 ```Kusto
-performanceCounters 
+customMetrics 
 | where name contains "System.Runtime|ThreadPool Completed Work Item Count"
 | where timestamp >= ago(1h)
 | summarize  avg(value) by cloud_RoleInstance, bin(timestamp, 1m)
@@ -125,7 +125,7 @@ performanceCounters
 > [!div class="mx-imgBorder"]
 > ![chat jednoho počítadla v Application Insights](./media/event-counters/analytics-completeditems-counters.png)
 
-Podobně jako u jiné telemetrie **čítače výkonu** má také sloupec `cloud_RoleInstance`, který označuje identitu instance hostitelského serveru, na které je vaše aplikace spuštěná. Výše uvedený dotaz ukazuje hodnotu čítače na instanci a lze ji použít k porovnání výkonu různých instancí serveru.
+Podobně jako u jiné telemetrie **customMetrics** má také sloupec `cloud_RoleInstance`, který označuje identitu instance hostitelského serveru, na které je vaše aplikace spuštěná. Výše uvedený dotaz ukazuje hodnotu čítače na instanci a lze ji použít k porovnání výkonu různých instancí serveru.
 
 ## <a name="alerts"></a>Výstrahy
 Podobně jako u jiných metrik můžete [nastavit výstrahu](../../azure-monitor/app/alerts.md) , která vás upozorní, pokud počítadlo události překročí zadaný limit. Otevřete podokno výstrahy a klikněte na Přidat výstrahu.

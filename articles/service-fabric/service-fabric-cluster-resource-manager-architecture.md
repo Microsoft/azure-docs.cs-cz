@@ -1,72 +1,63 @@
 ---
-title: Architektura Resource Manageru | Dokumentace Microsoftu
-description: Přehled architektury nástroje Service Fabric Cluster Resource Manageru.
-services: service-fabric
-documentationcenter: .net
+title: Architektura Správce prostředků
+description: Přehled a architektonické informace o službě Správce prostředků clusteru Azure Service Fabric.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 6c4421f9-834b-450c-939f-1cb4ff456b9b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: bfbdb05e8d2764d2b878e22d236cae30519da176
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 94ed906533d108081d620e9b183ecfee249d85ca
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62113967"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551688"
 ---
-# <a name="cluster-resource-manager-architecture-overview"></a>Přehled architektura cluster resource Manageru
-Service Fabric Cluster Resource Manager je centrální služba, která se spustí v clusteru. Spravuje požadovaný stav služby v clusteru, zejména s ohledem na využití prostředků a všechny pravidla pro umístění. 
+# <a name="cluster-resource-manager-architecture-overview"></a>Přehled architektury cluster Resource Manageru
+Cluster Service Fabric Správce prostředků je centrální služba, která běží v clusteru. Spravuje požadovaný stav služeb v clusteru, zejména v souvislosti se spotřebou prostředků a všemi pravidly umístění. 
 
-Ke správě prostředků ve vašem clusteru Service Fabric Cluster Resource Manager musí mít různé druhy informací:
+Pro správu prostředků v clusteru musí mít Service Fabric Správce prostředků clusteru několik informací:
 
-- Služby, které momentálně existují.
-- Každá služba je aktuální (nebo výchozí) Spotřeba prostředků 
+- Které služby aktuálně existují
+- Aktuální spotřeba prostředků služby (nebo výchozí). 
 - Zbývající kapacita clusteru 
-- Kapacita uzly v clusteru 
-- Množství prostředky spotřebované na každém uzlu
+- Kapacita uzlů v clusteru 
+- Množství prostředků spotřebovaných v jednotlivých uzlech
 
-Spotřeba prostředků dané služby můžou časem změnit a služby obvykle záleží více než jeden typ prostředku. Napříč různými službami může být skutečné fyzické i fyzické prostředky, které měří. Služby mohou sledovat fyzické metriky, jako je využití paměti a disku. Služby mohou častěji, záleží logické metriky – věci, jako je "WorkQueueDepth" nebo "TotalRequests". Logické a fyzické metriky je možné ve stejném clusteru. Metriky je možné sdílet napříč řadou služeb nebo být specifické pro konkrétní službu.
+Spotřeba prostředků dané služby se může v průběhu času měnit a služby obvykle zajímají více než jeden typ prostředku. U různých služeb se můžou měřit reálné fyzické i fyzické prostředky. Služby mohou sledovat fyzické metriky, jako je paměť a využití disku. Častěji se služby můžou zajímat o logické metriky – například "WorkQueueDepth" nebo "TotalRequests". Ve stejném clusteru se dají použít logické i fyzické metriky. Metriky se dají sdílet napříč celou řadou služeb nebo být specifické pro konkrétní službu.
 
-## <a name="other-considerations"></a>Další důležité informace
-Vlastníci a provozovatelé clusteru může lišit od autorů služby a aplikace, nebo minimálně jsou stejné vrstvy různých hats lidí. Při vývoji aplikace vědět pár věcí o ji vyžaduje. Máte odhad prostředky budou spotřebovávat a toho, jak nasadit různé služby. Například webová vrstva potřebuje ke spuštění na uzlech přístupný z Internetu, zatímco databáze služby by neměla. Další příklad – webové služby jsou pravděpodobně omezeny procesoru a sítě při úroveň dat služby péče o další informace o využití paměti a disku. Však uživatel řešení incidentů živého webu za danou službu v produkčním prostředí nebo kdo spravuje upgrade na službu má různé úlohy provedete a vyžaduje různých nástrojů. 
+## <a name="other-considerations"></a>Další aspekty
+Vlastníci a operátoři clusteru se mohou lišit od autorů služeb a aplikací, nebo na minimum jsou stejnými lidmi, kteří využívají různé Hats. Když vyvíjíte aplikaci, znáte pár věcí, o čem to vyžaduje. Máte odhad prostředků, které bude využívat a jakým způsobem by měly být nasazeny různé služby. Například webová vrstva musí být spuštěna na uzlech, které jsou zpřístupněny pro Internet, zatímco databázové služby by neměly. Dalším příkladem je, že webové služby jsou pravděpodobně omezené pomocí procesoru a sítě, zatímco služby datové vrstvy se podrobněji týkají spotřeby paměti a disku. Osoba, která zpracovává živý incident pro tuto službu v produkčním prostředí, nebo která spravuje upgrade na službu, má ale jinou úlohu a vyžaduje jiné nástroje. 
 
-Clusteru a služeb jsou dynamické vzorce:
+Cluster i služby jsou dynamické:
 
-- Počet uzlů v clusteru můžete zvětšení a zmenšení
-- Uzly z různých velikostech a typech můžete přijít a přejít rovnou
-- Služby je možné vytvořit, odebrat a změnit jejich přidělením požadovaných prostředků a pravidla pro umístění
-- Upgrady nebo jiné operace správy můžete vrátit do clusteru na úrovni aplikace, na úrovni infrastruktury
-- Kdykoli můžete dochází k chybám.
+- Počet uzlů v clusteru se může zvětšovat a zmenšovat.
+- Může jít o uzly různých velikostí a typů.
+- Služby je možné vytvářet, odebírat a měnit jejich požadovaná přidělení prostředků a pravidla pro umístění.
+- Upgrady nebo jiné operace správy mohou clusterovat v aplikaci na úrovních infrastruktury
+- K selhání může dojít kdykoli.
 
-## <a name="cluster-resource-manager-components-and-data-flow"></a>Součásti clusteru resource Manageru a toku dat
-Cluster Resource Manager má ke sledování požadavků jednotlivých služeb a spotřebu prostředků každým objektem služby v rámci těchto služeb. Cluster Resource Manager má dvě části koncepční: agenty, které běží na každém uzlu a odolné proti chybám služby. Agenty na každý uzel sledování zatížení sestavy ze služby agregace je a pravidelně dejte nám o nich. Služba Cluster Resource Manageru agreguje všechny Tyhle informace z místní agenti a reaguje na základě své aktuální konfigurace.
+## <a name="cluster-resource-manager-components-and-data-flow"></a>Součásti a tok dat cluster Resource Manageru
+Cluster Správce prostředků musí sledovat požadavky každé služby a spotřebou prostředků každým objektem služby v těchto službách. Správce prostředků clusteru má dvě koncepční součásti: agenti, kteří se spouštějí na jednotlivých uzlech a službu odolnou proti chybám. Agenti v jednotlivých uzlech sledují sestavy načítání ze služeb, agreguje je a pravidelně hlásí. Služba Správce prostředků clusteru agreguje všechny informace od místních agentů a reaguje na základě její aktuální konfigurace.
 
-Podívejme se na následující diagram:
-
-<center>
-
-![Architektura Resource Balancer][Image1]
-</center>
-
-Za běhu existuje mnoho změn, které se může stát. Například můžeme Dejme tomu, že objem prostředků, které využívají některé služby se změní, selhání některých služeb a některé uzly spojení a nechte clusteru. Všechny změny v uzlu se agregují a pravidelně odesílají službě Cluster Resource Manageru (1,2) kde jsou znovu agregují, analyzují a uložené. Každých několik sekund, které služba zjistí změny a určuje, zda všechny akce nezbytné (3). Například může Všimněte si, že byly přidány některé prázdné uzly do clusteru. V důsledku toho se rozhodne přesunout některé služby do těchto uzlů. Cluster Resource Manager může také Všimněte si, že je přetížena konkrétní uzel nebo, aby měli určité služby se nezdařila nebo byla odstraněna, uvolněte prostředky jinde.
-
-Pojďme podívat se na následující diagram a zobrazit, co bude dál. Řekněme, že Cluster Resource Manager určuje, že je nutné provést změny. To koordinuje s dalšími službami systému (zejména Správce převzetí služeb při selhání) provést nezbytné změny. Pak potřebné příkazy jsou odesílány na odpovídající uzly (4). Řekněme například, že správce prostředků si všimli, že Uzel5 přetížená. a proto se rozhodli přesunout služba B v počítači Uzel5 do Uzel4. Na konci (5) konfigurace clusteru vypadá například takto:
+Pojďme se podívat na následující diagram:
 
 <center>
 
-![Architektura Resource Balancer][Image2]
-</center>
+][Image1]
+</center> ![architektury prostředků služby Vyrovnávání zatížení
 
-## <a name="next-steps"></a>Další postup
-- Cluster Resource Manager má mnoho možností pro popis clusteru. Další informace o nich najdete v tomto článku na [popisující cluster Service Fabric](./service-fabric-cluster-resource-manager-cluster-description.md)
-- Primární povinnosti Cluster Resource Manageru jsou nové vyvážení clusteru a vynucovat pravidla pro umístění. Další informace o konfiguraci těchto projevů najdete v tématu [vyrovnávání vašeho clusteru Service Fabric](./service-fabric-cluster-resource-manager-balancing.md)
+Během běhu je k dispozici mnoho změn, ke kterým může dojít. Řekněme například, že množství prostředků některé služby vybírají změny, některé služby selžou a některé uzly se připojí a opustí cluster. Všechny změny v uzlu jsou agregované a pravidelně se odesílají do clusteru Správce prostředků služby (1, 2), kde se znovu agregují, analyzují a ukládají. Každých pár sekund služba prohlíží změny a určí, jestli jsou potřebné nějaké akce (3). Může se třeba stát, že do clusteru se přidaly nějaké prázdné uzly. V důsledku toho se rozhodne přesunout některé služby do těchto uzlů. Cluster Správce prostředků může také všimnout, že určitý uzel je přetížený nebo že některé služby se nezdařily nebo byly odstraněny, a uvolňuje prostředky jinde.
+
+Pojďme se podívat na následující diagram a podívat se, co se stane dál. Řekněme, že cluster Správce prostředků zjistí, že jsou potřebné změny. Oddělení IT koordinuje jiné systémové služby (zejména Správce převzetí služeb při selhání), aby provedl nezbytné změny. Pak jsou potřebné příkazy odeslány na příslušné uzly (4). Řekněme například, že Správce prostředků všimla, že počítač Uzel5 byl přetížen, a proto se rozhodla přesunout službu B z počítač Uzel5 do Uzel4. Na konci rekonfigurace (5) bude cluster vypadat takto:
+
+<center>
+
+][Image2]
+</center> ![architektury prostředků služby Vyrovnávání zatížení
+
+## <a name="next-steps"></a>Další kroky
+- Správce prostředků clusteru má mnoho možností pro popis clusteru. Pokud se o nich chcete dozvědět víc, přečtěte si článek [popisující Service Fabric cluster](./service-fabric-cluster-resource-manager-cluster-description.md) .
+- Primárními cly Správce prostředků clusteru je vyrovnávání zatížení clusteru a vynucování pravidel umístění. Další informace o konfiguraci tohoto chování najdete v tématu [Balancing a cluster Service Fabric](./service-fabric-cluster-resource-manager-balancing.md) .
 
 [Image1]:./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-1.png
 [Image2]:./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-2.png

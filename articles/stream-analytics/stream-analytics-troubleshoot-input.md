@@ -1,7 +1,6 @@
 ---
 title: Řešení potíží s vstupů pro službu Azure Stream Analytics
 description: Tento článek popisuje postupy řešení potíží s vstupní připojení v úlohách Azure Stream Analytics.
-services: stream-analytics
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -9,14 +8,14 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8357a53ee065812922b5df53fbdef7c14e5f0ff7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 20a161ffc82cb8f74cfcac838856434f83c4e258
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621028"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354283"
 ---
-# <a name="troubleshoot-input-connections"></a>Řešení potíží s připojeními vstupu
+# <a name="troubleshoot-input-connections"></a>Řešení potíží se vstupními připojeními
 
 Tato stránka popisuje běžné problémy s vstupní připojení a postupy jejich řešení.
 
@@ -31,7 +30,7 @@ Tato stránka popisuje běžné problémy s vstupní připojení a postupy jejic
         
     Zkontrolujte ukázková data a porozumět struktuře dat: schéma a [datové typy](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
 
-## <a name="malformed-input-events-causes-deserialization-errors"></a>Chyby deserializace způsobí, že vstupní události nemají správný formát 
+## <a name="malformed-input-events-causes-deserialization-errors"></a>Poškozená vstupní událost způsobuje chyby deserializace 
 Deserializace potíže jsou způsobeny, když vstupní datový proud vaší úlohy Stream Analytics obsahuje špatně vytvořené zprávy. Například může být způsobeno poškozená zpráva. chybí pravá závorka. nebo závorka v objektu JSON nebo nesprávný časové razítko formátu v poli Doba. 
  
 Když úloha Stream Analytics přijímá chybnou zprávu z vstup, zahodí a upozorní uživatele s upozorněním. Symbol upozornění se zobrazí na **vstupy** dlaždici vaší úlohy Stream Analytics. Tento znak upozornění existuje za předpokladu, že je úloha ve spuštěném stavu:
@@ -50,7 +49,7 @@ Můžete využít následující kroky a analyzovat události vstupu podrobně l
 
 2. Podrobnosti vstupu dlaždici se zobrazuje seznam upozornění s podrobnostmi o jednotlivých problémů. Upozornění následující příklad obsahuje oddíl, posun a pořadová čísla níž se nachází poškozená data JSON. 
 
-   ![Stream Analytics upozornění s posunem](media/stream-analytics-malformed-events/warning-message-with-offset.png)
+   ![Stream Analytics varovné zprávy s posunem](media/stream-analytics-malformed-events/warning-message-with-offset.png)
    
 3. Vyhledat potřebná data JSON s nesprávný formát, spusťte CheckMalformedEvents.cs kód, který je k dispozici v [úložiště ukázek Githubu](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Tento kód čte ID oddílu, posun a vytiskne data, která se nachází v tento posun. 
 
@@ -61,7 +60,7 @@ Můžete využít následující kroky a analyzovat události vstupu podrobně l
 ## <a name="job-exceeds-maximum-event-hub-receivers"></a>Úloha překračuje maximální přijímače centra událostí
 Doporučený postup pro použití služby Event Hubs je použít víc skupin konzumentů zajistit škálovatelnost úloh. Počet čtenářů v rámci úlohy Stream Analytics pro určitý vstup ovlivňuje počet čtenářů v skupinu jednoho příjemce. Přesný počet přijímačů je založen na podrobnosti interní implementace pro horizontální navýšení kapacity topologie logiku a není dostupná externě. Při spuštění úlohy nebo během upgradu projektu můžete změnit počet čtenářů.
 
-Pokud překročí maximální počet přijímačů zobrazit tato chyba je: `The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.`
+Při překročení maximálního počtu přijímačů se zobrazí tato chyba: `The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.`
 
 > [!NOTE]
 > Když se počet čtenářů změní během úlohy upgradu, přechodných upozornění se zapisují do protokolů auditu. Úlohy Stream Analytics automaticky zotavit tyto přechodné problémy.
@@ -93,8 +92,8 @@ Pokud streamování syntaxi dotazu odkazuje na stejný vstupní prostředek cent
 Scénáře, ve kterých počet čtenářů na oddíl překračuje limit služby Event Hubs pěti patří:
 
 * Více příkazů SELECT: Pokud používáte více příkazů SELECT, které odkazují na **stejné** vstup Centrum událostí, každý příkaz SELECT způsobí, že nového příjemce, který se má vytvořit.
-* SJEDNOCENÍ: Při použití SJEDNOCENÍ je možné mít více vstupů, které odkazují **stejné** skupiny centra a příjemce událostí.
-* SPOJENÍ SAMA NA SEBE: Když použijete operaci JOIN SAMOOBSLUŽNÉHO, je možné odkazovat **stejné** centra událostí více než jednou.
+* SJEDNOCENÍ: Při použití SJEDNOCENÍ je možné mít více vstupů, které odkazují na **stejné** skupiny centra a příjemce událostí.
+* SPOJENÍ sama: Když použijete operaci JOIN SAMOOBSLUŽNÉHO, je možné odkazovat **stejné** centra událostí více než jednou.
 
 Následující osvědčené postupy může pomoci zmírnit scénáře, ve kterých počet čtenářů na oddíl překračuje limit služby Event Hubs pět.
 
@@ -136,11 +135,11 @@ FROM data
 
 Pro dotazy, které jsou připojené tři nebo více vstupů do stejné skupiny příjemců centra událostí vytvořte samostatné příjemce skupiny. To vyžaduje vytvoření další vstupy Stream Analytics.
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání nápovědy
 
 Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)

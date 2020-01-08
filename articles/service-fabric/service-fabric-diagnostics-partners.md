@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric monitorování partnerů | Microsoft Docs
-description: Naučte se monitorovat Service Fabric Azure pomocí řešení pro monitorování partnerů.
-services: service-fabric
-documentationcenter: .net
+title: Partneři monitorování Azure Service Fabric
+description: Naučte se monitorovat aplikace, clustery a infrastrukturu Azure Service Fabric pomocí řešení monitorování partnerů.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 8353c8846820aa996214e6b119a2f9027b8b6fe6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fd24d65ebdf4e458870819286024d1ea2e13d83e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232449"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645714"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Partneři monitorování Azure Service Fabric
 
@@ -43,11 +34,11 @@ New Relic je další nástroj pro správu výkonu aplikací, který se dobře in
 
 ## <a name="elk"></a>ELK 
 
-ELK Stack je kolekcí Open Source technologií: Elasticsearch, Logstash a Kibana. Pomocí těchto kombinací můžete shromažďovat, ukládat a analyzovat Service Fabric monitorování a diagnostická data. V tomto kurzu se naučíme, jak to udělat s Service Fabric nativními [aplikacemi Java](service-fabric-tutorial-java-elk.md). 
+ELK Stack je kolekcí Open Source technologií: Elasticsearch, Logstash a Kibana. Pomocí těchto technologií v kombinaci můžete shromažďovat, ukládat a analyzovat Service Fabric monitorování a diagnostická data. V tomto kurzu se naučíme, jak to udělat s Service Fabric nativními [aplikacemi Java](service-fabric-tutorial-java-elk.md). 
 
 ## <a name="humio"></a>Humio
 
-Humio je služba Shromažďování protokolů, která dokáže shromažďovat protokoly z vašich aplikací a událostí z Service Fabric v cloudu nebo místně v reálném čase. Kromě živého pozorovatele nabízí Humio také stav možností analýzy a vizualizace na obrázku pro zobrazení a shromažďování přehledů z diagnostiky. Humio má nákladově efektivní cenové plány a je sestavená tak, aby bylo možné škálovat a současně udržet rychlou rychlost. Přímo se integruje s Service Fabricmi událostmi platforem a Telemetrie aplikací. [Tady](https://github.com/humio/service-fabric-humio)si můžete přečíst další informace o integraci Humio a Service Fabric.
+Humio je služba Shromažďování protokolů, která dokáže shromažďovat protokoly z vašich aplikací a událostí z Service Fabric v cloudu nebo místně v reálném čase. Kromě živého pozorování Humio nabízí špičkové možnosti analýzy a vizualizace pro zobrazení a shromažďování informací z diagnostiky. Humio má nákladově efektivní cenové plány a je sestavená tak, aby bylo možné škálovat a současně udržet rychlou rychlost. Přímo se integruje s Service Fabricmi událostmi platforem a Telemetrie aplikací. [Tady](https://github.com/humio/service-fabric-humio)si můžete přečíst další informace o integraci Humio a Service Fabric.
 
 ## <a name="next-steps"></a>Další kroky
 

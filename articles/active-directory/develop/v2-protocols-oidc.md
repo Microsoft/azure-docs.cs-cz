@@ -1,5 +1,5 @@
 ---
-title: Microsoft Identity Platform & OpenID Connect Protocol | Azure
+title: Protokol OpenID Connect – Microsoft Identity Platform | Azure
 description: Sestavujte webové aplikace pomocí implementace ověřovacího protokolu OpenID Connect v platformě Microsoft Identity Platform.
 services: active-directory
 documentationcenter: ''
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc3778f31cb5dd68d3f3f49ed3cddf574b1cc3bd
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 270fda72378b61e6011d5bbf4ce43496df045c25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966737"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423222"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity Platform a OpenID Connect Protocol
 
@@ -91,7 +91,7 @@ Pokud vaše webová aplikace potřebuje ověřit uživatele, může uživatele n
 > [!IMPORTANT]
 > Aby bylo možné úspěšně požádat o token ID z koncového bodu/Authorization, musí registrace aplikace na [portálu pro registraci](https://portal.azure.com) mít povolený implicitní udělení id_tokens na kartě ověřování (což nastaví příznak `oauth2AllowIdTokenImplicitFlow` v [manifestu aplikace](reference-app-manifest.md) na `true`). Pokud není povoleno, bude vrácena `unsupported_response`á Chyba: "Zadaná hodnota pro vstupní parametr" response_type "není pro tohoto klienta povolena. Očekávaná hodnota je Code (kód).
 
-Například:
+Příklad:
 
 ```
 // Line breaks are for legibility only.

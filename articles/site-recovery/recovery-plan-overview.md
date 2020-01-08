@@ -1,41 +1,39 @@
 ---
 title: O plánech obnovení v Azure Site Recovery
-description: Přečtěte si o použití plánů obnovení pro zotavení po havárii pomocí služby Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
+description: Přečtěte si o plánech obnovení v Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.author: raynew
-ms.openlocfilehash: 640f7258821718c5d406dd581d1f9c503e0d41c2
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 1dd83be03c5b412708e89058ce7667a2ddfef530
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953878"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497890"
 ---
 # <a name="about-recovery-plans"></a>Plány obnovení
 
-Tento článek popisuje plány obnovení v [Azure Site Recovery](site-recovery-overview.md).
+Tento článek poskytuje přehled plánů obnovení v [Azure Site Recovery](site-recovery-overview.md).
 
-Plán obnovení shromažďuje počítače do skupin pro obnovení. Plán můžete přizpůsobit tak, že do něj přidáte pořadí, pokyny a úkoly. Po definování plánu můžete na něm spustit převzetí služeb při selhání.  Na počítače se dá odkazovat v několika plánech obnovení, kdy další plány přeskočí nasazení nebo spuštění počítače, pokud byl dřív nasazený pomocí jiného plánu obnovení.
+Plán obnovení shromažďuje počítače do skupin pro obnovení. Plán obnovení vám pomůže definovat proces systematického obnovení tím, že vytvoří malé nezávislé jednotky, u kterých můžete převzít služby při selhání. Jednotka obvykle představuje aplikaci ve vašem prostředí.
+
+- Plán obnovení definuje, jak počítače převezmou služby při selhání, a pořadí, ve kterém se spouštějí po převzetí služeb při selhání.
+- Do jednoho plánu obnovení lze přidat až 100 chráněných instancí.
+- Plán můžete přizpůsobit tak, že do něj přidáte pořadí, pokyny a úkoly.
+- Po definování plánu můžete na něm spustit převzetí služeb při selhání.
+- Na počítače se dá odkazovat v několika plánech obnovení, ve kterých následné plány přeskočí nasazení nebo spuštění počítače, pokud se dřív nasadil pomocí jiného plánu obnovení.
 
 
-## <a name="why-use-a-recovery-plan"></a>Proč použít plán obnovení?
+### <a name="why-use-a-recovery-plan"></a>Proč použít plán obnovení?
 
-Plán obnovení vám pomůže definovat proces systematického obnovení tím, že vytvoří malé nezávislé jednotky, u kterých můžete převzít služby při selhání. Jednotka obvykle představuje aplikaci ve vašem prostředí. Plán obnovení definuje, jak počítače převezmou služby při selhání, a pořadí, ve kterém se spouštějí po převzetí služeb při selhání. Plány obnovení použijte k těmto akcím:
+Plány obnovení použijte k těmto akcím:
 
 * Namodelujte aplikaci kolem jejích závislostí.
-* Automatizujte úlohy obnovení, abyste snížili RTO.
+* Automatizujte úlohy obnovení, aby se snížila plánovaná doba obnovení (RTO).
 * Ověřte, že jste připraveni na migraci nebo zotavení po havárii tím, že zajistíte, aby vaše aplikace byly součástí plánu obnovení.
-* Spusťte testovací převzetí služeb při selhání v plánech obnovení, abyste měli jistotu, že zotavení po havárii nebo migrace funguje podle očekávání.
+* Spusťte testovací převzetí služeb při selhání v plánech obnovení, aby se zajistilo, že zotavení po havárii nebo migrace bude fungovat podle očekávání.
 
 
-## <a name="model-apps"></a>Modelování aplikací
-
-> [!NOTE]
-> Do jednoho plánu obnovení lze přidat až 100 chráněných instancí.
-
+## <a name="model-apps"></a>Modelování aplikací 
 Můžete naplánovat a vytvořit skupinu obnovení pro zachycení vlastností specifických pro aplikaci. Řekněme například, že posuzujeme typickou trojrozměrnou aplikaci s back-endu SQL serveru, middlewarem a webovým front-endu. Obvykle můžete upravit plán obnovení tak, aby se počítače v každé úrovni po převzetí služeb při selhání spouštěly ve správném pořadí.
 
 - Back-end SQL by se měl spustit jako první, middleware Next a nakonec webový front-end.
@@ -44,7 +42,7 @@ Můžete naplánovat a vytvořit skupinu obnovení pro zachycení vlastností sp
 - Tato objednávka také pomáhá zajistit, že se server front-end začne používat jako poslední, aby se koncoví uživatelé nepřipojovali k adrese URL aplikace předtím, než budou všechny komponenty v provozu a aplikace je připravená přijímat žádosti.
 
 Chcete-li vytvořit toto pořadí, přidejte skupiny do skupiny obnovení a přidejte počítače do skupin.
-- Je-li zadáno pořadí, je použito sekvencování. Akce se spouští paralelně, pokud je to vhodné, pro zlepšení RTO obnovení aplikací.
+- Je-li zadáno pořadí, je použito sekvencování. Akce běží paralelně, aby se vylepšilo RTO obnovení aplikací.
 - U počítačů v jedné skupině dojde k převzetí služeb při selhání paralelně.
 - Počítače v různých skupinách převezmou služby při selhání v pořadí skupiny, aby počítače skupiny 2 spouštěly převzetí služeb při selhání až po převzetí služeb při selhání a spuštění všech počítačů ve skupině 1.
 
@@ -58,7 +56,7 @@ V takovém případě se toto přizpůsobení stane při spuštění převzetí 
 4. Spouštěcí skupiny běží v uvedeném pořadí a zahájí počítače v každé skupině. Nejdřív se spustí skupina 1, potom skupina 2 a nakonec skupina 3. Pokud je v libovolné skupině více než jeden počítač, všechny počítače se spustí paralelně.
 
 
-## <a name="automate-tasks"></a>Automatizace úloh
+## <a name="automate-tasks-in-recovery-plans"></a>Automatizace úloh v plánech obnovení
 
 Obnovování rozsáhlých aplikací může být složitý úkol. Ruční kroky činí proces náchylný k chybě a osoba, která přebírá převzetí služeb při selhání, nemusí vědět o všech složitými rozhraními App. Plán obnovení můžete použít k vytvoření objednávky a automatizaci akcí potřebných v každém kroku, a to pomocí Azure Automation Runbooky pro převzetí služeb při selhání do Azure nebo skriptů. Pro úlohy, které nemůžou být automatizované, můžete do plánů obnovení vložit pauzy pro ruční akce. Existuje několik typů úloh, které můžete nakonfigurovat:
 
@@ -71,7 +69,7 @@ Obnovování rozsáhlých aplikací může být složitý úkol. Ruční kroky �
     * Změňte konfiguraci nebo pravidla webového serveru.
 
 
-## <a name="test-failover"></a>Testovací převzetí služeb při selhání
+### <a name="run-a-test-failover-on-recovery-plans"></a>Spuštění testovacího převzetí služeb při selhání v plánech obnovení
 
 K aktivaci testovacího převzetí služeb při selhání můžete použít plán obnovení. Použijte následující osvědčené postupy:
 
@@ -79,13 +77,13 @@ K aktivaci testovacího převzetí služeb při selhání můžete použít plá
 - Pokud zjistíte, že jste něco nenechali, aktivujte vyčištění a pak znovu spusťte testovací převzetí služeb při selhání. 
 - Spusťte testovací převzetí služeb při selhání několikrát, dokud nebudete mít jistotu, že se aplikace bude obnovovat hladce.
 - Vzhledem k tomu, že každá aplikace je jedinečná, je třeba vytvořit plány obnovení, které jsou přizpůsobené pro jednotlivé aplikace, a spustit testovací převzetí služeb při selhání na každém z nich.
-- Aplikace a jejich závislosti se často mění. Chcete-li zajistit aktuálnost plánů obnovení, spusťte testovací převzetí služeb při selhání každé čtvrtletí každý den.
+- Aplikace a jejich závislosti se často mění. Chcete-li zajistit aktuálnost plánů obnovení, spusťte testovací převzetí služeb při selhání každé čtvrtletí každou aplikaci.
 
     ![Snímek obrazovky s příkladem plánu testovacího obnovení v Site Recovery](./media/recovery-plan-overview/rptest.png)
 
-## <a name="watch-the-video"></a>Přehrát video
+## <a name="watch-a-recovery-plan-video"></a>Podívejte se na video s plánem obnovení.
 
-Podívejte se na video s rychlým příkladem, ve kterém se při převzetí služeb při selhání podíváte na oboustrannou aplikaci WordPress.
+Podívejte se na video s rychlým příkladem znázorňujícího převzetí služeb při selhání pro plán obnovení pro aplikaci WordPress se dvěma vrstvami.
     
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 
@@ -94,4 +92,4 @@ Podívejte se na video s rychlým příkladem, ve kterém se při převzetí slu
 ## <a name="next-steps"></a>Další kroky
 
 - [Vytvořte](site-recovery-create-recovery-plans.md) plán obnovení.
-- Přečtěte si o [spuštění převzetí služeb při selhání](site-recovery-failover.md).  
+- [Spusťte](site-recovery-failover.md) převzetí služeb při selhání. 

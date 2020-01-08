@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/20/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5b4627080879c9e7d2635b950bb7f31b7d23581
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: c40993df8033b9dbc49c81e8db2f9f01c6de37d9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803627"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424919"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Podmíněný přístup: blokovat starší verze ověřování
 
@@ -34,9 +34,11 @@ Následující kroky vám pomůžou vytvořit zásady podmíněného přístupu,
    1. V části **Zahrnout**vyberte **Všichni uživatelé**.
    1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte všechny účty, které musí udržovat možnost používat starší verze ověřování. 
    1. Vyberte **Done** (Hotovo).
+1. V části **cloudové aplikace nebo akce** vyberte **všechny cloudové aplikace**.
+   1. Vyberte **Done** (Hotovo).
 1. V části **podmínky** > **klientské aplikace (Preview)** nastavte **Konfigurovat** na **Ano**.
    1. Zaškrtněte políčka **mobilní aplikace a desktopové klienty** > **jiných klientech**.
-   2. Vyberte **Done** (Hotovo).
+   1. Vyberte **Done** (Hotovo).
 1. V části **řízení přístupu** > **udělení**vyberte **blokovat přístup**.
    1. Vyberte **vyberte**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
@@ -45,5 +47,7 @@ Následující kroky vám pomůžou vytvořit zásady podmíněného přístupu,
 ## <a name="next-steps"></a>Další kroky
 
 [Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
+
+[Určení dopadu pomocí režimu pouze sestavy podmíněného přístupu](howto-conditional-access-report-only.md)
 
 [Simulace chování při přihlašování pomocí nástroje pro What If podmíněného přístupu](troubleshoot-conditional-access-what-if.md)

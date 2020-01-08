@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 12/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 62ee248c06d2b26b935f72b3bb73cf708f949c72
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: dada1a8ed8b1725905ee2ad159e385d1bee62fc6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014710"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75615098"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Ukládání dat a příchozí přenosy v Azure Time Series Insights ve verzi Preview
 
@@ -23,7 +23,9 @@ Tento článek popisuje aktualizace úložiště dat a příchozí Azure Time Se
 
 ## <a name="data-ingress"></a>Příchozí datové přenosy
 
-Vaše Azure Time Series Insights prostředí obsahuje modul ingestování, který umožňuje shromažďovat, zpracovávat a ukládat data časových řad. Při plánování prostředí je potřeba vzít v úvahu několik důležitých informací, aby se zajistilo, že se zpracují všechna příchozí data a aby se dosáhlo vysokého rozsahu příchozího přenosu dat a minimalizovala latence příjmu (doba potřebná pro čtení a zpracování dat z události v TSI). zdroj). V Time Series Insights ve verzi Preview určují zásady příchozího přenosu dat, ze kterých se dají data nacházet, a jaký formát mají mít data.
+Vaše Azure Time Series Insights prostředí obsahuje modul ingestování, který umožňuje shromažďovat, zpracovávat a ukládat data časových řad. Při plánování prostředí je potřeba vzít v úvahu několik důležitých informací, aby se zajistilo, že se zpracují všechna příchozí data a aby se dosáhlo vysokého rozsahu příchozího přenosu dat a minimalizovala latence příjmu (doba potřebná pro čtení a zpracování dat z události v TSI). zdroj). 
+
+V Time Series Insights ve verzi Preview určují zásady příchozího přenosu dat, ze kterých se dají data nacházet, a jaký formát mají mít data.
 
 ### <a name="ingress-policies"></a>Zásady příchozího přenosu dat
 
@@ -32,12 +34,12 @@ Time Series Insights Preview podporuje následující zdroje událostí:
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
-Time Series Insights Preview podporuje maximálně dva zdroje událostí na instanci.
-  
-Azure Time Series Insights podporuje JSON odeslaný prostřednictvím Azure IoT Hub nebo Azure Event Hubs.
+Time Series Insights Preview podporuje maximálně dva zdroje událostí na instanci. Azure Time Series Insights podporuje JSON odeslaný prostřednictvím Azure IoT Hub nebo Azure Event Hubs.
 
 > [!WARNING] 
-> Při připojování nového zdroje událostí k prostředí Time Series Insights Preview v závislosti na počtu událostí aktuálně ve IoT Hub nebo centru událostí se může vyskytnout vysoká latence při příjmu. Vzhledem k tomu, že se data ingestují, měli byste očekávat tuto vysokou latenci, ale pokud vaše prostředí indikuje jinak, kontaktujte nás odesláním lístku podpory prostřednictvím Azure Portal.
+> * Při připojování zdroje událostí k prostředí Preview se může vyskytnout vysoká počáteční latence. 
+> Latence zdroje událostí závisí na počtu událostí, které jsou aktuálně ve IoT Hub nebo v centru událostí.
+> * Po prvním ingestování zdrojových dat událostí se tato vysoká latence bude nacházet. Pokud chcete pokračovat v vysoké latenci, kontaktujte nás odesláním lístku podpory prostřednictvím Azure Portal.
 
 ## <a name="ingress-best-practices"></a>Osvědčené postupy pro příchozí přenosy
 
@@ -49,12 +51,19 @@ Doporučujeme, abyste využívali následující osvědčené postupy:
 
 ### <a name="ingress-scale-and-limitations-in-preview"></a>Škálování a omezení příchozího přenosu dat ve verzi Preview
 
-Ve výchozím nastavení podporuje Time Series Insights Preview počáteční škálu příchozího přenosu dat až 1 megabajt za sekundu (MB/s) na prostředí. V případě potřeby je dostupná propustnost až 16 MB/s, pokud je to potřeba, kontaktujte nás odesláním lístku podpory v Azure Portal. Kromě toho je omezení počtu na oddíly 0,5 MB/s. To má důsledky pro zákazníky, kteří používají IoT Hub specificky, vzhledem k spřažení mezi zařízením IoT Hub a oddílem. Ve scénářích, kdy jedno zařízení brány předává zprávy do centra pomocí vlastního ID zařízení a připojovacího řetězce, je nebezpečí dosažení 0,5 MB/s, že se zprávy dostanou do jednoho oddílu, a to i v případě, že datová část události Určuje jinou službu TS. Identifikační. Míra příchozího přenosu dat se zobrazuje jako faktor počtu zařízení, která jsou ve vaší organizaci, četnosti emisí událostí a velikosti události. Při výpočtu míry přijímání příjmu by uživatelé měli IoT Hub, aby používali počet používaných připojení centra místo celkového počtu zařízení v organizaci. Podpora škálování na více serverů pokračuje. Tato dokumentace bude aktualizována, aby odrážela tato vylepšení. 
+Ve výchozím nastavení podporují prostředí pro příchozí přenosy až **1 megabajt za sekundu (MB/s) na prostředí**. Zákazníci můžou v případě potřeby škálovat v prostředích ve verzi Preview až o **16 MB/s** .
+K dispozici je také omezení počtu **0,5 MB/s**na oddíly. 
 
-> [!WARNING]
-> Pro prostředí, která používají IoT Hub jako zdroj události, vypočtěte rychlost příjmu pomocí počtu používaných zařízení centra.
+Omezení na oddíly má pro zákazníky, kteří používají IoT Hub, důsledky. Konkrétně vzhledem k spřažení mezi IoT Hub zařízením a oddílem. Ve scénářích, kdy jedno zařízení brány předává zprávy do centra pomocí vlastního ID zařízení a připojovacího řetězce, je nebezpečí dosažení 0,5 MB/s, že se zprávy dostanou do jednoho oddílu, a to i v případě, že datová část události Určuje různá ID časových řad. 
 
-Další informace o jednotkách a oddílech propustnosti najdete na následujících odkazech:
+Míry příchozího přenosu dat se zobrazují jako faktor počtu zařízení, která jsou ve vaší organizaci, četnosti emisí událostí a velikosti jednotlivých událostí:
+
+*  **Počet zařízení** × **četnost měření událostí** × **Velikost každé události**.
+
+> [!TIP]
+> Pro prostředí, která používají IoT Hub jako zdroj události, vypočítejte rychlost příjmu pomocí počtu používaných připojení centra, nikoli podle toho, jaká zařízení v organizaci používáte nebo v organizaci.
+
+Další informace o jednotkách propustnosti, omezeních a oddílech:
 
 * [Škálování IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
 * [Škálování centra událostí](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
@@ -91,11 +100,11 @@ Podrobný popis úložiště objektů BLOB v Azure najdete v [úvodu do objektů
 
 Když vytvoříte prostředí s průběžnými platbami Time Series Insights Preview, vytvoří se účet blob Azure Storage pro obecné účely v1 jako váš dlouhodobý chladírenský sklad.  
 
-Time Series Insights Preview publikuje až dvě kopie každé události v účtu služby Azure Storage. Počáteční kopie má události seřazené podle času ingestování a je vždycky zachovaná, takže k ní můžete použít jiné služby. Pro zpracování nezpracovaných souborů Parquet můžete použít Spark, Hadoop a další známé nástroje. 
+Time Series Insights Preview publikuje až dvě kopie každé události v účtu Azure Storage. Počáteční kopie má události seřazené podle času ingestování a je vždycky zachovaná, takže k ní můžete použít jiné služby. Pro zpracování nezpracovaných souborů Parquet můžete použít Spark, Hadoop a další známé nástroje. 
 
 Time Series Insights Preview přerozdělení souborů Parquet na optimalizaci pro Time Series Insights dotaz. Tato kopie dat se také ukládá do oddílů.
 
-Během veřejné verze Preview se data ukládají na účet služby Azure Storage po neomezenou dobu.
+Během veřejné verze Preview jsou data ve vašem účtu Azure Storage ukládána po neomezenou dobu.
 
 ### <a name="writing-and-editing-time-series-insights-blobs"></a>Zápis a úpravy objektů BLOB Time Series Insights
 
@@ -109,11 +118,11 @@ K datům můžete získat přístup třemi obecnými způsoby:
 
 * Z Průzkumníka služby Time Series Insights Preview. Data můžete z Průzkumníka exportovat jako soubor CSV. Další informace najdete v tématu [Time Series Insights Průzkumníku Preview](./time-series-insights-update-explorer.md).
 * Z rozhraní API služby Time Series Insights Preview. Ke koncovému bodu rozhraní API se můžete dostat na `/getRecorded`. Další informace o tomto rozhraní API najdete v tématu [dotazování časových řad](./time-series-insights-update-tsq.md).
-* Přímo z účtu úložiště Azure. Potřebujete přístup pro čtení k libovolnému účtu, který používáte pro přístup k datům ve verzi Preview Time Series Insights. Další informace najdete v tématu [Správa přístupu k prostředkům účtu úložiště](../storage/blobs/storage-manage-access-to-resources.md).
+* Přímo z účtu Azure Storage. Potřebujete přístup pro čtení k libovolnému účtu, který používáte pro přístup k datům ve verzi Preview Time Series Insights. Další informace najdete v tématu [Správa přístupu k prostředkům účtu úložiště](../storage/blobs/storage-manage-access-to-resources.md).
 
 ### <a name="data-deletion"></a>Odstranění dat
 
-Neodstraňujte soubory ve verzi Preview Time Series Insights. Související data byste měli spravovat jenom z Time Series Insights jenom ve verzi Preview.
+Neodstraňujte soubory ve verzi Preview Time Series Insights. Spravujte související data jenom z Time Series Insights jenom ve verzi Preview.
 
 ## <a name="parquet-file-format-and-folder-structure"></a>Formát souboru a struktura složek Parquet
 
@@ -136,7 +145,7 @@ V obou případech časové hodnoty odpovídají času vytvoření objektu BLOB.
 > [!NOTE]
 > * `<YYYY>` se mapuje na vyjádření čtyřmístného roku.
 > * `<MM>` se mapuje na dvouciferné měsíční vyjádření.
-> * `<YYYYMMDDHHMMSSfff>` se mapuje na vyjádření časového razítka se čtyřmi číslicemi (`YYYY`), dvoumístný měsíc (`MM`), dvěma číslicemi (`DD`), dvěma číslicemi (`HH`), dvěma číslicemi (`MM`), dvěma číslicemi (`SS`) a třemi číslicemi milisekund (`fff`).
+> * `<YYYYMMDDHHMMSSfff>` se mapuje na časovou reprezentaci se čtyřmi číslicemi (`YYYY`), dvoumístný měsíc (`MM`), dvoumístný den (`DD`), dvě číslice (`HH`), dvě číslice (`MM`), dvě číslice (`SS`) a tři číslice milisekundy (`fff`).
 
 Události ve verzi Preview Time Series Insights jsou namapovány na obsah souboru Parquet následujícím způsobem:
 

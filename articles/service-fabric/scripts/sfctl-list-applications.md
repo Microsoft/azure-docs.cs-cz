@@ -1,5 +1,5 @@
 ---
-title: Ukázka skriptu rozhraní Service Fabric CLI – výpis aplikací v clusteru
+title: Výpis aplikací v clusteru v sfctl
 description: Ukázka skriptu rozhraní Service Fabric CLI – výpis aplikací v clusteru Service Fabric
 services: service-fabric
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 04/13/2018
 ms.author: atsenthi
 ms.custom: ''
-ms.openlocfilehash: cc101a5cc93d7087bc1dd68cafafaa10a0e270b2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 41685e53eb0915f54bdc2d678191e5b767990dde
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035951"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610263"
 ---
 # <a name="list-applications-running-in-a-service-fabric-cluster"></a>Výpis aplikací spuštěných v clusteru Service Fabric
 
@@ -31,7 +31,7 @@ Tento ukázkový skript se připojí ke clusteru Service Fabric a potom zobrazí
 
 [!code-sh[main](../../../cli_scripts/service-fabric/list-application/list-application.sh "List provisioned applications from a cluster")]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v [dokumentaci k rozhraní Service Fabric CLI](../service-fabric-cli.md).
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b95ea51db4f0c6bcdbfa905ff8b57a5a330411e6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1e9a22e6ff76c0d26a346192c69bc067e7d42ccf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848540"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425324"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení v Azure Active Directory
 
@@ -54,7 +54,7 @@ Zásady dvou bran vyžadují dvě části ověřovacích dat, jako je **e-mailov
   * Správce privilegovaného ověřování
 
 * Pokud uplyne 30 dnů ve zkušebním předplatném, ani
-* Doména individuální je k dispozici, například contoso.com; ani
+* Pro vašeho tenanta Azure AD je nakonfigurovaná vlastní doména, třeba *contoso.com*; ani
 * Azure AD Connect synchronizuje identity z místního adresáře.
 
 ### <a name="exceptions"></a>Výjimky
@@ -62,7 +62,7 @@ Zásady dvou bran vyžadují dvě části ověřovacích dat, jako je **e-mailov
 Zásada s jedním bránou vyžaduje jedno z ověřovacích dat, jako je e-mailová adresa *nebo* telefonní číslo. Zásady s jednou bránou se uplatní v následujících případech:
 
 * Je v průběhu prvních 30 dnů zkušebního předplatného; ani
-* Doména individuální není přítomna (*. onmicrosoft.com); ani
+* Vlastní doména není nakonfigurovaná pro vašeho tenanta Azure AD, takže používá výchozí * *. onmicrosoft.com*. Všimněte si, že výchozí doména * *. onmicrosoft.com* se nedoporučuje pro použití v produkčním prostředí; ani
 * Azure AD Connect nesynchronizují identity
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName – zásady, které se vztahují na všechny uživatelské účty
@@ -166,7 +166,7 @@ Následující články poskytují další informace o resetování hesla prost�
 * [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Registrace samoobslužného resetování hesla](../user-help/active-directory-passwords-reset-register.md)
 * [Máte dotaz k licencování?](concept-sspr-licensing.md)
-* [Jaká data používá SSPR a která data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
+* [Jaká data používá SSPR a jaká data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
 * [Které metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)
 * [Co je zpětný zápis hesla a proč byste se o něj měli starat?](howto-sspr-writeback.md)
 * [Jak hlásit aktivitu v SSPR?](howto-sspr-reporting.md)

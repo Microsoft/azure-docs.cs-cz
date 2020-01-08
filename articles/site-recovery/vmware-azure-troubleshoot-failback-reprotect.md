@@ -7,18 +7,35 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: b597ecb67ab30c8617029fe741af1014444a9b70
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b577b82585ffad0547818b4f19554a2f39cb830c
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693146"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498105"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Řešení potíží s navrácením služeb po obnovení z Azure do místního prostředí
 
 Tento článek popisuje, jak řešit problémy, se kterými se můžete setkat při navrácení služeb po obnovení virtuálních počítačů Azure do místní infrastruktury VMware, po převzetí služeb při selhání do Azure pomocí [Azure Site Recovery](site-recovery-overview.md).
 
 Navrácení služeb po obnovení v podstatě zahrnuje dva hlavní kroky. V prvním kroku po převzetí služeb při selhání budete muset znovu zapnout ochranu virtuálních počítačů Azure v místním prostředí, aby se spustila replikace. Druhým krokem je spustit převzetí služeb při selhání z Azure pro navrácení služeb po obnovení do místní lokality.
+
+## <a name="common-issues"></a>Běžné problémy
+
+- Pokud provádíte zjišťování vCenter uživatele, který je jen pro čtení, a ochranu virtuálních počítačů, ochrana bude úspěšná a funguje převzetí služeb při selhání. Během ochrany dojde k selhání, protože úložiště dat nelze zjistit. Příznakem je, že úložiště dat nejsou uvedena během opakované ochrany. Chcete-li tento problém vyřešit, můžete aktualizovat přihlašovací údaje pro vCenter pomocí odpovídajícího účtu, který má oprávnění, a potom úlohu opakovat.
+- Při navrácení služeb po obnovení virtuálního počítače se systémem Linux a jeho spuštění v místním prostředí můžete zjistit, že byl balíček správce sítě z tohoto počítače odinstalován. Tato odinstalace nastane, protože balíček správce sítě se odebere, když se virtuální počítač obnoví v Azure.
+- Když je virtuální počítač se systémem Linux nakonfigurovaný se statickou IP adresou a převezme služby při selhání do Azure, IP adresa se získá z protokolu DHCP. Když převezmete služby při selhání do místní sítě, virtuální počítač bude nadále používat protokol DHCP k získání IP adresy. Ručně se přihlaste k počítači a v případě potřeby nastavte IP adresu zpět na statickou adresu. Virtuální počítač s Windows může znovu získat svoji statickou IP adresu.
+- Pokud používáte buď bezplatnou edici ESXi 5,5 nebo edici vSphere 6 hypervisoru, převzetí služeb při selhání proběhne úspěšně, ale navrácení služeb po obnovení nebude úspěšné. Pokud chcete povolit navrácení služeb po obnovení, upgradujte na buď zkušební licenci programu.
+- Pokud se nemůžete připojit ke konfiguračnímu serveru z procesového serveru, pomocí programu Telnet ověřte připojení ke konfiguračnímu serveru na portu 443. Můžete se také pokusit testovat konfigurační server z procesového serveru z procesu. Procesový Server by měl mít také prezenční signál, pokud je připojený ke konfiguračnímu serveru.
+- Server s Windows Serverem 2008 R2 SP1, který je chráněný jako fyzický místní server, se nedá vrátit z Azure do místní lokality.
+- Nemůžete navrátit služby po obnovení v následujících případech:
+    - Migrovali jste počítače do Azure. [Další informace](migrate-overview.md#what-do-we-mean-by-migration).
+    - Přesunuli jste virtuální počítač do jiné skupiny prostředků.
+    - Odstranili jste virtuální počítač Azure.
+    - Zakázali jste ochranu virtuálního počítače.
+    - Virtuální počítač jste vytvořili ručně v Azure. Počítač by měl být zpočátku chráněný místně a před provedením ochrany se převzal do Azure.
+    - Selhání můžete provést pouze pro hostitele ESXi. Nemůžete navrácení služeb po obnovení virtuálních počítačů VMware nebo fyzických serverů do hostitelů Hyper-V, fyzických počítačů nebo pracovních stanic VMware.
+
 
 ## <a name="troubleshoot-reprotection-errors"></a>Řešení chyb ochrany
 
@@ -65,7 +82,7 @@ Pokud chcete znovu zapnout ochranu virtuálního počítače s podporou převzet
 
 **Úložiště dat není dostupné z hostitele ESXi.**
 
-Ověřte [hlavní požadavky na hlavní cíl a podporovaná úložiště dat](vmware-azure-reprotect.md#deploy-a-separate-master-target-server) pro navrácení služeb po obnovení.
+Ověřte [hlavní požadavky na hlavní cíl a podporovaná úložiště dat](vmware-azure-prepare-failback.md#deploy-a-separate-master-target-server) pro navrácení služeb po obnovení.
 
 
 ## <a name="troubleshoot-failback-errors"></a>Řešení chyb navrácení služeb po obnovení

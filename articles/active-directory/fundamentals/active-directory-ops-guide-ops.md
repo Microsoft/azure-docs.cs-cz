@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 46e5af9d54cf818366bd2730de0da85dcbe6cade
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: d039373d3e70076149da2b970a234b59d7aa661a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535298"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422943"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Přehled Azure Active Directory obecné provozní příručky
 
@@ -90,9 +90,9 @@ Některá služba pro správu identit a přístupu vyžaduje, aby místní agent
 
 #### <a name="on-premises-agents-logs-recommended-reading"></a>Doporučené čtení v protokolech místních agentů
 
-- [Řešení potíží s proxy aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot)
+- [Poradce při potížích s Proxy aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot)
 - [Řešení potíží s samoobslužným resetem hesla – Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#password-writeback-event-log-error-codes)
-- [Vysvětlení konektorů Azure Proxy aplikací služby AD](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors)
+- [Principy konektorů Proxy aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors)
 - [Azure AD Connect: řešení potíží s předávacím ověřováním](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-pass-through-authentication#collecting-pass-through-authentication-agent-logs)
 - [Řešení potíží s kódy chyb pro rozšíření Azure MFA NPS](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-nps-errors)
 
@@ -106,8 +106,8 @@ Zavedení osvědčených postupů může přispět k optimálnímu fungování m
 
 #### <a name="on-premises-agents-management-recommended-reading"></a>Doporučené čtení pro správu místních agentů
 
-- [Vysvětlení konektorů Azure Proxy aplikací služby AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors)
-- [Předávací ověřování Azure AD – rychlý Start](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start#step-5-ensure-high-availability)
+- [Principy konektorů Proxy aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors)
+- [Předávací ověřování Azure AD – rychlý Start](../hybrid/how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)
 
 ## <a name="management-at-scale"></a>Škálovatelná správa
 
@@ -131,7 +131,7 @@ Existují dva adresy "z", které používá služba Azure AD: <o365mc@email2.mic
 
 - [Kontroly přístupu Azure AD](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
 - [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations#enable-email-notifications)
-- [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/notifications)
+- [Azure AD Identity Protection](/azure/active-directory/identity-protection/howto-identity-protection-configure-notifications)
 - [Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-email-notifications)
 - [Oznámení o certifikátu vypršení platnosti podnikové aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on#add-email-notification-addresses-for-certificate-expiration)
 - Oznámení služby zřizování podnikových aplikací
@@ -162,13 +162,13 @@ Pokud se AD FS používá jenom pro federaci Azure AD, existuje několik koncov�
 
 Organizace by měly uzamknout přístup k počítačům s místními hybridními komponentami stejným způsobem jako vaše místní doména. Například operátor zálohování nebo Správce technologie Hyper-V by se nemůže přihlásit k serveru Azure AD Connect, aby změnil pravidla.
 
-Model vrstvy správy služby Active Directory byl navržený tak, aby chránil systémy identit pomocí sady zón vyrovnávací paměti mezi úplným řízením prostředí (vrstvy 0) a vysoce rizikovými prostředky pracovní stanice, které útočníci často ohrožují. ![Diagram znázorňující tři vrstvy modelu vrstev](./media/active-directory-ops-guide/active-directory-ops-img18.png)
+Model vrstvy správy služby Active Directory byl navržený tak, aby chránil systémy identit pomocí sady zón vyrovnávací paměti mezi úplným řízením prostředí (vrstvy 0) a vysoce rizikovými prostředky pracovní stanice, které útočníci často ohrožují. ![Diagram znázorňující tři vrstvy modelu vrstvy](./media/active-directory-ops-guide/active-directory-ops-img18.png)
 
 [Model vrstev](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) se skládá ze tří úrovní a zahrnuje pouze účty pro správu, nikoli standardní uživatelské účty.
 
-- **Vrstva 0** – přímé řízení podnikových identit v prostředí. Vrstva 0 zahrnuje účty, skupiny a další prostředky, které mají přímou nebo nepřímou administrativní kontrolu nad doménovou strukturou služby Active Directory, doménami nebo řadiči domény a všemi prostředky v ní. Citlivost zabezpečení všech prostředků vrstvy 0 je ekvivalentní vzhledem k tomu, že jsou všechny efektivně pod kontrolou.
-- **Vrstva 1** řízení podnikových serverů a aplikací. Mezi prostředky vrstvy 1 patří serverové operační systémy, cloudové služby a podnikové aplikace. Účty správců vrstvy 1 mají administrativní kontrolu nad významnou množstvím obchodních hodnot hostovaných na těchto prostředcích. Běžným příkladem role jsou správci serveru, kteří udržují tyto operační systémy s možností mít vliv na všechny podnikové služby.
-- **Vrstva 2** – řízení pracovních stanic a zařízení uživatele. Účty správců vrstvy 2 mají administrativní kontrolu nad významnou velikostí obchodních hodnot, která je hostována na pracovních stanicích a zařízeních uživatele. Mezi příklady patří oddělení technické podpory a podpora počítačů, protože mohou mít dopad na integritu téměř všech uživatelských dat.
+- **Vrstva 0** – přímé řízení podnikových identit v prostředí. Vrstva 0 zahrnuje účty, skupiny a další prostředky, které mají přímou nebo nepřímou správní kontrolu nad doménovou strukturou služby Active Directory, doménami nebo řadiči domén a všemi prostředky v nich. Citlivost všech prostředků ve vrstvě 0 je rovnocenná, protože se všechny účinně navzájem kontrolují.
+- **Vrstva 1** řízení podnikových serverů a aplikací. Prostředky vrstvy 1 zahrnují serverové operační systémy, cloudové služby a podnikové aplikace. Účty správců vrstvy 1 mají správní kontrolu nad významnou částí podnikové hodnoty hostované na těchto prostředcích. Jako běžný příklad role je možné uvést správce serveru, kteří udržují tyto operační systémy, které můžou ovlivnit všechny podnikové služby.
+- **Vrstva 2** – řízení pracovních stanic a zařízení uživatele. Účty správců vrstvy 2 mají správní kontrolu nad významnou částí podnikové hodnoty hostované na těchto prostředcích. Jako příklad můžeme uvést správce technické podpory a podpory pro počítače, protože ty můžou mít vliv na integritu téměř jakýchkoli uživatelských dat.
 
 Přístup k místním komponentám identity, jako jsou Azure AD Connect, AD FS a SQL Services, můžete uzamknout stejným způsobem jako u řadičů domény.
 

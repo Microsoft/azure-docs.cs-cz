@@ -1,69 +1,60 @@
 ---
-title: Azure Service Fabric události Store | Dokumentace Microsoftu
-description: Další informace o Azure Service Fabric Eventstoru
-services: service-fabric
-documentationcenter: .net
+title: Úložiště událostí v Azure Service Fabric
+description: Přečtěte si o Eventstoru Azure Service Fabric, jak můžete kdykoli pochopit a monitorovat stav clusteru nebo úloh.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: e7ae4c77f958bacabea50b7193817cd41ea54aa9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d23c8114bf10ef3225775accef6910c0ba539e15
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449769"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645731"
 ---
-# <a name="eventstore-overview"></a>Přehled Eventstoru
+# <a name="eventstore-overview"></a>Eventstoru – přehled
 
 >[!NOTE]
->Od verze 6.4 Service Fabric. rozhraní API Eventstoru jsou dostupné jenom pro clustery Windows pouze běžící v Azure. Pracujeme na přenos tuto funkci pro Linux, stejně jako naše samostatné clustery.
+>Od verze Service Fabric 6,4. Rozhraní API Eventstoru jsou dostupná jenom pro clustery s Windows, které běží jenom na Azure. Pracujeme na přenosu této funkce na Linux i na naší samostatné clustery.
 
 ## <a name="overview"></a>Přehled
 
-Počínaje verze 6.2, je služba Eventstoru možnosti monitorování v Service Fabric. Eventstoru poskytuje způsob, jak porozumět stavu clusteru nebo úloh v daném bodě v čase.
-Eventstoru je stavovou službu Service Fabric, který udržuje události z clusteru. Události jsou vystaveny prostřednictvím Service Fabric Explorer, REST a rozhraní API. Eventstoru dotazů clusteru přímo k získání diagnostických dat na entitu ve vašem clusteru a by měla sloužit ke:
+Služba Eventstoru byla představena ve verzi 6,2, ale možnost monitorování v Service Fabric. Eventstoru poskytuje způsob, jak pochopit stav clusteru nebo úloh v daném časovém okamžiku.
+Eventstoru je stavová služba Service Fabric, která udržuje události z clusteru. Událost se zveřejňuje prostřednictvím Service Fabric Explorer, REST a rozhraní API. Eventstoru dotazuje cluster přímo, aby získal diagnostická data na jakékoli entitě v clusteru a měla by se používat k usnadnění:
 
-* Diagnostikujte problémy ve vývoj a testování, nebo kde může pomocí monitorování kanálu
-* Potvrďte, že správně zpracovává akce správy, které je možné ve vašem clusteru
-* Získat "snímek" jak dixons carphone Service Fabric s konkrétní entity
+* Diagnostikujte problémy při vývoji nebo testování nebo na místě, kde je možné používat sledovací kanál.
+* Ověřte, že se správně zpracovávají akce správy, které provedete v clusteru.
+* Získání "snímku" způsobu, jakým Service Fabric interakci s konkrétní entitou
 
 ![Eventstoru](media/service-fabric-diagnostics-eventstore/eventstore.png)
 
-Pokud chcete zobrazit úplný seznam událostí, které jsou k dispozici v Eventstoru, naleznete v tématu [události Service Fabric](service-fabric-diagnostics-event-generation-operational.md).
+Úplný seznam událostí, které jsou k dispozici v Eventstoru, najdete v tématu [události Service Fabric](service-fabric-diagnostics-event-generation-operational.md).
 
 >[!NOTE]
->Od verze 6.4 Service Fabric. rozhraní API Eventstoru a uživatelského prostředí jsou obecně dostupné pro clustery Windows Azure. Pracujeme na přenos tuto funkci pro Linux, stejně jako naše samostatné clustery.
+>Od verze Service Fabric 6,4. Rozhraní Eventstoru API a uživatelské prostředí jsou všeobecně k dispozici pro clustery Azure Windows. Pracujeme na přenosu této funkce na Linux i na naší samostatné clustery.
 
-Pro události, které jsou k dispozici pro každou entitu a typ entity ve vašem clusteru může být dotazována Eventstoru služby. To znamená, že můžete zadat dotaz na události na následujících úrovních:
-* Cluster: události specifické pro cluster sám (např. upgrade clusteru)
-* Uzly: všechny uzel úroveň události
-* Uzel: události specifické pro jeden uzel, identifikovaný `nodeName`
-* Aplikace: všech událostí na úrovni aplikace
-* Aplikace: specifické pro jednu aplikaci identifikovaný události `applicationId`
-* Služby: události ze všech služeb ve vašich clusterů
-* Služby: události z konkrétní služby identifikovaný `serviceId`
+Služba Eventstoru se dá dotazovat na události, které jsou k dispozici pro každou entitu a typ entity v clusteru. To znamená, že se můžete dotazovat na události na následujících úrovních:
+* Cluster: události specifické pro samotný cluster (například upgrade clusteru)
+* Uzly: události na úrovni všech uzlů
+* Uzel: události specifické pro jeden uzel identifikovaný `nodeName`
+* Aplikace: všechny události na úrovni aplikace
+* Aplikace: události specifické pro jednu aplikaci identifikovanou `applicationId`
+* Služby: události ze všech služeb ve vašich clusterech
+* Služba: události z konkrétní služby identifikované `serviceId`
 * Oddíly: události ze všech oddílů
-* Oddíl: události z konkrétního oddílu identifikovaný `partitionId`
-* Repliky oddílů: události ze všech replik nebo instancí v rámci konkrétního oddílu identifikovaný `partitionId`
-* Repliky oddílu: události z konkrétní repliky / instance identifikovaný `replicaId` a `partitionId`
+* Oddíl: události z konkrétního oddílu identifikovaného `partitionId`
+* Repliky oddílů: události ze všech replik/instancí v rámci konkrétního oddílu identifikovaného `partitionId`
+* Replika oddílu: události z konkrétní repliky/instance identifikované `replicaId` a `partitionId`
 
-Další informace o rozhraní API, projděte si [reference k rozhraní API Eventstoru](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore).
+Další informace o rozhraní API najdete v referenčních informacích k [rozhraní eventstoru API](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore).
 
-Služba Eventstoru má také možnost ke korelaci událostí ve vašem clusteru. Zobrazením událostí, které byly vytvořeny ve stejnou dobu od různé entity, které může mít vliv na sobě navzájem, služba Eventstoru je moci připojit k těmto událostem a pomůže identifikovat příčiny pro aktivity ve vašem clusteru. Například pokud nastane jednou z vašich aplikací bez nutnosti jakkoli měnit vyvolané špatného, Eventstoru se také podívat na další události vystavené platformy a to s může korelovat `Error` nebo `Warning` událostí. To pomáhá při rychlejší detekce chyb a hlavní příčiny potíží analýzy.
+Služba Eventstoru má taky možnost korelovat události v clusteru. Když prohlížíte události, které byly zapsané současně z různých entit, které by mohly mít vliv na sebe navzájem, služba Eventstoru je schopná propojit tyto události s cílem identifikovat příčiny aktivit ve vašem clusteru. Pokud například dojde k tomu, že jedna z vašich aplikací přestane být v pořádku, aniž by byly provedeny žádné změny, Eventstoru se taky podívat na další události vystavené platformou a může je korelovat pomocí `Error` nebo `Warning` události. To pomáhá s rychlejší detekcí selhání a hlavními příčinami při analýze.
 
-## <a name="enable-eventstore-on-your-cluster"></a>Povolit ve vašem clusteru Eventstoru
+## <a name="enable-eventstore-on-your-cluster"></a>Povolení Eventstoru v clusteru
 
-### <a name="local-cluster"></a>Místní Cluster
+### <a name="local-cluster"></a>Místní cluster
 
-V [fabricSettings.json ve vašem clusteru](service-fabric-cluster-fabric-settings.md), přidejte EventStoreService jako doplněk funkce a provedení upgradu clusteru.
+V [fabricSettings. JSON v clusteru](service-fabric-cluster-fabric-settings.md)přidejte EventStoreService jako funkci addOn a proveďte upgrade clusteru.
 
 ```json
     "addOnFeatures": [
@@ -71,11 +62,11 @@ V [fabricSettings.json ve vašem clusteru](service-fabric-cluster-fabric-setting
     ],
 ```
 
-### <a name="azure-cluster-version-65"></a>Azure cluster verze 6.5 +
-Pokud váš cluster Azure získá upgradovat na verze 6.5 nebo vyšší, bude Eventstoru automaticky povoleno ve vašem clusteru. Pokud chcete odhlásit, je potřeba aktualizovat šablony clusteru s následujícími možnostmi:
+### <a name="azure-cluster-version-65"></a>Cluster Azure verze 6.5 +
+Pokud se cluster Azure upgraduje na verzi 6,5 nebo vyšší, Eventstoru se ve vašem clusteru automaticky povolí. Chcete-li se odhlásit, musíte aktualizovat šablonu clusteru pomocí následujících kroků:
 
-* Použít verzi rozhraní API `2019-03-01` nebo novější 
-* Přidejte následující kód na vaši část vlastnosti ve vašem clusteru
+* Použijte verzi API `2019-03-01` nebo novější. 
+* Přidejte následující kód do oddílu Properties (vlastnosti) v clusteru.
   ```json  
     "fabricSettings": [
       …
@@ -83,9 +74,9 @@ Pokud váš cluster Azure získá upgradovat na verze 6.5 nebo vyšší, bude Ev
     "eventStoreServiceEnabled": false
   ```
 
-### <a name="azure-cluster-version-64"></a>Verze clusteru Azure 6.4
+### <a name="azure-cluster-version-64"></a>Cluster Azure verze 6,4
 
-Pokud používáte verzi 6.4, můžete upravit šablony Azure Resource Manageru pro službu Eventstoru. Uděláte to pomocí provádí [config upgradovat cluster](service-fabric-cluster-config-upgrade-azure.md) a přidáním následujícího kódu, můžete použít PlacementConstraints umístění repliky služby Eventstoru na konkrétní typ NodeType například NodeType, vyhrazená pro zajištění systémových služeb . `upgradeDescription` Části nakonfiguruje upgrade config aktivovat restartování na uzlech. Odebrat oddíl v jiné aktualizace.
+Pokud používáte verzi 6,4, můžete upravit šablonu Azure Resource Manager a zapnout službu Eventstoru. K tomu je potřeba provést [Upgrade konfigurace clusteru](service-fabric-cluster-config-upgrade-azure.md) a přidat následující kód. pomocí PlacementConstraints můžete umístit repliky služby eventstoru na konkrétní typ NodeType, např. na uzel NodeType vyhrazený pro systémové služby. Část `upgradeDescription` nakonfiguruje upgrade konfigurace tak, aby aktivoval restart na uzlech. Oddíl můžete odebrat v jiné aktualizaci.
 
 ```json
     "fabricSettings": [
@@ -131,9 +122,9 @@ Pokud používáte verzi 6.4, můžete upravit šablony Azure Resource Manageru 
 ```
 
 
-## <a name="next-steps"></a>Další postup
-* Začínáme s rozhraním API Eventstoru - [v clusterech Azure Service Fabric pomocí rozhraní API Eventstoru](service-fabric-diagnostics-eventstore-query.md)
-* Další informace o seznamu událostí, které nabízí Eventstoru – [události Service Fabric](service-fabric-diagnostics-event-generation-operational.md)
+## <a name="next-steps"></a>Další kroky
+* Začínáme s rozhraním API pro Eventstoru – [používání rozhraní API eventstoru v clusterech Azure Service Fabric](service-fabric-diagnostics-eventstore-query.md)
+* Další informace o seznamu událostí nabízených [událostmi](service-fabric-diagnostics-event-generation-operational.md) eventstoru-Service Fabric
 * Přehled monitorování a diagnostiky v Service Fabric – [monitorování a Diagnostika pro Service Fabric](service-fabric-diagnostics-overview.md)
-* Zobrazit úplný seznam volání rozhraní API – [Reference k REST API Eventstoru](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)
-* Další informace o monitorování clusteru- [monitorování clusteru a platforma](service-fabric-diagnostics-event-generation-infra.md).
+* Zobrazit úplný seznam volání rozhraní API – [eventstoru REST API Reference](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)
+* Přečtěte si další informace o monitorování clusteru – [monitorování clusteru a platformy](service-fabric-diagnostics-event-generation-infra.md).

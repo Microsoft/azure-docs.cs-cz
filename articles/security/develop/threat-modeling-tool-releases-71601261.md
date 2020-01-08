@@ -1,26 +1,18 @@
 ---
-title: Verze Threat Modeling Tool – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool verze 1/29/2019 – Azure
 description: Dokumentující poznámky k verzi pro nástroj pro modelování hrozeb
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
-ms.author: jegeib
-ms.openlocfilehash: d9c91752a599debcd8fda6c8396141e6a92e0f06
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: cec5abe358189184648c5a40a809b570f243fbf4
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928106"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548781"
 ---
 # <a name="threat-modeling-tool-update-release-71601261---1292019"></a>Threat Modeling Tool, vydání aktualizace 7.1.60126.1 – 29. 1. 2019
 
@@ -37,7 +29,7 @@ ms.locfileid: "68928106"
 
 ### <a name="model-validation-option"></a>Možnost ověření modelu
 
-Na základě zpětné vazby od zákazníků byla k nástroji přidána možnost pro povolení nebo zakázání ověřování modelu. Pokud jste dřív použili jeden jednosměrný datový tok mezi dvěma objekty, možná jste v snímku zprávy obdrželi chybovou zprávu s oznámením: Atribut ' Objects ' vyžaduje aspoň jedno ' Any '. Zakázáním ověřování modelu zabráníte zobrazování těchto upozornění v zobrazení.
+Na základě zpětné vazby od zákazníků byla k nástroji přidána možnost pro povolení nebo zakázání ověřování modelu. Pokud se dřív použila jedna jednosměrná datová rychlost mezi dvěma objekty, možná jste v snímku zprávy s oznámením, že hodnota Objects vyžaduje aspoň jedno klíčové slovo any, se zobrazila chybová zpráva. Zakázáním ověřování modelu zabráníte zobrazování těchto upozornění v zobrazení.
 
 Možnost přepínání ověřování modelu zapnutá a vypnutá se dá najít v nabídce Možnosti souboru > Nastavení – >. Výchozí hodnota tohoto nastavení je zakázána.
 
@@ -68,6 +60,6 @@ Uživatelé Windows 10 Enterprise LTSB (verze 1507), které mají nainstalovanou
 
 - Dokumentace k Threat Modeling Tool je umístěna na [docs.Microsoft.com](threat-modeling-tool.md)a obsahuje informace [o použití nástroje](threat-modeling-tool-getting-started.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Stáhněte si nejnovější verzi [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool).

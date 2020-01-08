@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6ffa17010f874eeb82fe8f4c367f0a0ac429979b
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: d97073666a18a3ffb7a88e1d2350f213ef589e6a
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815514"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562523"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Jazyk SSML (Speech Synthesis Markup Language)
 
@@ -147,6 +147,8 @@ Pomocí této tabulky můžete určit, které mluvené styly jsou pro každý ne
 | `en-US-JessaNeural` | Type =`cheerful` | Vyjadřuje, že emoce jsou pozitivní a veselé |
 | | Type =`empathy` | Vyjadřuje smysl caring a porozumění |
 | | Type =`chat` | Mluvte do nepříležitostného a odlehčeného tónu |
+| | Type =`newscast` | Vyjadřuje formální tón, podobně jako zprávy všesměrového vysílání. |
+| | Type =`customerservice` | Přihlaste se jako uživatelsky přívětivé služby a způsoby pacienty |
 | `zh-CN-XiaoxiaoNeural` | Type =`newscast` | Vyjadřuje formální tón, podobně jako zprávy všesměrového vysílání. |
 | | Type =`sentiment` | Předává zprávu o doteku nebo příběh. |
 
@@ -185,7 +187,7 @@ Pomocí elementu `break` vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 | obsahem | Určuje relativní dobu trvání pozastavení pomocí jedné z následujících hodnot:<ul><li>Žádná</li><li>x – slabý</li><li>slabé</li><li>střední (výchozí)</li><li>silné</li><li>x – silné</li></ul> | Volitelné |
 | time | Určuje absolutní dobu trvání pauzy v sekundách nebo milisekundách. Příklady platných hodnot jsou 2S a 500. | Volitelné |
 
-| obsahem | Popis |
+| Obsahem | Popis |
 |----------|-------------|
 | Žádná, nebo pokud není zadána žádná hodnota | 0 ms |
 | x – slabý | 250 ms |
@@ -291,9 +293,9 @@ Vzhledem k tomu, že se hodnoty atributů Prozodický předěl můžou v rámci 
 | Atribut | Popis | Povinné / volitelné |
 |-----------|-------------|---------------------|
 | teče | Určuje rozteč účaří pro text. Rozteč můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo následovaný "Hz" (Hz). Například 600Hz.</li><li>Relativní hodnota vyjádřená jako číslo před "+" nebo "-" a následována "Hz" nebo "St", která určuje velikost pro změnu rozteči. Například: + 80Hz nebo-2st. "St" značí, že se jednotka změny semitone, což je polovina tónu (poloviční krok) na standardním diatonic škále.</li><li>Konstantní hodnota:<ul><li>x – nízká</li><li>slab</li><li>střední</li><li>high</li><li>x-vysoká</li><li>default</li></ul></li></ul>. | Volitelné |
-| nesmí | Pro hlasy neuronové se nepodporuje obrys. Obrys představuje změny v rozteči pro obsah mluveného slova jako pole cílů v zadaných časových pozicích ve výstupu řeči. Každý cíl je definován sadami dvojic parametrů. Například: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>První hodnota v každé sadě parametrů určuje umístění změny sklonu v procentech doby trvání textu. Druhá hodnota určuje velikost, která má zvýšit nebo snížit rozteč, pomocí relativní hodnoty nebo hodnoty výčtu pro rozteč (viz `pitch`). | Volitelné |
+| nesmí | Pro hlasy neuronové se nepodporuje obrys. Obrys představuje změny v rozteči pro obsah mluveného slova jako pole cílů v zadaných časových pozicích ve výstupu řeči. Každý cíl je definován sadami dvojic parametrů. Příklad: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>První hodnota v každé sadě parametrů určuje umístění změny sklonu v procentech doby trvání textu. Druhá hodnota určuje velikost, která má zvýšit nebo snížit rozteč, pomocí relativní hodnoty nebo hodnoty výčtu pro rozteč (viz `pitch`). | Volitelné |
 | range  | Hodnota, která představuje rozsah roztečí textu. `range` můžete vyjádřit pomocí stejných absolutních hodnot, relativních hodnot nebo hodnot výčtu používaných k popisu `pitch`. | Volitelné |
-| rate  | Určuje míru projevení textu. `rate` můžete vyjádřit jako:<ul><li>Relativní hodnota vyjádřená jako číslo, které funguje jako násobitel výchozí hodnoty. Například hodnota *1* má za následek nezměněnou sazbu. Hodnota *0,5* vede k poloviční míře. Hodnota *3* má za následek cestu k této sazbě.</li><li>Konstantní hodnota:<ul><li>x – pomalé</li><li>Pomalé</li><li>střední</li><li>rychlé</li><li>x – Fast</li><li>default</li></ul></li></ul> | Volitelné |
+| rate  | Určuje míru projevení textu. `rate` můžete vyjádřit jako:<ul><li>Relativní hodnota vyjádřená jako číslo, které funguje jako násobitel výchozí hodnoty. Například hodnota *1* má za následek nezměněnou sazbu. Hodnota *0,5* vede k poloviční míře. Hodnota *3* má za následek cestu k této sazbě.</li><li>Konstantní hodnota:<ul><li>x – pomalé</li><li>pomalé</li><li>střední</li><li>rychlé</li><li>x – Fast</li><li>default</li></ul></li></ul> | Volitelné |
 | duration  | Časový interval, který by měl uplynout, zatímco služba rozpoznávání řeči (TTS) čte text v sekundách nebo milisekundách. Například *2S* nebo *1800ms*. | Volitelné |
 | svazek  | Určuje úroveň hlasitosti mluveného hlasu. Svazek můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo v rozsahu od 0,0 do 100,0, od *tichého* po *nahlasu*. Například 75. Výchozí hodnota je 100,0.</li><li>Relativní hodnota vyjádřená jako číslo začínající znakem "+" nebo "-", která určuje velikost pro změnu svazku. Například + 10 nebo-5,5.</li><li>Konstantní hodnota:<ul><li>tich</li><li>× – měkké</li><li>Pohyblivý</li><li>střední</li><li>rovnává</li><li>x-nahlas</li><li>default</li></ul></li></ul> | Volitelné |
 

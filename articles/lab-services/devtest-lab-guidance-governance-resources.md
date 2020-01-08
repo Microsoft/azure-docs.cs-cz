@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 9ba9be7b4761e6633ffe3063b6bdba53c56b93bd
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 0be2efd3783d9a0a7992819c984c993c64000ecd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561655"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644864"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Řízení Azure DevTest Labs infrastruktury – prostředky
 Tento článek popisuje zarovnání a správu prostředků pro DevTest Labs v rámci vaší organizace. 
@@ -44,7 +44,7 @@ Předtím, než organizace začne používat Azure pro obecný vývoj aplikací,
 
 Tento model poskytuje organizaci flexibilitu při nasazování Azure DevTest Labs se škálováním. Organizace může podporovat stovky laboratoří pro různé obchodní jednotky s 100 až 1000 virtuálními počítači, které běží paralelně. Podporuje pojem centralizovaného řešení podnikového prostředí, které může sdílet stejné zásady správy konfigurace a řízení zabezpečení.
 
-Tento model také zajišťuje, že organizace nevyčerpá své limity prostředků přidružené k předplatnému Azure. Podrobnosti o omezeních předplatného a služeb najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-subscription-service-limits.md). Proces zřizování DevTest Labs může využívat velký počet skupin prostředků. Můžete požadovat, aby se limity zvýšily prostřednictvím žádosti o podporu v předplatném Azure DevTest. Prostředky v rámci produkčního předplatného nejsou ovlivněny, protože vývojové předplatné se rozrůstá v používání. Další informace o škálování DevTest Labs najdete v tématu [kvóty a limity škálování v DevTest Labs](devtest-lab-scale-lab.md).
+Tento model také zajišťuje, že organizace nevyčerpá své limity prostředků přidružené k předplatnému Azure. Podrobnosti o omezeních předplatného a služeb najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md). Proces zřizování DevTest Labs může využívat velký počet skupin prostředků. Můžete požadovat, aby se limity zvýšily prostřednictvím žádosti o podporu v předplatném Azure DevTest. Prostředky v rámci produkčního předplatného nejsou ovlivněny, protože vývojové předplatné se rozrůstá v používání. Další informace o škálování DevTest Labs najdete v tématu [kvóty a limity škálování v DevTest Labs](devtest-lab-scale-lab.md).
 
 Běžným omezením na úrovni předplatného, které se musí vystavit, je způsob, jakým se přidělují přiřazení rozsahu síťových IP adres pro podporu produkčních i rozvojových předplatných. Tato přiřazení by měla pohlížet na růst v čase (za předpokladu, že se jedná o místní připojení nebo jiná síťová topologie, která vyžaduje, aby organizace spravovala síťový zásobník místo výchozí implementace v Azure). Doporučeným postupem je mít několik virtuálních sítí, které mají přiřazenou předponu velkých IP adres a jsou rozdělené s mnoha velkými podsítěmi, a ne více virtuálními sítěmi s malými podsítěmi. Například s 10 předplatnými můžete definovat 10 virtuálních sítí (jeden pro každé předplatné). Všechny laboratoře, které nevyžadují izolaci, můžou sdílet stejnou podsíť ve virtuální síti předplatného.
 

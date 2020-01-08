@@ -1,7 +1,6 @@
 ---
-title: Řešení potíží s Azure Stream Analytics výstupy
-description: Tento článek popisuje postupy pro řešení problémů s připojením vašeho výstup do úlohy Azure Stream Analytics.
-services: stream-analytics
+title: Řešení potíží s výstupy Azure Stream Analytics
+description: Tento článek popisuje techniky řešení potíží s vašimi výstupními připojeními v Azure Stream Analytics úlohách.
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -9,45 +8,45 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: a07ac40ad3adda486b5216e83d683e00ec93265d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 65d01c5c4dd852cb424c75f170ce52156f1633cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620788"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354111"
 ---
-# <a name="troubleshoot-azure-stream-analytics-outputs"></a>Řešení potíží s Azure Stream Analytics výstupy
+# <a name="troubleshoot-azure-stream-analytics-outputs"></a>Řešení potíží s výstupy Azure Stream Analytics
 
-Tato stránka popisuje běžné problémy s výstupní připojení a jak je řešit.
+Tato stránka popisuje běžné problémy s výstupními připojeními a jejich řešení.
 
-## <a name="output-not-produced-by-job"></a>Výstup není vytvořený úlohou 
-1.  Ověření připojení k výstupy pomocí **Test připojení** tlačítko pro každý výstup.
+## <a name="output-not-produced-by-job"></a>Výstup nevytvořený úlohou 
+1.  Ověřte připojení ke výstupům pomocí tlačítka **Testovat připojení** pro každý výstup.
 
-2.  Podívejte se na [ **monitorování metrik** ](stream-analytics-monitoring.md) na **monitorování** kartu. Protože se agregují hodnoty, metriky jsou zpožděné o několik minut.
-    - Pokud vstupní události > 0, úlohy je možné číst vstupní data. Nejsou-li vstupní události > 0, pak:
-      - Chcete-li zjistit, zda zdroj dat obsahuje platná data, zkontrolujte pomocí [Service Bus Exploreru](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a). Tato kontrola platí, pokud úloha používá jako vstup Centrum událostí.
-      - Zkontrolujte, zda je formát serializace dat a kódování dat podle očekávání.
-      - Pokud úloha používá centra událostí, zkontrolujte, zda je text zprávy *Null*.
+2.  Podívejte se na [**sledování metrik**](stream-analytics-monitoring.md) na kartě **monitorování** . Vzhledem k tomu, že jsou hodnoty agregované, jsou metriky zpožděné o několik minut.
+    - Pokud vstupní události > 0, úloha může číst vstupní data. Pokud vstupní události nejsou > 0, pak:
+      - Pokud chcete zjistit, jestli zdroj dat obsahuje platná data, podívejte se na něj pomocí [Service Bus Exploreru](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a). Tato kontrolu platí v případě, že úloha jako vstup používá centrum událostí.
+      - Zkontrolujte, jestli formát serializace dat a kódování dat jsou očekávané.
+      - Pokud úloha používá centrum událostí, zkontrolujte, jestli tělo zprávy nemá *hodnotu null*.
       
-    - Pokud chyby převodu dat > 0 a tato hodnota roste, může platit následující:
-      - Výstupní událost neodpovídá schématu cílové jímky. 
-      - Schéma událostí nemusí odpovídat definovaná nebo očekávanému schématu událostí v dotazu.
-      - Datové typy některých polí v události nemusí odpovídat očekávání.
+    - Pokud chyby převodu dat > 0 a stoupání, může to mít následující hodnotu:
+      - Výstupní událost není v souladu se schématem cílové jímky. 
+      - Schéma události nemusí odpovídat definovanému nebo očekávanému schématu událostí v dotazu.
+      - Typy některých polí v události nemusí odpovídat očekávání.
       
-    - Pokud běhové chyby > 0, znamená to, že úloha může přijímat data, ale generuje chyby při zpracování dotazu.
-      - Chcete-li najít chyby, přejděte na [protokoly auditu](../azure-resource-manager/resource-group-audit.md) a filtrujte *se nezdařilo* stav.
+    - Pokud dojde k chybám za běhu > 0, znamená to, že úloha může přijímat data, ale při zpracování dotazu generuje chyby.
+      - Chyby najdete v [protokolech auditu](../azure-resource-manager/resource-group-audit.md) a ve stavu filtru při *selhání* .
       
-    - Pokud situací > 0 a výstupní události = 0, znamená to, že je splněna jedna z následujících akcí:
+    - Pokud InputEvents > 0 a OutputEvents = 0, znamená to, že platí jedna z následujících podmínek:
       - Zpracování dotazu mělo za výsledek nulu výstupních událostí.
-      - Události nebo jejich pole může být poškozený, což vede k nulový výstup po zpracování dotazů.
-      - Úlohu se nepodařilo k zápisu dat do výstupní jímky důvodů připojení nebo ověřování.
+      - Události nebo její pole mohou být poškozena, což po zpracování dotazu má za následek nulový výstup.
+      - Úloha nemohla odeslat data do výstupní jímky pro účely připojení nebo ověřování.
       
-    - Ve všech výše uvedených chyb případech zprávy provozních protokolů vysvětlují další podrobnosti (včetně, co se děje), s výjimkou případů, kdy logika dotazu vyfiltrovala všechny události. Pokud zpracování několika událostí generuje chyby, Stream Analytics zaznamená první tři chybové zprávy stejného typu během 10 minut do provozních protokolů. Potom potlačí další identické chyby a zobrazí se zpráva, která čte "Chybám dochází příliš rychle a že potlačují se."
+    - Ve všech dříve uvedených chybových případech vysvětlují zprávy o operacích, které obsahují další podrobnosti (včetně toho, co se děje), s výjimkou případů, kdy logika dotazu vyfiltruje všechny události. Pokud zpracování více událostí generuje chyby, Stream Analytics zaznamená první tři chybové zprávy stejného typu během 10 minut do protokolů operací. Pak potlačí další identické chyby se zprávou, že dochází k chybám, které jsou příliš rychlé a které jsou potlačeny.
     
-## <a name="job-output-is-delayed"></a>Výstup úlohy je zpožděno.
+## <a name="job-output-is-delayed"></a>Výstup úlohy je zpožděný.
 
 ### <a name="first-output-is-delayed"></a>První výstupní je zpožděno.
-Při spuštění úlohy Stream Analytics se číst události vstupu, ale ve výstupu vytvořených v některých případech může dojít ke zpoždění.
+Po spuštění úlohy Stream Analytics se načtou vstupní události, ale v některých případech může dojít ke zpoždění generování výstupu.
 
 Velké časové hodnoty prvků dočasných dotazů může přispět ke zpoždění výstup. Vytvořit správnou výstup přes velký časová okna, úlohu streamování spuštění podle čtení dat z nejnovějších možných doba (až sedmi dnů zpětně) tak, aby vyplnil časový interval. Během této doby není vytvořen žádný výstup, až do dokončení můžete projít čtení nevyřízené události vstupu. Tento problém může docházet, pokud systém upgraduje datových proudů úloh, proto restartování úlohy. Tyto upgrady obvykle dojde k jednou každých několik měsíců. 
 
@@ -91,15 +90,15 @@ Při konfiguraci IGNORE_DUP_KEY pro několik typů indexů, mějte na paměti n�
 * Můžete nastavit možnost IGNORE_DUP_KEY na hodnotu pomocí příkazu ALTER INDEX pro jedinečný index, který se liší od primární klíč nebo jedinečné omezení a vytvořit pomocí definition CREATE INDEX nebo INDEX.  
 * IGNORE_DUP_KEY neplatí pro indexy columnstore, protože nelze vynutit jedinečnost takové indexů.  
 
-## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>Názvy sloupců jsou nižší malými a velkými písmeny služba Azure Stream Analytics
-Při použití původní úroveň kompatibility (1.0), Azure Stream Analytics umožňuje změnit názvy sloupců na malá písmena. Toto chování byla opravena v vyšší úrovně kompatibility. Aby bylo možné zachovat tento případ, doporučujeme zákazníkům přejít na úroveň kompatibility 1.1 nebo novější. Další informace najdete na [úroveň kompatibility pro úlohy Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level).
+## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>Názvy sloupců jsou použitay nižšími než Azure Stream Analytics
+Při použití původní úrovně kompatibility (1,0) Azure Stream Analytics použít ke změně názvů sloupců malými písmeny. Toto chování bylo opraveno v novějších úrovních kompatibility. Aby bylo možné zachovat případ, doporučujeme zákazníkům, aby přešli na úroveň kompatibility 1,1 a novější. Další informace o [úrovni kompatibility pro úlohy Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)najdete v.
 
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání nápovědy
 
 Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)

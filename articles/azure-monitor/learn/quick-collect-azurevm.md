@@ -4,16 +4,16 @@ description: Zjistěte, jak povolit rozšíření agenta Log Analytics pro virtu
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: quickstart
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: 84b076cf92c57f3cd912a6c4b401a5ef81f8557b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: cec27a2e16489850824d5b662b6bda4b23b1fa99
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900560"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398926"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Shromažďování dat z virtuálního počítače Azure pomocí Azure Monitor
 
@@ -49,7 +49,7 @@ Během ověřování informací a vytváření pracovního prostoru můžete pr�
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-Pro virtuální počítače s Windows a Linuxem, které už jsou nasazené v Azure, můžete agenta Log Analytics nainstalovat pomocí rozšíření Log Analytics pro virtuální počítače. Použití rozšíření zjednodušuje proces instalace a automaticky agenta nakonfiguruje pro odesílání dat do pracovního prostoru služby Log Analytics, který zadáte. Agent je také automaticky upgradován při vydání novější verze, čímž se zajistí, že budete mít nejnovější funkce a opravy. Než budete pokračovat, ověřte, že je virtuální počítač spuštěný, jinak se proces nepodaří úspěšně dokončit.  
+Pro virtuální počítače s Windows a Linuxem, které už jsou nasazené v Azure, můžete agenta Log Analytics nainstalovat pomocí rozšíření Log Analytics pro virtuální počítače. Použití rozšíření zjednodušuje proces instalace a automaticky agenta nakonfiguruje pro odesílání dat do pracovního prostoru služby Log Analytics, který zadáte. Agent je také automaticky upgradován při vydání novější verze, čímž se zajistí, že budete mít nejnovější funkce a opravy. Než budete pokračovat, ověřte, že virtuální počítač běží v opačném případě se nezdaří se nepodaří.  
 
 >[!NOTE]
 >Agenta Log Analytics pro Linux není možné nakonfigurovat tak, aby se hlásil více než jednomu pracovnímu prostoru služby Log Analytics. 

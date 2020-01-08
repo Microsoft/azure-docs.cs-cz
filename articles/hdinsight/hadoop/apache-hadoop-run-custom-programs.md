@@ -2,18 +2,18 @@
 title: Spouštění vlastních programů MapReduce – Azure HDInsight
 description: Kdy a jak spouštět vlastní programy Apache MapReduce v clusterech Azure HDInsight.
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/04/2017
-ms.author: ashishth
-ms.openlocfilehash: 305eefbaa674e414ab8134986e6cd526abe8208e
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 78623f738285e781cb561a3844db8fbf37226929
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810738"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645017"
 ---
 # <a name="run-custom-mapreduce-programs"></a>Spuštění vlastních programů MapReduce
 
@@ -23,7 +23,7 @@ Apache Hadoop systémy velkých objemů dat, jako je HDInsight, umožňují zpra
 | --- | --- | --- |
 | **Apache Hive pomocí HiveQL** | <ul><li>Skvělé řešení pro dávkové zpracování a analýzu velkých objemů neproměnlivých dat, pro shrnutí dat a pro dotazování na vyžádání. Používá známou syntaxi jako SQL.</li><li>Dá se použít k vytvoření trvalých tabulek dat, které je možné snadno rozdělit a indexovat.</li><li>Pro stejná data lze vytvořit více externích tabulek a zobrazení.</li><li>Podporuje jednoduchou implementaci datového skladu, která poskytuje rozsáhlé možnosti škálování na více instancí a odolnost proti chybám pro ukládání a zpracování dat.</li></ul> | <ul><li>Vyžaduje, aby zdrojová data měla aspoň určitou identifikovatelnou strukturu.</li><li>Není vhodný pro dotazy a aktualizace na úrovni řádků v reálném čase. Je nejvhodnější pro dávkové úlohy pro velké sady dat.</li><li>Nemusí být schopni provést některé typy složitých úloh zpracování.</li></ul> |
 | **Apache vepřové prase s latinkou** | <ul><li>Vynikající řešení pro manipulaci s daty jako sady, sloučení a filtrování datových sad, použití funkcí u záznamů nebo skupin záznamů a pro restrukturalizaci dat definováním sloupců, seskupením hodnot nebo převodem sloupců na řádky.</li><li>Může použít přístup na základě pracovního postupu jako posloupnost operací s daty.</li></ul> | <ul><li>Uživatelé SQL můžou najít pro vepřové prostředí latinku méně obeznámené a obtížnější je používat než HiveQL.</li><li>Výchozím výstupem je obvykle textový soubor a proto může být obtížné ho použít s nástroji vizualizace, jako je Excel. Obvykle budete navrstvit tabulku podregistru na výstup.</li></ul> |
-| **Vlastní mapování/zmenšení** | <ul><li>Poskytuje plnou kontrolu nad mapou a snižuje fáze a provádění.</li><li>Umožňuje optimalizovat dotazy pro dosažení maximálního výkonu clusteru nebo pro minimalizaci zatížení serverů a sítě.</li><li>Komponenty lze zapsat v řadě známých jazyků.</li></ul> | <ul><li>Je obtížnější než použití prasete nebo podregistru, protože je nutné vytvořit vlastní mapu a omezit komponenty.</li><li>Procesy, které vyžadují připojení sad dat, jsou obtížnější k implementaci.</li><li>I když jsou k dispozici testovací rozhraní, ladění kódu je složitější než normální aplikace, protože kód se spouští jako úloha služby Batch pod ovládacím prvkem plánovače úloh Hadoop.</li></ul> |
+| **Vlastní mapování/zmenšení** | <ul><li>Poskytuje plnou kontrolu nad rozvržením a snížením fází a provádění.</li><li>Umožňuje optimalizovat dotazy pro dosažení maximálního výkonu clusteru nebo pro minimalizaci zatížení serverů a sítě.</li><li>Komponenty lze zapsat v řadě známých jazyků.</li></ul> | <ul><li>Je obtížnější, než použití prasete nebo podregistru, protože je nutné vytvořit vlastní mapu a omezit komponenty.</li><li>Procesy, které vyžadují připojení sad dat, jsou obtížnější k implementaci.</li><li>I když jsou k dispozici testovací rozhraní, ladění kódu je složitější než normální aplikace, protože kód se spouští jako úloha služby Batch pod ovládacím prvkem plánovače úloh Hadoop.</li></ul> |
 | **Apache HCatalog** | <ul><li>V této části najdete informace o cestě k úložišti, což usnadňuje správu a odstraňuje nutnost uživatelů, kteří znají, kde jsou data uložená.</li><li>Umožňuje oznámení o událostech, jako je například dostupnost dat, což umožňuje jiným nástrojům, jako je například Oozie, rozpoznat, kdy došlo k operacím.</li><li>Zpřístupňuje relační zobrazení dat, včetně dělení podle klíče, a usnadňuje přístup k datům.</li></ul> | <ul><li>Ve výchozím nastavení podporuje formáty souborů RCFile, CSV text, JSON text, SequenceFile a ORC, ale možná budete muset napsat vlastní SerDe pro jiné formáty.</li><li>HCatalog není bezpečný pro přístup z více vláken.</li><li>Existují určitá omezení pro datové typy pro sloupce při použití zavaděče HCatalog ve skriptech prasete. Další informace najdete v tématu [HCatLoader data types](https://cwiki.apache.org/confluence/display/Hive/HCatalog%20LoadStore#HCatalogLoadStore-HCatLoaderDataTypes) v dokumentaci Apache HCatalog.</li></ul> |
 
 Obvykle použijete nejjednodušší z těchto přístupů, které vám poskytnou požadované výsledky. Například může být možné dosáhnout těchto výsledků jenom pomocí podregistru, ale u složitějších scénářů možná budete muset použít prase nebo dokonce napsat vlastní mapu a omezit komponenty. Můžete se také rozhodnout, že po experimentování s podregistru nebo vepřovým sádlem může tato vlastní mapa a omezení komponent poskytovat lepší výkon tím, že vám umožní doladit a optimalizovat zpracování.
@@ -48,21 +48,21 @@ Zvažte vytvoření vlastní mapy a omezení součástí těchto podmínek:
 
 Nejběžnější programy MapReduce jsou napsané v jazyce Java a kompilovány do souboru jar.
 
-1. Po dokončení vývoje, kompilování a otestování programu MapReduce použijte `scp` příkaz k nahrání souboru jar do hlavnímu uzlu.
+1. Po vývoji, kompilování a otestování programu MapReduce použijte příkaz `scp` pro nahrání souboru jar do hlavnímu uzlu.
 
-    ```bash
-    scp mycustomprogram.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```cmd
+    scp mycustomprogram.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    Nahraďte **uživatelské jméno** uživatelským účtem SSH pro váš cluster. Položku **název_clusteru** nahraďte názvem clusteru. Pokud jste použili heslo k zabezpečení účtu SSH, zobrazí se výzva k zadání hesla. Pokud jste použili certifikát, možná budete muset použít `-i` parametr k určení souboru privátního klíče.
+    Položku název_clusteru nahraďte názvem clusteru. Pokud jste použili heslo k zabezpečení účtu SSH, budete vyzváni k zadání hesla. Pokud jste použili certifikát, možná budete muset použít parametr `-i` k určení souboru privátního klíče.
 
-2. Připojte se ke clusteru pomocí [SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Připojte se ke clusteru pomocí [příkazu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) . Níže uvedený příkaz upravte tak, že ho nahradíte názvem clusteru a pak zadáte tento příkaz:
 
-    ```bash
-    ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-3. Z relace SSH spusťte program MapReduce prostřednictvím PŘÍZe.
+1. Z relace SSH spusťte program MapReduce prostřednictvím PŘÍZe.
 
     ```bash
     yarn jar mycustomprogram.jar mynamespace.myclass /example/data/sample.log /example/data/logoutput

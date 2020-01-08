@@ -1,5 +1,6 @@
 ---
-title: Přehled řešení Azure VMware podle CloudSimple – virtuální počítače
+title: Přehled virtuálních počítačů
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Seznamte se s CloudSimple virtuálními počítači a jejich výhodami.
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 213ab51dae20d281a1a0e0f8ea18f4bde888e64d
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 436a5ab6fb286ce206f981487b6a29d774ecd1a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877897"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372785"
 ---
 # <a name="cloudsimple-virtual-machines-overview"></a>Přehled virtuálních počítačů s CloudSimple
 
@@ -34,7 +35,7 @@ CloudSimple virtuální počítače z Azure Portal poskytují samoobslužný mec
   * Resetovat virtuální počítač
 * Odstranit virtuální počítač
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Naučte se [využívat virtuální počítače VMware v Azure](quickstart-create-vmware-virtual-machine.md)
 * Přečtěte si, jak [namapovat předplatné Azure](azure-subscription-mapping.md)

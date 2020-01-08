@@ -11,16 +11,15 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c3173841de25a30b84870332c7334a81773e84d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 604dca2861b7a7126d2e37b5a01bcb85c530546e
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "68561587"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561398"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Kurz: Konfigurace Atlassian cloudu pro Automatické zřizování uživatelů
 
@@ -29,8 +28,7 @@ Cílem tohoto kurzu je předvést kroky, které je třeba provést v Atlassian c
 > [!NOTE]
 > Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../manage-apps/user-provisioning.md).
 
-
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -53,11 +51,11 @@ Před konfigurací Atlassian cloudu pro Automatické zřizování uživatelů se
 
 2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
 3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
 4. Do vyhledávacího pole zadejte **Atlassian Cloud**, na panelu výsledků vyberte **Cloud Atlassian** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
@@ -102,61 +100,63 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Zřizování cloudu Atlassian](./media/atlassian-cloud-provisioning-tutorial/credentials.png)
 
-5. V části **přihlašovací údaje správce** zadejte **adresu URL tenanta** a **tajný token** účtu Atlassian vašeho cloudu. Příklady těchto hodnot:
+5. Přejděte na [Atlassian Organization Manager](https://admin.atlassian.com) **> vyberte adresář > organizace**.
+
+    ![Zřizování cloudu Atlassian](./media/atlassian-cloud-provisioning-tutorial/select-directory.png)
+
+6. Klikněte na **zřizování uživatelů** a pak klikněte na **vytvořit adresář**. Zkopírujte **základní adresu URL adresáře** a **nosný token** do polí **Adresa URL tenanta** a **tajného tokenu** v uvedeném pořadí.
+
+    cloudové zřizování ![Atlassian](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![Atlassian zřizování cloudu](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png) ![Atlassian zřizování cloudu](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
+
+7. V části **přihlašovací údaje správce** zadejte **adresu URL tenanta** a **tajný token** účtu Atlassian vašeho cloudu. Příklady těchto hodnot:
 
    * Do pole **Adresa URL tenanta** zadejte konkrétní koncový bod tenanta, který obdržíte od Atlassian, jak je popsáno v kroku 6. Například: `https://api.atlassian.com/scim/directory/{directoryId}`.
 
    * V poli **token tajného klíče** vyplňte tajný token, jak je popsáno v kroku 6.
 
-6. Přejděte na [Atlassian Organization Manager](https://admin.atlassian.com) **> zřizování uživatelů** a klikněte na **vytvořit token**. Zkopírujte **základní adresu URL adresáře** a **nosný token** do polí **Adresa URL tenanta** a **tajného tokenu** v uvedeném pořadí.
-
-    ![Atlassian zřizování cloudu ](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![Atlassian zřizování cloudu ](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png)
-
-    ![Zřizování cloudu Atlassian](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
-
-7. Po vyplnění polí zobrazených v kroku 5 klikněte na **Test připojení** , aby se služba Azure AD mohla připojit k Atlassian cloudu. Pokud se připojení nepovede, zajistěte, aby měl váš cloudový účet Atlassian oprávnění správce, a zkuste to znovu.
+8. Po vyplnění polí zobrazených v kroku 7 klikněte na **Test připojení** , aby se služba Azure AD mohla připojit k Atlassian cloudu. Pokud se připojení nepovede, zajistěte, aby měl váš cloudový účet Atlassian oprávnění správce, a zkuste to znovu.
 
     ![Zřizování cloudu Atlassian](./media/atlassian-cloud-provisioning-tutorial/test-connection.png)
 
-8. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
+9. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
     ![Zřizování cloudu Atlassian](./media/atlassian-cloud-provisioning-tutorial/notification.png)
 
-9. Klikněte na **Uložit**.
+10. Klikněte na možnost **Uložit**.
 
-10. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé a Atlassian Cloud**.
+11. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé a Atlassian Cloud**.
 
     ![Zřizování cloudu Atlassian](./media/atlassian-cloud-provisioning-tutorial/provision-users.png)
 
-11. Zkontrolujte atributy uživatele synchronizované z Azure AD do Atlassian cloudu v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Atlassian cloudu pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+12. Zkontrolujte atributy uživatele synchronizované z Azure AD do Atlassian cloudu v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Atlassian cloudu pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
     ![Zřizování cloudu Atlassian](./media/atlassian-cloud-provisioning-tutorial/user-mapping.png)
 
-12. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do cloudu Atlassian**.
+13. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do cloudu Atlassian**.
 
     ![Zřizování cloudu Atlassian](./media/atlassian-cloud-provisioning-tutorial/provision-groups.png)
 
-13. Zkontrolujte atributy skupiny, které jsou synchronizované z Azure AD do Atlassian cloudu v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v cloudu Atlassian pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+14. Zkontrolujte atributy skupiny, které jsou synchronizované z Azure AD do Atlassian cloudu v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v cloudu Atlassian pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
     ![Zřizování cloudu Atlassian](./media/atlassian-cloud-provisioning-tutorial/group-mapping.png)
 
-14. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+15. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-15. Pokud chcete povolit službu Azure AD Provisioning pro Cloud Atlassian, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
+16. Pokud chcete povolit službu Azure AD Provisioning pro Cloud Atlassian, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
     ![Zřizování cloudu Atlassian](./media/atlassian-cloud-provisioning-tutorial/provisioning-on.png)
 
-16. Definujte uživatele nebo skupiny, které chcete zřídit pro Atlassian Cloud, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
+17. Definujte uživatele nebo skupiny, které chcete zřídit pro Atlassian Cloud, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
 
     ![Zřizování cloudu Atlassian](./media/atlassian-cloud-provisioning-tutorial/provisioning-options.png)
 
-17. Až budete připraveni zřídit, klikněte na **Uložit**.
+18. Až budete připraveni zřídit, klikněte na **Uložit**.
 
     ![Zřizování cloudu Atlassian](./media/atlassian-cloud-provisioning-tutorial/save.png)
 
 Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v cloudu Atlassian.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Omezení konektoru
 

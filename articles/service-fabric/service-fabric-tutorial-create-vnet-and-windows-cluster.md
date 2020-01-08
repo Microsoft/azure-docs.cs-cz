@@ -1,26 +1,15 @@
 ---
-title: Vytvoření clusteru Service Fabric s Windows v Azure | Microsoft Docs
+title: Vytvoření clusteru Service Fabric s Windows v Azure
 description: V tomto kurzu se naučíte nasadit cluster Windows Service Fabric do virtuální sítě Azure a skupiny zabezpečení sítě pomocí PowerShellu.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 28571584fbd82b245e85e2ebe5b1d282ab5ae979
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 086379e788966b300f988e06ec42c94b880b8281
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177981"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551705"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Kurz: nasazení clusteru Service Fabric se systémem Windows do virtuální sítě Azure
 
@@ -53,7 +42,7 @@ V této sérii kurzů se naučíte:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem:
 
@@ -89,7 +78,7 @@ V prostředku **Microsoft.ServiceFabric/clusters** se konfiguruje cluster s Wind
 * Koncový bod připojení klienta: 19000 (konfigurovatelné v parametrech šablony).
 * Koncový bod brány HTTP: 19080 (konfigurovatelné v parametrech šablony).
 
-### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
+### <a name="azure-load-balancer"></a>Azure Load Balancer
 
 V prostředku **Microsoft. Network/loadBalancers** je nakonfigurován Nástroj pro vyrovnávání zatížení. Testy a pravidla se nastavují pro následující porty:
 
@@ -112,6 +101,7 @@ V prostředku **Microsoft.Network/networkSecurityGroups** jsou povolená násled
 
 * ClientConnectionEndpoint (TCP): 19000
 * HttpGatewayEndpoint (HTTP/TCP): 19080
+* SMB: 445
 * Internodecommunication: 1025, 1026, 1027
 * Rozsah dočasných portů: 49152 až 65534 (vyžaduje minimálně porty 256).
 * Porty pro použití aplikací: 80 a 443
@@ -153,7 +143,7 @@ Ve výchozím nastavení je [antivirový program v programu Windows Defender](/w
 
 Soubor parametrů [azuredeploy. Parameters. JSON][parameters] deklaruje mnoho hodnot, které se používají k nasazení clusteru a přidružených prostředků. Níže jsou uvedené parametry, které je potřeba upravit pro vaše nasazení:
 
-**Ukazatele** | **Ukázková hodnota** | **Poznámky** 
+**Parametr** | **Příklad hodnoty** | **Poznámky** 
 |---|---|---|
 |adminUserName|vmadmin| Uživatelské jméno správce pro virtuální počítače clusteru. [Požadavky na uživatelské jméno pro virtuální počítač](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm) |
 |adminPassword|Password#1234| Heslo správce pro virtuální počítače clusteru. [Požadavky na heslo pro virtuální počítač](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
@@ -177,12 +167,12 @@ Cluster Service Fabric nabízí několik vstupních bodů ke svým funkcím spr�
 
 V tomto článku předpokládáme, že jste už tenanta vytvořili. Pokud jste to ještě neudělali, začněte tím, že si přečtete [Azure Active Directory tenanta](../active-directory/develop/quickstart-create-new-tenant.md).
 
-Pro zjednodušení kroků týkajících se konfigurace služby Azure AD pomocí Service Fabricho clusteru jsme vytvořili sadu skriptů prostředí Windows PowerShell. [Stáhněte si skripty](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool) do svého počítače.
+Pro zjednodušení kroků týkajících se konfigurace služby Azure AD pomocí Service Fabricho clusteru jsme vytvořili sadu skriptů prostředí Windows PowerShell. [Stáhněte si skripty](https://github.com/Azure-Samples/service-fabric-aad-helpers) do svého počítače.
 
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Vytváření aplikací Azure AD a přiřazení uživatelů k rolím
 Vytvořte dvě aplikace Azure AD pro řízení přístupu ke clusteru: jednu webovou aplikaci a jednu nativní aplikaci. Po vytvoření aplikací, které reprezentují váš cluster, přiřaďte uživatele k [rolím, které podporuje Service Fabric](service-fabric-cluster-security-roles.md): jen pro čtení a správce.
 
-Spusťte `SetupApplications.ps1`a jako parametry zadejte ID klienta, název clusteru a adresu URL odpovědi webové aplikace. Zadejte uživatelská jména a hesla pro uživatele. Například:
+Spusťte `SetupApplications.ps1`a jako parametry zadejte ID klienta, název clusteru a adresu URL odpovědi webové aplikace. Zadejte uživatelská jména a hesla pro uživatele. Příklad:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysfcluster123' -WebApplicationReplyUrl 'https://mysfcluster123.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -199,7 +189,7 @@ $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysf
 
 *WebApplicationReplyUrl* je výchozí koncový bod, který Azure AD vrátí vašim uživatelům po dokončení přihlášení. Nastavte tento koncový bod jako koncový bod Service Fabric Explorer pro váš cluster, který je ve výchozím nastavení:
 
-https://&lt;cluster_domain&gt;: 19080/Explorer
+https://&lt;cluster_domain&gt;:19080/Explorer
 
 Budete vyzváni k přihlášení k účtu, který má oprávnění správce pro tenanta Azure AD. Po přihlášení vytvoří skript webové a nativní aplikace, které reprezentují váš Service Fabric cluster. V aplikacích klienta v [Azure Portal](https://portal.azure.com)byste měli vidět dvě nové položky:
 
@@ -259,7 +249,7 @@ V [azuredeploy. JSON][template]NAKONFIGURUJTE Azure AD v části **Microsoft. Se
 }
 ```
 
-Přidejte hodnoty parametrů do souboru parametrů [azuredeploy. Parameters. JSON][parameters] . Například:
+Přidejte hodnoty parametrů do souboru parametrů [azuredeploy. Parameters. JSON][parameters] . Příklad:
 
 ```json
 "aadTenantId": {
@@ -443,7 +433,7 @@ Pokud chcete ve svém clusteru povolit službu Eventstoru, přidejte do vlastnos
 
 Protokoly Azure Monitor jsou naše doporučení pro monitorování událostí na úrovni clusteru. Chcete-li nastavit protokoly Azure Monitor pro monitorování clusteru, je nutné mít [povolenou diagnostiku pro zobrazení událostí na úrovni clusteru](#configure-diagnostics-collection-on-the-cluster).  
 
-Pracovní prostor musí být připojený ke diagnostická data, která přicházejí z vašeho clusteru.  Tato data protokolu se ukládají v účtu úložiště *applicationDiagnosticsStorageAccountName* v tabulkách WADServiceFabric * Event, WADWindowsEventLogsTable a WADETWEventTable.
+Pracovní prostor se musí být připojen k diagnostická data z vašeho clusteru.  Tato data protokolu se ukládají v účtu úložiště *applicationDiagnosticsStorageAccountName* v tabulkách WADServiceFabric * Event, WADWindowsEventLogsTable a WADETWEventTable.
 
 Přidejte pracovní prostor Azure Log Analytics a přidejte řešení do pracovního prostoru:
 

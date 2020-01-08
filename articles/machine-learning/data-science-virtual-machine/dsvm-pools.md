@@ -2,7 +2,7 @@
 title: Sdílené fondy
 titleSuffix: Azure Data Science Virtual Machine
 description: Naučte se vytvářet & nasazovat sdílený fond pro datové vědy Virtual Machines (DSVMs) jako sdílený prostředek pro tým.
-keywords: obsáhlý Learning, AI, nástroje pro datové vědy, virtuální počítač pro datové vědy, geoprostorové analýzy, vědecké zpracování týmových dat
+keywords: obsáhlý learning, AI, nástrojů pro datové vědy, virtuální počítač pro datové vědy, geoprostorové analýzy, vědecké zpracování týmových dat
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -10,28 +10,28 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 2a74df3aaf70270353b10f757cf3a61e8f479d74
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: c5b7f4eaac91e79dde625ea00bfb6b1ea8782b31
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053002"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530608"
 ---
-# <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Vytvoření sdíleného fondu Virtual Machines pro datové vědy
+# <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Vytvoření sdíleného fondu z virtuálního počítače pro datové vědy
 
 V tomto článku se dozvíte, jak vytvořit sdílený fond pro datové vědy Virtual Machines (DSVMs) pro tým. Výhody použití sdíleného fondu zahrnují lepší využití prostředků, jednodušší sdílení a spolupráci a efektivnější správu prostředků DSVM.
 
-K vytvoření fondu DSVMs můžete použít spoustu metod a technologií. Tento článek se zaměřuje na fondy pro interaktivní virtuální počítače (VM). Alternativní spravovaná výpočetní infrastruktura je Azure Machine Learning výpočetní prostředí. Další informace najdete v tématu [nastavení cílových výpočetních](../service/how-to-set-up-training-targets.md#amlcompute)prostředků.
+Mnoho metod a technologií můžete použít k vytvoření fondu datové. Tento článek se zaměřuje na fondy pro interaktivní virtuální počítače (VM). Alternativní spravovaná výpočetní infrastruktura je Azure Machine Learning výpočetní prostředí. Další informace najdete v tématu [nastavení cílových výpočetních](../how-to-set-up-training-targets.md#amlcompute)prostředků.
 
 ## <a name="interactive-vm-pool"></a>Interaktivní fond virtuálních počítačů
 
-Fond interaktivních virtuálních počítačů, které jsou sdíleny celým týmem AI nebo pro datové vědy, umožňuje uživatelům přihlásit se k dostupné instanci DSVM místo toho, aby měli vyhrazenou instanci pro každou skupinu uživatelů. Tato instalace umožňuje lepší dostupnost a efektivnější využití prostředků.
+Fond interaktivní virtuálních počítačů, které jsou sdíleny celý tým AI/datové vědy umožňuje uživatelům přihlášení na dostupnou instanci DSVM nemuseli vyhrazenou instanci pro každou sadu uživatelů. Tato instalace umožňuje lepší dostupnost a efektivnější využití prostředků.
 
-K vytvoření interaktivního fondu virtuálních počítačů použijete technologii [Azure Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) . Sady škálování můžete použít k vytvoření a správě skupiny identických virtuálních počítačů s vyrovnáváním zatížení a automatického škálování.
+K vytvoření interaktivního fondu virtuálních počítačů použijete technologii [Azure Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) . Škálovací sady můžete vytvářet a spravovat skupiny identických, s vyrovnáváním zatížení a automatické škálování virtuálních počítačů.
 
-Uživatel se přihlásí k IP adrese nebo adrese DNS hlavního fondu. Sada škálování automaticky směruje relaci k dostupnému DSVM v sadě škálování. Vzhledem k tomu, že uživatelé chtějí konzistentní a známé prostředí bez ohledu na virtuální počítač, ke kterému se přihlásí, všechny instance virtuálního počítače v sadě škálování připojí sdílenou síťovou jednotku, třeba sdílenou složku služby soubory Azure nebo sdílenou složku NFS (Network File System). Sdílený pracovní prostor uživatele je obvykle uložen ve sdíleném úložišti souborů, které je připojeno ke každé z těchto instancí.
+Uživatel přihlásí do hlavního fondu adres IP nebo DNS. Škálovací sady automaticky trasy relace k dispozici DSVM ve škálovací sadě. Vzhledem k tomu, že uživatelé chtějí konzistentní a známé prostředí bez ohledu na virtuální počítač, ke kterému se přihlásí, všechny instance virtuálního počítače v sadě škálování připojí sdílenou síťovou jednotku, třeba sdílenou složku služby soubory Azure nebo sdílenou složku NFS (Network File System). Sdílené pracovního prostoru uživatele se obvykle ukládají na sdílené úložiště, které je připojen na jednotlivých instancích.
 
-Můžete najít ukázkovou Azure Resource Manager šablonu, která vytvoří škálu s Ubuntu instancemi DSVM na [GitHubu](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.json). Ukázku [souboru parametrů](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.parameters.json) pro šablonu Azure Resource Manager najdete ve stejném umístění.
+Můžete najít Ukázka šablony Azure Resource Manageru, která vytvoří škálovací sadu s Ubuntu DSVM instancí na [Githubu](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.json). Ukázku [souboru parametrů](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.parameters.json) pro šablonu Azure Resource Manager najdete ve stejném umístění.
 
 Můžete vytvořit sadu škálování ze šablony Azure Resource Manager zadáním hodnot pro soubor parametrů v rozhraní příkazového řádku Azure CLI:
 
@@ -39,24 +39,24 @@ Můžete vytvořit sadu škálování ze šablony Azure Resource Manager zadán�
 az group create --name [[NAME OF RESOURCE GROUP]] --location [[ Data center. For eg: "West US 2"]
 az group deployment create --resource-group  [[NAME OF RESOURCE GROUP ABOVE]]  --template-uri https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.json --parameters @[[PARAMETER JSON FILE]]
 ```
-V předchozích příkazech se předpokládá, že máte následující:
-* Kopie souboru parametrů s hodnotami zadanými pro vaši instanci sady škálování.
+Výše uvedených příkazů se předpokládá, že máte:
+* Zkopírujte soubor parametrů s hodnotami určenými pro vaše instance škálovací sady.
 * Počet instancí virtuálních počítačů.
-* Ukazatele na sdílenou složku Azure Files.
-* Přihlašovací údaje účtu úložiště, který se připojí ke každému virtuálnímu počítači.
+* Sdílet odkazy na soubory Azure.
+* Přihlašovací údaje pro účet úložiště, který se připojí na každém virtuálním počítači.
 
-K souboru parametrů se v příkazech odkazuje místně. Můžete také předávat parametry, které jsou vložené nebo se na ně dotazovat ve skriptu.  
+Soubor parametrů v příkazech odkazuje místně. Můžete také předat parametry vložené nebo řádku pro ně ve skriptu.  
 
-Předchozí šablona umožňuje, aby se protokol SSH a JupyterHub z front-endové škály nastavily na back-end fond Ubuntu DSVMs. Jako uživatel se k virtuálnímu počítači přihlašujete pomocí Secure Shell (SSH) nebo v JupyterHub běžným způsobem. Vzhledem k tomu, že instance virtuálních počítačů je možné dynamicky škálovat směrem nahoru nebo dolů, musí být všechny stavy uložené v připojené sdílené složce Azure Files. Stejný přístup můžete použít k vytvoření fondu sady Windows DSVMs.
+Předchozí šablona umožňuje SSH a port JupyterHub z front-endu škálovací sady na back endovém fondu nástroje datové Ubuntu. Jako uživatel se k virtuálnímu počítači přihlašujete pomocí Secure Shell (SSH) nebo v JupyterHub běžným způsobem. Vzhledem k tomu, že instance virtuálních počítačů je možné dynamicky škálovat směrem nahoru nebo dolů, musí být všechny stavy uložené v připojené sdílené složce Azure Files. Stejný přístup můžete použít k vytvoření fondu datové Windows.
 
-[Skript, který připojuje sdílenou složku služby soubory Azure,](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Extensions/General/mountazurefiles.sh) je také k dispozici v úložišti Azure DataScienceVM na GitHubu. Skript připojí sdílenou složku souborů Azure v zadaném přípojném bodu v souboru parametrů. Skript také vytvoří v domovském adresáři počátečního uživatele předběžné odkazy na připojenou jednotku. Adresář notebooků konkrétního uživatele ve sdílené složce služby soubory Azure je podmíněně propojený s adresářem `$HOME/notebooks/remote`, aby uživatelé mohli přistupovat k Jupyter poznámkám a jejich spouštění a ukládat je. Stejnou konvenci můžete použít při vytváření dalších uživatelů na virtuálním počítači, aby odkazovaly na pracovní prostor Jupyter jednotlivých uživatelů na sdílenou složku služby soubory Azure.
+[Skript, který se připojí sdílenou složku služby soubory Azure](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Extensions/General/mountazurefiles.sh) je dostupná také v úložišti Azure DataScienceVM v Githubu. Tento skript připojí sdílenou složku služby soubory Azure v zadané přípojného bodu v souboru parametrů. Skript také vytvoří obnovitelně odkazy na připojenou jednotku v počátečním uživatelským domovského adresáře. Adresář notebooků konkrétního uživatele ve sdílené složce služby soubory Azure je podmíněně propojený s adresářem `$HOME/notebooks/remote`, aby uživatelé mohli přistupovat k Jupyter poznámkám a jejich spouštění a ukládat je. Při vytvoření dalších uživatelů na virtuální počítač, aby každý uživatel Jupyter prostoru přejděte sdílenou složku služby soubory Azure, můžete použít stejné konvence.
 
-Sada škálování virtuálních počítačů podporuje automatické škálování. Můžete nastavit pravidla, kdy vytvořit další instance a kdy se má škálovat instance. Můžete například snížit kapacitu na nulové instance a ušetřit tak náklady na cloudové využití hardwaru v případě, že se virtuální počítače vůbec nepoužívají. Stránky dokumentace sady Virtual Machine Scale Sets poskytují podrobné kroky pro automatické [škálování](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview).
+Virtuální počítač škálovací sady podporují automatické škálování. Můžete nastavit pravidla, kdy vytvořit další instance a kdy se má škálovat instance. Například můžete vertikálně snížit kapacitu na nula instance ušetříte na náklady na využití cloudu hardware, když virtuální počítače nejsou vůbec nepoužívá. Stránky dokumentace ze škálovací sady virtuálních počítačů poskytuje podrobné pokyny k [automatické škálování](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nastavení společné identity](dsvm-common-identity.md)
-* [Bezpečné uložení přihlašovacích údajů pro přístup k prostředkům cloudu](dsvm-secure-access-keys.md)
+* [Nastavte si společnou identitu](dsvm-common-identity.md)
+* [Bezpečně ukládat přihlašovací údaje pro přístup ke cloudovým prostředkům](dsvm-secure-access-keys.md)
 
 
 

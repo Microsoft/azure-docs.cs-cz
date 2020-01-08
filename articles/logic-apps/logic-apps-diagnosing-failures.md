@@ -1,17 +1,17 @@
 ---
-title: Řešení potíží a Diagnostika selhání
-description: Naučte se řešit a diagnostikovat selhání pracovního postupu v Azure Logic Apps
+title: Řešení potíží a Diagnostika selhání pracovního postupu
+description: Naučte se řešit a diagnostikovat problémy, chyby a chyby v pracovních postupech v Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: 93b6d9d2975aa1758afffd19deb1d315b974cc47
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 79cc9d1bf7aa9e8848197525646b0a3646a558d2
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790776"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666801"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Řešení potíží a Diagnostika selhání pracovního postupu v Azure Logic Apps
 
@@ -38,7 +38,7 @@ Každá aplikace logiky se spustí s triggerem. Pokud se Trigger neaktivuje, nej
    | ------ | ----------- | 
    | **Úspěchu** | Aktivační událost kontrolovala koncový bod a našla dostupná data. Stav "aktivováno" se obvykle zobrazuje současně s tímto stavem. V takovém případě může mít definice triggeru podmínku nebo příkaz `SplitOn`, který nebyl splněn. <p>Tento stav se může vztahovat na manuální aktivační událost, Trigger opakování nebo aktivační událost cyklického dotazování. Aktivační událost může být úspěšně spuštěna, ale samotný běh může selhat i v případě, že akce generují neošetřené chyby. | 
    | **Vynecháno** | Aktivační událost kontrolovala koncový bod, ale nenašla žádná data. | 
-   | **Nepovedlo se** | Došlo k chybě. Pokud chcete zkontrolovat všechny generované chybové zprávy pro aktivační událost, vyberte tuto aktivační událost a zvolte **výstup**. Například můžete najít vstupy, které nejsou platné. | 
+   | **Se nezdařilo** | Došlo k chybě. Pokud chcete zkontrolovat všechny generované chybové zprávy pro aktivační událost, vyberte tuto aktivační událost a zvolte **výstup**. Například můžete najít vstupy, které nejsou platné. | 
    ||| 
 
    Můžete mít více položek triggeru se stejným datem a časem, k němuž dojde, když aplikace logiky nalezne více položek. 
@@ -78,7 +78,7 @@ Každá aktivovaná aktivační událost spustí spuštění pracovního postupu
    | Stav | Popis | 
    | ------ | ----------- | 
    | **Úspěchu** | Všechny akce byly úspěšné. <p>Pokud v určité akci došlo k nějakým chybám, tato akce v pracovním postupu tuto chybu zpracovala. | 
-   | **Nepovedlo se** | Nejméně jedna akce se nezdařila a žádné pozdější akce v pracovním postupu nebyly nastaveny pro zpracování tohoto selhání. | 
+   | **Se nezdařilo** | Nejméně jedna akce se nezdařila a žádné pozdější akce v pracovním postupu nebyly nastaveny pro zpracování tohoto selhání. | 
    | **Stornován** | Pracovní postup byl spuštěn, ale přijal žádost o zrušení. | 
    | **Instalovanou** | Pracovní postup je aktuálně spuštěný. <p>Tento stav může nastat pro omezené pracovní postupy nebo z důvodu aktuálního cenového plánu. Další informace najdete v tématu [omezení akcí na stránce s cenami](https://azure.microsoft.com/pricing/details/logic-apps/). Pokud nastavíte [diagnostické protokolování](../logic-apps/logic-apps-monitor-your-logic-apps.md), můžete také získat informace o všech událostech omezení, ke kterým dochází. | 
    ||| 
@@ -91,7 +91,7 @@ Každá aktivovaná aktivační událost spustí spuštění pracovního postupu
 
    ![Zobrazení podrobností o spuštění aplikace logiky](./media/logic-apps-diagnosing-failures/logic-app-run-details.png)
 
-3. Chcete-li prostudovat vstupy, výstupy a jakékoli chybové zprávy pro určitý krok, vyberte tento krok, aby se tvar rozbalí a zobrazí podrobnosti. Například:
+3. Chcete-li prostudovat vstupy, výstupy a jakékoli chybové zprávy pro určitý krok, vyberte tento krok, aby se tvar rozbalí a zobrazí podrobnosti. Příklad:
 
    ![Zobrazení podrobností o kroku](./media/logic-apps-diagnosing-failures/logic-app-run-details-expanded.png)
 

@@ -3,17 +3,17 @@ title: Shromažďování informací o čítačích výkonu v Azure Cloud Service
 description: Naučte se zjišťovat, používat a vytvářet čítače výkonu v Cloud Services s Azure Diagnostics a Application Insights.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 02/02/2018
-ms.author: gwallace
-ms.openlocfilehash: d6b16b859b29ef835bca75c5fca0ea1a9d35a306
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.author: tagore
+ms.openlocfilehash: 16b0727a78ad8ad582535fa1f5b0e57079cc4c05
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68358946"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385582"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Shromažďování čítačů výkonu pro cloudovou službu Azure
 
@@ -46,9 +46,9 @@ Authorization Manager Applications              {\Authorization Manager Appl...
 #... results cut to save space ...
 ```
 
-`CounterSetName` Vlastnost představuje sadu (nebo kategorii) a je dobrým indikátorem toho, s jakými čítači výkonu souvisejí. `Paths` Vlastnost představuje kolekci čítačů pro sadu. Můžete také získat `Description` vlastnost pro další informace o sadě čítačů.
+Vlastnost `CounterSetName` představuje sadu (nebo kategorii) a je dobrým indikátorem, ke kterému se vztahují čítače výkonu. Vlastnost `Paths` představuje kolekci čítačů pro sadu. Můžete také získat vlastnost `Description`, kde najdete další informace o sadě čítačů.
 
-Chcete-li získat všechny čítače pro sadu, použijte `CounterSetName` hodnotu a `Paths` rozbalte kolekci. Každá položka cesty je čítač, který můžete dotazovat. Pokud například chcete získat dostupné čítače související se `Processor` sadou, `Paths` rozbalte kolekci:
+Chcete-li získat všechny čítače pro sadu, použijte hodnotu `CounterSetName` a rozbalte kolekci `Paths`. Každá položka cesty je čítač, který můžete dotazovat. Pokud například chcete získat dostupné čítače týkající se `Processor` sady, rozbalte kolekci `Paths`:
 
 ```powershell
 Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -ExpandProperty Paths
@@ -80,7 +80,7 @@ Tyto cesty k jednotlivým čítačům lze přidat do diagnostického rozhraní p
 
 Azure Application Insights pro Cloud Services umožňuje určit čítače výkonu, které chcete shromáždit. Po [přidání Application Insights do projektu](../azure-monitor/app/cloudservices.md#sdk)se do projektu aplikace Visual Studio přidá konfigurační soubor s názvem **ApplicationInsights. config** . Tento konfigurační soubor definuje, jaký typ informací Application Insights shromažďuje a odesílá do Azure.
 
-Otevřete soubor **ApplicationInsights. config** a vyhledejte prvek**TelemetryModules** **ApplicationInsights** > . Každý `<Add>` podřízený prvek definuje typ telemetrie ke shromáždění spolu se svou konfigurací. Typ modulu telemetrie čítače výkonu je `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector`. Pokud je tento prvek již definován, nepřidávejte jej podruhé. Každý čítač výkonu, který se má shromáždit, je definovaný `<Counters>`v uzlu s názvem. Tady je příklad, který shromažďuje čítače výkonu jednotky:
+Otevřete soubor **ApplicationInsights. config** a vyhledejte prvek **ApplicationInsights** > **TelemetryModules** . Každý podřízený prvek `<Add>` definuje typ telemetrie ke shromáždění spolu se svou konfigurací. Typ modulu telemetrie čítače výkonu je `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector`. Pokud je tento prvek již definován, nepřidávejte jej podruhé. Každý čítač výkonu, který se má shromáždit, je definovaný v uzlu s názvem `<Counters>`. Tady je příklad, který shromažďuje čítače výkonu jednotky:
 
 ```xml
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">
@@ -99,11 +99,11 @@ Otevřete soubor **ApplicationInsights. config** a vyhledejte prvek**TelemetryMo
 <!-- ... cut to save space ... -->
 ```
 
-Každý čítač výkonu je reprezentován jako `<Add>` element v. `<Counters>` `PerformanceCounter` Atribut definuje, který čítač výkonu se má shromáždit. `ReportAs` Atribut je název, který se zobrazí v Azure Portal pro čítač výkonu. Libovolný čítač výkonu, který shromáždíte, je umístěn do kategorie s názvem **Custom** na portálu. Na rozdíl od Azure Diagnostics nemůžete nastavit interval, po který se tyto čítače výkonu shromažďují a odesílají do Azure. Při Application Insights se čítače výkonu shromažďují a odesílají každou minutu. 
+Každý čítač výkonu je reprezentován jako `<Add>` prvek v části `<Counters>`. Atribut `PerformanceCounter` definuje, který čítač výkonu se má shromáždit. Atribut `ReportAs` je název, který se má zobrazit v Azure Portal čítače výkonu. Libovolný čítač výkonu, který shromáždíte, je umístěn do kategorie s názvem **Custom** na portálu. Na rozdíl od Azure Diagnostics nemůžete nastavit interval, po který se tyto čítače výkonu shromažďují a odesílají do Azure. Při Application Insights se čítače výkonu shromažďují a odesílají každou minutu. 
 
 Application Insights automaticky shromažďuje následující čítače výkonu:
 
-* \Process(??APP_WIN32_PROC??)\% Processor Time
+* \Process(?? APP_WIN32_PROC??) Čas procesoru\%
 * \Memory\Available Bytes
 * \.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec
 * \Process(??APP_WIN32_PROC??)\Private Bytes
@@ -112,20 +112,20 @@ Application Insights automaticky shromažďuje následující čítače výkonu:
 
 Další informace najdete v tématu [čítače výkonu systému v Application Insights](../azure-monitor/app/performance-counters.md) a [Application Insights pro Azure Cloud Services](../azure-monitor/app/cloudservices.md#performance-counters).
 
-### <a name="azure-diagnostics"></a>Azure Diagnostics
+### <a name="azure-diagnostics"></a>Diagnostika Azure
 
 > [!IMPORTANT]
-> I když jsou všechna tato data agregována do účtu úložiště, portál neposkytuje nativní způsob, jak data graficky vytvořit. Důrazně doporučujeme integrovat do své aplikace další diagnostické služby, například Application Insights.
+> I když jsou všechna tato data agregována do účtu úložiště, portál **neposkytuje nativní** způsob, jak data graficky vytvořit. Důrazně doporučujeme integrovat do své aplikace další diagnostické služby, například Application Insights.
 
 Azure Diagnostics rozšíření pro Cloud Services umožňuje určit čítače výkonu, které chcete shromáždit. Pokud chcete nastavit Azure Diagnostics, přečtěte si téma [Přehled monitorování cloudové služby](cloud-services-how-to-monitor.md#setup-diagnostics-extension).
 
-Čítače výkonu, které chcete shromáždit, jsou definovány v souboru **Diagnostics. wadcfgx** . Otevřete tento soubor (je definovaný pro každou roli) v aplikaci Visual Studio a najděte **DiagnosticsConfiguration** > **PublicConfig** > **WadCfg** > **DiagnosticMonitorConfiguration**  >  Element **čítače výkonu** Přidejte nový element **PerformanceCounterConfiguration** jako podřízenou položku. Tento element má dva atributy: `counterSpecifier` a `sampleRate`. `counterSpecifier` Atribut definuje sadu čítačů výkonu systému (popsaný v předchozí části), která má být shromažďována. `sampleRate` Hodnota určuje, jak často se tato hodnota dotazuje. Jako celek se všechny čítače výkonu přenesou do Azure podle hodnoty `PerformanceCounters` `scheduledTransferPeriod` atributu nadřazeného elementu.
+Čítače výkonu, které chcete shromáždit, jsou definovány v souboru **Diagnostics. wadcfgx** . Otevřete tento soubor (je definován pro jednu roli) v aplikaci Visual Studio a vyhledejte **DiagnosticsConfiguration** > **PublicConfig** > **WadCfg** > **DiagnosticMonitorConfiguration** > **čítače výkonu** element. Přidejte nový element **PerformanceCounterConfiguration** jako podřízenou položku. Tento element má dva atributy: `counterSpecifier` a `sampleRate`. Atribut `counterSpecifier` definuje sadu čítačů výkonu systému (popsaný v předchozí části), která se má shromáždit. Hodnota `sampleRate` určuje, jak často se má tato hodnota dotazovat. Jako celek se všechny čítače výkonu přenesou do Azure podle hodnoty atributu `scheduledTransferPeriod` nadřazeného elementu `PerformanceCounters`.
 
 Další informace o `PerformanceCounters` elementu schématu naleznete v tématu [Azure Diagnostics Schema](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element).
 
-Období definované `sampleRate` atributem používá datový typ doba trvání XML k určení, jak často se má čítač výkonu dotazovat. V následujícím příkladu je sazba nastavená na `PT3M`, což znamená `[P]eriod[T]ime[3][M]inutes`, že každé tři minuty je:
+Období definované atributem `sampleRate` používá datový typ doba trvání XML k určení, jak často se má čítač výkonu dotazovat. V následujícím příkladu je sazba nastavená na `PT3M`, což znamená `[P]eriod[T]ime[3][M]inutes`: každé tři minuty.
 
-Další informace o tom, jak `sampleRate` jsou `scheduledTransferPeriod` definovány a, naleznete v tomto kurzu v části **datový typ doby trvání** v [w3 XML data a času](https://www.w3schools.com/XML/schema_dtypes_date.asp) .
+Další informace o tom, jak jsou definovány `sampleRate` a `scheduledTransferPeriod`, naleznete v části **datový typ doby trvání** v tématu [w3 XML data and time data](https://www.w3schools.com/XML/schema_dtypes_date.asp) Types.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -161,9 +161,9 @@ Další informace o tom, jak `sampleRate` jsou `scheduledTransferPeriod` definov
 
 ## <a name="create-a-new-perf-counter"></a>Vytvoření nového čítače výkonu
 
-Můžete vytvořit nový čítač výkonu a použít ho v kódu. Váš kód, který vytváří nový čítač výkonu, musí běžet se zvýšenými oprávněními, jinak selže. Spouštěcí kód vaší `OnStart` cloudové služby může vytvořit čítač výkonu, který vyžaduje spuštění role v kontextu se zvýšenými oprávněními. Případně můžete vytvořit úlohu po spuštění se zvýšenými oprávněními a vytvořit čítač výkonu. Další informace o úlohách po spuštění najdete v tématu [Konfigurace a spouštění úloh po spuštění pro cloudovou službu](cloud-services-startup-tasks.md).
+Můžete vytvořit nový čítač výkonu a použít ho v kódu. Váš kód, který vytváří nový čítač výkonu, musí běžet se zvýšenými oprávněními, jinak selže. Cloudová služba `OnStart` spouštěcí kód může vytvořit čítač výkonu, který vyžaduje spuštění role v kontextu se zvýšenými oprávněními. Případně můžete vytvořit úlohu po spuštění se zvýšenými oprávněními a vytvořit čítač výkonu. Další informace o úlohách po spuštění najdete v tématu [Konfigurace a spouštění úloh po spuštění pro cloudovou službu](cloud-services-startup-tasks.md).
 
-Chcete-li nakonfigurovat, aby vaše role běžela `<Runtime>` se zvýšenými oprávněními, přidejte do souboru [. csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) element.
+Chcete-li nakonfigurovat, aby vaše role běžela se zvýšenými oprávněními, přidejte `<Runtime>` element do souboru [. csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) .
 
 ```xml
 <ServiceDefinition name="CloudServiceLoadTesting" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
@@ -181,7 +181,7 @@ Chcete-li nakonfigurovat, aby vaše role běžela `<Runtime>` se zvýšenými op
 </ServiceDefinition>
 ```
 
-Můžete vytvořit a zaregistrovat nový čítač výkonu s několika řádky kódu. Použijte přetížení `System.Diagnostics.PerformanceCounterCategory.Create` metody, které vytvoří kategorii i čítač. Následující kód nejprve zkontroluje, zda kategorie existuje, a pokud chybí, vytvoří kategorii i čítač.
+Můžete vytvořit a zaregistrovat nový čítač výkonu s několika řádky kódu. Použijte přetížení metody `System.Diagnostics.PerformanceCounterCategory.Create`, které vytvoří kategorii i čítač. Následující kód nejprve zkontroluje, zda kategorie existuje, a pokud chybí, vytvoří kategorii i čítač.
 
 ```csharp
 using System.Diagnostics;
@@ -224,7 +224,7 @@ namespace WorkerRoleWithSBQueue1
 }
 ```
 
-Pokud chcete použít čítač, zavolejte `Increment` metodu nebo. `IncrementBy`
+Pokud chcete použít čítač, zavolejte metodu `Increment` nebo `IncrementBy`.
 
 ```csharp
 // Increase the counter by 1
@@ -236,7 +236,7 @@ Teď, když vaše aplikace používá vlastní počítadlo, je potřeba nakonfig
 
 ### <a name="application-insights"></a>Application Insights
 
-Jak je uvedeno výše, čítače výkonu pro Application Insights jsou definovány v souboru **ApplicationInsights. config** . Otevřete soubor **ApplicationInsights. config** a vyhledejte prvek **ApplicationInsights** > **TelemetryModules** > **Přidat** > **čítače** . Vytvořte podřízený element a nastavte atribut na kategorii a název čítače výkonu, který jste vytvořili v kódu. `PerformanceCounter` `<Add>` `ReportAs` Nastavte atribut na popisný název, který chcete zobrazit na portálu.
+Jak je uvedeno výše, čítače výkonu pro Application Insights jsou definovány v souboru **ApplicationInsights. config** . Otevřete soubor **ApplicationInsights. config** a vyhledejte **element ApplicationInsights** > **TelemetryModules** > **Přidat** > prvek **čítače** . Vytvořte `<Add>` podřízený element a nastavte atribut `PerformanceCounter` na kategorii a název čítače výkonu, který jste vytvořili v kódu. Nastavte atribut `ReportAs` na popisný název, který chcete zobrazit na portálu.
 
 ```xml
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">
@@ -257,9 +257,9 @@ Jak je uvedeno výše, čítače výkonu pro Application Insights jsou definová
 <!-- ... cut to save space ... -->
 ```
 
-### <a name="azure-diagnostics"></a>Azure Diagnostics
+### <a name="azure-diagnostics"></a>Diagnostika Azure
 
-Jak je uvedeno výše, čítače výkonu, které chcete shromáždit, jsou definovány v souboru **Diagnostics. wadcfgx** . Otevřete tento soubor (je definovaný pro každou roli) v aplikaci Visual Studio a najděte **DiagnosticsConfiguration** > **PublicConfig** > **WadCfg** > **DiagnosticMonitorConfiguration**  >  Element **čítače výkonu** Přidejte nový element **PerformanceCounterConfiguration** jako podřízenou položku. `counterSpecifier` Nastavte atribut na kategorii a název čítače výkonu, který jste vytvořili v kódu. 
+Jak je uvedeno výše, čítače výkonu, které chcete shromáždit, jsou definovány v souboru **Diagnostics. wadcfgx** . Otevřete tento soubor (je definován pro jednu roli) v aplikaci Visual Studio a vyhledejte **DiagnosticsConfiguration** > **PublicConfig** > **WadCfg** > **DiagnosticMonitorConfiguration** > **čítače výkonu** element. Přidejte nový element **PerformanceCounterConfiguration** jako podřízenou položku. Nastavte atribut `counterSpecifier` na kategorii a název čítače výkonu, který jste vytvořili v kódu. 
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -292,3 +292,6 @@ Jak je uvedeno výše, čítače výkonu, které chcete shromáždit, jsou defin
 - [Čítače výkonu systému v Application Insights](../azure-monitor/app/performance-counters.md)
 - [Zadání cesty k čítači](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
 - [Azure Diagnostics schématu – čítače výkonu](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)
+
+
+

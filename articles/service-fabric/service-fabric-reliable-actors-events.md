@@ -1,32 +1,23 @@
 ---
-title: Události v Azure Service Fabric actors na základě objektů actor | Dokumentace Microsoftu
-description: Úvod do událostí pro Service Fabric Reliable Actors.
-services: service-fabric
-documentationcenter: .net
+title: Události v objektech actor Service Fabric Azure založených na objektu actor
+description: Získejte informace o událostech pro Service Fabric Reliable Actors, efektivním způsobu komunikace mezi objektem actor a klientem.
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: aa01b0f7-8f88-403a-bfe1-5aba00312c24
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: 9075fc8391e8afa21e3963c1eff6a630c586d647
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73c149a0d0992fecd1acf633891057570285df64
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726396"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639662"
 ---
 # <a name="actor-events"></a>Události objektu actor
-Objekt actor události poskytují způsob, jak odesílat oznámení best effort z objektu actor pro klienty. Události objektu actor jsou navrženy pro komunikaci objektu actor klienta a nemělo používat pro komunikaci objektu actor actor.
+Události objektu actor poskytují způsob, jak odesílat osvědčená oznámení od objektu actor klientům. Události objektu actor jsou navržené pro komunikaci pomocí objektu actor-klient a neměly by se používat pro komunikaci actor-to-actor.
 
-Následující fragmenty kódu ukazují, jak pomocí objektu actor události ve vaší aplikaci.
+Následující fragmenty kódu ukazují, jak používat události objektu actor ve vaší aplikaci.
 
-Definujte rozhraní, které popisuje události publikuje objekt actor. Toto rozhraní musí být odvozen od `IActorEvents` rozhraní. Argumenty metody musí být [kontraktů dat serializovatelný](service-fabric-reliable-actors-notes-on-actor-type-serialization.md). Metody musí vracet typ void, jako událost oznámení jsou jedním ze způsobů a nejlepší úsilí.
+Definujte rozhraní, které popisuje události publikované objektem actor. Toto rozhraní musí být odvozeno od rozhraní `IActorEvents`. Argumenty metody musí být [serializovatelných kontraktů dat](service-fabric-reliable-actors-notes-on-actor-type-serialization.md). Metody musí vracet typ void, protože oznámení událostí představují jeden ze způsobů a co nejlepší úsilí.
 
 ```csharp
 public interface IGameEvents : IActorEvents
@@ -40,7 +31,7 @@ public interface GameEvents implements ActorEvents
     void gameScoreUpdated(UUID gameId, String currentScore);
 }
 ```
-Deklarování událostí publikovat podle objektu actor v rozhraní objektu actor.
+Deklarujte události publikované objektem actor v rozhraní objektu actor.
 
 ```csharp
 public interface IGameActor : IActor, IActorEventPublisher<IGameEvents>
@@ -58,7 +49,7 @@ public interface GameActor extends Actor, ActorEventPublisherE<GameEvents>
     CompletableFuture<String> getGameScore();
 }
 ```
-Na straně klienta implementujte obslužnou rutinu události.
+Na straně klienta Implementujte obslužnou rutinu události.
 
 ```csharp
 class GameEventsHandler : IGameEvents
@@ -79,7 +70,7 @@ class GameEventsHandler implements GameEvents {
 }
 ```
 
-Na straně klienta vytvořit proxy pro objekt actor, který publikuje události a přihlášení k odběru jeho událostí.
+Na straně klienta vytvořte proxy pro objekt actor, který publikuje událost a přihlásí se k odběru událostí.
 
 ```csharp
 var proxy = ActorProxy.Create<IGameActor>(
@@ -94,9 +85,9 @@ GameActor actorProxy = ActorProxyBase.create<GameActor>(GameActor.class, new Act
 return ActorProxyEventUtility.subscribeAsync(actorProxy, new GameEventsHandler());
 ```
 
-V případě převzetí služeb při selhání objekt actor mohou převzetí služeb při selhání na jiný proces nebo uzel. Objekt actor proxy spravuje aktivní odběry a automaticky je znovu přihlásí. Můžete řídit interval opakovaného předplatného prostřednictvím `ActorProxyEventExtensions.SubscribeAsync<TEvent>` rozhraní API. Chcete-li zrušit odběr, použijte `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` rozhraní API.
+V případě převzetí služeb při selhání může objekt actor převzít služby při selhání na jiný proces nebo uzel. Proxy objekt actor spravuje aktivní odběry a automaticky je znovu přihlásí. Interval opětovného předplatného můžete řídit prostřednictvím rozhraní `ActorProxyEventExtensions.SubscribeAsync<TEvent>` API. Pokud chcete zrušit odběr, použijte rozhraní `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` API.
 
-Na objekt actor publikujte události při jejich provádění. Pokud existují Odběratelé událostí, modul runtime Actors je odešle oznámení.
+V objektu actor publikujte události tak, jak se vyskytují. Pokud existují předplatitelé události, modul runtime actor jim pošle oznámení.
 
 ```csharp
 var ev = GetEvent<IGameEvents>();
@@ -108,10 +99,10 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Vícenásobný přístup objektu actor](service-fabric-reliable-actors-reentrancy.md)
-* [Monitorování výkonu a Diagnostika objektů actor](service-fabric-reliable-actors-diagnostics.md)
-* [Referenční dokumentace rozhraní API objektu actor](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [Ukázka v jazyce C# kód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [C# .NET Core ukázkový kód](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)
-* [Java ukázkový kód](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Monitorování diagnostiky a výkonu objektu actor](service-fabric-reliable-actors-diagnostics.md)
+* [Referenční dokumentace k rozhraní API actor](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [C#Vzorový kód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [C#Vzorový kód .NET Core](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)
+* [Vzorový kód Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)

@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy – Citus (Velká část) – Azure Database for PostgreSQL
+title: Azure SQL Database Nejčastější dotazy k škálování
 description: Odpovědi na nejčastější dotazy, které zákazníci žádají o databázi SQL Azure v úrovni služby technologie škálování, která se běžně označuje jako databáze v rámci škálování.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: 377de93733d94d8cff5518eebb8ebba38154d10d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 6a25d5197746e04ffa25ee397e6d8451e24ae176
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974015"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614988"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database Nejčastější dotazy k škálování
 
@@ -157,7 +157,7 @@ Transakční protokol s měřítkem je prakticky nekonečný. Nemusíte se stara
 
 ### <a name="does-my-tempdb-scale-as-my-database-grows"></a>Roste můj `tempdb` při zvětšování databáze
 
-Vaše databáze `tempdb` je umístěná v místním úložišti SSD a je nakonfigurovaná na základě vámi zřízené výpočetní velikosti. Vaše `tempdb` je optimalizovaná tak, aby poskytovala maximální výkonnostní výhody. velikost `tempdb` nemůžete konfigurovat a je pro vás spravovaná.
+Vaše databáze `tempdb` je umístěná v místním úložišti SSD a má proporcionálně velikost na výpočetní velikost, kterou zřizujete. Vaše `tempdb` je optimalizovaná tak, aby poskytovala maximální výkonnostní výhody. velikost `tempdb` nemůžete konfigurovat a je pro vás spravovaná.
 
 ### <a name="does-my-database-size-automatically-grow-or-do-i-have-to-manage-the-size-of-data-files"></a>Roste velikost databáze automaticky nebo je nutné spravovat velikost datových souborů
 
@@ -165,7 +165,7 @@ Velikost databáze se automaticky zvětšuje při vkládání nebo přijímání
 
 ### <a name="what-is-the-smallest-database-size-that-hyperscale-supports-or-starts-with"></a>Jaká je nejmenší velikost databáze, kterou škálovatelné rozšíření podporuje nebo začíná na
 
-10 GB.
+40 GB. Vytvoří se databáze s škálováním na více verzí s počáteční velikostí 10 GB. Pak začíná růst o 10 GB každých 10 minut, dokud nedosáhne velikosti 40 GB. Každé z těchto 10 GB Chucks se přiděluje na jiný server, aby se zajistilo více vstupně-výstupních operací a vyšších paralelních vstupně-výstupních operací. Vzhledem k této optimalizaci, i když zvolíte počáteční velikost databáze menší než 40 GB, bude databáze automaticky zvětšena na nejméně 40 GB.
 
 ### <a name="in-what-increments-does-my-database-size-grow"></a>V jakých přírůstcích roste velikost databáze
 
@@ -268,13 +268,13 @@ Ano.
 
 CÍL bodu obnovení je 0 min. Cílem RTO je méně než 10 minut, bez ohledu na velikost databáze. 
 
-### <a name="do-backups-of-large-databases-affect-compute-performance-on-my-primary"></a>Vliv zálohování velkých databází na výpočetní výkon na primárním
+### <a name="does-database-backup-affect-compute-performance-on-my-primary-or-secondary-replicas"></a>Ovlivňuje zálohování databáze výpočetní výkon u primárních nebo sekundárních replik
 
-Ne. Zálohy spravuje subsystém úložiště a využívají snímky úložiště. Neovlivňují úlohy uživatelů na primárním počítači.
+Ne. Zálohy spravuje subsystém úložiště a využívají snímky úložiště. Neovlivňují úlohy uživatelů.
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>Je možné provést geografickou obnovu s databází s měřítkem
 
-Ano.  Geografické obnovení je plně podporované.
+Ano.  Geografické obnovení je plně podporované. Na rozdíl od obnovení k určitému bodu v čase může geografické obnovení vyžadovat dlouhou provozní operaci velikosti dat.
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Můžu nastavit geografickou replikaci s databází s měřítkem
 
@@ -296,7 +296,7 @@ Ne. V Azure SQL Database není podporován základ.
 
 ### <a name="does-hyperscale-have-support-for-r-and-python"></a>Podporuje škálování pro R a Python
 
-Ne. R a Python nejsou podporované v Azure SQL Database.
+V současnosti ne.
 
 ### <a name="are-compute-nodes-containerized"></a>Jsou výpočetní uzly kontejnery
 
@@ -306,11 +306,11 @@ Ne. Procesy s škálovatelným škálováním běží na [Service Fabricch](http
 
 ### <a name="how-much-write-throughput-can-i-push-in-a-hyperscale-database"></a>Kolik propustnosti zápisu je možné nabízet v databázi s velkým škálováním
 
-Limit propustnosti transakčního protokolu je nastaven na 100 MB/s pro libovolnou velikost výpočetního měřítka. Možnost dosažení této míry závisí na několika faktorech, mimo jiné typ úlohy, konfiguraci klienta a dostatek výpočetní kapacity na primární replice COMPUTE pro vytváření protokolů v této sazbě.
+Hodnota propustnosti transakčního protokolu je nastavená na 100 MB/s pro libovolnou velikost výpočetního měřítka. Možnost dosažení této míry závisí na několika faktorech, mimo jiné typ úlohy, konfiguraci klienta a dostatek výpočetní kapacity na primární replice COMPUTE pro vytváření protokolů v této sazbě.
 
 ### <a name="how-many-iops-do-i-get-on-the-largest-compute"></a>Kolik vstupně-výstupních operací se získá na největším výpočetním prostředí
 
-Latence a vstupně-výstupní operace se budou lišit v závislosti na vzorech úloh. Pokud se přistupovaná data ukládají do mezipaměti ve výpočetní replice, uvidíte stejný vstupně-výstupní výkon jako u místního disku SSD.
+Latence a vstupně-výstupní operace se budou lišit v závislosti na vzorech úloh. Pokud se přistupovaná data ukládají do mezipaměti ve výpočetní replice, zobrazí se podobné vstupně-výstupní operace jako s místními jednotkami SSD.
 
 ### <a name="does-my-throughput-get-affected-by-backups"></a>Bude mít tato propustnost vliv na zálohy
 
@@ -318,7 +318,11 @@ Ne. Výpočetní prostředky jsou oddělené od vrstvy úložiště. Tím se eli
 
 ### <a name="does-my-throughput-get-affected-as-i-provision-additional-compute-replicas"></a>Získá tato propustnost při zřizování dalších výpočetních replik.
 
-Vzhledem k tomu, že se úložiště sdílí a mezi primárními a sekundárními výpočetními replikami nedochází k přímé fyzické replikaci, propustnost u primární repliky nebude ovlivněna přidáním sekundárních replik. Můžeme ale omezit nepřetržitě agresivní úlohy na zápis, aby se protokol mohl použít na sekundárních replikách a stránkovacích serverech a vyhnout se špatnému výkonu čtení sekundárních replik.
+Protože je úložiště sdílené a mezi primárními a sekundárními výpočetními replikami nedochází k přímé fyzické replikaci, propustnost v primární replice nebude přímo ovlivněna přidáním sekundárních replik. Můžeme ale omezit nepřetržitě agresivní úlohy při psaní na primárním počítači, aby se protokol mohl použít na sekundárních replikách a stránkovacích serverech, aby se zabránilo špatnému výkonu čtení sekundárních replik.
+
+### <a name="how-do-i-diagnose-and-troubleshoot-performance-problems-in-a-hyperscale-database"></a>Návody diagnostikovat a řešit problémy s výkonem v databázi s škálovatelným škálováním
+
+U většiny problémů s výkonem, zejména u těch, které nejsou rootem v části výkon úložiště, platí běžné SQL Server diagnostické kroky a postup řešení potíží. Diagnostiku úložiště pro konkrétní škálování na více procesorech najdete v tématu [Diagnostika řešení potíží s výkonným škálováním v jazyce SQL](sql-database-hyperscale-performance-diagnostics.md)
 
 ## <a name="scalability-questions"></a>Otázky škálovatelnosti
 
@@ -367,7 +371,7 @@ Ne. Ke čtení replik na více instancí se můžete připojit pouze zadáním `
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>Vyrovnává inteligentní vyrovnávání zatížení úlohy čtení.
 
-Ne. Připojení s záměrem jen pro čtení je přesměrováno na libovolnou repliku s možností čtení na více instancí.
+Ne. Nové připojení s záměrem jen pro čtení se přesměruje na libovolnou repliku s možností čtení na více instancí.
 
 ### <a name="can-i-scale-updown-the-secondary-compute-replicas-independently-of-the-primary-replica"></a>Můžu škálovat sekundární repliky výpočetních dat nezávisle na primární replice.
 
@@ -383,7 +387,7 @@ Ne. Databáze s škálovatelným škálováním mají sdílené úložiště, co
 
 ### <a name="how-much-delay-is-there-going-to-be-between-the-primary-and-secondary-compute-replicas"></a>Kolik zpoždění mezi primárními a sekundárními výpočetními replikami nastane
 
-Od doby, kdy je transakce potvrzena na primární úrovni v závislosti na aktuální rychlosti generování protokolu, může být buď okamžitá, nebo v nižších milisekundách.
+Latence dat od času, kdy je transakce potvrzena na primárním čase, který je zobrazený na sekundárním počítači, závisí na aktuální rychlosti generování protokolu. Obvyklá latence dat je v dolních milisekundách.
 
 ## <a name="next-steps"></a>Další kroky
 

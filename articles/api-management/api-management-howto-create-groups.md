@@ -1,5 +1,6 @@
 ---
-title: Správa vývojářských účtů pomocí skupin v Azure API Management | Microsoft Docs
+title: Správa vývojářských účtů pomocí skupin v Azure API Management
+titleSuffix: Azure API Management
 description: Naučte se spravovat účty pro vývojáře pomocí skupin v Azure API Management
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: f83b91933e2aca4bf77fcab4a30f2123f4eb4ed0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 182f0ea93ddfb2ab64de1c15b36958537fa5431f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073642"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430709"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Vytvoření a použití skupin pro správu vývojářských účtů v Azure API Management
 
@@ -39,7 +40,7 @@ Kromě vytváření a správy skupin na portálu vydavatele můžete vytvořit a
 
 ## <a name="prerequisites"></a>Požadavky
 
-Dokončení úloh v tomto článku: [Vytvořte instanci služby Azure API Management](get-started-create-service-instance.md).
+Dokončení úloh v tomto článku: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -52,7 +53,7 @@ V této části se dozvíte, jak přidat novou skupinu do účtu API Management.
 3. Zadejte jedinečný název skupiny a případně i její popis.
 4. Stiskněte **Vytvořit**.
 
-    ![Přidat novou skupinu](./media/api-management-howto-create-groups/groups001.png)
+    ![Přidání nové skupiny](./media/api-management-howto-create-groups/groups001.png)
 
 Po vytvoření skupiny se přidá do seznamu **skupiny** . <br/>Chcete-li upravit **název** nebo **Popis** skupiny, klikněte na název skupiny a **Nastavení**.<br/>Skupinu odstraníte tak, že kliknete na název skupiny a stisknete **Odstranit**.
 
@@ -84,17 +85,17 @@ Jakmile je produkt přidružený ke skupině, můžou vývojáři v této skupin
 V této části se dozvíte, jak přidružit skupiny ke členům.
 
 1. Vyberte kartu **skupiny** vlevo na obrazovce.
-2. Vyberte **členy**.
+2. Vyberte možnost **Členové**.
 
-    ![Přidat člena](./media/api-management-howto-create-groups/groups005.png)
+    ![Přidání člena](./media/api-management-howto-create-groups/groups005.png)
 3. Stiskněte **+ Přidat** a vyberte člena.
 
-    ![Přidat člena](./media/api-management-howto-create-groups/groups006.png)
+    ![Přidání člena](./media/api-management-howto-create-groups/groups006.png)
 4. Stiskněte **Vybrat**.
 
 Po přidání přidružení mezi vývojářem a skupinou si ho můžete zobrazit na kartě **Uživatelé** .
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"> </a>Další kroky
 
 * Jakmile se vývojář přidá do skupiny, může zobrazit a přihlásit se k odběru produktů přidružených k této skupině. Další informace najdete v tématu [jak vytvořit a publikovat produkt v Azure API Management][How create and publish a product in Azure API Management],
 * Kromě vytváření a správy skupin na portálu vydavatele můžete vytvořit a spravovat skupiny pomocí entity API Management REST API [skupiny](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) .

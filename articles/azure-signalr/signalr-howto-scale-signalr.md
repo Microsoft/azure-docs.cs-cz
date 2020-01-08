@@ -4,14 +4,14 @@ description: Naučte se škálovat instance služby signalizace Azure za účele
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/11/2019
 ms.author: zhshang
-ms.openlocfilehash: 0c4f91ee9cea5e8b13ecfedafffdc1715fc242c2
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: c8d74342e624b837c7ee803a2bcdcc12a3fb814b
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464175"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659283"
 ---
 # <a name="how-to-scale-an-azure-signalr-service-instance"></a>Jak škálovat instanci služby signalizace Azure?
 V tomto článku se dozvíte, jak škálovat instanci služby signalizace Azure. Existují dva scénáře pro škálování, horizontální navýšení kapacity a horizontální navýšení kapacity.
@@ -19,12 +19,12 @@ V tomto článku se dozvíte, jak škálovat instanci služby signalizace Azure.
 * [Horizontální navýšení kapacity](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Získejte další jednotky, připojení, zprávy a další. Škálujte nahoru změnou cenové úrovně od bezplatné na standard.
 * [Horizontální](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)navýšení kapacity: zvyšte počet jednotek signalizace. Můžete škálovat až na až 100 jednotek.
 
-Použití nastavení škálování trvá několik minut. Nevyžadují, abyste změnili kód nebo znovu nasadili serverovou aplikaci.
+Použití nastavení škálování trvá několik minut. Ve výjimečných případech může trvat přibližně 30 minut, než se použije. Nevyžadují, abyste změnili kód nebo znovu nasadili serverovou aplikaci.
 
 Informace o cenách a kapacitě jednotlivých služeb signalizace najdete v [podrobnostech o cenách služby Azure Signal Service](https://azure.microsoft.com/pricing/details/signalr-service/).  
 
 > [!NOTE]
-> Změna služby signalizace z úrovně **Free** na úroveň **Standard** nebo naopak dojde ke změně IP adresy veřejné služby a obvykle zabere 3-60 minut na rozšíření změn na servery DNS v celém internetu. Vaše služba může být nedosažitelná, než se aktualizuje služba DNS. Obecně se nedoporučuje měnit cenovou úroveň příliš často.
+> Změna služby signalizace z úrovně **Free** na úroveň **Standard** nebo naopak dojde ke změně IP adresy veřejné služby a obvykle zabere 30-60 minut na rozšíření změn na servery DNS v celém internetu. Vaše služba může být nedosažitelná, než se aktualizuje služba DNS. Obecně se nedoporučuje měnit cenovou úroveň příliš často.
 
 
 ## <a name="scale-on-azure-portal"></a>Škálování podle Azure Portal
@@ -33,7 +33,7 @@ Informace o cenách a kapacitě jednotlivých služeb signalizace najdete v [pod
 
 2. Na stránce služby signalizace v nabídce vlevo vyberte možnost **škálovat**.
    
-3. Zvolte cenovou úroveň a pak klikněte na **Vybrat**. Je nutné nastavit počet jednotek pro úroveň **Standard** .
+3. Zvolte cenovou úroveň a pak klikněte na **Vybrat**. Nastavte počet jednotek pro úroveň **Standard** .
    
     ![Škálování na portálu](./media/signalr-howto-scale/signalr-howto-scale.png)
 
@@ -41,7 +41,7 @@ Informace o cenách a kapacitě jednotlivých služeb signalizace najdete v [pod
 
 ## <a name="scale-using-azure-cli"></a>Škálování pomocí Azure CLI
 
-Tento skript vytvoří nový prostředek služby signálu úrovně **Free** a novou skupinu prostředků a škáluje je až na úroveň **Standard** . 
+Tento skript vytvoří nový prostředek služby signálu úrovně **Free** a novou skupinu prostředků a škáluje ji na úroveň **Standard** . 
 
 ```azurecli-interactive
 #!/bin/bash
@@ -81,13 +81,13 @@ Poznamenejte si vygenerovaný název pro novou skupinu prostředků. Tento náze
 
 Podrobné informace, jako jsou zahrnuté zprávy a připojení pro jednotlivé cenové úrovně, najdete v tématu [Podrobnosti o cenách služby signaler](https://azure.microsoft.com/pricing/details/signalr-service/).
 
-Tabulka omezení služby, kvót a omezení v každé úrovni najdete v tématu [omezení služby Signal Service](../azure-subscription-service-limits.md#azure-signalr-service-limits).
+Tabulka omezení služby, kvót a omezení v každé úrovni najdete v tématu [omezení služby Signal Service](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits).
 
 ## <a name="next-steps"></a>Další kroky
 
 V této příručce jste se dozvěděli, jak škálovat instanci služby jednoho signálu.
 
-Pro scénáře škálování, horizontálního dělení a mezi oblastmi se podporuje také více koncových bodů.
+Pro scénáře škálování, horizontálního dělení a mezi oblastmi se podporuje i více koncových bodů.
 
 > [!div class="nextstepaction"]
 > [škálování služby signalizace s víc instancemi](./signalr-howto-scale-multi-instances.md)

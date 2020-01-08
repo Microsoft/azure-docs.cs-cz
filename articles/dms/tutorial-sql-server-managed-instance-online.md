@@ -1,5 +1,6 @@
 ---
-title: 'Kurz: použití Azure Database Migration Service k provedení online migrace SQL Server do spravované instance Azure SQL Database | Microsoft Docs'
+title: 'Kurz: migrace SQL Server Online do spravované instance SQL'
+titleSuffix: Azure Database Migration Service
 description: Naučte se provádět online migraci z SQL Server místně do Azure SQL Database spravované instance pomocí Azure Database Migration Service.
 services: dms
 author: HJToland3
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 12/04/2019
-ms.openlocfilehash: 53c0601be29c5cac9bddc37158d705f07349323d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 12/27/2019
+ms.openlocfilehash: 05cf7f1c69c6118d39efb72185443e1fad072209
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975019"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531458"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Kurz: migrace SQL Server do Azure SQL Database spravované instance online pomocí DMS
 
@@ -42,11 +43,14 @@ V tomto kurzu se naučíte:
 > [!IMPORTANT]
 > Pro optimální prostředí migrace doporučuje Microsoft vytvořit instanci Azure Database Migration Service ve stejné oblasti Azure jako cílová databáze. Přenášení dat mezi oblastmi geografickými lokalitami může zpomalit proces migrace a způsobit chyby.
 
+> [!IMPORTANT]
+> Je důležité zkrátit dobu trvání online migrace co nejvíc, abyste minimalizovali riziko přerušení způsobené změnou konfigurace instance nebo plánovanou údržbou. V případě takové události začne proces migrace od začátku. V případě plánované údržby je období odkladu 36 hodin před restartováním procesu migrace.
+
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
 Tento článek popisuje online migraci z SQL Server do spravované instance SQL Database. Offline migraci najdete v článku [migrace SQL Server do SQL Database spravované instance offline pomocí DMS](tutorial-sql-server-to-managed-instance.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -163,7 +167,7 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
 
    ![Podrobnosti zdroje](media/tutorial-sql-server-to-managed-instance-online/dms-source-details2.png)
 
-3. Vyberte **Save** (Uložit).
+3. Vyberte **Uložit**.
 
 4. Na obrazovce **Vybrat zdrojové databáze** vyberte databázi **Adventureworks2012** určenou k migraci.
 
@@ -172,7 +176,7 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
     > [!IMPORTANT]
     > Pokud používáte služba SSIS (SQL Server Integration Services) (SSIS), služba DMS v současné době nepodporuje migraci databáze katalogu pro vaše projekty SSIS a balíčky (SSISDB) z SQL Server na Azure SQL Database spravovanou instanci. Můžete ale zřídit SSIS v Azure Data Factory (ADF) a znovu nasadit SSIS projekty/balíčky do cílového SSISDBu hostovaného Azure SQL Database Managed instance. Další informace o migraci balíčků SSIS najdete v článku migrace balíčků [služba SSIS (SQL Server Integration Services) do Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages).
 
-5. Vyberte **Save** (Uložit).
+5. Vyberte **Uložit**.
 
 ## <a name="specify-target-details"></a>Zadání podrobností o cíli
 
@@ -188,7 +192,7 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
 
     ![Výběr cíle](media/tutorial-sql-server-to-managed-instance-online/dms-target-details3.png)
 
-4. Vyberte **Save** (Uložit).
+4. Vyberte **Uložit**.
 
 ## <a name="select-source-databases"></a>Výběr zdrojových databází
 
@@ -196,7 +200,7 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
 
     ![Výběr zdrojových databází](media/tutorial-sql-server-to-managed-instance-online/dms-select-source-databases2.png)
 
-2. Vyberte **Save** (Uložit).
+2. Vyberte **Uložit**.
 
 ## <a name="configure-migration-settings"></a>Konfigurace nastavení migrace
 
@@ -217,7 +221,7 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
   > Pokud se Azure Database Migration Service zobrazuje chyba "Systémová chyba 53" nebo "Systémová chyba 57", může dojít k tomu, že by výsledkem byla neschopnost Azure Database Migration Service přistupovat ke sdílené složce Azure. Pokud narazíte na jednu z těchto chyb, udělte [vám pokyny k](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)účtu úložiště z virtuální sítě.
 
 
-2. Vyberte **Save** (Uložit).
+2. Vyberte **Uložit**.
 
 ## <a name="review-the-migration-summary"></a>Kontrola shrnutí migrace
 

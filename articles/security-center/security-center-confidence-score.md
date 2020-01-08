@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: memildin
-ms.openlocfilehash: 5b7e53291e10db17f848553b17dae2f84bdb08b7
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: ca2afaa9f4e01ac56657681ce71e32e3c5375fdf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558963"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355634"
 ---
-# <a name="alert-confidence-score"></a>Skóre spolehlivosti výstrah 
+# <a name="alert-confidence-score-preview"></a>Skóre spolehlivosti výstrahy (Preview)
 
 Azure Security Center vám poskytne přehled o prostředcích, které spouštíte v Azure, a upozorní vás, když zjistí možné problémy. Objem výstrah může být náročný na to, že tým provozu zabezpečení individuálně adresuje a že je potřeba stanovit prioritu, které výstrahy se mají prozkoumat. Zkoumání výstrah může být složité a časově náročné a v důsledku toho se některé výstrahy ignorují.
 
-Skóre spolehlivosti v Security Center může vašemu týmu pomáhat při třídění a určování priorit výstrah. Security Center automaticky používá osvědčené postupy, inteligentní algoritmy a procesy používané analytiky k určení, jestli je hrozba legitimní a poskytuje smysluplné přehledy ve formě skóre spolehlivosti.
+Hodnocení spolehlivosti (aktuálně ve verzi Preview) v Security Center může vašemu týmu přispět k třídění a stanovení priorit výstrah. Security Center automaticky používá osvědčené postupy, inteligentní algoritmy a procesy používané analytiky k určení, jestli je hrozba legitimní a poskytuje smysluplné přehledy ve formě skóre spolehlivosti.
 
 ## <a name="how-the-confidence-score-is-triggered"></a>Způsob aktivace skóre spolehlivosti
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: b69abf098ba7646ebc98d126c7c0d949205d6275
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 5bf54b6975475810650aeaee4b477e60255757bf
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383980"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530676"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Nastavení testovacího prostředí pro učení datových věd pomocí poznámkových bloků Python a Jupyter
 
@@ -46,13 +46,13 @@ Při nastavování testovacího prostředí učebny použijte nastavení v násl
 | Nastavení testovacího prostředí | Hodnota/pokyny |
 | ------------ | ------------------ |
 |Velikost virtuálního počítače| Malý grafický procesor (COMPUTE). Tato velikost se nejlépe hodí pro aplikace náročné na výpočetní výkon a síťové prostředky, jako je umělá a obsáhlá výuka. |
-|Image virtuálního počítače| SQL Server 2019 standard v systému Windows Server 2019|
+|Image virtuálního počítače| Virtuální počítač pro datové vědy – Windows 2016|
 
 ## <a name="template-machine"></a>Počítač šablony
 
 Bitová kopie [Data Science Virtual Machine-Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) poskytuje nezbytné architektury a nástroje pro hloubkové učení, které jsou potřebné pro tento typ třídy.  Obrázek obsahuje poznámkové bloky Jupyter a Visual Studio Code.  [Jupyter Poznámkový blok](http://jupyter-notebook.readthedocs.io) je webová aplikace, která umožňuje odborníkům přes data přijímat nezpracované údaje, provádět výpočty a zobrazovat výsledky ve stejném prostředí.  Pro náš počítač šablony bude webová aplikace spuštěna místně.  [Visual Studio Code](https://code.visualstudio.com/) je rozhraní IDE, které poskytuje bohatě interaktivní prostředí při psaní a testování poznámkového bloku.  Další informace najdete v tématu [práce s Jupyter poznámkovým blokem v Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support).
 
-Zbývajícím úkolem pro nastavení třídy je poskytnutí místních poznámkových bloků.  Pokyny k použití ukázek Azure Machine Learning najdete v tématu [jak nakonfigurovat prostředí pomocí poznámkových bloků Jupyter](../../machine-learning/service/how-to-configure-environment.md#jupyter).  Můžete také zadat vlastní poznámkové bloky na počítači šablony.  Poznámkové bloky budou zkopírovány do všech počítačů studenta při publikování šablony.
+Zbývajícím úkolem pro nastavení třídy je poskytnutí místních poznámkových bloků.  Pokyny k použití ukázek Azure Machine Learning najdete v tématu [jak nakonfigurovat prostředí pomocí poznámkových bloků Jupyter](../../machine-learning/how-to-configure-environment.md#jupyter).  Můžete také zadat vlastní poznámkové bloky na počítači šablony.  Poznámkové bloky budou zkopírovány do všech počítačů studenta při publikování šablony.
 
 ## <a name="cost-estimate"></a>Odhad nákladů
 

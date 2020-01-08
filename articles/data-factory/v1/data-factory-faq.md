@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 7c0b5cbfe77a39cbc8ac660178a1c573d1fe8f7d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 1b042c0279e458cf83bd5c81147f4b1f25d7687d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139820"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645136"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory – často kladené otázky
 > [!NOTE]
@@ -44,7 +44,7 @@ Podrobnosti o cenách pro Azure Data Factory najdete na [stránce s podrobnostmi
 Data Factory je k dispozici v **USA – západ** a **Severní Evropa**. Výpočetní služby a služby úložiště, které používají datové továrny, můžou být v jiných oblastech. Viz [podporované oblasti](data-factory-introduction.md#supported-regions).
 
 ### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Jaká jsou omezení počtu datových továren/kanálů/aktivit/datových sad?
-V článku limity [, kvóty a omezení předplatného a služeb Azure](../../azure-subscription-service-limits.md#data-factory-limits) najdete v části **omezení Azure Data Factory** .
+V článku limity [, kvóty a omezení předplatného a služeb Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) najdete v části **omezení Azure Data Factory** .
 
 ### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Co je prostředí pro vytváření a vývojáře pomocí služby Azure Data Factory?
 Pomocí jednoho z následujících nástrojů nebo sad SDK můžete vytvářet a vytvářet datové továrny:

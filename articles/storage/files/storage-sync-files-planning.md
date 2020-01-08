@@ -4,15 +4,15 @@ description: Zjistěte, co je potřeba vzít v úvahu při plánování nasazen�
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 12/18/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bb75fd8aafdc886a8753fa2e6be30d9d7f83bb6f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c81f06d924a0ba871115e0ae0164d61449855263
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927860"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665267"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -35,7 +35,7 @@ Registrovaný objekt serveru představuje vztah důvěryhodnosti mezi serverem (
 
 ### <a name="azure-file-sync-agent"></a>Agent Azure File Sync
 Agent Synchronizace souborů Azure je balíček ke stažení, který umožňuje synchronizaci Windows Serveru se sdílenou složkou Azure. Agent Azure File Sync má tři hlavní součásti: 
-- **FileSyncSvc. exe**: služba na pozadí systému Windows, která zodpovídá za sledování změn v koncových bodech serveru a pro zahájení synchronizace relací do Azure.
+- **FileSyncSvc. exe**: služba na pozadí, která zodpovídá za sledování změn v koncových bodech serveru a pro zahájení synchronizace relací do Azure.
 - **StorageSync. sys**: filtr systému souborů Azure File Sync, který zodpovídá za vrstvení souborů do souborů Azure (Pokud je povolená vrstva cloudu).
 - **Rutiny pro správu PowerShellu**: rutiny PowerShellu, které slouží k interakci s poskytovatelem prostředků Microsoft. StorageSync Azure. Můžete je najít v následujících umístěních (výchozí):
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll
@@ -69,7 +69,7 @@ Vrstvení cloudu je volitelná funkce Azure File Sync, ve které jsou často pou
 Tato část popisuje Azure File Sync požadavky na systém agenta a interoperabilitu s funkcemi a rolemi Windows serveru a řešeními třetích stran.
 
 ### <a name="evaluation-cmdlet"></a>Rutina vyhodnocení
-Před nasazením Azure File Sync byste měli vyhodnotit, jestli je kompatibilní s vaším systémem pomocí rutiny Azure File Sync vyhodnocení. Tato rutina kontroluje potenciální problémy se systémem souborů a datovou sadou, jako jsou například nepodporované znaky nebo Nepodporovaná verze operačního systému. Všimněte si, že jeho kontroly pokrývají většinu, ale ne všechny funkce uvedené níže. Doporučujeme, abyste si pečlivě přečetli zbytek této části a zajistili tak plynulé nasazení. 
+Před nasazením Azure File Sync byste měli vyhodnotit, jestli je kompatibilní s vaším systémem pomocí rutiny Azure File Sync vyhodnocení. Tato rutina kontroluje potenciální problémy se systémem souborů a datovou sadou, jako jsou například nepodporované znaky nebo Nepodporovaná verze operačního systému. Jeho kontroly pokrývají většinu, ale ne všechny funkce uvedené níže. Doporučujeme, abyste si pečlivě přečetli zbytek této části a zajistili tak plynulé nasazení. 
 
 Rutinu vyhodnocení se dá nainstalovat tak, že nainstalujete modul AZ PowerShell, který se dá nainstalovat podle pokynů uvedených tady: [instalace a konfigurace Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
@@ -99,7 +99,7 @@ Zobrazení výsledků ve formátu CSV:
 ### <a name="system-requirements"></a>Systémové požadavky
 - Server, na kterém je spuštěná jedna z následujících verzí operačního systému:
 
-    | Version | Podporované SKU | Podporované možnosti nasazení |
+    | Verze | Podporované SKU | Podporované možnosti nasazení |
     |---------|----------------|------------------------------|
     | Windows Server 2019 | Datacenter a Standard | Úplné a základní |
     | Windows Server 2016 | Datacenter a Standard | Úplné a základní |
@@ -141,8 +141,10 @@ Zobrazení výsledků ve formátu CSV:
 
 | Soubor nebo složka | Poznámka |
 |-|-|
+| pagefile.sys | Soubor specifický pro systém |
 | Desktop.ini | Soubor specifický pro systém |
-| ethumbs.db$ | Dočasný soubor pro miniatury |
+| miniatury. DB | Dočasný soubor pro miniatury |
+| ehThumbs. DB | Dočasný soubor pro miniatury multimédií |
 | ~$\*.\* | Dočasný soubor Office |
 | \*. tmp | Dočasný soubor |
 | \*.laccdb | Soubor zámků Access DB|
@@ -173,11 +175,11 @@ Azure File Sync nepodporuje odstranění duplicitních dat a vrstvení cloudu na
 
 **Poznámky**
 - Pokud se odstranění duplicitních dat nainstaluje před instalací agenta Azure File Sync, vyžaduje se restart k podpoře odstranění duplicitních dat a vrstvení cloudu na stejném svazku.
-- Pokud je odstranění duplicitních dat u svazku po povolení vrstvení cloudu povolené, bude úloha optimalizace prvotního odstranění duplicit optimalizovat soubory na svazku, které ještě nejsou vrstvené a budou mít následující dopad na vrstvení cloudu:
+- Pokud je odstranění duplicitních dat u svazku po povolení vrstvení cloudu povolené, bude úloha optimalizace prvotního odstranění duplicit optimalizovat soubory na svazku, které ještě nejsou vrstvené, a bude mít následující dopad na vrstvení cloudu:
     - Zásada volného místa bude pokračovat v souborech vrstev podle volného místa na svazku pomocí nástroje heatmapu.
     - Zásada data přeskočí vrstvení souborů, které mohly být jinak způsobilé pro vrstvení z důvodu úlohy optimalizace odstranění duplicitních dat při přístupu k souborům.
 - V případě probíhajících úloh optimalizace odstranění duplicit se vrstvení cloudu se zásadami data po nastavení [MinimumFileAgeDays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps) odstranění duplicitních dat zpozdí, pokud soubor ještě není vrstvený. 
-    - Příklad: Pokud je nastavení MinimumFileAgeDays 7 dní a datové vrstvy cloudu je nastavené na 30 dní, zásada data bude mít soubory na úrovni po 37 dnech.
+    - Příklad: Pokud je nastavení MinimumFileAgeDays sedm dní a zásady pro datové vrstvy cloudu jsou nastavené na 30 dní, zásada data bude mít soubory na úrovni po 37 dnech.
     - Poznámka: když je soubor vrstvený Azure File Sync, úloha optimalizace odstranění duplicit soubor přeskočí.
 - Pokud je server se systémem Windows Server 2012 R2 s nainstalovaným agentem Azure File Sync upgradován na Windows Server 2016 nebo Windows Server 2019, je nutné provést následující kroky, aby bylo možné podporovat odstranění duplicitních dat a vrstvení cloudu na stejném svazku:  
     - Odinstalujte agenta Azure File Sync pro Windows Server 2012 R2 a restartujte server.
@@ -227,7 +229,7 @@ Pokud používáte místní řešení zálohování, měli byste zálohy provád
 > Úplné obnovení systému (BMR) může způsobit neočekávané výsledky a aktuálně se nepodporuje.
 
 > [!Note]  
-> S verzí 9 agenta Azure File SYnc se teď na svazcích, na kterých je povolená vrstva cloudu, podporují snímky stínové kopie svazku (včetně karty předchozí verze). Je však nutné povolit kompatibilitu předchozí verze prostřednictvím prostředí PowerShell. [Zjistěte jak](storage-files-deployment-guide.md).
+> Ve verzi 9 agenta Azure File Sync se teď na svazcích, na kterých je povolená vrstva cloudu, podporují snímky služby Stínová kopie svazku (včetně karty předchozí verze). Je však nutné povolit kompatibilitu předchozí verze prostřednictvím prostředí PowerShell. [Zjistěte jak](storage-files-deployment-guide.md).
 
 ### <a name="encryption-solutions"></a>Řešení šifrování
 Podpora šifrovacích řešení závisí na způsobu jejich implementace. Azure File Sync je známo, že funguje:
@@ -247,17 +249,17 @@ S Azure File Sync by se neměla používat žádná další řešení HSM.
 ## <a name="region-availability"></a>Regionální dostupnost
 Azure File Sync je k dispozici pouze v následujících oblastech:
 
-| Oblast | Umístění Datacenter |
+| Region (Oblast) | Umístění Datacenter |
 |--------|---------------------|
 | Austrálie – východ | Nový Jižní Wales |
 | Austrálie – jihovýchod | Victoria |
 | Brazílie – jih | Sao Paulo – stát |
-| Kanada – střed | Toronto |
-| Kanada – východ | Québec |
+| Střední Kanada | Toronto |
+| Východní Kanada | Québec |
 | Střední Indie | Puné |
 | Střední USA | Iowa |
 | Východní Asie | Hongkong – zvláštní správní oblast |
-| USA – východ | Virginie |
+| Východní USA | Virginie |
 | USA – východ 2 | Virginie |
 | Francie – střed | Paříž |
 | Francie – jih * | Marseille |
@@ -272,7 +274,7 @@ Azure File Sync je k dispozici pouze v následujících oblastech:
 | Středojižní USA | Texas |
 | Jižní Indie | Čennaj |
 | Jihovýchodní Asie | Singapur |
-| Velká Británie – jih | Londýn |
+| Spojené království – jih | Londýn |
 | Velká Británie – západ | Cardiff |
 | US Gov – Arizona | Arizona |
 | US Gov – Texas | Texas |
@@ -289,10 +291,10 @@ Azure File Sync podporuje synchronizaci jenom se sdílenou složkou Azure, kter�
 U oblastí označených hvězdičkami musíte kontaktovat podporu Azure a požádat o přístup k Azure Storage v těchto oblastech. Tento postup je popsaný v [tomto dokumentu](https://azure.microsoft.com/global-infrastructure/geographies/).
 
 ### <a name="azure-disaster-recovery"></a>Zotavení po havárii Azure
-Kvůli ochraně před ztrátou oblasti Azure Azure File Sync integrace s možností [redundance redundantního úložiště](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS). GRS Storage funguje pomocí asynchronního blokování replikace mezi úložištěm v primární oblasti, se kterým obvykle pracujete, a úložištěm v spárované sekundární oblasti. V případě havárie, který způsobí, že se oblast Azure dočasně nebo trvale převede do režimu offline, bude Microsoft převzetí služeb při selhání úložiště do spárované oblasti. 
+Kvůli ochraně před ztrátou oblasti Azure Azure File Sync integrace s možností [redundance redundantního úložiště](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS). GRS Storage funguje pomocí asynchronního blokování replikace mezi úložištěm v primární oblasti, se kterým obvykle pracujete, a úložištěm v spárované sekundární oblasti. V případě havárie, která způsobí, že se oblast Azure dočasně nebo trvale převede do režimu offline, bude Microsoft převzetí služeb při selhání úložiště do spárované oblasti. 
 
 > [!Warning]  
-> Pokud používáte sdílenou složku Azure jako koncový bod cloudu v účtu úložiště GRS, neměli byste iniciovat převzetí služeb při selhání účtu úložiště. Tím dojde k tomu, že synchronizace přestane fungovat a může také způsobit neočekávanou ztrátu dat v případě nově vrstvených souborů. V případě ztráty oblasti Azure spustí Microsoft převzetí služeb při selhání účtu úložiště způsobem, který je kompatibilní s Azure File Sync.
+> Pokud používáte sdílenou složku Azure jako koncový bod cloudu v účtu úložiště GRS, neměli byste iniciovat převzetí služeb při selhání účtu úložiště. Pokud to uděláte, synchronizace přestane fungovat a v případě nově vrstvených souborů může dojít i k neočekávané ztrátě dat. V případě ztráty oblasti Azure spustí Microsoft převzetí služeb při selhání účtu úložiště způsobem, který je kompatibilní s Azure File Sync.
 
 Pro podporu integrace převzetí služeb při selhání mezi geograficky redundantním úložištěm a Azure File Sync jsou všechny oblasti Azure File Sync párovány s sekundární oblastí, která odpovídá sekundární oblasti používané v úložišti. Tyto páry jsou následující:
 
@@ -301,12 +303,12 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 | Austrálie – východ      | Austrálie – jihovýchod|
 | Austrálie – jihovýchod | Austrálie – východ     |
 | Brazílie – jih        | Středojižní USA   |
-| Kanada – střed      | Kanada – východ        |
-| Kanada – východ         | Kanada – střed     |
+| Střední Kanada      | Východní Kanada        |
+| Východní Kanada         | Střední Kanada     |
 | Střední Indie       | Jižní Indie        |
 | Střední USA          | Východ USA 2          |
 | Východní Asie           | Jihovýchodní Asie     |
-| USA – východ             | Západní USA            |
+| Východní USA             | Západní USA            |
 | Východ USA 2           | Střední USA         |
 | Francie – střed      | Francie – jih       |
 | Francie – jih        | Francie – střed     |
@@ -321,18 +323,42 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 | Středojižní USA    | Středoseverní USA   |
 | Jižní Indie         | Střední Indie      |
 | Jihovýchodní Asie      | Východní Asie          |
-| Velká Británie – jih            | Velká Británie – západ            |
-| Velká Británie – západ             | Velká Británie – jih           |
+| Spojené království – jih            | Velká Británie – západ            |
+| Velká Británie – západ             | Spojené království – jih           |
 | US Gov – Arizona      | US Gov – Texas       |
 | USA – Iowa         | USA – Virginie    |
 | USA – Virginie      | US Gov – Texas       |
 | Západní Evropa         | Severní Evropa       |
 | Středozápadní USA     | Západní USA 2          |
-| Západní USA             | USA – východ            |
+| Západní USA             | Východní USA            |
 | Západní USA 2           | Středozápadní USA    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="recommended-azure-file-sync-machine-configuration"></a>Doporučená konfigurace Azure File Sync počítačů
+
+Požadavky na Azure File Sync počítače se určují podle počtu objektů v oboru názvů a změn v datové sadě. Jeden server může být připojen k více skupinám synchronizace a počet objektů uvedených v následujících tabulkách účtů pro úplný obor názvů, ke kterému je server připojen. Například koncový bod serveru A s 10 000 000 objekty a koncovým bodem serveru B s 10 000 000 objekty = 20 000 000 objekty. Pro tento příklad nasazení doporučujeme 8CPU, 16GiB paměti pro stálý stav a (Pokud je to možné) 48GiB paměti pro počáteční migraci.
+ 
+Data oboru názvů jsou ukládána v paměti z důvodů výkonu. Vzhledem k tomu, že větší obory názvů vyžadují více paměti, aby bylo možné udržet dobrý výkon a více změn vyžaduje více PROCESORů pro zpracování. 
+ 
+V následující tabulce jsme poskytovali jak velikost oboru názvů, tak i převod na kapacitu pro typické sdílené složky pro obecné účely, kde Průměrná velikost souboru je 512KiB. Pokud jsou velikosti souborů menší, zvažte přidání další paměti pro stejnou velikost kapacity. Založte konfiguraci paměti na velikost oboru názvů.
+
+| Velikost oboru názvů – soubory & adresářů (miliony)  | Typická kapacita (TiB)  | Jádra procesoru  | Doporučená paměť (GiB) |
+|---------|---------|---------|---------|
+| 3        | 1.4     | 2        | 8 (počáteční synchronizace)/2 (Typická četnost změn)      |
+| 5        | 2.3     | 2        | 16 (počáteční synchronizace)/4 (Typická četnost změn)    |
+| 10       | 4.7     | 4        | 32 (počáteční synchronizace)/8 (Typická četnost změn)   |
+| 30       | 14,0    | 8        | 48 (počáteční synchronizace)/16 (Typická četnost změn)   |
+| 50       | 23,3    | 16       | 64 (počáteční synchronizace)/32 (Typická četnost změn)  |
+| 100 *     | 46,6    | 32       | 128 (počáteční synchronizace)/32 (Typická četnost změn)  |
+
+\*více než 100 000 000 souborů & adresářů se v tuto chvíli nepodporuje. Toto je měkký limit.
+
+> [!TIP]
+> Počáteční synchronizace oboru názvů je náročná operace a doporučujeme přidělit více paměti, dokud nebude dokončena počáteční synchronizace. To se nevyžaduje, ale může urychlit počáteční synchronizaci. 
+> 
+> Typická četnost změn je 0,5% změny oboru názvů za den. Pro vyšší úrovně změn zvažte přidání dalších PROCESORů. 
 
 ## <a name="next-steps"></a>Další kroky
 * [Zvážení brány firewall a nastavení proxy serveru](storage-sync-files-firewall-and-proxy.md)

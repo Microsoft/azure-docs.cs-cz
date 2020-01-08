@@ -1,6 +1,6 @@
 ---
 title: 'Azure AD Connect agent zřizování cloudu: automatický upgrade | Microsoft Docs'
-description: Toto téma popisuje integrovanou funkci automatického upgradu v Azure AD Connect agenta zřizování cloudu.
+description: Tento článek popisuje integrovanou funkci automatického upgradu v Azure AD Connect agenta zřizování cloudu.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,35 +15,35 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 193804064fbf6d1abb2ce06df1e923ec709ef6de
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d3786386f75f4b85fe89562254eab63471de6cb2
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794455"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549393"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-agent-automatic-upgrade"></a>Azure AD Connect agent zřizování cloudu: automatický upgrade
 
-Ujistěte se, že instalace agenta Azure AD Connectho cloudového zřizování je vždycky aktuální, a to pomocí funkce **automatického upgradu** nikdy jednodušší. Tato funkce je ve výchozím nastavení povolená a nedá se zakázat.
+Ujistěte se, že vaše Azure Active Directory (Azure AD) Connect Cloud zřizovacího agenta je vždycky aktuální, a to pomocí funkce automatického upgradu. Tato funkce je ve výchozím nastavení povolená a nedá se zakázat.
 
-Agent se nainstaluje tady: **"program FILES\AZURE AD Connect zřizování Agent\AADConnectProvisioningAgent.exe"**
+Agent se nainstaluje tady: "program files\Azure AD Connect zřizování Agent\AADConnectProvisioningAgent.exe"
 
-Svou verzi můžete ověřit tak, že kliknete pravým tlačítkem na spustitelný soubor a vyberete vlastnosti a pak zobrazíte podrobnosti.
+Verzi ověříte tak, že kliknete pravým tlačítkem na spustitelný soubor a vyberete vlastnosti a pak podrobnosti.
 
 ![Verze souboru agenta](media/how-to-automatic-upgrade/agent1.png)
 
-Aktualizace agenta se nainstaluje tady: **"program FILES\AZURE AD Connect Updater\AzureADConnectAgentUpdater.exee agent"**
+Aktualizace agenta se nainstaluje tady: "program files\Azure AD Connect Updater\AzureADConnectAgentUpdater.exee agent"
 
-Svou verzi můžete ověřit tak, že kliknete pravým tlačítkem na spustitelný soubor a vyberete vlastnosti a pak zobrazíte podrobnosti.
+Verzi ověříte tak, že kliknete pravým tlačítkem na spustitelný soubor a vyberete vlastnosti a pak podrobnosti.
 
 ![Verze aktualizačního agenta](media/how-to-automatic-upgrade/agent2.png)
 
-## <a name="uninstalling-the-agent"></a>Odinstalace agenta
-Chcete-li agenta odebrat, přejděte k části **odinstalace nebo změna programu** a odinstalujte následující:
+## <a name="uninstall-the-agent"></a>Odinstalace agenta
+Pokud chcete agenta odebrat, přejděte na **Odinstalovat nebo změnit program** a odinstalujte následující:
 
-- Aktualizace agenta Microsoft Azure AD Connect
-- Agent zřizování pro Microsoft Azure AD připojení
-- Balíček zřizovacího agenta Microsoft Azure AD Connect
+- **Aktualizace agenta Microsoft Azure AD Connect**
+- **Agent zřizování pro Microsoft Azure AD připojení**
+- **Balíček zřizovacího agenta Microsoft Azure AD Connect**
 
 ![Odebrání agenta](media/how-to-automatic-upgrade/agent3.png)
 

@@ -5,18 +5,18 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 306f6cb0b50b7befcbf51e6164a5da887d35616e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 8cb328c36a1120e5a30732c36e53d9669fc6a67c
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74030875"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530863"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Archivace protokolů prostředků Azure do účtu úložiště
-[Protokoly prostředků](resource-logs-overview.md) v Azure poskytují bohatě a často větší údaje o interním provozu prostředku Azure. Tento článek popisuje, jak shromažďovat protokoly prostředků do účtu služby Azure Storage a uchovávat tak data k archivaci.
+[Protokoly platforem](resource-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé.  Tento článek popisuje, jak shromažďovat protokoly platforem pro účet služby Azure Storage a uchovávat data pro archivaci.
 
 ## <a name="prerequisites"></a>Požadavky
 Pokud ještě nemáte [účet úložiště Azure](../../storage/common/storage-quickstart-create-account.md) , musíte ho vytvořit. Účet úložiště nemusí být ve stejném předplatném jako prostředek odesílající protokoly, pokud uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC k oběma předplatným.
@@ -26,19 +26,17 @@ Pokud ještě nemáte [účet úložiště Azure](../../storage/common/storage-q
 > Účty Azure Data Lake Storage Gen2 nejsou v současné době podporovány jako cíl pro nastavení diagnostiky, i když mohou být v Azure Portal uvedeny jako platná možnost.
 
 
-Neměli byste používat existující účet úložiště, který obsahuje jiná, nemonitorovaná data, která jsou v něm uložená, abyste mohli lépe řídit přístup k datům monitorování. Pokud i přesto archivujte [Protokol aktivit](activity-logs-overview.md) do účtu úložiště, můžete použít stejný účet úložiště, abyste zachovali všechna data monitorování v centrálním umístění.
+Neměli byste používat existující účet úložiště, který obsahuje jiná, nemonitorovaná data, která jsou v něm uložená, abyste mohli lépe řídit přístup k datům. Pokud společně archivujte protokoly aktivit a protokoly prostředků, můžete použít stejný účet úložiště, abyste zachovali všechna data monitorování v centrálním umístění.
 
 ## <a name="create-a-diagnostic-setting"></a>Vytvoření nastavení diagnostiky
-Protokoly prostředků nejsou ve výchozím nastavení shromažďovány. Shromážděte je do účtu služby Azure Storage a dalších cílů vytvořením nastavení diagnostiky pro prostředek Azure. Podrobnosti najdete [v tématu Vytvoření nastavení diagnostiky pro shromáždění protokolů a metrik v Azure](diagnostic-settings.md) .
+Odeslání protokolů platformy do úložiště a dalších cílů vytvořením nastavení diagnostiky pro prostředek Azure. Podrobnosti najdete [v tématu Vytvoření nastavení diagnostiky pro shromáždění protokolů a metrik v Azure](diagnostic-settings.md) .
 
 
-## <a name="data-retention"></a>Uchovávání dat
-Zásady uchovávání informací definují počet dní, po které se uchovávají data z jednotlivých kategorií protokolů a data metriky uložená v účtu úložiště. Zásada uchovávání informací může být libovolný počet dní mezi 0 a 365. Zásada uchovávání hodnoty nula určuje, že události pro tuto kategorii protokolu jsou uloženy po neomezenou dobu.
-
-Zásady uchovávání informací se použijí za den, takže na konci dne (UTC) se od dne, který je teď nad rámec zásad uchovávání, odstraní. Například pokud máte zásady uchovávání informací o jeden den, na začátku dne dnes protokoly ze včerejška před den se odstraní. Proces odstraňování začíná o půlnoci UTC, ale Všimněte si, že může trvat až 24 hodin pro protokoly, které mají být odstraněny z vašeho účtu úložiště. 
+## <a name="collect-data-from-compute-resources"></a>Shromažďování dat z výpočetních prostředků
+Nastavení diagnostiky bude shromažďovat protokoly prostředků pro výpočetní prostředky Azure, jako jsou všechny ostatní prostředky, ale ne jejich hostovaný operační systém nebo úlohy. Chcete-li shromáždit tato data, nainstalujte [agenta pro Windows Azure Diagnostics](diagnostics-extension-overview.md). Podrobnosti najdete [v tématu ukládání a zobrazení diagnostických dat v Azure Storage](diagnostics-extension-to-storage.md) .
 
 
-## <a name="schema-of-resource-logs-in-storage-account"></a>Schéma protokolů prostředků v účtu úložiště
+## <a name="schema-of-platform-logs-in-storage-account"></a>Schéma protokolů platformy v účtu úložiště
 
 Po vytvoření nastavení diagnostiky se kontejner úložiště vytvoří v účtu úložiště, jakmile dojde k události v jedné z kategorií povolených protokolů. Objekty BLOB v kontejneru používají následující konvence vytváření názvů:
 
@@ -54,7 +52,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/xxxxxxxx
 
 Každý objekt blob PT1H.json obsahuje objekt blob ve formátu JSON událostí, ke kterým došlo během hodiny zadané v adrese URL objektu blob (například h=12). Během aktuální hodiny se události připojují do souboru PT1H.json, když k nim dojde. Hodnota minut (m = 00) je vždy 00, protože události protokolu prostředku jsou v jednotlivých objektech blob za hodinu rozděleny.
 
-V souboru PT1H. JSON jsou jednotlivé události uložené v následujícím formátu. Použije se běžné schéma nejvyšší úrovně, ale jedinečné pro každou službu Azure, jak je popsáno v tématu [schéma protokolů prostředků](resource-logs-overview.md#resource-logs-schema).
+V souboru PT1H. JSON jsou jednotlivé události uložené v následujícím formátu. Bude se používat běžné schéma nejvyšší úrovně, ale jedinečné pro každou službu Azure, jak je popsáno v tématu schéma [prostředků protokoly](diagnostic-logs-schema.md) a [schéma protokolu aktivit](activity-log-schema.md).
 
 ``` JSON
 {"time": "2016-07-01T00:00:37.2040000Z","systemId": "46cdbb41-cb9c-4f3d-a5b4-1d458d827ff1","category": "NetworkSecurityGroupRuleCounter","resourceId": "/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/TESTNSG","operationName": "NetworkSecurityGroupCounters","properties": {"vnetResourceGuid": "{12345678-9012-3456-7890-123456789012}","subnetPrefix": "10.3.0.0/24","macAddress": "000123456789","ruleName": "/subscriptions/ s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg/securityRules/default-allow-rdp","direction": "In","type": "allow","matchedConnections": 1988}}
@@ -65,7 +63,7 @@ V souboru PT1H. JSON jsou jednotlivé události uložené v následujícím form
 
 ## <a name="next-steps"></a>Další kroky
 
+* [Přečtěte si další informace o protokolech prostředků](resource-logs-overview.md).
+* [Vytvořte nastavení diagnostiky pro shromažďování protokolů a metrik v Azure](diagnostic-settings.md).
 * [Stáhněte si objekty blob pro analýzu](../../storage/blobs/storage-quickstart-blobs-dotnet.md).
 * [Archivace Azure Active Directory protokolů pomocí Azure monitor](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md).
-* [Přečtěte si další informace o protokolech prostředků](../../azure-monitor/platform/resource-logs-overview.md).
-

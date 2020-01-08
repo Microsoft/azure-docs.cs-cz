@@ -1,27 +1,20 @@
 ---
-title: Doporučení testu testu výkonnosti pro Azure NetApp Files | Microsoft Docs
-description: Poskytuje doporučení pro testování srovnávacích testů pro výkon a metriky pomocí Azure NetApp Files.
-services: azure-netapp-files
-documentationcenter: ''
+title: Doporučené testy testů výkonnosti – Azure NetApp Files
+description: Přečtěte si o doporučeních testování srovnávacích testů pro výkon a metriky na svazcích pomocí Azure NetApp Files.
 author: b-juche
-manager: ''
-editor: ''
-ms.assetid: ''
+ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.author: b-juche
-ms.openlocfilehash: 1969b3c237a4133df6f53bd6426ca4d50581cbcb
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 8f354152c23dd7ad0413f27585d724f8070ca003
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881737"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551518"
 ---
-# <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Doporučení testu testu výkonnosti pro Azure NetApp Files
+# <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Doporučení srovnávacích testů výkonnosti pro Azure NetApp Files
 
 Tento článek poskytuje doporučení pro testování testů pro výkon a metriky pomocí Azure NetApp Files.
 
@@ -51,7 +44,7 @@ FIO je k dispozici v binárním formátu pro Linux i Windows. Postupujte podle o
 
 Příklady FIO v této části používají následující nastavení:
 * Velikost instance virtuálního počítače: D32s_v3
-* Úroveň a velikost služby fondu kapacity: Premium / 50 TiB
+* Úroveň a velikost služby fondu kapacity: Premium/50 TiB
 * Velikost kvóty svazku: 48 TiB
 
 Následující příklady znázorňují náhodné čtení a zápisy FIO.
@@ -60,7 +53,7 @@ Následující příklady znázorňují náhodné čtení a zápisy FIO.
 
 `fio --name=8krandomreads --rw=randread --direct=1 --ioengine=libaio --bs=8k --numjobs=4 --iodepth=128 --size=4G --runtime=600 --group_reporting`
 
-### <a name="output-68k-read-iops-displayed"></a>Výstup: Zobrazuje se 68k čtení IOPS
+### <a name="output-68k-read-iops-displayed"></a>Výstup: zobrazeno 68k čtení IOPS
 
 `Starting 4 processes`  
 `Jobs: 4 (f=4): [r(4)][84.4%][r=537MiB/s,w=0KiB/s][r=68.8k,w=0 IOPS][eta 00m:05s]`
@@ -69,7 +62,7 @@ Následující příklady znázorňují náhodné čtení a zápisy FIO.
 
 `fio --name=8krandomwrites --rw=randwrite --direct=1 --ioengine=libaio --bs=8k --numjobs=4 --iodepth=128  --size=4G --runtime=600 --group_reporting`
 
-### <a name="output-73k-write-iops-displayed"></a>Výstup: Zobrazuje se 73k zápis IOPS
+### <a name="output-73k-write-iops-displayed"></a>Výstup: zobrazil se 73k zápis IOPS
 
 `Starting 4 processes`  
 `Jobs: 4 (f=4): [w(4)][26.7%][r=0KiB/s,w=571MiB/s][r=0,w=73.0k IOPS][eta 00m:22s]`
@@ -78,11 +71,11 @@ Následující příklady znázorňují náhodné čtení a zápisy FIO.
 
 Příklady v této části ukazují sekvenční čtení a zápisy FIO.
 
-### <a name="fio-64k-block-size-100-sequential-reads"></a>FIO: 64 KB velikost bloku 100% sekvenčních čtení
+### <a name="fio-64k-block-size-100-sequential-reads"></a>FIO: 64 KB velikost bloku 100% sekvenčního čtení
 
 `fio --name=64kseqreads --rw=read --direct=1 --ioengine=libaio --bs=64k --numjobs=4 --iodepth=128  --size=4G --runtime=600 --group_reporting`
 
-### <a name="output-118-gbits-throughput-displayed"></a>Výstup: propustnost GB 11,8/s se zobrazila
+### <a name="output-118-gbits-throughput-displayed"></a>Výstup: zobrazení propustnosti 11,8 GB/s
 
 `Starting 4 processes`  
 `Jobs: 4 (f=4): [R(4)][40.0%][r=1313MiB/s,w=0KiB/s][r=21.0k,w=0 IOPS][eta 00m:09s]`
@@ -91,7 +84,7 @@ Příklady v této části ukazují sekvenční čtení a zápisy FIO.
 
 `fio --name=64kseqwrites --rw=write --direct=1 --ioengine=libaio --bs=64k --numjobs=4 --iodepth=128  --size=4G --runtime=600 --group_reporting`
 
-### <a name="output-122-gbits-throughput-displayed"></a>Výstup: propustnost GB 12,2/s se zobrazila
+### <a name="output-122-gbits-throughput-displayed"></a>Výstup: zobrazení propustnosti 12,2 GB/s
 
 `Starting 4 processes`  
 `Jobs: 4 (f=4): [W(4)][85.7%][r=0KiB/s,w=1356MiB/s][r=0,w=21.7k IOPS][eta 00m:02s]`
@@ -120,7 +113,7 @@ Můžete také vytvořit řídicí panel v Azure Monitor pro Azure NetApp Files 
 
 ### <a name="azure-monitor-api-access"></a>Přístup k rozhraní API Azure Monitor
 
-K Azure NetApp Filesm čítačům můžete přistupovat pomocí volání REST API. Viz [podporované metriky s Azure monitor: Microsoft. NetApp/netAppAccounts/capacityPools/svazky](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetappnetappaccountscapacitypoolsvolumes) pro čítače pro fondy kapacity a svazky.
+K Azure NetApp Filesm čítačům můžete přistupovat pomocí volání REST API. Další informace najdete v tématu [podporované metriky ve službě Azure monitor: Microsoft. NetApp/netAppAccounts/capacityPools/](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetappnetappaccountscapacitypoolsvolumes) Volumes pro čítače pro fondy kapacity a svazky.
 
 Následující příklad ukazuje adresu URL GET pro zobrazení velikosti logického svazku:
 
@@ -128,7 +121,7 @@ Následující příklad ukazuje adresu URL GET pro zobrazení velikosti logick�
 `curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/ANFACCOUNTGOESHERE/capacityPools/ANFPOOLGOESHERE/Volumes/ANFVOLUMEGOESHERE/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=VolumeLogicalSize`
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Úrovně služeb pro Azure NetApp Files](azure-netapp-files-service-levels.md)
 - [Srovnávací testy výkonu pro Azure NetApp Files](azure-netapp-files-performance-benchmarks.md)

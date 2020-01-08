@@ -1,5 +1,5 @@
 ---
-title: Přidání služby Azure AD pomocí připojených služeb
+title: Používání služby Active Directory Connected (Visual Studio)
 description: Přidání Azure Active Directory pomocí dialogového okna Přidat připojené služby v aplikaci Visual Studio
 author: ghogen
 manager: jillfra
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bbbf002110d997d18c49fb03ad599342cdf618d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 435ec76a6a7ffe81c1be2752d69b79c1fb8d0bd2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964195"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423186"
 ---
-# <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Přidání Azure Active Directory pomocí připojených služeb v aplikaci Visual Studio
+# <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Přidání Azure Active Directory pomocí připojených služeb v aplikaci Visual Studio
 
 Pomocí Azure Active Directory (Azure AD) můžete podporovat jednotné přihlašování (SSO) pro webové aplikace ASP.NET MVC nebo ověřování služby Active Directory ve službě webového rozhraní API. Pomocí ověřování Azure AD můžou vaši uživatelé používat svoje účty z Azure Active Directory pro připojení k vašim webovým aplikacím. Výhodou ověřování AD Azure v kombinaci s webovým rozhraním API je například dokonalejší zabezpečení dat při zpřístupňování rozhraní API z webové aplikace. S Azure AD nemusíte spravovat samostatný ověřovací systém s vlastním účtem a správou uživatelů.
 
@@ -27,7 +27,7 @@ Tento článek a jeho doprovodné články obsahují podrobné informace o použ
 
 Služba Active Directory Connected v současné době nepodporuje ASP.NET Core aplikace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure: Pokud ještě nemáte účet Azure, můžete si [zaregistrovat bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) nebo [aktivovat výhody pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 - **Visual Studio 2015** nebo novější. [Stáhněte si Visual Studio hned teď](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).

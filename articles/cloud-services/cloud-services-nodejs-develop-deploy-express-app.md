@@ -1,20 +1,21 @@
 ---
 title: Sestavení a nasazení aplikace Node. js Express do Azure Cloud Services
+titleSuffix: Azure Cloud Services
 description: Sestavení a nasazení aplikace Express. js v Node. js do Azure Cloud Services
 services: cloud-services
 documentationcenter: nodejs
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: gwallace
-ms.openlocfilehash: 080ec61df2042a4cf2eac9d5175c4681f98fd9df
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.author: tagore
+ms.openlocfilehash: 79a998930a384420b22add8825ee4b2269eb4539
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306779"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360748"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>Sestavení a nasazení webové aplikace v Node. js pomocí Expressu v Cloud Services Azure
 
@@ -44,7 +45,7 @@ Provedením následujících kroků vytvořte nový projekt cloudové služby s 
     > 
     > 
 
-## <a name="install-express"></a>Instalace Express
+## <a name="install-express"></a>Instalace aplikace Express
 1. Nainstalujte generátor Express vyvoláním následujícího příkazu:
    
         PS C:\node\expressapp> npm install express-generator -g
@@ -96,7 +97,7 @@ Teď upravte zobrazení tak, aby se zobrazila zpráva "Vítá vás Express v Azu
    Jade je výchozí modul zobrazení používaný aplikacemi Express. Další informace o modulu zobrazení Jade naleznete v tématu [http://jade-lang.com][http://jade-lang.com].
 2. Upravte poslední řádek textu připojením **v Azure**.
    
-   ![Soubor index. Jade, poslední řádek načte: p Vítejte na \#{title} v Azure](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)
+   ![Soubor index. Jade, poslední řádek načte: p Vítá vás \#{title} v Azure](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)
 3. Uložte soubor a ukončete Poznámkový blok.
 4. Aktualizujte si prohlížeč a zobrazí se vaše změny.
    
@@ -113,11 +114,14 @@ Po dokončení operace nasazení se v prohlížeči otevře a zobrazí webová s
 
 ![Webový prohlížeč zobrazující stránku Express Adresa URL indikuje, že je teď hostovaná v Azure.](./media/cloud-services-nodejs-develop-deploy-express-app/node36.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace najdete ve [Středisku pro vývojáře Node.js](https://docs.microsoft.com/azure/javascript/).
 
 [Node.js Web Application]: https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
 [Express]: https://expressjs.com/
 [http://jade-lang.com]: http://jade-lang.com
+
+
+
 
 

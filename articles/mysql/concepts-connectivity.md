@@ -7,12 +7,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: b598fafbbfce9a2c0a824dd6530d07a5933a2873
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 92e213a87796247128e7e3810db99fde8525e12a
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765202"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659215"
 ---
 # <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>Zpracování přechodných chyb a efektivní připojení k Azure Database for MySQL
 
@@ -52,7 +52,7 @@ Databázová připojení jsou omezeným prostředkem, takže efektivní využit�
 
 Správa připojení k databázi může mít významný dopad na výkon aplikace jako celek. Pro optimalizaci výkonu aplikace by měl být cílem snížit počet navázání připojení a čas pro vytvoření připojení v cestách kódu klíče. Pro připojení k Azure Database for MySQL důrazně doporučujeme použít sdružování připojení databáze nebo trvalá připojení. Sdružování připojení databáze zajišťuje vytváření, správu a přidělování databázových připojení. Když program požádá o připojení k databázi, upřednostní přidělení stávajících nečinných připojení databáze místo vytvoření nového připojení. Po dokončení programu pomocí databázového připojení se připojení obnoví v příprava pro další použití, místo abyste ho jednoduše zavřeli.
 
-Pro lepší ilustraci Tento článek obsahuje [ukázku kódu](./sample-scripts-java-connection-pooling.md) , který jako příklad používá Java. Další informace najdete v tématu [Apache Common DBCP](http://commons.apache.org/proper/commons-dbcp/).
+Pro lepší ilustraci Tento článek obsahuje [ukázku kódu](./sample-scripts-java-connection-pooling.md) , který jako příklad používá Java. Další informace najdete v tématu [Apache Common DBCP](https://commons.apache.org/proper/commons-dbcp/).
 
 > [!NOTE]
 > Server po nějakou dobu nakonfiguruje mechanismus časového limitu, aby uzavřel připojení, které bylo v nečinném stavu, aby bylo možné prostředky uvolnit. Nezapomeňte nastavit ověřovací systém, aby se zajistila efektivita trvalých připojení při jejich používání. Další informace najdete v tématu [Konfigurace ověřovacích systémů na straně klienta, aby se zajistila efektivita trvalých připojení](concepts-connectivity.md#configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections).

@@ -1,31 +1,23 @@
 ---
-title: Osvědčené postupy zabezpečení pro Azure Service Fabric | Microsoft Docs
+title: Osvědčené postupy pro zabezpečení Azure Service Fabric
 description: Tento článek poskytuje sadu osvědčených postupů pro Azure Service Fabric Security.
-services: security
-documentationcenter: na
 author: unifycloud
-manager: barbkess
-editor: tomsh
-ms.assetid: ''
+ms.author: tomsh
 ms.service: security
 ms.subservice: security-fundamentals
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/16/2019
-ms.author: tomsh
-ms.openlocfilehash: dc063621e6b3e1d0d3e1a51d744ca9d9a6ef8c8d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 458a1d474e9a722a98ca068e1827cf0e1abf4b47
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934623"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548815"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Osvědčené postupy zabezpečení Azure Service Fabric
 Nasazení aplikace v Azure je rychlé, jednoduché a nákladově efektivní. Před nasazením cloudové aplikace do produkčního prostředí si Projděte náš seznam základních a doporučených osvědčených postupů pro implementaci zabezpečených clusterů ve vaší aplikaci.
 
-Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb. Service Fabric se taky zaměřuje na problematiku vývoje a správy cloudových aplikací. Vývojáři a správci se můžou vyhnout problémům se složitou infrastrukturou a místo toho se soustředit na implementaci zásadních a náročných úloh, které jsou škálovatelné, spolehlivé a spravovatelné.
+Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb. Service Fabric se taky zaměřuje na problematiku vývoje a správy cloudových aplikací. Vývojáři a správci se můžou vyhnout komplexním problémům s infrastrukturou a soustředit se na implementaci důležitých a náročných úloh, které jsou škálovatelné, spolehlivé a spravovatelné.
 
 Pro každý osvědčený postup je vysvětleno:
 
@@ -67,8 +59,8 @@ Existují tři [scénáře](../../service-fabric/service-fabric-cluster-security
 
 -   Zabezpečení mezi uzly: Tento scénář zabezpečuje komunikaci mezi virtuálními počítači a počítači v clusteru. Tato forma zabezpečení zajišťuje, že aplikace a služby v clusteru můžou hostovat jenom ty počítače, které jsou autorizované pro připojení ke clusteru.
 V tomto scénáři můžou clustery spuštěné v Azure nebo samostatné clustery, které běží v systému Windows, používat [zabezpečení certifikátů](../../service-fabric/service-fabric-windows-cluster-x509-security.md) nebo [zabezpečení systému Windows](../../service-fabric/service-fabric-windows-cluster-windows-security.md) pro počítače se systémem Windows Server.
--   Zabezpečení klient-uzel: Tento scénář zabezpečuje komunikaci mezi klientem Service Fabric a jednotlivými uzly v clusteru.
--   Access Control na základě rolí (RBAC): Tento scénář používá pro každou roli správce a uživatele, která přistupuje ke clusteru, samostatné identity (certifikáty, Azure AD atd.). Identity role se určují při vytváření clusteru.
+-   Zabezpečení typu klient-uzel: Tento scénář zabezpečuje komunikaci mezi klientem Service Fabric a jednotlivými uzly v clusteru.
+-   Access Control na základě rolí (RBAC): Tento scénář používá samostatné identity (certifikáty, Azure AD atd.) pro každou roli správce a uživatele, která přistupuje ke clusteru. Identity role se určují při vytváření clusteru.
 
 >[!NOTE]
 >**Doporučení zabezpečení pro clustery Azure:** Použijte zabezpečení Azure AD k ověřování klientů a certifikátů pro zabezpečení mezi uzly.
@@ -105,9 +97,9 @@ Další informace o používání certifikátů X. 509 najdete v tématu [Přid�
 ## <a name="configure-security-policies"></a>Konfigurace zásad zabezpečení
 Service Fabric také zabezpečují prostředky používané aplikacemi. Prostředky, jako jsou soubory, adresáře a certifikáty, se při nasazení aplikace ukládají v rámci uživatelských účtů. Tato funkce usnadňuje spouštění aplikací mezi sebou, dokonce i ve sdíleném hostovaném prostředí.
 
--   Použijte skupinu domény nebo uživatele služby Active Directory: Spusťte službu pod přihlašovacími údaji účtu uživatele nebo skupiny služby Active Directory. Nezapomeňte použít místní službu Active Directory v rámci vaší domény a neAzure Active Directory. Přístup k dalším prostředkům v doméně, kterým bylo uděleno oprávnění, pomocí uživatele domény nebo skupiny. Například prostředky, jako jsou sdílené soubory.
+-   Použít skupinu domény nebo uživatele služby Active Directory: Spusťte službu pod pověřeními pro účet uživatele nebo skupiny služby Active Directory. Nezapomeňte použít místní službu Active Directory v rámci vaší domény a neAzure Active Directory. Přístup k dalším prostředkům v doméně, kterým bylo uděleno oprávnění, pomocí uživatele domény nebo skupiny. Například prostředky, jako jsou sdílené soubory.
 
--   Přiřaďte zásady zabezpečení přístupu pro koncové body HTTP a HTTPS: Zadejte vlastnost **SecurityAccessPolicy** , která použije zásadu **runas** na službu, když manifest služby deklaruje prostředky koncového bodu pomocí protokolu HTTP. Porty přidělené koncovým bodům HTTP jsou správně řízené seznamy přístupu pro uživatelský účet RunAs, pod kterým služba běží. Pokud zásada není nastavená, k této službě nemá přístup soubor http. sys a můžete získat chyby s voláními z klienta.
+-   Přiřaďte zásadu zabezpečení přístupu pro koncové body HTTP a HTTPS: Určete vlastnost **SecurityAccessPolicy** , která použije zásadu **runas** na službu, když manifest služby deklaruje prostředky koncového bodu pomocí protokolu HTTP. Porty přidělené koncovým bodům HTTP jsou správně řízené seznamy přístupu pro uživatelský účet RunAs, pod kterým služba běží. Pokud zásada není nastavená, k této službě nemá přístup soubor http. sys a můžete získat chyby s voláními z klienta.
 
 Informace o tom, jak používat zásady zabezpečení v Service Fabricm clusteru, najdete v tématu [Konfigurace zásad zabezpečení pro vaši aplikaci](../../service-fabric/service-fabric-application-runas-security.md).
 
@@ -152,7 +144,7 @@ Protokol HTTP není zabezpečený a podléhá odposlouchávání útoků. Data p
 Další informace o používání certifikátů SSL najdete v tématu [Konfigurace protokolu SSL pro aplikace Azure](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md).
 
 ## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>Použití izolace a zabezpečení sítě s využitím Azure Service Fabric
-Pomocí [šablony Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) jako ukázku nastavte clusterový zabezpečený cluster s protokolem NodeType. Řízení příchozího a odchozího síťového provozu pomocí šablony a skupin zabezpečení sítě.
+Pomocí [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) jako ukázku nastavte clusterový zabezpečený cluster s protokolem NodeType. Řízení příchozího a odchozího síťového provozu pomocí šablony a skupin zabezpečení sítě.
 
 Šablona má NSG pro každou sadu škálování virtuálních počítačů a slouží k řízení provozu v a ze sady. Pravidla jsou ve výchozím nastavení nakonfigurována tak, aby umožňovala veškerý provoz potřebný pro systémové služby a porty aplikací zadané v šabloně. Zkontrolujte tato pravidla a proveďte jakékoli změny, které odpovídají vašim potřebám, včetně přidání nových pravidel pro aplikace.
 

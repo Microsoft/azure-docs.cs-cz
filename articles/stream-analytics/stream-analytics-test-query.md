@@ -1,24 +1,23 @@
 ---
 title: Testování úlohy Azure Stream Analytics s ukázkovými daty
 description: Tento článek popisuje, jak použít Azure Portal k otestování Azure Stream Analytics úlohy, ukázkového vstupu a nahrání ukázkových dat.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: d68c1ee084efc146d69d8404aadb8acbb4cc33d1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 85d32e96335a9fffa874f1f370f72883ff420df0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891753"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369860"
 ---
 # <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>Testování úlohy Azure Stream Analytics s ukázkovými daty
 
-V Azure Stream Analytics můžete dotaz testovat bez spuštění nebo zastavení úlohy. Na webu Azure Portal můžete testovat dotazy na příchozí data z vaší vstupní jímky nebo nahraná ukázková data z místního souboru. Dotazy můžete testovat také místně z místních ukázkových dat nebo živých dat v [aplikaci Visual Studio](stream-analytics-live-data-local-testing.md) a [Visual Studio Code](vscode-local-run.md). 
+V Azure Stream Analytics můžete dotaz testovat bez spuštění nebo zastavení úlohy. Na webu Azure Portal můžete testovat dotazy na příchozí data z vaší vstupní jímky nebo nahraná ukázková data z místního souboru. Dotazy můžete testovat také místně z místních ukázkových dat nebo živých dat v [aplikaci Visual Studio](stream-analytics-live-data-local-testing.md) a [Visual Studio Code](visual-studio-code-local-run-live-input.md).
 
 ## <a name="sample-incoming-data-from-input"></a>Ukázková příchozí data ze vstupu
 
@@ -30,7 +29,7 @@ Azure Stream Analytics automaticky načte události ze vstupu streamování. Mů
 
 3. Na stránce Stream Analytics úlohy pod záhlavím **topologie úlohy** vyberte možnost **dotaz** . otevře se okno Editor dotazů. 
 
-4. Pokud chcete zobrazit ukázkový seznam příchozích událostí, vyberte ikonu vstup se souborem a vzorové události se automaticky zobrazí v **náhledu vstupu**. 
+4. Pokud chcete zobrazit ukázkový seznam příchozích událostí, vyberte ikonu vstup se souborem a vzorové události se automaticky zobrazí v **náhledu vstupu**.
 
    a. Typ serializace pro vaše data se automaticky rozpozná, pokud je jeho JSON nebo CSV. Můžete ji ručně změnit i na formát JSON, CSV a AVRO změnou možnosti v rozevírací nabídce.
     
@@ -74,7 +73,7 @@ Místo používání živých dat můžete použít ukázková data z místního
 
 1. Přihlaste se k portálu Azure.
    
-2. Vyhledejte existující úlohu Stream Analytics a vyberte ji.
+2. Vyhledejte existující úlohy Stream Analytics a vyberte ho.
 
 3. Na stránce Stream Analytics úlohy pod záhlavím **topologie úlohy** vyberte možnost **dotaz** . otevře se okno Editor dotazů.
 
@@ -106,4 +105,4 @@ Místo používání živých dat můžete použít ukázková data z místního
 
 * [Vysvětlení vstupů pro Azure Stream Analytics](stream-analytics-add-inputs.md)
 
-* [Porozumění výstupům z Azure Stream Analytics](stream-analytics-define-outputs.md)
+* [Vysvětlení vytvořené jako výstupy z Azure Stream Analytics](stream-analytics-define-outputs.md)

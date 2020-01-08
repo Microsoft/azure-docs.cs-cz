@@ -1,26 +1,16 @@
 ---
-title: Vytvoření aplikace typu kontejner pro Linux na platformě Service Fabric v Azure | Microsoft Docs
+title: Vytvoření aplikace typu kontejner pro Linux v Service Fabric v Azure
 description: V tomto rychlém startu sestavíte image Dockeru s vaší aplikací, nahrajete image do registru kontejneru a pak nasadíte kontejner do clusteru Service Fabric.
-services: service-fabric
-documentationcenter: linux
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: python
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0f6e24d2790f78ab0ec7292640fda3ab30e03a03
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: eb0a83d0110002cc32998af4083d06cf6e86e16a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599405"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372682"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Rychlý start: Nasazení kontejnerů Linuxu do Service Fabric
 
@@ -32,7 +22,7 @@ V tomto rychlém startu se dozvíte, jak nasadit kontejnery Linux do clusteru Se
 
 ## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu Rychlý start je potřeba:
+K dokončení tohoto rychlého startu je potřeba:
 
 1. Vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete, pokud nemáte předplatné.
 
@@ -40,14 +30,14 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 3. Instalace [sady Service Fabric SDK a](service-fabric-get-started-linux.md#installation-methods) rozhraní PŘÍKAZového řádku
 
-4. Nainstalovat [Git](https://git-scm.com/)
+4. Instalace [Gitu](https://git-scm.com/)
 
 
 ## <a name="get-the-application-package"></a>Získání balíčku aplikace
 
 K nasazení kontejnerů do Service Fabric potřebujete sadu souborů manifestu (definice aplikace), které popisují jednotlivé kontejnery a aplikaci.
 
-V konzole nástroje pomocí Gitu naklonujte kopii definice aplikace; pak změňte adresář na `Voting` adresář ve vašem klonu.
+V konzole nástroje pomocí Gitu naklonujte kopii definice aplikace; pak změňte adresáře na adresář `Voting` ve vašem klonu.
 
 ```bash
 git clone https://github.com/Azure-Samples/service-fabric-containers.git
@@ -158,14 +148,14 @@ Pokud chcete škálovat webovou front-end službu, proveďte následující krok
 
     ![Service Fabric Explorer – zahájení škálování služby][containersquickstartscale]
 
-    Teď můžete škálovat počet instancí webové front-end služby.
+    Nyní můžete škálovat počet instancí webové front-end služby.
 
 3. Změňte počet na **2** a klikněte na **Škálovat službu**.
 4. Ve stromovém zobrazení klikněte na uzel **fabric:/Voting/azurevotefront** a rozbalte uzel oddílu (reprezentovaný identifikátorem GUID).
 
     ![Service Fabric Explorer – dokončení škálování služby][containersquickstartscaledone]
 
-    Teď je vidět, že má služba dvě instance. Ve stromovém zobrazení vidíte, na kterých uzlech jsou instance spuštěné.
+    Nyní je vidět, že má služba dvě instance. Ve stromovém zobrazení vidíte, na kterých uzlech instance spuštěné.
 
 Touto jednoduchou úlohou správy jste zdvojnásobili prostředky, které má front-end služba k dispozici pro zpracování uživatelské zátěže. Je důležité si uvědomit, že pro spolehlivý provoz služby nepotřebujete více jejích instancí. Pokud služba selže, Service Fabric zajistí v clusteru spuštění nové instance služby.
 
@@ -189,9 +179,9 @@ az group delete --name $ResourceGroupName
 ```
 
 Pokud už jste dokončili práci se svým clusterem, můžete odebrat certifikát ze svého úložiště certifikátů. Příklad:
-- Ve Windows: Použijte [modul snap-in Certifikáty konzoly MMC](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Při přidávání modulu snap-in nezapomeňte vybrat možnost **Můj uživatelský účet**. Přejděte do umístění `Certificates - Current User\Personal\Certificates` a odeberte certifikát.
-- Na počítači Mac: Použijte aplikaci pro řetězce klíčů.
-- V Ubuntu: Postupujte podle kroků, které jste použili k zobrazení certifikátů a odebrání certifikátu.
+- Windows: Použijte [modul snap-in Certifikáty v konzole MMC](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Při přidávání modulu snap-in nezapomeňte vybrat možnost **Můj uživatelský účet**. Přejděte do umístění `Certificates - Current User\Personal\Certificates` a odeberte certifikát.
+- Mac: Použijte aplikaci Klíčenka.
+- Ubuntu: Postupujte podle kroků, pomocí kterých jste zobrazili certifikáty a odebrali certifikát.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -12,25 +12,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: kumud
-ms.openlocfilehash: afbe4aae0ac1296bfc4b2011069f9d81afed977f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 97737feca466a6b373a60f01624a038512203bfd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273682"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645918"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Vytvoření, změna nebo odstranění skupiny zabezpečení sítě
 
 Pravidla zabezpečení ve skupinách zabezpečení sítě umožňují filtrovat typ síťového provozu, který může přecházet do podsítí a síťových rozhraní virtuální sítě. Pokud nejste obeznámeni se skupinami zabezpečení sítě, přečtěte si článek [Přehled skupiny zabezpečení sítě](security-overview.md) , kde se dozvíte víc o těchto úlohách a o tom, jak získat zkušenosti se skupinami zabezpečení sítě v kurzu [filtrování síťového provozu](tutorial-filter-network-traffic.md) .
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Před dokončením kroků v jakékoli části tohoto článku proveďte následující úlohy:
 
 - Pokud ještě nemáte účet Azure, zaregistrujte si [bezplatný zkušební účet](https://azure.microsoft.com/free).
-- Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí svého účtu Azure.
+- Pokud používáte portál, otevřete https://portal.azure.com a přihlaste se pomocí svého účtu Azure.
 - Pokud k dokončení úkolů v tomto článku používáte příkazy prostředí PowerShell, buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo spuštěním PowerShellu z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 1.0.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 - Pokud k dokončení úkolů v tomto článku používáte příkazy rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z počítače. Tento kurz vyžaduje Azure CLI verze 2.0.28 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, je také potřeba spustit `az login` a vytvořit připojení k Azure.
 
@@ -42,13 +42,13 @@ Můžete vytvořit, [Zobrazit všechny](#view-all-network-security-groups), [Zob
 
 ### <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 
-Existuje omezení počtu skupin zabezpečení sítě, které můžete vytvořit pro každé umístění a předplatné Azure. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Existuje omezení počtu skupin zabezpečení sítě, které můžete vytvořit pro každé umístění a předplatné Azure. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**.
+1. V nabídce webu Azure Portal nebo na **domovské** stránce vyberte **Vytvořit prostředek**.
 2. Vyberte **sítě**a pak vyberte **Skupina zabezpečení sítě**.
 3. Zadejte **název** skupiny zabezpečení sítě, vyberte své **předplatné**, vytvořte novou **skupinu prostředků**nebo vyberte existující skupinu prostředků, vyberte **umístění**a pak vyberte **vytvořit**.
 
-**Příkaz**
+**Příkazy**
 
 - Azure CLI: [AZ Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create)
 - PowerShell: [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup)
@@ -57,7 +57,7 @@ Existuje omezení počtu skupin zabezpečení sítě, které můžete vytvořit 
 
 Do vyhledávacího pole v horní části portálu zadejte *skupiny zabezpečení sítě*. Pokud se ve výsledcích hledání zobrazí **skupiny zabezpečení sítě** , vyberte ji. V seznamu jsou uvedené skupiny zabezpečení sítě, které existují ve vašem předplatném.
 
-**Příkaz**
+**Příkazy**
 
 - Azure CLI: [AZ Network NSG list](/cli/azure/network/nsg#az-network-nsg-list)
 - PowerShell: [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup)
@@ -71,9 +71,9 @@ Do vyhledávacího pole v horní části portálu zadejte *skupiny zabezpečení
     *   [Řízení přístupu (IAM)](../role-based-access-control/overview.md)
     *   [Značky](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Počtu](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-    *   [Skript Automation](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)
+    *   [Skript Automation](../azure-resource-manager/templates/export-template-portal.md)
 
-**Příkaz**
+**Příkazy**
 
 - Azure CLI: [AZ Network NSG show](/cli/azure/network/nsg#az-network-nsg-show)
 - PowerShell: [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup)
@@ -83,7 +83,7 @@ Do vyhledávacího pole v horní části portálu zadejte *skupiny zabezpečení
 1. Do vyhledávacího pole v horní části portálu zadejte *skupiny zabezpečení sítě* do vyhledávacího pole. Pokud se ve výsledcích hledání zobrazí **skupiny zabezpečení sítě** , vyberte ji.
 2. Vyberte skupinu zabezpečení sítě, kterou chcete změnit. Nejběžnější změny jsou [Přidání](#create-a-security-rule) nebo [Odebrání](#delete-a-security-rule) pravidel zabezpečení a [přidružení nebo ruší skupiny zabezpečení sítě k podsíti nebo síťovému rozhraní](#associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface).
 
-**Příkaz**
+**Příkazy**
 
 - Azure CLI: [AZ Network NSG Update](/cli/azure/network/nsg#az-network-nsg-update)
 - PowerShell: [set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup)
@@ -98,9 +98,9 @@ Pokud je skupina zabezpečení sítě přidružená k žádným podsítím nebo 
 
 1. Do vyhledávacího pole v horní části portálu zadejte *skupiny zabezpečení sítě* do vyhledávacího pole. Pokud se ve výsledcích hledání zobrazí **skupiny zabezpečení sítě** , vyberte ji.
 2. V seznamu vyberte skupinu zabezpečení sítě, kterou chcete odstranit.
-3. Vyberte **Odstranit**a pak vyberte **Ano**.
+3. Vyberte **Odstranit** a potom vyberte **Ano**.
 
-**Příkaz**
+**Příkazy**
 
 - Azure CLI: [AZ Network NSG Delete](/cli/azure/network/nsg#az-network-nsg-delete)
 - PowerShell: [Remove-AzNetworkSecurityGroup](/powershell/module/az.network/remove-aznetworksecuritygroup)
@@ -111,7 +111,7 @@ Skupina zabezpečení sítě obsahuje nula nebo více pravidel zabezpečení. M�
 
 ### <a name="create-a-security-rule"></a>Vytvořit pravidlo zabezpečení
 
-Existuje omezení, kolik pravidel na skupinu zabezpečení sítě může vytvořit v rámci umístění a předplatného Azure. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Existuje omezení, kolik pravidel na skupinu zabezpečení sítě může vytvořit v rámci umístění a předplatného Azure. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 1. Do vyhledávacího pole v horní části portálu zadejte *skupiny zabezpečení sítě* do vyhledávacího pole. Pokud se ve výsledcích hledání zobrazí **skupiny zabezpečení sítě** , vyberte ji.
 2. Vyberte skupinu zabezpečení sítě ze seznamu, do kterého chcete přidat pravidlo zabezpečení.
@@ -120,17 +120,17 @@ Existuje omezení, kolik pravidel na skupinu zabezpečení sítě může vytvoř
     
     |Nastavení  |Hodnota  |Podrobnosti  |
     |---------|---------|---------|
-    |Zdroj     | Pro příchozí pravidla zabezpečení vyberte **libovolnou** **skupinu zabezpečení aplikace**, **IP adresu**nebo **značku služby** . Pokud vytváříte odchozí pravidlo zabezpečení, budou tyto možnosti stejné jako možnosti uvedené pro **cíl**.       | Pokud vyberete možnost **Skupina zabezpečení aplikace**, vyberte jednu nebo více existujících skupin zabezpečení aplikace, které existují ve stejné oblasti jako síťové rozhraní. Naučte se [vytvořit skupinu zabezpečení aplikace](#create-an-application-security-group). Pokud vyberete **skupinu zabezpečení aplikace** pro **zdroj** i **cíl**, síťová rozhraní v obou skupinách zabezpečení aplikace musí být ve stejné virtuální síti. Pokud vyberete možnost **IP adresy**, zadejte **zdrojové IP adresy/rozsahy CIDR**. Můžete zadat jednu hodnotu nebo seznam oddělený čárkami s více hodnotami. Příkladem více hodnot je 10.0.0.0/16, 192.188.1.1. Existují omezení počtu hodnot, které můžete zadat. Podrobnosti najdete v tématu [omezení Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) . Pokud vyberete možnost **značka služby**, pak vyberte jednu značku služby. Označení služby je předdefinovaný identifikátor pro kategorii IP adres. Další informace o dostupných značkách služby a o tom, co jednotlivé značky představují, najdete v tématu [značky služeb](security-overview.md#service-tags). Pokud je zadaná IP adresa přiřazená k virtuálnímu počítači Azure, ujistěte se, že zadáte privátní IP adresu, nikoli veřejnou IP adresu přiřazenou k virtuálnímu počítači. Pravidla zabezpečení se zpracovávají po Azure překládá veřejnou IP adresu na privátní IP adresu pro příchozí pravidla zabezpečení a předtím, než Azure převede privátní IP adresu na veřejnou IP adresu pro odchozí pravidla. Další informace o veřejných a privátních IP adresách v Azure najdete v tématu [typy IP adres](virtual-network-ip-addresses-overview-arm.md).        |
-    |Source port ranges     | Zadejte jeden port, například 80, rozsah portů, jako je například 1024-65535 nebo seznam oddělený čárkami a rozsahy portů, například 80, 1024-65535. Zadejte hvězdičku pro povolení provozu na jakémkoli portu. | Porty a rozsahy určují, které porty jsou povolené nebo zakázané tímto pravidlem. Existují omezení počtu portů, které můžete zadat. Podrobnosti najdete v tématu [omezení Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) .  |
-    |Destination     | Pro odchozí pravidla zabezpečení vyberte **libovolnou** **skupinu zabezpečení aplikace**, **IP adresu**nebo **Virtual Network** . Pokud vytváříte příchozí pravidlo zabezpečení, jsou možnosti stejné jako možnosti uvedené pro **zdroj**.        | Pokud vyberete možnost **Skupina zabezpečení aplikace** , musíte vybrat jednu nebo více existujících skupin zabezpečení aplikace, které existují ve stejné oblasti jako síťové rozhraní. Naučte se [vytvořit skupinu zabezpečení aplikace](#create-an-application-security-group). Pokud vyberete možnost **Skupina zabezpečení aplikace**, vyberte jednu existující skupinu zabezpečení aplikace, která existuje ve stejné oblasti jako síťové rozhraní. Pokud vyberete možnost **IP adresy**, pak určete **cílové IP adresy/rozsahy CIDR**. Podobně jako **zdrojové** a **zdrojové IP adresy/rozsahy CIDR**můžete zadat jednu nebo několik adres nebo rozsahů a omezení pro číslo, které můžete zadat. Výběr **virtuální sítě**, což je značka služby, znamená, že provoz je povolený pro všechny IP adresy v adresním prostoru virtuální sítě. Pokud je zadaná IP adresa přiřazená k virtuálnímu počítači Azure, ujistěte se, že zadáte privátní IP adresu, nikoli veřejnou IP adresu přiřazenou k virtuálnímu počítači. Pravidla zabezpečení se zpracovávají po Azure překládá veřejnou IP adresu na privátní IP adresu pro příchozí pravidla zabezpečení a předtím, než Azure převede privátní IP adresu na veřejnou IP adresu pro odchozí pravidla. Další informace o veřejných a privátních IP adresách v Azure najdete v tématu [typy IP adres](virtual-network-ip-addresses-overview-arm.md).        |
+    |Zdroj     | Pro příchozí pravidla zabezpečení vyberte **libovolnou** **skupinu zabezpečení aplikace**, **IP adresu**nebo **značku služby** . Pokud vytváříte odchozí pravidlo zabezpečení, budou tyto možnosti stejné jako možnosti uvedené pro **cíl**.       | Pokud vyberete možnost **Skupina zabezpečení aplikace**, vyberte jednu nebo více existujících skupin zabezpečení aplikace, které existují ve stejné oblasti jako síťové rozhraní. Naučte se [vytvořit skupinu zabezpečení aplikace](#create-an-application-security-group). Pokud vyberete **skupinu zabezpečení aplikace** pro **zdroj** i **cíl**, síťová rozhraní v obou skupinách zabezpečení aplikace musí být ve stejné virtuální síti. Pokud vyberete možnost **IP adresy**, zadejte **zdrojové IP adresy/rozsahy CIDR**. Můžete zadat jednu hodnotu nebo seznam oddělený čárkami s více hodnotami. Příkladem více hodnot je 10.0.0.0/16, 192.188.1.1. Existují omezení počtu hodnot, které můžete zadat. Podrobnosti najdete v tématu [omezení Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) . Pokud vyberete možnost **značka služby**, pak vyberte jednu značku služby. Označení služby je předdefinovaný identifikátor pro kategorii IP adres. Další informace o dostupných značkách služby a o tom, co jednotlivé značky představují, najdete v tématu [značky služeb](security-overview.md#service-tags). Pokud je zadaná IP adresa přiřazená k virtuálnímu počítači Azure, ujistěte se, že zadáte privátní IP adresu, nikoli veřejnou IP adresu přiřazenou k virtuálnímu počítači. Pravidla zabezpečení se zpracovávají po Azure překládá veřejnou IP adresu na privátní IP adresu pro příchozí pravidla zabezpečení a předtím, než Azure převede privátní IP adresu na veřejnou IP adresu pro odchozí pravidla. Další informace o veřejných a privátních IP adresách v Azure najdete v tématu [typy IP adres](virtual-network-ip-addresses-overview-arm.md).        |
+    |Rozsahy zdrojových portů     | Zadejte jeden port, například 80, rozsah portů, jako je například 1024-65535 nebo seznam oddělený čárkami a rozsahy portů, například 80, 1024-65535. Zadejte hvězdičku pro povolení provozu na jakémkoli portu. | Porty a rozsahy určují, které porty jsou povolené nebo zakázané tímto pravidlem. Existují omezení počtu portů, které můžete zadat. Podrobnosti najdete v tématu [omezení Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) .  |
+    |Cíl     | Pro odchozí pravidla zabezpečení vyberte **libovolnou** **skupinu zabezpečení aplikace**, **IP adresu**nebo **Virtual Network** . Pokud vytváříte příchozí pravidlo zabezpečení, jsou možnosti stejné jako možnosti uvedené pro **zdroj**.        | Pokud vyberete možnost **Skupina zabezpečení aplikace** , musíte vybrat jednu nebo více existujících skupin zabezpečení aplikace, které existují ve stejné oblasti jako síťové rozhraní. Naučte se [vytvořit skupinu zabezpečení aplikace](#create-an-application-security-group). Pokud vyberete možnost **Skupina zabezpečení aplikace**, vyberte jednu existující skupinu zabezpečení aplikace, která existuje ve stejné oblasti jako síťové rozhraní. Pokud vyberete možnost **IP adresy**, pak určete **cílové IP adresy/rozsahy CIDR**. Podobně jako **zdrojové** a **zdrojové IP adresy/rozsahy CIDR**můžete zadat jednu nebo několik adres nebo rozsahů a omezení pro číslo, které můžete zadat. Výběr **virtuální sítě**, což je značka služby, znamená, že provoz je povolený pro všechny IP adresy v adresním prostoru virtuální sítě. Pokud je zadaná IP adresa přiřazená k virtuálnímu počítači Azure, ujistěte se, že zadáte privátní IP adresu, nikoli veřejnou IP adresu přiřazenou k virtuálnímu počítači. Pravidla zabezpečení se zpracovávají po Azure překládá veřejnou IP adresu na privátní IP adresu pro příchozí pravidla zabezpečení a předtím, než Azure převede privátní IP adresu na veřejnou IP adresu pro odchozí pravidla. Další informace o veřejných a privátních IP adresách v Azure najdete v tématu [typy IP adres](virtual-network-ip-addresses-overview-arm.md).        |
     |Rozsahy cílových portů     | Zadejte jednu hodnotu nebo seznam hodnot oddělených čárkami. | Podobně jako u **rozsahů zdrojového portu**můžete zadat jeden nebo několik portů a rozsahů a omezení pro počet, který můžete zadat. |
     |Protocol (Protokol)     | Vyberte **libovolnou**položku, **TCP**, **UDP** nebo **ICMP**.        |         |
     |Akce     | Vyberte **Povolit** nebo **Odepřít**.        |         |
-    |Priority     | Zadejte hodnotu mezi 100-4096, která je jedinečná pro všechna pravidla zabezpečení v rámci skupiny zabezpečení sítě. |Pravidla se zpracovávají v pořadí podle priority. Čím nižší číslo, tím vyšší Priorita. Při vytváření pravidel se doporučuje opustit mezeru mezi čísly priority, například 100, 200, 300. Ponechání mezer usnadňuje přidání pravidel do budoucna, že možná budete muset udělat vyšší nebo nižší než stávající pravidla.         |
-    |Název     | Jedinečný název pro pravidlo v rámci skupiny zabezpečení sítě.        |  Název může mít až 80 znaků. Musí začínat písmenem nebo číslicí, končit písmenem, číslicí nebo podtržítkem a může obsahovat jenom písmena, číslice, podtržítka, tečky nebo spojovníky.       |
+    |Priorita     | Zadejte hodnotu mezi 100-4096, která je jedinečná pro všechna pravidla zabezpečení v rámci skupiny zabezpečení sítě. |Pravidla se zpracovávají v pořadí podle priority. Čím nižší číslo, tím vyšší Priorita. Při vytváření pravidel se doporučuje opustit mezeru mezi čísly priority, například 100, 200, 300. Ponechání mezer usnadňuje přidání pravidel do budoucna, že možná budete muset udělat vyšší nebo nižší než stávající pravidla.         |
+    |Name (Název)     | Jedinečný název pro pravidlo v rámci skupiny zabezpečení sítě.        |  Název může mít až 80 znaků. Musí začínat písmenem nebo číslicí, končit písmenem, číslicí nebo podtržítkem a může obsahovat jenom písmena, číslice, podtržítka, tečky nebo spojovníky.       |
     |Popis     | Volitelný popis.        |         |
 
-**Příkaz**
+**Příkazy**
 
 - Azure CLI: [AZ Network NSG Rule Create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create)
 - PowerShell: [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)
@@ -145,7 +145,7 @@ Skupina zabezpečení sítě obsahuje nula nebo více pravidel. Další informac
 
 Seznam obsahuje všechna vámi vytvořená pravidla a [výchozí pravidla zabezpečení](security-overview.md#default-security-rules)skupiny zabezpečení sítě.
 
-**Příkaz**
+**Příkazy**
 
 - Azure CLI: [AZ Network NSG Rule list](/cli/azure/network/nsg/rule#az-network-nsg-rule-list)
 - PowerShell: [Get-AzNetworkSecurityRuleConfig](/powershell/module/az.network/get-aznetworksecurityruleconfig)
@@ -157,7 +157,7 @@ Seznam obsahuje všechna vámi vytvořená pravidla a [výchozí pravidla zabezp
 3. V části **Nastavení**vyberte **příchozí pravidla zabezpečení** nebo **odchozí pravidla zabezpečení** .
 4. Vyberte pravidlo, pro které chcete zobrazit podrobnosti. Podrobné vysvětlení všech nastavení najdete v tématu [Nastavení pravidel zabezpečení](#security-rule-settings).
 
-**Příkaz**
+**Příkazy**
 
 - Azure CLI: [AZ Network NSG Rule show](/cli/azure/network/nsg/rule#az-network-nsg-rule-show)
 - PowerShell: [Get-AzNetworkSecurityRuleConfig](/powershell/module/az.network/get-aznetworksecurityruleconfig)
@@ -167,7 +167,7 @@ Seznam obsahuje všechna vámi vytvořená pravidla a [výchozí pravidla zabezp
 1. Proveďte kroky v části [zobrazení podrobností pravidla zabezpečení](#view-details-of-a-security-rule).
 2. Změňte nastavení podle potřeby a pak vyberte **Uložit**. Podrobné vysvětlení všech nastavení najdete v tématu [Nastavení pravidel zabezpečení](#security-rule-settings).
 
-**Příkaz**
+**Příkazy**
 
 - Azure CLI: [AZ Network NSG Rule Update](/cli/azure/network/nsg/rule#az-network-nsg-rule-update)
 - PowerShell: [set-AzNetworkSecurityRuleConfig](/powershell/module/az.network/set-aznetworksecurityruleconfig)
@@ -175,9 +175,9 @@ Seznam obsahuje všechna vámi vytvořená pravidla a [výchozí pravidla zabezp
 ### <a name="delete-a-security-rule"></a>Odstraní pravidlo zabezpečení.
 
 1. Proveďte kroky v části [zobrazení podrobností pravidla zabezpečení](#view-details-of-a-security-rule).
-2. Vyberte **Odstranit**a pak vyberte **Ano**.
+2. Vyberte **Odstranit** a potom vyberte **Ano**.
 
-**Příkaz**
+**Příkazy**
 
 - Azure CLI: [AZ Network NSG Rule Delete](/cli/azure/network/nsg/rule#az-network-nsg-rule-delete)
 - PowerShell: [Remove-AzNetworkSecurityRuleConfig](/powershell/module/az.network/remove-aznetworksecurityruleconfig)
@@ -194,12 +194,12 @@ Skupina zabezpečení aplikace obsahuje nula nebo více síťových rozhraní. D
 
     | Nastavení        | Hodnota                                                   |
     | ---            | ---                                                     |
-    | Název           | Název musí být v rámci skupiny prostředků jedinečný.        |
+    | Name (Název)           | Název musí být v rámci skupiny prostředků jedinečný.        |
     | Předplatné   | Vyberte své předplatné.                               |
     | Skupina prostředků | Vyberte existující skupinu prostředků nebo vytvořte novou. |
-    | Umístění       | Vybrat umístění                                       |
+    | Umístění       | Výběr umístění                                       |
 
-**Příkaz**
+**Příkazy**
 
 - Azure CLI: [AZ Network ASG Create](/cli/azure/network/asg#az-network-asg-create)
 - PowerShell: [New-AzApplicationSecurityGroup](/powershell/module/az.network/new-azapplicationsecuritygroup)
@@ -209,7 +209,7 @@ Skupina zabezpečení aplikace obsahuje nula nebo více síťových rozhraní. D
 1. V levém horním rohu Azure Portal vyberte **všechny služby** .
 2. Do pole **Filtr všech služeb** zadejte *skupiny zabezpečení aplikace* a po zobrazení ve výsledcích hledání vyberte možnost **skupiny zabezpečení aplikace** .
 
-**Příkaz**
+**Příkazy**
 
 - Azure CLI: [AZ Network ASG list](/cli/azure/network/asg#az-network-asg-list)
 - PowerShell: [Get-AzApplicationSecurityGroup](/powershell/module/az.network/get-azapplicationsecuritygroup)
@@ -220,7 +220,7 @@ Skupina zabezpečení aplikace obsahuje nula nebo více síťových rozhraní. D
 2. Do pole **Filtr všech služeb** zadejte *skupiny zabezpečení aplikace* a po zobrazení ve výsledcích hledání vyberte možnost **skupiny zabezpečení aplikace** .
 3. Vyberte skupinu zabezpečení aplikace, pro kterou chcete zobrazit podrobnosti.
 
-**Příkaz**
+**Příkazy**
 
 - Azure CLI: [AZ Network ASG show](/cli/azure/network/asg#az-network-asg-show)
 - PowerShell: [Get-AzApplicationSecurityGroup](/powershell/module/az.network/get-azapplicationsecuritygroup)
@@ -243,7 +243,7 @@ Skupinu zabezpečení aplikace nemůžete odstranit, pokud obsahuje jakákoli s�
 3. Vyberte skupinu zabezpečení aplikace, kterou chcete odstranit.
 4. Vyberte **Odstranit**a pak vyberte **Ano** , pokud chcete odstranit skupinu zabezpečení aplikace.
 
-**Příkaz**
+**Příkazy**
 
 - Azure CLI: [AZ Network ASG Delete](/cli/azure/network/asg#az-network-asg-delete)
 - PowerShell: [Remove-AzApplicationSecurityGroup](/powershell/module/az.network/remove-azapplicationsecuritygroup)
@@ -254,7 +254,7 @@ Aby bylo možné provádět úlohy se skupinami zabezpečení sítě, pravidly z
 
 ### <a name="network-security-group"></a>Skupina zabezpečení sítě
 
-| Akce                                                        |   Název                                                                |
+| Akce                                                        |   Name (Název)                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft.Network/networkSecurityGroups/read                  |   Získat skupinu zabezpečení sítě                                          |
 | Microsoft.Network/networkSecurityGroups/write                 |   Vytvořit nebo aktualizovat skupinu zabezpečení sítě                             |
@@ -264,7 +264,7 @@ Aby bylo možné provádět úlohy se skupinami zabezpečení sítě, pravidly z
 
 ### <a name="network-security-group-rule"></a>Pravidlo skupiny zabezpečení sítě
 
-| Akce                                                        |   Název                                                                |
+| Akce                                                        |   Name (Název)                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft.Network/networkSecurityGroups/rules/read            |   Získat pravidlo                                                            |
 | Microsoft.Network/networkSecurityGroups/rules/write           |   Vytvořit nebo aktualizovat pravidlo                                               |
@@ -272,7 +272,7 @@ Aby bylo možné provádět úlohy se skupinami zabezpečení sítě, pravidly z
 
 ### <a name="application-security-group"></a>Skupina zabezpečení aplikace
 
-| Akce                                                                     | Název                                                     |
+| Akce                                                                     | Name (Název)                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |
 | Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action     | Připojení konfigurace protokolu IP ke skupině zabezpečení aplikace|
 | Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | Připojit pravidlo zabezpečení ke skupině zabezpečení aplikace    |

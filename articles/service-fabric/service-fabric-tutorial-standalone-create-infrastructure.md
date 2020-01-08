@@ -1,26 +1,17 @@
 ---
-title: Kurz vytváření infrastruktury pro cluster Service Fabric v AWS – Azure Service Fabric | Microsoft Docs
+title: Vytvoření infrastruktury pro cluster v AWS
 description: V tomto kurzu se naučíte, jak nastavit infrastrukturu AWS pro spuštění clusteru Service Fabric.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 69508628356a5f33073311e4d062d66875509192
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: b6348d9fdcd4133a4fa69aac3ccf5494e904094e
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "73177827"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613971"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Kurz: Vytvoření infrastruktury AWS pro hostování clusteru Service Fabric
 
@@ -28,7 +19,7 @@ Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostř
 
 Tento kurz je první částí série. V tomto článku vygenerujeme prostředky AWS potřebné pro hostování vašeho samostatného clusteru Service Fabric. V dalších článcích bude třeba nainstalovat samostatnou sadu Service Fabric, nainstalovat do clusteru ukázkovou aplikaci a nakonec cluster vyčistit.
 
-V první části této série se naučíte:
+V první části tohoto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření sady instancí EC2
@@ -36,7 +27,7 @@ V první části této série se naučíte:
 > * Přihlaste se k jedné z instancí
 > * Příprava instance pro Service Fabric
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete mít účet AWS.  Pokud účet ještě nemáte, vytvořte si ho na stránce [AWS Console](https://aws.amazon.com/).
 
@@ -98,7 +89,7 @@ Poslední dvě pravidla by měla Service Fabric zpřístupnit světu, abyste clu
 
 Nakonec potřebujeme otevřít port 8080, abyste viděli aplikaci po nasazení. Vyberte **Add Rule** (Přidat pravidlo), z rozevíracího seznamu vyberte možnost **Custom TCP Rule** (Vlastní pravidlo TCP), jako rozsah portů zadejte `8080` a v rozevíracím seznamu Source (Zdroj) vyberte možnost Anywhere (Libovolný).
 
-Všechna pravidla jsou nyní nastavená. Vyberte **Save** (Uložit).
+Všechna pravidla jsou nyní nastavená. Vyberte **Uložit**.
 
 ## <a name="connect-to-an-instance-and-validate-connectivity"></a>Připojení k instanci a ověření připojení
 

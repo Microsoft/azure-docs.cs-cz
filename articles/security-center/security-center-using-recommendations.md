@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: 69fa9d24d24c26a7d945c27e86739475f9883b27
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 5b496523f6205532ea7a4278671e3be6986935a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200693"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355285"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Použití Azure Security Center doporučení k vylepšení zabezpečení
 Můžete snížit pravděpodobnost významné události zabezpečení konfigurací zásad zabezpečení a následnou implementací doporučení Azure Security Center. V tomto článku se dozvíte, jak používat zásady zabezpečení a doporučení v Security Center, abyste mohli zmírnit útok na zabezpečení. 
@@ -63,7 +63,7 @@ V rámci každodenních aktivit monitorování se Jan přihlásí k Azure a otev
 
 5. Když Jan klikne na **výpočty a aplikace**, uvidí seznam doporučení a zpracuje je podle dopadu na zabezpečený výsledek.
 
-6. Má Jan spousta internetových virtuálních počítačů a protože jejich porty jsou vystavené, jsou obavy, že by útočník mohl získat kontrolu nad servery. Takže se Jan rozhodne použít (**přístup k virtuálnímu počítači za běhu**) [Security-Center-just-in-time.MD].
+6. Má Jan spousta internetových virtuálních počítačů a protože jejich porty jsou vystavené, jsou obavy, že by útočník mohl získat kontrolu nad servery. Takže Jan rozhodne použít [**přístup k virtuálnímu počítači za běhu**](security-center-just-in-time.md).
 
 Jan nadále přechází přes doporučení s vysokou prioritou a střední prioritou a provede rozhodnutí o implementaci. U každého doporučení si Jan podíváme na podrobné informace, které Security Center, a dozvíte se, které prostředky jsou ovlivněny, co je to vliv na zabezpečení skóre, co jednotlivé doporučení znamená a nápravné kroky, jak tento problém zmírnit.
 

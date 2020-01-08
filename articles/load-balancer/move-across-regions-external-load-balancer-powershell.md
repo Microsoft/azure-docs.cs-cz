@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: d8dfbf3f86a2233571a99c4ad832ef7bd3c3ed48
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a24eb4608e7630d5b613751fa2120361eccd7672
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077578"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644813"
 ---
 # <a name="move-azure-external-load-balancer-to-another-region-using-azure-powershell"></a>Přesunout externí Load Balancer Azure do jiné oblasti pomocí Azure PowerShell
 
@@ -32,7 +32,7 @@ Externí nástroje pro vyrovnávání zatížení Azure nejde přesunout z jedn�
 
 - Ověřte, že vaše předplatné Azure umožňuje vytvářet externí nástroje pro vyrovnávání zatížení v cílové oblasti, která se používá. O povolení požadované kvóty požádejte podporu.
 
-- Ujistěte se, že vaše předplatné má dostatek prostředků na podporu přidání nástrojů pro vyrovnávání zatížení pro tento proces.  Viz [limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)
+- Ujistěte se, že vaše předplatné má dostatek prostředků na podporu přidání nástrojů pro vyrovnávání zatížení pro tento proces.  Viz [limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)
 
 
 ## <a name="prepare-and-move"></a>Příprava a přesun
@@ -60,7 +60,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-4. Stažený soubor se pojmenuje po vytvoření skupiny prostředků, ze které byl prostředek exportován.  Vyhledejte soubor, který byl exportován z příkazu s názvem  **\<Resource-Group-Name >. JSON** a otevřete jej v editoru podle vlastního výběru:
+4. Stažený soubor se pojmenuje po vytvoření skupiny prostředků, ze které byl prostředek exportován.  Vyhledejte soubor, který byl exportován z příkazu s názvem **\<Resource-Group-name >. JSON** a otevřete jej v editoru podle vlastního výběru:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
@@ -116,7 +116,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
     ```
 8. Můžete také změnit jiné parametry v šabloně, pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
 
-    * **SKU** -SKU veřejné IP adresy můžete změnit v konfiguraci z úrovně Standard na Basic nebo Basic na standard, a to změnou vlastnosti**název** **SKU** > v  **\<souboru Resource-Group-Name >. JSON** :
+    * **SKU** – skladovou položku veřejné IP adresy můžete změnit v konfiguraci z úrovně Standard na Basic nebo Basic na úroveň Standard, a to změnou vlastnosti **název** **SKU** > v souboru **\<Resource-Group-Name >. JSON** :
 
          ```json
             "resources": [
@@ -133,7 +133,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
 
          Další informace o rozdílech mezi veřejnými IP adresami Basic a Standard SKU najdete v tématu [Vytvoření, změna nebo odstranění veřejné IP adresy](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address).
 
-    * **Metoda přidělování veřejných IP adres** a **časový limit nečinnosti** – obě tyto možnosti v šabloně můžete změnit tak, že změníte vlastnost **publicIPAllocationMethod** z **dynamické** na **statickou** nebo **statickou** na **dynamickou.** . Časový limit nečinnosti lze změnit změnou vlastnosti **idleTimeoutInMinutes** na požadovanou hodnotu.  Výchozí hodnota je **4**:
+    * **Metoda přidělování veřejných IP adres** a **časový limit nečinnosti** – obě tyto možnosti v šabloně můžete změnit tak, že změníte vlastnost **publicIPAllocationMethod** z **dynamické** na **statickou** nebo **statickou** na **dynamickou**. Časový limit nečinnosti lze změnit změnou vlastnosti **idleTimeoutInMinutes** na požadovanou hodnotu.  Výchozí hodnota je **4**:
 
          ```json
          "resources": [
@@ -161,14 +161,14 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
         Další informace o metodách přidělování a hodnotách časového limitu nečinnosti najdete v tématu [Vytvoření, změna nebo odstranění veřejné IP adresy](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address).
 
 
-9. Uložte soubor Resource- **Group-Name >. JSON. \<**
+9. Uložte soubor **\<Resource-Group-name >. JSON** .
 
 10. Vytvořte skupinu prostředků v cílové oblasti pro nasazení cílové veřejné IP adresy pomocí [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0).
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. Do skupiny prostředků vytvořené v předchozím kroku nasaďte upravený  **\<soubor Resource-Group-Name >. JSON** pomocí [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+11. Pomocí [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)nasaďte\<upravený soubor **resource-group-name >. JSON** do skupiny prostředků vytvořené v předchozím kroku:
 
     ```azurepowershell-interactive
 
@@ -209,7 +209,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceExtLBID -IncludeParameterDefaultValue
    ```
-4. Stažený soubor se pojmenuje po vytvoření skupiny prostředků, ze které byl prostředek exportován.  Vyhledejte soubor, který byl exportován z příkazu s názvem  **\<Resource-Group-Name >. JSON** a otevřete jej v editoru podle vlastního výběru:
+4. Stažený soubor se pojmenuje po vytvoření skupiny prostředků, ze které byl prostředek exportován.  Vyhledejte soubor, který byl exportován z příkazu s názvem **\<Resource-Group-name >. JSON** a otevřete jej v editoru podle vlastního výběru:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
@@ -232,7 +232,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
 
     ```
 
-6.  Pokud chcete upravit hodnotu cílové veřejné IP adresy, která se přesunula výše, musíte nejdřív získat ID prostředku a pak ho zkopírovat a vložit do  **\<souboru Resource-Group-Name >. JSON** .  K získání ID použijte [příkaz Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0):
+6.  Pokud chcete upravit hodnotu cílové veřejné IP adresy, která se přesunula výše, musíte nejdřív získat ID prostředku a pak ho zkopírovat a vložit do souboru **\<Resource-Group-name >. JSON** .  K získání ID použijte [příkaz Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0):
 
     ```azurepowershell-interactive
     $targetPubIPID = (Get-AzPublicIPaddress -Name <target-public-ip-name> -ResourceGroupName <target-resource-group-name>).Id
@@ -244,7 +244,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
     /subscriptions/7668d659-17fc-4ffd-85ba-9de61fe977e8/resourceGroups/myResourceGroupLB-Move/providers/Microsoft.Network/publicIPAddresses/myPubIP-in-move
     ```
 
-7.  Do souboru  **Resource-Group-Name>.JSONVložteIDprostředkuzproměnnémístovlastnostiDefaultValuevedruhémparametruproexterníIDveřejnéIPadresy,nezapomeňteuzavřítcestu\<** v uvozovkách:
+7.  V souboru **\<Resource-Group-name >. JSON** vložte **ID prostředku** z proměnné místo parametru **DefaultValue** ve druhém parametru pro externí ID veřejné IP adresy, nezapomeňte uzavřít cestu v uvozovkách:
 
     ```json
             "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -261,7 +261,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
 
     ```
 
-8.  Pokud jste nakonfigurovali odchozí NAT a odchozí pravidla pro nástroj pro vyrovnávání zatížení, v tomto souboru se objeví třetí položka pro externí ID odchozí veřejné IP adresy.  Opakujte výše uvedené kroky v **cílové oblasti** , abyste získali ID odchozí veřejné IP adresy a vložili tuto položku do  **\<souboru Resource-Group-Name >. JSON** :
+8.  Pokud jste nakonfigurovali odchozí NAT a odchozí pravidla pro nástroj pro vyrovnávání zatížení, v tomto souboru se objeví třetí položka pro externí ID odchozí veřejné IP adresy.  Opakujte výše uvedené kroky v **cílové oblasti** , abyste získali ID odchozí veřejné IP adresy a vložili tuto položku do souboru **\<resource-group-name >. JSON** :
 
     ```json
             "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -282,7 +282,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
         },
     ```
 
-10. Chcete-li upravit cílovou oblast, kde bude přesunuta konfigurace externího nástroje pro vyrovnávání zatížení, změňte vlastnost **umístění** v části **prostředky** v  **\<souboru Resource-Group-Name >. JSON** :
+10. Chcete-li upravit cílovou oblast, kde bude přesunuta konfigurace externího nástroje pro vyrovnávání zatížení, změňte vlastnost **umístění** v části **prostředky** v souboru **\<resource-group-name >. JSON** :
 
     ```json
         "resources": [
@@ -306,7 +306,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
     ```
 12. Můžete také změnit jiné parametry v šabloně, pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
     
-    * **SKU** -SKU externí služby Load Balancer můžete změnit v konfiguraci z úrovně Standard na Basic nebo Basic na úroveň Standard, a to změnou vlastnosti**název** **SKU** > ve **\<skupině Resource-Group-Name >. JSON.** soubor:
+    * **SKU** – skladovou položku externího nástroje pro vyrovnávání zatížení v konfiguraci z úrovně Standard na Basic nebo Basic na standard můžete změnit změnou vlastnosti **název** **SKU** > v souboru **\<Resource-Group-Name >. JSON** :
 
         ```json
         "resources": [
@@ -322,7 +322,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
         ```
       Další informace o rozdílech mezi nástroji pro vyrovnávání zatížení Basic a Standard SKU najdete v tématu [Přehled služby Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) .
 
-    * **Pravidla vyrovnávání zatížení** – můžete přidat nebo odebrat pravidla vyrovnávání zatížení v konfiguraci přidáním nebo odebráním položek do  **\<části loadBalancingRules souboru Resource-Group-Name >. JSON** :
+    * **Pravidla vyrovnávání zatížení** – můžete přidat nebo odebrat pravidla vyrovnávání zatížení v konfiguraci přidáním nebo odebráním položek do\<části **loadBalancingRules** souboru **resource-group-name >. JSON** :
 
         ```json
         "loadBalancingRules": [
@@ -354,7 +354,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
         ```
        Další informace o pravidlech vyrovnávání zatížení najdete v tématu [co je Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
 
-    * **Sondy** – pro nástroj pro vyrovnávání zatížení v konfiguraci můžete přidat nebo odebrat testy tak, že přidáte nebo odeberete položky v  **\<části sondy souboru Resource-Group-Name >. JSON** :
+    * **Sondy** – pro nástroj pro vyrovnávání zatížení v konfiguraci můžete přidat nebo odebrat testy tak, že přidáte nebo odeberete položky v části **sondy** souboru **\<resource-group-name >. JSON** :
 
         ```json
         "probes": [
@@ -374,7 +374,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
         ```
        Další informace o sondách stavu Azure Load Balancer najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview) .
 
-    * **Příchozí pravidla NAT** – pravidla příchozího překladu adres (NAT) pro nástroj pro vyrovnávání zatížení můžete přidat nebo odebrat tak , že přidáte nebo odeberete položky v  **\<části inboundNatRules souboru Resource-Group-Name >. JSON** :
+    * **Příchozí pravidla NAT** – pravidla příchozího překladu adres (NAT) pro nástroj pro vyrovnávání zatížení můžete přidat nebo odebrat tak, že přidáte nebo odeberete položky v\<části **inboundNatRules** souboru **resource-group-name >. JSON** :
 
         ```json
         "inboundNatRules": [
@@ -396,7 +396,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
                     }
                 ]
         ```
-        Aby bylo možné doplnit nebo odebrat pravidlo příchozího překladu adres (NAT), musí být pravidlo přítomno nebo odebráno jako vlastnost **typu** na konci  **\<souboru Resource-Group-Name >. JSON** :
+        Aby bylo možné přidat nebo odebrat pravidlo příchozího překladu adres (NAT), musí být pravidlo přítomno nebo odebráno jako vlastnost **typu** na konci souboru **\<resource-group-name >. JSON** :
 
         ```json
         {
@@ -422,7 +422,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
         ```
         Další informace o příchozích pravidlech NAT najdete v tématu [co je Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
 
-    * **Odchozí pravidla** – v konfiguraci můžete přidat nebo odebrat odchozí pravidla úpravou  **\<vlastnosti outboundRules v souboru Resource-Group-Name >. JSON** :
+    * **Odchozí pravidla** – v konfiguraci můžete přidat nebo odebrat odchozí pravidla úpravou vlastnosti **outboundRules** v souboru **\<resource-group-name >. JSON** :
 
         ```json
         "outboundRules": [
@@ -450,14 +450,14 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
 
          Další informace o odchozích pravidlech najdete v tématu [Load Balancer odchozích pravidel](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview) .
 
-13. Uložte soubor Resource- **Group-Name >. JSON. \<**
+13. Uložte soubor **\<Resource-Group-name >. JSON** .
     
 10. Vytvořte nebo skupinu prostředků v cílové oblasti pro cílový externí nástroj pro vyrovnávání zatížení, který se má nasadit pomocí [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0). V rámci tohoto procesu je možné znovu použít stávající skupinu prostředků z výše uvedeného:
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. Do skupiny prostředků vytvořené v předchozím kroku nasaďte upravený  **\<soubor Resource-Group-Name >. JSON** pomocí [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+11. Pomocí [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)nasaďte\<upravený soubor **resource-group-name >. JSON** do skupiny prostředků vytvořené v předchozím kroku:
 
     ```azurepowershell-interactive
 
@@ -508,7 +508,7 @@ Remove-AzPublicIpAddress -Name <public-ip> -ResourceGroupName <resource-group-na
 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste přesunuli skupinu zabezpečení sítě Azure z jedné oblasti na jinou a vyčistili jste zdrojové prostředky.  Další informace o přesouvání prostředků mezi oblastmi a zotavení po havárii v Azure najdete tady:
 

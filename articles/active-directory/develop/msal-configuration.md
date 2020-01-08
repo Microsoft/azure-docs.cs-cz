@@ -1,5 +1,5 @@
 ---
-title: Konfigurační soubor knihovny Microsoft Authentication Library pro Android | Azure
+title: Konfigurační soubor Android MSAL | Azure
 titleSuffix: Microsoft identity platform
 description: Přehled konfiguračního souboru Microsoft Authentication Library (MSAL) pro Android, který představuje konfiguraci aplikace v Azure Active Directory.
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f643022c85a44b2202fcbd91be50664882c8ba7b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e2d366a48adf536276697959be3418f36e10d8ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916822"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424388"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Konfigurační soubor knihovny Microsoft Authentication Library pro Android
 
@@ -342,7 +342,7 @@ Následující příklad znázorňuje základní konfiguraci, která určuje ID 
 ## <a name="how-to-use-a-configuration-file"></a>Použití konfiguračního souboru
 
 1. Vytvořte konfigurační soubor. Doporučujeme vytvořit vlastní konfigurační soubor v `res/raw/auth_config.json`. Můžete ho ale umístit kamkoli tam, kde chcete.
-2. Sdělte MSAL, kde můžete hledat vaši konfiguraci při vytváření `PublicClientApplication`. Například:
+2. Sdělte MSAL, kde můžete hledat vaši konfiguraci při vytváření `PublicClientApplication`. Příklad:
 
    ```java
    //On Worker Thread

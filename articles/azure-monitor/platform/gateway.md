@@ -4,15 +4,15 @@ description: Připojení zařízení a Operations Manager monitorovaných počí
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
-ms.date: 10/30/2019
-ms.openlocfilehash: 7574f5c17c1b4598336b8db3108946164dc203f2
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+author: bwren
+ms.author: bwren
+ms.date: 12/24/2019
+ms.openlocfilehash: 1811796de96e87343544f63fcee7acdd9907693c
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847285"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530982"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor
 
@@ -24,7 +24,7 @@ Tento článek popisuje, jak nakonfigurovat komunikaci s Azure Automation a Azur
 
 Log Analytics brána je předávací proxy HTTP, který podporuje tunelování HTTP pomocí příkazu HTTP CONNECT. Tato brána odesílá data do Azure Automation a pracovní prostor Log Analytics v Azure Monitor jménem počítačů, které se nemohou přímo připojit k Internetu. 
 
-Brána Log Analytics podporuje:
+Log Analytics gateway podporuje:
 
 * Probíhá hlášení až do stejných Log Analytics pracovních prostorů nakonfigurovaných u každého agenta za ním a nakonfigurovaných pomocí Azure Automation procesů Hybrid Runbook Worker.  
 * Počítače se systémem Windows, na kterých je Microsoft Monitoring Agent přímo připojen k pracovnímu prostoru Log Analytics v Azure Monitor.
@@ -45,13 +45,13 @@ Počítač, který spouští bránu Log Analytics, vyžaduje Log Analytics agent
 
 Brána může mít více než až čtyři pracovní prostory. Toto je celkový počet pracovních prostorů, které Agent Windows podporuje.  
 
-Každý agent musí mít síťové připojení k bráně, aby agenti mohli automaticky přenášet data do a z brány. Vyhněte se instalaci brány na řadič domény.
+Každý agent musí mít síťové připojení k bráně, aby agenti mohli automaticky přenášet data do a z brány. Vyhněte se instalaci brány na řadič domény. Počítače se systémem Linux, které jsou za serverem brány, nemohou použít metodu [instalace skriptu obálky](agent-linux.md#install-the-agent-using-wrapper-script) k instalaci agenta Log Analytics pro Linux. Agenta je nutné stáhnout ručně, zkopírovat do počítače a nainstalovat ručně, protože brána podporuje pouze komunikaci se službami Azure zmíněnými výše.
 
 Následující diagram znázorňuje tok dat z přímých agentů přes bránu, aby se Azure Automation a Log Analytics. Konfigurace proxy agenta se musí shodovat s portem, se kterým je Log Analytics brána nakonfigurovaná.  
 
 ![Diagram komunikace mezi přímým agentem a službami](./media/gateway/oms-omsgateway-agentdirectconnect.png)
 
-Následující diagram znázorňuje tok dat z Operations Manager skupiny pro správu do Log Analytics.   
+Následující diagram znázorňuje tok dat ze skupiny pro správu Operations Manageru k Log Analytics.   
 
 ![Diagram Operations Manager komunikace s Log Analytics](./media/gateway/log-analytics-agent-opsmgrconnect.png)
 
@@ -61,7 +61,7 @@ Počítače určené ke spuštění brány Log Analytics musí mít následujíc
 
 * Windows 10, Windows 8.1 nebo Windows 7
 * Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 nebo Windows Server 2008
-* Microsoft .NET Framework 4,5
+* Microsoft .NET Framework 4.5
 * Alespoň 4 jádro procesoru a 8 GB paměti 
 * [Agent Log Analytics pro Windows](agent-windows.md) , který je nakonfigurovaný tak, aby nahlásil do stejného pracovního prostoru jako agenti, kteří komunikují přes bránu
 
@@ -86,11 +86,11 @@ Brána Log Analytics je dostupná v těchto jazycích:
 - ruština
 - Španělština (mezinárodní)
 
-### <a name="supported-encryption-protocols"></a>Podporované šifrovací protokoly
+### <a name="supported-encryption-protocols"></a>Šifrování podporovaných protokolů
 
 Brána Log Analytics podporuje pouze TLS (Transport Layer Security) 1,0, 1,1 a 1,2.  Nepodporuje SSL (Secure Sockets Layer) (SSL).  Aby se zajistila bezpečnost dat při přenosu do Log Analytics, nakonfigurujte bránu tak, aby používala aspoň protokol TLS 1,2. Jsou ohrožené starší verze TLS nebo SSL. I když v současné době umožňují zpětnou kompatibilitu, nepoužívejte je.  
 
-Další informace najdete v [zabezpečeném posílání dat pomocí TLS 1,2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
+Další informace najdete v tématu [odesílání dat pomocí protokolu TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
 
 ### <a name="supported-number-of-agent-connections"></a>Podporovaný počet připojení agenta
 
@@ -99,15 +99,15 @@ Následující tabulka uvádí, kolik agentů může komunikovat se serverem br�
 |brána |Podporovaná agenti (přibližná)|  
 |--------|----------------------------------|  
 |Procesor: procesor Intel Xeon E5-2660 V3 \@ 2,6 GHz 2 jádra<br> Paměť: 4 GB<br> Šířka pásma sítě: 1 GB/s| 600|  
-|Procesor: procesor Intel Xeon E5-2660 V3 \@ 2,6 GHz 4 jádra<br> Paměť: 8 GB<br> Šířka pásma sítě: 1 GB/s| 1000|  
+|Procesor: procesor Intel Xeon E5-2660 V3 \@ 2,6 GHz 4 jádra<br> Paměť: 8 GB<br> Šířka pásma sítě: 1 GB/s| 1 000|  
 
-## <a name="download-the-log-analytics-gateway"></a>Stažení Log Analytics brány
+## <a name="download-the-log-analytics-gateway"></a>Stáhněte si bránu Log Analytics
 
 Nejnovější verzi instalačního souboru brány Log Analytics Gateway získáte buď z webu [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=54443) , nebo z Azure Portal.
 
 Pokud chcete bránu Log Analytics z Azure Portal získat, postupujte takto:
 
-1. Procházejte seznamem služeb a vyberte **Log Analytics**. 
+1. Procházet seznam služeb a pak vyberte **Log Analytics**. 
 1. Vyberte pracovní prostor.
 1. V okně pracovního prostoru v části **Obecné**vyberte **rychlé zprovoznění**. 
 1. V části **Zvolit zdroj dat pro připojení k pracovnímu prostoru**vyberte **počítače**.
@@ -115,7 +115,7 @@ Pokud chcete bránu Log Analytics z Azure Portal získat, postupujte takto:
  
    ![Snímek obrazovky s postupem, jak stáhnout bránu Log Analytics](./media/gateway/download-gateway.png)
 
-nebo 
+– nebo – 
 
 1. V okně pracovního prostoru v části **Nastavení**vyberte **Upřesnit nastavení**.
 1. Přejít na **připojené zdroje** > **Windows servery** a vyberte **Stáhnout Log Analytics bránu**.
@@ -124,18 +124,18 @@ nebo
 
 Chcete-li nainstalovat bránu pomocí Průvodce instalací, postupujte podle těchto kroků. 
 
-1. V cílové složce poklikejte na **Log Analytics Gateway. msi**.
+1. Z cílové složky, dvakrát klikněte na panel **Log Analytics gateway.msi**.
 1. Na **úvodní** stránce vyberte **Další**.
 
    ![Snímek obrazovky úvodní stránky v Průvodci instalací brány](./media/gateway/gateway-wizard01.png)
 
 1. Na stránce **Licenční smlouva** vyberte možnost Souhlasím s **podmínkami licenční smlouvy** , abyste mohli vyjádřit souhlas s licenčními podmínkami pro software společnosti Microsoft, a pak vyberte možnost **Další**.
-1. Na stránce **port a adresa proxy serveru** :
+1. Na **portu a proxy adresy** stránky:
 
    a. Zadejte číslo portu TCP, který se má použít pro bránu. Instalační program používá toto číslo portu ke konfiguraci příchozího pravidla v bráně Windows Firewall.  Výchozí hodnota je 8080.
       Platný rozsah čísla portu je 1 až 65535. Pokud vstup do tohoto rozsahu nespadá, zobrazí se chybová zpráva.
 
-   b. Pokud server, na kterém je brána nainstalovaná, potřebuje komunikovat prostřednictvím proxy serveru, zadejte adresu proxy serveru, kam se musí brána připojit. Zadejte například `http://myorgname.corp.contoso.com:80`.  Pokud toto pole necháte prázdné, brána se pokusí připojit přímo k Internetu.  Pokud vaše proxy server vyžaduje ověření, zadejte uživatelské jméno a heslo.
+   b. Pokud server, na kterém je brána nainstalovaná, potřebuje komunikovat prostřednictvím proxy serveru, zadejte adresu proxy serveru, kam se musí brána připojit. Zadejte například `http://myorgname.corp.contoso.com:80`.  Pokud toto pole necháte prázdné, brána se pokusí připojit přímo k Internetu.  Pokud váš proxy server vyžaduje ověření, zadejte uživatelské jméno a heslo.
 
    c. Vyberte **Next** (Další).
 
@@ -149,6 +149,7 @@ Chcete-li nainstalovat bránu pomocí Průvodce instalací, postupujte podle tě
    ![Snímek obrazovky s místními službami, na kterém je vidět, že je spuštěná brána OMS](./media/gateway/gateway-service.png)
 
 ## <a name="install-the-log-analytics-gateway-using-the-command-line"></a>Instalace brány Log Analytics pomocí příkazového řádku
+
 Staženým souborem pro bránu je balíček Instalační služba systému Windows, který podporuje tichou instalaci z příkazového řádku nebo jiné automatizované metody. Pokud neznáte standardní možnosti příkazového řádku pro Instalační služba systému Windows, přečtěte si téma [Možnosti příkazového řádku](https://docs.microsoft.com/windows/desktop/Msi/command-line-options).
  
 V následující tabulce jsou vysvětlené parametry podporované instalačním programem.
@@ -158,8 +159,8 @@ V následující tabulce jsou vysvětlené parametry podporované instalačním 
 |ČÍSLO_PORTU | Číslo portu TCP, na kterém má brána naslouchat |
 |SOUBORY | IP adresa proxy server |
 |INSTALLDIR | Plně kvalifikovaná cesta pro určení instalačního adresáře souborů softwaru brány |
-|JMEN | ID uživatele, které se má ověřit pomocí proxy server |
-|ZADÁNO | Heslo ID uživatele, které se má ověřit pomocí proxy |
+|UŽIVATELSKÉ HESLO | ID uživatele, které se má ověřit pomocí proxy server |
+|HESLO | Heslo ID uživatele, které se má ověřit pomocí proxy |
 |LicenseAccepted | Zadejte hodnotu **1** , pokud chcete ověřit, že souhlasíte s licenční smlouvou. |
 |HASAUTH | Zadejte hodnotu **1** , pokud jsou zadány parametry uživatelského jména a hesla. |
 |HASPROXY | Zadejte hodnotu **1** při zadání IP adresy pro parametr **proxy** . |
@@ -178,28 +179,31 @@ Pokud potřebujete zadat pověření pro ověření u proxy serveru, zadejte ná
 Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROXY=1 HASAUTH=1 USERNAME="<username>" PASSWORD="<password>" LicenseAccepted=1 
 ```
 
-Po instalaci můžete potvrdit, že se nastavení akceptují (exlcuding uživatelské jméno a heslo) pomocí následujících rutin PowerShellu:
+Po dokončení instalace můžete potvrdit přijetí nastavení (s výjimkou uživatelského jména a hesla) pomocí následujících rutin PowerShellu:
 
 - **Get-OMSGatewayConfig** – vrátí port TCP, na kterém je brána nakonfigurované pro naslouchání.
 - **Get-OMSGatewayRelayProxy** – vrátí IP adresu proxy server, se kterou jste nakonfigurovali pro komunikaci.
 
-## <a name="configure-network-load-balancing"></a>Konfigurace vyrovnávání zatížení sítě 
-Bránu pro vysokou dostupnost můžete nakonfigurovat pomocí služby Vyrovnávání zatížení sítě (NLB) pomocí služby Vyrovnávání zatížení [sítě (NLB)](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing), [Azure Load Balancer](../../load-balancer/load-balancer-overview.md)nebo hardwarových nástrojů pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení spravuje provoz pomocí přesměrování požadovaných připojení od Log Analyticsch agentů nebo serverů pro správu Operations Manager napříč svými uzly. Pokud dojde k výpadku jednoho serveru brány, přenos se přesměruje na jiné uzly.
+## <a name="configure-network-load-balancing"></a>Konfigurace služby Vyrovnávání zatížení sítě
+
+Bránu pro vysokou dostupnost můžete nakonfigurovat pomocí služby Vyrovnávání zatížení sítě (NLB) pomocí služby Vyrovnávání zatížení [sítě (NLB)](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing), [Azure Load Balancer](../../load-balancer/load-balancer-overview.md)nebo hardwarových nástrojů pro vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení spravuje provozu přesměrování mezi jeho uzly požadované připojení z agentů Log Analytics nebo serverů pro správu Operations Manageru. Pokud jeden server brány ocitne mimo provoz, provoz přesměrován do dalších uzlů.
 
 ### <a name="microsoft-network-load-balancing"></a>Vyrovnávání zatížení sítě Microsoftu
-Informace o tom, jak navrhnout a nasadit cluster programu pro vyrovnávání zatížení sítě Windows Server 2016, najdete v tématu [Vyrovnávání zatížení sítě](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing). Následující postup popisuje, jak nakonfigurovat cluster programu pro vyrovnávání zatížení sítě společnosti Microsoft.  
 
-1. Přihlaste se k systému Windows Server, který je členem clusteru programu NLB, s účtem správce.  
-2. V Správce serveru otevřete Správce vyrovnávání zatížení sítě, klikněte na **nástroje**a potom klikněte na **Správce vyrovnávání zatížení sítě**.
-3. Pokud chcete připojit Server Log Analytics brány s nainstalovaným Microsoft Monitoring Agent, klikněte pravým tlačítkem na IP adresu clusteru a pak klikněte na **Přidat hostitele do clusteru**. 
+Zjistěte, jak navrhnout a nasadit cluster programu pro vyrovnávání zatížení sítě systému Windows Server 2016, najdete v článku [Vyrovnávání zatížení sítě](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing). Následující postup popisuje, jak nakonfigurovat cluster programu pro vyrovnávání zatížení sítě společnosti Microsoft.  
+
+1. Přihlaste do Windows serveru, který je členem clusteru programu NLB s účtem správce.  
+2. Ve Správci serveru otevřete Správce vyrovnávání zatížení sítě, klikněte na tlačítko **nástroje**a potom klikněte na tlačítko **Správce vyrovnávání zatížení sítě**.
+3. Pro připojení k serveru služby Brána Log Analytics pomocí Microsoft Monitoring Agent nainstalován, klikněte pravým tlačítkem na IP adresu clusteru a potom klikněte na tlačítko **přidat hostitele do clusteru**. 
 
     ![Správce vyrovnávání zatížení sítě – přidání hostitele do clusteru](./media/gateway/nlb02.png)
  
-4. Zadejte IP adresu serveru brány, který chcete připojit. 
+4. Zadejte IP adresu serveru brány, kterou chcete připojit. 
 
-    ![Správce vyrovnávání zatížení sítě – přidat hostitele do clusteru: připojit](./media/gateway/nlb03.png) 
+    ![Sítě programu Správce vyrovnávání zatížení – přidání hostitele do clusteru: připojení](./media/gateway/nlb03.png) 
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
+
 Informace o tom, jak navrhnout a nasadit Azure Load Balancer, najdete v tématu [co je Azure Load Balancer?](../../load-balancer/load-balancer-overview.md). Pokud chcete nasadit základní nástroj pro vyrovnávání zatížení, postupujte podle kroků uvedených v tomto [rychlém](../../load-balancer/quickstart-create-basic-load-balancer-portal.md) startu s výjimkou kroků uvedených v části **Vytvoření back-endové serverů**.   
 
 > [!NOTE]
@@ -213,18 +217,20 @@ Po vytvoření nástroje pro vyrovnávání zatížení je třeba vytvořit back
 >
 
 ## <a name="configure-the-log-analytics-agent-and-operations-manager-management-group"></a>Konfigurace agenta Log Analytics a skupiny pro správu Operations Manager
+
 V této části se dozvíte, jak nakonfigurovat přímo připojené Log Analytics agenty, skupinu pro správu Operations Manager nebo Azure Automation procesy Hybrid Runbook Worker s Log Analytics bránou ke komunikaci s Azure Automation nebo Log Analytics.  
 
 ### <a name="configure-a-standalone-log-analytics-agent"></a>Konfigurace samostatného agenta Log Analytics
+
 Při konfiguraci agenta Log Analytics nahraďte hodnotu proxy server IP adresou serveru brány Log Analytics a číslem portu. Pokud jste nasadili více serverů brány za nástroj pro vyrovnávání zatížení, je konfigurace proxy agenta Log Analytics virtuální IP adresou nástroje pro vyrovnávání zatížení.  
 
 >[!NOTE]
->Chcete-li nainstalovat agenta Log Analytics na počítačích brány a Windows, které se přímo připojují k Log Analytics, přečtěte si téma [připojení počítačů s Windows ke službě Log Analytics v Azure](agent-windows.md). Informace o připojení počítačů se systémem Linux najdete v tématu [Konfigurace agenta Log Analytics pro počítače se systémem Linux v hybridním prostředí](../../azure-monitor/learn/quick-collect-linux-computer.md). 
+>Chcete-li nainstalovat agenta Log Analytics na počítačích brány a Windows, které se přímo připojují k Log Analytics, přečtěte si téma [připojení počítačů s Windows ke službě Log Analytics v Azure](agent-windows.md). Informace o připojení počítačů se systémem Linux naleznete v tématu [připojení počítačů se systémem Linux k Azure monitor](agent-linux.md). 
 >
 
 Po instalaci agenta na server brány ho nakonfigurujte tak, aby se nahlásil do pracovního prostoru nebo agentů pracovních prostorů, které komunikují s bránou. Pokud v bráně není nainstalovaný Log Analytics Windows Agent, do protokolu událostí brány OMS se zapíše událost 300, která indikuje, že je potřeba nainstalovat agenta. Pokud je agent nainstalovaný, ale není nakonfigurovaný tak, aby nahlásil do stejného pracovního prostoru jako agenti, kteří ho komunikují, zapíše se do stejného protokolu událost 105, která značí, že agent v bráně musí být nakonfigurovaný tak, aby nahlásil zprávy do stejného pracovního prostoru jako agenti, kteří společně mmunicate s bránou.
 
-Po dokončení konfigurace restartujte službu brány OMS, aby se změny projevily. V opačném případě brána odmítne agenty, kteří se pokusí o komunikaci s Log Analytics, a ohlásí událost 105 v protokolu událostí brány OMS. K tomu dojde také v případě, že přidáte nebo odeberete pracovní prostor z konfigurace agenta na serveru brány.   
+Po dokončení konfigurace restartujte službu **brány OMS** , aby se změny projevily. V opačném případě brána odmítne agenty, kteří se pokusí o komunikaci s Log Analytics, a ohlásí událost 105 v protokolu událostí brány OMS. K tomu dojde také v případě, že přidáte nebo odeberete pracovní prostor z konfigurace agenta na serveru brány.
 
 Informace týkající se Hybrid Runbook Worker pro automatizaci najdete v tématu [Automatizace prostředků ve vašem datovém centru nebo cloudu pomocí Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).
 
@@ -265,7 +271,7 @@ Po dokončení integrace s Log Analytics odeberte změnu spuštěním `netsh win
 
    ![Snímek obrazovky Operations Manager se zobrazením proxy server adresy](./media/gateway/scom02.png)
 
-1. Vyberte **Finish** (Dokončit). Vaše skupina pro správu Operations Manager je teď nakonfigurovaná tak, aby komunikovala se serverem brány ke službě Log Analytics.
+1. Vyberte **Finish** (Dokončit). Vaši skupinu pro správu Operations Manageru je nyní nakonfigurováno pro komunikaci prostřednictvím serveru brány ke službě Log Analytics.
 
 ### <a name="configure-operations-manager-where-specific-agents-use-a-proxy-server"></a>Konfigurace Operations Manager, kde konkrétní agenti používají proxy server
 
@@ -277,9 +283,9 @@ U rozsáhlých nebo složitých prostředí můžete pro použití serveru Log A
 
 Konfigurace určitých serverů nebo skupin pro použití serveru Log Analytics brány: 
 
-1. Otevřete konzolu Operations Manager a vyberte pracovní prostor **vytváření obsahu** .  
+1. Otevřete konzolu nástroje Operations Manager a vyberte **Authoring** pracovního prostoru.  
 1. V pracovním prostoru vytváření obsahu vyberte **pravidla**. 
-1. Na panelu nástrojů Operations Manager vyberte tlačítko **Rozsah** . Pokud toto tlačítko není k dispozici, ujistěte se, že jste v podokně **monitorování** vybrali objekt, nikoli složku. V dialogovém okně **Rozsah sady Management Pack objekty** se zobrazí seznam společných cílových tříd, skupin nebo objektů. 
+1. Na panelu nástrojů Operations Manager vyberte tlačítko **Rozsah** . Pokud toto tlačítko není k dispozici, ujistěte se, že jste v podokně **monitorování** vybrali objekt, nikoli složku. **Obor objektů sady Management Pack** dialogové okno zobrazí seznam běžných cílové třídy, skupiny nebo objekty. 
 1. Do pole **Hledat** zadejte **Health Service** a vyberte ho ze seznamu. Vyberte **OK**.  
 1. Vyhledejte **pravidlo nastavení proxy serveru Advisor**. 
 1. Na panelu nástrojů Operations Manager vyberte možnost **Overrides** a pak nastavte možnost **přepsat Rule\For specifický objekt třídy: Health Service** a vybrat objekt ze seznamu.  Nebo vytvořte vlastní skupinu, která obsahuje objekt služby stavu serverů, na které chcete toto přepsání použít. Pak použijte přepsání na vlastní skupinu.
@@ -300,39 +306,39 @@ Informace o adrese URL pro jednotlivé oblasti najdete v části [Konfigurace s�
 
 Pokud je počítač zaregistrován jako Hybrid Runbook Worker automaticky, například pokud je řešení Update Management povoleno pro jeden nebo více virtuálních počítačů, postupujte podle následujících kroků:
 
-1. Přidejte adresy URL běhových dat úlohy do seznamu povolených hostitelů v bráně Log Analytics. Příklad: `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
-1. Restartujte službu Log Analytics brány pomocí následující rutiny prostředí PowerShell: `Restart-Service OMSGatewayService`
+1. Adresy URL služby dat získaných za běhu úlohy přidáte do seznamu Povolené hostitele ve službě Log Analytics gateway. Příklad: `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
+1. Restartujte službu brány Log Analytics pomocí následující rutiny Powershellu: `Restart-Service OMSGatewayService`
 
 Pokud je počítač připojený k Azure Automation pomocí rutiny registrace Hybrid Runbook Worker, postupujte podle těchto kroků:
 
-1. Do seznamu povolených hostitelů v bráně Log Analytics přidejte adresu URL pro registraci služby Agent. Příklad: `Add-OMSGatewayAllowedHost ncus-agentservice-prod-1.azure-automation.net`
-1. Přidejte adresy URL běhových dat úlohy do seznamu povolených hostitelů v bráně Log Analytics. Příklad: `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
-1. Restartujte službu Log Analytics brány.
+1. Adresa URL pro registraci agenta služby přidáte do seznamu Povolené hostitele ve službě Log Analytics gateway. Příklad: `Add-OMSGatewayAllowedHost ncus-agentservice-prod-1.azure-automation.net`
+1. Adresy URL služby dat získaných za běhu úlohy přidáte do seznamu Povolené hostitele ve službě Log Analytics gateway. Příklad: `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
+1. Restartujte službu brány Log Analytics.
     `Restart-Service OMSGatewayService`
 
-## <a name="useful-powershell-cmdlets"></a>Užitečné rutiny PowerShellu
+## <a name="useful-powershell-cmdlets"></a>Užitečné rutin prostředí PowerShell
 
 Pomocí rutin můžete dokončit úlohy aktualizace nastavení konfigurace Log Analytics brány. Než začnete používat rutiny, nezapomeňte:
 
 1. Nainstalujte bránu Log Analytics (Microsoft Instalační služba systému Windows).
-1. Otevřete okno konzoly PowerShellu.
+1. Otevřete okno konzole Powershellu.
 1. Importujte modul zadáním tohoto příkazu: `Import-Module OMSGateway`
-1. Pokud v předchozím kroku nedošlo k žádné chybě, modul byl úspěšně importován a lze použít rutiny. Zadejte `Get-Module OMSGateway`
+1. Pokud k žádné chybě došlo v předchozím kroku, modul se úspěšně naimportoval a můžou používat rutiny. Zadejte `Get-Module OMSGateway`
 1. Po provedení změn pomocí rutin restartujte službu brány OMS.
 
 Chyba v kroku 3 znamená, že modul nebyl naimportován. K této chybě může dojít, když PowerShell nemůže najít modul. Modul najdete v instalační cestě brány OMS: *C:\Program Files\Microsoft OMS Gateway\PowerShell\OmsGateway*.
 
-| **Rutiny** | **Parametry** | **Popis** | **Příklad** |
+| **Cmdlet** | **Parametry** | **Popis** | **Příklad** |
 | --- | --- | --- | --- |  
-| `Get-OMSGatewayConfig` |Klíč |Získá konfiguraci služby. |`Get-OMSGatewayConfig` |  
-| `Set-OMSGatewayConfig` |Klíč (povinné) <br> Hodnota |Změní konfiguraci služby. |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
-| `Get-OMSGatewayRelayProxy` | |Získá adresu proxy předávacího (nadřazeného) serveru. |`Get-OMSGatewayRelayProxy` |  
-| `Set-OMSGatewayRelayProxy` |Adresa<br> Uživatelské jméno<br> Heslo |Nastaví adresu (a přihlašovací údaje) proxy předávacího (nadřazeného) serveru. |1. Nastavte proxy server přenosu a přihlašovací údaje:<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. Nastavte přenosový proxy server, který nepotřebuje ověřování: `Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. Vymažte nastavení předávacího proxy serveru:<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
+| `Get-OMSGatewayConfig` |Klíč |Získá konfiguraci této služby |`Get-OMSGatewayConfig` |  
+| `Set-OMSGatewayConfig` |Key (vyžadováno) <br> Hodnota |Změny konfigurace služby |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
+| `Get-OMSGatewayRelayProxy` | |Získá adresu proxy serveru (nadřazeného) relay |`Get-OMSGatewayRelayProxy` |  
+| `Set-OMSGatewayRelayProxy` |Adresa<br> Uživatelské jméno<br> Heslo |Nastaví adresu (a přihlašovací údaje) (nadřazeného) proxy relay |1. Nastavte proxy server přenosu a přihlašovací údaje:<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. Nastavte přenosový proxy server, který nepotřebuje ověřování: `Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. Vymažte nastavení předávacího proxy serveru:<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
 | `Get-OMSGatewayAllowedHost` | |Získá aktuálně povoleného hostitele (jenom místně konfigurovaný povolený hostitel, ale nestahují automaticky povolené hostitele). |`Get-OMSGatewayAllowedHost` | 
-| `Add-OMSGatewayAllowedHost` |Hostitel (povinné) |Přidá hostitele do seznamu povolených. |`Add-OMSGatewayAllowedHost -Host www.test.com` |  
-| `Remove-OMSGatewayAllowedHost` |Hostitel (povinné) |Odebere hostitele ze seznamu povolených. |`Remove-OMSGatewayAllowedHost`<br> `-Host www.test.com` |  
-| `Add-OMSGatewayAllowedClientCertificate` |Subject (povinné) |Přidá klientský certifikát předmět do seznamu povolených. |`Add-OMSGatewayAllowed`<br>`ClientCertificate` <br> `-Subject mycert` |  
-| `Remove-OMSGatewayAllowedClientCertificate` |Subject (povinné) |Odebere klientský certifikát ze seznamu povolených. |`Remove-OMSGatewayAllowed` <br> `ClientCertificate` <br> `-Subject mycert` |  
+| `Add-OMSGatewayAllowedHost` |Hostitel (povinné) |Přidá hostitele do seznamu povolených aplikací |`Add-OMSGatewayAllowedHost -Host www.test.com` |  
+| `Remove-OMSGatewayAllowedHost` |Hostitel (povinné) |Odebere hostitele ze seznamu povolených aplikací |`Remove-OMSGatewayAllowedHost`<br> `-Host www.test.com` |  
+| `Add-OMSGatewayAllowedClientCertificate` |Předmět (povinné) |Přidá certifikát klienta může na seznamu povolených |`Add-OMSGatewayAllowed`<br>`ClientCertificate` <br> `-Subject mycert` |  
+| `Remove-OMSGatewayAllowedClientCertificate` |Předmět (povinné) |Odebere ze seznamu povolených aplikací předmětu certifikátu klienta |`Remove-OMSGatewayAllowed` <br> `ClientCertificate` <br> `-Subject mycert` |  
 | `Get-OMSGatewayAllowedClientCertificate` | |Získá aktuálně povolené předměty klientského certifikátu (jenom místně konfigurovaná povolená témata, ale nestahují automaticky povolené subjekty). |`Get-`<br>`OMSGatewayAllowed`<br>`ClientCertificate` |  
 
 ## <a name="troubleshooting"></a>Řešení potíží
@@ -348,9 +354,9 @@ Následující tabulka ukazuje ID událostí a popisy pro události protokolu Lo
 | **ID** | **Popis** |
 | --- | --- |
 | 400 |Jakákoli chyba aplikace, která nemá žádné konkrétní ID. |
-| 401 |Nesprávná konfigurace Například listenPort = "text" místo Integer. |
+| 401 |Chybná konfigurace. Například listenPort = "text" místo Integer. |
 | 402 |Při analýze zpráv TLS handshake došlo k výjimce. |
-| 403 |Chyba sítě. Například se nemůže připojit k cílovému serveru. |
+| 403 |Došlo k chybě sítě. Například se nemůže připojit k cílovému serveru. |
 | 100 |Obecné informace. |
 | 101 |Služba byla spuštěna. |
 | 102 |Služba byla zastavena. |
@@ -358,19 +364,19 @@ Následující tabulka ukazuje ID událostí a popisy pro události protokolu Lo
 | 104 |Nejedná se o příkaz HTTP CONNECT. |
 | 105 |Cílový server není v seznamu povolených nebo cílový port není zabezpečený (443). <br> <br> Zajistěte, aby byl agent MMA na serveru brány OMS a agentech, kteří komunikují s bránou OMS, připojený ke stejnému pracovnímu prostoru Log Analytics. |
 | 105 |Chyba TcpConnection – neplatný klientský certifikát: CN = Gateway. <br><br> Ujistěte se, že používáte bránu OMS verze 1.0.395.0 nebo novější. Také zajistěte, aby byl agent MMA na serveru brány OMS a agentech komunikujících s bránou OMS připojen ke stejnému pracovnímu prostoru Log Analytics. |
-| 106 |Nepodporovaná verze protokolu TLS/SSL.<br><br> Brána Log Analytics podporuje pouze TLS 1,0, TLS 1,1 a 1,2. Nepodporuje protokol SSL.|
+| 106 |Nepodporovaná verze protokolu TLS/SSL.<br><br> Brána Log Analytics podporuje pouze TLS 1,0, TLS 1,1 a 1,2. Nepodporuje SSL.|
 | 107 |Relace TLS byla ověřena. |
 
 ### <a name="performance-counters-to-collect"></a>Čítače výkonu ke shromáždění
 
-V následující tabulce jsou uvedené čítače výkonu dostupné pro bránu Log Analytics. Čítače můžete přidat pomocí nástroje sledování výkonu.
+V následující tabulce jsou uvedeny čítačů výkonu k dispozici pro bránu Log Analytics. Čítače můžete přidat pomocí nástroje sledování výkonu.
 
 | **Název** | **Popis** |
 | --- | --- |
-| Log Analytics brána/aktivní připojení klienta |Počet aktivních připojení klientů sítě (TCP) |
-| Log Analytics brána/počet chyb |Počet chyb |
-| Log Analytics brána/připojeného klienta |Počet připojených klientů |
-| Log Analytics brána/počet zamítnutí |Počet zamítnutí z důvodu chyby ověřování TLS |
+| Připojení klienta k log Analytics Gateway/aktivní |Počet aktivních klientů připojení protokolu TCP) |
+| Počet brány/chyb log Analytics |Počet chyb |
+| Log Analytics brány nebo připojení klienta |Počet připojených klientů |
+| Počet brány nebo zamítnutí log Analytics |Počet zamítnutí kvůli chybě ověřování TLS |
 
 ![Snímek obrazovky s rozhraním Log Analytics brány, které zobrazuje čítače výkonu](./media/gateway/counters.png)
 

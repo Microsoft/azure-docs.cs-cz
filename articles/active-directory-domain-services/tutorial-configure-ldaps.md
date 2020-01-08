@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 37ff89f6b837aaf0de5c195a89bb827464534d11
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a8028cf4ece79fc31969532a358cca993c7ab948
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703715"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549444"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Konfigurace zabezpečeného protokolu LDAP pro Azure Active Directory Domain Services spravovanou doménu
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -63,7 +63,7 @@ Certifikát, který požadujete nebo vytvoříte, musí splňovat následující
 
 * **Důvěryhodný Vystavitel** – certifikát musí být vydán autoritou, která je důvěryhodná pro počítače připojující se ke spravované doméně pomocí protokolu Secure LDAP. Tímto orgánem může být veřejná certifikační autorita nebo certifikační autorita organizace, které tyto počítače důvěřují.
 * **Doba života** – certifikát musí být platný minimálně v následujících 3-6 měsících. Po vypršení platnosti certifikátu dojde k přerušení přístupu k spravované doméně protokol Secure LDAP.
-* **Název subjektu** – název subjektu v certifikátu musí být vaše spravovaná doména. Pokud má například vaše doména název *aadds.contoso.com*, musí být název subjektu certifikátu **aadds.contoso.com*.
+* **Název subjektu** – název subjektu v certifikátu musí být vaše spravovaná doména. Pokud má například vaše doména název *aadds.contoso.com*, musí být název subjektu certifikátu * *. aadds.contoso.com*.
     * Název DNS nebo alternativní název subjektu certifikátu musí být certifikátem se zástupným znakem, aby zabezpečený protokol LDAP správně fungoval s Azure AD Domain Services. Řadiče domény používají náhodné názvy a je možné je odebrat nebo přidat, abyste zajistili, že služba zůstane dostupná.
 * **Použití klíče** – certifikát musí být nakonfigurovaný pro *digitální podpisy* a *šifrování klíče*.
 * **Účel certifikátu** – certifikát musí být platný pro ověřování serveru SSL.

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: f0937ee53e66cb1bf0c5d6b55a8dde045570e924
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 12ecacf1266c0d8211f5928a933cfd4acf8c49f0
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309814"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551382"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriky pro Application Gateway
 
@@ -22,19 +22,21 @@ Application Gateway zveřejňuje datové body označované jako metriky, aby se 
 
 ### <a name="timing-metrics"></a>Metriky časování
 
-K dispozici jsou následující metriky související s časováním žádosti a odpovědi. Analýzou těchto metrik můžete určit, jestli zpomalení aplikace v důsledku sítě WAN, Application Gateway, síť mezi Application Gateway a back-endu nebo výkon aplikace.
+K dispozici jsou následující metriky související s časováním žádosti a odpovědi. Analýzou těchto metrik pro konkrétní naslouchací proces můžete určit, zda zpomalení aplikace v důsledku sítě WAN, Application Gateway, síti mezi Application Gateway a back-end aplikací nebo výkonem back-endu.
+
+> [!NOTE]
+>
+> Pokud je v Application Gateway více než jeden naslouchací proces, vždy filtrovat podle dimenze *naslouchacího procesu* při porovnávání různých metrik latence, aby bylo možné získat smysluplnější odvození.
 
 - **Čas odezvy klienta**
 
-  Průměrná doba odezvy mezi klienty a Application Gateway. Tato metrika indikuje, jak dlouho trvá navázání připojení a vrácení potvrzení.
+  Průměrná doba odezvy mezi klienty a Application Gateway. Tato metrika indikuje, jak dlouho trvá navázání připojení a vrácení potvrzení. 
 
 - **Celková doba aplikační brány**
 
   Průměrná doba, kterou trvá zpracování požadavku, a jeho odpověď k odeslání. Počítá se jako průměr intervalu od času, kdy Application Gateway přijme první bajt požadavku HTTP do doby, kdy se dokončí operace odeslání odpovědi. Je důležité si uvědomit, že to obvykle zahrnuje dobu zpracování Application Gateway, čas, po který jsou pakety požadavků a odpovědí přenášeny přes síť, a čas, kdy server back-end trvala odpověď.
-
-- **Čas připojení back-endu**
-
-  Čas strávený navázáním spojení se serverem back-end. 
+  
+Pokud je doba *odezvy klienta* mnohem větší než *Celková doba služby Application Gateway*, je možné ji odvodit, že latence klienta je způsobená připojením k síti mezi klientem a Application Gateway. Jsou-li obě latence srovnatelné, může být vysoká latence způsobena některou z následujících možností: Application Gateway, síť mezi Application Gateway a back-end aplikací nebo výkonem back-endu.
 
 - **Doba odezvy prvního bajtu back-endu**
 
@@ -43,6 +45,13 @@ K dispozici jsou následující metriky související s časováním žádosti a
 - **Doba odezvy posledního bajtu back-endu**
 
   Časový interval mezi zahájením navázání připojení k back-endu serveru a příjem posledního bajtu textu odpovědi
+  
+Pokud je *Celková doba služby Application Gateway* mnohem více než *Poslední doba odezvy back-endu* pro určitý naslouchací proces, je možné odvodit, že vysoká latence může být způsobena Application Gateway. Na druhou stranu platí, že pokud jsou dvě metriky srovnatelné, může být příčinou problému buď kvůli síti mezi Application Gateway a back-end aplikací, nebo výkonem back-endu.
+
+- **Čas připojení back-endu**
+
+  Čas strávený navázáním spojení s back-end aplikací V případě SSL obsahuje čas strávený na handshaki. Všimněte si, že tato metrika je odlišná od ostatních metrik latence, protože tato pouze měří čas připojení a proto by se neměla přímo porovnávat s ostatními latencemi. Porovnáním vzoru *doby připojení back-end* se vzorem ostatních latencí však může znamenat, zda může být zvýšena doba navýšení latence z důvodu variace sítě mezi gatway aplikace a aplikací back-end. 
+  
 
 ### <a name="application-gateway-metrics"></a>Application Gateway metriky
 
@@ -62,7 +71,7 @@ Pro Application Gateway jsou k dispozici následující metriky:
 
 - **Aktuální jednotky kapacity**
 
-   Počet spotřebovaných jednotek kapacity Jednotky kapacity měří náklady založené na spotřebě, které se účtují i s pevnými náklady. Existují tři determinanty jednotky kapacity a výpočetní jednotky, trvalá připojení a propustnost. Každou jednotku kapacity tvoří nejvýše: 1 výpočetní jednotka, nebo 2500 trvalá připojení, nebo propustnost 2,22-MB/s.
+   Počet spotřebovaných jednotek kapacity Jednotky kapacity měří náklady založené na spotřebě, které se účtují i s pevnými náklady. Existují tři determinanty jednotky kapacity a výpočetní jednotky, trvalá připojení a propustnost. Každá jednotka kapacity se skládá z maximálně: 1 výpočetní jednotka nebo 2500 trvalých připojení nebo propustnosti 2,22 MB/s.
 
 - **Aktuální výpočetní jednotky**
 
@@ -115,6 +124,10 @@ Pro Application Gateway jsou k dispozici následující metriky:
 
 Pro Application Gateway jsou k dispozici následující metriky:
 
+- **Využití procesoru**
+
+  Zobrazuje využití procesorů přidělených Application Gateway.  Za normálních podmínek by využití CPU nemělo pravidelně překročit 90%, protože to může způsobit latenci na webech hostovaných za Application Gateway a přerušení prostředí klienta. Můžete nepřímo řídit nebo zdokonalovat využití procesoru změnou konfigurace Application Gateway zvýšením počtu instancí nebo přesunutím na větší velikost SKU nebo obojím.
+
 - **Aktuální připojení**
 
   Počet aktuálních připojení vytvořených pomocí Application Gateway
@@ -157,7 +170,7 @@ Přejděte na aplikační bránu a v části **monitorování** vyberte **metrik
 
 Na následujícím obrázku vidíte příklad se třemi metrikami zobrazenými za posledních 30 minut:
 
-[![](media/application-gateway-diagnostics/figure5.png "Zobrazení metriky")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
+[![](media/application-gateway-diagnostics/figure5.png "Metric view")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
 
 Pokud chcete zobrazit aktuální seznam metrik, přečtěte si téma [podporované metriky s Azure monitor](../azure-monitor/platform/metrics-supported.md).
 
@@ -173,7 +186,7 @@ Následující příklad vás provede vytvořením pravidla upozornění, které
 
 2. Na stránce **Přidat pravidlo** vyplňte oddíly název, podmínka a Notify a vyberte **OK**.
 
-   * V selektoru **podmínky** vyberte jednu ze čtyř hodnot: **Větší než**, **větší než nebo rovno**, **menší**nebo **rovno nebo menší než nebo rovno**.
+   * V selektoru **podmínky** vyberte jednu ze čtyř hodnot: **větší než**, **větší než nebo rovno**, **menší**nebo **rovno nebo menší než**.
 
    * V selektoru **období** vyberte období od pěti minut po 6 hodin.
 
@@ -193,7 +206,7 @@ Další informace o oznámeních výstrah najdete v tématu [přijímání ozná
 
 Další informace o webhookech a o tom, jak je můžete používat s výstrahami, najdete [v tématu Konfigurace Webhooku na upozornění metriky Azure](../azure-monitor/platform/alerts-webhooks.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Vizualizujte protokoly čítačů a událostí pomocí [Azure monitor protokolů](../azure-monitor/insights/azure-networking-analytics.md).
 * [Vizualizujte si protokol aktivit Azure pomocí Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) Blogový příspěvek.

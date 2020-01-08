@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 12/17/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7305976060cb5df01f683b3310e59644d7e45b35
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 55433efabea516151cfb858bb61f504e180f5fb7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975087"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353564"
 ---
 # <a name="about-point-to-site-vpn"></a>O síti VPN typu Point-to-site
 
@@ -51,11 +51,11 @@ S nativním ověřováním Azure AD můžete využít podmíněný přístup Azu
 
 Pokud chcete nakonfigurovat ověřování Azure AD, musíte na vysoké úrovni provést následující kroky:
 
-[1. konfigurace tenanta Azure AD](openvpn-azure-ad-tenant.md)
+1. [Konfigurace tenanta Azure AD](openvpn-azure-ad-tenant.md)
 
-[2. povolení ověřování Azure AD v bráně](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
+2. [Povolit ověřování Azure AD v bráně](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
 
-[3. Stáhněte a nakonfigurujte klienta Azure VPN (Preview).](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
+3. [Stažení a konfigurace klienta Azure VPN (Preview)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Ověřování pomocí serveru domény služby Active Directory (AD)
@@ -67,10 +67,6 @@ Server RADIUS se dá nasadit místně nebo ve vaší virtuální síti Azure. P�
 Server RADIUS se taky může integrovat se službou AD Certificate Services. To vám umožní používat server RADIUS a nasazení podnikového certifikátu pro ověřování certifikátů P2S jako alternativu k ověřování certifikátů Azure. Výhodou je, že nemusíte do Azure nahrávat kořenové certifikáty a odvolané certifikáty.
 
 Server RADIUS se taky může integrovat s jinými externími systémy identit. Tím se otevře dostatek možností ověřování pro P2S VPN, včetně Multi-Factor Options.
-
->[!NOTE]
->**Protokol OpenVPN®** není podporován při ověřování pomocí protokolu RADIUS.
->
 
 ![Point-to-site](./media/point-to-site-about/p2s.png "Typ point-to-site")
 

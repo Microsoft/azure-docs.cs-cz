@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/13/2019
 ms.custom: mvc
-ms.openlocfilehash: cd1a483cd50051ade5d7d4f45c8eb7e5d8351787
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f9074a004683393df18d621a679fbb7378dc6704
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900447"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398623"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Vyhledání a diagnostika problémů s výkonem pomocí Azure Application Insights
 
@@ -26,9 +26,9 @@ Azure Application Insights shromažďuje telemetrii z vaší aplikace a pomáhá
 > * Analýza podrobností o zobrazení stránek pomocí dotazovacího jazyka
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
 - Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s následujícími úlohami:
     - Vývoj pro ASP.NET a web
@@ -72,7 +72,7 @@ Application Insights shromažďuje podrobnosti o výkonu různých operací ve v
 
     ![Tip k výkonu](media/tutorial-performance/6-perf-tip.png)
 
-8.  Pro další analýzu můžete kliknout na **Stáhnout trasování** a stáhnout trasování do sady Visual Studio.
+8.   Pro další analýzu můžete kliknutím na **Stáhnout trasování** stáhnout trasování. Tato data můžete zobrazit pomocí [PerfView](https://github.com/Microsoft/perfview#perfview-overview).
 
 ## <a name="use-logs-data-for-server"></a>Použít data protokolů pro server
  Protokoly poskytují bohatý dotazovací jazyk, který umožňuje analyzovat všechna data shromážděná v Application Insights. Můžete ho použít k provádění hloubkové analýzy dat o požadavcích a výkonu.
@@ -87,7 +87,7 @@ Application Insights shromažďuje podrobnosti o výkonu různých operací ve v
 ## <a name="identify-slow-client-operations"></a>Identifikace pomalých operací klienta
 Kromě identifikace procesů serveru, které je potřeba optimalizovat, dokáže Application Insights provádět analýzu i z pohledu klientských prohlížečů.  To vám může pomoct identifikovat potenciální vylepšení komponent klienta a dokonce i identifikovat problémy s různými prohlížeči nebo umístěními.
 
-1. V části **prozkoumat** vyberte **prohlížeč** , klikněte na tlačítko **výkon prohlížeče** nebo v části **prozkoumat** klikněte na **možnost výkon a** přepněte na kartu **prohlížeč** kliknutím na přepínač Server/prohlížeč v pravém horním rohu na Otevřete Souhrn výkonu prohlížeče. Ten poskytuje vizuální souhrn různých telemetrií vaší aplikace z pohledu prohlížeče.
+1. V rozevíracím seznamu **prozkoumat** vyberte **prohlížeč** , klikněte na tlačítko **výkon prohlížeče** nebo v části **prozkoumat** klikněte na **tlačítko výkon a** přepněte na kartu **prohlížeč** kliknutím na přepínač Server/prohlížeč v pravém horním rohu a otevřete souhrn výkonu prohlížeče. Ten poskytuje vizuální souhrn různých telemetrií vaší aplikace z pohledu prohlížeče.
 
     ![Souhrn prohlížeče](media/tutorial-performance/8-browser.png)
 
@@ -102,7 +102,7 @@ Stejně jako data shromážděná pro výkon serveru Application Insights zpří
 
 2. Protokoly se otevře s dotazem pro každé zobrazení na panelu. První dotaz zobrazí dobu trvání různých zobrazení stránek v průběhu času.
 
-    ![dotaz na protokoly](media/tutorial-performance/10-page-view-logs.png)
+    ![Dotaz na protokoly](media/tutorial-performance/10-page-view-logs.png)
 
 3.  Inteligentní Diagnostika je funkce protokolů, které určují jedinečné vzory v datech. Když kliknete na tečku inteligentní diagnostiky ve spojnicovém grafu, spustí se stejný dotaz bez záznamů, které anomálii způsobily. Podrobnosti o těchto záznamech se zobrazí v části dotazu s komentáři, takže můžete identifikovat vlastnosti zobrazení stránek, které způsobují nadměrnou dobu trvání.
 

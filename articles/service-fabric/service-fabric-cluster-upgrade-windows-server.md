@@ -1,56 +1,47 @@
 ---
-title: Upgrade na verzi samostatného clusteru Azure Service Fabric | Dokumentace Microsoftu
-description: Upgradujte Azure Service Fabric kód, který spouští samostatný cluster Service Fabric.
-services: service-fabric
-documentationcenter: .net
+title: Upgrade verze samostatného clusteru
+description: Upgradujte kód Azure Service Fabric, který spouští samostatný cluster Service Fabric.
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 66296cc6-9524-4c6a-b0a6-57c253bdf67e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 29d034be5999d0bc3f0a244cfa7a5658a4ecce32
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f8c146d1a82fd745e6641ac2aea91aa34539d6f0
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711366"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610025"
 ---
-# <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>Upgrade, na kterém běží ve vašem clusteru Service Fabric verze 
+# <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>Upgrade verze Service Fabric, která běží na vašem clusteru 
 
-Možnosti upgradu pro moderního systému, je klíčem k dlouhodobý úspěch vašeho produktu. Cluster Azure Service Fabric je prostředek, který vlastníte. Tento článek popisuje, jak upgradovat na verzi běžící na samostatný cluster Service Fabric.
+Pro všechny moderní systémy je možnost upgradu klíčem na dlouhodobou úspěšnost vašeho produktu. Cluster Azure Service Fabric je prostředek, který vlastníte. Tento článek popisuje, jak upgradovat verzi Service Fabric běžícího na samostatném clusteru.
 
 > [!NOTE]
-> Ujistěte se, že cluster běží vždy podporovanou verzi Service Fabric. Když Microsoft oznamuje vydání nové verze Service Fabric, předchozí verze budou označena k ukončení podpory po minimálně 60 dní od data oznámení. Oznámení nových vydaných verzích [na blog týmu Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/). Si můžete vybrat v tomto okamžiku je nová verze.
+> Ujistěte se, že cluster vždy používá podporovanou verzi Service Fabric. Když společnost Microsoft oznamuje vydání nové verze Service Fabric, bude předchozí verze označena pro konec podpory po nejméně 60 dní od data oznámení. Nové verze jsou oznámeny [na blogu týmu Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/). Nová verze je dostupná k výběru v tomto okamžiku.
 >
 >
 
-Cluster můžete upgradovat na novou verzi pouze v případě, že používáte produkční – vizuální styl konfigurace uzlu, kde každý uzel Service Fabric je přidělena na samostatné fyzické nebo virtuální počítač. Pokud máte vývojový cluster, kde je více než jeden uzel Service Fabric na jeden fyzický nebo virtuální počítač, budete muset znovu vytvořit cluster v nové verzi.
+Cluster můžete upgradovat na novou verzi pouze v případě, že používáte konfiguraci uzlu ve stylu produkčního prostředí, kde je každý Service Fabric uzel přidělen na samostatném fyzickém nebo virtuálním počítači. Pokud máte vývojový cluster, ve kterém je více než jeden Service Fabric uzel na jednom fyzickém nebo virtuálním počítači, musíte cluster znovu vytvořit s novou verzí.
 
-Dva různé pracovní postupy svůj cluster můžete upgradovat na nejnovější verzi nebo s podporovanou verzí Service Fabric. Jeden pracovní postup je pro clustery, které jste připojení k nejnovější verzi stáhnete automaticky. Jiný pracovní postup je pro clustery, které nemají připojení k stažení nejnovější verze Service Fabric.
+Dva různé pracovní postupy mohou upgradovat cluster na nejnovější verzi nebo na podporovanou verzi Service Fabric. Jeden pracovní postup je pro clustery, které mají připojení k automatickému stažení nejnovější verze. Druhý pracovní postup je pro clustery, které nemají připojení ke stažení nejnovější verze Service Fabric.
 
-## <a name="enable-auto-upgrade-of-the-service-fabric-version-of-your-cluster"></a>Povolit automatický upgrade na verzi clusteru Service Fabric
-Chcete-li nastavit cluster můžete stáhnout aktualizace, Service Fabric, když společnost Microsoft vydává nové verze, nastavte `fabricClusterAutoupgradeEnabled` konfiguraci clusteru, aby *true*. Chcete-li ručně vyberte podporovanou verzi Service Fabric, který chcete, aby váš cluster na, nastavte `fabricClusterAutoupgradeEnabled` konfiguraci clusteru, aby *false*.
+## <a name="enable-auto-upgrade-of-the-service-fabric-version-of-your-cluster"></a>Povolení automatického upgradu Service Fabric verze clusteru
+Chcete-li nastavit cluster tak, aby stahoval aktualizace Service Fabric, když společnost Microsoft vydává novou verzi, nastavte konfiguraci clusteru `fabricClusterAutoupgradeEnabled` na *hodnotu true*. Chcete-li ručně vybrat podporovanou verzi Service Fabric, na které má být cluster zapnutý, nastavte konfiguraci clusteru `fabricClusterAutoupgradeEnabled` na *hodnotu NEPRAVDA*.
 
-## <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>Upgradovat clustery, které jste připojení ke stažení nejnovější kódu a konfigurace
-Tyto kroky použijte cluster upgradovat na podporovanou verzi, pokud máte připojení k Internetu na uzly clusteru [Microsoft Download Center](https://download.microsoft.com).
+## <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>Upgradujte clustery, které mají připojení ke stažení nejnovějšího kódu a konfigurace.
+Pomocí těchto kroků můžete cluster upgradovat na podporovanou verzi, pokud uzly clusteru mají připojení k Internetu na webu [služby Stažení softwaru](https://download.microsoft.com).
 
-Pro clustery, které jste připojení k [Microsoft Download Center](https://download.microsoft.com), Microsoft pravidelně kontroluje dostupnost nových verzí Service Fabric.
+V případě clusterů, které mají připojení ke službě [Stažení softwaru](https://download.microsoft.com), společnost Microsoft pravidelně kontroluje dostupnost nových verzí Service Fabric.
 
-Když je dostupná nová verze Service Fabric, je balíček stáhli do clusteru a zřídit pro upgrade. Kromě toho k informování zákazníků tuto novou verzi, systém zobrazí upozornění stavu explicitní clusteru, který je podobný následujícímu:
+Pokud je k dispozici nová verze Service Fabric, balíček se stáhne místně do clusteru a zřídí pro upgrade. Kromě toho, aby systém informoval zákazníky s touto novou verzí, systém zobrazuje explicitní upozornění na stav clusteru, které je podobné následujícímu:
 
-"Aktuální verzi clusteru [verze č] ukončení podpory už [date]."
+"Aktuální verze clusteru [verze #] končí na konci [datum]."
 
-Jakmile je cluster používá nejnovější verze, upozornění zmizí.
+Když je v clusteru spuštěná nejnovější verze, upozornění zmizí.
 
-Když se zobrazí upozornění stavu clusteru, upgrade clusteru:
+Po zobrazení upozornění na stav clusteru upgradujte cluster:
 
-1. Připojte se ke clusteru z libovolného počítače, který má přístup správce pro všechny počítače, které jsou označeny jako uzly v clusteru. Počítače, ve kterém se skript spouští na nemusí být součástí clusteru.
+1. Připojte se ke clusteru z libovolného počítače, který má oprávnění správce ke všem počítačům uvedeným jako uzly v clusteru. Počítač, na kterém je tento skript spuštěný, nemusí být součástí clusteru.
 
     ```powershell
     ###### connect to the secure cluster using certs
@@ -65,17 +56,17 @@ Když se zobrazí upozornění stavu clusteru, upgrade clusteru:
         -StoreName My
     ```
 
-2. Získá seznam verzí Service Fabric, které můžete provést upgrade.
+2. Získejte seznam verzí Service Fabric, na které můžete upgradovat.
 
     ```powershell
     ###### Get the list of available Service Fabric versions
     Get-ServiceFabricRegisteredClusterCodeVersion
     ```
 
-    Měl zobrazit výstup podobný tomuto:
+    Měli byste získat výstup podobný tomuto:
 
-    ![Získání verzí Service Fabric][getfabversions]
-3. Spuštění upgradu clusteru dostupnou verzi pomocí [Start ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade) příkazu Windows Powershellu.
+    ![Získat Service Fabric verze][getfabversions]
+3. Spusťte upgrade clusteru na dostupnou verzi pomocí příkazu [Start-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade) prostředí Windows PowerShell.
 
     ```powershell
     Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <codeversion#> -Monitored -FailureAction Rollback
@@ -84,36 +75,36 @@ Když se zobrazí upozornění stavu clusteru, upgrade clusteru:
 
     Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion 5.3.301.9590 -Monitored -FailureAction Rollback
     ```
-   Můžete sledovat průběh upgradu můžete použít Service Fabric Exploreru nebo pomocí následujícího příkazu Powershellu:
+   Chcete-li monitorovat průběh upgradu, můžete použít Service Fabric Explorer nebo spustit následující příkaz prostředí PowerShell:
 
     ```powershell
     Get-ServiceFabricClusterUpgrade
     ```
 
-    Pokud zásady stavu clusteru nejsou splněny, upgrade se vrátí zpět. Pokud chcete zadat zásady vlastní stavu pro příkaz Start-ServiceFabricClusterUpgrade, naleznete v dokumentaci k [Start ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade).
+    Pokud zásady stavu clusteru nejsou splněné, upgrade se vrátí zpět. Pokud chcete zadat vlastní zásady stavu pro příkaz Start-ServiceFabricClusterUpgrade, přečtěte si dokumentaci ke službě [Start-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade).
 
-    Po vyřešení problémů, z kterých vzniklo vrácení změn zahájení upgradu znovu podle stejných kroků jako výše popsaným.
+    Po vyřešení problémů, které vedly k vrácení zpět, znovu spusťte upgrade pomocí stejných kroků, jak je popsáno výše.
 
-## <a name="upgrade-clusters-that-have-no-connectivity-to-download-the-latest-code-and-configuration"></a>Upgradovat clustery, které mají *bez připojení k* si chcete stáhnout nejnovější kód a konfigurace
-Tyto kroky použijte cluster upgradovat na podporovanou verzi, pokud uzly clusteru nemají připojení k Internetu na [Microsoft Download Center](https://download.microsoft.com).
+## <a name="upgrade-clusters-that-have-no-connectivity-to-download-the-latest-code-and-configuration"></a>Upgradujte clustery, které nemají *žádné připojení* ke stažení nejnovějšího kódu a konfigurace.
+Pomocí těchto kroků můžete cluster upgradovat na podporovanou verzi, pokud uzly clusteru nemají připojení k Internetu na webu [služby Stažení softwaru](https://download.microsoft.com).
 
 > [!NOTE]
-> Pokud máte spuštěný cluster, který není připojený k Internetu, musíte monitorovat [blog týmu Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/) Další informace o nových verzích. Systém nezobrazí upozornění stavu clusteru vás upozorní na nové verze.  
+> Pokud používáte cluster, který není připojený k Internetu, musíte sledovat [Blog týmu Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/) , abyste se dozvěděli o nových verzích. Systém nezobrazuje upozornění na stav clusteru, aby vás upozornil na nové verze.  
 >
 >
 
-### <a name="auto-provisioning-vs-manual-provisioning"></a>Automatické zřizování a ruční zřizování
-Pokud chcete povolit automatické stahování a registrace pro nejnovější verzi kódu, nastavte aktualizace služba Service Fabric. Pokyny najdete v tématu *Tools\ServiceFabricUpdateService.zip\Readme_InstructionsAndHowTos.txt* v [samostatného balíčku](service-fabric-cluster-standalone-package-contents.md).
+### <a name="auto-provisioning-vs-manual-provisioning"></a>Automatické zřizování vs. ruční zřizování
+Pokud chcete povolit automatické stahování a registraci pro nejnovější verzi kódu, nastavte službu Service Fabric Update. Pokyny najdete v tématu *tools\servicefabricupdateservice.zip\ Readme_InstructionsAndHowTos. txt* v [samostatném balíčku](service-fabric-cluster-standalone-package-contents.md).
 
-Proces ručního nastavení postupujte podle těchto pokynů.
+Při ručním zpracování postupujte podle těchto pokynů.
 
-Upravit konfiguraci clusteru a nastavte následující vlastnost *false* před zahájením upgradu konfigurace:
+Než začnete s upgradem konfigurace, upravte konfiguraci clusteru tak, aby pro následující vlastnost byla nastavena *hodnota false* :
 
 ```json
 "fabricClusterAutoupgradeEnabled": false,
 ```
 
-Podrobnosti o použití najdete v článku [Start ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade) příkaz prostředí PowerShell. Nezapomeňte aktualizovat "clusterConfigurationVersion" v JSON před zahájením upgradu configuration.
+Podrobnosti o využití najdete v příkazu PowerShellu [Start-ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade) . Před zahájením upgradu konfigurace nezapomeňte ve svém formátu JSON aktualizovat ' clusterConfigurationVersion '.
 
 ```powershell
     Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
@@ -121,16 +112,16 @@ Podrobnosti o použití najdete v článku [Start ServiceFabricClusterConfigurat
 
 ### <a name="cluster-upgrade-workflow"></a>Pracovní postup upgradu clusteru
 
-1. Spustit [Get-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterupgrade) na jednom z uzlů v clusteru a Všimněte si *TargetCodeVersion*.
+1. Spusťte rutinu [Get-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterupgrade) z jednoho z uzlů v clusteru a poznamenejte si *TargetCodeVersion*.
 
-2. Spuštěním následujícího příkazu z počítače připojeného k Internetu zobrazí seznam všech verzí upgrade kompatibilní s aktuální verzí a stáhněte si odpovídající balíček z odkazů přidružené ke stažení:
+2. Spusťte následující příkaz z počítače připojeného k Internetu a seznam všech verzí kompatibilních s upgradem s aktuální verzí a Stáhněte si odpovídající balíček z přidružených odkazů ke stažení:
 
     ```powershell
     ###### Get list of all upgrade compatible packages  
     Get-ServiceFabricRuntimeUpgradeVersion -BaseVersion <TargetCodeVersion as noted in Step 1> 
     ```
 
-3. Připojte se ke clusteru z libovolného počítače, který má přístup správce pro všechny počítače, které jsou označeny jako uzly v clusteru. Počítače, ve kterém se skript spouští na nemusí být součástí clusteru.
+3. Připojte se ke clusteru z libovolného počítače, který má oprávnění správce ke všem počítačům uvedeným jako uzly v clusteru. Počítač, na kterém je tento skript spuštěný, nemusí být součástí clusteru.
 
     ```powershell
     ###### Get the list of available Service Fabric versions
@@ -141,7 +132,7 @@ Podrobnosti o použití najdete v článku [Start ServiceFabricClusterConfigurat
     ```
 4. Zkopírujte stažený balíček do úložiště imagí clusteru.
 
-5. Zaregistrujte zkopírovaný balíčku.
+5. Zaregistrujte zkopírovaný balíček.
 
     ```powershell
     ###### Get the list of available Service Fabric versions
@@ -150,7 +141,7 @@ Podrobnosti o použití najdete v článku [Start ServiceFabricClusterConfigurat
     ###### Here is a filled-out example
     Register-ServiceFabricClusterPackage -Code -CodePackagePath .\MicrosoftAzureServiceFabric.5.3.301.9590.cab
     ```
-6. Spusťte upgrade clusteru na dostupné verzi.
+6. Spusťte upgrade clusteru na dostupnou verzi.
 
     ```powershell
     Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <codeversion#> -Monitored -FailureAction Rollback
@@ -158,20 +149,20 @@ Podrobnosti o použití najdete v článku [Start ServiceFabricClusterConfigurat
     ###### Here is a filled-out example
     Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion 5.3.301.9590 -Monitored -FailureAction Rollback
     ```
-    Můžete sledovat průběh upgradu v Service Fabric Explorer, nebo spuštěním následujícího příkazu Powershellu:
+    Průběh upgradu můžete monitorovat na Service Fabric Explorer, nebo můžete spustit následující příkaz prostředí PowerShell:
 
     ```powershell
     Get-ServiceFabricClusterUpgrade
     ```
 
-    Pokud zásady stavu clusteru nejsou splněny, upgrade se vrátí zpět. Pokud chcete zadat zásady vlastní stavu pro příkaz Start-ServiceFabricClusterUpgrade, naleznete v dokumentaci k [Start ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade).
+    Pokud zásady stavu clusteru nejsou splněné, upgrade se vrátí zpět. Pokud chcete zadat vlastní zásady stavu pro příkaz Start-ServiceFabricClusterUpgrade, přečtěte si dokumentaci ke službě [Start-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade).
 
-    Po vyřešení problémů, z kterých vzniklo vrácení změn zahájení upgradu znovu podle stejných kroků jako výše popsaným.
+    Po vyřešení problémů, které vedly k vrácení zpět, znovu spusťte upgrade pomocí stejných kroků, jak je popsáno výše.
 
-## <a name="next-steps"></a>Další postup
-* [Upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md)
-* Přizpůsobit některé [nastavení clusteru Service Fabric](service-fabric-cluster-fabric-settings.md).
-* [Škálování clusteru dovnitř a ven](service-fabric-cluster-scale-up-down.md).
+## <a name="next-steps"></a>Další kroky
+* [Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md)
+* Přizpůsobení některých [Service Fabric nastavení clusteru](service-fabric-cluster-fabric-settings.md).
+* Horizontální navýšení [kapacity clusteru a jejich škálování](service-fabric-cluster-scale-up-down.md).
 
 <!--Image references-->
 [getfabversions]: ./media/service-fabric-cluster-upgrade-windows-server/getfabversions.PNG

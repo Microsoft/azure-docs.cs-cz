@@ -1,5 +1,5 @@
 ---
-title: Běžné scénáře správy nároků ve službě Azure AD – Azure Active Directory
+title: Běžné scénáře správy nároků – Azure AD
 description: Seznamte se se základními kroky, které byste měli postupovat při běžných scénářích Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
@@ -16,18 +16,18 @@ ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24d2dc82d0e81c9ac374d96387677774dc916b8c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d780e6e11d2c067261f6862e1678ef5de0aaa9bb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173503"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422508"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Běžné scénáře správy nároků ve službě Azure AD
 
 Existuje několik způsobů, jak můžete nakonfigurovat správu nároků pro vaši organizaci. Pokud však teprve začínáte, je vhodné porozumět běžným scénářům správců, vlastníkům katalogu, správcům balíčků, schvalovatelům a žadatelům.
 
-## <a name="delegate"></a>dostával
+## <a name="delegate"></a>Delegate
 
 ### <a name="administrator-delegate-management-of-resources"></a>Správce: delegování správy prostředků
 
@@ -61,7 +61,7 @@ Existuje několik způsobů, jak můžete nakonfigurovat správu nároků pro va
 
 1. [Přihlášení k portálu pro přístup](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
 1. Najít balíček pro přístup
-1. [Požádat o přístup](entitlement-management-request-access.md#request-an-access-package)
+1. [Žádost o přístup](entitlement-management-request-access.md#request-an-access-package)
 
 ### <a name="approver-approve-requests-to-resources"></a>Schvalovatel: schválení žádostí na prostředky
 
@@ -94,7 +94,7 @@ Existuje několik způsobů, jak můžete nakonfigurovat správu nároků pro va
 
 1. Najít odkaz na balíček přístupu, který jste dostali od svého kontaktu
 1. [Přihlášení k portálu pro přístup](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
-1. [Požádat o přístup](entitlement-management-request-access.md#request-an-access-package)
+1. [Žádost o přístup](entitlement-management-request-access.md#request-an-access-package)
 
 ### <a name="approver-approve-requests-to-resources"></a>Schvalovatel: schválení žádostí na prostředky
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 79867bd048be882414e247af11c133ed481788a0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: ce6f07a20044efed43cf24b3f0652691dff8b8aa
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996625"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658334"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace Application Gateway
 
@@ -25,7 +25,7 @@ Tento obrázek znázorňuje aplikaci, která má tři naslouchací procesy. Prvn
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="azure-virtual-network-and-dedicated-subnet"></a>Virtuální síť Azure a vyhrazená podsíť
 
@@ -46,9 +46,9 @@ Doporučujeme použít velikost podsítě alespoň/28. Tato velikost poskytuje 1
 
 #### <a name="network-security-groups-on-the-application-gateway-subnet"></a>Skupiny zabezpečení sítě na Application Gateway podsíti
 
-V Application Gateway jsou podporovány skupiny zabezpečení sítě (skupin zabezpečení sítě). Existuje však několik omezení:
+V Application Gateway jsou podporovány skupiny zabezpečení sítě (skupin zabezpečení sítě). Existují však určitá omezení:
 
-- Je *nutné, aby*příchozí internetový provoz na portech TCP 65503-65534 pro SKU Application Gateway V1 a porty TCP 65200-65535 pro SKU verze v2 s cílovou podsítí. Tento rozsah portů je nutný pro komunikaci s infrastrukturou Azure. Tyto porty jsou chráněné (uzamčené) pomocí certifikátů Azure. Externí entity, včetně zákazníků těchto bran, nemůžou zahájit změny těchto koncových bodů bez příslušných certifikátů.
+- Je nutné, aby příchozí internetový provoz na portech TCP 65503-65534 pro SKU Application Gateway V1 a porty TCP 65200-65535 pro SKU verze 2 v2 s cílovou podsítí jako **s označením služby a jako** zdroj jako služba **GatewayManager** . Tento rozsah portů je nutný pro komunikaci s infrastrukturou Azure. Tyto porty jsou chráněné (uzamčené) pomocí certifikátů Azure. Externí entity, včetně zákazníků těchto bran, nemůžou komunikovat na těchto koncových bodech.
 
 - Odchozí připojení k Internetu nejde zablokovat. Výchozí odchozí pravidla v NSG umožňují připojení k Internetu. Doporučený postup:
 
@@ -57,12 +57,12 @@ V Application Gateway jsou podporovány skupiny zabezpečení sítě (skupin zab
 
 - Musí být povolený provoz ze značky **AzureLoadBalancer** .
 
-##### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Povolí Application Gateway přístup k několika zdrojovým IP adresám.
+#### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Povolí Application Gateway přístup k několika zdrojovým IP adresám.
 
 V tomto scénáři použijte skupin zabezpečení sítě v podsíti Application Gateway. V této prioritě vložte následující omezení podsítě:
 
-1. Povolí příchozí provoz ze zdrojové IP adresy nebo rozsahu IP adres a cíl jako buď celé podsítě Application Gateway, nebo konkrétní nakonfigurovanou soukromou IP adresu front-endu. NSG nefunguje na veřejné IP adrese.
-2. Povolte příchozí požadavky ze všech zdrojů na porty 65503-65534 pro SKU Application Gateway V1 a porty 65200-65535 pro SKLADOVOU položku v2 pro [bezstavovou komunikaci v případě back-endu](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics). Tento rozsah portů je nutný pro komunikaci s infrastrukturou Azure. Tyto porty jsou chráněné (uzamčené) pomocí certifikátů Azure. Bez příslušných certifikátů nemohou externí entity zahájit změny těchto koncových bodů.
+1. Povolí příchozí provoz ze zdrojové IP adresy nebo rozsahu IP adres s cílem jako celý rozsah adres podsítě Application Gateway a cílový port jako port pro příchozí přístup, například port 80 pro přístup HTTP.
+2. Povolí příchozí požadavky ze zdroje jako **GatewayManager** Service Tag a Destination jako **libovolný** a cílový port jako 65503-65534 pro SKU Application Gateway V1 a porty 65200-65535 pro 2 SKU pro [komunikaci stavu back-endu](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics). Tento rozsah portů je nutný pro komunikaci s infrastrukturou Azure. Tyto porty jsou chráněné (uzamčené) pomocí certifikátů Azure. Bez příslušných certifikátů nemohou externí entity zahájit změny těchto koncových bodů.
 3. Povolit příchozí testy Azure Load Balancer (značka*AzureLoadBalancer* ) a příchozí provoz virtuální sítě (značka*VirtualNetwork* ) ve [skupině zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview).
 4. Zablokuje všechny ostatní příchozí přenosy pomocí pravidla odepřít – vše.
 5. Povolí odchozí provoz do Internetu pro všechny cíle.
@@ -74,10 +74,10 @@ V případě SKU v1 jsou uživatelsky definované trasy (udr) podporované v App
 V případě SKU verze V2 nejsou udr podporovány v podsíti Application Gateway. Další informace najdete v tématu [SKU Azure Application Gateway v2](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku).
 
 > [!NOTE]
-> Udr se pro SKU v2 nepodporují.  Pokud požadujete udr, měli byste nadále nasazovat SKU v1.
+> Udr se pro SKU v2 nepodporují hned.
 
 > [!NOTE]
-> Použití udr v podsíti Application Gateway způsobí, že se stav v [zobrazení stavu back-endu](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) zobrazuje jako "Neznámý". Také způsobí, že generování protokolů Application Gateway a metriky selže. Doporučujeme, abyste v Application Gateway podsíti nepoužívali udr, abyste mohli zobrazit stav back-endu, protokoly a metriky.
+> Použití udr v podsíti Application Gateway může způsobit, že se stav v [zobrazení stavu back-endu](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) zobrazí jako "Neznámý". Může to také způsobit selhání generování protokolů Application Gateway a metrik. Doporučujeme, abyste v Application Gateway podsíti nepoužívali udr, abyste mohli zobrazit stav back-endu, protokoly a metriky.
 
 ## <a name="front-end-ip"></a>Front-end IP adresa
 
@@ -165,7 +165,7 @@ Pokud chcete nakonfigurovat globální vlastní chybovou stránku, přečtěte s
 
 Můžete centralizovat správu certifikátů SSL a snížit režijní náklady na dešifrování u back-endové serverové farmy. Centralizované zpracování protokolu SSL také umožňuje určit centrální zásady protokolu SSL, které jsou vhodné pro vaše požadavky na zabezpečení. Můžete zvolit *výchozí*, *předdefinované*nebo *vlastní* zásady protokolu SSL.
 
-Nakonfigurujete zásady protokolu SSL pro řízení verzí protokolu SSL. Aplikační bránu můžete nakonfigurovat tak, aby používala verzi protokolu určení minimálního pro handshake TLS z TLS 1.0, TLS 1.1 a TLS 1.2. Ve výchozím nastavení jsou SSL 2,0 a 3,0 zakázané a nedají se konfigurovat. Další informace najdete v tématu [Přehled zásad Application Gateway protokolu SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview).
+Nakonfigurujete zásady protokolu SSL pro řízení verzí protokolu SSL. Aplikační bránu můžete nakonfigurovat tak, aby používala minimální verzi protokolu pro handshake TLS z TLS 1.0, TLS 1.1 a TLS 1.2. Ve výchozím nastavení jsou SSL 2,0 a 3,0 zakázané a nedají se konfigurovat. Další informace najdete v tématu [Přehled zásad Application Gateway protokolu SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview).
 
 Po vytvoření naslouchacího procesu ho přidružíte k pravidlu směrování požadavků. Toto pravidlo určuje, jak jsou požadavky přijaté na naslouchací službě směrovány do back-endu.
 
@@ -256,7 +256,7 @@ Tato funkce je užitečná, když chcete zachovat relaci uživatele na stejném 
 
 ### <a name="connection-draining"></a>Vyprázdnění připojení
 
-Vyprazdňování připojení pomáhá řádně odebrat členy fondu back-end během plánovaných aktualizací služby. Toto nastavení můžete použít pro všechny členy fondu back-end během vytváření pravidla. Zajišťuje, aby všechny odregistrované instance back-end fondu nadále udržovaly stávající připojení a poskytovaly žádosti o konfigurovatelný časový limit a nedostaly žádné nové žádosti nebo připojení. Jedinou výjimkou jsou požadavky vázané na instance deregistring kvůli spřažení relace spravované bránou a bude se dál přikládat do proxy instancí deregistring. Vyprazdňování připojení se vztahuje na instance back-endu, které jsou explicitně odebrány z fondu back-end.
+Vyprazdňování připojení pomáhá řádně odebrat členy fondu back-end během plánovaných aktualizací služby. Toto nastavení můžete použít pro všechny členy fondu back-end během vytváření pravidla. Zajišťuje, aby všechny odregistrované instance back-end fondu nadále udržovaly stávající připojení a poskytovaly žádosti o konfigurovatelný časový limit a nedostaly žádné nové žádosti nebo připojení. Jedinou výjimkou jsou požadavky vázané na zrušení registrace instancí z důvodu spřažení relace spravované bránou a budou nadále předány do odregistrování instancí. Vyprazdňování připojení se vztahuje na instance back-endu, které jsou explicitně odebrány z fondu back-end.
 
 ### <a name="protocol"></a>Protocol (Protokol)
 

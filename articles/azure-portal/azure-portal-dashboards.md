@@ -1,6 +1,6 @@
 ---
-title: Vytvoření a sdílení řídicích panelů Azure portal | Dokumentace Microsoftu
-description: Tento článek popisuje, jak vytvořit, upravit, publikování a sdílení řídicích panelů na webu Azure Portal.
+title: Vytváření a sdílení řídicích panelů Azure Portal | Microsoft Docs
+description: Tento článek popisuje, jak vytvářet, přizpůsobovat, publikovat a sdílet řídicí panely v Azure Portal.
 services: azure-portal
 documentationcenter: ''
 author: sewatson
@@ -13,164 +13,164 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/01/2019
-ms.author: kfollis
-ms.openlocfilehash: 8dd1349ca9ab62484eb6693291e3b869ff079dc1
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.author: mblythe
+ms.openlocfilehash: a3b4d7cb33bf0da0c4431d76a54644208ea6468f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537329"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640452"
 ---
-# <a name="create-and-share-dashboards-in-the-azure-portal"></a>Vytvářejte a sdílejte řídicí panely na webu Azure Portal
+# <a name="create-and-share-dashboards-in-the-azure-portal"></a>Vytváření a sdílení řídicích panelů na webu Azure Portal
 
-Řídicí panely poskytují způsob, jak vytvářet zobrazení zaměření a uspořádané na webu Azure Portal cloudových prostředků. Pomocí řídicích panelů jako pracovní prostor, kde můžete rychle spustit úlohy pro každodenní operace a monitorovat prostředky.  Vytvářejte vlastní řídicí panely podle projektů, úloh a rolí uživatelů, třeba.  Na webu Azure portal poskytuje výchozí řídicí panel jako výchozí bod. Můžete upravit výchozí řídicí panel, vytvořit a přizpůsobit další řídicí panely a publikování a sdílení řídicích panelů je zpřístupnit ostatním uživatelům. Tento článek popisuje, jak vytvořit nový řídicí panel, rozhraní, přizpůsobení a publikování a sdílení řídicích panelů.
+Řídicí panely poskytují způsob, jak vytvořit cílené a uspořádané zobrazení v Azure Portal vašich cloudových prostředků. Řídicí panely slouží jako pracovní prostor, kde můžete rychle spouštět úlohy pro každodenní operace a monitorovat prostředky.  Můžete například vytvářet vlastní řídicí panely založené na projektech, úkolech nebo rolích uživatelů.  Azure Portal jako výchozí bod poskytuje výchozí řídicí panel. Můžete upravit výchozí řídicí panel, vytvořit a přizpůsobit další řídicí panely a publikovat a sdílet řídicí panely, které je zpřístupní ostatním uživatelům. Tento článek popisuje postup vytvoření nového řídicího panelu, přizpůsobení rozhraní a publikování a sdílení řídicích panelů.
 
 ## <a name="create-a-new-dashboard"></a>Vytvoření nového řídicího panelu
 
-V tomto příkladu jsme vytvořit nový privátní řídicí panel a přiřaďte název. Postupujte podle těchto kroků, abyste mohli začít:
+V tomto příkladu vytvoříme nový privátní řídicí panel a přiřadíme mu název. Začněte těmito kroky:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Vyberte **řídicí panel** z horní části na levém bočním panelu. Výchozí zobrazení může být již nastaveno na řídicí panel.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. V horní části levého bočního panelu vyberte **řídicí panel** . Výchozí zobrazení již může být nastaveno na řídicí panel.
 1. Vyberte **+ nový řídicí panel**.
 
-    ![Snímek obrazovky s výchozí řídicí panel](./media/azure-portal-dashboards/dashboard-new.png)
+    ![Snímek obrazovky s výchozím řídicím panelem](./media/azure-portal-dashboards/dashboard-new.png)
 
-4. Tato akce otevře **Galerie dlaždic**, ze kterého vyberete dlaždice a kde budete uspořádat dlaždice prázdnou mřížku.
+4. Tato akce otevře **galerii dlaždic**, ze které se budou vybírat dlaždice, a prázdnou mřížku, ve které uspořádáte dlaždice.
 
-    ![Snímek obrazovky Galerie dlaždic a prázdnou mřížku](./media/azure-portal-dashboards/dashboard-name.png)
+    ![Snímek obrazovky Galerie dlaždic a prázdná mřížka](./media/azure-portal-dashboards/dashboard-name.png)
 
-5. Vyberte **Můj řídicí panel** text na řídicím panelu označovat popisky a zadejte název, který vám umožní snadno identifikovat vlastní řídicí panel.
-1. Vyberte **přizpůsobení dokončeno** v záhlaví stránky ukončete režim úprav.
+5. V popisku řídicího panelu vyberte text **Můj řídicí panel** a zadejte název, který vám pomůže snadno identifikovat vlastní řídicí panel.
+1. Chcete-li ukončit režim úprav, vyberte možnost **Hotovo přizpůsobení** v záhlaví stránky.
 
-Zobrazení řídicího panelu teď zobrazuje prázdný řídicí panel. Vyberte rozevírací seznam vedle názvu řídicího panelu zobrazíte řídicí panely, které jsou k dispozici – tento seznam může obsahovat řídicí panely, které mají vytvořené a sdílené jinými uživateli.
+Zobrazení řídicího panelu teď zobrazuje prázdný řídicí panel. Výběrem rozevíracího seznamu vedle názvu řídicího panelu zobrazíte dostupné řídicí panely – seznam může obsahovat řídicí panely, které vytvořili a sdíleli jiní uživatelé.
 
-## <a name="edit-a-dashboard"></a>Upravit řídicí panel
+## <a name="edit-a-dashboard"></a>Úprava řídicího panelu
 
-Teď Pojďme upravit řídicí panel pro přidání, změna velikosti a uspořádání dlaždic, které představují vašich prostředků Azure.
+Teď tento řídicí panel upravíte tak, aby bylo možné přidat, změnit jeho velikost a uspořádat dlaždice, které reprezentují vaše prostředky Azure.
 
 ### <a name="add-tiles"></a>Přidat dlaždice
 
-Přidání dlaždice na řídicí panel, postupujte podle těchto kroků:
-1. Vyberte ![upravit ikonu](./media/azure-portal-dashboards/dashboard-edit-icon.png) **upravit** ze záhlaví stránky.
+Chcete-li přidat dlaždice na řídicí panel, použijte následující postup:
+1. V záhlaví stránky vyberte ![upravit ikonu](./media/azure-portal-dashboards/dashboard-edit-icon.png) **Upravit** .
 
-    ![Snímek obrazovky řídicího panelu zvýraznění úpravy](./media/azure-portal-dashboards/dashboard-edit.png)
+    ![Snímek obrazovky s úpravou zvýraznění řídicího panelu](./media/azure-portal-dashboards/dashboard-edit.png)
 
-2. Přejděte **Galerie dlaždic** nebo pomocí vyhledávacího pole najít požadovanou dlaždici.
-1. Vyberte **přidat** automaticky přidat dlaždice na řídicí panel s výchozí velikostí a umístění. Na dlaždici přetáhněte do mřížky a umístěte ho na místo, kam chcete.
+2. Procházením **Galerie dlaždic** nebo pomocí vyhledávacího pole najděte požadovanou dlaždici.
+1. Vyberte možnost **Přidat** , pokud chcete automaticky přidat dlaždici na řídicí panel s výchozí velikostí a umístěním. Nebo přetáhněte dlaždici do mřížky a umístěte ji tam, kde chcete.
 
-Mnoho prostředků stránky (označované také jako "listy") obsahují ikonu připínáčku v příkazovém řádku. Pokud vyberete ikonu, dlaždice představující zdrojové stránky je připnout na řídicí panel, který je aktuálně aktivní. Tato metoda je alternativní způsob, jak přidat dlaždice na řídicí panel.
+Mnoho stránek prostředků (označované také jako "panely") obsahuje ikonu připínáčku na panelu příkazů. Vyberete-li ikonu, bude na řídicím panelu, který je aktuálně aktivní, připojena dlaždice představující zdrojovou stránku. Tato metoda je alternativní způsob, jak přidat dlaždice do řídicího panelu.
 
-![Snímek obrazovky stránky panelu příkazů s ikona Připnutí](./media/azure-portal-dashboards/dashboard-pin-blade.png)
+![Snímek obrazovky s panelem příkazů stránky s ikonou připnutí](./media/azure-portal-dashboards/dashboard-pin-blade.png)
 
 > [!TIP]
-> Pokud pracujete s více než jedné organizace, přidejte **identity organizace** dlaždice na řídicí panel pro organizaci, které jasně označí prostředky patří.
+> Pokud pracujete s více než jednou organizací, přidejte na řídicí panel dlaždici **identity organizace** a jasně Zobrazte, do které organizace prostředky patří.
 >
 >
-### <a name="resize-or-rearrange-tiles"></a>Změnit velikost a uspořádání dlaždic
-Chcete-li změnit velikost dlaždice nebo přeuspořádat dlaždice na řídicím panelu, postupujte takto:
+### <a name="resize-or-rearrange-tiles"></a>Změna velikosti nebo změny uspořádání dlaždic
+Chcete-li změnit velikost dlaždice nebo změnit uspořádání dlaždic na řídicím panelu, postupujte podle následujících kroků:
 
-1. Vyberte ![upravit ikonu](./media/azure-portal-dashboards/dashboard-edit-icon.png) **upravit** ze záhlaví stránky.
-1. Vyberte příslušnou kontextovou nabídku v pravém horním rohu dlaždice. Zvolte velikost dlaždice. Dlaždice, které podporují všech velikostí také obsahovat "popisovač" v pravém dolním rohu, který umožňuje přetáhněte dlaždici na požadovanou velikost.
+1. V záhlaví stránky vyberte ![upravit ikonu](./media/azure-portal-dashboards/dashboard-edit-icon.png) **Upravit** .
+1. Vyberte kontextovou nabídku v pravém horním rohu dlaždice. Pak zvolte velikost dlaždice. Dlaždice, které podporují jakoukoli velikost, zahrnují také "popisovač" v pravém dolním rohu, který umožňuje přetáhnout dlaždici na požadovanou velikost.
 
-   ![Snímek obrazovky řídicího panelu s nabídkou velikost dlaždice otevřít](./media/azure-portal-dashboards/dashboard-tile-resize.png)
+   ![Snímek obrazovky řídicího panelu s otevřenou nabídkou velikost dlaždice](./media/azure-portal-dashboards/dashboard-tile-resize.png)
 
-3. Vyberte dlaždici a přetáhněte ho do nového umístění v mřížce uspořádat řídicí panel.
+3. Vyberte dlaždici a přetáhněte ji na nové místo v mřížce a uspořádejte tak řídicí panel.
 
-### <a name="additional-tile-configuration"></a>Nastavení Další dlaždice
+### <a name="additional-tile-configuration"></a>Další konfigurace dlaždice
 
-Některé dlaždice může být nutné další konfigurační informace, které chcete zobrazit. Například **graf metrik** dlaždice obsahuje nastavení pro zobrazení metriky z **Azure Monitor**. Můžete také přizpůsobit data dlaždice na přepsat nastavení času řídicího panelu výchozí.
+Některé dlaždice můžou potřebovat další konfiguraci, aby se zobrazily požadované informace. Například dlaždice **grafu metriky** musí být nastavená tak, aby zobrazila metriku z **Azure monitor**. Můžete také přizpůsobit data dlaždice a přepsat tak výchozí nastavení času řídicího panelu.
 
-Libovolnou dlaždici, kterou je potřeba nastavit zobrazí **konfigurovat dlaždice** banner až do přizpůsobení na dlaždici. Vyberte tento banner a pak proveďte požadované instalace.
+Všechny dlaždice, které je třeba nastavit, zobrazí banner s **ikonou pro konfiguraci** , dokud dlaždici nepřizpůsobíte. Vyberte tuto hlavičku a pak proveďte požadovanou instalaci.
 
 ![Snímek obrazovky dlaždice, která vyžaduje konfiguraci](./media/azure-portal-dashboards/dashboard-configure-tile.png)
 
 > [!NOTE]
-> Markdown dlaždice umožňuje zobrazit vlastní, statický obsah na řídicím panelu. To může být základní pokyny, bitovou kopii, sadu hypertextové odkazy nebo dokonce kontaktní informace. Další informace o používání dlaždicí markdown, naleznete v tématu [použít vlastní markdown dlaždice](azure-portal-markdown-tile.md).
+> Dlaždice Markdownu vám umožní zobrazit na řídicím panelu vlastní a statický obsah. Může se jednat o základní pokyny, obrázek, sadu hypertextových odkazů nebo dokonce kontaktní informace. Další informace o použití dlaždice Markdownu najdete v tématu [použití vlastní dlaždice Markdownu](azure-portal-markdown-tile.md).
 >
 >
-### <a name="customize-tile-data"></a>Přizpůsobit data dlaždice
+### <a name="customize-tile-data"></a>Přizpůsobení dat dlaždic
 
-Data na řídicím panelu automaticky zobrazí činnost za posledních 24 hodin. Chcete-li zobrazit různé časové rozpětí pro právě tuto dlaždici, postupujte takto:
+Data na řídicím panelu automaticky zobrazují aktivitu za posledních 24 hodin. Chcete-li zobrazit pro tuto dlaždici jiný časový rozsah, postupujte podle následujících kroků:
 
-1. Vyberte ![ikonu filtru](./media/azure-portal-dashboards/dashboard-filter.png) ikonu filtru v levém horním rohu dlaždice nebo vyberte **přizpůsobit data dlaždice** v místní nabídce.
+1. Vyberte ikonu filtru ![](./media/azure-portal-dashboards/dashboard-filter.png) ikona filtru v levém horním rohu dlaždice nebo vyberte možnost **přizpůsobit data dlaždice** z kontextové nabídky.
 
-   ![Snímek obrazovky dlaždice kontextové nabídky](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
+   ![Obrazovka kontextové nabídky dlaždice](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
 
-2. Zaškrtnutím příslušného políčka **přepsat nastavení času řídicího panelu na úrovni dlaždice**.
+2. Zaškrtnutím políčka **potlačíte nastavení času řídicího panelu na úrovni dlaždice**.
 
-   ![Snímek obrazovky dialogového okna ke konfiguraci nastavení času dlaždice](./media/azure-portal-dashboards/dashboard-override-time-settings.png)
+   ![Snímek obrazovky dialogového okna pro konfiguraci nastavení času dlaždice](./media/azure-portal-dashboards/dashboard-override-time-settings.png)
 
-3. Zvolte časový rozsah pro tuto dlaždici zobrazit. Můžete vybrat z posledních 30 minut na posledních 30 dnů nebo definovat vlastní rozsah.
-1. Vyberte časové intervaly pro zobrazení. Můžete zobrazit kdekoli v přírůstcích po jedné minuty na jeden měsíc.
+3. Vyberte časový rozsah, který se má zobrazit pro tuto dlaždici. Můžete si vybrat z posledních 30 minut za posledních 30 dní nebo definovat vlastní rozsah.
+1. Vyberte časové rozlišení, které se má zobrazit. Můžete se zobrazit kdekoli od 1 minuty po jeden měsíc.
 1. Vyberte **Použít**.
 
-## <a name="delete-a-tile"></a>Odstranění dlaždice
+## <a name="delete-a-tile"></a>Odstranit dlaždici
 
-Odebrat dlaždici z řídicího panelu, postupujte takto:
+Pokud chcete z řídicího panelu odebrat dlaždici, postupujte následovně:
 
-* V pravém horním rohu dlaždice, vyberte příslušnou kontextovou nabídku a pak vyberte **odebrat z řídicího panelu**. nebo,
-* Vyberte ![upravit ikonu](./media/azure-portal-dashboards/dashboard-edit-icon.png) **upravit** do režimu úprav. V pravém horním rohu dlaždice při najetí myší a potom vyberte ![ikona odstranění](./media/azure-portal-dashboards/dashboard-delete-icon.png) odstranit ikonu odebrat dlaždici na řídicím panelu.
+* Vyberte kontextovou nabídku v pravém horním rohu dlaždice a pak vyberte **Odebrat z řídicího panelu**. Nebo:
+* Vyberte ![upravit ikonu](./media/azure-portal-dashboards/dashboard-edit-icon.png) **Upravit** a zadejte režim přizpůsobení. Najeďte myší v pravém horním rohu dlaždice a pak vyberte ikonu ![odstranit](./media/azure-portal-dashboards/dashboard-delete-icon.png) ikona odstranit pro odebrání dlaždice z řídicího panelu.
 
-   ![Snímek obrazovky ukazující, jak odebrat dlaždici na řídicím panelu](./media/azure-portal-dashboards/dashboard-delete-tile.png)
+   ![Snímek obrazovky ukazující, jak odebrat dlaždici z řídicího panelu](./media/azure-portal-dashboards/dashboard-delete-tile.png)
 
-## <a name="clone-a-dashboard"></a>Vytvořit kopii řídicího panelu
+## <a name="clone-a-dashboard"></a>Klonování řídicího panelu
 
-Chcete-li použít existující řídicí panel jako šablonu pro nový řídicí panel, postupujte takto:
+Pokud chcete použít existující řídicí panel jako šablonu pro nový řídicí panel, postupujte takto:
 
-1. Ujistěte se, že zobrazení řídicího panelu zobrazuje řídicí panel, který chcete zkopírovat.
-1. V záhlaví stránky, vyberte ![ikona klonování](./media/azure-portal-dashboards/dashboard-clone.png) **klonování**.
-1. Kopii řídicího panelu, s názvem "klon *váš název řídicího panelu*" se otevře v režimu úprav. Přejmenovat a přizpůsobit řídicí panel pomocí předchozích kroků v tomto článku.
+1. Ujistěte se, že se v zobrazení řídicího panelu zobrazuje řídicí panel, který chcete zkopírovat.
+1. V záhlaví stránky vyberte ![ikona klonování](./media/azure-portal-dashboards/dashboard-clone.png) **klonovat**.
+1. V režimu úprav se otevře kopie řídicího panelu s názvem "klonovat *název řídicího panelu*". Pomocí předchozích kroků v tomto článku přejmenujete a přizpůsobíte řídicí panel.
 
 ## <a name="publish-and-share-a-dashboard"></a>Publikování a sdílení řídicího panelu
 
-Když vytváříte řídicí panel, je ve výchozím nastavení, což znamená, že jste pouze jeden, který je můžou zobrazit privátní. Řídicí panely zpřístupnit ostatním uživatelům, můžete je sdílet s ostatními uživateli. Nejprve je nutné publikovat řídicí panel jako prostředek Azure. Chcete-li publikovat a sdílet vlastní řídicí panel, postupujte podle těchto kroků:
+Když vytváříte řídicí panel, je ve výchozím nastavení privátní, což znamená, že jste ten, kdo ho uvidí. Pokud chcete řídicí panely zpřístupnit ostatním uživatelům, můžete je sdílet s ostatními uživateli. Nejdřív musíte řídicí panel publikovat jako prostředek Azure. Pokud chcete publikovat a sdílet vlastní řídicí panel, použijte následující postup:
 
-1. Vyberte ![ikona sdílet](./media/azure-portal-dashboards/dashboard-share-icon.png) **sdílet** ze záhlaví stránky. **Sdílení + řízení přístupu** se zobrazil formulář.
-1. Ověřte, jestli je název správný řídicího panelu zobrazují.
-1. Vyberte **název předplatného**. Uživatelé s přístupem k předplatnému můžete použít na sdílený řídicí panel. Přístup k prostředkům reprezentována jednotlivým dlaždicím se určuje podle řízení přístupu na základě rolí Azure.
-1. Zaškrtněte políčko pro publikování tohoto řídicího panelu do skupiny prostředků "řídicí panely" pro vybrané předplatné. Nebo, zrušte zaškrtnutí políčka a zvolte místo toho publikovat na existující skupinu prostředků.
-1. Vyberte umístění pro prostředek řídicího panelu. Doporučujeme, abyste že vyhledejte řídicí panel s jiným prostředkům. Poznámka: Pokud se rozhodnete z existující skupiny prostředků, řídicí panel nachází automaticky s danou skupinu prostředků.
+1. V záhlaví stránky vyberte ![ikona sdílení](./media/azure-portal-dashboards/dashboard-share-icon.png) **sdílet** . Zobrazí se formulář **sdílení a řízení přístupu** .
+1. Ověřte, že se zobrazuje správný název řídicího panelu.
+1. Vyberte **název předplatného**. Uživatelé s přístupem k předplatnému můžou používat sdílený řídicí panel. Přístup k prostředkům reprezentovaným jednotlivými dlaždicemi závisí na řízení přístupu na základě role v Azure.
+1. Zaškrtněte políčko pro publikování tohoto řídicího panelu do skupiny prostředků řídicích panelů pro vybrané předplatné. Případně zaškrtnutí políčka zrušte a místo toho vyberte možnost publikování do existující skupiny prostředků.
+1. Vyberte umístění pro prostředek řídicího panelu. Tento řídicí panel doporučujeme najít pomocí dalších prostředků. Poznámka: Pokud se rozhodnete z existujících skupin prostředků, řídicí panel se automaticky umístí s touto skupinou prostředků.
 1. Vyberte **Publikovat**.
 
-   ![Snímek obrazovky dialogového okna publikování řídicího panelu](./media/azure-portal-dashboards/dashboard-publish.png)
+   ![Snímek obrazovky s dialogovým oknem pro publikování řídicího panelu](./media/azure-portal-dashboards/dashboard-publish.png)
 
-### <a name="set-access-control-on-a-shared-dashboard"></a>Nastavení řízení přístupu na sdílený řídicí panel
+### <a name="set-access-control-on-a-shared-dashboard"></a>Nastavení řízení přístupu na sdíleném řídicím panelu
 
-Po publikování řídicího panelu spravujte, kdo má přístup k řídicímu panelu pomocí následujících kroků:
+Po publikování řídicího panelu můžete spravovat, kdo má přístup k řídicímu panelu, pomocí následujících kroků:
 
-1. V **sdílení + řízení přístupu** vyberte **spravovat uživatele**.
+1. V podokně **sdílení a řízení přístupu** vyberte **Spravovat uživatele**.
 
-   ![Snímek obrazovky řídicího panelu sdílení a přístup k řízení dialogového okna](./media/azure-portal-dashboards/dashboard-share-access-control.png)
+   ![Snímek obrazovky s dialogovým oknem sdílení řídicího panelu + řízení přístupu](./media/azure-portal-dashboards/dashboard-share-access-control.png)
 
-2. **Řízení přístupu** otevře se stránka. Na této stránce můžete zkontrolovat úroveň přístupu pro uživatele nebo přidat nové přiřazení role. Při přidání přiřazení role, udělujete oprávnění k řídicímu panelu.
+2. Otevře se stránka **Access Control** . Na této stránce můžete zkontrolovat úroveň přístupu někomu jinému nebo přidat nové přiřazení role. Když sem přidáte přiřazení role, udělujete řídicímu panelu oprávnění.
 
 > [!NOTE]
-> Dlaždice jsou reprezentativní zobrazení prostředků ve vaší organizaci. Přístup k prostředkům se spravuje prostřednictvím ovládacího prvku přiřazení přístupu podle role a oprávnění se dědí z předplatného na prostředek. Udělení přístupu k řídicímu panelu nebude automaticky přiřadit oprávnění prostředky uvedené na řídicím panelu. Další informace o oprávnění na sdílené řídicí panely a řízení přístupu na základě rolí pro prostředky, najdete v části [sdílení řídicích panelů prostřednictvím řízení přístupu na základě rolí](azure-portal-dashboard-share-access.md).
+> Dlaždice jsou reprezentativními zobrazeními prostředků ve vaší organizaci. Přístup k prostředkům je spravován prostřednictvím přiřazení řízení přístupu na základě role a oprávnění se z předplatného dědí do prostředku. Udělení přístupu řídicímu panelu automaticky nepřiřazuje oprávnění k prostředkům zobrazeným na řídicím panelu. Další informace o oprávněních ke sdíleným řídicím panelům a řízení přístupu na základě rolí pro prostředky najdete v tématu [sdílení řídicích panelů s řízením přístupu na základě role](azure-portal-dashboard-share-access.md).
 
 ### <a name="open-a-shared-dashboard"></a>Otevření sdíleného řídicího panelu
 
-K vyhledání a otevření sdíleného řídicího panelu, postupujte podle těchto kroků:
+Pokud chcete najít a otevřít sdílený řídicí panel, postupujte takto:
 
-1. Vyberte rozevírací seznam vedle názvu řídicího panelu.
-1. Vyberte ze seznamu řídicích panelů nebo **procházet všechny řídicí panely** Pokud není uvedená řídicí panel, který chcete spustit.
+1. Vyberte rozevírací nabídku vedle názvu řídicího panelu.
+1. Pokud řídicí panel, který chcete otevřít, není uvedený, vyberte si ho ze zobrazeného seznamu řídicích panelů nebo **procházejte všechny řídicí panely** .
 
-   ![Snímek obrazovky řídicí panel výběru nabídky](./media/azure-portal-dashboards/dashboard-browse.png)
+   ![Snímek nabídky výběru řídicího panelu](./media/azure-portal-dashboards/dashboard-browse.png)
 
-3. V **typ** pole, vyberte **sdílené řídicí panely**.
-1. Vyberte jeden nebo více odběrů. Můžete také zadat text pro filtrování řídicí panely podle názvu.
+3. V poli **typ** vyberte **sdílené řídicí panely**.
+1. Vyberte jedno nebo více předplatných. Můžete také zadat text pro filtrování řídicích panelů podle názvu.
 1. Vyberte řídicí panel ze seznamu sdílených řídicích panelů.
 
 ## <a name="delete-a-dashboard"></a>Odstranění řídicího panelu
 
-Pokud chcete trvale odstranit privátní nebo sdíleného řídicího panelu, postupujte takto:
+K trvalému odstranění privátního nebo sdíleného řídicího panelu použijte následující postup:
 
-1. Vyberte řídicí panel, který chcete odstranit z rozevíracího seznamu vedle názvu řídicího panelu.
-1. Vyberte ![ikona odstranění](./media/azure-portal-dashboards/dashboard-delete-icon.png) **odstranit** ze záhlaví stránky.
-1. Pro privátní řídicí panel, vyberte **OK** v potvrzovacím dialogovém okně k odebrání řídicího panelu. Sdílený řídicí panel, v potvrzovacím dialogovém okně zaškrtnutím příslušného políčka potvrďte, že publikovaný řídicí panel nebudou zobrazit nikdo jiný. Pak vyberte **OK**.
+1. V rozevíracím seznamu vedle názvu řídicího panelu vyberte řídicí panel, který chcete odstranit.
+1. V záhlaví stránky vyberte ![odstranit ikonu](./media/azure-portal-dashboards/dashboard-delete-icon.png) **Odstranit** .
+1. V případě privátního řídicího panelu v potvrzovacím dialogovém okně vyberte **OK** , aby se řídicí panel odebral. U sdíleného řídicího panelu kliknutím na zaškrtávací políčko v potvrzovacím dialogovém okně potvrďte, že publikovaný řídicí panel již nebude možné zobrazit jiní uživatelé. Pak vyberte **OK**.
 
-   ![Snímek obrazovky potvrzení odstranění](./media/azure-portal-dashboards/dashboard-delete-dash.png)
+   ![Snímek obrazovky s potvrzením odstranění](./media/azure-portal-dashboards/dashboard-delete-dash.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Sdílení řídicích panelů prostřednictvím řízení přístupu na základě rolí](azure-portal-dashboard-share-access.md)
+* [Sdílení řídicích panelů s řízením přístupu na základě rolí](azure-portal-dashboard-share-access.md)
 * [Vytváření řídicích panelů Azure prostřednictvím kódu programu](azure-portal-dashboards-create-programmatically.md)

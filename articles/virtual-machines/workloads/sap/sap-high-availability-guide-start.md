@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8a4e4cb8330f6b02d721f2228fee17a91cd44499
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 8db9eb81efdc367e312649948c9eb1a9eee0532f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70078363"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638030"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver
 
@@ -33,8 +33,8 @@ ms.locfileid: "70078363"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [sap-high-availability-architecture-scenarios]:sap-high-availability-architecture-scenarios.md
 [sap-high-availability-guide-wsfc-shared-disk]:sap-high-availability-guide-wsfc-shared-disk.md
@@ -170,7 +170,7 @@ ms.locfileid: "70078363"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -196,8 +196,8 @@ Tato série článků zahrnuje:
     > Důrazně doporučujeme použít model nasazení Azure Resource Manager pro vaše instalace SAP. Nabízí spoustu výhod, které nejsou k dispozici v modelu nasazení Classic. Další informace o [modelech nasazení][virtual-machines-azure-resource-manager-architecture-benefits-arm] Azure.   
     >
 * Vysoká dostupnost SAP na:
-  * ![Windows ][Logo_Windows]  **Windows**pomocí **clusteru služby Windows Server failover cluster (WSFC)**
-  * ![Linux ][Logo_Linux] **Linux**pomocí **architektury clusteru Linux**
+  * ![Windows][Logo_Windows]**Windows**pomocí **clusteru Windows Server failover cluster (WSFC)**
+  * ![Linux][Logo_Linux] **Linux**pomocí **architektury clusteru Linux**
 
 V těchto článcích se dozvíte, jak můžete lépe chránit součásti SPOF (Single Point of failure), jako jsou například SAP Central Services (ASCS/SCS) a systémy správy databáze (DBMS). Naučíte se taky o redundantních součástech v Azure, jako je třeba aplikační Server SAP.
 
@@ -209,7 +209,7 @@ V těchto článcích se dozvíte, jak můžete lépe chránit součásti SPOF (
 
 * [Architektura a scénáře vysoké dostupnosti Azure Virtual Machines pro SAP NetWeaver][sap-high-availability-architecture-scenarios]
 
-Článek zahrnuje jak ![Windows ][Logo_Windows] **Windows** , tak i ![Linux ][Logo_Linux] **Linux**.
+Článek zahrnuje jak ![Windows][Logo_Windows] **Windows** , tak ![Linux][Logo_Linux] **Linux**.
 
 
 ## <a name="azure-infrastructure-preparation-for-sap-netweaver-high-availability-deployment"></a>Příprava infrastruktury Azure na nasazení SAP NetWeaver s vysokou dostupností
@@ -218,17 +218,17 @@ V těchto článcích se dozvíte, jak můžete lépe chránit součásti SPOF (
 
 **Aktualizováno:** Březen 2019
 
-* ![Windows ][Logo_Windows] [přípravě infrastruktury Azure pro službu SAP high availability pomocí clusteru s podporou převzetí služeb při selhání systému Windows a **sdíleného disku** pro instance SAP ASCS/SCS][sap-high-availability-infrastructure-wsfc-shared-disk]
+* ![Windows][Logo_Windows] [přípravě infrastruktury Azure pro SAP high availability pomocí clusteru s podporou převzetí služeb při selhání systému Windows a **sdíleného disku** pro instance SAP ASCS/SCS][sap-high-availability-infrastructure-wsfc-shared-disk]
 
-* ![Windows ][Logo_Windows] [přípravě infrastruktury Azure pro službu SAP high availability pomocí clusteru s podporou převzetí služeb při selhání systému Windows a **sdílené složky** pro instance SAP ASCS/SCS][sap-high-availability-infrastructure-wsfc-file-share]
+* ![Windows][Logo_Windows] [přípravě infrastruktury Azure pro SAP high availability pomocí clusteru s podporou převzetí služeb při selhání systému Windows a **sdílené složky** pro instance SAP ASCS/SCS][sap-high-availability-infrastructure-wsfc-file-share]
 
-* ![Linux ][Logo_Linux] [přípravě infrastruktury Azure pro službu SAP high availability pomocí rozhraní SUSE Linux Enterprise Server cluster Framework pro instance SAP ASCS/SCS][sap-suse-ascs-ha-setting-ha-nfs]
+* ![Linux][Logo_Linux] [přípravě infrastruktury Azure pro službu SAP high availability pomocí rozhraní SUSE Linux Enterprise Server cluster Framework pro instance SAP ASCS/SCS][sap-suse-ascs-ha-setting-ha-nfs]
 
-* ![Linux ][Logo_Linux] [přípravě infrastruktury Azure pro systém SAP s vysokou dostupností pomocí SUSE Linux Enterprise Server architektury clusterů pro instance SAP ASCS/SCS se soubory Azure NetApp][sap-suse-ascs-ha-setting-ha-anf]
+* ![Linux][Logo_Linux] [přípravě infrastruktury Azure pro službu SAP s vysokou dostupností pomocí SUSE Linux Enterprise Server architektury clusterů pro instance SAP ASCS/SCS se soubory Azure NetApp][sap-suse-ascs-ha-setting-ha-anf]
 
-* ![RHEL ][Logo_Linux] [přípravě infrastruktury Azure pro SAP ASCS/SCS High Availability – nastavení GlusterFS na RHEL][high-availability-guide-rhel-glusterfs]
+* ![RHEL][Logo_Linux] [přípravě infrastruktury Azure pro SAP ASCS/SCS High Availability – nastavení GlusterFS na RHEL][high-availability-guide-rhel-glusterfs]
 
-* ![RHEL ][Logo_Linux] [přípravě infrastruktury Azure pro SAP ASCS/SCS High Availability – nastavení Pacemaker na RHEL][high-availability-guide-rhel-pacemaker]
+* ![RHEL][Logo_Linux] [přípravě infrastruktury Azure pro SAP ASCS/SCS High Availability – nastavení Pacemaker na RHEL][high-availability-guide-rhel-pacemaker]
 
 ## <a name="installation-of-an-sap-netweaver-high-availability-system-in-azure"></a>Instalace systému SAP NetWeaver s vysokou dostupností v Azure
 
@@ -236,15 +236,15 @@ V těchto článcích se dozvíte, jak můžete lépe chránit součásti SPOF (
 
 **Aktualizováno:** Březen 2019
 
-* ![Windows ][Logo_Windows] [instalaci služby SAP NetWeaver s vysokou dostupností pomocí clusteru s podporou převzetí služeb při selhání systému Windows a **sdíleného disku** pro instance SAP ASCS/SCS][sap-high-availability-installation-wsfc-shared-disk]
+* ![Windows][Logo_Windows] [instalaci služby SAP NetWeaver high availability pomocí clusteru s podporou převzetí služeb při selhání systému Windows a **sdíleného disku** pro instance SAP ASCS/SCS][sap-high-availability-installation-wsfc-shared-disk]
 
-* ![Windows ][Logo_Windows] [instalaci služby SAP NetWeaver s vysokou dostupností pomocí clusteru s podporou převzetí služeb při selhání systému Windows a **sdílené složky** pro instance SAP ASCS/SCS][sap-high-availability-installation-wsfc-file-share]
+* ![Windows][Logo_Windows] [instalaci služby SAP NetWeaver high availability pomocí clusteru s podporou převzetí služeb při selhání systému Windows a **sdílené složky** pro instance SAP ASCS/SCS][sap-high-availability-installation-wsfc-file-share]
 
-* ![Linux ][Logo_Linux] [instalaci SAP NetWeaver s vysokou dostupností pomocí SUSE Linux Enterprise Server architektury clusterů pro instance SAP ASCS/SCS][sap-suse-ascs-ha-sap-installation]
+* ![Linux][Logo_Linux] [instalaci SAP NetWeaver s vysokou dostupností pomocí SUSE Linux Enterprise Server architektury clusterů pro instance SAP ASCS/SCS][sap-suse-ascs-ha-sap-installation]
 
-* ![Linux ][Logo_Linux] [nainstalovat SAP NetWeaver s vysokou dostupností pomocí SUSE Linux Enterprise Server architektury clusterů pro instance SAP ASCS/SCS s Azure NetApp Files][sap-suse-ascs-ha-sap-installation-anf]
+* ![Linux][Logo_Linux] [instalaci SAP NetWeaver s vysokou dostupností pomocí SUSE Linux Enterprise Server architektury clusterů pro instance SAP ASCS/SCS s Azure NetApp Files][sap-suse-ascs-ha-sap-installation-anf]
 
-* ![RHEL ][Logo_Linux] [instalaci SAP NETWEAVER ASCS/SCS v konfiguraci s vysokou dostupností na RHEL][sap-rhel-ascs-ha]
+* ![RHEL][Logo_Linux] [instalaci SAP NETWEAVER ASCS/SCS v konfiguraci s vysokou dostupností na RHEL][sap-rhel-ascs-ha]
 
-* ![RHEL ][Logo_Linux] [instalaci SAP NETWEAVER ASCS/SCS v konfiguraci s vysokou dostupností v RHEL s Azure NetApp Files][sap-rhel-ascs-ha-sap-installation-anf]
+* ![RHEL][Logo_Linux] [nainstalujte SAP NETWEAVER ASCS/SCS v konfiguraci s vysokou dostupností na RHEL s Azure NetApp Files][sap-rhel-ascs-ha-sap-installation-anf]
 

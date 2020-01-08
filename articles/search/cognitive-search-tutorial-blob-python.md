@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: d7b4755bb2e69c4a852901b71d917c6baa5d63ae
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: c7c4da97101ae1277474e62466d78ffbc66b1ce0
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406417"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563271"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-rest-and-python"></a>Kurz: vytvoření kanálu pro obohacení AI pomocí REST a Pythonu
 
@@ -87,7 +87,7 @@ Existují i jiné způsoby, jak zadat připojovací řetězec, například posky
 ## <a name="create-a-jupyter-notebook"></a>Vytvoření poznámkového bloku Jupyter
 
 > [!Note]
-> V tomto článku se dozvíte, jak vytvořit zdroj dat, index, indexer a dovednosti pomocí řady skriptů Pythonu. Pokud si chcete stáhnout kompletní příklad poznámkového bloku, přečtěte si [úložiště ukázek Azure-Search-Python-Samples](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment-Jupyter-Notebook).
+> V tomto článku se dozvíte, jak vytvořit zdroj dat, index, indexer a dovednosti pomocí řady skriptů Pythonu. Pokud si chcete stáhnout kompletní příklad poznámkového bloku, přečtěte si [úložiště ukázek Azure-Search-Python-Samples](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment).
 
 Pomocí Anaconda navigátoru můžete spustit Jupyter Notebook a vytvořit nový notebook Python 3.
 
@@ -169,7 +169,7 @@ V tomto kroku definujete sadu kroků obohacení, které se použijí na vaše da
 
 + [Extrakce klíčových frází](cognitive-search-skill-keyphrases.md), která získává hlavní klíčové fráze 
 
-### <a name="python-script"></a>Skript Pythonu
+### <a name="python-script"></a>Skript jazyka Python
 Spuštěním následujícího skriptu vytvořte dovednosti s názvem `cogsrch-py-skillset`.
 
 ```python

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 2768c2d4cef68dcf25e25c047aaa69653af5e0b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 85ef34f8644d95f6cfd2c7262bfe4bbc0683547f
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170815"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561734"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Instalace a použití Istio ve službě Azure Kubernetes Service (AKS)
 
@@ -136,7 +136,7 @@ spec:
 Nainstalujte istio pomocí příkazu `istioctl apply` a výše `istio.aks.yaml` soubor specifikace roviny ovládacího prvku Istio následujícím způsobem:
 
 ```console
-istioctl manifest apply -f istio.aks.yaml
+istioctl manifest apply -f istio.aks.yaml --logtostderr --set installPackagePath=./install/kubernetes/operator/charts
 ```
 
 Instalační program nasadí celou řadu [CRDs][kubernetes-crd] a pak spravuje závislosti pro instalaci všech relevantních objektů definovaných pro tuto konfiguraci Istio. Měl by se zobrazit něco podobného jako následující výstupní fragment.
@@ -361,7 +361,9 @@ istioctl dashboard envoy <pod-name>.<namespace>
 Pokud chcete odebrat Istio z clusteru AKS, použijte příkaz `istioctl manifest generate` se souborem specifikace roviny ovládacího prvku `istio.aks.yaml` Istio. Tím se vygeneruje nasazený manifest, který se pošle do `kubectl delete`, aby se odebraly všechny nainstalované komponenty a obor názvů `istio-system`.
 
 ```console
-istioctl manifest generate -f istio.aks.yaml | kubectl delete -f -
+istioctl manifest generate -f istio.aks.yaml -o istio-components-aks --logtostderr --set installPackagePath=./install/kubernetes/operator/charts 
+
+kubectl delete -f istio-components-aks -R
 ```
 
 ### <a name="remove-istio-crds-and-secrets"></a>Odebrat Istio CRDs a tajné klíče

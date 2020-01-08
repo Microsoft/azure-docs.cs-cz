@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 12/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52b3b7ea34d48c37a4e07ab073e611d5a60399a9
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: c8a8f3895f41ac987b934b86f8d646b281c37c93
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706923"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561968"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s ServiceNow
 
@@ -33,7 +32,7 @@ V tomto kurzu se dozvíte, jak integrovat ServiceNow s Azure Active Directory (A
 
 Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -109,19 +108,19 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Snímek obrazovky s oddílem nastavení ServiceNow se zvýrazněnými adresami URL](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure Portal.
 
 1. V levém podokně Azure Portal vyberte **Azure Active Directory** > **uživatelů** > **všech uživatelích**.
-1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Vyberte **nového uživatele** v horní části obrazovky.
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Jako **název**zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno**zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Vyberte možnost **Zobrazit heslo**a pak zapište hodnotu zobrazenou v poli **heslo** .
-   1. Vyberte **Create** (Vytvořit).
+   1. Vyberte **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k ServiceNow.
 
@@ -131,7 +130,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
    ![Snímek obrazovky s oddílem spravovat se zvýrazněnými uživateli a skupinami](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**. V dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
+1. Vyberte možnost **Přidat uživatele**. V dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 
     ![Snímek obrazovky uživatelů a skupin se zvýrazněnou možností přidat uživatele](common/add-assign-user.png)
 
@@ -212,7 +211,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     * Pro **pole v tabulce uživatel, které je...** zadejte **user_name**.
   
-    * Vyberte **Save** (Uložit).
+    * Vyberte **Uložit**.
 
 6. ServiceNow můžete nakonfigurovat automaticky nebo ručně. K automatické konfiguraci ServiceNow použijte následující postup:
 
@@ -263,7 +262,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
             ![Snímek obrazovky kolekce se zvýrazněnou ikonou pro ikonu certifikátu a pravé šipky](./media/servicenow-tutorial/tutorial_servicenow_11.png "Konfigurace jednotného přihlašování")
 
-          1. Vyberte **Save** (Uložit).
+          1. Vyberte **Uložit**.
 
           1. V pravém horním rohu stránky vyberte **Test připojení**.
 
@@ -295,7 +294,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
         1. Zadejte **adresu URL federačních metadat aplikace** , kterou jste zkopírovali z Azure Portal.
 
-        1. Vyberte **importovat**.
+        1. Vyberte **Import** (Importovat).
 
     1. Načte adresu URL metadat IdP a vyplní všechny informace o polích.
 
@@ -420,7 +419,7 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v ServiceNow. Se
     > [!NOTE]
     > Službu Azure AD můžete nakonfigurovat tak, aby vygenerovala buď ID uživatele Azure AD (hlavní název uživatele), nebo e-mailovou adresu jako jedinečný identifikátor v tokenu SAML. Provedete to tak, že zadáte **atributy** **ServiceNow** >  > **jednotné přihlašování** Azure Portal a namapujete požadované pole na atribut **NameIdentifier** . Hodnota uložená pro vybraný atribut ve službě Azure AD (například hlavní název uživatele) se musí shodovat s hodnotou uloženou v ServiceNow pro zadané pole (například user_name).
 
-    f. Vyberte **Save** (Uložit).
+    f. Vyberte **Uložit**.
 
 ## <a name="test-sso"></a>Test SSO
 

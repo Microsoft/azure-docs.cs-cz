@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: 40b277f0b1bfb3501bb246e555d46db5e1ee9f95
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: da8c194b7911d2eeda8e0c903cb7412186aacfcb
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279305"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638251"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>SQL Database omezení prostředků a zásad správného řízení prostředků
 
@@ -27,7 +27,7 @@ Tento článek poskytuje přehled SQL Databasech omezení prostředků pro SQL D
 
 ## <a name="maximum-resource-limits"></a>Maximum omezení prostředků
 
-| Prostředek | Omezení |
+| Prostředek | škálování |
 | :--- | :--- |
 | Databáze na server | 5000 |
 | Výchozí počet serverů na předplatné v libovolné oblasti | 20 |
@@ -60,7 +60,7 @@ Pokud se setkáte s vysokým využitím výpočetních prostředků, zahrnují m
 - Zvýšením výpočetní velikosti databáze nebo elastického fondu poskytnete databázi s více výpočetními prostředky. Viz téma [škálování prostředků jedné databáze](sql-database-single-database-scale.md) a [škálování prostředků elastického fondu](sql-database-elastic-pool-scale.md).
 - Optimalizace dotazů pro snížení využití prostředků každého dotazu. Další informace najdete v tématu [ladění a hinty dotazů](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 
 Když využité místo v databázi dosáhne limitu maximální velikosti, vkládání a aktualizace databáze, které zvyšují velikost dat, selžou a klienti obdrží [chybovou zprávu](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md). Příkazy SELECT a DELETE budou i nadále úspěšné.
 
@@ -99,7 +99,9 @@ Hodnoty vstupně-výstupních operací a minimální/maximální propustnosti vr
 
 Pro databáze Basic, Standard a Pro obecné účely, které používají datové soubory v Azure Storage, nemusí být hodnota `primary_group_max_io` dosažitelná, pokud databáze nemá k dispozici dostatek datových souborů k kumulativnímu poskytnutí tohoto počtu IOPS, nebo pokud nejsou data rovnoměrně rozdělena mezi soubory nebo pokud úroveň výkonu základních objektů BLOB omezuje počet vstupně-výstupních operací za sekundu v rámci limitu řízení prostředků. Podobně s malým protokolem IOs generovaným častým potvrzováním transakcí může být `primary_max_log_rate` hodnota dosažitelná úlohou kvůli limitu IOPS v základní službě Azure Storage BLOB.
 
-Hodnoty využití prostředků, například `avg_data_io_percent` a `avg_log_write_percent`, hlášené v zobrazeních [Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [Sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)a [Sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) , se počítají jako procentuální hodnoty maximálního řízení prostředků. Proto pokud jiné faktory než zásady správného řízení prostředků omezují počet vstupně-výstupních operací za sekundu, můžete zobrazit sloučení vstupně-výstupních operací za sekundu a latence při zvýšení zatížení, a to i v případě, že hlášené využití prostředků zůstává nižší než 100%. Pokud chcete zobrazit vstupně-výstupní operace čtení a zápisu, propustnost a latence na databázový soubor, použijte funkci [Sys. dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) . Tato funkce obchází všechny vstupně-výstupní operace na databázi, včetně vstupně-výstupních operací na pozadí, které nejsou k dis`avg_data_io_percent`, ale využívají IOPS a propustnost základního úložiště a můžou mít vliv na zjištěnou latenci úložiště.
+Hodnoty využití prostředků, například `avg_data_io_percent` a `avg_log_write_percent`, hlášené v zobrazeních [Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [Sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)a [Sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) , se počítají jako procentuální hodnoty maximálního řízení prostředků. Proto pokud jiné faktory než zásady správného řízení prostředků omezují počet vstupně-výstupních operací za sekundu, můžete zobrazit sloučení vstupně-výstupních operací za sekundu a latence při zvýšení zatížení, a to i v případě, že hlášené využití prostředků zůstává nižší než 100%. 
+
+Pokud chcete zobrazit vstupně-výstupní operace čtení a zápisu, propustnost a latence na databázový soubor, použijte funkci [Sys. dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) . Tato funkce obchází všechny vstupně-výstupní operace na databázi, včetně vstupně-výstupních operací na pozadí, které nejsou k dis`avg_data_io_percent`, ale využívají IOPS a propustnost základního úložiště a můžou mít vliv na zjištěnou latenci úložiště. Tato funkce také rozsvítí další latenci, která může být zavedena v modulu řízení vstupně-výstupních prostředků pro čtení a zápisy ve sloupcích `io_stall_queued_read_ms` a `io_stall_queued_write_ms`.
 
 ### <a name="transaction-log-rate-governance"></a>Řízení sazeb transakčního protokolu
 
@@ -116,7 +118,7 @@ Skutečné sazby za generování protokolů, které jsou uvedené v době běhu,
 
 Tvarování provozu správce míry přenosu dat se prochází prostřednictvím následujících typů čekání (zveřejněné v [Sys. dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV):
 
-| Typ čekání | Poznámky: |
+| Typ čekání | Poznámky |
 | :--- | :--- |
 | LOG_RATE_GOVERNOR | Omezení databáze |
 | POOL_LOG_RATE_GOVERNOR | Omezení fondu |
@@ -132,6 +134,6 @@ Pokud se setkáte s limitem přenosové rychlosti, která brání požadovanou �
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o obecných omezeních Azure najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-subscription-service-limits.md).
+- Informace o obecných omezeních Azure najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md).
 - Informace o DTU a eDTU najdete v tématu [DTU a eDTU](sql-database-purchase-models.md#dtu-based-purchasing-model).
 - Informace o omezení velikosti databáze tempdb najdete [v tématu databáze tempdb v Azure SQL Database](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).

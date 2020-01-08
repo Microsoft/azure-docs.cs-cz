@@ -1,26 +1,18 @@
 ---
-title: Verze Threat Modeling Tool – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool verze 4/9/2019 – Azure
 description: Dokumentující poznámky k verzi pro nástroj pro modelování hrozeb
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: jegeib
-ms.openlocfilehash: 6992ac58ebf8976714e5a478dd7b886efab2a4b7
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 488168b1a17d3f5fac1ae7cca0a37676063bfe03
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934789"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552062"
 ---
 # <a name="threat-modeling-tool-update-release-71604081---492019"></a>Threat Modeling Tool vydání aktualizace 7.1.60408.1-4/9/2019
 
@@ -47,7 +39,7 @@ Verze Threat Modeling Tool klienta se teď zobrazuje na domovské obrazovce apli
 
 ### <a name="support-links-have-been-updated"></a>Odkazy na podporu byly aktualizovány
 
-Všechny odkazy podpory v rámci nástroje byly aktualizovány, aby bylo možné směrovat [tmtextsupport@microsoft.com](mailto:tmtextsupport@microsoft.com) uživatele spíše než Fórum MSDN.
+Všechny odkazy podpory v rámci nástroje byly aktualizovány tak, aby uživatele [tmtextsupport@microsoft.com](mailto:tmtextsupport@microsoft.com) spíše než Fórum MSDN.
 
 ## <a name="system-requirements"></a>Požadavky na systém
 

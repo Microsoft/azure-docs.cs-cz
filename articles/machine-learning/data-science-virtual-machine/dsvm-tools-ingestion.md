@@ -6,18 +6,18 @@ keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy,
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: gvashishtha
-ms.author: gopalv
+author: lobrien
+ms.author: laobri
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 72a881a2ab508caa2274f3b9299157921cb8ceff
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 12/12/2019
+ms.openlocfilehash: d86858f8d7f09628457b718ca3c481934d720081
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330680"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612625"
 ---
-# <a name="data-science-virtual-machine-data-ingestion-tools"></a>Data Science Virtual Machine nástroje pro přijímání dat
+# <a name="data-science-virtual-machine-data-ingestion-tools"></a>Nástroje pro ingestování dat data Science virtuálního počítače
 
 Jako jeden z prvních technických kroků v projektu pro datové vědy nebo AI musíte identifikovat datové sady, které se mají použít, a přenést je do vašeho prostředí pro analýzu. Data Science Virtual Machine (DSVM) poskytuje nástroje a knihovny pro přenos dat z různých zdrojů do úložiště analytických dat místně na DSVM nebo do datové platformy, ať už v cloudu, nebo v místním prostředí.
 
@@ -27,10 +27,10 @@ Zde jsou některé nástroje pro přesun dat, které jsou k dispozici v DSVM.
 
 |    |           |
 | ------------- | ------------- |
-| Co je to?   | Nástroj pro kopírování dat z úložiště objektů BLOB v Azure do Azure Data Lake Store. Může také kopírovat data mezi dvěma Azure Data Lake Store účty.      |
+| Co je to?   | Nástroj pro kopírování dat z úložiště objektů BLOB v Azure do Azure Data Lake Store. Můžete také kopírovat data mezi dva účty Azure Data Lake Store.      |
 | Podporované verze DSVM      | Windows      |
-| Typická použití      | Import několika objektů BLOB ze služby Azure Blob Storage do Azure Data Lake Store.      |
-|  Jak ji použít nebo spustit?    |   Otevřete příkazový řádek a zadejte `adlcopy`, abyste získali nápovědu.    |
+| Typické použití      | Import několika objektů BLOB ze služby Azure Blob Storage do Azure Data Lake Store.      |
+|  Jak používat nebo ji spustit?    |   Otevřete příkazový řádek a zadejte `adlcopy` pro získání nápovědy.    |
 | Odkazy na ukázky      | [Pomocí AdlCopy](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
 | Související nástroje na DSVM      | AzCopy, Azure CLI     |
 
@@ -38,12 +38,12 @@ Zde jsou některé nástroje pro přesun dat, které jsou k dispozici v DSVM.
 
 |    |           |
 | ------------- | ------------- |
-| Co je to?   | Nástroj pro správu pro Azure. Obsahuje taky příkazy k přesunu dat z datových platforem Azure, jako je Azure Blob Storage a Azure Data Lake Store.     |
+| Co je to?   | Nástroj pro správu Azure. Obsahuje taky příkazy k přesunu dat z datových platforem Azure, jako je Azure Blob Storage a Azure Data Lake Store.     |
 | Podporované verze DSVM      | Windows, Linux     |
-| Typická použití      | Import a export dat z Azure Storage a do Azure Data Lake Store      |
-|  Jak ji použít nebo spustit?    |   Otevřete příkazový řádek a zadejte `az`, abyste získali nápovědu.    |
+| Typické použití      | Import a export dat z Azure Storage a do Azure Data Lake Store      |
+|  Jak používat nebo ji spustit?    |   Otevřete příkazový řádek a zadejte `az` pro získání nápovědy.    |
 | Odkazy na ukázky      | [Použití Azure CLI](https://docs.microsoft.com/cli/azure)     |
-| Související nástroje na DSVM      | AzCopy, AdlCopy      |
+| Související nástroje na DSVM      | AzCopy AdlCopy      |
 
 
 ## <a name="azcopy"></a>AzCopy
@@ -52,22 +52,22 @@ Zde jsou některé nástroje pro přesun dat, které jsou k dispozici v DSVM.
 | ------------- | ------------- |
 | Co je to?   | Nástroj pro kopírování dat do a z místních souborů, úložiště objektů BLOB v Azure, souborů a tabulek.      |
 | Podporované verze DSVM      | Windows      |
-| Typická použití      | Kopírování souborů do Azure Blob Storage a kopírování objektů BLOB mezi účty.      |
-|  Jak ji použít nebo spustit?    |   Otevřete příkazový řádek a zadejte `azcopy`, abyste získali nápovědu.    |
+| Typické použití      | Kopírování souborů do Azure Blob Storage a kopírování objektů BLOB mezi účty.      |
+|  Jak používat nebo ji spustit?    |   Otevřete příkazový řádek a zadejte `azcopy` pro získání nápovědy.    |
 | Odkazy na ukázky      | [AzCopy ve Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)      |
 | Související nástroje na DSVM      | AdlCopy     |
 
 
-## <a name="azure-cosmos-db-data-migration-tool"></a>Nástroj pro migraci dat Azure Cosmos DB
+## <a name="azure-cosmos-db-data-migration-tool"></a>Nástroj Azure Cosmos DB dat migrace
 
 |    |           |
 | ------------- | ------------- |
 | Co je to?   | Nástroj pro import dat z různých zdrojů do Azure Cosmos DB databáze NoSQL v cloudu. Tyto zdroje zahrnují soubory JSON, soubory CSV, SQL, MongoDB, Azure Table Storage, Amazon DynamoDB a Azure Cosmos DB kolekce rozhraní SQL API.      |
 | Podporované verze DSVM      | Windows      |
-| Typická použití      | Import souborů z virtuálního počítače do CosmosDB, import dat z Azure Table Storage do CosmosDB a import dat z databáze Microsoft SQL Server do CosmosDB.     |
-|  Jak ji použít nebo spustit?    |   Chcete-li použít verzi příkazového řádku, otevřete příkazový řádek a zadejte `dt`. Chcete-li použít nástroj grafického uživatelského rozhraní, otevřete příkazový řádek a zadejte `dtui`.    |
+| Typické použití      | Import souborů z virtuálního počítače do CosmosDB, import dat z Azure Table Storage do CosmosDB a import dat z databáze Microsoft SQL Server do CosmosDB.     |
+|  Jak používat nebo ji spustit?    |   Chcete-li použít verzi příkazového řádku, otevřete příkazový řádek a zadejte příkaz `dt`. Chcete-li použít nástroj grafického uživatelského rozhraní, otevřete příkazový řádek a zadejte `dtui`.    |
 | Odkazy na ukázky      | [Importovat data CosmosDB](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
-| Související nástroje na DSVM      | AzCopy, AdlCopy      |
+| Související nástroje na DSVM      | AzCopy AdlCopy      |
 
 ## <a name="azure-storage-explorer"></a>Průzkumník služby Azure Storage
 
@@ -75,8 +75,8 @@ Zde jsou některé nástroje pro přesun dat, které jsou k dispozici v DSVM.
 | ------------- | ------------- |
 | Co je to?   | Grafické uživatelské rozhraní pro interakci se soubory uloženými v cloudu Azure. |
 | Podporované verze DSVM      | Windows      |
-| Typická použití      | Import a export dat z DSVM.    |
-|  Jak ji použít nebo spustit?    | V nabídce Start vyhledejte "Průzkumník služby Azure Storage". |
+| Typické použití      | Import a export dat z DSVM.    |
+|  Jak používat nebo ji spustit?    | V nabídce Start vyhledejte "Průzkumník služby Azure Storage". |
 | Odkazy na ukázky      | [Azure Storage Explorer](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
 
 
@@ -84,20 +84,20 @@ Zde jsou některé nástroje pro přesun dat, které jsou k dispozici v DSVM.
 
 |    |           |
 | ------------- | ------------- |
-| Co je to?   | SQL Server nástroj pro kopírování dat mezi SQL Server a datovým souborem.      |
+| Co je to?   | SQL Server nástroj pro kopírování dat mezi SQL serverem a datový soubor.      |
 | Podporované verze DSVM      | Windows      |
-| Typická použití      | Import souboru CSV do SQL Server tabulky a export tabulky SQL Server do souboru.      |
-|  Jak ji použít nebo spustit?    |   Otevřete příkazový řádek a zadejte `bcp`, abyste získali nápovědu.    |
+| Typické použití      | Import souboru CSV do SQL Server tabulky a export tabulky SQL Server do souboru.      |
+|  Jak používat nebo ji spustit?    |   Otevřete příkazový řádek a zadejte `bcp` pro získání nápovědy.    |
 | Odkazy na ukázky      | [nástroj BCP](https://docs.microsoft.com/sql/tools/bcp-utility)      |
-| Související nástroje na DSVM      | SQL Server, Sqlcmd      |
+| Související nástroje na DSVM      | SQL Server, sqlcmd      |
 
-## <a name="blobfuse"></a>blobfuse
+## <a name="blobfuse"></a>Blobfuse
 
 |    |           |
 | ------------- | ------------- |
 | Co je to?   | Nástroj pro připojení kontejneru úložiště objektů BLOB v Azure v systému souborů Linux      |
 | Podporované verze DSVM      | Linux      |
-| Typická použití      | Čtení a zápis do objektů BLOB v kontejneru.      |
-|  Jak ji použít a spustit?    |   Spusťte _blobfuse_ na terminálu.    |
-| Odkazy na ukázky      | [blobfuse na GitHubu](https://github.com/Azure/azure-storage-fuse)      |
+| Typické použití      | Čtení a zápis do objektů BLOB v kontejneru.      |
+|  Jak ji použít a spustit?    |   Spustit _blobfuse_ v terminálu.    |
+| Odkazy na ukázky      | [blobfuse na Githubu](https://github.com/Azure/azure-storage-fuse)      |
 | Související nástroje na DSVM      | Azure CLI      |

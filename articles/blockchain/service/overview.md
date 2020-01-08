@@ -4,12 +4,12 @@ description: Přehled služby Azure blockchain
 ms.date: 11/21/2019
 ms.topic: overview
 ms.reviewer: janders
-ms.openlocfilehash: 02cc955822987e3be6f5a2184fc49e5510b29626
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 55e1be191b21c7c66b013f70d83fe6c046488e05
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455904"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75387373"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Co je Azure Blockchain Service?
 
@@ -19,7 +19,7 @@ Služba Azure Blockchain je plně spravovaná služba v hlavní knize, která um
 * Integrovaná správa konsorcií
 * Vývoj inteligentních smluv pomocí známých vývojářských nástrojů
 
-Služba Azure Blockchain je navržená tak, aby podporovala více protokolů hlavní knihy. V současné době poskytuje podporu pro hlavní knihu [kvora](https://www.jpmorgan.com/Quorum) ethereem pomocí mechanismu [iBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) konsensu.
+Služba Azure Blockchain je navržená tak, aby podporovala více protokolů hlavní knihy. V současné době poskytuje podporu pro hlavní knihu [kvora](https://www.goquorum.com/) ethereem pomocí mechanismu [iBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) konsensu.
 
 Tyto možnosti nevyžadují téměř žádnou správu a jsou k dispozici bez dalších poplatků. Místo přidělení času a prostředků ke správě virtuálních počítačů a infrastruktury se můžete soustředit na vývoj aplikací a obchodní logiku. Kromě toho můžete pokračovat v vývoji aplikace pomocí Open source nástrojů a platformy podle vašeho výběru, abyste mohli doručovat vaše řešení, aniž byste se museli učit nové dovednosti.
 
@@ -67,10 +67,17 @@ Blockchain Data Manager pro služby Azure blockchain Capture, transformuje a dor
 
 ## <a name="support-and-feedback"></a>Podpora a zpětná vazba
 
-Potřebujete pomáhat nebo mít zpětnou vazbu?
+Novinky ke službě Azure blockchain News najdete na [blogu Azure blockchain](https://azure.microsoft.com/blog/topics/blockchain/) , abyste měli přehled o nabídkách služeb blockchain a informacích od týmu Azure blockchain Engineering.
 
-* Navštivte [blog Azure blockchain](https://azure.microsoft.com/blog/topics/blockchain/), [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)a [Fórum Azure blockchain](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain).
-* Pokud nám chcete sdělit svůj názor nebo požádat o nové funkce, využijte nástroj [UserVoice](https://feedback.azure.com/forums/921130-azure-blockchain-service).
+Pokud chcete poskytnout zpětnou vazbu k produktu nebo požádat o nové funkce, Vyhlaste si hlasování na nápad prostřednictvím [fóra Azure Feedback pro blockchain](https://aka.ms/blockchainuservoice).
+
+### <a name="community-support"></a>Podpora komunity
+
+Spolupracujte s odborníky z Microsoftu a komunitou Azure blockchain.
+
+* [Fórum MSDN pro Azure blockchain](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
+* [Technická komunita Microsoftu](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/AzureBlockchainService)
 
 ## <a name="next-steps"></a>Další kroky
 

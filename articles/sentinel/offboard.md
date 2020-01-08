@@ -1,5 +1,5 @@
 ---
-title: Odpojení Azure Sentinel | Microsoft Docs
+title: Odebrat Sentinel Azure Microsoft Docs
 description: Jak odstranit instanci Sentinel Azure
 services: sentinel
 documentationcenter: na
@@ -12,43 +12,38 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2019
+ms.date: 12/29/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4c0c415235fd290bc47ac402a6b81a1afa7af903
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: d71a9fc21cca75312696a1bc17c4896c2e5bce2d
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74777430"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610351"
 ---
 # <a name="remove-azure-sentinel-from-your-workspace"></a>Odebrání služby Azure Sentinel z pracovního prostoru
 
 Pokud už nechcete používat službu Azure Sentinel, Tento článek vysvětluje, jak ho odebrat z pracovního prostoru.
 
-## <a name="how-to-delete-azure-sentinel"></a>Jak odstranit Azure Sentinel
+## <a name="how-to-remove-azure-sentinel"></a>Jak odebrat Sentinel Azure
 
-Když na pozadí nainstalujete službu Azure Sentinel, řešení **SecurityInsights** se nainstaluje na vybraný pracovní prostor. Takže první věc, kterou potřebujete udělat, je odebrat řešení **SecurityInsights** .
+Pomocí tohoto postupu odeberte Azure Sentinel z pracovního prostoru:
 
-1.  Klikněte na **Azure Sentinel**, potom na **Konfigurace**, potom na **Nastavení pracovního prostoru**a pak na **řešení**.
+1. Přejít na **Azure Sentinel**, potom na **Nastavení**a vyberte kartu **Odebrat Sentinel Azure**.
 
-2.  Vyberte `SecurityInsights` a klikněte na něj.
+1. Před odebráním ověřovacího rozhraní Azure použijte zaškrtávací políčka a sdělte nám prosím, proč jste ji odebrali.
 
-    ![Najít řešení SecurityInsights](media/offboard/find-solution.png)
-
-3.  V horní části stránky vyberte **Odstranit**.
-
-    > [!IMPORTANT]
-    > Pokud pracovní prostor odeberete, může to mít vliv na jiná řešení a zdroje dat, které používají tento pracovní prostor, včetně Azure Monitor. Pokud chcete zjistit, která řešení používají tento pracovní prostor, přečtěte si článek [seznam nainstalovaných řešení monitorování](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions). Pokud chcete zjistit, která řešení se ingestují do pracovního prostoru, přečtěte si téma principy ingestované [datové svazky](../azure-monitor/platform/manage-cost-storage.md#understanding-ingested-data-volume).
-
+1. **V pracovním prostoru vyberte Odebrat Azure Sentinel**.
+    
     ![Odstranění řešení SecurityInsights](media/offboard/delete-solution.png)
 
 ## <a name="what-happens-behind-the-scenes"></a>Co se stane na pozadí?
 
-Při odstranění řešení vyžaduje Azure Sentinel až 48 hodin, než se dokončí první fáze procesu odstranění.
+Když odeberete řešení, Azure Sentinel bude trvat až 48 hodin, než se dokončí první fáze procesu odstranění.
 
 Po zjištění odpojení se spustí proces zrušení.
 
-**Konfigurace těchto konektorů se odstraní:**
+**Konfigurace těchto konektorů se odebere:**
 -   Office 365
 
 -   AWS
@@ -61,19 +56,19 @@ Po zjištění odpojení se spustí proces zrušení.
 
 -   Události zabezpečení systému Windows (Pokud máte Azure Security Center budou tyto protokoly nadále shromažďovány.)
 
-Během prvních 48 hodin už nebudou pravidla dat a upozornění (včetně konfigurace automatizace v reálném čase) dostupná ani Queryable ve službě Azure Sentinel.
+Během prvních 48 hodin už nebudou pravidla pro data a analýzy (včetně konfigurace automatizace v reálném čase) dostupná ani Queryable ve službě Azure Sentinel.
 
-**Po 30 dnech se tyto prostředky odstraní:**
+**Po 30 dnech se tyto prostředky odeberou:**
 
 -   Incidenty (včetně metadat šetření)
 
--   Pravidla upozornění
+-   Analytická pravidla
 
--   záložky
+-   Záložky
 
 Vaše playbooky, uložené sešity, uložené lovecké dotazy a poznámkové bloky se neodstraňují. **Některé mohou být z důvodu odebraných dat přerušeny. Můžete je odebrat ručně.**
 
-Po odebrání služby dojde k uplynutí období 30 dnů, během kterého můžete řešení znovu povolit, a data a pravidla výstrah budou obnovena, ale odpojené odpojené konektory se musí znovu připojit.
+Po odebrání služby dojde k uplynutí období 30 dnů, během kterého můžete řešení znovu povolit, a data a analytická pravidla budou obnovena, ale odpojené konektory se musí znovu připojit.
 
 > [!NOTE]
 > Pokud řešení odeberete, vaše předplatné bude i nadále zaregistrováno u poskytovatele prostředků Azure Sentinel. **Můžete jej odebrat ručně.**
@@ -84,4 +79,3 @@ Po odebrání služby dojde k uplynutí období 30 dnů, během kterého můžet
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak odebrat službu Azure Sentinel. Pokud si to rozmyslíte a chcete ji znovu nainstalovat:
 - Začínáme s připojováním [Azure Sentinel](quickstart-onboard.md).
-

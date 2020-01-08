@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 05e4dc5bc96ef654006a98f27ff4a12e924250b4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 50dd97107296c70ba9dde162b723f49a658a3994
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74829067"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355917"
 ---
 ## <a name="benefits-of-managed-disks"></a>Výhody spravovaných disků
 
@@ -37,7 +37,7 @@ Managed disks podporuje [zóny dostupnosti](../articles/availability-zones/az-ov
 
 ### <a name="azure-backup-support"></a>Podpora Azure Backup
 
-K ochraně před místními haváriemi se [Azure Backup](../articles/backup/backup-overview.md) dá použít k vytvoření úlohy zálohování se zálohováním na základě času a zálohování. To vám umožní provádět snadné obnovení virtuálních počítačů. Azure Backup podporuje zálohování a obnovení spravovaných disků. [Přečtěte si další informace](../articles/backup/backup-support-matrix-iaas.md) o podpoře zálohování virtuálních počítačů Azure.
+K ochraně před místními haváriemi se [Azure Backup](../articles/backup/backup-overview.md) dá použít k vytvoření úlohy zálohování se zálohováním na základě času a zálohování. To vám umožní provádět snadné obnovení virtuálních počítačů. V současné době Azure Backup podporuje velikosti disků až na čtyři disky tebibyte (TiB).  Azure Backup podporuje zálohování a obnovení spravovaných disků. [Přečtěte si další informace](../articles/backup/backup-support-matrix-iaas.md) o podpoře zálohování virtuálních počítačů Azure.
 
 ### <a name="granular-access-control"></a>Podrobné řízení přístupu
 
@@ -126,5 +126,7 @@ Azure používá pro přenos na disk prioritní síťový kanál, který získá
 Projděte si náš [Návrh pro vysoký výkon](../articles/virtual-machines/windows/premium-storage-performance.md) a Naučte se osvědčené postupy pro optimalizaci konfigurací virtuálních počítačů a disků, abyste mohli dosáhnout požadovaného výkonu.
 
 ## <a name="next-steps"></a>Další kroky
+
+Pokud se chcete podívat na další podrobnosti o spravovaných discích, podívejte se na: [lepší odolnost virtuálních počítačů Azure pomocí Managed disks](https://channel9.msdn.com/Blogs/Azure/Managed-Disks-for-Azure-Resiliency).
 
 Přečtěte si další informace o jednotlivých typech disků, které nabízí Azure, který typ je vhodný pro vaše potřeby, a seznamte se s cíli jejich výkonu v našem článku o typech disků.

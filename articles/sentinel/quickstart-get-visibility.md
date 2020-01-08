@@ -1,26 +1,21 @@
 ---
-title: Rychlý Start pro Azure Sentinel – Začínáme s Sentinel Azure Sentinel | Microsoft Docs
+title: 'Rychlý Start: Začínáme s Sentinel Azure'
 description: Rychlý Start pro Azure Sentinel – Začínáme s Sentinel Azure
 services: sentinel
-documentationcenter: na
 author: rkarlin
 manager: rkarlin
-editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 676a41b64b79be6b11c3ef22b34d3de0e37e2a92
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: bf7ff356af343667133c0226b6b31df8fc9e32b8
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023804"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563628"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Rychlý Start: Začínáme s Sentinel Azure
 

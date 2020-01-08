@@ -1,5 +1,6 @@
 ---
-title: Použití portálu, povolení vzdálené plochy pro roli (Azure Cloud Services)
+title: Použití portálu k povolení vzdálené plochy pro roli
+titleSuffix: Azure Cloud Services
 description: Konfigurace aplikace cloudové služby Azure tak, aby povolovala připojení ke vzdálené ploše
 services: cloud-services
 documentationcenter: ''
@@ -8,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: memccror
-ms.openlocfilehash: 50447beabefefcaa723a26ed4388354b9590c36e
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d65f4b55be317234c10a0e90cfe413d9e38a6a90
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298440"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360595"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Povolení Připojení ke vzdálené ploše pro roli v Azure Cloud Services
 
@@ -60,7 +61,7 @@ Jakmile je na rolích povolena vzdálená plocha, můžete iniciovat připojení
 4. Klikněte na **otevřít** a pak na **připojit** a spusťte připojení ke vzdálené ploše.
 
 >[!NOTE]
-> Pokud se vaše cloudová služba koná za NSG, možná budete muset vytvořit pravidla, která povolují provoz na portech **3389** a **20000**.  Vzdálená plocha používá port **3389**.  Instance cloudových služeb jsou vyrovnávány zatížení, takže nemůžete přímo určovat, ke které instanci se má připojit.  Agenti *RemoteForwarder* a *RemoteAccess* spravují provoz protokolu RDP a umožňují klientovi odeslat soubor cookie RDP a zadat jednotlivou instanci, ke které se připojí.  Agenti *RemoteForwarder* a *RemoteAccess* vyžadují, aby byl otevřený port **20000***, který může být zablokován, pokud máte NSG.
+> Pokud se vaše cloudová služba koná za NSG, možná budete muset vytvořit pravidla, která povolují provoz na portech **3389** a **20000**.  Vzdálená plocha používá port **3389**.  Instance cloudových služeb jsou vyrovnávány zatížení, takže nemůžete přímo určovat, ke které instanci se má připojit.  Agenti *RemoteForwarder* a *RemoteAccess* spravují provoz protokolu RDP a umožňují klientovi odeslat soubor cookie RDP a zadat jednotlivou instanci, ke které se připojí.  Agenti *RemoteForwarder* a *RemoteAccess* vyžadují, aby byl otevřený port **20000** *, který může být zablokován, pokud máte NSG.
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

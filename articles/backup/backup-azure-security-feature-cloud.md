@@ -3,16 +3,16 @@ title: Funkce zabezpečení, které vám pomůžou chránit cloudové úlohy
 description: Naučte se používat funkce zabezpečení v Azure Backup k zajištění většího zabezpečení záloh.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 0be85bf57510f575f238012b9bd1ef21e44e3cf1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 9a3c13856d3c130f2396488fed09313578dda79c
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894024"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75496922"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Funkce zabezpečení, které vám pomůžou chránit cloudové úlohy, které používají Azure Backup
 
-Obavy z problémů se zabezpečením, jako jsou malware, ransomware a vniknutí, neustále rostou. Tyto potíže mohou být nákladné, a to z hlediska financí i dat. Pro ochranu proti takovým útokům Azure Backup nyní poskytuje funkce zabezpečení, které vám pomůžou chránit zálohovaná data i po odstranění. Jednou z těchto funkcí je obnovitelné odstranění. Pomocí obnovitelného odstranění, a to i v případě, že škodlivý objekt actor odstraní zálohu virtuálního počítače (nebo se data záloh nechtěně odstraní), zálohovaná data se uchovávají po dobu 14 dalších dnů, což umožňuje obnovení této zálohované položky bez ztráty dat. Tyto další 14 dní uchovávání zálohovaných dat ve stavu "obnovitelné odstranění" neúčtují žádné náklady na zákazníka.
+Obavy z problémů se zabezpečením, jako jsou malware, ransomware a vniknutí, neustále rostou. Tyto potíže mohou být nákladné, a to z hlediska financí i dat. Pro ochranu proti takovým útokům Azure Backup nyní poskytuje funkce zabezpečení, které vám pomůžou chránit zálohovaná data i po odstranění. Jednou z těchto funkcí je obnovitelné odstranění. Pomocí obnovitelného odstranění, a to i v případě, že škodlivý objekt actor odstraní zálohu virtuálního počítače (nebo se data záloh nechtěně odstraní), zálohovaná data se uchovávají po dobu 14 dalších dnů, což umožňuje obnovení této zálohované položky bez ztráty dat. Tyto další 14 dní uchovávání zálohovaných dat ve stavu "obnovitelné odstranění" neúčtují žádné náklady na zákazníka. Azure také šifruje všechna zálohovaná data v klidovém režimu pomocí [šifrování služby Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) k dalšímu zabezpečení vašich dat.
 
 > [!NOTE]
 > Obnovitelné odstranění chrání pouze Odstraněná data zálohy. Pokud se virtuální počítač odstraní bez zálohy, funkce obnovitelného odstranění nebude data uchovávat. Všechny prostředky by měly být chráněné pomocí Azure Backup, aby se zajistila plná odolnost.
@@ -114,6 +114,11 @@ AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM
 
 ' DeleteState ' zálohované položky se vrátí na ' NotDeleted '. Ochrana se ale pořád zastaví. Chcete-li znovu povolit ochranu, musíte [pokračovat v zálohování](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items) .
 
+### <a name="soft-delete-for-vms-using-rest-api"></a>Obnovitelné odstranění pro virtuální počítače pomocí REST API
+
+- Odstraňte zálohy pomocí REST API, jak je uvedeno [zde](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data).
+- Pokud si uživatel přeje tyto operace odstranění zrušit, přečtěte si postup uvedený [tady](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data).
+
 ## <a name="disabling-soft-delete"></a>Zákaz obnovitelného odstranění
 
 Obnovitelné odstranění je ve výchozím nastavení povolené u nově vytvořených trezorů za účelem ochrany zálohovaných dat před náhodnými nebo škodlivými odstraněními.  Zakázání této funkce se nedoporučuje. Jediným případem, kdy byste měli zvážit zakázání obnovitelného odstranění, je, že plánujete přesunutí chráněných položek do nového trezoru a nemůžete počkat 14 dní před odstraněním a obnovením ochrany (například v testovacím prostředí). Tuto funkci může zakázat pouze správce zálohování. Pokud tuto funkci zakážete, všechna odstranění chráněných položek budou mít za následek okamžité odebrání bez možnosti obnovení. Zálohovaná data v tichém odstraněném stavu před zakázáním této funkce zůstanou v tichém stavu odstranění. Pokud chcete tyto okamžité odstranění trvale odstranit, musíte je znovu odstranit a znovu odstranit, abyste se mohli trvale odstranit.
@@ -146,6 +151,10 @@ EnhancedSecurityState  : Enabled
 SoftDeleteFeatureState : Disabled
 ```
 
+### <a name="disabling-soft-delete-using-rest-api"></a>Zákaz obnovitelného odstranění pomocí REST API
+
+Pokud chcete zakázat funkce obnovitelného odstranění pomocí REST API, přečtěte si postup uvedený [tady](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api).
+
 ## <a name="permanently-deleting-soft-deleted-backup-items"></a>Trvale se odstraňují obnovitelné položky odstraněné zálohy
 
 Zálohovaná data v tichém odstraněném stavu před zakázáním této funkce zůstanou v tichém stavu odstranění. Pokud je chcete trvale odstranit, odstraňte je znovu a znovu je odstraňte, abyste je mohli trvale odstranit.
@@ -154,7 +163,7 @@ Zálohovaná data v tichém odstraněném stavu před zakázáním této funkce 
 
 Postupujte následovně:
 
-1. Chcete-li [Zakázat obnovitelné odstranění](#disabling-soft-delete), postupujte podle pokynů. 
+1. Chcete-li [Zakázat obnovitelné odstranění](#disabling-soft-delete), postupujte podle pokynů.
 2. V Azure Portal přejdete do svého trezoru, přejdete na **zálohované položky** a zvolíte obnovitelné odstraněný virtuální počítač.
 
 ![Výběr obnovitelného odstraněného virtuálního počítače](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
@@ -215,6 +224,14 @@ WorkloadName     Operation            Status               StartTime            
 AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
 ```
 
+### <a name="using-rest-api"></a>Použití rozhraní REST API
+
+Pokud byly položky odstraněny před vypnutím obnovitelného odstranění, pak budou v neodstraněném stavu. Aby je bylo možné okamžitě odstranit, operace odstranění musí být obrácená a následně provedena znovu.
+
+1. Nejprve vraťte operace odstranění se kroky uvedenými [zde](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data).
+2. Pak pomocí REST API podle kroků uvedených [tady](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)zakažte funkci obnovitelného odstranění.
+3. Pak zálohy odstraňte pomocí REST API, jak je uvedeno [zde](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data).
+
 ## <a name="other-security-features"></a>Další funkce zabezpečení
 
 ### <a name="storage-side-encryption"></a>Šifrování na straně úložiště
@@ -223,7 +240,7 @@ Azure Storage automaticky šifruje vaše data při jejich uchování do cloudu. 
 
 V rámci Azure jsou data přenášená mezi službou Azure Storage a trezorem chráněná protokolem HTTPS. Tato data zůstávají v páteřní síti Azure.
 
-Další informace najdete v [Azure Storage šifrování pro](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)neaktivní neaktivní data.
+Další informace najdete v [Azure Storage šifrování pro](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)neaktivní neaktivní data.  V [Azure Backup nejčastějších dotazech](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) k zodpovězení všech otázek, které se vám týkají šifrování.
 
 ### <a name="vm-encryption"></a>Šifrování virtuálního počítače
 
@@ -237,7 +254,7 @@ Další informace najdete v tématu [použití Access Control na základě rolí
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-### <a name="soft-delete"></a>Obnovitelné odstranění
+### <a name="for-soft-delete"></a>Pro obnovitelné odstranění
 
 #### <a name="do-i-need-to-enable-the-soft-delete-feature-on-every-vault"></a>Musím u každého trezoru povolit funkci obnovitelného odstranění?
 

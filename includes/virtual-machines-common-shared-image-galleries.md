@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 067ac0f7f000f749f61d302db4c5c6b856e698a2
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 5618757f4bf5eaf1afc5ef0ce1735eb4ae94e1d2
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74875409"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75663078"
 ---
 Galerie sdílených imagí je služba, která pomáhá sestavovat strukturu a organizaci kolem spravovaných imagí. Galerie sdílených imagí poskytují:
 
@@ -94,12 +94,12 @@ Zdrojové oblasti jsou uvedené v následující tabulce. Všechny veřejné obl
 | Zdrojové oblasti        |                   |                    |                    |
 | --------------------- | ----------------- | ------------------ | ------------------ |
 | Austrálie – střed     | Čína – východ        | Jižní Indie        | Západní Evropa        |
-| Austrálie – střed 2   | Čína – východ 2      | Jihovýchodní Asie     | Velká Británie – jih           |
+| Austrálie – střed 2   | Čína – východ 2      | Jihovýchodní Asie     | Spojené království – jih           |
 | Austrálie – východ        | Čína – sever       | Japonsko – východ         | Velká Británie – západ            |
 | Austrálie – jihovýchod   | Čína – sever 2     | Japonsko – západ         | US DoD – střed     |
 | Brazílie – jih          | Východní Asie         | Korea – střed      | Ministerstvo obrany USA – východ        |
-| Kanada – střed        | USA – východ           | Korea – jih        | US Gov – Arizona     |
-| Kanada – východ           | Východ USA 2         | Středoseverní USA   | US Gov – Texas       |
+| Střední Kanada        | Východní USA           | Korea – jih        | US Gov – Arizona     |
+| Východní Kanada           | Východ USA 2         | Středoseverní USA   | US Gov – Texas       |
 | Střední Indie         | Východní USA 2 EUAP    | Severní Evropa       | USA – Virginie    |
 | Střední USA            | Francie – střed    | Středojižní USA   | Západní Indie         |
 | Střed USA EUAP       | Francie – jih      | Středozápadní USA    | Západní USA            |
@@ -222,7 +222,7 @@ Prostředek Galerie sdílených imagí můžete vytvořit pomocí šablon. K dis
 
 Pokud chcete zobrazit seznam všech prostředků Galerie sdílených imagí v rámci předplatných, ke kterým máte přístup v Azure Portal, postupujte podle následujících kroků:
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Otevřete [portál Azure](https://portal.azure.com).
 1. Přejít na **všechny prostředky**.
 1. Vyberte všechna předplatná, pod kterými chcete zobrazit seznam všech prostředků.
 1. Vyhledejte prostředky typu **privátní Galerie**.
@@ -239,9 +239,9 @@ Pokud chcete zobrazit seznam všech prostředků Galerie sdílených imagí v r�
  
 Ano. Existují tři scénáře založené na typech imagí, které máte pravděpodobně k dispozici.
 
- Scénář 1: Pokud máte spravovanou bitovou kopii, můžete z ní vytvořit definici image a její verzi.
+ Scénář 1: Pokud máte spravovanou image ve stejném předplatném jako váš podpis, můžete z ní vytvořit definici image a image.
 
- Scénář 2: Pokud máte nespravovanou bitovou kopii, můžete z ní vytvořit spravovanou image a pak z ní vytvořit definici image a její verzi. 
+ Scénář 2: Pokud máte nespravovanou bitovou kopii ve stejném předplatném jako váš SIG, můžete z ní vytvořit spravovanou image a pak z ní vytvořit definici image a image. 
 
  Scénář 3: Pokud máte v místním systému souborů virtuální pevný disk, budete muset virtuální pevný disk nahrát do spravované image a pak z něj můžete vytvořit definici image a verzi image.
 

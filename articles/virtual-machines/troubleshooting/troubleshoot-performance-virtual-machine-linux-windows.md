@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 50c0a670eb492aef01c3499bc2c8605917f4c7b8
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: a836c6b47e0e1346b5e8de9ba5fbe94f88961cbd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965471"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75615051"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Řešení potíží s výkonem virtuálních počítačů Azure v systému Linux nebo Windows
 
@@ -26,11 +26,11 @@ Tento článek popisuje obecný Poradce při potížích s výkonem virtuálníc
 
 Tento článek vás provede monitorováním a diagnostikuje potíže s výkonem.
 
-## <a name="enabling-monitoring"></a>Povolení monitorování
+## <a name="enabling-monitoring"></a>Povolení sledování
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Monitorování virtuálních počítačů Azure IAAS
 
-Pokud chcete monitorovat virtuální počítač hosta, použijte monitorování virtuálních počítačů Azure, které vás upozorní na určité podmínky prostředků na vysoké úrovni. Pokud chcete zjistit, jestli máte zapnutou diagnostiku virtuálních počítačů, přečtěte si téma [Přehled protokolů prostředků Azure](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview#collecting-resource-logs). Pokud se zobrazí následující informace, pravděpodobně nemáte povolenou diagnostiku:
+Pokud chcete monitorovat virtuální počítač hosta, použijte monitorování virtuálních počítačů Azure, které vás upozorní na určité podmínky prostředků na vysoké úrovni. Pokud chcete zjistit, jestli máte zapnutou diagnostiku virtuálních počítačů, přečtěte si téma [Přehled protokolů prostředků Azure](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs). Pokud se zobrazí následující informace, pravděpodobně nemáte povolenou diagnostiku:
 
 ![Monitorování není povoleno.](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -137,9 +137,9 @@ Využití paměti ukazuje, kolik paměti je ve virtuálním počítači spotřeb
 
 Špička a konstantní/konstantní stabilní spotřeba – vysoké využití paměti nemusí způsobovat špatný výkon, protože některé aplikace, jako například relační databázové moduly, přidělují velké množství paměti a toto využití nemusí být významné. Pokud ale existuje několik aplikací náročné paměti, můžete se setkat s nízkým výkonem od kolizí paměti, které způsobuje ořezávání a stránkování na disk a jejich výměnu. Tento špatný výkon je často znatelné příčinou dopadu aplikace na výkon.
 
-Neustálé zvyšování spotřeby – možná aplikace "zahřívání", tato spotřeba je společná mezi databázovými moduly, které se spouštějí. Může se ale také jednat o znaménko nevracení paměti v aplikaci. Identifikujte aplikaci a zjistěte, jestli je očekávané chování.
+Neustálé zvyšování spotřeby – možná aplikace "zahřívání", tato spotřeba je společná mezi databázovými moduly, které se spouštějí. Ale může jít také o signál nevrácení paměti v aplikaci. Identifikujte aplikaci a zjistěte, jestli je očekávané chování.
 
-Použití stránky nebo odkládacího souboru – ověřte, zda používáte stránkovací soubor systému Windows (umístěný na D: \) nebo v systému Linux odkládací soubor (umístěný na `/dev/sdb`) jsou silně využívány. Pokud na těchto svazcích nemáte nic s výjimkou těchto souborů, vyhledejte na těchto discích vysokou čitelnost a zápis. Tento problém je informativní v podmínkách nedostatku paměti.
+Použití stránky nebo odkládacího souboru – ověřte, jestli se používá stránkovací soubor systému Windows (umístěný v souboru D:\) nebo Linux swap (umístěný v `/dev/sdb`) se silně používají. Pokud na těchto svazcích nemáte nic s výjimkou těchto souborů, vyhledejte na těchto discích vysokou čitelnost a zápis. Tento problém je informativní v podmínkách nedostatku paměti.
 
 ### <a name="high-memory-utilization-remediation"></a>Náprava využití vysoké paměti
 
@@ -186,8 +186,8 @@ Pokud se vám zobrazí dostupnost při odkládacím programu, může se jednat o
 
 * ClientTimeOutError
 * ServerTimeOutError
-* Hodnotu averagee2elatency
-* Hodnotu averageserverlatency
+* AverageE2ELatency
+* AverageServerLatency
 * TotalRequests
 
 Hodnoty v metrikách * TimeOutError označují, že vstupně-výstupní operace trvaly příliš dlouho a vypršel časový limit. Při práci prostřednictvím dalších kroků vám pomůže identifikovat možné příčiny.

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/18/2019
+ms.date: 12/16/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ad322d9418d81c516b97cd8bd4b039b1640aa9c0
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 1a3e98afacf85bde8180253078cb53eae9a03d2f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515646"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383608"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Rychlý Start: provedení hledání zpráv pomocí jazyka Java a Vyhledávání zpráv Bingu REST API
 
@@ -26,7 +26,7 @@ Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful 
 
 Zdrojový kód pro tuto ukázku je k dispozici [na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java) . 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Java Development Kit (JDK) 7 nebo 8](https://aka.ms/azure-jdks)
 
@@ -34,8 +34,6 @@ Zdrojový kód pro tuto ukázku je k dispozici [na GitHubu](https://github.com/A
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
-
-Viz také [Cognitive Services vyhledávání BINGU API pro ceny](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
@@ -52,7 +50,7 @@ Viz také [Cognitive Services vyhledávání BINGU API pro ceny](https://azure.m
     import com.google.gson.JsonParser;
     ```
 
-2. Vytvořte novou třídu s proměnnými pro koncový bod rozhraní API, klíč předplatného a hledaný termín.
+2. Vytvořte novou třídu s proměnnými pro koncový bod rozhraní API, klíč předplatného a hledaný termín. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {

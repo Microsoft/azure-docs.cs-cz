@@ -3,21 +3,21 @@ title: Monitorování cloudové služby Azure | Microsoft Docs
 description: Popisuje, co zahrnuje monitorování cloudové služby Azure a jaké jsou některé z vašich možností.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 01/29/2018
-ms.author: gwallace
-ms.openlocfilehash: ac0ea7557774f0e59cb6a6eca1fc739592ab971d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 096077550a426d7eb77ed0d71e720149dd103a55
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359108"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386064"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Seznámení s monitorováním cloudové služby
 
-Můžete monitorovat klíčové metriky výkonu pro libovolnou cloudovou službu. Každá role cloudové služby shromažďuje minimální data: Využití CPU, využití sítě a využití disku. Pokud má `Microsoft.Azure.Diagnostics` cloudová služba u role použité rozšíření, může tato role shromažďovat další body dat. Tento článek poskytuje Úvod do Azure Diagnostics Cloud Services.
+Můžete monitorovat klíčové metriky výkonu pro libovolnou cloudovou službu. Každá role cloudové služby shromažďuje minimální data: využití CPU, využití sítě a využití disku. Pokud má cloudová služba `Microsoft.Azure.Diagnostics` u role použít rozšíření, může tato role shromažďovat další body dat. Tento článek poskytuje Úvod do Azure Diagnostics Cloud Services.
 
 Díky základnímu monitorování jsou data čítače výkonu z instancí rolí ve vzorku a shromažďována v intervalech po dobu 3 minut. Tato základní data monitorování se ve vašem účtu úložiště neukládají a nevztahují se na ně žádné další náklady.
 
@@ -32,7 +32,7 @@ Základní monitorování nevyžaduje účet úložiště.
 
 ![dlaždice monitorování základní cloudové služby](media/cloud-services-how-to-monitor/basic-tiles.png)
 
-## <a name="advanced-monitoring"></a>Rozšířené monitorování
+## <a name="advanced-monitoring"></a>Pokročilé sledování
 
 Rozšířené monitorování zahrnuje použití rozšíření **Azure Diagnostics** (a volitelně sady Application Insights SDK) na roli, kterou chcete monitorovat. Diagnostické rozšíření pomocí konfiguračního souboru (na roli) s názvem **Diagnostics. wadcfgx** konfiguruje monitorované metriky diagnostiky. Diagnostické rozšíření Azure shromažďuje a ukládá data v Azure Storagem účtu. Tato nastavení jsou konfigurována v souborech **. wadcfgx**, [. csdef](cloud-services-model-and-package.md#servicedefinitioncsdef)a [. cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) . To znamená, že se k pokročilému monitorování účtují dodatečné náklady.
 
@@ -44,7 +44,7 @@ Při vytvoření každé role Visual Studio přidá k němu rozšíření Azure 
 * Zdroj události .NET
 * Protokoly IIS
 * Trasování událostí pro Windows na základě manifestu
-* Chybové výpisy
+* Výpisy stavu systému
 * Protokoly chyb zákazníků
 
 > [!IMPORTANT]
@@ -54,7 +54,7 @@ Při vytvoření každé role Visual Studio přidá k němu rozšíření Azure 
 
 Za prvé, pokud nemáte účet **klasického** úložiště, [vytvořte ho](../storage/common/storage-quickstart-create-account.md). Ujistěte se, že je účet úložiště vytvořený s uvedeným **modelem nasazení Classic** .
 
-Potom přejděte do prostředku **účtu úložiště (Classic)** . Vyberte **Nastavení** > **přístupové klíče** a zkopírujte hodnotu **primárního připojovacího řetězce** . Tuto hodnotu budete potřebovat pro cloudovou službu. 
+Potom přejděte do prostředku **účtu úložiště (Classic)** . Vyberte **nastavení** > **přístupové klíče** a zkopírujte hodnotu **primárního připojovacího řetězce** . Tuto hodnotu budete potřebovat pro cloudovou službu. 
 
 Existují dva konfigurační soubory, které je třeba změnit, aby bylo možné povolit pokročilou diagnostiku, **ServiceDefinition. csdef** a **ServiceConfiguration. cscfg**.
 
@@ -96,4 +96,7 @@ Všimněte si, že když můžete použít Application Insights k zobrazení č�
 
 - [Další informace o Application Insights s Cloud Services](../azure-monitor/app/cloudservices.md)
 - [Nastavení čítačů výkonu](diagnostics-performance-counters.md)
+
+
+
 

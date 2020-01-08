@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 840e8b3bc86281a8c42689b1cb68917741ef2bd9
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: feb7fa0b3f820c3f918fc8a5c817e7fe5fb15fc9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240624"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610399"
 ---
 # <a name="connect-windows-firewall"></a>Připojení brány Windows Firewall
 
@@ -30,7 +30,8 @@ Konektor brány Windows Firewall umožňuje snadno připojit protokoly brány Wi
 
 
 > [!NOTE]
-> Data budou uložená v geografickém umístění pracovního prostoru, na kterém běží Azure Sentinel.
+> - Data budou uložená v geografickém umístění pracovního prostoru, na kterém běží Azure Sentinel.
+> - Pokud se do stejného pracovního prostoru shromažďují služby Azure Sentinel a Azure Security Center, není nutné povolit řešení brány Windows Firewall prostřednictvím tohoto konektoru. Pokud tuto možnost povolíte, nezpůsobí duplikovaná data. 
 
 ## <a name="enable-the-connector"></a>Povolení konektoru 
 

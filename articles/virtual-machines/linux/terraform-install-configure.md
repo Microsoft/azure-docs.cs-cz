@@ -14,18 +14,26 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: efba440448ac912b7656eeab017eef947ab25e95
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 02b6ddf723e47e4608e631aef96f8a12d5f68698
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034681"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368993"
 ---
 # <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Instalace a konfigurace Terraformu pro zřizování prostředků Azure
  
 Terraformu poskytuje snadný způsob, jak definovat, zobrazovat náhled a nasazovat cloudovou infrastrukturu pomocí [jednoduchého jazyka šablonování](https://www.terraform.io/docs/configuration/syntax.html). Tento článek popisuje nezbytné kroky pro použití Terraformu ke zřízení prostředků v Azure.
 
 Další informace o tom, jak používat Terraformu s Azure, najdete v [centru terraformu](/azure/terraform).
+> [!NOTE]
+> V případě podpory specifické pro Terraformu se prosím obraťte na Terraformu přímo pomocí některého z jejich kanálů komunity:
+>
+>   • [Část terraformu](https://discuss.hashicorp.com/c/terraform-core) na portálu komunity obsahuje otázky, případy použití a užitečné vzory.
+>
+>   • Pro otázky související se zprostředkovatelem si přečtěte část [poskytovatelé terraformu](https://discuss.hashicorp.com/c/terraform-providers) na portálu komunity.
+
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

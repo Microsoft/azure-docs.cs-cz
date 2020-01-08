@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: 1fd59bd18947d2c7aaba787ff7ce286e76f4f890
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 21acbde147d5c1751480332e5cd9c89cdb43f8e8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150056"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644949"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informace o používání HDInsightu v Linuxu
 
@@ -52,7 +52,7 @@ Tento příkaz vrátí dokument JSON popisující službu a pak [JQ](https://ste
 
 ## <a name="remote-access-to-services"></a>Vzdálený přístup ke službám
 
-* **Ambari (Web)**  - https://CLUSTERNAME.azurehdinsight.net
+* **Ambari (Web)**  - `https://CLUSTERNAME.azurehdinsight.net`
 
     Proveďte ověření pomocí uživatele a hesla správce clusteru a pak se přihlaste k Ambari.
 
@@ -63,14 +63,14 @@ Tento příkaz vrátí dokument JSON popisující službu a pak [JQ](https://ste
     >
     > Pokud chcete používat všechny funkce webového uživatelského rozhraní Ambari, použijte tunel SSH pro proxy webový provoz do hlavního uzlu clusteru. Viz [použití tunelového propojení SSH pro přístup k webovému uživatelskému rozhraní Apache Ambari, ResourceManager, JobHistory, NameNode, Oozie a dalším webovým uživatelská rozhraní](hdinsight-linux-ambari-ssh-tunnel.md) .
 
-* **Ambari (REST)**  - https://CLUSTERNAME.azurehdinsight.net/ambari
+* **Ambari (REST)**  - `https://CLUSTERNAME.azurehdinsight.net/ambari`
 
     > [!NOTE]  
     > Ověřování pomocí uživatele a hesla správce clusteru.
     >
     > Ověřování je prostého textu – pomocí protokolu HTTPS vždy pomůžete zajistit, aby připojení bylo zabezpečené.
 
-* **WebHCat (Templeton)**  - https://CLUSTERNAME.azurehdinsight.net/templeton
+* **WebHCat (Templeton)**  - `https://CLUSTERNAME.azurehdinsight.net/templeton`
 
     > [!NOTE]  
     > Ověřování pomocí uživatele a hesla správce clusteru.

@@ -1,25 +1,16 @@
 ---
-title: Obnovování zálohy v Azure Service Fabric | Microsoft Docs
+title: Obnovování zálohy v Azure Service Fabric
 description: Použijte funkci periodického zálohování a obnovení v Service Fabric pro obnovení dat ze zálohy dat aplikace.
-services: service-fabric
-documentationcenter: .net
 author: aagup
-manager: chackdan
-editor: aagup
-ms.assetid: 802F55B6-6575-4AE1-8A8E-C9B03512FF88
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: ff705eabde111b5ebac1e2d714e3ece221c36e90
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1737102ee652cc2263bd0a908c1336bc93a6757b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819330"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75377901"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Obnovování zálohy v Azure Service Fabric
 
@@ -326,7 +317,7 @@ Požadavek na obnovení bude postupovat v následujícím pořadí:
 
 ## <a name="automatic-restore"></a>Automatické obnovení
 
-Pro _Automatické obnovení_můžete nakonfigurovat Reliable stavovou službu a Reliable Actors oddíly v clusteru Service Fabric. V nastavení zásad zálohování `AutoRestore` na _hodnotu true_. Povolení _automatického obnovení_ automaticky obnoví data z poslední zálohy oddílu při hlášení ztráty dat. Další informace naleznete v tématu:
+Pro _Automatické obnovení_můžete nakonfigurovat Reliable stavovou službu a Reliable Actors oddíly v clusteru Service Fabric. V nastavení zásad zálohování `AutoRestore` na _hodnotu true_. Povolení _automatického obnovení_ automaticky obnoví data z poslední zálohy oddílu při hlášení ztráty dat. Další informace:
 
 - [Povolení automatického obnovení v zásadách zálohování](service-fabric-backuprestoreservice-configure-periodic-backup.md#auto-restore-on-data-loss)
 - [Reference k rozhraní API RestorePartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition)

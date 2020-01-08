@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: dcohen
-ms.openlocfilehash: b42314d1c8c1bd734181f02c36ae3f43507e9b79
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 0c26f94d0a51b7912d3f964e3cc96ec392fec69b
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815202"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495173"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Kurz: hlas – povolení robota pomocí sady Speech SDK
 
@@ -50,7 +50,7 @@ V tomto kurzu se dozvíte, co tento kurz popisuje:
 > * Přidat vlastní aktivaci klíčového slova
 > * Naučte se změnit jazyk rozpoznaného a mluveného řeči.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tady je postup, který budete potřebovat k dokončení tohoto kurzu:
 
@@ -166,7 +166,7 @@ Teď, když jste vytvořili nějaké prostředky, pojďme vytvořit robota. Bude
 1. Nainstalujte [emulátor systému bot Framework](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) verze 4.3.0 nebo novější.
 2. Spusťte emulátor rozhraní bot Framework a otevřete robota:
    * **Soubor** -> **otevřete robot**.
-3. Zadejte adresu URL pro robota. Například:
+3. Zadejte adresu URL pro robota. Příklad:
 
    ```
    http://localhost:3978/api/messages
@@ -187,7 +187,7 @@ Dalším krokem je nasazení nástroje echo bot do Azure. Existuje několik způ
    samples\csharp_dotnetcore\02.echo-bot\EchoBot.sln
    ```
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem na řešení **EchoBot** a vyberte **publikovat...**
+1. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt **EchoBot** a vyberte **publikovat...**
 1. Otevře se nové okno s názvem **Vyberte cíl publikování** .
 1. V levém navigačním panelu vyberte **App Service** , vyberte **vytvořit novou**a potom klikněte na **publikovat**.
 1. Po zobrazení okna **vytvořit App Service** :
@@ -221,7 +221,7 @@ Budete muset udělat malou změnu konfigurace, aby robot mohl komunikovat s př�
 2. V levém navigačním panelu v části **Nastavení**klikněte na **Konfigurace**.
 3. Vyberte kartu **Obecné nastavení** .
 4. Vyhledejte přepínač pro **webové sokety** a nastavte jej na **zapnuto**.
-5. Klikněte na **Uložit**.
+5. Klikněte na možnost **Uložit**.
 
 > [!TIP]
 > Pomocí ovládacích prvků v horní části stránky Azure App Service můžete službu zastavit nebo restartovat. To může být užitečné při řešení potíží.
@@ -237,7 +237,7 @@ Teď, když jste vytvořili Azure App Service pro hostování robota, je další
 2. Na panelu hledání napište **robot**, po zobrazení výsledků vyberte možnost **registrace kanálů robota**.
 3. Klikněte na **Vytvořit**.
 4. Zobrazí se výzva k zadání některých informací:
-   * Jako **název bot**zadejte **SpeechEchoBotTutorial-BotRegistration**.
+   * Jako **popisovač robota**zadejte **SpeechEchoBotTutorial-BotRegistration**.
    * V případě **předplatného**vyberte **bezplatná zkušební verze**.
    * V případě **skupiny prostředků**vyberte **SpeechEchoBotTutorial-Resource**.
    * V **oblasti umístění**vyberte **západní USA**.
@@ -245,7 +245,7 @@ Teď, když jste vytvořili Azure App Service pro hostování robota, je další
      * Do pole **koncový bod pro zasílání zpráv**zadejte adresu URL webové aplikace s cestou k `/api/messages`, která je připojena na konci. Příklad: Pokud byl váš globálně jedinečný název aplikace **EchoBot20190805125647**, koncový bod pro zasílání zpráv by byl: `https://EchoBot20190805125647.azurewebsites.net/api/messages/`.
      * V případě služby **Application Insights**můžete tuto možnost nastavit na **vypnuto**. Další informace najdete v tématu věnovaném [analýze robotů](https://docs.microsoft.com/azure/bot-service/bot-service-manage-analytics?view=azure-bot-service-4.0).
      * Ignoruje **Automatické vytvoření ID a heslo aplikace**.
-5. Přejděte zpátky do **registrace kanálů robota** a klikněte na **vytvořit**.
+5. V dolní části okna **registrace kanálů robota** klikněte na **vytvořit**.
 
 V tomto okamžiku ověřte skupinu prostředků **SpeechEchoBotTutorial-Resource** v Azure Portal. Teď by se měly zobrazit čtyři prostředky:
 
@@ -268,11 +268,11 @@ Teď je čas zaregistrovat robota pomocí kanálu Direct line Speech. Tento kan�
    * Podívejte se na **Další kanály**, najděte a klikněte na **Direct line Speech**.
    * Projděte si text na stránce s názvem **Konfigurace přímého řádku řeč**a pak rozbalte rozevírací nabídku s názvem "účet služby pro rozpoznávání".
    * Vyberte prostředek řeči, který jste předtím vytvořili (např. **SpeechEchoBotTutorial-Speech**) z nabídky a přidružte svůj robot k vašemu klíči předplatného řeči.
-   * Klikněte na **Uložit**.
+   * Klikněte na možnost **Uložit**.
 
 1. V levém navigačním panelu klikněte na **Nastavení**.
    * Zaškrtněte políčko s popiskem **Povolit koncový bod streamování**. Tato možnost je nutná k povolení komunikačního protokolu postaveného na webových soketech mezi robotem a kanálem Direct line Speech.
-   * Klikněte na **Uložit**.
+   * Klikněte na možnost **Uložit**.
 
 > [!TIP]
 > Pokud se chcete dozvědět víc, přečtěte si téma [připojení robota k přímému line Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0). Tato stránka obsahuje další informace a známé problémy.
@@ -383,29 +383,50 @@ Ve zdrojovém kódu klienta Direct line Speech si podíváte se na tyto soubory 
 1. [`DLSpeechClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client/blob/master/DLSpeechClient/Models.cs) obsahuje volání metody sady Speech SDK [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-), která se používá k vytvoření instance modelu z místního souboru na disku.
 1. [`DLSpeechClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client/blob/master/DLSpeechClient/MainWindow.xaml.cs) obsahuje volání metody sady Speech SDK [`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync), která aktivuje funkci zjišťování nepřetržitého klíčového slova.
 
-## <a name="optional-change-the-language-and-redeploy-your-bot"></a>Volitelné Změna jazyka a opětovné nasazení robota
+## <a name="optional-change-the-language-and-bot-voice"></a>Volitelné Změna jazyka a hlasu robota
 
-Robot, který jste vytvořili, bude naslouchat v angličtině a reagovat na ně. Nejste však omezeni na použití angličtiny. V této části se dozvíte, jak změnit jazyk, ve kterém bude robot naslouchat a reagovat na a znovu nasaďte robot.
+Robot, který jste vytvořili, bude naslouchat a reagovat v angličtině s výchozím hlasovým hlasem pro americkou angličtinu. Nejste však omezeni na použití angličtiny nebo výchozího hlasu. V této části se dozvíte, jak změnit jazyk, ve kterém bude robot naslouchat a reagovat. Naučíte se také, jak vybrat jiný hlas pro daný jazyk.
 
 ### <a name="change-the-language"></a>Změnit jazyk
 
-1. Pojďme začít otevřením `samples\csharp_dotnetcore\02.echo-bot\echo-bot.cs`.
-2. V dalším kroku vyhledejte SSML. Hledání je snadné, protože je uzavřeno v `<speak></speak>` značek.
-3. V řetězci SSML vyhledejte značku `<voice name>`, nahraďte ji `<voice name='de-DE-Stefan-Apollo'>`a uložte. Tento formátovaný řetězec oznamuje službě převod textu na mluvené slovo, aby vracela hlasovou odpověď pomocí hlasového `de-DE-Stefan-Apollo`, která je optimalizována pro němčinu.
+Můžete zvolit některý z jazyků uvedených v tabulce [Převod řeči na text](language-support.md#speech-to-text) . V níže uvedeném příkladu změníme jazyk na němčina.
 
->[!NOTE]
-> Nejste omezeni na němčinu a můžete si vybrat ze seznamu dostupných hlasů od [služby Speech](language-support.md#text-to-speech).
+1. Otevřete klientskou aplikaci Direct line Speech, klikněte na tlačítko nastavení (ikona pravého ozubeného kolečka) a zadejte `de-de` do pole jazyk (Toto je hodnota národního prostředí uvedená v tabulce [Převod řeči na text](language-support.md#speech-to-text) ). Tím se nastaví mluvený jazyk, který se má rozpoznat, a přepíše výchozí `en-us`. Tato funkce také dává přímým linkovým kanálům pro odpověď robota použít výchozí německý hlas.
+2. Zavřete stránku nastavení a klikněte na tlačítko znovu připojit a vytvořte nové připojení k robotovi ozvěny.
+3. Klikněte na tlačítko mikrofon a vyslovením fráze v němčině. Zobrazí se rozpoznaný text a odpověď robota pro ozvěnu s výchozím německým hlasem.
+
+
+### <a name="change-the-default-bot-voice"></a>Změnit výchozí hlas robota
+
+Výběr hlasu pro převod textu na řeč a řízení výslovnosti je možné provést v případě, že robot určí odpověď ve formě jazyka SSML ( [Speech syntézy Language](speech-synthesis-markup.md) ) místo jednoduchého textu. Robot ozvěny nepoužívá SSML, ale můžeme kód snadno upravit. V následujícím příkladu přidáme SSML do odpovědi robota echo, aby se místo výchozího ženského hlasu použil německý hlas Stefan Apollo (kolík hlasu). Seznamte se se [standardními hlasy](language-support.md#standard-voices) a [neuronové hlasy](language-support.md#neural-voices) , které podporuje váš jazyk.
+
+1. Pojďme začít otevřením `samples\csharp_dotnetcore\02.echo-bot\echo-bot.cs`.
+2. Vyhledejte tyto dva řádky:
+    ```csharp
+    var replyText = $"Echo: {turnContext.Activity.Text}";
+    await turnContext.SendActivityAsync(MessageFactory.Text(replyText, replyText), cancellationToken);
+    ```
+3. Nahraďte je:
+    ```csharp
+    var replyText = $"Echo: {turnContext.Activity.Text}";
+    var replySpeak = @"<speak version='1.0' xmlns='https://www.w3.org/2001/10/synthesis' xml:lang='de-DE'>
+                    <voice name='Microsoft Server Speech Text to Speech Voice (de-DE, Stefan, Apollo)'>" +
+                    $"{replyText}" + "</voice></speak>";
+    await turnContext.SendActivityAsync(MessageFactory.Text(replyText, replySpeak), cancellationToken);
+    ```
+4. Sestavte řešení v aplikaci Visual Studio a opravte všechny chyby sestavení.
+
+Druhý argument v metodě ' MessageFactory. text ' nastavuje [pole Speak Activity](https://github.com/Microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) v odpovědi bot. Výše uvedená změna byla nahrazena z jednoduchého textu na SSML, aby bylo možné zadat jiný než výchozí německý hlas.
 
 ### <a name="redeploy-your-bot"></a>Opětovné nasazení robota
 
 Teď, když jste udělali potřebnou změnu robota, je dalším krokem jeho opětovné publikování do Azure App Service a pokus o to:
 
-1. Sestavte řešení v aplikaci Visual Studio a opravte všechny chyby sestavení.
-2. V okně Průzkumník řešení klikněte pravým tlačítkem na projekt **EchoBot** a vyberte **publikovat**.
-3. Předchozí konfigurace nasazení již byla načtena jako výchozí. Jednoduše klikněte na **publikovat** vedle **EchoBot20190805125647-nasazení webu**.
-4. Zpráva o **úspěšném publikování** se zobrazí v okně výstupu sady Visual Studio a otevře se webová stránka se zprávou "robot je připravený!".
-5. Otevřete klientskou aplikaci Direct line Speech, klikněte na tlačítko nastavení (ikona pravého ozubeného kolečka) a zadejte `de-de` do pole jazyk. Tím se nastaví mluvený jazyk, který se má rozpoznat, a přepíše výchozí `en-us`.
-6. Postupujte podle pokynů v tématu [Vytvoření klienta Direct line Speech](#build-the-direct-line-speech-client) pro opětovné připojení k nově nasazenému robotovi, mluvte v novém jazyce a sledujte, jak se v tomto jazyku v tomto jazyce nachází odpověď robota s novým hlasem.
+1. V okně Průzkumník řešení klikněte pravým tlačítkem na projekt **EchoBot** a vyberte **publikovat**.
+2. Předchozí konfigurace nasazení již byla načtena jako výchozí. Jednoduše klikněte na **publikovat** vedle **EchoBot20190805125647-nasazení webu**.
+3. Zpráva o **úspěšném publikování** se zobrazí v okně výstupu sady Visual Studio a otevře se webová stránka se zprávou "robot je připravený!".
+4. Otevřete klientskou aplikaci Direct line Speech, klikněte na tlačítko nastavení (ikona pravého ozubeného kolečka) a ujistěte se, že stále máte `de-de` v poli jazyk.
+5. Postupujte podle pokynů v tématu [Vytvoření klienta Direct line Speech](#build-the-direct-line-speech-client) pro opětovné připojení k nově nasazenému robotovi, mluvte v novém jazyce a sledujte, jak se v tomto jazyku v tomto jazyce nachází odpověď robota s novým hlasem.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

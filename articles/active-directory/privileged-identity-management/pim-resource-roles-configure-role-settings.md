@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 01/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c9acc1487fcbf8398b7a556c63f97963b264451
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 4db330a875b8241b642bcbc71fb0866c9833ee7e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74182719"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638676"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Konfigurace nastavení role prostředků Azure v Privileged Identity Management
 
@@ -58,10 +58,17 @@ Pomocí těchto kroků otevřete nastavení pro roli prostředku Azure.
 
 1. Použijte kartu **oznámení** nebo tlačítko **Další: Aktivace** v dolní části stránky, abyste se dostali na kartu nastavení oznámení pro tuto roli. Tato nastavení řídí všechna e-mailová oznámení týkající se této role.
 
-    > [!NOTE]
-    > Toto uživatelské rozhraní oznámení se v tuto chvíli provádí v rámci oblastí a předplatných Azure. Pokud tato podrobná oznámení nemůžete nakonfigurovat, vraťte se prosím za jeden nebo dva dny.
-
     ![Karta oznámení role na stránce nastavení role](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
+
+    Na kartě **oznámení** na stránce nastavení role Privileged Identity Management umožňuje detailní kontrolu nad tím, kdo obdrží oznámení a která oznámení obdrží.
+
+    - **Vypnutí e-mailu**<br>Konkrétní e-maily můžete vypnout zrušením zaškrtnutí políčka Výchozí příjemce a odstraněním dalších příjemců.  
+
+    - **Omezit e-maily na zadané e-mailové adresy**<br>E-maily odeslané výchozím příjemcům můžete vypnout zrušením zaškrtnutí políčka Výchozí příjemce. Pak můžete přidat další e-mailové adresy jako další příjemce. Chcete-li přidat více než jednu e-mailovou adresu, oddělte je středníkem (;).
+
+    - **Posílat e-maily oběma výchozím příjemcům a dalším příjemcům**<br>E-maily můžete odesílat jak výchozímu příjemci, tak i dalšímu příjemci. stačí zaškrtnout políčko výchozí příjemce a přidat e-mailové adresy pro další příjemce.
+
+    - **Jenom kritické e-maily**<br>Pro každý typ e-mailu můžete zaškrtnout políčko pro příjem pouze důležitých e-mailů. To znamená, že Privileged Identity Management bude dál posílat e-maily nakonfigurovaným příjemcům jenom v případě, že e-mail vyžaduje okamžitou akci. Například e-maily požadující uživatele, aby rozšířili přiřazení role, se nebudou aktivovat, zatímco budou aktivovány e-maily vyžadující správcům schválení žádosti o rozšíření.
 
 1. Pokud chcete aktualizovat nastavení role, vyberte tlačítko **aktualizovat** .
 
@@ -96,7 +103,7 @@ V některých případech můžete chtít přiřadit uživatele nebo skupinu do 
 
 Chcete-li zajistit, že správce prostředků, který odpovídá přiřazení, říká, že jsou k němu přihlášeni, můžete vynutit vícefaktorové ověřování u aktivního přiřazení zaškrtnutím políčka **vyžadovat Multi-Factor Authentication v aktivním přiřazení** .
 
-### <a name="require-multi-factor-authentication-on-activation"></a>Vyžadovat Multi-Factor Authentication při aktivaci
+### <a name="require-multi-factor-authentication-on-activation"></a>Při aktivaci vyžadovat vícefaktorové ověřování
 
 Můžete vyžadovat, aby uživatelé, kteří mají nárok na roli, prokázali, že používají Multi-Factor Authentication Azure, než se můžou aktivovat. Multi-Factor Authentication zajišťuje uživatelům, kteří říkají, že mají rozumnou jistotu. Vynucování této možnosti chrání kritické prostředky v situacích, kdy může dojít k ohrožení uživatelského účtu.
 

@@ -1,5 +1,5 @@
 ---
-title: Pomocí kontrol přístupu můžete spravovat uživatele vyloučené ze zásad podmíněného přístupu – Azure Active Directory | Microsoft Docs
+title: Spravovat uživatele vyloučené ze zásad podmíněného přístupu – Azure AD
 description: Naučte se používat kontroly přístupu Azure Active Directory (Azure AD) ke správě uživatelů, kteří byli vyloučení ze zásad podmíněného přístupu.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 246503fec6436bf49dcd5fb89c2dc0ed345a43ca
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: d1d7bce940f2b614c239e8b5e5719d96da10a6c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499920"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422713"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Pomocí kontrol přístupu Azure AD Spravujte uživatele vyloučené ze zásad podmíněného přístupu.
 
@@ -34,7 +34,7 @@ V ideálním světě by všichni uživatelé měli postupovat podle zásad pří
 
 Jako správce IT můžete použít [podmíněný přístup Azure AD](../conditional-access/overview.md) , který vyžaduje, aby uživatelé ověřili pomocí vícefaktorového ověřování (MFA) nebo se přihlásili z důvěryhodné sítě nebo zařízení. Během plánování nasazení zjistíte, že některé z těchto požadavků nemohou splnit všichni uživatelé. Existují například uživatelé, kteří pracují se vzdálenými pobočkami, které nejsou součástí vaší interní sítě nebo mají výkonného uživatele, který používá starý telefon, který není podporován. Podnik vyžaduje, aby se tito uživatelé mohli přihlásit a dělat jejich úlohy, proto jsou vyloučené ze zásad podmíněného přístupu.
 
-V jiném příkladu můžete použít pojmenovaná [umístění](../conditional-access/location-condition.md) v podmíněném přístupu a nakonfigurovat tak sadu okresů a oblastí, ze kterých nechcete uživatelům povolit přístup ke svému tenantovi.
+V jiném příkladu můžete použít [pojmenovaná umístění](../conditional-access/location-condition.md) v podmíněném přístupu a nakonfigurovat tak sadu okresů a oblastí, ze kterých nechcete uživatelům povolit přístup ke svému tenantovi.
 
 ![Pojmenovaná umístění v podmíněném přístupu](./media/conditional-access-exclusion/named-locations.png)
 
@@ -64,7 +64,7 @@ Pomocí těchto kroků můžete vytvořit novou skupinu Azure AD a zásadu podm�
 
 1. V seznamu **typ skupiny** vyberte **zabezpečení**. Zadejte název a popis.
 
-1. Nezapomeňte nastavit typ **členství** na přiřazeno.
+1. Nezapomeňte nastavit typ **členství** na **přiřazeno**.
 
 1. Vyberte uživatele, kteří by měli být součástí této skupiny vyloučení, a pak klikněte na **vytvořit**.
 
@@ -97,7 +97,7 @@ Nyní můžete vytvořit zásadu podmíněného přístupu, která používá tu
 
 Podíváme se na dva příklady, kde můžete pomocí kontrol přístupu spravovat vyloučení v zásadách podmíněného přístupu.
 
-## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>Příklad 1: Kontrola přístupu pro uživatele, kteří přistupují z blokovaných zemí nebo oblastí
+## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>Příklad 1: kontrola přístupu pro uživatele, kteří přistupují z blokovaných zemí nebo oblastí
 
 Řekněme, že máte zásady podmíněného přístupu, které blokují přístup z určitých zemí nebo oblastí. Zahrnuje skupinu, která je z těchto zásad vyloučená. Tady je doporučený kontroler přístupu, kde jsou členové skupiny zkontrolováni.
 
@@ -118,7 +118,7 @@ Podíváme se na dva příklady, kde můžete pomocí kontrol přístupu spravov
 
     ![Vytvoří podokno kontroly přístupu, například 1.](./media/conditional-access-exclusion/create-access-review-1.png)
 
-## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>Příklad 2: Kontrola přístupu pro uživatele, kteří přistupují pomocí starší verze ověřování
+## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>Příklad 2: kontrola přístupu pro uživatele, kteří přistupují pomocí starší verze ověřování
 
 Řekněme, že máte zásady podmíněného přístupu, které blokují přístup pro uživatele pomocí starší verze ověřování a starších verzí klientů. Zahrnuje skupinu, která je z těchto zásad vyloučená. Tady je doporučený kontroler přístupu, kde jsou členové skupiny zkontrolováni.
 
@@ -136,7 +136,7 @@ Podíváme se na dva příklady, kde můžete pomocí kontrol přístupu spravov
 
     ![Vytvoření podokna kontroly přístupu například 2](./media/conditional-access-exclusion/create-access-review-2.png)
 
-**Tip pro**: Pokud máte mnoho skupin vyloučení a proto potřebujete vytvořit více kontrol přístupu, teď máme v koncovém bodu Microsoft Graph beta rozhraní API, které umožňuje jejich vytváření a správu prostřednictvím kódu programu. Informace o tom, jak začít, najdete v referenčních informacích k [rozhraní API kontroly přístupu Azure AD](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root) a [příklad načítání kontrol přístupu služby azure AD prostřednictvím Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096).
+**Tip pro**: Pokud máte mnoho skupin vyloučení a proto potřebujete vytvořit více kontrol přístupu, teď máme na koncovém bodu Microsoft Graph beta rozhraní API, které umožňuje jejich vytváření a správu prostřednictvím kódu programu. Informace o tom, jak začít, najdete v [referenčních informacích k rozhraní API kontroly přístupu Azure AD](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root) a [příklad načítání kontrol přístupu služby azure AD prostřednictvím Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096).
 
 ## <a name="access-review-results-and-audit-logs"></a>Výsledky kontroly přístupu a protokoly auditu
 

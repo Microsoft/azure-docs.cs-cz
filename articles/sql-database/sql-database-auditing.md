@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: f36906bfa6bbef43c0e3133bfa1e8a163810086f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 450f40c8ba49028d99143d7cf2b2995eb354f8fd
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928698"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551620"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 
@@ -70,7 +70,7 @@ Zásady auditu je možné definovat pro určitou databázi nebo jako výchozí z
 
 V následující části je popsána konfigurace auditování pomocí Azure Portal.
 
-1. Přejděte na [Azure Portal](https://portal.azure.com).
+1. Přejděte na [portál Azure](https://portal.azure.com).
 2. V záhlaví zabezpečení v podokně SQL Database/Server přejděte na **audit** .
 
     <a id="auditing-screenshot"></a>Navigační podokno ![][1]
@@ -108,7 +108,7 @@ V následující části je popsána konfigurace auditování pomocí Azure Port
 
     ![Centrum událostí](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
 
-9. Klikněte na **Uložit**.
+9. Klikněte na možnost **Uložit**.
 10. Pokud chcete upravit auditované události, můžete to provést pomocí [rutin prostředí PowerShell](#subheading-7) nebo [REST API](#subheading-9).
 11. Po dokončení konfigurace nastavení auditování můžete zapnout funkci detekce nové hrozby a nakonfigurovat e-maily tak, aby přijímaly výstrahy zabezpečení. Pokud používáte detekci hrozeb, obdržíte proaktivní výstrahy týkající se neobvykléch databázových aktivit, které mohou označovat potenciální bezpečnostní hrozby. Další informace najdete v tématu [Začínáme s detekcí hrozeb](sql-database-threat-detection-get-started.md).
 
@@ -243,7 +243,7 @@ V produkčním prostředí pravděpodobně pravidelně aktualizujete klíče úl
 - Při použití ověřování AAD se záznamy neúspěšných přihlášení *nezobrazí v* protokolu auditu SQL. Chcete-li zobrazit záznamy auditu neúspěšných přihlášení, je nutné navštívit [portál Azure Active Directory]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), který protokoluje podrobnosti o těchto událostech.
 
 
-## <a id="subheading-7"></a>Správa auditování SQL Database pomocí Azure PowerShell
+## <a id="subheading-7"></a>Správa Azure SQL Server a auditování databáze pomocí Azure PowerShell
 
 **Rutiny PowerShellu (včetně podpory klauzule WHERE pro další filtrování)** :
 
@@ -256,7 +256,7 @@ V produkčním prostředí pravděpodobně pravidelně aktualizujete klíče úl
 
 Příklad skriptu najdete v tématu [Konfigurace auditování a detekce hrozeb pomocí prostředí PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
-## <a id="subheading-9"></a>Správa auditování SQL Database pomocí REST API
+## <a id="subheading-8"></a>Správa Azure SQL Server a auditování databáze pomocí REST API
 
 **REST API**:
 
@@ -272,7 +272,7 @@ Rozšířené zásady s podporou klauzule WHERE pro další filtrování:
 - [Získat *rozšířenou* zásadu auditování databáze](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [Získat *Rozšířené* zásady auditování serveru](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
-## <a id="subheading-10"></a>Správa auditování SQL Database pomocí šablon Azure Resource Manager
+## <a id="subheading-9"></a>Správa Azure SQL Server a auditování databáze pomocí šablon Azure Resource Manager
 
 Auditování Azure SQL Database můžete spravovat pomocí [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) šablon, jak je znázorněno v těchto příkladech:
 
@@ -289,10 +289,9 @@ Auditování Azure SQL Database můžete spravovat pomocí [Azure Resource Manag
 [Analyze audit logs and reports]: #subheading-3
 [Practices for usage in production]: #subheading-5
 [Storage Key Regeneration]: #subheading-6
-[Manage SQL database auditing using Azure PowerShell]: #subheading-7
-[Blob/Table differences in Server auditing policy inheritance]: (#subheading-8)
-[Manage SQL database auditing using REST API]: #subheading-9
-[Manage SQL database auditing using ARM templates]: #subheading-10
+[Manage Azure SQL Server and Database auditing using Azure PowerShell]: #subheading-7
+[Manage SQL database auditing using REST API]: #subheading-8
+[Manage Azure SQL Server and Database auditing using ARM templates]: #subheading-9
 
 <!--Image references-->
 [1]: ./media/sql-database-auditing-get-started/1_auditing_get_started_settings.png

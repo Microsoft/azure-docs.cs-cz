@@ -1,18 +1,17 @@
 ---
-title: Kurz instalace fyzického zařízení Azure FXT Edge souborového | Microsoft Docs
+title: 'Kurz: instalace fyzického zařízení Azure FXT Edge souborového'
 description: Postup rozbalení, stojanu a zapojení součásti fyzického zařízení Microsoft Azureového úložiště FXT Edge souborového do hybridní mezipaměti
-services: ''
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: rohogue
-ms.openlocfilehash: 0f3c7b01ee9d4a62ec0d563af55f2086894081be
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 7c77e25d0dcabc49f2e6672645c6bc41e8662ec8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256047"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551025"
 ---
 # <a name="tutorial-install-azure-fxt-edge-filer"></a>Kurz: instalace Azure FXT Edge souborového 
 
@@ -29,7 +28,7 @@ Tento kurz zahrnuje tyto kroky nastavení:
 > * Připojení zařízení v racku
 > * Nainstalovat přední kryt (volitelné)
 
-## <a name="installation-prerequisites"></a>Předpoklady pro instalaci 
+## <a name="installation-prerequisites"></a>Instalační požadavky 
 
 Než začnete, ujistěte se, že datové centrum a rack budete používat tyto funkce:
 
@@ -95,9 +94,9 @@ Vyhledejte komponenty pro instalaci sestavení se sadou pro železnici:
 
 Pro racky s přidanými čtverci nebo kulatými otvory pomocí tohoto postupu Sestavte a nainstalujte kolejnice. 
 
-1. Umístěte vlevo a vpravo zakončení železnic s označením **vpřed** směrem k dál. Každou koncovou položku umístěte do otvorů na přední straně svislé příruby. první
+1. Umístěte vlevo a vpravo zakončení železnic s označením **vpřed** směrem k dál. Každou koncovou položku umístěte do otvorů na přední straně svislé příruby. (1)
 
-2. Zarovnejte jednotlivé konce v dolní části a horních děr racku v prostoru, který chcete připojit. odst
+2. Zarovnejte jednotlivé konce v dolní části a horních děr racku v prostoru, který chcete připojit. (2)
 
 3. Zapojte se do konce kolejnice až do úplného umístění na vertikálním přírubě regálu a západky se klikne na místo. Zopakováním těchto kroků Umístěte přední konec části na vertikální přírubu. 1
 
@@ -110,10 +109,10 @@ Pro racky s přidanými čtverci nebo kulatými otvory pomocí tohoto postupu Se
 
 U racků s otvory s více vlákny Sestavte a nainstalujte kolejnice pomocí tohoto postupu.
 
-1. Odeberte PIN kódy z front-a zadních závorek pomocí Screwdriver s nepřímým připojením. první
-1. Umožňuje načíst a otočit podsestavení západky kolejnice a odebrat je z montážní hranaté závorky. odst
+1. Odeberte PIN kódy z front-a zadních závorek pomocí Screwdriver s nepřímým připojením. (1)
+1. Umožňuje načíst a otočit podsestavení západky kolejnice a odebrat je z montážní hranaté závorky. (2)
 1. Připojte levé a pravé montážní kolejnice k přednímu vertikálnímu přírubě na racku pomocí dvou párů šroubů. 1
-1. Posunutí vlevo a vpravo od zadních závorek směrem k zadním svislým přírubám a jejich připojení pomocí dvou párů šroubů. 4
+1. Posunutí vlevo a vpravo od zadních závorek směrem k zadním svislým přírubám a jejich připojení pomocí dvou párů šroubů. (4)
 
 ![Diagram instalace a odebrání prodaných kolejnic, se číslovaným postupem](media/fxt-install/installing-removing-tooled-rails-400.png)
 
@@ -121,8 +120,8 @@ U racků s otvory s více vlákny Sestavte a nainstalujte kolejnice pomocí toho
 
 Pomocí těchto kroků připojte zařízení Azure FXT Edge souborového v racku.
 
-1. Vydejte vnitřní snímek ze stojanu, dokud se nezamkne. první
-1. Vyhledejte zadní kolejnici Standoff na všech stranách zařízení a snižte jejich množství na zadních \ slotů v sestaveních snímků. odst 
+1. Vydejte vnitřní snímek ze stojanu, dokud se nezamkne. (1)
+1. Vyhledejte zadní kolejnici Standoff na všech stranách zařízení a snižte jejich množství na zadních \ slotů v sestaveních snímků. (2) 
 1. Otáčejte zařízení směrem dolů, dokud se všechny standoffs kolejnice neusadí do přihrádek. 1
 1. Zařízení nahrajte do výše, dokud se neklikne na místo na zámek.
 1. Stiskněte tlačítka zámku pro vydanou verzi na obou kolejnicích (4) a prosuňte zařízení do stojanu.
@@ -171,7 +170,7 @@ K dispozici je volitelná technologie ARM pro správu kabelů (CMA) s FXT Edge s
    Zásobník CMA poskytuje podporu a slouží jako zachovávání pro CMA. 
 
    1. Zarovnejte a propojte každou stranu zásobníku a uveďte přijímače na vnitřních okrajích kolejnic. 
-   1. Nahrajte do zásobníku před tím, než se klikne na místo. první
+   1. Nahrajte do zásobníku před tím, než se klikne na místo. (1)
    1. Chcete-li odebrat zásobník, přetáhněte tlačítka pro uvolnění zámků do středu a vyžádejte si zásobník z přijímače (2).
 
    ![Obrázek instalace na panelu CMA](media/fxt-install/cma-tray-install-400.png)

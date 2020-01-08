@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 2c2994c310369a0a6fe26ccc2c1e2e5de6680349
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 10da1c8e1a4516e3346e5a93cb9fffdac12e23ae
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084701"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638625"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Vytvoření, změna nebo odstranění virtuální sítě
 
@@ -30,7 +30,7 @@ Přečtěte si, jak vytvořit a odstranit virtuální síť a změnit nastavení
 Před dokončením kroků v jakékoli části tohoto článku proveďte následující úlohy:
 
 - Pokud ještě nemáte účet Azure, zaregistrujte si [bezplatný zkušební účet](https://azure.microsoft.com/free).
-- Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí svého účtu Azure.
+- Pokud používáte portál, otevřete https://portal.azure.com a přihlaste se pomocí svého účtu Azure.
 - Pokud k dokončení úkolů v tomto článku používáte příkazy prostředí PowerShell, buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo spuštěním PowerShellu z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 1.0.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 - Pokud k dokončení úkolů v tomto článku používáte příkazy rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z počítače. Tento kurz vyžaduje Azure CLI verze 2.0.31 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, je také potřeba spustit `az login` a vytvořit připojení k Azure.
 - Účet, ke kterému se přihlašujete, nebo se k Azure připojíte pomocí nástroje, musí být přiřazen k roli [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , která je přiřazená k příslušným akcím uvedeným v [oprávněních](#permissions).
@@ -62,10 +62,10 @@ Před dokončením kroků v jakékoli části tohoto článku proveďte následu
 
      - **Rozsah adres podsítě**: rozsah musí spadat do adresního prostoru, který jste zadali pro virtuální síť. Nejmenší rozsah, který můžete zadat, je/29, který poskytuje osm IP adres pro podsíť. Azure rezervuje v každé podsíti první a poslední adresu pro shodu protokolu. Tři další adresy jsou rezervované pro využití služeb Azure. V důsledku toho má virtuální síť s rozsahem adres podsítě/29 jenom tři použitelné IP adresy. Pokud plánujete připojit virtuální síť k bráně sítě VPN, musíte vytvořit podsíť brány. Přečtěte si další informace o [konkrétních požadavcích na rozsah adres pro podsítě brány](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). Rozsah adres můžete po vytvoření podsítě změnit za určitých podmínek. Informace o tom, jak změnit rozsah adres podsítě, najdete v tématu [Správa podsítí](virtual-network-manage-subnet.md).
      - **Předplatné**: vyberte [předplatné](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription). Stejnou virtuální síť nemůžete použít ve více než jednom předplatném Azure. Virtuální síť v jednom předplatném ale můžete připojit k virtuálním sítím v jiných předplatných s [partnerským vztahem virtuální sítě](virtual-network-peering-overview.md). Libovolný prostředek Azure, který se připojujete k virtuální síti, musí být ve stejném předplatném jako virtuální síť.
-     - **Skupina prostředků**: Vyberte existující [skupinu prostředků](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups) nebo vytvořte novou. Prostředek Azure, který se připojujete k virtuální síti, může být ve stejné skupině prostředků jako virtuální síť nebo v jiné skupině prostředků.
+     - **Skupina prostředků**: Vyberte existující [skupinu prostředků](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups) nebo vytvořte novou. Prostředek Azure, který se připojujete k virtuální síti, může být ve stejné skupině prostředků jako virtuální síť nebo v jiné skupině prostředků.
      - **Umístění**: vyberte [umístění](https://azure.microsoft.com/regions/)Azure, označované také jako oblast. Virtuální síť může být jenom v jednom umístění Azure. Můžete ale připojit virtuální síť v jednom umístění k virtuální síti v jiném umístění pomocí brány VPN. Libovolný prostředek Azure, který se připojujete k virtuální síti, musí být ve stejném umístění jako virtuální síť.
 
-**Příkaz**
+**Příkazy**
 
 - Azure CLI: [AZ Network VNet Create](/cli/azure/network/vnet)
 - PowerShell: [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)
@@ -92,9 +92,9 @@ Před dokončením kroků v jakékoli části tohoto článku proveďte následu
      - [Řízení přístupu (IAM)](../role-based-access-control/overview.md)
      - [Značky](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Počtu](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-     - [Skript Automation](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)
+     - [Skript Automation](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
-**Příkaz**
+**Příkazy**
 
 - Azure CLI: [AZ Network VNet show](/cli/azure/network/vnet)
 - PowerShell: [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork)
@@ -103,9 +103,9 @@ Před dokončením kroků v jakékoli části tohoto článku proveďte následu
 
 Můžete přidat a odebrat rozsahy adres pro virtuální síť. V zápisu CIDR se musí zadat rozsah adres a nemůže se překrývat s ostatními rozsahy adres ve stejné virtuální síti. Rozsahy adres, které definujete, můžou být veřejné nebo privátní (RFC 1918). Bez ohledu na to, jestli jste rozsah adres definovali jako veřejný nebo soukromý, rozsah adres je dosažitelný jenom z virtuální sítě, ze vzájemně propojených virtuálních sítí a z jakýchkoli místních sítí, které jste připojili k virtuální síti. 
 
-Rozsah adres pro virtuální síť můžete snížit, pokud k ní nemáte přidružené žádné podsítě. V opačném případě můžete rozsah adres pouze zvětšit, například změnou a/16 na/8. Můžete začít s malým rozsahem adres a později je později zvětšit nebo přidat další rozsahy.
+Rozsah adres pro virtuální síť můžete snížit, pokud stále obsahuje rozsahy všech přidružených podsítí. Navíc můžete rozsah adres zvětšit, například změnou a/16 na/8. 
 
-<!-- the last two sentences above are added per GitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/20572 -->
+<!-- the above statement has been edited to reflect the most recent comments on the reopened issue: https://github.com/MicrosoftDocs/azure-docs/issues/20572 -->
 
 Nemůžete přidat tyto rozsahy adres:
 
@@ -125,7 +125,7 @@ Postup přidání nebo odebrání rozsahu adres:
     - **Odeberte rozsah adres**: na pravé straně rozsahu adres, který chcete odebrat, vyberte **...** a pak vyberte **Odebrat**. Pokud podsíť existuje v rozsahu adres, nemůžete tento rozsah adres odebrat. Chcete-li odebrat rozsah adres, je nutné nejprve odstranit všechny podsítě (a všechny prostředky v podsítích), které existují v rozsahu adres.
 5. Vyberte **Uložit**.
 
-**Příkaz**
+**Příkazy**
 
 - Azure CLI: [AZ Network VNet Update](/cli/azure/network/vnet)
 - PowerShell: [set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)
@@ -139,7 +139,7 @@ Všechny virtuální počítače, které jsou připojené k virtuální síti, s
 3. V části **Nastavení**vyberte **servery DNS**.
 4. Vyberte jednu z následujících možností:
    - **Výchozí (poskytováno Azure)** : všechny názvy prostředků a privátní IP adresy se automaticky zaregistrují na Azure DNS servery. Můžete přeložit názvy mezi prostředky, které jsou připojené ke stejné virtuální síti. Tuto možnost nelze použít k překladu názvů mezi virtuálními sítěmi. Chcete-li přeložit názvy mezi virtuálními sítěmi, je nutné použít vlastní server DNS.
-   - **Vlastní**: můžete přidat jeden nebo více serverů, až do limitu Azure pro virtuální síť. Další informace o omezeních serveru DNS najdete v tématu [omezení Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic). Máte následující možnosti:
+   - **Vlastní**: můžete přidat jeden nebo více serverů, až do limitu Azure pro virtuální síť. Další informace o omezeních serveru DNS najdete v tématu [omezení Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic). Máte následující možnosti:
    - **Přidat adresu**: Přidá server do seznamu serverů DNS virtuální sítě. Tato možnost také zaregistruje server DNS pomocí Azure. Pokud jste už zaregistrovali server DNS s Azure, můžete v něm vybrat tento server DNS.
    - **Odebrat adresu**: vedle serveru, který chcete odebrat, vyberte **...** a pak **odeberte**. Odstranění serveru odebere server jenom z tohoto seznamu virtuálních sítí. Server DNS zůstává zaregistrovaný v Azure pro vaše jiné virtuální sítě, které se mají používat.
    - **Změna pořadí adres serverů DNS**: je důležité ověřit, že vaše servery DNS vypíšete ve správném pořadí pro vaše prostředí. Seznamy serverů DNS se používají v pořadí, v jakém jsou určeny. Nefungují jako nastavení kruhového dotazování. Pokud je možné dosáhnout prvního serveru DNS v seznamu, klient použije tento server DNS bez ohledu na to, jestli server DNS funguje správně. Odeberte všechny servery DNS, které jsou v seznamu, a pak je přidejte zpět v požadovaném pořadí.
@@ -147,7 +147,7 @@ Všechny virtuální počítače, které jsou připojené k virtuální síti, s
 5. Vyberte **Uložit**.
 6. Restartujte virtuální počítače, které jsou připojené k virtuální síti, takže se jim přiřadí nové nastavení serveru DNS. Virtuální počítače budou nadále používat aktuální nastavení DNS, dokud nebudou restartováni.
 
-**Příkaz**
+**Příkazy**
 
 - Azure CLI: [AZ Network VNet Update](/cli/azure/network/vnet)
 - PowerShell: [set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)
@@ -162,7 +162,7 @@ Virtuální síť můžete odstranit jenom v případě, že k ní nejsou připo
 4. Vyberte **Odstranit**.
 5. Pokud chcete potvrdit odstranění virtuální sítě, vyberte **Ano**.
 
-**Příkaz**
+**Příkazy**
 
 - Azure CLI: [odstranění síťové virtuální sítě Azure](/cli/azure/network/vnet)
 - PowerShell: [Remove-AzVirtualNetwork](/powershell/module/az.network/remove-azvirtualnetwork)
@@ -171,7 +171,7 @@ Virtuální síť můžete odstranit jenom v případě, že k ní nejsou připo
 
 Aby bylo možné provádět úlohy s virtuálními sítěmi, musí být váš účet přiřazen k roli [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) roli, která je přiřazena k příslušným akcím uvedeným v následující tabulce:
 
-| Akce                                  |   Název                                |
+| Akce                                  |   Name (Název)                                |
 |---------------------------------------- |   --------------------------------    |
 |Microsoft.Network/virtualNetworks/read   |   Čtení virtuální sítě              |
 |Microsoft.Network/virtualNetworks/write  |   Vytvoření nebo aktualizace virtuální sítě  |

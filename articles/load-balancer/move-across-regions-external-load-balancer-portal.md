@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 9358d99c66b3b8e3d6988b1881e51c11848ad97b
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 5cd5ce2635ce05c4d5962f12ddc3945342897ecd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300631"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638489"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Přesunout externí nástroj pro vyrovnávání zatížení do jiné oblasti pomocí Azure Portal
 
@@ -32,7 +32,7 @@ Ve smyslu literálu nemůžete externí nástroj pro vyrovnávání zatížení 
 
 - Ověřte, že vaše předplatné Azure umožňuje vytvářet externí služby Vyrovnávání zatížení v cílové oblasti. O povolení požadované kvóty požádejte podporu.
 
-- Ujistěte se, že vaše předplatné má dostatek prostředků na podporu přidání nástrojů pro vyrovnávání zatížení. Viz [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Ujistěte se, že vaše předplatné má dostatek prostředků na podporu přidání nástrojů pro vyrovnávání zatížení. Viz [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 ## <a name="prepare-and-move"></a>Příprava a přesun
 Následující postupy ukazují, jak připravit externí nástroj pro vyrovnávání zatížení pro přesun pomocí šablony Správce prostředků a přesunout konfiguraci externího nástroje pro vyrovnávání zatížení do cílové oblasti pomocí Azure Portal. Nejdřív musíte Exportovat konfiguraci veřejné IP adresy externího nástroje pro vyrovnávání zatížení.
@@ -43,9 +43,9 @@ Následující postupy ukazují, jak připravit externí nástroj pro vyrovnáv�
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) a potom vyberte **Skupiny prostředků**.
 2. Vyhledejte skupinu prostředků, která obsahuje zdrojovou veřejnou IP adresu, a vyberte ji.
-3. Vyberte **Nastavení** > **Exportovat šablonu**.
+3. Vyberte **nastavení** > **Exportovat šablonu**.
 4. V části **Exportovat šablonu**vyberte **nasadit** .
-5. Vyberte **šablonu** > **Upravit parametry** a otevřete soubor Parameters. JSON v online editoru.
+5. Vyberte **šablonu** > **Upravit parametry** pro otevření souboru Parameters. JSON v online editoru.
 8. Chcete-li upravit parametr názvu veřejné IP adresy, změňte **hodnotu vlastnosti Value** z **názvu** veřejné IP adresy zdroje na název vaší cílové veřejné IP adresy. Název uzavřete do uvozovek.
 
     ```json
@@ -141,11 +141,11 @@ Následující postupy ukazují, jak připravit externí nástroj pro vyrovnáv�
  
 13. V online editoru vyberte **Uložit** .
 
-14. Vyberte předplatná **základní** > **a vyberte předplatné,** ve kterém se bude nasazovat cílová veřejná IP adresa.
+14. Vyberte **základní** > **předplatné** a zvolte předplatné, ve kterém se NASADÍ cílová veřejná IP adresa.
 
-15. Vyberte možnost**Skupina prostředků** **základy** > a zvolte skupinu prostředků, do které bude nasazena cílová veřejná IP adresa. Můžete vybrat **vytvořit novou** a vytvořit novou skupinu prostředků pro cílovou veřejnou IP adresu. Ujistěte se, že název není stejný jako zdrojová skupina prostředků stávající zdrojové veřejné IP adresy.
+15. Vyberte **základní** > **Skupina prostředků** a vyberte skupinu prostředků, do které se bude nasadit cílová veřejná IP adresa. Můžete vybrat **vytvořit novou** a vytvořit novou skupinu prostředků pro cílovou veřejnou IP adresu. Ujistěte se, že název není stejný jako zdrojová skupina prostředků stávající zdrojové veřejné IP adresy.
 
-16. Ověřte, zda je umístění **základních** > **umístění** nastaveno na cílové umístění, kam chcete nasadit veřejnou IP adresu.
+16. Ověřte, že **základní** > **umístění** je nastaveno na cílové umístění, kam chcete nasadit veřejnou IP adresu.
 
 17. V části **Nastavení**ověřte, že se název shoduje s názvem, který jste zadali dříve v editoru parametrů.
 
@@ -159,9 +159,9 @@ Následující postupy ukazují, jak připravit externí nástroj pro vyrovnáv�
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) a potom vyberte **Skupiny prostředků**.
 2. Vyhledejte skupinu prostředků, která obsahuje zdrojový externí nástroj pro vyrovnávání zatížení, a vyberte ji.
-3. Vyberte **Nastavení** > **Exportovat šablonu**.
+3. Vyberte **nastavení** > **Exportovat šablonu**.
 4. V části **Exportovat šablonu**vyberte **nasadit** .
-5. Vyberte **šablonu** > **Upravit parametry** a otevřete soubor Parameters. JSON v online editoru.
+5. Vyberte **šablonu** > **Upravit parametry** pro otevření souboru Parameters. JSON v online editoru.
 
 5. Chcete-li upravit parametr názvu externí služby Vyrovnávání zatížení, změňte vlastnost **Value** zdrojového externího nástroje pro vyrovnávání zatížení na název vašeho cílového externího nástroje pro vyrovnávání zatížení. Název uzavřete do uvozovek.
 
@@ -182,7 +182,7 @@ Následující postupy ukazují, jak připravit externí nástroj pro vyrovnáv�
 
     1. Na jiné kartě nebo okně prohlížeče se přihlaste k [Azure Portal](https://portal.azure.com) a vyberte **skupiny prostředků**.
     2. Vyhledejte cílovou skupinu prostředků, která obsahuje veřejnou IP adresu, kterou jste přesunuli v předchozích krocích. Vyberte ji.
-    3. Vyberte **Nastavení** > **vlastnosti**.
+    3. Vyberte **Nastavení** > **Vlastnosti**.
     4. V okně vpravo zvýrazněte **ID prostředku** a zkopírujte ho do schránky. Alternativně můžete vybrat možnost **Kopírovat do schránky** napravo od cesty k **ID prostředku** .
     5. Vložte ID prostředku do vlastnosti **hodnota** v editoru **úprav parametrů** , který je otevřený v jiném okně prohlížeče nebo na kartě:
 
@@ -389,11 +389,11 @@ Následující postupy ukazují, jak připravit externí nástroj pro vyrovnáv�
 
 12. V online editoru vyberte **Uložit** .
 
-13. Vyberte předplatná **základní** > **a zvolte předplatné,** ve kterém bude nasazený cílový externí nástroj pro vyrovnávání zatížení.
+13. Vyberte **základní** > **předplatné** a zvolte předplatné, ve kterém se bude nasadit cílový externí nástroj pro vyrovnávání zatížení.
 
-15. Vyberte možnost**Skupina prostředků** **základy** > a zvolte skupinu prostředků, do které bude nasazený cílový Nástroj pro vyrovnávání zatížení. Můžete vybrat **vytvořit novou** a vytvořit novou skupinu prostředků pro cílový externí nástroj pro vyrovnávání zatížení. Nebo můžete vybrat existující skupinu prostředků, kterou jste vytvořili dříve pro veřejnou IP adresu. Ujistěte se, že název není stejný jako zdrojová skupina prostředků existujícího zdrojového externího nástroje pro vyrovnávání zatížení.
+15. Vyberte **základní** > **Skupina prostředků** a vyberte skupinu prostředků, ve které bude nasazený cílový Nástroj pro vyrovnávání zatížení. Můžete vybrat **vytvořit novou** a vytvořit novou skupinu prostředků pro cílový externí nástroj pro vyrovnávání zatížení. Nebo můžete vybrat existující skupinu prostředků, kterou jste vytvořili dříve pro veřejnou IP adresu. Ujistěte se, že název není stejný jako zdrojová skupina prostředků existujícího zdrojového externího nástroje pro vyrovnávání zatížení.
 
-16. Ověřte, zda je umístění **základních** > **umístění** nastaveno na cílové umístění, do kterého chcete nasadit externí nástroj pro vyrovnávání zatížení.
+16. Ověřte, že **základní** umístění > **umístění** je nastaveno na cílové umístění, do kterého chcete nasadit externí nástroj pro vyrovnávání zatížení.
 
 17. V části **Nastavení**ověřte, že se název shoduje s názvem, který jste zadali dříve v editoru parametrů. Ověřte, jestli se v konfiguraci naplní ID prostředků pro všechny veřejné IP adresy.
 

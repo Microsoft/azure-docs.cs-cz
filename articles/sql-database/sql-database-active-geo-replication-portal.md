@@ -1,6 +1,6 @@
 ---
-title: 'Azure Portal: geografická replikace'
-description: Konfigurace geografické replikace pro jednu nebo sdruženou databázi v Azure SQL Database pomocí Azure Portal a zahájení převzetí služeb při selhání
+title: 'Kurz: převzetí služeb při selhání geografické replikace & na portálu'
+description: Nakonfigurujte geografickou replikaci pro jednu nebo sdruženou databázi v Azure SQL Database pomocí Azure Portal a iniciovat převzetí služeb při selhání.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 7ddaefb0f65db1cfc828e4baa844f6d8e01f9d2e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 601c537a51e29ae1f107127e1b83c07448eee9ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808128"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348883"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurace aktivní geografické replikace pro Azure SQL Database v Azure Portal a zahájení převzetí služeb při selhání
 
@@ -48,7 +48,7 @@ Po vytvoření a osazení sekundární databáze se data začnou replikovat z pr
 1. V [Azure Portal](https://portal.azure.com)přejděte k databázi, kterou chcete nastavit pro geografickou replikaci.
 2. Na stránce databáze SQL vyberte **geografickou replikaci**a potom vyberte oblast pro vytvoření sekundární databáze. Můžete vybrat libovolnou jinou oblast, než je oblast hostující primární databázi, ale doporučujeme použít [spárovánou oblast](../best-practices-availability-paired-regions.md).
 
-    ![Konfigurace geografické replikace](./media/sql-database-geo-replication-portal/configure-geo-replication.png)
+    ![Konfigurace georeplikace](./media/sql-database-geo-replication-portal/configure-geo-replication.png)
 3. Vyberte nebo nakonfigurujte server a cenovou úroveň pro sekundární databázi.
 
     ![Konfigurovat sekundární](./media/sql-database-geo-replication-portal/create-secondary.png)

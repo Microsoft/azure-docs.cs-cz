@@ -1,6 +1,6 @@
 ---
-title: Exportovat nebo odstraňovat nastavení portálu Azure portal | Dokumentace Microsoftu
-description: Zjistěte, jak exportovat nebo odstraňovat vaše uživatelská nastavení, privátní řídicí panely a vlastní nastavení na portálu Azure portal.
+title: Exportovat nebo odstranit nastavení Azure Portal | Microsoft Docs
+description: Přečtěte si, jak můžete exportovat nebo odstranit uživatelská nastavení, soukromé řídicí panely a vlastní nastavení v Azure Portal.
 services: azure-portal
 keywords: ''
 author: santhoshsomayajula
@@ -9,51 +9,51 @@ ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
-ms.author: kfollis
-ms.openlocfilehash: fde7ffbaa3ef4d47eea48302a99948932aeb4f00
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mblythe
+ms.openlocfilehash: f033af37985077f4d8df9d541b55764df0c75eda
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551638"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640172"
 ---
 # <a name="export-or-delete-user-settings"></a>Export nebo odstranění uživatelských nastavení
 
-Nastavení a funkcí na webu Azure Portal můžete použít k vytvoření vlastního prostředí. Informace o vlastních nastavení uložená v Azure. Můžete exportovat nebo odstranit následující údaje:
+Pomocí nastavení a funkcí v Azure Portal můžete vytvořit vlastní prostředí. Informace o vlastním nastavení jsou uložené v Azure. Můžete exportovat nebo odstranit následující uživatelská data:
 
-* Privátní řídicí panely na webu Azure Portal
-* Uživatelská nastavení, jako jsou oblíbené předplatná nebo adresáře a adresář poslední přihlášení
+* Soukromé řídicí panely v Azure Portal
+* Uživatelská nastavení, jako jsou oblíbená předplatná nebo adresáře a poslední přihlášený adresář
 * Motivy a další vlastní nastavení portálu
 
-Je vhodné k exportu a před jejich odstraněním zkontrolujte nastavení. Řídicí panely znovu sestavit nebo znovu provedení vlastní nastavení může být časově náročné.
+Před odstraněním je vhodné nastavení exportovat a zkontrolovat. Opětovné sestavení řídicích panelů nebo opakované provádění vlastních nastavení může být časově náročné.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="export-or-delete-your-portal-settings"></a>Exportovat nebo odstraňovat vaše nastavení portálu
+## <a name="export-or-delete-your-portal-settings"></a>Export nebo odstranění nastavení portálu
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. V záhlaví portálu vyberte **nastavení**.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+2. V hlavičce portálu vyberte **Nastavení**.
 
-    ![Snímek obrazovky zobrazující ozubené kolo nastavení portálu](media/azure-portal-export-delete-settings/azure-portal-settings-icon.png)
+    ![Snímek obrazovky zobrazující ozubené kolečko nastavení portálu](media/azure-portal-export-delete-settings/azure-portal-settings-icon.png)
 
-3. Vyberte **exportovat všechna nastavení** nebo **odstranit všechna nastavení a privátní řídicí panely**.
+3. Vyberte **exportovat všechna nastavení** nebo **Odstranit všechna nastavení a privátní řídicí panely**.
 
-    ![Snímek obrazovky zobrazující portálu exportovat a odstranit nastavení](media/azure-portal-export-delete-settings/azure-portal-export-delete-settings.png)
+    ![Snímek obrazovky zobrazující nastavení exportu a odstraňování portálu](media/azure-portal-export-delete-settings/azure-portal-export-delete-settings.png)
 
       Následující tabulka popisuje tyto akce.
 
       | Akce | Popis |
       | --- | --- |
-      | **Exportovat všechna nastavení** | Vytvoří soubor .json, který obsahuje nastavení uživatele jako barevný motiv, Oblíbené položky a privátní řídicí panely.|
-      | **Odstranit všechna nastavení a privátní řídicí panely** | Odstraní všechny odkazy na privátní řídicí panely a další vlastní nastavení, které jste udělali na portál. |
+      | **Exportovat všechna nastavení** | Vytvoří soubor. JSON, který obsahuje vaše uživatelská nastavení, jako je váš barevný motiv, oblíbené a soukromé řídicí panely.|
+      | **Odstranit všechna nastavení a privátní řídicí panely** | Odstraní všechny odkazy na soukromé řídicí panely a další vlastní nastavení, která jste na portálu udělali. |
 
 > [!NOTE]
-> Kvůli dynamické povaze nastavení uživatele a riziko poškození dat nelze importovat nastavení ze souboru .json.
+> Z důvodu dynamické povahy uživatelských nastavení a rizika poškození dat nemůžete importovat nastavení ze souboru. JSON.
 >
 >
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vytváření a sdílení řídicích panelů Azure](azure-portal-dashboard-share-access.md)
-* [Přidání, odebrání a řazení Oblíbené položky](azure-portal-add-remove-sort-favorites.md)
+* [Přidat, odebrat a seřadit oblíbené položky](azure-portal-add-remove-sort-favorites.md)

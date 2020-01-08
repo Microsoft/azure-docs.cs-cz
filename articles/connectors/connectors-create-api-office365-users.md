@@ -1,20 +1,21 @@
 ---
 title: Připojení k uživatelům Office 365
-description: Správa profilů uživatelů pomocí rozhraní REST API uživatelů Office 365 a Azure Logic Apps
+description: Automatizace úloh a pracovních postupů, které získávají a spravují profily v profilech uživatelů Office 365 pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 08/18/2016
 ms.topic: article
 tags: connectors
-ms.openlocfilehash: addb64a9b43c51af8363caa6f0fb3261a618e893
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 179c7538d8072f0e1a4f7d049cf521971efd7a21
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789511"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666852"
 ---
-# <a name="get-started-with-the-office-365-users-connector"></a>Začínáme s konektorem uživatelů Office 365
+# <a name="get-and-manage-profiles-in-office-365-users-by-using-azure-logic-apps"></a>Získání a Správa profilů v uživatelích Office 365 pomocí Azure Logic Apps
+
 Připojte se k uživatelům Office 365, abyste získali profily, mohli hledat uživatele a další. Uživatelé Office 365 můžou:
 
 * Sestavte svůj obchodní tok na základě dat, která dostanete od uživatelů Office 365. 
@@ -23,7 +24,8 @@ Připojte se k uživatelům Office 365, abyste získali profily, mohli hledat u�
 Můžete začít vytvořením aplikace logiky hned teď v tématu [Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="create-a-connection-to-office-365-users"></a>Vytvoření připojení k uživatelům Office 365
-Když přidáte tento konektor do aplikace logiky, musíte se přihlásit ke svému účtu uživatelů Office 365 a dovolit službě Logic Apps, aby se připojili k vašemu účtu.
+
+Když přidáte tento konektor do aplikace logiky, musíte se přihlásit ke svému účtu uživatelů Office 365, aby se Azure Logic Apps mohl připojit k vašemu účtu.
 
 > [!INCLUDE [Steps to create a connection to Office 365 Users](../../includes/connectors-create-api-office365users.md)]
 > 
@@ -33,7 +35,8 @@ Po vytvoření připojení zadáte vlastnosti uživatelů Office 365, jako je ID
 
 ## <a name="connector-specific-details"></a>Podrobnosti specifické pro spojnici
 
-Zobrazit všechny triggery a akce definované v Swagger a také zobrazit omezení v [podrobnostech konektoru](/connectors/officeusers/).
+Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu Swagger konektoru, najdete na [referenční stránce konektoru](/connectors/officeusers/).
 
-## <a name="more-connectors"></a>Další konektory
-Vraťte se do [seznamu rozhraní API](apis-list.md).
+## <a name="next-steps"></a>Další kroky
+
+* Další informace o dalších [konektorech Logic Apps](apis-list.md)

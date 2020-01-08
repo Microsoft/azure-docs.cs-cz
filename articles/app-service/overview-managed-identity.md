@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 6fa8e560dc50859fc0501dde8109ddc7cbd596b8
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: f341f5bbf7221664301ca53eea1edd6af7544950
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688620"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422015"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravovaných identit pro App Service a Azure Functions
 
@@ -38,9 +38,9 @@ Pokud chcete na portálu nastavit spravovanou identitu, nejdřív vytvořte apli
 
 3. Vyberte **Identita**.
 
-4. V rámci karty **přiřazené systémem** přepněte **stav** na **zapnuto**. Klikněte na **Uložit**.
+4. V rámci karty **přiřazené systémem** přepněte **stav** na **zapnuto**. Klikněte na možnost **Uložit**.
 
-    ![Spravovaná identita v App Service](media/app-service-managed-service-identity/msi-blade-system.png)
+    ![Spravovaná identita v App Service](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
 ### <a name="using-the-azure-cli"></a>Použití Azure CLI
 
@@ -167,9 +167,9 @@ Nejdřív budete muset vytvořit prostředek identity přiřazené uživatelem.
 
 5. Na kartě **přiřazené uživatelem** klikněte na tlačítko **Přidat**.
 
-6. Vyhledejte identitu, kterou jste vytvořili dříve, a vyberte ji. Klikněte na tlačítko **Přidat**.
+6. Vyhledejte identitu, kterou jste vytvořili dříve, a vyberte ji. Klikněte na tlačítko **Add** (Přidat).
 
-    ![Spravovaná identita v App Service](media/app-service-managed-service-identity/msi-blade-user.png)
+    ![Spravovaná identita v App Service](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
 ### <a name="using-an-azure-resource-manager-template"></a>Použití šablony Azure Resource Manager
 
@@ -251,10 +251,10 @@ Aplikace se spravovanou identitou má definované dvě proměnné prostředí:
 
 **MSI_ENDPOINT** je místní adresa URL, ze které vaše aplikace může žádat o tokeny. Pokud chcete získat token pro prostředek, udělejte požadavek HTTP GET na tento koncový bod, včetně následujících parametrů:
 
-> |Název parametru|Pro|Popis|
+> |Název parametru|V|Popis|
 > |-----|-----|-----|
-> |Partner|Dotaz|Identifikátor URI prostředku AAD prostředku, pro který by měl být získán token. Může to být jedna ze [služeb Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) nebo jakýkoli jiný identifikátor URI prostředku.|
-> |verze API-Version|Dotaz|Verze rozhraní API tokenu, která se má použít. "2017-09-01" je aktuálně podporovaná verze.|
+> |resource|Dotaz|Identifikátor URI prostředku AAD prostředku, pro který by měl být získán token. Může to být jedna ze [služeb Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) nebo jakýkoli jiný identifikátor URI prostředku.|
+> |api-version|Dotaz|Verze rozhraní API tokenu, která se má použít. "2017-09-01" je aktuálně podporovaná verze.|
 > |Tajný kód|Hlavička|Hodnota proměnné prostředí MSI_SECRET. Tato hlavička se používá ke zmírnění útoků na straně serveru (SSRF).|
 > |ClientID|Dotaz|(Volitelné, pokud není přiřazeno uživatelem) ID uživatelem přiřazené identity, která se má použít. Je-li tento parametr vynechán, je použita identita přiřazená systémem.|
 
@@ -267,7 +267,7 @@ Aplikace se spravovanou identitou má definované dvě proměnné prostředí:
 > |-------------|----------|
 > |access_token|Požadovaný přístupový token Volající webová služba může tento token použít k ověření pro přijímající webovou službu.|
 > |expires_on|Čas vypršení platnosti přístupového tokenu. Datum se reprezentuje jako počet sekund od roku 1970-01-01T0:0: 0Z UTC až do doby vypršení platnosti. Tato hodnota se používá k určení doby života tokenů uložených v mezipaměti.|
-> |Partner|Identifikátor URI ID aplikace přijímající webové služby.|
+> |resource|Identifikátor URI ID aplikace přijímající webové služby.|
 > |token_type|Určuje hodnotu typu tokenu. Jediným typem, který podporuje Azure AD, je nosič. Další informace o nosných tokenech najdete v části [autorizační rozhraní OAuth 2,0: použití nosných tokenů (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
 
 Tato odpověď je stejná jako [odpověď pro požadavek Service-to-Service Access tokenu služby AAD](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).

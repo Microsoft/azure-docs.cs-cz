@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 63e09bacd1ce70f05f04798f092d3eb4b3e36ab5
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: d55af7354ea7d78263e55872e257a2814ebe4130
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555238"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401820"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Přidání prostředků Azure Automation do řešení pro správu (Preview)
 > [!NOTE]
@@ -26,12 +26,12 @@ ms.locfileid: "72555238"
 > V ukázkách v tomto článku se používají parametry a proměnné, které jsou buď vyžadované, nebo běžné pro řešení pro správu, popsaná v článku [Návrh a sestavení řešení pro správu v Azure]( solutions-creating.md) . 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 V tomto článku se předpokládá, že už jste obeznámeni s následujícími informacemi.
 
 - [Vytvoření řešení pro správu]( solutions-creating.md).
 - Struktura [souboru řešení]( solutions-solution-file.md).
-- [Vytváření šablon Správce prostředků](../../azure-resource-manager/resource-group-authoring-templates.md)
+- [Vytváření šablon Správce prostředků](../../azure-resource-manager/templates/template-syntax.md)
 
 ## <a name="automation-account"></a>Účet Automation
 Všechny prostředky v Azure Automation jsou obsaženy v [účtu Automation](../../automation/automation-security-overview.md#automation-account-overview).  Jak je popsáno v [Log Analytics pracovní prostor a účet Automation]( solutions.md#log-analytics-workspace-and-automation-account) účet Automation není zahrnutý do řešení pro správu, ale musí existovat před tím, než se řešení nainstaluje.  Pokud není k dispozici, instalace řešení se nezdaří.
@@ -107,7 +107,7 @@ Vlastnosti pro úlohy služby Automation jsou popsány v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| sada |Entita s jedním jménem s názvem Runbooku, který se má spustit. |
+| runbook |Entita s jedním jménem s názvem Runbooku, který se má spustit. |
 | parameters |Entita pro každou hodnotu parametru, kterou sada Runbook vyžaduje. |
 
 Úloha zahrnuje název Runbooku a všechny hodnoty parametrů, které se mají odeslat do Runbooku.  Úloha by měla [záviset na]( solutions-solution-file.md#resources) sadě Runbook, kterou spouští od chvíle, kdy se sada Runbook musí vytvořit před úlohou.  Pokud máte více sad Runbook, které by měly být spuštěny, můžete definovat jejich pořadí tak, aby byla úloha závislá na všech dalších úlohách, které by se měly spustit jako první.
@@ -139,7 +139,7 @@ Vlastnosti pro prostředky certifikátů jsou popsány v následující tabulce.
 | Vlastnost | Popis |
 |:--- |:--- |
 | base64Value |Hodnota Base 64 pro certifikát |
-| kryptografický |Kryptografický otisk certifikátu |
+| thumbprint |Kryptografický otisk certifikátu |
 
 
 
@@ -165,7 +165,7 @@ Vlastnosti pro prostředky přihlašovacích údajů jsou popsané v následují
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Jmen |Uživatelské jméno pro přihlašovací údaje |
+| userName |Uživatelské jméno pro přihlašovací údaje |
 | heslo |Heslo pro přihlašovací údaje |
 
 
@@ -196,7 +196,7 @@ Vlastnosti pro prostředky plánu jsou popsány v následující tabulce.
 | description |Volitelný popis plánu |
 | startTime |Určuje počáteční čas plánu jako objekt DateTime. Řetězec lze zadat, pokud jej lze převést na platný typ DateTime. |
 | isEnabled |Určuje, jestli je plán povolený. |
-| interval |Typ intervalu pro plán.<br><br>dnu<br>hodiny |
+| interval |Typ intervalu pro plán.<br><br>den<br>hour |
 | frequency |Frekvence, kterou by měl plán zavolávat za počet dnů nebo hodin. |
 
 Plány musí mít čas spuštění s hodnotou vyšší než aktuální čas.  Tuto hodnotu nemůžete zadat s proměnnou, protože by vám při instalaci nevěděla žádný způsob, jak byste měli vědět.
@@ -236,8 +236,8 @@ Vlastnosti pro plány úloh jsou popsány v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Název plánu |Entita s jedním **jménem** s názvem plánu |
-| název Runbooku  |Entita s jedním **jménem** s názvem Runbooku  |
+| schedule name |Jeden **name** entitě s názvem podle plánu. |
+| runbook name  |Jeden **name** entitě s názvem sady runbook.  |
 
 
 
@@ -275,10 +275,10 @@ Pokud nastavíte počáteční hodnotu pro proměnnou, je nutné ji nakonfigurov
 
 | Data type | Popis | Příklad: | Překládá na |
 |:--|:--|:--|:--|
-| string   | Uzavřete hodnotu do dvojitých uvozovek.  | "\"Hello World \"" | Hello World |
-| číselné  | Číselná hodnota s jednoduchými uvozovkami.| "64" | 64 |
-| Boolean  | **hodnota true** nebo **false** v uvozovkách  Všimněte si, že tato hodnota musí být malá. | podmínka | true |
-| datetime | Hodnota serializovaného data<br>K vygenerování této hodnoty pro konkrétní datum můžete použít rutinu ConvertTo-JSON v prostředí PowerShell.<br>Příklad: Get-Date "5/24/2017 13:14:57" \| ConvertTo-JSON | "\\/Date (1495656897378) \\/" | 2017-05-24 13:14:57 |
+| string   | Uzavřete hodnotu do dvojitých uvozovek.  | "\"Hello World\"" | Hello World |
+| numeric  | Číselná hodnota s jednoduchými uvozovkami.| "64" | 64 |
+| Boolean  | **hodnota true** nebo **false** v uvozovkách  Všimněte si, že tato hodnota musí být malá. | „true“ | true |
+| datetime | Hodnota serializovaného data<br>K vygenerování této hodnoty pro konkrétní datum můžete použít rutinu ConvertTo-JSON v prostředí PowerShell.<br>Příklad: Get-Date "5/24/2017 13:14:57" \| ConvertTo-JSON | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Moduly
 Vaše řešení pro správu nemusí definovat [globální moduly](../../automation/automation-integration-modules.md) používané vašimi Runbooky, protože budou vždy k dispozici ve vašem účtu Automation.  Je potřeba zahrnout prostředek pro všechny ostatní moduly, které vaše Runbooky používají.

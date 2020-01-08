@@ -1,20 +1,20 @@
 ---
 title: Připojit k disku Google
-description: Vytváření a Správa souborů s rozhraními REST API pro Google Drive a Azure Logic Apps
+description: Automatizujte pracovní postupy, které vytvářejí a spravují soubory pro disk Google pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 6310c3b7e5b84915fa336708bc702e94317ad04c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 155a579438747ca7de67eba6449b8a0191e86e2c
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789717"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666835"
 ---
-# <a name="get-started-with-the-google-drive-connector"></a>Začínáme s konektorem disku Google
+# <a name="create-and-manage-files-for-google-drive-by-using-azure-logic-apps"></a>Vytváření a Správa souborů pro disk Google pomocí Azure Logic Apps
 
 Připojte se k disku Google, abyste mohli vytvářet soubory, získávat řádky a další. S diskem Google můžete: 
 
@@ -33,8 +33,8 @@ Po vytvoření připojení zadáte vlastnosti disku Google, jako je třeba cesta
 
 ## <a name="connector-specific-details"></a>Podrobnosti specifické pro spojnici
 
-Zobrazit všechny triggery a akce definované v Swagger a také zobrazit omezení v [podrobnostech konektoru](/connectors/googledrive/).
+Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu Swagger konektoru, najdete na [referenční stránce konektoru](/connectors/googledrive/).
 
-## <a name="more-connectors"></a>Další konektory
+## <a name="next-steps"></a>Další kroky
 
-Vraťte se do [seznamu rozhraní API](apis-list.md).
+* Další informace o dalších [konektorech Logic Apps](apis-list.md)

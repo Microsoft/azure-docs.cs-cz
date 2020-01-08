@@ -1,23 +1,23 @@
 ---
-title: Přidání, odebrání a řazení oblíbených položek v Azure Portal | Microsoft Docs
-description: Přečtěte si, jak přidat nebo odebrat položky ze seznamu oblíbených položek a seřadit pořadí položek.
+title: Přidání, odebrání a uspořádání oblíbených položek v Azure Portal | Microsoft Docs
+description: Přečtěte si, jak přidat nebo odebrat položky ze seznamu oblíbených položek a změnit pořadí položek.
 services: azure-portal
-keywords: Položek
-author: kfollis
-ms.author: kfollis
-ms.date: 11/01/2019
+keywords: Oblíbené, portál
+author: mblythe
+ms.author: mblythe
+ms.date: 12/20/2019
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
-ms.openlocfilehash: 51228f4a28b5c6e19bf341b5576540d36bcaae64
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 57ce053f268558886dad33d450d48f9a0889a10a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579577"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640563"
 ---
-# <a name="add-remove-and-sort-favorites"></a>Přidání, odebrání a řazení oblíbených položek
+# <a name="add-remove-and-rearrange-favorites"></a>Přidání, odebrání a změna uspořádání oblíbených položek
 
 Přidejte nebo odeberte položky ze seznamu **oblíbených položek** , abyste mohli rychle přejít na nejčastěji používané služby. Některé běžné služby jsme už přidali do seznamu **oblíbených položek** , ale budete je pravděpodobně chtít přizpůsobit. Jste jediným, kdo uvidí změny, které jste provedli v **oblíbených položkách**.
 
@@ -51,7 +51,7 @@ Položku teď můžete odebrat přímo ze seznamu **oblíbených položek** .
 
 2. Na kartě informace vyberte hvězdičku, aby se změnila z vyplněné na nevyplnit. Služba se odebere ze seznamu **oblíbených položek** .
 
-## <a name="sort-favorites"></a>Seřadit oblíbené
+## <a name="rearrange-favorites"></a>Změnit uspořádání oblíbených položek
 
 Můžete změnit pořadí, ve kterém jsou vaše oblíbené služby uvedené. Jednoduše přetáhněte položku nabídky na jiné místo v části **Oblíbené**.
 

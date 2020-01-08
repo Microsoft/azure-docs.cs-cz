@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 1ec1856508588d07e55e60e251a1369ecc3fa985
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 7fd06a620c695b3be49a116c89f63507cee9c07c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174066"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355934"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Příkazy rozhraní příkazového řádku Azure v režimu Správce prostředků
-Tento článek poskytuje syntaxi a možnosti pro příkazy rozhraní příkazového řádku Azure (CLI), které běžně používáte k vytváření a správě prostředků Azure v modelu nasazení Azure Resource Manager. K těmto příkazům přistupujete spuštěním rozhraní příkazového řádku v režimu Správce prostředků (ARM). Nejedná se o úplný odkaz a verze rozhraní příkazového řádku (CLI) se může zobrazit trochu různých příkazů nebo parametrů. Obecný přehled prostředků a skupin prostředků Azure najdete v tématu [přehled Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).  
+Tento článek poskytuje syntaxi a možnosti pro příkazy rozhraní příkazového řádku Azure (CLI), které běžně používáte k vytváření a správě prostředků Azure v modelu nasazení Azure Resource Manager. K těmto příkazům přistupujete spuštěním rozhraní příkazového řádku v režimu Správce prostředků (ARM). Nejedná se o úplný odkaz a verze rozhraní příkazového řádku (CLI) se může zobrazit trochu různých příkazů nebo parametrů. Obecný přehled prostředků a skupin prostředků Azure najdete v tématu [přehled Azure Resource Manager](../azure-resource-manager/management/overview.md).  
 
 > [!NOTE]
 > Tento článek ukazuje příkazy režimu Správce prostředků v rozhraní příkazového řádku Azure CLI, někdy označované jako Azure Classic CLI. Pokud chcete pracovat v modelu Správce prostředků, můžete také vyzkoušet rozhraní příkazového [řádku Azure CLI](/cli/azure/install-az-cli2), naše nové generace CLI pro více platforem.
@@ -32,11 +32,11 @@ Tento článek poskytuje syntaxi a možnosti pro příkazy rozhraní příkazov�
 
 Pokud chcete začít, nejdřív [nainstalujte rozhraní příkazového řádku Azure](../cli-install-nodejs.md) a [Připojte se k předplatnému Azure](/cli/azure/authenticate-azure-cli).
 
-Pro aktuální syntaxi příkazů a možnosti na příkazovém řádku v režimu správce prostředků zadejte `azure help` nebo, chcete-li zobrazit nápovědu pro konkrétní `azure help [command]`příkaz. V dokumentaci k vytváření a správě konkrétních služeb Azure najdete taky příklady rozhraní příkazového řádku.
+Pro aktuální syntaxi příkazů a možnosti na příkazovém řádku v režimu Správce prostředků zadejte `azure help` nebo, abyste zobrazili nápovědu ke konkrétnímu příkazu `azure help [command]`. V dokumentaci k vytváření a správě konkrétních služeb Azure najdete taky příklady rozhraní příkazového řádku.
 
 Volitelné parametry jsou uvedeny v hranatých závorkách (například `[parameter]`). Všechny ostatní parametry jsou povinné.
 
-Kromě specifických volitelných parametrů, které jsou zde popsané, jsou k dispozici tři volitelné parametry, které lze použít k zobrazení podrobného výstupu, jako jsou možnosti žádosti a stavové kódy. Parametr poskytuje podrobný výstup `-vv` a parametr poskytuje ještě podrobnější podrobný výstup. `-v` `--json` Možnost vypíše výsledek ve formátu RAW JSON.
+Kromě specifických volitelných parametrů, které jsou zde popsané, jsou k dispozici tři volitelné parametry, které lze použít k zobrazení podrobného výstupu, jako jsou možnosti žádosti a stavové kódy. Parametr `-v` poskytuje podrobný výstup a parametr `-vv` poskytuje ještě podrobnější podrobný výstup. Možnost `--json` výstup výsledek ve formátu RAW JSON.
 
 ## <a name="setting-the-resource-manager-mode"></a>Nastavení režimu Správce prostředků
 Pomocí následujícího příkazu povolte příkazy Azure CLI Správce prostředků režimu.
@@ -75,7 +75,7 @@ Informace o vašem předplatném Azure používá nástroj pro připojení k va�
     account env set [options] [environment]
     account env delete [options] [environment]
 
-## <a name="azure-ad-commands-to-display-active-directory-objects"></a>Azure AD: Příkazy pro zobrazení objektů služby Active Directory
+## <a name="azure-ad-commands-to-display-active-directory-objects"></a>Azure AD: příkazy pro zobrazení objektů služby Active Directory
 **Příkazy pro zobrazení aplikací služby Active Directory**
 
     ad app create [options]
@@ -132,7 +132,7 @@ Informace o vašem předplatném Azure používá nástroj pro připojení k va�
 
     config set <name> <value>
 
-**Nastaví pracovní režim Azure CLI na buď `arm` nebo.`asm`**
+**Nastaví pracovní režim Azure CLI buď na `arm`, nebo `asm`.**
 
     config mode [options] <modename>
 
@@ -150,7 +150,7 @@ Informace o vašem předplatném Azure používá nástroj pro připojení k va�
 
     feature register [options] <providerName> <featureName>
 
-## <a name="azure-group-commands-to-manage-your-resource-groups"></a>Skupina Azure: Příkazy pro správu skupin prostředků
+## <a name="azure-group-commands-to-manage-your-resource-groups"></a>Skupina Azure: příkazy pro správu skupin prostředků
 **Vytvoří skupinu prostředků.**
 
     group create [options] <name> <location>
@@ -189,14 +189,14 @@ Informace o vašem předplatném Azure používá nástroj pro připojení k va�
     group template download [options] [name] [file]
     group template validate [options] <resource-group>
 
-## <a name="azure-hdinsight-commands-to-manage-your-hdinsight-clusters"></a>azure hdinsight: Příkazy pro správu clusterů HDInsight
+## <a name="azure-hdinsight-commands-to-manage-your-hdinsight-clusters"></a>Azure HDInsight: příkazy pro správu clusterů HDInsight
 **Příkazy pro vytvoření nebo přidání do konfiguračního souboru clusteru**
 
     hdinsight config create [options] <configFilePath> <overwrite>
     hdinsight config add-config-values [options] <configFilePath>
     hdinsight config add-script-action [options] <configFilePath>
 
-Příklad: Vytvořte konfigurační soubor, který obsahuje akci skriptu, která se spustí při vytváření clusteru.
+Příklad: vytvořte konfigurační soubor, který obsahuje akci skriptu, která se spustí při vytváření clusteru.
 
     hdinsight config create "C:\myFiles\configFile.config"
     hdinsight config add-script-action --configFilePath "C:\myFiles\configFile.config" --nodeType HeadNode --uri <scriptActionURI> --name myScriptAction --parameters "-param value"
@@ -205,7 +205,7 @@ Příklad: Vytvořte konfigurační soubor, který obsahuje akci skriptu, která
 
     hdinsight cluster create [options] <clusterName>
 
-Příklad: Vytvoření zaplavení v clusteru se systémem Linux
+Příklad: vytvoření zaplavení v clusteru se systémem Linux
 
     azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Storm --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 myNewCluster01
 
@@ -307,17 +307,17 @@ Možnosti parametru:
 
     hdinsight cluster disable-rdp-access [options] <clusterName>
 
-## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>Azure Insights: Příkazy související s monitorováním přehledů (události, pravidla výstrah, nastavení automatického škálování, metriky)
+## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>Azure Insights: příkazy související s monitorováním přehledů (události, pravidla výstrah, nastavení automatického škálování, metriky)
 **Načtení protokolů operací pro předplatné, ID korelace, skupinu prostředků, prostředek nebo poskytovatele prostředků**
 
     insights logs list [options]
 
-## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>umístění Azure: Příkazy pro získání dostupných umístění pro všechny typy prostředků
+## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>umístění Azure: příkazy pro získání dostupných umístění pro všechny typy prostředků
 **Vypsat dostupná umístění**
 
     location list [options]
 
-## <a name="azure-network-commands-to-manage-network-resources"></a>Síť Azure: Příkazy pro správu síťových prostředků
+## <a name="azure-network-commands-to-manage-network-resources"></a>síť Azure: příkazy pro správu síťových prostředků
 **Příkazy pro správu virtuálních sítí**
 
     network vnet create [options] <resource-group> <name> <location>
@@ -1509,7 +1509,7 @@ Možnosti parametru:
 
     network gateway list [options] <resource-group>
 
-## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>poskytovatel Azure: Příkazy pro správu registrací poskytovatelů prostředků
+## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>poskytovatel Azure: příkazy pro správu registrací poskytovatelů prostředků
 **Seznam aktuálně registrovaných zprostředkovatelů v Správce prostředků**
 
     provider list [options]
@@ -1526,7 +1526,7 @@ Možnosti parametru:
 
     provider unregister [options] <namespace>
 
-## <a name="azure-resource-commands-to-manage-your-resources"></a>prostředek Azure: Příkazy pro správu prostředků
+## <a name="azure-resource-commands-to-manage-your-resources"></a>prostředek Azure: příkazy pro správu prostředků
 **Vytvoří prostředek ve skupině prostředků.**
 
     resource create [options] <resource-group> <name> <resource-type> <location> <api-version>
@@ -1547,7 +1547,7 @@ Možnosti parametru:
 
     resource delete [options] <resource-group> <name> <resource-type> <api-version>
 
-## <a name="azure-role-commands-to-manage-your-azure-roles"></a>Role Azure: Příkazy pro správu rolí Azure
+## <a name="azure-role-commands-to-manage-your-azure-roles"></a>role Azure: příkazy pro správu rolí Azure
 **Získat všechny dostupné definice rolí**
 
     role list [options]
@@ -1562,7 +1562,7 @@ Možnosti parametru:
     role assignment list [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
     role assignment delete [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
 
-## <a name="azure-storage-commands-to-manage-your-storage-objects"></a>úložiště Azure: Příkazy pro správu objektů úložiště
+## <a name="azure-storage-commands-to-manage-your-storage-objects"></a>Azure Storage: příkazy pro správu objektů úložiště
 **Příkazy pro správu účtů úložiště**
 
     storage account list [options]
@@ -1685,7 +1685,7 @@ Možnosti parametru:
     storage table policy set [options] [table] [name]
     storage table policy delete [options] [table] [name]
 
-## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>Značka Azure: Příkazy pro správu značky Resource Manageru
+## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>Značka Azure: příkazy pro správu značky Resource Manageru
 **Přidat značku**
 
     tag create [options] <name> <value>
@@ -1702,7 +1702,7 @@ Možnosti parametru:
 
     tag show [options] [name]
 
-## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>virtuální počítač Azure: Příkazy pro správu Virtual Machines Azure
+## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>virtuální počítač Azure: příkazy pro správu Azure Virtual Machines
 **Vytvoření virtuálního počítače**
 
     vm create [options] <resource-group> <name> <location> <os-type>
@@ -1712,7 +1712,7 @@ Možnosti parametru:
     vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password
 
 > [!TIP]
-> Počínaje rozhraním CLI verze 0,10 můžete zadat krátký alias, jako je `image-urn` například "UbuntuLTS" nebo "Win2012R2Datacenter", jako u některých oblíbených imagí na webu Marketplace. Spustit `azure help vm quick-create` pro možnosti. Kromě toho, počínaje verzí 0,10, `azure vm quick-create` používá standardně Storage úrovně Premium, pokud je k dispozici ve vybrané oblasti.
+> Počínaje rozhraním CLI verze 0,10 můžete zadat krátký alias, jako je například "UbuntuLTS" nebo "Win2012R2Datacenter", jako `image-urn` u některých oblíbených imagí na webu Marketplace. Pro možnosti spusťte `azure help vm quick-create`. Kromě toho počínaje verzí 0,10 používá `azure vm quick-create` standardně Storage úrovně Premium, pokud je k dispozici ve vybrané oblasti.
 > 
 > 
 

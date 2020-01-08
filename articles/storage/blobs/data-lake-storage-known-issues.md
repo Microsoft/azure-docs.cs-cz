@@ -1,6 +1,6 @@
 ---
-title: Známé problémy s Azure Data Lake Storage Gen2 | Microsoft Docs
-description: Přečtěte si o omezeních a známých problémech s Azure Data Lake Storage Gen2
+title: Známé problémy s Azure Data Lake Storage Gen2 | Dokumentace Microsoftu
+description: Další informace o omezeních a známých problémech s Azure Data Lake Storage Gen2
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7fac09ff236e4bb2c63691f9dc1ad41bb49edae4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 099dc723db44ba71fc4672c382d24ac93ffe742f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793358"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689145"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -50,12 +50,13 @@ Nespravované disky virtuálních počítačů nejsou podporované v účtech, k
 
 ## <a name="filesystem-support-in-sdks"></a>Podpora systému souborů v sadách SDK
 
-- .NET, Java a Python jsou ve verzi Public Preview. Jiné sady SDK se aktuálně nepodporují.
+- Podpora [.NET](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md) a [Python](data-lake-storage-directory-file-acl-python.md) jsou ve verzi Public Preview. Jiné sady SDK se aktuálně nepodporují.
 - Operace get a set ACL nejsou aktuálně rekurzivní.
 
 ## <a name="filesystem-support-in-powershell-and-azure-cli"></a>Podpora systému souborů v prostředí PowerShell a rozhraní příkazového řádku Azure
 
-Operace get a set ACL nejsou aktuálně rekurzivní.
+- Podpora [PowerShellu](data-lake-storage-directory-file-acl-powershell.md) a [Azure CLI](data-lake-storage-directory-file-acl-cli.md) je ve verzi Public Preview.
+- Operace get a set ACL nejsou aktuálně rekurzivní.
 
 ## <a name="support-for-other-blob-storage-features"></a>Podpora dalších funkcí Blob Storage
 
@@ -63,6 +64,7 @@ Následující tabulka obsahuje seznam všech dalších funkcí a nástrojů, kt
 
 | Funkce/nástroj    | Další informace    |
 |--------|-----------|
+| **Převzetí služeb při selhání účtu** |Zatím nepodporováno|
 | **AzCopy** | Podpora specifická pro verzi <br><br>Použijte pouze nejnovější verzi AzCopy ([AzCopy v10 za účelem](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Starší verze AzCopy, jako je AzCopy v 8.1, nejsou podporovány.|
 | **Zásady správy životního cyklu Azure Blob Storage** | Podporují se zásady správy životního cyklu (Preview).  Podporují se všechny úrovně přístupu. Úroveň přístupu archivu je momentálně ve verzi Preview. Odstranění snímků objektů BLOB ještě není podporováno. <br><br> V současné době existují nějaké chyby ovlivňující zásady správy životního cyklu a úroveň přístupu archivu.  Zaregistrujte se do verze Preview zásad správy životního cyklu a archivní úrovně přístupu [zde](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u).   |
 | **Azure Content Delivery Network (CDN)** | Zatím nepodporováno|

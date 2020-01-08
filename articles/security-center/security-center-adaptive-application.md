@@ -1,6 +1,6 @@
 ---
-title: Adaptivní řízení aplikací v Azure Security Center | Microsoft Docs
-description: Tento dokument vám pomůže použít adaptivní řízení aplikací v Azure Security Center k přidávání aplikací spuštěných na virtuálních počítačích Azure na seznam povolených.
+title: Adaptivní řízení aplikací v Azure Security Center
+description: Tento dokument vám pomůže použít adaptivní řízení aplikací v Azure Security Center k přidávání aplikací spuštěných na počítačích Azure.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2019
+ms.date: 12/23/2019
 ms.author: memildin
-ms.openlocfilehash: 46ab2fc5c796d960de8b1c5e3391a6356563b50a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 862fb4f8a9dcd357148f73a729ffc7e92ba0083a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202816"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353444"
 ---
-# <a name="adaptive-application-controls-in-azure-security-center"></a>Adaptivní řízení aplikací v Azure Security Center
+# <a name="adaptive-application-controls"></a>Adaptivní ovládací prvky aplikací
 Pomocí tohoto názorného postupu zjistíte, jak nakonfigurovat řízení aplikací v Azure Security Center.
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>Co je adaptivní řízení aplikací ve službě Security Center?
-Adaptivní řízení aplikací je inteligentní, automatizované a ucelené řešení z Azure Security Center, které vám pomůže určit, které aplikace se můžou spouštět na virtuálních počítačích Azure a mimo Azure (Windows a Linux). Kromě dalších výhod to pomůže posílit vaše virtuální počítače proti malwaru. Security Center využívá strojové učení k analýze aplikací spuštěných na virtuálních počítačích a k vytvoření seznamu povolených aplikací z tohoto inteligentního prostředí. Tato funkce značně zjednodušuje proces konfigurace a správy zásad seznamu povolených aplikací, což vám umožní:
+Adaptivní řízení aplikací je inteligentní, automatizované a ucelené řešení z Azure Security Center, které vám pomůže určit, které aplikace se můžou spouštět na počítačích Azure a mimo Azure (Windows a Linux). Kromě dalších výhod to pomáhá posílit zabezpečení vašich počítačů proti malwaru. Security Center využívá strojové učení k analýze aplikací spuštěných na vašich počítačích a k vytvoření seznamu povolených z těchto inteligentních funkcí. Tato funkce značně zjednodušuje proces konfigurace a správy zásad seznamu povolených aplikací, což vám umožní:
 
 - Blokuje nebo upozorňuje na pokusy o spuštění škodlivých aplikací, včetně těch, které by jinak mohly chybět antimalwarová řešení.
 - Dodržovat zásady zabezpečení vaší organizace, které vyžadují používání pouze licencovaného softwaru.
@@ -34,19 +34,21 @@ Adaptivní řízení aplikací je inteligentní, automatizované a ucelené ře�
 - Umožnit IT oddělení řídit přístup k citlivým datům prostřednictvím používání aplikace.
 
 > [!NOTE]
-> Pro virtuální počítače, které nejsou v Azure a Linux, jsou adaptivní řízení aplikací podporované jenom v režimu auditování.
+> Pro počítače, které nejsou v Azure a Linux, jsou adaptivní řízení aplikací podporované jenom v režimu auditování.
 
 ## <a name="how-to-enable-adaptive-application-controls"></a>Jak povolit adaptivní řízení aplikací?
-Adaptivní řízení aplikací vám umožní definovat sadu aplikací, které můžou běžet na konfigurovaných skupinách virtuálních počítačů. Tato funkce je k dispozici pro Azure i mimo Azure Windows (všechny verze, Classic nebo Azure Resource Manager) a virtuální počítače a servery Linux. Pomocí následujících kroků můžete nakonfigurovat seznamy povolených aplikací:
+
+Adaptivní řízení aplikací vám umožní definovat sadu aplikací, které můžou běžet na konfigurovaných skupinách počítačů. Tato funkce je k dispozici pro Azure i mimo Azure Windows (všechny verze, Classic nebo Azure Resource Manager) a počítače se systémem Linux. Pomocí následujících kroků můžete nakonfigurovat seznamy povolených aplikací:
 
 1. Otevřete řídicí panel **Security Center**.
-2. V levém podokně vyberte **Adaptivní řízení aplikací** umístěné v části **Pokročilá obrana cloudu**.
 
-    ![Obrana](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)
+1. V levém podokně vyberte **Adaptivní řízení aplikací** umístěné v části **Pokročilá obrana cloudu**.
+
+    [![obrana](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png#lightbox)
 
 Zobrazí se stránka **Adaptivní řízení aplikací**.
 
-![controls](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
+![ovládací prvky](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
 
 Část **Skupiny virtuálních počítačů** obsahuje tři karty:
 
@@ -60,20 +62,21 @@ Zobrazí se stránka **Adaptivní řízení aplikací**.
 >
 
 ### <a name="configure-a-new-application-control-policy"></a>Konfigurace nové zásady řízení aplikací
-1. Kliknutím na kartu **Doporučené** zobrazte seznam skupin s doporučenými pro řízení aplikací:
+
+1. Vyberte kartu **Doporučené** pro seznam skupin s doporučeními pro řízení aplikací:
 
    ![Doporučené](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
 
    Seznam obsahuje:
 
-   - **Název skupiny**: Název předplatného a skupiny
-   - **Virtuální počítače a počítače**: Počet virtuálních počítačů ve skupině
+   - **Název skupiny**: název předplatného a skupiny.
+   - **Virtuální počítače a počítače**: počet virtuálních počítačů ve skupině
    - **Stav**: stav doporučení
    - **Závažnost**: úroveň závažnosti doporučení
 
 2. Kliknutím na skupinu otevřete možnost **vytvořit pravidla řízení aplikací** .
 
-   ![Pravidla řízení aplikací](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)
+   [![pravidla řízení aplikací](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png#lightbox)
 
 3. V části **Vybrat virtuální počítače**zkontrolujte seznam doporučených virtuálních počítačů a zrušte zaškrtnutí všech nechcete použít zásadu pro přidávání aplikací do aplikace. Dále se zobrazí dva seznamy:
 
@@ -106,7 +109,7 @@ Zobrazí se stránka **Adaptivní řízení aplikací**.
 
    - **Název skupiny**: název předplatného a skupiny.
    - **Virtuální počítače a počítače**: počet virtuálních počítačů ve skupině
-   - **Režim**: V režimu auditování se budou pokusy o spuštění aplikací, které nejsou na seznamu povolených. Vynutilit neumožní spouštění aplikací, pokud nejsou na seznamu povolených.
+   - **Režim**: režim auditu se pokusí spustit aplikace, které nejsou na seznamu povolených. Vynutilit neumožní spouštění aplikací, pokud nejsou na seznamu povolených.
    - **Výstrahy**: všechna aktuální porušení
 
 2. Kliknutím na skupinu provedete změny na stránce **Upravit zásadu řízení aplikací** .
@@ -119,7 +122,7 @@ Zobrazí se stránka **Adaptivní řízení aplikací**.
    - **Vynucení:** V tomto režimu řešení řízení aplikací vynucuje pravidla a zajišťuje zablokování aplikací, které nemají povolené spouštění.
 
    > [!NOTE]
-   > -  Vyvynucování režimu ochrany je zakázáno až do dalšího upozornění.
+   > -  **Vyvynucování** režimu ochrany je zakázáno až do dalšího upozornění.
    > - Jak už jsme zmínili, ve výchozím nastavení se nová zásada řízení aplikací vždy nakonfiguruje v režimu *Audit*. 
    >
 
@@ -129,11 +132,11 @@ Zobrazí se stránka **Adaptivní řízení aplikací**.
    - **Výstrahy**: všechna porušení, která byla zaznamenána.
    - **Ne. Virtuálních**počítačů: počet virtuálních počítačů s tímto typem výstrahy.
 
-6. V části **pravidla**přidávání vydavatelů, **pravidla**přidávání na seznam povolených a pravidla přidávání do seznamu povolených **hodnot hash** můžete zobrazit, která pravidla povolená pro aplikace jsou aktuálně nakonfigurovaná na virtuálních počítačích v rámci skupiny podle typu kolekce pravidel. Pro každé pravidlo můžete zobrazit:
+6. V části **Pravidla přidávání vydavatelů**, pravidla přidávání na seznam **povolených**a pravidla přidávání do seznamu povolených **hodnot hash** můžete zobrazit, která pravidla povolená pro aplikace jsou aktuálně nakonfigurovaná na virtuálních počítačích v rámci skupiny podle typu kolekce pravidel. Pro každé pravidlo můžete zobrazit:
 
-   - **Pravidlo**: Konkrétní parametry, podle kterých je aplikace prozkoumána nástrojem AppLocker, aby bylo možné určit, zda je možné aplikaci spustit.
-   - **Typ souboru**: Typy souborů, na které se vztahuje konkrétní pravidlo. Může to být kterýkoli z následujících: EXE, skript, MSI nebo jakékoli permutace těchto typů souborů.
-   - **Uživatelé**: Jméno nebo počet uživatelů, kteří mají povolené spuštění aplikace, která je pokrytá pravidlem pro seznam povolených aplikací.
+   - **Pravidlo**: konkrétní parametry, podle kterých je aplikace prozkoumána nástrojem AppLocker, aby bylo možné zjistit, zda je povoleno spuštění aplikace.
+   - **Typ souboru**: typy souborů, na které se vztahuje konkrétní pravidlo. Může to být kterýkoli z následujících příkazů: EXE, Script, MSI nebo jakékoli permutace těchto typů souborů.
+   - **Uživatelé**: jméno nebo počet uživatelů, kteří mají povoleno spuštění aplikace, která je pokrytá pravidlem pro seznam povolených aplikací.
 
    ![Pravidla přidávání na seznam povolených](./media/security-center-adaptive-application/security-center-adaptive-application-fig9.png)
 

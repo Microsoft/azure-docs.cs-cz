@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/15/2019
-ms.openlocfilehash: 08a93c10a4214696d67f95cb862654d095899630
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 03a4b8df24a0ab1dbe3cfabd3ccf207005b0e186
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932966"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397624"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Příklady inteligentních analýz Log Analytics
 Tento článek obsahuje příklady použití funkcí inteligentní analýzy v Log Analytics k analýze aktivity uživatelů. Tyto příklady můžete použít k analýze vlastních aplikací monitorovaných Application Insights nebo použití konceptů v těchto dotazech pro podobnou analýzu dalších dat. 
@@ -89,7 +89,7 @@ Tento příklad vede k následujícímu výstupu.
 ![Výstup analýzy kohorta](media/smart-analytics/cohorts.png)
 
 ## <a name="rolling-monthly-active-users-and-user-stickiness"></a>Zajištění měsíčních aktivních uživatelů a vytrvalost uživatelů
-Následující příklady používají analýzu časových řad s funkcí [series_fir](/azure/kusto/query/series-firfunction) , která umožňuje provádět posuvné výpočty oken. Monitorovaná ukázková aplikace je online obchod, který sleduje činnost uživatelů prostřednictvím vlastních událostí. Dotaz sleduje dva typy aktivit uživatelů, _AddToCart_ a _rezervací_a definuje _aktivní uživatele_ jako ty, kteří provedli rezervaci alespoň jednou během daného dne.
+Následující příklady používají analýzu časových řad s funkcí [series_fir](/azure/kusto/query/series-firfunction) , která umožňuje provádět pozvolna výpočty okna. Monitorovaná ukázková aplikace je online obchod, který sleduje činnost uživatelů prostřednictvím vlastních událostí. Dotaz sleduje dva typy aktivit uživatelů, _AddToCart_ a _rezervací_a definuje _aktivní uživatele_ jako ty, kteří provedli rezervaci alespoň jednou během daného dne.
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure PowerShellu – Přidání certifikátu aplikace do clusteru | Microsoft Docs
+title: Přidání certifikátu aplikace do clusteru v PowerShellu
 description: Ukázkový skript Azure PowerShellu – Přidání certifikátu aplikace do clusteru Service Fabric
 services: service-fabric
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 1ef48f5dd7fabd724dee2c2910e44f47979258b5
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 069ad55136101c0b57c9faee95578f816b5efef4
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547479"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614872"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Přidání certifikátu aplikace do clusteru Service Fabric
 
@@ -102,7 +102,7 @@ Tento skript používá následující příkazy: Každý příkaz v tabulce odk
 | [New-AzVmssVaultCertificateConfig](/powershell/module/az.compute/New-AzVmssVaultCertificateConfig) | Vytvoří konfiguraci v paměti, která představuje certifikát ve virtuálním počítači. |
 | [Get-AzVmss](/powershell/module/az.compute/Get-AzVmss) |  |
 | [Add-AzVmssSecret](/powershell/module/az.compute/Add-AzVmssSecret) | Přidá certifikát do definice v paměti sady škálování virtuálního počítače. |
-| [Update – AzVmss](/powershell/module/az.compute/Update-AzVmss) | Nasadí novou definici sady škálování virtuálních počítačů. |
+| [Update-AzVmss](/powershell/module/az.compute/Update-AzVmss) | Nasadí novou definici sady škálování virtuálních počítačů. |
 
 ## <a name="next-steps"></a>Další kroky
 

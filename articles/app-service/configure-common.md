@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45de3b79263fd43a93fcea73c271ede4bc5f96fe
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: e4ba7326d9c23bed2406e62fe1a206501d05a1b1
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671951"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666175"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurace aplikace App Service v Azure Portal
 
@@ -21,11 +21,15 @@ Toto téma vysvětluje, jak nakonfigurovat společná nastavení pro webové apl
 
 V App Service jsou nastavení aplikace proměnné předány jako proměnné prostředí do kódu aplikace. Pro aplikace a vlastní kontejnery pro Linux App Service předá nastavení aplikace do kontejneru pomocí příznaku `--env`, který nastaví proměnnou prostředí v kontejneru.
 
-V [Azure Portal]přejděte na stránku správy vaší aplikace. V nabídce vlevo aplikace klikněte na **konfigurace** > **nastavení aplikace**.
+V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. 
+
+![Hledat App Services](./media/configure-common/search-for-app-services.png)
+
+V nabídce vlevo aplikace vyberte **konfigurace** > **nastavení aplikace**.
 
 ![Nastavení aplikace](./media/configure-common/open-ui.png)
 
-Pro vývojáře v ASP.NET a ASP.NET Core je nastavení aplikace v App Service třeba nastavit v `<appSettings>` souboru *Web. config* nebo *appSettings. JSON*, ale hodnoty v App Service přepisují ty v *souboru Web. config* nebo *appSettings. JSON.* . Můžete zachovat nastavení pro vývoj (například místní heslo MySQL) v souboru *Web. config* nebo *appSettings. JSON*, ale v App Service jsou bezpečné provozní tajné klíče (například heslo databáze Azure MySQL). Stejný kód používá vaše vývojové nastavení při ladění místně a při nasazení do Azure používá vaše provozní tajemství.
+Pro vývojáře v ASP.NET a ASP.NET Core je nastavení aplikace v App Service třeba nastavit v `<appSettings>` souboru *Web. config* nebo *appSettings. JSON*, ale hodnoty v App Service přepisují ty v *souboru Web. config* nebo *appSettings. JSON*. Můžete zachovat nastavení pro vývoj (například místní heslo MySQL) v souboru *Web. config* nebo *appSettings. JSON*, ale v App Service jsou bezpečné provozní tajné klíče (například heslo databáze Azure MySQL). Stejný kód používá vaše vývojové nastavení při ladění místně a při nasazení do Azure používá vaše provozní tajemství.
 
 Další jazykové zásobníky také získají nastavení aplikace jako proměnné prostředí za běhu. Postup pro konkrétní jazykový zásobník najdete v těchto tématech:
 
@@ -82,7 +86,7 @@ Nastavení aplikace má následující formátování JSON:
 
 ## <a name="configure-connection-strings"></a>Konfigurace připojovacích řetězců
 
-V [Azure Portal]přejděte na stránku správy aplikace. V nabídce vlevo aplikace klikněte na **konfigurace** > **nastavení aplikace**.
+V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte **konfigurace** > **nastavení aplikace**.
 
 ![Nastavení aplikace](./media/configure-common/open-ui.png)
 
@@ -153,7 +157,7 @@ Připojovací řetězce mají následující formátování JSON:
 
 ## <a name="configure-general-settings"></a>Konfigurace obecných nastavení
 
-V [Azure Portal]přejděte na stránku správy aplikace. V nabídce vlevo aplikace klikněte na **konfigurace** > **nastavení aplikace**.
+V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte **konfigurace** > **Obecná nastavení**.
 
 ![Obecná nastavení](./media/configure-common/open-general.png)
 
@@ -176,9 +180,9 @@ Tady můžete nakonfigurovat některá společná nastavení aplikace. Některá
 
 Toto nastavení platí jenom pro aplikace pro Windows.
 
-V [Azure Portal]přejděte na stránku správy aplikace. V nabídce vlevo aplikace klikněte na **konfigurace** > **výchozí dokumenty**.
+V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte **konfigurace** > **výchozí dokumenty**.
 
-![Obecná nastavení](./media/configure-common/open-documents.png)
+![Výchozí dokumenty](./media/configure-common/open-documents.png)
 
 Výchozí dokument je webová stránka, která se zobrazuje na kořenové adrese URL webu. Použije se první vyhovující soubor v seznamu. Chcete-li přidat nový výchozí dokument, klikněte na tlačítko **Nový dokument**. Nezapomeňte kliknout na **Uložit**.
 
@@ -186,9 +190,9 @@ Pokud aplikace používá moduly, které směrují na základě adresy URL namí
 
 ## <a name="configure-path-mappings"></a>Konfigurace mapování cest
 
-V [Azure Portal]přejděte na stránku správy aplikace. V levé nabídce aplikace klikněte na **konfigurace** > **mapování cest**.
+V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. V nabídce vlevo aplikace vyberte **Konfigurace** **mapování cest** > .
 
-![Obecná nastavení](./media/configure-common/open-path.png)
+![Mapování cest](./media/configure-common/open-path.png)
 
 Na stránce **mapování cest** se zobrazují různé věci podle typu operačního systému.
 

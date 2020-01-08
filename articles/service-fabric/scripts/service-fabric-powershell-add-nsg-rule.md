@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure PowerShell – přidání pravidla skupiny zabezpečení sítě | Microsoft Docs
+title: Přidání pravidla skupiny zabezpečení sítě v PowerShellu
 description: Ukázka skriptu Azure PowerShell – přidá skupinu zabezpečení sítě, která povolí příchozí provoz na určitém portu.
 services: service-fabric
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 11/28/2017
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 44bb0e615453450c401949f0ce76f15cb82fab67
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 33ee8028031bf94d69d11b08c347f84db94494a3
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680533"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610416"
 ---
 # <a name="add-an-inbound-network-security-group-rule"></a>Přidat pravidlo skupiny zabezpečení příchozí sítě
 

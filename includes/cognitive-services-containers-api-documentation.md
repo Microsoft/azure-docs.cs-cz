@@ -5,15 +5,15 @@ ms.date: 08/22/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 081155c8984f39cc9cc8e905eb108c07dee98d2e
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
+ms.lasthandoff: 12/28/2019
 ms.locfileid: "70034433"
 ---
 ## <a name="validate-that-a-container-is-running"></a>Ověření, jestli je kontejner spuštěný 
 
-Existuje několik způsobů, jak ověřit, zda je kontejner spuštěn. Vyhledejte *externí IP* adresu a vystavený port příslušného kontejneru a otevřete svůj oblíbený webový prohlížeč. K ověření, že je kontejner spuštěný, použijte různé adresy URL žádostí níže. Níže uvedené příklady adres URL žádostí se `http://localhost:5000`můžou lišit, ale váš konkrétní kontejner se může lišit. Pamatujte na to, že budete spoléhat na *externí IP* adresu vašeho kontejneru a vystavený port.
+Existuje několik způsobů, jak ověřit, zda je kontejner spuštěn. Vyhledejte *externí IP* adresu a vystavený port příslušného kontejneru a otevřete svůj oblíbený webový prohlížeč. K ověření, že je kontejner spuštěný, použijte různé adresy URL žádostí níže. Níže uvedené příklady adres URL žádostí jsou `http://localhost:5000`, ale konkrétní kontejner se může lišit. Pamatujte na to, že budete spoléhat na *externí IP* adresu vašeho kontejneru a vystavený port.
 
 | Adresa URL požadavku | Účel |
 |--|--|

@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: fb66fa2d4a6a03841fa057c4d1982b7bf4c6976d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4e95cc6a724c17402ed1ed0cda83377492787a3a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565338"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644915"
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
 Získejte odpovědi na některé z nejběžnějších otázek o Azure DevTest Labs.
 
-## <a name="blog-post"></a>Příspěvek blogu
+## <a name="blog-post"></a>Příspěvek na blogu
 Náš blog týmu DevTest Labs byl vyřazen od 20. března 2019. 
 
 ### <a name="where-can-i-track-feature-updates-from-now-on"></a>Kde můžu sledovat aktualizace funkcí od teď?
@@ -40,7 +40,7 @@ V současnosti pracujeme na migraci stávajících příspěvků na blogu (s vý
 Pomocí naší služby Twitter vám budeme účtovat aktualizace výpadků, a to od teď až dál. Sledujte nás na Twitteru a získejte nejnovější aktualizace pro výpadky a známé chyby.
 
 ### <a name="twitter"></a>Twitter
-Váš popisovač Twitteru:[@azlabservices](https://twitter.com/azlabservices)
+Váš popisovač Twitteru: [@azlabservices](https://twitter.com/azlabservices)
 
 ## <a name="general"></a>Obecné
 ### <a name="what-if-my-question-isnt-answered-here"></a>Co když tady není odpověď na moji otázku?
@@ -81,14 +81,14 @@ DevTest Labs je bezplatná služba. Vytváření Labs a konfigurace zásad, šab
 ### <a name="what-are-the-different-security-levels-in-devtest-labs"></a>Jaké jsou různé úrovně zabezpečení v DevTest Labs?
 Přístup k zabezpečení je určený Access Control na základě rolí (RBAC). Pokud se chcete dozvědět, jak Access funguje, pomůže se naučit rozdíly mezi oprávněními, rolí a oborem definovaným pomocí RBAC.
 
-- **Oprávnění**: Oprávnění je definovaný přístup k určité akci. Oprávnění může být například přístup pro čtení ke všem virtuálním počítačům.
-- **Role**: Role je sada oprávnění, která se dají seskupovat a přiřazovat uživateli. Například uživatel s rolí vlastníka předplatného má přístup ke všem prostředkům v rámci předplatného.
-- **Rozsah**: Obor je úroveň v rámci hierarchie prostředku Azure. Oborem může být například skupina prostředků, jedna laboratoř nebo celé předplatné.
+- **Oprávnění**: oprávnění je definovaný přístup k určité akci. Oprávnění může být například přístup pro čtení ke všem virtuálním počítačům.
+- **Role**: role je sada oprávnění, která se dají seskupit a přiřadit k uživateli. Například uživatel s rolí vlastníka předplatného má přístup ke všem prostředkům v rámci předplatného.
+- **Obor**: obor je úroveň v rámci hierarchie prostředku Azure. Oborem může být například skupina prostředků, jedna laboratoř nebo celé předplatné.
 
 V rámci rozsahu DevTest Labs existují dva typy rolí, které definují oprávnění uživatele:
 
-- **Vlastník testovacího prostředí**: Vlastník testovacího prostředí má přístup ke všem prostředkům v testovacím prostředí. Vlastník testovacího prostředí může měnit zásady, číst a zapisovat na všechny virtuální počítače, měnit virtuální síť a tak dále.
-- **Uživatel testovacího prostředí**: Uživatel testovacího prostředí může zobrazit všechny prostředky testovacího prostředí, jako jsou virtuální počítače, zásady a virtuální sítě. Uživatel testovacího prostředí ale nemůže měnit zásady nebo žádné virtuální počítače, které vytvořili jiní uživatelé.
+- **Vlastník testovacího prostředí**: vlastník testovacího prostředí má přístup ke všem prostředkům v testovacím prostředí. Vlastník testovacího prostředí může měnit zásady, číst a zapisovat na všechny virtuální počítače, měnit virtuální síť a tak dále.
+- **Uživatel testovacího prostředí**: uživatel testovacího prostředí může zobrazit všechny prostředky testovacího prostředí, jako jsou virtuální počítače, zásady a virtuální sítě. Uživatel testovacího prostředí ale nemůže měnit zásady nebo žádné virtuální počítače, které vytvořili jiní uživatelé.
 
 Můžete také vytvořit vlastní role v DevTest Labs. Informace o tom, jak vytvářet vlastní role v DevTest Labs, najdete v tématu [udělení uživatelských oprávnění konkrétním zásadám testovacího prostředí](devtest-lab-grant-user-permissions-to-specific-lab-policies.md).
 
@@ -97,19 +97,19 @@ Vzhledem k tomu, že obory jsou hierarchické, pokud má uživatel oprávnění 
 ### <a name="how-do-i-define-role-based-access-control-for-my-devtest-labs-environments-to-ensure-that-it-can-govern-while-developerstest-can-do-their-work"></a>Návody pro prostředí DevTest Labs definovat řízení přístupu na základě rolí, aby se zajistilo, že se může řídit, zatímco vývojáři/testy můžou svou práci dělat?
 Existuje velký model, ale podrobnosti závisí na vaší organizaci.
 
-Centrální IT oddělení by mělo mít pouze to, co je potřeba, a umožnit týmům projektu a aplikace, aby měli potřebnou úroveň řízení. Obvykle to znamená, že je ústřední IT vlastníkem předplatného a zpracovává základní funkce IT, jako jsou třeba síťové konfigurace. Sada vlastníků předplatného musí být malá. Tito vlastníci můžou jmenovat další vlastníky, pokud je potřeba, nebo použít zásady na úrovni předplatného, například bez veřejné IP adresy.
+Centrální IT oddělení by mělo mít pouze to, co je potřeba, a umožnit týmům projektu a aplikace, aby měli potřebnou úroveň řízení. Obvykle to znamená, že je ústřední IT vlastníkem předplatného a zpracovává základní funkce IT, jako jsou třeba síťové konfigurace. Sada **vlastníků** předplatného musí být malá. Tito vlastníci můžou jmenovat další vlastníky, pokud je potřeba, nebo použít zásady na úrovni předplatného, například bez veřejné IP adresy.
 
-Může existovat podmnožina uživatelů, kteří vyžadují přístup v rámci předplatného, jako je Tier1 nebo podpora vrstvy 2. V takovém případě doporučujeme těmto uživatelům udělit přístup přispěvatelům, aby mohli spravovat prostředky, ale neposkytovali přístup k uživatelům nebo neupravují zásady.
+Může existovat podmnožina uživatelů, kteří vyžadují přístup v rámci předplatného, jako je Tier1 nebo podpora vrstvy 2. V takovém případě doporučujeme těmto uživatelům udělit přístup **přispěvatelům** , aby mohli spravovat prostředky, ale neposkytovali přístup k uživatelům nebo neupravují zásady.
 
 Prostředek DevTest Labs by měl vlastnit vlastníci, kteří jsou blízko týmu projektu nebo aplikace. Je to proto, že rozumí jejich požadavkům na počítače a požadovaný software. Ve většině organizací je vlastníkem tohoto prostředku DevTest Labs obvykle vedoucí projektu nebo vývoje. Tento vlastník může spravovat uživatele a zásady v rámci testovacího prostředí a může spravovat všechny virtuální počítače v prostředí DevTest Labs.
 
 Členové týmu projektu nebo aplikace by měli být přidáni do role **Uživatelé DevTest Labs** . Tito uživatelé můžou vytvářet virtuální počítače (v souladu s zásadami testovacího prostředí a na úrovni předplatného). Můžou taky spravovat svoje vlastní virtuální počítače. Nemůžou spravovat virtuální počítače, které patří jiným uživatelům.
 
-Další informace najdete v tématu základní informace o [službě Azure Enterprise lešení – dokumentace zásad správného řízení](/azure/architecture/cloud-adoption/appendix/azure-scaffold)předplatného.
+Další informace najdete v tématu základní informace o [službě Azure Enterprise lešení – dokumentace zásad správného řízení předplatného](/azure/architecture/cloud-adoption/appendix/azure-scaffold).
 
 
 ### <a name="how-do-i-create-a-role-to-allow-users-to-do-a-specific-task"></a>Návody vytvořit roli, která uživatelům umožní provést konkrétní úkol?
-Komplexní článek o vytváření vlastních rolí a přiřazování oprávnění k roli najdete v tématu [udělení uživatelských oprávnění konkrétním zásadám testovacího prostředí](devtest-lab-grant-user-permissions-to-specific-lab-policies.md). Tady je příklad skriptu, který vytváří pokročilého uživatele role **DevTest Labs**, který má oprávnění ke spouštění a zastavování všech virtuálních počítačů v testovacím prostředí:
+Komplexní článek o vytváření vlastních rolí a přiřazování oprávnění k roli najdete v tématu [udělení uživatelských oprávnění konkrétním zásadám testovacího prostředí](devtest-lab-grant-user-permissions-to-specific-lab-policies.md). Tady je příklad skriptu, který vytváří **pokročilého uživatele role DevTest Labs**, který má oprávnění ke spouštění a zastavování všech virtuálních počítačů v testovacím prostředí:
 
 
 ```powershell
@@ -162,11 +162,11 @@ Scénář běžných skupin prostředků:
 Je možné, že budete chtít stávající podnikové zásady vytváření názvů v rámci Azure zvýšit a zajistit jejich konzistenci v prostředí DevTest Labs. Při nasazování DevTest Labs doporučujeme, abyste měli konkrétní počáteční zásady. Tyto zásady nasadíte pomocí centrálního skriptu a šablon JSON pro vymáhání konzistence. Zásady pojmenování se dají implementovat prostřednictvím zásad Azure použitých na úrovni předplatného. Ukázky JSON pro Azure Policy najdete v tématu [Azure Policy Samples](../governance/policy/samples/index.md).
 
 ### <a name="how-many-labs-can-i-create-under-the-same-subscription"></a>Kolik laboratoří mohu vytvořit v rámci stejného předplatného?
-Počet laboratoří, které se dají vytvořit pro každé předplatné, nemá konkrétní limit. Množství prostředků použitých v rámci předplatného je ale omezené. Můžete si přečíst o [omezeních a kvótách pro předplatná Azure](../azure-subscription-service-limits.md) a [o tom, jak tato omezení zvýšit](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
+Počet laboratoří, které se dají vytvořit pro každé předplatné, nemá konkrétní limit. Množství prostředků použitých v rámci předplatného je ale omezené. Můžete si přečíst o [omezeních a kvótách pro předplatná Azure](../azure-resource-manager/management/azure-subscription-service-limits.md) a [o tom, jak tato omezení zvýšit](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
 
 
 ### <a name="how-many-vms-can-i-create-per-lab"></a>Kolik virtuálních počítačů je možné vytvořit pro testovací prostředí?
-Počet virtuálních počítačů, které se dají vytvořit pro každé testovací prostředí, není nijak omezený. Prostředky (jádra virtuálních počítačů, veřejné IP adresy atd.) se ale u každého předplatného omezí. Můžete si přečíst o [omezeních a kvótách pro předplatná Azure](../azure-subscription-service-limits.md) a [o tom, jak tato omezení zvýšit](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
+Počet virtuálních počítačů, které se dají vytvořit pro každé testovací prostředí, není nijak omezený. Prostředky (jádra virtuálních počítačů, veřejné IP adresy atd.) se ale u každého předplatného omezí. Můžete si přečíst o [omezeních a kvótách pro předplatná Azure](../azure-resource-manager/management/azure-subscription-service-limits.md) a [o tom, jak tato omezení zvýšit](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
 
 ### <a name="how-do-i-determine-the-ratio-of-users-per-lab-and-the-overall-number-of-labs-that-are-needed-across-an-organization"></a>Návody určit poměr uživatelů na testovací prostředí a celkový počet laboratorních cvičení potřebných v rámci organizace?
 Doporučujeme, aby obchodní jednotky a skupiny pro vývoj, které jsou přidruženy ke stejnému vývojovému projektu, byly přidruženy ke stejnému testovacímu prostředí. Umožňuje použít pro obě skupiny stejné typy zásad, obrázků a zásad vypnutí.
@@ -176,7 +176,7 @@ Možná budete muset zvážit i geografické hranice. Například vývojáři v 
 Testovací prostředí můžete použít také pro konkrétní projekt v rámci Azure DevOps Projects. Pak můžete zabezpečení použít prostřednictvím zadané skupiny Azure Active Directory, která umožňuje přístup k oběma prostředkům. Pro konsolidaci uživatelů může být virtuální síť přiřazená k testovacímu prostředí jinou hranicí.
 
 ### <a name="how-can-we-prevent-the-deletion-of-resources-within-a-lab"></a>Jak můžeme zabránit odstranění prostředků v testovacím prostředí?
-Doporučujeme, abyste na úrovni testovacího prostředí nastavili správná oprávnění, aby mohli odstraňovat prostředky nebo měnit zásady testovacího prostředí jenom autorizovaní uživatelé. Vývojáři by měli být uvedení do skupiny **uživatelů DevTest Labs** . Vedoucí vývojář nebo vedoucí infrastruktury by měli být **vlastníkem DevTest Labs**. Doporučujeme, abyste měli pouze dva vlastníky testovacího prostředí. Tato zásada rozšiřuje do úložiště kódu, aby nedocházelo k poškození. Uživatelé testovacího prostředí mají práva k používání prostředků, ale nemůžou aktualizovat zásady testovacího prostředí. Přečtěte si následující článek, který obsahuje seznam rolí a oprávnění, které každá integrovaná skupina obsahuje v rámci testovacího prostředí: [Přidejte vlastníky a uživatele v Azure DevTest Labs](devtest-lab-add-devtest-user.md).
+Doporučujeme, abyste na úrovni testovacího prostředí nastavili správná oprávnění, aby mohli odstraňovat prostředky nebo měnit zásady testovacího prostředí jenom autorizovaní uživatelé. Vývojáři by měli být uvedení do skupiny **uživatelů DevTest Labs** . Vedoucí vývojář nebo vedoucí infrastruktury by měli být **vlastníkem DevTest Labs**. Doporučujeme, abyste měli pouze dva vlastníky testovacího prostředí. Tato zásada rozšiřuje do úložiště kódu, aby nedocházelo k poškození. Uživatelé testovacího prostředí mají práva k používání prostředků, ale nemůžou aktualizovat zásady testovacího prostředí. Přečtěte si následující článek, který obsahuje informace o rolích a oprávněních, které mají jednotlivé předdefinované skupiny v rámci testovacího prostředí: [Přidání vlastníků a uživatelů v Azure DevTest Labs](devtest-lab-add-devtest-user.md).
 
 ### <a name="how-do-i-share-a-direct-link-to-my-lab"></a>Návody sdílet přímý odkaz na můj testovací prostředí?
 
@@ -214,7 +214,7 @@ Ano, k virtuálním počítačům můžete připojit několik disků.
 Pokud chcete pro vývoj nebo testování v Azure použít image operačního systému Windows Client (Windows 7 nebo novější), proveďte jeden z následujících kroků:
 
 - [Kupte si předplatné MSDN](https://www.visualstudio.com/products/how-to-buy-vs).
-- Pokud máte smlouva Enterprise, vytvořte si předplatné Azure pomocí [nabídky Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p).
+- Pokud máte smlouva Enterprise, vytvořte si předplatné Azure s [nabídkou Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p).
 
 Další informace o kreditech Azure pro jednotlivé nabídky MSDN najdete v tématu [měsíční kredit Azure pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
 
@@ -285,7 +285,7 @@ K automatickému nahrávání souborů VHD pro vytváření vlastních imagí m�
 
 Pokud chcete najít cílový účet úložiště, který je přidružený k vašemu testovacímu prostředí:
 
-1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1.  Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2.  V nabídce vlevo vyberte **skupiny prostředků**.
 3.  Vyhledejte a vyberte skupinu prostředků, která je přidružená k vašemu testovacímu prostředí.
 4.  V části **Přehled**vyberte jeden z účtů úložiště.
@@ -304,7 +304,7 @@ Azure Marketplace by se měla používat ve výchozím nastavení, pokud nemáte
 - Podmínky dodržování předpisů nebo regulativní podmínky (například zásady zabezpečení), které musí být na místě pro všechny počítače.
 - Použití vlastních imagí by nemělo být považováno za lehce. Představují velmi složitost, protože teď musíte spravovat soubory VHD pro základní základní image. Také je potřeba rutinním pomocí aktualizací softwaru rutiny opravit. Tyto aktualizace zahrnují nové aktualizace operačního systému (OS) a všechny aktualizace nebo změny konfigurace, které jsou potřeba pro samotný softwarový balíček.
 
-## <a name="artifacts"></a>Artefakty
+## <a name="artifacts"></a>Artifacts
 
 ### <a name="what-are-artifacts"></a>Co jsou artefakty?
 Artefakty jsou přizpůsobitelné prvky, které můžete použít k nasazení nejnovějších bitů nebo nasazení vývojových nástrojů do virtuálního počítače. Když vytváříte virtuální počítač, připojte ke svému VIRTUÁLNÍmu počítači artefakty. Po zřízení virtuálního počítače nasadí artefakty a nakonfigurují váš virtuální počítač. V našem [veřejném úložišti GitHubu](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)jsou k dispozici různé již existující artefakty. Můžete také [vytvářet vlastní artefakty](devtest-lab-artifact-author.md).
@@ -352,7 +352,7 @@ Pokud vaše virtuální počítače potřebují pracovat se stávající infrast
 
 Zvažte také použití vzoru partnerského vztahu virtuálních sítí ([hvězdicové model](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)). Tento přístup umožňuje komunikaci mezi virtuálními sítěmi a podsítí v rámci předplatných. V opačném případě by každé prostředí DevTest Labs mohlo mít vlastní virtuální síť. 
 
-Existují [omezení](../azure-subscription-service-limits.md) počtu virtuálních sítí na jedno předplatné. Výchozí hodnota je 50, i když tento limit lze vystoupl na 100.
+Existují [omezení](../azure-resource-manager/management/azure-subscription-service-limits.md) počtu virtuálních sítí na jedno předplatné. Výchozí hodnota je 50, i když tento limit lze vystoupl na 100.
 
 ### <a name="when-should-i-use-a-shared-ip-vs-public-ip-vs-private-ip"></a>Kdy mám použít sdílenou IP adresu a veřejnou IP adresu a soukromou IP adresu?
  

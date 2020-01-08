@@ -1,6 +1,6 @@
 ---
 title: Batch zpracuje zprávy jako skupinu.
-description: Posílání a přijímání zpráv jako dávek v Azure Logic Apps
+description: Odesílání a příjem zpráv ve skupinách mezi pracovními postupy pomocí dávkového zpracování v Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 813c625fc72fa7c1440b5d1b9147af9a44c2260f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e48d2bb2ffce0dd4f9293417534165165d426784
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791575"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666750"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Odesílání, příjem a dávkové zpracování zpráv v Azure Logic Apps
 
@@ -29,7 +29,7 @@ Chcete-li odesílat a zpracovávat zprávy v konkrétním způsobu jako skupiny,
 
 Ujistěte se, že přijímač Batch a odesilatel dávky sdílejí stejné předplatné Azure *a* oblast Azure. Pokud ne, nemůžete při vytváření odesílatele Batch vybrat přijímače Batch, protože nejsou navzájem viditelné.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li postupovat podle tohoto příkladu, budete potřebovat tyto položky:
 
@@ -89,7 +89,7 @@ Než budete moci odeslat zprávy do dávky, tato dávková operace musí nejprve
 
    3. Vyberte tuto akci: **Odeslat*poskytovatele* e-mailu < e** -mailu>
 
-      Například:
+      Příklad:
 
       ![Výběr akce Odeslat e-mail pro poskytovatele e-mailů](./media/logic-apps-batch-process-send-receive-messages/batch-receiver-send-email-action.png)
 

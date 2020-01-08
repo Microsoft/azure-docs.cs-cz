@@ -1,5 +1,5 @@
 ---
-title: Paralelní nahrávání velkých objemů náhodných dat do služby Azure Storage | Microsoft Docs
+title: Paralelní nahrávání velkých objemů náhodných dat do Azure Storage
 description: Naučte se používat klientskou knihovnu Azure Storage k paralelnímu nahrání velkých objemů náhodných dat do Azure Storage účtu.
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/08/2019
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: 5b20686399db9537e5db8622a433b5e506939d19
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: dd87e1a9bcff55813dff420976df58351386fb34
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302980"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371934"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Paralelní nahrávání velkých objemů náhodných dat do úložiště Azure
 
@@ -26,11 +26,11 @@ Ve druhé části této série se naučíte:
 > * Spuštění aplikace
 > * Ověření počtu připojení
 
-Úložiště objektů blob v Azure představuje škálovatelnou službu pro ukládání vašich dat. Pro zajištění co nejlepšího výkonu vaší aplikace doporučujeme seznámit se se způsobem, jakým úložiště objektů blob funguje. Důležitá je i znalost omezení objektů blob v Azure. Další informace o těchto omezeních najdete v tématu popisujícím [cíle škálovatelnosti úložiště objektů blob](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).
+Úložiště objektů blob v Azure představuje škálovatelnou službu pro ukládání vašich dat. Pro zajištění co nejlepšího výkonu vaší aplikace doporučujeme seznámit se se způsobem, jakým úložiště objektů blob funguje. Znalost omezení pro objekty blob Azure je důležitá. Další informace o těchto omezeních najdete v článku: [škálovatelnost a výkonnostní cíle pro úložiště objektů BLOB](../blobs/scalability-targets.md).
 
 [Pojmenovávání oddílů](../blobs/storage-performance-checklist.md#partitioning) je další potenciálně důležitý faktor při návrhu vysoce výkonné aplikace pomocí objektů BLOB. Pro blokové velikosti větší než nebo se rovná 4 MiB se používají [objekty blob bloku s vysokou propustností](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) a pojmenování oddílů nebude mít vliv na výkon. Pro blokové velikosti menší než 4 MiB používá Azure Storage schéma dělení na základě rozsahu pro škálování a vyrovnávání zatížení. Tato konfigurace znamená, že se soubory s podobnými zásadami vytváření názvů nebo předponami umisťují do stejného oddílu. Tato logika zahrnuje název kontejneru, do kterého se soubory nahrávají. V tomto kurzu použijete soubory, které mají jako název GUID a obsahují náhodně vygenerovaný obsah. Tyto soubory se pak nahrají do pěti různých kontejnerů s náhodnými názvy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu je nutné dokončit předchozí kurz o službě Storage: [Vytvoření virtuálního počítače a účtu úložiště pro škálovatelnou aplikaci][previous-tutorial].
 
@@ -71,7 +71,7 @@ Kromě nastavení dělení na vlákna a omezení připojení se ve třídě [Blo
 |[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| Toto nastavení při nahrávání rozdělí objekty blob do bloků. Pro nejvyšší výkon by tato hodnota měla být osmi časy počtu jader. |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| Tato vlastnost zakazuje kontrolu hodnoty hash MD5 nahrávaného obsahu. Zakázáním ověřování MD5 dosáhnete rychlejšího přenosu. Neprovádí se však potvrzení platnosti ani integrity přenášených souborů.   |
 |[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| Tato vlastnost určuje, jestli se počítá a společně se souborem ukládá hodnota hash MD5.   |
-| [RetryPolicy](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.retrypolicy)| 2sekundové omezení rychlosti a maximálně 10 opakování |Určuje zásady opakování požadavků. Chybná připojení se opakují. V tomto příkladu je v zásadě [ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry) nakonfigurované 2sekundové omezení rychlosti a maximální počet 10 opakování. Toto nastavení je důležité, když se vaše aplikace blíží dosažení [cílů škálovatelnosti úložiště objektů blob](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).  |
+| [RetryPolicy](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.retrypolicy)| 2sekundové omezení rychlosti a maximálně 10 opakování |Určuje zásady opakování požadavků. Chybná připojení se opakují. V tomto příkladu je v zásadě [ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry) nakonfigurované 2sekundové omezení rychlosti a maximální počet 10 opakování. Toto nastavení je důležité, když se vaše aplikace blíží k dosažení cílů škálovatelnosti pro úložiště objektů BLOB. Další informace najdete v tématu [škálovatelnost a výkonnostní cíle pro úložiště objektů BLOB](../blobs/scalability-targets.md).  |
 
 Úloha `UploadFilesAsync` je znázorněná v následujícím příkladu:
 
