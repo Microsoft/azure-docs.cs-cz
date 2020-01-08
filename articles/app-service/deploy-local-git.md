@@ -6,24 +6,24 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 91d5827a08a600c19c24ac0a96a5f4e3e98e22f2
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 2ae8b71a7d48949cd82765112752192aba54521f
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671763"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680949"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Místní nasazení Gitu pro Azure App Service
 
 V této příručce se dozvíte, jak nasadit aplikaci pro [Azure App Service](overview.md) z úložiště Git na místním počítači.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Postup je popsaný v tomto návodu:
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
   
-- [Nainstalovat Git](https://www.git-scm.com/downloads).
+- [Nainstalovat Git](https://www.git-scm.com/downloads)
   
 - Mít místní úložiště Git s kódem, který chcete nasadit. Chcete-li stáhnout ukázkové úložiště, spusťte následující příkaz v místním okně terminálu:
   
@@ -97,7 +97,9 @@ Pokud má váš účet potřebná oprávnění, můžete nastavit Azure Pipeline
 
 Povolení místního nasazení Git pro vaši aplikaci pomocí Azure Pipelines (Preview):
 
-1. V [Azure Portal](https://portal.azure.com)přejděte na stránku aplikace Azure App Service a v nabídce vlevo vyberte **centrum nasazení** .
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **App Services**. 
+
+1. Vyberte svou aplikaci Azure App Service a v levé nabídce vyberte **centrum nasazení** .
    
 1. Na stránce **centrum nasazení** vyberte **místní Git**a pak vyberte **pokračovat**. 
    
@@ -147,7 +149,7 @@ Když použijete Git k publikování App Service aplikace v Azure, může se zob
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|Nezadali jste větev během `git push`nebo jste nenastavili `push.default` hodnotu v `.gitconfig`.|Znovu spusťte `git push` a určete hlavní větev: `git push azure master`.|
 |`src refspec [branchname] does not match any.`|Pokusili jste se odeslat do jiné jiné než hlavní větve na vzdáleném Azure.|Znovu spusťte `git push` a určete hlavní větev: `git push azure master`.|
 |`RPC failed; result=22, HTTP code = 5xx.`|K této chybě může dojít, pokud se pokusíte odeslat velké úložiště Git přes HTTPS.|Změňte konfiguraci Gitu v místním počítači, aby `postBuffer` větší. Například: `git config --global http.postBuffer 524288000`.|
-|`Error - Changes committed to remote repository but your web app not updated.`|Nasadili jste aplikaci Node. js se souborem _Package. JSON_ , který určuje další požadované moduly.|Před touto chybou si přečtěte `npm ERR!` chybové zprávy pro další kontext chyby. Níže jsou uvedené známé příčiny této chyby a příslušné `npm ERR!` zprávy:<br /><br />**Poškozený soubor Package. JSON**: `npm ERR! Couldn't read dependencies.`<br /><br />**Nativní modul nemá pro Windows binární distribuci**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />nebo <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
+|`Error - Changes committed to remote repository but your web app not updated.`|Nasadili jste aplikaci Node. js se souborem _Package. JSON_ , který určuje další požadované moduly.|Před touto chybou si přečtěte `npm ERR!` chybové zprávy pro další kontext chyby. Níže jsou uvedené známé příčiny této chyby a příslušné `npm ERR!` zprávy:<br /><br />**Poškozený soubor Package. JSON**: `npm ERR! Couldn't read dependencies.`<br /><br />**Nativní modul nemá pro Windows binární distribuci**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />– nebo – <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

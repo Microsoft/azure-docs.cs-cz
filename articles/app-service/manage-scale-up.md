@@ -5,12 +5,12 @@ ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
 ms.topic: article
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 37120377f87bee53f73fe4d3dd7ced59551a491f
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: dfd9297e80836978b8a185df3fc4659676383802
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672307"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659895"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Horizontální navýšení kapacity aplikace v Azure App Service
 
@@ -71,7 +71,7 @@ Pokud vaše aplikace závisí na dalších službách, jako je Azure SQL Databas
 
 Podrobné informace, jako jsou velikosti virtuálních počítačů pro každou cenovou úroveň, najdete v článku [o cenách App Service](https://azure.microsoft.com/pricing/details/app-service).
 
-Tabulka omezení, kvót a omezení služby a podporovaných funkcí v jednotlivých úrovních najdete v tématu [omezení App Service](../azure-subscription-service-limits.md#app-service-limits).
+Tabulka omezení, kvót a omezení služby a podporovaných funkcí v jednotlivých úrovních najdete v tématu [omezení App Service](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).
 
 <a name="Next Steps"></a>
 

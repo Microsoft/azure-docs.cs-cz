@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 84a17cb4468f60abf2463e6aa3ca331466aad247
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 340a1927f62d6a398994b457e351ad41d5e76d19
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850138"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659759"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Řešení chyb pomocí runbooků
 
@@ -270,9 +270,9 @@ The job was tried three times but it failed
 
 K této chybě dochází z důvodu některého z následujících problémů:
 
-* Limit paměti. Popsaná omezení velikosti paměti pro izolovaný prostor (sandbox) se nachází v [omezeních služby Automation](../../azure-subscription-service-limits.md#automation-limits). Úloha může selhat, pokud používá více než 400 MB paměti.
+* Limit paměti. Popsaná omezení velikosti paměti pro izolovaný prostor (sandbox) se nachází v [omezeních služby Automation](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits). Úloha může selhat, pokud používá více než 400 MB paměti.
 
-* Síťové sokety. Izolované prostory Azure jsou omezené na 1000 současných síťových soketů, jak je popsáno v tématu [omezení služby Automation](../../azure-subscription-service-limits.md#automation-limits).
+* Síťové sokety. Izolované prostory Azure jsou omezené na 1000 současných síťových soketů, jak je popsáno v tématu [omezení služby Automation](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits).
 
 * Modul je nekompatibilní. K této chybě může dojít, pokud závislosti modulu nejsou správné a pokud nejsou, sada Runbook obvykle vrátí "příkaz nenalezen" nebo "nelze vytvořit vazby na parametr".
 

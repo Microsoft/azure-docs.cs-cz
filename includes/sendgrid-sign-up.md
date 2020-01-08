@@ -1,24 +1,24 @@
 ---
-author: erikre
+author: georgewallace
 ms.service: multiple
 ms.topic: include
 ms.date: 11/25/2018
-ms.author: erikre
-ms.openlocfilehash: 96c4da8465a87fee4c00bfc6177515c94910704a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.author: gwallace
+ms.openlocfilehash: e38cecfe206f21f9189493e7ed6e8f0cadda9cd9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174684"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463571"
 ---
-Zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mailů. Těchto 25 000 bezplatných e-mailů měsíčně vám poskytne přístup k rozšířené tvorbě sestav, rozšířeným analýzám a [všem rozhraním API][all APIs] (Web, SMTP, Event, Parse a další). Informace o dalších službách, které SendGrid poskytuje, najdete na stránce [SendGrid Solutions][SendGrid Solutions] (Řešení SendGrid).
+Zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mailů. Tyto 25 000 bezplatných měsíčních e-mailů vám umožní přístup k pokročilým vytváření sestav a analýzám a [všem rozhraním API][all APIs] (web, SMTP, Event, Analyze a další). Informace o dalších službách poskytovaných službou SendGrid najdete na stránce [řešení SendGrid][SendGrid Solutions] .
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>Registrace účtu SendGrid
 1. Přihlaste se na web [Azure Portal][Azure portal].
-2. V nabídce na levé straně klikněte na tlačítko **vytvořit prostředek**.
+2. V nabídce Azure Portal nebo na domovské stránce vyberte **vytvořit prostředek**.
 
     ![command-bar-new][command-bar-new]
-3. Klikněte na **Doplňky** a potom na **SendGrid Email Delivery** (Doručování e-mailů SendGrid).
+3. Vyhledejte a vyberte **SendGrid**.
 
     ![sendgrid-store][sendgrid-store]
 4. Vyplňte registrační formulář a vyberte **Vytvořit**.
@@ -34,11 +34,11 @@ Zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mail�
 10. Zadejte **Propagační kód**, pokud nějaký máte.
 11. Zadejte své **Kontaktní informace**.
 12. Přečtěte si a přijměte **Právní podmínky**.
-13. Po potvrzení nákupu se zobrazí automaticky otevírané okno **Nasazení bylo úspěšné** a váš účet bude uvedený v části **Všechny prostředky**.
+13. Po potvrzení nákupu se zobrazí automaticky otevírané okno pro **úspěšné nasazení** a zobrazí se Váš účet.
 
     ![all-resources][all-resources]
 
-    Jakmile dokončíte nákup a kliknutím na tlačítko **Manage** (Spravovat) zahájíte proces ověření e-mailu, přijde vám od SendGridu e-mail s výzvou k ověření účtu. Pokud vám takový e-mail nepřijde nebo máte problémy s ověřením účtu, podívejte se na tyto nejčastější dotazy.
+    Jakmile dokončíte nákup a kliknutím na tlačítko **Manage** (Spravovat) zahájíte proces ověření e-mailu, přijde vám od SendGridu e-mail s výzvou k ověření účtu. Pokud tento e-mail neobdržíte nebo máte problémy s ověřením účtu, přečtěte si naše Nejčastější dotazy.
 
     ![manage][manage]
 
@@ -72,11 +72,11 @@ Zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mail�
     ![key][key]
 2. Heslo jste si zvolili během nastavení. Pokud chcete provést změny, můžete vybrat **Change password** (Změnit heslo) nebo **Reset password** (Resetovat heslo).
 
-Pokud chcete spravovat nastavení doručitelnosti e-mailů, klikněte na **tlačítko Manage** (Spravovat). To vás přesměruje na řídicím panelu SendGrid.
+Pokud chcete spravovat nastavení doručitelnosti e-mailů, klikněte na **tlačítko Manage** (Spravovat). Tím se přesměruje na řídicí panel SendGrid.
 
 ![manage][manage]
 
-Další informace o odeslání e-mailu přes SendGrid, najdete [přehled rozhraní API pro e-mailu][Email API Overview].
+Další informace o posílání e-mailů prostřednictvím SendGrid najdete v článku [Přehled rozhraní API pro e-maily][Email API Overview].
 
 <!--images-->
 

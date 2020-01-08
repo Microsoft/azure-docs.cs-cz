@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7fbc18d8141c44c2b0863547c33b5c5193e928b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7e557ca1bfc7587b6a65957177440041bf4e902f
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231927"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681323"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>Změna metody a nastavení dvou faktorů ověřování
 
@@ -32,16 +32,16 @@ Po nastavení metod ověřování zabezpečení pro svůj pracovní nebo školn�
 
 ## <a name="using-the-additional-security-verification-page"></a>Použití stránky další ověření zabezpečení
 
-Pokud vám vaše organizace poskytne konkrétní postup, jak zapnout a spravovat dvojúrovňové ověřování, měli byste postupovat podle těchto pokynů. V opačném případě můžete k nastavení metody ověření zabezpečení získat přístup ze stránky [Další ověření zabezpečení](https://aka.ms/mfasetup) .
+Pokud vám vaše organizace poskytne konkrétní postup, jak zapnout a spravovat dvojúrovňové ověřování, měli byste postupovat podle těchto pokynů. V opačném případě můžete k nastavení metody ověření zabezpečení získat přístup ze stránky [Další ověření zabezpečení](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) .
 
 >[!Note]
 >Pokud se vám to, co vidíte na obrazovce, neshoduje s tím, co je zahrnuté v tomto článku, znamená to, že správce zapnul možnosti zabezpečení (Preview) nebo že má vaše organizace vlastní portál. Další informace o možnosti informace o zabezpečení najdete v tématu [Přehled informací o zabezpečení (Preview)](user-help-security-info-overview.md). Pokud potřebujete další informace o vlastním portálu vaší organizace, obraťte se na oddělení technické podpory.
 
 ### <a name="to-get-to-the-additional-security-verification-page"></a>Získání na stránku dodatečného ověření zabezpečení
 
-- Přejděte do části https://aka.ms/mfasetup (Soubor > Nový > Jiné).
+- Přejít na stránku [Další ověření zabezpečení](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) .
 
-    ![Další obrazovka ověření zabezpečení s dostupnými podrobnostmi metody ověření zabezpečení](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
+    ![Stránka Další ověření zabezpečení s podrobnostmi o dostupné metodě ověření zabezpečení](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
 
     Pokud po kliknutí na tento odkaz nefunguje, můžete se také dostat na stránku **Další ověření zabezpečení** pomocí následujících kroků:
 

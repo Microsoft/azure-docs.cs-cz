@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: f994f4ec6d41fa0aab37e36d713eaefb22e85b28
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: e12fc5d92cfc850e1d049bc11286c0c863e718b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665051"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459185"
 ---
 # <a name="export-security-alerts-and-recommendations-preview"></a>Exportovat výstrahy a doporučení zabezpečení (Preview)
 
@@ -41,7 +41,7 @@ Pomocí těchto nástrojů můžete:
 
 1. V oblasti exportovat cíl vyberte, kam chcete ukládat data. Data je možné uložit v cíli v jiném předplatném (například v centrální instanci centra událostí nebo v centrálním Log Analyticsm pracovním prostoru).
 
-1. Klikněte na **Uložit**.
+1. Klikněte na možnost **Uložit**.
 
 ## <a name="continuous-export-through-azure-event-hubs"></a>Průběžný export prostřednictvím Azure Event Hubs  
 
@@ -50,6 +50,8 @@ Pomocí těchto nástrojů můžete:
 
 > [!NOTE]
 > Pokud jste dříve exportovali výstrahy Security Center do SIEM pomocí protokolu aktivit Azure, tento postup nahrazuje tuto metodologii.
+
+Chcete-li zobrazit schémata událostí exportovaných datových typů, navštivte [schéma událostí centra událostí](https://aka.ms/ASCAutomationSchemas).
 
 ### <a name="to-integrate-with-a-siem"></a>Integrace s SIEM 
 
@@ -66,13 +68,17 @@ Pokud používáte službu **Azure Sentinel**, použijte [datový konektor](http
 Pokud byste chtěli nepřetržitě exportovaná data automaticky přesunout z nakonfigurovaného centra událostí do Azure Průzkumník dat, postupujte podle pokynů v tématu ingestování [dat z centra událostí do azure Průzkumník dat](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub).
 
 
-## <a name="continuous-export-to-log-analytics-workspace"></a>Průběžný export do pracovního prostoru Log Analytics
+## <a name="continuous-export-to-a-log-analytics-workspace"></a>Průběžný export do pracovního prostoru Log Analytics
 
-Pokud chcete exportovat do Log Analytics pracovního prostoru, musíte mít v pracovním prostoru povolená řešení Log Analytics na úrovni Security Center úrovně Free nebo Standard. Pokud používáte Azure Portal, řešení na úrovni Free Security Center se automaticky povolí, když povolíte průběžný export. Pokud ale konfigurujete nastavení průběžného exportu programově, musíte ručně vybrat cenovou úroveň Free nebo standard pro požadovaný pracovní prostor v rámci **Nastavení cenové &** .  
+Pokud chcete exportovat do Log Analytics pracovního prostoru, musíte mít v pracovním prostoru povolená řešení Log Analytics na úrovni Security Center úrovně Standard nebo Standard. Pokud používáte Azure Portal, řešení na úrovni Free Security Center se automaticky povolí, když povolíte průběžný export. Pokud ale konfigurujete nastavení průběžného exportu programově, musíte ručně vybrat cenovou úroveň Free nebo standard pro požadovaný pracovní prostor v rámci **Nastavení cenové &** .  
 
-Výstrahy a doporučení zabezpečení se ukládají do tabulek *SecurityAlert* a *SecurityRecommendations* . Název Log Analytics řešení obsahující tyto tabulky závisí na tom, jestli jste na úrovni Free nebo Standard (viz [ceny](security-center-pricing.md)): Security nebo SecurityCenterFree.
+### <a name="log-analytics-tables-and-schemas"></a>Log Analytics tabulek a schémat
+
+Výstrahy a doporučení zabezpečení se ukládají do tabulek *SecurityAlert* a *SecurityRecommendations* . Název Log Analytics řešení obsahující tyto tabulky závisí na tom, jestli jste na úrovni Free nebo Standard (viz [ceny](security-center-pricing.md)): Security (Security and Audit) nebo SecurityCenterFree.
 
 ![Tabulka * SecurityAlert * v Log Analytics](./media/continuous-export/log-analytics-securityalert-solution.png)
+
+Chcete-li zobrazit schémata událostí exportovaných datových typů, navštivte [Log Analytics schémat tabulek](https://aka.ms/ASCAutomationSchemas).
 
 ###  <a name="view-exported-security-alerts-and-recommendations-in-azure-monitor"></a>Zobrazení exportovaných výstrah zabezpečení a doporučení v Azure Monitor
 
@@ -86,7 +92,7 @@ Chcete-li zobrazit výstrahy a doporučení z Security Center v Azure Monitor, n
 
     ![Stránka s výstrahami Azure Monitor](./media/continuous-export/azure-monitor-alerts.png)
 
-1. Na stránce Vytvořit pravidlo nakonfigurujte nové pravidlo (stejným způsobem, jako byste nakonfigurovali [pravidlo upozornění protokolu v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log):
+1. Na stránce Vytvořit pravidlo nakonfigurujte nové pravidlo (stejným způsobem, jako byste nakonfigurovali [pravidlo upozornění protokolu v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)):
 
     * Jako **prostředek**vyberte pracovní prostor Log Analytics, do kterého jste exportovali výstrahy a doporučení zabezpečení.
 
@@ -104,7 +110,7 @@ Chcete-li stáhnout sestavu CSV pro výstrahy nebo doporučení, otevřete strá
 [![stahovat data výstrah jako soubor CSV](media/continuous-export/download-alerts-csv.png)](media/continuous-export/download-alerts-csv.png#lightbox)
 
 > [!NOTE]
-> Tyto sestavy obsahují výstrahy a doporučení pro prostředky z aktuálně vybraných předplatných ve filtru Directory + Subscription na webu Azure Portal: ![filtr pro výběr možnosti adresář a předplatné](./media/continuous-export/filter-for-export-csv.png)
+> Tyto sestavy obsahují výstrahy a doporučení pro prostředky z aktuálně vybraných předplatných.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -115,3 +121,4 @@ Související materiály najdete v následující dokumentaci:
 - [Dokumentace k Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)
 - [Dokumentace k ověřovacím službám Azure](https://docs.microsoft.com/azure/sentinel/)
 - [Dokumentace ke službě Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)
+- [Schémata datových typů automatizace a průběžného exportu pracovního postupu](https://aka.ms/ASCAutomationSchemas)

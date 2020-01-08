@@ -1,19 +1,14 @@
 ---
-title: Azure Service Fabric – odkazy na úložiště klíčů aplikačních klíčů v Service Fabric | Microsoft Docs
+title: Azure Service Fabric – použití Service Fabricch odkazů na Trezor klíčů klíčů aplikací
 description: Tento článek vysvětluje, jak používat podporu KeyVaultReference Service-Fabric pro tajné klíče pro aplikace.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/20/2019
-ms.author: atsenthi
-ms.openlocfilehash: 96da89a00b054767553b0ed3d8debf30c344dd62
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: b0e882c2b39c06a3040d22fc6694599966ceeb39
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307336"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463034"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Podpora KeyVaultReference pro aplikace Service Fabric (Preview)
 
@@ -36,8 +31,8 @@ Běžným problémem při sestavování cloudových aplikací je bezpečné ukl�
     [
         ...
     {
-        "parameters":  [
-            "name":  "CentralSecretService",
+                "name":  "CentralSecretService",
+                "parameters":  [
                 {
                     "name":  "IsEnabled",
                     "value":  "true"
@@ -50,7 +45,7 @@ Běžným problémem při sestavování cloudových aplikací je bezpečné ukl�
                     "name":  "TargetReplicaSetSize",
                     "value":  "3"
                 }
-                ],
+                ]
             },
             {
                 "name":  "ManagedIdentityTokenService",
@@ -142,7 +137,7 @@ KeyVaultReference je podporovaný typ pro RepositoryCredentials kontejneru, ní�
         <RepositoryCredentials AccountName="user1" Type="KeyVaultReference" Password="https://ttkvault.vault.azure.net/secrets/containerpwd/e225bd97e203430d809740b47736b9b8"/>
       </ContainerHostPolicies>
 ```
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 - Pro podporu KeyVaultReference je potřeba povolit spravovanou identitu, aktivace vaší aplikace selže, pokud se KeyVaultReference použije bez povolení spravované identity.
 
 - Pokud používáte identitu přiřazenou systémem, je vytvořena až po nasazení aplikace a tím se vytvoří cyklická závislost. Jakmile je vaše aplikace nasazená, můžete k trezoru klíčů udělit oprávnění k přístupu k identitě přidělené systémem. Identitu přiřazenou systémem můžete najít podle názvu {cluster}/{Application Name}/{ServiceName}

@@ -1,24 +1,14 @@
 ---
-title: Plánování nasazení clusteru Azure Service Fabric | Microsoft Docs
+title: Plánování nasazení clusteru Azure Service Fabric
 description: Přečtěte si o plánování a přípravě nasazení produkčního Service Fabric clusteru do Azure.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/20/2019
-ms.author: atsenthi
-ms.openlocfilehash: a130e9bc8859360704c9be1c0a7fe066d2ed4567
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 69fb97e4e679b3ce5817a51d619799a3384fd753
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599999"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463319"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Plánování a příprava nasazení clusteru
 
@@ -28,9 +18,9 @@ Plánování a příprava nasazení v produkčním clusteru je velmi důležitá
 Aby bylo možné úspěšně spravovat aplikace a clustery Azure Service Fabric, jsou k dispozici operace, které vám umožní optimalizovat spolehlivost provozního prostředí.  Další informace najdete v tématu [Service Fabric osvědčené postupy pro aplikace a cluster](service-fabric-best-practices-overview.md).
 
 ## <a name="select-the-os-for-the-cluster"></a>Vyberte operační systém pro cluster.
-Service Fabric umožňuje vytváření clusterů Service Fabric na všech virtuálních počítačích nebo počítačích se systémem Windows Server nebo Linux.  Před nasazením clusteru je nutné zvolit operační systém:  Windows nebo Linux.  Každý uzel (virtuální počítač) v clusteru spouští stejný operační systém. virtuální počítače se systémem Windows a Linux nelze kombinovat ve stejném clusteru.
+Service Fabric umožňuje vytváření clusterů Service Fabric na všech virtuálních počítačích nebo počítačích se systémem Windows Server nebo Linux.  Před nasazením clusteru je nutné zvolit operační systém: Windows nebo Linux.  Každý uzel (virtuální počítač) v clusteru spouští stejný operační systém. virtuální počítače se systémem Windows a Linux nelze kombinovat ve stejném clusteru.
 
-## <a name="capacity-planning"></a>Plánování kapacity
+## <a name="capacity-planning"></a>Plánování kapacit
 Pro jakékoli provozní nasazení je plánování kapacity důležitým krokem. Zde je uvedeno několik bodů, které je vhodné vzít v úvahu v rámci procesu.
 
 * Počáteční počet typů uzlů pro váš cluster 
@@ -47,7 +37,7 @@ Minimální velikost virtuálních počítačů pro každý typ uzlu je určena 
 
 Minimální počet virtuálních počítačů pro typ primárního uzlu závisí na zvolené [úrovni spolehlivosti][reliability] .
 
-Prohlédněte si minimální doporučení pro [typy primárních uzlů](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance), [stavové úlohy na neprimárních typech uzlů](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)a bezstavové [úlohy na neprimárních typech uzlů](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads). 
+Prohlédněte si minimální doporučení pro [typy primárních uzlů](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance), [stavové úlohy na neprimárních typech uzlů](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)a [bezstavové úlohy na neprimárních typech uzlů](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads). 
 
 Jakékoli více než minimální počet uzlů by měl být založen na počtu replik aplikace nebo služeb, které chcete spustit v tomto typu uzlu.  [Plánování kapacity pro aplikace Service Fabric](service-fabric-capacity-planning.md) vám pomůže odhadnout prostředky, které potřebujete ke spuštění svých aplikací. Kdykoli můžete cluster škálovat nahoru nebo dolů později, aby se změnila změna aplikační úlohy. 
 
@@ -57,7 +47,7 @@ Jakékoli více než minimální počet uzlů by měl být založen na počtu re
 Úroveň spolehlivosti slouží k nastavení počtu replik systémových služeb, které chcete v tomto clusteru spustit na primárním typu uzlu. Větší počet replik, což je spolehlivější systémové služby ve vašem clusteru.  Výhody různých úrovní a doporučení, na kterých úroveň použít a kdy, najdete v tématu [charakteristiky spolehlivosti clusteru][reliability]. 
 
 ## <a name="enable-reverse-proxy-andor-dns"></a>Povolení reverzního proxy serveru a/nebo DNS
-Služby, které se vzájemně připojují v rámci clusteru, můžou mít přímý přístup k koncovým bodům jiných služeb, protože uzly v clusteru jsou ve stejné místní síti. Aby bylo snazší se připojovat mezi službami, Service Fabric poskytuje další služby: [Služba DNS](service-fabric-dnsservice.md) a [reverzní proxy služba](service-fabric-reverseproxy.md).  Při nasazování clusteru je možné povolit obě služby.
+Služby, které se vzájemně připojují v rámci clusteru, můžou mít přímý přístup k koncovým bodům jiných služeb, protože uzly v clusteru jsou ve stejné místní síti. Aby bylo snazší se připojit mezi službami, Service Fabric poskytuje další služby: [službu DNS](service-fabric-dnsservice.md) a [službu reverzního proxy serveru](service-fabric-reverseproxy.md).  Při nasazování clusteru je možné povolit obě služby.
 
 Vzhledem k tomu, že řada služeb, zejména služba s využitím kontejnerů, může mít existující název adresy URL, který je schopný vyřešit pomocí standardního protokolu DNS (místo Naming Service protokolu), zejména ve scénářích "výtah a Shift". To je přesně to, co dělá služba DNS. Umožňuje mapovat názvy DNS na název služby, a proto vyřešte IP adresy koncových bodů.
 
@@ -69,7 +59,7 @@ Kritická součást poskytování vysoké dostupnosti zajišťuje, aby služby m
 ## <a name="production-readiness-checklist"></a>Kontrolní seznam připravenosti k produkci
 Je vaše aplikace a cluster připravený přijmout provozní provoz? Před nasazením clusteru do produkčního prostředí spouštějte prostřednictvím [kontrolního seznamu připravenosti na produkci](service-fabric-production-readiness-checklist.md). Sledujte položky v tomto kontrolním seznamu a sledujte tak bezproblémové fungování aplikace a clusteru. Než se pustíte do produkčního prostředí, důrazně doporučujeme, abyste všechny tyto položky kontrolovali.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Vytvoření clusteru Service Fabric se systémem Windows](service-fabric-best-practices-overview.md)
 * [Vytvoření clusteru Service Fabric se systémem Linux](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 

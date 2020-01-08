@@ -1,19 +1,19 @@
 ---
-title: Rychlý Start, kde se dozvíte, jak používat Azure cache pro Redis s aplikacemi .NET Core
+title: 'Rychlý Start: použití mezipaměti Azure pro Redis s aplikacemi .NET Core'
 description: V tomto rychlém startu se dozvíte, jak získat přístup k Azure cache pro Redis ve vašich aplikacích .NET Core.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.devlang: dotnet
+ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/18/2018
-ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: ce50ecac9a7b676386ce893a19391a63ffeed108
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d723ffc4e94dcdcb63d74d65c55288015931adad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122451"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75413056"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Rychlý Start: použití mezipaměti Azure pro Redis s aplikací .NET Core
 
@@ -84,7 +84,7 @@ Po nahrazení zástupných znaků (včetně ostrých závorek) názvu mezipamět
 dotnet user-secrets set CacheConnection "<cache name>.redis.cache.windows.net,abortConnect=false,ssl=true,password=<primary-access-key>"
 ```
 
-K souboru `using`Program.cs*přidejte následující příkaz*:
+K souboru *Program.cs* přidejte následující příkaz `using`:
 
 ```csharp
 using Microsoft.Extensions.Configuration;
@@ -120,7 +120,7 @@ Po dokončení instalace budete moct se svým projektem používat klienta mezip
 
 ## <a name="connect-to-the-cache"></a>Připojení k mezipaměti
 
-K souboru `using`Program.cs*přidejte následující příkaz*:
+K souboru *Program.cs* přidejte následující příkaz `using`:
 
 ```csharp
 using StackExchange.Redis;
@@ -152,7 +152,7 @@ Hodnota tajného kódu *CacheConnection* se používá jako parametr hesla a je 
 
 ## <a name="executing-cache-commands"></a>Provádění příkazů mezipaměti
 
-V souboru *Program.cs* přidejte pro proceduru `Main` třídy konzolové aplikace `Program` následující kód:
+V souboru *Program.cs* přidejte pro proceduru `Program` třídy konzolové aplikace `Main` následující kód:
 
 ```csharp
         static void Main(string[] args)
@@ -230,13 +230,13 @@ Spuštěním následujícího příkazu přidejte do aplikace balíček *Newtons
 dotnet add package Newtonsoft.json
 ```
 
-Na začátek souboru `using`Program.cs*přidejte následující příkaz*:
+Na začátek souboru *Program.cs* přidejte následující příkaz `using`:
 
 ```csharp
 using Newtonsoft.Json;
 ```
 
-Do souboru `Employee`Program.cs*přidejte následující definici třídy*:
+Do souboru *Program.cs* přidejte následující definici třídy `Employee`:
 
 ```csharp
         class Employee
@@ -254,7 +254,7 @@ Do souboru `Employee`Program.cs*přidejte následující definici třídy*:
         }
 ```
 
-Na konec procedury `Main()` a před volání metody *v souboru*Program.cs`Dispose()` přidejte do mezipaměti následující řádky kódu a získejte serializovaný objekt .NET:
+Na konec procedury `Main()` a před volání metody `Dispose()` v souboru *Program.cs* přidejte do mezipaměti následující řádky kódu a získejte serializovaný objekt .NET:
 
 ```csharp
             // Store .NET object to cache
@@ -297,7 +297,7 @@ V opačném případě, pokud jste už s ukázkovou aplikací v tomto rychlém s
 
 Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
 
-Do textového pole **Filtrovat podle názvu...** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. Ve výsledcích hledání klikněte na **...** u vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
+Do textového pole **Filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. Ve výsledcích hledání klikněte na **...** u vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
 
 ![Odstranit](./media/cache-dotnet-core-quickstart/cache-delete-resource-group.png)
 

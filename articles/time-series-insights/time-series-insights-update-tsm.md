@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 12/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c045a4b5ccda47b786d86f1c004e9da4c8d85f3
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 7d588e11525e5087f8667da4602797e5299c76f0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112309"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374689"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Model časové řady v Azure Time Series Insights Preview
 
@@ -24,6 +24,7 @@ Tento článek popisuje model časových řad, možnosti a způsob, jak začít 
 > [!TIP]
 >  * Příklad modelu živé časové řady najdete v [ukázkovém prostředí farmy společnosti Contoso Wind](https://insights.timeseries.azure.com/preview/samples) .
 > * Přečtěte si informace o tom, jak přejít k uživatelskému rozhraní modelu časové řady v [Průzkumníkovi služby Azure Time Series Insights Preview](time-series-insights-update-explorer.md) .
+> * Naučte se [pracovat s modelem časových řad](time-series-insights-update-how-to-tsm.md) pomocí Time Series Insights webovým průzkumníkem.
 
 ## <a name="summary"></a>Souhrn
 
@@ -48,11 +49,11 @@ Tato omezení ukázala důležitost nástrojů agregace inteligentních dat a vi
 
 **Model Time Series poskytuje praktické řešení** pro spoustu scénářů, které se vyskytly v tomto fiktivním příkladu:
 
-[vytváření grafů ![ch modelů časových řad](media/v2-update-tsm/tsi-charting.png)](media/v2-update-tsm/tsi-charting.png#lightbox)
+[Příklad grafu ![Time Series model pro čipovou troubu](media/v2-update-tsm/time-series-model-smart-oven.png)](media/v2-update-tsm/time-series-model-smart-oven.png#lightbox)
 
-* Model časové řady hraje důležitou roli v dotazech a navigaci, protože contextualizes data tím, že umožňuje vykreslovat porovnávání v různých časových intervalech a mezi typy snímačů a zařízení.
-* Data jsou dále kontextové, protože data trvalá v modelu časové řady zachovávají výpočty dotazů Time Series jako proměnné a používají je v době dotazu.
-* Model časové řady organizuje a agreguje data pro lepší vizualizaci a možnosti správy.
+* Model časové řady hraje důležitou roli v dotazech a navigaci, protože contextualizes data tím, že umožňuje vykreslovat porovnávání v různých časových intervalech a mezi typy snímačů a zařízení. (**A**) 
+* Data jsou dále kontextové, protože data trvalá v modelu časové řady zachovávají výpočty dotazů na časové řady jako proměnné a znovu je používají v době dotazu.
+* Model časové řady organizuje a agreguje data pro lepší vizualizaci a možnosti správy. (**B**) 
 
 ### <a name="key-capabilities"></a>Klíčové funkce
 
@@ -72,7 +73,7 @@ Model časové řady má tři základní komponenty:
 
 Tyto součásti jsou kombinovány pro určení modelu časové řady a k uspořádání dat Azure Time Series Insights.
 
-[Přehled modelu časové řady ![](media/v2-update-tsm/tsm.png)](media/v2-update-tsm/tsm.png#lightbox)
+[graf přehledu ![časových řad](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
 Model časových řad se dá vytvořit a spravovat prostřednictvím rozhraní [Time Series Insights Preview](time-series-insights-update-how-to-tsm.md) . Nastavení modelu časové řady lze spravovat prostřednictvím [rozhraní API pro nastavení modelu](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api).
 
@@ -90,7 +91,7 @@ Po nakonfigurování zdroje událostí pro prostředí Time Series Insights se i
 
 [Ukázková farma společnosti Contoso Wind](https://insights.timeseries.azure.com/preview/samples) nabízí několik příkladů instancí za provozu.
 
-[instance modelů ![časové řady](media/v2-update-tsm/instance.png)](media/v2-update-tsm/instance.png#lightbox)
+[Příklad instance modelu ![časové řady](media/v2-update-tsm/time-series-model-instance.png)](media/v2-update-tsm/time-series-model-instance.png#lightbox)
 
 ### <a name="instance-properties"></a>Vlastnosti instance
 
@@ -99,7 +100,7 @@ Instance jsou definovány pomocí **timeSeriesId**, **typeId**, **Name**, **Desc
 | Vlastnost | Popis |
 | --- | ---|
 | timeSeriesId | Identifikátor UUID časové řady, ke které je instance přidružena. |
-| TypeId | Identifikátor UUID typu modelu časové řady, ke kterému je instance přidružena. Ve výchozím nastavení se všechny zjištěné nové instance přidružit k výchozímu typu.
+| typeId | Identifikátor UUID typu modelu časové řady, ke kterému je instance přidružena. Ve výchozím nastavení se všechny zjištěné nové instance přidružit k výchozímu typu.
 | jméno | Vlastnost **Name** je volitelná a rozlišuje velká a malá písmena. Pokud není **název** k dispozici, použije se výchozí hodnota **timeSeriesId**. Pokud je zadán název, je **timeSeriesId** stále k dispozici. [](time-series-insights-update-explorer.md#4-time-series-well) |
 | description | Textový popis instance. |
 | hierarchyIds | Definuje, do kterých hierarchií patří instance. |
@@ -112,18 +113,18 @@ Instance mají následující reprezentaci JSON:
 
 ```JSON
 {
-    "timeSeriesId": ["PU2"],
-    "typeId": "545314a5-7166-4b90-abb9-fd93966fa39b",
-    "hierarchyIds": ["95f0a8d1-a3ef-4549-b4b3-f138856b3a12"],
-    "description": "Pump #2",
-    "instanceFields": {
-        "Location": "Redmond",
-        "Fleet": "Fleet 5",
-        "Unit": "Pump Unit 3",
-        "Manufacturer": "Contoso",
-        "ScalePres": "0.54",
-        "scaleTemp": "0.54"
-    }
+  "timeSeriesId": ["PU2"],
+  "typeId": "545314a5-7166-4b90-abb9-fd93966fa39b",
+  "hierarchyIds": ["95f0a8d1-a3ef-4549-b4b3-f138856b3a12"],
+  "description": "Pump #2",
+  "instanceFields": {
+    "Location": "Redmond",
+    "Fleet": "Fleet 5",
+    "Unit": "Pump Unit 3",
+    "Manufacturer": "Contoso",
+    "ScalePres": "0.54",
+    "scaleTemp": "0.54"
+  }
 }
 ```
 
@@ -138,7 +139,7 @@ V daném Time Series Insights prostředí můžete nakonfigurovat více hierarch
 
 Ukázkové klientské rozhraní [farmy společnosti Contoso Wind](https://insights.timeseries.azure.com/preview/samples) zobrazuje standardní instanci a hierarchii typů.
 
-[![hierarchie modelů časových řad](media/v2-update-tsm/hierarchy.png)](media/v2-update-tsm/hierarchy.png#lightbox)
+[Příklad hierarchie modelu ![časové řady](media/v2-update-tsm/time-series-model-hierarchies.png)](media/v2-update-tsm/time-series-model-hierarchies.png#lightbox)
 
 ### <a name="hierarchy-definition"></a>Definice hierarchie
 
@@ -215,7 +216,7 @@ Vzhledem k polím instance použitým v předchozí definici a několika časov�
 | ID4 | "sestavování" = "1000", "patra" = "10"  |
 | ID5 | Není nastaven žádný z "budova", "patra" ani "místnost". |
 
-Time Series **ID1** a **ID4** se zobrazují jako součást hierarchie **H1** v [Azure Time Series Insights Exploreru](time-series-insights-update-explorer.md) , protože mají plně definované a správně seřazené *sestavování*, *podlahová*a *pokojová* . ukazatelů.
+Time Series **ID1** a **ID4** se zobrazují jako součást hierarchie **H1** v [Azure Time Series Insights Exploreru](time-series-insights-update-explorer.md) , protože mají plně definované a správně seřazené parametry *sestavení*, *podlah*a *místností* .
 
 Ostatní jsou klasifikovány v rámci *nenadřazených instancí* , protože neodpovídají zadané hierarchii dat.
 
@@ -227,7 +228,7 @@ Typ může mít jednu nebo více proměnných. Například instance modelu časo
 
 [Ukázka farmy společnosti Contoso Wind](https://insights.timeseries.azure.com/preview/samples) vizualizuje několik typů modelů časových řad přidružených ke svým příslušným instancím.
 
-[![typy modelů časových řad](media/v2-update-tsm/types.png)](media/v2-update-tsm/types.png#lightbox)
+[Příklad typu modelu časové řady ![](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
 > Podporu rozhraní API instancí Time Series Insights a CRUD najdete v článku [dotazování na data](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) a v [dokumentaci k rozhraní API typu REST](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
@@ -295,7 +296,7 @@ Každá proměnná může být jeden ze tří *typů*: *Číselná*, *kategorií
 
 V následující tabulce jsou uvedeny vlastnosti, které jsou relevantní pro jednotlivé druhy proměnných.
 
-[![typy modelů časových řad](media/v2-update-tsm/variable-table.png)](media/v2-update-tsm/variable-table.png#lightbox)
+[Tabulka proměnných modelu časové řady ![](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
 
 #### <a name="numeric-variables"></a>Číselné proměnné
 
@@ -342,7 +343,9 @@ Proměnné odpovídají následujícímu příkladu JSON:
 ```JSON
 "Status": {
   "kind": "categorical",
-  "value": "toLong($event.[Status].Double)",
+  "value": {
+     "tsx": "toLong($event.[Status].Double)" 
+},
   "interpolation": {
     "kind": "step",
     "boundary": {
@@ -389,5 +392,7 @@ Proměnné jsou uloženy v definici typu modelu časové řady a lze je poskytno
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si téma [Azure Time Series Insights a příchozí úložiště ve verzi Preview](./time-series-insights-update-storage-ingress.md).
+
 - Přečtěte si o běžných operacích modelu časových řad v [modelování dat ve službě Azure Time Series Insights Preview](./time-series-insights-update-how-to-tsm.md) .
+
 - Přečtěte si referenční dokumentaci k novému [modelu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) .

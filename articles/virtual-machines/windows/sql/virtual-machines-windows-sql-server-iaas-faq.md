@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: c3b4fabb319a3ea76ee62c8c699d4613184a4e76
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 4919c8f303488b583ea4d10dca87dd29bfb52e99
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791050"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374076"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Nejčastější dotazy týkající se SQL Server běžících na virtuálních počítačích s Windows v Azure
 
@@ -66,7 +66,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
    Ne. Pro image z Galerie virtuálních počítačů, které zahrnují SQL Server, je nutné vybrat jednu z poskytnutých imagí buď pomocí Azure Portal nebo pomocí [PowerShellu](virtual-machines-windows-ps-sql-create.md). Máte ale možnost nasadit virtuální počítač s Windows a SQL Server k němu nainstalovat sami. Pak je nutné [zaregistrovat svůj SQL Server virtuální počítač s poskytovatelem prostředků SQL Server](virtual-machines-windows-sql-register-with-resource-provider.md) pro správu SQL Server virtuálního počítače na portálu a využívat funkce, jako jsou automatické opravy a automatické zálohování. 
 
 
-## <a name="creation"></a>Vytvořena
+## <a name="creation"></a>Vytvoření
 
 1. **Návody vytvořit virtuální počítač Azure s SQL Server?**
 
@@ -84,12 +84,12 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 1. **Musím platit za licenci SQL Serveru na virtuálním počítači Azure, pokud se používá pouze jako pohotovostní nebo pro převzetí služeb při selhání?**
 
-   Pokud chcete mít bezplatnou pasivní licenci pro sekundární skupinu dostupnosti nebo instanci clusteru s podporou převzetí služeb při selhání, musíte splnit všechna následující kritéria, jak je uvedeno v části [licenční příručka pro správu licencí](https://download.microsoft.com/download/7/8/C/78CDF005-97C1-4129-926B-CE4A6FE92CF5/SQL_Server_2017_Licensing_guide.pdf):
+   Pokud chcete mít bezplatnou pasivní licenci pro sekundární skupinu dostupnosti nebo instanci clusteru s podporou převzetí služeb při selhání, musíte splnit všechna následující kritéria, jak je uvedeno v [licenčních podmínkách produktu](https://www.microsoft.com/licensing/product-licensing/products):
 
    1. Máte [mobilitu licencí](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2) v rámci programu [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3). 
-   1. Pasivní SQL Server instance neobsluhuje SQL Server data pro klienty nebo spouštění aktivních SQL Server úloh. Slouží pouze k synchronizaci s primárním serverem a v případě údržby pasivní databáze v pohotovostním úsporném režimu. Pokud obsluhuje data, jako jsou například sestavy klientů se spuštěnou službou Active SQL Server, nebo provádění libovolné "pracovní", jako jsou například další zálohy ze sekundárního serveru, pak musí být placená licencovaná SQL Server instance. 
+   1. Pasivní SQL Server instance neobsluhuje SQL Server data pro klienty nebo spouštění aktivních SQL Server úloh. Slouží pouze k synchronizaci s primárním serverem a v případě údržby pasivní databáze v pohotovostním úsporném režimu. Pokud obsluhuje data, jako jsou například sestavy klientů se spuštěnou službou Active SQL Server, nebo provádění jakékoli jiné práce, než jaká je zadána v rámci podmínek produktu, musí se jednat o placené licencované SQL Server instanci. U sekundární instance je povolena následující aktivita: kontroly konzistence databáze nebo CheckDB, úplné zálohování, zálohování transakčních protokolů a monitorování dat o využití prostředků. V případě krátké doby testování zotavení po havárii každé 90 dní můžete také spustit primární a odpovídající instanci zotavení po havárii. 
    1. Licence na službu Active SQL Server je pokrytá programem Software Assurance a umožňuje **jednu** pasivní sekundární SQL Server instanci, která má až stejnou velikost COMPUTE jako licencovaný aktivní server. 
-   1. Sekundární SQL Server virtuální počítač využívá [model licence](virtual-machines-windows-sql-ahb.md)BYOL (s vlastní licencí) nebo zvýhodněné hybridní využití Azure (AHB). 
+   1. Sekundární SQL Server virtuální počítač využívá licenci [pro zotavení po havárii](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure) v Azure Portal.
 
 1. **Můžu změnit virtuální počítač tak, aby používal vlastní licenci SQL Serveru, pokud byl vytvořený z některé z imagí z galerie s průběžnými platbami?**
 
@@ -163,8 +163,8 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 1. **Kde můžu získat instalační médium pro změnu edice nebo verze SQL Server?**
 
-  Zákazníci, kteří mají [program Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) , mohou získat instalační média z [centra](https://www.microsoft.com/Licensing/servicecenter/default.aspx)multilicenčního programu. Zákazníci, kteří nemají Software Assurance, mohou použít instalační médium z webu Marketplace SQL Server image virtuálního počítače, která má požadovanou edici.
-
+   Zákazníci, kteří mají [program Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) , mohou získat instalační média z [centra](https://www.microsoft.com/Licensing/servicecenter/default.aspx)multilicenčního programu. Zákazníci, kteří nemají Software Assurance, mohou použít instalační médium z webu Marketplace SQL Server image virtuálního počítače, která má požadovanou edici.
+   
 1. **Jak se v SQL Serverm virtuálním počítači používají aktualizace a aktualizace Service Pack?**
 
    Virtuální počítače umožňují kontrolu hostitelského počítače včetně doby a způsobu použití aktualizací. Pro operační systém můžete aktualizace systému Windows nainstalovat ručně nebo můžete povolit Plánovací službu s názvem [automatizované opravy](virtual-machines-windows-sql-automated-patching.md). Automatizované opravy nainstalují jakékoli aktualizace, které jsou označené jako důležité, včetně aktualizací SQL Serveru v této kategorii. Ostatní volitelné aktualizace SQL Server se musí instalovat ručně.
@@ -172,6 +172,12 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 1. **Můžu upgradovat SQL Server 2008/2008 R2 po registraci pomocí poskytovatele prostředků SQL Server virtuálního počítače?**
 
    Ano. K upgradu verze a edice SQL Server můžete použít libovolné instalační médium a pak můžete upgradovat [IaaS režim rozšíření SQL](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes), a to z _žádného agenta_ na _úplný_. Díky tomu budete mít přístup ke všem výhodám rozšíření SQL IaaS, jako je Správa portálu, automatizované zálohování a automatizované opravy. 
+
+1. **Jak mohu získat bezplatné rozšířené aktualizace zabezpečení pro můj konec podpory SQL Server 2008 a SQL Server 2008 R2?**
+
+   [Bezplatné rozšířené aktualizace zabezpečení](virtual-machines-windows-sql-server-2008-eos-extend-support.md) můžete získat přesunutím SQL Server tak, jak se nachází na virtuálním počítači Azure SQL. Další informace najdete v tématu [konec možností podpory](/sql/sql-server/end-of-support/sql-server-end-of-life-overview). 
+  
+   
 
 ## <a name="general"></a>Obecné
 

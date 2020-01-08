@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e7d181416123c96e2462180a82c6d0b9670ef5fc
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3b16d7cbba63be9f50b0d186b2162a5755b76802
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687125"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75375011"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Síťové požadavky pro App Service Environment #
 
@@ -108,8 +108,8 @@ Pokud změníte nastavení DNS virtuální sítě, ve které je váš přihláš
 
 Kromě funkčních závislostí pomocného mechanismu je několik dalších položek, které se týkají prostředí portálu. Některé funkce v Azure Portal závisí na přímém přístupu k _webu SCM_. Pro každou aplikaci v Azure App Service jsou k dispozici dvě adresy URL. První adresa URL má přístup k vaší aplikaci. Druhá adresa URL má přístup k webu SCM, který se také nazývá _Konzola Kudu_. K funkcím, které používají web SCM, patří:
 
--   Webové úlohy
--   Functions
+-   Web Jobs
+-   Funkce
 -   Streamování protokolů
 -   Kudu
 -   Rozšíření
@@ -152,7 +152,7 @@ Skupin zabezpečení sítě se dá nakonfigurovat přes Azure Portal nebo přes 
 
 Požadované položky v NSG, aby mohl funkce pomocného mechanismu provozu fungovat:
 
-**Příjem**
+**Příchozí**
 * ze značky služby IP AppServiceManagement na portech 454 455
 * z nástroje pro vyrovnávání zatížení na portu 16001
 * z podsítě služby přihlašování do podsítě pomocného mechanismu na všech portech
@@ -200,7 +200,7 @@ Chcete-li vytvořit stejné trasy ručně, postupujte podle následujících kro
 
 3. V uživatelském rozhraní směrovací tabulky vyberte **trasy** > **Přidat**.
 
-4. Nastavte **typ dalšího segmentu směrování** na **Internet** a **předponu adresy** na **0.0.0.0/0**. Vyberte **Save** (Uložit).
+4. Nastavte **typ dalšího segmentu směrování** na **Internet** a **předponu adresy** na **0.0.0.0/0**. Vyberte **Uložit**.
 
     Pak se zobrazí něco podobného následujícímu:
 
@@ -244,7 +244,7 @@ Pokud jsou koncové body služby povolené v podsíti s instancí SQL Azure, mus
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ss-cert.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md

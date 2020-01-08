@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 5e6910db7765c4cb8f151401a6803e6d4d3f998e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c666d718586d3e5351974da287a91f6a3a8c04ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159754"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459155"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
 Azure umožňuje spouštět aplikace a virtuální počítače na sdílené fyzické infrastruktuře. Jednou z primárních motivů pro spouštění aplikací v cloudovém prostředí je schopnost distribuovat náklady na sdílené prostředky mezi více zákazníků. Tento postup víceklientské architektury vylepšuje efektivitu díky multiplexování prostředků mezi různými zákazníky s nízkými náklady. Bohužel taky představuje riziko sdílení fyzických serverů a dalších prostředků infrastruktury ke spouštění citlivých aplikací a virtuálních počítačů, které můžou patřit k libovolnému a potenciálně škodlivému uživateli.
@@ -73,7 +73,7 @@ Azure RBAC má tři základní role, které se vztahují na všechny typy prost�
 
 - **Čtenář** si může zobrazit existující prostředky Azure.
 
-![Access Control na základě rolí Azure](./media/isolation-choices/azure-isolation-fig3.png)
+![Řízení přístupu na základě role v Azure](./media/isolation-choices/azure-isolation-fig3.png)
 
 Zbývající role RBAC v Azure umožňují správu konkrétních prostředků Azure. Například role Přispěvatel virtuálních počítačů umožňuje uživateli vytvářet a spravovat virtuální počítače. Neuděluje jim přístup k Virtual Network Azure ani k podsíti, ke které se virtuální počítač připojuje.
 
@@ -149,7 +149,7 @@ Komunikace mezi řadičem infrastruktury a agentem je jednosměrná. Agent imple
 Izolace se rozšíří z kořenového virtuálního počítače z virtuálních počítačů hosta a virtuálních počítačů hosta od sebe navzájem. Výpočetní uzly jsou také izolované od uzlů úložiště pro zvýšení ochrany.
 
 
-Hypervisor a operační systém hostitele poskytují filtry síťového paketu, které vám pomůžou zajistit, aby nedůvěryhodní virtuální počítače nemohly generovat falešný provoz nebo přijímaly provoz, který na ně neřeší, přímý provoz do koncových bodů chráněné infrastruktury nebo jejich odesílání a příjem. nevhodný přenos všesměrového vysílání.
+Hypervisor a hostitelský operační systém poskytují filtry síťového paketu, které vám pomůžou zajistit, aby nedůvěryhodní virtuální počítače nemohly vygenerovat falešný provoz nebo přijímat provoz, který se na ně nevztahují, přímý provoz na koncové body chráněné infrastruktury nebo odesílali a přijímali nevhodný provoz všesměrového vysílání.
 
 
 ### <a name="additional-rules-configured-by-fabric-controller-agent-to-isolate-vm"></a>Další pravidla konfigurovaná agentem řadiče prostředků infrastruktury k izolaci virtuálního počítače
@@ -196,7 +196,7 @@ Data úložiště IP je možné chránit před neautorizovanými uživateli pros
 
 ### <a name="encryption"></a>Šifrování
 Azure nabízí pro ochranu dat následující typy šifrování:
--   Šifrování při přenosu
+-   Šifrování během přenosu
 
 -   Šifrování v klidovém stavu
 
@@ -205,7 +205,7 @@ Azure nabízí pro ochranu dat následující typy šifrování:
 
 -   [Šifrování na úrovni přenosu](../../storage/common/storage-security-guide.md), jako je například https při přenosu dat do nebo z Azure Storage.
 
--   [Šifrování kabelů](../../storage/common/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares), jako je například šifrování SMB 3,0 pro sdílené složky Azure.
+-   [Šifrování kabelů](../../storage/common/storage-security-guide.md), jako je například šifrování SMB 3,0 pro sdílené složky Azure.
 
 -   [Šifrování na straně klienta](../../storage/common/storage-security-guide.md), aby se data zašifroval před přenosem do úložiště a dešifrují data poté, co se přenesou z úložiště.
 

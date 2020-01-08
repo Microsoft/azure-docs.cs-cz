@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d98fdab6dcd0abb70967d1e17d138a860a31da5f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 0610b235d218c24c108e39aeb9bd3b2cf8c9c663
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039306"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463436"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Připojení spravovaného datového disku k virtuálnímu počítači s Windows pomocí webu Azure portal
 
@@ -21,7 +21,7 @@ V tomto článku se dozvíte, jak připojit nový spravovaného datového disku 
 
 ## <a name="add-a-data-disk"></a>Přidání datového disku
 
-1. V [webu Azure portal](https://portal.azure.com), v nabídce na levé straně vyberte **virtuálních počítačů**.
+1. Chcete-li přidat datový disk, otevřete [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **virtuální počítače**.
 2. Vyberte virtuální počítač ze seznamu.
 3. Na **virtuálního počítače** stránce **disky**.
 4. Na **disky** stránce **přidat datový disk**.

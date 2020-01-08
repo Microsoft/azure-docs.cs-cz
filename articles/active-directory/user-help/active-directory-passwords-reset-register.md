@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9748c0d04f958648f7919b7ac29dc58d5a137ac
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a6dddd13f31366e5a99d6c68ab82b048de4064b2
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279050"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681357"
 ---
 # <a name="register-your-verification-method-info-to-reset-your-own-password"></a>Registrace informací o metodě ověřování pro resetování vlastního hesla
 
@@ -29,7 +29,7 @@ Jako koncový uživatel můžete resetovat heslo nebo odemknout účet, pokud po
 
 ## <a name="register-or-confirm-authentication-data-with-sspr"></a>Registrace nebo potvrzení ověřovacích dat pro samoobslužné resetování hesla
 
-1. Na zařízení otevřete webový prohlížeč a pak na [registrační stránku pro resetování hesla](https://aka.ms/ssprsetup).
+1. Na zařízení otevřete webový prohlížeč a pak na [registrační stránku pro resetování hesla](https://account.activedirectory.windowsazure.com/PasswordReset/Register.aspx?regref=ssprsetup).
 2. Zadejte své uživatelské jméno a heslo, které zadal správce.
 3. V závislosti na tom, jak vaši pracovníci IT nakonfigurovali nějaké věci, můžete nakonfigurovat a ověřit jednu z následujících možností. Pokud váš správce má vaše oprávnění k používání vašich informací, může pro vás naplnit některé informace.
     * **Telefon do kanceláře**: tuto možnost může nastavit jenom správce.

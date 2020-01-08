@@ -1,6 +1,6 @@
 ---
-title: Práce s velkými škálovacími sadami virtuálních počítačů Azure | Dokumentace Microsoftu
-description: Co potřebujete vědět k používání velkých škálovacích sad virtuálních počítačů Azure
+title: Práce s velkými Virtual Machine Scale Setsmi Azure
+description: Co potřebujete znát o velkých sadách virtuálních počítačů Azure, aby je bylo možné použít ve své aplikaci.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: rajsqr
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/9/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 46ca46c99187b14974b78ccc4acc134a5f716b05
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 839d889783a7ef3bcd602c37a4975ddeea4e2a16
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326702"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459334"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Práce s velkými škálovacími sadami virtuálních počítačů
 Nyní můžete vytvořit [škálovací sady virtuálních počítačů](/azure/virtual-machine-scale-sets/) Azure s kapacitou až 1 000 virtuálních počítačů. V tomto dokumentu je _velká škálovací sada virtuálních počítačů_ definována jako škálovací sada umožňující škálování na více než 100 virtuálních počítačů. Tato funkce se nastavuje pomocí vlastnosti škálovací sady (_singlePlacementGroup=False_). 
@@ -50,7 +50,7 @@ Při vytváření škálovací sady na webu Azure Portal stačí zadat *Počet i
 
 ![](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
 
-K vytvoření velké škálovací sady virtuálních počítačů můžete použít příkaz [Azure CLI](https://github.com/Azure/azure-cli) _az vmss create_. Tento příkaz v závislosti na argumentu _instance-count_ nastaví inteligentní výchozí hodnoty, jako například velikost podsítě:
+Velkou sadu škálování virtuálního počítače můžete vytvořit pomocí příkazu [Azure CLI](https://github.com/Azure/azure-cli) _AZ VMSS Create_ . Tento příkaz v závislosti na argumentu _instance-count_ nastaví inteligentní výchozí hodnoty, jako například velikost podsítě:
 
 ```bash
 az group create -l southcentralus -n biginfra

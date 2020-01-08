@@ -1,5 +1,5 @@
 ---
-title: Odebrání účtů z mezipaměti při odhlašování – Microsoft Identity Platform | Azure
+title: Odebrání účtů z mezipaměti tokenů při odhlašování – Microsoft Identity Platform | Azure
 description: Zjistěte, jak odebrat účet z mezipaměti tokenů při odhlášení.
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 375382b1245186197657c5067e3c5b4ec2b15655
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5472b424f7d2b44b62e6e4495afaf7bdfbbc8439
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961654"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423514"
 ---
 # <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>Odebrání účtů z mezipaměti při globálním odhlašování
 
@@ -38,7 +38,7 @@ Tento mechanismus je znázorněn v metodě `AddMsal()` [WebAppServiceCollectionE
 
 **Adresa URL pro odhlášení** , kterou jste zaregistrovali pro vaši aplikaci, vám umožní implementovat jednotné odhlašování. Microsoft Identity Platform `logout` Endpoint zavolá **adresu URL pro odhlášení** registrovanou ve vaší aplikaci. K tomuto volání dochází, pokud se odhlášení iniciovalo z vaší webové aplikace nebo z jiné webové aplikace nebo prohlížeče. Další informace najdete v tématu [jednotné odhlašování](v2-protocols-oidc.md#single-sign-out).
 
-```CSharp
+```csharp
 public static class WebAppServiceCollectionExtensions
 {
  public static IServiceCollection AddMsal(this IServiceCollection services, IConfiguration configuration, IEnumerable<string> initialScopes, string configSectionName = "AzureAd")

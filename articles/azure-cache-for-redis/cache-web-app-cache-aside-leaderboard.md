@@ -1,18 +1,18 @@
 ---
-title: Kurz pro vytvoření webové aplikace s mezipamětí Azure pro Redis, která používá model doplňování mezipaměti
-description: Naučte se, jak vytvořit webovou aplikaci s využitím mezipaměti Azure pro Redis, která používá model doplňování mezipaměti.
+title: 'Kurz: Vytvoření webové aplikace (kromě mezipaměti) – mezipaměť Azure pro Redis'
+description: Naučte se, jak vytvořit webovou aplikaci s mezipamětí Azure pro Redis, která používá model doplňování mezipaměti.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.author: yegu
-ms.openlocfilehash: dbd8250da46e640aaa9403430ae0fbfaa9b181c8
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: e8b8feff0b66aa0b48c88b43049594003b20e5c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121512"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411938"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Kurz: Vytvoření tabulky výsledků s principem s doplňováním mezipaměti aplikací v ASP.NET
 
@@ -656,7 +656,7 @@ V této části zřídíte novou databázi SQL Azure pro aplikaci, která se bud
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Název databáze** | *ContosoTeamsDatabase* | Platné názvy databází najdete v tématu [Identifikátory databází](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers). |
    | **Předplatné** | *Vaše předplatné*  | Vyberte stejné předplatné, které jste použili k vytvoření mezipaměti a hostování služby App Service. |
-   | **Skupina prostředků**  | *Testovací_skupina_prostředků* | Klikněte na **Použít existující** a použijte stejnou skupinu prostředků, do které jste umístili mezipaměť a App Service. |
+   | **Skupina prostředků**  | *TestResourceGroup* | Klikněte na **Použít existující** a použijte stejnou skupinu prostředků, do které jste umístili mezipaměť a App Service. |
    | **Výběr zdroje** | **Prázdná databáze** | Začněte s prázdnou databází. |
 
 1. V části **Server** klikněte na **Konfigurovat požadované nastavení** > **Vytvořit nový server** a zadejte následující informace. Potom klikněte na tlačítko **Vybrat**:
@@ -703,7 +703,7 @@ V tomto kroku kurzu publikujete aktualizace aplikace do Azure a spustíte ji v c
 
     | Akce | Popis |
     | --- | --- |
-    | Vytvořit nový |Vytvoření nového týmu. |
+    | Vytvořit nové |Vytvoření nového týmu. |
     | Odehrát sezónu |Odehrání sezóny her, aktualizace týmových statistik a vymazání zastaralých dat z mezipaměti. |
     | Vymazat mezipaměť |Vymazání týmových statistik z mezipaměti. |
     | Seznam z mezipaměti |Načtení týmových statistik z mezipaměti. Dojde-li k neúspěšnému přístupu do mezipaměti, statistiky se načtou z databáze a uloží se do mezipaměti pro další použití. |

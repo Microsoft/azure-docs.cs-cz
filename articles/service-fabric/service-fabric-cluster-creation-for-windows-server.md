@@ -1,25 +1,16 @@
 ---
-title: Vytvoření samostatného clusteru Azure Service Fabric | Microsoft Docs
+title: Vytvoření samostatného clusteru Azure Service Fabric
 description: Vytvořte cluster Azure Service Fabric na jakémkoli počítači (fyzickém nebo virtuálním) s Windows serverem, ať už je to místní nebo v jakémkoli cloudu.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 31349169-de19-4be6-8742-ca20ac41eb9e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: 6fce1957101050c6ff3a2c3aba2b4b87d4f66f1d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: fbaea9324d82e22a1ab3c6c03a9ebec045bea64b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554643"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463236"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Vytvoření samostatného clusteru běžícího na Windows serveru
 Azure Service Fabric můžete použít k vytvoření clusterů Service Fabric na všech virtuálních počítačích nebo počítačích se systémem Windows Server. To znamená, že můžete nasadit a spouštět aplikace Service Fabric v jakémkoli prostředí, které obsahuje sadu propojených počítačů se systémem Windows Server, je místní nebo s jakýmkoli poskytovatelem cloudu. Service Fabric poskytuje instalační balíček pro vytváření clusterů Service Fabric s názvem samostatný balíček Windows serveru. Tradiční Service Fabric clustery v Azure jsou k dispozici jako spravovaná služba, zatímco samostatné clustery Service Fabric jsou samoobslužné.
@@ -27,7 +18,7 @@ Azure Service Fabric můžete použít k vytvoření clusterů Service Fabric na
 Tento článek vás provede kroky pro vytvoření samostatného clusteru Service Fabric.
 
 > [!NOTE]
-> Tento samostatný balíček Windows serveru je komerčně dostupný zdarma a může se používat pro produkční nasazení. Tento balíček může obsahovat nové funkce Service Fabric, které jsou ve verzi Preview. Posuňte se dolů k[funkcím verze Preview, které jsou součástí tohoto balíčku](#previewfeatures_anchor). v části pro seznam funkcí verze Preview. [Kopii smlouvy EULA](https://go.microsoft.com/fwlink/?LinkID=733084) si můžete stáhnout hned teď.
+> Tento samostatný balíček Windows serveru je komerčně dostupný zdarma a může se používat pro produkční nasazení. Tento balíček může obsahovat nové funkce Service Fabric, které jsou ve verzi Preview. Posuňte se dolů k[funkcím verze Preview, které jsou součástí tohoto balíčku](#previewfeatures_anchor). v části pro seznam funkcí verze Preview. Je možné [stáhnout kopii této smlouvy EULA](https://go.microsoft.com/fwlink/?LinkID=733084) nyní.
 > 
 > 
 
@@ -135,7 +126,7 @@ Pokud se chcete připojit k nezabezpečenému clusteru, spusťte následující 
 Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client connection end point port>
 ```
 
-Například:
+Příklad:
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 ```
@@ -166,7 +157,7 @@ Podle toho, jak se vaše obchodní potřeby mění, můžete uzly do samostatné
 ## <a name="remove-a-cluster"></a>Odebrat cluster
 Chcete-li cluster odebrat, spusťte skript *RemoveServiceFabricCluster.ps1* prostředí PowerShell ze složky balíčku a předejte mu cestu ke konfiguračnímu souboru JSON. Volitelně můžete určit umístění pro protokol odstranění.
 
-Tento skript se dá spustit na jakémkoli počítači, který má oprávnění správce ke všem počítačům, které jsou uvedené jako uzly v konfiguračním souboru clusteru. Počítač, ve kterém je tento skript spuštěn, nemusí být součástí clusteru.
+Tento skript můžete spustit na jakýkoli počítač, který má přístup správce pro všechny počítače, které jsou označeny jako uzly v clusteru konfigurační soubor. Počítače, ve kterém se skript spouští na nemusí být součástí clusteru.
 
 ```powershell
 # Removes Service Fabric from each machine in the configuration

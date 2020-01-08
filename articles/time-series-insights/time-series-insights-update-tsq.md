@@ -1,6 +1,6 @@
 ---
 title: Dotazování na data ve verzi Preview – Azure Time Series Insights | Microsoft Docs
-description: Přečtěte si o Azure Time Series Insightsch dotazování dat ve verzi Preview.
+description: Přehled funkcí dotazování dat a REST API HTTP Azure Time Series Insights ve verzi Preview.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/21/2019
+ms.date: 12/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: f44aa5c0a412dc53f4b1a5f127887257a1b0b550
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 53693c64ff03146619e17b276a1f817e69f5ed6e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006314"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374574"
 ---
 # <a name="data-querying-in-azure-time-series-insights-preview"></a>Dotazování na data v Azure Time Series Insights Preview
 
@@ -40,7 +40,7 @@ Podporují se následující základní rozhraní API.
 K dispozici jsou následující rozhraní API prostředí:
 
 * [Získat rozhraní API prostředí](/rest/api/time-series-insights/management/environments/get): vrátí seznam prostředí, ke kterým má volající oprávnění k přístupu.
-* [Získat rozhraní API dostupnosti prostředí](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability): vrátí distribuci počtu událostí přes časové razítko události `$ts`. Toto rozhraní API pomáhá určit, jestli se v časovém razítku vyskytují nějaké události, a to tak, že vrátí počet událostí, pokud existují.
+* [Získat rozhraní API pro dostupnost prostředí](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability): vrátí distribuci počtu událostí přes časové razítko události `$ts`. Toto rozhraní API pomáhá určit, jestli se v časovém razítku vyskytují nějaké události, a to tak, že vrátí počet událostí, pokud existují.
 * [Získat rozhraní API pro schéma událostí](/rest/api/time-series-insights/dataaccess(preview)/query/geteventschema): vrátí metadata schématu události pro daný rozsah hledání. Toto rozhraní API pomáhá načíst všechna metadata a vlastnosti, které jsou ve schématu k dispozici pro daný rozsah hledání.
 
 ## <a name="time-series-model-query-tsm-q-apis"></a>Rozhraní API pro Time Series model – Query (TSM-Q)

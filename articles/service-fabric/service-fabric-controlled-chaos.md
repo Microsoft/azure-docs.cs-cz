@@ -1,81 +1,72 @@
 ---
-title: Zahájit Chaos na clusterech Service Fabric | Dokumentace Microsoftu
-description: Pomocí vkládání chyb a rozhraní API služeb analýzy clusteru pro správu Chaos v clusteru.
-services: service-fabric
-documentationcenter: .net
+title: Vyvolat chaos v clusterech Service Fabric
+description: Správa chaos v clusteru pomocí injektáže chyb a rozhraní API služby Analysis Services pro clustery
 author: motanv
-manager: anmola
-editor: motanv
-ms.assetid: 2bd13443-3478-4382-9a5a-1f6c6b32bfc9
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/05/2018
 ms.author: motanv
-ms.openlocfilehash: 7a22b17d45218c2f78220f980605b3c211495606
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 37b451abd0a519dff17aba9b2d6c42b4762f30cd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543739"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463166"
 ---
-# <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Zahájit řízeného chaosu na clusterech Service Fabric
-Ve velkém měřítku distribuovaných systémů, jako jsou ze své podstaty nespolehlivé cloudových infrastruktur. Azure Service Fabric umožňuje vývojářům psát reliable services v distribuované nespolehlivé infrastrukturu. Zápis robustní distribuované služby nespolehlivé infrastrukturu, vývojáři potřeba mít možnost Testovat stabilitu svoje služby během základní nespolehlivé infrastruktury prochází složité přechodů mezi stavy z důvodu chyby.
+# <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>NaChaos řízených v clusterech Service Fabric
+Rozsáhlé distribuované systémy, jako jsou cloudové infrastruktury, jsou v podstatě nespolehlivé. Azure Service Fabric umožňuje vývojářům psát spolehlivé distribuované služby nad nespolehlivou infrastrukturou. Aby mohli vývojáři psát robustní distribuované služby nad nespolehlivou infrastrukturou, musí být schopni testovat stabilitu svých služeb, zatímco základní nespolehlivá infrastruktura prochází složitými přechody stavu v důsledku chyb.
 
-[Vkládání chyb a Clusterová služba analýzy](https://docs.microsoft.com/azure/service-fabric/service-fabric-testability-overview) (označované také jako Fault Analysis Service) poskytuje vývojářům možnost vyvolat chyby k otestování svých služeb. Tyto cílové simulované chyby, jako je třeba [restartování oddílu](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps), může pomoct vykonávat nejběžnější přechodů. Ale cílové simulované chyby jsou tendenční podle definice a proto může přijít o chyby, které zobrazují se pouze v pevném předpovědět, dlouhé a komplikované posloupnost přechodů mezi stavy. Neposunutého testování, můžete použít Chaos.
+[Vkládání chyb a služba Analysis Service clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-testability-overview) (označované také jako služba analýzy chyb) umožňují vývojářům navolávat chyby při testování svých služeb. Tyto cílené simulované chyby, jako je [restartování oddílu](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps), můžou přispět k provádění nejběžnějších přechodů mezi stavy. Cílené simulované chyby se ale účtují podle definice, takže můžou přijít o chyby, které se zobrazují jenom v pevně předpokládaném, dlouhém a složitém pořadí přechodů mezi stavy. Pro nevyvážené testování můžete použít chaos.
 
-Chaos simuluje pravidelné, prokládané chyby (řádné i vynuceném) v rámci clusteru za dlouhou dobu. Bezproblémové selhání se skládá ze sady volání rozhraní API Service Fabric, například selhání replik restartování je bezproblémové selhání, protože to je zavřít následovaný otevřenou v replice. Odebrat repliky, přesunutí primární replika a sekundární replika přesunutí se řádné chyby vykonány podle Chaos. Vynuceném chyby se proces ukončí, jako je restartování uzlu a restartujte balíček kódu. 
+Chaos simuluje pravidelné, prokládané chyby (jak v rámci celého clusteru jsou bezproblémové i nedarované) po delší dobu. Plynulá chyba se skládá ze sady Service Fabric volání rozhraní API, například restartování repliky je bezproblémové selhání, protože se jedná o blízko následovaný otevřeným na replice. Odebrání repliky, přesunutí primární repliky a přesunutí sekundární repliky jsou další plynulé chyby, na které chaos přichází. Nedarované chyby se ukončí proces, jako je restartování uzlu a restartování balíčku kódu. 
 
-Po nakonfigurování Chaos rychlost a typ chyby, můžete začít Chaos pomocí jazyka C#, Powershellu nebo rozhraní REST API pro spuštění v clusteru a ve vašich službách generování chyb. Chaos ke spuštění za zadané časové období (třeba hodinu), po které zastaví Chaos můžete nakonfigurovat automaticky, nebo můžete volat rozhraní API StopChaos (C#, Powershellu a REST) kdykoli zastavit.
-
-> [!NOTE]
-> V současné podobě Chaos indukuje pouze bezpečné chyb, což znamená, že chybí externí chyb ztráty kvora, nebo ztrátě dat se nikdy neprovádí.
->
-
-Je spuštěn chaosu, vyvolá různé události, které zachycují stav spuštění v tuto chvíli. Například ExecutingFaultsEvent obsahuje všechny chyby, které Chaos se rozhodl ke spuštění v dané iterace. ValidationFailedEvent obsahuje podrobnosti o selhání ověření (stavu nebo stabilitu problémy), který byl nalezen během ověření clusteru. Můžete vyvolat rozhraní API GetChaosReport (C#, Powershellu nebo REST) Chcete-li získat sestavu spuštění Chaos. Tyto události získat uchovávaných v [spolehlivého slovníku](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections), která má zásady zkrácení závisí dvě konfigurace: **MaxStoredChaosEventCount** (výchozí hodnota je 25 000) a **StoredActionCleanupIntervalInSeconds** (výchozí hodnota je 3600). Každý *StoredActionCleanupIntervalInSeconds* kontroly Chaos a všechny, ale nejnovější *MaxStoredChaosEventCount* události, jsou vymazány z spolehlivého slovníku.
-
-## <a name="faults-induced-in-chaos"></a>Chyby vyvolané v chaosu
-Chaos generuje chyby napříč celý cluster Service Fabric a komprimuje chyb, které se nacházejí v měsíců nebo let do několika hodin. Kombinace prokládané chyb s vysokou odolnost rychlost vyhledá krajní případy, které může jinak mohla vynechat. Toto cvičení Chaos vede ke značným vylepšením kvality kódu služby.
-
-Chaos indukuje chyby z následujících kategorií:
-
-* Restartovat uzel
-* Restartujte balíček nasazenému kódu
-* Odstranění repliky
-* Restartujte na repliku
-* Přesunutí primární repliky (Konfigurovat)
-* Přesunout na sekundární repliku (Konfigurovat)
-
-Chaos běží v několika iteracích. Každé iterace se skládá z chyb a ověření clusteru zadanou dobu. Můžete nakonfigurovat čas strávený clusteru stabilizovat a pro ověření úspěšné. Pokud k selhání se nachází v ověření clusteru, Chaos generuje a trvá ValidationFailedEvent časové razítko UTC a podrobnosti o chybě. Představte si třeba nějaká instance chaosu, který je nastaven na spouštění hodinu s délkou maximálně tři souběžných chyb. Chaos indukuje tři chyby a pak ověřuje stav clusteru. Iteruje přes v předchozím kroku, dokud není výslovně zastavila prostřednictvím rozhraní API StopChaosAsync nebo hodinová předá. Pokud nebude v pořádku v kteroukoli iteraci, cluster (to znamená, nejsou stabilizaci nebo nebudou v rámci MaxClusterStabilizationTimeout předané v pořádku), vygeneruje ValidationFailedEvent Chaos. Tato událost ukazuje na to, že něco se pokazilo a může být nutné další šetření.
-
-Získat kterých chyby vyvolané chaosu, můžete použít API GetChaosReport (prostředí powershell, C# nebo REST). Rozhraní API získá další segment Chaos sestavy na základě předané pokračovací token nebo předaným čas rozsahu. Můžete zadat ContinuationToken zobrazíte další segment Chaos sestavy nebo můžete zadat časový rozsah prostřednictvím StartTimeUtc a EndTimeUtc, ale nemůže určit token ContinuationToken a časový rozsah ve stejném volání. Po více než 100 události Chaos se sestava Chaos se vrátí v příslušných segmentech, kde segment, který obsahuje více než 100 Chaos události.
-
-## <a name="important-configuration-options"></a>Důležité konfigurační možnosti
-* **TimeToRun**: Celková doba spuštění Chaos dříve, než se dokončí s úspěchem. Předtím, než bylo spuštěno dobu TimeToRun prostřednictvím rozhraní API StopChaos můžete zastavit Chaos.
-
-* **MaxClusterStabilizationTimeout**: Maximální dobu čekání před vytváření ValidationFailedEvent se obnoví dobrý stav clusteru. Toto je ke snížení zatížení v clusteru, zatímco se obnovuje. Provádí kontroly jsou:
-  * Pokud stav clusteru je v pořádku
-  * Pokud je služba stavu v pořádku.
-  * Pokud velikost sady replik cíl je dosaženo oddílu služby
-  * Že neexistují žádné replik InBuild
-* **MaxConcurrentFaults**: Maximální počet souběžných chyb, které jsou vyvolaných v každé iteraci. Převzetí služeb při selhání a přechod kombinacemi stavů, které prochází clusteru jsou také mnohem složitější, protože je vyšší číslo, tím více agresivní Chaos. 
+Jakmile nakonfigurujete chaos s frekvencí a typem chyb, můžete spustit chaos prostřednictvím C#, PowerShellu nebo REST API a začít vytvářet chyby v clusteru a ve vašich službách. Chaos můžete nakonfigurovat tak, aby se spouštěla po zadaném časovém období (například po dobu jedné hodiny), po kterém se chaos automaticky zastaví, nebo můžete volat rozhraníC#StopChaos API (, POWERSHELL nebo REST), abyste ho mohli kdykoli zastavit.
 
 > [!NOTE]
-> Bez ohledu na to jak velkou hodnotu *MaxConcurrentFaults* má Chaos zaručuje – chybí externí chyb - neexistuje žádné ztrátě kvora nebo ztrátě dat.
+> V jeho aktuální podobě chaos vystavuje pouze bezpečné chyby, což znamená, že při absenci externích chyb v důsledku ztráty kvora nedochází k neztrátě dat.
 >
 
-* **EnableMoveReplicaFaults**: Povolí nebo zakáže chyb, které způsobují primární nebo sekundární repliky přesunout. Tyto chyby jsou ve výchozím nastavení povolené.
-* **WaitTimeBetweenIterations**: Množství času čekat mezi iteracemi. To znamená množství času Chaos se pozastaví po provedení kruhové chyby a s dokončení odpovídající ověření stavu clusteru. Čím vyšší hodnota, nižší je míra vkládání průměrné selhání.
-* **WaitTimeBetweenFaults**: Množství času mezi dvěma po sobě jdoucích chyb v jedné iterace. Čím vyšší hodnota, nižší současnému (nebo překrývají) chyb.
-* **ClusterHealthPolicy**: Zásady stavu clusteru slouží k ověření stavu clusteru mezi iteracemi Chaos. Pokud stav clusteru došlo k chybě nebo pokud dojde k neočekávané výjimce během selhání spuštění, Chaos bude čekat před další-kontrolou stavu - poskytnout clusteru nějakou dobu recuperate 30 minut.
-* **Kontext**: Kolekce (string, string) zadejte páry klíč hodnota. Na mapě slouží k zaznamenání informací o spuštění Chaos. Nemůže existovat více než 100 takových dvojic a každý řetězec (klíče nebo hodnoty) může obsahovat nejvýše 4095 znaků. Toto mapování se nastavil starter tento Chaos se dá spustit volitelně ukládat kontextu o konkrétního spuštění.
-* **ChaosTargetFilter**: Tento filtr je možné na cílovém Chaos chyby pouze pro určité typy uzlů nebo jenom některých instancí aplikace. Pokud se nepoužívá ChaosTargetFilter, Chaos chyb všechny entity v clusteru. Pokud použijete ChaosTargetFilter Chaos chyb pouze entity, které splňují ChaosTargetFilter specifikace. Seznamy NodeTypeInclusionList a ApplicationInclusionList povolit pouze sjednocení sémantiku. Jinými slovy není možné určit průsečíkem seznamy NodeTypeInclusionList a ApplicationInclusionList. Například není možné určit "selhání tuto aplikaci, pouze pokud je na daný typ uzlu." Jakmile entity je součástí seznamy NodeTypeInclusionList a ApplicationInclusionList, nelze entity vyloučit pomocí ChaosTargetFilter. I v případě, že se nezobrazují applicationX v ApplicationInclusionList v iteraci některé Chaos applicationX může být došlo k chybě vzhledem k tomu, že se stane se v uzlu nodeTypeY, který je součástí seznamy NodeTypeInclusionList. Pokud seznamy NodeTypeInclusionList a ApplicationInclusionList jsou null nebo prázdný, je vyvolána ArgumentException.
-    * **NodeTypeInclusionList**: Seznam typů uzlů chcete zahrnout chyby Chaos. Všechny typy chyb (restartovat uzel, restartujte codepackage, repliku odstranit, restartovat repliky, přesunutí primární a sekundární) jsou povolené pro uzly z těchto typů uzlů. Pokud nodetype (Řekněme, že NodeTypeX) se nezobrazují v seznamy NodeTypeInclusionList, pak pro uzly NodeTypeX se nikdy povolí úrovně chyby uzlu (například NodeRestart), ale balíček a repliky chyb kódu je možné povolit pro NodeTypeX pořád, pokud aplikace v Jsou umístěny v uzlu NodeTypeX ApplicationInclusionList se stane. Maximálně 100 názvy typů uzlu mohou být součástí tohoto seznamu, tento počet zvýšit, je nutné konfiguraci MaxNumberOfNodeTypesInChaosTargetFilter upgradovat konfiguraci.
-    * **ApplicationInclusionList**: Seznam identifikátorů URI aplikace chcete zahrnout chyby Chaos. Všechny repliky patří do těchto aplikací služeb jsou vydávání kompaktních repliky chyb (restartování repliky, odebrat repliky, přesunutí primárního a sekundárního přesunutí) Chaos. Pouze v případě, že balíček kódu je hostitelem repliky jenom tyto aplikace se může restartovat Chaos balíček kódu. Pokud aplikace v tomto seznamu nezobrazí, se můžete stále být došlo k chybě v iteraci některé Chaos Pokud ukončení aplikace na uzlu typu uzlu, který je součástí seznamy NodeTypeInclusionList. Nicméně pokud applicationX se váže na nodeTypeY prostřednictvím omezení umístění a applicationX chybí z ApplicationInclusionList a nodeTypeY chybí z seznamy NodeTypeInclusionList, pak applicationX nikdy selže. Maximálně 1000 názvy aplikací mohou být součástí tohoto seznamu, tento počet zvýšit, je nutné konfiguraci MaxNumberOfApplicationsInChaosTargetFilter upgradovat konfiguraci.
+I když je spuštěný chaos, vytváří různé události, které zachytí stav běhu v daném okamžiku. Například ExecutingFaultsEvent obsahuje všechny chyby, které chaos se rozhodly spustit v této iteraci. ValidationFailedEvent obsahuje podrobnosti o selhání ověřování (stav nebo problémy se stabilitou), které byly zjištěny během ověřování clusteru. Můžete vyvolat rozhraní API GetChaosReport (C#, POWERSHELL nebo REST), abyste získali zprávu o běhu chaos. Tyto události se chovají ve [spolehlivém slovníku](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections), který má zásady zkracování, které jsou vynásobené dvěma konfiguracemi: **MaxStoredChaosEventCount** (výchozí hodnota je 25000) a **StoredActionCleanupIntervalInSeconds** (výchozí hodnota je 3600). Všechny *StoredActionCleanupIntervalInSeconds* chaos kontroly a všechny kromě nejaktuálnějších událostí *MaxStoredChaosEventCount* jsou vymazány ze spolehlivého slovníku.
 
-## <a name="how-to-run-chaos"></a>Jak spustit chaosu
+## <a name="faults-induced-in-chaos"></a>Chyby vyvolané v chaos
+Chaos vygeneruje chyby napříč celým clusterem Service Fabric a komprimuje chyby, které se zobrazují v měsících nebo rocích, do několika hodin. Kombinace vzájemně vykládaných chyb s vysokou mírou chyb vyhledává rohové případy, které by jinak mohly chybět. Toto cvičení chaos vede k výraznému zlepšení kvality kódu služby.
+
+Chaos vygenerovala chyby z následujících kategorií:
+
+* Restartování uzlu
+* Restartování nasazeného balíčku kódu
+* Odebrání repliky
+* Restartování repliky
+* Přesunutí primární repliky (konfigurovatelné)
+* Přesunutí sekundární repliky (konfigurovatelné)
+
+Chaos se spouští v několika iteracích. Každá iterace se skládá z chyb a ověření clusteru v zadaném období. Můžete nakonfigurovat čas strávený na stabilizaci clusteru a ověřit úspěšné ověření. Pokud se v ověření clusteru najde chyba, chaos vygeneruje a zachovává ValidationFailedEvent s časovým razítkem UTC a podrobnostmi o selhání. Představte si například instanci chaos, která je nastavená tak, aby běžela po určitou hodinu s maximálně třemi souběžnými chybami. Chaos vystaví tři chyby a potom ověří stav clusteru. Provede iteraci v předchozím kroku, dokud se explicitně nezastaví prostřednictvím rozhraní StopChaosAsync API nebo hodinových průchodů. Pokud cluster v žádné iteraci přestane být v pořádku (to znamená, že se nejedná o dobrý stav v rámci předaného MaxClusterStabilizationTimeout), chaos vygeneruje ValidationFailedEvent. Tato událost znamená, že došlo k chybě nějakého problému a může vyžadovat další šetření.
+
+Pokud chcete zjistit, které chyby chaos vyvolané, můžete použít GetChaosReport API (PowerShell, C#nebo REST). Rozhraní API získá další segment sestavy chaos na základě tokenu pro pokračování nebo předaného časového rozsahu. Můžete buď zadat token continuationtoken k získání dalšího segmentu sestavy chaos, nebo můžete zadat časový rozsah prostřednictvím StartTimeUtc a EndTimeUtc, ale nemůžete zadat token continuationtoken i časový rozsah ve stejném volání. V případě, že existuje více než 100 událostí chaos, je vrácena zpráva chaos v segmentech, kde segment neobsahuje více než 100 událostí chaos.
+
+## <a name="important-configuration-options"></a>Důležité možnosti konfigurace
+* **TimeToRun**: celkový čas, který chaos spustí před tím, než se dokončí úspěšně. Chaos můžete zastavit předtím, než se spustí pro TimeToRun období prostřednictvím rozhraní StopChaos API.
+
+* **MaxClusterStabilizationTimeout**: maximální doba, po kterou se má čekat na to, aby se cluster stal dobrým stavem, než bude vyprodukována ValidationFailedEvent. To čeká na snížení zatížení clusteru během obnovování. Provedené kontroly:
+  * Pokud je stav clusteru v pořádku
+  * Pokud je stav služby v pořádku
+  * Pokud je dosažena cílová velikost sady replik pro oddíl služby
+  * Neexistují žádné repliky InBuild.
+* **MaxConcurrentFaults**: maximální počet souběžných chyb, které jsou v každé iteraci vyvolané. Čím vyšší je počet, čímější je chaos a že jsou kombinace převzetí služeb při selhání a přechody stavu, se kterými cluster projde, taky složitější. 
+
+> [!NOTE]
+> Bez ohledu na to, jak vysoká hodnota *MaxConcurrentFaults* má, chaos záruky – při absenci externích chyb – nedochází ke ztrátě kvora nebo ztrátě dat.
+>
+
+* **EnableMoveReplicaFaults**: povolí nebo zakáže chyby, které způsobují přesunutí primárních nebo sekundárních replik. Ve výchozím nastavení jsou tyto chyby povolené.
+* **WaitTimeBetweenIterations**: doba, po kterou se mají čekat mezi iteracemi. To znamená, že množství času chaos se po provedení zaokrouhlení chyb a dokončení odpovídajícího ověření stavu clusteru pozastaví. Čím vyšší je hodnota, tím nižší je průměrná míra vkládání chyb.
+* **WaitTimeBetweenFaults**: množství času, které se má čekat mezi dvěma po sobě jdoucími chybami v rámci jedné iterace. Čím vyšší je hodnota, tím nižší je souběžnost (nebo překrytí mezi) chybami.
+* **ClusterHealthPolicy**: zásada stavu clusteru se používá k ověření stavu clusteru v mezi chaos iteracemi. Pokud je stav clusteru chyba nebo pokud dojde k neočekávané výjimce během provádění chyby, chaos počká 30 minut před dalším stavem-check-k tomu, aby cluster po nějakou dobu recuperate.
+* **Context**: kolekce (String, String) typu páry klíč-hodnota. Mapu lze použít k zaznamenání informací o spuštění chaos. Takové páry nesmí být větší než 100 a každý řetězec (klíč nebo hodnota) může mít maximálně 4095 znaků. Tato mapa je nastavená počáteční verzí chaos spuštění na volitelně uložit kontext týkající se konkrétního běhu.
+* **ChaosTargetFilter**: Tento filtr lze použít k zacílení chyb chaos pouze na určité typy uzlů nebo pouze na určité instance aplikace. Pokud se ChaosTargetFilter nepoužívá, chaos chyby všechny entity clusteru. Pokud se používá ChaosTargetFilter, chaos chyby pouze ty entity, které splňují specifikaci ChaosTargetFilter. NodeTypeInclusionList a ApplicationInclusionList umožňují jenom sémantiku sjednocení. Jinými slovy není možné zadat průnik NodeTypeInclusionList a ApplicationInclusionList. Například není možné zadat "selhání této aplikace pouze v případě, že je na tomto typu uzlu". Jakmile je entita zahrnutá v NodeTypeInclusionList nebo ApplicationInclusionList, tuto entitu nejde vyloučit pomocí ChaosTargetFilter. I v případě, že se applicationX v ApplicationInclusionList nezobrazí, může v některých chaos iterace applicationX dojít k chybě, protože se stane na uzlu nodeType, který je součástí NodeTypeInclusionList. Pokud mají hodnoty NodeTypeInclusionList i ApplicationInclusionList hodnotu null nebo jsou prázdné, je vyvolána výjimka ArgumentException.
+    * **NodeTypeInclusionList**: seznam typů uzlů, které se mají zahrnout do chyb chaos. Všechny typy chyb (restartovat uzel, restartovat codepackage, odebrat repliku, restartovat repliku, přesunout primární a přesunout sekundární) jsou povolené pro uzly těchto typů uzlů. Pokud se NodeTypeX (NodeType) nezobrazí v NodeTypeInclusionList, pak chyby na úrovni uzlu (jako NodeRestart) nebudou nikdy povoleny pro uzly NodeTypeX, ale pokud je aplikace v nástroji, může být stále povolená Chyba balíčku kódu a repliky. ApplicationInclusionList se bude nacházet na uzlu NodeTypeX. V tomto seznamu může být zahrnutých maximálně 100 názvů typů uzlů. aby se tento počet zvýšil, je pro konfiguraci MaxNumberOfNodeTypesInChaosTargetFilter nutný upgrade konfigurace.
+    * **ApplicationInclusionList**: seznam identifikátorů URI aplikace, které mají být zahrnuty do chyb chaos. Všechny repliky patřící ke službám těchto aplikací jsou snadněji k chybám repliky (restartování repliky, odebrání repliky, přesunutí primárního a přesunutí sekundárního) pomocí chaos. Chaos může restartovat balíček kódu pouze v případě, že balíček kódu hostuje pouze repliky těchto aplikací. Pokud se aplikace v tomto seznamu nezobrazí, může být stále chyba v některém chaos iteraci, pokud aplikace skončí na uzlu typu uzlu, který je součástí NodeTypeInclusionList. Pokud je však applicationX svázán s nodeType prostřednictvím omezení umístění a applicationX chybí od ApplicationInclusionList a uzel nodeType není v NodeTypeInclusionList, pak applicationX nebude nikdy chybět. V tomto seznamu může být zahrnutých maximálně 1000 názvů aplikací. aby se tento počet zvýšil, je pro konfiguraci MaxNumberOfApplicationsInChaosTargetFilter nutný upgrade konfigurace.
+
+## <a name="how-to-run-chaos"></a>Jak spustit chaos
 
 ```csharp
 using System;

@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: d628031515a9b0fdf3aa7b7ec88ee1b6b7f41f51
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 68cabbd00dd0b738590109cc39d8df82f5b7362d
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672193"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681161"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Správa plánu App Service v Azure
 
@@ -24,11 +24,15 @@ ms.locfileid: "74672193"
 
 Můžete vytvořit prázdný plán App Service, nebo můžete vytvořit plán jako součást vytváření aplikací.
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **Nový** > **webová aplikace** nebo jiný druh App Service aplikace.
+1. Na webu [Azure Portal](https://portal.azure.com) vyberte **Vytvořit prostředek**.
 
-   ![Vytvořte aplikaci v Azure Portal.][createWebApp]
+   ![Vytvořte prostředek v Azure Portal.][createResource] 
 
-2. Před konfigurací plánu App Service nakonfigurujte oddíl **podrobností instance** . Nastavení, jako je **publikování** a **operační systém** , může změnit dostupné cenové úrovně plánu App Service. **Oblast** určuje, kde se vytvoří plán App Service.
+1. Vyberte **nový** > **webové aplikace** nebo jiný druh aplikace App Service.
+
+   ![Vytvořte aplikaci v Azure Portal.][createWebApp] 
+
+2. Před konfigurací plánu App Service nakonfigurujte oddíl **podrobností instance** . Nastavení, jako je **publikování** a **operační systém** , může změnit dostupné cenové úrovně plánu App Service. **Oblast** určuje, kde se vytvoří plán App Service. 
    
 3. V části **plán App Service** vyberte existující plán nebo vytvořte plán výběrem možnosti **vytvořit nový**.
 
@@ -48,7 +52,7 @@ Aplikaci můžete přesunout do jiného plánu App Service, pokud se zdrojový a
 > Při vytváření plánu nemůžete zadat webový prostor, ale je možné zajistit, aby byl plán vytvořen ve stejném webovém prostoru jako stávající plán. V krátkém případě jsou všechny plány vytvořené se stejnou kombinací skupiny prostředků a oblastí nasazeny do stejného webspace. Pokud jste například vytvořili plán ve skupině prostředků a a v oblasti B, pak bude libovolný plán, který následně vytvoříte ve skupině prostředků a a oblast B, nasazen do stejného webspace. Všimněte si, že plány nemůžou po vytvoření přesunout webspaces, takže nemůžete přesunout plán do stejného webspaceu jako jiný plán, a to tak, že ho přesunete do jiné skupiny prostředků.
 > 
 
-1. V [Azure Portal](https://portal.azure.com)přejděte do aplikace, kterou chcete přesunout.
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **App Services** a vyberte aplikaci, kterou chcete přesunout.
 
 2. V nabídce vlevo vyberte **změnit App Service plán**.
 
@@ -92,8 +96,9 @@ Aby nedošlo k neočekávaným poplatkům, při odstranění poslední aplikace 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Horizontální navýšení kapacity aplikace v Azure](manage-scale-up.md)
+> [Škálování aplikace v Azure](manage-scale-up.md)
 
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png
 [createWebApp]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-web-app.png
+[createResource]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-a-resource.png

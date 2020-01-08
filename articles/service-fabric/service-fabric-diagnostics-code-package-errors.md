@@ -1,25 +1,16 @@
 ---
-title: Diagnostikujte běžné chyby balíčku kódu pomocí Service Fabric | Microsoft Docs
+title: Diagnostikujte běžné chyby balíčku kódu pomocí Service Fabric
 description: Přečtěte si, jak řešit běžné chyby balíčků kódu pomocí Azure Service Fabric
-services: service-fabric
-documentationcenter: .net
 author: grzuber
-manager: gkhanna
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 05/09/2019
 ms.author: grzuber
-ms.openlocfilehash: 320a55e8b14648b1d7e256855582ab31846a63cf
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 344fef70522240da2236a020c96308c472c9c545
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249226"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463110"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>Diagnostikujte běžné chyby balíčku kódu pomocí Service Fabric
 
@@ -61,11 +52,11 @@ Ukončovací kód | Popis
 Ukončovací kód | Hexadecimální hodnota | Krátký popis | Původní příčina | Potenciální Oprava
 --------- | --------- | ----------------- | ---------- | -------------
 3221225794 | 0xc0000142 | STATUS_DLL_INIT_FAILED | Tato chyba někdy znamená, že počítač má nedostatek prostoru v haldě plochy. Tato příčina je obzvláště pravděpodobná v případě, že máte mnoho procesů, které patří do vaší aplikace spuštěné na uzlu. | Pokud váš program není sestavený tak, aby reagoval na signály CTRL + C, můžete povolit nastavení **EnableActivateNoWindow** v manifestu clusteru. Povolení tohoto nastavení znamená, že se balíček kódu spustí bez okna grafického uživatelského rozhraní a neobdrží signály CTRL + C. Tato akce také snižuje množství prostoru haldy plochy, který každý proces spotřebovává. Pokud váš balíček kódu potřebuje přijmout signály CTRL + C, můžete zvětšit velikost haldy plochy uzlu.
-3762504530 | 0xe0434352 | Není k dispozici | Tato hodnota představuje kód chyby pro neošetřenou výjimku ze spravovaného kódu (tj. .NET). | Tento ukončovací kód označuje, že vaše aplikace vyvolala výjimku, která zůstává neošetřená a která ukončila proces. Jako první krok při určení toho, co aktivoval tuto chybu, proveďte ladění protokolů aplikace a souborů výpisu paměti.
+3762504530 | 0xe0434352 | Nevztahuje se | Tato hodnota představuje kód chyby pro neošetřenou výjimku ze spravovaného kódu (tj. .NET). | Tento ukončovací kód označuje, že vaše aplikace vyvolala výjimku, která zůstává neošetřená a která ukončila proces. Jako první krok při určení toho, co aktivoval tuto chybu, proveďte ladění protokolů aplikace a souborů výpisu paměti.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o [diagnostice jiných běžných scénářů](service-fabric-diagnostics-common-scenarios.md).
 * Získejte podrobnější přehled o Azure Monitorch protokolech a možnostech, které nabízí [Azure monitor přehled](../operations-management-suite/operations-management-suite-overview.md).
-* Přečtěte si další informace [](../log-analytics/log-analytics-alerts.md) o tom, jak protokoly Azure monitor upozorňování na pomoc při detekci a diagnostice.
+* Přečtěte si další informace o tom, jak protokoly Azure Monitor [upozorňování](../log-analytics/log-analytics-alerts.md) na pomoc při detekci a diagnostice.
 * Seznamte se s funkcemi [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) , které nabízí jako součást protokolů Azure monitor.

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: a06ea59af0776fe3decb0b56a3ef886f08b2dfda
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d7c88e500886453fbfb53655748ccf7025ab7d3d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100717"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374247"
 ---
-# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Automatické konfigurace skupin dostupnosti Always On v Azure Virtual Machines: Resource Manager
+# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Automatické konfigurace skupin dostupnosti Always On v Azure Virtual Machines: Správce prostředků
 
 V tomto kurzu se dozvíte, jak vytvořit SQL Server skupinu dostupnosti, která používá Azure Resource Manager virtuálních počítačů. Tento kurz používá ke konfiguraci šablony Azure Blade. Můžete zkontrolovat výchozí nastavení, zadat požadovaná nastavení a aktualizovat okna na portálu při procházení tohoto kurzu.
 
@@ -41,7 +41,7 @@ Všechny prostředky v tomto řešení patří do jedné skupiny prostředků.
 
 Než začnete s tímto kurzem, zkontrolujte následující:
 
-* Už máte účet Azure. Pokud ho ještě nemáte, zaregistrujte [si zkušební účet](https://azure.microsoft.com/pricing/free-trial/).
+* Už máte účet Azure. Pokud ho ještě nemáte, [Zaregistrujte si zkušební účet](https://azure.microsoft.com/pricing/free-trial/).
 * Už víte, jak pomocí grafického uživatelského rozhraní zřídit SQL Server virtuální počítač z Galerie virtuálních počítačů. Další informace najdete v tématu [zřízení virtuálního počítače s SQL Server v Azure](virtual-machines-windows-portal-sql-server-provision.md).
 * Už máte plnou znalosti skupin dostupnosti. Další informace najdete v tématu [skupiny dostupnosti Always On (SQL Server)](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server).
 
@@ -65,23 +65,23 @@ Azure poskytuje image galerie pro celé řešení. Vyhledání šablony:
 1. Přihlaste se k Azure Portal pomocí svého účtu.
 2. V Azure Portal kliknutím na **vytvořit prostředek** otevřete **nové** podokno.
 3. V podokně **Nový** vyhledejte **AlwaysOn**.
-   ![Najít šablonu AlwaysOn](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
+   ![najít šablonu AlwaysOn](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
 4. Ve výsledcích hledání vyhledejte **SQL Server clusteru AlwaysOn**.
-   ![Šablona AlwaysOn](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png)
+   ![](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png) šablony AlwaysOn
 5. V nabídce **Vybrat model nasazení**zvolte možnost **Správce prostředků**.
 
-### <a name="basics"></a>Základní informace
+### <a name="basics"></a>Základy
 Klikněte na **základy** a nakonfigurujte následující nastavení:
 
 * **Uživatelské jméno správce** je uživatelský účet, který má oprávnění správce domény a je členem role pevného serveru SQL Server sysadmin v obou instancích SQL Server. Pro tento kurz použijte **DomainAdmin**.
 * **Heslo** je heslo pro účet správce domény. Použijte složité heslo. Potvrďte heslo.
 * **Předplatné** je předplatné, které Azure účtuje na spouštění všech nasazených prostředků pro skupinu dostupnosti. Pokud má váš účet více předplatných, můžete zadat jiné předplatné.
-* **Skupina prostředků** je název skupiny, do které patří všechny prostředky Azure vytvořené touto šablonou. Pro tento kurz použijte **SQL-ha-RG**. Další informace naleznete v tématu [Přehled Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md#resource-groups).
+* **Skupina prostředků** je název skupiny, do které patří všechny prostředky Azure vytvořené touto šablonou. Pro tento kurz použijte **SQL-ha-RG**. Další informace naleznete v tématu [Přehled Azure Resource Manager](../../../azure-resource-manager/management/overview.md#resource-groups).
 * **Umístění** je oblast Azure, ve které kurz vytváří prostředky. Vyberte oblast Azure.
 
 Následující snímek obrazovky je kompletní okno **základní** :
 
-![Základní informace](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/1-basics.png)
+![Základy](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/1-basics.png)
 
 Klikněte na **OK**.
 
@@ -187,7 +187,7 @@ Zkontrolujte nastavení a klikněte na tlačítko **OK**.
 ### <a name="summary"></a>Souhrn
 Na stránce Souhrn Azure ověří nastavení. Můžete si také stáhnout šablonu. Zkontrolujte souhrnné informace. Klikněte na **OK**.
 
-### <a name="buy"></a>Koupit
+### <a name="buy"></a>Nákup
 Toto závěrečné okno obsahuje **podmínkami použití**a **Zásady ochrany osobních údajů**. Projděte si tyto informace. Až budete připraveni, aby Azure začal vytvářet virtuální počítače a všechny další požadované prostředky pro skupinu dostupnosti, klikněte na **vytvořit**.
 
 Azure Portal vytvoří skupinu prostředků a všechny prostředky.
@@ -205,7 +205,7 @@ K protokolu RDP na SQL Server použijte následující postup:
 1. Z řídicího panelu Azure Portal ověřte, že nasazení proběhlo úspěšně.
 2. Klikněte na **prostředky**.
 3. V okně **prostředky** klikněte na **SQLServer-0**, což je název počítače jednoho z virtuálních počítačů, na kterých běží SQL Server.
-4. V okně pro **SQLServer-0**klikněte na **připojit**. V prohlížeči se zobrazí dotaz, zda chcete objekt vzdáleného připojení otevřít nebo Uložit. Klikněte na tlačítko **otevřít**.
+4. V okně pro **SQLServer-0**klikněte na **připojit**. V prohlížeči se zobrazí dotaz, zda chcete objekt vzdáleného připojení otevřít nebo Uložit. Klikněte na **Otevřít**.
 5. **Připojení ke vzdálené ploše** vás může upozornit, že nelze identifikovat vydavatele tohoto vzdáleného připojení. Klikněte na **Připojit**.
 6. Systém Windows Security vyzve k zadání přihlašovacích údajů pro připojení k IP adrese primárního řadiče domény. Klikněte na **použít jiný účet**. Do tohoto **uživatelského jména**zadejte **contoso\DomainAdmin**. Tento účet jste nakonfigurovali při nastavování uživatelského jména správce v šabloně. Použijte složitá hesla, která jste zvolili při konfiguraci šablony.
 7. **Vzdálená plocha** vás může upozorňovat na to, že vzdálený počítač nelze ověřit z důvodu problémů s jeho certifikátem zabezpečení. Zobrazuje název certifikátu zabezpečení. Pokud jste postupovali podle tohoto kurzu, název je **SQLServer-0.contoso.com**. Klikněte na **Ano**.

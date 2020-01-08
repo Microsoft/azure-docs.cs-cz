@@ -2,18 +2,16 @@
 title: Vytváření a Správa skupin akcí v Azure Portal
 description: Naučte se vytvářet a spravovat skupiny akcí v Azure Portal.
 author: dkamstra
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 6b3d1ff76d4f7611da8e08dd4ce42293c805978e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a954898a334ead15d8ffdf6dab6e6a309bd57089
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423851"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659827"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a Správa skupin akcí v Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. V rámci předplatného můžete nakonfigurovat až 2 000 skupin akcí.
@@ -72,17 +70,17 @@ Po vytvoření skupiny akcí je tato skupina zobrazená v části **skupiny akc�
 ## <a name="action-specific-information"></a>Informace specifické pro akci
 
 > [!NOTE]
-> V tématu [omezení služby předplatného pro monitorování](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits) pro číselná omezení u každé z níže uvedených položek.  
+> V tématu [omezení služby předplatného pro monitorování](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-monitor-limits) pro číselná omezení u každé z níže uvedených položek.  
 
 ### <a name="automation-runbook"></a>Runbook služby Automation
-Omezení pro datové části sady Runbook najdete v části [omezení služby předplatného Azure](../../azure-subscription-service-limits.md) .
+Omezení pro datové části sady Runbook najdete v části [omezení služby předplatného Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md) .
 
 Ve skupině akcí můžete mít omezený počet akcí sady Runbook. 
 
 ### <a name="azure-app-push-notifications"></a>Nabízená oznámení aplikace Azure
 Můžete mít omezený počet akcí aplikace Azure ve skupině akcí.
 
-### <a name="email"></a>Email
+### <a name="email"></a>E-mail
 E-maily budou odeslány z následujících e-mailových adres. Ujistěte se, že je správně nakonfigurováno filtrování e-mailů.
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
@@ -90,7 +88,7 @@ E-maily budou odeslány z následujících e-mailových adres. Ujistěte se, že
 
 Ve skupině akcí můžete mít omezený počet e-mailových akcí. Podívejte se na článek [o omezení rychlosti](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
-### <a name="email-azure-resource-manager-role"></a>Role e-mailové Azure Resource Manager
+### <a name="email-azure-resource-manager-role"></a>Poslat e-mail roli Azure Resource Manageru
 Odešlete e-mail členům role předplatného.
 
 Ve skupině akcí můžete mít omezený počet e-mailových akcí. Podívejte se na článek [o omezení rychlosti](./../../azure-monitor/platform/alerts-rate-limiting.md) .
@@ -105,7 +103,7 @@ Akce ITSM vyžaduje připojení ITSM. Naučte se vytvořit [připojení ITSM](..
 
 Ve skupině akcí můžete mít omezený počet ITSM akcí. 
 
-### <a name="logic-app"></a>Aplikace logiky
+### <a name="logic-app"></a>Logická aplikace
 Ve skupině akcí můžete mít omezený počet akcí aplikace logiky.
 
 ### <a name="secure-webhook"></a>Zabezpečený Webhook

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 0f35f22d6bd32d75d5c3b07d8a20b4bb7714e247
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: aacba12b32e9da75c2a4b9a20c0faa235cf6836a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71799559"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459298"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Řešení aplikací Oracle integrující Microsoft Azure a Oracle cloudovou infrastrukturu (Preview)
 
@@ -39,18 +39,18 @@ Připojení mezi cloudy poskytuje řešení pro spouštění špičkových aplik
 Mezi aplikace, které můžete spustit v konfiguraci mezi cloudy patří:
 
 * Sada E-Business
-* ŘEŠENÍ JD Edwards EnterpriseOne
-* PeopleSoft spouštěných místně
+* JD Edwards EnterpriseOne
+* PeopleSoft
 * Maloobchodní aplikace Oracle
 * Hyperion finanční správa Oracle
 
-Následující diagram představuje podrobný přehled připojeného řešení. Pro zjednodušení diagram zobrazuje pouze aplikační vrstvu a datovou vrstvu. V závislosti na architektuře aplikace může vaše řešení zahrnovat další úrovně, jako je například webová vrstva v Azure. Další informace najdete v následujících oddílech.
+Následující diagram představuje podrobný přehled připojeného řešení. Pro zjednodušení diagram zobrazuje pouze aplikační vrstvu a datovou vrstvu. V závislosti na architektuře aplikace může vaše řešení zahrnovat další úrovně, jako je například webová vrstva v Azure. Další informace najdete v následující části.
 
 ![Přehled řešení Azure OCI](media/oracle-oci-overview/crosscloud.png)
 
 ## <a name="preview-limitations"></a>Omezení verze Preview
 
-* Připojení mezi cloudy ve verzi Preview je omezené na oblasti Azure Východní USA (eastus) & Velká Británie – jih (uksouth) a oblasti Ashburn (USA – východ) & Londýn (Velká Británie – jih). Pro Velká Británie – jih použijte prosím doménu dostupnosti 1 (AD 1) v rozhraní OCI při nasazení připojení pro nižší latenci.
+* Připojení mezi cloudy ve verzi Preview je omezené na oblasti Azure Východní USA (eastus), Velká Británie – jih (uksouth), canadacentral (Kanada – střed) a (USA – východ), Londýn (Velká Británie – jih) a Toronto (Kanada – jihovýchod). Pro Velká Británie – jih použijte prosím doménu dostupnosti 1 (AD 1) v rozhraní OCI při nasazení připojení pro nižší latenci.
 
 ## <a name="networking"></a>Sítě
 

@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: aa6f18d4f667862687083c5db3679ce9d8e188cd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e5ba08da5c58ff486bc26f2c771dfef55452629a
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175489"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681015"
 ---
-Zpět v _okně místního terminálu_ přidejte vzdálené úložiště Azure do místního úložiště Git. Nahraďte _&lt;deploymentLocalGitUrl-from-create-step>_ adresou URL vzdáleného úložiště Git, kterou jste uložili v kroku [Vytvoření webové aplikace](#create-a-web-app).
+Zpátky v okně místního terminálu přidejte vzdálené úložiště Azure do místního úložiště Git. Nahraďte *\<deploymentLocalGitUrl-from-create-step>* adresou URL vzdáleného úložiště Git, kterou jste uložili v kroku [Vytvoření webové aplikace](#create-a-web-app).
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>
 ```
 
-Nasaďte aplikaci do vzdáleného úložiště Azure pomocí následujícího příkazu. Když se zobrazí výzva k zadání přihlašovacích údajů ve Správci přihlašovacích údajů Git, ujistěte se, abyste zadali přihlašovací údaje, které jste vytvořili v konfigurace uživatele nasazení, ne přihlašovací údaje, které používáte k přihlášení k webu Azure portal.
+Nasaďte aplikaci do vzdáleného úložiště Azure pomocí následujícího příkazu. Když vám správce přihlašovacích údajů Git vyzve k zadání přihlašovacích údajů, ujistěte se, že jste zadali přihlašovací údaje, které jste vytvořili v části [Konfigurace uživatele nasazení](/azure/app-service/containers/tutorial-python-postgresql-app#configure-a-deployment-user), a ne přihlašovací údaje, které používáte k přihlášení k Azure Portal.
 
 ```bash
 git push azure master

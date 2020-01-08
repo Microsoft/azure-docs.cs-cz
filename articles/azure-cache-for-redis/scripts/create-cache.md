@@ -1,6 +1,6 @@
 ---
-title: Azure CLI ukázkový skript – vytvoření Azure Cache pro Redis
-description: Azure CLI ukázkový skript – vytvoření Azure Cache pro Redis
+title: Vytvoření mezipaměti Azure pro Redis – Azure CLI
+description: Tento ukázkový kód Azure CLI ukazuje, jak vytvořit mezipaměť Azure pro instanci Redis pomocí příkazu AZ Redis Create.
 author: yegu-ms
 tags: azure-service-management
 ms.service: cache
@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.author: yegu
-ms.openlocfilehash: e0ca7131a4ea9a512ac31231754f86d218c35025
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 79b749c0d02a21c1225ee0d046d73ed3fdd98904
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121314"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411319"
 ---
 # <a name="create-an-azure-cache-for-redis"></a>Vytvoření Azure Cache pro Redis
 
@@ -31,7 +31,7 @@ V tomto scénáři se dozvíte, jak k vytvoření Azure Cache pro Redis.
 
 Tento skript používá následující příkazy k vytvoření skupiny prostředků a Azure Cache pro Redis. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [Vytvoření az redis](https://docs.microsoft.com/cli/azure/redis) | Vytvoření Azure Cache pro instanci Redis. |

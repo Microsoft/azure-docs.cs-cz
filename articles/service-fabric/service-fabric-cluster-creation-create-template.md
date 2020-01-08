@@ -1,25 +1,14 @@
 ---
-title: Vytvoření šablony clusteru Azure Service Fabric | Microsoft Docs
+title: Vytvoření šablony clusteru Azure Service Fabric
 description: Naučte se, jak vytvořit šablonu Správce prostředků pro cluster Service Fabric. Nakonfigurujte zabezpečení, Azure Key Vault a Azure Active Directory (Azure AD) pro ověřování klientů.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: chackdan
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/16/2018
-ms.author: atsenthi
-ms.openlocfilehash: 4a2fe8238a1ac6f668450aca4e2fd6d2b4ba04a5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: a00f2bc505acd89d9fb9488565b6235bf7d146ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901537"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463251"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Vytvoření Správce prostředků šablony Service Fabric clusteru
 
@@ -264,9 +253,9 @@ Teď, když máte šablonu pro váš cluster, zjistěte, jak [nasadit cluster do
 Další informace o syntaxi a vlastnostech JSON pro prostředky nasazené v tomto článku najdete v těchto tématech:
 
 * [Microsoft. ServiceFabric/clustery](/azure/templates/microsoft.servicefabric/clusters)
-* [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
-* [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-* [Microsoft. Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
 * [Microsoft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
 * [Microsoft. COMPUTE/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
 

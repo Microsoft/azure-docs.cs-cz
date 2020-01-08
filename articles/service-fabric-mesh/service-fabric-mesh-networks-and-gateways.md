@@ -1,50 +1,41 @@
 ---
-title: Úvod do služby Azure Service Fabric sítě | Dokumentace Microsoftu
-description: Další informace o sítích, bran a směrování provozu inteligentní v Service Fabric mřížky.
-services: service-fabric-mesh
-documentationcenter: .net
+title: Seznámení se službou Azure Service Fabric Networking
+description: Přečtěte si o sítích, branách a inteligentním směrování provozu v Service Fabric sítě.
 author: dkkapur
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/26/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b0e1047c5bbd7d8caaf2afd8b002be1c46837852
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc793e2991783cc9b7b46d92fcc8e0267feb529b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811023"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459132"
 ---
-# <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Úvod do sítě aplikace Service Fabric mřížky
-Tento článek popisuje různé typy nástrojů pro vyrovnávání zatížení, jak brány připojit k síti s vašimi aplikacemi k jiným sítím a směrování provozu mezi službami ve svých aplikacích.
+# <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Úvod do sítě v aplikacích Service Fabric sítě
+Tento článek popisuje různé typy nástrojů pro vyrovnávání zatížení, jak brány spojují síť s vašimi aplikacemi s ostatními sítěmi a jak se směruje provoz mezi službami ve vašich aplikacích.
 
-## <a name="layer-4-vs-layer-7-load-balancers"></a>Vrstvy 4 Vyrovnávání zatížení vrstvy 7 vs
-Vyrovnávání zatížení může běžet na různých úrovních v [modelu OSI](https://en.wikipedia.org/wiki/OSI_model) pro sítě, často v vrstvy 4 (L4) a vrstvy 7 (L7).  Obvykle existují dva typy nástrojů pro vyrovnávání zatížení:
+## <a name="layer-4-vs-layer-7-load-balancers"></a>Nástroje pro vyrovnávání zatížení vrstvy 4 vs. 7
+Vyrovnávání zatížení je možné provádět v různých vrstvách [modelu OSI](https://en.wikipedia.org/wiki/OSI_model) pro sítě, často ve vrstvě 4 (L4) a ve vrstvě 7 (L7).  Obvykle existují dva typy nástrojů pro vyrovnávání zatížení:
 
-- Služby load balancer L4 funguje na přenosové vrstvě sítě, která se zabývá doručování paketů, bez ohledu na obsah pakety. Pouze hlavičky paketů jsou kontrolovány nástroje pro vyrovnávání zatížení, proto vyrovnávání kritéria je omezena na IP adresy a porty. Například klient zadává připojení TCP pro nástroj pro vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení ukončí připojení (Reagováním přímo na SYN), vybere back-endu. a vytvoří nové připojení TCP do back-endu (odešle nové SYN). Služby load balancer L4 obvykle funguje pouze na úrovni připojení L4 TCP/UDP nebo relace. Proto nástroj pro vyrovnávání zatížení přesměruje bajtů kolem a zajišťuje, že bajtů ze stejné relace dostal na stejný back-end. Nástroj pro vyrovnávání zatížení L4 nebude vědět o žádné podrobnosti o aplikaci bajtů, které se přesouvá. Počet bajtů, může být libovolného protokolu pro aplikaci.
+- Nástroj pro vyrovnávání zatížení L4 funguje v síťové přenosové vrstvě, která se zabývá doručováním paketů bez ohledu na obsah paketů. Nástroj pro vyrovnávání zatížení kontroluje pouze hlavičky paketů, proto jsou kritéria vyrovnávání omezena na IP adresy a porty. Klient například provede připojení TCP k nástroji pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení ukončí připojení (přímým reakcí na SYN), vybere back-end a vytvoří nové připojení TCP k back-endu (odešle novou hodnotu SYN). Nástroj pro vyrovnávání zatížení L4 typicky funguje jenom na úrovni připojení nebo relace ke L4 protokolu TCP/UDP. Proto vyrovnávání zatížení přesměruje bajty kolem a zajistí, že bajty ze stejné relace se budou převíjet do stejného back-endu. Nástroj pro vyrovnávání zatížení L4 neví o všech podrobnostech aplikace v bajtech, které přesouvá. Bajty můžou být libovolný aplikační protokol.
 
-- Nástroje pro vyrovnávání zatížení L7 funguje na aplikační vrstvu, která se zabývá obsah části jednotlivých paketů. Vzhledem k tomu, že to rozumí protokoly, například HTTP, HTTPS nebo protokoly Websocket prohlédne obsah paketů. To poskytuje možnost provádět pokročilé směrování nástroje pro vyrovnávání zatížení. Například klient zadává jediné připojení HTTP/2 TCP nástroji pro vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení se pak pokračuje provést dvě připojení k back-endu. Když klient odešle dva datové proudy HTTP/2 do nástroje pro vyrovnávání zatížení, datového proudu, jeden je odeslána do back-endu, jeden a datový proud dvě posílá na back-end dvě. Díky tomu se ještě multiplexing klienti, kteří mají značně rozdílné žádost o načtení se vyvážená efektivně back-EndY. 
+- Nástroj pro vyrovnávání zatížení L7 funguje na vrstvě aplikace, která se zabývá obsahem každého paketu. Kontroluje obsah paketů, protože rozumí protokolům, jako jsou HTTP, HTTPS nebo WebSockets. Díky tomu může nástroj pro vyrovnávání zatížení provádět pokročilé směrování. Například klient provede jedno připojení HTTP/2 TCP k nástroji pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení pak provede dvě back-endové připojení. Když klient pošle do nástroje pro vyrovnávání zatížení dva proudy HTTP/2, pošle se datový proud do back-endu One a datový proud 2 se pošle do back-endu. Takže i multiplexní klienti, kteří mají rozsáhlé různé zátěže požadavků, budou efektivně vyvážené napříč back-endy. 
 
 ## <a name="networks-and-gateways"></a>Sítě a brány
-V [modelu prostředků služby Service Fabric](service-fabric-mesh-service-fabric-resources.md), síťový prostředek je prostředek samostatně nasaditelných, nezávisle na prostředek aplikace nebo služby, který může označujeme jako jejich závislosti. Používá se k vytvoření sítě pro vaše aplikace, který je přístupný z Internetu. Více služeb z různých aplikací může být součástí stejné sítě. Tato privátní sítě se vytvoří a spravuje Service Fabric a není virtuální sítě Azure (VNET). Aplikace může dynamicky přidávat a odebírat z prostředku sítě můžete povolit nebo zakázat připojení k virtuální síti. 
+V [modelu Service Fabric prostředků](service-fabric-mesh-service-fabric-resources.md)je síťový prostředek samostatně nasaditelné prostředky nezávisle na prostředku aplikace nebo služby, který se na něj může odkazovat jako na jejich závislosti. Slouží k vytvoření sítě pro vaše aplikace, které jsou otevřeny v Internetu. Několik služeb z různých aplikací může být součástí stejné sítě. Tato privátní síť se vytváří a spravuje pomocí Service Fabric a nejedná se o virtuální síť Azure (VNET). Aplikace se dají dynamicky přidávat a odebírat ze síťového prostředku, aby bylo možné povolit a zakázat připojení k virtuální síti. 
 
-Brány se používá pro přemostění dvě sítě. Prostředek brána nasadí [Envoy proxy](https://www.envoyproxy.io/) poskytující L4 směrování pro libovolný protokol a L7 směrování pro pokročilé směrování aplikace HTTP (S). Brány směruje provoz do vaší sítě z externí sítě a určuje, které pro směrování provozu do služby.  Externí síť může být otevřené sítě (v podstatě veřejného Internetu) nebo virtuální síť Azure, umožňuje propojení s vaší aplikací Azure a prostředky. 
+Brána se používá pro mostování dvou sítí. Prostředek brány nasadí [proxy server zástupné](https://www.envoyproxy.io/) , který poskytuje směrování L4 pro jakýkoliv protokol a směrování L7 pro pokročilou směrování aplikace HTTP (S). Brána směruje provoz do vaší sítě z externí sítě a určuje, do které služby se má směrovat provoz.  Externí síť může být otevřená síť (v podstatě veřejný Internet) nebo virtuální síť Azure, která vám umožní připojit se k ostatním aplikacím a prostředkům Azure. 
 
-![Sítě a brány][Image1]
+![Síť a brána][Image1]
 
-Vytvoření síťových prostředků pomocí `ingressConfig`, veřejná IP adresa je přiřazen k síťovému prostředku. Veřejná IP adresa bude vázán na životnost síťový prostředek.
+Po vytvoření síťového prostředku pomocí `ingressConfig`se k síťovému prostředku přiřadí veřejná IP adresa. Veřejná IP adresa bude vázaná na životnost síťového prostředku.
 
-Po vytvoření aplikace OK ji by měl odkazovala na existující prostředek sítě. Je možné přidat nové veřejné porty nebo existující portů lze odebrat z příchozího přenosu dat konfigurace. Odstranění síťového prostředku se nezdaří, pokud odkazuje na prostředek aplikace. Když je aplikace odstraněna, síťový prostředek se odebere.
+Při vytvoření mřížky aplikace by se měla odkazovat na stávající síťový prostředek. Můžete přidat nové veřejné porty nebo odebrat existující porty z konfigurace příchozího přenosu dat. Odstranění pro síťový prostředek se nezdaří, pokud na něj odkazuje prostředek aplikace. Po odstranění aplikace dojde k odebrání síťového prostředku.
 
-## <a name="next-steps"></a>Další postup 
-Další informace o Service Fabric sítě, naleznete v přehledu:
-- [Přehled Service Fabric mřížky](service-fabric-mesh-overview.md)
+## <a name="next-steps"></a>Další kroky 
+Další informace o Service Fabric sítě najdete v článku Přehled:
+- [Přehled Service Fabric sítě](service-fabric-mesh-overview.md)
 
 [Image1]: media/service-fabric-mesh-networks-and-gateways/NetworkAndGateway.png

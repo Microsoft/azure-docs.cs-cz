@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 2251725597e44a15e421f33cc315be3fb1c7846f
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 78b73688306fb51278afba7283a1ea82af603349
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485465"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459175"
 ---
 Azure Compute nabízí velikosti virtuálních počítačů, které jsou izolované na konkrétní typ hardwaru a vyhrazené pro jednoho zákazníka.  Tyto velikosti virtuálních počítačů jsou nejvhodnější pro úlohy, které vyžadují vysoký stupeň izolace od ostatních zákazníků a kterých se týkají například požadavky na dodržování předpisů a zákonné požadavky.  Zákazníci si také můžou rozdělit prostředky těchto izolovaných virtuálních počítačů s využitím [podpory Azure pro vnořené virtuální počítače](https://azure.microsoft.com/blog/nested-virtualization-in-azure/).
 
@@ -30,7 +30,7 @@ Využitím izolované velikosti zaručujete, že váš virtuální počítač bu
 Další informace o všech dostupných izolovaných velikostech najdete [tady](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory).
 
 ## <a name="retiring-d15_v2ds15_v2-isolation-on-february-15-2020"></a>Vyřazení D15_v2/DS15_v2 izolace od 15. února 2020
-Nedávno jsme oznámili verzi Preview vyhrazeného hostitele Azure, která umožňuje spouštění virtuálních počítačů se systémy Linux a Windows ve vaší organizaci na fyzických serverech s jedním klientem. Plánujeme plně nahradit izolované virtuální počítače Azure pomocí vyhrazeného hostitele Azure. **15. února 2020** D15_v2/DS15_v2 virtuální počítače Azure už nemusí být izolované hardwarem.
+Vyhrazený hostitel Azure je teď GA, což umožňuje provozovat virtuální počítače se systémy Linux a Windows ve vaší organizaci na fyzických serverech s jedním klientem. Plánujeme plně nahradit izolované virtuální počítače Azure pomocí vyhrazeného hostitele Azure. **15. února 2020** D15_v2/DS15_v2 virtuální počítače Azure už nemusí být izolované hardwarem.
 
 ## <a name="how-does-this-affect-me"></a>Co to pro mě znamená?
 Od 15. února 2020 už nebudeme pro vaše D15_v2/DS15_v2 virtuálních počítačů Azure poskytovat záruku izolace. 
@@ -40,7 +40,7 @@ Pokud se pro vás nepožaduje izolace hardwaru, není nutné provádět žádnou
 
 Pokud se vám pro vás vyžaduje izolace, do 15. února 2020 byste museli mít jednu z těchto akcí:
 
-• [Migrace](https://azure.microsoft.com/blog/introducing-azure-dedicated-host) úloh do služby Azure vyhrazené hostitele ve verzi Preview
+• [Migrujte](https://azure.microsoft.com/blog/introducing-azure-dedicated-host) své úlohy na vyhrazeného hostitele Azure.
 
 • [Vyžádejte si přístup](https://aka.ms/D15iRequestAccess) k D15i_v2 a DS15i_v2 virtuálního počítače Azure, abyste získali stejný cenový výkon. Tato možnost je dostupná jenom pro scénáře s průběžnými platbami podle aktuálního využití a jednoleté rezervované instance.    
 
@@ -57,7 +57,7 @@ Podrobnosti najdete níže:
 | 15. května 2021  | Vyřazení D/DS15i_v2 (všichni zákazníci s výjimkou zakoupených 3 DS15_v2 let a více než 18. listopadu 2019)| 
 | 17. listopadu 2022   | Vyřazení D/DS15i_v2, když se dokončí 3 roky služby RIs (pro zákazníky, kteří koupili 3 roky rezervované instance u D/DS15_v2 do 18. listopadu 2019) | 
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 ### <a name="q-why-am-i-not-seeing-the-new-dds15i_v2-sizes-in-the-portal"></a>Otázka: Proč se mi na portálu nezobrazuje nové velikosti D/DS15i_v2?
 Odpověď **: Pokud**jste aktuální zákazník D/DS15_v2 a chcete používat nové velikosti d/DS15i_v2, vyplňte prosím tento [formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0FTPNXHdWpJlO27GE-bHitUMkZUWEFPNjFPNVgyMkhZS05FSzlPTzRIOS4u) .
 
@@ -76,7 +76,7 @@ Odpověď **: ne**
 ### <a name="q-i-already-purchased-1--or-3-year-reserved-instance-for-d15_v2-or-ds15_v2-how-will-the-discount-be-applied-to-my-vm-usage"></a>Otázka: již jsme zakoupili rezervovanou instanci na 1 nebo 3 roky pro D15_v2 nebo Ds15_v2. Jak se použije sleva na využití virtuálních počítačů?
 Odpověď **: služba se**zakoupila do 18. listopadu 2019 automaticky rozšíří pokrytí do nové izolované řady virtuálních počítačů. 
 
-| NEMUSÍ |  Flexibilita velikosti instance | Nárok na zvýhodnění |   
+| RI |  Flexibilita velikosti instance | Nárok na zvýhodnění |   
 | --- | --- | --- |
 |   D15_v2  |   Vypnuto     |   D15_v2 a D15i_v2 |    
 |   D15_v2  |   Zapnuto  |   Výhody D15_v2 řady a D15i_v2 získají výhodu rezervované instance. |    
@@ -87,7 +87,7 @@ Podobně jako u řady Dsv2.
 ### <a name="q-i-want-to-purchase-additional-reserved-instances-for-dv2-which-one-should-i-choose"></a>Otázka: Chci si koupit další rezervované instance pro Dv2. Který z nich mám zvolit?
 Odpověď **: všechny**rezervované instance zakoupené po 18. listopadu 2019 mají následující chování. 
 
-| NEMUSÍ |  Flexibilita velikosti instance | Nárok na zvýhodnění |   
+| RI |  Flexibilita velikosti instance | Nárok na zvýhodnění |   
 | --- | --- | --- |
 | D15_v2 |  Vypnuto |   Pouze D15_v2  
 | D15_v2 |  Zapnuto |    Řada D15_v2 obdrží výhodu rezervované instance. Nový D15i_v2 nebude mít nárok na zvýhodnění rezervované instance z tohoto typu. | 

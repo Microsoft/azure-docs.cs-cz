@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: bce0620ed6be4937c95a2ce01f3d4c175c8bc18d
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 87c95d8bbf199f232eca5475f4d8f0c64427a198
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687073"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680881"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Přehled Azure App Service místní mezipaměti
 
@@ -36,7 +36,7 @@ Funkce místní mezipaměti Azure App Service poskytuje zobrazení webové role 
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Způsob změny chování App Service v místní mezipaměti
 * _D:\home_ odkazuje na místní mezipaměť, která se vytvoří v instanci virtuálního počítače při spuštění aplikace. _D:\Local_ i nadále odkazuje na dočasné úložiště specifické pro virtuální počítače.
-* Místní mezipaměť obsahuje jednorázovou kopii složek _site_ a _/siteextensions_ sdíleného úložiště obsahu, a to v _D:\home\site_ a _D:\home\siteextensions_v uvedeném pořadí. Po spuštění aplikace se soubory zkopírují do místní mezipaměti. Velikost obou složek pro každou aplikaci je ve výchozím nastavení omezená na 300 MB, ale můžete ji zvětšit až na 2 GB.
+* Místní mezipaměť obsahuje jednorázovou kopii složek _site_ a _/siteextensions_ sdíleného úložiště obsahu, a to v _D:\home\site_ a _D:\home\siteextensions_v uvedeném pořadí. Po spuštění aplikace se soubory zkopírují do místní mezipaměti. Velikost obou složek pro každou aplikaci je ve výchozím nastavení omezená na 300 MB, ale můžete ji zvětšit až na 2 GB. Pokud zkopírované soubory překračují velikost místní mezipaměti, App Service bezobslužně ignoruje místní mezipaměť a přečte se ze vzdálené sdílené složky.
 * Místní mezipaměť je určena pro čtení i zápis. Jakákoli změna se ale zruší, když aplikace přesune virtuální počítače nebo se restartuje. Pro aplikace, které ukládají klíčová data v úložišti obsahu, nepoužívejte místní mezipaměť.
 * _D:\home\LogFiles_ a _D:\home\Data_ obsahují soubory protokolu a data aplikací. Dvě podsložky se ukládají místně na instanci virtuálního počítače a zkopírují se do sdíleného úložiště obsahu pravidelně. Aplikace mohou uchovávat soubory protokolu a data jejich zápisem do těchto složek. Kopírování do sdíleného úložiště obsahu je ale nejlepší, takže je možné soubory protokolů a data ztratit z důvodu náhlého selhání instance virtuálního počítače.
 * [Streamování protokolů](troubleshoot-diagnostic-logs.md#stream-logs) je ovlivněno nejlepší kopií. V protokolech streamování můžete sledovat zpoždění v délce jedné minuty.
@@ -83,7 +83,7 @@ Pomocí tohoto nastavení aplikace povolíte místní mezipaměť na bázi jedno
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>Změna nastavení velikosti v místní mezipaměti
-Ve výchozím nastavení je velikost místní mezipaměti **1 GB**. To zahrnuje složky site a/siteextensions, které se zkopírují z úložiště obsahu, a také všechny místně vytvořené protokoly a složky dat. Chcete-li tento limit zvýšit, použijte nastavení aplikace `WEBSITE_LOCAL_CACHE_SIZEINMB`. Velikost můžete zvětšit až na **2 GB** (2000 MB) na jednu aplikaci.
+Ve výchozím nastavení je velikost místní mezipaměti **300 MB**. To zahrnuje složky site a/siteextensions, které se zkopírují z úložiště obsahu, a také všechny místně vytvořené protokoly a složky dat. Chcete-li tento limit zvýšit, použijte nastavení aplikace `WEBSITE_LOCAL_CACHE_SIZEINMB`. Velikost můžete zvětšit až na **2 GB** (2000 MB) na jednu aplikaci.
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>Osvědčené postupy pro používání App Service místní mezipaměti
 V kombinaci s funkcí [přípravného prostředí](../app-service/deploy-staging-slots.md) doporučujeme použít místní mezipaměť.
@@ -108,7 +108,7 @@ Pokud vaše aplikace používá místní mezipaměť, pak je potřeba restartova
 ### <a name="where-are-my-logs"></a>Kde se nacházejí moje protokoly?
 S místní mezipamětí vaše protokoly a složky dat vypadají trochu jinak. Struktura podsložek ale zůstane stejná, s tím rozdílem, že podsložky se Nestled pod podsložku s formátem "jedinečný identifikátor virtuálního počítače" + časové razítko.
 
-### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Je povolená místní mezipaměť, ale moje aplikace se pořád restartovala. Proč je to? Mysleli, že místní mezipaměť pomohla častým restartováním aplikací.
+### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Je povolená místní mezipaměť, ale moje aplikace se pořád restartovala. Proč to tak je? Mysleli, že místní mezipaměť pomohla častým restartováním aplikací.
 Místní mezipaměť zabraňuje restartování aplikace související s úložištěm. Vaše aplikace ale může i nadále podstoupit restartování během plánovaných upgradů virtuálního počítače. Celkový počet restartování aplikace, u kterých máte zapnutou místní mezipaměť, by neměl být menší.
 
 ### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>Vylučuje místní mezipaměť kopírování všech adresářů na rychlejší místní disk?

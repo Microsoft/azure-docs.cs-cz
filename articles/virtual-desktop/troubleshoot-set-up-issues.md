@@ -5,20 +5,20 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 07/10/2019
+ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: b53bf80774a0715c7a02d837975284e985958635
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 925894aea267e4f100f7bcdb817424b5cdfe6c25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607440"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459499"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Vytvoření tenanta a fondu hostitelů
 
 Tento článek popisuje problémy při počátečním nastavení tenanta virtuální plochy Windows a související infrastruktury fondu hostitelů relací.
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 
 Navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , kde můžete diskutovat o službě Virtual Desktop v systému Windows pomocí produktového týmu a aktivních členů komunity.
 
@@ -59,7 +59,7 @@ Příklad nezpracované chyby:
 
 ## <a name="creating-windows-virtual-desktop-session-host-vms"></a>Vytváření virtuálních počítačů hostitele relace virtuálních počítačů s Windows
 
-Virtuální počítače hostitele relace je možné vytvořit několika způsoby, ale služby vzdálené plochy nebo týmy virtuálních počítačů s Windows podporují jenom problémy zřizování virtuálních počítačů související se šablonou Azure Resource Manager. Šablona Azure Resource Manager je k dispozici v [Azure Marketplace](https://azuremarketplace.microsoft.com/) a [GitHubu](https://github.com/).
+Virtuální počítače hostitele relace je možné vytvořit několika způsoby, ale tým virtuálních ploch Windows podporuje jenom problémy zřizování virtuálních počítačů, které souvisejí s nabídkou [Azure Marketplace](https://azuremarketplace.microsoft.com/) . Další podrobnosti najdete v tématu [problémy s použitím virtuálního počítače s Windows – zřízení fondu hostitelů Azure Marketplace nabídky](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering).
 
 ## <a name="issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering"></a>Problémy s používáním virtuálního počítače s Windows – zřízení fondu hostitelů Azure Marketplace nabídky
 
@@ -87,6 +87,27 @@ Virtuální počítač s Windows – zřízení šablony fondu hostitelů je dos
     #create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%
     2FRDS-Templates%2Fmaster%2Fwvd-templates%2FCreate%20and%20provision%20WVD%20host%20pool%2FmainTemplate.json
     ```
+
+### <a name="error-you-receive-template-deployment-is-not-valid-error"></a>Chyba: obdržíte chybu nasazení šablony není platné.
+
+![Snímek obrazovky s názvem nasazení šablony... není platný, chyba](media/troubleshooting-marketplace-validation-error-generic.png)
+
+Než provedete konkrétní akci, budete muset zjistit protokol aktivit a zobrazit podrobnou chybu při ověřování nasazení.
+
+Zobrazení chyby v protokolu aktivit:
+
+1. Ukončí aktuální nabídku nasazení Azure Marketplace.
+2. V horním panelu vyhledávání vyhledejte a vyberte **Protokol aktivit**.
+3. Vyhledejte aktivitu s názvem **ověřit nasazení** , která má stav **selhání** a vyberte aktivitu.
+   ![snímek obrazovky jednotlivce * * ověřit aktivitu nasazení * * s * * neúspěšným * * stavem](media/troubleshooting-marketplace-validation-error-activity-summary.png)
+
+4. Vyberte JSON a potom se posuňte dolů k dolní části obrazovky, dokud se nezobrazí pole "statusMessage".
+   ![snímek obrazovky s chybnou aktivitou s červeným polem kolem vlastnosti statusMessage textu JSON.](media/troubleshooting-marketplace-validation-error-json-boxed.png)
+
+Pokud vaše šablona operace překročí limit kvóty, můžete opravit jednu z následujících akcí:
+
+ - Spusťte Azure Marketplace s parametry, které jste použili poprvé, ale tentokrát se používá méně virtuálních počítačů a jader virtuálních počítačů.
+ - Otevřete odkaz, který vidíte v poli **statusMessage** v prohlížeči, abyste odeslali žádost o zvýšení kvóty pro vaše předplatné Azure pro zadanou SKU virtuálního počítače.
 
 ## <a name="azure-resource-manager-template-and-powershell-desired-state-configuration-dsc-errors"></a>Chyby konfigurace Azure Resource Manager a prostředí PowerShell pro konfiguraci požadovaného stavu (DSC)
 
@@ -346,9 +367,10 @@ Pokud používáte šablonu Azure Resource Manager GitHubu, zadejte hodnoty pro 
 
 - Přehled řešení potíží s virtuálním počítačem s Windows a cvičeními eskalace najdete v tématu [věnovaném řešení potíží s přehledem, zpětnou vazbou a podporou](troubleshoot-set-up-overview.md).
 - Informace o řešení problémů při konfiguraci virtuálního počítače na virtuálním počítači s Windows najdete v tématu [Konfigurace virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md).
-- Informace o řešení problémů s připojením klienta k virtuální ploše Windows najdete v tématu [připojení klientů vzdálené plochy](troubleshoot-client-connection.md).
+- Informace o řešení potíží s klientskými připojeními k virtuální ploše Windows najdete v tématu [připojení ke službě Virtual Desktop systému Windows](troubleshoot-service-connection.md).
+- Řešení potíží s klienty vzdálené plochy najdete v tématu [řešení potíží s klientem vzdálené plochy](troubleshoot-client.md) .
 - Pokud chcete řešit problémy při používání PowerShellu s virtuálním počítačem s Windows, přečtěte si téma [virtuální plocha Windows PowerShell](troubleshoot-powershell.md).
-- Další informace o této službě najdete v tématu [prostředí virtuálních počítačů s Windows](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
-- Kurz řešení potíží najdete v tématu [kurz: řešení potíží s nasazením správce prostředků šablon](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).
-- Další informace o akcích auditování najdete v tématu věnovaném [operacím auditu správce prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
-- Další informace o akcích k určení chyb během nasazení najdete v tématu [Zobrazení operací nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).
+- Další informace o této službě najdete v tématu [prostředí virtuálních počítačů s Windows](environment-setup.md).
+- Kurz řešení potíží najdete v tématu [kurz: řešení potíží s nasazením správce prostředků šablon](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md).
+- Další informace o akcích auditování najdete v tématu věnovaném [operacím auditu správce prostředků](../azure-resource-manager/resource-group-audit.md).
+- Další informace o akcích k určení chyb během nasazení najdete v tématu [Zobrazení operací nasazení](../azure-resource-manager/resource-manager-deployment-operations.md).

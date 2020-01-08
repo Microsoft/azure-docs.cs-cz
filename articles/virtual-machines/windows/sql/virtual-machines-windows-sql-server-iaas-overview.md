@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: baa3444773c41bc91de7e35d2c80f066b96b9ed5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7d8d1505a268976161636abd0ed2d24398978284
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790412"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374288"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Co je SQL Server na virtuálních počítačích Azure? (Windows)
 
@@ -57,7 +57,7 @@ Chcete-li začít, zvolte image virtuálního počítače s SQL Serverem s poža
 ### <a id="payasyougo"></a> Průběžné platby
 Následující tabulka obsahuje matici imagí SQL Serveru s průběžnými platbami.
 
-| Version | Operační systém | Edice |
+| Verze | Operační systém | Edice |
 | --- | --- | --- |
 | **SQL Server 2019** | Windows Server 2019 | [Enterprise](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019enterprise), [Standard](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019standard), [Web](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019web), [Developer](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019sqldev) | 
 | **SQL Server 2017** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseWindowsServer2016), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonWindowsServer2016), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonWindowsServer2016), [Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonWindowsServer2016), [Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonWindowsServer2016) |
@@ -76,7 +76,7 @@ Můžete také používat vlastní licenci (BYOL). V tomto scénáři zaplatíte
 
 Pokud chcete využít vlastní licenci, můžete buď převést stávající virtuální počítač SQL s platbami za použití, nebo můžete nasadit image s předem opraveným **{BYOL}** . Další informace o přepínání licenčního modelu mezi platbami podle využití a BYOL najdete v tématu [Změna licenčního modelu pro virtuální počítač s SQL](virtual-machines-windows-sql-ahb.md)serverem. 
 
-| Version | Operační systém | Edice |
+| Verze | Operační systém | Edice |
 | --- | --- | --- |
 | **SQL Server 2019** | Windows Server 2019 | [Enterprise BYOL](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019-byolenterprise), [Standard BYOL](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019-byolstandard)| 
 | **SQL Server 2017** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017EnterpriseWindowsServer2016), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017StandardonWindowsServer2016) |
@@ -103,14 +103,16 @@ Pokud máte existující databázi, bude ji nutné přesunout do nově zřízen�
 
 Azure Portal poskytuje jednu stránku, kde můžete spravovat [všechny prostředky Azure SQL](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql) , včetně vašich virtuálních počítačů SQL.
 
-Pokud chcete získat přístup ke stránce **prostředků Azure SQL** , vyberte v levé nabídce Azure Portal **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte *Azure SQL* .
+Pokud chcete získat přístup k **prostředkům Azure SQL** , vyberte v nabídce Azure Portal položku **Azure SQL** , nebo vyhledejte a na libovolné stránce vyberte **Azure SQL** .
+
+![Hledání Azure SQL](./media/quickstart-sql-vm-create-portal/search-for-azure-sql.png)
 
 > [!NOTE]
 > **Azure SQL** nabízí rychlý a snadný způsob, jak získat přístup ke všem databázím SQL, elastickým fondům, databázovým serverům, spravovaným instancím SQL a virtuálním počítačům SQL. Azure SQL není služba nebo prostředek. 
 
 Pokud chcete spravovat existující prostředky, vyberte požadovanou položku v seznamu. Pokud chcete vytvořit nové prostředky Azure SQL, vyberte **+ Přidat**. 
 
-![Stránka portálu Azure SQL](./media/quickstart-sql-vm-create-portal/azure-sql.png)
+![Vytvoření prostředku Azure SQL](./media/quickstart-sql-vm-create-portal/create-azure-sql-resource.png)
 
 Po výběru možnosti **+ Přidat**zobrazte další informace o různých možnostech výběrem možnosti **Zobrazit podrobnosti** na libovolné dlaždici.
 
@@ -130,10 +132,10 @@ Azure pro každou podporovanou kombinaci operačního systému, jeho verze a edi
 Program Zlepšování softwaru a služeb na základě zkušeností uživatelů (CEIP) je ve výchozím nastavení povolen. Ten pravidelně odesílá zprávy do Microsoftu s cílem přispět k vylepšování SQL Serveru. S programem CEIP není spojená žádná nutná úloha správy – za předpokladu, že ho nechcete po zřízení zakázat. Tento program můžete přizpůsobit nebo vypnout připojením k virtuálnímu počítači pomocí vzdálené plochy. Pak spusťte nástroj **pro zasílání zpráv o chybách a vytváření sestav využití SQL Serveru**. Podle pokynů zakažte generování sestav. Další informace o shromažďování dat najdete v [Prohlášení o zásadách ochrany osobních údajů pro SQL Server](https://docs.microsoft.com/sql/getting-started/microsoft-sql-server-privacy-statement).
 
 ## <a name="related-products-and-services"></a>Související produkty a služby
-### <a name="windows-virtual-machines"></a>Windows Virtual Machines
+### <a name="windows-virtual-machines"></a>Virtuální počítače s Windows
 * [Přehled služby Virtual Machines](../overview.md)
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 * [Úvod do Microsoft Azure Storage](../../../storage/common/storage-introduction.md)
 
 ### <a name="networking"></a>Sítě

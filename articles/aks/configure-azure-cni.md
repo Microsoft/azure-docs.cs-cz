@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: ab28203a240cf360fb990ac42fdbc2d83864f68b
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: c9c47506e61c665da459558735a3afc93e8b9806
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73604789"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659776"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurace sítě Azure CNI ve službě Azure Kubernetes Service (AKS)
 
@@ -25,7 +25,6 @@ V tomto článku se dozvíte, jak pomocí sítě *Azure CNI* vytvořit a použí
 ## <a name="prerequisites"></a>Požadavky
 
 * Virtuální síť pro cluster AKS musí umožňovat odchozí připojení k Internetu.
-* Nevytvářejte více než jeden cluster AKS ve stejné podsíti.
 * Clustery AKS nemůžou používat `169.254.0.0/16`, `172.30.0.0/16`, `172.31.0.0/16`nebo `192.0.2.0/24` pro rozsah adres služby Kubernetes.
 * Instanční objekt používaný clusterem AKS musí mít alespoň oprávnění [Přispěvatel sítě](../role-based-access-control/built-in-roles.md#network-contributor) v podsíti v rámci vaší virtuální sítě. Pokud chcete místo používání předdefinované role přispěvatele sítě definovat [vlastní roli](../role-based-access-control/custom-roles.md) , vyžadují se následující oprávnění:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
@@ -75,7 +74,7 @@ Minimální hodnota pro maximální počet lusků na uzel se vynutila tak, aby s
 
 | Sítě | Minimální | Maximum |
 | -- | :--: | :--: |
-| CNI Azure | 10 | 250 |
+| Azure CNI | 10 | 250 |
 | Kubenet | 10 | 110 |
 
 > [!NOTE]
@@ -93,7 +92,7 @@ Nemůžete změnit maximální počet lusků na uzel v existujícím clusteru AK
 
 Při vytváření clusteru AKS se pro sítě Azure CNI dají nakonfigurovat následující parametry:
 
-**Virtuální síť**: virtuální síť, do které chcete nasadit cluster Kubernetes. Pokud chcete pro svůj cluster vytvořit novou virtuální síť, vyberte *vytvořit novou* a postupujte podle kroků v části *vytvoření virtuální sítě* . Informace o limitech a kvótách pro virtuální síť Azure najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
+**Virtuální síť**: virtuální síť, do které chcete nasadit cluster Kubernetes. Pokud chcete pro svůj cluster vytvořit novou virtuální síť, vyberte *vytvořit novou* a postupujte podle kroků v části *vytvoření virtuální sítě* . Informace o limitech a kvótách pro virtuální síť Azure najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
 
 **Podsíť**: podsíť ve virtuální síti, do které chcete nasadit cluster. Pokud chcete vytvořit novou podsíť ve virtuální síti pro svůj cluster, vyberte *vytvořit novou* a postupujte podle kroků v části *Vytvoření podsítě* . V případě hybridního připojení by se rozsah adres neměl překrývat s ostatními virtuálními sítěmi ve vašem prostředí.
 

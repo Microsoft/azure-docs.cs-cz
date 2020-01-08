@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s dotazem | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s dotazem | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a dotazování.
 services: active-directory
 documentationCenter: na
@@ -11,19 +11,18 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/17/2019
+ms.date: 01/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f8278f9c0b478d940a629d3308fd73ea474a4aa
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 964ba7ba9ebac84e2895e5a50f3fa31f1dbdd874
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081666"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659691"
 ---
-# <a name="tutorial-integrate-robin-with-azure-active-directory"></a>Kurz: integrace dotazování s Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-robin"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) k dotazování
 
 V tomto kurzu se dozvíte, jak integrovat dotazování s Azure Active Directory (Azure AD). Při integraci dotazování s Azure AD můžete:
 
@@ -47,6 +46,9 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * Dotazování podporuje **aktualizace SP a IDP** v jednotném přihlašování.
 * Dotazování podporuje **jenom při** zřizování uživatelů
 
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
+
 ## <a name="adding-robin-from-the-gallery"></a>Přidávání dotazování z Galerie
 
 Pokud chcete nakonfigurovat integraci dotazování do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat dotazování z galerie.
@@ -58,20 +60,20 @@ Pokud chcete nakonfigurovat integraci dotazování do služby Azure AD, musíte 
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole text **Robin** .
 1. Na panelu výsledků vyberte **dotazování** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on-for-robin"></a>Konfigurace a testování jednotného přihlašování Azure AD pro dotazování
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD s využitím dotazování pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Robin.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí služby Robin, dokončete následující stavební bloky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
-    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
 1. **[Konfigurace jednotného přihlašování pro dotazování](#configure-robin-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
-    * **[Vytvořte uživatele s dotazem pro dotazování](#create-robin-test-user)** , který bude mít protějšek B. Simon v Robin, který je propojený s reprezentací uživatele v Azure AD.
+    1. **[Vytvořte uživatele s dotazem pro dotazování](#create-robin-test-user)** , který bude mít protějšek B. Simon v Robin, který je propojený s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -81,9 +83,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. V **základním oddílu konfigurace SAML** je aplikace předem nakonfigurovaná v režimu iniciované **IDP** a nezbytné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na tlačítko **Uložit** .
-
-    ![Přihlašovací údaje domény a adresy URL pro dotazování pro jednotné přihlašování](common/preintegrated.png)
+1. V části **základní konfigurace SAML** je aplikace předem nakonfigurovaná v režimu iniciované  **IDP** a nezbytné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na tlačítko **uložit** .
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
@@ -93,14 +93,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![image](common/default-attributes.png)
 
-1. Kromě toho očekává aplikace dotazování v odpovědi SAML několik atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
+1. Kromě toho očekává aplikace dotazování v odpovědi SAML několik atributů, které jsou uvedené dál. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut|
-    | ---------------|  --------- |
-    | Email | user.userprincipalname |
-    | FirstName |  user.givenname |
-    | LastName |  user.surname |
-
+    | Name (Název) | Zdrojový atribut|
+    | ---------------| --------- |
+    | Jméno | user.givenname |
+    | Příjmení | user.surname |
+    | E-mail | user.mail |
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **certifikát (RAW)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -146,15 +145,15 @@ Ke konfiguraci jednotného přihlašování na straně pro **dotazování** je p
 
 ### <a name="create-robin-test-user"></a>Vytvořit testovacího uživatele pro dotazování
 
-V této části se v dotazování vytvoří uživatel nazvaný B. Simon. Dotazování podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel už v dotazování neexistuje, vytvoří se po ověření nový.
+V této části se v dotazování vytvoří uživatel s názvem Britta Simon. Dotazování podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel už v dotazování neexistuje, vytvoří se po ověření nový.
 
-### <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Když kliknete na dlaždici s dotazem na přístupovém panelu, měli byste být automaticky přihlášeni k dotazování, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -163,3 +162,4 @@ Když kliknete na dlaždici s dotazem na přístupovém panelu, měli byste být
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Vyzkoušejte si dotazování pomocí Azure AD](https://aad.portal.azure.com/)
+

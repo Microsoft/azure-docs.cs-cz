@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak nakonfigurovat, iniciovat a sprav
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 4f73958a46e408f85d1f23371552aad0d5540184
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 4789ef1e0e09df521f8cab539d972e9e669e0a58
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554913"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450165"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Zálohování virtuálního počítače Azure pomocí Azure Backup přes REST API
 
@@ -44,7 +44,7 @@ Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokon
 |Name (Název)  |Typ  |Popis  |
 |---------|---------|---------|
 |204 bez obsahu     |         |  OK bez vráceného obsahu      |
-|202 přijato     |         |     Přijata    |
+|202 přijato     |         |     Přijato    |
 
 ##### <a name="example-responses"></a>Příklady odpovědí
 
@@ -211,7 +211,7 @@ Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokon
 |Name (Název)  |Typ  |Popis  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
-|202 přijato     |         |     Přijata    |
+|202 přijato     |         |     Přijato    |
 
 ##### <a name="example-responses"></a>Příklady odpovědí
 
@@ -321,7 +321,7 @@ Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokon
 
 |Name (Název)  |Typ  |Popis  |
 |---------|---------|---------|
-|202 přijato     |         |     Přijata    |
+|202 přijato     |         |     Přijato    |
 
 #### <a name="example-responses-3"></a>Příklady odpovědí
 
@@ -433,7 +433,7 @@ DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroup
 DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2019-05-13
 ```
 
-### <a name="responses-2"></a>Požadavků
+#### <a name="responses-2"></a>Požadavků
 
 *Odstranění* ochrany je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
 
@@ -442,7 +442,29 @@ Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a až 204 
 |Name (Název)  |Typ  |Popis  |
 |---------|---------|---------|
 |204. obsah     |         |  Obsah       |
-|202 přijato     |         |     Přijata    |
+|202 přijato     |         |     Přijato    |
+
+> [!IMPORTANT]
+> Aby bylo možné chránit před náhodným odstraněním scénářů, je [k dispozici funkce obnovitelného odstranění](use-restapi-update-vault-properties.md#soft-delete-state) pro trezor služby Recovery Services. Pokud je stav obnovitelného odstranění trezoru nastavený na povoleno, operace odstranění data okamžitě neodstraní. Bude se uchovávat 14 dní a pak se trvale vyprázdní. Zákazníkovi se za tento 14 dnů neúčtují žádné úložiště. Chcete-li operaci odstranění vrátit zpět, přečtěte si [část věnované vrácení zpět a odstranění](#undo-the-stop-protection-and-delete-data).
+
+### <a name="undo-the-stop-protection-and-delete-data"></a>Vrátit zpět ochranu a odstranit data
+
+Zrušení nechtěného odstranění je podobné jako vytvoření zálohované položky. Po odstranění se položka zachová, ale nespustí se žádné budoucí zálohy.
+
+Zrušení odstranění je operace *Put* , která je velmi podobná [změně zásady](#changing-the-policy-of-protection) nebo [Povolení ochrany](#enabling-protection-for-the-azure-vm). Stačí poskytnout záměr vrátit odstranění pomocí proměnné *isRehydrate* v [textu požadavku](#example-request-body) a odeslat žádost. Například: Chcete-li zrušit odstranění pro testVM, je třeba použít následující text žádosti.
+
+```http
+{
+  "properties": {
+    "protectedItemType": "Microsoft.Compute/virtualMachines",
+    "protectionState": "ProtectionStopped",
+    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+    "isRehydrate": true
+  }
+}
+```
+
+Odpověď bude následovat po stejném formátu, jak je uvedeno [pro aktivaci zálohování na vyžádání](#example-responses-3). Výsledná úloha by měla být sledována, jak je vysvětleno v [úlohách monitorování pomocí REST API dokumentu](backup-azure-arm-userestapi-managejobs.md#tracking-the-job).
 
 ## <a name="next-steps"></a>Další kroky
 

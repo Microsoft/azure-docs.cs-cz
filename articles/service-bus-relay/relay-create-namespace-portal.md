@@ -14,19 +14,19 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/20/2017
 ms.author: spelluru
-ms.openlocfilehash: a7bb26cdfec4042a1963f929f92e5505045124a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c2f15008149de00ba232824280c69bcf4da978f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60749236"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459279"
 ---
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>Vytvoření oboru názvů přenosu pomocí webu Azure Portal
 
 Obor názvů je kontejner oboru pro všechny součásti služby Azure Relay. Součástí jednoho oboru názvů může být několik přenosů, přičemž obory názvů často slouží jako kontejnery aplikací. Obor názvů služby Relay v současnosti můžete vytvořit dvěma způsoby:
 
 1. Azure Portal (tento článek)
-2. Šablony [Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md)
+2. Šablony [Azure Resource Manageru](../azure-resource-manager/management/overview.md)
 
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Vytvoření oboru názvů na webu Azure Portal
 
@@ -34,7 +34,7 @@ Obor názvů je kontejner oboru pro všechny součásti služby Azure Relay. Sou
 
 Blahopřejeme! Právě jste vytvořili obor názvů přenosu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Přenos – nejčastější dotazy](relay-faq.md)
 * [Začínáme s .NET](relay-hybrid-connections-dotnet-get-started.md)

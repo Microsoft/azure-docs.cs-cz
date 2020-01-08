@@ -1,6 +1,6 @@
 ---
-title: Azure CLI ukázkový – kopírování spravovaných disků do účtu úložiště
-description: Azure CLI ukázkový – Export nebo kopírování spravovaných disků do účtu úložiště s.
+title: Kopírování spravovaných disků do účtu úložiště – ukázka rozhraní příkazového řádku
+description: Ukázka Azure CLI – export nebo kopírování spravovaných disků do účtu s úče
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 09/17/2018
 ms.author: ramankum
 ms.custom: mvc,seodec18
-ms.openlocfilehash: d6009a723297d03dc854d06529315b22b2f4de16
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 92c752c56c37b854bc793d897c664337cf8bfccd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60789511"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463615"
 ---
-# <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Export nebo kopírování spravovaného disku do účtu úložiště pomocí Azure CLI
+# <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Export/zkopírování spravovaného disku do účtu úložiště pomocí Azure CLI
 
 Tento skript exportuje základní virtuální pevný disk spravovaného disku do účtu úložiště ve stejné nebo jiné oblasti. Nejprve vygeneruje identifikátor URI SAS spravovaného disku a pak pomocí něj zkopíruje virtuální pevný disk do účtu úložiště. Tento skript můžete použít ke kopírování spravovaných disků za účelem regionálního rozšíření.
 
@@ -44,10 +44,10 @@ Tento skript k vygenerování identifikátoru URI SAS spravovaného disku a zkop
 | [az disk grant-access](https://docs.microsoft.com/cli/azure/disk?view=azure-cli-latest#az-disk-grant-access) | Vygeneruje sdílený přístupový podpis jen pro čtení, který se použije ke zkopírování základního souboru VHD do účtu úložiště nebo jeho stažení do místního prostředí.  |
 | [az storage blob copy start](https://docs.microsoft.com/cli/azure/storage/blob/copy) | Asynchronně zkopíruje objekt blob z jednoho účtu úložiště do jiného. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Vytvoření spravovaného disku z virtuálního pevného disku](virtual-machines-windows-cli-sample-create-managed-disk-from-vhd.md?toc=%2fcli%2fmodule%2ftoc.json)
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 
-Další virtuální počítače a spravované disky ukázkové skripty rozhraní příkazového řádku najdete v [dokumentaci virtuálního počítače s Windows Azure](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Další ukázkové skripty rozhraní příkazového řádku pro virtuální počítače a služby Managed disks najdete v [dokumentaci k virtuálním počítačům Azure s Windows](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

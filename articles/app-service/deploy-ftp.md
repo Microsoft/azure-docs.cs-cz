@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: bccf4fa0b17f261d41c0a80d9f75fe391f591bfb
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 7bc637b5719da3c5f5e5607436aa7da0721f5a9e
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671724"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680906"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Nasazení aplikace pro Azure App Service pomocí FTP/S
 
@@ -21,15 +21,21 @@ Koncový bod FTP/S pro vaši aplikaci je už aktivní. Pro povolení nasazení F
 
 ## <a name="open-ftp-dashboard"></a>Otevření řídicího panelu FTP
 
-V [Azure Portal](https://portal.azure.com)otevřete [stránku prostředků](../azure-resource-manager/manage-resources-portal.md#manage-resources)vaší aplikace.
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **App Services**.
 
-Řídicí panel FTP otevřete tak, že kliknete na **centrum nasazení** > **FTP** > **řídicí panel**.
+    ![Vyhledejte App Services.](media/app-service-continuous-deployment/search-for-app-services.png)
 
-![Otevření řídicího panelu FTP](./media/app-service-deploy-ftp/open-dashboard.png)
+2. Vyberte webovou aplikaci, kterou chcete nasadit.
+
+    ![Vyberte svou aplikaci.](media/app-service-continuous-deployment/select-your-app.png)
+
+3. Vyberte **centrum nasazení** >  > m **řídicím panelu** **FTP** .
+
+    ![Otevření řídicího panelu FTP](./media/app-service-deploy-ftp/open-dashboard.png)
 
 ## <a name="get-ftp-connection-information"></a>Získat informace o připojení FTP
 
-Kliknutím na **Kopírovat** na řídicím panelu FTP zkopírujte koncový bod FTPS a přihlašovací údaje aplikace.
+Na řídicím panelu FTP vyberte **Kopírovat** a zkopírujte koncový bod FTPS a přihlašovací údaje aplikace.
 
 ![Kopírovat informace FTP](./media/app-service-deploy-ftp/ftp-dashboard.png)
 

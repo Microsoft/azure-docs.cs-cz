@@ -1,5 +1,5 @@
 ---
-title: Přihlášení k jednostránkové aplikaci – Microsoft Identity Platform | Azure
+title: Přihlášení k samoobslužné aplikaci & přihlašování – Microsoft Identity Platform | Azure
 description: Informace o tom, jak vytvořit jednostránkovou aplikaci (přihlášení)
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +17,14 @@ ms.date: 05/06/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d2494a7ad89c9e9b3a525ddd04290a08eb3af58
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b3d7afdc634649ca3baf5f43d5e2376fb5d8b05d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962419"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423649"
 ---
-# <a name="single-page-application-sign-in"></a>Jednostránkové aplikace: přihlášení
+# <a name="single-page-application-sign-in-and-sign-out"></a>Jednostránkové aplikace: přihlášení a odhlášení
 
 Naučte se, jak přidat přihlášení k kódu pro aplikaci s jednou stránkou.
 

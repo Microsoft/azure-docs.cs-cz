@@ -1,25 +1,14 @@
 ---
 title: Nasazení Azure Service Fabric s využitím PowerShellu
-description: Jak nasadit a odebírat aplikace v Service Fabric pomocí prostředí PowerShell.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: b120ffbf-f1e3-4b26-a492-347c29f8f66b
-ms.service: service-fabric
-ms.devlang: dotnet
+description: Přečtěte si o odebrání a nasazení aplikací v Azure Service Fabric a o tom, jak provádět tyto akce v prostředí PowerShell.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/19/2018
-ms.author: atsenthi
-ms.openlocfilehash: 0080ba0807a4cb31fedeb132932e2e08137dd40b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e3fdd194f2949f1246e991968e02b3278f33f7db
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013273"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614498"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Nasazení a odebrání aplikací pomocí PowerShellu
 
@@ -143,7 +132,7 @@ Zde je například statistika komprese pro některé balíčky, které ukazují 
 |100|100|00:00:03.3547592|60|
 |512|100|00:00:16.3850303|307|
 |1024|500|00:00:32.5907950|615|
-|2048|1000|00:01:04.3775554|1231|
+|2 048|1 000|00:01:04.3775554|1231|
 |5012|100|00:02:45.2951288|3074|
 
 Jakmile je balíček komprimovaný, dá se v případě potřeby nahrát do jednoho nebo víc Service Fabric clusterů. Mechanismus nasazení je stejný pro komprimované a nekomprimované balíčky. Komprimované balíčky se ukládají jako v úložišti imagí clusteru. Před spuštěním aplikace jsou balíčky na uzlu nekomprimovány.
