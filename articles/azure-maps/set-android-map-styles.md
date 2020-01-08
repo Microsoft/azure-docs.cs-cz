@@ -1,5 +1,6 @@
 ---
-title: Funkce stylů mapy v Azure Maps | Microsoft Docs
+title: Nastavení stylu mapy v Azure Maps pomocí Android SDK
+titleSuffix: Azure Maps
 description: Přečtěte si o funkcích Azure Maps souvisejících s Style pro Android SDK.
 author: walsehgal
 ms.author: v-musehg
@@ -8,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5bcc73c63e7c9d804d01df98551aa51b81d98d07
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1a898508e5c99f6cb8be46605c156106b47c08f3
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844845"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75528092"
 ---
 # <a name="set-map-style-using-azure-maps-android-sdk"></a>Nastavení stylu mapy pomocí Azure Maps Android SDK
 
@@ -27,7 +28,7 @@ Chcete-li dokončit proces v tomto článku, je nutné nainstalovat [Azure Maps 
 
 ## <a name="set-map-style-in-the-layout"></a>Nastavení stylu mapy v rozložení
 
-Můžete nastavit styl mapy v souboru rozložení pro třídu Activity. Upravte **> rozložení pro res > activity_main. XML**, takže vypadá takto:
+Můžete nastavit styl mapy v souboru rozložení pro třídu Activity. Upravte **> rozložení res > activity_main. XML**, takže vypadá takto:
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -51,7 +52,7 @@ Můžete nastavit styl mapy v souboru rozložení pro třídu Activity. Upravte 
 </FrameLayout>
 ```
 
-Atribut výše nastaví styl mapy na grayscale_dark. `mapcontrol_style` 
+Atribut `mapcontrol_style` výše nastaví styl mapy na **grayscale_dark**. 
 
 <center>
 
@@ -59,7 +60,7 @@ Atribut výše nastaví styl mapy na grayscale_dark. `mapcontrol_style`
 
 ## <a name="set-map-style-in-the-activity-class"></a>Nastavit styl mapy ve třídě Activity
 
-Styl mapy lze nastavit ve třídě Activity. Zkopírujte následující fragment kódu do metody **Create ()** vaší `MainActivity.java` třídy. Tím se nastaví styl mapy na **satellite_road_labels**.
+Styl mapy lze nastavit ve třídě Activity. Zkopírujte následující fragment kódu do metody **Create ()** třídy `MainActivity.java`. Tím se nastaví styl mapy na **satellite_road_labels**.
 
 ```Java
 mapControl.onReady(map -> {

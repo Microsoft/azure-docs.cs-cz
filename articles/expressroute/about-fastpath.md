@@ -5,16 +5,16 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/05/2019
+ms.date: 12/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6ff1dac312bcb4df1e1afc9679df09fc8a2b28ff
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c03be46207e7698d0557729c546488412c0cc5dd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74897361"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437102"
 ---
-# <a name="about-expressroute-fastpath"></a>O ExpressRoute FastPath
+# <a name="about-expressroute-fastpath"></a>Informace o službě ExpressRoute FastPath
 
 Brána virtuální sítě ExpressRoute je navržená pro výměnu síťových tras a směrování síťového provozu. FastPath je navržená tak, aby vylepšila výkon datových cest mezi vaší místní sítí a virtuální sítí. Pokud je povoleno, FastPath odesílá síťový provoz přímo virtuálním počítačům ve virtuální síti a vynechá bránu.
 
@@ -26,12 +26,22 @@ FastPath je k dispozici na všech okruhech ExpressRoute.
 
 ### <a name="gateways"></a>Brány
 
-FastPath pořád vyžaduje vytvoření brány virtuální sítě pro výměnu tras mezi virtuální sítí a místní sítí. Další informace o branách virtuální sítě a ExpressRoute najdete v tématu [brány virtuální sítě ExpressRoute](expressroute-about-virtual-network-gateways.md).
+FastPath pořád vyžaduje vytvoření brány virtuální sítě pro výměnu tras mezi virtuální sítí a místní sítí. Další informace o branách virtuální sítě a ExpressRoute, včetně informací o výkonu a SKU brány, najdete v tématu [ExpressRoute brány virtuální sítě](expressroute-about-virtual-network-gateways.md).
 
-Brána virtuální sítě musí být buď:
+Aby bylo možné konfigurovat FastPath, musí být brána virtuální sítě buď:
 
 * Mimořádný výkon
 * ErGw3AZ
+
+#### <a name="aggthroughput"></a>Odhadované výkonů podle SKU brány
+Následující tabulka ukazuje typy brány a odhadovanou funkční. Tato tabulka platí pro model nasazení Resource Manager a pro model nasazení Classic.
+
+[!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
+
+> [!IMPORTANT]
+> Výkon aplikace závisí na několika faktorech, například na celkovou latenci a počet přenosové toky, které aplikace se otevře. Čísla v tabulce představují horní mez, které může aplikace dosáhnout teoreticky v prostředí ideální.
+>
+>
 
 ## <a name="supported-features"></a>Podporované funkce
 

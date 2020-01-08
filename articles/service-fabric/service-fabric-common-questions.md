@@ -1,25 +1,15 @@
 ---
-title: Běžné otázky týkající se Microsoft Azure Service Fabric | Microsoft Docs
-description: Nejčastější dotazy týkající se Service Fabric a jejich odpovědí
-services: service-fabric
-documentationcenter: .net
-author: chackdan
-manager: chackdan
-editor: ''
-ms.assetid: 5a179703-ff0c-4b8e-98cd-377253295d12
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Běžné otázky týkající se Microsoft Azure Service Fabric
+description: Nejčastější dotazy týkající se Service Fabric, včetně možností, případů použití a běžných scénářů.
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: dd514bb7c600c99518983855dae1d3b7fb8a1efb
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7638a360821e73b7485014c8e6f006e91bbea551
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481641"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614634"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Nejčastější dotazy k Service Fabric
 
@@ -94,7 +84,7 @@ U produkčních úloh musíte být odolné vůči současnému selhání minimá
 
 ### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>Můžu svůj cluster vypnout v noci nebo víkendech, abyste ušetřili náklady?
 
-Obecně platí, ne. Service Fabric ukládá stav na místních, dočasných discích, což znamená, že pokud se virtuální počítač přesune na jiného hostitele, data se s ním nepřesunou. Při běžném provozu to není problém, protože nový uzel je aktualizován jinými uzly. Pokud ale zastavíte všechny uzly a později je restartujete, je důležité mít možnost, že většina uzlů začíná na nových hostitelích a systém nemůže obnovit.
+Obecně to možné není. Service Fabric ukládá stav na místních, dočasných discích, což znamená, že pokud se virtuální počítač přesune na jiného hostitele, data se s ním nepřesunou. Při běžném provozu to není problém, protože nový uzel je aktualizován jinými uzly. Pokud ale zastavíte všechny uzly a později je restartujete, je důležité mít možnost, že většina uzlů začíná na nových hostitelích a systém nemůže obnovit.
 
 Pokud chcete vytvořit clustery pro testování aplikace před jejím nasazením, doporučujeme tyto clustery dynamicky vytvářet jako součást [kanálu průběžné integrace nebo průběžného nasazování](service-fabric-tutorial-deploy-app-with-cicd-vsts.md).
 
@@ -111,13 +101,13 @@ Ne. Virtuální počítače s nízkou prioritou se nepodporují.
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>Jaké jsou adresáře a procesy, které je potřeba vyloučit při spuštění antivirového programu v mém clusteru?
 
-| **Vyloučené adresáře antivirové ochrany** |
+| **Antivirové Vyloučené adresáře** |
 | --- |
 | Program Files\Microsoft Service Fabric |
 | FabricDataRoot (od konfigurace clusteru) |
 | FabricLogRoot (od konfigurace clusteru) |
 
-| **Vyloučené procesy antivirové ochrany** |
+| **Antivirové vyloučené procesy** |
 | --- |
 | Fabric.exe |
 | FabricHost.exe |
@@ -177,7 +167,7 @@ Všimněte si, že tento výpočet také předpokládá:
 
 Stejně jako u spolehlivých služeb je množství dat, které můžete ukládat ve službě objektu actor, omezené jenom z celkového místa na disku a paměti dostupné napříč uzly v clusteru. Jednotlivé objekty actor jsou však nejefektivnější, pokud jsou použity k zapouzdření malého množství stavu a přidružené obchodní logiky. V rámci obecného pravidla by měl mít jednotlivec actor stav, který se měří v kilobajtech.
 
-## <a name="other-questions"></a>Další dotazy
+## <a name="other-questions"></a>Další otázky
 
 ### <a name="how-does-service-fabric-relate-to-containers"></a>Jak se Service Fabric vztahují k kontejnerům?
 

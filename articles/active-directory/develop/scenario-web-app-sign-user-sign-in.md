@@ -1,6 +1,6 @@
 ---
-title: Zápis webové aplikace, která podepisuje uživatele – Microsoft Identity Platform | Azure
-description: Informace o tom, jak vytvořit webovou aplikaci, která přihlašuje uživatele (přihlášení)
+title: Zápis webové aplikace s přihlašováním/vycházejícími uživateli – Microsoft Identity Platform | Azure
+description: Naučte se, jak vytvořit webovou aplikaci, která se přihlásí uživatelům.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8d7d5737a8332416a225154709ab7d66e447764
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 6bb32ae29c533b8ea27bf68e012040a17bb36355
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961977"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423492"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Webová aplikace, která přihlašuje uživatele: přihlášení a odhlášení
 
@@ -118,7 +118,7 @@ Kód pro `AccountController` je k dispozici z úložiště ASP.NET Core v [Accou
 
 V ASP.NET se odhlášení aktivuje z metody `SignOut()` na řadiči (např [. AccountController. cs # L16-L23](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L16-L23)). Tato metoda není součástí ASP.NET architektury (na rozdíl od toho, co se stane v ASP.NET Core). Po navržení identifikátoru URI přesměrování pošle OpenID výzvu k přihlášení.
 
-```CSharp
+```csharp
 public void SignIn()
 {
     // Send an OpenID Connect sign-in request.
@@ -342,7 +342,7 @@ V ASP.NET se odhlášení aktivuje z metody `SignOut()` na řadiči (např [. Ac
 - Vymaže mezipaměť.
 - Přesměruje na stránku, kterou chce.
 
-```CSharp
+```csharp
 /// <summary>
 /// Send an OpenID Connect sign-out request.
 /// </summary>
@@ -396,7 +396,7 @@ Identifikátor URI po odhlášení umožňuje aplikacím, aby se účastnili glo
 
 Middleware ASP.NET Core OpenID Connect umožňuje vaší aplikaci zachytit volání služby Microsoft Identity Platform `logout` koncový bod tím, že poskytne událost OpenID Connect s názvem `OnRedirectToIdentityProviderForSignOut`. Příklad toho, jak se přihlásit k odběru této události (Pokud chcete vymazat mezipaměť tokenu), najdete v tématu [Microsoft. identity. Web/WebAppServiceCollectionExtensions. cs # L151-L156](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L156).
 
-```CSharp
+```csharp
     // Handling the global sign-out
     options.Events.OnRedirectToIdentityProviderForSignOut = async context =>
     {
@@ -408,7 +408,7 @@ Middleware ASP.NET Core OpenID Connect umožňuje vaší aplikaci zachytit volá
 
 V ASP.NET delegujete na middleware, abyste mohli spustit odhlášení a vymazat soubor cookie relace:
 
-```CSharp
+```csharp
 public class AccountController : Controller
 {
  ...

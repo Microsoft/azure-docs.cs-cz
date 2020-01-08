@@ -1,25 +1,14 @@
 ---
-title: Nastavit Azure Active Directory pro ověřování Service Fabric klientů | Microsoft Docs
+title: Nastavit Azure Active Directory pro ověřování klientů
 description: Přečtěte si, jak nastavit Azure Active Directory (Azure AD) pro ověřování klientů pro Service Fabric clustery.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: chackdan
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/28/2019
-ms.author: atsenthi
-ms.openlocfilehash: 77814d04daca0ebb649ffa2e8ff46becddec4f0f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: bbad991e955a31e3f3c53931889f630e521e1a8c
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901511"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614685"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Nastavit Azure Active Directory pro ověřování klientů
 
@@ -32,7 +21,12 @@ Cluster Service Fabric nabízí několik vstupních bodů ke svým funkcím spr�
 > [!NOTE]
 > V systému Linux je před vytvořením clusteru nutné provést následující kroky. Ve Windows máte také možnost [nakonfigurovat ověřování Azure AD pro existující cluster](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/Configure%20Azure%20Active%20Directory%20Authentication%20for%20Existing%20Cluster.md).
 
-## <a name="prerequisites"></a>Předpoklady
+> [!NOTE]
+> Jedná se o [známý problém](https://github.com/microsoft/service-fabric/issues/399) , že aplikace a uzly na clusterech s podporou AAD na platformě Linux nejde zobrazit na webu Azure Portal.
+
+
+
+## <a name="prerequisites"></a>Požadavky
 V tomto článku předpokládáme, že jste už tenanta vytvořili. Pokud ne, začněte tím, že si přečtete, [Jak získat klienta Azure Active Directory][active-directory-howto-tenant].
 
 Abychom zjednodušili některé kroky týkající se konfigurace služby Azure AD pomocí Service Fabricho clusteru, vytvořili jsme sadu skriptů prostředí Windows PowerShell.
@@ -44,7 +38,7 @@ Abychom zjednodušili některé kroky týkající se konfigurace služby Azure A
 
 Pomocí skriptů vytvoříme dvě aplikace Azure AD pro řízení přístupu ke clusteru: jednu webovou aplikaci a jednu nativní aplikaci. Po vytvoření aplikací, které reprezentují váš cluster, vytvoříte uživatele pro [role podporované Service Fabric](service-fabric-cluster-security-roles.md): jen pro čtení a správce.
 
-Spusťte `SetupApplications.ps1`a jako parametry zadejte ID klienta, název clusteru a adresu URL odpovědi webové aplikace.  Zadejte také uživatelská jména a hesla pro uživatele. Například:
+Spusťte `SetupApplications.ps1`a jako parametry zadejte ID klienta, název clusteru a adresu URL odpovědi webové aplikace.  Zadejte také uživatelská jména a hesla pro uživatele. Příklad:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9890c' -ClusterName 'mysftestcluster' -WebApplicationReplyUrl 'https://mysftestcluster.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -61,7 +55,7 @@ $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9
 
 *WebApplicationReplyUrl* je výchozí koncový bod, který Azure AD vrátí vašim uživatelům po dokončení přihlášení. Nastavte tento koncový bod jako koncový bod Service Fabric Explorer pro váš cluster. Pokud vytváříte aplikace Azure AD, které představují existující cluster, zajistěte, aby tato adresa URL odpovídala vašemu stávajícímu koncovému bodu clusteru. Pokud vytváříte aplikace pro nový cluster, naplánujte koncový bod, který bude mít cluster, a ujistěte se, že nepoužíváte koncový bod existujícího clusteru. Ve výchozím nastavení je koncový bod Service Fabric Explorer:
 
-https://&lt;cluster_domain&gt;: 19080/Explorer
+https://&lt;cluster_domain&gt;:19080/Explorer
 
 Zobrazí se výzva, abyste se přihlásili k účtu, který má oprávnění správce pro tenanta Azure AD. Po přihlášení vytvoří skript webové a nativní aplikace, které reprezentují váš Service Fabric cluster. Pokud se podíváte na aplikace klienta v [Azure Portal][azure-portal], měli byste vidět dvě nové položky:
 

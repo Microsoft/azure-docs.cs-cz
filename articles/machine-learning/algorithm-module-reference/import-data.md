@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 5fa8d3984c758d0bf95372864f3bffeb6f302c83
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8d099d0b8f8e31bf77f5ddfad320ac792c5c01e5
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497777"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529605"
 ---
 # <a name="import-data-module"></a>Importovat data modul
 
@@ -23,22 +23,22 @@ Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 Pomocí tohoto modulu můžete načíst data do kanálu strojového učení z existujících cloudových datových služeb. 
 
 > [!Note]
-> Všechny funkce, které tento modul poskytuje, může udělat **úložiště dat** a **datové sady** na úvodní stránce pracovního prostoru. Doporučujeme používat **úložiště** dat a **datovou sadu** , které zahrnují další funkce, jako je monitorování dat. Další informace najdete v článku [Jak získat přístup k datům](../service/how-to-access-data.md) a [jak zaregistrovat datové sady](../service/how-to-create-register-datasets.md) .
+> Všechny funkce, které tento modul poskytuje, může udělat **úložiště dat** a **datové sady** na úvodní stránce pracovního prostoru. Doporučujeme používat **úložiště** dat a **datovou sadu** , které zahrnují další funkce, jako je monitorování dat. Další informace najdete v článku [Jak získat přístup k datům](../how-to-access-data.md) a [jak zaregistrovat datové sady](../how-to-create-register-datasets.md) .
 > Po registraci můžete datovou sadu najít v **datových sadách** -> kategorie **Moje datové sady** v rozhraní návrháře. Tento modul je vyhrazený pro uživatele v rámci studia (Classic) pro známé prostředí. 
 >
 
 Nejdřív vyberte zdroj, ze kterého čtete, a dokončete další nastavení. Modul **Import dat** podporuje čtení dat z následujících zdrojů:
 
 - Adresa URL prostřednictvím protokolu HTTP
-- Cloudové úložiště Azure přes [**úložiště dat**](../service/how-to-access-data.md))
+- Cloudové úložiště Azure přes [**úložiště dat**](../how-to-access-data.md))
     - Kontejner objektů blob Azure
     - Sdílená složka Azure
     - Azure Data Lake
     - Azure Data Lake Gen2
-    - Azure SQL Database
+    - Databáze SQL Azure
     - PostgreSQL Azure    
 
-Než použijete cloudové úložiště, musíte nejdřív zaregistrovat úložiště dat v pracovním prostoru Azure Machine Learning. Další informace najdete v tématu [Jak získat přístup k datům](../service/how-to-access-data.md). 
+Než použijete cloudové úložiště, musíte nejdřív zaregistrovat úložiště dat v pracovním prostoru Azure Machine Learning. Další informace najdete v tématu [Jak získat přístup k datům](../how-to-access-data.md). 
 
 Jakmile definujete požadovaná data a připojíte se ke zdroji, **[importujte data](./import-data.md)** datový typ každého sloupce v závislosti na hodnotách, které obsahuje, a načte data do kanálu návrháře. Výstupem **importu dat** je datová sada, která se dá použít s libovolným kanálem návrháře.
 

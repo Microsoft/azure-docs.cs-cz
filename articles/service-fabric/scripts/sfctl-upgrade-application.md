@@ -1,5 +1,5 @@
 ---
-title: Ukázka skriptu rozhraní Service Fabric CLI – aktualizace aplikace v clusteru
+title: Aktualizace aplikace v clusteru v sfctl
 description: Ukázka skriptu rozhraní Service Fabric CLI – aktualizace aplikace pomocí nové verze Tento příklad také upgraduje nasazenou aplikaci novými bity.
 services: service-fabric
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.date: 12/06/2017
 ms.author: atsenthi
 ms.custom: ''
-ms.openlocfilehash: e925f4f7b4a3da2d298413feccc94ea742e47f6b
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 34f2ae6f3a2ff3adc35794d6e7dfd682640c646b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034712"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614719"
 ---
-# <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Přidání certifikátu aplikace do clusteru Service Fabric
+# <a name="update-an-application-using-the-service-fabric-cli"></a>Aktualizace aplikace pomocí rozhraní příkazového řádku Service Fabric
 
 Tento ukázkový skript odešle novou verzi existující aplikace a potom upgraduje nasazenou aplikaci novými bity.
 
@@ -31,7 +31,7 @@ Tento ukázkový skript odešle novou verzi existující aplikace a potom upgrad
 
 [!code-sh[main](../../../cli_scripts/service-fabric/upgrade-application/upgrade-application.sh "Upload and update an application on a Service Fabric cluster")]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v [dokumentaci k rozhraní Service Fabric CLI](../service-fabric-cli.md).
 

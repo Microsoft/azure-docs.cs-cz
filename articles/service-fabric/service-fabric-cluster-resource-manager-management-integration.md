@@ -1,25 +1,16 @@
 ---
-title: Service Fabric integrace správy Správce prostředků clusteru | Microsoft Docs
+title: Integrace správy Správce prostředků clusteru
 description: Přehled integračních bodů mezi Správce prostředků clusteru a správou Service Fabric.
-services: service-fabric
-documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 956cd0b8-b6e3-4436-a224-8766320e8cd7
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 2b3ccf16aca04ebd398e2f97007b817cc0a6ef8d
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196502"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614617"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Integrace správce prostředků clusteru s Service Fabric správu clusterů
 Cluster Service Fabric Správce prostředků nereaguje na inovace v Service Fabric, ale je součástí této služby. První způsob, jakým cluster Správce prostředků pomáhá se správou, je sledovat požadovaný stav clusteru a služby uvnitř něj. Cluster Správce prostředků odesílá zprávy o stavu, když nedokáže cluster vložit do požadované konfigurace. Pokud například není dostatečná kapacita, cluster Správce prostředků odesílá upozornění na stav a chyby, které signalizují problém. Další integrací se musí udělat s tím, jak upgrade funguje. Cluster Správce prostředků během upgradu mírně mění jeho chování.  

@@ -3,17 +3,17 @@ title: Instalace a použití aplikace Azure IoT Explorer | Microsoft Docs
 description: Nainstalujte nástroj Azure IoT Explorer a použijte ho k interakci se zařízeními IoT technologie Plug and Play ve verzi Preview připojenou ke službě IoT Hub.
 author: miagdp
 ms.author: miag
-ms.date: 07/02/2019
+ms.date: 12/27/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 3b5e9a70f9eecbf187a6748073de009653061dc0
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: fd180404ca18b5ea84c745a543ae7e87bf16c27d
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679855"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529622"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Instalace a použití Azure IoT Exploreru
 
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak:
 - Nainstalujte a nakonfigurujte nástroj Azure IoT Explorer.
 - Použijte nástroj k interakci a testování zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K použití nástroje Azure IoT Explorer potřebujete:
 
@@ -51,13 +51,13 @@ Definice modelu pro zařízení IoT technologie Plug and Play je uložená ve ve
 
 Přidání zdroje:
 
-1. Přejít na **Nastavení**.
+1. Přejděte na **nastavení**.
 1. Vyberte **Nový** a zvolte svůj zdroj.
 1. Pokud přidáváte úložiště modelu společnosti, zadejte připojovací řetězec.
 
 Postup odebrání zdroje:
 
-1. Přejít na **Nastavení**.
+1. Přejděte na **nastavení**.
 1. Vyhledejte zdroj, který chcete odebrat.
 1. Vyberte **X** a odeberte je. Úložiště veřejného modelu nejde odebrat, protože definice společných rozhraní pocházejí z tohoto úložiště.
 
@@ -93,7 +93,7 @@ Tato část obsahuje karty pro **identitu zařízení**, **vyzdvojení zařízen
 
 Nástroj můžete použít k zobrazení digitálního vlákna instance zařízení. V případě zařízení IoT technologie Plug and Play se v této části tohoto nástroje zobrazí všechna rozhraní přidružená k modelu schopností zařízení. Vyberte rozhraní a rozbalte odpovídající [technologie Plug and Play primitivních elementů IoT](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL).
 
-### <a name="interface"></a>Prostředí
+### <a name="interface"></a>Rozhraní
 
 Na stránce **rozhraní** si můžete zobrazit definici JSON rozhraní.
 

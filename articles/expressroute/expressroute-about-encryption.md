@@ -5,18 +5,18 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 12/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: b8e9748360b22cd1c693b2c601024c0824ffb483
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 7dd9106539b6756d74629ac663241a5b5562cefb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083609"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437045"
 ---
 # <a name="expressroute-encryption"></a>Šifrování ExpressRoute
  
-ExpressRoute podporuje několik technologií šifrování, které zajistí důvěrnost a integritu dat mezi vaší sítí a sítí Microsoftu.
+ExpressRoute podporuje několik technologií šifrování, které zajišťují důvěrnost a integritu dat mezi vaší sítí a sítí Microsoftu.
 
 ## <a name="point-to-point-encryption-by-macsec-faq"></a>Šifrování Point-to-Point pomocí MACsec – Nejčastější dotazy
 MACsec je [Standard IEEE](https://1.ieee802.org/security/802-1ae/). Šifruje data na úrovni MAC (Media Access Control) nebo síťové vrstvě 2. Pomocí MACsec můžete šifrovat fyzické odkazy mezi síťovými zařízeními a síťovými zařízeními Microsoftu, když se připojíte k Microsoftu prostřednictvím [ExpressRoute Direct](expressroute-erdirect-about.md). MACsec je ve výchozím nastavení zakázaný u portů ExpressRoute Direct. Zavedete si vlastní klíč MACsec pro šifrování a uložíte ho do [Azure Key Vault](../key-vault/key-vault-overview.md). Určíte, kdy se má klíč otočit. Další informace najdete v dalších nejčastějších dotazech.
@@ -40,7 +40,7 @@ Ano. MACsec zabezpečuje fyzické připojení mezi vámi a společností Microso
 ### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-between-my-on-premises-network-and-my-azure-virtual-network"></a>Můžu použít Azure VPN Gateway k nastavení tunelu IPsec mezi místní sítí a virtuální sítí Azure?
 Ano. Tento tunel IPsec můžete nastavit přes partnerské vztahy Microsoftu vašeho okruhu ExpressRoute. Postupujte podle našeho [Průvodce konfigurací](site-to-site-vpn-over-microsoft-peering.md).
 ### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-over-azure-private-peering"></a>Můžu použít Azure VPN Gateway k nastavení tunelu IPsec přes privátní partnerský vztah Azure?
-Ne. V Azure Virtual Network musíte nasadit bránu VPN třetí strany a vytvořit tunelové propojení IPsec mezi ní a místní bránou VPN.
+Pokud přijmete Azure Virtual WAN, můžete postupovat podle [těchto kroků](../virtual-wan/vpn-over-expressroute.md) k zašifrování kompletního připojení. Pokud máte běžnou virtuální síť Azure, můžete do své virtuální sítě nasadit bránu VPN třetí strany a vytvořit tunelovou propojení IPsec mezi IT a místní bránou VPN.
 ### <a name="what-is-the-throughput-i-will-get-after-enabling-ipsec-on-my-expressroute-connection"></a>Jaká je propustnost, po povolení protokolu IPsec na ExpressRoute připojení?
 Pokud se používá Azure VPN Gateway, podívejte se na toto [číslo výkonu](../vpn-gateway/vpn-gateway-about-vpngateways.md). Pokud se používá brána sítě VPN jiného výrobce, obraťte se na dodavatele s číslem výkonu.
 

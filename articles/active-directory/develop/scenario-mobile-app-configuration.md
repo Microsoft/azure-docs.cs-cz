@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44392882a7d3e1816b952969dbadb518e2762142
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3d7148b104c723d124a954cf858ca77ff6552f94
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919949"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423799"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Mobilní aplikace, která volá webovou rozhraní API – konfigurace kódu
 
@@ -77,7 +77,7 @@ Následující článek vysvětluje, jak vytvořit instanci aplikace pro aplikac
 
 V Xamarin nebo UWP nejjednodušší způsob vytvoření instance aplikace je následující, kde `ClientId` identifikátor GUID vaší registrované aplikace.
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder.Create(clientId)
                                         .Build();
 ```
@@ -88,7 +88,7 @@ Existují další metody*parametrů* , které nastavují nadřazený objekt uži
 
 V Androidu je nutné před provedením interaktivního ověřování předat nadřazenou aktivitu. V případě iOS musíte při použití zprostředkovatele předat soubor viewcontroller. Stejně jako u UWP byste mohli chtít předat nadřazenému oknu. To je možné při získání tokenu, ale je také možné zadat zpětné volání při vytvoření aplikace delegáta, který vrací UIParent.
 
-```CSharp
+```csharp
 IPublicClientApplication application = PublicClientApplicationBuilder.Create(clientId)
   .ParentActivityOrWindowFunc(() => parentUi)
   .Build();
@@ -96,7 +96,7 @@ IPublicClientApplication application = PublicClientApplicationBuilder.Create(cli
 
 V Androidu doporučujeme [použít `CurrentActivityPlugin`.](https://github.com/jamesmontemagno/CurrentActivityPlugin)  Váš kód `PublicClientApplication` Builder by pak vypadal takto:
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -175,7 +175,7 @@ Použijte následující postup, chcete-li aplikaci Xamarin. iOS povolit komunik
 
 Podpora zprostředkovatele je povolená na základě`PublicClientApplication`. Ve výchozím nastavení je zakázaný. Při vytváření `PublicClientApplication` prostřednictvím `PublicClientApplicationBuilder`je nutné použít parametr `WithBroker()` (ve výchozím nastavení nastaven na hodnotu true).
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder
                 .Create(ClientId)
                 .WithBroker()
@@ -187,7 +187,7 @@ var app = PublicClientApplicationBuilder
 
 Když MSAL.NET volá zprostředkovatele, zprostředkovatel pak vrátí zpět do vaší aplikace prostřednictvím metody `AppDelegate.OpenUrl`. Vzhledem k tomu, že MSAL bude čekat na odpověď od služby Broker, musí vaše aplikace spolupracovat a volat MSAL.NET zpátky. Provedete to tak, že aktualizujete soubor `AppDelegate.cs`, abyste přepsali níže uvedenou metodu.
 
-```CSharp
+```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url,
                              string sourceApplication,
                              NSObject annotation)
@@ -219,16 +219,16 @@ Chcete-li nastavit okno objektu, proveďte následující kroky:
 **Příklad:**
 
 V `App.cs`:
-```CSharp
+```csharp
    public static object RootViewController { get; set; }
 ```
 V `AppDelegate.cs`:
-```CSharp
+```csharp
    LoadApplication(new App());
    App.RootViewController = new UIViewController();
 ```
 V volání metody získání tokenu:
-```CSharp
+```csharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow(App.RootViewController)
              .ExecuteAsync();

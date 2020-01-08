@@ -1,28 +1,17 @@
 ---
-title: Přiřadit zásady přístupu ke koncovým bodům služby Azure Service Fabric | Dokumentace Microsoftu
-description: Zjistěte, jak přiřadit zabezpečení zásady přístupu ke koncovým bodům protokol HTTP nebo HTTPS ve službě Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Přiřazení zásad přístupu k koncovým bodům služby
+description: Naučte se přiřazovat zásady zabezpečení přístupu k koncovým bodům HTTP nebo HTTPS ve službě Service Fabric.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/21/2018
-ms.author: atsenthi
-ms.openlocfilehash: 3e892e443f5e3309add48f939f26ba14eaf5a51b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c7d30e85848f045b5724bb8bdc6e5c810102c044
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60614193"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614651"
 ---
 # <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>Přiřazení zásad zabezpečení přístupu pro koncové body HTTP a HTTPS
-Pokud použijete zásady Spustit jako a manifest služby deklaruje prostředky koncový bod HTTP, je nutné zadat **SecurityAccessPolicy**.  **SecurityAccessPolicy** zajistí, že porty, které jsou přiděleny s těmito koncovými body jsou správně omezeny na uživatelský účet, který je služba spuštěna jako. V opačném případě **http.sys** nebudou mít přístup ke službě, a získáte selhání při voláních z klienta. Následující příklad používá účet Customer1 do koncového bodu volá **Název_koncového_bodu**, které jí úplná přístupová práva.
+Použijete-li zásadu Run-as a manifest služby deklaruje prostředky koncového bodu HTTP, je nutné zadat **SecurityAccessPolicy**.  **SecurityAccessPolicy** zajišťuje, aby porty přidělené těmto koncovým bodům byly správně omezeny na uživatelský účet, ve kterém je služba spuštěna. V opačném případě **ovladač HTTP. sys** nemá k této službě přístup a při volání z klienta se zobrazí chyby. Následující příklad aplikuje účet Customer1 na koncový bod s názvem **koncového bodu**, který poskytuje úplná přístupová práva.
 
 ```xml
 <Policies>
@@ -32,7 +21,7 @@ Pokud použijete zásady Spustit jako a manifest služby deklaruje prostředky k
 </Policies>
 ```
 
-Koncový bod HTTPS také určit název certifikátu se vraťte do klienta. Odkazovat pomocí certifikátu **EndpointBindingPolicy**.  Certifikát je definována v **certifikáty** manifestu aplikace.
+U koncového bodu HTTPS uveďte taky název certifikátu, který se má vrátit klientovi. Na certifikát odkazujete pomocí **EndpointBindingPolicy**.  Certifikát je definován v části **certifikáty** manifestu aplikace.
 
 ```xml
 <Policies>
@@ -45,13 +34,13 @@ Koncový bod HTTPS také určit název certifikátu se vraťte do klienta. Odkaz
 ```
 
 > [!WARNING] 
-> Při použití protokolu HTTPS, nepoužívejte stejný port a certifikát pro instance různé služby (nezávisle na aplikaci) nasadí do stejného uzlu. Upgrade dvou různých služeb pomocí stejný port v různé instance aplikace povede k selhání upgradu. Další informace najdete v tématu [upgrade více aplikací pomocí koncových bodů HTTPS ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints).
+> Při použití protokolu HTTPS nepoužívejte stejný port a certifikát pro různé instance služby (nezávisle na aplikaci) nasazené do stejného uzlu. Upgrade dvou různých služeb pomocí stejného portu v různých instancích aplikace způsobí selhání při upgradu. Další informace najdete v tématu [upgrade více aplikací s koncovými body https ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints).
 > 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-Další kroky v následujících článcích:
+Další postup najdete v následujících článcích:
 * [Pochopení aplikačního modelu](service-fabric-application-model.md)
-* [Zadání prostředků v manifestu služby](service-fabric-service-manifest-resources.md)
+* [Určení prostředků v manifestu služby](service-fabric-service-manifest-resources.md)
 * [Nasazení aplikace](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png

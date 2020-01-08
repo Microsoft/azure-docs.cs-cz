@@ -1,148 +1,139 @@
 ---
-title: Repliky a instance v Azure Service Fabric | Dokumentace Microsoftu
-description: Vysvětlení replik a instancí – jejich funkce a životního cyklu
-services: service-fabric
-documentationcenter: .net
+title: Repliky a instance v Azure Service Fabric
+description: Seznamte se s replikami a instancemi v Service Fabric, včetně přehledu jejich životního cyklu a funkcí.
 author: appi101
-manager: anuragg
-editor: ''
-ms.assetid: d5ab75ff-98b9-4573-a2e5-7f5ab288157a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/10/2018
 ms.author: aprameyr
-ms.openlocfilehash: 7f8638365b40395a5dd82457c40e5c15209ba1a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf21af43de553a2802289e44eaece12952d077d3
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60882386"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614600"
 ---
-# <a name="replicas-and-instances"></a>Replik a instancí 
-Tento článek poskytuje přehled o životním cyklu repliky instancí bezstavové služby a stavové služby.
+# <a name="replicas-and-instances"></a>Repliky a instance 
+Tento článek obsahuje přehled životního cyklu replik stavových služeb a instancí bezstavových služeb.
 
-## <a name="instances-of-stateless-services"></a>Instance bezstavové služby
-Instance bezstavové služby je kopie služby logiku, která běží na jednom z uzlů clusteru. Instance v rámci oddílu je jedinečně identifikovaný jeho **InstanceId**. V následujícím diagramu je modelovaná životního cyklu instance:
+## <a name="instances-of-stateless-services"></a>Instance bezstavových služeb
+Instance bezstavové služby je kopií logiky služby, která běží na jednom z uzlů clusteru. Instance v rámci oddílu je jednoznačně identifikována jeho **InstanceId**. Životní cyklus instance je modelován v následujícím diagramu:
 
 ![Životní cyklus instance](./media/service-fabric-concepts-replica-lifecycle/instance.png)
 
 ### <a name="inbuild-ib"></a>InBuild (IB)
-Jakmile je Cluster Resource Manager určuje umístění pro instanci, vstoupí do tohoto stavu životního cyklu. Instance je spuštěn na uzlu. Je spuštění aplikace hostitele, je vytvořen a pak otevřít instanci. Po dokončení spuštění instance přechází do stavu Připraveno. 
+Po Správce prostředků clusteru určí umístění pro instanci, vstoupí v tomto stavu životního cyklu. Instance je spuštěna na uzlu. Hostitel aplikace je spuštěn, instance je vytvořena a poté otevřena. Po dokončení spuštění instance přejde do stavu připraveno. 
 
-Pokud aplikace hostitele nebo uzel pro tuto instanci dojde k chybě, přejde do stavu zahozených.
+Pokud hostitel aplikace nebo uzel této instance selže, přejde do stavu zrušeno.
 
 ### <a name="ready-rd"></a>Připraveno (RD)
-Ve stavu Připraveno instance je spuštěná na uzlu. Pokud je tato instance spolehlivé služby **RunAsync** zavolání. 
+V připraveném stavu je instance v uzlu funkční a spuštěná. Pokud je tato instance spolehlivou službou, vyvolal se **RunAsync** . 
 
-Pokud aplikace hostitele nebo uzel pro tuto instanci dojde k chybě, přejde do stavu zahozených.
+Pokud hostitel aplikace nebo uzel této instance selže, přejde do stavu zrušeno.
 
-### <a name="closing-cl"></a>Pravá (+/ CL)
-Ve stavu uzavírací Azure Service Fabric je probíhá proces jeho vypínání instance na tomto uzlu. Toto vypnutí může mít různé důvody – například upgrade aplikace, Vyrovnávání zatížení nebo služby se odstraní. Po dokončení vypnutí přechází do stavu vyřazené.
+### <a name="closing-cl"></a>Zavírání (CL)
+Ve stavu ukončení Azure Service Fabric v procesu vypínání instance v tomto uzlu. Toto vypnutí může být z mnoha důvodů – například upgrade aplikace, Vyrovnávání zatížení nebo odstranění služby. Po skončení vypnutí přejdete do stavu zrušeno.
 
-### <a name="dropped-dd"></a>Vynechané (DD)
-Vynechané stavu instance již neběží na uzlu. Service Fabric v tomto okamžiku uchovává metadata o této instanci, která je nakonec rovněž odstraněna.
+### <a name="dropped-dd"></a>Vyřazeno (DD)
+Ve stavu zrušeno, instance již na uzlu neběží. V tomto okamžiku Service Fabric udržuje metadata o této instanci, která je nakonec také odstraněna.
 
 > [!NOTE]
-> Je možné přejít z některému ze stavů do vynechané stavu pomocí **ForceRemove** možnost `Remove-ServiceFabricReplica`.
+> Můžete přejít ze všech stavů na vyřazený stav pomocí možnosti **ForceRemove** na `Remove-ServiceFabricReplica`.
 >
 
-## <a name="replicas-of-stateful-services"></a>Repliky stavové služby
-Replika stavové služby je kopie služby logiku běžící na jednom z uzlů clusteru. Kromě toho repliky neuchovává kopii stav této služby. Dvě koncepce související popisují životní cyklus a chování stavové repliky:
-- Životní cyklus replik
+## <a name="replicas-of-stateful-services"></a>Repliky stavových služeb
+Replika stavové služby je kopie logiky služby spuštěné na jednom z uzlů clusteru. Kromě toho replika udržuje kopii stavu této služby. V souvislosti s životním cyklem a chováním stavových replik se popisují dvě související koncepce:
+- Životní cyklus repliky
 - Role repliky
 
-Následující diskuse popisuje stavové trvalé služby. Pro stavové služby volatile (nebo v paměti) jsou stavy dolů a vyřazené ekvivalentní.
+Následující diskuze popisuje trvalé stavové služby. Pro nestálé stavové služby (nebo v paměti) jsou stavy dolů a odložené.
 
-![Životní cyklus replik](./media/service-fabric-concepts-replica-lifecycle/replica.png)
+![Životní cyklus repliky](./media/service-fabric-concepts-replica-lifecycle/replica.png)
 
 ### <a name="inbuild-ib"></a>InBuild (IB)
-Repliku InBuild je repliky, který vytvořil nebo připraven pro připojení k replice. V závislosti na roli repliky IB má odlišnou sémantiku. 
+Replika inbuildu je replika, která je vytvořená nebo připravená pro připojení k sadě replik. V závislosti na roli repliky má IB odlišnou sémantiku. 
 
-Pokud aplikace hostitele nebo uzel pro repliku InBuild dojde k chybě, přejde do stavu Dole.
+Pokud hostitel aplikace nebo uzel pro repliku inbuildu selže, přejde do stavu mimo provoz.
 
-   - **Primární replik InBuild**: Primární InBuild jsou první replik pro oddíl. Tato replika obvykle dojde, když se vytváří oddílu. Primární repliky vzniknout také při restartování všech replik oddílu InBuild nebo jsou vynechány.
+   - **Primární repliky Inbuildu**: primární sestavení inbuildu jsou prvními replikami pro oddíl. K této replice obvykle dochází při vytváření oddílu. Primární repliky inbuildu se také vyskytnou, když se všechny repliky oddílu restartují nebo jsou vyřazeny.
 
-   - **Replik IdleSecondary InBuild**: Tyto nové repliky, které jsou vytvořeny pomocí Cluster Resource Manager nebo existující repliky, které byly přidány dolů a je potřeba přidat zpět do sady. Tyto repliky jsou nasazený nebo vytvořil primární předtím, než může připojit k sadě replik jako ActiveSecondary a účastnit kvora potvrzení operace.
+   - **IdleSecondary repliky InBuild**: Jedná se o nové repliky, které jsou vytvořené správce prostředků clusteru, nebo existující repliky, které se vypnuly a které je potřeba do sady přidat zpátky. Tyto repliky jsou osazené nebo vytvořené primárním serverem dřív, než se můžou připojit k sadě replik jako ActiveSecondary a zúčastnit se potvrzení operací pomocí kvora.
 
-   - **Replik ActiveSecondary InBuild**: Tento stav se vyskytuje v některé dotazy. Je optimalizace kde sady replik není změněn, ale replika musí být sestaveny. Repliky, samotné se řídí normální přechodů počítače (jak je popsáno v části role repliky).
+   - **Repliky ActiveSecondary InBuild**: Tento stav je v některých dotazech pozorován. Je to optimalizace, kde se sada repliky nemění, ale je třeba vytvořit repliku. Replika sama sleduje přechod normálního stavového počítače (jak je popsáno v části v tématu role repliky).
 
 ### <a name="ready-rd"></a>Připraveno (RD)
-Připraveno replika je repliku, která je součástí replikace a kvora potvrzení operace. Připraven stát se vztahuje na primární a aktivní sekundární repliky.
+Připravená replika je replika, která se účastní replikace a potvrzení operací kvora. Stav připraveno se vztahuje na primární a aktivní sekundární repliky.
 
-Pokud aplikace hostitele nebo uzel pro repliku připravené dojde k chybě, přejde do dolní stav.
+Pokud hostitel aplikace nebo uzel pro připravenou repliku selže, přejde do stavu v pořádku.
 
-### <a name="closing-cl"></a>Pravá (+/ CL)
-Replika přejde do stavu uzavírací v následujících scénářích:
+### <a name="closing-cl"></a>Zavírání (CL)
+Replika vstoupí do stavu ukončení v následujících scénářích:
 
-- **Vypínání kód pro repliku**: Service Fabric může být nutné vypnout spuštěním kódu v případě repliky. Pro mnoho důvodů, proč může být toto vypnutí. Například může dojít z důvodu aplikace, prostředků infrastruktury nebo upgrade infrastruktury nebo z důvodu chyb hlášených repliky. Při zavření repliky dokončí, replika přechází do stavu Dole. Setrvalý stav přidružený k této replice, která je uložená na disku není vyčistit.
+- **Vypínání kódu pro repliku**: Service Fabric může vyžadovat vypnutí spuštěného kódu repliky. Toto vypnutí může být z mnoha důvodů. K tomu může dojít například kvůli selhání aplikace, infrastruktury nebo upgradu infrastruktury nebo z důvodu chyby hlášené replikou. Po dokončení zavření repliky přejde replika do stavu mimo provoz. Trvalý stav přidružený k této replice, který je uložený na disku, se nevyčistí.
 
-- **Odstranění repliky z clusteru**: Service Fabric může být nutné k odebrání trvalého stavu a vypnout spuštěním kódu v případě repliky. Toto vypnutí může být z mnoha důvodů, například Vyrovnávání zatížení.
+- **Odebírá se replika z clusteru**: Service Fabric může vyžadovat odebrání trvalého stavu a vypnutí spuštěného kódu pro repliku. Toto vypnutí může být z mnoha důvodů, například vyrovnávání zatížení.
 
-### <a name="dropped-dd"></a>Vynechané (DD)
-Vynechané stavu instance již neběží na uzlu. Neexistuje žádný stav na uzlu. Service Fabric v tomto okamžiku uchovává metadata o této instanci, která je nakonec rovněž odstraněna.
+### <a name="dropped-dd"></a>Vyřazeno (DD)
+Ve stavu zrušeno, instance již na uzlu neběží. V uzlu není také žádný stav. V tomto okamžiku Service Fabric udržuje metadata o této instanci, která je nakonec také odstraněna.
 
 ### <a name="down-d"></a>Dolů (D)
-V dolů stavu repliky kód není spuštěný, ale existuje trvalého stavu pro tuto repliku v tomto uzlu. Replika můžou být mimo provoz pro mnoho důvodů, proč – například uzel se dolů, chyby v kódu repliky, upgrade aplikace nebo chyby repliky.
+Ve vypnutém stavu není kód repliky spuštěný, ale v tomto uzlu existuje trvalý stav pro tuto repliku. Replika může být mimo provoz z mnoha důvodů – například uzel, který je mimo provoz, chybu v kódu repliky, upgrade aplikace nebo chyby repliky.
 
-Repliku dolů je otevřít Service Fabric podle potřeby, například po dokončení upgradu na uzlu.
+Povinná replika je otevřená Service Fabric podle potřeby, například když se upgrade dokončí na uzlu.
 
-Role repliky není v dolní stav relevantní.
+Role repliky není relevantní v nefunkčním stavu.
 
 ### <a name="opening-op"></a>Otevírání (OP)
-Repliku dolů přejde do stavu otevírání, když Service Fabric potřebuje, abyste vyvolali repliky zpět znovu. Tento stav může být třeba po dokončení upgradu kódu pro aplikace na uzlu. 
+Když Service Fabric potřebuje znovu vytvořit repliku, vstoupí do stavu otevření. Tento stav může být například po dokončení upgradu kódu aplikace na uzlu. 
 
-Pokud aplikace hostitele nebo uzel pro repliku otevírání dojde k chybě, přejde do stavu Dole.
+Pokud hostitel aplikace nebo uzel pro otevření repliky selže, přejde do stavu v pořádku.
 
-Role repliky není ve stavu otevírání relevantní.
+Role repliky není relevantní v otevřeném stavu.
 
-### <a name="standby-sb"></a>Pohotovostní režim (SB)
-Replik StandBy je replika trvalá služba, která klesl a pak se otevřel. Tato replika by mohly používat Service Fabric, pokud je potřeba přidat jiné repliky replik, (protože replika již obsahuje část stavu a procesu sestavení je rychlejší). Po vypršení platnosti StandByReplicaKeepDuration pohotovostní repliky se zahodí.
+### <a name="standby-sb"></a>Pohotovostní (SB)
+Pohotovostní replika je replikou trvalé služby, která se ukončí a pak se otevřela. Tuto repliku může použít Service Fabric, pokud je potřeba přidat další repliku do sady replik (protože replika již obsahuje část stavu a proces sestavení je rychlejší). Po vypršení platnosti StandByReplicaKeepDuration je záložní replika zahozena.
 
-Pokud aplikace hostitele nebo uzel pro pohotovostní repliky dojde k chybě, přechází do stavu Dole.
+Pokud hostitel aplikace nebo uzel selže v pohotovostní replice, přejde do stavu mimo provoz.
 
-Role repliky není v pohotovostním stavu relevantní.
+Role repliky není relevantní v pohotovostním stavu.
 
 > [!NOTE]
-> Všechny repliky, který je mimo provoz nebo vyřadit se považuje za *nahoru*.
+> Všechny repliky, které nejsou vypnuté ani vyřazené, *se*považují za nefunkční.
 >
 
 > [!NOTE]
-> Je možné přejít z některému ze stavů do vynechané stavu pomocí **ForceRemove** možnost `Remove-ServiceFabricReplica`.
+> Můžete přejít ze všech stavů do vyřazeného stavu pomocí možnosti **ForceRemove** na `Remove-ServiceFabricReplica`.
 >
 
 ## <a name="replica-role"></a>Role repliky 
-Role repliky určuje jeho funkci sady replik:
+Role repliky určuje její funkci v sadě replik:
 
-- **Primární (P)** : Existuje jedna primární sady replik, který zodpovídá za operace čtení a zápisu. 
-- **ActiveSecondary (S)** : Jedná se o repliky, které přijímat aktualizace stavu z primárního serveru, aplikovat a pak odešle zpět potvrzení. Existují více aktivní sekundární databáze v replikách. Počet těchto aktivní sekundární databáze určuje počet chyb, které může služba zpracovat.
-- **IdleSecondary (I)** : Tyto repliky byly sestaveny pomocí primární. Obdrželi stavu z primárního serveru, než mohou být přesunuty do aktivní sekundární. 
-- **Žádný (N)** : Tyto repliky nemají odpovědnost sady replik.
-- **Neznámý (U)** : Toto je počáteční role repliky předtím, než začne přijímat veškeré **ChangeRole** volání rozhraní API ze Service Fabric.
+- **Primární (P)** : v sadě replik je jedna primární verze, která je zodpovědná za provádění operací čtení a zápisu. 
+- **ActiveSecondary (e)** : Jedná se o repliky, které přijímají aktualizace stavu z primární databáze, aplikují je a pak odešlou potvrzení zpět. Sada replik obsahuje několik aktivních sekundárních prostředí. Počet aktivních sekundárních sekundárních hodnot určuje počet chyb, které služba může zpracovat.
+- **IdleSecondary (I)** : tyto repliky jsou vytvářeny primárním serverem. Jejich příjem z primární úrovně předtím, než se dají zvýšit na aktivní sekundární. 
+- **Žádné (N)** : tyto repliky nemají zodpovědnost v sadě replik.
+- **Neznámé (U)** : Jedná se o počáteční roli repliky předtím, než přijme jakékoli volání rozhraní API **ChangeRole** z Service Fabric.
 
-Následující diagram znázorňuje přechody role repliky a nějaké ukázkové scénáře, ve kterých může dojít:
+Následující diagram znázorňuje přechody role repliky a příklady scénářů, ve kterých mohou nastat:
 
 ![Role repliky](./media/service-fabric-concepts-replica-lifecycle/role.png)
 
-- U -> P: Vytvoření nové primární replice.
-- U -> I: Vytvoření nové repliky nečinnosti.
-- U -> N: Odstranění repliky pohotovostním režimu.
-- I -> S: Podpora dobu nečinnosti sekundární do aktivní sekundární lokality tak, aby jeho potvrzení se využívají k dosažení kvora.
-- I -> P: Podpora nečinná sekundární databáze na primární. V části speciální rekonfigurací tomu může dojít, když je nečinná sekundární správné kandidát na primární.
-- I -> N: Odstranění nečinná sekundární repliky.
-- S -> P: Podpora aktivní sekundární databáze na primární. Může to být z důvodu převzetí služeb při selhání z primární nebo primární přesun zahájené pomocí Cluster Resource Manager. Například může být v reakci na upgrade aplikace nebo služby Vyrovnávání zatížení.
-- S -> N: Odstranění aktivní sekundární repliku.
-- P -> S: Degradace primární repliky. To může být způsobeno primární přesun zahájené pomocí Cluster Resource Manager. Například může být v reakci na upgrade aplikace nebo služby Vyrovnávání zatížení.
-- P -> N: Odstranění primární repliky.
+- U-> P: vytváření nové primární repliky.
+- U-> I: vytvoření nové nečinné repliky.
+- U-> N: odstraňování pohotovostní repliky.
+- I-> S: povýšení sekundární nečinné na aktivní sekundární, aby jeho potvrzení přispělo k kvoru.
+- I-> P: propagace sekundární nečinné na primární. K tomu může dojít v případě speciálního překonfigurování, pokud je sekundárním kandidátem na primární počítač.
+- I-> N: odstraňování sekundární repliky po nečinnosti.
+- S-> P: povýšení aktivní sekundární na primární. Důvodem může být převzetí služeb při selhání primárního nebo primárního přesunu iniciované Správce prostředků clusteru. Například může být v reakci na upgrade aplikace nebo vyrovnávání zatížení.
+- S-> N: odstranění aktivní sekundární repliky.
+- P-> S: snížení úrovně primární repliky. Důvodem může být primární přesun iniciované Správce prostředků clusteru. Například může být v reakci na upgrade aplikace nebo vyrovnávání zatížení.
+- P-> N: odstranění primární repliky.
 
 > [!NOTE]
-> Modely programování vyšší úrovně, jako například [Reliable Actors](service-fabric-reliable-actors-introduction.md) a [Reliable Services](service-fabric-reliable-services-introduction.md), skrýt koncept role repliky od vývojáře. V objektů actor pojem role je zbytečné. Služby je do značné míry zjednodušená pro většinu scénářů.
+> Modely programování vyšší úrovně, například [Reliable Actors](service-fabric-reliable-actors-introduction.md) a [Reliable Services](service-fabric-reliable-services-introduction.md), skrývají koncept rolí repliky od vývojáře. V části Actors není pojem role zbytečný. Ve službách se ve většině scénářů zjednodušilo hlavně.
 >
 
-## <a name="next-steps"></a>Další postup
-Další informace o konceptech Service Fabric najdete v následujícím článku:
+## <a name="next-steps"></a>Další kroky
+Další informace o Service Fabric konceptech najdete v následujícím článku:
 
 [Životní cyklus Reliable Services – C#](service-fabric-reliable-services-lifecycle.md)
 

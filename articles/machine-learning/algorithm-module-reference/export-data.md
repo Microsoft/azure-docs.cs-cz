@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 5badcbe2a76c41bdc1431abae617e35b7555eb88
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9544d086eb9535af779bf2febe0cc63c180f7fd3
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497892"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529588"
 ---
 # <a name="export-data-module"></a>Exportovat datový modul
 
@@ -29,7 +29,7 @@ Tento modul podporuje export dat do následujících cloudových datových služ
 - Azure Data Lake
 - Azure Data Lake Gen2
 
-Před exportem dat musíte nejdřív zaregistrovat úložiště dat do svého pracovního prostoru Azure Machine Learning. Další informace najdete v tématu [Jak získat přístup k datům](../service/how-to-access-data.md).
+Před exportem dat musíte nejdřív zaregistrovat úložiště dat do svého pracovního prostoru Azure Machine Learning. Další informace najdete v tématu [Jak získat přístup k datům](../how-to-access-data.md).
 
 ## <a name="how-to-configure-export-data"></a>Jak nakonfigurovat exportovaná data
 
@@ -39,7 +39,7 @@ Před exportem dat musíte nejdřív zaregistrovat úložiště dat do svého pr
 
 1. Vyberte **exportovat data** a otevřete podokno **vlastnosti** .
 
-1. V případě **úložiště dat**vyberte v rozevíracím seznamu existující úložiště dat. Můžete také vytvořit nové úložiště dat. Podívejte se, jak navštívíte [data s postupy přístupu](../service/how-to-access-data.md)
+1. V případě **úložiště dat**vyberte v rozevíracím seznamu existující úložiště dat. Můžete také vytvořit nové úložiště dat. Podívejte se, jak navštívíte [data s postupy přístupu](../how-to-access-data.md)
 
 1. Definujte cestu v úložišti dat, do které se budou data zapisovat. 
 

@@ -11,50 +11,50 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 10/17/2019
-ms.openlocfilehash: 325278ee0222070ce7c02c1d72961f0431284677
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c0dcd8f8f5ecd2d333e610c96ea89a44f8f4c547
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73670543"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75528347"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Co je Machine Learning Studio (Classic)?
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
-Microsoft Azure Machine Learning Studio (Classic) je nástroj pro spolupráci, který lze použít k sestavování, testování a nasazení prediktivních analytických řešení na vašich datech.  Klasická verze Machine Learning Studio zveřejňuje modely jako webové služby, které je možné snadno spotřebovat pomocí vlastních aplikací nebo nástrojů BI, jako je Excel.
+Microsoft Azure Machine Learning Studio (Classic) je nástroj pro spolupráci, který lze použít k sestavování, testování a nasazení prediktivních analytických řešení na vašich datech. Azure Machine Learning Studio (Classic) zveřejňují modely jako webové služby, které můžou snadno využívat vlastní aplikace nebo nástroje BI, jako je Excel.
 
 Machine Learning Studio (Classic) je místo, kde se doplňují datové vědy, prediktivní analýzy, cloudové prostředky a vaše data.
 
 ## <a name="the-machine-learning-studio-classic--interactive-workspace"></a>Interaktivní pracovní prostor Machine Learning Studio (klasický)
 Chcete-li vytvořit model prediktivní analýzy, obvykle používáte data z jednoho nebo více zdrojů, transformovat a analyzovat tato data prostřednictvím různých funkcí pro manipulaci s daty a statistické funkce a vygenerujeme sadu výsledků. Vývoj takového modelu je iterativní proces. Úpravou různých funkcí a jejich parametrů se výsledky zpřesňují, dokud nebudete přesvědčeni, že máte natrénován efektivní model.
 
-Klasická verze Azure Machine Learning Studio poskytuje interaktivní a vizuální pracovní prostor pro snadné sestavování, testování a iteraci v modelu prediktivní analýzy. ***Datové sady*** a ***moduly*** pro analýzu můžete přetahovat na interaktivní plátno, čímž je spojíte dohromady, abyste mohli vytvořit ***experiment***, který spustíte v Machine Learning Studio (Classic). Iterace návrhu modelu probíhá tak, že experiment upravíte, v případě potřeby uložíte kopii, a spustíte jej znovu. Jakmile budete připraveni, můžete ***výukový experiment*** převést na ***prediktivní experiment*** a publikovat jej jako ***webovou službu***, aby k vašemu modelu měli přístup i jiní uživatelé.
+Azure Machine Learning Studio (Classic) poskytuje interaktivní a vizuální pracovní prostor pro snadné sestavování, testování a iteraci v modelu prediktivní analýzy. ***Datové sady*** a ***moduly*** pro analýzu můžete přetahovat na interaktivní plátno, čímž je spojíte dohromady, abyste mohli vytvořit ***experiment***, který spustíte v Machine Learning Studio (Classic). Iterace návrhu modelu probíhá tak, že experiment upravíte, v případě potřeby uložíte kopii, a spustíte jej znovu. Jakmile budete připraveni, můžete ***výukový experiment*** převést na ***prediktivní experiment*** a publikovat jej jako ***webovou službu***, aby k vašemu modelu měli přístup i jiní uživatelé.
 
 Není nutné žádné programování, vizuálně propojit datové sady a moduly a vytvořit model prediktivní analýzy.
 
-![Diagram Azure Machine Learning Studio: Vytvořte experimenty, čtěte data pro mnoho zdrojů a zapište data s skóre a napište modely.](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
+![Diagram Azure Machine Learning Studio (klasický): vytvářet experimenty, číst data pro mnoho zdrojů, zapisovat data s skóre a zapisovat modely.](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
 
 <a name="compare"></a>
 ## <a name="how-does-machine-learning-studio-classic-differ-from-azure-machine-learning"></a>Jak se liší Machine Learning Studio (klasické) od Azure Machine Learning?
 
-[Azure Machine Learning](../service/overview-what-is-azure-ml.md) **poskytuje sady sdk i návrháře** Azure Machine Learning (Preview) pro rychlé přípravu dat, výuku a nasazení modelů strojového učení. Návrhář nabízí podobné prostředí pro přetahování do studia (Classic). Na rozdíl od proprietární výpočetní platformy studia (Classic) ale Návrhář používá vaše vlastní výpočetní prostředky a je plně integrovaný do Azure Machine Learning.
+[Azure Machine Learning](../overview-what-is-azure-ml.md) **poskytuje sady sdk i návrháře** Azure Machine Learning (Preview) pro rychlé přípravu dat, výuku a nasazení modelů strojového učení. Návrhář nabízí podobné prostředí pro přetahování do studia (Classic). Na rozdíl od proprietární výpočetní platformy studia (Classic) ale Návrhář používá vaše vlastní výpočetní prostředky a je plně integrovaný do Azure Machine Learning.
 
 Tady je rychlé porovnání:
 
 || Machine Learning Studio (Classic) | Azure Machine Learning |
 |---| --- | --- |
-| Rozhraní přetažení | Ano | Ano – [Azure Machine Learning Designer (Preview)](../service/concept-designer.md) |
+| Rozhraní přetažení | Ano | Ano – [Azure Machine Learning Designer (Preview)](../concept-designer.md) |
 | Experiment | Škálovatelné (limit pro školicí data z 10 GB) | Škálování s cílem výpočetního prostředí |
 | Moduly pro rozhraní přetažení | Počtu | Počáteční sada oblíbených [modulů](../algorithm-module-reference/module-reference.md)|
-|Školení výpočetních cílů| Proprietární výpočetní cíl, jenom podpora procesoru| Podporuje výpočetní virtuální počítače s Azure Machine Learning (GPU nebo CPU) a notebook.<br/>([Další výpočetní prostředky podporované v sadě SDK](../service/concept-compute-target.md#train))|
-|Inferencing výpočetní cíle| Speciální formát webové služby, není přizpůsobitelný |  Služba Azure Kubernetes a služba AML COMPUTE <br/>([Další výpočetní prostředky podporované v sadě SDK](../service/how-to-deploy-and-where.md)) |
-| Kanál ML | Nepodporuje se | Podporované [kanály](../service/concept-ml-pipelines.md) |
+|Školení výpočetních cílů| Proprietární výpočetní cíl, jenom podpora procesoru| Podporuje výpočetní virtuální počítače s Azure Machine Learning (GPU nebo CPU) a notebook.<br/>([Další výpočetní prostředky podporované v sadě SDK](../concept-compute-target.md#train))|
+|Inferencing výpočetní cíle| Speciální formát webové služby, není přizpůsobitelný |  Služba Azure Kubernetes a služba AML COMPUTE <br/>([Další výpočetní prostředky podporované v sadě SDK](../how-to-deploy-and-where.md)) |
+| Kanál ML | Nepodporováno | Podporované [kanály](../concept-ml-pipelines.md) |
 | MLOps | Základní Správa modelů a nasazení | Konfigurovatelné nasazení – model a správa verzí a kanálů |
-| Formát modelu | Speciální formát, pouze Studio | Standardní formát v závislosti na typu úlohy školení |
-|Automatizované školení modelů a ladění parametrů | Ne | Ještě není v návrháři. <br/> ([Podporováno na úvodní stránce sady SDK a pracovního prostoru](../service/concept-automated-ml.md)) | 
+| Formát modelu | Speciální formát, jenom Studio (Classic) | Standardní formát v závislosti na typu úlohy školení |
+|Automatizované školení modelů a ladění parametrů | Ne | Ještě není v návrháři. <br/> ([Podporováno na úvodní stránce sady SDK a pracovního prostoru](../concept-automated-ml.md)) | 
 
-Vyzkoušejte si návrháře s [kurzem: předpověď ceny automobilu pomocí návrháře](../service/tutorial-designer-automobile-price-train-score.md)
+Vyzkoušejte si návrháře s [kurzem: předpověď ceny automobilu pomocí návrháře](../tutorial-designer-automobile-price-train-score.md)
 
 > [!NOTE]
 > Modely vytvořené v nástroji Studio (Classic) se nedají nasadit ani spravovat pomocí Azure Machine Learning. Modely vytvořené a nasazené v Návrháři ale můžete spravovat prostřednictvím pracovního prostoru Azure Machine Learning.
@@ -93,7 +93,7 @@ Při sestavování experimentu si můžete vybrat ze seznamu datových sad, kter
 Seznam ukázkových datových sad, které jsou součástí Machine Learning Studio (Classic), najdete v tématu [použití ukázkových datových sad v Azure Machine Learning Studio (Classic)](use-sample-datasets.md).
 
 ### <a name="modules"></a>Moduly
-Modul je algoritmus, který je možné provést na datech.  Klasická verze Machine Learning Studio má řadu modulů od vstupních funkcí dat až po procesy školení, bodování a ověřování. Zde jsou některé příklady dodávaných modulů:
+Modul je algoritmus, který je možné provést na datech. Azure Machine Learning Studio (Classic) má několik modulů od vstupních funkcí dat až po procesy školení, bodování a ověřování. Zde jsou některé příklady dodávaných modulů:
 
 * [Převést na arff][convert-to-arff] – převede serializovanou datovou sadu .NET na formát souboru relace atributu (arff).
 * [Základní statistiky COMPUTE][elementary-statistics] – vypočítá základní statistiky, jako je střední hodnota, směrodatná odchylka atd.

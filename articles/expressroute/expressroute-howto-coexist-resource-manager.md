@@ -5,15 +5,15 @@ services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 12/11/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 0628de7c436836a8fdb5b00cac1d8e85963ba48e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a1dc089e1b64ed8d71db4c09405c8cc9a07d8bea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423580"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436977"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurace ExpressRoute a Site-to-Site současně existujících připojení pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -41,6 +41,7 @@ V tomto článku jsou postupy konfigurace pro oba scénáře. Tento článek se 
 * **Podporována je pouze brána VPN na základě tras.** Je nutné použít [bránu sítě VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)založenou na trasách. Můžete také použít bránu sítě VPN založenou na trasách s připojením VPN nakonfigurovaným pro "selektory provozu na základě zásad", jak je popsáno v tématu [připojení k několika zařízením VPN založeným na zásadách](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
 * **Pro vaši bránu VPN by měla být nakonfigurována statická trasa.** Pokud je vaše místní síť připojená k ExpressRoute a síti VPN typu site-to-site, musíte mít v místní síti konfigurovanou statickou trasu, abyste mohli směrovat připojení VPN typu site-to-site do veřejného internetu.
 * **Pokud není zadaný, VPN Gateway ve výchozím nastavení číslo ASN 65515.** Azure VPN Gateway podporuje směrovací protokol BGP. Můžete zadat číslo ASN (jako číslo) pro virtuální síť přidáním přepínače-ASN. Pokud tento parametr nezadáte, výchozí hodnota je 65515. Můžete použít jakékoli číslo ASN pro konfiguraci, ale pokud vyberete jinou hodnotu než 65515, musíte resetovat bránu, aby se nastavení projevilo.
+* **Podsíť brány musí být/27 nebo kratší předpona**(například/26,/25), nebo když přidáte bránu virtuální sítě ExpressRoute, zobrazí se chybová zpráva.
 
 ## <a name="configuration-designs"></a>Návrhy konfigurace
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>Konfigurace VPN typu site-to-site jako cesty převzetí služeb při selhání pro ExpressRoute

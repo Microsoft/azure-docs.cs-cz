@@ -1,128 +1,119 @@
 ---
-title: Vývoj aplikací Azure Service Fabric v .NET Core pomocí služby Visual Studio Code | Dokumentace Microsoftu
-description: Tento článek ukazuje, jak vytvářet, nasazovat a ladit aplikace .NET Core pro Service Fabric pomocí Visual Studio Code.
-services: service-fabric
-documentationcenter: .net
+title: Vývoj aplikací .NET Core pomocí Visual Studio Code
+description: Tento článek ukazuje, jak sestavovat, nasazovat a ladit aplikace .NET Core Service Fabric pomocí Visual Studio Code.
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 60b634b0b927804249148737ee7a99c0e86dd7d6
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 1d7478e6b81ef2c53ca6194197336e91d3ff250b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537756"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614519"
 ---
-# <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Vývoj C# aplikace Service Fabric pomocí Visual Studio Code
+# <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Vývoj C# aplikací Service Fabric s využitím Visual Studio Code
 
-[Service Fabric Reliable Services rozšíření pro VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-service-fabric-reliable-services) umožňuje snadno vytvářet aplikace Service Fabric v .NET Core v operačních systémech Windows, Linux a macOS.
+[Rozšíření Service Fabric Reliable Services pro vs Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-service-fabric-reliable-services) usnadňuje sestavování aplikací .net Core Service Fabric v operačních systémech Windows, Linux a MacOS.
 
-Tento článek popisuje, jak vytvářet, nasazovat a ladit aplikace .NET Core pro Service Fabric pomocí Visual Studio Code.
+V tomto článku se dozvíte, jak sestavit, nasadit a ladit aplikaci Service Fabric .NET Core pomocí Visual Studio Code.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek předpokládá, že jste již nainstalovali VS Code, Service Fabric Reliable Services rozšíření pro VS Code a všechny závislosti, které vyžaduje pro vaše vývojové prostředí. Další informace najdete v tématu [Začínáme](./service-fabric-get-started-vs-code.md#prerequisites).
+V tomto článku se předpokládá, že jste už nainstalovali VS Code, Service Fabric Reliable Services rozšíření pro VS Code a všechny závislosti, které jsou pro vaše vývojové prostředí potřeba. Další informace najdete v tématu [Začínáme](./service-fabric-get-started-vs-code.md#prerequisites).
 
 ## <a name="download-the-sample"></a>Stažení ukázky
-Tento článek používá CounterService aplikaci [.NET Core v Service Fabric Začínáme ukázkové úložiště GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started). 
+V tomto článku se používá aplikace CounterService v [úložišti GitHub ukázek začínáme Service Fabric s rozhraním .NET Core](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started). 
 
-Naklonujte úložiště do svého vývojového počítače, spusťte následující příkaz z okna terminálu (příkazové okno na Windows):
+Pokud chcete klonovat úložiště do vývojového počítače, spusťte následující příkaz z okna terminálu (příkazové okno ve Windows):
 
 ```
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started.git
 ```
 
-## <a name="open-the-application-in-vs-code"></a>Otevření aplikace v nástroji VS Code
+## <a name="open-the-application-in-vs-code"></a>Otevřete aplikaci v VS Code
 
 ### <a name="windows"></a>Windows
-Klikněte pravým tlačítkem na ikonu VS Code, v nabídce Start a zvolte **spustit jako správce**. Připojení ladicího programu k vašim službám, budete muset spustit VS Code jako správce.
+V nabídce Start klikněte pravým tlačítkem myši na ikonu VS Code a vyberte **Spustit jako správce**. Chcete-li připojit ladicí program k vašim službám, je třeba spustit VS Code jako správce.
 
 ### <a name="linux"></a>Linux
-Pomocí terminálu přejděte do /service-fabric-dotnet-core-getting-started/Services/CounterService cesta z adresáře, který byl do místně naklonované aplikace.
+Pomocí terminálu přejděte do cesty/service-fabric-dotnet-core-getting-started/Services/CounterService z adresáře, do kterého byla aplikace naklonována místně.
 
-Spuštěním následujícího příkazu spusťte VS Code jako kořenové uživatele tak, aby ladicí program může připojit k vašim službám.
+Spuštěním následujícího příkazu otevřete VS Code jako kořenový uživatel, aby se ladicí program mohl připojit k vašim službám.
 ```
 sudo code . --user-data-dir='.'
 ```
 
-Aplikace by teď budou zobrazovat v pracovním prostoru VS Code.
+Aplikace by se teď měla zobrazit v pracovním prostoru VS Code.
 
-![Čítač aplikace služby v pracovním prostoru](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-application-in-workspace.png)
+![Aplikace služby čítačů v pracovním prostoru](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-application-in-workspace.png)
 
 ## <a name="build-the-application"></a>Sestavení aplikace
-1. Stiskněte klávesu (kombinaci kláves Ctrl + Shift + p) Chcete-li otevřít **paletu příkazů** ve VS Code.
-2. Vyhledání a výběr **Service Fabric: Sestavení aplikace** příkazu. Výstup sestavení je odeslán do integrovaného terminálu.
+1. Stisknutím klávesy (CTRL + SHIFT + p) otevřete **paletu příkazů** v vs Code.
+2. Vyhledejte a vyberte příkaz **Service Fabric: sestavit aplikaci** . Výstup sestavení se odešle do integrovaného terminálu.
 
-   ![Vytvoření příkazu aplikace v nástroji VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-build-application.png)
+   ![Příkaz sestavit aplikaci v VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-build-application.png)
 
 ## <a name="deploy-the-application-to-the-local-cluster"></a>Nasazení aplikace do místního clusteru
-Po vytvoření aplikace, nasadíte ho do místního clusteru. 
+Po vytvoření aplikace ji můžete nasadit do místního clusteru. 
 
-1. Z **paletu příkazů**, vyberte **Service Fabric: Nasazení aplikace (Localhost) příkaz**. Výstup procesu instalace je odeslán integrovaný terminál.
+1. Z **palety příkazů**vyberte **příkaz Service Fabric: nasadit aplikaci (localhost)** . Výstup procesu instalace se pošle do integrovaného terminálu.
 
-   ![Nasazení aplikace příkaz ve VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
+   ![Příkaz nasadit aplikaci v VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
-4. Po dokončení nasazení spusťte prohlížeč a otevřete Service Fabric Explorer: http:\//localhost:19080 / Explorer. Měli byste vidět, že je aplikace spuštěná. To může trvat nějakou dobu, tak buďte prosím trpěliví. 
+4. Po dokončení nasazení spusťte prohlížeč a otevřete Service Fabric Explorer: http:\//localhost: 19080/Explorer. Měli byste vidět, že aplikace běží. To může nějakou dobu trvat, tedy pacient. 
 
-   ![Čítač aplikace služby v Service Fabric Exploreru](./media/service-fabric-develop-csharp-applications-with-vs-code/sfx-verify-deploy.png)
+   ![Aplikace služby čítače v Service Fabric Explorer](./media/service-fabric-develop-csharp-applications-with-vs-code/sfx-verify-deploy.png)
 
-4. Po ověření je aplikace spuštěna, spusťte prohlížeč a otevřete tuto stránku: http:\//localhost:31002. To je webový front-end aplikace. Aktualizujte stránku, aby zobrazil aktuální hodnotu čítače, jak zvýší.
+4. Po ověření, že je aplikace spuštěná, spusťte prohlížeč a otevřete tuto stránku: http:\//localhost: 31002. Toto je webový front-end aplikace. Aktualizujte stránku, aby se zobrazila aktuální hodnota čítače při zvýšení.
 
-   ![Čítač aplikace služby v prohlížeči](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
+   ![Aplikace služby čítačů v prohlížeči](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
 
-## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>Publikujte aplikaci do clusteru Azure Service Fabric
-Spolu s nasazením aplikace do místního clusteru, můžete také publikovat aplikaci do vzdáleného clusteru Azure Service Fabric. 
+## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>Publikování aplikace do clusteru Azure Service Fabric
+Společně s nasazením aplikace do místního clusteru můžete také publikovat aplikaci do vzdáleného clusteru Azure Service Fabric. 
 
-1. Ujistěte se, že jste vytvořili aplikaci pomocí výše uvedených pokynů. Aktualizovat soubor vygenerovanou konfiguraci `Cloud.json` s podrobnostmi o vzdálený cluster, který chcete publikovat.
+1. Ujistěte se, že jste sestavili aplikaci pomocí výše uvedených pokynů. Aktualizujte vygenerovaný konfigurační soubor `Cloud.json` s podrobnostmi o vzdáleném clusteru, do kterého chcete publikovat.
 
-2. Z **paletu příkazů**, vyberte **Service Fabric: Publikování aplikace příkaz**. Výstup procesu instalace je odeslán integrovaný terminál.
+2. Z **palety příkazů**vyberte **příkaz Service Fabric: publikování aplikace**. Výstup procesu instalace se pošle do integrovaného terminálu.
 
-   ![Příkaz aplikace publikovat v nástroji VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
+   ![Příkaz publikování aplikace v VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
 
-3. Po dokončení nasazení spusťte prohlížeč a otevřete Service Fabric Explorer: `https:<clusterurl>:19080/Explorer`. Měli byste vidět, že je aplikace spuštěná. To může trvat nějakou dobu, tak buďte prosím trpěliví. 
+3. Po dokončení nasazení spusťte prohlížeč a otevřete Service Fabric Explorer: `https:<clusterurl>:19080/Explorer`. Měli byste vidět, že aplikace běží. To může nějakou dobu trvat, tedy pacient. 
 
 ## <a name="debug-the-application"></a>Ladění aplikace
-Při ladění aplikací v nástroji VS Code, musí být aplikace spuštěná v místním clusteru. Zarážky je potom možné přidat do kódu.
+Při ladění aplikací v VS Code musí být aplikace spuštěná v místním clusteru. Zarážky lze následně přidat do kódu.
 
-Pokud chcete nastavit zarážky a ladit, proveďte následující kroky:
-1. V Průzkumníku, otevřete */src/CounterServiceApplication/CounterService/CounterService.cs* souboru a nastavte zarážku na řádek 62 `RunAsync` metody.
-3. Klikněte na tlačítko ikona ladit ve **aktivity panelu** otevřete zobrazení ladicího programu v nástroji VS Code. Klikněte na ikonu ozubeného kola v horní části zobrazení ladicího programu a vyberte **.NET Core** z rozevírací nabídky prostředí. Otevře se soubor Launch.js. Tento soubor můžete zavřít. Teď byste měli vidět možnosti konfigurace v nabídce konfigurace debug vedle tlačítka Spustit (zelená šipka).
+Chcete-li nastavit zarážku a ladit, proveďte následující kroky:
+1. V Průzkumníkovi otevřete soubor */Src/CounterServiceApplication/CounterService/CounterService.cs* a nastavte zarážku na řádku 62 uvnitř metody `RunAsync`.
+3. Kliknutím na ikonu ladění na **řádku aktivity** otevřete zobrazení ladicího programu v vs Code. V horní části zobrazení ladicího programu klikněte na ikonu ozubeného kolečka a v nabídce rozevíracího prostředí vyberte **.NET Core** . Otevře se soubor Launch. JSON. Tento soubor můžete zavřít. Nyní byste měli vidět možnosti konfigurace v nabídce konfigurace ladění, která se nachází vedle tlačítka Spustit (zelená šipka).
 
-   ![Ladění ikony v pracovním prostoru VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-icon-workspace.png)
+   ![Ikona ladění v pracovním prostoru VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-icon-workspace.png)
 
-2. Vyberte **.NET Core připojit** z nabídky ladění konfigurace.
+2. V nabídce konfigurace ladění vyberte **.NET Core připojit** .
 
-   ![Ladění ikony v pracovním prostoru VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
+   ![Ikona ladění v pracovním prostoru VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
 
-3. Otevřete v prohlížeči Service Fabric Exploreru: http:\//localhost:19080 / Explorer. Klikněte na tlačítko **aplikací** a zotavení po havárii dolů k určení primárního uzlu, na kterém běží CounterService na. Na obrázku níže primární uzel CounterService je uzel 0.
+3. Otevřete Service Fabric Explorer v prohlížeči: http:\//localhost: 19080/Explorer. Klikněte na **aplikace** a přejděte k podrobnostem a určete primární uzel, na kterém je spuštěný CounterService. Na obrázku pod primárním uzlem pro CounterService je uzel 0.
 
-   ![Primární uzel CounterService](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-primary-node.png)
+   ![Primární uzel pro CounterService](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-primary-node.png)
 
-4. V nástroji VS Code, klikněte na ikonu spuštění (zelená šipka) vedle položky **.NET Core připojit** konfiguraci ladění. V dialogovém okně proces výběru vyberte CounterService proces, na kterém běží na primárním uzlu, který jste identifikovali v kroku 4.
+4. V VS Code klikněte na ikonu spustit (zelená šipka) vedle položky **.NET Core připojit** konfiguraci ladění. V dialogovém okně Výběr procesu vyberte proces CounterService, který běží na primárním uzlu, který jste identifikovali v kroku 4.
 
-   ![Primární procesu](./media/service-fabric-develop-csharp-applications-with-vs-code/select-process.png)
+   ![Primární proces](./media/service-fabric-develop-csharp-applications-with-vs-code/select-process.png)
 
-5. Zarážka v *CounterService.cs* souboru docházet velmi rychle. Pak můžete zkoumat hodnoty místní proměnné. Pomocí panelu nástrojů ladění v horní části stránky VS Code můžete pokračovat v provádění, krok přes řádky, krokování s vnořením do metody, nebo krok mimo aktuální metoda. 
+5. Zarážka v souboru *CounterService.cs* bude velmi rychlá. Pak můžete prozkoumat hodnoty místních proměnných. Pomocí panelu nástrojů ladění v horní části VS Code můžete pokračovat v provádění, krokovat řádky, Krokovat s vnořením do metod nebo krokovat s aktuální metodou. 
 
-   ![Ladění hodnoty](./media/service-fabric-develop-csharp-applications-with-vs-code/breakpoint-hit.png)
+   ![Hodnoty ladění](./media/service-fabric-develop-csharp-applications-with-vs-code/breakpoint-hit.png)
 
-6. Chcete-li ukončit relaci ladění, klikněte na ikonu moduly na panelu nástrojů ladění v horní části stránky VS Code...
+6. Chcete-li ukončit relaci ladění, klikněte na ikonu plug-in na panelu nástrojů ladění v horní části VS Code..
    
    ![Odpojit od ladicího programu](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-bar-disconnect.png)
        
-7. Jakmile budete hotovi, ladění, můžete použít **Service Fabric: Odebrání aplikace** příkaz CounterService aplikaci odebrat z vašeho místního clusteru. 
+7. Po dokončení ladění můžete pomocí příkazu **Service Fabric: Remove Application** odebrat aplikaci CounterService z místního clusteru. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Zjistěte, jak [vývoj a ladění aplikací Service Fabric v Javě s VS Code](./service-fabric-develop-java-applications-with-vs-code.md).
+* Naučte [se vyvíjet a ladit aplikace Java Service Fabric pomocí vs Code](./service-fabric-develop-java-applications-with-vs-code.md).
 
 
 

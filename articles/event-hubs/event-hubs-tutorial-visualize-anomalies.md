@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: vizualizace anomálií dat v událostech v reálném čase – Azure Event Hubs'
+title: Azure Event Hubs – vizualizace anomálií dat v událostech v reálném čase
 description: 'Kurz: vizualizace anomálií dat v reálném čase odeslaných do Microsoft Azure Event Hubs'
 services: event-hubs
 author: ShubhaVijayasarathy
@@ -8,13 +8,13 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 11/05/2019
-ms.openlocfilehash: 3e228fb9d4223ad1d6d906b44ab63c35600faa56
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.date: 12/20/2019
+ms.openlocfilehash: 1fc791519fd32b35bdbe3a69caec3c64e3ce3178
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307354"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437150"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Kurz: Vizualizace datových anomálií v událostech v reálném čase odesílaných do služby Azure Event Hubs
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Konfigurace úlohy Stream Analytics pro zpracování těchto transakcí
 > * Konfigurace vizualizace Power BI pro zobrazení výsledků
 
-K dokončení tohoto kurzu potřebujete předplatné Azure. Pokud ho nemáte, vytvořte si [bezplatný účet][] před tím, než začnete.
+K dokončení tohoto kurzu potřebujete předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet][] před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -47,7 +47,7 @@ Pro účely tohoto kurzu potřebujete obor názvů služby Event Hubs a centrum 
 
 V následujících částech najdete podrobnější popis požadovaných kroků. Postupujte podle pokynů pro rozhraní příkazového řádku *nebo* PowerShell a proveďte následující kroky:
 
-1. Vytvořte [skupinu prostředků](../azure-resource-manager/resource-group-overview.md). 
+1. Vytvořte [skupinu prostředků](../azure-resource-manager/management/overview.md). 
 
 2. Vytvořte obor názvů služby Event Hubs. 
 
@@ -320,7 +320,7 @@ V úloze Stream Analytics klikněte na **Spustit**, pak na **Nyní** a pak na **
 
    Klikněte na **Další**.
 
-10. Nastavte nadpis na **Podvodná použití** a podnadpis na **Součet za posledních několik minut**. Klikněte na **Použít**. Dlaždice se uloží na váš řídicí panel.
+10. Nastavte nadpis na **Podvodná použití** a podnadpis na **Součet za posledních několik minut**. Klikněte na tlačítko **Použít**. Dlaždice se uloží na váš řídicí panel.
 
     ![Snímek obrazovky se zadáváním nadpisu a podnadpisu pro dlaždici řídicího panelu.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 
@@ -386,4 +386,4 @@ Přejděte k dalšímu článku, kde najdete další informace o službě Azure 
 > [!div class="nextstepaction"]
 > [Začínáme s odesíláním zpráv do služby Azure Event Hubs v .NET Standard](event-hubs-dotnet-standard-getstarted-send.md)
 
-[bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[vytvořte si bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
