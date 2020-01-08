@@ -3,12 +3,12 @@ title: 'Rychlý Start: nové přiřazení zásad pomocí šablon'
 description: V tomto rychlém startu použijete šablonu Správce prostředků k vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy.
 ms.date: 11/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 61bffcdeb5d562fe18df98fda091d5d6aa4b4051
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: e22c14768622408fb3afb0e491d4179b6113e4ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482331"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436465"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí šablony Správce prostředků
 
@@ -39,13 +39,13 @@ Tady je kopie šablony:
 
 1. Vyberte nebo zadejte následující hodnoty:
 
-   | Název | Hodnota |
+   | Name (Název) | Hodnota |
    |------|-------|
    | Předplatné | Vyberte své předplatné Azure. |
    | Skupina prostředků | Vyberte **vytvořit novou**, zadejte název a pak vyberte **OK**. Název skupiny prostředků na snímku obrazovky je _mypolicyquickstart\<datum v MMDD\>RG_. |
-   | Umístění | Vyberte oblast. Například **střed USA**. |
+   | Umístění | Vyberte oblast. Například **USA (střed)** . |
    | Název přiřazení zásady | Zadejte název přiřazení zásady. Pokud chcete, můžete použít zobrazení definice zásad. Například proveďte **audit virtuálních počítačů, které nepoužívají spravované disky**. |
-   | Název RG | Zadejte název skupiny prostředků, ke které chcete zásadu přiřadit. V tomto rychlém startu použijte výchozí hodnotu **[resourceName (). name]** . Skupina prostředků **[()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)** je šablonou funkce, která načítá skupinu prostředků. |
+   | Název RG | Zadejte název skupiny prostředků, ke které chcete zásadu přiřadit. V tomto rychlém startu použijte výchozí hodnotu **[resourceName (). name]** . Skupina prostředků **[()](../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)** je šablonou funkce, která načítá skupinu prostředků. |
    | ID definice zásady | Zadejte **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4C19-b460-a2d36003525a**. |
    | Souhlasím s podmínkami a ujednáními uvedenými nahoře | Vybrali |
 
@@ -55,16 +55,16 @@ Některé další zdroje informací:
 
 - Další šablony ukázek najdete v tématu [Šablona Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular).
 - Odkaz na šablonu zobrazíte tak, že přejdete na [odkaz šablony Azure](/azure/templates/microsoft.authorization/allversions).
-- Další informace o vývoji šablon Správce prostředků najdete v [dokumentaci k Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+- Další informace o vývoji šablon Správce prostředků najdete v [dokumentaci k Azure Resource Manager](../../azure-resource-manager/management/overview.md).
 - Pokud chcete zjistit nasazení na úrovni předplatného, přečtěte si téma [Vytvoření skupin prostředků a prostředků na úrovni předplatného](../../azure-resource-manager/deploy-to-subscription.md).
 
 ## <a name="identify-non-compliant-resources"></a>Identifikace prostředků, které nedodržují předpisy
 
-Na levé straně stránky vyberte **dodržování předpisů** . Pak vyhledejte **auditované virtuální počítače, které nepoužívají přiřazení zásad spravovaných disků** , které jste vytvořili.
+Vyberte **dodržování předpisů** v levé části stránky. Vyhledejte **Audit virtuálních počítačů, které nepoužívají spravované disky** přiřazení zásady, které jste vytvořili.
 
 ![Stránka s přehledem dodržování zásad](./media/assign-policy-template/policy-compliance.png)
 
-Pokud nějaké existující prostředky nedodržují předpisy tohoto nového přiřazení, zobrazí se v části **nekompatibilní prostředky**.
+Pokud existují nějaké stávající prostředky, které nedodržují předpisy tohoto nového přiřazení, zobrazí se pod **nekompatibilní prostředky**.
 
 Další informace najdete v tématu [Jak funguje dodržování předpisů](./how-to/get-compliance-data.md#how-compliance-works).
 

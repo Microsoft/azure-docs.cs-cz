@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: de42acd9cb8ca0520db616237c23b7db9fadb77f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 666bd2f9575019f3bfb77050d27363fef66474bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923017"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439284"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Přírůstkové kopírování dat z Azure SQL Database do Azure Blob Storage s využitím informací sledování změn 
 
@@ -67,9 +67,9 @@ V tomto kurzu vytvoříte dva kanály, které provádějí následující dvě o
     ![Diagram toku přírůstkového načtení](media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-load-flow-diagram.png)
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Azure Powershell Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-Az-ps).
 * **Azure SQL Database**. Tuto databázi použijete jako **zdrojové** úložiště dat. Pokud Azure SQL Database nemáte, přečtěte si článek věnovaný [vytvoření databáze Azure SQL](../sql-database/sql-database-get-started-portal.md), kde najdete kroky pro její vytvoření.
@@ -151,7 +151,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-Az-ps).
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
-1. Definujte proměnnou pro název skupiny prostředků, kterou použijete později v příkazech PowerShellu. Zkopírujte do PowerShellu následující text příkazu, zadejte název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) v uvozovkách a pak příkaz spusťte. Například: `"adfrg"`. 
+1. Definujte proměnnou pro název skupiny prostředků, kterou použijete později v příkazech PowerShellu. Zkopírujte do PowerShellu následující text příkazu, zadejte název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) v uvozovkách a pak příkaz spusťte. Například: `"adfrg"`. 
    
      ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
@@ -197,7 +197,7 @@ Je třeba počítat s následujícím:
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 V datové továrně vytvoříte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V této části vytvoříte propojené služby pro účet Azure Storage a databázi Azure SQL. 
 
-### <a name="create-azure-storage-linked-service"></a>Vytvoření propojené služby Azure Storage
+### <a name="create-azure-storage-linked-service"></a>Vytvořte propojenou službu pro Azure Storage
 V tomto kroku s datovou továrnou propojíte svůj účet služby Azure Storage.
 
 1. Vytvořte soubor JSON s názvem **AzureStorageLinkedService.json** ve složce **C:\ADFTutorials\IncCopyChangeTrackingTutorial** s následujícím obsahem. (Pokud tato složka ještě neexistuje, vytvořte ji.) Než soubor uložíte, položky `<accountName>` a `<accountKey>` nahraďte názvem svého účtu úložiště Azure a jeho klíčem.
@@ -208,10 +208,7 @@ V tomto kroku s datovou továrnou propojíte svůj účet služby Azure Storage.
         "properties": {
             "type": "AzureStorage",
             "typeProperties": {
-                "connectionString": {
-                    "value": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>",
-                    "type": "SecureString"
-                }
+                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>"
             }
         }
     }
@@ -235,7 +232,7 @@ V tomto kroku s datovou továrnou propojíte svůj účet služby Azure Storage.
 ### <a name="create-azure-sql-database-linked-service"></a>Vytvoření propojené služby Azure SQL Database
 V tomto kroku propojíte databázi Azure SQL s datovou továrnou.
 
-1. Vytvořte soubor JSON s názvem **AzureSQLDatabaseLinkedService.json** ve složce **C:\ADFTutorials\IncCopyChangeTrackingTutorial** s následujícím obsahem: Místo hodnot **&lt;server&gt; &lt;database name&gt;, &lt;user id&gt; a &lt;password&gt;** použijte název vašeho serveru SQL Azure, název vaší databáze, ID uživatele a heslo a potom soubor uložte. 
+1. Ve složce **C:\ADFTutorials\IncCopyChangeTrackingTutorial** vytvořte soubor JSON s názvem **AzureSQLDatabaseLinkedService. JSON** s následujícím obsahem: nahraďte **&lt;server&gt; &lt;název databáze&gt;, &lt;ID uživatele&gt;a &lt;hesla**&gt;s názvem vašeho serveru SQL Azure, názvem databáze, ID uživatele a heslem před uložením souboru. 
 
     ```json
     {
@@ -243,10 +240,7 @@ V tomto kroku propojíte databázi Azure SQL s datovou továrnou.
         "properties": {
             "type": "AzureSqlDatabase",
             "typeProperties": {
-                "connectionString": {
-                    "value": "Server = tcp:<server>.database.windows.net,1433;Initial Catalog=<database name>; Persist Security Info=False; User ID=<user name>; Password=<password>; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;",
-                    "type": "SecureString"
-                }
+                "connectionString": "Server = tcp:<server>.database.windows.net,1433;Initial Catalog=<database name>; Persist Security Info=False; User ID=<user name>; Password=<password>; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;"
             }
         }
     }

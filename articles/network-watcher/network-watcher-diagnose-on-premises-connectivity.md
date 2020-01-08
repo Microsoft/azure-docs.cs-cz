@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: c3300338ab37d502646c55411d658ad30581019f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 528684031404dbd907205e69f3565155fa1856b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531834"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454290"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnostika místního připojení prostřednictvím bran VPN
 
-Azure VPN Gateway umožňuje vytvářet hybridní řešení, které řeší nutnost zabezpečeného připojení mezi vaší místní sítí a virtuální sítí Azure. Vzhledem k tomu, že vaše požadavky jsou jedinečné, je to volba místního zařízení VPN. Azure v současné době podporuje [několik zařízení VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) , která se neustále ověřují ve spolupráci s dodavateli zařízení. Před konfigurací místního zařízení VPN zkontrolujte nastavení konfigurace specifické pro konkrétní zařízení. Podobně je Azure VPN Gateway nakonfigurovaný se sadou [podporovaných parametrů protokolu IPSec](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) , které se používají pro vytváření připojení. V současné době neexistuje způsob, jak zadat nebo vybrat konkrétní kombinaci parametrů protokolu IPsec z VPN Gateway Azure. Pro navázání úspěšného připojení mezi místními a Azure musí být nastavení místního zařízení VPN v souladu s parametry protokolu IPsec, které jsou předepsané v Azure VPN Gateway. Pokud jsou nastavení správná, dojde ke ztrátě připojení a dokud tyto problémy nevyřešíte sami, nedošlo k jejich odhalení a obvykle trvalo hodiny k identifikaci a vyřešení problému.
+Azure VPN Gateway umožňuje vytvářet hybridní řešení, které řeší nutnost zabezpečeného připojení mezi vaší místní sítí a virtuální sítí Azure. Vzhledem k tomu, že vaše požadavky jsou jedinečné, je to volba místního zařízení VPN. Azure v současné době podporuje [několik zařízení VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) , která se neustále ověřují ve spolupráci s dodavateli zařízení. Před konfigurací místního zařízení VPN zkontrolujte nastavení konfigurace specifické pro konkrétní zařízení. Podobně je Azure VPN Gateway nakonfigurovaný se sadou [podporovaných parametrů protokolu IPSec](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) , které se používají pro vytváření připojení. V současné době neexistuje způsob, jak zadat nebo vybrat konkrétní kombinaci parametrů protokolu IPsec z VPN Gateway Azure. Pro navázání úspěšného připojení mezi místními a Azure musí být nastavení místního zařízení VPN v souladu s parametry protokolu IPsec, které jsou předepsané v Azure VPN Gateway. Pokud je nastavení nesprávné, dojde ke ztrátě připojení a dokud tyto problémy nevyřešíte sami, nedošlo k jejich odhalení a obvykle trvalo hodiny k identifikaci a vyřešení problému.
 
 Funkce řešení potíží s Azure Network Watcher vám umožní diagnostikovat všechny problémy s bránou a připojeními a během několika minut má dostatek informací, aby bylo možné problém opravit.
 
@@ -84,12 +84,12 @@ Funkce řešení potíží s Azure Network Watcher umožňuje diagnostikovat a �
 
 | Typ chyby | Důvod | Protokol|
 |---|---|---|
-| Chyba | Pokud není zjištěna žádná chyba. |Ano|
+| NoFault | Pokud není zjištěna žádná chyba. |Ano|
 | GatewayNotFound | Nejde najít bránu nebo bránu není zřízená. |Ne|
-| PlannedMaintenance |  Instance brány je pod údržbou.  |Ne|
+| PlannedMaintenance |  V instanci brány probíhá údržba.  |Ne|
 | UserDrivenUpdate | V případě, že probíhá aktualizace uživatele. Může se jednat o operaci změny velikosti. | Ne |
 | VipUnResponsive | Nelze se připojit k primární instanci brány. K tomu dojde, když sonda stavu neproběhne úspěšně. | Ne |
-| PlatformInActive | Došlo k potížím s platformou. | Ne|
+| PlatformInActive | Došlo k problému s platformou. | Ne|
 | ServiceNotRunning | Podkladová služba není spuštěná. | Ne|
 | NoConnectionsFoundForGateway | V bráně neexistují žádná připojení. Toto je pouze upozornění.| Ne|
 | ConnectionsNotConnected | Žádná připojení nejsou připojená. Toto je pouze upozornění.| Ano|
@@ -99,9 +99,9 @@ Funkce řešení potíží s Azure Network Watcher umožňuje diagnostikovat a �
 
 | Typ chyby | Důvod | Protokol|
 |---|---|---|
-| Chyba | Pokud není zjištěna žádná chyba. |Ano|
+| NoFault | Pokud není zjištěna žádná chyba. |Ano|
 | GatewayNotFound | Nejde najít bránu nebo bránu není zřízená. |Ne|
-| PlannedMaintenance | Instance brány je pod údržbou.  |Ne|
+| PlannedMaintenance | V instanci brány probíhá údržba.  |Ne|
 | UserDrivenUpdate | V případě, že probíhá aktualizace uživatele. Může se jednat o operaci změny velikosti.  | Ne |
 | VipUnResponsive | Nelze se připojit k primární instanci brány. K tomu dojde, když sonda stavu neproběhne úspěšně. | Ne |
 | ConnectionEntityNotFound | Chybí konfigurace připojení. | Ne |
@@ -111,7 +111,7 @@ Funkce řešení potíží s Azure Network Watcher umožňuje diagnostikovat a �
 | Ověření | Neshoda s předsdíleným klíčem. | Ano|
 | PeerReachability | Partnerská brána není dostupná. | Ano|
 | IkePolicyMismatch | Partnerská brána má zásady IKE, které Azure nepodporuje. | Ano|
-| Chyba WfpParse | Při analýze protokolu WFP došlo k chybě. |Ano|
+| WfpParse Error | Při analýze protokolu WFP došlo k chybě. |Ano|
 
 ## <a name="next-steps"></a>Další kroky
 

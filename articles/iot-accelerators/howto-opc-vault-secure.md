@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b5c886625c944e2f5501859e78506ca89ec3d765
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: af5e511cbf273bc4e4fa0a08d089a955426fe75c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71203689"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454197"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>Použití služby správy certifikátů trezoru OPC
 
 Tento článek vysvětluje, jak registrovat aplikace a jak vydávat podepsané certifikáty aplikací pro zařízení OPC UA.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="deploy-the-certificate-management-service"></a>Nasazení služby správy certifikátů
 
@@ -36,7 +36,7 @@ Pokud jste to ještě neudělali, vytvořte certifikát certifikační autority 
 > [!IMPORTANT]
 > K registraci aplikace je nutná role zapisovače.
 
-1. Otevřete službu Certificate Service na adrese `https://myResourceGroup-app.azurewebsites.net` a přihlaste se.
+1. Otevřete službu Certificate Service na adrese `https://myResourceGroup-app.azurewebsites.net`a přihlaste se.
 2. Přejít na **zaregistrovat nové**. Pro registraci aplikace musí mít uživatel alespoň přiřazenou roli zapisovače.
 2. Formulář pro zadávání názvů řídí konvence pojmenování v OPC UA. Například na následujícím snímku obrazovky se zobrazí nastavení pro ukázku [referenčního serveru OPC UA](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/Reference) v OPC UA .NET Standard stack:
 
@@ -57,7 +57,7 @@ Zabezpečte svou aplikaci OPC UA vyvoláním podepsaného certifikátu na zákla
 
 3. Vyberte **požádat o nový souboru KeyPair a certifikát** pro vyžádání privátního klíče a nového podepsaného certifikátu s veřejným klíčem pro vaši aplikaci.
 
-   ![Snímek obrazovky s vygenerováním nového souboru KeyPair a certifikátu](media/howto-opc-vault-secure/generate-new-key-pair.png "Vygenerovat nový pár klíčů")
+   ![Snímek obrazovky s vygenerováním nového souboru KeyPair a certifikátu](media/howto-opc-vault-secure/generate-new-key-pair.png "Generovat nový pár klíčů")
 
 4. Do formuláře zadejte předmět a názvy domén. Pro privátní klíč vyberte PEM nebo PFX s heslem. Vyberte vytvořit **novou souboru KeyPair** a vytvořte žádost o certifikát.
 
@@ -98,7 +98,7 @@ Nyní závisí na zařízení OPC UA, jak použít nový pár klíčů. Certifik
 
 Nyní závisí na zařízení OPC UA, jak použít nový certifikát. Certifikát certifikační autority a seznam CRL se většinou zkopírují do složky `trusted`, zatímco certifikát aplikace se aplikuje na složku `own` v úložišti certifikátů. Některá zařízení už můžou podporovat nabízení serveru pro aktualizace certifikátů. Přečtěte si dokumentaci zařízení OPC UA.
 
-### <a name="step-4-device-secured"></a>Krok 4: zabezpečené zařízení
+### <a name="step-3-device-secured"></a>Krok 3: zabezpečené zařízení
 
 Zařízení OPC UA je teď připravené ke komunikaci s jinými zařízeními OPC UA zabezpečenými certifikáty podepsanými certifikační autoritou bez další konfigurace.
 

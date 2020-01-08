@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: b36ed2cac7e5009a0581091252b36dcd5af81bd7
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 588f9595dbe04b98cb8d70a33beb5740d812bd7c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389992"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457628"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro úložiště tabulek
 
@@ -25,10 +25,11 @@ Azure Storage má cíle škálovatelnosti a výkonu pro kapacitu, rychlost trans
 
 Tento článek organizuje osvědčené postupy pro výkon do kontrolního seznamu, který můžete sledovat při vývoji aplikace pro úložiště tabulek.
 
-| Hotovo | Kategorie | Aspekt návrhu |
+| Hotovo | Kategorie | Faktor návrhu |
 | --- | --- | --- |
 | &nbsp; |Cíle škálovatelnosti |[Můžete navrhnout aplikaci tak, aby nepoužívala více než maximální počet účtů úložiště?](#maximum-number-of-storage-accounts) |
 | &nbsp; |Cíle škálovatelnosti |[Nechcete se vyhnout přístupu k kapacitě a omezením transakcí?](#capacity-and-transaction-targets) |
+| &nbsp; |Cíle škálovatelnosti |[Blížíte se k cílům škálovatelnosti pro entity za sekundu?](#targets-for-data-operations) |
 | &nbsp; |Sítě |[Mají zařízení na straně klienta dostatečně velkou šířku pásma a nízkou latenci pro dosažení potřebného výkonu?](#throughput) |
 | &nbsp; |Sítě |[Má zařízení na straně klienta vysoce kvalitní síťový odkaz?](#link-quality) |
 | &nbsp; |Sítě |[Je klientská aplikace ve stejné oblasti jako účet úložiště?](#location) |
@@ -38,10 +39,9 @@ Tento článek organizuje osvědčené postupy pro výkon do kontrolního seznam
 | &nbsp; |Konfigurace .NET |[Nakonfigurovali jste klienta tak, aby používal dostatečný počet souběžných připojení?](#increase-default-connection-limit) |
 | &nbsp; |Konfigurace .NET |[Pro aplikace .NET jste nakonfigurovali .NET pro použití dostatečného počtu vláken?](#increase-minimum-number-of-threads) |
 | &nbsp; |Paralelismu |[Měli byste zajistit, aby byl paralelismu správně ohraničený, takže nebudete přetěžovat možnosti svého klienta nebo se přiblížíte cílům škálovatelnosti?](#unbounded-parallelism) |
-| &nbsp; |Nástroje |[Používáte nejnovější verze klientských knihoven a nástrojů od společnosti Microsoft?](#client-libraries-and-tools) |
+| &nbsp; |nástroje |[Používáte nejnovější verze klientských knihoven a nástrojů od společnosti Microsoft?](#client-libraries-and-tools) |
 | &nbsp; |Opakování |[Používáte zásady opakování s exponenciálním omezení rychlosti pro omezení chyb a časových limitů?](#timeout-and-server-busy-errors) |
 | &nbsp; |Opakování |[Vyloučí vaše aplikace opakované pokusy o neopakující se chyby?](#non-retryable-errors) |
-| &nbsp; |Cíle škálovatelnosti |[Blížíte se k cílům škálovatelnosti pro entity za sekundu?](#table-specific-scalability-targets) |
 | &nbsp; |Konfigurace |[Používáte pro žádosti o tabulku JSON?](#use-json) |
 | &nbsp; |Konfigurace |[Vypnuli jste Nagle algoritmus, aby se zlepšil výkon malých požadavků?](#disable-nagle) |
 | &nbsp; |Tabulky a oddíly |[Správně jste rozdělili data?](#schema) |
@@ -61,7 +61,7 @@ Tento článek organizuje osvědčené postupy pro výkon do kontrolního seznam
 
 Pokud vaše aplikace přistupuje k některým cílům škálovatelnosti nebo překročí, může dojít ke zvýšené latenci transakcí nebo omezování. Když aplikace Azure Storage omezí vaši aplikaci, začne služba vracet kódy chyb 503 (zaneprázdněný serverem) nebo 500 (časový limit operace). Zamezení těchto chyb zachováním omezení cílů škálovatelnosti je důležitou součástí zvýšení výkonu aplikace.
 
-Další informace o cílech škálovatelnosti pro Table service najdete v tématu [Azure Storage škálovatelnost a výkonnostní cíle pro účty úložiště](/azure/storage/common/storage-scalability-targets?toc=%2fazure%2fstorage%2ftables%2ftoc.json#azure-table-storage-scale-targets).
+Další informace o cílech škálovatelnosti pro Table service najdete v tématu [škálovatelnost a výkonnostní cíle pro úložiště tabulek](scalability-targets.md).
 
 ### <a name="maximum-number-of-storage-accounts"></a>Maximální počet účtů úložiště
 
@@ -77,9 +77,17 @@ Pokud se vaše aplikace blíží cílům škálovatelnosti pro jeden účet úlo
     I když komprimace dat může ušetřit šířku pásma a zvýšit výkon sítě, může mít také negativní vliv na výkon. Vyhodnoťte dopad dalších požadavků na zpracování pro kompresi a dekompresi dat na straně klienta. Mějte na paměti, že ukládání komprimovaných dat může řešit obtíže, protože může být náročnější na zobrazení dat pomocí standardních nástrojů.
 - Pokud se vaše aplikace blíží cílům škálovatelnosti, ujistěte se, že používáte exponenciální omezení rychlosti pro opakované pokusy. Doporučujeme, abyste se vyhnuli dosažení cílů škálovatelnosti, a to implementací doporučení popsaných v tomto článku. Použití exponenciálního omezení rychlosti pro opakování však zabrání aplikaci v rychlém opakování, což by mohlo způsobit horší omezení. Další informace najdete v části s názvem [timeout a chyby zaneprázdněnosti serveru](#timeout-and-server-busy-errors).
 
-## <a name="table-specific-scalability-targets"></a>Cíle škálovatelnosti specifické pro tabulku
+### <a name="targets-for-data-operations"></a>Cíle pro datové operace
 
-Kromě omezení šířky pásma celého účtu úložiště mají tabulky následující konkrétní omezení škálovatelnosti. Systém vyrovnává zatížení, protože se zvyšuje objem provozu, ale v případě, že váš provoz má náhlé výpadky, možná nebudete moci okamžitě získat tento objem propustnosti. Pokud váš vzor obsahuje shluky, měli byste očekávat, že v průběhu nárůstu zatížení a při automatickém načítání vyrovnávání zatížení tabulky vyčerpáte časové limity nebo časový limit. Rozkládání na pomalejších systémech má lepší výsledky, protože systémový čas pro správné vyrovnávání zatížení.
+Azure Storage se vyrovnává zatížení při zvýšení provozu do účtu úložiště, ale pokud provoz vykazuje náhlé shluky, nemusí být možné okamžitě získat tento objem propustnosti. V případě, že Azure Storage automaticky načítá rovnováhu mezi tabulkami, očekává se, že se v průběhu shluku zobrazuje omezení nebo časové limity. Rozkládání pomalu obecně poskytuje lepší výsledky, protože systém má odpovídající čas na Vyrovnávání zatížení.
+
+#### <a name="entities-per-second-storage-account"></a>Entity za sekundu (účet úložiště)
+
+Omezení škálovatelnosti pro přístup k tabulkám je až 20 000 entit (1 KB každý) za sekundu pro účet. Obecně platí, že každou entitu, která je vložená, aktualizovaná, Odstraněná nebo se vyhledá na tomto cíli. Dávková vložení obsahující 100 entit by tedy bylo možné počítat jako jednotky 100. Dotaz, který kontroluje 1000 entit a vrátí hodnotu 5, by byl počet entit 1000.
+
+#### <a name="entities-per-second-partition"></a>Entity za sekundu (oddíl)
+
+V rámci jednoho oddílu je cíl škálovatelnosti pro přístup k tabulkám 2 000 entit (1 KB každý) za sekundu, a to za použití stejného počítání, jak je popsáno v předchozí části.
 
 ## <a name="networking"></a>Sítě
 
@@ -281,5 +289,5 @@ Pokud provádíte dávkové vkládání a pak načítáte rozsahy entit dohromad
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Storage škálovatelnost a výkonnostní cíle pro účty úložiště](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)
+- [Cíle škálovatelnosti a výkonnosti pro účty úložiště Azure Storage](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)
 - [Stavové a chybové kódy](/rest/api/storageservices/Status-and-Error-Codes2)

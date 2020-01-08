@@ -1,5 +1,6 @@
 ---
-title: Problémy s konfigurací a správou pro Microsoft Azure Cloud Services nejčastější dotazy | Microsoft Docs
+title: Nejčastější dotazy týkající se konfigurace a správy
+titleSuffix: Azure Cloud Services
 description: V tomto článku jsou uvedeny nejčastější dotazy týkající se konfigurace a správy pro Microsoft Azure Cloud Services.
 services: cloud-services
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 704d6d4a12550507a8e38be4777e5abc7b57fe74
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 47a75d10f6016eb49061f9e7158b00899a387f2f
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161769"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660609"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s konfigurací a správou pro Azure Cloud Services: nejčastější dotazy
 
@@ -110,7 +111,7 @@ Tuto úlohu můžete automatizovat pomocí spouštěcího skriptu (Batch/cmd/Pow
 
 Tento certifikát se používá k šifrování klíčů počítačů ve webových rolích Azure. Pokud se chcete dozvědět víc, podívejte se na [Tento informační zpravodaj](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731).
 
-Další informace najdete v následujících článcích:
+Další informace najdete v těchto článcích:
 - [Jak nakonfigurovat a spustit úlohy po spuštění pro cloudovou službu](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
 - [Běžné úlohy po spuštění cloudové služby](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
 
@@ -189,7 +190,7 @@ Microsoft nepřetržitě monitoruje servery, sítě a aplikace a detekuje hrozby
 Systémy Windows 10 a Windows Server 2016 obsahují podporu protokolu HTTP/2 na straně klienta i serveru. Pokud se klient (prohlížeč) připojuje k serveru IIS přes TLS, který vyjednává HTTP/2 přes rozšíření TLS, nemusíte provádět žádnou změnu na straně serveru. Důvodem je, že přes TLS se ve výchozím nastavení pošle hlavička H2-14 určující použití HTTP/2. Pokud na druhé straně váš klient posílá hlavičku upgradu pro upgrade na HTTP/2, pak je potřeba provést změnu níže na straně serveru, aby se zajistilo, že upgrade funguje a že skončíte s připojením HTTP/2. 
 
 1. Spusťte program regedit. exe.
-2. Přejděte do klíče registru: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
+2. Přejděte do klíče registru: HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
 3. Vytvořte novou hodnotu DWORD s názvem **DuoEnabled**.
 4. Nastavte jeho hodnotu na 1.
 5. Restartujte server.
@@ -249,7 +250,7 @@ Další informace o povolení Application Insights pro Cloud Services najdete v 
 
 Další informace o tom, jak povolit protokolování Azure Diagnostics pro Cloud Services, najdete v tématu [nastavení diagnostiky pro Azure Cloud Services a virtuální počítače](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them) .
 
-## <a name="generic"></a>Obecněji
+## <a name="generic"></a>Obecné
 
 ### <a name="how-do-i-add-nosniff-to-my-website"></a>Návody do svého webu přidat "insniffer"?
 Chcete-li klientům zabránit v sledování typů MIME, přidejte do souboru *Web. config* nastavení.
@@ -276,7 +277,7 @@ Můžete ho také přidat jako nastavení služby IIS. Použijte následující 
 Použijte spouštěcí skript služby IIS v článku [běžné úlohy po spuštění](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe) .
 
 ### <a name="what-is-the-quota-limit-for-my-cloud-service"></a>Jaká je maximální kvóta pro cloudovou službu?
-Viz [omezení pro konkrétní služby](../azure-subscription-service-limits.md#subscription-limits).
+Viz [omezení pro konkrétní služby](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits).
 
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Proč jednotka na virtuálním počítači cloudové služby zobrazuje hodně volného místa na disku?
 Jedná se o očekávané chování, které by nemělo způsobovat žádné potíže s vaší aplikací. Deník je zapnutý pro jednotku% AppRoot% ve virtuálních počítačích Azure PaaS, která v podstatě spotřebovává dvojnásobek velikosti místa, které soubory obvykle zabírají. Existuje však několik věcí, které je třeba si uvědomit, že v podstatě tuto chybu zapínají na neproblém.

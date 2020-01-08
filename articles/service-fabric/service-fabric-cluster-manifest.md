@@ -1,25 +1,16 @@
 ---
-title: Konfigurace samostatného clusteru Azure Service Fabric | Microsoft Docs
+title: Konfigurace samostatného clusteru Azure Service Fabric
 description: Přečtěte si, jak nakonfigurovat samostatný nebo místní cluster Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 0c5ec720-8f70-40bd-9f86-cd07b84a219d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: ca04539049766e1f053d74b3a8536f154c3fd830
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0f9b625dfbe9c39bea7771dcc5fd58805ce19811
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72383575"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458374"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Nastavení konfigurace samostatného clusteru Windows
 Tento článek popisuje nastavení konfigurace samostatného clusteru Azure Service Fabric, který je možné nastavit v souboru *ClusterConfig. JSON* . Tento soubor použijete k zadání informací o uzlech clusteru, konfiguracích zabezpečení a topologii sítě z hlediska selhání a upgradovacích domén.  Po změně nebo přidání nastavení konfigurace můžete buď [vytvořit samostatný cluster](service-fabric-cluster-creation-for-windows-server.md) , nebo [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -73,8 +64,8 @@ Cluster Service Fabric musí obsahovat aspoň tři uzly. Do této části může
 
 | **Konfigurace uzlu** | **Popis** |
 | --- | --- |
-| nodeName |Uzlu můžete zadat nějaký popisný název. |
-| Adresa |Otevřete okno příkazového řádku a zadejte `ipconfig`, abyste zjistili IP adresu vašeho uzlu. Poznamenejte si adresu IPV4 a přiřaďte ji k proměnné iPAddress. |
+| NodeName |Uzlu můžete zadat nějaký popisný název. |
+| Adresa |Zjistěte IP adresu vašeho uzlu otevřením okna příkazového řádku a zadáním příkazu `ipconfig`. Poznamenejte si adresu IPV4 a přiřaďte ji k proměnné iPAddress. |
 | nodeTypeRef |Každému uzlu je možné přiřadit jiný typ uzlu. [Typy uzlů](#node-types) jsou definovány v následující části. |
 | faultDomain |Doména selhání umožňuje správcům clusterů definovat fyzické uzly, které se mohou v současné době selhat v důsledku sdílených fyzických závislostí. |
 | upgradeDomain |Upgradovací domény popisují sady uzlů, které jsou vypnuté pro Service Fabric upgrady ve stejnou dobu. Můžete zvolit, které uzly se mají přiřadit k doménám upgradu, protože nejsou omezeny žádnými fyzickými požadavky. |
@@ -156,7 +147,7 @@ Název je popisný název tohoto konkrétního typu uzlu. Chcete-li vytvořit uz
 * leaseDriverEndpointPort je port používaný ovladačem zapůjčení clusteru k zjištění, zda jsou uzly stále aktivní. 
 * serviceConnectionEndpointPort je port používaný aplikacemi a službami nasazenými na uzlu ke komunikaci s klientem Service Fabric v tomto konkrétním uzlu.
 * httpGatewayEndpointPort je port používaný Service Fabric Explorer pro připojení ke clusteru.
-* ephemeralPorts přepíše [dynamické porty používané operačním systémem](https://support.microsoft.com/kb/929851). Service Fabric používá součást těchto portů jako aplikační porty a zbývající jsou k dispozici pro operační systém. Tento rozsah je také namapován na stávající rozsah, který je přítomný v operačním systému, takže pro všechny účely můžete použít rozsahy uvedené v ukázkových souborech JSON. Zajistěte, aby byl rozdíl mezi počátečním a koncovým portem minimálně 255. V případě, že je tento rozdíl příliš nízký, můžete spustit konflikty, protože tento rozsah je sdílen s operačním systémem. Chcete-li zobrazit nakonfigurovaný rozsah dynamických portů, spusťte příkaz `netsh int ipv4 show dynamicport tcp`.
+* ephemeralPorts přepíše [dynamické porty používané operačním systémem](https://support.microsoft.com/kb/929851). Service Fabric používá součást těchto portů jako aplikační porty a zbývající jsou k dispozici pro operační systém. Tento rozsah je také namapován na stávající rozsah, který je přítomný v operačním systému, takže pro všechny účely můžete použít rozsahy uvedené v ukázkových souborech JSON. Zajistěte, aby byl rozdíl mezi počátečním a koncovým portem minimálně 255. V případě, že je tento rozdíl příliš nízký, můžete spustit konflikty, protože tento rozsah je sdílen s operačním systémem. Pokud chcete zobrazit nakonfigurovaný rozsah dynamických portů, spusťte `netsh int ipv4 show dynamicport tcp`.
 * applicationPorts jsou porty používané aplikacemi Service Fabric. Rozsah portů aplikace by měl být dostatečně velký, aby pokryl požadavky vašich aplikací na koncový bod. Tento rozsah by měl být exkluzivní z rozsahu dynamických portů v počítači, to znamená ephemeralPorts rozsah nastavený v konfiguraci. Service Fabric tyto porty používá vždy, když jsou vyžadovány nové porty a postará se o otevření brány firewall pro tyto porty. 
 * reverseProxyEndpointPort je volitelný koncový bod reverzního proxy serveru. Další informace najdete v tématu [Service Fabric reverzní proxy](service-fabric-reverseproxy.md). 
 

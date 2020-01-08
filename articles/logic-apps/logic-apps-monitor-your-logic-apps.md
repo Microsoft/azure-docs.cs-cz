@@ -1,6 +1,6 @@
 ---
 title: Zkontroluje stav, nastaví protokolování a získá výstrahy.
-description: Monitorování stavu, protokolování dat diagnostiky a nastavení výstrah pro Azure Logic Apps
+description: Monitorování stavu, nastavení protokolování a zapnutí výstrah pro diagnostiku chyb a problémů v Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/21/2017
-ms.openlocfilehash: ca1e2836ddfb38de640a5a90cf53e416b8923c04
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ce29d6eb7bfefea6d9030d4cbb162936ff60c83d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791910"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428794"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Stav monitorování, nastavení protokolování diagnostiky a zapnutí výstrah pro Azure Logic Apps
 
@@ -33,7 +33,7 @@ Pokud chcete dostávat oznámení o selháních nebo jiných možných probléme
 
 2. Vyberte svou aplikaci logiky a pak zvolte **Přehled**.
 
-   Azure Portal zobrazuje historii spuštění a historii triggerů pro vaši aplikaci logiky. Například:
+   Azure Portal zobrazuje historii spuštění a historii triggerů pro vaši aplikaci logiky. Příklad:
 
    ![Historie spuštění aplikace logiky a historie aktivačních událostí](media/logic-apps-monitor-your-logic-apps/overview.png)
 
@@ -47,7 +47,7 @@ Pokud chcete dostávat oznámení o selháních nebo jiných možných probléme
 
 3. Chcete-li zobrazit kroky z konkrétního spuštění, vyberte v části **historie spuštění**možnost spustit. 
 
-   Zobrazení monitorování ukazuje každý krok v tomto spuštění. Například:
+   Zobrazení monitorování ukazuje každý krok v tomto spuštění. Příklad:
 
    ![Akce pro konkrétní spuštění](media/logic-apps-monitor-your-logic-apps/monitor-view-updated.png)
 
@@ -57,7 +57,7 @@ Pokud chcete dostávat oznámení o selháních nebo jiných možných probléme
 
    Můžete například získat **ID korelace**spuštění, které může být nutné při použití [REST API pro Logic Apps](https://docs.microsoft.com/rest/api/logic).
 
-5. Pokud chcete získat podrobnosti o konkrétním kroku, vyberte tento krok. Teď si můžete prohlédnout podrobnosti, jako jsou vstupy, výstupy a případné chyby, ke kterým došlo v tomto kroku. Například:
+5. Pokud chcete získat podrobnosti o konkrétním kroku, vyberte tento krok. Teď si můžete prohlédnout podrobnosti, jako jsou vstupy, výstupy a případné chyby, ke kterým došlo v tomto kroku. Příklad:
 
    ![Podrobnosti o kroku](media/logic-apps-monitor-your-logic-apps/monitor-view-details.png)
    
@@ -158,7 +158,7 @@ Společně s protokoly Azure Monitor můžete pomocí diagnostických dat aplika
 * [Archivace Azure Diagnostics protokolů v Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [Streamování protokolů Azure Diagnostics do Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md) 
 
-Sledování v reálném čase můžete získat pomocí telemetrie a analýz z jiných služeb, jako je [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) a [Power BI](../azure-monitor/platform/powerbi.md). Například:
+Sledování v reálném čase můžete získat pomocí telemetrie a analýz z jiných služeb, jako je [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) a [Power BI](../azure-monitor/platform/powerbi.md). Příklad:
 
 * [Streamování dat z Event Hubs do Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Analyzujte streamovaná data pomocí Stream Analytics a vytvořte řídicí panel analýzy v reálném čase v Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)

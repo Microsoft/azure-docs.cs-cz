@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: d74bd67dedb70308061e54c05d23a4bb63adc8f8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 0e49a5c8edd074c71d5972ee8d9c2e81f9c512ea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851328"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453980"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Vytvoření a Správa aplikace Azure IoT Central z portálu CSP
 
@@ -33,7 +33,7 @@ Na stránce Azure IoT Central Správce aplikací se zakoupíte. Azure IoT Centra
 
 ![Vytvořit správce pro zprostředkovatele CSP](media/howto-create-application-csp/image3.png)
 
-Pokud chcete vytvořit aplikaci Azure IoT Central, v levé nabídce vyberte **sestavit** . Vyberte jednu z průmyslových šablon nebo vyberte **vlastní aplikace** a vytvořte zcela novou aplikaci. Tím se načte stránka pro vytvoření aplikace. Musíte vyplnit všechna pole na této stránce a pak zvolit **vytvořit**. Další informace o každém z těchto polí najdete v části.
+Pokud chcete vytvořit aplikaci Azure IoT Central, v levé nabídce vyberte **sestavit** . Vyberte jednu z průmyslových šablon nebo vyberte **starší aplikace** a vytvořte zcela novou aplikaci. Tím se načte stránka pro vytvoření aplikace. Musíte vyplnit všechna pole na této stránce a pak zvolit **vytvořit**. Další informace o každém z těchto polí najdete v části.
 
 ![Vytvořit stránku aplikace pro zprostředkovatele CSP](media/howto-create-application-csp/image4.png)
 
@@ -69,7 +69,7 @@ Pokud nemáte předplatné Azure, můžete ho vytvořit v partnerském centru Mi
 
 Další informace najdete v tématu [předplatná Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing).
 
-## <a name="region"></a>Oblast
+## <a name="region"></a>Region (Oblast)
 
 Vyberte oblast nebo [zeměpisnou](https://azure.microsoft.com/global-infrastructure/geographies/) oblast, ve které chcete vytvořit aplikaci Azure IoT Central. Obvykle byste měli zvolit oblast, která je pro vaše zařízení nejbližší, aby získala optimální výkon.
 
@@ -85,13 +85,12 @@ Oblasti, ve kterých je Azure IoT Central k dispozici, můžete zobrazit na str�
 
 ## <a name="application-template"></a>Šablona aplikace
 
-Můžete zvolit jednu z dostupných šablon aplikací pro novou aplikaci Azure IoT Central. Šablona aplikace může obsahovat předdefinované položky, jako jsou šablony zařízení a řídicí panely, které vám pomůžou začít.
+Můžete zvolit níže uvedenou šablonu aplikace pro novou aplikaci Azure IoT Central.
 
 | Šablona aplikace | Popis |
 | -------------------- | ----------- |
-| Custom application (Vlastní aplikace)   | Vytvoří prázdnou aplikaci, kterou můžete naplnit vlastními šablonami zařízení a zařízeními. |
-| Sample Contoso (Ukázka Contoso)       | Vytvoří aplikaci, která bude obsahovat šablonu zařízení pro jednoduché připojené zařízení. Pomocí této šablony můžete začít zkoumat Azure IoT Central. |
-| Sample Devkits (Ukázka Devkits)       | Vytvoří aplikaci s připravenými šablonami zařízení pro připojení zařízení MXChip nebo Raspberry Pi. Tuto šablonu použijte, pokud jste vývojář zařízení experimentovat s kódem na jednom z těchto zařízení. |
+| Starší verze aplikace   | Vytvoří prázdnou aplikaci, kterou můžete naplnit vlastními šablonami zařízení a zařízeními. |
+
 
 ## <a name="next-steps"></a>Další kroky
 

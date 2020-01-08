@@ -4,15 +4,15 @@ description: Pomocí Azure Monitor můžete řešení pro kontrolu stavu SQL pou
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/28/2019
-ms.openlocfilehash: 7808ead7ec4191bdf17e3ab225aeaa909abd7d08
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e3e399e99dca453a84c4daef782027b2b1ad6da1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900669"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401035"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Optimalizujte prostředí SQL pomocí řešení pro kontrolu stavu SQL Server v Azure Monitor
 
@@ -32,9 +32,9 @@ Po přidání řešení a dokončení posouzení se souhrnné informace pro obla
 
 ![Obrázek řídicího panelu pro kontrolu stavu SQL](./media/sql-assessment/sql-healthcheck-dashboard-01.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Řešení kontroly stavu SQL vyžaduje, aby na každém počítači, na kterém je nainstalovaný Microsoft Monitoring Agent (MMA), nainstalovaná podporovaná verze .NET Framework 4.  MMA agent používá System Center 2016-Operations Manager a Operations Manager 2012 R2 a Azure Monitor.  
+* Řešení kontroly stavu SQL vyžaduje, aby na každém počítači s nainstalovanou Microsoft Monitoring Agent (MMA) byla nainstalovaná podporovaná verze .NET Framework 4.6.2.  MMA agent používá System Center 2016-Operations Manager a Operations Manager 2012 R2 a Azure Monitor.  
 * Řešení podporuje SQL Server verze 2012, 2014 a 2016.
 * Pracovní prostor Log Analytics pro přidání řešení kontroly stavu SQL z webu Azure Marketplace v Azure Portal.  Abyste mohli řešení nainstalovat, musíte být správce nebo přispěvatel v rámci předplatného Azure.
 
@@ -47,7 +47,7 @@ Chcete-li provést kontrolu stavu na serverech SQL Server, vyžadují agenta a p
 
 1. Nainstalujte [Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) , pokud server ještě není monitorovaný pomocí nástroje System Center 2016-Operations Manager nebo Operations Manager 2012 R2.
 2. Pokud je monitorovaná pomocí nástroje System Center 2016-Operations Manager nebo Operations Manager 2012 R2 a skupina pro správu není integrována s Azure Monitor, může být server s využitím více domovských Log Analytics pro shromažďování dat a přeposílání do služby a stále sledováno Operations Manager.  
-3. V opačném případě, pokud je vaše skupina pro správu Operations Manager integrovaná se službou, je třeba přidat řadiče domény pro shromažďování dat službou podle kroků v části [Přidání počítačů spravovaných agentem](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) po povolení řešení v stejných.  
+3. V opačném případě, pokud je vaše skupina pro správu Operations Manager integrovaná se službou, je nutné přidat řadiče domény pro shromažďování dat službou podle kroků v části [Přidání počítačů spravovaných agentem](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) po povolení řešení ve vašem pracovním prostoru.  
 
 Agent na vašem SQL Server, který hlásí skupinu pro správu Operations Manager, shromažďuje data, přechází na přiřazenou management server a pak se pošle přímo z management server do Azure Monitor.  Data nejsou zapsána do databází Operations Manager.  
 
@@ -56,7 +56,7 @@ Pokud je SQL Server monitorovaná pomocí Operations Manager, je třeba nakonfig
 ## <a name="sql-health-check-data-collection-details"></a>Podrobnosti shromažďování dat o kontrole stavu SQL
 Při kontrole stavu SQL se shromažďují data z následujících zdrojů pomocí agenta, který jste povolili:
 
-* Rozhraní WMI (Windows Management Instrumentation) (WMI)
+* Služba WMI (Windows Management Instrumentation)
 * Registr
 * Čítače výkonu
 * Výsledky zobrazení dynamické správy SQL Server
@@ -79,14 +79,14 @@ Pomocí následujících informací nastavte účet Operations Manager spustit j
 
 1. V Operations Manager otevřete konzoli Operations Console a klikněte na **Správa**.
 2. V části **Konfigurace spustit jako**klikněte na **profily**a otevřete **SQL Assessment profil spustit jako**.
-3. Na stránce **účty Spustit jako** klikněte na **Přidat**.
+3. Na stránce **Účty Spustit jako** klikněte na tlačítko **Přidat**.
 4. Vyberte účet Spustit jako pro Windows, který obsahuje přihlašovací údaje potřebné pro SQL Server, nebo klikněte na **Nový** a vytvořte si ho.
 
    > [!NOTE]
    > Typ účtu Spustit jako musí být Windows. Účet Spustit jako musí být také součástí místní skupiny správců na všech serverech se systémem Windows, které jsou hostiteli SQL Server instance.
    >
    >
-5. Klikněte na **Uložit**.
+5. Klikněte na možnost **Uložit**.
 6. Úpravou a následným spuštěním následující ukázky T-SQL na každé instanci SQL Server udělte minimální oprávnění požadovaná pro účet Spustit jako, aby bylo možné provést kontrolu stavu. Nemusíte to ale dělat, pokud už účet Spustit jako je součástí role serveru sysadmin na instancích SQL Server.
 
 ```
@@ -143,7 +143,7 @@ Váha pro každé doporučení se vyjádří jako procento z celkového skóre d
 
 **Operace a monitorování** – tato oblast pro výběr obsahuje doporučení, která vám pomůžou zjednodušit vaše IT operace, implementovat preventivní údržbu a maximalizovat výkon.
 
-**Správa změn a konfigurace** – tato oblast pro výběr obsahuje doporučení, která vám pomůžou chránit každodenní operace. Zajistěte, aby změny nepříznivě ovlivnily vaši infrastrukturu, navázaly řízení změn a sledovaly a ověřovaly systém. konfiguračních.
+**Správa změn a konfigurace** – tato oblast pro výběr obsahuje doporučení, která vám pomůžou chránit každodenní operace. Zajistěte, aby změny nepříznivě ovlivnily vaši infrastrukturu, navázaly řízení změn a sledovaly a ověřovaly konfigurace systému.
 
 ### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Měli byste se zaměřit na skóre 100% v každé oblasti výběru?
 Ne nutně. Doporučení jsou založená na znalostech a zkušenostech získaných odborníky Microsoftu v různých tisících návštěv zákazníků. Nicméně žádné dvě serverové infrastruktury nejsou stejné a specifická doporučení můžou být pro vás méně důležitá. Některá doporučení zabezpečení mohou být například méně důležitá, pokud vaše virtuální počítače nejsou vystaveny pro Internet. Některá doporučení k dostupnosti mohou být méně důležitá pro služby, které poskytují nízkou prioritu shromažďování a generování dat ad hoc. Problémy, které jsou důležité pro vyspělou firmu, můžou být pro spuštění méně důležité. Možná budete chtít určit, které oblasti fokusu jsou vašimi prioritami, a pak se podívat, jak se vaše skóre v průběhu času mění.
@@ -214,7 +214,7 @@ Pokud máte doporučení, která chcete ignorovat, můžete vytvořit textový s
 
 *Jaký je název procesu, který provádí shromažďování dat?*
 
-* AdvisorAssessment. exe
+* AdvisorAssessment.exe
 
 *Jak dlouho trvá shromažďování dat?*
 
@@ -223,7 +223,7 @@ Pokud máte doporučení, která chcete ignorovat, můžete vytvořit textový s
 *Jaký typ dat se shromáždí?*
 
 * Shromažďují se tyto typy dat:
-  * WMI
+  * Rozhraní WMI
   * Registr
   * Čítače výkonu
   * Zobrazení dynamické správy SQL (DMV).

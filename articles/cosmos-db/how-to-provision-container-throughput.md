@@ -4,14 +4,14 @@ description: Naučte se zřizovat propustnost na úrovni kontejneru v Azure Cosm
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 12/13/2019
 ms.author: mjbrown
-ms.openlocfilehash: ed6a55c8b6049f16e96a4a95ecf3ef125db908d7
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: bfd18a009ed9ab5edffafcd0327b1d846cae02d8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872039"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75643844"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>Zajištění propustnosti v kontejneru Azure Cosmos
 
@@ -77,7 +77,7 @@ const { database } = await client.databases.createIfNotExists({ id: "databaseId"
 
 // Create a container with the specified throughput
 const { resource } = await database.containers.createIfNotExists({
-id: "contaierId ",
+id: "containerId",
 throughput: 1000
 });
 

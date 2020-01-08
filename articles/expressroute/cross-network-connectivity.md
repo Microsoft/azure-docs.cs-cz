@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: rambala
-ms.openlocfilehash: e503dc2b4ae8773ebfedc7a9b73bc5ea93dd9d5a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 48ec26cc98310dfeb61aa17018c940b431cfbcee
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076754"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644252"
 ---
 # <a name="cross-network-connectivity"></a>Možnosti připojení mezi sítěmi
 
@@ -86,7 +86,7 @@ V následující tabulce je uvedena směrovací tabulka privátního partnerské
 
 Následující tabulka uvádí trasy známé virtuálnímu počítači předplatného společnosti Contoso. Věnujte pozornost položkám *brány virtuální sítě* v tabulce. Virtuální počítač vidí trasy pro místní sítě.
 
-[![12,5]][12]
+[![12]][12]
 
 Následující tabulka uvádí trasy známé virtuálnímu počítači předplatného Fabrikam. Věnujte pozornost položkám *brány virtuální sítě* v tabulce. Virtuální počítač vidí trasy pro místní sítě.
 
@@ -102,7 +102,7 @@ ExpressRoute Global Reach poskytuje připojení mezi místními sítěmi, které
 
 Následující obrázek ukazuje architekturu sítě po konfiguraci Global Reach.
 
-[![čtrnáct]][14]
+[![14]][14]
 
 V následující tabulce je uvedena směrovací tabulka privátního partnerského vztahu ExpressRoute společnosti Contoso Ltd. po konfiguraci Global Reach. Podívejte se, že směrovací tabulka obsahuje trasy patřící do místních sítí. 
 
@@ -142,7 +142,7 @@ Global Reach se zavádějí do země nebo oblasti podle země nebo oblasti. Poku
 [Global Reach]: https://docs.microsoft.com/azure/expressroute/expressroute-global-reach
 [Configure VNet peering]: https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions
 [Configure Global Reach]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-set-global-reach
-[Subscription limits]: https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits
+[Subscription limits]: https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits
 [Connect-ER-VNet]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager
 [ER-FAQ]: https://docs.microsoft.com/azure/expressroute/expressroute-faqs
 [VNet-FAQ]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq

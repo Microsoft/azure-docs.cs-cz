@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 50132593ce3301094ea39546f5661df06a716503
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: fc859625be0706dd130cf7714d0fabf196740e91
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976583"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75380997"
 ---
 # <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Rychlý Start: Vytvoření vlastního příkazu s parametry (Preview)
 
@@ -34,32 +34,32 @@ V tomto článku tuto aplikaci rozšíříme pomocí parametrů tak, aby bylo mo
    > [!div class="mx-imgBorder"]
    > ![vytvořit parametr](media/custom-speech-commands/create-on-off-parameter.png)
 
-   | Nastavení            | Navrhovaná hodnota | Popis                                                                                               |
-   | ------------------ | --------------- | --------------------------------------------------------------------------------------------------------- |
-   | Name (Název)               | (OnOff)           | Popisný název pro parametr                                                                     |
-   | Je globální          | nezaškrtnuté       | Zaškrtávací políčko označující, zda je hodnota pro tento parametr globálně použita pro všechny příkazy v projektu |
-   | Požaduje se           | checked         | Zaškrtávací políčko, které určuje, zda je před dokončením příkazu nutné zadat hodnotu pro tento parametr          |
-   | Šablona odpovědi  | Zapnuto nebo vypnuto?      | Výzva k zadání hodnoty tohoto parametru, pokud není známa                                       |
-   | Typ               | Řetězec          | Typ parametru, například číslo, řetězec nebo datum a čas                                               |
-   | Konfigurace      | Seznam řetězců     | V případě řetězců seznam řetězců omezuje vstupy na sadu možných hodnot.                                      |
-   | Hodnoty seznamu řetězců | zapnuto, vypnuto         | Pro parametr seznamu řetězců, sada možných hodnot a jejich synonyma                                |
+   | Nastavení            | Navrhovaná hodnota     | Popis                                                                                               |
+   | ------------------ | ------------------- | --------------------------------------------------------------------------------------------------------- |
+   | Name (Název)               | (OnOff)               | Popisný název pro parametr                                                                     |
+   | Je globální          | unchecked           | Zaškrtávací políčko označující, zda je hodnota pro tento parametr globálně použita pro všechny příkazy v projektu |
+   | Požaduje se           | checked             | Zaškrtávací políčko, které určuje, zda je před dokončením příkazu nutné zadat hodnotu pro tento parametr          |
+   | Šablona odpovědi  | "-Zapnuto nebo vypnuto?"      | Výzva k zadání hodnoty tohoto parametru, pokud není známa                                       |
+   | Typ               | Řetězec              | Typ parametru, například číslo, řetězec nebo datum a čas                                               |
+   | Konfigurace      | Seznam řetězců         | V případě řetězců seznam řetězců omezuje vstupy na sadu možných hodnot.                                      |
+   | Hodnoty seznamu řetězců | zapnuto, vypnuto             | Pro parametr seznamu řetězců, sada možných hodnot a jejich synonyma                                |
 
    - Potom znovu vyberte ikonu `+` a přidejte druhý parametr, který bude představovat název zařízení. V tomto příkladu TV a ventilátor
 
-   | Nastavení            | Navrhovaná hodnota   | Popis                                                                                               |
-   | ------------------ | ----------------- | --------------------------------------------------------------------------------------------------------- |
-   | Name (Název)               | SubjectDevice     | Popisný název pro parametr                                                                     |
-   | Je globální          | nezaškrtnuté         | Zaškrtávací políčko označující, zda je hodnota pro tento parametr globálně použita pro všechny příkazy v projektu |
-   | Požaduje se           | checked           | Zaškrtávací políčko, které určuje, zda je před dokončením příkazu nutné zadat hodnotu pro tento parametr          |
-   | Šablona odpovědi  | Které zařízení?     | Výzva k zadání hodnoty tohoto parametru, pokud není známa                                       |
-   | Typ               | Řetězec            | Typ parametru, například číslo, řetězec nebo datum a čas                                               |
-   | Konfigurace      | Seznam řetězců       | V případě řetězců seznam řetězců omezuje vstupy na sadu možných hodnot.                                      |
-   | Hodnoty seznamu řetězců | TV, ventilátor           | Pro parametr seznamu řetězců, sada možných hodnot a jejich synonyma                                |
-   | Synonyma (TV)      | televize, řekněte | Volitelná synonyma pro každou možnou hodnotu parametru seznamu řetězců                                      |
+   | Nastavení            | Navrhovaná hodnota       | Popis                                                                                               |
+   | ------------------ | --------------------- | --------------------------------------------------------------------------------------------------------- |
+   | Name (Název)               | SubjectDevice         | Popisný název pro parametr                                                                     |
+   | Je globální          | unchecked             | Zaškrtávací políčko označující, zda je hodnota pro tento parametr globálně použita pro všechny příkazy v projektu |
+   | Požaduje se           | checked               | Zaškrtávací políčko, které určuje, zda je před dokončením příkazu nutné zadat hodnotu pro tento parametr          |
+   | Šablona odpovědi  | ", Které zařízení?"     | Výzva k zadání hodnoty tohoto parametru, pokud není známa                                       |
+   | Typ               | Řetězec                | Typ parametru, například číslo, řetězec nebo datum a čas                                               |
+   | Konfigurace      | Seznam řetězců           | V případě řetězců seznam řetězců omezuje vstupy na sadu možných hodnot.                                      |
+   | Hodnoty seznamu řetězců | TV, ventilátor               | Pro parametr seznamu řetězců, sada možných hodnot a jejich synonyma                                |
+   | Synonyma (TV)      | televize, řekněte     | Volitelná synonyma pro každou možnou hodnotu parametru seznamu řetězců                                      |
 
 ## <a name="add-sample-sentences"></a>Přidat ukázkové věty
 
-S parametry je užitečné přidat ukázkové věty, které pokrývají všechny možné kombinace. Například:
+S parametry je užitečné přidat ukázkové věty, které pokrývají všechny možné kombinace. Příklad:
 
 1. Úplné informace o parametrech – `"turn {OnOff} the {SubjectDevice}"`
 1. Informace o částečném parametru – `"turn it {OnOff}"`
@@ -112,4 +112,3 @@ Otevřete panel test chat a vyzkoušejte několik interakcí.
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
 > [Rychlý Start: připojení k vlastnímu příkazu aplikace pomocí sady Speech SDK (Preview)](./quickstart-custom-speech-commands-speech-sdk.md)
-

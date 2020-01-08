@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: d5662fa3cae8ba0cec0fd76965597ccac7c83889
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 2b4893ab804d7e3394320284399626437e5e78dc
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639484"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645120"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Bezpečně uložit nastavení tajné aplikace pro webovou aplikaci
 
@@ -42,6 +42,7 @@ Pokud vyvíjíte projekt a potřebujete bezpečně sdílet zdrojový kód, použ
     ![Vytvořit Azure Key Vault](./media/vs-secure-secret-appsettings/create-keyvault.PNG)
 
 2. Udělte vám a členům vašeho týmu přístup k Key Vault. Máte-li velký tým, můžete vytvořit [skupinu Azure Active Directory](../active-directory/active-directory-groups-create-azure-portal.md) a přidat tuto skupinu zabezpečení k Key Vault. V rozevíracím seznamu *oprávnění tajného klíče* zaškrtněte *získat* a *seznam* v části *operace správy tajných*kódů.
+Pokud již máte vytvořenou webovou aplikaci, udělte webové aplikaci přístup k Key Vault, aby mohla přistupovat k trezoru klíčů bez uložení konfigurace tajného klíče do nastavení aplikace nebo souborů. Vyhledejte svou webovou aplikaci podle jejího názvu a přidejte ji stejným způsobem, jakým udělíte přístup uživatelům.
 
     ![Přidat zásady přístupu Key Vault](./media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
@@ -49,10 +50,10 @@ Pokud vyvíjíte projekt a potřebujete bezpečně sdílet zdrojový kód, použ
 
     ![Přidat Key Vault tajný klíč](./media/vs-secure-secret-appsettings/add-keyvault-secret.png)
 
-    > [!NOTE] 
+    > [!NOTE]
     > Před verzí sady Visual Studio 2017 V 15.6 jsme použili k doporučení instalace rozšíření pro ověřování služeb Azure pro Visual Studio. Je ale teď zastaralá, protože je funkce integrovaná v rámci sady Visual Studio. Proto, pokud jste na starší verzi sady Visual Studio 2017, doporučujeme, abyste aktualizovali aspoň na 2017 15,6 nebo nahoru, abyste mohli tuto funkci používat nativně a přistupovat k trezoru klíčů pomocí samotné identity sady Visual Studio.
     >
- 
+
 4. Do projektu přidejte následující balíčky NuGet:
 
     ```
@@ -81,7 +82,7 @@ Pokud vyvíjíte projekt a potřebujete bezpečně sdílet zdrojový kód, použ
 
         private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT");
     ```
-6. Přidejte adresu URL Key Vault do souboru launchsettings. JSON. Proměnná prostředí name *KEYVAULT_ENDPOINT* je definována v kódu, který jste přidali v kroku 6.
+6. Přidejte adresu URL Key Vault do souboru launchsettings. JSON. Název proměnné prostředí *KEYVAULT_ENDPOINT* je definován v kódu, který jste přidali v kroku 6.
 
     ![Přidat adresu URL Key Vault jako proměnnou prostředí projektu](./media/vs-secure-secret-appsettings/add-keyvault-url.png)
 
@@ -145,7 +146,7 @@ Postupujte podle pokynů v části ASP.NET Core a nakonfigurujte Key Vault pro s
    Microsoft.Configuration.ConfigurationBuilders.UserSecrets
    ```
 
-2. Definujte Key Vault Configuration Builder v souboru Web. config. Tuto část vložte do oddílu *appSettings* . Pokud používáte svrchovaný Cloud, nahraďte název trezoru názvem Key Vault, pokud je váš Key Vault ve veřejném Azure nebo v ÚPLNÉm identifikátoru URI.
+2. Definujte Key Vault Configuration Builder v souboru Web. config. Tuto část vložte do oddílu *appSettings* . Pokud používáte svrchovaný Cloud, nahraďte název *trezoru* názvem Key Vault, pokud je váš Key Vault ve veřejném Azure nebo v ÚPLNÉm identifikátoru URI.
 
     ```xml
     <configSections>

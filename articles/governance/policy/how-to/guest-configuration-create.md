@@ -1,14 +1,14 @@
 ---
 title: Postup vytvoření zásad konfigurace hostů
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro virtuální počítače s Windows nebo Linux s Azure PowerShell.
-ms.date: 11/21/2019
+ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: d31c03f05f3a27207eb4c184b78cb531f8bb43d6
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: f2e611998e42510eccde64ff6f945f58133fc4e9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873076"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608520"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Postup vytvoření zásad konfigurace hostů
 
@@ -24,6 +24,9 @@ Pomocí následujících akcí vytvořte vlastní konfiguraci pro ověření sta
 ## <a name="add-the-guestconfiguration-resource-module"></a>Přidat modul prostředků GuestConfiguration
 
 Chcete-li vytvořit zásadu konfigurace hosta, je nutné přidat modul prostředků. Tento modul prostředků se dá použít s místně nainstalovaným PowerShellem, s [Azure Cloud Shell](https://shell.azure.com), nebo s [imagí Azure PowerShell Core Docker](https://hub.docker.com/r/azuresdk/azure-powershell-core).
+
+> [!NOTE]
+> I když ve výše uvedených prostředích funguje modul **GuestConfiguration** , musí být kroky pro zkompilování konfigurace DSC dokončené ve Windows powershellu 5,1.
 
 ### <a name="base-requirements"></a>Základní požadavky
 
@@ -59,6 +62,12 @@ Pokud vaše konfigurace vyžaduje jenom prostředky, které jsou integrované s 
 ### <a name="requirements-for-guest-configuration-custom-resources"></a>Požadavky na vlastní prostředky konfigurace hosta
 
 Když konfigurace hosta Audituje počítač, nejprve se spustí `Test-TargetResource`, abyste zjistili, jestli je ve správném stavu. Logická hodnota vrácená funkcí určuje, zda má být stav Azure Resource Manager pro přiřazení hostů kompatibilní/nekompatibilní. Pokud je logická hodnota `$false` pro libovolný prostředek v konfiguraci, bude poskytovatel spuštěn `Get-TargetResource`. Pokud je logická hodnota `$true` pak `Get-TargetResource` není volána.
+
+#### <a name="configuration-requirements"></a>Požadavky na konfiguraci
+
+Jediný požadavek na konfiguraci hosta pro použití vlastní konfigurace je, aby se název konfigurace shodoval všude, kde se používá.  To zahrnuje název souboru. zip pro balíček obsahu, název konfigurace v souboru MOF, který je uložený v balíčku obsahu, a název konfigurace používaný jako název přiřazení hosta v ARM.
+
+#### <a name="get-targetresource-requirements"></a>Požadavky GET-TargetResource
 
 Funkce `Get-TargetResource` má zvláštní požadavky na konfiguraci hosta, která není potřebná pro konfiguraci požadovaného stavu Windows.
 
@@ -96,7 +105,7 @@ Konfigurace DSC pro konfiguraci hosta v systému Linux používá prostředek `C
 
 V následujícím příkladu se vytvoří konfigurace s názvem **směrný plán**, naimportuje se modul prostředků **GuestConfiguration** a pomocí `ChefInSpecResource` prostředku nastaví název INSPEC definice na **Linux-patch-Baseline**:
 
-```azurepowershell-interactive
+```powershell
 # Define the DSC configuration and import GuestConfiguration
 Configuration baseline
 {
@@ -120,7 +129,7 @@ Konfigurace DSC pro Azure Policy konfiguraci hostů se používá jenom u agenta
 
 Následující příklad vytvoří konfiguraci s názvem **AuditBitLocker**, importuje modul prostředků **GuestConfiguration** a pomocí prostředku `Service` Audituje spuštěnou službu:
 
-```azurepowershell-interactive
+```powershell
 # Define the DSC configuration and import GuestConfiguration
 Configuration AuditBitLocker
 {
@@ -298,7 +307,7 @@ New-GuestConfigurationPolicy
 
 V případě zásad pro Linux zahrňte vlastnost **AttributesYmlContent** do konfigurace a příslušné hodnoty odpovídajícím způsobem přepsat. Agent konfigurace hosta automaticky vytvoří soubor YaML používaný nespecifikací k ukládání atributů. Příklad je uvedený níže.
 
-```azurepowershell-interactive
+```powershell
 Configuration FirewalldEnabled {
 
     Import-DscResource -ModuleName 'GuestConfiguration'
@@ -403,7 +412,7 @@ Dobrá Reference k vytváření GPG klíčů pro použití s počítači se syst
 
 Po publikování obsahu přidejte značku s názvem `GuestConfigPolicyCertificateValidation` a hodnotou `enabled` na všechny virtuální počítače, kde by mělo být požadováno podepisování kódu. Tato značka se dá doručovat ve velkém rozsahu pomocí Azure Policy. Podívejte se na ukázku [použít značku a její výchozí hodnotu](../samples/apply-tag-default-value.md) . Jakmile je tato značka nastavená, definice zásady vytvořená pomocí rutiny `New-GuestConfigurationPolicy` povolí požadavek prostřednictvím rozšíření konfigurace hosta.
 
-## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>Tisk Řešení potíží s přiřazením zásad konfigurace hostů
+## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>Řešení potíží s přiřazením zásad konfigurace hosta (Preview)
 
 Nástroj je k dispozici ve verzi Preview, který vám pomůže při řešení potíží s Azure Policy přiřazení konfigurace hostů. Nástroj je ve verzi Preview a byl publikován do Galerie prostředí PowerShell jako název modulu [Poradce při potížích s konfigurací hosta](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
 

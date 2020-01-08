@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 23a3a2629c6f2f89c4b8f6d5af57bcf3b6bb67dd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 63f386212b0277c3b5ee383e707d4c32fa4e63fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214912"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428851"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Protokoly Azure Monitor pro veřejný základní Load Balancer
 
@@ -38,7 +38,7 @@ Pomocí různých typů protokolů v Azure můžete spravovat a řešit základn
 
 Protokolování aktivit je u každého prostředku Správce prostředků povolené automaticky. Povolte protokolování událostí a sondy stavu, abyste mohli začít shromažďovat data dostupná přes tyto protokoly. K povolení protokolování použijte následující postup.
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com). Pokud ještě nemáte Nástroj pro vyrovnávání zatížení, vytvořte před pokračováním [Nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) .
+Přihlaste se na web [Azure Portal](https://portal.azure.com). Pokud ještě nemáte Nástroj pro vyrovnávání zatížení, vytvořte před pokračováním [Nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) .
 
 1. Na portálu klikněte na **skupiny prostředků**.
 2. Vyberte **\<Resource-Group-name >** , kde je váš nástroj pro vyrovnávání zatížení.
@@ -51,7 +51,7 @@ Přihlaste se na web [Azure Portal ](https://portal.azure.com). Pokud ještě ne
    * **Streamování do centra událostí**
    * **Odeslat do Log Analytics**
 
-    ### <a name="archive-to-a-storage-account"></a>Archivace do účtu úložiště
+    ### <a name="archive-to-a-storage-account"></a>Archivovat v účtu úložiště
     Budete potřebovat účet úložiště, který se pro tento proces už vytvořil.  Informace o vytvoření účtu úložiště najdete v tématu [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) .
 
     1. Zaškrtněte políčko vedle **archivace na účet úložiště**.
@@ -60,7 +60,7 @@ Přihlaste se na web [Azure Portal ](https://portal.azure.com). Pokud ještě ne
     4. V části **účet úložiště** v rozevíracím seznamu vyberte název svého účtu úložiště. 
     5. Vyberte OK.
 
-    ### <a name="stream-to-an-event-hub"></a>Streamování do centra událostí
+    ### <a name="stream-to-an-event-hub"></a>Streamovat do centra událostí
     Pro tento proces budete potřebovat již vytvořenou centrum událostí.  Informace o vytvoření centra událostí najdete v tématu [rychlý Start: vytvoření centra událostí pomocí Azure Portal](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)
 
     1. Zaškrtněte políčko vedle **streamu do centra událostí** .
@@ -170,8 +170,8 @@ Připojte se k účtu úložiště a načtěte položky protokolu JSON pro proto
 > [!TIP]
 > Pokud znáte Visual Studio a máte představu, jak u konstant a proměnných v jazyce C# měnit hodnoty, můžete použít [nástroje pro převedení protokolů](https://github.com/Azure-Samples/networking-dotnet-log-converter), které jsou k dispozici na GitHubu.
 
-## <a name="stream-to-an-event-hub"></a>Streamování do centra událostí
-Když se diagnostické informace streamují do centra událostí, dá se použít k centralizované analýze protokolů v nástroji SIEM třetí strany s integrací Azure Monitor. Další informace najdete v tématu [streamování dat monitorování Azure do centra událostí](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#tools-with-azure-monitor-integration) .
+## <a name="stream-to-an-event-hub"></a>Streamovat do centra událostí
+Když se diagnostické informace streamují do centra událostí, dá se použít k centralizované analýze protokolů v nástroji SIEM třetí strany s integrací Azure Monitor. Další informace najdete v tématu [streamování dat monitorování Azure do centra událostí](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration) .
 
 ## <a name="send-to-log-analytics"></a>Odeslání do Log Analytics
 Prostředky v Azure můžou mít své diagnostické informace odesílány přímo do Log Analytics pracovního prostoru, kde můžete provádět složité dotazy na informace pro řešení potíží a analýzy.  Další informace najdete v tématu [shromáždění protokolů prostředků Azure v pracovním prostoru Log Analytics v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace)

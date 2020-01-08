@@ -1,7 +1,7 @@
 ---
 title: 'Vyhodnotit doporučeného: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se, jak ve službě Azure Machine Learning použít modul pro vyhodnocení doporučených postupů k vyhodnocení přesnosti doporučení předpovědi modelů.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul vyhodnocení doporučení v Azure Machine Learning k vyhodnocení přesnosti doporučení předpovědi modelů.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 9a80fce04aa939895d1dc9572714046d9203bad7
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 38144d5df04427a82989b78843466ecd55386196
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717177"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428536"
 ---
-# <a name="evaluate-recommender"></a>Vyhodnotit doporučeného
+# <a name="evaluate-recommender"></a>Vyhodnocení doporučovacího systému
 
 Tento článek popisuje, jak použít modul vyhodnotit doporučení v Návrháři Azure Machine Learning (Preview). Cílem je změřit přesnost předpovědi, kterou vytvořil model doporučení. Pomocí tohoto modulu můžete vyhodnotit různé druhy doporučení:  
   
@@ -25,7 +25,7 @@ Tento článek popisuje, jak použít modul vyhodnotit doporučení v Návrhář
   
 Při vytváření předpovědi pomocí modelu doporučení se pro každý z těchto podporovaných typů předpověď vrátí mírně odlišné výsledky. Modul hodnocení vyhodnocení je odvozený druh předpovědi z formátu sloupce pro datovou sadu s skóre. Například datová sada s skóre může obsahovat:
 
-- tři položky hodnocení uživatelem
+- Tři položky hodnocení uživatelem
 - Uživatelé a jejich Doporučené položky
 
 Modul také aplikuje příslušné metriky výkonu na základě typu předpovědi, kterou provedete. 
@@ -90,4 +90,4 @@ Vzhledem k tomu, že není možné znát skutečné "uzemněné pravdivosti" pro
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro službu Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

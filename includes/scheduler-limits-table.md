@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 08/16/2016
 ms.author: deli
 ms.custom: include file
-ms.openlocfilehash: b3788ede23a423bebf96661ea88b227bfb5fdf4c
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: eb13d889cb72911e2268b7538a74336befe3320b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67175383"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392398"
 ---
 Následující tabulka popisuje jednotlivé hlavní kvóty, omezení, výchozí hodnoty a omezení v Azure Scheduleru.
 
-| Resource | Popis omezení |
+| Prostředek | Popis omezení |
 | -------- | ----------------- |
 | **Velikost úlohy** | Maximální velikost úlohy je 16 000. Pokud operace PUT nebo PATCH způsobí velikost úlohy větší, než je tento limit, vrátí se stavový kód 400 Špatný požadavek. | 
 | **Kolekce úloh** | Maximální počet kolekcí úloh na jedno předplatné Azure je 200 000. | 
-| **Počet úloh na kolekci** | Ve výchozím nastavení je maximální počet úloh pět úloh v bezplatné kolekci úloh a 50 úloh ve standardní kolekci úloh. <p>Můžete změnit maximální počet úloh v kolekci úloh. Všechny úlohy v kolekci úloh jsou omezeny na hodnotu nastavenou v kolekci úloh. Pokud se pokusíte vytvořit více úloh než maximální kvóta úloh, požadavek se nezdaří s kódem stavu konfliktu 409. | 
+| **Počet úloh na kolekci** | Ve výchozím nastavení je maximální počet úloh pět úloh v bezplatné kolekci úloh a 50 úloh ve standardní kolekci úloh. Můžete změnit maximální počet úloh v kolekci úloh. Všechny úlohy v kolekci úloh jsou omezeny na hodnotu nastavenou v kolekci úloh. Pokud se pokusíte vytvořit více úloh než maximální kvóta úloh, požadavek se nezdaří s kódem stavu konfliktu 409. | 
 | **Čas spuštění** | Maximum "čas spuštění" je 18 měsíců. |
 | **Interval opakování** | Maximální délka opakování je 18 měsíců. | 
 | **Frekvence** | Ve výchozím nastavení je maximální kvóta frekvence jedna hodina v bezplatné kolekci úloh a jedna minuta ve standardní kolekci úloh. <p>Maximální četnost pro kolekci úloh můžete nastavit na nižší, než je maximum. Všechny úlohy v kolekci úloh jsou omezeny na hodnotu nastavenou v kolekci úloh. Pokud se pokusíte vytvořit úlohu s vyšší frekvencí, než je maximální frekvence v kolekci úloh, požadavek se nezdaří s kódem stavu konfliktu 409. | 
@@ -29,7 +29,7 @@ Následující tabulka popisuje jednotlivé hlavní kvóty, omezení, výchozí 
 | **Velikost adresy URL požadavku** | Maximální velikost adresy URL požadavku je 2 048 znaků. |
 | **Počet hlaviček** | Maximální počet hlaviček je 50 hlaviček. | 
 | **Agregovaná velikost záhlaví** | Maximální velikost agregované hlavičky je 4 096 znaků. |
-| **Prodlev** | Časový limit žádosti je statický, to znamená, že není možné konfigurovat. a pro akce HTTP je 60 sekund. V případě delšího provozu použijte asynchronní protokoly HTTP. Například vrátí 202 hned, ale pokračuje v práci na pozadí. | 
+| **Timeout** (Časový limit) | Časový limit žádosti je statický, to znamená, že není možné konfigurovat. a pro akce HTTP je 60 sekund. V případě delšího provozu použijte asynchronní protokoly HTTP. Například vrátí 202 hned, ale pokračuje v práci na pozadí. | 
 | **Historie úlohy** | Maximální tělo odpovědi uložené v historii úlohy je 2 048 bajtů. |
 | **Uchování historie úloh** | Historie úloh je udržována po dobu až dvou měsíců nebo až do posledního 1 000 spuštění. | 
 | **Dokončené a chybné uchování úlohy** | Dokončené a chybné úlohy se uchovávají po dobu 60 dnů. |

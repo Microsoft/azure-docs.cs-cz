@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/16/2019
+ms.date: 12/13/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 863070eb025d8ac58f6a0946d49732dc6b2842b8
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: d9c5556934b31144e66f0985ab32d4e2cf759774
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951747"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75643266"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver
 
@@ -76,8 +76,8 @@ ms.locfileid: "74951747"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide.md
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f
@@ -235,7 +235,7 @@ ms.locfileid: "74951747"
 
 [powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-az-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -249,7 +249,7 @@ ms.locfileid: "74951747"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -311,7 +311,7 @@ ms.locfileid: "74951747"
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 [capture-image-linux-step-2-create-vm-image]:../../linux/capture-image.md#step-2-create-vm-image
 
-[!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
+
 
 Microsoft Azure umožňuje společnostem získávat výpočetní prostředky a prostředky úložiště v minimální době bez zdlouhavých cyklů zásobování. Služba Azure Virtual Machine umožňuje společnostem nasazovat klasické aplikace, jako jsou aplikace založené na SAP NetWeaver, do Azure a rozšířit jejich spolehlivost a dostupnost bez dalších dostupných prostředků v místním prostředí. Služby virtuálních počítačů Azure taky podporují připojení mezi různými místy, což umožňuje společnostem aktivně integrovat Azure Virtual Machines do jejich místních domén, jejich privátních cloudů a jejich systému SAP na šířku.
 Tento dokument white paper popisuje základy Microsoft Azure virtuálních počítačů a poskytuje podrobné pokyny k plánování a implementaci pro instalace SAP NetWeaver v Azure a jako takový by měl být dokument, který se má přečíst před zahájením skutečné nasazení SAP NetWeaver v Azure.
@@ -329,7 +329,7 @@ Pomocí služeb Microsoft Azure pro virtuální počítače nabízí společnost
 Samotný dokument se zaměřuje na dvě hlavní aspekty:
 
 * První část popisuje dva podporované vzory nasazení pro aplikace SAP NetWeaver založené na Azure. Popisuje také obecné zpracování Azure s nasazeními SAP.
-* Druhá část podrobně popisuje implementaci dvou různých scénářů, které jsou popsány v první části.
+* Druhá část podrobně popisuje implementace různých scénářů popsaných v první části.
 
 Další zdroje najdete v tématu [prostředky][planning-guide-1.2] kapitoly v tomto dokumentu.
 
@@ -370,7 +370,7 @@ V dokumentaci k vstupnímu bodu pro úlohu SAP v Azure najdete [tady](https://do
 
 Následující poznámky SAP souvisejí s tématem SAP v Azure:
 
-| Číslo poznámky | Název |
+| Číslo poznámky | Nadpis |
 | --- | --- |
 | [1928533] |Aplikace SAP v Azure: podporované produkty a velikost |
 | [2015553] |SAP v Microsoft Azure: požadavky na podporu |
@@ -386,13 +386,12 @@ Následující poznámky SAP souvisejí s tématem SAP v Azure:
 
 Přečtěte si také [SCN wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) , který obsahuje všechny poznámky SAP pro Linux.
 
-Obecná výchozí omezení a maximální omezení předplatných Azure najdete v [tomto článku][azure-subscription-service-limits-subscription].
+Obecná výchozí omezení a maximální omezení předplatných Azure najdete v [tomto článku][azure-resource-manager/management/azure-subscription-service-limits-subscription].
 
 ## <a name="possible-scenarios"></a>Možné scénáře
 SAP se často zobrazuje jako jedna z nejdůležitějších aplikací v podnicích. Architektura a operace těchto aplikací jsou většinou složité a je důležité zajistit, aby byly splněny požadavky na dostupnost a výkon.
 
-Proto podniky musí pečlivě zvážit, který poskytovatel cloudu si zvolí pro provozování těchto důležitých podnikových procesů. Azure je ideální veřejná cloudová platforma pro důležité podnikové aplikace a obchodní procesy SAP. Téměř všechny stávající systémy SAP NetWeaver a S/4HANA je možné v Azure ještě dnes hostovat v rámci široké škály infrastruktury Azure. Azure poskytuje virtuální počítače s mnoha terabajty paměti a více než 200 procesorů. Mimo to, že Azure nabízí [velké instance Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture), což umožňuje nasazení Hana na více instancí až po 24TB a horizontální navýšení kapacity Ana nasazení až na uložených 120 TB. 
-
+Proto podniky musí pečlivě zvážit, který poskytovatel cloudu si zvolí pro provozování těchto důležitých podnikových procesů. Azure je ideální veřejná cloudová platforma pro důležité podnikové aplikace a obchodní procesy SAP. Téměř všechny stávající systémy SAP NetWeaver a S/4HANA je možné v Azure ještě dnes hostovat v rámci široké škály infrastruktury Azure. Azure poskytuje virtuální počítače s mnoha terabajty paměti a více než 200 procesorů. Mimo to, že Azure nabízí [velké instance Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture), což umožňuje nasazení Hana na více instancí až po 24TB a horizontální navýšení kapacity Ana nasazení až na uložených 120 TB. Jedna může dnes zastavovat, že téměř všechny místní scénáře SAP lze spustit také v Azure. 
 
 Aby bylo možné úspěšně nasadit systémy SAP do Azure IaaS nebo IaaS, je důležité porozumět významným rozdílům mezi nabídkami tradičních outsourcingů nebo hostitelů a IaaS nabídkami. Vzhledem k tomu, že tradiční hostitel nebo služba subsourceů připraví infrastrukturu (síť, úložiště a typ serveru) na zatížení, které chce zákazník hostovat, je místo toho, aby se mu nastala odpovědnost zákazníka nebo partnera, aby charakterizoval úlohu a zvolili správnou službu Azure. součásti virtuálních počítačů, úložiště a sítě pro nasazení IaaS.
 
@@ -457,6 +456,18 @@ Přečtěte si [Tento článek][vpn-gateway-create-site-to-site-rm-powershell] ,
 * Podporované verze operačních systémů, verze databázového systému podporované ve službě Azure Virtual Machine ve spojení se softwarem SAP jsou zdokumentovány v SAP Note [1928533].
 * Aplikace SAP a verze podporované v Azure Virtual Machine Services jsou zdokumentovány v SAP Note [1928533].
 * Jenom 64bitové image se podporují pro spouštění jako virtuální počítače hosta v Azure pro scénáře SAP. V důsledku toho jsou podporovány pouze 64 aplikace a databáze SAP.
+
+
+## <a name="first-steps-planning-a-deployment"></a>První postup plánování nasazení
+Prvním krokem při plánování nasazení není vyhledání virtuálních počítačů, které jsou dostupné pro běh SAP. Prvním krokem může být časově náročné, ale nejdůležitější je spolupracovat s týmy pro dodržování předpisů a zabezpečení ve vaší společnosti na základě toho, jaké jsou podmínky hranice pro nasazení, který typ úlohy SAP nebo obchodní proces do veřejného cloudu. Pokud vaše společnost nasadila jiný software před do Azure, může být tento proces snadný. Pokud je vaše společnost na začátku cesty větší, můžou být potřebné větší diskuze, aby bylo možné zjistit podmínky hranic, podmínky zabezpečení, které umožňují hostování určitých dat SAP a obchodních procesů SAP ve veřejném cloudu.
+
+Jak je užitečné, můžete na základě [nabídek pro dodržování předpisů Microsoftu](https://docs.microsoft.com/microsoft-365/compliance/offering-home) Ukázat seznam dodržování předpisů tím, že Microsoft může poskytnout. 
+
+Další oblasti otázek, jako je šifrování dat pro neaktivní nebo jiné šifrování ve službě Azure, jsou popsány v části [Přehled šifrování Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview).
+
+Podceňují skutečnou tuto fázi projektu ve vašem plánování. Jenom v případě, že k tomuto tématu máte smlouvu a pravidla, musíte přejít k dalšímu kroku, který je plánováním síťové architektury, kterou nasazujete v Azure.
+
+
 
 ## <a name="microsoft-azure-virtual-machine-services"></a>Microsoft Azure služeb virtuálních počítačů
 Microsoft Azure platformou je platforma cloudových služeb v internetovém měřítku, která je hostovaná a provozovaná v datových centrech Microsoftu. Platforma zahrnuje Microsoft Azure služby virtuálních počítačů (infrastruktura jako služba nebo IaaS) a sadu bohatých funkcí Platform as a Service (PaaS).
@@ -551,7 +562,7 @@ Další informace o Azure Storage najdete tady:
 * <https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>
 * <https://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/azure-disk-encryption-for-linux-and-windows-virtual-machines-public-preview.aspx>
 
-#### <a name="azure-standard-storage"></a>Úložiště Azure úrovně Standard
+#### <a name="azure-standard-storage"></a>Azure Storage úrovně Standard
 Azure Storage úrovně Standard byl typ úložiště dostupný při vydání Azure IaaS. Na jeden disk se vynutily kvóty IOPS. Zjištěná latence nebyla ve stejné třídě jako zařízení SAN/NAS, která se obvykle nasazují pro vysoce koncové systémy SAP hostované místně. Standardní úložiště Azure se ale ukázalo jako dostačující pro spoustu stovek systémů SAP v Azure, které jsou mezitím nasazené.
 
 Disky, které jsou uložené ve službě Azure Storage úrovně Standard, se účtují na základě skutečně uložených dat, objemu transakcí úložiště, přenosů odchozích dat a zvolené možnosti redundance. Mnoho disků lze vytvořit v maximální velikosti 1 TB, ale pokud zůstanou prázdné, bude se účtovat bez poplatků. Pokud pak naplníte jeden VHD s 100 GB, bude se vám účtovat za ukládání 100 GB a nikoli pro jmenovitou velikost, s jakou byl virtuální pevný disk vytvořen.
@@ -586,7 +597,7 @@ Další informace o Premium Storage najdete tady: <https://azure.microsoft.com/b
 
 Při nasazování služeb nebo virtuálních počítačů v Azure můžete nasazení VHD a image virtuálních počítačů uspořádat do jednotky s názvem Azure Storage účty. Při plánování nasazení Azure je potřeba pečlivě zvážit omezení Azure. Na jedné straně je k dispozici omezený počet účtů úložiště na jedno předplatné Azure. I když každý Azure Storage účet může obsahovat velký počet souborů VHD, má pevně stanovený limit celkový počet IOPS na účet úložiště. Při nasazování stovek virtuálních počítačů SAP se systémy DBMS, které vytvářejí významné vstupně-výstupní operace, se doporučuje distribuovat virtuální počítače s vysokým počtem IOPS mezi více Azure Storage účty. Je nutné vzít v potaz, aby nepřekročila aktuální limit Azure Storage účtů na předplatné. Vzhledem k tomu, že úložiště je zásadní součástí nasazení databáze pro systém SAP, je tento koncept podrobněji popsán v části již odkazovaného [Průvodce nasazením systému DBMS][dbms-guide].
 
-Další informace o účtech Azure Storage najdete v [tomto článku][storage-scalability-targets]. Při čtení tohoto článku zjistíte, že existují rozdíly mezi omezeními mezi účty úložiště Azure Standard a účty Premium Storage. Hlavními rozdíly jsou objem dat, která je možné uložit v rámci takového účtu úložiště. Ve službě Storage úrovně Standard je velikost svazku větší než u Premium Storage. Na druhé straně je standardní účet úložiště vážně omezený v IOPS (viz **Celkový počet požadavků**na sloupec), zatímco účet Azure Premium Storage nemá taková omezení. Pojednáváme o podrobnostech a výsledcích těchto rozdílů při projednávání nasazení systémů SAP, zejména serverů DBMS.
+Další informace o účtech Azure Storage najdete v části [cíle škálovatelnosti pro účty úložiště úrovně Standard](../../../storage/common/scalability-targets-standard-account.md) a [cíle škálovatelnosti pro účty úložiště blob stránky úrovně Premium](../../../storage/blobs/scalability-targets-premium-page-blobs.md). Přečtěte si tyto články a zjistíte, že existují rozdíly mezi omezeními mezi účty úložiště Azure úrovně Standard a účty Premium Storage. Hlavními rozdíly jsou objem dat, která je možné uložit v rámci takového účtu úložiště. Ve službě Storage úrovně Standard je velikost svazku větší než u Premium Storage. Na druhé straně je standardní účet úložiště vážně omezený v IOPS (viz **Celkový počet požadavků**na sloupec), zatímco účet Azure Premium Storage nemá taková omezení. Pojednáváme o podrobnostech a výsledcích těchto rozdílů při projednávání nasazení systémů SAP, zejména serverů DBMS.
 
 V rámci účtu úložiště máte možnost vytvářet různé kontejnery pro účely organizování a kategorizace různých VHD. Tyto kontejnery jsou používány například jako samostatné virtuální pevné disky různých virtuálních počítačů. V rámci jednoho Azure Storage účtu neexistují žádné dopady na výkon při použití jediného kontejneru nebo více kontejnerů.
 
@@ -1621,8 +1632,6 @@ Scénář mezi různými místy nebo hybridním scénářem může být zhruba p
 
 ![Připojení Site-to-site mezi místními prostředky a prostředky Azure][planning-guide-figure-2100]
 
-Výše uvedený scénář popisuje scénář, ve kterém je místní
-
 Minimálním požadavkem je použití zabezpečených komunikačních protokolů, jako je protokol SSL/TLS pro přístup z prohlížeče nebo připojení k síti VPN pro přístup k systému do služeb Azure. Předpokladem je, že společnosti zpracovávají připojení VPN mezi podnikovou sítí a Azure odlišně. Některé společnosti můžou prázdné porty otevřít na všech těchto portech. Některé jiné společnosti můžou být přesné v tom, které porty potřebují otevřít atd.
 
 V tabulce níže jsou uvedeny typické komunikační porty SAP. V podstatě stačí otevřít port brány SAP.
@@ -2002,7 +2011,7 @@ Další informace týkající se autostart pro instance SAP najdete tady:
 
 * [Spuštění/zastavení SAP společně s vaším serverem UNIX spustit/zastavit](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)
 * [Spouštění a zastavování agentů pro správu SAP NetWeaver](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
-* [Jak povolit automatické spuštění databáze HANA](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)
+* [Jak povolit automatické spuštění databáze HANA](http://sapbasisinfo.com/blog/2016/08/15/enabling-autostart-of-sap-hana-database-on-server-boot-situation/)
 
 ### <a name="larger-3-tier-sap-systems"></a>Větší systémy SAP úrovně 3
 Aspekty vysoce dostupné konfigurace SAP pro 3 vrstvy byly popsány v předchozích oddílech. Ale informace o systémech, ve kterých jsou požadavky na server DBMS moc velké, aby se nacházely v Azure, ale aplikační vrstva SAP by mohla být nasazená do Azure?

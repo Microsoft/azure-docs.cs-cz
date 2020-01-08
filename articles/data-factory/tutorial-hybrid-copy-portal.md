@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 5b9bed971ff239c0c4b0d1cb923e845bd76957da
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 099ff9b8d8a55456908748bee5779e4471d4bec6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922917"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439330"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kopírování dat z místní databáze SQL Serveru do úložiště objektů blob v Azure
 V tomto kurzu pomocí uživatelského rozhraní služby Azure Data Factory vytvoříte kanál datové továrny, který kopíruje data z místní databáze SQL Serveru do úložiště objektů blob v Azure. Vytvoříte a použijete místní prostředí Integration Runtime, které přesouvá data mezi místním a cloudovým úložištěm dat.
@@ -32,10 +32,10 @@ V tomto kurzu budete provádět následující kroky:
 > * Vytvoření propojených služeb SQL Server a Azure Storage 
 > * Vytvoření datových sad SQL Serveru a Azure Blob
 > * Vytvoření kanálu s aktivitou kopírování pro přesun dat
-> * Zahájení spuštění kanálu
+> * Zahajte spuštění kanálu.
 > * Monitorování spuštění kanálu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 ### <a name="azure-subscription"></a>Předplatné Azure
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -104,7 +104,7 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 1. Okno **Kontejner** pro **adftutorial** nechte otevřené. Použijete ji k ověření výstupu na konci tohoto kurzu. Data Factory v tomto kontejneru vytvoří výstupní složku automaticky, takže ji nemusíte vytvářet.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
-V tomto kroku vytvoříte datovou továrnu a spustíte uživatelské rozhraní služby Data Factory, ve kterém v této datové továrně vytvoříte kanál. 
+V tomto kroku vytvoříte datovou továrnu a spustíte uživatelské rozhraní služby Data Factory, ve kterém v této datové továrně vytvoříte kanál. 
 
 1. Otevřete webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
 1. V nabídce vlevo vyberte **vytvořit prostředek** > **Analytics** > **Data Factory**:
@@ -124,20 +124,20 @@ V tomto kroku vytvoříte datovou továrnu a spustíte uživatelské rozhraní
 
    - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.
         
-     Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).
+     Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).
 1. Jako **Verzi** vyberte **V2**.
 1. V části **Umístění** vyberte umístění datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (například služby Storage a SQL Database) a výpočetní prostředí (například Azure HDInsight) používané datovou továrnou můžou být v jiných oblastech.
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 1. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku:
    
-    ![Domovská stránka datové továrny](./media/doc-common-process/data-factory-home-page.png)
+    ![Domovská stránka objektu pro vytváření dat](./media/doc-common-process/data-factory-home-page.png)
 1. Výběrem dlaždice **Vytvořit a monitorovat** otevřete na samostatné kartě uživatelské rozhraní služby Data Factory. 
 
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
 
-1. Na stránce **Pusťme se do toho** vyberte **Vytvořit kanál**. Automaticky se pro vás vytvoří kanál. Kanál se zobrazí ve stromovém zobrazení a otevře se jeho editor. 
+1. Na stránce **Začínáme** vyberte **Vytvořit kanál**. Automaticky se pro vás vytvoří kanál. Kanál se zobrazí ve stromovém zobrazení a otevře se jeho editor. 
 
    ![Stránka Začínáme](./media/doc-common-process/get-started-page.png)
 
@@ -185,7 +185,7 @@ V tomto kroku vytvoříte datovou továrnu a spustíte uživatelské rozhraní
 
     a. Ověřte, že se v části **Propojená služba** zobrazí **SqlServerLinkedService**.
 
-    b. V rozevíracím seznamu **Tabulka** vyberte **[dbo].[emp]** .
+    b. V části **Tabulka** vyberte **[dbo].[emp]** .
 
 1. Přejděte na kartu s kanálem **SQLServerToBlobPipeline** nebo vyberte kanál **SQLServerToBlobPipeline** ve stromovém zobrazení. 
 
@@ -245,7 +245,7 @@ Kanál v této ukázce kopíruje data z jednoho umístění do jiného v úloži
 > * Vytvoření propojených služeb SQL Server a Storage 
 > * Vytvoření datových sad SQL Serveru a úložiště objektů blob
 > * Vytvoření kanálu s aktivitou kopírování pro přesun dat
-> * Zahájení spuštění kanálu
+> * Zahajte spuštění kanálu.
 > * Monitorování spuštění kanálu
 
 Seznam úložišť dat podporovaných službou Data Factory najdete v tématu popisujícím [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

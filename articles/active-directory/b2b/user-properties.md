@@ -1,6 +1,6 @@
 ---
-title: Vlastnosti B2B hosta uživatele – Azure Active Directory | Dokumentace Microsoftu
-description: Azure Active Directory s B2B vlastnosti uživatele typu Host a stavy před a po uplatnění pozvánky
+title: Vlastnosti uživatele typu Host B2B-Azure Active Directory | Microsoft Docs
+description: Azure Active Directory vlastnosti a stavy uživatele hosta B2B před a po uplatnění pozvánky
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,99 +12,99 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1416dacd65024457e713547223f5c35290b3d15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aa282afdf910c2449b5d5ea0bc5e38a396f3aa02
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65768157"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608852"
 ---
-# <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Vlastnosti uživatele spolupráce Azure Active Directory s B2B
+# <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Vlastnosti Azure Active Directoryho uživatele spolupráce B2B
 
-Tento článek popisuje vlastnosti a objektu uživatele typu Host B2B ve službě Azure Active Directory (Azure AD) před a po uplatnění pozvání. Spolupráce uživatele Azure AD pro mezifiremní (B2B) je uživatel s UserType = hosta. Tento uživatel typu Host obvykle je z partnerské organizace a ve výchozím nastavení má omezená oprávnění v adresáři pozvání.
+Tento článek popisuje vlastnosti a stavy objektu uživatele hosta B2B v Azure Active Directory (Azure AD) před a po uplatnění pozvánky. Uživatel spolupráce B2B (Business-to-Business) Azure AD je uživatel s UserType = Guest. Tento uživatel typu Host obvykle pochází z partnerské organizace a má v adresáři pro pozvání omezená oprávnění, a to ve výchozím nastavení.
 
-V závislosti na potřebách zvoucí organizaci uživatele spolupráce B2B ve službě Azure AD může být v jednom z následujících stavů účet:
+V závislosti na potřebách zvát organizace může být uživatel spolupráce Azure AD B2B v jednom z následujících stavů:
 
-- Stav 1: Uložená v externí instanci Azure AD, vyjádřena jako uživatel typu Host ve zvoucí organizaci. V tomto případě uživatel B2B přihlásí pomocí účtu služby Azure AD, který patří k tenantovi pozvaného. Pokud partnerské organizace nepoužívá Azure AD, je stále vytváření uživatele typu Host ve službě Azure AD. Požadavky se, že se uplatňovat svou pozvánku a Azure AD ověří jejich e-mailovou adresu. Toto uspořádání se také nazývá tenantů just-in-time (JIT) nebo "virálního" tenantů.
+- Stav 1: domů v externí instanci Azure AD a reprezentovaný jako uživatel typu Host v hostitelské organizaci. V tomto případě se uživatel B2B přihlásí pomocí účtu Azure AD, který patří k pozvanému tenantovi. Pokud partnerská organizace nepoužívá službu Azure AD, je uživatel typu Host ve službě Azure AD stále vytvořen. Požadavky jsou v tom, že uplatní svou pozvánku a Azure AD ověří svou e-mailovou adresu. Toto uspořádání se také nazývá nájem JIT (just-in-time) nebo "virová".
 
-- Stav 2: Uložená v Microsoftu nebo jiného účtu, vyjádřena jako uživatel typu Host v organizaci hostitele. V tomto případě uživatel typu Host přihlásí pomocí účtu Microsoft nebo účtu na sociální síti (google.com nebo podobnou). Identita pozvaného uživatele je vytvořen jako účet Microsoft v adresáři zvoucí organizaci při využití nabídky.
+- Stav 2: domů v Microsoft nebo jiném účtu, který je reprezentován jako uživatel typu Host v organizaci hostitele. V takovém případě se uživatel typu Host přihlásí pomocí účet Microsoft nebo účtu v sociální síti (google.com nebo podobný). Identita pozvaného uživatele je vytvořena jako účet Microsoft v adresáři rezvaníing vaší organizace během uplatnění nabídky.
 
-- Stav 3: Uložená v organizaci hostitele v místní službě Active Directory a synchronizují s hostiteli organizace Azure AD. Můžete použít Azure AD Connect pro synchronizaci partnerské účty v cloudu jako Azure AD B2B uživatelé s UserType = hosta. Zobrazit [udělit partnera místně spravované účty přístup ke cloudovým prostředkům](hybrid-on-premises-to-cloud.md).
+- Stav 3: doma v místní službě Active Directory v hostitelské organizaci a synchronizovaný s Azure AD v hostitelské organizaci. Pomocí Azure AD Connect můžete synchronizovat partnerské účty s cloudem jako uživatelé Azure AD B2B s UserType = Host. Viz [udělení přístupu k prostředkům cloudu prostřednictvím místně spravovaných partnerských účtů](hybrid-on-premises-to-cloud.md).
 
-- Stav 4: Uložená v organizaci hostitele Azure AD s UserType = hosta a přihlašovací údaje, které spravuje organizace hostitele.
+- Stav 4: Domů ve službě Azure AD v hostitelské organizaci s oprávněním pro hostování = host a přihlašovací údaje, které spravuje hostitelská organizace.
 
-  ![Diagram znázorňující čtyři uživatele stavy](media/user-properties/redemption-diagram.png)
+  ![Diagram znázorňující čtyři stavy uživatele](media/user-properties/redemption-diagram.png)
 
 
-Teď se podívejme se, jak uživatele spolupráce s B2B ve službě Azure AD funguje ve službě Azure AD.
+Teď se podívejme, co v Azure AD vypadá jako uživatel spolupráce Azure AD B2B.
 
-### <a name="before-invitation-redemption"></a>Před uplatnění pozvánky
+### <a name="before-invitation-redemption"></a>Před uplatněním pozvánky
 
-Stav 1 a 2 stavu účty jsou výsledkem pozvání uživatelů typu Host pro spolupráci s použitím přihlašovacích údajů uživatelů vlastní hosta. Pokud na uživatele typu Host se nejdřív pošle e-mailové pozvánce, účet se vytvoří ve vašem adresáři. Tento účet nemá žádné přihlašovací údaje s ním spojená, protože ověřování provádí zprostředkovatel identity uživatele typu Host. **Zdroj** pro uživatelský účet guest ve vašem adresáři je nastavena na **Invited uživatele**. 
+Účty stavu 1 a 2 jsou výsledkem pozvání uživatelů typu Host ke spolupráci pomocí přihlašovacích údajů uživatelů typu Host. Když se Pozvánka poprvé pošle uživateli typu Host, vytvoří se ve vašem adresáři účet. K tomuto účtu nejsou přidružené žádné přihlašovací údaje, protože zprostředkovatel identity uživatele typu Host provádí ověřování. Vlastnost **source** účtu uživatele hosta ve vašem adresáři je nastavená na **pozvaného uživatele**. 
 
-![Snímek obrazovky ukazující vlastnosti uživatele před uplatnění nabídky](media/user-properties/before-redemption.png)
+![Snímek obrazovky se zobrazením vlastností uživatele před uplatněním nabídky](media/user-properties/before-redemption.png)
 
 ### <a name="after-invitation-redemption"></a>Po uplatnění pozvánky
 
-Poté, co uživatel typu Host přijme pozvánku, **zdroj** vlastností se aktualizuje podle poskytovatele identity uživatele typu Host.
+Jakmile uživatel typu Host přijme pozvání, aktualizuje se vlastnost **zdroj** na základě zprostředkovatele identity uživatele typu Host.
 
-Pro uživatele typu Host ve stavu 1 **zdroj** je **externí Azure Active Directory**.
+Pro uživatele typu Host ve stavu 1 je **zdrojem** **externí Azure Active Directory**.
 
 ![Stav 1 uživatel typu Host po uplatnění nabídky](media/user-properties/after-redemption-state1.png)
 
-Pro uživatele typu Host ve stavu 2 **zdroj** je **Account Microsoft**.
+Pro uživatele typu Host ve stavu 2 je **zdrojem** **účet Microsoft**.
 
-![Uživatel typu Host stavu 2 po uplatnění nabídky](media/user-properties/after-redemption-state2.png)
+![Stav 2 uživatel typu Host po uplatnění nabídky](media/user-properties/after-redemption-state2.png)
 
-Pro uživatele typu Host do stavu 3 a 4 stavu **zdroj** je nastavena na **Azure Active Directory** nebo **Windows Server Active Directory**, jak je popsáno v další části.
+Pro uživatele typu Host ve stavu 3 a 4 je vlastnost **source** nastavena na **Azure Active Directory** nebo **Windows Server Active Directory**, jak je popsáno v následující části.
 
-## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Vlastnosti klíče uživatele spolupráce B2B ve službě Azure AD
+## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Klíčové vlastnosti uživatele spolupráce Azure AD B2B
 ### <a name="usertype"></a>UserType
-Tato vlastnost určuje vztah mezi uživateli tenantů hostitele. Tato vlastnost může mít dvě hodnoty:
-- Člen: Tato hodnota označuje zaměstnance organizace hostitele a uživatele v mezd organizace. Například tento uživatel očekává, že mají přístup k webům jenom interních. Tento uživatel není považováno za externího spolupracovníka.
+Tato vlastnost označuje vztah uživatele k hostitelské architektuře. Tato vlastnost může mít dvě hodnoty:
+- Člen: Tato hodnota označuje zaměstnance hostitelské organizace a uživatele v rámci výplaty organizace. Tento uživatel například očekává přístup k interním webům. Tento uživatel není považován za externího spolupracovníka.
 
-- Host: Tato hodnota označuje uživatel, který není považováno za interní společnosti, například externího spolupracovníka, zákazníka nebo partnera. Přijímání generální ředitel interním sdělení svou podrobnou nebo získání výhod společnosti, například neočekává se tohoto uživatele.
+- Host: Tato hodnota označuje uživatele, který není považován za interního pro společnost, jako je externí spolupracovníka, partner nebo zákazník. Takový uživatel se neočekává, že obdrží interní penále generálního ředitele nebo obdrží výhody společnosti, například.
 
   > [!NOTE]
-  > UserType nemá žádný vztah k tom, jak se uživatel přihlásí, role adresáře uživatele a tak dále. Tato vlastnost jednoduše označuje vztah uživatele v organizaci hostiteli a umožňuje organizaci k vynucování zásad, které jsou závislé na této vlastnosti.
+  > UserType nemá žádný vztah k tomu, jak se uživatel přihlásí, role adresáře uživatele atd. Tato vlastnost jednoduše označuje vztah uživatele k hostitelské organizaci a umožňuje organizaci vyhovět zásadám, které jsou závislé na této vlastnosti.
 
-### <a name="source"></a>source
+### <a name="source"></a>Zdroj
 Tato vlastnost určuje, jak se uživatel přihlásí.
 
-- Pozvaný uživatel: Tento uživatel byl pozván, ale nebyl dosud uplatnit pozvání.
+- Pozvaný uživatel: Tento uživatel byl pozván, ale dosud neodkazoval na pozvánku.
 
-- Externí služby Active Directory: Tento uživatel je uložená v externí organizace a ověří pomocí účtu služby Azure AD, který patří do jiné organizace. Tento typ přihlášení odpovídá stavu 1.
+- Externí služba Active Directory: Tento uživatel je doma v externí organizaci a ověřuje se pomocí účtu Azure AD, který patří do jiné organizace. Tento typ přihlášení odpovídá stavu 1.
 
-- Účet Microsoft: Tento uživatel je uložená v účtu Microsoft a ověří pomocí účtu Microsoft. Tento typ přihlášení odpovídá stavu 2.
+- Účet Microsoft: Tento uživatel je doma v účet Microsoft a ověřuje se pomocí účet Microsoft. Tento typ přihlášení odpovídá stavu 2.
 
-- Windows Server Active Directory: Tento uživatel je přihlášený z místní služby Active Directory, který patří do této organizace. Tento typ přihlášení odpovídá stavu 3.
+- Windows Server Active Directory: Tento uživatel je přihlášený z místní služby Active Directory, která patří do této organizace. Tento typ přihlášení odpovídá stavu 3.
 
-- Azure Active Directory: Tento uživatel se ověřuje pomocí účtu služby Azure AD, který patří do této organizace. Tento typ přihlášení odpovídá stavu 4.
+- Azure Active Directory: Tento uživatel se ověřuje pomocí účtu Azure AD, který patří do této organizace. Tento typ přihlášení odpovídá stavu 4.
   > [!NOTE]
-  > Zdroj a UserType jsou nezávislé vlastnosti. Hodnota zdroje pro UserType neznamená určitou hodnotu.
+  > Zdroj a UserType jsou nezávislé vlastnosti. Hodnota zdroje nezahrnuje konkrétní hodnotu pro UserType.
 
-## <a name="can-azure-ad-b2b-users-be-added-as-members-instead-of-guests"></a>Uživatele Azure AD B2B se dá přidat jako členy místo hosté?
-Azure AD B2B uživatele a uživatele typu Host jsou obvykle shodný. Proto je uživatele spolupráce B2B ve službě Azure AD přihlášení jako uživatel s UserType = hostovaného ve výchozím nastavení. V některých případech však partnerské organizace je členem větší organizace, ke kterému také organizace hostitele patří. Pokud ano, může být žádoucí hostitele přistupovat ke všem uživatelům v organizaci partnera poskytujícího jako členy místo hosty. Pomocí rozhraní API služby Azure AD B2B pozvánku správce můžete přidat nebo pozvat uživatele v organizaci partnera poskytujícího organizaci hostitele jako člena.
+## <a name="can-azure-ad-b2b-users-be-added-as-members-instead-of-guests"></a>Můžou být uživatelé Azure AD B2B přidáni jako členové místo hostů?
+Typicky se jedná o synonymum uživatele Azure AD B2B a uživatele typu Host. Proto se uživatel spolupráce Azure AD B2B přidá jako uživatel s UserType = Host ve výchozím nastavení. V některých případech je ale partnerská organizace členem větší organizace, ke které patří i organizace hostitele. Pokud ano, hostitelská organizace může chtít považovat uživatele v partnerské organizaci za členy místo hostů. Pomocí rozhraní API Správce oznámení B2B v Azure AD můžete přidat nebo pozvat uživatele z partnerské organizace do hostitelské organizace jako člen.
 
-## <a name="filter-for-guest-users-in-the-directory"></a>Filtr pro uživatele typu Host do adresáře
+## <a name="filter-for-guest-users-in-the-directory"></a>Filtrovat uživatele typu Host v adresáři
 
-![Snímek obrazovky zobrazující filtru pro uživatele typu Host](media/user-properties/filter-guest-users.png)
+![Snímek obrazovky zobrazující filtr pro uživatele typu Host](media/user-properties/filter-guest-users.png)
 
 ## <a name="convert-usertype"></a>Převést UserType
-Je možné převést UserType od člena, u hosta (a naopak) pomocí prostředí PowerShell. Vlastnosti UserType však představuje relaci uživatele v organizaci. Proto byste měli změnit tuto vlastnost pouze tehdy, pokud relace uživatele na změny organizace. Pokud se změní vztah uživatel by měl změnit hlavní název uživatele (UPN)? Uživatel získat přístup ke stejným prostředkům? By mělo být přiřazeno poštovní schránky? Nedoporučujeme ale, změna UserType pomocí prostředí PowerShell jako aktivita atomické. Také v případě, že tato vlastnost se stane neměnné pomocí prostředí PowerShell, nedoporučujeme tak závislosti na této hodnotě.
+Je možné převést UserType ze členů na hosta a naopak pomocí PowerShellu. Vlastnost UserType však představuje vztah uživatele k organizaci. Proto byste tuto vlastnost měli změnit jenom v případě, že se změní vztah uživatele k organizaci. Pokud se vztah uživatele změní, měl by se změnit hlavní název uživatele (UPN)? Má uživatel nadále mít přístup ke stejným prostředkům? Měla by být poštovní schránka přiřazená? Nedoporučujeme měnit UserType pomocí PowerShellu jako atomickou aktivitu. V případě, že se tato vlastnost v případě neproměnlivého prostředí PowerShellu nemění, nedoporučujeme u této hodnoty používat závislost.
 
-## <a name="remove-guest-user-limitations"></a>Odeberte omezení uživatele typu Host
-Můžou nastat případy, ve které chcete dát uživatelům typu Host vyšší oprávnění. Můžete přidat uživatele typu Host k žádné roli a dokonce i odstraňovat výchozí omezení uživatele typu Host v adresáři přiřadit uživatele stejná oprávnění jako členové.
+## <a name="remove-guest-user-limitations"></a>Odebrat omezení uživatelů typu Host
+Můžou nastat případy, kdy chcete uživatelům typu Host poskytnout vyšší oprávnění. Uživatele typu Host můžete přidat do libovolné role a dokonce i odebrat výchozí uživatelská omezení hostů v adresáři, aby měl uživatel stejná oprávnění jako členové.
 
-Je možné vypnout výchozí omezení, tak, aby uživatel typu Host do adresáře společnosti má stejná oprávnění jako uživatel členem.
+Je možné vypnout výchozí omezení, aby uživatel typu Host v adresáři společnosti měl stejná oprávnění jako uživatel, který je členem.
 
-![Snímek obrazovky zobrazující možnost externí uživatele v nastavení uživatele](media/user-properties/remove-guest-limitations.png)
+![Snímek obrazovky s možností externích uživatelů v uživatelském nastavení](media/user-properties/remove-guest-limitations.png)
 
-## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Můžete mi zviditelnit uživatele typu Host do globálního seznamu adres Exchange?
-Ano. Ve výchozím nastavení objekty typu Host nejsou viditelné v seznamu globálního adresáře vaší organizace, ale můžete použít Azure Active Directory PowerShell je Pokud chcete zviditelnit. Podrobnosti najdete v tématu **můžete udělám hostů objekty viditelné v globálním?** v [spravovat přístup hosta v Office 365 Groups](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#faq). 
+## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Je možné uživatele typu Host zobrazit v globálním seznamu adres systému Exchange?
+Ano. Ve výchozím nastavení nejsou objekty hosta viditelné v globálním seznamu adres vaší organizace, ale pomocí Azure Active Directory PowerShellu je můžete zobrazit. Podrobnosti najdete v tématu **jak se dají objekty hosta zobrazit v globálním seznamu adres?** v tématu [Správa přístupu hosta ve skupinách Office 365](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#add-guests-to-the-global-address-list). 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
-* [Tokeny uživatele spolupráce B2B](user-token.md)
-* [Mapování deklarací uživatele spolupráce B2B](claims-mapping.md)
+* [Tokeny uživatelů spolupráce B2B](user-token.md)
+* [Mapování deklarací identity uživatelů spolupráce B2B](claims-mapping.md)

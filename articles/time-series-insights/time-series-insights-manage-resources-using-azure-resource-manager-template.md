@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e5e04716ae67df94428a678f6572738d4ad46232
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 4edf5189b54a5b1fb1b953064c5db1cd50930b84
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901460"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452849"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Vytváření Time Series Insightsch prostředků pomocí šablon Azure Resource Manager
 
@@ -119,7 +119,7 @@ Následující postup popisuje, jak pomocí PowerShellu nasadit šablonu Azure R
      }
      ```
   
-    * Další informace najdete v článku o [parametrech](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) .
+    * Další informace najdete v článku o [parametrech](../azure-resource-manager/templates/parameter-files.md) .
 
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>Nasazení šablony pro rychlé zprovoznění místně pomocí PowerShellu
 
@@ -148,7 +148,7 @@ Následující postup popisuje, jak pomocí PowerShellu nasadit šablonu Azure R
 
 1. Pokud jeden z nich neexistuje, vytvořte novou skupinu prostředků.
 
-   * Pokud nemáte existující skupinu prostředků, vytvořte novou skupinu prostředků pomocí příkazu **New-AzResourceGroup** . Zadejte název skupiny prostředků a umístění, které chcete použít. Například:
+   * Pokud nemáte existující skupinu prostředků, vytvořte novou skupinu prostředků pomocí příkazu **New-AzResourceGroup** . Zadejte název skupiny prostředků a umístění, které chcete použít. Příklad:
 
      ```powershell
      New-AzResourceGroup -Name MyDemoRG -Location "West US"

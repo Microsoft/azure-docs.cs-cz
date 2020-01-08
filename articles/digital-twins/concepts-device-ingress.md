@@ -1,19 +1,19 @@
 ---
 title: Připojení zařízení a nepříjem telemetrie – digitální vlákna Azure Microsoft Docs
-description: Naučte se připojit a připojit zařízení v rámci digitálních vláken Azure.
+description: Naučte se, jak připojit, integrovat a poslat telemetrii ze zařízení IoT v Azure Digital provlákna.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 529baf6a3eedf1d7490e8138642e90928a209876
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 01/03/2020
+ms.openlocfilehash: f9f0a74a6ca57f90ed8bd217d0d2f57e4bc16749
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010131"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660337"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Možnosti připojení zařízení a příchozí přenos telemetrických dat
 
@@ -71,7 +71,7 @@ Formát a datovou část svého zařízení můžete přizpůsobit tak, aby vyho
 |---|---|---|---|
 | **DigitalTwins-Telemetry** | 1.0 | Ano | Konstantní hodnota, která identifikuje zprávu pro systém. |
 | **DigitalTwins-SensorHardwareId** | `string(72)` | Ano | Jedinečný identifikátor senzoru, který **zprávu**odesílá. Tato hodnota musí odpovídat vlastnosti **HardwareId** objektu, aby ji systém mohl zpracovat. Například, `00FF0643BE88-CO2`. |
-| **CreationTimeUtc** | `string` | Ne | Řetězec formátovaného data [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , který identifikuje dobu vzorkování datové části. Například, `2018-09-20T07:35:00.8587882-07:00`. |
+| **CreationTimeUtc** | `string` | Ne | Řetězec formátovaného data [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) , který identifikuje dobu vzorkování datové části. Například, `2018-09-20T07:35:00.8587882-07:00`. |
 | **ID** | `string` | Ne | Identifikátor UUID, který se používá k trasování událostí v rámci systému. Například, `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
 
 ### <a name="send-your-message-to-digital-twins"></a>Odeslání zprávy do digitálních vláken

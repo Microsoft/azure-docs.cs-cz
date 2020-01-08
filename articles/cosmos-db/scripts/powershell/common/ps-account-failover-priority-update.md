@@ -1,17 +1,17 @@
 ---
-title: Azure PowerShell změnit prioritu převzetí služeb při selhání nebo aktivovat převzetí služeb při selhání pro účet Azure Cosmos
+title: Skript PowerShellu pro změnu priority převzetí služeb při selhání pro účet Azure Cosmos
 description: Ukázka skriptu Azure PowerShell – Změna priority převzetí služeb při selhání nebo Aktivace převzetí služeb při selhání pro účet Azure Cosmos
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: e4406124a7ea4eac213d830d0e5960e76fb6d364
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 6a742486918e5134a73256ef6c7490a823f14335
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155401"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441509"
 ---
 # <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-account-using-powershell"></a>Změna priority převzetí služeb při selhání nebo Aktivace převzetí služeb při selhání pro účet Azure Cosmos pomocí PowerShellu
 
@@ -22,7 +22,7 @@ ms.locfileid: "71155401"
 ## <a name="sample-script"></a>Ukázkový skript
 
 > [!NOTE]
-> Jakákoli změna v oblasti s `failoverPriority=0` triggerem aktivuje ruční převzetí služeb při selhání a dá se provést jenom pro účet konfigurovaný pro ruční převzetí služeb při selhání. Změny ve všech ostatních oblastech jednoduše mění prioritu převzetí služeb při selhání pro účet Cosmos.
+> Jakákoli změna v oblasti s `failoverPriority=0` aktivuje ruční převzetí služeb při selhání a dá se provést jenom pro účet konfigurovaný pro ruční převzetí služeb při selhání. Změny ve všech ostatních oblastech jednoduše mění prioritu převzetí služeb při selhání pro účet Cosmos.
 > [!NOTE]
 > Tato ukázka předvádí použití účtu rozhraní API SQL (Core). Pokud chcete tuto ukázku použít pro jiná rozhraní API, zkopírujte související vlastnosti a aplikujte je na skript specifický pro rozhraní API.
 

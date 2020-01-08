@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e4a5f83e3f4d26c2321ed1b4c48a385d07e6489d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ceee257cd09589fc953c2b32e978a35433b0a49b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895155"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371815"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)
 
@@ -25,7 +25,7 @@ Sdílený přístupový podpis (SAS) poskytuje zabezpečený delegovaný příst
 
 Azure Storage podporuje tři typy podpisů sdíleného přístupu:
 
-- **SAS delegování uživatele (Preview).** SAS delegování uživatele je zabezpečené pomocí přihlašovacích údajů pro Azure Active Directory (Azure AD) a také podle oprávnění zadaných pro SAS. SAS delegování uživatele se vztahuje pouze na úložiště objektů BLOB.
+- **SAS delegování uživatele.** SAS delegování uživatele je zabezpečené pomocí přihlašovacích údajů pro Azure Active Directory (Azure AD) a také podle oprávnění zadaných pro SAS. SAS delegování uživatele se vztahuje pouze na úložiště objektů BLOB.
 
     Další informace o SAS delegování uživatele najdete v tématu [Vytvoření SAS (REST API) delegování uživatele](/rest/api/storageservices/create-user-delegation-sas).
 
@@ -122,9 +122,9 @@ Chcete-li začít se signaturami sdíleného přístupu, přečtěte si následu
 
 ### <a name="user-delegation-sas"></a>SAS delegování uživatelů
 
-- [Vytvoření SAS pro delegování uživatelů pro kontejner nebo objekt BLOB pomocí PowerShellu (Preview)](../blobs/storage-blob-user-delegation-sas-create-powershell.md)
-- [Vytvoření SAS delegování uživatele pro kontejner nebo objekt BLOB pomocí rozhraní příkazového řádku Azure (Preview)](../blobs/storage-blob-user-delegation-sas-create-cli.md)
-- [Vytvoření SAS pro delegování uživatelů pro kontejner nebo objekt BLOB pomocí .NET (Preview)](../blobs/storage-blob-user-delegation-sas-create-dotnet.md)
+- [Vytvoření SAS delegování uživatele pro kontejner nebo objekt BLOB pomocí PowerShellu](../blobs/storage-blob-user-delegation-sas-create-powershell.md)
+- [Vytvoření SAS delegování uživatele pro kontejner nebo objekt BLOB pomocí Azure CLI](../blobs/storage-blob-user-delegation-sas-create-cli.md)
+- [Vytvoření SAS pro delegování uživatelů pro kontejner nebo objekt BLOB pomocí .NET](../blobs/storage-blob-user-delegation-sas-create-dotnet.md)
 
 ### <a name="service-sas"></a>SAS služby
 

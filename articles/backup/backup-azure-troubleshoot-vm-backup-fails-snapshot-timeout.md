@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 8331d74528703df1d7c56f25af7df0f53cd1f9be
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 255c18144fe0089a3f630d90f527a57d2b4ed68b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996268"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391850"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup Chyba: problémy s agentem nebo rozšířením
 
@@ -28,6 +28,7 @@ Agent virtuálního počítače Azure se může zastavit, zastaralá, je v nekon
 - **Otevřete portál Azure Portal > nastavení > virtuálního počítače > vlastnosti** > Ujistěte se, že **stav** virtuálního počítače **běží** a že **Stav agenta** je **připravený**. Pokud je agent virtuálního počítače zastavený nebo je v nekonzistentním stavu, restartujte agenta.<br>
   - Pro virtuální počítače s Windows postupujte podle těchto [kroků](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) a restartujte agenta hosta.<br>
   - Pro virtuální počítače se systémem Linux postupujte podle těchto [kroků](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) a restartujte agenta hosta.
+- **Otevřete portál Azure Portal > > nastavení > rozšíření** > zajistěte, aby byla všechna rozšíření ve stavu **úspěšné zřizování** . Pokud ne, vyřešte problém podle těchto [kroků](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state) .
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError – nepovedlo se komunikovat s agentem virtuálního počítače pro stav snímku.
 
@@ -53,8 +54,8 @@ Po registraci a naplánování virtuálního počítače pro službu Azure Backu
 
 K této chybě dojde, když se jedna z chyb rozšíření přesune virtuální počítač do stavu selhání zřizování.<br>**Otevřete portál Azure Portal > nastavení > virtuálního počítače > rozšíření stav rozšíření >** a ověřte, jestli jsou všechna rozšíření ve stavu **úspěšného zřizování** .
 
-- Pokud je rozšíření VMSnapshot v neúspěšném stavu, klikněte pravým tlačítkem na rozšíření, které selhalo, a odeberte ho. Aktivujte si službu ad hoc-Backup. tím se přeinstalují rozšíření a spustí se úloha zálohování.  <br>
-- Pokud je jakékoli jiné rozšíření v neúspěšném stavu, může to narušit zálohování. Zajistěte, aby byly problémy s rozšířením vyřešeny, a opakujte operaci zálohování.  
+- Pokud je rozšíření VMSnapshot ve stavu selhání, klikněte pravým tlačítkem myši na rozšíření, které selhalo, a odeberte ho. Aktivovat zálohování na vyžádání. tím se přeinstalují rozšíření a spustí se úloha zálohování.  <br>
+- Pokud je jakékoli jiné rozšíření ve stavu selhání, může to narušit zálohování. Zajistěte, aby byly problémy s rozšířením vyřešeny, a opakujte operaci zálohování.  
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached – dosáhlo se maximálního limitu kolekce bodů obnovení.
 
@@ -229,7 +230,7 @@ Postup při odinstalaci rozšíření:
 1. V [Azure Portal](https://portal.azure.com/)přejdete na virtuální počítač, u kterého dochází k chybě zálohování.
 2. Vyberte **nastavení**.
 3. Vyberte **Extensions** (Rozšíření).
-4. Vyberte **rozšíření VMSnapshot**.
+4. Vyberte **rozšíření snímku**.
 5. Vyberte **Odinstalovat**.
 
 Pokud se u virtuálního počítače se systémem Linux v Azure Portal nezobrazuje rozšíření VMSnapshot, [aktualizujte agenta Azure Linux](../virtual-machines/linux/update-agent.md)a spusťte zálohování.

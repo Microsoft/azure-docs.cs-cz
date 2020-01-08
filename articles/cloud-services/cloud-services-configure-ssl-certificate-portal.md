@@ -3,17 +3,17 @@ title: Konfigurace SSL pro cloudovou službu | Microsoft Docs
 description: Naučte se, jak zadat koncový bod HTTPS pro webovou roli a jak nahrát certifikát SSL pro zabezpečení aplikace. V těchto příkladech se používá Azure Portal.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 05/26/2017
-ms.author: gwallace
-ms.openlocfilehash: cc5b142558a21d1364254e555f3cf8f64bba0e58
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.author: tagore
+ms.openlocfilehash: 6ddb7001f770a9d8aea38d1a4698e15c167aeaa4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469014"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386761"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Konfigurace SSL pro aplikaci v Azure
 
@@ -41,7 +41,7 @@ Pro účely testování můžete [vytvořit](cloud-services-certs-create.md) a p
 
 Dále musíte do definice služby a konfiguračních souborů služby zahrnout informace o certifikátu.
 
-<a name="modify"> </a>
+<a name="modify"></a>
 
 ## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>Krok 2: Úprava definice služby a konfiguračních souborů
 Vaše aplikace musí být nakonfigurovaná tak, aby používala certifikát, a musí být přidán koncový bod HTTPS. V důsledku toho je potřeba aktualizovat definice služby a konfigurační soubory služby.
@@ -176,3 +176,6 @@ Teď, když je nasazení v Azure v provozu, můžete se k němu připojit pomoc�
 * Přečtěte si, jak [nasadit cloudovou službu](cloud-services-how-to-create-deploy-portal.md).
 * Nakonfigurujte [vlastní název domény](cloud-services-custom-domain-name-portal.md).
 * [Spravujte svou cloudovou službu](cloud-services-how-to-manage-portal.md).
+
+
+

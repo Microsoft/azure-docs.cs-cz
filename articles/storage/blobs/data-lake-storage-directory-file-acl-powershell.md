@@ -1,5 +1,5 @@
 ---
-title: Použití PowerShellu pro soubory & seznamů ACL v Azure Data Lake Storage Gen2 (Preview)
+title: Azure Data Lake Storage Gen2 PowerShell pro soubory & seznamy řízení přístupu (Preview)
 description: Pomocí rutin PowerShellu můžete spravovat adresáře a seznamy řízení přístupu (ACL) souborů a adresářů v účtech úložiště, které mají povolený hierarchický obor názvů (HNS).
 services: storage
 author: normesta
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: f2a2eaa3224fff117a30dfb742b4f8a35196dba4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: be5a1dce89219957f98c585d8e531c369e2f23c4
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973896"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690418"
 ---
-# <a name="use-powershell-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Použití PowerShellu pro soubory & seznamů ACL v Azure Data Lake Storage Gen2 (Preview)
+# <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Použití PowerShellu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 (Preview)
 
 V tomto článku se dozvíte, jak pomocí PowerShellu vytvářet a spravovat adresáře, soubory a oprávnění v účtech úložiště, které mají povolený hierarchický obor názvů (HNS). 
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak pomocí PowerShellu vytvářet a spravovat adr
 
 [Mapování Gen1 na Gen2](#gen1-gen2-map) | [poskytnutí zpětné vazby](https://github.com/Azure/azure-powershell/issues)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!div class="checklist"]
 > * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -59,37 +59,36 @@ V tomto článku se dozvíte, jak pomocí PowerShellu vytvářet a spravovat adr
 
 ## <a name="connect-to-the-account"></a>Připojit k účtu
 
-1. Otevřete okno příkazového řádku Windows PowerShellu.
+Otevřete příkazové okno prostředí Windows PowerShell a přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzAccount` a postupujte podle pokynů na obrazovce.
 
-2. Přihlaste se ke svému předplatnému Azure pomocí příkazu `Connect-AzAccount` a postupujte podle pokynů na obrazovce.
+```powershell
+Connect-AzAccount
+```
 
-   ```powershell
-   Connect-AzAccount
-   ```
+Pokud je vaše identita přidružená k více než jednomu předplatnému, nastavte své aktivní předplatné na předplatné účtu úložiště, ve kterém chcete vytvářet a spravovat adresáře. V tomto příkladu nahraďte hodnotu zástupného symbolu `<subscription-id>` hodnotou ID vašeho předplatného.
 
-3. Pokud je vaše identita přidružená k více než jednomu předplatnému, nastavte své aktivní předplatné na předplatné účtu úložiště, ve kterém chcete vytvářet a spravovat adresáře.
+```powershell
+Select-AzSubscription -SubscriptionId <subscription-id>
+```
 
-   ```powershell
-   Select-AzSubscription -SubscriptionId <subscription-id>
-   ```
+Dále vyberte způsob, jakým mají příkazy získat autorizaci k účtu úložiště. 
 
-   Nahraďte hodnotu zástupného symbolu `<subscription-id>` číslem ID vašeho předplatného.
+### <a name="option-1-obtain-authorization-by-using-azure-active-directory-ad"></a>Možnost 1: získání autorizace pomocí Azure Active Directory (AD)
 
-4. Získejte účet úložiště.
+V rámci tohoto přístupu systém zajistí, že váš uživatelský účet má odpovídající přiřazení řízení přístupu na základě role (RBAC) a oprávnění ACL. 
 
-   ```powershell
-   $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
-   ```
+```powershell
+$ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -UseConnectedAccount
+```
 
-   * Nahraďte hodnotu zástupného symbolu `<resource-group-name>` názvem vaší skupiny prostředků.
+### <a name="option-2-obtain-authorization-by-using-the-storage-account-key"></a>Možnost 2: získání autorizace pomocí klíče účtu úložiště
 
-   * Nahraďte hodnotu zástupného symbolu `<storage-account-name>` názvem svého účtu úložiště.
+Při tomto přístupu systém nekontroluje oprávnění RBAC nebo ACL prostředku.
 
-5. Získejte kontext účtu úložiště.
-
-   ```powershell
-   $ctx = $storageAccount.Context
-   ```
+```powershell
+$storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
+$ctx = $storageAccount.Context
+```
 
 ## <a name="create-a-file-system"></a>Vytvoření systému souborů
 
@@ -189,9 +188,7 @@ Get-AzDataLakeGen2ItemContent -Context $ctx -FileSystem $filesystemName -Path $f
 
 Seznamte se s obsahem adresáře pomocí rutiny `Get-AzDataLakeGen2ChildItem`.
 
-Tento příklad vypíše obsah adresáře s názvem `my-directory`. 
-
-Chcete-li zobrazit obsah systému souborů, vynechejte parametr `-Path` z příkazu.
+Tento příklad vypíše obsah adresáře s názvem `my-directory`.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -199,15 +196,21 @@ $dirname = "my-directory/"
 Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Path $dirname
 ```
 
-Tento příklad vypíše obsah adresáře s názvem `my-directory` a obsahuje seznamy ACL v seznamu. Také používá parametr `-Recurse` k vypsání obsahu všech podadresářů.
+Tento příklad nevrací hodnoty pro `ACL`, `Permissions`, `Group`a `Owner` vlastností. K získání těchto hodnot použijte parametr `-FetchPermission`. 
 
-Chcete-li zobrazit obsah systému souborů, vynechejte parametr `-Path` z příkazu.
+Následující příklad vypíše obsah stejného adresáře, ale používá také parametr `-FetchPermission` pro návrat hodnoty vlastností `ACL`, `Permissions`, `Group`a `Owner`. 
 
 ```powershell
 $filesystemName = "my-file-system"
 $dirname = "my-directory/"
-Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Path $dirname -Recurse -FetchPermission
+$properties = Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Path $dirname -Recurse -FetchPermission
+$properties.ACL
+$properties.Permissions
+$properties.Group
+$properties.Owner
 ```
+
+Chcete-li zobrazit obsah systému souborů, vynechejte parametr `-Path` z příkazu.
 
 ## <a name="upload-a-file-to-a-directory"></a>Nahrání souboru do adresáře
 
@@ -339,19 +342,60 @@ Tento příklad poskytuje uživateli oprávnění zapisovat a spustit pro adres�
 $filesystemName = "my-file-system"
 $dirname = "my-directory/"
 $Id = "xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+# Get the directory ACL
 $acl = (Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname).ACL
-$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission "-wx" -InputObject $acl
-Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
+
+# Create the new ACL object.
+[Collections.Generic.List[System.Object]]$aclnew =$acl
+
+# To avoid duplicate ACL, remove the ACL entries that will be added later.
+foreach ($a in $aclnew)
+{
+    if ($a.AccessControlType -eq "group" -and $a.DefaultScope -eq $true-and $a.EntityId -eq $id)
+    {
+        $aclnew.Remove($a);
+        break;
+    }
+}
+
+# Add ACL Entries
+$aclnew = New-AzDataLakeGen2ItemAclObject -AccessControlType group -EntityId $id -Permission "-wx" -DefaultScope -InputObject $aclnew
+
+# Update ACL on server
+Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $aclnew  
+
 ```
+
 Tento příklad poskytuje uživateli oprávnění zapisovat a spustit pro soubor.
 
 ```powershell
 $filesystemName = "my-file-system"
 $fileName = "my-directory/upload.txt"
 $Id = "xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+# Get the file ACL
 $acl = (Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $fileName).ACL
-$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission "-wx" -InputObject $acl
-Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $fileName -Acl $acl
+
+# Create the new ACL object.
+[Collections.Generic.List[System.Object]]$aclnew =$acl
+
+# To avoid duplicate ACL, remove the ACL entries that will be added later.
+foreach ($a in $aclnew)
+{
+    if ($a.AccessControlType -eq "group" -and $a.DefaultScope -eq $true-and $a.EntityId -eq $id)
+    {
+        $aclnew.Remove($a);
+        break;
+    }
+}
+
+# Add ACL Entries
+$aclnew = New-AzDataLakeGen2ItemAclObject -AccessControlType group -EntityId $id -Permission "-wx" -DefaultScope -InputObject $aclnew
+
+# Update ACL on server
+Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $fileName -Acl $aclnew 
+
 ```
 
 ### <a name="set-permissions-on-all-items-in-a-file-system"></a>Nastavení oprávnění pro všechny položky v systému souborů

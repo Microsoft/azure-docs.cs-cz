@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fdfa01a45c0dd35da65b2ad7ce8b0d291148af1a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a315b012cf103840eae6b141fe5177dfa709896d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931104"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463932"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -172,7 +172,7 @@ V následujících částech jsou popsány rozdíly mezi různými možnostmi re
 ### <a name="geo-redundant-storage"></a>Geograficky redundantní úložiště
 
 > [!Warning]  
-> Pokud používáte sdílenou složku Azure jako koncový bod cloudu v účtu úložiště GRS, neměli byste iniciovat převzetí služeb při selhání účtu úložiště. Tím dojde k tomu, že synchronizace přestane fungovat a může také způsobit neočekávanou ztrátu dat v případě nově vrstvených souborů. V případě ztráty oblasti Azure spustí Microsoft převzetí služeb při selhání účtu úložiště způsobem, který je kompatibilní s Azure File Sync.
+> Pokud používáte sdílenou složku Azure jako koncový bod cloudu v účtu úložiště GRS, neměli byste iniciovat převzetí služeb při selhání účtu úložiště. Pokud to uděláte, synchronizace přestane fungovat a v případě nově vrstvených souborů může dojít i k neočekávané ztrátě dat. V případě ztráty oblasti Azure spustí Microsoft převzetí služeb při selhání účtu úložiště způsobem, který je kompatibilní s Azure File Sync.
 
 Geograficky redundantní úložiště (GRS) je navrženo tak, aby poskytovalo alespoň 99.99999999999999% (16 9) odolnosti objektů v průběhu daného roku tím, že replikuje data do sekundární oblasti, která je od primární oblasti od sebe stovky kilometrů. Pokud je váš účet úložiště GRS povolený, jsou vaše data odolná i v případě kompletního výpadku nebo havárie, ve kterém se primární oblast nedá obnovit.
 
@@ -203,23 +203,28 @@ Tato část se vztahuje pouze na standardní sdílené složky. Všechny sdílen
 
 Standardní sdílené složky jsou k dispozici ve všech oblastech až do 5 TiB. V některých oblastech jsou k dispozici s omezením 100 TiB, tyto oblasti jsou uvedeny v následující tabulce:
 
-|Oblast |Podporovaná redundance |
+|Region (Oblast) |Podporovaná redundance |
 |-------|---------|
 |Austrálie – východ |LRS     |
 |Austrálie – jihovýchod|LRS |
-|Kanada – střed  |LRS     |
-|Kanada – východ     |LRS     |
+|Střední Kanada  |LRS     |
+|Východní Kanada     |LRS     |
 |Střední Indie  |LRS     |
 |Střed USA *   |LRS     |
 |Východní Asie      |LRS     |
-|Východní USA *        |LRS     |
+|Východní USA *        |LRS, ZRS|
 |Východní USA 2 *      |LRS     |
 |Francie – střed |LRS, ZRS|
 |Francie – jih   |LRS     |
-|Středoseverní USA |LRS     |
+|Japonsko – východ     |LRS     |
+|Středoseverní USA |LRS   |
 |Severní Evropa   |LRS     |
 |Jižní Indie    |LRS     |
+|Středojižní USA |LRS     |
 |Jihovýchodní Asie |LRS, ZRS|
+|Spojené arabské emiráty – střed    |LRS     |
+|Spojené království – jih   |LRS     |
+|Velká Británie – západ    |LRS     |
 |Středozápadní USA|LRS     |
 |Západní Evropa *    |LRS, ZRS|
 |Západní USA *        |LRS     |

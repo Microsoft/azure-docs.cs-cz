@@ -1,17 +1,17 @@
 ---
-title: Postup zápisu uložených procedur, triggerů a uživatelsky definovaných funkcí v Azure Cosmos DB
+title: Zápis uložených procedur, triggerů a UDF v Azure Cosmos DB
 description: Naučte se definovat uložené procedury, triggery a uživatelsky definované funkce v Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: ffe002e4dced5b5020eb1436ca6d7d577402b077
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 4dee017323bda5fc08598a9b24cadd11516807cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533173"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441738"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Postup zápisu uložených procedur, triggerů a uživatelsky definovaných funkcí v Azure Cosmos DB
 
@@ -75,7 +75,7 @@ function createToDoItem(itemToCreate) {
 
 ### <a name="arrays-as-input-parameters-for-stored-procedures"></a>Pole jako vstupní parametry pro uložené procedury 
 
-Při definování uložené procedury v Azure Portal jsou vstupní parametry vždy odeslány jako řetězec do uložené procedury. I v případě, že předáte pole řetězců jako vstup, pole je převedeno na řetězec a odesláno do uložené procedury. Chcete-li tento problém obejít, můžete definovat funkci v rámci uložené procedury k analýze řetězce jako pole. Následující kód ukazuje, jak analyzovat vstupní parametr řetězce jako pole:
+Při definování uložené procedury v Azure Portal jsou vstupní parametry vždy odeslány jako řetězec do uložené procedury. I v případě, předejte pole řetězců jako vstupní pole je převést na řetězec a odesílat na uložené procedury. Chcete-li tento problém obejít, můžete definovat funkci v rámci uložené procedury k analýze řetězce jako pole. Následující kód ukazuje, jak analyzovat vstupní parametr řetězce jako pole:
 
 ```javascript
 function sample(arr) {

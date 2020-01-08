@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 506eb38a2844ed8e8eb9739b116d7647bc1810ec
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c731dae02e9013fc436d6f30d8c8b2ab384968a0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480279"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453997"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Správa řešení IoT Central z Azure PowerShellu
 
@@ -67,19 +67,17 @@ Skript nejprve vytvoří skupinu prostředků v umístění východní USA pro d
 |------------------|------------|
 |ResourceGroupName |Skupina prostředků, která obsahuje aplikaci. Tato skupina prostředků už musí existovat ve vašem předplatném. |
 |Umístění |Ve výchozím nastavení používá tato rutina umístění ze skupiny prostředků. V současné době můžete vytvořit aplikaci IoT Central v **USA**, **Austrálii**, **Asie a Tichomoří**nebo v **Evropě** .  |
-|Název              |Název aplikace v Azure Portal. |
-|subdomény         |Subdoména v adrese URL aplikace V příkladu je adresa URL aplikace https://mysubdomain.azureiotcentral.com. |
-|Skladová jednotka (SKU)               |V současné době jediná hodnota je **S1** (úroveň Standard). Viz [ceny za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
+|Name (Název)              |Název aplikace v Azure Portal. |
+|Poddoména         |Subdoména v adrese URL aplikace V příkladu je adresa URL aplikace https://mysubdomain.azureiotcentral.com. |
+|SKU               |V současné době jediná hodnota je **S1** (úroveň Standard). Viz [ceny za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
 |Šablona          | Šablona aplikace, která se má použít Další informace najdete v následující tabulce: |
 |DisplayName       |Název aplikace, jak se zobrazuje v uživatelském rozhraní. |
 
-**Šablony aplikací s všeobecně dostupnými funkcemi**
+**Šablona aplikace s všeobecně dostupnými funkcemi**
 
 | Název šablony            | Popis |
 | ------------------------ | ----------- |
-| iotc-default@1.0.0       | Vytvoří prázdnou aplikaci, kterou můžete naplnit vlastními šablonami zařízení a zařízeními. |
-| iotc-demo@1.0.0          | Vytvoří aplikaci, která zahrnuje již vytvořenou šablonu zařízení pro chladící prodejní automat. Pomocí této šablony můžete začít zkoumat Azure IoT Central. |
-| iotc-devkit-sample@1.0.0 | Vytvoří aplikaci s připravenými šablonami zařízení pro připojení zařízení MXChip nebo Raspberry Pi. Tuto šablonu použijte, pokud jste vývojář zařízení experimentovat s některým z těchto zařízení. |
+| iotc-default@1.0.0       | Vytvoří prázdnou aplikaci, kterou můžete naplnit vlastními šablonami zařízení a zařízeními.
 
 
 **Šablony aplikací s funkcemi veřejné verze Preview**

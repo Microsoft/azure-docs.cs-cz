@@ -1,7 +1,7 @@
 ---
 title: 'Model vzájemného ověřování: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat model křížového ověřování ve službě Azure Machine Learning k vzájemnému ověření odhadů parametrů pro klasifikace nebo regresní modely pomocí dělení dat.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul pro různé ověřování modelů v Azure Machine Learning k vzájemnému ověření odhadů parametrů pro klasifikace nebo regresní modely pomocí dělení dat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: d83a9b5df7acc9d626613e53369f483367e55a54
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: b7c898c232dc39398b13f16beea814aa4e554845
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717236"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428565"
 ---
-# <a name="cross-validate-model"></a>Model vzájemného ověřování
+# <a name="cross-validate-model"></a>Křížové ověření modelu
 
 Tento článek popisuje, jak používat modul pro různé ověřování modelu v Návrháři Azure Machine Learning (Preview). *Křížové ověřování* je technika často používaná ve službě Machine Learning k vyhodnocení proměnlivosti datové sady a spolehlivosti všech modelů vyškolených prostřednictvím těchto dat.  
 
@@ -90,7 +90,7 @@ Chcete-li zobrazit tyto výsledky, klikněte pravým tlačítkem na modul modelu
 
 | Nový název sloupce      | Popis                              |
 | -------------------- | ---------------------------------------- |
-| Popisky s skóre        | Tento sloupec se přidá na konec datové sady. Obsahuje předpokládanou hodnotu pro každý řádek. |
+| Vyhodnocené popisky        | Tento sloupec se přidá na konec datové sady. Obsahuje předpokládanou hodnotu pro každý řádek. |
 | Pravděpodobnost skóre | Tento sloupec se přidá na konec datové sady. Označuje odhadovanou pravděpodobnost hodnoty v **popiscích skóre**. |
 | Číslo skládání          | Určuje index přeložení založený na nule, ke kterému byly při křížovém ověření přiřazeny jednotlivé řádky dat. |
 
@@ -127,5 +127,5 @@ Modul obsahuje také následující metriky pro každé skládání v závislost
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro službu Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
 

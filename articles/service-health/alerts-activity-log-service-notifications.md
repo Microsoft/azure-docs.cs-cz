@@ -1,18 +1,14 @@
 ---
 title: Doručení výstrah protokolu aktivit v oznámeních služby Azure
 description: Když dojde ke službě Azure, dostanete oznámení prostřednictvím SMS, e-mailu nebo Webhooku.
-author: stephbaron
-ms.author: stbaron
-services: monitoring
-ms.service: service-health
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 40ffe0b377a5cbb21f07c479097958d7c15a2879
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: bc8e935b9d44cb5236c7a1ef38da24e12b877e14
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383159"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464022"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Vytváření výstrah protokolu aktivit u oznámení služby
 ## <a name="overview"></a>Přehled
@@ -64,7 +60,7 @@ Informace o tom, jak nakonfigurovat upozornění na stav služby pomocí šablon
     > [!NOTE]
     > Toto předplatné slouží k uložení upozornění protokolu aktivit. Prostředek výstrahy se nasadí do tohoto předplatného a monitoruje události v protokolu aktivit.
 
-1. Vyberte **typy událostí** , pro které chcete být upozorňováni: *Problém se službou*, *plánovaná údržba*a *Poradce pro stav* 
+1. Vyberte **typy událostí** , pro které chcete být upozorňováni: *problém služby*, *plánovaná údržba*a *Poradce pro stav* 
 
 1. Zadejte podrobnosti výstrahy zadáním názvu a **popisu** **pravidla výstrahy** .
 
@@ -78,9 +74,9 @@ Informace o tom, jak nakonfigurovat upozornění na stav služby pomocí šablon
 
     a. **Název**: Zadejte jméno, alias nebo identifikátor přijímače.
 
-    b. **Typ akce**: Vyberte SMS, e-mail, Webhook, Azure App a další.
+    b. **Typ akce**: vyberte SMS, e-mail, Webhook, Azure App a další.
 
-    c. **Podrobnosti**: Na základě zvoleného typu akce zadejte telefonní číslo, e-mailovou adresu, identifikátor URI Webhooku atd.
+    c. **Podrobnosti**: na základě zvoleného typu akce zadejte telefonní číslo, e-mailovou adresu, identifikátor URI Webhooku atd.
 
 1. Výběrem **OK** vytvořte skupinu akcí a pak **Vytvořte pravidlo upozornění** pro dokončení výstrahy.
 
@@ -200,7 +196,7 @@ Po vytvoření výstrahy je tato výstraha zobrazená v části **výstrahy** **
 * Odstraňte ji.
 * Zakázat nebo povolit, pokud chcete dočasně zastavit nebo obnovit přijímání oznámení pro výstrahu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Přečtěte si o [osvědčených postupech pro nastavení výstrah Azure Service Health](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa).
 - Přečtěte si, jak [nastavit mobilní nabízená oznámení pro Azure Service Health](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw).
 - Naučte se [Konfigurovat oznámení Webhooku pro stávající systémy správy problémů](service-health-alert-webhook-guide.md).

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 8b089a1b32ee70479072522372c060713108957c
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: b63032baa60d18f3d9d98fc403bdc1087c6c9b6b
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350093"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660677"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -41,7 +41,7 @@ Všimněte si také, že kvóty nejsou Garantované hodnoty. Kvóty se můžou l
 
 ### <a name="cores-quotas-in-user-subscription-mode"></a>Kvóty jader v režimu předplatného uživatele
 
-Pokud jste vytvořili účet Batch s režimem přidělování fondů nastaveným na **předplatné uživatele**, kvóty se uplatní odlišně. V tomto režimu se virtuální počítače a další prostředky služby Batch vytvářejí přímo ve vašem předplatném při vytvoření fondu. Kvóty Azure Batchch jader se nevztahují na účet vytvořený v tomto režimu. Místo toho se použijí kvóty ve vašem předplatném pro regionální výpočetní jádra a další prostředky. Přečtěte si další informace o těchto kvótách v [omezeních, kvótách a omezeních předplatného a služeb Azure](../azure-subscription-service-limits.md).
+Pokud jste vytvořili účet Batch s režimem přidělování fondů nastaveným na **předplatné uživatele**, kvóty se uplatní odlišně. V tomto režimu se virtuální počítače a další prostředky služby Batch vytvářejí přímo ve vašem předplatném při vytvoření fondu. Kvóty Azure Batchch jader se nevztahují na účet vytvořený v tomto režimu. Místo toho se použijí kvóty ve vašem předplatném pro regionální výpočetní jádra a další prostředky. Přečtěte si další informace o těchto kvótách v [omezeních, kvótách a omezeních předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 ## <a name="pool-size-limits"></a>Omezení velikosti fondu
 
@@ -54,7 +54,7 @@ Omezení velikosti fondu nastavuje služba Batch. Na rozdíl od [kvót prostřed
 | Režim přidělování fondů předplatných dávky | 80 |
 | **Výpočetní uzly ve [fondu vytvořené pomocí prostředku spravované image](batch-custom-images.md)** <sup>1</sup> ||
 | Vyhrazené uzly | 2000 |
-| Uzly s nízkou prioritou | 1000 |
+| Uzly s nízkou prioritou | 1 000 |
 
 <sup>1</sup> pro fondy, které nejsou povolené komunikace mezi uzly.
 
@@ -66,7 +66,7 @@ Další omezení nastavená službou Batch. Na rozdíl od [kvót prostředků](#
 | --- | --- |
 | [Souběžné úkoly](batch-parallel-node-tasks.md) na výpočetní uzel | 4 x počet jader uzlů |
 | Počet [aplikací](batch-application-packages.md) na účet Batch | 20 |
-| Balíčky aplikací na jednu aplikaci | 40 |
+| Balíčky aplikací na aplikaci | 40 |
 | Balíčky aplikací na fond | 10 |
 | Maximální doba života úlohy | 180 dnů<sup>1</sup> |
 | Počet [připojení](virtual-file-mount.md) na výpočetní uzel | 10 |
@@ -90,16 +90,16 @@ Pomocí těchto kroků můžete požádat o zvýšení kvóty pro účet Batch n
 ### <a name="increase-cores-quota-in-batch"></a>Zvýšení kvóty jader v dávce 
 
 1. Na řídicím panelu portálu vyberte dlaždici **Nápověda a podpora** nebo otazník ( **?** ) v pravém horním rohu portálu.
-1. Vyberte **nové základy žádosti o** > podporu.
+1. Výběr **nové žádosti o podporu** > **základy**.
 1. **Základní informace**:
    
-    a.  > **Omezení služby typu problém a předplatné (kvóty)**
+    a. **Typ problému** > **omezení služby a předplatného (kvóty)**
    
     b. Vyberte své předplatné.
    
-    c. **Dávka typu kvóty** > 
+    c. **Typ kvóty** > **Batch**
       
-    Vyberte **Další**.
+    Vyberte **Next** (Další).
     
 1. V **podrobnosti**:
       
@@ -119,7 +119,7 @@ Pomocí těchto kroků můžete požádat o zvýšení kvóty pro účet Batch n
 
     b. Vyberte **závažnost** podle svého [obchodního dopadu][support_sev].
 
-    Vyberte **Další**.
+    Vyberte **Next** (Další).
 
 1. V **kontaktní údaje**:
    
@@ -139,13 +139,13 @@ Fondy služby Batch v konfiguraci virtuálního počítače nasazené ve virtuá
 * Jedna [Veřejná IP adresa](../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * Jeden [Nástroj pro vyrovnávání zatížení](../load-balancer/load-balancer-overview.md)
 
-Tyto prostředky se přidělují v rámci předplatného, které obsahuje virtuální síť, která se zadala při vytváření fondu Batch. Pro tyto prostředky platí omezení [kvót prostředků](../azure-subscription-service-limits.md) předplatného. Pokud plánujete nasazení rozsáhlých fondů ve virtuální síti, Prohlédněte si kvóty předplatného pro tyto prostředky. V případě potřeby požádejte o zvýšení Azure Portal tím, že vyberete **help + podpora**.
+Tyto prostředky se přidělují v rámci předplatného, které obsahuje virtuální síť, která se zadala při vytváření fondu Batch. Pro tyto prostředky platí omezení [kvót prostředků](../azure-resource-manager/management/azure-subscription-service-limits.md) předplatného. Pokud plánujete nasazení rozsáhlých fondů ve virtuální síti, Prohlédněte si kvóty předplatného pro tyto prostředky. V případě potřeby požádejte o zvýšení Azure Portal tím, že vyberete **help + podpora**.
 
 
 ## <a name="related-topics"></a>Související témata
 * [Vytvoření účtu Azure Batch pomocí Azure Portal](batch-account-create-portal.md)
 * [Přehled funkcí Azure Batch](batch-api-basics.md)
-* [Limity, kvóty a omezení předplatného a služeb Azure](../azure-subscription-service-limits.md)
+* [Limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 [portal]: https://portal.azure.com
 [portal_classic_increase]: https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/

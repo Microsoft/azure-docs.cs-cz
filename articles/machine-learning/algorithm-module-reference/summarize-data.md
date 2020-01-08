@@ -1,7 +1,7 @@
 ---
 title: Sumarizace dat
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul shrnutí dat ve službě Azure Machine Learning ke generování základní sestavy statistiky pro sloupce v datové sadě.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul shrnutí dat v Azure Machine Learning k vygenerování základní sestavy statistiky pro sloupce v datové sadě.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 503eb533b83cbeedcc16b73a9c1dbe821a4d4d94
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 80e2acf08960796ccb2f3ad87c16674e477c9c00
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492582"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428459"
 ---
 # <a name="summarize-data"></a>Sumarizace dat
 
@@ -52,14 +52,14 @@ Sestava z modulu může zahrnovat následující statistiky.
 |**Výpočtu**|Počet všech řádků|
 |**Počet jedinečných hodnot**|Počet jedinečných hodnot ve sloupci|
 |**Chybějící počet hodnot**|Počet jedinečných hodnot ve sloupci|
-|**Dlouhé**|Nejnižší hodnota ve sloupci|  
-|**Počet**|Nejvyšší hodnota ve sloupci|
+|**min**|Nejnižší hodnota ve sloupci|  
+|**Max**|Nejvyšší hodnota ve sloupci|
 |**Průměrná**|Střední hodnota všech hodnot sloupců|
 |**Střední odchylka**|Střední odchylka hodnot sloupců|
 |**1. kvartil**|Hodnota při první kvartil|
-|**Svisl**|Hodnota sloupce mediánu|
+|**Medián**|Hodnota sloupce mediánu|
 |**třetí kvartil**|Hodnota při třetí kvartil|
-|**Mode**|Režim hodnot sloupců|
+|**Režim**|Režim hodnot sloupců|
 |**Rozsah**|Celé číslo představující počet hodnot mezi maximální a minimální hodnotou|
 |**Odchylka vzorku**|Variance pro sloupec; Viz Poznámka|
 |**Vzorová směrodatná odchylka**|Směrodatná odchylka pro sloupec; Viz Poznámka|
@@ -73,4 +73,4 @@ Sestava z modulu může zahrnovat následující statistiky.
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby.  
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning.  

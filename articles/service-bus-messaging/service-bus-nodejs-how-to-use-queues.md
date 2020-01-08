@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: použití front Azure Service Bus v Node. js'
+title: Použití Azure Service Busch front v Node. js pomocí balíčku Azure-Sb
 description: 'Rychlý Start: Naučte se používat fronty Service Bus v Azure z aplikace Node. js.'
 services: service-bus-messaging
 documentationcenter: nodejs
@@ -15,18 +15,18 @@ ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 404163ed93549b55ceadad10825a9cf682de470b
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5fa74bdc632154e361fc4d95ed602e4b4d39a198
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719219"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462187"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Rychlý Start: použití Service Busch front v Azure pomocí Node. js a balíčku Azure-Sb
 
 > [!div class="op_multi_selector" title1="Programovací jazyk" title2="Manageru balíček s Node. js"]
 > - [(Node. js | Azure-SB)](service-bus-nodejs-how-to-use-queues.md)
-> - [(Node. js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
+> - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
 
 V tomto kurzu se naučíte vytvářet aplikace v Node. js pro posílání zpráv a příjem zpráv z fronty Azure Service Bus pomocí balíčku [Azure-SB](https://www.npmjs.com/package/azure-sb) . Ukázky se napíší v JavaScriptu a používají [modul Azure](https://www.npmjs.com/package/azure) Node. js, který interně používá balíček Azure-Sb.
 
@@ -135,7 +135,7 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 ```
 
 ## <a name="send-messages-to-a-queue"></a>Zasílání zpráv do fronty
-Chcete-li odeslat zprávu do fronty Service Bus, aplikace zavolá metodu `sendQueueMessage` v objektu **ServiceBusService** . Zprávy odeslané do (a přijaté z) Service Bus fronty jsou objekty **BrokeredMessage** a mají sadu standardních vlastností (například **Label** a **TimeToLive**), slovník, který se používá k uložení vlastních vlastností specifických pro aplikace a tělo libovolných aplikačních dat. Aplikace může nastavit tělo zprávy předáním řetězce jako zprávy. Všechny požadované standardní vlastnosti se naplní výchozími hodnotami.
+Chcete-li odeslat zprávu do fronty Service Bus, aplikace zavolá metodu `sendQueueMessage` v objektu **ServiceBusService** . Zprávy odeslané do (a přijaté z) Service Bus fronty jsou objekty **BrokeredMessage** a mají sadu standardních vlastností (například **Label** a **TimeToLive**), slovník, který se používá k uložení vlastních vlastností specifických pro aplikaci a tělo libovolných aplikačních dat. Aplikace může nastavit tělo zprávy předáním řetězce jako zprávy. Všechny požadované standardní vlastnosti se naplní výchozími hodnotami.
 
 Následující příklad ukazuje, jak odeslat zkušební zprávu do fronty s názvem `myqueue` pomocí `sendQueueMessage`:
 

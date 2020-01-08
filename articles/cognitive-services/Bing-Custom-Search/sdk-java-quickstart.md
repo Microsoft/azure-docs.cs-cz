@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: Vlastní vyhledávání Bingu klientskou knihovnu pro Java | Microsoft Docs'
-description: Začněte s knihovnou klienta Vlastní vyhledávání Bingu pro Java tím, že si vyžádáte výsledky hledání z vaší instance Vlastní vyhledávání Bingu.
+title: 'Rychlý Start: Vlastní vyhledávání Bingu Klientská knihovna pro Java'
+description: Začínáme s klientskou knihovnou Vlastní vyhledávání Bingu pro Java vyžádáním výsledků hledání z vaší instance Vlastní vyhledávání Bingu v tomto rychlém startu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: f0a3008dace4e9382bbb6b6d9465ce1c9b4ddc6c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1060cceb9241d9c1c490f7e7f12490c734b0a78d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976056"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384549"
 ---
 # <a name="quickstart-bing-custom-search-client-library-for-java"></a>Rychlý Start: Vlastní vyhledávání Bingu Klientská knihovna pro Java
 
@@ -26,14 +26,14 @@ Pomocí klientské knihovny Vlastní vyhledávání Bingu pro jazyk Java:
 
 [Referenční dokumentace](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable) | [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch) | [artefaktů (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customsearch/) | [ukázky](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
 * Aktuální verze sady [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
 * [Nástroj Gradle Build](https://gradle.org/install/)nebo jiný správce závislostí.
 * Instance Vlastní vyhledávání Bingu. Další informace najdete v tématu [rychlý Start: Vytvoření první instance vlastní vyhledávání Bingu](quick-start.md) .
 
-## <a name="setting-up"></a>Probíhá nastavení
+## <a name="setting-up"></a>Nastavení
 
 ### <a name="create-a-bing-custom-search-azure-resource"></a>Vytvoření prostředku Azure Vlastní vyhledávání Bingu
 

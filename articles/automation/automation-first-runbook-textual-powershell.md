@@ -3,19 +3,15 @@ title: Můj první PowerShellový Runbook v Azure Automation
 description: Kurz vás provede vytvořením, otestováním a publikováním jednoduchého powershellového runbooku.
 keywords: azure powershell, kurz k powershellovému scriptu, automatizace powershellu
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/27/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: f950a2fed2fbd355fc99453f09b655463e67102d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 07be9aa9ab576845c5b2ad94b1a2b3fb828ea514
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850869"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366392"
 ---
 # <a name="my-first-powershell-runbook"></a>Můj první powershellový runbook
 
@@ -27,14 +23,14 @@ ms.locfileid: "74850869"
 
 V tomto kurzu se seznámíte s vytvořením [powershellového runbooku](automation-runbook-types.md#powershell-runbooks) ve službě Azure Automation. Začnete s jednoduchým runbookm, který otestujete a publikujete, a zjistíte, jak sledovat stav úlohy Runbooku. Potom runbook upravíte, aby skutečně spravoval prostředky Azure, v tomto případě virtuální počítač Azure. Nakonec uděláte robustnější sadu Runbook přidáním parametrů Runbooku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Účet Automation](automation-quickstart-create-account.md), abyste si mohli runbook podržet a mohli ověřovat prostředky Azure. Tento účet musí mít oprávnění ke spuštění a zastavení virtuálního počítače.
 * Virtuální počítač Azure. Tento počítač zastavíte a spustíte, takže by neměl být produkční virtuální počítač.
-* Možná budete muset [aktualizovat moduly Azure](automation-update-azure-modules.md) na základě používaných rutin.
+* Možná budete muset [importovat](shared-resources/modules.md)/můžete [aktualizovat moduly Azure](automation-update-azure-modules.md) na základě používaných rutin.
 
 ## <a name="create-new-runbook"></a>Vytvořit nový Runbook
 

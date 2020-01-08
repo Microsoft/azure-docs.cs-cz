@@ -1,7 +1,7 @@
 ---
-title: Vytvoření trénovací datové sady pro vlastní model - Rozlišovač formuláře
+title: Postup sestavení sady školicích dat pro vlastní model – Nástroj pro rozpoznávání formulářů
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak zajistit vaše trénovací datové sady je optimalizovaná pro trénování modelu Rozlišovač formuláře.
+description: Naučte se, jak zajistit, aby byla sada dat pro školení optimalizovaná pro školení modelu pro rozpoznávání formulářů.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,40 +9,42 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 643f0d6dd3ee073bd19f8697346689523032ad9f
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 71ad7c5dd3ad74082da552cd3c45142bc0c2d624
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592647"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75380622"
 ---
-# <a name="build-a-training-data-set-for-a-custom-model"></a>Vytvoření trénovací datové sady pro vlastní model
+# <a name="build-a-training-data-set-for-a-custom-model"></a>Sestavení sady školicích dat pro vlastní model
 
-Při použití vlastního modelu Rozlišovač formuláře zadejte cvičných dat tak můžete do formulářů specifických pro dané odvětví trénování modelu. Navíc dva formuláře vyplněné můžete vyškolíme model pomocí pěti formuláře vyplněné nebo prázdný formulář (musí obsahovat slovo "prázdný" v názvu souboru). I v případě, že máte dostatek formuláře vyplněné trénování s, přidání prázdný formulář do vaší trénovací datové sady můžete zlepšit přesnost modelu.
+Když použijete vlastní model pro rozpoznávání formulářů, budete mít k dispozici vlastní školicí data, aby model mohl vytvořit výukové formuláře pro konkrétní obor. Model můžete vyškolit s pěti vyplněnými formuláři nebo prázdným formulářem (do názvu souboru musíte zahrnout slovo "Empty") a dva vyplněné formuláře. I v případě, že máte dost vyplněné formuláře, které by bylo možné naučit, přidání prázdného formuláře do sady školicích dat může zlepšit přesnost modelu.
 
-## <a name="training-data-tips"></a>Školení datových tipech
+Pokud chcete použít manuálně označená školicí data, měli byste začít aspoň s pěti formami stejného typu. Ve stejné datové sadě můžete stále používat neoznačené formuláře a prázdný formulář.
 
-Je důležité používat datové sady, která je optimalizovaná pro vzdělávání. Použijte následující tipy k zajistěte, aby co nejlépe z [Train Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/TrainCustomModel) operace:
+## <a name="training-data-tips"></a>Tipy k datům školení
 
-* Pokud je to možné používejte textové dokumenty PDF místo dokumentů na základě bitové kopie. Prohledaná PDF jsou zpracovávány jako bitové kopie.
-* Pokud je k dispozici máte použijte jeden prázdný formulář a dva formuláře vyplněné.
-* Pro formuláře vyplněné použijte příklady, které mají na všech jejich pole vyplněna.
-* Použití s různými hodnotami v každé pole formulářů.
-* Pokud váš obrázky formuláře jsou nižší kvality, použijte větší datové sady (například obrázky 10 až 15).
+Je důležité použít datovou sadu optimalizovanou pro školení. Následující tipy vám pomohou zajistit, abyste získali nejlepší výsledky z operace [vlastního modelu vlaku](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) :
 
-## <a name="general-input-requirements"></a>Obecné požadavky na vstupu
+* Pokud je to možné, používejte textové dokumenty PDF namísto dokumentů na základě obrázků. Naskenované soubory PDF jsou zpracovávány jako obrázky.
+* Pro vyplněné formuláře použijte příklady, které mají všechna jejich pole vyplněna.
+* Používejte formuláře s různými hodnotami v každém poli.
+* Pokud jsou obrázky z formuláře nižší kvality, použijte větší sadu dat (například obrázek 10-15).
+* Celková velikost sady školicích dat může být až 500 stránek.
 
-Zajistěte, aby že vaše trénovací datové sady také řídí vstupní požadavky pro veškerý obsah formuláře Rozlišovače. 
+## <a name="general-input-requirements"></a>Obecné požadavky na vstupy
+
+Ujistěte se, že vaše školicí data budou také postupovat podle požadavků na vstup pro veškerý obsah nástroje pro rozpoznávání formulářů. 
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
 
-## <a name="upload-your-training-data"></a>Nahrát trénovacích dat
+## <a name="upload-your-training-data"></a>Nahrajte školicí data.
 
-Pokud jste sestavili sadu dokumentů formuláře, které budete používat pro školení, budete muset nahrát do kontejneru úložiště objektů blob v Azure. Pokud si nejste jisti, jak vytvořit účet služby Azure storage s kontejnerem, následující [rychlý start Azure Storage k webu Azure portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
+Když se spojíte se sadou dokumentů formuláře, které budete používat pro školení, je nutné ji nahrát do kontejneru úložiště objektů BLOB v Azure. Pokud si nejste jisti, jak vytvořit účet služby Azure Storage pomocí kontejneru, postupujte podle pokynů [pro rychlý start Azure Storage pro Azure Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
 
 ### <a name="organize-your-data-in-subfolders-optional"></a>Uspořádání dat v podsložkách (volitelné)
 
-Ve výchozím nastavení [Train Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/TrainCustomModel) rozhraní API se použije pouze formulář dokumenty, které jsou umístěné v kořenovém adresáři vašeho kontejneru úložiště. Však můžete tréninku s daty v podsložkách-li zadat ve volání rozhraní API. Za normálních okolností text [Train Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/TrainCustomModel) volání má následující formát, ve kterém `<SAS URL>` je adresa URL pro podpis sdíleného přístupu vašeho kontejneru:
+Ve výchozím nastavení budou rozhraní API pro [vlastní model výuky](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) používat jenom dokumenty formuláře, které jsou umístěné v kořenovém adresáři kontejneru úložiště. Můžete však s daty v podsložkách vlaky, pokud ji zadáte v volání rozhraní API. Obvykle tělo volání [vlastního modelu vlaku](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) má následující formu, kde `<SAS URL>` je adresa URL sdíleného přístupového podpisu vašeho kontejneru:
 
 ```json
 {
@@ -50,7 +52,7 @@ Ve výchozím nastavení [Train Model](https://westus2.dev.cognitive.microsoft.c
 }
 ```
 
-Pokud přidáte následující obsah do textu žádosti rozhraní API bude trénování s dokumenty, které jsou umístěny v podsložkách. `"prefix"` Pole je volitelné a omezí trénovací datové sady do souborů, jejichž cesty začínají daným řetězcem. Takže hodnota `"Test"`, například způsobí, že rozhraní API se podívat na soubory nebo složky, které začínají znakem slova "Test".
+Pokud do textu žádosti přidáte následující obsah, rozhraní API bude zaškolit dokumenty umístěné v podsložkách. Pole `"prefix"` je volitelné a omezí nastavení školicích dat na soubory, jejichž cesty začínají daným řetězcem. Hodnota `"Test"`například způsobí, že rozhraní API bude zobrazovat pouze soubory nebo složky, které začínají slovem "test".
 
 ```json
 {
@@ -58,14 +60,15 @@ Pokud přidáte následující obsah do textu žádosti rozhraní API bude trén
   "sourceFilter": {
     "prefix": "<prefix string>",
     "includeSubFolders": true
-  }
+  },
+  "useLabelFile": false
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Teď, když jste zjistili, jak vytvářet trénovací datové sady, postupujte podle rychlého startu trénování modelu vlastní formulář rozpoznávání a začít používat ve formulářích.
+Teď, když jste se naučili, jak vytvořit školicí sadu dat, postupujte podle rychlého startu a Naučte se vlastní model pro rozpoznávání formulářů a začněte ho používat na formulářích.
 
-* [Rychlé zprovoznění: Trénování modelu a extrahovat data formuláře pomocí cURL](./quickstarts/curl-train-extract.md)
-* [Rychlé zprovoznění: Trénování modelu a extrahování dat formuláře pomocí rozhraní REST API s využitím Pythonu](./quickstarts/python-train-extract.md)
-
+* [Rychlý Start: výuka modelu a extrakce dat z formuláře pomocí kudrlinkou](./quickstarts/curl-train-extract.md)
+* [Rychlý Start: výuka modelu a extrakce dat z formuláře pomocí REST API v Pythonu](./quickstarts/python-train-extract.md)
+* [Výuka s popisky pomocí REST API a Pythonu](./quickstarts/python-labeled-data.md)

@@ -1,6 +1,6 @@
 ---
-title: Koncepce DevTest Labs | Dokumentace Microsoftu
-description: Další informace o základních konceptech služby DevTest Labs, a jak ho mohli ji snadno vytvářet, spravovat a monitorovat virtuální počítače Azure
+title: Koncepty DevTest Labs | Microsoft Docs
+description: Přečtěte si o základních konceptech DevTest Labs a o tom, jak usnadňuje vytváření, správu a monitorování virtuálních počítačů Azure.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,80 +14,80 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 08cae51da20b6093b284618de92c61aab4bf5b55
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22fd78ccd58be1790fcd167da396600e8b876564
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65508389"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428917"
 ---
-# <a name="devtest-labs-concepts"></a>Koncepce DevTest Labs
+# <a name="devtest-labs-concepts"></a>Koncepty DevTest Labs
 ## <a name="overview"></a>Přehled
-Následující seznam obsahuje klíčové koncepce DevTest Labs a definice:
+Následující seznam obsahuje klíčové pojmy a definice DevTest Labs:
 
 ## <a name="labs"></a>Testovací prostředí
-Testovací prostředí je infrastrukturu, která zahrnuje skupinu prostředků, třeba Virtual Machines (VM), která vám umožní lépe spravovat tyto prostředky zadáním omezení a kvóty.
+Testovací prostředí je infrastruktura, která zahrnuje skupinu prostředků, například Virtual Machines (virtuální počítače), která vám umožní lépe spravovat tyto prostředky zadáním limitů a kvót.
 
 ## <a name="virtual-machine"></a>Virtuální počítač
-Virtuální počítač Azure je jedním z několika typů [výpočetních prostředků na vyžádání, škálovatelné](/azure/architecture/guide/technology-choices/compute-decision-tree) , které Azure nabízí. Virtuální počítače Azure poskytují flexibilitu virtualizace bez nutnosti zakoupení a údržby fyzického hardwaru, na kterém běží, i když je stále potřeba údržbě virtuálního počítače pomocí provádí některé úkoly, jako jsou konfigurace, opravy a instalaci softwaru, který běží na ho.
+Virtuální počítač Azure je jedním z několika typů [škálovatelných výpočetních prostředků na vyžádání](/azure/architecture/guide/technology-choices/compute-decision-tree) , které Azure nabízí. Virtuální počítače Azure vám poskytnou flexibilitu virtualizace bez nutnosti koupit a udržovat fyzický hardware, na kterém je spuštěný, i když ho budete potřebovat k údržbě určitých úloh, jako je třeba konfigurace, opravy a instalace softwaru, na kterém běží. její.
 
-[Přehled virtuálních počítačů s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview) poskytuje informace o co byste měli zvážit před vytvoření virtuálního počítače, jak vytvořit a jak ho spravovat.
+[Přehled virtuálních počítačů s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview) vám poskytne informace o tom, co byste měli zvážit před vytvořením virtuálního počítače, jak ho vytvořit a jak ho spravovat.
 
-## <a name="claimable-vm"></a>Nárokovatelných virtuálních počítačů
-Nárokovatelných virtuálního počítače Azure je virtuální počítač, který je k dispozici žádný testovací prostředí uživatel s oprávněními. Správce testovacího prostředí můžete připravit virtuální počítače s konkrétním základní Image a artefakty a uložit je sdílený fond. Testovacího prostředí můžete pak deklarace identity uživatele funkčním virtuálním počítači z fondu, kdy potřebují s tuto konkrétní konfiguraci.
+## <a name="claimable-vm"></a>Vynucený virtuální počítač
+Virtuální počítač s nárokem na Azure je virtuální počítač, který je dostupný pro každého uživatele testovacího prostředí s oprávněními. Správce testovacího prostředí může připravit virtuální počítače se specifickými základními imagemi a artefakty a uložit je do sdíleného fondu. Uživatel testovacího prostředí pak může vyžádat pracovní virtuální počítač z fondu, když ho potřebují s touto konkrétní konfigurací.
 
-Virtuální počítač, který je nárokovatelných není přiřazen zpočátku na konkrétního uživatele, ale zobrazí se seznam všech uživatelů v části "Nárokovatelné virtuální počítače". Po virtuálního počítače je převzatá podle uživatele, je přesunuta do jejich "Moje virtual machines" oblasti a není už nárokovatelných žádný uživatel.
+Virtuální počítač, který je vynucený, se zpočátku nepřiřazuje žádnému konkrétnímu uživateli, ale zobrazí se v seznamu všech uživatelů v části "vynucené virtuální počítače". Až uživatel požadavek na virtuální počítač vyžádá, přesune se do oblasti moje virtuální počítače a už ho nebude moct používat žádný jiný uživatel.
 
 ## <a name="environment"></a>Prostředí
-Prostředí v DevTest Labs, odkazuje na kolekci prostředků Azure v testovacím prostředí. [Tento příspěvek na blogu](https://blogs.msdn.microsoft.com/devtestlab/2016/11/16/connect-2016-news-for-azure-devtest-labs-azure-resource-manager-template-based-environments-vm-auto-shutdown-and-more/) Tento článek popisuje postup vytvoření prostředí více virtuálních počítačů z šablon Azure Resource Manageru.
+V DevTest Labs prostředí odkazuje na kolekci prostředků Azure v testovacím prostředí. [Tento Blogový příspěvek](https://blogs.msdn.microsoft.com/devtestlab/2016/11/16/connect-2016-news-for-azure-devtest-labs-azure-resource-manager-template-based-environments-vm-auto-shutdown-and-more/) popisuje, jak vytvořit prostředí s více virtuálními počítači ze šablon Azure Resource Manager.
 
 ## <a name="base-images"></a>Základní image
-Základní Image jsou Image virtuálních počítačů pomocí nástroje a nastavení předem nainstalován a nakonfigurován k rychlému vytvoření virtuálního počítače. Zřízení virtuálního počítače vybrat existující základ a přidáním artefakt k instalaci testovacího agenta. Potom můžete uložit zřízených virtuálních počítačů jako základ tak, aby základní třídy lze použít bez nutnosti přeinstalovat agenta testu pro každý zřizování virtuálního počítače.
+Základní image jsou image virtuálních počítačů s předinstalovanými nástroji a nastavení, které jsou předinstalované a nakonfigurované pro rychlé vytvoření virtuálního počítače. Virtuální počítač můžete zřídit tak, že vybíráte stávající základnu a přidáte artefakt pro instalaci testovacího agenta. Zřízený virtuální počítač pak můžete uložit jako základní, aby bylo možné použít základ bez nutnosti přeinstalovat testovacího agenta pro každé zřizování virtuálního počítače.
 
-## <a name="artifacts"></a>Artefakty
-Artefakty se používají k nasazení a konfiguraci aplikace po zřízení virtuálního počítače. Artefakty mohou být:
+## <a name="artifacts"></a>Artifacts
+Artefakty slouží k nasazení a konfiguraci aplikace po zřízení virtuálního počítače. Artefakty mohou být:
 
-* Nástroje, které chcete nainstalovat do virtuálního počítače – například agenti, Fiddler a Visual Studio.
-* Akce, které chcete spustit na virtuálním počítači – třeba klonování úložiště.
+* Nástroje, které chcete na virtuálním počítači nainstalovat – například agenti, Fiddler a Visual Studio.
+* Akce, které chcete na virtuálním počítači spustit – například klonování úložiště.
 * Aplikace, které chcete otestovat
 
-Artefakty jsou [Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md) soubory JSON, které obsahují pokyny k nasazení a použití konfigurace.
+Artefakty jsou [Azure Resource Manager](../azure-resource-manager/management/overview.md) soubory JSON, které obsahují pokyny k provedení nasazení a použití konfigurace.
 
 ## <a name="artifact-repositories"></a>Úložiště artefaktů
-Úložiště artefaktů jsou úložiště git, kde se změnami artefakty. Úložiště artefaktů můžete přidat do více testovacích prostředí ve vaší organizaci povolení opakované použití a sdílení.
+Úložiště artefaktů jsou úložiště Git, ve kterých jsou artefakty vrácené se změnami. Úložiště artefaktů se dají přidat do více testovacích prostředí ve vaší organizaci, která umožňují opakované použití a sdílení.
 
-## <a name="formulas"></a>Vzorce
-Vzorce, kromě základní Image, poskytují mechanismus pro rychlé zřizování virtuálních počítačů. Vzorec ve službě DevTest Labs je seznam hodnot výchozí vlastnost použít k vytvoření testovacího prostředí virtuálních počítačů.
-Pomocí vzorců, které virtuální počítače se stejnou sadou vlastností – například základní image, velikost virtuálních počítačů, virtuální sítě a artefakty – je možné vytvářet bez nutnosti zadávat pokaždé, když tyto vlastnosti. Při vytváření virtuálního počítače ze vzorce, výchozí hodnoty může sloužit jako-je nebo upravit.
+## <a name="formulas"></a>vzorce
+Vzorce, kromě základních imagí, poskytují mechanismus pro rychlé zřizování virtuálních počítačů. Vzorec v DevTest Labs je seznam výchozích hodnot vlastností, které se používají k vytvoření testovacího virtuálního počítače.
+Se vzorci jsou virtuální počítače se stejnou sadou vlastností, jako je základní image, velikost virtuálního počítače, virtuální síť a artefakty – můžete vytvořit, aniž byste museli tyto vlastnosti zadávat pokaždé. Při vytváření virtuálního počítače ze vzorce se dají výchozí hodnoty použít jako nebo upravené.
 
 ## <a name="policies"></a>Zásady
-Zásady pomáhají při řízení nákladů ve vaší laboratoři. Například můžete vytvořit zásady jejich automatického vypínání virtuálních počítačů podle předem definovaného plánu.
+Zásady vám pomůžou řídit náklady v testovacím prostředí. Můžete například vytvořit zásadu pro automatické vypnutí virtuálních počítačů na základě definovaného plánu.
 
-## <a name="caps"></a>Omezení
-Omezení je mechanismus pro minimalizaci plýtvání ve vaší laboratoři. Například můžete nastavit limit chcete omezit počet virtuálních počítačů, které lze vytvořit na uživatele nebo v testovacím prostředí.
+## <a name="caps"></a>Caps
+CAPS je mechanismus pro minimalizaci odpadu v testovacím prostředí. Můžete například nastavit limit, který omezí počet virtuálních počítačů, které lze vytvořit pro jednotlivé uživatele, nebo v testovacím prostředí.
 
 ## <a name="security-levels"></a>Úrovně zabezpečení
-Zabezpečení přístupu je určen pomocí řízení přístupu Azure Role-Based (RBAC). Vysvětlení, jak funguje přístup, pomáhá pochopit rozdíly mezi oprávnění, role a obor dle RBAC.
+Přístup k zabezpečení je určený Access Control na základě rolí Azure (RBAC). Abyste porozuměli tomu, jak Access funguje, pomůže pochopit rozdíly mezi oprávněními, rolí a oborem definovaným pomocí RBAC.
 
-* Oprávnění – oprávnění je definované přístup k určité akce (například čtení pro všechny virtuální počítače).
-* Role - role je sadu oprávnění, které mohou být seskupeny a přiřazená uživateli. Například *vlastník předplatného* má role přístup ke všem prostředkům v rámci předplatného.
-* Rozsah - obor je úroveň v hierarchii k prostředku Azure, jako jsou skupiny prostředků, jednoho testovacího prostředí nebo celé předplatné.
+* Oprávnění – oprávnění je definovaný přístup k určité akci (např. přístup pro čtení ke všem virtuálním počítačům).
+* Role – role je sada oprávnění, která se dají seskupovat a přiřazovat uživateli. Například role *vlastníka předplatného* má přístup ke všem prostředkům v rámci předplatného.
+* Scope – obor je úroveň v rámci hierarchie prostředku Azure, jako je například skupina prostředků, jedna laboratoř nebo celé předplatné.
 
-V rámci oboru DevTest Labs, existují dva typy rolí k definování uživatelských oprávnění: vlastník testovacího prostředí a uživatele testovacího prostředí.
+V rámci rozsahu DevTest Labs existují dva typy rolí k definování uživatelských oprávnění: vlastník testovacího prostředí a uživatel testovacího prostředí.
 
-* Vlastník testovacího prostředí – vlastník testovacího prostředí má přístup k žádným prostředkům v rámci testovacího prostředí. Proto vlastník testovacího prostředí můžete upravovat zásady, číst a zapisovat všechny virtuální počítače, změnit virtuální síť atd.
-* Testovací prostředí uživatele – uživatele testovacího prostředí můžete zobrazit všechny prostředky testovacího prostředí, jako jsou virtuální počítače, zásady a virtuální sítě, ale nelze změnit zásady nebo všechny virtuální počítače vytvořené jinými uživateli.
+* Vlastník testovacího prostředí – vlastník testovacího prostředí má přístup k jakýmkoli prostředkům v rámci testovacího prostředí. Proto může vlastník testovacího prostředí upravovat zásady, číst a zapisovat všechny virtuální počítače, měnit virtuální síť a tak dále.
+* Uživatel testovacího prostředí – uživatel testovacího prostředí může zobrazit všechny prostředky testovacího prostředí, jako jsou virtuální počítače, zásady a virtuální sítě, ale nemůže měnit zásady ani žádné virtuální počítače vytvořené jinými uživateli.
 
-Chcete-li zjistit, jak vytvořit vlastní role ve službě DevTest Labs, najdete v článku [udělení uživatelských oprávnění na určitém laboratorním zásady](devtest-lab-grant-user-permissions-to-specific-lab-policies.md).
+Informace o tom, jak vytvářet vlastní role v DevTest Labs, najdete v článku o [udělení uživatelských oprávnění ke konkrétním zásadám testovacího prostředí](devtest-lab-grant-user-permissions-to-specific-lab-policies.md).
 
-Protože obory jsou hierarchické, když má uživatel oprávnění v určitém rozsahu, je automaticky udělena oprávnění v každé nižší úrovně oboru zahrnuta. Například pokud uživatel je přiřazena role vlastníka předplatného, pak mají přístup ke všem prostředkům v rámci předplatného, které zahrnují všechny virtuální počítače, všechny virtuální sítě a všechny testovací prostředí. Proto se vlastník předplatného automaticky dědí role vlastník testovacího prostředí. Ale opak není true. Vlastník testovacího prostředí má přístup k testovacím prostředí, které je obor nižší než úroveň předplatného. Vlastník testovacího prostředí proto nebudou moci zobrazit virtuální počítače nebo virtuální sítě nebo všechny prostředky, které se nachází mimo testovacího prostředí.
+Vzhledem k tomu, že obory jsou hierarchicky, když má uživatel oprávnění v určitém oboru, budou tato oprávnění automaticky udělena v každém rozsahu nižší úrovně, který zahrnuje. Pokud je například uživatel přiřazen k roli vlastníka předplatného, pak má přístup ke všem prostředkům v rámci předplatného, které zahrnují všechny virtuální počítače, všechny virtuální sítě a všechny laboratoře. Proto vlastník předplatného automaticky zdědí roli vlastníka testovacího prostředí. Opak však není pravda. Vlastník testovacího prostředí má přístup k testovacímu prostředí, což je nižší obor než úroveň předplatného. Proto vlastník testovacího prostředí nebude moci zobrazit virtuální počítače nebo virtuální sítě ani žádné prostředky, které nejsou mimo testovací prostředí.
 
 ## <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
-Všechny principy probírané v tomto článku můžete nakonfigurovat pomocí šablon Azure Resource Manageru, které umožňují definovat infrastruktury/konfigurace vašeho řešení Azure a opakovaně nasadit v konzistentním stavu.
+Všechny koncepty popsané v tomto článku se dají nakonfigurovat pomocí Azure Resource Manager šablon, které vám umožní definovat infrastrukturu a konfiguraci řešení Azure a opakovaně ho nasadit v konzistentním stavu.
 
-[Princip struktury a syntaxe šablon Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format) popisuje strukturu šablony Azure Resource Manageru a vlastnosti, které jsou k dispozici v různých částech šablony.
+[Pochopení struktury a syntaxe šablon Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format) popisuje strukturu Azure Resource Manager šablony a vlastností, které jsou k dispozici v různých částech šablony.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Vytvoření testovacího prostředí v DevTest Labs](devtest-lab-create-lab.md)

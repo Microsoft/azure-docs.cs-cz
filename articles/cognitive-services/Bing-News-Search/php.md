@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Proveďte hledání zpráv pomocí PHP a Vyhledávání zpráv Bingu REST API'
+title: 'Rychlý Start: provedení hledání zpráv pomocí PHP a Vyhledávání zpráv Bingu REST API'
 titleSuffix: Azure Cognitive Services
 description: Pomocí tohoto rychlého startu můžete odeslat požadavek do Vyhledávání zpráv Bingu REST API pomocí PHP a přijmout odpověď JSON.
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/18/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: b905993c88bd4425215dd83962980d8e46a7b943
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 79f00e4138d0fecdc7320235dd9c496033693d2b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423702"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383081"
 ---
-# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Rychlý start: Proveďte hledání zpráv pomocí PHP a Vyhledávání zpráv Bingu REST API
+# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Rychlý Start: provedení hledání zpráv pomocí PHP a Vyhledávání zpráv Bingu REST API
 
 V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Tato jednoduchá aplikace JavaScriptu odesílá vyhledávací dotaz do rozhraní API a zobrazuje nezpracované výsledky.
 
@@ -40,6 +40,7 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
 2. V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt PHP.
 3. Přidejte níže uvedený kód.
 4. Hodnotu `accessKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
+5. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 5. Spusťte program.
 
 ```php
@@ -197,7 +198,7 @@ echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Vytvoření jednostránkové webové aplikace](tutorial-bing-news-search-single-page-app.md)

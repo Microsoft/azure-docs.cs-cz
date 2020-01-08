@@ -1,6 +1,6 @@
 ---
-title: Přesunout aplikace z BizTalk Services do Azure Logic Apps
-description: Migrace z Azure BizTalk Services (MABS) do Azure Logic Apps
+title: Migrace aplikací z BizTalk Services do Azure Logic Apps
+description: Jak přesunout aplikace a řešení z Microsoft Azure BizTalk Services (MABS) do Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: jonfancey
@@ -8,14 +8,14 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: 97b498091451b0bf39741ed4340b8e02517c5447
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 10c9a1d3723ed30bee5437c3ab7a41308e253bd8
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791877"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666648"
 ---
-# <a name="migrate-from-biztalk-services-to-azure-logic-apps"></a>Migrace z BizTalk Services na Azure Logic Apps
+# <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>Migrace aplikací a řešení z BizTalk Services na Azure Logic Apps
 
 Vyřazení z Microsoft Azure BizTalk Services (MABS). Pokud chcete přesunout řešení pro integraci MABS do [Azure Logic Apps](../logic-apps/logic-apps-overview.md), postupujte podle pokynů v tomto článku. 
 
@@ -79,7 +79,7 @@ V BizTalk Services můžete přijímat různé typy zpráv XML a určit, jaké s
 
 Logic Apps poskytuje podobné možnosti. Pomocí různých triggerů konektoru (systém souborů, FTP, HTTP atd.) obdržíte plochý soubor přes různé protokoly a pomocí akce [plochý dekódovat soubory](../logic-apps/logic-apps-enterprise-integration-flatfile.md) převeďte data do XML. Stávající schémata plochých souborů můžete přesunout přímo do Logic Apps bez jakýchkoli změn a pak do svého účtu pro integraci nahrát schémata.
 
-### <a name="validation"></a>Ověření
+### <a name="validation"></a>Ověřování
 
 Poté, co jsou příchozí data převedena do formátu XML (nebo pokud byl XML přijat formátu zprávy), spustí ověřování a určí, zda zpráva dodržuje vaše schéma XSD. K provedení této úlohy v Logic Apps použijte akci [ověření XML](../logic-apps/logic-apps-enterprise-integration-xml-validation.md) . Můžete použít stejná schémata z BizTalk Services bez jakýchkoli změn.
 

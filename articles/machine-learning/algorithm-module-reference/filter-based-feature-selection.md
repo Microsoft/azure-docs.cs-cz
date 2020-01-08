@@ -1,7 +1,7 @@
 ---
 title: 'Výběr funkcí založených na filtrech: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul výběru funkcí založený na filtrech ve službě Azure Machine Learning k identifikaci funkcí v datové sadě s největším prediktivním výkonem.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul výběru funkcí založený na filtrech v Azure Machine Learning k identifikaci funkcí v datové sadě s největším prediktivním výkonem.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: f8ae4982f7602cd7403a78517fec79fa95d33aa2
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 43565a72ce795c4ee0142ec48c13842a8c43e604
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717199"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428530"
 ---
-# <a name="filter-based-feature-selection"></a>Výběr funkcí založených na filtrech
+# <a name="filter-based-feature-selection"></a>Výběr funkcí na základě filtrů
 
 Tento článek popisuje, jak použít modul výběru funkce založený na filtrech v Návrháři Azure Machine Learning (Preview). Tento modul vám pomůže identifikovat sloupce ve vstupní datové sadě, které mají největší prediktivní výkon. 
 
@@ -135,5 +135,5 @@ Pokud používáte korelaci Pearsonova s numerickou funkcí a popiskem kategori�
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro službu Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: d0ccfb00c4b45a2a29ccab74362a4296cdcd7cae
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: c1d7c8cc4b50682a74ac88b2113f0d44ebc55199
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595687"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644711"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Úprava kvót a omezení v Azure Data Lake Analytics
 
@@ -34,7 +34,7 @@ Pokud chcete tento limit přesáhnout, můžete vyzkoušet tyto možnosti:
 
 **Maximální počet jednotek analýzy (Austrálie) na účet:** 250, výchozí hodnota: 32
 
-Toto je maximální počet jednotek Austrálie, které mohou běžet souběžně ve vašem účtu. Pokud celkový počet provozního prostředí Austrálie napříč všemi úlohami překročí tento limit, novější úlohy se automaticky zařadí do fronty. Například:
+Toto je maximální počet jednotek Austrálie, které mohou běžet souběžně ve vašem účtu. Pokud celkový počet provozního prostředí Austrálie napříč všemi úlohami překročí tento limit, novější úlohy se automaticky zařadí do fronty. Příklad:
 
 * Pokud máte pouze jednu úlohu spuštěnou s 32 jednotkou Austrálie, při odeslání druhé úlohy bude čekat ve frontě úloh až do dokončení první úlohy.
 * Pokud už máte spuštěné čtyři úlohy a každý z nich používá 8 jednotek Austrálie, odešlete pátý úkol, který potřebuje 8 jednotek analýzy, dokud nebude k dispozici 8 jednotek Austrálie.
@@ -58,7 +58,7 @@ Toto je maximální počet úloh, které mohou běžet souběžně ve vašem ú�
 
 ## <a name="increase-maximum-quota-limits"></a>Zvýšení maximálních limitů kvót
 
-Další informace o omezeních Azure najdete v [dokumentaci k omezením specifickým pro službu Azure](../azure-subscription-service-limits.md#data-lake-analytics-limits).
+Další informace o omezeních Azure najdete v [dokumentaci k omezením specifickým pro službu Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-analytics-limits).
 
 1. Otevřete žádost o podporu v Azure Portal.
 

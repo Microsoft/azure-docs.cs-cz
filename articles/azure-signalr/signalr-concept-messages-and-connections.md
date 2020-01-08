@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 2785d85db47ed3b214044e673566a2837b83e984
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 5f6428231a3639738e8fb52e7dc3f2f2a3d2a26e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285490"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392815"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Zprávy a připojení ve službě Azure Signal Service
 
@@ -38,8 +38,6 @@ Zprávy větší než 2 KB se počítají jako různé zprávy o velikosti 2 KB.
 
 Představte si například, že máte tři klienty a jeden aplikační server. Jeden klient pošle zprávu o 4 KB, aby mohl server vysílat všem klientům. Počet zpráv je 8: jedna zpráva od služby k aplikačnímu serveru a tři zprávy od služby ke klientům. Každá zpráva se počítá jako dvě zprávy o 2 KB.
 
-Počet zpráv zobrazený v Azure Portal zůstane 0, dokud nebude nahromadění na více než 100.
-
 ## <a name="how-connections-are-counted"></a>Jak se počítají připojení
 
 K dispozici jsou připojení serveru a klientská připojení ke službě Azure Signal Service. Ve výchozím nastavení každý aplikační server začíná pět počátečních připojení na jeden rozbočovač a každý klient má jedno připojení klienta.
@@ -54,7 +52,7 @@ Během životnosti aplikačního serveru udržuje služba a aplikační server s
 
 ## <a name="how-inboundoutbound-traffic-is-counted"></a>Jak se počítají příchozí a odchozí přenosy
 
-Rozdíl mezi příchozím provozem a odchozím provozem je založený na perspektivě služby Azure Signal. Provoz se počítá v bajtech. Podobně jako u počtu zpráv má provoz také vzorkovací frekvenci. Příchozí/odchozí graf v Azure Portal se aktualizuje každých 100 KB na jeden hub.
+Rozdíl mezi příchozím provozem a odchozím provozem je založený na perspektivě služby Azure Signal. Provoz se počítá v bajtech.
 
 ## <a name="related-resources"></a>Související materiály
 

@@ -1,33 +1,35 @@
 ---
 title: Použití rozhraní příkazového řádku Azure k vytvoření SAS pro delegování uživatelů pro kontejner nebo objekt BLOB
 titleSuffix: Azure Storage
-description: Naučte se, jak pomocí Azure CLI vytvořit delegování uživatelů (ve verzi Preview) s přihlašovacími údaji pro Azure Active Directory.
+description: Naučte se vytvářet delegování uživatelů pomocí Azure Active Directory přihlašovacích údajů pomocí Azure CLI.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 85f49799472c92770cc8a503a5a1be0b496387f7
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e1a81b25042501a166cee122279d21e3702cd419
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892545"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371985"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli-preview"></a>Vytvoření SAS delegování uživatele pro kontejner nebo objekt BLOB pomocí rozhraní příkazového řádku Azure (Preview)
+# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>Vytvoření SAS delegování uživatele pro kontejner nebo objekt BLOB pomocí Azure CLI
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-V tomto článku se dozvíte, jak používat přihlašovací údaje pro Azure Active Directory (Azure AD) k vytvoření SAS pro delegování uživatelů pro kontejner nebo objekt BLOB pomocí Azure CLI (Preview).
+Tento článek popisuje, jak pomocí pověření Azure Active Directory (Azure AD) vytvořit přidružení zabezpečení delegování uživatelů pro kontejner nebo objekt BLOB pomocí Azure CLI.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
 ## <a name="install-the-latest-version-of-the-azure-cli"></a>Instalace nejnovější verze rozhraní příkazového řádku Azure
 
 Pokud chcete pomocí Azure CLI zabezpečit SAS pomocí přihlašovacích údajů Azure AD, nejdřív se ujistěte, že máte nainstalovanou nejnovější verzi Azure CLI. Další informace o instalaci rozhraní příkazového řádku Azure najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
+
+Pokud chcete vytvořit SAS delegování uživatele pomocí Azure CLI, ujistěte se, že máte nainstalovanou verzi 2.0.78 nebo novější. Chcete-li ověřit nainstalovanou verzi, použijte příkaz `az --version`.
 
 ## <a name="sign-in-with-azure-ad-credentials"></a>Přihlášení pomocí přihlašovacích údajů Azure AD
 

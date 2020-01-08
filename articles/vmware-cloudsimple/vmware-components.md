@@ -1,5 +1,6 @@
 ---
-title: Řešení Azure VMware podle CloudSimple – komponenty VMware privátního cloudu
+title: Komponenty VMware privátního cloudu
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Popisuje, jak jsou komponenty VMware nainstalovány v privátním cloudu.
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: bd83cff243c94ed62014ff95f6ca7c4e878f6af7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9c9b80cd4d8a7a7ac5597d10bbb87095564bd461
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814570"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452323"
 ---
 # <a name="private-cloud-vmware-components"></a>Komponenty VMware privátního cloudu
 
@@ -28,12 +29,12 @@ Privátní cloud je izolovaný systém VMware Stack (ESXi hosts, vCenter, síti 
 
 Zásobník VMware privátního cloudu je nasazený s následující verzí softwaru.
 
-| Komponenta | Version | Licencovaná verze |
+| Součást | Verze | Licencovaná verze |
 |-----------|---------|------------------|
 | ESXi | 6.7 U2 | Enterprise Plus |
 | vCenter | 6.7 U2 | vCenter úrovně Standard |
 | vSAN | 6.7 | Enterprise |
-| Datové centrum NSX | 2.4.1 | Upřesnit |
+| Datové centrum NSX | 2.4.1 | Rozšířený |
 
 ## <a name="esxi"></a>ESXi
 
@@ -47,7 +48,7 @@ zařízení vCenter Server (VCSA) poskytuje funkce ověřování, správy a orch
 
 ### <a name="vcenter-single-sign-on"></a>jednotné přihlašování vCenter
 
-Služba Embedded Platform Service Controller v VCSA je přidružená k **doméně vCenter s jednotným přihlašováním**.  Název domény je **cloudsimple. Local**.  Pro přístup k **CloudOwner@cloudsimple.com** serveru vCenter se vytvoří výchozí uživatel.  Pro vCenter můžete přidat své místní nebo [zdroje identit](set-vcenter-identity.md)služby Azure Active Directory.
+Služba Embedded Platform Service Controller v VCSA je přidružená k **doméně vCenter s jednotným přihlašováním**.  Název domény je **cloudsimple. Local**.  Pro přístup k serveru vCenter se vytvoří výchozí uživatel **CloudOwner@cloudsimple.com** .  Pro vCenter můžete přidat své místní nebo [zdroje identit](set-vcenter-identity.md)služby Azure Active Directory.
 
 ## <a name="vsan-storage"></a>úložiště síti vSAN
 
@@ -61,7 +62,7 @@ Následující tabulka ukazuje výchozí parametry zásad úložiště síti vSA
 
 | Počet uzlů v clusteru vSphere | FTT | Metoda odolnosti proti chybám |
 |------------------------------------|-----|--------------------------|
-| 3 a 4 uzly | 1 | RAID 1 (zrcadlení) – vytvoří 2 kopie. |
+| 3 a 4 uzly | 1\. místo | RAID 1 (zrcadlení) – vytvoří 2 kopie. |
 | 5 až 16 uzlů | 2 | RAID 1 (zrcadlení) – vytvoří 3 kopie. |
 
 ## <a name="nsx-data-center"></a>Datové centrum NSX
@@ -81,11 +82,11 @@ Datové centrum NSX poskytuje virtualizaci sítě, mikrosegmentaci a možnosti z
 
 ## <a name="vsphere-cluster"></a>cluster vSphere
 
-Hostitelé ESXi jsou nakonfigurováni jako cluster, aby zajistili vysokou dostupnost privátního cloudu.  Při vytváření privátního cloudu jsou součásti pro správu nástroje vSphere nasazeny do prvního clusteru.  Pro součásti pro správu je vytvořen fond zdrojů a všechny virtuální počítače pro správu jsou nasazeny v tomto fondu zdrojů. První cluster se nedá odstranit, aby se zmenšil jeho privátní cloud.  cluster vSphere poskytuje vysokou dostupnost pro virtuální počítače s využitím **VSPHERE ha**.  Selhání k tolerování vycházejí z počtu dostupných uzlů v clusteru.  Můžete použít vzorec ```Number of nodes = 2N+1``` , ve kterém ```N``` je počet nedovolených odtolerovatcích.
+Hostitelé ESXi jsou nakonfigurováni jako cluster, aby zajistili vysokou dostupnost privátního cloudu.  Při vytváření privátního cloudu jsou součásti pro správu nástroje vSphere nasazeny do prvního clusteru.  Pro součásti pro správu je vytvořen fond zdrojů a všechny virtuální počítače pro správu jsou nasazeny v tomto fondu zdrojů. První cluster se nedá odstranit, aby se zmenšil jeho privátní cloud.  cluster vSphere poskytuje vysokou dostupnost pro virtuální počítače s využitím **VSPHERE ha**.  Selhání k tolerování vycházejí z počtu dostupných uzlů v clusteru.  Můžete použít vzorec ```Number of nodes = 2N+1```, kde ```N``` počet selhání, která se mají tolerovat.
 
 ### <a name="vsphere-cluster-limits"></a>omezení clusteru vSphere
 
-| Resource | Omezení |
+| Prostředek | škálování |
 |----------|-------|
 | Minimální počet uzlů pro vytvoření privátního cloudu (první cluster vSphere) | 3 |
 | Maximální počet uzlů v clusteru vSphere v privátním cloudu | 16 |
@@ -116,6 +117,6 @@ CloudSimple testuje kritickou opravu zabezpečení, jakmile bude k dispozici z V
 
 CloudSimple poskytuje čtvrtletní aktualizace pro softwarové komponenty VMware. Když je k dispozici nová hlavní verze softwaru VMware, CloudSimple spolupracuje se zákazníky na koordinaci vhodného časového období údržby pro upgrade.  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Údržba a aktualizace CloudSimple](cloudsimple-maintenance-updates.md)

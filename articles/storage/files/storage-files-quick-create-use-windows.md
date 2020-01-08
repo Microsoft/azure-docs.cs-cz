@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start Azure – vytvoření a použití sdílené složky Azure Files na virtuálních počítačích s Windows | Microsoft Docs
+title: Vytvoření a použití sdílené složky Azure Files na virtuálních počítačích s Windows
 description: V tomto rychlém startu nastavíte sdílenou složku souborů Azure v Azure Portal a připojíte ji k virtuálnímu počítači s Windows. Připojíte se ke sdílené složce souborů, nahrajte soubor do sdílené složky soubory. Pak pořídíte snímek sdílené složky, upravíte soubor ve sdílené složce a obnovíte předchozí snímek sdílené složky souborů.
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 22c2f3b91b650bcdbf8eb7368023e068a397323f
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 6bbab0ee2eefe6e86c150d5bddab4f8e91a7c92d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305832"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463912"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Rychlý Start: vytvoření a Správa sdílené složky Azure Files s virtuálními počítači s Windows
 
@@ -22,7 +22,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="prepare-your-environment"></a>Příprava prostředí
 

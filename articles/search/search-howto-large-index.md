@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: bd158eaf22025a64d7464c632d3f0fa510a4b5a3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 12/17/2019
+ms.openlocfilehash: b4b6c57b08de07cae431f015c8d8f53cdf3a50a4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793767"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460742"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Indexování velkých datových sad v Azure Kognitivní hledání
 
@@ -34,7 +34,7 @@ Dávkové indexování je implementováno pro jednotlivé požadavky pomocí RES
 
 ## <a name="option-2-add-resources"></a>Možnost 2: Přidání prostředků
 
-Služby, které jsou zřízené na jedné ze [standardních cenových úrovní](search-sku-tier.md) , často využívají kapacitu pro úložiště i úlohy (dotazy nebo indexování), což [zvyšuje množství a repliky](search-capacity-planning.md) , které představují zjevné řešení pro načítají se větší datové sady. Pro dosažení nejlepších výsledků budete potřebovat oba prostředky: oddíly pro úložiště a repliky pro práci s přijímáním dat.
+Služby, které jsou zřízené na jedné ze [standardních cenových úrovní](search-sku-tier.md) , často využívají kapacitu pro úložiště i úlohy (dotazy nebo indexování), což [zvyšuje počet a velikost replik](search-capacity-planning.md) , které představují zjevné řešení pro využívání větších datových sad. Pro dosažení nejlepších výsledků budete potřebovat oba prostředky: oddíly pro úložiště a repliky pro práci s přijímáním dat.
 
 Zvýšení počtu replik a oddílů jsou Fakturovatelné události, které zvyšují vaše náklady, ale pokud v rámci maximálního zatížení nebudete průběžně indexovat, můžete přidat škálování po dobu trvání procesu indexování a potom po indexování změnit úrovně prostředků směrem dolů. píše.
 
@@ -74,7 +74,7 @@ Paralelní zpracování má tyto prvky:
 + Naplánujte, aby se všechny indexery spouštěly ve stejnou dobu.
 
 > [!NOTE]
-> Azure Kognitivní hledání nepodporuje vyhradování replik ani oddílů na konkrétní úlohy. Riziko těžkého souběžného indexování přetěžují systém na nevýhodu výkonu dotazů. Pokud máte testovací prostředí, implementujte paralelní indexování nejprve pro pochopení kompromisů.
+> V Azure Kognitivní hledání nemůžete přiřadit jednotlivé repliky nebo oddíly k indexování nebo zpracování dotazů. Systém Určuje, jak se prostředky používají. Aby bylo možné pochopit dopad na výkon dotazů, můžete si před přechodem do provozu vyzkoušet paralelní indexování v testovacím prostředí.  
 
 ### <a name="how-to-configure-parallel-indexing"></a>Jak nakonfigurovat paralelní indexování
 

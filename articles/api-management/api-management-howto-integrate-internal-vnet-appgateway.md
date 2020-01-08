@@ -1,5 +1,6 @@
 ---
-title: Jak používat Azure API Management v Virtual Network s Application Gateway | Microsoft Docs
+title: Použití API Management v Virtual Network s Application Gateway
+titleSuffix: Azure API Management
 description: Přečtěte si, jak nastavit a nakonfigurovat Azure API Management v interních Virtual Network s Application Gateway (WAF) jako front-endu.
 services: api-management
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: d1ab7089ba76890488aa73d03e0fd9fc8efbe4d5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4e4d4c69eb51e0058d3b6b561b5167051079bf89
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176741"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442693"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrace API Management v interní virtuální síti s Application Gateway
 
@@ -34,7 +35,7 @@ Kombinování API Management zřízené v interní virtuální síti s Applicati
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -88,7 +89,7 @@ V této příručce zveřejníme také portál pro **vývojáře** pro externí 
 > [!WARNING]
 > Chcete-li zabránit Application Gateway WAF z narušení stahování specifikace OpenAPI na portálu pro vývojáře, je nutné zakázat `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`pravidla brány firewall.
 
-## <a name="create-a-resource-group-for-resource-manager"></a>Vytvořte skupinu prostředků pro Resource Manager
+## <a name="create-a-resource-group-for-resource-manager"></a>Vytvoření skupiny prostředků pro Resource Manager
 
 ### <a name="step-1"></a>Krok 1
 

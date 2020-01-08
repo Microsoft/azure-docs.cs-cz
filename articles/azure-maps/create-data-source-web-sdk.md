@@ -7,14 +7,14 @@ ms.date: 08/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: ''
+manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 36c06182d0807ce3d255477a865023ae7b74e2cb
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: b83a66296d54a179a56e37de199ec900ae23a1db
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874934"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433015"
 ---
 # <a name="create-a-data-source"></a>Vytvoření zdroje dat
 
@@ -22,11 +22,11 @@ Sada Azure Maps Web SDK ukládá data do zdrojů dat, která optimalizují data 
 
 **Zdroj dat pro injson**
 
-Zdroj dat založený na bázi JSON může načíst a uložit data místně pomocí `DataSource` třídy. Data typu injson lze ručně vytvořit nebo vytvořit pomocí tříd pomocníka v oboru názvů [Atlas. data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) . `DataSource` Třída poskytuje funkce pro import místních nebo vzdálených souborů injson. Vzdálené soubory typu injson musí být hostované na koncovém bodu s povoleným CORs. `DataSource` Třída poskytuje funkce pro data bodu clusteringu. Data je možné snadno přidat, odebrat a aktualizovat pomocí `DataSource` třídy.
+Zdroj dat založený na bázi JSON může načítat a ukládat data místně pomocí `DataSource` třídy. Data typu injson lze ručně vytvořit nebo vytvořit pomocí tříd pomocníka v oboru názvů [Atlas. data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) . Třída `DataSource` poskytuje funkce pro import místních nebo vzdálených souborů injson. Vzdálené soubory typu injson musí být hostované na koncovém bodu s povoleným CORs. Třída `DataSource` poskytuje funkce pro data bodu clusteringu. Data je možné snadno přidat, odebrat a aktualizovat pomocí `DataSource` třídy.
 
 
 > [!TIP]
-> Pokud chcete přepsat všechna data v `DataSource`, pokud provedete volání `clear` funkcí then `add` , mapa se pokusí znovu vykreslit dvakrát, což by mohlo způsobit zpoždění. Místo toho použijte `setShapes` funkci, která odebere a nahradí všechna data ve zdroji dat a aktivuje pouze jedno opakované vykreslování mapy.
+> Pokud chcete přepsat všechna data v `DataSource`, pokud provedete volání `clear` potom `add` funkce, mapa se pokusí znovu vykreslit dvakrát, což by mohlo způsobit zpoždění. Místo toho použijte funkci `setShapes`, která odebere a nahradí všechna data ve zdroji dat a aktivuje pouze jedno opakované vykreslování mapy.
 
 **Zdroj vektorové dlaždice**
 
@@ -37,9 +37,9 @@ Zdroj vektorové dlaždice popisuje, jak přistupovat k vrstvě vektorové dlaž
  - Změna stylu dat ve vektorových mapách nepotřebuje stahovat data znovu, protože na klienta lze použít nový styl. Naopak změna stylu vrstvy rastrových dlaždic obvykle vyžaduje načítání dlaždic ze serveru, na kterém je použit nový styl.
  - Vzhledem k tomu, že data jsou doručena v vektorovém formátu, je nutné pro přípravu dat použít méně zpracování na straně serveru, což znamená, že je možné rychleji zpřístupnit novější data.
 
-Všechny vrstvy, které používají vektorový zdroj, musí `sourceLayer` určovat hodnotu. 
+Všechny vrstvy, které používají zdroj vektoru musí určovat `sourceLayer` hodnotu. 
 
-Po vytvoření se zdroje dat dají přidat do mapy prostřednictvím `map.sources` vlastnosti, která je [SourceManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager). Následující kód ukazuje, jak vytvořit `DataSource` a přidat ho do mapy.
+Po vytvoření lze zdroje dat přidat do mapy prostřednictvím vlastnosti `map.sources`, což je [SourceManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager). Následující kód ukazuje, jak vytvořit `DataSource` a jak ho přidat do mapy.
 
 ```javascript
 //Create a data source and add it to the map.
@@ -117,7 +117,7 @@ var bubbleLayer = new atlas.layer.BubbleLayer(dataSource, 'myBubbleLayer', {
 map.layers.add([polygonLayer, lineLayer, bubbleLayer]);
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o třídách a metodách, které se používají v tomto článku:
 

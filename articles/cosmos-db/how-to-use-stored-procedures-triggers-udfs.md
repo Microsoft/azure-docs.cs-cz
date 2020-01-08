@@ -1,27 +1,27 @@
 ---
-title: Volání uložených procedur, triggerů a uživatelsky definovaných funkcí pomocí Azure Cosmos DB SDK
+title: Registrace a použití uložených procedur, triggerů a uživatelsky definovaných funkcí v sadách Azure Cosmos DB SDK
 description: Naučte se registrovat a volat uložené procedury, triggery a uživatelsky definované funkce pomocí sad Azure Cosmos DB SDK.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: 3cc144c1b8748710f0500b6ca2a418cd8bf5a2b7
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 5aea7c0b6b2008724a4a84bca7a63ae745f2dd1b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104833"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441739"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Postup při registraci a používání uložených procedur, triggerů a uživatelsky definovaných funkcí v Azure Cosmos DB
 
-Rozhraní SQL API v Azure Cosmos DB podporuje registraci a vyvolání uložených procedur, triggerů a uživatelsky definovaných funkcí (UDF) zapsaných v JavaScriptu. K registraci a vyvolání uložených procedur můžete použít sady SDK rozhraní API [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node. js](sql-api-sdk-node.md)nebo [Python](sql-api-sdk-python.md) . Po definování jednoho nebo více uložených procedur, triggerů a uživatelsky definovaných funkcí je můžete načíst a zobrazit v [Azure Portal](https://portal.azure.com/) pomocí Průzkumník dat.
+Rozhraní SQL API ve službě Azure Cosmos DB podporuje registraci a vyvolávání uložených procedur, triggerů a funkcí definovaných uživatelem napsaných v JavaScriptu. K registraci a vyvolání uložených procedur můžete použít sady SDK rozhraní API [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node. js](sql-api-sdk-node.md)nebo [Python](sql-api-sdk-python.md) . Po definování jednoho nebo více uložených procedur, triggerů a uživatelsky definovaných funkcí je můžete načíst a zobrazit v [Azure Portal](https://portal.azure.com/) pomocí Průzkumník dat.
 
 ## <a id="stored-procedures"></a>Spuštění uložených procedur
 
 Uložené procedury jsou zapisovány pomocí JavaScriptu. Můžou vytvářet, aktualizovat, číst, dotazovat a odstraňovat položky v rámci kontejneru Azure Cosmos. Další informace o tom, jak zapisovat uložené procedury v Azure Cosmos DB, najdete v tématu [Postup zápisu uložených procedur v Azure Cosmos DB](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures) článku.
 
-Následující příklady ukazují, jak registrovat a volat uloženou proceduru pomocí sad Azure Cosmos DB SDK. Odkaz na [Vytvoření dokumentu můžete vytvořit](how-to-write-stored-procedures-triggers-udfs.md#create-an-item) jako zdroj pro tuto uloženou proceduru, `spCreateToDoItem.js`která se uloží jako.
+Následující příklady ukazují, jak registrovat a volat uloženou proceduru pomocí sad Azure Cosmos DB SDK. Odkaz na [Vytvoření dokumentu můžete vytvořit](how-to-write-stored-procedures-triggers-udfs.md#create-an-item) jako zdroj pro tuto uloženou proceduru, která se uloží jako `spCreateToDoItem.js`.
 
 > [!NOTE]
 > U dělených kontejnerů při provádění uložené procedury musí být v možnostech žádosti uvedena hodnota klíče oddílu. Uložené procedury jsou vždy vymezeny na klíč oddílu. Položky, které mají jinou hodnotu klíče oddílu, nebudou viditelné pro uloženou proceduru. To se také aplikuje i na triggery.
@@ -144,7 +144,7 @@ Následující příklad ukazuje, jak registrovat uloženou proceduru pomocí sa
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
 const sprocId = "spCreateToDoItem";
-await container.storedProcedures.create({
+await container.scripts.storedProcedures.create({
     id: sprocId,
     body: require(`../js/${sprocId}`)
 });
@@ -161,7 +161,7 @@ const newItem = [{
 }];
 const container = client.database("myDatabase").container("myContainer");
 const sprocId = "spCreateToDoItem";
-const {body: result} = await container.storedProcedure(sprocId).execute(newItem, {partitionKey: newItem[0].category});
+const {body: result} = await container.scripts.storedProcedure(sprocId).execute(newItem, {partitionKey: newItem[0].category});
 ```
 
 ### <a name="stored-procedures---python-sdk"></a>Uložené procedury – Python SDK
@@ -194,9 +194,9 @@ client.ExecuteStoredProcedure(sproc_link, new_item, {'partitionKey': 'Personal'}
 
 ## <a id="pre-triggers"></a>Jak spustit předběžné triggery
 
-Následující příklady ukazují, jak registrovat a volat předběžnou Trigger pomocí sad Azure Cosmos DB SDK. Podívejte se na [příklad](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers) předběžného triggeru, protože zdroj pro tuto předběžnou aktivační událost `trgPreValidateToDoItemTimestamp.js`je uložen jako.
+Následující příklady ukazují, jak registrovat a volat předběžnou Trigger pomocí sad Azure Cosmos DB SDK. Podívejte se na [příklad předběžného triggeru](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers) , protože zdroj pro tuto předběžnou aktivační událost je uložený jako `trgPreValidateToDoItemTimestamp.js`.
 
-Při spuštění jsou předběžné triggery předány do objektu RequestOptions zadáním `PreTriggerInclude` a následným předáním názvu triggeru do objektu list.
+Při spuštění jsou předběžné triggery předány do objektu RequestOptions zadáním `PreTriggerInclude` a poté předáním názvu triggeru do objektu list.
 
 > [!NOTE]
 > I když se název triggeru předává jako seznam, můžete i tak spustit jenom jednu Trigger na operaci.
@@ -352,7 +352,7 @@ client.CreateItem(container_link, item, {
 
 ## <a id="post-triggers"></a>Spuštění po triggerech
 
-Následující příklady ukazují, jak registrovat aktivační událost pomocí sad Azure Cosmos DB SDK. Podívejte se na [příklad po triggeru](how-to-write-stored-procedures-triggers-udfs.md#post-triggers) , který označuje, že zdroj pro tuto aktivační událost je `trgPostUpdateMetadata.js`uložen jako.
+Následující příklady ukazují, jak registrovat aktivační událost pomocí sad Azure Cosmos DB SDK. Jako zdroj pro tuto aktivační událost použijte [příklad po triggeru](how-to-write-stored-procedures-triggers-udfs.md#post-triggers) , který je uložený jako `trgPostUpdateMetadata.js`.
 
 ### <a name="post-triggers---net-sdk-v2"></a>Post-Triggers – .NET SDK v2
 
@@ -499,7 +499,7 @@ client.CreateItem(container_link, item, {
 
 ## <a id="udfs"></a>Jak pracovat s uživatelsky definovanými funkcemi
 
-Následující příklady ukazují, jak registrovat uživatelsky definovanou funkci pomocí sad Azure Cosmos DB SDK. Podívejte se na tento [příklad uživatelsky definované funkce](how-to-write-stored-procedures-triggers-udfs.md#udfs) , protože zdroj pro tuto aktivační událost je uložen jako `udfTax.js`.
+Následující příklady ukazují, jak registrovat uživatelsky definovanou funkci pomocí sad Azure Cosmos DB SDK. Použijte tento [příklad uživatelsky definované funkce](how-to-write-stored-procedures-triggers-udfs.md#udfs) , protože zdroj pro tuto aktivační událost je uložený jako `udfTax.js`.
 
 ### <a name="user-defined-functions---net-sdk-v2"></a>Uživatelsky definované funkce – .NET SDK v2
 

@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: d9b2dc7432ee1b847c8c7900a3e91daa71b5a771
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d45cf8d951eb542e248a3ff4fe714b4d2af90cc7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793203"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428731"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Vytvoření šablon Azure Resource Manager pro automatizaci nasazení pro Azure Logic Apps
 
-Tento článek popisuje způsoby, jak můžete vytvořit [šablonu Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) pro aplikaci logiky, která vám umožní automatizovat vytváření a nasazení aplikace logiky. Přehled struktury a syntaxe pro šablonu, která obsahuje definici pracovního postupu a další prostředky nezbytné pro nasazení, najdete v tématu [Přehled: Automatizace nasazení pro Logic Apps pomocí šablon Azure Resource Manager](logic-apps-azure-resource-manager-templates-overview.md).
+Tento článek popisuje způsoby, jak můžete vytvořit [šablonu Azure Resource Manager](../azure-resource-manager/management/overview.md) pro aplikaci logiky, která vám umožní automatizovat vytváření a nasazení aplikace logiky. Přehled struktury a syntaxe pro šablonu, která obsahuje definici pracovního postupu a další prostředky nezbytné pro nasazení, najdete v tématu [Přehled: Automatizace nasazení pro Logic Apps pomocí šablon Azure Resource Manager](logic-apps-azure-resource-manager-templates-overview.md).
 
 Azure Logic Apps poskytuje [předem vytvořenou šablonu Azure Resource Manager aplikace logiky](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) , kterou můžete použít, nejen pro vytváření aplikací logiky, ale také k definování prostředků a parametrů, které se mají použít pro nasazení. Tuto šablonu můžete použít pro vlastní obchodní scénáře nebo šablonu přizpůsobit, aby splňovala vaše požadavky.
 
@@ -24,8 +24,8 @@ Azure Logic Apps poskytuje [předem vytvořenou šablonu Azure Resource Manager 
 
 Další informace o Azure Resource Manager šablonách najdete v těchto tématech:
 
-* [Azure Resource Manager struktura a syntaxe šablony](../azure-resource-manager/resource-group-authoring-templates.md)
-* [Vytváření šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure Resource Manager struktura a syntaxe šablony](../azure-resource-manager/templates/template-syntax.md)
+* [Vytváření šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md)
 * [Vývoj šablon Azure Resource Manageru pro konzistenci cloudu](../azure-resource-manager/templates-cloud-consistency.md)
 
 <a name="visual-studio"></a>

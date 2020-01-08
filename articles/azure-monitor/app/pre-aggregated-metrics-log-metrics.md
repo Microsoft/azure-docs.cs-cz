@@ -8,14 +8,14 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: e0a0784c6331bdf4575f5c044c67cf9b4df3152f
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 384e3c9032b324ee92762db9156c628a05e5e862
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820670"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406592"
 ---
-# <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Neagregované metriky založené na protokolu a Application Insights
+# <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Metriky založené na protokolech a předem agregované metriky ve službě Application Insights
 
 Tento článek vysvětluje rozdíl mezi tradičními Application Insights metrikami, které jsou založené na protokolech, a předem agregované metriky, které jsou aktuálně ve verzi Public Preview. Oba typy metrik jsou k dispozici uživatelům Application Insights a každá z nich přináší jedinečnou hodnotu v monitorování stavu aplikací, diagnostiky a analýz. Vývojáři, kteří instrumentují aplikace, mohou rozhodnout, který typ metriky je nejvhodnější pro konkrétní scénář, v závislosti na velikosti aplikace, očekávaném objemu telemetrie a obchodních požadavcích na přesnost metrik a výstrahy.
 
@@ -41,13 +41,13 @@ Novější sady SDK ([Application Insights 2,7](https://www.nuget.org/packages/M
 
 Pro sady SDK, které neimplementují předagregační (to znamená starší verze sady Application Insights SDK nebo instrumentace prohlížeče) Application Insights back-end pořád naplní nové metriky agregací událostí přijatých aplikací. Koncový bod shromažďování událostí pro přehledy To znamená, že i když nebudete mít omezený objem dat přenášených po síti, můžete stále používat předem agregované metriky a využívat lepší výkon a podporu pro multidimenzionální upozorňování v reálném čase pomocí sad SDK, které ne předem agregované metriky během shromažďování.
 
-Je třeba uvést, že koncový bod kolekce před pokračováním vzorkování předem agreguje události, což znamená, že [vzorkování](https://docs.microsoft.com/azure/application-insights/app-insights-sampling) ingest nebude nikdy ovlivňovat přesnost předagregované metriky bez ohledu na to, jakou verzi SDK používáte s vaším použití.  
+Je třeba uvést, že koncový bod kolekce před pokračováním vzorkování předem agreguje události, což znamená, že [vzorkování](https://docs.microsoft.com/azure/application-insights/app-insights-sampling) ingest nebude nikdy ovlivňovat přesnost předagregovaných metrik bez ohledu na verzi sady SDK, kterou používáte spolu s vaší aplikací.  
 
 ## <a name="using-pre-aggregation-with-application-insights-custom-metrics"></a>Použití předagregačních s Application Insights vlastními metrikami
 
 Můžete použít předběžnou agregaci s vlastními metrikami. Tyto dvě hlavní výhody jsou možností konfigurace a upozornění na dimenzi vlastní metriky a snížení objemu dat odesílaných ze sady SDK do koncového bodu kolekce Application Insights.
 
-Existuje několik [způsobů, jak odesílat vlastní metriky ze sady SDK Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics). Pokud vaše verze sady SDK nabízí metody [getmetric a TrackValue](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#getmetric) , jedná se o preferovaný způsob, jak odesílat vlastní metriky, protože v tomto případě je předběžná agregace v rámci sady SDK, nejen zmenšuje objem dat uložených v Azure, ale také svazek. data přenesená ze sady SDK do Application Insights. V opačném případě použijte metodu [trackMetric](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackmetric) , která bude během příjmu dat předem agregovat události metriky.
+Existuje několik [způsobů, jak odesílat vlastní metriky ze sady SDK Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics). Pokud vaše verze sady SDK nabízí metody [getmetric a TrackValue](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#getmetric) , jedná se o preferovaný způsob, jak odesílat vlastní metriky, protože v tomto případě předagregace probíhá v rámci sady SDK, nejen zmenšuje objem dat uložených v Azure, ale také objem dat přenesených ze sady sdk do Application Insights. V opačném případě použijte metodu [trackMetric](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackmetric) , která bude během příjmu dat předem agregovat události metriky.
 
 ## <a name="custom-metrics-dimensions-and-pre-aggregation"></a>Vlastní metriky dimenzí a předběžné agregace
 

@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c30f1246dccbe14445b0f7db8584e37c0f4be6ab
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: f728338284c755116414a03cbc586915e1cc9325
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74710409"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462216"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-azure-powershell"></a>Seznam přiřazení rolí pomocí Azure RBAC a Azure PowerShell
 
@@ -27,7 +27,7 @@ ms.locfileid: "74710409"
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [PowerShell v Azure Cloud Shell](/azure/cloud-shell/overview) nebo [Azure PowerShell](/powershell/azure/install-az-ps)
 
@@ -146,6 +146,22 @@ K zobrazení seznamu přiřazení rolí pro klasického Správce předplatného 
 ```azurepowershell
 Get-AzRoleAssignment -IncludeClassicAdministrators
 ```
+
+## <a name="list-role-assignments-for-a-managed-identity"></a>Seznam přiřazení rolí pro spravovanou identitu
+
+1. Získejte ID objektu spravované identity přiřazené systémem nebo uživatelem. 
+
+    Chcete-li získat ID objektu spravované identity přiřazené uživatelem, můžete použít [příkaz Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal).
+
+    ```azurepowershell
+    Get-AzADServicePrincipal -DisplayNameBeginsWith "<name> or <vmname>"
+    ```
+
+1. K zobrazení seznamu přiřazení rolí použijte [příkaz Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
+
+    ```azurepowershell
+    Get-AzRoleAssignment -ObjectId <objectid>
+    ```
 
 ## <a name="next-steps"></a>Další kroky
 

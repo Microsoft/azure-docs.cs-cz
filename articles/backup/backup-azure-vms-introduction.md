@@ -3,12 +3,12 @@ title: Informace o zálohování virtuálních počítačů Azure
 description: V tomto článku se dozvíte, jak služba Azure Backup zálohuje virtuální počítače Azure a jak postupovat podle osvědčených postupů.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 4bd42acbf682b51e17f60702e5695cfb29db812b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: b38c61adaf334eacb7d85292d4174189d6fddc46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806435"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391903"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Přehled zálohování virtuálních počítačů Azure
 
@@ -109,7 +109,6 @@ Když konfigurujete zálohy virtuálních počítačů, doporučujeme postupovat
 - Upravte výchozí časy plánování, které jsou nastaveny v zásadě. Pokud je například výchozí čas v zásadě 12:00., zvyšte časování o několik minut, aby se prostředky optimálně používaly.
 - Pokud obnovujete virtuální počítače z jednoho trezoru, důrazně doporučujeme, abyste používali jiné [účty úložiště pro obecné účely v2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) , abyste zajistili, že cílový účet úložiště nebude omezený. Každý virtuální počítač například musí mít jiný účet úložiště. Pokud se například obnoví 10 virtuálních počítačů, použijte 10 různých účtů úložiště.
 - Pro zálohování virtuálních počítačů, které používají Prémiové úložiště, s okamžitým obnovením doporučujeme přidělit *50%* volného místa celkového přiděleného prostoru úložiště, který se vyžaduje **jenom** pro první zálohování. 50% volného místa není požadavkem na zálohování po dokončení prvního zálohování.
-- Obnovení z úrovně úložiště pro obecné účely V1 (snímek) bude dokončeno během několika minut, protože snímek je ve stejném účtu úložiště. Obnovení z vrstvy úložiště pro obecné účely v2 (trezor) může trvat hodiny. V případech, kdy jsou data k dispozici v úložišti pro obecné účely V1, doporučujeme pro rychlejší obnovení použít funkci [okamžitého obnovení](backup-instant-restore-capability.md) . (Pokud se data musí obnovit z trezoru, bude trvat déle.)
 - Omezení počtu disků na účet úložiště je relativní vzhledem k tom, jak intenzivně jsou disky dostupné v aplikacích, které běží na virtuálním počítači IaaS (infrastruktura jako služba). Obecně platí, že pokud se na jednom účtu úložiště nachází 5 až 10 disků nebo víc, vyvážení zátěže tím, že některé disky přesunete do samostatných účtů úložiště.
 
 ## <a name="backup-costs"></a>Náklady na zálohování
@@ -124,14 +123,14 @@ Výpočet velikosti chráněné instance je založen na *skutečné* velikosti v
 
 Podobně platí, že faktura za úložiště záloh je založena na množství dat uložených v Azure Backup, což je součet skutečných dat v každém bodu obnovení.
 
-Například Vezměte virtuální počítač a2-Standard, který má dva další datové disky s maximální velikostí 4 TB. V následující tabulce jsou uvedena skutečná data uložená na jednotlivých těchto discích:
+Například Vezměte virtuální počítač a2-Standard, který má dva další datové disky s maximální velikostí 32 TB. V následující tabulce jsou uvedena skutečná data uložená na jednotlivých těchto discích:
 
 **Disk** | **Maximální velikost** | **Skutečná data k dispozici**
 --- | --- | ---
-Disk OS | 4095 GB | 17 GB
+Disk OS | 32 TB | 17 GB
 Místní/dočasný disk | 135 GB | 5 GB (Nezahrnuto do zálohování)
-Datový disk 1 | 4095 GB | 30 GB
-Datový disk 2 | 4095 GB | 0 GB
+Datový disk 1 | 32 TB| 30 GB
+Datový disk 2 | 32 TB | 0 GB
 
 Skutečná velikost virtuálního počítače v tomto případě je 17 GB + 30 GB + 0 GB = 47 GB. Tato chráněná velikost instance (47 GB) se bude základem pro měsíční faktura. Vzhledem k nárůstu množství dat ve virtuálním počítači se velikost chráněné instance, která se používá pro fakturaci, změní na odpovídající.
 

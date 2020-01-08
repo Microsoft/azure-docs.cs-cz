@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 11/08/2019
 ms.author: tamram
-ms.openlocfilehash: 0fda881b805eb3a967cf3b05f6c6df8c65d20730
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 2ed88d8abb7cbe96093b68d89030e6e464a35541
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905776"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392260"
 ---
 | Prostředek | Výběr cílového umístění        |
 |----------|---------------|
@@ -25,4 +25,4 @@ ms.locfileid: "73905776"
 |Cílová propustnost pro objekt BLOB s jednou stránkou | Až 60 MiB za sekundu |
 |Cílová propustnost pro jeden objekt blob bloku |Až do účtu úložiště – omezení pro vstup a výstup<sup>1</sup> |
 
-<sup>1</sup> propustnost jednoho objektu závisí na několika faktorech, včetně, ale ne omezení na: souběžnost, velikost požadavku, úroveň výkonu, rychlost zdroje pro nahrávání a cíl pro stažení. Pokud chcete využít vylepšení výkonu [objektů blob bloku s vysokou propustností](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) , použijte velikost žádosti o vložení objektu BLOB nebo bloku Put > 4 MiB (> 256 KiB pro úložiště objektů blob bloku úrovně Premium nebo pro data Lake Storage Gen2).
+<sup>1</sup> propustnost pro jeden objekt BLOB závisí na několika faktorech, mimo jiné: souběžnost, velikost požadavku, úroveň výkonu, rychlost zdroje pro nahrávání a cíl pro stažení. Pokud chcete využít vylepšení výkonu pro [objekty blob bloku s vysokou propustností](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/), nahrajte větší objekty blob nebo bloky. Konkrétně zavolejte operaci [Put BLOB](/rest/api/storageservices/put-blob) nebo [Put Block](/rest/api/storageservices/put-block) s objektem BLOB nebo velikostí bloku, který je větší než 4 MIB pro standardní účty úložiště. V případě objektu blob bloku Premium nebo Data Lake Storage Gen2 účtů úložiště použijte velikost bloku nebo objektu blob, který je větší než 256 KiB.

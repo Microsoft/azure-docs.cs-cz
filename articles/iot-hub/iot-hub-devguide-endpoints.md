@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 689a702863dda53870f775bd8520d5dd406d242f
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: da6d17e42407048b7ecbcacade67ef48046d7fe1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640601"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457124"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Odkazy-IoT Hub koncové body
 
@@ -21,7 +21,7 @@ ms.locfileid: "68640601"
 
 ## <a name="iot-hub-names"></a>Názvy IoT Hub
 
-Název hostitele služby IoT Hub, který je hostitelem vašich koncových bodů, najdete na stránce s přehledem vašeho rozbočovače. Ve výchozím nastavení vypadá název DNS služby IoT Hub takto: `{your iot hub name}.azure-devices.net`.
+Název hostitele služby IoT Hub, který je hostitelem vašich koncových bodů, najdete na stránce s **přehledem** vašeho rozbočovače. Ve výchozím nastavení vypadá název DNS služby IoT Hub takto: `{your iot hub name}.azure-devices.net`.
 
 ## <a name="list-of-built-in-iot-hub-endpoints"></a>Seznam předdefinovaných koncových bodů IoT Hub
 
@@ -31,11 +31,11 @@ Azure IoT Hub je víceklientské služby, která zpřístupňuje svou funkci rů
 
 Následující seznam popisuje koncové body:
 
-* **Poskytovatel prostředků**. Poskytovatel prostředků IoT Hub zpřístupňuje rozhraní [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) . Toto rozhraní umožňuje vlastníkům předplatného Azure vytvářet a odstraňovat centra IoT a aktualizovat vlastnosti služby IoT Hub. IoT Hub vlastnosti řídí [zásady zabezpečení na úrovni centra](iot-hub-devguide-security.md#access-control-and-permissions), na rozdíl od řízení přístupu na úrovni zařízení a funkční možnosti pro zasílání zpráv z cloudu na zařízení a ze zařízení do cloudu. Poskytovatel prostředků IoT Hub taky umožňuje [exportovat identity zařízení](iot-hub-devguide-identity-registry.md#import-and-export-device-identities).
+* **Poskytovatel prostředků**. Poskytovatel prostředků IoT Hub zpřístupňuje rozhraní [Azure Resource Manager](../azure-resource-manager/management/overview.md) . Toto rozhraní umožňuje vlastníkům předplatného Azure vytvářet a odstraňovat centra IoT a aktualizovat vlastnosti služby IoT Hub. IoT Hub vlastnosti řídí [zásady zabezpečení na úrovni centra](iot-hub-devguide-security.md#access-control-and-permissions), na rozdíl od řízení přístupu na úrovni zařízení a funkční možnosti pro zasílání zpráv z cloudu na zařízení a ze zařízení do cloudu. Poskytovatel prostředků IoT Hub taky umožňuje [exportovat identity zařízení](iot-hub-devguide-identity-registry.md#import-and-export-device-identities).
 
 * **Správa identit zařízení** Každé centrum IoT zveřejňuje sadu koncových bodů protokolu HTTPS REST pro správu identit zařízení (vytváření, načítání, aktualizace a odstraňování). [Identity zařízení](iot-hub-devguide-identity-registry.md) se používají pro ověřování zařízení a řízení přístupu.
 
-* **Správa**s dvojitou podobou zařízení Každé centrum IoT zveřejňuje sadu koncových bodů protokolu HTTPS s přístupem k službě pro dotazování a aktualizaci [vláken zařízení](iot-hub-devguide-device-twins.md) (aktualizace značek a vlastností).
+* **Správa s dvojitou**podobou zařízení Každé centrum IoT zveřejňuje sadu koncových bodů protokolu HTTPS s přístupem k službě pro dotazování a aktualizaci [vláken zařízení](iot-hub-devguide-device-twins.md) (aktualizace značek a vlastností).
 
 * **Správa úloh**. Každá služba IoT Hub zpřístupňuje sadu koncových bodů protokolu HTTPS s přístupem k službě pro dotazování a správu [úloh](iot-hub-devguide-jobs.md).
 
@@ -51,7 +51,7 @@ Následující seznam popisuje koncové body:
 
   * *Přijmout požadavky přímých metod*. Zařízení používá tento koncový bod k naslouchání požadavkům [přímých metod](iot-hub-devguide-direct-methods.md).
 
-    Tyto koncové body jsou vystaveny pomocí protokolů [MQTT v 3.1.1](https://mqtt.org/), https 1,1 a [AMQP 1,0](https://www.amqp.org/) . AMQP je k dispozici i přes [objekty](https://tools.ietf.org/html/rfc6455) WebSockets na portu 443.
+    Tyto koncové body jsou vystaveny pomocí protokolů [MQTT v 3.1.1](https://mqtt.org/), https 1,1 a [AMQP 1,0](https://www.amqp.org/) . AMQP je k dispozici i přes [objekty WebSockets](https://tools.ietf.org/html/rfc6455) na portu 443.
 
 * **Koncové body služby**. Každé centrum IoT Hub zpřístupňuje sadu koncových bodů pro back-end řešení ke komunikaci s vašimi zařízeními. S jednou výjimkou se tyto koncové body zveřejňují jenom pomocí protokolu [AMQP](https://www.amqp.org/) . Koncový bod volání metody se zveřejňuje prostřednictvím protokolu HTTPS.
   
@@ -75,20 +75,20 @@ Existující služby Azure v rámci vašeho předplatného můžete propojit se 
 
 IoT Hub aktuálně podporuje následující služby Azure jako další koncové body:
 
-* Kontejnery služby Azure Storage
+* Kontejnery Azure Storage
 * Event Hubs
-* Fronty služby Service Bus
-* Témata služby Service Bus
+* Fronty Service Bus
+* Témata Service Bus
 
 Omezení počtu koncových bodů, které můžete přidat, najdete v tématu [kvóty a omezování](iot-hub-devguide-quotas-throttling.md).
 
-Ke zjištění stavu koncových bodů můžete použít REST API [získat](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) stav koncových bodů. Doporučujeme použít [IoT Hub metriky](iot-hub-metrics.md) týkající se latence zprávy směrování k identifikaci a ladění chyb, když je stav koncového bodu v pořádku nebo není v pořádku, protože při použití koncového bodu v jednom z těchto stavů očekáváme, že latence bude vyšší.
+Ke zjištění stavu koncových bodů můžete použít REST API [získat stav koncových](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) bodů. Doporučujeme použít [IoT Hub metriky](iot-hub-metrics.md) týkající se latence zprávy směrování k identifikaci a ladění chyb, když je stav koncového bodu v pořádku nebo není v pořádku, protože při použití koncového bodu v jednom z těchto stavů očekáváme, že latence bude vyšší.
 
 |Stav|Popis|
 |---|---|
 |healthy|Koncový bod přijímá zprávy podle očekávání.|
 |není v pořádku|Koncový bod nepřijímá zprávy podle očekávání a IoT Hub se pokouší odeslat data do tohoto koncového bodu. Stav koncového bodu, který není v pořádku, bude aktualizován na stav v pořádku, když IoT Hub navázala trvalý stav stavu.|
-|Neznámé|IoT Hub nevytvořil připojení ke koncovému bodu. Z tohoto koncového bodu nebyly doručeny ani zamítnuty žádné zprávy.|
+|unknown|IoT Hub nevytvořil připojení ke koncovému bodu. Z tohoto koncového bodu nebyly doručeny ani zamítnuty žádné zprávy.|
 |Zpráva|Koncový bod nepřijímá zprávy, jakmile IoT Hub znovu pokusí odeslat zprávy o zkušebním období.|
 
 ## <a name="field-gateways"></a>Brány polí
@@ -97,7 +97,7 @@ V řešení IoT je mezi zařízeními a koncovými body IoT Hub umístěná *Br�
 
 K implementaci brány pole můžete použít [Azure IoT Edge](/azure/iot-edge/) . IoT Edge nabízí funkce, jako je například multiplexace komunikace z více zařízení do stejného IoT Hub připojení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další referenční témata v tomto IoT Hub příručce pro vývojáře zahrnují:
 

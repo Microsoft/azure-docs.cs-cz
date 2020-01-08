@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: radwiv
-ms.openlocfilehash: 41c36d302605bb619899131a8ace649b0f1439b2
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 2429a8d08baa34aed120cffa069abae1fb9a3df9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151856"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353507"
 ---
 # <a name="configure-packet-captures-for-vpn-gateways"></a>Konfigurace zachycení paketů pro brány VPN
 
@@ -24,11 +24,13 @@ K dispozici jsou některé běžně dostupné nástroje pro zachytávání paket
 
 Zachytávání paketů služby VPN Gateway můžete v bráně nebo konkrétním připojení spustit v závislosti na potřebách zákazníka. Zachytávání paketů můžete také spouštět na více tunelech současně. Můžete zachytit provoz s jedním nebo obousměrným směrováním, provoz IKE a ESP a vnitřní pakety spolu s filtrováním v bráně VPN.
 
-Použití filtrů 5 řazených kolekcí členů (zdrojová podsíť, cílová podsíť, zdrojový port, cílový port, protokol) a příznaky TCP (SYN, ACK, FIN, URG, PSH, RST) je užitečné při izolaci problémů s vysokým objemem provozu.
+Použití filtru 5 řazených kolekcí členů (zdrojová podsíť, cílová podsíť, zdrojový port, cílový port, protokol) a příznaky TCP (SYN, ACK, FIN, URG, PSH, RST) je užitečné při izolaci problémů s vysokým objemem provozu.
+
+Při spuštění zachytávání paketů můžete pro každou vlastnost použít jenom jednu možnost.
 
 ## <a name="setup-packet-capture-using-powershell"></a>Nastavení zachytávání paketů pomocí prostředí PowerShell
 
-Pokud chcete spustit a zastavit zachytávání paketů, podívejte se na příklady níže pro příkazy prostředí PowerShell. Další informace o možnostech parametrů (například vytváření filtrů) najdete v tomto [dokumentu](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)PowerShellu.
+Pokud chcete spustit a zastavit zachytávání paketů, podívejte se na příklady níže pro příkazy prostředí PowerShell. Další informace o možnostech parametrů (například o tom, jak vytvořit filtr) najdete v tomto [dokumentu](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)PowerShellu.
 
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>Spustit zachytávání paketů pro bránu sítě VPN
 
@@ -36,7 +38,7 @@ Pokud chcete spustit a zastavit zachytávání paketů, podívejte se na příkl
 Start-AzVirtualnetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayName"
 ```
 
-Nepovinný parametr **-fulltextových** lze použít k aplikování filtrů.
+Volitelný parametr **-fulltextových** lze použít k použití filtru.
 
 ### <a name="stop-packet-capture-for-a-vpn-gateway"></a>Zastavení zachytávání paketů pro bránu sítě VPN
 
@@ -50,7 +52,7 @@ Stop-AzVirtualNetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupN
 Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayConnectionName"
 ```
 
-Nepovinný parametr **-fulltextových** lze použít k aplikování filtrů.
+Volitelný parametr **-fulltextových** lze použít k použití filtru.
 
 ### <a name="stop-packet-capture-on-a-vpn-gateway-connection"></a>Zastavit zachytávání paketů u připojení brány sítě VPN
 
@@ -62,7 +64,7 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 
 - Spuštění zachycení paketů může mít vliv na výkon. Nezapomeňte zachytávání paketů zastavit, pokud není potřeba.
 - Navrhovaná minimální doba zachytávání paketů je 600 sekund. Pokud má kratší doba trvání zachytávání paketů, nesmí doplňovat kompletní data kvůli synchronizaci problémů mezi několika součástmi v cestě.
-- Soubory dat zachytávání paketů jsou generovány ve formátech PCAP nebo ETL. Pro pochopení dat možná budete potřebovat analyzátor Netmon.
+- Soubory dat zachycení paketů se generují ve formátu PCAP. K otevření souborů PCAP použijte Wireshark nebo jiné běžně dostupné aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 

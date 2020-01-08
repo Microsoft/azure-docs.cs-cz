@@ -1,7 +1,7 @@
 ---
 title: 1-versus-all Multiclass
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul 1-versus-all Multiclass ve službě Azure Machine Learning k vytvoření modelu klasifikace s více třídami ze sady binárních modelů klasifikace.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul 1-versus-all Multiclass v Azure Machine Learning k vytvoření modelu klasifikace s více třídami ze sady binárních modelů klasifikace.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 5c59f2865e7ebf768cdd8b80e59d69359f8607c6
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: bf4f176eef502cdd1c68f19904a24bd2500e1302
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717195"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428502"
 ---
 # <a name="one-vs-all-multiclass"></a>1-versus-all Multiclass
 
@@ -61,4 +61,4 @@ Alternativně můžete předat nevýukový klasifikátor do [modelu křížovéh
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro službu Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

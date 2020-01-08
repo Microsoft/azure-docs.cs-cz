@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 4512fd8a236c888937eb60a75d01cfb0ef2c1913
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 616f10b32d0a9c1a05d759a0e27550cd2808808b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792640"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428882"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Export toků z Power Automate a nasazení do Azure Logic Apps
 
@@ -22,7 +22,7 @@ Pokud chcete rozšířit a rozšířit možnosti toku, můžete tento tok migrov
 >
 > Toky založené na OpenAPI vyexportované z Power automatu se v současné době nepodporují pro nasazení jako šablony aplikace logiky. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -133,7 +133,7 @@ Pokud jste nastavili sadu Visual Studio s [požadavky](../logic-apps/quickstart-
 
 1. V Průzkumník řešení otevřete místní nabídku projektu a vyberte **nasadit** > **Nový**. Pokud se zobrazí výzva, přihlaste se pomocí svého účtu Azure.
 
-1. Po zobrazení výzvy potvrďte předplatné Azure, skupinu prostředků Azure a všechna další nastavení, která chcete použít pro nasazení, například [soubor parametrů](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) , který se použije pro předávání hodnot parametrů šablony, a pak vyberte **nasadit**.
+1. Po zobrazení výzvy potvrďte předplatné Azure, skupinu prostředků Azure a všechna další nastavení, která chcete použít pro nasazení, například [soubor parametrů](../azure-resource-manager/templates/parameter-files.md) , který se použije pro předávání hodnot parametrů šablony, a pak vyberte **nasadit**.
 
    ![Potvrdit nastavení nasazení](./media/export-from-microsoft-flow-logic-app-template/confirm-azure-subscription-resource-group-deployment.png)
 
@@ -141,7 +141,7 @@ Pokud jste nastavili sadu Visual Studio s [požadavky](../logic-apps/quickstart-
 
    ![Upravit parametry nasazení](./media/export-from-microsoft-flow-logic-app-template/edit-parameters-deployment.png)
 
-   Po zahájení nasazování se v okně **Výstup** sady Visual Studio zobrazí stav nasazení vaší aplikace. Pokud se stav nezobrazí, otevřete seznam **Zobrazit výstup z** a vyberte svou skupinu prostředků Azure. Například:
+   Po zahájení nasazování se v okně **Výstup** sady Visual Studio zobrazí stav nasazení vaší aplikace. Pokud se stav nezobrazí, otevřete seznam **Zobrazit výstup z** a vyberte svou skupinu prostředků Azure. Příklad:
 
    ![Okno Výstup](./media/export-from-microsoft-flow-logic-app-template/output-window.png)
 

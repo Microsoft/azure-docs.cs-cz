@@ -1,17 +1,17 @@
 ---
-title: Šablony Azure Resource Manager pro rozhraní API pro Azure Cosmos DB Gremlin
+title: Šablony Správce prostředků pro rozhraní API pro Azure Cosmos DB Gremlin
 description: Pomocí Azure Resource Manager šablon můžete vytvořit a nakonfigurovat rozhraní API pro Azure Cosmos DB Gremlin.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: c5ddea40c384496f2790ae4ab7c88888f1e9120a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 857af7ecd9ff3d7b3c771d048a802c6d3c1e5e4f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960599"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441651"
 ---
 # <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>Správa Azure Cosmos DBch prostředků rozhraní API Gremlin pomocí šablon Azure Resource Manager
 
@@ -55,7 +55,7 @@ Příkaz `az cosmosdb show` zobrazuje nově vytvořený účet Azure Cosmos po z
 
 ## <a name="next-steps"></a>Další kroky
 
-Tady je několik dalších prostředků:
+Tady je několik dalších zdrojů:
 
 - [Dokumentace k Azure Resource Manager](/azure/azure-resource-manager/)
 - [Azure Cosmos DB schéma poskytovatele prostředků](/azure/templates/microsoft.documentdb/allversions)

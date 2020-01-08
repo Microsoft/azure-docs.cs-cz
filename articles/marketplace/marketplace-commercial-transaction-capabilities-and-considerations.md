@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 5219ff94b29d4fd02edb8567ae59884ced07b37e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 969f2f6b2e25d9eb804349eccbed66e17b7fbb87
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791351"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427160"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Možnosti a požadavky transakce komerčního tržiště
 
@@ -223,7 +223,7 @@ V této části jsou pokryty požadavky Transact pro různé typy nabídek.
 - Pro možnost publikování v režimu Transact se vyžadují účet Microsoft a finanční informace, bez ohledu na cenový model nabídky.
 - Povinné finanční informace zahrnují účet výběr a daňový profil.
 
-Další informace o nastavení těchto účtů najdete v tématu [Správa účtu partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#financial-details).
+Další informace o nastavení těchto účtů najdete v tématu [Správa účtu partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).
 
 
 ### <a name="requirements-for-specific-offer-types"></a>Požadavky na konkrétní typy nabídek
@@ -240,5 +240,5 @@ Musí zřídit jeden nebo víc virtuálních počítačů a vyžádat si součet
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete dokončit výběr a konfiguraci vaší nabídky, přečtěte si požadavky na způsobilost v části Možnosti publikování podle typu nabídky.
-* Prohlédněte si vzory publikování podle prezentace, kde najdete příklady, jak vaše řešení mapuje typ a konfiguraci nabídky.
+* Přečtěte si požadavky zakládající nárok v možnosti publikování nabídky typu oddílu k dokončení pro výběr a konfiguraci nabídky.
+* Zkontrolujte publikování vzory jejich příklady jak řešení mapuje na typ nabídky a konfigurace z prodejních míst.

@@ -1,5 +1,6 @@
 ---
-title: Import aplikace Azure Function App jako rozhraní API ve službě Azure API Management | Microsoft Docs
+title: Import Function App Azure jako rozhraní API v API Management
+titleSuffix: Azure API Management
 description: V tomto kurzu se dozvíte, jak importovat aplikaci Azure Function App do služby Azure API Management jako rozhraní API.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: 0c4a95669eea1b98baea5f9a866598e000c0923c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 97e4863294a32e7c11cd0c4bfa987b4e5764c0d4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107844"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442579"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Import aplikace Azure Function App jako rozhraní API ve službě Azure API Management
 
@@ -74,7 +75,7 @@ Podle následujícího postupu vytvoříte z aplikace Azure Function App nové r
 
     ![Přidání z aplikace Function App](./media/import-function-app-as-api/add-06.png)
 
-8. Klikněte na možnost **Vytvořit**.
+8. Klikněte na **Vytvořit**.
 
 ## <a name="append-azure-function-app-to-api"></a>Připojení aplikace Azure Function App k existujícímu rozhraní API
 
@@ -106,7 +107,7 @@ Podle následujícího postupu připojíte aplikaci Azure Function App k existuj
 
     ![Přidání z aplikace Function App](./media/import-function-app-as-api/add-05.png)
 
-8. Klikněte na tlačítko **Import**.
+8. Klikněte na **Importovat**.
 
     ![Připojení z aplikace Function App](./media/import-function-app-as-api/append-04.png)
 

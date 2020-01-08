@@ -1,18 +1,18 @@
 ---
 title: Zprávy Exchange s Azure Service Bus
-description: Posílání a přijímání zpráv pomocí Azure Service Bus v Azure Logic Apps
+description: Vytváření automatizovaných úloh a pracovních postupů, které odesílají a přijímají zprávy pomocí Azure Service Bus v Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: c83e2bc0411c9bec3c3a5fa35dcc6565ed7f44f9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 26609bc95bf6fd49ded23d8f117911a02577405a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789392"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445900"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Výměna zpráv v cloudu pomocí Azure Logic Apps a Azure Service Bus
 
@@ -29,7 +29,7 @@ Můžete použít triggery, které získávají odpovědi z Service Bus a zpří
 
 [!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -41,7 +41,7 @@ Můžete použít triggery, které získávají odpovědi z Service Bus a zpří
 
 <a name="permissions-connection-string"></a>
 
-## <a name="check-permissions"></a>Kontrolovat oprávnění
+## <a name="check-permissions"></a>Kontrola oprávnění
 
 Potvrďte, že vaše aplikace logiky má oprávnění pro přístup k vašemu oboru názvů Service Bus.
 

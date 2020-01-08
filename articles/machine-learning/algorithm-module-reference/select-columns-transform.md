@@ -1,7 +1,7 @@
 ---
 title: 'Vybrat sloupce transformace: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se, jak pomocí modulu výběr sloupců transformace ve službě Azure Machine Learning vytvořit transformaci, která vybere stejnou podmnožinu sloupců jako v dané datové sadě.
+titleSuffix: Azure Machine Learning
+description: Naučte se, jak pomocí modulu výběr sloupců transformace v Azure Machine Learning vytvořit transformaci, která vybere stejnou podmnožinu sloupců jako v dané datové sadě.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 383adeb2bd081893d4202239cb97c12bf9a5a170
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d0dfbec3abd379c7bf8add6445296dff74d92a76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717033"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428477"
 ---
-# <a name="select-columns-transform"></a>Transformovat sloupce pro výběr
+# <a name="select-columns-transform"></a>Transformace pro výběr sloupců
 
 Tento článek popisuje, jak použít modul pro výběr sloupců transformace v Návrháři Azure Machine Learning (Preview). Účelem modulu transformace sloupce Select je zajistit, aby se v operacích navazujícího strojového učení používala předvídatelná a konzistentní sada sloupců.
 
@@ -55,4 +55,4 @@ Tento proces ukládání a následného výběru sloupce zajišťuje, aby bylo p
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro službu Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

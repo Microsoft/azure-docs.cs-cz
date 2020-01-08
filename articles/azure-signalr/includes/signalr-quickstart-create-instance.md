@@ -7,14 +7,14 @@ ms.topic: include
 ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: ac77f0b6a1d90fd78db64618c1e03ade198a67c0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0a228f6d8b4f72acd3783f27bf192fe6bd13f988
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882164"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392144"
 ---
-## <a name="create-an-azure-signalr-service-instance"></a>Vytvoření instance služby Azure SignalR Service
+## <a name="create-an-azure-signalr-service-instance"></a>Vytvoření instance služby Azure SignalR
 
 Vaše aplikace se připojí k instanci služby SignalR Service v Azure.
 
@@ -30,14 +30,14 @@ Vaše aplikace se připojí k instanci služby SignalR Service v Azure.
     | ------------ |  ------- | -------------------------------------------------- |
     | **Název prostředku** | Globálně jedinečný název | Název, který identifikuje novou instanci služby SignalR Service. Platné znaky jsou `a-z`, `0-9` a `-`.  | 
     | **Předplatné** | Vaše předplatné | Předplatné, ve kterém se nová instance služby SignalR Service vytvoří. | 
-    | **[Skupina prostředků](../../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Název nové skupiny prostředků, ve které se má instance služby SignalR Service vytvořit. | 
-    | **Location** | USA – západ | Zvolte [oblast](https://azure.microsoft.com/regions/) ve vaší blízkosti. |
-    | **Cenová úroveň** | Zdarma | Vyzkoušejte si službu Azure SignalR Service zdarma. |
-    | **Počet jednotek** |  Nelze použít | Počet jednotek určuje, kolik připojení může instance služby SignalR Service přijmout. To lze nakonfigurovat jen na úrovni Standard. |
-    | **Režim služby** |  Bezserverová | Pro použití s Azure Functions nebo REST API. |
+    | **[Skupina prostředků](../../azure-resource-manager/management/overview.md)** |  myResourceGroup | Název nové skupiny prostředků, ve které se má instance služby SignalR Service vytvořit. | 
+    | **Umístění** | Západní USA | Zvolte [oblast](https://azure.microsoft.com/regions/) ve vaší blízkosti. |
+    | **Cenová úroveň** | Zadarmo | Vyzkoušejte si službu Azure SignalR Service zdarma. |
+    | **Počet jednotek** |  Nevztahuje se | Počet jednotek určuje, kolik připojení může instance služby SignalR Service přijmout. To lze nakonfigurovat jen na úrovni Standard. |
+    | **Režim služby** |  Řešení bez serverů | Pro použití s Azure Functions nebo REST API. |
 
     ![Vytvoření služby SignalR Service](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-create.png)
 
 1. Pokud chcete začít nasazovat instanci služby SignalR Service, vyberte **Vytvořit**.
 
-1. Po nasazení instance ho otevřete na portálu a najděte jeho stránku nastavení. Nastavte režim služby na možnost bez *serveru* jenom v případě, že používáte službu Azure Signal service prostřednictvím Azure Functions vazby nebo REST API. V opačném případě je ponechte v klasickém nebo *výchozím nastavení* .
+1. Po nasazení instance ho otevřete na portálu a najděte jeho stránku nastavení. Nastavte režim služby na možnost bez *serveru* jenom v případě, že používáte službu Azure Signal service prostřednictvím Azure Functions vazby nebo REST API. V opačném případě je ponechte v *klasickém* nebo *výchozím nastavení* .

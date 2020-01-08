@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: Klientská knihovna pro Python | Microsoft Docs'
-description: Tento článek vám pomůže začít pracovat s klientskou knihovnou pro Python, která umožňuje rozpoznat, najít podobné, identifikovat, ověřit a další.
+title: 'Rychlý Start: Klientská knihovna pro Python'
+description: Tento rychlý Start vám pomůže začít pracovat s klientskou knihovnou pro Python, která umožňuje rozpoznat, najít podobné, identifikovat, ověřit a další.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: cd797567b381fb89c568b06dc8b056648e5c734a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e41817e3409f79aab3fbb3d57195b6b7ff13e7af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977807"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448230"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Rychlý Start: Klientská knihovna pro Python
 
@@ -31,12 +31,12 @@ Pomocí klientské knihovny obličeje pro Python:
 
 [Referenční dokumentace](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) |  | [ukázky](https://docs.microsoft.com/samples/browse/?products=azure&term=face) | balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) [(PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * [Python 3.x](https://www.python.org/)
 
-## <a name="setting-up"></a>Probíhá nastavení
+## <a name="setting-up"></a>Nastavení
 
 ### <a name="create-a-face-azure-resource"></a>Vytvoření prostředku Azure FACET
 

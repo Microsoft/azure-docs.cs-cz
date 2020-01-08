@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 2ffa6d7b1cf0550c97a60614f3f00ddc4b955218
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: f935e8fc1e5d6d64bffaeb582e8b248317f49687
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154805"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660592"
 ---
-# <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s nasazením pro Azure Cloud Services: Nejčastější dotazy
+# <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s nasazením pro Azure Cloud Services: nejčastější dotazy
 
 Tento článek obsahuje nejčastější dotazy týkající se problémů s nasazením pro [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Informace o velikosti najdete také na [stránce Cloud Services velikosti virtuálního počítače](cloud-services-sizes-specs.md) .
 
@@ -32,29 +32,29 @@ Pokud má cloudová služba nasazení v obou slotech, je celá cloudová služba
 
 K selháním přidělení dojde v případě, že cluster, ve kterém se nachází vaše cloudová služba, nemá dostatek fyzických výpočetních prostředků, které by vyhověly vaší žádosti o nasazení
 
-Nápovědu ke zmírnění těchto chyb přidělení najdete v tématu [selhání přidělení cloudové služby: Řešení](cloud-services-allocation-failures.md#solutions).
+Nápovědu ke zmírnění těchto chyb přidělení najdete v tématu [selhání přidělení cloudové služby: řešení](cloud-services-allocation-failures.md#solutions).
 
 ## <a name="why-does-scaling-up-or-scaling-out-a-cloud-service-deployment-sometimes-result-in-allocation-failure"></a>Proč při navýšení kapacity nebo škálování nasazení cloudové služby dojde k selhání přidělení?
 Při nasazení cloudové služby se obvykle připnuté na konkrétní cluster. To znamená, že pro existující cloudovou službu musí být ve stejném clusteru přidělené nové instance. Pokud se cluster blíží kapacitě nebo není k dispozici požadovaná velikost/typ virtuálního počítače, může být požadavek neúspěšný.
 
-Nápovědu ke zmírnění těchto chyb přidělení najdete v tématu [selhání přidělení cloudové služby: Řešení](cloud-services-allocation-failures.md#solutions).
+Nápovědu ke zmírnění těchto chyb přidělení najdete v tématu [selhání přidělení cloudové služby: řešení](cloud-services-allocation-failures.md#solutions).
 
 ## <a name="why-does-deploying-a-cloud-service-into-an-affinity-group-sometimes-result-in-allocation-failure"></a>Proč nasazení cloudové služby do skupiny vztahů někdy způsobí selhání přidělení?
 Nové nasazení do prázdné cloudové služby může být přiděleno prostředky infrastruktury v jakémkoli clusteru v této oblasti, pokud není ke skupině vztahů připnuté cloudová služba. Nasazení do stejné skupiny vztahů se pokusí o stejný cluster. Pokud se cluster blíží kapacitě, požadavek může selhat.
 
-Nápovědu ke zmírnění těchto chyb přidělení najdete v tématu [selhání přidělení cloudové služby: Řešení](cloud-services-allocation-failures.md#solutions).
+Nápovědu ke zmírnění těchto chyb přidělení najdete v tématu [selhání přidělení cloudové služby: řešení](cloud-services-allocation-failures.md#solutions).
 
 ## <a name="why-does-changing-vm-size-or-adding-a-new-vm-to-an-existing-cloud-service-sometimes-result-in-allocation-failure"></a>Proč změna velikosti virtuálního počítače nebo přidání nového virtuálního počítače do existující cloudové služby někdy způsobí selhání přidělení?
 Clustery v datacentru mohou mít různé konfigurace typů počítačů (například série, Av2 řady, D Series, Dv2 Series, G series, H Series atd.). Ale ne všechny clustery by nutně měly všechny typy virtuálních počítačů. Například pokud se pokusíte přidat virtuální počítač D Series do cloudové služby, která je již nasazena v clusteru pouze s řadou, dojde k selhání přidělení. K tomu dojde také v případě, že se pokusíte změnit velikost SKU virtuálního počítače (například přepínání z řady na řady D).
 
-Nápovědu ke zmírnění těchto chyb přidělení najdete v tématu [selhání přidělení cloudové služby: Řešení](cloud-services-allocation-failures.md#solutions).
+Nápovědu ke zmírnění těchto chyb přidělení najdete v tématu [selhání přidělení cloudové služby: řešení](cloud-services-allocation-failures.md#solutions).
 
-Pokud chcete zjistit dostupné velikosti v oblasti, přečtěte [si téma Microsoft Azure: Dostupné produkty v jednotlivých](https://azure.microsoft.com/regions/services)oblastech.
+Pokud chcete zjistit dostupné velikosti v oblasti, přečtěte si téma [Microsoft Azure: produkty dostupné v jednotlivých oblastech](https://azure.microsoft.com/regions/services).
 
 ## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>Proč dojde k selhání nasazení cloudové služby z důvodu limitů, kvót a omezení na mém předplatném nebo službě?
-Nasazení cloudové služby může selhat, pokud prostředky, které se musí přidělit, překračují výchozí nebo maximální kvótu povolenou pro vaši službu na úrovni oblasti nebo datového centra. Další informace najdete v tématu [omezení Cloud Services](../azure-subscription-service-limits.md#azure-cloud-services-limits).
+Nasazení cloudové služby může selhat, pokud prostředky, které se musí přidělit, překračují výchozí nebo maximální kvótu povolenou pro vaši službu na úrovni oblasti nebo datového centra. Další informace najdete v tématu [omezení Cloud Services](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cloud-services-limits).
 
-Aktuální využití/kvótu pro vaše předplatné můžete také sledovat na portálu: Azure Portal = > Subscriptions = \<> odpovídající předplatné > = > využití + kvóta.
+Můžete také sledovat aktuální využití/kvótu pro vaše předplatné na portálu: Azure Portal = > předplatné = > \<odpovídající předplatné > = > využití + kvóta.
 
 Informace související s využitím prostředků/spotřebou se dají získat taky prostřednictvím rozhraní API pro fakturaci Azure. Viz [rozhraní API využití prostředků Azure (Preview)](../billing/billing-usage-rate-card-overview.md#azure-resource-usage-api-preview).
 
@@ -69,7 +69,7 @@ Vzhledem k tomu, že cloudová služba je klasický prostředek, který není p�
  
 - Nasazení prostřednictvím REST API.
 
-    Při nasazení prostřednictvím REST API Service Management můžete obejít omezení zadáním adresy URL SAS pro úložiště objektů blob, který bude fungovat s klasickým i Azure Resource Manager účtem úložiště. Přečtěte si další informace o vlastnosti ' [](/previous-versions/azure/reference/ee460813(v=azure.100))PackageUrl '.
+    Při nasazení prostřednictvím REST API Service Management můžete obejít omezení zadáním adresy URL SAS pro úložiště objektů blob, který bude fungovat s klasickým i Azure Resource Manager účtem úložiště. Přečtěte [si další informace o vlastnosti '](/previous-versions/azure/reference/ee460813(v=azure.100))PackageUrl '.
   
 - Nasazení prostřednictvím [Azure Portal](https://portal.azure.com).
 

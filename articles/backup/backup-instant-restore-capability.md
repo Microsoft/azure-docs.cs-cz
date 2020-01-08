@@ -4,12 +4,12 @@ description: Možnosti a nejčastější dotazy ke službě Azure Instant Restor
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 7a962ff42125b262f6ec6673f75b0afd2954de24
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 19ecd6843422f1843631278626ef8971b0791b1f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806367"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391304"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Zlepšení výkonu zálohování a obnovení pomocí funkce Azure Backup pro okamžité obnovení
 
@@ -52,7 +52,7 @@ Ve výchozím nastavení se snímky uchovávají po dobu dvou dnů. Tato funkce 
 
 ## <a name="cost-impact"></a>Dopad na náklady
 
-Přírůstkové snímky jsou uložené v účtu úložiště virtuálního počítače, který se používá pro okamžité obnovení. Přírůstkový snímek znamená, že místo obsazené snímkem je rovné místo obsazené stránkami, které jsou zapsány po vytvoření snímku. Fakturuje se i nadále za využité místo na GB využité snímkem a cena za GB je stejná, jak je uvedeno na [stránce s cenami](https://azure.microsoft.com/pricing/details/managed-disks/).
+Přírůstkové snímky se ukládají v účtu úložiště virtuálního počítače, který se používá pro okamžité obnovení. Přírůstkový snímek znamená, že místo obsazené snímkem je rovné místo obsazené stránkami, které jsou zapsány po vytvoření snímku. Fakturuje se pořád za využité místo na GB využité snímkem a cena za GB je stejná, jak je uvedeno na [stránce s cenami](https://azure.microsoft.com/pricing/details/managed-disks/). Pro virtuální počítače, které používají nespravované disky, se snímky můžou zobrazit v nabídce pro soubor VHD každého disku. U spravovaných disků se snímky ukládají v prostředku kolekce bodů obnovení v určené skupině prostředků a samotné snímky nejsou přímo viditelné.
 
 >[!NOTE]
 > Pro týdenní zásady je doba uchování snímku pevně nastavená na 5 dní.

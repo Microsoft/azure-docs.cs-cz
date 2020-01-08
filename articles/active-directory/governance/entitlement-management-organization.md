@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dec950f5475a8a64cfecfac1fb25246d6a7aa29
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: bd57523dd41eadcf64ceb1e4a1c8d8ba083c17f0
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561922"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608733"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Přidání propojené organizace v Azure AD – Správa nároků
 
@@ -74,7 +74,7 @@ Pomocí těchto kroků přidáte externí adresář služby Azure AD nebo domén
 1. Kliknutím na **Přidat** Přidejte adresář nebo doménu služby Azure AD. V současné době můžete pro každou propojenou organizaci přidat jenom jeden adresář nebo doménu služby Azure AD.
 
     > [!NOTE]
-    > Všichni uživatelé z adresáře nebo domény služby Azure AD budou moci požádat o tento balíček přístupu. To zahrnuje uživatele v Azure AD ze všech subdomén přidružených k adresáři, pokud tyto domény nejsou blokované seznamem povolených a zakázaných aplikací Azure B2B. Další informace najdete v tématu [Povolení nebo blokování pozvánek uživatelům B2B z konkrétních organizací](../b2b/allow-deny-list.md).
+    > Všichni uživatelé z adresáře nebo domény služby Azure AD budou moci požádat o tento balíček přístupu. To zahrnuje uživatele v Azure AD ze všech subdomén přidružených k adresáři, pokud tyto domény nejsou blokované seznamem povolených a zakázaných aplikací Azure B2B. Další informace najdete v tématu [povolení nebo blokování pozvánek uživatelů B2B z konkrétních organizací](../b2b/allow-deny-list.md).
 
 1. Až přidáte adresář nebo doménu služby Azure AD, klikněte na **Vybrat**.
 
@@ -112,5 +112,5 @@ Pokud už nebudete mít relaci s externím adresářem nebo doménou služby Azu
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Řízení přístupu pro externí uživatele](entitlement-management-organization.md)
+- [Řízení přístupu pro externí uživatele](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users)
 - [Pro uživatele, kteří nejsou ve vašem adresáři](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)

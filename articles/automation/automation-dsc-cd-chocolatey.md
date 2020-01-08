@@ -2,19 +2,15 @@
 title: Azure Automation průběžného nasazování konfigurace stavu pomocí čokolády
 description: DevOps průběžné nasazování pomocí konfigurace stavu Azure Automation, DSC a správce balíčků pro čokolády.  Příklad s úplnou šablonou Správce prostředků JSON a zdrojem PowerShellu
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgoedtel
-ms.author: magoedte
 ms.date: 08/08/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: ddbf652c35c4f1504e3253838a983fd0f6039401
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: ad42d7c2257519c2622ba17f74f97b9521233850
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850359"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366426"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Příklad použití: průběžné nasazování do Virtual Machines pomocí konfigurace stavu služby Automation a čokolády
 

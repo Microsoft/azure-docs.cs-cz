@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 0f5216181efcd6593fc9f85de0792b98a5d7fd0a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 000271095530e269472fba4bc5f1c5563aa16ff9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792564"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428807"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Přehled: Automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager
 
-Až budete připraveni automatizovat vytváření a nasazení aplikace logiky, můžete svou definici pracovního postupu vaší aplikace logiky rozšířit do [šablony Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). Tato šablona definuje infrastrukturu, prostředky, parametry a další informace pro zřizování a nasazení aplikace logiky. Definováním parametrů pro hodnoty, které se liší v nasazení, označované také jako *Parametrizace*, můžete opakovaně a konzistentně nasazovat aplikace logiky na základě různých potřeb nasazení.
+Až budete připraveni automatizovat vytváření a nasazení aplikace logiky, můžete svou definici pracovního postupu vaší aplikace logiky rozšířit do [šablony Azure Resource Manager](../azure-resource-manager/management/overview.md). Tato šablona definuje infrastrukturu, prostředky, parametry a další informace pro zřizování a nasazení aplikace logiky. Definováním parametrů pro hodnoty, které se liší v nasazení, označované také jako *Parametrizace*, můžete opakovaně a konzistentně nasazovat aplikace logiky na základě různých potřeb nasazení.
 
-Například pokud nasadíte do prostředí pro vývoj, testování a produkci, pravděpodobně pro každé prostředí použijete různé připojovací řetězce. Můžete deklarovat parametry šablony, které přijímají různé připojovací řetězce, a pak tyto řetězce Uložit do samostatného [souboru parametrů](../azure-resource-manager/resource-group-template-deploy.md#parameter-files). Tímto způsobem můžete tyto hodnoty změnit, aniž byste museli šablonu aktualizovat a znovu nasadit. V případě scénářů, kde máte citlivé hodnoty parametrů, nebo musí být zabezpečené, jako jsou hesla a tajné kódy, můžete tyto hodnoty uložit v [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) a nechat si soubory parametrů tyto hodnoty načíst. V těchto scénářích se však znovu nasadí, aby se načetly aktuální hodnoty.
+Například pokud nasadíte do prostředí pro vývoj, testování a produkci, pravděpodobně pro každé prostředí použijete různé připojovací řetězce. Můžete deklarovat parametry šablony, které přijímají různé připojovací řetězce, a pak tyto řetězce Uložit do samostatného [souboru parametrů](../azure-resource-manager/templates/parameter-files.md). Tímto způsobem můžete tyto hodnoty změnit, aniž byste museli šablonu aktualizovat a znovu nasadit. V případě scénářů, kde máte citlivé hodnoty parametrů, nebo musí být zabezpečené, jako jsou hesla a tajné kódy, můžete tyto hodnoty uložit v [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) a nechat si soubory parametrů tyto hodnoty načíst. V těchto scénářích se však znovu nasadí, aby se načetly aktuální hodnoty.
 
 Tento přehled popisuje atributy v šabloně Správce prostředků, které obsahují definici pracovního postupu aplikace logiky. Šablona i definice pracovního postupu používají syntaxi JSON, ale některé rozdíly existují, protože definice pracovního postupu také následuje po [schématu jazyka definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md). Například výrazy šablony a výrazy definice pracovního postupu se liší v tom, jak [odkazují na parametry](#parameter-references) a hodnoty, které mohou přijmout.
 
@@ -30,7 +30,7 @@ Ukázková aplikace logiky v tomto tématu používá [aktivační proceduru Off
 
 Další informace o šablonách Správce prostředků najdete v těchto tématech:
 
-* [Azure Resource Manager struktura a syntaxe šablony](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure Resource Manager struktura a syntaxe šablony](../azure-resource-manager/templates/template-syntax.md)
 * [Osvědčené postupy pro šablony Azure Resource Manageru](../azure-resource-manager/template-best-practices.md)
 * [Vývoj šablon Azure Resource Manageru pro konzistenci cloudu](../azure-resource-manager/templates-cloud-consistency.md)
 
@@ -45,7 +45,7 @@ Informace o prostředcích šablon specifických pro Logic Apps, účty pro inte
 
 ## <a name="template-structure"></a>Struktura šablon
 
-Na nejvyšší úrovni se Správce prostředků šablona řídí touto strukturou, která je plně popsána v tématu [Azure Resource Manager struktura šablony a syntaxe](../azure-resource-manager/resource-group-authoring-templates.md) :
+Na nejvyšší úrovni se Správce prostředků šablona řídí touto strukturou, která je plně popsána v tématu [Azure Resource Manager struktura šablony a syntaxe](../azure-resource-manager/templates/template-syntax.md) :
 
 ```json
 {
@@ -63,8 +63,8 @@ Pro šablonu aplikace logiky, primárně pracujete s těmito objekty šablony:
 
 | Atribut | Popis |
 |-----------|-------------|
-| `parameters` | Deklaruje [parametry šablony](../azure-resource-manager/resource-group-authoring-templates.md#parameters) pro přijetí hodnot, které se mají použít při vytváření a přizpůsobení prostředků pro nasazení v Azure. Tyto parametry například přijímají hodnoty pro název a umístění vaší aplikace logiky, připojení a další prostředky, které jsou nezbytné pro nasazení. Tyto hodnoty parametrů můžete uložit do [souboru parametrů](#template-parameter-files), který je popsán dále v tomto tématu. Obecné podrobnosti naleznete v tématu [Parameters-správce prostředků Structure a syntax šablony](../azure-resource-manager/resource-group-authoring-templates.md#parameters). |
-| `resources` | Definuje [prostředky](../azure-resource-manager/resource-group-authoring-templates.md#resources) pro vytvoření nebo aktualizaci a nasazení skupiny prostředků Azure, například vaší aplikace logiky, připojení, účtů Azure Storage atd. Obecné podrobnosti naleznete v tématu [Resources-správce prostředků Structure a syntax šablony](../azure-resource-manager/resource-group-authoring-templates.md#resources). |
+| `parameters` | Deklaruje [parametry šablony](../azure-resource-manager/templates/template-syntax.md#parameters) pro přijetí hodnot, které se mají použít při vytváření a přizpůsobení prostředků pro nasazení v Azure. Tyto parametry například přijímají hodnoty pro název a umístění vaší aplikace logiky, připojení a další prostředky, které jsou nezbytné pro nasazení. Tyto hodnoty parametrů můžete uložit do [souboru parametrů](#template-parameter-files), který je popsán dále v tomto tématu. Obecné podrobnosti naleznete v tématu [Parameters-správce prostředků Structure a syntax šablony](../azure-resource-manager/templates/template-syntax.md#parameters). |
+| `resources` | Definuje [prostředky](../azure-resource-manager/templates/template-syntax.md#resources) pro vytvoření nebo aktualizaci a nasazení skupiny prostředků Azure, například vaší aplikace logiky, připojení, účtů Azure Storage atd. Obecné podrobnosti naleznete v tématu [Resources-správce prostředků Structure a syntax šablony](../azure-resource-manager/templates/template-syntax.md#resources). |
 ||||
 
 Šablona vaší aplikace logiky používá tento formát názvu souboru:
@@ -78,7 +78,7 @@ Pro šablonu aplikace logiky, primárně pracujete s těmito objekty šablony:
 
 ## <a name="template-parameters"></a>Parametry šablony
 
-Šablona aplikace logiky má více `parameters` objektů, které existují na různých úrovních a provádějí různé funkce. Například na nejvyšší úrovni můžete deklarovat [parametry šablony](../azure-resource-manager/resource-group-authoring-templates.md#parameters) pro hodnoty, které chcete přijmout a použít při nasazení při vytváření a nasazování prostředků v Azure, například:
+Šablona aplikace logiky má více `parameters` objektů, které existují na různých úrovních a provádějí různé funkce. Například na nejvyšší úrovni můžete deklarovat [parametry šablony](../azure-resource-manager/templates/template-syntax.md#parameters) pro hodnoty, které chcete přijmout a použít při nasazení při vytváření a nasazování prostředků v Azure, například:
 
 * Vaše aplikace logiky
 * Připojení, která vaše logika používá pro přístup k dalším službám a systémům prostřednictvím [spravovaných konektorů](../connectors/apis-list.md)
@@ -86,7 +86,7 @@ Pro šablonu aplikace logiky, primárně pracujete s těmito objekty šablony:
 
   Například pokud vaše aplikace logiky používá [integrační účet](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) pro scénáře B2B (Business-to-Business), objekt `parameters` nejvyšší úrovně šablony deklaruje parametr, který přijímá ID prostředku pro tento účet integrace.
 
-Zde je obecná struktura a syntaxe pro definici parametru, která je plně popsána [parametry-správce prostředků strukturou šablony a syntaxí](../azure-resource-manager/resource-group-authoring-templates.md#parameters):
+Zde je obecná struktura a syntaxe pro definici parametru, která je plně popsána [parametry-správce prostředků strukturou šablony a syntaxí](../azure-resource-manager/templates/template-syntax.md#parameters):
 
 ```json
 "<parameter-name>": {
@@ -147,7 +147,7 @@ S výjimkou parametrů, které zpracovávají citlivé hodnoty, nebo musí být 
 
 Chcete-li zabezpečit parametry šablony, přečtěte si tato témata:
 
-* [Doporučení zabezpečení pro parametry šablony](../azure-resource-manager/template-best-practices.md#parameters)
+* [Doporučení zabezpečení pro parametry šablony](../azure-resource-manager/templates/template-best-practices.md#parameters)
 * [Parametry zabezpečené šablony](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 * [Předání hodnot zabezpečeného parametru pomocí Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)
 
@@ -169,7 +169,7 @@ Tady je několik osvědčených postupů pro definování parametrů:
 
 * Zahrňte atribut `defaultValue`, který může zadat prázdné hodnoty pro všechny parametry s výjimkou hodnot, které jsou citlivé nebo musí být zabezpečené. Pro uživatelská jména, hesla a tajné klíče vždy používejte zabezpečené parametry. Pokud chcete skrýt nebo chránit citlivé hodnoty parametrů, postupujte podle pokynů v těchto tématech:
 
-  * [Doporučení zabezpečení pro parametry šablony](../azure-resource-manager/template-best-practices.md#parameters)
+  * [Doporučení zabezpečení pro parametry šablony](../azure-resource-manager/templates/template-best-practices.md#parameters)
 
   * [Parametry zabezpečené šablony](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
@@ -177,13 +177,13 @@ Tady je několik osvědčených postupů pro definování parametrů:
 
 * Chcete-li odlišit názvy parametrů šablony z názvů parametrů definice pracovního postupu, můžete použít názvy parametrů popisné šablony, například: `TemplateFabrikamPassword`
 
-Další doporučené postupy pro šablonu najdete v tématu [osvědčené postupy pro parametry šablon](../azure-resource-manager/template-best-practices.md#parameters).
+Další doporučené postupy pro šablonu najdete v tématu [osvědčené postupy pro parametry šablon](../azure-resource-manager/templates/template-best-practices.md#parameters).
 
 <a name="template-parameter-files"></a>
 
 ## <a name="template-parameters-file"></a>Soubor parametrů šablony
 
-Chcete-li zadat hodnoty parametrů šablony, uložte tyto hodnoty do [souboru parametrů](../azure-resource-manager/resource-group-template-deploy.md#parameter-files). Tímto způsobem můžete použít různé soubory parametrů v závislosti na potřebách nasazení. Tady je formát názvu souboru, který se má použít:
+Chcete-li zadat hodnoty parametrů šablony, uložte tyto hodnoty do [souboru parametrů](../azure-resource-manager/templates/parameter-files.md). Tímto způsobem můžete použít různé soubory parametrů v závislosti na potřebách nasazení. Tady je formát názvu souboru, který se má použít:
 
 * Název souboru šablony aplikace logiky: **<*Logic-App-Name*>. JSON**
 * Název souboru parametrů: **<*Logic-App-Name*>. Parameters. JSON**
@@ -267,8 +267,8 @@ Vaše šablona obsahuje objekt `resources`, což je pole, které obsahuje defini
 
 Obecné informace o prostředcích šablon a jejich atributech najdete v těchto tématech:
 
-* [Prostředky – Správce prostředků struktura a syntaxe šablony](../azure-resource-manager/resource-group-authoring-templates.md#resources)
-* [Osvědčené postupy pro prostředky šablon](../azure-resource-manager/template-best-practices.md#resources)
+* [Prostředky – Správce prostředků struktura a syntaxe šablony](../azure-resource-manager/templates/template-syntax.md#resources)
+* [Osvědčené postupy pro prostředky šablon](../azure-resource-manager/templates/template-best-practices.md#resources)
 
 <a name="logic-app-resource-definition"></a>
 

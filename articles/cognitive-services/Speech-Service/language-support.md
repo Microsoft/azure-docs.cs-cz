@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 8db70ccbabfc165dbe3f7b9a61dbe5023a87f708
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: b5f227deb3385d64160f5a469d76b9763057b160
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815384"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381048"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Podpora jazyků a oblastí pro službu Speech
 
@@ -81,7 +81,7 @@ Neuronové převod textu na řeč je nový typ syntézy řeči, který využív�
 
 Neuronové hlasy se dají použít k zajištění většího přirozeného a poutavého působení s chatovacích robotů o a hlasovými asistenty, konverzí digitálních textů, jako jsou například e-knihy, do audiobooks a vylepšení navigačních systémů v klecích. V případě přirozeného Prosody jako přirozeného a jasného kloubování slov, neuronové hlasy významně omezují naslouchat únavu při interakci uživatelů se systémy AI.
 
-Úplný seznam hlasů neuronové a regionální dostupnosti najdete v tématu [oblasti](regions.md#standard-and-neural-voices).
+Další informace o regionální dostupnosti najdete v tématu [oblasti](regions.md#standard-and-neural-voices).
 
 Národní prostředí | Jazyk | Pohlaví | Úplné mapování názvu služby | Krátký název hlasu
 --------|----------|--------|---------|------------
@@ -90,6 +90,8 @@ Národní prostředí | Jazyk | Pohlaví | Úplné mapování názvu služby | K
 `en-US` | English (US) | Žena | Hlasový Převod textu na řeč pro Microsoft Server Speech (EN-US, JessaNeural) | "en-US-JessaNeural"
 `it-IT` | Italština (Itálie) | Žena |Microsoft Server Speech Převod textu na řeč hlas (IT – IT, ElsaNeural) | "IT-IT-ElsaNeural"
 `zh-CN` | Čínština (Španělsko) | Žena | "Microsoft Server Speech Převod textu na řeč Voice (zh-CN, XiaoxiaoNeural)" | "zh-CN-XiaoxiaoNeural"
+
+Pokud se chcete dozvědět, jak můžete nakonfigurovat a upravit hlasy neuronové, přečtěte si téma věnované [jazykům pro označování řeči](speech-synthesis-markup.md#adjust-speaking-styles).
 
 > [!NOTE]
 > V požadavcích na Shrnutí řeči můžete použít buď úplné mapování názvu služby, nebo krátký název hlasu.

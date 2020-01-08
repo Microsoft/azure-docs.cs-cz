@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 43e99c54249738436f24369ed3525e78ff971a12
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 452d18908406214bb7e1253363a42d8ba8287d96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930214"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454050"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Připojení zařízení s Windows IoT Core k aplikaci Azure IoT Central
 
@@ -25,19 +25,24 @@ Tento článek popisuje, jak jako vývojář zařízení připojit zařízení s
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-- Aplikace IoT Central v Azure vytvořená z **ukázkové** šablony aplikace Devkits Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
+- Aplikace Azure IoT Central vytvořená ze šablony **starší verze aplikace** . Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
 
 - Zařízení s operačním systémem Windows 10 IoT Core. Další informace najdete v tématu [nastavení zařízení s Windows 10 IoT Core](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup).
 
 - Vývojový počítač s nainstalovanou aplikací [Node. js](https://nodejs.org/) verze 8.0.0 nebo novější. Můžete spustit `node --version` na příkazovém řádku a ověřit svou verzi. Node.js je k dispozici pro širokou škálu operačních systémů.
 
-## <a name="the-sample-devkits-application"></a>Ukázková aplikace Devkits
+## <a name="add-a-device-template"></a>Přidání šablony zařízení
 
-Aplikace vytvořená v ukázkové šabloně aplikace **Devkits** zahrnuje šablonu zařízení **Windows IoT Core** s následujícími charakteristikami:
+V aplikaci Azure IoT Central přidejte novou šablonu zařízení **Windows IoT Core** s následujícími charakteristikami:
 
 - Měření telemetrie pro zařízení: **vlhkost**, **teplota**a **tlak**.
 - Nastavení pro řízení **rychlosti ventilátoru**.
 - **Číslo** a **umístění**vlastnosti v zařízení, které je v cloudu.
+
+1. Z šablon zařízení ![vyberte **+ nový**](media/howto-connect-windowsiotcore/adddevicetemplate.png)
+   
+
+2. Vyberte **Windows IoT Core** a vytvořte šablonu zařízení Windows iot Core ![přidat šablonu zařízení](media/howto-connect-windowsiotcore/newdevicetemplate.png)
 
 Úplné podrobnosti o konfiguraci šablony zařízení najdete v [podrobnostech o šabloně zařízení Windows IoT Core](#device-template-details).
 
@@ -107,23 +112,23 @@ Aplikace vytvořená v ukázkové šabloně aplikace **Devkits** zahrnuje šablo
 | Název pole     | Jednotky  | Minimální | Maximum | Desetinná místa |
 | -------------- | ------ | ------- | ------- | -------------- |
 | vlhkost       | %      | 0       | 100     | 0              |
-| názvem           | 7C     | -40     | 120     | 0              |
-| pressure       | hPa    | 260     | 1260    | 0              |
+| temp           | °C     | -40     | 120     | 0              |
+| tlak       | hPa    | 260     | 1260    | 0              |
 
 ### <a name="settings"></a>Nastavení
 
 Číselná nastavení
 
-| Zobrazované jméno | Název pole | Jednotky | Desetinná místa | Minimální | Maximum | Pořizovací |
+| Zobrazované jméno | Název pole | Jednotky | Desetinná místa | Minimální | Maximum | Počáteční |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| Rychlost ventilátoru    | fanSpeed   | /MIN   | 0              | 0       | 1000    | 0       |
+| Rychlost větráku    | fanSpeed   | /MIN   | 0              | 0       | 1 000    | 0       |
 
 ### <a name="properties"></a>Vlastnosti
 
 | Typ            | Zobrazované jméno | Název pole | Data type |
 | --------------- | ------------ | ---------- | --------- |
 | Vlastnost zařízení | Číslo Die   | dieNumber  | číslo    |
-| Text            | Umístění     | location   | neuvedeno       |
+| Text            | Umístění     | location   | Nevztahuje se       |
 
 ## <a name="next-steps"></a>Další kroky
 

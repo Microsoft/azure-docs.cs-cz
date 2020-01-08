@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 51c699f9b392be5f2e2bc16b5729d6567ace7f17
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 9e80bc3e176f831f8609dd7f2a2ee22a2495e89b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016258"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428935"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Vytvoření prostředí s více virtuálními počítači a prostředků PaaS pomocí šablon Azure Resource Manager
 
-Azure DevTest Labs prostředí umožňují uživatelům snadno nasadit složitou infrastrukturu konzistentním způsobem v rámci omezeného prostředí. [Šablony Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) můžete použít k vytváření prostředí se sadami prostředků v DevTest Labs. Tato prostředí můžou obsahovat jakékoli prostředky Azure, které Správce prostředků šablony můžou vytvořit. 
+Azure DevTest Labs prostředí umožňují uživatelům snadno nasadit složitou infrastrukturu konzistentním způsobem v rámci omezeného prostředí. [Šablony Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md) můžete použít k vytváření prostředí se sadami prostředků v DevTest Labs. Tato prostředí můžou obsahovat jakékoli prostředky Azure, které Správce prostředků šablony můžou vytvořit. 
 
 Můžete snadno [Přidat jeden virtuální počítač (VM)](devtest-lab-add-vm.md) do testovacího prostředí pomocí [Azure Portal](https://portal.azure.com). Scénáře, jako jsou vícevrstvé webové aplikace nebo farmy služby SharePoint, ale vyžadují mechanismus pro vytvoření více virtuálních počítačů v jednom kroku. Pomocí šablon Azure Resource Manager můžete definovat infrastrukturu a konfiguraci řešení Azure a opakovaně nasazovat víc virtuálních počítačů v konzistentním stavu. 
 
@@ -34,7 +34,7 @@ Můžete snadno [Přidat jeden virtuální počítač (VM)](devtest-lab-add-vm.m
 - Můžete zřídit prostředky Azure PaaS a také virtuální počítače s IaaS v prostředí ze šablony Azure Resource Manager.
 - Kromě jednotlivých virtuálních počítačů vytvořených jinými typy základů můžete sledovat náklady na prostředí v testovacím prostředí. Prostředky PaaS se vytvoří a zobrazí se ve sledování nákladů. Automatické vypnutí virtuálního počítače ale neplatí pro prostředky PaaS.
 
-Další informace o výhodách používání šablon Správce prostředků k nasazení, aktualizaci nebo odstranění mnoha prostředků testovacího prostředí v rámci jedné operace najdete v tématu [výhody používání šablon Správce prostředků](../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager).
+Další informace o výhodách používání šablon Správce prostředků k nasazení, aktualizaci nebo odstranění mnoha prostředků testovacího prostředí v rámci jedné operace najdete v tématu [výhody používání šablon Správce prostředků](../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager).
 
 > [!NOTE]
 > Když použijete šablonu Správce prostředků jako základ pro vytvoření testovacích virtuálních počítačů, existují některé rozdíly mezi vytvořením několika virtuálních počítačů nebo jednoho virtuálního počítače. Další informace najdete v tématu [použití šablony Azure Resource Manager virtuálního počítače](devtest-lab-use-resource-manager-template.md).
@@ -56,7 +56,7 @@ Pro uspořádání šablon Azure Resource Manager v úložišti je potřeba prov
   
 - Pokud chcete použít hodnoty parametrů definované v souboru parametrů, soubor parametrů musí mít název *azuredeploy. Parameters. JSON*.
   
-  Pomocí parametrů `_artifactsLocation` a `_artifactsLocationSasToken` můžete vytvořit hodnotu identifikátoru URI parametersLink a povolit tak DevTest Labs automatické správě vnořených šablon. Další informace najdete v tématu [nasazení vnořených Azure Resource Manager šablon pro testovací prostředí](deploy-nested-template-environments.md).
+  Pomocí parametrů `_artifactsLocation` a `_artifactsLocationSasToken` můžete vytvořit hodnotu identifikátoru URI parametersLink, což umožňuje DevTest Labs automaticky spravovat vnořené šablony. Další informace najdete v tématu [nasazení vnořených Azure Resource Manager šablon pro testovací prostředí](deploy-nested-template-environments.md).
   
 - Metadata můžete definovat k určení zobrazovaného názvu a popisu šablony v souboru s názvem *metadata. JSON*následujícím způsobem:
   
@@ -73,14 +73,14 @@ Pro uspořádání šablon Azure Resource Manager v úložišti je potřeba prov
 
 Po vytvoření a konfiguraci úložiště ho můžete přidat do testovacího prostředí pomocí Azure Portal: 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 1. V seznamu cvičení vyberte testovací prostředí, které chcete. 
 1. V podokně s **přehledem** testovacího prostředí vyberte **Konfigurace a zásady**.
    
    ![Konfigurace a zásady](./media/devtest-lab-create-environment-from-arm/configuration-and-policies-menu.png)
    
-1. V seznamu nastavení **Konfigurace a zásady** vyberte **úložiště**. Úložiště **veřejného** úložiště artefaktů se automaticky vygeneruje pro všechny laboratoře a připojuje se k [veřejnému úložišti GitHub DevTest Labs](https://github.com/Azure/azure-devtestlab).
+1. V seznamu nastavení **Konfigurace a zásady** vyberte **úložiště**. Úložiště **veřejného úložiště artefaktů** se automaticky vygeneruje pro všechny laboratoře a připojuje se k [veřejnému úložišti GitHub DevTest Labs](https://github.com/Azure/azure-devtestlab).
    
 1. Pokud chcete přidat úložiště šablon Azure Resource Manager, vyberte **Přidat**.
    
@@ -88,13 +88,13 @@ Po vytvoření a konfiguraci úložiště ho můžete přidat do testovacího pr
    
 1. V podokně **úložiště** zadejte následující informace:
    
-   - **Název**: Zadejte název úložiště pro použití v testovacím prostředí.
-   - **Adresa URL klonu Git**: Z GitHubu nebo Azure Repos zadejte adresu URL klonu Git HTTPS. 
-   - **Větev** (volitelné): Zadejte název větve pro přístup k definicím šablon Azure Resource Manager.
+   - **Název**: zadejte název úložiště pro použití v testovacím prostředí.
+   - **Adresa URL klonu Git**: zadejte adresu URL klonu Git HTTPS z GitHubu nebo Azure Repos. 
+   - **Větev** (volitelné): zadejte název větve pro přístup k definicím šablon Azure Resource Manager.
    - **Osobní přístupový token**: Zadejte osobní přístupový token, který se používá k zabezpečenému přístupu k úložišti.
-     - Pokud chcete získat token z Azure Repos, v části váš profil vyberte **uživatelské nastavení** > **zabezpečení** > **osobní přístupové tokeny**.
-     - Pokud chcete získat token z GitHubu, v části váš profil vyberte **Nastavení** > **vývojář nastavení** > **osobní přístupové tokeny**.
-   - **Cesty**ke složkám: Zadejte cestu ke složce, která je relativní vzhledem k identifikátoru URI klonu Git, a to buď pro definice artefaktů, nebo pro definice šablon Azure Resource Manager. 
+     - Pokud chcete získat token z Azure Repos, v části váš profil vyberte **nastavení uživatele** >  **tokeny zabezpečení > Personal Access**.
+     - Pokud chcete získat token z GitHubu, v části váš profil vyberte **nastavení** > **nastavení pro vývojáře** > **tokeny osobního přístupu**.
+   - **Cesty ke složkám**: zadejte cestu ke složce, která je relativní vzhledem k identifikátoru URI klonu Git, a to buď pro definice artefaktů, nebo pro definice šablon Azure Resource Manager. 
    
 1. Vyberte **Uložit**.
    
@@ -106,9 +106,9 @@ Po přidání šablony Azure Resource Manager do testovacího prostředí můžo
 
 Uživatelé testovacího prostředí mají ve výchozím nastavení roli **Čtenář** , takže nemohou měnit prostředky ve skupině prostředků prostředí. Nemůžou například zastavit nebo spustit jejich prostředky. 
 
-Pokud chcete uživatelům testovacího prostředí poskytnout roli přispěvatele, aby mohli upravovat prostředky v jejich prostředích, postupujte podle následujících kroků:
+Pokud chcete uživatelům testovacího prostředí poskytnout roli **přispěvatele** , aby mohli upravovat prostředky v jejich prostředích, postupujte podle následujících kroků:
 
-1. V podokně s přehledem [Azure Portal](https://portal.azure.com)v podokně **Přehled** testovacího prostředí vyberte **Konfigurace a zásady**a pak vyberte **Nastavení testovacího prostředí**.
+1. V podokně s **přehledem** [Azure Portal](https://portal.azure.com)v podokně Přehled testovacího prostředí vyberte **Konfigurace a zásady**a pak vyberte **Nastavení testovacího prostředí**.
    
 1. V podokně **Nastavení testovacího prostředí** vyberte **Přispěvatel**a pak vyberte **Uložit** a udělte uživatelům testovací oprávnění k zápisu.
    
@@ -120,7 +120,7 @@ V další části se seznámíte s vytvářením prostředí ze šablony Azure R
 
 Po přidání šablony Azure Resource Manager do testovacího prostředí mohou uživatelé testovacího prostředí vytvořit prostředí v Azure Portal pomocí následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
    
 1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
    
@@ -295,7 +295,7 @@ Při používání šablon Správce prostředků v DevTest Labs Vezměte v úvah
     
   - Počet prémiových disků na uživatele testovacího prostředí
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Po vytvoření virtuálního počítače se můžete připojit k virtuálnímu počítači tak, že v podokně Správa virtuálního počítače vyberete **připojit** .
 - Zobrazení a Správa prostředků v prostředí výběrem prostředí v seznamu **moje virtuální počítače** v testovacím prostředí. 
 - Prozkoumejte [šablony Azure Resource Manager v galerii šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates).

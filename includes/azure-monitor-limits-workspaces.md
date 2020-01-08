@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 0f55f3ce4856e7b6eccf665faaa1b1fa45b84b58
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 49dc69eb73bd19509b5e14c5a4976cfa7208545a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72302293"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392361"
 ---
 **Objem shromažďování dat a jejich uchovávání** 
 
@@ -51,7 +51,7 @@ ms.locfileid: "72302293"
 
 | Kategorie | Omezení | Komentáře |
 |:---|:---|:---|
-| Maximální počet záznamů vrácených v jednom dotazu | 500 000 | |
+| Maximální počet záznamů vrácených v jednom dotazu | 500,000 | |
 | Maximální velikost vrácených dat | 64 000 000 bajtů (~ 61 MiB)| |
 | Maximální doba běhu dotazu | 10 minut | Podrobnosti najdete v podrobnostech o [časových limitech](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts) .  |
 | Maximální počet požadavků | 200 požadavků na uživatele nebo IP adresu klienta AAD za 30 sekund | Podrobnosti najdete v tématu [omezení přenosové rychlosti](https://dev.loganalytics.io/documentation/Using-the-API/Limits) . |
@@ -62,8 +62,7 @@ ms.locfileid: "72302293"
 |:---|:---|:---|
 | Maximální počet sloupců v tabulce         | 500 | |
 | Maximální počet znaků pro název sloupce | 500 | |
-| Oblasti na kapacitě | Středozápadní USA | V tuto chvíli nemůžete v této oblasti vytvořit nový pracovní prostor, protože se jedná o dočasný limit kapacity. Toto omezení se plánuje na konec listopadu 2019. |
-| Export dat | momentálně není k dispozici | Pomocí funkce Azure Functions nebo aplikace logiky můžete agregovat a exportovat data. | 
+| Export dat | Momentálně není k dispozici | Pomocí funkce Azure Functions nebo aplikace logiky můžete agregovat a exportovat data. | 
 
 **Frekvence přijímání dat**
 

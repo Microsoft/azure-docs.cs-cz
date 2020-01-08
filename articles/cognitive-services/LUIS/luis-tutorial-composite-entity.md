@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: kurz složených entit – LUIS'
 titleSuffix: Azure Cognitive Services
-description: Přidáte složené entitu seskupit do jedné entity obsahující extrahované data různých typů. Seskupí dat, klientská aplikace snadno extrahovat souvisejících dat v různých datových typů.
+description: V tomto kurzu přidáte složené entitu seskupit do jedné entity obsahující extrahované data různých typů. Seskupí dat, klientská aplikace snadno extrahovat souvisejících dat v různých datových typů.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 0e72563f366330f841d1a61ed67956b6314c769a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f2b2c3f52610cd9fae0845b15aebf032a088000b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893177"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447951"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Kurz: seskupení a extrakce souvisejících dat
 V tomto kurzu přidáte složené entitu seskupit do jedné entity obsahující extrahované data různých typů. Seskupí dat, klientská aplikace snadno extrahovat souvisejících dat v různých datových typů.
@@ -29,9 +29,7 @@ Složený entita je vhodný pro tento typ dat, protože data:
 * Využijte celou řadu typů entit.
 * Musí být seskupeny a zpracovány klientskou aplikací jako jediná informace.
 
-[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
-
-**Co se v tomto kurzu naučíte:**
+**V tomto kurzu se naučíte:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -40,17 +38,18 @@ Složený entita je vhodný pro tento typ dat, protože data:
 > * Přidání složené entity
 > * Trénování
 > * Publikování
-> * Získat záměry a entity z koncového bodu
+> * Zjistit záměry a entity z koncového bodu
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="import-example-app"></a>Importovat ukázkovou aplikaci
 
-1.  Stáhněte a uložte [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json) z kurzu seznam entit.
+1.  Stáhněte a uložte [soubor JSON aplikace](
+https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json?raw=true) z kurzu seznam entit.
 
-2. Naimportujte soubor JSON do nové aplikace.
+2. Importujte JSON do nové aplikace pomocí [portálu Luis](https://www.luis.ai).
 
-3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `composite`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Vzhledem k tomu, že název verze je součástí cesty URL, smí obsahovat jen znaky platné v adresách URL.
+3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `composite`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
 
 ## <a name="composite-entity"></a>Složená entita
 

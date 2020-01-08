@@ -2,19 +2,15 @@
 title: Můj první Runbook v Pythonu v Azure Automation
 description: Kurz vás provede vytvořením, otestováním a publikováním jednoduchého Runbooku v Pythonu.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/19/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 54b008939b3d083769756b9ac3c3c9e3f7aebea5
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b17a0403a3b2a3ff8c3586ed26a4b833db54922d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850274"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365933"
 ---
 # <a name="my-first-python-runbook"></a>Můj první Runbook sady Python
 
@@ -29,7 +25,7 @@ Tento kurz vás provede vytvořením [Runbooku v Pythonu](automation-runbook-typ
 > [!NOTE]
 > Použití Webhooku ke spuštění Runbooku v Pythonu se nepodporuje.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a0dbd28dc798342a24180af430187ac69f61b8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d6001dc47d19665184bf44114ab36744f0287264
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848132"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608750"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Začínáme s Azure Multi-Factor Authentication Serverem
 
@@ -30,9 +30,6 @@ Tato stránka popisuje novou instalaci serveru a jeho nastavení pro spolupráci
 > Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudové Multi-Factor Authentication Azure. Stávající zákazníci, kteří mají aktivovaný MFA Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
 
 ## <a name="plan-your-deployment"></a>Plánování nasazení
-
-> [!WARNING]
-> Od března 2019 bude stažení MFA serveru dostupné jenom pro placené klienty. Bezplatná/zkušební klienti už nebudou moct stahovat ani generovat a používat přihlašovací údaje pro aktivaci.
 
 Před stažením Azure Multi-Factor Authentication Serveru se zamyslete nad tím, jaké jsou vaše požadavky na zatížení a vysokou dostupnost. Tyto informace použijte k rozhodnutí, jak a kde provést nasazení.
 
@@ -96,9 +93,6 @@ Pokud nepoužíváte funkci Potvrzení události a vaši uživatelé nepoužíva
 
 ## <a name="download-the-mfa-server"></a>Stažení MFA Serveru
 
-> [!WARNING]
-> Od března 2019 bude stažení MFA serveru dostupné jenom pro placené klienty. Bezplatná/zkušební klienti už nebudou moct stahovat ani generovat a používat přihlašovací údaje pro aktivaci.
-
 Postupujte podle těchto kroků a stáhněte Azure Multi-Factor Authentication Server z webu Azure Portal:
 
 1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
@@ -122,6 +116,9 @@ Teď, když jste server stáhli, ho můžete nainstalovat a nastavit. Ujistěte 
    ![Přeskočit pomocí Průvodce konfigurací ověřování](./media/howto-mfaserver-deploy/skip2.png)
 
 5. Zpátky na stránce, odkud jste server stáhli, klikněte na tlačítko **Vytvoření přihlašovacích údajů pro aktivaci**. Tyto údaje zkopírujte do příslušných polí v Azure MFA Serveru a klikněte na **Aktivovat**.
+
+> [!NOTE]
+> Přihlašovací údaje pro aktivaci v Azure Portal můžou generovat jenom globální správci.
 
 ## <a name="send-users-an-email"></a>Zaslání e-mailu uživatelům
 

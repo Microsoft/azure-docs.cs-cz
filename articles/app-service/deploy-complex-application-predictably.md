@@ -5,17 +5,17 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 9ec3a6b39a857f888514b0a3872ae411e1819f3a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 1168faa1f39546dc75af28b885c9095cfffa1135
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671829"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422135"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Prediktivní zřizování a nasazování mikroslužeb v Azure
 V tomto kurzu se dozvíte, jak zřídit a nasadit aplikaci skládající se z [mikroslužeb](https://en.wikipedia.org/wiki/Microservices) v [Azure App Service](https://azure.microsoft.com/services/app-service/) jako jediná jednotka a předvídatelným způsobem pomocí šablon skupin prostředků JSON a skriptů prostředí PowerShell. 
 
-Při zřizování a nasazování vysoce škálovatelných aplikací, které se skládají z vysoce oddělených mikroslužeb, je zásadní pro úspěch a předvídatelnost. [Azure App Service](https://azure.microsoft.com/services/app-service/) vám umožní vytvářet mikroslužby, které zahrnují Web Apps, mobilní back-end a aplikace API. [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) vám umožní spravovat všechny mikroslužby jako jednotku spolu se závislostmi prostředků, jako je například nastavení databáze a správy zdrojů. Nyní můžete tuto aplikaci nasadit také pomocí šablon JSON a jednoduchého skriptování prostředí PowerShell. 
+Při zřizování a nasazování vysoce škálovatelných aplikací, které se skládají z vysoce oddělených mikroslužeb, je zásadní pro úspěch a předvídatelnost. [Azure App Service](https://azure.microsoft.com/services/app-service/) vám umožní vytvářet mikroslužby, které zahrnují Web Apps, mobilní back-end a aplikace API. [Azure Resource Manager](../azure-resource-manager/management/overview.md) vám umožní spravovat všechny mikroslužby jako jednotku spolu se závislostmi prostředků, jako je například nastavení databáze a správy zdrojů. Nyní můžete tuto aplikaci nasadit také pomocí šablon JSON a jednoduchého skriptování prostředí PowerShell. 
 
 ## <a name="what-you-will-do"></a>Co budete dělat
 V tomto kurzu nasadíte aplikaci, která zahrnuje:
@@ -29,7 +29,7 @@ V tomto kurzu nasadíte aplikaci, která zahrnuje:
 V tomto kurzu budete používat následující nástroje. Vzhledem k tomu, že není vyčerpávající diskuze na nástrojích, mám na začátku celý scénář a stačí vám poskytnout stručný úvod do každého a kde najdete další informace. 
 
 ### <a name="azure-resource-manager-templates-json"></a>Šablony Azure Resource Manager (JSON)
-Pokaždé, když vytvoříte aplikaci v Azure App Service, například Azure Resource Manager používá šablonu JSON k vytvoření celé skupiny prostředků s prostředky komponent. Složitá šablona z [Azure Marketplace](/azure/marketplace) může zahrnovat databázi, účty úložiště, plán App Service, samotnou aplikaci, pravidla upozornění, nastavení aplikace, nastavení automatického škálování a další, a všechny tyto šablony jsou k dispozici prostřednictvím PowerShellu. Další informace o šablonách Azure Resource Manager najdete v tématu [vytváření šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) .
+Pokaždé, když vytvoříte aplikaci v Azure App Service, například Azure Resource Manager používá šablonu JSON k vytvoření celé skupiny prostředků s prostředky komponent. Složitá šablona z [Azure Marketplace](/azure/marketplace) může zahrnovat databázi, účty úložiště, plán App Service, samotnou aplikaci, pravidla upozornění, nastavení aplikace, nastavení automatického škálování a další, a všechny tyto šablony jsou k dispozici prostřednictvím PowerShellu. Další informace o šablonách Azure Resource Manager najdete v tématu [vytváření šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md) .
 
 ### <a name="azure-sdk-26-for-visual-studio"></a>Azure SDK 2,6 pro Visual Studio
 Nejnovější sada SDK obsahuje vylepšení podpory šablon Správce prostředků v editoru JSON. To můžete použít k rychlému vytvoření šablony skupiny prostředků od začátku nebo otevření stávající šablony JSON (například stažené šablony galerie) pro úpravu, naplnění souboru parametrů a dokonce nasazení skupiny prostředků přímo z prostředku Azure. Řešení skupiny
@@ -117,7 +117,7 @@ Všimněte si následujícího o zvýrazněném kódu JSON:
 * Vnořené prostředky v `“resources”: […]`, kde jsou definovány databáze a pravidla brány firewall, mají `dependsOn` prvek, který určuje ID prostředku prostředku SQLServer na úrovni kořenového adresáře. Před vytvořením tohoto prostředku se zobrazí zpráva, že tento prostředek už musí existovat, Azure Resource Manager. a pokud je tento jiný prostředek definovaný v šabloně, pak ho vytvořte jako první.
   
   > [!NOTE]
-  > Podrobné informace o tom, jak používat funkci `resourceId()`, najdete v tématu [Azure Resource Manager funkce šablon](../azure-resource-manager/resource-group-template-functions-resource.md#resourceid).
+  > Podrobné informace o tom, jak používat funkci `resourceId()`, najdete v tématu [Azure Resource Manager funkce šablon](../azure-resource-manager/templates/template-functions-resource.md#resourceid).
   > 
   > 
 * Výsledkem elementu `dependsOn` je, že Azure Resource Manager může zjistit, které prostředky lze vytvořit paralelně a které prostředky je nutné vytvořit postupně. 
@@ -220,7 +220,7 @@ Tlačítko **nasadit do Azure** je skvělé, ale umožňuje nasadit šablonu sku
     Teď budete moct upravit všechny parametry definované v souboru šablony v tabulce s dobrým oprávněním. Parametry, které definují výchozí hodnoty, již mají své výchozí hodnoty a parametry definující seznam povolených hodnot budou zobrazeny jako rozevírací seznamy.
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-10-parametereditor.png)
-15. Vyplňte všechny prázdné parametry a použijte [adresu úložiště GitHub pro ToDoApp](https://github.com/azure-appservice-samples/ToDoApp.git) v části **relévání**. Pak klikněte na **Uložit**.
+15. Vyplňte všechny prázdné parametry a použijte [adresu úložiště GitHub pro ToDoApp](https://github.com/azure-appservice-samples/ToDoApp.git) v části **relévání**. Potom klikněte na **Uložit**.
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-11-parametereditorfilled.png)
     
@@ -228,7 +228,7 @@ Tlačítko **nasadit do Azure** je skvělé, ale umožňuje nasadit šablonu sku
     > Automatické škálování je funkce nabízená na úrovni **Standard** nebo vyšší a výstrahy na úrovni plánu jsou funkce nabízené na úrovni **Basic** nebo vyšší, takže budete muset nastavit parametr **SKU** na úroveň **Standard** nebo **Premium** , abyste viděli všechny nové prostředky služby App Insights.
     > 
     > 
-16. Klikněte na **nasadit**. Pokud jste vybrali možnost **Uložit hesla**, heslo bude uloženo v souboru parametrů **v prostém textu**. V opačném případě budete požádáni o zadání hesla databáze během procesu nasazení.
+16. Klikněte na tlačítko **nasazení**. Pokud jste vybrali možnost **Uložit hesla**, heslo bude uloženo v souboru parametrů **v prostém textu**. V opačném případě budete požádáni o zadání hesla databáze během procesu nasazení.
 
 A to je vše! Teď stačí přejít na [portál Azure Portal](https://portal.azure.com/) a nástroj [Azure Resource Explorer](https://resources.azure.com) , abyste viděli nové výstrahy a nastavení automatického škálování přidané do nasazené aplikace JSON.
 
@@ -250,8 +250,8 @@ V DevOps je opakovatelnost a předvídatelnost klíčem k jakémukoli úspěšn�
 <a name="resources"></a>
 
 ## <a name="more-resources"></a>Další zdroje
-* [Jazyk šablony Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
-* [Vytváření šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Jazyk šablony Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md)
+* [Vytváření šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md)
 * [Azure Resource Manager funkce šablon](../azure-resource-manager/resource-group-template-functions.md)
 * [Nasazení aplikace pomocí šablony Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md)
 * [Použití Azure PowerShellu s Azure Resource Managerem](../azure-resource-manager/powershell-azure-resource-manager.md)
@@ -261,10 +261,10 @@ V DevOps je opakovatelnost a předvídatelnost klíčem k jakémukoli úspěšn�
 
 Další informace o syntaxi a vlastnostech JSON pro typy prostředků nasazené v tomto článku najdete v těchto tématech:
 
-* [Microsoft. SQL/servery](/azure/templates/microsoft.sql/servers)
+* [Microsoft.Sql/servers](/azure/templates/microsoft.sql/servers)
 * [Microsoft. SQL/servery/databáze](/azure/templates/microsoft.sql/servers/databases)
 * [Microsoft. SQL/servery/firewallRules](/azure/templates/microsoft.sql/servers/firewallrules)
-* [Microsoft. Web/serverových farem](/azure/templates/microsoft.web/serverfarms)
-* [Microsoft. Web/weby](/azure/templates/microsoft.web/sites)
-* [Microsoft. Web/weby/sloty](/azure/templates/microsoft.web/sites/slots)
-* [Microsoft. Insights/autoscalesettings](/azure/templates/microsoft.insights/autoscalesettings)
+* [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)
+* [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)
+* [Microsoft.Web/sites/slots](/azure/templates/microsoft.web/sites/slots)
+* [Microsoft.Insights/autoscalesettings](/azure/templates/microsoft.insights/autoscalesettings)

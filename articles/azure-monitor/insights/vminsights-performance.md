@@ -4,15 +4,15 @@ description: Výkon je funkce Azure Monitor pro virtuální počítače, která 
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: f8879ac2d7827732112fa1a7504484209461b196
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 0d679675758b736455c66066f3df4cb9ea43fdea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555173"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399280"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Jak vynést výkon grafu pomocí Azure Monitor pro virtuální počítače (Preview)
 
@@ -22,13 +22,13 @@ Azure Monitor pro virtuální počítače obsahuje sadu grafů výkonu, které c
 
 V Azure Monitor funkce Performance poskytuje zobrazení všech monitorovaných virtuálních počítačů nasazených v rámci pracovních skupin ve vašich předplatných nebo ve vašem prostředí. Chcete-li získat přístup z Azure Monitor, proveďte následující kroky. 
 
-1. V Azure Portal vyberte **monitorovat**. 
+1. Na webu Azure Portal, vyberte **monitorování**. 
 2. V části **řešení** vyberte možnost **Virtual Machines (Preview)** .
 3. Vyberte kartu **výkon** .
 
 ![Zobrazení seznamu v horní části výkonu virtuálního počítače Insights](./media/vminsights-performance/vminsights-performance-aggview-01.png)
 
-Pokud máte více než jeden Log Analytics pracovní prostor, na kartě **horních N grafů** vyberte pracovní prostor povolený pomocí řešení v selektoru **pracovního prostoru** v horní části stránky. Selektor **skupin** vrátí předplatná, skupiny prostředků, [skupiny počítačů](../platform/computer-groups.md)a sady škálování virtuálních počítačů pro počítače související s vybraným pracovním prostorem, které můžete použít k dalšímu filtrování výsledků prezentovaných v grafech na této stránce a na ostatních stránkách. Váš výběr se vztahuje pouze na funkci výkonu a neprovádí se nad stavem ani mapováním.  
+Pokud máte více než jeden Log Analytics pracovní prostor, na kartě **horních N grafů** vyberte pracovní prostor povolený pomocí řešení v selektoru **pracovního prostoru** v horní části stránky. Selektor **skupin** bude vracet předplatná, skupiny prostředků, [skupiny počítačů](../platform/computer-groups.md)a sady škálování virtuálních počítačů, které souvisejí s vybraným pracovním prostorem, který můžete použít k dalšímu filtrování výsledků prezentovaných v grafech na této stránce a na dalších stránkách. Váš výběr se vztahuje pouze na funkci výkonu a neprovádí se nad stavem ani mapováním.  
 
 Ve výchozím nastavení jsou grafy zobrazeny v posledních 24 hodinách. Pomocí selektoru **TimeRange** se můžete dotazovat na historické časové rozsahy až na 30 dní, abyste viděli, jak v minulosti vypadal výkon.
 
@@ -38,7 +38,7 @@ Pět grafů využití kapacity se zobrazuje na stránce:
 * Dostupná paměť – zobrazuje pět nejlepších počítačů s nejnižším průměrným množstvím dostupné paměti. 
 * Využité místo na logickém disku% – zobrazí pět nejlepších počítačů s největším průměrem místa na disku% na všech svazcích disku. 
 * Počet odeslaných bajtů – zobrazuje horních pět počítačů s nejvyšším průměrem odeslaných bajtů. 
-* Počet přijatých bajtů – zobrazuje pět nejlepších počítačů s nejvyšším průměrem odeslaných bajtů. 
+* Počet přijatých bajtů – zobrazuje pět nejlepších počítačů s nejvyšším průměrem přijatých bajtů. 
 
 Kliknutím na ikonu připnutí v pravém horním rohu kteréhokoli z pěti grafů se vybraný graf připnout na poslední prohlížený řídicí panel Azure.  Z řídicího panelu můžete změnit velikost grafu nebo změnit jeho umístění. Výběr grafu z řídicího panelu vás přesměruje na Azure Monitor pro virtuální počítače a načte správný rozsah a zobrazení.  
 
@@ -74,7 +74,7 @@ Pokud chcete zobrazit využití prostředků jednotlivými virtuálními počít
 
 Chcete-li filtrovat výsledky na konkrétním virtuálním počítači v seznamu, zadejte název jeho počítače do textového pole **Hledat podle názvu** .  
 
-Pokud místo toho chcete zobrazit využití z jiné metriky výkonu, v rozevíracím seznamu **metrika** vyberte **dostupnou paměť**, **využité místo na logickém disku:%** , **přijatá síť bajtů/s**nebo **počet bajtů odeslaných v síti** . Zobrazí seznam aktualizací pro zobrazení rozsahu využití této metriky.  
+Pokud místo toho chcete zobrazit využití z jiné metriky výkonu, v rozevíracím seznamu **metrika** vyberte **dostupná paměť**, **využité místo na logickém disku:%** , **přijatá síť bajtů/s**nebo **Počet odeslaných bajtů sítě** .  
 
 Když vyberete virtuální počítač ze seznamu, otevře se panel **vlastnosti** na pravé straně stránky a odsud můžete vybrat **Podrobnosti o výkonu**.  Otevře se stránka s **podrobnostmi o virtuálním počítači** , která má tento virtuální počítač v oboru, podobně jako v tomto prostředí při přístupu k výkonu virtuálního počítače přímo z virtuálního počítače Azure.  
 
@@ -123,7 +123,7 @@ Kliknutím na ikonu připnutí v pravém horním rohu libovolného grafu si mů�
 
 Metriky výkonu povolené jako součást Azure Monitor pro virtuální počítače nezahrnují předem nakonfigurovaná pravidla výstrah. Existují výstrahy týkající se [stavu](vminsights-health.md#alerts) odpovídající problémům s výkonem zjištěným na virtuálním počítači Azure, jako je například vysoké využití procesoru, nedostatek dostupné paměti, nedostatek místa na disku atd.  Tyto výstrahy na stav se ale vztahují jenom na všechny virtuální počítače, které jsou povolené pro Azure Monitor pro virtuální počítače. 
 
-V pracovním prostoru Log Analytics však můžeme shromažďovat a ukládat pouze podmnožinu metrik výkonu, kterou požadujete. Pokud vaše strategie monitorování vyžaduje analýzu nebo upozorňování, které zahrnují další metriky výkonu za účelem efektivního vyhodnocení kapacity nebo stavu virtuálního počítače, nebo potřebujete flexibilitu při zadávání vlastních kritérií nebo logiky upozornění, můžete Nakonfigurujte [shromažďování těchto čítačů výkonu](../platform/data-sources-performance-counters.md) v Log Analytics a definujte [výstrahy protokolu](../platform/alerts-log.md). I když Log Analytics umožňuje provádět komplexní analýzu s jinými datovými typy a poskytovat delší dobu uchování pro podporu analýzy trendů, metrik na druhé straně, je odlehčená a umožňuje podporu scénářů téměř v reálném čase. Jsou shromažďovány pomocí [diagnostického agenta Azure](../../virtual-machines/windows/monitor.md) a jsou uloženy v úložišti metrik Azure monitor, což vám umožní vytvářet výstrahy s nižší latencí a s nižšími náklady.
+V pracovním prostoru Log Analytics však můžeme shromažďovat a ukládat pouze podmnožinu metrik výkonu, kterou požadujete. Pokud vaše strategie monitorování vyžaduje analýzu nebo upozorňování, které zahrnují další metriky výkonu za účelem efektivního vyhodnocení kapacity nebo stavu virtuálního počítače, nebo potřebujete flexibilitu při určení vlastních kritérií nebo logiky výstrah, můžete nakonfigurovat [shromažďování těchto čítačů výkonu](../platform/data-sources-performance-counters.md) v Log Analytics a definovat [výstrahy protokolu](../platform/alerts-log.md). I když Log Analytics umožňuje provádět komplexní analýzu s jinými datovými typy a poskytovat delší dobu uchování pro podporu analýzy trendů, metrik na druhé straně, je odlehčená a umožňuje podporu scénářů téměř v reálném čase. Jsou shromažďovány pomocí [diagnostického agenta Azure](../../virtual-machines/windows/monitor.md) a jsou uloženy v úložišti metrik Azure monitor, což vám umožní vytvářet výstrahy s nižší latencí a s nižšími náklady.
 
 Přečtěte si přehled [shromažďování metrik a protokolů s Azure monitor](../platform/data-platform.md) , abyste lépe pochopili základní rozdíly a další důležité informace před tím, než nakonfigurujete shromažďování těchto dalších metrik a pravidel výstrah.  
 

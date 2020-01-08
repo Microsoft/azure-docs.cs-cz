@@ -7,17 +7,17 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: f2479d9f3e278d23d62275b667f78d1fd70dd151
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.date: 01/03/2020
+ms.openlocfilehash: 094a3a838269921339dcd6c2c3b551720f394251
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889691"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660320"
 ---
-# <a name="routing-events-and-messages"></a>Směrování událostí a zpráv
+# <a name="routing-iot-events-and-messages"></a>Směrování událostí a zpráv IoT
 
-Řešení IoT často jednotkují několik výkonných služeb, které zahrnují úložiště, analýzu a další. Tento článek popisuje, jak propojit aplikace Azure Digital proniknout do Azure Analytics, AI a služby úložiště a poskytnout jim hlubší přehledy a funkce.
+Internet věcí řešení často jednotkují několik výkonných služeb, které zahrnují úložiště, analýzu a další. Tento článek popisuje, jak propojit aplikace Azure Digital proniknout do Azure Analytics, AI a služby úložiště a poskytnout jim hlubší přehledy a funkce.
 
 ## <a name="route-types"></a>Typy tras  
 

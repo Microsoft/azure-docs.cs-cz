@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d824606b1b602d006e53be619d6d955ac2cfb71f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 745ddcc95bb91e61478307265aec1ac8a7ebba54
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213031"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609192"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Řešení chyb při synchronizaci
 Pokud jsou data identity synchronizovaná ze služby Windows Server Active Directory (služba AD DS) do Azure Active Directory (Azure AD), může dojít k chybám. Tento článek poskytuje přehled různých typů chyb synchronizace, některé z možných scénářů, které způsobují tyto chyby a potenciální způsoby, jak chyby opravit. Tento článek zahrnuje běžné typy chyb a nemusí pokrývat všechny možné chyby.
@@ -53,7 +53,7 @@ Azure Active Directory schéma neumožňuje, aby dva nebo více objektů mělo s
 * ProxyAddresses
 * UserPrincipalName
 * onPremisesSecurityIdentifier
-* Objektu
+* ObjectId
 
 > [!NOTE]
 > Jako výchozí chování Azure Active Directory se také zavádí funkce [odolnosti duplicitních atributů atributů Azure AD](how-to-connect-syncservice-duplicate-attribute-resiliency.md) .  Tím se sníží počet chyb synchronizace, ke kterým dochází Azure AD Connect (stejně jako ostatní synchronizační klienti) tím, že Azure AD zpracovává duplicitní atributy ProxyAddresses a UserPrincipalName přítomné v místních prostředích služby AD. Tato funkce neopraví chyby duplikace. Proto musí být tato data stále opravena. Umožňuje ale zřídit nové objekty, které se jinak zablokují z důvodu duplicitních hodnot ve službě Azure AD. Tím se také sníží počet chyb synchronizace vrácených klientovi synchronizace.
@@ -75,15 +75,15 @@ Azure Active Directory schéma neumožňuje, aby dva nebo více objektů mělo s
 2. Hodnota **userPrincipalName** Jan Kovář je nastavená jako **honzuv\@contoso.com**.
 3. **"abcdefghijklmnopqrstuv = ="** je **SourceAnchor** vypočtený Azure AD Connect pomocí objektu **objectGUID** Jan Novák z místní služby Active Directory, což je **immutableId** pro Bob Smith v Azure Active Directory.
 4. Bob má také následující hodnoty pro atribut **proxyAddresses** :
-   * SMTP: bobs@contoso.com
-   * SMTP: bob.smith@contoso.com
+   * smtp: bobs@contoso.com
+   * smtp: bob.smith@contoso.com
    * **SMTP: Bob\@contoso.com**
 5. Nový uživatel, **Bob Taylor**, se přidá do místní služby Active Directory.
 6. Atribut **userPrincipalName** Taylor je nastaven jako **bobt\@contoso.com**.
 7. **"abcdefghijkl0123456789 = =" "** je **sourceAnchor** vypočtený pomocí Azure AD Connect pomocí objektu **objectGUID** Taylor z místní služby Active Directory. Objekt Bob Taylor se ještě nesynchronizoval na Azure Active Directory.
 8. Bob Taylor má následující hodnoty pro atribut proxyAddresses
-   * SMTP: bobt@contoso.com
-   * SMTP: bob.taylor@contoso.com
+   * smtp: bobt@contoso.com
+   * smtp: bob.taylor@contoso.com
    * **SMTP: Bob\@contoso.com**
 9. Během synchronizace Azure AD Connect rozpozná přidání Boba Taylor v místní službě Active Directory a požádejte Azure AD, aby provedl stejnou změnu.
 10. Služba Azure AD nejprve provede závažnou shodu. To znamená, že bude hledat v případě, že objekt s immutableId se rovná "abcdefghijkl0123456789 = =". Neshoda se nezdaří, protože ve službě Azure AD nebude mít žádný jiný objekt immutableId.
@@ -145,12 +145,12 @@ Pokud se Azure AD Connect pokusí přidat nový objekt nebo aktualizovat existuj
 1. **Bob Smith** je synchronizovaný uživatel v Azure Active Directory z místní služby Active Directory of contoso.com
 2. Hodnota **userPrincipalName** Smith v místním prostředí je nastavená jako **honzuv\@contoso.com**.
 3. Bob má také následující hodnoty pro atribut **proxyAddresses** :
-   * SMTP: bobs@contoso.com
-   * SMTP: bob.smith@contoso.com
+   * smtp: bobs@contoso.com
+   * smtp: bob.smith@contoso.com
    * **SMTP: Bob\@contoso.com**
 4. Nový uživatel, **Bob Taylor**, se přidá do místní služby Active Directory.
 5. Atribut **userPrincipalName** Taylor je nastaven jako **bobt\@contoso.com**.
-6. **Bob Taylor** má následující hodnoty pro atribut **proxyAddresses** i. SMTP: bobt@contoso.com II. SMTP: bob.taylor@contoso.com
+6. **Bob Taylor** má následující hodnoty pro atribut **proxyAddresses** i. smtp: bobt@contoso.com ii. smtp: bob.taylor@contoso.com
 7. Objekt Bob Taylor se úspěšně synchronizuje se službou Azure AD.
 8. Správce rozhodl aktualizovat atribut **proxyAddresses** Boba Taylor o následující hodnotu: i. **SMTP: Bob\@contoso.com**
 9. Služba Azure AD se pokusí aktualizovat objekt Bob Taylor ve službě Azure AD s výše uvedenou hodnotou, ale tato operace selže, protože ProxyAddresses hodnota je již přiřazena k Bobovi Smith, což způsobí chybu "AttributeValueMustBeUnique".
@@ -188,13 +188,13 @@ V takovém případě dojde k chybě synchronizace **"FederatedDomainChangeError
 #### <a name="scenarios"></a>Scénáře
 Pro synchronizovaného uživatele se přípona UserPrincipalName změnila z jedné federované domény na jinou federované domény místně. Například *userPrincipalName = bob\@contoso.com* byl změněn na *UserPrincipalName = Bob\@Fabrikam.com*.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 1. Bob Smith, účet pro Contoso.com, se přidá jako nový uživatel ve službě Active Directory s bob@contoso.com UserPrincipalName.
 2. Bob se přesune na jiné rozdělení Contoso.com s názvem Fabrikam.com a jejich UserPrincipalName se změní na bob@fabrikam.com
 3. Contoso.com i fabrikam.com domény jsou federované domény s Azure Active Directory.
 4. Hodnota userPrincipalName elementu Bob se neaktualizuje a výsledkem je chyba synchronizace "FederatedDomainChangeError".
 
-#### <a name="how-to-fix"></a>Jak opravit
+#### <a name="how-to-fix"></a>Jak problém vyřešit
 Pokud byla přípona UserPrincipalName uživatele aktualizována z bob@**contoso.com** na bob\@**fabrikam.com**, kde **contoso.com** i **fabrikam.com** jsou **federované domény**, pak pomocí těchto kroků opravíte chybu synchronizace.
 
 1. Aktualizujte ve službě Azure AD atribut UserPrincipalName uživatele z bob@contoso.com na bob@contoso.onmicrosoft.com. Pomocí následujícího příkazu PowerShellu můžete použít modul Azure AD PowerShell: `Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
@@ -218,7 +218,7 @@ Pokud atribut překročí povolený limit velikosti, omezení délky nebo omezen
 3. ThumbnailPhoto sada Boba ve službě Active Directory je moc velká pro synchronizaci ve službě Azure AD.
 4. Během automatického naplnění atributu ProxyAddresses ve službě Active Directory má objekt příliš mnoho přiřazených ProxyAddresses.
 
-### <a name="how-to-fix"></a>Jak opravit
+### <a name="how-to-fix"></a>Jak problém vyřešit
 1. Zajistěte, aby byl atribut způsobil chybu v rámci povoleného omezení.
 
 ## <a name="existing-admin-role-conflict"></a>Konflikt stávající role správce
@@ -234,13 +234,13 @@ Azure AD Connect nemá povolenou možnost Soft odpovídat objektu uživatele z m
 ![Stávající správce](media/tshoot-connect-sync-errors/existingadmin.png)
 
 
-### <a name="how-to-fix"></a>Jak opravit
-Chcete-li vyřešit tento problém, proveďte jednu z následujících akcí:
+### <a name="how-to-fix"></a>Jak problém vyřešit
+Chcete-li vyřešit tento problém, postupujte takto:
 
- - Odeberte účet Azure AD (Owner) ze všech rolí správce. 
- - **Pevným odstraněním** objektu v karanténě v cloudu. 
- - Další cyklus synchronizace se postará o tiché porovnání místního uživatele s cloudovým účtem (vzhledem k tomu, že uživatel cloudu už není globálním GAm). 
- - Obnovte členství v rolích pro vlastníka. 
+1. Odeberte účet Azure AD (Owner) ze všech rolí správce. 
+2. **Pevným odstraněním** objektu v karanténě v cloudu. 
+3. Další cyklus synchronizace se postará o tiché porovnání místního uživatele s cloudovým účtem (vzhledem k tomu, že uživatel cloudu už není globálním GAm). 
+4. Obnovte členství v rolích pro vlastníka. 
 
 >[!NOTE]
 >Roli pro správu můžete přiřadit existujícímu uživatelskému objektu znovu, až se dočasná shoda mezi místním uživatelským objektem a objektem uživatele Azure AD dokončí.

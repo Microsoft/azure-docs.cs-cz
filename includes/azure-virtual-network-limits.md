@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 2596351a0db921276ad74c27e30a8e2af93f2f36
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
-ms.translationtype: MT
+ms.openlocfilehash: d6cc6c787e38cc72a0a3d4340d55c0248918dba6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74981524"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392391"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Omezení sítě – Azure Resource Manager následujících omezení se vztahují jenom na síťové prostředky spravované prostřednictvím **Azure Resource Manager** pro jednotlivé oblasti a předplatné. Naučte se, jak [Zobrazit aktuální využití prostředků proti limitům předplatného](../articles/networking/check-usage-against-limits.md).
 
@@ -63,8 +63,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Nástroje pro vyrovnávání zatížení | 1 000 | 
 | Pravidla podle prostředku, Basic | 250 |
 | Pravidla podle prostředku, Standard | 1,500 | 
-| Pravidla pro konfiguraci protokolu IP | 299 |
-| Pravidla na síťový adaptér | 300 |
+| Pravidla na síťový adaptér (u všech IP adres na síťovém adaptéru) | 300 |
 | Konfigurace front-endové IP adresy, Basic | 200 |
 | Konfigurace front-endové IP adresy, Standard | 600 |
 | Fond back-end, základní | 100, jedna skupina dostupnosti |

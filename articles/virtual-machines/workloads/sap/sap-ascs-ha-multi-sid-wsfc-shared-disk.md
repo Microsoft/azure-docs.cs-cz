@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fada16b3ca5307a28eebca4dfe97dc96ba389212
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1f7e9551e6a48350b8f23e9d6ce1d47a1a903c63
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098700"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75643249"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -34,9 +34,9 @@ ms.locfileid: "70098700"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
-[networking-limits-azure-resource-manager]:../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[networking-limits-azure-resource-manager]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
 [load-balancer-multivip-overview]:../../../load-balancer/load-balancer-multivip-overview.md
 
 
@@ -199,7 +199,7 @@ ms.locfileid: "70098700"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -222,7 +222,7 @@ Tento článek se zaměřuje na to, jak přejít z jedné instalace ASCS/SCS do 
 >Maximální počet instancí SAP ASCS/SCS v jednom clusteru WSFC se rovná maximálnímu počtu privátních IP adres pro každý interní nástroj pro vyrovnávání zatížení Azure.
 >
 
-Další informace o limitech pro vyrovnávání zatížení najdete v části "privátní front-end IP adresa na nástroj pro vyrovnávání zatížení" v [části omezení sítě: Azure Resource Manager][networking-limits-azure-resource-manager].
+Další informace o limitech pro vyrovnávání zatížení najdete v části "privátní front-end IP adresa na nástroj pro vyrovnávání zatížení" v části [omezení sítě: Azure Resource Manager][networking-limits-azure-resource-manager].
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -244,7 +244,7 @@ Cílem je nainstalovat několik clusterových instancí SAP ABAP ASCS nebo SAP J
 
 ![Několik clusterových instancí SAP ASCS/SCS v Azure][sap-ha-guide-figure-6002]
 
-Další informace o limitech pro vyrovnávání zatížení najdete v části "privátní front-end IP adresa na nástroj pro vyrovnávání zatížení" v [části omezení sítě: Azure Resource Manager][networking-limits-azure-resource-manager].
+Další informace o limitech pro vyrovnávání zatížení najdete v části "privátní front-end IP adresa na nástroj pro vyrovnávání zatížení" v části [omezení sítě: Azure Resource Manager][networking-limits-azure-resource-manager].
 
 Kompletní na šířku se dvěma systémy SAP s vysokou dostupností by vypadaly takto:
 
@@ -254,7 +254,7 @@ Kompletní na šířku se dvěma systémy SAP s vysokou dostupností by vypadaly
 
 K přípravě infrastruktury můžete nainstalovat další instanci SAP ASCS/SCS s následujícími parametry:
 
-| Název parametru | Value |
+| Název parametru | Hodnota |
 | --- | --- |
 | IDENTIFIKÁTOR SID SAP ASCS/SCS |pr1-lb-ascs |
 | Interní nástroj pro vyrovnávání zatížení SAP DBMS | PR5 |
@@ -388,7 +388,7 @@ Udělejte toto:
 1. Přidejte další disk nebo disky stejné velikosti (které je třeba protáhnout) do každého uzlu clusteru a naformátujte je.
 2. Nakonfigurujte replikaci úložiště s využitím datakeep.
 
-Tento postup předpokládá, že jste už nainstalovali s modulem datakeep na počítačích clusteru služby WSFC. Pokud jste ho nainstalovali, musíte teď u těchto počítačů nakonfigurovat replikaci. Tento postup je podrobně popsán v tématu Installing s datakeeped [Cluster Edition pro sdílený disk clusteru SAP ASCS/SCS][sap-high-availability-infrastructure-wsfc-shared-disk-install-sios].  
+Tento postup předpokládá, že jste už nainstalovali s modulem datakeep na počítačích clusteru služby WSFC. Pokud jste ho nainstalovali, musíte teď u těchto počítačů nakonfigurovat replikaci. Tento postup je podrobně popsán v tématu [Installing s Datakeeped Cluster Edition pro sdílený disk clusteru SAP ASCS/SCS][sap-high-availability-infrastructure-wsfc-shared-disk-install-sios].  
 
 ![Synchronní zrcadlení datakeep pro nový disk sdílené složky SAP ASCS/SCS][sap-ha-guide-figure-6006]
 
@@ -434,7 +434,7 @@ Postup vysoké úrovně je následující:
 
 10. [Otestujte převzetí služeb při selhání a replikaci instance SAP ASCS/SCS][sap-high-availability-installation-wsfc-shared-disk-test-ascs-failover-and-sios-repl].
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Omezení sítě: Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Více VIP pro Azure Load Balancer][load-balancer-multivip-overview]

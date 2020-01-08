@@ -3,12 +3,12 @@ title: Obnovení souborů a složek ze zálohy virtuálního počítače Azure
 description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu obnovení virtuálního počítače Azure.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 3fff957e542a039fcc5121f13c062f710f9292c9
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4fd5de0c199bfe104b8bb4f5b33b9ed8a86924f6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172845"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392568"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -174,13 +174,13 @@ Pokud je v něm nakonfigurovaný jiný LVM disk RAID, použijte předchozí post
 
 V následující tabulce je uvedena kompatibilita mezi operačním systémem serveru a počítače. Při obnovování souborů nemůžete obnovit soubory na předchozí nebo budoucí verzi operačního systému. Například nemůžete obnovit soubor z virtuálního počítače s Windows serverem 2016 na počítač se systémem Windows Server 2012 nebo Windows 8. Můžete obnovit soubory z virtuálního počítače na stejný serverový operační systém nebo do kompatibilního klientského operačního systému.
 
-|Operační systém serveru | Kompatibilní klientský operační systém  |
+|Serverový operační systém | Kompatibilní klientský operační systém  |
 | --------------- | ---- |
-| Windows Server 2019    | Windows 10 |
-| Windows Server 2016    | Windows 10 |
+| Windows Server 2019    | Windows 10 |
+| Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
-| Windows Server 2008 R2 | Windows 7   |
+| Windows Server 2008 R2 | Windows 7   |
 
 ### <a name="for-linux-os"></a>Pro Linux OS
 
@@ -203,7 +203,7 @@ V systému Linux musí operační systém počítače používaného k obnovení
 
 Skript také vyžaduje, aby byly součásti Python a bash spouštěny a bezpečně připojeny k bodu obnovení.
 
-|Komponenta | Version  |
+|Součást | Verze  |
 | --------------- | ---- |
 | bash | 4 a vyšší |
 | Python | 2.6.6 a vyšší  |
@@ -211,9 +211,9 @@ Skript také vyžaduje, aby byly součásti Python a bash spouštěny a bezpečn
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Obnovení souborů ze záloh virtuálních počítačů s velkými disky
 
-V této části se dozvíte, jak provést obnovení souborů ze záloh virtuálních počítačů Azure, jejichž počet disků je > 16 a že velikost každého disku je > 4 TB.
+V této části se dozvíte, jak provést obnovení souborů ze záloh virtuálních počítačů Azure, jejichž počet disků je > 16 a že velikost každého disku je > 32 TB.
 
-Vzhledem k tomu, že proces obnovy souborů připojí všechny disky ze zálohy, když je použit velký počet disků (> 16) nebo velké disky (> 4 TB), jsou doporučeny následující body akcí:
+Vzhledem k tomu, že proces obnovy souborů připojí všechny disky ze zálohy, když je použit velký počet disků (> 16) nebo velké disky (> 32 TB), jsou doporučeny následující body akcí:
 
 - Pro obnovení souborů ponechte samostatný server pro obnovení (virtuální počítače Azure s D2v3). Můžete použít jenom obnovení souboru a pak vypnout, pokud není potřeba. Obnovení původního počítače se nedoporučuje, protože bude mít významný dopad na samotný virtuální počítač.
 - Pak skript spusťte jednou, abyste zkontrolovali, jestli je operace obnovení souborů úspěšná.

@@ -1,25 +1,14 @@
 ---
-title: Zabezpečené připojení k clusteru Azure Service Fabric | Microsoft Docs
+title: Zabezpečené připojení k clusteru Azure Service Fabric
 description: Popisuje ověření přístupu klienta ke clusteru Service Fabric a způsob zabezpečení komunikace mezi klienty a clusterem.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 759a539e-e5e6-4055-bff5-d38804656e10
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/29/2019
-ms.author: atsenthi
-ms.openlocfilehash: c350b53b2d0b235c5e34431386205f090f37b482
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 89d9f67ba1a202b3830df7a5b960c6ef01091bf2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599711"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458269"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Připojení k zabezpečenému clusteru
 
@@ -31,7 +20,7 @@ Když se klient připojí k uzlu Service Fabric clusteru, může být klient ov�
 
 Existuje několik různých způsobů, jak se připojit k zabezpečenému clusteru pomocí rozhraní příkazového řádku Service Fabric (sfctl). Pokud k ověřování používáte klientský certifikát, podrobnosti o certifikátu musí odpovídat certifikátu nasazenému do uzlů clusteru. Pokud váš certifikát má certifikační autority (CA), musíte taky zadat důvěryhodné certifikační autority.
 
-Pomocí `sfctl cluster select` příkazu se můžete připojit ke clusteru.
+Ke clusteru se můžete připojit pomocí příkazu `sfctl cluster select`.
 
 Klientské certifikáty lze zadat dvěma různými způsoby, buď jako certifikát, jako dvojici klíčů, nebo jako jeden soubor PFX. Pro soubory PEM chráněné heslem se zobrazí výzva k automatickému zadání hesla. Pokud jste certifikát klienta získali jako soubor PFX, nejprve převeďte soubor PFX na soubor PEM pomocí následujícího příkazu. 
 
@@ -41,7 +30,7 @@ openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pas
 
 Pokud Váš soubor. pfx není chráněný heslem, použijte parametr-Passin Pass: pro poslední parametr.
 
-Pokud chcete zadat klientský certifikát jako soubor PEM, zadejte cestu k souboru v `--pem` argumentu. Příklad:
+Chcete-li zadat klientský certifikát jako soubor PEM, zadejte cestu k souboru v argumentu `--pem`. Příklad:
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
@@ -49,22 +38,22 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./clie
 
 Soubory PEM chráněné heslem se před spuštěním libovolného příkazu zobrazí výzva k zadání hesla.
 
-Chcete-li zadat certifikát, dvojici klíčů `--cert` použijte `--key` argumenty a k určení cest k souborům pro každý příslušný soubor.
+Chcete-li zadat certifikát, dvojici klíčů použijte argumenty `--cert` a `--key` k určení cest souborů ke každému příslušnému souboru.
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-Někdy certifikáty, které se používají k zabezpečení testovacích nebo vývojových clusterů, selžou při ověřování certifikátů. Pokud chcete obejít ověření certifikátu, `--no-verify` zadejte možnost. Příklad:
+Někdy certifikáty, které se používají k zabezpečení testovacích nebo vývojových clusterů, selžou při ověřování certifikátů. Pokud chcete obejít ověření certifikátu, zadejte možnost `--no-verify`. Příklad:
 
 > [!WARNING]
-> Nepoužívejte `no-verify` možnost při připojování k produkčním Service Fabric clusterům.
+> Při připojování k produkčním Service Fabricm clusterům nepoužívejte možnost `no-verify`.
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
-Kromě toho můžete zadat cesty k adresářům důvěryhodných certifikátů CA nebo jednotlivých certifikátů. K určení těchto cest použijte `--ca` argument. Příklad:
+Kromě toho můžete zadat cesty k adresářům důvěryhodných certifikátů CA nebo jednotlivých certifikátů. K určení těchto cest použijte argument `--ca`. Příklad:
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
@@ -240,7 +229,7 @@ catch (Exception e)
 
 ### <a name="connect-to-a-secure-cluster-non-interactively-using-azure-active-directory"></a>Připojení k zabezpečenému clusteru bez interaktivně pomocí Azure Active Directory
 
-Následující příklad spoléhá na Microsoft. IdentityModel. clients. Active, verze: 2.19.208020213.
+Následující příklad spoléhá na Microsoft. IdentityModel. clients. Active, Version: 2.19.208020213.
 
 Další informace o získání tokenu AAD najdete v tématu [Microsoft. IdentityModel. clients. Active](https://msdn.microsoft.com/library/microsoft.identitymodel.clients.activedirectory.aspx).
 
@@ -371,7 +360,7 @@ Automaticky se zobrazí výzva k výběru klientského certifikátu.
 
 Pro zabezpečení clusteru, jednoho pro cluster a certifikát serveru a další pro klientský přístup by se měly použít aspoň dva certifikáty.  Doporučujeme také použít další sekundární certifikáty a certifikáty klientského přístupu.  Aby bylo možné zabezpečit komunikaci mezi klientem a uzlem clusteru pomocí zabezpečení certifikátů, musíte nejprve získat a nainstalovat certifikát klienta. Certifikát může být nainstalován do osobního (osobního) úložiště místního počítače nebo aktuálního uživatele.  Budete také potřebovat kryptografický otisk certifikátu serveru, aby mohl klient ověřit cluster.
 
-* Ve Windows: Poklikejte na soubor PFX a podle pokynů nainstalujte certifikát do svého osobního úložiště `Certificates - Current User\Personal\Certificates`. Případně můžete použít příkaz prostředí PowerShell:
+* Windows: Dvakrát klikněte na soubor PFX a podle zobrazených výzev nainstalujte certifikát do svého osobního úložiště `Certificates - Current User\Personal\Certificates`. Případně můžete použít příkaz prostředí PowerShell:
 
     ```powershell
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
@@ -387,9 +376,9 @@ Pro zabezpečení clusteru, jednoho pro cluster a certifikát serveru a další 
     -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
     ```
 
-* Na počítači Mac: Poklikejte na soubor PFX a podle pokynů nainstalujte certifikát do řetězce klíčů.
+* Mac: Dvakrát klikněte na soubor PFX a podle zobrazených výzev nainstalujte certifikát do své klíčenky.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Service Fabric proces upgradu clusteru a očekávání od vás](service-fabric-cluster-upgrade.md)
 * [Správa aplikací Service Fabric v aplikaci Visual Studio](service-fabric-manage-application-in-visual-studio.md)

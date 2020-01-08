@@ -1,19 +1,18 @@
 ---
 title: Použití balíčku Azure Stream Analytics CI/CD npm
 description: Tento článek popisuje, jak pomocí Azure Stream Analytics balíčku CI/CD npm nastavit proces průběžné integrace a nasazování.
-services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: df9afaaeeb7e41c111fe6bd053047095a9cb9349
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: ed1f6ebda81a7f036b5e09d15ef4a27323aa9b0d
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173350"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660864"
 ---
 # <a name="use-the-stream-analytics-cicd-npm-package"></a>Použití balíčku Stream Analytics CI/CD npm
 Tento článek popisuje, jak pomocí balíčku Azure Stream Analytics CI/CD npm nastavit proces průběžné integrace a nasazování.
@@ -22,7 +21,9 @@ Tento článek popisuje, jak pomocí balíčku Azure Stream Analytics CI/CD npm 
 
 Můžete povolit průběžnou integraci a nasazení pro Azure Stream Analytics úlohy pomocí balíčku npm **ASA-streamanalytics-cicd** . Balíček npm poskytuje nástroje pro generování Azure Resource Manager šablon [Stream Analytics projektů Visual Studio Code](quick-create-vs-code.md). Dá se použít na Windows, macOS a Linux bez instalace Visual Studio Code.
 
-Po [Stažení balíčku](https://www.npmjs.com/package/azure-streamanalytics-cicd)použijte následující příkaz pro výstup šablon Azure Resource Manager. Argument **ScriptPath** je absolutní cesta k souboru **asaql** v projektu. Ujistěte se, že soubory asaproj. JSON a JobConfig. JSON jsou ve stejné složce se souborem skriptu. Pokud není zadán parametr **outputPath** , šablony budou umístěny do složky **Deploy** ve složce **bin** projektu.
+Balíček si můžete [Stáhnout](https://www.npmjs.com/package/azure-streamanalytics-cicd) přímo nebo ho nainstalovat [globálně](https://docs.npmjs.com/downloading-and-installing-packages-globally) pomocí příkazu `npm install -g azure-streamanalytics-cicd`. Toto je doporučený přístup, který se dá použít taky v úloze skriptu PowerShellu nebo Azure CLI kanálu sestavení v **kanálech Azure DevOps**.
+
+Po instalaci balíčku použijte následující příkaz pro výstup šablon Azure Resource Manager. Argument **ScriptPath** je absolutní cesta k souboru **asaql** v projektu. Ujistěte se, že soubory asaproj. JSON a JobConfig. JSON jsou ve stejné složce se souborem skriptu. Pokud není zadán parametr **outputPath** , šablony budou umístěny do složky **Deploy** ve složce **bin** projektu.
 
 ```powershell
 azure-streamanalytics-cicd build -scriptPath <scriptFullPath> -outputPath <outputPath>
@@ -55,8 +56,8 @@ Výchozí parametry v souboru Parameters. JSON jsou z nastavení v projektu Visu
 Přečtěte si další informace o tom, jak [nasadit pomocí souboru šablony Správce prostředků a Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy). Přečtěte si další informace o [použití objektu jako parametru v šabloně správce prostředků](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
 
 Pokud chcete použít spravovanou identitu pro Azure Data Lake Store Gen1 jako výstupní jímku, musíte před nasazením do Azure poskytnout přístup k instančnímu objektu pomocí PowerShellu. Přečtěte si další informace o [nasazení adls Gen1 se správou identity pomocí šablony Správce prostředků](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment).
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Rychlé zprovoznění: Vytvoření cloudové úlohy Azure Stream Analytics v Visual Studio Code (Preview)](quick-create-vs-code.md)
-* [Test Stream Analytics dotazy místně pomocí Visual Studio Code (Preview)](vscode-local-run.md)
-* [Prozkoumat Azure Stream Analytics s využitím Visual Studio Code (Preview)](vscode-explore-jobs.md)
+* [Rychlý Start: vytvoření cloudové úlohy Azure Stream Analytics v Visual Studio Code (Preview)](quick-create-vs-code.md)
+* [Test Stream Analytics dotazy místně pomocí Visual Studio Code (Preview)](visual-studio-code-local-run.md)
+* [Prozkoumat Azure Stream Analytics s využitím Visual Studio Code (Preview)](visual-studio-code-explore-jobs.md)

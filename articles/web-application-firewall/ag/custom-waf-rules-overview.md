@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 10/04/2019
 ms.author: victorh
-ms.openlocfilehash: 0ac37378797c59d79af5d026200b68154836c5ac
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 323f01e08007260d4fb6d651b20937c5d5d5e357
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585397"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645085"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Vlastní pravidla pro Firewall webových aplikací V2 v Azure Application Gateway
 
@@ -29,7 +29,7 @@ Různé podmínky shod v rámci stejného pravidla jsou vždy složené pomocí 
 Pokud chcete **nebo** dvě různé podmínky, musí být tyto dvě podmínky v různých pravidlech. Můžete například blokovat provoz z konkrétní IP adresy nebo blokovat provoz, pokud používají konkrétní prohlížeč.
 
 > [!NOTE]
-> Maximální počet vlastních pravidel WAF je 100. Další informace o omezeních Application Gateway najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../../azure-subscription-service-limits.md#application-gateway-limits).
+> Maximální počet vlastních pravidel WAF je 100. Další informace o omezeních Application Gateway najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits).
 
 Regulární výrazy jsou také podporovány ve vlastních pravidlech, stejně jako v RuleSets počítačový počítač. Příklady těchto příkazů najdete v části Příklady 3 a 5 v tématu [Vytvoření a použití vlastních pravidel firewallu webových aplikací](create-custom-waf-rules.md).
 
@@ -133,7 +133,7 @@ Musí být jedním z následujících operátorů:
 - GreaterThanOrEqual
 - Filtr začíná na
 - EndsWith
-- regulární
+- Regulární výraz
 - Porovnat (Náhled)
 
 ### <a name="negate-condition-optional"></a>Podmínka negace [nepovinné]
@@ -145,7 +145,7 @@ Negace aktuální podmínky.
 Seznam řetězců s názvy transformací, které se mají provést před pokusem o shodu. Můžou to být následující transformace:
 
 - Malá písmena
-- Sklon
+- Trim
 - UrlDecode
 - UrlEncode 
 - RemoveNulls
@@ -194,7 +194,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | BI | Burundi|
 | BJ | Benin|
 | BL | Svatý Bartoloměj|
-| BN | Sultanát Brunej|
+| BN | Brunej Darussalam|
 | BO | Bolívie|
 | BR | Brazílie|
 | BS | Bahamy|
@@ -216,7 +216,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | CV | Cabo Verde|
 | CY | Kypr|
 | CZ | Česká republika|
-| DE | Německo|
+| Německo | Německo|
 | DK | Dánsko|
 | DO | Dominikánská republika|
 | DZ | Alžírsko|
@@ -264,7 +264,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | KW | Kuvajt|
 | KY | Kajmanské ostrovy|
 | KZ | Kazachstán|
-| LA | Laoská lidově demokratická republika|
+| LATINSKÁ AMERIKA | Laoská lidově demokratická republika|
 | LB | Libanon|
 | LI | Lichtenštejnsko|
 | LK | Srí Lanka|
@@ -281,7 +281,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | ML | Mali|
 | MM | Myanmar|
 | MN | Mongolsko|
-| MO | Macao – zvláštní správní oblast|
+| MO | Macao – zvláštní administrativní oblast|
 | MQ | Martinik|
 | MR | Mauritánie|
 | MT | Malta|
@@ -290,7 +290,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | MX | Mexiko|
 | MY | Malajsie|
 | MZ | Mosambik|
-| Není k dispozici | Namibie|
+| není k dispozici | Namibie|
 | NE | Niger|
 | NG | Nigérie|
 | NI | Nikaragua|
@@ -338,7 +338,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | TZ | Sjednocená tanzanská republika|
 | UA | Ukrajina|
 | UG | Uganda|
-| USA | Spojené státy|
+| Spojené státy | Spojené státy|
 | UY | Uruguay|
 | UZ | Uzbekistán|
 | VC | Svatý Vincenc a Grenadiny|
@@ -346,7 +346,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | VG | Britské Panenské ostrovy|
 | VI | Americké Panenské ostrovy|
 | VN | Vietnam|
-| ZA | Jižní Afrika|
+| ZA | Jihoafrická republika|
 | ZM | Zambie|
 | ZW | Zimbabwe|
 

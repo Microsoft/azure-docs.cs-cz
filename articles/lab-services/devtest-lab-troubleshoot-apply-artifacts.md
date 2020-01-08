@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2019
 ms.author: spelluru
-ms.openlocfilehash: a0505b987deb67f93de6f6166154211359515ad7
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: fc5051667100a2ebaa01b7815f825fadd766b08f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807885"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456986"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Řešení potíží při aplikování artefaktů ve Azure DevTest Labsm virtuálním počítači
 Použití artefaktů na virtuálním počítači může z různých důvodů selhat. Tento článek vás provede některými metodami, které vám pomůžou identifikovat možné příčiny.
@@ -66,10 +66,10 @@ Když se zdá, že artefakt přestane reagovat, nejprve určete, kde je zablokov
     - K protokolu aktivit můžete přistupovat z navigačního panelu stránky testovacího virtuálního počítače. Když vyberete tuto možnost, zobrazí se položka pro **aplikování artefaktů na virtuální počítač** (Pokud se operace použít artefakty aktivovala přímo) nebo **přidá nebo upraví virtuální počítače** (Pokud operace aplikování artefaktů byla součástí procesu vytváření virtuálního počítače).
     - Vyhledejte chyby pod těmito položkami. V některých případech se chyba nebude označit příznakem odpovídajícím způsobem a bude nutné prozkoumat každou položku.
     - Při zkoumání podrobností každého záznamu nezapomeňte zkontrolovat obsah datové části JSON. V dolní části dokumentu se může zobrazit chyba.
-- **Při pokusu o spuštění artefaktu**. Důvodem může být problémy se sítí nebo úložištěm. Podrobnosti najdete v příslušné části dále v tomto článku. Může k tomu také dojít z důvodu způsobu, jakým je skript vytvořen. Například:
+- **Při pokusu o spuštění artefaktu**. Důvodem může být problémy se sítí nebo úložištěm. Podrobnosti najdete v příslušné části dále v tomto článku. Může k tomu také dojít z důvodu způsobu, jakým je skript vytvořen. Příklad:
     - Skript PowerShellu má **povinné parametry**, ale jednomu z nich se nepovede zadat jeho hodnotu, buď proto, že uživateli povolíte jeho prázdné pole, nebo protože nemáte výchozí hodnotu pro vlastnost v definičním souboru artifactfile. JSON. Skript se zablokuje, protože čeká na vstup uživatele.
     - Skript PowerShellu **vyžaduje vstup uživatele** jako součást provádění. Skripty musí být zapsány pro tichou práci bez nutnosti zásahu uživatele.
-- **Agent virtuálního počítače bude mít dobu potřebnou k přípravě**. Při prvním spuštění virtuálního počítače nebo při první instalaci rozšíření vlastních skriptů k obsluze žádosti o použití artefaktů může virtuální počítač vyžadovat buď upgrade agenta virtuálního počítače, nebo počkat na inicializaci agenta virtuálního počítače. Může se jednat o služby, na kterých agent virtuálního počítače závisí na tom, že se při inicializaci trvá dlouhou dobu. V takových případech najdete další informace o řešení potíží v tématu [Přehled agenta virtuálních počítačů Azure](/virtual-machines/extensions/agent-windows.md) .
+- **Agent virtuálního počítače bude mít dobu potřebnou k přípravě**. Při prvním spuštění virtuálního počítače nebo při první instalaci rozšíření vlastních skriptů k obsluze žádosti o použití artefaktů může virtuální počítač vyžadovat buď upgrade agenta virtuálního počítače, nebo počkat na inicializaci agenta virtuálního počítače. Může se jednat o služby, na kterých agent virtuálního počítače závisí na tom, že se při inicializaci trvá dlouhou dobu. V takových případech najdete další informace o řešení potíží v tématu [Přehled agenta virtuálních počítačů Azure](../virtual-machines/extensions/agent-windows.md) .
 
 ### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-script"></a>Ověření, zda se artefakt jeví jako zablokované kvůli skriptu
 
@@ -101,7 +101,7 @@ Když se zdá, že artefakt přestane reagovat, nejprve určete, kde je zablokov
     V tomto příkladu vidíte, že čas spuštění agenta virtuálního počítače trval 10 minut a 20 sekund, protože byl odeslán prezenční signál. Příčinou tohoto případu bylo, že spuštění služby OOBE trvá dlouhou dobu.
 
 > [!TIP]
-> Obecné informace o rozšířeních Azure najdete v tématu [rozšíření a funkce virtuálních počítačů Azure](/virtual-machines/extensions/overview.md).
+> Obecné informace o rozšířeních Azure najdete v tématu [rozšíření a funkce virtuálních počítačů Azure](../virtual-machines/extensions/overview.md).
 
 ## <a name="storage-errors"></a>Chyby úložiště
 DevTest Labs vyžaduje přístup k účtu úložiště testovacího prostředí vytvořenému pro ukládání artefaktů do mezipaměti. Když DevTest Labs použije artefakt, načte konfiguraci artefaktu a jeho soubory z nakonfigurovaných úložišť. Ve výchozím nastavení DevTest Labs nakonfiguruje přístup k **úložišti artefaktů veřejného**.

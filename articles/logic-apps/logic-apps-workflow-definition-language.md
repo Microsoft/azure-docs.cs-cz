@@ -1,17 +1,17 @@
 ---
-title: Schéma pro jazyk definice pracovního postupu
-description: Odkaz na schéma pro jazyk definice pracovního postupu v Azure Logic Apps
+title: Referenční dokumentace schématu jazyka definice pracovního postupu
+description: Referenční příručka ke schématu a syntaxi JSON pro jazyk definice pracovního postupu, který popisuje pracovní postupy v Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 9c235c76e3d96ce02efc113c65c62081fcba20ee
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ff2267c2d03076d3abc44d0bd1dddc64577cc7f1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790807"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428666"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Referenční příručka schématu pro jazyk definice pracovního postupu v Azure Logic Apps
 
@@ -76,14 +76,14 @@ Tady je obecná struktura definice parametru:
 
 | Atribut | Požaduje se | Typ | Popis |
 |-----------|----------|------|-------------|
-| *název parametru* <> | Ano | Řetězec | Název parametru, který chcete definovat |
-| <> *typu parametru* | Ano | int, float, String, bool, Array, Object, SecureString, secureobject <p><p>**Poznámka**: pro všechna hesla, klíče a tajné klíče použijte typy `securestring` nebo `secureobject`, protože operace `GET` nevrátí tyto typy. Další informace o zabezpečení parametrů najdete v tématu [doporučení zabezpečení pro parametry akce a vstup](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Typ parametru |
-| <*výchozí parametr-hodnota*> | Ano | Stejné jako `type` | Výchozí hodnota parametru, která má být použita, pokud není zadána žádná hodnota při vytváření instance pracovního postupu. Atribut `defaultValue` je vyžadován, aby návrhář aplikace logiky mohl správně zobrazit parametr, ale můžete zadat prázdnou hodnotu. |
-| <*pole-s parametrem----Parameter-values*> | Ne | Pole | Pole s hodnotami, které může parametr přijmout |
-| <*Parametr-description*> | Ne | Objekt JSON | Jakékoli další podrobnosti o parametrech, jako je například popis parametru |
+| <*parameter-name*> | Ano | Řetězec | Název parametru, který chcete definovat |
+| <*parameter-type*> | Ano | int, float, String, bool, Array, Object, SecureString, secureobject <p><p>**Poznámka**: pro všechna hesla, klíče a tajné klíče použijte typy `securestring` nebo `secureobject`, protože operace `GET` nevrátí tyto typy. Další informace o zabezpečení parametrů najdete v tématu [doporučení zabezpečení pro parametry akce a vstup](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Typ parametru |
+| <*default-parameter-value*> | Ano | Stejné jako `type` | Výchozí hodnota parametru, která má být použita, pokud není zadána žádná hodnota při vytváření instance pracovního postupu. Atribut `defaultValue` je vyžadován, aby návrhář aplikace logiky mohl správně zobrazit parametr, ale můžete zadat prázdnou hodnotu. |
+| <*array-with-permitted-parameter-values*> | Ne | Pole | Pole s hodnotami, které může parametr přijmout |
+| <*parametr-description*> | Ne | JSON – objekt | Jakékoli další podrobnosti o parametrech, jako je například popis parametru |
 ||||
 
-Dále vytvořte [šablonu Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) pro definici pracovního postupu, definujte parametry šablony, které přijmou hodnoty, které chcete v nasazení, nahraďte hodnoty pevně zakódované odkazy na šablonu nebo parametry definice pracovního postupu podle potřeby a uložte hodnoty, které chcete použít při nasazení v samostatném [souboru parametrů](../azure-resource-manager/resource-group-template-deploy.md#parameter-files). Tímto způsobem můžete tyto hodnoty snadno měnit pomocí souboru parametrů, aniž byste museli aktualizovat a znovu nasazovat aplikaci logiky. Pro informace, které jsou citlivé nebo musí být zabezpečené, jako jsou uživatelská jména, hesla a tajné klíče, můžete tyto hodnoty uložit v Azure Key Vault a nechat si soubory parametrů načíst tyto hodnoty z vašeho trezoru klíčů. Další informace a příklady definování parametrů na úrovních definice šablony a pracovního postupu najdete v tématu [Přehled: Automatizace nasazení pro Logic Apps pomocí šablon Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
+Dále vytvořte [šablonu Azure Resource Manager](../azure-resource-manager/templates/overview.md) pro definici pracovního postupu, definujte parametry šablony, které přijmou hodnoty, které chcete v nasazení, nahraďte hodnoty pevně zakódované odkazy na šablonu nebo parametry definice pracovního postupu podle potřeby a uložte hodnoty, které chcete použít při nasazení v samostatném [souboru parametrů](../azure-resource-manager/templates/parameter-files.md). Tímto způsobem můžete tyto hodnoty snadno měnit pomocí souboru parametrů, aniž byste museli aktualizovat a znovu nasazovat aplikaci logiky. Pro informace, které jsou citlivé nebo musí být zabezpečené, jako jsou uživatelská jména, hesla a tajné klíče, můžete tyto hodnoty uložit v Azure Key Vault a nechat si soubory parametrů načíst tyto hodnoty z vašeho trezoru klíčů. Další informace a příklady definování parametrů na úrovních definice šablony a pracovního postupu najdete v tématu [Přehled: Automatizace nasazení pro Logic Apps pomocí šablon Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
 
 <a name="static-results"></a>
 
@@ -115,9 +115,9 @@ V atributu `staticResults` definujte maketu `outputs` akce a `status`, že akce 
 | Atribut | Požaduje se | Typ | Popis |
 |-----------|----------|------|-------------|
 | <*static-Result-definition-name*> | Ano | Řetězec | Název statické definice výsledku, kterou může definice akce odkazovat prostřednictvím objektu `runtimeConfiguration.staticResult`. Další informace najdete v tématu [nastavení konfigurace modulu runtime](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Můžete použít libovolný jedinečný název, který chcete. Ve výchozím nastavení se tento jedinečný název připojí s číslem, což se zvyšuje podle potřeby. |
-| <*výstup-atributy-a-Values-vráceno*> | Ano | Různé | Požadavky na tyto atributy se liší v závislosti na různých podmínkách. Například pokud je `status` `Succeeded`, atribut `outputs` obsahuje atributy a hodnoty vracené jako výstupní výstupy akcí. Pokud je `status` `Failed`, atribut `outputs` obsahuje atribut `errors`, což je pole s jednou nebo více chybami `message` objekty, které obsahují informace o chybě. |
+| <*output-attributes-and-values-returned*> | Ano | Různé | Požadavky na tyto atributy se liší v závislosti na různých podmínkách. Například pokud je `status` `Succeeded`, atribut `outputs` obsahuje atributy a hodnoty vracené jako výstupní výstupy akcí. Pokud je `status` `Failed`, atribut `outputs` obsahuje atribut `errors`, což je pole s jednou nebo více chybami `message` objekty, které obsahují informace o chybě. |
 | <*hodnoty hlaviček*> | Ne | JSON | Všechny hodnoty hlaviček vracené akcí |
-| <*stav-kód – vráceno*> | Ano | Řetězec | Stavový kód vrácený akcí |
+| <*status-code-returned*> | Ano | Řetězec | Stavový kód vrácený akcí |
 | <*akce – stav*> | Ano | Řetězec | Stav akce, například `Succeeded` nebo `Failed` |
 |||||
 
@@ -278,8 +278,8 @@ Tady je obecná struktura definice výstupu:
 | Atribut | Požaduje se | Typ | Popis |
 |-----------|----------|------|-------------|
 | <*název klíče*> | Ano | Řetězec | Název klíče pro návratovou hodnotu výstupu |
-| <> *typu klíče* | Ano | int, float, String, SecureString, bool, Array, JSON objekt | Typ výstupní návratové hodnoty |
-| <*hodnoty klíč-hodnota*> | Ano | Stejné jako <>*typu klíče* | Výstupní návratová hodnota |
+| <> *typu klíče* | Ano | int, float, string, securestring, bool, array, objekt JSON | Typ výstupní návratové hodnoty |
+| <*key-value*> | Ano | Stejné jako <*key-type*> | Výstupní návratová hodnota |
 |||||
 
 Pokud chcete získat výstup z pracovního postupu, přečtěte si historii spuštění vaší aplikace logiky a podrobnosti v Azure Portal nebo použijte [pracovní postup REST API](https://docs.microsoft.com/rest/api/logic/workflows). Výstup můžete také předat externím systémům, například Power BI, abyste mohli vytvářet řídicí panely.
@@ -292,7 +292,7 @@ Ve [výrazech](#expressions) a [funkcích](#functions)operátory provádějí ko
 
 | Operátor | Úkol |
 |----------|------|
-| ' | Chcete-li použít řetězcový literál jako vstup nebo ve výrazech a funkcích, zabalte řetězec pouze do jednoduchých uvozovek, například `'<myString>'`. Nepoužívejte dvojité uvozovky (""), které jsou v konfliktu s formátováním JSON kolem celého výrazu. Například: <p>**Ano**: délka (' Hello ') </br>**Ne**: délka ("Hello") <p>Když předáte pole nebo čísla, nebudete potřebovat interpunkci zalomení. Například: <p>**Ano**: délka ([1; 2; 3]) </br>**Ne**: délka ("[1, 2, 3]") |
+| ' | Chcete-li použít řetězcový literál jako vstup nebo ve výrazech a funkcích, zabalte řetězec pouze do jednoduchých uvozovek, například `'<myString>'`. Nepoužívejte dvojité uvozovky (""), které jsou v konfliktu s formátováním JSON kolem celého výrazu. Příklad: <p>**Ano**: délka (' Hello ') </br>**Ne**: délka ("Hello") <p>Když předáte pole nebo čísla, nebudete potřebovat interpunkci zalomení. Příklad: <p>**Ano**: délka ([1; 2; 3]) </br>**Ne**: délka ("[1, 2, 3]") |
 | [] | Pro odkazování na hodnotu na konkrétní pozici (index) v poli použijte hranaté závorky. Například pro získání druhé položky v poli: <p>`myArray[1]` |
 | . | Chcete-li odkazovat na vlastnost v objektu, použijte operátor tečka. Například pro získání vlastnosti `name` pro objekt `customer` JSON: <p>`"@parameters('customer').name"` |
 | ? | Chcete-li odkazovat na vlastnosti null v objektu bez běhové chyby, použijte operátor otazník. Chcete-li například zpracovat výstupy s hodnotou null z triggeru, můžete použít tento výraz: <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` |
@@ -300,7 +300,7 @@ Ve [výrazech](#expressions) a [funkcích](#functions)operátory provádějí ko
 
 <a name="functions"></a>
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkce
 
 Některé výrazy získají jejich hodnoty z běhových akcí, které nemusí být k dispozici, když začne běžet definice pracovního postupu. Chcete-li odkazovat nebo pracovat s těmito hodnotami ve výrazech, můžete použít [*funkce*](../logic-apps/workflow-definition-language-functions-reference.md) , které poskytuje jazyk definice pracovního postupu.
 

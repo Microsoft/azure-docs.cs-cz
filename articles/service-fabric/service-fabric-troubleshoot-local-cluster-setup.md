@@ -1,33 +1,24 @@
 ---
-title: Řešení potíží s vaší místní nastavení clusteru Azure Service Fabric | Dokumentace Microsoftu
-description: Tento článek popisuje sadu doporučení pro řešení potíží s místním vývojovém clusteru
-services: service-fabric
-documentationcenter: .net
+title: Řešení potíží s místním nastavením clusteru Azure Service Fabric
+description: Tento článek se zabývá sadou návrhů pro řešení potíží s místním vývojovým clusterem.
 author: mikkelhegn
-manager: chackdan
-editor: ''
-ms.assetid: 97f4feaa-bba0-47af-8fdd-07f811fe2202
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 8bb32b2bded061bd19bcd7cfda4ef259a75b0626
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ea313adb43f8d91ec9e57dd1d0b8d3447a8075f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60864435"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465500"
 ---
-# <a name="troubleshoot-your-local-development-cluster-setup"></a>Řešení potíží s nastavením vašeho místního vývojového clusteru
-Pokud narazíte na problém při interakci s vaší místní vývojový cluster Azure Service Fabric, přečtěte si následující návrhy pro potenciální řešení.
+# <a name="troubleshoot-your-local-development-cluster-setup"></a>Řešení potíží s instalací místního vývojového clusteru
+Pokud narazíte na problém při interakci s místním vývojovým clusterem Azure Service Fabric, přečtěte si následující návrhy pro potenciální řešení.
 
-## <a name="cluster-setup-failures"></a>Selháními instalace clusteru
-### <a name="cannot-clean-up-service-fabric-logs"></a>Nelze vymazat protokoly Service Fabric
+## <a name="cluster-setup-failures"></a>Selhání instalace clusteru
+### <a name="cannot-clean-up-service-fabric-logs"></a>Protokoly Service Fabric nejde vyčistit.
 #### <a name="problem"></a>Problém
-Při spouštění skriptu DevClusterSetup, se zobrazí následující chyba:
+Při spuštění skriptu DevClusterSetup se zobrazí následující chyba:
 
     Cannot clean up C:\SfDevCluster\Log fully as references are likely being held to items in it. Please remove those and run this script again.
     At line:1 char:1 + .\DevClusterSetup.ps1
@@ -37,20 +28,20 @@ Při spouštění skriptu DevClusterSetup, se zobrazí následující chyba:
 
 
 #### <a name="solution"></a>Řešení
-Zavřete aktuální okno Powershellu a otevřete nové okno Powershellu jako správce. Nyní můžete úspěšně spustit skript.
+Zavřete aktuální okno PowerShellu a otevřete nové okno PowerShellu jako správce. Teď můžete skript úspěšně spustit.
 
-## <a name="cluster-connection-failures"></a>Chyby připojení clusteru
+## <a name="cluster-connection-failures"></a>Selhání připojení clusteru
 
-### <a name="type-initialization-exception"></a>Typ výjimky inicializace
+### <a name="type-initialization-exception"></a>Výjimka inicializace typu
 #### <a name="problem"></a>Problém
-Když se připojujete ke clusteru v prostředí PowerShell, se zobrazí chyba typeinitializationexception – pro System.Fabric.Common.AppTrace.
+Když se připojujete ke clusteru v PowerShellu, zobrazí se chyba TypeInitializationException pro System. Fabric. Common. AppTrace.
 
 #### <a name="solution"></a>Řešení
-Proměnné path nebyla nastavena správně během instalace. Odhlásit z Windows a znovu nepřihlásí. Tím se aktualizuje vaše cesta.
+Vaše Proměnná cesty nebyla při instalaci správně nastavena. Odhlaste se z Windows a znovu se přihlaste. Tím se aktualizuje vaše cesta.
 
-### <a name="cluster-connection-fails-with-object-is-closed"></a>Připojení clusteru selže s "Objekt je zavřený."
+### <a name="cluster-connection-fails-with-object-is-closed"></a>Připojení clusteru se nepovede a dojde k chybě typu "objekt je uzavřen".
 #### <a name="problem"></a>Problém
-Volání Connect-ServiceFabricCluster selže s chybou takto:
+Volání Connect-ServiceFabricCluster se nezdařilo s chybou, například:
 
     Connect-ServiceFabricCluster : The object is closed.
     At line:1 char:1
@@ -60,23 +51,23 @@ Volání Connect-ServiceFabricCluster selže s chybou takto:
     + FullyQualifiedErrorId : CreateClusterConnectionErrorId,Microsoft.ServiceFabric.Powershell.ConnectCluster
 
 #### <a name="solution"></a>Řešení
-Zavřete aktuální okno Powershellu a otevřete nové okno Powershellu jako správce.
+Zavřete aktuální okno PowerShellu a otevřete nové okno PowerShellu jako správce.
 
-### <a name="fabric-connection-denied-exception"></a>Výjimka bylo spojení zamítnuto prostředků infrastruktury
+### <a name="fabric-connection-denied-exception"></a>Výjimka zamítnutí připojení prostředků infrastruktury
 #### <a name="problem"></a>Problém
-Při ladění ze sady Visual Studio, zobrazí se chyba FabricConnectionDeniedException.
+Při ladění ze sady Visual Studio se zobrazí chyba FabricConnectionDeniedException.
 
 #### <a name="solution"></a>Řešení
-K této chybě obvykle dochází při pokusu o spuštění procesu služby hostitele ručně.
+K této chybě obvykle dochází při pokusu o ruční spuštění procesu hostitele služby.
 
-Ujistěte se, že nemáte žádné projekty služeb nastavit jako projektů po spuštění ve vašem řešení. Pouze projekty aplikace Service Fabric musí být nastavená jako projektů po spuštění.
+Ujistěte se, že ve vašem řešení nemáte nastavené žádné projekty služeb jako spouštěné projekty. Pouze projekty aplikace Service Fabric by měly být nastaveny jako spouštěné projekty.
 
 > [!TIP]
-> Pokud po instalaci místní cluster začíná neobvyklým způsobem chovat, můžete obnovit pomocí aplikace na hlavním panelu systému místního clusteru správce. Tím se odebere existující cluster a vytvořte nový. Všimněte si, že všechny nasazené aplikace a související data se odeberou.
+> Pokud se Váš místní cluster po instalaci začne chovat neobvykle, můžete ho resetovat pomocí aplikace místní Správce clusterů v hlavním panelu systému. Tím se odebere existující cluster a nastaví se nový. Všimněte si, že se odeberou všechny nasazené aplikace a přidružená data.
 > 
 > 
 
-## <a name="next-steps"></a>Další postup
-* [Pochopení a odstraňování potíží se systémovými stavovými sestavami clusteru](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+## <a name="next-steps"></a>Další kroky
+* [Pochopení a řešení potíží s clusterem pomocí sestav stavu systému](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 * [Vizualizace clusteru pomocí nástroje Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
 

@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: 4ed2ad2d2ff92e9320a7b9c773c4d6e5857fb905
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a3fcff9f895fba3574bbce976087295018ab51c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792963"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428750"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Sestavte svou první aplikaci bez serveru pomocí Azure Logic Apps a Azure Functions v aplikaci Visual Studio
 
 Cloudové aplikace můžete rychle vyvíjet a nasazovat pomocí nástrojů a možností bez serveru v Azure, například [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [Azure Functions](../azure-functions/functions-overview.md). Tento článek ukazuje, jak začít vytvářet aplikace bez serveru, která používá aplikaci logiky, která volá funkci Azure ve Visual Studiu. Další informace o řešeních bez serveru v Azure najdete v tématu [Azure bez serveru s funkcemi a Logic Apps](../logic-apps/logic-apps-serverless-overview.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li vytvořit aplikaci bez serveru v aplikaci Visual Studio, budete potřebovat:
 
@@ -56,7 +56,7 @@ Chcete-li vytvořit aplikaci bez serveru v aplikaci Visual Studio, budete potře
 
 ## <a name="create-a-resource-group-project"></a>Vytvoření projektu skupiny prostředků
 
-Začněte tím, že vytvoříte [projekt skupiny prostředků Azure](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) pro vaši aplikaci bez serveru. V Azure vytvoříte prostředky v rámci *skupiny prostředků*, což je logická kolekce, kterou používáte k organizování, správě a nasazování prostředků celé aplikace jako jediného assetu. V případě aplikace bez serveru v Azure zahrnuje vaše skupina prostředků prostředky pro Azure Logic Apps i Azure Functions. Další informace o [skupinách prostředků a prostředcích Azure](../azure-resource-manager/resource-group-overview.md).
+Začněte tím, že vytvoříte [projekt skupiny prostředků Azure](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) pro vaši aplikaci bez serveru. V Azure vytvoříte prostředky v rámci *skupiny prostředků*, což je logická kolekce, kterou používáte k organizování, správě a nasazování prostředků celé aplikace jako jediného assetu. V případě aplikace bez serveru v Azure zahrnuje vaše skupina prostředků prostředky pro Azure Logic Apps i Azure Functions. Další informace o [skupinách prostředků a prostředcích Azure](../azure-resource-manager/management/overview.md).
 
 1. Spusťte Visual Studio a přihlaste se pomocí svého účtu Azure.
 

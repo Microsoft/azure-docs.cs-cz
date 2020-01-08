@@ -6,18 +6,18 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: 2610afe9df06d28f2b75bd0023f7ec5a3fe9e56c
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 6d10265e8383b68ebe13c95d8b2a9632668e85da
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219221"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75641393"
 ---
 # <a name="move-azure-public-ip-to-another-region-using-the-azure-portal"></a>Přesunutí veřejné IP adresy Azure do jiné oblasti pomocí Azure Portal
 
 Existují různé scénáře, kdy byste chtěli přesunout stávající veřejné IP adresy Azure z jedné oblasti do druhé. Například můžete chtít vytvořit veřejnou IP adresu se stejnou konfigurací a skladovou jednotkou pro testování. V rámci plánování zotavení po havárii možná budete chtít přesunout veřejnou IP adresu do jiné oblasti.
 
-Veřejné IP adresy Azure jsou specifické pro oblast a nejde je přesunout z jedné oblasti do druhé. Můžete ale použít šablonu Azure Resource Manager k exportu stávající konfigurace veřejné IP adresy.  Potom můžete prostředek připravit v jiné oblasti tak, že do šablony vyexportujete veřejnou IP adresu, upravíte parametry tak, aby odpovídaly cílové oblasti, a pak šablonu nasadíte do nové oblasti.  Další informace o Správce prostředků a šablonách najdete v [tématu rychlý Start: Vytváření a nasazování šablon Azure Resource Manager pomocí Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+Veřejné IP adresy Azure jsou specifické pro oblast a nejde je přesunout z jedné oblasti do druhé. Můžete ale použít šablonu Azure Resource Manager k exportu stávající konfigurace veřejné IP adresy.  Potom můžete prostředek připravit v jiné oblasti tak, že do šablony vyexportujete veřejnou IP adresu, upravíte parametry tak, aby odpovídaly cílové oblasti, a pak šablonu nasadíte do nové oblasti.  Další informace o Správce prostředků a šablonách najdete v tématu [rychlý Start: vytvoření a nasazení Azure Resource Manager šablon pomocí Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -32,7 +32,7 @@ Veřejné IP adresy Azure jsou specifické pro oblast a nejde je přesunout z je
 
 - Ověřte, že vaše předplatné Azure umožňuje vytvářet veřejné IP adresy v cílové oblasti, která se používá. O povolení požadované kvóty požádejte podporu.
 
-- Ujistěte se, že vaše předplatné má dostatek prostředků na podporu Přidání veřejných IP adres pro tento proces.  Viz [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Ujistěte se, že vaše předplatné má dostatek prostředků na podporu Přidání veřejných IP adres pro tento proces.  Viz [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
 ## <a name="prepare-and-move"></a>Příprava a přesun
@@ -40,12 +40,12 @@ Následující kroky ukazují, jak připravit veřejnou IP adresu pro přesunut�
 
 ### <a name="export-the-template-and-deploy-from-a-script"></a>Export šablony a nasazení ze skriptu
 
-1. Přihlaste se ke**skupinám prostředků** [Azure Portal](https://portal.azure.com) > .
+1. Přihlaste se ke **skupinám prostředků** [Azure Portal](https://portal.azure.com) > .
 2. Vyhledejte skupinu prostředků, která obsahuje zdrojovou veřejnou IP adresu, a klikněte na ni.
-3. Vyberte > **Nastavení** > **Exportovat šablonu**.
+3. Vyberte > **nastavení** > **Exportovat šablonu**.
 4. V okně **Exportovat šablonu** vyberte **nasadit** .
 5. Kliknutím na **šablonu** > **Upravit parametry** otevřete soubor **Parameters. JSON** v online editoru.
-8. Pokud chcete upravit parametr názvu veřejné IP adresy, změňte vlastnost v části **parametry** > **hodnota** ze zdrojového názvu veřejné IP adresy na název cílové veřejné IP adresy, ujistěte se, že je název v uvozovkách:
+8. Pokud chcete upravit parametr názvu veřejné IP adresy, změňte vlastnost v části **parametry** > **hodnotu** ze zdrojového názvu veřejné IP adresy na název cílové veřejné IP adresy, ujistěte se, že je název v uvozovkách:
 
     ```json
             {
@@ -61,7 +61,7 @@ Následující kroky ukazují, jak připravit veřejnou IP adresu pro přesunut�
     ```
 8.  V Editoru klikněte na **Uložit** .
 
-9.  Kliknutím na **Šablona** > **Upravit šablonu** otevřete soubor **template. JSON** v online editoru.
+9.  Kliknutím na **šablonu** > **Upravit šablonu** otevřete soubor **template. JSON** v online editoru.
 
 10. Chcete-li upravit cílovou oblast, kam bude přesunuta veřejná IP adresa, změňte vlastnost **umístění** v části **prostředky**:
 
@@ -89,11 +89,11 @@ Následující kroky ukazují, jak připravit veřejnou IP adresu pro přesunut�
              ]
     ```
 
-11. Pokud chcete získat kódy umístění oblastí, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/).  Kód oblasti je název oblasti bez mezer, **střed USA** = **centralus**.
+11. Pokud chcete získat kódy umístění oblastí, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/).  Kód oblasti je název oblasti bez mezer **Střed USA** = **centralus**.
 
 12. Můžete také změnit jiné parametry v šabloně, pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
 
-    * **SKU** -SKU veřejné IP adresy můžete změnit v konfiguraci z úrovně Standard na Basic nebo Basic na standard, a to změnou vlastnosti**název** **SKU** > v souboru **template. JSON** :
+    * **SKU** -SKU veřejné IP adresy můžete změnit v konfiguraci z úrovně Standard na Basic nebo Basic na standard, a to změnou vlastnosti **název** **SKU** > v souboru **template. JSON** :
 
         ```json
           "resources": [
@@ -110,7 +110,7 @@ Následující kroky ukazují, jak připravit veřejnou IP adresu pro přesunut�
 
         Další informace o rozdílech mezi veřejnými IP adresami Basic a Standard SKU najdete v tématu [Vytvoření, změna nebo odstranění veřejné IP adresy](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address):
 
-    * **Metoda přidělování veřejných IP adres** a **časový limit nečinnosti** – obě tyto možnosti v šabloně můžete změnit tak, že změníte vlastnost **publicIPAllocationMethod** z **dynamické** na **statickou** nebo **statickou** na **dynamickou.** . Časový limit nečinnosti lze změnit změnou vlastnosti **idleTimeoutInMinutes** na požadovanou hodnotu.  Výchozí hodnota je **4**:
+    * **Metoda přidělování veřejných IP adres** a **časový limit nečinnosti** – obě tyto možnosti v šabloně můžete změnit tak, že změníte vlastnost **publicIPAllocationMethod** z **dynamické** na **statickou** nebo **statickou** na **dynamickou**. Časový limit nečinnosti lze změnit změnou vlastnosti **idleTimeoutInMinutes** na požadovanou hodnotu.  Výchozí hodnota je **4**:
 
         ```json
           "resources": [
@@ -139,11 +139,11 @@ Následující kroky ukazují, jak připravit veřejnou IP adresu pro přesunut�
 
 13. V online Editoru klikněte na **Uložit** .
 
-14. Klikněte na **základy** > **předplatné** a vyberte předplatné, ve kterém se nasadí cílová veřejná IP adresa.
+14. Kliknutím na **základy** > **předplatné** vyberte předplatné, do kterého se NASADÍ cílová veřejná IP adresa.
 
-15. Klikněte na **základy** > **Skupina prostředků** a vyberte skupinu prostředků, do které se bude nasadit cílová veřejná IP adresa.  Kliknutím na **vytvořit novou** můžete vytvořit novou skupinu prostředků pro cílovou veřejnou IP adresu.  Ujistěte se, že název není stejný jako zdrojová skupina prostředků stávající zdrojové veřejné IP adresy.
+15. Kliknutím na **základy** > **skupinu prostředků** vyberte skupinu prostředků, do které se bude nasadit cílová veřejná IP adresa.  Kliknutím na **vytvořit novou** můžete vytvořit novou skupinu prostředků pro cílovou veřejnou IP adresu.  Ujistěte se, že název není stejný jako zdrojová skupina prostředků stávající zdrojové veřejné IP adresy.
 
-16. Ověření **základních** > **umístění** je nastaveno na cílové umístění, ve kterém chcete nasadit veřejnou IP adresu.
+16. Ověření **základních** > **umístění** je nastavené na cílové umístění, ve kterém chcete nasadit veřejnou IP adresu.
 
 17. V části **Nastavení** ověřte, že se název shoduje s názvem, který jste zadali v editoru parametrů výše.
 

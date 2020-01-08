@@ -1,7 +1,7 @@
 ---
 title: Použití matematických operací
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul pro použití matematických operací ve službě Azure Machine Learning k použití matematické operace na hodnoty sloupců v kanálu.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul použití matematické operace v Azure Machine Learning k použití matematické operace na hodnoty sloupce v kanálu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: a2f3665355cc2023aaf4b66c9207aaff4a3bc6db
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: af7431dd808a7d5eb106eff96a790eb876a20026
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493927"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428608"
 ---
 # <a name="apply-math-operation"></a>Použití matematických operací
 
@@ -36,7 +36,7 @@ Hledání potřebných operací v těchto kategoriích:
   
      Funkce v kategorii **Basic** lze použít k manipulaci s jednou hodnotou nebo sloupcem hodnot. Například můžete získat absolutní hodnotu všech čísel ve sloupci nebo vypočítat druhou odmocninu každé hodnoty ve sloupci.  
   
--   [Porovnán](#comparison-operations)  
+-   [Compare](#comparison-operations)  
   
       Funkce v kategorii **porovnání** jsou použity pro porovnání: můžete provést párové porovnání hodnot ve dvou sloupcích nebo můžete porovnat jednotlivé hodnoty ve sloupci se zadanou konstantou. Můžete například porovnat sloupce a určit, zda byly hodnoty stejné ve dvou datových sadách. Nebo můžete použít konstantu, jako je například maximální povolená hodnota, abyste našli odlehlé hodnoty v číselném sloupci.  
   
@@ -92,7 +92,7 @@ Každá instance tohoto modulu může v jednom okamžiku provádět pouze jeden 
 
 Vygenerujete-li výsledky pomocí možností **připojit** nebo **ResultOnly** , budou záhlaví sloupců vrácené datové sady označovat operaci a sloupce, které byly použity. Například pokud porovnáte dva sloupce pomocí operátoru **Equals** , výsledky budou vypadat takto:  
   
--   **Equals (Col2_Col1)** , který označuje, že jste otestovali col2 proti sloupci Sloupec1.  
+-   **Equals (Col2_Col1)** , což značí, že jste otestovali col2 proti sloupci Sloupec1.  
 -   **Rovná se (Col2_ $10)** , což značí, že jste porovnali sloupec 2 s konstantou 10.  
 
 I když použijete možnost **umístění** , zdrojová data se neodstraní ani nezmění. sloupec v původní datové sadě je stále k dispozici v návrháři. Chcete-li zobrazit původní data, můžete připojit modul [Přidat sloupce](add-columns.md) a spojit ho s výstupem **použití matematické operace**.  
@@ -103,11 +103,11 @@ Funkce v **základní** kategorii obvykle přebírají jednu hodnotu ze sloupce,
   
  Azure Machine Learning podporuje následující funkce v kategorii **základní** :  
 
-### <a name="abs"></a>ABS
+### <a name="abs"></a>Abs
 
 Vrátí absolutní hodnotu vybraných sloupců.  
   
-### <a name="atan2"></a>Funkce
+### <a name="atan2"></a>Atan2
 
 Vrátí hyperbolický tangens o čtyřnásobné čtvrti.  
 
@@ -154,7 +154,7 @@ Vrátí faktoriál hodnot ve vybraném sloupci.
 ### <a name="hypotenuse"></a>Přepony
 Vypočítá přepony pro trojúhelník, ve kterém je délka jedné strany zadána jako sloupec hodnot, a délka druhé strany je zadána buď jako konstanta, nebo jako dva sloupce.  
 
-### <a name="ln"></a>Řádek
+### <a name="ln"></a>Logaritmus
 
 Vrátí přirozený logaritmus hodnot ve vybraném sloupci.  
 
@@ -253,12 +253,12 @@ Pořadí, ve kterém zvolíte sloupce pro dělení a odčítání, se může zd�
 
 Operace|Num1|Num2|Sloupec výsledku|Výsledná hodnota|
 ----|----|----|----|----
-|Sčítání|1\. místo|5|Přidat (Num2_Num1)| 4|
-|Násobení|1\. místo|5|Násobný (Num2_Num1)|5|
+|Součet|1\. místo|5|Přidat (Num2_Num1)| 4|
+|Násobení|1\. místo|5|Vícenásobný (Num2_Num1)|5|
 |Odčítání|1\. místo|5|Odečíst (Num2_Num1)|4|
 |Odčítání|0|1\. místo|Odečíst (Num2_Num1)|0|
-|Dělení|1\. místo|5|Dělit (Num2_Num1)|5|
-|Dělení|0|1\. místo|Dělit (Num2_Num1)|Infinity|
+|Oddělení|1\. místo|5|Dělit (Num2_Num1)|5|
+|Oddělení|0|1\. místo|Dělit (Num2_Num1)|Infinity|
 
 ### <a name="add"></a>Přidat
 
@@ -266,7 +266,7 @@ Zadejte zdrojové sloupce pomocí **sady sloupců**a potom do těchto hodnot př
 
 Chcete-li přidat hodnoty ve dvou sloupcích, zvolte sloupec nebo sloupce pomocí **sady sloupců**a pak vyberte druhý sloupec pomocí **druhého argumentu**.  
 
-### <a name="divide"></a>Rozdělovací
+### <a name="divide"></a>Dělení
 
 Vydělí hodnoty ve **sloupci** pomocí konstanty nebo hodnoty sloupce definované v **druhém argumentu**.  Jinými slovy, můžete nejprve vybrat dělitele a potom dividendy. Výstupní hodnota je podíl.
 
@@ -274,7 +274,7 @@ Vydělí hodnoty ve **sloupci** pomocí konstanty nebo hodnoty sloupce definovan
 
 Vynásobí hodnoty v **sadě sloupců** zadanými hodnotami konstanty nebo sloupce.  
 
-### <a name="subtract"></a>Odečten
+### <a name="subtract"></a>Odebrat
 
 Určete sloupec hodnot, na kterých se má ( *minuend*) pracovat, výběrem jiného sloupce pomocí možnosti **sada sloupců** . Pak zadejte číslo, které se má odečíst ( *subtrahend*), a to pomocí rozevíracího seznamu **druhý argument** . Můžete zvolit buď konstantu, nebo sloupec hodnot.
 
@@ -298,7 +298,7 @@ Vrátí čtvercovou mez pro hodnoty v **sadě sloupců**.
 
 Vrátí podlahovou hodnotu pro hodnoty ve **sloupci nastavené**na zadanou přesnost.  
 
-### <a name="mod"></a>střední
+### <a name="mod"></a>Mod
 
 Vrátí zlomkovou část hodnot v **sadě sloupců**na zadanou přesnost.  
 
@@ -306,7 +306,7 @@ Vrátí zlomkovou část hodnot v **sadě sloupců**na zadanou přesnost.
 
 Vrátí zlomkovou část hodnot v **sadě sloupců**na zadanou přesnost.  
 
-### <a name="remainder"></a>Hledáte
+### <a name="remainder"></a>Zbytek
 
 Vrátí zbytek hodnot v **sadě sloupců**.  
 
@@ -430,7 +430,7 @@ Vypočítá Arkus kosinus hodnot sloupce ve stupních.
 
 Vypočítá Hyperbolický arkuskosinus hodnot sloupců.  
 
-### <a name="acot"></a>ACOT
+### <a name="acot"></a>Acot
 
 Vypočítá Arkus kotangens hodnot sloupců.  
 
@@ -461,7 +461,7 @@ Vypočítá arcsecant hodnot sloupce ve stupních.
 
 Vypočítá hyperbolický arcsecant hodnot sloupců.  
 
-### <a name="asin"></a>ASIN
+### <a name="asin"></a>Asin
 
 Vypočítá Arkus sinus hodnot sloupců.  
 
@@ -497,7 +497,7 @@ Vypočítá kosinus pro hodnoty sloupce ve stupních.
 
 Vypočítá hyperbolický kosinus hodnot sloupců.  
 
-### <a name="cot"></a>COT
+### <a name="cot"></a>Cot
 
 Vypočítá kotangens hodnot sloupců.  
 
@@ -524,7 +524,7 @@ Vypočítá hyperbolický kosekans pro hodnoty sloupce.
 
 Převede stupně na radiány.  
 
-### <a name="sec"></a>Přihrádka
+### <a name="sec"></a>Sek.
 
 Vypočítá sekans hodnot sloupců.  
 
@@ -536,7 +536,7 @@ Vypočítá sekans pro hodnoty sloupce ve stupních.
 
 Vypočítá hyperbolický sekans hodnot sloupců.  
 
-### <a name="sign"></a>Osobě
+### <a name="sign"></a>Podepsat
 
 Vrátí znaménko hodnot sloupce.  
 
@@ -577,8 +577,8 @@ Předpokládejme, že vaše datová sada obsahuje více sloupců, a vy přidáte
 |Num1|Num2|Num3|Přidat (Num1_Num1)|Přidat (Num2_Num2)|Přidat (Num3_Num3)|
 |----|----|----|----|----|----|
 |1\. místo|5|2|2|10|4|
-|2|3|– 1|4|6|– 2|
-|0|1\. místo|– 1|0|2|– 2|
+|2|3|-1|4|6|-2|
+|0|1\. místo|-1|0|2|-2|
 
 Pokud potřebujete provádět složitější výpočty, můžete zřetězit více instancí **operace použití matematických operací**. Například můžete přidat dva sloupce pomocí jedné instance **použití matematické operace**a potom použít jinou instanci **operace Apply** (použít) k rozdělení součtu konstantou pro získání střední hodnoty.  
   
@@ -590,4 +590,4 @@ Případně můžete použít jeden z následujících modulů k provedení vše
   
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

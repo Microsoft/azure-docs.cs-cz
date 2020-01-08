@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: 3347cfee8b54efa9c52b23deff8c44387195fd63
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f503377984a347d85af04d85728c53eaad0c4c74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851175"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451367"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integrace s partnery virtuálních počítačů s Windows
 
@@ -38,7 +38,6 @@ V rámci schváleného poskytovatele se výhody virtuálního klienta Windows ro
 
 - [Zaregistrujte se na verzi pro cloudovou verzi Horizontal Preview na Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
 - [Přejít na web partnera](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
-
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -82,6 +81,16 @@ deviceTRUST rozšiřuje hodnotu virtuálního klienta Windows s jejich kontextov
 
 - [Přejít na web partnera](https://devicetrust.com/wvd).
 
+## <a name="hp"></a>HP
+
+![Logo HP](./media/partners/hp.png)
+
+HP tenký klient je schválený a ověřený partner služby Microsoft Azure a Windows Virtual Desktop. HP tenké klienty s Windows 10 IoT Enterprise nabízejí integrovanou podporu pro úlohy založené na Azure a hostované desktopy virtuálních klientů Windows. Hardware a operační systém jsou optimalizované tak, aby poskytovaly nejlepší prostředí, které efektivně zajišťuje vzdálené úlohy a současně snižuje nároky na operační systém a náklady na hardware a údržbu.
+
+Jako HP prohlédlo se o trendech v oboru, výzvách zákazníků a virtualizaci řešení, které nabízí během procesu vývoje, se nechte inspirovat k tomu, aby byl ideální koncový bod cloudu s využitím hodnoty pro čtyři pilíře: design, spravovatelnost, zabezpečení a univerzálnost. Každý HP tenký klient je založený na tvůrci IT s rozhodovacími pravomocemi. HP tenký klient je dlouhodobě, zabezpečený, snadno nasazený a spravovaný a výkonný, takže můžete snadno přejít na VDI nebo cloud computing. Všestranný portfolio společnosti HP nabízí volnost pro výběr moderního řešení koncového bodu, které je pro vás nejvhodnější.
+
+- [Přejít na web partnera](https://hp.com/go/thin).
+
 ## <a name="igel"></a>IGEL
 
 ![Logo IGEL](./media/partners/igel.png)
@@ -90,7 +99,7 @@ IGEL je schválený a ověřený partner služby Microsoft Azure a Windows Virtu
  
 IGEL OS podporuje všechny oblíbené virtuální aplikace, stolní počítače a klientské protokoly v cloudovém pracovním prostoru od Citrix, Microsoftu a VMware. Zahrnuje integrované technologie od partnerů periferních zařízení, rozhraní a protokolů 85, které organizacím umožňují rychle přijímat služby Windows Virtual Desktop Services do vlastních jedinečných uživatelských prostředí. IGEL OS je modulární koncový bod, který je jen pro čtení, který pomáhá chránit před manipulací. Teď také obsahuje úplný "řetězec důvěryhodnosti", který ověřuje integritu všech klíčových hlavních procesů spuštěných v koncovém bodu, od hardwaru koncového bodu (některé vybrané modely) nebo procesu UEFI až po služby Azure Cloud a Windows Virtual Desktop. S operačním systémem IGEL se podniky můžou přihlásit k odběru virtuálního klienta Windows z cloudu Azure s plnou jistotou v rámci integrity, zabezpečení a spravovatelnosti svých zařízení koncových bodů uživatelů.
 
-- [Přejít na web partnera.](https://www.igel.com/igel-os-universal-desktop-operating-system/)
+- [Přejít na web partnera](https://www.igel.com/igel-os-universal-desktop-operating-system/).
 
 ## <a name="ivanti"></a>Ivanti
 

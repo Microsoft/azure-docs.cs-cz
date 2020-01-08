@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ba903d75707be91bb8af1271b52eb260ffcde306
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d27f792b39a1809cde0f27186f343af7d7aef60a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951234"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454160"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Připojte k aplikaci Azure IoT Centrale malinu PI (C#)
 
@@ -27,28 +27,33 @@ Tento článek popisuje, jak jako vývojář zařízení připojit k aplikaci Mi
 
 K dokončení kroků v tomto článku budete potřebovat následující komponenty:
 
-* Aplikace IoT Central v Azure vytvořená z **ukázkové** šablony aplikace Devkits Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
+* Aplikace Azure IoT Central vytvořená ze šablony **starší verze aplikace** . Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
 * Zařízení malinu PI, na kterém běží operační systém Raspbian. Malina. PI musí být schopná připojit se k Internetu. Další informace najdete v tématu [nastavení svého malinu PI](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3).
 
-## <a name="sample-devkits-application"></a>**Ukázková aplikace Devkits**
+## <a name="add-a-device-template"></a>Přidání šablony zařízení
 
-Aplikace vytvořená z ukázkové šablony aplikace **Devkits** zahrnuje šablonu zařízení **Malina v PI** s následujícími charakteristikami:
+V aplikaci Azure IoT Central přidejte novou šablonu zařízení **malin. PI** s následujícími charakteristikami:
 
 * Telemetrii, která zahrnuje následující měření, která bude zařízení shromažďovat:
   * Vlhkost
   * Teplota
-  * Citlivost
+  * Tlak
   * Magnetometer (X, Y, Z)
   * Akcelerometr (X, Y, Z)
   * Vybavený gyroskopem (X, Y, Z)
 * Nastavení
   * Napájení
-  * Aktivní
-  * Rychlost ventilátoru
+  * Aktuální
+  * Rychlost větráku
   * Přepínač IR
 * Vlastnosti
   * Vlastnost zařízení číslo pro Die
   * Umístění vlastnosti cloudu
+
+1. Z šablon zařízení ![vyberte **+ nový**](media/howto-connect-raspberry-pi-csharp/adddevicetemplate.png)
+   
+
+2. Vyberte **maliny PI** a vytvořte šablonu zařízení malin. PI ![přidat šablonu zařízení](media/howto-connect-raspberry-pi-csharp/newdevicetemplate.png)
 
 Úplné podrobnosti o konfiguraci šablony zařízení najdete v [podrobnostech o šabloně zařízení malin. PI](#raspberry-pi-device-template-details).
 
@@ -333,13 +338,13 @@ Aplikace vytvořená z ukázkové šablony aplikace **Devkits** zahrnuje šablon
 | Název pole     | Jednotky  | Minimální | Maximum | Desetinná místa |
 | -------------- | ------ | ------- | ------- | -------------- |
 | vlhkost       | %      | 0       | 100     | 0              |
-| názvem           | 7C     | -40     | 120     | 0              |
+| temp           | °C     | -40     | 120     | 0              |
 | tlak       | hPa    | 260     | 1260    | 0              |
 | magnetometerX  | mgauss | -1000   | 1 000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1 000    | 0              |
 | magnetometerZ  | mgauss | -1000   | 1 000    | 0              |
 | accelerometerX | mg/Nm3     | -2000   | 2000    | 0              |
-| akcelerometr | mg/Nm3     | -2000   | 2000    | 0              |
+| accelerometerY | mg/Nm3     | -2000   | 2000    | 0              |
 | accelerometerZ | mg/Nm3     | -2000   | 2000    | 0              |
 | gyroscopeX     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeY     | mdps   | -2000   | 2000    | 0              |
@@ -349,15 +354,15 @@ Aplikace vytvořená z ukázkové šablony aplikace **Devkits** zahrnuje šablon
 
 Číselná nastavení
 
-| Zobrazované jméno | Název pole | Jednotky | Desetinná místa | Minimální | Maximum | Pořizovací |
+| Zobrazované jméno | Název pole | Jednotky | Desetinná místa | Minimální | Maximum | Počáteční |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Napájení      | setVoltage | V voltech | 0              | 0       | 240     | 0       |
-| Aktivní      | setCurrent | Amps  | 0              | 0       | 100     | 0       |
-| Rychlost ventilátoru    | fanSpeed   | /MIN   | 0              | 0       | 1 000    | 0       |
+| Aktuální      | setCurrent | Amps  | 0              | 0       | 100     | 0       |
+| Rychlost větráku    | fanSpeed   | /MIN   | 0              | 0       | 1 000    | 0       |
 
 Přepnout nastavení
 
-| Zobrazované jméno | Název pole | Na text | Vypnuto textu | Pořizovací |
+| Zobrazované jméno | Název pole | Na text | Vypnuto textu | Počáteční |
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | ON      | OFF      | Vypnuto     |
 

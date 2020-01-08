@@ -1,6 +1,6 @@
 ---
-title: Chyby a řešení pro scénáře B2B
-description: Hledání chyb a řešení pro scénáře B2B v Azure Logic Apps
+title: Řešení běžných chyb a problémů ve scénářích B2B
+description: Vyhledá řešení běžných chyb a problémů při řešení potíží s scénáři B2B v Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/02/2017
-ms.openlocfilehash: 176bc3642f7c923b50cbf2f7a97096f88dc02817
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 38e281ce3d8117bff719b1bb572f09acbbb89669
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790698"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666682"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>Chyby a řešení B2B pro Azure Logic Apps
 
@@ -63,7 +63,7 @@ Tento článek vám pomůže řešit chyby, ke kterým může dojít v Logic App
 | Akce uživatele | Před odesláním partnerovi přidejte @base64ToBinary do AS2Message. |
 |||
 
-Například:
+Příklad:
 
 ```json
 "HTTP": {
@@ -83,7 +83,7 @@ Například:
 | Akce uživatele | Před odesláním partnerovi přidejte @base64ToBinary do MDN. | 
 |||
 
-Například:
+Příklad:
 
 ```json
 "Response": {

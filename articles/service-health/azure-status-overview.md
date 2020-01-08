@@ -1,24 +1,20 @@
 ---
 title: Přehled stavu Azure | Microsoft Docs
 description: Globální pohled na stav služeb Azure
-services: Azure status
 ms.topic: article
-author: stephbaron
-ms.author: stbaron
-ms.service: service-health
 ms.date: 06/11/2019
-ms.openlocfilehash: 8a902fab7cfea574c9eb2a3e9411d3cca0920f56
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 1257476234709380de3452015313e3a3bf71e04d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709907"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463990"
 ---
 # <a name="azure-status-overview"></a>Přehled stavu Azure
 
 [Azure status](https://status.azure.com/status/) poskytuje globální přehled o stavu služeb a oblastí Azure. Stav Azure vám umožní získat informace o dostupnosti služby. Stav Azure je k dispozici všem uživatelům, kteří budou zobrazovat všechny služby, které hlásí stav služby, a incidenty s širokým dopadem. Pokud ale jste aktuálním uživatelem Azure, důrazně vám doporučujeme používat přizpůsobené prostředí v [Azure Service Health](https://aka.ms/azureservicehealth). Azure Service Health zahrnují všechny výpadky, nadcházející plánované aktivity údržby a servisní Poradce pro služby.
 
-![Stránka stavu Azure](./media/azure-status-overview/azure-status.PNG)
+![Stavová stránka Azure](./media/azure-status-overview/azure-status.PNG)
 
 ## <a name="azure-status-updates"></a>Aktualizace stavu Azure
 

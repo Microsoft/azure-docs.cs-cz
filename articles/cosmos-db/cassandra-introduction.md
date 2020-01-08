@@ -1,6 +1,6 @@
 ---
 title: Úvod do rozhraní API Cassandra v Azure Cosmos DB
-description: Zjistěte, jak pomocí služby Azure Cosmos DB provést migraci stávajících aplikací metodou „lift and shift“ a vytvářet nové aplikace využívající rozhraní API Cassandra s použitím ovladačů Cassandra a CQL, které už znáte.
+description: Naučte se, jak můžete použít Azure Cosmos DB ke stávajícím aplikacím a sestavovat nové aplikace pomocí ovladačů Cassandra a CQL.
 author: kanshiG
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 82ca7814f756a12005ee5802c3e8a7fd28f6d398
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 63a85e86b1882bdaf4e5b85601a7deabe5b3bbef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968975"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442137"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Úvod do rozhraní API Cassandra v Azure Cosmos DB
 
@@ -23,21 +23,21 @@ Rozhraní API Cassandra umožňuje pracovat s daty uloženými v Azure Cosmos DB
 
 ## <a name="what-is-the-benefit-of-using-apache-cassandra-api-for-azure-cosmos-db"></a>Jaké jsou výhody používání rozhraní rozhraní API pro Apache Cassandra pro Azure Cosmos DB?
 
-**Žádné operace správy**: Jako plně spravovaná Cloudová služba Azure Cosmos DB Cassandra API eliminuje režijní náklady na správu a monitorování velkého počtu nastavení v rámci operačního systému, JVM a soubory yaml a jejich interakce. Azure Cosmos DB sleduje propustnost, latenci, úložiště, dostupnost a konfigurovatelná upozornění.
+**Žádná správa provozu**: Jako plně spravovaná cloudová služba přebírá rozhraní API Cassandra v Azure Cosmos DB zatížení správy a monitorování nespočetné řady nastavení napříč operačním systémem, JVM a soubory yaml a jejich vzájemných interakcí. Azure Cosmos DB sleduje propustnost, latenci, úložiště, dostupnost a konfigurovatelná upozornění.
 
-**Správa výkonu**: Azure Cosmos DB nabízí garantovanou nízkou latencí čte a zapisuje na 99. percentilu, zajištěná smluv SLA. Uživatelé se nemusí starat o provozní režii, aby byl zajištěný vysoký výkon a nízká latence u operací čtení a zápisu. To znamená, že uživatelé nepotřebují řešit plánování komprimace, správu značek odstraněných položek a ruční nastavování Bloomových filtrů a replik. Azure Cosmos DB odstraní zatížení, které představuje správa těchto záležitostí, a umožní vám se zaměřit na logiku aplikace.
+**Správa výkonu**: Azure Cosmos DB garantuje pro čtení a zápis nízkou latenci na základě smluv SLA na úrovni 99. percentilu. Uživatelé se nemusí starat o provozní režii, aby byl zajištěný vysoký výkon a nízká latence u operací čtení a zápisu. To znamená, že uživatelé nepotřebují řešit plánování komprimace, správu značek odstraněných položek a ruční nastavování Bloomových filtrů a replik. Azure Cosmos DB odstraní zatížení, které představuje správa těchto záležitostí, a umožní vám se zaměřit na logiku aplikace.
 
-**Možnost používat existující kód a nástroje**: Azure Cosmos DB poskytuje přenosový protokol úrovně kompatibility s existujících sad Cassandra SDK a nástroje. Tato kompatibilita zajišťuje, že můžete použít stávající základ kódu s rozhraním API Cassandra v Azure Cosmos DB s nepatrnými změnami.
+**Možnost využívat stávající kód a nástroje**: Azure Cosmos DB poskytuje kompatibilitu na úrovni přenosového protokolu se stávajícími sadami SDK a nástroji Cassandra. Tato kompatibilita zajišťuje, že můžete použít stávající základ kódu s rozhraním API Cassandra v Azure Cosmos DB s nepatrnými změnami.
 
-**Propustnost a úložiště elasticitu**: Azure Cosmos DB poskytuje zaručena propustnost napříč všemi oblastmi a může se škálovat zřízená propustnost pomocí webu Azure portal, Powershellu nebo rozhraní příkazového řádku operace. Můžete pružně škálovat úložiště a propustnost pro tabulky podle potřeby s předvídatelným výkonem.
+**Propustnost a pružnost úložiště**: Azure Cosmos DB poskytuje ve všech oblastech zaručenou propustnost a zřízenou propustnost může škálovat pomocí webu Azure Portal, PowerShellu nebo operací rozhraní příkazového řádku. Můžete pružně škálovat úložiště a propustnost pro tabulky podle potřeby s předvídatelným výkonem.
 
-**Globální distribuce a dostupnost**: Azure Cosmos DB poskytuje schopnost globálně distribuovat data napříč všemi oblastmi Azure a data místně přitom zajistit přístup k datům s nízkou latencí a vysokou dostupnost. Azure Cosmos DB zajišťuje vysokou dostupnost 99,99 % v rámci oblasti a dostupnost čtení a zapisování 99,999 % ve více oblastech při nulové režii provozu. Další informace najdete v článku o [globální distribuci dat](distribute-data-globally.md). 
+**Globální distribuce a dostupnost**: Azure Cosmos DB poskytuje schopnost globálně distribuovat data napříč všemi oblastmi Azure a obsluhovat data místně a přitom zajišťovat přístup k datům s nízkou latencí a vysokou dostupnost. Azure Cosmos DB zajišťuje vysokou dostupnost 99,99 % v rámci oblasti a dostupnost čtení a zapisování 99,999 % ve více oblastech při nulové režii provozu. Další informace najdete v článku o [globální distribuci dat](distribute-data-globally.md). 
 
-**Volby konzistence**: Azure Cosmos DB poskytuje řadu pět jasně definovaných úrovní konzistence pro dosažení optimálního kompromisy mezi konzistencí a výkonem. Úrovně konzistence jsou: silná, omezená neaktuálnost, relace, konzistentní předpona a případné. Tyto dobře definované, praktické a intuitivní úrovně konzistence umožňují vývojářům zvolit přesný poměr mezi konzistencí, dostupností a latencí. Další informace najdete v článku o [úrovních konzistence](consistency-levels.md). 
+**Volba konzistence**: Pro dosažení optimálního poměru mezi konzistencí a výkonem si můžete u Azure Cosmos DB vybrat z pěti jasně definovaných úrovní konzistence. Úrovně konzistence jsou: silná, omezená neaktuálnost, relace, konzistentní předpona a případné. Tyto dobře definované, praktické a intuitivní úrovně konzistence umožňují vývojářům zvolit přesný poměr mezi konzistencí, dostupností a latencí. Další informace najdete v článku o [úrovních konzistence](consistency-levels.md). 
 
-**Podnikové**: Azure cosmos DB poskytuje [certifikací dodržování předpisů](https://www.microsoft.com/trustcenter) zajistit uživatelé bezpečně používat platformu. Azure Cosmos DB také poskytuje šifrování v klidovém stavu a za provozu, firewall protokolu IP a protokoly auditu pro aktivity roviny řízení.
+**Podniková úroveň**: V Azure Cosmos DB mají uživatelé k dispozici [certifikáty souladu](https://www.microsoft.com/trustcenter), které jim zajišťují bezpečné používání této platformy. Azure Cosmos DB také poskytuje šifrování v klidovém stavu a za provozu, firewall protokolu IP a protokoly auditu pro aktivity roviny řízení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Můžete rychle začít s vytvářením následujících aplikací v konkrétním jazyce určených k vytváření a správě dat rozhraní API Cassandra:
   - [Aplikace v Node.js](create-cassandra-nodejs.md)

@@ -1,25 +1,16 @@
 ---
-title: Konfigurace upgradu aplikace Service Fabric | Microsoft Docs
+title: Konfigurace upgradu aplikace Service Fabric
 description: Naučte se konfigurovat nastavení pro upgrade Service Fabric aplikace pomocí Microsoft Visual Studio.
-services: service-fabric
-documentationcenter: na
 author: mikkelhegn
-manager: mfussell
-editor: tglee
-ms.assetid: 1757ba85-0b7b-4f16-8a23-2ddaa61c86c6
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/29/2017
 ms.author: mikhegn
-ms.openlocfilehash: 5979541146b7cd7b854f35c5bf204e71208f066b
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: ef88a528dbb6d326e5cc742d14c27218eb7502f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876762"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464075"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Konfigurace upgradu aplikace Service Fabric v aplikaci Visual Studio
 Nástroje Visual Studio Tools for Azure Service Fabric poskytují podporu upgradu pro publikování do místních nebo vzdálených clusterů. Existují tři scénáře, ve kterých chcete aplikaci upgradovat na novější verzi místo toho, aby se aplikace nahradila při testování a ladění:
@@ -86,5 +77,5 @@ Následující příklad ukazuje, jak použít jedinečnou zásadu kontroly stav
     </HealthPolicy>
 </Policies>
 ```
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o upgradu aplikace naleznete v tématu [Upgrade aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md).

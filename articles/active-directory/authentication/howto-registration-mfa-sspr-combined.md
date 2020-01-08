@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2bd3f61ffc07881ed8e502788b11fc0f435735b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 25c64d9e959b1d68de23e83e26d3495bd3939986
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847350"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425160"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Povolit registraci kombinovaných zabezpečení informací (Preview)
 
@@ -39,10 +39,10 @@ Než začnete s novým prostředím, přečtěte si článek [Registrace informa
 Pokud chcete povolit kombinovanou registraci, proveďte tyto kroky:
 
 1. Přihlaste se k Azure Portal jako správce uživatele nebo globální správce.
-2. Přejděte na **Azure Active Directory** > **nastavení uživatele** > **Spravovat nastavení pro přístupové panely funkce verze Preview**.
-3. V části **Uživatelé můžou k registraci a správě informací o zabezpečení používat funkce verze Preview – aktualizovat**, zvolit povolit pro **vybranou** skupinu uživatelů nebo pro **všechny** uživatele.
+2. Přejít na **Azure Active Directory** > **nastavení uživatele** > **Spravovat nastavení funkce User Preview**.
+3. V části **Uživatelé můžou používat funkce verze Preview k registraci a správě informací o zabezpečení**. Vyberte možnost Povolit pro **vybranou** skupinu uživatelů nebo pro **všechny** uživatele.
 
-   ![Povolit prostředí Preview pro všechny uživatele v kombinaci s informacemi o zabezpečení](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
+   ![Povolit prostředí Preview pro všechny uživatele v kombinaci s informacemi o zabezpečení](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info-preview.png)
 
 > [!IMPORTANT]
 > Od března 2019 nebudou možnosti telefonního hovoru k dispozici pro Multi-Factor Authentication a SSPR uživatele v bezplatných nebo zkušebních klientech Azure AD. Tato změna nemá vliv na zprávy SMS. Možnosti telefonního hovoru budou pořád dostupné uživatelům v placených klientech Azure AD.
@@ -64,9 +64,9 @@ Zabezpečení, kdy a jak se uživatelé registrují pro Azure Multi-Factor Authe
 
 Následující zásady platí pro všechny vybrané uživatele, kteří se pokoušejí zaregistrovat pomocí kombinovaného prostředí pro registraci, a zablokují přístup, pokud se nepřipojují z umístění označeného jako důvěryhodná síť.
 
-![Vytvoření zásady certifikační autority pro řízení registrace bezpečnostních údajů](media/howto-registration-mfa-sspr-combined/conditional-access-register-security-info.png)
+![Vytvoření zásady certifikační autority pro řízení registrace bezpečnostních údajů](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
 
-1. V **Azure Portal**přejděte do **Azure Active Directory** > **podmíněný přístup** .
+1. V **Azure Portal**přejděte na **Azure Active Directory** > **zabezpečení** > **podmíněný přístup** .
 1. Vyberte **Nová zásada**.
 1. Do název zadejte název pro tuto zásadu. Například **Kombinovaná registrace informací o zabezpečení v důvěryhodných sítích**
 1. V části **přiřazení**klikněte na **Uživatelé a skupiny**a vyberte uživatele a skupiny, pro které chcete tuto zásadu použít.
