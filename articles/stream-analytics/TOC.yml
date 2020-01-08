@@ -6,7 +6,7 @@
       href: stream-analytics-introduction.md
     - name: Kompletní vzory řešení
       href: stream-analytics-solution-patterns.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření úlohy – Azure Portal
@@ -31,7 +31,7 @@
       href: stream-analytics-edge-csharp-udf.md
     - name: 6. Vytvoření vlastního deserializátoru .NET
       href: custom-deserializer.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
@@ -49,7 +49,7 @@
           href: stream-analytics-define-inputs.md
         - name: Referenční datové výstupy
           href: stream-analytics-use-reference-data.md
-        - name: Psaní vlastních deserializátorů .NET
+        - name: Čtení vstupů v jakémkoli formátu pomocí vlastních deserializátorů
           href: custom-deserializer-examples.md
     - name: Výstupní typy pro úlohu
       items:
@@ -174,9 +174,9 @@
       items:
         - name: Instalace nástrojů
           href: stream-analytics-tools-for-visual-studio-install.md
-        - name: Testování s ukázkovými daty
+        - name: Místní testování s využitím ukázkových dat
           href: stream-analytics-vs-tools-local-run.md
-        - name: Testování s živými daty
+        - name: Místní testování s využitím živých dat
           href: stream-analytics-live-data-local-testing.md
         - name: Zobrazení úloh v sadě Visual Studio
           href: stream-analytics-vs-tools.md
@@ -188,12 +188,14 @@
           href: stream-analytics-edge-csharp-udf-methods.md
     - name: Visual Studio Code
       items:
-        - name: Testování s ukázkovými daty
-          href: vscode-local-run.md
+        - name: Místní testování s využitím ukázkových dat
+          href: visual-studio-code-local-run.md
+        - name: Místní testování s využitím živých dat
+          href: visual-studio-code-local-run-live-input.md
         - name: Nastavení kanálu CI/CD
           href: setup-cicd-vs-code.md
         - name: Zkoumání úloh
-          href: vscode-explore-jobs.md
+          href: visual-studio-code-explore-jobs.md
     - name: Řešení potíží
       items:
         - name: Vstup

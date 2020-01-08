@@ -4,7 +4,7 @@
   items:
     - name: Co je Azure Database Migration Service?
       href: dms-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Vytvoření služby – portál
       href: quickstart-create-data-migration-service-portal.md
@@ -67,12 +67,16 @@
           href: known-issues-troubleshooting-dms.md
         - name: Známé problémy – online migrace do izolované databáze Azure SQL DB
           href: known-issues-azure-sql-online.md
+        - name: Známé problémy – online migrace do spravované instance Azure SQL DB
+          href: known-issues-azure-sql-db-managed-instance-online.md
         - name: Známé problémy – online migrace do Azure DB for MySQL
           href: known-issues-azure-mysql-online.md
         - name: Známé problémy – online migrace z PostgreSQL do Azure DB for PostgreSQL – Single server
           href: known-issues-azure-postgresql-online.md
         - name: Známé problémy – online migrace z Oraclu do Azure DB for PostgreSQL – Single server
           href: known-issues-oracle-azure-postgresql-online.md
+        - name: Známé problémy – použití hybridního režimu
+          href: known-issues-dms-hybrid-mode.md
     - name: Videa
       items:
         - name: Použití průvodce migrací databází

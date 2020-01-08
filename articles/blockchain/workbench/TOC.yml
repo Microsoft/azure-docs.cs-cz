@@ -55,14 +55,16 @@
       href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
 - name: Zdroje a prostředky
   items:
-    - name: Blog
-      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
     - name: Ukázky kódů
       href: 'https://github.com/Azure-Samples/blockchain'
-    - name: Komunita
-      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
-    - name: Fórum podpory
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: Fórum podpory MSDN
       href: 'https://aka.ms/workbenchforum'
+    - name: Podpora komunity
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
+    - name: Podpora webu Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-blockchain-workbench'
     - name: Zpětná vazba k produktu
       href: 'https://aka.ms/blockchainuservoice'
 - name: Šablony řešení

@@ -7,7 +7,7 @@
   items:
     - name: Přehled
       href: v2-overview.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Nastavení tenanta
           href: quickstart-create-new-tenant.md
@@ -35,6 +35,7 @@
               href: quickstart-v2-aspnet-core-webapp.md
             - name: NodeJS
               href: quickstart-v2-nodejs-webapp.md
+              displayName: OIDC
             - name: Java
               href: quickstart-v2-java-webapp.md
             - name: Python
@@ -85,7 +86,7 @@
           items:
             - name: Webová aplikace démona ASP.NET
               href: tutorial-v2-aspnet-daemon-web-app.md
-    - name: Ukázky
+    - name: ukázky
       href: sample-v2-code.md
     - name: Koncepty
       items:
@@ -135,7 +136,7 @@
                   href: scenario-web-app-call-api-app-registration.md
                 - name: Konfigurace kódu
                   href: scenario-web-app-call-api-app-configuration.md
-                - name: Přihlášení
+                - name: Globální odhlášení
                   href: scenario-web-app-call-api-sign-in.md
                 - name: Získání tokenu pro aplikaci
                   href: scenario-web-app-call-api-acquire-token.md
@@ -213,7 +214,8 @@
                       href: msal-net-system-browser-android-considerations.md
                     - name: Xamarin iOS
                       href: msal-net-xamarin-ios-considerations.md
-                    - name: Použití zprostředkovatelů s aplikacemi pro Xamarin iOS a Android
+                    - name: Použití zprostředkovatelů se systémy Xamarin iOS a Android
+                      displayName: Microsoft Authenticator Microsoft Intune
                       href: msal-net-use-brokers-with-xamarin-apps.md
                     - name: Univerzální platforma Windows
                       href: msal-net-uwp-considerations.md
@@ -241,13 +243,13 @@
                   href: msal-compare-msal-js-and-adal-js.md
                 - name: Migrace na MSAL.Android
                   href: migrate-android-adal-msal.md
-                - name: Migrace na MSAL.iOS a MacOS
+                - name: Migrace na MSAL.iOS/MacOS
                   href: migrate-objc-adal-msal.md
                 - name: Migrace na MSAL pro Python
                   href: migrate-python-adal-msal.md
                 - name: Migrace na MSAL pro Javu
                   href: migrate-adal-msal-java.md
-                - name: Migrace aplikací pro Xamarin pomocí zprostředkovatelů z ADAL.NET do MSAL.NET
+                - name: Migrace aplikací pro Xamarin pomocí zprostředkovatelů do MSAL.NET
                   href: msal-net-migration-ios-broker.md
             - name: Podporované toky ověřování
               href: msal-authentication-flows.md
@@ -263,7 +265,7 @@
               items:
                 - name: Klientské aplikace
                   href: msal-client-applications.md
-                - name: Konfigurace aplikací (.NET)
+                - name: Konfigurace aplikací
                   href: msal-client-application-configuration.md
                 - name: Inicializace aplikací (.NET)
                   href: msal-net-initializing-client-applications.md
@@ -317,7 +319,7 @@
                       href: msal-js-known-issues-ie-edge-browsers.md
                     - name: Známé problémy – Safari
                       href: msal-js-known-issues-safari-browser.md
-                - name: Problémy s MSAL pro iOS a MacOS
+                - name: Řešení potíží s protokolem SSL (MSAL iOS/macOS)
                   href: ssl-issues.md
         - name: Protokol ověřování
           items:
@@ -388,7 +390,7 @@
       items:
         - name: Authentication
           items:
-            - name: Konfigurace deklarací identity rolí
+            - name: Konfigurace deklarace identity role
               href: active-directory-enterprise-app-role-management.md
             - name: Přizpůsobení deklarací identity – Portal
               href: active-directory-saml-claims-customization.md
@@ -400,9 +402,9 @@
               href: active-directory-configurable-token-lifetimes.md
         - name: Konfigurace aplikací
           items:
-            - name: Přechod z Registrace aplikací (starší verze) na nové prostředí Registrace aplikací na webu Azure Portal
+            - name: Nový průvodce školením registrace aplikací na webu Azure Portal
               href: app-registrations-training-guide-for-app-registrations-legacy-users.md
-            - name: Přechod z portálu pro registraci aplikací na nové prostředí Registrace aplikací na webu Azure Portal
+            - name: Nové prostředí registrace aplikací na webu Azure Portal
               href: app-registration-portal-training-guide.md
             - name: Převedení aplikace pro jednoho tenanta na aplikaci pro více tenantů
               href: howto-convert-app-to-be-multi-tenant.md
@@ -418,7 +420,7 @@
               href: howto-add-app-roles-in-azure-ad-apps.md
             - name: Pokyny pro branding
               href: howto-add-branding-in-azure-ad-apps.md
-            - name: Doména vydavatele
+            - name: Konfigurace domény vydavatele
               href: howto-configure-publisher-domain.md
             - name: Podmínky služby a prohlášení o ochraně osobních údajů
               href: howto-add-terms-of-service-privacy-statement.md
@@ -432,7 +434,7 @@
                   href: msal-net-token-cache-serialization.md
                 - name: Vymazání mezipaměti tokenů
                   href: msal-net-clear-token-cache.md
-                - name: Vytvoření instance veřejného klienta s využitím možností
+                - name: Vytvoření instance veřejné klientské aplikace
                   href: msal-net-instantiate-public-client-config-options.md
                 - name: Vytvoření instance důvěrného klienta s využitím možností
                   href: msal-net-instantiate-confidential-client-config-options.md
@@ -462,13 +464,13 @@
                   href: redirect-uris-ios.md
             - name: MSAL pro Python
               items:
-                - name: Serializace mezipaměti tokenů
+                - name: Serializace mezipaměti vlastních tokenů
                   href: msal-python-token-cache-serialization.md
             - name: MSAL pro Javu
               items:
-                - name: Serializace mezipaměti tokenů
+                - name: Serializace mezipaměti vlastních tokenů
                   href: msal-java-token-cache-serialization.md
-                - name: Přidání a odebrání účtů z mezipaměti tokenů
+                - name: Získání a odebrání účtů z mezipaměti tokenů
                   href: msal-java-get-remove-accounts-token-cache.md
         - name: Práce se sadou Visual Studio
           items:
@@ -482,7 +484,7 @@
               href: vs-active-directory-webapi-getting-started.md
             - name: Co se stalo s mým projektem WebAPI?
               href: vs-active-directory-webapi-what-happened.md
-            - name: Chyba během detekce ověřování
+            - name: Diagnostika chyb při ověřování
               href: vs-active-directory-error.md
     - name: Odkazy
       items:
@@ -504,7 +506,7 @@
   items:
     - name: Přehled
       href: v1-overview.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Nastavení tenanta
           href: quickstart-create-new-tenant.md
@@ -558,7 +560,7 @@
           items:
             - name: Konzola .NET Core (proces démon)
               href: quickstart-v1-netcore-daemon.md
-    - name: Ukázky
+    - name: ukázky
       href: sample-v1-code.md
     - name: Koncepty
       items:

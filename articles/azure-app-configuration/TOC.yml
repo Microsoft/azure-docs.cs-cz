@@ -6,7 +6,7 @@
       href: overview.md
     - name: Nejčastější dotazy
       href: faq.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Konfigurace
@@ -49,7 +49,7 @@
       href: use-key-vault-references-dotnet-core.md
     - name: Integrace s kanálem CI/CD
       href: integrate-ci-cd-pipeline.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Azure CLI
       href: cli-samples.md
@@ -87,15 +87,15 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
         - name: Tvůrce .NET Frameworku
           href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
-        - name: .NET Azure SDK
+        - name: Azure SDK for .Net
           href: 'https://go.microsoft.com/fwlink/?linkid=2092056'
         - name: Poskytovatel Java Springu
           href: 'https://go.microsoft.com/fwlink/?linkid=2074659'
-        - name: Java Azure SDK
+        - name: Azure SDK pro Javu
           href: 'https://go.microsoft.com/fwlink/?linkid=2098196'
-        - name: Python Azure SDK
+        - name: Azure SDK pro Python
           href: 'https://go.microsoft.com/fwlink/?linkid=2103727'
-        - name: JavaScript Azure SDK
+        - name: Azure SDK for JavaScript
           href: 'https://go.microsoft.com/fwlink/?linkid=2103664'
         - name: REST
           href: 'https://go.microsoft.com/fwlink/?linkid=2078296'

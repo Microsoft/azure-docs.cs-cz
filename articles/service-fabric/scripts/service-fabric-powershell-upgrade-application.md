@@ -1,6 +1,6 @@
 ---
-title: Ukázka skriptu Azure PowerShell – upgrade Service Fabric aplikace | Microsoft Docs
-description: Ukázka skriptu Azure PowerShell – upgrade Service Fabric aplikace
+title: Upgrade aplikace Service Fabric v PowerShellu
+description: Ukázka skriptu Azure PowerShell – upgrade a monitorování aplikace Azure Service Fabric pomocí prostředí PowerShell.
 services: service-fabric
 documentationcenter: ''
 author: athinanthny
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 45186f497371b533451ff374e68b38f9a7eebe51
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3a4ef9fad8567eb145d51c6fef61773cc3a00b11
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035485"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614736"
 ---
 # <a name="upgrade-a-service-fabric-application"></a>Upgrade aplikace Service Fabric
 
@@ -47,7 +47,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Remove-ServiceFabricApplicationPackage](/powershell/module/servicefabric/remove-servicefabricapplicationpackage?view=azureservicefabricps) | Odebere balíček aplikace Service Fabric z úložiště imagí.|
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o modulu Service Fabric PowerShellu najdete v [dokumentaci k Azure PowerShell](/powershell/azure/service-fabric/?view=azureservicefabricps).
 

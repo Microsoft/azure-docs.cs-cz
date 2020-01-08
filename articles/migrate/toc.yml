@@ -6,6 +6,14 @@
       href: migrate-services-overview.md
     - name: Co je nového
       href: whats-new.md
+    - name: Časté dotazy
+      items:
+        - name: Dotazy ke službě Azure Migrate
+          href: resources-faq.md
+        - name: Dotazy k zařízením Azure Migrate
+          href: common-questions-appliance.md
+        - name: Dotazy ke zjišťování a vizualizaci závislostí/hodnocení
+          href: common-questions-discovery-assessment.md
 - name: Kurzy
   items:
     - name: Vyhodnocení a migrace virtuálních počítačů VMware
@@ -44,8 +52,6 @@
           href: tutorial-assess-import.md
 - name: Koncepty
   items:
-    - name: Časté dotazy
-      href: resources-faq.md
     - name: Matice podpory
       items:
         - name: Matice podpory pro Azure Migrate

@@ -2,18 +2,18 @@
 title: Dokumentace ke službě Azure Database Migration Service
 summary: Služba Azure Database Migration Service umožňuje bezproblémovou migraci z více zdrojů databáze na platformy Azure Data s minimální dobou vyřazení z provozu. Tato služba používá nástroj Data Migration Assistant k vygenerování sestav vyhodnocení poskytujících doporučení, která vás provedou nutnými změnami před provedením migrace. Až budete připravení zahájit proces migrace, služba Azure Database Migration Service provede všechny požadované kroky.
 metadata:
-  description: " Zjistěte, jak pomocí služby Azure Database Migration Service umožnit bezproblémovou migraci z několika databázových zdrojů na datové platformy Azure s minimem výpadků."
+  description: Zjistěte, jak pomocí služby Azure Database Migration Service umožnit bezproblémovou migraci z několika databázových zdrojů na datové platformy Azure s minimem výpadků.
   author: HJToland3
   ms.author: jtoland
-  ms.date: 10/25/2019
+  ms.date: 12/19/2019
   ms.service: dms
   ms.topic: landing-page
-  ms.openlocfilehash: 1d064144d040a45fbc655879a6869da4ceaa4b79
-  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.openlocfilehash: 8ca7f2618c6415dd3dbe22cada35bccb56be50ee
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73583995"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75437885"
 landingContent:
 - title: Informace o službě Azure Database Migration Service
   linkLists:
@@ -33,6 +33,10 @@ landingContent:
       url: quickstart-create-data-migration-service-portal.md
     - text: Vytvoření služby v hybridním režimu – portál
       url: quickstart-create-data-migration-service-hybrid-portal.md
+  - linkListType: reference
+    links:
+    - text: Známé problémy – použití hybridního režimu
+      url: known-issues-dms-hybrid-mode.md
   - linkListType: video
     links:
     - text: Seznámení se službou Azure Data Migration Service
@@ -65,6 +69,8 @@ landingContent:
     links:
     - text: Známé problémy – online migrace do izolované databáze SQL Database
       url: known-issues-azure-sql-online.md
+    - text: Známé problémy – online migrace do spravované instance SQL Database
+      url: known-issues-azure-sql-db-managed-instance-online.md
     - text: Síťové topologie pro migrace spravovaných instancí SQL Database
       url: resource-network-topologies.md
     - text: Vlastní role pro online migrace z SQL Serveru do spravované instance SQL Database

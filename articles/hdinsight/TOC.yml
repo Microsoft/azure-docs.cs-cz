@@ -17,9 +17,11 @@
           href: ./hdinsight-administer-use-dotnet-sdk.md
         - name: Správa clusterů HDInsight – PowerShell
           href: ./hdinsight-administer-use-powershell.md
+        - name: Vytváření clusterů s využitím runbooků
+          href: ./manage-clusters-runbooks.md
         - name: Vytvoření kanálu ETL
           href: ./hdinsight-sales-insights-etl.md
-    - name: Ukázky
+    - name: ukázky
       items:
         - name: Ukázky Azure CLI
           href: ./azure-cli-samples.md
@@ -73,14 +75,29 @@
               href: ./hdinsight-hadoop-create-linux-clusters-curl-rest.md
             - name: Vytváření clusterů pomocí .NET
               href: ./hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
-        - name: Použití úložiště clusteru
-          items:
-            - name: S využitím Azure Storage
-              href: hdinsight-hadoop-use-blob-storage.md
-            - name: S využitím služby Azure Data Lake Storage Gen2
-              href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-            - name: S využitím služby Azure Data Lake Storage Gen1
-              href: hdinsight-hadoop-use-data-lake-store.md
+            - name: Chyby vytváření clusterů
+              href: ./create-cluster-error-dictionary.md
+              title: null
+              summary: null
+              abstract: null
+              achievement: null
+              iconUrl: null
+              levels:
+                - null
+              roles:
+                - null
+              products:
+                - null
+              units:
+                - null
+                - name: Použití úložiště clusteru
+                  items:
+                    - name: S využitím Azure Storage
+                      href: hdinsight-hadoop-use-blob-storage.md
+                    - name: S využitím služby Azure Data Lake Storage Gen2
+                      href: hdinsight-hadoop-use-data-lake-storage-gen2.md
+                    - name: S využitím služby Azure Data Lake Storage Gen1
+                      href: hdinsight-hadoop-use-data-lake-store.md
         - name: Rozšíření clusterů
           items:
             - name: Instalace aplikací HDInsight
@@ -257,7 +274,7 @@
       items:
         - name: Co je Apache Spark v HDInsightu?
           href: ./spark/apache-spark-overview.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Vytvoření clusteru Apache Spark – portál
           href: ./spark/apache-spark-jupyter-spark-sql-use-portal.md
@@ -401,7 +418,7 @@
       items:
         - name: Co je Apache Hadoop v HDInsightu?
           href: ./hadoop/apache-hadoop-introduction.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Vytvoření clusteru Apache Hadoop – portál
           href: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
@@ -514,7 +531,7 @@
       items:
         - name: Co je Apache Kafka v HDInsightu?
           href: ./kafka/apache-kafka-introduction.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Vytvoření clusteru Apache Kafka – portál
           href: ./kafka/apache-kafka-get-started.md
@@ -533,6 +550,8 @@
           href: ./hdinsight-apache-kafka-spark-structured-streaming.md
     - name: Koncepty
       items:
+        - name: Migrace úloh Kafka do 4.0
+          href: ./kafka/migrate-versions.md
         - name: Úložiště a škálovatelnost
           href: ./kafka/apache-kafka-scalability.md
         - name: Vysoká dostupnost dat
@@ -545,6 +564,8 @@
       items:
         - name: Vývoj
           items:
+            - name: Použití proxy REST Kafka
+              href: ./kafka/rest-proxy.md
             - name: Povolení automatického vytváření témat
               href: ./kafka/apache-kafka-auto-create-topics.md
             - name: Použití Apache Kafka se službou IoT Hub
@@ -579,7 +600,7 @@
       items:
         - name: Co je Apache HBase v HDInsightu?
           href: ./hbase/apache-hbase-overview.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Dotazování na Apache HBase – Apache Phoenix
           href: ./hbase/apache-hbase-query-with-phoenix.md
@@ -651,7 +672,7 @@
       items:
         - name: Co je Interactive Query v HDInsightu?
           href: ./interactive-query/apache-interactive-query-get-started.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Zpracování dotazů Apache Hivu – Apache Zeppelin
           href: ./interactive-query/hdinsight-connect-hive-zeppelin.md
@@ -707,6 +728,8 @@
               href: ./interactive-query/interactive-query-troubleshoot-query-performance.md
             - name: Pomalá redukční funkce
               href: ./interactive-query/interactive-query-troubleshoot-slow-reducer.md
+            - name: Vypršení časového limitu brány Apache Hive
+              href: ./interactive-query/troubleshoot-gateway-timeout.md
             - name: Vypršení časového limitu zobrazení Apache Hivu
               href: ./interactive-query/interactive-query-troubleshoot-view-time-out.md
             - name: Chyba oprávnění při vytváření tabulky
@@ -729,7 +752,7 @@
       items:
         - name: Co jsou služby ML Services v HDInsightu?
           href: ./r-server/r-server-overview.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Ukázková úloha – RStudio Server
           href: ./r-server/machine-learning-services-quickstart-job-rstudio.md
@@ -763,7 +786,7 @@
       items:
         - name: Co je Apache Storm v HDInsightu?
           href: ./storm/apache-storm-overview.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Vytvoření topologie Apache Stormu v HDInsightu
           href: ./storm/apache-storm-quickstart.md
@@ -835,14 +858,14 @@
           href: ./hdinsight-service-tags.md
     - name: Postup
       items:
+        - name: Použití zprostředkovatele ID pro správu přihlašovacích údajů
+          href: ./domain-joined/identity-broker.md
         - name: Vytváření clusterů ESP a synchronizace s místním prostředím
           href: ./domain-joined/apache-domain-joined-create-configure-enterprise-security-cluster.md
         - name: Vytváření virtuálních sítí pro HDInsight
           href: ./hdinsight-create-virtual-network.md
         - name: Připojení služby HDInsight k místní síti
           href: ./connect-on-premises-network.md
-        - name: Konfigurace podnikového zabezpečení ve službě HDInsight
-          href: ./domain-joined/apache-domain-joined-configure.md
         - name: Konfigurace clusterů ESP s využitím Azure AD DS
           href: ./domain-joined/apache-domain-joined-configure-using-azure-adds.md
         - name: Synchronizace uživatelů Azure AD do clusteru služby HDInsight

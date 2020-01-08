@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: aeac3b5ab1894e4392152ff255d582c338ceff18
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a514dbce91a98bd51e51b1724d631bc224b2f33a
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972421"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75527922"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>Rychlý Start: Azure Key Vault klientskou knihovnu pro Python
 
@@ -27,7 +27,7 @@ Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče použ
 
 [Referenční dokumentace k rozhraní API](/python/api/overview/azure/key-vault?view=azure-python) | balíček [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [(index balíčku Python)](https://pypi.org/project/azure-keyvault/)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Python 2,7, 3.5.3 nebo novější
@@ -35,7 +35,7 @@ Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče použ
 
 V tomto rychlém startu se předpokládá, že používáte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) v okně terminálu Linux.
 
-## <a name="setting-up"></a>Probíhá nastavení
+## <a name="setting-up"></a>Nastavení
 
 ### <a name="install-the-package"></a>Instalace balíčku
 
@@ -142,7 +142,7 @@ Ověřování pro váš Trezor klíčů a vytvoření klienta trezoru klíčů z
 ```python
 credential = DefaultAzureCredential()
 
-client = SecretClient(vault_endpoint=KVUri, credential=credential)
+client = SecretClient(vault_url=KVUri, credential=credential)
 ```
 
 ### <a name="save-a-secret"></a>Uložení tajného klíče
@@ -150,7 +150,7 @@ client = SecretClient(vault_endpoint=KVUri, credential=credential)
 Teď, když je vaše aplikace ověřená, můžete do trezoru klíčů vložit tajný klíč pomocí klienta. Metoda SetSecret] (/dotnet/API/Microsoft.Azure.keyvault.keyvaultclientextensions.setsecretasync) vyžaduje název tajného kódu – v této ukázce používáme "mySecret".  
 
 ```python
-client.set_secret(secretName, secretValue);
+client.set_secret(secretName, secretValue)
 ```
 
 Můžete ověřit, jestli je tajný kód nastavený pomocí příkazu [AZ klíčů trezor tajného zobrazení](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) :
@@ -174,7 +174,7 @@ Váš tajný kód je teď uložený jako `retrieved_secret.value`.
 Nakonec smažte tajný klíč z vašeho trezoru klíčů s [klientem. Metoda DeleteSecret](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync)
 
 ```python
-client.delete_secret(secretName);
+client.delete_secret(secretName)
 ```
 
 V případě, že se tajný klíč nachází, můžete ověřit pomocí příkazu [AZ klíčů trezor tajné zobrazení](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) :
@@ -203,37 +203,37 @@ import cmd
 from azure.keyvault.secrets import SecretClient
 from azure.identity import DefaultAzureCredential
 
-keyVaultName = os.environ["KEY_VAULT_NAME"];
-KVUri = "https://" + keyVaultName + ".vault.azure.net";
+keyVaultName = os.environ["KEY_VAULT_NAME"]
+KVUri = "https://" + keyVaultName + ".vault.azure.net"
 
 credential = DefaultAzureCredential()
-client = SecretClient(vault_endpoint=KVUri, credential=credential)
+client = SecretClient(vault_url=KVUri, credential=credential)
 
-secretName = "mySecret";
+secretName = "mySecret"
 
-print("Input the value of your secret > ");
-secretValue = raw_input();
+print("Input the value of your secret > ")
+secretValue = raw_input()
 
-print("Creating a secret in " + keyVaultName + " called '" + secretName + "' with the value '" + secretValue + "` ...");
+print("Creating a secret in " + keyVaultName + " called '" + secretName + "' with the value '" + secretValue + "` ...")
 
-client.set_secret(secretName, secretValue);
+client.set_secret(secretName, secretValue)
 
-print(" done.");
+print(" done.")
 
-print("Forgetting your secret.");
-secretValue = "";
-print("Your secret is '" + secretValue + "'.");
+print("Forgetting your secret.")
+secretValue = ""
+print("Your secret is '" + secretValue + "'.")
 
-print("Retrieving your secret from " + keyVaultName + ".");
+print("Retrieving your secret from " + keyVaultName + ".")
 
 retrieved_secret = client.get_secret(secretName)
 
-print("Your secret is '" + retrieved_secret.value + "'.");
-print("Deleting your secret from " + keyVaultName + " ...");
+print("Your secret is '" + retrieved_secret.value + "'.")
+print("Deleting your secret from " + keyVaultName + " ...")
 
-client.delete_secret(secretName);
+client.delete_secret(secretName)
 
-print(" done.");
+print(" done.")
 ```
 
 ## <a name="next-steps"></a>Další kroky

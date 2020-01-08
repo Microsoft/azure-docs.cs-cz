@@ -6,9 +6,19 @@
       href: overview.md
     - name: Terminologické změny
       href: terminology.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
-    - name: Aplikace
+    - name: Monitorování prostředků Azure
+      href: learn/quick-monitor-azure-resource.md
+    - name: Monitorování virtuálních počítačů
+      items:
+        - name: Shromažďování – virtuální počítače Azure
+          href: learn/quick-collect-azurevm.md
+        - name: Shromažďování – počítač Linux
+          href: learn/quick-collect-linux-computer.md
+        - name: Shromažďování – počítač s Windows
+          href: learn/quick-collect-windows-computer.md
+    - name: Monitorování aplikací
       items:
         - name: Aplikace v .NET
           href: learn/quick-monitor-portal.md
@@ -20,26 +30,20 @@
           href: learn/mobile-center-quickstart.md
         - name: Webová aplikace
           href: app/website-monitoring.md
-    - name: Virtuální počítače
-      items:
-        - name: Shromažďování – virtuální počítače Azure
-          href: learn/quick-collect-azurevm.md
-        - name: Shromažďování – počítač Linux
-          href: learn/quick-collect-linux-computer.md
-        - name: Shromažďování – počítač s Windows
-          href: learn/quick-collect-windows-computer.md
 - name: Kurzy
   items:
-    - name: Protokoly
-      items:
-        - name: Log Analytics
-          href: log-query/get-started-portal.md
-        - name: Dotazy na protokoly
-          href: log-query/get-started-queries.md
-        - name: Řídicí panel s daty protokolů
-          href: learn/tutorial-logs-dashboards.md
-        - name: Upozornění na data protokolů
-          href: learn/tutorial-response.md
+    - name: Vytvoření grafu metrik
+      href: learn/tutorial-metrics-explorer.md
+    - name: Shromažďování protokolů z prostředku Azure
+      href: learn/tutorial-resource-logs.md
+    - name: Psaní dotazů na protokoly
+      href: log-query/get-started-queries.md
+    - name: Vytvoření řídicího panelu z dotazu na protokol
+      href: learn/tutorial-logs-dashboards.md
+    - name: Vytvoření upozornění z dotazu na protokol
+      href: learn/tutorial-response.md
+    - name: Automatické škálování podle výkonu a plánu
+      href: learn/tutorial-autoscale-performance-schedule.md
     - name: Application Insights
       items:
         - name: Vyhledání běhových výjimek aplikací
@@ -52,11 +56,7 @@
           href: learn/tutorial-users.md
         - name: Řídicí panel s daty aplikací
           href: learn/tutorial-app-dashboards.md
-    - name: Archivace metrik platformy a dat protokolů
-      href: learn/tutorial-archive-data.md
-    - name: Automatické škálování podle výkonu a plánu
-      href: learn/tutorial-autoscale-performance-schedule.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Azure PowerShell
       href: platform/powershell-samples.md
@@ -479,50 +479,46 @@
           href: insights/monitor-azure-resource.md
         - name: Monitorování skupin prostředků
           href: insights/resource-group-insights.md
-        - name: Přehled protokolů platformy
-          href: platform/platform-logs-overview.md
-        - name: Protokoly prostředků
+        - name: Protokoly platformy
           items:
             - name: Přehled
-              displayname: Resource logs
-              href: platform/resource-logs-overview.md
-            - name: Shromažďování v protokolech Azure Monitoru
-              displayname: Resource logs
-              href: platform/resource-logs-collect-workspace.md
-            - name: Archivace do úložiště
-              displayname: Resource logs
-              href: platform/resource-logs-collect-storage.md
-            - name: Streamování do Event Hubs
-              displayname: Resource logs
-              href: platform/resource-logs-stream-event-hubs.md
-        - name: Protokol aktivit
-          items:
-            - name: Přehled
-              displayname: Activity log
-              href: platform/activity-logs-overview.md
-            - name: Shromažďování s nastavením diagnostiky
-              displayname: Activity log
-              href: platform/diagnostic-settings-subscription.md
-            - name: Zobrazení a načtení
-              displayname: Activity log
+              displayName: 'Platform logs, Resource logs, Activity log'
+              href: platform/platform-logs-overview.md
+            - name: Zobrazení protokolu aktivit
+              displayName: Platform logs
               href: platform/activity-log-view.md
-            - name: Shromažďování a analýza
-              displayname: Activity log
-              href: platform/activity-log-collect.md
-            - name: Shromažďování napříč tenanty
-              displayname: Activity log
-              href: platform/activity-log-collect-tenants.md
-            - name: Export
-              displayname: Activity log
-              href: platform/activity-log-export.md
-            - name: Schéma
-              displayname: Activity log
-              href: platform/activity-log-schema.md
+            - name: Odeslání do cílových umístění
+              items:
+                - name: Pracovní prostor služby Log Analytics
+                  displayname: 'Resource logs, Activity log, Platform logs'
+                  href: platform/resource-logs-collect-workspace.md
+                - name: Úložiště Azure
+                  displayname: 'Resource logs, Activity log, Platform logs'
+                  href: platform/resource-logs-collect-storage.md
+                - name: Event Hubs
+                  displayname: 'Resource logs, Activity log, Platform logs'
+                  href: platform/resource-logs-stream-event-hubs.md
+            - name: Shromažďování protokolů aktivit starší verze
+              items:
+                - name: Přehled
+                  displayName: Resource logs
+                  href: platform/diagnostic-settings-legacy.md
+                - name: Shromažďování a analýza
+                  displayname: Activity log
+                  href: platform/activity-log-collect.md
+                - name: Shromažďování napříč tenanty
+                  displayname: Activity log
+                  href: platform/activity-log-collect-tenants.md
+                - name: Export
+                  displayname: Activity log
+                  href: platform/activity-log-export.md
         - name: Nastavení diagnostiky
           items:
             - name: Vytvoření nastavení diagnostiky
+              displayName: 'Platform logs, Resource logs, Activity log'
               href: platform/diagnostic-settings.md
-            - name: Vytvoření nastavení diagnostiky s využitím šablon Resource Manageru
+            - name: Vytvoření s využitím Resource Manageru
+              displayName: 'diagnostic setting, Platform logs, Resource logs, Activity log'
               href: platform/diagnostic-settings-template.md
             - name: Změna formátu úložiště objektů blob
               displayname: Diagnostic settings
@@ -579,6 +575,8 @@
                   href: platform/log-analytics-agent.md
                 - name: Agenti systému Windows
                   href: platform/agent-windows.md
+                - name: Agenti systému Linux
+                  href: platform/agent-linux.md
                 - name: Rozšíření virtuálního počítače pro Windows
                   href: ../virtual-machines/windows/extensions-oms.md
                 - name: Rozšíření virtuálního počítače pro Linux
@@ -1161,10 +1159,16 @@
       items:
         - name: Podporované metriky
           href: platform/metrics-supported.md
+        - name: Metriky exportovatelné s nastavením diagnostiky
+          href: platform/metrics-supported-export-diagnostic-settings.md
         - name: Podporované metriky pro novější upozornění
           href: platform/alerts-metric-near-real-time.md
-    - name: 'Služby, kategorie a schémata pro protokoly platformy'
-      href: platform/diagnostic-logs-schema.md
+    - name: Protokoly platformy
+      items:
+        - name: 'Služby, kategorie a schémata pro protokoly prostředků'
+          href: platform/diagnostic-logs-schema.md
+        - name: Schéma protokolu aktivit
+          href: platform/activity-log-schema.md
     - name: Azure CLI
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: Azure CLI – Application Insights (Preview)

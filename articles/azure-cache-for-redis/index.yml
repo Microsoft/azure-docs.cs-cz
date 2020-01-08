@@ -1,0 +1,100 @@
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Cache for Redis
+summary: Naučte se využívat službu Azure Cache for Redis. Tento zprostředkovatel zasílání zpráv a zabezpečené mezipaměti dat poskytuje aplikacím přístup k datům s vysokou propustností a nízkou latencí. Kurzy, reference k rozhraní API a další dokumentace ukazují postupy využití služby Azure Cache for Redis z libovolné aplikace v Azure.
+metadata:
+  title: Dokumentace ke službě Azure Cache for Redis
+  description: Naučte se využívat službu Azure Cache for Redis. Tento zprostředkovatel zasílání zpráv a zabezpečené mezipaměti dat poskytuje aplikacím rychlý přístup k datům. Kurzy, reference k rozhraní API a další zdroje informací
+  ms.service: cache
+  ms.topic: landing-page
+  author: yegu-ms
+  ms.author: yegu
+  ms.date: 12/16/2019
+  ms.openlocfilehash: fad78db361927a14f393066fb088354552d880a9
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75470028"
+landingContent:
+- title: Informace o službě Azure Cache for Redis
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Cache for Redis?
+      url: cache-overview.md
+    - text: Další informace o úrovni Premium služby Azure Cache for Redis
+      url: cache-premium-tier-intro.md
+  - linkListType: video
+    links:
+    - text: Možnosti správy
+      url: https://azure.microsoft.com/resources/videos/azure-redis-cache-administration-options/
+    - text: Ukládání zabezpečení do mezipaměti
+      url: https://azure.microsoft.com/resources/videos/azure-redis-security-cacheing/
+    - text: Osvědčené postupy
+      url: https://azure.microsoft.com/resources/videos/azure-redis-cache-best-practices/
+    - text: Zvýšení výkonu
+      url: https://azure.microsoft.com/resources/videos/increase-performance-through-redis-cluster-in-azure-redis-cache/
+  - linkListType: whats-new
+    links:
+    - text: Nejčastější dotazy
+      url: cache-faq.md
+    - text: Osvědčené postupy pro Azure Cache for Redis
+      url: cache-best-practices.md
+    - text: Zprostředkovatel stavu relací ASP.NET pro Azure Cache for Redis
+      url: cache-aspnet-session-state-provider.md
+- title: 'Rychlá zprovoznění: Azure Cache for Redis'
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Kódování aplikace v .NET Frameworku
+      url: cache-dotnet-how-to-use-azure-redis-cache.md
+    - text: Kódování aplikace v .NET Core
+      url: cache-dotnet-core-quickstart.md
+    - text: Kódování webové aplikace v ASP.NET
+      url: cache-web-app-howto.md
+    - text: Kódování aplikace v Javě
+      url: cache-java-get-started.md
+    - text: Kódování aplikace v Node.js
+      url: cache-nodejs-get-started.md
+    - text: Kódování aplikace v Pythonu
+      url: cache-python-get-started.md
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření tabulky výsledků s principem doplňování mezipaměti aplikací v ASP.NET
+      url: cache-web-app-cache-aside-leaderboard.md
+  - linkListType: get-started
+    links:
+    - text: ukázky
+      url: cache-redis-samples.md
+- title: Sady SDK a příkazové řádky
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.redis
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.redis.rediscache
+    - text: REST API
+      url: /rest/api/redis/
+    - text: Klient Redis
+      url: https://redis.io/clients
+    - text: Příkazy Redis
+      url: https://redis.io/commands
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.rediscache
+    - text: Azure CLI
+      url: /cli/azure/redis
+- title: Řešení potíží
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Řešení potíží na straně klienta
+      url: cache-troubleshoot-client.md
+    - text: Řešení potíží na straně serveru
+      url: cache-troubleshoot-server.md
+    - text: Řešení potíží s časovými limity
+      url: cache-troubleshoot-timeouts.md
+    - text: Řešení potíží se ztrátou dat
+      url: cache-troubleshoot-data-loss.md

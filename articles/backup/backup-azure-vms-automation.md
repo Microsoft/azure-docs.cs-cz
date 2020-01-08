@@ -3,12 +3,12 @@ title: Zálohování a obnovení virtuálních počítačů Azure pomocí PowerS
 description: Popisuje postup zálohování a obnovení virtuálních počítačů Azure pomocí Azure Backup pomocí prostředí PowerShell.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 7afa791c4a98ca5e40c0ee3983ba8650268c00ee
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 733a06a84aa170f1361ea74d126ec9752586fce2
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172551"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75527990"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu
 
@@ -149,7 +149,7 @@ $targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" 
 $targetVault.ID
 ```
 
-Nebo
+nebo
 
 ```powershell
 $targetVaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
@@ -369,7 +369,7 @@ TestVM           ConfigureBackup      Completed            3/18/2019 8:00:21 PM 
 
 ### <a name="stop-protection"></a>Zastavení ochrany
 
-#### <a name="retain-data"></a>Zachovat data
+#### <a name="retain-data"></a>Zachování dat
 
 Pokud si uživatel přeje zastavit ochranu, může použít rutinu [Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS. Tím se zastaví naplánovaná zálohování, ale data zálohovaná, dokud se teď neuchovávají trvale.
 
@@ -417,7 +417,7 @@ $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $targetVault.ID
 ```
 
-### <a name="choose-a-recovery-point"></a>Zvolit bod obnovení
+### <a name="choose-a-recovery-point"></a>Zvolte bod obnovení.
 
 Pomocí rutiny [Get-AzRecoveryServicesBackupRecoveryPoint Zobrazte](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) seznam všech bodů obnovení pro zálohovanou položku. Pak zvolte bod obnovení, který chcete obnovit. Pokud si nejste jistí, který bod obnovení chcete použít, je dobrým zvykem zvolit nejnovější RecoveryPointType = AppConsistent bod v seznamu.
 
@@ -513,25 +513,45 @@ Chcete-li nahradit informace o discích a konfiguraci, proveďte následující 
 Po obnovení disků pomocí následujících kroků vytvořte a nakonfigurujte virtuální počítač z disku.
 
 > [!NOTE]
-> Aby bylo možné vytvořit šifrované virtuální počítače z obnovených disků, musí mít vaše role Azure oprávnění k provedení této akce, **trezoru Microsoft. a trezorů/nasazení/akce**. Pokud vaše role nemá toto oprávnění, vytvořte pomocí této akce vlastní roli. Další informace najdete v tématu [vlastní role v Azure RBAC](../role-based-access-control/custom-roles.md).
 >
->
+> 1. AzureAz modul 3.0.0 nebo vyšší je povinný. <br>
+> 2. Aby bylo možné vytvořit šifrované virtuální počítače z obnovených disků, musí mít vaše role Azure oprávnění k provedení této akce, **trezoru Microsoft. a trezorů/nasazení/akce**. Pokud vaše role nemá toto oprávnění, vytvořte pomocí této akce vlastní roli. Další informace najdete v tématu [vlastní role v Azure RBAC](../role-based-access-control/custom-roles.md). <br>
+> 3. Po obnovení disků teď můžete získat šablonu nasazení, kterou můžete použít přímo k vytvoření nového virtuálního počítače. Žádné další rutiny PS pro vytváření spravovaných a nespravovaných virtuálních počítačů, které jsou šifrované/nešifrované.<br>
+> <br>
 
-> [!NOTE]
-> Po obnovení disků teď můžete získat šablonu nasazení, kterou můžete použít přímo k vytvoření nového virtuálního počítače. Žádné další rutiny PS pro vytváření spravovaných a nespravovaných virtuálních počítačů, které jsou šifrované/nešifrované.
+### <a name="create-a-vm-using-the-deployment-template"></a>Vytvoření virtuálního počítače pomocí šablony nasazení
 
 Výsledné Podrobnosti úlohy poskytují identifikátor URI šablony, který lze dotazovat a nasadit.
 
 ```powershell
    $properties = $details.properties
+   $storageAccountName = $properties["Target Storage Account Name"]
+   $containerName = $properties["Config Blob Container Name"]
    $templateBlobURI = $properties["Template Blob Uri"]
 ```
 
-Stačí nasadit šablonu k vytvoření nového virtuálního počítače, jak je vysvětleno [zde](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
+Šablona není přímo dostupná, protože se nachází v účtu úložiště zákazníka a v daném kontejneru. Pro přístup k této šabloně potřebujeme úplnou adresu URL (spolu s dočasným tokenem SAS).
+
+1. Nejprve rozbalte název šablony z templateBlobURI. Formát je uveden níže. K extrakci konečné název šablony z této adresy URL můžete použít operaci rozdělit v prostředí PowerShell.
+
+```http
+https://<storageAccountName.blob.core.windows.net>/<containerName>/<templateName>
+```
+
+2. Pak můžete vytvořit úplnou adresu URL, jak je vysvětleno [zde](https://docs.microsoft.com/azure/azure-resource-manager/templates/secure-template-with-sas-token?tabs=azure-powershell#provide-sas-token-during-deployment).
 
 ```powershell
-New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobURI -storageAccountType Standard_GRS
+Set-AzCurrentStorageAccount -Name $storageAccountName -ResourceGroupName <StorageAccount RG name>
+$templateBlobFullURI = New-AzStorageBlobSASToken -Container $containerName -Blob <templateName> -Permission r -FullUri
 ```
+
+3. Nasaďte šablonu k vytvoření nového virtuálního počítače, jak je vysvětleno [zde](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
+
+```powershell
+New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobFullURI -storageAccountType Standard_GRS
+```
+
+### <a name="create-a-vm-using-the-config-file"></a>Vytvoření virtuálního počítače pomocí konfiguračního souboru
 
 V následující části jsou uvedené kroky potřebné k vytvoření virtuálního počítače pomocí souboru "VMConfig".
 
@@ -564,20 +584,20 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
 
 4. Připojte disk s operačním systémem a datové disky. Tento krok popisuje příklady různých spravovaných a šifrovaných konfigurací virtuálních počítačů. Použijte příklad, který odpovídá konfiguraci virtuálního počítače.
 
-   * **Nespravované a nešifrované virtuální počítače** – použijte následující ukázku pro nespravované, nešifrované virtuální počítače.
+* **Nespravované a nešifrované virtuální počítače** – použijte následující ukázku pro nespravované, nešifrované virtuální počítače.
 
-       ```powershell
+```powershell
        Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
        $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
        foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
        {
         $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
        }
-       ```
+```
 
-   * **Nespravované a šifrované virtuální počítače s Azure AD (jenom klíče bek)** – pro nespravované a šifrované virtuální počítače se službou Azure AD (ŠIFROVANÉ pomocí klíče bek) je potřeba před připojením disků obnovit tajný klíč do trezoru klíčů. Další informace najdete v tématu [obnovení šifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Následující příklad ukazuje, jak připojit operační systém a datové disky pro šifrované virtuální počítače. Při nastavování disku s operačním systémem nezapomeňte uvést příslušný typ operačního systému.
+* **Nespravované a šifrované virtuální počítače s Azure AD (jenom klíče bek)** – pro nespravované a šifrované virtuální počítače se službou Azure AD (ŠIFROVANÉ pomocí klíče bek) je potřeba před připojením disků obnovit tajný klíč do trezoru klíčů. Další informace najdete v tématu [obnovení šifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Následující příklad ukazuje, jak připojit operační systém a datové disky pro šifrované virtuální počítače. Při nastavování disku s operačním systémem nezapomeňte uvést příslušný typ operačního systému.
 
-      ```powershell
+```powershell
       $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
       $dekUrl = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
       Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.storageProfile'.osDisk.vhd.uri -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows/Linux
@@ -586,11 +606,11 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
       {
        $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
       }
-      ```
+```
 
-   * **Nespravované a šifrované virtuální počítače s Azure AD (klíče bek a KEK)** – pro nespravované a šifrované virtuální počítače se službou Azure AD (ŠIFROVANÉ pomocí klíče bek a KEK) před připojením disků obnovte klíč a tajný klíč do trezoru klíčů. Další informace najdete v tématu [obnovení šifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Následující příklad ukazuje, jak připojit operační systém a datové disky pro šifrované virtuální počítače.
+* **Nespravované a šifrované virtuální počítače s Azure AD (klíče bek a KEK)** – pro nespravované a šifrované virtuální počítače se službou Azure AD (ŠIFROVANÉ pomocí klíče bek a KEK) před připojením disků obnovte klíč a tajný klíč do trezoru klíčů. Další informace najdete v tématu [obnovení šifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Následující příklad ukazuje, jak připojit operační systém a datové disky pro šifrované virtuální počítače.
 
-      ```powershell
+```powershell
       $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
       $kekUrl = "https://ContosoKeyVault.vault.azure.net:443/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
       $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
@@ -600,13 +620,13 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
      {
      $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
      }
-      ```
+```
 
-   * **Nespravované a šifrované virtuální počítače bez Azure AD (jenom klíče bek)** – pro nespravované a šifrované virtuální počítače bez služby Azure AD (ŠIFROVANÉ pomocí klíče bek), pokud **není k dispozici zdrojový Trezor klíčů nebo tajný klíč** , obnovujte tajné klíče do trezoru klíčů pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backupho bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného objektu BLOB operačního systému (Tento krok se nevyžaduje pro datový objekt BLOB). $Dekurl lze načíst z obnoveného trezoru klíčů.<br>
+* **Nespravované a šifrované virtuální počítače bez Azure AD (jenom klíče bek)** – pro nespravované a šifrované virtuální počítače bez služby Azure AD (ŠIFROVANÉ pomocí klíče bek), pokud **není k dispozici zdrojový Trezor klíčů nebo tajný klíč** , obnovujte tajné klíče do trezoru klíčů pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backupho bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného objektu BLOB operačního systému (Tento krok se nevyžaduje pro datový objekt BLOB). $Dekurl lze načíst z obnoveného trezoru klíčů.
 
-   Níže uvedený skript je nutné provést pouze v případě, že není k dispozici zdrojový trezor a tajný klíč.
+Níže uvedený skript je nutné provést pouze v případě, že není k dispozici zdrojový trezor a tajný klíč.
 
-      ```powershell
+```powershell
       $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
       $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
       $encSetting = "{""encryptionEnabled"":true,""encryptionSettings"":[{""diskEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""secretUrl"":""$dekUrl""}}]}"
@@ -614,26 +634,26 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
       $osBlob = Get-AzStorageBlob -Container $containerName -Blob $osBlobName
       $osBlob.ICloudBlob.Metadata["DiskEncryptionSettings"] = $encSetting
       $osBlob.ICloudBlob.SetMetadata()
-      ```
+```
 
-    Po **zpřístupnění tajných** kódů a zadání podrobností o šifrování také v objektu BLOB operačního systému připojte disky pomocí skriptu uvedeného níže.<br>
+Po **zpřístupnění tajných** kódů a zadání podrobností o šifrování také v objektu BLOB operačního systému připojte disky pomocí skriptu uvedeného níže.
 
-    Pokud je zdrojový Trezor klíčů nebo tajné kódy již k dispozici, není nutné provést tento skript.
+Pokud je zdrojový Trezor klíčů nebo tajné kódy již k dispozici, není nutné provést tento skript.
 
-      ```powershell
+```powershell
       Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
       $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
       foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
       {
       $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
       }
-      ```
+```
 
-   * **Nespravované a šifrované virtuální počítače bez služby Azure AD (klíče bek a KEK)** – pro nespravované a šifrované virtuální počítače bez služby Azure AD (ŠIFROVANÉ pomocí klíče bek & KEK), pokud **není k dispozici zdrojový trezor** klíčů, klíč a tajné klíče, a to pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného objektu BLOB operačního systému (Tento krok se nevyžaduje pro datový objekt BLOB). $Dekurl a $kekurl je možné načíst z obnoveného trezoru klíčů.
+* **Nespravované a šifrované virtuální počítače bez služby Azure AD (klíče bek a KEK)** – pro nespravované a šifrované virtuální počítače bez služby Azure AD (ŠIFROVANÉ pomocí klíče bek & KEK), pokud **není k dispozici zdrojový trezor** klíčů, klíč a tajné klíče, a to pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného objektu BLOB operačního systému (Tento krok se nevyžaduje pro datový objekt BLOB). $Dekurl a $kekurl je možné načíst z obnoveného trezoru klíčů.
 
-   Níže uvedený skript je nutné provést pouze v případě, že není k dispozici zdrojový Trezor klíčů, klíč nebo tajný klíč.
+Níže uvedený skript je nutné provést pouze v případě, že není k dispozici zdrojový Trezor klíčů, klíč nebo tajný klíč.
 
-    ```powershell
+```powershell
       $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
       $kekUrl = "https://ContosoKeyVault.vault.azure.net/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
       $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
@@ -642,56 +662,73 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
       $osBlob = Get-AzStorageBlob -Container $containerName -Blob $osBlobName
       $osBlob.ICloudBlob.Metadata["DiskEncryptionSettings"] = $encSetting
       $osBlob.ICloudBlob.SetMetadata()
-      ```
+```
 
-   Až **budou klíče a tajné klíče k dispozici** a podrobnosti o šifrování jsou nastaveny v objektu BLOB operačního systému, připojte disky pomocí skriptu uvedeného níže.
+Až **budou klíče a tajné klíče k dispozici** a podrobnosti o šifrování jsou nastaveny v objektu BLOB operačního systému, připojte disky pomocí skriptu uvedeného níže.
 
-    Pokud jsou k dispozici zdrojový Trezor klíčů/tajné klíče, není nutné spustit výše uvedený skript.
+Pokud jsou k dispozici zdrojový Trezor klíčů/tajné klíče, není nutné spustit výše uvedený skript.
 
-    ```powershell
+```powershell
       Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
       $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
       foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
       {
       $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
       }
-      ```
+```
 
-   * **Spravované a nešifrované virtuální počítače** – pro spravované nešifrované virtuální počítače připojte obnovené spravované disky. Podrobné informace najdete v tématu [připojení datového disku k virtuálnímu počítači s Windows pomocí PowerShellu](../virtual-machines/windows/attach-disk-ps.md).
+* **Spravované a nešifrované virtuální počítače** – pro spravované nešifrované virtuální počítače připojte obnovené spravované disky. Podrobné informace najdete v tématu [připojení datového disku k virtuálnímu počítači s Windows pomocí PowerShellu](../virtual-machines/windows/attach-disk-ps.md).
 
-   * **Spravované a šifrované virtuální počítače s Azure AD (jenom klíče bek)** – pro spravované šifrované virtuální počítače s Azure AD (šifrované jenom pomocí klíče bek) připojte obnovené spravované disky. Podrobné informace najdete v tématu [připojení datového disku k virtuálnímu počítači s Windows pomocí PowerShellu](../virtual-machines/windows/attach-disk-ps.md).
+* **Spravované a šifrované virtuální počítače s Azure AD (jenom klíče bek)** – pro spravované šifrované virtuální počítače s Azure AD (šifrované jenom pomocí klíče bek) připojte obnovené spravované disky. Podrobné informace najdete v tématu [připojení datového disku k virtuálnímu počítači s Windows pomocí PowerShellu](../virtual-machines/windows/attach-disk-ps.md).
 
-   * **Spravované a šifrované virtuální počítače s Azure AD (klíče bek a KEK)** – pro spravované šifrované virtuální počítače s Azure AD (ŠIFROVANÉ pomocí klíče bek a KEK) připojte obnovené spravované disky. Podrobné informace najdete v tématu [připojení datového disku k virtuálnímu počítači s Windows pomocí PowerShellu](../virtual-machines/windows/attach-disk-ps.md).
+* **Spravované a šifrované virtuální počítače s Azure AD (klíče bek a KEK)** – pro spravované šifrované virtuální počítače s Azure AD (ŠIFROVANÉ pomocí klíče bek a KEK) připojte obnovené spravované disky. Podrobné informace najdete v tématu [připojení datového disku k virtuálnímu počítači s Windows pomocí PowerShellu](../virtual-machines/windows/attach-disk-ps.md).
 
-   * **Spravované a šifrované virtuální počítače bez Azure AD (jenom klíče bek)** – pro spravované a šifrované virtuální počítače bez služby Azure AD (šifrované jenom pomocí klíče bek), pokud **není k dispozici zdrojový Trezor klíčů nebo tajný klíč** , obnovte tajné klíče do trezoru klíčů pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného disku s operačním systémem (Tento krok se nevyžaduje pro datový disk). $Dekurl lze načíst z obnoveného trezoru klíčů.
+* **Spravované a šifrované virtuální počítače bez Azure AD (jenom klíče bek)** – pro spravované a šifrované virtuální počítače bez služby Azure AD (šifrované jenom pomocí klíče bek), pokud **není k dispozici zdrojový Trezor klíčů nebo tajný klíč** , obnovte tajné klíče do trezoru klíčů pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného disku s operačním systémem (Tento krok se nevyžaduje pro datový disk). $Dekurl lze načíst z obnoveného trezoru klíčů.
 
-     Níže uvedený skript je nutné provést pouze v případě, že není k dispozici zdrojový trezor a tajný klíč.  
+Níže uvedený skript je nutné provést pouze v případě, že není k dispozici zdrojový trezor a tajný klíč.  
 
-     ```powershell
-      $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-      $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-      $diskupdateconfig = New-AzDiskUpdateConfig -EncryptionSettingsEnabled $true
-      $diskupdateconfig = Set-AzDiskUpdateDiskEncryptionKey -DiskUpdate $diskupdateconfig -SecretUrl $dekUrl -SourceVaultId $keyVaultId  
-      Update-AzDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageProfile'.osDisk.name -DiskUpdate $diskupdateconfig
-      ```
+```powershell
+$dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+$keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+$diskupdateconfig = New-AzDiskUpdateConfig -EncryptionSettingsEnabled $true
+$encryptionSettingsElement = New-Object Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement
+$encryptionSettingsElement.DiskEncryptionKey = New-Object Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference
+$encryptionSettingsElement.DiskEncryptionKey.SourceVault = New-Object Microsoft.Azure.Management.Compute.Models.SourceVault
+$encryptionSettingsElement.DiskEncryptionKey.SourceVault.Id = $keyVaultId
+$encryptionSettingsElement.DiskEncryptionKey.SecretUrl = $dekUrl
+$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings = New-Object System.Collections.Generic.List[Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement]
+$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings.Add($encryptionSettingsElement)
+$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettingsVersion = "1.1"
+Update-AzDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageProfile'.osDisk.name -DiskUpdate $diskupdateconfig
+```
 
-     Po dostupnosti tajných kódů a zadání podrobností o šifrování na disku s operačním systémem, které se mají připojit k obnoveným spravovaným diskům, najdete v tématu [připojení datového disku k virtuálnímu počítači s Windows pomocí PowerShellu](../virtual-machines/windows/attach-disk-ps.md).
+Po dostupnosti tajných kódů a zadání podrobností o šifrování na disku s operačním systémem, které se mají připojit k obnoveným spravovaným diskům, najdete v tématu [připojení datového disku k virtuálnímu počítači s Windows pomocí PowerShellu](../virtual-machines/windows/attach-disk-ps.md).
 
-   * **Spravované a šifrované virtuální počítače bez služby Azure AD (klíče bek a KEK)** – pro spravované a šifrované virtuální počítače bez služby Azure AD (ŠIFROVANÉ pomocí klíče bek & KEK), pokud **není k dispozici zdrojový Trezor klíčů/tajný** klíč, obnovte klíč a tajné klíče do trezoru klíčů pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného disku s operačním systémem (Tento krok se nevyžaduje pro datový disk). $Dekurl a $kekurl je možné načíst z obnoveného trezoru klíčů.
+* **Spravované a šifrované virtuální počítače bez služby Azure AD (klíče bek a KEK)** – pro spravované a šifrované virtuální počítače bez služby Azure AD (ŠIFROVANÉ pomocí klíče bek & KEK), pokud **není k dispozici zdrojový Trezor klíčů/tajný** klíč, obnovte klíč a tajné klíče do trezoru klíčů pomocí postupu v části [obnovení nešifrovaného virtuálního počítače z Azure Backup bodu obnovení](backup-azure-restore-key-secret.md). Pak spusťte následující skripty a nastavte podrobnosti o šifrování obnoveného disku s operačním systémem (Tento krok se nevyžaduje u datových disků). $Dekurl a $kekurl je možné načíst z obnoveného trezoru klíčů.
 
-   Níže uvedený skript je nutné provést pouze v případě, že není k dispozici zdrojový Trezor klíčů, klíč nebo tajný klíč.
+Níže uvedený skript je nutné provést pouze v případě, že není k dispozici zdrojový Trezor klíčů, klíč nebo tajný klíč.
 
-   ```powershell
-     $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-     $kekUrl = "https://ContosoKeyVault.vault.azure.net/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
-     $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-     $diskupdateconfig = New-AzDiskUpdateConfig -EncryptionSettingsEnabled $true
-     $diskupdateconfig = Set-AzDiskUpdateDiskEncryptionKey -DiskUpdate $diskupdateconfig -SecretUrl $dekUrl -SourceVaultId $keyVaultId  
-     $diskupdateconfig = Set-AzDiskUpdateKeyEncryptionKey -DiskUpdate $diskupdateconfig -KeyUrl $kekUrl -SourceVaultId $keyVaultId  
-     Update-AzDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageProfile'.osDisk.name -DiskUpdate $diskupdateconfig
-    ```
+```powershell
+$dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+$kekUrl = "https://ContosoKeyVault.vault.azure.net/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
+$keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+$diskupdateconfig = New-AzDiskUpdateConfig -EncryptionSettingsEnabled $true
+$encryptionSettingsElement = New-Object Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement
+$encryptionSettingsElement.DiskEncryptionKey = New-Object Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference
+$encryptionSettingsElement.DiskEncryptionKey.SourceVault = New-Object Microsoft.Azure.Management.Compute.Models.SourceVault
+$encryptionSettingsElement.DiskEncryptionKey.SourceVault.Id = $keyVaultId
+$encryptionSettingsElement.DiskEncryptionKey.SecretUrl = $dekUrl
+$encryptionSettingsElement.KeyEncryptionKey = New-Object Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference
+$encryptionSettingsElement.KeyEncryptionKey.SourceVault = New-Object Microsoft.Azure.Management.Compute.Models.SourceVault
+$encryptionSettingsElement.KeyEncryptionKey.SourceVault.Id = $keyVaultId
+$encryptionSettingsElement.KeyEncryptionKey.KeyUrl = $kekUrl
+$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings = New-Object System.Collections.Generic.List[Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement]
+$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings.Add($encryptionSettingsElement)
+$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettingsVersion = "1.1"
+Update-AzDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageProfile'.osDisk.name -DiskUpdate $diskupdateconfig
+```
 
-    Až budou klíče a tajné kódy k dispozici a na disku s operačním systémem jsou nastavené podrobnosti o šifrování, aby bylo možné připojit obnovené spravované disky, přečtěte si téma [připojení datového disku k virtuálnímu počítači s Windows pomocí PowerShellu](../virtual-machines/windows/attach-disk-ps.md).
+Až budou klíče a tajné kódy k dispozici a na disku s operačním systémem jsou nastavené podrobnosti o šifrování, aby bylo možné připojit obnovené spravované disky, přečtěte si téma [připojení datového disku k virtuálnímu počítači s Windows pomocí PowerShellu](../virtual-machines/windows/attach-disk-ps.md).
 
 5. Nastavte nastavení sítě.
 
@@ -720,13 +757,13 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
      **Jenom klíče bek**
 
       ```powershell  
-      Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -VolumeType Data
+      Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm.Name -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -VolumeType Data
       ```
 
      **KLÍČE bek a KEK**
 
       ```powershell  
-      Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId  -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -VolumeType Data
+      Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm.Name -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId  -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -VolumeType Data
       ```
 
    * **Pro virtuální počítač bez Azure AD** – pomocí následujícího příkazu ručně povolte šifrování datových disků.
@@ -736,13 +773,13 @@ V následující části jsou uvedené kroky potřebné k vytvoření virtuáln�
      **Jenom klíče bek**
 
       ```powershell  
-      Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
+      Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm.Name -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
       ```
 
       **KLÍČE bek a KEK**
 
       ```powershell  
-      Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
+      Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm.Name -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
       ```
 
 > [!NOTE]
@@ -755,7 +792,7 @@ Kromě obnovování disků můžete také obnovit jednotlivé soubory ze zálohy
 Základní kroky pro obnovení souboru ze zálohy virtuálního počítače Azure jsou:
 
 * Vyberte virtuální počítač.
-* Zvolit bod obnovení
+* Zvolte bod obnovení.
 * Připojit disky bodu obnovení
 * Zkopírujte požadované soubory.
 * Odpojení disku
@@ -769,7 +806,7 @@ $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $targetVault.ID
 ```
 
-### <a name="choose-a-recovery-point"></a>Zvolit bod obnovení
+### <a name="choose-a-recovery-point"></a>Zvolte bod obnovení.
 
 Pomocí rutiny [Get-AzRecoveryServicesBackupRecoveryPoint Zobrazte](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) seznam všech bodů obnovení pro zálohovanou položku. Pak zvolte bod obnovení, který chcete obnovit. Pokud si nejste jistí, který bod obnovení chcete použít, je dobrým zvykem zvolit nejnovější RecoveryPointType = AppConsistent bod v seznamu.
 

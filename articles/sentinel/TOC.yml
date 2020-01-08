@@ -2,7 +2,7 @@
   href: index.yml
 - name: Přehled
   href: overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Onboarding Azure Sentinelu
@@ -32,70 +32,78 @@
     - name: Připojení zdrojů dat
       href: connect-data-sources.md
       items:
-        - name: Připojení služeb Microsoft
+        - name: Připojení typu služba-služba
           items:
-            - name: Připojení Azure AD
+            - name: AWS
+              href: connect-aws.md
+            - name: Azure AD
               href: connect-azure-active-directory.md
-            - name: Připojení Office 365
+            - name: Office 365
               href: connect-office-365.md
-            - name: Připojení Cloud App Security
+            - name: Cloud App Security
               href: connect-cloud-app-security.md
-            - name: Připojení protokolu aktivit Azure
+            - name: Protokol aktivit Azure
               href: connect-azure-activity.md
-            - name: Připojení Azure AD Identity Protection
+            - name: Azure AD Identity Protection
               href: connect-azure-ad-identity-protection.md
-            - name: Připojení služby Azure Information Protection
+            - name: Azure Information Protection
               href: connect-azure-information-protection.md
-            - name: Připojení služby Microsoft Defender ATP
+            - name: Microsoft Defender ATP
               href: connect-microsoft-defender-advanced-threat-protection.md
-            - name: Připojení Azure ATP
+            - name: Azure ATP
               href: connect-azure-atp.md
-            - name: Připojení služby Azure Security Center
+            - name: Azure Security Center
               href: connect-azure-security-center.md
-            - name: Propojení serveru DNS
+            - name: Server DNS
               href: connect-dns.md
-            - name: Připojení brány firewall webových aplikací Microsoftu
+            - name: Firewall webových aplikací Microsoft
               href: connect-microsoft-waf.md
-            - name: Připojení brány Windows Firewall
+            - name: Brána Windows Firewall
               href: connect-windows-firewall.md
-            - name: Připojení událostí zabezpečení systému Windows
+            - name: Události zabezpečení systému Windows
               href: connect-windows-security-events.md
         - name: Připojení externích řešení
           items:
-            - name: Připojení obecného formátu CEF
-              href: connect-common-event-format.md
-            - name: Připojení AWS
-              href: connect-aws.md
-            - name: Připojení Barracudy
+            - name: Barracuda
               href: connect-barracuda.md
-            - name: Připojení Check Pointu
-              href: connect-checkpoint.md
-            - name: Připojení Palo Alto Networks
-              href: connect-paloalto.md
-            - name: Připojení Fortinetu
-              href: connect-fortinet.md
-            - name: Připojení F5
-              href: connect-f5.md
-            - name: Připojení F5 BIG-IP
+            - name: F5 BIG-IP
               href: connect-f5-big-ip.md
-            - name: Připojení Syslogu
+            - name: Syslog
               href: connect-syslog.md
-            - name: Propojení Symantec ICDX
+            - name: Symantec ICDX
               href: connect-symantec.md
-            - name: Připojení Cisca
-              href: connect-cisco.md
-            - name: Připojení brány Barracuda CloudGen Firewall
+            - name: Barracuda CloudGen Firewall
               href: connect-barracuda-cloudgen-firewall.md
-            - name: Připojení Citrix Analytics (zabezpečení)
+            - name: Citrix Analytics (Security)
               href: connect-citrix-analytics.md
-            - name: Připojení ExtraHop Reveal(x)
-              href: connect-extrahop.md
-            - name: One Identity Safeguard
-              href: connect-one-identity.md
-            - name: Trend Micro Deep Security
-              href: connect-trend-micro.md
-            - name: Propojení Zscaleru
-              href: connect-zscaler.md
+            - name: Řešení založená na CEF
+              href: connect-common-event-format.md
+              items:
+                - name: KROK 1 Nasazení agenta
+                  href: connect-cef-agent.md
+                - name: KROK 2 Konfigurace řešení zabezpečení
+                  href: connect-cef-solution-config.md
+                  items:
+                    - name: Check Point
+                      href: connect-checkpoint.md
+                    - name: Cisco
+                      href: connect-cisco.md
+                    - name: ExtraHop Reveal(x)
+                      href: connect-extrahop.md
+                    - name: F5
+                      href: connect-f5.md
+                    - name: Fortinet
+                      href: connect-fortinet.md
+                    - name: One Identity Safeguard
+                      href: connect-one-identity.md
+                    - name: Palo Alto Networks
+                      href: connect-paloalto.md
+                    - name: Trend Micro Deep Security
+                      href: connect-trend-micro.md
+                    - name: Zscaler
+                      href: connect-zscaler.md
+                - name: KROK 3 Ověření možností připojení
+                  href: connect-cef-verify.md
         - name: Připojení analýzy hrozeb
           href: connect-threat-intelligence.md
         - name: Připojení virtuálních počítačů Azure Stack

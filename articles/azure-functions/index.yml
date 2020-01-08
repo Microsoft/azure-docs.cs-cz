@@ -9,12 +9,12 @@ metadata:
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: fe554b2e7a146ccb3c0b593ffc7e8bef66e55ef2
-  ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+  ms.openlocfilehash: da29ab1936d0979de125087f9ef737cfe8d87a43
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/27/2019
-  ms.locfileid: "71349904"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75433039"
 landingContent:
 - title: Informace o službě Azure Functions
   linkLists:
@@ -76,8 +76,10 @@ landingContent:
       url: functions-bindings-error-pages.md
   - linkListType: learn
     links:
-    - text: Vývoj, testování a nasazení s využitím sady Visual Studio
+    - text: Vývoj funkcí s využitím sady Visual Studio
       url: /learn/modules/develop-test-deploy-azure-functions-with-visual-studio/index
+    - text: Vývoj funkcí z příkazového řádku
+      url: /learn/modules/develop-test-deploy-azure-functions-with-core-tools/index
   - linkListType: video
     links:
     - text: Vývoj s využitím editoru Visual Studio Code
@@ -146,7 +148,7 @@ landingContent:
     links:
     - text: Vytvoření dlouhotrvajícího bezserverového pracovního postupu
       url: /learn/modules/create-long-running-serverless-workflow-with-durable-functions/index
-- title: Ukázky
+- title: ukázky
   linkLists:
   - linkListType: download
     links:

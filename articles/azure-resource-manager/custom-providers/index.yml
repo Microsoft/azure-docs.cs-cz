@@ -1,0 +1,65 @@
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Custom Providers
+summary: Definování vlastních rozhraní API, která rozšiřují prostředí Azure
+metadata:
+  title: Dokumentace ke službě Azure Custom Providers
+  description: Služba Azure Custom Providers je rozšíření platformy Azure, které umožňuje definovat vlastní rozhraní API.
+  ms.service: azure-custom-providers
+  ms.topic: landing-page
+  ms.collection: na
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 01/02/2020
+  ms.openlocfilehash: 4a778d56aa3d7440715cdd792827b9c4a2837e65
+  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75648340"
+landingContent:
+- title: Informace o službě Azure Custom Providers
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je služba Azure Custom Providers?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Azure Policy pro vlastní přidružení poskytovatelů
+      url: concepts-built-in-policy.md
+    - text: Přehled onboardingu prostředků
+      url: concepts-resource-onboarding.md
+- title: Vytvoření vlastních poskytovatelů
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření vlastního poskytovatele prostředků
+      url: create-custom-provider.md
+  - linkListType: tutorial
+    links:
+    - text: Začínáme s vlastními poskytovateli
+      url: tutorial-get-started-with-custom-providers.md
+    - text: Nastavení Azure Functions
+      url: tutorial-custom-providers-function-setup.md
+    - text: Vytvoření koncového bodu RESTful
+      url: tutorial-custom-providers-function-authoring.md
+    - text: Vytvoření a využití vlastních poskytovatelů
+      url: tutorial-custom-providers-create.md
+    - text: Rozšíření prostředků
+      url: tutorial-resource-onboarding.md
+  - linkListType: how-to-guide
+    links:
+    - text: Přidání vlastních akcí do Azure
+      url: custom-providers-action-endpoint-how-to.md
+    - text: Přidání vlastních prostředků do Azure
+      url: custom-providers-resources-endpoint-how-to.md
+- title: Příklady
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Referenční informace k proxy vlastních prostředků
+      url: proxy-resource-endpoint-reference.md
+    - text: Referenční informace k mezipaměti vlastních prostředků
+      url: proxy-cache-resource-endpoint-reference.md
+    - text: Referenční informace ke koncovým bodům RESTful vlastních poskytovatelů
+      url: reference-custom-providers-csharp-endpoint.md

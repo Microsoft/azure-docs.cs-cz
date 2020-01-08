@@ -9,7 +9,7 @@
       href: user-provisioning.md
     - name: Co je proxy aplikací pro místní aplikace?
       href: what-is-application-proxy.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Přidání cloudové aplikace z galerie
       href: add-application-portal.md
@@ -21,6 +21,10 @@
       href: /azure/active-directory/saas-apps/
     - name: Přidání místní aplikace prostřednictvím proxy aplikací
       href: application-proxy-add-on-premises-application.md
+- name: ukázky
+  items:
+    - name: Ukázky Azure PowerShellu pro proxy aplikací
+      href: application-proxy-powershell-samples.md
 - name: Koncepty
   expanded: true
   items:
@@ -70,12 +74,10 @@
               href: end-user-experiences.md
     - name: Zřizování aplikací (SCIM)
       items:
+        - name: Jak funguje zřizování
+          href: how-provisioning-works.md
         - name: Naplánování nasazení automatického zřizování uživatelů
           href: plan-auto-user-provisioning.md
-        - name: Automatizace zřizování pro aplikace s podporou SCIM
-          href: use-scim-to-provision-users-and-groups.md
-        - name: Ruční vs. automatické zřizování
-          href: application-provisioning-config-how-to.md
     - name: Zřizování HR v cloudu
       items:
         - name: Naplánování nasazení zřizování uživatelů HR v cloudu
@@ -139,6 +141,8 @@
           items:
             - name: Konfigurace souhlasu uživatele
               href: configure-user-consent.md
+            - name: Udělení souhlasu správce v rámci celého tenanta
+              href: grant-admin-consent.md
             - name: Konfigurace pracovního postupu souhlasu správce (Preview)
               href: configure-admin-consent-workflow.md
             - name: Metody pro přiřazení uživatelů a skupin k aplikaci
@@ -233,28 +237,32 @@
                   href: access-panel-troubleshoot-self-service-access.md
     - name: Zřizování aplikací (SCIM)
       items:
-        - name: Konfigurace zřizování aplikací
+        - name: Konfigurace zřizování pro aplikaci v galerii
+          href: configure-automatic-user-provisioning-portal.md
+        - name: Vytvoření koncového bodu SCIM a konfigurace zřizování
+          href: use-scim-to-provision-users-and-groups.md
+        - name: Úprava mapování atributů
           items:
-            - name: Konfigurace automatického zřizování uživatelů
-              href: configure-automatic-user-provisioning-portal.md
-            - name: Použití SCIM pro automatické zřizování
-              href: use-scim-to-provision-users-and-groups.md
             - name: Přizpůsobení mapování atributů
               href: Customize-application-attributes.md
             - name: Zápis výrazů pro mapování atributů
               href: functions-for-customizing-application-data.md
+        - name: Zahrnutí nebo vyloučení uživatelů a skupin z rozsahu
+          items:
             - name: Vymezení uživatelů nebo skupin pro zřízení
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: Přeskočení odstranění pro uživatele mimo rozsah
               href: skip-out-of-scope-deletions.md
+        - name: Monitorování a vytváření sestav ke zřizování
+          items:
             - name: Monitorování stavu zřizování a výkonu
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
             - name: Sestava zřizování aplikací
               href: check-status-user-account-provisioning.md
-            - name: Export a import vaší konfigurace
+            - name: Export a import konfigurace
               href: export-import-provisioning-configuration.md
-            - name: Automatizace konfigurace s využitím MS Graphu
-              href: application-provisioning-configure-api.md
+        - name: Automatizace konfigurace s využitím MS Graphu
+          href: application-provisioning-configure-api.md
         - name: Řešení potíží se zřizováním uživatelů
           items:
             - name: Řešení potíží se zřizováním aplikací

@@ -4,17 +4,17 @@ description: zahrnout soubor
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 12/06/2019
+ms.date: 12/31/2019
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: be46a0dda24dc990e895a3e983c730337f9cf31d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 90e6e5c8d6d4f10e2d63f80b9c0840854424f5a7
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980459"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75616192"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>Obecná dostupnost a porovnání verze Preview
 
@@ -49,6 +49,8 @@ Podporuje se maximálně dva zdroje událostí na instanci.
 
 * Naučte se [Přidat zdroj centra událostí](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 * Nakonfigurujte [Zdroj služby IoT Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub).
+
+Ve výchozím nastavení [podporují prostředí](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress) pro příchozí přenosy až **1 megabajt za sekundu (MB/s) na prostředí**. Zákazníci můžou v případě potřeby škálovat v prostředích ve verzi Preview až o **16 MB/s** . K dispozici je také omezení počtu **0,5 MB/s**na oddíly. 
 
 ### <a name="api-limits"></a>Omezení rozhraní API
 

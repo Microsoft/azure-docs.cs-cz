@@ -8,7 +8,7 @@
       href: introduction.md
     - name: Porovnávání aktuální verze s verzí 1
       href: compare-versions.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření datové továrny – uživatelské rozhraní
@@ -121,7 +121,7 @@
       items:
         - name: Kopírování ze služby Data Lake Storage Gen1
           href: load-azure-data-lake-storage-gen2-from-gen1.md
-    - name: Načtení služby Azure SQL Data Warehouse
+    - name: Načtení Synapse Analytics (dříve SQL Data Warehouse)
       href: load-azure-sql-data-warehouse.md
     - name: Načtení služby Data Lake Storage Gen1
       href: load-azure-data-lake-store.md
@@ -129,7 +129,7 @@
       href: load-sap-bw-data.md
     - name: Načtení dat Office 365
       href: load-office-365-data.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?service=data-factory'
@@ -233,7 +233,7 @@
           href: connector-azure-sql-database.md
         - name: Azure SQL Database Managed Instance
           href: connector-azure-sql-database-managed-instance.md
-        - name: Azure SQL Data Warehouse
+        - name: Azure Synapse Analytics (dříve SQL Data Warehouse)
           href: connector-azure-sql-data-warehouse.md
         - name: Azure Table Storage
           href: connector-azure-table-storage.md
@@ -389,14 +389,18 @@
           href: delete-activity.md
         - name: Nástroj pro kopírování dat
           href: copy-data-tool.md
-        - name: Výkon a ladění
-          href: copy-activity-performance.md
         - name: Podpora formátů a komprese
           href: supported-file-formats-and-compression-codecs.md
+        - name: Výkon a ladění
+          href: copy-activity-performance.md
+        - name: Zachování metadat a seznamů ACL
+          href: copy-activity-preserve-metadata.md
         - name: Mapování typů a schémat
           href: copy-activity-schema-and-type-mapping.md
         - name: Odolnost proti chybám
           href: copy-activity-fault-tolerance.md
+        - name: Podpora formátů a komprese (starší verze)
+          href: supported-file-formats-and-compression-codecs-legacy.md
     - name: Transformace dat
       href: transform-data.md
       items:

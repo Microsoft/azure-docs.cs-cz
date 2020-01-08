@@ -16,6 +16,10 @@
       href: azure-portal-dashboards-create-programmatically.md
 - name: Návody
   items:
+    - name: Nastavení předvoleb pro Azure Portal
+      href: set-preferences.md
+    - name: Nastavení časového limitu nečinnosti pro všechny uživatele
+      href: admin-timeout.md
     - name: Zapnutí vysokého kontrastu nebo změna motivu
       href: azure-portal-change-theme-high-contrast.md
     - name: 'Přidání, odebrání a řazení oblíbených položek'

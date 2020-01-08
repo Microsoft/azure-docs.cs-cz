@@ -1,19 +1,14 @@
 ---
-title: Azure Service Fabric – udělení přístupu Service Fabric aplikaci k ostatním prostředkům Azure | Microsoft Docs
+title: Udělení přístupu aplikace k jiným prostředkům Azure
 description: V tomto článku se dozvíte, jak udělit přístup k aplikaci Service Fabric s povolenými identitami do dalších prostředků Azure, které podporují ověřování založené na Azure Active Directory.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/08/2019
-ms.author: atsenthi
-ms.openlocfilehash: 467b202cf6b981969316a2646aac99f788f7a2f4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 12/09/2019
+ms.openlocfilehash: 3b1feab1e67e993df771564a1a7c1aba4236b2c0
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091182"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614789"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Udělení přístupu spravované identitě Service Fabric aplikace do prostředků Azure (Preview)
 
@@ -33,14 +28,14 @@ V části role v rozevíracím seznamu vyberte čtečka dat objektů BLOB úlož
 6. Dále ověřte, že je v rozevíracím seznamu odběr uveden správný odběr a pak nastavte skupinu prostředků na všechny skupiny prostředků.
 7. V části Vybrat zvolte UAI odpovídající aplikaci Service Fabric a pak klikněte na Uložit.
 
-Podpora pro spravované identity přiřazené systémem Service Fabric nezahrnuje integraci do Azure Portal; Pokud vaše aplikace používá identitu přiřazenou systémem, budete muset nejprve najít ID klienta identity aplikace a pak opakovat výše uvedené kroky, ale pak vybrat `Azure AD user, group, or service principal` možnost v ovládacím prvku najít.
+Podpora pro spravované identity přiřazené systémem Service Fabric nezahrnuje integraci do Azure Portal; Pokud vaše aplikace používá identitu přiřazenou systémem, budete muset nejprve najít ID klienta identity aplikace a pak opakovat výše uvedené kroky, ale v ovládacím prvku hledání vyberete možnost `Azure AD user, group, or service principal`.
 
 ## <a name="granting-access-to-azure-key-vault"></a>Udělení přístupu k Azure Key Vault
 Podobně jako v případě přístupu k úložišti můžete pro přístup k trezoru klíčů Azure využít spravovanou identitu aplikace Service Fabric. Postup pro udělení přístupu v Azure Portal je podobný těm, které jsou uvedené výše, a tady se neopakuje. Rozdíly najdete na obrázku níže.
 
 ![Zásada přístupu Key Vault](../key-vault/media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
-Následující příklad ukazuje udělení přístupu k trezoru prostřednictvím nasazení šablony; Níže uvedené fragmenty kódu přidejte jako jiný záznam v rámci `resources` elementu šablony. Ukázka znázorňuje udělení přístupu pro typy identity přiřazené uživateli i systémem, v uvedeném pořadí – vyberte tu platnou.
+Následující příklad ukazuje udělení přístupu k trezoru prostřednictvím nasazení šablony; Níže uvedené fragmenty kódu přidejte jako jiný záznam `resources` elementu šablony. Ukázka znázorňuje udělení přístupu pro typy identity přiřazené uživateli i systémem, v uvedeném pořadí – vyberte tu platnou.
 
 ```json
     # under 'variables':
@@ -109,6 +104,6 @@ A pro spravované identity přiřazené systémem:
 
 Další podrobnosti najdete v tématu [trezory – zásady přístupu pro aktualizaci](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Nasazení aplikace Azure Service Fabric se spravovanou identitou přiřazenou systémem](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Nasazení aplikace Azure Service Fabric s uživatelem přiřazenou spravovanou identitou](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)

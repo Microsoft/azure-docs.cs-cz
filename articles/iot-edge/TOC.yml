@@ -109,7 +109,7 @@
       href: iot-edge-glossary.md
 - name: Návody
   items:
-    - name: Registrace zařízení IoT Edge
+    - name: Zaregistrovat zařízení IoT Edge
       href: how-to-register-device.md
     - name: Instalace a správa IoT Edge
       items:
@@ -125,6 +125,10 @@
           href: how-to-install-iot-edge-ubuntuvm.md
         - name: Kubernetes
           href: how-to-install-iot-edge-kubernetes.md
+        - name: Instalace produkčních certifikátů
+          href: how-to-install-production-certificates.md
+        - name: Vytvoření testovacích certifikátů
+          href: how-to-create-test-certificates.md
         - name: Aktualizace verze modulu runtime
           href: how-to-update-iot-edge.md
     - name: Automatické zřizování s využitím DPS

@@ -4,7 +4,7 @@
   items:
     - name: Co je Azure Backup?
       href: backup-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Zálohování virtuálního počítače – portál
@@ -36,7 +36,15 @@
       href: tutorial-backup-windows-server-to-azure.md
     - name: Obnovení souborů do Windows Serveru
       href: tutorial-backup-restore-files-windows-server.md
-- name: Ukázky
+    - name: Databáze SAP HANA na virtuálních počítačích Azure – CLI
+      items:
+        - name: Zálohování databází SAP HANA – CLI
+          href: tutorial-sap-hana-backup-cli.md
+        - name: Obnovení databází SAP HANA – CLI
+          href: tutorial-sap-hana-restore-cli.md
+        - name: Správa zálohovaných databází SAP HANA – CLI
+          href: tutorial-sap-hana-manage-cli.md
+- name: ukázky
   items:
     - name: Azure PowerShell
       href: powershell-backup-samples.md
@@ -244,6 +252,8 @@
           href: manage-monitor-sql-database-backup.md
     - name: Databáze SAP HANA na virtuálních počítačích Azure
       items:
+        - name: Informace o zálohování SAP HANA ve virtuálních počítačích Azure
+          href: sap-hana-db-about.md
         - name: Zálohování databází SAP HANA na virtuálních počítačích Azure
           href: backup-azure-sap-hana-database.md
         - name: Obnovení databází SAP HANA na virtuálních počítačích Azure

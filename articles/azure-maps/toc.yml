@@ -4,7 +4,7 @@
   items:
     - name: Co je služba Azure Maps?
       href: about-azure-maps.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření webové aplikace
@@ -31,6 +31,16 @@
           href: tutorial-ev-routing.md
         - name: Analýza dat o počasí s využitím Azure Notebooks (Python)
           href: weather-service-tutorial.md
+    - name: Migrace z Google Maps
+      items:
+        - name: Migrace z Google Maps
+          href: migrate-from-google-maps.md
+        - name: Migrace webové aplikace
+          href: migrate-from-google-maps-web-app.md
+        - name: Migrace aplikace pro Android
+          href: migrate-from-google-maps-android-app.md
+        - name: Migrace webové služby
+          href: migrate-from-google-maps-web-services.md
 - name: Koncepty
   items:
     - name: Ověřování s využitím Azure Maps
@@ -103,8 +113,12 @@
               href: create-data-source-web-sdk.md
             - name: Přidání vrstvy symbolů
               href: map-add-pin.md
+            - name: Přidání místního okna
+              href: map-add-popup.md
             - name: Přidání vrstvy bublin
               href: map-add-bubble-layer.md
+            - name: Přidání značek HTML
+              href: map-add-custom-html.md
             - name: Přidání řádkové vrstvy
               href: map-add-line-layer.md
             - name: Přidání mnohoúhelníkové vrstvy
@@ -113,34 +127,34 @@
               href: map-extruded-polygon.md
             - name: Přidání vrstvy heat mapy
               href: map-add-heat-map-layer.md
-            - name: Přidání místního okna
-              href: map-add-popup.md
+            - name: Přidání vrstvy obrázků
+              href: map-add-image-layer.md
+            - name: Přidání vrstev dlaždic
+              href: map-add-tile-layer.md
+            - name: Zobrazení provozu
+              href: map-show-traffic.md
             - name: Data bodů clusteru
               href: clustering-point-data-web-sdk.md
             - name: Použití výrazů pro styly založené na datech
               href: data-driven-style-expressions-web-sdk.md
             - name: Používání šablon obrázků
               href: how-to-use-image-templates-web-sdk.md
-            - name: Přidání vrstvy obrázků
-              href: map-add-image-layer.md
-            - name: Přidání vrstev dlaždic
-              href: map-add-tile-layer.md
-            - name: Značky HTML
-              href: map-add-custom-html.md
-            - name: Zobrazení provozu
-              href: map-show-traffic.md
             - name: Reakce na události
               href: map-events.md
             - name: Zpřístupnění aplikace
               href: map-accessibility.md
         - name: Nástroje pro kreslení
           items:
+            - name: Použití modulu nástrojů pro kreslení
+              href: set-drawing-options.md
             - name: Přidání panelu nástrojů pro kreslení
               href: map-add-drawing-toolbar.md
-            - name: Nastavení možností kreslení
-              href: set-drawing-options.md
             - name: Získání dat tvaru
               href: map-get-shape-data.md
+            - name: Reagovat na události vykreslování
+              href: drawing-tools-events.md
+            - name: Typy interakcí a klávesové zkratky
+              href: drawing-tools-interactions-keyboard-shortcuts.md
         - name: Modul služeb
           items:
             - name: Použití modulu služeb
@@ -231,6 +245,8 @@
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
     - name: Videa služby Azure Maps
       href: 'https://aka.ms/AzureMapsVideos'
+    - name: Opensourcové projekty
+      href: open-source-projects.md
     - name: Případové studie služby Azure Maps
       href: 'https://aka.ms/AzureMapsCaseStudies'
     - name: Glosář služby Azure Maps

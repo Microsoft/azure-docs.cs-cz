@@ -5,7 +5,7 @@
     - name: Co je Azure Blueprints?
       displayName: 'templates, policy, definition, assignment, rbac'
       href: overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření podrobného plánu – portál
@@ -25,7 +25,7 @@
     - name: Ochrana nových prostředků pomocí zamykání prostředků podrobného plánu
       displayName: 'read only, do not delete, lock assignment'
       href: ./tutorials/protect-new-resources.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Index
       displayName: 'list, examples'
@@ -63,6 +63,17 @@
         - name: Kroky pro nasazení
           displayName: 'standards, fedramp, moderate'
           href: ./samples/fedramp-m/deploy.md
+    - name: HIPAA HITRUST
+      items:
+        - name: Přehled
+          displayName: 'standards, HIPAA HITRUST'
+          href: ./samples/HIPAA-HITRUST/index.md
+        - name: Mapování kontrol
+          displayName: 'standards, HIPAA HITRUST'
+          href: ./samples/HIPAA-HITRUST/control-mapping.md
+        - name: Kroky pro nasazení
+          displayName: 'standards, HIPAA HITRUST'
+          href: ./samples/HIPAA-HITRUST/deploy.md
     - name: IRS 1075
       items:
         - name: Přehled

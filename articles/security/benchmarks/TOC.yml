@@ -1,0 +1,30 @@
+- name: Srovnávací test zabezpečení Azure
+  href: index.yml
+- name: Úvod
+  href: introduction.md
+- name: Ovládací prvky zabezpečení
+  items:
+    - name: Přehled
+      href: overview.md
+    - name: Zabezpečení sítě
+      href: security-control-network-security.md
+    - name: Protokolování a monitorování
+      href: security-control-logging-monitoring.md
+    - name: Identita a řízení přístupu
+      href: security-control-identity-access-control.md
+    - name: Ochrana dat
+      href: security-control-data-protection.md
+    - name: Správa ohrožení zabezpečení
+      href: security-control-vulnerability-management.md
+    - name: Správa inventáře a aktiv
+      href: security-control-inventory-asset-management.md
+    - name: Zabezpečená konfigurace
+      href: security-control-secure-configuration.md
+    - name: Obrana před malwarem
+      href: security-control-malware-defense.md
+    - name: Obnovení dat
+      href: security-control-data-recovery.md
+    - name: Reakce na incidenty
+      href: security-control-incident-response.md
+    - name: Penetrační testy a tzv. red team exercises
+      href: security-control-penetration-tests-red-team-exercises.md

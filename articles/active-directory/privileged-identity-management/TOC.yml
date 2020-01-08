@@ -45,6 +45,8 @@
           href: pim-resource-roles-activate-your-roles.md
     - name: Správa rolí Azure AD
       items:
+        - name: Aktualizace funkcí
+          href: azure-ad-roles-features.md
         - name: Přiřazení rolí
           href: pim-how-to-add-role-to-user.md
         - name: Schvalování žádostí

@@ -1,0 +1,58 @@
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Table Storage
+summary: Azure Table Storage je služba, která ukládá strukturovaná data NoSQL do cloudu a poskytuje úložiště klíčů/atributů s návrhem bez použití schématu.
+metadata:
+  title: Dokumentace ke službě Azure Table Storage
+  description: Azure Table Storage je služba, která ukládá strukturovaná data NoSQL do cloudu a poskytuje úložiště klíčů/atributů s návrhem bez použití schématu.
+  ms.service: storage
+  ms.subservice: tables
+  ms.topic: landing-page
+  ms.collection: collection
+  author: tamram
+  ms.author: tamram
+  ms.date: 12/23/2019
+  ms.openlocfilehash: 73dc70fb31508667ebcab4803a9263c716ce35c2
+  ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 12/31/2019
+  ms.locfileid: "75551892"
+landingContent:
+- title: Informace o službě Table Storage
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je služba Azure Table Storage?
+      url: table-storage-overview.md
+    - text: Volba Table Storage nebo Table API
+      url: ../../cosmos-db/table-support.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fstorage%2Ftables%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fbread%2Ftoc.json
+- title: Pokyny k návrhu tabulek
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Návrh pro efektivní čtení a zápisy
+      url: table-storage-design-guidelines.md
+    - text: Návrh pro dotazování
+      url: table-storage-design-for-query.md
+    - text: Návrh pro úpravu dat
+      url: table-storage-design-for-modification.md
+    - text: Způsoby návrhu tabulek
+      url: table-storage-design-patterns.md
+- title: Optimalizace výkonu, škálování a nákladů
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Kontrolní seznam výkonu pro Table Storage
+      url: storage-performance-checklist.md
+    - text: Návrh pro zajištění optimálního výkonu
+      url: table-storage-design.md
+  - linkListType: reference
+    links:
+    - text: Cíle škálovatelnosti pro Table Storage
+      url: scalability-targets.md
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření tabulky na webu Azure Portal
+      url: table-storage-quickstart-portal.md

@@ -104,6 +104,8 @@
           href: hana-vm-troubleshoot-scale-out-ha-on-sles.md
         - name: Škálování na více instancí SAP HANA na uzlu v pohotovostním režimu se službou Azure NetApp Files na SLES
           href: sap-hana-scale-out-standby-netapp-files-suse.md
+        - name: Škálování na více instancí SAP HANA na uzlu v pohotovostním režimu se službou Azure NetApp Files na RHEL
+          href: sap-hana-scale-out-standby-netapp-files-rhel.md
     - name: Přehled zálohování SAP HANA
       href: sap-hana-backup-guide.md
     - name: Zálohování SAP HANA na úrovni souborů
@@ -214,6 +216,8 @@
               href: sap-ascs-ha-multi-sid-wsfc-shared-disk.md
             - name: Windows se sdílenou složkou SOFS pro instanci (A)SCS
               href: sap-ascs-ha-multi-sid-wsfc-file-share.md
+            - name: SLES s několika SID Pacemakeru pro instanci A(SCS)
+              href: high-availability-guide-suse-multi-sid.md
     - name: Azure Site Recovery pro zotavení po havárii SAPu
       href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
     - name: Skupiny umístění bezkontaktní komunikace Azure pro optimální latenci sítě s aplikacemi SAP

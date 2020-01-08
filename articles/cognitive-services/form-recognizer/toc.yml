@@ -4,23 +4,53 @@
   items:
     - name: Co je služba Rozpoznávání formulářů?
       href: overview.md
-- name: Šablony Rychlý start
+    - name: Co je nového
+      href: whats-new.md
+- name: Rychlé starty
   expaned: true
   items:
+    - name: Použití ukázkového nástroje pro popisování
+      items:
+        - name: Trénování vlastního modelu s popisky
+          href: quickstarts/label-tool.md
     - name: S využitím REST API
       items:
-        - name: Trénování vlastních modelů a extrahování dat
+        - name: Trénování a využití vlastního modelu bez popisků
           items:
-            - name: cURL
-              href: quickstarts/curl-train-extract.md
+            - name: v2.0
+              items:
+                - name: cURL
+                  href: quickstarts/curl-train-extract.md
+                - name: Python
+                  href: quickstarts/python-train-extract.md
+            - name: v1.0
+              items:
+                - name: cURL
+                  href: quickstarts/curl-train-extract-v1.md
+                - name: Python
+                  href: quickstarts/python-train-extract-v1.md
+        - name: Trénování a využití vlastního modelu s popisky
+          items:
             - name: Python
-              href: quickstarts/python-train-extract.md
+              href: quickstarts/python-labeled-data.md
         - name: Použití předem připraveného modelu potvrzení
           items:
-            - name: cURL
-              href: quickstarts/curl-receipts.md
+            - name: v2.0
+              items:
+                - name: cURL
+                  href: quickstarts/curl-receipts.md
+                - name: Python
+                  href: quickstarts/python-receipts.md
+            - name: v1.0
+              items:
+                - name: cURL
+                  href: quickstarts/curl-receipts-v1.md
+                - name: Python
+                  href: quickstarts/python-receipts-v1.md
+        - name: Získání informací o rozložení textu
+          items:
             - name: Python
-              href: quickstarts/python-receipts.md
+              href: quickstarts/python-layout.md
     - name: S využitím .NET SDK
       href: quickstarts/dotnet-sdk.md
 - name: Kurzy
@@ -43,8 +73,10 @@
           href: deploy-form-recognizer-on-container-instances.md
 - name: Referenční informace
   items:
-    - name: Rozhraní API služby Rozpoznávání formulářů
-      href: 'https://aka.ms/form-recognizer/api'
+    - name: Rozhraní API služby Rozpoznávání formulářů v2.0
+      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm'
+    - name: Rozhraní API služby Rozpoznávání formulářů v1.0
+      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel'
     - name: Sady SDK
       items:
         - name: .NET

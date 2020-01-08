@@ -56,6 +56,8 @@
           href: customize-rdp-properties.md
         - name: Vyrovnávání zatížení pro fondy hostitelů ve fondu
           href: configure-host-pool-load-balancing.md
+        - name: Typ přiřazení osobního desktopu
+          href: configure-host-pool-personal-desktop-assignment-type.md
     - name: Použití licence Windows Virtual Desktopu
       href: apply-windows-license.md
     - name: Přizpůsobení image hostitele relace
@@ -68,8 +70,12 @@
       href: set-up-scaling-script.md
     - name: Vlastní kanál
       href: customize-feed-for-virtual-desktop-users.md
-    - name: Nasazení diagnostických nástrojů
-      href: deploy-diagnostics.md
+    - name: Použití diagnostiky služeb
+      items:
+        - name: Nasazení diagnostických nástrojů
+          href: deploy-diagnostics.md
+        - name: Použití diagnostiky s využitím Log Analytics
+          href: diagnostics-log-analytics.md
     - name: Publikování integrovaných aplikací
       href: publish-apps.md
     - name: Nastavení připojení aplikace MSIX
@@ -78,8 +84,6 @@
   items:
     - name: Prostředí Windows Virtual Desktop
       href: environment-setup.md
-    - name: Doporučené šířky pásma pro vzdálené relace
-      href: bandwidth-recommendations.md
     - name: Určení latence připojení uživatele
       href: connection-latency.md
     - name: Delegovaný přístup ve Windows Virtual Desktop
@@ -110,8 +114,10 @@
       href: troubleshoot-windows-7-vm.md
     - name: Řešení potíží s nástrojem pro správu Windows Virtual Desktopu
       href: troubleshoot-management-tool.md
-    - name: Připojení klientů Vzdálené plochy
-      href: troubleshoot-client-connection.md
+    - name: Připojení služby Vzdálená plocha
+      href: troubleshoot-service-connection.md
+    - name: Potíže s klienty Vzdálené plochy
+      href: troubleshoot-client.md
     - name: PowerShell pro Windows Virtual Desktop
       href: troubleshoot-powershell.md
     - name: Diagnostika problémů s výkonem grafiky

@@ -12,12 +12,12 @@ metadata:
   author: normesta
   ms.author: normesta
   ms.date: 08/20/2019
-  ms.openlocfilehash: f3e1abc46b79953d5a6d44abe4e7a5cecfa256be
-  ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+  ms.openlocfilehash: 8b08503be49c3052312d28bc1f65d1be5c775cd9
+  ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 11/06/2019
-  ms.locfileid: "73646826"
+  ms.lasthandoff: 12/31/2019
+  ms.locfileid: "75553048"
 landingContent:
 - title: Informace o službě Blob Storage
   linkLists:
@@ -91,10 +91,14 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Použití .NET
+    - text: Azure Blob Storage pro .NET
       url: storage-quickstart-blobs-dotnet.md
-    - text: Použití Pythonu
+    - text: Azure Blob Storage pro Javu
+      url: storage-quickstart-blobs-java.md
+    - text: Azure Blob Storage pro Python
       url: storage-quickstart-blobs-python.md
+    - text: Azure Blob Storage pro JavaScript
+      url: storage-quickstart-blobs-nodejs.md
     - text: Směrování událostí do webového koncového bodu
       url: ../../event-grid/blob-event-quickstart-portal.md
     - text: Hostování statického webu
@@ -144,9 +148,9 @@ landingContent:
   - linkListType: concept
     links:
     - text: Škálovatelnost a výkon
-      url: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      url: scalability-targets.md
     - text: Kontrolní seznam pro výkon a škálovatelnost
-      url: ../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      url: storage-performance-checklist.md
   - linkListType: tutorial
     links:
     - text: Optimalizace pro zajištění výkonu a škálovatelnosti

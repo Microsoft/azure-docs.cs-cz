@@ -7,7 +7,7 @@
           href: what-is-b2b.md
         - name: Porovnání B2B a B2C
           href: compare-with-b2c.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Přidání uživatelů typu host na portálu
           href: b2b-quickstart-add-guest-users-portal.md
@@ -19,7 +19,7 @@
           href: tutorial-bulk-invite.md
         - name: Vynucení vícefaktorového ověřování
           href: b2b-tutorial-require-mfa.md
-    - name: Ukázky
+    - name: ukázky
       items:
         - name: Ukázka portálu se samoobslužnou registrací
           href: self-service-portal.md
@@ -28,6 +28,8 @@
     - name: Koncepty
       expanded: false
       items:
+        - name: Osvědčené postupy B2B
+          href: b2b-fundamentals.md
         - name: Licencování B2B
           href: licensing-guidance.md
         - name: Externí sdílení Office 365 a B2B

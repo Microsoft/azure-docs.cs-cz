@@ -7,7 +7,7 @@
       href: what-is-luis.md
     - name: Co je nového
       href: whats-new.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Sestavení aplikace předem připravené domény
       href: luis-get-started-create-app.md
@@ -66,13 +66,8 @@
           href: luis-tutorial-review-endpoint-utterances.md
         - name: Dávkový test datových sad
           href: luis-tutorial-batch-testing.md
-        - name: Přidání běžných formátů promluv
+        - name: Přidání vzorů pro zlepšení predikce
           href: luis-tutorial-pattern.md
-        - name: Extrakce vzorů souvisejících s kontextem
-          href: luis-tutorial-pattern-roles.md
-          displayName: roles
-        - name: Extrakce dat volného tvaru
-          href: luis-tutorial-pattern-any.md
     - name: Použití s robotem
       items:
         - name: 'Pomocí jazyka C#'
@@ -173,6 +168,8 @@
         - name: Přidání popisovače
           displayName: 'synonym, interchange, phrase list, descriptor'
           href: luis-how-to-add-features.md
+        - name: Migrace na vytváření V3
+          href: luis-migration-authoring-entities.md
         - name: S využitím REST API
           items:
             - name: Programové sestavení aplikace s využitím Node.js
@@ -349,7 +346,7 @@
               href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/'
             - name: Referenční informace
               href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet'
-            - name: Ukázky
+            - name: ukázky
               href: 'https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS'
         - name: Přejít
           items:
@@ -367,7 +364,7 @@
               href: 'https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime'
             - name: Referenční informace
               href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable'
-            - name: Ukázky
+            - name: ukázky
               href: 'https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Language/LanguageUnderstanding'
         - name: Node.js
           items:
@@ -375,7 +372,7 @@
               href: 'https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring'
             - name: NPM – modul runtime
               href: 'https://www.npmjs.com/package/azure-cognitiveservices-luis-runtime'
-            - name: Ukázky
+            - name: ukázky
               href: 'https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples/luis'
         - name: Python
           items:
@@ -383,7 +380,7 @@
               href: 'https://pypi.org/project/azure-cognitiveservices-language-luis/'
             - name: Referenční informace
               href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python'
-            - name: Ukázky
+            - name: ukázky
               href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/language/luis'
 - name: Související
   items:

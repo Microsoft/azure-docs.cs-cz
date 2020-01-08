@@ -49,6 +49,8 @@
           href: concept-mfa-authprovider.md
         - name: Doprovodné materiály k zabezpečení
           href: multi-factor-authentication-security-best-practices.md
+        - name: Rezidence dat
+          href: concept-mfa-data-residency.md
         - name: MFA pro Office 365
           href: 'https://docs.microsoft.com/office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide'
         - name: Nejčastější dotazy k MFA

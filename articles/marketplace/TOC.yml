@@ -76,6 +76,8 @@
 - name: Portál Cloud Partner
   href: ./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
   items:
+    - name: Migrace portálu partnerů cloudu do Partnerského centra
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-to-partner-center.md
     - name: Prohlídka portálu
       href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
       items:
@@ -128,7 +130,7 @@
               href: ./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md
         - name: Seller Insights
           items:
-            - name: Začínáme
+            - name: začínáme
               href: ./cloud-partner-portal-orig/si-getting-started.md
             - name: Co je nového
               href: ./cloud-partner-portal-orig/si-changes.md
@@ -449,6 +451,8 @@
               href: ./partner-center-portal/create-new-azure-apps-offer.md
             - name: Zpracování zpětné vazby
               href: ./partner-center-portal/azure-apps-review-feedback.md
+            - name: Rozhraní API pro onboarding
+              href: ./partner-center-portal/azure-app-apis.md
         - name: Nabídky Dynamics 365
           items:
             - name: Vytvoření nabídky Dynamics 365 for Customer Engagement a PowerApps
@@ -512,13 +516,33 @@
     - name: Možnosti podpory
       href: ./partner-center-portal/support.md
     - name: Analýzy partnerského centra
-      href: ./partner-center-portal/analytics.md
+      items:
+        - name: Analýzy pro komerční marketplace
+          href: ./partner-center-portal/analytics.md
+        - name: Souhrnný řídicí panel
+          href: ./partner-center-portal/summary-dashboard.md
+        - name: Řídicí panel objednávek
+          href: ./partner-center-portal/orders-dashboard.md
+        - name: Řídicí panel využití
+          href: ./partner-center-portal/usage-dashboard.md
+        - name: Řídicí panel zákazníků
+          href: ./partner-center-portal/customer-dashboard.md
+        - name: Řídicí panel přehledů Marketplace
+          href: ./partner-center-portal/insights-dashboard.md
+        - name: Řídicí panel stahování
+          href: ./partner-center-portal/downloads-dashboard.md
+        - name: Řídicí panel hodnocení a recenzí
+          href: ./partner-center-portal/ratings-reviews.md
+        - name: Nejčastější dotazy a terminologie
+          href: ./partner-center-portal/faq-terminology.md
     - name: Vyplacení
       items:
         - name: Vyplacení
           href: ./partner-center-portal/get-paid.md
         - name: Nastavení platebního účtu a daňových formulářů
           href: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
+        - name: Podrobnosti fakturace
+          href: ./partner-center-portal/billing-details.md
         - name: 'Prahové hodnoty, způsoby a časové rámce plateb'
           href: ./partner-center-portal/payment-thresholds-methods-timeframes.md
         - name: Přehled plateb

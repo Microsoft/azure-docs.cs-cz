@@ -5,7 +5,7 @@
     - name: Co je Azure Policy?
       displayName: 'rbac, assign, initiative, parameters, count'
       href: overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Přiřazení zásad – portál
@@ -34,7 +34,7 @@
     - name: Praktická cvičení – seznámení s Azure Policy
       displayName: 'create, policy, training, learn'
       href: 'https://handsonlabs.microsoft.com/handsonlabs/SelfPacedLabs?storyId=story://content-private/content/sp-azuregovernance/1-azpolicy/a-policy'
-- name: Ukázky
+- name: ukázky
   items:
     - name: Index
       displayName: 'list, examples'
@@ -300,6 +300,11 @@
     - name: 'Oprava prostředků, které nevyhovují předpisům'
       displayName: 'managed identity, task, definition, roleDefinitionIds'
       href: ./how-to/remediate-resources.md
+    - name: Integrace se službou Azure Key Vault
+      items:
+        - name: Integrace Key Vaultu se službou Azure Policy
+          displayName: 'key vault, certificate, key'
+          href: ../../key-vault/azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: Integrace služby Azure Lighthouse
       items:
         - name: Nasazení zásad ve velkém
@@ -375,7 +380,7 @@
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: Videa konfigurace hosta
       items:
-        - name: Začínáme
+        - name: začínáme
           href: 'https://www.youtube.com/watch?v=mjJw9_EIyHo'
         - name: Pochopení iniciativ
           href: 'https://www.youtube.com/watch?v=4JZH3kuG8bI'

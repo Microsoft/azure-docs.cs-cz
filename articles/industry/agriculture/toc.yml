@@ -1,42 +1,42 @@
 - name: Přehled
   items:
-    - name: Co je FarmBeats?
-      href: overview.md
+    - name: Co je služba Azure FarmBeats?
+      href: overview-azure-farmbeats.md
 - name: Kurzy
   expanded: true
   items:
     - name: Generování mapy půdní vlhkosti
-      href: generate-soil-moisture-map.md
+      href: generate-soil-moisture-map-in-azure-farmbeats.md
     - name: Ingestování historických telemetrických dat
-      href: ingest-historical-telemetry-data.md
+      href: ingest-historical-telemetry-data-in-azure-farmbeats.md
 - name: Koncepty
   items:
     - name: Vzory integrace
-      href: integration-patterns.md
+      href: integration-patterns-in-azure-farmbeats.md
     - name: Integrace partnerských řešení pro senzory
-      href: sensor-partner-integration.md
+      href: sensor-partner-integration-in-azure-farmbeats.md
     - name: Integrace partnerských řešení pro snímky
-      href: imagery-partner-integration.md
+      href: imagery-partner-integration-in-azure-farmbeats.md
 - name: Průvodce postupy
   items:
-    - name: Nasazení FarmBeats
-      href: prepare-for-deployment.md
+    - name: Instalace služby Azure FarmBeats
+      href: install-azure-farmbeats.md
     - name: Správa uživatelů
-      href: manage-users.md
+      href: manage-users-in-azure-farmbeats.md
     - name: Správa farem
-      href: manage-farms.md
+      href: manage-farms-in-azure-farmbeats.md
     - name: Získání data ze senzorů
       href: get-sensor-data-from-sensor-partner.md
     - name: Generování map
-      href: generate-maps.md
+      href: generate-maps-in-azure-farmbeats.md
     - name: Konfigurace pravidel a správa upozornění
-      href: configure-rules-alerts.md
+      href: configure-rules-alerts-in-azure-farmbeats.md
     - name: Získání snímků z dronů
-      href: get-drone-imagery.md
+      href: get-drone-imagery-in-azure-farmbeats.md
 - name: Řešení potíží
   items:
     - name: Řešení potíží s FarmBeats
-      href: troubleshoot-project-farmbeats.md
+      href: troubleshoot-azure-farmbeats.md
 - name: Referenční informace
   items: null
-  href: references-for-farmbeats.md
+  href: references-for-azure-farmbeats.md

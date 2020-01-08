@@ -5,19 +5,19 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 11/08/2019
-ms.openlocfilehash: 9c4dca6dc5def1b1c458f28aa2d3ab992bd705d2
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/16/2019
+ms.openlocfilehash: d6bb57c8163f7653f4b10142d7ec2b34f50456f1
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792732"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75527854"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Přístup k prostředkům Azure Virtual Network z Azure Logic Apps pomocí prostředí integračních služeb (ISEs)
 
 V některých případech vaše aplikace logiky a účty pro integraci potřebují přístup k zabezpečeným prostředkům, jako jsou virtuální počítače (VM) a další systémy nebo služby, které jsou ve [službě Azure Virtual Network](../virtual-network/virtual-networks-overview.md). K nastavení tohoto přístupu můžete [vytvořit prostředí ISE ( *Integration Service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) , ve kterém můžete spouštět aplikace logiky a vytvořit účty pro integraci.
 
-Při vytváření ISE Azure *vloží* do vaší virtuální sítě Azure, které ISE, nasadí soukromou a izolovanou instanci služby Logic Apps do vaší virtuální sítě Azure. Tato soukromá instance využívá vyhrazené prostředky, jako je úložiště, a spouští se odděleně od veřejné Logic Apps služby Global. Oddělení vaší izolované privátní instance a veřejné globální instance také pomáhá snižovat dopad, který mohou mít jiní klienti Azure na výkon vašich aplikací, což se označuje také jako ["nepříznivých sousedních"](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors).
+Při vytváření ISE Azure *vloží* do vaší virtuální sítě Azure, které ISE, nasadí soukromou a izolovanou instanci služby Logic Apps do vaší virtuální sítě Azure. Tato soukromá instance využívá vyhrazené prostředky, jako je úložiště, a spouští se samostatně z veřejné služby Logic Apps "Global", víceklientské služby. Oddělení vaší izolované privátní instance a veřejné globální instance také pomáhá snižovat dopad, který mohou mít jiní klienti Azure na výkon vašich aplikací, což se označuje také jako ["nepříznivých sousedních"](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors). ISE také poskytuje vlastní statické IP adresy. Tyto IP adresy jsou oddělené od statických IP adres, které jsou sdílené pomocí Logic Apps ve veřejné víceklientské službě.
 
 Po vytvoření ISE můžete při vytváření vaší aplikace logiky nebo účtu pro integraci vybrat svou ISE jako svou aplikaci logiky nebo umístění účtu pro integraci:
 
@@ -47,7 +47,7 @@ Logic Apps v ISE poskytují stejné uživatelské prostředí a podobné možnos
 
 * Blob Storage Azure, File Storage a Table Storage
 * Fronty Azure, Azure Service Bus, Azure Event Hubs a IBM MQ
-* Systém souborů, FTP a SFTP – SSH
+* FTP a SFTP – SSH
 * SQL Server, Azure SQL Data Warehouse Azure Cosmos DB
 * AS2, X12 a EDIFACT
 
@@ -86,11 +86,13 @@ Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pr
 
 ## <a name="ise-endpoint-access"></a>Přístup ke koncovému bodu ISE
 
-Při vytváření ISE můžete použít buď interní nebo externí koncové body přístupu. Tyto koncové body určují, jestli triggery Request nebo Webhooku v Logic Apps ve vašem ISE můžou přijímat volání z vnějšku vaší virtuální sítě. Tyto koncové body mají také vliv na přístup k vstupům a výstupům v historii spuštění aplikace logiky.
+Při vytváření ISE můžete použít buď interní nebo externí koncové body přístupu. Váš výběr určuje, jestli žádosti nebo triggery Webhooku v Logic Apps ve vašem ISE můžou přijímat volání z vnějšku vaší virtuální sítě.
 
-* **Interní**: veřejné koncové body, které umožňují volání Logic Apps v ISE plus přístup k vstupům a výstupům v historii spouštění jenom *z vaší virtuální sítě* .
+Tyto koncové body ovlivňují také způsob, jakým máte přístup ke vstupům a výstupům v historii spuštění aplikace logiky.
 
-* **External**: veřejné koncové body, které umožňují volání Logic Apps v ISE plus přístup k vstupům a výstupům v historii spouštění *mimo vaši virtuální síť* .
+* **Interní**: veřejné koncové body, které umožňují volání Logic Apps ve vašich ISE, kde můžete zobrazovat vstupy a výstupy Logic Apps jenom v historii spouštění v *rámci vaší virtuální sítě* .
+
+* **External**: veřejné koncové body, které umožňují volání Logic Apps ve vašich ISE, kde můžete zobrazit vstupy a výstupy Logic Apps a získat přístup k vstupům a výstupům logiky v historii spouštění *mimo virtuální síť*. Pokud používáte skupiny zabezpečení sítě (skupin zabezpečení sítě), zajistěte, aby byly nastavené s příchozími pravidly, aby bylo možné povolit přístup k vstupům a výstupům historie spuštění. Další informace najdete v tématu [Povolení přístupu pro ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
 
 > [!IMPORTANT]
 > Možnost přístupový bod přístupu je dostupná jenom při vytváření ISE a nedá se změnit později.

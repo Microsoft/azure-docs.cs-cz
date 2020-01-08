@@ -10,7 +10,7 @@
       href: geo-ai-dsvm-overview.md
     - name: Nástroje zahrnuté do DSVM
       href: tools-included.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření DSVM s Windows
@@ -24,22 +24,22 @@
 - name: Koncepty
   items:
     - name: Architektura AI a hloubkového učení
-      href: dsvm-deep-learning-ai-frameworks.md
+      href: dsvm-tools-deep-learning-frameworks.md
     - name: Programovací jazyky
-      href: dsvm-languages.md
+      href: dsvm-tools-languages.md
     - name: Vývojářské nástroje
       href: dsvm-tools-development.md
     - name: Nástroje pro datové vědy a ML
-      href: dsvm-ml-data-science-tools.md
+      href: dsvm-tools-data-science.md
     - name: Datové platformy
-      href: dsvm-data-platforms.md
+      href: dsvm-tools-data-platforms.md
     - name: Nástroje pro ingestování dat
       href: dsvm-tools-ingestion.md
-    - name: Nástroje pro zkoumání a vizualizaci dat
-      href: dsvm-tools-explore-and-visualize.md
+    - name: Tipy pro vyšší produktivitu
+      href: dsvm-tools-productivity.md
     - name: Podnikové zabezpečení a pokyny
       href: dsvm-enterprise-overview.md
-- name: Ukázky
+- name: ukázky
   href: dsvm-samples-and-walkthroughs.md
 - name: Návody
   items:

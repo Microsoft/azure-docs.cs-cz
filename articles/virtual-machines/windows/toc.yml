@@ -33,7 +33,7 @@
       href: tutorial-virtual-network.md
     - name: 9. Zálohování virtuálních počítačů
       href: tutorial-backup-vms.md
-    - name: 10. Řízení virtuálních počítačů
+    - name: 10. Správa virtuálních počítačů
       href: tutorial-govern-resources.md
       displayName: scope policy RBAC lock tag
     - name: 11. Sledování a aktualizace virtuálních počítačů

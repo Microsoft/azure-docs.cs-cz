@@ -28,6 +28,8 @@
           href: classroom-labs-scenarios.md
 - name: Návody
   items:
+    - name: Příručka správce
+      href: administrator-guide.md
     - name: Testovací prostředí v učebnách – typy tříd
       items:
         - name: Přehled typů tříd
@@ -52,6 +54,8 @@
           href: how-to-connect-peer-virtual-network.md
         - name: Připojení nebo odpojení sdílené galerie imagí
           href: how-to-attach-detach-shared-image-gallery.md
+        - name: Přidání uživatele jako vlastníka do testovacího prostředí v učebně
+          href: how-to-add-user-lab-owner.md
     - name: Vytvoření a konfigurace testovacích prostředí v učebnách (instruktor)
       items:
         - name: Vytváření a správa testovacích prostředí v učebnách
@@ -70,6 +74,8 @@
           href: how-to-use-shared-image-gallery.md
         - name: Povolení připojení ke vzdálené ploše pro Linux
           href: how-to-enable-remote-desktop-linux.md
+        - name: Povolení automatického vypnutí při odpojení
+          href: how-to-enable-shutdown-disconnect.md
         - name: Povolení vnořené virtualizace v šabloně virtuálního počítače
           href: how-to-enable-nested-virtualization-template-vm.md
         - name: Příprava šablony virtuálního počítače s Windows

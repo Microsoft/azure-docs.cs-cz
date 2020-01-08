@@ -139,6 +139,10 @@
     - name: Azure Monitor
       tocHref: /azure/azure-monitor/
       topicHref: /azure/azure-monitor/
+      items:
+        - name: Application Insights
+          tocHref: /azure/azure-monitor/azure-monitor-app-hub
+          topicHref: /azure/azure-monitor/azure-monitor-app-hub
     - name: Azure Spatial Anchors
       tocHref: /azure/spatial-anchors/
       topicHref: /azure/spatial-anchors/
@@ -167,10 +171,10 @@
     - name: Azure NetApp Files
       tocHref: /azure/azure-netapp-files/
       topicHref: /azure/azure-netapp-files/
-    - name: Řešení Azure VMware od společnosti CloudSimple
+    - name: Řešení Azure VMware společnosti CloudSimple
       tocHref: /azure/vmware-cloudsimple/
       topicHref: /azure/vmware-cloudsimple/
-    - name: Přizpůsobení webu Azure Portal
+    - name: Dokumentace k webu Azure Portal
       tocHref: /azure/azure-portal/
       topicHref: /azure/azure-portal/\
     - name: Internet věcí
@@ -226,6 +230,19 @@
     - name: Resource Manager
       tocHref: /azure/azure-resource-manager/
       topicHref: /azure/azure-resource-manager/
+      items:
+        - name: Šablony
+          tocHref: /azure/azure-resource-manager/templates/
+          topicHref: /azure/azure-resource-manager/templates/
+        - name: Správa
+          tocHref: /azure/azure-resource-manager/management/
+          topicHref: /azure/azure-resource-manager/management/
+        - name: Managed Applications
+          tocHref: /azure/azure-resource-manager/managed-applications/
+          topicHref: /azure/azure-resource-manager/managed-applications/
+        - name: Vlastní poskytovatelé Azure
+          tocHref: /azure/azure-resource-manager/custom-providers/
+          topicHref: /azure/azure-resource-manager/custom-providers/
     - name: Služba SignalR
       tocHref: /azure/azure-signalr/
       topicHref: /azure/azure-signalr/
@@ -659,6 +676,9 @@
         - name: Vývoj
           tocHref: /azure/security/develop/
           topicHref: /azure/security/develop/
+        - name: Srovnávací testy
+          tocHref: /azure/security/benchmarks/
+          topicHref: /azure/security/benchmarks/
     - name: Security Center
       tocHref: /azure/security-center/
       topicHref: /azure/security-center/
@@ -686,7 +706,7 @@
     - name: Synapse Analytics
       tocHref: /azure/sql-data-warehouse/
       topicHref: /azure/sql-data-warehouse/
-    - name: SQL Database
+    - name: Databáze SQL
       tocHref: /azure/sql-database/
       topicHref: /azure/sql-database/
     - name: SQL Database Edge

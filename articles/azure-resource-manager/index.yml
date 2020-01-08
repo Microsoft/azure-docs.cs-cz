@@ -1,133 +1,109 @@
-### YamlMime:Landing
+### YamlMime:Hub
 title: Dokumentace ke službě Azure Resource Manager
-summary: Šablona Resource Manageru je soubor JSON (JavaScript Object Notation), který definuje infrastrukturu a konfiguraci projektu.
+summary: Azure Resource Manager je služba nasazování a správy pro Azure. Ke spolehlivému nasazování a správě vašich řešení Azure využijte infrastrukturu jako kód.
+brand: azure
 metadata:
   title: Dokumentace ke službě Azure Resource Manager
-  description: Naučte se vyvíjet šablony Azure Resource Manageru a používat je k nasazování prostředků Azure.
-  services: azure-resource-manager
+  description: Azure Resource Manager je služba nasazování a správy pro Azure.
   ms.service: azure-resource-manager
-  ms.subservice: na
-  ms.topic: landing-page
-  ms.collection: na
-  author: mumian
-  ms.author: jgao
-  ms.date: 09/25/2019
-  ms.openlocfilehash: 1d50556eb09a35857ed9db4ccbbba99397606f8b
-  ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+  ms.topic: hub-page
+  ms.collection: collection
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 12/19/2019
+  ms.openlocfilehash: 2910576517be35652d8e1ed1e82687a56a10467e
+  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 11/25/2019
-  ms.locfileid: "74483428"
-landingContent:
-- title: Informace o Resource Manageru
-  linkLists:
-  - linkListType: overview
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75642468"
+highlightedContent:
+  items:
+  - title: Co jsou šablony?
+    itemType: overview
+    url: templates/overview.md
+  - title: Vytvoření první šablony
+    itemType: tutorial
+    url: templates/template-tutorial-create-first-template.md
+  - title: Co je Resource Manager?
+    itemType: overview
+    url: management/overview.md
+conceptualContent:
+  items:
+  - title: Nasazení šablon Resource Manageru
     links:
-    - text: Co je Resource Manager?
-      url: resource-group-overview.md
-    - text: Co je šablona Resource Manageru?
-      url: template-deployment-overview.md
-  - linkListType: concept
+    - url: templates/overview.md
+      itemType: overview
+      text: Přehled
+    - url: templates/template-tutorial-create-first-template.md
+      itemType: tutorial
+      text: Série kurzů pro začátečníky
+    - url: templates/template-syntax.md
+      itemType: reference
+      text: Struktura souborů šablon
+    - url: templates/template-functions.md
+      itemType: reference
+      text: Funkce šablon
+    - url: templates/deploy-powershell.md
+      itemType: how-to-guide
+      text: Nasazení
+    - url: templates/template-best-practices.md
+      itemType: concept
+      text: Osvědčené postupy
+    footerLink:
+      url: templates/index.yml
+      text: Další informace
+  - title: Správa prostředků
     links:
-    - text: Osvědčené postupy
-      url: template-best-practices.md
-    - text: Režimy nasazení
-      url: deployment-modes.md
-    - text: Propojené šablony
-      url: resource-group-linked-templates.md
-    - text: Nasazení na úrovni předplatného
-      url: deploy-to-subscription.md
-    - text: Deployment Manager
-      url: deployment-manager-overview.md
-  - linkListType: video
+    - url: management/overview.md
+      itemType: overview
+      text: Přehled
+    - url: management/tag-resources.md
+      itemType: how-to-guide
+      text: Označení prostředků
+    - url: management/move-resource-group-and-subscription.md
+      itemType: concept
+      text: Přesunutí prostředků
+    - url: management/lock-resources.md
+      itemType: how-to-guide
+      text: Uzamčení prostředků
+    - url: management/resource-providers-and-types.md
+      itemType: concept
+      text: Poskytovatelé a typy prostředků
+    footerLink:
+      url: management/index.yml
+      text: Další informace
+  - title: Managed Applications
     links:
-    - text: Co je nového?
-      url: https://youtu.be/3D-JIKShrws
-- title: Začínáme
-  linkLists:
-  - linkListType: quickstart
+    - url: managed-applications/overview.md
+      itemType: overview
+      text: Přehled
+    - url: managed-applications/publish-service-catalog-app.md
+      itemType: tutorial
+      text: Publikování aplikace katalogu služeb
+    - url: managed-applications/create-uidefinition-overview.md
+      itemType: how-to-guide
+      text: Vytvoření definice uživatelského rozhraní
+    - url: managed-applications/publish-marketplace-app.md
+      itemType: tutorial
+      text: Přidání na Marketplace
+    footerLink:
+      url: managed-applications/index.yml
+      text: Další informace
+  - title: Azure Custom Providers
     links:
-    - text: Vytváření šablon – portál
-      url: resource-manager-quickstart-create-templates-use-the-portal.md
-    - text: Vytváření šablon – VS Code
-      url: resource-manager-quickstart-create-templates-use-visual-studio-code.md
-    - text: Vytváření šablon – Visual Studio
-      url: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
-  - linkListType: tutorial
-    links:
-    - text: Kurzy pro začátečníky
-      url: template-tutorial-create-first-template.md
-    - text: Nasazení několika instancí
-      url: resource-manager-tutorial-create-multiple-instances.md
-    - text: Nastavení pořadí nasazení
-      url: resource-manager-tutorial-create-templates-with-dependent-resources.md
-    - text: Integrace trezoru klíčů
-      url: resource-manager-tutorial-use-key-vault.md
-- title: Vývoj šablon
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Použití editoru VS Code
-      url: resource-manager-tools-vs-code.md
-    - text: Použití funkcí
-      url: resource-group-template-functions.md
-    - text: Definování parametrů
-      url: template-parameters.md
-    - text: Definování proměnných
-      url: template-variables.md
-    - text: Definování prostředků
-      url: child-resource-name-type.md
-    - text: Definování výstupů
-      url: template-outputs.md
-  - linkListType: reference
-    links:
-    - text: Šablony Azure pro rychlé zprovoznění
-      url: template-deployment-overview.md
-- title: Nasazení šablon
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: S využitím PowerShellu
-      url: resource-group-template-deploy.md
-    - text: S využitím CLI
-      url: resource-group-template-deploy-cli.md
-    - text: S využitím portálu
-      url: resource-group-template-deploy-portal.md
-    - text: S využitím REST API
-      url: resource-group-template-deploy-rest.md
-- title: Správa šablon
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Export šablon
-      url: export-template-portal.md
-    - text: CI/CD
-      url: vs-resource-groups-project-devops-pipelines.md
-- title: Správa prostředků
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Přesunutí prostředků
-      url: resource-group-move-resources.md
-    - text: Označení prostředků
-      url: resource-group-using-tags.md
-    - text: Uzamčení prostředků
-      url: resource-group-lock-resources.md
-- title: Monitorování a odstraňování potíží
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Zobrazení protokolů aktivit
-      url: resource-group-audit.md
-    - text: Zobrazení operace nasazení
-      url: resource-manager-deployment-operations.md
-    - text: Řešení potíží s chybami nasazení
-      url: resource-manager-common-deployment-errors.md
-- title: Prozkoumat referenční obsah
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: Poskytovatelé a typy prostředků
-      url: resource-manager-supported-services.md
-    - text: Referenční informace k šablonám
-      url: /azure/templates/
+    - url: custom-providers/overview.md
+      itemType: overview
+      text: Přehled
+    - url: custom-providers/create-custom-provider.md
+      itemType: quickstart
+      text: Vytvoření vlastního poskytovatele
+    - url: custom-providers/tutorial-get-started-with-custom-providers.md
+      itemType: tutorial
+      text: Vytváření vlastních akcí a prostředků
+    - url: custom-providers/custom-providers-action-endpoint-how-to.md
+      itemType: how-to-guide
+      text: Přidání vlastních akcí do Azure REST API
+    footerLink:
+      url: custom-providers/index.yml
+      text: Další informace

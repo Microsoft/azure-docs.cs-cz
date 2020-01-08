@@ -1,0 +1,261 @@
+- name: Dokumentace k šablonám Azure Resource Manageru
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co jsou šablony Azure Resource Manageru?
+      href: overview.md
+- name: Rychlé starty
+  items:
+    - name: Vytváření šablon – portál
+      href: quickstart-create-templates-use-the-portal.md
+    - name: Vytváření šablon – VS Code
+      href: quickstart-create-templates-use-visual-studio-code.md
+    - name: Vytváření šablon – Visual Studio
+      href: create-visual-studio-deployment-project.md
+    - name: Vytváření šablon – IntelliJ IDEA
+      href: create-templates-use-intellij.md
+- name: Kurzy
+  items:
+    - name: Začátečník
+      items:
+        - name: 1. Vytvoření první šablony
+          href: template-tutorial-create-first-template.md
+        - name: 2. Přidání prostředku
+          href: template-tutorial-add-resource.md
+        - name: 3. Přidání parametrů
+          href: template-tutorial-add-parameters.md
+        - name: 4. Přidání funkcí šablon
+          href: template-tutorial-add-functions.md
+        - name: 5. Přidání proměnných
+          href: template-tutorial-add-variables.md
+        - name: 6. Přidání výstupu
+          href: template-tutorial-add-outputs.md
+        - name: 7. Použití vyexportované šablony
+          href: template-tutorial-export-template.md
+        - name: 8. Použití šablony pro rychlý start
+          href: template-tutorial-quickstart-template.md
+        - name: 9. Přidání značek
+          href: template-tutorial-add-tags.md
+        - name: 10. Použití souboru parametrů
+          href: template-tutorial-use-parameter-file.md
+    - name: Upřesňující
+      items:
+        - name: Využití referenčních informací k šablonám
+          href: template-tutorial-create-encrypted-storage-accounts.md
+        - name: Vytvoření několika instancí
+          displayName: 'iteration,copy'
+          href: template-tutorial-create-multiple-instances.md
+        - name: Nastavení pořadí nasazování prostředků
+          displayName: 'dependent resources, dependency'
+          href: template-tutorial-create-templates-with-dependent-resources.md
+        - name: Použití podmínek
+          href: template-tutorial-use-conditions.md
+        - name: Integrace trezoru klíčů
+          displayName: secrets
+          href: template-tutorial-use-key-vault.md
+        - name: Vytvoření propojených šablon
+          href: template-tutorial-create-linked-templates.md
+        - name: Nasazení rozšíření virtuálních počítačů
+          displayName: virtual machine extensions
+          href: template-tutorial-deploy-vm-extensions.md
+        - name: Nasazení rozšíření SQL
+          href: template-tutorial-deploy-sql-extensions-bacpac.md
+        - name: Zabezpečené artefakty
+          href: template-tutorial-secure-artifacts.md
+        - name: Průběžná integrace s využitím Azure Pipelines
+          displayName: DevOps
+          href: template-tutorial-use-azure-pipelines.md
+        - name: Aktualizace skriptu nasazení VS na AZ PowerShell
+          href: update-visual-studio-deployment-script.md
+        - name: Použití postupů bezpečného nasazení
+          displayName: adm
+          href: deployment-manager-tutorial.md
+        - name: Použití kontroly stavu v Deployment Manageru
+          displayName: adm
+          href: deployment-manager-tutorial-health-check.md
+        - name: Řešení potíže s nasazováním šablon
+          href: template-tutorial-troubleshoot.md
+- name: ukázky
+  items:
+    - name: Šablony rychlého zprovoznění pro Azure
+      href: 'https://azure.microsoft.com/resources/templates/'
+    - name: Ukázky šablon
+      href: template-samples.md
+- name: Koncepty
+  items:
+    - name: Osvědčené postupy pro šablony
+      href: template-best-practices.md
+    - name: Šablony pro konzistenci cloudu
+      href: templates-cloud-consistency.md
+    - name: Režimy nasazení
+      href: deployment-modes.md
+    - name: Deployment Manager
+      items:
+        - name: Přehled
+          displayName: 'adm, deployment manager'
+          href: deployment-manager-overview.md
+        - name: Kontrola stavu
+          displayName: 'adm, deployment manager'
+          href: deployment-manager-health-check.md
+- name: Postup
+  items:
+    - name: Vytváření šablon
+      items:
+        - name: Použití editoru VS Code
+          href: use-vs-code-to-create-template.md
+        - name: Zápis výrazů šablon
+          href: template-expressions.md
+        - name: Parametry
+          href: template-parameters.md
+        - name: Proměnné
+          href: template-variables.md
+        - name: Uživatelsky definované funkce
+          href: template-user-defined-functions.md
+        - name: Zdroje a prostředky
+          items:
+            - name: Typ a název podřízeného prostředku
+              href: child-resource-name-type.md
+            - name: Podmíněné nasazení
+              href: conditional-resource-deployment.md
+            - name: Nastavení závislostí prostředků
+              href: define-resource-dependency.md
+            - name: Nastavení umístění prostředků
+              href: resource-location.md
+            - name: Použití rozšíření šablon
+              href: add-resource-extensions.md
+        - name: Výstupy
+          href: template-outputs.md
+        - name: Modularizace šablon
+          displayName: 'linked templates, nested templates'
+          href: linked-templates.md
+        - name: Vytvoření několika instancí
+          href: create-multiple-instances.md
+        - name: Prostředky na úrovni předplatného
+          href: deploy-to-subscription.md
+        - name: Prostředky na úrovni skupiny pro správu
+          href: deploy-to-management-group.md
+    - name: Nasazení šablon
+      items:
+        - name: Nasazení – portál
+          displayName: deployment
+          href: deploy-portal.md
+        - name: Nasazení – rozhraní příkazového řádku
+          displayName: deployment
+          href: deploy-cli.md
+        - name: Nasazení – PowerShell
+          displayName: deployment
+          href: deploy-powershell.md
+        - name: Nasazení – REST API
+          displayName: deployment
+          href: deploy-rest.md
+        - name: Nasazení What-If
+          href: template-deploy-what-if.md
+        - name: Opětovné nasazení při chybě
+          displayName: rollback
+          href: rollback-on-error.md
+        - name: Zabezpečení šablony s tokenem SAS
+          href: secure-template-with-sas-token.md
+        - name: Nasazení do několika skupin prostředků nebo předplatných
+          href: cross-resource-group-deployment.md
+    - name: Zadání parametrů
+      items:
+        - name: Vytvoření souboru parametrů
+          href: parameter-files.md
+        - name: Předávání citlivých hodnot
+          displayname: key vault
+          href: key-vault-parameter.md
+    - name: CI/CD
+      items:
+        - name: Projekt VS s kanály
+          href: add-template-to-azure-pipelines.md
+    - name: Export šablony
+      href: export-template-portal.md
+    - name: Zobrazení historie nasazení
+      href: deployment-history.md
+    - name: Řešení potíží s nasazeními
+      items:
+        - name: Řešení potíží s chybami nasazení
+          href: common-deployment-errors.md
+        - name: AccountNameInvalid
+          href: error-storage-account-name.md
+        - name: DeploymentQuotaExceeded
+          href: deployment-quota-exceeded.md
+        - name: InvalidTemplate
+          href: error-invalid-template.md
+        - name: Potíže s linuxovým nasazením
+          href: ../../virtual-machines/linux/troubleshoot-deploy-vm.md
+        - name: NoRegisteredProviderFound
+          href: error-register-resource-provider.md
+        - name: NotFound
+          href: error-not-found.md
+        - name: ParentResourceNotFound
+          href: error-parent-resource.md
+        - name: Potíže se zřizováním a přidělením pro Linux
+          href: ../../virtual-machines/linux/troubleshoot-deployment-new-vm.md
+        - name: Potíže se zřizováním a přidělením pro Windows
+          href: ../../virtual-machines/windows/troubleshoot-deployment-new-vm.md
+        - name: RequestDisallowedByPolicy
+          href: error-policy-requestdisallowedbypolicy.md
+        - name: ReservedResourceName
+          href: error-reserved-resource-name.md
+        - name: ResourceQuotaExceeded
+          href: error-resource-quota.md
+        - name: SkuNotAvailable
+          href: error-sku-not-available.md
+        - name: Potíže s nasazením Windows
+          href: ../../virtual-machines/windows/troubleshoot-deploy-vm.md
+- name: Referenční informace
+  items:
+    - name: Struktura souborů šablon
+      displayName: 'parameters,variables,resources,outputs,condition'
+      href: template-syntax.md
+    - name: Referenční informace k šablonám
+      href: /azure/templates/
+    - name: Funkce šablon
+      items:
+        - name: Všechny funkce
+          href: template-functions.md
+        - name: Funkce pole a objektu
+          href: template-functions-array.md
+        - name: Funkce porovnání
+          href: template-functions-comparison.md
+        - name: Funkce nasazení
+          href: template-functions-deployment.md
+        - name: Logické funkce
+          href: template-functions-logical.md
+        - name: Numerické funkce
+          href: template-functions-numeric.md
+        - name: Funkce prostředků
+          href: template-functions-resource.md
+        - name: Funkce řetězců
+          href: template-functions-string.md
+    - name: Možnosti prostředků
+      items:
+        - name: Úplné odstranění režimu
+          href: complete-mode-deletion.md
+        - name: Typy prostředků rozšíření
+          href: extension-resource-types.md
+    - name: REST
+      href: /rest/api/resources/
+    - name: Azure PowerShell
+      href: /powershell/module/az.resources
+    - name: Azure CLI
+      href: /cli/azure/resource
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.resourcemanager
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.resources
+    - name: Python
+      href: /python/api/overview/azure/resources?view=azure-python
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=azure-resource-manager'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-resource-manager'
+    - name: Videa
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager'
