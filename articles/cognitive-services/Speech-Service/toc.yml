@@ -1,13 +1,13 @@
-# displayName: additional text for filtering down the ToC in meaningful way.
 - name: Dokumentace ke službě Speech
   href: index.md
 - name: Přehled
-  expanded: false
+  expanded: true
   items:
     - name: Co je služba Speech?
       href: overview.md
     - name: Podpora jazyků a oblastí
       href: language-support.md
+      displayName: 'languages,locales,region,voice,gender,language code,locale,locale code'
 - name: Převod řeči na text
   expanded: false
   items:
@@ -15,7 +15,7 @@
       items:
         - name: Co je převod řeči na text?
           href: speech-to-text.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Rozpoznávání řeči ze zvukového souboru
           href: quickstarts/speech-to-text-from-file.md
@@ -51,18 +51,25 @@
           items:
             - name: C++
               href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
             - name: 'C#'
               href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
             - name: Java
               href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
             - name: JavaScript
               href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
               href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
             - name: "Poznámky k\_verzi"
               href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
         - name: Rozhraní REST API
           items:
             - name: Rozhraní REST API pro převod řeči na text
@@ -73,14 +80,15 @@
       items:
         - name: Nejčastější dotazy k převodu řeči na text
           href: faq-stt.md
+          displayName: 'FAQ,STT FAQ,SR FAQ,frequently asked questions'
 - name: Převod textu na řeč
-  exanded: false
+  expanded: false
   items:
     - name: Přehled
       items:
         - name: Co je převod textu na řeč?
           href: text-to-speech.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Syntéza řeči do zvukového souboru
           href: quickstarts/text-to-speech-audio-file.md
@@ -104,18 +112,25 @@
           items:
             - name: C++
               href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
             - name: 'C#'
               href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
             - name: Java
               href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
             - name: JavaScript
               href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
               href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
             - name: "Poznámky k\_verzi"
               href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
         - name: Rozhraní REST API
           items:
             - name: Rozhraní REST API pro převod textu na řeč
@@ -124,13 +139,15 @@
       items:
         - name: Nejčastější dotazy k převodu textu na řeč
           href: faq-text-to-speech.md
+          displayName: 'FAQ,TTS FAQ,SS FAQ,frequently asked questions'
 - name: Rozpoznávání záměru
-  exanded: false
+  expanded: false
   items:
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: 'Rozpoznávání řeči, záměru a entit'
           href: quickstarts/intent-recognition.md
+          displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
     - name: Návody
       items:
         - name: 'Rozpoznávání záměru řeči s využitím LUIS, C#'
@@ -141,30 +158,37 @@
           items:
             - name: C++
               href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
             - name: 'C#'
               href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
             - name: Java
               href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
             - name: JavaScript
               href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
               href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
             - name: "Poznámky k\_verzi"
               href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
         - name: Služba LUIS
           items:
             - name: Materiály pro vývojáře v LUIS
               href: 'https://docs.microsoft.com/azure/cognitive-services/luis/developer-reference-resource'
 - name: Překlad řeči
-  exanded: false
+  expanded: false
   items:
     - name: Přehled
       items:
         - name: Co je překlad řeči?
           href: speech-translation.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Překlad řeči na text
           href: quickstarts/translate-speech-to-text.md
@@ -182,18 +206,25 @@
           items:
             - name: C++
               href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
             - name: 'C#'
               href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
             - name: Java
               href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
             - name: JavaScript
               href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
               href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
             - name: "Poznámky k\_verzi"
               href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
     - name: Zdroje a prostředky
       items:
         - name: Nejčastější dotazy k překladu řeči
@@ -217,18 +248,25 @@
           items:
             - name: C++
               href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
             - name: 'C#'
               href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
             - name: Java
               href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
             - name: JavaScript
               href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
               href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
             - name: "Poznámky k\_verzi"
               href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
         - name: Rozhraní REST API
           items:
             - name: Rozhraní REST API pro přepis konverzace
@@ -246,7 +284,7 @@
           href: custom-commands.md
         - name: Direct Line Speech
           href: direct-line-speech.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: 'C# (UPW)'
           href: quickstart-voice-assistant-csharp-uwp.md
@@ -258,6 +296,8 @@
           href: quickstart-custom-speech-commands-create-new.md
         - name: Vytvoření vlastního příkazu s parametry (Preview)
           href: quickstart-custom-speech-commands-create-parameters.md
+        - name: Použití vlastních příkazů se službou Vlastní hlas (Preview)
+          href: quickstart-custom-speech-commands-select-custom-voice.md
         - name: Použití vlastních příkazů se sadou Speech SDK (Preview)
           href: quickstart-custom-speech-commands-speech-sdk.md
     - name: Návody
@@ -266,6 +306,10 @@
           href: how-to-custom-speech-commands-fulfill-sdk.md
         - name: Přidání ověřování parametrů do vlastních příkazů
           href: how-to-custom-speech-commands-validations.md
+        - name: Přidání potvrzení k vlastnímu příkazu
+          href: how-to-custom-speech-commands-confirmations.md
+        - name: Přidání korekce v jednom kroku k vlastnímu příkazu
+          href: how-to-custom-speech-commands-one-step-correction.md
     - name: Kurzy
       items:
         - name: Hlasová podpora robota s využitím sady Speech SDK
@@ -275,7 +319,7 @@
         - name: Nejčastější dotazy k hlasovým asistentům
           href: faq-voice-assistants.md
 - name: Přizpůsobení
-  exanded: false
+  expanded: false
   items:
     - name: Převod řeči na text
       items:
@@ -329,6 +373,8 @@
           items:
             - name: 'Postupy: Vytvoření zvukového obsahu'
               href: how-to-audio-content-creation.md
+    - name: Vlastní pokyny pro pojmenovávání klíčových slov
+      href: speech-devices-sdk-kws-guidelines.md
     - name: Zjišťování vlastních klíčových slov
       href: speech-devices-sdk-create-kws.md
 - name: Speech Service
@@ -346,17 +392,21 @@
         - name: Vytvoření prostředku služby Speech
           href: 'get-started.md#create-a-speech-resource-in-azure'
         - name: Containers
-          exanded: false
+          expanded: false
           items:
             - name: Instalace a spuštění kontejnerů
               href: speech-container-howto.md
+              displayName: 'containers,install container,run container'
             - name: Konfigurace kontejnerů
               href: speech-container-configuration.md
+              displayName: 'containers,configure containers,container config,configuration'
             - name: Kubernetes a Helm
               href: speech-container-howto-on-premises.md
+              displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
             - name: Instance kontejneru Azure
               href: deploy-speech-on-container-instances.md
-    - name: Ukázky
+              displayName: 'ACI,azure container instances,container instances,containers'
+    - name: ukázky
       items:
         - name: Ukázky REST pro převod textu na řeč
           href: 'https://github.com/Azure-Samples/Cognitive-Speech-TTS'
@@ -385,25 +435,21 @@
           href: speech-sdk.md
         - name: Dostupnost scénáře
           href: scenario-availability.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Vytvoření projektu
           href: quickstarts/create-project.md
-        - name: 'Nastavení sady Speech SDK s využitím C#'
-          href: quickstarts/setup-platform.md?pivots=programming-language-csharp
-        - name: Nastavení sady Speech SDK s využitím C++
-          href: quickstarts/setup-platform.md?pivots=programming-language-cpp
-        - name: Nastavení sady Speech SDK s využitím Javy
-          href: quickstarts/setup-platform.md?pivots=programming-language-java
-        - name: Nastavení sady Speech SDK s využitím Pythonu
-          href: quickstarts/setup-platform.md?pivots=programming-language-python
-        - name: Nastavení sady Speech SDK s využitím dalších platforem
-          href: quickstarts/setup-platform.md?pivots=programming-language-more
+        - name: Nastavení sady Speech SDK
+          href: quickstarts/setup-platform.md
+          displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
     - name: Návody
       items:
-        - name: Povolit protokolování
+        - name: Jak povolit protokolování
           href: how-to-use-logging.md
-    - name: Ukázky
+        - name: Jak sledovat využití paměti
+          href: how-to-track-speech-sdk-memory-usage.md
+          displayName: 'memory usage, memory consumption, object logging, object tracking, memory'
+    - name: ukázky
       items:
         - name: Ukázky sady Speech SDK (GitHub)
           href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk'
@@ -426,7 +472,7 @@
         - name: Poznámky k verzi sady Speech SDK
           href: releasenotes.md
 - name: Zařízení
-  exanded: false
+  expanded: false
   items:
     - name: Přehled
       items:
@@ -440,7 +486,7 @@
           href: speech-devices-sdk-microphone.md
         - name: Sada Roobo v1
           href: speech-devices-sdk-roobo-v1.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Windows
           href: speech-devices-sdk-windows-quickstart.md
@@ -452,8 +498,12 @@
       items:
         - name: Řešení potíže se sadou Speech Devices SDK
           href: speech-devices-sdk-troubleshooting.md
+    - name: Referenční informace
+      items:
+        - name: Poznámky k verzi sady Speech Devices SDK
+          href: devices-sdk-release-notes.md
 - name: Migrace
-  exanded: false
+  expanded: false
   items:
     - name: Z rozhraní API pro zpracování řeči Bingu
       href: how-to-migrate-from-bing-speech.md
@@ -462,10 +512,11 @@
     - name: Z rozhraní Translator Speech API
       href: how-to-migrate-from-translator-speech-api.md
 - name: Zdroje a prostředky
-  exanded: false
+  expanded: false
   items:
     - name: Podpora
       href: support.md
+      displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
     - name: Oblasti
       href: regions.md
     - name: Ceny a omezení

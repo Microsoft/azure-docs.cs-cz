@@ -4,7 +4,7 @@
   items:
     - name: Informace o službě Azure SignalR
       href: signalr-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: 'ASP.NET Core – C#'
@@ -25,7 +25,11 @@
   items:
     - name: Vytvoření bezserverové aplikace v reálném čase s ověřováním
       href: signalr-tutorial-authenticate-azure-functions.md
-- name: Ukázky
+    - name: Monitorování
+      items:
+        - name: Použití diagnostických protokolů k monitorování služby SignalR
+          href: signalr-tutorial-diagnostic-logs.md
+- name: ukázky
   items:
     - name: Ukázky kódů
       href: 'https://github.com/aspnet/AzureSignalR-samples'
@@ -100,7 +104,7 @@
     - name: Nejčastější dotazy
       href: signalr-resource-faq.md
     - name: Omezení úrovní předplatného služby SignalR Service
-      href: 'https://docs.microsoft.com/azure/azure-subscription-service-limits#signalr-service-limits'
+      href: 'https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#signalr-service-limits'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/signalr-service/'
     - name: Videa

@@ -14,7 +14,7 @@
           href: data-storage.md
         - name: Bezserverové výpočetní prostředí
           href: serverless-compute.md
-        - name: Úložiště Azure
+        - name: Azure Storage
           href: azure-storage.md
         - name: Aplikace v reálném čase
           href: real-time.md
@@ -22,7 +22,7 @@
       href: code-hosting-services.md
     - name: DevOps
       items:
-        - name: Co je DevOps
+        - name: Co je DevOps?
           href: devops.md
         - name: Průběžné sestavování a integrace
           href: continuous-integration.md
@@ -32,7 +32,7 @@
           href: continuous-delivery.md
     - name: Analýza využití a chování uživatelů
       href: analytics.md
-    - name: Oznamování chyb v reálném čase
+    - name: Generování sestav o chybách v reálném čase
       href: diagnostics.md
     - name: Nabízená oznámení
       href: push-notifications.md
@@ -42,7 +42,7 @@
       href: cognitive-services.md
     - name: Azure Maps
       href: azure-maps.md
-    - name: Azure CDN
+    - name: Azure Content Delivery Network
       href: azure-cdn.md
     - name: Azure Cognitive Search
       href: azure-search.md

@@ -1,0 +1,138 @@
+- name: Dokumentace ke správě prostředků Azure
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je Resource Manager?
+      href: overview.md
+- name: Koncepty
+  items:
+    - name: Omezení služeb a předplatných
+      href: azure-subscription-service-limits.md
+    - name: Resource Manager a klasické nasazení
+      href: deployment-models.md
+    - name: Běžné atributy zabezpečení Azure
+      href: azure-resource-manager-security-controls.md
+    - name: Poskytovatelé prostředků podle služeb
+      href: azure-services-resource-providers.md
+    - name: Omezení instancí prostředků
+      href: resources-without-resource-group-limit.md
+- name: Postup
+  items:
+    - name: Přesun – skupiny prostředků / předplatná
+      items:
+        - name: Přesunutí prostředků
+          href: move-resource-group-and-subscription.md
+        - name: Podporované prostředky
+          href: move-support-resources.md
+        - name: Řešení potíží s přesunem
+          href: troubleshoot-move.md
+        - name: Služby
+          items:
+            - name: App Service
+              href: ./move-limitations/app-service-move-limitations.md
+            - name: Azure DevOps
+              href: /azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json
+            - name: Klasické nasazení
+              href: ./move-limitations/classic-model-move-limitations.md
+            - name: Sítě
+              href: ./move-limitations/networking-move-limitations.md
+            - name: Recovery Services
+              href: ../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Virtuální počítače
+              href: ./move-limitations/virtual-machines-move-limitations.md
+    - name: Přesun – oblasti
+      items:
+        - name: Přesun mezi oblastmi
+          href: move-region.md
+        - name: Podporované služby
+          href: region-move-support.md
+        - name: Služby
+          items:
+            - name: Virtuální počítače Azure
+              href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure Storage
+              href: ../../storage/common/storage-account-move.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure SQL
+              href: ../../sql-database/sql-database-move-resources-across-regions.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Virtuální síť
+              href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Skupina zabezpečení sítě (NSG)
+              href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Veřejné IP adresy
+              href: ../../virtual-network/move-across-regions-publicip-portal.md?toc=/azure/azure-resource-manager/toc.json
+    - name: Značky
+      items:
+        - name: Označení prostředků
+          href: tag-resources.md
+        - name: Podpora značek
+          href: tag-support.md
+    - name: Spravovat
+      items:
+        - name: Správa skupin prostředků
+          items:
+            - name: Použití webu Azure Portal
+              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+              href: manage-resource-groups-portal.md
+            - name: Použití Azure CLI
+              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+              href: manage-resource-groups-cli.md
+            - name: Použití Azure Powershell
+              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+              href: manage-resource-groups-powershell.md
+        - name: Správa prostředků
+          items:
+            - name: Použití webu Azure Portal
+              displayName: 'open,delete,deploy,move,lock,tag,monitor'
+              href: manage-resources-portal.md
+            - name: Použití Azure CLI
+              displayName: 'open,delete,deploy,move,lock,tag'
+              href: manage-resources-cli.md
+            - name: Použití Azure Powershell
+              displayName: 'open,delete,deploy,move,lock,tag'
+              href: manage-resources-powershell.md
+        - name: Odstranění skupin prostředků a prostředků
+          href: delete-resource-group.md
+        - name: Uzamčení prostředků
+          href: lock-resources.md
+        - name: Vytvoření předplatných EA
+          href: programmatically-create-subscription.md
+        - name: Udělení přístupu pro vytváření předplatných EA
+          href: grant-access-to-create-subscription.md
+        - name: Ověřování mezi tenanty
+          href: authenticate-multi-tenant.md
+    - name: Zobrazení protokolů aktivit
+      href: view-activity-logs.md
+    - name: Poskytovatelé a typy prostředků
+      href: resource-providers-and-types.md
+    - name: Omezování požadavků
+      href: request-limits-and-throttling.md
+    - name: Sledování asynchronních operací
+      href: async-operations.md
+- name: Referenční informace
+  items:
+    - name: REST
+      href: /rest/api/resources/
+    - name: Azure PowerShell
+      href: /powershell/module/az.resources
+    - name: Azure CLI
+      href: /cli/azure/resource
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.resourcemanager
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.resources
+    - name: Python
+      href: /python/api/overview/azure/resources?view=azure-python
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=azure-resource-manager'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-resource-manager'
+    - name: Správa osobních údajů
+      href: resource-manager-personal-data.md
+    - name: Videa
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager'
