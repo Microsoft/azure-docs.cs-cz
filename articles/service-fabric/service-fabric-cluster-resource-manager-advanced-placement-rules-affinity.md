@@ -1,43 +1,36 @@
 ---
-title: Service Fabric Cluster Resource Manager – spřažení | Dokumentace Microsoftu
-description: Přehled konfigurace spřažení pro služeb Service Fabric
+title: Service Fabric Správce prostředků clusteru – spřažení
+description: Přehled spřažení služeb pro služby Azure Service Fabric Services a pokyny k konfiguraci spřažení služeb
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 678073e1-d08d-46c4-a811-826e70aba6c4
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 29377492b90f366227ca7bedf85890b7734ea25f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7bfd261802fbf891b8f45079255783cb1e8ac7d4
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62118411"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551739"
 ---
-# <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Konfigurace a použití spřažení služeb v Service Fabric
-Spřažení je ovládací prvek, který je k dispozici hlavně k usnadnění přechodu větší monolitické aplikace do cloudu a mikroslužby světa. Používá se také jako optimalizace pro zlepšení výkonu služeb, i když to může mít vedlejší účinky.
+# <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Konfigurace a použití spřažení služby v Service Fabric
+Spřažení je ovládací prvek, který je k dispozici hlavně k usnadnění přechodu větších aplikací monolitické do cloudu a mikroslužeb na světě. Používá se také jako optimalizace pro zlepšení výkonu služeb, i když to může mít vedlejší účinky.
 
-Řekněme, že jste spojili větší aplikace, nebo disk, který právě nebyl navržen s mikroslužeb na paměti, do Service Fabric (nebo v jakémkoli distribuované prostředí). Tento typ přechodu je běžné. Spuštění přenesením celé aplikace do prostředí, balení a zajistit jeho běží hladce. Potom spustíte, jeho rozdělení na různé menší služby všechny komunikovat mezi sebou.
+Řekněme, že přinášíte větší aplikaci, nebo tu, která se na mikroslužby nenavrhla, aby se mohla Service Fabric (nebo jakékoli distribuované prostředí). Tento typ přechodu je běžný. Začnete tím, že celou aplikaci vyvoláte do prostředí, zabalíte je a zajistěte, aby běžela bez problémů. Pak můžete začít s rozdělením na jiné menší služby, které vzájemně komunikují.
 
-Nakonec můžete zjistit, že aplikace dochází k nějakým potížím. Problémy se obvykle spadají do jedné z těchto kategorií:
+Nakonec se můžete setkat s tím, že u aplikace dochází k nějakým problémům. Problémy obvykle spadají do jedné z těchto kategorií:
 
-1. Některé součásti X v monolitické aplikace měla nezdokumentovaný závislosti na komponentě Y a právě zapnuté těchto komponent do samostatných služeb. Protože tyto služby běží na různých uzlech v clusteru, jsou k přerušení.
-2. Tyto součásti komunikovat přes (místní pojmenované kanály | sdílené paměti | soubory na disku) a opravdu potřebujete umožnit zápis do sdílené místního prostředku z důvodů výkonu hned teď. Že pevný závislost získá později odebral, možná.
-3. Všechno, co je v pořádku, ale ukázalo se, že tyto dvě komponenty mají ve skutečnosti přetížení a výkonu citlivé. Při jejich přesunu do samostatných služeb celkový výkon aplikace tanked nebo latence zvýšit. Celkové aplikace v důsledku toho se podmínky očekávání.
+1. Některá součást X v aplikaci monolitické měla nedokumentovaný závislost na ose Y a tyto součásti jste právě přepnuli na samostatné služby. Vzhledem k tomu, že tyto služby jsou teď spuštěné v různých uzlech clusteru, jsou poškozené.
+2. Tyto komponenty komunikují přes (místní pojmenované kanály | sdílená paměť | soubory na disku) a ve skutečnosti musí být schopné zapisovat do sdíleného místního prostředku z důvodů výkonu. Tato pevná závislost bude později odebrána.
+3. Všechno je v pořádku, ale dojde k tomu, že tyto dvě komponenty jsou ve skutečnosti závislé na konverzaci a výkonu. Když je přesunula do samostatných služeb, celkový výkon aplikace v cisternách nebo latenci se zvýšil. V důsledku toho celková aplikace nesplňuje očekávání.
 
-V těchto případech jsme nechcete přijít o našich refaktoringu práci a nechcete, aby se vrátíte do monolitu. Poslední podmínka může být i jako obyčejný optimalizace žádoucí. Nicméně dokud jsme přepracovat součásti, které budou přirozeně fungují jako služby (nebo nám můžete vyřešit očekávaný výkon nějakým způsobem) budeme potřebovat určitou představu o umístění.
+V těchto případech Nechceme přijít o naši práci s refaktoringem a nechci se vrátit k monolitu. Poslední podmínka může být dokonce vhodná jako jednoduchá optimalizace. Dokud však můžeme změnit návrh komponent, aby fungovaly přirozeně jako služby (nebo až do toho, abychom mohli vyřešit očekávání jiným způsobem), budeme potřebovat nějaký smysl.
 
-Co dělat? Dobře můžete zkusit zapnutí spřažení.
+Co dělat? Můžete se také pokusit zapnout spřažení.
 
-## <a name="how-to-configure-affinity"></a>Jak nakonfigurovat nastavení bránící spřažení
-Nastavení spřažení, můžete definovat vztah přidružení mezi dvěma různými službami. Si můžete představit vztahů jako "odkazující" jedné služby v jiné a slavným "tuto službu spustit pouze ve kterém běží služba." Někdy se označují spřažení jako nadřazené a podřízené relace (kde je bod podřízené v nadřazené). Spřažení zajistí, že replik nebo instancí jedné služby se umístí na stejné uzly jako jiné služby.
+## <a name="how-to-configure-affinity"></a>Jak nakonfigurovat spřažení
+Chcete-li nastavit spřažení, definujte vztah spřažení mezi dvěma různými službami. Spřažení si můžete představit jako "ukazující" jednu službu na jiném a vyslovením "Tato služba se dá spustit jenom tam, kde je tato služba spuštěná." Někdy odkazujeme na spřažení jako na vztah nadřazenosti/podřízenosti (kde navedete podřízenou položku na nadřazeném objektu). Spřažení zajišťuje, že repliky nebo instance jedné služby jsou umístěné na stejných uzlech jako u jiné služby.
 
 ```csharp
 ServiceCorrelationDescription affinityDescription = new ServiceCorrelationDescription();
@@ -48,41 +41,41 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
 > [!NOTE]
-> Podřízené služby mohou účastnit jenom jeden spřažení relace. Pokud jste chtěli na podřízenou k spřažené s dvě nadřazené služby najednou máte několik možností:
-> - Reverse vztahy (mají parentService1 a parentService2 odkazovaly na aktuální službu podřízené), nebo
-> - Určí jeden z rodičů jako centrum s konvencí a mít všechny služby, přejděte na tuto službu. 
+> Podřízená služba se může zúčastnit jenom jedné relace spřažení. Pokud jste chtěli, aby se podřízená položka spřažené ke dvěma nadřazeným službám najednou, máte několik možností:
+> - Obrátíte vztahy (parentService1 a parentService2 Point v aktuální podřízené službě), nebo
+> - Jednu z rodičů určete jako centrum podle konvence a všechny služby v této službě. 
 >
-> Výsledné chování umístění v clusteru by měl být stejný.
+> Výsledný způsob umístění v clusteru by měl být stejný.
 >
 
-## <a name="different-affinity-options"></a>Možnosti různých vztahů
-Spřažení je reprezentován některou z několika korelace schémata a má dva různé režimy. Nejběžnější režim spřažení je, čemu říkáme NonAlignedAffinity. V NonAlignedAffinity replik nebo instancí jiné služby jsou umístěny na stejné uzly. V režimu je AlignedAffinity. Zarovnané spřažení je užitečný jenom v případě stavové služby. Konfigurace dvě stavové služby, které mají zarovnané spřažení zajistí, že primárek tyto služby jsou umístěny na stejné uzly navzájem. Navíc způsobí, že každý pár sekundární databáze pro služby využívané umístit na stejné uzly. Také je možné (ale méně běžné) ke konfiguraci NonAlignedAffinity pro stavové služby. Pro NonAlignedAffinity různých replik dva stavové služby běžet na stejné uzly, ale jejich primárek můžou být nakonec na různých uzlech.
+## <a name="different-affinity-options"></a>Různé možnosti spřažení
+Spřažení je reprezentované prostřednictvím jednoho z několika relačních schémat a má dva různé režimy. Nejběžnějším režimem spřažení je to, co voláme NonAlignedAffinity. V NonAlignedAffinity jsou repliky nebo instance různých služeb umístěné na stejných uzlech. Druhý režim je AlignedAffinity. Zarovnaná spřažení je užitečné jenom u stavových služeb. Konfigurace dvou stavových služeb pro zarovnávání spřažení zajišťuje, že primární prvky těchto služeb jsou umístěné na stejných uzlech. Také způsobí, že všechny dvojice sekundárních pro tyto služby budou umístěny na stejné uzly. K nakonfigurování NonAlignedAffinity pro stavové služby je také možné (i méně časté). V případě NonAlignedAffinity se na stejných uzlech spustí různé repliky dvou stavových služeb, ale jejich primární počítače můžou končit na různých uzlech.
 
 <center>
 
-![Režimy vztahů a jejich vliv][Image1]
+![režimy spřažení a jejich vliv][Image1]
 </center>
 
-### <a name="best-effort-desired-state"></a>Nejlepší úsilí požadovaného stavu
-Vztah spřažení je nejlepší úsilí. Neposkytuje stejné záruky kolokaci nebo spolehlivost spuštěným ve stejném spustitelný proces. Služby ve vztahu k přidružení jsou v podstatě různé entity, které může selhat a přesunout nezávisle na sobě. Vztah spřažení může také rozdělit, i když tyto konce jsou dočasné. Například omezení kapacity může to znamenat, že pouze některé objekty služby ve vztahu spřažení vejde na daný uzel. V těchto případech i když existuje vztah přidružení na místě, se nedají vynutit z důvodu dalších omezení. Pokud je to možné udělat, porušení zásad je automaticky opraven později.
+### <a name="best-effort-desired-state"></a>Požadovaný stav nejlepšího úsilí
+Vztah spřažení je nejlepší úsilí. Neposkytuje stejné záruky na společné umísťování nebo spolehlivost, které běží ve stejném spustitelném procesu. Služby v relaci spřažení jsou zásadními různými entitami, které mohou selhat a přesunout nezávisle. Relace spřažení by mohla také přerušit, i když jsou tyto přerušení dočasné. Například omezení kapacity může znamenat, že se na daný uzel mohou vejít pouze některé objekty služby ve vztahu spřažení. V takových případech, i když existuje vztah spřažení, nejde vynutit z důvodu dalších omezení. Pokud je to možné, je porušení automaticky opraveno později.
 
-### <a name="chains-vs-stars"></a>Řetězy vs. hvězdiček
-Ještě dnes Cluster Resource Manager nemá přístup k modelu řetězů, spřažení relace. Co to znamená, že služba, která je podřízená položka v jednom vztahu spřažení nemůže být nadřazená jiné spřažení relace. Pokud chcete tento typ relace model, máte efektivně modelu jako hvězdičku, spíše než řetězce. Pokud chcete přesunout z řetězce na hvězdičku, nejnižší podřízený by být prvek první podřízený, nadřazené místo. V závislosti na uspořádání vašich služeb budete muset provést několikrát. Pokud není žádná služba přirozené nadřazené, budete muset vytvořit nového, který slouží jako zástupný symbol. V závislosti na požadavcích, můžete také chtít prozkoumat [skupin aplikací](service-fabric-cluster-resource-manager-application-groups.md).
+### <a name="chains-vs-stars"></a>Řetězce vs. hvězdičky
+V současné době Správce prostředků clusteru nedokázal modelovat řetězy vztahů spřažení. To znamená, že služba, která je podřízená v jedné relaci spřažení, nemůže být nadřazená v jiné relaci spřažení. Pokud chcete modelovat tento typ relace, je efektivně nutné modelovat ho jako hvězdičku, nikoli jako řetězec. Chcete-li přejít z řetězce na hvězdičku, pak bude podřízený objekt podřízenosti nadřazené prvnímu podřízenému prvku. V závislosti na tom, jak se vaše služby týkají, může být nutné provést tento postup několikrát. Pokud není k dispozici žádná přirozená nadřazená služba, může být nutné ji vytvořit, která slouží jako zástupný symbol. V závislosti na vašich požadavcích můžete chtít také vyhledat [skupiny aplikací](service-fabric-cluster-resource-manager-application-groups.md).
 
 <center>
 
-![Řetězy vs. Počet hvězdiček v kontextu spřažení relace][Image2]
+![řetězů vs. hvězdiček v kontextu vztahů spřažení][Image2]
 </center>
 
-Další věc ještě dnes si o spřažení relací je, že jsou směrové ve výchozím nastavení. To znamená, že pravidlo spřažení pouze vynutí, že podřízené umístěné s nadřazenými. Takže není jisté, že nadřazený se nachází na podřízené. Proto pokud dojde k narušení vztahů a chcete-li opravit porušení zásad z nějakého důvodu není možné přesunout podřízené do nadřazeného uzlu, pak – i v případě přesunutí nadřazené podřízeného uzlu by opravíte porušení – nadřazená nebude přesunuta do th elektronické podřízený uzel. Nastavení souboru config [MoveParentToFixAffinityViolation](service-fabric-cluster-fabric-settings.md) na hodnotu true by odstranila směrovou orientaci. Je také důležité si uvědomit, že vztah spřažení nelze vynikající nebo okamžitě vynutit, protože různé služby s jinou životní cykly a může selhat a přesunout nezávisle na sobě. Řekněme například, že nadřazený náhle převezme služby při selhání do jiného uzlu vzhledem k tomu, že ho došlo k chybě. Cluster Resource Manageru a převzetí služeb při selhání Manageru zpracovávat převzetí služeb při selhání nejprve od udržování služby, v souladu, a k dispozici je priorita. Po dokončení převzetí služeb vztah spřažení je nefunkční, ale Cluster Resource Manager předpokládá, že všechno je v pořádku dokud ho oznámení, že podřízené není umístěn v nadřazené. Tyto druhy kontroly jsou prováděny pravidelně. Další informace o tom, jak Cluster Resource Manager vyhodnotí omezení je k dispozici v [v tomto článku](service-fabric-cluster-resource-manager-management-integration.md#constraint-types), a [tohohle](service-fabric-cluster-resource-manager-balancing.md) hovoří o další informace o tom, jak nakonfigurovat tempo, na kterém jsou tato omezení vyhodnotit.   
+Další věcí, které se týkají vztahů spřažení, je současné, že jsou ve výchozím nastavení směrované. To znamená, že pravidlo spřažení vynutilo pouze podřízený objekt umístěný s nadřazeným objektem. Nezajišťuje, aby se nadřazený objekt nacházel s podřízeným objektem. Proto pokud dojde k porušení spřažení a k nápravě porušení z nějakého důvodu není možné přesunout podřízenou položku na uzel nadřazené položky, a to i v případě, že přesunutí nadřazené položky do uzlu podřízeného by mohlo porušení opravit – nadřazená položka nebude přesunuta do objektu th. uzel podřízeného prvku e Nastavení [MoveParentToFixAffinityViolation](service-fabric-cluster-fabric-settings.md) konfigurace na hodnotu true by vedlo k odebrání směru. Je také důležité si uvědomit, že vztah spřažení nelze perfektní ani okamžitě vykonat, protože různé služby mají různé životní cykly a mohou selhat a přesouvat se nezávisle. Řekněme například, že nadřazený objekt se při převzetí služeb při selhání převezme na jiný uzel, protože došlo k chybě. Cluster Správce prostředků a Správce převzetí služeb při selhání předá převzetí služeb při selhání, protože udržuje služby, které jsou v souladu s prioritou a jsou dostupné. Po dokončení převzetí služeb při selhání se relace spřažení poruší, ale cluster Správce prostředků považuje všechno za dostupné, dokud nezjistí, že podřízený objekt není umístěný s nadřazeným objektem. Tyto typy kontrol jsou pravidelně prováděny. Další informace o tom, jak Správce prostředků vyhodnotit omezení v [tomto článku](service-fabric-cluster-resource-manager-management-integration.md#constraint-types), se dozvíte [o tom,](service-fabric-cluster-resource-manager-balancing.md) jak nakonfigurovat tempo, na kterých jsou tato omezení vyhodnocována.   
 
 
 ### <a name="partitioning-support"></a>Dělení podpory
-Všimněte si, že o spřažení je posledním krokem je tento spřažení relace nejsou podporovány, kde je nadřazený rozdělit na oddíly. Nakonec může podporovány dělené nadřazené služby, ale ještě dnes není povolený.
+Poslední aspekt oznámení o spřažení je, že vztahy spřažení nejsou podporované, pokud je nadřazený objekt rozdělený na oddíly. Je možné, že se v daném oddílu můžou podporovat i podřízené nadřazené služby, ale v současné době to není povolené.
 
-## <a name="next-steps"></a>Další postup
-- Další informace o konfiguraci služby [informace o konfiguraci služby](service-fabric-cluster-resource-manager-configure-services.md)
-- Omezení služby pro malou skupinu počítačů nebo agregaci zatížení služeb, použijte [skupiny aplikací](service-fabric-cluster-resource-manager-application-groups.md)
+## <a name="next-steps"></a>Další kroky
+- Další informace o konfiguraci služeb najdete v informacích [o konfiguraci služeb](service-fabric-cluster-resource-manager-configure-services.md) .
+- Chcete-li omezit služby na malou skupinu počítačů nebo pro agregaci zatížení služeb, použijte [skupiny aplikací](service-fabric-cluster-resource-manager-application-groups.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resrouce-manager-affinity-modes.png
 [Image2]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resource-manager-chains-vs-stars.png

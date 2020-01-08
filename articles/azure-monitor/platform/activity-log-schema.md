@@ -1,22 +1,24 @@
 ---
 title: Schéma událostí protokolu aktivit Azure
 description: Popisuje schéma událostí pro každou kategorii v protokolu aktivit Azure.
-author: johnkemnetz
+author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 1/16/2019
-ms.author: dukek
+ms.date: 12/04/2019
+ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 73f6de80348b7d933e45a8145f6bdb8fe22b5954
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: df2594165909c55de2de562c9717299d189a20d3
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893599"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531016"
 ---
 # <a name="azure-activity-log-event-schema"></a>Schéma událostí protokolu aktivit Azure
-**Protokol aktivit Azure** je protokol, který poskytuje přehled o všech událostech na úrovni předplatného, ke kterým došlo v Azure. Tento článek popisuje schéma událostí podle kategorie dat. Schéma dat se liší v závislosti na tom, jestli čtete data na portálu, PowerShellu, CLI nebo přímo prostřednictvím REST API a [streamování dat do úložiště nebo Event Hubs pomocí profilu protokolu](activity-log-export.md). Následující příklady znázorňují schéma tak, jak je dostupné prostřednictvím portálu, PowerShellu, CLI a REST API. Mapování těchto vlastností na [schéma protokolů Azure](diagnostic-logs-schema.md) je uvedené na konci článku.
+[Protokol aktivit Azure](activity-logs-overview.md) poskytuje přehled o všech událostech na úrovni předplatného, ke kterým došlo v Azure. Tento článek popisuje schéma událostí pro jednotlivé kategorie. 
+
+Následující příklady znázorňují schéma při přístupu k protokolu aktivit z portálu, PowerShellu, CLI a REST API. Schéma se liší při [streamování protokolu aktivit do úložiště nebo Event Hubs](resource-logs-stream-event-hubs.md). Mapování vlastností [schématu protokolů prostředků](diagnostic-logs-schema.md) je k dispozici na konci článku.
 
 ## <a name="administrative"></a>Správa
 Tato kategorie obsahuje záznam všech operací vytvoření, aktualizace, odstranění a akce provedené prostřednictvím Správce prostředků. Příklady typů událostí zobrazených v této kategorii zahrnují "vytvořit virtuální počítač" a "odstranit skupinu zabezpečení sítě" každou akci prováděnou uživatelem nebo aplikací pomocí Správce prostředků je modelem operace pro konkrétní typ prostředku. Pokud je typ operace zápis, odstranění nebo akce, záznamy o zahájení i úspěchu nebo selhání této operace se zaznamenávají do administrativní kategorie. Administrativní kategorie zahrnuje také všechny změny řízení přístupu na základě role v rámci předplatného.
@@ -558,7 +560,7 @@ Tato kategorie obsahuje záznam výstrahy vygenerované Azure Security Center. P
 | eventDataId |Jedinečný identifikátor události zabezpečení |
 | eventName |Popisný název události zabezpečení |
 | category | Vždy "zabezpečení" |
-| id |Jedinečný identifikátor prostředku události zabezpečení |
+| ID |Jedinečný identifikátor prostředku události zabezpečení |
 | úroveň |Úroveň události Jedna z následujících hodnot: "kritická", "Error", "Warning" nebo "informativní" |
 | resourceGroupName |Název skupiny prostředků pro daný prostředek. |
 | resourceProviderName |Název poskytovatele prostředků pro Azure Security Center. Vždy "Microsoft. Security". |
@@ -638,7 +640,7 @@ Tato kategorie obsahuje záznam všech nových doporučení, která jsou vygener
 | description |Statický text popis události doporučení |
 | eventDataId | Jedinečný identifikátor události doporučení |
 | category | Vždy "doporučení" |
-| id |Jedinečný identifikátor prostředku události doporučení |
+| ID |Jedinečný identifikátor prostředku události doporučení |
 | úroveň |Úroveň události Jedna z následujících hodnot: "kritická", "Error", "Warning" nebo "informativní" |
 | operationName |Název operace  Vždy "Microsoft. Advisor/generateRecommendations/Action"|
 | resourceGroupName |Název skupiny prostředků pro daný prostředek. |
@@ -753,7 +755,7 @@ Tato kategorie obsahuje záznamy všech operací akcí prováděných pomocí [A
 | eventName | Buď "BeginRequest", nebo "EndRequest". "BeginRequest" se používá pro opožděné vyhodnocení auditIfNotExists a deployIfNotExists a když deployIfNotExists efekt spustí nasazení šablony. Všechny ostatní operace vrátí "EndRequest". |
 | category | Deklaruje událost protokolu aktivit jako patřící k zásadě. |
 | eventTimestamp | Časové razítko, kdy se událost vygenerovala službou Azure, zpracování žádosti odpovídající události |
-| id | Jedinečný identifikátor události u konkrétního prostředku |
+| ID | Jedinečný identifikátor události u konkrétního prostředku |
 | úroveň | Úroveň události Audit používá upozornění a zamítnutí používá chybu. Chyba auditIfNotExists nebo deployIfNotExists může vygenerovat upozornění nebo chybu v závislosti na závažnosti. Všechny ostatní události zásad používají "informativní". |
 | operationId | Identifikátor GUID sdílený mezi událostmi, které odpovídají jedné operaci. |
 | operationName | Název operace a přímo koreluje s účinkem zásad. |
@@ -771,9 +773,13 @@ Tato kategorie obsahuje záznamy všech operací akcí prováděných pomocí [A
 | vlastnosti. policies | Obsahuje podrobnosti o definici zásady, přiřazení, vlivu a parametrech, které jsou výsledkem tohoto vyhodnocení zásad. |
 | relatedEvents | Toto pole je prázdné pro události zásad. |
 
-## <a name="mapping-to-resource-logs-schema"></a>Mapování na schéma protokolů prostředků
 
-Při streamování protokolu aktivit Azure do účtu úložiště nebo Event Hubs oboru názvů se data řídí [schématem Azure Resource log](./diagnostic-logs-schema.md). Tady je mapování vlastností z schématu výše na schéma protokolů prostředků:
+## <a name="schema-from-storage-account-and-event-hubs"></a>Schéma z účtu úložiště a Center událostí
+Při streamování protokolu aktivit Azure do účtu úložiště nebo centra událostí data následují po [schématu protokolu prostředků](diagnostic-logs-schema.md). Následující tabulka poskytuje mapování vlastností z schématu výše na schéma protokolů prostředků.
+
+> [!IMPORTANT]
+> Formát dat protokolu aktivit zapsaný do účtu úložiště se změnil na řádky JSON od 1. listopadu 2018. Podrobnosti o změně tohoto formátu najdete v článku [Příprava změny formátu Azure monitor archivované protokoly prostředků do účtu úložiště](diagnostic-logs-append-blobs.md) .
+
 
 | Vlastnost schématu pro protokoly prostředků | Vlastnost schématu REST API protokolu aktivit | Poznámky |
 | --- | --- | --- |
@@ -796,8 +802,69 @@ Při streamování protokolu aktivit Azure do účtu úložiště nebo Event Hub
 | properties.operationId | operationId |  |
 | Properties. eventProperties | properties |  |
 
+Následuje příklad události s použitím tohoto schématu..
+
+``` JSON
+{
+    "records": [
+        {
+            "time": "2015-01-21T22:14:26.9792776Z",
+            "resourceId": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
+            "operationName": "microsoft.support/supporttickets/write",
+            "category": "Write",
+            "resultType": "Success",
+            "resultSignature": "Succeeded.Created",
+            "durationMs": 2826,
+            "callerIpAddress": "111.111.111.11",
+            "correlationId": "c776f9f4-36e5-4e0e-809b-c9b3c3fb62a8",
+            "identity": {
+                "authorization": {
+                    "scope": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
+                    "action": "microsoft.support/supporttickets/write",
+                    "evidence": {
+                        "role": "Subscription Admin"
+                    }
+                },
+                "claims": {
+                    "aud": "https://management.core.windows.net/",
+                    "iss": "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/",
+                    "iat": "1421876371",
+                    "nbf": "1421876371",
+                    "exp": "1421880271",
+                    "ver": "1.0",
+                    "http://schemas.microsoft.com/identity/claims/tenantid": "1e8d8218-c5e7-4578-9acc-9abbd5d23315 ",
+                    "http://schemas.microsoft.com/claims/authnmethodsreferences": "pwd",
+                    "http://schemas.microsoft.com/identity/claims/objectidentifier": "2468adf0-8211-44e3-95xq-85137af64708",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "admin@contoso.com",
+                    "puid": "20030000801A118C",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "9vckmEGF7zDKk1YzIY8k0t1_EAPaXoeHyPRn6f413zM",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "John",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "Smith",
+                    "name": "John Smith",
+                    "groups": "cacfe77c-e058-4712-83qw-f9b08849fd60,7f71d11d-4c41-4b23-99d2-d32ce7aa621c,31522864-0578-4ea0-9gdc-e66cc564d18c",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": " admin@contoso.com",
+                    "appid": "c44b4083-3bq0-49c1-b47d-974e53cbdf3c",
+                    "appidacr": "2",
+                    "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
+                    "http://schemas.microsoft.com/claims/authnclassreference": "1"
+                }
+            },
+            "level": "Information",
+            "location": "global",
+            "properties": {
+                "statusCode": "Created",
+                "serviceRequestId": "50d5cddb-8ca0-47ad-9b80-6cde2207f97c"
+            }
+        }
+    ]
+}
+```
+
+
+
+
 
 ## <a name="next-steps"></a>Další kroky
 * [Další informace o protokolu aktivit](activity-logs-overview.md)
-* [Export protokolu aktivit do Azure Storage nebo Event Hubs](activity-log-export.md)
+* [Vytvoření nastavení diagnostiky pro odesílání protokolu aktivit do Log Analytics pracovního prostoru, úložiště Azure nebo Center událostí](diagnostic-settings.md)
 

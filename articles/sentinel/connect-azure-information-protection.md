@@ -1,25 +1,21 @@
 ---
-title: Připojení dat Azure Information Protection ke službě Azure Sentinel | Microsoft Docs
+title: Připojit Azure Information Protection k Azure Sentinel
 description: Naučte se připojit Azure Information Protection data v Azure Sentinel.
 services: sentinel
-documentationcenter: na
 author: cabailey
 manager: rkarlin
 ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/24/2019
 ms.author: cabailey
-ms.openlocfilehash: a2760b53dbb9776501cb5e58c681045743471166
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: ef97ad601436faf44b0f49bd48d78c4c9420c7c8
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261823"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563679"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Připojení dat z Azure Information Protection
 
@@ -29,7 +25,7 @@ ms.locfileid: "71261823"
 
 Pomocí konfigurace konektoru Azure Information Protection data můžete streamovat informace o protokolování z [Azure Information Protection](https://azure.microsoft.com/services/information-protection/) do Azure Sentinel. Azure Information Protection vám pomůže řídit a zabezpečovat citlivá data, ať už jsou uložená v cloudu nebo místně.
 
-Pokud je [centrální vytváření sestav pro Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip) už nakonfigurované tak, aby se informace protokolování z této služby ukládaly do stejného pracovního prostoru Log Analytics, jako jste teď vybrali pro Azure Sentinel, můžete přeskočit konfiguraci Tento datový konektor. Informace o protokolování z Azure Information Protection jsou již k dispozici pro službu Azure Sentinel.
+Pokud je [centrální vytváření sestav pro Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip) už nakonfigurované tak, aby se informace protokolování z této služby ukládaly do stejného pracovního prostoru Log Analytics, jako jste teď vybrali pro Azure Sentinel, můžete přeskočit konfiguraci tohoto datového konektoru. Informace o protokolování z Azure Information Protection jsou již k dispozici pro službu Azure Sentinel.
 
 Pokud se však protokolování informací z Azure Information Protection chystá k jinému pracovnímu prostoru Log Analytics, než který jste právě vybrali pro Azure Sentinel, proveďte jednu z následujících akcí:
 
@@ -42,7 +38,7 @@ Pokud se však protokolování informací z Azure Information Protection chystá
 ## <a name="prerequisites"></a>Požadavky
 
 - Jedna z následujících rolí správce Azure AD pro vašeho tenanta: 
-    - Správce služby Azure Information Protection
+    - Správce Azure Information Protection
     - Správce zabezpečení
     - Správce dodržování předpisů
     - Správce dat dodržování předpisů
@@ -69,7 +65,7 @@ Následující pokyny použijte, pokud jste nenakonfigurovali Log Analytics prac
 
 4. Po výběru pracovního prostoru vyberte **OK** a **stav** konektoru by se teď měl změnit na **připojeno**.
 
-5. Data sestav z Azure Information Protection jsou uložena v tabulce **InformationProtectionLogs_CL** v rámci vybraného pracovního prostoru. 
+5. Data vytváření sestav z Azure Information Protection jsou uložena v tabulce **InformationProtectionLogs_CL** ve vybraném pracovním prostoru. 
     
     Pokud chcete pro tato data sestav použít příslušné schéma v Azure Monitor, vyhledejte **InformationProtectionEvents**. Informace o těchto funkcích událostí najdete v části [Popis schématu pro funkce událostí](https://docs.microsoft.com/azure/information-protection/reports-aip#friendly-schema-reference-for-event-functions) v dokumentaci k Azure Information Protection.
 

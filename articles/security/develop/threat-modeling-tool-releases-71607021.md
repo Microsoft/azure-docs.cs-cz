@@ -1,32 +1,24 @@
 ---
-title: Verze Threat Modeling Tool – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool verze 7/2/2019 – Azure
 description: Dokumentující poznámky k verzi pro nástroj pro modelování hrozeb
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2019
-ms.author: jegeib
-ms.openlocfilehash: 44fd84af629fadfc96d738e81f2568359ee19d66
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d26ff015156f5d050a74733ff82c811ff5f1700a
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219851"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548770"
 ---
 # <a name="threat-modeling-tool-update-release-71607021---722019"></a>Threat Modeling Tool vydání aktualizace 7.1.60702.1-7/2/2019
 
 7\.1.60702.1 verze Microsoft Threat Modeling Tool (TMT) byla vydána v červenci 2 2019 a obsahuje následující změny:
 
-- Vylepšení usnadnění
+- Vylepšení přístupnosti
 - Opravy chyb
 - Zahrnutí sady vzorníků Open-Source poskytnuté komunitou
 

@@ -1,32 +1,23 @@
 ---
-title: Kurz – Nasazení aplikace do služby Azure Service Fabric Mesh | Microsoft Docs
+title: Kurz – nasazení aplikace do sítě Azure Service Fabric
 description: V tomto kurzu se dozvíte, jak nasadit aplikaci do služby Service Fabric Mesh pomocí šablony.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ce063d8a256cbf2507e19d459aafe13150eccce7
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 1ff1407400843fdb0f0ff997e2e0a3c1b7e67c7d
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306953"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494935"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Kurz: Nasazení aplikace do služby Service Fabric Mesh pomocí šablony
 
 Tento kurz je první částí série. Dozvíte se, jak nasadit aplikaci Azure Service Fabric Mesh pomocí šablony.  Aplikace se skládá z webové front-end služby ASP.NET a back-endové služby s webovým rozhraním API ASP.NET Core, které najdete v Docker Hubu.  Tyto dvě image kontejneru si stáhnete z Docker Hubu a pak je nasdílíte do vlastního privátního registru. Pak pro aplikaci vytvoříte šablonu Azure Resource Manageru a nasadíte aplikaci ze svého registru kontejneru do služby Service Fabric Mesh. Jakmile budete hotovi, budete mít jednoduchou aplikaci seznamu úkolů spuštěnou ve službě Service Fabric Mesh.
 
-V první části této série se naučíte:
+V první části tohoto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření privátní instance služby Azure Container Registry
@@ -51,15 +42,15 @@ Než začnete s tímto kurzem:
 
 * [Instalace Dockeru](service-fabric-mesh-howto-setup-developer-environment-sdk.md#install-docker)
 
-* [Nainstalujte si místně Azure CLI a Service Fabric Mesh CLI](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli).
+* [Nainstalujte si místně Azure CLI a Service Fabric Mesh CLI.](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli)
 
-## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
+## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
 
 Image kontejneru přidružené k službám ve vaší aplikaci Service Fabric Mesh musí být uložené v registru kontejneru.  V tomto kurzu se používá privátní instance služby Azure Container Registry (ACR). 
 
 Pomocí následujících kroků vytvořte instanci služby ACR.  Pokud už máte nastavenou instanci služby ACR, můžete tento krok přeskočit.
 
-### <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k Azure a nastavte aktivní předplatné.
 
@@ -109,7 +100,7 @@ Po vytvoření registru se zobrazí výstup podobný tomuto:
 
 ## <a name="push-the-images-to-azure-container-registry"></a>Nasdílení imagí do služby Azure Container Registry
 
-V tomto kurzu se jako příklad používá ukázková aplikace seznamu úkolů.  Image kontejneru pro služby [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) a [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) najdete na Docker Hubu. Zobrazit [vytvoření webové aplikace Service Fabric mřížky](service-fabric-mesh-tutorial-create-dotnetcore.md) informace o tom, jak vytvořit aplikaci v sadě Visual Studio. Service Fabrice Mesh podporuje spouštění kontejnerů Dockeru pro Windows nebo Linux.  Pokud pracujete s kontejnery Linuxu, vyberte v Dockeru **Switch to Linux containers** (Přepnout na kontejnery Linuxu).  Pokud pracujete s kontejnery Windows, vyberte v Dockeru **Switch to Windows containers** (Přepnout na kontejnery Windows).
+V tomto kurzu se jako příklad používá ukázková aplikace seznamu úkolů.  Image kontejneru pro služby [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) a [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) najdete na Docker Hubu. Informace o tom, jak sestavit aplikaci v aplikaci Visual Studio, najdete v tématu [Vytvoření webové aplikace s Service Fabricovou mřížkou](service-fabric-mesh-tutorial-create-dotnetcore.md) . Service Fabrice Mesh podporuje spouštění kontejnerů Dockeru pro Windows nebo Linux.  Pokud pracujete s kontejnery Linuxu, vyberte v Dockeru **Switch to Linux containers** (Přepnout na kontejnery Linuxu).  Pokud pracujete s kontejnery Windows, vyberte v Dockeru **Switch to Windows containers** (Přepnout na kontejnery Windows).
 
 Pokud chcete nasdílet image do instance služby ACR, musíte nejprve mít image kontejneru. Pokud ještě nemáte žádné místní image kontejneru, pomocí příkazu [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) si z Docker Hubu stáhněte image [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) a [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/).
 
@@ -139,7 +130,7 @@ docker tag seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709 mycontainer
 docker tag seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709 mycontainerregistry.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709
 ```
 
-Přihlaste se do služby Azure Container Registry.
+Přihlaste se k Azure Container Registry.
 
 ```azurecli
 az acr login -n myContainerRegistry
@@ -264,7 +255,7 @@ Služby se v šabloně určují jako vlastnosti prostředku aplikace.  Aplikace 
                   "endpoints": [
                     {
                       "name": "ServiceAListener",
-                      "port": 20001
+                      "port": 80
                     }
                   ],
                   "resources": {
@@ -405,7 +396,7 @@ Projděte si protokoly nasazené aplikace pomocí příkazu `az mesh code-packag
 az mesh code-package-log get --resource-group myResourceGroup --application-name todolistapp --service-name WebFrontEnd --replica-name 0 --code-package-name WebFrontEnd
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V této části kurzu jste se naučili:
 

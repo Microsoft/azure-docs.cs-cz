@@ -3,18 +3,18 @@ title: Odhad nákladů na plán spotřeby v Azure Functions
 description: Naučte se, jak lépe odhadnout náklady, které vám mohou vzniknout při spuštění aplikace Function App v plánu spotřeby v Azure.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9d81c99f3602e3d7ed5508884b0b313ef2f2fcaf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 38a3435ddbc6e7cce5d18c99e227d405fdc2e7dd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230864"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613054"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Odhad nákladů na plán spotřeby
 
 Existují tři typy hostujících plánů pro aplikaci, která běží v Azure Functions, přičemž každý plán má svůj vlastní cenový model: 
 
-| Plánování | Popis |
+| Plánujte | Popis |
 | ---- | ----------- |
 | [**Nároky**](functions-scale.md#consumption-plan) | Účtují se vám jenom čas, který aplikace Function App spouští. Tento plán zahrnuje[stránku s cenami] [bezplatného grantu]na jednotlivých předplatných.|
 | [**Nárok**](functions-scale.md#premium-plan) | Poskytuje stejný mechanismus funkcí a škálování jako plán spotřeby, ale s vylepšeným výkonem a přístupem k virtuální síti. Náklady jsou založené na vaší zvolené cenové úrovni. Další informace najdete v tématu [plán Azure Functions Premium](functions-premium-plan.md). |
@@ -188,7 +188,7 @@ Tento příkaz vrátí datovou část JSON, která vypadá jako v následující
   ]
 }
 ```
-Tato konkrétní odpověď ukazuje, že od `2019-09-11T21:46` do `2019-09-11T23:18`, během které aplikace využila 1110000000 MB – milisekund (1083,98 GB-s).
+Tato konkrétní odpověď ukazuje, že od `2019-09-11T21:46` k `2019-09-11T23:18`vypnula aplikace 1110000000 MB – milisekundy (1083,98 GB-s).
 
 ## <a name="determine-memory-usage"></a>Určení využití paměti
 

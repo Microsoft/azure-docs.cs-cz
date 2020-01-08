@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: iainfou
-ms.openlocfilehash: 8cba2cbf8fcbad1acae8c36892308c3249fc4181
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: aafefeb94f3b150789a91c3cf669520ccb522dd8
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72674906"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893055"
 ---
 # <a name="preview---migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Preview – migrace Azure AD Domain Services z modelu klasických virtuálních sítí do Správce prostředků
 
@@ -306,12 +306,13 @@ Azure služba AD DS potřebuje skupinu zabezpečení sítě k zabezpečení port
 
 Pokud dojde k chybě při spuštění rutiny PowerShellu pro přípravu migrace v kroku 2 nebo pro migraci sebe sama v kroku 3, spravovaná doména Azure služba AD DS se může vrátit k původní konfiguraci. Tato návratová záloha vyžaduje původní klasickou virtuální síť. Všimněte si, že IP adresy se i po vrácení zpět můžou změnit.
 
-Spusťte rutinu `Migrate-Aadds` s použitím parametru *-Abort* . Zadejte *ManagedDomainFqdn* pro vaši vlastní spravovanou doménu Azure služba AD DS připravenou v předchozí části, jako je třeba *contoso.com*:
+Spusťte rutinu `Migrate-Aadds` s použitím parametru *-Abort* . Zadejte *ManagedDomainFqdn* pro vaši vlastní spravovanou doménu Azure služba AD DS připravenou v předchozí části, jako je třeba *contoso.com*, a název klasické virtuální sítě, jako je například *myClassicVnet*:
 
 ```powershell
 Migrate-Aadds `
     -Abort `
     -ManagedDomainFqdn contoso.com `
+    -ClassicVirtualNetworkName myClassicVnet `
     -Credentials $creds
 ```
 
@@ -360,4 +361,4 @@ Po migraci spravované domény Azure služba AD DS do modelu nasazení Správce 
 [get-credential]: /powershell/module/microsoft.powershell.security/get-credential
 
 <!-- EXTERNAL LINKS -->
-[powershell-script]: https://www.powershellgallery.com/packages/Migrate-Aadds/1.0
+[powershell-script]: https://www.powershellgallery.com/packages/Migrate-Aadds/

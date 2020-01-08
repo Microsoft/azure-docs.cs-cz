@@ -3,18 +3,18 @@ title: Glosář pojmů – IoT technologie Plug and Play Preview | Microsoft Doc
 description: Koncepty – Glosář běžných termínů týkajících se IoT technologie Plug and Play ve verzi Preview.
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 10/10/2019
+ms.date: 12/23/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 22b2cb8caa815b2ce8343a060a5f12133b763b83
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b6516b07f24c40fcb95d47e05b22dd7672c10f2a
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890345"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531197"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Glosář pojmů pro IoT technologie Plug and Play Preview
 
@@ -105,7 +105,7 @@ Model schopností zařízení popisuje [zařízení IoT technologie Plug and Pla
 
 ## <a name="device-certification"></a>Certifikace zařízení
 
-Certifikace zařízení je proces certifikace [technologie Plug and Play zařízení IoT](#iot-plug-and-play-device) , aby bylo možné ho přidat do [katalogu zařízení s certifikací pro IoT](#certified-for-iot-device-catalog) a jeho [modelem schopností zařízení](#device-capability-model) a [rozhraní](#interface) přidaných do [veřejného modelu. úložiště](#public-model-repository).
+Certifikace zařízení je proces certifikace [technologie Plug and Play zařízení IoT](#iot-plug-and-play-device) , aby ho bylo možné přidat do [katalogu zařízení s certifikací pro IoT](#certified-for-iot-device-catalog) a jeho [modelu schopností zařízení](#device-capability-model) a [rozhraní](#interface) přidaných do [veřejného úložiště modelu](#public-model-repository).
 
 ## <a name="device-developer"></a>Vývojář zařízení
 
@@ -115,7 +115,7 @@ Vývojář zařízení používá model, [rozhraní](#interface)a sadu [funkcí]
 
 [Vývojář zařízení](#device-developer) používá k modelování schopností [technologie Plug and Play zařízení IoT](#iot-plug-and-play-device) [Jazyk digitálního vlákna s definicemi](#digital-twin-definition-language) . Model se dá sdílet pomocí úložiště modelu. Vývojář zařízení může z modelu vygenerovat kostru kódu zařízení. [Vývojář řešení](#solution-developer) může nakonfigurovat řešení IoT z modelu.
 
-## <a name="device-provisioning-service"></a>Služba Device Provisioning
+## <a name="device-provisioning-service"></a>Služba zřizování zařízení
 
 [Azure IoT Central](#azure-iot-central) používá službu Device Provisioning ke správě veškeré registrace a připojení zařízení. Další informace najdete v tématu [připojení zařízení v Azure IoT Central](../iot-central/preview/overview-iot-central-get-connected.md). Službu Device Provisioning můžete použít také ke správě registrace zařízení a připojení k řešení IoT založenému na IoT Hub. Další informace najdete v tématu [zřizování zařízení pomocí Azure IoT Hub Device Provisioning Service](../iot-dps/about-iot-dps.md).
 
@@ -143,7 +143,7 @@ Jazyk popisující modely a rozhraní pro [zařízení IoT technologie Plug and 
 
 Trasa nastavená ve [IoT Hub](#azure-iot-hub) pro doručování [událostí digitální události změny](#digital-twin-change-events) do a koncového bodu, jako je Service Bus fronta.
 
-## <a name="interface"></a>Prostředí
+## <a name="interface"></a>Rozhraní
 
 Rozhraní popisuje související možnosti, které jsou implementovány [zařízením IoT technologie Plug and Play](#iot-plug-and-play-device) nebo z [digitálního vlákna](#digital-twin). Můžete opakovaně používat rozhraní napříč různými [modely schopností zařízení](#device-capability-model).
 
@@ -195,7 +195,7 @@ Signatury sdíleného přístupu jsou mechanismy ověřování založené na zab
 
 Vývojář řešení vytvoří back-end řešení. Vývojář řešení obvykle funguje s prostředky Azure, jako jsou [IoT Hub](#azure-iot-hub) a [úložiště modelů](#model-repository), nebo funguje s [IoT Central](#azure-iot-central).
 
-## <a name="telemetry"></a>Telemetrická data
+## <a name="telemetry"></a>Telemetrie
 
 Pole telemetrie definovaná v [rozhraní](#interface) reprezentují měření. Tato měření jsou obvykle hodnoty, jako jsou například čtení senzorů, které jsou odesílány [zařízením IoT technologie Plug and Play](#iot-plug-and-play-device) jako datový proud dat.
 

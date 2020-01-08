@@ -5,35 +5,39 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 83b91be52694076373d950e0ad785ef22671ef4f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 82738627b84713669cb6ddfc94c22b6f24b49e3a
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894519"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530846"
 ---
-# <a name="collect-azure-resource-logs-in-log-analytics-workspace-in-azure-monitor"></a>Shromažďování protokolů prostředků Azure v pracovním prostoru Log Analytics v Azure Monitor
-[Protokoly prostředků](resource-logs-overview.md) v Azure poskytují bohatě a často větší údaje o interním provozu prostředku Azure. Tento článek popisuje, jak shromažďovat protokoly prostředků v pracovním prostoru Log Analytics, který umožňuje jejich analýzu s dalšími daty monitorování shromážděnými v protokolech Azure Monitor pomocí výkonných dotazů protokolu a také k využití dalších Azure Monitor funkcí, jako jsou výstrahy a. vizualizace. 
+# <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>Shromažďování protokolů platformy Azure v pracovním prostoru Log Analytics v Azure Monitor
+[Protokoly platforem](resource-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. Tento článek popisuje, jak shromažďovat protokoly prostředků v pracovním prostoru Log Analytics, který umožňuje jejich analýzu s dalšími daty monitorování shromážděnými v protokolech Azure Monitor pomocí výkonných dotazů protokolu a také k využití dalších Azure Monitor funkcí, jako jsou výstrahy a. vizualizace. 
 
 
-## <a name="what-you-can-do-with-resource-logs-in-a-workspace"></a>Co se dá dělat s protokoly prostředků v pracovním prostoru
-Shromažďování protokolů o prostředcích do pracovního prostoru Log Analytics umožňuje analyzovat protokoly všech vašich prostředků Azure společně a využívat všechny funkce, které jsou k dispozici pro [Azure monitor protokolů](data-platform-logs.md) , které zahrnují následující:
+## <a name="what-you-can-do-with-platform-logs-in-a-workspace"></a>Co se dá dělat s protokoly platforem v pracovním prostoru
+Shromažďování protokolů platforem do pracovního prostoru Log Analytics umožňuje analyzovat protokoly všech vašich prostředků Azure společně a využívat všechny funkce, které jsou k dispozici pro [Azure monitor protokolů](data-platform-logs.md) , které zahrnují následující:
 
 * **Dotazy k protokolu** – Vytvářejte [dotazy protokolu](../log-query/log-query-overview.md) pomocí výkonného dotazovacího jazyka, abyste mohli rychle analyzovat a získávat přehledy o diagnostických datech a analyzovat je pomocí dat shromážděných z jiných zdrojů v Azure monitor.
 * **Upozornění** – Získejte proaktivní oznamování kritických podmínek a vzorů identifikovaných v protokolech prostředků pomocí [výstrah protokolu v Azure monitor](alerts-log.md).
 * **Vizualizace** – připnout výsledky dotazu protokolu na řídicí panel Azure nebo zahrnout ho do sešitu jako součást interaktivní sestavy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Je potřeba [vytvořit nový pracovní prostor](../learn/quick-create-workspace.md) , pokud ho ještě nemáte. Pracovní prostor nemusí být ve stejném předplatném jako prostředek odesílající protokoly, pokud uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC k oběma předplatným.
 
 ## <a name="create-a-diagnostic-setting"></a>Vytvoření nastavení diagnostiky
-Protokoly prostředků nejsou ve výchozím nastavení shromažďovány. Shromážděte je do pracovního prostoru Log Analytics a dalších cílů vytvořením nastavení diagnostiky pro prostředek Azure. Podrobnosti najdete [v tématu Vytvoření nastavení diagnostiky pro shromáždění protokolů a metrik v Azure](diagnostic-settings.md) .
+Pomocí nastavení diagnostiky pro prostředek Azure můžete odesílat protokoly platforem do pracovního prostoru Log Analytics a dalších cílů. Podrobnosti najdete [v tématu Vytvoření nastavení diagnostiky pro shromáždění protokolů a metrik v Azure](diagnostic-settings.md) .
 
-## <a name="collection-mode"></a>Režim shromažďování
-Data shromážděná v Log Analytics pracovním prostoru jsou uložena v tabulkách, jak je popsáno v [části struktura protokolů Azure monitor](../log-query/logs-structure.md). Tabulky používané v protokolech prostředků závisí na typu kolekce, kterou prostředek používá:
+
+## <a name="activity-log-collection"></a>Shromažďování protokolů aktivit
+Protokol aktivit můžete odeslat z libovolného jednoho předplatného do pěti Log Analyticsch pracovních prostorů. Data protokolu prostředků shromážděná v Log Analytics pracovním prostoru se ukládají do tabulky **AzureActivity** . 
+
+## <a name="resource-log-collection-mode"></a>Režim shromažďování protokolu prostředků
+Data protokolu prostředků shromážděná v Log Analytics pracovním prostoru jsou uložena v tabulkách, jak je popsáno v [části struktura protokolů Azure monitor](../log-query/logs-structure.md). Tabulky používané v protokolech prostředků závisí na typu kolekce, kterou prostředek používá:
 
 - Diagnostika Azure – všechna zapsaná data jsou do tabulky _AzureDiagnostics_ .
 - Data specifická pro prostředky jsou zapsána do jednotlivých tabulek pro každou kategorii prostředku.
@@ -120,5 +124,5 @@ Své protokoly byste měli migrovat tak, aby používaly režim specifický pro 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o protokolech prostředků Azure najdete v tématu [Přehled protokolů prostředků Azure](resource-logs-overview.md).
-* Pokud chcete vytvořit nastavení diagnostiky pro shromažďování protokolů prostředků do pracovního prostoru Log Analytics, přečtěte si téma [Vytvoření nastavení diagnostiky pro shromáždění protokolů a metrik v Azure](diagnostic-settings.md).
+* [Přečtěte si další informace o protokolech prostředků](resource-logs-overview.md).
+* [Vytvořte nastavení diagnostiky pro shromažďování protokolů a metrik v Azure](diagnostic-settings.md).

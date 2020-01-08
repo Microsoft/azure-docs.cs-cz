@@ -1,20 +1,19 @@
 ---
 title: Víc clusterů HDInsight & jeden Azure Data Lake Storage účet.
 description: Naučte se používat víc než jeden cluster HDInsight s jedním Data Lake Storageovým účtem.
-keywords: úložiště HDInsight, HDFS, strukturovaná data, nestrukturovaná data, Data Lake Store
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/21/2018
-ms.author: hrasheed
-ms.openlocfilehash: ba0c26d87f2161af514c9430eae5c9949ef92b15
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/18/2019
+ms.openlocfilehash: cc67acca11e7e0f24dc0597dcd19672a38a7bf28
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498187"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495759"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Použití více clusterů HDInsight s účtem Azure Data Lake Storage
 
@@ -23,22 +22,21 @@ Data Lake Storage podporuje neomezené úložiště, které je ideální a nejen
 
 Tento článek poskytuje doporučení pro správce Data Lake Storage pro nastavení jednoho a sdíleného Data Lake Storage účtu, který se dá použít v několika **aktivních** clusterech HDInsight. Tato doporučení platí pro hostování více než zabezpečených Apache Hadoop clusterů na sdíleném Data Lake Storagem účtu.
 
-
 ## <a name="data-lake-storage-file-and-folder-level-acls"></a>Data Lake Storage seznamů ACL na úrovni souborů a složek
 
 Ve zbývající části tohoto článku se předpokládá, že máte dobré znalosti seznamů ACL na úrovni souborů a složek v Azure Data Lake Storage, který je podrobně popsaný v tématu [řízení přístupu v Azure Data Lake Storage](../data-lake-store/data-lake-store-access-control.md).
 
 ## <a name="data-lake-storage-setup-for-multiple-hdinsight-clusters"></a>Nastavení Data Lake Storage pro několik clusterů HDInsight
+
 Podíváme se na oboustrannou hierarchii složek, kde můžete vysvětlit doporučení pro používání více clusterů HDInsight s účtem Data Lake Storage. Vezměte v úvahu, že máte účet Data Lake Storage se strukturou složek **/Clusters/finance**. V této struktuře můžou všechny clustery, které finanční organizace vyžaduje, používat/Clusters/finance jako umístění úložiště. Pokud je v budoucnu další organizace, což znamená marketing, chce vytvořit clustery HDInsight pomocí stejného Data Lake Storage účtu, můžou vytvořit/Clusters/marketing. Prozatím můžeme jenom **/Clusters/finance**použít.
 
-Aby bylo možné tuto strukturu složky efektivně využívat clustery HDInsight, musí správce Data Lake Storage přiřadit příslušná oprávnění, jak je popsáno v tabulce. Oprávnění zobrazená v tabulce odpovídají přístupovým seznamům ACL a nikoli výchozím nastavením seznamů ACL. 
-
+Aby bylo možné tuto strukturu složky efektivně využívat clustery HDInsight, musí správce Data Lake Storage přiřadit příslušná oprávnění, jak je popsáno v tabulce. Oprávnění zobrazená v tabulce odpovídají přístupovým seznamům ACL a nikoli výchozím nastavením seznamů ACL.
 
 |Složka  |Oprávnění  |Vlastnící uživatel  |Vlastnící skupina  | Pojmenovaný uživatel | Pojmenovaná uživatelská oprávnění | Pojmenovaná skupina | Pojmenovaná skupina oprávnění |
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|/ | rwxr-x--x  |Správ |Správ  |Instanční objekt |--x  |FINGRP   |r-x         |
-|/clusters | rwxr-x--x |Správ |Správ |Instanční objekt |--x  |FINGRP |r-x         |
-|/clusters/finance | rwxr-x--t |Správ |FINGRP  |Instanční objekt |RWX  |-  |-     |
+|/ | rwxr-x--x  |správce |správce  |Instanční objekt |--x  |FINGRP   |r-x         |
+|/clusters | rwxr-x--x |správce |správce |Instanční objekt |--x  |FINGRP |r-x         |
+|/clusters/finance | rwxr-x--t |správce |FINGRP  |Instanční objekt |rwx  |-  |-     |
 
 V tabulce
 
@@ -57,9 +55,7 @@ Některé klíčové body, které je třeba vzít v úvahu.
 
     |Složka  |Oprávnění  |Vlastnící uživatel  |Vlastnící skupina  | Pojmenovaný uživatel | Pojmenovaná uživatelská oprávnění | Pojmenovaná skupina | Pojmenovaná skupina oprávnění |
     |---------|---------|---------|---------|---------|---------|---------|---------|
-    |/clusters/finanace/ fincluster01 | rwxr-x---  |Instanční objekt |FINGRP  |- |-  |-   |-  | 
-   
-
+    |/clusters/finanace/ fincluster01 | rwxr-x---  |Instanční objekt |FINGRP  |- |-  |-   |-  |
 
 ## <a name="recommendations-for-job-input-and-output-data"></a>Doporučení pro vstupní a výstupní data úlohy
 
@@ -73,7 +69,7 @@ Omezení počtu clusterů, které můžou sdílet jeden Data Lake Storage účet
 
 Při vytváření instančního objektu s přístupem k pojmenovanému uživateli (jak je znázorněno v tabulce výše) doporučujeme **Nepřidávat** pojmenovaného uživatele s výchozím seznamem ACL. Zřizování přístupu s názvem s použitím výchozích seznamů ACL vede k přiřazení oprávnění 770 pro vlastnícího uživatele, vlastnící skupinu a další. I když tato výchozí hodnota 770 nebere v úvahu oprávnění od vlastnícího uživatele (7) nebo vlastnícího skupiny (7), zabírá všechna oprávnění pro ostatní (0). Výsledkem je známý problém s jedním konkrétním případem použití, který je podrobně popsán v části [známé problémy a alternativní řešení](#known-issues-and-workarounds) .
 
-## <a name="known-issues-and-workarounds"></a>Známé problémy a jejich řešení
+## <a name="known-issues-and-workarounds"></a>Známé problémy a řešení
 
 V této části jsou uvedené známé problémy pro použití služby HDInsight s Data Lake Storage a jejich alternativní řešení.
 
@@ -85,12 +81,13 @@ Tato nastavení mají vliv na jeden konkrétní případ použití HDInsight zac
 
     Resource XXXX is not publicly accessible and as such cannot be part of the public cache.
 
-Jak je uvedeno v předchozím propojení JIRA nitě a při lokalizaci veřejných prostředků lokalizátora ověřuje, že všechny požadované prostředky jsou skutečně veřejné, a to kontrolou jejich oprávnění na vzdáleném souborovém systému. Všechny LocalResource, které nevyhovují této podmínce, jsou odmítnuty pro lokalizaci. Kontroly oprávnění, včetně přístupu pro čtení do souboru pro "ostatní". Tento scénář nefunguje předem při hostování clusterů HDInsight na Azure Data Lake, protože Azure Data Lake zakazuje všem přístupům "ostatní" na úrovni kořenové složky.
+Jak je uvedeno v předchozím propojení JIRA nitě a při lokalizaci veřejných prostředků lokalizátora ověřuje, že všechny požadované prostředky jsou skutečně veřejné, a to kontrolou jejich oprávnění na vzdáleném souborovém systému. Všechny LocalResource, které nevyhovují této podmínce, jsou odmítnuty pro lokalizaci. Kontroly oprávnění, včetně přístupu pro čtení do souboru pro "ostatní". Tento scénář nebude při hostování clusterů HDInsight na Azure Data Lake fungovat předem, protože Azure Data Lake zakazuje všem přístupům "ostatní" na úrovni kořenové složky.
 
 #### <a name="workaround"></a>Alternativní řešení
+
 Nastavte oprávnění ke čtení pro **ostatní** přes hierarchii, například na **/** **/Clusters** a **/Clusters/finance** , jak je znázorněno v tabulce výše.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-* [Rychlý start: Nastavení clusterů ve službě HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
-* [Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md)
+- [Rychlý start: Nastavení clusterů ve službě HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+- [Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md)

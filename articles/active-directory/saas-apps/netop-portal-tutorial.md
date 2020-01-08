@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 715e9b4f3baace39cfe8bebe011ae284fc4c6b2b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c2e456114d186e548cede656da8e8d227efa09aa
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893257"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550090"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netop-portal"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s portálem Netop
 
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat portál Netop s Azure Active Directory
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -84,7 +84,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. V části **základní konfigurace SAML** je aplikace předem nakonfigurovaná v režimu iniciované  **IDP** a nezbytné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na tlačítko **uložit** .
+1. V **základním oddílu konfigurace SAML** je aplikace předem nakonfigurovaná v režimu iniciované **IDP** a nezbytné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na tlačítko **Uložit** .
 
 1. Aplikace portálu Netop očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
@@ -146,7 +146,7 @@ Ke konfiguraci jednotného přihlašování na straně **portálu Netop** je nut
 
 ### <a name="create-netop-portal-test-user"></a>Vytvořit testovacího uživatele portálu Netop
 
-V této části vytvoříte na portálu Netop uživatele s názvem Britta Simon. Pokud chcete přidat uživatele na platformě portálu Netop, pracujte s [týmem podpory portálu Netop](mailto:casemanager@netop.com) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte na portálu Netop uživatele s názvem Britta Simon. Pokud chcete přidat uživatele na platformě portálu Netop, pracujte s [týmem podpory portálu Netop](mailto:casemanager@netop.com) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ## <a name="test-sso"></a>Test SSO 
 

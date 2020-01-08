@@ -1,5 +1,5 @@
 ---
-title: Přizpůsobení deklarací identity pro aplikace tenanta Azure AD
+title: Přizpůsobení deklarací identity aplikace tenanta Azure AD (PowerShell)
 titleSuffix: Microsoft identity platform
 description: Tato stránka popisuje Azure Active Directory mapování deklarací identity.
 services: active-directory
@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8d15631c30566d7588b562f1bb0d6ba5280e699
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6ad2d6ec7a98a82917916bba2930149705ebfd87
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918419"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531067"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací, které byly vygenerovány v tokenech pro konkrétní aplikaci v tenantovi (Preview)
 
@@ -72,7 +72,7 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | appctxsender |
 | appid |
 | appidacr |
-| kontrolní výraz |
+| Neplatný |
 | at_hash |
 | aud |
 | auth_data |
@@ -159,7 +159,7 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | request_nonce |
 | resource |
 | roles |
-| prostředků |
+| role |
 | scope |
 | scp |
 | sid |
@@ -328,7 +328,7 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 | Uživatel | facsimiletelephonenumber | Telefonní číslo faxu |
 | aplikace, prostředek, cílová skupina | displayName | Zobrazovaný název |
 | aplikace, prostředek, cílová skupina | s objekty | MVObjectID |
-| aplikace, prostředek, cílová skupina | tags | Značka objektu služby |
+| aplikace, prostředek, cílová skupina | značek | Značka objektu služby |
 | Společnost | tenantcountry | Země tenanta |
 
 **TransformationID:** Element TransformationID se musí poskytnout jenom v případě, že je zdrojový element nastavený na transformaci.
@@ -361,8 +361,8 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 |TransformationMethod|Očekávaný vstup|Očekávaný výstup|Popis|
 |-----|-----|-----|-----|
-|Spojit|řetězec1, řetězec2, oddělovač|outputClaim|Spojí vstupní řetězce pomocí oddělovače mezi. Například: řetězec1: "foo@bar.com", řetězec2: "Sandbox", oddělovač: "." má za následek outputClaim: "foo@bar.com.sandbox"|
-|ExtractMailPrefix|e-mailu|outputClaim|Extrahuje místní část e-mailové adresy. Například: mail: "foo@bar.com" má za následek outputClaim: "foo". Pokud není k dispozici žádný \@ znak, je původní vstupní řetězec vrácen tak, jak je.|
+|Spojit|řetězec1, řetězec2, oddělovač|OutputClaim|Spojí vstupní řetězce pomocí oddělovače mezi. Například: řetězec1: "foo@bar.com", řetězec2: "Sandbox", oddělovač: "." má za následek outputClaim: "foo@bar.com.sandbox"|
+|ExtractMailPrefix|e-mailu|OutputClaim|Extrahuje místní část e-mailové adresy. Například: mail: "foo@bar.com" má za následek outputClaim: "foo". Pokud není k dispozici žádný \@ znak, je původní vstupní řetězec vrácen tak, jak je.|
 
 **InputClaims:** Pomocí elementu InputClaims předejte data ze záznamu schématu deklarace do transformace. Má dva atributy: **ClaimTypeReferenceId** a **TransformationClaimType**.
 
@@ -416,7 +416,13 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 ### <a name="custom-signing-key"></a>Vlastní podpisový klíč
 
-Aby se zásady mapování deklarací projevily, musí se vlastní podpisový klíč přiřadit k instančnímu objektu služby. Tím se zajistí potvrzení, že se tokeny změnily tvůrcem zásad mapování deklarací identity a chrání aplikace před zásadami mapování deklarací, které vytvořily škodlivé objekty actor.  Aplikace, které mají povolené mapování deklarací, musí pro své podpisové klíče tokenu kontrolovat speciální identifikátor URI, protože připojí `appid={client_id}` k [žádostem o metadata OpenID Connect](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document).  
+Aby se zásady mapování deklarací projevily, musí se vlastní podpisový klíč přiřadit k instančnímu objektu služby. Tím se zajistí potvrzení, že se tokeny změnily tvůrcem zásad mapování deklarací identity a chrání aplikace před zásadami mapování deklarací, které vytvořily škodlivé objekty actor. Pokud chcete přidat vlastní podpisový klíč, můžete k vytvoření přihlašovacích údajů symetrického klíče pro objekt aplikace použít rutinu prostředí Azure PowerShell `new-azureadapplicationkeycredential`. Další informace o této rutině Azure PowerShellu získáte kliknutím [sem](https://docs.microsoft.com/powershell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
+
+Aplikace s povoleným mapováním deklarací musí ověřit své podpisové klíče tokenu připojením `appid={client_id}` k [žádostem o metadata OpenID Connect](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document). Níže je uvedený formát dokumentu metadat OpenID Connect, který byste měli použít: 
+
+```
+https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
+```
 
 ### <a name="cross-tenant-scenarios"></a>Scénáře pro více tenantů
 
@@ -430,7 +436,7 @@ Zásady mapování deklarací lze přiřadit pouze objektům instančních objek
 
 V Azure AD je mnoho scénářů možné, když můžete přizpůsobit deklarace identity vydávané v tokenech pro konkrétní instanční objekty. V této části se seznámíme s několika běžnými scénáři, které vám pomůžou naučit se používat typ zásad mapování deklarací identity.
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
 V následujících příkladech můžete vytvořit, aktualizovat, propojit a odstranit zásady pro instanční objekty. Pokud s Azure AD teprve začínáte, doporučujeme vám seznámit se s tím, [Jak získat tenanta Azure AD](quickstart-create-new-tenant.md) , než budete pokračovat v těchto příkladech.
 

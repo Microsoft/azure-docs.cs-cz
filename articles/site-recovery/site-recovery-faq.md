@@ -1,18 +1,14 @@
 ---
 title: Obecné otázky ke službě Azure Site Recovery
 description: Tento článek popisuje oblíbené obecné otázky týkající se Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: fb88d28ea47495dcbdb0844901a03ee7efa4e4eb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: f64b885e82d2f790d7d146e16bb6ccb44e207465
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74078536"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497529"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Obecné otázky týkající se Azure Site Recovery
 
@@ -25,7 +21,7 @@ Tento článek shrnuje Nejčastější dotazy týkající se Azure Site Recovery
 ## <a name="general"></a>Obecné
 
 ### <a name="what-does-site-recovery-do"></a>K čemu Site Recovery slouží?
-Site Recovery přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR), a to tím, že orchestruje a automatizuje replikaci virtuálních počítačů Azure mezi oblastmi, místními virtuálními počítači a fyzickými servery do Azure a místními počítači do sekundární datové centrum. [Další informace](site-recovery-overview.md)
+Site Recovery přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR), a to tím, že orchestruje a automatizuje replikaci virtuálních počítačů Azure mezi oblastmi, místními virtuálními počítači a fyzickými servery do Azure a místními počítači do sekundární datové centrum. [Další informace](site-recovery-overview.md).
 
 ### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>Můžu chránit virtuální počítač, který má disk Docker?
 
@@ -158,7 +154,7 @@ Náš partner, Riverbed, poskytuje podrobné pokyny k práci s Azure Site Recove
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>Můžu použít ExpressRoute k replikaci virtuálních počítačů do Azure?
 Ano, [ExpressRoute se dá použít](concepts-expressroute-with-site-recovery.md) k replikaci místních virtuálních počítačů do Azure.
 
-- Azure Site Recovery replikuje data do Azure Storage přes Veřejný koncový bod. Pro použití ExpressRoute pro replikaci Site Recovery musíte nastavit [partnerský vztah Microsoftu](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) nebo použít stávající [veřejný partnerský vztah](../expressroute/expressroute-circuit-peerings.md#publicpeering) (zastaralý pro nové okruhy).
+- Azure Site Recovery replikuje data do Azure Storage přes Veřejný koncový bod. Pro použití ExpressRoute pro replikaci Site Recovery musíte nastavit [partnerský vztah Microsoftu](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) nebo použít stávající [veřejný partnerský vztah](../expressroute/about-public-peering.md) (zastaralý pro nové okruhy).
 - Partnerský vztah Microsoftu je doporučená doména směrování pro replikaci.
 - Replikace není u privátního partnerského vztahu podporována.
 - Pokud chráníte počítače VMware nebo fyzické počítače, zajistěte, aby byly splněny také [požadavky na síť](vmware-azure-configuration-server-requirements.md#network-requirements) pro konfigurační server. Konfigurační server vyžaduje k orchestraci replikace Site Recovery připojení ke konkrétním adresám URL. ExpressRoute nelze použít pro toto připojení.
@@ -197,7 +193,7 @@ Ano. Další informace o omezování šířky pásma najdete v těchto článcí
 ## <a name="failover"></a>Převzetí služeb při selhání
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Pokud převezmem služby při selhání do Azure, jak mám přístup k virtuálním počítačům Azure po převzetí služeb při selhání?
 
-K virtuálním počítačům Azure můžete přistoupit přes zabezpečené internetové připojení, síť site-to-site VPN nebo přes Azure ExpressRoute. Aby bylo možné se připojit, je nutné připravit množství věcí. [Další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
+K virtuálním počítačům Azure můžete přistoupit přes zabezpečené internetové připojení, síť site-to-site VPN nebo přes Azure ExpressRoute. Aby bylo možné se připojit, je nutné připravit množství věcí. [Další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 
 
 ### <a name="if-i-fail-over-to-azure-how-does-azure-make-sure-my-data-is-resilient"></a>Při převzetí služeb při selhání do Azure, jak Azure zajišťuje, aby moje data byla odolná?
@@ -219,7 +215,7 @@ K automatizaci můžete použít místní Orchestrator nebo Operations Manager k
 Ano, můžete použít obnovení do alternativního umístění pro navrácení služeb po obnovení na jiného hostitele z Azure.
 
 * [Pro virtuální počítače VMware](concepts-types-of-failback.md#alternate-location-recovery-alr)
-* [Pro virtuální počítače s technologií Hyper-V](hyper-v-azure-failback.md#perform-failback)
+* [Pro virtuální počítače s technologií Hyper-V](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
 
 ## <a name="automation"></a>Automation
 

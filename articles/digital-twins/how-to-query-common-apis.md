@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/27/2019
-ms.openlocfilehash: c821524b344c8b741047ba415127cffe59a74ca2
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 12/27/2019
+ms.openlocfilehash: 5be44cb2b3747cccc5063163496b5df56df68df1
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005896"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552181"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Dotazování rozhraní API digitálních vláken Azure na běžné úlohy
 

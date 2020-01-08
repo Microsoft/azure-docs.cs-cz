@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB NoSQL migrace a aplikace partnery vývoj
+title: Migrace a partneři pro vývoj aplikací pro Azure Cosmos DB
 description: Seznam partnerů Microsoftu pomocí řešení migrace, které podporují službu Azure Cosmos DB.
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 2ba6b04efbce5b7911037fbc5f14373cc962035d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 30083b4f2f5f9b69368a47ecaf5505c04ccd6df9
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257363"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530693"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL migrace a aplikace partnery vývoj
 
@@ -21,8 +21,8 @@ Pomocí migrace NoSQL vývoje aplikací můžete z celé řady partnerů integr�
 
 |**Partner**  |**Možnosti a prostředí**  |**Podporované země/oblasti**  |**Obraťte se na**  |
 |---------|---------|---------|---------|
-|![ImanisData][1]   | [Migrace dat](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) z MongoDB do služby Azure Cosmos DB. <br/> Imanis Data povolí globální podniky, které chcete rychle a snadno migrujte své místní nebo cloudové databáze MongoDB do služby Azure Cosmos DB. Imanis Data poskytují přístup migrace bez agenta, přírůstkové věčný cloud pro MongoDB úložiště dat, které zjednodušuje migraci a výrazně zkracuje dobu výpadku.|  USA  |   [Web](http://www.imanisdata.com/)      |
-|![Striim][2]    |  [Přesun dat v reálném čase do služby Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/) z různých datových zdrojů. <br/> Striim zjednodušuje kolekce v reálném čase a přesun dat z různých místních zdrojů, včetně podnikových dokumentů a relační databáze, senzory a soubory protokolů do služby Azure Cosmos DB. |   USA   |  [Web](https://www.striim.com/)       |
+|![ImanisData][1]   | Migrace dat z MongoDB do Azure Cosmos DB. <br/> Imanis Data povolí globální podniky, které chcete rychle a snadno migrujte své místní nebo cloudové databáze MongoDB do služby Azure Cosmos DB. Imanis Data poskytují přístup migrace bez agenta, přírůstkové věčný cloud pro MongoDB úložiště dat, které zjednodušuje migraci a výrazně zkracuje dobu výpadku.|  USA  |   [Web](https://www.cohesity.com/products/imanis-data/)      |
+|![Striim][2]    |  [Přesun dat v reálném čase do služby Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/) z různých datových zdrojů. <br/> Striim zjednodušuje shromažďování dat v reálném čase a pohyb dat z nejrůznějších místních zdrojů, včetně podnikového dokumentu a relačních databází, senzorů a souborů protokolu do Azure Cosmos DB. |   USA   |  [Web](https://www.striim.com/)       |
 
 ## <a name="systems-integrator-partners"></a>Partneři Integrátorům systémů
 
@@ -43,7 +43,7 @@ Pomocí migrace NoSQL vývoje aplikací můžete z celé řady partnerů integr�
 |![Neal Analytics][9]     |     Vývoj aplikací (nové aplikace)    |    USA     |  [Web](https://www.nealanalytics.com/)       |
 |![Celkové softwaru Pragmatic funguje][10]    |   Migrace NoSQL      |   USA      |  [Web](https://www.pragmaticworks.com/)       |
 | ![Globální Ricoh][18] | Migrace NoSQL <br/> Inovace aplikací (existující aplikace)| Spojené království  | [Web](https://www.ricoh.com/)|
-| ![SNP technologie][19] | Migrace NoSQL| USA | [Web](https://www.snp.com/)|
+| ![SNP technologie][19] | Migrace NoSQL| Spojené státy | [Web](https://www.snp.com/)|
 | ![Solidsoft odpovědi][20] | Migrace NoSQL | Chorvatsko, Švédsko, Dánsko, Irsko, Bulharsko, Slovinsko, Kypr, Malta, Litva, Česká republika, Island a Švýcarska a Lichtenštejnska| [Web](https://www.reply.com/solidsoft-reply/)|
 | ![Španělština bodu technologie][21] | Migrace NoSQL| Irsko| [Web](https://www.spanishpoint.ie/)|
 | ![Syone][22] | Migrace NoSQL| Portugalsko| [Web](https://www.syone.com/)|
@@ -54,7 +54,7 @@ Pomocí migrace NoSQL vývoje aplikací můžete z celé řady partnerů integr�
 | ![Rozbalit IT][25] | Vývoj aplikace | Portugalsko, Velká Británie| [Web](https://www.xpand-it.com/)|
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o některých dalších partnerů Microsoftu, najdete v článku [webu Microsoft Partner](https://partner.microsoft.com/en-US/).
 

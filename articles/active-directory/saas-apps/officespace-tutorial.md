@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s OfficeSpace softwarem | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a OfficeSpace softwaru.
+title: 'Kurz: Azure Active Directory integrace jednotného přihlašování se softwarem OfficeSpace | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a OfficeSpace softwarem.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,249 +13,186 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/13/2019
+ms.date: 10/23/2019
 ms.author: jeedes
-ms.openlocfilehash: cf40686adcee757db065fa6f68f990ea122b9747
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 80712c7f59845287006c1699524573c6094498b3
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095862"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561707"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-officespace-software"></a>Kurz: Integrace Azure Active Directory s OfficeSpace softwaru
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-officespace-software"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s OfficeSpace softwarem
 
-V tomto kurzu se dozvíte, jak integrovat OfficeSpace Software s Azure Active Directory (Azure AD).
-Integrace softwaru OfficeSpace s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat software OfficeSpace s Azure Active Directory (Azure AD). Když integrujete software OfficeSpace s Azure AD, můžete:
 
-* Můžete řídit ve službě Azure AD, který má přístup k softwaru OfficeSpace.
-* Uživatelům se automaticky přihlášeni k softwaru OfficeSpace (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k OfficeSpace softwaru.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k OfficeSpace softwaru pomocí svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s OfficeSpace softwaru, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* OfficeSpace Software jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné povoleného jednotného přihlašování OfficeSpace softwaru (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* OfficeSpace Software podporuje **SP** jednotné přihlašování zahájené pomocí
+* OfficeSpace Software podporuje jednotné přihlašování spouštěné v **SP**
 
-* OfficeSpace Software podporuje **JIT** zřizování uživatelů
 
-## <a name="adding-officespace-software-from-the-gallery"></a>Přidání OfficeSpace softwaru z Galerie
+* OfficeSpace Software podporuje zřizování uživatelů **jenom v čase** .
 
-Konfigurace integrace OfficeSpace softwaru do služby Azure AD, budete muset přidat OfficeSpace Software z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Chcete-li přidat OfficeSpace softwaru z galerie, postupujte následovně:**
+## <a name="adding-officespace-software-from-the-gallery"></a>Přidání softwaru OfficeSpace z Galerie
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+Pokud chcete nakonfigurovat integraci OfficeSpace softwaru do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat OfficeSpace Software z galerie.
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **OfficeSpace Software** .
+1. Vyberte **OfficeSpace Software** z panelu výsledků a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-officespace-software"></a>Konfigurace a testování jednotného přihlašování Azure AD pro OfficeSpace Software
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD s OfficeSpace softwarem pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v OfficeSpace softwaru.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí OfficeSpace softwaru, dokončete následující stavební bloky:
 
-4. Do vyhledávacího pole zadejte **OfficeSpace softwaru**vyberte **OfficeSpace softwaru** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurovat jednotné přihlašování OfficeSpace softwaru](#configure-officespace-software-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+    1. **[Vytvoření OfficeSpace softwaru pro testování softwaru](#create-officespace-software-test-user)** – pro uživatele, který má protějšek B. Simon v OfficeSpace softwaru, který je propojený s reprezentací uživatele Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-     ![OfficeSpace Software v seznamu výsledků](common/search-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-V této části nakonfigurujete a test Azure AD jednotné přihlašování s OfficeSpace Software podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské OfficeSpace softwaru.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace **softwarových aplikací OfficeSpace** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s OfficeSpace softwaru, které potřebujete k dokončení následujících stavebních bloků:
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace OfficeSpace softwaru Single Sign-On](#configure-officespace-software-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele softwaru OfficeSpace](#create-officespace-software-test-user)**  – Pokud chcete mít protějšek Britta Simon OfficeSpace Software, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<company name>.officespacesoftware.com/users/sign_in/saml`
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
-
-Ke konfiguraci Azure AD jednotné přihlašování s OfficeSpace softwaru, proveďte následující kroky:
-
-1. V [webu Azure portal](https://portal.azure.com/)na **OfficeSpace softwaru** integrace stránce aplikace vyberte **jednotného přihlašování**.
-
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
-
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
-
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
-
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
-
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
-
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
-
-    ![OfficeSpace softwaru domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
-
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<company name>.officespacesoftware.com/users/sign_in/saml`
-
-    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `<company name>.officespacesoftware.com`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `<company name>.officespacesoftware.com`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory OfficeSpace softwarového klienta](mailto:support@officespacesoftware.com) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. K získání těchto hodnot se obraťte na [tým podpory OfficeSpace softwaru klienta](mailto:support@officespacesoftware.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. OfficeSpace softwarová aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, přičemž **nameidentifier** je namapována na žádnou **user.userprincipalname**. OfficeSpace softwarová aplikace očekává, že **nameidentifier** namapovat s **user.mail**, takže budete muset kliknout na Upravit mapování atributů **upravit** ikonu a změn mapování atributů.
+1. OfficeSpace softwarová aplikace očekává kontrolní výrazy SAML v určitém formátu, které vyžadují přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde **NameIdentifier** je mapován pomocí **User. userPrincipalName**. OfficeSpace softwarová aplikace očekává, že **NameIdentifier** se namapují pomocí **User. mail**, takže potřebujete upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
 
     ![image](common/edit-attribute.png)
 
-6. Kromě toho výše OfficeSpace softwarová aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
+1. Kromě výše uvedené OfficeSpace softwarová aplikace očekává, že se v odpovědi SAML vrátí zpátky několik atributů, které jsou uvedené dál. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name | Zdrojový atribut|
+    | Name (Název) | Zdrojový atribut|
     | ---------------| --------------- |
-    | email | user.mail |
-    | name | user.displayname |
-    | křestní_jméno | user.givenname |
-    | Příjmení | user.surname |
+    | e-mail | user.mail |
+    | jméno | user.displayname |
+    | first_name | user.givenname |
+    | last_name | user.surname |
 
-    a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
+1. V části **podpisový certifikát SAML** kliknutím na tlačítko **Upravit** otevřete dialogové okno **podpisový certifikát SAML** .
 
-    ![image](common/new-save-attribute.png)
+    ![Upravit podpisový certifikát SAML](common/edit-certificate.png)
 
-    ![image](common/new-attribute-details.png)
+1. V části **podpisový certifikát SAML** zkopírujte **hodnotu kryptografického otisku** a uložte ji do svého počítače.
 
-    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
+    ![Kopírovat hodnotu kryptografického otisku](common/copy-thumbprint.png)
 
-    c. Nechte **Namespace** prázdné.
+1. V části **nastavit software OfficeSpace** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
-    d. Vyberte zdroj jako **atribut**.
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-    f. Klikněte na tlačítko **Ok**
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-    g. Klikněte na **Uložit**.
-
-7. V **podpisový certifikát SAML** klikněte na tlačítko **upravit** tlačítko Otevřít **podpisový certifikát SAML** dialogového okna.
-
-    ![Upravit podpisového certifikátu SAML](common/edit-certificate.png)
-
-8. V **podpisový certifikát SAML** tématu, zkopírujte **kryptografický otisk** a uložte ho do počítače.
-
-    ![Zkopírujte hodnotu kryptografického otisku](common/copy-thumbprint.png)
-
-9. Na **nastavení softwaru OfficeSpace** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
-
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
-
-    a. Přihlašovací adresa URL
-
-    b. Identifikátor Azure AD
-
-    c. Adresa URL – odhlášení
-
-### <a name="configure-officespace-software-single-sign-on"></a>Konfigurace softwaru OfficeSpace jednotného přihlašování
-
-1. V okně jiné webové prohlížeče Přihlaste se ke tenanta OfficeSpace softwaru jako správce.
-
-2. Přejděte na **nastavení** a klikněte na tlačítko **konektory**.
-
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/officespace-tutorial/tutorial_officespace_002.png)
-
-3. Klikněte na tlačítko **ověřování SAML**.
-
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/officespace-tutorial/tutorial_officespace_003.png)
-
-4. V **ověřování SAML** části, proveďte následující kroky:
-
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/officespace-tutorial/tutorial_officespace_004.png)
-
-    a. V **adresa url pro odhlášení zprostředkovatele** textového pole vložte hodnotu **odhlašovací adresa URL** zkopírovanou z webu Azure portal.
-
-    b. V **klienta zprostředkovatele identity cílové adrese url** textového pole vložte hodnotu **přihlašovací adresa URL** zkopírovanou z webu Azure portal.
-
-    c. Vložit **kryptografický otisk** hodnotu, která jste zkopírovali z portálu Azure portal do **otisk certifikátu klienta IDP** textového pole. 
-
-    d. Klikněte na tlačítko **uložit nastavení**.
-
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
-
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
-
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
-
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
-
-2. Vyberte **nového uživatele** v horní části obrazovky.
-
-    ![Tlačítko Nový uživatel](common/new-user.png)
-
-3. Ve vlastnosti uživatele proveďte následující kroky.
-
-    ![Dialogové okno uživatele](common/user-properties.png)
-
-    a. V **název** zadat **BrittaSimon**.
-  
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
-    Například BrittaSimon@contoso.com.
-
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na možnost **Vytvořit**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Vyberte **nového uživatele** v horní části obrazovky.
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k softwaru OfficeSpace.
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k softwaru OfficeSpace.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **OfficeSpace softwaru**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **OfficeSpace Software**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-2. V seznamu aplikací vyberte **OfficeSpace softwaru**.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Odkaz OfficeSpace Software v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+### <a name="configure-officespace-software-sso"></a>Konfigurace jednotného přihlašování OfficeSpace softwaru
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+1. V jiném okně webového prohlížeče se přihlaste k tenantovi OfficeSpace softwaru jako správce.
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+2. Přejděte na **Nastavení** a klikněte na **konektory**.
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+    ![Konfigurace jednotného přihlašování na straně aplikace](./media/officespace-tutorial/tutorial_officespace_002.png)
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+3. Klikněte na **ověřování SAML**.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+    ![Konfigurace jednotného přihlašování na straně aplikace](./media/officespace-tutorial/tutorial_officespace_003.png)
 
-### <a name="create-officespace-software-test-user"></a>Vytvořit OfficeSpace Software testovacího uživatele
+4. V části **ověřování SAML** proveďte následující kroky:
 
-V této části se vytvoří uživateli Britta Simon OfficeSpace softwaru. OfficeSpace Software podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi OfficeSpace softwaru, vytvoří se nový po ověření.
+    ![Konfigurace jednotného přihlašování na straně aplikace](./media/officespace-tutorial/tutorial_officespace_004.png)
+
+    a. Do textového pole **Adresa URL poskytovatele odhlášení** vložte hodnotu **adresy URL pro odhlášení** , kterou jste zkopírovali z Azure Portal.
+
+    b. Do textového pole **Adresa URL cíle IDP klienta** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
+
+    c. Vložte hodnotu **kryptografického otisku** , kterou jste zkopírovali z Azure Portal, do textového pole **otisku certifikátu klienta IDP** . 
+
+    d. Klikněte na **Uložit nastavení**.
+
+### <a name="create-officespace-software-test-user"></a>Vytvořit uživatele testu softwaru OfficeSpace
+
+V této části se v softwaru OfficeSpace vytvoří uživatel nazvaný B. Simon. OfficeSpace Software podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v OfficeSpace softwaru neexistuje, vytvoří se po ověření nový.
 
 > [!NOTE]
-> Pokud je potřeba ručně vytvořit uživatele, je potřeba kontaktu [tým podpory softwaru OfficeSpace](mailto:support@officespacesoftware.com).
+> Pokud potřebujete ručně vytvořit uživatele, musíte se obrátit na [tým podpory OfficeSpace Software Support](mailto:support@officespacesoftware.com).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+## <a name="test-sso"></a>Test SSO 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na dlaždici OfficeSpace softwaru na přístupovém panelu, vám by měl být automaticky přihlášeni OfficeSpace software, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici OfficeSpace Software na přístupovém panelu, měli byste se automaticky přihlásit k softwaru OfficeSpace, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje informací:
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Vyzkoušejte si OfficeSpace Software pomocí Azure AD](https://aad.portal.azure.com/)
 

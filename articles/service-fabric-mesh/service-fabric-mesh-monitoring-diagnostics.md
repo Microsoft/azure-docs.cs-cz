@@ -1,75 +1,66 @@
 ---
-title: Monitorování a Diagnostika aplikace Azure Service Fabric mřížky | Dokumentace Microsoftu
-description: Další informace o monitorování a Diagnostika aplikace v Service Fabric sítě v Azure.
-services: service-fabric-mesh
-documentationcenter: .net
+title: Monitorování a diagnostika v aplikacích Service Fabric sítě v Azure
+description: Seznamte se s monitorováním a diagnostikou aplikace v Service Fabric sítě v Azure.
 author: srrengar
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 36c9a5d75c4a72365638619ab85d451df647feb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 247a1de4d00668371337295616d31caf101f0cc5
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939825"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498145"
 ---
 # <a name="monitoring-and-diagnostics"></a>Monitorování a diagnostika
-Azure Service Fabric Mesh je plně spravovaná služba, která vývojářům umožňuje nasazovat aplikace zajišťující mikroslužby, aniž by museli spravovat virtuální počítače, úložiště nebo sítě. Monitorování a Diagnostika sítě pro Service Fabric je rozdělená na tři hlavní typy diagnostických dat:
+Azure Service Fabric Mesh je plně spravovaná služba, která vývojářům umožňuje nasazovat aplikace zajišťující mikroslužby, aniž by museli spravovat virtuální počítače, úložiště nebo sítě. Monitorování a diagnostika Service Fabric sítě jsou rozdělené do tří hlavních typů diagnostických dat:
 
-- Protokoly aplikací – jsou definované jako protokoly z kontejnerizované aplikace, podle toho, jak máte instrumentované aplikace (například protokoly dockeru)
-- Události platformy – události z relevantní pro vaši operaci kontejner sítě platformy aktuálně včetně kontejneru aktivaci, deaktivaci a ukončení.
-- Metriky kontejnerů - metriky využití a výkonu prostředků pro kontejnery (docker statistiky)
+- Protokoly aplikací – ty se definují jako protokoly z vašich kontejnerových aplikací na základě toho, jak jste aplikaci nastavili (např. protokoly Docker).
+- Události platformy – události z platformy sítě, které jsou relevantní pro vaši operaci kontejneru, aktuálně včetně aktivace kontejnerů, deaktivace a ukončení.
+- Metriky kontejnerů – využití prostředků a metriky výkonu pro vaše kontejnery (statistika Docker)
 
-Tento článek popisuje možnosti monitorování a diagnostiky pro nejnovější dostupná verze preview.
+Tento článek popisuje možnosti monitorování a diagnostiky pro nejnovější dostupnou verzi Preview.
 
 ## <a name="application-logs"></a>Protokoly aplikací
 
-Zobrazit protokoly dockeru na nasazenými kontejnery, na základě za kontejner. Každý kontejner v aplikační model sítě pro Service Fabric, je balíček kódu v aplikaci. Přidružených protokolů se balíček kódu zobrazíte následujícím příkazem:
+Protokoly Docker můžete zobrazit z nasazených kontejnerů na základě jednotlivých kontejnerů. V modelu aplikace Service Fabric sítě je každý kontejner balíček kódu ve vaší aplikaci. Chcete-li zobrazit přidružené protokoly s balíčkem kódu, použijte následující příkaz:
 
 ```cli
 az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> --service-name <nameOfService> --replica-name <nameOfReplica> --code-package-name <nameOfCodePackage>
 ```
 
 > [!NOTE]
-> Příkaz "az mřížky repliku služby" můžete získat název repliky. Replika je zvyšování hodnoty celých čísel od 0.
+> K získání názvu repliky můžete použít příkaz AZ oky Service-Replica. Názvy replik jsou přičítáním celých čísel od 0.
 
-Zde je, jak to vypadá k zobrazení protokolů z kontejnerů VotingWeb.Code z hlasovací aplikace:
+Tady je postup, jak to vypadá při zobrazení protokolů z kontejneru VotingWeb. Code z hlasovací aplikace:
 
 ```cli
 az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzVoting --service-name VotingWeb --replica-name 0 --code-package-name VotingWeb.Code
 ```
 
-## <a name="container-metrics"></a>Metriky kontejnerů 
+## <a name="container-metrics"></a>Metriky kontejneru 
 
-Prostředí sítě poskytuje několik metrik určující, jaký výkon vaše kontejnery. Tyto metriky jsou k dispozici přes Azure portal a Azure monitorovat rozhraní příkazového řádku:
+Prostředí sítě zpřístupňuje několik metrik, které označují, jak vaše kontejnery provádějí. Pomocí Azure Portal a rozhraní příkazového řádku Azure monitor jsou k dispozici následující metriky:
 
 | Metrika | Popis | Jednotky|
 |----|----|----|
-| CpuUtilization | ActualCpu/AllocatedCpu v procentech | % |
-| MemoryUtilization | ActualMem/AllocatedMem v procentech | % |
-| AllocatedCpu | Využití procesoru, které jsou přiděleny podle šablony Azure Resource Manageru | Jednotkách Millicore |
-| AllocatedMemory | Paměť přidělená podle šablony Azure Resource Manageru | MB |
-| ActualCpu | Využití procesoru | Jednotkách Millicore |
+| CpuUtilization | ActualCpu/AllocatedCpu jako procento | % |
+| MemoryUtilization | ActualMem/AllocatedMem jako procento | % |
+| AllocatedCpu | Procesor přidělený jako šablona pro Azure Resource Manager | Millicores |
+| AllocatedMemory | Paměť přidělená jako šablona pro Azure Resource Manager | MB |
+| ActualCpu | Využití procesoru | Millicores |
 | ActualMemory | Využití paměti | MB |
-| ContainerStatus | 0 – neplatný: Stav kontejneru neznámý <br> 1 - čekající na vyřízení: Kontejner je naplánováno spuštění <br> 2 - od: Probíhá spuštění kontejneru <br> 3 – spuštění: Kontejner se úspěšně spustila. <br> 4 – zastavení: Kontejner se zastavuje. <br> 5 - stopped: Kontejner se úspěšně zastavila. | neuvedeno |
-| ApplicationStatus | 0 – Neznámý: Stav není retrievable <br> 1 - připravené: Aplikace je úspěšně spuštěná. <br> 2 - upgradu: Je v průběhu upgradu <br> 3 – vytvoření: Vytvoření aplikace <br> 4 – odstranění: Odstraňuje se aplikace <br> 5 – se nezdařilo: Nasazení aplikace se nezdařilo. | neuvedeno |
-| ServiceStatus | 0 – neplatný: Služba momentálně nemá stav <br> 1 - ok: Služba je v pořádku  <br> 2 - upozornění: Může být problém vyžadující šetření <br> 3 – Chyba: Vyskytl se problém, který je potřeba vyšetřit <br> 4 = neznámý: Stav není retrievable | neuvedeno |
-| ServiceReplicaStatus | 0 – neplatný: Replika nemá aktuálně stav <br> 1 - ok: Služba je v pořádku  <br> 2 - upozornění: Může být problém vyžadující šetření <br> 3 – Chyba: Vyskytl se problém, který je potřeba vyšetřit <br> 4 = neznámý: Stav není retrievable | neuvedeno | 
-| RestartCount | Počet kontejnerů restartování | neuvedeno |
+| ContainerStatus | 0 – neplatné: stav kontejneru je neznámý. <br> 1 – čeká se na spuštění kontejneru. <br> 2 – spouštění: kontejner se právě spouští. <br> 3-zahájeno: kontejner byl úspěšně spuštěn. <br> 4 – zastavování: Probíhá zastavení kontejneru. <br> 5 – zastaveno: kontejner se úspěšně zastavil. | Nevztahuje se |
+| ApplicationStatus | 0 – neznámý: stav nelze načíst. <br> 1 – připraveno: aplikace je úspěšně spuštěná. <br> 2\. upgrade: probíhá upgrade. <br> 3 – vytváření: aplikace se vytváří. <br> 4 – odstraňování: aplikace se odstraňuje. <br> 5 – neúspěch: aplikaci se nepovedlo nasadit. | Nevztahuje se |
+| ServiceStatus | 0 – neplatné: služba aktuálně nemá stav <br> 1 – OK: služba je v pořádku.  <br> 2 – Upozornění: může se jednat o něco špatného, vyžadovat šetření <br> 3 – Chyba: došlo k nějakému problému, který vyžaduje šetření. <br> 4 – neznámé: stav nelze načíst. | Nevztahuje se |
+| ServiceReplicaStatus | 0 – neplatné: replika aktuálně nemá stav <br> 1 – OK: služba je v pořádku.  <br> 2 – Upozornění: může se jednat o něco špatného, vyžadovat šetření <br> 3 – Chyba: došlo k nějakému problému, který vyžaduje šetření. <br> 4 – neznámé: stav nelze načíst. | Nevztahuje se | 
+| RestartCount | Počet restartování kontejneru | Nevztahuje se |
 
 > [!NOTE]
-> Hodnoty ServiceStatus a ServiceReplicaStatus jsou stejné jako [stavu HealthState](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) v Service Fabric. 
+> Hodnoty ServiceStatus a ServiceReplicaStatus jsou stejné jako hodnota [elementu](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) ve Service Fabric. 
 
-Jednotlivé metriky je k dispozici na různých dimenzí, abyste si mohli zobrazit na různých úrovních agregace. Aktuální seznam dimenze jsou následující:
+Každá metrika je k dispozici v různých dimenzích, takže můžete vidět agregace na různých úrovních. Aktuální seznam dimenzí je následující:
 
 * ApplicationName
 * ServiceName
@@ -77,20 +68,20 @@ Jednotlivé metriky je k dispozici na různých dimenzí, abyste si mohli zobraz
 * CodePackageName
 
 > [!NOTE]
-> Dimenze CodePackageName není k dispozici pro Linuxové aplikace. 
+> Dimenze CodePackageName není pro aplikace Linux k dispozici. 
 
-Každé dimenze odpovídá různými komponentami nástroje [modelu aplikace Service Fabric](service-fabric-mesh-service-fabric-resources.md#applications-and-services)
+Každá dimenze odpovídá různým komponentám [modelu Service Fabric aplikace](service-fabric-mesh-service-fabric-resources.md#applications-and-services) .
 
 ### <a name="azure-monitor-cli"></a>Azure Monitor CLI
 
-Úplný seznam příkazů je k dispozici v [dokumentace rozhraní příkazového řádku Azure Monitor](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) ale uvádíme několik užitečné následující příklady 
+Úplný seznam příkazů je k dispozici v [dokumentaci Azure monitor CLI](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) , ale obsahujeme několik užitečných příkladů. 
 
-V obou příkladech ID prostředku, které používá tento vzor
+V každém příkladu ID prostředku následuje tento model.
 
 `"/subscriptions/<your sub ID>/resourcegroups/<your RG>/providers/Microsoft.ServiceFabricMesh/applications/<your App name>"`
 
 
-* Využití procesoru v aplikaci kontejnery
+* Využití procesoru kontejnery v aplikaci
 
 ```cli
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization"
@@ -100,19 +91,19 @@ V obou příkladech ID prostředku, které používá tento vzor
     az monitor metrics list --resource <resourceId> --metric "MemoryUtilization" --dimension "ServiceReplicaName"
 ``` 
 
-* Restartování pro každý kontejner v okně 1 hodina 
+* Restartuje se pro každý kontejner v intervalu 1 hodiny. 
 ```cli
     az monitor metrics list --resource <resourceId> --metric "RestartCount" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z
 ``` 
 
-* Průměrné využití procesoru napříč službami s názvem "VotingWeb" v okně 1 hodina
+* Průměrné využití procesoru napříč službami s názvem "VotingWeb" v okně 1 hodiny
 ```cli
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z --aggregation "Average" --filter "ServiceName eq 'VotingWeb'"
 ``` 
 
 ### <a name="metrics-explorer"></a>Průzkumník metrik
 
-Průzkumník metrik je okno na portálu, ve kterém můžete vizualizovat všechny metriky pro vaši aplikaci sítě. V tomto okně je dostupná na stránce aplikace v portálu a okno Azure monitor, odkazující z nich můžete použít, pokud chcete zobrazit metriky pro všechny vaše prostředky Azure, které podporují Azure Monitor. 
+Průzkumník metrik je okno na portálu, ve kterém můžete vizualizovat všechny metriky pro aplikaci vaší sítě. Toto okno je dostupné na stránce aplikace na portálu a v okně Azure monitor, které můžete použít k zobrazení metrik pro všechny prostředky Azure, které podporují Azure Monitor. 
 
 ![Průzkumník metrik](./media/service-fabric-mesh-monitoring-diagnostics/metricsexplorer.png)
 
@@ -125,6 +116,6 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 ![Container Insights](./media/service-fabric-mesh-monitoring-diagnostics/containerinsights.png)
 -->
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Další informace o službě Service Fabric Mesh najdete v článku s [přehledem služby Service Fabric Mesh](service-fabric-mesh-overview.md).
-* Další informace o příkazech metrik Azure monitoru, podívejte se [dokumentace rozhraní příkazového řádku Azure Monitor](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list).
+* Další informace o příkazech Azure Monitor metrik naleznete v dokumentaci k rozhraní příkazového [řádku Azure monitor CLI](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list).

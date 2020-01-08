@@ -6,16 +6,22 @@ ms.service: site-recovery
 ms.date: 06/28/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 1cc1ee82b45ecab17e4bcfb3a909fc90b33a1545
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 10b3e572ec61d1eff342f24a6a5a7bcba6276983
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954435"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495371"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Povolení replikace do Azure pro virtuální počítače VMware
 
 Tento článek popisuje, jak povolit replikaci místních virtuálních počítačů VMware do Azure.
+
+## <a name="resolve-common-issues"></a>Řešení běžných problémů
+
+* Každý disk by měl být menší než 4 TB.
+* Disk s operačním systémem by měl být základní disk, nikoli dynamický disk.
+* V případě generace 2/virtuálních počítačů s podporou rozhraní UEFI by měla být řada operačních systémů Windows a spouštěcí disk by měl být menší než 300 GB.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -23,6 +29,11 @@ Tento článek předpokládá, že máte:
 
 - [Nastavte své místní zdrojové prostředí](vmware-azure-set-up-source.md).
 - [Nastavte své cílové prostředí v Azure](vmware-azure-set-up-target.md).
+- Než začnete, [ověřte požadavky a předpoklady](vmware-physical-azure-support-matrix.md) . Důležité informace, které je potřeba vzít v paměti:
+    - [Podporované operační systémy](vmware-physical-azure-support-matrix.md#replicated-machines) pro replikované počítače.
+    - Podpora [úložiště/disku](vmware-physical-azure-support-matrix.md#storage) .
+    - [Požadavky na Azure](vmware-physical-azure-support-matrix.md#azure-vm-requirements) , které by měly splňovat místní počítače.
+
 
 ## <a name="before-you-start"></a>Než začnete
 Při replikaci virtuálních počítačů VMware mějte na paměti tyto informace:
@@ -123,11 +134,7 @@ Zákazníci se službou Software Assurance společnosti Microsoft mohou pomocí 
 
 Přečtěte si další informace o [zvýhodněné hybridní využití Azure](https://aka.ms/azure-hybrid-benefit-pricing).
 
-## <a name="resolve-common-issues"></a>Řešení běžných problémů
 
-* Každý disk by měl být menší než 4 TB.
-* Disk s operačním systémem by měl být základní disk, nikoli dynamický disk.
-* V případě generace 2/virtuálních počítačů s podporou rozhraní UEFI by měla být řada operačních systémů Windows a spouštěcí disk by měl být menší než 300 GB.
 
 ## <a name="next-steps"></a>Další kroky
 

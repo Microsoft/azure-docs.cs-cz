@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 833e7788a5b17b12ad883f705d56f660c2f1d832
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 69c32370b1f7f7cabb642ab140d69dcec57fb4aa
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033787"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551977"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Ověření možností připojení ExpressRoute
 Tento článek vám pomůže ověřit ExpressRoute konektivitu a řešit potíže. ExpressRoute rozšiřuje místní síť do cloudu Microsoftu přes soukromé připojení, které běžně usnadňuje poskytovatel připojení. Připojení ExpressRoute tradičně zahrnuje tři odlišné síťové zóny, a to takto:
@@ -23,7 +23,7 @@ Tento článek vám pomůže ověřit ExpressRoute konektivitu a řešit potíž
 -   Datacenter Microsoftu
 
 > [!NOTE]
-> V modelu přímého připojení ExpressRoute (nabízený při 10/100 GB/s) se cusomters může přímo připojit ke portu směrovačů Microsoft Enterprise Edge (MSEE). V modelu přímého připojení proto existují jenom zóny zákazníka a sítě Microsoftu.
+> V modelu přímého připojení ExpressRoute (nabízený při 10/100 GB/s) se zákazníci můžou přímo připojit k portu směrovačů Microsoft Enterprise Edge (MSEE). V modelu přímého připojení proto existují jenom zóny zákazníka a sítě Microsoftu.
 >
 
 

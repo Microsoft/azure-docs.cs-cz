@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 508fa7e33cd8572d70b7ebf261edba67fd40dd93
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 16892ec729f56f8c8e1713379285e07fbc0dd4d1
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084158"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495430"
 ---
-# <a name="common-questions-about-vmware-to-azure-replication"></a>Běžné dotazy týkající se replikace z VMware do Azure
+# <a name="common-questions-about-vmware-to-azure-replication"></a>Běžné otázky týkající se replikace z VMware do Azure
 
 Tento článek obsahuje odpovědi na běžné dotazy, které se můžou při nasazování zotavení po havárii místních virtuálních počítačů VMware do Azure nasadit.
 
@@ -176,7 +176,7 @@ Ano, do existující replikační skupiny můžete přidat nové virtuální po�
 
 ### <a name="can-i-modify-vms-that-are-replicating-by-adding-or-resizing-disks"></a>Můžu upravit virtuální počítače, které se replikují, přidáním nebo změnou velikosti disků?
 
-Pro replikaci VMware do Azure můžete změnit velikost disku. Pokud chcete přidat nové disky, musíte disk přidat a znovu povolit ochranu pro virtuální počítač.
+Pro replikaci VMware do Azure můžete změnit velikost disku zdrojových virtuálních počítačů. Pokud chcete přidat nové disky, musíte disk přidat a znovu povolit ochranu pro virtuální počítač.
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>Můžu migrovat místní počítače na novou vCenter Server, aniž by to ovlivnilo probíhající replikaci?
 
@@ -188,7 +188,7 @@ Ne, Site Recovery nepodporuje replikaci do Azure Storage ve virtuálních sítí
 
 ## <a name="component-upgrade"></a>Upgrade součásti
 
-### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>Moje verze agenta služeb mobility nebo konfiguračního serveru je stará a můj upgrade se nezdařil. Co mám udělat?
+### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>Moje verze agenta služeb mobility nebo konfiguračního serveru je stará a můj upgrade se nezdařil. Co mám dělat?
 
 Site Recovery se řídí modelem podpory N-4. [Přečtěte si další informace](https://aka.ms/asr_support_statement) o tom, jak upgradovat z velmi starých verzí.
 
@@ -202,7 +202,7 @@ Site Recovery se řídí modelem podpory N-4. [Přečtěte si další informace]
 
 ## <a name="do-i-need-to-reboot-source-machines-for-each-upgrade"></a>Musím pro každý upgrade restartovat zdrojové počítače?
 
-Pro každý upgrade se doporučuje restart, ale není povinný. [Další informace](https://aka.ms/asr_vmware_upgrades)
+Pro každý upgrade se doporučuje restart, ale není povinný. [Další informace](https://aka.ms/asr_vmware_upgrades).
 
 ## <a name="configuration-server"></a>Konfigurační server
 
@@ -326,7 +326,7 @@ V případě VMware do Azure je nejstarším bodem obnovení, který můžete po
 
 ### <a name="how-do-i-access-azure-vms-after-failover"></a>Návody přístup k virtuálním počítačům Azure po převzetí služeb při selhání
 
-Po převzetí služeb při selhání získáte přístup k virtuálním počítačům Azure přes zabezpečené připojení k Internetu, přes síť VPN typu Site-to-site nebo přes Azure ExpressRoute. Chcete-li se připojit, je nutné připravit několik věcí. [Další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
+Po převzetí služeb při selhání získáte přístup k virtuálním počítačům Azure přes zabezpečené připojení k Internetu, přes síť VPN typu Site-to-site nebo přes Azure ExpressRoute. Chcete-li se připojit, je nutné připravit několik věcí. [Další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 
 ### <a name="is-failed-over-data-resilient"></a>Nedošlo k převzetí služeb při selhání proti datům?
 
@@ -338,27 +338,24 @@ Služba Azure je pro odolnost navržena. Site Recovery je navržena pro převzet
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>Můžu navrátit služby po obnovení do jiného umístění?
 
-Ano. Pokud převezmete služby při selhání do Azure, můžete navrátit služby po obnovení do jiného umístění, pokud není k dispozici původní. [Další informace](concepts-types-of-failback.md#alternate-location-recovery-alr)
+Ano. Pokud převezmete služby při selhání do Azure, můžete navrátit služby po obnovení do jiného umístění, pokud není k dispozici původní. [Další informace](concepts-types-of-failback.md#alternate-location-recovery-alr).
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-with-private-peering-to-fail-back"></a>Proč potřebuji připojení VPN nebo ExpressRoute se soukromým partnerským vztahem k navrácení služeb po obnovení?
 
 Po navrácení služeb po obnovení z Azure se data z Azure zkopírují zpátky na místní virtuální počítač a vyžaduje se privátní přístup.
 
-### <a name="can-i-resize-the-azure-vm-after-failover"></a>Můžu změnit velikost virtuálního počítače Azure po převzetí služeb při selhání?
-
-Ne, velikost nebo typ cílového virtuálního počítače po převzetí služeb při selhání nelze změnit.
 
 ## <a name="automation-and-scripting"></a>Automatizace a skriptování
 
 ### <a name="can-i-set-up-replication-with-scripting"></a>Je možné nastavit replikaci pomocí skriptování?
 
-Ano. Site Recovery pracovní postupy můžete automatizovat pomocí rozhraní REST API, PowerShellu nebo sady Azure SDK. [Další informace](vmware-azure-disaster-recovery-powershell.md)
+Ano. Site Recovery pracovní postupy můžete automatizovat pomocí rozhraní REST API, PowerShellu nebo sady Azure SDK. [Další informace](vmware-azure-disaster-recovery-powershell.md).
 
 ## <a name="performance-and-capacity"></a>Výkon a kapacita
 
 ### <a name="can-i-throttle-replication-bandwidth"></a>Je možné šířku pásma replikace omezit?
 
-Ano. [Další informace](site-recovery-plan-capacity-vmware.md)
+Ano. [Další informace](site-recovery-plan-capacity-vmware.md).
 
 ## <a name="next-steps"></a>Další kroky
 

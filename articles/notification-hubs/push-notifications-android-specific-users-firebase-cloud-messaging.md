@@ -1,5 +1,5 @@
 ---
-title: Posílání nabízených oznámení na konkrétní aplikace pro Android pomocí Azure Notification Hubs | Microsoft Docs
+title: Posílání nabízených oznámení na konkrétní aplikace pro Android pomocí Azure Notification Hubs
 description: Zjistěte, jak pomocí služby Azure Notification Hubs posílat nabízená oznámení konkrétním uživatelům.
 documentationcenter: android
 services: notification-hubs
@@ -17,12 +17,12 @@ ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 5bd709236667dd43e623047ad995b0a7b981e9cb
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: c2d3789082130cbbc42021a0706249dd3966b9ef
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387420"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531118"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-android-apps-using-azure-notification-hubs"></a>Kurz: odesílání nabízených oznámení do konkrétních aplikací pro Android pomocí Azure Notification Hubs
 
@@ -37,7 +37,7 @@ V tomto kurzu provedete následující kroky:
 > * Aktualizace aplikace pro Android
 > * Otestování aplikace
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před provedením tohoto kurzu dokončete [kurz: nabízená oznámení na zařízení s Androidem pomocí služby Azure Notification Hubs a Firebase cloudového zasílání zpráv](notification-hubs-android-push-notification-google-fcm-get-started.md) .
 
@@ -138,7 +138,7 @@ Dalším krokem je aktualizovat aplikaci pro Android vytvořenou v [kurzu: nabí
         />
     </RelativeLayout>
     ```
-2. Otevřete soubor `res/values/strings.xml` a nahraďte definici `send_button` následujícími řádky, které předefinují řetězec pro `send_button` a přidejte řetězce pro ostatní ovládací prvky:
+2. Otevřete soubor `res/values/strings.xml` a nahraďte definici `send_button` následujícími řádky, které předefinují řetězec pro `send_button` a přidávejte řetězce pro ostatní ovládací prvky:
 
     ```xml
     <string name="usernameHint">Username</string>
@@ -149,10 +149,10 @@ Dalším krokem je aktualizovat aplikaci pro Android vytvořenou v [kurzu: nabí
     <string name="notification_message_tag_hint">Recipient username</string>
     ```
 
-    Grafické rozložení `main_activity.xml` by teď mělo vypadat jako na následujícím obrázku:
+    Vaše `main_activity.xml` grafické rozložení by teď mělo vypadat jako na následujícím obrázku:
 
     ![][A1]
-3. Vytvořte novou třídu s názvem `RegisterClient` ve stejném balíčku jako vaše třída `MainActivity`. Pro soubor s novou třídou použijte následující kód.
+3. Vytvořte novou třídu s názvem `RegisterClient` ve stejném balíčku jako vaše `MainActivity` třída. Pro soubor s novou třídou použijte následující kód.
 
     ```java
   
@@ -467,12 +467,12 @@ Dalším krokem je aktualizovat aplikaci pro Android vytvořenou v [kurzu: nabí
         }
     }
     ```
-12. V souboru `build.gradle` přidejte následující řádek do části `android` za sekcí `buildTypes`.
+12. V `build.gradle` souboru přidejte následující řádek do části `android` za oddíl `buildTypes`.
 
     ```java
     useLibrary 'org.apache.http.legacy'
     ```
-13. Pokud je vaše aplikace cílena na rozhraní API úrovně 28 (Android 9,0) nebo vyšší, zahrňte do elementu `<application>` `AndroidManifest.xml` následující deklaraci.
+13. Pokud je vaše aplikace cílena na rozhraní API úrovně 28 (Android 9,0) nebo vyšší, zahrňte do `<application>`ho prvku `AndroidManifest.xml`následující deklaraci.
 
     ```xml
     <uses-library

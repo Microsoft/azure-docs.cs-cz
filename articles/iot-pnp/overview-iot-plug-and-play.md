@@ -3,18 +3,18 @@ title: Úvod do IoT technologie Plug and Play Preview | Microsoft Docs
 description: Přečtěte si o IoT technologie Plug and Play ve verzi Preview. IoT technologie Plug and Play vychází z otevřeného modelovacího jazyka, který umožňuje zařízením IoT deklarovat své schopnosti. Zařízení IoT prezentují tuto deklaraci, která se označuje jako model schopností zařízení, když se připojují ke cloudovým řešením, jako je Azure IoT Central nebo partnerských aplikací. Cloudové řešení pak může automaticky pochopit zařízení a začít s ním spolupracovat – to vše bez psaní kódu.
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 06/21/2019
+ms.date: 12/23/2019
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: fd1479a224255f74f4d47cfd90576a5afd25010f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 54a18bb20ab9af3ad794ed678ea3234a712bf5cb
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935399"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531158"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>Co je IoT technologie Plug and Play Preview?
 
@@ -86,6 +86,6 @@ Během veřejné verze Preview zařízení IoT technologie Plug and Play odesíl
 
 Teď, když máte přehled o IoT technologie Plug and Play, navržený další krok si vyzkoušíme jedno z rychlých startů:
 
-- [Vytvoření zařízení IoT technologie Plug and Play pomocí modelu schopností zařízení](./quickstart-create-pnp-device.md)
-- [Připojení zařízení k IoT Hub](./quickstart-connect-pnp-device.md)
-- [Připojení k zařízení ve vašem řešení](./quickstart-connect-pnp-device-solution.md)
+- [Vytvoření zařízení IoT technologie Plug and Play pomocí modelu schopností zařízení](./quickstart-create-pnp-device-windows.md)
+- [Připojení zařízení k IoT Hub](./quickstart-connect-pnp-device-c-windows.md)
+- [Připojení k zařízení ve vašem řešení](./quickstart-connect-pnp-device-solution-node.md)

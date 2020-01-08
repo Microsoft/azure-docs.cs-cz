@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs Secure push
+title: Azure Notification Hubs Secure push pro iOS
 description: Naučte se odesílat zabezpečená nabízená oznámení do aplikace pro iOS z Azure. Ukázky kódu napsané v cíli – C C#a.
 documentationcenter: ios
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 4a175b14d44ef7ba019c28fbd03bac98ada7a2a3
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 96d1dd514f6fb9c11d7194714337583d6b4387cf
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212143"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530744"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs Secure push
 
@@ -47,7 +47,7 @@ Tok je na vysoké úrovni následující:
 
 Je důležité si uvědomit, že v předchozím toku (a v tomto kurzu) předpokládáme, že zařízení po přihlášení uživatele uloží ověřovací token do místního úložiště. Tím zajistíte bezproblémové prostředí, protože zařízení může načíst zabezpečenou datovou část oznámení pomocí tohoto tokenu. Pokud vaše aplikace neukládá ověřovací tokeny na zařízení nebo pokud tato tokeny vypršela, měla by aplikace zařízení po přijetí oznámení zobrazit obecné oznámení s výzvou, aby uživatel spustil aplikaci. Aplikace pak uživatele ověří a zobrazí datovou část oznámení.
 
-Tento kurz zabezpečeného nabízeného oznámení ukazuje, jak bezpečně odeslat nabízené oznámení. Kurz se sestaví v kurzu informování [uživatelů](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) , takže byste nejdřív měli provést kroky v tomto kurzu.
+Tento kurz zabezpečeného nabízeného oznámení ukazuje, jak bezpečně odeslat nabízené oznámení. Kurz se sestaví v kurzu [informování uživatelů](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) , takže byste nejdřív měli provést kroky v tomto kurzu.
 
 > [!NOTE]
 > V tomto kurzu se předpokládá, že jste vytvořili a nakonfigurovali centrum oznámení, jak je popsáno v tématu [Začínáme with Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md).
@@ -60,12 +60,12 @@ Teď, když jste změnili back-end aplikace, abyste poslali jenom *ID* oznámen�
 
 Abychom dosáhli tohoto cíle, musíme napsat logiku, která načte zabezpečený obsah z back-endu aplikace.
 
-1. V `AppDelegate.m`nástroji se ujistěte, že aplikace registruje pro tichá oznámení, aby zpracovala ID oznámení odeslané z back-endu. `UIRemoteNotificationTypeNewsstandContentAvailability` Přidejte možnost do didFinishLaunchingWithOptions:
+1. V `AppDelegate.m`se ujistěte, že aplikace registruje pro tichá oznámení, aby zpracovala ID oznámení odeslané z back-endu. Do didFinishLaunchingWithOptions přidejte možnost `UIRemoteNotificationTypeNewsstandContentAvailability`:
 
     ```objc
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeNewsstandContentAvailability];
     ```
-2. V horní části Přidat implementaci s následující deklarací: `AppDelegate.m`
+2. V `AppDelegate.m` přidejte do horní části část implementace s následující deklarací:
 
     ```objc
     @interface AppDelegate ()
@@ -126,7 +126,7 @@ Abychom dosáhli tohoto cíle, musíme napsat logiku, která načte zabezpečen�
 
     ![][IOS1]
 
-6. V `AppDelegate.m` části přidejte následující metodu pro zpracování nabízených oznámení:
+6. V `AppDelegate.m` přidejte následující metodu pro zpracování nabízených oznámení:
 
     ```objc
     -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler

@@ -1,30 +1,30 @@
 ---
-title: Vizualizace dat grafu v rozhraní Gremlin API služby Azure Cosmos DB
-description: Zjistěte, jak integrovat řešení vizualizace (Linkurious Enterprise, Cambridge Intelligence) dat grafu Azure Cosmos DB.
+title: Vizualizace dat grafu ve Azure Cosmos DB rozhraní API Gremlin
+description: Naučte se integrovat Azure Cosmos DB data grafu s řešeními vizualizace (Linkurious Enterprise, Cambridge Intelligence).
 author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 07/02/2019
-ms.openlocfilehash: efe47cc5453a7259da37dcb3c33edcdfbea6d8c8
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 1cabe57a0e7f2869a30973c8bbc8b4b38f664d81
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672641"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500020"
 ---
-# <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Vizualizace grafu data uložená v rozhraní Gremlin API služby Azure Cosmos DB pomocí řešení pro vizualizaci dat
+# <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Vizualizace dat grafu uložených v Azure Cosmos DB rozhraní API Gremlin pomocí řešení pro vizualizaci dat
 
-Můžete vizualizovat data pomocí různých řešení pro vizualizaci dat uložených v rozhraní Gremlin API služby Azure Cosmos DB. Následující řešení jsou doporučení [Apache Tinkerpop komunity](http://tinkerpop.apache.org/#poweredby) pro vizualizaci dat grafu.
+Data uložená v Azure Cosmos DB rozhraní API Gremlin můžete vizualizovat pomocí různých řešení pro vizualizaci dat. Následující řešení doporučuje [komunita Apache Tinkerpop](https://tinkerpop.apache.org/#poweredby) pro vizualizaci dat grafu.
 
 ## <a name="linkurious-enterprise"></a>Linkurious Enterprise
 
-![Linkurious Logo](./media/graph-visualization/linkurious-logo.jpg)
+![Logo Linkurious](./media/graph-visualization/linkurious-logo.jpg)
 
-[Linkurious Enterprise](https://linkurio.us/product/) používá rozhraní graph technologie a vizualizaci dat jak proměnit interaktivní vizuální sítě komplexní datové sady. Platforma se připojí ke zdrojům dat a umožňuje výzkumníků bez problémů přejít mezi miliardami entit a vztahů. Výsledkem je nová schopnost detekovat podezřelé relace bez opomenou s dotazy nebo tabulky.
+[Linkurious Enterprise](https://linkurio.us/product/) používá technologii grafů a vizualizaci dat k zapnutí komplexních datových sad v interaktivních vizuálních sítích. Platforma se připojuje k vašim zdrojům dat a umožňuje prověřování plynule přecházet mezi miliardami entit a vztahů. Výsledkem je nová možnost detekce podezřelých vztahů bez Juggling dotazů nebo tabulek.
 
-Interaktivní rozhraní Linkurious Enterprise nabízí snadný způsob, jak prozkoumat komplexní data. Můžete vyhledat konkrétní entity, rozbalte připojení a odhalit skryté vztahy a použít rozložení rozplétání složité sítě podle vaší volby. Linkurious Enterprise je teď kompatibilní s Gremlin API služby Azure Cosmos DB. Je vhodné pro scénáře, vizualizace grafu na začátku do konce a podporuje čtení a zápis možnosti z uživatelského rozhraní. Můžete požádat [ukázku Linkurious pomocí služby Azure Cosmos DB](https://linkurio.us/contact/)
+Interaktivní rozhraní Linkurious Enterprise nabízí snadný způsob, jak prozkoumat složitá data. Můžete vyhledat konkrétní entity, rozšířit připojení a získat skryté vztahy a použít rozložení podle vašeho výběru na rozplétání složité sítě. Linkurious Enterprise je teď kompatibilní s rozhraním API pro Azure Cosmos DB Gremlin. Je vhodný pro ucelené scénáře vizualizace grafů a podporuje funkce pro čtení a zápis z uživatelského rozhraní. Pomocí Azure Cosmos DB můžete požádat o [ukázku Linkurious](https://linkurio.us/contact/)
 
 ![Ukázka Linkurious](./media/graph-visualization/linkurious-demo.gif)
 
@@ -32,22 +32,22 @@ Interaktivní rozhraní Linkurious Enterprise nabízí snadný způsob, jak proz
 
 ![Logo Cambridge Intelligence](./media/graph-visualization/ci-logo.png)
 
-[Cambridge Intelligence](https://cambridge-intelligence.com/products/) sady nástrojů vizualizace grafu teď podporují službu Azure Cosmos DB. Služba Azure Cosmos DB podporuje následující dvě sady nástrojů vizualizace:
+Sady nástrojů pro vizualizaci grafu [Cambridge Intelligence](https://cambridge-intelligence.com/products/) teď podporují Azure Cosmos DB. Azure Cosmos DB podporují následující dvě sady nástrojů pro vizualizaci:
 
-- [Orámování pro vývojáře v JavaScriptu](https://cambridge-intelligence.com/keylines/)
+- [Linky pro vývojáře v JavaScriptu](https://cambridge-intelligence.com/keylines/)
 
-- [Znovu Graph pro vývojáře v React](https://cambridge-intelligence.com/regraph/)
+- [Změna grafu pro reakce vývojářů](https://cambridge-intelligence.com/regraph/)
 
 ![Ukázka Cambridge Intelligence](./media/graph-visualization/ci-demo-2.gif)
 
-Tyto sady nástrojů umožňuje navrhnout grafu výkonné vizualizace a analýzy aplikací pro případy použití. Využijte tyto výkonné webové grafiky Library(WebGL) vykreslování a pečlivě vytvořený kód a poskytuje tak uživatelům rychlý a přehledné vizualizace zkušeností. Tyto nástroje jsou kompatibilní s prohlížečem, zařízení, serveru nebo databáze a jsou dostupné podrobné kurzy, plně zdokumentovaných rozhraní API a ukázky interaktivní.
+Tyto sady nástrojů vám umožňují navrhovat vysoce výkonné vizualizace grafů a analytické aplikace pro váš případ použití. Využívají výkonné vykreslování WebGL (Web Graphics Library) a pečlivě vytvořený kód, který uživatelům poskytuje rychlé a přehledné vizualizace. Tyto nástroje jsou kompatibilní s libovolným prohlížečem, zařízením, serverem nebo databází a jsou popsány podrobnými kurzy, plně dokumentovanými rozhraními API a interaktivními ukázkami.
 
 ![Ukázka Cambridge Intelligence](./media/graph-visualization/ci-demo-1.gif)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
  
-- [Zkuste sady nástrojů](https://cambridge-intelligence.com/try/)
-- [Přehled technologie orámování](https://cambridge-intelligence.com/keylines/technology/)
-- [Přehled technologie znovu grafu](https://cambridge-intelligence.com/regraph/technology/)
+- [Vyzkoušejte si sady nástrojů](https://cambridge-intelligence.com/try/)
+- [Přehled technologie s linkami](https://cambridge-intelligence.com/keylines/technology/)
+- [Přehled technologie pro nové grafy](https://cambridge-intelligence.com/regraph/technology/)
 - [Případy použití vizualizace grafu](https://cambridge-intelligence.com/use-cases/)

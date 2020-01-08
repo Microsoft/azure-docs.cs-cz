@@ -3,18 +3,18 @@ title: Vytvoření a otestování zařízení IoT technologie Plug and Play Prev
 description: Jako vývojář zařízení se dozvíte, jak pomocí VS Code vytvořit a otestovat nový model schopností zařízení pro zařízení technologie Plug and Play ve verzi Preview.
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/10/2019
+ms.date: 12/30/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: b7b9cd1040accda4d39af4d0a18940b56a45f929
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 209c63207653e98967a5a66e36c0cae53b7e044f
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569888"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550277"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>Kurz: vytvoření a otestování modelu schopností zařízení pomocí Visual Studio Code
 
@@ -352,7 +352,7 @@ Když kód spustíte, připojí se k IoT Hub a spustí odesílání ukázkových
 
     Poznamenejte si připojovací řetězec.
 
-1. Na příkazovém řádku přejděte do složky **Azure-IoT-SDK-c** , kde jste vytvořili sadu SDK a ukázky. Pak přejděte do složky pro **vydání\\sensorbox_app\\cmake** .
+1. Na příkazovém řádku přejděte do složky **Azure-IoT-SDK-c** , kde jste vytvořili sadu SDK a ukázky. Pak přejděte do složky pro **\\pro cmaki sensorbox_app\\vydané verze** .
 
 1. Spusťte následující příkaz:
 

@@ -1,56 +1,50 @@
 ---
-title: Správa funkce Azure konfigurace aplikace | Dokumentace Microsoftu
-description: Přehled použití konfigurace aplikace pro Azure zapnout a vypnout aplikaci funkcí na vyžádání.
-services: azure-app-configuration
-documentationcenter: ''
+title: Správa funkcí konfigurace aplikací Azure
+description: Přehled toho, jak se dá konfigurace aplikace Azure použít k zapnutí a vypnutí funkcí aplikace na vyžádání.
 author: yegu-ms
-manager: maiye
-editor: ''
-ms.service: azure-app-configuration
-ms.devlang: na
-ms.topic: overview
-ms.workload: tbd
-ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 46f39e87e4e4cf115cbc1fceeabf0dab38fade28
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.service: azure-app-configuration
+ms.topic: conceptual
+ms.date: 04/19/2019
+ms.openlocfilehash: 48aebfe1ba6af348e98e5600075f3a9e9dce1a8e
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393364"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495775"
 ---
-# <a name="feature-management-overview"></a>Přehled funkcí správy
+# <a name="feature-management-overview"></a>Přehled správy funkcí
 
-Tradičně přesouvání novou aplikaci funkcí vyžaduje dokončení opakované nasazení vlastní aplikace. Chcete-li otestovat funkci, pravděpodobně musíte nasadit vaše aplikace v mnoha případech ovládacího prvku, když se stane viditelnou funkci nebo příjemců a prohlédněte si ho.
+Při obnově nové funkce aplikace se obvykle vyžaduje úplné opětovné nasazení aplikace. Chcete-li otestovat funkci, pravděpodobně budete muset aplikaci nasadit několikrát, abyste mohli řídit, kdy se tato funkce zobrazí nebo kdo se k ní dostane.
 
-Funkce správy je zvykem moderní vývoj softwaru, která odděluje vydání funkcí od nasazení kódu a umožňuje rychlé změny na dostupnost funkcí na vyžádání. Pomocí techniky označované jako *příznaků funkcí* (označované také jako *přepínání funkcí*, *přepínače funkcí*, a tak dále) k dynamické správě životního cyklu funkce.
+Správa funkcí je moderní postup vývoje softwaru, který odděluje vydání funkce od nasazení kódu a umožňuje rychlé změny dostupnosti funkcí na vyžádání. Používá techniku nazvanou *příznaky funkcí* (označované také jako *přepínání funkcí*, *přepínače funkcí*atd.) k dynamické správě životního cyklu funkce.
 
-Funkce správy pomáhá vývojářům řešit tyto problémy:
+Správa funkcí pomáhá vývojářům řešit následující problémy:
 
-* **Kód správu větví**: Příznaky funkcí jsou často slouží k zabalení novou funkčnost aplikace, která je ve vývoji. Tato funkce je "skrytá" ve výchozím nastavení. Jste bezpečně dodávat funkce, i když má nedokončené, a zůstane neaktivní v produkčním prostředí. Volá se, když použijete tento přístup, *tmavě nasazení*, uvolníte váš kód na konci každé vývojového cyklu. Už nemusíte udržovat všechny větve kódu napříč více cykly z důvodu trvá víc než jeden cyklus k dokončení funkce.
-* **Testování v produkčním prostředí**: Příznaky funkcí můžete použít k udělení dřívější přístup k nové funkce v produkčním prostředí. Například můžete omezit přístup jenom členové týmu nebo interní beta testerům. Tito uživatelé budou dostávat Plnohodnotná produkční prostředí, místo Simulovaná nebo jeho část prostředí v testovacím prostředí.
-* **Publikování testovacích verzí**: Příznaky funkcí můžete použít také k postupně zavádět nové funkce pro koncové uživatele. Můžete cílit na malé procento populace uživatel nejprve a postupem doby, po získali větší jistotou v implementaci postupně zvyšuje toto procento.
-* **Přepínač kill rychlé**: Vlastní bezpečnostní nám poskytují příznaky funkcí pro uvolnění nové funkce. S nimi můžete snadno zapnout funkce aplikací, zapnout a vypnout. V případě potřeby můžete rychle zakázat funkci bez znovu sestavovat a nasazovat aplikace.
-* **Selektivní aktivace**: Zatímco většina příznaků funkcí existovat, pouze dokud jejich přidružené funkce byly úspěšně vydány, některé může trvat dlouhou dobu. Příznaky funkcí můžete segmentovat uživatele a poskytovat konkrétní sadu funkcí pro každou skupinu. Například může mít funkce, která funguje pouze na určité webový prohlížeč. Příznak funkce můžete definovat tak, aby se může zobrazit a používat funkci jenom uživatelé z prohlížeče. S tímto přístupem můžete snadno rozšířit seznam podporovaných prohlížečů později bez nutnosti provádět změny kódu.
+* **Správa větví kódu**: příznaky funkcí se často používají k zabalení nových funkcí aplikace, které jsou ve vývoji. Tato funkce je ve výchozím nastavení skrytá. Tuto funkci můžete bezpečně dodávat, i když je nedokončená a zůstane neaktivní v produkčním prostředí. Pomocí tohoto přístupu s názvem *tmavě nasazené*můžete uvolnit veškerý kód na konci každého vývojového cyklu. Už nemusíte spravovat žádnou větev kódu napříč několika cykly, protože je potřeba dokončit víc než jeden cyklus.
+* **Testování v produkčním**prostředí: příznaky funkcí můžete použít k udělení včasného přístupu k novým funkcím v produkčním prostředí. Tento přístup můžete například omezit pouze na členy týmu nebo interní beta testery. Tito uživatelé budou mít v testovacím prostředí místo simulovaného nebo částečného prostředí vyplněné provozní prostředí.
+* **Lety**: můžete také použít příznaky funkcí k přírůstkové zavedení nových funkcí koncovým uživatelům. Můžete nejdřív cílit na malé procento naplnění uživatelů a po dosažení větší důvěry v implementaci zvýšit toto procento postupně v průběhu času.
+* **Přepínač okamžitého**ukončení: příznaky funkcí poskytují vlastní síť pro bezpečnost pro vydávání nových funkcí. Díky nim můžete funkce aplikací snadno zapnout nebo vypnout. V případě potřeby můžete funkci rychle zakázat bez nutnosti opětovného sestavování a opětovného nasazení aplikace.
+* **Selektivní aktivace**: i když většina příznaků funkcí existuje jenom v případě, že se jejich přidružené funkce úspěšně vystavily, některé můžou trvat dlouhou dobu. Pomocí příznaků funkcí můžete segmentovat uživatele a dodat konkrétní sadu funkcí pro každou skupinu. Můžete mít například funkci, která funguje pouze v určitém webovém prohlížeči. Můžete definovat příznak funkce, aby se funkce mohla zobrazit a používat jenom uživatelé tohoto prohlížeče. S tímto přístupem můžete seznam podporovaných prohlížečů snadno rozšířit později, aniž byste museli dělat změny kódu.
 
 ## <a name="basic-concepts"></a>Základní koncepty
 
-Tady je několik nové podmínky týkající se správy funkce:
+Tady je několik nových podmínek souvisejících se správou funkcí:
 
-* **Příznak funkce**: Příznak funkce je proměnná se binární stavem *na* nebo *vypnout*. Příznak funkce má také z přidružený kód bloku. Stav příznaku funkce aktivuje, zda blok kódu spustí nebo ne.
-* **Funkce správce**: Funkce správce je balíček aplikace, která zpracovává životního cyklu všechny příznaky funkcí v aplikaci. Funkce správce obvykle poskytuje další funkce, jako je například ukládání do mezipaměti příznaků funkcí a aktualizace příslušné stavy.
-* **Filtr**: Filtr je pravidlo pro vyhodnocení stavu příznak funkce. Skupinu uživatelů, typu zařízení nebo prohlížeče, zeměpisného umístění a časovým intervalem jsou všechny příklady co může představovat filtru.
+* **Příznak funkce**: příznak funkce je proměnná s binárním stavem *zapnuto* nebo *vypnuto*. Příznak funkce má také přidružený blok kódu. Stav příznaku funkce se aktivuje bez ohledu na to, jestli je blok kódu spuštěný.
+* **Správce funkcí**: správce funkcí je balíček aplikace, který zpracovává životní cyklus všech příznaků funkcí v aplikaci. Správce funkcí obvykle poskytuje další funkce, jako jsou například příznaky funkcí pro ukládání do mezipaměti a aktualizace jejich stavů.
+* **Filter**: filtr je pravidlo pro vyhodnocení stavu příznaku funkce. V případě skupiny uživatelů, typu zařízení nebo prohlížeče, zeměpisného umístění a časového intervalu jsou uvedeny příklady toho, co může filtr představovat.
 
-Efektivní provádění funkcí správy se skládá z práce ve vzájemné součinnosti alespoň dvě součásti:
+Účinná implementace správy funkcí se skládá z nejméně dvou součástí pracujících v součinnosti:
 
-* Aplikace, která umožňuje použití příznaků funkcí.
-* Oddělené úložiště, která ukládá příznaků funkcí a jejich aktuální stavy.
+* Aplikace, která využívá příznaky funkcí.
+* Samostatné úložiště, ve kterém jsou uloženy příznaky funkcí a jejich aktuální stavy.
 
-Jak tyto komponenty interagují je znázorněn v následujícím příkladu.
+Způsob interakce těchto komponent je znázorněn v následujících příkladech.
 
-## <a name="feature-flag-usage-in-code"></a>Příznak používání funkcí v kódu
+## <a name="feature-flag-usage-in-code"></a>Použití příznaků funkcí v kódu
 
-Základní vzor pro implementaci příznaků funkcí v aplikaci je jednoduché. Příznak funkce si můžete představit jako logickou stavová proměnná se používá `if` podmíněný příkaz v kódu:
+Základní vzor pro implementaci příznaků funkcí v aplikaci je jednoduchý. Příznak funkce si můžete představit jako logickou hodnotu proměnné, která se používá s `if` podmíněným příkazem v kódu:
 
 ```csharp
 if (featureFlag) {
@@ -58,19 +52,19 @@ if (featureFlag) {
 }
 ```
 
-V takovém případě pokud `featureFlag` je nastavena na `True`, blok uzavřené kódu je provedeno; jinak vrátí hodnotu, se přeskočí. Můžete nastavit hodnotu `featureFlag` staticky, jako v následujícím příkladu kódu:
+V tomto případě, pokud je `featureFlag` nastaveno na `True`, je spuštěn blok kódu uzavřen; v opačném případě se přeskočí. Hodnotu `featureFlag` můžete nastavit staticky, jako v následujícím příkladu kódu:
 
 ```csharp
 bool featureFlag = true;
 ```
 
-Také můžete vyhodnotit stav příznaku na základě určitých pravidel:
+Můžete také vyhodnotit stav příznaku na základě určitých pravidel:
 
 ```csharp
 bool featureFlag = isBetaUser();
 ```
 
-Obsahuje vzor poněkud složitější příznak funkce `else` také – příkaz:
+Trochu složitější vzor příznaků funkcí zahrnuje i příkaz `else`:
 
 ```csharp
 if (featureFlag) {
@@ -80,7 +74,7 @@ if (featureFlag) {
 }
 ```
 
-Však můžete přepsat toto chování v základní vzor. [Použití příznaků funkcí v aplikaci ASP.NET Core](./use-feature-flags-dotnet-core.md) ukazuje výhody standardizují používáním vzor jednoduchého kódu. Příklad:
+Toto chování však můžete přepsat v základním vzoru. [Používání příznaků funkcí v aplikaci ASP.NET Core](./use-feature-flags-dotnet-core.md) ukazuje výhody standardizace pro jednoduchý vzor kódu. Příklad:
 
 ```csharp
 if (featureFlag) {
@@ -92,15 +86,15 @@ if (!featureFlag) {
 }
 ```
 
-## <a name="feature-flag-repository"></a>Úložiště příznak funkce
+## <a name="feature-flag-repository"></a>Úložiště příznaků funkcí
 
-Příznaky funkcí efektivně používat, budete muset využívajícím všechny příznaky funkcí použijí v aplikaci. Tento přístup vám umožní změnit stavy příznak funkce bez úprava a opětovné nasazení vlastní aplikace.
+Chcete-li používat příznaky funkcí efektivně, je nutné Externalize všechny příznaky funkcí používané v aplikaci. Tento přístup umožňuje změnit stavy příznaků funkcí beze změny a opětovného nasazení samotné aplikace.
 
-Konfigurace aplikace pro Azure je navržena jako centrální úložiště pro příznaky funkcí. Můžete ho použít k definování různých typů příznaků funkcí a manipulaci s jejich stavů rychle a bez obav. Potom můžete knihovny konfigurace aplikací pro různé programovací jazyk rozhraní pro snadný přístup k těmto příznaků funkcí z vaší aplikace.
+Konfigurace aplikace Azure je navržená jako centralizované úložiště pro příznaky funkcí. Můžete ji použít k definování různých druhů příznaků funkcí a k rychlému a spolehlivému manipulaci s jejich stavy. Pak můžete použít knihovny konfigurace aplikace pro různé programovací jazykové architektury pro snadný přístup k těmto příznakům funkcí z vaší aplikace.
 
-[Použití příznaků funkcí v aplikaci ASP.NET Core](./use-feature-flags-dotnet-core.md) ukazuje, jak poskytovatel konfigurace pro aplikace .NET Core a knihovny pro správu funkce se používají společně k implementaci příznaky funkcí pro vaši webovou aplikaci ASP.NET.
+[Použití příznaků funkcí v aplikaci ASP.NET Core](./use-feature-flags-dotnet-core.md) ukazuje, jak se společně používají knihovny pro poskytovatele konfigurace aplikace .NET Core a knihovny správy funkcí k implementaci příznaků funkcí pro webovou aplikaci ASP.NET.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přidat příznaků funkcí do webové aplikace ASP.NET Core](./quickstart-feature-flag-aspnet-core.md)  
+> [Přidání příznaků funkcí do webové aplikace ASP.NET Core](./quickstart-feature-flag-aspnet-core.md)  

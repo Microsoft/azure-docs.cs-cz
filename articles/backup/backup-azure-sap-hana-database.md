@@ -3,12 +3,12 @@ title: Zálohování databáze SAP HANA do Azure s využitím Azure Backup
 description: V tomto článku se dozvíte, jak zálohovat databázi SAP HANA do virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: ed47f18c9dabc685d6fbe02804562ef86a93190a
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 3246f6cf8046e0a0c5795059ad3448b70130e7e1
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285828"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75496951"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Zálohování databází SAP HANA na virtuálních počítačích Azure
 
@@ -41,11 +41,17 @@ Pro všechny operace potřebuje virtuální počítač SAP HANA připojení k ve
 Připojte se k veřejné verzi Preview následujícím způsobem:
 
 * Na portálu Zaregistrujte ID předplatného pro poskytovatele služby Recovery Services podle [tohoto článku](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal).
-* Spusťte tuto rutinu pro PowerShell. Měla by být dokončena jako zaregistrovaná.
+* Pro modul AZ v PowerShellu spusťte tuto rutinu. Měla by být dokončena jako zaregistrovaná.
 
     ```powershell
     Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
     ```
+* Pokud používáte modul "AzureRM" v prostředí PowerShell, spusťte tuto rutinu. Měla by být dokončena jako zaregistrovaná.
+
+    ```powershell
+    Register-AzureRmProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
+    ```
+    
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -71,13 +77,13 @@ Nyní povolte zálohování.
 
 1. V kroku 2 klikněte na **Konfigurovat zálohu**.
 
-    ![Konfigurace zálohování](./media/backup-azure-sap-hana-database/configure-backup.png)
+    ![Backup – konfigurace](./media/backup-azure-sap-hana-database/configure-backup.png)
 2. V části **Vyberte položky, které chcete zálohovat**vyberte všechny databáze, které chcete chránit > **OK**.
 
     ![Vyberte položky, které chcete zálohovat.](./media/backup-azure-sap-hana-database/select-items.png)
 3. V části **zásady zálohování** > **vyberte zásady zálohování**, vytvořte nové zásady zálohování pro databáze v souladu s pokyny uvedenými níže.
 
-    ![Zvolit zásady zálohování](./media/backup-azure-sap-hana-database/backup-policy.png)
+    ![Vybrat zásady zálohování](./media/backup-azure-sap-hana-database/backup-policy.png)
 4. Po vytvoření zásady klikněte v nabídce **zálohování** na **Povolit zálohování**.
 
     ![Povolit zálohování](./media/backup-azure-sap-hana-database/enable-backup.png)
@@ -132,6 +138,9 @@ Nastavení zásad určete následujícím způsobem:
 
 9. Kliknutím na **OK** zásadu uložte a vraťte se do nabídky hlavní **zásady zálohování** .
 10. Až dokončíte definování zásad zálohování, klikněte na **OK**.
+
+> [!NOTE]
+> Každá záloha protokolu je zřetězena k předchozí úplné záloze, aby mohla tvořit řetěz obnovení. Tato úplná záloha se zachová, dokud neuplyne doba uchovávání poslední zálohy protokolu. To může znamenat, že úplná záloha se uchovává po dobu dalších let, aby se zajistilo, že se všechny protokoly mají obnovit. Předpokládejme, že uživatel má týdenní úplnou zálohu, denní rozdílovou a 2 hodinový protokol. Všechny z nich se uchovávají po dobu 30 dnů. Ale každý týden v plném rozsahu může být skutečně vyčištěný nebo odstraněný až po dokončení dalších úplných záloh, tj. po 30 až 7 dnech. Řekněme, že týdenní úplné zálohování probíhá na 16. listopadu. Podle zásad uchovávání informací by se měla uchovávat až do prosince 16. Poslední záloha protokolu pro tuto úplnou zálohu proběhne před dalším naplánovaným úplným 22. listopadu. Dokud nebude tento protokol k dispozici do prosince 22, nelze odstranit jeho plný 16. To znamená, že do prosince 22 se zachovají až do 16. listopadu.
 
 ## <a name="run-an-on-demand-backup"></a>Spuštění zálohování na vyžádání
 

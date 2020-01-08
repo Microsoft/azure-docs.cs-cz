@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
-ms.openlocfilehash: 4b0dca1215cfecea5c9943bd27ee8a5c1de45311
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d88df0c7e17d297162a1921021b89f02077c2ac7
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893361"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560381"
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 
@@ -361,7 +361,7 @@ Tento typ vzorkování použijte, pokud vaše aplikace často prochází za měs
 
 Nastavte tempo vzorkování na stránce využití a odhadované náklady:
 
-![V okně Přehled aplikace klikněte na nastavení, kvóta, ukázky, vyberte vzorkovací frekvenci a klikněte na aktualizovat.](./media/sampling/04.png)
+![V okně Přehled aplikace klikněte na nastavení, kvóta, ukázky, vyberte vzorkovací frekvenci a klikněte na aktualizovat.](./media/sampling/data-sampling.png)
 
 Podobně jako jiné typy vzorkování, algoritmus zachovává související položky telemetrie. Například při kontrole telemetrie ve službě Search budete moci najít požadavek související s konkrétní výjimkou. Počty metrik, jako je rychlost požadavků a četnost výjimek, se uchovávají správně.
 
@@ -543,7 +543,7 @@ Podle pokynů v [tomto](https://docs.microsoft.com/azure/azure-functions/functio
         {
             if(somecondition)
             {
-                ((ISupportSampling)item).SamplingPercentage = 100;
+                ((ISupportSampling)telemetry).SamplingPercentage = 100;
             }
         }
       }

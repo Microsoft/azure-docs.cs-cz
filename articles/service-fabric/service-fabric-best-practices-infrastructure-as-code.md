@@ -1,35 +1,26 @@
 ---
-title: Infrastruktura Azure Service Fabric jako osvědčené postupy pro kód | Microsoft Docs
-description: Osvědčené postupy pro správu Service Fabric jako infrastruktury jako kódu.
-services: service-fabric
-documentationcenter: .net
+title: Infrastruktura Azure Service Fabric jako osvědčené postupy pro kód
+description: Osvědčené postupy a faktory návrhu pro správu Azure Service Fabric jako infrastruktury jako kódu.
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 83439a913989875c5e26ee51901f10558e5debd5
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 1c044d5fd973d3c577088a887f2fac413d2ab79d
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955618"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551807"
 ---
 # <a name="infrastructure-as-code"></a>Infrastruktura jako kód
 
 V produkčním scénáři Vytvořte clustery Azure Service Fabric pomocí šablon Správce prostředků. Šablony Správce prostředků poskytují větší kontrolu nad vlastnostmi prostředku a zajišťují, že máte konzistentní model prostředků.
 
-Ukázkové šablony Správce prostředků jsou k dispozici pro Windows a Linux v [ukázkách Azure na GitHubu](https://github.com/Azure-Samples/service-fabric-cluster-templates). Tyto šablony lze použít jako výchozí bod pro šablonu clusteru. Stáhněte si `azuredeploy.json` je a upravte je tak, aby splňovaly vaše vlastní požadavky. `azuredeploy.parameters.json`
+Ukázkové šablony Správce prostředků jsou k dispozici pro Windows a Linux v [ukázkách Azure na GitHubu](https://github.com/Azure-Samples/service-fabric-cluster-templates). Tyto šablony lze použít jako výchozí bod pro šablonu clusteru. Stáhněte si `azuredeploy.json` a `azuredeploy.parameters.json` a upravte je tak, aby splňovaly vaše vlastní požadavky.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Pokud chcete nasadit `azuredeploy.json` šablony `azuredeploy.parameters.json` a, které jste si stáhli, použijte následující příkazy rozhraní příkazového řádku Azure:
+Pokud chcete nasadit šablony `azuredeploy.json` a `azuredeploy.parameters.json`, které jste si stáhli, použijte následující příkazy rozhraní příkazového řádku Azure:
 
 ```azurecli
 ResourceGroupName="sfclustergroup"
@@ -100,7 +91,7 @@ microservices_sfpkg.close()
 ```
 
 ## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Konfigurace automatického upgradu operačního systému virtuálního počítače Azure 
-Upgrade virtuálních počítačů je operace iniciovaná uživatelem. doporučuje se použít [Automatický upgrade operačního systému](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) pro Azure Service Fabric clustery pro správu oprav hostitele; Aplikace Orchestration je alternativní řešení, které je určené pro hostování mimo Azure, i když POA se v Azure dá použít i v případě, že je v Azure k disrežii hostování rodu POA v Azure, což je běžný důvod k upřednostnění automatického upgradu operačního systému virtuálního počítače. přes POA. Níže jsou uvedeny vlastnosti šablony COMPUTE Virtual Machine Scale Správce prostředků, které umožňují automatický upgrade operačního systému:
+Upgrade virtuálních počítačů je operace iniciovaná uživatelem. doporučuje se použít [Automatický upgrade operačního systému](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) pro Azure Service Fabric clustery pro správu oprav hostitele; Aplikace orchestrace opravy je alternativní řešení, které je určené pro hostování mimo Azure, i když je v Azure možné použít POA, se základním důvodem pro hostování rodu POA v Azure je běžným důvodem pro upřednostnění automatického upgradu operačního systému virtuálního počítače přes POA. Níže jsou uvedeny vlastnosti šablony COMPUTE Virtual Machine Scale Správce prostředků, které umožňují automatický upgrade operačního systému:
 
 ```json
 "upgradePolicy": {
@@ -113,7 +104,7 @@ Upgrade virtuálních počítačů je operace iniciovaná uživatelem. doporuču
 ```
 Pokud používáte automatické upgrady operačního systému pomocí Service Fabric, nová image operačního systému se v jednu chvíli odvede na jednu aktualizační doménu, aby se zachovala vysoká dostupnost služeb běžících v Service Fabric. Pokud chcete použít automatické upgrady operačního systému v Service Fabric musíte cluster nakonfigurovat tak, aby používal úroveň odolnosti stříbra nebo vyšší.
 
-Zajistěte, aby byl následující klíč registru nastaven na hodnotu false, aby bylo možné, aby hostitelské počítače s Windows nezahájily nekoordinovatelné aktualizace: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
+Zajistěte, aby byl následující klíč registru nastaven na hodnotu false, aby bylo možné, aby počítače se systémem Windows nezahájily nekoordinovatelné aktualizace: HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
 
 Níže jsou uvedeny vlastnosti šablony COMPUTE Virtual Machine Scale Správce prostředků pro nastavení klíče registru WindowsUpdate na hodnotu false:
 ```json
@@ -142,6 +133,6 @@ Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <"msi_code_version">
 
 ## <a name="next-steps"></a>Další kroky
 
-* Vytvoření clusteru na virtuálních počítačích nebo počítačích se systémem Windows Server: [Vytvoření clusteru Service Fabric pro Windows Server](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+* Vytvoření clusteru na virtuálních počítačích nebo počítačích se systémem Windows Server: [Service Fabric vytvoření clusteru pro Windows Server](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 * Vytvoření clusteru na virtuálních počítačích nebo počítačích se systémem Linux: [Vytvoření clusteru se systémem Linux](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 * Informace o [možnostech podpory pro Service Fabric](service-fabric-support.md)

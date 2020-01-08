@@ -1,18 +1,14 @@
 ---
 title: Běžné dotazy k zotavení po havárii technologie Hyper-V pomocí Azure Site Recovery
 description: Tento článek shrnuje běžné otázky týkající se nastavení zotavení po havárii pro místní virtuální počítače Hyper-V do Azure pomocí Azure Site Recovery lokality.
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.author: raynew
-ms.openlocfilehash: 8f3a04c70b88987fc91dbed3c186d04826b75726
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 7c5f55fbea67567ddf7a2afa6a61f6c76568d829
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954045"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498203"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Běžné dotazy – zotavení po havárii z Hyper-V do Azure
 
@@ -64,7 +60,7 @@ Potřebujete předplatné Azure, Recovery Services trezor, účet úložiště a
 Potřebujete účet úložiště LRS nebo GRS. Doporučujeme účet úložiště GRS, aby byla zajištěna odolnost dat v případě oblastního výpadku nebo pokud není možné obnovit primární oblast. Podporuje se Premium Storage.
 
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>Potřebuje můj účet Azure oprávnění k vytváření virtuálních počítačů?
-Pokud jste správcem předplatného, máte oprávnění k replikaci, která potřebujete. Pokud nejste, budete potřebovat oprávnění k vytvoření virtuálního počítače Azure ve skupině prostředků a ve virtuální síti, kterou zadáte při konfiguraci Site Recovery, a oprávnění k zápisu do vybraného účtu úložiště. [Další informace](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)
+Pokud jste správcem předplatného, máte oprávnění k replikaci, která potřebujete. Pokud nejste, budete potřebovat oprávnění k vytvoření virtuálního počítače Azure ve skupině prostředků a ve virtuální síti, kterou zadáte při konfiguraci Site Recovery, a oprávnění k zápisu do vybraného účtu úložiště. [Další informace](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
 
 ### <a name="is-replication-data-sent-to-site-recovery"></a>Posílají se data replikace do Site Recovery?
 Ne, Site Recovery nezachycují replikovaná data a nemá žádné informace o tom, co na vašich virtuálních počítačích běží. Data replikace se vyměňují mezi hostiteli Hyper-V a úložištěm Azure. Site Recovery nemá schopnost tato data zachytit. Do služby Site Recovery se odesílají jen metadata, která jsou nezbytná k orchestraci replikace a převzetí služeb při selhání.  
@@ -98,7 +94,7 @@ Potřebujete jeden nebo více virtuálních počítačů spuštěných na jednom
 
 ### <a name="can-i-replicate-vms-located-on-a-hyper-v-cluster"></a>Můžu replikovat virtuální počítače umístěné v clusteru Hyper-V?
 
-Ano, Site Recovery podporuje hostitele Hyper-V V clusteru. Všimněte si, že:
+Ano, Site Recovery podporuje hostitele Hyper-V V clusteru. Poznámky:
 
 - Všechny uzly clusteru by měly být zaregistrované ve stejném trezoru.
 - Pokud nepoužíváte VMM, měli byste do stejného webu Hyper-V Přidat všechny hostitele Hyper-V v clusteru.
@@ -202,14 +198,17 @@ Site Recovery do virtuálních počítačů Hyper-V, které jsou povolené pro r
 ### <a name="how-do-i-fail-over-to-azure"></a>Návody převzít služby při selhání do Azure?
 
 Můžete spustit plánované nebo neplánované převzetí služeb při selhání z místních virtuálních počítačů Hyper-V do Azure.
-    - Pokud spustíte plánovanou operaci, dojde k ukončení zdrojových virtuálních počítačů, aby se zcela předešlo možné ztrátě dat.
-    - Neplánované převzetí služeb při selhání můžete spustit, pokud není k dispozici žádná primární lokalita.
-    - Můžete převzít služby při selhání jednoho počítače nebo vytvořit plány obnovení pro orchestraci převzetí služeb při selhání více počítačů.
-    - Spouštíte převzetí služeb při selhání. Po dokončení první fáze převzetí služeb při selhání byste měli být schopni zobrazit vytvořené virtuální počítače repliky v Azure. Virtuálnímu počítači můžete přiřadit veřejnou IP adresu, když je to třeba. Pak potvrdíte převzetí služeb při selhání, abyste mohli začít přistupovat ke úlohám z repliky virtuálního počítače Azure.
+
+- Pokud spustíte plánovanou operaci, dojde k ukončení zdrojových virtuálních počítačů, aby se zcela předešlo možné ztrátě dat.
+- Neplánované převzetí služeb při selhání můžete spustit, pokud není k dispozici žádná primární lokalita.
+- Můžete převzít služby při selhání jednoho počítače nebo vytvořit plány obnovení pro orchestraci převzetí služeb při selhání více počítačů.
+- Převzetí služeb při selhání je ve dvou částech:
+    - Po dokončení první fáze převzetí služeb při selhání byste měli být schopni zobrazit vytvořené virtuální počítače repliky v Azure. Virtuálnímu počítači můžete přiřadit veřejnou IP adresu, když je to třeba.
+    - Pak potvrdíte převzetí služeb při selhání, abyste mohli začít přistupovat ke úlohám z repliky virtuálního počítače Azure.
    
 
 ### <a name="how-do-i-access-azure-vms-after-failover"></a>Návody přístup k virtuálním počítačům Azure po převzetí služeb při selhání
-Po převzetí služeb při selhání získáte přístup k virtuálním počítačům Azure přes zabezpečené připojení k Internetu, přes síť VPN typu Site-to-site nebo přes Azure ExpressRoute. Abyste se mohli připojit, budete muset připravit několik věcí. [Další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
+Po převzetí služeb při selhání získáte přístup k virtuálním počítačům Azure přes zabezpečené připojení k Internetu, přes síť VPN typu Site-to-site nebo přes Azure ExpressRoute. Abyste se mohli připojit, budete muset připravit několik věcí. [Další informace](failover-failback-overview.md#connect-to-azure-after-failover).
 
 ### <a name="is-failed-over-data-resilient"></a>Nedošlo k přenosu dat odolného proti datům?
 Služba Azure je pro odolnost navržena. Site Recovery je navržena pro převzetí služeb při selhání do sekundárního datacentra Azure v souladu se smlouvou SLA Azure. Když dojde k převzetí služeb při selhání, zajistěte, aby vaše metadata a trezory zůstaly ve stejné geografické oblasti, kterou jste zvolili pro svůj trezor.
@@ -232,4 +231,4 @@ Po opětovném zprovoznění místní infrastruktury můžete provést navrácen
 5. Po úspěšném dokončení úloh se povolí zpětná replikace, aby se místní virtuální počítače znovu replikují do Azure.
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>Můžu navrátit služby po obnovení do jiného umístění?
-Ano, Pokud převezmete služby při selhání do Azure, můžete navrátit služby po obnovení do jiného umístění, pokud není k dispozici původní. [Další informace](hyper-v-azure-failback.md#failback-to-an-alternate-location-in-hyper-v-environment)
+Ano, Pokud převezmete služby při selhání do Azure, můžete navrátit služby po obnovení do jiného umístění, pokud není k dispozici původní. [Další informace](hyper-v-azure-failback.md#fail-back-to-an-alternate-location).
