@@ -1,6 +1,6 @@
 ---
 title: Přehled podpory Cloud-init pro virtuální počítače se systémem Linux v Azure
-description: Přehled možností Cloud-init v Microsoft Azure
+description: Přehled možností Cloud-init pro konfiguraci virtuálního počítače v době zřizování v Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: danielsollondon
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: danis
-ms.openlocfilehash: 6c522af44be51eb89ee9f64bae2dc4e9e7b24123
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7b3f64d0629ba5d7aaf85b854e1ee8e5a1410f94
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873943"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458617"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Podpora Cloud-init pro virtuální počítače v Azure
 V tomto článku se dozvíte, jak podpora pro [Cloud-init](https://cloudinit.readthedocs.io) nakonfigurovat virtuální počítač (VM) nebo službu Virtual Machine Scale Sets v době zřizování v Azure. Tyto skripty Cloud-init se spouštějí při prvním spuštění, jakmile se prostředky zřídí v Azure.  
@@ -32,7 +32,7 @@ Cloud-init navíc funguje v různých distribucích. K instalaci balíčku tak n
 
 Aktivně Pracujeme s našimi partnery doporučené distribuce Linuxu aby cloud-init povolené imagí dostupných v Tržišti Azure marketplace. Díky těmto imagí budou vaše nasazení a konfigurace pro cloudovou inicializaci bez problémů fungovat s virtuálními počítači a sadami škálování virtuálních počítačů. Následující tabulka popisuje aktuální dostupnost Image povolené cloud-init na platformě Azure:
 
-| Vydavatel | Nabídka | Skladová položka | Version | Připraveno na cloud-init |
+| Vydavatel | Nabídka | Skladová položka | Verze | Připraveno na cloud-init |
 |:--- |:--- |:--- |:--- |:--- |
 |Canonical |UbuntuServer |18.04-LTS |latest |ano | 
 |Canonical |UbuntuServer |16.04-LTS |latest |ano | 

@@ -3,19 +3,21 @@ title: Vytvoření zařízení Azure IoT technologie Plug and Play Preview (Linu
 description: Pomocí modelu schopností zařízení vygenerujte kód zařízení. Pak spusťte kód zařízení a zkontrolujte, že se zařízení připojí k vašemu IoT Hub.
 author: dominicbetts
 ms.author: dobett
-ms.date: 09/10/2019
+ms.date: 12/27/2019
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: ff8303b6af73605aae82bae4d70f9648154f9744
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: d2cc440572d6f33480972c15f5c498cc384cb2e3
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406242"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550477"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-linux"></a>Rychlý Start: použití modelu schopností zařízení k vytvoření zařízení IoT technologie Plug and Play Preview (Linux)
+
+[!INCLUDE [iot-pnp-quickstarts-1-selector.md](../../includes/iot-pnp-quickstarts-1-selector.md)]
 
 _Model schopností zařízení_ (DCM) popisuje možnosti zařízení IoT technologie Plug and Play. DCM je často spojený s SKU produktu. Funkce definované v DCM jsou uspořádané do opakovaně použitelných rozhraní. Z DCM můžete vygenerovat kostru kódu zařízení. V tomto rychlém startu se dozvíte, jak používat VS Code v Ubuntu Linux k vytvoření zařízení IoT technologie Plug and Play pomocí DCM.
 
@@ -55,44 +57,7 @@ _Připojovací řetězec úložiště modelů společnosti_ můžete najít na p
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prepare-an-iot-hub"></a>Příprava služby IoT Hub
-
-K dokončení tohoto rychlého startu budete také potřebovat službu Azure IoT Hub v rámci vašeho předplatného Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. Pokud Centrum IoT ještě nemáte k dispozici, vytvořte ho podle zbývajících částí této části.
-
-Pokud používáte Azure CLI místně, `az` verze by měla být **2.0.75** nebo novější, Azure Cloud Shell používá nejnovější verzi. Pomocí příkazu `az --version` ověřte verzi nainstalovanou na vašem počítači.
-
-Spuštěním následujícího příkazu přidejte do instance Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure:
-
-```azurecli-interactive
-az extension add --name azure-cli-iot-ext
-```
-
-Postup v tomto rychlém startu vyžaduje rozšíření **0.8.5** nebo novější. Pomocí příkazu `az extension list` ověřte verzi, kterou jste nainstalovali, a příkaz `az extension update`, který se v případě potřeby aktualizuje.
-
-Pokud nemáte centrum IoT, vytvořte ho pomocí následujících příkazů a nahraďte `<YourIoTHubName>` jedinečným názvem podle vašeho výběru. Pokud tyto příkazy spouštíte lokálně, přihlaste se ke svému předplatnému Azure pomocí `az login`. Pokud tyto příkazy spouštíte ve službě Azure Cloud Shell, jste přihlášeni automaticky:
-
-  ```azurecli-interactive
-  az group create --name pnpquickstarts_rg --location centralus
-  az iot hub create --name <YourIoTHubName> \
-    --resource-group pnpquickstarts_rg --sku S1
-  ```
-
-Předchozí příkazy vytvoří skupinu prostředků s názvem `pnpquickstarts_rg` a centrum IoT v oblasti USA – střed.
-
-> [!IMPORTANT]
-> Během veřejné verze Preview jsou funkce IoT technologie Plug and Play dostupné jenom v centrech IoT vytvořených v oblastech **střed USA**, **Severní Evropa**a **Japonsko – východ** .
-
-Spuštěním následujícího příkazu vytvořte identitu zařízení ve službě IoT Hub. Zástupné symboly **YourIoTHubName** a **YourDeviceID** nahraďte vlastním _názvem IoT Hub_ a _ID zařízení_ podle vašeho výběru.
-
-```azurecli-interactive
-az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDeviceID>
-```
-
-Spuštěním následujících příkazů Získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali (Poznámka pro pozdější použití).
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDevice> --output table
-```
+[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
 ## <a name="prepare-the-development-environment"></a>Příprava vývojového prostředí
 
@@ -216,13 +181,13 @@ Po spuštění ukázkového klienta zařízení můžete zjistit, jestli funguje
 Pomocí následujícího příkazu můžete zobrazit telemetrii, kterou ukázkové zařízení odesílá. Před zobrazením jakékoli telemetrie ve výstupu možná budete muset počkat jednu nebo dvě minuty:
 
 ```azurecli-interactive
-az iot dt monitor-events --hub-name <YourIoTHubNme> --device-id <YourDevice>
+az iot dt monitor-events --hub-name <YourIoTHubNme> --device-id <YourDeviceID>
 ```
 
 Pomocí následujícího příkazu zobrazte všechny vlastnosti odesílané zařízením:
 
 ```azurecli-interactive
-az iot dt list-properties --device-id <YourDevice> --hub-name <YourIoTHubNme> --source private --repo-login "<YourCompanyModelRepositoryConnectionString>"
+az iot dt list-properties --device-id <YourDeviceID> --hub-name <YourIoTHubNme> --source private --repo-login "<YourCompanyModelRepositoryConnectionString>"
 ```
 
 [!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]

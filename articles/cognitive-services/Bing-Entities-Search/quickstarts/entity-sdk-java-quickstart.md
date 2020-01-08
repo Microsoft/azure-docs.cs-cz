@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: f39355613382bd5d02b7ef6918598f38737e850f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: b907b1ed945cd72d51d0b1acd037dbfc93be4873
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327140"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448644"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>Rychlý Start: odeslání žádosti o vyhledávání pomocí sady Vyhledávání entit Bingu SDK pro jazyk Java
 
-V tomto rychlém startu můžete začít vyhledávat entity pomocí sady Vyhledávání entit Bingu SDK pro jazyk Java. I když Vyhledávání entit Bingu má REST API kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch).
+V tomto rychlém startu můžete začít vyhledávat entity pomocí sady Vyhledávání entit Bingu SDK pro jazyk Java. I když Vyhledávání entit Bingu má REST API kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -67,7 +67,7 @@ Nainstalujte si závislosti sady SDK Bingu pro vyhledávání entit pomocí syst
 
 ## <a name="create-a-search-client"></a>Vytvoření vyhledávacího klienta
 
-1. Implementujte klienta `dominantEntityLookup`, který vyžaduje koncový bod rozhraní API a instanci `ServiceClientCredentials` třídy.
+1. Implementujte klienta `dominantEntityLookup`, který vyžaduje koncový bod rozhraní API a instanci `ServiceClientCredentials` třídy. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```java
     public static EntitySearchAPIImpl getClient(final String subscriptionKey) {

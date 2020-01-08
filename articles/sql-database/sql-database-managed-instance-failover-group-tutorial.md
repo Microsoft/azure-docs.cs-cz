@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: 939606412c55ddad29801776c2385b406dc93a33
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: b7c406c1d7f55b364d72b2b5626b3c17a34d8338
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286760"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552759"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Kurz: Přidání spravované instance SQL Database do skupiny převzetí služeb při selhání
 
@@ -31,6 +31,7 @@ Přidejte SQL Database spravovanou instanci do skupiny převzetí služeb při s
   > [!NOTE]
   > - Při procházení tohoto kurzu se ujistěte, že konfigurujete prostředky s [požadavky pro nastavení skupin převzetí služeb při selhání pro spravovanou instanci](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets). 
   > - Vytvoření spravované instance může trvat poměrně dlouhou dobu. V důsledku toho může dokončení tohoto kurzu trvat několik hodin. Další informace o časech zřizování najdete v tématu [operace správy spravované instance](sql-database-managed-instance.md#managed-instance-management-operations). 
+  > - Spravované instance účastnící se skupiny převzetí služeb při selhání vyžadují buď [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) , nebo dvě připojené brány VPN Gateway. Tento kurz popisuje kroky pro vytvoření a připojení bran VPN. Tento postup přeskočte, pokud již máte nakonfigurovanou ExpressRoute. 
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -381,7 +382,7 @@ Vytvořte skupinu prostředků a primární spravovanou instanci pomocí prostř
 
 Tato část kurzu používá následující rutiny PowerShellu:
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků Azure.  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Vytvoří virtuální síť.  |
@@ -707,7 +708,7 @@ Vytvořte sekundární spravovanou instanci pomocí prostředí PowerShell.
 
 Tato část kurzu používá následující rutiny PowerShellu:
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků Azure.  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Vytvoří virtuální síť.  |
@@ -728,7 +729,9 @@ Tato část kurzu používá následující rutiny PowerShellu:
 ---
 
 ## <a name="4---create-primary-gateway"></a>4 – vytvoření primární brány 
-Aby se dvě spravované instance účastnily skupiny převzetí služeb při selhání, musí existovat brána nakonfigurovaná mezi virtuálními sítěmi dvou spravovaných instancí, aby bylo možné síťovou komunikaci. Bránu pro primární spravovanou instanci můžete vytvořit pomocí Azure Portal. 
+Aby se dvě spravované instance účastnily skupiny převzetí služeb při selhání, musí existovat buď ExpressRoute, nebo brána nakonfigurovaná mezi virtuálními sítěmi dvou spravovaných instancí, aby bylo možné síťovou komunikaci. Pokud se rozhodnete nakonfigurovat [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) místo připojení dvou bran VPN Gateway, přejděte ke [kroku 7](#7---create-a-failover-group).  
+
+Tento článek popisuje kroky pro vytvoření dvou bran sítě VPN a jejich připojení, ale můžete přeskočit k vytvoření skupiny převzetí služeb při selhání, pokud jste místo toho nakonfigurovali ExpressRoute. 
 
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
@@ -807,7 +810,7 @@ Vytvořte bránu pro virtuální síť vaší primární spravované instance po
 
 Tato část kurzu používá následující rutiny PowerShellu:
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Získá ve skupině prostředků virtuální síť. |
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Přidá konfiguraci podsítě do virtuální sítě. | 
@@ -888,7 +891,7 @@ Vytvořte bránu pro virtuální síť sekundární spravované instance pomocí
 
 Tato část kurzu používá následující rutiny PowerShellu:
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Získá ve skupině prostředků virtuální síť. |
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Přidá konfiguraci podsítě do virtuální sítě. | 
@@ -953,7 +956,7 @@ Připojte dvě brány pomocí PowerShellu.
 
 Tato část kurzu používá následující rutinu PowerShellu:
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | Vytvoří připojení mezi dvěma branami virtuální sítě.   |
 
@@ -995,7 +998,7 @@ Vytvořte skupinu převzetí služeb při selhání pomocí PowerShellu.
 
 Tato část kurzu používá následující rutinu PowerShellu:
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| Vytvoří novou skupinu převzetí služeb při selhání spravované instance Azure SQL Database.  |
 
@@ -1061,7 +1064,7 @@ Vraťte skupinu převzetí služeb při selhání zpátky na primární server:
 
 Tato část kurzu používá následující rutiny PowerShellu:
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | Získá nebo zobrazí seznam skupin převzetí služeb při selhání spravované instance.| 
 | [Switch – AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Provede převzetí služeb při selhání pro skupinu převzetí služeb při selhání spravované instance. | 
@@ -1075,7 +1078,7 @@ Vyčistěte prostředky tak, že nejprve odstraníte spravovanou instanci, potom
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 1. Přejděte do skupiny prostředků v [Azure Portal](https://portal.azure.com). 
-1. Vyberte spravované instance a pak vyberte **Odstranit**. Do textového pole zadejte `yes` a potvrďte tak, že chcete odstranit prostředek, a pak vyberte **Odstranit**. Dokončení tohoto procesu může nějakou dobu trvat na pozadí a až do té doby, nebudete moct *virtuální cluster* ani žádné jiné závislé prostředky odstranit. Sledujte odstranění na kartě aktivita a potvrďte, že se vaše spravovaná instance odstranila. 
+1. Vyberte spravované instance a pak vyberte **Odstranit**. Do textového pole zadejte `yes` a potvrďte tak, že chcete odstranit prostředek, a pak vyberte **Odstranit**. Dokončení tohoto procesu může nějakou dobu trvat na pozadí a až do dokončení, nebudete moci odstranit *virtuální cluster* ani žádné jiné závislé prostředky. Sledujte odstranění na kartě aktivita a potvrďte, že se vaše spravovaná instance odstranila. 
 1. Po odstranění spravované instance odstraňte *virtuální cluster* tak, že ho vyberete ve vaší skupině prostředků, a pak zvolíte **Odstranit**. Do textového pole zadejte `yes` a potvrďte tak, že chcete odstranit prostředek, a pak vyberte **Odstranit**. 
 1. Odstraňte všechny zbývající prostředky. Do textového pole zadejte `yes` a potvrďte tak, že chcete odstranit prostředek, a pak vyberte **Odstranit**. 
 1. Odstraňte skupinu prostředků výběrem možnosti **Odstranit skupinu prostředků**, zadáním názvu skupiny prostředků `myResourceGroup`a pak výběrem možnosti **Odstranit**. 
@@ -1093,7 +1096,7 @@ Write-host "Removing residual resources and resouce group..."
 
 Tato část kurzu používá následující rutinu PowerShellu:
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků. |
 
@@ -1106,7 +1109,7 @@ Tato část kurzu používá následující rutinu PowerShellu:
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků Azure.  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Vytvoří virtuální síť.  |

@@ -1,18 +1,18 @@
 ---
-title: Typy funkcí v rozšíření Durable Functions Azure Functions
+title: Typy funkcí v Azure Durable Functions
 description: Přečtěte si o typech funkcí a rolí, které podporují komunikaci typu Function-to-Function v Durable Functions orchestrace v Azure Functions.
 author: cgillum
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7a485f31ed7e112745cf3b45bbfe348e6a2e0fd3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 35ef9d8731e169e890f5985ce01215fec5d6e3de
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232769"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433269"
 ---
-# <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions typy a funkce (Azure Functions)
+# <a name="durable-functions-types-and-features"></a>Durable Functions typy a funkce
 
 Durable Functions je rozšíření [Azure Functions](../functions-overview.md). Durable Functions lze použít pro stavovou orchestraci provádění funkce. Trvalá aplikace Function App je řešení, které se skládá z různých Azure Functions. Funkce mohou hrát různé role v rámci trvalé orchestrace funkcí. 
 

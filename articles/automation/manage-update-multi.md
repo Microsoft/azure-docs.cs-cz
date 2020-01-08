@@ -2,19 +2,15 @@
 title: Správa aktualizací pro několik virtuálních počítačů Azure
 description: Tento článek popisuje, jak spravovat aktualizace pro virtuální počítače Azure a mimo Azure.
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/20/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 16e79043db80b69d2a2ca7d0a90e6d4921c15b22
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e9a5a4330a90bd376114f836250e290944f03860
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806503"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417828"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Správa aktualizací pro několik počítačů
 
@@ -25,7 +21,7 @@ Pomocí řešení Update Management můžete spravovat aktualizace a opravy pro 
 - Naplánovat instalaci požadovaných aktualizací
 - Zkontrolujte výsledky nasazení a ověřte, jestli se aktualizace úspěšně nastavily na všechny virtuální počítače, pro které je povolená Update Management.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete použít Update Management, potřebujete:
 
@@ -147,7 +143,7 @@ V podokně **nové nasazení aktualizací** zadejte následující informace:
   - Balíčky funkcí
   - Aktualizace Service Pack
   - Aktualizace definic
-  - Nástroje
+  - nástroje
   - Aktualizace
 
 - **Aktualizace, které se mají zahrnout nebo vyloučit** – Otevře stránku **Zahrnout nebo vyloučit**. Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách. Další informace o způsobu zpracování zařazení najdete v tématu [Naplánování nasazení aktualizací](automation-tutorial-update-management.md#schedule-an-update-deployment).

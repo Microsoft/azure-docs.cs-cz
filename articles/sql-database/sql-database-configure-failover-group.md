@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: fb9ee2378679c420a7675856ec95e60f6ae1d14f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 05b099eebcbb7b8f77357c9dcf3a4d567d3886d6
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827137"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75553065"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Konfigurace skupiny převzetí služeb při selhání pro Azure SQL Database
 
@@ -35,6 +35,7 @@ Vezměte v úvahu následující požadavky:
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu databázi pomocí Azure Portal.
+
 
 1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
 1. Vyberte jednu databázi, kterou chcete přidat do skupiny převzetí služeb při selhání. 
@@ -183,6 +184,9 @@ Vraťte skupinu převzetí služeb při selhání zpátky na primární server:
 
 ---
 
+> [!IMPORTANT]
+> Pokud potřebujete sekundární databázi odstranit, odeberte ji ze skupiny převzetí služeb při selhání před jejím odstraněním. Odstranění sekundární databáze před jejím odebráním ze skupiny převzetí služeb při selhání může způsobit nepředvídatelné chování. 
+
 ## <a name="elastic-pool"></a>Elastický fond
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní elastický fond pomocí Azure Portal nebo PowerShellu.  
 
@@ -328,11 +332,14 @@ Převzetí služeb při selhání sekundárním serverem:
 
 ---
 
+> [!IMPORTANT]
+> Pokud potřebujete sekundární databázi odstranit, odeberte ji ze skupiny převzetí služeb při selhání před jejím odstraněním. Odstranění sekundární databáze před jejím odebráním ze skupiny převzetí služeb při selhání může způsobit nepředvídatelné chování. 
+
 ## <a name="managed-instance"></a>Spravovaná instance
 
 Pomocí Azure Portal nebo PowerShellu vytvořte skupinu převzetí služeb při selhání mezi dvěma spravovanými instancemi. 
 
-Budete muset vytvořit bránu pro virtuální síť každé spravované instance, připojit tyto dvě brány a pak vytvořit skupinu převzetí služeb při selhání.
+Budete muset buď nakonfigurovat [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) , nebo vytvořit bránu pro virtuální síť každé spravované instance, připojit tyto dvě brány a pak vytvořit skupinu převzetí služeb při selhání. 
 
 ### <a name="prerequisites"></a>Požadavky
 Vezměte v úvahu následující požadavky:
@@ -344,7 +351,7 @@ Vezměte v úvahu následující požadavky:
 
 ### <a name="create-primary-virtual-network-gateway"></a>Vytvořit primární bránu virtuální sítě 
 
-Vytvořte bránu primární virtuální sítě pomocí Azure Portal nebo PowerShellu. 
+Pokud jste nenakonfigurovali [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md), můžete vytvořit primární bránu virtuální sítě pomocí Azure Portal nebo PowerShellu. 
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 

@@ -4,15 +4,15 @@ description: Tento článek popisuje pokyny a doporučení pro zákazníky, kte�
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 373c498b9ce58062e42f4318c9fa94688556d8c5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3d4fe7319e0af9c463bd64483f43a4e73ef8871d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894211"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395760"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Návrh nasazení Azure Monitorch protokolů
 
@@ -102,7 +102,7 @@ Režimy přístupu jsou shrnuté v následující tabulce:
 |:---|:---|:---|
 | Pro koho je každý model určen? | Centrální správa. Správci, kteří potřebují nakonfigurovat shromažďování dat a uživatele, kteří potřebují přístup k nejrůznějším prostředkům. V současnosti se vyžaduje pro uživatele, kteří potřebují přístup k protokolům pro prostředky mimo Azure. | Týmy aplikace Správci prostředků Azure, které jsou monitorovány. |
 | Co uživatel potřebuje k zobrazení protokolů? | Oprávnění k pracovnímu prostoru. Oprávnění k pracovnímu prostoru najdete v tématu **oprávnění** [ke správě přístupu pomocí oprávnění pracovního prostoru](manage-access.md#manage-access-using-workspace-permissions). | Přístup pro čtení k prostředku. Podívejte se na téma **oprávnění prostředků** v tématu [Správa přístupu pomocí oprávnění Azure](manage-access.md#manage-access-using-azure-permissions). Oprávnění lze zdědit (například z obsahující skupiny prostředků) nebo přímo přiřadit prostředku. Automaticky se přiřadí oprávnění k protokolům pro daný prostředek. |
-| Jaký je rozsah oprávnění? | stejných. Uživatelé s přístupem k pracovnímu prostoru mohou dotazovat všechny protokoly v pracovním prostoru z tabulek, ke kterým mají oprávnění. Viz [řízení přístupu k tabulce](manage-access.md#table-level-rbac) | Prostředek Azure. Uživatel může zadat dotaz na protokoly pro konkrétní prostředky, skupiny prostředků nebo předplatné, ke kterým mají přístup z libovolného pracovního prostoru, ale nedokáže dotazovat protokoly na jiné prostředky. |
+| Jaký je rozsah oprávnění? | Stejných. Uživatelé s přístupem k pracovnímu prostoru mohou dotazovat všechny protokoly v pracovním prostoru z tabulek, ke kterým mají oprávnění. Viz [řízení přístupu k tabulce](manage-access.md#table-level-rbac) | Prostředek Azure. Uživatel může zadat dotaz na protokoly pro konkrétní prostředky, skupiny prostředků nebo předplatné, ke kterým mají přístup z libovolného pracovního prostoru, ale nedokáže dotazovat protokoly na jiné prostředky. |
 | Jak můžou protokoly přístupu uživatele? | <ul><li>Spusťte **protokoly** z nabídky **Azure monitor** .</li></ul> <ul><li>Spustí **protokoly** z **Log Analytics pracovní prostory**.</li></ul> <ul><li>Z Azure Monitor [sešitů](../visualizations.md#workbooks).</li></ul> | <ul><li>Spuštění **protokolů** z nabídky pro prostředek Azure</li></ul> <ul><li>Spusťte **protokoly** z nabídky **Azure monitor** .</li></ul> <ul><li>Spustí **protokoly** z **Log Analytics pracovní prostory**.</li></ul> <ul><li>Z Azure Monitor [sešitů](../visualizations.md#workbooks).</li></ul> |
 
 ## <a name="access-control-mode"></a>Režim řízení přístupu
@@ -128,7 +128,9 @@ Informace o tom, jak změnit režim řízení přístupu na portálu, pomocí Po
 
 ## <a name="ingestion-volume-rate-limit"></a>Omezení přenosové rychlosti pro přijímání
 
-Azure Monitor je služba data ve velkém měřítku, která slouží tisícům zákazníků, kteří každý měsíc odesílají terabajty dat při rostoucím tempu. Výchozí prahová hodnota pro rychlost příjmu je nastavená na **500 MB/min** na pracovní prostor. Pokud odesíláte data s vyšší sazbou do jednoho pracovního prostoru, některá data jsou Vyřazená a do tabulky *operací* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Pokud váš objem příjmu dál překročí limit přenosové rychlosti nebo jste se od vás očekávali, můžete požádat o zvýšení pracovního prostoru otevřením žádosti o podporu.
+Azure Monitor je služba data ve velkém měřítku, která slouží tisícům zákazníků, kteří každý měsíc odesílají terabajty dat při rostoucím tempu. Výchozí prahová hodnota pro rychlost příjmu je nastavená na **6 GB/min** na pracovní prostor. Jedná se o přibližnou hodnotu, protože skutečná velikost se může v závislosti na délce protokolu a kompresním poměru měnit mezi datovými typy. Toto omezení se nevztahuje na data odesílaná z agentů nebo [rozhraní API kolekce dat](data-collector-api.md).
+
+Pokud odesíláte data s vyšší sazbou do jednoho pracovního prostoru, některá data jsou Vyřazená a do tabulky *operací* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Pokud váš objem příjmu dál překročí limit přenosové rychlosti nebo jste se od vás očekávali, můžete požádat o zvýšení pracovního prostoru otevřením žádosti o podporu.
  
 Chcete-li být v pracovním prostoru upozorněni na událost, vytvořte [pravidlo výstrahy protokolu](alerts-log.md) pomocí následujícího dotazu se základem výstrahy upozornění na základě počtu výsledků od nuly.
 

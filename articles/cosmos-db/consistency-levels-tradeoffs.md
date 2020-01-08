@@ -1,5 +1,5 @@
 ---
-title: Kompromisy týkající se dostupnosti a výkonu pro různé úrovně konzistence v Azure Cosmos DB
+title: Azure Cosmos DB konzistence, dostupnost a kompromisů v výkonu
 description: Kompromisy týkající se dostupnosti a výkonu pro různé úrovně konzistence v Azure Cosmos DB.
 author: markjbrown
 ms.author: mjbrown
@@ -7,24 +7,24 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: f241f243860635db443b732f94d12956bbe0f9d8
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: a16acfc8f9be820e9cc9b3bd59d6675b7f75d2ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990621"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445552"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisy mezi konzistencí, dostupností a výkonem 
 
-Distribuované databáze, které spoléhají na replikaci při vysoké dostupnosti, nízké latenci nebo obojí, musí dělat kompromisy. Mezi kompromisy patří konzistence čtení oproti dostupnosti, latenci a propustnosti.
+Distribuované databáze, které se kvůli zajištění vysoké dostupnosti, nízké latence nebo obojího spoléhají na replikaci, musí dělat kompromisy. Tyto kompromisy jsou mezi konzistencí čtení a dostupností, latencí a propustností.
 
 Azure Cosmos DB přistupuje k konzistenci dat jako spektrum možností. Tento přístup zahrnuje více možností než dvě extrémní silná a konečná konzistence. Pro spektrum konzistence si můžete vybrat z pěti dobře definovaných modelů. Od nejpřísnější až nejslabších jsou modely:
 
-- *Silnější*
-- *Ohraničená neaktuálnost*
-- *Jednání*
+- *Silné*
+- *Omezená neaktuálnost*
+- *Relace*
 - *Konzistentní předpona*
-- *Konečné*
+- *Konečný výsledek*
 
 Každý model poskytuje kompromisy k dostupnosti a výkonu a je zajištěný ucelenou SLA.
 
@@ -50,14 +50,14 @@ V globálně distribuovaném databázovém prostředí existuje přímý vztah m
 
 Následující tabulka definuje vztah mezi modelem konzistence a odolností dat při výpadku oblasti v oblasti výpadku v síti. Je důležité si uvědomit, že v distribuovaném systému, a to i se silnou konzistencí, není možné mít distribuovanou databázi s cílem RPO a RTO nula z důvodu věta CAP. Další informace o tom, proč najdete [v tématu úrovně konzistence v Azure Cosmos DB](consistency-levels.md).
 
-|**Oblast (y)**|**Režim replikace**|**Úroveň konzistence**|**OBNOVENÍ**|**RTO**|
+|**Oblast (y)**|**Režim replikace**|**Úrovně konzistence**|**OBNOVENÍ**|**RTO**|
 |---------|---------|---------|---------|---------|
 |1\. místo|Jedna nebo více hlavních serverů|Jakákoli úroveň konzistence|< 240 minut|< 1 týden|
-|> 1|Jedna hlavní|Relace, konzistentní předpona, případný|< 15 minut|< 15 minut|
-|> 1|Jedna hlavní|Omezená neaktuálnost|*K*  & *t*|< 15 minut|
-|> 1|Jedna hlavní|Strong|0|< 15 minut|
-|> 1|Vícenásobný hlavní|Relace, konzistentní předpona, případný|< 15 minut|0|
-|> 1|Vícenásobný hlavní|Omezená neaktuálnost|*K*  & *t*|0|
+|>1|Jedna hlavní|Relace, konzistentní předpona, případný|< 15 minut|< 15 minut|
+|>1|Jedna hlavní|Omezená neaktuálnost|*K* & *T*|< 15 minut|
+|>1|Jedna hlavní|Strong|0|< 15 minut|
+|>1|Vícenásobný hlavní|Relace, konzistentní předpona, případný|< 15 minut|0|
+|>1|Vícenásobný hlavní|Omezená neaktuálnost|*K* & *T*|0|
 
 *K* = počet verzí *"K"* (tj. aktualizace) položky.
 

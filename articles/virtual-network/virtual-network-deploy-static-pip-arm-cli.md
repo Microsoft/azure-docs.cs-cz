@@ -1,6 +1,6 @@
 ---
-title: Vytvoření virtuálního počítače se statickou veřejnou IP adresu – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit virtuální počítač se statickou veřejnou IP adresu pomocí rozhraní příkazového řádku Azure (CLI).
+title: Vytvoření virtuálního počítače se statickou veřejnou IP adresou – Azure CLI | Microsoft Docs
+description: Naučte se, jak vytvořit virtuální počítač se statickou veřejnou IP adresou pomocí rozhraní příkazového řádku Azure (CLI).
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -15,29 +15,29 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: 4b5b0453d4f9935eed9acd5059c0aa9741b25524
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 421fe373c93159b81a7dd962920eb17845895925
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64730468"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647811"
 ---
-# <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-cli"></a>Vytvoření virtuálního počítače se statickou veřejnou IP adresu pomocí Azure CLI
+# <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-cli"></a>Vytvoření virtuálního počítače se statickou veřejnou IP adresou pomocí Azure CLI
 
-Vytvoření virtuálního počítače se statickou veřejnou IP adresu. Veřejná IP adresa umožňuje komunikaci k virtuálnímu počítači z Internetu. Přiřadíte statickou veřejnou IP adresu, nikoli s dynamickou adresou, k zajištění, že adresa nikdy nemění. Další informace o [statické veřejné IP adresy](virtual-network-ip-addresses-overview-arm.md#allocation-method). Chcete-li změnit přiřazené do stávajícího virtuálního počítače z dynamické na statickou veřejnou IP adresu pro práci s privátními IP adresami, najdete v článku [přidání, změna nebo odebrání IP adres](virtual-network-network-interface-addresses.md). Mají veřejné IP adresy [nominální poplatek](https://azure.microsoft.com/pricing/details/ip-addresses)a je [limit](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) počtu veřejné IP adresy, které můžete použít jedno předplatné.
+Můžete vytvořit virtuální počítač se statickou veřejnou IP adresou. Veřejná IP adresa vám umožní komunikovat s virtuálním počítačem z Internetu. Přiřaďte statickou veřejnou IP adresu, nikoli dynamickou adresu, abyste zajistili, že se adresa nikdy nemění. Přečtěte si další informace o [statických veřejných IP adresách](virtual-network-ip-addresses-overview-arm.md#allocation-method). Postup změny veřejné IP adresy přiřazené existujícímu virtuálnímu počítači z dynamického na statickou nebo pro práci s privátními IP adresami najdete v tématu [Přidání, změna nebo odebrání IP adres](virtual-network-network-interface-addresses.md). Veřejné IP adresy mají [nominální poplatek](https://azure.microsoft.com/pricing/details/ip-addresses)a [omezení](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) počtu veřejných IP adres, které můžete použít v rámci předplatného.
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Ze svého místního počítače nebo s použitím Azure Cloud Shell, můžete provést následující kroky. Použití místního počítače, ujistěte se, máte [nainstalované Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud chcete použít Azure Cloud Shell, vyberte **vyzkoušet** v pravém horním rohu pole libovolný příkaz, který následuje. Cloud Shell se přihlásíte do Azure.
+Následující kroky můžete provést z místního počítače nebo pomocí Azure Cloud Shell. Pokud chcete použít místní počítač, ujistěte se, že máte nainstalované rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud chcete použít Azure Cloud Shell, vyberte **vyzkoušet** v pravém horním rohu libovolného příkazového řádku, který následuje. Cloud Shell vás přihlásí k Azure.
 
-1. Pokud používáte Cloud Shell, přejděte ke kroku 2. Otevřete relaci příkazového řádku a přihlášení do Azure s využitím `az login`.
-2. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků v oblasti Azure USA – východ:
+1. Pokud používáte Cloud Shell, přejděte ke kroku 2. Otevřete relaci příkazu a přihlaste se k Azure pomocí `az login`.
+2. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků v Východní USA oblasti Azure:
 
    ```azurecli-interactive
    az group create --name myResourceGroup --location eastus
    ```
 
-3. Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az-vm-create). `--public-ip-address-allocation=static` Možnost statickou veřejnou IP adresu přiřadí k virtuálnímu počítači. Následující příklad vytvoří virtuální počítač Ubuntu s statické, základní SKU veřejné IP adresy s názvem *myPublicIpAddress*:
+3. Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az-vm-create). Možnost `--public-ip-address-allocation=static` přiřadí virtuálnímu počítači statickou veřejnou IP adresu. Následující příklad vytvoří virtuální počítač s Ubuntu se statickou veřejnou IP adresou (Basic) SKU s názvem *myPublicIpAddress*:
 
    ```azurecli-interactive
    az vm create \
@@ -50,9 +50,9 @@ Ze svého místního počítače nebo s použitím Azure Cloud Shell, můžete p
      --public-ip-address-allocation static
    ```
 
-   Pokud je veřejná IP adresa musí být standardní SKU, přidejte `--public-ip-sku Standard` do předchozího příkazu. Další informace o [veřejné IP adresy skladové položky](virtual-network-ip-addresses-overview-arm.md#sku). Pokud virtuální počítač se přidají do fondu back-end veřejný Azure Load Balancer, skladovou Položku virtuálního počítače veřejné IP adresy musí odpovídat SKU nástroje pro vyrovnávání zatížení veřejnou IP adresu. Podrobnosti najdete v tématu [Azure Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#skus).
+   Pokud veřejná IP adresa musí být standardní SKU, přidejte `--public-ip-sku Standard` k předchozímu příkazu. Přečtěte si další informace o [SKU veřejných IP adres](virtual-network-ip-addresses-overview-arm.md#sku). Pokud bude virtuální počítač přidán do fondu back-end veřejné Azure Load Balancer, musí SKU veřejné IP adresy virtuálního počítače odpovídat SKU veřejné IP adresy nástroje pro vyrovnávání zatížení. Podrobnosti najdete v tématu [Azure Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#skus).
 
-4. Zobrazit přiřazenou veřejnou IP adresu a potvrďte, že byl vytvořen jako statickou, základní adresu SKU, [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show):
+4. Zobrazte přiřazenou veřejnou IP adresu a potvrďte, že byla vytvořená jako statická, základní adresa SKU, pomocí [AZ Network Public-IP show](/cli/azure/network/public-ip#az-network-public-ip-show):
 
    ```azurecli-interactive
    az network public-ip show \
@@ -62,10 +62,10 @@ Ze svého místního počítače nebo s použitím Azure Cloud Shell, můžete p
      --output table
    ```
 
-   Azure přiřadit veřejnou IP adresu z adresy používané v oblasti, kterou jste vytvořili virtuální počítač. Můžete si stáhnout seznam rozsahů (předpon) pro [veřejný](https://www.microsoft.com/download/details.aspx?id=56519) cloud Azure a cloudy Azure [US Government](https://www.microsoft.com/download/details.aspx?id=57063), [China](https://www.microsoft.com/download/details.aspx?id=57062) a [Germany](https://www.microsoft.com/download/details.aspx?id=57064).
+   Azure přiřadil veřejnou IP adresu z adres používaných v oblasti, ve které jste virtuální počítač vytvořili. Můžete si stáhnout seznam rozsahů (předpon) pro [veřejný](https://www.microsoft.com/download/details.aspx?id=56519) cloud Azure a cloudy Azure [US Government](https://www.microsoft.com/download/details.aspx?id=57063), [China](https://www.microsoft.com/download/details.aspx?id=57062) a [Germany](https://www.microsoft.com/download/details.aspx?id=57064).
 
 > [!WARNING]
-> Neprovádějte žádné změny nastavení IP adresy v rámci operačního systému virtuálního počítače. Operační systém je vědět o Azure veřejné IP adresy. I když nastavení privátní IP adresy můžete přidat do operačního systému, doporučujeme, pokud to neuděláte není-li nutné a nikoli až po čtení [přidejte privátní IP adresu pro operační systém](virtual-network-network-interface-addresses.md#private).
+> Neměňte nastavení IP adresy v operačním systému virtuálního počítače. Operační systém neznáte veřejné IP adresy Azure. I když můžete do operačního systému přidat nastavení privátních IP adres, doporučujeme, abyste to neučinili, pokud není potřeba, a ne až po čtení [Přidání privátní IP adresy do operačního systému](virtual-network-network-interface-addresses.md#private).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -75,9 +75,9 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o [veřejné IP adresy](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) v Azure
-- Další informace o všech [nastavení veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address)
-- Další informace o [privátních IP adres](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) a přiřazení [statickou privátní IP adresou](virtual-network-network-interface-addresses.md#add-ip-addresses) na virtuálním počítači Azure
-- Další informace o vytváření [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuálních počítačů
+- Další informace o [veřejných IP adresách](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) v Azure
+- Další informace o všech [nastaveních veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address)
+- Další informace o [privátních IP adresách](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) a přiřazení [statických privátních IP adres](virtual-network-network-interface-addresses.md#add-ip-addresses) k virtuálnímu počítači Azure
+- Další informace o vytváření virtuálních počítačů se systémy [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

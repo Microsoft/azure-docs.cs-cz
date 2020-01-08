@@ -10,23 +10,23 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: acac881a790644532121697e6b79e57a98b168fe
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 3fc369c59626faae4c97f896650269820626b1ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839850"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454702"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Interpretace výsledků modelu v Azure Machine Learning Studio (Classic)
 Toto téma vysvětluje, jak vizualizovat a interpretovat výsledky předpovědi v Azure Machine Learning Studio (Classic). Po vyškolení modelu a provedení předpovědi nad ním ("skóre modelu") potřebujete pochopit a interpretovat výsledek předpovědi.
 
 
 
-V klasické verzi Azure Machine Learning Studio existují čtyři hlavní druhy modelů strojového učení:
+Existují čtyři hlavní druhy modelů strojového učení v Azure Machine Learning Studio (Classic):
 
 * Classification
 * Clustering
-* Nevýhody
+* Regrese
 * Doporučené systémy
 
 Moduly používané pro předpověď nad těmito modely jsou:
@@ -39,7 +39,7 @@ Tento dokument vysvětluje, jak interpretovat výsledky předpovědi pro každý
 
 Toto téma řeší výklad předpovědi, ale ne vyhodnocení modelu. Další informace o tom, jak vyhodnotit model, naleznete [v tématu How to Evaluate Performance model in Azure Machine Learning Studio (Classic)](evaluate-model-performance.md).
 
-Pokud začínáte s klasickou verzí Azure Machine Learning Studio a potřebujete pomoc s vytvořením jednoduchého experimentu, přečtěte si téma [Vytvoření jednoduchého experimentu v Azure Machine Learning Studio (Classic)](create-experiment.md).
+Pokud Azure Machine Learning Studio (Classic) a potřebujete pomoc s vytvořením jednoduchého experimentu, přečtěte si téma [Vytvoření jednoduchého experimentu v Azure Machine Learning Studio (Classic)](create-experiment.md).
 
 ## <a name="classification"></a>Classification
 Existují dvě podkategorie problémů s klasifikací:
@@ -52,11 +52,11 @@ Azure Machine Learning Studio (Classic) obsahuje různé moduly pro práci s ka�
 ### <a name="two-class-classification"></a>Klasifikace se dvěma třídami
 **Příklad experimentu**
 
-Příkladem problému s klasifikací dvou tříd je klasifikace Iris květů. Úkolem je klasifikovat květy Iris na základě jejich funkcí. Sada dat Iris, která je součástí klasické verze Azure Machine Learning Studio, je podmnožinou oblíbené [sady dat Iris](https://en.wikipedia.org/wiki/Iris_flower_data_set) obsahující instance pouze dvou druhů květů (třídy 0 a 1). Pro každou květinu jsou k dispozici čtyři funkce (sepal Length, sepal Width, Petal Length a Petal Width).
+Příkladem problému s klasifikací dvou tříd je klasifikace Iris květů. Úkolem je klasifikovat květy Iris na základě jejich funkcí. Sada dat Iris, kterou poskytuje Azure Machine Learning Studio (Classic), je podmnožinou oblíbené [sady dat Iris](https://en.wikipedia.org/wiki/Iris_flower_data_set) obsahující instance pouze dvou druhů květů (třídy 0 a 1). Pro každou květinu jsou k dispozici čtyři funkce (sepal Length, sepal Width, Petal Length a Petal Width).
 
 ![Snímek obrazovky s experimentem Iris](./media/interpret-model-results/1.png)
 
-Obrázek 1. Experiment pro problémy s klasifikací dvou tříd Iris
+Obrázek 1: Experiment pro problémy s klasifikací dvou tříd Iris
 
 Byl proveden experiment pro vyřešení tohoto problému, jak je znázorněno na obrázku 1. Byl vyškolený a vyhodnocený model rozhodovacího stromu se dvěma třídami. Nyní můžete vizualizovat výsledky předpovědi z modulu [skóre modelu][score-model] kliknutím na výstupní port modulu určení [skóre modelu][score-model] a následným kliknutím na **vizualizovat**.
 
@@ -137,7 +137,7 @@ Po publikování a spuštění webové služby a zadání hodnot vstupních funk
 
 Obrázek 10. Výsledek webové služby s klasifikací více tříd
 
-## <a name="regression"></a>Nevýhody
+## <a name="regression"></a>Regrese
 Regresní problémy se liší od problémů s klasifikací. V rámci klasifikačního problému se snažíte odhadnout diskrétní třídy, jako je například třída, do které patří Iris květ. Jak vidíte v následujícím příkladu regresního problému, snažíte se předpovědět souvislou proměnnou, jako je například cena auta.
 
 **Příklad experimentu**
@@ -224,9 +224,9 @@ Pro doporučované systémy můžete použít problém doporučení restaurace j
 
 * Hodnocení restaurace od zákazníků
 * Data funkcí zákazníka
-* Data funkcí restaurace
+* Funkční data restaurace
 
-K dispozici je několik věcí s modulem Matchbox, který je [doporučený pro výuku][train-matchbox-recommender] v klasické verzi Azure Machine Learning Studio:
+K dispozici je několik věcí s modulem Matchbox, který je [doporučený pro výuku][train-matchbox-recommender] v Azure Machine Learning Studio (Classic):
 
 * Předpověď hodnocení pro daného uživatele a položku
 * Doporučit položky pro daného uživatele

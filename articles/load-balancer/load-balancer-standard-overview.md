@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: 3b6a16436b2719d1571f5d5a3c16711a9100b75d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ce60062a49f08bb3409c8445e0aaf79c0d361865
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894415"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552810"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Přehled služby Azure Standard Load Balancer
 
@@ -182,14 +182,6 @@ SKU nejsou proměnlivé. Postupujte podle kroků v této části, chcete-li pře
 3. Odeberte základní prostředky SKU (podle potřeby Load Balancer a veřejné IP adresy) ze všech instancí virtuálních počítačů. Nezapomeňte taky odebrat všechny instance virtuálních počítačů ve skupině dostupnosti.
 
 4. Připojte všechny instance virtuálních počítačů k novým prostředkům standardní skladové položky.
-
-### <a name="migrate-from-standard-to-basic-sku"></a>Migrace z úrovně Standard na Basic SKU
-
-1. V případě potřeby vytvořte nový základní prostředek (Load Balancer a veřejné IP adresy). Znovu vytvořte pravidla a definice sondy.  Změňte test HTTPS na test TCP na 443/TCP. 
-
-2. Odeberte standardní prostředky SKU (podle potřeby Load Balancer a veřejné IP adresy) ze všech instancí virtuálních počítačů. Nezapomeňte taky odebrat všechny instance virtuálních počítačů ve skupině dostupnosti.
-
-3. Připojte všechny instance virtuálních počítačů k novým základním prostředkům SKU.
 
 >[!IMPORTANT]
 >

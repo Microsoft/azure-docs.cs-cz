@@ -3,14 +3,14 @@ title: Osvědčené postupy pro Azure Functions
 description: Seznamte se s osvědčenými postupy a vzory pro Azure Functions.
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
-ms.date: 10/16/2017
+ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fa85f636233a067713d127938d674b359bd03696
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 19674cb024bd9b9c9ea9f510080e30614fad8b60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227373"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433296"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimalizujte výkon a spolehlivost Azure Functions
 
@@ -70,7 +70,11 @@ Existuje několik faktorů, které mají vliv na to, jak se instance aplikace Fu
 
 ### <a name="share-and-manage-connections"></a>Sdílení a Správa připojení
 
-Kdykoliv je to možné, znovu použijte připojení k externím prostředkům.  Další informace najdete [v tématu Správa připojení v Azure Functions](./manage-connections.md).
+Kdykoliv je to možné, znovu použijte připojení k externím prostředkům. Další informace najdete [v tématu Správa připojení v Azure Functions](./manage-connections.md).
+
+### <a name="avoid-sharing-storage-accounts"></a>Vyhněte se sdílení účtů úložiště
+
+Když vytvoříte aplikaci Function App, musíte ji přidružit k účtu úložiště. Připojení k účtu úložiště se udržuje v [nastavení aplikace AzureWebJobsStorage](./functions-app-settings.md#azurewebjobsstorage). Pro maximalizaci výkonu použijte pro každou aplikaci Function App samostatný účet úložiště. To je důležité hlavně v případě, že máte funkce aktivované Durable Functions nebo centra událostí, které generují velké objemy transakcí úložiště. Pokud vaše logika aplikace komunikuje s Azure Storage, buď přímo (pomocí sady SDK úložiště), nebo prostřednictvím jedné z vazeb úložiště, měli byste použít vyhrazený účet úložiště. Pokud například máte funkci aktivovanou centrem událostí, která zapisuje nějaká data do úložiště objektů blob, použijte dva účty úložiště&mdash;jednu pro aplikaci Function App a druhou pro objekty blob uložené funkcí.
 
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Nemíchejte testovací a produkční kód ve stejné aplikaci Function App
 
@@ -84,9 +88,17 @@ Nepoužívejte podrobné protokolování v produkčním kódu, který má negati
 
 ### <a name="use-async-code-but-avoid-blocking-calls"></a>Použít asynchronní kód, ale vyhnout se blokování volání
 
-Asynchronní programování je doporučeným osvědčeným postupem. Nicméně vždy vyhněte odkazování na vlastnost `Result` nebo volání metody `Wait` na instanci `Task`. Tento přístup může vést k vyčerpání vlákna.
+Asynchronní programování je doporučený osvědčený postup, zejména při zablokování vstupně-výstupních operací.
+
+V C#nástroji vždy vyhněte odkazování na vlastnost `Result` nebo volání metody `Wait` na instanci `Task`. Tento přístup může vést k vyčerpání vlákna.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
+
+### <a name="use-multiple-worker-processes"></a>Použití více pracovních procesů
+
+Ve výchozím nastavení používá každá instance hostitele pro funkce jeden pracovní proces. Chcete-li zvýšit výkon, zejména pomocí prostředí runtime s jedním vláknem, jako je Python, použijte [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) ke zvýšení počtu pracovních procesů na hostitele (až 10). Azure Functions se pak pokusí rovnoměrně distribuovat souběžná volání funkcí mezi tyto pracovní procesy. 
+
+FUNCTIONS_WORKER_PROCESS_COUNT se vztahuje na každého hostitele, který funkce vytvoří při horizontálním navýšení kapacity aplikace, aby splňovala požadavky. 
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>Kdykoli je to možné, přijímat zprávy v dávce
 
@@ -104,7 +116,7 @@ Další možnosti konfigurace hostitele najdete v [článku Konfigurace Host. JS
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících zdrojích:
+Další informace najdete v následujících materiálech:
 
 * [Správa připojení v Azure Functions](manage-connections.md)
 * [Azure App Service osvědčené postupy](../app-service/app-service-best-practices.md)

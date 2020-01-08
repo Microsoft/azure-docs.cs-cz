@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: cc1eb4c4fce1398365145b2f3d63db984635d667
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 34bc62a9cb7e5d1358322500a8929b6f8b36d422
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196235"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454557"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Příprava virtuálních počítačů VMware pro posouzení a migraci do Azure
 
@@ -124,7 +124,7 @@ Před nasazením zařízení ověřte požadavky na zařízení.
 
 1. [Ověřte](migrate-support-matrix-vmware.md#assessment-appliance-requirements) požadavky a omezení zařízení.
 2. Pokud používáte proxy server brány firewall založený na adrese URL, [Zkontrolujte](migrate-support-matrix-vmware.md#assessment-url-access-requirements) adresy URL Azure, ke kterým bude zařízení potřebovat přístup. Ujistěte se, že proxy překládá všechny záznamy CNAME přijaté při vyhledávání adres URL.
-3. Zkontrolujte [údaje o výkonu](migrate-appliance.md#collected-performance-data-vmware)a [metadata](migrate-appliance.md#collected-metadata-vmware) , která zařízení shromažďuje během zjišťování a posouzení.
+3. Zkontrolujte [údaje o výkonu](migrate-appliance.md#collected-performance-data-vmware) a [metadata](migrate-appliance.md#collected-metadata-vmware) , které zařízení shromažďuje během zjišťování a posouzení.
 4. [Poznamenejte](migrate-support-matrix-vmware.md#assessment-port-requirements) si porty, ke kterým se zařízení přistupovalo.
 5. V vCenter Server se ujistěte, že váš účet má oprávnění k vytvoření virtuálního počítače pomocí souboru sady vajíček. Zařízení Azure Migrate nasadíte jako virtuální počítač VMware pomocí souboru sady vajíček.
 

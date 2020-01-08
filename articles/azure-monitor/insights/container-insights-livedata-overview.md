@@ -1,24 +1,14 @@
 ---
 title: Zobrazit živá data (Preview) s Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje zobrazení Kubernetes protokolů, událostí a metrik v reálném čase bez použití kubectl v Azure Monitor pro kontejnery.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/15/2019
-ms.author: magoedte
-ms.openlocfilehash: 9c497c73d42e1fb8851c5293010098d843297250
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 18ae091a32d0256288d27ad1439ffc7be26db5f1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514417"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404758"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Jak zobrazit protokoly Kubernetes, události a metriky pod v reálném čase
 
@@ -64,10 +54,10 @@ Data protokolu v reálném čase můžete zobrazit tak, jak jsou generována mod
 
 3. Vyberte kartu **uzly**, **řadiče**nebo **kontejnery** .
 
-4. Vyberte objekt z mřížky výkonu a v podokně vlastnosti, které se nachází na pravé straně, vyberte možnost **Zobrazit živá data (Preview)** . Pokud je cluster AKS nakonfigurovaný s jednotným přihlašováním pomocí Azure AD, zobrazí se výzva k ověření při prvním použití během této relace prohlížeče. Vyberte svůj účet a dokončete ověřování pomocí Azure.  
+4. Vyberte objekt z mřížky výkonu a v podokně vlastnosti, které se nachází na pravé straně, vyberte možnost **Zobrazit živá data (Preview)** . Pokud je cluster AKS nakonfigurovaný s jednotným přihlašováním pomocí Azure AD, zobrazí se výzva k ověření při prvním použití během této relace prohlížeče. Vyberte svůj účet a dokončete ověření pomocí Azure.  
 
     >[!NOTE]
-    >Při prohlížení dat z pracovního prostoru Log Analytics výběrem možnosti **Zobrazit v analýze** v podokně vlastnosti budou výsledky hledání v protokolu potenciálně zobrazovat **uzly**, **sady démonů**, **sady replik**, **úlohy**,  **Cron úlohy**, **lusky**a **kontejnery** , které už možná neexistují. Při pokusu o vyhledání protokolů pro kontejner, který není dostupný v `kubectl`, se tady také nezdaří. Další informace o prohlížení historických protokolů, událostech a metrikách najdete v části [Přehled funkce Analýza](container-insights-log-search.md#search-logs-to-analyze-data) .  
+    >Když si z pracovního prostoru Log Analytics vyberete možnost **Zobrazit v analýze** v podokně vlastnosti, výsledky hledání v protokolu budou potenciálně zobrazovat **uzly**, **sady démonů**, **sady replik**, **úlohy**, **úlohy cron**, **lusky**a **kontejnery** , které už možná neexistují. Při pokusu o vyhledání protokolů pro kontejner, který není dostupný v `kubectl`, se tady také nezdaří. Další informace o prohlížení historických protokolů, událostech a metrikách najdete v části [Přehled funkce Analýza](container-insights-log-search.md#search-logs-to-analyze-data) .  
 
 Po úspěšném ověření se podokno konzoly živá data (Preview) zobrazí pod datovou mřížkou výkonu, kde můžete zobrazit data protokolu v souvislém datovém proudu. Pokud se v indikátoru stavu načítání zobrazuje zelený symbol zaškrtnutí, který je na pravé straně podokna, znamená to, že se data dají načíst a zahájí streamování do konzoly.  
 
@@ -77,7 +67,7 @@ Název podokna zobrazuje název pod tím, kde je kontejner seskupen.
 
 ## <a name="view-events"></a>Zobrazení událostí
 
-Data události v reálném čase můžete zobrazit tak, jak jsou generována modulem kontejneru z **uzlů**, **řadičů**, **kontejnerů**a **nasazení (Preview)** v případě, že kontejner, pod, uzel, ReplicaSet, DaemonSet, úloha, CronJob nebo Je vybráno nasazení. Chcete-li zobrazit události, proveďte následující kroky.
+Data události v reálném čase můžete zobrazit tak, jak jsou generována modulem kontejneru z **uzlů**, **řadičů**, **kontejnerů**a **nasazení (Preview)** zobrazení, když je vybrána možnost kontejner, pod, uzel, ReplicaSet, DaemonSet, úloha, CronJob nebo nasazení. Chcete-li zobrazit události, proveďte následující kroky.
 
 1. V Azure Portal přejděte do skupiny prostředků clusteru AKS a vyberte svůj prostředek AKS.
 
@@ -85,10 +75,10 @@ Data události v reálném čase můžete zobrazit tak, jak jsou generována mod
 
 3. Vyberte kartu **uzly**, **řadiče**, **kontejnery**nebo **nasazení (Preview)** .
 
-4. Vyberte objekt z mřížky výkonu a v podokně vlastnosti, které se nachází na pravé straně, vyberte možnost **Zobrazit živá data (Preview)** . Pokud je cluster AKS nakonfigurovaný s jednotným přihlašováním pomocí Azure AD, zobrazí se výzva k ověření při prvním použití během této relace prohlížeče. Vyberte svůj účet a dokončete ověřování pomocí Azure.  
+4. Vyberte objekt z mřížky výkonu a v podokně vlastnosti, které se nachází na pravé straně, vyberte možnost **Zobrazit živá data (Preview)** . Pokud je cluster AKS nakonfigurovaný s jednotným přihlašováním pomocí Azure AD, zobrazí se výzva k ověření při prvním použití během této relace prohlížeče. Vyberte svůj účet a dokončete ověření pomocí Azure.  
 
     >[!NOTE]
-    >Při prohlížení dat z pracovního prostoru Log Analytics výběrem možnosti **Zobrazit v analýze** v podokně vlastnosti budou výsledky hledání v protokolu potenciálně zobrazovat **uzly**, **sady démonů**, **sady replik**, **úlohy**,  **Cron úlohy**, **lusky**a **kontejnery** , které už možná neexistují. Při pokusu o vyhledání protokolů pro kontejner, který není dostupný v `kubectl`, se tady také nezdaří. Další informace o prohlížení historických protokolů, událostech a metrikách najdete v části [Přehled funkce Analýza](container-insights-log-search.md#search-logs-to-analyze-data) .  
+    >Když si z pracovního prostoru Log Analytics vyberete možnost **Zobrazit v analýze** v podokně vlastnosti, výsledky hledání v protokolu budou potenciálně zobrazovat **uzly**, **sady démonů**, **sady replik**, **úlohy**, **úlohy cron**, **lusky**a **kontejnery** , které už možná neexistují. Při pokusu o vyhledání protokolů pro kontejner, který není dostupný v `kubectl`, se tady také nezdaří. Další informace o prohlížení historických protokolů, událostech a metrikách najdete v části [Přehled funkce Analýza](container-insights-log-search.md#search-logs-to-analyze-data) .  
 
 Po úspěšném ověření se pod mřížkou dat výkonu zobrazí podokno konzoly živá data (Preview). Pokud se v indikátoru stavu načítání zobrazuje zelený symbol zaškrtnutí, který je na pravé straně podokna, znamená to, že se data dají načíst a zahájí streamování do konzoly. 
     
@@ -112,10 +102,10 @@ Data metrik v reálném čase můžete zobrazit tak, jak jsou generována module
 
 3. Vyberte buď kartu **uzly** nebo **řadiče** .
 
-4. V mřížce výkonu vyberte objekt **pod** a v podokně Vlastnosti klikněte na tlačítko **Zobrazit živá data (Preview)** . Pokud je cluster AKS nakonfigurovaný s jednotným přihlašováním pomocí Azure AD, zobrazí se výzva k ověření při prvním použití během této relace prohlížeče. Vyberte svůj účet a dokončete ověřování pomocí Azure.  
+4. V mřížce výkonu vyberte objekt **pod** a v podokně Vlastnosti klikněte na tlačítko **Zobrazit živá data (Preview)** . Pokud je cluster AKS nakonfigurovaný s jednotným přihlašováním pomocí Azure AD, zobrazí se výzva k ověření při prvním použití během této relace prohlížeče. Vyberte svůj účet a dokončete ověření pomocí Azure.  
 
     >[!NOTE]
-    >Při prohlížení dat z pracovního prostoru Log Analytics výběrem možnosti **Zobrazit v analýze** v podokně vlastnosti budou výsledky hledání v protokolu potenciálně zobrazovat **uzly**, **sady démonů**, **sady replik**, **úlohy**,  **Cron úlohy**, **lusky**a **kontejnery** , které už možná neexistují. Při pokusu o vyhledání protokolů pro kontejner, který není dostupný v `kubectl`, se tady také nezdaří. Další informace o prohlížení historických protokolů, událostech a metrikách najdete v části [Přehled funkce Analýza](container-insights-log-search.md#search-logs-to-analyze-data) .  
+    >Když si z pracovního prostoru Log Analytics vyberete možnost **Zobrazit v analýze** v podokně vlastnosti, výsledky hledání v protokolu budou potenciálně zobrazovat **uzly**, **sady démonů**, **sady replik**, **úlohy**, **úlohy cron**, **lusky**a **kontejnery** , které už možná neexistují. Při pokusu o vyhledání protokolů pro kontejner, který není dostupný v `kubectl`, se tady také nezdaří. Další informace o prohlížení historických protokolů, událostech a metrikách najdete v části [Přehled funkce Analýza](container-insights-log-search.md#search-logs-to-analyze-data) .  
 
 Po úspěšném ověření se pod mřížkou dat výkonu zobrazí podokno konzoly živá data (Preview). Data metriky se načtou a zahájí streamování do konzoly pro prezentaci v těchto dvou grafech. Název podokna zobrazuje název pod tím, kde je kontejner seskupen.
 
@@ -123,6 +113,6 @@ Po úspěšném ověření se pod mřížkou dat výkonu zobrazí podokno konzol
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud chcete pokračovat v učení, jak používat Azure Monitor a monitorovat další aspekty clusteru AKS, přečtěte si téma [zobrazení stavu služby Azure Kubernetes](container-insights-analyze.md).
+- Chcete-li pokračovat v učení, jak používat Azure Monitor a monitorovat další aspekty vašeho clusteru AKS, přečtěte si téma [zobrazení Azure Kubernetes Service health](container-insights-analyze.md).
 
 - Podívejte se na [příklady dotazů protokolu](container-insights-log-search.md#search-logs-to-analyze-data) , kde najdete předdefinované dotazy a příklady pro vytváření výstrah, vizualizací nebo provádění dalších analýz vašich clusterů.

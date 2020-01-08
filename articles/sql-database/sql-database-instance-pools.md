@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 8738d1ad54d3ab63d8d2efc939aa9daacbe91c13
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 98757677eae6d21b02d6b0b2a3abade453b5dfed
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810396"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552776"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Co jsou fondy SQL Database instancí (Preview)?
 
@@ -61,7 +61,7 @@ Následující seznam poskytuje hlavní případy použití, ve kterých by se m
 
 Fondy instancí mají podobnou architekturu s běžnými spravovanými instancemi (*jedné instance*). Pro podporu [nasazení v rámci virtuálních sítí Azure (virtuální sítě)](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) a pro zajištění izolace a zabezpečení pro zákazníky využívají fondy instancí také [virtuální clustery](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture). Virtuální clustery reprezentují vyhrazenou sadu izolovaných virtuálních počítačů nasazených v podsíti virtuální sítě zákazníka.
 
-Hlavním rozdílem mezi těmito dvěma modely nasazení je, že fondy instancí povolují nasazení více SQL Server procesů ve stejném uzlu virtuálního počítače, který je prostředkem, který se řídí pomocí [objektů úloh systému Windows](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects), zatímco jednotlivé instance jsou vždy samostatné. uzel virtuálního počítače.
+Hlavním rozdílem mezi těmito dvěma modely nasazení je, že fondy instancí povolují nasazení více SQL Server procesů ve stejném uzlu virtuálního počítače, který je prostředkem, který se řídí pomocí [objektů úloh systému Windows](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects), zatímco jednotlivé instance jsou vždy pouze v uzlu virtuálního počítače.
 
 Následující diagram znázorňuje fond instancí a dvě jednotlivé instance nasazené ve stejné podsíti a ilustrují hlavní informace o architektuře pro oba modely nasazení:
 
@@ -126,7 +126,7 @@ Pokud máte problémy související s nasazením fondu instancí (vytvoření ne
 
 Pokud máte problémy související s jednou instancí nebo databázemi v rámci fondu, měli byste vytvořit pravidelný lístek podpory pro Azure SQL Database spravované instance.
 
-Pokud chcete vytvořit větší nasazení spravovaných instancí (s fondy instancí nebo bez nich), budete možná muset získat větší regionální kvótu. Použijte [proceduru standardního spravované instance pro vyžádání větší kvóty](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance), ale Všimněte si, že pokud používáte fondy instancí, logika nasazení porovnává celkovou spotřebu Vcore *na úrovni fondu* s vaší kvótou a určí, zda jste povoluje se vytvářet nové prostředky bez dalšího zvýšení kvóty.
+Pokud chcete vytvořit větší nasazení spravovaných instancí (s fondy instancí nebo bez nich), budete možná muset získat větší regionální kvótu. Použijte [proceduru standardního spravované instance pro vyžádání větší kvóty](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance), ale Všimněte si, že pokud používáte fondy instancí, logika nasazení porovnává celkovou spotřebu Vcore *na úrovni fondu* s vaší kvótou a určí, jestli máte povoleno vytvářet nové prostředky bez dalšího zvýšení kvóty.
 
 ## <a name="instance-pool-billing"></a>Fakturace fondu instancí
 
@@ -136,7 +136,7 @@ vCore cena za fond se účtuje bez ohledu na to, kolik instancí se v daném fon
 
 Pro cenu za výpočetní výkon (měřenou v virtuální jádra) jsou k dispozici dvě cenové možnosti:
 
-  1. *Zahrnutá licence*: použijte existující licence SQL Server se Software Assurance.
+  1. *Licence*: cena za licence SQL je součástí. Pro zákazníky, kteří se rozhodnou používat stávající licence SQL Server se Software Assurance.
   2. *Zvýhodněné hybridní využití Azure*: snížená cena, která zahrnuje zvýhodněné hybridní využití Azure SQL Server. Zákazníci se můžou k této ceně přihlédnout pomocí svých stávajících licencí SQL Server se Software Assurance. Informace o způsobilosti a dalších podrobnostech najdete v tématu [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 Nastavení různých cenových možností není možné pro jednotlivé instance ve fondu. Všechny instance v nadřazeném fondu musí být buď v ceně zahrnuté v licenci, nebo v Zvýhodněné hybridní využití Azure ceně. Licenční model fondu se dá po vytvoření fondu změnit.

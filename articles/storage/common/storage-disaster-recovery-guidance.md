@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7bbad4adce88b8b669c5c5739bfa45b079f321d0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2e0ae05ff8c32a70991769171cb29b229c2b0be1
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895356"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526358"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Zotavení po havárii a převzetí služeb při selhání v účtu (Preview)
 
@@ -174,10 +174,11 @@ Mějte na paměti, že při vypnutí virtuálního počítače dojde ke ztrátě
 ### <a name="unsupported-features-or-services"></a>Nepodporované funkce nebo služby
 Pro převzetí služeb při selhání účtu verze Preview nejsou podporované tyto funkce nebo služby:
 
-- Azure File Sync nepodporuje převzetí služeb při selhání účtu úložiště. Účty úložiště obsahující sdílené složky Azure, které se používají jako koncové body cloudu v Azure File Sync by neměly přenášet služby při selhání. Tím dojde k tomu, že synchronizace přestane fungovat a může také způsobit neočekávanou ztrátu dat v případě nově vrstvených souborů.  
+- Azure File Sync nepodporuje převzetí služeb při selhání účtu úložiště. U účtů úložiště obsahujících sdílené složky Azure, které se v Synchronizaci souborů Azure používají jako koncové body cloudu, by se nemělo provádět převzetí služeb při selhání. Pokud to uděláte, synchronizace přestane fungovat a v případě nově vrstvených souborů může dojít i k neočekávané ztrátě dat.  
 - Účet úložiště obsahující archivované objekty blob nejde převzít služby při selhání. Udržujte archivované objekty BLOB v samostatném účtu úložiště, u kterých neplánujete převzít služby při selhání.
 - Nepovedlo se převzít služby účtů úložiště obsahující objekty blob bloku Premium. Účty úložiště, které podporují objekty blob bloku Premium, v současné době nepodporují geografickou redundanci.
-- Po dokončení převzetí služeb při selhání přestane následující funkce fungovat, pokud jsou původně povolené: [odběry událostí](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [Zásady životního cyklu](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)a [Analýza úložiště protokolování](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
+- Nepovedlo se převzít služby účtů úložiště obsahující jakékoli povolené kontejnery [zásad neměnnosti worm](../blobs/storage-blob-immutable-storage.md) . Odemčené nebo uzamčené časové uchovávání na základě času nebo zásady právního blokování brání převzetí služeb při selhání, aby se zachovalo dodržování předpisů
+- Po dokončení převzetí služeb při selhání můžou přestat fungovat následující funkce: [odběry událostí](../blobs/storage-blob-event-overview.md), [Změna kanálu](../blobs/storage-blob-change-feed.md), [zásady životního cyklu](../blobs/storage-lifecycle-management-concepts.md)a [Analýza úložiště protokolování](storage-analytics-logging.md).
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Kopírování dat jako alternativu k převzetí služeb při selhání
 

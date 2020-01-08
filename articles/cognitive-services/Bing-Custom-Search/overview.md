@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: overview
-ms.date: 06/27/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 4b0b0d91af15912e1c64761351ba33acfd3e2725
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 12c255f0e4ed11ce8acbd762530604218f8bc12b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405152"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448725"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Co je rozhraní API pro vlastní vyhledávání Bingu?
 
@@ -30,22 +30,24 @@ Rozhraní API pro vlastní vyhledávání Bingu vám umožní vytvářet uživat
 |[Prostředí pro vlastní vyhledávání videí](get-videos-from-instance.md)     | Umožněte uživatelům hledat videa z domén a webů zadaných ve vaší instanci vlastního vyhledávání.        |    
 |[Sdílení vlastní instance hledání](share-your-custom-search.md)     | Spoluupravujte a otestujte vaši instanci hledání tak, že ji sdílíte se členy týmu.        | 
 |[Konfigurace uživatelského rozhraní pro aplikace a weby](hosted-ui.md)     | Spoluupravujte a otestujte vaši instanci hledání tak, že ji sdílíte se členy týmu.        | 
-## <a name="workflow"></a>Pracovní postup
+## <a name="workflow"></a>Pracovní postupy
 
 Přizpůsobenou instanci hledání můžete vytvořit pomocí [portálu vlastní vyhledávání Bingu](https://customsearch.ai). Portál umožňuje vytvořit vlastní instanci hledání, která určuje domény, weby a webové stránky, které má Bing Hledat, spolu s těmi, které nechcete hledat. Portál můžete také použít pro: náhled vyhledávacího prostředí, upravit pořadí hledání, které poskytuje rozhraní API, a volitelně nakonfigurovat prohledávatelný uživatelský rozhraní, které bude vykresleno na vašich webech a v aplikacích.
 
 Po vytvoření instance vyhledávání ji můžete integrovat (a volitelně také pomocí uživatelského rozhraní) do svého webu nebo aplikace voláním rozhraní API pro vlastní vyhledávání Bingu:
 
-![Obrázek znázorňující, že se můžete připojit ke službě Bing vlastní vyhledávání prostřednictvím rozhraní API](media/BCS-Overview.png "Jak vlastní vyhledávání Bingu funguje.")
+![Obrázek znázorňující, že se můžete připojit ke službě Bing vlastní vyhledávání prostřednictvím rozhraní API](media/BCS-Overview.png "Jak Vlastní vyhledávání Bingu funguje.")
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete rychle začít, přečtěte si téma [Vytvoření první instance Vlastního vyhledávání Bingu](quick-start.md).
 
 Podrobnosti o přizpůsobení instance vyhledávání najdete v tématu [Definice instance vlastního vyhledávání](define-your-custom-view.md).
 
 Nezapomeňte si přečíst [požadavky na použití a zobrazení Bingu](./use-and-display-requirements.md) pro používání výsledků hledání ve vašich službách a aplikacích.
+
+Navštivte [stránku vyhledávání Bingu centrum rozhraní API](../bing-web-search/search-the-web.md) a Prozkoumejte další dostupná rozhraní API.
 
 Seznamte se s referenčním obsahem pro jednotlivé koncové body vlastního vyhledávání. Tyto referenční informace obsahují koncové body, hlavičky a parametry dotazů, které můžete použít při odesílání požadavků na výsledky hledání. Obsahují také definice objektů odpovědi.
 

@@ -1,17 +1,17 @@
 ---
-title: Informace o správě konzistence ve službě Azure Cosmos DB
+title: Správa konzistence v Azure Cosmos DB
 description: Naučte se konfigurovat a spravovat úrovně konzistence v Azure Cosmos DB pomocí Azure Portal, sady .NET SDK, Java SDK a různých dalších sad SDK.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 46c4c4afe737fd11c2e711a23a3355f48dbd6231
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 68be15e1ffd9093ab67fc046edaad991d633ca7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872073"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445368"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Správa úrovní konzistence ve službě Azure Cosmos DB
 

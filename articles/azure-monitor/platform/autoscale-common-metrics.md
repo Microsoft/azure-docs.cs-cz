@@ -1,19 +1,15 @@
 ---
 title: Automatické škálování běžných metrik
 description: Zjistěte, které metriky se běžně používají k automatickému škálování Cloud Services, Virtual Machines a Web Apps.
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/6/2016
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 9da8e5fb88ff34e561b579b760973ecd23c884a3
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7b9c19ba3b85813eb12f6b906427f3cfdc9a0f67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66129735"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364590"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor automatické škálování běžných metrik
 
@@ -26,7 +22,7 @@ Automatické škálování Azure Monitor platí jenom pro služby [Virtual Machi
 ## <a name="compute-metrics-for-resource-manager-based-vms"></a>Výpočetní metriky pro virtuální počítače založené na Správce prostředků
 Ve výchozím nastavení Správce prostředků Virtual Machines a Virtual Machine Scale Sets emitují metriky Basic (na úrovni hostitele). Kromě toho, když konfigurujete shromažďování dat diagnostiky pro virtuální počítač Azure a VMSS, rozhraní pro diagnostiku Azure také generuje čítače výkonu host-OS (obvykle označované jako metriky host-OS).  Všechny tyto metriky použijete v pravidlech automatického škálování.
 
-Pomocí `Get MetricDefinitions` rozhraní API/PoSH/CLI můžete zobrazit metriky, které jsou k dispozici pro váš prostředek VMSS.
+Pomocí rozhraní `Get MetricDefinitions` API/PoSH/CLI můžete zobrazit metriky, které jsou k dispozici pro váš prostředek VMSS.
 
 Pokud používáte službu VM Scale Sets a v seznamu není uvedena konkrétní metrika, je pravděpodobně *zakázána* v diagnostickém rozšíření.
 
@@ -53,33 +49,33 @@ Můžete vytvořit výstrahu pro následující metriky:
 
 | Název metriky | Jednotka |
 | --- | --- |
-| \Processor(_Total)\% Processor Time |Percent |
-| \Processor (_Total)\% privilegovaného času |Percent |
-| \Processor (_Total)\% uživatelského času |Percent |
-| \Processor informace (_Total) \Processor frekvence |Count |
-| \System\Processes |Count |
-| \Process (_Total) \Thread počet |Count |
-| \Process (_Total) \Handle počet |Count |
-| \Memory\% potvrzené používané bajty |Percent |
+| \Processor(_Total)\% Processor Time |Procento |
+| \Processor (_Total)\% privilegovaného času |Procento |
+| \Processor (_Total)\% uživatelský čas |Procento |
+| \Processor – informace o frekvenci \Processor (_Total) |Počet |
+| \System\Processes |Počet |
+| \Process (_Total) \Thread počet |Počet |
+| \Process (_Total) \Handle počet |Počet |
+| \Memory\% používané svěřené bajty |Procento |
 | \Memory\Available Bytes |B |
 | \Memory\Committed bajty |B |
 | \Memory\Commit limit |B |
 | Bajty stránkovaného \Memory\Pool |B |
 | \Memory\Pool nestránkované bajty |B |
-| \PhysicalDisk (_Total)\% čas disku |Percent |
-| \PhysicalDisk (_Total)\% doba čtení disku |Percent |
-| \PhysicalDisk (_Total)\% doba zápisu na disk |Percent |
+| \PhysicalDisk (_Total)\% čas disku |Procento |
+| \PhysicalDisk (_Total)\% čas čtení disku |Procento |
+| \PhysicalDisk (_Total)\% čas zápisu na disk |Procento |
 | \PhysicalDisk (_Total) \ přenosy za sekundu |CountPerSecond |
 | \PhysicalDisk (_Total) \ čtení za sekundu |CountPerSecond |
-| \PhysicalDisk (_Total) \ zápisu za sekundu |CountPerSecond |
+| \PhysicalDisk (_Total) \ zápisy na/s |CountPerSecond |
 | \PhysicalDisk (_Total) \ bajty/s |BytesPerSecond |
-| \PhysicalDisk (_Total) \ čtení v bajtech/s |BytesPerSecond |
+| \PhysicalDisk (_Total) \ přečtené bajty/s |BytesPerSecond |
 | \PhysicalDisk (_Total) \ zapsané bajty/s |BytesPerSecond |
-| \PhysicalDisk (_Total) \ prům Délka fronty disku |Count |
-| \PhysicalDisk (_Total) \ prům Délka fronty čtení disku |Count |
-| \PhysicalDisk (_Total) \ prům Délka fronty zápisu na disk |Count |
-| \ Logický disk (_Total)\% volného místa |Percent |
-| \ Logický disk (_Total) \ volné megabajtů |Count |
+| \PhysicalDisk (_Total) \ prům délka fronty disku |Počet |
+| \PhysicalDisk (_Total) \ prům délka fronty čtení disku |Počet |
+| \PhysicalDisk (_Total) \ prům délka fronty zápisu na disk |Počet |
+| \ Logický disk (_Total)\% volné místo |Procento |
+| \ Logický disk (_Total) \ volné megabajtů |Počet |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Virtuální počítače s metrikami hostovaného operačního systému Linux
 Když vytvoříte virtuální počítač v Azure, diagnostika je ve výchozím nastavení povolená pomocí diagnostického rozšíření.
@@ -95,43 +91,43 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | Název metriky | Jednotka |
 | --- | --- |
 | \Memory\AvailableMemory |B |
-| \Memory\PercentAvailableMemory |Percent |
+| \Memory\PercentAvailableMemory |Procento |
 | \Memory\UsedMemory |B |
-| \Memory\PercentUsedMemory |Percent |
-| \Memory\PercentUsedByCache |Percent |
+| \Memory\PercentUsedMemory |Procento |
+| \Memory\PercentUsedByCache |Procento |
 | \Memory\PagesPerSec |CountPerSecond |
 | \Memory\PagesReadPerSec |CountPerSecond |
 | \Memory\PagesWrittenPerSec |CountPerSecond |
 | \Memory\AvailableSwap |B |
-| \Memory\PercentAvailableSwap |Percent |
+| \Memory\PercentAvailableSwap |Procento |
 | \Memory\UsedSwap |B |
-| \Memory\PercentUsedSwap |Percent |
-| \Processor\PercentIdleTime |Percent |
-| \Processor\PercentUserTime |Percent |
-| \Processor\PercentNiceTime |Percent |
-| \Processor\PercentPrivilegedTime |Percent |
-| \Processor\PercentInterruptTime |Percent |
-| \Processor\PercentDPCTime |Percent |
-| \Processor\PercentProcessorTime |Percent |
-| \Processor\PercentIOWaitTime |Percent |
+| \Memory\PercentUsedSwap |Procento |
+| \Processor\PercentIdleTime |Procento |
+| \Processor\PercentUserTime |Procento |
+| \Processor\PercentNiceTime |Procento |
+| \Processor\PercentPrivilegedTime |Procento |
+| \Processor\PercentInterruptTime |Procento |
+| \Processor\PercentDPCTime |Procento |
+| \Processor\PercentProcessorTime |Procento |
+| \Processor\PercentIOWaitTime |Procento |
 | \PhysicalDisk\BytesPerSecond |BytesPerSecond |
 | \PhysicalDisk\ReadBytesPerSecond |BytesPerSecond |
 | \PhysicalDisk\WriteBytesPerSecond |BytesPerSecond |
 | \PhysicalDisk\TransfersPerSecond |CountPerSecond |
 | \PhysicalDisk\ReadsPerSecond |CountPerSecond |
 | \PhysicalDisk\WritesPerSecond |CountPerSecond |
-| \PhysicalDisk\AverageReadTime |Sekundy |
-| \PhysicalDisk\AverageWriteTime |Sekundy |
-| \PhysicalDisk\AverageTransferTime |Sekundy |
-| \PhysicalDisk\AverageDiskQueueLength |Count |
+| \PhysicalDisk\AverageReadTime |Sekund |
+| \PhysicalDisk\AverageWriteTime |Sekund |
+| \PhysicalDisk\AverageTransferTime |Sekund |
+| \PhysicalDisk\AverageDiskQueueLength |Počet |
 | \NetworkInterface\BytesTransmitted |B |
 | \NetworkInterface\BytesReceived |B |
-| \NetworkInterface\PacketsTransmitted |Count |
-| \NetworkInterface\PacketsReceived |Count |
+| \NetworkInterface\PacketsTransmitted |Počet |
+| \NetworkInterface\PacketsReceived |Počet |
 | \NetworkInterface\BytesTotal |B |
-| \NetworkInterface\TotalRxErrors |Count |
-| \NetworkInterface\TotalTxErrors |Count |
-| \NetworkInterface\TotalCollisions |Count |
+| \NetworkInterface\TotalRxErrors |Počet |
+| \NetworkInterface\TotalTxErrors |Počet |
+| \NetworkInterface\TotalCollisions |Počet |
 
 ## <a name="commonly-used-web-server-farm-metrics"></a>Metriky běžně používaného webu (serverové farmy)
 Automatické škálování můžete provádět i na základě běžných metrik webového serveru, jako je délka fronty http. Název metriky je **HttpQueueLength**.  V následující části jsou uvedeny dostupné metriky serverové farmy (Web Apps).
@@ -147,10 +143,10 @@ Pomocí těchto metrik můžete výstrahy zapnout nebo škálovat.
 
 | Název metriky | Jednotka |
 | --- | --- |
-| CpuPercentage |Percent |
-| MemoryPercentage |Percent |
-| DiskQueueLength |Count |
-| HttpQueueLength |Count |
+| CpuPercentage |Procento |
+| MemoryPercentage |Procento |
+| DiskQueueLength |Počet |
+| HttpQueueLength |Počet |
 | BytesReceived |B |
 | BytesSent |B |
 

@@ -1,20 +1,16 @@
 ---
-title: Rychlý start – nasazení aplikace Hello World do služby Azure Service Fabric Mesh | Microsoft Docs
+title: Rychlý Start – nasazení Hello World do Azure Service Fabric sítě
 description: V tomto rychlém startu se dozvíte, jak nasadit aplikaci Service Fabric Mesh do služby Azure Service Fabric Mesh.
-services: service-fabric-mesh
-keywords: Nepřidávejte ani neupravujte klíčová slova, aniž byste se poradili se svým odborníkem na SEO.
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: quickstart
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 5ca622602c71976917a07005bf349dd98086327c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ce897b6e0e9d6a0b9b672907a64f4683f907b677
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810940"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458974"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Rychlý start: Nasazení aplikace Hello World do služby Service Fabric Mesh
 
@@ -87,7 +83,7 @@ Název aplikace v tomto rychlém startu je `helloWorldApp`. Abyste získali info
 az mesh app show --resource-group myResourceGroup --name helloWorldApp
 ```
 
-## <a name="see-the-application-logs"></a>Zobrazení protokolů aplikací
+## <a name="see-the-application-logs"></a>Zobrazit protokoly aplikací
 
 Projděte si protokoly nasazené aplikace pomocí příkazu `az mesh code-package-log get`:
 
@@ -97,13 +93,13 @@ az mesh code-package-log get --resource-group myResourceGroup --application-name
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete chtít aplikaci odstranit, spuštěním příkazu [az group delete][az-group-delete] odeberte skupinu prostředků včetně aplikace a síťových prostředků, které obsahuje.
+Až budete připraveni aplikaci odstranit, spusťte příkaz [AZ Group Delete][az-group-delete] a odeberte skupinu prostředků a prostředky aplikace a sítě, které obsahuje.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete získat další informace o vytváření a nasazování aplikací Service Fabric Mesh, pokračujte v tomto kurzu.
 > [!div class="nextstepaction"]

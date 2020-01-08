@@ -3,19 +3,19 @@ title: Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB
 description: Přečtěte si, jak Azure Cosmos DB poskytuje šifrování neaktivních dat a jejich implementaci.
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 12/13/2019
 ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: c816c9877a9c796ee76310f2452f3505531c3018
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 5cea2f1dac50744c974917347b4428bc39aa737d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555032"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445530"
 ---
-# <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB
+# <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB (Preview)
 
 Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB poskytuje další vrstvu zabezpečení, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům Azure Cosmos DB nebo jejich zneužití. Tato vrstva ochrany umožňuje řešit hrozby, i když není odborník na zabezpečení a integruje se se systémy centrálního monitorování zabezpečení.
 
@@ -27,6 +27,14 @@ Výstrahy zabezpečení se spouštějí při výskytu anomálií v aktivitě. Ty
 > * Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB není v současnosti dostupná v oblastech cloudu Azure pro státní správu a svrchované oblasti.
 
 V případě úplného šetření výstrah zabezpečení doporučujeme povolit [protokolování diagnostiky v Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/logging), které zapisuje operace do samotné databáze, včetně operací CRUD na všech dokumentech, kontejnerech a databázích.
+
+## <a name="threat-types"></a>Typy hrozeb
+
+Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití. V současné době může aktivovat následující výstrahy:
+
+- **Přístup z neobvyklých umístění**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k účtu Azure Cosmos, kde se někdo připojil k Azure Cosmos DB koncovému bodu z neobvyklého zeměpisného umístění. V některých případech výstraha detekuje legitimní akci, což znamená, že nová aplikace nebo operace údržby vývojářů. V jiných případech výstraha detekuje škodlivou akci od bývalého zaměstnance, externího útočníka atd.
+
+- **Neobvyklé extrakce dat**: Tato výstraha se aktivuje, když klient extrahuje neobvyklé množství dat z Azure Cosmos DB účtu. Může to být příznak některých exfiltrace dat provedených k přenosu všech dat uložených v účtu do externího úložiště dat.
 
 ## <a name="set-up-advanced-threat-protection"></a>Nastavení rozšířené ochrany před internetovými útoky
 
@@ -41,7 +49,7 @@ V případě úplného šetření výstrah zabezpečení doporučujeme povolit [
 3. V okně **Upřesnit konfiguraci zabezpečení** :
 
     * Klikněte na možnost **Rozšířená ochrana před internetovými útoky** a nastavte ji na **zapnuto**.
-    * Kliknutím na **Uložit** uložte nové nebo aktualizované zásady rozšířené ochrany před internetovými útoky.   
+    * Klikněte na **Uložit** a uložte nové nebo aktualizované zásady Advanced Threat Protection.   
 
 ### <a name="set-up-atp-using-rest-api"></a>Nastavení ATP pomocí REST API
 
@@ -101,5 +109,5 @@ E-mailové oznámení se také pošle s podrobnostmi výstrahy a doporučenými 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [protokolování diagnostiky v Azure Cosmos DB](monitor-cosmos-db.md#diagnostic-settings)
+* Další informace o [protokolování diagnostiky v Azure Cosmos DB](cosmosdb-monitor-resource-logs.md)
 * Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)

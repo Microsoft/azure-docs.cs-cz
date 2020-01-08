@@ -3,12 +3,12 @@ title: Obnovit tajný klíč Key Vault Key & pro šifrovaný virtuální počít
 description: Naučte se obnovit Key Vault klíč a tajný kód v Azure Backup pomocí PowerShellu.
 ms.topic: conceptual
 ms.date: 08/28/2017
-ms.openlocfilehash: 55e20d861eedde19946d2c99dfc1cd8ff33f6b0b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 35bcb919cadd46c603b1f2ad49742c5435f873d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172774"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450051"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Obnovení klíče a tajného kódu Key Vault pro šifrované virtuální počítače pomocí Azure Backup
 
@@ -78,7 +78,7 @@ Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -
 $secretdata = $encryptionObject.OsDiskKeyAndSecretDetails.SecretData
 $Secret = ConvertTo-SecureString -String $secretdata -AsPlainText -Force
 $secretname = 'B3284AAA-DAAA-4AAA-B393-60CAA848AAAA'
-$Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncryptionKeyFileName' = 'LinuxPassPhraseFileName';'DiskEncryptionKeyEncryptionKeyURL' = $encryptionObject.OsDiskKeyAndSecretDetails.KeyUrl;'MachineName' = 'vm-name'}
+$Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncryptionKeyFileName' = 'LinuxPassPhraseFileName';'DiskEncryptionKeyEncryptionKeyURL' = <Key_url_of_newly_restored_key>;'MachineName' = 'vm-name'}
 Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
 ```
 
@@ -92,8 +92,8 @@ Restore-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -InputFile $sec
 
 > [!NOTE]
 >
-> * Hodnotu pro $secretname lze získat odkazem na výstup $encryptionObject. OsDiskKeyAndSecretDetails. SecretUrl a použitím textu po tajných klíčích. adresa URL výstupního tajného kódu je https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 a název tajného klíče je B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
-> * Hodnota DiskEncryptionKeyFileName značky je shodná s názvem tajného kódu.
+> * Hodnotu pro $secretname lze získat odkazem na výstup $encryptionObject. OsDiskKeyAndSecretDetails. SecretUrl a používáním textu po tajných klíčích. adresa URL výstupního tajného kódu je https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 a název tajného klíče je B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
+> * Hodnota tagu DiskEncryptionKeyFileName je stejná jako název tajného kódu.
 >
 >
 

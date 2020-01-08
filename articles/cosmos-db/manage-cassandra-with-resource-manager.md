@@ -1,17 +1,17 @@
 ---
-title: Šablony Azure Resource Manager pro Azure Cosmos DB rozhraní API Cassandra
+title: Šablony Správce prostředků pro Azure Cosmos DB rozhraní API Cassandra
 description: Pomocí Azure Resource Manager šablon můžete vytvořit a nakonfigurovat Azure Cosmos DB rozhraní API Cassandra.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: f09ab6958eb768895a2d16f129354074cb6f00c8
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 54d1c27148f20c89e17b343f0ac87295f978c140
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961869"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445278"
 ---
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Správa prostředků Azure Cosmos DB rozhraní API Cassandra pomocí šablon Azure Resource Manager
 
@@ -56,7 +56,7 @@ Příkaz `az cosmosdb show` zobrazuje nově vytvořený účet Azure Cosmos po z
 
 ## <a name="next-steps"></a>Další kroky
 
-Tady je několik dalších prostředků:
+Tady je několik dalších zdrojů:
 
 - [Dokumentace k Azure Resource Manager](/azure/azure-resource-manager/)
 - [Azure Cosmos DB schéma poskytovatele prostředků](/azure/templates/microsoft.documentdb/allversions)

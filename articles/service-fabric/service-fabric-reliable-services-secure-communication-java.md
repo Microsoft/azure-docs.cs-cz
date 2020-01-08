@@ -1,37 +1,29 @@
 ---
-title: Zabezpečená komunikace služby vzdálené komunikace s využitím Javy v Azure Service Fabric | Dokumentace Microsoftu
-description: Zjistěte, jak k zabezpečení komunikace podle vzdálené komunikace služby reliable services v Javě, které jsou spuštěny v clusteru Azure Service Fabric.
-services: service-fabric
-documentationcenter: java
+title: Zabezpečená komunikace vzdálené služby s jazykem Java
+description: Naučte se zabezpečit komunikaci na základě vzdálené komunikace služby pro spolehlivé služby Java, které běží v clusteru Azure Service Fabric.
 author: PavanKunapareddyMSFT
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: b465ab602a14285f8cf40b24ce1dfa9c763fecb8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: adefeadf939d398268624343d82c18cbf5ec87cd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773345"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609634"
 ---
-# <a name="secure-service-remoting-communications-in-a-java-service"></a>Zabezpečená komunikace služeb vzdálené komunikace v služby v Javě
+# <a name="secure-service-remoting-communications-in-a-java-service"></a>Zabezpečená komunikace vzdálené služby ve službě Java
 > [!div class="op_single_selector"]
 > * [C# v systému Windows](service-fabric-reliable-services-secure-communication.md)
 > * [Java v Linuxu](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
 
-Zabezpečení je jedním z nejdůležitějších aspektů komunikace. Rozhraní framework aplikace Reliable Services poskytuje několik nástrojů, které můžete použít ke zlepšení zabezpečení a předem připravených komunikační balíky. Tento článek popisuje, jak zlepšit zabezpečení při použití vzdálené komunikace služeb v Javě service. Vychází z existujícího [příklad](service-fabric-reliable-services-communication-remoting-java.md) , který vysvětluje, jak nastavit vzdálené komunikace pro služby reliable services napsané v jazyce Java. 
+Zabezpečení je jedním z nejdůležitějších aspektů komunikace. Rozhraní Reliable Services Application Framework poskytuje několik předem připravených komunikačních zásobníků a nástrojů, které můžete použít ke zvýšení zabezpečení. Tento článek popisuje, jak zvýšit zabezpečení při použití vzdálené komunikace služby v rámci služby Java. Vychází z existujícího [příkladu](service-fabric-reliable-services-communication-remoting-java.md) , který vysvětluje, jak nastavit vzdálenou komunikaci pro spolehlivé služby napsané v jazyce Java. 
 
-Chcete-li pomoci zabezpečit službu při použití vzdálené komunikace služeb s služeb v Javě, postupujte takto:
+Chcete-li zajistit zabezpečení služby při použití vzdálené komunikace služby se službami Java, postupujte takto:
 
-1. Vytvoření rozhraní, `HelloWorldStateless`, který definuje metody, které bude k dispozici pro vzdálené volání procedury ve službě service. Vaše služba používat `FabricTransportServiceRemotingListener`, který je deklarován v `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` balíčku. Jedná se `CommunicationListener` implementace, která poskytuje funkce vzdálené komunikace.
+1. Vytvořte rozhraní `HelloWorldStateless`, které definuje metody, které budou k dispozici pro vzdálené volání procedur ve vaší službě. Vaše služba bude používat `FabricTransportServiceRemotingListener`, která je deklarována v balíčku `microsoft.serviceFabric.services.remoting.fabricTransport.runtime`. Toto je implementace `CommunicationListener`, která poskytuje možnosti vzdálené komunikace.
 
     ```java
     public interface HelloWorldStateless extends Service {
@@ -53,15 +45,15 @@ Chcete-li pomoci zabezpečit službu při použití vzdálené komunikace služe
         }
     }
     ```
-2. Přidáte nastavení naslouchacího procesu a zabezpečovací přihlašovací údaje.
+2. Přidejte nastavení naslouchacího procesu a zabezpečovací přihlašovací údaje.
 
-    Ujistěte se, že certifikát, který chcete použít k zabezpečení komunikace služby je nainstalovaný na všech uzlech v clusteru. Pro služby spuštěné v Linuxu certifikát musí být k dispozici jako soubor PEM formmatted; buď `.pem` soubor, který obsahuje certifikát s privátním klíčem nebo `.crt` soubor, který obsahuje certifikát a `.key` soubor, který obsahuje privátní klíč. Další informace najdete v tématu [umístění a formátu X.509 certifikáty na uzly s Linuxem](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes).
+    Ujistěte se, že certifikát, který chcete použít k zabezpečení komunikace služby, je nainstalovaný na všech uzlech v clusteru. Pro služby spuštěné v systému Linux musí být certifikát k dispozici jako soubor PEM-formmatted; buď soubor `.pem`, který obsahuje certifikát a soukromý klíč, nebo `.crt` soubor obsahující certifikát a soubor `.key`, který obsahuje soukromý klíč. Další informace najdete v tématu [umístění a formát certifikátů X. 509 na uzlech se systémem Linux](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes).
     
-    Existují dva způsoby, že můžete zadat nastavení naslouchacího procesu a zabezpečovací přihlašovací údaje:
+    Existují dva způsoby, jak můžete zadat nastavení naslouchacího procesu a přihlašovací údaje zabezpečení:
 
-   1. Zadejte pomocí [konfigurační balíček](service-fabric-application-and-service-manifests.md):
+   1. Poskytněte je pomocí [konfiguračního balíčku](service-fabric-application-and-service-manifests.md):
 
-       Přidat pojmenovanou `TransportSettings` oddílu v souboru settings.xml.
+       Přidejte oddíl s názvem `TransportSettings` do souboru Settings. XML.
 
        ```xml
        <!--Section name should always end with "TransportSettings".-->
@@ -76,7 +68,7 @@ Chcete-li pomoci zabezpečit službu při použití vzdálené komunikace služe
 
        ```
 
-       V takovém případě `createServiceInstanceListeners` metoda bude vypadat například takto:
+       V tomto případě bude `createServiceInstanceListeners` metoda vypadat takto:
 
        ```java
         protected List<ServiceInstanceListener> createServiceInstanceListeners() {
@@ -88,7 +80,7 @@ Chcete-li pomoci zabezpečit službu při použití vzdálené komunikace služe
         }
        ```
 
-        Pokud chcete přidat `TransportSettings` oddílu v souboru settings.xml bez jakoukoli předponu `FabricTransportListenerSettings` načte všechna nastavení z tohoto oddílu ve výchozím nastavení.
+        Pokud přidáte část `TransportSettings` do souboru Settings. XML bez předpony, `FabricTransportListenerSettings` načte všechna nastavení z této části ve výchozím nastavení.
 
         ```xml
         <!--"TransportSettings" section without any prefix.-->
@@ -96,7 +88,7 @@ Chcete-li pomoci zabezpečit službu při použití vzdálené komunikace služe
             ...
         </Section>
         ```
-        V takovém případě `CreateServiceInstanceListeners` metoda bude vypadat například takto:
+        V tomto případě bude `CreateServiceInstanceListeners` metoda vypadat takto:
 
         ```java
         protected List<ServiceInstanceListener> createServiceInstanceListeners() {
@@ -107,9 +99,9 @@ Chcete-li pomoci zabezpečit službu při použití vzdálené komunikace služe
             return listeners;
         }
        ```
-3. Při volání metody službě zabezpečené pomocí vzdálené komunikace zásobníku, namísto použití `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` třída pro vytvoření proxy serveru služby použijte `microsoft.serviceFabric.services.remoting.client.FabricServiceProxyFactory`.
+3. Při volání metod v zabezpečené službě pomocí zásobníku vzdálené komunikace namísto použití třídy `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` k vytvoření proxy služby použijte `microsoft.serviceFabric.services.remoting.client.FabricServiceProxyFactory`.
 
-    Pokud klientský kód je spuštěn jako součást služby, můžete načíst `FabricTransportSettings` ze souboru settings.xml. Vytvořte TransportSettings oddíl, který je podobný kódu služby, jak je uvedeno výše. Pro klientský kód, proveďte následující změny:
+    Pokud je klientský kód spuštěn jako součást služby, můžete načíst `FabricTransportSettings` ze souboru Settings. XML. Vytvořte část TransportSettings, která je podobná kódu služby, jak je uvedeno výše. Proveďte následující změny kódu klienta:
 
     ```java
 

@@ -7,30 +7,30 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: bd1269052a47c324d3d64b1d7f31dcb1c6556c3c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e72118ea0f90cfbb08d81ebded6ca7edf08a06c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795715"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454525"
 ---
-# <a name="content-delivery-network-on-azure-with-azure-cdn-service"></a>Content Delivery Network v Azure s Azure CDN Service
-[Azure CDN](https://azure.microsoft.com/services/cdn/) nabízí vývojářům globální řešení pro rychlé doručování obsahu s vysokou šířkou pásma, jako jsou videa, obrázky nebo statické soubory, díky ukládání obsahu do mezipaměti stovky bodů přítomnosti (pop) po celém světě. Azure CDN může také urychlit dynamický obsah, který nelze uložit do mezipaměti, a umožňuje zkrátit dobu načítání, ušetřit šířku pásma a zvýšit rychlost odezvy – bez ohledu na to, jestli vyvíjíte nebo spravujete weby nebo mobilní aplikace nebo kódujete a distribuujete streamy. média, herní software, aktualizace firmwaru nebo koncové body IoT.
+# <a name="content-delivery-network-on-azure-with-azure-content-delivery-network"></a>Content Delivery Network v Azure s využitím Azure Content Delivery Network
+[Azure Content Delivery Network](https://azure.microsoft.com/services/cdn/) nabízí vývojářům globální řešení pro rychlé doručování obsahu s vysokou šířkou pásma, jako jsou videa, obrázky nebo statické soubory, díky ukládání obsahu do mezipaměti po stovkách bodů přítomnosti po celém světě. Content Delivery Network může také urychlit dynamický obsah, který nejde ukládat do mezipaměti, aby se snížila doba načítání, ušetřila se šířka pásma a zvýšila se rychlost odezvy. Tyto výhody získáte bez ohledu na to, jestli vyvíjíte nebo spravujete weby nebo mobilní aplikace nebo zakódujete a distribuujete streamovaná média, herní software, aktualizace firmwaru nebo koncové body IoT.
 
-## <a name="azure-cdn-features"></a>Funkce Azure CDN
-  - Bez **problémů** funguje se službami Azure, včetně webových aplikací, Media Services, úložiště a Cloud Services.
-  - Snadno **zpracujte špičky provozu a těžké zátěže**.
-  - **Integrace s Akamai a Verizon** pro sestavování a přizpůsobení strategie doručování obsahu.
-  - Akcelerace dynamického webu.
-  - Řízení chování při ukládání Azure CDN do mezipaměti s **pravidly pro ukládání do mezipaměti**.
-  - **Podpora vlastní domény**https
-  - **Protokoly diagnostiky Azure** pro zobrazení základních analýz a jejich export do Blob Storage, Event Hubs nebo Azure monitor.
-  - Zvyšte výkon **komprimací souborů**.
-  - **Geografické filtrování** , které omezí Azure CDN obsahu podle země nebo oblasti.
+## <a name="azure-content-delivery-network-features"></a>Funkce Azure Content Delivery Network
+  - Bez problémů Pracujte se službami Azure, jako jsou webové aplikace, Media Services, Storage a Cloud Services.
+  - Snadno zpracujte špičky provozu a těžké zátěže.
+  - Integrujte s Akamai a Verizon k vytváření a přizpůsobení strategie doručování obsahu.
+  - Použijte akceleraci dynamického webu.
+  - Řízení chování při ukládání Content Delivery Network do mezipaměti s pravidly pro ukládání do mezipaměti.
+  - Získejte podporu vlastní domény HTTPS.
+  - Podívejte se na protokoly diagnostiky Azure, kde najdete základní analýzy a exportujte je do Azure Blob Storage, Azure Event Hubs nebo Azure Monitor.
+  - Zvyšte výkon komprimací souborů.
+  - Pomocí geografického filtrování můžete omezit Content Delivery Network obsahu podle země nebo oblasti.
 
 ## <a name="references"></a>Odkazy
   - [Azure Portal](https://portal.azure.com)
-  - [Nápovědě](/azure/cdn/)
-  - [Začínáme s CDN](/azure/cdn/cdn-create-new-endpoint)
+  - [Dokumentace k Azure Content Delivery Network](/azure/cdn/)
+  - [Začínáme s Azure Content Delivery Network](/azure/cdn/cdn-create-new-endpoint)
   - [Rychlé starty](/azure/cdn/cdn-create-new-endpoint)
 

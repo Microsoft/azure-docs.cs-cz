@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 5/03/2019
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 12815d3ca0136cec8af294118ff192a4f31df6a0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0c70c69f547405eb8ebdcf6dcc6ae597db151e53
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227085"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433217"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Kurz: integrace funkcí do služby Azure Virtual Network
 
@@ -61,7 +61,7 @@ V dalším kroku vytvořte předkonfigurovaný virtuální počítač, který sp
     | Nastavení      | Navrhovaná hodnota  | Popis      |
     | ------------ | ---------------- | ---------------- |
     | **Předplatné** | Vaše předplatné | Předplatné, ve kterém se vaše prostředky vytvářejí. | 
-    | **[Skupina prostředků](../azure-resource-manager/resource-group-overview.md)**  | myResourceGroup | Vyberte `myResourceGroup`nebo skupinu prostředků, kterou jste vytvořili pomocí aplikace Function App. Použití stejné skupiny prostředků pro aplikaci Function App, virtuálního počítače WordPress a plánu hostování usnadňuje vyčištění prostředků po dokončení tohoto kurzu. |
+    | **[Skupina prostředků](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Vyberte `myResourceGroup`nebo skupinu prostředků, kterou jste vytvořili pomocí aplikace Function App. Použití stejné skupiny prostředků pro aplikaci Function App, virtuálního počítače WordPress a plánu hostování usnadňuje vyčištění prostředků po dokončení tohoto kurzu. |
     | **Název virtuálního počítače** | VNET-Wordpress | Název virtuálního počítače musí být ve skupině prostředků jedinečný. |
     | **[Věřitel](https://azure.microsoft.com/regions/)** | (Evropa) Evropa – západ | Vyberte oblast poblíž nebo poblíž funkcí, které přistupují k virtuálnímu počítači. |
     | **Velikost** | B1s | Zvolte možnost **změnit velikost** a pak vyberte standardní image B1s, která má 1 vCPU a 1 GB paměti. |
@@ -138,7 +138,7 @@ Když máte povolenou integraci virtuální sítě, můžete ve své aplikaci Fu
 
     | Nastavení  | Navrhovaná hodnota  | Popis      |
     | -------- | ---------------- | ---------------- |
-    | **Název** | Výsadb | Název může být libovolná hodnota. Slouží k identifikaci proxy serveru. |
+    | **Název** | Plant | Název může být libovolná hodnota. Slouží k identifikaci proxy serveru. |
     | **Šablona směrování** | /plant | Trasa, která se mapuje na prostředek virtuálního počítače. |
     | **Adresa URL back-endu** | http://< YOUR_VM_IP >/wp-content/Themes/twentyseventeen/assets/images/Header.jpg | Místo `<YOUR_VM_IP>` nahraďte IP adresou vašeho virtuálního počítače WordPress, který jste vytvořili dříve. Toto mapování vrátí jeden soubor z webu. |
 

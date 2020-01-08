@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 68315b1b0d290b107fe2d28a9e3b49be009b78b8
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: d2c8e599e44e48517920862e1fcf83e1a5e24910
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782239"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647624"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>Verze Preview: virtuální počítače Azure ve službě Virtual Machine Scale Sets 
 
@@ -151,7 +151,7 @@ Následující příklad vytvoří v *středozápadní USA*sadu s možností šk
 
 **Otázka:** Jak se Správa kvót spravuje pro místo?
 
-**A:** Instance bodů a standardní instance budou mít samostatné fondy kvót. Kvóta na místě se bude sdílet mezi virtuálními počítači a instancemi sady škálování. Další informace najdete v tématu [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+**A:** Instance bodů a standardní instance budou mít samostatné fondy kvót. Kvóta na místě se bude sdílet mezi virtuálními počítači a instancemi sady škálování. Další informace najdete v tématu [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 
 
 **Otázka:** Můžu požádat o další kvótu na místě?

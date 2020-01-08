@@ -1,5 +1,5 @@
 ---
-title: Sestavení webové aplikace v baňce pomocí rozhraní Azure Cosmos DB API pro MongoDB a Python SDK
+title: Vytvoření webové aplikace v Pythonu pomocí rozhraní API Azure Cosmos DB pro MongoDB
 description: Prezentuje vzorový kód v Pythonu, který můžete použít k připojení a dotazování pomocí rozhraní Azure Cosmos DB API pro MongoDB.
 author: markjbrown
 ms.author: mjbrown
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 2bd8fa81d0825e604c42c54c0f789b7939206804
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 8e58d0bdaaa5e4fb4564a68b46de7887ec28336d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756942"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445491"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý Start: Vytvoření aplikace v Pythonu pomocí rozhraní API Azure Cosmos DB pro MongoDB
 
@@ -30,7 +30,7 @@ Databáze Azure Cosmos je databázová služba Microsoftu s více modely použit
 
 Tento průvodce rychlým startem používá následující [příklad baňky](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample) a ukazuje, jak vytvořit jednoduchou aplikaci k baňce pomocí [emulátoru Azure Cosmos DB](local-emulator.md) a rozhraní API Azure Cosmos DB pro MongoDB.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Stáhněte si [emulátor služby Azure Cosmos DB](local-emulator.md). Emulátor je momentálně podporovaný jenom ve Windows. Tato ukázka vysvětluje, jak ukázku použít s produkčním klíčem z Azure, což se dá udělat na libovolné platformě.
 

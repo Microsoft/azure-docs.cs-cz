@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: b448099dab0e79dca38310396896be46cf2e0ff6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7a2b167f90b4ec79f5fa515ded1c676ca7085e72
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826253"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647709"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Nejčastější dotazy k akcelerátorům řešení IoT
 
@@ -23,10 +23,10 @@ Přečtěte si také nejčastější dotazy [k připojeným objektům pro konkr�
 
 Zdrojový kód je uložený v následujících úložištích GitHub:
 
-* [Akcelerátor řešení pro vzdálené sledování (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
-* [Akcelerátor řešení pro vzdálené sledování (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
-* [Akcelerátor řešení pro prediktivní údržbu](https://github.com/Azure/azure-iot-predictive-maintenance)
-* [Akcelerátor řešení pro připojenou továrnu](https://github.com/Azure/azure-iot-connected-factory)
+* [Akcelerátor řešení vzdáleného monitorování (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
+* [Akcelerátor řešení vzdáleného monitorování (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
+* [Akcelerátor řešení prediktivní údržby](https://github.com/Azure/azure-iot-predictive-maintenance)
+* [Akcelerátor řešení propojené továrny](https://github.com/Azure/azure-iot-connected-factory)
 
 ### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>Jaké sady SDK můžu používat k vývoji klientů zařízení pro akcelerátory řešení?
 
@@ -82,7 +82,7 @@ Ano. Jakékoli řešení, které dnes existuje, bude v předplatném Azure fungo
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>Kolik instancí IoT Hub můžu zřídit v předplatném?
 
-Ve výchozím nastavení můžete zřídit [10 Center IoT na jedno předplatné](../azure-subscription-service-limits.md#iot-hub-limits). K vyvolání tohoto limitu můžete vytvořit [lístek podpory Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) . Vzhledem k tomu, že každé akcelerátor řešení zřizuje nové IoT Hub, můžete v daném předplatném zřídit jenom 10 akcelerátorů řešení.
+Ve výchozím nastavení můžete zřídit [10 Center IoT na jedno předplatné](../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-limits). K vyvolání tohoto limitu můžete vytvořit [lístek podpory Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) . Vzhledem k tomu, že každé akcelerátor řešení zřizuje nové IoT Hub, můžete v daném předplatném zřídit jenom 10 akcelerátorů řešení.
 
 ### <a name="how-many-azure-cosmos-db-instances-can-i-provision-in-a-subscription"></a>Kolik instancí Azure Cosmos DB můžu zřídit v předplatném?
 

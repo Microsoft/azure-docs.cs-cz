@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 03/20/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: da63a5418ab94623f6ce3c9f35a085dd8b198d1a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 10fb9e8169b7f4159ccbf4a0ff36021f6033f811
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67175565"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552409"
 ---
 Abyste mohli absolvovat tento kurz, musíte splňovat následující požadavky:
 
-**Azure CLI**: V místním počítači musíte mít nainstalovanou verzi Azure CLI 2.0.29 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+**Azure CLI:** Na svém místním počítači musíte mít nainstalované Azure CLI verze 2.0.29 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
-**Docker**: V tomto kurzu se předpokládá základní znalost základních konceptů Docker, jako jsou kontejnery, image kontejnerů a základní `docker` příkazy. Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru][docker-get-started].
+**Docker:** V tomto kurzu se předpokládá základní znalost klíčových konceptů Dockeru, jako jsou kontejnery, image kontejnerů a základní příkazy `docker`. Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru][docker-get-started].
 
-**Modul Docker**: K dokončení tohoto kurzu potřebujete modul Docker nainstalovaný místně. Docker poskytuje balíčky, které konfigurují prostředí Docker v systémech [MacOS][docker-mac], [Windows][docker-windows]a [Linux][docker-linux].
+**Docker**: k dokončení tohoto kurzu potřebujete Docker nainstalovaný místně. Docker poskytuje balíčky, které konfigurují prostředí Docker v systémech [MacOS][docker-mac], [Windows][docker-windows]a [Linux][docker-linux].
 
 > [!IMPORTANT]
 > Vzhledem k tomu, že Azure Cloud Shell neobsahuje démona Dockeru, k dokončení tohoto kurzu *musíte* nainstalovat Azure CLI i modul Docker na svůj *místní počítač*. Pro účely tohoto kurzu není možné použít Azure Cloud Shell.

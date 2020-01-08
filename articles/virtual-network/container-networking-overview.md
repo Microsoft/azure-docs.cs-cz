@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 2ebc678bffbbbe5d512d620b8f77ac0a245c0aff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bdd364c097552d3a1b52073af97d33db70d78556
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60713813"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647437"
 ---
 # <a name="enable-containers-to-use-azure-virtual-network-capabilities"></a>Zprovoznění funkcí služby Azure Virtual Network v kontejnerech
 
@@ -51,19 +51,19 @@ Pody poskytuje virtuální počítač, který je součástí virtuální sítě.
 
 Modul plug-in nakonfiguruje pravidla *iptables* pro překlad síťových adres (NAT) u přenosů z podů do internetu, aby podům umožnil přístup k internetu. Zdrojová IP adresa paketu se přeloží na primární IP adresu síťového rozhraní virtuálního počítače. Virtuální počítače s Windows automaticky provádějí překlad adres na základě zdroje (SNAT) u přenosů mířících mimo podsíť, ve které se virtuální počítač nachází. Obvykle se překládají všechny přenosy směřující na IP adresu mimo rozsah IP adres ve virtuální síti.
 
-## <a name="limits"></a>Limits
+## <a name="limits"></a>Omezení
 
-Modul plug-in podporuje až 250 podů na virtuální počítač a až 16 000 podů ve virtuální síti. Tato omezení se liší u [Azure Kubernetes Service](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-kubernetes-service-limits).
+Modul plug-in podporuje až 250 podů na virtuální počítač a až 16 000 podů ve virtuální síti. Tato omezení se liší u [Azure Kubernetes Service](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-kubernetes-service-limits).
 
 ## <a name="using-the-plug-in"></a>Použití modulu plug-in
 
 Modul plug-in je možné používat následujícími způsoby s cílem poskytovat základní připojení virtuální sítě pro pody nebo kontejnery Dockeru:
 
-- **Azure Kubernetes Service**: Modul plug-in je integrovaný do Azure Kubernetes Service (AKS) a je možné výběrem *rozšířeného sítě* možnost. Pokročilé síťové funkce vám umožní nasadit cluster Kubernetes v existující nebo nové virtuální síti. Další informace o pokročilých síťových funkcích a postupu jejich nastavení najdete v tématu o [konfiguraci sítě ve službě AKS](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- **AKS-Engine**: Modul AKS je nástroj, který generuje šablonu Azure Resource Manageru pro nasazení clusteru Kubernetes v Azure. Podrobné pokyny najdete v tématu [nasazení modulu plug-in pro clustery Kubernetes AKS-Engine](deploy-container-networking.md#deploy-the-azure-virtual-network-container-network-interface-plug-in).
-- **Vytvoření vlastního clusteru Kubernetes v Azure**: Modul plug-in je možné poskytnout základní sítě pro Podů v clusteru Kubernetes nasadit sami, bez nutnosti spoléhat se na AKS nebo nástrojů, jako je modul AKS. V tomto případě se modul plug-in nainstaluje a aktivuje na každém virtuálním počítači v clusteru. Podrobné pokyny najdete v tématu o [nasazení modulu plug-in v clusteru Kubernetes, který nasazujete sami](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
-- **Připojení virtuální sítě pro kontejnery Dockeru v Azure**: Modul plug-in je možné v případech, kdy nechcete vytvořit Kubernetes cluster a Docker, kontejnery s virtuální sítí připojit, vytvořili ve službě virtual machines. Podrobné pokyny najdete v tématu o [nasazení modulu plug-in pro Docker](deploy-container-networking.md#deploy-plug-in-for-docker-containers).
+- **Azure Kubernetes Service:** Modul plug-in je integrovaný do Azure Kubernetes Service (AKS) a je možné ho použít po výběru možnosti představující *pokročilé síťové funkce*. Pokročilé síťové funkce vám umožní nasadit cluster Kubernetes v existující nebo nové virtuální síti. Další informace o pokročilých síťových funkcích a postupu jejich nastavení najdete v tématu o [konfiguraci sítě ve službě AKS](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- **AKS-Engine**: AKS-Engine je nástroj, který generuje šablonu Azure Resource Manager pro nasazení clusteru Kubernetes v Azure. Podrobné pokyny najdete v tématu [nasazení modulu plug-in pro clustery AKS-Engine Kubernetes](deploy-container-networking.md#deploy-the-azure-virtual-network-container-network-interface-plug-in).
+- **Vytváření vlastního clusteru Kubernetes v Azure**: modul plug-in se dá použít k poskytování základních sítí pro lusky v clusterech Kubernetes, které nasadíte sami, aniž byste se museli spoléhat na AKS, nebo nástroje, jako je AKS Engine. V tomto případě se modul plug-in nainstaluje a aktivuje na každém virtuálním počítači v clusteru. Podrobné pokyny najdete v tématu o [nasazení modulu plug-in v clusteru Kubernetes, který nasazujete sami](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
+- **Připojení virtuální sítě pro kontejnery Dockeru v Azure:** Modul plug-in lze použít v případech, kdy na virtuálních počítačích nechcete vytvořit cluster Kubernetes, ale kontejnery Dockeru s připojením virtuální sítě. Podrobné pokyny najdete v tématu o [nasazení modulu plug-in pro Docker](deploy-container-networking.md#deploy-plug-in-for-docker-containers).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Nasazení modulu plug-in](deploy-container-networking.md) pro clustery Kubernetes nebo kontejnery Dockeru

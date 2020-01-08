@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: e0ce8b97df6f2d6e95255d3f4dfc9f76fa08a594
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b2c16c27c0dfc0c30a99c52544cc4d2278eadfc7
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123545"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647726"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Správa clusteru služeb ML v Azure HDInsight
 
@@ -23,7 +23,7 @@ V tomto článku se dozvíte, jak spravovat existující cluster služeb ML v Az
 
 * Cluster služeb ML v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a výběr **služeb ml** pro **typ clusteru**.
 
-* Klient Secure Shell (SSH): Klient SSH se používá pro vzdálené připojení ke clusteru HDInsight a spouštění příkazů přímo v clusteru. Další informace najdete v tématu [Použití SSH se službou HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient Secure Shell (SSH): klient SSH se používá pro vzdálené připojení ke clusteru HDInsight a spouštění příkazů přímo v clusteru. Další informace najdete v tématu [Použití SSH se službou HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="enable-multiple-concurrent-users"></a>Povolení několika souběžných uživatelů
 
@@ -48,7 +48,7 @@ Vzhledem k tomu, že RStudio běží na hraničním uzlu clusteru, existuje něk
 2. Přidání dalších uživatelů Linuxu na hraničním uzlu
 3. Použití komunitní verze RStudia s vytvořeným uživatelem
 
-### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>Krok 1: Přihlášení k hraničnímu uzlu pomocí vytvořeného uživatele SSH
+### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>Krok 1: použití vytvořeného uživatele SSH k přihlášení k hraničnímu uzlu
 
 Postupujte podle pokynů v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) pro přístup k hraničnímu uzlu. Adresa hraničního uzlu pro cluster služeb ML v HDInsight je `CLUSTERNAME-ed-ssh.azurehdinsight.net`.
 
@@ -70,7 +70,7 @@ Po zobrazení výzvy k zadání hesla "aktuální heslo protokolu Kerberos", sta
 
 ### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>Krok 3: Použití komunitní verze RStudia s vytvořeným uživatelem
 
-Přístup k RStudio https://CLUSTERNAME.azurehdinsight.net/rstudio/ z. Pokud se přihlašujete poprvé po vytvoření clusteru, zadejte přihlašovací údaje Správce clusteru a přihlašovací údaje uživatele SSH, které jste vytvořili. Pokud se nejedná o vaše první přihlášení, zadejte pouze pověření pro uživatele SSH, kterého jste vytvořili.
+Přístup k RStudio z `https://CLUSTERNAME.azurehdinsight.net/rstudio/`. Pokud se přihlašujete poprvé po vytvoření clusteru, zadejte přihlašovací údaje Správce clusteru a přihlašovací údaje uživatele SSH, které jste vytvořili. Pokud se nejedná o vaše první přihlášení, zadejte pouze pověření pro uživatele SSH, kterého jste vytvořili.
 
 Můžete se také přihlásit pomocí původních přihlašovacích údajů (ve výchozím nastavení je *sshuser*) souběžně z jiného okna prohlížeče.
 
@@ -78,7 +78,7 @@ Všimněte si také, že nově přidaní uživatelé nemají v systému Linux ko
 
 ## <a name="connect-remotely-to-microsoft-ml-services"></a>Vzdálené připojení k Microsoft ML Services
 
-Můžete nastavit přístup ke výpočetnímu kontextu HDInsight Spark ze vzdálené instance klienta ML běžící na ploše. K tomu je nutné zadat možnosti (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches a sshProfileScript) při definování výpočetního kontextu výpočetního rxspark na ploše: Příklad:
+Můžete nastavit přístup ke výpočetnímu kontextu HDInsight Spark ze vzdálené instance klienta ML běžící na ploše. K tomu je nutné zadat možnosti (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches a sshProfileScript) při definování výpočetního kontextu výpočetního rxspark na ploše: například:
 
     myNameNode <- "default"
     myPort <- 0
@@ -114,7 +114,7 @@ Pomocí služby ML Services v HDInsight můžete stávající kód R použít a 
 
     rxExec( function() {Sys.info()["nodename"]}, timesToRun = 4 )
 
-Pokud stále používáte kontext Spark, tento příkaz vrátí hodnotu Node pro pracovní uzly, na kterých je spuštěný kód `(Sys.info()["nodename"])` . Například v clusteru se čtyřmi uzly očekáváte, že dostanete výstup podobný následujícímu fragmentu kódu:
+Pokud stále používáte kontext Spark, tento příkaz vrátí hodnotu Node pro pracovní uzly, na kterých je spuštěný Kód `(Sys.info()["nodename"])`. Například v clusteru se čtyřmi uzly očekáváte, že dostanete výstup podobný následujícímu fragmentu kódu:
 
     $rxElem1
         nodename
@@ -169,13 +169,13 @@ Následuje vzorový kód pro použití těchto nových funkcí:
     rxSparkDisconnect(myHadoopCluster)
 
 
-Další informace o používání těchto nových funkcí najdete v online nápovědě služby ml prostřednictvím použití `?RxHivedata` příkazů a. `?RxParquetData`  
+Další informace o používání těchto nových funkcí najdete v online nápovědě služby ML prostřednictvím použití příkazů `?RxHivedata` a `?RxParquetData`.  
 
 ## <a name="install-additional-r-packages-on-the-cluster"></a>Instalace dalších balíčků R na clusteru
 
 ### <a name="to-install-r-packages-on-the-edge-node"></a>Instalace balíčků R na hraničním uzlu
 
-Pokud chcete na hraničním uzlu nainstalovat další balíčky r, můžete použít `install.packages()` přímo v konzole R, a to po připojení k hraničnímu uzlu přes SSH. 
+Pokud chcete na hraničním uzlu nainstalovat další balíčky R, můžete použít `install.packages()` přímo v konzole R, a to po připojení k hraničnímu uzlu přes SSH. 
 
 ### <a name="to-install-r-packages-on-the-worker-node"></a>Instalace balíčků jazyka R na pracovní uzel
 
@@ -196,7 +196,7 @@ Pokud chcete nainstalovat balíčky R na pracovní uzly clusteru, musíte použ�
 
    * Zaškrtněte políčko pouze pro **pracovní proces**.
 
-   * **Parametry**: Balíčky R, které se mají nainstalovat Například `bitops stringr arules`.
+   * **Parametry:** Balíčky R určené k instalaci. Například `bitops stringr arules`.
 
    * Zaškrtněte políčko, pokud chcete **zachovat tuto akci skriptu**.  
 

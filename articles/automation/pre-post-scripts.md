@@ -2,19 +2,15 @@
 title: Konfigurace předzálohovacích skriptů v nasazení Update Management v Azure a jejich následné spouštění
 description: Tento článek popisuje, jak nakonfigurovat a spravovat předzálohovací skripty a následné skripty pro nasazení aktualizací.
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 05/17/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: a5d68b64fc24577621c82be62f833c356e8fb9c2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 35fba966fcdb6d1c5cd7c531bb22c9c78ae16ff3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850240"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417800"
 ---
 # <a name="manage-pre-and-post-scripts"></a>Správa předzálohovacích a pozálohovacích skriptů
 
@@ -139,7 +135,7 @@ foreach($summary in $finalStatus)
 }
 ```
 
-## <a name="samples"></a>Ukázky
+## <a name="samples"></a>ukázky
 
 Ukázky pro předzálohovací a pozálohovací skripty najdete v [galerii Center skriptů](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell) a v [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22), nebo je můžete importovat pomocí Azure Portal. Uděláte to tak, že v účtu Automation v části **Automatizace procesu**vyberete **Galerie runbooků**. Pro filtr použijte **Update Management** .
 

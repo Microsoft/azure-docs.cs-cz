@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 4a8dbe9d1c66955e585f7b2cbf842193c965252e
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 19f31a2fafc112f499ff87eed23843915cab32a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74998768"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75414220"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Pokyny pro zotavení po havárii pro avere vFXT pro Azure
 
@@ -104,7 +104,7 @@ Pokud chcete získat přístup k kontejneru zálohování z avere vFXT pro clust
 1. V případě potřeby vytvořte nový avere vFXT pro cluster Azure v neovlivněné oblasti.
 
    > [!TIP]
-   > Když vytvoříte avere vFXT pro cluster Azure, můžete uložit kopii jeho šablony a parametrů pro jeho vytvoření. Pokud tyto informace při vytváření primárního clusteru uložíte, můžete je použít k vytvoření náhradního clusteru se stejnými vlastnostmi. Na stránce [ověřování a souhrn](avere-vfxt-deploy.md#validation-and-purchase) klikněte na odkaz **Stáhnout šablonu a parametry** . Před vytvořením clusteru kliknutím na tlačítko **OK** uložte informace do souboru.
+   > Když vytvoříte avere vFXT pro cluster Azure, můžete uložit kopii jeho šablony a parametrů pro jeho vytvoření. Pokud tyto informace při vytváření primárního clusteru uložíte, můžete je použít k vytvoření náhradního clusteru se stejnými vlastnostmi. Na stránce [Souhrn](avere-vfxt-deploy.md#validation-and-purchase) klikněte na odkaz **Stáhnout šablonu a parametry** . Před vytvořením clusteru tyto informace uložte do souboru.
 
 1. Přidejte nový souborového Cloud Core, který odkazuje na duplicitní kontejner objektů BLOB.
 

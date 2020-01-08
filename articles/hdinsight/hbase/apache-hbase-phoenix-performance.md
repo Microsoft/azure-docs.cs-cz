@@ -2,18 +2,18 @@
 title: Výkon služby Phoenix v Azure HDInsight
 description: Osvědčené postupy pro optimalizaci Apache Phoenix výkonu pro clustery Azure HDInsight
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.author: ashishth
-ms.openlocfilehash: b2a40802070510939332c3f5e876293445cf2df1
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.custom: hdinsightactive
+ms.date: 12/27/2019
+ms.openlocfilehash: 7f8f20be81e815414c283f7ec48aa6503e3b60ed
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810439"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552640"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Osvědčené postupy pro Apache Phoenix z hlediska výkonu
 
@@ -31,34 +31,34 @@ Primární klíč definovaný v tabulce v Phoenixu určuje, jak jsou data ulože
 
 Například tabulka pro kontakty má jméno, příjmení, telefonní číslo a adresu, a to vše ve stejné rodině sloupců. Můžete definovat primární klíč na základě rostoucího pořadového čísla:
 
-|rowkey|       adresa|   telefon| firstName| lastName|
+|rowkey|       adresa|   Android| firstName| lastName|
 |------|--------------------|--------------|-------------|--------------|
-|  1000|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole|
+|  1 000|1111 San Gabriel Dr.|1-425-000-0002|    Honza|Dole|
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji|
 
 Pokud se ale často dotazuje podle oprávnění lastName, nemusí tento primární klíč správně fungovat, protože každý dotaz vyžaduje, aby všechny dotazy načetly hodnotu každé příjmení. Místo toho můžete definovat primární klíč ve sloupcích lastName, firstName a číslo rodného čísla. Posledním sloupcem je nejednoznačnost dvou rezidentů na stejné adrese, jako je například otců a syn.
 
-|rowkey|       adresa|   telefon| firstName| lastName| socialSecurityNum |
+|rowkey|       adresa|   Android| firstName| lastName| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  1000|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole| 111 |
+|  1 000|1111 San Gabriel Dr.|1-425-000-0002|    Honza|Dole| 111 |
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
 S tímto novým primárním klíčem klíče řádků generované v Phoenixu budou:
 
-|rowkey|       adresa|   telefon| firstName| lastName| socialSecurityNum |
+|rowkey|       adresa|   Android| firstName| lastName| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  Dole – Jan až 111|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole| 111 |
+|  Dole – Jan až 111|1111 San Gabriel Dr.|1-425-000-0002|    Honza|Dole| 111 |
 |  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
 V prvním řádku výše jsou data pro rowkey reprezentovaná, jak je znázorněno níže:
 
-|rowkey|       key|   value| 
+|rowkey|       key|   hodnota|
 |------|--------------------|---|
 |  Dole – Jan až 111|adresa |1111 San Gabriel Dr.|  
-|  Dole – Jan až 111|telefon |1-425-000-0002|  
-|  Dole – Jan až 111|firstName |Jan|  
+|  Dole – Jan až 111|Android |1-425-000-0002|  
+|  Dole – Jan až 111|firstName |Honza|  
 |  Dole – Jan až 111|lastName |Dole|  
-|  Dole – Jan až 111|socialSecurityNum |111| 
+|  Dole – Jan až 111|socialSecurityNum |111|
 
 Tato rowkey nyní ukládá duplicitní kopii dat. Vezměte v úvahu velikost a počet sloupců, které zahrnete do primárního klíče, protože tato hodnota je zahrnutá do každé buňky v podkladové tabulce HBA.
 
@@ -113,9 +113,9 @@ Zahrnuté indexy jsou indexy, které zahrnují data z řádku kromě indexovaný
 
 Například v tabulce příklad kontaktu byste mohli vytvořit sekundární index pouze v socialSecurityNum sloupci. Tento sekundární index by urychlil dotazy, které filtrují podle hodnot socialSecurityNum, ale načítání ostatních hodnot polí bude vyžadovat další čtení v hlavní tabulce.
 
-|rowkey|       adresa|   telefon| firstName| lastName| socialSecurityNum |
+|rowkey|       adresa|   Android| firstName| lastName| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  Dole – Jan až 111|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole| 111 |
+|  Dole – Jan až 111|1111 San Gabriel Dr.|1-425-000-0002|    Honza|Dole| 111 |
 |  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
 Pokud ale obvykle chcete vyhledat pole firstName a lastName s daným socialSecurityNum, mohli byste vytvořit zahrnutý index, který obsahuje pole firstName a lastName jako skutečná data v tabulce index:
@@ -168,7 +168,7 @@ Plán dotazu vypadá takto:
 
 V tomto plánu si poznamenejte frázi úplná kontrola nad lety. Tato fráze indikuje, že při provádění se v tabulce prohledává všechny řádky v tabulce místo použití možnosti zefektivnit kontrolu rozsahu nebo přeskočit kontrolu.
 
-Nyní řekněme, že chcete zadat dotaz na lety 2. ledna 2014 pro přepravce `AA` , kde jeho flightnum bylo větší než 1. Řekněme, že sloupce year, month, DayOfMonth, přepravce a flightnum existují v tabulce příkladů a jsou všechny součástí složeného primárního klíče. Dotaz by vypadal takto:
+Nyní řekněme, že chcete zadat dotaz na lety 2. ledna 2014 pro přepravce `AA`, kde jeho flightnum bylo větší než 1. Řekněme, že sloupce year, month, DayOfMonth, přepravce a flightnum existují v tabulce příkladů a jsou všechny součástí složeného primárního klíče. Dotaz by vypadal takto:
 
     select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
 
@@ -182,7 +182,7 @@ Výsledný plán:
 
 Hodnoty v hranatých závorkách jsou rozsahem hodnot pro primární klíče. V tomto případě jsou hodnoty rozsahu opraveny s rokem 2014, měsíc 1 a DayOfMonth 2, ale umožňují hodnoty pro flightnum počínaje 2 a na začátku (`*`). Tento plán dotazu potvrdí, že se primární klíč používá podle očekávání.
 
-Dále v tabulce lety vytvořte index s názvem `carrier2_idx` , který je pouze v poli přepravce. Tento index zahrnuje také flightdate, tailnum, Origin a flightnum jako zahrnuté sloupce, jejichž data jsou také uložená v indexu.
+Dále v tabulce lety vytvořte index s názvem `carrier2_idx`, který je pouze v poli přepravce. Tento index zahrnuje také flightdate, tailnum, Origin a flightnum jako zahrnuté sloupce, jejichž data jsou také uložená v indexu.
 
     CREATE INDEX carrier2_idx ON FLIGHTS (carrier) INCLUDE(FLIGHTDATE,TAILNUM,ORIGIN,FLIGHTNUM);
 
@@ -200,7 +200,7 @@ Měli byste vidět, že se používá tento index:
 
 Obecně platí, že chcete vyhnout spojení, pokud jedna strana není malá, zejména u častých dotazů.
 
-V případě potřeby můžete s `/*+ USE_SORT_MERGE_JOIN */` pomocným nástrojem provádět velké spojení, ale velký počet spojení je náročná operace nad velkým počtem řádků. Pokud celková velikost všech tabulek na pravé straně by překročila dostupnou paměť, použijte `/*+ NO_STAR_JOIN */` pomocný parametr.
+V případě potřeby můžete provádět velké spojení s nápovědou `/*+ USE_SORT_MERGE_JOIN */`, ale velké spojení je náročná operace nad velkým počtem řádků. Pokud celková velikost všech tabulek na pravé straně by překročila dostupnou paměť, použijte pomocný parametr `/*+ NO_STAR_JOIN */`.
 
 ## <a name="scenarios"></a>Scénáře
 
@@ -212,7 +212,7 @@ Pro případy použití s vysokým využitím se ujistěte, že používáte ind
 
 ### <a name="write-heavy-workloads"></a>Zátěžové úlohy náročné na zápis
 
-Pro úlohy náročné na zápis, u kterých je primární klíč rovnoměrně zvětšující, vytvořte sady solí, které vám pomůžou zabránit hotspotům v zápisu za cenu celkové propustnosti čtení v důsledku dalších potřebných kontrol. Také při použití UPSERT k zápisu velkého počtu záznamů vypněte automatické potvrzení a dávkujte záznamy.
+Pro úlohy náročné na zápis, u kterých je primární klíč rovnoměrně zvětšující, vytvořte bloky Salt, které vám pomůžou vyhnout se psaní hotspotů, a to za cenu celkové propustnosti čtení z důvodu dalších potřebných kontrol. Také při použití UPSERT k zápisu velkého počtu záznamů vypněte automatické potvrzení a dávkujte záznamy.
 
 ### <a name="bulk-deletes"></a>Hromadné odstranění
 
@@ -226,7 +226,7 @@ Pokud váš scénář přinese rychlost zápisu přes integritu dat, zvažte mo�
 
 Podrobnosti o této a dalších možnostech najdete v tématu [Apache Phoenix gramatiky](https://phoenix.apache.org/language/index.html#options).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Průvodce optimalizací Apache Phoenix](https://phoenix.apache.org/tuning_guide.html)
 * [Sekundární indexy](https://phoenix.apache.org/secondary_indexing.html)

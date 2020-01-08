@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 9faf7de25b8bf227dd4c7f3588972f98f7493439
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1a1b1e662a2e9adedfc68f1818f868c0a5318652
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583950"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428958"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Konfigurace účtů testovacího prostředí v Azure Lab Services 
 V Azure Lab Services účet testovacího prostředí je kontejner pro spravované typy testovacích prostředí, jako je například učeben Labs. Správce nastaví účet testovacího prostředí pomocí Azure Lab Services a poskytne přístup k vlastníkům testovacího prostředí, kteří můžou v účtu vytvářet Labs. Tento článek popisuje, jak vytvořit účet testovacího prostředí, Zobrazit všechny účty testovacího prostředí nebo odstranit účet testovacího prostředí.
@@ -30,7 +30,7 @@ Pokud chcete připojit virtuální síť jako rovnocennou síť k virtuální s�
 
     ![Konfigurační stránka Labs](../media/how-to-manage-lab-accounts/labs-configuration-page.png) 
 1. V případě **partnerské virtuální sítě**vyberte možnost **povoleno** nebo **zakázáno**. Výchozí hodnota je **zakázaná**. Pokud chcete povolit partnerský virtuální síť, proveďte následující kroky: 
-    1. Vyberte **povoleno**.
+    1. Vyberte **Povoleno**.
     2. Z rozevíracího seznamu vyberte **virtuální síť** . 
 3. Na panelu nástrojů vyberte **Uložit**. 
 
@@ -133,6 +133,14 @@ Na stránce **Možnosti přihlášení** vyberte možnost **Přihlásit se pomoc
 
 Nakonec se zobrazí výzva k vytvoření účet Microsoft, která je propojená s jejich účtem GitHubu. K tomu dochází automaticky, když instruktor vybere **Next (další**).  Instruktor se pak hned přihlásí a připojí k vývojovému prostředí učebny.
 
+## <a name="automatic-shutdown-of-vms-on-disconnect"></a>Automatické vypnutí virtuálních počítačů při odpojení
+Po odpojení připojení ke vzdálené ploše můžete povolit nebo zakázat automatické vypnutí virtuálních počítačů s Windows Lab (šablona nebo student). Můžete také určit, jak dlouho by měly virtuální počítače čekat na opětovné připojení uživatele, než se automaticky vypíná.
+
+![Nastavení automatického vypnutí v účtu testovacího prostředí](../media/how-to-configure-lab-accounts/automatic-shutdown-vm-disconnect.png)
+
+Toto nastavení se vztahuje na všechny laboratoře vytvořené v účtu testovacího prostředí. Vlastník testovacího prostředí může toto nastavení přepsat na úrovni testovacího prostředí. Změna tohoto nastavení v účtu testovacího prostředí bude mít vliv jenom na laboratoře, které se vytvoří po provedení změny.
+
+Další informace o tom, jak vlastník testovacího prostředí může nakonfigurovat toto nastavení na úrovni testovacího prostředí, najdete v [tomto článku](how-to-enable-shutdown-disconnect.md) .
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:

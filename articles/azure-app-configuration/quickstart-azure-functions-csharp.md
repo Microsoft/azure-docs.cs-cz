@@ -2,24 +2,17 @@
 title: Rychlý Start pro konfiguraci aplikací Azure s Azure Functions | Microsoft Docs
 description: Rychlý Start pro použití konfigurace aplikace Azure s Azure Functions.
 services: azure-app-configuration
-documentationcenter: ''
 author: yegu-ms
-manager: balans
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: Azure Functions
-ms.workload: tbd
-ms.date: 02/24/2019
+ms.date: 12/17/2019
 ms.author: yegu
-ms.openlocfilehash: 6329cf0e74bbcf57164afeab5b04e2af4ee43943
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 3c8dc27b9d7781a8420fa76e5aeac9637b87c569
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186192"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75413768"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace Azure Functions s využitím konfigurace aplikace Azure
 
@@ -61,7 +54,7 @@ V tomto rychlém startu zahrňte službu Azure App Configuration Service do apli
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
-3. Chcete-li vytvořit instanci typu Singleton `IConfiguration`, přidejte vlastnost `static` `Configuration`. Pak přidejte konstruktor `static` pro připojení ke konfiguraci aplikace voláním `AddAzureAppConfiguration()`. Tato akce načte konfiguraci jednou při spuštění aplikace. Stejná instance konfigurace bude použita pro všechny volání funkcí později.
+3. Chcete-li vytvořit instanci typu Singleton `IConfiguration`, přidejte vlastnost `static` s názvem `Configuration`. Pak přidejte konstruktor `static` pro připojení ke konfiguraci aplikace voláním `AddAzureAppConfiguration()`. Tato akce načte konfiguraci jednou při spuštění aplikace. Stejná instance konfigurace bude použita pro všechny volání funkcí později.
 
     ```csharp
     private static IConfiguration Configuration { set; get; }
@@ -94,17 +87,19 @@ V tomto rychlém startu zahrňte službu Azure App Configuration Service do apli
 
 1. Nastavte proměnnou prostředí s názvem **ConnectionString**a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. Použijete-li příkazový řádek systému Windows, spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
 
+    ```CLI
         setx ConnectionString "connection-string-of-your-app-configuration-store"
-
+    ```
     Pokud používáte Windows PowerShell, spusťte následující příkaz:
 
+    ```azurepowershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
-
+    ```
     Pokud používáte macOS nebo Linux, spusťte následující příkaz:
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-2. Pokud chcete funkci otestovat, stiskněte F5. Pokud se zobrazí výzva, přijměte požadavek ze sady Visual Studio a stáhněte a nainstalujte nástroje **Azure Functions Core (CLI)** . Je také možné, že budete muset povolit výjimku brány firewall, aby nástroje mohly zpracovávat požadavky HTTP.
+2. Pro otestování funkce stiskněte klávesu F5. Pokud se zobrazí výzva, přijměte požadavek ze sady Visual Studio a stáhněte a nainstalujte nástroje **Azure Functions Core (CLI)** . Je také možné, že budete muset povolit výjimku brány firewall, aby nástroje mohly zpracovávat požadavky HTTP.
 
 3. Zkopírujte adresu URL vaší funkce z výstupu modulu runtime služby Azure Functions.
 

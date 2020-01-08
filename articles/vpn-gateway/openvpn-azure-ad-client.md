@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 12/18/2019
 ms.author: alzam
-ms.openlocfilehash: 2836a89f491d731a11e6bc6fc56e0d049f01ac9a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 59af4189b52c2ad7a1109ffb03accedbc69dc6c6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151404"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647913"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication-preview"></a>Konfigurace klienta VPN pro připojení protokolu P2S OpenVPN: ověřování Azure AD (Preview)
 
@@ -34,11 +34,15 @@ Pomocí tohoto [odkazu](https://www.microsoft.com/p/azure-vpn-client-preview/9np
 
 Při práci s profilem založeným na certifikátech se ujistěte, že jsou na klientském počítači nainstalované příslušné certifikáty. Další informace o certifikátech najdete v tématu [instalace klientských certifikátů](point-to-site-how-to-vpn-client-install-azure-cert.md).
 
-  ![certifikační](./media/openvpn-azure-ad-client/create/create-cert1.jpg)
+  ![cert](./media/openvpn-azure-ad-client/create/create-cert1.jpg)
 
 ### <a name="radius"></a>Postup vytvoření profilu klienta protokolu RADIUS
 
-  ![zaoblen](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
+  ![RADIUS](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
+  
+> [!NOTE]
+> Tajný kód serveru se dá exportovat v profilu klienta VPN P2S.  Pokyny, jak exportovat profil klienta, najdete [tady](about-vpn-profile-download.md).
+>
 
 ### <a name="export"></a>Export a distribuce profilu klienta
 
@@ -46,11 +50,11 @@ Jakmile budete mít funkční profil a potřebujete ho distribuovat ostatním u�
 
 1. Zvýrazněte profil klienta VPN, který chcete exportovat, vyberte **...** a pak vyberte **exportovat**.
 
-    ![Export](./media/openvpn-azure-ad-client/export/export1.jpg)
+    ![export](./media/openvpn-azure-ad-client/export/export1.jpg)
 
 2. Vyberte umístění, do kterého chcete uložit tento profil, ponechte název souboru tak, jak je, a pak vyberte **Uložit** a uložte soubor XML.
 
-    ![Export](./media/openvpn-azure-ad-client/export/export2.jpg)
+    ![export](./media/openvpn-azure-ad-client/export/export2.jpg)
 
 ### <a name="import"></a>Import profilu klienta
 
@@ -112,37 +116,57 @@ Tyto kroky vám pomůžou nakonfigurovat připojení pro automatické připojen�
 
 1. Na domovské stránce klienta VPN vyberte **nastavení sítě VPN**.
 
-    ![automaticky](./media/openvpn-azure-ad-client/auto/auto1.jpg)
+    ![auto](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
 2. V dialogovém okně přepnout aplikace vyberte **Ano** .
 
-    ![automaticky](./media/openvpn-azure-ad-client/auto/auto2.jpg)
+    ![auto](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
 3. Ujistěte se, že připojení, které chcete nastavit, ještě není připojené, zvýrazněte profil a zaškrtněte políčko **Připojit automaticky** .
 
-    ![automaticky](./media/openvpn-azure-ad-client/auto/auto3.jpg)
+    ![auto](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
 4. Kliknutím na **připojit** zahajte připojení k síti VPN.
 
-    ![automaticky](./media/openvpn-azure-ad-client/auto/auto4.jpg)
+    ![auto](./media/openvpn-azure-ad-client/auto/auto4.jpg)
 
 ## <a name="diagnose"></a>Diagnostika problémů s připojením
 
 1. K diagnostice problémů s připojením můžete použít nástroj pro **diagnostiku** . Vyberte **...** vedle připojení VPN, které chcete diagnostikovat, aby se nabídka zobrazila. Pak vyberte **Diagnostika**.
 
-    ![diagnóz](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
+    ![Diagnostika](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
 
 2. Na stránce **Vlastnosti připojení** vyberte **Spustit diagnostiku**.
 
-    ![diagnóz](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
+    ![Diagnostika](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
 
 3. Přihlaste se pomocí svých přihlašovacích údajů.
 
-    ![diagnóz](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
+    ![Diagnostika](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
 
 4. Zobrazení výsledků diagnostiky.
 
-    ![diagnóz](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
+    ![Diagnostika](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
+
+## <a name="faq"></a>Časté otázky
+
+### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>Návody přidat do klienta VPN přípony DNS?
+
+Můžete upravit stažený soubor XML profilu a přidat **\<dnssuffixes >\<dnssufix > \</dnssufix >\</dnssuffixes >** značky
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <dnssuffixes>
+          <dnssuffix>.mycorp.com</dnssuffix>
+          <dnssuffix>.xyz.com</dnssuffix>
+          <dnssuffix>.etc.net</dnssuffix>
+    </dnssuffixes>
+    
+</clientconfig>
+</azvpnprofile>
+```
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -2,17 +2,17 @@
 title: Co je služba privátního propojení Azure?
 description: Přečtěte si o službě Azure Private Link.
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: f9bdc180bf0dfd6f35fb18f5c76176a68d8f1644
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f8d49a62ae9006e65ef86db1ae90cd5a5e9f1c6d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74912981"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647369"
 ---
 # <a name="what-is-azure-private-link-service"></a>Co je služba privátního propojení Azure?
 
@@ -68,7 +68,7 @@ Služba privátního propojení určuje následující vlastnosti:
  
 - Jedna služba privátního propojení je dostupná z více privátních koncových bodů patřících různým virtuální sítě, předplatným a/nebo klientům služby Active Directory. Připojení je vytvořeno prostřednictvím pracovního postupu připojení. 
  
-- Ve stejném Standard Load Balancer lze pomocí různých konfigurací front-end IP adres vytvořit více služeb privátních propojení. Existují omezení počtu služeb privátních odkazů, které můžete vytvořit pro jednotlivé Standard Load Balancer a pro každé předplatné. Podrobnosti najdete v tématu [omezení Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Ve stejném Standard Load Balancer lze pomocí různých konfigurací front-end IP adres vytvořit více služeb privátních propojení. Existují omezení počtu služeb privátních odkazů, které můžete vytvořit pro jednotlivé Standard Load Balancer a pro každé předplatné. Podrobnosti najdete v tématu [omezení Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
  
 - Služba privátního propojení může mít na sebe propojenou více konfigurací IP adres NAT. Výběr více než jedné konfigurace protokolu IP NAT může pomáhat poskytovatelům služeb škálovat. V dnešní době můžou poskytovatelé služeb přiřadit až osm IP adres NAT na jednu službu privátního propojení. U každé IP adresy překladu adres (NAT) můžete přiřadit více portů pro připojení TCP a tak škálovat. Po přidání více IP adres NAT do služby privátního propojení nemůžete IP adresy NAT odstranit. K tomu je potřeba zajistit, aby při odstraňování IP adres překladu adres (NAT) nedošlo k ovlivnění aktivních připojení.
 

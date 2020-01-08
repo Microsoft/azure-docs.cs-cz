@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: d0e002f0f1e620c108b23790dfc81574bee23795
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: b13ad375adf20a606b48755a6d57851abf89e549
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158435"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454660"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Nastavení Vizualizace závislostí bez agentů pro posouzení
 
@@ -19,7 +19,7 @@ Tento článek popisuje, jak nastavit mapování závislostí bez agentů v Azur
 
 > [!IMPORTANT]
 > Vizualizace závislostí bez agentů je momentálně ve verzi Preview pro virtuální počítače Azure VMware zjištěné pomocí zařízení Azure Migrate.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Tuto verzi Preview pokrývá zákaznická podpora a je možné ji použít pro produkční úlohy.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="about-dependency-mapping"></a>O mapování závislostí
@@ -53,7 +53,7 @@ Vizualizace závislostí bez agentů nevyžaduje, abyste nainstalovali žádné 
 - Ujistěte se, že jste [vytvořili](how-to-add-tool-first-time.md) projekt Azure Migrate.
 - Analýza závislostí bez agentů je aktuálně dostupná jenom pro počítače VMware.
 - Pokud jste již vytvořili projekt, ujistěte se, že jste [přidali](how-to-assess.md) Azure Migrate: nástroj Server Assessment Tool.
-- Ujistěte se, že jste počítače VMware zjistili v Azure Migrate. to můžete provést nastavením zařízení Azure Migrate pro [VMware](how-to-set-up-appliance-vmware.md). Zařízení zjišťuje místní počítače a odesílá data o metadatech a výkonu Azure Migrate: posouzení serveru. [Další informace](migrate-appliance.md)
+- Ujistěte se, že jste počítače VMware zjistili v Azure Migrate. to můžete provést nastavením zařízení Azure Migrate pro [VMware](how-to-set-up-appliance-vmware.md). Zařízení zjišťuje místní počítače a odesílá data o metadatech a výkonu Azure Migrate: posouzení serveru. [Další informace](migrate-appliance.md).
 - Zajistěte, aby byly virtuální počítače VMware podporované pro vizualizaci závislostí bez agentů, jak je shrnuto v následující tabulce.
 
 

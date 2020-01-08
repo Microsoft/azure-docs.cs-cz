@@ -4,31 +4,31 @@ description: Tento článek popisuje kroky pro připojení Configuration Manager
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: fee6f09ba8e290ae6599f07d4ed831fb89427f76
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2262c951b52ef58006bacde4be76dc92468a20ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932644"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364046"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Připojit Configuration Manager k Azure Monitor
 Prostředí System Center Configuration Manager můžete připojit, aby se Azure Monitor synchronizovaná data kolekce zařízení a odkazovalo na tyto kolekce v Azure Monitor a Azure Automation.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Azure Monitor podporuje System Center Configuration Manager aktuální větev verze 1606 a vyšší.
 
 >[!NOTE]
->Funkce pro připojení Configuration Manager k pracovnímu prostoru Log Analytics je volitelná a není ve výchozím nastavení povolená. Tuto funkci musíte před použitím povolit. Další informace najdete v tématu [Povolení volitelných funkcí z aktualizací](https://docs.microsoft.com/sccm/core/servers/manage/install-in-console-updates#bkmk_options).
+>Funkce pro připojení Configuration Manager k pracovnímu prostoru Log Analytics je volitelná a není ve výchozím nastavení povolená. Tuto funkci musíte před použitím povolit. Další informace naleznete v části [Enable optional features from updates](https://docs.microsoft.com/sccm/core/servers/manage/install-in-console-updates#bkmk_options).
 
 ## <a name="configuration-overview"></a>Přehled konfigurace
 
 Následující kroky shrnují postup konfigurace Configuration Manager integrace s Azure Monitor.  
 
-1. V Azure Active Directory Zaregistrujte Configuration Manager jako webovou aplikaci nebo aplikaci webového rozhraní API a ujistěte se, že máte ID klienta a tajný klíč klienta z registrace z Azure Active Directory. Podrobné informace o tom, jak tento krok provést, najdete v tématu [použití portálu k vytvoření aplikace služby Active Directory a instančního objektu, který má přístup k prostředkům](../../active-directory/develop/howto-create-service-principal-portal.md) .
+1. V Azure Active Directory Zaregistrujte Configuration Manager jako webovou aplikaci nebo aplikaci webového rozhraní API a ujistěte se, že máte ID klienta a tajný klíč klienta z registrace z Azure Active Directory. Zobrazit [použití portálu k vytvoření služby Active Directory a instančního objektu, který má přístup k prostředkům](../../active-directory/develop/howto-create-service-principal-portal.md) podrobné informace o tom, k provedení tohoto kroku.
 
 2. V Azure Active Directory [udělte Configuration Manager (registrovaná webová aplikace) oprávnění pro přístup k Azure monitor](#grant-configuration-manager-with-permissions-to-log-analytics).
 
@@ -40,25 +40,25 @@ Následující kroky shrnují postup konfigurace Configuration Manager integrace
 
 6. V Azure Monitor zobrazit data z Configuration Manager jako [skupiny počítačů](computer-groups.md).
 
-## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>Udělení Configuration Manager s oprávněním Log Analytics
+## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>Udělení oprávnění ke službě Log Analytics verze Configuration Manager
 
-V následujícím postupu udělíte roli *Přispěvatel* v pracovním prostoru Log Analytics k aplikacím a instančnímu objektu služby AD, který jste vytvořili dříve pro Configuration Manager. Pokud ještě nemáte pracovní prostor, přečtěte si téma [Vytvoření pracovního prostoru v Azure monitor](../../azure-monitor/learn/quick-create-workspace.md) než budete pokračovat. To umožňuje Configuration Manager ověřovat a připojovat se k pracovnímu prostoru Log Analytics.  
+V následujícím postupu udělíte *Přispěvatel* role ve vašem pracovním prostoru Log Analytics do aplikace AD a instanční objekt služby, které jste vytvořili dříve pro nástroj Configuration Manager. Pokud ještě nemáte pracovní prostor, přečtěte si téma [Vytvoření pracovního prostoru v Azure monitor](../../azure-monitor/learn/quick-create-workspace.md) než budete pokračovat. To umožňuje nástroji Configuration Manager k ověření a připojení k pracovnímu prostoru Log Analytics.  
 
 > [!NOTE]
-> Pro Configuration Manager je nutné zadat oprávnění v pracovním prostoru Log Analytics. V opačném případě se zobrazí chybová zpráva, když použijete Průvodce konfigurací v nástroji Configuration Manager.
+> Pro Configuration Manager je nutné zadat oprávnění v pracovním prostoru Log Analytics. Jinak obdržíte chybovou zprávu při použití Průvodce konfigurací v nástroji Configuration Manager.
 >
 
 1. Na webu Azure Portal klikněte v levém horním rohu na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
 
-2. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor, který chcete upravit.
+2. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor změnit.
 
 3. V levém podokně vyberte **řízení přístupu (IAM)** .
 
-4. Na stránce řízení přístupu (IAM) klikněte na **Přidat přiřazení role** a otevře se podokno **Přidat přiřazení role** .
+4. V stránku řízení přístupu (IAM), klikněte na tlačítko **přidat přiřazení role** a **přidat přiřazení role** otevře se podokno.
 
-5. V podokně **Přidat přiřazení role** v rozevíracím seznamu **role** vyberte roli **Přispěvatel** .  
+5. V **přidat přiřazení role** podokně v části **Role** rozevíracího seznamu vyberte **Přispěvatel** role.  
 
-6. V rozevíracím seznamu **přiřadit přístup k** vyberte Configuration Manager aplikaci vytvořenou ve službě AD dříve a pak klikněte na **OK**.  
+6. V části **přiřadit přístup k** rozevíracího seznamu vyberte aplikace nástroje Configuration Manager předtím vytvořili ve službě AD a potom klikněte na tlačítko **OK**.  
 
 ## <a name="download-and-install-the-agent"></a>Stažení a instalace agenta
 
@@ -76,7 +76,7 @@ Přečtěte si článek [připojení počítačů s Windows k Azure monitor v Az
 
 2. Klikněte pravým tlačítkem na **služby Azure** a pak vyberte **Konfigurovat služby Azure**. Zobrazí se stránka **Konfigurace služeb Azure** . 
    
-3. Na obrazovce **Obecné** potvrďte, že jste provedli následující akce a že máte podrobnosti pro každou položku, a pak vyberte **Další**.
+3. Na **Obecné** obrazovky, potvrďte, že jste provedli následující akce a že jste podrobnosti pro každou položku a pak vyberte **Další**.
 
 4. Na stránce služby Azure v Průvodci službami Azure:
 
@@ -109,7 +109,7 @@ Přečtěte si článek [připojení počítačů s Windows k Azure monitor v Az
 
     8. Vyberte možnost **ověřit** a napravo by se měly výsledky zobrazit po **úspěšném ověření**.
 
-8. Na stránce **Konfigurace** si přečtěte informace, abyste ověřili, že pole pracovních prostorů **Azure**, **skupiny prostředků Azure**a **pracovního prostoru Operations Management Suite** jsou předem vyplněná, což značí, že aplikace Azure AD má dostatečná oprávnění ve skupině prostředků. Pokud jsou pole prázdná, znamená to, že vaše aplikace nemá požadovaná práva. Vyberte kolekce zařízení, které chcete shromáždit a předejte do pracovního prostoru, a pak vyberte **Přidat**.
+8. Na stránce **Konfigurace** si přečtěte informace, abyste ověřili, že pole pracovních prostorů **Azure**, **skupiny prostředků Azure**a **pracovního prostoru Operations Management Suite** jsou předem vyplněná, což značí, že aplikace Azure AD má ve skupině prostředků dostatečná oprávnění. Pokud jsou pole prázdná, znamená to, že vaše aplikace nemá požadovaná práva. Vyberte kolekce zařízení, které chcete shromáždit a předejte do pracovního prostoru, a pak vyberte **Přidat**.
 
 9. Zkontrolujte možnosti na stránce **Potvrdit nastavení** a vyberte **Další** a začněte vytvářet a konfigurovat připojení.
 
@@ -122,32 +122,32 @@ Po propojení Configuration Manager s Azure Monitor můžete přidat nebo odebra
 Pokud heslo nebo tajný klíč klienta vyprší nebo dojde ke ztrátě, budete muset ručně aktualizovat vlastnosti Log Analyticsho připojení.
 
 1. V pracovním prostoru **správa** Configuration Manager vyberte **Cloud Services** a pak výběrem možnosti **konektor OMS** otevřete stránku **vlastností připojení OMS** .
-2. Na této stránce klikněte na kartu **Azure Active Directory** pro zobrazení vašeho **tenanta**, **ID klienta**, **vypršení platnosti tajného klíče klienta**. **Ověřte** , jestli vypršela platnost **tajného klíče klienta** .
+2. Na této stránce klikněte na tlačítko **Azure Active Directory** kartu k zobrazení vašeho **Tenanta**, **ID klienta**, **klienta vypršení platnosti tajného klíče**. **Ověřte** vaše **tajného klíče klienta** Pokud vypršela platnost.
 
 ## <a name="import-collections"></a>Importovat kolekce
 
 Po přidání Log Analytics připojení k Configuration Manager a instalaci agenta do počítače, na kterém je spuštěná role systému lokality spojovacího bodu služby Configuration Manager, je dalším krokem import kolekcí z Configuration Manager v Azure. Monitorovat jako skupiny počítačů.
 
-Po dokončení počáteční konfigurace pro import kolekcí zařízení z vaší hierarchie se informace o kolekci načtou každé 3 hodiny, aby se členství zachovalo aktuální. Tuto možnost můžete kdykoli zakázat.
+Po dokončení počáteční konfigurace pro import kolekcí zařízení z vaší hierarchie se informace o kolekci načtou každé 3 hodiny, aby se členství zachovalo aktuální. Můžete to kdykoliv vypnout.
 
 1. Na webu Azure Portal klikněte v levém horním rohu na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
-2. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor Configuration Manager je zaregistrován v.  
+2. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor, který je zaregistrován nástroje Configuration Manager.  
 3. Vyberte **Upřesňující nastavení**.
 4. Vyberte **skupiny počítačů** a pak vyberte **SCCM**.  
-5. Vyberte **Import Configuration Manager členství v kolekcích** a pak klikněte na **Uložit**.  
+5. Vyberte **členství v kolekcích Configuration Manageru Import** a potom klikněte na tlačítko **Uložit**.  
    
-    ![Skupiny počítačů – karta SCCM](./media/collect-sccm/sccm-computer-groups01.png)
+    ![Skupiny počítačů – SCCM kartu](./media/collect-sccm/sccm-computer-groups01.png)
 
-## <a name="view-data-from-configuration-manager"></a>Zobrazit data z Configuration Manager
+## <a name="view-data-from-configuration-manager"></a>Zobrazení dat z nástroje Configuration Manager
 
-Po přidání Log Analytics připojení Configuration Manager a instalaci agenta do počítače se spuštěnou rolí systému lokality spojovacího bodu služby Configuration Manager služba se data z agenta odesílají do Log Analytics pracovního prostoru v Azure Monitor. V Azure Monitor se kolekce Configuration Manager zobrazí jako [skupiny počítačů](../../azure-monitor/platform/computer-groups.md). Skupiny můžete zobrazit na stránce **Configuration Manager** v části **skupiny Settings\Computer**.
+Po přidání Log Analytics připojení Configuration Manager a instalaci agenta do počítače se spuštěnou rolí systému lokality spojovacího bodu služby Configuration Manager služba se data z agenta odesílají do Log Analytics pracovního prostoru v Azure Monitor. V Azure Monitor se kolekce Configuration Manager zobrazí jako [skupiny počítačů](../../azure-monitor/platform/computer-groups.md). Můžete zobrazit skupiny z **nástroje Configuration Manager** stránky **Settings\Computer skupiny**.
 
-Po importu kolekcí můžete zjistit, kolik počítačů s členstvím v kolekci bylo zjištěno. Můžete také zobrazit počet importovaných kolekcí.
+Po importu kolekce se zobrazí, kolik počítačů s členstvím v kolekci byl zjištěn. Zobrazí se také počet kolekcí, které byly naimportovány.
 
-![Skupiny počítačů – karta SCCM](./media/collect-sccm/sccm-computer-groups02.png)
+![Skupiny počítačů – SCCM kartu](./media/collect-sccm/sccm-computer-groups02.png)
 
 Když kliknete na jeden, otevře se Editor dotazů protokolů, ve kterém se zobrazí všechny importované skupiny nebo všechny počítače, které patří do jednotlivých skupin. Pomocí [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md)můžete provádět podrobnější analýzu dat členství v kolekci.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí [prohledávání protokolu](../../azure-monitor/log-query/log-query-overview.md) můžete zobrazit podrobné informace o datech Configuration Manager.
+Použití [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) Chcete-li zobrazit podrobné informace týkající se vašich dat nástroje Configuration Manager.

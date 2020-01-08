@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
-ms.openlocfilehash: 809e40f6616e8ab022a31d8dd29d4a5386c5e844
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 288dcf828dd046ad69bc4f61b1837361ea600980
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838411"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75373348"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Vytvoření, změna nebo odstranění síťového rozhraní
 
@@ -33,7 +33,7 @@ Pokud potřebujete přidat, změnit nebo odebrat IP adresy pro síťové rozhran
 Před dokončením kroků v jakékoli části tohoto článku proveďte následující úlohy:
 
 - Pokud ještě nemáte účet Azure, zaregistrujte si [bezplatný zkušební účet](https://azure.microsoft.com/free).
-- Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí svého účtu Azure.
+- Pokud používáte portál, otevřete https://portal.azure.com a přihlaste se pomocí svého účtu Azure.
 - Pokud k dokončení úkolů v tomto článku používáte příkazy prostředí PowerShell, buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo spuštěním PowerShellu z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 1.0.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 - Pokud k dokončení úkolů v tomto článku používáte příkazy rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z počítače. Tento kurz vyžaduje Azure CLI verze 2.0.28 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, je také potřeba spustit `az login` a vytvořit připojení k Azure.
 
@@ -49,7 +49,7 @@ Při vytváření virtuálního počítače pomocí Azure Portal portál vytvoř
 
     |Nastavení|Povinné?|Podrobnosti|
     |---|---|---|
-    |Název|Ano|Název musí být jedinečný v rámci vybrané skupiny prostředků. V průběhu času pravděpodobně máte ve svém předplatném Azure několik síťových rozhraní. Návrhy při vytváření zásad vytváření názvů, které usnadňují správu několika síťových rozhraní, najdete v tématu zásady [vytváření názvů](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming). Po vytvoření síťového rozhraní se název nedá změnit.|
+    |Name (Název)|Ano|Název musí být jedinečný v rámci vybrané skupiny prostředků. V průběhu času pravděpodobně máte ve svém předplatném Azure několik síťových rozhraní. Návrhy při vytváření zásad vytváření názvů, které usnadňují správu několika síťových rozhraní, najdete v tématu zásady [vytváření názvů](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming). Po vytvoření síťového rozhraní se název nedá změnit.|
     |Virtuální síť|Ano|Vyberte virtuální síť pro síťové rozhraní. Síťové rozhraní můžete přiřadit jenom k virtuální síti, která existuje ve stejném předplatném a umístění jako síťové rozhraní. Po vytvoření síťového rozhraní nemůžete změnit virtuální síť, ke které je přiřazená. Virtuální počítač, ke kterému přidáte síťové rozhraní, musí existovat také ve stejném umístění a předplatném jako síťové rozhraní.|
     |Podsíť|Ano|Vyberte podsíť ve virtuální síti, kterou jste vybrali. Můžete změnit podsíť, ke které je síťové rozhraní přiřazeno po jeho vytvoření.|
     |Přiřazení privátní IP adresy|Ano| V tomto nastavení zvolíte způsob přiřazení pro adresu IPv4. Zvolte jednu z následujících metod přiřazení: **dynamická:** při výběru této možnosti Azure automaticky přiřadí další dostupnou adresu z adresního prostoru vybrané podsítě. **Statická:** Když vyberete tuto možnost, musíte ručně přiřadit dostupnou IP adresu z adresního prostoru vybrané podsítě. Statické a dynamické adresy se nemění, dokud je nezměníte nebo neodstraníte síťové rozhraní. Způsob přiřazení můžete změnit po vytvoření síťového rozhraní. Server DHCP Azure tuto adresu přiřadí síťovému rozhraní v operačním systému virtuálního počítače.|
@@ -67,7 +67,7 @@ Portál nenabízí možnost přiřazení síťového rozhraní ke skupinám zabe
 >[!Note]
 > Až se síťové rozhraní připojí k virtuálnímu počítači a virtuální počítač se spustí poprvé, Azure přiřadí adresu MAC k síťovému rozhraní. Nemůžete zadat adresu MAC, kterou Azure přiřadí k síťovému rozhraní. Adresa MAC zůstane přiřazená síťovému rozhraní, dokud se neodstraní síťové rozhraní nebo se nezmění privátní IP adresa přiřazená k primární konfiguraci IP rozhraní primárního síťového rozhraní. Další informace o IP adresách a konfiguracích IP adres najdete v tématu [Správa IP adres](virtual-network-network-interface-addresses.md) .
 
-**Příkaz**
+**Příkazy**
 
 |Nástroj|Příkaz|
 |---|---|
@@ -83,14 +83,14 @@ Po vytvoření můžete zobrazit a změnit většinu nastavení síťového rozh
 3. Pro síťové rozhraní, které jste vybrali, se zobrazí následující položky:
    - **Přehled:** Poskytuje informace o síťovém rozhraní, jako jsou například IP adresy, které jsou mu přiřazeny, virtuální síti/podsíti, ke které je síťové rozhraní přiřazeno, a virtuálnímu počítači, ke kterému je síťové rozhraní připojené (Pokud je připojené k jednomu). Následující obrázek ukazuje nastavení přehledu pro síťové rozhraní s názvem **mywebserver256**: přehled rozhraní ![sítě](./media/virtual-network-network-interface/nic-overview.png)
 
-     Síťové rozhraní můžete přesunout do jiné skupiny prostředků nebo předplatného tak, že vyberete (**změnit**) vedle položky název **skupiny prostředků** nebo **předplatného**. Pokud přesunete síťové rozhraní, musíte s ním přesunout všechny prostředky, které se vztahují k síťovému rozhraní. Pokud je síťové rozhraní připojené k virtuálnímu počítači, například musíte přesunout virtuální počítač a další prostředky související s virtuálním počítačem. Pokud chcete přesunout síťové rozhraní, přečtěte si téma [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json#use-the-portal). Článek obsahuje seznam požadovaných součástí a Postup přesunutí prostředků pomocí Azure Portal, PowerShellu a rozhraní příkazového řádku Azure CLI.
+     Síťové rozhraní můžete přesunout do jiné skupiny prostředků nebo předplatného tak, že vyberete (**změnit**) vedle položky název **skupiny prostředků** nebo **předplatného**. Pokud přesunete síťové rozhraní, musíte s ním přesunout všechny prostředky, které se vztahují k síťovému rozhraní. Pokud je síťové rozhraní připojené k virtuálnímu počítači, například musíte přesunout virtuální počítač a další prostředky související s virtuálním počítačem. Pokud chcete přesunout síťové rozhraní, přečtěte si téma [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fvirtual-network%2ftoc.json#use-the-portal). Článek obsahuje seznam požadovaných součástí a Postup přesunutí prostředků pomocí Azure Portal, PowerShellu a rozhraní příkazového řádku Azure CLI.
    - **Konfigurace protokolu IP:** Tady jsou uvedené veřejné a privátní IPv4 a IPv6 adresy přiřazené konfiguracím IP adres. Pokud je adresa IPv6 přiřazena ke konfiguraci protokolu IP, adresa se nezobrazí. Další informace o konfiguracích protokolu IP a způsobu přidání a odebrání IP adres najdete v tématu [Konfigurace IP adres pro síťové rozhraní Azure](virtual-network-network-interface-addresses.md). V této části jsou také konfigurovány předávání IP adres a přiřazování podsítí. Další informace o těchto nastaveních najdete v tématu [Povolení nebo zakázání předávání IP](#enable-or-disable-ip-forwarding) a [Změna přiřazení podsítě](#change-subnet-assignment).
    - **Servery DNS:** Můžete určit, který server DNS má síťové rozhraní přiřazené servery DHCP Azure. Síťové rozhraní může dědit nastavení z virtuální sítě, ke které je síťové rozhraní přiřazeno, nebo mít vlastní nastavení, které přepíše nastavení virtuální sítě, ke které je přiřazeno. Pokud chcete upravit zobrazené informace, přečtěte si téma [Změna serverů DNS](#change-dns-servers).
    - **Skupina zabezpečení sítě (NSG):** Zobrazuje, které NSG jsou přidružené k síťovému rozhraní (pokud existuje). NSG obsahuje pravidla příchozích a odchozích dat pro filtrování síťového provozu pro síťové rozhraní. Pokud je k síťovému rozhraní přidružená NSG, zobrazí se název přidruženého NSG. Pokud chcete upravit zobrazené informace, přečtěte si téma [přidružení nebo odrušení skupiny zabezpečení sítě](#associate-or-dissociate-a-network-security-group).
    - **Vlastnosti:** Zobrazí nastavení klíče síťového rozhraní, včetně jeho adresy MAC (prázdné, pokud síťové rozhraní není připojené k virtuálnímu počítači) a předplatné, ve kterém existuje.
    - **Platná pravidla zabezpečení:**  Pravidla zabezpečení jsou uvedena, pokud je síťové rozhraní připojené k běžícímu virtuálnímu počítači a NSG je přidružen k síťovému rozhraní, podsíti, ke které je přiřazen, nebo k oběma. Další informace o tom, co se zobrazuje, najdete v tématu [zobrazení efektivních pravidel zabezpečení](#view-effective-security-rules). Další informace o skupin zabezpečení sítě najdete v tématu [skupiny zabezpečení sítě](security-overview.md).
    - **Efektivní trasy:** Pokud je síťové rozhraní připojené k běžícímu virtuálnímu počítači, jsou uvedené trasy. Trasy jsou kombinací výchozích tras Azure, všech uživatelem definovaných tras a všech tras protokolu BGP, které mohou existovat pro podsíť, ke které je síťové rozhraní přiřazeno. Další informace o tom, co se zobrazuje, najdete v tématu [zobrazení efektivních tras](#view-effective-routes). Další informace o výchozích trasách Azure a uživatelem definovaných trasách najdete v tématu [Přehled směrování](virtual-networks-udr-overview.md).
-   - **Nastavení běžných Azure Resource Manager:**  Další informace o běžných nastaveních Azure Resource Manager najdete v tématu [Protokol aktivit](../azure-monitor/platform/activity-logs-overview.md), [řízení přístupu (IAM)](../role-based-access-control/overview.md), [značky](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [zámky](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)a [skript pro automatizaci](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
+   - **Nastavení běžných Azure Resource Manager:**  Další informace o běžných nastaveních Azure Resource Manager najdete v tématu [Protokol aktivit](../azure-monitor/platform/activity-logs-overview.md), [řízení přístupu (IAM)](../role-based-access-control/overview.md), [značky](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [zámky](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)a [skript pro automatizaci](../azure-resource-manager/templates/export-template-portal.md).
 
 <a name="view-settings-commands"></a>**Příkaz**
 
@@ -115,7 +115,7 @@ Server DNS je přiřazený serverem DHCP Azure pro síťové rozhraní v operač
      >Pokud virtuální počítač používá síťovou kartu, která je součástí skupiny dostupnosti, zdědí se všechny servery DNS, které jsou zadané pro každý z virtuálních počítačů ze všech síťových adaptérů, které jsou součástí skupiny dostupnosti.
 5. Vyberte **Uložit**.
 
-**Příkaz**
+**Příkazy**
 
 |Nástroj|Příkaz|
 |---|---|
@@ -136,7 +136,7 @@ Nastavení musí být povoleno pro každé síťové rozhraní, které je připo
 4. Chcete-li změnit nastavení, vyberte možnost **povoleno** nebo **zakázáno** (výchozí nastavení).
 5. Vyberte **Uložit**.
 
-**Příkaz**
+**Příkazy**
 
 |Nástroj|Příkaz|
 |---|---|
@@ -156,7 +156,7 @@ Můžete změnit podsíť, ale ne virtuální síť, ke které je přiřazeno s�
 4. Vyberte podsíť, do které chcete přesunout síťové rozhraní z rozevíracího seznamu **podsíť** .
 5. Vyberte **Uložit**. Nové dynamické adresy se přiřazují z rozsahu adres podsítě pro novou podsíť. Po přiřazení síťového rozhraní k nové podsíti můžete v případě, že zvolíte, přiřadit statickou IPv4 adresu z nového rozsahu adres podsítě. Další informace o přidání, změně a odebrání IP adres pro síťové rozhraní najdete v tématu [Správa IP adres](virtual-network-network-interface-addresses.md).
 
-**Příkaz**
+**Příkazy**
 
 |Nástroj|Příkaz|
 |---|---|
@@ -170,7 +170,7 @@ Síťové rozhraní můžete přidat do skupiny zabezpečení aplikace pomocí p
 1. V poli *Hledat prostředky, služby a dokumenty* v horní části portálu začněte zadávat název virtuálního počítače, který má síťové rozhraní, které chcete přidat, nebo odebrat ze skupiny zabezpečení aplikace. Jakmile se ve výsledcích hledání zobrazí název vašeho virtuálního počítače, vyberte ho.
 2. V části **NASTAVENÍ** vyberte **Sítě**.  Vyberte **Konfigurovat skupiny zabezpečení aplikací**, vyberte skupiny zabezpečení aplikace, do kterých chcete přidat síťové rozhraní, nebo zrušte výběr skupin zabezpečení aplikace, ze kterých chcete síťové rozhraní odebrat, a pak vyberte **Uložit**. Do stejné skupiny zabezpečení aplikace lze přidat pouze síťová rozhraní, která existují ve stejné virtuální síti. Skupina zabezpečení aplikace musí existovat ve stejném umístění jako síťové rozhraní.
 
-**Příkaz**
+**Příkazy**
 
 |Nástroj|Příkaz|
 |---|---|
@@ -186,7 +186,7 @@ Síťové rozhraní můžete přidat do skupiny zabezpečení aplikace pomocí p
 5. Vyberte **Skupina zabezpečení sítě** a potom vyberte skupinu zabezpečení sítě, kterou chcete přidružit k síťovému rozhraní, nebo vyberte možnost **žádné**, chcete-li oddělit skupinu zabezpečení sítě.
 6. Vyberte **Uložit**.
 
-**Příkaz**
+**Příkazy**
 
 - Azure CLI: [AZ Network nic Update](/cli/azure/network/nic#az-network-nic-update)
 - PowerShell: [set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)
@@ -202,7 +202,7 @@ Síťové rozhraní můžete odstranit, pokud není připojené k virtuálnímu 
 
 Po odstranění síťového rozhraní se uvolní všechny adresy MAC nebo IP, které jsou mu přiřazeny.
 
-**Příkaz**
+**Příkazy**
 
 |Nástroj|Příkaz|
 |---|---|
@@ -225,7 +225,7 @@ Platná pravidla zabezpečení pro každé síťové rozhraní připojené k vir
 
 Funkce ověření toku protokolu IP v Azure Network Watcher vám také pomůže určit, jestli pravidla zabezpečení zabraňují komunikaci mezi virtuálním počítačem a koncovým bodem. Další informace najdete v tématu [ověření toku protokolu IP](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-**Příkaz**
+**Příkazy**
 
 - Azure CLI: [AZ Network nic list-efektivní-NSG](/cli/azure/network/nic#az-network-nic-list-effective-nsg)
 - PowerShell: [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup)
@@ -242,7 +242,7 @@ Platné trasy pro síťová rozhraní připojená k virtuálnímu počítači js
 
 Funkce dalšího segmentu pro Azure Network Watcher vám také pomůže určit, jestli trasy brání komunikaci mezi virtuálním počítačem a koncovým bodem. Další informace najdete v tématu [Další segment směrování](../network-watcher/diagnose-vm-network-routing-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-**Příkaz**
+**Příkazy**
 
 - Azure CLI: [AZ Network nic show-efektivní-Route-Table](/cli/azure/network/nic#az-network-nic-show-effective-route-table)
 - PowerShell: [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)
@@ -251,21 +251,21 @@ Funkce dalšího segmentu pro Azure Network Watcher vám také pomůže určit, 
 
 Aby bylo možné provádět úlohy na síťových rozhraních, musí být váš účet přiřazen k roli [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) roli, která má přiřazená příslušná oprávnění uvedená v následující tabulce:
 
-| Akce                                                                     | Název                                                      |
+| Akce                                                                     | Name (Název)                                                      |
 | ---------                                                                  | -------------                                             |
-| Microsoft. Network/networkInterfaces/Read                                   | Získat síťové rozhraní                                     |
-| Microsoft. Network/networkInterfaces/Write                                  | Vytvořit nebo aktualizovat síťové rozhraní                        |
-| Microsoft. Network/networkInterfaces/JOIN/Action                            | Připojení síťového rozhraní k virtuálnímu počítači           |
-| Microsoft. Network/networkInterfaces/DELETE                                 | Odstranit síťové rozhraní                                  |
-| Microsoft. Network/networkInterfaces/joinViaPrivateIp/Action                | Připojit prostředek k síťovému rozhraní prostřednictvím serve...     |
-| Microsoft. Network/networkInterfaces/effectiveRouteTable/Action             | Získat efektivní směrovací tabulku síťového rozhraní               |
-| Microsoft. Network/networkInterfaces/effectiveNetworkSecurityGroups/Action  | Získání efektivních skupin zabezpečení síťového rozhraní           |
-| Microsoft. Network/networkInterfaces/loadBalancers/Read                     | Získat nástroje pro vyrovnávání zatížení síťového rozhraní                      |
-| Microsoft. Network/networkInterfaces/serviceAssociations/Read               | Získat přidružení služby                                   |
-| Microsoft. Network/networkInterfaces/serviceAssociations/Write              | Vytvořit nebo aktualizovat přidružení služby                    |
-| Microsoft. Network/networkInterfaces/serviceAssociations/DELETE             | Odstranit přidružení služby                                |
-| Microsoft. Network/networkInterfaces/serviceAssociations/Validate/Action    | Ověřit přidružení služby                              |
-| Microsoft. Network/networkInterfaces/IPConfiguration/Read                  | Získání konfigurace IP adresy síťového rozhraní                    |
+| Microsoft.Network/networkInterfaces/read                                   | Získat síťové rozhraní                                     |
+| Microsoft.Network/networkInterfaces/write                                  | Vytvořit nebo aktualizovat síťové rozhraní                        |
+| Microsoft.Network/networkInterfaces/join/action                            | Připojení síťového rozhraní k virtuálnímu počítači           |
+| Microsoft.Network/networkInterfaces/delete                                 | Odstranit síťové rozhraní                                  |
+| Microsoft.Network/networkInterfaces/joinViaPrivateIp/action                | Připojit prostředek k síťovému rozhraní prostřednictvím serve...     |
+| Microsoft.Network/networkInterfaces/effectiveRouteTable/action             | Získat efektivní směrovací tabulku síťového rozhraní               |
+| Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action  | Získání efektivních skupin zabezpečení síťového rozhraní           |
+| Microsoft.Network/networkInterfaces/loadBalancers/read                     | Získat nástroje pro vyrovnávání zatížení síťového rozhraní                      |
+| Microsoft.Network/networkInterfaces/serviceAssociations/read               | Získat přidružení služby                                   |
+| Microsoft.Network/networkInterfaces/serviceAssociations/write              | Vytvořit nebo aktualizovat přidružení služby                    |
+| Microsoft.Network/networkInterfaces/serviceAssociations/delete             | Odstranit přidružení služby                                |
+| Microsoft.Network/networkInterfaces/serviceAssociations/validate/action    | Ověřit přidružení služby                              |
+| Microsoft.Network/networkInterfaces/ipconfigurations/read                  | Získání konfigurace IP adresy síťového rozhraní                    |
 
 ## <a name="next-steps"></a>Další kroky
 

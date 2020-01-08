@@ -1,5 +1,6 @@
 ---
-title: Ukázkový skript Azure CLI – práce s klíčovými hodnotami v úložišti konfigurace aplikace Azure | Microsoft Docs
+title: Ukázkový skript Azure CLI – práce s klíčovými hodnotami v App Configuration Storu
+titleSuffix: Azure App Configuration
 description: Poskytuje informace o práci s klíčovými hodnotami v úložišti konfigurace aplikace Azure.
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 11/08/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 51697aa426a638ad536390c4114df5faa18a41ef
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 366485c8c735af5689e1b2c2e63eb192218f5ce0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184875"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433580"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Práce s klíčovými hodnotami v úložišti konfigurace aplikace Azure
 
@@ -86,7 +87,7 @@ az appconfig kv list --name $appConfigName
 
 Tento skript používá následující příkazy pro práci s klíčovými hodnotami v úložišti konfigurace aplikace. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [AZ appconfig KV set](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-set) | Vytvoří nebo aktualizuje klíčovou hodnotu. |
 | [AZ appconfig KV list](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-list) | Uvádí klíčové hodnoty v úložišti konfigurace aplikace. |

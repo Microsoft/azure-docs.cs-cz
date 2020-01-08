@@ -11,12 +11,12 @@ ms.date: 11/27/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 82270c126d8a0894cd3a388dcab62017ed63c2cd
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: cd1d57643f9a1eb7c50d0de06d42fbbcec085f34
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974644"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458777"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>Izolace skupiny úloh SQL Data Warehouse (Preview)
 
@@ -32,18 +32,18 @@ V následujících částech se dozvíte, jak skupiny úloh poskytují možnost 
 
 Izolace úloh znamená, že prostředky jsou rezervované, výhradně pro skupinu úloh.  Izolaci úloh se dosahuje tak, že v syntaxi [vytvořit skupinu úloh](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) nakonfigurujete parametr MIN_PERCENTAGE_RESOURCE na hodnotu větší než nula.  Pro úlohy průběžného spouštění, které musí dodržovat těsné SLA, izolace zajišťuje, aby prostředky byly vždy dostupné pro skupinu úloh. 
 
-Konfigurace izolace úloh implicitně definuje zaručenou úroveň souběžnosti.  Když je MIN_PERCENTAGE_RESOURCE nastavená na 30% a REQUEST_MIN_RESOURCE_GRANT_PERCENT nastavená na 2%, bude pro skupinu úloh zaručená úroveň pro 15-Concurrency.  Pro určení garantované souběžnosti zvažte následující metodu:
+Konfigurace izolace úloh implicitně definuje zaručenou úroveň souběžnosti. Když je MIN_PERCENTAGE_RESOURCE nastavená na 30% a REQUEST_MIN_RESOURCE_GRANT_PERCENT nastavená na 2%, bude pro skupinu úloh zaručená úroveň pro 15-Concurrency.  Pro určení garantované souběžnosti zvažte následující metodu:
 
 [Garantovaná souběžnost] = [`MIN_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 
 > [!NOTE] 
-> Pro min_percentage_resource existuje určitá minimální hodnota životaschopnosti úrovně služby.  Další informace najdete v tématu [efektivní hodnoty](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest#effective-values) pro další podrobnosti.
+> Pro min_percentage_resource existuje určitá minimální hodnota životaschopnosti úrovně služby.  Další informace najdete v tématu [efektivní hodnoty](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest#effective-values) pro další podrobnosti.
 
 V případě neexistence izolace úloh fungují požadavky ve [sdíleném fondu](#shared-pool-resources) prostředků.  Přístup k prostředkům ve sdíleném fondu není zaručen a je přiřazen na základě [důležitosti](sql-data-warehouse-workload-importance.md) .
 
-Konfigurace izolace úloh se musí provádět opatrně, protože prostředky jsou přiděleny do skupiny úloh i v případě, že ve skupině úloh nejsou žádné aktivní požadavky.  Překonfigurování izolace může vést k výraznému snížení celkového využití systému.
+Konfigurace izolace úloh se musí provádět opatrně, protože prostředky jsou přiděleny do skupiny úloh i v případě, že ve skupině úloh nejsou žádné aktivní požadavky. Překonfigurování izolace může vést k výraznému snížení celkového využití systému.
 
-Uživatelé by se měli vyhnout řešení správy úloh, které konfiguruje 100% izolaci úloh: 100% izolace se dosáhne, když se součet min_percentage_resource nakonfigurovaných napříč všemi skupinami úloh 100 rovná%.  Tento typ konfigurace je nadomezující a tuhý, ale u žádostí o prostředky, které jsou omylem neklasifikované, je málo místa.  Existuje zřídit, aby bylo možné spustit jednu žádost ze skupin úloh, které nejsou nakonfigurované pro izolaci.  Prostředky přidělené této žádosti se v systémech zobrazení dynamické správy a vypůjčí smallrc úroveň udělení prostředků ze systémových rezervovaných prostředků.
+Uživatelé by se měli vyhnout řešení správy úloh, které konfiguruje 100% izolaci úloh: 100% izolace se dosáhne, když se součet min_percentage_resource nakonfigurovaných napříč všemi skupinami úloh 100 rovná%.  Tento typ konfigurace je nadomezující a tuhý, ale u žádostí o prostředky, které jsou omylem neklasifikované, je málo místa. Existuje zřídit, aby bylo možné spustit jednu žádost ze skupin úloh, které nejsou nakonfigurované pro izolaci. Prostředky přidělené této žádosti se v systémech zobrazení dynamické správy a vypůjčí smallrc úroveň udělení prostředků ze systémových rezervovaných prostředků.
 
 > [!NOTE] 
 > Pro zajištění optimálního využití prostředků zvažte řešení pro správu úloh, které využívá určitou izolaci, aby se zajistilo, že SLA jsou splněné a smíchány se sdílenými prostředky, ke kterým se dostanete na základě [důležitosti úloh](sql-data-warehouse-workload-importance.md).
@@ -57,7 +57,7 @@ Konfigurace omezení úloh implicitně definuje maximální úroveň souběžnos
 [Max. Concurrency] = [`CAP_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 
 > [!NOTE] 
-> Pokud se vytvoří skupiny úloh s MIN_PERCENTAGE_RESOURCE na úrovni větší než nula, bude efektivní CAP_PERCENTAGE_RESOURCE skupiny úloh nedosahovat 100%.  Platné hodnoty modulu runtime najdete v tématu [Sys. dm_workload_management_workload_groups_stats](https://review.docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) .
+> Pokud se vytvoří skupiny úloh s MIN_PERCENTAGE_RESOURCE na úrovni větší než nula, bude efektivní CAP_PERCENTAGE_RESOURCE skupiny úloh nedosahovat 100%.  Platné hodnoty modulu runtime najdete v tématu [Sys. dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) .
 
 ## <a name="resources-per-request-definition"></a>Definice prostředků na žádost
 
@@ -71,7 +71,7 @@ Podobně jako při volbě třídy prostředku konfigurace REQUEST_MIN_RESOURCE_G
 Konfigurace REQUEST_MAX_RESOURCE_GRANT_PERCENT na hodnotu větší než REQUEST_MIN_RESOURCE_GRANT_PERCENT umožňuje systému přidělit více prostředků na požadavek.  Při plánování požadavku systém Určuje skutečné přidělení prostředků žádosti, která je mezi REQUEST_MIN_RESOURCE_GRANT_PERCENT a REQUEST_MAX_RESOURCE_GRANT_PERCENT, na základě dostupnosti prostředků ve sdíleném fondu a současného zatížení souborů.  Prostředky musí existovat ve [sdíleném fondu](#shared-pool-resources) prostředků, když je dotaz naplánován.  
 
 > [!NOTE] 
-> REQUEST_MIN_RESOURCE_GRANT_PERCENT a REQUEST_MAX_RESOURCE_GRANT_PERCENT mají platné hodnoty, které jsou závislé na platných MIN_PERCENTAGE_RESOURCE a CAP_PERCENTAGE_RESOURCEch hodnotách.  Platné hodnoty modulu runtime najdete v tématu [Sys. dm_workload_management_workload_groups_stats](https://review.docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) .
+> REQUEST_MIN_RESOURCE_GRANT_PERCENT a REQUEST_MAX_RESOURCE_GRANT_PERCENT mají platné hodnoty, které jsou závislé na platných MIN_PERCENTAGE_RESOURCE a CAP_PERCENTAGE_RESOURCEch hodnotách.  Platné hodnoty modulu runtime najdete v tématu [Sys. dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) .
 
 ## <a name="execution-rules"></a>Pravidla spuštění
 

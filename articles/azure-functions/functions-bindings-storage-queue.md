@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 3e72bd366cdbba1d73bc05f98d3848e2d4f0ca6c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5164e47c9c93653bfcd01093c01142b69c0bd57f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925332"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433252"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Vazby úložiště front Azure pro Azure Functions
 
@@ -336,7 +336,18 @@ Pokud chcete zpracovat poškozené zprávy ručně, podívejte se do [dequeueCou
 
 ## <a name="trigger---polling-algorithm"></a>Aktivační událost – algoritmus cyklického dotazování
 
-Aktivační událost fronty implementuje náhodný exponenciální algoritmus pro snížení účinku nečinnosti při cyklickém dotazování na poplatky za transakce úložiště.  Když se najde zpráva, modul runtime počká dvě sekundy a pak zkontroluje další zprávu. Pokud se nenajde žádná zpráva, před opakováním počkejte přibližně čtyři sekundy. Po následném neúspěšném pokusu o získání zprávy fronty se doba čekání zvětšuje, dokud nedosáhne maximální čekací doby, která je ve výchozím nastavení jedna minuta. Maximální čekací dobu lze konfigurovat prostřednictvím vlastnosti `maxPollingInterval` v [souboru Host. JSON](functions-host-json.md#queues).
+Aktivační událost fronty implementuje náhodný exponenciální algoritmus pro snížení účinku nečinnosti při cyklickém dotazování na poplatky za transakce úložiště.
+
+Algoritmus používá následující logiku:
+
+- Když se najde zpráva, modul runtime počká dvě sekundy a pak zkontroluje další zprávu.
+- Pokud se nenajde žádná zpráva, před opakováním počkejte přibližně čtyři sekundy.
+- Po následném neúspěšném pokusu o získání zprávy fronty se doba čekání zvětšuje, dokud nedosáhne maximální čekací doby, která je ve výchozím nastavení jedna minuta.
+- Maximální čekací dobu lze konfigurovat prostřednictvím vlastnosti `maxPollingInterval` v [souboru Host. JSON](functions-host-json.md#queues).
+
+Pro místní vývoj je maximální interval cyklického dotazování ve výchozím nastavení na dvě sekundy.
+
+V souvislosti s fakturací je čas strávený při cyklickém dotazování modulem runtime "Free" a nepočítá se s vaším účtem.
 
 ## <a name="trigger---concurrency"></a>Aktivační procedura – souběžnost
 

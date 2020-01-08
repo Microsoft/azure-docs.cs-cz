@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 1408faf09ef8950fb0d86f8a036269da2963e3d4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b6a8b0664cb205a7c3cbdb72f41433b145b02d00
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072842"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448773"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Kurz: získání návrhů vyhledávání na webové stránce
 
@@ -37,7 +37,7 @@ Otevřete textový editor. Vytvořte nový soubor s názvem například autosugg
 
 ## <a name="html-header"></a>Hlavička HTML
 
-Přidejte informace hlavičky HTML a začněte oddíl script tak, jak vidíte na následujícím obrázku.
+Přidejte informace hlavičky HTML a začněte část se skriptem tak, jak vidíte na následujícím obrázku.
 
 ```html
 <!DOCTYPE html>
@@ -184,7 +184,7 @@ Přijímá dva parametry: obsah pole ve formuláři HTML a klíč rozhraní API 
 function bingAutosuggest(query, key) {
 ```
 
-Zadejte koncový bod rozhraní API pro automatické návrhy Bingu a deklarujte objekt XMLHttpRequest, který budeme používat k odesílání požadavků na koncový bod.
+Zadejte rozhraní API pro automatické návrhy Bingu koncový bod a deklarujte objekt XMLHttpRequest, který použijeme k odeslání požadavků. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
 ```html
     var endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/Suggestions";

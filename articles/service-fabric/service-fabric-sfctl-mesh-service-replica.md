@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – služba sítě sfctl – replika | Microsoft Docs
-description: Popisuje příkazy Service Fabric CLI sfctl sítě – repliky.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – služba sítě sfctl – replika
+description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro získání podrobností o replice pro prostředky aplikace.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: e8eaa5fd7c9eeeff3f70a949b04d0fbf5f6c388f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 219a691dd1b74ec2214c156018e6e3f62366f523
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901176"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645323"
 ---
 # <a name="sfctl-mesh-service-replica"></a>sfctl mesh service-replica
 Získá podrobnosti o replice a vypíše repliky dané služby v prostředku aplikace.

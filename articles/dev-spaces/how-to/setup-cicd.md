@@ -6,14 +6,14 @@ ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: conceptual
 manager: gwallace
-description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
+description: Přečtěte si, jak nastavit průběžnou integraci a průběžné nasazování pomocí Azure DevOps s využitím Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
-ms.openlocfilehash: 525e18cba48756e725cbc7d837c2352b0fec74fe
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 66ff2080ad44098757a5d9360fd3307e65f7431a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280027"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438450"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Použití CI/CD s Azure Dev Spaces
 
@@ -93,13 +93,13 @@ Teď máte řešení CI, které bude automaticky vytvářet *mywebapi* a *webend
 1. Pokud pracujete v rámci zcela nového projektu DevOps, který zatím neobsahuje definici vydané verze, před pokračováním musíte nejprve vytvořit prázdnou definici vydané verze. Možnost importu se v uživatelském rozhraní nezobrazí, dokud nebudete mít existující definici verze.
 1. Na levé straně klikněte na tlačítko **+ Nový** a pak klikněte na **importovat kanál**.
 1. Klikněte na **Procházet** a vyberte `samples/release.json` z projektu.
-1. Klikněte na tlačítko **OK**. Všimněte si, že podokno kanálu se načetlo pomocí stránky pro úpravu definice verze. Všimněte si také, že jsou k dispozici červeně výstražné ikony indikující konkrétní informace o clusteru, které je nutné nakonfigurovat.
+1. Klikněte na **OK**. Všimněte si, že podokno kanálu se načetlo pomocí stránky pro úpravu definice verze. Všimněte si také, že jsou k dispozici červeně výstražné ikony indikující konkrétní informace o clusteru, které je nutné nakonfigurovat.
 1. Vlevo od podokna kanálu klikněte na bublinu přidat bublinu **artefaktu** .
 1. V rozevíracím seznamu **zdroj** vyberte kanál sestavení, který jste vytvořili dříve.
 1. U **výchozí verze**vyberte možnost **nejnovější z výchozí větve kanálu sestavení s značkami**.
 1. Nechejte **značky** prázdné.
 1. Nastavte **alias zdroje** na `drop`. Hodnota **zdrojového aliasu** se používá v předdefinovaných úlohách vydaných verzí, takže je nutné ji nastavit.
-1. Klikněte na **Přidat**.
+1. Klikněte na tlačítko **Add** (Přidat).
 1. Nyní klikněte na ikonu blesku na nově vytvořeném zdroji artefaktu `drop`, jak je znázorněno níže:
 
     ![Nastavení průběžného nasazování artefaktů verzí](../media/common/release-artifact-cd-setup.png)

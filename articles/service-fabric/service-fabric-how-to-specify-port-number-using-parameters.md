@@ -1,39 +1,32 @@
 ---
-title: Jak zadat číslo portu služby pomocí parametrů v Azure Service Fabric | Dokumentace Microsoftu
-description: Ukazuje, jak pomocí parametrů můžete zadat port pro aplikace v Service Fabric
-documentationcenter: .net
+title: Určení čísla portu služby pomocí parametrů
+description: Ukazuje, jak pomocí parametrů zadat port pro aplikaci v Service Fabric
 author: mikkelhegn
-manager: markfuss
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: d69e02126564388bf045693b9960e6e574307641
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a53626b8fd362397ba89df30b099fa3c9ff7b0a2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60720242"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609855"
 ---
-# <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>Jak zadat číslo portu služby v Service Fabric pomocí parametrů
+# <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>Jak zadat číslo portu služby pomocí parametrů v Service Fabric
 
-Tento článek ukazuje, jak zadat číslo portu služby pomocí parametrů v Service Fabric pomocí sady Visual Studio.
+V tomto článku se dozvíte, jak zadat číslo portu služby pomocí parametrů v Service Fabric pomocí sady Visual Studio.
 
-## <a name="procedure-for-specifying-the-port-number-of-a-service-using-parameters"></a>Postup pro zadání číslo portu služby pomocí parametrů
+## <a name="procedure-for-specifying-the-port-number-of-a-service-using-parameters"></a>Postup určení čísla portu služby pomocí parametrů
 
-V tomto příkladu nastavíte číslo portu pro asp.net core webového rozhraní API pomocí parametru.
+V tomto příkladu nastavíte číslo portu webového rozhraní API asp.net Core pomocí parametru.
 
-1. Otevřít Visual Studio a vytvořte novou aplikaci Service Fabric.
-1. Výběr šablony Bezstavová služba ASP.NET Core.
-1. Zvolte webového rozhraní API.
-1. Otevřete soubor ServiceManifest.xml.
-1. Poznamenejte si název koncového bodu určeného pro vaši službu. Výchozí hodnota je `ServiceEndpoint`.
-1. Otevřete soubor ApplicationManifest.xml
-1. V `ServiceManifestImport` prvku, přidejte novou `RessourceOverrides` element s odkazem na koncový bod v souboru ServiceManifest.xml.
+1. Otevřete Visual Studio a vytvořte novou Service Fabric aplikaci.
+1. Vyberte šablonu nestavové ASP.NET Core.
+1. Vyberte webové rozhraní API.
+1. Otevřete soubor ServiceManifest. XML.
+1. Poznamenejte si název koncového bodu určeného pro vaši službu. Výchozí je `ServiceEndpoint`.
+1. Otevřete soubor souboru ApplicationManifest. XML.
+1. V elementu `ServiceManifestImport` přidejte nový prvek `RessourceOverrides` s odkazem na koncový bod v souboru ServiceManifest. XML.
 
     ```xml
       <ServiceManifestImport>
@@ -47,7 +40,7 @@ V tomto příkladu nastavíte číslo portu pro asp.net core webového rozhraní
       </ServiceManifestImport>
     ```
 
-1. V `Endpoint` elementu, je nyní přepsat všechny atributy, pomocí parametru. V tomto příkladu zadáte `Port` a nastavte ho na název parametru pomocí hranatých závorek – například `[MyWebAPI_PortNumber]`
+1. V elementu `Endpoint` nyní můžete přepsat libovolný atribut pomocí parametru. V tomto příkladu zadáte `Port` a nastavíte ho na název parametru pomocí hranatých závorek – například `[MyWebAPI_PortNumber]`
 
     ```xml
       <ServiceManifestImport>
@@ -61,7 +54,7 @@ V tomto příkladu nastavíte číslo portu pro asp.net core webového rozhraní
       </ServiceManifestImport>
     ```
 
-1. Stále v souboru ApplicationManifest.xml potom zadáte parametr do `Parameters` – element
+1. Pořád v souboru souboru ApplicationManifest. XML určíte parametr v elementu `Parameters`
 
     ```xml
       <Parameters>
@@ -77,8 +70,8 @@ V tomto příkladu nastavíte číslo portu pro asp.net core webového rozhraní
       </Parameters>
     ```
 
-1. Otevřete složku ApplicationParameters a `Cloud.xml` souboru
-1. Zadejte jiný port pro použití při publikování do vzdáleného clusteru, přidejte parametr číslo portu do tohoto souboru.
+1. Otevřete složku ApplicationParameters a soubor `Cloud.xml`
+1. Pokud chcete zadat jiný port, který se má použít při publikování do vzdáleného clusteru, přidejte do tohoto souboru parametr s číslem portu.
 
     ```xml
       <Parameters>
@@ -86,9 +79,9 @@ V tomto příkladu nastavíte číslo portu pro asp.net core webového rozhraní
       </Parameters>
     ```
 
-Při publikování aplikace ze sady Visual Studio pomocí Cloud.xml profil publikování, vaše služba je nakonfigurovaná pro používání portu 80. Při nasazení aplikace bez zadání parametru MyWebAPI_PortNumber, služba používá port 8080.
+Při publikování aplikace ze sady Visual Studio pomocí publikačního profilu Cloud. XML je vaše služba nakonfigurovaná tak, aby používala port 80. Pokud nasadíte aplikaci bez zadání parametru MyWebAPI_PortNumber, služba používá port 8080.
 
-## <a name="next-steps"></a>Další postup
-Další informace o některých klíčových konceptech, které jsou popsané v tomto článku najdete v tématu [Správa aplikací pro více prostředí článků](service-fabric-manage-multiple-environment-app-configuration.md).
+## <a name="next-steps"></a>Další kroky
+Další informace o některých základních konceptech, které jsou popsány v tomto článku, najdete v [článcích o správě aplikací pro více prostředí](service-fabric-manage-multiple-environment-app-configuration.md).
 
-Informace o dalších možnostech správy aplikací, které jsou k dispozici v sadě Visual Studio najdete v tématu [Správa aplikací Service Fabric v sadě Visual Studio](service-fabric-manage-application-in-visual-studio.md).
+Informace o dalších možnostech správy aplikací, které jsou k dispozici v sadě Visual Studio, najdete v tématu [Správa aplikací Service Fabric v sadě Visual Studio](service-fabric-manage-application-in-visual-studio.md).

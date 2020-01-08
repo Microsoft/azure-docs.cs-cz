@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2019
 ms.author: barclayn
-ms.openlocfilehash: fc3c7ea2f0060fc6ab20fa821c9e45d6e5173d4f
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: da8dfe61e92c4839deb1f7fbc289be0136087720
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795805"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497296"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Šifrování dat Azure – v klidovém případě
 
@@ -127,7 +127,7 @@ Každé šifrování na straně serveru v modelech REST zahrnuje různé charakt
 
 U mnoha zákazníků je základním požadavkem zajistit, aby data byla zašifrována, kdykoli jsou v klidovém stavu. Šifrování na straně serveru pomocí klíčů spravovaných službou umožňuje tomuto modelu povolit zákazníkům označit konkrétní prostředek (účet úložiště, databázi SQL atd.) pro šifrování a ponechat všechny aspekty správy klíčů, jako je vystavování klíčů, rotace a zálohování do Microsoftu. . Většina služeb Azure, které podporují šifrování v klidovém umístění, obvykle podporuje tento model přesměrování správy šifrovacích klíčů do Azure. Poskytovatel prostředků Azure vytvoří klíče, umístí je do zabezpečeného úložiště a v případě potřeby je načte. To znamená, že služba má úplný přístup ke klíčům a služba má plnou kontrolu nad správou životního cyklu přihlašovacích údajů.
 
-![starosti](./media/encryption-atrest/azure-security-encryption-atrest-fig4.png)
+![spravovaná](./media/encryption-atrest/azure-security-encryption-atrest-fig4.png)
 
 Šifrování na straně serveru pomocí klíčů spravovaných službou proto rychle řeší nutnost šifrování v klidovém provozu s nízkou režií zákazníkovi. Pokud je k dispozici zákazník, obvykle otevře Azure Portal pro cílového předplatného a poskytovatele prostředků a zkontroluje box s označením, že chcete data šifrovat. V některých správců prostředků je šifrování na straně serveru s klíči spravovanými službami ve výchozím nastavení zapnuté.
 
@@ -248,7 +248,7 @@ Všechny Azure Storage služby (úložiště objektů blob, úložiště front, 
 - Na straně serveru: všechny Azure Storage služby umožňují ve výchozím nastavení šifrování na straně serveru pomocí klíčů spravovaných službou, které jsou pro aplikaci transparentní. Další informace najdete v tématu [šifrování služby Azure Storage pro](../../storage/common/storage-service-encryption.md)neaktivní neaktivní data. Azure Blob Storage a soubory Azure podporují také RSA 2048 klíče spravované zákazníkem v Azure Key Vault. Další informace najdete v tématu [šifrování služby Storage používání klíčů spravovaných zákazníkem v Azure Key Vault](../../storage/common/storage-encryption-keys-portal.md).
 - Klientská strana: objekty blob, tabulky a fronty Azure podporují šifrování na straně klienta. Při použití šifrování na straně klienta zašifrují zákazníci data a odesílají data jako zašifrovaný objekt BLOB. Správu klíčů provádí zákazník. Další informace najdete v tématu [šifrování na straně klienta a Azure Key Vault pro Microsoft Azure Storage](../../storage/common/storage-client-side-encryption.md).
 
-#### <a name="azure-sql-database"></a>Azure SQL Database
+#### <a name="azure-sql-database"></a>Databáze SQL Azure
 
 Azure SQL Database aktuálně podporuje šifrování v klidovém provozu pro scénáře pro šifrování na straně služby spravované Microsoftem a na straně klienta.
 
@@ -262,50 +262,50 @@ Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím f
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **Na straně serveru pomocí klíče spravovaného službou**     | **Na straně serveru pomocí klíče spravovaného zákazníkem**             | **Klientská strana s použitím klíče spravovaného klientem**      |
 | **AI a Machine Learning**      |                    |                    |                    |
-| Kognitivní hledání Azure                     | Ano                | Preview            | -                  |
+| Kognitivní hledání v Azure                     | Ano                | Preview            | -                  |
 | Azure Machine Learning   | Ano                | -                  | -                  |
 | Azure Machine Learning Studio    | Ano                | Verze Preview, RSA 2048-bit | -               |
 | Power BI                         | Ano                | Verze Preview, RSA 2048-bit | -                  |
-| **Analýza**                    |                    |                    |                    |
+| **Analýzy**                    |                    |                    |                    |
 | Azure Stream Analytics           | Ano                | -                  | -                  |
 | Event Hubs                       | Ano                | Preview, všechny délky RSA. | -                  |
 | Azure Analysis Services          | Ano                | -                  | -                  |
-| Azure Data Catalog               | Ano                | -                  | -                  |
+| Katalog dat Azure               | Ano                | -                  | -                  |
 | Apache Kafka ve službě Azure HDInsight  | Ano                | Všechny délky RSA.   | -                  |
 | Průzkumník dat Azure              | Ano                | -                  | -                  |
 | Azure Data Factory               | Ano                | Ano                | -                  |
 | Azure Data Lake Store            | Ano                | Ano, RSA 2048-bit  | -                  |
-| **Kontejnery**                   |                    |                    |                    |
+| **Containers**                   |                    |                    |                    |
 | Azure Kubernetes Service         | Ano                | -                  | -                  |
 | Container Registry               | Ano                | -                  | -                  |
 | **Compute**                      |                    |                    |                    |
-| Virtuální počítače                 | Ano                | Ano, RSA 2048-bit  | -                  |
+| Služba Virtual Machines                 | Ano                | Ano, RSA 2048-bit  | -                  |
 | Sada škálování virtuálních počítačů        | Ano                | Ano, RSA 2048-bit  | -                  |
 | SAP HANA                         | Ano                | Ano, RSA 2048-bit  | -                  |
 | **Databáze**                    |                    |                    |                    |
 | SQL Server na virtuálních počítačích   | Ano                | Ano, RSA 2048-bit  | Ano                |
-| Azure SQL Database               | Ano                | Ano, RSA 2048-bit  | Ano                |
+| Databáze SQL Azure               | Ano                | Ano, RSA 2048-bit  | Ano                |
 | Azure SQL Database pro MariaDB   | Ano                | -                  | -                  |
 | Azure SQL Database pro MySQL     | Ano                | -                  | -                  |
 | Azure SQL Database pro PostgreSQL | Ano                | -                  | -                  |
 | Azure SQL Data Warehouse         | Ano                | Ano, RSA 2048-bit  | Ano                |
 | SQL Server Stretch Database      | Ano                | Ano, RSA 2048-bit  | Ano                |
 | Table Storage                    | Ano                | -                  | Ano                |
-| Databáze Azure Cosmos                  | Ano                | -                  | -                  |
+| Azure Cosmos DB                  | Ano                | -                  | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps                     | Ano                | -                  | Ano                |
 | Azure Repos                      | Ano                | -                  | Ano                |
 | **Identita**                     |                    |                    |                    |
 | Azure Active Directory           | Ano                | -                  | -                  |
 | Azure Active Directory Domain Services | Ano          | Ano, RSA 2048-bit  | -                  |
-| **Spolupráci**                  |                    |                    |                    |
+| **Integrace**                  |                    |                    |                    |
 | Service Bus                      | Ano                | -                  | Ano                |
 | Event Grid                       | Ano                | -                  | -                  |
 | API Management                   | Ano                | -                  | -                  |
 | **Služby IoT**                 |                    |                    |                    |
 | Centrum IoT                          | Ano                | -                  | Ano                |
 | **Správa a zásady správného řízení**    |                    |                    |                    |
-| Azure Site Recovery              | Ano                | Ano, RSA 2048-bit  | Ano                |
+| Azure Site Recovery              | Ano                | -                  | -                  |
 | **Média**                        |                    |                    |                    |
 | Media Services                   | Ano                | -                  | Ano                |
 | **Storage**                      |                    |                    |                    |

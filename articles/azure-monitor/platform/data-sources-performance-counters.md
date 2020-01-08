@@ -4,15 +4,15 @@ description: Čítače výkonu jsou shromažďovány nástrojem Azure Monitor k 
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: d007d3dab1625d58a561d35bb111923fbdeb3482
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 624996c86423bf486111fde8743117ea888862e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932441"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363825"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Zdroje dat o výkonu pro Windows a Linux v Azure Monitor
 Čítače výkonu ve Windows a Linux poskytují přehled o výkonu hardwarových komponent, operačních systémů a aplikací.  Azure Monitor může shromažďovat čítače výkonu v častých intervalech pro analýzu téměř v reálném čase (NRT) Kromě agregace dat výkonu pro dlouhodobé analýzy a generování sestav.
@@ -46,13 +46,13 @@ Pomocí tohoto postupu můžete přidat nový čítač výkonu systému Windows,
 3. Když přidáte čítač, použije se výchozí hodnota 10 sekund pro svůj **interval vzorkování**.  Pokud chcete snížit požadavky na úložiště shromážděných dat o výkonu, můžete to změnit na vyšší hodnotu až na 1800 sekund (30 minut).
 4. Až budete s přidáváním čítačů hotovi, kliknutím na tlačítko **Uložit** v horní části obrazovky uložte konfiguraci.
 
-### <a name="linux-performance-counters"></a>Čítače výkonu pro Linux
+### <a name="linux-performance-counters"></a>Čítače výkonu Linuxu
 
 ![Konfigurace čítačů výkonu systému Linux](media/data-sources-performance-counters/configure-linux.png)
 
 Pomocí tohoto postupu můžete přidat nový čítač výkonu pro Linux, který se má shromáždit.
 
-1. Ve výchozím nastavení jsou všechny změny konfigurace automaticky vloženy do všech agentů.  Pro agenty Linux se konfigurační soubor pošle do Fluent sběrače dat.  Pokud chcete tento soubor upravit ručně u každého agenta pro Linux, zrušte jeho zaškrtávací políčko u *počítačů se systémem Linux níže uvedená konfigurace* a postupujte podle pokynů níže.
+1. Standardně jsou všechny změny konfigurace automaticky nahrány do všech agentů.  Pro agenty Linux se konfigurační soubor pošle do Fluent sběrače dat.  Pokud chcete tento soubor upravit ručně u každého agenta pro Linux, zrušte jeho zaškrtávací políčko u *počítačů se systémem Linux níže uvedená konfigurace* a postupujte podle pokynů níže.
 2. Do textového pole ve formátu *objekt (instance) \counter*zadejte název čítače.  Když začnete psát, zobrazí se seznam s vyhovujícími společnými čítači.  Můžete buď vybrat čítač ze seznamu, nebo zadat jednu z nich.  
 3. Klikněte na **+** nebo stiskněte klávesu **ENTER** , chcete-li přidat čítač do seznamu dalších čítačů pro daný objekt.
 4. Všechny čítače pro objekt používají stejný **interval vzorkování**.  Výchozí hodnota je 10 sekund.  Pokud chcete snížit požadavky na úložiště shromážděných dat výkonu, změňte tuto hodnotu na vyšší hodnotu až na 1800 sekund (30 minut).
@@ -86,36 +86,36 @@ V následující tabulce jsou uvedeny objekty a čítače, které lze zadat v ko
 
 | Název objektu | Název čítače |
 |:--|:--|
-| Logický disk | % Bezplatného uzlů inode |
-| Logický disk | % Volného místa |
-| Logický disk | % Použitého uzlů inode |
-| Logický disk | % Využitého místa |
-| Logický disk | Bajty čtení z disku/s |
-| Logický disk | Čtení z disku/s |
-| Logický disk | Přenosy disku/s |
-| Logický disk | Bajty zápisu na disk/s |
-| Logický disk | Zápisy na disk/s |
-| Logický disk | Volné megabajty |
-| Logický disk | Bajty logického disku/s |
+| Logický Disk | % Bezplatného uzlů inode |
+| Logický Disk | % Volného místa |
+| Logický Disk | % Použitého uzlů inode |
+| Logický Disk | % Využitého místa |
+| Logický Disk | Bajty čtení z disku/s |
+| Logický Disk | Čtení disku/s |
+| Logický Disk | Přenosy disku/s |
+| Logický Disk | Bajty zapisování na disk/s |
+| Logický Disk | Zápis disku/s |
+| Logický Disk | Volné megabajty |
+| Logický Disk | Bajtů logického disku/s |
 | Paměť | % Dostupné paměti |
 | Paměť | % Dostupného odkládacího prostoru |
 | Paměť | % Využité paměti |
 | Paměť | % Využitého místa odkládacího souboru |
 | Paměť | Dostupná paměť v MB |
 | Paměť | Dostupný počet MB swap |
-| Paměť | Čtení stránek/s |
-| Paměť | Zápisy stránek/s |
+| Paměť | přečtené strany/s |
+| Paměť | zapsané strany/s |
 | Paměť | Stránky/s |
 | Paměť | Využité místo odkládacího souboru v MB |
 | Paměť | Využitá paměť v MB |
-| Síť | Celkový počet odeslaných bajtů |
-| Síť | Celkový počet přijatých bajtů |
-| Síť | Bajty celkem |
-| Síť | Celkový počet odeslaných paketů |
-| Síť | Celkový počet přijatých paketů |
-| Síť | Celkový počet chyb příjmu |
-| Síť | Chyby odesílání celkem |
-| Síť | Celkový počet kolizí |
+| Network (Síť) | Celkový počet bajtů přenesených |
+| Network (Síť) | Celkový počet přijatých bajtů |
+| Network (Síť) | Bajty celkem |
+| Network (Síť) | Celkový počet odeslaných paketů |
+| Network (Síť) | Celkový počet přijatých paketů |
+| Network (Síť) | Celkový počet chyb příjmu |
+| Network (Síť) | Chyby odesílání celkem |
+| Network (Síť) | Celkový počet kolizí |
 | Fyzický disk | Střední doba disku/čtení |
 | Fyzický disk | Střední doba disku/přenos |
 | Fyzický disk | Střední doba disku/zápis |
@@ -125,11 +125,11 @@ V následující tabulce jsou uvedeny objekty a čítače, které lze zadat v ko
 | Proces | Využitá paměť v kilobajtech |
 | Proces | Virtuální sdílená paměť |
 | Procesor | % Času DPC |
-| Procesor | % Času nečinnosti |
+| Procesor | % času nečinnosti |
 | Procesor | % Času přerušení |
 | Procesor | % Času čekání na v/v |
 | Procesor | % Dobrý čas |
-| Procesor | % Privilegovaného času |
+| Procesor | %privilegovaného času |
 | Procesor | % Času procesoru |
 | Procesor | % Uživatelského času |
 | Systém | Volná fyzická paměť |
@@ -183,7 +183,7 @@ Záznamy o výkonu mají typ **výkonu** a mají vlastnosti v následující tab
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Počítač |Počítač, ze kterého byla událost shromážděna. |
+| Počítač |Počítač, který událost byla shromážděna z. |
 | CounterName |Název čítače výkonu |
 | CounterPath |Úplná cesta k čítači ve formuláři \\\\\<počítač >\\objekt (instance)\\čítač. |
 | CounterValue |Číselná hodnota čítače. |
@@ -202,7 +202,7 @@ Následující tabulka uvádí různé příklady dotazů protokolu, které nač
 
 | Dotaz | Popis |
 |:--- |:--- |
-| Výkon |Všechna data o výkonu |
+| Výkonu |Všechna data o výkonu |
 | Výkon &#124; , kde Computer = = "mycomputer" |Všechna data o výkonu z konkrétního počítače |
 | Výkon &#124; , kde CounterName = = "aktuální délka fronty disku" |Veškerá data o výkonu pro určitý čítač |
 | Výkon &#124; , kde ObjectName = = "procesor" a CounterName = = "% času procesoru" a InstanceName = = "_Total" &#124; sumarizace AVGCPU = AVG (CounterValue) podle počítače |Průměrné využití procesoru napříč všemi počítači |
@@ -210,8 +210,8 @@ Následující tabulka uvádí různé příklady dotazů protokolu, které nač
 | Výkon &#124; , kde ObjectName = = "logický disk" a CounterName = = "Current diskových front" a Computer = = "MyComputerName &#124; " sumarizace AggregatedValue = AVG (CounterValue) pomocí InstanceName |Průměrná aktuální délka fronty disku napříč všemi instancemi daného počítače |
 | Výkon &#124; , kde CounterName = = "přenosů disku/ &#124; s" sumarizace AggregatedValue = percentil (CounterValue, 95) podle počítače |95. percentil přenosů disku za sekundu ve všech počítačích |
 | Výkon &#124; , kde CounterName = = "% času procesoru" a InstanceName = = "_Total" &#124; sumarizace AggregatedValue = prům (CounterValue) by bin (TimeGenerated, 1H), počítač |Hodinový průměr využití procesoru napříč všemi počítači |
-| Výkon &#124; , kde Computer = = "mycomputer" a CounterName startswith_cs "%" a InstanceName = = "_Total" &#124; sumarizace AggregatedValue = percentil (CounterValue, 70) podle přihrádky (TimeGenerated, 1H), CounterName | Hodinově 70. percentil každého čítače%% pro určitý počítač |
-| Výkon &#124; , kde CounterName = = "% času procesoru" a InstanceName = = "_Total" a Computer = "mycomputer" &#124; shrnuje ["min (CounterValue)"] = min (CounterValue), ["prům (CounterValue)"] = AVG (CounterValue), ["percentile75 (CounterValue)"] = percentil (CounterValue, 75), ["Max (CounterValue)"] = Max (CounterValue) by bin (TimeGenerated, 1H), počítač |Hodinový průměr, minimum, maximum a 75-percentil využití CPU pro určitý počítač |
+| Výkon &#124; , kde Computer = = "mycomputer" a CounterName startswith_cs "%" a InstanceName = "_Total" &#124; AggregatedValue = percentil (CounterValue, 70) by bin (TimeGenerated, 1H), CounterName | Hodinově 70. percentil každého čítače%% pro určitý počítač |
+| Výkon &#124; , kde CounterName = = "% času procesoru" a InstanceName = = "_Total" a Computer = = "mycomputer" &#124; sumarizuje ["min (CounterValue)"] = min (CounterValue), ["AVG (CounterValue)"] = AVG (CounterValue); ["percentile75 (CounterValue)"] = percentil (CounterValue, 75), ["Max (CounterValue)"] = Max (CounterValue) po přihrádce (TimeGenerated, 1H), počítač |Hodinový průměr, minimum, maximum a 75-percentil využití CPU pro určitý počítač |
 | Výkon &#124; , kde ObjectName = = "MSSQL $ INST2: databáze" a InstanceName = = "Master" | Veškerá data o výkonu z objektu výkonu databáze pro hlavní databázi z pojmenované SQL Server instance INST2.  
 
 
@@ -219,5 +219,5 @@ Následující tabulka uvádí různé příklady dotazů protokolu, které nač
 
 ## <a name="next-steps"></a>Další kroky
 * [Shromážděte čítače výkonu z aplikací pro Linux](data-sources-linux-applications.md) , včetně MySQL a serveru http Apache.
-* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.  
+* Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
 * Exportujte shromážděná data do [Power BI](powerbi.md) pro další vizualizace a analýzu.

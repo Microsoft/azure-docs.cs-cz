@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 48d2b36e35a2e0b41b1202beda9944339dc7530c
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: f3585e96376a25721f478f9dd621835e75e3c600
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327120"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448633"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Rychlý Start: odeslání žádosti o vyhledávání do Vyhledávání entit Bingu REST API pomocí Node. js
 
@@ -25,7 +25,7 @@ I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služb
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Nejnovější verze [Node.js](https://nodejs.org/en/download/).
+* Nejnovější verze [Node.js](https://nodejs.org/en/download/)
 
 * [Knihovna požadavků JavaScriptu](https://github.com/request/request)
 
@@ -40,7 +40,7 @@ I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služb
     let https = require ('https');
     ```
 
-2. Vytvořte proměnné pro koncový bod rozhraní API, klíč předplatného a vyhledávací dotaz.
+2. Vytvořte proměnné pro koncový bod rozhraní API, klíč předplatného a vyhledávací dotaz. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```javascript
     let subscriptionKey = 'ENTER YOUR KEY HERE';

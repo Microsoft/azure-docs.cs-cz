@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: odesílání a příjem událostí pomocí .NET Framework – Azure Event Hubs'
+title: Azure Event Hubs – události odesílání a příjmu pomocí .NET Framework
 description: 'Rychlý Start: Tento článek poskytuje návod pro vytvoření .NET Framework aplikace, která odesílá události do Azure Event Hubs.'
 services: event-hubs
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 12/20/2019
 ms.author: shvija
-ms.openlocfilehash: 89419e9a3ef364d4095800a617a84ff2f63c09a0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 385430d993afe8b7a0ad57991d3c93eebd46ddcb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720648"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437266"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>Rychlý Start: odeslání událostí do nebo příjem událostí z Azure Event Hubs pomocí .NET Framework
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
@@ -31,7 +31,7 @@ V tomto kurzu se dozvíte, jak vytvořit .NET Framework C# konzolové aplikace v
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 - [Microsoft Visual Studio 2019](https://visualstudio.com).
-- **Vytvoří obor názvů Event Hubs a centrum událostí**. Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md). Pak Získejte **připojovací řetězec pro obor názvů centra událostí** podle pokynů uvedených v článku [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Připojovací řetězec použijete později v tomto kurzu.
+- **Vytvoří obor názvů Event Hubs a centrum událostí**. Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centra událostí, postupujte podle pokynů v [v tomto článku](event-hubs-create.md). Pak Získejte **připojovací řetězec pro obor názvů centra událostí** podle pokynů uvedených v článku [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Připojovací řetězec použijete později v tomto kurzu.
 
 ## <a name="send-events"></a>Odesílání událostí 
 V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Framework pro odesílání událostí do centra událostí. 
@@ -47,19 +47,19 @@ Pomocí šablony projektu **Konzolová aplikace** vytvořte v sadě Visual Studi
 1. V Průzkumníku řešení klikněte pravým tlačítkem na projekt **Sender** a potom klikněte na **Spravovat balíčky NuGet pro řešení**. 
 2. Klikněte na kartu **Procházet** a potom najděte `WindowsAzure.ServiceBus`. Klikněte na **Instalovat** a přijměte podmínky použití. 
    
-    ![Nainstalovat balíček NuGet Service Bus](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp2.png)
+    ![Nainstalujte balíček NuGet služby Service Bus](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp2.png)
    
     Visual Studio stáhne a nainstaluje [balíček NuGet knihovny Azure Service Bus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) a přidá se na něj odkaz.
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Napsání kódu pro odesílání zpráv do centra událostí
 
-1. Do horní části souboru `using`Program.cs**přidejte následující příkazy**:
+1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
    
     ```csharp
     using System.Threading;
     using Microsoft.ServiceBus.Messaging;
     ```
-2. K třídě **Program** přidejte následující pole a zástupné hodnoty nahraďte názvem centra událostí, které jste vytvořili v předchozí části, a připojovacím řetězcem na úrovni oboru názvů, který jste si předtím uložili. Připojovací řetězec pro centrum událostí můžete zkopírovat z **připojovacího řetězce – primární** klíč v části **RootManageSharedAccessKey** na stránce centra událostí v Azure Portal. Podrobný postup najdete v tématu [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal).
+2. K třídě **Program** přidejte následující pole a zástupné hodnoty nahraďte názvem centra událostí, které jste vytvořili v předchozí části, a připojovacím řetězcem na úrovni oboru názvů, který jste si předtím uložili. Připojovací řetězec můžete zkopírovat z centra událostí **připojovací řetězec – primární** klíč **RootManageSharedAccessKey** na stránce centra událostí na webu Azure Portal. Podrobné pokyny najdete v článku [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal).
    
     ```csharp
     static string eventHubName = "Your Event Hub name";
@@ -92,7 +92,7 @@ Pomocí šablony projektu **Konzolová aplikace** vytvořte v sadě Visual Studi
       ```
    
       Tato metoda neustále odesílá události do vašeho centra událostí se zpožděním 200 ms.
-4. Nakonec do metody **Main** přidejte následující řádky:
+4. Nakonec přidejte do metody **Main** následující řádky:
    
       ```csharp
       Console.WriteLine("Press Ctrl-C to stop the sender process");
@@ -118,7 +118,7 @@ Pomocí šablony projektu **Konzolová aplikace** vytvořte v sadě Visual Studi
 1. V Průzkumníku řešení klikněte pravým tlačítkem na projekt **Receiver** a potom klikněte na **Spravovat balíčky NuGet pro řešení**.
 2. Klikněte na kartu **Procházet** a potom najděte `Microsoft Azure Service Bus Event Hub - EventProcessorHost`. Klikněte na **Instalovat** a přijměte podmínky použití.
    
-    ![Vyhledat balíček NuGet pro procesor událostí](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
+    ![Vyhledejte balíček NuGet hostitel procesoru událostí](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
    
     Visual Studio stáhne, nainstaluje a přidá odkaz na [balíček NuGet třídy EventProcessorHost služby Event Hub ve službě Azure Service Bus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost) se všemi jeho závislostmi.
 
@@ -126,7 +126,7 @@ Pomocí šablony projektu **Konzolová aplikace** vytvořte v sadě Visual Studi
 
 1. Klikněte pravým tlačítkem na projekt **Receiver**, **Přidat** a potom na **Třída**. Pojmenujte novou třídu **SimpleEventProcessor** a potom kliknutím na **Přidat** třídu vytvořte.
    
-    ![Přidat třídu SimpleEventProcessor](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp2.png)
+    ![Přidání třídy simpleeventprocessor přijímá](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp2.png)
 2. Na začátek souboru SimpleEventProcessor.cs přidejte následující příkazy:
     
       ```csharp
@@ -134,7 +134,7 @@ Pomocí šablony projektu **Konzolová aplikace** vytvořte v sadě Visual Studi
       using System.Diagnostics;
       ```
     
-3. Pro tělo třídy nahraďte následující kód:
+3. Nahraďte následující kód pro tělo třídy:
     
       ```csharp
       class SimpleEventProcessor : IEventProcessor
@@ -188,7 +188,7 @@ Pomocí šablony projektu **Konzolová aplikace** vytvořte v sadě Visual Studi
       using Microsoft.ServiceBus.Messaging;
       ```
     
-2. Metodu `Main` ve třídě `Program` nahraďte následujícím kódem, kde nahradíte název centra událostí a připojovací řetězec na úrovni oboru názvů, který jste předtím uložili, a účet úložiště a klíč, který jste zkopírovali v předchozích částech. 
+2. Nahradit `Main` metodu `Program` třídy s následujícím kódem, kde nahradíte název centra událostí a úrovni oboru názvů připojovací řetězec, který jste si dříve uložili a účet úložiště a klíč, který jste zkopírovali v předchozí části. 
     
       ```csharp
       static void Main(string[] args)

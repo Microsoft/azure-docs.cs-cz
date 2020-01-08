@@ -1,18 +1,17 @@
 ---
 title: Ukázky služby Azure Cache for Redis
-description: Další informace o použití služby Azure Cache for Redis
+description: 'Naučte se používat Azure cache pro Redis s těmito ukázkami kódu: připojení k mezipaměti, čtení a zápis dat do mezipaměti, ASP.NET mezipaměti Azure pro poskytovatele Redis.'
 author: yegu-ms
-ms.service: cache
-ms.devlang: multiple
-ms.topic: conceptual
-ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: 9097a25c0223faebd91fe3c01ff3edea6c4e6f9f
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.service: cache
+ms.topic: sample
+ms.date: 01/23/2017
+ms.openlocfilehash: 8057a7db3d1a2db0e51ec15e4966ed0b31c84226
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122600"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433406"
 ---
 # <a name="azure-cache-for-redis-samples"></a>Ukázky služby Azure Cache for Redis
 Toto téma poskytuje seznam mezipaměti Azure pro ukázky Redis, které se týkají scénářů, jako je připojení k mezipaměti, čtení a zápis dat do a z mezipaměti, a použití ASP.NET mezipaměti Azure pro poskytovatele Redis. Některé ukázky jsou projekty ke stažení a některé poskytují podrobné pokyny a obsahují fragmenty kódu, ale neodkazování na projekt ke stažení.
@@ -62,4 +61,3 @@ Ukázka [ReTWis](https://github.com/SyntaxC4-MSFT/retwis) je Redis Hello World. 
 
 ## <a name="bandwidth-monitor"></a>Monitorování šířky pásma
 Ukázka [monitorování šířky pásma](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor) umožňuje monitorovat šířku pásma použitou v klientovi. Chcete-li změřit šířku pásma, spusťte ukázku v klientském počítači mezipaměti, proveďte volání do mezipaměti a sledujte šířku pásma nahlášenou ukázkou monitorování šířky pásma.
-

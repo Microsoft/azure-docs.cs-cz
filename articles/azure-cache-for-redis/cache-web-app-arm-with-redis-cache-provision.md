@@ -7,12 +7,12 @@ ms.service: app-service
 ms.topic: conceptual
 ms.date: 01/06/2017
 ms.author: yegu
-ms.openlocfilehash: 8e15d51062993bc6e9913d49d3fe67c1a8b9cd03
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 11c854491ab030394eb61964979cb04a5a4b489b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122630"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433380"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Vytvoření webové aplikace a mezipaměti Azure pro Redis pomocí šablony
 
@@ -20,7 +20,7 @@ ms.locfileid: "74122630"
 
 V tomto tématu se dozvíte, jak vytvořit šablonu Azure Resource Manager, která nasadí webovou aplikaci Azure s mezipamětí Azure cache pro Redis. Naučíte se, jak definovat, které prostředky se nasazují a jak definovat parametry, které jsou zadané při spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky.
 
-Další informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). Další informace o syntaxi a vlastnostech JSON pro typy prostředků mezipaměti najdete v tématu [typy prostředků Microsoft. cache](/azure/templates/microsoft.cache/allversions).
+Další informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md). Další informace o syntaxi a vlastnostech JSON pro typy prostředků mezipaměti najdete v tématu [typy prostředků Microsoft. cache](/azure/templates/microsoft.cache/allversions).
 
 Úplnou šablonu najdete v tématu [Webová aplikace s využitím šablony Azure cache pro Redis](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json).
 
@@ -40,7 +40,7 @@ Pokud chcete nasazení spustit automaticky, klikněte na následující tlačít
 [!INCLUDE [cache-deploy-parameters](../../includes/cache-deploy-parameters.md)]
 
 ## <a name="variables-for-names"></a>Proměnné pro názvy
-Tato šablona používá proměnné pro konstrukci názvů prostředků. Pomocí funkce [uniqueString](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) vytvoří hodnotu na základě ID skupiny prostředků.
+Tato šablona používá proměnné pro konstrukci názvů prostředků. Pomocí funkce [uniqueString](../azure-resource-manager/templates/template-functions-string.md#uniquestring) vytvoří hodnotu na základě ID skupiny prostředků.
 
     "variables": {
       "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",

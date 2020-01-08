@@ -3,16 +3,16 @@ title: Připojit svazek emptyDir ke skupině kontejnerů
 description: Naučte se připojit svazek emptyDir ke sdílení dat mezi kontejnery ve skupině kontejnerů v Azure Container Instances
 ms.topic: article
 ms.date: 02/08/2018
-ms.openlocfilehash: 0440bcc490b766c12b2117d2453557707df2a1c4
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 955423b685ebb3979271c7c2dc7e835a16100c2b
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533237"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552453"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Připojení svazku emptyDir v Azure Container Instances
 
-Naučte se připojit svazek *emptyDir* ke sdílení dat mezi kontejnery ve skupině kontejnerů v Azure Container Instances.
+Naučte se připojit svazek *emptyDir* ke sdílení dat mezi kontejnery ve skupině kontejnerů v Azure Container Instances. Používejte svazky *emptyDir* jako dočasné mezipaměti pro vaše kontejnerové úlohy.
 
 > [!NOTE]
 > Připojení svazku *emptyDir* je aktuálně omezené na kontejnery Linux. Pracujeme na tom, abychom do kontejnerů Windows přenesli všechny funkce. aktuální rozdíly na platformách najdete v [přehledu](container-instances-overview.md#linux-and-windows-containers).
@@ -27,7 +27,7 @@ Několik příkladů použití pro *emptyDir* svazek:
 * Vytváření kontrolních bodů během dlouhotrvajících úloh
 * Uložení dat načtených kontejnerem webvozíku a obsluhou kontejnerem aplikace
 
-Data ve svazku *emptyDir* jsou trvalá prostřednictvím havárií kontejneru. U kontejnerů, které jsou restartovány, však není zaručeno zachování dat ve svazku *emptyDir* .
+Data ve svazku *emptyDir* jsou trvalá prostřednictvím havárií kontejneru. U kontejnerů, které jsou restartovány, však není zaručeno zachování dat ve svazku *emptyDir* . Pokud zastavíte skupinu kontejnerů, svazek *emptyDir* není trvale uložený.
 
 ## <a name="mount-an-emptydir-volume"></a>Připojení svazku emptyDir
 
@@ -48,4 +48,4 @@ Naučte se připojit další typy svazků v Azure Container Instances:
 
 * [Připojení sdílené složky ve službě Azure Container Instances](container-instances-volume-azure-files.md)
 * [Připojení svazku Gitrepo nepodporují v Azure Container Instances](container-instances-volume-gitrepo.md)
-* [Připojit tajný svazek v Azure Container Instances](container-instances-volume-secret.md)
+* [Připojení tajný svazku v Azure kontejner instancí](container-instances-volume-secret.md)

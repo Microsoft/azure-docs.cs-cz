@@ -1,5 +1,6 @@
 ---
-title: Kurz pro nastavení konfigurace aplikace Azure pro odesílání událostí do webového koncového bodu | Microsoft Docs
+title: 'Kurz: použití Azure App Configuration k posílání událostí do webového koncového bodu'
+titleSuffix: Azure App Configuration
 description: V tomto kurzu se dozvíte, jak nastavit odběry událostí konfigurace aplikací Azure pro odesílání událostí úprav klíč-hodnota do webového koncového bodu.
 services: azure-app-configuration
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 32a3131c8ff6a01a35fbe42750384dd303a23140
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 4943a64f72191981fc1b655c431cab00f180e503
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185179"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433689"
 ---
 # <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Rychlý Start: směrování událostí konfigurace aplikací Azure do webového koncového bodu pomocí Azure CLI
 

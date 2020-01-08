@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bebdd8beacb3b5fc91802fb41055df7e24b93218
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0fbff3679004b8278b7634c2dc21253973cf34d0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078952"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647658"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver
 
@@ -33,8 +33,8 @@ ms.locfileid: "70078952"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -148,7 +148,7 @@ ms.locfileid: "70078952"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -188,7 +188,7 @@ Tyto články zahrnují nasazení SAP v Azure:
 
 Tyto poznámky SAP souvisejí s tématem SAP v Azure:
 
-| Číslo poznámky | Název |
+| Číslo poznámky | Nadpis |
 | --- | --- |
 | [1928533] |Aplikace SAP v Azure: podporované produkty a velikost |
 | [2015553] |SAP v Microsoft Azure: požadavky na podporu |
@@ -197,7 +197,7 @@ Tyto poznámky SAP souvisejí s tématem SAP v Azure:
 | [1999351] |Virtualizace ve Windows: rozšířené monitorování |
 | [2243692] |Použití Azure SSD úrovně Premium Storage pro instanci SAP DBMS |
 
-Přečtěte si další informace o [omezeních předplatných Azure][azure-subscription-service-limits-subscription], včetně obecných výchozích omezení a maximálních omezení.
+Přečtěte si další informace o [omezeních předplatných Azure][azure-resource-manager/management/azure-subscription-service-limits-subscription], včetně obecných výchozích omezení a maximálních omezení.
 
 ## <a name="42156640c6-01cf-45a9-b225-4baa678b24f1"></a>SAP s vysokou dostupností pomocí Azure Resource Manager vs. model nasazení Azure Classic
 Modely nasazení Azure Resource Manager a Azure Classic se liší v následujících oblastech:
@@ -207,7 +207,7 @@ Modely nasazení Azure Resource Manager a Azure Classic se liší v následujíc
 - Podpora scénářů multi-SID pro SAP
 
 ### <a name="f76af273-1993-4d83-b12d-65deeae23686"></a>Skupiny prostředků
-V Azure Resource Manager můžete použít skupiny prostředků ke správě všech prostředků aplikace ve vašem předplatném Azure. Integrovaný přístup, ve skupině prostředků, má všechny prostředky stejný životní cyklus. Například všechny prostředky jsou vytvořeny současně a jsou odstraněny ve stejnou dobu. Další informace o [skupinách prostředků](../../../azure-resource-manager/resource-group-overview.md#resource-groups).
+V Azure Resource Manager můžete použít skupiny prostředků ke správě všech prostředků aplikace ve vašem předplatném Azure. Integrovaný přístup, ve skupině prostředků, má všechny prostředky stejný životní cyklus. Například všechny prostředky jsou vytvořeny současně a jsou odstraněny ve stejnou dobu. Další informace o [skupinách prostředků](../../../azure-resource-manager/management/overview.md#resource-groups).
 
 ### <a name="3e85fbe0-84b1-4892-87af-d9b65ff91860"></a>Závislost interního nástroje pro vyrovnávání zatížení Azure ve skupině prostředků Azure
 
@@ -588,7 +588,7 @@ V našem příkladu je adresní prostor virtuální sítě Azure 10.0.0.0/16. Ex
 Chcete-li nastavit požadované IP adresy DNS, proveďte následující kroky.
 
 1. V Azure Portal v okně **servery DNS** se ujistěte, že je možnost **servery DNS** virtuální sítě nastavená na **vlastní DNS**.
-2. Vyberte nastavení podle typu sítě, kterou máte. Další informace naleznete v následujících materiálech:
+2. Vyberte nastavení podle typu sítě, kterou máte. Další informace najdete v následujících materiálech:
    * [Připojení k podnikové síti (mezi místními sítěmi)][planning-guide-2.2]: přidejte IP adresy místních serverů DNS.  
    Místní servery DNS můžete rozmístit do virtuálních počítačů, které běží v Azure. V takovém scénáři můžete přidat IP adresy virtuálních počítačů Azure, na kterých spouštíte službu DNS.
    * Pro nasazení virtuálních počítačů izolované v Azure: nasaďte další virtuální počítač ve stejné instanci Virtual Network, která slouží jako server DNS. Přidejte IP adresy virtuálních počítačů Azure, které jste nastavili pro spuštění služby DNS.
@@ -740,7 +740,7 @@ Pokud chcete pro instance SAP ASCS nebo SCS používat odlišná čísla, musít
 1. V Azure Portal vyberte **<*SID*>-9,1-ASCS load balancer** > **pravidla vyrovnávání**zatížení.
 2. Pro všechna pravidla vyrovnávání zatížení, která patří do instance SAP ASCS nebo SCS, změňte tyto hodnoty:
 
-   * Název
+   * Name (Název)
    * Port
    * Back-end port
 

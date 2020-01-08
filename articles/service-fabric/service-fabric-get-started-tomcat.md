@@ -1,31 +1,22 @@
 ---
-title: Vytvoření kontejneru Azure Service Fabric pro server Apache Tomcat v systému Linux | Microsoft Docs
+title: Vytvoření kontejneru pro Apache Tomcat v systému Linux
 description: Vytvořte kontejner pro Linux, který vystaví aplikaci běžící na serveru Apache Tomcat na Azure Service Fabric. Sestavte image Docker pomocí aplikace a serveru Apache Tomcat, nahrajte image do registru kontejnerů a sestavte a nasaďte aplikaci kontejneru Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: JimacoMS2
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/08/2018
 ms.author: pepogors
-ms.openlocfilehash: 7e14a027f17c15c83a4ce25a211ef6106f2d2eaa
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 1a699f3b35970270a9800162a6d8717682a168ae
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170604"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614413"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Vytvoření kontejneru Service Fabric, na kterém běží Apache Tomcat Server v systému Linux
 Apache Tomcat je oblíbená a open source implementace technologií serveru Java servlet a Java. V tomto článku se dozvíte, jak vytvořit kontejner s Apache Tomcat a jednoduchou webovou aplikací, nasadit kontejner do Service Fabric clusteru se systémem Linux a připojit se k webové aplikaci.  
 
 Další informace o Apache Tomcat najdete na [domovské stránce Apache Tomcat](https://tomcat.apache.org/). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Vývojový počítač s:
   * [Sada Service Fabric SDK a nástroje](service-fabric-get-started-linux.md).
   * [Docker CE pro Linux](https://docs.docker.com/engine/installation/#prior-releases). 
@@ -61,13 +52,13 @@ Podle kroků v této části vytvoříte Docker image na základě image Apache 
    Další informace najdete v [referenčních](https://docs.docker.com/engine/reference/builder/) informacích k souboru Dockerfile.
 
 
-4. Spuštěním příkazu `docker build` vytvořte bitovou kopii, která spouští vaši webovou aplikaci:
+4. Spuštěním příkazu `docker build` Vytvořte bitovou kopii, která spouští vaši webovou aplikaci:
 
    ```bash
    docker build . -t tomcattest
    ```
 
-   Tento příkaz sestaví nový obrázek pomocí instrukcí v souboru Dockerfile, pojmenovávání (-t označení) obrázku `tomcattest`. Pokud chcete vytvořit image kontejneru, nejdřív se z dokovacího centra stáhne základní image a do ní se přidá aplikace. 
+   Tento příkaz sestaví novou image pomocí instrukcí v souboru Dockerfile, pojmenovávání (-t označování) `tomcattest`obrázku. Pokud chcete vytvořit image kontejneru, nejdřív se z dokovacího centra stáhne základní image a do ní se přidá aplikace. 
 
    Po dokončení příkazu pro sestavení spusťte příkaz `docker images` a zobrazte informace o nové imagi:
 
@@ -84,7 +75,7 @@ Podle kroků v této části vytvoříte Docker image na základě image Apache 
    docker run -itd --name tomcat-site -p 8080:8080 tomcattest.
    ```
    
-   * `--name` kontejner pojmenuje, takže se na něj můžete odkazovat pomocí popisného názvu místo jeho ID.
+   * `--name` název kontejneru, abyste na něj mohli odkazovat pomocí popisného názvu, a ne podle jeho ID.
    * `-p` Určuje mapování portů mezi kontejnerem a hostitelským operačním systémem. 
 
    > [!Note]
@@ -110,7 +101,7 @@ Podle kroků v této části vytvoříte Docker image na základě image Apache 
 ## <a name="push-the-tomcat-image-to-your-container-registry"></a>Vložení image Tomcat do registru kontejneru
 Teď, když jste ověřili, že se image Tomcat spouští v kontejneru ve vývojovém počítači, nahrajte ji do úložiště v registru kontejnerů. Tento článek používá Azure Container Registry k uložení image, ale s určitou úpravou kroků můžete použít libovolný registr kontejneru, který si zvolíte. V tomto článku se předpokládá, že název registru bude *myregistry* a úplný název registru je myregistry.azurecr.IO. Odpovídajícím způsobem je změňte pro váš scénář. 
 
-1. Spusťte `docker login` pro přihlášení ke svému registru kontejneru pomocí [přihlašovacích údajů registru](../container-registry/container-registry-authentication.md).
+1. Spusťte `docker login` a přihlaste se k registru kontejneru pomocí svých [přihlašovacích údajů do registru](../container-registry/container-registry-authentication.md).
 
    Následující příklad předá ID a heslo [instančního objektu](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Instanční objekt jste k registru mohli přiřadit například pro účely scénáře automatizace. Nebo se můžete přihlásit pomocí uživatelského jména a hesla registru.
 

@@ -1,32 +1,28 @@
 ---
-title: Vysvětlení nastavení automatického škálování ve službě Azure Monitor
-description: Podrobný přehled nastavení automatického škálování a jak pracují. Platí pro Virtual Machines, Cloud Services, Web Apps
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
+title: Principy nastavení automatického škálování v Azure Monitor
+description: Podrobný rozpis nastavení automatického škálování a způsobu jejich fungování. Platí pro Virtual Machines, Cloud Services Web Apps
 ms.topic: conceptual
 ms.date: 12/18/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 02840b8a909f46c37130bdb7162674c694a0ff96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a2b94208de7ce490a0e7acfbb71175b4a7c846e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60787491"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364301"
 ---
 # <a name="understand-autoscale-settings"></a>Vysvětlení nastavení automatického škálování
-Nastavení automatického škálování pomáhají, ujistěte se, že máte správného množství prostředků systémem pro zpracování zátěže fluktuující vaší aplikace. Můžete nakonfigurovat nastavení automatického škálování tak, aby se dá spouštět podle metrik, které označují zátěžové nebo výkonové, nebo spouštěnou v naplánované datum a čas. V tomto článku se podíváme podrobné na anatomie nastavení automatického škálování. Článek začíná schématu a vlastnosti nastavení a potom provede odlišných typů profilů, které lze nastavit. Nakonec článek popisuje, jak funkce automatického škálování v Azure vyhodnocuje který profil ke spuštění v daném okamžiku.
+Nastavení automatického škálování vám pomůžou zajistit, že máte správné množství prostředků, na kterých běží, aby bylo možné zvládnout kolísání vaší aplikace. Nastavení automatického škálování můžete nakonfigurovat tak, aby se aktivovalo na základě metrik, které indikují zatížení nebo výkon, nebo aktivované v naplánovaném datu a času. V tomto článku se podíváme na podrobné znalosti nastavení automatického škálování. Článek začíná schématem a vlastnostmi nastavení a pak projde různými typy profilů, které lze konfigurovat. Nakonec článek popisuje, jak funkce automatického škálování v Azure vyhodnocuje, který profil se má v daném okamžiku provést.
 
 ## <a name="autoscale-setting-schema"></a>Schéma nastavení automatického škálování
-Pro ilustraci schématu nastavení automatického škálování, je použít následující nastavení automatického škálování. Je důležité si uvědomit, že toto nastavení automatického škálování nemá:
+Pro ilustraci schématu nastavení automatického škálování se používá následující nastavení automatického škálování. Je důležité si uvědomit, že toto nastavení automatického škálování má následující:
 - Jeden profil. 
-- Dvě metriky pravidla v tomto profilu: jeden pro horizontální navýšení kapacity a jeden pro horizontální snížení kapacity.
-  - Pravidlo pro horizontální navýšení kapacity se aktivuje v případě škálovací sady virtuálních počítačů průměrné procento CPU metrika je větší než 85 procent za posledních 10 minut.
-  - Pravidlo škálování na méně instancí se aktivuje, pokud průměrná hodnota škálovací sadu virtuálních počítačů je míň než 60 procent za poslední minutu.
+- Dvě pravidla metrik v tomto profilu: jedno pro horizontální navýšení kapacity a jedno pro škálování v.
+  - Pravidlo horizontálního navýšení kapacity se aktivuje, když je průměrné procento PROCESORové metriky sady škálování virtuálního počítače větší než 85 procent za posledních 10 minut.
+  - Pravidlo pro škálování na více počítačů se aktivuje, když průměrná hodnota sady škálování virtuálního počítače je nižší než 60 procent za uplynulou minutu.
 
 > [!NOTE]
-> Nastavení může mít několik profilů. Další informace najdete v tématu [profily](#autoscale-profiles) oddílu. Profil, který může mít také více pravidel škálování na víc systémů a definovaných pravidel škálování na méně instancí. Jak se vyhodnocují najdete v tématu [vyhodnocení](#autoscale-evaluation) oddílu.
+> Nastavení může mít více profilů. Další informace najdete v části [profily](#autoscale-profiles) . Profil může mít také více pravidel škálování na více instancí a definovaných pravidel pro horizontální navýšení kapacity. Chcete-li zjistit, jak jsou vyhodnocovány, přečtěte si část [vyhodnocení](#autoscale-evaluation) .
 
 ```JSON
 {
@@ -89,39 +85,39 @@ Pro ilustraci schématu nastavení automatického škálování, je použít ná
 }
 ```
 
-| Section | Název elementu | Popis |
+| Sekce | Název elementu | Popis |
 | --- | --- | --- |
-| Nastavení | id | ID prostředku nastavení automatického škálování Nastavení automatického škálování je prostředek Azure Resource Manageru. |
-| Nastavení | name | Název nastavení automatického škálování. |
-| Nastavení | location | Umístění zadané nastavení automatického škálování. Toto umístění se může lišit od umístění prostředku se škálovat. |
-| properties | targetResourceUri | ID prostředku se škálovat prostředek. Můžete mít jenom jedno nastavení automatického škálování pro každý prostředek. |
-| properties | profiles | Nastavení automatického škálování se skládá z jednoho nebo více profilů. Při každém spuštění modul automatického škálování je spuštěn v jednom profilu. |
-| profile | name | Název profilu. Můžete použít libovolný název, který vám pomůže určit, profil. |
-| profile | Capacity.maximum | Maximální kapacita povolené. Zajišťuje, že automatické škálování, při provádění tohoto profilu není škálovat prostředek vyšší než toto číslo. |
-| profile | Capacity.minimum | Minimální kapacitu povolené. Zajišťuje, že automatické škálování, při provádění tohoto profilu není škálovat prostředek pod tuto hodnotu. |
-| profile | Capacity.default | Pokud dojde k nějakému problému čtení metrik prostředku (v tomto případě procesoru "vmss1") a aktuální kapacita bude pod výchozí, automatického škálování horizontálně navýší kapacitu na výchozí hodnotu. Toto je zajištění dostupnosti prostředků. Pokud už je aktuální kapacita vyšší než výchozí kapacita pro dotazy, automatické škálování v škálování. |
-| profile | rules | Automatické škálování se automaticky škáluje mezi minimální a maximální kapacity, pomocí pravidel v profilu. Můžete mít víc pravidel v profilu. Obvykle existují dvě pravidla: jednu k určení toho, kdy pro horizontální navýšení kapacity a druhým k určení toho, kdy škálovat v. |
-| rules | metricTrigger | Definuje podmínku metriky pravidla. |
+| Nastavení | ID | ID prostředku nastavení automatického škálování. Nastavení automatického škálování je Azure Resource Manager prostředek. |
+| Nastavení | jméno | Název nastavení automatického škálování. |
+| Nastavení | location | Umístění nastavení automatického škálování. Toto umístění se může lišit od umístění prostředku, který se škáluje. |
+| properties | targetResourceUri | ID prostředku pro škálování prostředku Pro každý prostředek můžete mít jenom jedno nastavení automatického škálování. |
+| properties | profiles | Nastavení automatického škálování se skládá z jednoho nebo více profilů. Pokaždé, když je spuštěný modul automatického škálování, se spustí jeden profil. |
+| profile | jméno | Název profilu. Můžete si vybrat libovolný název, který vám pomůže tento profil identifikovat. |
+| profile | Kapacita. maximum | Maximální povolená kapacita. Zajišťuje, aby při spuštění tohoto profilu se při automatickém škálování nezměnila velikost prostředků nad tímto číslem. |
+| profile | Kapacita. minimum | Minimální povolená kapacita. Zajišťuje automatické škálování při spouštění tohoto profilu, ale neumožňuje škálovat prostředky pod tímto číslem. |
+| profile | Kapacita. výchozí | Pokud dojde k potížím při čtení metriky prostředků (v tomto případě CPU "vmss1") a aktuální kapacita je nižší než výchozí, automatické škálování se škáluje na výchozí. To zajistí dostupnost prostředku. Pokud je aktuální kapacita již vyšší, než je výchozí kapacita, automatické škálování se neškáluje. |
+| profile | pravidla | Automatické škálování se automaticky škáluje mezi maximální a minimální kapacitou pomocí pravidel v profilu. V profilu můžete mít více pravidel. Obvykle existují dvě pravidla: jeden pro určení, kdy horizontální navýšení kapacity a druhý k určení, kdy se má škálovat. |
+| rule | metricTrigger | Definuje podmínku metriky pravidla. |
 | metricTrigger | metricName | Název metriky. |
-| metricTrigger |  metricResourceUri | ID prostředku prostředku, který vysílá metriky. Ve většině případů je stejný jako prostředek nastavuje. V některých případech může být jiný. Například je možné škálovat škálovací sadu virtuálních počítačů, na základě počtu zpráv ve frontě úložiště. |
-| metricTrigger | timeGrain | Doba trvání vzorkování metriky. Například **TimeGrain = "PT1M"** znamená, že metrika má agregovat každou 1 minutu pomocí způsobu agregace určeném v elementu statistiky. |
-| metricTrigger | statistic | Způsob agregace v období timeGrain. Například **statistiky = "Average"** a **timeGrain = "PT1M"** znamená, že metrika má agregovat každou 1 minutu zprůměrováním. Tato vlastnost určuje, jak se definuje tak metriku. |
-| metricTrigger | timeWindow | Množství času do minulosti pro metriky. Například **timeWindow = "PT10M"** znamená, že pokaždé, když se spustí automatické škálování, dotáže metriky za posledních 10 minut. Časový interval umožňuje metriky budou normalizovány a přitom vylučuje reakcím na přechodné špičky. |
-| metricTrigger | timeAggregation | Agregace metodu používanou k agregaci vzorkovaných metrik. Například **TimeAggregation = "Average"** by měl agregaci vzorkovaných metrik zprůměrováním. V předchozím případě vzorky deseti 1 minutu a průměrné je. |
-| rules | scaleAction | Akce, který se má provést při aktivaci metricTrigger pravidla. |
-| scaleAction | direction | "Zvýšit" pro horizontální navýšení kapacity, nebo "Snížení" pro horizontální snížení kapacity.|
-| scaleAction | value | Kolik zvýšení nebo snížení kapacity prostředku. |
-| scaleAction | cooldown | Množství času po operaci škálování než škálování provedete znovu. Například pokud **která = "PT10M"** , automatické škálování nebude pokoušet o škálování pro jiné 10 minut. Která se má povolit metriky stabilizovat po přidání nebo odebrání instance. |
+| metricTrigger |  metricResourceUri | ID prostředku prostředku, který generuje metriku. Ve většině případů je to stejné jako u prostředku, který se škáluje. V některých případech se může lišit. Můžete například škálovat sadu škálování virtuálního počítače na základě počtu zpráv ve frontě úložiště. |
+| metricTrigger | timeGrain | Doba trvání vzorkování metriky. Například **TimeGrain = "PT1M"** znamená, že metriky by měly být agregovány každé 1 minuty pomocí metody agregace určené v prvku statistiky. |
+| metricTrigger | statistic | Agregační metoda v rámci timeGrain období Například **Statistika = "průměr"** a **TIMEGRAIN = "PT1M"** znamená, že metriky by měly být agregovány každé 1 minuty, a to tak, že vyberou průměr. Tato vlastnost určuje, jak je tato metrika vzorkovaná. |
+| metricTrigger | timeWindow | Doba, po kterou se bude hledat metrika. Například **TimeWindow = "PT10M"** znamená, že při každém spuštění automatického škálování se dotazuje metriky za posledních 10 minut. Časový interval umožňuje normalizovat metriky a vyhnout se tomu, aby se znovu zobrazovaly přechodné špičky. |
+| metricTrigger | timeAggregation | Agregační metoda sloužící k agregaci vzorků metrik. Například **TimeAggregation = "Average"** by měl agregovat vzorkování metriky tím, že přijímá průměr. V předchozím případě Vezměte deset ukázek a průměrně. |
+| rule | scaleAction | Akce, která se má provést, když se aktivuje metricTrigger pravidla |
+| scaleAction | směr | "Zvětšit" pro horizontální navýšení kapacity nebo "zmenšení" pro horizontální navýšení kapacity.|
+| scaleAction | hodnota | Kolik se má zvýšit nebo snížit kapacita prostředku. |
+| scaleAction | cooldown | Doba, po kterou se má počkat po operaci škálování, než se znovu změní velikost Například pokud **cooldown = "PT10M"** , automatické škálování se znovu nepokouší o horizontální navýšení kapacity po dobu dalších 10 minut. Cooldown je, aby bylo možné metriky stabilizovat po přidání nebo odebrání instancí. |
 
 ## <a name="autoscale-profiles"></a>Profily automatického škálování
 
 Existují tři typy profilů automatického škálování:
 
-- **Pravidelné profil:** Nejběžnější profilu. Pokud není nutné škálovat vaše prostředků na základě den v týdnu, nebo v určitý den, můžete použít regulární profilu. Tento profil může mít nakonfigurovanou pak metriky pravidla určující, kdy pro horizontální navýšení kapacity a kdy které horizontálně sníží. Byste měli mít jenom jeden profil regulární definované.
+- **Pravidelný profil:** Nejběžnější profil. Pokud nepotřebujete škálovat prostředky na základě dne v týdnu nebo konkrétního dne, můžete použít pravidelný profil. Tento profil se pak dá nakonfigurovat s použitím pravidel metrik, která určují, kdy se má škálovat a kdy se má škálovat. Měli byste mít definován pouze jeden pravidelný profil.
 
-    Příklad profilu použitou dříve v tomto článku je příkladem regulární profilu. Všimněte si, že je také možné nastavit profil, který chcete škálovat na počet statických instancí pro váš prostředek.
+    Vzorový profil použitý dříve v tomto článku je příkladem běžného profilu. Všimněte si, že je také možné nastavit profil pro škálování na počet statických instancí pro váš prostředek.
 
-- **Pevné datum profil:** Tento profil je pro zvláštní případy. Řekněme například, že máte důležité události naráželi 26. prosince 2017 (PST). Chcete, aby minimální a maximální kapacity prostředku v tento den, ale stále škálování na stejné metriky lišit. V takovém případě by měl přidat profil pevného data do vašeho nastavení seznamu profilů. Profil, který je nakonfigurován pro spouštění jenom v události. den. Za další den automatického škálování používá regulární profil.
+- **Pevný profil data:** Tento profil je určen pro zvláštní případy. Řekněme například, že máte důležitou událost, která se dokončí 26. prosince 2017 (PST). Chcete, aby se minimální a maximální kapacita vašeho prostředku v daném dni lišila, ale pořád škálovat na stejné metriky. V takovém případě byste měli do seznamu profilů nastavení přidat pevný profil data. Profil je nakonfigurován tak, aby běžel pouze v den události. V jakémkoli jiném dni používá automatické škálování běžný profil.
 
     ``` JSON
     "profiles": [{
@@ -154,11 +150,11 @@ Existují tři typy profilů automatického škálování:
     ]
     ```
     
-- **Profil opakování:** Tento typ profilu umožňuje zajistit, aby tento profil je vždy používal v určitý den v týdnu. Opakování profily mají pouze čas spuštění. Spuštění až do další profil opakování nebo pevného data profilu je nastaven na spuštění. Nastavení automatického škálování s profilem pouze jednoho opakování spouští tento profil, i v případě regulární profilu definován ve stejné nastavení. Následující dva příklady ilustrují, jak tento profil se používá:
+- **Profil opakování:** Tento typ profilu vám umožní zajistit, aby se tento profil vždycky používal v konkrétní den v týdnu. Profily opakování mají jenom čas spuštění. Spustí se, až do chvíle, kdy se nastaví počáteční profil opakování nebo pevný datum. Nastavení automatického škálování s jediným profilem opakování spouští tento profil, i když je ve stejném nastavení definován pravidelný profil. Následující dva příklady ilustrují, jak se tento profil používá:
 
-    **Příklad 1: Pracovní dny a víkendy**
+    **Příklad 1: pracovní dny a víkendy**
     
-    Řekněme, že o víkendech, má maximální kapacitu na 4. Ve všední dny protože očekáváte větší zátěže, má maximální kapacitu pro 10. Nastavení v tomto případě bude obsahovat dva profily opakování, z nich se má spustit na víkendy a druhý ve všední dny.
+    Řekněme, že na víkendech chcete mít maximální kapacitu 4. V pracovních dnech, protože očekáváte větší zatížení, chcete mít maximální kapacitu 10. V takovém případě by nastavení obsahovalo dva profily opakování, jeden pro spuštění na víkendech a druhý v pracovních dnech.
     Nastavení vypadá takto:
 
     ``` JSON
@@ -213,13 +209,13 @@ Existují tři typy profilů automatického škálování:
     }]
     ```
 
-    Předchozí nastavení se zobrazí, že má každý profil opakování plánu. Tento plán Určuje při spuštění profilu spuštění. Profil se zastaví, když je čas spustit jiný profil.
+    Předchozí nastavení uvádí, že každý profil opakování má plán. Tento plán určuje, kdy se profil začne spouštět. Profil se zastaví, když je čas spustit jiný profil.
 
-    V předchozí nastavení, například "weekdayProfile" nastavená na spuštění v pondělí v 12:00:00. To znamená, že tento profil spuštění v pondělí v 12:00:00. To pokračuje, dokud sobota ve 12:00, kdy je naplánováno spuštění "weekendProfile".
+    Například v předchozím nastavení je "weekdayProfile" nastaveno na začátek v pondělí v 12:00. To znamená, že tento profil začíná běžet v pondělí v 12:00. V případě, že je naplánováno spuštění příkazu "weekendProfile", pokračuje až do soboty v 12:00.
 
     **Příklad 2: pracovní doba**
     
-    Řekněme, že budete chtít mít jeden mezní hodnota metriky během pracovní doby (9:00:00 do 17:00 hodin) a jinou používat pro jinou dobu. Toto nastavení bude vypadat takto:
+    Řekněme, že chcete mít jednu prahovou hodnotu metriky během pracovní doby (9:00 až 5:00 odp.), a pro všechny ostatní časy jednu jinou. Nastavení by vypadalo takto:
     
     ``` JSON
     "profiles": [
@@ -273,41 +269,41 @@ Existují tři typy profilů automatického škálování:
     }]
     ```
     
-    Předchozí nastavení ukazuje, že zahájí spuštění v pondělí v 9:00:00 "businessHoursProfile" a pokračuje v 17:00:00. Který je při spuštění "nonBusinessHoursProfile". "nonBusinessHoursProfile" běží až do 9:00:00 úterý, a potom "businessHoursProfile" převezme znovu. To se opakuje dokud pátek v 17:00:00. V tomto okamžiku "nonBusinessHoursProfile" se spustí až po pondělí v 9:00:00.
+    Předchozí nastavení ukazuje, že "businessHoursProfile" začíná v pondělí v 9:00. a pokračuje na 5:00 odp. To je, když začíná běžet "nonBusinessHoursProfile". "NonBusinessHoursProfile" se spustí do 9:00 Úterý a pak se znovu "businessHoursProfile" převezme. To se opakuje do pátku v 5:00. odp. V tomto okamžiku se "nonBusinessHoursProfile" spouští celým způsobem až do pondělí v 9:00.
     
 > [!Note]
-> Automatické škálování uživatelského rozhraní na webu Azure Portal vynucuje koncový čas opakování profilů a zahájí spuštění výchozího profilu nastavení automatického škálování mezi profily opakování.
+> Uživatelské rozhraní automatického škálování v Azure Portal vynutilo koncové časy profilů opakování a v mezi profily opakování začne spouštět výchozí profil nastavení automatického škálování.
     
-## <a name="autoscale-evaluation"></a>Vyhodnocování automatického škálování
-Oznámeno, že nastavení automatického škálování může mít několik profilů a každý profil může mít několik metrik pravidla, je důležité pochopit, jak se vyhodnocují nastavení automatického škálování. Při každém spuštění úlohy automatického škálování začne výběrem profil, který se vztahuje. Automatické škálování pak vyhodnotí jako minimální a maximální hodnoty a všechny metriky pravidel v profilu a rozhodne, pokud je akce škálování nezbytné.
+## <a name="autoscale-evaluation"></a>Vyhodnocení automatického škálování
+Vzhledem k tomu, že nastavení automatického škálování může mít několik profilů a každý profil může mít několik pravidel metrik, je důležité pochopit, jak se vyhodnocuje nastavení automatického škálování. Pokaždé, když se úloha automatického škálování spustí, začnete tím, že vyberete profil, který se dá použít. Pak automatické škálování vyhodnocuje minimální a maximální hodnoty a veškerá pravidla metrik v profilu a rozhodne, zda je nutná akce škálování.
 
-### <a name="which-profile-will-autoscale-pick"></a>Který profil bude vybrat automatického škálování?
+### <a name="which-profile-will-autoscale-pick"></a>Který profil bude automatické škálování výběru?
 
-Vybrat profil, který využívá automatické škálování následující posloupnost:
-1. Nejprve vyhledá všechny pevného data profilu, který je konfigurován pro běh nyní. Pokud existuje, automatické škálování ji spustí. Pokud existuje víc profilů pevného data, které se mají spustit, automatické škálování vybere první z nich.
-2. Pokud neexistují žádné profily pevného data, bude vypadat na opakování profily automatického škálování. Pokud je nalezen profil opakování, spustí ho.
-3. Pokud neexistují žádné pevné datum nebo profily opakování, spustí automatické škálování regulární profilu.
+Automatické škálování používá k výběru profilu následující sekvenci:
+1. Nejprve vyhledá libovolný pevný profil data, který je nakonfigurován tak, aby běžel nyní. Pokud je, automatické škálování ho spustí. Pokud existuje více pevných profilů s pevným datem, které mají být spuštěny, automatické škálování vybere první z nich.
+2. Pokud neexistují žádné pevné profily kalendářních dat, automatické škálování prohledává profily opakování. Pokud se nalezne profil opakování, spustí se.
+3. Pokud neexistují žádné pevné profily data nebo opakování, automatické škálování spustí normální profil.
 
-### <a name="how-does-autoscale-evaluate-multiple-rules"></a>Jak Autoscale evaluate více pravidel?
+### <a name="how-does-autoscale-evaluate-multiple-rules"></a>Jak automatické škálování vyhodnocuje více pravidel?
 
-Po automatické škálování Určuje, který profil spuštění, vyhodnotí všechna pravidla horizontální navýšení kapacity v profilu (jedná se o pravidla s **směr = "Zvýšit"** ).
+Když automatické škálování určí, který profil se spustí, vyhodnotí všechna pravidla škálování na více instancí v profilu (Jedná se o pravidla se **směrováním = "zvýšení"** ).
 
-Pokud se jedno nebo více pravidel škálování na víc systémů se aktivuje, automatické škálování vypočítá nové kapacity určené **scaleAction** každé z těchto pravidel. Potom, provede se škálování na maximální počet těchto kapacity, abyste zajistili dostupnost služby.
+Pokud je aktivováno jedno nebo více pravidel škálování na více instancí, funkce automatického škálování vypočítá novou kapacitu určenou **scaleAction** každého z těchto pravidel. Pak se škáluje na maximum těchto kapacit, aby se zajistila dostupnost služby.
 
-Například Řekněme, že existuje je škálovací sady virtuálních počítačů s aktuální kapacita 10. Existují dvě pravidla horizontální navýšení kapacity: ten, který zvyšuje kapacitu 10 procent a ten, který zvyšuje kapacitu podle počtu 3. První pravidlo by mělo za následek novou kapacitu 11 a druhé pravidlo by mělo za následek kapacitou 13. K zajištění dostupnosti služby, automatické škálování zvolí, že je vybrán akci, která má za následek maximální kapacitu, tak druhé pravidlo.
+Řekněme například, že je k dispozici sada škálování virtuálního počítače s aktuální kapacitou 10. Existují dvě pravidla škálování na více instancí: jednu, která zvyšuje kapacitu o 10 procent a jednu, která zvyšuje kapacitu o 3 počty. První pravidlo by vedlo k nové kapacitě 11 a druhé pravidlo by mělo mít kapacitu 13. Pro zajištění dostupnosti služby zvolí automatické škálování akci, která má za následek maximální kapacitu, takže se vybere druhé pravidlo.
 
-Pokud se žádná pravidla horizontální navýšení kapacity se aktivuje, automatické škálování vyhodnotí všechna škálování na méně instancí pravidla (pravidla s **směr = "Snížit"** ). Automatické škálování akci škálování na méně instancí zabere jenom, pokud všechna pravidla škálování na méně instancí se aktivuje.
+Pokud nejsou aktivována žádná pravidla škálování na více instancí, automatické škálování vyhodnotí všechna pravidla škálování (pravidla se **směrováním = "zeslabení"** ). Pokud jsou všechna pravidla škálování, která jsou aktivována, má automatické škálování pouze akci škálování v rámci.
 
-Automatické škálování vypočítá nové kapacity určené **scaleAction** každé z těchto pravidel. Potom vybere akci škálování, jejímž výsledkem maximální počet těchto kapacity pro zajištění dostupnosti služby.
+Automatické škálování vypočítá novou kapacitu určenou **scaleAction** každého z těchto pravidel. Pak zvolí akci škálování, která má za následek maximum těchto kapacit k zajištění dostupnosti služby.
 
-Například Řekněme, že existuje je škálovací sady virtuálních počítačů s aktuální kapacita 10. Existují dvě pravidla škálování na méně instancí: ten, který snižuje kapacita o 50 procent a jednu, která sníží kapacitu počtu 3. První pravidlo by mělo za následek novou kapacitu 5 a druhé pravidlo by mělo za následek kapacitou 7. K zajištění dostupnosti služby, automatické škálování zvolí, že je vybrán akci, která má za následek maximální kapacitu, tak druhé pravidlo.
+Řekněme například, že je k dispozici sada škálování virtuálního počítače s aktuální kapacitou 10. Existují dvě pravidla škálování: jeden, který snižuje kapacitu o 50%, a jednu, která snižuje kapacitu o 3 počty. První pravidlo by vedlo k nové kapacitě 5 a druhé pravidlo by mělo mít kapacitu 7. Pro zajištění dostupnosti služby zvolí automatické škálování akci, která má za následek maximální kapacitu, takže se vybere druhé pravidlo.
 
-## <a name="next-steps"></a>Další postup
-Další informace o automatické škálování rekapitulací takto:
+## <a name="next-steps"></a>Další kroky
+Další informace o automatickém škálování najdete v následujících odkazech:
 
 * [Přehled automatického škálování](../../azure-monitor/platform/autoscale-overview.md)
 * [Azure Monitor běžné metriky automatického škálování](../../azure-monitor/platform/autoscale-common-metrics.md)
-* [Osvědčené postupy pro automatické škálování služby Azure Monitor](../../azure-monitor/platform/autoscale-best-practices.md)
-* [Pomocí akcí automatického škálování můžete odeslat emailová a webhooková oznámení výstrah](../../azure-monitor/platform/autoscale-webhook-email.md)
-* [Rozhraní REST API pro automatické škálování](https://msdn.microsoft.com/library/dn931953.aspx)
+* [Osvědčené postupy pro Azure Monitor automatického škálování](../../azure-monitor/platform/autoscale-best-practices.md)
+* [Použití akcí automatického škálování k odesílání oznámení o výstrahách e-mailu a Webhooku](../../azure-monitor/platform/autoscale-webhook-email.md)
+* [REST API automatického škálování](https://msdn.microsoft.com/library/dn931953.aspx)
 

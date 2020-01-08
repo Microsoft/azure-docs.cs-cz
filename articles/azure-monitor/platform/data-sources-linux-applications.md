@@ -4,22 +4,22 @@ description: Tento článek poskytuje podrobné informace o konfiguraci Log Anal
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 60f09035f4aabcbd6348fb5608b812ca4b001b45
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 75fd0453534e3a656bb1d8e2940b716dadfdf869
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932453"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395837"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Shromažďování čítačů výkonu pro aplikace pro Linux v Azure Monitor 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 Tento článek poskytuje podrobné informace o konfiguraci [Log Analytics agenta pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) ke shromažďování čítačů výkonu pro konkrétní aplikace do Azure monitor.  Mezi aplikace, které jsou součástí tohoto článku, patří:  
 
 - [MySQL](#mysql)
-- [Server Apache HTTP](#apache-http-server)
+- [Apache HTTP Server](#apache-http-server)
 
 ## <a name="mysql"></a>MySQL
 Pokud se v počítači při instalaci agenta Log Analytics zjistí server MySQL nebo server MariaDB, automaticky se nainstaluje poskytovatel monitorování výkonu pro MySQL server. Tento zprostředkovatel se připojí k místnímu serveru MySQL/MariaDB a zveřejní statistiku výkonu. Přihlašovací údaje uživatele MySQL musí být nakonfigurovány tak, aby poskytovatel mohl získat přístup k serveru MySQL.
@@ -76,9 +76,9 @@ Následující tabulka uvádí podrobnosti o syntaxi pro použití mycimprovauth
 | AutoUpdate *false nebo true* | mycimprovauth AutoUpdate – NEPRAVDA | Nastaví, jestli se má soubor ověření automaticky aktualizovat při restartování nebo aktualizaci. |
 | výchozí *přihlašovací heslo pro adresu BIND* | mycimprovauth výchozí adresa 127.0.0.1 root PWD | Nastaví výchozí instanci v souboru OMI pro ověřování MySQL.<br>Pole heslo by mělo být zadáno v prostém textu – heslo v souboru OMI pro ověřování MySQL bude obsahovat kódování Base 64. |
 | Odstranit *výchozí nebo port_num* | mycimprovauth 3308 | Odstraní zadanou instanci buď ve výchozím nastavení, nebo podle čísla portu. |
-| Pomoc | mycimprov – Help | Vytiskne seznam příkazů, které se mají použít. |
+| Nápověda | mycimprov – Help | Vytiskne seznam příkazů, které se mají použít. |
 | Tisk | mycimprov tisk | Vytiskne snadno čitelný soubor OMI pro ověřování MySQL. |
-| aktualizovat *heslo uživatelského jména pro adresu BIND* port_num | mycimprov aktualizace 3307 127.0.0.1 root PWD | Aktualizuje zadanou instanci nebo přidá instanci, pokud neexistuje. |
+| aktualizovat port_num *heslo uživatelského jména pro adresu BIND* | mycimprov aktualizace 3307 127.0.0.1 root PWD | Aktualizuje zadanou instanci nebo přidá instanci, pokud neexistuje. |
 
 Následující příklady příkazů definují výchozí uživatelský účet pro server MySQL na localhost.  Pole heslo by mělo být zadáno jako prostý text – heslo v souboru OMI pro ověřování MySQL bude obsahovat kódování Base 64
 
@@ -131,7 +131,7 @@ Jakmile nakonfigurujete Log Analytics agenta pro Linux, aby odesílal data do Az
 | Server MySQL | Mezipaměť tabulky používá protokol PCT |
 | Server MySQL | Procento kolizí zámku tabulky |
 
-## <a name="apache-http-server"></a>Server Apache HTTP 
+## <a name="apache-http-server"></a>Apache HTTP Server 
 Pokud se v počítači při instalaci balíčku omsagent zjistí server Apache HTTP, automaticky se nainstaluje poskytovatel monitorování výkonu pro server Apache HTTP. Tento zprostředkovatel spoléhá na modul Apache, který musí být načten do serveru protokolu HTTP Apache, aby bylo možné získat přístup k datům o výkonu. Modul lze načíst pomocí následujícího příkazu:
 ```
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -c
@@ -148,18 +148,18 @@ Jakmile nakonfigurujete Log Analytics agenta pro Linux, aby odesílal data do Az
 
 | Název objektu | Název čítače |
 |:--|:--|
-| Server Apache HTTP | Zaneprázdněné pracovní procesy |
-| Server Apache HTTP | Nečinné pracovní procesy |
-| Server Apache HTTP | Pracovní procesy s hodnotou PCT |
-| Server Apache HTTP | Celkový procesor protokolu PCT |
-| Virtuální hostitel Apache | Chyby za minutu – klient |
-| Virtuální hostitel Apache | Chyby za minutu – Server |
-| Virtuální hostitel Apache | Počet KB na požadavek |
-| Virtuální hostitel Apache | Počet požadavků v KILOBAJTech za sekundu |
-| Virtuální hostitel Apache | Počet požadavků za sekundu |
+| Apache HTTP Server | Zaneprázdněné pracovní procesy |
+| Apache HTTP Server | Nečinné pracovní procesy |
+| Apache HTTP Server | Pracovní procesy s hodnotou PCT |
+| Apache HTTP Server | Celkový procesor protokolu PCT |
+| Apache Virtual Host | Chyby za minutu – klient |
+| Apache Virtual Host | Chyby za minutu – Server |
+| Apache Virtual Host | Počet KB na požadavek |
+| Apache Virtual Host | Počet požadavků v KILOBAJTech za sekundu |
+| Apache Virtual Host | Počet požadavků za sekundu |
 
 
 
 ## <a name="next-steps"></a>Další kroky
 * [Shromáždí čítače výkonu](data-sources-performance-counters.md) od agentů systému Linux.
-* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení. 
+* Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 

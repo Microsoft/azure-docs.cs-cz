@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 691b2ae7e497c9292975083e3687d9240ce6f3e6
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: ec9f7ecf218b635588065c14bd4d11283d027c11
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286126"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364080"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Odeslání metriky hostovaného operačního systému do úložiště metriky Azure Monitor pomocí šablony Azure Resource Manager pro sadu škálování virtuálního počítače s Windows
 
@@ -23,7 +23,7 @@ Pomocí [rozšíření Azure monitor Windows Azure Diagnostics (WAD)](diagnostic
 
 Tento článek popisuje proces odeslání metrik výkonu hostovaného operačního systému pro sadu škálování virtuálního počítače s Windows do úložiště dat Azure Monitor. Počínaje systémem Windows Azure Diagnostics verze 1,11 můžete zapisovat metriky přímo do úložiště metrik Azure Monitor, kde jsou již shromažďovány standardní metriky platforem. Jejich uložením do tohoto umístění můžete získat přístup ke stejným akcím, které jsou k dispozici pro metriky platforem. Mezi akce patří výstrahy týkající se upozorňování v reálném čase, vytváření grafů, směrování, přístup z REST API a další. V minulosti rozšíření Azure Diagnostics Windows zapsalo, aby Azure Storage, ale ne úložiště dat Azure Monitor.  
 
-Pokud s Správce prostředků šablonou začínáte, přečtěte si o [Nasazení šablon](../../azure-resource-manager/resource-group-overview.md) a jejich struktuře a syntaxi.  
+Pokud s Správce prostředků šablonou začínáte, přečtěte si o [Nasazení šablon](../../azure-resource-manager/management/overview.md) a jejich struktuře a syntaxi.  
 
 ## <a name="prerequisites"></a>Požadavky
 

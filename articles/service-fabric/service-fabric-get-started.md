@@ -1,25 +1,15 @@
 ---
-title: Nastavení vývojového prostředí ve Windows pro mikroslužby Azure | Dokumentace Microsoftu
+title: Nastavení vývojového prostředí pro Windows
 description: Nainstalujte modul runtime, sadu SDK a nástroje a vytvořte místní vývojový cluster. Po dokončení této instalace a nastavení budete moci sestavovat aplikace ve Windows.
-services: service-fabric
-documentationcenter: .net
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: b94e2d2e-435c-474a-ae34-4adecd0e6f8f
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/18/2019
-ms.author: atsenthi
-ms.openlocfilehash: 1eb8e5893d93ef0261d68df4629b072876096711
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 9e055a0674804a15d307a879fd8cb609e3c2631d
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185679"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614379"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Příprava vývojového prostředí ve Windows
 > [!div class="op_single_selector"]
@@ -35,11 +25,11 @@ Pokud chcete vytvářet a spouštět [aplikace Service Fabric Azure][1] na vývo
 ### <a name="supported-operating-system-versions"></a>Podporované verze operačních systémů
 Pro vývoj jsou podporovány tyto verze operačních systémů:
 
-* Windows 7
+* Windows 7
 * Windows 8 / Windows 8.1
 * Windows Server 2012 R2
 * Windows Server 2016
-* Windows 10
+* Windows 10
 
 > [!NOTE]
 > Podpora Windows 7:

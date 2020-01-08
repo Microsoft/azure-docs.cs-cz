@@ -1,5 +1,5 @@
 ---
-title: Přidání přihlašování do webové aplikace Azure AD ASP.NET
+title: Přidání přihlašování do webové aplikace Microsoft Identity Platform ASP.NET
 titleSuffix: Microsoft identity platform
 description: Implementace přihlášení Microsoftu v řešení ASP.NET pomocí tradiční aplikace založené na webovém prohlížeči a standardu OpenID Connect
 services: active-directory
@@ -17,18 +17,18 @@ ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ff89d3c11ca88db14d2efd772be44aef7165a8a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: cf1abc42fd3639bf76f752e5fe6a8f62c7d9e66d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964731"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423476"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Přidání přihlášení do Microsoftu do webové aplikace v ASP.NET
 
 Tato příručka ukazuje, jak implementovat přihlášení do Microsoftu prostřednictvím řešení ASP.NET MVC pomocí tradiční aplikace založené na webovém prohlížeči a připojení OpenID.
 
-Po dokončení této příručky bude aplikace moci přijímat přihlášení osobních účtů z podobných outlook.com a live.com. Pracovní a školní účty z libovolné společnosti nebo organizace, která je integrovaná s Azure Active Directory (Azure AD), se budou moct přihlašovat do vaší aplikace.
+Po dokončení této příručky bude aplikace moci přijímat přihlášení osobních účtů z podobných outlook.com a live.com. Pracovní a školní účty z libovolné společnosti nebo organizace, která je integrovaná s platformou Microsoft Identity Platform, se budou moct přihlašovat do vaší aplikace.
 
 > Tato příručka vyžaduje Microsoft Visual Studio 2019.  Nemáte ji?  [Stáhněte si Visual Studio 2019 zdarma](https://www.visualstudio.com/downloads/).
 
@@ -106,7 +106,7 @@ Následující kroky slouží k vytvoření třídy OWIN middleware pro konfigur
     ```csharp
     public class Startup
     {
-        // The Client ID is used by the application to uniquely identify itself to Azure AD.
+        // The Client ID is used by the application to uniquely identify itself to Microsoft identity platform.
         string clientId = System.Configuration.ConfigurationManager.AppSettings["ClientId"];
 
         // RedirectUri is the URL where the user will be redirected to after they sign in.
@@ -115,7 +115,7 @@ Následující kroky slouží k vytvoření třídy OWIN middleware pro konfigur
         // Tenant is the tenant ID (e.g. contoso.onmicrosoft.com, or 'common' for multi-tenant)
         static string tenant = System.Configuration.ConfigurationManager.AppSettings["Tenant"];
 
-        // Authority is the URL for authority, composed by Azure Active Directory v2.0 endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
+        // Authority is the URL for authority, composed by Microsoft identity platform endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
@@ -175,7 +175,7 @@ Následující kroky slouží k vytvoření třídy OWIN middleware pro konfigur
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>Další informace
-> Parametry, které zadáte v *OpenIDConnectAuthenticationOptions*, slouží jako souřadnice pro komunikaci aplikace s Azure AD. Vzhledem k tomu, že middleware OpenID Connect používá soubory cookie na pozadí, musíte také nastavit ověřování souborů cookie, jak ukazuje předchozí kód. Hodnota *ValidateIssuer* oznamuje OpenIdConnect, že neomezuje přístup k jedné konkrétní organizaci.
+> Parametry, které zadáte v *OpenIDConnectAuthenticationOptions* , slouží jako souřadnice pro aplikaci ke komunikaci s platformou Microsoft identity. Vzhledem k tomu, že middleware OpenID Connect používá soubory cookie na pozadí, musíte také nastavit ověřování souborů cookie, jak ukazuje předchozí kód. Hodnota *ValidateIssuer* oznamuje OpenIdConnect, že neomezuje přístup k jedné konkrétní organizaci.
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Přidání kontroleru pro zpracování žádostí o přihlášení a odhlášení
@@ -270,7 +270,7 @@ V aplikaci Visual Studio vytvořte nové zobrazení, abyste přidali tlačítko 
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>Další informace
-> Tato stránka přidá do formátu SVG tlačítko pro přihlášení s černým pozadím:<br/>![Přihlásit se účtem Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Další tlačítka pro přihlášení najdete v [pokynech pro značky](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Bpokyny pro NÁHČÍSLO ").
+> Tato stránka přidá do formátu SVG tlačítko pro přihlášení s černým pozadím:<br/>![Přihlásit se účtem Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Další tlačítka pro přihlášení najdete v [pokynech pro značky](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Pokyny pro branding").
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-display-users-claims"></a>Přidání kontroleru pro zobrazení deklarací identity uživatele
@@ -407,7 +407,7 @@ Přihlaste se ![účet Microsoft](media/active-directory-develop-guidedsetup-asp
 
 <!--start-collapse-->
 > ###  <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Oprávnění a souhlas koncového bodu Microsoft Identity Platform
->  Aplikace, které se integrují se sadou Microsoft Identity Platform, se řídí autorizačním modelem, který poskytuje uživatelům a správcům kontrolu nad tím, jak budou data dostupná. Po ověření uživatele ve službě Azure AD pro přístup k této aplikaci se zobrazí výzva k vyjádření souhlasu s oprávněními požadovanými aplikací ("zobrazit váš základní profil" a "zachovat přístup k datům, ke kterým jste udělili přístup."). Po přijetí těchto oprávnění bude uživatel pokračovat do výsledků aplikace. Uživatel se ale může místo toho zobrazit na stránce **vyžadovat souhlas správce** , pokud nastane jedna z následujících možností:
+>  Aplikace, které se integrují se sadou Microsoft Identity Platform, se řídí autorizačním modelem, který poskytuje uživatelům a správcům kontrolu nad tím, jak budou data dostupná. Po ověření uživatele s Microsoft Identity platformou pro přístup k této aplikaci se zobrazí výzva k vyjádření souhlasu s oprávněními požadovanými aplikací ("zobrazit váš základní profil" a "zachovat přístup k datům, ke kterým jste udělili přístup."). Po přijetí těchto oprávnění bude uživatel pokračovat do výsledků aplikace. Uživatel se ale může místo toho zobrazit na stránce **vyžadovat souhlas správce** , pokud nastane jedna z následujících možností:
 >  > - Vývojář aplikace přidá jakákoli další oprávnění, která vyžadují **souhlas správce**.
 >  > - Nebo je tenant nakonfigurovaný (v **podnikových aplikacích – > uživatelských nastavení**), kde uživatelé nemůžou udělit souhlas s aplikacemi, které přistupují k firemním datům jejich jménem.
 >
@@ -433,7 +433,7 @@ Po procházení zobrazení řadiče by se měla zobrazit tabulka, která obsahuj
 |**Předmět** |Předmět |Řetězec, který jedinečně identifikuje uživatele napříč webem|
 |**ID tenanta** |Guid | **Identifikátor GUID** , který jednoznačně představuje organizaci Azure AD pro uživatele|
 
-Kromě toho by se měla zobrazit tabulka všech deklarací identity, které jsou v žádosti o ověření. Další informace najdete v [seznamu deklarací identity, které jsou v tokenu Azure AD ID](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
+Kromě toho by se měla zobrazit tabulka všech deklarací identity, které jsou v žádosti o ověření. Další informace najdete v [seznamu deklarací identity, které jsou v tokenu ID](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
 
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>Otestujte přístup k metodě, která má atribut autorizace (volitelné).
 
@@ -459,7 +459,7 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>Omezení toho, kdo se může přihlásit k aplikaci
 
-Ve výchozím nastavení, když sestavíte aplikaci vytvořenou touto příručkou, bude vaše aplikace přijímat přihlašovacíky osobních účtů (včetně outlook.com, live.com a dalších) a také pracovní a školní účty z jakékoli společnosti nebo organizace, která je integrovaná s Služba Azure AD. Toto je doporučená možnost pro aplikace SaaS.
+Ve výchozím nastavení, když sestavíte aplikaci vytvořenou touto příručkou, bude vaše aplikace přijímat přihlašovacíky osobních účtů (včetně outlook.com, live.com a dalších) a také pracovní a školní účty z jakékoli společnosti nebo organizace, která je integrovaná s Platforma Microsoft identity. Toto je doporučená možnost pro aplikace SaaS.
 
 K dispozici je více možností pro omezení přístupu uživatelů k aplikaci.
 

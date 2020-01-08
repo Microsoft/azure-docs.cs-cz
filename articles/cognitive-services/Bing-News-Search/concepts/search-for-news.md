@@ -7,15 +7,15 @@ author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
-ms.topic: overview
-ms.date: 06/19/2019
+ms.topic: conceptual
+ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: b70cf50bb33ca7962116586a347c508b15abcd0c
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 6fa12febe99e77efde45bcd2d538de78f618e641
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423886"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448561"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Hledání zpráv pomocí rozhraní API Bingu pro vyhledávání zpráv
 
@@ -107,7 +107,7 @@ Pokud Bing dokáže určit kategorii zpravodajského článku, obsahuje článek
 
 ## <a name="get-todays-top-news"></a>Získat dnešní hlavní novinky
 
-Chcete-li získat dnešní hlavní novinky, můžete odeslat stejnou obecnou žádost o zprávy jako dříve a zároveň nechat `q` parametr zrušit.
+Chcete-li získat dnešní hlavní novinky, můžete odeslat stejnou obecnou žádost o zprávy jako dříve a zároveň nechat parametr `q` zrušit.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=&mkt=en-us HTTP/1.1
@@ -119,7 +119,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Odpověď pro získání horních zpráv je skoro stejná jako ta pro získání obecných zpráv. Odpověď `news` ale neobsahuje pole `totalEstimatedMatches`, protože existuje stanovený počet výsledků. Počet nejčtenějších zpravodajských článků se může lišit v závislosti na zpravodajském cyklu. Nezapomeňte použít `provider` pole k atributu článku.
+Odpověď pro získání horních zpráv je skoro stejná jako ta pro získání obecných zpráv. Odpověď `news` ale neobsahuje pole `totalEstimatedMatches`, protože existuje stanovený počet výsledků. Počet nejčtenějších zpravodajských článků se může lišit v závislosti na zpravodajském cyklu. Nezapomeňte použít pole `provider` k atributu článku.
 
 ## <a name="get-news-by-category"></a>Získat zprávy podle kategorie
 
@@ -261,7 +261,7 @@ Pokud existují další články, které se zpravodajským článkem souvisejí,
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Postup stránky Vyhledávání zpráv Bingu výsledky](../paging-news.md)

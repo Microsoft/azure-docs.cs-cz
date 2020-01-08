@@ -1,61 +1,52 @@
 ---
-title: Monitorování kontejnerů v Azure Service Fabric s využitím protokolů Azure Monitor | Dokumentace Microsoftu
-description: Použití protokolů Azure Monitor pro monitorování kontejnerů, které běží na clustery Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
+title: Monitorování kontejnerů pomocí Azure Monitorch protokolů
+description: Použijte protokoly Azure Monitor pro monitorování kontejnerů, které běží na clusterech Azure Service Fabric.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: d03d68560502821b9c343be983d9f7b5a83ed977
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8d4231de13da3f8b2960bd4852136f803a97a546
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60321871"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614430"
 ---
-# <a name="monitor-containers-with-azure-monitor-logs"></a>Monitorování kontejnerů s protokoly Azure monitoru
+# <a name="monitor-containers-with-azure-monitor-logs"></a>Monitorování kontejnerů pomocí Azure Monitorch protokolů
  
-Tento článek popisuje kroky potřebné k nastavení řešení pro monitorování kontejnerů protokoly Azure monitoru, chcete-li zobrazit události kontejneru. K nastavení clusteru pro shromažďování událostí v kontejneru, najdete v tomto [podrobný kurz](service-fabric-tutorial-monitoring-wincontainers.md). 
+Tento článek popisuje kroky potřebné k nastavení Azure Monitor protokolů monitorování kontejnerů pro zobrazení událostí kontejneru. Pokud chcete nastavit cluster pro shromažďování událostí kontejneru, přečtěte si tento [podrobný kurz](service-fabric-tutorial-monitoring-wincontainers.md). 
 
 [!INCLUDE [log-analytics-agent-note.md](../../includes/log-analytics-agent-note.md)]
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="set-up-the-container-monitoring-solution"></a>Nastavit řešení pro monitorování kontejnerů
+## <a name="set-up-the-container-monitoring-solution"></a>Nastavení řešení pro monitorování kontejnerů
 
 > [!NOTE]
-> Musíte mít Azure Monitor protokoly nastavení pro váš cluster také mít nasazené na uzly agenta Log Analytics. Pokud ne, postupujte podle kroků v [nastavení protokoly Azure monitoru](service-fabric-diagnostics-oms-setup.md) a [přidat agenta Log Analytics pro cluster](service-fabric-diagnostics-oms-agent.md) první.
+> Musíte mít pro svůj cluster nastavené protokoly Azure Monitor a zároveň mají na svých uzlech nasazeného agenta Log Analytics. Pokud to neuděláte, postupujte podle kroků v části [nastavení protokolů Azure monitor](service-fabric-diagnostics-oms-setup.md) a nejdřív [přidejte agenta Log Analytics do clusteru](service-fabric-diagnostics-oms-agent.md) .
 
-1. Jakmile je váš cluster nastavený pomocí agenta Log Analytics a Azure Monitor protokolování, nasaďte kontejnery. Počkejte, kontejnerů mají být nasazeny před přechodem k dalšímu kroku.
+1. Jakmile se cluster nastaví s protokoly Azure Monitor a agentem Log Analytics, nasaďte kontejnery. Před přechodem k dalšímu kroku počkejte na nasazení kontejnerů.
 
-2. Na webu Azure Marketplace vyhledejte *řešení pro monitorování kontejnerů* a klikněte na **řešení pro monitorování kontejnerů** prostředek, který se zobrazí v části monitorování a správa kategorie.
+2. V Azure Marketplace vyhledejte řešení pro *monitorování kontejnerů* a klikněte na prostředek **řešení monitorování kontejnerů** , který se zobrazí pod kategorií monitorování a správa.
 
     ![Přidání řešení kontejnerů](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
 
-3. Vytvoření řešení uvnitř stejného pracovního prostoru, který již byl vytvořen pro cluster. Tato změna automaticky aktivuje agenta spustit shromažďování dat docker na kontejnery. Přibližně 15 minut nebo tak měli byste vidět řešení osvětlí s příchozí protokoly a statistiky, jak je znázorněno na následujícím obrázku.
+3. Vytvořte řešení v rámci stejného pracovního prostoru, který již byl pro cluster vytvořen. Tato změna automaticky aktivuje agenta, aby zahájil shromažďování dat Docker na kontejnerech. Během 15 minut byste měli vidět řešení až na základě příchozích protokolů a statistik, jak je znázorněno na následujícím obrázku.
 
-    ![Řídicí panel základní Log Analytics](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
+    ![Základní Log Analytics řídicí panel](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
 
-Agenta umožňuje výběr několika protokoly týkající se kontejnerů, které jde dotazovat v protokolech Azure Monitor nebo použít k vizualizaci ukazatele výkonu. Typy protokolů, které byly shromážděny jsou:
+Agent umožňuje shromažďování několika protokolů specifických pro kontejner, které lze dotazovat v protokolech Azure Monitor nebo které slouží k vizualizaci ukazatelů výkonu. Shromažďované typy protokolů jsou:
 
-* ContainerInventory: obsahuje informace o umístění kontejneru, název a imagí
-* ContainerImageInventory: informace o nasazené bitové kopie, včetně ID nebo velikostí
-* ContainerLog: konkrétní chybové protokoly, protokoly dockeru (stdout atd.) a další položky
-* ContainerServiceLog: příkazy démona dockeru, které byly spuštěny
-* Výkonu: čítače výkonu včetně kontejneru procesoru, paměti, síťového provozu, diskové vstupně-výstupní operace a vlastní metriky z hostitelských počítačů
+* ContainerInventory: zobrazí informace o umístění kontejneru, názvu a obrázcích.
+* ContainerImageInventory: informace o nasazených bitových kopiích, včetně ID a velikostí
+* ContainerLog: konkrétní protokoly chyb, protokoly Docker (stdout atd.) a další položky
+* ContainerServiceLog: příkazy démona Docker, které byly spuštěny
+* Výkon: čítače výkonu, včetně CPU kontejneru, paměti, síťového provozu, vstupně-výstupních operací disku a vlastních metrik z hostitelských počítačů
 
 
 
-## <a name="next-steps"></a>Další postup
-* Další informace o [protokoly Azure monitoru řešení kontejnerů](../azure-monitor/insights/containers.md).
-* Další informace o orchestraci kontejnerů v Service Fabric – [Service Fabric a kontejnery](service-fabric-containers-overview.md)
-* Seznamte se s [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) funkce nabízí jako součást protokoly Azure monitoru
-* Konfigurace protokolů Azure Monitor k nastavení [automatické upozorňování](../log-analytics/log-analytics-alerts.md) pravidla, která vám pomůže se zjišťováním a diagnostikou
+## <a name="next-steps"></a>Další kroky
+* Přečtěte si další informace o [řešení kontejnerů pro Azure monitor protokoly](../azure-monitor/insights/containers.md).
+* Přečtěte si další informace o orchestraci kontejnerů v Service Fabric- [Service Fabric a kontejnerech](service-fabric-containers-overview.md) .
+* Seznámení s funkcemi [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) , které nabízí jako součást protokolů Azure monitor
+* Konfigurace protokolů Azure Monitor pro nastavení [automatizovaných pravidel upozorňování](../log-analytics/log-analytics-alerts.md) na pomoc při zjišťování a diagnostice

@@ -5,15 +5,15 @@ author: lisaguthrie
 ms.author: lcozzens
 ms.date: 01/28/2019
 ms.topic: conceptual
-description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
+description: Naučte se používat Azure Dev Spaces a služby Azure Kubernetes k zajištění kontinuity podnikových aplikací a příprava na zotavení po havárii.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: c7594059a5627c3967aba52144ed3dc99cb510e3
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8a223e9610d2b243cd78bf8b674262d6438421a9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327293"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438521"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Provozní kontinuita a zotavení po havárii v Azure Dev Spaces
 

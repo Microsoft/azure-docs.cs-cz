@@ -8,15 +8,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab, bonova
-ms.date: 11/04/2019
+ms.reviewer: sstein, carlrab, bonova, danil
+ms.date: 12/30/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: e517b6030aa1c9549e33c00425851afae90aac42
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 7319bb680e449a27fbe6f48c831d87d9c7b5ba4f
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707646"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552742"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Rozdíly v jazyce T-SQL spravované instance, omezení a známé problémy
 
@@ -61,7 +61,7 @@ Spravované instance mají automatické zálohování, takže uživatelé můžo
   - Možnosti pásky: `REWIND`, `NOREWIND`, `UNLOAD`a `NOUNLOAD` nejsou podporovány.
   - Možnosti specifické pro protokol: `NORECOVERY`, `STANDBY`a `NO_TRUNCATE` nejsou podporovány.
 
-Určitá 
+Omezení: 
 
 - Se spravovanou instancí můžete zálohovat databázi instance do zálohy s až 32 proužky, které jsou pro databáze až 4 TB v případě, že se používá zálohování zálohy, v případě, že je použita komprese záloh.
 - Nemůžete spouštět `BACKUP DATABASE ... WITH COPY_ONLY` v databázi, která je zašifrovaná pomocí transparentní šifrování dat TDE (spravováno službou). TDE spravované službou vynutí šifrování záloh pomocí interního TDE klíče. Klíč nelze exportovat, takže nelze obnovit zálohu. Použijte automatické zálohování a obnovení k bodu v čase nebo použijte místo toho [TDE spravované zákazníkem (BYOK)](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key) . Šifrování můžete také zakázat v databázi.
@@ -191,7 +191,7 @@ Spravovaná instance nemá přístup k souborům, takže nejde vytvořit zprost�
 - [Rozšíření fondu vyrovnávací paměti](/sql/database-engine/configure-windows/buffer-pool-extension) se nepodporuje.
 - `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` se nepodporuje. Viz [ALTER Server Configuration](/sql/t-sql/statements/alter-server-configuration-transact-sql).
 
-### <a name="collation"></a>Velké
+### <a name="collation"></a>Kolace
 
 Výchozí kolace instance je `SQL_Latin1_General_CP1_CI_AS` a lze ji zadat jako parametr vytvoření. Viz [kolace](/sql/t-sql/statements/collations).
 
@@ -299,7 +299,7 @@ Další informace najdete v tématu [ALTER DATABASE](/sql/t-sql/statements/alter
 
 Následující funkce agenta SQL momentálně nejsou podporované:
 
-- Proxy
+- Proxy servery
 - Plánování úloh na nečinném procesoru
 - Povolení nebo zakázání agenta
 - Výstrahy
@@ -339,7 +339,7 @@ Spravovaná instance nemůže přistupovat ke sdíleným složkám souborů a sl
  - `sp_send_dbmail` nemůže odeslat přílohy pomocí parametru @file_attachments. Tento postup nemá přístup k místnímu systému souborů a externím sdíleným složkám nebo k Azure Blob Storage.
  - Podívejte se na známé problémy související s `@query` parametrem a ověřováním.
  
-### <a name="dbcc"></a>NÁSTROJI
+### <a name="dbcc"></a>DBCC
 
 Neuvedené příkazy DBCC, které jsou povolené v SQL Server nejsou ve spravovaných instancích podporované.
 
@@ -392,7 +392,7 @@ Propojené servery ve spravovaných instancích podporují omezený počet cíl�
 Operations
 
 - Transakce zápisu mezi instancemi nejsou podporované.
-- `sp_dropserver` se podporuje pro vyřazování propojeného serveru. Viz [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
+- `sp_dropserver` se podporuje pro vyřazování propojeného serveru. See [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
 - Funkci `OPENROWSET` lze použít ke spouštění dotazů pouze v instancích SQL Server. Můžou být spravované, místní nebo virtuální počítače. Viz [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql).
 - Funkci `OPENDATASOURCE` lze použít ke spouštění dotazů pouze v instancích SQL Server. Můžou být spravované, místní nebo virtuální počítače. Jako poskytovatel se podporují jenom hodnoty `SQLNCLI`, `SQLNCLI11`a `SQLOLEDB`. Příklad: `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Viz [OpenDataSource](/sql/t-sql/functions/opendatasource-transact-sql).
 - Propojené servery nelze použít ke čtení souborů (Excel, CSV) ze sdílených síťových složek. Zkuste použít [Bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) nebo [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) , které čtou soubory CSV z Azure Blob Storage. Sledujte tyto žádosti o [položku zpětné vazby spravované instance](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|
@@ -406,41 +406,12 @@ Externí tabulky, které odkazují na soubory v HDFS nebo Azure Blob Storage, se
 - Podporují se typy snímků a obousměrné replikace. Slučovací replikace, replikace peer-to-peer a aktualizovatelné odběry nejsou podporovány.
 - [Transakční replikace](sql-database-managed-instance-transactional-replication.md) je k dispozici pro veřejnou verzi Preview spravované instance s některými omezeními:
     - Všechny typy účastníků replikace (vydavatel, distributor, předplatitelé pro vyžádání obsahu a nabízený předplatitelé) se dají umístit na spravované instance, ale Vydavatel a distributor musí být buď v cloudu, nebo v místním prostředí.
-    - Spravované instance můžou komunikovat s nejnovějšími verzemi SQL Server. [Tady](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)najdete podporované verze.
+    - Spravované instance můžou komunikovat s nejnovějšími verzemi SQL Server. Další informace najdete v [matici podporované verze](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems) .
     - Transakční replikace obsahuje některé [Další požadavky na síť](sql-database-managed-instance-transactional-replication.md#requirements).
 
-Informace o konfiguraci replikace najdete v [kurzu replikace](replication-with-sql-database-managed-instance.md).
-
-
-Pokud je replikace povolená v databázi ve [skupině převzetí služeb při selhání](sql-database-auto-failover-group.md), musí správce spravované instance vyčistit všechny publikace na staré primární primární databázi a po převzetí služeb při selhání je znovu nakonfigurovat na novém primárním počítači. V tomto scénáři jsou potřeba následující aktivity:
-
-1. Zastavte všechny úlohy replikace běžící v databázi, pokud existují.
-2. Z vydavatele vyřaďte metadata odběru spuštěním následujícího skriptu v databázi vydavatele:
-
-   ```sql
-   EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
-   ```             
- 
-1. Odkládací metadata odběru od odběratele. Spusťte následující skript v databázi předplatného na instanci předplatitele:
-
-   ```sql
-   EXEC sp_subscription_cleanup
-      @publisher = N'<full DNS of publisher, e.g. example.ac2d23028af5.database.windows.net>', 
-      @publisher_db = N'<publisher database>', 
-      @publication = N'<name of publication>'; 
-   ```                
-
-1. Vynuceně vyřaďte všechny replikační objekty od vydavatele spuštěním následujícího skriptu v publikované databázi:
-
-   ```sql
-   EXEC sp_removedbreplication
-   ```
-
-1. Nuceně odstranit starého distributora z původní primární instance (Pokud dojde k převzetí služeb při selhání do staré primární služby, která se použila k distributorovi). Spusťte následující skript v hlavní databázi v původní spravované instanci distributora:
-
-   ```sql
-   EXEC sp_dropdistributor 1,1
-   ```
+Další informace o konfiguraci transakční replikace najdete v následujících kurzech:
+- [Replikace mezi vydavatelem a předplatitelem MI](replication-with-sql-database-managed-instance.md)
+- [Replikace mezi vydavatelem MI, distributorem MI a předplatitelem SQL Server](sql-database-managed-instance-configure-replication-tutorial.md)
 
 ### <a name="restore-statement"></a>Příkaz Restore 
 
@@ -470,7 +441,7 @@ Následující možnosti databáze jsou nastaveny nebo přepsány a nelze je zm�
 - Stávající paměťově optimalizovaná skupina souborů se přejmenuje na XTP. 
 - možnosti `SINGLE_USER` a `RESTRICTED_USER` jsou převedeny na `MULTI_USER`.
 
-Určitá 
+Omezení: 
 
 - Zálohování poškozených databází může být obnoveno v závislosti na typu poškození, ale automatizované zálohování nebude provedeno, dokud nebude poškození opraveno. Ujistěte se, že ve zdrojové instanci spustíte `DBCC CHECKDB` a používáte `WITH CHECKSUM` zálohování, aby se předešlo tomuto problému.
 - Obnovení souboru `.BAK` databáze, která obsahuje jakákoli omezení popsaná v tomto dokumentu (například `FILESTREAM` nebo `FILETABLE` objektů), nelze obnovit ve spravované instanci.
@@ -526,7 +497,7 @@ Následující proměnné, funkce a zobrazení vrací různé výsledky:
 - Počet virtuální jádra a typů instancí, které můžete nasadit v oblasti, mají některá [omezení a omezení](sql-database-managed-instance-resource-limits.md#regional-resource-limitations).
 - Existují některá [pravidla zabezpečení, která je nutné použít v podsíti](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
 
-### <a name="vnet"></a>SÍTĚ
+### <a name="vnet"></a>VNET
 - Virtuální síť se dá nasadit pomocí modelu prostředků – model klasický pro virtuální síť se nepodporuje.
 - Po vytvoření spravované instance se nepodporují přesunutí spravované instance nebo virtuální sítě do jiné skupiny prostředků nebo předplatného.
 - Některé služby, jako jsou App Service prostředí, Logic Apps a spravované instance (používané pro geografickou replikaci, transakční replikaci nebo prostřednictvím odkazovaných serverů), nemají přístup ke spravovaným instancím v různých oblastech, pokud jsou jejich virtuální sítě připojené pomocí [globálního partnerského vztahu](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). K těmto prostředkům se můžete připojit prostřednictvím ExpressRoute nebo VNet-to-VNet prostřednictvím bran virtuální sítě.
@@ -535,11 +506,55 @@ Následující proměnné, funkce a zobrazení vrací různé výsledky:
 
 Maximální velikost souboru `tempdb` nemůže být větší než 24 GB na jádro na úrovni Pro obecné účely. Maximální velikost `tempdb` na Pro důležité obchodní informace úrovni je omezená velikostí úložiště instance. velikost souboru protokolu `Tempdb` v Pro obecné účely úrovni omezena na 120 GB. Některé dotazy mohou vracet chybu, pokud vyžadují více než 24 GB na jádro v `tempdb` nebo pokud vydávají více než 120 GB dat protokolu.
 
+### <a name="msdb"></a>MSDB
+
+Následující schémata MSDB ve spravované instanci musí vlastnit jejich příslušné předdefinované role:
+
+- Obecné role
+  - TargetServersRole
+- [Pevné databázové role](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
+  - SQLAgentUserRole
+  - SQLAgentReaderRole
+  - SQLAgentOperatorRole
+- [DatabaseMail role](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
+  - DatabaseMailUserRole
+- [Role integračních služeb](https://docs.microsoft.com/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
+  - db_ssisadmin
+  - db_ssisltduser
+  - db_ssisoperator
+  
+> [!IMPORTANT]
+> Změna předdefinovaných názvů rolí, názvy schémat a vlastníci schémat budou mít vliv na běžnou činnost služby. Jakékoli změny, které v nich provedete, se vrátí zpět na předdefinované hodnoty, jakmile se zjistí, nebo při další aktualizaci služby na nejnovější verzi, aby se zajistila normální operace služby.
+
 ### <a name="error-logs"></a>Protokoly chyb
 
 Spravovaná instance umísťuje podrobné informace v protokolech chyb. K dispozici je mnoho interních systémových událostí, které jsou zaznamenány v protokolu chyb. Pomocí vlastního postupu si můžete přečíst protokoly chyb, které odfiltrují některé nedůležité položky. Další informace najdete v tématu [spravovaná instance – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) nebo [rozšíření Managed instance (preview)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) pro Azure Data Studio.
 
-## <a name="Issues"></a>Známé problémy
+## <a name="Issues"></a> Známé problémy
+
+### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>Role agenta SQL potřebují explicitní oprávnění EXECUTE pro přihlášení jiná než sysadmin.
+
+**Datum:** DEC 2019
+
+Pokud se do kterékoli z [pevných databázových rolí SQL agenta](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles)přidají přihlášení jiného typu než sysadmin, existuje problém, ve kterém je potřeba udělit explicitní oprávnění ke spuštění hlavním uloženým procedurám, aby tato přihlášení fungovala. V případě výskytu tohoto problému se zobrazí chybová zpráva "oprávnění EXECUTE bylo odepřeno pro objekt < object_name > (Microsoft SQL Server, chyba: 229)".
+
+**Alternativní řešení**: Když přidáte přihlášení do některé z pevných databázových rolí agenta SQL: SQLAgentUserRole, SQLAgentReaderRole nebo role SQLAgentOperatorRole, pro každé přihlášení přidané k těmto rolím se spustí skript T-SQL, který explicitně udělí oprávnění ke spouštění uložených procedurám uvedeným v seznamu.
+
+```tsql
+USE [master]
+GO
+CREATE USER [login_name] FOR LOGIN [login_name]
+GO
+GRANT EXECUTE ON master.dbo.xp_sqlagent_enum_jobs TO [login_name]
+GRANT EXECUTE ON master.dbo.xp_sqlagent_is_starting TO [login_name]
+GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
+```
+
+### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>Úlohy agenta SQL je možné přerušit restartováním procesu agenta.
+
+**Datum:** DEC 2019
+
+SQL Agent vytvoří novou relaci při každém spuštění úlohy a postupně zvyšuje spotřebu paměti. Aby nedošlo k překročení limitu interní paměti, který by blokoval provádění plánovaných úloh, proces agenta se restartuje, jakmile jeho spotřeba dosáhne prahové hodnoty. Výsledkem může být přerušení provádění úloh spuštěných v okamžiku restartování.
 
 ### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>Limity OLTP paměti v paměti se nepoužívají.
 

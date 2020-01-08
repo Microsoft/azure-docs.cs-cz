@@ -1,38 +1,38 @@
 ---
-title: Příkazy rozšíření MongoDB ke správě dat uložených v Azure Cosmos DB přes rozhraní API pro MongoDB
-description: Tento článek popisuje, jak spravovat data uložená v Azure Cosmos DB přes rozhraní API pro MongoDB pomocí příkazů rozšíření MongoDB.
+title: Příkazy rozšíření MongoDB pro správu dat v rozhraní API Azure Cosmos DB pro MongoDB
+description: Tento článek popisuje, jak pomocí příkazů rozšíření MongoDB spravovat data uložená v rozhraní API Azure Cosmos DB pro MongoDB.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
-ms.openlocfilehash: 94b1048befc8716caf5f7f51adb1f95d047d4077
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f57b274715eb1c8a4d517f5655c09c366574d412
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925654"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445210"
 ---
-# <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Spravovat data uložená v Azure Cosmos DB přes rozhraní API pro MongoDB pomocí příkazů rozšíření MongoDB 
+# <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Použití příkazů rozšíření MongoDB ke správě dat uložených v rozhraní API Azure Cosmos DB pro MongoDB 
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Může komunikovat s rozhraním API pro Azure Cosmos DB pro MongoDB pomocí některého z oblasti open source [ovladače klienta MongoDB](https://docs.mongodb.org/ecosystem/drivers). Azure Cosmos DB API pro MongoDB umožňuje použití existujících ovladačů klienta dodržováním [přenosový protokol MongoDB](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Pomocí některého z open source [ovladačů klientů MongoDB](https://docs.mongodb.org/ecosystem/drivers)můžete komunikovat s rozhraním API Azure Cosmos DB pro MongoDB. Rozhraní API pro Azure Cosmos DB pro MongoDB umožňuje použití existujících ovladačů klientů, které dodržuje [MongoDB síťový protokol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 
-Pomocí rozhraní Azure Cosmos DB API pro MongoDB můžete využívat výhody služby Cosmos DB, jako je například globální distribuci, automatické horizontální dělení, vysokou dostupnost, garantuje latenci, automatické, šifrování v klidovém stavu, zálohování, a mnoho více, při zachování vašich investic ve vaší aplikaci MongoDB.
+Díky rozhraní API Azure Cosmos DB pro MongoDB můžete využívat výhod Cosmos DB, jako je globální distribuce, automatická horizontálního dělení, vysoká dostupnost, záruky latence, automatické, šifrování v klidovém režimu, zálohování a spousta dalších, a současně zachovat vaše investice. v aplikaci MongoDB.
 
-## <a name="mongodb-protocol-support"></a>Podpora protokolů pro MongoDB
+## <a name="mongodb-protocol-support"></a>Podpora protokolu MongoDB
 
-Ve výchozím nastavení, rozhraní API Azure Cosmos DB pro MongoDB, je kompatibilní s databází MongoDB server verze 3.2, další podrobnosti najdete v tématu [podporovány funkcí a syntaxe](mongodb-feature-support.md). Funkce nebo operátory dotazu přidá MongoDB verze 3.4 jsou aktuálně k dispozici jako verze preview v Azure Cosmos DB API pro MongoDB. Následující příkazy rozšíření podporu určitých funkcí služby Azure Cosmos DB při provádění operací CRUD s daty uloženými v Azure Cosmos DB přes rozhraní API pro MongoDB:
+Ve výchozím nastavení je rozhraní API Azure Cosmos DB pro MongoDB kompatibilní s MongoDB serverem verze 3,2. Další informace najdete v tématu [podporované funkce a syntaxe](mongodb-feature-support.md). Funkce nebo operátory dotazů přidané v MongoDB verze 3,4 jsou aktuálně k dispozici jako náhled v rozhraní API Azure Cosmos DB pro MongoDB. Následující příkazy rozšíření podporují Azure Cosmos DB specifické funkce při provádění operací CRUD s daty uloženými v rozhraní Azure Cosmos DB API pro MongoDB:
 
-* [Vytvoření databáze](#create-database)
-* [Aktualizace databáze](#update-database)
+* [Vytvořit databázi](#create-database)
+* [Aktualizovat databázi](#update-database)
 * [Získat databázi](#get-database)
-* [Vytvoření kolekce](#create-collection)
-* [Aktualizace kolekce](#update-collection)
+* [Vytvořit kolekci](#create-collection)
+* [Aktualizovat kolekci](#update-collection)
 * [Získat kolekci](#get-collection)
 
-## <a id="create-database"></a> Vytvoření databáze
+## <a id="create-database"></a>Vytvořit databázi
 
-Příkaz create database rozšíření vytvoří novou databázi MongoDB. Název databáze se používá v kontextu databáze, proti kterému spuštění příkazu. Formát příkazu CreateDatabase vypadá takto:
+Příkaz vytvořit rozšíření databáze vytvoří novou databázi MongoDB. Název databáze se používá z kontextu databáze, proti které je příkaz spuštěn. Formát příkazu CreateDatabase je následující:
 
 ```
 {
@@ -50,7 +50,7 @@ Následující tabulka popisuje parametry v rámci příkazu:
 
 ### <a name="output"></a>Výstup
 
-Vrátí výchozí odpověď vlastní příkaz. Zobrazit [výchozí výstup](#default-output) vlastní parametry ve výstupu příkazu.
+Vrátí výchozí odpověď vlastního příkazu. Podívejte se na [výchozí výstup](#default-output) vlastního příkazu pro parametry ve výstupu.
 
 ### <a name="examples"></a>Příklady
 
@@ -65,16 +65,16 @@ db.runCommand({customAction: "CreateDatabase"});
 
 **Vytvoření databáze s propustností**
 
-Chcete-li vytvořit databázi s názvem "test" a zřízenou propustnost 1 000 RU, použijte následující příkaz:
+K vytvoření databáze s názvem "test" a zajištěné propustnosti 1000 ru použijte následující příkaz:
 
 ```shell
 use test
 db.runCommand({customAction: "CreateDatabase", offerThroughput: 1000 });
 ```
 
-## <a id="update-database"></a> Aktualizace databáze
+## <a id="update-database"></a>Aktualizovat databázi
 
-Příkaz update databáze rozšíření aktualizuje vlastnosti přidružené k zadané databázi. V současné době lze aktualizovat pouze vlastnost "offerThroughput".
+Příkaz aktualizovat databázi rozšíření aktualizuje vlastnosti přidružené k zadané databázi. V současné době můžete aktualizovat pouze vlastnost "offerThroughput".
 
 ```
 {
@@ -87,27 +87,27 @@ Následující tabulka popisuje parametry v rámci příkazu:
 
 |**Pole**|**Typ** |**Popis** |
 |---------|---------|---------|
-| customAction    |    string     |   Název vlastní příkaz. Musí být "UpdateDatabase".      |
-|  offerThroughput   |  int       |     Nové zřízená propustnost, kterou chcete nastavit v databázi.    |
+| customAction    |    string     |   Název vlastního příkazu Musí být "UpdateDatabase".      |
+|  offerThroughput   |  int       |     Nová zřízená propustnost, kterou chcete nastavit v databázi.    |
 
 ### <a name="output"></a>Výstup
 
-Vrátí výchozí odpověď vlastní příkaz. Zobrazit [výchozí výstup](#default-output) vlastní parametry ve výstupu příkazu.
+Vrátí výchozí odpověď vlastního příkazu. Podívejte se na [výchozí výstup](#default-output) vlastního příkazu pro parametry ve výstupu.
 
 ### <a name="examples"></a>Příklady
 
-**Aktualizace zřízená propustnost, které jsou přidružené k databázi**
+**Aktualizace zřízené propustnosti přidružené k databázi**
 
-Pokud chcete aktualizovat zřízená propustnost do databáze s názvem "test" na 1 200 RU, použijte následující příkaz:
+K aktualizaci zřízené propustnosti databáze s názvem "test" na 1200 ru použijte následující příkaz:
 
 ```shell
 use test
 db.runCommand({customAction: "UpdateDatabase", offerThroughput: 1200 });
 ```
 
-## <a id="get-database"></a> Získat databázi
+## <a id="get-database"></a>Získat databázi
 
-Příkaz get databáze rozšíření vrátí objekt databáze. Název databáze se používá v kontextu databáze, proti kterému spuštění příkazu.
+Příkaz Get Database Extension vrátí objekt databáze. Název databáze je použit z kontextu databáze, proti kterému je příkaz spuštěn.
 
 ```
 {
@@ -120,19 +120,19 @@ Následující tabulka popisuje parametry v rámci příkazu:
 
 |**Pole**|**Typ** |**Popis** |
 |---------|---------|---------|
-|  customAction   |   string      |   Název vlastní příkaz. Musí být "GetDatabase"|
+|  customAction   |   string      |   Název vlastního příkazu Musí být "getdatabase"|
         
 ### <a name="output"></a>Výstup
 
-Pokud příkaz proběhne úspěšně, odpověď obsahuje dokument s následující pole:
+Pokud je příkaz úspěšný, odpověď obsahuje dokument s následujícími poli:
 
 |**Pole**|**Typ** |**Popis** |
 |---------|---------|---------|
-|  `ok`   |   `int`     |   Stav odpovědi. 1 == úspěch. 0 == selhání.      |
+|  `ok`   |   `int`     |   Stav odpovědi 1 = = úspěch. 0 = = chyba.      |
 | `database`    |    `string`        |   Název databáze.      |
-|   `provisionedThroughput`  |    `int`      |    Zřízená propustnost, který je nastaven na databázi. Toto je parametr volitelný odpovědi.     |
+|   `provisionedThroughput`  |    `int`      |    Zřízená propustnost, která je nastavena v databázi. Toto je volitelný parametr odpovědi.     |
 
-Pokud příkaz selže, vrátí se výchozí odpověď vlastní příkaz. Zobrazit [výchozí výstup](#default-output) vlastní parametry ve výstupu příkazu.
+Pokud příkaz neproběhne úspěšně, vrátí se výchozí odpověď vlastního příkazu. Podívejte se na [výchozí výstup](#default-output) vlastního příkazu pro parametry ve výstupu.
 
 ### <a name="examples"></a>Příklady
 
@@ -145,9 +145,9 @@ use test
 db.runCommand({customAction: "GetDatabase"});
 ```
 
-## <a id="create-collection"></a> Vytvoření kolekce
+## <a id="create-collection"></a>Vytvořit kolekci
 
-Příkaz create kolekce rozšíření vytvoří novou kolekci MongoDB. Název databáze se používá v kontextu databáze, proti kterému spuštění příkazu. Formát příkazu CreateCollection vypadá takto:
+Příkaz vytvořit rozšíření kolekce vytvoří novou kolekci MongoDB. Název databáze se používá z kontextu databáze, proti které je příkaz spuštěn. Formát příkazu Vytvořitcollection je následující:
 
 ```
 {
@@ -162,38 +162,38 @@ Následující tabulka popisuje parametry v rámci příkazu:
 
 |**Pole**|**Typ** |**Popis** |
 |---------|---------|---------|
-| customAction    | string | Název vlastní příkaz. Musí být "CreateCollection"     |
-| Kolekce      | string | Název kolekce                                   |
-| offerThroughput | int    | Zřízená propustnost nastavit v databázi. Je volitelný parametr |
-| shardKey        | string | Cesta klíče horizontálních oddílů k vytvoření horizontálně dělené kolekce. Je volitelný parametr |
+| customAction    | string | Název vlastního příkazu Musí být "Vytvořitcollection"     |
+| – kolekce      | string | Název kolekce                                   |
+| offerThroughput | int    | Zřízená propustnost pro nastavení databáze. Je to volitelný parametr. |
+| shardKey        | string | Cesta ke klíči horizontálních oddílů pro vytvoření kolekce horizontálně dělené Je to volitelný parametr. |
 
 ### <a name="output"></a>Výstup
 
-Vrátí výchozí odpověď vlastní příkaz. Zobrazit [výchozí výstup](#default-output) vlastní parametry ve výstupu příkazu.
+Vrátí výchozí odpověď vlastního příkazu. Podívejte se na [výchozí výstup](#default-output) vlastního příkazu pro parametry ve výstupu.
 
 ### <a name="examples"></a>Příklady
 
-**Vytvořit kolekci unsharded**
+**Vytvoření kolekce unsharded**
 
-Vytvoření kolekce unsharded s názvem "testCollection" a zřízenou propustnost 1 000 RU, použijte následující příkaz: 
+Chcete-li vytvořit kolekci unsharded s názvem "TestCollection" a zřízenou propustností 1000 ru, použijte následující příkaz: 
 
 ```shell
 use test
 db.runCommand({customAction: "CreateCollection", collection: "testCollection", offerThroughput: 1000});
 ``` 
 
-**Vytvoření horizontálně dělené kolekce**
+**Vytvoření kolekce horizontálně dělené**
 
-Vytvoření horizontálně dělené kolekce s názvem "testCollection" a zřízenou propustnost 1 000 RU, použijte následující příkaz:
+Chcete-li vytvořit kolekci horizontálně dělené s názvem "TestCollection" a zřízenou propustností 1000 ru, použijte následující příkaz:
 
 ```shell
 use test
 db.runCommand({customAction: "CreateCollection", collection: "testCollection", offerThroughput: 1000, shardKey: "a.b" });
 ```
 
-## <a id="update-collection"></a> Aktualizace kolekce
+## <a id="update-collection"></a>Aktualizovat kolekci
 
-Příkaz update kolekce rozšíření aktualizuje vlastnosti přidružené k zadané kolekci.
+Příkaz rozšíření kolekce aktualizací aktualizuje vlastnosti přidružené k zadané kolekci.
 
 ```
 {
@@ -207,28 +207,28 @@ Následující tabulka popisuje parametry v rámci příkazu:
 
 |**Pole**|**Typ** |**Popis** |
 |---------|---------|---------|
-|  customAction   |   string      |   Název vlastní příkaz. Musí být "UpdateCollection".      |
-|  Kolekce   |   string      |   Název kolekce.       |
-| offerThroughput   |int|   Zřízená propustnost nastavit na kolekci.|
+|  customAction   |   string      |   Název vlastního příkazu Musí být "Updatecollection".      |
+|  – kolekce   |   string      |   Název kolekce       |
+| offerThroughput   |int|   Zřízená propustnost, která se má nastavit v kolekci|
 
 ## <a name="output"></a>Výstup
 
-Vrátí výchozí odpověď vlastní příkaz. Zobrazit [výchozí výstup](#default-output) vlastní parametry ve výstupu příkazu.
+Vrátí výchozí odpověď vlastního příkazu. Podívejte se na [výchozí výstup](#default-output) vlastního příkazu pro parametry ve výstupu.
 
 ### <a name="examples"></a>Příklady
 
-**Aktualizace zřízená propustnost související s kolekcí**
+**Aktualizace zřízené propustnosti přidružené ke kolekci**
 
-Pokud chcete aktualizovat zřízená propustnost kolekce s názvem "testCollection" na 1 200 RU, použijte následující příkaz:
+Chcete-li aktualizovat zřízenou propustnost kolekce s názvem "TestCollection" na 1200 ru, použijte následující příkaz:
 
 ```shell
 use test
 db.runCommand({customAction: "UpdateCollection", collection: "testCollection", offerThroughput: 1200 });
 ```
 
-## <a id="get-collection"></a> Získat kolekci
+## <a id="get-collection"></a>Získat kolekci
 
-Vlastní příkaz get kolekce vrátí objekt kolekce.
+Vlastní příkaz Get Collection vrátí objekt kolekce.
 
 ```
 {
@@ -242,48 +242,48 @@ Následující tabulka popisuje parametry v rámci příkazu:
 
 |**Pole**|**Typ** |**Popis** |
 |---------|---------|---------|
-| customAction    |   string      |   Název vlastní příkaz. Musí být "GetCollection".      |
-| Kolekce    |    string     |    Název kolekce.     |
+| customAction    |   string      |   Název vlastního příkazu Musí být "GetCollection".      |
+| – kolekce    |    string     |    Název kolekce     |
 
 ### <a name="output"></a>Výstup
 
-Pokud příkaz proběhne úspěšně, odpověď obsahuje dokument s následující pole
+Pokud je příkaz úspěšný, odpověď obsahuje dokument s následujícími poli
 
 
 |**Pole**|**Typ** |**Popis** |
 |---------|---------|---------|
-|  `ok`   |    `int`     |   Stav odpovědi. 1 == úspěch. 0 == selhání.      |
+|  `ok`   |    `int`     |   Stav odpovědi 1 = = úspěch. 0 = = chyba.      |
 | `database`    |    `string`     |   Název databáze.      |
-| `collection`    |    `string`     |    Název kolekce.     |
-|  `shardKeyDefinition`   |   `document`      |  Specifikace dokumentu indexu použít jako klíč horizontálního oddílu. Toto je parametr volitelný odpovědi.       |
-|  `provisionedThroughput`   |   `int`      |    Zřízená propustnost nastavit na kolekci. Toto je parametr volitelný odpovědi.     |
+| `collection`    |    `string`     |    Název kolekce     |
+|  `shardKeyDefinition`   |   `document`      |  Dokument specifikace indexu použitý jako horizontálních oddílů klíč Toto je volitelný parametr odpovědi.       |
+|  `provisionedThroughput`   |   `int`      |    Zřízená propustnost, která se má nastavit v kolekci Toto je volitelný parametr odpovědi.     |
 
-Pokud příkaz selže, vrátí se výchozí odpověď vlastní příkaz. Zobrazit [výchozí výstup](#default-output) vlastní parametry ve výstupu příkazu.
+Pokud příkaz neproběhne úspěšně, vrátí se výchozí odpověď vlastního příkazu. Podívejte se na [výchozí výstup](#default-output) vlastního příkazu pro parametry ve výstupu.
 
 ### <a name="examples"></a>Příklady
 
 **Získat kolekci**
 
-Chcete-li získat objekt kolekce pro kolekci s názvem "testCollection", použijte následující příkaz:
+Chcete-li získat objekt kolekce pro kolekci s názvem "TestCollection", použijte následující příkaz:
 
 ```shell
 use test
 db.runCommand({customAction: "GetCollection", collection: "testCollection"});
 ```
 
-## <a id="default-output"></a> Výchozí výstup vlastní příkaz.
+## <a id="default-output"></a>Výchozí výstup vlastního příkazu
 
-Pokud není zadán, obsahuje vlastní odpovědi dokument s následující pole:
+Pokud tento parametr nezadáte, vlastní odpověď obsahuje dokument s následujícími poli:
 
 |**Pole**|**Typ** |**Popis** |
 |---------|---------|---------|
-|  `ok`   |    `int`     |   Stav odpovědi. 1 == úspěch. 0 == selhání.      |
-| `code`    |   `int`      |   Pouze vrátí, když příkaz se nezdařil (to znamená ok == 0). Obsahuje kód chyby: MongoDB. Toto je parametr volitelný odpovědi.      |
-|  `errMsg`   |  `string`      |    Pouze vrátí, když příkaz se nezdařil (to znamená ok == 0). Obsahuje uživatelsky přívětivou chybovou zprávu. Toto je parametr volitelný odpovědi.      |
+|  `ok`   |    `int`     |   Stav odpovědi 1 = = úspěch. 0 = = chyba.      |
+| `code`    |   `int`      |   Vrátí se jenom v případě, že se příkaz nezdařil (tj. ok = = 0). Obsahuje kód chyby MongoDB. Toto je volitelný parametr odpovědi.      |
+|  `errMsg`   |  `string`      |    Vrátí se jenom v případě, že se příkaz nezdařil (tj. ok = = 0). Obsahuje uživatelsky přívětivou chybovou zprávu. Toto je volitelný parametr odpovědi.      |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Potom můžete přejít k další následující koncepty služby Azure Cosmos DB: 
+Dále si můžete přečíst následující pojmy Azure Cosmos DB: 
 
-* [Indexování ve službě Azure Cosmos DB](../cosmos-db/index-policy.md)
-* [Vypršení platnosti dat v Azure Cosmos DB automaticky s časem TTL](../cosmos-db/time-to-live.md)
+* [Indexování v Azure Cosmos DB](../cosmos-db/index-policy.md)
+* [Automatické vypršení platnosti dat v Azure Cosmos DB s časem až Live](../cosmos-db/time-to-live.md)

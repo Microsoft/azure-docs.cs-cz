@@ -1,17 +1,17 @@
 ---
-title: Konfigurace Virtual Network pro mezipaměť Azure úrovně Premium pro Redis
+title: Konfigurace Azure cache Virtual Network – Premium pro Redis
 description: Naučte se vytvářet a spravovat podporu Virtual Network pro Azure cache úrovně Premium pro instance Redis.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: yegu
-ms.openlocfilehash: 03cc5bd4e6e7198a6a3a916226c72e9b0f9ff1b2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f449dc08dede30a7dec977bb66e0a2c0b509a1f0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233135"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433491"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Jak nakonfigurovat Virtual Network podporu pro Azure cache Premium pro Redis
 Azure cache pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti, včetně funkcí úrovně Premium, jako je podpora clusteringu, trvalosti a virtuální sítě. Virtuální síť je privátní síť v cloudu. Když je u instance Azure cache for Redis nakonfigurovaná virtuální síť, není veřejně adresovatelná a je dostupná jenom z virtuálních počítačů a aplikací v rámci virtuální sítě. Tento článek popisuje, jak nakonfigurovat podporu virtuální sítě pro instanci Redis Premium Azure cache.
@@ -98,7 +98,7 @@ Když je Azure cache for Redis hostovaný ve virtuální síti, použijí se por
 
 K dispozici jsou devět požadavků na Odchozí porty. Odchozí požadavky v těchto oblastech jsou buď odchozí, do dalších služeb, které jsou nezbytné pro fungování mezipaměti, nebo interní pro Redis podsíť pro komunikaci mezi uzly. Pro geografickou replikaci existují pro komunikaci mezi podsítěmi primární a sekundární mezipaměti další odchozí požadavky.
 
-| Port (y) | Směr | Transportní protokol | Účel | Místní IP adresa | Vzdálená IP adresa |
+| Port(y) | Směr | Transportní protokol | Účel | Místní IP adresa | Vzdálená IP adresa |
 | --- | --- | --- | --- | --- | --- |
 | 80, 443 |Odchozí |TCP |Redis závislosti na Azure Storage/PKI (Internet) | (Podsíť Redis) |* |
 | 443 | Odchozí | TCP | Redis závislost na Azure Key Vault | (Podsíť Redis) | AzureKeyVault <sup>1</sup> |
@@ -124,7 +124,7 @@ Pokud používáte mezi mezipamětí v Azure Virtual Networkch replikaci mezi me
 
 Existuje osm požadavků na rozsah příchozích portů. Příchozí požadavky v těchto rozsahech jsou buď příchozí z jiných služeb hostovaných ve stejné virtuální síti, nebo interní pro komunikaci podsítě Redis.
 
-| Port (y) | Směr | Transportní protokol | Účel | Místní IP adresa | Vzdálená IP adresa |
+| Port(y) | Směr | Transportní protokol | Účel | Místní IP adresa | Vzdálená IP adresa |
 | --- | --- | --- | --- | --- | --- |
 | 6379, 6380 |Příchozí |TCP |Komunikace klienta s Redis, Vyrovnávání zatížení Azure | (Podsíť Redis) | (Redis podsíť), Virtual Network Azure Load Balancer <sup>1</sup> |
 | 8443 |Příchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) |(Podsíť Redis) |

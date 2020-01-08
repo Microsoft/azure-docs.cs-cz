@@ -1,25 +1,24 @@
 ---
-title: Použití deserializátorů .NET pro úlohy Azure Stream Analytics
+title: Čtení vstupu v jakémkoli formátu pomocí vlastního deserializace rozhraní .NET v Azure Stream Analytics
 description: Tento článek vysvětluje formát serializace a rozhraní, která definují vlastní deserializace rozhraní .NET pro Azure Stream Analytics úlohy cloudu a Edge.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: f1452e56054948edffc6e9b3c98fa48d2589cb2a
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.date: 12/30/2019
+ms.openlocfilehash: a64912921e5ce8c0dc76fbf2ae0be8fb34bacf1a
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024944"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75553014"
 ---
-# <a name="use-net-deserializers-for-azure-stream-analytics-jobs"></a>Použití deserializátorů .NET pro úlohy Azure Stream Analytics
+# <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Čtení vstupu v jakémkoli formátu pomocí vlastních deserializátorů .NET
 
-Vlastní deserializace .NET umožňují, aby vaše úloha Azure Stream Analytics četla data z formátů mimo tři [předdefinované formáty dat](stream-analytics-parsing-json.md). Tento článek vysvětluje formát serializace a rozhraní, která definují vlastní deserializace rozhraní .NET pro Azure Stream Analytics úlohy cloudu a Edge. K dispozici jsou také ukázkové deserializace pro vyrovnávací paměť protokolů a formát CSV.
+Vlastní deserializace rozhraní .NET umožňují, aby vaše úloha Azure Stream Analytics četla data z formátů mimo tři [předdefinované formáty dat](stream-analytics-parsing-json.md). Tento článek vysvětluje formát serializace a rozhraní, která definují vlastní deserializace rozhraní .NET pro Azure Stream Analytics úlohy cloudu a Edge. K dispozici jsou také ukázkové deserializace pro vyrovnávací paměť protokolů a formát CSV.
 
-## <a name="custom-net-deserializer"></a>Vlastní deserializace .NET
+## <a name="net-custom-deserializer"></a>Vlastní deserializace rozhraní .NET
 
 Následující ukázky kódu jsou rozhraní, která definují vlastní deserializaci a implementují `StreamDeserializer<T>`.
 
@@ -134,7 +133,7 @@ Následující fragment kódu je implementace deserializace za předpokladu, že
     }
 ```
 
-### <a name="csv"></a>Formát
+### <a name="csv"></a>SDÍLENÝ SVAZEK CLUSTERU
 
 Následující fragment kódu je jednoduchý deserializace CSV, který také ukazuje šíření chyb.
 
@@ -226,12 +225,12 @@ Následující kód jazyka JavaScript je příkladem formátu serializace deseri
 
 Tato funkce je k dispozici v následujících oblastech:
 
-* Středozápadní USA (k dispozici)
-* Severní Evropa (k dispozici)
-* Východní USA (k dispozici)
-* Západní USA (brzy)
-* Východní USA 2 (brzy)
-* Západní Evropa (brzy)
+* Středozápadní USA
+* Severní Evropa
+* Východní USA
+* Západní USA
+* Východ USA 2
+* Západní Evropa
 
 Můžete [požádat o podporu](https://aka.ms/ccodereqregion) pro další oblasti.
 
@@ -239,7 +238,7 @@ Můžete [požádat o podporu](https://aka.ms/ccodereqregion) pro další oblast
 
 ### <a name="when-will-this-feature-be-available-in-all-azure-regions"></a>Kdy bude tato funkce dostupná ve všech oblastech Azure?
 
-Tato funkce je k dispozici v 6 oblastech (podpora #region). Pokud vás zajímá použití této funkce v jiné oblasti, můžete [Odeslat žádost](https://aka.ms/ccodereqregion). Podpora všech oblastí Azure je v plánu.
+Tato funkce je k dispozici v [6 oblastech](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples#region-support). Pokud vás zajímá použití této funkce v jiné oblasti, můžete [Odeslat žádost](https://aka.ms/ccodereqregion). Podpora všech oblastí Azure je v plánu.
 
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>Můžu získat přístup k MetadataPropertyValue ze svých vstupů, podobně jako funkce GetMetadataPropertyValue?
 

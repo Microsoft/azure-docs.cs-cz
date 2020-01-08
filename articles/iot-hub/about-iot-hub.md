@@ -8,14 +8,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 0dde7bd9bd3372f0f5eddbbd56727eca3ae4a9dd
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 78678474430792eb7fe419ef4f15828d461c1fec
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950460"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647403"
 ---
-# <a name="what-is-azure-iot-hub"></a>Co je Azure IoT Hub?
+# <a name="what-is-azure-iot-hub"></a>Co je Centrum IoT Azure?
 
 IoT Hub je spravovaná služba hostovaná v cloudu, která funguje jako centrum zpráv pro obousměrnou komunikaci mezi aplikací IoT a zařízeními, která spravuje. Pomocí služby Azure IoT Hub můžete vytvářet řešení IoT umožňující spolehlivou a zabezpečenou komunikací mezi miliony zařízeními IoT a back-endem řešení hostovaným v cloudu. Ke službě IoT Hub můžete připojit prakticky jakékoli zařízení.
 
@@ -81,7 +81,7 @@ Pomocí sady integrovaných funkcí můžete spravovat zařízení připojená k
 
 [Pro službu IoT Hub je k dispozici smlouva o úrovni služeb (SLA)](https://azure.microsoft.com/support/legal/sla/iot-hub/) zajišťující 99,9% dostupnost. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/) vysvětluje garantovanou dostupnost Azure jako celku.
 
-## <a name="connect-your-devices"></a>Připojení zařízení
+## <a name="connect-your-devices"></a>Připojit zařízení
 
 Pomocí knihoven ze sady [SDK pro zařízení Azure IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) můžete vytvářet aplikace, které se spouští na vašich zařízeních a komunikují se službou IoT Hub. Mezi podporované platformy patří několik distribucí Linuxu, Windows a operační systémy pracující v reálném čase. Mezi podporované jazyky patří:
 
@@ -111,12 +111,16 @@ Pokud vaše řešení nemůže používat některý z podporovaných protokolů,
 
 Pro každé předplatné Azure platí výchozí omezení kvót, která brání zneužití služeb, a tato omezení můžou ovlivnit dosah vašeho řešení IoT. Aktuální limit pro každé předplatné je 50 centra IoT na předplatné. O navýšení kvóty můžete požádat kontaktováním podpory. Další informace najdete v tématu [IoT Hub kvóty a omezování](iot-hub-devguide-quotas-throttling.md). Další podrobnosti o limitech kvót najdete v jednom z následujících článků:
 
-* [Omezení služeb v předplatném Azure](../azure-subscription-service-limits.md)
+* [Omezení služeb v předplatném Azure](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 * [Omezování služby IoT Hub a vy](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete vyzkoušet komplexní řešení IoT, projděte si rychlé starty pro službu IoT Hub:
 
-* [Rychlé zprovoznění: Odeslání telemetrie ze zařízení do služby IoT Hub](quickstart-send-telemetry-node.md)
+* [Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT](quickstart-send-telemetry-node.md)
+
+Další informace o tom, jak můžete vytvářet a nasazovat řešení IoT pomocí Azure IoT, najdete tady:
+
+* [Základy: technologie a řešení Azure IoT](../iot-fundamentals/iot-services-and-technologies.md).

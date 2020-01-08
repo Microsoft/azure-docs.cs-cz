@@ -4,15 +4,15 @@ description: Použití diagnostiky Azure pro ladění, měření výkonu, monito
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: d1721411b57fc3542af48fc5f48eca7e4a2d06c8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1bdefc6b61e4e5cc5b8648880c5fdd8662af1bc1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552143"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395372"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Co je rozšíření Azure Diagnostics
 Rozšíření Azure Diagnostics je agentem v rámci Azure, který umožňuje shromažďování diagnostických dat v nasazené aplikaci. Diagnostické rozšíření můžete použít z řady různých zdrojů. V současné době jsou podporované webové a pracovní role Azure Cloud Service (Classic), Virtual Machines, sady škálování virtuálních počítačů a Service Fabric. Jiné služby Azure mají různé diagnostické metody. Podívejte [se na Přehled monitorování v Azure](../../azure-monitor/overview.md).
@@ -20,14 +20,14 @@ Rozšíření Azure Diagnostics je agentem v rámci Azure, který umožňuje shr
 ## <a name="linux-agent"></a>Linuxový agent
 K dispozici je [verze Linux rozšíření](../../virtual-machines/extensions/diagnostics-linux.md) pro Virtual Machines se systémem Linux. Shromážděné statistiky a chování se liší od verze Windows.
 
-## <a name="data-you-can-collect"></a>Data, která můžete shromažďovat
+## <a name="data-you-can-collect"></a>Data, která lze shromažďovat
 Rozšíření Azure Diagnostics může shromažďovat následující typy dat:
 
 | Zdroj dat | Popis |
 | --- | --- |
 | Metriky čítače výkonu |Operační systém a vlastní čítače výkonu |
 | Protokoly aplikací |Trasování zpráv zapsaných vaší aplikací |
-| Protokoly událostí systému Windows |Informace odesílané systému protokolování událostí systému Windows |
+| Protokoly událostí Windows |Informace odesílané systému protokolování událostí systému Windows |
 | Protokoly EventSource .NET |Psaní kódu pro události pomocí třídy [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) .NET |
 | Protokoly IIS |Informace o webech služby IIS |
 | [Protokoly ETW založené na manifestech](https://docs.microsoft.com/windows/desktop/etw/about-event-tracing) |Trasování událostí pro události systému Windows generované jakýmkoli procesem. první |

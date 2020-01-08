@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: c2a689f7c3ac1308e12d0e371a9ad7f7187417d6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2abf6187be78ee6cb78676284848051a935b150b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792180"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445469"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>Rychlý Start: migrace stávající webové aplikace Node. js v MongoDB na Azure Cosmos DB 
 
@@ -40,7 +40,7 @@ Až budete hotovi, budete mít střední hodnotu aplikace (MongoDB, Express, úh
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
@@ -97,7 +97,7 @@ Pokud se komponenta `cosmosdb` v seznamu základních příkazů nenachází, p
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte pomocí příkazu [az group create](/cli/azure/group#az-group-create) [skupinu prostředků](../azure-resource-manager/resource-group-overview.md). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure, jako například webové aplikace, databáze a účty úložiště. 
+Vytvořte pomocí příkazu [az group create](/cli/azure/group#az-group-create)[skupinu prostředků](../azure-resource-manager/management/overview.md). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure, jako například webové aplikace, databáze a účty úložiště. 
 
 Následující příklad vytvoří skupinu prostředků pro oblast Západní Evropa. Pro skupinu prostředků vyberte jedinečný název.
 
@@ -111,7 +111,7 @@ az group create --name myResourceGroup --location "West Europe"
 
 Pomocí příkazu [AZ cosmosdb Create](/cli/azure/cosmosdb#az-cosmosdb-create) vytvořte účet Cosmos.
 
-V následujícím příkazu nahraďte zástupný symbol `<cosmosdb-name>` vlastním jedinečným názvem účtu Cosmos. Tento jedinečný název se použije jako součást Cosmos DBho koncového bodu (`https://<cosmosdb-name>.documents.azure.com/`), takže tento název musí být jedinečný ve všech účtech Cosmos v Azure. 
+V následujícím příkazu nahraďte vlastní jedinečný název účtu Cosmos, kde se zobrazí zástupný symbol `<cosmosdb-name>`. Tento jedinečný název se použije jako součást Cosmos DBho koncového bodu (`https://<cosmosdb-name>.documents.azure.com/`), takže tento název musí být jedinečný ve všech účtech Cosmos v Azure. 
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
@@ -165,7 +165,7 @@ V tomto kroku připojíte ukázkovou aplikaci střední. js k databázi Cosmos, 
 
 V úložišti MEAN.js otevřete `config/env/local-development.js`.
 
-Obsah tohoto souboru nahraďte následujícím kódem. Nezapomeňte také nahradit dva zástupné symboly `<cosmosdb-name>` názvem vašeho účtu Cosmos.
+Obsah tohoto souboru nahraďte následujícím kódem. Nezapomeňte také nahradit tyto dvě `<cosmosdb-name>` zástupné symboly názvem vašeho účtu Cosmos.
 
 ```javascript
 'use strict';
@@ -219,7 +219,7 @@ Pokud chcete zobrazovat uživatelská data vytvořená v předchozím kroku, za
 
 Do vyhledávacího pole nahoře zadejte **Azure Cosmos DB**. Když se otevře okno účtu Cosmos, vyberte svůj účet Cosmos. V levém navigačním panelu vyberte **Průzkumník dat**. Rozbalte kolekci v podokně Kolekce. Pak můžete zobrazovat dokumenty v kolekci, dotazovat se na data a dokonce vytvářet a spouštět uložené procedury, triggery a funkce UDF. 
 
-![Průzkumník dat na portálu Azure Portal](./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png)
+![Průzkumník dat na webu Azure Portal](./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png)
 
 
 ## <a name="deploy-the-nodejs-application-to-azure"></a>Nasaďte aplikaci Node.js do platformy Azure

@@ -1,19 +1,15 @@
 ---
 title: Automatické škálování v Azure s využitím vlastní metriky
 description: Naučte se škálovat prostředky podle vlastní metriky v Azure.
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: f83c68dd2f2ddbb73974a2ea4e91e746308945c6
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: f8aaaf8890c3642884b72cc6c8fc2759fec357fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958114"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364539"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Začínáme s automatickým škálováním podle vlastní metriky v Azure
 Tento článek popisuje, jak škálovat prostředek podle vlastní metriky v Azure Portal.

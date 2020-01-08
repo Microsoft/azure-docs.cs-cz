@@ -1,18 +1,18 @@
 ---
-title: Co je Azure cache pro Redis?
-description: Přečtěte si, co je Azure cache pro Redis a jak se běžně používá.
+title: Co je Azure Cache for Redis?
+description: Přečtěte si, co je Azure cache pro Redis a běžné použití, včetně ukládání do mezipaměti, ukládání obsahu do mezipaměti, ukládání uživatelských relací do mezipaměti, úlohy a služby Řízení front zpráv a distribuované transakce.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: overview
-ms.date: 03/26/2018
-ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 87e7505bddfce431b5e859fbbeee79f75867cfc9
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.date: 03/26/2018
+ms.openlocfilehash: 5224be999ff8ff52c2f52568a504095dc5962398
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122653"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433421"
 ---
 # <a name="azure-cache-for-redis-description"></a>Popis služby Azure cache pro Redis
 
@@ -38,10 +38,10 @@ Existuje mnoho běžných vzorů, ve kterých se mezipaměť Azure pro Redis pou
 
 Mezipaměť Azure pro Redis je k dispozici na následujících úrovních:
 
-| Vrstva | Popis |
+| Úroveň | Popis |
 |---|---|
-Basic | Mezipaměť s jedním uzlem. Tato vrstva podporuje více velikostí paměti (250 MB – 53 GB). Jedná se o ideální vrstvu pro vývoj a testování nebo pro méně náročné úlohy. Vrstva Basic nemá žádnou smlouvu o úrovni služeb (SLA). |
-| Standard | Replikovaná mezipaměť v konfiguraci primárního a sekundárního uzlu spravovaná Microsoftem, se smlouvou SLA zajišťující vysokou dostupnost (99,9 %). |
+Úroveň Basic | Mezipaměť s jedním uzlem. Tato vrstva podporuje více velikostí paměti (250 MB – 53 GB). Jedná se o ideální vrstvu pro vývoj a testování nebo pro méně náročné úlohy. Vrstva Basic nemá žádnou smlouvu o úrovni služeb (SLA). |
+| Úroveň Standard | Replikovaná mezipaměť v konfiguraci primárního a sekundárního uzlu spravovaná Microsoftem, se smlouvou SLA zajišťující vysokou dostupnost (99,9 %). |
 | Premium | Úroveň Premium je úroveň pro podnik připravený na úrovni podniku. Mezipaměti vrstvy Premium podporují více funkcí a mají větší propustnost s nižší latencí. Mezipaměti ve vrstvě Premium se nasazují na výkonnější hardware a poskytují lepší výkon v porovnání s vrstvou Basic nebo Standard. Tato výhoda znamená, že propustnost mezipaměti stejné velikosti bude vyšší v porovnání s úrovní Standard. |
 
 > [!TIP]
@@ -54,13 +54,13 @@ Po vytvoření můžete mezipaměť škálovat na vyšší vrstvu. Škálování
 
 Stránka s [cenami Azure cache for Redis](https://azure.microsoft.com/pricing/details/cache/) poskytuje podrobné porovnání každé úrovně. V následující tabulce jsou popsány některé funkce podporované jednotlivými vrstvami:
 
-| Popis funkce | Premium | Standard | Basic |
+| Popis funkce | Premium | Úroveň Standard | Úroveň Basic |
 | ------------------- | :-----: | :------: | :---: |
 | [Smlouvy o úrovni služeb (SLA)](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) |✔|✔|-|
 | [Trvalost dat Redis](cache-how-to-premium-persistence.md) |✔|-|-|
 | [Cluster Redis](cache-how-to-premium-clustering.md) |✔|-|-|
 | [Zabezpečení prostřednictvím pravidel brány firewall](cache-configure.md#firewall) |✔|✔|✔|
-| Šifrování při přenosu |✔|✔|✔|
+| Šifrování během přenosu |✔|✔|✔|
 | [Vyšší míra zabezpečení a izolace pomocí virtuální sítě](cache-how-to-premium-vnet.md) |✔|-|-|
 | [Import/export](cache-how-to-import-export-data.md) |✔|-|-|
 | [Plánované aktualizace](cache-administration.md#schedule-updates) |✔|✔|✔|

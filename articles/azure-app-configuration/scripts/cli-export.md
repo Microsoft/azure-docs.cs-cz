@@ -1,5 +1,6 @@
 ---
-title: Ukázkový skript Azure CLI – export z úložiště konfigurace aplikace Azure | Microsoft Docs
+title: Ukázkový skript Azure CLI – export z úložiště konfigurace aplikace Azure
+titleSuffix: Azure App Configuration
 description: Poskytuje informace a ukázkové skripty pro export z úložiště konfigurace aplikace Azure.
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 7969300e9865c943c0f3759277bd26529c0c5464
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 28066fcea50180189cff7f9af790908c52a4a261
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184886"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433603"
 ---
 # <a name="export-from-an-azure-app-configuration-store"></a>Export z úložiště konfigurace aplikace Azure
 
@@ -50,7 +51,7 @@ az appconfig kv export --name myTestAppConfigStore --file ~/Export.json
 
 Tento skript používá následující příkazy k exportu z úložiště konfigurace aplikace. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [AZ appconfig KV export](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-export) | Exportuje z prostředku úložiště konfigurace aplikace. |
 

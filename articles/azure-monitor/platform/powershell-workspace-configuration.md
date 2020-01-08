@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/19/2019
-ms.openlocfilehash: 9404bbf0ad79df41b0b5960977d6605697da5df5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 68cd0d51c16ecd63a1446c284f81c5dea07b8c06
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894568"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363519"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Správa pracovního prostoru Log Analytics v Azure Monitor pomocí prostředí PowerShell
 
@@ -37,7 +37,7 @@ Tento článek obsahuje dva příklady, které znázorňují některé z funkcí
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Tyto příklady pracují s verzí 1.0.0 nebo novějším v modulu AZ. OperationalInsights.
 
 
@@ -177,6 +177,10 @@ New-AzOperationalInsightsWindowsPerformanceCounterDataSource -ResourceGroupName 
 New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -CustomLogRawJson "$CustomLog" -Name "Example Custom Log Collection"
 
 ```
+
+> [!NOTE]
+> Formát parametru **CustomLogRawJson** , který definuje konfiguraci vlastního protokolu, může být složitý. K načtení konfigurace pro existující vlastní protokol použijte [příkaz Get-AzOperationalInsightsDataSource](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0) . Vlastnost **Properties** je konfigurace požadovaná pro parametr **CustomLogRawJson** .
+
 Ve výše uvedeném příkladu byl regexDelimiter definován jako "\\n" pro nový řádek. Oddělovač protokolu může být také časovým razítkem.  Podporované formáty:
 
 | Formát | Formát regulárního výrazu JSON používá dva \\ pro každý \ ve standardním regulárním výrazu, takže pokud testování v aplikaci RegEx snižuje \\ na \ | | |

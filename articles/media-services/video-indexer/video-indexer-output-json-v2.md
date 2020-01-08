@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
-ms.openlocfilehash: c978fed1675ea80ae9b2f6fb7fbe9a4c84472638
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ab48787edcdd8c28891ca49d0f8b64305ce0e747
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978300"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454638"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Kontrola výstupu Video Indexer vytvořeného rozhraním API
 
-Když zavoláte rozhraní API pro **získání indexu videa** a stav odpovědi je OK, získáte Podrobný výstup JSON jako obsah odpovědi. Obsah JSON obsahuje podrobnosti o zadaných videích Insights. Přehledy zahrnují dimenze jako přepisy, OCRs, obličeje, témata, bloky atd. Dimenze mají instance časových rozsahů, které ukazují, kdy se ve videu objevila Každá dimenze.  
+Když zavoláte rozhraní API pro **získání indexu videa** a stav odpovědi je OK, získáte Podrobný výstup JSON jako obsah odpovědi. Obsah JSON obsahuje podrobnosti o zadaných videích Insights. Přehledy zahrnují: přepisy, OCRs, obličeje, témata, bloky atd. Každý typ Insight zahrnuje instance časových rozsahů, které ukazují, kdy se ve videu zobrazí přehled. 
 
 1. Pro načtení souboru JSON volejte volání [Get video index API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?) .
 1. Pokud vás zajímá také konkrétní artefakty, zavolejte na [získat rozhraní API pro stažení artefaktů videa](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Artifact-Download-Url?) .
@@ -94,7 +94,7 @@ V této části se zobrazuje souhrn přehledů.
 |značky| Může obsahovat nula nebo více značek. Podrobnější informace najdete v tématu [značky](#brands).|
 |týkají | Podrobnější informace najdete v tématu [Statistika](#statistics).|
 |emoce| Může obsahovat nula nebo více emoce. Podrobnější informace najdete v tématu [emoce](#emotions).|
-|topics|Může obsahovat nula nebo více témat. Dimenze [témata](#topics) .|
+|topics|Může obsahovat nula nebo více témat. [Témata](#topics) přehled.|
 
 ## <a name="videos"></a>videa
 
@@ -150,28 +150,28 @@ V této části se zobrazuje souhrn přehledů.
 ```
 ### <a name="insights"></a>Insights
 
-Přehledy představují sadu dimenzí (například přepisové řádky, plošky, značky atd.), kde každá dimenze je seznam jedinečných prvků (například face1, face2, face3) a každý prvek má vlastní metadata a seznam jeho instancí (které jsou časové rozsahy s Další volitelná metadata).
+Každý vhled (například záznamy přepisu, obličeje, značky atd.) obsahuje seznam jedinečných prvků (například face1, face2, face3) a každý prvek má vlastní metadata a seznam jeho instancí (které jsou časové rozsahy s dalšími volitelnými metadaty).
 
 Ploška může mít ID, název, miniaturu, další metadata a seznam jeho dočasná instance (například: 00:00:05 – 00:00:10, 00:01:00-00:02:30 a 00:41:21 – 00:41:49). Každá dočasná instance může mít další metadata. Například souřadnice obdélníku plochy (20230, 60, 60).
 
-|Version|Verze kódu|
+|Verze|Verze kódu|
 |---|---|
 |sourceLanguage|Zdrojový jazyk videa (za předpokladu, že se jedná o jeden hlavní jazyk). Ve formě řetězce [BCP-47](https://tools.ietf.org/html/bcp47) .|
 |language|Jazyk Insights (přeložený ze zdrojového jazyka). Ve formě řetězce [BCP-47](https://tools.ietf.org/html/bcp47) .|
-|záznamy|Dimenze [přepisu](#transcript) .|
-|OCR|Dimenze [OCR](#ocr) .|
-|klíčová slova|Dimenze [klíčová slova](#keywords) .|
-|blocks|Může obsahovat jeden nebo více [bloků](#blocks)|
-|emotikon|Dimenze [obličeje](#faces) .|
-|popisky|Dimenze [Štítky](#labels) .|
-|řizování|Dimenze [snímků](#shots) .|
-|značky|Dimenze [značky](#brands) .|
-|audioEffects|Dimenze [audioEffects](#audioEffects)|
-|zabarvení|Dimenze [zabarvení](#sentiments)|
-|visualContentModeration|Dimenze [visualContentModeration](#visualcontentmoderation)|
-|textualContentModeration|Dimenze [textualContentModeration](#textualcontentmoderation)|
-|emoce| Dimenze [emoce](#emotions)|
-|topics|Dimenze [témata](#topics) .|
+|záznamy|Přehled [přepisu](#transcript)|
+|OCR|Přehled [rozpoznávání OCR](#ocr) .|
+|klíčová slova|[Klíčová slova](#keywords) Insight.|
+|blokování|Může obsahovat jeden nebo více [bloků](#blocks)|
+|emotikon|Přehled [obličeje](#faces)|
+|popisky|Přehled [štítků](#labels)|
+|řizování|Přehled [snímků](#shots) .|
+|značky|Přehled [značek](#brands) .|
+|audioEffects|Přehled [audioEffects](#audioEffects)|
+|zabarvení|Přehled [zabarvení](#sentiments)|
+|visualContentModeration|Přehled [visualContentModeration](#visualcontentmoderation)|
+|textualContentModeration|Přehled [textualContentModeration](#textualcontentmoderation)|
+|emoce| Přehled [emoce](#emotions)|
+|topics|[Témata](#topics) přehled.|
 
 Příklad:
 
@@ -194,7 +194,7 @@ Příklad:
 }
 ```
 
-#### <a name="blocks"></a>blocks
+#### <a name="blocks"></a>blokování
 
 Atribut | Popis
 ---|---
@@ -501,7 +501,7 @@ Názvy značek firmy a produktu zjištěné v řeči pro přepis textu a/nebo vi
 |referenceId | Přípona adresy URL Wikipedii značky Například "Target_Corporation" je přípona [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |referenceUrl | Adresa URL Wikipedii značky, pokud existuje. Příklad: [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |description|Popis značek|
-|tags|Seznam předdefinovaných značek, které byly přidruženy k této značce.|
+|značek|Seznam předdefinovaných značek, které byly přidruženy k této značce.|
 |spolehlivost|Hodnota spolehlivosti Video Indexerho detektoru značky (0-1).|
 |instance|Seznam časových rozsahů této značky. Každá instance má brandType, který označuje, zda se tato značka objevila v přepisu nebo v OCR.|
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: f87e7795416431305141de24497e9760eb03641e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 4ee5f06a7256a2092cfed923cf40c6b74254c4a1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484372"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647556"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí prostředí PowerShell
 Tyto kroky ukazují, jak používat Azure PowerShell příkazy k migraci prostředků infrastruktury jako služby (IaaS) z modelu nasazení Classic do modelu nasazení Azure Resource Manager.
@@ -58,7 +58,7 @@ Pokyny k instalaci najdete v tématu [instalace a konfigurace Azure PowerShell](
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>Krok 3: Ujistěte se, že jste správcem předplatného.
 K provedení této migrace musíte být přidáni jako spolusprávce předplatného v [Azure Portal](https://portal.azure.com).
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. V nabídce **centra** vyberte **předplatné**. Pokud ho nevidíte, vyberte **všechny služby**.
 3. Vyhledejte odpovídající položku pro odběr a potom se podívejte do pole **Moje role** . Pro spolusprávce by měla být hodnota _správce účtu_.
 
@@ -125,7 +125,7 @@ Nastavte si předplatné Azure pro aktuální relaci. V tomto příkladu se nast
 <br>
 
 ## <a name="step-5-have-enough-resource-manager-vm-vcpus"></a>Krok 5: dostatečný počet Správce prostředků vCPU virtuálního počítače
-Ujistěte se, že máte dostatek Azure Resource Manager vCPU virtuálních počítačů v oblasti Azure vašeho aktuálního nasazení nebo virtuální sítě. K zkontrolování aktuálního počtu vCPU, která máte v Azure Resource Manager, můžete použít následující příkaz prostředí PowerShell. Další informace o kvótách vCPU najdete v tématu [omezení a Azure Resource Manager](../../azure-subscription-service-limits.md#limits-and-azure-resource-manager).
+Ujistěte se, že máte dostatek Azure Resource Manager vCPU virtuálních počítačů v oblasti Azure vašeho aktuálního nasazení nebo virtuální sítě. K zkontrolování aktuálního počtu vCPU, která máte v Azure Resource Manager, můžete použít následující příkaz prostředí PowerShell. Další informace o kvótách vCPU najdete v tématu [omezení a Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#limits-and-azure-resource-manager).
 
 Tento příklad zkontroluje dostupnost v oblasti **západní USA** . Nahraďte název ukázkové oblasti vlastním.
 

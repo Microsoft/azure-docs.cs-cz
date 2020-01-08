@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: d53b36beeca2c5e0456965cf5af19e5324b31ad9
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 1d475c8e1f8dd332b60aef04242d2829feba93c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084219"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429207"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Rychlý Start: komunikace s aplikací zařízení v C prostřednictvím datových proudů zařízení IoT Hub (Preview)
 
@@ -70,18 +70,19 @@ V tomto rychlém startu použijete [sadu SDK pro zařízení Azure IoT pro jazyk
 
 1. Nainstalujte [systém sestavení cmake](https://cmake.org/download/) , jak je popsáno na stránce pro stažení.
 
-1. Otevřete prostředí příkazového řádku nebo Git Bash. Spuštěním následujícího příkazu naklonujte úložiště GitHub pro [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) :
+1. Otevřete prostředí příkazového řádku nebo Git Bash. Spuštěním následujících příkazů naklonujte úložiště GitHub pro [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) :
 
-    ```cmd
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
+    ```cmd/sh
+    git clone -b public-preview https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     Tato operace by měla trvat několik minut.
 
-1. Vytvořte adresář *cmake* v kořenovém adresáři úložiště Git, jak je znázorněno v následujícím příkazu, a pak přejít do této složky.
+1. Vytvořte podadresář *cmake* v kořenovém adresáři úložiště Git a přejděte do této složky. Z adresáře *Azure-IoT-SDK-c* spusťte následující příkazy:
 
-    ```cmd
-    cd azure-iot-sdk-c
+    ```cmd/sh
     mkdir cmake
     cd cmake
     ```
@@ -111,7 +112,7 @@ V tomto rychlém startu použijete [sadu SDK pro zařízení Azure IoT pro jazyk
       cmake --build . -- /m /p:Configuration=Release
       ```
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
 
 [!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
 

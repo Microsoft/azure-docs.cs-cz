@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: 6f6c64acf814b39d38138ed0e6a9c6075b693c7d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6a90e9ba264c4abddf2c26cb7b1761a7a51b1778
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707987"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647675"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura připojení Azure SQL
 
@@ -39,11 +39,11 @@ Následující kroky popisují, jak se naváže připojení ke službě Azure SQ
 
 Azure SQL Database podporuje pro nastavení zásad připojení serveru SQL Database následující tři možnosti:
 
-- **Přesměrování (doporučeno):** Klienti navázali připojení přímo k uzlu, který je hostitelem databáze, což vede k nižší latenci a vylepšení v celém. Aby připojení používala klienti tohoto režimu, musí
+- **Přesměrování (doporučeno):** Klienti navázali připojení přímo k uzlu, který je hostitelem databáze, což vede ke snížení latence a lepší propustnosti. Aby připojení používala klienti tohoto režimu, musí
    - Povolí příchozí a odchozí komunikaci z klienta se všemi IP adresami Azure v oblasti na portech v rozsahu 11000 11999.  
    - Povolí příchozí a odchozí komunikaci od klienta až po Azure SQL Database IP adresy brány na portu 1433.
 
-- **Proxy server:** V tomto režimu jsou všechna připojení proxy přes Azure SQL Database bran, což vede k zvýšené latenci a zkrácení v celém. Aby připojení používala tento režim, klienti musí povolit příchozí a odchozí komunikaci od klienta až po Azure SQL Database IP adresy brány na portu 1433.
+- **Proxy server:** V tomto režimu jsou všechna připojení proxy prostřednictvím bran Azure SQL Database, což vede ke zvýšení latence a snížení propustnosti. Aby připojení používala tento režim, klienti musí povolit příchozí a odchozí komunikaci od klienta až po Azure SQL Database IP adresy brány na portu 1433.
 
 - **Výchozí:** Toto je zásada připojení platná pro všechny servery po vytvoření, pokud zásadu připojení explicitně neupravíte na buď `Proxy`, nebo `Redirect`. Výchozí zásady jsou`Redirect` pro všechna připojení klientů pocházející z Azure (např. z virtuálního počítače Azure) a `Proxy`pro všechna klientská připojení, která pocházejí mimo (např. připojení z místní pracovní stanice).
 
@@ -79,15 +79,15 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Austrálie – východ       | 13.75.149.87, 40.79.161.1 |
 | Austrálie – jihovýchod | 191.239.192.109, 13.73.109.251 |
 | Brazílie – jih         | 104.41.11.5, 191.233.200.14 |
-| Kanada – střed       | 40.85.224.249      |
-| Kanada – východ          | 40.86.226.166      |
+| Střední Kanada       | 40.85.224.249      |
+| Východní Kanada          | 40.86.226.166      |
 | Střední USA           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 | 
 | Čína – východ           | 139.219.130.35     |
 | Čína – východ 2         | 40.73.82.1         |
 | Čína – sever          | 139.219.15.17      |
 | Čína – sever 2        | 40.73.50.0         |
 | Východní Asie            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
-| USA – východ              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
+| Východní USA              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
 | Východ USA 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 | 
 | Francie – střed       | 40.79.137.0, 40.79.129.1 |
 | Německo – střed      | 51.4.144.100       |
@@ -107,7 +107,7 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Jihovýchodní Asie      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
 | Spojené arabské emiráty – střed          | 20.37.72.64        |
 | Spojené arabské emiráty – sever            | 65.52.248.0        |
-| Velká Británie – jih             | 51.140.184.11      |
+| Spojené království – jih             | 51.140.184.11      |
 | Velká Británie – západ              | 51.141.8.11        |
 | Středozápadní USA      | 13.78.145.25       |
 | Západní Evropa          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |

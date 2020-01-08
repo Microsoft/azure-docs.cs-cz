@@ -4,15 +4,15 @@ description: Tento článek popisuje různé úlohy správy, které se obvykle p
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: 8dec91a3987aed978bb088d1aeab48a6fd0f9fb4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7e9725c2a33bd63b7ce6751f346da17eb68fe6f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932791"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364777"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Správa a údržba agenta Log Analytics pro systémy Windows a Linux
 
@@ -58,7 +58,7 @@ Nejnovější verzi agenta pro Windows si můžete stáhnout z pracovního prost
 
 4. V dialogovém okně **instalace Microsoft Monitoring Agent** **kliknutím na Souhlasím** potvrďte souhlas s licenční smlouvou.
 
-5. V dialogovém okně **nastavení Microsoft Monitoring Agent** klikněte na možnost **upgradovat**. Na stránce stav se zobrazuje průběh upgradu.
+5. V dialogovém okně **Instalace agenta Microsoft Monitoring Agent** klikněte na tlačítko **Upgradovat**. Na stavové stránce se zobrazuje průběh upgradu.
 
 6. Po **úspěšném dokončení konfigurace Microsoft Monitoring Agent.** zobrazí se stránka klikněte na **Dokončit**.
 
@@ -68,7 +68,7 @@ Nejnovější verzi agenta pro Windows si můžete stáhnout z pracovního prost
 
 2. K extrakci instalačních souborů agenta můžete z příkazového řádku se zvýšenými oprávněními spustit `MMASetup-<platform>.exe /c` a zobrazí se výzva k zadání cesty k extrakci souborů. Alternativně můžete zadat cestu předáním argumentů `MMASetup-<platform>.exe /c /t:<Full Path>`.
 
-3. Spusťte následující příkaz, kde D:\ je umístění souboru protokolu upgradu.
+3. Spusťte níže uvedený příkaz, přičemž D:\ označuje umístění souboru protokolu upgradu.
 
     ```dos
     setup.exe /qn /l*v D:\logs\AgentUpgrade.log AcceptEndUserLicenseAgreement=1
@@ -84,7 +84,7 @@ Spusťte následující příkaz pro upgrade agenta.
 
 ## <a name="adding-or-removing-a-workspace"></a>Přidání nebo odebrání pracovního prostoru
 
-### <a name="windows-agent"></a>Agent pro Windows
+### <a name="windows-agent"></a>Agent Windows
 Kroky v této části jsou nezbytné v případě, že nechcete překonfigurovat agenta pro systém Windows pouze na jiný pracovní prostor nebo odebrat pracovní prostor z jeho konfigurace, ale také v případě, že chcete agenta nakonfigurovat tak, aby vykazovat více než jeden pracovní prostor (obvykle označuje se jako více domovských stránek). Konfigurace agenta pro Windows tak, aby nahlásila do více pracovních prostorů, se dá provést jenom po počátečním nastavení agenta a pomocí metod popsaných níže.    
 
 #### <a name="update-settings-from-control-panel"></a>Aktualizovat nastavení z ovládacích panelů
@@ -168,7 +168,7 @@ Aby se změny projevily, není nutné restartovat službu agenta.
 ## <a name="update-proxy-settings"></a>Aktualizovat nastavení proxy serveru
 Chcete-li nakonfigurovat, aby agent komunikoval se službou prostřednictvím proxy server nebo [Log Analytics brány](gateway.md) po nasazení, použijte k dokončení této úlohy jednu z následujících metod.
 
-### <a name="windows-agent"></a>Agent pro Windows
+### <a name="windows-agent"></a>Agent Windows
 
 #### <a name="update-settings-using-control-panel"></a>Aktualizace nastavení pomocí ovládacích panelů
 
@@ -228,7 +228,7 @@ Pokud počítače se systémem Linux potřebují komunikovat prostřednictvím p
 ## <a name="uninstall-agent"></a>Odinstalace agenta
 Pomocí jednoho z následujících postupů odinstalujte agenta systému Windows nebo Linux pomocí příkazového řádku nebo Průvodce instalací nástroje.
 
-### <a name="windows-agent"></a>Agent pro Windows
+### <a name="windows-agent"></a>Agent Windows
 
 #### <a name="uninstall-from-control-panel"></a>Odinstalace z ovládacích panelů
 1. Přihlaste se k počítači pomocí účtu, který má práva správce.
@@ -256,7 +256,7 @@ Pokud chcete agenta odebrat, spusťte v počítači s Linuxem následující př
 
 ## <a name="configure-agent-to-report-to-an-operations-manager-management-group"></a>Nakonfigurovat agenta tak, aby se nahlásil na Operations Manager skupinu pro správu
 
-### <a name="windows-agent"></a>Agent pro Windows
+### <a name="windows-agent"></a>Agent Windows
 Provedením následujících kroků nakonfigurujte agenta Log Analytics pro systém Windows, aby vyhlásil zprávu do skupiny pro správu System Center Operations Manager.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]

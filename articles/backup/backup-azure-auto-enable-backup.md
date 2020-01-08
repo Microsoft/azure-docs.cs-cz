@@ -1,16 +1,16 @@
 ---
-title: Automatické povolení zálohování při vytváření virtuálních počítačů pomocí Azure Policy
+title: Automatické povolení zálohování při vytváření virtuálních počítačů s využitím Azure Policy
 description: Článek popisující, jak použít Azure Policy k automatickému povolení zálohování pro všechny virtuální počítače vytvořené v daném oboru
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: ea3c0d217c8495078e91e171caef695bb32d129b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7a3b526d654936d4e7ec89127a9074146c1b0179
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980124"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450122"
 ---
-# <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Automatické povolení zálohování při vytváření virtuálních počítačů pomocí Azure Policy
+# <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Automatické povolení zálohování při vytváření virtuálních počítačů s využitím Azure Policy
 
 Jednou z klíčových zodpovědností správce zálohování nebo dodržování předpisů v organizaci je zajistit, aby všechny důležité podnikové počítače byly zálohovány s odpovídajícím uchováváním.
 
@@ -25,6 +25,8 @@ V současné době Azure Backup poskytuje předdefinované zásady (pomocí Azur
 * Zadaný trezor a virtuální počítače, které jsou nakonfigurované pro zálohování, můžou být v různých skupinách prostředků.
 
 * Obor skupiny pro správu se momentálně nepodporuje.
+
+* Integrovaná zásada není v současnosti k dispozici v národních cloudech.
 
 ## <a name="using-the-built-in-policy"></a>Používání předdefinované zásady
 

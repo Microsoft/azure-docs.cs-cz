@@ -3,14 +3,14 @@ title: Trvalé entity – Azure Functions
 description: Přečtěte si, jaké jsou trvalé entity a jak je používat v rozšíření Durable Functions pro Azure Functions.
 author: cgillum
 ms.topic: overview
-ms.date: 11/02/2019
+ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: aa4d1c4bfab349659c42a34ca5a73f676a2ea2b8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8aaa19a9d5bd5d7b2764320d5d91c8a6c010b3c8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232927"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433322"
 ---
 # <a name="entity-functions"></a>Funkce entit
 
@@ -41,6 +41,7 @@ Pokud chcete vyvolat operaci na entitě, zadejte:
 * **ID entity** cílové entity
 * **Název operace**, což je řetězec, který určuje operaci, která má být provedena. Entita `Counter` například může podporovat operace `add`, `get`nebo `reset`.
 * **Vstup operace**, což je volitelný vstupní parametr pro operaci. Například operace přidání může jako vstup mít celočíselnou hodnotu.
+* **naplánovaný čas*, což je volitelný parametr pro určení doby doručení operace. Například operace může být spolehlivě naplánována na spuštění několik dní v budoucnu.
 
 Operace mohou vracet výslednou hodnotu nebo výsledek chyby, například Chyba JavaScriptu nebo výjimka .NET. Tento výsledek nebo chybu mohou být pozorovány orchestrací, které volaly operaci.
 
@@ -110,7 +111,7 @@ Další informace o syntaxi založené na třídě a způsobu jejich použití n
 
 Trvalé entity jsou k dispozici v JavaScriptu počínaje verzí **1.3.0** balíčku `durable-functions` npm. Následující kód je `Counter` entita implementovaná jako trvalá funkce napsaná v JavaScriptu.
 
-**Function. JSON**
+**function.json**
 ```json
 {
   "bindings": [
@@ -124,7 +125,7 @@ Trvalé entity jsou k dispozici v JavaScriptu počínaje verzí **1.3.0** balí�
 }
 ```
 
-**index. js**
+**index.js**
 ```javascript
 const df = require("durable-functions");
 
@@ -165,7 +166,7 @@ Následující příklady znázorňují různé způsoby přístupu k entitám.
 
 ### <a name="example-client-signals-an-entity"></a>Příklad: klient signalizuje entitu.
 
-Pro přístup k entitám z běžné funkce Azure, která se také označuje jako funkce klienta, použijte [výstupní vazbu klienta entity](durable-functions-bindings.md#entity-client). Následující příklad ukazuje funkce aktivované frontou, která tuto vazbu používá.
+Pro přístup k entitám z běžné funkce Azure, která je také známá jako funkce klienta, použijte [vazbu klienta entity](durable-functions-bindings.md#entity-client). Následující příklad ukazuje funkce aktivované frontou, která tuto vazbu používá.
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -186,7 +187,7 @@ const df = require("durable-functions");
 module.exports = async function (context) {
     const client = df.getClient(context);
     const entityId = new df.EntityId("Counter", "myCounter");
-    await context.df.signalEntity(entityId, "add", 1);
+    await client.signalEntity(entityId, "add", 1);
 };
 ```
 
@@ -203,8 +204,8 @@ public static async Task<HttpResponseMessage> Run(
     [DurableClient] IDurableEntityClient client)
 {
     var entityId = new EntityId(nameof(Counter), "myCounter");
-    JObject state = await client.ReadEntityStateAsync<JObject>(entityId);
-    return req.CreateResponse(HttpStatusCode.OK, state);
+    EntityStateResponse<JObject> stateResponse = await client.ReadEntityStateAsync<JObject>(entityId);
+    return req.CreateResponse(HttpStatusCode.OK, stateResponse.EntityState);
 }
 ```
 
@@ -214,7 +215,8 @@ const df = require("durable-functions");
 module.exports = async function (context) {
     const client = df.getClient(context);
     const entityId = new df.EntityId("Counter", "myCounter");
-    return context.df.readEntityState(entityId);
+    const stateResponse = await context.df.readEntityState(entityId);
+    return stateResponse.entityState;
 };
 ```
 
@@ -249,12 +251,11 @@ module.exports = df.orchestrator(function*(context){
 
     // Two-way call to the entity which returns a value - awaits the response
     currentValue = yield context.df.callEntity(entityId, "get");
-    if (currentValue < 10) {
-        // One-way signal to the entity which updates the value - does not await a response
-        yield context.df.signalEntity(entityId, "add", 1);
-    }
 });
 ```
+
+> [!NOTE]
+> JavaScript v současné době nepodporuje signalizaci entity z nástroje Orchestrator. Místo toho použijte `callEntity`.
 
 Pouze orchestrace jsou schopny volat entity a získat odpověď, což může být buď návratová hodnota, nebo výjimka. Funkce klienta, které používají [vazbu klienta](durable-functions-bindings.md#entity-client) , mohou signalizovat pouze entity.
 

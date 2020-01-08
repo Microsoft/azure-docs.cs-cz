@@ -1,21 +1,21 @@
 ---
-title: Konfigurace přístupu na základě virtuální sítě a podsítě pro účet Azure Cosmos DB
+title: Konfigurace přístupu na základě virtuální sítě pro účet Azure Cosmos
 description: Tento dokument popisuje kroky potřebné k nastavení koncového bodu služby virtuální sítě pro Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: c399bed803145659bae1863e9e0b919f33254627
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 80e77e2caacfed7d662fdfa04aa9524bd7c2083a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820205"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445420"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Konfigurace přístupu z virtuálních sítí (VNet)
 
-Účty Azure Cosmos DB můžete nakonfigurovat tak, aby povolovaly přístup jenom z konkrétní podsítě virtuální sítě Azure. Chcete-li omezit přístup k účtu Azure Cosmos DB s připojením z podsítě ve virtuální síti:
+Účty služby Azure Cosmos DB můžete nakonfigurovat tak, aby umožňovaly přístup pouze z konkrétní podsítě virtuální sítě Azure. Chcete-li omezit přístup k účtu Azure Cosmos DB s připojením z podsítě ve virtuální síti:
 
 1. Umožněte, aby podsíť odesílala podsíť a identitu virtuální sítě do Azure Cosmos DB. To můžete dosáhnout povolením koncového bodu služby pro Azure Cosmos DB v konkrétní podsíti.
 
@@ -82,7 +82,7 @@ Abyste měli jistotu, že máte přístup k Azure Cosmos DB metriky z portálu, 
 
    ![Odebrání virtuální sítě](./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png)
 
-4. Pokud chcete změny použít, vyberte **Uložit** .
+4. Vyberte **Uložit**, aby se tyto změny použily.
 
 ## <a id="configure-using-powershell"></a>Konfigurace koncového bodu služby pomocí Azure PowerShell
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b912743c758f33173b568944341fab4e815300ed
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a23fb981e24f6152d99b76bd72115f8159f5d60f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099984"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645840"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení Azure Virtual Machines DBMS pro úlohy SAP
 
@@ -77,8 +77,8 @@ ms.locfileid: "70099984"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide.md 
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
@@ -235,7 +235,7 @@ ms.locfileid: "70099984"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -249,7 +249,7 @@ ms.locfileid: "70099984"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -318,7 +318,7 @@ Oracle podporuje software Oracle pro spouštění na Microsoft Azure. Další in
 
 Následující poznámky SAP souvisejí s SAP v Azure.
 
-| Číslo poznámky | Název |
+| Číslo poznámky | Nadpis |
 | --- | --- |
 | [1928533] |Aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure |
 | [2015553] |SAP v Microsoft Azure: požadavky na podporu |
@@ -357,7 +357,7 @@ Podporovaná je jenom jedna instance Oracle, která používá disky formátovan
 
 Důrazně doporučujeme použít [Azure Managed disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). Důrazně doporučujeme pro nasazení Oracle Database použít [Premium SSD](../../windows/disks-types.md) .
 
-Síťové jednotky nebo vzdálené sdílené složky jako souborové služby Azure nejsou podporované pro Oracle Database soubory. Další informace naleznete v tématu:
+Síťové jednotky nebo vzdálené sdílené složky jako souborové služby Azure nejsou podporované pro Oracle Database soubory. Další informace:
 
 - [Představujeme službu Microsoft Azure File](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 
@@ -372,29 +372,29 @@ Pokud chcete identifikovat podporované typy virtuálních počítačů Azure, p
 
 Minimální konfigurace je následující: 
 
-| Komponenta | Disk | Mezipaměť | Fond úložiště |
+| Součást | Disk | Mezipaměť | Fond úložiště |
 | --- | ---| --- | --- |
-| \oracle\<SID > \origlogaA & mirrlogB | Premium | Žádný | Nepožadováno |
-| \oracle\<SID > \origlogaB & mirrlogA | Premium | Žádný | Nepožadováno |
+| \oracle\<SID > \origlogaA & mirrlogB | Premium | Žádné | Není potřeba |
+| \oracle\<SID > \origlogaB & mirrlogA | Premium | Žádné | Není potřeba |
 | \oracle\<SID > \sapdata1... n | Premium | Jen pro čtení | Dá se použít |
-| \oracle\<SID > \oraarch | Standard | Žádný | Nepožadováno |
-| Oracle Home, saptrace,... | Disk OS | | Nepožadováno |
+| \oracle\<SID > \oraarch | Úroveň Standard | Žádné | Není potřeba |
+| Oracle Home, saptrace,... | Disk OS | | Není potřeba |
 
 
 Výběr disků pro hostování online protokolů opětovného provedení by měl být řízen požadavky IOPs. Je možné uložit všechny sapdata1... n (tabulkové prostory) na jednom jednom připojeném disku, pokud velikost, IOPS a propustnost splňují požadavky. 
 
 Konfigurace výkonu je následující:
 
-| Komponenta | Disk | Mezipaměť | Fond úložiště |
+| Součást | Disk | Mezipaměť | Fond úložiště |
 | --- | ---| --- | --- |
-| \oracle\<SID > \origlogaA | Premium | Žádný | Dá se použít  |
-| \oracle\<SID > \origlogaB | Premium | Žádný | Dá se použít |
-| \oracle\<SID > \mirrlogAB | Premium | Žádný | Dá se použít |
-| \oracle\<SID > \mirrlogBA | Premium | Žádný | Dá se použít |
+| \oracle\<SID > \origlogaA | Premium | Žádné | Dá se použít  |
+| \oracle\<SID > \origlogaB | Premium | Žádné | Dá se použít |
+| \oracle\<SID > \mirrlogAB | Premium | Žádné | Dá se použít |
+| \oracle\<SID > \mirrlogBA | Premium | Žádné | Dá se použít |
 | \oracle\<SID > \sapdata1... n | Premium | Jen pro čtení | Doporučené  |
-| \oracle\SID\sapdata (n + 1) * | Premium | Žádný | Dá se použít |
-| \oracle\<SID > \oraarch * | Premium | Žádný | Nepožadováno |
-| Oracle Home, saptrace,... | Disk OS | Nepožadováno |
+| \oracle\SID\sapdata (n + 1) * | Premium | Žádné | Dá se použít |
+| \oracle\<SID > \oraarch * | Premium | Žádné | Není potřeba |
+| Oracle Home, saptrace,... | Disk OS | Není potřeba |
 
 \* (n + 1): hostování systému, dočasné a ZPĚTná prostoru. Vzor vstupně-výstupních prostorů systému a zpětných prostorů se liší od ostatních tabulkových prostorů hostujících data aplikací. Nejedná se o nejlepší možnost pro výkon systému a vrácení tabulkových prostorů.
 
@@ -420,7 +420,7 @@ Další informace o zotavení po havárii pro databáze Oracle v Azure najdete v
 
 ### <a name="accelerated-networking"></a>Urychlení sítě
 Pro nasazení Oracle ve Windows důrazně doporučujeme zrychlit sítě, jak je popsáno v tématu [urychlené síťové služby Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Zvažte také doporučení, která jsou k [disVirtual Machines v části požadavky na nasazení Azure DBMS pro úlohy SAP](dbms_guide_general.md). 
-### <a name="other"></a>Ostatní
+### <a name="other"></a>Jiné
 [Důležité informace týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) popisují další důležité koncepty týkající se nasazení virtuálních počítačů s Oracle Database, včetně skupin dostupnosti Azure a monitorování SAP.
 
 ## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Specifické pro Oracle Database Oracle Linux
@@ -448,7 +448,7 @@ Pro Oracle Linux jádra UEK se vyžaduje minimálně UEK verze 4, která podporu
 
 Používání [Azure Managed disks](../../windows/managed-disks-overview.md)se důrazně doporučuje. Pro nasazení Oracle Database se důrazně doporučuje používat [Azure Premium SSD](../../windows/disks-types.md) .
 
-Síťové jednotky nebo vzdálené sdílené složky jako souborové služby Azure nejsou podporované pro Oracle Database soubory. Další informace najdete v následujících tématech: 
+Síťové jednotky nebo vzdálené sdílené složky jako souborové služby Azure nejsou podporované pro Oracle Database soubory. Další informace: 
 
 - [Představujeme službu Microsoft Azure File](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 
@@ -462,13 +462,13 @@ Pokud chcete identifikovat podporované typy virtuálních počítačů Azure, p
 
 Minimální konfigurace:
 
-| Komponenta | Disk | Mezipaměť | Odstranění |
+| Součást | Disk | Mezipaměť | Odstranění |
 | --- | ---| --- | --- |
-| /Oracle/\<SID >/origlogaA & mirrlogB | Premium | Žádný | Nepožadováno |
-| /Oracle/\<SID >/origlogaB & mirrlogA | Premium | Žádný | Nepožadováno |
+| /Oracle/\<SID >/origlogaA & mirrlogB | Premium | Žádné | Není potřeba |
+| /Oracle/\<SID >/origlogaB & mirrlogA | Premium | Žádné | Není potřeba |
 | /Oracle/\<SID >/sapdata1... n | Premium | Jen pro čtení | Dá se použít |
-| /Oracle/\<SID >/oraarch | Standard | Žádný | Nepožadováno |
-| Oracle Home, saptrace,... | Disk OS | | Nepožadováno |
+| /Oracle/\<SID >/oraarch | Úroveň Standard | Žádné | Není potřeba |
+| Oracle Home, saptrace,... | Disk OS | | Není potřeba |
 
 \* Odstranění: LVM Stripe nebo MDADM using RAID0
 
@@ -476,16 +476,16 @@ Výběr disku pro hostování protokolů opětovného provedení online v Oracle
 
 Konfigurace výkonu:
 
-| Komponenta | Disk | Mezipaměť | Odstranění |
+| Součást | Disk | Mezipaměť | Odstranění |
 | --- | ---| --- | --- |
-| /Oracle/\<SID >/origlogaA | Premium | Žádný | Dá se použít  |
-| /Oracle/\<SID >/origlogaB | Premium | Žádný | Dá se použít |
-| /Oracle/\<SID >/mirrlogAB | Premium | Žádný | Dá se použít |
-| /Oracle/\<SID >/mirrlogBA | Premium | Žádný | Dá se použít |
+| /Oracle/\<SID >/origlogaA | Premium | Žádné | Dá se použít  |
+| /Oracle/\<SID >/origlogaB | Premium | Žádné | Dá se použít |
+| /Oracle/\<SID >/mirrlogAB | Premium | Žádné | Dá se použít |
+| /Oracle/\<SID >/mirrlogBA | Premium | Žádné | Dá se použít |
 | /Oracle/\<SID >/sapdata1... n | Premium | Jen pro čtení | Doporučené  |
-| /Oracle/\<SID >/sapdata (n + 1) * | Premium | Žádný | Dá se použít |
-| /Oracle/\<SID >/oraarch * | Premium | Žádný | Nepožadováno |
-| Oracle Home, saptrace,... | Disk OS | Nepožadováno |
+| /Oracle/\<SID >/sapdata (n + 1) * | Premium | Žádné | Dá se použít |
+| /Oracle/\<SID >/oraarch * | Premium | Žádné | Není potřeba |
+| Oracle Home, saptrace,... | Disk OS | Není potřeba |
 
 \* Odstranění: LVM Stripe nebo MDADM using RAID0
 
@@ -523,5 +523,5 @@ sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.gi
 </code></pre>
 
 
-### <a name="other"></a>Ostatní
+### <a name="other"></a>Jiné
 [Důležité informace týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) popisují další důležité koncepty týkající se nasazení virtuálních počítačů s Oracle Database, včetně skupin dostupnosti Azure a monitorování SAP.

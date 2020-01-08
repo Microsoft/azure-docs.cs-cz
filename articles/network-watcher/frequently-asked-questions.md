@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 3305590f2d8abf0d894bc1df42b84edcc96a2b2d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 97fcd3241be6dac81adfa8e17999d92d84abaa19
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598227"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647284"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Nejčastější dotazy týkající se Azure Network Watcher
 Služba [azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) poskytuje sadu nástrojů pro monitorování, diagnostiku, zobrazení metrik a povolení nebo zakázání protokolů pro prostředky ve službě Azure Virtual Network. Tento článek obsahuje odpovědi na běžné dotazy týkající se služby.
@@ -51,14 +51,20 @@ Podrobnější informace najdete na stránce s [přehledem Network Watcher](http
 ### <a name="how-does-network-watcher-pricing-work"></a>Jak funguje Network Watcher ceny?
 Na [stránce s cenami](https://azure.microsoft.com/pricing/details/network-watcher/) najdete Network Watcher komponenty a jejich ceny.
 
-### <a name="which-regions-is-network-watcher-available-in"></a>Které oblasti jsou Network Watcher k dispozici v?
+### <a name="which-regions-is-network-watcher-supportedavailable-in"></a>Které oblasti jsou Network Watcher podporovány/k dispozici v?
 Nejnovější regionální dostupnost najdete na [stránce dostupnosti služby Azure](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher) .
 
 ### <a name="what-are-resource-limits-on-network-watcher"></a>Co jsou omezení prostředků u Network Watcher?
-Všechna omezení najdete na stránce [omezení služby](https://docs.microsoft.com/azure/azure-subscription-service-limits#network-watcher-limits) .  
+Všechna omezení najdete na stránce [omezení služby](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits) .  
 
 ### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Proč je pro jednotlivé oblasti povolena pouze jedna instance Network Watcher?
 Network Watcher pro předplatné, který funguje, je třeba povolit jenom jednou, nejedná se o limit služby.
+
+### <a name="why-do-i-need-to-install-the-network-watcher-extension"></a>Proč potřebuji nainstalovat rozšíření Network Watcher? 
+Pro všechny funkce, které potřebují vygenerovat nebo zachytit provoz z virtuálního počítače, se vyžaduje rozšíření Network Watcher. 
+
+### <a name="which-features-require-the-network-watcher-extension"></a>Které funkce vyžadují rozšíření Network Watcher?
+K dispozici je Network Watcher rozšíření pouze zachycení paketů, řešení potíží s připojením a monitorování připojení.
 
 ## <a name="nsg-flow-logs"></a>Protokoly toku NSG
 

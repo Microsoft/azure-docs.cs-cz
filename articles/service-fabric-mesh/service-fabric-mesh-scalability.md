@@ -1,20 +1,16 @@
 ---
-title: Škálovatelnost aplikací pro síť Azure Service Fabric Microsoft Docs
+title: Škálovatelnost aplikací Service Fabric sítě Azure
 description: Jednou z výhod nasazení aplikací do Service Fabric sítě je schopnost snadno škálovat vaše služby, a to buď ručně, nebo pomocí zásad automatického škálování.
-services: service-fabric-mesh
-keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 10/26/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 59fdf68ed1ead4665ec8944d67f2d5112d370716
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 474eda904df653d514fd2ee59fa046f1f87a66aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663001"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458995"
 ---
 # <a name="scaling-service-fabric-mesh-applications"></a>Škálování aplikací Service Fabric sítě
 
@@ -27,7 +23,7 @@ V šabloně nasazení pro prostředek aplikace má každá služba vlastnost *re
 Příklady instancí služby, které můžete ručně škálovat, najdete [v tématu Ruční škálování služeb v systému nebo](service-fabric-mesh-tutorial-template-scale-services.md).
 
 ## <a name="autoscaling-service-instances"></a>Automatické škálování instancí služby
-Automatické škálování je další možností Service Fabric dynamicky škálovat počet instancí služby (horizontální škálování). Automatické škálování dává velkou pružnost a umožňuje zřizování nebo odebírání instancí služby na základě využití procesoru nebo paměti.  Automatické škálování umožňuje spustit správný počet instancí služby pro vaše zatížení a optimalizovat pro náklady.
+Automatické škálování je další možností Service Fabric dynamicky škálovat počet instancí služby (horizontální škálování). Automatické škálování poskytuje skvělé pružnost a umožňuje zřizování nebo odebrání instancí služby na základě využití procesoru nebo paměti.  Automatické škálování umožňuje spustit správný počet instancí služby pro vaše zatížení a optimalizovat pro náklady.
 
 Zásada automatického škálování je definovaná na službu v souboru prostředků služby. Každá zásada škálování se skládá ze dvou částí:
 

@@ -1,20 +1,18 @@
 ---
-title: Zotavení po havárii a geografická distribuce v Durable Functions – Azure
+title: Zotavení po havárii a geografická distribuce Azure Durable Functions
 description: Přečtěte si o zotavení po havárii a geografické distribuci v Durable Functions.
 author: MS-Santi
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ba459d2d2f3aaf595c1d834e2b29a231e3b2bb12
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7951f216143bef0d48a6b751beff3f8f4316b9bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232947"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433336"
 ---
-# <a name="disaster-recovery-and-geo-distribution"></a>Zotavení po havárii a geografická distribuce
-
-## <a name="overview"></a>Přehled
+# <a name="disaster-recovery-and-geo-distribution-in-azure-durable-functions"></a>Zotavení po havárii a geografická distribuce v Azure Durable Functions
 
 V Durable Functions je veškerý stav trvale v Azure Storage. [Centrum úloh](durable-functions-task-hubs.md) je logický kontejner pro Azure Storage prostředky, které se používají pro orchestrace. Funkce Orchestrator a Activity můžou vzájemně fungovat, když patří do stejného centra úloh.
 Popsané scénáře navrhují možnosti nasazení a zvyšují dostupnost a minimalizují prostoje během aktivit zotavení po havárii.

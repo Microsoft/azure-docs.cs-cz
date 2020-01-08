@@ -11,57 +11,51 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/30/2018
+ms.date: 12/19/2019
 ms.author: memildin
-ms.openlocfilehash: 8b069bedd3c36f27828e54a1110443ae6dfcdf3f
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 6b262baddd10c9d0dff4b196b733972b97d99872
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268865"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552980"
 ---
-# <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorování identity a přístupu v Azure Security Center (Preview)
-Tento článek vám pomůže používat Azure Security Center k monitorování identit a aktivit přístupu uživatelů.
+# <a name="monitor-identity-and-access-preview"></a>Monitorovat identitu a přístup (Preview)
+Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení, která vás provedou procesem konfigurace potřebných ovládacích prvků k posílení a ochraně vašich prostředků.
+
+Tento článek popisuje stránku **Identita a přístup** v části věnované zabezpečení prostředků v Azure Security Center.
+
+Úplný seznam doporučení, která se vám můžou zobrazit na této stránce, najdete v tématu [věnovaném doporučením pro identitu a přístup](recommendations-reference.md#recs-identity).
 
 > [!NOTE]
 > Identita monitorování a přístup je ve verzi Preview a dostupná jenom na úrovni Standard Security Center. Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
 >
 
-Identita by měla být základní „řídicí plochou“ vaší organizace a její ochrana je tou nejvyšší prioritou. Hraniční zabezpečení se vyvinulo z hraniční sítě až po hranice identity. Zabezpečení se zasahuje do ochrany vaší sítě a další informace o tom, jak chrání vaše data, a také o správě zabezpečení vašich aplikací a uživatelů. V současné době se ale čím dál víc dat a aplikací přesouvá do cloudu a novým perimetrem se proto stává identita.
+Identita by měla být řídicí rovinou pro váš podnik a ochrana identit by měla být vaší nejvyšší prioritou. Hraniční zabezpečení se vyvinulo z hraniční sítě až po hranice identity. Zabezpečení se zasahuje do ochrany vaší sítě a další informace o tom, jak chrání vaše data, a také o správě zabezpečení vašich aplikací a uživatelů. V současné době se ale čím dál víc dat a aplikací přesouvá do cloudu a novým perimetrem se proto stává identita.
 
 Monitorování aktivit souvisejících s identitou umožňuje proaktivně jednat, ještě než k incidentu dojde, nebo provést reaktivní akci k zastavení pokusu o útok. Řídicí panel identity & Access nabízí doporučení, například:
 
 - Povolte MFA pro privilegované účty v předplatném
-- Odeberte z předplatného externí účty s oprávněním pro zápis
+- Odeberte externí účty s oprávněním pro čtení z předplatného
 - Odeberte z předplatného privilegované externí účty
 
 > [!NOTE]
-> Pokud má vaše předplatné více než 600 účtů, Security Center není možné spustit doporučení identity pro vaše předplatné. Doporučení, která nejsou spuštěná, jsou uvedená v části nedostupná posouzení, která jsou popsána níže.
+> Pokud má vaše předplatné více než 600 účtů, Security Center není možné spustit doporučení identity pro vaše předplatné. Doporučení, která nejsou spuštěná, jsou uvedená v části "nedostupná posouzení" níže.
 Security Center není možné spustit doporučení identity pro agenty správce Cloud Solution Provider (CSP).
 >
 
-Seznam [](security-center-identity-access.md#recommendations) doporučení identity a přístupu, která poskytuje Security Center, najdete v tématu věnovaném doporučením.
-
-## <a name="monitoring-security-health"></a>Sledování stavu zabezpečení
-Můžete monitorovat stav zabezpečení vašich prostředků na **Security Center – přehled** řídicího panelu. Oddíl Resources je indikátor stavu ukazující závažnost pro každý typ prostředku.
-
-Seznam všech problémů můžete zobrazit tak, že vyberete **doporučení**. V části **prostředky**můžete zobrazit seznam problémů, které jsou specifické pro výpočetní & aplikace, zabezpečení dat, sítě nebo identity & přístup. Další informace o tom, jak používat doporučení, najdete v části [implementace doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
-
-Úplný seznam doporučení identity a přístupu najdete v tématu věnovaném [doporučením](security-center-identity-access.md#recommendations).
-
-Chcete-li pokračovat, vyberte možnost **identita & přístup** v části **prostředky** nebo v hlavní nabídce Security Center.
-
-![Řídicí panel Security Center][1]
-
 ## <a name="monitor-identity-and-access"></a>Monitorování identity a přístupu
+
+Otevřete seznam identifikovaných identit a potíží s přístupem výběrem **identity & přístupu** z Security Centerho bočního panelu (v části **prostředky**) nebo na stránce Přehled. 
+
 V části **identita & přístup**jsou dvě karty:
 
 - **Přehled**: doporučení identifikovaná Security Center.
 - **Předplatná**: seznam vašich předplatných a aktuální stav zabezpečení každého.
 
-![Identita a přístup][2]
+[![identity & přístup](./media/security-center-identity-access/identity-dashboard.png)](./media/security-center-identity-access/identity-dashboard.png#lightbox)
 
-### <a name="overview-section"></a>Oddíl přehled
+### <a name="overview-section"></a>Oddíl přehledu
 V části **Přehled**najdete seznam doporučení. První sloupec uvádí doporučení. Druhý sloupec zobrazuje celkový počet odběrů, které jsou ovlivněny tímto doporučením. Třetí sloupec zobrazuje závažnost problému.
 
 1. Vyberte doporučení. Otevře se okno doporučení a zobrazí:
@@ -70,14 +64,14 @@ V části **Přehled**najdete seznam doporučení. První sloupec uvádí doporu
    - Seznam špatných a zdravých předplatných
    - Seznam prostředků, které se nekontrolují z důvodu neúspěšného posouzení nebo je prostředek v rámci předplatného běžícího na bezplatné úrovni a není vyhodnocený
 
-   ![Okno doporučení][3]
+    [okno doporučení ![](./media/security-center-identity-access/select-subscription.png)](./media/security-center-identity-access/select-subscription.png#lightbox)
 
 1. Pro další podrobnosti vyberte předplatné v seznamu.
 
 ### <a name="subscriptions-section"></a>Oddíl Subscriptions
-Včásti Předplatná je seznam předplatných. První sloupec obsahuje seznam předplatných. Druhý sloupec zobrazuje celkový počet doporučení pro každé předplatné. Třetí sloupec zobrazuje závažnost problémů.
+V části **předplatná**je seznam předplatných. První sloupec obsahuje seznam předplatných. Druhý sloupec zobrazuje celkový počet doporučení pro každé předplatné. Třetí sloupec zobrazuje závažnost problémů.
 
-![Karta Předplatná][4]
+[Karta Předplatná ![](./media/security-center-identity-access/subscriptions.png)](./media/security-center-identity-access/subscriptions.png#lightbox)
 
 1. Vyberte předplatné. Souhrnné zobrazení otevřete tři karty:
 
@@ -87,36 +81,19 @@ Včásti Předplatná je seznam předplatných. První sloupec obsahuje seznam p
 
    V části **doporučení** je seznam doporučení pro vybrané předplatné a závažnost každého doporučení.
 
-   ![Doporučení pro výběr předplatného][5]
+   [![doporučení pro výběr předplatného](./media/security-center-identity-access/recommendations.png)](./media/security-center-identity-access/recommendations.png#lightbox)
 
 1. Vyberte doporučení pro popis doporučení, seznam špatných a v předplatných a seznam nekontrolovaných prostředků.
 
-   ![Popis doporučení][6]
+   [![popis doporučení](./media/security-center-identity-access/designate.png)](./media/security-center-identity-access/designate.png#lightbox)
 
    V části **předaný posouzení** je seznam vyhovující posouzení.  Závažnost těchto hodnocení je vždy zelená.
 
-   ![Vyhovující posouzení][7]
+   [![úspěšné posouzení](./media/security-center-identity-access/passed-assessments.png)](./media/security-center-identity-access/passed-assessments.png#lightbox)
 
 1. V seznamu vyberte úspěšné vyhodnocování, které popisuje posouzení a seznam v případě předplatných, která jsou v pořádku. K dispozici je karta pro bezstavové odběry, která obsahuje seznam všech předplatných, která selhala.
 
-   ![Vyhovující posouzení][8]
-
-## <a name="recommendations"></a>Doporučení
-Následující tabulku použijte jako pomůcku, která vám pomůže pochopit dostupnou & doporučení pro přístup k identitám a jejich použití.
-
-|Typ prostředku|Bezpečnostní skóre|Doporučení|Popis|
-|----|----|----|----|
-|Subscription|50|Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.|Povolte službu Multi-Factor Authentication (MFA) pro všechny účty předplatného s oprávněními správce, aby se zabránilo narušení účtů nebo prostředků.|
-|Subscription|40|Vícefaktorové ověřování by mělo být povolené u účtů předplatného s oprávněním k zápisu.|Povolte službu Multi-Factor Authentication (MFA) pro všechny účty předplatného s oprávněním k zápisu, aby se zabránilo narušení účtů nebo prostředků.|
-|Subscription|30|Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.|Odeberte externí účty s oprávněním vlastníka z předplatného, aby nedocházelo k nemonitorovanému přístupu.|
-|Subscription|30|Vícefaktorové ověřování by mělo být povolené u účtů předplatného s oprávněním ke čtení|Povolte službu Multi-Factor Authentication (MFA) pro všechny účty předplatného s oprávněním ke čtení, abyste zabránili narušení účtů nebo prostředků.|
-|Subscription|25|Z předplatného by se měly odebrat externí účty s oprávněními pro zápis|Odeberte externí účty s oprávněním k zápisu z předplatného, aby nedocházelo k nemonitorovanému přístupu. |
-|Subscription|20|Zastaralé účty s oprávněním vlastníka by se měly odebrat z vašeho předplatného.|Odeberte zastaralé účty s oprávněním vlastníka z vašich předplatných.|
-|Subscription|5|Zastaralé účty by se měly odebírat z předplatného.|Odeberte zastaralé účty z vašich předplatných, abyste mohli povolit přístup jenom k aktuálním uživatelům. |
-|Subscription|5|K vašemu předplatnému by měl být přiřazený víc než jeden vlastník.|Chcete-li mít přístup správce k redundanci, určete více než jednoho vlastníka předplatného.|
-|Subscription|5|Pro vaše předplatné by se mělo určit maximálně 3 vlastníci.|Určete méně než 3 vlastníky předplatného, aby se snížila pravděpodobnost porušení napadeného vlastníka.|
-|Trezor klíčů|5|Měly by být povolené diagnostické protokoly v Key Vault.|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
-|Subscription|15|Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení.|Odeberte externí účty s oprávněním ke čtení z předplatného, aby nedocházelo k nemonitorovanému přístupu.| 
+   [![úspěšné posouzení](./media/security-center-identity-access/remove.png)](./media/security-center-identity-access/remove.png#lightbox)
 
 > [!NOTE]
 > Pokud jste vytvořili zásadu podmíněného přístupu, která vyžaduje MFA, ale má nastavené vyloučení, vyhodnocování doporučení pro Security Center MFA posuzuje zásady, které nedodržují předpisy, protože umožňuje některým uživatelům přihlašovat se k Azure bez MFA.
@@ -127,19 +104,3 @@ Další informace o doporučeních, která se vztahují na jiné typy prostředk
 - [Ochrana počítačů a aplikací ve službě Azure Security Center](security-center-virtual-machine-protection.md)
 - [Ochrana sítě pomocí Azure Security Center](security-center-network-recommendations.md)
 - [Ochrana dat a služby SQL Azure v Azure Security Center](security-center-sql-service-recommendations.md)
-
-Další informace o službě Security Center najdete v následujících článcích:
-* [Správa a reakce na výstrahy zabezpečení v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Zjistěte, jak spravovat výstrahy a reagovat na incidenty zabezpečení ve službě Security Center.
-* [Vysvětlení výstrah zabezpečení v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Seznamte se s dalšími typy výstrah zabezpečení.
-* [Azure Security Center – nejčastější dotazy](security-center-faq.md). Najděte odpovědi na nejčastější dotazy ohledně používání služby Security Center.
-
-
-<!--Image references-->
-[1]: ./media/security-center-identity-access/overview.png
-[2]: ./media/security-center-identity-access/identity-dashboard.png
-[3]: ./media/security-center-identity-access/select-subscription.png
-[4]: ./media/security-center-identity-access/subscriptions.png
-[5]: ./media/security-center-identity-access/recommendations.png
-[6]: ./media/security-center-identity-access/designate.png
-[7]: ./media/security-center-identity-access/passed-assessments.png
-[8]: ./media/security-center-identity-access/remove.png

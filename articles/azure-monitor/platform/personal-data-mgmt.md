@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak spravovat osobní údaje uložené v A
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 7733b27bb5af01e55cd732c16f6c9cb1e9301819
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7f8b40094b30a01e4189bcf04d4c194e5b0b4285
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932125"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75394759"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Doprovodné materiály k osobním údajům uloženým v Log Analytics a Application Insights
 
@@ -60,7 +60,7 @@ Log Analytics je flexibilní úložiště, které při stanovení schématu pro 
     | where timestamp > ago(1d)
     | summarize numNonObfuscatedIPs_24h = count() by $table
     ```
-* *ID uživatelů*: ve výchozím nastavení Application Insights použijí náhodně generované identifikátory pro sledování uživatelů a relací. Je však běžné, že jsou tato pole přepsána pro uložení ID, které je pro aplikaci relevantní. Příklad: uživatelská jména, identifikátory GUID AAD atd. Tato ID se často považují za v oboru jako osobní údaje, a proto by se měla odpovídajícím způsobem zpracovat. Naše doporučení se vždycky snaží zaanonymizovatovat nebo pořídit tato ID. Pole, kde jsou tyto hodnoty běžně nalezeny, zahrnují session_Id, user_Id, user_AuthenticatedId, user_AccountId a customDimensions.
+* *ID uživatelů*: ve výchozím nastavení Application Insights použijí náhodně generované identifikátory pro sledování uživatelů a relací. Je však běžné, že jsou tato pole přepsána pro uložení ID, které je pro aplikaci relevantní. Příklad: uživatelská jména, identifikátory GUID AAD atd. Tato ID se často považují za v oboru jako osobní údaje, a proto by se měla odpovídajícím způsobem zpracovat. Naše doporučení se vždycky snaží zaanonymizovatovat nebo pořídit tato ID. Pole, kde se tyto hodnoty běžně vyskytují, zahrnují session_Id, user_Id, user_AuthenticatedId, user_AccountId a také customDimensions.
 * *Vlastní data*: Application Insights umožňuje připojit sadu vlastních dimenzí k jakémukoli datovému typu. Tyto dimenze můžou být *libovolná* data. Pomocí následujícího dotazu identifikujte všechny vlastní dimenze shromážděné za posledních 24 hodin:
     ```
     search * 
@@ -73,7 +73,7 @@ Log Analytics je flexibilní úložiště, které při stanovení schématu pro 
 
 ## <a name="how-to-export-and-delete-private-data"></a>Jak exportovat a odstranit soukromá data
 
-Jak bylo zmíněno v předchozí [strategii pro zpracování osobních údajů](#strategy-for-personal-data-handling) , __důrazně__ se doporučuje, pokud je to možné, aby bylo možné změnit strukturu zásad shromažďování dat, aby se zakázala shromažďování privátních dat, její zatřídění nebo anonymizace nebo v opačném případě je upravovaná, aby se odebrala z považovat za "soukromé". Manipulace s daty bude mít za následek, že budou mít náklady na vás a váš tým k definování a automatizaci strategie, vytvoření rozhraní pro vaše zákazníky, aby mohli pracovat s daty a průběžnými náklady na údržbu. Kromě toho je pro Log Analytics a Application Insights výpočetně nákladné a velký objem souběžných volání rozhraní API dotazů nebo vyprázdnění může mít negativní dopad na veškerou interakci s Log Analyticsmi funkcemi. V takovém případě existují některé platné scénáře, ve kterých musí být shromažďována soukromá data. V těchto případech by měla být data zpracována způsobem popsaným v této části.
+Jak bylo zmíněno v předchozí [strategii pro zpracování osobních údajů](#strategy-for-personal-data-handling) , __důrazně__ se doporučuje, pokud je to možné, aby se změnila Struktura zásad shromažďování dat, aby se zakázala shromažďování privátních dat, její zatřídění nebo anonymizace, nebo jinak upravovat, aby se odstranila z hlediska "soukromé". Manipulace s daty bude mít za následek, že budou mít náklady na vás a váš tým k definování a automatizaci strategie, vytvoření rozhraní pro vaše zákazníky, aby mohli pracovat s daty a průběžnými náklady na údržbu. Kromě toho je pro Log Analytics a Application Insights výpočetně nákladné a velký objem souběžných volání rozhraní API dotazů nebo vyprázdnění může mít negativní dopad na veškerou interakci s Log Analyticsmi funkcemi. V takovém případě existují některé platné scénáře, ve kterých musí být shromažďována soukromá data. V těchto případech by měla být data zpracována způsobem popsaným v této části.
 
 [!INCLUDE [gdpr-intro-sentence](../../../includes/gdpr-intro-sentence.md)]
 
@@ -103,7 +103,7 @@ Po přiřazení role Azure Resource Manager jsou k dispozici dvě nové cesty ro
 #### <a name="log-data"></a>Protokolování dat
 
 * [Post](https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) Return-převezme objekt určující parametry dat, které se mají odstranit, a vrátí identifikátor GUID odkazu. 
-* ZÍSKAT stav vyčištění – volání po vyprázdnění vrátí hlavičku x-MS-status-Location, která bude obsahovat adresu URL, kterou můžete zavolat k určení stavu rozhraní API pro vyprázdnění. Například:
+* ZÍSKAT stav vyčištění – volání po vyprázdnění vrátí hlavičku x-MS-status-Location, která bude obsahovat adresu URL, kterou můžete zavolat k určení stavu rozhraní API pro vyprázdnění. Příklad:
 
     ```
     x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperationalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
@@ -115,7 +115,7 @@ Po přiřazení role Azure Resource Manager jsou k dispozici dvě nové cesty ro
 #### <a name="application-data"></a>Data aplikací
 
 * [Post](https://docs.microsoft.com/rest/api/application-insights/components/purge) Return-převezme objekt určující parametry dat, které se mají odstranit, a vrátí identifikátor GUID odkazu.
-* ZÍSKAT stav vyčištění – volání po vyprázdnění vrátí hlavičku x-MS-status-Location, která bude obsahovat adresu URL, kterou můžete zavolat k určení stavu rozhraní API pro vyprázdnění. Například:
+* ZÍSKAT stav vyčištění – volání po vyprázdnění vrátí hlavičku x-MS-status-Location, která bude obsahovat adresu URL, kterou můžete zavolat k určení stavu rozhraní API pro vyprázdnění. Příklad:
 
    ```
    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/microsoft.insights/components/[ComponentName]/operations/purge-[PurgeOperationId]?api-version=2015-05-01

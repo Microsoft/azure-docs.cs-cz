@@ -1,24 +1,16 @@
 ---
-title: Diagnostika reverzního proxy serveru Azure Service Fabric | Microsoft Docs
-description: Naučte se monitorovat a diagnostikovat zpracování požadavků na reverzním proxy serveru.
-services: service-fabric
-documentationcenter: .net
+title: Diagnostika reverzního proxy serveru Azure Service Fabric
+description: Naučte se monitorovat a diagnostikovat zpracování požadavků na reverzním proxy serveru pro aplikaci Azure Service Fabric.
 author: kavyako
-manager: vipulm
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 08/08/2017
 ms.author: kavyako
-ms.openlocfilehash: 6074b799e992371d41de050f68690e450f008789
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bbc1fe5a76ecb5720bc49e0a082d5e9151b403d8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933970"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645459"
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>Monitorování a diagnostika zpracování požadavků na reverzním proxy serveru
 
@@ -104,7 +96,7 @@ Tady je několik příkladů, jak interpretovat běžné protokoly selhání, ke
      }
      }
      ```
-     Další příklad, ve kterém může reverzní proxy vracet hodnotu 404, je: ApplicationGateway\Http konfigurace parametru **SecureOnlyMode** je nastavená na true s reverzním proxy serverem naslouchání na **https**, ale všechny koncové body repliky nejsou zabezpečené ( naslouchá na HTTP).
+     Další příklad, kdy může reverzní proxy vracet hodnotu 404, je: parametr konfigurace ApplicationGateway\Http **SecureOnlyMode** je nastaven na true s reverzním proxy serverem naslouchání na **https**, ale všechny koncové body repliky nejsou zabezpečené (naslouchá na http).
      Reverzní proxy vrátí 404, protože nemůže najít koncový bod, který naslouchá na HTTPS, aby předal požadavek. Analýza parametrů v datové části události pomáhá zúžit problém:
     
      ```
@@ -181,7 +173,7 @@ Tady je několik příkladů, jak interpretovat běžné protokoly selhání, ke
       }
     }
     ```
-5. Reverzní proxy vrátí 404 FABRIC_E_SERVICE_DOES_NOT_EXIST
+5. Reverse Proxy returns 404 FABRIC_E_SERVICE_DOES_NOT_EXIST
 
     Pokud není zadáno schéma identifikátoru URI pro koncový bod služby v manifestu služby, je vrácena FABRIC_E_SERVICE_DOES_NOT_EXIST chyba.
 

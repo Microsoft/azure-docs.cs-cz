@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: b6e66bea6dd86409866db1fee3564d21236ecbce
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 05a05c46a49c0262bd5db33390bb995ebe849fd7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286187"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364114"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Odeslání metriky hostovaného operačního systému do úložiště metriky Azure Monitor pomocí šablony Správce prostředků pro virtuální počítač s Windows
 
@@ -25,7 +25,7 @@ Tento článek popisuje proces odeslání metrik výkonu hostovaného operační
 
 Ukládání do tohoto umístění vám umožní přístup ke stejným akcím pro metriky platforem. Akce zahrnují výstrahy, vytváření grafů, směrování a přístup téměř v reálném čase z REST API a dalších. Diagnostické rozšíření v minulosti vytvořilo Azure Storage, ale ne do Azure Monitorho úložiště dat.
 
-Pokud s Správce prostředků šablonou začínáte, přečtěte si o [Nasazení šablon](../../azure-resource-manager/resource-group-overview.md) a jejich struktuře a syntaxi.
+Pokud s Správce prostředků šablonou začínáte, přečtěte si o [Nasazení šablon](../../azure-resource-manager/management/overview.md) a jejich struktuře a syntaxi.
 
 ## <a name="prerequisites"></a>Požadavky
 

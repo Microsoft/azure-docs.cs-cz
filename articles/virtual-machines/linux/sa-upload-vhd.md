@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: ef2db7f13ea5192634855b69a0d355e0f1e11ecb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6d1dd8f749f6c3e991413628bd1e08baf76a02f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035082"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458677"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Nahrání a vytvoření virtuálního počítače se systémem Linux z vlastního disku pomocí Azure CLI
 
@@ -101,7 +101,7 @@ Ujistěte se, že máte nainstalované nejnovější rozhraní příkazového [�
 
 V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami. Příklady názvů parametrů zahrnutých `myResourceGroup`, `mystorageaccount`a `mydisks`.
 
-<a id="prepimage"> </a>
+<a id="prepimage"></a>
 
 ## <a name="prepare-the-disk-to-be-uploaded"></a>Příprava disku, který se má nahrát
 Azure podporuje různé distribuce systému Linux (viz [schválené distribuce](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). Následující články vás seznámí s postupem přípravy různých distribucí systému Linux, které jsou podporovány v Azure:
@@ -122,7 +122,7 @@ Další obecné tipy k přípravě imagí pro Linux pro Azure najdete také v **
 > 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-Skupiny prostředků logicky přinášejí všechny prostředky Azure za účelem podpory vašich virtuálních počítačů, jako jsou virtuální sítě a úložiště. Další informace o skupinách prostředků najdete v tématu [Přehled skupin prostředků](../../azure-resource-manager/resource-group-overview.md). Než nahrajete vlastní disk a vytvoříte virtuální počítače, musíte nejdřív vytvořit skupinu prostředků pomocí [AZ Group Create](/cli/azure/group).
+Skupiny prostředků logicky přinášejí všechny prostředky Azure za účelem podpory vašich virtuálních počítačů, jako jsou virtuální sítě a úložiště. Další informace o skupinách prostředků najdete v tématu [Přehled skupin prostředků](../../azure-resource-manager/management/overview.md). Než nahrajete vlastní disk a vytvoříte virtuální počítače, musíte nejdřív vytvořit skupinu prostředků pomocí [AZ Group Create](/cli/azure/group).
 
 Následující příklad vytvoří skupinu prostředků `myResourceGroup` v umístění `westus`:
 
@@ -142,7 +142,7 @@ az storage account create --resource-group myResourceGroup --location westus \
 ```
 
 ## <a name="list-storage-account-keys"></a>Výpis klíčů účtu úložiště
-Azure vygeneruje 2 512 přístupové klíče pro každý účet úložiště. Tyto přístupové klíče se používají při ověřování účtu úložiště, například k provádění operací zápisu. Přečtěte si další informace o [správě přístupu k úložišti](../../storage/common/storage-account-manage.md#access-keys). Přístupové klíče zobrazíte pomocí [seznamu AZ Storage Account Keys](/cli/azure/storage/account/keys).
+Azure vygeneruje 2 512 přístupové klíče pro každý účet úložiště. Tyto přístupové klíče se používají při ověřování účtu úložiště, například k provádění operací zápisu. Další informace o přístupových klíčích účtu úložiště najdete v tématu [Správa přístupových klíčů účtu úložiště](../../storage/common/storage-account-keys-manage.md). Přístupové klíče zobrazíte pomocí [seznamu AZ Storage Account Keys](/cli/azure/storage/account/keys).
 
 Zobrazte přístupové klíče pro účet úložiště, který jste vytvořili:
 
@@ -204,7 +204,7 @@ Stále musíte zadat nebo zodpovědět výzvy pro všechny další parametry vy�
 
 
 ## <a name="resource-manager-template"></a>Šablona Resource Manageru
-Šablony Azure Resource Manager jsou soubory JavaScript Object Notation (JSON), které definují prostředí, které chcete sestavit. Šablony jsou rozdělené do různých poskytovatelů prostředků, jako jsou výpočetní prostředky nebo síť. Můžete použít existující šablony nebo napsat vlastní. Přečtěte si další informace o [použití Správce prostředků a šablon](../../azure-resource-manager/resource-group-overview.md).
+Šablony Azure Resource Manager jsou soubory JavaScript Object Notation (JSON), které definují prostředí, které chcete sestavit. Šablony jsou rozdělené do různých poskytovatelů prostředků, jako jsou výpočetní prostředky nebo síť. Můžete použít existující šablony nebo napsat vlastní. Přečtěte si další informace o [použití Správce prostředků a šablon](../../azure-resource-manager/management/overview.md).
 
 V rámci poskytovatele `Microsoft.Compute/virtualMachines` vaší šablony máte `storageProfile` uzel, který obsahuje podrobnosti o konfiguraci pro váš virtuální počítač. Dva hlavní parametry, které je potřeba upravit, jsou `image` a `vhd` identifikátory URI, které odkazují na váš vlastní disk a virtuální disk nového virtuálního počítače. V následujícím příkladu vidíte příklad formátu JSON pro použití vlastního disku:
 
@@ -224,7 +224,7 @@ V rámci poskytovatele `Microsoft.Compute/virtualMachines` vaší šablony máte
           }
 ```
 
-Pomocí [této existující šablony můžete vytvořit virtuální počítač z vlastní image](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) nebo si přečtěte informace o [vytváření vlastních šablon Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md). 
+Pomocí [této existující šablony můžete vytvořit virtuální počítač z vlastní image](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) nebo si přečtěte informace o [vytváření vlastních šablon Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md). 
 
 Po nakonfigurování šablony použijte příkaz [AZ Group Deployment Create](/cli/azure/group/deployment) a vytvořte své virtuální počítače. Zadejte identifikátor URI šablony JSON s parametrem `--template-uri`:
 
@@ -242,5 +242,5 @@ az group deployment create --resource-group myNewResourceGroup \
 
 
 ## <a name="next-steps"></a>Další kroky
-Po přípravě a nahrání vlastního virtuálního disku si můžete přečíst další informace o [používání Správce prostředků a šablon](../../azure-resource-manager/resource-group-overview.md). Na nové virtuální počítače můžete také [přidat datový disk](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) . Pokud máte aplikace spuštěné na virtuálních počítačích, ke kterým potřebujete přístup, nezapomeňte [otevřít porty a koncové body](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Po přípravě a nahrání vlastního virtuálního disku si můžete přečíst další informace o [používání Správce prostředků a šablon](../../azure-resource-manager/management/overview.md). Na nové virtuální počítače můžete také [přidat datový disk](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) . Pokud máte aplikace spuštěné na virtuálních počítačích, ke kterým potřebujete přístup, nezapomeňte [otevřít porty a koncové body](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

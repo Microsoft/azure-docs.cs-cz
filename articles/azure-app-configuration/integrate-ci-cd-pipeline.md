@@ -1,5 +1,6 @@
 ---
-title: Kurz pro integraci s kanálem pro průběžnou integraci a doručování pomocí Azure App Configurationu | Microsoft Docs
+title: 'Kurz: integrace s kanálem pro průběžnou integraci a doručování'
+titleSuffix: Azure App Configuration
 description: V tomto kurzu se naučíte generovat konfigurační soubor pomocí dat v konfiguraci aplikace Azure během průběžné integrace a doručování.
 services: azure-app-configuration
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: e9b81baed14b18c6db736bd94a2aba43a4e671ad
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f8adfee1e707181e78f4e845f61477b08af935e9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185104"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433641"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integrace s kanálem CI/CD
 

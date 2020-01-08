@@ -1,92 +1,82 @@
 ---
-title: Spravujte svoje aplikace Azure Service Fabric v sadě Visual Studio | Dokumentace Microsoftu
-description: Pomocí sady Visual Studio vytvořit, vývoj, zabalení, nasazení a ladění aplikace Service Fabric v Azure a služby.
-services: service-fabric
-documentationcenter: .net
+title: Správa aplikací v sadě Visual Studio
+description: Pomocí sady Visual Studio můžete vytvářet, vyvíjet, balit, nasazovat a ladit aplikace a služby Azure Service Fabric.
 author: mikkelhegn
-manager: chackdan
-editor: ''
-ms.assetid: c317cb7e-7eae-466e-ba41-6aa2518be5cf
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.custom: vs-azure
-ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
-ms.openlocfilehash: 4744858869e10094389be58ddd3960cb8cc2773a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d6734f5da0fb7e5c9052b26b55b2d90b068bdbbf
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60720057"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614328"
 ---
-# <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Jednodušší vytváření a Správa aplikací Service Fabric pomocí sady Visual Studio
-Můžete spravovat vaše aplikace Azure Service Fabric a služby pomocí sady Visual Studio. Jakmile [nastavení vývojového prostředí](service-fabric-get-started.md), Visual Studio můžete vytvářet aplikace Service Fabric, přidat služby nebo balíček, registrace a nasazení aplikací v místním vývojovém clusteru.
+# <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Použití sady Visual Studio k zjednodušení psaní a správy aplikací Service Fabric
+Pomocí sady Visual Studio můžete spravovat své aplikace a služby Azure Service Fabric. Po [Nastavení vývojového prostředí](service-fabric-get-started.md)můžete použít Visual Studio k vytváření Service Fabric aplikací, přidávání služeb nebo balení, registraci a nasazení aplikací v místním vývojovém clusteru.
 
 ## <a name="deploy-your-service-fabric-application"></a>Nasazení aplikace Service Fabric
-Ve výchozím nastavení kombinuje nasazení aplikace do jedné jednoduché operace následující kroky:
+Nasazení aplikace ve výchozím nastavení kombinuje následující kroky do jedné jednoduché operace:
 
-1. Vytvoření balíčku aplikace
-2. Nahrává se balíček aplikace do úložiště imagí
+1. Vytváření balíčku aplikace
+2. Nahrání balíčku aplikace do úložiště imagí
 3. Registrace typu aplikace
-4. Odebírá se všechny spuštěné instance aplikace
+4. Odebírají se všechny spuštěné instance aplikace.
 5. Vytvoření instance aplikace
 
-V sadě Visual Studio stisknutím klávesy **F5** nasadí vaši aplikaci a připojit ladicí program pro všechny instance aplikace. Můžete použít **Ctrl + F5** k nasazení aplikace bez ladění nebo je můžete publikovat do místního nebo vzdáleného clusteru pomocí profilu publikování.
+V aplikaci Visual Studio se po stisknutí klávesy **F5** nasadí aplikace a připojí se ladicí program ke všem instancím aplikace. Můžete použít **CTRL + F5** k nasazení aplikace bez ladění nebo můžete publikovat do místního nebo vzdáleného clusteru pomocí profilu publikování.
 
 ### <a name="application-debug-mode"></a>Režim ladění aplikace
-Visual Studio poskytuje vlastnost s názvem **režim ladění aplikace**, který určuje způsob zpracování nasazení aplikace jako součást ladění Visual Studia.
+Visual Studio poskytuje vlastnost nazvanou **režim ladění aplikace**, která určuje, jak má Visual studia zpracovávat nasazení aplikace jako součást ladění.
 
-#### <a name="to-set-the-application-debug-mode-property"></a>Chcete-li nastavit vlastnost režim ladění aplikace
-1. V Service Fabric application projektu (*.sfproj) místní nabídce zvolte **vlastnosti** (nebo stiskněte klávesu **F4** klíč).
-2. V **vlastnosti** okno, nastaveno **režim ladění aplikace** vlastnost.
+#### <a name="to-set-the-application-debug-mode-property"></a>Nastavení vlastnosti režimu ladění aplikace
+1. V místní nabídce projektu aplikace Service Fabric aplikace (*. sfproj) zvolte **vlastnosti** (nebo stiskněte klávesu **F4** ).
+2. V okně **vlastnosti** nastavte vlastnost **režim ladění aplikace** .
 
-![Nastavte vlastnost režim ladění aplikace][debugmodeproperty]
+![Nastavit vlastnost režimu ladění aplikace][debugmodeproperty]
 
-#### <a name="application-debug-modes"></a>Režim ladění aplikace
+#### <a name="application-debug-modes"></a>Režimy ladění aplikace
 
-1. **Aktualizovat aplikaci** tento režim vám umožní rychle změnit a ladění vašeho kódu a podporuje úpravy statické webové soubory během ladění. Tento režim funguje jenom v případě místního vývojového clusteru je v režimu 1 uzel. Toto je výchozí režim ladění aplikace.
-2. **Odebrání aplikace** způsobí, že aplikace má být odebrán při ukončení relace ladění.
-3. **Automatický Upgrade** aplikace i nadále běžel při ukončení relace ladění. Příští relaci ladění bude považovat za nasazení upgradu. Proces upgradu zachová všechna data, která jste zadali v předchozí ladicí relaci.
-4. **Zachovat aplikaci** aplikace i nadále běží v clusteru při ukončení relace ladění. Na začátku příští relaci ladění, se odeberou aplikace.
+1. **Aktualizovat aplikaci** Tento režim umožňuje rychlou změnu a ladění kódu a podporuje úpravy statických webových souborů při ladění. Tento režim funguje jenom v případě, že váš místní vývojový cluster je v režimu s jedním uzlem. Toto je výchozí režim ladění aplikace.
+2. **Odebrání aplikace** způsobí, že aplikace bude odebrána po ukončení relace ladění.
+3. **Automatický upgrade** Aplikace pokračuje v běhu i po ukončení relace ladění. Další relace ladění bude nasazení považovat za upgrade. Proces upgradu zachová všechna data, která jste zadali v předchozí relaci ladění.
+4. **Zachovat aplikaci** Po ukončení relace ladění aplikace udržuje v clusteru spuštěný. Na začátku další relace ladění bude aplikace odebrána.
 
-Pro **automatický Upgrade** data se zachovají použitím možnosti upgradu aplikace Service Fabric. Další informace o upgradu aplikace a jak můžete provést upgrade ve skutečných prostředí, najdete v části [upgrade aplikace Service Fabric](service-fabric-application-upgrade.md).
+Pro data **automatického upgradu** se zachovají pomocí možností upgradu aplikace Service Fabric. Další informace o upgradu aplikací a o tom, jak můžete provést upgrade v reálném prostředí, najdete v tématu [Service Fabric upgrade aplikace](service-fabric-application-upgrade.md).
 
-## <a name="add-a-service-to-your-service-fabric-application"></a>Přidat službu do aplikace Service Fabric
-Nové služby můžete přidat do vaší aplikace k rozšíření svých funkcí. Aby bylo zajištěno, že služba je součástí vašeho balíčku aplikací, přidat službu prostřednictvím **novou službu prostředků infrastruktury...**  položky nabídky.
+## <a name="add-a-service-to-your-service-fabric-application"></a>Přidání služby do aplikace Service Fabric
+Do své aplikace můžete přidat nové služby, abyste rozšířili její funkce. Aby bylo zajištěno, že je služba součástí balíčku aplikace, přidejte službu prostřednictvím nové položky nabídky **služby Fabric...** .
 
-![Přidejte novou službu Service Fabric][newservice]
+![Přidat novou Service Fabric službu][newservice]
 
-Vyberte typ projektu Service Fabric do vaší aplikace přidat a zadejte název pro službu.  Naleznete v tématu [zvolíte rozhraní pro vaši službu](service-fabric-choose-framework.md) vám pomohou rozhodnout typů služby, které se mají použít.
+Vyberte typ projektu Service Fabric, který chcete přidat do aplikace, a zadejte název služby.  Podívejte se na téma [Výběr architektury pro vaši službu](service-fabric-choose-framework.md) , která vám pomůžou určit, který typ služby se má použít.
 
-![Vyberte typ projektu služby Service Fabric do aplikace][addserviceproject]
+![Vyberte typ projektu Service Fabric služby, který chcete přidat do aplikace.][addserviceproject]
 
-Nová služba se přidá do vašeho řešení a existující balíček aplikace. Do manifestu aplikace způsobuje služby vytvořit a spustit ji při příštím nasazení aplikace se přidají odkazy na služby a výchozí instanci služby.
+Nová služba se přidá do vašeho řešení a existujícího balíčku aplikace. Odkazy na služby a výchozí instance služby budou přidány do manifestu aplikace, což způsobí, že se služba vytvoří a spustí při příštím nasazení aplikace.
 
-![Nová služba je přidán do manifestu aplikace][newserviceapplicationmanifest]
+![Nová služba se přidá do manifestu aplikace.][newserviceapplicationmanifest]
 
-## <a name="package-your-service-fabric-application"></a>Balíček aplikace Service Fabric
-Pokud chcete nasadit aplikace a její služby do clusteru, musíte vytvořit balíček aplikace.  Balíček slouží k uspořádání manifestu aplikace, manifesty služby a další nezbytné soubory v specifické rozložení.  Visual Studio nastaví a spravuje balíček ve složce projektu aplikace v adresáři "pkg".  Kliknutím na **balíčku** z **aplikace** kontextové nabídky vytvoří nebo aktualizuje balíček aplikace.
+## <a name="package-your-service-fabric-application"></a>Zabalení aplikace Service Fabric
+Chcete-li nasadit aplikaci a její služby do clusteru, je nutné vytvořit balíček aplikace.  Balíček uspořádá manifest aplikace, manifesty služby a další nezbytné soubory do konkrétního rozložení.  Sada Visual Studio nastaví a spravuje balíček ve složce projektu aplikace v adresáři ' pkg '.  Kliknutím na **balíček** v kontextové nabídce **aplikace** se vytvoří nebo aktualizuje balíček aplikace.
 
-## <a name="remove-applications-and-application-types-using-cloud-explorer"></a>Odebrat aplikace a typy aplikací pomocí Průzkumníka cloudu
-Můžete provádět operace správy základní clusteru v rámci sady Visual Studio pomocí Průzkumníka cloudu, který můžete spustit z **zobrazení** nabídky. Můžete například odstranit aplikace a zrušit zřízení typy aplikací v clusterech místního nebo vzdáleného.
+## <a name="remove-applications-and-application-types-using-cloud-explorer"></a>Odebrání aplikací a typů aplikací pomocí Průzkumníka cloudu
+Základní operace správy clusterů můžete provádět v rámci sady Visual Studio pomocí Průzkumníka cloudu, který můžete spustit z nabídky **Zobrazit** . Můžete například odstranit aplikace a zrušit zřízení typů aplikací v místních nebo vzdálených clusterech.
 
 ![Odebrání aplikace][removeapplication]
 
 > [!TIP]
-> Širší funkce správy clusteru najdete v části [vizualizace vašeho clusteru pomocí Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md).
+> Rozsáhlejší funkce správy clusterů najdete v tématu [Vizualizace clusteru pomocí Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
 >
 >
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Další postup
-* [Aplikační model Service Fabric](service-fabric-application-model.md)
-* [Nasazení aplikace Service Fabric](service-fabric-deploy-remove-applications.md)
-* [Správa parametrů aplikací pro víc prostředí](service-fabric-manage-multiple-environment-app-configuration.md)
+## <a name="next-steps"></a>Další kroky
+* [Service Fabric aplikační model](service-fabric-application-model.md)
+* [Service Fabric nasazení aplikace](service-fabric-deploy-remove-applications.md)
+* [Správa parametrů aplikace pro více prostředí](service-fabric-manage-multiple-environment-app-configuration.md)
 * [Ladění aplikace Service Fabric](service-fabric-debugging-your-application.md)
-* [Vizualizace clusteru pomocí Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md)
+* [Vizualizace clusteru pomocí Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
 
 <!--Image references-->
 [addserviceproject]:./media/service-fabric-manage-application-in-visual-studio/addserviceproject.png

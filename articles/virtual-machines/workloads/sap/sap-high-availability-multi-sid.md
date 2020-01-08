@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75d4c4e38069cb192917f275245d87bb4c63d502
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ff01bd0d6586cf75dcfdb7277c34120c6ec22894
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078149"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647488"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Vytvoření konfigurace NetWeaver s více identifikátory SID pro SAP
 
@@ -33,7 +33,7 @@ ms.locfileid: "70078149"
 [sap-ha-guide-figure-6004]:./media/virtual-machines-shared-sap-high-availability-guide/6004-sap-multi-sid-dns.png
 [sap-ha-guide-figure-6005]:./media/virtual-machines-shared-sap-high-availability-guide/6005-sap-multi-sid-azure-portal.png
 [sap-ha-guide-figure-6006]:./media/virtual-machines-shared-sap-high-availability-guide/6006-sap-multi-sid-sios-replication.png
-[networking-limits-azure-resource-manager]:../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
+[networking-limits-azure-resource-manager]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
 [sap-ha-guide-9.1.1]:sap-high-availability-guide.md#a97ad604-9094-44fe-a364-f89cb39bf097 
 [sap-ha-guide-8.8]:sap-high-availability-guide.md#f19bd997-154d-4583-a46e-7f5a69d0153c
 [sap-ha-guide-8.12.3.3]:sap-high-availability-guide.md#d9c1fc8e-8710-4dff-bec2-1f535db7b006 
@@ -72,7 +72,7 @@ Cílem je nainstalovat několik clusterových instancí SAP ABAP ASCS nebo SAP J
 >Maximální počet instancí SAP ASCS/SCS v jednom clusteru WSFC se rovná maximálnímu počtu privátních IP adres pro každý interní nástroj pro vyrovnávání zatížení Azure.
 >
 
-Další informace o limitech pro vyrovnávání zatížení najdete v tématu "soukromé front-endové IP adresy na nástroj [pro vyrovnávání zatížení" v části omezení sítě: Azure Resource Manager][networking-limits-azure-resource-manager].
+Další informace o limitech pro vyrovnávání zatížení najdete v části "soukromé IP adresy front-endu na nástroj pro vyrovnávání zatížení" v části [omezení sítě: Azure Resource Manager][networking-limits-azure-resource-manager].
 
 Kompletní na šířku se dvěma systémy SAP s vysokou dostupností by vypadaly takto:
 
@@ -88,7 +88,7 @@ Kompletní na šířku se dvěma systémy SAP s vysokou dostupností by vypadaly
 ## <a name="prepare-the-infrastructure"></a>Příprava infrastruktury
 K přípravě infrastruktury můžete nainstalovat další instanci SAP ASCS/SCS s následujícími parametry:
 
-| Název parametru | Value |
+| Název parametru | Hodnota |
 | --- | --- |
 | IDENTIFIKÁTOR SID SAP ASCS/SCS |pr1-lb-ascs |
 | Interní nástroj pro vyrovnávání zatížení SAP DBMS | PR5 |
@@ -267,7 +267,7 @@ Postup vysoké úrovně je následující:
 
 10. [Otestujte převzetí služeb při selhání a replikaci instance SAP ASCS/SCS][sap-ha-guide-10].
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Omezení sítě: Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Více VIP pro Azure Load Balancer][load-balancer-multivip-overview]

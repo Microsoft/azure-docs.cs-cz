@@ -1,6 +1,6 @@
 ---
-title: Zadejte skupinu prostředků pro virtuální počítače ve službě Azure DevTest Labs | Dokumentace Microsoftu
-description: Zjistěte, jak zadat skupinu prostředků pro virtuální počítače v testovacím prostředí ve službě Azure DevTest Labs.
+title: Zadejte skupinu prostředků pro virtuální počítače v Azure DevTest Labs | Microsoft Docs
+description: Naučte se určit skupinu prostředků pro virtuální počítače v testovacím prostředí v Azure DevTest Labs.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -12,43 +12,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: spelluru
-ms.openlocfilehash: 574cc0c41ce645c71302178afcf6e7deaec69d8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6f51dee948d9e4d9e3f8594f9f7e60fb11b7057
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476085"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647335"
 ---
-# <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Zadejte skupinu prostředků pro virtuální počítače testovacího prostředí ve službě Azure DevTest Labs
+# <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Zadejte skupinu prostředků pro virtuální počítače v testovacím prostředí v Azure DevTest Labs
 
-Jako vlastník testovacího prostředí můžete konfigurovat virtuální počítače testovacího prostředí vytvořit v konkrétní skupině prostředků. Tato funkce vám pomůže v následujících scénářích:
+Jako vlastník testovacího prostředí můžete nakonfigurovat virtuální počítače testovacího prostředí tak, aby se vytvořily v konkrétní skupině prostředků. Tato funkce vám pomůže v následujících scénářích:
 
-- Můžete mít méně skupiny prostředků vytvořené testovací prostředí v rámci vašeho předplatného.
-- Máte cvičeních fungují fixní sadu skupin prostředků, které nakonfigurujete.
-- Obejít omezení a jejich schvalování, vyžadovaný pro vytvoření skupiny prostředků v rámci vašeho předplatného Azure.
-- Konsolidovat všechny prostředky testovacího prostředí v rámci jedné skupiny prostředků pro zjednodušení sledování těchto prostředků a použití [zásady](../governance/policy/overview.md) ke správě prostředků na úrovni skupiny prostředků.
+- Ve vašem předplatném je víc skupin prostředků vytvořených Labs.
+- Vaše laboratoře budou fungovat v rámci pevně stanovené sady skupin prostředků, které nakonfigurujete.
+- V rámci předplatného Azure můžete obejít omezení a schválení požadovaná při vytváření skupin prostředků.
+- Konsolidujte všechny prostředky testovacího prostředí v rámci jedné skupiny prostředků, abyste zjednodušili sledování těchto prostředků a uplatňovali [zásady](../governance/policy/overview.md) pro správu prostředků na úrovni skupiny prostředků.
 
-Díky této funkci můžete použít skript zadat nový nebo existující skupiny prostředků v rámci vašeho předplatného Azure pro všechny vaše testovací prostředí virtuálních počítačů. Azure DevTest Labs v současné době podporuje tuto funkci prostřednictvím rozhraní API.
+Pomocí této funkce můžete použít skript k zadání nové nebo existující skupiny prostředků v rámci předplatného Azure pro všechny vaše virtuální počítače v testovacím prostředí. V současné době Azure DevTest Labs tuto funkci podporuje prostřednictvím rozhraní API.
 
 > [!NOTE]
-> Při vytvoření testovacích prostředí v DevTest Labs platí všechny limity předplatného. Testovací prostředí můžete představit jako jiný prostředek ve vašem předplatném. V případě skupiny prostředků je limit [980 skupin prostředků na předplatné](../azure-subscription-service-limits.md#subscription-limits---azure-resource-manager). 
+> Všechny limity předplatného platí při vytváření cvičení v DevTest Labs. Představte si testovací prostředí jako jakýkoliv jiný prostředek v rámci vašeho předplatného. V případě skupin prostředků je limit [980 skupin prostředků v rámci předplatného](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager). 
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
-Následujícím postupem určete skupinu prostředků pro všechny virtuální počítače vytvořené v testovacím prostředí. 
+Pomocí těchto kroků určete skupinu prostředků pro všechny virtuální počítače vytvořené v testovacím prostředí. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte **všechny služby** v navigační nabídce vlevo. 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+2. V levé navigační nabídce vyberte **všechny služby** . 
 3. Ze seznamu vyberte **DevTest Labs**.
-4. V seznamu testovacích prostředí, vyberte vaše **lab**.  
-5. Vyberte **konfigurace a zásad** v **nastavení** části v nabídce vlevo. 
-6. Vyberte **nastavení testovacího prostředí** v nabídce vlevo. 
+4. V seznamu cvičení vyberte **testovací prostředí**.  
+5. V části **Nastavení** v levé nabídce vyberte **Konfigurace a zásady** . 
+6. V nabídce vlevo vyberte **Nastavení testovacího prostředí** . 
 7. Vyberte **všechny virtuální počítače v jedné skupině prostředků**. 
-8. Vyberte existující skupinu prostředků v rozevíracím seznamu (nebo) vyberte **vytvořit nový**, zadejte **název** pro skupinu prostředků a vyberte **OK**. 
+8. V rozevíracím seznamu vyberte existující skupinu prostředků (nebo) vyberte **vytvořit novou**, zadejte **název** skupiny prostředků a vyberte **OK**. 
 
-    ![Vyberte skupinu prostředků pro všechny virtuální počítače testovacího prostředí](./media/resource-group-control/select-resource-group.png)
+    ![Vyberte skupinu prostředků pro všechny testovací virtuální počítače.](./media/resource-group-control/select-resource-group.png)
 
-## <a name="use-powershell"></a>Použití prostředí PowerShell 
-Následující příklad ukazuje, jak použít skript prostředí PowerShell k vytvoření všech virtuálních počítačů testovací prostředí v nové skupině prostředků.
+## <a name="use-powershell"></a>Použití PowerShellu 
+Následující příklad ukazuje, jak pomocí skriptu prostředí PowerShell vytvořit všechny virtuální počítače v testovacím prostředí v nové skupině prostředků.
 
 ```powershell
 [CmdletBinding()]
@@ -72,14 +72,14 @@ az resource update -g $labRg -n $labName --resource-type "Microsoft.DevTestLab/l
 "Done. New virtual machines will now be created in the resource group '$vmRg'."
 ```
 
-Vyvolání skriptu pomocí následujícího příkazu. ResourceGroup.ps1 je soubor, který obsahuje předchozí skript:
+Vyvolejte skript pomocí následujícího příkazu. Skupina prostředků Resource. ps1 je soubor, který obsahuje předchozí skript:
 
 ```powershell
 .\ResourceGroup.ps1 -subId <subscriptionID> -labRg <labRGNAme> -labName <LanName> -vmRg <RGName> 
 ```
 
-## <a name="use-an-azure-resource-manager-template"></a>Pomocí šablony Azure Resource Manageru
-Pokud používáte šablonu Azure Resource Manageru k vytvoření testovacího prostředí, použijte **vmCreationResourceGroupId** vlastnosti v části Vlastnosti testovacího prostředí šablony, jak je znázorněno v následujícím příkladu:
+## <a name="use-an-azure-resource-manager-template"></a>Použití šablony Azure Resource Manager
+Pokud k vytvoření testovacího prostředí používáte šablonu Azure Resource Manager, použijte vlastnost **vmCreationResourceGroupId** v části vlastnosti testovacího prostředí vaší šablony, jak je znázorněno v následujícím příkladu:
 
 ```json
         {
@@ -101,23 +101,23 @@ Pokud používáte šablonu Azure Resource Manageru k vytvoření testovacího p
 ```
 
 
-## <a name="api-to-configure-a-resource-group-for-lab-vms"></a>Rozhraní API konfigurace skupiny prostředků pro testovací prostředí virtuálních počítačů
-Máte následující možnosti jako vlastník testovacího prostředí při použití tohoto rozhraní API:
+## <a name="api-to-configure-a-resource-group-for-lab-vms"></a>Rozhraní API pro konfiguraci skupiny prostředků pro virtuální počítače v testovacím prostředí
+K dispozici jsou následující možnosti jako vlastník testovacího prostředí při používání tohoto rozhraní API:
 
-- Zvolte **skupiny prostředků testovacího prostředí** pro všechny virtuální počítače.
-- Zvolte **existující skupinu prostředků** než skupina prostředků testovacího prostředí pro všechny virtuální počítače.
-- Zadejte **novou skupinu prostředků** název pro všechny virtuální počítače.
-- Pokračujte v používání existujícího chování, ve kterém se vytvoří skupinu prostředků pro každý virtuální počítač v testovacím prostředí.
+- Vyberte **skupinu prostředků testovacího prostředí** pro všechny virtuální počítače.
+- Vyberte **existující skupinu prostředků** kromě skupiny prostředků testovacího prostředí pro všechny virtuální počítače.
+- Zadejte **nový název skupiny prostředků** pro všechny virtuální počítače.
+- Pokračujte v používání existujícího chování, ve kterém se vytvoří skupina prostředků pro každý virtuální počítač v testovacím prostředí.
  
-Toto nastavení platí pro nové virtuální počítače vytvořené v testovacím prostředí. Starší virtuální počítače ve vaší laboratoři, které byly vytvořeny ve své vlastní skupiny prostředků zůstanou beze změny. Prostředí, které jsou vytvořeny ve vaší laboratoři dál zůstanou ve své vlastní skupiny prostředků.
+Toto nastavení platí pro nové virtuální počítače vytvořené v testovacím prostředí. Starší virtuální počítače v testovacím prostředí, které byly vytvořeny ve vlastních skupinách prostředků, zůstávají neovlivněné. Prostředí, která jsou vytvořená v testovacím prostředí, zůstávají pořád ve vlastních skupinách prostředků.
 
 Jak používat toto rozhraní API:
-- Použití rozhraní API verze **2018_10_15_preview**.
-- Pokud chcete zadat novou skupinu prostředků, ujistěte se, že máte **oprávnění k zápisu na skupiny prostředků** ve vašem předplatném. Pokud nemáte oprávnění k zápisu, vytváření nových virtuálních počítačů v zadané skupině prostředků se nezdaří.
-- Při použití rozhraní API, předejte **úplné ID skupiny prostředků**. Například: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`. Ujistěte se, že skupina prostředků je ve stejném předplatném jako testovacího prostředí. 
+- Použijte **2018_10_15_preview**verze rozhraní API.
+- Pokud zadáte novou skupinu prostředků, ujistěte se, že máte **oprávnění k zápisu do skupin prostředků** v rámci vašeho předplatného. Pokud nemáte oprávnění k zápisu, nepodaří se vytvořit nové virtuální počítače v zadané skupině prostředků.
+- Při používání rozhraní API předejte **úplné ID skupiny prostředků**. Například: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`. Ujistěte se, že je skupina prostředků ve stejném předplatném jako testovací prostředí. 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Viz následující články: 
 
 - [Nastavení zásad pro testovací prostředí](devtest-lab-get-started-with-lab-policies.md)

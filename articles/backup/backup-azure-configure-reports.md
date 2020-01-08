@@ -3,12 +3,12 @@ title: Konfigurace sestav Power BI
 description: Nakonfigurujte sestavy Power BI pro Azure Backup pomocí trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 6e8482aea4f1d757550d4490e3a9972f664729c9
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 9b6ef62a924761642ef3217ff8af64ac6847c766
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173193"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450111"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 
@@ -88,7 +88,7 @@ Pokud chcete sestavu přizpůsobit a sdílet, vytvořte pracovní prostor a prov
 4. Zadejte název účtu úložiště, který jste nakonfigurovali v předchozím kroku 5, a vyberte **Další**.
 
     ![Zadejte název účtu úložiště](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)
-5. Pomocí metody Authentication Key (klíč) zadejte klíč účtu úložiště pro tento účet úložiště. Pokud chcete [Zobrazit a zkopírovat přístupové klíče úložiště](../storage/common/storage-account-manage.md#access-keys), přejděte do účtu úložiště v Azure Portal.
+5. Pomocí metody Authentication Key (klíč) zadejte klíč účtu úložiště pro tento účet úložiště. Přístupové klíče k účtu úložiště najdete v Azure Portal. Další informace najdete v tématu [Správa přístupových klíčů účtu úložiště](../storage/common/storage-account-keys-manage.md).
 
      ![Zadejte účet úložiště.](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
 
@@ -114,7 +114,7 @@ Pokud chcete sestavu přizpůsobit a sdílet, vytvořte pracovní prostor a prov
 
 ## <a name="troubleshooting-errors"></a>Řešení chyb
 
-| Podrobnosti o chybě | Řešení |
+| Podrobnosti o chybě | Rozlišení |
 | --- | --- |
 | Po nastavení účtu úložiště pro sestavy záloh se pořád zobrazuje, že **účet úložiště** **není nakonfigurovaný**. | Pokud jste úspěšně nakonfigurovali účet úložiště, data sestav natékají navzdory tomuto problému. Tento problém vyřešíte tak, že přejdete do Azure Portal a vyberete **všechny služby** > **diagnostiky nastavení** > Recovery Services nastavení pro **Úpravy** > **trezoru** . Odstraňte dříve nakonfigurované nastavení a vytvořte nové nastavení pro stejné okno. Tentokrát v poli **název** vyberte **Služba**. Nyní se zobrazí nakonfigurovaný účet úložiště. |
 |Po importu aplikace Azure Backup Template v Power BI se zobrazí chybová zpráva "404-Container se nenašlo". | Jak už bylo uvedeno výše, musíte po dokončení konfigurace sestav v Recovery Servicesovém trezoru počkat 24 hodin, aby byly správně zobrazeny v Power BI. Pokud se pokusíte o přístup k sestavám před 24 hodinami, zobrazí se tato chybová zpráva, protože pro zobrazení platných sestav ještě nejsou k dispozici úplná data. |

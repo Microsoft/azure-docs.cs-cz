@@ -3,12 +3,12 @@ title: Povolení zálohování při vytvoření virtuálního počítače Azure
 description: Popisuje, jak povolit zálohování při vytváření virtuálního počítače Azure pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: f34c5dd8cfdc94775b9bd9a896b4cfbe4154ecf8
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 0cfea6579791c4fd23c1b7acdfe722d57b5ec2fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172363"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449915"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Povolení zálohování při vytvoření virtuálního počítače Azure
 
@@ -48,8 +48,22 @@ Pokud jste k vašemu účtu ještě přihlášeni, přihlaste se k [Azure Portal
 
       ![Výchozí zásady zálohování](./media/backup-during-vm-creation/daily-policy.png)
 
-> [!NOTE]
-> Služba Azure Backup vytvoří samostatnou skupinu prostředků (jinou než skupinu prostředků virtuálního počítače) k uložení snímku s formátem názvů **AzureBackupRG_geography_number** (příklad: AzureBackupRG_northeurope_1). Data v této skupině prostředků se uchovávají po dobu ve dnech, jak je uvedeno v části *uchování snímku okamžitého obnovení* v zásadách zálohování virtuálních počítačů Azure.  Použití zámku u této skupiny prostředků může způsobit selhání zálohování. <br> Tato skupina prostředků by se měla taky vyloučit z omezení podle názvů nebo značek, protože zásady omezení by zablokovaly vytváření kolekcí bodů prostředků v takovém případě, že způsobí selhání zálohování.
+## <a name="azure-backup-resource-group-for-virtual-machines"></a>Azure Backup skupiny prostředků pro Virtual Machines
+
+Služba Backup vytvoří samostatnou skupinu prostředků (RG), která se liší od skupiny prostředků virtuálního počítače k uložení kolekce bodů obnovení (RPC). Vzdálené volání procedur slouží jako body rychlého obnovení spravovaných virtuálních počítačů. Výchozím formátem názvů pro skupinu prostředků vytvořenou pomocí zálohovací služby je: `AzureBackupRG_<Geo>_<number>`. Například: *AzureBackupRG_northeurope_1*. Nyní můžete přizpůsobit název skupiny prostředků vytvořený pomocí Azure Backup.
+
+Odkazuje na mějte na paměti:
+
+1. Můžete buď použít výchozí název RG, nebo ho upravit podle požadavků vaší společnosti.
+2. Při vytváření zásady zálohování virtuálního počítače zadáváte vzor názvu RG jako vstup. Název RG by měl být v následujícím formátu: `<alpha-numeric string>* n <alpha-numeric string>`. ' n ' je nahrazen celým číslem (od 1) a slouží k horizontálnímu navýšení kapacity, pokud je první RG plný. Jedna RG může mít maximálně 600 vzdálených volání procedur (RPC).
+              Při vytváření zásad ![zvolit název](./media/backup-during-vm-creation/create-policy.png)
+3. Vzor by měl splňovat pravidla pojmenování RG a celková délka by neměla překročit maximální povolenou délku RG názvu.
+    1. V názvech skupin prostředků jsou povolené jenom alfanumerické znaky, tečky, podtržítka, spojovníky a závorky. Nemohou končit tečkou.
+    2. Názvy skupin prostředků mohou obsahovat až 74 znaků, včetně názvu RG a přípony.
+4. První `<alpha-numeric-string>` je povinná, zatímco druhá hodnota po ' n ' je volitelná. To platí pouze v případě, že přidáváte vlastní název. Pokud nezadáte nic do některého z textových polí, použije se výchozí název.
+5. V případě potřeby můžete upravit název RG úpravou zásady. Pokud se změní vzor názvu, vytvoří se v novém RG nový RPs. Starý RPs se ale pořád bude nacházet ve starém RG a nebude přesunutý, protože kolekce RP nepodporuje přesunutí prostředků. Nakonec se RPs po vypršení platnosti bodů shromáždí do paměti.
+Při změně zásady ![změnit název](./media/backup-during-vm-creation/modify-policy.png)
+6. Doporučujeme neuzamknout skupinu prostředků vytvořenou pro použití službou zálohování.
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>Po vytvoření virtuálního počítače spustit zálohování
 

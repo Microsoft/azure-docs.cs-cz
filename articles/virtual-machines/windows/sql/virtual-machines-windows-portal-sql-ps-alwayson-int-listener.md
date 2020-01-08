@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 83910c2209b5d3d3d67578ae41afb902bc885171
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f7d14da6c7436120e013c979b108f61b82640d13
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037463"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647879"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Konfigurace jednoho nebo více naslouchacích skupin dostupnosti Always On – Správce prostředků
 V tomto tématu se dozvíte, jak:
@@ -137,7 +137,7 @@ Front-end port je port, který aplikace používá pro připojení k instanci SQ
 > [!NOTE]
 > U SQL Server skupin dostupnosti vyžaduje Každá IP adresa konkrétní port testu paměti. Například pokud jedna IP adresa v nástroji pro vyrovnávání zatížení používá testový port 59999, nemůžou žádné další IP adresy v tomto nástroji pro vyrovnávání zatížení používat port testu 59999.
 
-* Informace o limitech pro vyrovnávání zatížení najdete v tématu **privátní IP adresa front-endu na Vyrovnávání zatížení** v části [omezení sítě – Azure Resource Manager](../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
+* Informace o limitech pro vyrovnávání zatížení najdete v tématu **privátní IP adresa front-endu na Vyrovnávání zatížení** v části [omezení sítě – Azure Resource Manager](../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
 * Informace o omezeních skupiny dostupnosti najdete v tématu [omezení (skupiny dostupnosti)](https://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG).
 
 Následující skript přidá do stávajícího nástroje pro vyrovnávání zatížení novou IP adresu. INTERNÍHO nástroje používá port naslouchacího procesu pro front-end port pro vyrovnávání zatížení. Tento port může být port, na kterém SQL Server naslouchá. Pro výchozí instance SQL Server Port je 1433. Pravidlo vyrovnávání zatížení pro skupinu dostupnosti vyžaduje plovoucí IP adresu (přímou návratovou hodnotu serveru), aby byl back-end port stejný jako front-end port. Aktualizujte proměnné pro vaše prostředí. 

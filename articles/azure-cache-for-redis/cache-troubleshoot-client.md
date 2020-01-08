@@ -1,17 +1,17 @@
 ---
 title: Řešení potíží s Azure cache pro Redis problémy na straně klienta
-description: Naučte se řešit běžné problémy na straně klienta s mezipamětí Azure pro Redis.
+description: Naučte se řešit běžné problémy na straně klienta s mezipamětí Azure cache pro Redis, jako je tlak Redis klientské paměti, nárůst provozu, vysoký výkon procesoru, omezená šířka pásma, velké požadavky nebo Velká velikost odpovědi.
 author: yegu-ms
-ms.service: cache
-ms.topic: conceptual
-ms.date: 10/18/2019
 ms.author: yegu
-ms.openlocfilehash: a4fdbe9c0943e77719a9ee9da7dc358696284d99
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.service: cache
+ms.topic: troubleshooting
+ms.date: 10/18/2019
+ms.openlocfilehash: abb73f93116fae217f527e0a9faaf61e2b42ba6c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122618"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433363"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Řešení potíží s Azure cache pro Redis problémy na straně klienta
 
@@ -104,5 +104,5 @@ Rozlišení pro velké velikosti odpovědí se liší, ale zahrnují:
 
 ## <a name="additional-information"></a>Další informace
 
-- [Řešení potíží s Azure cache pro Redis na straně serveru](cache-troubleshoot-server.md)
+- [Řešení potíží se službou Azure Cache for Redis na straně serveru](cache-troubleshoot-server.md)
 - [Jak mohu srovnávací testy a testovat výkon své mezipaměti?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)

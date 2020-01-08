@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: sedusch
-ms.openlocfilehash: 549fd8f4cb770d472eefd1c504e42837fa8230dd
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: e7a61cc64ae72adfcbeb347ddd076065ccc3a321
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066869"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645833"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení Azure Virtual Machines pro SAP NetWeaver
 
@@ -77,8 +77,8 @@ ms.locfileid: "71066869"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide.md (Nasazení Azure Virtual Machines DBMS pro SAP)
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f (Ukládání do mezipaměti pro virtuální počítače a virtuální pevné disky)
@@ -234,7 +234,7 @@ ms.locfileid: "71066869"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f (Úložiště: Microsoft Azure Storage a datové disky)
 
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/network-overview.md
 [sap-pam]: https://support.sap.com/pam (Matice dostupnosti produktu SAP)
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -253,7 +253,7 @@ ms.locfileid: "71066869"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -361,7 +361,7 @@ Pro určení velikosti SAP si můžete sdělit následující informace:
 
 V Azure Resource Manager můžete použít skupiny prostředků ke správě všech prostředků aplikace ve vašem předplatném Azure. Další informace naleznete v tématu [Přehled Azure Resource Manager][resource-group-overview].
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Materiály
 
 ### <a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>Prostředky SAP
 
@@ -436,7 +436,7 @@ Průvodce vás provede nastavením požadovaných parametrů k vytvoření virtu
      * **Typ disku**: Vyberte typ disku disku s operačním systémem. Pokud chcete pro datové disky použít Premium Storage, doporučujeme použít také Premium Storage pro disk s operačním systémem.
      * **Použití spravovaných disků**: pokud chcete Managed disks použít, vyberte Ano. Další informace o Managed Disks naleznete v části kapitola [Managed disks][planning-guide-managed-disks] v příručce pro plánování.
      * **Účet úložiště**: Vyberte existující účet úložiště nebo vytvořte nový. Ne všechny typy úložišť fungují pro spouštění aplikací SAP. Další informace o typech úložiště najdete v tématu [Struktura úložiště virtuálního počítače pro nasazení RDBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
-   * **Sítě**
+   * **Síť**
      * **Virtuální síť** a **podsíť**: Pokud chcete virtuální počítač integrovat s vaším intranetem, vyberte virtuální síť, která je připojená k vaší místní síti.
      * **Veřejná IP adresa**: Vyberte veřejnou IP adresu, kterou chcete použít, nebo zadejte parametry pro vytvoření nové veřejné IP adresy. Veřejnou IP adresu můžete použít pro přístup k virtuálnímu počítači přes Internet. Ujistěte se, že jste taky vytvořili skupinu zabezpečení sítě, která vám usnadní zabezpečení přístupu k virtuálnímu počítači.
      * **Skupina zabezpečení sítě**: Další informace najdete v tématu [řízení toku síťového provozu pomocí skupin zabezpečení sítě][virtual-networks-nsg].
@@ -575,7 +575,7 @@ Průvodce vás provede nastavením požadovaných parametrů k vytvoření virtu
    * **Storage**
      * **Typ disku**: Vyberte typ disku disku s operačním systémem. Pokud chcete pro datové disky použít Premium Storage, doporučujeme použít také Premium Storage pro disk s operačním systémem.
      * **Použití spravovaných disků**: pokud chcete Managed disks použít, vyberte Ano. Další informace o Managed Disks naleznete v části kapitola [Managed disks][planning-guide-managed-disks] v příručce pro plánování.
-   * **Sítě**
+   * **Síť**
      * **Virtuální síť** a **podsíť**: Pokud chcete virtuální počítač integrovat s vaším intranetem, vyberte virtuální síť, která je připojená k vaší místní síti.
      * **Veřejná IP adresa**: Vyberte veřejnou IP adresu, kterou chcete použít, nebo zadejte parametry pro vytvoření nové veřejné IP adresy. Veřejnou IP adresu můžete použít pro přístup k virtuálnímu počítači přes Internet. Ujistěte se, že jste taky vytvořili skupinu zabezpečení sítě, která vám usnadní zabezpečení přístupu k virtuálnímu počítači.
      * **Skupina zabezpečení sítě**: Další informace najdete v tématu [řízení toku síťového provozu pomocí skupin zabezpečení sítě][virtual-networks-nsg].
@@ -912,7 +912,7 @@ Nastavení proxy serveru v \\atd.\\waagent. conf se vztahuje také na požadovan
 
   Také je nutné přidat trasy pro IP adresy uvedené v \\atd.\\regionserverclnt. cfg. Příklad ukazuje následující obrázek:
 
-  ![Vynucené tunelování][deployment-guide-figure-50]
+  ![Vynucené tunelové propojení][deployment-guide-figure-50]
 
 
 * **RHEL**
@@ -947,7 +947,7 @@ Postup instalace rozšíření Azure pro SAP pomocí prostředí PowerShell:
     Set-AzVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
     ```
 
-Po zadání dat účtu a určení virtuálního počítače Azure nasadí skript požadovaná rozšíření a povolí požadované funkce. Tato možnost může trvat několik minut.
+Po zadání dat účtu a určení virtuálního počítače Azure nasadí skript požadovaná rozšíření a povolí požadované funkce. Může to trvat několik minut.
 Další informace o `Set-AzVMAEMExtension`najdete v tématu [set-AzVMAEMExtension][msdn-set-Azvmaemextension].
 
 ![Úspěšné spuštění rutiny Azure specifické pro SAP – AzVMAEMExtension][deployment-guide-figure-900]
@@ -1164,7 +1164,7 @@ Služba systému Windows AzureEnhancedMonitoring shromažďuje metriky výkonu v
 
 ###### <a name="issue"></a>Problém
 
-Instalační adresář C:\\balíčky\\moduly plug-in\\Microsoft. zákaznického poradního. AzureEnhancedMonitoring. AzureCATExtensionHandler\\&lt;verze > vyřazení je prázdné.\\
+Instalační adresář C:\\balíčky\\moduly plug-in\\Microsoft. zákaznického poradního. AzureEnhancedMonitoring. AzureCATExtensionHandler\\&lt;verze > vyřazení je prázdné.
 
 ###### <a name="solution"></a>Řešení
 

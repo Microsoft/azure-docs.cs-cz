@@ -3,12 +3,12 @@ title: Co může Azure Backup Server zálohování
 description: Tento článek obsahuje matrici podpory obsahující všechny úlohy, datové typy a instalace, které Azure Backup Server chrání.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7e34ba81ad20b2d6a4e89995ab8b834f5f7dc725
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 8f1ae1432f619dafc5084d250e3f89707405e08b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996149"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449893"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Systém ochrany Azure Backup Serveru
 
@@ -16,15 +16,15 @@ V tomto článku jsou uvedené různé servery a úlohy, které můžete chráni
 
 ## <a name="protection-support-matrix"></a>Přehled funkcí pro podporu ochrany
 
-|Úloha|Version|Azure Backup Server</br> installation|Podporované Azure Backup Server|Ochrana a obnovení|
+|Úloha|Verze|Azure Backup Server</br> installation|Podporované Azure Backup Server|Ochrana a obnovení|
 |------------|-----------|---------------|--------------|--------------|
 |Klientské počítače (64bitové a 32bitové)|Windows 10|Fyzický server<br /><br />Virtuální počítač s technologií Hyper-V<br /><br />Virtuální počítač VMware|V3, V2|Svazek, sdílená složka, složka, soubory, svazky s odstraněnými duplicitami<br /><br />Chráněné svazky musí obsahovat systém souborů NTFS. Systémy souborů FAT a FAT32 nejsou podporovány.<br /><br />Svazky musí mít velikost alespoň 1 GB. Azure Backup Server používá k pořízení snímku dat služba Stínová kopie svazku (VSS) a snímek funguje jenom v případě, že je svazek aspoň 1 GB.|
 |Klientské počítače (64bitové a 32bitové)|Windows 8.1|Fyzický server<br /><br />Virtuální počítač s technologií Hyper-V|V3, V2|Soubory<br /><br />Chráněné svazky musí obsahovat systém souborů NTFS. Systémy souborů FAT a FAT32 nejsou podporovány.<br /><br />Svazky musí mít velikost alespoň 1 GB. Azure Backup Server používá k pořízení snímku dat služba Stínová kopie svazku (VSS) a snímek funguje jenom v případě, že je svazek aspoň 1 GB.|
 |Klientské počítače (64bitové a 32bitové)|Windows 8.1|Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)|V3, V2|Svazek, sdílená složka, složka, soubory, svazky s odstraněnými duplicitami<br /><br />Chráněné svazky musí obsahovat systém souborů NTFS. Systémy souborů FAT a FAT32 nejsou podporovány.<br /><br />Svazky musí mít velikost alespoň 1 GB. Azure Backup Server používá k pořízení snímku dat služba Stínová kopie svazku (VSS) a snímek funguje jenom v případě, že je svazek aspoň 1 GB.|
 |Klientské počítače (64bitové a 32bitové)|Windows 8|Fyzický server<br /><br />Místní virtuální počítač Hyper-V|V3, V2|Svazek, sdílená složka, složka, soubory, svazky s odstraněnými duplicitami<br /><br />Chráněné svazky musí obsahovat systém souborů NTFS. Systémy souborů FAT a FAT32 nejsou podporovány.<br /><br />Svazky musí mít velikost alespoň 1 GB. Azure Backup Server používá k pořízení snímku dat služba Stínová kopie svazku (VSS) a snímek funguje jenom v případě, že je svazek aspoň 1 GB.|
 |Klientské počítače (64bitové a 32bitové)|Windows 8|Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)|V3, V2|Svazek, sdílená složka, složka, soubory, svazky s odstraněnými duplicitami<br /><br />Chráněné svazky musí obsahovat systém souborů NTFS. Systémy souborů FAT a FAT32 nejsou podporovány.<br /><br />Svazky musí mít velikost alespoň 1 GB. Azure Backup Server používá k pořízení snímku dat služba Stínová kopie svazku (VSS) a snímek funguje jenom v případě, že je svazek aspoň 1 GB.|
-|Klientské počítače (64bitové a 32bitové)|Windows 7|Fyzický server<br /><br />Místní virtuální počítač Hyper-V|V3, V2|Svazek, sdílená složka, složka, soubory, svazky s odstraněnými duplicitami<br /><br />Chráněné svazky musí obsahovat systém souborů NTFS. Systémy souborů FAT a FAT32 nejsou podporovány.<br /><br />Svazky musí mít velikost alespoň 1 GB. Azure Backup Server používá k pořízení snímku dat služba Stínová kopie svazku (VSS) a snímek funguje jenom v případě, že je svazek aspoň 1 GB.|
-|Klientské počítače (64bitové a 32bitové)|Windows 7|Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)|V3, V2|Svazek, sdílená složka, složka, soubory, svazky s odstraněnými duplicitami<br /><br />Chráněné svazky musí obsahovat systém souborů NTFS. Systémy souborů FAT a FAT32 nejsou podporovány.<br /><br />Svazky musí mít velikost alespoň 1 GB. Azure Backup Server používá k pořízení snímku dat služba Stínová kopie svazku (VSS) a snímek funguje jenom v případě, že je svazek aspoň 1 GB.|
+|Klientské počítače (64bitové a 32bitové)|Windows 7|Fyzický server<br /><br />Místní virtuální počítač Hyper-V|V3, V2|Svazek, sdílená složka, složka, soubory, svazky s odstraněnými duplicitami<br /><br />Chráněné svazky musí obsahovat systém souborů NTFS. Systémy souborů FAT a FAT32 nejsou podporovány.<br /><br />Svazky musí mít velikost alespoň 1 GB. Azure Backup Server používá k pořízení snímku dat služba Stínová kopie svazku (VSS) a snímek funguje jenom v případě, že je svazek aspoň 1 GB.|
+|Klientské počítače (64bitové a 32bitové)|Windows 7|Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)|V3, V2|Svazek, sdílená složka, složka, soubory, svazky s odstraněnými duplicitami<br /><br />Chráněné svazky musí obsahovat systém souborů NTFS. Systémy souborů FAT a FAT32 nejsou podporovány.<br /><br />Svazky musí mít velikost alespoň 1 GB. Azure Backup Server používá k pořízení snímku dat služba Stínová kopie svazku (VSS) a snímek funguje jenom v případě, že je svazek aspoň 1 GB.|
 |Servery (64 bitů)|Windows Server 2019|Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure)<br /><br />Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)<br /><br />Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|V3 <br />Ne server Nano|Svazek, sdílená složka, složka, soubor, stav systému/úplné obnovení systému, deduplikované svazky|
 |Servery (32bitové a 64bitové)|Windows Server 2016|Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure)<br /><br />Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)<br /><br />Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|V3, V2<br />Ne server Nano|Svazek, sdílená složka, složka, soubor, stav systému/úplné obnovení systému, deduplikované svazky|
 |Servery (32bitové a 64bitové)|Windows Server 2012 R2 – Datacenter a Standard|Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure)<br /> <br /> Azure Stack|V3, V2|Svazek, sdílená složka, složka, soubor<br /><br />Aby bylo možné chránit svazky s odstraněním duplicit systému Windows Server 2012, Azure Backup Server musí být spuštěná aspoň na Windows Serveru 2012 R2.|
@@ -57,12 +57,12 @@ V tomto článku jsou uvedené různé servery a úlohy, které můžete chráni
 |SQL Server|SQL Server 2008|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|V3, V2|Všechny scénáře nasazení: Databáze|
 |SQL Server|SQL Server 2008|Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure)<br /> <br /> Azure Stack|V3, V2|Všechny scénáře nasazení: Databáze|
 |SQL Server|SQL Server 2008|Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)<br /> <br /> Azure Stack|V3, V2|Všechny scénáře nasazení: Databáze|
-|Exchange|Exchange 2016|Fyzický server<br/><br/> Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack<br /> <br />Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure)|V3, V2|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databází (DAG)<br /><br />Obnovení (všechny scénáře nasazení): Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Záloha Exchange přes ReFS není podporovaná. |
-|Exchange|Exchange 2016|Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)<br /> <br /> Azure Stack|V3, V2|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databází (DAG)<br /><br />Obnovení (všechny scénáře nasazení): Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Záloha Exchange přes ReFS není podporovaná. |
-|Exchange|Exchange 2013|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|V3, V2|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databází (DAG)<br /><br />Obnovení (všechny scénáře nasazení): Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Záloha Exchange přes ReFS není podporovaná. |
-|Exchange|Exchange 2013|Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)<br /> <br /> Azure Stack|V3, V2|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databází (DAG)<br /><br />Obnovení (všechny scénáře nasazení): Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Záloha Exchange přes ReFS není podporovaná. |
-|Exchange|Exchange 2010|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|V3, V2|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databází (DAG)<br /><br />Obnovení (všechny scénáře nasazení): Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Záloha Exchange přes ReFS není podporovaná. |
-|Exchange|Exchange 2010|Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)<br /> <br /> Azure Stack|V3, V2|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databází (DAG)<br /><br />Obnovení (všechny scénáře nasazení): Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Záloha Exchange přes ReFS není podporovaná. |
+|Výměna|Exchange 2016|Fyzický server<br/><br/> Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack<br /> <br />Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure)|V3, V2|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databází (DAG)<br /><br />Obnovení (všechny scénáře nasazení): Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Záloha Exchange přes ReFS není podporovaná. |
+|Výměna|Exchange 2016|Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)<br /> <br /> Azure Stack|V3, V2|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databází (DAG)<br /><br />Obnovení (všechny scénáře nasazení): Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Záloha Exchange přes ReFS není podporovaná. |
+|Výměna|Exchange 2013|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|V3, V2|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databází (DAG)<br /><br />Obnovení (všechny scénáře nasazení): Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Záloha Exchange přes ReFS není podporovaná. |
+|Výměna|Exchange 2013|Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)<br /> <br /> Azure Stack|V3, V2|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databází (DAG)<br /><br />Obnovení (všechny scénáře nasazení): Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Záloha Exchange přes ReFS není podporovaná. |
+|Výměna|Exchange 2010|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|V3, V2|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databází (DAG)<br /><br />Obnovení (všechny scénáře nasazení): Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Záloha Exchange přes ReFS není podporovaná. |
+|Výměna|Exchange 2010|Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)<br /> <br /> Azure Stack|V3, V2|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databází (DAG)<br /><br />Obnovení (všechny scénáře nasazení): Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Záloha Exchange přes ReFS není podporovaná. |
 |SharePoint|SharePoint 2016|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /><br />Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure)<br /><br />Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)<br /> <br /> Azure Stack|V3, V2|Ochrana (všechny scénáře nasazení): Farma, obsah frontendového webového serveru<br /><br />Obnovení (všechny scénáře nasazení): Farma, databáze, webová aplikace, soubor nebo položka seznamu, vyhledávání služby SharePoint, frontendový webový server<br /><br />Není podporována ochrana sharepointové farmy, která používá funkci SQL Serveru 2012 AlwaysOn pro databázi obsahu.|
 |SharePoint|SharePoint 2013|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|V3, V2|Ochrana (všechny scénáře nasazení): Farma, obsah frontendového webového serveru<br /><br />Obnovení (všechny scénáře nasazení): Farma, databáze, webová aplikace, soubor nebo položka seznamu, vyhledávání služby SharePoint, frontendový webový server<br /><br />Není podporována ochrana sharepointové farmy, která používá funkci SQL Serveru 2012 AlwaysOn pro databázi obsahu.|
 |SharePoint|SharePoint 2013|Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure) – <br /> <br /> Azure Stack|V3, V2|Ochrana (všechny scénáře nasazení): Farma, vyhledávání služby SharePoint, obsah frontendového webového serveru<br /><br />Obnovení (všechny scénáře nasazení): Farma, databáze, webová aplikace, soubor nebo položka seznamu, vyhledávání služby SharePoint, frontendový webový server<br /><br />Není podporována ochrana sharepointové farmy, která používá funkci SQL Serveru 2012 AlwaysOn pro databázi obsahu.|
@@ -82,9 +82,23 @@ V tomto článku jsou uvedené různé servery a úlohy, které můžete chráni
 
 ## <a name="azure-expressroute-support"></a>Podpora Azure ExpressRoute
 
-Pokud je Azure ExpressRoute nakonfigurovaný s privátním nebo veřejným partnerským vztahem Microsoftu, nejde ho použít k zálohování dat do Azure.
+Data můžete zálohovat přes Azure ExpressRoute s veřejným partnerským vztahem (k dispozici pro staré okruhy) a partnerským vztahem Microsoftu. Zálohování přes soukromý partnerský vztah se nepodporuje.
 
-Pokud je Azure ExpressRoute nakonfigurovaný s veřejným partnerským vztahem, dá se použít k zálohování dat do Azure.
+S veřejným partnerským vztahem: Zajistěte přístup k následujícím doménám nebo adresám:
+
+* `http://www.msftncsi.com/ncsi.txt`
+* `microsoft.com`
+* `.WindowsAzure.com`
+* `.microsoftonline.com`
+* `.windows.net`
+
+S partnerským vztahem Microsoftu vyberte prosím následující služby nebo oblasti a příslušné hodnoty komunity:
+
+* Azure Active Directory (12076:5060)
+* Oblast Microsoft Azure (podle umístění vašeho trezoru Recovery Services)
+* Azure Storage (podle umístění vašeho trezoru Recovery Services)
+
+Další podrobnosti najdete v tématu [požadavky na směrování ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
 
 >[!NOTE]
 >Veřejné partnerské vztahy se pro nové okruhy zastaraly.
@@ -93,17 +107,17 @@ Pokud je Azure ExpressRoute nakonfigurovaný s veřejným partnerským vztahem, 
 
 Azure Backup Server může chránit data v následujících clusterovaných aplikacích:
 
-- Souborové servery
+* Souborové servery
 
-- SQL Server
+* SQL Server
 
-- Hyper-V – Pokud chráníte cluster Hyper-V pomocí MABS agenta ochrany s použitím horizontálního rozšíření kapacity, nemůžete pro chráněné úlohy Hyper-V Přidat sekundární ochranu.
+* Hyper-V – Pokud chráníte cluster Hyper-V pomocí MABS agenta ochrany s použitím horizontálního rozšíření kapacity, nemůžete pro chráněné úlohy Hyper-V Přidat sekundární ochranu.
 
     Pokud na Windows serveru 2008 R2 spustíte Hyper-V, nezapomeňte nainstalovat aktualizaci popsanou v článku KB [975354](https://support.microsoft.com/kb/975354).
     Pokud spustíte technologii Hyper-V v systému Windows Server 2008 R2 v konfiguraci clusteru, nezapomeňte nainstalovat aktualizace SP2 a KB [971394](https://support.microsoft.com/kb/971394).
 
-- Exchange Server – Azure Backup Server může chránit nesdílené diskové clustery pro podporované verze Exchange serveru (průběžná replikace clusteru) a taky může chránit Exchange Server nakonfigurovaný pro místní průběžnou replikaci.
+* Exchange Server – Azure Backup Server může chránit nesdílené diskové clustery pro podporované verze Exchange serveru (průběžná replikace clusteru) a taky může chránit Exchange Server nakonfigurovaný pro místní průběžnou replikaci.
 
-- SQL Server-Azure Backup Server nepodporuje zálohování SQL Server databází hostovaných na svazcích sdílených clusterů (CSV).
+* SQL Server-Azure Backup Server nepodporuje zálohování SQL Server databází hostovaných na svazcích sdílených clusterů (CSV).
 
 Azure Backup Server může chránit úlohy clusteru, které jsou umístěné ve stejné doméně jako server MABS, a v podřízené nebo důvěryhodné doméně. Pokud chcete chránit zdroje dat v nedůvěryhodných doménách nebo pracovních skupinách, použijte ověřování NTLM nebo ověření certifikátu pro jeden server nebo ověřování certifikátu jenom pro cluster.

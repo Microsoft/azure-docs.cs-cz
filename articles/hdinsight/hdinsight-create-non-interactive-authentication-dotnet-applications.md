@@ -1,22 +1,23 @@
 ---
 title: Aplikace .NET bez interaktivního ověřování – Azure HDInsight
 description: Naučte se vytvářet neinteraktivní ověřování aplikací Microsoft .NET v Azure HDInsight.
-ms.reviewer: jasonh
 author: hrasheed-msft
-ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0781d9fd58e079517b3f3dc8fba06fb448a8fa19
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.reviewer: jasonh
+ms.service: hdinsight
+ms.topic: conceptual
+ms.custom: hdinsightactive
+ms.date: 12/23/2019
+ms.openlocfilehash: 1fbb4ef2341148de4026f47fc06a54bbfa60fff6
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494921"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500122"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Vytvoření aplikace .NET HDInsight bez interaktivního ověřování
-Aplikaci Microsoft .NET Azure HDInsight můžete spustit buď v rámci vlastní identity aplikace (bez interaktivního), nebo v rámci identity přihlášeného uživatele aplikace (interaktivní). V tomto článku se dozvíte, jak vytvořit aplikaci .NET, která není interaktivní pro ověřování, aby se mohla připojit k Azure a spravovat HDInsight. Ukázku interaktivní aplikace najdete v tématu [připojení k Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight). 
+
+Spusťte aplikaci Microsoft .NET Azure HDInsight buď v rámci vlastní identity aplikace (bez interaktivního), nebo pod identitou přihlášeného uživatele aplikace (interaktivní). V tomto článku se dozvíte, jak vytvořit aplikaci .NET, která není interaktivní pro ověřování, aby se mohla připojit k Azure a spravovat HDInsight. Ukázku interaktivní aplikace najdete v tématu [připojení k Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight).
 
 Z aplikace bez interaktivního rozhraní .NET potřebujete:
 
@@ -24,21 +25,22 @@ Z aplikace bez interaktivního rozhraní .NET potřebujete:
 * ID klienta aplikace Azure Active Directory (Azure AD). Viz [Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) a [získání ID aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 * Tajný klíč aplikace služby Azure AD. Viz [získat klíč pro ověření aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 
-## <a name="prerequisites"></a>Předpoklady
-* Cluster An HDInsight. Podívejte se na [Úvodní kurz](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+## <a name="prerequisites"></a>Požadavky
+
+Cluster An HDInsight. Podívejte se na [Úvodní kurz](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>Přiřazení role k aplikaci Azure AD
-Přiřaďte aplikaci Azure AD [roli](../role-based-access-control/built-in-roles.md)a udělte jí oprávnění k provádění akcí. Rozsah můžete nastavit na úrovni předplatného, skupiny prostředků nebo prostředku. Oprávnění jsou děděna do nižších úrovní rozsahu. (Například přidání aplikace do role čtenář pro skupinu prostředků znamená, že aplikace může číst skupinu prostředků a všechny prostředky v ní.) V tomto článku nastavíte obor na úrovni skupiny prostředků. Další informace najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).
+
+Přiřaďte aplikaci Azure AD [roli](../role-based-access-control/built-in-roles.md)a udělte jí oprávnění k provádění akcí. Rozsah můžete nastavit na úrovni předplatného, skupiny prostředků nebo prostředku. Oprávnění jsou děděna do nižších úrovní rozsahu. Například přidání aplikace do role čtenář pro skupinu prostředků znamená, že aplikace může číst skupinu prostředků a všechny prostředky v ní. V tomto článku nastavíte obor na úrovni skupiny prostředků. Další informace najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).
 
 **Přidání role vlastníka do aplikace Azure AD**
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-2. V levé nabídce vyberte **Skupiny prostředků**.
-3. Vyberte skupinu prostředků, která má cluster HDInsight, na kterém budete spouštět dotaz na podregistr později v tomto článku. Pokud máte velký počet skupin prostředků, můžete použít filtr a vyhledat ten, který chcete.
-4. V nabídce skupina prostředků vyberte **řízení přístupu (IAM)** .
-5. Kliknutím na kartu **přiřazení rolí** zobrazíte aktuální přiřazení rolí.
-6. V horní části stránky vyberte **Přidat přiřazení role**.
-7. Podle pokynů přidejte do vaší aplikace Azure AD roli vlastníka. Po úspěšném přidání role se aplikace zobrazí v části role vlastníka. 
+1. Přejděte do skupiny prostředků, která obsahuje cluster HDInsight, na kterém spustíte dotaz na podregistr později v tomto článku. Pokud máte velký počet skupin prostředků, můžete použít filtr a vyhledat ten, který chcete.
+1. V nabídce skupina prostředků vyberte **řízení přístupu (IAM)** .
+1. Kliknutím na kartu **přiřazení rolí** zobrazíte aktuální přiřazení rolí.
+1. V horní části stránky vyberte **+ Přidat**.
+1. Podle pokynů přidejte do vaší aplikace Azure AD roli vlastníka. Po úspěšném přidání role se aplikace zobrazí v části role vlastníka.
 
 ## <a name="develop-an-hdinsight-client-application"></a>Vývoj klientské aplikace HDInsight
 
@@ -117,8 +119,8 @@ Přiřaďte aplikaci Azure AD [roli](../role-based-access-control/built-in-roles
     }
     ```
 
-
 ## <a name="next-steps"></a>Další kroky
+
 * [Vytvořte Azure Active Directory aplikace a instanční objekt v Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 * Přečtěte si, jak [ověřit instanční objekt pomocí služby Azure Resource Manager](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 * Přečtěte si o [Access Control na základě rolí Azure (RBAC)](../role-based-access-control/role-assignments-portal.md).

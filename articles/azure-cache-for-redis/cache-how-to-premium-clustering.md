@@ -1,17 +1,17 @@
 ---
-title: Postup konfigurace clusteringu Redis pro mezipaměť Azure úrovně Premium pro Redis
+title: Konfigurace clusteringu Redis – Premium Azure cache pro Redis
 description: Naučte se vytvářet a spravovat clustery Redis pro mezipaměť Azure úrovně Premium pro instance Redis.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.author: yegu
-ms.openlocfilehash: 1f0c97d6c0854254026e194ffd5030976fc506b2
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: ddb44a064090a108f77d6a6f9a270fab8c55ec90
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122154"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433436"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Postup konfigurace clusteringu Redis pro mezipaměť Azure úrovně Premium pro Redis
 Azure cache pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti, včetně funkcí úrovně Premium, jako je podpora clusteringu, trvalosti a virtuální sítě. Tento článek popisuje, jak nakonfigurovat clustering v mezipaměti Azure Premium pro instanci Redis.
@@ -91,7 +91,7 @@ Následující seznam obsahuje odpovědi na nejčastější dotazy týkající s
 * [Jak mám při používání StackExchange. Redis a clusteringu dělat výjimky, co mám dělat?](#i-am-getting-move-exceptions-when-using-stackexchangeredis-and-clustering-what-should-i-do)
 
 ### <a name="do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering"></a>Musím v klientské aplikaci dělat nějaké změny, aby používaly clustering?
-* Když je clustering povolený, k dispozici je jenom databáze 0. Pokud klientská aplikace používá více databází a pokusí se číst nebo zapisovat do jiné databáze než 0, je vyvolána následující výjimka. `Unhandled Exception: StackExchange.Redis.RedisConnectionException: ProtocolFailure on GET --->` `StackExchange.Redis.RedisCommandException: Multiple databases are not supported on this server; cannot switch to database: 6`
+* Když je clustering povolený, k dispozici je jenom databáze 0. Pokud klientská aplikace používá více databází a pokusí se číst nebo zapisovat do jiné databáze než 0, je vyvolána následující výjimka. `Unhandled Exception: StackExchange.Redis.RedisConnectionException: ProtocolFailure on GET --->``StackExchange.Redis.RedisCommandException: Multiple databases are not supported on this server; cannot switch to database: 6`
   
   Další informace najdete v části [Redis cluster Specification – implementovaná podmnožina](https://redis.io/topics/cluster-spec#implemented-subset).
 * Pokud používáte [stackexchange. Redis](https://www.nuget.org/packages/StackExchange.Redis/), musíte použít 1.0.481 nebo novější. K mezipaměti se připojíte pomocí stejných [koncových bodů, portů a klíčů](cache-configure.md#properties) , které použijete při připojování k mezipaměti, u které není povolený clusteringu. Jediným rozdílem je, že všechny operace čtení a zápisu musí být provedeny do databáze 0.
@@ -122,8 +122,7 @@ Protokol clusteringu Redis vyžaduje, aby se každý klient připojoval ke každ
 
 > [!NOTE]
 > Pokud jako klienta používáte StackExchange. Redis, ujistěte se, že pro správné fungování clusteringu používáte nejnovější verzi [stackexchange. Redis](https://www.nuget.org/packages/StackExchange.Redis/) 1.0.481 nebo novější. Pokud máte nějaké problémy s výjimkami přesunutí, přečtěte si téma [přesunutí výjimek](#move-exceptions) , kde najdete další informace.
-> 
-> 
+>
 
 ### <a name="how-do-i-connect-to-my-cache-when-clustering-is-enabled"></a>Návody se připojit k mezipaměti, když je clustering povolený?
 Ke své mezipaměti se můžete připojit pomocí stejných [koncových bodů](cache-configure.md#properties), [portů](cache-configure.md#properties)a [klíčů](cache-configure.md#access-keys) , které používáte při připojování k mezipaměti, u které není povolený clusteringu. Redis spravuje clustering v back-endu, takže je nemusíte spravovat od svého klienta.
@@ -142,7 +141,7 @@ Pro jiný protokol než SSL použijte následující příkazy.
 V případě protokolu SSL nahraďte `1300N` `1500N`.
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>Můžu nakonfigurovat clustering pro dříve vytvořenou mezipaměť?
-Ano. Nejdřív zajistěte, aby byla vaše mezipaměť Premium, a to tak, že pokud není, proveďte škálování. Dále byste měli být schopni zobrazit možnosti konfigurace clusteru, včetně možnosti Povolit clsuter. Velikost clusteru můžete změnit po vytvoření mezipaměti, nebo po prvním povolení clusteringu.
+Ano. Nejdřív zajistěte, aby byla vaše mezipaměť Premium, a to tak, že pokud není, proveďte škálování. Dále byste měli být schopni zobrazit možnosti konfigurace clusteru, včetně možnosti Povolit cluster. Velikost clusteru můžete změnit po vytvoření mezipaměti, nebo po prvním povolení clusteringu.
 
    >[!IMPORTANT]
    >Nemůžete zrušit povolování clusteringu. A povolená mezipaměť s podporou clusteringu a jenom jedna horizontálních oddílů se chová *jinak* než mezipaměť stejné velikosti *bez* clusteringu.
@@ -152,7 +151,7 @@ Clustering je k dispozici jenom pro mezipaměti úrovně Premium.
 
 ### <a name="can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers"></a>Můžu používat clusteringu se stavem relace Redis ASP.NET a poskytovateli ukládání výstupu do mezipaměti?
 * **Poskytovatel výstupní mezipaměti Redis** – nevyžadují se žádné změny.
-* **Zprostředkovatel stavu relace Redis** – Chcete-li použít clusteringu, je nutné použít [RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 nebo vyšší nebo je vyvolána výjimka. Toto je zásadní změna. Další informace najdete [v části 2.0.0 – Podrobnosti o zásadní změně](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details).
+* **Zprostředkovatel stavu relace Redis** – Chcete-li použít clusteringu, je nutné použít [RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 nebo vyšší nebo je vyvolána výjimka. Toto je zásadní změna. Další informace najdete v části [v tématu 2.0.0 – Podrobnosti o přerušující změny](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details).
 
 <a name="move-exceptions"></a>
 
@@ -171,10 +170,3 @@ Naučte se používat víc funkcí mezipaměti Premium.
 [redis-cache-clustering-selected]: ./media/cache-how-to-premium-clustering/redis-cache-clustering-selected.png
 
 [redis-cache-redis-cluster-size]: ./media/cache-how-to-premium-clustering/redis-cache-redis-cluster-size.png
-
-
-
-
-
-
-

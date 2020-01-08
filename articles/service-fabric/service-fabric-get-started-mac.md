@@ -1,24 +1,16 @@
 ---
-title: Nastavení vývojového prostředí v Mac OS X pro práci s Azure Service Fabric | Dokumentace Microsoftu
-description: Nainstalujte modul runtime, sadu SDK a nástroje a vytvořte místní vývojový cluster. Po dokončení této instalace a nastavení budete moci sestavovat aplikace v Mac OS X.
-services: service-fabric
-documentationcenter: linux
+title: Nastavení vývojového prostředí v macOS
+description: Nainstalujte modul runtime, sadu SDK a nástroje a vytvořte místní vývojový cluster. Po dokončení tohoto nastavení budete připraveni k sestavování aplikací v macOS.
 author: suhuruli
-manager: chackdan
-editor: ''
-ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: 2ce8d944e7334b071a4a48f38f8c4fafaeff4c47
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 178b8c120bc7a886eaca94d1551e489f96ba22b2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035284"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609872"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Nastavení vývojového prostředí v Mac OS X
 > [!div class="op_single_selector"]
@@ -109,7 +101,7 @@ Pokud chcete nastavit místní kontejner Dockeru a mít v něm spuštěný clust
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
     >
 
-5. Spuštění clusteru bude chvíli trvat. Když je spuštěný, můžete zobrazit protokoly pomocí následujícího příkazu nebo přejít na řídicí panel a zobrazit stav [http://localhost:19080](http://localhost:19080)clusterů:
+5. Spuštění clusteru bude chvíli trvat. Když je spuštěný, můžete zobrazit protokoly pomocí následujícího příkazu nebo přejít na řídicí panel a zobrazit [http://localhost:19080](http://localhost:19080)stavových clusterů:
 
     ```bash 
     docker logs sftestcluster
@@ -174,7 +166,7 @@ Service Fabric nabízí nástroje pro generování uživatelského rozhraní, kt
     ```
 
     > [!IMPORTANT]
-    > Aktuální verze `brew cask install java` nástroje mohou instalovat novější verzi JDK.
+    > Aktuální verze `brew cask install java` můžou nainstalovat novější verzi JDK.
     > Nezapomeňte nainstalovat JDK 8.
 
 ## <a name="deploy-your-application-on-your-mac-from-the-terminal"></a>Nasazení aplikace na počítači Mac z terminálu
@@ -219,7 +211,7 @@ Atributy jsou definovány takto:
 >Pokud spouštíte kontejner s jiným názvem než `sfonebox`, aktualizujte název v souboru testclient.sh ve vaší aplikaci Service Fabric Actor v Javě.
 >
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 <!-- Links -->
 * [Vytvoření a nasazení první aplikace Service Fabric v Javě v Linuxu pomocí Yeomana](service-fabric-create-your-first-linux-application-with-java.md)
 * [Vytvoření a nasazení první aplikace Service Fabric v Javě v Linuxu pomocí modulu plug-in Service Fabric pro Eclipse](service-fabric-get-started-eclipse.md)

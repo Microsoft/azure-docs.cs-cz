@@ -4,15 +4,15 @@ description: Rozhraní API kolekce dat Azure Monitor HTTP můžete použít k p�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/09/2018
-ms.openlocfilehash: 8b739d86ec557ca8c7de7e0999c905b51d1d97a7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3074d8d9dfcb3dbca31821d73cfd6daee056edb9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932630"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363961"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Vytvoření datového kanálu pomocí rozhraní API kolekce dat
 
@@ -21,7 +21,7 @@ ms.locfileid: "72932630"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>Příklad problému
-Ve zbývající části tohoto článku prohledáme data zobrazení stránky v Application Insights. V našem hypotetickém scénáři chceme, aby se v sadě Application Insights SDK pro vlastní data, která obsahuje populace každé země nebo oblasti na světě, shromáždily geografické údaje, které jsou ve výchozím nastavení shromažďovány, s cílem určit, kde bychom měli být útraty nejvíce marketingových dolarů. 
+Ve zbývající části tohoto článku prohledáme data zobrazení stránky v Application Insights. V našem hypotetickém scénáři chceme, aby se v sadě Application Insights SDK pro vlastní data, která obsahují populace všech zemí nebo oblastí na světě, shromáždily geografické údaje, které jsou ve výchozím nastavení shromažďovány, s cílem určit, kde bychom měli platit nejvíc marketingu. 
 
 Pro tento účel používáme veřejný zdroj dat, jako je například [nadějný web](https://esa.un.org/unpd/wpp/) . Data budou mít následující jednoduché schéma:
 

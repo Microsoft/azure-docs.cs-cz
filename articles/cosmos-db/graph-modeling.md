@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 12/02/2019
 ms.author: lbosq
-ms.openlocfilehash: 7bc5544249b7e476afde08281aa005569ef6f8ce
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d1e21827dda26f1c577f6cc70a5e34bb09a34d9c
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873722"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500054"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Modelování dat grafu pro Azure Cosmos DB rozhraní Gremlin API
 
@@ -23,7 +23,7 @@ Následující dokument je navržený tak, aby poskytoval doporučení pro model
 Proces popsaný v této příručce je založený na následujících předpokladech:
  * Identifikují se **entity** v místě problému. Tyto entity mají být pro každý požadavek spotřebovány _atomicky_ . Jinými slovy, databázový systém není navržený tak, aby načetl data jedné entity v rámci více požadavků na dotazy.
  * Pro databázový systém je potřeba pochopit **požadavky na čtení a zápis** . Tyto požadavky budou mít na výběr optimalizace potřebné pro datový model grafu.
- * Principy [standardu grafu vlastností Apache Tinkerpop](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) se dobře rozumí.
+ * Principy [standardu grafu vlastností Apache Tinkerpop](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) se dobře rozumí.
 
 ## <a name="when-do-i-need-a-graph-database"></a>Kdy potřebuji databázi grafu?
 
@@ -41,7 +41,7 @@ Dalším krokem je určit, jestli se má graf použít pro účely analýzy nebo
 
 ## <a name="how-to-use-graph-objects"></a>Jak používat objekty grafu
 
-[Standard pro Tinkerpop sady Apache](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) definuje dva typy objektů **vrcholů** a **hran**. 
+[Standard pro Tinkerpop sady Apache](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) definuje dva typy objektů **vrcholů** a **hran**. 
 
 Níže jsou uvedené osvědčené postupy pro vlastnosti v objektech grafu:
 

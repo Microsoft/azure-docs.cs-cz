@@ -3,14 +3,14 @@ title: 'Vytvoření Kubernetesho vývojového prostoru: Visual Studio Code & .NE
 services: azure-dev-spaces
 ms.date: 09/26/2018
 ms.topic: tutorial
-description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
+description: V tomto kurzu se dozvíte, jak používat Azure Dev Spaces a Visual Studio Code k ladění a rychlé iteraci aplikace .NET Core ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: fa7b4b4dcd1883c7619faa6fcfe014f4fc8c036f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 634206523972c7bc78ba818688bc342fe66885d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708582"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438558"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>Vytvoření Kubernetesho vývojového prostoru: Visual Studio Code a .NET Core s Azure Dev Spaces
 
@@ -175,7 +175,7 @@ Co se stalo? Úpravy obsahových souborů jako HTML a CSS nevyžadují rekompila
 ### <a name="update-a-code-file"></a>Aktualizace souboru s kódem
 Aktualizace souborů s kódem je o něco pracnější, protože aplikace .NET Core musí znovu sestavit a vytvořit aktualizované binární soubory aplikace.
 
-1. V okně terminálu stiskněte `Ctrl+C` (kvůli zastavení `azds up`).
+1. V okně terminálu stiskněte `Ctrl+C`, abyste zastavili `azds up`.
 1. Otevřete soubor s kódem, který se jmenuje `Controllers/HomeController.cs`, a upravte zprávu, která se zobrazí na stránce O aplikaci: `ViewData["Message"] = "Your application description page.";`
 1. Uložte soubor.
 1. V okně terminálu spusťte `azds up`. 
@@ -225,7 +225,7 @@ Stejně jako u příkazu `up` se kód synchronizuje s vývojovým prostorem a se
 
 V serverovém souboru s kódem nastavte zarážku, třeba ve funkci `About()` ve zdrojovém souboru `Controllers/HomeController.cs`. Aktualizace stránky prohlížeče způsobí aktivaci zarážky.
 
-Máte plný přístup k informacím o ladění, jako je zásobník volání, místní proměnné, informace o výjimkách apod., úplně stejně jako při lokálním spuštění kódu.
+Máte plný přístup k informacím o ladění, jako je zásobník volání, místní proměnné, informace o výjimkách apod., stejně jako při lokálním spuštění kódu.
 
 ### <a name="edit-code-and-refresh"></a>Úprava a aktualizace kódu
 V aktivním ladicím programu upravte kód. Můžete třeba změnit zprávu na stránce O aplikaci v `Controllers/HomeController.cs`. 

@@ -1,6 +1,6 @@
 ---
-title: Azure virtual machine scale sets s nejčastější dotazy | Dokumentace Microsoftu
-description: Získejte odpovědi na nejčastější dotazy ohledně škálovacích sad virtuálních počítačů.
+title: Azure virtual machine scale sets s nejčastější dotazy
+description: Získejte odpovědi na nejčastější dotazy týkající se služby Virtual Machine Scale Sets v Azure.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/24/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 429e201ba1d15103ae130ee2fb767cd1b4fa909a
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 47ea23f3018e9d28c0ccfd6640b3d365103ab9ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779414"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356221"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure virtual machine scale sets s nejčastější dotazy
 
@@ -232,14 +232,14 @@ Veřejné klíče SSH ve formátu prostého textu můžete zadat při vytvářen
 Název elementu linuxConfiguration | Požaduje se | Typ | Popis
 --- | --- | --- | ---
 SSH | Ne | Kolekce | Určuje konfiguraci klíče SSH pro operační systém Linux
-path | Ano | Řetězec | Určuje soubor Linuxová cesta kde klíče SSH nebo certifikát má být umístěn
+Cesta | Ano | Řetězec | Určuje soubor Linuxová cesta kde klíče SSH nebo certifikát má být umístěn
 data klíče | Ano | Řetězec | Určuje kódování base64 veřejný klíč SSH
 
 Příklad najdete v tématu [šablonu pro rychlý start Githubu 101-vm-sshkey](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Při spuštění `Update-AzVmss` po přidání více než jeden certifikát ze stejné služby key vault, zobrazí následující zpráva:
 
->Update-AzVmss: Seznam tajného klíče obsahuje opakované instance\</Subscriptions/typu moje předplatné-ID >/resourceGroups/Internal-RG-dev/Providers/Microsoft.KeyVault/Vaults/Internal-keyvault-dev, která není povolená.
+>Update-AzVmss: list Secret obsahuje opakované instance/Subscriptions/\<my-Subscription-ID >/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev, který není povolený.
 
 To může nastat, pokud se pokusíte do stejného trezoru namísto použití nového certifikátu trezoru pro existující zdrojový trezor je znovu přidat. `Add-AzVmssSecret` Příkaz nebude fungovat správně při přidávání dalších tajných kódů.
 
@@ -343,6 +343,13 @@ Další informace najdete na webu [Centrum zabezpečení Microsoft](https://www.
 
 Ano. V šablonách rychlého startu Azure pro [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) a [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)se můžete podívat na příklady šablon MSI.
 
+## <a name="deleting"></a>Odstraňování 
+
+### <a name="will-the-locks-i-set-in-place-on-virtual-machine-scale-set-instances-be-respected-when-deleting-instances"></a>Budou při odstraňování instancí dodrženy zámky nastavené na instancích sady škálování virtuálních počítačů?
+
+Na webu Azure Portal máte možnost Odstranit jednotlivou instanci nebo hromadné odstranění tím, že vyberete více instancí. Pokud se pokusíte odstranit jednu instanci, která má zámek, je dodržen zámek a nebudete moci instanci odstranit. Pokud ale hromadně vyberete víc instancí a kterákoli z těchto instancí má zámek, zámky se nerespektují a všechny vybrané instance se odstraní. 
+ 
+V Azure CLI máte možnost jenom odstranit jednotlivou instanci. Pokud se pokusíte odstranit jednu instanci, která má zámek, bude zachován zámek a tuto instanci nebudete moci odstranit. 
 
 ## <a name="extensions"></a>Rozšíření
 
@@ -507,7 +514,7 @@ Ano. Skupina zabezpečení sítě můžete použít přímo na škálovací sadu
 
 ### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>Jak to provést prohození virtuálních IP adres pro škálovací sady virtuálních počítačů ve stejném předplatném a stejné oblasti?
 
-Pokud máte dvě škálovací sady virtuálních počítačů s Azure Load Balancer front endů a jsou ve stejném předplatném a oblasti, můžete zrušit přidělení veřejné IP adresy z každé z nich a přiřadit k druhému. Viz [VIP swap: Například nasazení Blue-zelená v](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) Azure Resource Manager. To neznamená zpoždění úroveň ale prostředky jsou přidělené v síti jejich přidělení. Rychlejší možností je použít Azure Application Gateway pomocí dvou fondů back-endu a pravidel směrování. Alternativně může hostovat vaši aplikaci s [služby Azure App service](https://azure.microsoft.com/services/app-service/) poskytující podporu pro rychlé přepínání slotů pracovního a produkčního prostředí.
+Pokud máte dvě škálovací sady virtuálních počítačů s Azure Load Balancer front endů a jsou ve stejném předplatném a oblasti, můžete zrušit přidělení veřejné IP adresy z každé z nich a přiřadit k druhému. Zobrazit [prohození virtuálních IP adres: nasazení modrá zelená v Azure Resource Manageru](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) třeba. To neznamená zpoždění úroveň ale prostředky jsou přidělené v síti jejich přidělení. Rychlejší možností je použít Azure Application Gateway pomocí dvou fondů back-endu a pravidel směrování. Alternativně může hostovat vaši aplikaci s [služby Azure App service](https://azure.microsoft.com/services/app-service/) poskytující podporu pro rychlé přepínání slotů pracovního a produkčního prostředí.
 
 ### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>Jak určit rozsah privátních IP adres pro statického přidělování privátní IP adresu?
 
@@ -564,7 +571,7 @@ Pokud chcete vytvořit škálovací sadu virtuálního počítače, který se p�
 
 Ano. ID prostředků pro více Application Gateway fond adres back-endu můžete přidat do seznamu _applicationGatewayBackendAddressPools_ v části _IPConfiguration_ v profilu sítě sady škálování.
 
-## <a name="scale"></a>Měřítko
+## <a name="scale"></a>Limit
 
 ### <a name="in-what-case-would-i-create-a-virtual-machine-scale-set-with-fewer-than-two-vms"></a>V případě co bych měl(a) vytvořit virtuální počítač škálovací sadu s méně než dva virtuální počítače?
 
@@ -646,7 +653,7 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 Požadované ID pracovního prostoru a workspaceKey najdete v pracovním prostoru Log Analytics z portálu Azure portal. Na stránce Přehled klikněte na dlaždici nastavení. Klikněte na kartu připojené zdroje v horní části.
 
 > [!NOTE]
-> Pokud je vaše sada škálování nastavená na ruční, je nutné použít rozšíření na všechny virtuální počítače v sadě tak, že na ně zavoláte upgrade. V rozhraní příkazového řádku by to byl _az vmss update-instances_.
+> Pokud je vaše sada škálování nastavená na ruční _, je nutné_ použít rozšíření na všechny virtuální počítače v sadě tak, že na ně zavoláte upgrade. V rozhraní příkazového řádku by to byl _az vmss update-instances_.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

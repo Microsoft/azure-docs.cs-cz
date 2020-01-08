@@ -3,15 +3,15 @@ title: Akce GitHubu & službě Azure Kubernetes
 services: azure-dev-spaces
 ms.date: 11/04/2019
 ms.topic: conceptual
-description: Zkontrolujte a otestujte změny z žádosti o přijetí změn přímo ve službě Azure Kubernetes pomocí akcí GitHubu a Azure Dev Spaces.
+description: Revize a testování změn z žádosti o přijetí změn přímo ve službě Azure Kubernetes pomocí akcí GitHubu a Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, akce GitHubu, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: e20efc6b109eeef234dcd621374d25b812cdc0ce
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: ace94bdeccf3063f6a3b72ea208f437a14332694
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483931"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438492"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Akce GitHubu & službě Azure Kubernetes (Preview)
 
@@ -31,7 +31,7 @@ V tomto průvodci se naučíte:
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 * [Nainstalované rozhraní Azure CLI][azure-cli-installed]
-* [Helm 2,13 – 2,16 nainstalovaná][helm-installed].
+* Je [nainstalovaná Helm 3][helm-installed].
 * Účet GitHub s [povolenými akcemi GitHubu][github-actions-beta-signup].
 * [Ukázková aplikace Azure dev Spaces pro sdílení kol](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp/README.md) spuštěná v clusteru AKS.
 
@@ -180,8 +180,7 @@ Přečtěte si, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace n
 [github-actions-beta-signup]: https://github.com/features/actions
 [github-action-yaml]: https://github.com/Azure/dev-spaces/blob/master/.github/workflows/bikes.yml
 [github-action-bikesharing-yaml]: https://github.com/Azure/dev-spaces/blob/master/.github/workflows/bikesharing.yml
-[helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
-[tiller-rbac]: https://helm.sh/docs/using_helm/#role-based-access-control
+[helm-installed]: https://helm.sh/docs/intro/install/
 [supported-regions]: ../about.md#supported-regions-and-configurations
 [sp-acr]: ../../container-registry/container-registry-auth-service-principal.md
 [sp-aks]: ../../aks/kubernetes-service-principal.md

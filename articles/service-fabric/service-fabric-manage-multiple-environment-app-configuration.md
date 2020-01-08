@@ -1,63 +1,54 @@
 ---
-title: Správa aplikací pro více prostředí v Azure Service Fabric | Dokumentace Microsoftu
-description: Aplikace Azure Service Fabric může běžet na clusterech tohoto rozsahu velikosti z jednoho počítače na tisíce počítačů. V některých případech můžete nakonfigurovat svoji aplikaci pro těchto různých prostředích. Tento článek popisuje, jak definovat parametry jiné aplikace pro každé prostředí.
-services: service-fabric
-documentationcenter: .net
+title: Správa aplikací pro víc prostředí
+description: Aplikace Azure Service Fabric lze spouštět v clusterech, které jsou v rozsahu od jednoho počítače po tisíce počítačů. V některých případech budete chtít nakonfigurovat aplikaci odlišně pro tato různá prostředí. Tento článek popisuje, jak definovat různé parametry aplikace pro každé prostředí.
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.assetid: f406eac9-7271-4c37-a0d3-0a2957b60537
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: dac96ef6fce38a0557444e181fa6eccb649cfb9a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33dfc91381b23bf1ac33bef5274e1098df411f4a
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60719222"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609838"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>Správa aplikací pro víc prostředí
 
-Clustery Azure Service Fabric umožňují vytvářet clustery pomocí odkudkoli z jedné až několika tisíc počítačů. Ve většině případů si uvědomíte, museli nasazovat aplikace napříč konfiguracemi s více clusteru: místního vývojového clusteru, sdílené vývojového clusteru a clusteru pro produkční prostředí. Všechny tyto clustery jsou považovány za různých prostředích, které má váš kód pro spuštění v. Binární soubory aplikace spuštěny bez úprav přes tento širokého spektra, ale často chcete provést konfiguraci aplikace jiným způsobem.
+Clustery Azure Service Fabric umožňují vytvářet clustery s využitím kteréhokoli z několika tisíc počítačů. Ve většině případů je potřeba, abyste nasadili aplikaci v rámci více konfigurací clusteru: místní vývojový cluster, sdílený vývojový cluster a váš provozní cluster. Všechny tyto clustery se považují za různá prostředí, ve kterých je váš kód spuštěný. Binární soubory aplikace mohou běžet bez úprav v rámci tohoto spektra, ale často chcete aplikaci nakonfigurovat odlišně.
 
 Vezměte v úvahu dva jednoduché příklady:
-  - vaše služba naslouchá na portu definovaná, ale je nutné tento port je jiná napříč prostředí
-  - je potřeba zadat přihlašovací údaje jinou vazbou pro databáze v prostředí
+  - vaše služba naslouchá na definovaném portu, ale je potřeba, aby se tento port lišil v různých prostředích.
+  - pro databázi v různých prostředích je potřeba zadat jiné přihlašovací údaje pro vazbu.
 
 ## <a name="specifying-configuration"></a>Určení konfigurace
 
-Konfigurace, které zadáte, je možné rozdělit do dvou kategorií:
+Konfiguraci, kterou zadáte, můžete rozdělit do dvou kategorií:
 
-- Konfigurace, které platí pro spouštění vašich služeb
+- Konfigurace, která se vztahuje na spouštění služeb
   - Například číslo portu pro koncový bod nebo počet instancí služby
-  - Tato konfigurace je zadán v adresáři aplikace nebo souboru manifestu služby
+  - Tato konfigurace je určena v souboru manifestu aplikace nebo služby.
 - Konfigurace, která se vztahuje na kód vaší aplikace
   - Například informace o vazbě pro databázi
-  - Tato konfigurace je možné poskytnout prostřednictvím konfiguračních souborů nebo proměnné prostředí
+  - Tato konfigurace se dá zadat buď pomocí konfiguračních souborů, nebo proměnných prostředí.
 
 > [!NOTE]
-> Ne všechny atributy v aplikaci a service manifest podporu parametrů souborů.
-> V takových případech budete muset spoléhat na nahrazování řetězců jako součást pracovního postupu nasazení. V Azure DevOps můžete použít rozšíření například nahradit tokeny: https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens nebo jenkins můžete spustit skript úkolu k nahrazení hodnoty.
+> Ne všechny atributy v souboru manifestu aplikace a služby podporují parametry.
+> V těchto případech se musíte spoléhat na nahrazování řetězců jako součást pracovního postupu nasazení. V Azure DevOps můžete použít rozšíření jako nahradit tokeny: https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens nebo v Jenkinse můžete spustit úlohu skriptu a nahradit hodnoty.
 >
 
-## <a name="specifying-parameters-during-application-creation"></a>Zadání parametrů během vytváření aplikace
+## <a name="specifying-parameters-during-application-creation"></a>Určení parametrů během vytváření aplikace
 
-Při vytváření instance s názvem aplikace v Service Fabric, máte možnost k předání v parametrech. Způsob, jak to provedete závisí na tom, jak vytvořit instanci aplikace.
+Při vytváření pojmenovaných instancí aplikace v Service Fabric máte možnost předávat parametry. Způsob, jakým to provedete, závisí na tom, jak vytváříte instanci aplikace.
 
-  - V Powershellu [ `New-ServiceFabricApplication` ](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) rutiny přijímá parametry aplikace jako zatřiďovací tabulku.
-  - Pomocí sfctl, [ `sfctl application create` ](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) příkaz přijímá parametry jako řetězec formátu JSON. Tento skript install.sh využívá sfctl.
-  - Visual Studio vám nabízí sadu parametrů soubory ve složce parametry v projektu aplikace. Tyto soubory parametr se používá při publikování ze sady Visual Studio, pomocí služby Azure DevOps nebo Team Foundation Server. V sadě Visual Studio soubory parametrů jsou neputuje do skriptu Deploy-FabricApplication.ps1.
+  - V PowerShellu rutina [`New-ServiceFabricApplication`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) přebírá parametry aplikace jako zatřiďovací tabulku.
+  - Pomocí sfctl příkaz [`sfctl application create`](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) přebírá parametry jako řetězec JSON. Skript install.sh používá sfctl.
+  - Sada Visual Studio poskytuje sadu souborů parametrů ve složce Parameters v projektu aplikace. Tyto soubory parametrů jsou používány při publikování ze sady Visual Studio pomocí Azure DevOps Services nebo Team Foundation Server. V aplikaci Visual Studio jsou soubory parametrů předávány do skriptu Deploy-FabricApplication. ps1.
 
-## <a name="next-steps"></a>Další postup
-Následující články ukazují, jak používat některé koncepty popsané tady:
+## <a name="next-steps"></a>Další kroky
+Následující články ukazují, jak používat některé z konceptů, které jsou zde popsané:
 
-- [Jak zadat proměnné prostředí pro služby v Service Fabric](service-fabric-how-to-specify-environment-variables.md)
-- [Jak zadat číslo portu služby v Service Fabric pomocí parametrů](service-fabric-how-to-specify-port-number-using-parameters.md)
-- [Jak parametrizovat konfiguračních souborů](service-fabric-how-to-parameterize-configuration-files.md)
+- [Určení proměnných prostředí pro služby v Service Fabric](service-fabric-how-to-specify-environment-variables.md)
+- [Jak zadat číslo portu služby pomocí parametrů v Service Fabric](service-fabric-how-to-specify-port-number-using-parameters.md)
+- [Jak parametrizovat konfigurační soubory](service-fabric-how-to-parameterize-configuration-files.md)
 
-- [Odkaz na proměnnou prostředí](service-fabric-environment-variables-reference.md)
+- [Referenční informace o proměnných prostředí](service-fabric-environment-variables-reference.md)

@@ -1,54 +1,45 @@
 ---
-title: Ladění aplikace Azure Service Fabric v Eclipse | Dokumentace Microsoftu
-description: Zlepšení spolehlivosti a výkonu služeb ve vývoji a ladění je v prostředí Eclipse v místním vývojovém clusteru.
-services: service-fabric
-documentationcenter: .net
+title: Ladění aplikace v zatmění
+description: Vylepšete spolehlivost a výkon svých služeb tím, že je vyvyvíjíte a ladíte v zatmění na místním vývojovém clusteru.
 author: suhuruli
-manager: chackdan
-editor: ''
-ms.assetid: cb888532-bcdb-4e47-95e4-bfbb1f644da4
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 2f00636da2b29e7815569a683fdf51c6a4e3b0e0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 15448a9bd8998a99e8fce578b05130694ecd5fd0
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393584"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614481"
 ---
-# <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Ladění aplikace Service Fabric v Javě pomocí Eclipse
+# <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Ladění aplikace Service Fabric Java pomocí zatmění
 > [!div class="op_single_selector"]
 > * [Visual Studio/CSharp](service-fabric-debugging-your-application.md) 
 > * [Eclipse/Java](service-fabric-debugging-your-application-java.md)
 > 
 
-1. Spusťte místní vývojový cluster podle pokynů v [nastavení vývojového prostředí Service Fabric](service-fabric-get-started-linux.md).
+1. Spusťte místní vývojový cluster podle kroků uvedených v části [Nastavení vývojového prostředí Service Fabric](service-fabric-get-started-linux.md).
 
-2. Aktualizujte entryPoint.sh služby, kterou chcete ladit, tak, aby proces Javy spouštěl s parametry vzdáleného ladění. Tento soubor se nachází v následujícím umístění: `ApplicationName\ServiceNamePkg\Code\entrypoint.sh`. V tomto příkladu je pro ladění nastavený port 8001.
+2. Aktualizujte entryPoint.sh služby, kterou chcete ladit, aby se spouštěl proces Java s parametry vzdáleného ladění. Tento soubor najdete v následujícím umístění: `ApplicationName\ServiceNamePkg\Code\entrypoint.sh`. V tomto příkladu je pro ladění nastavený port 8001.
 
     ```sh
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar myapp.jar
     ```
-3. Aktualizujte Manifest aplikace tak, že počet instancí nebo replik pro službu, která je právě laděna nastavíte na hodnotu 1. Toto nastavení zabrání konfliktům na portu, který slouží k ladění. Například pro bezstavové služby nastavte `InstanceCount="1"` a pro stavové služby nastavte cílovou a minimální velikost sady replik na 1 následujícím způsobem: `TargetReplicaSetSize="1" MinReplicaSetSize="1"`.
+3. Aktualizujte manifest aplikace nastavením počtu instancí nebo počtu replik pro službu, která je laděna na 1. Toto nastavení zabrání konfliktům na portu, který slouží k ladění. Například pro bezstavové služby nastavte `InstanceCount="1"` a pro stavové služby nastavte cílovou a minimální velikost sady replik na 1 následujícím způsobem: `TargetReplicaSetSize="1" MinReplicaSetSize="1"`.
 
-4. Nasazení aplikace.
+4. Nasaďte aplikaci.
 
-5. Integrované vývojové prostředí Eclipse vyberte **Run -> Konfigurace ladění -> Remote Java Application a zadejte vlastnosti připojení** a nastavte vlastnosti následujícím způsobem:
+5. V integrovaném vývojovém prostředí (IDE) vyberte **spustit > konfigurace ladění-> vzdálenou aplikaci Java a vlastnosti vstupního připojení** a nastavte vlastnosti následujícím způsobem:
 
    ```
    Host: ipaddress
    Port: 8001
    ```
-6.  Nastavte zarážky na požadovanou body a ladění aplikace.
+6.  Nastavte zarážky v požadovaných bodech a proveďte ladění aplikace.
 
-Pokud dochází k chybám. aplikace, můžete také povolit coredumps. Spustit `ulimit -c` v prostředí a pokud vrátí hodnotu 0, a pak coredumps nejsou povolené. Pokud chcete povolit neomezené coredumps, spusťte následující příkaz: `ulimit -c unlimited`. Můžete také ověřit stav pomocí příkazu `ulimit -a`.  Pokud chcete aktualizovat cestu generování coredump, spusťte `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern`. 
+Pokud dojde k chybě aplikace, můžete také povolit coredumps. Spustí `ulimit -c` v prostředí a pokud vrátí hodnotu 0, coredumps nejsou povolené. Pokud chcete povolit neomezený coredumps, spusťte následující příkaz: `ulimit -c unlimited`. Stav můžete také ověřit pomocí příkazu `ulimit -a`.  Pokud jste chtěli aktualizovat cestu generování coredump, spusťte `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern`. 
 
-### <a name="next-steps"></a>Další postup
+### <a name="next-steps"></a>Další kroky
 
-* [Shromažďování protokolů pomocí Linux Azure Diagnostics](service-fabric-diagnostics-how-to-setup-lad.md).
-* [Monitorování a Diagnostika služeb místně](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md).
+* [Shromažďování protokolů pomocí Azure Diagnostics Linux](service-fabric-diagnostics-how-to-setup-lad.md).
+* [Místní monitorování a diagnostika služeb](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)

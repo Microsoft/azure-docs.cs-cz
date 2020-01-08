@@ -5,14 +5,14 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 07/09/2018
 ms.topic: tutorial
-description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
+description: V tomto kurzu se dozvíte, jak pomocí Azure Dev Spaces a sady Visual Studio ladit aplikaci .NET Core s více službami ve službě Azure Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: 9fb6993c913454d67e2118cd3ff5a4b8fea6464b
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 7f95c21c2cf5b7adcdb34d7bbe2b1f8314c20333
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325691"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438390"
 ---
 # <a name="running-multiple-dependent-services-net-core-and-visual-studio-with-azure-dev-spaces"></a>Spuštění více závislých služeb: .NET Core a Visual Studio s Azure Dev Spaces
 
@@ -66,10 +66,10 @@ Předchozí příklad kódu předává hlavičku `azds-route-as` z příchozího
 
 ### <a name="debug-across-multiple-services"></a>Ladění více služeb
 1. V této fázi byste měli mít spuštěnou službu `mywebapi` s připojeným ladicím programem. Pokud tomu tak není, stiskněte v projektu `mywebapi` klávesu F5.
-1. V souboru `Get(int id)`, který zpracovává požadavky GET `Controllers/ValuesController.cs`, nastavte zarážku v metodě `api/values/{id}`.
+1. V souboru `Controllers/ValuesController.cs`, který zpracovává požadavky GET `api/values/{id}`, nastavte zarážku v metodě `Get(int id)`.
 1. V projektu `webfrontend`, do kterého jste vložili výše uvedený kód, nastavte zarážku těsně před odesláním požadavku GET do `mywebapi/api/values`.
 1. V projektu `webfrontend` stiskněte klávesu F5. Visual Studio znovu otevře v prohlížeči příslušný port místního hostitele a zobrazí se daná webová aplikace.
-1. Zarážku v projektu **aktivujte kliknutím na odkaz**O aplikaci`webfrontend` v horní části stránky. 
+1. Zarážku v projektu `webfrontend` aktivujte kliknutím na odkaz **O aplikaci** v horní části stránky. 
 1. Pokračujte stisknutím klávesy F10. Zarážka v projektu `mywebapi` teď bude aktivovaná.
 1. Pokračujte stisknutím klávesy F5, abyste se vrátili ke kódu v projektu `webfrontend`.
 1. Dalším stisknutím klávesy F5 se dokončí daný požadavek a vrátí se stránka v prohlížeči. Ve webové aplikaci se na stránce O aplikaci bude zobrazovat zpráva vzniklá zřetězením ze dvou služeb: „Hello from webfrontend and Hello from mywebapi.“

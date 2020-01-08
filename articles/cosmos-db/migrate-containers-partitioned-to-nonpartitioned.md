@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1afca920a8146ce5501900bcc9e36bdebcccca09
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b7eed4089a65f62056027c70f08902f531567c17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706075"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445270"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Migrace kontejnerů mimo oddíly na dělené kontejnery
 
@@ -117,6 +117,14 @@ Kompletní ukázku, jak změnit oddíly dokumentů, najdete v úložišti GitHub
 Starší verze sady Azure Cosmos DB SDK, například v2. x. x a v1. x. x, nepodporují vlastnost klíče oddílu definované systémem. Takže při čtení definice kontejneru ze starší sady SDK neobsahuje žádné definice klíče oddílu a tyto kontejnery se budou chovat přesně stejně jako předtím. Aplikace, které jsou vytvořeny pomocí starší verze sad SDK, budou nadále fungovat s nerozdělenými na oddíly beze změn. 
 
 Pokud je migrovaný kontejner využíván nejnovější verzí sady SDK a vy začnete naplnit klíč oddílu definovaného systémem v nových dokumentech, nebudete již mít přístup k takovým dokumentům ze starších sad SDK (čtení, aktualizace, odstranění a dotazování).
+
+## <a name="known-issues"></a>Známé problémy
+
+**Dotazování na počet položek, které byly vloženy bez klíče oddílu pomocí sady V3 SDK, může zahrnovat vyšší propustnost.**
+
+Pokud se dotazuje ze sady V3 SDK pro položky, které jsou vloženy pomocí sady v2 SDK, nebo položky vložené pomocí sady V3 SDK s parametrem `PartitionKey.None`, dotaz Count může spotřebovat více RU/s, pokud je parametr `PartitionKey.None` zadán v FeedOptions. Doporučujeme, abyste parametr `PartitionKey.None` nezadali, pokud žádné další položky nejsou vloženy s klíčem oddílu.
+
+Pokud jsou nové položky vloženy s různými hodnotami pro klíč oddílu, dotazování na tyto počty položek předáním příslušného klíče v `FeedOptions` nebudou mít žádné problémy. Pokud se po vložení nových dokumentů s klíčem oddílu budete potřebovat dotazovat jenom počet dokumentů bez hodnoty klíče oddílu, může se dotaz znovu zvýšit RU/s, podobně jako u běžných dělených kolekcí.
 
 ## <a name="next-steps"></a>Další kroky
 

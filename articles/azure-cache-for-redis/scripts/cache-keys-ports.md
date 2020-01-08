@@ -1,19 +1,19 @@
 ---
-title: Ukázkový skript Azure CLI – získání názvu hostitele, portů a klíčů pro Azure cache pro Redis
-description: Skript Azure CLI ukázkový – získání názvu hostitele, porty a klíče pro Azure Cache pro instanci Redis
+title: Získání názvu hostitele, portů, klíčů – Azure cache pro Redis – Azure CLI
+description: Tento ukázkový kód Azure CLI ukazuje, jak získat název hostitele, porty a klíče pro instanci služby Azure cache pro Redis.
 author: yegu-ms
+ms.author: yegu
 tags: azure-service-management
 ms.service: cache
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
-ms.author: yegu
-ms.openlocfilehash: 604ec6de3b95a4bc289176d54d9c7b0a6c42eae6
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 199c5707e9ecd887af64e271184e151ce0966745
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122519"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411299"
 ---
 # <a name="get-the-hostname-ports-and-keys-for-azure-cache-for-redis"></a>Získání názvu hostitele, porty a klíče pro Azure Cache pro Redis
 
@@ -30,7 +30,7 @@ V tomto scénáři se dozvíte, jak načíst název hostitele, porty a klíče p
 
 Tento skript používá následující příkazy pro načtení názvu hostitele, klíče a porty Azure pro instanci Redis Cache. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [AZ redis show](https://docs.microsoft.com/cli/azure/redis) | Načtěte Podrobnosti mezipaměti Azure pro Redis instance. |
 | [AZ redis list-keys](https://docs.microsoft.com/cli/azure/redis) | Získání přístupových klíčů pro Azure Cache pro instanci Redis. |

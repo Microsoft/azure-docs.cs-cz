@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8eda3ed7d35c9ff94a00eacb49f2e4f3b3e6f150
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7e83aa69cb4099885fc45e719c812a6c92299b7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795712"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359902"
 ---
 Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se Azure Managed Disks a Azure SSD úrovně Premium disků.
 
@@ -254,7 +254,7 @@ Kompletní příklad vytvoření SSD úrovně Standard disku pomocí šablony na
 
 **Můžu převést existující disky na SSD úrovně Standard?**
 Ano, je to možné. Přečtěte si téma [Převod úložiště Azure Managed disks z úrovně Standard na Premium a naopak](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) pro obecné pokyny k převodu Managed disks. Pomocí následující hodnoty můžete aktualizovat typ disku na SSD úrovně Standard.
-– AccountType StandardSSD_LRS
+-AccountType StandardSSD_LRS
 
 **Jaká je výhoda použití SSD úrovně Standard disků místo HDD?**
 SSD úrovně Standard disky dodávají lepší latenci, konzistenci, dostupnost a spolehlivost v porovnání s disky HDD. Úlohy aplikací běží na SSD úrovně Standard mnohem plynule. Upozorňujeme, že SSD úrovně Premium disky jsou doporučeným řešením pro většinu produkčních úloh náročných na vstupně-výstupní operace.
@@ -398,7 +398,7 @@ Ne, standardní disky SSD na libovolné velikosti se nedají použít u nespravo
 
 **Jaká je největší velikost spravovaného disku podporovaná pro operační systém a datové disky?**
 
-Typ oddílu, který Azure podporuje pro disk s operačním systémem, je hlavním spouštěcím záznamem (MBR). Formát MBR podporuje velikost disku až 2 TiB. Největší velikost, kterou Azure podporuje pro disk s operačním systémem, je 2 TiB. Azure podporuje až 32 TiB pro spravované datové disky v globálním cloudu Azure, 4 TiB ve službě Azure svrchované cloudy.
+Typ oddílu, který Azure podporuje pro disk s operačním systémem, je hlavním spouštěcím záznamem (MBR). Formát MBR podporuje velikost disku až 2 TiB. Největší velikost, kterou Azure podporuje pro disk s operačním systémem, je 2 TiB. Azure podporuje až 32 TiB pro spravované datové disky.
 
 **Jaká je největší velikost nespravovaného disku podporovaná pro operační systém a datové disky?**
 
@@ -441,7 +441,7 @@ Největší velikost disku podporovaná službou Azure Backup a službou Azure S
 
 **Jaké jsou doporučené velikosti virtuálních počítačů pro větší velikosti disků (> 4 TiB), SSD úrovně Standard a HDD úrovně Standard disků pro dosažení optimalizovaného diskového IOPS a šířky pásma?**
 
-K dosažení propustnosti disku SSD úrovně Standard a HDD úrovně Standard velkých velikostí disků (> 4 TiB) překračuje 500 IOPS a 60 MiB/s, doporučujeme nasadit nový virtuální počítač z jedné z následujících velikostí virtuálních počítačů pro optimalizaci výkonu: B-Series, DSv2-Series, Dsv3-Series, ESv3-Series. , Řady FS-Series, Fsv2-Series, řady M-Series, GS-Series, NCv2-Series, NCv3-Series nebo ls-series. Připojení velkých disků ke stávajícím virtuálním počítačům nebo virtuálním počítačům, které nepoužívají výše uvedené doporučené velikosti, se může vyskytnout i u nižšího výkonu.
+Chcete-li dosáhnout propustnosti disku SSD úrovně Standard a HDD úrovně Standard velkých velikostí disků (> 4 TiB) až 500 vstupně-výstupních operací a 60 MiB/s, doporučujeme nasadit nový virtuální počítač z jedné z následujících velikostí virtuálních počítačů pro optimalizaci výkonu: B-Series, DSv2-Series, Dsv3-Series, ESv3-Series, FS-Series, Fsv2-Series, řady M-Series, GS-Series, NCv2-Series, NCv3-Series nebo virtuálních počítačů ls-series. Připojení velkých disků ke stávajícím virtuálním počítačům nebo virtuálním počítačům, které nepoužívají výše uvedené doporučené velikosti, se může vyskytnout i u nižšího výkonu.
 
 **Jak můžu upgradovat svoje disky (> 4 TiB), které se nasadily během verze Preview větších velikostí disků, abyste dosáhli vyššího počtu IOPS & šířku pásma na GA?**
 

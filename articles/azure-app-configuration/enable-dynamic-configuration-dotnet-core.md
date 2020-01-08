@@ -1,5 +1,6 @@
 ---
-title: Kurz použití dynamické konfigurace konfigurace aplikací Azure v aplikaci .NET Core | Microsoft Docs
+title: 'Kurz: použití dynamické konfigurace v aplikaci .NET Core'
+titleSuffix: Azure App Configuration
 description: V tomto kurzu se naučíte dynamicky aktualizovat konfigurační data pro aplikace .NET Core.
 services: azure-app-configuration
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: ae753758a3cd5b7dfa8794ccf98f7a8a063f5b18
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: afecc84748ae8ce85c07e3b482bd9b596bdca251
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185197"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433680"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Kurz: použití dynamické konfigurace v aplikaci .NET Core
 
@@ -119,7 +120,7 @@ Metoda `ConfigureRefresh` slouží k určení nastavení použitých k aktualiza
 
     ![Spuštění aplikace pro rychlý Start – místní](./media/quickstarts/dotnet-core-app-run.png)
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **Průzkumník konfigurace**a aktualizujte hodnoty následujících klíčů:
 

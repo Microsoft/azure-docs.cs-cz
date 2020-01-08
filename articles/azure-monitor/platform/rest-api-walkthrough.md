@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/19/2018
-ms.openlocfilehash: 68c90f6c763fe7cd634aee886c5c8c6b8153253e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 4ce1272c38bcb066f9e88ca739561ccd7696c989
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551821"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363502"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Návod k Azure Monitoring REST API
 
@@ -97,7 +97,7 @@ Pomocí [Azure monitor definice metrik REST API](https://docs.microsoft.com/rest
 
 **Metoda**: Get
 
-**Identifikátor URI žádosti**: https: \/ \/management. Azure.com/Subscriptions/ *{SubscriptionId}* /resourceGroups/ *{resourceGroupName}* /Providers/ *{resourceProviderNamespace}* / *{ResourceType}* / *{resourceName}* /Providers/Microsoft.Insights/metricDefinitions? API-Version = *{apiVersion}*
+**Identifikátor URI žádosti**: https:\/\/Management.Azure.com/Subscriptions/ *{SubscriptionId}* /resourceGroups/ *{resourceGroupName}* /Providers/ *{resourceProviderNamespace}* / *{ResourceType}* / *{resourceName}* /Providers/Microsoft.Insights/metricDefinitions? API-Version = *{apiVersion}*
 
 Pokud například chcete načíst definice metriky pro účet Azure Storage, zobrazí se tento požadavek takto:
 
@@ -241,7 +241,7 @@ Pro žádné požadavky na filtrování použijte název ' value ' (ne ' localiz
 
 **Metoda**: Get
 
-**Identifikátor URI žádosti**: https \://Management.Azure.com/Subscriptions/ *{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/ *{Resource-Provider-Namespace}* / *{Resource-Type}* / *{Resource-Name}* /Providers/Microsoft.Insights/Metrics? metricnames = *{metric}* & TimeSpan = *{čas_spuštění/čas_ukončení}* & $Filter = *{Filter}* & ResultType = metadata & API-Version = *{ apiVersion}*
+**Identifikátor URI požadavku**: https\://*Management.Azure.com/Subscriptions/{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/ *{Resource-Provider-Namespace}* / *{Resource-Type}* / *{resource-Name}* /Providers/Microsoft.Insights/Metrics? metricnames = *{metric}* & TimeSpan = *{čas_spuštění/čas_ukončení}* & $Filter = *{Filter}* & ResultType = metadata & API-Version = *{ apiVersion}*
 
 Chcete-li například načíst seznam hodnot dimenzí, které byly vygenerovány pro metriku ' Transactions ' rozhraní ' API ' Dimension ', přičemž hodnota typu InType = ' primary ' v zadaném časovém rozsahu bude vyžadovat následující:
 
@@ -314,7 +314,7 @@ Pro žádné požadavky na filtrování použijte název ' value ' (ne ' localiz
 
 **Metoda**: Get
 
-**Identifikátor URI žádosti**: https://management.azure.com/subscriptions/ *{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/ *{Resource-Provider-Namespace}* / *{Resource-Type}* / *{Resource-Name}* /Providers/ Microsoft. Insights/metriky? metricnames = *{metric}* & TimeSpan = *{čas_spuštění/čas_ukončení}* & $Filter = *{Filter}* & interval = *{timeGrain}* & agregace = *{aggreation}* & API-Version = *{apiVersion}*
+**Identifikátor URI požadavku**: https://management.azure.com/subscriptions/ *{ID předplatného}* /resourceGroups/ *{Resource-Group-Name}* /Providers/ *{Resource-Provider-Namespace}* / *{Resource-Type}* / *{resource-Name}* /Providers/Microsoft.Insights/Metrics? metricnames = *{metric}* & TimeSpan = *{čas_spuštění/čas_ukončení}* & $Filter = *{Filter}* & interval = *{timeGrain}* & agregace = *{aggreation}* & API-Version = *{apiVersion}*
 
 Například pro načtení horních 3 rozhraní API v sestupných hodnotách podle počtu transakcí během 5 min., kde GeotType byla ' primary ', bude požadavek vypadat takto:
 
@@ -393,7 +393,7 @@ Pomocí [Azure monitor definice metrik REST API](https://msdn.microsoft.com/libr
 
 **Metoda**: Get
 
-**Identifikátor URI žádosti**: https: \/ \/management. Azure.com/Subscriptions/ *{SubscriptionId}* /resourceGroups/ *{resourceGroupName}* /Providers/ *{resourceProviderNamespace}* / *{ResourceType}* / *{resourceName}* /Providers/Microsoft.Insights/metricDefinitions? API-Version = *{apiVersion}*
+**Identifikátor URI žádosti**: https:\/\/Management.Azure.com/Subscriptions/ *{SubscriptionId}* /resourceGroups/ *{resourceGroupName}* /Providers/ *{resourceProviderNamespace}* / *{ResourceType}* / *{resourceName}* /Providers/Microsoft.Insights/metricDefinitions? API-Version = *{apiVersion}*
 
 Chcete-li například načíst definice metrik pro aplikaci logiky Azure, zobrazí se tato žádost:
 
@@ -466,7 +466,7 @@ Jakmile jsou dostupné definice metriky známy, je možné načíst souvisejíc�
 
 **Metoda**: Get
 
-**Identifikátor URI žádosti**: https://management.azure.com/subscriptions/ *{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/ *{Resource-Provider-Namespace}* / *{Resource-Type}* / *{Resource-Name}* /Providers/ Microsoft. Insights/metriky? $filter = *{Filter}* & API-Version = *{apiVersion}*
+**Identifikátor URI žádosti**: *https://management.azure.com/subscriptions/ {ID předplatného}* /resourceGroups/ *{Resource-Group-Name}* /Providers/ *{Resource-Provider-Namespace}* / *{Resource-Type}* / *{resource-Name}* /Providers/Microsoft.Insights/Metrics? $Filter = *{Filter}* & API-Version = *{apiVersion}*
 
 Například pro načtení datových bodů metriky RunsSucceeded pro daný časový rozsah a za časový interval 1 hodiny bude požadavek následující:
 

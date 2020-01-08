@@ -2,19 +2,15 @@
 title: Vstupní parametry runbooků
 description: Vstupní parametry Runbooku zvyšují flexibilitu runbooků tím, že vám umožní předat data do Runbooku při jeho spuštění. Tento článek popisuje různé scénáře použití vstupních parametrů v sadách Runbook.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 02/14/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: be7d244f5aa422b2083d35fc56a52318a4379b79
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b16219c34ea30b4229195c8f019dfa8e1f147d8b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850223"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417585"
 ---
 # <a name="runbook-input-parameters"></a>Vstupní parametry runbooků
 
@@ -32,8 +28,8 @@ Runbooky pracovních postupů PowerShellu a PowerShellu v Azure Automation podpo
 |:--- |:--- |
 | `Type` |Povinná hodnota. Pro hodnotu parametru se očekával datový typ. Jakýkoli typ .NET je platný. |
 | `Name` |Povinná hodnota. Název parametru Toto musí být v rámci Runbooku jedinečné a může obsahovat jenom písmena, číslice nebo podtržítka. Musí začínat písmenem. |
-| `Mandatory` |Volitelné. Určuje, zda musí být pro parametr zadána hodnota. Pokud tuto hodnotu nastavíte na **\$true**, musí se při spuštění Runbooku zadat hodnota. Pokud nastavíte hodnotu **\$false**, hodnota je volitelná. |
-| `Default value` |Volitelné. Určuje hodnotu, která se používá pro parametr, pokud hodnota není předána při spuštění Runbooku. Pro libovolný parametr se dá nastavit výchozí hodnota a automaticky se použije parametr Optional bez ohledu na povinné nastavení. |
+| `Mandatory` |Nepovinný parametr. Určuje, zda musí být pro parametr zadána hodnota. Pokud tuto hodnotu nastavíte na **\$true**, musí se při spuštění Runbooku zadat hodnota. Pokud nastavíte hodnotu **\$false**, hodnota je volitelná. |
+| `Default value` |Nepovinný parametr. Určuje hodnotu, která se používá pro parametr, pokud hodnota není předána při spuštění Runbooku. Pro libovolný parametr se dá nastavit výchozí hodnota a automaticky se použije parametr Optional bez ohledu na povinné nastavení. |
 
 Prostředí Windows PowerShell podporuje více atributů vstupních parametrů než těch, které jsou zde uvedeny, jako jsou ověřování, aliasy a sady parametrů. Azure Automation však aktuálně podporuje pouze předchozí vstupní parametry.
 
@@ -95,10 +91,10 @@ Aktivitu [**Write-Output**](/powershell/module/microsoft.powershell.utility/writ
    | **Vlastnost** | **Popis** |
    |:--- |:--- |
    | `Name` |Povinná hodnota. Název parametru Toto musí být v rámci Runbooku jedinečné a může obsahovat jenom písmena, číslice nebo podtržítka. Musí začínat písmenem. |
-   | `Description` |Volitelné. Popis účelu vstupního parametru |
-   | `Type` |Volitelné. Datový typ, který se očekává pro hodnotu parametru. Podporované typy parametrů jsou **String**, **Int32**, **Int64**, **Decimal**, **Boolean**, **DateTime**a **Object**. Pokud není vybraný datový typ, použije se výchozí hodnota **String (řetězec**). |
-   | `Mandatory` |Volitelné. Určuje, zda musí být pro parametr zadána hodnota. Zvolíte-li možnost **Ano**, je nutné při spuštění sady Runbook zadat hodnotu. Pokud zvolíte **ne**, hodnota se při spuštění Runbooku nepožaduje a může se nastavit výchozí hodnota. |
-   | `Default Value` |Volitelné. Určuje hodnotu, která se používá pro parametr, pokud hodnota není předána při spuštění Runbooku. Výchozí hodnotu lze nastavit pro parametr, který není povinný. Chcete-li nastavit výchozí hodnotu, vyberte možnost **vlastní**. Tato hodnota se používá, pokud se při spuštění Runbooku nezadá jiná hodnota. Pokud nechcete zadat žádnou výchozí hodnotu, vyberte možnost **žádná** . |
+   | `Description` |Nepovinný parametr. Popis účelu vstupního parametru |
+   | `Type` |Nepovinný parametr. Datový typ, který se očekává pro hodnotu parametru. Podporované typy parametrů jsou **String**, **Int32**, **Int64**, **Decimal**, **Boolean**, **DateTime**a **Object**. Pokud není vybraný datový typ, použije se výchozí hodnota **String (řetězec**). |
+   | `Mandatory` |Nepovinný parametr. Určuje, zda musí být pro parametr zadána hodnota. Zvolíte-li možnost **Ano**, je nutné při spuštění sady Runbook zadat hodnotu. Pokud zvolíte **ne**, hodnota se při spuštění Runbooku nepožaduje a může se nastavit výchozí hodnota. |
+   | `Default Value` |Nepovinný parametr. Určuje hodnotu, která se používá pro parametr, pokud hodnota není předána při spuštění Runbooku. Výchozí hodnotu lze nastavit pro parametr, který není povinný. Chcete-li nastavit výchozí hodnotu, vyberte možnost **vlastní**. Tato hodnota se používá, pokud se při spuštění Runbooku nezadá jiná hodnota. Pokud nechcete zadat žádnou výchozí hodnotu, vyberte možnost **žádná** . |
 
     ![Přidat nový vstup](media/automation-runbook-input-parameters/automation-runbook-input-parameter-new.png)
 4. Vytvořte dva parametry s následujícími vlastnostmi, které jsou používány aktivitou **Get-AzureRmVm** :

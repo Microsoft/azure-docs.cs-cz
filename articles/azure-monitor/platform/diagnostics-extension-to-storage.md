@@ -2,18 +2,18 @@
 title: Ukládání a zobrazení diagnostických dat v Azure Storage
 description: Naučte se shromažďovat diagnostická data Azure v účtu Azure Storage, abyste je mohli zobrazit pomocí některého z několika dostupných nástrojů.
 services: azure-monitor
-author: jpconnock
+author: bwren
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 08/01/2016
-ms.author: jeconnoc
+ms.author: bwren
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 35e852a36ebc52edff338ed640419afe32297b81
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: c9d751a7e3d01860b3b5860f1e75fa3767cd4f3c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304970"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395013"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Ukládání a zobrazení diagnostických dat v Azure Storage
 Diagnostická data se neukládají trvale, pokud je nepřenášíte do Microsoft Azure emulátoru úložiště nebo do úložiště Azure. V úložišti se dá zobrazit s jedním z několika dostupných nástrojů.

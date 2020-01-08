@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: 207f73bbf9a92d26be1791fc11ce81fe68252705
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 066ac1080f7ea378efe1665e7ebc70e57118191c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422956"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459106"
 ---
 # <a name="azure-relay-faqs"></a>Nejčastější dotazy k Azure Relay
 
@@ -80,13 +80,13 @@ Odeslání zprávy na Service Bus relay je považováno za "úplné prostřednic
 Přenosy, které jsou otevřeny pomocí vazby WCF **netTCPRelay** , považují zprávy za jednotlivé zprávy, ale jako proud dat přenášených systémem. Použijete-li tuto vazbu, pouze odesílatel a naslouchací proces budou mít přehled o rámcích jednotlivých odeslaných a přijímaných zpráv. U přenosů, které používají vazbu **netTCPRelay** , se všechna data považují za datový proud pro výpočet fakturovatelných zpráv. V takovém případě Service Bus vypočítá celkové množství dat odesílaných nebo přijatých prostřednictvím každého jednotlivého přenosu po dobu 5 minut. Pak rozdělí celkový objem dat o 64 KB, aby bylo možné určit počet fakturovaných zpráv pro tento přenos během daného časového období.
 
 ## <a name="quotas"></a>Kvóty
-| Název kvóty | Scope |  Poznámky | Value |
+| Název kvóty | Rozsah |  Poznámky | Hodnota |
 | --- | --- | --- | --- |
 | Souběžné naslouchací procesy na Relay |Entita |Následné žádosti o další připojení jsou odmítnuty a volající kód obdrží výjimku. |25 |
-| Souběžná připojení přenosu na všechny koncové body přenosu v oboru názvů služby |Obor názvů |- |5,000 |
-| Koncové body Relay na obor názvů služby |Obor názvů |- |10,000 |
+| Souběžná připojení přenosu na všechny koncové body přenosu v oboru názvů služby |Obor názvů |- |5 000 |
+| Koncové body Relay na obor názvů služby |Obor názvů |- |10 000 |
 | Velikost zprávy pro předávání [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) a [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) |Obor názvů |Příchozí zprávy, které překračují tyto kvóty, se odmítnou a volající kód obdrží výjimku. |64 kB |
-| Velikost zprávy pro předávání [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) a [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) |Obor názvů |Velikost zprávy není nijak omezena. |Unlimited |
+| Velikost zprávy pro předávání [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) a [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) |Obor názvů |Velikost zprávy není nijak omezena. |Neomezený počet |
 
 ### <a name="does-relay-have-any-usage-quotas"></a>Má přenos nějaké kvóty využití?
 Ve výchozím nastavení pro jakoukoli cloudovou službu Microsoft nastavuje agregovanou kvótu měsíčního využití, která se počítá napříč předplatnými zákazníka. Chápeme, že v době, kdy vaše potřeby můžou tato omezení překročit. Služby zákazníkům můžete kdykoli kontaktovat, abychom vám porozuměli vašim potřebám a odpovídajícím způsobem upravili tato omezení. Pro Service Bus agregované kvóty využití jsou následující:
@@ -104,9 +104,9 @@ Název oboru názvů přenosu musí mít délku 6 až 50 znaků.
 
 Pokud chcete přesunout obor názvů z jednoho předplatného Azure do jiného předplatného, můžete použít [Azure Portal](https://portal.azure.com) nebo použít příkazy PowerShellu. Chcete-li přesunout obor názvů do jiného předplatného, obor názvů již musí být aktivní. Uživatel, který spouští příkazy, musí být uživatel s oprávněním správce na zdrojovém i cílovém předplatném.
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Portál Azure
 
-Pokud chcete použít Azure Portal k migraci Azure Relay oborů názvů z jednoho předplatného do jiného předplatného, přečtěte si téma [Přesunutí prostředků do nové skupiny prostředků nebo](../azure-resource-manager/resource-group-move-resources.md#use-the-portal)předplatného. 
+Pokud chcete použít Azure Portal k migraci Azure Relay oborů názvů z jednoho předplatného do jiného předplatného, přečtěte si téma [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal). 
 
 #### <a name="powershell"></a>PowerShell
 
@@ -133,7 +133,7 @@ Sdílené přístupové podpisy (SAS) jsou mechanismy ověřování založené n
 ### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Je možné do seznamu povolených koncových bodů přenosu povolit?
 Ano. Předávací klient umožňuje připojení ke službě Azure Relay pomocí plně kvalifikovaných názvů domén. Zákazníci můžou přidat položku pro `*.servicebus.windows.net` na brány firewall, které podporují seznam povolených DNS.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Vytvoření oboru názvů](relay-create-namespace-portal.md)
 * [Začínáme s .NET](relay-hybrid-connections-dotnet-get-started.md)
 * [Začínáme s aplikací Node](relay-hybrid-connections-node-get-started.md)

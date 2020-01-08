@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 38655a9da103d1d669f87c6195be7f17702f9348
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 0002e61827817af958007e1f789219e9291990d8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056675"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647760"
 ---
 # <a name="what-is-an-endpoint-access-control-list"></a>Co je seznam řízení přístupu ke koncovému bodu?
 
 > [!IMPORTANT]
-> Azure má dva různé [modely nasazení](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro vytváření prostředků a práci s nimi: Správce prostředků a klasický. Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby většina nových nasazení používala model nasazení Správce prostředků. 
+> Azure má dva různé [modely nasazení](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro vytváření prostředků a práci s nimi: Správce prostředků a Classic. Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby většina nových nasazení používala model nasazení Správce prostředků. 
 
 Seznam řízení přístupu (ACL) koncového bodu je rozšířením zabezpečení, které je dostupné pro vaše nasazení Azure. Seznam ACL poskytuje možnost selektivního povolení nebo odepření provozu pro koncový bod virtuálního počítače. Tato schopnost filtrování paketů poskytuje další úroveň zabezpečení. Můžete zadat seznam ACL sítě jenom pro koncové body. Nemůžete zadat seznam ACL pro virtuální síť nebo konkrétní podsíť obsaženou ve virtuální síti. Doporučuje se používat skupiny zabezpečení sítě (skupin zabezpečení sítě) místo seznamů ACL, kdykoli je to možné. Při použití skupin zabezpečení sítě se seznam řízení přístupu pro koncové body nahradí a už se neuplatní. Další informace o skupin zabezpečení sítě najdete v tématu [Přehled skupiny zabezpečení sítě](security-overview.md) .
 
@@ -39,7 +39,7 @@ Pomocí seznamů ACL pro síť můžete provádět následující akce:
 * Pořadí pravidel použijte k zajištění správné sady pravidel pro daný koncový bod virtuálního počítače (od nejnižší po nejvyšší).
 * Zadejte seznam ACL pro konkrétní IPv4 adresu vzdálené podsítě.
 
-Omezení seznamu ACL najdete v článku věnovaném [omezením Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) .
+Omezení seznamu ACL najdete v článku věnovaném [omezením Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) .
 
 ## <a name="how-acls-work"></a>Jak fungují seznamy řízení přístupu
 Seznam ACL je objekt, který obsahuje seznam pravidel. Když vytvoříte seznam ACL a použijete ho pro koncový bod virtuálního počítače, bude filtrování paketů provedeno na uzlu hostitele vašeho virtuálního počítače. To znamená, že přenos ze vzdálených IP adres je filtrován podle uzlu hostitele pro porovnání pravidel seznamu ACL, nikoli na vašem VIRTUÁLNÍm počítači. Tím zabráníte tomu, aby váš virtuální počítač strávil na filtrování paketů drahé cykly procesoru.
@@ -48,7 +48,7 @@ Když se vytvoří virtuální počítač, zavede se výchozí seznam ACL pro bl
 
 **Příklad výchozí tabulky ACL**
 
-| **Pravidlo** | **Vzdálená podsíť** | **Koncový bod** | **Povolit/odepřít** |
+| **Pravidlo #** | **Vzdálená podsíť** | **Koncový bod** | **Povolit/odepřít** |
 | --- | --- | --- | --- |
 | 100 |0.0.0.0/0 |3389 |Uvádění |
 
@@ -70,7 +70,7 @@ Pokud chcete povolit přístup ke koncovému bodu RDP jenom ze dvou rozsahů ve�
 
 **Příklad – více pravidel**
 
-| **Pravidlo** | **Vzdálená podsíť** | **Koncový bod** | **Povolit/odepřít** |
+| **Pravidlo #** | **Vzdálená podsíť** | **Koncový bod** | **Povolit/odepřít** |
 | --- | --- | --- | --- |
 | 100 |65.0.0.0/8 |3389 |Uvádění |
 | 200 |159.0.0.0/8 |3389 |Uvádění |
@@ -80,9 +80,9 @@ Vzhledem k tomu, že pro koncový bod lze zadat více pravidel, musí existovat 
 
 **Příklad – priorita pravidla**
 
-| **Pravidlo** | **Vzdálená podsíť** | **Koncový bod** | **Povolit/odepřít** |
+| **Pravidlo #** | **Vzdálená podsíť** | **Koncový bod** | **Povolit/odepřít** |
 | --- | --- | --- | --- |
-| 100 |175.1.0.1/24 |80 |Odepřít |
+| 100 |175.1.0.1/24 |80 |Zamítnout |
 | 200 |175.0.0.0/8 |80 |Uvádění |
 
 ## <a name="network-acls-and-load-balanced-sets"></a>Seznamy ACL sítě a sady s vyrovnáváním zatížení

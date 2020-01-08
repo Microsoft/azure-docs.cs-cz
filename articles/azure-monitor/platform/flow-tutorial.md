@@ -4,15 +4,15 @@ description: Naučte se, jak můžete použít Microsoft Flow k rychlé automati
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
+author: bwren
 ms.author: bwren
 ms.date: 09/29/2017
-ms.openlocfilehash: c74ff0f4d23df8f906870c3810a699db254d70b4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3c1df04e96aff55ae5b9f7130b1593638e3ea1b3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932320"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395071"
 ---
 # <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Automatizace Azure Monitorch procesů protokolu pomocí konektoru pro Microsoft Flow
 [Microsoft Flow](https://ms.flow.microsoft.com) umožňuje vytvářet automatizované pracovní postupy s využitím stovek akcí pro nejrůznější služby. Výstup z jedné akce lze použít jako vstup do jiného, což vám umožní vytvořit integraci mezi různými službami.  Konektor služby Azure Log Analytics pro Microsoft Flow umožňuje sestavovat pracovní postupy, které zahrnují data načtená pomocí dotazů protokolu z pracovního prostoru Log Analytics v Azure Monitor.
@@ -36,7 +36,7 @@ V tomto článku se dozvíte, jak vytvořit tok, který automaticky pošle výsl
 
 
 ## <a name="step-3-add-a-log-analytics-action"></a>Krok 3: Přidání akce Log Analytics
-1. Klikněte na **+ Nový krok**a pak klikněte na **přidat akci**.
+1. Klikněte na **+ Nový krok** a potom klikněte na **Přidat akci**.
 2. Vyhledejte **Log Analytics**.
 3. Klikněte na **Azure Log Analytics – spusťte dotaz a vizualizujte výsledky**.<br><br>![Log Analytics spuštění okna dotazu](media/flow-tutorial/flow02.png)
 

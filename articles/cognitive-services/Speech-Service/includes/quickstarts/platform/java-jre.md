@@ -7,15 +7,15 @@ author: markamos
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: 195d43739ff27a493b2f2923eac43df03313963b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5f6b994bce1d38872cffb1e6e389136742be6d48
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816285"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467948"
 ---
 V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro 64 JRE Java 8.
 
@@ -31,7 +31,7 @@ V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/c
   - Mac: macOS X verze 10,13 nebo novější
   - Linux: 64-bit pouze v Ubuntu 16,04, Ubuntu 18,04 nebo Debian 9
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) nebo [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 

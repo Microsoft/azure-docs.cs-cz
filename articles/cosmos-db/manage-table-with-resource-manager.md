@@ -1,17 +1,17 @@
 ---
-title: Šablony Azure Resource Manager pro Azure Cosmos DB rozhraní API pro tabulky
+title: Šablony Správce prostředků pro Azure Cosmos DB rozhraní API pro tabulky
 description: Pomocí Azure Resource Manager šablon můžete vytvořit a nakonfigurovat Azure Cosmos DB rozhraní API pro tabulky.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: bd30f240700ea4dcf9c9ec20b8007a4445ae35e5
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 0f3c4562fde9ac57315c72b89ed156051aea062b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960566"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445229"
 ---
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>Správa prostředků Azure Cosmos DB rozhraní API pro tabulky pomocí šablon Azure Resource Manager
 
@@ -77,7 +77,7 @@ Příkaz `az cosmosdb show` zobrazuje nově vytvořený účet Azure Cosmos po z
 
 ## <a name="next-steps"></a>Další kroky
 
-Tady je několik dalších prostředků:
+Tady je několik dalších zdrojů:
 
 - [Dokumentace k Azure Resource Manager](/azure/azure-resource-manager/)
 - [Azure Cosmos DB schéma poskytovatele prostředků](/azure/templates/microsoft.documentdb/allversions)

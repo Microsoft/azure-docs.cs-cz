@@ -1,26 +1,15 @@
 ---
-title: Nasazení aplikace typu kontejner s CI/CD do clusteru Azure Service Fabric
+title: Nasazení aplikace typu kontejner pomocí CI/CD
 description: V tomto kurzu se naučíte, jak nastavit průběžnou integraci a nasazování pro aplikaci Azure Service Fabric Container pomocí sady Visual Studio Azure DevOps.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/29/2018
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: a2dc6aeb7dc2a62c543a58c322c23c9661c6940a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9cf619eddd07bbe55cd7aea5f27051a7d0415c24
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832745"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614124"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Kurz: Nasazení aplikace typu kontejner s CI/CD do clusteru Service Fabric
 
@@ -65,7 +54,7 @@ Ověřte svůj e-mail a v rozevíracím seznamu **účet** vyberte svou organiza
 
 Publikováním úložiště se ve vašem účtu vytvoří nový týmový projekt se stejným názvem jako místní úložiště. Pokud chcete úložiště vytvořit v existujícím týmovém projektu, klikněte na **Upřesnit** vedle **názvu úložiště** a vyberte týmový projekt. Svůj kód můžete zobrazit na webu výběrem možnosti **Podívejte se na webu**.
 
-## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Konfigurace průběžného doručování s Azure Pipelines
+## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Nakonfigurujte průběžné doručování s Azure kanály
 
 Definice sestavení Azure DevOps popisuje pracovní postup, který se skládá ze sady kroků sestavení, které jsou spouštěny sekvenčně. Vytvořte definici sestavení, která vytvoří balíček aplikace Service Fabric a další artefakty pro nasazení do clusteru Service Fabric. Přečtěte si další informace o [definicích sestavení](https://www.visualstudio.com/docs/build/define/create)Azure DevOps. 
 
@@ -147,7 +136,7 @@ Povolte trigger průběžného nasazování, aby se po dokončení sestavení au
 
 Výběrem **+ Vydání** -> **Vytvořit vydání** -> **Vytvořit** ručně vytvořte vydání. Průběh vydání můžete sledovat na kartě **Vydání**.
 
-Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte na `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170616.3.
+Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte do `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170616.3.
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>Potvrzení a nasdílení změn, aktivace vydání
 
@@ -167,7 +156,7 @@ Nasdílením změn do Azure DevOps se automaticky aktivuje build.  Po úspěšn�
 
 Pokud chcete zkontrolovat průběh sestavení, přepněte v **Team Exploreru** v sadě Visual Studio na kartu **Sestavení**.  Jakmile ověříte, že se sestavení úspěšně provádí, nadefinujte definici verze, která nasadí vaši aplikaci do clusteru.
 
-Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte na `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170815.3.
+Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte do `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170815.3.
 
 ![Service Fabric Explorer][sfx1]
 

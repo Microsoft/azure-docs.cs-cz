@@ -6,12 +6,12 @@ author: alexkarcher-msft
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: aa2e0e8be8805187ec1f5b8ea6498e90e2d5a7c4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5c0228feb88296e0c82efa52648ce38d70e5b921
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976872"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409883"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Vytvoření funkce pomocí Azure for Students Starter
 
@@ -47,7 +47,7 @@ K hostování provádění funkcí musíte mít aplikaci Function App. Aplikace 
     | ------------ |  ------- | -------------------------------------------------- |
     | **Název aplikace** | Globálně jedinečný název | Název identifikující novou aplikaci Function App. Platné znaky jsou `a-z`, `0-9` a `-`.  | 
     | **Předplatné** | Vaše předplatné | Předplatné, pod kterým je tato nová aplikace Function App vytvořena. | 
-    | **[Skupina prostředků](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Název nové skupiny prostředků, ve které chcete vytvořit aplikaci Function App. |
+    | **[Skupina prostředků](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Název nové skupiny prostředků, ve které chcete vytvořit aplikaci Function App. |
    | **[App Service plán/umístění](./functions-scale.md)** | Novinka | Plán hostování, který určuje, do jaké oblasti je aplikace Function App nasazená, a hustota prostředků. Všechny aplikace Function App nasazené do stejného plánu budou sdílet stejnou jedinou volnou instanci. Toto je omezení plánu počátečního startu studenta. Možnosti úplného hostování jsou [vysvětleny zde.](./functions-scale.md)|
     | **Zásobník modulu runtime** | Upřednostňovaný jazyk | Vyberte modul runtime, který podporuje váš oblíbený programovací jazyk funkcí. Zvolte **.NET** pro funkce C# a F#. |
     |**[Application Insights](./functions-monitoring.md)**| Povoleno | Application Insights se používá k ukládání a analýze protokolů aplikace Function App. Pokud zvolíte umístění, které podporuje Application Insights, je povolené ve výchozím nastavení. Application Insights můžete pro libovolnou funkci povolit ručním výběrem okolní oblasti pro nasazení Application Insights. Bez Application Insights budete moct zobrazit jenom protokoly živého streamování.

@@ -1,25 +1,14 @@
 ---
-title: Zásady správného řízení prostředků Azure Service Fabric pro kontejnery a služby | Microsoft Docs
+title: Zásady správného řízení prostředků pro kontejnery a služby
 description: Azure Service Fabric umožňuje zadat omezení prostředků pro služby běžící uvnitř nebo vně kontejnerů.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/9/2017
-ms.author: atsenthi
-ms.openlocfilehash: 44abb297b9ce0eafadd3af9539d5b12751360319
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 0a4cdc7dd7c2e81447201ca85843c9ba4c7e2af4
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242924"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609448"
 ---
 # <a name="resource-governance"></a>Zásady správného řízení prostředků
 
@@ -206,7 +195,7 @@ Při použití zásad správného řízení prostředků u služby Service Fabri
 * Uzly končící ve stavu není v pořádku.
 * Nereagující Service Fabric rozhraní API pro správu clusteru
 
-Aby nedocházelo k těmto situacím, Service Fabric umožňuje *vyhodnotit omezení prostředků pro všechny Service Fabric uživatelské služby spuštěné v uzlu* (řídí se a neřídí se), aby se zaručilo, že uživatelské služby nikdy nebudou používat víc než zadané množství prostředků. Toho je dosaženo nastavením hodnoty pro EnforceUserServiceMetricCapacities config v oddílu PlacementAndLoadBalancing manifestem clusteru na hodnotu true. Toto nastavení je ve výchozím nastavení vypnuté.
+Aby nedocházelo k těmto situacím, Service Fabric vám umožní *vyhodnotit omezení prostředků pro všechny Service Fabric uživatelské služby spuštěné v uzlu* (řídí se a neřídí se), aby se zaručilo, že uživatelské služby nikdy nebudou používat víc než zadané množství prostředků. Toho je dosaženo nastavením hodnoty pro EnforceUserServiceMetricCapacities config v oddílu PlacementAndLoadBalancing manifestem clusteru na hodnotu true. Toto nastavení je ve výchozím nastavení vypnuté.
 
 ```xml
 <SectionName="PlacementAndLoadBalancing">
@@ -217,7 +206,7 @@ Aby nedocházelo k těmto situacím, Service Fabric umožňuje *vyhodnotit omez
 Další poznámky:
 
 * Vynucení limitu prostředků se vztahuje jenom na metriky prostředků `servicefabric:/_CpuCores` a `servicefabric:/_MemoryInMB`.
-* Vynucení limitu prostředků funguje jenom v případě, že jsou kapacity uzlů pro metriky prostředků dostupné Service Fabric, buď prostřednictvím mechanismu automatického zjišťování, nebo prostřednictvím uživatelů ručně zadáním kapacit uzlů (jak je vysvětleno v [instalačním programu clusteru pro povolení oddíl zásad správného řízení prostředků](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) ). Pokud nejsou nakonfigurované kapacity uzlů, nelze použít funkci vynucení limitu prostředků, protože Service Fabric nemůže zjistit, kolik prostředků se má vyhradit pro uživatelské služby. Service Fabric vydá upozornění na stav, pokud je hodnota "EnforceUserServiceMetricCapacities" pravdivá, ale nejsou nakonfigurovány kapacity uzlů.
+* Vynucení limitu prostředků funguje jenom v případě, že jsou kapacity uzlů pro metriky prostředků dostupné Service Fabric, buď prostřednictvím mechanismu automatického zjišťování, nebo přes uživatele ručně zadáním kapacit uzlů (jak je vysvětleno v části [instalace clusteru pro povolení zásad správného řízení prostředků](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) ). Pokud nejsou nakonfigurované kapacity uzlů, nelze použít funkci vynucení limitu prostředků, protože Service Fabric nemůže zjistit, kolik prostředků se má vyhradit pro uživatelské služby. Service Fabric vydá upozornění na stav, pokud je hodnota "EnforceUserServiceMetricCapacities" pravdivá, ale nejsou nakonfigurovány kapacity uzlů.
 
 ## <a name="other-resources-for-containers"></a>Další zdroje informací o kontejnerech
 

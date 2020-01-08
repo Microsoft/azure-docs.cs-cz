@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů Azure v trezoru Recovery Service
 description: Popisuje, jak zálohovat virtuální počítače Azure v Recovery Services trezoru pomocí Azure Backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: dc47aa2b4da08a0fc2c9a91b4d547a0d19e1869a
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f2954ad2693d7b4f56e3f1b33e804a6936cf8a65
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173345"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450151"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Zálohování virtuálních počítačů Azure v trezoru Recovery Services
 
@@ -42,7 +42,7 @@ Kromě toho je možné, že v některých případech budete muset udělat něko
 
  Trezor ukládá zálohy a body obnovení vytvořené v průběhu času a ukládá zásady zálohování přidružené k zálohovaným počítačům. Vytvořte Trezor následujícím způsobem:
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. Do Hledat zadejte **Recovery Services**. V části **služby**klikněte na **Recovery Services trezory**.
 
      ![Hledat trezory Recovery Services](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
@@ -63,9 +63,8 @@ Po vytvoření trezoru se zobrazí v seznamu Recovery Services trezory. Pokud v�
 
 ![Seznam trezorů záloh](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
-> [!NOTE]
-> Služba Azure Backup vytvoří samostatnou skupinu prostředků (jinou než skupinu prostředků virtuálního počítače) k uložení snímku s formátem názvů **AzureBackupRG_geography_number** (příklad: AzureBackupRG_northeurope_1). Data v této skupině prostředků se uchovávají po dobu ve dnech, jak je uvedeno v části *uchování snímku okamžitého obnovení* v zásadách zálohování virtuálních počítačů Azure.  Použití zámku u této skupiny prostředků může způsobit selhání zálohování.<br>
-Tato skupina prostředků by se měla taky vyloučit z omezení podle názvů nebo značek, protože zásady omezení by zablokovaly vytváření kolekcí bodů prostředků v takovém případě, že způsobí selhání zálohování.
+>[!NOTE]
+> Azure Backup teď umožňuje přizpůsobení názvu skupiny prostředků vytvořeného službou Azure Backup. Další informace najdete v tématu [Azure Backup skupiny prostředků pro Virtual Machines](backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines).
 
 ### <a name="modify-storage-replication"></a>Úprava replikace úložiště
 
@@ -172,8 +171,8 @@ Stav úlohy se může lišit v závislosti na následujících scénářích:
 Dokončeno | Probíhá | Probíhá
 Dokončeno | Přeskočeno | Dokončeno
 Dokončeno | Dokončeno | Dokončeno
-Dokončeno | Neúspěch | Dokončeno s upozorněním
-Neúspěch | Neúspěch | Neúspěch
+Dokončeno | Selhalo | Dokončeno s upozorněním
+Selhalo | Selhalo | Selhalo
 
 Díky této funkci se můžou dvě zálohy spustit paralelně, ale v obou fázích (snímky, přenos dat do trezoru) může běžet jenom jedna dílčí úloha. Takže v rámci scénářů skončila úloha zálohování v průběhu příštího dne neúspěšného zálohování v této funkci odpojuje se. V dalších dnech můžou být snímky dokončené **, zatímco přenos dat do trezoru** se přeskočil, pokud probíhá úloha zálohování staršího dne.
 Přírůstkový bod obnovení vytvořený v trezoru bude zachytit všechny změny z posledního bodu obnovení vytvořeného v trezoru. Na uživatele není žádný vliv na náklady.

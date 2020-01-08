@@ -1,25 +1,16 @@
 ---
-title: Zabezpečená komunikace služby založené na WCF v Azure Service Fabric | Microsoft Docs
+title: Zabezpečená komunikace služby založené na WCF
 description: Naučte se zabezpečit komunikaci založenou na WCF pro spolehlivé služby, které běží v clusteru Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
 author: suchiagicha
-manager: chackdan
-editor: vturecek
-ms.assetid: fc129c1a-fbe4-4339-83ae-0e69a41654e0
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 04/20/2017
 ms.author: pepogors
-ms.openlocfilehash: 31a7a3a42436f3a818fcf48f2af5ca395fa02386
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ca5eafa4612503a13f80b7f238e4827979c0358b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170422"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614158"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>Zabezpečená komunikace založená na technologii WCF pro službu
 Zabezpečení je jedním z nejdůležitějších aspektů komunikace. Rozhraní Reliable Services Application Framework poskytuje několik předem připravených komunikačních zásobníků a nástrojů, které můžete použít ke zvýšení zabezpečení. Tento článek pojednává o tom, jak zvýšit zabezpečení při použití vzdálené komunikace služby.
@@ -63,7 +54,7 @@ Používáme existující [příklad](service-fabric-reliable-services-communica
         return b;
     }
     ```
-2. V klientovi se třída `WcfCommunicationClient`, která byla vytvořena v předchozím [příkladu](service-fabric-reliable-services-communication-wcf.md) , stále nezměnila. Je ale nutné přepsat metodu `CreateClientAsync` `WcfCommunicationClientFactory`:
+2. V klientovi zůstane třída `WcfCommunicationClient`, která byla vytvořena v předchozím [příkladu](service-fabric-reliable-services-communication-wcf.md) , beze změny. Je ale nutné přepsat metodu `CreateClientAsync` `WcfCommunicationClientFactory`:
 
     ```csharp
     public class SecureWcfCommunicationClientFactory<TServiceContract> : WcfCommunicationClientFactory<TServiceContract> where TServiceContract : class
@@ -113,7 +104,7 @@ Používáme existující [příklad](service-fabric-reliable-services-communica
     }
     ```
 
-    Pro vytvoření klienta komunikace WCF (`WcfCommunicationClient`) použijte `SecureWcfCommunicationClientFactory`. K vyvolání metod služby použijte klienta.
+    Pomocí `SecureWcfCommunicationClientFactory` vytvořit klienta komunikace WCF (`WcfCommunicationClient`). K vyvolání metod služby použijte klienta.
 
     ```csharp
     IServicePartitionResolver partitionResolver = ServicePartitionResolver.GetDefault();

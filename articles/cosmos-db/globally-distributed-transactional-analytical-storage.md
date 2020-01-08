@@ -1,5 +1,5 @@
 ---
-title: Globálně distribuované transakční a analytické úložiště pro kontejnery Azure Cosmos
+title: Globálně distribuované transakční a analytické úložiště (v privátní verzi Preview) pro kontejnery Azure Cosmos
 description: Přečtěte si o transakčních a analytických úložištích a možnostech jejich konfigurace pro kontejnery Azure Cosmos.
 author: markjbrown
 ms.author: mjbrown
@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 22bb36e3b22f65bbf9922bd31e4b2e041cdb8979
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 18cf43ba137c92fc00d5f8e82e13501d03b4b6a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601234"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445409"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Globálně distribuované transakční a analytické úložiště pro kontejnery Azure Cosmos
 
-Služba Azure Cosmos Container je interně založená na dvou úložištích – transakční modul úložiště a aktualizovatelný modul analytického úložiště. Úložné moduly jsou strukturované a optimalizované pro zápis pro rychlejší aktualizace. Každý z nich je však kódován odlišně:
+Služba Azure Cosmos Container je interně založená na dvou úložištích – transakční modul úložiště a aktualizovatelný modul analytického úložiště (v privátní verzi Preview). Úložné moduly jsou strukturované a optimalizované pro zápis pro rychlejší aktualizace. Každý z nich je však kódován odlišně:
 
 * **Transakční modul úložiště** – je kódovaný v řádkovém formátu pro rychlé transakční čtení a dotazy.
 
@@ -29,8 +29,8 @@ Transakční modul úložiště je zálohovaný místními SSD, zatímco analyti
 
 |Funkce  |Transakční úložiště  |Analytické úložiště |
 |---------|---------|---------|
-|Maximální velikost úložiště na jeden kontejner Azure Cosmos |   Unlimited      |    Unlimited     |
-|Maximální velikost úložiště na klíč logického oddílu   |   10 GB      |   Unlimited      |
+|Maximální velikost úložiště na jeden kontejner Azure Cosmos |   Neomezený počet      |    Neomezený počet     |
+|Maximální velikost úložiště na klíč logického oddílu   |   10 GB      |   Neomezený počet      |
 |Kódování úložiště  |   Řádky orientované pomocí interního formátu.   |   Sloupce orientované pomocí formátu Apache Parquet. |
 |Místní úložiště |   Replikované úložiště, které je založené na místním/souběžném clusteru SSD. |  Replikované úložiště zajištěné nenáročným vzdáleným/vypnutým clusterem SSD.       |
 |Stálost  |    99,99999 (7-9 s)     |  99,99999 (7-9 s)       |

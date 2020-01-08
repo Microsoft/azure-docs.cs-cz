@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b7bdd1e1922d9d8845a8187cabb3fd39af4694ab
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 75fe9c8587a15ed37366dceda05b5befb353ebb3
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70077898"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647505"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Instalace vysoké dostupnosti SAP NetWeaver v clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složce pro instance SAP ASCS/SCS v Azure
 
@@ -36,8 +36,8 @@ ms.locfileid: "70077898"
 
 [sap-powershell-scrips]:https://github.com/Azure-Samples/sap-powershell
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [s2d-in-win-2016]:https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview
 [sofs-overview]:https://technet.microsoft.com/library/hh831349(v=ws.11).aspx
@@ -193,7 +193,7 @@ ms.locfileid: "70077898"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -203,7 +203,7 @@ Tento článek popisuje, jak nainstalovat a nakonfigurovat systém SAP s vysokou
 
 Než začnete s instalací, přečtěte si následující články:
 
-* [Průvodce architekturou: Vytvoření clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání systému Windows pomocí sdílené složky][sap-high-availability-guide-wsfc-file-share]
+* [Průvodce architekturou: cluster a instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání systému Windows pomocí sdílené složky][sap-high-availability-guide-wsfc-file-share]
 
 * [Příprava infrastruktury Azure na vysokou dostupnost pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složky pro instance SAP ASCS/SCS][sap-high-availability-infrastructure-wsfc-file-share]
 
@@ -231,13 +231,13 @@ Neexistují žádné zvláštní požadavky, pokud různé služby DBMS pracují
 
 V clusteru SOFS vytvořte následující svazek a sdílenou složku:
 
-* Struktura souborů `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` SAP GLOBALHOST na sdíleném svazku clusteru SOFS (CSV)
+* Struktura `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` souboru SAP GLOBALHOST na sdíleném svazku clusteru SOFS (CSV)
 
 * SAPMNT sdílená složka
 
 * Nastavte zabezpečení sdílené složky SAPMNT a složky s úplným řízením pro:
-    * _GlobalAdmin skupina uživatelů\<Domain > \SAP_ SID > \<
-    * Uzel clusteru SAP ASCS/SCS počítače objekty \<počítač > \ClusterNode1 $ a \<doména > \ClusterNode2 $
+    * \<doména > \ SAP_\<SID > _GlobalAdmin skupině uživatelů
+    * Objekty počítače uzlu clusteru SAP ASCS/SCS \<doméně > \ClusterNode1 $ a \<doméně > \ClusterNode2 $
 
 Pokud chcete vytvořit svazek SDÍLENÉHO svazku clusteru s odolností zrcadla, spusťte na jednom z uzlů clusteru SOFS následující rutinu PowerShellu:
 
@@ -299,7 +299,7 @@ Vytvořte název sítě s clustery SAP ASCS/SCS (například **PR1-ASCS [10.0.6.
 
 Nainstalujte instanci SAP ASCS/SCS do prvního uzlu clusteru. Chcete-li nainstalovat instanci, v instalačním nástroji SAP SWPM přejít na:
 
-**\<Produkt >**  >  >  **DBMS>\<** **instalaci serveru aplikace ABAP** (nebo Java) > vysoké dostupnosti. >  >  **Instance ASCS/SCS** **První uzel clusteru.**  > 
+**\<produktu >**  >  **\<DBMS >**  > **instalaci** > **aplikačního serveru ABAP** (nebo **Java**) > **ASCS/SCS instance** **systému** > **prvním uzlu clusteru**.
 
 ### <a name="add-a-probe-port"></a>Přidat port testu paměti
 
@@ -309,21 +309,21 @@ Nakonfigurujte prostředek clusteru SAP, port testu SAP-SID-IP pomocí prostřed
 
 Nainstalujte instanci SAP ASCS/SCS na druhý uzel clusteru. Chcete-li nainstalovat instanci, v instalačním nástroji SAP SWPM přejít na:
 
-**\<Produkt >**  >  >  **DBMS>\<** **instalaci serveru aplikace ABAP** (nebo Java) > vysoké dostupnosti. >  >  **Instance ASCS/SCS** **Další uzel clusteru.**  > 
+**\<produktu >**  >  **\<DBMS >**  > **instalaci** > **aplikačního serveru ABAP** (nebo **Java**) > **systém s vysokou dostupností** > **ASCS/SCS instance** > **Další uzel clusteru**.
 
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>Aktualizovat profil instance SAP ASCS/SCS
 
-Aktualizujte parametry v identifikátoru SID profilu \<instance SAP ASCS/SCS >_ASCS/SCS\<Nr >_ \<>.
+Parametry aktualizace v profilu instance SAP ASCS/SCS \<SID >_ASCS/SCS\<Nr >_ \<> hostitele.
 
 
 | Název parametru | Hodnota parametru |
 | --- | --- |
 | gw/netstat_once | **0** |
-| enque/encni/set_so_keepalive  | **podmínka** |
+| enque/encni/set_so_keepalive  | **true** |
 | Služba/ha_check_node | **1** |
 
-Restartujte instanci SAP ASCS/SCS. Nastavte `KeepAlive` parametry na uzlech clusteru SAP ASCS/SCS podle pokynů k [Nastavení položek registru v uzlech clusteru instance SAP ASCS/SCS][high-availability-guide]. 
+Restartujte instanci SAP ASCS/SCS. V uzlech clusteru SAP ASCS/SCS nastavte parametry `KeepAlive` podle pokynů k [Nastavení položek registru v uzlech clusteru instance SAP ASCS/SCS][high-availability-guide]. 
 
 ## <a name="install-a-dbms-instance-and-sap-application-servers"></a>Instalace instance systému DBMS a aplikačních serverů SAP
 

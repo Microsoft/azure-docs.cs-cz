@@ -1,6 +1,6 @@
 ---
-title: Zajištění směrování ve službě Azure Maps | Dokumentace Microsoftu
-description: Další informace o zajištění směrování ve službě Azure Maps
+title: Pokrytí směrování v Azure Maps | Microsoft Docs
+description: Přečtěte si o pokrytí směrování v Azure Maps
 author: jingjing-z
 ms.author: jinzh
 ms.date: 04/04/2019
@@ -8,38 +8,38 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 0991a0df8d34ddbcebf3d4097c0219b47793120b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ca837d871dc439cadd1ca5b69bf9c7a5d12fddc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65779939"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408354"
 ---
-# <a name="azure-maps-routing-coverage"></a>Azure Maps směrování pokrytí
+# <a name="azure-maps-routing-coverage"></a>Pokrytí směrování Azure Maps
 
-Tento článek obsahuje informace o pokrytí pro směrování Azure Maps. Při hledání optimálního postup z umístění A do B Azure Maps může poskytovat doby trvání cesty s velmi přesnými, live aktualizované cestovní pokyny informace a trasy. Trasa bude trvat do účtu Další hledané výrazy, jako je aktuální provoz, typ vozidla a podmínky vyhnout. Možnost optimalizace trasy závisí na oblasti Azure Maps má různé úrovně informace a přesnost pro různé oblasti. Následující tabulka uvádí oblasti a jaký druh informací můžete vyžádat pro ně.
+Tento článek poskytuje informace o pokrytí pro Azure Maps směrování. Když vyhledáváte optimální trasu z umístění A na B, Azure Maps může poskytovat vysoce přesné cesty, živé aktualizované cestovní informace a pokyny pro trasy. Trasa bude brát v úvahu další hledané podmínky, jako je aktuální provoz, typ a podmínky prostředku, abyste se vyhnuli. Možnost optimalizace trasy závisí na oblasti, protože Azure Maps má různé úrovně informací a přesnost pro různé oblasti. V následující tabulce jsou uvedené oblasti a jaké druhy informací si můžete pro ně vyžádat.
  
-Podívejte se na pokrytí [ **Geokódování**](geocoding-coverage.md).       
-Podívejte se na pokrytí [ **provoz**](traffic-coverage.md).  
-Podívejte se na pokrytí [ **vykreslení**](render-coverage.md).
+Podívejte se na pokrytí pro [**geografické kódování**](geocoding-coverage.md).       
+Rezervujte [**provoz**](traffic-coverage.md)na pokrytí.  
+Rezervujte pokrytí pro [**vykreslování**](render-coverage.md).
 <br>  
 **Legenda**
 
 | Symbol             | Význam                                |
 |--------------------|----------------------------------------|
-| ✓                  | Země nebo oblast, opatřeného podrobná data.   |
-| Ø                  | Země/oblasti součástí jednodušší. |
-| Chybí země | Země/oblast dat není k dispozici.          |
+| ✓                  | Země nebo oblast, které jsou k dispozici s podrobnými daty.   |
+| Ø                  | Země/oblast poskytnutá s zjednodušenými daty |
+| Chybí země. | Data země nebo oblasti nejsou k dispozici.          |
 
 <br>  
 
-Následující tabulka obsahuje informace o pokrytí pro směrování Azure Maps.
+Následující tabulka poskytuje informace o pokrytí Azure Maps směrování.
 <br>  
 
 
 ## <a name="africa"></a>Afrika
 
-| Země/oblast                 | Směrování         | Směrování provozu | Truck směrování |
+| Země/oblast                 | Plánování tras         | Směrování pomocí provozu | Směrování nákladní automobil |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Alžírsko                        |        ✓       |                       |             |
 | Angola                         |        ✓       |                       |             |
@@ -49,8 +49,8 @@ Následující tabulka obsahuje informace o pokrytí pro směrování Azure Maps
 | Burundi                        |        ✓       |                       |             |
 | Kamerun                       |        ✓       |                       |             |
 | Cabo Verde                     |        ✓       |                       |             |
-| Konžská - Brazzaville Kinshasa    |        ✓       |                       |             |
-| Konžská - Kinshasa                |        ✓       |                       |             |
+| Kongo – Brazzaville konžský    |        ✓       |                       |             |
+| Kongo – konžský                |        ✓       |                       |             |
 | Pobřeží slonoviny                  |        ✓       |                       |             |
 | Egypt                          |        ✓       |         ✓            |             |
 | Gabon                          |        ✓       |                       |             |
@@ -70,7 +70,7 @@ Následující tabulka obsahuje informace o pokrytí pro směrování Azure Maps
 | Rwanda                         |        ✓       |                       |             |
 | Senegal                        |        ✓       |                       |             |
 | Seychely                     |        ✓       |                       |             |
-| Jižní Afrika                   |        ✓       ||         ✓            |             |
+| Jihoafrická republika                   |        ✓       ||         ✓            |             |
 | Svazijsko                      |        ✓       |                       |             |
 | Tanzanie                       |        ✓       |                       |             |
 | Togo                           |        ✓       |                       |             |
@@ -82,7 +82,7 @@ Následující tabulka obsahuje informace o pokrytí pro směrování Azure Maps
 
 ## <a name="americas"></a>Amerika
 
-| Země/oblast                 | Směrování         | Směrování provozu | Truck směrování |
+| Země/oblast                 | Plánování tras         | Směrování pomocí provozu | Směrování nákladní automobil |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Argentina                      |        ✓       |         ✓            |     ✓       |
 | Antigua a Barbuda            |        ✓       |                      |             |
@@ -112,33 +112,34 @@ Následující tabulka obsahuje informace o pokrytí pro směrování Azure Maps
 | Paraguay                       |        ✓       |                      |             |
 | Peru                           |        ✓       |         ✓            |             |
 | Svatý Kryštof a Nevis            |        ✓       |                      |             |
-| St. Lucia                      |        ✓       |                      |             |
-| Svatý Vincenc a Grenadiny       |        ✓       |                      |             |
+| Svatá Lucie                      |        ✓       |                      |             |
+| Svatý Vincent & Grenadiny       |        ✓       |                      |             |
 | Surinam                       |        ✓       |                      |             |
-| Trinidad a Tobago              |        ✓       |                      |             |
+| Trinidad & Tobago              |        ✓       |                      |             |
 | Spojené státy                  |        ✓       |         ✓            |     ✓      | 
 | \+ Americká Samoa                |        ✓       |                      |             |
 | \+ Severní Mariany      |        ✓       |                      |             |
-| +Puerto Rico                   |        ✓       |                      |             |
-| \+ USA Panenské ostrovy           |        ✓       |                      |             |
+| \+ Portoriko                   |        ✓       |                      |             |
+| \+ Americké Panenské ostrovy           |        ✓       |                      |             |
 | Uruguay                        |        ✓       |         ✓            |     ✓      | 
 | Venezuela                      |        ✓       |                      |             |
 
 
 ## <a name="asia-pacific"></a>Asie a Tichomoří
 
-| Země/oblast                 | Směrování         | Směrování provozu | Truck směrování |
+| Země/oblast                 | Plánování tras         | Směrování pomocí provozu | Směrování nákladní automobil |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Austrálie                      |        ✓       |         ✓            |     ✓       |
-| \+ Vánoční ostrov              |        ✓       |                      |             |
-| Brunei                         |        ✓       |         ✓            |             |
+| A Vánoční ostrov              |        ✓       |                      |             |
+| Brunej                         |        ✓       |         ✓            |             |
 | Kambodža                       |        ✓       |                      |             |
 | Fidži                           |        ✓       |                      |             |
 | Guam                           |        ✓       |                      |             |
-| Hongkong – zvláštní administrativní oblast                  |        ✓       |         ✓            |             |
+| Hongkong – zvláštní správní oblast                  |        ✓       |         ✓            |             |
 | Indie                          |        ✓       |         ✓            |             |
 | Indonésie                      |        ✓       |         ✓            |             |
-| Jižní Korea                          |        Ø       |                      |             |
+| Kazachstán                |        ✓       |                     |             |
+| Korea                          |        Ø       |                      |             |
 | Laos                           |        ✓       |                      |             |
 | Macao – zvláštní administrativní oblast                      |        ✓       |         ✓            |             |
 | Malajsie                       |        ✓       |         ✓            |             |
@@ -153,7 +154,7 @@ Následující tabulka obsahuje informace o pokrytí pro směrování Azure Maps
 
 ## <a name="europe"></a>Evropa
 
-| Země/oblast                 | Směrování         | Směrování provozu | Truck směrování |
+| Země/oblast                 | Plánování tras         | Směrování pomocí provozu | Směrování nákladní automobil |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Albánie                        |        ✓       |                      |             |
 | Andorra                        |        ✓       |         ✓            |             |
@@ -173,9 +174,9 @@ Následující tabulka obsahuje informace o pokrytí pro směrování Azure Maps
 | Francie                         |        ✓       |         ✓            |     ✓      | 
 | +Guadeloupe                    |        ✓       |                      |             |
 | \+ Martinik                    |        ✓       |                      |             |
-| \+ Svatý Bartoloměj                |        ✓       |                      |             |
-| +St. Martin                    |        ✓       |                      |             |
-| +St. Pierre & Miquelon         |        ✓       |                      |             |
+| \+ St. Bartoloměj                |        ✓       |                      |             |
+| \+ St. Martin                    |        ✓       |                      |             |
+| \+ St. Pierre & Miquelon         |        ✓       |                      |             |
 | Gruzie                        |        ✓       |                      |             |
 | Německo                        |        ✓       |         ✓            |     ✓      | 
 | Řecko                         |        ✓       |         ✓            |     ✓      |  
@@ -189,23 +190,23 @@ Následující tabulka obsahuje informace o pokrytí pro směrování Azure Maps
 | Lichtenštejnsko                  |        ✓       |         ✓            |             |
 | Litva                      |        ✓       |         ✓            |     ✓      | 
 | Lucembursko                     |        ✓       |         ✓            |     ✓      | 
-| Makedonie – sever                |        ✓       |                      |             |
+| Severní Makedonie                |        ✓       |                      |             |
 | Malta                          |        ✓       |         ✓            |             |
 | Moldavsko                        |        ✓       |                      |             |
 | Monako                         |        ✓       |         ✓            |             |
 | Černá Hora                     |        ✓       |                      |     ✓      | 
 | Nizozemsko                    |        ✓       |         ✓            |     ✓      | 
-| +Aruba                         |        ✓       |                      |             | 
-| \+ Nizozemsko Karibská oblast         |        ✓       |                      |             |
+| \+ Aruba                         |        ✓       |                      |             | 
+| \+ Karibské Nizozemsko         |        ✓       |                      |             |
 | +Curaçao                       |        ✓       |                      |             |
-| +Sint Maarten                  |        ✓       |                      |             |
+| \+ Svatý Martin                  |        ✓       |                      |             |
 | Norsko                         |        ✓       |         ✓            |     ✓      | 
 | Polsko                         |        ✓       |         ✓            |     ✓      | 
 | Portugalsko                       |        ✓       |         ✓            |     ✓      |  
 | Rumunsko                        |        ✓       |         ✓            |     ✓      | 
 | Ruská federace             |        ✓       |         ✓            |     ✓      | 
 | San Marino                     |        ✓       |         ✓            |             |
-| +Sint Maarten                  |        ✓       |                      |             |
+| \+ Svatý Martin                  |        ✓       |                      |             |
 | Srbsko                         |        ✓       |                      |     ✓      | 
 | Slovensko                       |        ✓       |         ✓            |     ✓      | 
 | Slovinsko                       |        ✓       |         ✓            |     ✓      |
@@ -219,16 +220,16 @@ Následující tabulka obsahuje informace o pokrytí pro směrování Azure Maps
 | \+ Bermudy                       |        ✓       |                      |             |
 | \+ Britské Panenské ostrovy        |        ✓       |                      |             |
 | \+ Kajmanské ostrovy                |        ✓       |                      |             |
-| +Gibraltar                     |        ✓       |         ✓            |             | 
+| \+ Gibraltar                     |        ✓       |         ✓            |             | 
 | +Montserrat                    |        ✓       |                      |             |
-| \+ Turks a Caicos      |        ✓       |                      |             |
+| \+ Ostrovy Turks a Caicos      |        ✓       |                      |             |
 | Vatikán                   |        ✓       |         ✓            |             |
 | Ostrov Man                    |        ✓       |                      |             |
 
 
 ## <a name="middle-east"></a>Střední východ
 
-| Země/oblast                 | Směrování         | Směrování provozu | Truck směrování |
+| Země/oblast                 | Plánování tras         | Směrování pomocí provozu | Směrování nákladní automobil |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Bahrajn                        |        ✓       |         ✓            |             |
 | Irák                           |        ✓       |                      |             |
@@ -243,6 +244,6 @@ Následující tabulka obsahuje informace o pokrytí pro směrování Azure Maps
 | Jemen                          |        ✓       |                      |             |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o směrování Azure Maps, najdete v článku [směrování](https://docs.microsoft.com/rest/api/maps/route) odkazují na stránky.
+Další informace o směrování Azure Maps najdete na referenčních stránkách [Směrování](https://docs.microsoft.com/rest/api/maps/route) .

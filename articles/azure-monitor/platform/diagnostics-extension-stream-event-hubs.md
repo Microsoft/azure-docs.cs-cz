@@ -4,15 +4,15 @@ description: Konfigurace Azure Diagnostics s využitím kompletních Event Hubs,
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 2b24618e4d7c12366db5e72226c6f94924d4d3a5
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 2b84f752467d630142f1920aac08bf5321b13acb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555530"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363723"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Streamování Azure Diagnostics dat v Hot Path pomocí Event Hubs
 Azure Diagnostics poskytuje flexibilní způsoby shromažďování metrik a protokolů z virtuálních počítačů cloudových služeb a výsledků přenosu do Azure Storage. Počínaje časovým rámcem, který začíná 2016. března (SDK 2,9), můžete do vlastních zdrojů dat odeslat diagnostiku a přenést data za provozu za pár sekund pomocí [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak nakonfigurovat Azure Diagnostics pomocí Event
 * Postup zobrazení dat Event Hubs streamu
 * Řešení potíží s připojením  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Event Hubs Příjem dat z Azure Diagnostics podporuje v Cloud Services, virtuálních počítačích, Virtual Machine Scale Sets a Service Fabric od Azure SDK 2,9 a odpovídajících nástrojů Azure pro Visual Studio.
 
 * Azure Diagnostics rozšíření 1,6 (ve výchozím nastavení se[Azure SDK pro .net 2,9 nebo novější](https://azure.microsoft.com/downloads/) zaměřuje)
@@ -43,7 +43,7 @@ Event Hubs Příjem dat z Azure Diagnostics podporuje v Cloud Services, virtuál
 * Event Hubs obor názvů zřízený podle článku [Začínáme s Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Připojení Azure Diagnostics k Event Hubs jímky
-Ve výchozím nastavení Azure Diagnostics vždy odesílá protokoly a metriky na účet Azure Storage. Aplikace může také odesílat data do Event Hubs přidáním **nového  /  oddílu** **jímky** do prvku**WadCfg** v souboru *. wadcfgx* . V aplikaci Visual Studio je soubor *. wadcfgx* uložený v následující cestě: **projekt cloudové služby**  > **role**  >  **(roleName)**  > **Diagnostics. wadcfgx** .
+Ve výchozím nastavení Azure Diagnostics vždy odesílá protokoly a metriky na účet Azure Storage. Aplikace může také odesílat data do Event Hubs přidáním **nového / oddílu** **jímky** do prvku **WadCfg** v souboru *. wadcfgx* . V aplikaci Visual Studio je soubor *. wadcfgx* uložený v následující cestě: **projekt cloudové služby** > **role** >  **(roleName)**  > **Diagnostics. wadcfgx** .
 
 ```xml
 <SinksConfig>
@@ -200,7 +200,7 @@ Následující příklad ukazuje, jak může vývojář omezit množství odesla
 V tomto příkladu se jímka aplikuje na protokoly a je filtrovaná jenom na trasování úrovně chyby.
 
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Nasazení a aktualizace Cloud Services aplikace a konfigurace diagnostiky
-Visual Studio poskytuje nejjednodušší cestu k nasazení aplikace a konfigurace jímky Event Hubs. Pokud chcete soubor zobrazit a upravit, otevřete soubor *. wadcfgx* v aplikaci Visual Studio, upravte ho a uložte. Cesta je **projekt cloudové služby**  > **role**  >  **(roleName)**  > **Diagnostics. wadcfgx**.  
+Visual Studio poskytuje nejjednodušší cestu k nasazení aplikace a konfigurace jímky Event Hubs. Pokud chcete soubor zobrazit a upravit, otevřete soubor *. wadcfgx* v aplikaci Visual Studio, upravte ho a uložte. Cesta je **projekt cloudové služby** > **role** >  **(roleName)**  > **Diagnostics. wadcfgx**.  
 
 V tomto okamžiku všechny akce nasazení a nasazení v aplikaci Visual Studio, Visual Studio Team System a všechny příkazy nebo skripty, které jsou založené na MSBuild a používají **parametr/t: publikovat** , zahrnují v procesu balení soubor *. wadcfgx* . Nasazení a aktualizace navíc nasadí soubor do Azure pomocí vhodného rozšíření agenta Azure Diagnostics na vašich virtuálních počítačích.
 

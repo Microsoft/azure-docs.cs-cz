@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2019
+ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 140361b7ba3a6a618d4c416447525f8a73690b81
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 899f4cba31afed812fa1643b925a38812308042e
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748429"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552929"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Posouzení a doporučení služby Endpoint Protection v Azure Security Center
 
-Azure Security Center poskytuje posouzení stavu [podporovaných](https://docs.microsoft.com/azure/security-center/security-center-os-coverage) verzí řešení ochrany koncových bodů. Tento článek vysvětluje scénáře, které Security Center vedoucím generovat následující dvě doporučení:
+Azure Security Center poskytuje posouzení stavu [podporovaných](security-center-services.md#supported-endpoint-protection-solutions-) verzí řešení ochrany koncových bodů. Tento článek vysvětluje scénáře, které Security Center vedoucím generovat následující dvě doporučení:
 
 * **Instalace řešení Endpoint Protection na virtuálním počítači**
 * **Řešení problémů se stavem služby Endpoint Protection na vašich počítačích**
@@ -55,7 +55,7 @@ Azure Security Center poskytuje posouzení stavu [podporovaných](https://docs.m
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center Endpoint Protection
 
-* Security Center doporučuje při importu **SCEPMpModule ("$env:P Rogramfiles\microsoft Security Client\MpProvider\MpProvider.psd1"** **nainstalovat řešení Endpoint Protection na virtuálním počítači** ") a spustit  **Get-MProtComputerStatus** výsledky s **AMServiceEnabled = false**
+* Security Center doporučuje při importu **SCEPMpModule ("$env:P Rogramfiles\microsoft Security Client\MpProvider\MpProvider.psd1"** **nainstalovat řešení Endpoint Protection na virtuálním počítači** ") a spustit výsledky **Get-MProtComputerStatus** s **AMServiceEnabled = false**
 
 * Security Center doporučuje, abyste při spuštění **Get-MprotComputerStatus** **vyřešili problémy se stavem Endpoint Protection na vašich počítačích** a nastaly některé z těchto situací:
 
@@ -84,8 +84,8 @@ Azure Security Center poskytuje posouzení stavu [podporovaných](https://docs.m
 * Security Center doporučuje **nainstalovat řešení Endpoint Protection na virtuálním počítači** , když se nesplní některá z následujících kontrol:
     * **HKLM: existuje Agent zabezpečení \ SOFTWARE\TrendMicro\Deep**
     * **HKLM: \ SOFTWARE\TrendMicro\Deep zabezpečení Agent\InstallationFolder existuje.**
-    * Soubor **dsa_query. cmd** najdete v instalační složce.
-    * Spuštění **dsa_query. cmd** Results s **komponentou. am. Mode: on-trend microed Security Agent byl zjištěn**
+    * Soubor **dsa_query. cmd** se nachází v instalační složce
+    * Spuštění **dsa_query. cmd** výsledků s **komponentou. am. Mode: on-trend microed Security Agent byl zjištěn**
 
 ## <a name="symantec-endpoint-protection"></a>Symantec Endpoint Protection
 Security Center doporučuje **nainstalovat řešení Endpoint Protection na virtuálním počítači** , když se nesplní některá z následujících kontrol:
@@ -94,11 +94,11 @@ Security Center doporučuje **nainstalovat řešení Endpoint Protection na virt
 
 * **HKLM: \ Software\Symantec\Symantec koncový bod Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
-Nebo
+nebo
 
 * **HKLM: \ Software\Wow6432Node\Symantec\Symantec koncový bod Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
-* **HKLM: \ Software\Wow6432Node\Symantec\Symantec koncový bod Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
+* **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
 Security Center doporučuje **vyřešit problémy stavu ochrany koncových bodů na vašich počítačích** , když některá z následujících kontrol nejsou splněné:
 
@@ -181,4 +181,4 @@ Protokoly rozšíření Microsoft Antimalware jsou k dispozici na adrese: **%sys
 
 ### <a name="support"></a>Podpora
 
-Pokud chcete získat další informace, obraťte se na odborníky na Azure na [fórech MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Nebo zasouborte incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o použití podpory Azure najdete v tématu [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).
+Pokud chcete získat další informace, obraťte se na odborníky na Azure na [fórech MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Nebo zasouborte incident podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o používání podpory Azure najdete v článku [nejčastější dotazy k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).

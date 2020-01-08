@@ -2,19 +2,15 @@
 title: Migrace nasazení aktualizace OMS do Azure
 description: Tento článek popisuje, jak migrovat existující nasazení aktualizací OMS do Azure.
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 07/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 08b3f11f3e44c6580df9942aab2a890115c79ba3
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2660e4a348d2ffd71f912ff80c36a5a9a3c9fe88
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849492"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417786"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>Migrace nasazení aktualizace OMS do Azure
 
@@ -25,7 +21,7 @@ Portál Operations Management Suite (OMS) je [zastaralý](../azure-monitor/platf
 * Existující nasazení budou fungovat i nadále. Po opětovném vytvoření nasazení v Azure můžete odstranit staré nasazení z OMS.
 * Všechny existující funkce v OMS jsou k dispozici v Azure. Další informace o Update Management najdete v tématu [Update Management Overview](automation-update-management.md).
 
-## <a name="access-the-azure-portal"></a>Přístup k Azure Portal
+## <a name="access-the-azure-portal"></a>Přejděte na portál Microsoft Azure
 
 V pracovním prostoru OMS klikněte na **otevřít v Azure**. Tím přejdete do pracovního prostoru Log Analytics, který používá OMS.
 

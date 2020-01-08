@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start – vytvoření databáze Azure Cosmos z Azure Portal
+title: Rychlý Start – vytvoření prostředků Azure Cosmos DB z Azure Portal
 description: V tomto rychlém startu se dozvíte, jak vytvořit databázi Azure Cosmos, kontejner a položky pomocí Azure Portal.
 author: SnehaGunda
 ms.author: sngun
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 12/02/2019
-ms.openlocfilehash: 9b563f7546710b0cb07573d32b2f3939d8e64085
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 58fa891503342ac0ec9d41e9c458a71d18e58161
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872192"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445607"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Rychlý Start: vytvoření účtu, databáze, kontejneru a položek Azure Cosmos z Azure Portal
 
@@ -30,7 +30,7 @@ Databáze Azure Cosmos je databázová služba Microsoftu s více modely použit
 
 V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit účet Azure Cosmos DB [rozhraní SQL API](sql-api-introduction.md) , vytvořit databázi dokumentů a kontejner a přidat data do kontejneru. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předplatné Azure nebo bezplatný zkušební účet služby Azure Cosmos DB
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
@@ -87,7 +87,7 @@ Přidejte data do nové databáze pomocí Průzkumník dat.
      }
      ```
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
    
    ![Zkopírujte data JSON a vyberte Uložit v Průzkumník dat Azure Portal](./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png)
    

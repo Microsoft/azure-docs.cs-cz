@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 69711f7ac20882617de175b1b90d8df4f2858c4d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 22bf4dcd472cf2d7804b571e09093535f30b053f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498088"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647420"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Řešení potíží s pomalými nebo neúspěšnými úlohami v clusteru HDInsight
 
@@ -90,7 +90,7 @@ HDInsight spoléhá na několik služeb Azure. Spouští virtuální servery v A
 
 #### <a name="check-azure-service-usage-limits"></a>Ověřit omezení využití služeb Azure
 
-Pokud spouštíte velký cluster nebo jste současně spustili mnoho clusterů, cluster může selhat, pokud jste překročili limit služeb Azure. Omezení služby se liší v závislosti na vašem předplatném Azure. Další informace najdete v tématu [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+Pokud spouštíte velký cluster nebo jste současně spustili mnoho clusterů, cluster může selhat, pokud jste překročili limit služeb Azure. Omezení služby se liší v závislosti na vašem předplatném Azure. Další informace najdete v tématu [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 Můžete požádat o to, aby Microsoft zvýšil počet dostupných prostředků služby HDInsight (například jader virtuálních počítačů a instancí virtuálních počítačů) s [žádostí o zvýšení kvóty správce prostředků jádra](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
 #### <a name="check-the-release-version"></a>Ověřit verzi pro vydání

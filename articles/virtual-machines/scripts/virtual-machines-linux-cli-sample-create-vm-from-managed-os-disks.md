@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače připojením spravovaného disku jako disku s operačním systémem
+title: Vytvoření virtuálního počítače připojením spravovaného disku jako disku s operačním systémem – ukázka CLI
 description: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače připojením spravovaného disku jako disku s operačním systémem
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 05263df1327eff49d0c9ec84316447ba563695ca
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1616466619c7c7627106c09de703d02a7c40d248
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039165"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458400"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-cli"></a>Vytvoření virtuálního počítače s použitím existujícího spravovaného disku s operačním systémem pomocí rozhraní příkazového řádku
 
@@ -50,7 +50,7 @@ az group delete --name myResourceGroup
 
 Tento skript k získání vlastností spravovaného disku, připojení spravovaného disku k novému virtuálnímu počítači a vytvoření virtuálního počítače používá následující příkazy. Každá položka v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [az disk show](https://docs.microsoft.com/cli/azure/disk) | Získá vlastnosti spravovaného disku s použitím názvu disku a názvu skupiny prostředků. Vlastnost ID se použije k připojení spravovaného disku k novému virtuálnímu počítači. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | Vytvoří virtuální počítač s použitím spravovaného disku s operačním systémem. |

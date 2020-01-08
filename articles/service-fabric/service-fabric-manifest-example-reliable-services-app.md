@@ -1,24 +1,16 @@
 ---
-title: Příklady manifestu aplikace Azure Service Fabric Reliable Services
+title: Příklady manifestu aplikace Reliable Services
 description: Přečtěte si, jak nakonfigurovat nastavení manifestu aplikace a služby pro spolehlivé služby Service Fabric aplikaci.
-services: service-fabric
-documentationcenter: na
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: 9cc79610b6dc9f9d2869a41e0b483168087368cc
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: d5a03629a134a0b2c7d6ee95dba9ea3ad06e99ba
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013229"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609821"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Příklady manifestu služeb a aplikace Reliable Services
 Níže jsou uvedeny příklady manifestů aplikace a služby pro Service Fabric aplikaci s ASP.NET Core webový front-end a stavový back-end. Účelem těchto příkladů je Ukázat, jaká nastavení jsou k dispozici a jak je používat. Tyto manifesty aplikací a služeb jsou založené na manifestech [rychlý Start pro Service Fabric .NET](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) .
@@ -286,7 +278,7 @@ Deklarativně popisuje typ a verzi aplikace. Jeden nebo více manifestů služeb
 ### <a name="parameters-element"></a>Element Parameters
 Deklaruje parametry, které se používají v manifestu této aplikace. Hodnotu těchto parametrů lze zadat při vytváření instance aplikace a lze ji použít k přepsání nastavení konfigurace aplikace nebo služby. Další informace naleznete v tématu [element Parameters](service-fabric-service-model-schema-elements.md#ParametersElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType) .
 
-### <a name="parameter-element"></a>Element parametru
+### <a name="parameter-element"></a>Element Parameter
 Parametr aplikace, který se má použít v tomto manifestu. Hodnotu parametru lze změnit během vytváření instance aplikace, nebo, pokud není zadána žádná hodnota, je použita výchozí hodnota. Další informace naleznete v tématu [element Parameter](service-fabric-service-model-schema-elements.md#ParameterElementanonymouscomplexTypeComplexTypeDefinedInParameterselement) .
 
 ### <a name="servicemanifestimport-element"></a>Element ServiceManifestImport

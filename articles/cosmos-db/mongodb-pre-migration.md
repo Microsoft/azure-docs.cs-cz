@@ -1,92 +1,92 @@
 ---
-title: Před migrací postup pro migraci dat z MongoDB API služby Azure Cosmos DB pro MongoDB
-description: Tento dokument obsahuje přehled požadavky pro migraci dat z MongoDB do služby Cosmos DB.
+title: Kroky před migrací pro migraci dat do rozhraní API Azure Cosmos DB pro MongoDB
+description: Tento dokument poskytuje přehled požadavků na migraci dat z MongoDB do Cosmos DB.
 author: roaror
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: roaror
-ms.openlocfilehash: 476a143555323bbb5058541000a5b1a26d23b71a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4dc7038d0ff5180f15a43268fd3f3aa0cbb0c7a0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61330852"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445199"
 ---
-# <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Před migrací postup pro migraci dat z MongoDB API služby Azure Cosmos DB pro MongoDB
+# <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Kroky před migrací pro migraci dat z MongoDB Azure Cosmos DB do rozhraní API pro MongoDB
 
-Než zahájíte migraci dat z MongoDB (ať už místní nebo v cloudu (IaaS)) na rozhraní API služby Azure Cosmos DB pro MongoDB, měli byste:
+Před migrací dat z MongoDB (místně nebo v cloudu (IaaS)) pro Azure Cosmos DB rozhraní API pro MongoDB byste měli:
 
 1. [Vytvoření účtu služby Azure Cosmos DB](#create-account)
-2. [Odhadnout propustnost, které jsou potřebné pro vaše úlohy](#estimate-throughput)
-3. [Vyberte si klíč rozhraní optimální oddílů pro vaše data](#partitioning)
-4. [Vysvětlení zásady indexování nastavené na vaše data](#indexing)
+2. [Odhad propustnosti potřebných pro vaše úlohy](#estimate-throughput)
+3. [Vyberte pro svá data optimální klíč oddílu.](#partitioning)
+4. [Pochopení zásad indexování, které můžete nastavit pro vaše data](#indexing)
 
-Pokud jste už dokončili výše uvedené požadavky pro migraci, najdete v článku [data migrace MongoDB API služby Azure Cosmos DB pro MongoDB](../dms/tutorial-mongodb-cosmos-db.md) pro pokyny k migraci skutečná data. Pokud ne, tento dokument obsahuje pokyny pro zpracování těchto požadavků. 
+Pokud jste už dokončili výše uvedené požadavky na migraci, přečtěte si téma [migrace dat MongoDB Azure Cosmos DB a rozhraní API pro MongoDB](../dms/tutorial-mongodb-cosmos-db.md) pro skutečné pokyny k migraci dat. V takovém případě tento dokument poskytuje pokyny pro zpracování těchto požadavků. 
 
-## <a id="create-account"></a> Vytvoření účtu služby Azure Cosmos DB 
+## <a id="create-account"></a>Vytvoření účtu Azure Cosmos DB 
 
-Před zahájením migrace, budete muset [vytvoření účtu služby Azure Cosmos pomocí rozhraní API služby Azure Cosmos DB pro MongoDB](create-mongodb-dotnet.md). 
+Před zahájením migrace je potřeba [vytvořit účet Azure Cosmos pomocí rozhraní API služby Azure Cosmos DB pro MongoDB](create-mongodb-dotnet.md). 
 
-Při vytváření účtu můžete vybrat nastavení, která [globálně distribuovat](distribute-data-globally.md) vaše data. Máte také možnost Povolit více oblastí zápisu (nebo několika hlavními databázemi konfigurace), umožňující každé z vašich oblasti i zápis a čtení oblasti.
+Při vytváření účtu můžete zvolit nastavení pro [globální distribuci](distribute-data-globally.md) dat. Máte také možnost Povolit zápisy ve více oblastech (nebo konfiguraci s více hlavními servery), která umožňuje, aby každá z vašich oblastí byla v oblasti zápisu i čtení.
 
-![Account-Creation](./media/mongodb-pre-migration/account-creation.png)
+![Vytváření účtů](./media/mongodb-pre-migration/account-creation.png)
 
-## <a id="estimate-throughput"></a> Odhadnout propustnost potřeby vašich úloh
+## <a id="estimate-throughput"></a>Odhad propustnosti pro vaše úlohy
 
-Před zahájením migrace s použitím [Database Migration Service (DMS)](../dms/dms-overview.md), by měl odhadnou množství propustnost pro zřizování pro databáze Azure Cosmos a kolekce.
+Než začnete s migrací pomocí [Database Migration Service (DMS)](../dms/dms-overview.md), měli byste odhadnout množství propustnosti, která se má zřídit pro databáze a kolekce Azure Cosmos.
 
-Propustnost můžete zřídit buď:
+Propustnost lze zřídit buď:
 
 - Kolekce
 
-- Databáze
+- databáze
 
 > [!NOTE]
-> Také můžete mít kombinaci výše, kde může mít vyhrazené některé kolekce v databázi zřízené propustnosti a ostatním může sdílet propustnost. Podrobnosti najdete v tématu [nastavení propustnosti na databázi a kontejner](set-throughput.md) stránky.
+> Můžete mít také kombinaci výše uvedeného, kde některé kolekce v databázi můžou mít vyhrazenou zřízenou propustnost a jiné můžou propustnost sdílet. Podrobnosti najdete v tématu [nastavení propustnosti pro databázi a stránku kontejneru](set-throughput.md) .
 >
 
-Nejdřív byste měli rozhodnout, zda chcete zřídit databáze nebo kolekce úrovně propustnosti nebo kombinaci obojího. Obecně se doporučuje nakonfigurovat vyhrazené propustnosti na úrovni kolekce. Zřizování propustnosti na úrovni databáze umožňuje kolekcí v databázi pro sdílení zřízenou propustnost. Pomocí sdílených propustnost ale neexistuje žádná záruka, že konkrétní propustnosti na každé jednotlivé kolekce a nezískají předvídatelný výkon na žádnou konkrétní kolekci.
+Nejdřív se rozhodněte, jestli chcete zřídit propustnost databáze nebo na úrovni kolekce, nebo kombinaci obou. Obecně se doporučuje nakonfigurovat vyhrazenou propustnost na úrovni kolekce. Zajištění propustnosti na úrovni databáze umožňuje kolekcím ve vaší databázi sdílet zřízenou propustnost. U sdílené propustnosti ale neexistuje žádná záruka na konkrétní propustnost pro každou jednotlivou kolekci a nedosáhnete předvídatelného výkonu u žádné konkrétní kolekce.
 
-Pokud si nejste jisti, jakou propustnost by měl být vyhrazen pro každé jednotlivé kolekce, můžete propustnost na úrovni databáze. Si můžete představit zřízená propustnost nakonfigurovaný ve vaší databázi Azure Cosmos jako logický ekvivalent na tento výpočetní kapacitu virtuálního počítače MongoDB nebo fyzický server, ale cenově výhodnější umožňuje Elasticky škálovat. Další informace najdete v tématu [zřizování propustnosti na kontejnery Azure Cosmos a databází](set-throughput.md).
+Pokud si nejste jistí, kolik propustnosti by mělo být vyhrazeno pro každou jednotlivou kolekci, můžete zvolit propustnost na úrovni databáze. Zřízenou propustnost nakonfigurovanou v databázi Azure Cosmos si můžete představit jako logický ekvivalent k výpočetní kapacitě virtuálního počítače MongoDB nebo fyzického serveru, ale s možností elastického škálování. Další informace najdete v tématu [zřízení propustnosti v kontejnerech a databázích Azure Cosmos](set-throughput.md).
 
-Pokud zřizujete propustnosti na úrovni databáze, musí být vytvořeny všechny kolekce vytvořené v rámci této databáze s klíčem oddílu/horizontálních oddílů. Další informace o dělení najdete v tématu [dělení a horizontální škálování ve službě Azure Cosmos DB](partition-data.md). Pokud nezadáte klíč oddílu/horizontálního oddílu během migrace, Azure Database Migration Service automaticky vyplnit pole klíče horizontálního oddílu s *_id* atribut, který je automaticky generována pro každý dokument.
+Pokud zřizujete propustnost na úrovni databáze, musí být všechny kolekce vytvořené v této databázi vytvořeny s použitím oddílu partition/horizontálních oddílů. Další informace o dělení najdete v tématu [dělení a horizontální škálování v Azure Cosmos DB](partition-data.md). Pokud během migrace nezadáte oddíl/horizontálních oddílů klíč, Azure Database Migration Service automaticky vyplní pole horizontálních oddílů Key pomocí atributu *_ID* , který se automaticky vygeneroval pro každý dokument.
 
-### <a name="optimal-number-of-request-units-rus-to-provision"></a>Optimální počet jednotek žádosti (ru) pro zřizování
+### <a name="optimal-number-of-request-units-rus-to-provision"></a>Optimální počet jednotek žádostí (ru), které se mají zřídit
 
-Ve službě Azure Cosmos DB propustnost je předem zřízený a se měří v jednotkách žádostí (RU) za sekundu. Pokud máte úlohy, které běží MongoDB na virtuálním počítači nebo na místě, představit RU jako jednoduchý abstrakci pro fyzické prostředky, například pro velikost virtuálního počítače nebo – s místní servery a prostředky jsou k dispozici, například paměti, procesoru, vstupně-výstupních operací. 
+V Azure Cosmos DB propustnost je zajištěná předem a měří se v jednotkách žádosti (RU) za sekundu. Pokud máte úlohy, které používají MongoDB na virtuálním počítači nebo v místním prostředí, vezměte RU jako jednoduchou abstrakci pro fyzické prostředky, třeba pro velikost virtuálního počítače nebo na místní server a prostředky, které vlastní, například paměť, procesor, IOPs. 
 
-Na rozdíl od virtuálních počítačů nebo na místních serverech se snadno škálovat nahoru a dolů v každém okamžiku RU. Počet zřízených ru můžete změnit během několika sekund a fakturuje se vám jenom pro maximální počet jednotek RU, které zřizujete za dané období hodinová. Další informace najdete v tématu [jednotky žádosti v Azure Cosmos DB](request-units.md).
+Na rozdíl od virtuálních počítačů nebo místních serverů se ru snadno škáluje nahoru a dolů. Počet zřízených ru můžete změnit během několika sekund a účtuje se vám jenom maximální počet ru, které zřídíte po dobu jedné hodiny. Další informace najdete v tématu [jednotky žádostí v Azure Cosmos DB](request-units.md).
 
-Toto jsou klíčové faktory, které ovlivňují počet požadovaných jednotek ru:
-- **Velikost položky (například dokument)** : Jak se zvyšuje velikost položky či dokumentu, počet jednotek ru spotřebovaných pro čtení nebo zápis dokumentu nebo položky také zvyšuje.
-- **Počet vlastností položky**: Za předpokladu, že [výchozí indexování](index-overview.md) u všech vlastností, počet jednotek ru spotřebovaných pro zápis položky se zvyšuje s rostoucím zvýší počet vlastností položky. Můžete snížit spotřebu jednotek žádosti pro operace zápisu podle [omezením počtu indexovaných vlastností](index-policy.md).
-- **Souběžné operace**: Požádat o spotřebované jednotky závisí také na frekvenci, se kterou různé operace CRUD (jako jsou zápisy, čtení, aktualizace, odstranění) a že jsou provedeny složitější dotazy. Můžete použít [mongostat](https://docs.mongodb.com/manual/reference/program/mongostat/) výstup souběžnosti potřeby aktuální data MongoDB.
-- **Dotazování vzory**: Složitost dotazu má vliv na tom, kolik jednotek žádosti se spotřebovávají dotazu.
+Níže jsou uvedené klíčové faktory, které ovlivňují počet požadovaných ru:
+- **Položka (tj. dokument) velikost**: při zvyšování velikosti položky nebo dokumentu se zvýší i počet ru spotřebovaných na čtení nebo zápis položky nebo dokumentu.
+- **Počet vlastností položky**: za předpokladu, že [Výchozí indexování](index-overview.md) u všech vlastností se zvyšuje počet ru spotřebovaných na zápis položky při zvyšování počtu vlastností položky. [Omezením počtu indexovaných vlastností](index-policy.md)můžete snížit spotřebu jednotek požadavků pro operace zápisu.
+- **Souběžné operace**: spotřebované jednotky žádosti také závisejí na četnosti, se kterou se spouštějí různé operace CRUD (například zápisy, čtení, aktualizace, odstranění) a složitější dotazy. [Mongostat](https://docs.mongodb.com/manual/reference/program/mongostat/) můžete použít k výstupu požadavků na souběžnost vašich aktuálních dat MongoDB.
+- **Vzorce dotazů**: složitost dotazu ovlivňuje počet jednotek požadavků, které dotaz spotřebovává.
 
-Pokud exportujete pomocí souborů JSON [mongoexport](https://docs.mongodb.com/manual/reference/program/mongoexport/) a porozumět, kolik zápisy, čtení, aktualizace a odstranění, které se provádějí za sekundu, můžete použít [Plánovač kapacity služby Azure Cosmos DB](https://www.documentdb.com/capacityplanner) odhadnout Počáteční počet jednotek ru na zřízení funkce. Capacity planner zvážit není náklady na složitější dotazy. Takže pokud máte složité dotazy na data, bude používat další jednotky RU. Kalkulačce také předpokládá, že všechna pole jsou indexována, a konzistence typu relace se používá. Nejlepší způsob, jak migrovat vaše data (nebo ukázková data) do služby Azure Cosmos DB je náklady na dotazy [připojení ke koncovému bodu služby Cosmos DB](connect-mongodb-account.md) a spustit ukázkový dotaz z MongoDB Shell pomocí `getLastRequestStastistics` příkazu získejte zátěž žádostí, které bude výstup počet spotřebovaných rezervovaných jednotek:
+Pokud exportujete soubory JSON pomocí [mongoexport](https://docs.mongodb.com/manual/reference/program/mongoexport/) a rozumíte tomu, kolik operací zápisu, čtení, aktualizace a odstranění probíhají za sekundu, můžete pomocí [Azure Cosmos DB kapacity plánovače](https://www.documentdb.com/capacityplanner) odhadnout počáteční počet ru, které se mají zřídit. Plánovač kapacity nemá v ceně složitějších dotazů faktor. Takže pokud máte vaše data složitých dotazů, budou se používat další ru. Kalkulačka také předpokládá, že všechna pole jsou indexována, a je použita konzistence relace. Nejlepším způsobem, jak porozumět nákladům na dotazy, je migrovat data (nebo ukázková data) na Azure Cosmos DB, [připojit se ke koncovému bodu Cosmos DB](connect-mongodb-account.md) a spustit vzorový dotaz z prostředí MongoDB pomocí příkazu `getLastRequestStastistics` a získat poplatek za požadavek, který vypíše počet spotřebovaných ru:
 
 `db.runCommand({getLastRequestStatistics: 1})`
 
-Tento příkaz na dokument JSON podobný následujícímu výstupu:
+Tento příkaz vytvoří výstup dokumentu JSON podobný následujícímu:
 
 ```{  "_t": "GetRequestStatisticsResponse",  "ok": 1,  "CommandName": "find",  "RequestCharge": 10.1,  "RequestDurationInMilliSeconds": 7.2}```
 
-Až porozumíte počet ru spotřebovaných dotazem a souběžnost potřebuje pro daný dotaz, můžete upravit počet zřízených RU. Optimalizace rezervovaných jednotek není jednorázová – byste měli průběžně optimalizovat nebo vertikálně navýšit kapacitu ru zřízených, v závislosti na tom, jestli nejsou očekává velkému provozu, na rozdíl od úlohy heavy nebo importu dat.
+Až porozumíte počtu ru spotřebovaných dotazem a potřebám souběžnosti pro tento dotaz, můžete upravit počet zřízené ru. Optimalizace ru není jednorázová událost – měli byste průběžně optimalizovat nebo škálovat ru zřízené v závislosti na tom, jestli neočekáváte velký objem provozu, a to na rozdíl od vysoké zátěže nebo importu dat.
 
-## <a id="partitioning"></a>Zvolte svůj klíč oddílu
-Dělení je zásadním aspektem ohled před migrací do globálně distribuovanou databázi jako službu Azure Cosmos DB. Azure Cosmos DB používá dělení škálování jednotlivých kontejnerů v databázi pro potřeby škálovatelnost a výkon vaší aplikace. Při dělení položek v kontejneru dělí do různých podmnožiny označované jako logické oddíly. Podrobnosti a doporučení pro výběr klíče oddílu správné pro vaše data, najdete v tématu [volba klíče oddílu části](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey). 
+## <a id="partitioning"></a>Zvolit klíč oddílu
+Vytváření oddílů je klíčovým bodem, který je potřeba zvážit před migrací na globálně distribuovanou databázi, jako je Azure Cosmos DB. Azure Cosmos DB používá dělení ke škálování jednotlivých kontejnerů v databázi, aby splňovala požadavky na škálovatelnost a výkon vaší aplikace. Při dělení jsou položky v kontejneru rozděleny do samostatných dílčích množin nazývaných logické oddíly. Podrobnosti a doporučení pro výběr správného klíče oddílu pro vaše data najdete v [části Výběr klíče oddílu](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey). 
 
-## <a id="indexing"></a>Indexování dat
-Ve výchozím nastavení služby Azure Cosmos DB indexuje všechna datová pole po ingestování. Můžete upravit [zásady indexování](index-policy.md) ve službě Azure Cosmos DB v každém okamžiku. Ve skutečnosti se často doporučuje vypnout indexování kódu při migraci dat a pak ho znova zapnout při dat je již v databázi Cosmos DB. Podrobné informace o indexování, si můžete přečíst více o řezu [indexování ve službě Azure Cosmos DB](index-overview.md) oddílu. 
+## <a id="indexing"></a>Indexace dat
+Ve výchozím nastavení Azure Cosmos DB indexuje všechna datová pole po ingestování. [Zásady indexování](index-policy.md) v Azure Cosmos DB můžete kdykoli upravit. Při migraci dat se často doporučuje vypnout indexování a pak je znovu zapnout, když jsou data v Cosmos DB. Další informace o indexování najdete v části věnované [indexování v Azure Cosmos DB](index-overview.md) . 
 
-[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db.md) automaticky provede migraci kolekce MongoDB s jedinečné indexy. Však musí být jedinečné indexy vytvořené před migrací. Azure Cosmos DB nepodporuje vytváření jedinečných indexů, pokud již existuje dat v kolekcích. Další informace najdete v tématu [jedinečné klíče ve službě Azure Cosmos DB](unique-keys.md).
+[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db.md) automaticky migruje kolekce MongoDB s jedinečnými indexy. Jedinečné indexy ale musí být vytvořené před migrací. Azure Cosmos DB nepodporuje vytváření jedinečných indexů, pokud v kolekcích již existují data. Další informace najdete v tématu [jedinečné klíče v Azure Cosmos DB](unique-keys.md).
 
-## <a name="next-steps"></a>Další postup
-* [Migrate MongoDB data do služby Cosmos DB pomocí službu Database Migration Service.](../dms/tutorial-mongodb-cosmos-db.md) 
-* [Zřizování propustnosti na kontejnery Azure Cosmos a databází](set-throughput.md)
+## <a name="next-steps"></a>Další kroky
+* [Migrujte data MongoDB na Cosmos DB pomocí Database Migration Service.](../dms/tutorial-mongodb-cosmos-db.md) 
+* [Zajištění propustnosti v kontejnerech a databázích Azure Cosmos](set-throughput.md)
 * [Dělení ve službě Azure Cosmos DB](partition-data.md)
-* [Globální distribuce ve službě Azure Cosmos DB](distribute-data-globally.md)
-* [Indexování ve službě Azure Cosmos DB](index-overview.md)
-* [Jednotky žádosti v Azure Cosmos DB](request-units.md)
+* [Globální distribuce v Azure Cosmos DB](distribute-data-globally.md)
+* [Indexování v Azure Cosmos DB](index-overview.md)
+* [Jednotky žádostí ve službě Azure Cosmos DB](request-units.md)

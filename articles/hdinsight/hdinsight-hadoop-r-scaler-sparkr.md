@@ -5,33 +5,33 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/19/2017
-ms.openlocfilehash: 9fa18550a3c27ce38599b9a0d47abdc38524d9c2
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.custom: hdinsightactive
+ms.date: 12/26/2019
+ms.openlocfilehash: 5989692aeb59c7394299b4cb2474b244818895b2
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077091"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500071"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Kombinování škály a Sparku v HDInsight
 
 V tomto dokumentu se dozvíte, jak předpovědět prodlevy při příchodu letu pomocí **modelu logistické** regrese. V příkladu se používá zpoždění letu a data o počasí připojená pomocí **Sparku**.
 
-I když oba balíčky běží na spouštěcím modulu Sparku Apache Hadoop, jsou blokované ze sdílení dat v paměti, protože každá z nich vyžaduje své vlastní relace Sparku. Dokud se tento problém nevyřeší v nadcházející verzi ml Server, doporučujeme, abyste zachovali překrývající se relace Spark a mohli data Exchange obejít prostřednictvím zprostředkujících souborů. Zde uvedené pokyny ukazují, že tyto požadavky je jednoduché dosáhnout.
+I když oba balíčky běží na spouštěcím modulu Spark Apache Hadoop, jsou blokované ze sdílení dat v paměti, protože každý z nich vyžaduje své vlastní relace Sparku. Dokud se tento problém nevyřeší v nadcházející verzi ml Server, doporučujeme, abyste zachovali překrývající se relace Spark a mohli data Exchange obejít prostřednictvím zprostředkujících souborů. Zde uvedené pokyny ukazují, že tyto požadavky je jednoduché dosáhnout.
 
-Tento příklad se původně sdílel v hovořit na úrovni vrstvy 2016 od Mario Inchiosa a Roni Burd. Tento rozhovor můžete najít na [tvorbě škálovatelné platformy pro datovou vědu pomocí jazyka R](https://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio).
+Tento příklad se původně sdílel v hovořit na úrovni vrstvy 2016 od Mario Inchiosa a Roni Burd. Tento rozhovor můžete najít na [tvorbě škálovatelné platformy pro datovou vědu pomocí jazyka R](https://channel9.msdn.com/blogs/Cloud-and-Enterprise-Premium/Building-A-Scalable-Data-Science-Platform-with-R-and-Hadoop).
 
 Kód byl původně napsán pro ML Server běžící na Sparku v clusteru HDInsight v Azure. Ale koncept kombinace použití Sparku a nástroje pro škálování v jednom skriptu je platný i v kontextu místních prostředí.
 
-Kroky v tomto dokumentu předpokládají, že máte pokročilou úroveň znalostí R a že je knihovna pro [škálování](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) ml Server. Při procházení tohoto scénáře se zavedete do [Sparku](https://spark.apache.org/docs/2.1.0/sparkr.html) .
+Kroky v tomto dokumentu předpokládají, že máte pokročilou úroveň znalostí R a že je knihovna pro [škálování](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) ml Server. Při procházení tohoto scénáře jste zavedeni do [Sparku](https://spark.apache.org/docs/2.1.0/sparkr.html) .
 
 ## <a name="the-airline-and-weather-datasets"></a>Letecké a počasí datové sady
 
 Letová data jsou dostupná z [archivů státní správy USA](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Je také k dispozici jako PSČ z [AirOnTimeCSV. zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip).
 
-Data o počasí je možné stáhnout jako soubory zip v nezpracované podobě po měsících z [národního úložiště pro správu oceán a atmosféry](https://www.ncdc.noaa.gov/orders/qclcd/). V tomto příkladu si stáhněte data pro květen 2007 – prosinec 2012. Použijte hodinové datové soubory a `YYYYMMMstation.txt` soubor v rámci jednotlivých zips. 
+Data o počasí je možné stáhnout jako soubory zip v nezpracované podobě po měsících z [národního úložiště pro správu oceán a atmosféry](https://www.ncdc.noaa.gov/orders/qclcd/). V tomto příkladu si stáhněte data pro květen 2007 – prosinec 2012. Použijte hodinové datové soubory a `YYYYMMMstation.txt` soubor v každém z zips.
 
 ## <a name="setting-up-the-spark-environment"></a>Nastavení prostředí Spark
 
@@ -267,7 +267,7 @@ weatherDF <- rename(weatherDF,
 
 ## <a name="joining-the-weather-and-airline-data"></a>Připojení k povětrnostním a leteckým datům
 
-Nyní používáme funkci Spark [Join ()](https://spark.apache.org/docs/latest/api/R/join.html) k provedení levého vnějšího spojení se leteckou a povětrnostním objemem dat odchodu AirportID a DateTime. Vnější spojení nám umožňuje uchovávat všechny záznamy leteckých dat i v případě, že neexistují žádná data, která by odpovídala počasí. Po připojení odebereme některé nadbytečné sloupce a přejmenujeme zachované sloupce, aby se odebrala příchozí předpona dataframe, kterou služba JOIN zavedla.
+Nyní používáme funkci Spark [Join ()](https://spark.apache.org/docs/latest/api/R/join.html) k provedení levého vnějšího spojení se leteckou a povětrnostním objemem dat odchodu AirportID a DateTime. Vnější spojení nám umožňuje uchovávat všechny záznamy leteckých dat i v případě, že nejsou k dispozici žádná data o počasí. Po připojení odebereme některé nadbytečné sloupce a přejmenujeme zachované sloupce, aby se odebrala příchozí předpona dataframe, kterou služba JOIN zavedla.
 
 ```
 logmsg('Join airline data with weather at Origin Airport')
@@ -506,7 +506,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>Bodování jinde
 
-Model pro vyhodnocování dat můžete použít také na jiné platformě. Uložením do souboru RDS a následným převodem a importem této služby RDS do cílového prostředí bodování, jako je například MIcrosoft SQL Server R Services. Je důležité zajistit, aby úrovně faktoru dat, které mají být hodnoceny, odpovídaly hodnotám, na kterých byl model sestaven. Tuto shodu je možné dosáhnout extrakcí a uložením informací o sloupcích přidružených k datům modelování prostřednictvím `rxCreateColInfo()` funkce škálování a následným použitím informací o tomto sloupci na vstupní zdroj dat pro předpověď. V následujícím příkladu ušetříme několik řádků testovací datové sady a extrahujete a použijeme informace o sloupci z této ukázky ve skriptu předpovědi:
+Model pro vyhodnocování dat můžete použít také na jiné platformě. Uložením do souboru RDS a následným převodem a importem této služby RDS do cílového prostředí bodování, jako je například MIcrosoft SQL Server R Services. Je důležité zajistit, aby úrovně faktoru dat, které mají být hodnoceny, odpovídaly hodnotám, na kterých byl model sestaven. Tuto shodu je možné dosáhnout extrakcí a uložením informací o sloupcích přidružených k datům modelování prostřednictvím funkce škálování `rxCreateColInfo()` a následným použitím informací o tomto sloupci na vstupní zdroj dat pro předpověď. V následujícím příkladu ušetříme několik řádků testovací datové sady a extrahujete a použijeme informace o sloupci z této ukázky ve skriptu předpovědi:
 
 ```
 # save the model and a sample of the test dataset 

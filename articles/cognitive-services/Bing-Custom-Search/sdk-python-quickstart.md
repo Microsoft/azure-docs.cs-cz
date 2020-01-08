@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: volání koncového bodu Vlastní vyhledávání Bingu pomocí sady Python SDK | Microsoft Docs'
+title: 'Rychlý Start: volání koncového bodu Vlastní vyhledávání Bingu pomocí sady Python SDK'
 titleSuffix: Azure Cognitive Services
 description: Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z vaší instance Vlastní vyhledávání Bingu pomocí sady Python SDK.
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 98070ab8f715305fe01c940026ecf5f49f8c28f9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ca0c1174abb80452f78766c3c4f49af73c790d3e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976039"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448682"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-python-sdk"></a>Rychlý Start: volání koncového bodu Vlastní vyhledávání Bingu pomocí sady Python SDK 
 
 Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z vaší instance Vlastní vyhledávání Bingu pomocí sady Python SDK. I když Vlastní vyhledávání Bingu má REST API kompatibilní s většinou programovacích jazyků, Vlastní vyhledávání Bingu SDK poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/custom_search_samples.py) s dalšími zpracováním chyb a poznámkami.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Instance Vlastní vyhledávání Bingu. Další informace najdete v tématu [rychlý Start: Vytvoření první instance vlastní vyhledávání Bingu](quick-start.md) .
 - Python [2. x nebo 3. x](https://www.python.org/) 

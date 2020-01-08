@@ -6,21 +6,21 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2259343d2c7bca1f60a5256efcd572e6cc21b565
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a744ac2574f54b0c2934d440ddf5c48e54304595
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706039"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445113"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Vytvoření kontejnerů a databází Azure Cosmos v režimu autopilotu (Preview)
 
-Azure Cosmos DB umožňuje zřídit propustnost pro kontejnery v režimu ručního nebo autopilotního. Tento článek popisuje výhody a případy použití režimu autopilotu.
+Azure Cosmos DB umožňuje zřizovat propustnost pro kontejnery v ručním režimu nebo v režimu Autopilot. Tento článek popisuje výhody a případy použití režimu Autopilot.
 
 > [!NOTE]
-> Režim autopilotu je aktuálně k dispozici ve verzi Public Preview. Pokud chcete povolit funkci autopilotu pro účet Azure Cosmos, přečtěte si část [Povolení autopilotu](#enable-autopilot) v tomto článku. Můžete povolit autopilotování jenom pro nové databáze a kontejnery, ale pro existující kontejnery a databáze k dispozici.
+> Režim autopilotu je aktuálně k dispozici ve verzi Public Preview. Můžete [Povolit autopilotování jenom pro nové databáze a kontejnery](#create-a-database-or-a-container-with-autopilot-mode) . Pro existující kontejnery a databáze není k dispozici.
 
-Kromě ručního zřizování propustnosti teď můžete nakonfigurovat kontejnery Azure Cosmos v režimu autopilotu. Kontejnery a databáze Azure Cosmos nakonfigurované v režimu autopilotu budou **automaticky a okamžitě škálovat zajištěné propustnosti na základě potřeb vaší aplikace, aniž by došlo k narušení SLA.**
+Kromě ručního zřizování propustnosti teď můžete konfigurovat kontejnery Azure Cosmos DB v režimu Autopilot. Kontejnery a databáze Azure Cosmos nakonfigurované v režimu autopilotu budou **automaticky a okamžitě škálovat zajištěné propustnosti na základě potřeb vaší aplikace, aniž by došlo k narušení SLA.**
 
 Už nebudete muset ručně spravovat zřízenou propustnost nebo zvládnout problémy s omezením četnosti. Kontejnery Azure Cosmos nakonfigurované v režimu autopilotu je možné okamžitě škálovat v reakci na zatížení, aniž by to mělo vliv na dostupnost, latenci, propustnost nebo výkon pro globální úlohy. V případě vysokého využití můžou být kontejnery Azure Cosmos nakonfigurované v režimu autopilotního navýšení nebo snížení kapacity, aniž by to mělo dopad na probíhající operace.
 
@@ -68,31 +68,21 @@ Případy použití pro kontejnery Azure Cosmos nakonfigurované v režimu autop
 | **Ceny** | Ručně zřízené RU/s za hodinu | V případě účtů oblastí s jedním zápisem platíte za propustnost využité každou hodinu, a to pomocí programu autopilot RU/s za hodinovou sazbu. <br/><br/>U účtů s více oblastmi zápisu se neúčtují žádné další poplatky za autopilot. Za tuto propustnost platíte za každou hodinu, a to pomocí stejné sady multi-Master RU/s za hodinovou sazbu. |
 | **Nejvhodnější pro typy úloh** |  Předvídatelné a stabilní úlohy|   Nepředvídatelné a proměnlivé úlohy  |
 
-## <a id="enable-autopilot"></a>Povolit autopilot z Azure Portal
-
-K vyzkoušení autopilotního projektu můžete v účtech Azure Cosmos povolit v z Azure Portal. Pomocí následujících kroků povolte možnost autopilot:
-
-1. Přihlaste se k [Azure Portal.](https://portal.azure.com)
-
-2. Přejděte k účtu Azure Cosmos a otevřete kartu **nové funkce** . Vyberte **Automatický pilotní** a **Zaregistrujte** se, jak je znázorněno na následujícím snímku obrazovky:
-
-![Vytvoření kontejneru v režimu autopilotu](./media/provision-throughput-autopilot/enable-autopilot-azure-portal.png)
-
 ## <a name="create-a-database-or-a-container-with-autopilot-mode"></a>Vytvoření databáze nebo kontejneru pomocí režimu autopilotu
 
-Při vytváření můžete nakonfigurovat autopilot pro databáze nebo kontejnery. Následující postup použijte k vytvoření nové databáze nebo kontejneru, povolení modulu autopilot a určení maximální propustnosti.
+Můžete nakonfigurovat autopilot pro nové databáze nebo kontejnery při jejich vytváření prostřednictvím Azure Portal. Pomocí následujících kroků vytvořte novou databázi nebo kontejner, povolte možnost autopilot a zadejte maximální propustnost (RU/s).
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) nebo ke [službě Azure Cosmos Explorer.](https://cosmos.azure.com/)
 
 1. Přejděte k účtu Azure Cosmos a otevřete kartu **Průzkumník dat** .
 
-1. Vyberte **Nový kontejner**, zadejte název svého kontejneru, klíč oddílu. Vyberte možnost **autopilot** a zvolte maximální propustnost, kterou kontejner při použití možnosti autopilotu nepřekračuje.
+1. Vyberte **Nový kontejner.** Zadejte název databáze, kontejneru a klíč oddílu. Vyberte možnost **autopilot** a zvolte maximální propustnost (ru/s), kterou databáze nebo kontejner při použití možnosti autopilotu nepřekračuje.
 
    ![Vytvoření kontejneru v režimu autopilotu](./media/provision-throughput-autopilot/create-container-autopilot-mode.png)
 
 1. Vyberte **OK**.
 
-Podobně jako u podobných kroků můžete také vytvořit databázi s zřízenou propustností v režimu autopilotu.
+Sdílenou databázi propustnosti můžete vytvořit pomocí režimu autopilotu tak, že vyberete možnost **zřídit propustnost databáze** .
 
 ## <a id="autopilot-limits"></a>Omezení propustnosti a úložiště pro autopilot
 
@@ -107,6 +97,7 @@ V následující tabulce je uvedeno maximum v celém rozsahu a omezení úloži�
 
 ## <a name="next-steps"></a>Další kroky
 
+* Přečtěte si [Nejčastější dotazy k autopilotu](autopilot-faq.md).
 * Přečtěte si další informace o [logických oddílech](partition-data.md).
 * Naučte se [zřídit propustnost v kontejneru Azure Cosmos](how-to-provision-container-throughput.md).
 * Naučte se [zřídit propustnost v databázi Azure Cosmos](how-to-provision-database-throughput.md).

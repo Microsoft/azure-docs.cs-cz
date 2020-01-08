@@ -1,5 +1,6 @@
 ---
-title: Ukázkový skript Azure CLI – vytvoření úložiště konfigurace aplikace Azure | Microsoft Docs
+title: Ukázkový skript Azure CLI – vytvoření úložiště konfigurace aplikace Azure
+titleSuffix: Azure App Configuration
 description: Ukázkový skript Azure CLI – vytvoření úložiště konfigurace aplikace Azure
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: cd150368898b3f02b4366debbe775ece76b23043
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: d57de8219cb73864ed722c6906a1bd75fec51a50
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184908"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433587"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace Azure
 
@@ -73,7 +74,7 @@ Poznamenejte si vygenerovaný název pro novou skupinu prostředků. Tento náze
 
 Tento skript používá následující příkazy k vytvoření nové skupiny prostředků a úložiště konfigurace aplikace. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [AZ appconfig Create](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-create) | Vytvoří prostředek úložiště konfigurace aplikace. |

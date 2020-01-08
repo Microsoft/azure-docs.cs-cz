@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 11187b403b9bc23a0aa20eb5ee7a5e4923bb7276
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1a5859517d2f858086c9034c8ee190e99bce5cd5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896667"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647743"
 ---
 # <a name="what-is-vpn-gateway"></a>Co je VPN Gateway?
 
@@ -159,5 +159,5 @@ Nejčastější dotazy týkající se služby VPN Gateway najdete v tématu [Nej
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace najdete v tématu věnovaném [nejčastějším dotazům k VPN Gateway](vpn-gateway-vpn-faq.md).
-- Přečtěte si téma [Předplatné a omezení služeb](../azure-subscription-service-limits.md#networking-limits).
+- Přečtěte si téma [Předplatné a omezení služeb](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 - Informace o některých dalších klíčových [možnostech sítě](../networking/networking-overview.md) v Azure.

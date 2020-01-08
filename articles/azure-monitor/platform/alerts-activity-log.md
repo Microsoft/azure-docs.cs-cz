@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 06/25/2019
-ms.openlocfilehash: 6c133f99ce31d4994753aba11cee90cfc1b5afc9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 54122d784467bc090d82f4126e03ab688883ea7d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552815"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364794"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Vytváření, zobrazování a správa výstrah protokolu aktivit pomocí Azure Monitor  
 
@@ -40,10 +40,10 @@ Pomocí Azure Portal můžete vytvářet a upravovat pravidla upozornění proto
 
 Použijte následující postup.
 
-1. V Azure Portal vyberte **monitorovat**  > **výstrahy**.
+1. V Azure Portal vyberte **monitorovat** > **výstrahy**.
 2. V levém horním rohu okna **výstrahy** vyberte **nové pravidlo výstrahy** .
 
-     ![Nové pravidlo výstrahy](media/alerts-activity-log/AlertsPreviewOption.png)
+     ![Nové pravidlo upozornění](media/alerts-activity-log/AlertsPreviewOption.png)
 
      Zobrazí se okno **vytvořit pravidlo** .
 
@@ -51,11 +51,11 @@ Použijte následující postup.
 
 3. V části **definovat podmínku výstrahy**zadejte následující informace a vyberte **Hotovo**:
 
-   - **Cíl výstrahy:** Pokud chcete zobrazit a vybrat cíl pro novou výstrahu, použijte **Filtr podle předplatného**  / **Filtr podle typu prostředku**. Vyberte prostředek nebo skupinu prostředků ze zobrazeného seznamu.
+   - **Cíl výstrahy:** Pokud chcete zobrazit a vybrat cíl pro novou výstrahu, použijte **Filtr podle předplatného** / **Filtr podle typu prostředku**. Vyberte prostředek nebo skupinu prostředků ze zobrazeného seznamu.
 
      > [!NOTE]
      > 
-     > Pro signál protokolu aktivit můžete vybrat jen [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) sledovaný prostředek, skupinu prostředků nebo celé předplatné. 
+     > Pro signál protokolu aktivit můžete vybrat jen [Azure Resource Manager](../../azure-resource-manager/management/overview.md) sledovaný prostředek, skupinu prostředků nebo celé předplatné. 
 
      **Zobrazení cílové ukázkové výstrahy**
 
@@ -92,7 +92,7 @@ Použijte následující postup.
 5. V části **Skupina akcí**v rozevírací nabídce určete skupinu akcí, kterou chcete přiřadit k tomuto novému pravidlu výstrahy. Případně můžete [vytvořit novou skupinu akcí](../../azure-monitor/platform/action-groups.md) a přiřadit ji k novému pravidlu. Pokud chcete vytvořit novou skupinu, vyberte **+ Nová skupina**.
 
 6. Chcete-li po vytvoření pravidla povolit, vyberte možnost **Ano** pro **pravidlo Povolit při vytváření** .
-7. Vyberte **vytvořit pravidlo upozornění**.
+7. Vyberte **Vytvořit pravidlo upozornění**.
 
     Vytvoří se nové pravidlo výstrahy pro protokol aktivit a v pravém horním rohu okna se zobrazí potvrzovací zpráva.
 
@@ -106,9 +106,9 @@ Jednoduchá analogie pro porozumění podmínkám, na kterých je možné vytvo�
 
 ### <a name="view-and-manage-in-the-azure-portal"></a>Zobrazení a správa v Azure Portal
 
-1. V Azure Portal vyberte **monitorovat**  > **výstrahy**. V levém horním rohu okna vyberte **Spravovat pravidla výstrah** .
+1. V Azure Portal vyberte **monitorovat** > **výstrahy**. V levém horním rohu okna vyberte **Spravovat pravidla výstrah** .
 
-    ![Správa pravidel výstrah](media/alerts-activity-log/manage-alert-rules.png)
+    ![Správa pravidel upozornění](media/alerts-activity-log/manage-alert-rules.png)
 
     Zobrazí se seznam dostupných pravidel.
 
@@ -124,7 +124,7 @@ Jednoduchá analogie pro porozumění podmínkám, na kterých je možné vytvo�
 
 3. Vyberte pravidlo a dvakrát klikněte pro úpravu možností pravidla. Proveďte požadované změny a pak vyberte **Uložit**.
 
-   ![Správa pravidel výstrah](media/alerts-activity-log/activity-log-rule-edit-page.png)
+   ![Správa pravidel upozornění](media/alerts-activity-log/activity-log-rule-edit-page.png)
 
 4. Pravidlo můžete povolit, zakázat nebo odstranit. Po výběru pravidla, jak je popsáno v kroku 2, vyberte příslušnou možnost v horní části okna.
 

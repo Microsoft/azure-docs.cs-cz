@@ -1,32 +1,23 @@
 ---
-title: Azure Service Fabric – nastavení monitorování pomocí protokolů Azure Monitor | Dokumentace Microsoftu
-description: Zjistěte, jak nastavit protokoly Azure monitoru pro vizualizaci a analyzování události k monitorování clusterů Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
+title: Nastavení monitorování pomocí protokolů Azure Monitor
+description: Naučte se nastavit protokoly Azure Monitor pro vizualizaci a analýzu událostí pro monitorování clusterů Azure Service Fabric.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: c8f7198b59a0fe7ed6775736f8b97f5b5a262640
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf0fab9942dcbb7ee09e554f2c9ba8738f208009
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306866"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609923"
 ---
-# <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Nastavte si protokoly Azure monitoru pro cluster
+# <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Nastavení protokolů Azure Monitor pro cluster
 
-Protokoly služby Azure Monitor je naše doporučení pro monitorování událostí na úrovni clusteru. Můžete nastavit pracovní prostor Log Analytics prostřednictvím Azure Resource Manageru, Powershellu nebo Azure Marketplace. Pokud chcete zachovat aktualizovanou šablonu Resource Manageru pro budoucí použití vašeho nasazení, můžete stejnou šablonu použijte k nastavení prostředí protokoly Azure monitoru. Nasazení prostřednictvím webu Marketplace a je jednodušší, pokud už máte cluster nasazený s povolenou diagnostikou. Pokud nemáte přístup na úrovni předplatného v účtu, do které nasazujete, nasaďte pomocí Powershellu nebo šablony Resource Manageru.
+Protokoly Azure Monitor jsou naše doporučení pro monitorování událostí na úrovni clusteru. Můžete nastavit pracovní prostor Log Analytics prostřednictvím Azure Resource Manageru, Powershellu nebo Azure Marketplace. Pokud udržujete aktualizovanou šablonu Správce prostředků nasazení pro budoucí použití, použijte stejnou šablonu k nastavení Azure Monitor prostředí protokolů. Nasazení prostřednictvím webu Marketplace a je jednodušší, pokud už máte cluster nasazený s povolenou diagnostikou. Pokud nemáte přístup na úrovni předplatného v účtu, do které nasazujete, nasaďte pomocí Powershellu nebo šablony Resource Manageru.
 
 > [!NOTE]
-> Pokud chcete nastavit protokoly Azure Monitor k monitorování vašeho clusteru, musíte mít zapnutou zobrazení událostí úrovně clusteru nebo na úrovni platformy diagnostiku. Odkazovat na [nastavení diagnostiky v clusterech Windows](service-fabric-diagnostics-event-aggregation-wad.md) a [nastavení diagnostiky v clusterech s Linuxem](service-fabric-diagnostics-oms-syslog.md) Další informace
+> Chcete-li nastavit protokoly Azure Monitor pro monitorování clusteru, je nutné mít povolenou diagnostiku pro zobrazení událostí na úrovni clusteru nebo platformy. Odkazovat na [nastavení diagnostiky v clusterech Windows](service-fabric-diagnostics-event-aggregation-wad.md) a [nastavení diagnostiky v clusterech s Linuxem](service-fabric-diagnostics-oms-syslog.md) Další informace
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -49,10 +40,10 @@ Pokud chcete přidat pracovní prostor Log Analytics po nasazení clusteru, pře
 
 5. Až budete hotovi, vyberte **vytvořit** znovu v dolní části okna vytváření analýza služby Service Fabric. Ujistěte se, že nový pracovní prostor se zobrazí v části **pracovní prostor OMS**. Tato akce přidá řešení do pracovního prostoru, který jste vytvořili.
 
-Pokud používáte Windows, pokračujte následujícími kroky pro připojení protokoly Azure monitoru k účtu úložiště, kde jsou uložené vaše události clusteru. 
+Pokud používáte Windows, pokračujte podle následujících pokynů a připojte protokoly Azure Monitor k účtu úložiště, ve kterém jsou uložené události clusteru. 
 
 >[!NOTE]
->Analýza služby Service Fabric řešení je podporována pouze pro clustery Windows. Pro clustery s Linuxem, přečtěte si článek na [nastavení protokoly Azure monitoru pro clustery s Linuxem](service-fabric-diagnostics-oms-syslog.md).  
+>Řešení Service Fabric Analytics je podporováno pouze pro clustery systému Windows. Clustery se systémem Linux najdete v našem článku o [nastavení protokolů Azure monitor pro clustery se systémem Linux](service-fabric-diagnostics-oms-syslog.md).  
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Připojení k vašemu clusteru pracovní prostor Log Analytics 
 
@@ -70,14 +61,14 @@ Pokud používáte Windows, pokračujte následujícími kroky pro připojení p
 
 7. Vyberte **OK** k připojení vašeho pracovního prostoru do vašeho clusteru protokolů.
 
-    ![Přidejte protokoly účtu úložiště pro protokoly Azure monitoru](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
+    ![Přidání protokolů účtu úložiště do protokolů Azure Monitor](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
 
 Účet se teď zobrazí se jako součást vašeho účtu úložiště protokolů v zdroje dat pracovního prostoru.
 
 Analýza služby Service Fabric řešení jste přidali v pracovním prostoru Log Analytics, která je teď správně připojený k platforma vašeho clusteru a tabulku protokolu aplikace. Stejným způsobem můžete přidat další zdroje do pracovního prostoru.
 
 
-## <a name="deploy-azure-monitor-logs-with-azure-resource-manager"></a>Nasazení Azure Monitor protokolů pomocí Azure Resource Manageru
+## <a name="deploy-azure-monitor-logs-with-azure-resource-manager"></a>Nasazení protokolů Azure Monitor s využitím Azure Resource Manager
 
 Při nasazování clusteru pomocí šablony Resource Manageru šablony vytvoří nový pracovní prostor Log Analytics, přidá řešení Service Fabric do pracovního prostoru a nakonfiguruje ho na čtení dat z tabulky odpovídající úložiště.
 
@@ -90,7 +81,7 @@ Můžete použít a upravit [Tato ukázková šablona](https://github.com/Azure-
 * Konfiguruje pracovní prostor Log Analytics ke čtení událostí z těchto tabulek
 
 
-Šablony můžete nasadit jako upgrade Resource Manageru do clusteru s použitím `New-AzResourceGroupDeployment` rozhraní API v modulu Azure PowerShell. Příklad příkazu by byl:
+Šablonu můžete nasadit jako Správce prostředků upgrade na svůj cluster pomocí rozhraní `New-AzResourceGroupDeployment` API v modulu Azure PowerShell. Příklad příkazu by byl:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -TemplateFile "<templatefile>.json" 
@@ -98,9 +89,9 @@ New-AzResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -Template
 
 Azure Resource Manager zjistí, že tento příkaz je aktualizace pro existující prostředek. Zpracuje pouze změny mezi šablony řízení stávající nasazení a novou šablonu, která je k dispozici.
 
-## <a name="deploy-azure-monitor-logs-with-azure-powershell"></a>Nasazení Azure Monitor protokolů pomocí Azure Powershellu
+## <a name="deploy-azure-monitor-logs-with-azure-powershell"></a>Nasazení protokolů Azure Monitor s využitím Azure PowerShell
 
-Váš prostředek log analytics prostřednictvím prostředí PowerShell můžete také nasadit pomocí `New-AzOperationalInsightsWorkspace` příkazu. Pokud chcete použít tuto metodu, ujistěte se, že jste si nainstalovali [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps). Pomocí tohoto skriptu můžete vytvořit nový pracovní prostor Log Analytics a k němu přidejte řešení pro Service Fabric: 
+Prostředek Log Analytics můžete nasadit taky přes PowerShell pomocí příkazu `New-AzOperationalInsightsWorkspace`. Pokud chcete použít tuto metodu, ujistěte se, že jste si nainstalovali [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps). Pomocí tohoto skriptu můžete vytvořit nový pracovní prostor Log Analytics a k němu přidejte řešení pro Service Fabric: 
 
 ```powershell
 
@@ -126,11 +117,11 @@ Set-AzOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -Wor
 
 ```
 
-Jakmile budete hotovi, postupujte podle kroků v předchozí části pro připojení k účtu úložiště odpovídající protokoly Azure monitoru.
+Až budete hotovi, připojte Azure Monitor protokoly k příslušnému účtu úložiště podle kroků v předchozí části.
 
-Můžete také přidat další řešení a provádět další úpravy do pracovního prostoru Log Analytics pomocí Powershellu. Další informace najdete v tématu [spravovat Azure Monitor protokolů pomocí prostředí PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md).
+Můžete také přidat další řešení a provádět další úpravy do pracovního prostoru Log Analytics pomocí Powershellu. Další informace najdete v tématu [Správa protokolů Azure monitor pomocí prostředí PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Nasadit agenta Log Analytics](service-fabric-diagnostics-oms-agent.md) na svých uzlech shromažďování čítačů výkonu a shromáždit statistiky dockeru a protokoly pro vaše kontejnery
-* Seznamte se s [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) funkce nabízí jako součást protokoly Azure monitoru
-* [Použít návrháře zobrazení pro vytváření vlastních zobrazení v protokoly Azure monitoru](../azure-monitor/platform/view-designer.md)
+* Seznámení s funkcemi [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) , které nabízí jako součást protokolů Azure monitor
+* [Použití návrháře zobrazení k vytváření vlastních zobrazení v protokolech Azure Monitor](../azure-monitor/platform/view-designer.md)

@@ -3,14 +3,14 @@ title: 'Vytvoření Kubernetesho vývojového prostoru: Visual Studio Code & Nod
 services: azure-dev-spaces
 ms.date: 09/26/2018
 ms.topic: tutorial
-description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
+description: V tomto kurzu se dozvíte, jak používat Azure Dev Spaces a Visual Studio Code k ladění a rychlému iteraci aplikace Node. js ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: 64d4f7560325429fc2a36be066c6c475d4d60e90
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a5cfd0281b7f68a416f47e478292341bd708ed1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708598"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438539"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Vytvoření Kubernetes vývojového prostoru: Visual Studio Code a Node. js s Azure Dev Spaces
 
@@ -178,7 +178,7 @@ Z tohoto příkladu jasně vyplývá, že některé potíže nezjistíte, dokud 
 ### <a name="update-a-code-file"></a>Aktualizace souboru s kódem
 Aktualizace souborů s kódem na straně serveru je pracnější, protože aplikaci Node.js je potřeba restartovat.
 
-1. V okně terminálu stiskněte `Ctrl+C` (kvůli zastavení `azds up`).
+1. V okně terminálu stiskněte `Ctrl+C`, abyste zastavili `azds up`.
 1. Otevřete soubor s kódem nazvaný `server.js` a změňte úvodní zprávu služby: 
 
     ```javascript
@@ -212,7 +212,7 @@ Tím přidáte konfiguraci ladění pro Azure Dev Spaces do složky `.vscode`. N
 
 ### <a name="select-the-azds-debug-configuration"></a>Výběr konfiguraci AZDS pro ladění
 1. Pokud chcete zobrazit ladění, klikněte na boku editoru VS Code na **panelu aktivit** na ikonu Ladění.
-1. Jako aktivní konfiguraci ladění vyberte **Launch Program (AZDS)** .
+1. Jako aktivní ladicí konfiguraci vyberte **Launch Program (AZDS)** .
 
 ![](media/get-started-node/debug-configuration-nodejs2.png)
 
@@ -239,7 +239,7 @@ Nastavte zarážku v souboru kódu na straně serveru, například v rámci `app
 
 Aktualizujte stránku prohlížeče, nebo stiskněte tlačítko *řekněte ho znovu* a měli byste se dostat ke zarážce a být schopni krokovat kód.
 
-Máte plný přístup k informacím o ladění, jako je zásobník volání, místní proměnné, informace o výjimkách apod., úplně stejně jako při lokálním spuštění kódu.
+Máte plný přístup k informacím o ladění, jako je zásobník volání, místní proměnné, informace o výjimkách apod., stejně jako při lokálním spuštění kódu.
 
 ### <a name="edit-code-and-refresh-the-debug-session"></a>Úprava kódu a aktualizace ladicí relace
 S aktivním ladicím programem udělejte úpravu kódu; například upravte zprávu Hello na [řádku 13 `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) znovu:

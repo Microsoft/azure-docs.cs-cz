@@ -1,6 +1,6 @@
 ---
-title: Nasazení modelů v produkčním procesu pro datové vědy týmu
-description: Jak nasadit modely do produkčního prostředí, které jim umožní hrát aktivní roli při rozhodování o obchodních rozhodnutích.
+title: Nasazení modelů v produkčním prostředí – vědecké zpracování týmových dat
+description: Jak nasadit modely do produkčního prostředí, což jim umožňuje přehrát aktivní roli při rozhodování o obchodní.
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -10,37 +10,37 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6f371d07fdf09aae6ce4396f0916758f8588506b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ed48ab9f85d28bec926120fea87a5ccf8bb6f9af
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73670310"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526766"
 ---
-# <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>Nasazení modelů do produkčního prostředí za účelem přehrání aktivní role při rozhodování podnikových rozhodnutí
+# <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>Nasadit modely do produkčního prostředí aktivní roli při obchodním rozhodování
 
-Produkční nasazení umožňuje modelu hrát aktivní roli v podniku. Předpovědi z nasazeného modelu lze použít pro obchodní rozhodnutí.
+Produkční nasazení umožňuje modelu k přehrání aktivní roli v podniku. Předpovědi z nasazeného modelu lze použít pro obchodní rozhodnutí.
 
-## <a name="production-platforms"></a>Produkční platformy
+## <a name="production-platforms"></a>Produkčních platforem
 
-Existují různé přístupy a platformy pro vložení modelů do produkčního prostředí. Tady je několik možností:
+Existují různé přístupy a platformy pro převedení modely do produkčního prostředí. Tady je několik možností:
 
-- [Místo nasazení modelů pomocí Azure Machine Learning](../service/how-to-deploy-and-where.md)
-- [Nasazení modelu v systému SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
+- [Místo nasazení modelů pomocí Azure Machine Learning](../how-to-deploy-and-where.md)
+- [Nasazení modelu v systému SQL server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
 >[!NOTE]
->Před nasazením musí mít jeden z nich jistotu, že latence modelu je pro použití v produkčním prostředí dostatečně nízká.
+>Před nasazením je nutné zajistit, že latence vyhodnocování modelu je dostatečně nízko, používat v produkčním prostředí.
 >
 
 >[!NOTE]
->Informace o nasazení pomocí Azure Machine Learning Studio najdete v tématu [nasazení webové služby Azure Machine Learning](../studio/deploy-a-machine-learning-web-service.md).
+>Nasazení pomocí Azure Machine Learning Studio, najdete v tématu [nasazení webové služby Azure Machine Learning](../studio/deploy-a-machine-learning-web-service.md).
 >
 
-## <a name="ab-testing"></a>Testování a/B
+## <a name="ab-testing"></a>Testování A/B
 
-Pokud je v produkčním prostředí více modelů, může být užitečné provést [testování a/B](https://en.wikipedia.org/wiki/A/B_testing) pro porovnání výkonu modelů. 
+Jsou-li několik modelů v produkčním prostředí, může být užitečné provést [A / B testování](https://en.wikipedia.org/wiki/A/B_testing) porovnat výkon modelů. 
  
 ## <a name="next-steps"></a>Další kroky
 
-K dispozici jsou také návody, které ukazují všechny kroky v procesu pro **konkrétní scénáře** . Jsou uvedeny a propojeny s popisy miniatur v článku [příklad návodu](walkthroughs.md) . Ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu a vytvořit tak inteligentní aplikaci. 
+Postupy, které popisují všechny kroky v procesu pro **konkrétních scénářů** jsou také k dispozici. Jsou uvedena v seznamu a propojené s Miniatura popisy v [příklad návody](walkthroughs.md) článku. Jejich ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací. 

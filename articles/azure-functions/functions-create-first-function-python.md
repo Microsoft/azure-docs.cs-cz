@@ -4,12 +4,12 @@ description: Zjistěte, jak vytvořit první funkce Pythonu v Azure pomocí Azur
 ms.date: 11/07/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 18ae1ed000ffe61ce1ea9ff5c18aae98a0ffae65
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd20c55fdaef5e820773b4ff4e0ddf3d36c6e371
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227195"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433200"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Rychlý Start: vytvoření funkce Python aktivované protokolem HTTP v Azure
 
@@ -35,7 +35,7 @@ Než začnete, musíte:
 
 ## <a name="create-and-activate-a-virtual-environment"></a>Vytvoření a aktivace virtuální prostředí
 
-Prostředí Python 3,7 byste měli použít k místnímu vývoji funkcí Pythonu. Spuštěním následujících příkazů vytvořte a aktivujte virtuální prostředí s názvem `.venv`.
+Prostředí Python 3,7 byste měli použít k místnímu vývoji funkcí Pythonu. Spusťte následující příkazy k vytvoření a aktivace do virtuálního prostředí s názvem `.venv`.
 
 > [!NOTE]
 > Pokud Python nenainstaloval venv do distribuce pro Linux, můžete ho nainstalovat pomocí následujícího příkazu:
@@ -124,7 +124,7 @@ Než budete moct aplikaci nasadit, budete muset vytvořit nějaké prostředky A
 
 Aplikace Function App poskytuje prostředí pro provádění kódu vaší funkce. Umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. 
 
-Spusťte následující příkaz. Nahraďte `<APP_NAME>` jedinečným názvem aplikace Function App. Nahraďte `<STORAGE_NAME>` názvem účtu úložiště. `<APP_NAME>` je také výchozí doména DNS pro aplikaci funkcí. Tento název musí být jedinečný mezi všemi aplikacemi v Azure.
+Spusťte následující příkaz: Nahraďte `<APP_NAME>` jedinečným názvem aplikace Function App. Nahraďte `<STORAGE_NAME>` názvem účtu úložiště. `<APP_NAME>` je také výchozí doména DNS pro aplikaci funkcí. Tento název musí být jedinečný mezi všemi aplikacemi v Azure.
 
 > [!NOTE]
 > Nemůžete hostovat aplikace pro Linux a Windows ve stejné skupině prostředků. Pokud máte existující skupinu prostředků s názvem `myResourceGroup` s aplikací Function App nebo webovou aplikací Windows, musíte použít jinou skupinu prostředků.
@@ -144,10 +144,10 @@ Teď jste připraveni publikovat projekt místních funkcí do aplikace Function
 Po vytvoření aplikace Function App v Azure můžete pomocí příkazu [Func Azure functionapp Publish](functions-run-local.md#project-file-deployment) Core Tools nasadit kód projektu do Azure. V tomto příkladu nahraďte `<APP_NAME>` názvem vaší aplikace.
 
 ```console
-func azure functionapp publish <APP_NAME> --build remote
+func azure functionapp publish <APP_NAME>
 ```
 
-Možnost `--build remote` sestaví projekt Python vzdáleně v Azure ze souborů v balíčku pro nasazení, který se doporučuje. 
+Váš projekt v Pythonu je v Azure vytvořený vzdáleně ze souborů v balíčku pro nasazení. 
 
 Zobrazí se výstup podobný následující zprávě. Tady se zkrátí, abyste si ho mohli lépe přečíst:
 

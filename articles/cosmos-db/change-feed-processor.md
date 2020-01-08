@@ -1,6 +1,6 @@
 ---
-title: Práce s knihovnou Change feed Processor v Azure Cosmos DB
-description: Naučte se, jak pomocí knihovny pro změny Azure Cosmos DB změnit informační kanál, součásti procesoru Change feed a životní cyklus implementace.
+title: Změna knihovny procesoru kanálu v Azure Cosmos DB
+description: Přečtěte si, jak pomocí knihovny pro změnu Azure Cosmos DB změnit informační kanál, který je součástí procesoru Change feed.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: ea2b72e926923357e9ee7dac87720292fbbf9696
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 3e7f5e46068844da538864fdfaa03ca7023e4372
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872226"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445568"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Změnit procesor kanálu v Azure Cosmos DB 
 

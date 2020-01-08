@@ -14,14 +14,14 @@ ms.topic: sample
 ms.date: 04/16/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 7417eaecddad60c940bf01535b8fb24b8cbef80c
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: ff40dc62b4dcd622156a78518bbdcb6b9b430644
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034780"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526596"
 ---
-# <a name="deploy-an-application-to-a-service-fabric-cluster"></a>Nasazení aplikace do clusteru Service Fabric
+# <a name="deploy-an-application-to-a-service-fabric-cluster-using-the-service-fabric-cli"></a>Nasazení aplikace do clusteru Service Fabric pomocí rozhraní příkazového řádku Service Fabric
 
 Tento ukázkový skript zkopíruje balíček aplikace do úložiště bitových kopií clusteru, zaregistruje typ aplikace v clusteru a vytvoří instanci aplikace z typu aplikace. V tuto chvíli se vytvoří také jakékoli výchozí služby.
 
@@ -35,7 +35,7 @@ V případě potřeby nainstalujte [Service Fabric CLI](../service-fabric-cli.md
 
 Až budete hotovi, můžete aplikaci [odebrat](cli-remove-application.md) prostřednictvím odebrání skriptu. Odebráním skriptu dojde k odstranění instance aplikace, zrušení registrace typu aplikace a odstranění balíčku aplikace z úložiště bitových kopií.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v [dokumentaci k rozhraní Service Fabric CLI](../service-fabric-cli.md).
 

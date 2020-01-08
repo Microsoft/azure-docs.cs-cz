@@ -1,39 +1,35 @@
 ---
-title: Poslat e-mail a webhook oznámení o výstrahách pomocí automatického škálování
-description: 'Zjistit, jak pomocí akcí automatického škálování můžete volat webové adresy URL nebo odeslat e-mailová oznámení ve službě Azure Monitor. '
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
+title: Použití automatického škálování k odesílání oznámení o výstrahách e-mailu a Webhooku
+description: Naučte se používat akce automatického škálování pro volání webových adres URL nebo posílání e-mailových oznámení v Azure Monitor.
 ms.topic: conceptual
 ms.date: 04/03/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: c1386f4058f9490bad0161b680005db6031bace1
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: fd5aeadd72123b58801ce038b0cc99d17dcfd200
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491532"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364199"
 ---
-# <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Pomocí akcí automatického škálování můžete poslat e-mail a webhook oznámení výstrah ve službě Azure Monitor
-Tento článek popisuje, jak nastavit aktivační události tak, aby je volání adresy URL konkrétních webů nebo odeslat e-mailů na základě akcí automatického škálování v Azure.  
+# <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Použití akcí automatického škálování k odesílání oznámení o výstrahách e-mailu a Webhooku v Azure Monitor
+V tomto článku se dozvíte, jak nastavit triggery, abyste mohli volat konkrétní webové adresy URL nebo posílat e-maily na základě akcí automatického škálování v Azure.  
 
-## <a name="webhooks"></a>webhooks
-Webhooky umožňují směrování Azure oznámení výstrah do jiných systémů pro následné zpracování nebo vlastních oznámení. Například směrování výstraze služby, které může zpracovávat příchozí webového požadavku k odeslání že serveru SMS, protokol chyb, upozornění týmu pomocí chat nebo zasílání zpráv služby atd. Webhook identifikátor URI musí být platný koncový bod HTTP nebo HTTPS.
+## <a name="webhooks"></a>Webhooky
+Webhooky umožňují směrovat oznámení o výstrahách Azure do jiných systémů pro následné zpracování nebo vlastní oznámení. Například směrování výstrahy do služeb, které mohou zpracovávat příchozí webový požadavek k odeslání serveru SMS, protokolování chyb, upozornění týmu pomocí služby chat nebo zasílání zpráv atd. Identifikátor URI Webhooku musí být platný koncový bod HTTP nebo HTTPS.
 
-## <a name="email"></a>Email
-E-mailu můžete odeslaný na jakoukoli platnou e-mailovou adresu. Správci a spolusprávci předplatného, ve kterém je spuštěno pravidlo, budete také upozorněni.
+## <a name="email"></a>E-mail
+E-mail je možné odeslat do jakékoli platné e-mailové adresy. Budou se informovat i správci a spolusprávci předplatného, kde se pravidlo spouští.
 
-## <a name="cloud-services-and-web-apps"></a>Cloud Services a webových aplikací
-Je můžete vyjádřit výslovný souhlas na webu Azure Portal pro Cloud Services a serverové farmy (webové aplikace).
+## <a name="cloud-services-and-web-apps"></a>Cloud Services a Web Apps
+Pro Cloud Services a serverové farmy (Web Apps) se můžete přihlásit z Azure Portal.
 
-* Zvolte **škálovat** metriku.
+* Vyberte možnost **škálovat podle** metriky.
 
-![můžete škálovat](./media/autoscale-webhook-email/insights-autoscale-notify.png)
+![škálovat podle](./media/autoscale-webhook-email/insights-autoscale-notify.png)
 
 ## <a name="virtual-machine-scale-sets"></a>Škálovací sady virtuálních počítačů
-Pro novější virtuální počítače vytvořené pomocí Resource Manageru (škálovací sady virtuálních počítačů) to můžete nakonfigurovat pomocí rozhraní REST API, šablon Resource Manageru, Powershellu a rozhraní příkazového řádku. Na portálu rozhraní ještě není k dispozici.
-Při použití rozhraní REST API nebo Resource Manageru šablony, zahrnují elementu oznámení s těmito možnostmi.
+Pro novější Virtual Machines vytvořené pomocí Správce prostředků (Virtual Machine Scale Sets) ho můžete nakonfigurovat pomocí REST API, šablon Správce prostředků, PowerShellu a rozhraní příkazového řádku. Rozhraní portálu ještě není k dispozici.
+Při použití šablony REST API nebo Správce prostředků zahrňte do [autoscalesettings](https://docs.microsoft.com/azure/templates/microsoft.insights/2015-04-01/autoscalesettings) element Notifications s následujícími možnostmi.
 
 ```
 "notifications": [
@@ -60,21 +56,21 @@ Při použití rozhraní REST API nebo Resource Manageru šablony, zahrnují ele
     ]
 ```
 
-| Pole | Povinné? | Popis |
+| Pole | Závaznou? | Popis |
 | --- | --- | --- |
-| operation |ano |Hodnota musí být "Škálovací" |
-| sendToSubscriptionAdministrator |ano |Hodnota musí být "true" nebo "false" |
-| sendToSubscriptionCoAdministrators |ano |Hodnota musí být "true" nebo "false" |
-| customEmails |ano |Hodnota může být null [] nebo pole řetězců e-mailů |
-| webhooks |ano |Hodnota může být null nebo platný identifikátor Uri |
-| serviceUri |ano |platný identifikátor Uri protokolu https |
-| properties |ano |Hodnota musí být prázdná {} nebo může obsahovat páry klíč hodnota |
+| operation |ano |hodnota musí být Scale (škálovat). |
+| sendToSubscriptionAdministrator |ano |hodnota musí být true nebo false. |
+| sendToSubscriptionCoAdministrators |ano |hodnota musí být true nebo false. |
+| customEmails |ano |hodnota může být null [] nebo pole řetězců e-mailů. |
+| webhooks |ano |hodnota může být null nebo platný identifikátor URI. |
+| serviceUri |ano |platný identifikátor URI https |
+| properties |ano |hodnota musí být prázdná {} nebo může obsahovat páry klíč-hodnota. |
 
-## <a name="authentication-in-webhooks"></a>Ověřování v webhooků
-Webhook můžete ověřit pomocí ověřování založeného na tokenech, kam jste uložili webhooku identifikátor URI s token ID jako parametr dotazu. Například https: \/ /mysamplealert/webcallback? tokenid = sometokenid & someparameter = nějaká_hodnota
+## <a name="authentication-in-webhooks"></a>Ověřování ve webhookech
+Webhook se může ověřit pomocí ověřování založeného na tokenech, kam uložíte identifikátor URI Webhooku s ID tokenu jako parametr dotazu. Například https:\//mysamplealert/webcallback? tokenu tokenId = sometokenid & someparameter = someValue
 
-## <a name="autoscale-notification-webhook-payload-schema"></a>Schéma datová část webhooku oznámení automatického škálování
-Při generování oznámení automatického škálování je datová část webhooku součástí následující metadata:
+## <a name="autoscale-notification-webhook-payload-schema"></a>Schéma datové části Webhooku oznámení automatického škálování
+Když se vygeneruje oznámení automatického škálování, do datové části Webhooku se zahrnou tato metadata:
 
 ```
 {
@@ -103,22 +99,22 @@ Při generování oznámení automatického škálování je datová část webh
 ```
 
 
-| Pole | Povinné? | Popis |
+| Pole | Závaznou? | Popis |
 | --- | --- | --- |
-| status |ano |Stav, který určuje, zda byla vygenerována akce automatického škálování |
-| operation |ano |Pro zvýšení instancí je "Horizontální navýšení kapacity" a snížení v instancích, bude "Škálování v" |
+| status |ano |Stav, který indikuje, že se vygenerovala akce automatického škálování. |
+| operation |ano |U zvýšení instancí se bude "horizontální navýšení kapacity" a snížení počtu instancí bude "škálovat". |
 | context |ano |Kontext akce automatického škálování |
-| timestamp |ano |Časové razítko při aktivaci akce automatického škálování |
-| id |Ano |ID správce prostředků zadaném nastavení automatického škálování |
-| name |Ano |Název nastavení automatického škálování |
-| details |Ano |Vysvětlení akci, která trvala služby automatického škálování a změna v počtu instancí |
-| subscriptionId |Ano |ID předplatného cílového prostředku, který je právě škálovat |
-| resourceGroupName |Ano |Název skupiny prostředků cílového prostředku, který je právě škálovat |
-| resourceName |Ano |Název cílového prostředku, který je právě škálovat |
-| resourceType |Ano |Tři podporované hodnoty: "microsoft.classiccompute/domainnames/slots/roles" – Cloudová služba role, "microsoft.compute/virtualmachinescalesets" - Virtual Machine Scale Sets a "Microsoft.Web/serverfarms" – webové aplikace |
-| resourceId |Ano |Resource Manager ID cílového prostředku, který je právě škálovat |
-| portalLink |Ano |Azure portal odkaz na stránku Souhrn v cílový prostředek |
-| oldCapacity |Ano |Aktuální (staré) počet instancí kdy automatického škálování je akce škálování |
-| newCapacity |Ano |Nový počet instancí, který prostředek, který chcete škálovat automatického škálování |
-| properties |Ne |Volitelné. Sadu < klíč, hodnota > páry (například Dictionary < String, String >). Vlastnosti pole je volitelné. Vlastní uživatelské rozhraní nebo pracovní postup aplikace logiky na základě aplikace můžete zadat klíče a hodnoty, které mohou být předány pomocí datové části. Existuje alternativní způsob předat vlastní vlastnosti odchozí volání webhooku je použití webhooku URI samotného (jako parametry dotazu) |
+| časové razítko |ano |Časové razítko, kdy se aktivovala akce automatického škálování |
+| id |Ano |ID Správce prostředků nastavení automatického škálování |
+| jméno |Ano |Název nastavení automatického škálování |
+| details |Ano |Vysvětlení akce, kterou služba automatického škálování trvala, a změny počtu instancí |
+| subscriptionId |Ano |ID předplatného cílového prostředku, který se škáluje |
+| resourceGroupName |Ano |Název skupiny prostředků cílového prostředku, který se škáluje |
+| resourceName |Ano |Název cílového prostředku, který se škáluje |
+| resourceType |Ano |Tři podporované hodnoty: Microsoft. classiccompute/DomainNames/sloty/Roles – role cloudových služeb, Microsoft. COMPUTE/virtualmachinescalesets "-Virtual Machine Scale Sets a" Microsoft. Web/serverových farem "-Web App |
+| resourceId |Ano |Správce prostředků ID cílového prostředku, který se škáluje |
+| portalLink |Ano |Azure Portal odkaz na stránku souhrnu cílového prostředku |
+| oldCapacity |Ano |Aktuální (starý) počet instancí, když automatické škálování trvalo akci škálování |
+| newCapacity |Ano |Nový počet instancí, na které se má znovu škálovat prostředek |
+| properties |Ne |Nepovinný parametr. Sada < klíč, hodnota > páry (například slovník < řetězec, řetězec >). Pole vlastností je volitelné. Ve vlastním uživatelském rozhraní nebo pracovním postupu založeném na aplikaci logiky můžete zadat klíče a hodnoty, které lze předat pomocí datové části. Alternativní způsob, jak předat vlastní vlastnosti zpátky odchozímu volání Webhooku, je použití samotného identifikátoru URI Webhooku (jako parametrů dotazu). |
 

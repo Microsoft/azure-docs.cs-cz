@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: c0f06f02a274780085fdb3c4c270ad541a0daa8c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: decfeb9c46c32c6388228de6597db0c840354c19
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930703"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448572"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Kurz: Vytvoření jednostránkové aplikace pomocí rozhraní API Bingu pro vyhledávání obrázků
 
@@ -31,7 +31,7 @@ Ukázková aplikace předvádí, jak:
 
 Úplný zdrojový kód k tomuto kurzu je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Image-Search).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nejnovější verze [Node.js](https://nodejs.org/)
 * Architektura [Express.js](https://expressjs.com/) pro Node.js. Pokyny k instalaci zdrojového kódu jsou k dispozici v ukázkovém souboru Readme pro GitHub.
@@ -95,7 +95,7 @@ function getSubscriptionKey() {
 }
 ```
 
-Značka HTML `<form>` `onsubmit` volá funkci `bingWebSearch` k vrácení výsledků hledání. `bingWebSearch` používá `getSubscriptionKey` k ověření každého dotazu. Jak je vidět v předchozí definici, `getSubscriptionKey` vyzve uživatele k zadání klíče, pokud klíč nebyl zadán. Klíč se pak uloží pro další používání ze strany aplikace.
+Značka HTML `<form>``onsubmit` volá funkci `bingWebSearch` k vrácení výsledků hledání. `bingWebSearch` používá `getSubscriptionKey` k ověření každého dotazu. Jak je vidět v předchozí definici, `getSubscriptionKey` vyzve uživatele k zadání klíče, pokud klíč nebyl zadán. Klíč se pak uloží pro další používání ze strany aplikace.
 
 ```html
 <form name="bing" onsubmit="this.offset.value = 0; return bingWebSearch(this.query.value,
@@ -126,7 +126,7 @@ Rozhraní API Bingu pro vyhledávání obrázků nabízí několik [parametrů p
 | `color`      |                                                                                                                                                                                    |
 | `when`       | Rozevírací nabídka pro volitelné omezení vyhledávání na poslední den, týden nebo měsíc.                                                                                          |
 | `safe`       | Zaškrtávací políčko označující, jestli se má používat funkce Bingu Bezpečné hledání k filtrování výsledků „pro dospělé“.                                                                                      |
-| `count`      | Skryté pole. Počet výsledků vyhledávání, které se mají vrátit pro jednotlivé požadavky. Můžete změnit, aby se na stránce zobrazovalo méně nebo více výsledků.                                                            |
+| `count`      | Skryté pole. Počet výsledků hledání, který se má vrátit u jednotlivých žádostí. Můžete změnit, aby se na stránce zobrazovalo méně nebo více výsledků.                                                            |
 | `offset`     | Skryté pole. Posun prvního výsledku hledání v požadavku, sloužící ke stránkování. Při novém požadavku se resetuje na `0`.                                                           |
 | `nextoffset` | Skryté pole. Při přijetí výsledku hledání je toto pole je nastaveno na hodnotu `nextOffset` v odpovědi. Použitím tohoto pole se vyhnete překrývajícím se výsledkům na po sobě jdoucích stránkách. |
 | `stack`      | Skryté pole. Zakódovaný seznam JSON posunu předchozích stránek výsledků hledání, pro přechod zpět na předchozí stránky.                                                      |
@@ -377,14 +377,14 @@ Odpovědi z rozhraní API Bingu pro vyhledávání můžou zahrnovat hlavičku `
 
 Poskytnutí hlavičky `X-MSEdge-ClientID` umožňuje rozhraním API Bingu spojit si všechna uživatelova vyhledávání. To má důležité výhody.
 
-Zaprvé to umožňuje, aby vyhledávací web Bing na vyhledávání použil minulý kontext a našel výsledky, které uživatele více uspokojí. Pokud uživatel v minulosti vyhledával třeba výrazy týkající se lodí, pozdější vyhledání „uzlů“ může přednostně vrátit informace o uzlech používaných při plavbě lodí.
+Zaprvé to umožňuje, aby vyhledávací web Bing na vyhledávání aplikoval minulý kontext a našel výsledky, které uživatele více uspokojí. Pokud uživatel v minulosti vyhledával třeba výrazy týkající se lodí, může pozdější vyhledání „uzlů“ přednostně vrátit informace o uzlech používaných při plavbě lodí.
 
-Za druhé může Bing náhodně vybírat uživatele k vyzkoušení nových funkcí, než budou všeobecně dostupné. Poskytnutí stejného ID klienta s každým požadavkem zajistí, že uživatelé vybraní tuto funkci vidět, ji vidí vždy. Bez ID klienta může uživatel funkci ve svých výsledcích hledání někdy vidět a jindy ne, zdánlivě náhodně.
+Za druhé může Bing náhodně vybírat uživatele k vyzkoušení nových funkcí, než budou všeobecně dostupné. Poskytnutí stejného ID klienta s každým požadavkem zajistí, že uživatelé vybraní tuto funkci vidět, ji vidí vždy. Bez ID klienta může uživatel funkci ve svých výsledcích hledání zdánlivě náhodně někdy vidět a jindy ne.
 
 Zásady zabezpečení prohlížeče (CORS) můžou bránit tomu, aby byla hlavička `X-MSEdge-ClientID` pro JavaScript dostupná. K tomuto omezení dochází, když odpověď na vyhledávání má jiný zdroj než stránka, která o ni požádala. V produkčním prostředí je potřeba tyto zásady vyřešit hostováním skriptu na straně serveru, který provádí volání rozhraní API ve stejné doméně jako webová stránka. Protože tento skript má stejný původ jako webová stránka, hlavička `X-MSEdge-ClientID` je pak pro JavaScript dostupná.
 
 > [!NOTE]
-> Při tvorbě webové aplikace byste měli provádět žádost na straně serveru tak jako tak. Jinak musí být klíč rozhraní API Bingu pro vyhledávání součástí webové stránky, kde je k dispozici každému, kdo si zobrazí zdroj. Účtuje se vám veškeré využívání vašeho klíče předplatného rozhraní API, dokonce i požadavky provedené neoprávněnými stranami, proto je důležité klíč nezveřejňovat.
+> Při tvorbě webové aplikace byste měli provádět žádost na straně serveru tak jako tak. Jinak musí být klíč rozhraní API pro vyhledávání Bingu součástí webové stránky, kde je k dispozici každému, kdo si zobrazí zdroj. Účtuje se vám veškeré využívání vašeho klíče předplatného rozhraní API, dokonce i požadavky provedené neoprávněnými stranami, proto je důležité klíč nezveřejňovat.
 
 Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď z takového serveru proxy má `Access-Control-Expose-Headers` záhlaví, které umožňuje použití hlaviček odpovědí a zpřístupňuje je pro JavaScript.
 

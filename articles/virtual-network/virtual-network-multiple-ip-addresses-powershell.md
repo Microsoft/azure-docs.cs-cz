@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: kumud
 ms.reviewer: annahar
-ms.openlocfilehash: e9bad6ad614855c543ee6d75d4e6f4dc8e2255aa
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: a8bd4e4779d94cfc22ac7726c9746fe755764033
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876226"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647318"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Přiřazení více IP adres k virtuálním počítačům pomocí PowerShellu
 
@@ -38,7 +38,7 @@ Tento článek vysvětluje, jak pomocí PowerShellu vytvořit virtuální počí
 Následující postup vysvětluje, jak vytvořit ukázkový virtuální počítač s více IP adresami, jak je popsáno ve scénáři. Změňte hodnoty proměnných podle požadavků vaší implementace.
 
 1. Otevřete příkazový řádek PowerShellu a dokončete zbývající kroky v této části v rámci jedné relace PowerShellu. Pokud ještě nemáte nainstalované a nakonfigurované prostředí PowerShell, proveďte kroky popsané v článku [Postup instalace a konfigurace Azure PowerShell](/powershell/azure/overview) .
-2. Pomocí `Connect-AzAccount` příkazu se přihlaste ke svému účtu.
+2. Přihlaste se k účtu pomocí příkazu `Connect-AzAccount`.
 3. Položky *myResourceGroup* a *westus* nahraďte názvem a umístěním, které zvolíte. Vytvořte skupinu prostředků. Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
    ```powershell
@@ -97,7 +97,7 @@ Následující postup vysvětluje, jak vytvořit ukázkový virtuální počíta
 
 6. Definujte primární konfiguraci IP pro síťovou kartu. Pokud jste nepoužili dříve definovanou hodnotu, změňte 10.0.0.4 na platnou adresu v podsíti, kterou jste vytvořili. Před přiřazením statické IP adresy doporučujeme, abyste nejdřív zkontrolovali, že se už nepoužívá. Zadejte příkaz `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`. Pokud je adresa k dispozici, vrátí výstup *hodnotu true*. Pokud není k dispozici, vrátí výstup *hodnotu false* a seznam adres, které jsou k dispozici. 
 
-    V následujících příkazech **nahraďte \<text Replace-with-Unique-Name > jedinečným názvem DNS, který chcete použít.** Název musí být jedinečný napříč všemi veřejnými IP adresami v oblasti Azure. Toto je volitelný parametr. Pokud se chcete k virtuálnímu počítači připojit jenom pomocí veřejné IP adresy, můžete ho odebrat.
+    V následujících příkazech **nahraďte \<Replace-with-Unique-name > jedinečným názvem DNS, který se má použít.** Název musí být jedinečný napříč všemi veřejnými IP adresami v oblasti Azure. Toto je volitelný parametr. Pokud se chcete k virtuálnímu počítači připojit jenom pomocí veřejné IP adresy, můžete ho odebrat.
 
     ```powershell
     
@@ -122,7 +122,7 @@ Následující postup vysvětluje, jak vytvořit ukázkový virtuální počíta
     Pokud přiřadíte více konfigurací protokolu IP k síťovému rozhraní, musí být jedna konfigurace přiřazena jako *primární*.
 
     > [!NOTE]
-    > Veřejné IP adresy mají nominální poplatek. Pokud se chcete dozvědět víc o cenách IP adres, přečtěte si stránku [ceny IP adres](https://azure.microsoft.com/pricing/details/ip-addresses) . Počet veřejných IP adres, které se dají použít v předplatném, je omezený. Další informace o omezeních najdete v článku o [omezeních Azure](../azure-subscription-service-limits.md#networking-limits).
+    > Veřejné IP adresy mají nominální poplatek. Pokud se chcete dozvědět víc o cenách IP adres, přečtěte si stránku [ceny IP adres](https://azure.microsoft.com/pricing/details/ip-addresses) . Počet veřejných IP adres, které se dají použít v předplatném, je omezený. Další informace o omezeních najdete v článku o [omezeních Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
 7. Definujte sekundární konfiguraci protokolu IP pro síťovou kartu. Konfigurace můžete podle potřeby přidávat nebo odebírat. Každá konfigurace protokolu IP musí mít přiřazenou privátní IP adresu. Každé konfiguraci může volitelně mít přiřazenou jednu veřejnou IP adresu.
 
@@ -245,7 +245,7 @@ K síťovému rozhraní Azure můžete přidat privátní a veřejné IP adresy 
 
    **Přidat privátní IP adresu**
 
-   Chcete-li přidat privátní IP adresu do síťového rozhraní, je nutné vytvořit konfiguraci protokolu IP. Následující příkaz vytvoří konfiguraci se statickou IP adresou 10.0.0.7. Když zadáte statickou IP adresu, musí se jednat o nepoužitou adresu podsítě. Doporučuje se nejdřív otestovat adresu, abyste měli jistotu, že je k dispozici, zadáním `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` příkazu. Pokud je IP adresa dostupná, vrátí výstup *hodnotu true*. Pokud není k dispozici, vrátí výstup *hodnotu false*a zobrazí seznam adres, které jsou k dispozici.
+   Chcete-li přidat privátní IP adresu do síťového rozhraní, je nutné vytvořit konfiguraci protokolu IP. Následující příkaz vytvoří konfiguraci se statickou IP adresou 10.0.0.7. Když zadáte statickou IP adresu, musí se jednat o nepoužitou adresu podsítě. Doporučuje se nejdřív otestovat adresu, abyste měli jistotu, že je k dispozici, zadáním příkazu `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet`. Pokud je IP adresa dostupná, vrátí výstup *hodnotu true*. Pokud není k dispozici, vrátí výstup *hodnotu false*a zobrazí seznam adres, které jsou k dispozici.
 
    ```powershell
    Add-AzNetworkInterfaceIpConfig -Name IPConfig-4 -NetworkInterface `
@@ -261,7 +261,7 @@ K síťovému rozhraní Azure můžete přidat privátní a veřejné IP adresy 
    Veřejná IP adresa se přidá pomocí přidružení prostředku veřejné IP adresy k nové konfiguraci protokolu IP nebo existující konfiguraci protokolu IP. Proveďte kroky v jedné z částí, které následují, jak budete potřebovat.
 
    > [!NOTE]
-   > Veřejné IP adresy mají nominální poplatek. Pokud se chcete dozvědět víc o cenách IP adres, přečtěte si stránku [ceny IP adres](https://azure.microsoft.com/pricing/details/ip-addresses) . Počet veřejných IP adres, které se dají použít v předplatném, je omezený. Další informace o omezeních najdete v článku o [omezeních Azure](../azure-subscription-service-limits.md#networking-limits).
+   > Veřejné IP adresy mají nominální poplatek. Pokud se chcete dozvědět víc o cenách IP adres, přečtěte si stránku [ceny IP adres](https://azure.microsoft.com/pricing/details/ip-addresses) . Počet veřejných IP adres, které se dají použít v předplatném, je omezený. Další informace o omezeních najdete v článku o [omezeních Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
    >
 
    **Přidružte prostředek veřejné IP adresy k nové konfiguraci protokolu IP.**
@@ -295,7 +295,7 @@ K síťovému rozhraní Azure můžete přidat privátní a veřejné IP adresy 
    $MyNIC.IpConfigurations | Format-Table Name, PrivateIPAddress, PublicIPAddress, Primary
    ```
 
-   Zobrazí se výstup podobný následujícímu:
+   Zobrazí se podobný výstup viz následující:
 
    ```
    Name       PrivateIpAddress PublicIpAddress                                           Primary

@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 614d93a16b9149a217b5ff1004031e0a2d7337ca
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: d430d7d94f8eed76bb78042a174aeddf2e6ccaa3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615064"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410217"
 ---
 Nastavení konfigurace pro [Durable Functions](../articles/azure-functions/durable-functions-overview.md).
 
@@ -52,14 +52,15 @@ Nastavení konfigurace pro [Durable Functions](../articles/azure-functions/durab
   "durableTask": {
     "hubName": "MyTaskHub",
     "storageProvider": {
-      "controlQueueBatchSize": 32,
-      "partitionCount": 4,
-      "controlQueueVisibilityTimeout": "00:05:00",
-      "workItemQueueVisibilityTimeout": "00:05:00",
-      "maxQueuePollingInterval": "00:00:30",
       "connectionStringName": "AzureWebJobsStorage",
+      "controlQueueBatchSize": 32,
+      "controlQueueBufferThreshold": 256,
+      "controlQueueVisibilityTimeout": "00:05:00",
+      "maxQueuePollingInterval": "00:00:30",
+      "partitionCount": 4,
       "trackingStoreConnectionStringName": "TrackingStorage",
-      "trackingStoreNamePrefix": "DurableTask"
+      "trackingStoreNamePrefix": "DurableTask",
+      "workItemQueueVisibilityTimeout": "00:05:00",
     },
     "tracing": {
       "traceInputsAndOutputs": false,
@@ -82,7 +83,8 @@ Nastavení konfigurace pro [Durable Functions](../articles/azure-functions/durab
     "maxConcurrentActivityFunctions": 10,
     "maxConcurrentOrchestratorFunctions": 10,
     "extendedSessionsEnabled": false,
-    "extendedSessionIdleTimeoutInSeconds": 30
+    "extendedSessionIdleTimeoutInSeconds": 30,
+    "useGracefulShutdown": false
   }
 }
 ```
@@ -93,6 +95,7 @@ Názvy centra úloh musí začínat písmenem a obsahovat jenom písmena a čís
 |---------|---------|---------|
 |hubName|DurableFunctionsHub|Alternativní názvy [centra úloh](../articles/azure-functions/durable-functions-task-hubs.md) se dají použít k izolaci více Durable Functionsch aplikací od sebe, i když používají stejný back-end úložiště.|
 |controlQueueBatchSize|32|Počet zpráv, které mají být vyžádané z fronty ovládacích prvků v čase.|
+|controlQueueBufferThreshold|256|Počet zpráv fronty řízení, které mohou být uloženy do vyrovnávací paměti v paměti v okamžiku, kdy bude dispečer čekat před vyřazením dalších zpráv do fronty.|
 |partitionCount |4|Počet oddílů pro frontu řízení. Může být kladné celé číslo mezi 1 a 16.|
 |controlQueueVisibilityTimeout |5 minut|Časový limit viditelnosti vyřazení zpráv fronty řízení ve frontě.|
 |workItemQueueVisibilityTimeout |5 minut|Časový limit viditelnosti zpráv fronty pracovních položek ve frontě|
@@ -102,12 +105,13 @@ Názvy centra úloh musí začínat písmenem a obsahovat jenom písmena a čís
 |azureStorageConnectionStringName |AzureWebJobsStorage|Název nastavení aplikace, které obsahuje připojovací řetězec Azure Storage, který se používá ke správě základních prostředků Azure Storage.|
 |trackingStoreConnectionStringName||Název připojovacího řetězce, který se má použít pro tabulky historie a instance. Pokud není zadaný, použije se `azureStorageConnectionStringName` připojení.|
 |trackingStoreNamePrefix||Předpona, která se má použít pro tabulky historie a instance při zadání `trackingStoreConnectionStringName` Pokud není nastavená, výchozí hodnota předpony bude `DurableTask`. Pokud není zadán `trackingStoreConnectionStringName`, budou tabulky historie a instance používat jako předponu hodnotu `hubName` a všechna nastavení `trackingStoreNamePrefix` budou ignorována.|
-|traceInputsAndOutputs |false (nepravda)|Hodnota, která označuje, zda se mají trasovat vstupy a výstupy volání funkcí. Výchozí chování při trasování událostí spuštění funkce je zahrnutí počtu bajtů v serializovaných vstupech a výstupech pro volání funkcí. Toto chování poskytuje minimální informace o tom, co vstupy a výstupy vypadají jako bez bloating protokolů nebo neúmyslného zveřejnění citlivých informací. Nastavení této vlastnosti na hodnotu true způsobí, že funkce protokolování výchozích funkcí zaznamená celý obsah vstupů a výstupů funkcí.|
-|logReplayEvents|false (nepravda)|Hodnota, která označuje, zda se mají zapisovat události opětovného přehrání orchestrace Application Insights.|
+|traceInputsAndOutputs |false|Hodnota, která označuje, zda se mají trasovat vstupy a výstupy volání funkcí. Výchozí chování při trasování událostí spuštění funkce je zahrnutí počtu bajtů v serializovaných vstupech a výstupech pro volání funkcí. Toto chování poskytuje minimální informace o tom, co vstupy a výstupy vypadají jako bez bloating protokolů nebo neúmyslného zveřejnění citlivých informací. Nastavení této vlastnosti na hodnotu true způsobí, že funkce protokolování výchozích funkcí zaznamená celý obsah vstupů a výstupů funkcí.|
+|logReplayEvents|false|Hodnota, která označuje, zda se mají zapisovat události opětovného přehrání orchestrace Application Insights.|
 |eventGridTopicEndpoint ||Adresa URL koncového bodu vlastního tématu Azure Event Grid Je-li tato vlastnost nastavena, jsou do tohoto koncového bodu publikovány události oznámení o životním cyklu orchestrace. Tato vlastnost podporuje řešení nastavení aplikace.|
 |eventGridKeySettingName ||Název nastavení aplikace obsahující klíč používaný k ověřování pomocí vlastního tématu Azure Event Grid v `EventGridTopicEndpoint`.|
 |eventGridPublishRetryCount|0|Počet pokusů o opakování, pokud se publikování do Event Grid tématu nezdařilo.|
 |eventGridPublishRetryInterval|5 minut|Event Grid publikuje interval opakování ve formátu *HH: mm: SS* .|
 |eventGridPublishEventTypes||Seznam typů událostí pro publikování Event Grid. Není-li tento parametr zadán, budou publikovány všechny typy událostí. Mezi povolené hodnoty patří `Started`, `Completed`, `Failed`, `Terminated`.|
+|useGracefulShutdown|false|Tisk Povolit bezproblémové vypnutí, aby se snížila pravděpodobnost vypnutí hostitelských pokusů o zpracování funkcí v procesu.|
 
 Mnohé z těchto nastavení jsou pro optimalizaci výkonu. Další informace najdete v tématu [výkon a škálování](../articles/azure-functions/durable-functions-perf-and-scale.md).

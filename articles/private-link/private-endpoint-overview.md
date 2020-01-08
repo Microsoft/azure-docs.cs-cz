@@ -2,21 +2,21 @@
 title: Co je privátní koncový bod Azure?
 description: Seznamte se s privátním koncovým bodem Azure
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: ccae73b58b7da8e631c081871e17cec221918a76
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 673b74515ba03bc71e60a68b21b9330f9e62d424
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228118"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647386"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
 
-Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě využívající privátní propojení Azure. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Služba může být služba Azure, například Azure Storage, Azure Cosmos DB, SQL atd. nebo vaše vlastní [Služba privátních odkazů](private-link-service-overview.md).
+Privátní koncový bod Azure je síťové rozhraní, které vás privátně a zabezpečeně připojí ke službám využívajícím službu Azure Private Link. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Služba může být služba Azure, například Azure Storage, Azure Cosmos DB, SQL atd. nebo vaše vlastní [Služba privátních odkazů](private-link-service-overview.md).
   
 ## <a name="private-endpoint-properties"></a>Vlastnosti privátního koncového bodu 
  Soukromý koncový bod určuje následující vlastnosti: 
@@ -24,7 +24,7 @@ Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukr
 
 |Vlastnost  |Popis |
 |---------|---------|
-|Název    |    Jedinečný název v rámci skupiny prostředků.      |
+|Name (Název)    |    Jedinečný název v rámci skupiny prostředků.      |
 |Podsíť    |  Podsíť pro nasazení a přidělování privátních IP adres z virtuální sítě. Požadavky na podsíť najdete v části omezení v tomto článku.         |
 |Prostředek privátního propojení    |   Prostředek privátního propojení pro připojení pomocí ID prostředku nebo aliasu ze seznamu dostupných typů. Pro veškerý provoz odeslaný do tohoto prostředku se vygeneruje jedinečný identifikátor sítě.       |
 |Cílový podprostředek   |      Prostředek, který se má připojit. Každý typ prostředku privátního propojení má různé možnosti pro výběr na základě předvolby.    |
@@ -43,7 +43,7 @@ Tady jsou některé klíčové podrobnosti o privátních koncových bodech:
  
 - Pomocí stejného prostředku privátního propojení lze vytvořit více privátních koncových bodů. V případě jedné sítě, která používá běžnou konfiguraci serveru DNS, doporučujeme použít jeden privátní koncový bod pro daný prostředek privátního propojení, aby nedocházelo k duplicitním položkám nebo konfliktům v překladu názvů DNS. 
  
-- Ve stejné virtuální síti je možné vytvořit více privátních koncových bodů v rámci jedné nebo více podsítí. Existují omezení počtu privátních koncových bodů, které můžete v rámci předplatného vytvořit. Podrobnosti najdete v tématu [omezení Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Ve stejné virtuální síti je možné vytvořit více privátních koncových bodů v rámci jedné nebo více podsítí. Existují omezení počtu privátních koncových bodů, které můžete v rámci předplatného vytvořit. Podrobnosti najdete v tématu [omezení Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
  
@@ -57,7 +57,7 @@ Prostředek privátního propojení je cílovým cílem daného privátního kon
 |**Azure SQL Data Warehouse** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
 |**Azure Storage**  | Microsoft.Storage/storageAccounts    |  BLOB (objekt blob, blob_secondary)<BR> Tabulka (tabulka, table_secondary)<BR> Queue (Queue, queue_secondary)<BR> Soubor (soubor, file_secondary)<BR> Web (web, web_secondary)        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  BLOB (objekt blob, blob_secondary)       |
-|**Databáze Azure Cosmos** | Microsoft. AzureCosmosDB/databaseAccounts | SQL, MongoDB, Cassandra, Gremlin, tabulka|
+|**Azure Cosmos DB** | Microsoft. AzureCosmosDB/databaseAccounts | SQL, MongoDB, Cassandra, Gremlin, tabulka|
  
 ## <a name="network-security-of-private-endpoints"></a>Zabezpečení sítě privátních koncových bodů 
 Při používání privátních koncových bodů pro služby Azure je provoz zabezpečený pro konkrétní prostředek privátního propojení. Platforma provede řízení přístupu, aby se ověřilo, že síťová připojení dosáhnou pouze zadaného prostředku privátního propojení. Pokud chcete získat přístup k dalším prostředkům v rámci stejné služby Azure, vyžadují se další privátní koncové body. 
@@ -67,7 +67,7 @@ Pro připojení k podporované službě Azure můžete úlohy zcela uzamknout z 
 ## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>Přístup k prostředku privátního propojení pomocí pracovního postupu schválení 
 K prostředku privátního propojení se můžete připojit pomocí následujících metod schvalování připojení:
 - **Automaticky** schváleno, pokud vlastníte nebo máte oprávnění ke konkrétnímu prostředku privátního propojení. Požadovaná oprávnění jsou založená na typu prostředku privátního propojení v následujícím formátu: Microsoft. Poskytovatel\<>/< resource_type >/privateEndpointConnectionApproval/action
-- **Ruční** požadavek, pokud nemáte požadovaná oprávnění a přejete si požádat o přístup. Zahájí se schvalovací pracovní postup. Privátní koncový bod a následné připojení privátního koncového bodu se vytvoří ve stavu čeká na vyřízení. Vlastník prostředku privátního propojení je zodpovědný za schválení připojení. Po schválení je povolený privátní koncový bod pro normální odesílání provozu, jak je znázorněno v následujícím diagramu pracovního postupu schválení.  
+- **Ruční** požadavek, pokud nemáte požadovaná oprávnění a přejete si požádat o přístup. Zahájí se schvalovací pracovní postup. Privátní koncový bod a další připojení privátního koncového bodu se vytvoří ve stavu Čeká na vyřízení. Za schválení připojení je zodpovědný vlastník prostředku služby Private Link. Po schválení je povolený privátní koncový bod pro normální odesílání provozu, jak je znázorněno v následujícím diagramu pracovního postupu schválení.  
 
 ![schválení pracovního postupu](media/private-endpoint-overview/private-link-paas-workflow.png)
  

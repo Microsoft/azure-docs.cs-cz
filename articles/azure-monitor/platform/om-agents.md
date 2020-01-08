@@ -4,15 +4,15 @@ description: Nástroj Operations Manager můžete integrovat do svého pracovní
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 79fcbb6f972eb022ce4d0e47a608e6f0d053a9ad
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5dc9412c7884eb62795fd04240f6cfa7d103e3be
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162234"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363655"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Připojit Operations Manager k Azure Monitor
 
@@ -34,7 +34,7 @@ Následující diagram znázorňuje připojení mezi servery pro správu a agent
 
 Pokud vaše zásady zabezpečení IT neumožňují počítačům ve vaší síti připojení k Internetu, servery pro správu je možné nakonfigurovat tak, aby se připojovaly k bráně Log Analytics a přijímaly informace o konfiguraci a odesílali shromážděná data v závislosti na řešeních. umožněn. Další informace a postup konfigurace skupiny pro správu Operations Manager pro komunikaci prostřednictvím Log Analytics brány k Azure Monitor najdete v tématu [připojení počítačů k Azure monitor pomocí brány Log Analytics](../../azure-monitor/platform/gateway.md).  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, přečtěte si následující požadavky.
 
@@ -48,12 +48,12 @@ Než začnete, přečtěte si následující požadavky.
     - Středozápadní USA
     - Austrálie – jihovýchod
     - Západní Evropa
-    - USA – východ
+    - Východní USA
     - Jihovýchodní Asie
     - Japonsko – východ
-    - Velká Británie – jih
+    - Spojené království – jih
     - Střední Indie
-    - Kanada – střed
+    - Střední Kanada
     - Západní USA 2
 
 >[!NOTE]
@@ -66,7 +66,7 @@ Než začnete, přečtěte si následující požadavky.
 >- Pro System Center Operations Manager 2012 R2 Stáhněte Management Pack [odsud](https://www.microsoft.com/download/details.aspx?id=57171).  
 
 
-### <a name="network"></a>Síť
+### <a name="network"></a>Network (Síť)
 
 Níže uvedené informace uvádějí informace o konfiguraci proxy serveru a brány firewall vyžadované pro agenta Operations Manager, servery pro správu a konzoli Operations Console ke komunikaci s Azure Monitor. Provoz z každé součásti je odchozí ze sítě do Azure Monitor.
 
@@ -94,9 +94,9 @@ Níže uvedené informace uvádějí informace o konfiguraci proxy serveru a br�
 |api.loganalytics.io| 80 a 443||
 |docs.loganalytics.io| 80 a 443||  
 
-### <a name="tls-12-protocol"></a>Protokol TLS 1,2
+### <a name="tls-12-protocol"></a>Protokol TLS 1.2
 
-Aby se zajistilo zabezpečení dat při přenosu do Azure Monitor, důrazně doporučujeme nakonfigurovat agenta a skupinu pro správu tak, aby používaly minimálně TLS (Transport Layer Security) 1,2. Zjistili jsme, že starší verze TLS/SSL (Secure Sockets Layer) (SSL) jsou zranitelné a i když stále fungují k tomu, aby se zajistila zpětná kompatibilita, **nedoporučuje**se. Další informace najdete v [zabezpečeném posílání dat pomocí TLS 1,2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12).
+Aby se zajistilo zabezpečení dat při přenosu do Azure Monitor, důrazně doporučujeme nakonfigurovat agenta a skupinu pro správu tak, aby používaly minimálně TLS (Transport Layer Security) 1,2. Starší verze z protokolu TLS/Secure Sockets Layer (SSL) bylo zjištěno ohrožen a stále aktuálně fungují povolit zpětnou kompatibilitu, ale jsou **ale nedoporučený krok**. Další informace najdete v tématu [odesílání dat pomocí protokolu TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12).
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Připojení Operations Manager k Azure Monitor
 
@@ -105,8 +105,8 @@ Provedením následujícího postupu nakonfigurujete skupinu pro správu nástro
 Při počáteční registraci skupiny pro správu Operations Manager pomocí pracovního prostoru Log Analytics není v konzoli Operations Console k dispozici možnost zadat konfiguraci proxy serveru pro skupinu pro správu.  Tato možnost bude dostupná až potom, co bude skupina pro správu ve službě úspěšně zaregistrovaná.  Chcete-li se tomuto problému vyhnout, je třeba aktualizovat konfiguraci proxy systému pomocí příkazu Netsh v systému, z něhož spouštíte konzolu Operations Console, a všechny servery pro správu ve skupině pro správu.  
 
 1. Otevřete příkazový řádek se zvýšenými oprávněními.
-   a. Klikněte na **Start** a zadejte **příkaz cmd**.
-   b. Klikněte pravým tlačítkem myši na **příkazový řádek** a vyberte Spustit jako správce * *.
+   a. Přejděte na **Start** a typ **cmd**.
+   b. Klikněte pravým tlačítkem na **příkazového řádku** a vyberte spustit jako správce **.
 1. Zadejte následující příkaz a stiskněte **Enter**:
 
     `netsh winhttp set proxy <proxy>:<port>`

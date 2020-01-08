@@ -1,5 +1,5 @@
 ---
-title: Funkce a příkazy Apache Cassandra, které podporuje rozhraní API Cassandra pro Azure Cosmos DB
+title: Funkce Apache Cassandra, které podporuje rozhraní API Cassandra pro Azure Cosmos DB
 description: Informace o podpoře funkcí Apache Cassandra v rozhraní API Cassandra pro Azure Cosmos DB
 author: kanshiG
 ms.author: govindk
@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: c0a47e922ae8cdca3c70cb53f9fa2f7dafe191c6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 8598be504f62089cf20123918779c310b2fb8ec8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889230"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445648"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Funkce Apache Cassandra, které podporuje rozhraní API Cassandra pro Azure Cosmos DB 
 
@@ -98,7 +98,7 @@ Rozhraní API Cassandra pro Azure Cosmos DB podporuje tyto funkce CQL:
 
 Rozhraní API Cassandra pro Azure Cosmos DB nemá žádná omezení velikosti dat uložených v tabulce. Když se dodrží limity klíče oddílu, je možné uložit stovky terabajtů nebo petabajtů dat. Podobně všechny ekvivalenty entit nebo řádků nemají omezení počtu sloupců. Celková velikost entity však nesmí překročit 2 MB. Data na klíč oddílu nesmí být větší než 10 GB jako u všech ostatních rozhraní API.
 
-## <a name="tools"></a>Nástroje 
+## <a name="tools"></a>nástroje 
 
 Rozhraní API Cassandra pro Azure Cosmos DB je platforma pro spravované služby. Ke správě clusteru nevyžaduje žádnou režii ani nástroje řízení, jako jsou například systém uvolňování paměti, Java Virtual Machine (JVM) a nodetool. Podporuje nástroje, jako je cqlsh, které využívá kompatibilitu Binary CQLv4. 
 
@@ -149,7 +149,7 @@ Azure Cosmos DB podporuje u účtů rozhraní API Cassandra následující datab
 * USE 
 * INSERT 
 * SELECT 
-* UPDATE 
+* AKTUALIZACE 
 * BATCH – podporují se jen neprotokolované příkazy. 
 * DELETE
 

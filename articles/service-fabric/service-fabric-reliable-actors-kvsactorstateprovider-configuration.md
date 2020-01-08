@@ -1,76 +1,67 @@
 ---
-title: Změnit nastavení KVSActorStateProvider v Azure Service Fabric actors | Dokumentace Microsoftu
-description: Přečtěte si o Azure Service Fabric actors stavové typu KVSActorStateProvider konfigurace.
-services: Service-Fabric
-documentationcenter: .net
+title: Změnit nastavení KVSActorStateProvider
+description: Přečtěte si o konfiguraci stavových aktérů Azure Service Fabric typu KVSActorStateProvider.
 author: sumukhs
-manager: chackdan
-editor: ''
-ms.assetid: dbed72f4-dda5-4287-bd56-da492710cd96
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: 8b10ef18fd389179a4f5422783606c45fa2e0d32
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cdb115bd57cf3d5af4388f4efa03c2522feef9ca
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60728045"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609770"
 ---
-# <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Konfigurace Reliable Actors – KVSActorStateProvider
-Výchozí konfigurace KVSActorStateProvider můžete upravit změnou souboru settings.xml, který je vygenerován v kořenovém adresáři balíčku Microsoft Visual Studio ve složce Konfigurace pro zadaný objekt actor.
+# <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Konfigurace Reliable Actors--KVSActorStateProvider
+Výchozí konfiguraci KVSActorStateProvider můžete upravit změnou souboru Settings. XML, který je vygenerovaný v kořenovém adresáři balíčku Microsoft Visual Studio v konfigurační složce pro zadaný objekt actor.
 
-Modul runtime Azure Service Fabric vyhledá názvy předdefinovaných oddílů v souboru settings.xml a využívá hodnoty konfigurace při vytvoření základní komponenty prostředí runtime.
+Modul runtime Azure Service Fabric vyhledá předdefinované názvy oddílů v souboru Settings. XML a při vytváření podkladových komponent modulu runtime spotřebovává konfigurační hodnoty.
 
 > [!NOTE]
-> Proveďte **není** odstranit ani změnit názvy oddílů následující konfigurace v souboru settings.xml, který je vygenerován v řešení sady Visual Studio.
+> **Neodstraňujte** ani neměňte názvy oddílů následujících konfigurací v souboru Settings. XML, který je generován v řešení sady Visual Studio.
 > 
 > 
 
 ## <a name="replicator-security-configuration"></a>Konfigurace zabezpečení replikátoru
-Konfigurace zabezpečení replikátoru slouží k zabezpečení komunikačního kanálu, který se používá během replikace. To znamená, že služby neuvidí druhé strany provoz replikace, zajišťující, že je také data, která je k dispozici vysoce zabezpečené.
-Ve výchozím nastavení zabraňuje oddíl konfigurace prázdný zabezpečení zabezpečení replikace.
+Konfigurace zabezpečení replikátoru slouží k zabezpečení komunikačního kanálu, který se používá při replikaci. To znamená, že služby nevidí provoz replikace mezi ostatními a zajišťují, že data, která jsou vytvořená jako vysoce dostupná, jsou také zabezpečená.
+Ve výchozím nastavení se v prázdném oddílu konfigurace zabezpečení zabrání zabezpečení replikace.
 
 > [!IMPORTANT]
-> Certifikáty na uzly s Linuxem, musí být ve formátu PEM. Další informace o vyhledání a konfigurace certifikátů pro Linux najdete v tématu [konfigurace certifikátů v Linuxu](./service-fabric-configure-certificates-linux.md). 
+> V uzlech se systémem Linux musí být certifikáty PEM ve formátu. Další informace o vyhledání a konfiguraci certifikátů pro Linux najdete v tématu [Konfigurace certifikátů v systému Linux](./service-fabric-configure-certificates-linux.md). 
 > 
 
 ### <a name="section-name"></a>Název oddílu
 &lt;ActorName&gt;ServiceReplicatorSecurityConfig
 
-## <a name="replicator-configuration"></a>Konfigurace replikace
-Konfigurace replikace nakonfigurovat replikátoru je zodpovědný za vytváření vysoce spolehlivých stavu zprostředkovatele stavu objektu Actor.
-Výchozí konfigurace vygeneruje šablony sady Visual Studio a měl postačit. Tato část se hovoří o dalším konfiguracím, které jsou k dispozici pro vyladění replikátoru.
+## <a name="replicator-configuration"></a>Konfigurace replikátoru
+Konfigurace replikátoru konfigurují Replikátor, který zodpovídá za vysoce spolehlivý stav poskytovatele stavu objektu actor.
+Výchozí konfigurace je generována šablonou sady Visual Studio a měla by stačit. Tato část pojednává o dalších konfiguracích, které jsou k dispozici pro optimalizaci replikátoru.
 
 ### <a name="section-name"></a>Název oddílu
-&lt;ActorName&gt;ServiceReplicatorConfig
+&lt;jméno actor&gt;ServiceReplicatorConfig
 
-### <a name="configuration-names"></a>Názvy konfigurace
-| Name | Jednotka | Výchozí hodnota | Poznámky |
+### <a name="configuration-names"></a>Názvy konfigurací
+| Name (Název) | Jednotka | Výchozí hodnota | Poznámky |
 | --- | --- | --- | --- |
-| BatchAcknowledgementInterval |Sekundy |0.015 |Časové období, pro které Replikátor na sekundární čeká po přijetí operace před odesláním zpět na primární potvrzení. Další potvrzení k odeslání pro operace zpracování v rámci tohoto intervalu se odesílají jako jednu odpověď. |
-| ReplicatorEndpoint |neuvedeno |Žádná výchozí hodnota--povinný parametr |Nastavení IP adresy a portu, které Replikátor primárního a sekundárního se používají ke komunikaci s další replikátorů v replice. To by měla odkazovat na koncový bod TCP prostředků v manifestu služby. Odkazovat na [prostředky manifestu služby](service-fabric-service-manifest-resources.md) Další informace o definování koncový bod prostředků v manifestu služby. |
-| RetryInterval |Sekundy |5 |Časové období, po jejímž uplynutí Replikátor znovu odesílá zprávu neobdrží potvrzení operace. |
-| MaxReplicationMessageSize |B |50 MB |Maximální velikost dat replikace, která mohou být přenesena do jedné zprávy. |
-| MaxPrimaryReplicationQueueSize |Počet operací |1024 |Maximální počet operací ve frontě primární. Operace je uvolněna až primární Replikátor obdrží od všech sekundárních replikátorů potvrzení. Tato hodnota musí být větší než 64 a mocninou čísla 2. |
-| MaxSecondaryReplicationQueueSize |Počet operací |2 048 |Maximální počet operací ve frontě sekundární. Operace je uvolněna až po zajištění vysoké dostupnosti prostřednictvím trvalého stavu. Tato hodnota musí být větší než 64 a mocninou čísla 2. |
+| BatchAcknowledgementInterval |Sekund |0.015 |Časové období, po které se Replikátor v sekundárním čekání po přijetí operace před odesláním zpět na primární. Jakékoli další potvrzení, která se mají odeslat pro operace zpracovávané v tomto intervalu, se odešlou jako jedna odpověď. |
+| ReplicatorEndpoint |Nevztahuje se |Žádný výchozí – parametr není povinný. |IP adresa a port, které bude primární a sekundární Replikátor používat ke komunikaci s ostatními replikačními replikami v sadě replik. To by mělo odkazovat na koncový bod prostředku TCP v manifestu služby. Další informace o definování prostředků koncového bodu v manifestu služby najdete v článku [prostředky manifestu služby](service-fabric-service-manifest-resources.md) . |
+| RetryInterval |Sekund |5 |Časové období, po kterém Replikátor znovu přenáší zprávu, pokud neobdrží potvrzení operace. |
+| MaxReplicationMessageSize |B |50 MB |Maximální velikost replikačních dat, která se dají přenést v jedné zprávě |
+| MaxPrimaryReplicationQueueSize |Počet operací |1024 |Maximální počet operací v primární frontě. Když primární Replikátor dostane potvrzení ze všech sekundárních replikátorů, operace se uvolní. Tato hodnota musí být větší než 64 a mocnina 2. |
+| MaxSecondaryReplicationQueueSize |Počet operací |2 048 |Maximální počet operací v sekundární frontě. Po zajištění vysoké dostupnosti stavu prostřednictvím trvalosti se operace uvolní. Tato hodnota musí být větší než 64 a mocnina 2. |
 
-## <a name="store-configuration"></a>Konfigurace Store
-Konfigurace Store slouží ke konfiguraci místního úložiště, který se používá k uchování stav, který je právě replikován.
-Výchozí konfigurace vygeneruje šablony sady Visual Studio a měl postačit. Tato část pojednává o dalším konfiguracím, které jsou k dispozici pro ladění místního úložiště.
+## <a name="store-configuration"></a>Konfigurace úložiště
+Konfigurace úložiště se používají ke konfiguraci místního úložiště, které se používá k zachování replikovaného stavu.
+Výchozí konfigurace je generována šablonou sady Visual Studio a měla by stačit. Tato část pojednává o dalších konfiguracích, které jsou k dispozici pro optimalizaci místního úložiště.
 
 ### <a name="section-name"></a>Název oddílu
 &lt;ActorName&gt;ServiceLocalStoreConfig
 
-### <a name="configuration-names"></a>Názvy konfigurace
-| Name | Jednotka | Výchozí hodnota | Poznámky |
+### <a name="configuration-names"></a>Názvy konfigurací
+| Name (Název) | Jednotka | Výchozí hodnota | Poznámky |
 | --- | --- | --- | --- |
-| MaxAsyncCommitDelayInMilliseconds |Milisekundy |200 |Nastaví maximální interval potvrzení trvalý místního úložiště do dávek. |
-| MaxVerPages |Počet stránek |16384 |Maximální počet stránek verze místní uložení databáze. Určuje maximální počet existují nevyřízené transakce. |
+| MaxAsyncCommitDelayInMilliseconds |Milisekundy |200 |Nastaví maximální interval dávkování pro potvrzení trvalého místního úložiště. |
+| MaxVerPages |Počet stránek |16384 |Maximální počet stránek verze v místní databázi úložiště Určuje maximální počet nezpracovaných transakcí. |
 
 ## <a name="sample-configuration-file"></a>Ukázkový konfigurační soubor
 ```xml
@@ -95,6 +86,6 @@ Výchozí konfigurace vygeneruje šablony sady Visual Studio a měl postačit. T
 </Settings>
 ```
 ## <a name="remarks"></a>Poznámky
-Latence replikace BatchAcknowledgementInterval parametr ovládací prvky. Hodnota '0' za následek nejnižší možnou latenci, a to za cenu propustnost (jako další zprávy potvrzení musí být odeslána a zpracována, každá obsahuje méně potvrzení).
-Čím větší hodnotu BatchAcknowledgementInterval, tím vyšší celkovou replikaci propustnost, za cenu vyšší latence operace. Výsledkem je přímo na latenci potvrzení transakcí.
+Parametr BatchAcknowledgementInterval řídí latenci replikace. Hodnota 0 má za následek nejnižší možnou latenci. náklady na propustnost (v případě, že je nutné odesílat a zpracovávat další zprávy o potvrzení, obsahují méně potvrzení).
+Čím větší je hodnota pro BatchAcknowledgementInterval, tím vyšší je celková propustnost replikace za cenu vyšší latence operace. To přímo překládá na latenci potvrzení transakcí.
 

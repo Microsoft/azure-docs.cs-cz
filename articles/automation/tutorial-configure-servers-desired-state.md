@@ -2,19 +2,15 @@
 title: Konfigurace serverů do požadovaného stavu a správa odchylek s využitím Azure Automation
 description: Kurz – Správa konfigurací serveru s konfigurací stavu Azure Automation
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgoedtel
-ms.author: magoedte
-manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 0339796f028a0cc0b19533be06127544db396f92
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9e2f04f59a56be6c516eb90de45fdf7327673086
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850087"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75416593"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Konfigurace serverů do požadovaného stavu a Správa posunu
 
@@ -27,7 +23,7 @@ Konfigurace stavu Azure Automation umožňuje zadat konfigurace pro vaše server
 > - Přiřazení konfigurace uzlu spravovanému uzlu
 > - Zkontroluje stav dodržování předpisů spravovaného uzlu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 

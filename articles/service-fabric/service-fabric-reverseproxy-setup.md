@@ -1,24 +1,15 @@
 ---
-title: Azure Service Fabric nastavení reverzního proxy serveru | Microsoft Docs
-description: Naučte se, jak nastavit a nakonfigurovat reverzní proxy server Service Fabric.
-services: service-fabric
-documentationcenter: na
-author: jimacoMS2
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
+title: Azure Service Fabric nastavení reverzního proxy serveru
+description: Naučte se, jak nastavit a nakonfigurovat službu reverzního proxy serveru pro aplikaci Azure Service Fabric.
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: a80eb1ba341a1b15da7ad59203a1d25284d03fd0
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 131440036896d323cbf821d7a220328456e1db36
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933898"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645442"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Nastavení a konfigurace reverzního proxy serveru v Azure Service Fabric
 Reverzní proxy je volitelná služba Azure Service Fabric, která pomáhá mikroslužbám běžícím v clusteru Service Fabric zjišťovat a komunikovat s dalšími službami, které mají koncové body http. Další informace najdete v tématu [reverzní proxy v Azure Service Fabric](service-fabric-reverseproxy.md). V tomto článku se dozvíte, jak nastavit a nakonfigurovat reverzní proxy server v clusteru. 
@@ -50,7 +41,7 @@ Pro existující cluster můžete exportovat šablonu Správce prostředků pro 
 
 Po vytvoření šablony Správce prostředků můžete povolit reverzní proxy pomocí následujících kroků:
 
-1. V [části parametry](../azure-resource-manager/resource-group-authoring-templates.md) v šabloně definujte port reverzního proxy serveru.
+1. V [části parametry](../azure-resource-manager/templates/template-syntax.md) v šabloně definujte port reverzního proxy serveru.
 
     ```json
     "SFReverseProxyPort": {
@@ -61,7 +52,7 @@ Po vytvoření šablony Správce prostředků můžete povolit reverzní proxy p
         }
     },
     ```
-2. Zadejte port pro každý objekt NodeType v [části typ prostředku](../azure-resource-manager/resource-group-authoring-templates.md) [**Microsoft. ServiceFabric/clustery**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) .
+2. Zadejte port pro každý objekt NodeType v [části typ prostředku](../azure-resource-manager/templates/template-syntax.md) [**Microsoft. ServiceFabric/clustery**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) .
 
     Port je identifikovaný názvem parametru reverseProxyEndpointPort.
 

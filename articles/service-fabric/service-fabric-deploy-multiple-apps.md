@@ -1,42 +1,33 @@
 ---
-title: Nasazení aplikace Node.js využívající MongoDB do Azure Service Fabric | Dokumentace Microsoftu
-description: Návod na tom, jak několika hostujících spustitelných souborů pro balíček pro nasazení do clusteru Azure Service Fabric
-services: service-fabric
-documentationcenter: .net
+title: Nasazení aplikace Node. js, která používá MongoDB
+description: Návod, jak zabalit více spustitelných souborů hosta k nasazení do clusteru Azure Service Fabric
 author: mikkelhegn
-manager: chackdan
-editor: ''
-ms.assetid: b76bb756-c1ba-49f9-9666-e9807cf8f92f
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 677a9d02493bf5fac1bfcbe8c40ce9efe2040be9
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 4538efc8a2426fc20dd20d1a85edaf6f76bfc649
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537704"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614464"
 ---
 # <a name="deploy-multiple-guest-executables"></a>Nasazení několika hostujících spustitelných souborů
-Tento článek ukazuje, jak balení a nasazení několika hostujících spustitelných souborů do Azure Service Fabric. Vytváření a nasazování jednoho balíčku Service Fabric najdete v návodu k [nasazení spustitelný soubor typu Host do Service Fabric](service-fabric-deploy-existing-app.md).
+Tento článek popisuje, jak zabalit a nasadit více spustitelných souborů hosta do Azure Service Fabric. Pro sestavování a nasazování jednoho balíčku Service Fabric si přečtěte, jak [nasadit spustitelný soubor hosta pro Service Fabric](service-fabric-deploy-existing-app.md).
 
-Zatímco tento návod ukazuje, jak nasadit aplikaci s front-endu na Node.js, která jako úložiště dat používá MongoDB, můžete provést kroky pro každou aplikaci, která obsahuje závislosti na jinou aplikaci.   
+I když tento návod ukazuje, jak nasadit aplikaci s front-end Node. js, který používá MongoDB jako úložiště dat, můžete použít postup pro libovolnou aplikaci, která má závislosti na jiné aplikaci.   
 
-Visual Studio můžete použít k vytvoření balíčku aplikace, která obsahuje několika hostujících spustitelných souborů. Zobrazit [pomocí sady Visual Studio zabalit existující aplikaci](service-fabric-deploy-existing-app.md). Po přidání první spustitelný soubor typu Host, klikněte pravým tlačítkem na projekt aplikace a vyberte **Přidat -> Nový Service Fabric service** přidáte druhý projekt spustitelný soubor typu Host do řešení. Poznámka: Pokud budete chtít propojit zdroje v projektu sady Visual Studio, vytváření řešení sady Visual Studio se ujistěte se, že je aktuální změny ve zdroji balíčku aplikace. 
+Sadu Visual Studio můžete použít k tvorbě balíčku aplikace, který obsahuje více spustitelných souborů typu Host. Další informace najdete v tématu [použití sady Visual Studio k zabalení existující aplikace](service-fabric-deploy-existing-app.md). Po přidání prvního spustitelného souboru hosta klikněte pravým tlačítkem na projekt aplikace a vyberte **Add-> New Service Fabric Service** a přidejte do řešení druhý spustitelný soubor hosta. Poznámka: Pokud se rozhodnete propojit zdroj v projektu sady Visual Studio, sestavte řešení sady Visual Studio a ujistěte se, že je balíček aplikace aktuální se změnami ve zdroji. 
 
-## <a name="samples"></a>Ukázky kódu
-* [Ukázka pro balení a nasazení hostujícího spustitelného souboru](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Ukázka dvě hosta spustitelných souborů (C# a Node.js) komunikaci přes službu pojmenování pomocí rozhraní REST](https://github.com/Azure-Samples/service-fabric-containers)
+## <a name="samples"></a>ukázky
+* [Ukázka balení a nasazení hostovaného spustitelného souboru](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Ukázka dvou spustitelných souborů hostaC# (a NodeJS), které komunikují přes službu pojmenování pomocí REST](https://github.com/Azure-Samples/service-fabric-containers)
 
-## <a name="manually-package-the-multiple-guest-executable-application"></a>Ručně balíček více aplikace spustitelná hostem
-Případně můžete ručně zabalit spustitelný soubor typu Host. Podrobnosti najdete v tématu [ručně zabalení a nasazení existujícího spustitelného souboru](service-fabric-deploy-existing-app.md#manually-package-and-deploy-an-existing-executable).
+## <a name="manually-package-the-multiple-guest-executable-application"></a>Ruční zabalení aplikace s více spustitelnými soubory hosta
+Případně můžete ručně zabalit spustitelný soubor hosta. Podrobnosti najdete v tématu [ruční balení a nasazení stávajícího spustitelného souboru](service-fabric-deploy-existing-app.md#manually-package-and-deploy-an-existing-executable).
 
-### <a name="packaging-the-nodejs-application"></a>Balení aplikace Node.js
-Tento článek předpokládá, že Node.js není nainstalována na uzlech v clusteru Service Fabric. V důsledku toho budete muset přidat Node.exe do kořenového adresáře aplikace uzlu před balení. Struktura adresářů aplikace Node.js (pomocí webovou architekturu Express a modul šablonovacím) by měla vypadat podobně jako následující:
+### <a name="packaging-the-nodejs-application"></a>Balení aplikace Node. js
+V tomto článku se předpokládá, že Node. js není nainstalovaný na uzlech v clusteru Service Fabric. V důsledku toho je před sbalením nutné přidat Node. exe do kořenového adresáře vaší aplikace uzlu. Adresářová struktura aplikace Node. js (pomocí nástroje Express Web Framework a Jade Template Engine) by měla vypadat podobně jako na následujícím obrázku:
 
 ```
 |-- NodeApplication
@@ -61,22 +52,22 @@ Tento článek předpokládá, že Node.js není nainstalována na uzlech v clus
     |-- node.exe
 ```
 
-V dalším kroku vytvoříte balíček aplikace pro aplikaci Node.js. Následující kód vytvoří balíček aplikace Service Fabric, která obsahuje aplikaci Node.js.
+V dalším kroku vytvoříte balíček aplikace pro aplikaci Node. js. Následující kód vytvoří balíček aplikace Service Fabric, který obsahuje aplikaci Node. js.
 
 ```
 .\ServiceFabricAppPackageUtil.exe /source:'[yourdirectory]\MyNodeApplication' /target:'[yourtargetdirectory] /appname:NodeService /exe:'node.exe' /ma:'bin/www' /AppType:NodeAppType
 ```
 
-Níže je uveden popis parametrů, které jsou používány:
+Níže je uveden popis parametrů, které se používají:
 
-* **/ source** odkazuje na adresář aplikace, která se má zabalit.
-* **/ target** definuje adresář, ve kterém by měl být balíček vytvořen. Tento adresář musí být odlišný od zdrojového adresáře.
-* **příkazy/appname** definuje název aplikace existující aplikace. Je důležité pochopit, že to se přeloží na název v manifestu služby a nikoliv k názvu aplikace Service Fabric.
-* **/exe** definuje spustitelného souboru, který Pokud chcete spustit, v tomto případě by měl Service Fabric `node.exe`.
-* **/Ma** definuje argument, který se používá ke spuštění spustitelného souboru. Jak Node.js není nainstalovaná, Service Fabric potřebuje spustit webový server Node.js pomocí provádí `node.exe bin/www`.  `/ma:'bin/www'` říká nástroje balení pro použití `bin/www` jako argument pro node.exe.
-* **/ Typ aplikace** definuje název typu aplikace Service Fabric.
+* **/source** odkazuje na adresář aplikace, který by měl být zabalen.
+* **/target** definuje adresář, ve kterém by měl být balíček vytvořen. Tento adresář musí být jiný než zdrojový adresář.
+* **/AppName** definuje název aplikace existující aplikace. Je důležité pochopit, že se jedná o název služby v manifestu, a ne o Service Fabric název aplikace.
+* **/exe** definuje spustitelný soubor, který by Service Fabric měl spustit, v tomto případě `node.exe`.
+* **/ma** definuje argument, který se používá ke spuštění spustitelného souboru. Protože Node. js není nainstalován, Service Fabric musí spustit webový server Node. js spuštěním `node.exe bin/www`.  `/ma:'bin/www'` říká nástroji pro balení, aby používal `bin/www` jako argument pro Node. exe.
+* **/AppType** definuje název typu aplikace Service Fabric.
 
-Pokud přejdete do adresáře, který byl zadán parametr/target, uvidíte, že nástroj vytvořila plně funkční balíčku Service Fabric, jak je znázorněno níže:
+Pokud přejdete do adresáře, který byl zadán v parametru/Target, vidíte, že nástroj vytvořil plně funkční balíček Service Fabric, jak je znázorněno níže:
 
 ```
 |--[yourtargetdirectory]
@@ -96,7 +87,7 @@ Pokud přejdete do adresáře, který byl zadán parametr/target, uvidíte, že 
         |-- ServiceManifest.xml
     |-- ApplicationManifest.xml
 ```
-Vygenerovaný ServiceManifest.xml má teď oddíl, který popisuje, jak spustit webový server Node.js, jak je znázorněno v následujícím fragmentu kódu:
+Vygenerovaný ServiceManifest. XML teď obsahuje část, která popisuje, jak by se měl spustit webový server Node. js, jak je znázorněno v následujícím fragmentu kódu:
 
 ```xml
 <CodePackage Name="C" Version="1.0">
@@ -109,7 +100,7 @@ Vygenerovaný ServiceManifest.xml má teď oddíl, který popisuje, jak spustit 
     </EntryPoint>
 </CodePackage>
 ```
-V této ukázce webový server Node.js naslouchá port 3000, takže je potřeba aktualizovat informace o koncovém bodu v souboru ServiceManifest.xml, jak je znázorněno níže.   
+V této ukázce webový server Node. js naslouchá na portu 3000, takže je třeba aktualizovat informace koncového bodu v souboru ServiceManifest. XML, jak je znázorněno níže.   
 
 ```xml
 <Resources>
@@ -119,9 +110,9 @@ V této ukázce webový server Node.js naslouchá port 3000, takže je potřeba 
 </Resources>
 ```
 ### <a name="packaging-the-mongodb-application"></a>Balení aplikace MongoDB
-Teď, když máte zabalené aplikace Node.js, vám pokračujte a balíček MongoDB. Jak už bylo uvedeno dříve, teď projít kroky nejsou specifická pro Node.js a MongoDB. Ve skutečnosti se vztahují na všechny aplikace, které mají být oprav jako jedna aplikace Service Fabric.  
+Teď, když máte zabalenou aplikaci Node. js, můžete pokračovat a zabalit MongoDB. Jak bylo zmíněno dříve, kroky, které provedete nyní, nejsou specifické pro Node. js a MongoDB. Ve skutečnosti se vztahují na všechny aplikace, které mají být zabaleny společně jako jedna aplikace Service Fabric.  
 
-Chcete-li zabalit MongoDB, ujistěte se, že balíček Mongod.exe a Mongo.exe. Obě binární soubory jsou umístěny v `bin` adresáře z adresáře instalace MongoDB. Vypadá podobně jako následující adresářovou strukturu.
+Chcete-li zabalit MongoDB, měli byste se ujistit, že jste zabalily Mongod. exe a Mongo. exe. Oba binární soubory jsou umístěné v adresáři `bin` instalačního adresáře MongoDB. Adresářová struktura vypadá podobně jako v následujícím příkladu.
 
 ```
 |-- MongoDB
@@ -130,25 +121,25 @@ Chcete-li zabalit MongoDB, ujistěte se, že balíček Mongod.exe a Mongo.exe. O
         |-- mongo.exe
         |-- anybinary.exe
 ```
-Service Fabric musí začínat MongoDB podobný příkaz níže, takže budete muset použít `/ma` parametr při vytváření balíčku MongoDB.
+Service Fabric musí začít MongoDB s příkazem podobným následujícímu, takže při vytváření balíčku MongoDB musíte použít parametr `/ma`.
 
 ```
 mongod.exe --dbpath [path to data]
 ```
 > [!NOTE]
-> Data se nezachová v případě selhání uzlu když vložíte do adresáře dat MongoDB na místní adresáře uzlu. By měl použít odolných úložišť nebo implementovat prevence ztráty dat sady replik MongoDB.  
+> Data nejsou zachována v případě selhání uzlu, pokud umístíte adresář dat MongoDB do místního adresáře uzlu. Aby se zabránilo ztrátě dat, měli byste buď použít trvalé úložiště, nebo implementovat sadu replik MongoDB.  
 >
 >
 
-V Powershellu nebo příkazového řádku můžeme spustit nástroj balení s následujícími parametry:
+V PowerShellu nebo příkazovém prostředí spustíme Nástroj pro vytváření balíčků s následujícími parametry:
 
 ```
 .\ServiceFabricAppPackageUtil.exe /source: [yourdirectory]\MongoDB' /target:'[yourtargetdirectory]' /appname:MongoDB /exe:'bin\mongod.exe' /ma:'--dbpath [path to data]' /AppType:NodeAppType
 ```
 
-Pokud chcete přidat MongoDB balíčku aplikace Service Fabric, budete muset Ujistěte se, že odkazuje parametr/target do stejného adresáře, který již obsahuje aplikaci manifestu spolu s aplikace Node.js. Také je třeba Ujistěte se, že používáte stejný název ApplicationType.
+Aby bylo možné přidat MongoDB do balíčku aplikace Service Fabric, je nutné zajistit, aby parametr/Target odkazoval na stejný adresář, který již obsahuje manifest aplikace spolu s aplikací Node. js. Musíte také zkontrolovat, zda používáte stejný název typu ApplicationType.
 
-Teď přejděte do adresáře a zkontrolujte, co nástroj vytvořil.
+Pojďme přejít do adresáře a ověřit, co nástroj vytvořil.
 
 ```
 |--[yourtargetdirectory]
@@ -164,7 +155,7 @@ Teď přejděte do adresáře a zkontrolujte, co nástroj vytvořil.
         |-- ServiceManifest.xml
     |-- ApplicationManifest.xml
 ```
-Jak je vidět, nástroj Přidat novou složku, MongoDB, k adresáři, který obsahuje binární soubory MongoDB. Pokud otevřete `ApplicationManifest.xml` souboru, uvidíte, že balíček nyní obsahuje jak aplikací v Node.js a MongoDB. Následující kód zobrazí obsah manifestu aplikace.
+Jak vidíte, nástroj přidal novou složku MongoDB do adresáře, který obsahuje binární soubory MongoDB. Pokud otevřete `ApplicationManifest.xml` soubor, uvidíte, že balíček nyní obsahuje aplikaci Node. js i MongoDB. Následující kód ukazuje obsah manifestu aplikace.
 
 ```xml
 <ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyNodeApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -190,7 +181,7 @@ Jak je vidět, nástroj Přidat novou složku, MongoDB, k adresáři, který obs
 ```
 
 ### <a name="publishing-the-application"></a>Publikování aplikace
-Posledním krokem je publikujte aplikaci do místního clusteru Service Fabric s využitím následujících skriptů prostředí PowerShell:
+Posledním krokem je publikování aplikace do místního clusteru Service Fabric pomocí následujících skriptů PowerShellu:
 
 ```
 Connect-ServiceFabricCluster localhost:19000
@@ -204,17 +195,17 @@ Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'NodeAppType'
 New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationTypeName 'NodeAppType' -ApplicationTypeVersion 1.0  
 ```
 
-Po publikování aplikace do místního clusteru je úspěšně, můžete přístup k aplikaci Node.js na portu, který jsme zadali v manifestu služby aplikace Node.js – například http:\//localhost:3000.
+Po úspěšném publikování aplikace do místního clusteru můžete k aplikaci Node. js přistupovat na portu, který jsme zadali v manifestu služby aplikace Node. js – například http:\//localhost: 3000.
 
-V tomto kurzu jste viděli, jak jednoduše zabalit dvě stávajících aplikací jako jedna aplikace Service Fabric. Můžete také se naučili, jak ji nasadit do Service Fabric tak, aby ho využívat některé funkce Service Fabric, jako je vysoká dostupnost a stavu systému integrace.
+V tomto kurzu jste viděli, jak snadno zabalit dvě existující aplikace jako jednu Service Fabric aplikaci. Zjistili jste také, jak ho nasadit, aby bylo možné Service Fabric, aby mohl využívat některé z Service Fabric funkcí, jako je například vysoká dostupnost a integrace systému pro stav.
 
-## <a name="adding-more-guest-executables-to-an-existing-application-using-yeoman-on-linux"></a>Přidání další spustitelné soubory typu Host do existující aplikace v Linuxu pomocí Yeomana
+## <a name="adding-more-guest-executables-to-an-existing-application-using-yeoman-on-linux"></a>Přidání dalších spustitelných souborů hosta do existující aplikace pomocí Yeoman v systému Linux
 
 Pokud chcete přidat další službu do aplikace již vytvořené pomocí `yo`, proveďte následující kroky: 
 1. Změňte adresář na kořenovou složku stávající aplikace.  Například `cd ~/YeomanSamples/MyApplication`, pokud `MyApplication` je aplikace vytvořená pomocí Yeomanu.
-2. Spustit `yo azuresfguest:AddService` a zadejte potřebné podrobnosti.
+2. Spusťte `yo azuresfguest:AddService` a zadejte potřebné podrobnosti.
 
-## <a name="next-steps"></a>Další postup
-* Další informace o nasazování kontejnerů s [přehled Service Fabric a kontejnery](service-fabric-containers-overview.md)
-* [Ukázka pro balení a nasazení hostujícího spustitelného souboru](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Ukázka dvě hosta spustitelných souborů (C# a Node.js) komunikaci přes službu pojmenování pomocí rozhraní REST](https://github.com/Azure-Samples/service-fabric-containers)
+## <a name="next-steps"></a>Další kroky
+* Informace o nasazení kontejnerů pomocí [Service Fabric a kontejnerů – přehled](service-fabric-containers-overview.md)
+* [Ukázka balení a nasazení hostovaného spustitelného souboru](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Ukázka dvou spustitelných souborů hostaC# (a NodeJS), které komunikují přes službu pojmenování pomocí REST](https://github.com/Azure-Samples/service-fabric-containers)

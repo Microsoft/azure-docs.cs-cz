@@ -2,16 +2,16 @@
 title: Nejčastější dotazy ke službě Azure Cache for Redis
 description: Přečtěte si odpovědi na běžné otázky, vzory a osvědčené postupy pro službu Azure cache pro Redis.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.author: yegu
-ms.openlocfilehash: e497a5c54a80dbed2ea94f8251d198c1c8bc5043
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: ddf7999153e9d9722e627d148b116750fe3aaecf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122796"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433456"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Nejčastější dotazy ke službě Azure Cache for Redis
 Seznamte se s odpověďmi na běžné otázky, vzory a osvědčené postupy pro službu Azure cache pro Redis.
@@ -74,7 +74,7 @@ Nejčastější dotazy v této části se týkají běžných otázek monitorov�
 ## <a name="prior-cache-offering-faqs"></a>Předchozí mezipaměť – Nejčastější dotazy
 * [Která nabídka Azure cache je pro mě ta pravá?](#which-azure-cache-offering-is-right-for-me)
 
-### <a name="what-is-azure-cache-for-redis"></a>Co je Azure cache pro Redis?
+### <a name="what-is-azure-cache-for-redis"></a>Co je Azure Cache for Redis?
 Mezipaměť Azure pro Redis je založená na oblíbeném open source softwaru [Redis](https://redis.io/). Poskytuje přístup k zabezpečené, vyhrazené mezipaměti Azure pro Redis, která je spravovaná Microsoftem a přístupná z libovolné aplikace v Azure. Podrobnější přehled najdete na stránce produktu [Azure cache for Redis](https://azure.microsoft.com/services/cache/) na Azure.com.
 
 ### <a name="how-can-i-get-started-with-azure-cache-for-redis"></a>Jak můžu začít pracovat s Azure cache pro Redis?
@@ -128,8 +128,8 @@ Z této tabulky můžeme vykreslit následující závěry:
 | Cenová úroveň | Velikost | Procesorová jádra | Dostupná šířka pásma | velikost hodnoty 1 – KB | velikost hodnoty 1 – KB |
 | --- | --- | --- | --- | --- | --- |
 | **Standardní velikosti mezipaměti** | | |**Megabitů za sekundu (MB/s)/megabajtů za sekundu (MB/s)** |**Počet požadavků za sekundu (RPS) bez SSL** |**SSL požadavků za sekundu (RPS)** |
-| C0 | 250 MB | Sdílené | 100 / 12.5  |  15,000 |   7,500 |
-| C1 |   1 GB | 1      | 500 / 62.5  |  38 000 |  20 720 |
+| C0 | 250 MB | Shared | 100 / 12.5  |  15 000 |   7 500 |
+| C1 |   1 GB | 1\. místo      | 500 / 62.5  |  38 000 |  20 720 |
 | C2 | 2,5 GB | 2      | 500 / 62.5  |  41 000 |  37 000 |
 | C3 |   6 GB | 4      | 1000/125  | 100 000 |  90,000 |
 | C4 |  13 GB | 2      | 500 / 62.5  |  60,000 |  55 000 |
@@ -159,7 +159,7 @@ Ano, mezipaměť Azure pro Redis je dostupná v cloudu Azure Government, Azure �
 
 | Cloud   | Přípona DNS pro Redis            |
 |---------|---------------------------------|
-| Public  | *.redis.cache.windows.net       |
+| Veřejné  | *.redis.cache.windows.net       |
 | Vláda USA  | *.redis.cache.usgovcloudapi.net |
 | Německo | *.redis.cache.cloudapi.de       |
 | Čína   | *.redis.cache.chinacloudapi.cn  |
@@ -307,7 +307,7 @@ Pokyny ke stažení nástrojů Redis naleznete v části How to [Run Redis Comma
 * Pamatujte na náklady na výkon spojené s různými operacemi, které používáte. Například příkaz `KEYS` je operace O (n), která by se měla vyhnout. [Web Redis.IO](https://redis.io/commands/) obsahuje podrobnosti o časové složitosti každé podporované operace. Pro zobrazení složitosti jednotlivých operací klikněte na jednotlivé příkazy.
 
 #### <a name="configuration-and-concepts"></a>Konfigurace a koncepty
-* Pro produkční systémy použijte úroveň Standard nebo Premium. Úroveň Basic je systém s jedním uzlem bez replikace dat a smlouvou SLA. Použijte také alespoň mezipaměť C1. Mezipaměti C0 jsou obvykle používány pro jednoduché scénáře vývoje a testování.
+* Pro produkční systémy použijte úroveň Standard nebo Premium. Úroveň Basic odpovídá systému s jedním uzlem, bez replikace dat a smlouvy SLA. Jako mezipaměť použijte aspoň C1. Mezipaměti C0 jsou obvykle používány pro jednoduché scénáře vývoje a testování.
 * Pamatujte, že Redis je úložiště dat **v paměti** . Přečtěte si [Tento článek](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md) , abyste se dozvěděli o scénářích, kdy může dojít ke ztrátě dat.
 * Vytvořte svůj systém tak, aby mohl zpracovávat připojení výkyvů [z důvodu oprav a převzetí služeb při selhání](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md).
 
@@ -411,7 +411,7 @@ Povolením GC serveru můžete optimalizovat klienta a zajistit lepší výkon a
 
 * [Povolení serveru GC](/dotnet/framework/configure-apps/file-schema/runtime/gcserver-element)
 * [Základy kolekce paměti](/dotnet/standard/garbage-collection/fundamentals)
-* [Uvolňování paměti a výkon](/dotnet/standard/garbage-collection/performance)
+* [Kolekce paměti a výkon](/dotnet/standard/garbage-collection/performance)
 
 
 ### <a name="performance-considerations-around-connections"></a>Požadavky na výkon kolem připojení
@@ -471,7 +471,7 @@ Na rozdíl od tradičních mezipamětí, které se týkají pouze párů klíč-
 
 Dalším aspektem klíčových Redis úspěchu je dobrý a vysoce živý ekosystém open source. To se projeví v různorodé sadě klientů Redis dostupných napříč různými jazyky. Tento ekosystém a široké spektrum klientů umožňují použití mezipaměti Azure pro Redis skoro všemi úlohami, které byste sestavili v Azure.
 
-Další informace o tom, jak začít s Azure cache pro Redis, najdete v tématu [Jak používat Azure cache pro Redis](cache-dotnet-how-to-use-azure-redis-cache.md) a [Azure cache pro Redis dokumentaci](index.md).
+Další informace o tom, jak začít s Azure cache pro Redis, najdete v tématu [Jak používat Azure cache pro Redis](cache-dotnet-how-to-use-azure-redis-cache.md) a [Azure cache pro Redis dokumentaci](index.yml).
 
 ### <a name="managed-cache-service"></a>Služba Managed Cache Service
 [Služba Managed Cache Service byla vyřazena z 30. listopadu 2016.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)

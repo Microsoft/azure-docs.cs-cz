@@ -1,25 +1,16 @@
 ---
-title: Migrace z Java SDK do Mavenu – aktualizace starších aplikací Azure Service Fabric v Javě pro použití Mavenu | Dokumentace Microsoftu
+title: Migrace ze sady Java SDK na Maven
 description: Aktualizace starších aplikací v Javě, které používaly Service Fabric Java SDK, k načtení závislostí Service Fabric v Javě z Mavenu. Po dokončení tohoto nastavení budou starší aplikace v Javě umožňovat sestavení.
-services: service-fabric
-documentationcenter: java
 author: rapatchi
-manager: chackdan
-editor: ''
-ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/23/2017
 ms.author: rapatchi
-ms.openlocfilehash: dbd85b3647a60ce873c1a55b851bd47ece103282
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b5e126ebdf3b89470472391c59d378c7a6d39b86
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60718390"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609804"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Aktualizace předchozí aplikace Java Service Fabric pro načtení knihoven Javy z Mavenu
 Nedávno jsme přesunuli binární soubory Service Fabric Java ze sady Service Fabric Java SDK do hostování v Mavenu. Momentálně můžete k načtení nejnovějších závislostí Service Fabric Java využít **mavencentral**. Tento rychlý start vám pomůže aktualizovat stávající aplikace v Javě, které jste dříve vytvořili pro použití se sadou Service Fabric Java SDK, a to pomocí šablony Yeoman nebo Eclipse, aby byly kompatibilní se sestavením založeným na Mavenu.
@@ -88,8 +79,8 @@ Podpora bezstavové služby Service Fabric pro vaši aplikaci.
   }
   ```
 
-### <a name="others"></a>Ostatní
-#### <a name="transport"></a>Přenos
+### <a name="others"></a>Další
+#### <a name="transport"></a>Doprava
 
 Podpora přenosové vrstvy pro aplikace Service Fabric Java. Pokud neprogramujete na úrovni přenosové vrstvy, nemusíte tuto závislost do aplikace Reliable Actor nebo aplikace služby explicitně přidávat.
 
@@ -167,7 +158,7 @@ task copyDeps <<{
     }
 }
 ```
-Teď by měl **aktualizovaný** soubor ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
+Teď, když chcete načíst závislosti z Maven, **aktualizované** ``build.gradle`` by měly odpovídající části:
 ```
 repositories {
         mavenCentral()
@@ -241,7 +232,7 @@ dependencies {
 .
 .
 ```
-Teď by měl **aktualizovaný** soubor ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
+Teď, když chcete načíst závislosti z Maven, **aktualizované** ``build.gradle`` by měly odpovídající části:
 ```
 repositories {
     mavenCentral()
@@ -313,7 +304,7 @@ task copyDeps<< {
     }
 }
 ```
-Teď by měl **aktualizovaný** soubor ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
+Teď, když chcete načíst závislosti z Maven, **aktualizované** ``build.gradle`` by měly odpovídající části:
 ```
 repositories {
     mavenCentral()
@@ -413,7 +404,7 @@ task copyDeps<< {
         }
 }
 ```
-Teď by měl **aktualizovaný** soubor ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
+Teď, když chcete načíst závislosti z Maven, **aktualizované** ``build.gradle`` by měly odpovídající části:
 ```
 repositories {
     mavenCentral()
@@ -473,7 +464,7 @@ task copyDeps<< {
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření a nasazení první aplikace Service Fabric v Javě v Linuxu pomocí Yeomana](service-fabric-create-your-first-linux-application-with-java.md)
 * [Vytvoření a nasazení první aplikace Service Fabric v Javě v Linuxu pomocí modulu plug-in Service Fabric pro Eclipse](service-fabric-get-started-eclipse.md)

@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: e8c0e67567bd5ddbfdd45762edd52112c1fd4c70
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d7cff4e2afff4678bf7aa437aefa9d8deea220bc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74897270"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428953"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Průvodce nastavením počítače se šablonou Windows v Azure Lab Services
 
@@ -142,7 +142,7 @@ Pokud Váš počítač šablony potřebuje sadu Office, doporučujeme nainstalov
 
 ### <a name="change-the-microsoft-office-365-update-channel"></a>Změna kanálu aktualizace systém Microsoft Office 365
 
-Pomocí nástroje Konfigurace Office můžete nastavit, jak často Office dostávají aktualizace.  Pokud ale potřebujete změnit, jak často Office obdrží aktualizace po instalaci, můžete změnit adresu URL kanálu aktualizace.  Adresy URL kanálu aktualizace se dají najít při [změně kanálu aktualizace po povolení klientů Office 365 přijímat aktualizace z Configuration Manager](https://docs.microsoft.com/sccm/sum/deploy-use/manage-office-365-proplus-updates#change-the-update-channel-after-you-enable-office-365-clients-to-receive-updates-from-configuration-manager). Následující příklad ukazuje, jak nastavit Office 365 pro použití měsíčního kanálu aktualizace.
+Pomocí nástroje Konfigurace Office můžete nastavit, jak často Office dostávají aktualizace.  Pokud ale potřebujete změnit, jak často Office obdrží aktualizace po instalaci, můžete změnit adresu URL kanálu aktualizace.  Adresy URL kanálu aktualizace se dají najít v [změna kanálu aktualizace po povolení klientů Office 365 přijímat aktualizace z Configuration Manager]/ConfigMgr/Sum/Deploy-use/Manage-Office-365-ProPlus-Updates # bkmk_channel). Následující příklad ukazuje, jak nastavit Office 365 pro použití měsíčního kanálu aktualizace.
 
 ```powershell
 # Update to the Office 365 Monthly Channel

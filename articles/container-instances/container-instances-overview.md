@@ -4,12 +4,12 @@ description: Služba Azure Container Instances nabízí nejrychlejší a nejjedn
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c8f243bc2bda83a467688ac5828219cd015c8326
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 040f246fa687dfe3ca56877c11c140ddb40247a4
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533546"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552317"
 ---
 # <a name="what-is-azure-container-instances"></a>Co je služba Azure Container Instances?
 
@@ -21,13 +21,19 @@ Azure Container Instances je skvělým řešením pro jakýkoli scénář, kter�
 
 Kontejnery nabízejí oproti virtuálním počítačům významné výhody při spouštění. Služba Azure Container Instances může spouštět kontejnery v Azure během několika sekund a bez nutnosti zřizovat a spravovat virtuální počítače.
 
-## <a name="public-ip-connectivity-and-dns-name"></a>Připojení pomocí veřejné IP adresy a název DNS
+## <a name="container-access"></a>Přístup k kontejneru
 
-Služba Azure Container Instances umožňuje zveřejňovat kontejnery přímo na internetu s použitím IP adresy a plně kvalifikovaného názvu domény. Při vytváření instance kontejneru můžete zadat vlastní popisek názvu DNS a zpřístupnit tak aplikaci na adrese *vlastní_popisek*.*oblast_Azure*.azurecontainer.io.
+Azure Container Instances umožňuje vystavit skupiny kontejnerů přímo na internetu s IP adresou a plně kvalifikovaným názvem domény (FQDN). Při vytváření instance kontejneru můžete zadat vlastní popisek názvu DNS a zpřístupnit tak aplikaci na adrese *vlastní_popisek*.*oblast_Azure*.azurecontainer.io.
+
+Azure Container Instances také podporuje provádění příkazu ve spuštěném kontejneru poskytnutím interaktivního prostředí pro pomoc s vývojem aplikací a řešením potíží. Přístup provádí přes protokol HTTPS pomocí protokolu TLS k zabezpečení připojení klientů.
+
+> [!IMPORTANT]
+> Od 13. ledna 2020 bude Azure Container Instances vyžadovat, aby všechna zabezpečená připojení ze serverů a aplikací používala protokol TLS 1,2. Bude vyřazena podpora TLS 1,0 a 1,1.
 
 ## <a name="hypervisor-level-security"></a>Zabezpečení na úrovni hypervisoru
 
 Kontejnery tradičně nabízejí izolaci závislostí aplikace a zásady správného řízení prostředků, ale nebyly považovány za dostatečně odolné pro použití v nehostinném prostředí více tenantů. Služba Azure Container Instances zaručuje izolaci vaší aplikace v kontejneru stejně, jako by byla na virtuálním počítači.
+
 
 ## <a name="custom-sizes"></a>Vlastní velikosti
 
@@ -37,7 +43,7 @@ Pro úlohy náročné na výpočetní výkon, jako je Machine Learning, může A
 
 ## <a name="persistent-storage"></a>Trvalé úložiště
 
-Pro načtení a uložení stavu pomocí služby Azure Container Instances nabízíme přímé [připojení sdílených složek Azure](container-instances-mounting-azure-files-volume.md).
+Aby bylo možné načíst stav a zachovat ho v Azure Container Instances, nabízíme přímé [připojení sdílených složek Azure Files](container-instances-mounting-azure-files-volume.md) zajištěných pomocí Azure Storage.
 
 ## <a name="linux-and-windows-containers"></a>Kontejnery Windows a Linuxu
 

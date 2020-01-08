@@ -1,27 +1,16 @@
 ---
-title: Ladění aplikací pro Azure Service Fabric v systému Linux | Microsoft Docs
+title: Ladění aplikací Azure Service Fabric v systému Linux
 description: Naučte se monitorovat a diagnostikovat Service Fabric služby na místním vývojovém počítači se systémem Linux.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 4eebe937-ab42-4429-93db-f35c26424321
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 017b359f4c6da438f5179813fa3ed1ad2c536834
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d8b5ec2f2190586f5eced5eee112b190a82504c3
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168863"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526290"
 ---
-# <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorování a diagnostika služeb v nastavení vývoje místního počítače
+# <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Monitorování a diagnostika služeb v nastavení pro vývoj v místním počítači se systémem Linux
 
 
 > [!div class="op_single_selector"]
@@ -35,7 +24,7 @@ Monitorování, detekce, diagnostika a řešení potíží umožní službám po
 
 ## <a name="debugging-service-fabric-java-applications"></a>Ladění aplikací Service Fabric Java
 
-Pro aplikace Java je k dispozici [více rozhraní protokolování](https://en.wikipedia.org/wiki/Java_logging_framework) . Vzhledem k tomu, že `java.util.logging` je výchozí možnost JRE, používá se také pro [Příklady kódu v GitHubu](https://github.com/Azure-Samples/service-fabric-java-getting-started). Následující diskuze vysvětluje, jak nakonfigurovat rozhraní `java.util.logging`.
+Pro aplikace Java je k dispozici [více rozhraní protokolování](https://en.wikipedia.org/wiki/Java_logging_framework) . Vzhledem k tomu, že `java.util.logging` je výchozí možnost JRE, používá se také pro [Příklady kódu v GitHubu](https://github.com/Azure-Samples/service-fabric-java-getting-started). Následující diskuzi vysvětluje, jak nakonfigurovat `java.util.logging` Framework.
 
 Pomocí jazyka Java. util. log můžete přesměrovat protokoly aplikace na paměť, Výstupní proudy, soubory konzoly nebo sokety. Pro každou z těchto možností jsou již v rozhraní k dispozici výchozí obslužné rutiny. Můžete vytvořit soubor `app.properties` pro konfiguraci obslužné rutiny souboru pro vaši aplikaci pro přesměrování všech protokolů do místního souboru.
 
@@ -51,14 +40,14 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
-Složka, na kterou ukazuje soubor `app.properties`, musí existovat. Po vytvoření souboru `app.properties` je potřeba také změnit skript vstupního bodu, `entrypoint.sh` ve složce `<applicationfolder>/<servicePkg>/Code/`, chcete-li nastavit vlastnost `java.util.logging.config.file` na `app.properties`. Záznam by měl vypadat jako následující fragment kódu:
+Složka, na kterou odkazuje soubor `app.properties`, musí existovat. Po vytvoření souboru `app.properties` budete muset také upravit skript vstupního bodu, ve `entrypoint.sh` ve složce `<applicationfolder>/<servicePkg>/Code/` nastavte vlastnost `java.util.logging.config.file` na `app.properties` soubor. Záznam by měl vypadat jako následující fragment kódu:
 
 ```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
 ```
 
 
-Výsledkem této konfigurace je, že protokoly se shromažďují rotujícím způsobem při `/tmp/servicefabric/logs/`. Soubor protokolu v tomto případě se nazývá mysfapp% u.% g. log, kde:
+Výsledkem této konfigurace je, že protokoly se shromažďují rotujícím způsobem při `/tmp/servicefabric/logs/`. Soubor protokolu v tomto případě se nazývá mysfapp% u .% g. log, kde:
 * **% u** je jedinečné číslo, které řeší konflikty mezi souběžnými procesy Java.
 * **% g** je číslo generace pro rozlišení mezi rotačními protokoly.
 

@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – sfctl psaní | Microsoft Docs
-description: Popisuje příkazy Service Fabric CLI sfctl pro vytváření.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – vytváření sfctl
+description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro Docker Compose aplikace.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 561616fca7401f5251c4fbac67173260a665b602
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 3a9fa142dd45674e4a3e88745acffef225b80a64
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901657"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645391"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 Vytvářejte, odstraňujte a spravujte aplikace Docker Compose.
@@ -30,11 +21,11 @@ Vytvářejte, odstraňujte a spravujte aplikace Docker Compose.
 | --- | --- |
 | vytvoření | Vytvoří Service Fabric vytváření nasazení. |
 | list | Získá seznam nasazení vytváření vytvořená v clusteru Service Fabric. |
-| Odebrány | Odstraní existující Service Fabric vytvoření nasazení z clusteru. |
+| remove | Odstraní existující Service Fabric vytvoření nasazení z clusteru. |
 | status | Načte informace o nasazení Service Fabricho vytváření. |
-| Přejít | Spustí upgrade nasazení vytváření v clusteru Service Fabric. |
-| upgrade – vrácení zpět | Spustí vrácení upgradu nasazení do sestavení v clusteru Service Fabric. |
-| upgrade – stav | Získá podrobnosti o posledním upgradu provedeném na tomto Service Fabric nasazení. |
+| upgrade | Spustí upgrade nasazení vytváření v clusteru Service Fabric. |
+| upgrade-rollback | Spustí vrácení upgradu nasazení do sestavení v clusteru Service Fabric. |
+| upgrade-status | Získá podrobnosti o posledním upgradu provedeném na tomto Service Fabric nasazení. |
 
 ## <a name="sfctl-compose-create"></a>Vytvoření sfctl
 Vytvoří Service Fabric vytváření nasazení.
@@ -46,7 +37,7 @@ Vytvoří Service Fabric vytváření nasazení.
 | --Deployment-Name [povinné] | Název nasazení. |
 | --File-Path [povinné] | Cesta k cílovému souboru Docker Compose. |
 | --šifrované – Pass | Namísto zobrazení výzvy pro heslo registru kontejneru použijte již zašifrovanou frázi Pass. |
-| --má-Pass | Zobrazí výzvu k zadání hesla k registru kontejneru. |
+| --has-pass | Zobrazí výzvu k zadání hesla k registru kontejneru. |
 | --Timeout-t | Výchozí\: 60. |
 | --user | Uživatelské jméno pro připojení k registru kontejnerů. |
 
@@ -138,24 +129,24 @@ Ověří zadané parametry upgradu a spustí upgrade nasazení, pokud jsou param
 | --- | --- |
 | --Deployment-Name [povinné] | Název nasazení. |
 | --File-Path [povinné] | Cesta k cílovému souboru sestavení Docker. |
-| --Default-svc-Type-map-Health | Slovník kódovaný ve formátu JSON, který popisuje zásady stavu používané k vyhodnocení stavu služeb. |
+| --default-svc-type-health-map | Slovník kódovaný ve formátu JSON, který popisuje zásady stavu používané k vyhodnocení stavu služeb. |
 | --šifrované – Pass | Namísto zobrazení výzvy pro heslo registru kontejneru použijte již zašifrovanou frázi Pass. |
 | --Chyba – akce | Možné hodnoty zahrnují\: ' invalid ', ' Rollback ', ' Manual '. |
 | --Force-restart | Procesy jsou během upgradu vynuceně restartovány i v případě, že se verze kódu nezměnila. <br><br> Upgrade pouze změní konfiguraci nebo data. |
-| --má-Pass | Zobrazí výzvu k zadání hesla k registru kontejneru. |
-| --Health-Check-opakování | Doba mezi pokusy o provedení kontrol stavu, pokud aplikace nebo cluster není v pořádku. |
+| --has-pass | Zobrazí výzvu k zadání hesla k registru kontejneru. |
+| --health-check-retry | Doba mezi pokusy o provedení kontrol stavu, pokud aplikace nebo cluster není v pořádku. |
 | --Health-Check-stabilní | Doba, po kterou musí aplikace nebo cluster zůstat v pořádku, než bude upgrade pokračovat na další upgradovací doménu. <br><br> Je nejprve interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepovede, interpretuje se jako číslo představující celkový počet milisekund. |
-| --Health-Check-Wait | Doba, po kterou se má po dokončení upgradu domény počkat, než se spustí proces kontroly stavu. |
-| --replice-set-check | Maximální doba, po kterou se má blokovat zpracování upgradovací domény a zabránit ztrátě dostupnosti, pokud dojde k neočekávaným problémům. <br><br> Po vypršení časového limitu bude zpracování upgradovací domény pokračovat bez ohledu na problémy se ztrátou dostupnosti. Časový limit se resetuje na začátku každé upgradovací domény. Platné hodnoty jsou mezi 0 a 42949672925 včetně. |
-| --SVC-typ-mapa-stav | Seznam objektů kódovaných pomocí JSON, které popisují zásady stavu používané k vyhodnocení stavu různých typů služeb. |
+| --health-check-wait | Doba, po kterou se má po dokončení upgradu domény počkat, než se spustí proces kontroly stavu. |
+| --replica-set-check | Maximální doba, po kterou se má blokovat zpracování upgradovací domény a zabránit ztrátě dostupnosti, pokud dojde k neočekávaným problémům. <br><br> Po vypršení časového limitu bude zpracování upgradovací domény pokračovat bez ohledu na problémy se ztrátou dostupnosti. Časový limit se resetuje na začátku každé upgradovací domény. Platné hodnoty jsou mezi 0 a 42949672925 včetně. |
+| --svc-type-health-map | Seznam objektů kódovaných pomocí JSON, které popisují zásady stavu používané k vyhodnocení stavu různých typů služeb. |
 | --Timeout-t | Výchozí\: 60. |
 | --není v pořádku – aplikace | Maximální povolené procento nezdravých aplikací před Nahlášením chyby. <br><br> Například pokud chcete, aby 10% aplikací bylo ve špatném stavu, bude tato hodnota 10. Procento představuje maximální povolený procentuální podíl aplikací, které mohou být chybné, než se cluster bude považovat za chybu. Pokud je dodrženo procento, ale existuje aspoň jedna poškozená aplikace, stav se vyhodnotí jako varování. To se počítá vydělením počtu nezdravých aplikací nad celkovým počtem instancí aplikace v clusteru. |
-| --upgrade-Domain – vypršel časový limit. | Doba, po kterou musí být každá upgradovací doména dokončena před provedením FailureAction. <br><br> Je nejprve interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepovede, interpretuje se jako číslo představující celkový počet milisekund. |
+| --upgrade-domain-timeout | Doba, po kterou musí být každá upgradovací doména dokončena před provedením FailureAction. <br><br> Je nejprve interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepovede, interpretuje se jako číslo představující celkový počet milisekund. |
 | --upgrade-druh | Výchozí\:. |
 | --upgrade-režim | Možné hodnoty zahrnují\: ' invalid ', ' UnmonitoredAuto ', ' UnmonitoredManual ', ' Monitored '.  Výchozí\: UnmonitoredAuto. |
 | --upgrade – časový limit | Doba, po kterou musí být celkový upgrade dokončen před provedením FailureAction. <br><br> Je nejprve interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepovede, interpretuje se jako číslo představující celkový počet milisekund. |
 | --user | Uživatelské jméno pro připojení k registru kontejnerů. |
-| --Warning-as-Error | Označuje, zda jsou upozornění zpracována se stejnou závažností jako chyby. |
+| --warning-as-error | Označuje, zda jsou upozornění zpracována se stejnou závažností jako chyby. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 

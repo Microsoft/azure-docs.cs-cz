@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3d30f5a60bf19e9185d992b973414f58942f9954
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 256e1e60ec8f50df2faea64f31e88d00370b33c4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035299"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458715"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Vytvoření plně kvalifikovaného názvu domény v Azure Portal pro virtuální počítač se systémem Linux
 
@@ -36,5 +36,5 @@ Nyní se můžete vzdáleně připojit k virtuálnímu počítači pomocí tohot
 ## <a name="next-steps"></a>Další kroky
 Když teď váš virtuální počítač má veřejnou IP adresu a název DNS, můžete nasadit společné aplikační architektury nebo služby, jako je Nginx, MongoDB, Docker atd.
 
-Můžete si také přečíst další informace o [použití Správce prostředků](../../azure-resource-manager/resource-group-overview.md) pro tipy k vytváření nasazení Azure.
+Můžete si také přečíst další informace o [použití Správce prostředků](../../azure-resource-manager/management/overview.md) pro tipy k vytváření nasazení Azure.
 

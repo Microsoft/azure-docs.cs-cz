@@ -1,5 +1,5 @@
 ---
-title: Práce s rozhraním API pro integrované dotazy jazyka JavaScript v Azure Cosmos DB
+title: Práce s integrovaným rozhraním API pro dotazy v jazyce JavaScript v Azure Cosmos DB
 description: V tomto článku se seznámíte s koncepty rozhraní API pro integrované dotazy jazyka JavaScript k vytváření uložených procedur a triggerů v Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 01e5e95da3c19c03d07c7f3c1d716f5f1e97de98
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 8396608cdbc5638a3640f94c94b44ad7c5f52a73
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717593"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445311"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Rozhraní API pro dotazování v jazyce JavaScript v Azure Cosmos DB
 
@@ -20,7 +20,7 @@ Kromě vydávání dotazů pomocí rozhraní SQL API v Azure Cosmos DB umožňuj
 
 ## <a name="supported-javascript-functions"></a>Podporované funkce JavaScriptu
 
-| **Slouží** | **Popis** |
+| **Funkce** | **Popis** |
 |---------|---------|
 |`chain() ... .value([callback] [, options])`|Začíná value() zřetězené volání, které musí být ukončen.|
 |`filter(predicateFunction [, options] [, callback])`|Filtruje vstup pomocí funkce predikátu, který vrací hodnotu true nebo false, chcete-li filtrovat vstupních dokumentů vstup/výstup do výsledné sady. Tato funkce se chová podobně jako v klauzuli WHERE v SQL.|
@@ -33,7 +33,7 @@ Kromě vydávání dotazů pomocí rozhraní SQL API v Azure Cosmos DB umožňuj
 
 Pokud zahrnutý do predikátu a/nebo výběr funkcí, následující konstrukce jazyka JavaScript automaticky optimalizovat spouštět přímo na indexy Azure Cosmos DB:
 
-- Jednoduché operátory: `=` `+` `-` `*` `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!``~`
+- Jednoduché operátory: `=` `+` `-` `*` `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!` `~`
 - Literály, včetně literálu objektu: {}
 - var, vratky
 
@@ -49,18 +49,18 @@ Další informace najdete v dokumentaci k [JavaScriptu na straně serveru Cosmos
 Následující tabulka uvádí různé dotazy SQL a odpovídající dotazy jazyka JavaScript. Stejně jako u dotazů SQL jsou u vlastností (například item.id) rozlišována malá a velká písmena.
 
 > [!NOTE]
-> `__`(dvojité podtržítko) je alias pro při použití `getContext().getCollection()` rozhraní API pro dotazování jazyka JavaScript.
+> `__` (dvojité podtržítko) je alias pro `getContext().getCollection()` při použití rozhraní API pro dotazy jazyka JavaScript.
 
 |**SQL**|**Rozhraní API pro dotazy jazyka JavaScript**|**Popis**|
 |---|---|---|
 |VYBERTE *<br>Z dokumentace| __.map(Function(DOC) { <br>&nbsp;&nbsp;&nbsp;&nbsp;Vrátí doc;<br>});|Výsledky ve všech dokumentech (stránkované se token pro pokračování), jako je.|
-|SELECT <br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs. Message jako MSG,<br>&nbsp;&nbsp;&nbsp;dokumenty. Actions <br>Z dokumentace|__.map(Function(DOC) {<br>&nbsp;&nbsp;&nbsp;&nbsp;vrátit {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg –: doc.message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actions:doc.Actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|Projekty id, zprávy (s aliasem se přiřadila msg) a akce ze všech dokumentů.|
+|SELECT <br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs. Message jako MSG,<br>&nbsp;&nbsp;&nbsp;docs. Actions <br>Z dokumentace|__.map(Function(DOC) {<br>&nbsp;&nbsp;&nbsp;&nbsp;vrátit {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg –: doc.message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actions:doc.Actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|Projekty id, zprávy (s aliasem se přiřadila msg) a akce ze všech dokumentů.|
 |VYBERTE *<br>Z dokumentace<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs.id="X998_Y998"|__.Filter(Function(DOC) {<br>&nbsp;&nbsp;&nbsp;&nbsp;Vrátí doc.id === "X998_Y998";<br>});|Dotazy na dokumenty s predikát: id = "X998_Y998".|
-|VYBERTE *<br>Z dokumentace<br>WHERE<br>&nbsp;&nbsp;&nbsp;ARRAY_CONTAINS (dokumentace Značky, 123)|__.Filter(Function(x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;Vrátí x.Tags & & x.Tags.indexOf(123) > -1;<br>});|Dotazy na dokumenty, které mají značky a vlastnost Tags je pole, který obsahuje hodnotu 123.|
+|VYBERTE *<br>Z dokumentace<br>WHERE<br>&nbsp;&nbsp;&nbsp;ARRAY_CONTAINS (docs. Značky, 123)|__.Filter(Function(x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;Vrátí x.Tags & & x.Tags.indexOf(123) > -1;<br>});|Dotazy na dokumenty, které mají značky a vlastnost Tags je pole, který obsahuje hodnotu 123.|
 |SELECT<br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs. Message jako MSG<br>Z dokumentace<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs.id="X998_Y998"|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.Filter(Function(DOC) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vrátí doc.id === "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.map(Function(DOC) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vrátit {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg –: doc.message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>.Value();|Dotazy na dokumenty s predikátem, id = "X998_Y998" a potom projekty id a zprávy (alias pro zprávy).|
 |VYBRAT hodnotu značky<br>Z dokumentace<br>Připojte se k značky v docs. Značky<br>Klauzule ORDER BY docs._ts|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.Filter(Function(DOC) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vrátí dokumentu. Značky & & Array.IsArray – (doc. Značky);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.sortBy(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vrátí doc._ts;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.pluck("Tags")<br>&nbsp;&nbsp;&nbsp;&nbsp;.flatten()<br>&nbsp;&nbsp;&nbsp;&nbsp;.Value()|Filtry pro dokumenty, které mají vlastnost typu pole, značky a seřadí výsledný dokumenty podle _ts vlastnosti časového razítka systému a potom projekty + sloučí pole značky.|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další koncepty a postupy psaní a používání uložených procedur, triggerů a uživatelsky definovaných funkcí v Azure Cosmos DB:
 

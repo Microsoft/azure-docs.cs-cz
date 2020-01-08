@@ -3,12 +3,12 @@ title: Reference Host. JSON pro Azure Functions 2. x
 description: Referenční dokumentace pro soubor Azure Functions Host. JSON s modulem runtime v2
 ms.topic: conceptual
 ms.date: 09/08/2018
-ms.openlocfilehash: 08d772fc9b2871262b449a017f8be59a344576b2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 374d00a75423274d03320b9c1299a2c2dae080ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975444"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433175"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Reference Host. JSON pro Azure Functions 2. x a novější 
 
@@ -95,11 +95,15 @@ Následující části tohoto článku vysvětlují jednotlivé vlastnosti nejvy
 
 Toto nastavení je podřízenou položkou [protokolování](#logging).
 
-Řídí [funkci vzorkování v Application Insights](./functions-monitoring.md#configure-sampling).
+Řídí možnosti pro Application Insights, včetně [možností vzorkování](./functions-monitoring.md#configure-sampling).
 
 ```json
 {
-    "applicationInsights": {
+    "applicationInsights": {        
+        "enableDependencyTracking": true,
+        "enablePerformanceCountersCollection": true,
+        "samplingExcludedTypes": "Trace;Exception",
+        "samplingIncludedTypes": "Request;Dependency",
         "samplingSettings": {
           "isEnabled": true,
           "maxTelemetryItemsPerSecond" : 20
@@ -113,11 +117,12 @@ Toto nastavení je podřízenou položkou [protokolování](#logging).
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|isEnabled|true|Povolí nebo zakáže vzorkování.| 
-|maxTelemetryItemsPerSecond|20|Prahová hodnota, při které začíná vzorkování.| 
-|EnableLiveMetrics |true|Povoluje shromažďování živých metrik.|
-|EnableDependencyTracking|true|Povolí sledování závislostí.|
-|EnablePerformanceCountersCollection|true|Povolí shromažďování čítačů výkonu Kudu.|
+|enableDependencyTracking|true|Povolí sledování závislostí.|
+|enablePerformanceCountersCollection|true|Povolí shromažďování čítačů výkonu.|
+|samplingExcludedTypes|null|Středníkem oddělený seznam typů, které nechcete vzorkovat. Rozpoznané typy jsou: závislost, událost, výjimka, PageView, požadavek, trasování. Jsou přenášeny všechny instance zadaných typů; typy, které nejsou zadány, jsou vzorkované.| 
+|samplingIncludedTypes|null|Středníkem oddělený seznam typů, které chcete vzorkovat. Rozpoznané typy jsou: závislost, událost, výjimka, PageView, požadavek, trasování. Zadané typy jsou vzorkovat; všechny instance ostatních typů budou vždy přeneseny.|
+|samplingSettings. deenable|true|Povolí nebo zakáže vzorkování.| 
+|samplingSettings.maxTelemetryItemsPerSecond|20|Prahová hodnota, při které začíná vzorkování.|
 
 ## <a name="cosmosdb"></a>cosmosDb
 
@@ -131,7 +136,7 @@ Nastavení konfigurace lze nalézt v [vazby pro Durable Functions](durable/durab
 
 Nastavení konfigurace najdete v [aktivačních událostech a vazbách centra událostí](functions-bindings-event-hubs.md#host-json). 
 
-## <a name="extensions"></a>přípony
+## <a name="extensions"></a>rozšíření
 
 Vlastnost, která vrací objekt, který obsahuje všechna nastavení specifická pro vazbu, například [http](#http) a [eventHub](#eventhub).
 
@@ -264,7 +269,7 @@ Nastavení konfigurace najdete v [SendGrid triggerech a vazbách](functions-bind
 
 Nastavení konfigurace najdete v [Service Bus triggerech a vazbách](functions-bindings-service-bus.md#host-json).
 
-## <a name="singleton"></a>Singleton
+## <a name="singleton"></a>singleton
 
 Nastavení konfigurace pro chování zámku typu singleton. Další informace najdete v tématu [problém GitHubu o podpoře typu Singleton](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
 

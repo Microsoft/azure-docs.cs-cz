@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: b5b5da6282b1df6c70fd58dcf8c417250de81b73
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 9e749297d831aeae7d785a9a9a29bea1f8c6d5e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196341"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454623"
 ---
 # <a name="support-matrix-for-physical-server-assessment-and-migration"></a>Matice podpory pro vyhodnocení a migraci fyzických serverů
 
@@ -40,7 +40,7 @@ Tabulka shrnuje podporované scénáře pro fyzické servery.
 
   **Zeměpisné oblasti** | **Umístění úložiště metadat**
   --- | ---
-  Azure Government | USA (Gov) – Virginia
+  Azure Government | USA – Virginie
   Asie a Tichomoří | Východní Asie nebo jihovýchodní Asie
   Austrálie | Austrálie – východ nebo Austrálie – jihovýchod
   Brazílie | Brazílie – jih
@@ -49,7 +49,7 @@ Tabulka shrnuje podporované scénáře pro fyzické servery.
   Francie | Francie – střed
   Indie | Střed Indie nebo Jižní Indie
   Japonsko |  Japonsko – východ nebo Japonsko – západ
-  Jižní Korea | Korea – střed nebo Korea – jih
+  Korea | Korea – střed nebo Korea – jih
   Spojené království | Velká Británie – jih nebo Velká Británie – západ
   Spojené státy | Střed USA nebo Západní USA 2
 
@@ -73,9 +73,9 @@ Pro posouzení Azure Migrate spouští odlehčené zařízení pro zjišťován�
 
 | **Podpora**                | **Podrobnosti**               
 | :-------------------       | :------------------- |
-| **Nasazení zařízení**   |  Zařízení nasazujete buď na fyzickém serveru, nebo na virtuálním počítači.<br/>  Na hostitelském počítači musí být spuštěný systém Windows Server 2012 R2 nebo novější.<br/> Hostitel potřebuje dostatek místa pro přidělení 16 GB paměti RAM, 8 vCPU, přibližně 80 GB úložného prostoru a externí přepínač pro virtuální počítač zařízení.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a přístup k Internetu.
+| **Nasazení zařízení**   |  Skript instalačního programu zařízení je možné stáhnout z portálu (ve složce zip). <br/> Složku můžete rozbalit a spuštěním skriptu PowerShellu (AzureMigrateInstaller. ps1) na vyhrazeném fyzickém serveru nebo virtuálním počítači nastavit zařízení.<br/>  Počítač vybraný k instalaci zařízení musí používat Windows Server 2016.<br/> Počítač potřebuje dostatek místa k přidělení 16 GB paměti RAM, 8 vCPU, přibližně 80 GB úložného prostoru a externímu přepínači pro virtuální počítač zařízení.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a přístup k Internetu.
 | **Azure Migrate projekt**  |  Zařízení může být přidruženo k jednomu projektu.<br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> V projektu můžete vyhodnotit až 35 000 počítačů.
-| **Rozpoznávání**              | Jedno zařízení může zjistit až 250 serverů.
+| **Zjišťování**              | Jedno zařízení může zjistit až 250 serverů.
 | **Skupina posouzení**       | Do jedné skupiny můžete přidat až 35 000 počítačů.
 | **Posouzení**             | V jednom posouzení můžete vyhodnotit až 35 000 počítačů.
 
@@ -92,7 +92,7 @@ K vyhodnocení virtuálních počítačů Azure Migrate zařízení potřebuje p
 **Adresa URL** | **Podrobnosti**  
 --- | ---
 *.portal.azure.com | Navigace na Azure Portal
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Přihlaste se ke svému předplatnému Azure.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com  | Přihlaste se ke svému předplatnému Azure.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Vytváření Azure Active Directorych aplikací pro komunikaci mezi zařízením a službami.
 management.azure.com | Vytváření Azure Active Directorych aplikací pro komunikaci mezi zařízením a službami.
 dc.services.visualstudio.com | Protokolování a monitorování
@@ -106,10 +106,10 @@ https://download.microsoft.com/download/* | Povoluje soubory ke stažení z webu
 
 Následující tabulka shrnuje požadavky na porty pro posouzení.
 
-**Zařízení** | **Vázán**
+**zařízení** | **připojení**
 --- | ---
 **Náplně** | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL: ``` https://<appliance-ip-or-name>:44368 ```<br/> Odchozí připojení na portech 443, 5671 a 5672 pro posílání metadat zjišťování a výkonu Azure Migrate.
-**Fyzické servery** | **Windows:** Příchozí připojení na portech 443, 5989, které vyžádají metadata o konfiguraci a výkonu ze serverů Windows. <br/> **Linux:**  Příchozí připojení na portu 22 (UDP) pro vyžádání metadat konfigurace a výkonu ze serverů se systémem Linux. |
+**Fyzické servery** | **Windows:** Příchozí připojení na portu 443, porty WinRM 5985 (HTTP) a 5986 (HTTPS) k vyžádání metadat konfigurace a výkonu ze serverů Windows. <br/> **Linux:**  Příchozí připojení na portu 22 (UDP) pro vyžádání metadat konfigurace a výkonu ze serverů se systémem Linux. |
 
 
 ## <a name="next-steps"></a>Další kroky

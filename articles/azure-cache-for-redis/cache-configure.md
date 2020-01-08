@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 7c0642377e75e621e1774936262ffddd166ff06d
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 62e0c9bbf8b1c7cef9b1cc239810cb554b5ffa45
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122878"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433539"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak nakonfigurovat Azure cache pro Redis
 Toto téma popisuje konfigurace dostupné pro instance Redis v mezipaměti Azure. Toto téma také popisuje výchozí konfiguraci serveru Redis pro Azure cache pro instance Redis.
@@ -109,7 +109,7 @@ Kliknutím na **přístupové klíče** zobrazíte nebo znovu vygenerujete pří
 
 ![Mezipaměť Azure pro přístupové klíče Redis](./media/cache-configure/redis-cache-manage-keys.png)
 
-### <a name="advanced-settings"></a>Pokročilá nastavení
+### <a name="advanced-settings"></a>Upřesnit nastavení
 V okně **Upřesnit nastavení** jsou nakonfigurovaná následující nastavení.
 
 * [Přístupové porty](#access-ports)
@@ -120,7 +120,7 @@ V okně **Upřesnit nastavení** jsou nakonfigurovaná následující nastavení
 Přístup bez SSL je ve výchozím nastavení pro nové mezipaměti zakázaný. Pokud chcete povolit port bez SSL, klikněte na **ne** pro **Povolit přístup jenom přes SSL** v okně **Upřesnit nastavení** a pak klikněte na **Uložit**.
 
 > [!NOTE]
-> Přístup SSL ke službě Azure cache pro Redis ve výchozím nastavení podporuje TLS 1,0. Minimální podporovaná verze TLS se dá vystavit až TLS 1,2, pokud je to potřeba, pomocí rozevírací nabídky **Minimální verze protokolu TLS** v okně **Upřesnit nastavení** a potom klikněte na **Uložit**.
+> Přístup SSL ke službě Azure cache pro Redis podporuje v současné době TLS 1,0, 1,1 a 1,2, ale verze 1,0 a 1,1 budou brzy vyřazeny.  Další podrobnosti najdete na naší [stránce odebrání TLS 1,0 a 1,1](cache-remove-tls-10-11.md) .
 
 ![Mezipaměť Azure pro porty přístupu Redis](./media/cache-configure/redis-cache-access-ports.png)
 
@@ -193,7 +193,7 @@ Každá cenová úroveň má odlišná omezení pro připojení klientů, pamě�
 Pokud chcete upgradovat mezipaměť, klikněte na **upgradovat** , aby se změnila cenová úroveň a [škálovat](#scale) mezipaměť. Další informace o volbě cenové úrovně najdete v tématu [co mám použít Azure cache pro nabídku Redis a velikost mám použít?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
 
-### <a name="scale"></a>Měřítko
+### <a name="scale"></a>Limit
 Kliknutím na tlačítko **škálovat** můžete zobrazit nebo změnit cenovou úroveň pro vaši mezipaměť. Další informace o škálování najdete v tématu [Jak škálovat Azure cache pro Redis](cache-how-to-scale.md).
 
 ![Cenová úroveň mezipaměti Azure pro Redis](./media/cache-configure/pricing-tier.png)
@@ -229,7 +229,7 @@ Další informace najdete v tématu [Konfigurace trvalosti pro službu Azure cac
 > 
 > 
 
-### <a name="schedule-updates"></a>Plán aktualizací
+### <a name="schedule-updates"></a>Aktualizace plánu
 V okně **naplánovat aktualizace** můžete určit časové období údržby pro aktualizace serveru Redis pro mezipaměť. 
 
 > [!IMPORTANT]
@@ -237,7 +237,7 @@ V okně **naplánovat aktualizace** můžete určit časové období údržby pr
 > 
 > 
 
-![Plán aktualizací](./media/cache-configure/redis-schedule-updates.png)
+![Aktualizace plánu](./media/cache-configure/redis-schedule-updates.png)
 
 Chcete-li určit časový interval pro správu a údržbu, zaškrtněte požadované dny a zadejte časový interval pro správu a údržbu pro každý den a klikněte na tlačítko **OK**. Čas časového období údržby je UTC.
 
@@ -255,7 +255,7 @@ Okno **geografické replikace** poskytuje mechanismus pro propojení dvě mezipa
 > 
 > 
 
-### <a name="virtual-network"></a>Virtuální sítě
+### <a name="virtual-network"></a>Virtual Network
 Část **Virtual Network** vám umožní nakonfigurovat nastavení virtuální sítě pro mezipaměť. Informace o vytvoření mezipaměti Premium s podporou virtuální sítě a aktualizaci nastavení najdete v článku [jak nakonfigurovat Virtual Network podporu pro službu Azure cache Premium pro Redis](cache-how-to-premium-vnet.md).
 
 > [!IMPORTANT]
@@ -286,7 +286,7 @@ Kliknutím na **vlastnosti** zobrazíte informace o mezipaměti, včetně koncov
 ### <a name="locks"></a>Zámky
 Část **zámky** umožňuje uzamknout předplatné, skupinu prostředků nebo prostředek a zabránit tak ostatním uživatelům ve vaší organizaci v neúmyslném odstranění nebo úpravě důležitých prostředků. Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](../azure-resource-manager/resource-group-lock-resources.md).
 
-### <a name="automation-script"></a>Skript Automation
+### <a name="automation-script"></a>Automatizační skript
 
 Klikněte na **skript Automation** a sestavte a exportujte šablonu nasazených prostředků pro budoucí nasazení. Další informace o práci se šablonami najdete v tématu [nasazení prostředků pomocí šablon Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md).
 
@@ -329,7 +329,7 @@ Chcete-li restartovat jeden nebo více uzlů mezipaměti, vyberte požadované u
 > 
 
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 Část **monitorování** vám umožní nakonfigurovat diagnostiku a monitorování pro mezipaměť Azure pro Redis. Další informace o službě Azure cache pro monitorování a diagnostiku Redis najdete v tématu [monitorování mezipaměti Azure pro Redis](cache-how-to-monitor.md).
 
@@ -396,7 +396,7 @@ Nová mezipaměť Azure pro instance Redis je nakonfigurovaná s následujícím
 | `maxclients` |Závisí na cenové úrovni<sup>2</sup> . |Tato hodnota je maximální povolený počet připojených klientů ve stejnou dobu. Po dosažení limitu Redis ukončí všechna nová připojení a vrátí chybu maximální počet klientů, které se dosáhly. |
 | `maxmemory-policy` |`volatile-lru` |Zásada Maxmemory je nastavení, jak Redis vybere, co se má odebrat, když se dosáhne `maxmemory` (velikost nabídky mezipaměti, kterou jste vybrali při vytváření mezipaměti). S Azure cache for Redis je výchozí nastavení `volatile-lru`, což odstraní klíče s nastavenou hodnotou vypršení platnosti pomocí LRU algoritmu. Toto nastavení lze nakonfigurovat v Azure Portal. Další informace najdete v tématu [zásady paměti](#memory-policies). |
 | `maxmemory-samples` |3 |Aby se ušetřila paměť, LRU a minimální algoritmy TTL jsou přibližné algoritmy místo přes přesné algoritmy. Ve výchozím nastavení Redis zkontroluje tři klíče a vybere ten, který byl naposledy použit méně. |
-| `lua-time-limit` |5,000 |Maximální doba provádění lua skriptu v milisekundách Pokud je dosaženo maximální doby spuštění, protokol Redis zaznamená, že skript je stále spuštěný po maximálním povoleném čase, a začne odpovídat na dotazy s chybou. |
+| `lua-time-limit` |5 000 |Maximální doba provádění lua skriptu v milisekundách Pokud je dosaženo maximální doby spuštění, protokol Redis zaznamená, že skript je stále spuštěný po maximálním povoleném čase, a začne odpovídat na dotazy s chybou. |
 | `lua-event-limit` |500 |Maximální velikost fronty událostí skriptu |
 | `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Limity výstupní vyrovnávací paměti klienta se dají použít k vynucení odpojení klientů, kteří nečtou data ze serveru z nějakého důvodu dostatečně rychle (běžným důvodem je to, že klient typu Pub/Sub nemůže spotřebovávat zprávy tak rychle, jak je může vydavatel vytvořit). Další informace najdete na adrese [https://redis.io/topics/clients](https://redis.io/topics/clients). |
 
@@ -456,9 +456,9 @@ Další informace o databázích najdete v tématu [co jsou databáze Redis?](ca
 > * BGREWRITEAOF
 > * BGSAVE
 > * Konfigurace
-> * LADÍ
+> * LADĚNÍ
 > * PŘENES
-> * ULOŽÍ
+> * ULOŽIT
 > * VYPNUTÍ
 > * SLAVEOF
 > * Příkazy zápisu cluster-cluster jsou zakázané, ale jsou povolené příkazy clusteru jen pro čtení.

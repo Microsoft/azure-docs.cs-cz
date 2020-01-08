@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 3fcb777969f7d29b0e8698156dbdd0724f16f0b5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1c8f56810edb39db66cbb83750e5cff02e22662a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232876"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433290"
 ---
 # <a name="http-features"></a>Funkce protokolu HTTP
 
@@ -32,7 +32,8 @@ Podporují se následující integrovaná rozhraní API HTTP.
 * [Odeslání externí události do orchestrace](durable-functions-http-api.md#raise-event)
 * [Vymazat historii orchestrace](durable-functions-http-api.md#purge-single-instance-history)
 * [Odeslání události operace do entity](durable-functions-http-api.md#signal-entity)
-* [Dotaz na stav entity](durable-functions-http-api.md#query-entity)
+* [Získání stavu entity](durable-functions-http-api.md#get-entity)
+* [Dotazování seznamu entit](durable-functions-http-api.md#list-entities)
 
 Úplný popis všech vestavěných rozhraní API HTTP zveřejněných pomocí rozšíření Durable Functions najdete v článku věnovaném [rozhraním API protokolu HTTP](durable-functions-http-api.md) .
 
@@ -178,7 +179,7 @@ public static async Task RunOrchestrator(
 }
 ```
 
-V předchozím příkladu je parametr `tokenSource` nakonfigurovaný tak, aby získal tokeny Azure AD pro [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). Tokeny jsou identifikovány `https://management.core.windows.net`identifikátorů URI prostředku. Příklad předpokládá, že aktuální aplikace Function App běží buď místně, nebo byla nasazena jako aplikace Function App se spravovanou identitou. Předpokládá se, že místní identita nebo spravovaná identita má oprávnění ke správě virtuálních počítačů v zadané skupině prostředků `myRG`.
+V předchozím příkladu je parametr `tokenSource` nakonfigurovaný tak, aby získal tokeny Azure AD pro [Azure Resource Manager](../../azure-resource-manager/management/overview.md). Tokeny jsou identifikovány `https://management.core.windows.net`identifikátorů URI prostředku. Příklad předpokládá, že aktuální aplikace Function App běží buď místně, nebo byla nasazena jako aplikace Function App se spravovanou identitou. Předpokládá se, že místní identita nebo spravovaná identita má oprávnění ke správě virtuálních počítačů v zadané skupině prostředků `myRG`.
 
 Nakonfigurovaný zdroj tokenu za běhu automaticky vrátí přístupový token OAuth 2,0. Zdroj pak přidá token jako nosný token do autorizační hlavičky odchozí žádosti. Tento model je vylepšením ručního přidávání autorizačních hlaviček do požadavků HTTP z následujících důvodů:
 
