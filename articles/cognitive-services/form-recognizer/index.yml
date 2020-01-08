@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentace ke službě Rozpoznávání formulářů
-summary: Rozpoznávání formulářů Azure je kognitivní služba, která využívá technologie strojového učení k identifikaci a extrahování párů klíč-hodnota a dat tabulek z formulářových dokumentů. Jejím výstupem jsou strukturovaná data, která zahrnují relace z původního souboru. Učení bez supervize umožňuje tomuto modelu porozumět relacím mezi poli a položkami a jejich rozložení a nevyžaduje se přitom ruční popisování dat ani náročné kódování nebo údržba.
+summary: Rozpoznávání formulářů Azure je kognitivní služba, která využívá technologie strojového učení k identifikaci a extrahování párů klíč-hodnota a dat tabulek z formulářových dokumentů. Jejím výstupem jsou strukturovaná data, která zahrnují relace z původního souboru. Učení bez dohledu umožňuje tomuto modelu porozumět datům a rozložení polí a nevyžaduje se přitom ruční popisování dat ani náročné kódování. K učení pod dohledem se také dají využít ručně popsaná data. Modely natrénované pomocí popsaných dat mívají lepší výkon a mohou pracovat se složitějšími dokumenty.
 metadata:
   title: Dokumentace ke službě Rozpoznávání formulářů – rychlá zprovoznění, kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
-  description: Rozpoznávání formulářů Azure je kognitivní služba, která využívá technologie strojového učení k identifikaci a extrahování párů klíč-hodnota a dat tabulek z formulářových dokumentů. Jejím výstupem jsou strukturovaná data, která zahrnují relace z původního souboru. Učení bez supervize umožňuje tomuto modelu porozumět relacím mezi poli a položkami a jejich rozložení a nevyžaduje se přitom ruční popisování dat ani náročné kódování nebo údržba.
+  description: Rozpoznávání formulářů Azure je kognitivní služba, která využívá technologie strojového učení k identifikaci a extrahování párů klíč-hodnota a dat tabulek z formulářových dokumentů. Jejím výstupem jsou strukturovaná data, která zahrnují relace z původního souboru. Učení bez dohledu umožňuje tomuto modelu porozumět datům a rozložení polí a nevyžaduje se přitom ruční popisování dat ani náročné kódování. K učení pod dohledem se také dají využít ručně popsaná data. Modely natrénované pomocí popsaných dat mívají lepší výkon a mohou pracovat se složitějšími dokumenty.
   services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: form-recognizer
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 3a3146c6a918916792a331c0dab74683db82a02d
-  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.openlocfilehash: 835eb7bece58e93375c09c51149381d7882702de
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/25/2019
-  ms.locfileid: "72931303"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75446512"
 landingContent:
 - title: Informace o službě Rozpoznávání formulářů
   linkLists:
@@ -24,6 +24,10 @@ landingContent:
     links:
     - text: Co je služba Rozpoznávání formulářů?
       url: overview.md
+  - linkListType: whats-new
+    links:
+    - text: Co je nového ve službě Rozpoznávání formulářů?
+      url: whats-new.md
   - linkListType: video
     links:
     - text: Automatizace procesů s využitím AI a Rozpoznáváním formulářů
@@ -38,18 +42,38 @@ landingContent:
       url: quickstarts/python-train-extract.md
     - text: S využitím REST API (cURL)
       url: quickstarts/curl-train-extract.md
-- title: Extrakce dat z dokladů
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: S využitím .NET SDK
-      url: quickstarts/dotnet-sdk.md
 - title: Vytvoření trénovací sady dat
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Vytvoření trénovací sady dat
       url: build-training-data-set.md
+- title: Trénování vlastního modelu s využitím popisků
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Popsaná data
+      url: overview.md#train-with-labels
+  - linkListType: quickstart
+    links:
+    - text: Trénování s využitím ukázkového nástroje pro popisování
+      url: quickstarts/label-tool.md
+    - text: Trénování s popisky s využitím REST API a Pythonu
+      url: quickstarts/python-labeled-data.md
+- title: Extrakce dat z dokladů
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: S využitím REST API (Python)
+      url: quickstarts/python-receipts.md
+    - text: S využitím REST API (cURL)
+      url: quickstarts/curl-receipts.md
+- title: Získání informací o rozložení textu
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: S využitím REST API (Python)
+      url: quickstarts/python-layout.md
 - title: Použití kontejnerů
   linkLists:
   - linkListType: get-started
@@ -68,8 +92,10 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Rozhraní API služby Rozpoznávání formulářů
-      url: https://aka.ms/form-recognizer/api
+    - text: Rozhraní API služby Rozpoznávání formulářů v2.0
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm
+    - text: Rozhraní API služby Rozpoznávání formulářů v1.0
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel
     - text: .NET SDK
       url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview
     - text: Azure PowerShell

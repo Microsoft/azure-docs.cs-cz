@@ -3,6 +3,12 @@
 - name: Principy fakturace Azure
   expanded: true
   items:
+    - name: Rozsahy a fakturační účty
+      href: billing-view-all-accounts.md
+    - name: Fakturační účty pro smlouvu se zákazníkem Microsoftu
+      href: billing-mca-overview.md
+    - name: Fakturační účty pro smlouvu s partnerem Microsoftu
+      href: mpa-overview.md
     - name: Vysvětlení informací na faktuře
       href: billing-understand-your-bill.md
     - name: Vysvětlení informací na faktuře – smlouva se zákazníkem Microsoftu
@@ -29,10 +35,6 @@
       href: billing-mpa-invoice-terms-explained.md
     - name: Postup při placení faktur – smlouva se zákazníkem Microsoftu
       href: billing-how-to-pay-bill.md
-    - name: Fakturační účty pro smlouvu se zákazníkem Microsoftu
-      href: billing-mca-overview.md
-    - name: Fakturační účty pro smlouvu s partnerem Microsoftu
-      href: mpa-overview.md
 - name: Správa nákladů
   items:
     - name: Jak zabránit neočekávaným nákladům
@@ -69,7 +71,7 @@
               href: ../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/billing/TOC.json
             - name: Databáze Cosmos
               href: ../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json
-            - name: SQL Database
+            - name: Databáze SQL
               href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
             - name: Průzkumník dat Azure
               href: ../data-explorer/pricing-reserved-capacity.md?toc=/azure/billing/TOC.json
@@ -147,8 +149,6 @@
       href: billing-understand-mca-roles.md
     - name: Propojení ID partnera
       href: billing-partner-admin-link-started.md
-    - name: Zobrazení fakturačních účtů
-      href: billing-view-all-accounts.md
     - name: Organizace nákladů pomocí oddílů faktury
       href: billing-mca-section-invoice.md
     - name: Úlohy EA ve smlouvě se zákazníkem Microsoftu
@@ -216,7 +216,7 @@
     - name: Propojení tenanta Azure AD
       href: ../active-directory/active-directory-how-subscriptions-associated-directory.md?toc=/azure/billing/TOC.json
     - name: Omezení a kvóty
-      href: ../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
 - name: Řešení potíží
   items:
     - name: Nenalezena žádná předplatná
@@ -233,7 +233,7 @@
       href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
     - name: Kontaktování podpory
       href: ../azure-supportability/how-to-create-azure-support-request.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: REST API
       items:

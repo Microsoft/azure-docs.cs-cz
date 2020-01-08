@@ -5,7 +5,7 @@
       items:
         - name: Informace o Azure Dev Spaces
           href: about.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Týmový vývoj
           href: quickstart-team-development.md
@@ -91,6 +91,8 @@
           href: how-to/run-dev-spaces-windows-containers.md
         - name: Použití traefiku pro vlastní příchozí přenos dat a HTTPS
           href: how-to/ingress-https-traefik.md
+        - name: Použití NGINX pro vlastní příchozí přenos dat a HTTPS
+          href: how-to/ingress-https-nginx.md
         - name: Připojení počítače pro vývoj ke clusteru AKS (Preview)
           href: how-to/connect.md
     - name: Řešení potíží

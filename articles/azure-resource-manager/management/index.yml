@@ -1,0 +1,85 @@
+### YamlMime:Landing
+title: Dokumentace ke správě prostředků
+summary: Přečtěte si, jak spravovat a spotřebovávat prostředky.
+metadata:
+  title: Dokumentace ke službě Azure Resource Manager
+  description: Naučte se vyvíjet šablony Azure Resource Manageru a používat je k nasazování prostředků Azure.
+  ms.service: azure-resource-manager
+  ms.subservice: management
+  ms.topic: landing-page
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 01/02/2020
+  ms.openlocfilehash: ba00994808e50f10c7153535f442e03f85fe2202
+  ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 01/04/2020
+  ms.locfileid: "75657926"
+landingContent:
+- title: Informace o Azure Resource Manageru
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Resource Manager?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Resource Manager a klasické nasazení
+      url: deployment-models.md
+- title: Informace o službách Azure
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Omezení služeb a předplatných
+      url: azure-subscription-service-limits.md
+    - text: Poskytovatelé a typy prostředků
+      url: resource-providers-and-types.md
+    - text: Poskytovatelé prostředků pro jednotlivé služby Azure
+      url: azure-services-resource-providers.md
+- title: Správa prostředků
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Přesun napříč skupinami prostředků a předplatnými
+      url: move-resource-group-and-subscription.md
+    - text: Přesun mezi oblastmi
+      url: move-region.md
+    - text: Označení prostředků
+      url: tag-resources.md
+    - text: Uzamčení prostředků
+      url: lock-resources.md
+    - text: Odstranění skupin prostředků
+      url: delete-resource-group.md
+  - linkListType: reference
+    links:
+    - text: Přesun podpory
+      url: move-support-resources.md
+    - text: Podpora značek
+      url: tag-support.md
+    - text: Limity instancí prostředků
+      url: resources-without-resource-group-limit.md
+- title: Sady SDK a nástroje
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.resources
+    - text: Azure CLI
+      url: /cli/azure/resource
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.resourcemanager
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.resources
+    - text: Python
+      url: /python/api/overview/azure/resources?view=azure-python
+- title: Sledování operací
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Zobrazení protokolů aktivit
+      url: view-activity-logs.md
+    - text: Limity požadavků a omezování
+      url: request-limits-and-throttling.md
+    - text: Asynchronních operace
+      url: async-operations.md

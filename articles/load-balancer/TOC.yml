@@ -14,14 +14,14 @@
       href: quickstart-load-balancer-standard-public-cli.md
     - name: Vytvoření Load Balanceru úrovně Standard – Azure PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Vytvoření Standard Load Balanceru – šablona
+    - name: Vytvoření Load Balanceru úrovně Standard – šablona
+      href: quickstart-load-balancer-standard-public-template.md
     - name: Vytvoření Load Balanceru úrovně Basic – portál
       href: quickstart-create-basic-load-balancer-portal.md
     - name: Vytvoření Load Balanceru úrovně Basic – Azure CLI
       href: quickstart-create-basic-load-balancer-cli.md
     - name: Vytvoření Load Balanceru úrovně Basic – Azure PowerShell
-      href: quickstart-load-balancer-standard-public-template.md
-      displayName: ARM
+      href: quickstart-create-basic-load-balancer-powershell.md
 - name: Kurzy
   items:
     - name: Vyrovnávání zatížení internetového provozu do virtuálních počítačů
@@ -34,7 +34,7 @@
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: Konfigurace přesměrování portů v Load Balanceru
       href: tutorial-load-balancer-port-forwarding-portal.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Azure CLI
       href: cli-samples.md

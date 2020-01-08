@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.author: banders
-ms.openlocfilehash: 62a16a6a96fbfdfbb4ed2d70b74470e29efaa844
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 03464fca6d7e0694d9492de698c70d5caac89358
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849849"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644473"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Principy rolí pro správu smlouvy Azure Enterprise v Azure
 
@@ -97,7 +97,7 @@ V následující tabulce je uveden vztah mezi rolemi správce smlouvy Enterprise
 |Vlastník účtu nebo Správce oddělení|✘ Zakázáno|Vlastník|Maloobchodní ceny|
 |Vlastník účtu nebo Správce oddělení|✔ Povoleno |Žádná|Žádné ceny|
 |Vlastník účtu nebo Správce oddělení|✘ Zakázáno |Žádná|Žádné ceny|
-|Žádný|Neuvedeno |Vlastník|Maloobchodní ceny|
+|Žádná|Neuvedeno |Vlastník|Maloobchodní ceny|
 
 Role správce smlouvy Enterprise a zásady zobrazování nákladů se nastavují na webu Enterprise Portal. Role RBAC se dá aktualizovat na webu Azure Portal. Další informace najdete v tématu [Správa přístupu pomocí RBAC a webu Azure Portal](../role-based-access-control/role-assignments-portal.md).
 

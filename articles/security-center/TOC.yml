@@ -8,7 +8,7 @@
       href: security-center-os-coverage.md
     - name: Podporované funkce
       href: security-center-services.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Předplatná Azure
@@ -49,6 +49,8 @@
       items:
         - name: Přehled výstrah zabezpečení
           href: security-center-alerts-overview.md
+        - name: Referenční seznam výstrah
+          href: alerts-reference.md
         - name: Správa výstrah zabezpečení
           href: security-center-managing-and-responding-alerts.md
         - name: Správa incidentů zabezpečení
@@ -61,7 +63,7 @@
           href: security-center-alerts-data-services.md
         - name: Detekce hrozeb pro vrstvy služeb Azure
           href: security-center-alerts-service-layer.md
-        - name: Integrace s produkty zabezpečení Azure
+        - name: Detekce hrozeb pro Azure WAF a Azure DDoS Protection
           href: security-center-alerts-integration.md
         - name: Korelace inteligentních výstrah v cloudu (incidenty)
           href: security-center-alerts-cloud-smart.md
@@ -75,6 +77,14 @@
       href: security-center-secure-score.md
     - name: Upgrade na pokročilé zabezpečení
       href: security-center-onboarding.md
+    - name: Kontrola ohrožení zabezpečení virtuálních počítačů
+      items:
+        - name: Přehled kontroly ohrožení zabezpečení
+          href: security-center-vulnerability-assessment-recommendations.md
+        - name: Integrovaný skener ohrožení zabezpečení virtuálních počítačů
+          href: built-in-vulnerability-assessment.md
+        - name: Použití externích skenerů
+          href: partner-vulnerability-assessment.md
     - name: Ochrana serverů pomocí služby Microsoft Defender ATP
       href: security-center-wdatp.md
     - name: Použití pokročilého zabezpečení dat pro SQL na virtuálních počítačích Azure
@@ -125,14 +135,12 @@
           href: security-center-remediate-recommendations.md
         - name: Posílení stavu zabezpečení
           href: security-center-monitoring.md
+        - name: Referenční seznam doporučení
+          href: recommendations-reference.md
         - name: Ochrana vašich počítačů a aplikací
           href: security-center-virtual-machine-protection.md
-        - name: Referenční informace k doporučením pro počítače a aplikace
-          href: recommendations-compute-and-apps.md
         - name: Ochrana síťových prostředků
           href: security-center-network-recommendations.md
-        - name: Referenční informace k doporučením pro síť
-          href: recommendations-network.md
         - name: Ochrana dat a služby úložiště
           href: security-center-sql-service-recommendations.md
         - name: Ochrana identit a přístupu
@@ -155,8 +163,6 @@
           href: security-center-apply-system-updates.md
         - name: Nainstalovat Endpoint Protection
           href: security-center-install-endpoint-protection.md
-        - name: Není nainstalováno posouzení ohrožení zabezpečení
-          href: security-center-vulnerability-assessment-recommendations.md
         - name: Sestavy hrozeb
           href: security-center-threat-report.md
         - name: Skóre spolehlivosti výstrah

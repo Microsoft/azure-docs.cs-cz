@@ -6,7 +6,7 @@
       href: Overview/overview.md
     - name: Co je nového
       href: whats-new.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Vytvoření nové znalostní báze
       href: quickstarts/create-publish-knowledge-base.md
@@ -14,6 +14,8 @@
       href: quickstarts/add-question-metadata-portal.md
     - name: Získání odpovědí s využitím nástroje Postman nebo cURL
       href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
+    - name: Testování s využitím dávkového souboru
+      href: Quickstarts/batch-testing.md
     - name: S využitím REST API
       items:
         - name: Vytvoření nové znalostní báze
@@ -25,7 +27,7 @@
             - name: Java
               href: Quickstarts/create-new-kb-java.md
             - name: Node.js
-              href: Quickstarts/create-knowledge-rest-api-nodejs.md
+              href: Quickstarts/publish-kb-nodejs.md
             - name: Python
               href: Quickstarts/create-new-kb-python.md
         - name: Publikování znalostní báze
@@ -37,7 +39,7 @@
             - name: Java
               href: Quickstarts/publish-kb-java.md
             - name: Node.js
-              href: 'Quickstarts/create-knowledge-rest-api-nodejs.md##publish-a-knowledge-base'
+              href: 'Quickstarts/publish-kb-nodejs.md#publish-a-knowledge-base'
             - name: Python
               href: Quickstarts/publish-kb-python.md
         - name: Získání odpovědi
@@ -156,7 +158,7 @@
         - name: Rozhraní Train API
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
       href: 'https://go.microsoft.com/fwlink/?linkid=2092179'
-    - name: Ukázky
+    - name: ukázky
       items:
         - name: Pomocný robot QnA Maker
           href: 'https://aka.ms/qnamakerhelpbotsample'
@@ -168,7 +170,7 @@
               href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet'
             - name: Balíček NuGet
               href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/'
-            - name: Ukázky
+            - name: ukázky
               href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp'
         - name: Přejít
           items:
@@ -176,7 +178,7 @@
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v4.0/qnamaker'
             - name: Sada SDK
               href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v4.0/qnamaker'
-            - name: Ukázky
+            - name: ukázky
               href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-go'
         - name: Node.js
           items:
@@ -184,7 +186,7 @@
               href: 'https://docs.microsoft.com/javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest'
             - name: NPM
               href: 'https://www.npmjs.com/package/azure-cognitiveservices-qnamaker'
-            - name: Ukázky
+            - name: ukázky
               href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs'
         - name: Python
           items:
@@ -192,7 +194,7 @@
               href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python'
             - name: Pip
               href: 'https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/'
-            - name: Ukázky
+            - name: ukázky
               href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-python'
         - name: Ruby
           items:

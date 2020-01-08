@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentace k Azure IoT Edge
-summary: Azure IoT Edge je služba Internetu věcí (IoT) postavená na službě IoT Hub. Tato služba je určená pro zákazníky, kteří chtějí analyzovat data na zařízeních nebo na hraničních zařízeních, a ne v cloudu. Díky přesunu částí úlohy do hraničních zařízení můžou vaše zařízení šetřit čas strávený odesíláním zpráv do cloudu a rychleji reagovat na události.
+summary: Azure IoT Edge rozšiřuje IoT Hub. Analyzujte data zařízení místně, a ne v cloudu, abyste mohli do cloudu posílat méně dat, rychle reagovat na události a pracovat offline.
 metadata:
   title: Dokumentace k Azure IoT Edge
-  description: Azure IoT Edge je služba Internetu věcí (IoT) postavená na službě IoT Hub. Tato služba je určená pro zákazníky, kteří chtějí analyzovat data na zařízeních nebo na hraničních zařízeních, a ne v cloudu. Díky přesunu částí úlohy do hraničních zařízení můžou vaše zařízení šetřit čas strávený odesíláním zpráv do cloudu a rychleji reagovat na události.
+  description: Azure IoT Edge rozšiřuje IoT Hub. Analyzujte data zařízení místně, a ne v cloudu, abyste mohli do cloudu posílat méně dat, rychle reagovat na události a pracovat offline.
   services: iot-edge
   ms.service: iot-edge
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: kgremban
   manager: philmea
   ms.date: 08/05/2019
-  ms.openlocfilehash: 673243b2e38b6d93091faea2e32a40d23b2a5267
-  ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+  ms.openlocfilehash: bf968da3bba6510b3ce273ba1049f4ad164319c2
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/06/2019
-  ms.locfileid: "68815771"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75457217"
 landingContent:
 - title: Vývoj pro zařízení s Linuxem
   linkLists:
