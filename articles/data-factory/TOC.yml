@@ -84,6 +84,8 @@
       items:
         - name: Transformace dat s využitím toku dat mapování
           href: tutorial-data-flow.md
+        - name: Videokurzy mapování toku dat
+          href: data-flow-tutorials.md
         - name: Příprava dat s využitím toku dat transformace
           href: wrangling-data-flow-tutorial.md
     - name: Externí transformace

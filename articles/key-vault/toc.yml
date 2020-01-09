@@ -4,7 +4,7 @@
   items:
     - name: Informace o službě Key Vault
       href: key-vault-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Rozhraní příkazového řádku
@@ -60,7 +60,7 @@
       href: ../azure-resource-manager/resource-manager-keyvault-parameter.md
     - name: Nastavení obměny klíčů a auditování
       href: key-vault-key-rotation-log-monitoring.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?service=key-vault'
@@ -106,7 +106,7 @@
       items:
         - name: Doporučení
           href: security-recommendations.md
-    - name: Authentication
+    - name: Ověření
       items:
         - name: Použití spravované identity služby App Service
           href: managed-identity.md
@@ -140,6 +140,8 @@
           href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-key-vault
 - name: Referenční informace
   items:
+    - name: Kódy chyb rozhraní REST služby Key Vault
+      href: rest-error-codes.md
     - name: Azure PowerShell
       href: '/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
     - name: Azure CLI

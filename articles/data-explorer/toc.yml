@@ -4,7 +4,7 @@
   items:
     - name: Co je Azure Data Explorer?
       href: data-explorer-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření clusteru a databáze – Azure Portal
@@ -32,6 +32,8 @@
       href: ingest-data-overview.md
     - name: Přehled vizualizace dat
       href: viz-overview.md
+    - name: Přehled zabezpečení
+      href: security.md
 - name: Návody
   items:
     - name: Vytvoření clusteru a databáze
@@ -144,6 +146,18 @@
           href: sisense.md
         - name: Redash
           href: redash.md
+    - name: Zabezpečení
+      items:
+        - name: Správa zabezpečení clusteru
+          href: manage-cluster-security.md
+        - name: Konfigurace spravovaných identit
+          href: managed-identities.md
+        - name: Konfigurace klíčů spravovaných zákazníkem
+          items:
+            - name: 'C#'
+              href: customer-managed-keys-csharp.md
+            - name: Šablona Azure Resource Manageru
+              href: customer-managed-keys-resource-manager.md
     - name: Spravovat
       items:
         - name: Cluster
@@ -154,11 +168,9 @@
               href: manage-cluster-horizontal-scaling.md
             - name: Správa vertikálního škálování clusteru
               href: manage-cluster-vertical-scaling.md
-            - name: Správa zabezpečení clusteru
-              href: manage-cluster-security.md
             - name: Kontrola stavu clusteru
               href: check-cluster-health.md
-        - name: Databáze
+        - name: databáze
           items:
             - name: Následnické databáze
               href: follower.md
@@ -220,7 +232,7 @@
       href: /azure/kusto/management/
     - name: Rozhraní API
       href: /azure/kusto/api/
-    - name: Nástroje
+    - name: nástroje
       href: /azure/kusto/tools/
     - name: Koncepty
       href: /azure/kusto/concepts/

@@ -56,6 +56,8 @@
           href: how-to-attach-detach-shared-image-gallery.md
         - name: Přidání uživatele jako vlastníka do testovacího prostředí v učebně
           href: how-to-add-user-lab-owner.md
+        - name: Nastavení brány firewall pro Azure Lab Services
+          href: how-to-configure-firewall-settings.md
     - name: Vytvoření a konfigurace testovacích prostředí v učebnách (instruktor)
       items:
         - name: Vytváření a správa testovacích prostředí v učebnách

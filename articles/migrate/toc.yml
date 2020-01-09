@@ -62,12 +62,12 @@
           href: migrate-support-matrix-hyper-v.md
         - name: Matice podpory pro vyhodnocení a migraci fyzických serverů
           href: migrate-support-matrix-physical.md
+        - name: Matice podpory pro zařízení Azure Migrate
+          href: migrate-appliance.md
     - name: Architektura migrace Hyper-V
       href: hyper-v-migration-architecture.md
     - name: Architektura migrace založené na agentech
       href: agent-based-migration-architecture.md
-    - name: Zařízení Azure Migrate
-      href: migrate-appliance.md
     - name: Zařízení pro replikaci Azure Migrate
       href: migrate-replication-appliance.md
     - name: Osvědčené postupy pro vyhodnocení
@@ -80,6 +80,8 @@
   items:
     - name: Práce s předchozí verzí
       href: migrate-v1.md
+    - name: Vytváření a správa projektů Azure Migrate
+      href: create-manage-projects.md
     - name: Nasazení zařízení VMware
       href: how-to-set-up-appliance-vmware.md
     - name: Nasazení zařízení Hyper-V
@@ -123,7 +125,13 @@
 - name: Řešení potíží
   items:
     - name: Řešení problémů s Azure Migrate
-      href: troubleshooting-general.md
+      href: troubleshoot-general.md
+    - name: Řešení problémů s projekty Azure Migrate
+      href: troubleshoot-project.md
+    - name: Řešení potíží se zařízením/zjišťováním Azure Migrate
+      href: troubleshoot-appliance-discovery.md
+    - name: Řešení potíží s vyhodnocením a vizualizací závislostí
+      href: troubleshoot-assessment.md
 - name: Zdroje a prostředky
   items:
     - name: Migrace v architektuře přechodu na cloud

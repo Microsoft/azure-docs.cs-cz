@@ -14,7 +14,7 @@
       href: tutorial-create-custom-lab.md
     - name: 2. Přístup k testovacímu prostředí
       href: tutorial-use-custom-lab.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Šablony Resource Manageru
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates'
@@ -72,6 +72,8 @@
           href: devtest-lab-auto-startup-vm.md
         - name: Škálování testovacího prostředí
           href: devtest-lab-scale-lab.md
+        - name: Povolení spravovaných identit pro virtuální počítače v testovacím prostředí
+          href: enable-managed-identities-lab-vms.md
         - name: Správa základů virtuálních počítačů
           items:
             - name: Konfigurace imagí na Azure Marketplace

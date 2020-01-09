@@ -21,18 +21,27 @@
       items:
         - name: Použití Draftu
           href: kubernetes-draft.md
-        - name: Použití editoru Visual Studio Code a služby Azure Dev Spaces
-          href: ../dev-spaces/quickstart-netcore.md
-          maintainContext: true
-        - name: Použití sady Visual Studio a služby Azure Dev Spaces
-          href: ../dev-spaces/quickstart-netcore-visualstudio.md
-          maintainContext: true
-        - name: Použití CLI a služby Azure Dev Spaces
-          href: ../dev-spaces/quickstart-cli.md
-          maintainContext: true
-        - name: Použití Azure Dev Spaces pro týmový vývoj
-          href: ../dev-spaces/quickstart-team-development.md
-          maintainContext: true
+        - name: Azure Dev Spaces
+          expanded: true
+          items:
+            - name: Použití Azure Dev Spaces pro týmový vývoj
+              href: ../dev-spaces/quickstart-team-development.md
+              maintainContext: true
+            - name: Použití editoru Visual Studio Code
+              href: ../dev-spaces/quickstart-netcore.md
+              maintainContext: true
+            - name: Použití sady Visual Studio
+              href: ../dev-spaces/quickstart-netcore-visualstudio.md
+              maintainContext: true
+            - name: Použití rozhraní příkazového řádku
+              href: ../dev-spaces/quickstart-cli.md
+              maintainContext: true
+            - name: Použití Azure Dev Spaces s Javou
+              href: ../dev-spaces/quickstart-java.md
+              maintainContext: true
+            - name: Použití Azure Dev Spaces Node.js
+              href: ../dev-spaces/quickstart-nodejs.md
+              maintainContext: true
 - name: Kurzy
   items:
     - name: 1. Příprava aplikace pro AKS

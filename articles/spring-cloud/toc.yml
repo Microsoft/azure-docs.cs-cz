@@ -5,7 +5,7 @@
   items:
     - name: Co je Azure Spring Cloud?
       href: spring-cloud-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Spuštění aplikace Spring Cloudu s využitím portálu
@@ -34,6 +34,8 @@
       href: spring-cloud-tutorial-bind-redis.md
     - name: Navázání aplikace na Azure MySQL
       href: spring-cloud-tutorial-bind-mysql.md
+    - name: Nasazení aplikací do Azure Spring Cloudu s využitím Jenkinse a Azure CLI
+      href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
 - name: Koncepty
   items:
     - name: Principy kvót a omezení pro Azure Spring Cloud

@@ -4,7 +4,7 @@
   items:
     - name: Jenkins v Azure
       href: overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření serveru Jenkins
@@ -24,6 +24,10 @@
           href: jenkins-azure-vm-agents.md
     - name: 3. Implementace CI/CD
       items:
+        - name: Azure Spring Cloud
+          items:
+            - name: Nasazení do Azure Spring Cloudu s využitím Azure CLI
+              href: tutorial-jenkins-deploy-cli-spring-cloud-service.md
         - name: AKS
           items:
             - name: Průběžná integrace a doručování do Kubernetes
@@ -57,7 +61,7 @@
   items:
     - name: Použití modulu plug-in služby App Service
       href: deploy-jenkins-app-service-plugin.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázkové úlohy a skripty
       href: 'https://github.com/azure/jenkins'

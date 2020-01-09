@@ -7,13 +7,15 @@
       href: active-directory-whatis.md
     - name: Novinky ve službě Azure Active Directory
       href: whats-new.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
+  expanded: true
   items:
     - name: Přístup k portálu a vytvoření tenanta
       href: active-directory-access-create-new-tenant.md
     - name: Zobrazení skupin s přiřazenými členy
       href: active-directory-groups-view-azure-portal.md
 - name: Koncepty
+  expanded: true
   items:
     - name: Identity Secure Score
       href: identity-secure-score.md
@@ -37,6 +39,8 @@
       href: active-directory-deployment-checklist-p2.md
     - name: Úložiště dat identity pro EU
       href: active-directory-data-storage-eu.md
+    - name: Úložiště dat identity pro Austrálii
+      href: active-directory-data-storage-australia.md
     - name: Novinky ve službě Microsoft 365 Government
       href: whats-new-microsoft-365-government.md
     - name: Reference operací Azure AD
@@ -97,6 +101,7 @@
         - name: Obnovit odstraněného uživatele
           href: active-directory-users-restore.md
 - name: Zdroje a prostředky
+  expanded: true
   items:
     - name: Získání podpory pro Azure Active Directory
       href: active-directory-troubleshooting-support-howto.md
