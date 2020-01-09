@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Služba Azure Red Hat OpenShift
 metadata:
-  document_id: null
   title: 'Dokumentace ke službě Azure Red Hat OpenShift – kurzy, reference k rozhraní API | Microsoft Docs'
   meta.description: Microsoft Azure Red Hat OpenShift allows you to quickly deploy a production ready Red Hat OpenShift cluster in Azure. Learn how to use Azure Red Hat OpenShift with these tutorials and how-to guides.
   services: container-service

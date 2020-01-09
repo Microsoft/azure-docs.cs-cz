@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Dokumentace ke službě Azure SignalR
 metadata:
-  document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275f
   title: Dokumentace – Azure SignalR Service
   description: Využijte možnost snadného sestavování a škálování webové aplikace v reálném čase v bezserverovém nebo serverovém režimu. Vychází z protokolu WebSocket s podporou široké škály jazyků a architektur.
   services: azure-signalr
@@ -60,7 +59,7 @@ sections:
         items:
           - html: <a href="/azure/azure-signalr/signalr-authenticate-oauth">Integrace služby Azure SignalR s ASP.NET Core Identity</a>
           - html: <a href="/azure/azure-signalr/signalr-tutorial-authenticate-azure-functions">Vytvoření aplikace bez serveru v reálném čase s ověřováním</a>
-  - title: Ukázky
+  - title: ukázky
     items:
       - type: list
         style: unordered

@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Dokumentace k App Service v Linuxu
 metadata:
-  document_id: 2239df92-8506-4ee4-b5b0-9ab512c487b2
   title: 'Linuxové kontejnery – kurzy, reference'
   meta.description: Learn how to build Linux websites and web applications in App Service. Run your code in a default Docker container or run a custom container.
   ms.topic: landing-page
@@ -89,7 +88,7 @@ sections:
           - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">Mapování existující vlastní domény na aplikaci</a>
           - html: <a href="/azure/app-service/configure-ssl-bindings">Zabezpečení vlastního názvu DNS s využitím vazby SSL ve službě Azure App Service</a>
           - html: <a href="/azure/cdn/cdn-add-to-web-app">Přidání sítě CDN do aplikace</a>
-  - title: Ukázky
+  - title: ukázky
     items:
       - type: paragraph
         text: Vyhledání skriptů pro správu běžných úkolů

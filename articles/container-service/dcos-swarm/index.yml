@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Dokumentace ke službě Azure Container Service s DC/OS a Swarmem
 metadata:
-  document_id: null
   title: 'Dokumentace ke službě Azure Container Services DC/OS a Swarmem – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
   meta.description: 'Azure Container Service allows you to quickly deploy a production ready DC/OS or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.'
   services: container-service
@@ -41,7 +40,7 @@ sections:
           - html: <a href="/azure/container-service/container-service-load-balancing">Vyrovnání zatížení kontejnerů v clusteru Azure Container Service DC/OS</a>
           - html: <a href="/azure/container-service/container-service-dcos-fileshare">Vytvoření sdílené složky a její připojení ke clusteru DC/OS</a>
           - html: <a href="/azure/container-service/container-service-dcos-acr">Použití služby Azure Container Registry s clusterem DC/OS k nasazení vaší aplikace</a>
-  - title: Ukázky
+  - title: ukázky
     items:
       - type: list
         style: unordered

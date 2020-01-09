@@ -10,10 +10,6 @@
       href: quickstart-create-templates-use-the-portal.md
     - name: Vytváření šablon – VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
-    - name: Vytváření šablon – Visual Studio
-      href: create-visual-studio-deployment-project.md
-    - name: Vytváření šablon – IntelliJ IDEA
-      href: create-templates-use-intellij.md
 - name: Kurzy
   items:
     - name: Začátečník
@@ -101,8 +97,9 @@
   items:
     - name: Vytváření šablon
       items:
-        - name: Použití editoru VS Code
-          href: use-vs-code-to-create-template.md
+        - name: Struktura souborů šablon
+          displayName: 'parameters,variables,resources,outputs,condition'
+          href: template-syntax.md
         - name: Zápis výrazů šablon
           href: template-expressions.md
         - name: Parametry
@@ -134,6 +131,14 @@
           href: deploy-to-subscription.md
         - name: Prostředky na úrovni skupiny pro správu
           href: deploy-to-management-group.md
+    - name: Použití nástrojů pro vytváření
+      items:
+        - name: VS Code
+          href: use-vs-code-to-create-template.md
+        - name: Visual Studio
+          href: create-visual-studio-deployment-project.md
+        - name: IntelliJ IDEA
+          href: create-templates-use-intellij.md
     - name: Nasazení šablon
       items:
         - name: Nasazení – portál
@@ -206,9 +211,6 @@
           href: ../../virtual-machines/windows/troubleshoot-deploy-vm.md
 - name: Referenční informace
   items:
-    - name: Struktura souborů šablon
-      displayName: 'parameters,variables,resources,outputs,condition'
-      href: template-syntax.md
     - name: Referenční informace k šablonám
       href: /azure/templates/
     - name: Funkce šablon

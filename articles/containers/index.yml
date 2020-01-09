@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Azure pro kontejnery
 metadata:
-  document_id: null
   title: 'Azure pro kontejnery – rychlá zprovoznění, kurzy, reference k rozhraní API'
   description: 'Rychlá zprovoznění, kurzy a nástroje pro kontejnery vám pomohou začít se správou a nasazováním kontejnerových aplikací s využitím Azure.'
   keywords: 'Azure, Containers, Docker, API, Kubernetes'

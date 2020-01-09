@@ -161,6 +161,8 @@
           href: how-to-deploy-monitor.md
         - name: Azure CLI
           href: how-to-deploy-monitor-cli.md
+        - name: Visual Studio Code
+          href: how-to-deploy-monitor-vscode.md
     - name: Použití zařízení IoT Edge jako bran
       items:
         - name: Konfigurace transparentní brány

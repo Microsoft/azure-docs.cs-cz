@@ -82,22 +82,14 @@
               abstract: null
               achievement: null
               iconUrl: null
-              levels:
-                - null
-              roles:
-                - null
-              products:
-                - null
-              units:
-                - null
-                - name: Použití úložiště clusteru
-                  items:
-                    - name: S využitím Azure Storage
-                      href: hdinsight-hadoop-use-blob-storage.md
-                    - name: S využitím služby Azure Data Lake Storage Gen2
-                      href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-                    - name: S využitím služby Azure Data Lake Storage Gen1
-                      href: hdinsight-hadoop-use-data-lake-store.md
+        - name: Použití úložiště clusteru
+          items:
+            - name: S využitím Azure Storage
+              href: hdinsight-hadoop-use-blob-storage.md
+            - name: S využitím služby Azure Data Lake Storage Gen2
+              href: hdinsight-hadoop-use-data-lake-storage-gen2.md
+            - name: S využitím služby Azure Data Lake Storage Gen1
+              href: hdinsight-hadoop-use-data-lake-store.md
         - name: Rozšíření clusterů
           items:
             - name: Instalace aplikací HDInsight

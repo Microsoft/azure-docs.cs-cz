@@ -2,7 +2,6 @@
 documentType: LandingData
 title: 'Azure SQL Database: Izolovaná databáze'
 metadata:
-  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
   title: Dokumentace – jednoúčelová databáze
   meta.description: Learn how to use Azure SQL databases.
   services: sql-database
@@ -118,7 +117,7 @@ sections:
           - html: <a href="/azure/sql-database/sql-database-security-tutorial">Zabezpečení SQL Database</a>
           - html: Globální distribuce dat s využitím <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">geograficky distribuované databáze</a>
           - html: 'Další <a href="sql-database-howto-single-database.md">praktičtí průvodci</a>, kteří pomáhají s konfigurací databáze'
-  - title: Ukázky
+  - title: ukázky
     items:
       - type: paragraph
         text: Vyhledání skriptů pro správu běžných úkolů
