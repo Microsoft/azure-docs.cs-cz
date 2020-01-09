@@ -3,12 +3,12 @@ title: Kurz – vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes
 description: Kurz vysvětlující, jak vytvořit cluster Kubernetes pomocí služby Azure Kubernetes Service a Terraformu
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 792c075cfb40eb4904a30b63e9902a59ceda9bc1
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: e04abdab2893e76a65615635ae9937797be89855
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159301"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708270"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Kurz: Vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service pomocí Terraformu
 
@@ -61,7 +61,7 @@ Prvním krokem je vytvoření adresáře s konfiguračními soubory Terraformu p
 
 Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele Azure.
 
-1. Ve Cloud Shellu vytvořte soubor s názvem `main.tf`.
+1. Ve službě Cloud Shell vytvořte soubor s názvem `main.tf`.
 
     ```bash
     code main.tf
@@ -85,7 +85,7 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele 
 
 Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro cluster Kubernetes.
 
-1. Ve Cloud Shellu vytvořte soubor s názvem `k8s.tf`.
+1. Ve službě Cloud Shell vytvořte soubor s názvem `k8s.tf`.
 
     ```bash
     code k8s.tf
@@ -138,12 +138,10 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro clu
             }
         }
 
-        agent_pool_profile {
+        default_node_pool {
             name            = "agentpool"
-            count           = var.agent_count
+            node_count      = var.agent_count
             vm_size         = "Standard_DS1_v2"
-            os_type         = "Linux"
-            os_disk_size_gb = 30
         }
 
         service_principal {
@@ -168,13 +166,13 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro clu
 
     Záznam `linux_profile` umožňuje nakonfigurovat nastavení, která umožňují přihlašovat se k pracovním uzlům pomocí SSH.
 
-    Se službou AKS platíte jenom za pracovní uzly. Záznam `agent_pool_profile` nakonfiguruje podrobnosti pro tyto pracovní uzly. `agent_pool_profile record` obsahuje počet pracovních uzlů, které se mají vytvořit, a typ pracovních uzlů. Pokud potřebujete v budoucnu horizontální navýšení nebo snížení kapacity clusteru, upravte hodnotu `count` v tomto záznamu.
+    Se službou AKS platíte jenom za pracovní uzly. Záznam `default_node_pool` nakonfiguruje podrobnosti pro tyto pracovní uzly. `default_node_pool record` obsahuje počet pracovních uzlů, které se mají vytvořit, a typ pracovních uzlů. Pokud potřebujete v budoucnu horizontální navýšení nebo snížení kapacity clusteru, upravte hodnotu `count` v tomto záznamu.
 
 1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
 
 ## <a name="declare-the-variables"></a>Deklarování proměnných
 
-1. Ve Cloud Shellu vytvořte soubor s názvem `variables.tf`.
+1. Ve službě Cloud Shell vytvořte soubor s názvem `variables.tf`.
 
     ```bash
     code variables.tf
@@ -231,7 +229,7 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro clu
 
 [Výstupy Terraformu](https://www.terraform.io/docs/configuration/outputs.html) vám umožňují definovat hodnoty, které se uživateli zvýrazní, když Terraform použije plán a bude možné se na něj dotázat příkazem `terraform output`. V této části vytvoříte výstupní soubor, který pomocí [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) umožňuje přístup ke clusteru.
 
-1. Ve Cloud Shellu vytvořte soubor s názvem `output.tf`.
+1. Ve službě Cloud Shell vytvořte soubor s názvem `output.tf`.
 
     ```bash
     code output.tf
@@ -289,7 +287,7 @@ V této části vidíte, jak provádět následující úlohy:
 
     ![Nabídka účtu úložiště](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account.png)
 
-1. Poznamenejte si hodnotu **Klíč** v části **klíč1**. (Výběr ikony napravo od klíče zkopíruje příslušnou hodnotu do schránky.)
+1. Poznamenejte si hodnotu **klíče** klíč1. (Výběr ikony napravo od klíče zkopíruje příslušnou hodnotu do schránky.)
 
     ![Přístupové klíče účtu úložiště](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account-access-key.png)
 
