@@ -50,6 +50,7 @@
 - name: Postup
   items:
     - name: Starší verze komponent
+      displayName: 'deprecated, deprecation, retired, retirement, legacy'
       href: legacy-components.md
       items:
         - name: Migrace z Azure Media Encoderu
@@ -462,6 +463,9 @@
           href: ../media-services-specifications-live-timed-metadata.md
         - name: Smooth Streaming HEVC
           href: ../media-services-specifications-ms-sstr-amendment-hevc.md
+    - name: Starší verze komponent
+      displayName: 'deprecated, deprecation, retired, retirement, legacy'
+      href: legacy-components.md
 - name: Zdroje a prostředky
   items:
     - name: Komunita Azure Media Services
