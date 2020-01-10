@@ -1,34 +1,26 @@
 ---
-title: 'Konfigurace vynuceného tunelování pro připojení k Azure Site-to-Site: classic | Dokumentace Microsoftu'
+title: 'Azure VPN Gateway: Konfigurace vynuceného tunelování – připojení typu Site-to-site: Classic'
 description: Jak přesměrování nebo "Vynutit" veškerý provoz směřující na Internet zpět do místního umístění.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-service-management
-ms.assetid: 5c0177f1-540c-4474-9b80-f541fa44240b
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 08/01/2017
 ms.author: cherylmc
-ms.openlocfilehash: 0955d95ebfd9e1f72ed1da577bf3520a70b71624
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6b31555215f4f2efc63d0e1df0a7b4bf13a43924
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60506013"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834591"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>Konfigurace vynuceného tunelování pomocí modelu nasazení Classic
 
-Vynucené tunelování umožňuje přesměrování nebo "Vynutit" veškerý provoz směřující na Internet zpět do místního umístění prostřednictvím tunelu VPN typu Site-to-Site pro kontrolu a auditování. Toto je důležité zabezpečení požadavek pro většinu podnikových IT zásady. Bez vynucené tunelování, se internetový provoz z virtuálních počítačů v Azure přechod z Azure síťovou infrastrukturu přímo na Internetu, bez možnosti a umožňuje tak kontrolovat nebo auditování provozu vždy. Neoprávněný přístup k Internetu může potenciálně vést k zpřístupnění informací nebo jiných druhů porušení zabezpečení.
+Vynucené tunelování umožňuje přesměrování nebo „vynucení“ směrování veškerého provozu vázaného na internet zpět do místního umístění prostřednictvím tunelu VPN typu site-to-site pro kontrolu a auditování. Toto je důležité zabezpečení požadavek pro většinu podnikových IT zásady. Bez vynucené tunelování, se internetový provoz z virtuálních počítačů v Azure přechod z Azure síťovou infrastrukturu přímo na Internetu, bez možnosti a umožňuje tak kontrolovat nebo auditování provozu vždy. Neoprávněný přístup k Internetu může potenciálně vést k zpřístupnění informací nebo jiných druhů porušení zabezpečení.
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-Tento článek vás provede konfigurací vynuceného tunelového propojení virtuální sítě vytvořené pomocí modelu nasazení classic. Vynucené tunelování se dá konfigurovat pomocí prostředí PowerShell, na portálu. Pokud chcete nakonfigurovat vynucené tunelování pro model nasazení Resource Manager, vyberte z rozevíracího seznamu následující článek Resource Manageru:
+Tento článek vás provede konfigurací vynuceného tunelového propojení virtuální sítě vytvořené pomocí modelu nasazení classic. Vynucené tunelování se dá konfigurovat pomocí prostředí PowerShell, na portálu. Pokud chcete pro model nasazení Správce prostředků nakonfigurovat vynucené tunelování, vyberte Správce prostředků článek z následujícího rozevíracího seznamu:
 
 > [!div class="op_single_selector"]
 > * [PowerShell – Classic](vpn-gateway-about-forced-tunneling.md)
@@ -41,9 +33,9 @@ Vynucené tunelování v Azure se konfiguruje prostřednictvím virtuální sít
 
 * Každé podsíti virtuální sítě má integrované, směrovací tabulky systému. Systémovou tabulku směrování má následující tři skupiny tras:
 
-  * **Místní virtuální sítě trasy:** Přímo do cílového umístění virtuálních počítačů ve stejné virtuální síti.
-  * **Místní trasy:** Ke službě Azure VPN gateway.
-  * **Výchozí trasy:** Přímo k Internetu. Pakety směřující na privátní IP adresy není pokrytá předchozí dvě trasy se zahodí.
+  * **Místní virtuální sítě trasy:** přímo do cílového umístění virtuálních počítačů ve stejné virtuální síti.
+  * **Místní trasy:** pro Azure VPN gateway.
+  * **Výchozí trasa:** přímo k Internetu. Pakety směřující na privátní IP adresy není pokrytá předchozí dvě trasy se zahodí.
 * S vydáním trasy definované uživatelem můžete vytvořit směrovací tabulku, která chcete přidat výchozí trasa a přidružte směrovací tabulky do vaší virtuální síti tento počet podsítí: Povolit vynucené tunelování na těchto podsítí.
 * Budete muset nastavit "výchozí web" mezi místy místní servery připojené k virtuální síti.
 * Vynucené tunelování musí být přidružen virtuální síť, která má bránu dynamického směrování VPN (není statická brána).
@@ -56,14 +48,14 @@ Můžete omezit a kontrolovat přístup k Internetu z vašich virtuálních poč
 
 ![Vynucené tunelování](./media/vpn-gateway-about-forced-tunneling/forced-tunnel.png)
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 Před zahájením konfigurace ověřte, zda máte následující.
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 * Nakonfigurované virtuální sítě. 
 * Nejnovější verzi rutin Azure Powershellu. Další informace o instalaci rutin prostředí PowerShell najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
 
-## <a name="configure-forced-tunneling"></a>Konfigurace vynuceného tunelování
+## <a name="configure-forced-tunneling"></a>Konfigurace vynuceného tunelového propojení
 Následující postup vám pomůže určit vynucené tunelové propojení pro virtuální síť. Postup konfigurace odpovídají soubor konfigurace sítě VNet.
 
 ```xml
@@ -104,7 +96,7 @@ Následující postup vám pomůže určit vynucené tunelové propojení pro vi
     </VirtualNetworkSite>
 ```
 
-Virtuální síť "MultiTier virtuální sítě" v tomto příkladu má tři podsítě: "Frontend", "Midtier" a "Backend" podsítí s čtyři místy připojení: "DefaultSiteHQ" a tři větve. 
+Virtuální síť "MultiTier virtuální sítě" v tomto příkladu má tři podsítě: "Frontend", "Midtier" a "Backend" podsítě s připojeními čtyři místy: "DefaultSiteHQ" a tři větve. 
 
 Postup "DefaultSiteHQ" nastavit jako výchozí web připojení pro vynucené tunelování a nakonfigurovat Midtier a back-endové podsítě používat vynucené tunelování.
 

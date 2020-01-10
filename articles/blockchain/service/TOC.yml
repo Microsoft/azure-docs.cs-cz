@@ -49,6 +49,8 @@
       href: manage-consortium-powershell.md
     - name: Použití Logic Apps
       href: ethereum-logic-app.md
+    - name: Monitorování služby Azure Blockchain
+      href: monitor-azure-blockchain-service.md
 - name: Data Manager pro blokchain
   items:
     - name: Přehled Data Manageru

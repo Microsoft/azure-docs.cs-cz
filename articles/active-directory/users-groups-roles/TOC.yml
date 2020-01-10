@@ -4,7 +4,7 @@
   items:
     - name: 'Uživatelé, skupiny, licencování a role Azure AD'
       href: directory-overview-user-model.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Přidání uživatelů do Azure AD
       href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
@@ -31,6 +31,8 @@
       href: /azure/role-based-access-control/rbac-and-directory-admin-roles?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Základy licencování na základě skupin
       href: /azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: Správa přístupu s využitím skupin
+      href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
 - name: Návody
   expanded: true
   items:
@@ -80,8 +82,6 @@
           href: /azure/active-directory/connect/active-directory-aadconnect?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Správa skupin
       items:
-        - name: Správa přístupu s využitím skupin
-          href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Hledání v seznamech členů a skupin (Preview)
           href: groups-members-owners-search.md
         - name: Vytvoření skupiny (Azure Portal)
@@ -122,9 +122,7 @@
           items:
             - name: Vytvoření dynamické skupiny
               href: groups-create-rule.md
-            - name: Aktualizace pravidla členství
-              href: groups-update-rule.md
-            - name: Syntaxe a pravidla dynamických skupin
+            - name: Syntaxe pravidel dynamických skupin
               href: groups-dynamic-membership.md
             - name: Změna typu členství ve skupině
               href: groups-change-type.md

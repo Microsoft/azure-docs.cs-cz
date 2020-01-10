@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: 12ecacf1266c0d8211f5928a933cfd4acf8c49f0
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 8d75dbe5d4ab819e5bbe64e20ad84eb1c26a87a3
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551382"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777814"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriky pro Application Gateway
 
@@ -36,7 +36,7 @@ K dispozici jsou následující metriky související s časováním žádosti a
 
   Průměrná doba, kterou trvá zpracování požadavku, a jeho odpověď k odeslání. Počítá se jako průměr intervalu od času, kdy Application Gateway přijme první bajt požadavku HTTP do doby, kdy se dokončí operace odeslání odpovědi. Je důležité si uvědomit, že to obvykle zahrnuje dobu zpracování Application Gateway, čas, po který jsou pakety požadavků a odpovědí přenášeny přes síť, a čas, kdy server back-end trvala odpověď.
   
-Pokud je doba *odezvy klienta* mnohem větší než *Celková doba služby Application Gateway*, je možné ji odvodit, že latence klienta je způsobená připojením k síti mezi klientem a Application Gateway. Jsou-li obě latence srovnatelné, může být vysoká latence způsobena některou z následujících možností: Application Gateway, síť mezi Application Gateway a back-end aplikací nebo výkonem back-endu.
+Pokud je čas čekání *klienta* mnohem větší, než je *Celková doba služby Application Gateway*, můžete po filtrování podle naslouchacího procesu odvodit, že latence zjištěná klientem je způsobená připojením sítě mezi klientem a Application Gateway. Jsou-li obě latence srovnatelné, může být vysoká latence způsobena některou z následujících možností: Application Gateway, síť mezi Application Gateway a back-end aplikací nebo výkonem back-endu.
 
 - **Doba odezvy prvního bajtu back-endu**
 

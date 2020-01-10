@@ -11,12 +11,12 @@ ms.date: 08/22/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8aedb57f6fee68c4d11a123033d34bb58314eb8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 355bd75f865e821fa19fba0715cf5eca90a9a2d3
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75367616"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829557"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webové přihlašování pomocí OpenID Connect v Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ OpenID Connect je ověřovací protokol, který je postaven na OAuth 2,0, který
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) rozšiřuje *autorizační* protokol OAuth 2,0 pro použití jako *ověřovací* protokol. Tento ověřovací protokol vám umožní provést jednotné přihlašování. Zavádí koncept *tokenu ID*, který umožňuje klientovi ověřit identitu uživatele a získat základní informace o profilu uživatele.
 
-Vzhledem k tomu, že rozšiřuje OAuth 2,0, umožňuje aplikacím zabezpečeně získat *přístupové tokeny*. Přístupové tokeny můžete použít pro přístup k prostředkům, které jsou zabezpečené [autorizačním serverem](active-directory-b2c-reference-protocols.md). OpenID Connect se doporučuje, pokud vytváříte webovou aplikaci, která je hostována na serveru a přístupná prostřednictvím prohlížeče. Pokud chcete přidat správu identit do mobilních nebo desktopových aplikací pomocí Azure AD B2C, měli byste místo OpenID připojení použít [OAuth 2,0](active-directory-b2c-reference-oauth-code.md) . Další informace o tokenech najdete v tématu [Přehled tokenů v Azure Active Directory B2C](active-directory-b2c-reference-tokens.md)
+Vzhledem k tomu, že rozšiřuje OAuth 2,0, umožňuje aplikacím zabezpečeně získat *přístupové tokeny*. Přístupové tokeny můžete použít pro přístup k prostředkům, které jsou zabezpečené [autorizačním serverem](active-directory-b2c-reference-protocols.md). OpenID Connect se doporučuje, pokud vytváříte webovou aplikaci, která je hostována na serveru a přístupná prostřednictvím prohlížeče. Další informace o tokenech najdete v tématu [Přehled tokenů v Azure Active Directory B2C](active-directory-b2c-reference-tokens.md)
 
 Azure AD B2C rozšiřuje standardní protokol OpenID Connect a provede více než jednoduché ověřování a autorizaci. Zavádí [parametr toku uživatele](active-directory-b2c-reference-policies.md), který umožňuje používat OpenID Connect k přidání uživatelského prostředí do aplikace, jako je například registrace, přihlášení a Správa profilů.
 

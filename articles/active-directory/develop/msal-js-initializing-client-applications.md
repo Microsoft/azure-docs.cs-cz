@@ -14,17 +14,17 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b041d8777f81f1796a2e2f7926f324e3b601bd93
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7c5022533cf0db57779bc36bd74cfb38932f10d6
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916498"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777832"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Inicializace klientských aplikací pomocí MSAL. js
 Tento článek popisuje inicializaci knihovny Microsoft Authentication Library pro JavaScript (MSAL. js) s instancí aplikace uživatelského agenta. Aplikace User-Agent je forma veřejné klientské aplikace, ve které se klientský kód spouští v uživatelském agentovi, jako je webový prohlížeč. Tito klienti neukládají tajné kódy, protože kontext prohlížeče je otevřený. Další informace o typech klientských aplikací a možnostech konfigurace aplikací najdete v [přehledu](msal-client-applications.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Před inicializací aplikace je nejdřív potřeba [ji zaregistrovat s Azure Portal](scenario-spa-app-registration.md) , aby bylo možné aplikaci integrovat s platformou Microsoft identity. Po registraci možná budete potřebovat následující informace (které najdete v Azure Portal):
 
 - ID klienta (řetězec představující GUID vaší aplikace)
@@ -116,10 +116,10 @@ Níže je uvedená celková sada konfigurovatelných možností, které jsou akt
         * `https://login.microsoftonline.com/common`– slouží k přihlašování uživatelů pomocí pracovních a školních účtů nebo osobního účtu Microsoft.
         * `https://login.microsoftonline.com/organizations/`– slouží k přihlašování uživatelů pomocí pracovních a školních účtů.
         * `https://login.microsoftonline.com/consumers/` – slouží k přihlašování uživatelů pouze pomocí osobního účet Microsoft (Live).
-    * V Azure AD B2C má formu `https://<instance>/tfp/<tenant>/<policyName>/`, kde instance je Azure AD B2C doména, tenant je název Azure AD B2C tenanta, Policy je název zásady B2C, která se má použít.
+    * V Azure AD B2C má formu `https://<instance>/tfp/<tenant>/<policyName>/`, kde instance je Azure AD B2C doména, tj. {your-tenant-Name}. b2clogin. com, tenant je název Azure AD B2C tenanta, tj. {your-tenant-Name}. Microsoft. com, Policy je název zásady B2C, které se mají použít.
 
 
-- **validateAuthority**: volitelné.  Ověření vystavitele tokenů. Výchozí hodnota je `true`. Pro B2C aplikace, protože je hodnota autority známá a může se lišit podle zásad, ověření platnosti autority nebude fungovat a musí být nastavená na `false`.
+- **validateAuthority**: volitelné.  Ověření vystavitele tokenů. Výchozí je `true`. Pro B2C aplikace, protože je hodnota autority známá a může se lišit podle zásad, ověření platnosti autority nebude fungovat a musí být nastavená na `false`.
 
 - **redirectUri**: volitelné.  Identifikátor URI pro přesměrování vaší aplikace, ve kterém může vaše aplikace odesílat a přijímat odpovědi na ověřování. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu. Výchozí hodnota je `window.location.href`.
 

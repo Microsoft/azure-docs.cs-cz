@@ -504,6 +504,8 @@
           href: sql-database-security-tutorial.md
         - name: Streamování dat s využitím služby Stream Analytics
           href: sql-database-stream-analytics.md
+        - name: Migrace databáze SQLite do Azure SQL Database (bezserverové)
+          href: tutorial-sqlite-db-to-azure-sql-serverless-offline.md
     - name: Koncepty
       items:
         - name: Prostředky izolované databáze

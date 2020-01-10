@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.openlocfilehash: 5a8e641c8a1b29d657fe8b0eabf7657ab5973516
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 45804bd3e81e7363010979b7a6e028356b3a5080
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666031"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780058"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatické škálování clusterů Azure HDInsight
 
@@ -26,12 +26,14 @@ Funkce automatického škálování clusteru Azure HDInsight automaticky škálu
 
 Následující tabulka popisuje typy clusterů a verze, které jsou kompatibilní s funkcí automatického škálování.
 
-| Version | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
+| Verze | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3,6 bez protokolu ESP | Pouze Ano 2,3| Ano | Ne | Ne | Ne | Ne | Ne |
-| HDInsight 4,0 bez protokolu ESP | Ano | Ano | Ne | Ne | Ne | Ne | Ne |
-| HDInsight 3,6 s ESP | Pouze Ano 2,3 | Ano | Ne | Ne | Ne | Ne | Ne |
-| HDInsight 4,0 s ESP | Ano | Ano | Ne | Ne | Ne | Ne | Ne |
+| HDInsight 3,6 bez protokolu ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
+| HDInsight 4,0 bez protokolu ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
+| HDInsight 3,6 s ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
+| HDInsight 4,0 s ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
+
+clustery \* HBA lze konfigurovat pouze pro škálování na základě plánu, nikoli na základě zatížení.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
@@ -246,7 +248,7 @@ Všechny stavové zprávy clusteru, které se mohou zobrazit, jsou vysvětleny v
 | Stav clusteru | Vysvětlení |
 |---|---|
 | Spuštěno | Cluster pracuje normálně. Všechny předchozí aktivity automatického škálování se úspěšně dokončily. |
-| Doplnění  | Aktualizuje se konfigurace automatického škálování clusteru.  |
+| Aktualizace  | Aktualizuje se konfigurace automatického škálování clusteru.  |
 | Konfigurace HDInsight  | Probíhá operace škálování a škálování clusteru.  |
 | Chyba aktualizace  | Během aktualizace konfigurace automatického škálování zjistila HDInsight problémy. Zákazníci si můžou zvolit, že se má znovu aktualizovat nebo zakázat automatické škálování.  |
 | Chyba  | S clusterem je něco špatného a nedá se použít. Odstraňte tento cluster a vytvořte nový.  |

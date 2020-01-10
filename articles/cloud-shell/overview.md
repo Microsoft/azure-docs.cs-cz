@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: 2edb50910614b47aca5a4d8f7f02c2e3bc69b643
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 513c3da8031774f5f111ee357b5a3c43e1d09d95
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449007"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832470"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Přehled Azure Cloud Shell
 Azure Cloud Shell je interaktivní, ověřené prostředí přístupné pro prohlížeč pro správu prostředků Azure.
@@ -40,11 +40,14 @@ Cloud Shell umožňuje přístup k prostředí příkazového řádku založené
 Využijte Cloud Shell pro práci, která je z místního počítače nepřipojená, způsobem, který může poskytnout jenom Cloud.
 
 ### <a name="choice-of-preferred-shell-experience"></a>Volba preferovaného prostředí prostředí
-Uživatelé si můžou z rozevíracího seznamu prostředí volit mezi bash nebo PowerShellem.
+Uživatelé si můžou vybrat mezi bash nebo PowerShellem.
+1. Vyberte **Cloud Shell**.
 
-![Bash v Cloud Shell](media/overview/overview-bash-pic.png)
+    ![Ikona Cloud Shell](media/overview/overview-cloudshell-icon.png)
 
-![PowerShell ve službě Cloud Shell](media/overview/overview-ps-pic.png)
+2. Vyberte **bash** nebo **PowerShell**.
+
+    ![Zvolit buď bash nebo PowerShell](media/overview/overview-choices.png)
 
 ### <a name="authenticated-and-configured-azure-workstation"></a>Ověřená a nakonfigurovaná pracovní stanice Azure
 Cloud Shell spravuje Microsoft, takže se dodává s oblíbenými nástroji příkazového řádku a jazykovou podporou. Cloud Shell taky automaticky ověřuje pro okamžitý přístup k vašim prostředkům pomocí rutin Azure CLI nebo Azure PowerShell.

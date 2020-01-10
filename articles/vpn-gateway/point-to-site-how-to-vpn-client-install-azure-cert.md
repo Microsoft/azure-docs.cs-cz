@@ -1,27 +1,26 @@
 ---
-title: 'Instalace klientského certifikátu Point-to-Site: Azure | Dokumentace Microsoftu'
-description: Nainstalujte klientský certifikát pro ověřování P2S certifikátu – Windows, Mac, Linux.
+title: 'Azure VPN Gateway: instalace klientského certifikátu typu Point-to-site'
+description: Instalace certifikátu klienta pro ověřování P2S certifikátů – Windows, Mac, Linux
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: c278c1c85961fbeb0779cad98f8ac16d4961ba75
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f6399f52229916c9ab3e55ec55ace092d0b73dba
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60679956"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778273"
 ---
-# <a name="install-client-certificates-for-p2s-certificate-authentication-connections"></a>Instalace klientských certifikátů pro připojení P2S certifikát ověřování
+# <a name="install-client-certificates-for-p2s-certificate-authentication-connections"></a>Nainstalovat klientské certifikáty pro připojení ověřování certifikátů P2S
 
-Všichni klienti, které se připojují k virtuální síti pomocí ověřování certifikátů Azure Point-to-Site vyžadují klientský certifikát. Tento článek vám pomůže nainstalovat klientský certifikát, který se používá k ověřování při připojení k virtuální síti metodou P2S.
+Všichni klienti, kteří se připojují k virtuální síti pomocí ověřování certifikátů typu Point-to-site, vyžadují klientský certifikát. Tento článek vám pomůže s instalací klientského certifikátu, který se používá k ověřování při připojování k virtuální síti pomocí P2S.
 
-## <a name="generate"></a>Získat certifikát klienta
+## <a name="generate"></a>Získání klientského certifikátu
 
-Bez ohledu na to, jaký klientský operační systém chcete připojit z musí mít vždy klientský certifikát. Vygenerování klientského certifikátu z kořenového certifikátu, který byl vygenerován pomocí řešení Certifikační autority nebo certifikát podepsaný svým držitelem. Najdete v článku [PowerShell](vpn-gateway-certificates-point-to-site.md), [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md), nebo [Linux](vpn-gateway-certificates-point-to-site-linux.md) pokyny k provedení kroků pro vytvoření klientského certifikátu. 
+Bez ohledu na to, ze kterého klientského operačního systému se chcete připojit, je nutné vždy mít klientský certifikát. Certifikát klienta můžete vygenerovat buď z kořenového certifikátu, který byl vygenerován pomocí podnikového řešení CA, nebo kořenového certifikátu podepsaného svým držitelem. Postup pro vygenerování klientského certifikátu najdete v pokynech k [prostředí PowerShell](vpn-gateway-certificates-point-to-site.md), [Makecert](vpn-gateway-certificates-point-to-site-makecert.md)nebo [Linux](vpn-gateway-certificates-point-to-site-linux.md) . 
 
 ## <a name="installwin"></a>Windows
 
@@ -30,7 +29,7 @@ Bez ohledu na to, jaký klientský operační systém chcete připojit z musí m
 ## <a name="installmac"></a>Mac
 
 >[!NOTE]
->Klienti Mac VPN podporují pouze modelu nasazení Resource Manager. Nejsou podporovány pro model nasazení classic.
+>Klienti VPN typu Mac jsou podporováni pouze pro model nasazení Správce prostředků. Nejsou podporované pro model nasazení Classic.
 >
 >
 
@@ -38,8 +37,8 @@ Bez ohledu na to, jaký klientský operační systém chcete připojit z musí m
 
 ## <a name="installlinux"></a>Linux
 
-Certifikát klienta pro Linux je nainstalován na straně klienta jako součást konfigurace klienta. Zobrazit [konfigurace klienta - Linux](point-to-site-vpn-client-configuration-azure-cert.md#linuxinstallcli) pokyny.
+Klientský certifikát pro Linux je nainstalován v klientovi jako součást konfigurace klienta. Pokyny najdete v tématu [Konfigurace klienta – Linux](point-to-site-vpn-client-configuration-azure-cert.md#linuxinstallcli) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokračujte kroky konfigurace Point-to-Site k [vytvoření a instalace konfiguračních souborů klienta VPN](point-to-site-vpn-client-configuration-azure-cert.md).
+Pokračujte podle kroků konfigurace Point-to-site pro [Vytvoření a instalaci konfiguračních souborů klienta VPN](point-to-site-vpn-client-configuration-azure-cert.md).

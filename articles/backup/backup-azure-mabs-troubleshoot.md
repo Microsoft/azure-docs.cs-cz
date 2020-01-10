@@ -4,12 +4,12 @@ description: Řešení potíží s instalací, registrací Azure Backup Server a
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: bf641c4ef27ce561c005709e6de94f40855b9a5f
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 7fc27a2624fc38883135bdb6d2767625ab02a5a5
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665330"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830203"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Odstraňování potíží Azure Backup Serveru
 
@@ -46,11 +46,11 @@ Než začnete řešit potíže s Microsoft Azure Backupm serverem (MABS), doporu
 | --- | --- | --- |
 | Backup | Vytvoření bodu obnovení online se nezdařilo | **Chybová zpráva**: Windows Azure Backup Agent nemohl vytvořit snímek vybraného svazku. <br> **Alternativní řešení**: Zkuste zvětšit místo ve svazku repliky a bodu obnovení.<br> <br> **Chybová zpráva**: Agent Windows Azure Backup se nemůže připojit ke službě OBEngine. <br> **Alternativní řešení**: Ověřte, že OBEngine existuje v seznamu spuštěných služeb v počítači. Pokud služba OBEngine není spuštěná, spusťte službu OBEngine pomocí příkazu net start OBEngine. <br> <br> **Chybová zpráva**: šifrovací heslo pro tento server není nastavené. Nakonfigurujte prosím šifrovací heslo. <br> **Alternativní řešení**: zkuste nakonfigurovat šifrovací heslo. Pokud dojde k chybě, proveďte následující kroky: <br> <ol><li>Ověřte, zda existuje pomocné umístění. Toto je umístění, které je uvedené v registru **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config**, má název **ScratchLocation** existovat.</li><li> Pokud existuje pomocné umístění, zkuste ho znovu zaregistrovat pomocí starého přístupového hesla. *Pokaždé, když nakonfigurujete šifrovací heslo, uložte ho na bezpečné místo.*</li><ol>|
 
-## <a name="the-vault-credentials-provided-are-different-from-the-vault-the-server-is-registered"></a>Zadané přihlašovací údaje trezoru se liší od trezoru, na který je server zaregistrován.
+## <a name="the-original-and-external-dpm-servers-must-be-registered-to-the-same-vault"></a>Původní a externí servery DPM musí být zaregistrované ve stejném trezoru.
 
 | Operace | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- | --- |
-| Obnovení | **Kód chyby**: Chyba přihlašovacích údajů CBPServerRegisteredVaultDontMatchWithCurrent/trezoru: 100110 <br/> <br/>**Chybová zpráva**: zadané přihlašovací údaje trezoru se liší od trezoru, na který je server zaregistrován. | **Příčina**: k tomuto problému dochází, když se pokoušíte obnovit soubory na alternativním serveru z původního serveru pomocí možnosti externí obnovení DPM a pokud se server, který obnovujete, a původní server, ze kterého se zálohují data, nepřidruží ke stejnému trezoru služby Recovery Services.<br/> <br/>**Alternativní řešení** Chcete-li tento problém vyřešit, zajistěte, aby byl původní i alternativní server zaregistrován do stejného trezoru.|
+| Obnovení | **Kód chyby**: Chyba přihlašovacích údajů CBPServerRegisteredVaultDontMatchWithCurrent/trezoru: 100110 <br/> <br/>**Chybová zpráva**: původní a externí servery DPM musí být zaregistrované ve stejném trezoru. | **Příčina**: k tomuto problému dochází, když se pokoušíte obnovit soubory na alternativním serveru z původního serveru pomocí možnosti externí obnovení DPM a pokud se server, který obnovujete, a původní server, ze kterého se zálohují data, nepřidruží ke stejnému trezoru služby Recovery Services.<br/> <br/>**Alternativní řešení** Chcete-li tento problém vyřešit, zajistěte, aby byl původní i alternativní server zaregistrován do stejného trezoru.|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>Úlohy Vytvoření bodu obnovení online pro virtuální počítač VMware selžou
 

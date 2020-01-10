@@ -8,13 +8,18 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 31fdd85fdcc40b38738d33e2c0c13797db7b1d42
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 207f5180db8a589ed4a68741ac18180370d21788
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390548"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833874"
 ---
+## <a name="limitations"></a>Omezení
+
+- Sady škálování virtuálních počítačů se na vyhrazených hostitelích aktuálně nepodporují.
+- Podporují se tyto řady virtuálních počítačů: DSv3 a ESv3. 
+
 ## <a name="benefits"></a>Výhody 
 
 Udržování celého hostitele přináší následující výhody:
@@ -22,7 +27,6 @@ Udržování celého hostitele přináší následující výhody:
 -   Izolace hardwaru na úrovni fyzického serveru. Do hostitelů nebudou umístěny žádné další virtuální počítače. Vyhrazení hostitelé se nasazují ve stejných datových centrech a sdílejí stejnou síť a základní infrastrukturu úložiště jako ostatní, neizolované hostitele.
 -   Kontrola nad událostmi údržby iniciované platformou Azure. I když většina událostí údržby nemá na vašich virtuálních počítačích malý vliv, existují některé citlivé úlohy, které mohou mít vliv na každou sekundu pozastavení. U vyhrazených hostitelů můžete vyjádřit souhlas s časovým obdobím údržby, abyste snížili dopad na vaši službu.
 -   Díky programu zvýhodněné hybridní využití Azure můžete přenést vlastní licence pro Windows a SQL do Azure. Používání výhod hybridního využití poskytuje další výhody. Další informace najdete v tématu [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
-
 
 
 ## <a name="groups-hosts-and-vms"></a>Skupiny, hostitelé a virtuální počítače  
@@ -71,7 +75,7 @@ Infrastruktura, která podporuje vaše virtuální počítače, se občas může
 > [!NOTE]
 >  Řízení údržby je aktuálně ve fázi omezené verze Preview a vyžaduje proces zprovoznění. Platí pro tuto verzi Preview tím, že odešlete [průzkum nominálních](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u)hodnot.
 
-## <a name="capacity-considerations"></a>Požadavky na kapacitu
+## <a name="capacity-considerations"></a>Důležité informace o kapacity
 
 Po zřízení vyhrazeného hostitele ho Azure přiřadí k fyzickému serveru. Tím se zajistí dostupnost kapacity v případě, že potřebujete zřídit virtuální počítač. Azure používá celou kapacitu v oblasti (nebo zóně) k výběru fyzického serveru pro hostitele. Také to znamená, že zákazníci můžou očekávat, že budou moci rozšiřovat své vyhrazené hostitele, aniž by to mělo za následek nedostatku místa v clusteru.
 
@@ -99,11 +103,11 @@ Další informace najdete v tématu [ceny za vyhrazené hostitele Azure](https:/
 
 Pro hostitele je definována SKU, která představuje řadu a typ velikosti virtuálního počítače. V rámci jednoho hostitele můžete kombinovat více virtuálních počítačů s různými velikostmi, pokud mají stejnou řadu velikostí. Typ je generování hardwaru, které je aktuálně k dispozici v oblasti.
 
-Různé `types` pro stejné série virtuálních počítačů budou od různých dodavatelů CPU a mají různé generace PROCESORů a počet jader.
+Různé `types` pro stejnou řadu virtuálních počítačů budou od různých dodavatelů CPU a mají různé generace CPU a počet jader.
 
 Další informace najdete na [stránce s cenami](https://aka.ms/ADHPricing) hostitele.
 
-Během období Preview budeme podporovat následující hostitele SKU\types: DSv3_Type1 a ESv3_Type1.
+Vyhrazení hostitelé podporují následující hostitele SKU\types: DSv3_Type1 a ESv3_Type1
 
  
 ## <a name="host-life-cycle"></a>Životní cyklus hostitele
@@ -115,6 +119,6 @@ Azure monitoruje a spravuje stav hostitelů. Při dotazování hostitele se vrá
 |----------|----------------|
 | Dostupný hostitel     | Neexistují žádné známé problémy s hostitelem.   |
 | Hostitel v rámci šetření  | Máme nějaké problémy s hostitelem, který se chystáme najít. Toto je přechodný stav nutný k tomu, aby Azure mohl vyzkoušet a identifikovat rozsah a hlavní příčinu zjištěného problému. Může to mít vliv na virtuální počítače, které běží na hostiteli. |
-| Hostitel čeká na zrušení přidělení   | Azure nemůže hostitele obnovit zpátky do stavu v pořádku a požádá o opětovné nasazení virtuálních počítačů z tohoto hostitele. Pokud je povolená možnost `autoReplaceOnFailure`, jsou virtuální počítače *zacelené* na hardware v pořádku. V opačném případě je možné, že váš virtuální počítač běží na hostiteli, který selže.|
+| Hostitel čeká na zrušení přidělení   | Azure nemůže hostitele obnovit zpátky do stavu v pořádku a požádá o opětovné nasazení virtuálních počítačů z tohoto hostitele. Pokud je povolená možnost `autoReplaceOnFailure`, jsou vaše virtuální počítače *zacelené* na hardwaru v dobrém stavu. V opačném případě je možné, že váš virtuální počítač běží na hostiteli, který selže.|
 | Přidělení hostitele  | Z hostitele se odebraly všechny virtuální počítače. Na tohoto hostitele se už neúčtují, protože hardware se vyčerpal z rotace.   |
 

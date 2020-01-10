@@ -1,5 +1,5 @@
 ---
-title: Konfigurace účtu pro offline streamování obsahu chráněného technologií PlayReady – Azure
+title: Online streamování PlayReady s Media Services V3 – Azure
 description: Tento článek ukazuje, jak nakonfigurovat účet Azure Media Services pro streamování PlayReady pro Windows 10 v režimu offline.
 services: media-services
 keywords: POMLČKa, DRM, režim offline, Widevine, ExoPlayer, Android
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: 0798cffdca8d5876373c35f3f5fd657551586d43
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 15a3e2f7fee6d130b1913ec4f74069a09d5aec53
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974049"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779783"
 ---
-# <a name="offline-playready-streaming-for-windows-10"></a>Online streamování PlayReady pro Windows 10
+# <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Online streamování PlayReady pro Windows 10 s Media Services V3
 
 Azure Media Services podporuje stahování a přehrávání offline s ochranou DRM. Tento článek popisuje offline podporu Azure Media Services pro klienty s Windows 10 a PlayReady. Informace o podpoře offline režimu pro zařízení s iOS/FairPlay a Androidem/Widevine najdete v následujících článcích:
 

@@ -130,6 +130,10 @@
       href: /rest/api/virtual-desktop/
     - name: Podporovaná nastavení souboru RDP
       href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context'
+    - name: Doprovodné materiály k sítím
+      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context'
+    - name: Doprovodné materiály k určení velikosti virtuálního počítače
+      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context'
 - name: Zdroje a prostředky
   items:
     - name: Experience Estimator

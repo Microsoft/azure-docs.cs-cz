@@ -1,26 +1,18 @@
 ---
-title: Řešení potíží s připojeními Azure Point-to-Site VPN z klientů se systémem Mac OS X | Dokumentace Microsoftu
+title: 'Azure VPN Gateway: řešení potíží s připojením Point-to-site: Klienti Mac OS X'
 description: Postup řešení potíží s připojeními P2S Mac OS X VPN klienta
 services: vpn-gateway
-documentationcenter: na
 author: anzaman
-manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: 0c058cb6547d67469d3138dc331b6181c07e6e65
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f76fd7bce539ebcf79216aabb5bf868b2d18107a
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60457034"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780177"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Řešení potíží s připojeními Point-to-Site VPN z klientů se systémem Mac OS X VPN
 
@@ -63,12 +55,12 @@ Tento článek pomáhá řešit problémy s připojením Point-to-Site v Mac OS 
 
 Pokud je všechno správně nastavené, opakujte předchozí kroky Stáhnout [Wireshark](https://www.wireshark.org/#download) a proveďte zachycení paketů.
 
-1. Filtrovat podle *isakmp* a podívejte se na **IKE_SA** paketů. Je třeba podívat na podrobnosti návrh přidružení zabezpečení v rámci **datové části: Nabídky přidružení zabezpečení**. 
+1. Filtrovat podle *isakmp* a podívejte se na **IKE_SA** paketů. Je třeba podívat na podrobnosti návrh přidružení zabezpečení v rámci **datová část: přidružení zabezpečení**. 
 2. Ověřte, že klient a server mají společnou sadu.
 
    ![paketů](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/packet5.jpg) 
   
 3. Pokud se v trasování sítě nepřijde žádná odpověď serveru, ověřte, že jste povolili protokol IKEv2 na stránce konfigurace brány Azure na webu Azure Portal.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další nápovědu najdete v tématu [Microsoft Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

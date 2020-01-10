@@ -12,21 +12,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: 4cc88e7c04d10907a9a6386b1266eb8031d60926
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 2d588d2707c267097e25176997e58f9573017582
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552674"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780041"
 ---
 # <a name="azure-container-registry-integration-with-security-center-preview"></a>Azure Container Registry integrace s Security Center (Preview)
 
 Azure Container Registry (ACR) je spravovaná privátní služba registru Docker, která ukládá a spravuje vaše image kontejnerů pro nasazení Azure v centrálním registru. Vychází z open source registru Docker Registry 2,0.
 
-Pro lepší přehled o chybách registru a imagí můžou Azure Security Center uživatelé na úrovni Standard povolit volitelnou sadu registrů kontejnerů. Náklady na používání této funkce se účtují podle jednotlivých imagí, nikoli za kontrolu. Další informace najdete na stránce s [cenami](security-center-pricing.md). Když je sada povolená, Security Center automaticky kontroluje image v registru vždy, když se do registru vloží obrázek.
+Pokud pracujete na úrovni Standard Azure Security Center, můžete přidat sadu registrů kontejnerů. Tato volitelná funkce přináší hlubší přehled o chybách zabezpečení imagí v registrech. Povolte nebo zakažte sadu na úrovni předplatného tak, aby pokryla všechny Registry v rámci předplatného. Tato funkce se účtuje na základě obrázku, ne podle kontroly, jak je znázorněno na [stránce s cenami](security-center-pricing.md). 
 
-> [!NOTE]
-> První Kontrola registru Security Center se projeví až po povolení sady registrů kontejnerů a vložení image do registru.
+Když zapnete sadu registrů kontejnerů, zajistíte, aby Security Center byla připravená na skenování imagí, které se připravují do registru. Kontroly jsou na úrovni obrázku: Security Center nekontrolují registr, hledá Image uložené v registru. 
+
+Pokaždé, když se do registru vloží obrázek, Security Center automaticky vyhledá tento obrázek. Pokud chcete spustit kontrolu obrázku, nahrajte ho do úložiště.
+
 
 Jakmile se kontrola dokončí (obvykle po přibližně 10 minutách), jsou výsledky k dispozici v Security Center doporučeních, jako je:
 

@@ -1,88 +1,87 @@
 ---
-title: 'Generování a export certifikátů pro Point-to-Site: MakeCert : Azure | Dokumentace Microsoftu'
-description: Vytvořit certifikát podepsaný svým držitelem, exportujte veřejný klíč a generování klientských certifikátů pomocí nástroje MakeCert.
+title: 'Azure VPN Gateway: generování certifikátů pro & Export pro P2S: MakeCert'
+description: Vytvořte kořenový certifikát podepsaný svým držitelem, exportujte veřejný klíč a vygenerujte klientské certifikáty pomocí nástroje MakeCert.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: 973c0aa3bd187e963f15adbe34955d6bc9fa612d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad2ab31e6771efc54238d5747863fa2a9bb2f356
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60768102"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833971"
 ---
-# <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>Generování a export certifikátů pro připojení Point-to-Site pomocí nástroje MakeCert
+# <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>Generování a export certifikátů pro připojení Point-to-site pomocí nástroje MakeCert
 
-Připojení point-to-Site používat certifikáty k ověřování. Tento článek ukazuje, jak vytvořit certifikát podepsaný svým držitelem a generování klientských certifikátů pomocí nástroje MakeCert. Pokud hledáte pokyny jiným certifikátem, přečtěte si téma [certifikátů – PowerShell](vpn-gateway-certificates-point-to-site.md) nebo [certifikáty – Linux](vpn-gateway-certificates-point-to-site-linux.md).
+Připojení Point-to-site používají k ověřování certifikáty. V tomto článku se dozvíte, jak vytvořit kořenový certifikát podepsaný svým držitelem a jak vygenerovat klientské certifikáty pomocí nástroje MakeCert. Pokud hledáte jiné pokyny k certifikátu, přečtěte si téma [certifikáty – PowerShell](vpn-gateway-certificates-point-to-site.md) nebo [certifikáty – Linux](vpn-gateway-certificates-point-to-site-linux.md).
 
-Přestože doporučujeme používat [kroky Windows 10 PowerShell](vpn-gateway-certificates-point-to-site.md) k vytvoření certifikátů, poskytujeme jako volitelná metoda tyto pokyny pro MakeCert. Certifikáty, které vygenerujete pomocí některé z metod se dá nainstalovat na [všechny podporované klientské operační systémy](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq). Použití nástroje MakeCert však má následující omezení:
+I když k vytvoření certifikátů doporučujeme použít [kroky Windows PowerShellu pro Windows 10](vpn-gateway-certificates-point-to-site.md) , poskytujeme tyto pokyny pro Makecert jako volitelnou metodu. Certifikáty, které vygenerujete pomocí kterékoli z těchto metod, můžete nainstalovat na [libovolný podporovaný klientský operační systém](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq). MakeCert ale má následující omezení:
 
-* MakeCert je zastaralý. To znamená, že tento nástroj nebylo možné odebrat kdykoli. Všechny certifikáty, které již vygenerován pomocí příkazu MakeCert nebude mít vliv při použití nástroje MakeCert již není k dispozici. Použití nástroje MakeCert slouží pouze k vytvoření certifikátů, nikoli jako mechanismus ověřování.
+* MakeCert je zastaralý. To znamená, že tento nástroj lze kdykoli odebrat. Všechny certifikáty, které jste už vygenerovali pomocí nástroje MakeCert, nebudou ovlivněny, pokud již nebude k dispozici MakeCert. MakeCert se používá pouze k vygenerování certifikátů, nikoli jako mechanismu ověřování.
 
-## <a name="rootcert"></a>Vytvořit certifikát podepsaný svým držitelem
+## <a name="rootcert"></a>Vytvoření kořenového certifikátu podepsaného svým držitelem
 
-Následující kroky ukazují, jak vytvořit certifikát podepsaný svým držitelem pomocí nástroje MakeCert. Tyto kroky nejsou specifické pro model nasazení. Jsou platné pro Resource Manager a classic.
+Následující kroky ukazují, jak vytvořit certifikát podepsaný svým držitelem pomocí nástroje MakeCert. Tyto kroky nejsou specifické pro model nasazení. Jsou platné pro Správce prostředků i pro klasický systém.
 
-1. Stáhněte a nainstalujte [MakeCert](https://msdn.microsoft.com/library/windows/desktop/aa386968(v=vs.85).aspx).
-2. Po dokončení instalace můžete obvykle najít nástroj makecert.exe pod touto cestou: 'C:\Program Files (x86)\Windows Kits\10\bin\<arch>'. I když je možné, že byla nainstalována do jiného umístění. Otevřete příkazový řádek jako správce a přejděte do umístění nástroje MakeCert. Následující příklad, můžete použít nastavení pro správné umístění:
+1. Stáhněte a nainstalujte [Makecert](https://msdn.microsoft.com/library/windows/desktop/aa386968(v=vs.85).aspx).
+2. Po dokončení instalace můžete obvykle najít nástroj Makecert. exe v této cestě: C:\Program Files (x86) \Windows Kits\10\bin\<>. I když je možné, že byl nainstalován do jiného umístění. Otevřete příkazový řádek jako správce a přejděte do umístění nástroje MakeCert. Můžete použít následující příklad a upravit pro správné umístění:
 
    ```cmd
    cd C:\Program Files (x86)\Windows Kits\10\bin\x64
    ```
-3. Vytvořte a nainstalujte certifikát v úložišti osobních certifikátů na vašem počítači. Následující příklad vytvoří odpovídající *.cer* soubor, který nahrajete do Azure při konfigurování P2S. Nahraďte názvem, který chcete použít pro certifikát "P2SRootCert" a "P2SRootCert.cer". Certifikát je umístěn ve vaší "Certificates - Current User\Personal\Certificates".
+3. Vytvořte a nainstalujte certifikát do osobního úložiště certifikátů na vašem počítači. Následující příklad vytvoří odpovídající soubor *. cer* , který nahrajete do Azure při konfiguraci P2S. Nahraďte ' P2SRootCert ' a ' P2SRootCert. cer ' názvem, který chcete použít pro certifikát. Certifikát se nachází ve vašem certifikátu – aktuální User\Personal\Certificates.
 
    ```cmd
    makecert -sky exchange -r -n "CN=P2SRootCert" -pe -a sha256 -len 2048 -ss My
    ```
 
-## <a name="cer"></a>Export veřejného klíče (.cer)
+## <a name="cer"></a>Export veřejného klíče (. cer)
 
 [!INCLUDE [Export public key](../../includes/vpn-gateway-certificates-export-public-key-include.md)]
 
-Soubor exported.cer musí být odeslán do Azure. Pokyny najdete v tématu [konfigurace připojení typu Point-to-Site](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile). Chcete-li přidat další důvěryhodný kořenový certifikát, najdete v článku [v této části](vpn-gateway-howto-point-to-site-resource-manager-portal.md#add) tohoto článku.
+Exportovaný soubor. cer se musí nahrát do Azure. Pokyny najdete v tématu [Konfigurace připojení typu Point-to-site](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile). Postup přidání dalšího důvěryhodného kořenového certifikátu najdete v [této části](vpn-gateway-howto-point-to-site-resource-manager-portal.md#add) článku.
 
-### <a name="export-the-self-signed-certificate-and-private-key-to-store-it-optional"></a>Exportujte certifikát podepsaný svým držitelem a privátní klíč a uložit na (volitelné)
+### <a name="export-the-self-signed-certificate-and-private-key-to-store-it-optional"></a>Export certifikátu podepsaného svým držitelem a privátního klíče pro jeho uložení (volitelné)
 
-Můžete chtít exportovat certifikát podepsaný svým držitelem a bezpečně uložit. Pokud třeba, můžete později jej nainstalovat na jiný počítač a generovat více klientských certifikátů nebo exportovat jiný soubor .cer. Certifikát podepsaný svým držitelem exportovat jako soubor .pfx, vyberte kořenový certifikát a pomocí stejných kroků, jak je popsáno v [exportovat klientský certifikát](#clientexport).
+Můžete chtít exportovat kořenový certifikát podepsaný svým držitelem a bezpečně ho uložit. V případě potřeby ho můžete později nainstalovat na jiný počítač, vygenerovat další klientské certifikáty nebo exportovat jiný soubor. cer. Chcete-li exportovat kořenový certifikát podepsaný svým držitelem jako soubor. pfx, vyberte kořenový certifikát a použijte stejný postup, jak je popsáno v tématu [Export certifikátu klienta](#clientexport).
 
 ## <a name="create-and-install-client-certificates"></a>Vytvoření a instalace klientských certifikátů
 
-Certifikát podepsaný svým držitelem neinstalujte přímo na klientském počítači. Je potřeba vygenerovat klientský certifikát z certifikátu podepsaného svým držitelem. Můžete pak export a instalace klientského certifikátu do klientského počítače. Následující kroky nejsou specifické pro model nasazení. Jsou platné pro Resource Manager a classic.
+Certifikát podepsaný svým držitelem neinstalujete přímo do klientského počítače. Musíte vygenerovat klientský certifikát z certifikátu podepsaného svým držitelem. Pak certifikát klienta exportujete a nainstalujete do klientského počítače. Následující kroky nejsou specifické pro model nasazení. Jsou platné pro Správce prostředků i pro klasický systém.
 
 ### <a name="clientcert"></a>Vygenerování klientského certifikátu
 
-Každý klientský počítač, který se připojuje k virtuální síti pomocí připojení Point-to-Site, musí mít nainstalovaný klientský certifikát. Vygenerování klientského certifikátu z certifikátu podepsaného svým držitelem a exportovat a instalaci klientského certifikátu. Pokud není nainstalovaný klientský certifikát, ověření se nezdaří. 
+Každý klientský počítač, který se připojuje k virtuální síti pomocí připojení Point-to-Site, musí mít nainstalovaný klientský certifikát. Vygenerujete klientský certifikát z kořenového certifikátu podepsaného svým držitelem a pak vyexportujete a nainstalujete certifikát klienta. Pokud klientský certifikát není nainstalován, ověřování se nezdařilo. 
 
-Následující kroky vás provedou vygenerování klientského certifikátu z certifikátu podepsaného svým držitelem. Více klientských certifikátů můžete nechat vygenerovat z se stejným kořenovým certifikátem. Při generování klientských certifikátů pomocí následujícího postupu klientský certifikát je automaticky nainstalován v počítači, který jste použili k vygenerování certifikátu. Pokud chcete nainstalovat klientský certifikát na jiný klientský počítač, můžete exportovat certifikát.
+Následující kroky vás provedou vytvořením klientského certifikátu z kořenového certifikátu podepsaného svým držitelem. Můžete vygenerovat více klientských certifikátů ze stejného kořenového certifikátu. Když vygenerujete klientské certifikáty pomocí následujících kroků, klientský certifikát se automaticky nainstaluje na počítač, který jste použili k vygenerování certifikátu. Pokud chcete nainstalovat klientský certifikát do jiného klientského počítače, můžete certifikát exportovat.
  
-1. Ve stejném počítači, který jste použili k vytvoření certifikátu podepsaného svým držitelem otevřete příkazový řádek jako správce.
-2. Upravit a spuštění ukázky pro vytvoření klientského certifikátu.
-   * Změna *"P2SRootCert"* k názvu podepsaný svým držitelem, který se generuje klientský certifikát z kořenové. Ujistěte se, že používáte název kořenového certifikátu, který je bez ohledu "CN =' byla hodnota, kterou jste zadali při vytváření podepsaný svým držitelem kořenové.
-   * Změna *P2SChildCert* k vygenerování klientského certifikátu na požadovaný název.
+1. Na stejném počítači, který jste použili k vytvoření certifikátu podepsaného svým držitelem, otevřete příkazový řádek jako správce.
+2. Upravte a spusťte ukázku pro vygenerování klientského certifikátu.
+   * Změňte *"P2SRootCert"* na název kořenového adresáře podepsaného svým držitelem, ze kterého generujete certifikát klienta. Ujistěte se, že používáte název kořenového certifikátu, který je bez ohledu na hodnotu CN =, kterou jste zadali při vytváření kořenového adresáře podepsaného svým držitelem.
+   * Změňte *P2SChildCert* na název, který chcete vygenerovat klientský certifikát.
 
-   Při spuštění v následujícím příkladu, aniž byste ho upravovali, výsledkem je klientský certifikát s názvem P2SChildcert ve vašem osobním úložišti certifikátů, který byl vytvořen kořenový certifikát P2SRootCert.
+   Pokud následující příklad spustíte beze změny, je výsledkem klientský certifikát s názvem P2SChildcert ve svém osobním úložišti certifikátů, který byl vygenerován z kořenového certifikátu P2SRootCert.
 
    ```cmd
    makecert.exe -n "CN=P2SChildCert" -pe -sky exchange -m 96 -ss My -in "P2SRootCert" -is my -a sha256
    ```
 
-### <a name="clientexport"></a>Export klientského certifikátu
+### <a name="clientexport"></a>Exportovat klientský certifikát
 
 [!INCLUDE [Export client certificate](../../includes/vpn-gateway-certificates-export-client-cert-include.md)]
 
 ### <a name="install"></a>Nainstalovat certifikát exportovaného klienta
 
-Pokud chcete nainstalovat klientský certifikát, najdete v článku [instalace klientského certifikátu](point-to-site-how-to-vpn-client-install-azure-cert.md).
+Informace o instalaci klientského certifikátu najdete v tématu [instalace klientského certifikátu](point-to-site-how-to-vpn-client-install-azure-cert.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokračujte v konfiguraci Point-to-Site. 
+Pokračujte v konfiguraci Point-to-site. 
 
-* Pro **Resource Manageru** postup nasazení modelu najdete v tématu [konfigurace P2S pomocí nativního ověřování certifikátů Azure](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
-* Pro **classic** postup nasazení modelu najdete v tématu [konfigurace připojení typu Point-to-Site VPN k virtuální síti (classic)](vpn-gateway-howto-point-to-site-classic-azure-portal.md).
+* Postup **správce prostředkůho** modelu nasazení najdete v tématu [Konfigurace P2S pomocí nativního ověřování certifikátů Azure](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
+* Postup pro model nasazení **Classic** najdete v tématu [Konfigurace připojení VPN typu Point-to-site k virtuální síti (Classic)](vpn-gateway-howto-point-to-site-classic-azure-portal.md).
 
 Informace o odstraňování potíží s P2S najdete v článku [Poradce při potížích s připojeními Azure typu point-to-site](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).
