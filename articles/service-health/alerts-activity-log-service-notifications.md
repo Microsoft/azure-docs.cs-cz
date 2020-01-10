@@ -3,19 +3,19 @@ title: Doručení výstrah protokolu aktivit v oznámeních služby Azure
 description: Když dojde ke službě Azure, dostanete oznámení prostřednictvím SMS, e-mailu nebo Webhooku.
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: bc8e935b9d44cb5236c7a1ef38da24e12b877e14
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d318adc76959ac24f4be9946167965a83053f632
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464022"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749318"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Vytváření výstrah protokolu aktivit u oznámení služby
 ## <a name="overview"></a>Přehled
 
 V tomto článku se dozvíte, jak nastavit výstrahy protokolu aktivit pro oznámení o stavu služby pomocí Azure Portal.  
 
-Oznámení o stavu služby se ukládají do [protokolu aktivit Azure](../azure-monitor/platform/activity-logs-overview.md) , který dostal potenciálně velký objem informací uložených v protokolu aktivit, existuje samostatné uživatelské rozhraní, které usnadňuje zobrazení a nastavení výstrah pro oznámení o stavu služby. 
+Oznámení o stavu služby se ukládají do [protokolu aktivit Azure](../azure-monitor/platform/platform-logs-overview.md) , který dostal potenciálně velký objem informací uložených v protokolu aktivit, existuje samostatné uživatelské rozhraní, které usnadňuje zobrazení a nastavení výstrah pro oznámení o stavu služby. 
 
 Když Azure pošle oznámení o stavu služby do vašeho předplatného Azure, můžete obdržet upozornění. Můžete nakonfigurovat výstrahu na základě:
 

@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7c1f3384b88de7b58457251cf72b2815267cb29
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 9cde171f1c031b4b02a71fe0dac1a689e3ec0722
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541696"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772580"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Správa modelů, nasazení a monitorování pomocí Azure Machine Learning
 
@@ -35,9 +35,9 @@ Azure Machine Learning poskytuje následující možnosti MLOps:
 
 Pomocí kanálů ML z Azure Machine Learning spojíte všechny kroky, které se podílejí na procesu školení modelu.
 
-Kanál ML může obsahovat kroky z přípravy dat na extrakci funkcí až po vyladění modelu do hodnocení. Další informace najdete v tématu [ml kanály](service/concept-ml-pipelines.md).
+Kanál ML může obsahovat kroky z přípravy dat na extrakci funkcí až po vyladění modelu do hodnocení. Další informace najdete v tématu [ml kanály](concept-ml-pipelines.md).
 
-Pokud k vytvoření kanálů ml použijete [Návrháře](service/concept-designer.md) , můžete kdykoli kliknout na tlačítko **"..."** v pravém horním rohu stránky návrháře a pak vybrat **klonovat**. Klonování kanálu vám umožní iterovat návrh kanálu bez ztráty starých verzí.  
+Pokud k vytvoření kanálů ml použijete [Návrháře](concept-designer.md) , můžete kdykoli kliknout na tlačítko **"..."** v pravém horním rohu stránky návrháře a pak vybrat **klonovat**. Klonování kanálu vám umožní iterovat návrh kanálu bez ztráty starých verzí.  
 
 ## <a name="register-package-and-deploy-models-from-anywhere"></a>Registrace, balení a nasazení modelů odkudkoli
 

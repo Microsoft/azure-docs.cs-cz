@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: b8cbf69aa0788b3b8e0130396f192cb5bc045f3d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 17ca1a7671718b5b96df0add7775fb82d4d97303
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448892"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770437"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-nodejs"></a>Rychlý Start: Klientská knihovna detektoru anomálií pro Node. js
 
@@ -67,7 +67,7 @@ Vytvořte proměnné koncového bodu a klíče Azure prostředku. Pokud jste po 
 Nainstalujte balíčky `ms-rest-azure` a `azure-cognitiveservices-anomalydetector` NPM. Knihovna CSV-Parse se používá také v tomto rychlém startu:
 
 ```console
-npm install  @azure/cognitiveservices-anomalydetector ms-rest-azure csv-parse
+npm install  @azure/cognitiveservices-anomalydetector @azure/ms-rest-js csv-parse
 ```
 
 Soubor `package.json` vaší aplikace bude aktualizován pomocí závislostí.

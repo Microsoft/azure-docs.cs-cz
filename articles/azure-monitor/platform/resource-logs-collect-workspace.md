@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 82738627b84713669cb6ddfc94c22b6f24b49e3a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b0b8757590876669e00e81378411c010514e3036
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530846"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750362"
 ---
 # <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>Shromažďování protokolů platformy Azure v pracovním prostoru Log Analytics v Azure Monitor
-[Protokoly platforem](resource-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. Tento článek popisuje, jak shromažďovat protokoly prostředků v pracovním prostoru Log Analytics, který umožňuje jejich analýzu s dalšími daty monitorování shromážděnými v protokolech Azure Monitor pomocí výkonných dotazů protokolu a také k využití dalších Azure Monitor funkcí, jako jsou výstrahy a. vizualizace. 
+[Protokoly platforem](platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. Tento článek popisuje, jak shromažďovat protokoly prostředků v pracovním prostoru Log Analytics, který umožňuje jejich analýzu s dalšími daty monitorování shromážděnými v protokolech Azure Monitor pomocí výkonných dotazů protokolu a také k využití dalších Azure Monitor funkcí, jako jsou výstrahy a. vizualizace. 
 
 
 ## <a name="what-you-can-do-with-platform-logs-in-a-workspace"></a>Co se dá dělat s protokoly platforem v pracovním prostoru
@@ -124,5 +124,5 @@ Své protokoly byste měli migrovat tak, aby používaly režim specifický pro 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si další informace o protokolech prostředků](resource-logs-overview.md).
+* [Přečtěte si další informace o protokolech prostředků](platform-logs-overview.md).
 * [Vytvořte nastavení diagnostiky pro shromažďování protokolů a metrik v Azure](diagnostic-settings.md).

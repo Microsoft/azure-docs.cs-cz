@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: cc919cabab94e078b8a212feec40047639a36341
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 67f04b3873da020853c2523f6acc8c7dc7dcdedc
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452919"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749596"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi agenta Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -142,6 +142,7 @@ Následující položky se nesynchronizují, ale zbytek systému bude fungovat n
 ### <a name="cloud-tiering"></a>Vrstvení cloudu
 - Pokud se vrstvený soubor zkopíruje do nového umístění pomocí příkazu Robocopy, výsledný soubor nebude vrstvený. Může však mít nastavený atribut offline, protože příkaz Robocopy nesprávně zahrnuje tento atribut do operací kopírování.
 - Při kopírování souborů pomocí nástroje Robocopy použijte možnost/MIR, která zachová časová razítka souborů. Tím se zajistí, že se starší soubory budou vrstvit dřív než nedávno používané soubory.
+- Pokud je soubor Pagefile. sys umístěný na svazku s povoleným vrstvou cloudu, soubory se nemusí podařit vytvořit do úrovně. Soubor Pagefile. sys by měl být umístěný na svazku, na kterém je zakázaná vrstva cloudu.
 
 ## <a name="agent-version-8000"></a>Verze agenta 8.0.0.0
 Následující poznámky k verzi jsou pro 8.0.0.0 agenta Azure File Sync (vydány 8. října 2019).

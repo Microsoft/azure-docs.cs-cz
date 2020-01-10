@@ -7,22 +7,25 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 3fc18646270bbec3836845bcf317afc2c1d3a6df
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 7f694ee51989023a3e7a72f40700edcbb6a97bae
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351158"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747985"
 ---
 # <a name="azure-storage-samples-using-python"></a>Ukázky Azure Storage pomocí Pythonu
 
 Následující tabulky obsahují přehled našich ukázkových úložišť a scénářů popsaných v jednotlivých ukázkách. Kliknutím na odkazy zobrazíte odpovídající vzorový kód v GitHubu.
 
-## <a name="blob-samples"></a>Ukázky objektů BLOB
+> [!NOTE]
+> Tyto ukázky používají knihovnu Azure Storage Python v 2.1. V12 Code najdete v tématu [ukázky](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples) v úložišti GitHub.
 
-| **Scénář** | **Vzorový kód** |
+## <a name="blob-samples-v21"></a>Ukázky objektů BLOB (v 2.1)
+
+| **Scénář** | **Ukázkový kód** |
 |--------------|-----------------|
-| Objekt blob připojení | [Začínáme se službou Azure Blob Service v Pythonu](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L166) |
+| Doplňovací objekt BLOB | [Začínáme se službou Azure Blob Service v Pythonu](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L166) |
 | Objekt blob bloku | [Začínáme se službou Azure Blob Service v Pythonu](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L77) |
 | Šifrování na straně klienta | [Správa klíčů účtu úložiště v hodnotě klíče Azure pomocí Pythonu](https://github.com/Azure-Samples/key-vault-python-storage-accounts) |
 | Zkopírování objektu Blob | [Začínáme se službou Azure Blob Service v Pythonu](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_advanced_samples.py#L102) |
@@ -39,9 +42,9 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 | Vlastnosti služby | [Začínáme se službou Azure Blob Service v Pythonu](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_advanced_samples.py#L540) |
 | Objekt BLOB snímku | [Začínáme se službou Azure Blob Service v Pythonu](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L214) |
 
-## <a name="file-samples"></a>Ukázky souborů
+## <a name="file-samples-v21"></a>Ukázky souborů (v 2.1)
 
-| **Scénář** | **Vzorový kód** |
+| **Scénář** | **Ukázkový kód** |
 |--------------|-----------------|
 | Vytváření sdílených složek, adresářů a souborů | [Začínáme se službou Azure File Service v Pythonu](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_basic_samples.py#L71) |
 | Odstranit sdílené složky/adresáře/soubory | [Začínáme se službou Azure File Service v Pythonu](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_basic_samples.py#L170) |
@@ -53,9 +56,9 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 | Vypsat sdílené složky | [Začínáme se službou Azure File Service v Pythonu](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_advanced_samples.py#L82) |
 | Vlastnosti sdílené složky/metadata/statistiky | [Začínáme se službou Azure File Service v Pythonu](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_advanced_samples.py#L144) |
 
-## <a name="queue-samples"></a>Ukázky front
+## <a name="queue-samples-v21"></a>Queue Samples (verze 2.1)
 
-| **Scénář** | **Vzorový kód** |
+| **Scénář** | **Ukázkový kód** |
 |--------------|-----------------|
 | Přidat zprávu | [Začínáme se službou Azure Queue v Pythonu](https://github.com/Azure-Samples/storage-queue-python-getting-started/blob/master/queue_basic_samples.py#L94) |
 | Šifrování na straně klienta | [Správa klíčů účtu úložiště v Azure Key Vault pomocí Pythonu](https://github.com/Azure-Samples/key-vault-python-storage-accounts) |
@@ -66,11 +69,11 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 | Vlastnosti služby Queue | [Začínáme se službou Azure Queue v Pythonu](https://github.com/Azure-Samples/storage-queue-python-getting-started/blob/master/queue_advanced_samples.py#L128) |
 | Aktualizovat zprávu | [Začínáme se službou Azure Queue v Pythonu](https://github.com/Azure-Samples/storage-queue-python-getting-started/blob/master/queue_basic_samples.py#L120) |
 
-## <a name="table-samples"></a>Ukázky tabulek
+## <a name="table-samples-v21"></a>Tabulky – ukázky (v 2.1)
 
-| **Scénář** | **Vzorový kód** |
+| **Scénář** | **Ukázkový kód** |
 |--------------|-----------------|
-| Vytvořit tabulku | [Začínáme se službou Azure Table Service v Pythonu](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L46) |
+| Create Table | [Začínáme se službou Azure Table Service v Pythonu](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L46) |
 | Odstranit entitu/tabulku | [Začínáme se službou Azure Table Service v Pythonu](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L79) |
 | Vložit/sloučit/nahradit entitu | [Začínáme se službou Azure Table Service v Pythonu](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L57) |
 | Entity dotazu | [Začínáme se službou Azure Table Service v Pythonu](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L62) |
@@ -97,7 +100,7 @@ Pokud hledáte pokyny k instalaci a Začínáme s klientskými knihovnami Azure 
 
 Informace o ukázkách pro jiné jazyky:
 
-* .NET: [Ukázky pro Azure Storage s použitím .NET](storage-samples-dotnet.md)
-* Java: [Ukázky pro Azure Storage s použitím Javy](storage-samples-java.md)
-* JavaScript/Node. js: [Ukázky Azure Storage pomocí JavaScriptu](storage-samples-javascript.md)
-* Všechny ostatní jazyky: [Ukázky Azure Storage](storage-samples.md)
+* .NET: [Azure Storage ukázky pomocí .NET](storage-samples-dotnet.md)
+* Java: [Azure Storage ukázky pomocí jazyka Java](storage-samples-java.md)
+* JavaScript/Node. js: [Azure Storage ukázky pomocí JavaScriptu](storage-samples-javascript.md)
+* Všechny ostatní jazyky: [ukázky Azure Storage](storage-samples.md)

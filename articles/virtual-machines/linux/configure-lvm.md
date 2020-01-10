@@ -3,7 +3,7 @@ title: Konfigurace LVM na virtuálním počítači se systémem Linux
 description: Přečtěte si, jak nakonfigurovat LVM pro Linux v Azure.
 services: virtual-machines-linux
 documentationcenter: na
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tag: azure-service-management,azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/27/2018
-ms.author: szark
+ms.author: mimckitt
 ms.subservice: disks
-ms.openlocfilehash: f2774f0037d2655071b605c0cbcdf8122e66f6e7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 38e460138fde1de6d8fd57dcab5a88238f0981fe
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036684"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751025"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Konfigurace LVM na virtuálním počítači se systémem Linux v Azure
 Tento dokument popisuje, jak na virtuálním počítači Azure nakonfigurovat Správce logických svazků (LVM). LVM se dá použít na disku s operačním systémem nebo na datových discích ve virtuálních počítačích Azure, ale ve výchozím nastavení většina cloudových imagí nebude mít LVM nakonfigurovanou na disku s operačním systémem. Následující postup se zaměřuje na konfiguraci LVM pro datové disky.
@@ -102,7 +102,7 @@ V tomto průvodci předpokládáme, že máte připojené tři datové disky, kt
 
 ## <a name="add-the-new-file-system-to-etcfstab"></a>Přidat nový systém souborů do/etc/fstab
 > [!IMPORTANT]
-> Nesprávná úprava `/etc/fstab` souboru by mohla vést k nespouštěcímu systému. Pokud si nejste jistí, přečtěte si dokumentaci k distribuci, kde najdete informace o tom, jak tento soubor správně upravit. Před úpravou se taky doporučuje vytvořit zálohu `/etc/fstab`ho souboru.
+> Pokud byste soubor `/etc/fstab` upravili nesprávně, může se stát, že systém nepůjde spustit. Pokud si nejste jistí, podívejte se do dokumentace k distribuci, kde najdete informace o tom, jak soubor správně upravit. Před úpravou se taky doporučuje vytvořit zálohu `/etc/fstab`ho souboru.
 
 1. Vytvořte požadovaný přípojný bod pro nový systém souborů, například:
 

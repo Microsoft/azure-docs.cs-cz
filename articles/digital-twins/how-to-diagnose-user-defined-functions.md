@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: d362512ac6d06577a5c46bb0c6dab461f07ae709
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: f963885f60116bf23087fceb6a92d18e71ac7f24
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457014"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745334"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Jak ladit uživatelsky definované funkce v digitálních prostředníkech Azure
 
@@ -35,7 +35,7 @@ Digitální vlákna Azure podporuje robustní protokolování, monitorování a 
 
 * Pro konfiguraci protokolování specificky pro digitální vlákna Azure si přečtěte, [jak nakonfigurovat monitorování a protokolování](./how-to-configure-monitoring.md).
 * V přehledu [Azure monitor](../azure-monitor/overview.md) najdete informace o výkonném nastavení protokolu povoleném prostřednictvím Azure monitor.
-* Přečtěte si článek [shromáždění a využití dat protokolu z vašich prostředků Azure](../azure-monitor/platform/resource-logs-overview.md) ke konfiguraci nastavení diagnostického protokolu v digitálních prostředcích azure pomocí Azure Portal, Azure CLI nebo PowerShellu.
+* Přečtěte si článek [shromáždění a využití dat protokolu z vašich prostředků Azure](../azure-monitor/platform/platform-logs-overview.md) ke konfiguraci nastavení diagnostického protokolu v digitálních prostředcích azure pomocí Azure Portal, Azure CLI nebo PowerShellu.
 
 Po nakonfigurování budete moct vybrat všechny kategorie protokolů, metriky a používat Azure Monitor výkonné pracovní prostory Log Analytics pro podporu vašeho úsilí o ladění.
 
@@ -216,4 +216,4 @@ Pokud povolíte nastavení diagnostiky, můžete se setkat s těmito častými v
 
 - Naučte se, jak povolit [monitorování a protokoly](./how-to-configure-monitoring.md) v digitálních vlákenách Azure.
 
-- Další možnosti protokolování Azure najdete v článku [Přehled protokolu aktivit Azure](../azure-monitor/platform/activity-logs-overview.md) .
+- Další možnosti protokolování Azure najdete v článku [Přehled protokolu aktivit Azure](../azure-monitor/platform/platform-logs-overview.md) .

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 30a5058dc47bb9ef22ee3fddb9cc4c2b90271bc2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a9bb324c3863a13e1f47e1b31f7656ab8c77a6f1
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479160"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763143"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
 
@@ -273,7 +273,7 @@ Vaše vlastní zásady a Azure AD B2C tenant jsou teď připravené. V dalším 
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací (Preview)** a pak vyberte **Nová registrace**.
 1. Zadejte **název** aplikace. Například *SAMLApp1*.
-1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři nebo jakémkoli poskytovateli identity.**
+1. V části **podporované typy účtů**vyberte **účty jenom v tomto organizačním adresáři** .
 1. V části **identifikátor URI pro přesměrování**vyberte **Web**a potom zadejte `https://localhost`. Tuto hodnotu upravíte později v manifestu registrace aplikace.
 1. Vyberte **udělit souhlas správce oprávnění OpenID a offline_access**.
 1. Vyberte **Zaregistrovat**.
@@ -285,9 +285,9 @@ Pro aplikace SAML existuje několik vlastností, které je třeba nakonfigurovat
 1. V [Azure Portal](https://portal.azure.com)přejděte k registraci aplikace, kterou jste vytvořili v předchozí části.
 1. V části **Spravovat**vyberte **manifest** a otevřete tak editor manifestu. V následujících oddílech upravíte několik vlastností.
 
-#### <a name="identifieruri"></a>IdentifierUri
+#### <a name="identifieruris"></a>identifierUris
 
-`IdentifierUri` je kolekce řetězců obsahující uživatelsky definované identifikátory URI, které jedinečně identifikují webovou aplikaci v rámci jejího Azure AD B2C tenanta. Identifikátor URI identifikátoru musí být z ověřené domény v adresáři vaší organizace. Například, `https://contoso.onmicrosoft.com/app-name`. Váš poskytovatel služeb musí tuto hodnotu nastavit v elementu `Issuer` požadavku SAML.
+`identifierUris` je kolekce řetězců obsahující uživatelsky definované identifikátory URI, které jedinečně identifikují webovou aplikaci v rámci jejího Azure AD B2C tenanta. Váš poskytovatel služeb musí tuto hodnotu nastavit v elementu `Issuer` požadavku SAML.
 
 #### <a name="samlmetadataurl"></a>SamlMetadataUrl
 
@@ -303,7 +303,7 @@ Pro účely tohoto kurzu, který používá testovací aplikaci SAML, použijte 
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",
 ```
 
-#### <a name="replyurlwithtype-optional"></a>ReplyUrlWithType (volitelné)
+#### <a name="replyurlswithtype-optional"></a>replyUrlsWithType (volitelné)
 
 Pokud neposkytnete identifikátor URI metadat, můžete explicitně zadat adresu URL odpovědi. Tato volitelná vlastnost představuje `AssertionConsumerServiceUrl` (adresa URL`SingleSignOnService` v metadatech poskytovatele služeb) a předpokládá se `BindingType`, že je `HTTP POST`.
 

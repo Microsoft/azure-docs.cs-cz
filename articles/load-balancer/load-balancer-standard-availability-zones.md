@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 63a7db6e7078df978f47a6d53ea82df83c22c800
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e7ddb548d8dad5bdcc3021941877903377af9318
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076992"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771474"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer úrovně Standard a zóny dostupnosti
 
-Azure Standard Load Balancer podporuje scénáře [zón dostupnosti](../availability-zones/az-overview.md) . Standard Load Balancer můžete použít k optimalizaci dostupnosti v celém koncovém scénáři tím, že zarovnáte prostředky se zónami a rozdělujete je mezi zónami.  Projděte si [zóny dostupnosti](../availability-zones/az-overview.md) , kde najdete pokyny k tomu, jaké zóny dostupnosti jsou, které oblasti aktuálně podporují zóny dostupnosti, a další související koncepty a produkty. zóny dostupnosti v kombinaci s Standard Load Balancer jsou flexibilní sada funkcí obsáhlém, která může vytvářet mnoho různých scénářů.  Přečtěte si tento dokument, abyste pochopili tyto [Koncepty](#concepts) a základní [pokyny k návrhu](#design)scénářů.
+Azure Standard Load Balancer podporuje scénáře [zón dostupnosti](../availability-zones/az-overview.md) . Standard Load Balancer můžete použít k optimalizaci dostupnosti v celém koncovém scénáři tím, že zarovnáte prostředky se zónami a rozdělujete je mezi zónami.  Projděte si [zóny dostupnosti](../availability-zones/az-overview.md) , kde najdete pokyny k tomu, jaké zóny dostupnosti jsou, které oblasti aktuálně podporují zóny dostupnosti, a další související koncepty a produkty. Zóny dostupnosti v kombinaci s Standard Load Balancer jsou flexibilní sada funkcí obsáhlém, která může vytvářet mnoho různých scénářů.  Přečtěte si tento dokument, abyste pochopili tyto [Koncepty](#concepts) a základní [pokyny k návrhu](#design)scénářů.
 
 >[!IMPORTANT]
 >V tématu [zóny dostupnosti](../availability-zones/az-overview.md) najdete související témata, včetně informací o konkrétní oblasti.
@@ -37,7 +37,7 @@ V kontextu zón dostupnosti se chování a vlastnosti pravidla Load Balancer pop
 
 Veřejné i interní Load Balancer podporují scénáře redundantních a oblastí a oba můžou směrovat provoz napříč zónami podle potřeby (*Vyrovnávání zatížení mezi zónami*). 
 
-### <a name="frontend"></a>Endy
+### <a name="frontend"></a>Front-end
 
 Front-end Load Balancer je konfigurace IP adresy front-endu, která odkazuje buď na prostředek veřejné IP adresy, nebo na privátní IP adresu v rámci sítě virtuálního síťového prostředku.  Vytvoří koncový bod s vyrovnáváním zatížení, ve kterém je vaše služba vystavená.
 

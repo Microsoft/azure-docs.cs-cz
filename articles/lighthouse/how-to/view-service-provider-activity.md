@@ -3,16 +3,16 @@ title: Zobrazení aktivity poskytovatele služeb
 description: Zákazníci si můžou zobrazit protokolované aktivity a zobrazit akce provedené poskytovateli služeb prostřednictvím delegované správy prostředků Azure.
 ms.date: 12/6/2019
 ms.topic: conceptual
-ms.openlocfilehash: a6ae5668601e3587b7306ba1652f6b107800fcb3
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 31a9e7ff80623cc59b0a2db5951dff95d3088b05
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75527820"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749175"
 ---
 # <a name="view-service-provider-activity"></a>Zobrazení aktivity poskytovatele služeb
 
-Zákazníci, kteří mají delegované předplatné pro správu delegovaných prostředků Azure, můžou [Zobrazit data protokolu aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md) , aby viděli všechny akce, které provedli. To zákazníkům poskytuje kompletní přehled o operacích, které poskytovatelé služeb provádějí prostřednictvím správy delegovaných prostředků Azure, spolu s činnostmi prováděnými uživateli v rámci vlastního klienta Azure Active Directory (Azure AD) zákazníka.
+Zákazníci, kteří mají delegované předplatné pro správu delegovaných prostředků Azure, můžou [Zobrazit data protokolu aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md) , aby viděli všechny akce, které provedli. To zákazníkům poskytuje kompletní přehled o operacích, které poskytovatelé služeb provádějí prostřednictvím správy delegovaných prostředků Azure, spolu s činnostmi prováděnými uživateli v rámci vlastního klienta Azure Active Directory (Azure AD) zákazníka.
 
 ## <a name="view-activity-log-data"></a>Zobrazit data protokolu aktivit
 

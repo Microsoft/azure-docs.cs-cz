@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e9fd4602d661dd4223c8caa2ec02eaf56284735a
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 43251783cbcd6501562913b7b9cafb4f9f7cb3f1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114549"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754570"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Postup vytvoření dovednosti v kanálu rozšíření AI v Azure Kognitivní hledání 
 
@@ -36,7 +36,7 @@ Doporučený počáteční krok je rozhodování o tom, která data se mají ext
 
 Předpokládejme, že máte zájem o zpracování sady svých komentářů finančního analytika. Pro každý soubor budete chtít extrahovat názvy společností a obecné míněníy komentářů. Můžete také vytvořit vlastní nástroj pro obohacení, který používá službu Vyhledávání entit Bingu k vyhledání dalších informací o společnosti, například o tom, jaký druh firmy je ve společnosti zapojen. V podstatě budete chtít extrahovat informace, jako jsou následující, indexované pro každý dokument:
 
-| record-text | Firma | Mínění | popisy společnosti |
+| record-text | Firma | mínění | popisy společnosti |
 |--------|-----|-----|-----|
 |sample-record| ["Microsoft", "LinkedIn"] | 0,99. | ["Microsoft Corporation je americká Vícevrstvá technologie...", "LinkedIn je síť, která je zaměřená na obchodní a výdělečnou práci..."]
 
@@ -249,7 +249,7 @@ Až do této struktury byla tato struktura jenom interní, jenom paměť a použ
 
 [Znalostní báze](knowledge-store-concept-intro.md) je funkce ve verzi Preview v Azure kognitivní hledání pro ukládání obohaceného dokumentu. Znalostní báze, kterou vytvoříte, je zajištěné účtem služby Azure Storage, kde je úložiště, ve kterém jsou rozšířená data uložena. 
 
-Do dovednosti se přidá definice znalostní databáze. Návod k celému procesu najdete v tématu [jak začít používat znalostní bázi Knowledge Store](knowledge-store-howto.md).
+Do dovednosti se přidá definice znalostní databáze. Návod k celému procesu najdete [v tématu vytvoření znalostní báze v klidovém úložišti](knowledge-store-create-rest.md).
 
 ```json
 "knowledgeStore": {

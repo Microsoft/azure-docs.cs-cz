@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: ae71b71ad7c0425893391954f5ffe8b285370273
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: f4612232acfe6099c56d365e482cbc82c8436dee
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531033"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745626"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Shromažďování a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor
 
 > [!WARNING]
 > Nyní můžete protokol aktivit shromažďovat do Log Analytics pracovního prostoru pomocí nastavení diagnostiky podobného způsobu, jakým shromažďujete protokoly prostředků. Přečtěte si téma [shromáždění a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics v Azure monitor](diagnostic-settings-subscription.md).
 
-[Protokol aktivit Azure](activity-logs-overview.md) poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo ve vašem předplatném Azure. Tento článek popisuje, jak shromažďovat protokol aktivit do pracovního prostoru Log Analytics a jak používat [řešení Activity Log Analytics monitoring](../insights/solutions.md), které poskytuje dotazy a zobrazení protokolů pro analýzu těchto dat. 
+[Protokol aktivit Azure](platform-logs-overview.md) poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo ve vašem předplatném Azure. Tento článek popisuje, jak shromažďovat protokol aktivit do pracovního prostoru Log Analytics a jak používat [řešení Activity Log Analytics monitoring](../insights/solutions.md), které poskytuje dotazy a zobrazení protokolů pro analýzu těchto dat. 
 
 Připojení protokolu aktivit k pracovnímu prostoru Log Analytics přináší následující výhody:
 
@@ -74,6 +74,6 @@ Kliknutím na dlaždici **protokoly aktivit Azure** otevřete zobrazení **proto
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [protokolu aktivit](activity-logs-overview.md).
+- Přečtěte si další informace o [protokolu aktivit](platform-logs-overview.md).
 - Přečtěte si další informace o [Azure monitor datovou platformu](data-platform.md).
 - Pomocí [dotazů protokolu](../log-query/log-query-overview.md) můžete zobrazit podrobné informace z protokolu aktivit.

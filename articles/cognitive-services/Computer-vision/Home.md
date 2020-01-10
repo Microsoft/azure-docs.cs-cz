@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 703e750c0d2515484cd9f1d2cb046096dfd1800d
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 2b80e09f086cfaa90174dc9abc5a5cd06294036e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794962"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770420"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
@@ -28,7 +28,7 @@ V aplikaci můžete použít Počítačové zpracování obrazu prostřednictví
 
 Počítačové zpracování obrazu může výkon mnoha scénářů správy digitálních prostředků (přehradit). Přehradní je obchodní proces organizace, ukládání a načítání multimediálních prostředků a správu digitálních práv a oprávnění. Společnost může například chtít seskupit a identifikovat obrázky na základě viditelných log, plošek, objektů, barev a tak dále. Nebo můžete chtít automaticky [vygenerovat titulky pro obrázky](./Tutorials/storage-lab-tutorial.md) a připojit klíčová slova, aby je bylo možné prohledávat. Pro přehradní řešení all-in-One pomocí Cognitive Services, Azure Kognitivní hledání a inteligentního generování sestav si Projděte [příručku akcelerátoru řešení](https://github.com/Azure-Samples/azure-search-knowledge-mining) pro vyhledávání znalostí na GitHubu. Další příklady přehrad naleznete v tématu [počítačové zpracování obrazu – úložiště šablon řešení](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates) .
 
-## <a name="analyze-images-for-insight"></a>Analýza imagí pro přehled
+## <a name="analyze-images-for-insight"></a>Analýza obrázků za účelem získání přehledu
 
 Můžete analyzovat obrázky, abyste zjistili a poskytovali přehled o jejich vizuálních funkcích a vlastnostech. Všechny funkce v tabulce níže jsou poskytovány rozhraním API pro [analýzu imagí](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) .
 
@@ -48,7 +48,7 @@ Můžete analyzovat obrázky, abyste zjistili a poskytovali přehled o jejich vi
 
 ## <a name="extract-text-from-images"></a>Extrakce textu z obrázků
 
-Pomocí [rozhraní počítačové zpracování obrazu Read API](concept-recognizing-text.md#read-api) můžete extrahovat vytištěné a ručně psaný text z obrázků do datového proudu znaků, který je strojově čitelný. Rozhraní API pro čtení používá naše nejnovější modely a pracuje s textem na nejrůznějších površích a na pozadí, jako jsou například příjmy, plakáty, obchodní karty, dopisy a tabule. V současné době je v současnosti jediným podporovaným jazykem angličtina.
+Pomocí rozhraní Počítačové zpracování obrazu [Read](concept-recognizing-text.md#read-api) API můžete extrahovat vytištěné a ručně psaný text z obrázků do datového proudu znaků, který je strojově čitelný. Rozhraní API pro čtení používá naše nejnovější modely a pracuje s textem na nejrůznějších površích a na pozadí, jako jsou například příjmy, plakáty, obchodní karty, dopisy a tabule. V současné době je v současnosti jediným podporovaným jazykem angličtina.
 
 Můžete také použít rozhraní API [optického rozpoznávání znaků (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) k extrakci vytištěného textu v několika jazycích. V případě potřeby optické rozpoznávání znaků opraví natočení rozpoznaného textu a poskytuje souřadnice rámce každého slova. Optické rozpoznávání znaků podporuje 25 jazyků a automaticky detekuje jazyk rozpoznaného textu.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: f53c7e7b045805a28223fb5670afc45c980454bc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bd0f42507e22559690e2682a391c53b9c090aa6c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498387"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750787"
 ---
 # <a name="azure-security-logging-and-auditing"></a>Protokolování a auditování zabezpečení Azure
 
@@ -38,9 +38,9 @@ Cloudové aplikace jsou komplexní s mnoha pohybujícími se částmi. Data prot
 - Automatizace akcí, které by jinak vyžadovaly ruční zásah
 
 Protokoly Azure se kategorizují do následujících typů:
-* **Protokoly řízení a správy** poskytují informace o Azure Resource Manager operacích vytváření, aktualizace a odstraňování. Další informace najdete v tématu [protokoly aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md).
+* **Protokoly řízení a správy** poskytují informace o Azure Resource Manager operacích vytváření, aktualizace a odstraňování. Další informace najdete v tématu [protokoly aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md).
 
-* **Protokoly roviny dat** poskytují informace o událostech vyvolaných v rámci využití prostředků Azure. Příkladem tohoto typu protokolu jsou protokoly událostí systému Windows, zabezpečení a aplikace ve virtuálním počítači a [diagnostické protokoly](../../azure-monitor/platform/resource-logs-overview.md) , které jsou konfigurovány prostřednictvím Azure monitor.
+* **Protokoly roviny dat** poskytují informace o událostech vyvolaných v rámci využití prostředků Azure. Příkladem tohoto typu protokolu jsou protokoly událostí systému Windows, zabezpečení a aplikace ve virtuálním počítači a [diagnostické protokoly](../../azure-monitor/platform/platform-logs-overview.md) , které jsou konfigurovány prostřednictvím Azure monitor.
 
 * **Zpracované události** poskytují informace o analyzovaných událostech a výstrahách, které byly zpracovány vaším jménem. Příklady tohoto typu jsou [Azure Security Center výstrahy](../../security-center/security-center-managing-and-responding-alerts.md) , které [Azure Security Center](../../security-center/security-center-intro.md) zpracovaly a analyzovaly vaše předplatné a poskytuje stručné výstrahy zabezpečení.
 
@@ -48,11 +48,11 @@ V následující tabulce jsou uvedeny nejdůležitější typy protokolů, kter�
 
 | Kategorie protokolu | Typ protokolu | Využití | Integrace |
 | ------------ | -------- | ------ | ----------- |
-|[Protokoly aktivit](../../azure-monitor/platform/activity-logs-overview.md)|Řízení událostí roviny na Azure Resource Managerch prostředcích|  Poskytuje přehled o operacích, které byly provedeny u prostředků v rámci vašeho předplatného.|    Rozhraní REST API [Azure monitor](../../azure-monitor/platform/activity-logs-overview.md)|
-|[Protokoly prostředků Azure](../../azure-monitor/platform/resource-logs-overview.md)|Častá data o provozu prostředků Azure Resource Manager v předplatném|   Poskytuje přehled o operacích, které provedl váš prostředek.| Azure Monitor|
+|[Protokoly aktivit](../../azure-monitor/platform/platform-logs-overview.md)|Řízení událostí roviny na Azure Resource Managerch prostředcích|  Poskytuje přehled o operacích, které byly provedeny u prostředků v rámci vašeho předplatného.|    Rozhraní REST API [Azure monitor](../../azure-monitor/platform/platform-logs-overview.md)|
+|[Protokoly prostředků Azure](../../azure-monitor/platform/platform-logs-overview.md)|Častá data o provozu prostředků Azure Resource Manager v předplatném|   Poskytuje přehled o operacích, které provedl váš prostředek.| Azure Monitor|
 |[Vytváření sestav Azure Active Directory](../../active-directory/reports-monitoring/overview-reports.md)|Protokoly a sestavy | Oznamuje aktivity přihlašování uživatelů a informace o aktivitách systému o správě uživatelů a skupin.|[Graph API](../../active-directory/develop/active-directory-graph-api-quickstart.md)|
 |[Virtuální počítače a cloudové služby](../../azure-monitor/learn/quick-collect-azurevm.md)|Služba protokolu událostí systému Windows a protokol syslog pro Linux|  Zachycuje systémová data a data protokolování na virtuálních počítačích a přenáší tato data do účtu úložiště podle vašeho výběru.|   Windows (pomocí úložiště Windows Azure Diagnostics [[wad](../../monitoring-and-diagnostics/azure-diagnostics.md)]) a Linux v Azure monitor|
-|[Analýza úložiště Azure](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Protokolování úložiště poskytuje data metrik pro účet úložiště.|Poskytuje přehled o požadavcích trasování, analyzuje trendy využití a diagnostikuje problémy s vaším účtem úložiště.|   REST API nebo [Knihovna klienta](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
+|[Azure Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Protokolování úložiště poskytuje data metrik pro účet úložiště.|Poskytuje přehled o požadavcích trasování, analyzuje trendy využití a diagnostikuje problémy s vaším účtem úložiště.|   REST API nebo [Knihovna klienta](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
 |[Protokoly toku pro skupinu zabezpečení sítě (NSG)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)|Formát JSON, zobrazení odchozích a příchozích toků podle jednotlivých pravidel|Zobrazuje informace o příchozím a odchozím provozu IP přes skupinu zabezpečení sítě.|[Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md)|
 |[Přehled aplikací](../../azure-monitor/app/app-insights-overview.md)|Protokoly, výjimky a vlastní diagnostika|  Poskytuje službu APM (Application Performance Monitoring) pro webové vývojáře na různých platformách.| REST API [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
 |[Zpracování dat/výstrahy zabezpečení](../../security-center/security-center-intro.md)|  Výstrahy Azure Security Center Azure Monitor protokoly|    Poskytuje informace o zabezpečení a výstrahy.|  Rozhraní REST API, JSON|

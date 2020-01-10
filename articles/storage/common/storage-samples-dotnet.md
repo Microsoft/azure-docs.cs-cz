@@ -7,12 +7,12 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 043a21aec5753dd16f558ad29d2300ada7a35d72
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 50c5067c3db2f07da225b72d9ba0a8f0bdc44368
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431781"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748136"
 ---
 # <a name="azure-storage-samples-using-net"></a>Ukázky Azure Storage pomocí .NET
 
@@ -21,7 +21,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 > [!NOTE]
 > Tyto ukázky používají knihovnu Azure Storage .NET v11. V12 Code najdete v tématu [ukázky](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples) v úložišti GitHub.
 
-## <a name="blob-samples"></a>Ukázky objektů BLOB
+## <a name="blob-samples-v11"></a>Ukázky objektů BLOB (V11)
 
 | **Scénář** | **Ukázkový kód** |
 |--------------|-----------------|
@@ -42,7 +42,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 | Vlastnosti služby | [Začínáme s objekty blob](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
 | Objekt BLOB snímku | [Zálohování disků virtuálních počítačů Azure pomocí přírůstkových snímků](https://github.com/Azure-Samples/storage-blob-dotnet-back-up-with-incremental-snapshots/blob/master/Program.cs) |
 
-## <a name="file-samples"></a>Ukázky souborů
+## <a name="file-samples-v11"></a>Ukázky souborů (V11)
 
 | **Scénář** | **Ukázkový kód** |
 |--------------|-----------------|
@@ -56,7 +56,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 | Vypsat sdílené složky | [Ukázka File Storage Azure Storage .NET](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
 | Vlastnosti sdílené složky/metadata/statistiky | [Ukázka File Storage Azure Storage .NET](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
 
-## <a name="queue-samples"></a>Ukázky front
+## <a name="queue-samples-v11"></a>Ukázky front (V11)
 
 | **Scénář** | **Ukázkový kód** |
 |--------------|-----------------|
@@ -69,7 +69,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 | Vlastnosti služby Queue | [Začínáme se službou Azure Queue v .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/Advanced.cs) |
 | Aktualizovat zprávu | [Začínáme se službou Azure Queue v .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
 
-## <a name="table-samples"></a>Ukázky tabulek
+## <a name="table-samples-v11"></a>Ukázky tabulek (V11)
 
 | **Scénář** | **Ukázkový kód** |
 |--------------|-----------------|

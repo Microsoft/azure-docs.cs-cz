@@ -3,12 +3,12 @@ title: Zálohování databáze SAP HANA do Azure s využitím Azure Backup
 description: V tomto článku se dozvíte, jak zálohovat databázi SAP HANA do virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 3246f6cf8046e0a0c5795059ad3448b70130e7e1
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: c5df198d009f0d4a9f37a68d6b21386f06842722
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75496951"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75753967"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Zálohování databází SAP HANA na virtuálních počítačích Azure
 
@@ -30,11 +30,60 @@ Informace o nastavení databáze pro zálohování najdete v oddílech [požadav
 
 ### <a name="set-up-network-connectivity"></a>Nastavení připojení k síti
 
-Pro všechny operace potřebuje virtuální počítač SAP HANA připojení k veřejným IP adresám Azure. Operace virtuálních počítačů (zjišťování databáze, konfigurace zálohování, plánování záloh, obnovení bodů obnovení atd.) nemůžou pracovat bez připojení. Navažte připojení tak, že povolíte přístup k rozsahům IP adres datacentra Azure:
+U všech operací vyžaduje virtuální počítač SAP HANA připojení k veřejným IP adresám Azure. Operace virtuálních počítačů (zjišťování databáze, konfigurace záloh, plánování záloh, obnovení bodů obnovení atd.) bez připojení k veřejným IP adresám Azure.
 
-* Můžete si stáhnout [rozsahy IP adres](https://www.microsoft.com/download/details.aspx?id=41653) pro datacentra Azure a pak přístup k těmto IP adresám.
-* Pokud používáte skupiny zabezpečení sítě (skupin zabezpečení sítě), můžete pomocí [značky služby](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) AzureCloud povolíte všechny veřejné IP adresy Azure. K úpravě pravidel NSG můžete použít [rutinu Set-AzureNetworkSecurityRule](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurenetworksecurityrule?view=azuresmps-4.0.0) .
-* Port 443 by měl být přidán do seznamu povolených, protože přenos prostřednictvím protokolu HTTPS.
+Navažte připojení pomocí jedné z následujících možností:
+
+#### <a name="allow-the-azure-datacenter-ip-ranges"></a>Povoluje rozsahy IP adres datacentra Azure.
+
+Tato možnost povoluje [rozsahy IP adres](https://www.microsoft.com/download/details.aspx?id=41653) ve staženém souboru. Pro přístup ke skupině zabezpečení sítě (NSG) použijte rutinu Set-AzureNetworkSecurityRule. Pokud váš seznam bezpečných příjemců obsahuje jenom IP adresy specifické pro oblast, budete taky muset aktualizovat seznam bezpečných příjemců, aby se povolilo ověřování v seznamu služby Azure Active Directory (Azure AD).
+
+#### <a name="allow-access-using-nsg-tags"></a>Povolení přístupu pomocí značek NSG
+
+Pokud k omezení připojení používáte NSG, měli byste pomocí značky služby AzureBackup povolit odchozí přístup k Azure Backup. Kromě toho byste měli také umožňovat připojení pro ověřování a přenos dat pomocí [pravidel](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) pro Azure AD a Azure Storage. To se dá udělat z Azure Portal nebo přes PowerShell.
+
+Vytvoření pravidla pomocí portálu:
+
+  1. Ve **všech službách**klikněte na **skupiny zabezpečení sítě** a vyberte skupinu zabezpečení sítě.
+  2. V části **Nastavení**vyberte **odchozí pravidla zabezpečení** .
+  3. Vyberte **Přidat**. Zadejte všechny požadované podrobnosti pro vytvoření nového pravidla, jak je popsáno v [Nastavení pravidla zabezpečení](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Ujistěte se, že možnost **cíl** je nastavená na **příznak služby** a **cílová značka služby** je nastavená na **AzureBackup**.
+  4. Klikněte na tlačítko **Přidat**a uložte nově vytvořené odchozí pravidlo zabezpečení.
+
+Vytvoření pravidla pomocí prostředí PowerShell:
+
+ 1. Přidání přihlašovacích údajů k účtu Azure a aktualizace národních cloudů<br/>
+      `Add-AzureRmAccount`<br/>
+
+ 2. Výběr předplatného NSG<br/>
+      `Select-AzureRmSubscription "<Subscription Id>"`
+
+ 3. Vybrat NSG<br/>
+    `$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"`
+
+ 4. Přidat odchozí pravidlo pro Azure Backup tag služby<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+
+ 5. Přidat odchozí pravidlo pro značku služby úložiště<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "StorageAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "Storage" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+
+ 6. Přidat odchozí pravidlo pro značku služby Azureactivedirectory selhala<br/>
+    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureActiveDirectoryAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureActiveDirectory" -DestinationPortRange 443 -Description "Allow outbound traffic to AzureActiveDirectory service"`
+
+ 7. Uložit NSG<br/>
+    `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
+
+**Povolí přístup pomocí značek Azure firewall**. Pokud používáte Azure Firewall, vytvořte pravidlo aplikace pomocí [značky plně kvalifikovaného názvu domény](https://docs.microsoft.com/azure/firewall/fqdn-tags)AzureBackup. To umožňuje odchozí přístup k Azure Backup.
+
+**Nasaďte proxy server HTTP pro směrování provozu**. Při zálohování databáze SAP HANA na virtuálním počítači Azure používá rozšíření zálohování na virtuálním počítači rozhraní API HTTPS k posílání příkazů pro správu do Azure Backup a dat do Azure Storage. Rozšíření zálohování používá pro ověřování taky službu Azure AD. Přesměrujte provoz rozšíření zálohování pro tyto tři služby prostřednictvím proxy serveru HTTP. Rozšíření jsou jedinou komponentou, která je nakonfigurovaná pro přístup k veřejnému Internetu.
+
+Možnosti připojení zahrnují následující výhody a nevýhody:
+
+**Možnost** | **Výhody** | **Nevýhody**
+--- | --- | ---
+Povoluje rozsahy IP adres. | Žádné další náklady | Složitá Správa, protože se rozsahy IP adres v průběhu času mění <br/><br/> Poskytuje přístup k celé službě Azure, ne jen Azure Storage
+Použití značek služby NSG | Jednodušší Správa jako změny rozsahu se sloučí automaticky. <br/><br/> Žádné další náklady <br/><br/> | Dá se použít jenom s skupin zabezpečení sítě <br/><br/> Poskytuje přístup k celé službě.
+Použití Azure Firewall značek plně kvalifikovaného názvu domény | Jednodušší Správa, protože jsou automaticky spravovány požadované plně kvalifikované názvy domén | Dá se použít jenom s Azure Firewall.
+Použití proxy serveru HTTP | Podrobné řízení v proxy serveru přes adresy URL úložiště je povolené. <br/><br/> Přístup k virtuálním počítačům jediným bodem z Internetu <br/><br/> Nepodléhá změnám IP adresy Azure | Další náklady na spuštění virtuálního počítače s využitím softwaru proxy
 
 ## <a name="onboard-to-the-public-preview"></a>Připojit se k veřejné verzi Preview
 

@@ -4,12 +4,12 @@ description: Seznamte se se skupinami kontejnerů v Azure Container Instances, k
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: ca160c62160bc5233139dccc650474811c4cd784
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 19fa50f83a2593b8914931e25fa99cb2e4896227
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442285"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770267"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Skupiny kontejnerů v Azure Container Instances
 
@@ -66,7 +66,7 @@ V tomto scénáři můžete pro instanci nastavit omezení prostředků na 2 pro
 
 ## <a name="networking"></a>Sítě
 
-Skupiny kontejnerů mohou sdílet externí IP adresu a obor názvů portů na této IP adrese. Chcete-li povolit externím klientům, aby dosáhli kontejneru v rámci skupiny, je nutné vystavit port na IP adrese a v kontejneru. Vzhledem k tomu, že kontejnery v rámci skupiny sdílejí obor názvů portu, mapování portů se nepodporuje. 
+Skupiny kontejnerů můžou sdílet externí IP adresu, jeden nebo víc portů na této IP adrese a popisek DNS s plně kvalifikovaným názvem domény (FQDN). Chcete-li povolit externím klientům, aby dosáhli kontejneru v rámci skupiny, je nutné vystavit port na IP adrese a v kontejneru. Vzhledem k tomu, že kontejnery v rámci skupiny sdílejí obor názvů portu, mapování portů se nepodporuje. Po odstranění skupiny kontejnerů se uvolní IP adresa a plně kvalifikovaný název domény skupiny kontejnerů. 
 
 V rámci skupiny kontejnerů se instance kontejnerů můžou vzájemně kontaktovat přes localhost na jakémkoli portu, a to i v případě, že se tyto porty nezveřejňují externě na IP adrese skupiny nebo z kontejneru.
 
@@ -74,7 +74,13 @@ Volitelně nasaďte skupiny kontejnerů do služby [Azure Virtual Network][virtu
 
 ## <a name="storage"></a>Storage
 
-Můžete zadat externí svazky, které se připojí v rámci skupiny kontejnerů. Tyto svazky můžete namapovat na konkrétní cesty v rámci jednotlivých kontejnerů ve skupině.
+Můžete zadat externí svazky, které se připojí v rámci skupiny kontejnerů. Mezi podporované svazky patří:
+* [Sdílená složka Azure][azure-files]
+* [Tajný kód][secret]
+* [Prázdný adresář][empty-directory]
+* [Naklonované úložiště Git][volume-gitrepo]
+
+Tyto svazky můžete namapovat na konkrétní cesty v rámci jednotlivých kontejnerů ve skupině. 
 
 ## <a name="common-scenarios"></a>Obvyklé scénáře
 
@@ -110,5 +116,8 @@ Přečtěte si, jak nasadit skupinu kontejnerů s více kontejnery pomocí šabl
 [resource-requirements]: /rest/api/container-instances/containergroups/createorupdate#resourcerequirements
 [azure-files]: container-instances-volume-azure-files.md
 [virtual-network]: container-instances-vnet.md
+[secret]: container-instances-volume-secret.md
+[volume-gitrepo]: container-instances-volume-gitrepo.md
 [gpus]: container-instances-gpu.md
+[empty-directory]: container-instances-volume-emptydir.md
 [az-container-export]: /cli/azure/container#az-container-export

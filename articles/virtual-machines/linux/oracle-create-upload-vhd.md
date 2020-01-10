@@ -3,7 +3,7 @@ title: Vytvoření a nahrání Oracle Linux VHD
 description: Naučte se vytvořit a nahrát virtuální pevný disk Azure (VHD), který obsahuje Oracle Linux operační systém.
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tags: azure-service-management,azure-resource-manager
@@ -13,21 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/10/2019
-ms.author: szark
-ms.openlocfilehash: c1c70243748c1f8d3b93eac501bd50f8d80ecd75
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: mimckitt
+ms.openlocfilehash: e0250737f1f2934548a16ee42e9ff582f2403c48
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463803"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747728"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Příprava virtuálního počítače s Oracle Linuxem pro Azure
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="prerequisites"></a>Požadavky
 V tomto článku se předpokládá, že jste už Oracle Linux operační systém nainstalovali na virtuální pevný disk. Pro vytváření souborů. VHD, například virtualizačního řešení, jako je například Hyper-V, existuje více nástrojů. Pokyny najdete v tématu [instalace role Hyper-V a konfigurace virtuálního počítače](https://technet.microsoft.com/library/hh846766.aspx).
 
-### <a name="oracle-linux-installation-notes"></a>Poznámky k instalaci Oracle Linux
+## <a name="oracle-linux-installation-notes"></a>Poznámky k instalaci Oracle Linux
 * Další tipy k přípravě Linux pro Azure najdete v tématu [Obecné poznámky k instalaci pro Linux](create-upload-generic.md#general-linux-installation-notes) .
 * Technologie Hyper-V a Azure se Oracle Linux s využitím jádra neUEKho podnikového jádra () nebo Red Hat kompatibilního s prostředím Red Hat.
 * Technologie Hyper-V a Azure UEK2 se nepodporuje, protože neobsahují požadované ovladače.

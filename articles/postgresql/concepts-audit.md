@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 4a41e5eda3ca2bd92d78a81d73c1ad4c859e25a3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: c0ce1648d7b5f7c25044ed8f66eafcca7b0009f4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764555"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747340"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Protokolování auditu Azure Database for PostgreSQL – jeden server
 
@@ -21,7 +21,7 @@ Auditování protokolování databázových aktivit na serveru Azure Database fo
 > pgAudit je ve verzi Preview na Azure Database for PostgreSQL.
 > Rozšíření lze povolit pouze na Pro obecné účely a paměťově optimalizovaných serverech.
 
-Pokud chcete protokoly na úrovni prostředků Azure pro operace, jako jsou výpočty a škálování úložiště, si můžete prohlédnout v [protokolu aktivit Azure](../azure-monitor/platform/activity-logs-overview.md).
+Pokud chcete protokoly na úrovni prostředků Azure pro operace, jako jsou výpočty a škálování úložiště, si můžete prohlédnout v [protokolu aktivit Azure](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="usage-considerations"></a>Požadavky na využití
 Ve výchozím nastavení příkazy protokolování pgAudit vysílá standardní protokolovací zařízení Postgres společně s normálními příkazy protokolování. Ve službě Azure Database for PostgreSQL je možné tyto soubory .log stáhnout prostřednictvím webu Azure Portal nebo rozhraní příkazového řádku. Maximální velikost úložiště pro kolekci souborů je 1 GB a každý soubor je k dispozici po dobu maximálně sedmi dnů (výchozí hodnota je tři dny). Tato služba je krátkodobá možnost uložení.

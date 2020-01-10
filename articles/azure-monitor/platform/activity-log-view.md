@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 54a1d3e503ddb8b11109596decde94a2834dbf47
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 46d26aa5dccd32438b2028e21eaa94f7993944d1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529962"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749520"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>Zobrazení a načtení událostí protokolu aktivit Azure
 
-[Protokol aktivit Azure](activity-logs-overview.md) poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo v Azure. Tento článek poskytuje podrobné informace o různých metodách pro zobrazení a načítání událostí protokolu aktivit.
+[Protokol aktivit Azure](platform-logs-overview.md) poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo v Azure. Tento článek poskytuje podrobné informace o různých metodách pro zobrazení a načítání událostí protokolu aktivit.
 
 ## <a name="azure-portal"></a>Portál Azure
 Zobrazení protokolu aktivit pro všechny prostředky z nabídky **monitorování** v Azure Portal. Podívejte se na protokol aktivit pro konkrétní prostředek z možnosti **Protokol aktivit** v nabídce příslušného prostředku.

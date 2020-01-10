@@ -8,14 +8,22 @@ ms.topic: include
 ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 93f6bc8533218af7f0e6dcd1c5f7be6fe8c00e29
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: f322803d3484b4ec2d5449e19d67d75b35d6d92f
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69520825"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75752273"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
+
+### <a name="what-should-i-do-if-im-getting-a-certificate-mismatch-when-connecting-using-certificate-authentication"></a>Co mám dělat, když se při připojení pomocí ověřování certifikátů zobrazuje neshoda certifikátů?
+
+Zrušte kontrolu **"ověřit identitu serveru ověřením certifikátu"** nebo **přidejte plně kvalifikovaný název domény serveru spolu s certifikátem** při vytváření profilu ručně. To můžete provést spuštěním souboru **Rasphone** z příkazového řádku a výběrem profilu z rozevíracího seznamu.
+
+Nedoporučuje se ověřování identity serveru obecně, ale s ověřováním certifikátů Azure se stejný certifikát používá pro ověřování serveru v protokolu IKEv2 (VPN Tunneling Protocol) a protokolu EAP. Vzhledem k tomu, že je certifikát serveru a plně kvalifikovaný název domény už ověřený protokolem tunelového připojení VPN, je redundantní ho znovu ověřit v protokolu EAP.
+
+![Point-to-site](./media/vpn-gateway-faq-p2s-all-include/servercert.png "Certifikát serveru")
 
 ### <a name="can-i-use-my-own-internal-pki-root-ca-to-generate-certificates-for-point-to-site-connectivity"></a>Můžu použít vlastní interní kořenovou certifikační autoritu PKI ke generování certifikátů pro připojení Point-to-site?
 

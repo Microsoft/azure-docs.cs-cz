@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 07/10/2019
-ms.openlocfilehash: 11aec9c62c388155f8d90b7a89171937f22dd9d8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2020
+ms.openlocfilehash: fc0bac99aa70d7028412c68563a3024720fa49d9
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437999"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745399"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Nejčastější dotazy týkající se použití Azure Database Migration Service
 
@@ -37,7 +37,7 @@ Služba aktuálně podporuje nejrůznější páry zdroj/cíl nebo scénáře mi
 Další scénáře migrace jsou ve verzi Preview a vyžadují odeslání jmenování prostřednictvím webu DMS Preview. Úplný seznam scénářů ve verzi Preview a o tom, jak se zaregistrovat k účasti v jedné z těchto nabídek, najdete na [webu DMS Preview](https://aka.ms/dms-preview/).
 
 **Dotaz: Jaké verze SQL Server Azure Database Migration Service podporují jako zdroj?**
-Při migraci z SQL Server jsou podporované zdroje pro Azure Database Migration Service SQL Server 2005 až SQL Server 2017.
+Při migraci z SQL Server jsou podporované zdroje pro Azure Database Migration Service SQL Server 2005 až SQL Server 2019.
 
 **Otázka: při použití Azure Database Migration Service, jaký je rozdíl mezi offline a online migrací?**
 Pomocí Azure Database Migration Service můžete provádět offline a online migrace. Při *offline* migraci se spustí výpadek aplikace při spuštění migrace. V případě *online* migrace se doba výpadku na konci migrace omezí na čas, který se má vyjímat. Doporučujeme otestovat offline migraci a určit, jestli je výpadek přijatelný. Pokud není, proveďte online migraci.
@@ -58,14 +58,14 @@ K zajištění plynulého chodu Azure Database Migration Service při prováděn
 
 Mezi všechny podporované scénáře migrace Azure Database Migration Service společné předpoklady, které zahrnují nutnost:
 
-* Vytvořte virtuální síť pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který umožňuje připojení typu Site-to-site k vašim místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-* Zajistěte, aby pravidla skupiny zabezpečení sítě Azure Virtual Network (VNet) neblokovala následující komunikační porty 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování přenosů Azure VNet NSG najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+* Vytvořte Microsoft Azure Virtual Network pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který umožňuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+* Zajistěte, aby pravidla skupiny zabezpečení sítě virtuálních sítí neblokovala následující komunikační porty 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 * Pokud používáte zařízení brány firewall před zdrojovými databázemi, budete možná muset přidat pravidla firewallu, která Azure Database Migration Service umožní přístup ke zdrojovým databázím pro migraci.
 
 Seznam všech požadavků požadovaných k konkurenci konkrétních scénářů migrace pomocí Azure Database Migration Service najdete v souvisejících kurzech v [dokumentaci](https://docs.microsoft.com/azure/dms/dms-overview) k Azure Database Migration Service na docs.Microsoft.com.
 
 **Otázka. Návody najít IP adresu pro Azure Database Migration Service, aby bylo možné vytvořit seznam povolených pravidel brány firewall používaných pro přístup do zdrojové databáze pro migraci?**
-Možná budete muset přidat pravidla firewallu, která Azure Database Migration Service umožní přístup ke zdrojové databázi pro migraci. IP adresa pro tuto službu je dynamická, ale pokud používáte Express Route, tato adresa je soukromá, kterou přiřazuje vaše podniková síť. Nejjednodušší způsob, jak identifikovat příslušnou IP adresu, je vyhledat ve stejné skupině prostředků jako zřízené Azure Database Migration Service prostředku a najít tak přidružené síťové rozhraní. Obvykle název prostředku síťového rozhraní začíná předponou síťové karty a následuje jedinečným znakem a sekvencí, například síťový adaptér jj6tnztnmarpsskr82rbndyp. Výběrem tohoto prostředku síťového rozhraní můžete zobrazit IP adresu, která musí být zahrnutá do seznamu povolených položek na stránce Přehled prostředků Azure Portal.
+Možná budete muset přidat pravidla firewallu, která Azure Database Migration Service umožní přístup ke zdrojové databázi pro migraci. IP adresa pro tuto službu je dynamická, ale pokud používáte ExpressRoute, tato adresa je soukromá a přiřazuje ji podnikovou síť. Nejjednodušší způsob, jak identifikovat příslušnou IP adresu, je vyhledat ve stejné skupině prostředků jako zřízené Azure Database Migration Service prostředku a najít tak přidružené síťové rozhraní. Obvykle název prostředku síťového rozhraní začíná předponou síťové karty a následuje jedinečným znakem a sekvencí, například síťový adaptér jj6tnztnmarpsskr82rbndyp. Výběrem tohoto prostředku síťového rozhraní můžete zobrazit IP adresu, která musí být zahrnutá do seznamu povolených položek na stránce Přehled prostředků Azure Portal.
 
 Je také možné, že budete muset zahrnout zdroj portu, který SQL Server naslouchá na seznamu povolených. Ve výchozím nastavení je to port 1433, ale zdrojová SQL Server může být nakonfigurována tak, aby naslouchala i na dalších portech. V takovém případě je potřeba zahrnout tyto porty i na seznam povolených. Můžete určit port, na kterém SQL Server naslouchá, pomocí dotazu zobrazení dynamické správy:
 
@@ -85,8 +85,8 @@ Můžete také určit port, který SQL Server naslouchá, pomocí dotazování p
     GO
 ```
 
-**Q. Návody nastavit Azure Virtual Network?**
-I když máte několik kurzů Microsoftu, které vás provedou procesem nastavení virtuální sítě Azure, zobrazí se oficiální dokumentace v článku [Virtual Network Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+**Q. Návody nastavit Microsoft Azure Virtual Network?**
+I když máte několik kurzů Microsoftu, které vás provedou procesem nastavení virtuální sítě, zobrazí se oficiální dokumentace v článku [Virtual Network Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
 
 ## <a name="usage"></a>Využití
 

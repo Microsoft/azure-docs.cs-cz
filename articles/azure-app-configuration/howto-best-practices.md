@@ -1,6 +1,6 @@
 ---
-title: Osvědčené postupy konfigurace aplikace pro Azure | Dokumentace Microsoftu
-description: Zjistěte, jak nejlépe používat konfiguraci aplikací Azure
+title: Osvědčené postupy pro konfiguraci aplikací Azure | Microsoft Docs
+description: Informace o tom, jak nejlépe využít Azure App Configuration
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -12,65 +12,65 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 3d9a597e7ced631627a121f3f0757e472f9a4bae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b43ca5b6bec64d9283a64c9bcc0a3b60c21bca4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393579"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750420"
 ---
-# <a name="azure-app-configuration-best-practices"></a>Osvědčené postupy Azure konfigurace aplikace
+# <a name="azure-app-configuration-best-practices"></a>Osvědčené postupy pro konfiguraci aplikací Azure
 
-Tento článek popisuje běžné vzory a osvědčené postupy při použití konfigurace aplikace pro Azure.
+Tento článek popisuje běžné vzory a osvědčené postupy při použití konfigurace aplikace Azure.
 
-## <a name="key-groupings"></a>Klíče seskupení
+## <a name="key-groupings"></a>Seskupení klíčů
 
-Konfigurace aplikací nabízí dvě možnosti pro uspořádání klíče:
+Konfigurace aplikace nabízí dvě možnosti pro uspořádání klíčů:
 
-* Předpony adres klíč
+* Klíčové předpony
 * Popisky
 
-Jednu nebo obě možnosti můžete použít k seskupení klíče.
+K seskupení klíčů můžete použít buď jednu, nebo obě možnosti.
 
-*Klíč předpony* začátku části klíče. Pomocí stejné předpony v názvu můžete logicky seskupit sadu klíčů. Předpony může obsahovat více komponent, které jsou připojené prostřednictvím oddělovač, jako například `/`, podobně jako cestu adresy URL, k vytvoření oboru názvů. Tato hierarchie jsou užitečné, pokud uložená v konfiguraci aplikací úložišť klíčů pro mnoho aplikací, Služba komponent a prostředí.
+*Předpony klíčů* jsou počátečními částmi klíčů. Můžete logicky seskupovat sadu klíčů pomocí stejné předpony v jejich názvech. Předpony mohou obsahovat více komponent propojených pomocí oddělovače, například `/`, podobně jako cesta URL, pro vytvoření oboru názvů. Tyto hierarchie jsou užitečné, když ukládáte klíče pro spoustu aplikací, služeb komponent a prostředí v jednom úložišti konfigurace aplikace.
 
-Důležitá věc brát v úvahu je, že klíče kódu aplikace, která odkazuje na načíst hodnoty odpovídající nastavení. Klíče by neměly měnit, jinak bude nutné změnit váš kód pokaždé, když se stane.
+Je důležité si uvědomit, že klíče jsou v souladu s tím, jak kód aplikace odkazuje na načtení hodnot odpovídajících nastavení. Klíče by se neměly měnit, jinak budete muset kód kdykoli upravovat.
 
-*Popisky* se atribut s klíči. Slouží k vytvoření variantní hodnoty klíče. Můžete například přiřadit popisky více verzí klíče. Verze může být iterace, prostředí nebo jiné kontextové informace. Aplikace může požadovat zcela jinou sadu hodnot klíčů tak, že zadáte jiný popisek. V důsledku toho všechny odkazy na klíč zůstanou beze změny v kódu.
+*Popisky* jsou atributy na klíčích. Používají se k vytváření variant klíče. Můžete například přiřadit popisky k několika verzím klíče. Verze může být iterací, prostředí nebo některé jiné kontextové informace. Vaše aplikace může vyžádat zcela jinou sadu hodnot klíče zadáním jiného popisku. V důsledku toho zůstanou všechny odkazy na klíče ve vašem kódu beze změny.
 
-## <a name="key-value-compositions"></a>Klíč hodnota sestavení
+## <a name="key-value-compositions"></a>Složení hodnot klíčů
 
-Konfigurace aplikace zpracovává všechny klíče uložené s ním jako nezávislé entity. Konfigurace aplikace nebude se pokoušet odvodit žádný vztah mezi klíči nebo zdědit hodnoty klíče na základě jejich hierarchie. Můžete agregovat několik sad klíčů, ale pomocí popisků spolu se správnou konfiguraci překrývání v kódu aplikace.
+Konfigurace aplikace považuje všechny klíče uložené s nimi jako nezávislé entity. Konfigurace aplikace se nepokouší odvodit žádnou relaci mezi klíči nebo zdědit hodnoty klíčů na základě jejich hierarchie. Můžete agregovat více sad klíčů, ale pomocí popisků, které jsou v kódu aplikace v kombinaci se správnými konfiguračními balíčky.
 
-Pojďme se podívat na příklad. Předpokládejme, že máte nastavení s názvem **Asset1**, jehož hodnota se může lišit podle vývojové prostředí. Vytvořit klíč s názvem "Asset1" se popisek prázdná a popisek s názvem "Vývoj aplikací". V prvním popiskem, kam si ukládáte výchozí hodnota pro **Asset1**, a vložení konkrétní hodnoty pro "Vývoj" v ten.
+Pojďme se podívat na příklad. Předpokládejme, že máte nastavení s názvem **Asset1**, jehož hodnota se může lišit v závislosti na vývojovém prostředí. Pomocí prázdného popisku a popisku s názvem "vývoj" vytvoříte klíč s názvem "Asset1". Do prvního popisku vložíte výchozí hodnotu pro **Asset1**a do druhé hodnoty vložíte určitou hodnotu "vývoj".
 
-Ve vašem kódu nejdřív načtěte hodnoty klíče bez všechny popisky, a pak načtete stejnou sadu klíčových hodnot, podruhé s popiskem "Vývoj aplikací". Při druhém načíst hodnoty jsou přepsat předchozí hodnoty klíče. Konfigurační systém .NET Core umožňuje "zásobníku" víc kopií konfigurační data nad sebe navzájem. Pokud klíč existuje ve více než jedna sada, použije se poslední sady, který jej obsahuje. Díky moderní programovací rozhraní framework, jako je .NET Core budete mít tuto funkci překrývání zdarma Pokud přístup ke konfiguraci aplikace pomocí zprostředkovatele nativní konfigurace. Následující fragment kódu ukazuje, jak můžete implementovat překrývání v aplikaci .NET Core:
+Ve vašem kódu nejdříve načtete hodnoty klíčů bez popisků a potom navedete stejnou sadu hodnot klíčů podruhé s označením "vývoj". Při druhém načtení hodnot se přepíší předchozí hodnoty klíčů. Konfigurační systém .NET Core umožňuje "sestavovat" více sad konfiguračních dat nad sebou. Pokud klíč existuje ve více než jedné sadě, použije se poslední sada, která ho obsahuje. V případě moderního programovacího rozhraní, jako je .NET Core, získáte tuto funkci zásobníku zdarma, pokud pro přístup ke konfiguraci aplikací použijete nativního poskytovatele konfigurace. Následující fragment kódu ukazuje, jak lze implementovat skládání do aplikace .NET Core:
 
 ```csharp
 // Augment the ConfigurationBuilder with Azure App Configuration
 // Pull the connection string from an environment variable
 configBuilder.AddAzureAppConfiguration(options => {
     options.Connect(configuration["connection_string"])
-           .Use(KeyFilter.Any, LabelFilter.Null)
-           .Use(KeyFilter.Any, "Development");
+           .Select(KeyFilter.Any, LabelFilter.Null)
+           .Select(KeyFilter.Any, "Development");
 });
 ```
 
-## <a name="app-configuration-bootstrap"></a>Aplikace bootstrap konfigurace
+## <a name="app-configuration-bootstrap"></a>Zavedení konfigurace aplikace
 
-Pro přístup k úložišti konfigurace aplikace, můžete použít připojovací řetězec, který je k dispozici na webu Azure Portal. Protože připojovací řetězce obsahovat přihlašovací údaje, budou považovány za tajných kódů. Těchto tajných kódů musí být uložené ve službě Azure Key Vault a kódu musí ověřovat pro službu Key Vault je načítat.
+Pokud chcete získat přístup k úložišti konfigurace aplikace, můžete použít jeho připojovací řetězec, který je k dispozici v Azure Portal. Protože připojovací řetězce obsahují informace o přihlašovacích údajích, považují se za tajné klíče. Tyto tajné klíče je potřeba uložit v Azure Key Vault a váš kód se musí ověřit, aby se Key Vault, aby se načetly.
 
-Lepší volbou je použití funkce spravovaných identit v Azure Active Directory. Pomocí spravované identity potřebovat pouze koncový bod URL konfigurace aplikace bootstrap přístup do konfigurace aplikace pro store. Můžete vložit adresu URL v kódu aplikace (třeba *appsettings.json* souboru). Zobrazit [integrací se službami Azure spravovaných identit](howto-integrate-azure-managed-service-identity.md) podrobnosti.
+Lepší možností je použít funkci spravované identity v Azure Active Directory. U spravovaných identit potřebujete jenom adresu URL koncového bodu konfigurace aplikace, abyste mohli spustit přístup k úložišti konfigurace aplikace. Adresu URL můžete vložit do kódu aplikace (například v souboru *appSettings. JSON* ). Podrobnosti najdete v tématu věnovaném [integraci se spravovanými identitami Azure](howto-integrate-azure-managed-service-identity.md) .
 
-## <a name="app-or-function-access-to-app-configuration"></a>Aplikace nebo funkce přístup ke konfiguraci aplikací
+## <a name="app-or-function-access-to-app-configuration"></a>Přístup aplikací nebo funkcí k konfiguraci aplikace
 
-Můžete poskytnout přístup k konfigurace aplikace pro webové aplikace nebo funkce s použitím libovolného z následujících metod:
+Přístup ke konfiguraci aplikací pro webové aplikace nebo funkce můžete zajistit pomocí kterékoli z následujících metod:
 
-* Na webu Azure portal zadejte připojovací řetězec k úložišti konfigurace aplikací v nastavení aplikace služby App Service.
-* Připojovací řetězec k úložišti konfigurace aplikace pro Store ve službě Key Vault a [na něj odkazovat ze služby App Service](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references).
-* Použití Azure spravovat identity pro přístup k úložišti konfigurace aplikace. Další informace najdete v tématu [integrací se službami Azure spravovaných identit](howto-integrate-azure-managed-service-identity.md).
-* Konfigurace nabízených oznámení z konfigurace aplikace do služby App Service. Konfigurace aplikace poskytuje exportu – funkce (v portálu Azure portal a rozhraní příkazového řádku Azure CLI), která odesílá data přímo do služby App Service. S touto metodou není nutné měnit kód aplikace vůbec.
+* Prostřednictvím Azure Portal do nastavení aplikace App Service zadejte připojovací řetězec do úložiště konfigurace aplikace.
+* Uložte připojovací řetězec do úložiště konfigurace aplikace v Key Vault a [odkázat ho z App Service](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references).
+* Použijte spravované identity Azure pro přístup k úložišti konfigurace aplikace. Další informace najdete v tématu [integrace se spravovanými identitami Azure](howto-integrate-azure-managed-service-identity.md).
+* Doručovat konfiguraci z konfigurace aplikace do App Service. Konfigurace aplikace poskytuje funkci exportu (v Azure Portal a Azure CLI), která odesílá data přímo do App Service. V této metodě nemusíte vůbec měnit kód aplikace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Klíče a hodnoty](./concept-key-value.md)

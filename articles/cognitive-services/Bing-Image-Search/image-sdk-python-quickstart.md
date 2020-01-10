@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 85aa1bda395240d0f11b0654ee48b9f1a0401eaa
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 561162767a48a060763510310de77767f37d4eb4
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930593"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770182"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-python"></a>Rychlý start: Vyhledání obrázků pomocí sady SDK Vyhledávání obrázků Bingu pro Python
 
@@ -24,7 +24,7 @@ Pomocí tohoto rychlého startu můžete vytvořit své první vyhledávání ob
 
 Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/image-search-quickstart.py) s dalším zpracováním chyb a poznámkami.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Python 2.7 nebo 3.4](https://www.python.org/) a vyšší.
 
@@ -38,7 +38,7 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
 1. Ve vašem oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový skript Pythonu a přidejte následující importy:
 
     ```python
-    from azure.cognitiveservices.search.imagesearch import ImageSearchAPI
+    from azure.cognitiveservices.search.imagesearch import ImageSearchClient
     from msrest.authentication import CognitiveServicesCredentials
     ```
 
@@ -46,6 +46,7 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
 
     ```python
     subscription_key = "Enter your key here"
+    subscription_endpoint = "Enter your endpoint here"
     search_term = "canadian rockies"
     ```
 
@@ -54,7 +55,7 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
 1. Vytvořte instanci třídy `CognitiveServicesCredentials` a použijte ji k vytvoření instance klienta:
 
     ```python
-    client = ImageSearchAPI(CognitiveServicesCredentials(subscription_key))
+    client = ImageSearchClient(endpoint=subscription_endpoint, credentials=CognitiveServicesCredentials(subscription_key))
     ```
 1. Odešlete vyhledávací dotaz do rozhraní API Bingu pro vyhledávání obrázků:
     ```python
@@ -87,7 +88,7 @@ else:
 
 * [Co je Vyhledávání obrázků Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
 * [Vyzkoušet online interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-* [Získat zdarma přístupový klíč služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
+* [Získání přístupového klíče služeb Cognitive Services zdarma](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
 * [Ukázky Pythonu pro sadu Azure Cognitive Services SDK](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)  
 * [Dokumentace Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

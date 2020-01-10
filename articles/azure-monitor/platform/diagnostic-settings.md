@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 034ad7a074f60f1e2e9a0e6190f405972250c95d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 22932121b97c1b0fe91c46b5eea0222a022a4e61
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529880"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751083"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik platforem v Azure
-[Protokoly platforem](resource-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. Tento článek poskytuje podrobné informace o vytváření a konfiguraci nastavení diagnostiky pro odesílání protokolů platforem do různých umístění.
+[Protokoly platforem](platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. Tento článek poskytuje podrobné informace o vytváření a konfiguraci nastavení diagnostiky pro odesílání protokolů platforem do různých umístění.
 
 > [!IMPORTANT]
 > Před vytvořením nastavení diagnostiky ke shromáždění protokolu aktivit byste nejdřív měli zakázat všechny starší konfigurace. Podrobnosti najdete v tématu [shromáždění protokolu aktivit Azure se staršími nastaveními](diagnostic-settings-legacy.md) .
@@ -136,4 +136,4 @@ V tématu [Vytvoření nastavení diagnostiky v Azure monitor pomocí šablony S
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Další informace o protokolech platforem Azure](resource-logs-overview.md)
+* [Další informace o protokolech platforem Azure](platform-logs-overview.md)

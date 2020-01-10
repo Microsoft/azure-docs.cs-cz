@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 807a5ede3feee115b1a8dc51fe14966731fc7784
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 4c451c62a16a70d85d75ee00c3e08758e27425f6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240776"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749971"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>Připojit data z protokolu aktivit Azure
 
 
 
-Pomocí jediného kliknutí můžete streamovat protokoly z [Azure Activity log](../azure-monitor/platform/activity-logs-overview.md) do Azure Sentinel. Protokol aktivit je protokol předplatného, který poskytuje přehled o událostech na úrovni předplatného, k nimž došlo v Azure. To zahrnuje rozsah dat, od Azure Resource Manager provozních dat až po aktualizace Service Healthch událostí. Pomocí protokolu aktivit můžete určit, kdo a kdy použít pro všechny operace zápisu (PUT, POST, DELETE) u prostředků v rámci vašeho předplatného. Můžete také zjištění stavu operace a další relevantní vlastnosti. Protokol aktivit nezahrnuje operace čtení (GET) nebo operací pro prostředky, které používají model Classic/"RDFE". 
+Pomocí jediného kliknutí můžete streamovat protokoly z [Azure Activity log](../azure-monitor/platform/platform-logs-overview.md) do Azure Sentinel. Protokol aktivit je protokol předplatného, který poskytuje přehled o událostech na úrovni předplatného, k nimž došlo v Azure. Rozsah těchto informací jde od provozních dat Azure Resource Manageru po aktualizace při událostech Service Health. Pomocí protokolu aktivit můžete určit, kdo a kdy použít pro všechny operace zápisu (PUT, POST, DELETE) u prostředků v rámci vašeho předplatného. Můžete také zjištění stavu operace a další relevantní vlastnosti. Protokol aktivit nezahrnuje operace čtení (GET) nebo operací pro prostředky, které používají model Classic/"RDFE". 
 
 
 ## <a name="prerequisites"></a>Požadavky

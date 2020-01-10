@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: V tomto rychlém startu se dozvíte, jak používat Azure Dev Spaces a Visual Studio Code k ladění a rychlému iteraci aplikace Node. js ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 1b2101c5e7a59105b2c1da876e9a66294ce3a021
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 855c2cefce9d16436a94ea991e8ba0d4066e7c8d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438189"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770573"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>Rychlý Start: ladění a iterace v Kubernetes pomocí Visual Studio Code a Node. js – Azure Dev Spaces
 
@@ -171,4 +171,4 @@ Přečtěte si, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace n
 > [Práce s více kontejnery a týmový vývoj](multi-service-nodejs.md)
 
 
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

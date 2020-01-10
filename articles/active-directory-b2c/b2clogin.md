@@ -12,10 +12,10 @@ ms.date: 12/04/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: db222515dae51fa5e0334430a3578816b1e8813d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 01/08/2020
 ms.locfileid: "75367650"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Nastavte adresy URL pro přesměrování na b2clogin.com pro Azure Active Directory B2C

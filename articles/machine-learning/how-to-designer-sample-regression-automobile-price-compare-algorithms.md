@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: a4148389992bc100be66175a75b32d61acaf2f46
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: f8cf20743ee5420312ed751a26796a0859956ae7
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659865"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771440"
 ---
 # <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>Školení & Porovnejte více regresních modelů a předpovídat ceny automobilů pomocí návrháře Azure Machine Learning
 
@@ -25,7 +25,7 @@ ms.locfileid: "75659865"
 
 Naučte se vytvářet kanály strojového učení bez psaní jediného řádku kódu pomocí návrháře (Preview). Tato ukázka vlaků a porovnává více regresních modelů a předpovídá cenu auta na základě svých technických funkcí. Nabídneme vám odůvodnění pro volby provedené v tomto kanálu, abyste se mohli vypořádat s vlastními problémy machine learningu.
 
-Pokud se strojové učení teprve začíná, podívejte se na [základní verzi](service/how-to-designer-sample-regression-automobile-price-basic.md) tohoto kanálu.
+Pokud se strojové učení teprve začíná, podívejte se na [základní verzi](how-to-designer-sample-regression-automobile-price-basic.md) tohoto kanálu.
 
 Zde je dokončený graf pro tento kanál:
 
@@ -92,9 +92,9 @@ Tyto výsledky ukazují, že model sestavený s **regresí pro zvýšení rozhod
 
 Prozkoumejte další ukázky, které jsou k dispozici pro návrháře:
 
-- [Ukázka 1 – regrese: předpověď ceny automobilu](service/how-to-designer-sample-regression-automobile-price-basic.md)
-- [Ukázka 3 – klasifikace s výběrem funkcí: předpověď příjmů](service/how-to-designer-sample-classification-predict-income.md)
-- [Ukázka 4 – klasifikace: předpověď úvěrového rizika (citlivé na náklady)](service/how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Ukázka 5 – klasifikace: předpověď změn](service/how-to-designer-sample-classification-churn.md)
-- [Ukázka 6 – klasifikace: předpověď zpoždění letů](service/how-to-designer-sample-classification-flight-delay.md)
+- [Ukázka 1 – regrese: předpověď ceny automobilu](how-to-designer-sample-regression-automobile-price-basic.md)
+- [Ukázka 3 – klasifikace s výběrem funkcí: předpověď příjmů](how-to-designer-sample-classification-predict-income.md)
+- [Ukázka 4 – klasifikace: předpověď úvěrového rizika (citlivé na náklady)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [Ukázka 5 – klasifikace: předpověď změn](how-to-designer-sample-classification-churn.md)
+- [Ukázka 6 – klasifikace: předpověď zpoždění letů](how-to-designer-sample-classification-flight-delay.md)
 - [Ukázka 7 – klasifikace textu: Wikipedii SP 500 DataSet](how-to-designer-sample-text-classification.md)

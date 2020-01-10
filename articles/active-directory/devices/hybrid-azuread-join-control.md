@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d67a73ca47811e7275a6f2177573e10a09b230df
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 18da289f9d364fa79023809324d59b89b8ac898c
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073616"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768108"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Řízené ověřování hybridního připojení k Azure AD
 
@@ -79,7 +79,7 @@ Pomocí následujícího příkladu vytvořte objekt Zásady skupiny (GPO), kter
 
 ### <a name="configure-ad-fs-settings"></a>Konfigurace nastavení AD FS
 
-Pokud používáte AD FS, musíte nejprve nakonfigurovat spojovací bod služby na straně klienta pomocí výše uvedených pokynů, ale propojování objektu zásad skupiny se servery AD FS. Objekt spojovacího bodu služby definuje zdroj autority pro objekty zařízení. Může to být místní nebo Azure AD. Pokud je tato konfigurace nakonfigurovaná pro AD FS, je zdroj pro objekty zařízení vytvořený jako Azure AD.
+Pokud používáte AD FS, musíte nejprve nakonfigurovat spojovací bod služby na straně klienta pomocí výše uvedených pokynů, a to tak, že objekt zásad skupiny propojíte se servery AD FS. Objekt spojovacího bodu služby definuje zdroj autority pro objekty zařízení. Může to být místní nebo Azure AD. Když je spojovací bod služby na straně klienta nakonfigurovaný pro AD FS, je zdroj pro objekty zařízení vytvořený jako Azure AD.
 
 > [!NOTE]
 > Pokud se nezdařila konfigurace spojovacího bodu služby klienta na serverech AD FS, bude zdroj pro identity zařízení považován za místní. Služba AD FS pak začne odstraňovat objekty zařízení z místního adresáře po stanoveném období definovaném v atributu registrace zařízení ADFS "MaximumInactiveDays". Objekty registrace zařízení ADFS najdete pomocí [rutiny Get-AdfsDeviceRegistration](https://docs.microsoft.com/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps).

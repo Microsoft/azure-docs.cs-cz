@@ -15,16 +15,16 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5758f480c9216cf71e47509682053b39f0b15bf
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 753c626fe44193b83cbd992f225fe01c2ff67f89
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172402"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744800"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Zobrazení protokolů aktivit pro změny RBAC v prostředcích Azure
 
-Někdy potřebujete informace o změnách řízení přístupu na základě role (RBAC) v prostředcích Azure, například pro účely auditování nebo řešení potíží. Pokaždé, když někdo provede změny v přiřazení rolí nebo definicích rolí v rámci předplatného, změny se přihlásí do [protokolu aktivit Azure](../azure-monitor/platform/activity-logs-overview.md). V protokolech aktivit můžete zobrazit všechny změny RBAC za posledních 90 dní.
+Někdy potřebujete informace o změnách řízení přístupu na základě role (RBAC) v prostředcích Azure, například pro účely auditování nebo řešení potíží. Pokaždé, když někdo provede změny v přiřazení rolí nebo definicích rolí v rámci předplatného, změny se přihlásí do [protokolu aktivit Azure](../azure-monitor/platform/platform-logs-overview.md). V protokolech aktivit můžete zobrazit všechny změny RBAC za posledních 90 dní.
 
 ## <a name="operations-that-are-logged"></a>Operace, které jsou protokolovány
 
@@ -35,17 +35,17 @@ Tady jsou operace související s RBAC, které se zaznamenávají do protokolu a
 - Vytvořit nebo aktualizovat definici vlastní role
 - Odstranit definice rolí
 
-## <a name="azure-portal"></a>portál Azure
+## <a name="azure-portal"></a>Portál Azure
 
-Nejjednodušší způsob, jak začít, je zobrazit protokoly aktivit pomocí Azure Portal. Na následujícím snímku obrazovky vidíte příklad protokolu aktivit, který byl filtrován tak, aby zobrazoval operace přiřazení rolí a definice rolí. Obsahuje taky odkaz pro stažení protokolů jako souboru. CSV.
+Nejjednodušší způsob, jak začít, je zobrazit si protokoly aktivit přes Azure Portal. Na následujícím snímku obrazovky vidíte příklad protokolu aktivit, který byl filtrován tak, aby zobrazoval operace přiřazení rolí a definice rolí. Obsahuje taky odkaz pro stažení protokolů jako souboru. CSV.
 
 ![Protokoly aktivit pomocí portálu – snímek obrazovky](./media/change-history-report/activity-log-portal.png)
 
 Protokol aktivit na portálu má několik filtrů. Tady jsou filtry týkající se RBAC:
 
-|Filtr  |Value  |
+|Filtrovat  |Hodnota  |
 |---------|---------|
-|Kategorie události     | <ul><li>Administrativní</li></ul>         |
+|Kategorie události     | <ul><li>Správa</li></ul>         |
 |Operace     | <ul><li>Vytvořit přiřazení role</li> <li>Odstranit přiřazení role</li> <li>Vytvořit nebo aktualizovat definici vlastní role</li> <li>Odstranit definice rolí</li></ul>      |
 
 

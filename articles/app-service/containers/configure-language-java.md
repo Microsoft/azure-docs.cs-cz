@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5ee07e5b0ac9c73a686a0f8c7d489ecc7ee96425
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9c95772c8f10d7170a06d1d6793545a60fc8dd7c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422196"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750733"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux Java pro Azure App Service
 
@@ -238,11 +238,9 @@ Pro vložení těchto tajných kódů do konfiguračního souboru jarní nebo To
 
 ### <a name="using-the-java-key-store"></a>Používání úložiště klíčů Java
 
-Ve výchozím nastavení se všechny veřejné nebo privátní certifikáty [nahrané do App Service Linux](../configure-ssl-certificate.md) načtou do úložiště klíčů Java, protože se spustí kontejner. To znamená, že nahrané certifikáty budou k dispozici v kontextu připojení při vytváření odchozích připojení TLS. Po nahrání certifikátu bude potřeba restartovat App Service, aby se načetla do úložiště klíčů Java.
+Ve výchozím nastavení se všechny veřejné nebo privátní certifikáty [nahrané do App Service Linux](../configure-ssl-certificate.md) načtou do příslušných úložišť klíčů Java jako kontejner se spustí. Po nahrání certifikátu bude potřeba restartovat App Service, aby se načetla do úložiště klíčů Java. Veřejné certifikáty jsou načteny do úložiště klíčů na `$JAVA_HOME/jre/lib/security/cacerts`a privátní certifikáty jsou uloženy v `$JAVA_HOME/lib/security/client.jks`.
 
-Nástroj Java Key můžete interagovat nebo ladit tak, že [otevřete připojení SSH](app-service-linux-ssh-support.md) k vašemu App Service a spustíte `keytool`příkazu. Seznam příkazů najdete v [dokumentaci k nástroji Key](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) . Certifikáty jsou uložené ve výchozím umístění souborů úložiště klíčů v jazyce Java `$JAVA_HOME/jre/lib/security/cacerts`.
-
-Pro šifrování připojení JDBC může být nutná další konfigurace. Další informace najdete v dokumentaci pro zvolený ovladač JDBC.
+Pro šifrování připojení JDBC k certifikátům v úložišti klíčů Java může být potřeba další konfigurace. Další informace najdete v dokumentaci pro zvolený ovladač JDBC.
 
 - [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
 - [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
@@ -250,11 +248,27 @@ Pro šifrování připojení JDBC může být nutná další konfigurace. Dalš�
 - [MongoDB](https://mongodb.github.io/mongo-java-driver/3.4/driver/tutorials/ssl/)
 - [Cassandra](https://docs.datastax.com/en/developer/java-driver/4.3/)
 
-#### <a name="manually-initialize-and-load-the-key-store"></a>Ruční inicializace a načtení úložiště klíčů
+#### <a name="initializing-the-java-key-store"></a>Inicializuje se úložiště klíčů Java.
 
-Můžete inicializovat úložiště klíčů a přidat certifikáty ručně. Vytvořte nastavení aplikace `SKIP_JAVA_KEYSTORE_LOAD`s hodnotou `1`, která zakáže App Service načtení certifikátů do úložiště klíčů automaticky. Všechny veřejné certifikáty nahrané do App Service přes Azure Portal jsou uložené v `/var/ssl/certs/`. Privátní certifikáty jsou uložené v `/var/ssl/private/`.
+Chcete-li inicializovat objekt `import java.security.KeyStore`, načtěte soubor úložiště klíčů s heslem. Výchozí heslo pro obě úložiště klíčů je "changeit".
 
-Další informace o rozhraní API úložiště klíčů najdete [v oficiální dokumentaci](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html).
+```java
+KeyStore keyStore = KeyStore.getInstance("jks");
+keyStore.load(
+    new FileInputStream(System.getenv("JAVA_HOME")+"/lib/security/cacets"),
+    "changeit".toCharArray());
+
+KeyStore keyStore = KeyStore.getInstance("pkcs12");
+keyStore.load(
+    new FileInputStream(System.getenv("JAVA_HOME")+"/lib/security/client.jks"),
+    "changeit".toCharArray());
+```
+
+#### <a name="manually-load-the-key-store"></a>Ruční načtení úložiště klíčů
+
+Certifikáty můžete načíst ručně do úložiště klíčů. Vytvořte nastavení aplikace `SKIP_JAVA_KEYSTORE_LOAD`s hodnotou `1`, která zakáže App Service načtení certifikátů do úložiště klíčů automaticky. Všechny veřejné certifikáty nahrané do App Service přes Azure Portal jsou uložené v `/var/ssl/certs/`. Privátní certifikáty jsou uložené v `/var/ssl/private/`.
+
+Nástroj Java Key můžete interagovat nebo ladit tak, že [otevřete připojení SSH](app-service-linux-ssh-support.md) k vašemu App Service a spustíte `keytool`příkazu. Seznam příkazů najdete v [dokumentaci k nástroji Key](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) . Další informace o rozhraní API úložiště klíčů najdete [v oficiální dokumentaci](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html).
 
 ## <a name="configure-apm-platforms"></a>Konfigurace platforem APM
 
@@ -372,7 +386,7 @@ Spouštěcí skript vytvoří [transformaci XSL](https://www.w3schools.com/xml/x
 apk add --update libxslt
 
 # Usage: xsltproc --output output.xml style.xsl input.xml
-xsltproc --output /usr/local/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /home/tomcat/conf/server.xml
+xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
 ```
 
 Příklad souboru XSL je uveden níže. Vzorový soubor XSL přidá nový uzel konektoru do serveru Tomcat. XML.

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: c6e60474f74a23add429bf13ca7744afb8e8e1a3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 72006f907a1c1641308c8ee43e7a405765410789
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74777544"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770879"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Monitorování výkonu clusteru v Azure HDInsight
 
@@ -72,7 +72,7 @@ V uživatelském rozhraní Správce prostředků v nabídce na levé straně vyb
 
 ## <a name="storage-throttling"></a>Omezování úložiště
 
-Kritické body výkonu clusteru se můžou vyskytnout na úrovni úložiště. Tento typ kritických míst je nejčastěji kvůli *blokujícím* vstupně-výstupním operacím (v/v), ke kterým dochází, když spuštěné úlohy odesílají více vstupně-výstupních operací, než dokáže služba úložiště zvládnout. Toto blokování vytvoří frontu požadavků v/v, které čekají na zpracování až po zpracování aktuální IOs. Bloky jsou z důvodu *omezování úložiště*, což není fyzický limit, ale místo omezení služby úložiště pomocí smlouvy SLA (Service level agreement). Tento limit zajistí, že nemůžete monopolizovatovat žádného jednoho klienta ani klienta služby. Smlouva SLA omezuje počet IOs za sekundu (IOPS) pro Azure Storage. Podrobnosti najdete v tématu [Azure Storage škálovatelnost a cíle výkonu](https://docs.microsoft.com/azure/storage/storage-scalability-targets).
+Kritické body výkonu clusteru se můžou vyskytnout na úrovni úložiště. Tento typ kritických míst je nejčastěji kvůli *blokujícím* vstupně-výstupním operacím (v/v), ke kterým dochází, když spuštěné úlohy odesílají více vstupně-výstupních operací, než dokáže služba úložiště zvládnout. Toto blokování vytvoří frontu požadavků v/v, které čekají na zpracování až po zpracování aktuální IOs. Bloky jsou z důvodu *omezování úložiště*, což není fyzický limit, ale místo omezení služby úložiště pomocí smlouvy SLA (Service level agreement). Tento limit zajistí, že nemůžete monopolizovatovat žádného jednoho klienta ani klienta služby. Smlouva SLA omezuje počet IOs za sekundu (IOPS) pro Azure Storage. Podrobnosti najdete v tématu [škálovatelnost a cíle výkonnosti pro účty úložiště úrovně Standard](../storage/common/scalability-targets-standard-account.md).
 
 Pokud používáte Azure Storage, přečtěte si informace o monitorování potíží souvisejících s úložištěm, včetně omezení, najdete v tématu [monitorování, diagnostika a řešení potíží s Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
 

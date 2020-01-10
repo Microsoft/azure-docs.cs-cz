@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: b8e244dc00b4ed61a802f5c9f39149a7c020768a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 00dcc1c1a1d823ab0f2497e47641916d391ee37b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530829"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750353"
 ---
 # <a name="stream-azure-platform-logs-to-azure-event-hubs"></a>Streamování protokolů platformy Azure do Azure Event Hubs
-[Protokoly platforem](resource-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé.  Tento článek popisuje streamování protokolů platforem na centra událostí, které slouží k odesílání dat do externích systémů, jako jsou systémů Siem třetích stran a další řešení Log Analytics.
+[Protokoly platforem](platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé.  Tento článek popisuje streamování protokolů platforem na centra událostí, které slouží k odesílání dat do externích systémů, jako jsou systémů Siem třetích stran a další řešení Log Analytics.
 
 
 ## <a name="what-you-can-do-with-platform-logs-sent-to-an-event-hub"></a>Co se dá dělat s protokoly platforem odesílanými do centra událostí
@@ -135,7 +135,7 @@ Následuje ukázka výstupních dat z Event Hubs pro protokol prostředku:
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si další informace o protokolech prostředků](resource-logs-overview.md).
+* [Přečtěte si další informace o protokolech prostředků](platform-logs-overview.md).
 * [Vytvořte nastavení diagnostiky pro shromažďování protokolů a metrik v Azure](diagnostic-settings.md).
 * [Streamování Azure Active Directory protokolů pomocí Azure monitor](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md).
 * [Začínáme s Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md).

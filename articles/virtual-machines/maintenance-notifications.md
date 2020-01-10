@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: ab8ef516e5434ac5a9cde9324798d8dd1706a04e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: f39e5ee7126fe381ad4ba77ec9a876db5f0a1ef6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807404"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747262"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Zpracování oznámení o plánované údržbě
 
@@ -29,7 +29,7 @@ Azure pravidelně provádí aktualizace za účelem zlepšení spolehlivosti, v�
 
 Plánovaná údržba, která vyžaduje restart, je naplánována na vlny. Každý vlna má jiný obor (oblasti).
 
-- Wave začíná oznámením pro zákazníky. Ve výchozím nastavení se oznámení pošle vlastníkovi předplatného a spoluvlastníkům. Pomocí [upozornění protokolu aktivit](../azure-monitor/platform/activity-logs-overview.md)můžete přidat další příjemce a možnosti zasílání zpráv, jako jsou E-mail, SMS a Webhooky.  
+- Wave začíná oznámením pro zákazníky. Ve výchozím nastavení se oznámení pošle vlastníkovi předplatného a spoluvlastníkům. Pomocí [upozornění protokolu aktivit](../azure-monitor/platform/platform-logs-overview.md)můžete přidat další příjemce a možnosti zasílání zpráv, jako jsou E-mail, SMS a Webhooky.  
 - Jakmile se oznámení dostane, zpřístupní se *samoobslužné okno* . Během tohoto okna se můžete dotazovat na to, které z vašich virtuálních počítačů jsou ovlivněné, a zahájit údržbu na základě vlastních potřeb plánování. Samoobslužné okno je obvykle přibližně 35 dní.
 - Po samoobslužném okně začne *plánované časové období údržby* . V určitém okamžiku v tomto okně Azure plánuje a na virtuálním počítači aplikuje požadovanou údržbu. 
 

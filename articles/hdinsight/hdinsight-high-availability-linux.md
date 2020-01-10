@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 8b914b8ffe995cf31f8a22b6f80250431facc770
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 68f4eb4fbad2a571e078cb9aedcfd56c80ffe054
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682233"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747875"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostupnost a spolehlivost clusterů Apache Hadoop v HDInsight
 
@@ -33,7 +33,7 @@ Uzly v clusteru HDInsight se implementují pomocí Azure Virtual Machines. Násl
 
 Pro zajištění vysoké dostupnosti služeb Hadoop poskytuje HDInsight dva hlavní uzly. Oba hlavní uzly jsou aktivní a běží v clusteru HDInsight současně. Některé služby, jako je Apache HDFS nebo Apache Hadoop nitě, jsou v jednom hlavním uzlu v každém okamžiku aktivní pouze pro jeden hlavní uzel. Další služby, jako je HiveServer2 nebo podregistr MetaStore, jsou v obou hlavních uzlech aktivní.
 
-Hlavní uzly (a další uzly v HDInsight) mají číselnou hodnotu jako součást názvu hostitele uzlu. Například `hn0-CLUSTERNAME` nebo `hn4-CLUSTERNAME`.
+Pokud chcete získat názvy hostitelů pro různé typy uzlů v clusteru, použijte prosím [REST API Ambari](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes).
 
 > [!IMPORTANT]  
 > Nepřidružte číselnou hodnotu k tomu, zda je uzel primární nebo sekundární. Číselná hodnota je přítomna pouze pro zadání jedinečného názvu pro každý uzel.
@@ -88,7 +88,7 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 Tento příkaz vrátí hodnotu podobnou následující, která obsahuje interní adresu URL pro použití s příkazem `oozie`:
 
 ```output
-"oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.cloudapp.net:11000/oozie"
+"oozie.base.url": "http://<ACTIVE-HEADNODE-NAME>cx.internal.cloudapp.net:11000/oozie"
 ```
 
 Další informace o práci s Ambari REST API najdete v tématu [monitorování a Správa HDInsight pomocí REST API Apache Ambari](hdinsight-hadoop-manage-ambari-rest-api.md).
@@ -107,7 +107,7 @@ K uzlům, které nejsou přímo přístupné přes Internet, se můžete připoj
 
 Chcete-li zjistit stav služeb, které jsou spuštěny na hlavních uzlech, použijte webové uživatelské rozhraní Ambari nebo Ambari REST API.
 
-### <a name="ambari-web-ui"></a>Webové uživatelské rozhraní Ambari
+### <a name="ambari-web-ui"></a>Ambari Web UI
 
 Webové uživatelské rozhraní Ambari je možné zobrazit na `https://CLUSTERNAME.azurehdinsight.net`. Nahraďte **CLUSTERNAME** názvem vašeho clusteru. Pokud se zobrazí výzva, zadejte přihlašovací údaje uživatele HTTP pro váš cluster. Výchozí uživatelské jméno HTTP je **admin** a heslo je heslo, které jste zadali při vytváření clusteru.
 
@@ -119,13 +119,13 @@ Pro indikaci stavu se může zobrazit řada ikon, které se mohou objevit vedle 
 
 Následující výstrahy vám pomůžou monitorovat dostupnost clusteru:
 
-| Název výstrahy                               | Popis                                                                                                                                                                                  |
+| Název upozornění                               | Popis                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Stav monitorování metriky                    | Tato výstraha indikuje stav procesu monitorování metrik, jak je určený skriptem stavu monitorování.                                                                                   |
 | Prezenční signál agenta Ambari                   | Tato výstraha se aktivuje, pokud server ztratil kontakt s agentem.                                                                                                                        |
 | Proces serveru ZooKeeper                 | Tato výstraha na úrovni hostitele se aktivuje, pokud se proces serveru ZooKeeper nedá určit a naslouchat v síti.                                                               |
 | Stav serveru metadat IOCache           | Tato výstraha na úrovni hostitele se aktivuje, pokud se server metadat IOCache nedá určit a reagovat na požadavky klientů.                                                            |
-| Webové uživatelské rozhraní JournalNode                       | Tato výstraha na úrovni hostitele se aktivuje, pokud je webové uživatelské rozhraní JournalNode nedosažitelné.                                                                                                                 |
+| JournalNode Web UI                       | Tato výstraha na úrovni hostitele se aktivuje, pokud je webové uživatelské rozhraní JournalNode nedosažitelné.                                                                                                                 |
 | Server Spark2 Thrift                     | Tato výstraha na úrovni hostitele se aktivuje, pokud server Thrift Spark2 nejde určit jako.                                                                                                |
 | Proces serveru historie                   | Tato výstraha na úrovni hostitele se aktivuje, pokud se proces serveru historie nedá navázat a naslouchat v síti.                                                                |
 | Webové uživatelské rozhraní serveru historie                    | Tato výstraha na úrovni hostitele se aktivuje, pokud je webové uživatelské rozhraní serveru historie nedosažitelné.                                                                                                              |
@@ -194,7 +194,7 @@ Odpověď je podobná následujícímu kódu JSON:
 
 ```json
 {
-    "href" : "http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
+    "href" : "http://mycluster.wutj3h4ic1zejluqhxzvckxq0g.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
     "ServiceInfo" : {
     "cluster_name" : "mycluster",
     "service_name" : "HDFS",
@@ -203,7 +203,7 @@ Odpověď je podobná následujícímu kódu JSON:
 }
 ```
 
-Adresa URL oznamuje, že služba je aktuálně spuštěná na hlavním uzlu s názvem **hn0-název_clusteru**.
+Adresa URL oznamuje, že služba je aktuálně spuštěná na hlavním uzlu s názvem **mycluster. wutj3h4ic1zejluqhxzvckxq0g**.
 
 Stav oznamuje, že je služba aktuálně spuštěná nebo **spuštěná**.
 
@@ -241,7 +241,7 @@ Každý hlavní uzel může mít jedinečné položky protokolu, takže byste m�
 
 Můžete se také připojit k hlavnímu uzlu pomocí protokolu SSH protokol FTP (File Transfer Protocol) nebo Secure protokol FTP (File Transfer Protocol) (SFTP) a stáhnout soubory protokolu přímo.
 
-Podobně jako při připojování ke clusteru použijte klienta SSH, musíte zadat název uživatelského účtu SSH a adresu SSH clusteru. například `sftp username@mycluster-ssh.azurehdinsight.net`. Po zobrazení výzvy zadejte heslo k účtu nebo zadejte veřejný klíč pomocí parametru `-i`.
+Podobně jako při připojování ke clusteru použijte klienta SSH, musíte zadat název uživatelského účtu SSH a adresu SSH clusteru. Například, `sftp username@mycluster-ssh.azurehdinsight.net`. Po zobrazení výzvy zadejte heslo k účtu nebo zadejte veřejný klíč pomocí parametru `-i`.
 
 Po připojení se zobrazí výzva `sftp>`. Z této výzvy můžete měnit adresáře, nahrávat a stahovat soubory. Například následující příkazy mění adresáře do adresáře **/var/log/Hadoop/HDFS** a pak stáhnou všechny soubory v adresáři.
 

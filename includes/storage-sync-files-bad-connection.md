@@ -8,28 +8,29 @@ ms.topic: include
 ms.date: 07/08/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 07cae1cee9810646de5bf9610a29991376736373
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b2ff542d2782293e89b66e5d25cb67a9bcde6da8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391599"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772886"
 ---
-K této chybě může dojít, když je služba Azure File Sync ze serveru nepřístupná. Tuto chybu můžete vyřešit pomocí následujících kroků:
+K této chybě může dojít v případě, že server nemá přístup ke službě Synchronizace souborů Azure. Při řešení této chyby můžete použít následující postup:
 
-1. Ověřte, že brána firewall neblokuje službu Windows `FileSyncSvc.exe`.
-2. Ověřte, že je port 443 otevřený pro odchozí připojení ke službě Azure File Sync. Můžete to provést pomocí rutiny `Test-NetConnection`. Adresa URL zástupného znaku `<azure-file-sync-endpoint>` uvedená níže se může najít v dokumentu [Azure File Sync proxy serveru a nastavení brány firewall](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall) . 
+1. Ověřte, že brána firewall neblokuje `FileSyncSvc.exe` služby systému Windows.
+2. Ověřte, že je port 443 otevřený pro odchozí připojení ke službě Azure File Sync. Můžete to provést pomocí rutiny `Test-NetConnection`. Adresu URL místo zástupného textu `<azure-file-sync-endpoint>` najdete v dokumentu [Nastavení proxy a brány firewall Synchronizace souborů Azure](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall). 
 
     ```powershell
     Test-NetConnection -ComputerName <azure-file-sync-endpoint> -Port 443
     ```
 
-3. Ujistěte se, že konfigurace proxy serveru je nastavená jako očekávaná. To lze provést pomocí rutiny `Get-StorageSyncProxyConfiguration`. Další informace o konfiguraci proxy serveru pro Azure File Sync najdete v [nastavení proxy serveru Azure File Sync a brány firewall](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall).
+3. Ujistěte se, že je konfigurace proxy nastavená očekávaným způsobem. Můžete to provést pomocí rutiny `Get-StorageSyncProxyConfiguration`. Další informace o konfiguraci proxy pro Synchronizaci souborů Azure najdete v tématu [Nastavení proxy a brány firewall Synchronizace souborů Azure](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall).
 
     ```powershell
     $agentPath = "C:\Program Files\Azure\StorageSyncAgent"
     Import-Module "$agentPath\StorageSync.Management.ServerCmdlets.dll"
     Get-StorageSyncProxyConfiguration
     ```
-    
-4. Pokud potřebujete další pomoc při řešení potíží s připojením k síti, obraťte se na správce sítě.
+4. Pomocí rutiny Test-StorageSyncNetworkConnectivity Zkontrolujte síťové připojení k koncovým bodům služby. Další informace najdete v tématu [Test připojení k síti koncových bodů služby](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#test-network-connectivity-to-service-endpoints).    
+
+5. Pokud potřebujete další pomoc při řešení potíží s připojením k síti, obraťte se na správce sítě.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: e70144bc71c182a6ec1668ee81f458a236289331
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 2293618b0685fe71ae553a95797fe8bfe1fe968c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384202"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749947"
 ---
 # <a name="azure-network-security-overview"></a>Přehled zabezpečení sítě Azure
 
@@ -30,7 +30,7 @@ Tento článek popisuje některé z možností, které Azure nabízí v oblasti 
 
 * Sítě Azure
 * Řízení přístupu k síti
-* Brána Azure Firewall
+* Azure Firewall
 * Zabezpečený vzdálený přístup a připojení mezi místními sítěmi
 * Dostupnost
 * Překlad adres
@@ -130,7 +130,7 @@ Vaše požadavky na zabezpečení můžou například zahrnovat:
 
 K těmto rozšířeným funkcím zabezpečení sítě můžete přistupovat pomocí partnerského řešení Azure. Nejaktuálnější řešení zabezpečení pro Azure Partner Network najdete na [Azure Marketplace](https://azure.microsoft.com/marketplace/)a vyhledáte "zabezpečení" a "zabezpečení sítě".
 
-## <a name="azure-firewall"></a>Brána Azure Firewall
+## <a name="azure-firewall"></a>Azure Firewall
 
 Azure Firewall je spravovaná cloudová služba síťového zabezpečení, která chrání vaše prostředky ve virtuálních sítích Azure. Jde o plně stavovou bránu firewall poskytovanou jako služba s integrovanou vysokou dostupností a neomezenou cloudovou škálovatelností. Mezi tyto funkce patří:
 
@@ -369,7 +369,7 @@ Další informace o Network Watcher a o tom, jak začít s testováním někter�
 > [!NOTE]
 > Nejaktuálnější oznámení o dostupnosti a stavu této služby najdete na [stránce s aktualizacemi Azure](https://azure.microsoft.com/updates/?product=network-watcher).
 
-### <a name="azure-security-center"></a>Azure Security Center
+### <a name="azure-security-center"></a>Centrum zabezpečení Azure
 
 Azure Security Center pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně a poskytuje lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Poskytuje integrované monitorování zabezpečení a správu zásad v rámci předplatných Azure, pomáhá detekovat hrozby, které by jinak neinformovaly a fungují s velkou sadou řešení zabezpečení.
 
@@ -395,8 +395,8 @@ Další informace:
 
 Protokolování na úrovni sítě je klíčovou funkcí pro jakýkoli scénář zabezpečení sítě. V Azure můžete protokolovat informace získané pro skupin zabezpečení sítě a získat informace o protokolování na úrovni sítě. Pomocí protokolování NSG získáte informace z těchto údajů:
 
-* [Protokoly aktivit](../../azure-monitor/platform/activity-logs-overview.md). Pomocí těchto protokolů můžete zobrazit všechny operace odeslané do předplatných Azure. Tyto protokoly jsou ve výchozím nastavení povolené a dají se použít v rámci Azure Portal. Dříve se nazývaly jako audit nebo provozní protokoly.
-* Protokoly událostí. Tyto protokoly obsahují informace o tom, jaká pravidla NSG byla použita.
+* [Protokoly aktivit](../../azure-monitor/platform/platform-logs-overview.md). Pomocí těchto protokolů můžete zobrazit všechny operace odeslané do předplatných Azure. Tyto protokoly jsou ve výchozím nastavení povolené a dají se použít v rámci Azure Portal. Dříve se nazývaly jako audit nebo provozní protokoly.
+* Protokoly událostí Tyto protokoly obsahují informace o tom, jaká pravidla NSG byla použita.
 * Protokoly čítače. Tyto protokoly vám umožní zjistit, kolikrát se každé pravidlo NSG použilo pro odepření nebo povolení provozu.
 
 K zobrazení a analýze těchto protokolů můžete použít také [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/), výkonný nástroj pro vizualizaci dat.

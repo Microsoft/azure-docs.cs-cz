@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: 8198ff6579aff839ff9aacb729e2f3f8d3472fae
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4ce7b8590e4718585fe841921466e049dc204928
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230474"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769128"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Ruční spuštění funkce neaktivované protokolem HTTP
 
@@ -22,7 +22,7 @@ Odesílací [modul se používá](https://www.getpostman.com/) v následujícím
 
 ## <a name="define-the-request-location"></a>Definujte umístění žádosti.
 
-Pokud chcete spustit funkci, která není spuštěná pomocí protokolu HTTP, musíte do Azure poslat požadavek na jeho spuštění. Adresa URL použitá k provedení tohoto požadavku má určitý tvar.
+Pokud chcete spustit funkci, která není aktivovaná přes protokol HTTP, potřebujete způsob, jak odeslat žádost do Azure ke spuštění funkce. Adresa URL použitá k provedení tohoto požadavku má určitý tvar.
 
 ![Zadejte umístění žádosti: název hostitele + cesta ke složce + název funkce](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
 
@@ -63,7 +63,7 @@ Otevřete post a postupujte takto:
 
     ![Nastavení těla příspěvku](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
 
-8. Klikněte na **Odeslat**.
+8. Klikněte na tlačítko **odeslat**.
 
     ![Odeslání žádosti pomocí metody post](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
 
@@ -75,5 +75,5 @@ Potom se vraťte k funkci v Azure Portal. Vyhledejte okno *protokoly* a zobrazí
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Strategie pro testování kódu v Azure Functions](./functions-test-a-function.md)
-- [Funkce Azure Function Event Grid aktivovat místní ladění](./functions-debug-event-grid-trigger-local.md)
+- [Strategie testování kódu ve službě Azure Functions](./functions-test-a-function.md)
+- [Funkce Azure Event Grid aktivovat místní ladění](./functions-debug-event-grid-trigger-local.md)

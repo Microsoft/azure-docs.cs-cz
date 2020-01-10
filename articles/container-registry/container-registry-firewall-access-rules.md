@@ -1,42 +1,42 @@
 ---
 title: Pravidla přístupu brány firewall
-description: Nakonfigurujte pravidla pro přístup ke službě Azure Container Registry za bránou firewall.
+description: Nakonfigurujte pravidla pro přístup ke službě Azure Container Registry za bránou firewall tím, že povolíte přístup k ("povolenému") REST API a názvům koncových bodů úložiště nebo rozsahům IP adres pro konkrétní služby.
 ms.topic: article
 ms.date: 07/17/2019
-ms.openlocfilehash: 6a0a169f7e5a7e07771cb9fee474b7f4a9391a4e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 4d3c4ff4ca19d8b563c185e5c314011823081df1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455182"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745196"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Konfigurace pravidel pro přístup ke službě Azure Container Registry za bránou firewall
 
 Tento článek vysvětluje, jak nakonfigurovat pravidla pro bránu firewall, aby povolovala přístup ke službě Azure Container Registry. Například zařízení Azure IoT Edge za bránou firewall nebo proxy server může vyžadovat přístup k registru kontejneru, aby mohl načíst image kontejneru. Nebo je možné, že uzamčený Server v místní síti bude potřebovat přístup k nabízení obrázku.
 
-Pokud místo toho chcete nakonfigurovat příchozí pravidla přístupu k síti v registru kontejneru tak, aby povolovala přístup jenom v rámci služby Azure Virtual Network, nebo z rozsahu veřejných IP adres, přečtěte si téma [omezení přístupu ke službě Azure Container Registry z virtuální sítě](container-registry-vnet.md).
+Pokud místo toho chcete nakonfigurovat příchozí pravidla přístupu k síti v registru kontejneru jenom v rámci virtuální sítě Azure nebo z rozsahu veřejných IP adres, přečtěte si téma [omezení přístupu ke službě Azure Container Registry z virtuální sítě](container-registry-vnet.md).
 
 ## <a name="about-registry-endpoints"></a>O koncových bodech registru
 
 Aby mohl klient, jako je démon Docker, načítat nebo předávat obrázky nebo jiné artefakty do služby Azure Container Registry, musí komunikovat přes protokol HTTPS se dvěma odlišnými koncovými body.
 
-* **Registry REST API koncového bodu** – ověřování a správa registru se zpracovávají prostřednictvím koncového bodu veřejné REST API registru. Tento koncový bod je adresa URL přihlašovacího serveru registru nebo přidružený rozsah IP adres. 
+* **Registry REST API koncového bodu** – ověřování a správa registru se zpracovávají prostřednictvím koncového bodu veřejné REST API registru. Tento koncový bod je název přihlašovacího serveru registru nebo přidružený rozsah IP adres. 
 
-* **Koncový bod úložiště** – Azure [přiděluje úložiště objektů BLOB](container-registry-storage.md) v účtech Azure Storage jménem každého registru za účelem správy imagí kontejneru a dalších artefaktů. Když klient přistupuje k vrstvám imagí ve službě Azure Container Registry, provede požadavky pomocí koncového bodu účtu úložiště, který poskytuje registr.
+* **Koncový bod úložiště** – Azure [přiděluje úložiště objektů blob](container-registry-storage.md) v rámci Azure Storage účtů jménem každého registru za účelem správy dat pro Image kontejnerů a další artefakty. Když klient přistupuje k vrstvám imagí ve službě Azure Container Registry, provede požadavky pomocí koncového bodu účtu úložiště, který poskytuje registr.
 
 Pokud je registr [geograficky replikovaný](container-registry-geo-replication.md), může klient spolupracovat s koncovými body Rest a úložiště v konkrétní oblasti nebo v několika replikovaných oblastech.
 
-## <a name="allow-access-to-rest-and-storage-urls"></a>Povolení přístupu k adresám REST a Storage
+## <a name="allow-access-to-rest-and-storage-domain-names"></a>Povolení přístupu k názvům domén REST a úložiště
 
-* **Koncový bod REST** – povolí přístup k adrese URL serveru registru, například `myregistry.azurecr.io`
-* **Koncový bod úložiště** – povolí přístup ke všem účtům služby Azure Blob Storage pomocí zástupného znaku `*.blob.core.windows.net`
+* **Koncový bod REST** – povolí přístup k plně kvalifikovanému názvu přihlašovacího serveru registru, například `myregistry.azurecr.io`
+* **Koncový bod úložiště (data)** – povolí přístup ke všem účtům služby Azure Blob Storage pomocí zástupného znaku `*.blob.core.windows.net`
 
 
 ## <a name="allow-access-by-ip-address-range"></a>Povolení přístupu podle rozsahu IP adres
 
-Pokud potřebujete přístup ke konkrétním IP adresám, Stáhněte si [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519).
+Pokud má vaše organizace zásady povolující přístup jenom ke konkrétním IP adresám nebo rozsahům adres, Stáhněte si [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519).
 
-Pokud chcete najít rozsahy IP adres koncového bodu REST ACR, vyhledejte **AzureContainerRegistry** v souboru JSON.
+Pokud chcete najít rozsahy IP adres koncového bodu REST ACR, pro které potřebujete přístup, vyhledejte **AzureContainerRegistry** v souboru JSON.
 
 > [!IMPORTANT]
 > Rozsahy IP adres pro služby Azure se můžou měnit a aktualizace se zveřejňují týdně. Stáhněte si soubor JSON pravidelně a proveďte potřebné aktualizace v pravidlech přístupu. Pokud váš scénář zahrnuje konfiguraci pravidel skupiny zabezpečení sítě ve službě Azure Virtual Network pro přístup k Azure Container Registry, použijte místo toho [značku služby](#allow-access-by-service-tag) **AzureContainerRegistry** .

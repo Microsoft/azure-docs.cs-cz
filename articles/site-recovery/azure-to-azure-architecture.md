@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 1/08/2020
 ms.author: raynew
-ms.openlocfilehash: e83c14e5ce337e8a3c4c119acc2397b98afd5b56
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e5fdf0a14586a0a2ea97d222f4be481e8fe31e51
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621111"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754513"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii Azure do Azure
 
@@ -95,15 +95,15 @@ Site Recovery pořizuje snímky následujícím způsobem:
 
 Následující tabulka vysvětluje různé typy konzistence.
 
-### <a name="crash-consistent"></a>Konzistentní vzhledem k selháním
+### <a name="crash-consistent"></a>Crash-consistent
 
-**Popis** | **Podrobnosti** | **Základě**
+**Popis** | **Podrobnosti** | **Doporučení**
 --- | --- | ---
 Snímek konzistentní se selháním zachycuje data, která byla na disku při pořízení snímku. Neobsahuje žádné množství paměti.<br/><br/> Obsahuje ekvivalent dat na disku, která by byla k dispozici v případě, že došlo k chybě virtuálního počítače nebo napájecí kabel byl získán ze serveru v okamžiku, kdy se snímek povedl.<br/><br/> Konzistentní se selháním nezaručuje konzistenci dat pro operační systém nebo pro aplikace na virtuálním počítači. | Ve výchozím nastavení vytvoří Site Recovery body obnovení konzistentní vzhledem k chybě každých pět minut. Toto nastavení nelze změnit.<br/><br/>  | V současné době se většina aplikací může obnovovat i z bodů konzistentních vzhledem k selháním.<br/><br/> Body obnovení konzistentní vzhledem k havárii jsou obvykle dostačující pro replikaci operačních systémů a aplikace, jako jsou servery DHCP a tiskové servery.
 
-### <a name="app-consistent"></a>Konzistentní vzhledem k aplikacím
+### <a name="app-consistent"></a>App-consistent
 
-**Popis** | **Podrobnosti** | **Základě**
+**Popis** | **Podrobnosti** | **Doporučení**
 --- | --- | ---
 Body obnovení konzistentní vzhledem k aplikacím se vytvářejí z snímků konzistentních vzhledem k aplikacím.<br/><br/> Snímek konzistentní vzhledem k aplikacím obsahuje všechny informace v snímku konzistentním s chybou a také všechna data v paměti a probíhajících transakcích. | Snímky konzistentní vzhledem k aplikacím používají služba Stínová kopie svazku (VSS):<br/><br/>   1) když se spustí snímek, služba VSS provede na svazku operaci kopírování na zápis (KRÁVy).<br/><br/>   2) před provedením KRÁVy vytvoří služba Stínová kopie svazku každou aplikaci v počítači, kterou potřebuje k vyprázdnit data rezidentní paměti na disk.<br/><br/>   3) služba VSS pak umožní aplikaci pro zálohování nebo zotavení po havárii (v tomto případě Site Recovery) ke čtení dat snímku a pokračování. | Snímky konzistentní vzhledem k aplikacím jsou pořízeny podle četnosti, kterou zadáte. Tato frekvence by měla být vždy menší než nastavení pro zachování bodů obnovení. Pokud například zachováte body obnovení s použitím výchozího nastavení 24 hodin, měli byste nastavit četnost na méně než 24 hodin.<br/><br/>Jsou složitější a jejich dokončení trvá déle než snímky konzistentní se selháním.<br/><br/> Mají vliv na výkon aplikací spuštěných na virtuálním počítači, který je povolen pro replikaci. 
 
@@ -145,17 +145,19 @@ Podrobnosti o požadavcích na připojení k síti najdete v [dokumentu White pa
 
 **Pravidlo** |  **Podrobnosti** | **Značka služby**
 --- | --- | --- 
-Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají účtům úložiště ve zdrojové oblasti. | Pamì.\<název oblasti >.
-Povolení odchozího HTTPS: port 443 | Povolí rozsahy, které odpovídají Azure Active Directory (Azure AD).<br/><br/> Pokud se adresy Azure AD přidávají v budoucnu, potřebujete vytvořit nová pravidla skupiny zabezpečení sítě (NSG).  | Azureactivedirectory selhala
-Povolení odchozího HTTPS: port 443 | Povolí přístup k [Site Recovery koncovým bodům](https://aka.ms/site-recovery-public-ips) , které odpovídají cílovému umístění. 
+Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají účtům úložiště ve zdrojové oblasti. | Pamì.\<název oblasti >
+Povolení odchozího HTTPS: port 443 | Povolí rozsahy, které odpovídají Azure Active Directory (Azure AD).<br/><br/> Pokud se adresy Azure AD přidávají v budoucnu, potřebujete vytvořit nová pravidla skupiny zabezpečení sítě (NSG).  | AzureActiveDirectory
+Povolení odchozího HTTPS: port 443 | Povolí rozsahy, které odpovídají centru událostí v cílové oblasti. | EventsHub.\<název oblasti >
+Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají Azure Site Recovery  | AzureSiteRecovery
 
 #### <a name="target-region-rules"></a>Pravidla cílové oblasti
 
 **Pravidlo** |  **Podrobnosti** | **Značka služby**
 --- | --- | --- 
-Povolení odchozího HTTPS: port 443 | Povolte rozsahy, které odpovídají účtům úložiště v cílové oblasti. | Pamì.\<název oblasti >.
-Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají službě Azure AD.<br/><br/> Pokud se v budoucnu přidají adresy Azure AD, musíte vytvořit nová pravidla NSG.  | Azureactivedirectory selhala
-Povolení odchozího HTTPS: port 443 | Povolí přístup k [Site Recovery koncovým bodům](https://aka.ms/site-recovery-public-ips) , které odpovídají zdrojovému umístění. 
+Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají účtům úložiště v cílové oblasti. | Pamì.\<název oblasti >
+Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají službě Azure AD.<br/><br/> Pokud se v budoucnu přidají adresy Azure AD, musíte vytvořit nová pravidla NSG.  | AzureActiveDirectory
+Povolení odchozího HTTPS: port 443 | Povolí rozsahy, které odpovídají centru událostí ve zdrojové oblasti. | EventsHub.\<název oblasti >
+Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají Azure Site Recovery  | AzureSiteRecovery
 
 
 #### <a name="control-access-with-nsg-rules"></a>Řízení přístupu pomocí pravidel NSG

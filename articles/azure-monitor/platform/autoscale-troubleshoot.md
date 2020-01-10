@@ -4,12 +4,12 @@ description: Sledování problémů pomocí automatického škálování Azure p
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: effef22bea0b4224f67737fe1c34c9758749c093
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9780cf88070110c4efc13c477d65307aa3985fe5
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364437"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751328"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Řešení potíží s automatické škálování Azure
  
@@ -97,7 +97,7 @@ Na obrazovce nastavení automatického škálování přejděte na kartu **histo
 
 ## <a name="autoscale-resource-logs"></a>Automatické škálování protokolů prostředků
 
-Služba automatického škálování, která je stejná jako u jakéhokoli jiného prostředku Azure, poskytuje [protokoly prostředků](resource-logs-overview.md). Existují dvě kategorie protokolů.
+Služba automatického škálování, která je stejná jako u jakéhokoli jiného prostředku Azure, poskytuje [protokoly prostředků](platform-logs-overview.md). Existují dvě kategorie protokolů.
 
 - **Vyhodnocení automatického škálování** – modul automatického škálování zaznamenává záznamy protokolu pro každé vyhodnocení jedné podmínky pokaždé, když provede kontrolu.  Položka obsahuje podrobnosti o pozorovaných hodnotách metrik, vyhodnocených pravidlech a v případě, že výsledkem vyhodnocení je akce škálování nebo ne.
 

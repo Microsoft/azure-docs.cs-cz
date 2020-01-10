@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/05/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: f08291282300f2081793c2db98547777db3187ea
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 4b57ac945e43abfebc21b1749a7d1737768ff0e8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977467"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770760"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-c"></a>Rychlý Start: vygenerujte miniaturu pomocí Počítačové zpracování obrazu REST API aC#
 
@@ -24,7 +24,7 @@ V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí REST API Poč�
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) nebo novější.
 - Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a `COMPUTER_VISION_ENDPOINT`v uvedeném pořadí.
@@ -61,7 +61,7 @@ namespace CSHttpClientSample
         // the GenerateThumbnail method endpoint
         static string uriBase = endpoint + "vision/v2.1/generateThumbnail";
 
-        static void Main()
+        static async Task Main()
         {
             // Get the path and filename to process from the user.
             Console.WriteLine("Thumbnail:");
@@ -73,7 +73,7 @@ namespace CSHttpClientSample
             {
                 // Call the REST API method.
                 Console.WriteLine("\nWait a moment for the results to appear.\n");
-                MakeThumbNailRequest(imageFilePath).Wait();
+                await MakeThumbNailRequest(imageFilePath);
             }
             else
             {

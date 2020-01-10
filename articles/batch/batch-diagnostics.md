@@ -14,17 +14,17 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 616c5df38131d1b28387bcdda02c08b3a6825fb4
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 9412107759e0aa068d982828d47b97822c09ae35
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530812"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748098"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch metriky, výstrahy a protokoly pro diagnostické hodnocení a monitorování
 
  
-Tento článek vysvětluje, jak monitorovat pomocí funkce účtu Batch [Azure Monitor](../azure-monitor/overview.md). Azure Monitor provádí sběr [metriky](../azure-monitor/platform/data-platform-metrics.md) a [diagnostické protokoly](../azure-monitor/platform/resource-logs-overview.md) pro prostředky v účtu Batch. Shromažďování a používání těchto dat různými způsoby, jak monitorovat účtu Batch a diagnostikovat problémy s. Můžete taky nakonfigurovat [upozornění na metriku](../azure-monitor/platform/alerts-overview.md) tak můžete dostávat upozornění na metriku dosáhne zadanou hodnotu. 
+Tento článek vysvětluje, jak monitorovat pomocí funkce účtu Batch [Azure Monitor](../azure-monitor/overview.md). Azure Monitor provádí sběr [metriky](../azure-monitor/platform/data-platform-metrics.md) a [diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md) pro prostředky v účtu Batch. Shromažďování a používání těchto dat různými způsoby, jak monitorovat účtu Batch a diagnostikovat problémy s. Můžete taky nakonfigurovat [upozornění na metriku](../azure-monitor/platform/alerts-overview.md) tak můžete dostávat upozornění na metriku dosáhne zadanou hodnotu. 
 
 ## <a name="batch-metrics"></a>Metriky služby batch
 
@@ -109,7 +109,7 @@ Ostatní volitelné cíle pro diagnostické protokoly:
 
     ![Diagnostika služby batch](media/batch-diagnostics/diagnostics-portal.png)
 
-Další možnosti Povolit shromažďování protokolů zahrnují: pomocí Azure monitoru na portálu můžete nakonfigurovat nastavení diagnostiky, použijte [šablony Resource Manageru](../azure-monitor/platform/diagnostic-settings-template.md), nebo pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure. Zobrazit [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](../azure-monitor/platform/resource-logs-overview.md).
+Další možnosti Povolit shromažďování protokolů zahrnují: pomocí Azure monitoru na portálu můžete nakonfigurovat nastavení diagnostiky, použijte [šablony Resource Manageru](../azure-monitor/platform/diagnostic-settings-template.md), nebo pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure. Zobrazit [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](../azure-monitor/platform/platform-logs-overview.md).
 
 
 ### <a name="access-diagnostics-logs-in-storage"></a>Protokoly diagnostiky přístup ve službě storage

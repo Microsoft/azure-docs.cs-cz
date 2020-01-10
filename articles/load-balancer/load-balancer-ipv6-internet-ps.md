@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: fb697003da8c0604b2ce1e8956fcd434014b5b82
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0294efb7510d4240cfdd6386c7f8bef1d4184538
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077059"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754472"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Začínáme vytvářet internetový nástroj pro vyrovnávání zatížení s protokolem IPv6 pomocí prostředí PowerShell pro Správce prostředků
 
@@ -55,13 +55,13 @@ Následující kroky ukazují, jak vytvořit internetový nástroj pro vyrovnáv
 
 Pro nasazení nástroje pro vyrovnávání zatížení vytvoříte a nakonfigurujete následující objekty:
 
-* Konfigurace front-endových IP adres – obsahuje veřejné IP adresy pro příchozí síťový provoz.
-* Back-endový fond adres – obsahuje síťová rozhraní, pomocí kterých virtuální počítače přijímají síťový provoz z nástroje pro vyrovnávání zatížení.
+* Konfigurace protokolu IP front-endu obsahuje veřejné IP adresy pro příchozí síťový provoz.
+* Fond back-end adres – obsahuje síťová rozhraní (nic), ve kterých virtuální počítače přijímají síťový provoz z nástroje pro vyrovnávání zatížení.
 * Pravidla vyrovnávání zatížení – obsahuje pravidla mapující veřejný port v nástroji pro vyrovnávání zatížení na port v back-endovém fondu adres.
 * Pravidla příchozího překladu adres (NAT) – obsahuje pravidla mapující veřejný port v nástroji pro vyrovnávání zatížení na port konkrétního virtuálního počítače v back-endovém fondu adres.
 * Testy – obsahuje testy stavu sloužící ke kontrole dostupnosti instancí virtuálních počítačů v back-endovém fondu adres.
 
-Další informace najdete v tématu [Podpora služby Load Balancer v Azure Resource Manageru](load-balancer-arm.md).
+Další informace najdete v tématu [Azure Load Balancer Components](load-balancer-overview.md#load-balancer-components).
 
 ## <a name="set-up-powershell-to-use-resource-manager"></a>Nastavení prostředí PowerShell pro použití Resource Manageru
 

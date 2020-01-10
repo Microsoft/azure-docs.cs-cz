@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: a50a7966af8f6453441ac19c9dafac064015f9a2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: f510879e7df967944f5e7a3deac308a430d53d0c
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607101"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771304"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Vytvoření fondu hostitelů pomocí PowerShellu
 
@@ -37,7 +37,7 @@ New-RdsHostPool -TenantName <tenantname> -Name <hostpoolname>
 Spusťte další rutinu pro vytvoření registračního tokenu pro autorizaci hostitele relace pro připojení k fondu hostitelů a jeho uložení do nového souboru na místním počítači. Pomocí parametru-ExpirationHours můžete určit, jak dlouho je registrační token platný.
 
 ```powershell
-New-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hostpoolname> -ExpirationHours <number of hours> | Select-Object -ExpandProperty Token > <PathToRegFile>
+New-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hostpoolname> -ExpirationHours <number of hours> | Select-Object -ExpandProperty Token | Out-File -FilePath <PathToRegFile>
 ```
 
 Potom spuštěním této rutiny přidejte Azure Active Directory uživatele do výchozí skupiny desktopových aplikací pro fond hostitelů.

@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: b6ec1952d730b6515032572def65806a1ccbc0b2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 386c44cbf7a86e1a1dc92b918d87d0d8c1e60dd2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810371"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744699"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Řešení potíží s výkonem Azure SQL Database s využitím Intelligent Insights
 
@@ -35,7 +35,7 @@ Intelligent Insights automaticky detekuje problémy s výkonem SQL Database a da
 | [Dosažení limitů prostředků](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | U monitorovaného předplatného se dosáhlo spotřebování dostupných prostředků (DTU), pracovních vláken v databázi nebo relací přihlášení k databázi. To má vliv na výkon SQL Database. | Spotřeba prostředků procesoru se blíží omezením spravovaných instancí. To má vliv na výkon databáze. |
 | [Zvýšení zatížení](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | Zjistilo se zvýšení zátěže nebo nepřetržité akumulace úloh v databázi. To má vliv na výkon SQL Database. | Bylo zjištěno zvýšení zátěže. To má vliv na výkon databáze. |
 | [Tlak paměti](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | Zaměstnanci, kteří požadovali paměť, musí čekat na přidělení paměti pro statisticky významné množství času. Nebo zvýšené akumulace pracovníků, kteří vyžádali nároky na paměť. To má vliv na výkon SQL Database. | Zaměstnanci, kteří požadují nároky na paměť, čekají na přidělení paměti ve statistickém významném časovém intervalu. To má vliv na výkon databáze. |
-| [Zamknut](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | Bylo zjištěno nadměrné zamykání databáze ovlivňující SQL Database výkon. | Bylo zjištěno nadměrné uzamčení databáze ovlivňující výkon databáze. |
+| [Uzamčení](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | Bylo zjištěno nadměrné zamykání databáze ovlivňující SQL Database výkon. | Bylo zjištěno nadměrné uzamčení databáze ovlivňující výkon databáze. |
 | [Zvýšená MAXDOP](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | Možnost Maximální stupeň paralelismu (MAXDOP) se změnila vlivem efektivity provádění dotazu. To má vliv na výkon SQL Database. | Možnost Maximální stupeň paralelismu (MAXDOP) se změnila vlivem efektivity provádění dotazu. To má vliv na výkon databáze. |
 | [PAGELATCH spory](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Více vláken se souběžně pokouší o přístup ke stejné stránce vyrovnávací paměti dat v paměti, což vede k nárůstu čekací doby a způsobila kolize PAGELATCH. To má vliv na výkon databáze SQL. | Více vláken se souběžně pokouší o přístup ke stejné stránce vyrovnávací paměti dat v paměti, což vede k nárůstu čekací doby a způsobila kolize PAGELATCH. To má vliv na výkon databáze. |
 | [Chybějící index](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | Byl zjištěn chybějící index ovlivňující výkon SQL Database. | Byl zjištěn chybějící index vlivu na výkon databáze. |
@@ -110,7 +110,7 @@ Můžete také snížit zatížení tím, že ho optimalizujete nebo distribuuje
 
 Další návrhy pro řešení potíží najdete v tématu [paměť udělující Meditation: příjemce záhadnými SQL Server paměti s mnoha názvy](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
 
-## <a name="locking"></a>Zamknut
+## <a name="locking"></a>Uzamčení
 
 ### <a name="what-is-happening"></a>Co se děje
 
@@ -188,7 +188,7 @@ Diagnostické protokoly výstupy dotazů pro dotazy, které byly identifikovány
 > Pro zajištění průběžné optimalizace výkonu SQL Database doporučujeme povolit [SQL Database automatické ladění](sql-database-automatic-tuning.md). Tato jedinečná funkce SQL Database integrovaných inteligentních funkcích nepřetržitě monitoruje vaši databázi SQL a automaticky ladí a vytváří indexy pro vaše databáze.
 >
 
-## <a name="new-query"></a>Nový dotaz
+## <a name="new-query"></a>New Query
 
 ### <a name="what-is-happening"></a>Co se děje
 
@@ -331,4 +331,4 @@ Intelligent Insights obvykle potřebuje jednu hodinu, než se provede analýza h
 - Naučte se [Intelligent Insights](sql-database-intelligent-insights.md) koncepty.
 - Použijte [protokol Intelligent Insights Azure SQL Database Performance Diagnostics](sql-database-intelligent-insights-use-diagnostics-log.md).
 - Monitorujte [Azure SQL Database pomocí Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
-- Naučte se [shromažďovat a využívat data protokolu z vašich prostředků Azure](../azure-monitor/platform/resource-logs-overview.md).
+- Naučte se [shromažďovat a využívat data protokolu z vašich prostředků Azure](../azure-monitor/platform/platform-logs-overview.md).

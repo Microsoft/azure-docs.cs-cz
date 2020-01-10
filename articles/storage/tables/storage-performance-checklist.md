@@ -8,18 +8,18 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: 588f9595dbe04b98cb8d70a33beb5740d812bd7c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 89581c8ae2fbdbb55a2abfbd527c8fdcf4b65761
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457628"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749548"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro úložiště tabulek
 
 Společnost Microsoft vyvinula řadu osvědčených postupů pro vývoj vysoce výkonných aplikací s využitím tabulkového úložiště. Tento kontrolní seznam popisuje klíčové postupy, které můžou vývojáři použít k optimalizaci výkonu. Při navrhování aplikace a celého procesu mějte na paměti tyto postupy.
 
-Azure Storage má cíle škálovatelnosti a výkonu pro kapacitu, rychlost transakcí a šířku pásma. Další informace o cílech Azure Storage škálovatelnosti najdete v tématu [Azure Storage škálovatelnost a výkonnostní cíle pro účty úložiště](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
+Azure Storage má cíle škálovatelnosti a výkonu pro kapacitu, rychlost transakcí a šířku pásma. Další informace o cílech Azure Storage škálovatelnosti najdete v tématu [škálovatelnost a výkonnostní cíle pro účty úložiště úrovně Standard](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json) a [škálovatelnost a výkonnostní cíle pro úložiště tabulek](scalability-targets.md).
 
 ## <a name="checklist"></a>Kontrolní seznam
 
@@ -289,5 +289,6 @@ Pokud provádíte dávkové vkládání a pak načítáte rozsahy entit dohromad
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Cíle škálovatelnosti a výkonnosti pro účty úložiště Azure Storage](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)
+- [Škálovatelnost a výkonnostní cíle pro úložiště tabulek](scalability-targets.md)
+- [Škálovatelnost a výkonnostní cíle pro účty úložiště úrovně Standard](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)
 - [Stavové a chybové kódy](/rest/api/storageservices/Status-and-Error-Codes2)

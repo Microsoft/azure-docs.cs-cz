@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 09/05/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d4fae87d999bd0f6b0b388613098a17c181dae0c
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 78440b8150a0992bed2e2a3e597fdac8e7a1c7b0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70392139"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749727"
 ---
-# <a name="latency-in-blob-storage"></a>Latence v úložišti objektů BLOB
+# <a name="latency-in-blob-storage"></a>Latence v úložišti objektů blob
 
 Latence, někdy označovaná jako doba odezvy, je doba, po kterou musí aplikace čekat na dokončení žádosti. Latence může mít přímý vliv na výkon aplikace. Nízká latence je často důležitá pro scénáře s lidmi ve smyčce, jako je například provádění transakcí kreditních karet nebo načítání webových stránek. Systémy, které potřebují zpracovávat příchozí události s vysokými sazbami, jako je protokolování telemetrie nebo události IoT, vyžadují také nízkou latenci. Tento článek popisuje, jak pochopit a měřit latenci pro operace s objekty blob bloku a jak navrhovat aplikace pro nízkou latenci.
 
@@ -39,7 +39,7 @@ Azure Storage poskytuje dvě metriky latence pro objekty blob bloku. Tyto metrik
 
 - **Latence serveru** měří interval z doby, kdy Azure Storage obdrží poslední paket požadavku, dokud se z Azure Storage nevrátí první paket odpovědi.
 
-Následující obrázek ukazuje **průměrnou latenci úspěšnosti e2e** a **průměrnou latenci úspěšného serveru** pro ukázkovou úlohu `Get Blob` , která volá operaci:
+Následující obrázek ukazuje **průměrnou latenci úspěšnosti e2e** a **průměrnou latenci úspěšného serveru** pro ukázkovou úlohu, která volá operaci `Get Blob`:
 
 ![Snímek obrazovky znázorňující metriky latence pro operaci získání objektu BLOB](media/storage-blobs-latency/latency-metrics-get-blob.png)
 
@@ -65,7 +65,7 @@ Stejně důležitá je síťové rozhraní a síťové přesměrování mezi kli
 
 Pro vyhodnocení latence nejprve vytvořte základní metriky pro váš scénář. Metriky standardních hodnot poskytují očekávanou latenci a latenci serveru v kontextu prostředí vaší aplikace, v závislosti na vašem profilu úlohy, nastavení konfigurace aplikace, klientských zdrojích, síťovém kanálu a dalších faktorech. Máte-li metriky standardních hodnot, můžete snadněji identifikovat neobvyklé srovnání normálních podmínek. Metriky směrného plánu také umožňují sledovat účinky změněných parametrů, jako je například konfigurace aplikace nebo velikosti virtuálních počítačů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Azure Storage škálovatelnost a výkonnostní cíle pro účty úložiště](../common/storage-scalability-targets.md)
-- [Kontrolní seznam pro výkon a škálovatelnost Azure Storage](../common/storage-performance-checklist.md)
+- [Škálovatelnost a výkonnostní cíle pro úložiště objektů BLOB](scalability-targets.md)
+- [Kontrolní seznam pro výkon a škálovatelnost pro úložiště objektů BLOB](storage-performance-checklist.md)

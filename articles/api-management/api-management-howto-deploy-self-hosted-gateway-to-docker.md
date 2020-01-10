@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: fc7e0f7e4e0e80a030a437bc4f0f13360595f32e
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b5acda30f7f4a01e1b7b6ac82652452c3c40e3bf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747706"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768499"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Nasazení samoobslužné brány Azure API Management do Docker
 
@@ -33,7 +33,7 @@ Tento článek popisuje kroky pro nasazení místní hostované brány Azure API
 - [Zřízení prostředku brány v instanci API Management](api-management-howto-provision-self-hosted-gateway.md)
 
 > [!NOTE]
-> Samoobslužná brána je zabalená jako kontejner Docker založený na systému Linux.
+> Samostatná hostská brána je zabalená jako kontejner Docker založený na platformě X86-64.
 
 ## <a name="deploy-the-self-hosted-gateway-to-docker"></a>Nasazení samoobslužné brány do Docker
 
@@ -57,7 +57,7 @@ CONTAINER ID        IMAGE                                                 COMMAN
 ```
 10. Vraťte se na Azure Portal a ověřte, že uzel Brána, který jste právě nasadili, hlásí stav v pořádku.
 
-![Stav brány](media/api-management-howto-deploy-self-hosted-gateway-to-docker/status.png)
+![stav brány](media/api-management-howto-deploy-self-hosted-gateway-to-docker/status.png)
 
 > [!TIP]
 > Pomocí příkazu <code>console docker container logs <gateway-name></code> můžete zobrazit snímek protokolu brány v místním prostředí.

@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: quickstart
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 6b3ead9eefd6f0d4c504cc7711ea4e03facf8edc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 12e79df4af2dab097a41cf8482d5a344080890cf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231511"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769693"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Vytvoření první trvalé funkce v jazyce C\#
 
@@ -26,7 +26,7 @@ V tomto článku se naučíte, jak pomocí sady Visual Studio 2019 místně vytv
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Nainstalujte [Visual Studio 2019](https://visualstudio.microsoft.com/vs/). Ujistěte se, že je nainstalovaná také úloha **vývoj pro Azure** . Visual Studio 2017 také podporuje vývoj Durable Functions, ale uživatelské rozhraní a postup se liší.
+* Nainstalujte sadu [Visual Studio 2019](https://visualstudio.microsoft.com/vs/). Ujistěte se, že je nainstalovaná také úloha **vývoj pro Azure** . Visual Studio 2017 také podporuje vývoj Durable Functions, ale uživatelské rozhraní a postup se liší.
 
 * Ověřte, že je nainstalovaný a spuštěný [emulátor Azure Storage](../../storage/common/storage-use-emulator.md) .
 
@@ -34,9 +34,9 @@ Pro absolvování tohoto kurzu potřebujete:
 
 ## <a name="create-a-function-app-project"></a>Vytvoření projektu aplikace funkcí
 
-Šablona Azure Functions vytvoří projekt, který se dá publikovat do aplikace Function App v Azure. Aplikace funkcí umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků.
+Šablona Azure Functions vytvoří projekt, který se dá publikovat do aplikace Function App v Azure. Aplikace Function App umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování, škálování a sdílení prostředků.
 
-1. V sadě Visual Studio zvolte v nabídce **Soubor** možnost  > Nový**Projekt**.
+1. V sadě Visual Studio zvolte v nabídce **Soubor** možnost **Nový** > **Projekt**.
 
 1. V dialogovém okně **Přidat nový projekt** vyhledejte `functions`, zvolte šablonu **Azure Functions** a vyberte **Další**. 
 
@@ -51,7 +51,7 @@ Pro absolvování tohoto kurzu potřebujete:
     | Nastavení      | Navrhovaná hodnota  | Popis                      |
     | ------------ |  ------- |----------------------------------------- |
     | **Verze** | Azure Functions 2,0 <br />(.NET Core) | Vytvoří projekt funkce, který používá běhový modul verze 2,0 Azure Functions, který podporuje .NET Core. Azure Functions 1,0 podporuje .NET Framework. Další informace najdete v tématu s [přehledem verzí modulu runtime Azure Functions](../functions-versions.md).   |
-    | **Šablona** | Obsahovat | Vytvoří prázdnou aplikaci Function App. |
+    | **Šablona** | Empty | Vytvoří prázdnou aplikaci Function App. |
     | **Účet úložiště**  | Emulátor úložiště | Pro trvalou správu stavu funkce se vyžaduje účet úložiště. |
 
 4. Vyberte **vytvořit** k vytvoření prázdného projektu funkce. Tento projekt má základní konfigurační soubory potřebné ke spuštění vašich funkcí.
@@ -75,7 +75,7 @@ Následující kroky používají šablonu k vytvoření trvalého kódu funkce 
 
 Do aplikace se přidá nová trvalá funkce.  Otevřete nový soubor. cs pro zobrazení obsahu. Tato trvalá funkce je příklad řetězení jednoduchých funkcí s následujícími metodami:  
 
-| Metoda | functionName | Popis |
+| Metoda | FunctionName | Popis |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `<file-name>` | Spravuje trvalou orchestraci. V tomto případě se orchestrace spustí, vytvoří seznam a přidá výsledek tří volání funkcí do seznamu.  Po dokončení tří volání funkce vrátí seznam. |
 | **`SayHello`** | `<file-name>_Hello` | Funkce vrátí Hello. Jedná se o funkci, která obsahuje orchestraci obchodní logiky. |

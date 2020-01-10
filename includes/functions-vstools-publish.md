@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/02/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: b96586c801acfc0419b80fa725a468dcb896f79e
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 327a7689e0297002f1ce3f48d2bd367104277680
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70197120"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769692"
 ---
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**.
 
@@ -30,14 +30,14 @@ ms.locfileid: "70197120"
 
 3. Vyberte **Publikovat**. Pokud jste se ještě přihlásili ke svému účtu Azure ze sady Visual Studio, vyberte **Přihlásit**se. Můžete si také vytvořit bezplatný účet Azure.
 
-4. **V App Service: Vytvořte nový** dialog, použijte nastavení **hostování** , jak je uvedeno v tabulce pod obrázkem:
+4. V dialogovém okně **Azure App Service: vytvořit nové** použijte nastavení **hostování** , jak je uvedeno v tabulce pod obrázkem:
 
-    ![Dialogové okno Vytvořit službu App Service](./media/functions-vstools-publish/functions-visual-studio-publish.png)
+    ![Dialogové okno Vytvoření služby App Service](./media/functions-vstools-publish/functions-visual-studio-publish.png)
 
     | Nastavení      | Navrhovaná hodnota  | Popis                                |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Název** | Globálně jedinečný název | Název jednoznačně identifikující novou aplikaci funkcí. Platné znaky jsou `a-z`, `0-9` a `-`. |
-    | **Předplatné** | Vaše předplatné | Předplatné Azure, které se má použít. |
+    | **Předplatné** | Zvolte vaše předplatné. | Předplatné Azure, které se má použít. |
     | **[Skupina prostředků](../articles/azure-resource-manager/resource-group-overview.md)** | myResourceGroup |  Název skupiny prostředků, ve které chcete vytvořit aplikaci funkcí. Pokud chcete vytvořit novou skupinu prostředků, zvolte **Nová**.|
     | **[Plán hostování](../articles/azure-functions/functions-scale.md)** | Plán Consumption | Až vyberete **Nový** a vytvoříte plán bez serveru, nezapomeňte zvolit **spotřebu** v nabídce **Velikost** . Zvolte také [umístění](https://azure.microsoft.com/regions/) v **oblasti** ve své blízkosti nebo v blízkosti jiných služeb, které vaše funkce využívají. Pokud používáte jiný plán než **Spotřeba**, musíte zajistit správu [škálování vaší aplikace funkcí](../articles/azure-functions/functions-scale.md).  |
     | **[Azure Storage](../articles/storage/common/storage-quickstart-create-account.md)** | Účet úložiště pro obecné účely | Modul runtime Functions vyžaduje účet úložiště Azure. Pokud chcete vytvořit účet úložiště pro obecné účely, vyberte **Nový** . Můžete také použít existující účet, který splňuje [požadavky na účet úložiště](../articles/azure-functions/functions-scale.md#storage-account-requirements).  |

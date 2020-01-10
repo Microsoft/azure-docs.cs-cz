@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: d3959b9a86ccc2d42cbf7bd188ce86bf4b7a2e63
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 14946a05f021a9b155fd9a9621f73bde980970fa
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670094"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750461"
 ---
 # <a name="deployment-best-practices"></a>Osvědčené postupy nasazení
 
@@ -24,7 +24,7 @@ Každý vývojový tým má jedinečné požadavky, které můžou zajistit obt�
 
 Zdroj nasazení je umístění vašeho kódu aplikace. U produkčních aplikací je zdrojem nasazení obvykle úložiště hostované softwarem pro řízení verzí, jako je [GitHub, Bitbucket nebo Azure Repos](deploy-continuous-deployment.md). Ve scénářích vývoje a testování může být zdrojem nasazení [projekt na vašem místním počítači](deploy-local-git.md). App Service také podporuje [OneDrive a složky Dropboxu](deploy-content-sync.md) jako zdroje nasazení. I když cloudové složky můžou snadno začít pracovat s App Service, obvykle se tento zdroj nedoporučuje používat pro produkční aplikace na podnikové úrovni. 
 
-### <a name="build-pipeline"></a>Kanál sestavení
+### <a name="build-pipeline"></a>Kanál buildu
 
 Jakmile se rozhodnete pro zdroj nasazení, je dalším krokem výběr kanálu sestavení. Kanál sestavení přečte zdrojový kód ze zdroje nasazení a provede řadu kroků (například kompilování kódu, minifikace HTML a JavaScriptu, spuštění testů a balení komponent) k získání aplikace ve stavu spustitelný. Konkrétní příkazy spouštěné kanálem sestavení závisí na vašem jazykovém zásobníku. Tyto operace lze spustit na serveru sestavení, například Azure Pipelines, nebo v místním prostředí.
 
@@ -66,3 +66,12 @@ V kombinaci s [sloty nasazení](deploy-staging-slots.md) vždy používejte mís
 ### <a name="high-cpu-or-memory"></a>Vysoký procesor nebo paměť
 
 Pokud váš App Service plán používá více než 90% dostupného procesoru nebo paměti, může mít základní virtuální počítač potíže se zpracováním nasazení. Pokud k tomu dojde, dočasná velikost počtu instancí proveďte v případě nasazení. Po dokončení nasazení můžete počet instancí vrátit do předchozí hodnoty.
+
+Další informace o osvědčených postupech najdete v [App Service Diagnostics](https://docs.microsoft.com/azure/app-service/overview-diagnostics) , kde najdete osvědčené postupy, které jsou specifické pro váš prostředek.
+
+- Přejděte do webové aplikace v [Azure Portal](https://portal.azure.com).
+- Klikněte na **Diagnostika a řešení problémů** v levém navigačním panelu, který otevře diagnostiku App Service.
+- Vyberte dlaždici domovské stránky s **doporučenými postupy** .
+- Pokud chcete zobrazit aktuální stav aplikace v souvislosti s těmito osvědčenými postupy, klikněte na **osvědčené postupy pro dostupnost & výkon** nebo **osvědčené postupy pro optimální konfiguraci** .
+
+Tento odkaz můžete použít také k přímému otevření App Service diagnostiky pro váš prostředek: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`.

@@ -1,5 +1,5 @@
 ---
-title: Co je zřizování cloudu Azure AD Connect. | Microsoft Docs
+title: Co je zřizování cloudu Azure AD Connect. | Dokumentace Microsoftu
 description: Popisuje Azure AD Connect zřízení cloudu.
 services: active-directory
 author: billmath
@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10c778025c3def384f621cb5311d0d71ccb457d7
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 4ef73abdd6bfdadd0078c30ad1b0145cdae41722
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951118"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767599"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Co je zřízení cloudu Azure AD Connect?
 Zřizování cloudu Azure AD Connect je nový agent Microsoftu navržený tak, aby splnil a splnil vaše hybridní cíle identity pro synchronizaci uživatelů, skupin a kontaktů do Azure AD.  Dá se použít společně Azure AD Connect synchronizaci a nabízí následující výhody:
@@ -61,6 +61,7 @@ Následující tabulka poskytuje srovnání mezi Azure AD Connect a Azure AD Con
 | Podpora zpětného zápisu (hesla, zařízení, skupiny) |● | |
 | Podpora Azure AD Domain Services|● | |
 | Konfigurace hybridního serveru Exchange |● | |
+| Podpora více než 50 000 objektů na doménu AD |● | |
 
 ## <a name="next-steps"></a>Další kroky 
 

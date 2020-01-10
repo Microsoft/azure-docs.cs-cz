@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/02/2019
+ms.date: 01/08/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c265e03cfea2ebe8bbe55a63ade04bffd06360e0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9582881626f58ebbbae5648fe5d4b46e14fd5850
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462244"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763316"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Seznam přiřazení rolí pomocí Azure RBAC a Azure Portal
 
@@ -40,6 +40,22 @@ Nejjednodušší způsob, jak zobrazit role přiřazené uživateli nebo skupin�
     ![Přiřazení rolí pro uživatele](./media/role-assignments-list-portal/azure-resources-user.png)    
 
 1. Chcete-li změnit předplatné, klikněte na seznam **předplatných** .
+
+## <a name="list-owners-of-a-subscription"></a>Seznam vlastníků předplatného
+
+Uživatelé, kterým byla přiřazena role [vlastníka](built-in-roles.md#owner) pro předplatné, můžou spravovat všechno v rámci předplatného. Pomocí těchto kroků můžete zobrazit seznam vlastníků předplatného.
+
+1. V Azure Portal klikněte na **všechny služby** a pak na **předplatná**.
+
+1. Klikněte na předplatné, pro které chcete zobrazit seznam vlastníků.
+
+1. Klikněte na **Řízení přístupu (IAM)** .
+
+1. Kliknutím na kartu **Přiřazení rolí** zobrazte všechna přiřazení rolí pro toto předplatné.
+
+1. Přejděte do části **vlastníci** a zobrazte všechny uživatele, kterým byla přiřazena role vlastníka pro toto předplatné.
+
+   ![Řízení přístupu k předplatnému – karta přiřazení rolí](./media/role-assignments-list-portal/access-control-role-assignments-subscription.png)
 
 ## <a name="list-role-assignments-at-a-scope"></a>Seznam přiřazení rolí v oboru
 

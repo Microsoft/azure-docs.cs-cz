@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: fe0eb6c2305dd01d8ff3df5be7056cbeae92fff2
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 98c76b2be6a5cc801f9e7b31357cbeb158a966fe
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74762713"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771287"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Užitečné prostředky pro práci s Sentinel Azure
 
@@ -32,7 +32,7 @@ Konektory Azure Logic Apps: <https://docs.microsoft.com/connectors/>
 
 
 ## <a name="auditing-and-reporting"></a>Auditování a vytváření sestav
-Protokoly auditu Azure Sentinel se udržují v [protokolech aktivit Azure](../azure-monitor/platform/activity-logs-overview.md).
+Protokoly auditu Azure Sentinel se udržují v [protokolech aktivit Azure](../azure-monitor/platform/platform-logs-overview.md).
 
 Můžete auditovat následující podporované operace.
 
@@ -40,12 +40,10 @@ Můžete auditovat následující podporované operace.
 |----|----|
 |Vytvořit nebo aktualizovat sešit  |Microsoft. Insights/sešity|
 |Odstranit sešit    |Microsoft. Insights/sešity|
-|Nastavit pracovní postup   |Microsoft. Logic/Workflows|
-|Odstranit pracovní postup    |Microsoft. Logic/Workflows|
+|Nastavit pracovní postup   |Microsoft.Logic/workflows|
+|Odstranit pracovní postup    |Microsoft.Logic/workflows|
 |Vytvořit uložené výsledky hledání    |Microsoft. OperationalInsights/pracovní prostory/savedSearches|
 |Odstranit uložené výsledky hledání    |Microsoft. OperationalInsights/pracovní prostory/savedSearches|
-|Nastavit řídicí panel  |Microsoft. Portal/řídicí panely|
-|Odstranit řídicí panel   |Microsoft. Portal/řídicí panely|
 |Aktualizovat pravidla upozornění |Microsoft. SecurityInsights/alertRules|
 |Odstranit pravidla výstrah |Microsoft. SecurityInsights/alertRules|
 |Aktualizace akcí reakce na pravidlo upozornění |Microsoft. SecurityInsights/alertRules|

@@ -8,17 +8,17 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/30/2019
-ms.openlocfilehash: 176f0f197db3393c4ef8c37d05234fce41a494e1
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 167316eca1f85530a040d4543f98ae34a9fb93c6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563203"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754068"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Zobrazení znalostní báze s Průzkumník služby Storage
 
 > [!IMPORTANT] 
-> Znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
+> znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
 
 V tomto článku se naučíte, jak se připojit k znalostnímu obchodu a prozkoumat ho pomocí Průzkumník služby Storage v Azure Portal.
 
@@ -50,7 +50,7 @@ Chcete-li spustit dotazy, klikněte na příkaz **dotaz** na panelu příkazů a
 
 ## <a name="clean-up"></a>Vyčištění
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás můžou stát peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků – tím odstraníte celou sadu prostředků najednou.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás můžou stát peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, abyste odstranili celou sadu prostředků.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 
@@ -62,4 +62,4 @@ Připojte si toto úložiště znalostní báze k Power BI pro hlubší analýzu
 
 > [!div class="nextstepaction"]
 > [Připojení pomocí Power BI](knowledge-store-connect-power-bi.md)
-> [Vytvoření úložiště znalostí v REST](knowledge-store-howto.md)
+> [Vytvoření úložiště znalostí v REST](knowledge-store-create-rest.md)

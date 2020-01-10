@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 09/25/2019
-ms.openlocfilehash: c4c34a3706e576f97c6822ffe9f8c8a30500095c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2020
+ms.openlocfilehash: f90ece0f6aa95dd643cca65b42e284faba8e5be8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437633"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746994"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Kurz: migrace MongoDB k rozhraní API Azure Cosmos DB pro MongoDB v režimu offline pomocí DMS
 
@@ -39,7 +39,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 
 * [Dokončete kroky před migrací](../cosmos-db/mongodb-pre-migration.md) , například odhad propustnosti, výběr klíče oddílu a zásady indexování.
 * [Vytvořte rozhraní API Azure Cosmos DB pro účet MongoDB](https://ms.portal.azure.com/#create/Microsoft.DocumentDB).
-* Vytvořte Azure Virtual Network (VNet) pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který zajišťuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Další informace o vytvoření virtuální sítě najdete v dokumentaci k [Virtual Network](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlý Start s podrobnými údaji.
+* Vytvořte Microsoft Azure Virtual Network pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který zajišťuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Další informace o vytváření virtuálních sítí najdete v [dokumentaci k Virtual Network](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlý Start s podrobnými údaji.
 
     > [!NOTE]
     > Pokud při instalaci virtuální sítě používáte ExpressRoute s partnerským vztahem k síti Microsoftu, přidejte do podsítě, ve které se služba zřídí, tyto [koncové body](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) služby:
@@ -50,7 +50,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
     >
     > Tato konfigurace je nezbytná, protože Azure Database Migration Service nemá připojení k Internetu.
 
-* Zajistěte, aby pravidla skupiny zabezpečení sítě (NSG) ve vaší virtuální síti neblokovala následující komunikační porty: 53, 443, 445, 9354 a 10000-20000. Další podrobnosti o filtrování přenosů Azure VNet NSG najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+* Zajistěte, aby pravidla skupiny zabezpečení sítě (NSG) ve virtuální síti neblokovala následující komunikační porty: 53, 443, 445, 9354 a 10000-20000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 * Otevřete bránu Windows Firewall, abyste povolili Azure Database Migration Service přístup ke zdrojovému serveru MongoDB, který je ve výchozím nastavení port TCP 27017.
 * Pokud používáte zařízení brány firewall před zdrojovými databázemi, budete možná muset přidat pravidla firewallu, která Azure Database Migration Service umožní přístup ke zdrojovým databázím pro migraci.
 
@@ -84,7 +84,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 
 5. Vyberte existující virtuální síť nebo vytvořte novou.
 
-    Virtuální síť poskytuje Azure Database Migration Service s přístupem ke zdrojové instanci MongoDB a cílovým Azure Cosmos DBmu účtu.
+    Virtuální síť poskytuje Azure Database Migration Service s přístupem ke zdrojové instanci MongoDB a cílovému Azure Cosmos DBmu účtu.
 
     Další informace o tom, jak vytvořit virtuální síť v Azure Portal, najdete v článku [vytvoření virtuální sítě pomocí Azure Portal](https://aka.ms/DMSVnet).
 
@@ -134,7 +134,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
      Tento připojovací řetězec SAS kontejneru objektů BLOB najdete v Azure Storage Exploreru. Vytvořením SAS pro příslušný kontejner získáte adresu URL ve výše požadovaném formátu.
      
-     Na základě informací o výpisu typu ve službě Azure Storage se taky řiďte následujícími podrobnostmi.
+     V závislosti na informacích o výpisu typu v Azure Storage mějte na paměti následující podrobnosti.
 
      * V případě výpisů BSON musí být data v kontejneru objektů BLOB ve formátu bsondump, aby byly datové soubory umístěny do složek pojmenovaných po obsahujících databázích ve formátu Collection. bson. Soubory metadat (pokud existují) by měly být pojmenovány pomocí Format *Collection*. Metadata. JSON.
 

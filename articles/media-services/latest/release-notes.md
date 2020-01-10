@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: 654787c34c6ceae51f1e1ce500193f73189f8935
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0f2eabf0167865333131e0f8e5b0c4ccb409e40e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427078"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771236"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
@@ -61,7 +61,7 @@ Přidání podpory pro následující nové doporučené partnerské kodéry pro
 - [Restream.io](https://restream.io/)
 
 ### <a name="file-encoding-enhancements"></a>Vylepšení kódování souborů
-
+- Nyní je k dispozici nová předvolba kódování s podporou obsahu. Vytváří sadu rychlostmi zarovnaných na skupinu GOP pomocí kódování s ohledem na obsah. Vzhledem k jakémukoli vstupnímu obsahu služba provádí počáteční odlehčenou analýzu vstupního obsahu. Tyto výsledky používá k určení optimálního počtu vrstev, vhodné přenosové rychlosti a nastavení rozlišení pro doručování pomocí adaptivního streamování. Tato předvolba je zvláště platná pro videa s nízkou složitostí a středními složitostmi, kde výstupní soubory jsou nižší, ale kvalita, která uživatelům nabízí dobré prostředí. Výstup bude obsahovat soubory MP4 se zakládaným videem a zvukem. Další informace najdete v tématu o [otevřených specifikacích rozhraní API](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json).
 - Vylepšený výkon a multithreading pro opětovné Sizer v Media Encoder Standard. Za určitých podmínek by měl zákazník vidět zvýšení výkonu mezi 5-40% kódováním VOD. Obsah s nízkou složitostí kódovaný do více přenosových rychlostí uvidí nejvyšší zvýšení výkonu. 
 - Kódování standard teď při použití nastavení skupinu GOP založeného na čase udržuje regulární skupinu GOP tempo pro obsah VFR (Variable snímkové frekvence) během kódování VOD.  To znamená, že zákazník, který posílá smíšený obsah snímků, který se mezi 15-30 FPS může zobrazit například, by měl vidět normální skupinu GOP vzdálenosti vypočítané na výstupu pro streamování souborů MP4 s adaptivní přenosovou rychlostí. Tím se zvýší schopnost plynule přepínat mezi stopami při doručování přes HLS nebo POMLČKy. 
 -  Vylepšená synchronizace AV pro VFR (variabilní snímková frekvence) zdrojového obsahu

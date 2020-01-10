@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b65cf26bcea628f784eb086d1b9c88febade25f6
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 0101573675d96694ee94c45288342dad8183e7fe
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74829077"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772999"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Jaký je rozdíl mezi bránou virtuální sítě Azure (VPN Gateway) a bránou VPN Azure Virtual WAN?
 
@@ -22,6 +22,9 @@ Virtual WAN poskytuje možnosti připojení typu Site-to-Site ve velkém měří
 ### <a name="how-is-virtual-wan-different-from-an-azure-virtual-network-gateway"></a>Jak se virtuální síť WAN liší od brány virtuální sítě Azure?
 
 SÍŤ VPN brány virtuální sítě je omezená na 30 tunelů. Pro připojení byste měli pro rozsáhlé sítě VPN používat Virtual WAN. Můžete připojit až 1 000 připojení větví na oblast (virtuální rozbočovač) s agregací 20 GB/s na jeden hub. Připojení je tunel typu aktivní-aktivní z místního zařízení VPN do virtuálního rozbočovače. Můžete mít jeden rozbočovač na oblast, což znamená, že můžete připojit více než 1 000 větví napříč rozbočovači.
+
+### <a name="what-is-a-virtual-wan-gateway-scale-unit"></a>Co je jednotka škálování služby Virtual WAN
+Jednotka škálování je jednotka definovaná k výběru agregované propustnosti brány ve virtuálním rozbočovači. 1 jednotka škálování sítě VPN = 500 MB/s. 1 jednotka škálování ExpressRoute = 2 GB/s. Příklad: 10 jednotek škálování sítě VPN by znamenalo 500 MB/s × 10 GB/s.
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported"></a>Které poskytovatele zařízení (virtuální partneři sítě WAN) jsou podporované?
 
@@ -111,9 +114,11 @@ Jednoduchá konfigurace jedné virtuální sítě WAN s jedním rozbočovačem a
 
 Virtuální síť můžete připojit v jiné oblasti, než je vaše virtuální síť WAN.
 
-### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other"></a>Mohou paprskové virtuální sítě připojené k virtuálnímu rozbočovači vzájemně komunikovat?
+### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other-v2v-transit"></a>Můžou virtuální sítě připojení k virtuálnímu rozbočovači komunikovat mezi sebou (V2V tranzit)?
 
-Ano. Standard Virtual WAN podporuje přenos přes síť VNet přes síť VNet přes virtuální síť WAN, ke které jsou virtuální sítě připojené. V terminologii Virtual WAN se tyto cesty označují jako "místní virtuální síť WAN" pro virtuální sítě připojené k virtuálnímu rozbočovači WAN v rámci jedné oblasti a "globální virtuální síť WAN" pro virtuální sítě připojené prostřednictvím několika virtuálních rozbočovačů WAN na dvě nebo víc. regionu. Transitní virtuální sítě podporuje až 3 GB/s propustnost během veřejné verze Preview. Propustnost se rozšíří, když globální přenos dostane GA.   
+Ano. Standard Virtual WAN podporuje přenos přes síť VNet přes síť VNet přes virtuální síť WAN, ke které jsou virtuální sítě připojené. V terminologii Virtual WAN se tyto cesty označují jako "místní virtuální síť WAN" pro virtuální sítě připojené k virtuálnímu rozbočovači WAN v rámci jedné oblasti a "globální virtuální síť WAN" pro virtuální sítě připojené prostřednictvím několika virtuálních rozbočovačů WAN na dvě nebo víc. regionu. Transitní virtuální sítě podporuje až 3 GB/s propustnost během veřejné verze Preview. Propustnost se rozšíří, když globální přenos dostane GA.
+
+Poznámka: V2V Transit Preview vyžaduje, aby byl ve virtuálním rozbočovači nasazený rozhraní VPN GS, aby bylo možné aktivovat elementy směrování, které se mají spustit. Tento GS VPN se nepoužívá pro cestu k přenosu V2V. Toto je známé omezení a v době V2V GA se odebere. VPN Gateway můžete odstranit v středech až po jejich úplném spuštění, protože není potřeba pro funkce přenosu V2V. 
 
 V některých scénářích může být paprskový virtuální sítě také přímo navzájem partnerským vztahem s použitím [Virtual Network partnerských vztahů](../articles/virtual-network/virtual-network-peering-overview.md) kromě místního nebo globálního přenosu virtuální sítě WAN. V takovém případě má partnerský vztah virtuálních sítí přednost před přenosným připojením přes virtuální síť WAN. 
 

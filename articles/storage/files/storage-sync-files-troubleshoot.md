@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/8/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 861d62f40dc9d8ca2c80e295495df8538ea7cd8d
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: f60d9714db71325bd9c67cae6e2f82d54f8e5eb3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659538"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75753923"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -122,6 +122,9 @@ K této chybě dochází v případě, že je cesta ke koncovému bodu serveru n
 <a id="-2147024894"></a>**Vytvoření koncového bodu serveru se nezdařilo, došlo k této chybě: "MgmtServerJobFailed" (kód chyby:-2147024894 nebo 0x80070002)**  
 K této chybě dochází v případě, že zadaná cesta ke koncovému bodu serveru není platná. Ověřte, že zadaná cesta ke koncovému bodu serveru odpovídá místně připojenému svazku NTFS. Poznámka: Azure File Sync nepodporuje namapované jednotky jako cestu koncového bodu serveru.
 
+<a id="-2134375640"></a>**Vytvoření koncového bodu serveru se nezdařilo, došlo k této chybě: "MgmtServerJobFailed" (kód chyby:-2134375640 nebo 0x80c80328)**  
+K této chybě dochází, pokud zadaná cesta koncového bodu serveru není svazkem NTFS. Ověřte, že zadaná cesta ke koncovému bodu serveru odpovídá místně připojenému svazku NTFS. Poznámka: Azure File Sync nepodporuje namapované jednotky jako cestu koncového bodu serveru.
+
 <a id="-2134347507"></a>**Vytvoření koncového bodu serveru se nezdařilo, došlo k této chybě: "MgmtServerJobFailed" (kód chyby:-2134347507 nebo 0x80c8710d)**  
 K této chybě dochází, protože Synchronizace souborů Azure nepodporuje koncové body serveru na svazcích, které obsahují komprimovanou složku s informacemi o systémovém svazku. Pokud chcete tento problém vyřešit, dekomprimujte složku s informacemi o systémovém svazku. Pokud je složka s informacemi o systémovém svazku jedinou komprimovanou složkou na svazku, postupujte následovně:
 
@@ -172,6 +175,7 @@ Na serveru, na kterém se zobrazuje stav "zobrazeno offline" na portálu, se pod
 - Pokud byl **dokončen GetNextJob se stavem:-2134347756** , server nebude schopen komunikovat se službou Azure File Sync z důvodu brány firewall nebo proxy serveru. 
     - Pokud je server za bránou firewall, ověřte, že je povolený odchozí port 443. Pokud brána firewall omezuje provoz do konkrétních domén, zkontrolujte, že jsou dostupné domény uvedené v [dokumentaci](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) k bráně firewall.
     - Pokud je server za proxy, nakonfigurujte nastavení proxy serveru na úrovni počítače nebo aplikace podle kroků v [dokumentaci k](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy)proxy serveru.
+    - Pomocí rutiny Test-StorageSyncNetworkConnectivity Zkontrolujte síťové připojení k koncovým bodům služby. Další informace najdete v tématu [Test připojení k síti koncových bodů služby](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#test-network-connectivity-to-service-endpoints).
 
 - Pokud byl **dokončen GetNextJob se stavem:-2134347764** , server nebude schopen komunikovat se službou Azure File Sync z důvodu vypršení platnosti nebo odstranění certifikátu.  
     - Spusťte na serveru následující příkaz PowerShellu pro resetování certifikátu použitého pro ověřování:

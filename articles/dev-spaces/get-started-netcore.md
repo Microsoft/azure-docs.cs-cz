@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: V tomto kurzu se dozvíte, jak používat Azure Dev Spaces a Visual Studio Code k ladění a rychlé iteraci aplikace .NET Core ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: 634206523972c7bc78ba818688bc342fe66885d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fccec69999be653786e59e2d19728b5e232b6849
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438558"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771151"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>Vytvoření Kubernetesho vývojového prostoru: Visual Studio Code a .NET Core s Azure Dev Spaces
 
@@ -254,4 +254,4 @@ Aktualizujte webovou aplikaci v prohlížeči a přejděte na stránku O aplikac
 > [Další informace o vývoji více služeb](multi-service-netcore.md)
 
 
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

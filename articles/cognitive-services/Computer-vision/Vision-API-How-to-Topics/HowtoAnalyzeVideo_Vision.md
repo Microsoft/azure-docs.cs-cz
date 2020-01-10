@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: f4410d9cab5677327d2950dfdc1a093140f31708
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 4855451136edfe86baaace48e2582fc7080a9b12
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102279"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770369"
 ---
 # <a name="analyze-videos-in-near-real-time"></a>Analýza videí téměř v reálném čase
 
@@ -144,7 +144,7 @@ while (true)
 
 Abychom vám pomohli co nejrychleji začít pracovat s vaší aplikací, implementovali jsme systém, který je popsaný v předchozí části. Má být dostatečně flexibilní, aby vyhovovalo mnoha scénářům, a přitom je snadné ho používat. Chcete-li získat přístup k kódu, přejděte na stránku [Ukázka analýzy snímků videa](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) na GitHubu.
 
-Knihovna obsahuje `FrameGrabber` třídu, která implementuje dříve popisovaný systém pro zákazníka ke zpracování snímků videa z webové kamery. Uživatelé mohou zadat přesný tvar volání rozhraní API a třída používá události, aby mohl volající kód zjistit, kdy se získá nový rámec, nebo když je k dispozici nový výsledek analýzy.
+Knihovna obsahuje třídu `FrameGrabber`, která implementuje dříve popisovaný systém pro zákazníka ke zpracování snímků videa z webové kamery. Uživatelé mohou zadat přesný tvar volání rozhraní API a třída používá události, aby mohl volající kód zjistit, kdy se získá nový rámec, nebo když je k dispozici nový výsledek analýzy.
 
 Abychom se seznámili s některými možnostmi, poskytovali jsme dvě ukázkové aplikace, které knihovnu používají. 
 
@@ -164,7 +164,7 @@ namespace BasicConsoleSample
         const string ApiKey = "<your API key>";
         const string Endpoint = "https://<your API region>.api.cognitive.microsoft.com";
 
-        private static void Main(string[] args)
+        private static async Task Main(string[] args)
         {
             // Create grabber.
             FrameGrabber<DetectedFace[]> grabber = new FrameGrabber<DetectedFace[]>();
@@ -205,14 +205,14 @@ namespace BasicConsoleSample
             grabber.TriggerAnalysisOnInterval(TimeSpan.FromMilliseconds(3000));
 
             // Start running in the background.
-            grabber.StartProcessingCameraAsync().Wait();
+            await grabber.StartProcessingCameraAsync();
 
             // Wait for key press to stop.
             Console.WriteLine("Press any key to stop...");
             Console.ReadKey();
 
             // Stop, blocking until done.
-            grabber.StopProcessingAsync().Wait();
+            await grabber.StopProcessingAsync();
         }
     }
 }

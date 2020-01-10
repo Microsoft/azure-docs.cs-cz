@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 09/10/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9d8efce09c2981e4ee256228d4792bcf97172e6c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d7f22e5042f301d7c16573318b6ddd1585f1e350
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75366409"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769995"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilace konfigurací DSC v konfiguraci stavu Azure Automation
 
@@ -39,26 +39,26 @@ Konfigurace Konfigurace požadovaných stavů (DSC) můžete zkompilovat dvěma 
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Pomocí [`Start-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/start-azurermautomationdsccompilationjob) můžete začít kompilovat pomocí prostředí Windows PowerShell. Následující vzorový kód spustí kompilaci konfigurace DSC s názvem **SampleConfig**.
+Pomocí [`Start-AzAutomationDscCompilationJob`](/powershell/module/az.automation/start-azautomationdsccompilationjob) můžete začít kompilovat pomocí prostředí Windows PowerShell. Následující vzorový kód spustí kompilaci konfigurace DSC s názvem **SampleConfig**.
 
 ```powershell
-Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
+Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
 ```
 
-`Start-AzureRmAutomationDscCompilationJob` vrátí objekt úlohy kompilace, který můžete použít ke sledování jeho stavu. Pak můžete použít tento objekt úlohy kompilace s [`Get-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjob)
-Chcete-li zjistit stav úlohy kompilace a [`Get-AzureRmAutomationDscCompilationJobOutput`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjoboutput)
+`Start-AzAutomationDscCompilationJob` vrátí objekt úlohy kompilace, který můžete použít ke sledování jeho stavu. Pak můžete použít tento objekt úlohy kompilace s [`Get-AzAutomationDscCompilationJob`](/powershell/module/az.automation/get-azautomationdsccompilationjob)
+Chcete-li zjistit stav úlohy kompilace a [`Get-AzAutomationDscCompilationJobOutput`](/powershell/module/az.automation/get-azautomationdscconfiguration)
 zobrazení datových proudů (výstup). Následující vzorový kód spustí kompilaci konfigurace **SampleConfig** , počká, až se dokončí, a pak zobrazí své streamy.
 
 ```powershell
-$CompilationJob = Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
+$CompilationJob = Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
 
 while($null -eq $CompilationJob.EndTime -and $null -eq $CompilationJob.Exception)
 {
-    $CompilationJob = $CompilationJob | Get-AzureRmAutomationDscCompilationJob
+    $CompilationJob = $CompilationJob | Get-AzAutomationDscCompilationJob
     Start-Sleep -Seconds 3
 }
 
-$CompilationJob | Get-AzureRmAutomationDscCompilationJobOutput –Stream Any
+$CompilationJob | Get-AzAutomationDscCompilationJobOutput –Stream Any
 ```
 
 ###  <a name="basic-parameters"></a>Základní parametry
@@ -113,7 +113,7 @@ $Parameters = @{
     'IsPresent' = $False
 }
 
-Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'ParametersExample' -Parameters $Parameters
+Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'ParametersExample' -Parameters $Parameters
 ```
 
 Informace o předávání PSCredentials jako parametrů najdete v části [assety s přihlašovacími](#credential-assets) údaji níže.
@@ -180,7 +180,7 @@ $ConfigData = @{
     }
 }
 
-Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'ConfigurationDataSample' -ConfigurationData $ConfigData
+Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'ConfigurationDataSample' -ConfigurationData $ConfigData
 ```
 
 ### <a name="working-with-assets-in-azure-automation-during-compilation"></a>Práce s prostředky v Azure Automation během kompilace
@@ -238,7 +238,7 @@ $ConfigData = @{
     )
 }
 
-Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'CredentialSample' -ConfigurationData $ConfigData
+Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'CredentialSample' -ConfigurationData $ConfigData
 ```
 
 > [!NOTE]
@@ -277,16 +277,16 @@ Soubor MOF nebo soubory vytvořené kompilací konfigurace je pak možné import
 
 ### <a name="importing-a-node-configuration-with-azure-powershell"></a>Import konfigurace uzlu s Azure PowerShell
 
-Pomocí rutiny [Import-AzureRmAutomationDscNodeConfiguration](/powershell/module/azurerm.automation/import-azurermautomationdscnodeconfiguration) můžete importovat konfiguraci uzlu do svého účtu Automation.
+Pomocí rutiny [Import-AzAutomationDscNodeConfiguration](/powershell/module/az.automation/import-azautomationdscnodeconfiguration) můžete importovat konfiguraci uzlu do svého účtu Automation.
 
 ```powershell
-Import-AzureRmAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAccount' -ResourceGroupName 'MyResourceGroup' -ConfigurationName 'MyNodeConfiguration' -Path 'C:\MyConfigurations\TestVM1.mof'
+Import-AzAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAccount' -ResourceGroupName 'MyResourceGroup' -ConfigurationName 'MyNodeConfiguration' -Path 'C:\MyConfigurations\TestVM1.mof'
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
 - Informace o tom, jak začít, najdete v tématu [Začínáme s konfigurací stavu Azure Automation](automation-dsc-getting-started.md) .
 - Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací v konfiguraci stavu Azure Automation](automation-dsc-compile.md)
-- Referenční informace k rutinám PowerShellu najdete v tématu [rutiny konfigurace stavu Azure Automation](/powershell/module/azurerm.automation/#automation) .
+- Referenční informace k rutinám PowerShellu najdete v tématu [rutiny konfigurace stavu Azure Automation](/powershell/module/az.automation) .
 - Informace o cenách najdete v tématu [Azure Automation ceny konfigurace stavu](https://azure.microsoft.com/pricing/details/automation/) .
 - Příklad použití konfigurace stavu Azure Automation v kanálu průběžného nasazování najdete v tématu [průběžné nasazování pomocí Azure Automation konfigurace stavu a čokolády](automation-dsc-cd-chocolatey.md) .

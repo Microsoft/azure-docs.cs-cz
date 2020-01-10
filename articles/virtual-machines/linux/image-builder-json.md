@@ -7,12 +7,12 @@ ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 13392644ebe5e163e946deceeec5fcab8f5085cc
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4a411603ca5c3c79da0d596396d8fde80b568af2
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159719"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763075"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
@@ -28,7 +28,7 @@ Toto je základní formát šablony:
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             }
+             },
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
@@ -55,7 +55,7 @@ Toto je základní formát šablony:
 
 Umístění je oblast, kde se vytvoří vlastní image. Pro náhled tvůrce imagí se podporují tyto oblasti:
 
-- USA – východ
+- Východní USA
 - Východ USA 2
 - Středozápadní USA
 - Západní USA
@@ -115,7 +115,7 @@ Rozhraní API vyžaduje typ SourceType, který definuje zdroj pro sestavení ima
 ### <a name="iso-source"></a>Zdroj ISO
 
 Azure image Builder podporuje pro náhled jenom použití publikované Red Hat Enterprise Linux 7. x Binary DVD soubory ISO. Nástroj image Builder podporuje:
-- RHEL 7,3 
+- RHEL 7.3 
 - RHEL 7,4 
 - RHEL 7.5 
  
@@ -139,9 +139,9 @@ Azure image Builder podporuje následující image Azure Marketplace:
 * Ubuntu 18.04
 * Ubuntu 16.04
 * RHEL 7,6
-* CentOS 7,6
+* CentOS 7.6
 * Windows 2016
-* Systém Windows 2019
+* Windows 2019
 
 ```json
         "source": {
@@ -275,7 +275,8 @@ Přizpůsobení vlastností:
 
 ```json 
      "customize": [ 
-            "type{ ": "WindowsRestart", 
+         {
+            "type": "WindowsRestart", 
             "restartCommand": "shutdown /r /f /t 0 /c", 
             "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > buildArtifacts/azureImageBuilderRestart.txt",
             "restartTimeout": "5m"

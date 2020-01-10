@@ -8,19 +8,19 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 12/30/2019
-ms.openlocfilehash: 4d9810b9075bc3049758e03ba8376621661b79ba
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 7dd1f07d44bd3b71bb83becee5405cf5c100460c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563220"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754082"
 ---
-# <a name="create-an-azure-cognitive-search-knowledge-store-by-using-rest"></a>Vytvoření úložiště Azure Kognitivní hledání Knowledge Store pomocí REST
+# <a name="create-a-knowledge-store-using-rest-and-postman"></a>Vytvoření úložiště znalostí pomocí REST a předzálohovacího
 
 > [!IMPORTANT] 
 > znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
 
-Funkce znalostní báze ve službě Azure Kognitivní hledání přechovává výstup kanálu rozšíření AI pro pozdější analýzu nebo jiné zpracování dat. Kanál obohacený AI akceptuje soubory obrázků nebo nestrukturované textové soubory, indexuje je pomocí Azure Kognitivní hledání, aplikuje rozšíření AI z Azure Cognitive Services (například analýzu obrázků a zpracování přirozeného jazyka), a pak výsledky uloží do znalostní báze v Azure Storage. Pomocí nástrojů, jako je Power BI nebo Průzkumník služby Storage, můžete v Azure Portal prozkoumat znalostní bázi Knowledge Store.
+Znalostní báze obsahuje výstup z kanálu rozšíření Azure Kognitivní hledání pro pozdější analýzu nebo jiné zpracování dat. Kanál obohacený AI akceptuje soubory obrázků nebo nestrukturované textové soubory, indexuje je pomocí Azure Kognitivní hledání, aplikuje rozšíření AI z Cognitive Services (například analýzu obrázků a zpracování přirozeného jazyka) a pak výsledky uloží do znalostní báze v Azure Storage. Pomocí nástrojů, jako je Power BI nebo Průzkumník služby Storage, můžete v Azure Portal prozkoumat znalostní bázi Knowledge Store.
 
 V tomto článku použijete rozhraní REST API k ingestování, indexování a používání rozšíření AI na sadu pohlídek za Hotel. Recenze hotelu se importují do úložiště objektů BLOB v Azure. Výsledky se ukládají jako úložiště ve znalostní bázi ve službě Azure Table Storage.
 

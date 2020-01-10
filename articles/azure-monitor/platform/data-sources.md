@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: 73aa4a8a5dad0e2839c6a643f2ab58494d55458a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8f17a3ffbbee2bc702be1c2c690a1d6c85d792cb
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450652"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751055"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Zdroje dat monitorování pro Azure Monitor
 Azure Monitor je založený na [běžné platformě dat pro monitorování](data-platform.md) , která zahrnuje [protokoly](data-platform-logs.md) a [metriky](data-platform-metrics.md). Shromažďování dat na této platformě umožňuje analyzovat data z několika prostředků společně pomocí běžné sady nástrojů v Azure Monitor. Data monitorování se můžou posílat i na další místa pro podporu určitých scénářů a některé prostředky můžou zapisovat do jiných umístění, než je budete moct shromažďovat do protokolů nebo metrik.
@@ -67,7 +67,7 @@ Telemetrie související se stavem a provozem vašeho předplatného Azure.
 ![Předplatné Azure](media/data-sources/azure-subscription.png)
 
 ### <a name="azure-activity-log"></a>Protokol aktivit Azure 
-[Protokol aktivit Azure](activity-logs-overview.md) zahrnuje záznamy o stavu služeb společně se záznamy o všech změnách konfigurace provedených v prostředcích v předplatném Azure. Protokol aktivit je dostupný pro všechny prostředky Azure a představuje jejich _externí_ zobrazení.
+[Protokol aktivit Azure](platform-logs-overview.md) zahrnuje záznamy o stavu služeb společně se záznamy o všech změnách konfigurace provedených v prostředcích v předplatném Azure. Protokol aktivit je dostupný pro všechny prostředky Azure a představuje jejich _externí_ zobrazení.
 
 | Cíl | Popis | Referenční informace |
 |:---|:---|
@@ -100,7 +100,7 @@ Většina služeb Azure bude odesílat [metriky platforem](data-platform-metrics
 | Event Hubs | Streamujte metriky do jiných umístění pomocí Event Hubs. |[Streamování dat monitorování Azure do centra událostí pro využití externím nástrojem](stream-monitoring-data-event-hubs.md) |
 
 ### <a name="resource-logs"></a>Protokoly prostředků
-[Protokoly prostředků](resource-logs-overview.md) poskytují přehled o _interní_ operaci prostředku Azure.  Protokoly prostředků se vytvářejí automaticky, ale musíte vytvořit nastavení diagnostiky, abyste určili cíl pro shromažďování pro jednotlivé prostředky.
+[Protokoly prostředků](platform-logs-overview.md) poskytují přehled o _interní_ operaci prostředku Azure.  Protokoly prostředků se vytvářejí automaticky, ale musíte vytvořit nastavení diagnostiky, abyste určili cíl pro shromažďování pro jednotlivé prostředky.
 
 Požadavky na konfiguraci a obsah protokolů prostředků se liší podle typu prostředku a ne u všech služeb, které je ještě nevytvořily. Podrobnosti o každé službě a odkazy na podrobné postupy konfigurace najdete v tématu [podporované služby, schémata a kategorie pro protokoly prostředků Azure](diagnostic-logs-schema.md) . Pokud tato služba není uvedená v tomto článku, tato služba aktuálně nevytváří protokoly prostředků.
 

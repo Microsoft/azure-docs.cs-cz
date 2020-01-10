@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 254cbc995da9380f108970fb981c000fca7dc63f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6a474bdceffa07b18530250a02a9ef94159a8e35
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925808"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750337"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Streamování dat monitorování Azure do centra událostí
 Azure Monitor poskytuje kompletní řešení monitorování zásobníku pro aplikace a služby v Azure, v jiných cloudech a v místním prostředí. Kromě použití Azure Monitor k analýze těchto dat a jejich využití v různých scénářích monitorování ho možná budete muset poslat ostatním nástrojům pro monitorování ve vašem prostředí. Nejúčinnější metodou pro streamování dat monitorování do externích nástrojů ve většině případů je použití [Azure Event Hubs](/azure/event-hubs/). Tento článek obsahuje stručný popis toho, jak můžete streamovat data monitorování z různých zdrojů do centra událostí a odkazy na podrobné pokyny.
@@ -62,7 +62,7 @@ Směrování dat monitorování do centra událostí pomocí Azure Monitor vám 
 
 ## <a name="next-steps"></a>Další kroky
 * [Archivace protokolu aktivit do účtu úložiště](../../azure-monitor/platform/archive-activity-log.md)
-* [Přečtěte si přehled protokolu aktivit Azure.](../../azure-monitor/platform/activity-logs-overview.md)
+* [Přečtěte si přehled protokolu aktivit Azure.](../../azure-monitor/platform/platform-logs-overview.md)
 * [Nastavení výstrahy na základě události protokolu aktivit](../../azure-monitor/platform/alerts-log-webhook.md)
 
 

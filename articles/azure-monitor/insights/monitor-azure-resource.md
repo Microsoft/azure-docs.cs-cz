@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 0748047581945d513300d929c2d34d20099bf4d6
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b092b037cc10671e89f18af287b52f8ad1c0060e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529690"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747307"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Monitorování prostředků Azure pomocí Azure Monitor
 Pokud máte důležité aplikace a obchodní procesy spoléhající se na prostředky Azure, budete chtít tyto prostředky sledovat pro jejich dostupnost, výkon a provoz. Tento článek popisuje data monitorování vygenerovaná prostředky Azure a o tom, jak můžete pomocí funkcí Azure Monitor analyzovat tato data a upozorňovat na ně.
@@ -57,8 +57,8 @@ Prostředky v Azure generují [protokoly](../platform/data-platform-logs.md) a [
 
 
 - [Metriky platforem](../platform/data-platform-metrics.md) – číselné hodnoty, které se automaticky shromažďují v pravidelných intervalech a popisují určitý aspekt prostředku v určitou dobu. 
-- [Protokoly prostředků](../platform/resource-logs-overview.md) – poskytují přehled o operacích, které byly provedeny v rámci prostředku Azure (rovina dat), například získání tajného klíče z Key Vault nebo vytvoření žádosti do databáze. Obsah a struktura protokolů prostředků se liší podle typu prostředku a služby Azure.
-- [Protokol aktivit](../platform/activity-logs-overview.md) – poskytuje přehled o operacích u jednotlivých prostředků Azure v rámci předplatného zvenčí (rovina správy), například vytvoření nového prostředku nebo spuštění virtuálního počítače. Jedná se o informace o tom, kdo a kdy se u prostředků ve vašem předplatném provádí operace zápisu (PUT, POST, DELETE).
+- [Protokoly prostředků](../platform/platform-logs-overview.md) – poskytují přehled o operacích, které byly provedeny v rámci prostředku Azure (rovina dat), například získání tajného klíče z Key Vault nebo vytvoření žádosti do databáze. Obsah a struktura protokolů prostředků se liší podle typu prostředku a služby Azure.
+- [Protokol aktivit](../platform/platform-logs-overview.md) – poskytuje přehled o operacích u jednotlivých prostředků Azure v rámci předplatného zvenčí (rovina správy), například vytvoření nového prostředku nebo spuštění virtuálního počítače. Jedná se o informace o tom, kdo a kdy se u prostředků ve vašem předplatném provádí operace zápisu (PUT, POST, DELETE).
 
 
 ## <a name="configuration-requirements"></a>Požadavky na konfiguraci
@@ -67,8 +67,8 @@ Prostředky v Azure generují [protokoly](../platform/data-platform-logs.md) a [
 Některá data monitorování se shromažďují automaticky, ale možná budete muset provést nějakou konfiguraci v závislosti na vašich požadavcích. V níže uvedených informacích najdete konkrétní informace pro každý typ dat monitorování.
 
 - [Metriky platforem](../platform/data-platform-metrics.md) – metriky platformy se shromažďují automaticky do [Azure monitor metrik](../platform/data-platform-metrics.md) bez nutnosti konfigurace. Vytvořte nastavení diagnostiky, které odešle položky do protokolů Azure Monitor nebo je přesměruje mimo Azure.
-- [Protokoly prostředků](../platform/resource-logs-overview.md) – protokoly prostředků se automaticky generují pomocí prostředků Azure, ale neshromažďují se bez nastavení diagnostiky.  Vytvořte nastavení diagnostiky, které odešle položky do protokolů Azure Monitor nebo je přesměruje mimo Azure.
-- [Protokol aktivit](../platform/activity-logs-overview.md) – protokol aktivit je shromažďován automaticky bez nutnosti konfigurace a může být zobrazen v Azure Portal. Vytvořte nastavení diagnostiky, které se zkopíruje do protokolů Azure Monitor nebo je předají mimo Azure.
+- [Protokoly prostředků](../platform/platform-logs-overview.md) – protokoly prostředků se automaticky generují pomocí prostředků Azure, ale neshromažďují se bez nastavení diagnostiky.  Vytvořte nastavení diagnostiky, které odešle položky do protokolů Azure Monitor nebo je přesměruje mimo Azure.
+- [Protokol aktivit](../platform/platform-logs-overview.md) – protokol aktivit je shromažďován automaticky bez nutnosti konfigurace a může být zobrazen v Azure Portal. Vytvořte nastavení diagnostiky, které se zkopíruje do protokolů Azure Monitor nebo je předají mimo Azure.
 
 ### <a name="log-analytics-workspace"></a>Pracovní prostor Log Analytics
 Shromažďování dat do protokolů Azure Monitor vyžaduje pracovní prostor Log Analytics. Můžete rychle začít monitorovat službu tím, že vytvoříte nový pracovní prostor, ale v pracovním prostoru, který shromažďuje data z jiných služeb, může dojít k hodnotě. V tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../learn/quick-create-workspace.md) najdete podrobné informace o vytváření pracovního prostoru a [návrhu nasazení Azure Monitorch protokolů](../platform/design-logs-deployment.md) , které vám pomůžou určit nejlepší návrh pracovního prostoru pro vaše požadavky. Pokud používáte existující pracovní prostor ve vaší organizaci, budete potřebovat příslušná oprávnění, jak je popsáno v tématu [Správa přístupu k datům protokolů a pracovním prostorům v Azure monitor](../platform/manage-access.md). 

@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 92bfa4f13467763fd88b9ae993554aef69355d75
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 9d0919651842a6f6f935c9f1e338c9d335b80f47
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555237"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749152"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Ukládání důležitých podnikových dat objektů BLOB s neměnném úložištěm
 
@@ -40,15 +40,15 @@ Neměnné úložiště podporuje následující funkce:
 
 - **[Podpora zásad právního blokování](#legal-holds)** : Pokud není Interval uchování známý, můžou uživatelé nastavit právní blokování na ukládání neproměnlivých dat, dokud se neodstraní právní blokování.  Pokud je nastavena zásada právního blokování, lze objekty blob vytvořit a číst, ale nikoli upravovat ani odstraňovat. Každé právní blokování je přidruženo k uživatelsky definované alfanumerické značce (například ID případu, název události atd.), které se používají jako řetězec identifikátoru. 
 
-- **Podpora pro všechny úrovně objektů BLOB**: zásady červa jsou nezávislé na úrovni úložiště objektů BLOB v Azure a platí pro všechny úrovně: horká, studená a archivní. Uživatelé můžou při zachování dat neměnnosti data do nejvyšší úrovně optimalizované pro své úlohy na nejvyšší náklady.
+- **Podpora pro všechny úrovně objektů BLOB**: zásady červa jsou nezávislé na úrovni úložiště objektů BLOB v Azure a platí pro všechny úrovně: horká, studená a archivní. Uživatelé mohou přesouvat data na úroveň, která je optimální z hlediska nákladů, a přitom zachovat jejich neměnnost.
 
-- **Konfigurace na úrovni kontejneru**: uživatelé můžou na úrovni kontejneru nakonfigurovat zásady uchovávání informací založené na čase a značky právního blokování. Díky použití jednoduchých nastavení na úrovni kontejneru můžou uživatelé vytvářet a zamykat zásady uchovávání informací založené na čase, nastavovat a zablokovat, nastavovat a mazat právní omezení. Tyto zásady se vztahují na všechny objekty BLOB v kontejneru, a to stávající i nové.
+- **Konfigurace na úrovni kontejneru**: uživatelé můžou na úrovni kontejneru nakonfigurovat zásady uchovávání informací založené na čase a značky právního blokování. Uživatelé mohou s využitím jednoduchých nastavení na úrovni kontejneru vytvořit a uzamknout zásady uchovávání informací podle času, prodloužit intervaly uchovávání informací, nastavit nebo zrušit blokování z právních důvodů atd. Tyto zásady platí pro všechny stávající i nové objekty blob v kontejneru.
 
-- **Podpora protokolování auditu**: každý kontejner zahrnuje protokol auditu zásad. Zobrazuje až sedm příkazů pro uchovávání informací na základě času pro uzamčené zásady uchovávání informací podle času a obsahuje ID uživatele, typ příkazu, časová razítka a interval uchovávání. V případě právního blokování obsahuje protokol ID uživatele, typ příkazu, časová razítka a značky právního blokování. Tento protokol se zachovává po dobu života zásady, v souladu s pravidly pro legislativní SEK – 17a (f). [Protokol aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md) zobrazuje komplexnější protokol všech aktivit řídicích rovin; zatímco povolení [diagnostických protokolů Azure](../../azure-monitor/platform/resource-logs-overview.md) zachovává a zobrazuje operace roviny dat. Je zodpovědností uživatele ukládat tyto protokoly trvale, jako by se vyžadovalo pro regulativní nebo jiné účely.
+- **Podpora protokolování auditu**: každý kontejner zahrnuje protokol auditu zásad. Zobrazuje až sedm příkazů pro uchovávání informací na základě času pro uzamčené zásady uchovávání informací podle času a obsahuje ID uživatele, typ příkazu, časová razítka a interval uchovávání. V případě blokování z právních důvodů obsahuje protokol ID uživatele, typ příkazu, časová razítka a značky blokování z právních důvodů. Tento protokol se zachovává po dobu života zásady, v souladu s pravidly pro legislativní SEK – 17a (f). [Protokol aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md) zobrazuje komplexnější protokol všech aktivit řídicích rovin; zatímco povolení [diagnostických protokolů Azure](../../azure-monitor/platform/platform-logs-overview.md) zachovává a zobrazuje operace roviny dat. Uživatel je zodpovědný za trvalé uchování těchto protokolů, protože se mohou vyžadovat pro legislativní nebo jiné účely.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Neměnné úložiště pro úložiště objektů BLOB v Azure podporuje dva typy ČERVů nebo neproměnlivých zásad: uchování založené na čase a právní blokování. Pokud je na kontejneru použita zásada uchovávání informací založená na čase nebo právní blokování, všechny existující objekty BLOB se přesunou do neměnného stavu ČERVa za méně než 30 sekund. Všechny nové objekty blob nahrané do tohoto kontejneru se také přesunou do neměnného stavu. Po přesunutí všech objektů blob do neměnných stavů se potvrdí neměnné zásady a všechny operace přepsání nebo odstranění pro existující a nové objekty v neměnném kontejneru nejsou povolené.
+Funkce Immutable Storage pro úložiště Azure Blob Storage podporuje dva typy zásad WORM neboli zásad neměnnosti: uchovávání informací podle času a blokování z právních důvodů. Pokud je na kontejneru použita zásada uchovávání informací založená na čase nebo právní blokování, všechny existující objekty BLOB se přesunou do neměnného stavu ČERVa za méně než 30 sekund. Všechny nové objekty blob nahrané do tohoto kontejneru se také přesunou do neměnného stavu. Po přesunutí všech objektů blob do neměnných stavů se potvrdí neměnné zásady a všechny operace přepsání nebo odstranění pro existující a nové objekty v neměnném kontejneru nejsou povolené.
 
 Odstranění kontejneru a účtu úložiště není povolené, pokud existují objekty BLOB v kontejneru nebo účtu úložiště, které jsou chráněné neproměnlivými zásadami. Operace odstranění kontejneru selže, pokud alespoň jeden objekt BLOB existuje se zamčenými zásadami uchovávání informací založenými na čase nebo s právním blokováním. Operace odstranění účtu úložiště selže, pokud je k dispozici alespoň jeden kontejner ČERVa s právním blokováním nebo objekt BLOB s aktivním intervalem uchování.
 
@@ -59,7 +59,7 @@ Odstranění kontejneru a účtu úložiště není povolené, pokud existují o
 
 Pokud jsou na kontejneru aplikovány zásady uchovávání informací založené na čase, všechny objekty BLOB v kontejneru zůstanou v neměnném stavu po dobu trvání *efektivní* doby uchování. Efektivní doba uchovávání informací pro stávající objekty blob se rovná rozdílu mezi časem vytvoření objektu blob a uživatelem zadaným intervalem uchovávání informací.
 
-Pro nové objekty blob se efektivní doba uchovávání informací rovná uživatelem zadanému intervalu uchovávání informací. Vzhledem k tomu, že uživatelé můžou roztáhnout interval uchovávání dat, neměnné úložiště používá k výpočtu efektivní doby uchování nejnovější hodnotu intervalu pro uchování zadaného uživatelem.
+Pro nové objekty blob se efektivní doba uchovávání informací rovná uživatelem zadanému intervalu uchovávání informací. Vzhledem k tomu, že uživatelé mohou interval uchovávání informací prodloužit, používá funkce Immutable Storage při výpočtu účinné doby uchovávání informací poslední hodnotu uživatelem zadaného intervalu.
 
 Předpokládejme například, že uživatel vytvoří zásady uchovávání dat s intervalem uchování na pět let. Stávající objekt BLOB v tomto kontejneru, _testblob1_, byl vytvořen před rokem. Efektivní doba uchování pro _testblob1_ je 4 roky. Když se do kontejneru nahraje nový objekt blob, _testblob2_, efektivní doba uchování nového objektu BLOB je pět let.
 
@@ -76,7 +76,7 @@ Následující omezení platí pro zásady uchovávání informací:
 
 Když nastavíte právní blokování, všechny existující a nové objekty blob zůstanou v neměnném stavu, dokud se neodstraní právní blokování. Další informace o tom, jak nastavit a vymazat právní blokování, najdete v tématu [nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB](storage-blob-immutability-policies-manage.md).
 
-Kontejner může současně obsahovat i právní blokování i zásady uchovávání informací podle času. Všechny objekty BLOB v tomto kontejneru zůstávají v neměnném stavu, dokud se nevymaže všechna zákonná blokování, a to i v případě, že vypršela doba uchování platnosti. V opačném případě objekt BLOB zůstane v neměnném stavu, dokud nevyprší doba uchování, a to i v případě, že všechna zákonná blokování byla vymazána.
+Kontejner může současně obsahovat i právní blokování i zásady uchovávání informací podle času. Všechny objekty blob v kontejneru zůstanou v neměnném stavu, dokud se nezruší všechna blokování z právních důvodů, a to i poté, co u nich uplyne účinná doba uchovávání informací. A naopak, objekt blob zůstane v neměnném stavu, dokud neuplyne účinná doba uchovávání informací, a to i po zrušení všech blokování z právních důvodů.
 
 V následující tabulce jsou uvedeny typy operací úložiště objektů blob, které jsou zakázané pro různé neměnné scénáře. Další informace najdete v dokumentaci ke [službě Azure Blob Service REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) .
 
@@ -116,7 +116,7 @@ Ne, můžete použít neměnné úložiště s existujícími nebo nově vytvoř
 
 **Můžu použít právní zásady uchovávání informací i na základě času?**
 
-Ano, kontejner může současně obsahovat i právní blokování i zásady uchovávání informací podle času. Všechny objekty BLOB v tomto kontejneru zůstávají v neměnném stavu, dokud se nevymaže všechna zákonná blokování, a to i v případě, že vypršela doba uchování platnosti. V opačném případě objekt BLOB zůstane v neměnném stavu, dokud nevyprší doba uchování, a to i v případě, že všechna zákonná blokování byla vymazána.
+Ano, kontejner může současně obsahovat i právní blokování i zásady uchovávání informací podle času. Všechny objekty blob v kontejneru zůstanou v neměnném stavu, dokud se nezruší všechna blokování z právních důvodů, a to i poté, co u nich uplyne účinná doba uchovávání informací. A naopak, objekt blob zůstane v neměnném stavu, dokud neuplyne účinná doba uchovávání informací, a to i po zrušení všech blokování z právních důvodů.
 
 **Jsou právní zásady uchovávání jenom pro právní jednání nebo existují jiné scénáře použití?**
 

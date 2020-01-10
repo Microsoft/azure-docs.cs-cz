@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 2bb275b1ca129d2381fb89fcbe0111c573d4a8e7
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 86f042a451583759aa15e886b3261700335a5285
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893344"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748544"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archivace metrik Azure a dat protokolů s použitím Azure Storage
 
@@ -34,19 +34,19 @@ Tento kurz prochází proces konfigurace prostředí Azure pro archivaci dat do 
 > * Zobrazení dat monitorování v tomto účtu úložiště
 > * Vyčištění prostředků
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Nejprve je potřeba nastavit účet úložiště, do kterého se data monitorování budou archivovat. Provedete to [podle těchto kroků](../../storage/common/storage-quickstart-create-account.md).
 
 ## <a name="route-subscription-logs-to-the-storage-account"></a>Směrování protokolů předplatného do účtu úložiště
 
-Teď jste připraveni začít nastavovat své prostředí Azure pro směrování dat monitorování do účtu úložiště. Nejprve nakonfigurujeme směrování dat na úrovni předplatného (obsažená v protokolu aktivit Azure) do účtu úložiště. [**Protokol aktivit Azure**](../../azure-monitor/platform/activity-logs-overview.md) poskytuje historii událostí na úrovni předplatného v Azure. Najdete ho na webu Azure Portal a jeho procházením můžete určit, *kdo* vytvořil, aktualizoval nebo odstranil *jaké* prostředky a *kdy* k tomu došlo.
+Teď jste připraveni začít nastavovat své prostředí Azure pro směrování dat monitorování do účtu úložiště. Nejprve nakonfigurujeme směrování dat na úrovni předplatného (obsažená v protokolu aktivit Azure) do účtu úložiště. [**Protokol aktivit Azure**](../../azure-monitor/platform/platform-logs-overview.md) poskytuje historii událostí na úrovni předplatného v Azure. Najdete ho na webu Azure Portal a jeho procházením můžete určit, *kdo* vytvořil, aktualizoval nebo odstranil *jaké* prostředky a *kdy* k tomu došlo.
 
 1. V levém navigačním seznamu klikněte na tlačítko **Monitorování** a pak na **Protokol aktivit**.
 
@@ -96,7 +96,7 @@ Teď nakonfigurujeme data na úrovni prostředku (metriky prostředků a protoko
 
 6. Nastavte posuvník **Doba uchování (dny)** na hodnotu 30. Tento posuvník nastavuje počet dnů, po který se mají data monitorování uchovávat v účtu úložiště. Azure Monitor automaticky odstraní data starší než zadaný počet dnů. Pokud jako dobu uchování nastavíte 0 dnů, data se uloží navždy.
 
-7. Klikněte na **Uložit**.
+7. Klikněte na možnost **Uložit**.
 
 Data monitorování z vašeho prostředku se teď přenášejí do účtu úložiště.
 
@@ -137,7 +137,7 @@ Data monitorování z vašeho prostředku se teď přenášejí do účtu úlož
 
 9. V části, která se zobrazí, vyberte účet úložiště, který jste vytvořili v předchozím kroku **Vytvoření účtu úložiště**.
 
-10. Klikněte na **Uložit**.
+10. Klikněte na možnost **Uložit**.
 
 Data monitorování z vašich virtuálních počítačů se teď přenášejí do účtu úložiště.
 

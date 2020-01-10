@@ -7,26 +7,26 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
-ms.openlocfilehash: d4bcb8475f822675d39ca8e542155779384eacf1
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 0b4975984abf4a36f7d61b42f365eeb1b2902abf
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087833"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750024"
 ---
-# <a name="scenario-apache-ambari-ui-502-error-in-azure-hdinsight"></a>Scénář: Chyba uživatelského rozhraní Apache Ambari 502 ve službě Azure HDInsight
+# <a name="scenario-apache-ambari-ui-502-error-in-azure-hdinsight"></a>Scénář: Chyba rozhraní Apache Ambari UI 502 ve službě Azure HDInsight
 
 Tento článek popisuje postup řešení potíží a možná řešení potíží při komunikaci s clustery Azure HDInsight.
 
 ## <a name="issue"></a>Problém
 
-Při pokusu o přístup k uživatelskému rozhraní Apache Ambari pro váš cluster HDInsight se zobrazí zpráva podobná této: "502 – webový server obdržel neplatnou odpověď v době, kdy se jednalo o bránu nebo proxy server."
+Při pokusu o přístup k uživatelskému rozhraní Apache Ambari pro váš cluster HDInsight se zobrazí zpráva podobná této: "502-webový server obdržel neplatnou odpověď v době, kdy se jednalo o bránu nebo proxy server."
 
 ## <a name="cause"></a>Příčina
 
 Obecně platí, že stavový kód HTTP 502 znamená, že server Ambari neběží správně na aktivním hlavnímu uzlu. Existuje několik možných hlavních příčin.
 
-## <a name="resolution"></a>Řešení
+## <a name="resolution"></a>Rozlišení
 
 Ve většině případů můžete pro zmírnění problému restartovat aktivní hlavnímu uzlu. Nebo pro hlavnímu uzlu vyberte větší velikost virtuálního počítače.
 
@@ -49,10 +49,10 @@ service ambari-server start
 
 ### <a name="ambari-server-killed-by-oom-killer"></a>Server Ambari ukončil OOM-Killer
 
-V některých scénářích vaše hlavnímu uzlu vyčerpá paměť a Linux OOM-Killer začne vybírat procesy, které se mají ukončit. Tuto situaci můžete ověřit tak, že vyhledáte ID procesu AmbariServer, které by se nemělo najít. Pak se podívejte na `/var/log/syslog`své a hledejte něco podobného:
+V některých scénářích vaše hlavnímu uzlu vyčerpá paměť a Linux OOM-Killer začne vybírat procesy, které se mají ukončit. Tuto situaci můžete ověřit tak, že vyhledáte ID procesu AmbariServer, které by se nemělo najít. Pak se podívejte na `/var/log/syslog`a hledejte něco podobného:
 
 ```
-Jul 27 15:29:30 hn0-xxxxxx kernel: [874192.703153] java invoked oom-killer: gfp_mask=0x23201ca, order=0, oom_score_adj=0
+Jul 27 15:29:30 xxx-xxxxxx kernel: [874192.703153] java invoked oom-killer: gfp_mask=0x23201ca, order=0, oom_score_adj=0
 ```
 
 Pak určete, které procesy berou v paměti, a pokuste se o další hlavní příčinu.
@@ -65,12 +65,12 @@ Nejenom zřídka Server Ambari nemůže zpracovat příchozí požadavek. Dalš�
 Error Processing URI: /api/v1/clusters/xxxxxx/host_components - (java.lang.OutOfMemoryError) Java heap space
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
+* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

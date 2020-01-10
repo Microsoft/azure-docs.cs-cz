@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: f6943a95cd327785d4907bb675958be99b902764
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 0a54416a70a8561edfad5915944100e0ce686bbf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644932"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771253"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Několik front-endu pro Azure Load Balancer
 
@@ -98,8 +98,28 @@ Pro tento scénář má každý virtuální počítač ve fondu back-end tři s�
 * Front-end 1: rozhraní zpětné smyčky v rámci hostovaného operačního systému, které má nakonfigurovanou IP adresu front-endu 1.
 * Front-end 2: rozhraní zpětné smyčky v rámci hostovaného operačního systému, které má nakonfigurovanou IP adresu front-endu 2
 
+Pro každý virtuální počítač ve fondu back-end spusťte na příkazovém řádku Windows následující příkazy.
+
+Pokud chcete získat seznam názvů rozhraní, které máte na svém VIRTUÁLNÍm počítači, zadejte tento příkaz:
+
+    netsh interface show interface 
+
+Pro síťovou kartu virtuálního počítače (Azure Managed) zadejte tento příkaz:
+
+    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
+   (nahraďte název rozhraní názvem tohoto rozhraní)
+
+Pro každé přidané rozhraní zpětné smyčky opakujte tyto příkazy:
+
+    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
+   (Nahraďte parametr InterfaceName názvem tohoto rozhraní zpětné smyčky.)
+     
+    netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
+   (Nahraďte parametr InterfaceName názvem tohoto rozhraní zpětné smyčky.)
+
 > [!IMPORTANT]
 > Konfigurace rozhraní zpětné smyčky se provádí v hostovaném operačním systému. Tuto konfiguraci neprovádí ani nespravuje Azure. Bez této konfigurace nebudou pravidla fungovat. Definice sondy stavu používají DIP virtuální počítač místo rozhraní zpětné smyčky představujícího front-endu DSR. Proto musí vaše služba poskytovat odezvy sondy na portu DIP, který odráží stav služby nabízené na rozhraní zpětné smyčky, které představuje front-endu DSR.
+
 
 Pojďme předpokládat stejnou konfiguraci front-endu jako v předchozím scénáři:
 

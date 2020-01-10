@@ -3,21 +3,24 @@ title: Přehled clusterů Azure a samostatných Service Fabric
 description: Clustery Service Fabric můžete vytvořit na libovolném virtuálním počítači nebo na počítačích se systémem Windows Server nebo Linux. To znamená, že můžete nasazovat a spouštět aplikace Service Fabric v jakémkoli prostředí, kde máte sadu počítačů se systémem Windows Server nebo Linux, které jsou propojeny místně, Microsoft Azure nebo s jakýmkoli poskytovatelem cloudu.
 author: dkkapur
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 01/07/2020
 ms.author: dekapur
-ms.openlocfilehash: 71f3858fed43465f646ccbe1e78ccac9cba237f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: a3627effe10039ded5007f9dd060bf1865929040
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458208"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751157"
 ---
 # <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>Porovnání clusterů Azure a samostatných Service Fabric v systému Windows Server a Linux
+
 Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se označuje jako uzel clusteru. Clustery se můžou škálovat na tisíce uzlů. Pokud do clusteru přidáte nové uzly, Service Fabric rebilance repliky oddílů služby a instance napříč rostoucím počtem uzlů. Celkový výkon aplikace vylepšuje a kolizí pro přístup k snížení velikosti paměti. Pokud se uzly v clusteru nepoužívají efektivně, můžete snížit počet uzlů v clusteru. Service Fabric znovu vyrovnává repliky oddílů a instance napříč sníženým počtem uzlů, aby bylo možné lépe využívat hardware na jednotlivých uzlech.
 
 Service Fabric umožňuje vytváření clusterů Service Fabric na všech virtuálních počítačích nebo počítačích se systémem Windows Server nebo Linux. To znamená, že můžete nasazovat a spouštět aplikace Service Fabric v jakémkoli prostředí, kde máte připojenou sadu počítačů se systémem Windows Server nebo Linux, které jsou propojeny místně, Microsoft Azure nebo s jakýmkoli poskytovatelem cloudu.
 
 ## <a name="benefits-of-clusters-on-azure"></a>Výhody clusterů v Azure
+
 V Azure zajišťujeme integraci s dalšími funkcemi a službami Azure, což usnadňuje a spolehlivě zajišťuje provoz a správu clusteru.
 
 * **Azure Portal:** Azure Portal usnadňuje vytváření a správu clusterů.
@@ -28,6 +31,7 @@ V Azure zajišťujeme integraci s dalšími funkcemi a službami Azure, což usn
 * **Automatické škálování:** Pro clustery v Azure poskytujeme integrovanou funkci automatického škálování z důvodu sady škálování virtuálních počítačů. V místním i jiném cloudovém prostředí je nutné vytvořit vlastní funkci automatického škálování nebo ruční škálování pomocí rozhraní API, které Service Fabric zveřejňuje pro škálování clusterů.
 
 ## <a name="benefits-of-standalone-clusters"></a>Výhody samostatných clusterů
+
 * Pro hostování clusteru můžete zvolit libovolného poskytovatele cloudu.
 * Po napsání aplikací Service Fabric aplikace může běžet v několika hostitelských prostředích s minimálním počtem změn.
 * Znalost vytváření Service Fabricch aplikací přenáší z jednoho hostitelského prostředí na jiný.

@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 47bcc9a4f906fa1e0cc0560cdbd2e0cebec481ab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 765bbc352c493124c1adec68eff456f4d0de3d49
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435382"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744874"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integrace Apache Spark a Apache Hive s konektorem skladu podregistru
 
@@ -58,7 +58,7 @@ Zkopírujte informace o uzlu ze souboru `/etc/hosts` v headnode0 vašeho cluster
 
 1. Přejděte do **podregistru** > **Configurations** > **Pokročilé** > **Pokročilé – lokalita registru** > **podregistr. Zookeeper. kvorum** a poznamenejte si hodnotu. Hodnota může být podobná: `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`.
 
-1. Přejděte do **podregistru** > **config** > **Advanced** > **General** > **podregistr. metastore. URI** a poznamenejte si hodnotu. Hodnota může být podobná: `thrift://hn0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
+1. Přejděte do **podregistru** > **config** > **Advanced** > **General** > **podregistr. metastore. URI** a poznamenejte si hodnotu. Hodnota může být podobná: `thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
 
 #### <a name="from-your-apache-spark-cluster"></a>Z Apache Spark clusteru
 

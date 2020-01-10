@@ -2,15 +2,16 @@
 title: Seznámení s mikroslužbami v Azure
 description: Přehled důvodů, proč je vytváření cloudových aplikací s přístupem k mikroslužbám důležité pro vývoj moderních aplikací a způsob, jakým Azure Service Fabric poskytuje platformu k tomuto účelu.
 ms.topic: conceptual
-ms.date: 06/18/2019
-ms.openlocfilehash: e23c571d2000b5565da018d6ddf70a6388cb9226
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/07/2020
+ms.custom: sfrev
+ms.openlocfilehash: af18a6cb45808c0af5ec2782a3fd2100e3b7bf99
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75466317"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750615"
 ---
-# <a name="why-use-a-microservices-approach-to-building-applications"></a>Proč používat přístup k mikroslužbám k sestavování aplikací?
+# <a name="why-use-a-microservices-approach-to-building-applications"></a>Proč používat při sestavování aplikací přístup k mikroslužbám
 
 Pro vývojáře softwaru není nic nového. Obvykle se používá vrstvený přístup s back-end úložištěm, obchodní logikou střední vrstvy a klientským uživatelským rozhraním (UI). V posledních několika letech *se změnily* vývojáři, kteří sestavují distribuované aplikace pro Cloud.
 
@@ -128,7 +129,8 @@ Může se zdát být zřejmé a často je přehlédnutíná, ale mikroslužba po
 
 Stav se liší od diagnostiky. Stav je o mikroslužbě, která hlásí svůj aktuální stav, aby mohla přijmout příslušné akce. Dobrým příkladem je práce s mechanismem upgradu a nasazení za účelem zachování dostupnosti. I když může být služba v současné době poškozená kvůli chybě procesu nebo restartování počítače, služba může pořád fungovat. Poslední věc, kterou potřebujete, je udělat při zahájení upgradu horší situaci. Nejlepším řešením je prozkoumat první nebo čas, kdy se mikroslužba obnoví. Události stavu z mikroslužeb nám pomáhají dělat kvalifikovaná rozhodnutí a v důsledku toho pomáhat vytvářet samoobslužné služby.
 
-## <a name="guidance-for-designing-microservices-on-azure"></a>Doprovodné materiály k navrhování mikroslužeb v Azure 
+## <a name="guidance-for-designing-microservices-on-azure"></a>Doprovodné materiály k navrhování mikroslužeb v Azure
+
 Pokyny k [navrhování a vytváření mikroslužeb v Azure](https://docs.microsoft.com/azure/architecture/microservices/)najdete v centru architektury Azure.
 
 ## <a name="service-fabric-as-a-microservices-platform"></a>Service Fabric jako platforma mikroslužeb
@@ -185,7 +187,6 @@ V této fázi je vaše aplikace plně složena z (nebo rozdělena do) mikrosluž
 Podle potřeby. V Microsoftu, protože tým začali sestavovat Cloud z obchodních důvodů, spousta z nich využila výhod pořizování přístupu typu mikroslužeb. Služba Bing například používala mikroslužby pro roky. Pro jiné týmy byl přístup k mikroslužbám nový. Týmy zjistily, že byly závažné problémy, které je potřeba vyřešit mimo jejich základní oblasti. To je důvod, proč Service Fabric získal jako technologii pro vytváření služeb trakci.
 
 Cílem Service Fabric je snížit složitosti vytváření aplikací mikroslužeb, abyste se nemuseli předávat tolik nákladných přepracování. Začněte s malým, Škálujte v případě potřeby, vyřadí služby, přidejte nové a vývoj s využitím zákazníků. Víme také, že je ještě mnoho dalších problémů vyřešených pro většinu vývojářů pro mikroslužby. Kontejnery a programovací model actor jsou příklady malých kroků v tomto směru. Máme jistotu, že k usnadnění přístupu k mikroslužbám se ukážeme víc.
-
 
 ## <a name="next-steps"></a>Další kroky
 

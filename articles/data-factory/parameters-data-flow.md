@@ -1,21 +1,20 @@
 ---
-title: Azure Data Factory parametry toku dat mapování
+title: Toky dat mapování Parametrizace
 description: Naučte se parametrizovat tok dat mapování z kanálů Data Factory.
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.openlocfilehash: 0a1051d67bf45e96f82833ef8190008204cdc90b
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.date: 01/07/2020
+ms.openlocfilehash: c589cfeab7a812e09ce7f7620e93b72bd362859a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "72387541"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746125"
 ---
-# <a name="mapping-data-flow-parameters"></a>Mapování parametrů toku dat
-
-
+# <a name="parameterizing-mapping-data-flows"></a>Toky dat mapování Parametrizace
 
 Mapování toků dat v Azure Data Factory podporuje použití parametrů. Parametry můžete definovat uvnitř definice toku dat, kterou pak můžete použít v celém výrazu. Hodnoty parametrů lze nastavit pomocí kanálu volání prostřednictvím aktivity spustit tok dat. Máte tři možnosti, jak nastavit hodnoty ve výrazech aktivity toku dat:
 
@@ -28,25 +27,33 @@ Využijte tuto možnost k tomu, aby vaše datové toky byly pro obecné účely,
 > [!NOTE]
 > Chcete-li používat výrazy toku řízení kanálu, musí být parametr toku dat typu String.
 
-## <a name="create-parameters-in-mapping-data-flow"></a>Vytváření parametrů v toku dat mapování
+## <a name="create-parameters-in-a-mapping-data-flow"></a>Vytváření parametrů v toku dat mapování
 
-Pokud chcete do toku dat přidat parametry, klikněte na prázdnou část plátna toku dat a zobrazte obecné vlastnosti. V podokně nastavení se zobrazí karta s názvem Parameters. Kliknutím na tlačítko Nový vygenerujete nový parametr. Pro každý parametr musíte přiřadit název, vybrat typ a volitelně nastavit výchozí hodnotu.
+Pokud chcete do toku dat přidat parametry, klikněte na prázdnou část plátna toku dat a zobrazte obecné vlastnosti. V podokně nastavení se zobrazí karta s názvem **parametr**. Vyberte **Nový** a vygenerujte nový parametr. Pro každý parametr musíte přiřadit název, vybrat typ a volitelně nastavit výchozí hodnotu.
 
 ![Vytvoření parametrů toku dat](media/data-flow/create-params.png "Vytvoření parametrů toku dat")
 
-Parametry lze využít v jakémkoli výrazu toku dat. Parametry začínají na $ a jsou neměnné. Seznam dostupných parametrů se nachází uvnitř Tvůrce výrazů na kartě Parameters (parametry).
+## <a name="use-parameters-in-a-mapping-data-flow"></a>Použití parametrů v toku dat mapování 
+
+Na parametry se dá odkazovat v jakémkoli výrazu toku dat. Parametry začínají na $ a jsou neměnné. Seznam dostupných parametrů se nachází uvnitř Tvůrce výrazů na kartě **parametry** .
 
 ![Výraz parametru toku dat](media/data-flow/parameter-expression.png "Výraz parametru toku dat")
 
-## <a name="use-parameters-in-your-data-flow"></a>Použití parametrů v toku dat
+Další parametry můžete rychle přidat tak, že vyberete **Nový parametr** a zadáte název a typ.
 
-* Hodnoty parametrů můžete použít ve výrazech transformace. Seznam parametrů najdete na kartě Parametry v Tvůrci výrazů. ![Použití parametrů toku dat](media/data-flow/params9.png "Use vstupními parametry toku dat)
+![Výraz parametru toku dat](media/data-flow/new-parameter-expression.png "Výraz parametru toku dat")
 
-* Parametry slouží také ke konfiguraci dynamických hodnot pro nastavení transformace zdroje a jímky. Když kliknete do části konfigurovatelné pole, zobrazí se odkaz Přidat dynamický contect. Kliknutím přejdete na Tvůrce výrazů, kde můžete použít parametry k použití dynamických hodnot. ![Dynamický obsah toku dat](media/data-flow/params6.png "Ddynamický obsah toku ATA ")
+### <a name="passing-in-a-column-name-as-a-parameter"></a>Předání názvu sloupce jako parametru
 
-## <a name="set-mapping-data-flow-parameters-from-pipeline"></a>Nastavení parametrů toku dat mapování z kanálu
+Běžným vzorem je předat název sloupce jako hodnotu parametru. Chcete-li odkazovat na sloupec přidružený k parametru, použijte funkci `byName()`. Nezapomeňte přetypovat sloupec na příslušný typ pomocí funkce přetypování, jako je například `toString()`.
 
-Jakmile vytvoříte tok dat s parametry, můžete ho spustit z kanálu s aktivitou spustit tok dat. Po přidání aktivity na plátno kanálu se zobrazí dostupné parametry toku dat na kartě Parametry aktivity.
+Například pokud jste chtěli namapovat sloupec typu String na základě parametru `columnName`, můžete přidat transformaci odvozeného sloupce, která se rovná `toString(byName($columnName))`.
+
+![Předání názvu sloupce jako parametru](media/data-flow/parameterize-column-name.png "Předání názvu sloupce jako paramete")
+
+## <a name="assign-parameter-values-from-a-pipeline"></a>Přiřazení hodnot parametrů z kanálu
+
+Jakmile vytvoříte tok dat s parametry, můžete ho spustit z kanálu s aktivitou spustit tok dat. Po přidání aktivity na plátno kanálu se zobrazí dostupné parametry toku dat na kartě **parametry** aktivity.
 
 ![Nastavení parametru toku dat](media/data-flow/parameter-assign.png "Nastavení parametru toku dat")
 

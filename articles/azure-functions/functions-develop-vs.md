@@ -4,12 +4,12 @@ description: Naučte se vyvíjet a testovat Azure Functions pomocí Azure Functi
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 04074579b3eb34175a6d29897bbd38b95ae3a596
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 571519b996948a9fc4ac98e18e510fcee1dbef9b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230663"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769761"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
@@ -42,7 +42,7 @@ Další prostředky, které potřebujete, například účet Azure Storage, se v
 
 ### <a name="check-your-tools-version"></a>Podívejte se na verzi nástrojů v aplikaci Visual Studio 2017
 
-1. V nabídce **nástroje** vyberte **rozšíření a aktualizace**. Rozbalte položku nainstalované **nástroje** > a vyberte **nástroje Azure functions a webové úlohy**.
+1. Z **nástroje** nabídce zvolte **rozšíření a aktualizace**. Rozbalte položku nainstalované **nástroje** > a vyberte **nástroje Azure functions a webové úlohy**.
 
     ![Ověření verze nástrojů Functions](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
@@ -63,7 +63,7 @@ Další prostředky, které potřebujete, například účet Azure Storage, se v
 1. Po dokončení aktualizace klikněte na **Zavřít** a restartujte Visual Studio.
 
 > [!NOTE]  
-V aplikaci Visual Studio 2019 nebo novější je rozšíření Azure Functionsch nástrojů aktualizováno v rámci sady Visual Studio.  
+> V aplikaci Visual Studio 2019 nebo novější je rozšíření Azure Functionsch nástrojů aktualizováno v rámci sady Visual Studio.  
 
 ## <a name="create-an-azure-functions-project"></a>Vytvoření projektu Azure Functions
 

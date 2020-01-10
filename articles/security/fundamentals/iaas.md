@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: barclayn
-ms.openlocfilehash: 44542fb299d769a3916407e09691a72efed01c79
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6a775da59680004dadf0cec872057adfd5a16f49
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462431"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749861"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Osvědčené postupy zabezpečení pro úlohy IaaS v Azure
 Tento článek popisuje osvědčené postupy zabezpečení pro virtuální počítače a operační systémy.
@@ -139,7 +139,7 @@ Zneužití prostředků může být problém, když procesy virtuálních počí
 
 Doporučujeme použít [Azure monitor](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) , abyste získali přehled o stavu prostředku. Azure Monitor funkce:
 
-- [Soubory protokolu diagnostiky prostředků](../../azure-monitor/platform/resource-logs-overview.md): monitoruje prostředky virtuálních počítačů a identifikuje potenciální problémy, které by mohly ohrozit výkon a dostupnost.
+- [Soubory protokolu diagnostiky prostředků](../../azure-monitor/platform/platform-logs-overview.md): monitoruje prostředky virtuálních počítačů a identifikuje potenciální problémy, které by mohly ohrozit výkon a dostupnost.
 - [Rozšíření Azure Diagnostics](/azure/azure-monitor/platform/diagnostics-extension-overview): poskytuje funkce pro monitorování a diagnostiku na virtuálních počítačích s Windows. Tyto funkce můžete povolit zahrnutím rozšíření v rámci [šablony Azure Resource Manager](/azure/virtual-machines/windows/extensions-diagnostics-template).
 
 Organizace, které nemonitorují výkon virtuálních počítačů, nemůžou určit, jestli jsou některé změny v vzorech výkonu normální nebo neobvyklé. Virtuální počítač, který spotřebovává více prostředků než obvykle, může indikovat útok z externího prostředku nebo napadený proces spuštěný ve virtuálním počítači.

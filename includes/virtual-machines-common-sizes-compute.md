@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 21b982389b186e949b21352f4b11bd6b4aa06dcb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: dd94f29317e703a68ba1b4a78639f635034d4492
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279171"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75751963"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -44,6 +44,15 @@ Ukládání Premium Storage do mezipaměti: podporováno
 
 <sup>1</sup> virtuální počítače Fsv2-Series jsou součástí technologie Intel® technologie Hyper-Threading.
 
-<sup>2</sup> použití více než 64 vCPU vyžaduje jeden z těchto podporovaných hostovaných operačních systémů: Windows Server 2016, Ubuntu 16,04 LTS, SLES 12 SP2 a Red Hat Enterprise Linux, CentOS 7,3 nebo Oracle Linux 7,3 s lis 4.2.1.
+<sup>2</sup> použití více než 64 vCPU vyžaduje jeden z těchto podporovaných hostovaných operačních systémů:
+- Windows Server 2016 nebo novější
+- Ubuntu 16,04 LTS nebo novější s vyladěným jádrem Azure (4,15 jádro nebo novější)
+- SLES 12 SP2 nebo novější
+- RHEL nebo CentOS verze 6,7 až 6,10 s nainstalovaným balíčkem LIS (nebo novějším) od Microsoftu
+- RHEL nebo CentOS verze 7,3 s nainstalovaným balíčkem aplikace LIS verze 4.2.1 (nebo novější)
+- RHEL nebo CentOS verze 7,6 nebo novější
+- Oracle Linux s UEK4 nebo novějším
+- Debian 9 s jádrem pro porty, Debian 10 nebo novější
+- CoreOS s jádrem 4,14 nebo novějším
 
 <sup>3</sup> instance je izolovaná na hardwaru vyhrazeném pro jediného zákazníka.

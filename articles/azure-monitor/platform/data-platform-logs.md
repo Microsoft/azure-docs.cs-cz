@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 269744d5e9552d87c3fa619f33e02c833b3841be
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2772535ff5eb7cf1e50c40b8ff075f67e71e1326
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894160"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751011"
 ---
 # <a name="logs-in-azure-monitor"></a>Protokoly v Azure Monitoru
 
@@ -26,7 +26,7 @@ ms.locfileid: "74894160"
 Protokoly v Azure Monitor jsou zvláště užitečné pro provádění složitých analýz napříč daty z nejrůznějších zdrojů. Tento článek popisuje, jak jsou v Azure Monitor strukturované protokoly, co můžete s daty dělat, a identifikuje různé zdroje dat, které ukládají data v protokolech.
 
 > [!NOTE]
-> Je důležité rozlišovat mezi protokoly Azure Monitor a zdroji dat protokolů v Azure. Například události na úrovni předplatného v Azure se zapisují do [protokolu aktivit](activity-logs-overview.md) , který můžete zobrazit v nabídce Azure monitor. Většina prostředků zapisuje provozní informace do [protokolu prostředků](resource-logs-overview.md) , který můžete přemístit do různých umístění. Protokoly Azure Monitor jsou datovou platformou protokolu, která shromažďuje protokoly aktivit a protokoly prostředků spolu s dalšími daty monitorování a zajišťuje tak hloubkovou analýzu v celé sadě prostředků.
+> Je důležité rozlišovat mezi protokoly Azure Monitor a zdroji dat protokolů v Azure. Například události na úrovni předplatného v Azure se zapisují do [protokolu aktivit](platform-logs-overview.md) , který můžete zobrazit v nabídce Azure monitor. Většina prostředků zapisuje provozní informace do [protokolu prostředků](platform-logs-overview.md) , který můžete přemístit do různých umístění. Protokoly Azure Monitor jsou datovou platformou protokolu, která shromažďuje protokoly aktivit a protokoly prostředků spolu s dalšími daty monitorování a zajišťuje tak hloubkovou analýzu v celé sadě prostředků.
 
 ## <a name="what-are-azure-monitor-logs"></a>Co jsou protokoly Azure Monitor?
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: bcf1c9eca91b73b8efb0a67f9fb532c62a2aa194
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 817e11fdf70c8043d2eb860fe15cc0a7907c6656
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75486739"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750644"
 ---
 # <a name="scalability-and-performance-targets-for-standard-storage-accounts"></a>Škálovatelnost a výkonnostní cíle pro účty úložiště úrovně Standard
 
@@ -26,5 +26,5 @@ ms.locfileid: "75486739"
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-- [Cíle škálovatelnosti pro účty úložiště objektů blob bloku úrovně Premium](../blobs/scalability-targets-premium-block-blobs.md)
 - [Cíle škálovatelnosti pro poskytovatele prostředků Azure Storage](../common/scalability-targets-resource-provider.md)
+- [Omezení a kvóty předplatného Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md)

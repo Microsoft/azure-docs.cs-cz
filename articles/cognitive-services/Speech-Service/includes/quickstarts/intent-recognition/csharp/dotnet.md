@@ -10,19 +10,19 @@ ms.date: 01/02/2020
 ms.topic: include
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 58cdf3ba369c4377f123f4e3dfe34414c5491f38
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: acd122668a5aa70becbf284bd064535e859ad01b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660463"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772945"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
-* Pokud se jedná o váš C# první projekt, pomocí tohoto průvodce <a href="../quickstarts/create-project.md?tabs=dotnet" target="_blank">vytvořte prázdný ukázkový projekt</a>.
-* <a href="../quickstarts/setup-platform.md?tabs=dotnet" target="_blank">Nainstalujte sadu Speech SDK pro vývojové prostředí</a>.
+* Pokud se jedná o váš C# první projekt, pomocí tohoto průvodce <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=dotnet" target="_blank">vytvořte prázdný ukázkový projekt</a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=dotnet" target="_blank">Nainstalujte sadu Speech SDK pro vývojové prostředí</a>.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Vytvoření aplikace v LUIS pro rozpoznávání záměrů
 

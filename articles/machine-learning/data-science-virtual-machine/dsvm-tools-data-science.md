@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 3b5c8ce1b30e8038397c68be2672ac947450d438
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: c77e1834804dba0d2e5fd6eaec574ffce19d1d45
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615447"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771202"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Machine Learning a nástroje pro datové vědy na Azure Data věda Virtual Machines
 Azure Data věda Virtual Machines (DSVMs) mají bohatou sadu nástrojů a knihoven pro strojové učení, které jsou dostupné v oblíbených jazycích, jako je Python, R nebo Helena.
@@ -23,7 +23,7 @@ Tady jsou některé z nástrojů pro strojové učení a knihovny v DSVMs.
 
 ## <a name="azure-machine-learning-sdk-for-python"></a>Sada Azure Machine Learning SDK pro Python
 
-Podívejte se na kompletní odkaz na [sadu SDK Azure Machine Learning pro Python](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml).
+Podívejte se na kompletní odkaz na [sadu SDK Azure Machine Learning pro Python](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml).
 
 |    |           |
 | ------------- | ------------- |

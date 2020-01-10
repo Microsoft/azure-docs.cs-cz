@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: vlvinogr
-ms.openlocfilehash: 7f5fe404c93b7db22444b9dad97a0d3474c33a16
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 670050efe01fb658fab52a43914f193e9798b828
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257074"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751137"
 ---
 # <a name="security-controls-for-api-management"></a>Ovládací prvky zabezpečení pro API Management
 
@@ -20,7 +20,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do API Manag
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
-## <a name="network"></a>Síť
+## <a name="network"></a>Network (Síť)
 
 | Řízení zabezpečení | Ano/Ne | Poznámky | Dokumentace |
 |---|---|--|--|
@@ -34,24 +34,24 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do API Manag
 | Řízení zabezpečení | Ano/Ne | Poznámky| Dokumentace |
 |---|---|--|--|
 | Podpora monitorování Azure (Log Analytics, App Insights atd.)| Ano | | |
-| Protokolování a audit roviny řízení a správy| Ano | [Protokoly aktivit Azure Monitor](../azure-monitor/platform/activity-logs-overview.md) | |
-| Protokolování a audit roviny dat| Ano | [Azure monitor diagnostické protokoly](../azure-monitor/platform/resource-logs-overview.md) a (volitelně) [Azure Application Insights](../azure-monitor/app/app-insights-overview.md).  | |
+| Protokolování a audit roviny řízení a správy| Ano | [Protokoly aktivit Azure Monitor](../azure-monitor/platform/platform-logs-overview.md) | |
+| Protokolování a audit roviny dat| Ano | [Azure monitor diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md) a (volitelně) [Azure Application Insights](../azure-monitor/app/app-insights-overview.md).  | |
 
 
 ## <a name="identity"></a>Identita
 
 | Řízení zabezpečení | Ano/Ne | Poznámky| Dokumentace |
 |---|---|--|--|
-| Ověřování| Ano | |  |
-| Authorization| Ano | |  |
+| Ověření| Ano | |  |
+| Autorizace| Ano | |  |
 
 ## <a name="data-protection"></a>Ochrana dat
 
 | Řízení zabezpečení | Ano/Ne | Poznámky | Dokumentace |
 |---|---|--|--|
-| Šifrování na straně serveru v klidovém umístění: Klíče spravované společností Microsoft | Ano | Citlivá data, jako jsou certifikáty, klíče a hodnoty tajného klíče, jsou šifrovány pomocí klíčů pro instanci služby spravované službou. |  |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft | Ano | Citlivá data, jako jsou certifikáty, klíče a hodnoty tajného klíče, jsou šifrovány pomocí klíčů pro instanci služby spravované službou. |  |
 | Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Ne | Všechny šifrovací klíče jsou na instanci služby a jsou spravované službou. |  |
-| Šifrování na úrovni sloupce (Azure Data Services)| neuvedeno | |  |
+| Šifrování na úrovni sloupce (Azure Data Services)| Nevztahuje se | |  |
 | Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ano | Připojení k [rychlé trase](../expressroute/index.yml) a síti VNet zajišťuje [síť Azure](../virtual-network/index.yml). |  |
 | Zašifrovaná volání rozhraní API| Ano | Volání roviny správy se provádí prostřednictvím [Azure Resource Manager](../azure-resource-manager/index.yml) přes TLS. Vyžaduje se platný webový token JSON (JWT).  Volání roviny dat je možné zabezpečit pomocí protokolu TLS a jednoho z podporovaných mechanismů ověřování (například klientský certifikát nebo token JWT). |   |
  |
@@ -66,7 +66,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do API Manag
 
 Tato část se týká běžných chyb zabezpečení, které neovlivňují Azure API Management.
 
-| Chyba zabezpečení               | Popis                                                                                                                                                                                                                                                                                                               |
+| Ohrožení zabezpečení               | Popis                                                                                                                                                                                                                                                                                                               |
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Ticketbleed (CVE-2016-9244) | Ticketbleed je zranitelnost při implementaci rozšíření TLS SessionTicket, které najdete v některých produktech F5. Umožňuje únik ("vykrvení") až 31 bajtů dat z neinicializované paměti. To je způsobeno tím, že přeplňování zásobníku TLS předává ID relace předané z klienta s daty, aby byla 32 bitů dlouhá. |
 

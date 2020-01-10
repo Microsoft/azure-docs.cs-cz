@@ -3,12 +3,12 @@ title: Změnit nastavení clusteru Azure Service Fabric
 description: Tento článek popisuje nastavení prostředků infrastruktury a zásady upgradu prostředků infrastruktury, které můžete přizpůsobit.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: aab59af7031d8b2d8aa52e9ba13b73a204f19acc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ba98d4d30d14cb3a1981652fc0b86354923a8851
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458337"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772121"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Přizpůsobení Service Fabricho nastavení clusteru
 Tento článek popisuje různá nastavení prostředků infrastruktury pro váš Service Fabric cluster, který můžete přizpůsobit. Pro clustery hostované v Azure můžete nastavení přizpůsobit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí Azure Resource Manager šablony. Další informace najdete v tématu [Upgrade konfigurace clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). U samostatných clusterů můžete upravit nastavení aktualizací souboru *ClusterConfig. JSON* a provést upgrade konfigurace v clusteru. Další informace najdete v tématu [Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -210,9 +210,9 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 | --- | --- | --- | --- |
 |AllowNodeStateRemovedForSeedNode|logická hodnota, výchozí hodnota je FALSE. |Dynamický|Příznak označující, zda je povoleno odebrat stav uzlu pro počáteční uzel |
 |BuildReplicaTimeLimit|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (3600)|Dynamický|Zadejte časový interval v sekundách. Časový limit pro vytvoření stavové repliky; po které se bude iniciovat zpráva o stavu upozornění |
-|ClusterPauseThreshold|int, výchozí hodnota je 1.|Dynamický|Pokud počet uzlů v systému přechází pod tuto hodnotu, pak na umístění; Vyrovnávání zatížení; a převzetí služeb při selhání se zastavilo. |
+|ClusterPauseThreshold|Int, výchozí hodnota je 1.|Dynamický|Pokud počet uzlů v systému přechází pod tuto hodnotu, pak na umístění; Vyrovnávání zatížení; a převzetí služeb při selhání se zastavilo. |
 |CreateInstanceTimeLimit|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (300)|Dynamický|Zadejte časový interval v sekundách. Časový limit pro vytvoření bezstavové instance; po které se bude iniciovat zpráva o stavu upozornění |
-|ExpectedClusterSize|int, výchozí hodnota je 1.|Dynamický|Při počátečním spuštění clusteru; FM bude čekat na to, než se před zahájením umístění dalších služeb zahlásí tento počet uzlů. včetně systémových služeb, jako je pojmenování. Zvýšení hodnoty zvyšuje čas potřebný ke spuštění clusteru. ale zabrání nadměrnému zatížení uzlů a také dalším přesunům, které budou nezbytné k tomu, aby další uzly byly online. Tato hodnota by měla být obecně nastavená na malý zlomek počáteční velikosti clusteru. |
+|ExpectedClusterSize|Int, výchozí hodnota je 1.|Dynamický|Při počátečním spuštění clusteru; FM bude čekat na to, než se před zahájením umístění dalších služeb zahlásí tento počet uzlů. včetně systémových služeb, jako je pojmenování. Zvýšení hodnoty zvyšuje čas potřebný ke spuštění clusteru. ale zabrání nadměrnému zatížení uzlů a také dalším přesunům, které budou nezbytné k tomu, aby další uzly byly online. Tato hodnota by měla být obecně nastavená na malý zlomek počáteční velikosti clusteru. |
 |ExpectedNodeDeactivationDuration|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (60.0 \* 30)|Dynamický|Zadejte časový interval v sekundách. Toto je očekávaná doba, po kterou se uzel dokončí deaktivací. |
 |ExpectedNodeFabricUpgradeDuration|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (60.0 \* 30)|Dynamický|Zadejte časový interval v sekundách. Toto je očekávaná doba trvání uzlu, který se má upgradovat během Windows Fabric upgradu. |
 |ExpectedReplicaUpgradeDuration|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (60.0 \* 30)|Dynamický|Zadejte časový interval v sekundách. Toto je očekávaná doba trvání pro všechny repliky, které se mají upgradovat na uzlu během upgradu aplikace. |
@@ -525,9 +525,9 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |ConstraintFixPartialDelayAfterNodeDown | Čas v sekundách, výchozí hodnota je 120. |Dynamický| Zadejte časový interval v sekundách. Neopravujte porušení omezení FaultDomain a UpgradeDomain v rámci této doby za událostí uzlu. |
 |ConstraintViolationHealthReportLimit | int, výchozí hodnota je 50 |Dynamický| Definuje počet porušujících omezení repliky musí být před provedením diagnostiky trvale neopravené a budou vygenerovány sestavy o stavu. |
 |DetailedConstraintViolationHealthReportLimit | Int, výchozí hodnota je 200 |Dynamický| Definuje počet porušujících omezení repliky musí být před provedením diagnostiky trvale neopravené a budou vygenerovány podrobné sestavy o stavu. |
-|DetailedDiagnosticsInfoListLimit | Int, výchozí hodnota je 15. |Dynamický| Definuje počet diagnostických položek (s podrobnými informacemi) na omezení, které chcete zahrnout před zkrácením diagnostiky.|
-|DetailedNodeListLimit | Int, výchozí hodnota je 15. |Dynamický| Definuje počet uzlů na omezení, které mají být zahrnuty před zkrácením v sestavách neumístěných replik. |
-|DetailedPartitionListLimit | Int, výchozí hodnota je 15. |Dynamický| Definuje počet oddílů na položku diagnostiky pro omezení, které chcete zahrnout před zkrácením diagnostiky. |
+|DetailedDiagnosticsInfoListLimit | int, výchozí hodnota je 15. |Dynamický| Definuje počet diagnostických položek (s podrobnými informacemi) na omezení, které chcete zahrnout před zkrácením diagnostiky.|
+|DetailedNodeListLimit | int, výchozí hodnota je 15. |Dynamický| Definuje počet uzlů na omezení, které mají být zahrnuty před zkrácením v sestavách neumístěných replik. |
+|DetailedPartitionListLimit | int, výchozí hodnota je 15. |Dynamický| Definuje počet oddílů na položku diagnostiky pro omezení, které chcete zahrnout před zkrácením diagnostiky. |
 |DetailedVerboseHealthReportLimit | Int, výchozí hodnota je 200 | Dynamický|Definuje počet, kolikrát musí být Neumístěná replika trvale Neumístěná před vygenerováním podrobných sestav o stavu. |
 |EnforceUserServiceMetricCapacities|logická hodnota, výchozí hodnota je FALSE. | Statický |Povolí ochranu služeb prostředků infrastruktury. Všechny uživatelské služby jsou v rámci jednoho objektu úlohy/CGROUP a jsou omezené na zadané množství prostředků. Tato hodnota musí být statická (vyžaduje restart hostitele fabrichost vrátilo) jako vytvoření nebo odebrání objektu uživatelské úlohy a nastavení omezení provedené během otevřeného hostitele prostředků infrastruktury. |
 |FaultDomainConstraintPriority | Int, výchozí hodnota je 0 |Dynamický| Určuje prioritu omezení domény selhání: 0: tvrdý; 1: soft; negativní: ignoruje se. |
@@ -555,7 +555,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |PlacementSearchTimeout | Čas v sekundách, výchozí hodnota je 0,5. |Dynamický| Zadejte časový interval v sekundách. Při umísťování služeb; předtím, než vrátíte výsledek, hledejte na příliš dlouhou dobu. |
 |PLBRefreshGap | Čas v sekundách, výchozí hodnota je 1. |Dynamický| Zadejte časový interval v sekundách. Definuje minimální dobu, která musí uplynout před tím, než PLB obnoví stav. |
 |PreferredLocationConstraintPriority | Int, výchozí hodnota je 2| Dynamický|Určuje prioritu upřednostňovaného omezení umístění: 0: tvrdý; 1: soft; 2: optimalizace; negativní: ignorovat |
-|PreferUpgradedUDs|logická hodnota, výchozí hodnota je TRUE.|Dynamický|Zapne a vypne logiku, která preferuje přesun na již upgradovanou UDs.|
+|PreferUpgradedUDs|logická hodnota, výchozí hodnota je FALSE.|Dynamický|Zapne a vypne logiku, která preferuje přesun na již upgradovanou UDs. Počínaje hodnotou SF 7,0 je výchozí hodnota pro tento parametr změněna z hodnoty TRUE na FALSE.|
 |PreventTransientOvercommit | Logická hodnota, výchozí hodnota je false. | Dynamický|Určuje, že se má PLB okamžitě počítat s prostředky, které budou uvolněny pomocí iniciované přesunutí. Ve výchozím nastavení. PLB může iniciovat přesun a přesunout se na stejný uzel, který může vytvořit přechodný přepisování. Nastavením tohoto parametru na hodnotu true zabráníte tomu, aby se tyto typy nadtvrzování a příkazu defrag na vyžádání (neboli placementWithMove) zakázaly. |
 |ScaleoutCountConstraintPriority | Int, výchozí hodnota je 0 |Dynamický| Určuje prioritu omezení počtu navýšení kapacity: 0: tvrdý; 1: soft; negativní: ignoruje se. |
 |SwapPrimaryThrottlingAssociatedMetric | řetězec, výchozí hodnota je ""|Statický| Název přidružené metriky pro toto omezení |

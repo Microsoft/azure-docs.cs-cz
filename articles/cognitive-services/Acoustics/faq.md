@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: f0484fc9fc2af5514ba0f5b61277146a51757057
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: fa4b6499260219b0eb8ea4df4b4ccfd5263b57bb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855035"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770199"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>Nejčastější dotazy k akustickým projektům
 
@@ -28,7 +28,7 @@ Projekt akustické sady modulů plug-in je akustický systém, který vypočít�
 
 Můžete si stáhnout modul [Plug-in Unity pro projekt](https://www.microsoft.com/download/details.aspx?id=57346) nebo [akustický modul plug-in Unreal](https://www.microsoft.com/download/details.aspx?id=58090).
 
-## <a name="does-project-acoustics-support-ltxgt-platform"></a>Podporuje &lt;to akustické projektové navýšení na platformě x&gt; ?
+## <a name="does-project-acoustics-support-ltxgt-platform"></a>Podporují se v projektech&gt; platformu &lt;x?
 
 Podpora platforem v projektech se vyvíjí na základě zákaznických potřeb. Kontaktujte nás na [fóru problémové problémy s projektem](https://github.com/microsoft/ProjectAcoustics/issues) , kde se můžete dotazovat na podporu pro další platformy.
 
@@ -76,6 +76,10 @@ Akustické a spolehlivé zvukové parametry jsou vhodné pro vysoce složitá vi
 
 Zanesli se skládá z akustických simulací vln cuboidch oblastí simulace, které jsou na každém testu naslouchacího procesu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="is-my-source-content-secure"></a>Je můj zdrojový obsah zabezpečený?
+
+Akustické projekty neodesílají geometrii zdrojové scény do cloudu. Místo toho simulace funguje na voxelization vaší scény, která je kombinována s daty umístění sondy a ukládána ve vlastním formátu.     
+
+## <a name="next-steps"></a>Další kroky
 * Vyzkoušejte si [projekt akustického obsahu Unity](unity-quickstart.md) nebo [ukázkový obsah Unreal](unreal-quickstart.md)
 

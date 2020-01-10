@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: f7446bc4a7f827fe1c65a0ce8df8ce6a5627624c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4850a58ae96b9fc5e8293efbac0de447915289ca
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533675"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763347"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Kurz: vytvoření kanálu Azure Machine Learning pro dávkové vyhodnocování
 
@@ -139,7 +139,7 @@ model = Model.register(model_path="models/inception_v3.ckpt",
 
 Kanály strojového učení nejde spouštět místně, takže je spouštíte na cloudových prostředcích nebo *vzdálených výpočetních cílech*. Vzdálený výpočetní cíl je opakovaně použitelný virtuální výpočetní prostředí, ve kterém spouštíte experimenty a pracovní postupy strojového učení. 
 
-Spusťte následující kód pro vytvoření cíle [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) s povoleným GPU a pak ho připojte k pracovnímu prostoru. Další informace o cílových výpočetních operacích najdete v [článku konceptu](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target).
+Spusťte následující kód pro vytvoření cíle [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) s povoleným GPU a pak ho připojte k pracovnímu prostoru. Další informace o cílových výpočetních operacích najdete v [článku konceptu](https://docs.microsoft.com/azure/machine-learning/concept-compute-target).
 
 
 ```python

@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: 2b4893ab804d7e3394320284399626437e5e78dc
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 8a85dd3d3d80a8c3988c7653eb74f403fdc54cd4
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645120"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772495"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Bezpečně uložit nastavení tajné aplikace pro webovou aplikaci
 
@@ -57,28 +57,32 @@ Pokud již máte vytvořenou webovou aplikaci, udělte webové aplikaci přístu
 4. Do projektu přidejte následující balíčky NuGet:
 
     ```
+    Microsoft.Azure.KeyVault
     Microsoft.Azure.Services.AppAuthentication
+    Microsoft.Extensions.Configuration.AzureKeyVault
     ```
 5. Do souboru Program.cs přidejte následující kód:
 
     ```csharp
-    public static IWebHost BuildWebHost(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((ctx, builder) =>
-            {
-                var keyVaultEndpoint = GetKeyVaultEndpoint();
-                if (!string.IsNullOrEmpty(keyVaultEndpoint))
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+             Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((ctx, builder) =>
                 {
-                    var azureServiceTokenProvider = new AzureServiceTokenProvider();
-                    var keyVaultClient = new KeyVaultClient(
-                        new KeyVaultClient.AuthenticationCallback(
-                            azureServiceTokenProvider.KeyVaultTokenCallback));
-                            builder.AddAzureKeyVault(
-                            keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
-                        }
-                    })
-                    .UseStartup<Startup>()
-                    .Build();
+                    var keyVaultEndpoint = GetKeyVaultEndpoint();
+                    if (!string.IsNullOrEmpty(keyVaultEndpoint))
+                    {
+                        var azureServiceTokenProvider = new AzureServiceTokenProvider();
+                        var keyVaultClient = new KeyVaultClient(
+                            new KeyVaultClient.AuthenticationCallback(
+                                azureServiceTokenProvider.KeyVaultTokenCallback));
+                        builder.AddAzureKeyVault(
+                        keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+                    }
+                })
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
 
         private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT");
     ```

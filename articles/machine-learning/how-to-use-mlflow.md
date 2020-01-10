@@ -11,19 +11,19 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3af8f0768183c07bd656bbb50893985057e9e861
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 6203d78ee8d9c0a9837d03859856c5d0265422ac
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536418"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772325"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>Sledování metrik a nasazení modelů pomocí MLflow a Azure Machine Learning (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se dozvíte, jak povolit sledování identifikátoru URI a protokolovacího rozhraní API pro MLflow, označované jako [sledování MLflow](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api), s Azure Machine Learning. V takovém případě vám umožní:
 
-+ Sledujte metriky a metriky experimentů a artefakty v [pracovním prostoru Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/concept-azure-machine-learning-architecture#workspaces). Pokud již pro vaše experimenty používáte sledování MLflow, pracovní prostor poskytuje centralizované, zabezpečené a škálovatelné umístění pro ukládání výukových metrik a modelů.
++ Sledujte metriky a metriky experimentů a artefakty v [pracovním prostoru Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workspaces). Pokud již pro vaše experimenty používáte sledování MLflow, pracovní prostor poskytuje centralizované, zabezpečené a škálovatelné umístění pro ukládání výukových metrik a modelů.
 
 + Nasaďte MLflow experimenty jako webovou službu Azure Machine Learning. Nasazením jako webové služby můžete v produkčních modelech použít funkce monitorování Azure Machine Learning a detekce posunu dat. 
 
@@ -265,7 +265,7 @@ runid = runs[0].id
 model_save_path = 'model'
 ```
 
-### <a name="create-docker-image"></a>Vytvořit obrázek Docker
+### <a name="create-docker-image"></a>Vytvoření image Dockeru
 
 Funkce `mlflow.azureml.build_image()` sestaví image Docker z uloženého modelu v rámci způsobu, který se používá. Automaticky vytvoří kód obálky Inferencing specifický pro rozhraní a určí závislosti balíčku. Zadejte cestu k modelu, váš pracovní prostor, ID běhu a další parametry.
 

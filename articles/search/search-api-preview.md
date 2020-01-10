@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 24e16942410c72640628bd4120d05a85e68de993
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 01/04/2020
+ms.openlocfilehash: ee8e11670d5b3e0f0edd57e3f87566faa60d4bc4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720021"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754415"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Rozhraní REST API pro službu Azure Kognitivní hledání – verze 2019-05-06 – Preview
 
@@ -25,11 +25,11 @@ Tento článek popisuje REST API `api-version=2019-05-06-Preview` verzi služby 
 
 ## <a name="new-in-2019-05-06-preview"></a>Novinka ve verzi 2019-05-06 – Preview
 
-+ [Přírůstkové indexování](cognitive-search-incremental-indexing-conceptual.md) je nový režim pro indexování, který přidává stav a ukládání do mezipaměti do dovednosti, takže můžete znovu použít stávající výstup, když se nemění zdrojová data, indexery a definice dovednosti. Tato funkce se vztahuje pouze na obohacení definované rozpoznávání dovednosti.
++ [Přírůstkové obohacení (Preview)](cognitive-search-incremental-indexing-conceptual.md) přidá do kanálu pro rozšíření ukládání do mezipaměti, což vám umožní znovu použít stávající výstup, pokud cílené změny, jako je například aktualizace dovednosti nebo jiného objektu, nemění obsah. Ukládání do mezipaměti se týká pouze obohacených dokumentů vyprodukovaných dovednosti.
 
-+ [Cosmos DB indexer](search-howto-index-cosmosdb.md) podporuje rozhraní API MongoDB, rozhraní Gremlin api a rozhraní API Cassandra.
++ [Cosmos DB indexer](search-howto-index-cosmosdb.md) podporuje rozhraní MongoDB API (Preview), rozhraní Gremlin API (Preview) a rozhraní API Cassandra (Preview).
 
-+ [Azure Data Lake Storage Gen2 indexer](search-howto-index-azure-data-lake-storage.md) může indexovat obsah a metadata z Data Lake Storage Gen2.
++ [Azure Data Lake Storage Gen2 indexer (Preview)](search-howto-index-azure-data-lake-storage.md) může indexovat obsah a metadata z Data Lake Storage Gen2.
 
 + [Extrakce dokumentu (ve verzi Preview)](cognitive-search-skill-document-extraction.md) je vnímání dovedností, která se používá při indexování, která umožňuje extrakci obsahu souboru v rámci dovednosti. Dříve došlo k odhalení dokumentu pouze před dovednosti prováděním. Při přidání této dovednosti můžete tuto operaci provést i v rámci provádění dovednosti.
 

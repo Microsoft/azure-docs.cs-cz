@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0bb928fe23fcfc3580b0c3951c48f2636ab86c81
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 16fb47879daae6bfbf0929e842a3a6227d1524a9
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75526698"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772274"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Spuštění úloh datových věd: zkoumání, modelování a nasazení
 
@@ -30,7 +30,7 @@ Typické úloh vědeckého zpracování zahrnout zkoumání dat, modelování a 
 
 Můžete provádět mezi odborníky přes data, prozkoumávání a vytváření sestav v mnoha různými způsoby: pomocí knihoven nebo balíčků, které jsou k dispozici pro jazyk Python (například matplotlib) nebo s jazykem R (ggplot nebo mřížkových příkladu). Odborníci přes data můžete přizpůsobit podle potřeb zkoumání dat pro konkrétní scénáře takového kódu. Požadavky pro práci se strukturovanými daty se liší, který pro Nestrukturovaná data, jako je například text nebo obrázky. 
 
-Produkty jako Azure Machine Learning také poskytují [pokročilou přípravu dat](../service/how-to-transform-data.md) pro tahání a zkoumání dat, včetně vytváření funkcí. Uživatel měli rozhodnout na nástroje, knihovny a balíčky, které osvědčené suite jejich potřeb. 
+Produkty jako Azure Machine Learning také poskytují [pokročilou přípravu dat](../how-to-create-register-datasets.md) pro tahání a zkoumání dat, včetně vytváření funkcí. Uživatel měli rozhodnout na nástroje, knihovny a balíčky, které osvědčené suite jejich potřeb. 
 
 Dodávky na konci této fáze je sestava průzkumu data. Sestava by měla poskytnout poměrně rozsáhlý náhled na data, která má být použit pro modelování a určuje, zda je vhodné, pokračujte ke kroku modelování data posouzení. Vědecké zpracování týmových dat (TDSP) nástroje popsané v následujících částech poloautomatických průzkumných, modelování a vytváření sestav také poskytuje standardizované zkoumání a modelování sestavy. 
 

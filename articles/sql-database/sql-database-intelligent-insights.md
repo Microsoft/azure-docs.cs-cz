@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: f17c588d28d0904041970eee8e9aa2201f905836
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: b576510749e691b6255c849f14275db221c54460
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151433"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745120"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Intelligent Insights používání AI k monitorování a řešení potíží s výkonem databáze
 
@@ -28,7 +28,7 @@ Intelligent Insights pomocí integrovaných inteligentních funkcí průběžně
 
 Intelligent Insights je jedinečná funkce integrovaných inteligentních funkcí Azure, která poskytuje následující hodnotu:
 
-- Proaktivní monitorování
+- Proaktivní sledování
 - Přehledy výkonu s upraveným výkonem
 - Předčasné zjištění snížení výkonu databáze
 - Zjistila se analýza problémů hlavní příčiny.
@@ -164,7 +164,7 @@ Model nadměrné doby čekání sleduje jednotlivé databázové dotazy. Detekuj
 - Dosažení limitů prostředků elastického fondu
 - Nadměrný počet vláken pracovních procesů nebo relací
 - Nadměrné zamykání databáze
-- Tlak paměti
+- Přetížení paměti
 - Další statistiky čekání
 
 Dosažení limitů prostředků nebo omezení prostředků elastického fondu znamená, že spotřeba dostupných prostředků v rámci předplatného nebo elastického fondu překročila absolutní prahové hodnoty. Tyto statistiky označují snížení výkonu úloh. Nadměrný počet vláken pracovního procesu nebo relace označuje podmínku, ve které počet pracovních vláken nebo relací iniciovaly předané absolutní prahové hodnoty. Tyto statistiky označují snížení výkonu úloh.
@@ -190,4 +190,4 @@ Pokud některá z monitorovaných kritických výjimek překročí absolutní pr
 - Naučte [se řešit problémy s výkonem SQL Database Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
 - Použijte [protokol Intelligent Insights SQL Database Performance Diagnostics](sql-database-intelligent-insights-use-diagnostics-log.md).
 - Naučte se [monitorovat SQL Database pomocí SQL Analytics](../azure-monitor/insights/azure-sql.md).
-- Naučte se [shromažďovat a využívat data protokolu z vašich prostředků Azure](../azure-monitor/platform/resource-logs-overview.md).
+- Naučte se [shromažďovat a využívat data protokolu z vašich prostředků Azure](../azure-monitor/platform/platform-logs-overview.md).

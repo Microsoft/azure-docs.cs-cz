@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d75f12953c0ec767dba8a49b3ed76c176223b30c
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613886"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749230"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro úložiště objektů BLOB
 
 Společnost Microsoft vyvinula řadu osvědčených postupů pro vývoj vysoce výkonných aplikací s využitím úložiště objektů BLOB. Tento kontrolní seznam popisuje klíčové postupy, které můžou vývojáři použít k optimalizaci výkonu. Při navrhování aplikace a celého procesu mějte na paměti tyto postupy.
 
-Azure Storage má cíle škálovatelnosti a výkonu pro kapacitu, rychlost transakcí a šířku pásma. Další informace o cílech Azure Storage škálovatelnosti najdete v tématu [Azure Storage škálovatelnost a výkonnostní cíle pro účty úložiště](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Azure Storage má cíle škálovatelnosti a výkonu pro kapacitu, rychlost transakcí a šířku pásma. Další informace o cílech Azure Storage škálovatelnosti najdete v tématu [škálovatelnost a výkonnostní cíle pro účty úložiště úrovně Standard](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) a [škálovatelnost a výkonnostní cíle pro úložiště objektů BLOB](scalability-targets.md).
 
 ## <a name="checklist"></a>Kontrolní seznam
 
@@ -285,5 +285,6 @@ Objekty blob stránky jsou vhodné, pokud aplikace potřebuje pro data provádě
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Cíle škálovatelnosti a výkonnosti pro účty úložiště Azure Storage](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Škálovatelnost a výkonnostní cíle pro úložiště objektů BLOB](scalability-targets.md)
+- [Škálovatelnost a výkonnostní cíle pro účty úložiště úrovně Standard](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [Stavové a chybové kódy](/rest/api/storageservices/Status-and-Error-Codes2)

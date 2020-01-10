@@ -7,20 +7,23 @@ ms.date: 09/26/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 363739bbab67b92e78e0cdb56cf98cdb8e1446eb
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 44fe68b8b04a1192c928e04c7d2a9d147f400130
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71409100"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748288"
 ---
 # <a name="azure-storage-samples-using-javascript"></a>Ukázky Azure Storage pomocí JavaScriptu
 
 Následující tabulky obsahují přehled našich ukázkových úložišť a scénářů popsaných v jednotlivých ukázkách. Kliknutím na odkazy zobrazíte odpovídající vzorový kód v GitHubu.
 
-## <a name="blob-samples"></a>Ukázky objektů BLOB
+> [!NOTE]
+> Tyto ukázky používají knihovnu Azure Storage JavaScript v10 za účelem Library. V12 Code najdete v tématu [ukázky](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples) v úložišti GitHub.
 
-| **Scénář** | **Vzorový kód** |
+## <a name="blob-samples-v10"></a>Ukázky objektů BLOB (v10 za účelem)
+
+| **Scénář** | **Ukázkový kód** |
 |--------------|-----------------|
 | Objekt blob bloku | [Začínáme se službou Azure Blob Service v JavaScriptu](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/basic.js#L43) |
 | Šifrování na straně klienta | [Správa klíčů účtu úložiště v hodnotě klíče Azure pomocí JavaScriptu](https://github.com/Azure-Samples/key-vault-node-storage-accounts) |
@@ -34,7 +37,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 | Metadata kontejneru | [Začínáme se službou Azure Blob Service v JavaScriptu](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L409) |
 | Vlastnosti kontejneru | [Začínáme se službou Azure Blob Service v JavaScriptu](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L377) |
 | Získat rozsahy stránek | [Začínáme se službou Azure Blob Service v JavaScriptu](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/basic.js#L170) |
-| Objekt BLOB zapůjčení | [Začínáme se službou Azure Blob Service v JavaScriptu](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L216) |
+| Operace Lease Blob | [Začínáme se službou Azure Blob Service v JavaScriptu](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L216) |
 | Kontejner zapůjčení | [Začínáme se službou Azure Blob Service v JavaScriptu](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L185) |
 | Výpis objektu BLOB nebo kontejneru | [Začínáme se službou Azure Blob Service v JavaScriptu](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L134) |
 | Objekt blob stránky | [Začínáme se službou Azure Blob Service v JavaScriptu](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/basic.js#L129) |
@@ -43,9 +46,9 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 | Nastavení pravidel CORS | [Začínáme se službou Azure Blob Service v JavaScriptu](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L152) |
 | Objekt BLOB snímku | [Začínáme se službou Azure Blob Service v JavaScriptu](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/basic.js#L79) |
 
-## <a name="file-samples"></a>Ukázky souborů
+## <a name="file-samples-v10"></a>Ukázky souborů (v10 za účelem)
 
-| **Scénář** | **Vzorový kód** |
+| **Scénář** | **Ukázkový kód** |
 |--------------|-----------------|
 | Vytváření sdílených složek, adresářů a souborů | [Začínáme se službou Azure File Service v JavaScriptu](https://github.com/Azure-Samples/storage-file-node-getting-started/blob/master/fileSample.js#L97) |
 | Odstranit sdílené složky/adresáře/soubory | [Začínáme se službou Azure File Service v JavaScriptu](https://github.com/Azure-Samples/storage-file-node-getting-started/blob/master/fileSample.js#L135) |
@@ -53,9 +56,9 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 | Výpis adresářů a souborů | [Začínáme se službou Azure File Service v JavaScriptu](https://github.com/Azure-Samples/storage-file-node-getting-started/blob/master/fileSample.js#L115) |
 | Vypsat sdílené složky | [Začínáme se službou Azure File Service v JavaScriptu](https://github.com/Azure-Samples/storage-file-node-getting-started/blob/master/fileSample.js#L187) |
 
-## <a name="queue-samples"></a>Ukázky front
+## <a name="queue-samples-v10"></a>Ukázky front (v10 za účelem)
 
-| **Scénář** | **Vzorový kód** |
+| **Scénář** | **Ukázkový kód** |
 |--------------|-----------------|
 | Přidat zprávu | [Začínáme ve službě Azure Queue Service v JavaScriptu](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/basic.js#L142) |
 | Šifrování na straně klienta | [Správa klíčů účtu úložiště v Azure Key Vault pomocí JavaScriptu](https://github.com/Azure-Samples/key-vault-node-storage-accounts) |
@@ -71,12 +74,12 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
 | Statistika fronty | [Začínáme ve službě Azure Queue Service v JavaScriptu](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/advanced.js#L149) |
 | Aktualizovat zprávu | [Začínáme ve službě Azure Queue Service v JavaScriptu](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/basic.js#L176) |
 
-## <a name="table-samples"></a>Ukázky tabulek
+## <a name="table-samples-v10"></a>Ukázky tabulek (v10 za účelem)
 
-| **Scénář** | **Vzorový kód** |
+| **Scénář** | **Ukázkový kód** |
 |--------------|-----------------|
 | Entity Batch | [Začínáme se službou Azure Table Service v JavaScriptu](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L87) |
-| Vytvořit tabulku | [Začínáme se službou Azure Table Service v JavaScriptu](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41) |
+| Create Table | [Začínáme se službou Azure Table Service v JavaScriptu](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41) |
 | Odstranit entitu/tabulku | [Začínáme se službou Azure Table Service v JavaScriptu](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L67) |
 | Vložit/sloučit/nahradit entitu | [Začínáme se službou Azure Table Service v JavaScriptu](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L49) |
 | Seznam tabulek | [Začínáme se službou Azure Table Service v JavaScriptu](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L63) |
@@ -108,7 +111,7 @@ Pokud hledáte pokyny k instalaci a Začínáme s klientskými knihovnami Azure 
 
 Informace o ukázkách pro jiné jazyky:
 
-* .NET: [Ukázky pro Azure Storage s použitím .NET](storage-samples-dotnet.md)
-* Java: [Ukázky pro Azure Storage s použitím Javy](storage-samples-java.md)
-* Python: [Ukázky Azure Storage pomocí Pythonu](storage-samples-python.md)
-* Všechny ostatní jazyky: [Ukázky Azure Storage](storage-samples.md)
+* .NET: [Azure Storage ukázky pomocí .NET](storage-samples-dotnet.md)
+* Java: [Azure Storage ukázky pomocí jazyka Java](storage-samples-java.md)
+* Python: [Azure Storage ukázky pomocí Pythonu](storage-samples-python.md)
+* Všechny ostatní jazyky: [ukázky Azure Storage](storage-samples.md)

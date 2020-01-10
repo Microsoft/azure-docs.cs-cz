@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 224744bd49add514be165f4955739651fcbf6b61
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6215884a5f11e92d3a6ab61d86c338c30c090ee6
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231664"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769978"
 ---
 # <a name="configuration-based-on-stig"></a>Konfigurace na základě STIG
 
@@ -39,7 +39,7 @@ PowerSTIG tento problém řeší tím, že poskytuje [složené prostředky](htt
 Po vygenerování konfigurací můžete použít [konfigurační skripty DSC](/powershell/scripting/dsc/configurations/configurations) k vygenerování souborů MOF a [nahrání souborů MOF do Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
 Pak můžete své servery zaregistrovat z [místního](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) prostředí nebo [v Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) a vyžádat si konfigurace.
 
-Pokud si chcete vyzkoušet PowerSTIG, navštivte [Galerie prostředí PowerShell](http://www.powershellgallery.com) a Stáhněte řešení nebo klikněte na web projektu a zobrazte [dokumentaci](https://github.com/microsoft/powerstig).
+Pokud si chcete vyzkoušet PowerSTIG, navštivte [Galerie prostředí PowerShell](https://www.powershellgallery.com) a Stáhněte řešení nebo klikněte na web projektu a zobrazte [dokumentaci](https://github.com/microsoft/powerstig).
 
 ## <a name="next-steps"></a>Další kroky
 

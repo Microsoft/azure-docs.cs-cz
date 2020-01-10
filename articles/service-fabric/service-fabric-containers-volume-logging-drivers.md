@@ -1,22 +1,21 @@
 ---
-title: Service Fabric ovladač svazku souborů Azure (GA)
+title: Ovladač svazku souborů Azure pro Service Fabric
 description: Service Fabric podporuje použití souborů Azure k zálohování svazků z vašeho kontejneru.
 ms.topic: conceptual
 ms.date: 6/10/2018
-ms.openlocfilehash: 0bd84c8367f722c013abff5c2a6caaa991fa841f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 514a0cb12359d58e38ebc30ae12cdb277757f2b2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464785"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750038"
 ---
-# <a name="service-fabric-azure-files-volume-driver"></a>Service Fabric ovladač svazku souborů Azure
-Modul plug-in svazku soubory Azure, [modul plug-in Docker Volume](https://docs.docker.com/engine/extend/plugins_volume/) , který poskytuje svazky založené na [souborech Azure](/azure/storage/files/storage-files-introduction) pro kontejnery Docker, je teď **GA (všeobecně dostupná)** .
+# <a name="azure-files-volume-driver-for-service-fabric"></a>Ovladač svazku souborů Azure pro Service Fabric
 
-Tento modul plug-in svazku Docker je zabalený jako aplikace Service Fabric, kterou jde nasadit do clusterů Service Fabric. Jejím cílem je poskytnout svazky založené na Azure Files pro ostatní kontejnerové aplikace služby Service Fabric, které jsou do příslušného clusteru nasazené.
+Ovladač svazku souborů Azure je [modul plug-in Docker Volume](https://docs.docker.com/engine/extend/plugins_volume/) , který poskytuje svazky na bázi [Azure Files](/azure/storage/files/storage-files-introduction) pro kontejnery Docker. Je zabalen jako aplikace Service Fabric, která se dá nasadit do clusteru Service Fabric, aby poskytovala svazky pro jiné Service Fabric aplikace kontejneru v clusteru.
 
 > [!NOTE]
-> 6\.5.661.9590 verze modulu plug-in svazku souborů Azure Files je GA (všeobecně dostupná) verze. 
+> Pro obecnou dostupnost byla vydaná verze 6.5.661.9590 modulu plug-in svazku souborů Azure.
 >
 
 ## <a name="prerequisites"></a>Požadavky
@@ -55,7 +54,6 @@ V části fabricSettings v šabloně Azure Resource Manager (pro nasazení Azure
   }
 ]
 ```
-
 
 ## <a name="deploy-a-sample-application-using-service-fabric-azure-files-volume-driver"></a>Nasazení ukázkové aplikace pomocí Service Fabric ovladače svazku souborů Azure
 

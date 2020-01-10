@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: e41817e3409f79aab3fbb3d57195b6b7ff13e7af
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: badfec71ad44fd9eebc748f716301ad6731883cf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448230"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770352"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Rychlý Start: Klientská knihovna pro Python
 
@@ -153,7 +153,7 @@ Po nastavení imagí definujte v horní části skriptu popisek pro objekt **Per
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroupvars)]
 
-Potom do dolní části skriptu přidejte následující kód. Tento kód vytvoří **PersongGroup** a tři objekty **Person** .
+Potom do dolní části skriptu přidejte následující kód. Tento kód vytvoří objekty **Person** a tři **osoby** .
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_create)]
 

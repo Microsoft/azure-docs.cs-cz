@@ -8,12 +8,12 @@ ms.date: 03/03/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 04206a45a3322a1b0d28e3dfeed65225773e9038
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: efca3dad6d8bfadbc334067b0189d2bea5aef445
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844856"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750522"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -23,7 +23,7 @@ Chcete-li použít Analýza úložiště, je nutné ji povolit individuálně pr
 
 Agregovaná data se ukládají do známého objektu BLOB (pro protokolování) a v známých tabulkách (pro metriky), ke kterým může být přistupovaná pomocí Blob service a Table service rozhraní API.
 
-U množství uložených dat, která jsou nezávislá na celkovém limitu pro váš účet úložiště, Analýza úložiště má limit 20 TB. Další informace o limitech účtu úložiště najdete v tématu [Azure Storage škálovatelnost a výkonnostní cíle](storage-scalability-targets.md).
+U množství uložených dat, která jsou nezávislá na celkovém limitu pro váš účet úložiště, Analýza úložiště má limit 20 TB. Další informace o limitech účtu úložiště najdete v tématu [škálovatelnost a cíle výkonnosti pro účty úložiště úrovně Standard](scalability-targets-standard-account.md).
 
 Podrobný návod k používání Analýza úložiště a dalších nástrojů k identifikaci, diagnostice a odstraňování potíží souvisejících s Azure Storage najdete v tématu [monitorování, diagnostika a řešení potíží s Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md).
 
@@ -46,7 +46,7 @@ Každý požadavek na službu úložiště účtu je buď fakturovatelný, nebo 
 
 Při prohlížení dat Analýza úložiště můžete pomocí tabulek v tématu [Analýza úložiště protokolované operace a stavové zprávy](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) určit, které požadavky budou Fakturovatelné. Pak můžete porovnat protokoly a data metrik ve stavových zprávách a zjistit, jestli jste se vám vyrovnali za konkrétní požadavek. K prozkoumání dostupnosti pro službu úložiště nebo jednotlivé operace rozhraní API můžete použít také tabulky v předchozím tématu.
 
-## <a name="next-steps"></a>Další postup
-* [Monitorování účtu úložiště v Azure Portal](storage-monitor-storage-account.md)
+## <a name="next-steps"></a>Další kroky
+* [Monitorování účtu úložiště na webu Azure Portal](storage-monitor-storage-account.md)
 * [Analýza úložiště metriky](storage-analytics-metrics.md)
 * [Protokolování Analýza úložiště](storage-analytics-logging.md)

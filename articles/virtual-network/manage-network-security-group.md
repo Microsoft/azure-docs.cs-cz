@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: kumud
-ms.openlocfilehash: 97737feca466a6b373a60f01624a038512203bfd
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d6c948c7fdfe2c5dc89c3e284ada33c2f7b542db
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645918"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750669"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Vytvoření, změna nebo odstranění skupiny zabezpečení sítě
 
@@ -67,7 +67,7 @@ Do vyhledávacího pole v horní části portálu zadejte *skupiny zabezpečení
 1. Do vyhledávacího pole v horní části portálu zadejte *skupiny zabezpečení sítě*. Pokud se ve výsledcích hledání zobrazí **skupiny zabezpečení sítě** , vyberte ji.
 2. V seznamu vyberte skupinu zabezpečení sítě, pro kterou chcete zobrazit podrobnosti. V části **Nastavení** můžete zobrazit **příchozí pravidla zabezpečení** a **odchozí pravidla zabezpečení**, k **síťovým rozhraním** a **podsítím** , ke kterým je skupina zabezpečení sítě přidružená. Můžete taky povolit nebo zakázat **diagnostické protokoly** a zobrazit **platná pravidla zabezpečení**. Další informace najdete v tématech [diagnostické protokoly](virtual-network-nsg-manage-log.md) a [zobrazení platných pravidel zabezpečení](diagnose-network-traffic-filter-problem.md).
 3. Další informace o běžných nastaveních Azure uvedených v následujících článcích:
-    *   [Protokol aktivit](../azure-monitor/platform/activity-logs-overview.md)
+    *   [Protokol aktivit](../azure-monitor/platform/platform-logs-overview.md)
     *   [Řízení přístupu (IAM)](../role-based-access-control/overview.md)
     *   [Značky](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Počtu](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

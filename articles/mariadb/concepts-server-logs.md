@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 20e521c36db0ab98e4b11d948516ccd04b5f5fdd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 651094f043162cdc5f6d522c90c7567ae94a4274
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432027"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746656"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Pomalé dotazování protokolů v Azure Database for MariaDB
 V Azure Database for MariaDB je k dispozici pro uživatele protokol pomalých dotazů. Přístup k transakčnímu protokolu není podporován. Protokol pomalých dotazů se dá použít k identifikaci problémových míst výkonu pro řešení problémů.
@@ -46,7 +46,7 @@ Mezi další parametry, které můžete upravit, patří:
 Úplný popis pomalých parametrů protokolu dotazů naleznete v [dokumentaci k protokolu pomalého dotazů](https://mariadb.com/kb/en/library/slow-query-log-overview/) MariaDB.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
-Azure Database for MariaDB je integrován s protokoly diagnostiky Azure Monitor. Po povolení protokolů pomalých dotazů na serveru MariaDB se můžete rozhodnout, že se mají vysílat pro Azure Monitor protokolů, Event Hubs nebo Azure Storage. Další informace o tom, jak povolit diagnostické protokoly, naleznete v části Postupy v [dokumentaci diagnostické protokoly](../azure-monitor/platform/resource-logs-overview.md).
+Azure Database for MariaDB je integrován s protokoly diagnostiky Azure Monitor. Po povolení protokolů pomalých dotazů na serveru MariaDB se můžete rozhodnout, že se mají vysílat pro Azure Monitor protokolů, Event Hubs nebo Azure Storage. Další informace o tom, jak povolit diagnostické protokoly, naleznete v části Postupy v [dokumentaci diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md).
 
 > [!IMPORTANT]
 > Tato diagnostická funkce pro protokoly serveru je k dispozici pouze v Pro obecné účely a v paměťově optimalizovaných [cenových úrovních](concepts-pricing-tiers.md).

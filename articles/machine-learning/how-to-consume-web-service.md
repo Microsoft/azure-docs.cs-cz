@@ -1,0 +1,513 @@
+---
+title: Vytvořit klienta pro model nasazený jako webovou službu
+titleSuffix: Azure Machine Learning
+description: Naučte se využívat webovou službu vygenerovanou při nasazení modelu s modelem Azure Machine Learning. Webová služba zpřístupňuje REST API. Vytvořte klienty pro toto rozhraní API pomocí programovacího jazyka dle vašeho výběru.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: core
+ms.topic: conceptual
+ms.author: aashishb
+author: aashishb
+ms.reviewer: larryfr
+ms.date: 01/07/2020
+ms.custom: seodec18
+ms.openlocfilehash: 4c3e60e9c296dc8e3a1e31a52a262d8462237407
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75765659"
+---
+# <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využití Azure Machine Learning model nasadit jako webovou službu
+[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
+Rozhraní REST API Azure Machine Learning modelu jako webové služby vytvoří. Můžete odesílat data do tohoto rozhraní API a přijímat předpovědi vrácený modelu. V tomto dokumentu se dozvíte, jak vytvořit klienty pro webovou službu pomocí C#, jazyka Java a Pythonu.
+
+Webovou službu můžete vytvořit, když nasadíte image do Azure Container Instances, služby Azure Kubernetes nebo polí FPGA (s programovatelnými poli brány). Můžete vytvářet bitové kopie z registrovaných modelů a souborů bodování. Identifikátor URI, který se používá pro přístup k webové službě, načtete pomocí [sady Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Pokud je povolené ověřování, můžete k získání ověřovacích klíčů nebo tokenů použít taky sadu SDK.
+
+Obecný pracovní postup pro vytvoření klienta, který používá webovou službu Machine Learning, je:
+
+1. K získání informací o připojení použijte sadu SDK.
+1. Určete typ dat požadavku, který model používá.
+1. Vytvořte aplikaci, která bude volat webovou službu.
+
+> [!TIP]
+> Příklady v tomto dokumentu jsou ručně vytvořeny bez použití specifikace OpenAPI (Swagger). Pokud jste pro nasazení povolili specifikaci OpenAPI, můžete k vytváření klientských knihoven pro vaši službu použít nástroje, jako je třeba [Swagger-CodeGen](https://github.com/swagger-api/swagger-codegen) .
+
+## <a name="connection-information"></a>Informace o připojení
+
+> [!NOTE]
+> K získání informací o webové službě použijte sadu SDK Azure Machine Learning. Toto je Python SDK. Pro vytvoření klienta pro službu můžete použít libovolný jazyk.
+
+Třída [AzureML. Core. WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) poskytuje informace, které potřebujete k vytvoření klienta. Následující vlastnosti `Webservice` jsou užitečné při vytváření klientské aplikace:
+
+* `auth_enabled` – Pokud je povolené klíčové ověřování, `True`; v opačném případě `False`.
+* Pokud je povoleno ověřování tokenu `token_auth_enabled`, `True`; v opačném případě `False`.
+* `scoring_uri` Adresa – rozhraní REST API.
+* `swagger_uri` – adresa specifikace OpenAPI Tento identifikátor URI je k dispozici, pokud jste povolili automatické generování schématu. Další informace najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md#schema).
+
+Existují tři způsoby pro načtení těchto informací pro nasazené webové služby:
+
+* Při nasazení modelu, `Webservice` je vrácen objekt s informace o službě:
+
+    ```python
+    service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
+    service.wait_for_deployment(show_output = True)
+    print(service.scoring_uri)
+    print(service.swagger_uri)
+    ```
+
+* Můžete použít `Webservice.list` k načtení seznamu nasazené webové služby pro modely v pracovním prostoru. Můžete přidat filtry k zúžení seznamu vrácených informací. Další informace o tom, co je možné filtrovat, najdete v dokumentaci ke službě [WebService. list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) .
+
+    ```python
+    services = Webservice.list(ws)
+    print(services[0].scoring_uri)
+    print(services[0].swagger_uri)
+    ```
+
+* Pokud znáte název nasazené služby, můžete vytvořit novou instanci `Webservice`a jako parametry zadejte název pracovního prostoru a služby. Nový objekt obsahuje informace o nasazené služby.
+
+    ```python
+    service = Webservice(workspace=ws, name='myservice')
+    print(service.scoring_uri)
+    print(service.swagger_uri)
+    ```
+
+### <a name="secured-web-service"></a>Zabezpečená webová služba
+
+Pokud jste nasadili nasazenou webovou službu pomocí certifikátu SSL, můžete se pomocí [protokolu HTTPS](https://en.wikipedia.org/wiki/HTTPS) připojit ke službě pomocí bodování nebo identifikátoru URI Swagger. Protokol HTTPS pomáhá zabezpečit komunikaci mezi klientem a webovou službou tím, že šifruje komunikaci mezi nimi. Šifrování používá [protokol TLS (Transport Layer Security)](https://en.wikipedia.org/wiki/Transport_Layer_Security). Protokol TLS se někdy označuje jako *SSL (Secure Sockets Layer)* (SSL), což bylo předchůdce TLS.
+
+> [!IMPORTANT]
+> Webové služby nasazené pomocí Azure Machine Learning podporují pouze TLS verze 1,2. Při vytváření klientské aplikace se ujistěte, že tato verze podporuje.
+
+Další informace najdete v tématu [použití protokolu SSL k zabezpečení webové služby prostřednictvím Azure Machine Learning](how-to-secure-web-service.md).
+
+### <a name="authentication-for-services"></a>Ověřování pro služby
+
+Azure Machine Learning poskytuje dva způsoby, jak řídit přístup k webovým službám.
+
+|Metoda ověřování|ACI|AKS|
+|---|---|---|
+|Klíč|Zakázáno ve výchozím nastavení| Ve výchozím nastavení povolena|
+|Podpisový| Není k dispozici| Zakázáno ve výchozím nastavení |
+
+Když posíláte požadavek službě, která je zabezpečená pomocí klíče nebo tokenu, použijte k předání klíče nebo tokenu __autorizační__ hlavičku. Klíč nebo token musí být formátován jako `Bearer <key-or-token>`, kde `<key-or-token>` je vaše klíč nebo hodnota tokenu.
+
+#### <a name="authentication-with-keys"></a>Ověřování pomocí klíčů
+
+Pokud povolíte ověřování pro nasazení, automaticky se vytvoří ověřovací klíče.
+
+* Ověřování je ve výchozím nastavení povolené při nasazení do služby Azure Kubernetes.
+* Ověřování je ve výchozím nastavení zakázáno při nasazení do Azure Container Instances.
+
+K řízení ověřování použijte parametr `auth_enabled` při vytváření nebo aktualizaci nasazení.
+
+Pokud je ověřování zapnuté, můžete použít `get_keys` metody k získání primární a sekundární ověřovací klíč:
+
+```python
+primary, secondary = service.get_keys()
+print(primary)
+```
+
+> [!IMPORTANT]
+> Pokud je potřeba znovu vygenerovat klíč, použijte [ `service.regen_key` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
+
+#### <a name="authentication-with-tokens"></a>Ověřování pomocí tokenů
+
+Pokud povolíte ověřování tokenu pro webovou službu, musí uživatel poskytnout webové službě Azure Machine Learning token JWT, aby k němu měl přístup. 
+
+* Ověřování tokenu je ve výchozím nastavení zakázáno při nasazení do služby Azure Kubernetes.
+* Ověřování tokenu není při nasazení do Azure Container Instances podporováno.
+
+K řízení ověřování pomocí tokenu použijte parametr `token_auth_enabled` při vytváření nebo aktualizaci nasazení.
+
+Pokud je povoleno ověřování tokenu, můžete použít metodu `get_token` k načtení nosného tokenu a jeho doby vypršení platnosti tokenů:
+
+```python
+token, refresh_by = service.get_token()
+print(token)
+```
+
+> [!IMPORTANT]
+> Po `refresh_by`ovém čase tokenu budete muset požádat o nový token. 
+
+## <a name="request-data"></a>Data žádosti
+
+Rozhraní REST API očekává, že text žádosti jako dokument JSON s následující strukturou:
+
+```json
+{
+    "data":
+        [
+            <model-specific-data-structure>
+        ]
+}
+```
+
+> [!IMPORTANT]
+> Strukturu dat musí odpovídat jaké hodnoticí skript a modelu v expect služby. Hodnoticí skript může upravit data před předáním do modelu.
+
+Například modelu v [trénování v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) příklad očekává, že pole 10 čísel. Skript bodování pro tento příklad vytvoří pole numpy z požadavku a předá ho do modelu. Následující příklad ukazuje data, která očekává, že tato služba:
+
+```json
+{
+    "data": 
+        [
+            [
+                0.0199132141783263, 
+                0.0506801187398187, 
+                0.104808689473925, 
+                0.0700725447072635, 
+                -0.0359677812752396, 
+                -0.0266789028311707, 
+                -0.0249926566315915, 
+                -0.00259226199818282, 
+                0.00371173823343597, 
+                0.0403433716478807
+            ]
+        ]
+}
+```
+
+Webová služba může přijmout víc kopií dat v jedné žádosti. Vrátí dokument JSON obsahující pole s odpovědí.
+
+### <a name="binary-data"></a>Binární data
+
+Informace o tom, jak povolit podporu binárních dat ve službě, najdete v tématu [binární data](how-to-deploy-and-where.md#binary).
+
+### <a name="cross-origin-resource-sharing-cors"></a>Sdílení prostředků mezi zdroji (CORS)
+
+Informace o povolení podpory CORS ve službě najdete v tématu [sdílení prostředků mezi zdroji](how-to-deploy-and-where.md#cors).
+
+## <a name="call-the-service-c"></a>Volání služby (C#)
+
+Tento příklad ukazuje, jak používat C# k volání webové služby vytvořené z [trénování v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) příkladu:
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
+
+namespace MLWebServiceClient
+{
+    // The data structure expected by the service
+    internal class InputData
+    {
+        [JsonProperty("data")]
+        // The service used by this example expects an array containing
+        //   one or more arrays of doubles
+        internal double[,] data;
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Set the scoring URI and authentication key or token
+            string scoringUri = "<your web service URI>";
+            string authKey = "<your key or token>";
+
+            // Set the data to be sent to the service.
+            // In this case, we are sending two sets of data to be scored.
+            InputData payload = new InputData();
+            payload.data = new double[,] {
+                {
+                    0.0199132141783263,
+                    0.0506801187398187,
+                    0.104808689473925,
+                    0.0700725447072635,
+                    -0.0359677812752396,
+                    -0.0266789028311707,
+                    -0.0249926566315915,
+                    -0.00259226199818282,
+                    0.00371173823343597,
+                    0.0403433716478807
+                },
+                {
+                    -0.0127796318808497, 
+                    -0.044641636506989, 
+                    0.0606183944448076, 
+                    0.0528581912385822, 
+                    0.0479653430750293, 
+                    0.0293746718291555, 
+                    -0.0176293810234174, 
+                    0.0343088588777263, 
+                    0.0702112981933102, 
+                    0.00720651632920303
+                }
+            };
+
+            // Create the HTTP client
+            HttpClient client = new HttpClient();
+            // Set the auth header. Only needed if the web service requires authentication.
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authKey);
+
+            // Make the request
+            try {
+                var request = new HttpRequestMessage(HttpMethod.Post, new Uri(scoringUri));
+                request.Content = new StringContent(JsonConvert.SerializeObject(payload));
+                request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                var response = client.SendAsync(request).Result;
+                // Display the response from the web service
+                Console.WriteLine(response.Content.ReadAsStringAsync().Result);
+            }
+            catch (Exception e)
+            {
+                Console.Out.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+
+Vrácené výsledky jsou podobné následující dokument JSON:
+
+```json
+[217.67978776218715, 224.78937091757172]
+```
+
+## <a name="call-the-service-go"></a>Volání služby (Přejít)
+
+Tento příklad ukazuje použití jazyka Go k volání webové služby vytvořené z [trénování v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) příkladu:
+
+```go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+// Features for this model are an array of decimal values
+type Features []float64
+
+// The web service input can accept multiple sets of values for scoring
+type InputData struct {
+    Data []Features `json:"data",omitempty`
+}
+
+// Define some example data
+var exampleData = []Features{
+    []float64{
+        0.0199132141783263, 
+        0.0506801187398187, 
+        0.104808689473925, 
+        0.0700725447072635, 
+        -0.0359677812752396, 
+        -0.0266789028311707, 
+        -0.0249926566315915, 
+        -0.00259226199818282, 
+        0.00371173823343597, 
+        0.0403433716478807,
+    },
+    []float64{
+        -0.0127796318808497, 
+        -0.044641636506989, 
+        0.0606183944448076, 
+        0.0528581912385822, 
+        0.0479653430750293, 
+        0.0293746718291555, 
+        -0.0176293810234174, 
+        0.0343088588777263, 
+        0.0702112981933102, 
+        0.00720651632920303,
+    },
+}
+
+// Set to the URI for your service
+var serviceUri string = "<your web service URI>"
+// Set to the authentication key or token (if any) for your service
+var authKey string = "<your key or token>"
+
+func main() {
+    // Create the input data from example data
+    jsonData := InputData{
+        Data: exampleData,
+    }
+    // Create JSON from it and create the body for the HTTP request
+    jsonValue, _ := json.Marshal(jsonData)
+    body := bytes.NewBuffer(jsonValue)
+
+    // Create the HTTP request
+    client := &http.Client{}
+    request, err := http.NewRequest("POST", serviceUri, body)
+    request.Header.Add("Content-Type", "application/json")
+
+    // These next two are only needed if using an authentication key
+    bearer := fmt.Sprintf("Bearer %v", authKey)
+    request.Header.Add("Authorization", bearer)
+
+    // Send the request to the web service
+    resp, err := client.Do(request)
+    if err != nil {
+        fmt.Println("Failure: ", err)
+    }
+
+    // Display the response received
+    respBody, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(respBody))
+}
+```
+
+Vrácené výsledky jsou podobné následující dokument JSON:
+
+```json
+[217.67978776218715, 224.78937091757172]
+```
+
+## <a name="call-the-service-java"></a>Volání služby (Java)
+
+Tento příklad ukazuje použití Javy k volání webové služby vytvořené z [trénování v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) příkladu:
+
+```java
+import java.io.IOException;
+import org.apache.http.client.fluent.*;
+import org.apache.http.entity.ContentType;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+public class App {
+    // Handle making the request
+    public static void sendRequest(String data) {
+        // Replace with the scoring_uri of your service
+        String uri = "<your web service URI>";
+        // If using authentication, replace with the auth key or token
+        String key = "<your key or token>";
+        try {
+            // Create the request
+            Content content = Request.Post(uri)
+            .addHeader("Content-Type", "application/json")
+            // Only needed if using authentication
+            .addHeader("Authorization", "Bearer " + key)
+            // Set the JSON data as the body
+            .bodyString(data, ContentType.APPLICATION_JSON)
+            // Make the request and display the response.
+            .execute().returnContent();
+            System.out.println(content);
+        }
+        catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+    public static void main(String[] args) {
+        // Create the data to send to the service
+        JSONObject obj = new JSONObject();
+        // In this case, it's an array of arrays
+        JSONArray dataItems = new JSONArray();
+        // Inner array has 10 elements
+        JSONArray item1 = new JSONArray();
+        item1.add(0.0199132141783263);
+        item1.add(0.0506801187398187);
+        item1.add(0.104808689473925);
+        item1.add(0.0700725447072635);
+        item1.add(-0.0359677812752396);
+        item1.add(-0.0266789028311707);
+        item1.add(-0.0249926566315915);
+        item1.add(-0.00259226199818282);
+        item1.add(0.00371173823343597);
+        item1.add(0.0403433716478807);
+        // Add the first set of data to be scored
+        dataItems.add(item1);
+        // Create and add the second set
+        JSONArray item2 = new JSONArray();
+        item2.add(-0.0127796318808497);
+        item2.add(-0.044641636506989);
+        item2.add(0.0606183944448076);
+        item2.add(0.0528581912385822);
+        item2.add(0.0479653430750293);
+        item2.add(0.0293746718291555);
+        item2.add(-0.0176293810234174);
+        item2.add(0.0343088588777263);
+        item2.add(0.0702112981933102);
+        item2.add(0.00720651632920303);
+        dataItems.add(item2);
+        obj.put("data", dataItems);
+
+        // Make the request using the JSON document string
+        sendRequest(obj.toJSONString());
+    }
+}
+```
+
+Vrácené výsledky jsou podobné následující dokument JSON:
+
+```json
+[217.67978776218715, 224.78937091757172]
+```
+
+## <a name="call-the-service-python"></a>Volání služby (Python)
+
+Tento příklad ukazuje použití Pythonu k volání webové služby vytvořené z [trénování v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) příkladu:
+
+```python
+import requests
+import json
+
+# URL for the web service
+scoring_uri = '<your web service URI>'
+# If the service is authenticated, set the key or token
+key = '<your key or token>'
+
+# Two sets of data to score, so we get two results back
+data = {"data":
+        [
+            [
+                0.0199132141783263,
+                0.0506801187398187,
+                0.104808689473925,
+                0.0700725447072635,
+                -0.0359677812752396,
+                -0.0266789028311707,
+                -0.0249926566315915,
+                -0.00259226199818282,
+                0.00371173823343597,
+                0.0403433716478807
+            ],
+            [
+                -0.0127796318808497,
+                -0.044641636506989,
+                0.0606183944448076,
+                0.0528581912385822,
+                0.0479653430750293,
+                0.0293746718291555,
+                -0.0176293810234174,
+                0.0343088588777263,
+                0.0702112981933102,
+                0.00720651632920303]
+        ]
+        }
+# Convert to JSON string
+input_data = json.dumps(data)
+
+# Set the content type
+headers = {'Content-Type': 'application/json'}
+# If authentication is enabled, set the authorization header
+headers['Authorization'] = f'Bearer {key}'
+
+# Make the request and display the response
+resp = requests.post(scoring_uri, input_data, headers=headers)
+print(resp.text)
+```
+
+Vrácené výsledky jsou podobné následující dokument JSON:
+
+```JSON
+[217.67978776218715, 224.78937091757172]
+```
+
+## <a name="consume-the-service-from-power-bi"></a>Využívání služby od Power BI
+
+Power BI podporuje využití webových služeb Azure Machine Learning k rozšíření dat v Power BI pomocí předpovědi. 
+
+Pro vygenerování webové služby, která je podporována pro použití v Power BI, musí schéma podporovat formát vyžadovaný Power BI. [Naučte se vytvořit schéma podporované Power BI](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#example-entry-script).
+
+Po nasazení webové služby je tato služba příchodná z Power BIch toků dat. [Naučte se využívat Azure Machine Learning webové služby od Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
+
+## <a name="next-steps"></a>Další kroky
+
+Pokud chcete zobrazit referenční architekturu pro bodování modelů Pythonu a hloubkového učení v reálném čase, jděte do [centra architektury Azure](/azure/architecture/reference-architectures/ai/realtime-scoring-python).

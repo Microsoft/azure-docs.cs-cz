@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e00a810e7977e1c45c1833e0b901ff6804f7fb32
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 3abbf2c8e0734d17aabadd2ae5f61cc03889964b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113284"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754322"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Správa služeb pro Azure Kognitivní hledání v Azure Portal
 > [!div class="op_single_selector"]
@@ -71,7 +71,7 @@ I když můžeme data vyřazením z provozu, služba Azure Kognitivní hledání
 
 Pokud se v případě závažných selhání mimo kontrolu Microsoftu vyžaduje nepřetržitá služba, můžete [zřídit další službu](search-create-service-portal.md) v jiné oblasti a implementovat strategii geografické replikace, abyste zajistili, že indexy budou plně redundantní napříč všemi službami.
 
-Zákazníci, kteří používají [indexery](search-indexer-overview.md) k naplnění a aktualizaci indexů, mohou zvládnout zotavení po havárii pomocí geograficky specifických indexerů využívajících stejný zdroj dat. Dvě služby v různých oblastech, z nichž každý spouští indexer, můžou indexovat stejný zdroj dat, aby bylo možné geografickou redundanci. Pokud provádíte indexování ze zdrojů dat, které jsou taky geograficky redundantní, uvědomte si, že služby Azure Kognitivní hledání indexery můžou provádět přírůstkové indexování jenom z primárních replik. V případě události převzetí služeb při selhání nezapomeňte indexer znovu nasměrovat na novou primární repliku. 
+Zákazníci, kteří používají [indexery](search-indexer-overview.md) k naplnění a aktualizaci indexů, mohou zvládnout zotavení po havárii pomocí geograficky specifických indexerů využívajících stejný zdroj dat. Dvě služby v různých oblastech, z nichž každý spouští indexer, můžou indexovat stejný zdroj dat, aby bylo možné geografickou redundanci. Pokud provádíte indexování ze zdrojů dat, které jsou taky geograficky redundantní, uvědomte si, že služby Azure Kognitivní hledání indexery můžou provádět přírůstkové indexování (sloučení aktualizací z nových, upravených nebo odstraněných dokumentů) z primárních replik. V případě události převzetí služeb při selhání nezapomeňte indexer znovu nasměrovat na novou primární repliku. 
 
 Pokud nepoužíváte indexery, použijete kód aplikace k paralelnímu nabízení objektů a dat do různých vyhledávacích služeb. Další informace najdete v tématu o [výkonu a optimalizaci v Azure kognitivní hledání](search-performance-optimization.md).
 
@@ -83,7 +83,7 @@ V opačném případě váš kód aplikace použitý k vytvoření a naplnění 
 
 <a id="scale"></a>
 
-## <a name="scale-up-or-down"></a>Vertikální navýšení nebo snížení kapacity
+## <a name="scale-up-or-down"></a>Vertikálně navýšit nebo snížit kapacitu
 Každá vyhledávací služba začíná minimálně jednou replikou a jedním oddílem. Pokud jste se zaregistrovali do [úrovně, která poskytuje vyhrazené prostředky](search-limits-quotas-capacity.md), klikněte na dlaždici **škálování** na řídicím panelu služby a upravte využití prostředků.
 
 Když přidáváte kapacitu prostřednictvím kteréhokoli prostředku, služba je automaticky používá. V této části se nevyžaduje žádná další akce, ale dojde k mírnému zpoždění před tím, než se dopustí dopad nového prostředku. Zřizování dalších prostředků může trvat 15 minut nebo déle.

@@ -1,6 +1,6 @@
 ---
 title: Migrace z Google Maps | Microsoft Docs
-description: Kurz migrace z Google Maps na Azure Maps.
+description: Kurz migrace z Google Maps na Microsoft Azure Maps Průvodce vás seznámí s postupem, jak přepnout na Azure Maps rozhraní API a sady SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/17/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: ea9afc413a7fb187042c9d832fa1c16802993eed
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6709c42b19b18c8cae783a6b4ecc2c0721e1217d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75481227"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770301"
 ---
 # <a name="migrate-from-google-maps"></a>Migrace z Google Maps
 
@@ -22,7 +22,7 @@ V tomto kurzu najdete informace o tom, jak migrovat webové a mobilní aplikace 
 
 ## <a name="azure-maps-platform-overview"></a>Přehled platformy Azure Maps
 
-Azure Maps poskytuje vývojářům ze všech průmyslových odvětví výkonné geoprostorové funkce, které jsou zabaleny s pravidelnými aktualizovanými daty mapy a poskytují geografickou souvislost pro webové a mobilní aplikace. Azure Maps obsahuje sadu rozhraní REST API pro Azure One API pro mapy, vyhledávání, směrování, provoz, časová pásma, geografickou polohu, monitorování geografických zón, mapování dat a prostorových operací, které jsou k dispozici v sadách web i Android SDK, aby bylo možné vývoj snadno, flexibilní a přenosný napříč více platforem.
+Azure Maps poskytuje vývojářům ze všech průmyslových odvětví výkonné geoprostorové funkce, které jsou zabaleny s pravidelnými aktualizovanými daty mapy a poskytují geografickou souvislost pro webové a mobilní aplikace. Azure Maps má sadu rozhraní REST API, která je kompatibilní s rozhraním Azure One API pro mapy, vyhledávání, směrování, provoz, časová pásma, geografickou polohu, monitorování geografických zón, mapování dat, počasí, mobilitu a prostorových operací, které spolu s nimi nabízí web i sady Android SDK, které usnadňují vývoj, flexibilní a Přenosné napříč různými platformami.
 
 ## <a name="high-level-platform-comparison"></a>Porovnání platforem vysoké úrovně
 

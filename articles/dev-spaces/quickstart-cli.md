@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: V tomto rychlém startu se dozvíte, jak používat Azure Dev Spaces a příkazový řádek pro vývoj aplikace ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b4902930b04e880bbbdfbe7418d5e0ec86f89470
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 99e234fc838ef173b25989f888cb9d3ca80d649f
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438259"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770607"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>Rychlý Start: vývoj aplikace na Kubernetes-Azure Dev Spaces
 V tomto průvodci se naučíte:
@@ -157,4 +157,4 @@ Přečtěte si, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace n
 [nodejs-quickstart]: quickstart-nodejs.md
 [netcore-quickstart]: quickstart-netcore.md
 [team-quickstart]: quickstart-team-development.md
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

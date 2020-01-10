@@ -3,12 +3,12 @@ title: Reference Host. JSON pro Azure Functions 1. x
 description: Referenční dokumentace k souboru Azure Functions Host. JSON s modulem Runtime v1
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 256cd47fa0f309bef46c7f72951810d5f76d0fba
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2b00e2343e0959e07b195e2e98c6719a1893b8c8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975461"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769604"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Reference Host. JSON pro Azure Functions 1. x
 
@@ -214,7 +214,7 @@ Nastavení konfigurace [aktivačních událostí a vazeb HTTP](functions-binding
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
 |dynamicThrottlesEnabled|false|Když je toto nastavení povolené, bude v kanálu zpracování požadavků pravidelně kontrolovat čítače výkonu systému, jako jsou připojení/vlákna, procesy/paměti/CPU/a, pokud některý z těchto čítačů překročí vestavěnou vysokou prahovou hodnotu (80%), požadavky se odmítnou se 429 "příliš zaneprázdněnou", dokud se čítače nevrátí na normální úrovně.|
-|maxConcurrentRequests|bez vazby (`-1`)|Maximální počet funkcí http, které se spustí paralelně. To vám umožňuje řídit souběžnost, což pomáhá spravovat využití prostředků. Můžete mít například funkci http, která používá velké množství systémových prostředků (paměť/procesor/sokety), což způsobuje problémy, pokud je souběžnost příliš vysoká. Nebo může být funkce, která vytváří odchozí požadavky na službu třetí strany, a tyto hovory musí být omezené na míru. V těchto případech vám může pomáhat použití omezení.|
+|maxConcurrentRequests|bez vazby (`-1`)|Maximální počet funkcí HTTP, které se spustí paralelně. To vám umožňuje řídit souběžnost, což pomáhá spravovat využití prostředků. Můžete mít například funkci HTTP, která používá velké množství systémových prostředků (paměť/procesor/sokety), což způsobuje problémy, pokud je souběžnost příliš vysoká. Nebo může být funkce, která vytváří odchozí požadavky na službu třetí strany, a tyto hovory musí být omezené na míru. V těchto případech vám může pomáhat použití omezení.|
 |maxOutstandingRequests|bez vazby (`-1`)|Maximální počet nezpracovaných požadavků, které jsou v daném okamžiku uchovávány. Tento limit zahrnuje požadavky, které jsou ve frontě, ale nezačaly běžet, a také jakékoli probíhající provádění. Všechny příchozí žádosti přes toto omezení se odmítnou s 429 "příliš zaneprázdněnou" odezvou. Umožňuje volajícím využívat strategie opakování na základě času a také vám pomůže řídit maximální latenci žádostí. Tato možnost řídí služby Řízení front zpráv, ke kterým dochází v cestě spuštění hostitele skriptu. Další fronty, například fronta žádostí ASP.NET, budou stále platit a nebudou ovlivněny tímto nastavením.|
 |routePrefix|rozhraní api|Předpona trasy, která se vztahuje na všechny trasy. K odebrání výchozí předpony použijte prázdný řetězec. |
 
@@ -314,7 +314,7 @@ Nastavení konfigurace pro [aktivační události Service Bus a vazby](functions
 |prefetchCount|–|Výchozí PrefetchCount, který se použije základní MessageReceiver.| 
 |autoRenewTimeout|00:05:00|Maximální doba, ve kterém se automatické obnovení zámku zprávy.| 
 
-## <a name="singleton"></a>Singleton
+## <a name="singleton"></a>singleton
 
 Nastavení konfigurace pro chování zámku typu singleton. Další informace najdete v tématu [problém GitHubu o podpoře typu Singleton](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
 
@@ -338,7 +338,7 @@ Nastavení konfigurace pro chování zámku typu singleton. Další informace na
 |lockAcquisitionTimeout|00:01:00|Maximální doba, po kterou se modul runtime pokusí získat zámek.| 
 |lockAcquisitionPollingInterval|–|Interval mezi pokusy o získání zámku.| 
 
-## <a name="tracing"></a>sledování
+## <a name="tracing"></a>trasování
 
 *Verze 1. x*
 

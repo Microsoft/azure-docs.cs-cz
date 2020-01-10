@@ -6,12 +6,12 @@ ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
 ms.date: 10/03/2017
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 7208825581a0bf16f6ee3a3947387b01abfd16d0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4af2afc0efad2784bbde902fd2cdf4a40beb7803
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433060"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769077"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Seznámení s Azure Functions  
 Azure Functions je řešení umožňující snadno spouštět malé kódy (tzv. „funkce“) v cloudu. Můžete napsat přesně takový kód, jaký potřebujete pro aktuální problém, a nestarat se o infrastrukturu k jeho spuštění nebo aplikaci jako celek. Funkce můžou zvýšit produktivitu vývoje a můžete použít svůj vývojářský jazyk podle vlastního výběru, například C#Java, JavaScript, PowerShell a Python. Plaťte pouze za čas, kdy kód běží, a potřebné škálování svěřte Azure. Služba Azure Functions umožňuje v Microsoft Azure vytvářet aplikace [bez serveru](https://azure.microsoft.com/solutions/serverless/).

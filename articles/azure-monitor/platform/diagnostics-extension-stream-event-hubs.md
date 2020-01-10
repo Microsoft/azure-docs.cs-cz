@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 2b84f752467d630142f1920aac08bf5321b13acb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 433d53e09fce6d3f6b2010956da91c4b7cf91d49
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363723"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770165"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Streamování Azure Diagnostics dat v Hot Path pomocí Event Hubs
 Azure Diagnostics poskytuje flexibilní způsoby shromažďování metrik a protokolů z virtuálních počítačů cloudových služeb a výsledků přenosu do Azure Storage. Počínaje časovým rámcem, který začíná 2016. března (SDK 2,9), můžete do vlastních zdrojů dat odeslat diagnostiku a přenést data za provozu za pár sekund pomocí [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -21,8 +21,7 @@ Mezi podporované datové typy patří:
 
 * Události Trasování událostí pro Windows
 * Čítače výkonu
-* Protokoly událostí Windows
-* Protokoly aplikací
+* Protokoly událostí systému Windows, včetně protokolů aplikace v protokolu událostí systému Windows
 * Protokolů infrastruktury Azure Diagnostics
 
 V tomto článku se dozvíte, jak nakonfigurovat Azure Diagnostics pomocí Event Hubs od konce do konce. Doprovodné materiály jsou také k dispozici v následujících běžných scénářích:

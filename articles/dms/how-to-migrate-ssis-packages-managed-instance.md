@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 06/08/2019
-ms.openlocfilehash: c0ec3cb21c83c7b9f5ff0cec092ab210ea8894eb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2020
+ms.openlocfilehash: 22f3e6a0e4c041024e826a7ed724d788ce77da62
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437985"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751220"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-database-managed-instance"></a>Migrace balíčků služba SSIS (SQL Server Integration Services) do spravované instance Azure SQL Database
 Pokud používáte služba SSIS (SQL Server Integration Services) (SSIS) a chcete migrovat SSIS projekty/balíčky ze zdrojového SSISDBu, který hostuje SQL Server, do cílového SSISDB hostovaného v Azure SQL Database spravované instanci, můžete použít Azure Database Migration Service.
@@ -37,8 +37,8 @@ V tomto článku získáte informace o těchto tématech:
 
 K provedení těchto kroků potřebujete:
 
-* Pokud chcete vytvořit službu Azure Virtual Network (VNet) pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který umožňuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Další informace najdete v článku [síťové topologie pro migraci Azure SQL Database spravované instance pomocí Azure Database Migration Service]( https://aka.ms/dmsnetworkformi). Další informace o vytvoření virtuální sítě najdete v dokumentaci k [Virtual Network](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlý Start s podrobnými údaji.
-* Aby se zajistilo, že pravidla skupiny zabezpečení sítě VNet neblokují následující příchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování přenosů Azure VNet NSG najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
+* Pokud chcete vytvořit Microsoft Azure Virtual Network pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který zajišťuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Další informace najdete v článku [síťové topologie pro migraci Azure SQL Database spravované instance pomocí Azure Database Migration Service]( https://aka.ms/dmsnetworkformi). Další informace o vytváření virtuálních sítí najdete v [dokumentaci k Virtual Network](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlý Start s podrobnými údaji.
+* Chcete-li zajistit, aby pravidla skupiny zabezpečení sítě virtuálních sítí neblokovala následující příchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
 * Ke konfiguraci [brány Windows Firewall pro přístup ke zdrojovému databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access?view=sql-server-2017).
 * Otevřete bránu Windows Firewall, aby Azure Database Migration Service mohl získat přístup ke zdrojovému SQL Server, což je standardně port TCP 1433.
 * Pokud provozujete několik pojmenovaných instancí SQL Serveru s využitím dynamických portů, možná budete chtít povolit službu SQL Browser a přístup k portu UDP 1434 přes vaše brány firewall, aby se služba Azure Database Migration Service mohla připojit k pojmenované instanci na vašem zdrojovém serveru.

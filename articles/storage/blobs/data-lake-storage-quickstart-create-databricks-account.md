@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.reviewer: jeking
-ms.openlocfilehash: a19a6e7e74fc645c891754e5afdbd2a6a1bdefd4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 193fe96d3e98b2917d9228784b93a9335406283f
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443813"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771747"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Rychlý Start: Analýza dat v Azure Data Lake Storage Gen2 pomocí Azure Databricks
 
@@ -140,7 +140,7 @@ V buňce stiskněte **SHIFT + ENTER** a kód se spustí.
 
 Nyní vložte následující kód do nové buňky pod tímto kódem a nahraďte hodnoty zobrazené v závorkách stejnými hodnotami, které jste použili dříve:
 
-    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<file-system>@<account-name>.dfs.core.windows.net/")
+    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/")
 
 V buňce stiskněte **SHIFT + ENTER** a kód se spustí.
 

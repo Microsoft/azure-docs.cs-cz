@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 9cd6c2a39f72c47b06bebfa2a8c457a725484141
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b71f5590f120e15bd4ea027bcf6132795dac3cb6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529979"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750570"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Export protokolu aktivit Azure do úložiště nebo do Azure Event Hubs
 
 > [!WARNING]
 > Nyní můžete protokol aktivit shromažďovat do Log Analytics pracovního prostoru pomocí nastavení diagnostiky podobného způsobu, jakým shromažďujete protokoly prostředků. Přečtěte si téma [shromáždění a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics v Azure monitor](diagnostic-settings-subscription.md).
 
-[Protokol aktivit Azure](activity-logs-overview.md) poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo ve vašem předplatném Azure. Kromě zobrazení protokolu aktivit v Azure Portal nebo jeho zkopírování do pracovního prostoru Log Analytics, kde se dá analyzovat s ostatními daty shromažďovanými Azure Monitor můžete vytvořit profil protokolu pro archivaci protokolu aktivit do účtu služby Azure Storage nebo jeho streamování do  Centrum událostí.
+[Protokol aktivit Azure](platform-logs-overview.md) poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo ve vašem předplatném Azure. Kromě zobrazení protokolu aktivit v Azure Portal nebo jeho zkopírování do pracovního prostoru Log Analytics, kde se dá analyzovat s ostatními daty shromažďovanými Azure Monitor můžete vytvořit profil protokolu pro archivaci protokolu aktivit do účtu služby Azure Storage nebo jeho streamování do  Centrum událostí.
 
 ## <a name="archive-activity-log"></a>Protokol aktivit archivu
 Archivace protokolu aktivit do účtu úložiště je užitečná v případě, že byste chtěli uchovávat data protokolu déle než 90 dní (s úplnou kontrolou nad zásadami uchovávání informací) pro audit, statickou analýzu nebo zálohování. Pokud potřebujete události uchovávat jenom 90 dní nebo méně, nemusíte v účtu úložiště nastavovat archivaci, protože události protokolu aktivit se uchovávají na platformě Azure po dobu 90 dnů.

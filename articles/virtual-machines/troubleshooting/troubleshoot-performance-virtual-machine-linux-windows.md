@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: a836c6b47e0e1346b5e8de9ba5fbe94f88961cbd
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615051"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772614"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Řešení potíží s výkonem virtuálních počítačů Azure v systému Linux nebo Windows
 
@@ -212,11 +212,11 @@ S novými nabídkami disků v rámci standardního úložiště se limity IOPS a
 
 #### <a name="references"></a>Odkazy
 
-* [Cíle škálovatelnosti pro disky virtuálních počítačů](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-virtual-machine-disks)
+* [Škálovatelnost a výkonnostní cíle pro účty úložiště objektů blob stránky úrovně Premium](../../storage/blobs/scalability-targets-premium-page-blobs.md)
 
 Šířka pásma účtu úložiště se měří na základě metrik účtu úložiště: Totalbillablerequests a TotalEgress. V závislosti na typu redundance a oblastí máte jiné prahové hodnoty pro šířku pásma.
 
-* [Cíle škálovatelnosti pro objekty blob, fronty, tabulky a soubory](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-blobs-queues-tables-and-files)
+* [Škálovatelnost a výkonnostní cíle pro účty úložiště úrovně Standard](../../storage/common/scalability-targets-standard-account.md)
 
 Pro typ a oblast redundance účtu úložiště se podívejte na Totalbillablerequests a TotalEgress proti omezením příchozího a odchozího přenosu účtu úložiště.
 

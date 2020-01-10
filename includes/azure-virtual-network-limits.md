@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: d6cc6c787e38cc72a0a3d4340d55c0248918dba6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: cf79911c24998c3d00937937cce5c68bbb564f1e
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75392391"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75752349"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Omezení sítě – Azure Resource Manager následujících omezení se vztahují jenom na síťové prostředky spravované prostřednictvím **Azure Resource Manager** pro jednotlivé oblasti a předplatné. Naučte se, jak [Zobrazit aktuální využití prostředků proti limitům předplatného](../articles/networking/check-usage-against-limits.md).
 
@@ -58,20 +58,29 @@ ms.locfileid: "75392391"
 #### <a name="load-balancer"></a>Omezení pro vyrovnávání zatížení
 Následující omezení platí pouze pro síťové prostředky spravované přes Azure Resource Manager na oblast a předplatné. Naučte se, jak [Zobrazit aktuální využití prostředků proti limitům předplatného](../articles/networking/check-usage-against-limits.md).
 
-| Prostředek | Výchozí/maximální limit |
-| --- | --- |
-| Nástroje pro vyrovnávání zatížení | 1 000 | 
-| Pravidla podle prostředku, Basic | 250 |
-| Pravidla podle prostředku, Standard | 1,500 | 
-| Pravidla na síťový adaptér (u všech IP adres na síťovém adaptéru) | 300 |
-| Konfigurace front-endové IP adresy, Basic | 200 |
-| Konfigurace front-endové IP adresy, Standard | 600 |
-| Fond back-end, základní | 100, jedna skupina dostupnosti |
-| Fond back-end, Standard | 1 000, jedna virtuální síť |
-| Prostředky back-endu na nástroj pro vyrovnávání zatížení, standard<sup>1</sup> | 150 |
-| Porty s vysokou dostupností, Standard | 1 za interní front-end |
+**Standard Load Balancer**
+
+| Prostředek                                | Výchozí/maximální limit         |
+|-----------------------------------------|-------------------------------|
+| Nástroje pro vyrovnávání zatížení                          | 1 000                         |
+| Pravidla na prostředek                      | 1,500                         |
+| Pravidla na síťový adaptér (u všech IP adres na síťovém adaptéru) | 300                           |
+| Konfigurace IP adresy front-endu             | 600                           |
+| Velikost fondu back-endu                          | instance 1 000, jedna virtuální síť |
+| Back-endové prostředky na nástroj pro vyrovnávání zatížení<sup>1<sup>   | 150                 |
+| Porty s vysokou dostupností                 | 1 za interní front-end      |
 
 <sup>1</sup> Limit je až 150 prostředků, v libovolné kombinaci prostředků samostatného virtuálního počítače, prostředků skupiny dostupnosti a prostředků sady škálování virtuálních počítačů.
+
+**Základní Load Balancer**
+
+| Prostředek                                | Výchozí/maximální limit        |
+|-----------------------------------------|------------------------------|
+| Nástroje pro vyrovnávání zatížení                          | 1 000                        |
+| Pravidla na prostředek                      | 250                          |
+| Pravidla na síťový adaptér (u všech IP adres na síťovém adaptéru) | 300                          |
+| Konfigurace IP adresy front-endu             | 200                          |
+| Velikost fondu back-endu                           | instance 100, jedna skupina dostupnosti |
 
 #### <a name="virtual-networking-limits-classic"></a>Následující omezení platí jenom pro síťové prostředky spravované přes model nasazení **Classic** na předplatné. Naučte se, jak [Zobrazit aktuální využití prostředků proti limitům předplatného](../articles/networking/check-usage-against-limits.md).
 

@@ -8,12 +8,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: aadf3a18d41d8dfe878439893c9d1ed25172fa2b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bc66a286bee193b377731a549129446bba431cb3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406486"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749039"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Správa pravidel inteligentního vyhledávání Application Insights pomocí šablon Azure Resource Manager
 
@@ -133,9 +133,12 @@ Nezapomeňte nahradit název Application Insights prostředku a zadat odpovídaj
 
 ```
 
-### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>Pravidlo upozornění na anomálii v2 (neklasické)
+### <a name="failure-anomalies-alert-rule"></a>Pravidlo upozornění na anomálie při selhání
 
-Tato šablona Azure Resource Manager demonstruje konfiguraci pravidla upozornění na anomálii v2 s závažností 2. Tato nová verze pravidla výstrahy anomálií při selhání je součástí nové platformy pro upozorňování Azure a nahrazuje klasickou verzi, která je vyřazena jako součást [procesu odchodu klasických výstrah](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+Tato šablona Azure Resource Manager ukazuje, jak nakonfigurovat pravidlo výstrahy anomálií při selhání se závažností 2. Tato nová verze pravidla výstrahy anomálií při selhání je součástí nové platformy pro upozorňování Azure a nahrazuje klasickou verzi, která je vyřazena jako součást [procesu odchodu klasických výstrah](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+
+> [!NOTE]
+> Anomálie selhání je globální služba, proto je umístění pravidla vytvořeno v globálním umístění.
 
 ```json
 {
@@ -166,7 +169,7 @@ Tato šablona Azure Resource Manager demonstruje konfiguraci pravidla upozorněn
 ```
 
 > [!NOTE]
-> Tato šablona Azure Resource Manager je jedinečná pro pravidlo upozornění nepravidelnosti selhání v2 a liší se od ostatních pravidel inteligentního zjišťování, která jsou popsaná v tomto článku.   
+> Tato šablona Azure Resource Manager je jedinečná pro pravidlo upozornění na anomálie při selhání a liší se od ostatních pravidel inteligentního zjišťování, která jsou popsaná v tomto článku.
 
 ## <a name="smart-detection-rule-names"></a>Názvy pravidel inteligentního zjišťování
 

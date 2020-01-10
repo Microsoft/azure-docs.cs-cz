@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f9b787413dd6e2aaeafd4aa3bcee0eff746abece
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: b802cab7d52fd886770c326e97d0378a0da64762
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310539"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75752033"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
@@ -53,4 +53,4 @@ Ano, ověřování RADIUS je podporované jak pro IKEv2, tak i pro SSTP VPN. 
 
 ### <a name="does-radius-authentication-work-with-the-openvpn-client"></a>Funguje ověřování RADIUS u klienta OpenVPN?
 
-Ověřování protokolem RADIUS není pro klienta OpenVPN podporováno.
+Ověřování pomocí protokolu RADIUS se podporuje jenom u protokolu OpenVPN prostřednictvím PowerShellu.

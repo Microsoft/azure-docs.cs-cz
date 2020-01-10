@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid schémata událostí služby Media Services
-description: Popisuje vlastnosti, které jsou k dispozici pro události služby Media Services pomocí služby Azure Event Grid
+title: Azure Event Grid schémat pro události Media Services
+description: Popisuje vlastnosti, které jsou k dispozici pro Media Services události s Azure Event Grid
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,104 +9,110 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 02/13/2019
+ms.date: 01/07/2020
 ms.author: juliako
-ms.openlocfilehash: 2d1e648a9ea33beb1347a4a635388ee04e46215b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b1c094689c7669f03d5355be7a77b1836c90974c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449759"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750854"
 ---
-# <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid schémata událostí služby Media Services
+# <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid schémat pro události Media Services
 
-Tento článek obsahuje schémata a vlastnosti pro události služby Media Services.
+Tento článek poskytuje schémata a vlastnosti pro Media Services události.
 
-Seznam ukázkových skriptů a kurzy, naleznete v tématu [zdroj událostí Media Services](../../event-grid/event-sources.md#azure-subscriptions).
+Seznam ukázkových skriptů a kurzů najdete v tématu [Media Services zdroj události](../../event-grid/event-sources.md#azure-subscriptions).
 
-## <a name="job-related-event-types"></a>Úlohy související s typy událostí
+## <a name="job-related-event-types"></a>Typy událostí související s úlohou
 
-Media Services vyslala **úlohy** související typy událostí, které jsou popsané níže. Existují dvě kategorie pro **úlohy** související události: "Monitorování stav úlohy změní" a "Monitorování výstup stav úlohy změní". 
+Media Services emituje typy událostí související s **úlohou** popsanými níže. Pro události související s **úlohou** jsou k dispozici dvě kategorie: "monitorování změn stavu úlohy" a "změny stavu výstupu úlohy monitorování". 
 
-Pro všechny události se můžete zaregistrovat prostřednictvím přihlášení k JobStateChange událost odběru. Nebo můžete odebírat jenom určité události (například poslední stavy jako JobErrored JobFinished a JobCanceled). 
+Pro všechny události se můžete zaregistrovat přihlášením k odběru události JobStateChange. Nebo se můžete přihlásit k odběru pouze pro konkrétní události (například poslední stavy, jako je JobErrored, JobFinished a JobCanceled).   
 
-### <a name="monitoring-job-state-changes"></a>Monitorování změny stavu úlohy
-
-| Typ události | Popis |
-| ---------- | ----------- |
-| Microsoft.Media.JobStateChange| Získáte události pro všechny změny stavu úlohy. |
-| Microsoft.Media.JobScheduled| Získáte událost v případě, že úloha přejde do stavu naplánované. |
-| Microsoft.Media.JobProcessing| Získáte událost v případě, že úloha přejde do stavu zpracování. |
-| Microsoft.Media.JobCanceling| Získáte událost v případě, že úloha přejde do stavu zrušení. |
-| Microsoft.Media.JobFinished| Získáte událost v případě, že úloha přejde do konečného stavu. Toto je koncový stav, který obsahuje výstupy úlohy.|
-| Microsoft.Media.JobCanceled| Získáte událost v případě, že úloha přejde do zrušeném stavu. Toto je koncový stav, který obsahuje výstupy úlohy.|
-| Microsoft.Media.JobErrored| Získáte událost v případě, že úloha přejde do chybového stavu. Toto je koncový stav, který obsahuje výstupy úlohy.|
-
-Zobrazit [příklady schématu](#event-schema-examples) , které následují.
-
-### <a name="monitoring-job-output-state-changes"></a>Výstup úlohy monitorování změny stavu
+### <a name="monitoring-job-state-changes"></a>Monitorování změn stavu úlohy
 
 | Typ události | Popis |
 | ---------- | ----------- |
-| Microsoft.Media.JobOutputStateChange| Načíst událost pro veškerý výstup úlohy, které změní stav. |
-| Microsoft.Media.JobOutputScheduled| Získáte událost, když přejde do stavu naplánované výstupu úlohy. |
-| Microsoft.Media.JobOutputProcessing| Získáte událost, když přejde do stavu zpracování výstupu úlohy. |
-| Microsoft.Media.JobOutputCanceling| Získáte událost, když přejde do stavu zrušení výstupu úlohy.|
-| Microsoft.Media.JobOutputFinished| Získáte událost po dokončení úlohy, výstup přechází do stavu.|
-| Microsoft.Media.JobOutputCanceled| Získáte událost při zrušení úlohy, výstup přechází do stavu.|
-| Microsoft.Media.JobOutputErrored| Získáte událost, když přejde do chybového stavu výstupu úlohy.|
+| Microsoft.Media.JobStateChange| Získá událost pro všechny změny stavu úlohy. |
+| Microsoft.Media.JobScheduled| Při přechodu úlohy do plánovaného stavu získat událost. |
+| Microsoft. Media. JobProcessing| Získá událost při přechodu úlohy do stavu zpracování. |
+| Microsoft.Media.JobCanceling| Získá událost, když se přechody úlohy na stav zrušení. |
+| Microsoft.Media.JobFinished| Získá událost při přechodu úlohy do stavu dokončeno. Toto je konečný stav, který obsahuje výstupy úlohy.|
+| Microsoft.Media.JobCanceled| Získá událost při přechodu úlohy do stavu zrušeno. Toto je konečný stav, který obsahuje výstupy úlohy.|
+| Microsoft.Media.JobErrored| Získá událost při přechodu úlohy do chybového stavu. Toto je konečný stav, který obsahuje výstupy úlohy.|
 
-Zobrazit [příklady schématu](#event-schema-examples) , které následují.
+Podívejte se na [Příklady schématu](#event-schema-examples) , které následují.
 
-### <a name="monitoring-job-output-progress"></a>Výstupu průběhu monitorování úlohy
+### <a name="monitoring-job-output-state-changes"></a>Sledování změn stavu výstupu úlohy
 
-| Typ události | Popis |
-| ---------- | ----------- |
-| Microsoft.Media.JobOutputProgress| Tato událost zobrazuje průběh, od 0 % do 100 % zpracování úlohy. Pro odeslání události, pokud byla 5 % nebo větší zvýšení hodnoty průběh nebo to je více než 30 sekund od poslední události (prezenční signál) pokusů o službu. Hodnota průběhu není zaručeno, že začínal 0 %, nebo k dosažení 100 %, ani je zaručeno postupem doby zvyšuje tempu. Tato událost není vhodné používat k určení, že bylo dokončeno zpracování – místo toho byste měli použít události změny stavu.|
+Úloha může obsahovat více výstupů úlohy (Pokud jste nakonfigurovali transformaci na více výstupů úloh). Pokud chcete sledovat podrobnosti o výstupu jednotlivých úloh, naslouchat události změny výstupu úlohy.
 
-Zobrazit [příklady schématu](#event-schema-examples) , které následují.
+Každá **úloha** bude na vyšší úrovni než **JobOutput**, takže se události výstupu úlohy vystaví uvnitř odpovídající úlohy. 
 
-## <a name="live-event-types"></a>Typy živou událost
-
-Služba Media Services také vysílá **Live** typy událostí, které jsou popsané níže. Existují dvě kategorie pro **Live** události: událostí na úrovni datového proudu a sledovat události. 
-
-### <a name="stream-level-events"></a>Stream úroveň události
-
-Stream úroveň události jsou vyvolány na datový proud nebo připojení. Každá událost `StreamId` parametr, který identifikuje připojení nebo datového proudu. Každý datový proud nebo připojení má jeden nebo více sleduje různé typy. Jedno připojení z kodéru může mít například jedna zvuková stopa a čtyři videa stopy. Typy datového proudu událostí jsou:
+Chybové zprávy v `JobFinished`, `JobCanceled``JobError` výstupem agregovaných výsledků pro každý výstup úlohy – až budou všechny dokončeny. Vzhledem k tomu, že se události výstupu úlohy aktivují při dokončení každé úlohy. Například pokud máte výstup kódování následovaný výstupem video Analytics, získáte dvě události, které se aktivují jako události výstupu úlohy před tím, než se konečná událost JobFinished aktivuje s agregovanými daty.
 
 | Typ události | Popis |
 | ---------- | ----------- |
-| Microsoft.Media.LiveEventConnectionRejected | Pokus o připojení kodéru byl odmítnut. |
-| Microsoft.Media.LiveEventEncoderConnected | Kodér naváže připojení se živá událost. |
-| Microsoft.Media.LiveEventEncoderDisconnected | Kodér odpojí. |
+| Microsoft.Media.JobOutputStateChange| Získá událost pro všechny změny stavu výstupu úlohy. |
+| Microsoft.Media.JobOutputScheduled| Získá událost, když se výstupy úlohy do plánovaného stavu. |
+| Microsoft.Media.JobOutputProcessing| Získá událost při přechodu výstupu úlohy do stavu zpracování. |
+| Microsoft.Media.JobOutputCanceling| Získat událost při přechodu výstupů úlohy do stavu zrušení.|
+| Microsoft. Media. JobOutputFinished| Získá událost, když se výstupy úlohy změní do stavu dokončeno.|
+| Microsoft.Media.JobOutputCanceled| Získá událost, když se výstup úlohy změní do stavu zrušeno.|
+| Microsoft.Media.JobOutputErrored| Získá událost, když výstup úlohy přejde do chybového stavu.|
 
-Zobrazit [příklady schématu](#event-schema-examples) , které následují.
+Podívejte se na [Příklady schématu](#event-schema-examples) , které následují.
 
-### <a name="track-level-events"></a>Sledování události
+### <a name="monitoring-job-output-progress"></a>Průběh monitorování výstupu úlohy
 
-Sledování události jsou vyvolány jednu stopu. 
+| Typ události | Popis |
+| ---------- | ----------- |
+| Microsoft.Media.JobOutputProgress| Tato událost odráží průběh zpracování úlohy, od 0 do 100%. Služba se pokusí odeslat událost, pokud došlo k 5% nebo většímu nárůstu hodnoty průběhu nebo je více než 30 sekund od poslední události (prezenční signál). Hodnota průběh není zaručena spuštění na 0% nebo pro dosažení 100%, ani v průběhu času není zaručeno zvýšení konstantní frekvence. Tato událost by se neměla používat k určení, zda bylo zpracování dokončeno – místo toho byste měli použít události změny stavu.|
+
+Podívejte se na [Příklady schématu](#event-schema-examples) , které následují.
+
+## <a name="live-event-types"></a>Typy živých událostí
+
+Media Services také emituje typy **živých** událostí popsané níže. Existují dvě kategorie pro **živé** události: události na úrovni datového proudu a události na úrovni sledování. 
+
+### <a name="stream-level-events"></a>Události na úrovni streamu
+
+Události na úrovni proudu se vyvolávají na datový proud nebo připojení. Každá událost má parametr `StreamId`, který identifikuje připojení nebo datový proud. Každý datový proud nebo připojení má jednu nebo více skladeb různých typů. Například jedno připojení z kodéru může mít jednu zvukovou stopu a čtyři videozáznamy. Typy událostí streamu jsou:
+
+| Typ události | Popis |
+| ---------- | ----------- |
+| Microsoft. Media. LiveEventConnectionRejected | Pokus o připojení kodéru byl odmítnut. |
+| Microsoft.Media.LiveEventEncoderConnected | Kodér vytvoří připojení s živou událostí. |
+| Microsoft. Media. LiveEventEncoderDisconnected | Kodér se odpojí. |
+
+Podívejte se na [Příklady schématu](#event-schema-examples) , které následují.
+
+### <a name="track-level-events"></a>Události na úrovni sledování
+
+Události na úrovni sledování jsou vyvolány na základě stopy. 
 
 > [!NOTE]
-> Všechny úrovně sledování události jsou vyvolány po připojení kodér služby live Encoding.
+> Po připojení živého kodéru jsou vyvolány všechny události na úrovni sledování.
 
-Typy událostí sledování úrovně jsou:
+Typy událostí na úrovni sledování:
 
 | Typ události | Popis |
 | ---------- | ----------- |
-| Microsoft.Media.LiveEventIncomingDataChunkDropped | Server mediálních datových zahodí datové dávky, protože je příliš pozdě nebo obsahuje překrývající se časové razítko (timestamp nové datové dávky je menší než koncový čas předchozího bloku dat). |
-| Microsoft.Media.LiveEventIncomingStreamReceived | Média server přijímá prvního bloku dat pro každou sledovat ve službě stream ani připojení. |
-| Microsoft.Media.LiveEventIncomingStreamsOutOfSync | Server mediálních datových zjistí zvuk a video streamy nejsou synchronizované. Použít jako varování, protože nemusí mít dopad na činnost koncového uživatele. |
-| Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync | Server mediálních datových zjistí, že některý dvě videa datové proudy z externí kodér nejsou synchronizované. Použít jako varování, protože nemusí mít dopad na činnost koncového uživatele. |
-| Microsoft.Media.LiveEventIngestHeartbeat | Publikuje každých 20 sekund pro každé stopu, když běží živá událost. Poskytuje ingestování shrnutí stavu.<br/><br/>Po kodér byl zpočátku připojen, události prezenčního signálu i nadále posílat každých 20 sekundu zda kodéru je pořád připojený, nebo ne. |
-| Microsoft.Media.LiveEventTrackDiscontinuityDetected | Server mediálních datových detekuje diskontinuitu v příchozí směr. |
+| Microsoft.Media.LiveEventIncomingDataChunkDropped | Media Server vynechá datový blok dat, protože je moc pozdě nebo má překrývající se časové razítko (časové razítko nového bloku dat je menší než koncový čas předchozího bloku dat). |
+| Microsoft.Media.LiveEventIncomingStreamReceived | Media Server obdrží první datový blok pro každou stopu v datovém proudu nebo připojení. |
+| Microsoft.Media.LiveEventIncomingStreamsOutOfSync | Media Server detekuje audio a video streamy nejsou synchronizované. Používejte jako upozornění, protože uživatelské prostředí nemusí být ovlivněno. |
+| Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync | Media Server detekuje, že některé ze dvou datových proudů videa přicházejících z externího kodéru nejsou synchronizované. Používejte jako upozornění, protože uživatelské prostředí nemusí být ovlivněno. |
+| Microsoft.Media.LiveEventIngestHeartbeat | Publikováno každé 20 sekund pro každou stopu, když je spuštěná živá událost. Poskytuje souhrn stavu ingestování.<br/><br/>Po prvním připojení kodéru bude událost prezenčního signálu nadále vygenerována každých 20 sekund, zda je kodér stále připojen nebo ne. |
+| Microsoft.Media.LiveEventTrackDiscontinuityDetected | Mediální server detekuje v příchozím stopě nekontinuitu. |
 
-Zobrazit [příklady schématu](#event-schema-examples) , které následují.
+Podívejte se na [Příklady schématu](#event-schema-examples) , které následují.
 
 ## <a name="event-schema-examples"></a>Příklady schématu událostí
 
 ### <a name="jobstatechange"></a>JobStateChange
 
-Následující příklad ukazuje schématu **JobStateChange** události: 
+Následující příklad ukazuje schéma události **JobStateChange** : 
 
 ```json
 [
@@ -131,16 +137,16 @@ Datový objekt má následující vlastnosti:
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | previousState | string | Stav úlohy před událostí. |
-| state | string | Nový stav úlohy se oznámení na tuto událost. Například "naplánované: Jste připravení začít se úloha aktualizace zobrazí"nebo" dokončeno: Úloha je dokončena".|
+| state | string | Nový stav úlohy, která se v této události oznamuje. Například "naplánované: úloha je připravena k zahájení" nebo "dokončeno: úloha je dokončena".|
 
-Stav úlohy kde může být jedna z hodnot: *Ve frontě*, *naplánované*, *zpracování*, *dokončení*, *chyba*, *zrušena*, *Zrušení*
+Kde může být stav úlohy jedna z hodnot: *Queued*, *Scheduled*, *Processing*, *Finished*, *Error*, *Canceled*, *Canceled*
 
 > [!NOTE]
-> *Ve frontě* bude jenom zobrazovat nacházet v **previousState** vlastností, ale ne v **stavu** vlastnost.
+> *Ve frontě* se bude vyskytovat pouze ve vlastnosti **previousState** , ale ne ve vlastnosti **State** .
 
-### <a name="jobscheduled-jobprocessing-jobcanceling"></a>JobCanceling JobScheduled JobProcessing,
+### <a name="jobscheduled-jobprocessing-jobcanceling"></a>JobScheduled, JobProcessing, JobCanceling
 
-U každé nefinální úlohy stavu změny (například JobCanceling JobScheduled JobProcessing,) vypadá podobně jako následující příklad schématu:
+Pro každou nekonečnou změnu stavu úlohy (například JobScheduled, JobProcessing, JobCanceling) vypadá příklad schématu podobně jako v následujícím příkladu:
 
 ```json
 [{
@@ -162,9 +168,9 @@ U každé nefinální úlohy stavu změny (například JobCanceling JobScheduled
 }]
 ```
 
-### <a name="jobfinished-jobcanceled-joberrored"></a>JobErrored JobFinished JobCanceled,
+### <a name="jobfinished-jobcanceled-joberrored"></a>JobFinished, JobCanceled, JobErrored
 
-U každé poslední úlohy stavu změny (například JobErrored JobFinished JobCanceled,) vypadá podobně jako následující příklad schématu:
+Ukázkové schéma pro každou poslední změnu stavu úlohy (například JobFinished, JobCanceled, JobErrored) vypadá podobně jako v následujícím příkladu:
 
 ```json
 [{
@@ -200,11 +206,11 @@ Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| outputs | Array | Načte výstupů úlohu.|
+| outputs | Pole | Získá výstupy úlohy.|
 
 ### <a name="joboutputstatechange"></a>JobOutputStateChange
 
-Následující příklad ukazuje schématu **JobOutputStateChange** události:
+Následující příklad ukazuje schéma události **JobOutputStateChange** :
 
 ```json
 [{
@@ -233,9 +239,9 @@ Následující příklad ukazuje schématu **JobOutputStateChange** události:
 }]
 ```
 
-### <a name="joboutputscheduled-joboutputprocessing-joboutputfinished-joboutputcanceling-joboutputcanceled-joboutputerrored"></a>JobOutputScheduled JobOutputProcessing, JobOutputFinished, JobOutputCanceling, JobOutputCanceled, JobOutputErrored
+### <a name="joboutputscheduled-joboutputprocessing-joboutputfinished-joboutputcanceling-joboutputcanceled-joboutputerrored"></a>JobOutputScheduled, JobOutputProcessing, JobOutputFinished, JobOutputCanceling, JobOutputCanceled, JobOutputErrored
 
-Pro každou změnu stavu JobOutput příkladu schématu vypadá nějak takto:
+Pro každou změnu stavu JobOutput vypadá ukázkové schéma podobně jako v následujícím příkladu:
 
 ```json
 [{
@@ -289,7 +295,7 @@ Příklad schématu vypadá nějak takto:
 
 ### <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
 
-Následující příklad ukazuje schématu **LiveEventConnectionRejected** události: 
+Následující příklad ukazuje schéma události **LiveEventConnectionRejected** : 
 
 ```json
 [
@@ -316,28 +322,28 @@ Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| streamId | string | Identifikátor datového proudu nebo připojení. Přidat toto ID v adresu URL ingestování zodpovídá kodér nebo zákazníků. |  
-| ingestUrl | string | Ingestování adresy URL poskytnuté živé události. |  
-| encoderIp | string | IP adresa z kodéru. |
-| encoderPort | string | Port kodér, ve kterém je tento datový proud zapnout. |
-| resultCode | string | Z důvodů, proč se požadavek na připojení odmítnut. V následující tabulce jsou uvedeny kódy výsledků. |
+| streamId | string | Identifikátor datového proudu nebo připojení. Kodér nebo zákazník je zodpovědný za přidání tohoto ID do adresy URL ingestování. |  
+| ingestUrl | string | Adresa URL příjmu poskytovaná živou událostí |  
+| encoderIp | string | IP adresa kodéru. |
+| encoderPort | string | Port kodéru, ze kterého přichází tento datový proud. |
+| resultCode | string | Důvod zamítnutí připojení. Kódy výsledku jsou uvedeny v následující tabulce. |
 
-Kódy výsledků jsou:
+Výsledné kódy:
 
 | Kód výsledku | Popis |
 | ----------- | ----------- |
-| MPE_RTMP_APPID_AUTH_FAILURE | Adresa URL ingestu nesprávné |
-| MPE_INGEST_ENCODER_CONNECTION_DENIED | Kodér IP není k dispozici v IP nakonfigurovat seznam povolených |
-| MPE_INGEST_RTMP_SETDATAFRAME_NOT_RECEIVED | Kodér neposlali metadata o datového proudu. |
-| MPE_INGEST_CODEC_NOT_SUPPORTED | Kodek zadaný se nepodporuje. |
-| MPE_INGEST_DESCRIPTION_INFO_NOT_RECEIVED | Fragment obdrženo předtím, než přijímají a záhlaví pro tento datový proud. |
-| MPE_INGEST_MEDIA_QUALITIES_EXCEEDED | Procento kvality zadaný překračuje maximální povolený limit. |
-| MPE_INGEST_BITRATE_AGGREGATED_EXCEEDED | Agregované s přenosovou rychlostí překračuje maximální povolený limit. |
-| MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | Časové razítko pro video nebo audio FLVTag není platné z RTMP kodér. |
+| MPE_RTMP_APPID_AUTH_FAILURE | Nesprávná adresa URL pro příjem |
+| MPE_INGEST_ENCODER_CONNECTION_DENIED | V nakonfigurovaném seznamu povolených IP adres není kodér IP. |
+| MPE_INGEST_RTMP_SETDATAFRAME_NOT_RECEIVED | Kodér neodeslal metadata týkající se datového proudu. |
+| MPE_INGEST_CODEC_NOT_SUPPORTED | Zadaný kodek není podporován. |
+| MPE_INGEST_DESCRIPTION_INFO_NOT_RECEIVED | Před příjmem a hlavičkou pro tento datový proud byl přijat fragment. |
+| MPE_INGEST_MEDIA_QUALITIES_EXCEEDED | Počet zadaných kvalit překračuje povolený maximální limit. |
+| MPE_INGEST_BITRATE_AGGREGATED_EXCEEDED | Agregovaná přenosová rychlost překročila maximální povolený limit. |
+| MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | Časové razítko pro video nebo audio FLVTag je od kodéru RTMP neplatné. |
 
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
-Následující příklad ukazuje schématu **LiveEventEncoderConnected** události: 
+Následující příklad ukazuje schéma události **LiveEventEncoderConnected** : 
 
 ```json
 [
@@ -363,14 +369,14 @@ Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| streamId | string | Identifikátor datového proudu nebo připojení. Kodér nebo zákazník zodpovídá za poskytování toto ID v adresu URL ingestování. |
-| ingestUrl | string | Ingestování adresy URL poskytnuté živé události. |
-| encoderIp | string | IP adresa z kodéru. |
-| encoderPort | string | Port kodér, ve kterém je tento datový proud zapnout. |
+| streamId | string | Identifikátor datového proudu nebo připojení. Kodér nebo zákazník zodpovídá za poskytnutí tohoto ID v adrese URL ingestování. |
+| ingestUrl | string | Adresa URL příjmu poskytovaná živou událostí |
+| encoderIp | string | IP adresa kodéru. |
+| encoderPort | string | Port kodéru, ze kterého přichází tento datový proud. |
 
 ### <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 
-Následující příklad ukazuje schématu **LiveEventEncoderDisconnected** události: 
+Následující příklad ukazuje schéma události **LiveEventEncoderDisconnected** : 
 
 ```json
 [
@@ -397,36 +403,36 @@ Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| streamId | string | Identifikátor datového proudu nebo připojení. Přidat toto ID v adresu URL ingestování zodpovídá kodér nebo zákazníků. |  
-| ingestUrl | string | Ingestování adresy URL poskytnuté živé události. |  
-| encoderIp | string | IP adresa z kodéru. |
-| encoderPort | string | Port kodér, ve kterém je tento datový proud zapnout. |
-| resultCode | string | Důvod pro kodér odpojení. Může to být řádné odpojit nebo z chyby. V následující tabulce jsou uvedeny kódy výsledků. |
+| streamId | string | Identifikátor datového proudu nebo připojení. Kodér nebo zákazník je zodpovědný za přidání tohoto ID do adresy URL ingestování. |  
+| ingestUrl | string | Adresa URL příjmu poskytovaná živou událostí |  
+| encoderIp | string | IP adresa kodéru. |
+| encoderPort | string | Port kodéru, ze kterého přichází tento datový proud. |
+| resultCode | string | Důvod odpojení kodéru Může být bezproblémové odpojení nebo chyba. Kódy výsledku jsou uvedeny v následující tabulce. |
 
-Kódy výsledků chyby jsou:
-
-| Kód výsledku | Popis |
-| ----------- | ----------- |
-| MPE_RTMP_SESSION_IDLE_TIMEOUT | Vypršel časový limit po povolený časový limit nečinnosti relace RTMP. |
-| MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | Časové razítko pro video nebo audio FLVTag není platné z RTMP kodér. |
-| MPE_CAPACITY_LIMIT_REACHED | Kodér odesílat data příliš rychle. |
-| Došlo k neznámé chybě kódy | Tyto kódy chyb může být v rozsahu od paměti chyba duplicitní položky v mapě hash. |
-
-Kódy výsledků řádné odpojit jsou:
+Kódy výsledku chyby jsou:
 
 | Kód výsledku | Popis |
 | ----------- | ----------- |
-| S_OK | Kodér úspěšně odpojen. |
-| MPE_CLIENT_TERMINATED_SESSION | Kodér odpojení (RTMP). |
-| MPE_CLIENT_DISCONNECTED | Kodér odpojení (FMP4). |
-| MPI_REST_API_CHANNEL_RESET | Příkaz Obnovit kanál přijetí. |
-| MPI_REST_API_CHANNEL_STOP | Kanál byl přijat příkaz stop. |
-| MPI_REST_API_CHANNEL_STOP | Kanál probíhá údržba. |
-| MPI_STREAM_HIT_EOF | Kodér odesílají streamu EOF. |
+| MPE_RTMP_SESSION_IDLE_TIMEOUT | Platnost relace RTMP vypršela po nečinnosti pro povolený časový limit. |
+| MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | Časové razítko pro video nebo audio FLVTag je od kodéru RTMP neplatné. |
+| MPE_CAPACITY_LIMIT_REACHED | Kodér odesílá data příliš rychle. |
+| Neznámé kódy chyb | Tyto kódy chyb můžou být v rozsahu od chyby paměti až po duplicitní položky v mapě algoritmu hash. |
+
+Kódy výsledků řádného odpojení:
+
+| Kód výsledku | Popis |
+| ----------- | ----------- |
+| S_OK | Kodér byl úspěšně odpojen. |
+| MPE_CLIENT_TERMINATED_SESSION | Kodér byl odpojen (RTMP). |
+| MPE_CLIENT_DISCONNECTED | Kodér byl odpojen (FMP4). |
+| MPI_REST_API_CHANNEL_RESET | Byl přijat příkaz pro obnovení kanálu. |
+| MPI_REST_API_CHANNEL_STOP | Byl přijat příkaz k zastavení kanálu. |
+| MPI_REST_API_CHANNEL_STOP | Probíhá údržba kanálu. |
+| MPI_STREAM_HIT_EOF | Kodér posílá datový proud EOF. |
 
 ### <a name="liveeventincomingdatachunkdropped"></a>LiveEventIncomingDataChunkDropped
 
-Následující příklad ukazuje schématu **LiveEventIncomingDataChunkDropped** události: 
+Následující příklad ukazuje schéma události **LiveEventIncomingDataChunkDropped** : 
 
 ```json
 [
@@ -454,16 +460,16 @@ Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| trackType | string | Typ stopě (zvuk / Video). |
-| trackName | string | Jeden směr určený název. |
-| bitrate | integer | S přenosovou rychlostí dráhy. |
-| timestamp | string | Časové razítko datové dávky vyřazen. |
-| timescale | string | Časové razítko. |
-| resultCode | string | Z důvodu rozevírací bloku dat data. **FragmentDrop_OverlapTimestamp** nebo **FragmentDrop_NonIncreasingTimestamp**. |
+| trackType | string | Typ stopy (zvuk/video) |
+| trackName | string | Název stopy |
+| bitrate | celé číslo | Přenosová rychlost stopy |
+| časové razítko | string | Časové razítko přehozených bloků dat |
+| timescale | string | Časová osa časového razítka. |
+| resultCode | string | Důvod přetažení datového bloku **FragmentDrop_OverlapTimestamp** nebo **FragmentDrop_NonIncreasingTimestamp**. |
 
 ### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
 
-Následující příklad ukazuje schématu **LiveEventIncomingStreamReceived** události: 
+Následující příklad ukazuje schéma události **LiveEventIncomingStreamReceived** : 
 
 ```json
 [
@@ -494,18 +500,18 @@ Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| trackType | string | Typ stopě (zvuk / Video). |
-| trackName | string | Název stopě (buď pokud kodér nebo v případě RTMP server vygeneruje v *TrackType_Bitrate* formátu). |
-| bitrate | integer | S přenosovou rychlostí dráhy. |
-| ingestUrl | string | Ingestování adresy URL poskytnuté živé události. |
-| encoderIp | string  | IP adresa z kodéru. |
-| encoderPort | string | Port kodér, ve kterém je tento datový proud zapnout. |
-| timestamp | string | První časové razítko přijetí datové dávky. |
-| timescale | string | Časový rámec, ve kterém je reprezentován časové razítko. |
+| trackType | string | Typ stopy (zvuk/video) |
+| trackName | string | Název stopy (poskytnutý kodérem nebo v případě RTMP vygeneruje Server ve formátu *TrackType_Bitrate* ). |
+| bitrate | celé číslo | Přenosová rychlost stopy |
+| ingestUrl | string | Adresa URL příjmu poskytovaná živou událostí |
+| encoderIp | string  | IP adresa kodéru. |
+| encoderPort | string | Port kodéru, ze kterého přichází tento datový proud. |
+| časové razítko | string | První časové razítko přijatého datového bloku |
+| timescale | string | Časový rozvrh, ve kterém je znázorněno časové razítko |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
 
-Následující příklad ukazuje schématu **LiveEventIncomingStreamsOutOfSync** události: 
+Následující příklad ukazuje schéma události **LiveEventIncomingStreamsOutOfSync** : 
 
 ```json
 [
@@ -533,16 +539,16 @@ Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| minLastTimestamp | string | Minimální poslední časové razítko mezi všechny stopy (zvuku nebo videa). |
-| typeOfTrackWithMinLastTimestamp | string | Typ sledování (zvuku nebo videa) s minimální poslední časové razítko. |
-| maxLastTimestamp | string | Maximální počet časová razítka mezi všechny stopy (zvuku nebo videa). |
-| typeOfTrackWithMaxLastTimestamp | string | Typ sledování (zvuku nebo videa) s maximální poslední časové razítko. |
-| timescaleOfMinLastTimestamp| string | Získá časový rámec, ve kterém je reprezentován "MinLastTimestamp".|
-| timescaleOfMaxLastTimestamp| string | Získá časový rámec, ve kterém je reprezentován "MaxLastTimestamp".|
+| minLastTimestamp | string | Minimální počet posledních časových razítek mezi všemi skladbami (zvuk nebo video). |
+| typeOfTrackWithMinLastTimestamp | string | Typ stopy (zvuk nebo video) s minimálním posledním časovým razítkem. |
+| maxLastTimestamp | string | Maximum všech časových razítek mezi všemi skladbami (zvuk nebo video). |
+| typeOfTrackWithMaxLastTimestamp | string | Typ stopy (zvuk nebo video) s maximálním posledním časovým razítkem |
+| timescaleOfMinLastTimestamp| string | Získá časovou osu, ve které je reprezentace "MinLastTimestamp".|
+| timescaleOfMaxLastTimestamp| string | Získá časovou osu, ve které je reprezentace "MaxLastTimestamp".|
 
 ### <a name="liveeventincomingvideostreamsoutofsync"></a>LiveEventIncomingVideoStreamsOutOfSync
 
-Následující příklad ukazuje schématu **LiveEventIncomingVideoStreamsOutOfSync** události: 
+Následující příklad ukazuje schéma události **LiveEventIncomingVideoStreamsOutOfSync** : 
 
 ```json
 [
@@ -569,15 +575,15 @@ Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| firstTimestamp | string | Časové razítko přijetí pro jednu z úrovní sleduje/kvality typu videa. |
-| firstDuration | string | Doba trvání bloků dat s první časové razítko. |
-| secondTimestamp | string  | Časové razítko přijetí pro některé další úroveň sledování/kvality typu videa. |
-| secondDuration | string | Doba trvání bloků dat s druhé časové razítko. |
-| timescale | string | Časová osa časová razítka a doba trvání.|
+| firstTimestamp | string | Bylo přijato časové razítko pro jednu z úrovní sledování a kvality typu video. |
+| firstDuration | string | Doba trvání datového bloku s prvním časovým razítkem. |
+| secondTimestamp | string  | Bylo přijato časové razítko pro určitou další úroveň sledování a kvality typu video. |
+| secondDuration | string | Doba trvání datového bloku s druhým časovým razítkem. |
+| timescale | string | Časová osa časových razítek a trvání|
 
 ### <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
 
-Následující příklad ukazuje schématu **LiveEventIngestHeartbeat** události: 
+Následující příklad ukazuje schéma události **LiveEventIngestHeartbeat** : 
 
 ```json
 [
@@ -611,22 +617,22 @@ Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| trackType | string | Typ stopě (zvuk / Video). |
-| trackName | string | Název stopě (buď pokud kodér nebo v případě RTMP server vygeneruje v *TrackType_Bitrate* formátu). |
-| bitrate | integer | S přenosovou rychlostí dráhy. |
-| incomingBitrate | integer | Vypočtený s přenosovou rychlostí podle bloků dat z kodéru. |
-| lastTimestamp | string | Poslední časové razítko přijetí pro sledování v posledních 20 sekund. |
-| timescale | string | Časový rámec, ve kterém jsou vyjádřeny časová razítka. |
-| overlapCount | integer | Počet bloků dat měli překrytých časová razítka v posledních 20 sekund. |
-| discontinuityCount | integer | Počet nespojitosti zjištěnými v posledních 20 sekund. |
-| nonIncreasingCount | integer | Počet bloků dat s časovými razítky v minulosti byly přijaty v posledních 20 sekund. |
-| unexpectedBitrate | bool | Pokud očekávaných a aktuálních přenosových rychlostí lišit o více než povolený limit v posledních 20 sekund. Je hodnota true v případě a pouze tehdy, pokud incomingBitrate > = 2 * s přenosovou rychlostí nebo incomingBitrate < = nebo IncomingBitrate s přenosovou rychlostí/2 = 0. |
+| trackType | string | Typ stopy (zvuk/video) |
+| trackName | string | Název stopy (poskytnutý kodérem nebo v případě RTMP vygeneruje Server ve formátu *TrackType_Bitrate* ). |
+| bitrate | celé číslo | Přenosová rychlost stopy |
+| incomingBitrate | celé číslo | Vypočtená přenosová rychlost založená na datových blocích přicházejících z kodéru. |
+| lastTimestamp | string | Poslední přijaté časové razítko pro stopu za posledních 20 sekund. |
+| timescale | string | Časové měřítko, ve kterém jsou vyjádřena časová razítka. |
+| overlapCount | celé číslo | Počet bloků dat má překrývající se časová razítka za posledních 20 sekund. |
+| discontinuityCount | celé číslo | Počet nekontinuity zjištěných za posledních 20 sekund. |
+| nonIncreasingCount | celé číslo | Počet datových bloků s časovými razítky v minulosti byl přijat za posledních 20 sekund. |
+| unexpectedBitrate | bool | Pokud se očekává a Skutečná přenosová rychlost se v posledních 20 sekundách liší od více než povoleného limitu. Je true pouze v případě, že incomingBitrate > = 2 * přenosová rychlost nebo incomingBitrate < = přenosová rychlost/2 nebo IncomingBitrate = 0. |
 | state | string | Stav živé události. |
-| healthy | bool | Označuje, zda ingestování je v pořádku na základě počtu a příznaky. V pořádku má hodnotu true Pokud overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
+| healthy | bool | Uvádí, zda je příjem dat v pořádku v závislosti na počtu a příznacích. V pořádku má hodnotu true, pokud overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
 
-Následující příklad ukazuje schématu **LiveEventTrackDiscontinuityDetected** události: 
+Následující příklad ukazuje schéma události **LiveEventTrackDiscontinuityDetected** : 
 
 ```json
 [
@@ -655,34 +661,34 @@ Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| trackType | string | Typ stopě (zvuk / Video). |
-| trackName | string | Název stopě (buď pokud kodér nebo v případě RTMP server vygeneruje v *TrackType_Bitrate* formátu). |
-| bitrate | integer | S přenosovou rychlostí dráhy. |
-| previousTimestamp | string | Časové razítko předchozí fragment. |
-| newTimestamp | string | Časové razítko aktuální fragmentu. |
-| discontinuityGap | string | Mezera mezi nad dva časová razítka. |
-| timescale | string | Jsou reprezentovány časový rámec, ve které časovým razítkem a diskontinuitu mezera. |
+| trackType | string | Typ stopy (zvuk/video) |
+| trackName | string | Název stopy (poskytnutý kodérem nebo v případě RTMP vygeneruje Server ve formátu *TrackType_Bitrate* ). |
+| bitrate | celé číslo | Přenosová rychlost stopy |
+| previousTimestamp | string | Časové razítko předchozího fragmentu |
+| newTimestamp | string | Časové razítko aktuálního fragmentu |
+| discontinuityGap | string | Mezera mezi více než dvěma časovými razítky. |
+| timescale | string | Časová osa, v níž jsou reprezentovány mezery mezi časovou osou a diskontinuita |
 
-### <a name="common-event-properties"></a>Společných vlastností události
+### <a name="common-event-properties"></a>Vlastnosti běžných událostí
 
-Událost má následující dat nejvyšší úrovně:
+Událost má následující data nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| topic | string | EventGrid tématu. Tato vlastnost má ID prostředku účtu Media Services. |
-| subject | string | Cesta prostředku pro kanál služby Media Services v rámci účtu Media Services. Zřetězení tématu a předmět uveďte jste prostředek ID pro úlohu. |
-| eventType | string | Jeden z typů registrované události pro tento zdroj událostí. Například "Microsoft.Media.JobStateChange". |
-| eventTime | string | Vygenerování události podle času UTC poskytovatele. |
-| id | string | Jedinečný identifikátor pro událost. |
-| data | objekt | Data událostí Media Services. |
-| dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
-| metadataVersion | string | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| téma | string | Téma EventGrid Tato vlastnost má ID prostředku pro účet Media Services. |
+| subject | string | Cesta prostředku pro kanál Media Services pod účtem Media Services Zřetězením tématu a předmětu získáte ID prostředku pro úlohu. |
+| eventType | string | Jeden z registrovaných typů události pro tento zdroj události. Například "Microsoft. Media. JobStateChange". |
+| eventTime | string | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
+| id | string | Jedinečný identifikátor události |
+| data | object | Media Services data události. |
+| dataVersion | string | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
+| metadataVersion | string | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Zaregistrujte se na události změny stavu úlohy](job-state-events-cli-how-to.md)
+[Zaregistrujte se na události změny stavu úlohy.](job-state-events-cli-how-to.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-- [EventGrid .NET SDK, která zahrnuje události mediálních služeb](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
+- [EventGrid .NET SDK zahrnující události Media Service](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Definice událostí Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)

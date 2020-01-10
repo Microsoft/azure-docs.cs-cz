@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: dbd6762906bc189cad74d78dcd8f28b0cfeba183
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4c6ccf9dce0fc119bd666871489a42a3ef734f81
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226991"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769196"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Použití injektáže závislosti v rozhraní .NET Azure Functions
 
@@ -25,7 +25,7 @@ Azure Functions podporuje vzor návrhu pro vkládání závislostí (DI), což j
 
 Než budete moci použít vkládání závislostí, je nutné nainstalovat následující balíčky NuGet:
 
-- [Microsoft. Azure. Functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
+- [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
 - [Balíček Microsoft. NET. SDK. Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) verze 1.0.28 nebo novější
 
@@ -198,7 +198,7 @@ Další podrobnosti týkající se práce s možnostmi najdete [v tématu vzor m
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících zdrojích:
+Další informace najdete v následujících materiálech:
 
 - [Jak monitorovat aplikaci Function App](functions-monitoring.md)
 - [Osvědčené postupy pro funkce](functions-best-practices.md)

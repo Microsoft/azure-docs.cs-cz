@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/04/2019
-ms.openlocfilehash: b8ab4362945b84b4337859a1dad03906cc289c99
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 813d3115d8df7227bde89a73a73bcae270f09bbb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75378241"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771338"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Kurz: Vytvoření clusteru Azure Red Hat OpenShift
 
@@ -159,7 +159,7 @@ az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCA
 Pokud chcete, aby Azure Monitoring s clusterem **měl** , použijte následující příkaz, který přidá příznak `--workspace-id`:
 
 ```bash
-az openshift create --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --workspace-id $WORKSPACE_ID
+az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --workspace-id $WORKSPACE_ID
 ```
 
 > [!NOTE]

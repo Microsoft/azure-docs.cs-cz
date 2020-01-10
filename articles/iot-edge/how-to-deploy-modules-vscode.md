@@ -4,23 +4,23 @@ description: Pomocí Visual Studio Code s nástroji Azure IoT nahrajte modul IoT
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/09/2019
+ms.date: 01/8/2019
 ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d1c5897240f627d52af056767943b59d85dd2d0c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d8c90c2a13d111d01a1e7a1bd9b63da180621ded
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434293"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772087"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Nasadit moduly Azure IoT Edge z Visual Studio Code
 
 Po vytvoření IoT Edge modulů s obchodní logikou, budete chtít nasadit do zařízení pracovat na hraničních zařízeních. Pokud máte více modulů, které vzájemně spolupracují ke shromáždění a zpracování dat, můžete je nasadit všechny najednou a deklarovat pravidla směrování, které je propojují.
 
-Tento článek ukazuje, jak vytvořit manifest nasazení JSON a pak jej použít pro vložení nasazení do zařízení IoT Edge. Informace o vytváření nasazení, které cílí na více zařízeních na základě jejich sdílené značek, naleznete v tématu [nasadit a monitorovat moduly IoT Edge ve velkém měřítku](how-to-deploy-monitor.md)
+Tento článek ukazuje, jak vytvořit manifest nasazení JSON a pak jej použít pro vložení nasazení do zařízení IoT Edge. Informace o vytvoření nasazení, které cílí na více zařízení na základě jejich sdílených značek, najdete v tématu [nasazení IoT Edgech modulů ve velkém měřítku pomocí Visual Studio Code](how-to-deploy-monitor-vscode.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -87,7 +87,7 @@ Tady je manifest základní nasazení s jeden modul jako příklad:
          "properties.desired": {
            "schemaVersion": "1.0",
            "routes": {
-               "route": "FROM /* INTO $upstream"
+               "route": "FROM /messages/* INTO $upstream"
            },
            "storeAndForwardConfiguration": {
              "timeToLiveSecs": 7200
@@ -107,11 +107,11 @@ Rozšíření Azure IoT pro Visual Studio Code můžete použít k provádění 
 
 1. V sadě Visual Studio Code otevřete **Explorer** zobrazení.
 
-1. V dolní části Průzkumníku, rozbalte **zařízení Azure IoT Hub** oddílu.
+1. V dolní části Průzkumníka rozbalte část **Azure IoT Hub** .
 
-   ![Rozbalte část zařízení Azure IoT Hub](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
+   ![Rozbalte oddíl Azure IoT Hub.](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
 
-1. Klikněte na **...**  v **zařízení Azure IoT Hub** hlavičku oddílu. Pokud nevidíte tři tečky, najeďte myší na záhlaví.
+1. Klikněte na **...** v hlavičce oddílu **Azure IoT Hub** . Pokud nevidíte tři tečky, najeďte myší na záhlaví.
 
 1. Zvolte **vyberte službu IoT Hub**.
 
@@ -125,7 +125,7 @@ Rozšíření Azure IoT pro Visual Studio Code můžete použít k provádění 
 
 Moduly nasadíte do zařízení s použitím manifestu nasazení, který jste nakonfigurovali pomocí informací o modulech.
 
-1. V zobrazení Průzkumníka Visual Studio Code, rozbalte **zařízení Azure IoT Hub** oddílu.
+1. V zobrazení Průzkumník Visual Studio Code rozbalte část **Azure IoT Hub** a potom rozbalte uzel **zařízení** .
 
 1. Pravým tlačítkem myši klikněte na zařízení IoT Edge, které chcete nakonfigurovat pomocí manifestu nasazení.
 
@@ -142,7 +142,7 @@ Výsledky nasazení jsou zobrazeny ve výstupu VS Code. Úspěšné nasazení js
 
 ## <a name="view-modules-on-your-device"></a>Zobrazení modulů ve vašem zařízení
 
-Po nasazení modulů do svého zařízení, můžete zobrazit všechny z nich **zařízení Azure IoT Hub** oddílu. Vyberte šipku vedle zařízení IoT Edge a rozbalte ho. Zobrazí se všechny aktuálně spuštěné moduly.
+Až nasadíte moduly do svého zařízení, můžete je zobrazit v části **Azure IoT Hub** . Vyberte šipku vedle zařízení IoT Edge a rozbalte ho. Zobrazí se všechny aktuálně spuštěné moduly.
 
 Pokud se nedávno nové moduly nasazené na zařízení, najeďte myší **zařízení Azure IoT Hub** záhlaví a vyberte ikonu aktualizace a aktualizace zobrazení.
 
@@ -150,4 +150,4 @@ Klikněte pravým tlačítkem na název modulu zobrazení a úprava dvojčete mo
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak [nasadit a monitorovat moduly IoT Edge ve velkém měřítku](how-to-deploy-monitor.md)
+Naučte se [, jak nasadit a monitorovat IoT Edge moduly ve velkém rozsahu pomocí Visual Studio Code](how-to-deploy-monitor.md)

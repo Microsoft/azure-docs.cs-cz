@@ -3,12 +3,13 @@ title: Rozdíly v Azure Service Fabric mezi systémy Linux a Windows
 description: Rozdíly mezi Azure Service Fabric v Linuxu a Azure Service Fabric ve Windows.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: bcb2b4b112cf5247da8ca6a5d735ca247b3c06f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: c064291491110b17c172a561afbd1e65d6c08d06
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463023"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748524"
 ---
 # <a name="differences-between-service-fabric-on-linux-and-windows"></a>Rozdíly mezi Service Fabric v Linuxu a ve Windows
 
@@ -77,9 +78,8 @@ Existují určité funkce, které jsou ve Windows podporované, ale v Linuxu zat
 * Stop-ServiceFabricRepairTask
 * Update-ServiceFabricRepairTaskHealthPolicy
 
-
-
 ## <a name="next-steps"></a>Další kroky
+
 * [Příprava vývojového prostředí v Linuxu](service-fabric-get-started-linux.md)
 * [Příprava vývojového prostředí v OSX](service-fabric-get-started-mac.md)
 * [Vytvoření a nasazení první aplikace Service Fabric v Javě v Linuxu pomocí Yeomana](service-fabric-create-your-first-linux-application-with-java.md)

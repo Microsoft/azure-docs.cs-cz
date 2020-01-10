@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 11/04/2019
-ms.openlocfilehash: d8b381c1afdea05618d9ad5d791a7597092c8519
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b43f2f351345f05c3eb56a84fb1a0eadb4826707
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530778"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771508"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Tahákový list algoritmu Machine Learning pro návrháře Azure Machine Learning
 
@@ -60,6 +60,6 @@ V procesu posílení učení se algoritmus při reakci na každý datový bod vy
 
 * Podívejte se na seznam algoritmů a modulů v [odkazech na algoritmus a modul](algorithm-module-reference/module-reference.md).
 
-* [Kurz: sestavení modelu předpovědi v návrháři Azure Machine Learning](service/ui-tutorial-automobile-price-train-score.md).
+* [Kurz: sestavení modelu předpovědi v návrháři Azure Machine Learning](tutorial-designer-automobile-price-train-score.md).
 
 * [Seznamte se s hloubkovým učením a strojovým učením](concept-deep-learning-vs-machine-learning.md).

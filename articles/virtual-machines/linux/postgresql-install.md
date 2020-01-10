@@ -14,19 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: f6d521c7003583228990c80a90c1454821f584d3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bbfad994de663881e3aa03292fc0d0611a0d0933
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035269"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747795"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Instalace a konfigurace PostgreSQL v Azure
 PostgreSQL je pokročilá open source databáze podobná Oracle a DB2. Zahrnuje funkce připravené pro podnikové prostředí, jako je plně KYSELé dodržování předpisů, spolehlivé zpracování transakcí a řízení souběžnosti s více verzemi. Podporuje také standardy, jako je ANSI SQL a SQL/MED (včetně obálek cizích dat pro Oracle, MySQL, MongoDB a mnoho dalších). Je vysoce rozšiřitelná s podporou více než 12 procedurálních jazyků, GIN a registrových indexů, podpory prostorových dat a několika NoSQL funkcí podobných funkcím pro aplikace založené na formátu JSON nebo klíč-hodnota.
 
 V tomto článku se dozvíte, jak nainstalovat a nakonfigurovat PostgreSQL na virtuálním počítači Azure se systémem Linux.
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="install-postgresql"></a>Nainstalovat PostgreSQL
 > [!NOTE]
@@ -64,7 +63,7 @@ Připojte se k virtuálnímu počítači se systémem Linux, který jste vytvoř
         # cd postgresql-9.3.5
    
         # ./configure --prefix=/opt/postgresql-9.3.5
-5. Pokud chcete sestavit všechno, co se dá sestavit, včetně dokumentace (HTML a Man Pages) a dalších modulů (contrib), spusťte následující příkaz:
+5. Pokud chcete sestavit všechno, co se dá sestavit, včetně dokumentace (HTML a Man Pages) a dalších modulů (`contrib`), spusťte následující příkaz:
    
         # gmake install-world
    
@@ -200,7 +199,7 @@ Nejprve vložte informace do řádku:
 
     INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Casserole', 'Y', '2012-04-11');
 
-Měl by se zobrazit tento výstup:
+Měli byste vidět tento výstup:
 
 ![image](./media/postgresql-install/no6.png)
 
@@ -217,7 +216,7 @@ Tabulku můžete zobrazit pomocí následujícího příkazu:
 
     select * from potluck;
 
-Výstup je:
+Výstup bude následující:
 
 ![image](./media/postgresql-install/no7.png)
 
@@ -226,7 +225,7 @@ Pomocí následujícího příkazu odstraňte data v tabulce:
 
     delete from potluck where name=’John’;
 
-Tím se odstraní všechny informace v řádku "Jan". Výstup je:
+Tím se odstraní všechny informace v řádku "Jan". Výstup bude následující:
 
 ![image](./media/postgresql-install/no8.png)
 

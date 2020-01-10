@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 11/04/2019
-ms.openlocfilehash: cfcf63274fc4bd77e7cb8fd792ed7d2782b36003
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 1217028dc6c206633f13fe44951732809cd72d22
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541241"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75762788"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Obsáhlý Learning a strojové učení
 
@@ -110,14 +110,14 @@ Sítě konvoluční neuronové se používají v oblastech, jako je rozpoznává
 
 ## <a name="next-steps"></a>Další kroky
 
-Následující články ukazují, jak používat technologii pro hloubkové učení v [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri):
+Následující články ukazují, jak používat technologii pro hloubkové učení v [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri):
 
-- [Klasifikace rukou psaných číslic pomocí modelu TensorFlow](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+- [Klasifikace rukou psaných číslic pomocí modelu TensorFlow](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
 
-- [Klasifikace rukou psaných číslic pomocí TensorFlow Estimator a Keras](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
+- [Klasifikace rukou psaných číslic pomocí TensorFlow Estimator a Keras](https://docs.microsoft.com/azure/machine-learning/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
 
-- [Klasifikace imagí pomocí modelu Pytorch](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
+- [Klasifikace imagí pomocí modelu Pytorch](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
 
-- [Klasifikace rukou psaných číslic pomocí modelu zřetězení](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
+- [Klasifikace rukou psaných číslic pomocí modelu zřetězení](https://docs.microsoft.com/azure/machine-learning/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
 
 K výběru algoritmů pro model použijte taky [tahákový list s algoritmem Machine Learning](algorithm-cheat-sheet.md) .

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 09/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 93a2554b5d3cc24e1b5fc1e3d0f18ed1bfe0579c
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: fbc6889507e58c4721597a1108337fcb1f8756a2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71692027"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751576"
 ---
 Díky výraznému růstu virtuálních počítačů hostovaných v Azure je důležité identifikovat problémy s výkonem a stavem, které mají vliv na aplikace a služby infrastruktury, které podporují. Základní monitorování se ve výchozím nastavení doručuje s Azure podle typu metriky využití procesoru, využití disku, využití paměti a síťového provozu shromážděného hypervisorem hostitele. Další data metrik a protokolů je možné shromažďovat pomocí [rozšíření](../articles/virtual-machines/windows/extensions-features.md) pro konfiguraci diagnostiky virtuálních počítačů z hostovaného operačního systému.
 
@@ -45,18 +45,18 @@ Můžete vytvářet [výstrahy](../articles/azure-monitor/platform/alerts-overvi
 
 ## <a name="azure-activity-log"></a>Protokol aktivit Azure
 
-[Protokol aktivit Azure](../articles/azure-monitor/platform/activity-logs-overview.md) je protokol předplatného, který poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo v Azure. Protokol zahrnuje rozsah dat, od Azure Resource Manager provozních dat až po aktualizace Service Healthch událostí. Kliknutím na protokol aktivit v Azure Portal zobrazíte protokol pro svůj virtuální počítač.
+[Protokol aktivit Azure](../articles/azure-monitor/platform/platform-logs-overview.md) je protokol předplatného, který poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo v Azure. Protokol zahrnuje rozsah dat, od Azure Resource Manager provozních dat až po aktualizace Service Healthch událostí. Kliknutím na protokol aktivit v Azure Portal zobrazíte protokol pro svůj virtuální počítač.
 
 Mezi akce, které můžete s protokolem aktivit dělat, patří:
 
-- Vytvoří [výstrahu pro událost protokolu aktivit](../articles/azure-monitor/platform/activity-logs-overview.md).
+- Vytvoří [výstrahu pro událost protokolu aktivit](../articles/azure-monitor/platform/platform-logs-overview.md).
 - [Streamujte ho do centra událostí](../articles/azure-monitor/platform/activity-logs-stream-event-hubs.md) pro ingestování prostřednictvím služby třetí strany nebo řešení pro vlastní analýzu, jako je Power BI.
 - Analyzujte ho v Power BI pomocí [balíčku obsahu Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
 - [Uložte ho do účtu úložiště](../articles/azure-monitor/platform/archive-activity-log.md) pro archivaci nebo ruční kontrolu. Dobu uchování (ve dnech) můžete určit pomocí profilu protokolu.
 
 Data protokolu aktivit můžete také přistupovat pomocí [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/), rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/monitor)nebo [monitorovat rozhraní REST API](https://docs.microsoft.com/rest/api/monitor/).
 
-[Protokoly prostředků Azure](../articles/azure-monitor/platform/resource-logs-overview.md) jsou protokoly EMITOVANÉ vaším virtuálním počítačem, které poskytují bohatou a častou data o jeho provozu. Protokoly prostředků se liší od protokolu aktivit tím, že poskytují přehled o operacích, které byly provedeny v rámci virtuálního počítače.
+[Protokoly prostředků Azure](../articles/azure-monitor/platform/platform-logs-overview.md) jsou protokoly EMITOVANÉ vaším virtuálním počítačem, které poskytují bohatou a častou data o jeho provozu. Protokoly prostředků se liší od protokolu aktivit tím, že poskytují přehled o operacích, které byly provedeny v rámci virtuálního počítače.
 
 Mezi postupy, které můžete s diagnostickými protokoly provádět, patří:
 
@@ -66,7 +66,7 @@ Mezi postupy, které můžete s diagnostickými protokoly provádět, patří:
 
 ## <a name="advanced-monitoring"></a>Pokročilé sledování
 
-Pro přehlednost aplikace nebo služby podporované virtuálním počítačem Azure a sadou škálování virtuálních počítačů, identifikace problémů s hostovaným operačním systémem nebo úlohami spuštěnými ve virtuálním počítači, abyste zjistili, jestli má dopad na dostupnost nebo výkon aplikace, nebo je při potížích s aplikací povolte [Azure monitor pro virtuální počítače](../articles/azure-monitor/insights/vminsights-overview.md) i [Application Insights](../articles/azure-monitor/app/app-insights-overview.md).
+Pro přehlednost aplikace nebo služby podporované virtuálním počítačem Azure a sadami škálování virtuálních počítačů, identifikace problémů s hostovaným operačním systémem nebo úlohami spuštěnými ve virtuálním počítači, abyste zjistili, jestli má vliv na dostupnost nebo výkon aplikace, nebo pokud se jedná o problém s aplikací, povolte [Azure monitor pro virtuální počítače](../articles/azure-monitor/insights/vminsights-overview.md) i [Application Insights](../articles/azure-monitor/app/app-insights-overview.md).
 
 Azure Monitor pro virtuální počítače monitoruje vaše virtuální počítače Azure ve velkém měřítku tím, že analyzuje výkon a stav virtuálních počítačů s Windows a Linux, včetně různých procesů a propojených závislostí s dalšími prostředky a externími procesy IT. zjistí. Zahrnuje několik grafů s výkonem trendů, které vám pomůžou při zkoumání problémů a vyhodnocování kapacity vašich virtuálních počítačů. Mapa závislostí zobrazuje monitorované a nemonitorované počítače, neúspěšná a aktivní síťová připojení mezi procesy a těmito počítači a zobrazuje vývojové grafy se standardními metrikami síťového připojení. V kombinaci s Application Insights můžete monitorovat aplikaci a zachytit telemetrii, jako jsou požadavky HTTP, výjimky atd., takže můžete sladit problémy mezi virtuálními počítači a vaší aplikací. Nakonfigurujte [výstrahy Azure monitor](../articles/azure-monitor/platform/alerts-overview.md) , aby vás upozornily na důležité podmínky zjištěné z dat monitorování shromažďovaných pomocí Azure monitor pro virtuální počítače.
 

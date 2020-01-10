@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 12/27/2019
-ms.openlocfilehash: 05cf7f1c69c6118d39efb72185443e1fad072209
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 01/08/2020
+ms.openlocfilehash: 88bc90a50fb9579e29b8b31b4be23052275b2b28
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531458"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746851"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Kurz: migrace SQL Server do Azure SQL Database spravované instance online pomocí DMS
 
@@ -54,7 +54,7 @@ Tento článek popisuje online migraci z SQL Server do spravované instance SQL 
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
-* Vytvořte Azure Virtual Network (VNet) pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který zajišťuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). [Naučte se síťové topologie pro migrace Azure SQL Database spravované instance pomocí Azure Database Migration Service](https://aka.ms/dmsnetworkformi). Další informace o vytvoření virtuální sítě najdete v dokumentaci k [Virtual Network](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlý Start s podrobnými údaji.
+* Vytvořte Microsoft Azure Virtual Network pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který umožňuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). [Naučte se síťové topologie pro migrace Azure SQL Database spravované instance pomocí Azure Database Migration Service](https://aka.ms/dmsnetworkformi). Další informace o vytváření virtuálních sítí najdete v [dokumentaci k Virtual Network](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlý Start s podrobnými údaji.
 
     > [!NOTE]
     > Pokud při instalaci virtuální sítě používáte ExpressRoute s partnerským vztahem k síti Microsoftu, přidejte do podsítě, ve které se služba zřídí, tyto [koncové body](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) služby:
@@ -72,7 +72,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
     > * Vyberte, pokud chcete, aby přístup k účtu úložiště umožňovala všechna síť.
     > * Nastavte seznamy řízení přístupu (ACL) pro virtuální síť. Další informace najdete v článku [konfigurace Azure Storage bran firewall a virtuálních sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
-* Zajistěte, aby pravidla skupiny zabezpečení sítě VNet neblokovala následující příchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování přenosů Azure VNet NSG najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+* Zajistěte, aby pravidla skupiny zabezpečení sítě virtuálních sítí neblokovala následující příchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 * Nakonfigurujte bránu [Windows Firewall pro přístup ke zdrojovému databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Otevřete bránu Windows Firewall, čímž povolíte Azure Database Migration Service přístup ke zdrojovému SQL Server, který je ve výchozím nastavení port TCP 1433.
 * Pokud používáte více instancí s názvem SQL Server s použitím dynamických portů, možná budete chtít povolit službu SQL Browser a povolit přístup k portu UDP 1434 přes brány firewall, aby se Azure Database Migration Service mohli připojit k pojmenované instanci na vašem zdroji. WebServer.
@@ -81,7 +81,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 * Ujistěte se, že přihlašovací jména použitá pro připojení ke zdrojovému SQL Serveru a cílové spravované instanci patří členům role serveru sysadmin.
 * Poskytněte sdílenou síťovou složku protokolu SMB, která obsahuje všechny soubory zálohy databáze úplné databáze a následné záložní soubory transakčního protokolu, které Azure Database Migration Service můžou použít k migraci databáze.
 * Ujistěte se, že účet služby, ve kterém je spuštěná zdrojová instance SQL Serveru, má oprávnění k zápisu do sdílené síťové složky, kterou jste vytvořili, a že účet počítače pro zdrojový server má k této sdílené složce přístup pro čtení i zápis.
-* Poznamenejte si uživatele Windows (a jeho heslo) s oprávněním Úplné řízení ke sdílené síťové složce, kterou jste vytvořili dříve. Azure Database Migration Service zosobňuje přihlašovací údaje uživatele k nahrání záložních souborů do kontejneru úložiště Azure pro operaci obnovení.
+* Poznamenejte si uživatele Windows (a jeho heslo) s oprávněním Úplné řízení ke sdílené síťové složce, kterou jste vytvořili dříve. Azure Database Migration Service zosobňuje přihlašovací údaje uživatele k nahrání záložních souborů do kontejneru Azure Storage pro operaci obnovení.
 * Vytvořte Azure Active Directory ID aplikace, které generuje klíč ID aplikace, který Azure Database Migration Service může použít k připojení k cílové spravované instanci Azure Database a kontejneru Azure Storage. Další informace najdete v článku [Vytvoření aplikace Azure Active Directory a instančního objektu s přístupem k prostředkům pomocí portálu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal).
 
   > [!NOTE]
@@ -209,7 +209,7 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
     | | |
     |--------|---------|
     |**Sdílená složka SMB v síťovém umístění** | Místní sdílená síťová složka SMB nebo sdílená složka Azure, která obsahuje soubory zálohy úplné databáze a záložní soubory protokolu transakcí, které Azure Database Migration Service můžou použít k migraci. Účet služby, ve kterém je spuštěná zdrojová instance SQL Serveru, musí pro tuto sdílenou síťovou složku mít oprávnění ke čtení i zápisu. Zadejte plně kvalifikovaný název domény nebo IP adresy serveru ve sdílené síťové složce, například \\\název_serveru.název_domény.com\záložní_složka nebo \\\IP_adressa\záložní_složka.|
-    |**Uživatelské jméno** | Ujistěte se, že má uživatel Windows oprávnění Úplné řízení ke sdílené síťové složce, kterou jste určili dříve. Azure Database Migration Service zosobní přihlašovací údaje uživatele pro nahrání záložních souborů do kontejneru úložiště Azure pro operaci obnovení. Pokud používáte sdílenou složku Azure, použijte jako uživatelské jméno název účtu úložiště označené jako nedokončené s AZURE. |
+    |**Uživatelské jméno** | Ujistěte se, že má uživatel Windows oprávnění Úplné řízení ke sdílené síťové složce, kterou jste určili dříve. Azure Database Migration Service zosobní přihlašovací údaje uživatele, aby nahrála záložní soubory do Azure Storage kontejneru pro operaci obnovení. Pokud používáte sdílenou složku Azure, použijte jako uživatelské jméno název účtu úložiště označené jako nedokončené s AZURE. |
     |**Heslo** | Heslo pro tohoto uživatele. Pokud používáte službu Azure File Share, jako heslo použijte klíč účtu úložiště. |
     |**Předplatné účtu úložiště Azure** | Vyberte předplatné obsahující účet úložiště Azure. |
     |**Účet úložiště Azure** | Vyberte účet úložiště Azure, do kterého může DMS nahrát soubory záloh ze sdílené síťové složky SMB a který může použít k migraci databází.  Pro zajištění optimálního výkonu nahrávání souborů doporučujeme vybrat účet úložiště ve stejné oblasti, jako je služba DMS. |

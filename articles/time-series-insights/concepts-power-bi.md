@@ -8,18 +8,26 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: bdf687437a278a125bcb6196f44dcaccff4cc3f1
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: e17d38f6bcb1d843b49e89a473551f8ef4aa16aa
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689395"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770318"
 ---
 # <a name="connect-time-series-insights-to-power-bi"></a>Připojit Time Series Insights k Power BI  
- 
+
 Hledáte řešení, které vám umožní sladit data časových řad, vytvářet ostré vizualizace a sdílet přehledy napříč vaší organizací?
 
-Time Series Insights se teď bezproblémově integruje s [Power BI](https://powerbi.microsoft.com/)a poskytuje vám výkonnější vizualizace a možnosti řídicího panelu pro streamovaná data a umožňuje sdílení přehledů a výsledků napříč vaší organizací.
+Azure Time Series Insights se teď bezproblémově integruje s [Power BI](https://powerbi.microsoft.com/)a poskytuje vám výkonnější vizualizace a možnosti řídicího panelu pro streamovaná data a umožňuje sdílení přehledů a výsledků napříč vaší organizací.
+
+## <a name="video"></a>Video
+
+Přečtěte si další informace o integraci Azure Time Series Insights s Power BI.
+
+> [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Power-BI-integration-with-TSI/player]
+
+## <a name="summary"></a>Souhrn
 
    [možnost exportu ![v Time Series Insights](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png)](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png#lightbox)
 

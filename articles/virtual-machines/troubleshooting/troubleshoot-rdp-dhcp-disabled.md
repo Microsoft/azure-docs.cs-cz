@@ -12,32 +12,31 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: ef44931cc3b36bcab64a2de840d9264c1b8fdedb
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 2c5b0556554d280e57b2df51875e1b057b5fb4a8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058023"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749889"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Nelze RDP na virtuálních počítačích Azure, protože služba Klient DHCP je zakázána.
 
 Tento článek popisuje problém, který se po zakázání služby Klient DHCP ve virtuálním počítači je nelze vzdálené plochy Azure Windows Virtual Machines (VM).
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="symptoms"></a>Příznaky
 Nemůžete provádět připojení ke vzdálené ploše virtuálního počítače v Azure protože ve virtuálním počítači je zakázána služba Klient DHCP. Když vrátíte se změnami na snímku obrazovky [Diagnostika spouštění](../troubleshooting/boot-diagnostics.md) na webu Azure Portal, uvidíte, že virtuální počítač se spustí normálně a čeká se přihlašovací údaje na přihlašovací obrazovce. Vzdáleně Zkontrolujte protokoly událostí ve virtuálním počítači s použitím prohlížeče události. Uvidíte, že služba Klient DHCP není spuštěná nebo nepodaří spustit. Následující ukázka protokolu:
 
-**Název protokolu**: Systém </br>
-**Zdroj**: Správce řízení služeb </br>
-**Datum**: 12/16/2015 11:19:36 DOP. </br>
+**Název protokolu**: systému </br>
+**Zdroj**: správce řízení služeb </br>
+**Datum**: 12/16/2015 11:19:36 AM </br>
 **ID události**: 7022 </br>
-**Kategorie úlohy**: Žádné </br>
+**Úloha kategorie**: žádné </br>
 **Úroveň**: Chyba </br>
 **Klíčová slova**: Classic</br>
-**Uživatel**: Není k dispozici </br>
+**Uživatel**: není k dispozici </br>
 **Počítač**: myvm.cosotos.com</br>
-**Popis**: Služba klienta DHCP při spuštění přestala reagovat.</br>
+**Popis**: Služba Klient DHCP přestala během spouštění reagovat.</br>
 
 Pro virtuální počítače Resource Manageru můžete použít funkce konzoly sériového portu přístup k dotazu pro protokoluje událost 7022 pomocí následujícího příkazu:
 
@@ -183,7 +182,7 @@ Chcete-li tento problém vyřešit, povolte protokol DHCP pomocí sériového po
 
 1. [Připojte disk s operačním systémem pro virtuální počítač pro obnovení](../windows/troubleshoot-recovery-disks-portal.md).
 2. Spusťte připojení ke vzdálené ploše pro virtuální počítač pro obnovení. Ujistěte se, že je připojený disk označený jako **Online** v konzole Správa disků. Poznamenejte si písmeno jednotky, která je přiřazena připojeném disku s operačním systémem.
-3.  Otevřete příkazový řádek se zvýšenými oprávněními instance (**spustit jako správce**). Potom spusťte následující skript. Tento skript předpokládá, že je písmeno jednotky, která je přiřazena připojeném disku s operačním systémem **F**. Písmeno podle potřeby nahraďte hodnotou ve virtuálním počítači.
+3.  Otevřete příkazový řádek se zvýšenými oprávněními instance (**spustit jako správce**). Potom spusťte následující skript. Tento skript předpokládá, že písmeno jednotky přiřazené k připojenému disku s operačním systémem je **F**. Nahraďte písmeno odpovídající hodnotou ve vašem VIRTUÁLNÍm počítači.
 
     ```
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM
@@ -201,6 +200,6 @@ Chcete-li tento problém vyřešit, povolte protokol DHCP pomocí sériového po
 
 4. [Odpojit disk s operačním systémem a znovu vytvořte virtuální počítač](../windows/troubleshoot-recovery-disks-portal.md). Zkontrolujte, zda byl problém vyřešen.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat váš problém vyřešit.

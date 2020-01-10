@@ -8,18 +8,18 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: 55bcefc19723dc275cc8b421d5620c5dfe2c96e7
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: eb1821537e6e25b05dfdca3107729eecf4c6e1bf
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614960"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750510"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro úložiště Queue
 
 Společnost Microsoft vyvinula řadu osvědčených postupů pro vývoj vysoce výkonných aplikací s využitím služby Queue Storage. Tento kontrolní seznam popisuje klíčové postupy, které můžou vývojáři použít k optimalizaci výkonu. Při navrhování aplikace a celého procesu mějte na paměti tyto postupy.
 
-Azure Storage má cíle škálovatelnosti a výkonu pro kapacitu, rychlost transakcí a šířku pásma. Další informace o cílech Azure Storage škálovatelnosti najdete v tématu [Azure Storage škálovatelnost a výkonnostní cíle pro účty úložiště](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).
+Azure Storage má cíle škálovatelnosti a výkonu pro kapacitu, rychlost transakcí a šířku pásma. Další informace o cílech Azure Storage škálovatelnosti najdete v tématu [škálovatelnost a výkonnostní cíle pro účty úložiště úrovně Standard](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) a [škálovatelnost a výkonnostní cíle pro úložiště front](scalability-targets.md).
 
 ## <a name="checklist"></a>Kontrolní seznam
 
@@ -194,5 +194,6 @@ Pomocí front můžete nastavit škálovatelnost architektury aplikace. Následu
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Cíle škálovatelnosti a výkonnosti pro účty úložiště Azure Storage](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+- [Škálovatelnost a výkonnostní cíle pro úložiště Queue](scalability-targets.md)
+- [Škálovatelnost a výkonnostní cíle pro účty úložiště úrovně Standard](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 - [Stavové a chybové kódy](/rest/api/storageservices/Status-and-Error-Codes2)

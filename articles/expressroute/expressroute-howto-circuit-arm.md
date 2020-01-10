@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 11/13/2019
+ms.date: 01/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3ce1096129d7fb45901d80b0173035dcca47c3ee
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: ab44d5358154c17622eef68205ac2326e81377a0
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74080361"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770964"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Vytvoření a úprava okruhu ExpressRoute pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -52,7 +52,7 @@ Get-AzExpressRouteServiceProvider
 
 Zaškrtněte, pokud chcete zobrazit, pokud poskytovatel připojení je tu. Poznamenejte si následující informace, které budete potřebovat později při vytvoření okruhu:
 
-* Název
+* Name (Název)
 * PeeringLocations
 * BandwidthsOffered
 
@@ -282,7 +282,7 @@ Odpověď bude vypadat podobně jako v následujícím příkladu:
 Podrobný popis všech parametrů můžete získat spuštěním následujícího příkazu:
 
 ```azurepowershell-interactive
-get-help get-azurededicatedcircuit -detailed
+get-help Get-AzExpressRouteCircuit -detailed
 ```
 
 ## <a name="modify"></a>Úprava okruhu ExpressRoute

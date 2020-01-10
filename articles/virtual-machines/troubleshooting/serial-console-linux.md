@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: abee04afca45a2d6f558858b4490c8be1f37a2f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1074c4bc561236039e6ee55ef2df4fc8bd8dbbfc
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451286"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772512"
 ---
 # <a name="azure-serial-console-for-linux"></a>Sériová konzola Azure pro Linux
 
@@ -63,6 +63,7 @@ Distribuce      | Přístup k sériové konzole
 :-----------|:---------------------
 Red Hat Enterprise Linux    | Ve výchozím nastavení je povolený přístup Sériová konzola.
 CentOS      | Ve výchozím nastavení je povolený přístup Sériová konzola.
+Debian      | Ve výchozím nastavení je povolený přístup Sériová konzola.
 Ubuntu      | Ve výchozím nastavení je povolený přístup Sériová konzola.
 CoreOS      | Ve výchozím nastavení je povolený přístup Sériová konzola.
 SUSE        | Novější image SLES dostupné v Azure mají ve výchozím nastavení povolený přístup pomocí sériové konzoly. Pokud používáte starší verze (10 nebo starší) služby SLES v Azure, přečtěte si [článek znalostní báze](https://www.novell.com/support/kb/doc.php?id=3456486) , ve kterém můžete povolit sériovou konzolu.

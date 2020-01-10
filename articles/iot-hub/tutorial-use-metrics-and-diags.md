@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: e6a2057eee6cf294e401f60c889bcf58ac6fbe32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e0094add11755ecb0c303adf874abe5a4a8f5811
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429106"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746196"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Kurz: nastavení a použití metrik a diagnostických protokolů ve službě IoT Hub
 
@@ -125,7 +125,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 ## <a name="enable-the-diagnostic-logs"></a>Povolení diagnostických protokolů 
 
-[Diagnostické protokoly](../azure-monitor/platform/resource-logs-overview.md) jsou ve výchozím nastavení zakázané, když vytváříte nové centrum IoT. V této části povolíte diagnostické protokoly pro vaše centrum.
+[Diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md) jsou ve výchozím nastavení zakázané, když vytváříte nové centrum IoT. V této části povolíte diagnostické protokoly pro vaše centrum.
 
 1. Pokud jste tak ještě neučinili v centru na portálu, klikněte na **skupiny prostředků** a pak klikněte na skupinu prostředků contoso-prostředky. Vyberte centrum ze seznamu zobrazených prostředků. 
 

@@ -3,12 +3,12 @@ title: Jak pracovat se skupinami pro správu – zásady správného řízení A
 description: Naučte se zobrazovat, udržovat, aktualizovat a odstraňovat hierarchii skupin pro správu.
 ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3b5b67dbf1fad5c74570c4bf70401df1a5ed943f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 59f1b48e0a668d506a87ae1ef14de6df76b26ad7
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436540"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751227"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Správa prostředků pomocí skupin pro správu
 
@@ -320,7 +320,7 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Audit skupin pro správu s využitím protokolů aktivit
 
-Skupiny pro správu se podporují v rámci [protokolu aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md). Můžete se dotázat na všechny události, ke kterým dochází ve skupině pro správu ve stejném centrálním umístění jako ostatní prostředky Azure.  Pro konkrétní skupinu pro správu si můžete si zobrazit všechny změny přiřazení zásad nebo přiřazení rolí.
+Skupiny pro správu se podporují v rámci [protokolu aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md). Můžete se dotázat na všechny události, ke kterým dochází ve skupině pro správu ve stejném centrálním umístění jako ostatní prostředky Azure.  Pro konkrétní skupinu pro správu si můžete si zobrazit všechny změny přiřazení zásad nebo přiřazení rolí.
 
 ![Protokoly aktivit se skupinami pro správu](media/al-mg.png)
 

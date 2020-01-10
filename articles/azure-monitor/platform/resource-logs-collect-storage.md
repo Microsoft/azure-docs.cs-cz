@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 8cb328c36a1120e5a30732c36e53d9669fc6a67c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b6a687fc7ddf5eeacdfe3480a252598c6f9e773e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530863"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750388"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Archivace protokolů prostředků Azure do účtu úložiště
-[Protokoly platforem](resource-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé.  Tento článek popisuje, jak shromažďovat protokoly platforem pro účet služby Azure Storage a uchovávat data pro archivaci.
+[Protokoly platforem](platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé.  Tento článek popisuje, jak shromažďovat protokoly platforem pro účet služby Azure Storage a uchovávat data pro archivaci.
 
 ## <a name="prerequisites"></a>Požadavky
 Pokud ještě nemáte [účet úložiště Azure](../../storage/common/storage-quickstart-create-account.md) , musíte ho vytvořit. Účet úložiště nemusí být ve stejném předplatném jako prostředek odesílající protokoly, pokud uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC k oběma předplatným.
@@ -63,7 +63,7 @@ V souboru PT1H. JSON jsou jednotlivé události uložené v následujícím form
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si další informace o protokolech prostředků](resource-logs-overview.md).
+* [Přečtěte si další informace o protokolech prostředků](platform-logs-overview.md).
 * [Vytvořte nastavení diagnostiky pro shromažďování protokolů a metrik v Azure](diagnostic-settings.md).
 * [Stáhněte si objekty blob pro analýzu](../../storage/blobs/storage-quickstart-blobs-dotnet.md).
 * [Archivace Azure Active Directory protokolů pomocí Azure monitor](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md).

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: lahugh
-ms.openlocfilehash: a153a8000552100d62807442d466c22cd0964e43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d687f3f9039ca39440abab218d75e1d5c5db6df9
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75389838"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770114"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Připojení virtuálního systému souborů ve fondu Batch
 
@@ -85,7 +85,7 @@ new PoolAddParameter
 
 ### <a name="azure-blob-file-system"></a>Systém souborů Azure Blob
 
-Další možností je používat úložiště objektů BLOB v Azure prostřednictvím [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md). Připojení systému souborů BLOB vyžaduje `AccountKey` nebo `SasKey` pro váš účet úložiště. Informace o tom, jak tyto klíče získat, najdete v tématech [Správa přístupových klíčů účtu úložiště](../storage/common/storage-account-keys-manage.md)nebo [použití sdílených přístupových podpisů (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md). Další informace o použití blobfuse najdete v tématu [věnovaném řešení potíží s](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)blobfuse. Pokud chcete získat výchozí přístup k připojenému adresáři blobfuse, spusťte úlohu jako **správce**. Blobfuse připojí adresář v uživatelském prostoru a při vytváření fondu je připojen jako kořenový adresář. V systému Linux jsou všechny úlohy **správce** kořenové. Všechny možnosti pro modul zapékací postupu jsou popsány na [referenční stránce zapékací stránky](http://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html).
+Další možností je používat úložiště objektů BLOB v Azure prostřednictvím [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md). Připojení systému souborů BLOB vyžaduje `AccountKey` nebo `SasKey` pro váš účet úložiště. Informace o tom, jak tyto klíče získat, najdete v tématech [Správa přístupových klíčů účtu úložiště](../storage/common/storage-account-keys-manage.md)nebo [použití sdílených přístupových podpisů (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md). Další informace o použití blobfuse najdete v tématu [věnovaném řešení potíží s](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)blobfuse. Pokud chcete získat výchozí přístup k připojenému adresáři blobfuse, spusťte úlohu jako **správce**. Blobfuse připojí adresář v uživatelském prostoru a při vytváření fondu je připojen jako kořenový adresář. V systému Linux jsou všechny úlohy **správce** kořenové. Všechny možnosti pro modul zapékací postupu jsou popsány na [referenční stránce zapékací stránky](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html).
 
 Kromě Průvodce odstraňováním potíží je v úložišti blobfuse užitečný způsob, jak kontrolovat aktuální problémy s blobfuse a jejich řešení. Další informace najdete v tématu [blobfuse problémy](https://github.com/Azure/azure-storage-fuse/issues).
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: ed345fdf564c62e2d323b33013da784344c7a461
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8301dc779799ff67a348403e661fc7e66b9e721f
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595392"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750124"
 ---
 # <a name="introduction-to-azure-security"></a>Seznámení se zabezpečením Azure
 ## <a name="overview"></a>Přehled
@@ -47,7 +47,7 @@ Kromě toho Azure poskytuje řadu konfigurovatelných možností zabezpečení a
 ### <a name="features-to-secure-the-azure-platform"></a>Funkce pro zabezpečení platformy Azure
 Následující funkce jsou možnosti, které můžete zkontrolovat a poskytnout tak jistotu, že je platforma Azure spravovaná zabezpečeným způsobem. Odkazy jsou k dispozici pro další procházení k podrobnostem o tom, jak společnost Microsoft řeší otázky týkající se vztahů důvěryhodnosti zákazníků ve čtyřech oblastech: zabezpečená platforma, ochrana osobních údajů & ovládací prvky, dodržování předpisů a transparentnost.
 
-| [Zabezpečená platforma](https://www.microsoft.com/trustcenter/Security/default.aspx)  | [Ovládací prvky ochrany osobních údajů &](https://www.microsoft.com/trustcenter/Privacy/default.aspx)  |[Dodržování předpisů](https://www.microsoft.com/trustcenter/Compliance/default.aspx)   | [Transparentnosti](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
+| [Zabezpečená platforma](https://www.microsoft.com/trustcenter/Security/default.aspx)  | [Ovládací prvky ochrany osobních údajů &](https://www.microsoft.com/trustcenter/Privacy/default.aspx)  |[Dodržování předpisů](https://www.microsoft.com/trustcenter/Compliance/default.aspx)   | [Transparentnost](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
 | :-- | :-- | :-- | :-- |
 | [Cyklus vývoje zabezpečení](https://www.microsoft.com/sdl/), interní audity | [Správa dat ve všech časových intervalech](https://www.microsoft.com/trustcenter/Privacy/You-own-your-data) | [Centrum zabezpečení](https://www.microsoft.com/trustcenter/default.aspx) |[Jak Microsoft zabezpečuje zákaznická data ve službách Azure](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
 | [Povinné školení zabezpečení, kontroly na pozadí](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Řízení na umístění dat](https://www.microsoft.com/trustcenter/Privacy/Where-your-data-is-located) |  [Centrum běžných ovládacích prvků](https://www.microsoft.com/trustcenter/Common-Controls-Hub) |[Jak Microsoft spravuje umístění dat ve službách Azure](https://azuredatacentermap.azurewebsites.net/)|
@@ -81,7 +81,7 @@ Application Insights vytvoří grafy a tabulky, které vám ukáže například 
 Pokud dojde k chybám, selháním nebo problémům s výkonem, můžete prohledat data telemetrie podrobněji a diagnostikovat příčinu. A služba vám pošle e-maily, pokud dojde ke změnám v dostupnosti a výkonu vaší aplikace. Vhledem z hlediska aplikace je tak cenný nástroj zabezpečení, protože pomáhá s dostupností v Triad zabezpečení důvěrnosti, integrity a dostupnosti.
 
 ### <a name="azure-monitor"></a>Azure Monitor
-[Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) nabízí vizualizaci, dotaz, směrování, upozorňování, automatické škálování a automatizaci dat jak z infrastruktury Azure ([Protokol aktivit](../../azure-monitor/platform/activity-logs-overview.md)), tak z každého jednotlivého prostředku Azure ([diagnostické protokoly](../../azure-monitor/platform/resource-logs-overview.md)). Pomocí Azure Monitor můžete upozorňovat na události související se zabezpečením, které jsou generovány v protokolech Azure.
+[Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) nabízí vizualizaci, dotaz, směrování, upozorňování, automatické škálování a automatizaci dat jak z infrastruktury Azure ([Protokol aktivit](../../azure-monitor/platform/platform-logs-overview.md)), tak z každého jednotlivého prostředku Azure ([diagnostické protokoly](../../azure-monitor/platform/platform-logs-overview.md)). Pomocí Azure Monitor můžete upozorňovat na události související se zabezpečením, které jsou generovány v protokolech Azure.
 
 ### <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 [Protokoly Azure monitor](https://azure.microsoft.com/documentation/services/log-analytics/) – poskytuje kromě prostředků Azure i řešení pro správu IT pro místní i cloudovou infrastrukturu (například AWS). Data z Azure Monitor můžete směrovat přímo do protokolů Azure Monitor, abyste viděli metriky a protokoly pro celé prostředí na jednom místě.
@@ -130,15 +130,15 @@ Můžete povolit nebo zakázat následující typy protokolů:
 -   Protokolování webového serveru – informace o transakcích HTTP pomocí formátu souboru protokolu W3C Extended. To je užitečné při určování celkové metriky lokality, jako je počet zpracovaných požadavků nebo kolik požadavků pochází z konkrétní IP adresy.
 
 #### <a name="application-diagnostics"></a>Application Diagnostics
-[Application Diagnostics](../../app-service/troubleshoot-diagnostic-logs.md) umožňuje zachytit informace vytvářené webovou aplikací. ASP.NET aplikace mohou použít třídu [System. Diagnostics. Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) k protokolování informací do protokolu nástroje Application Diagnostics. V Application Diagnostics existují dva hlavní typy událostí, které souvisejí s výkonem aplikace a s chybami aplikací a chybami. Chyby a chyby lze dále rozdělit do potíží s připojením, zabezpečením a selháním. Problémy s chybami jsou obvykle spojeny s problémem s kódem aplikace.
+[Application Diagnostics](../../app-service/troubleshoot-diagnostic-logs.md) umožňuje zachytit informace vytvářené webovou aplikací. ASP.NET aplikace mohou použít třídu [System. Diagnostics. Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) k protokolování informací do protokolu nástroje Application Diagnostics. V konzoli Application Diagnostics se zobrazují dva hlavní typy událostí. Jedná se o události související s výkonem aplikací a události související se selháním a chybami aplikací. Selhání a chyby lze dále rozdělit na problémy s připojením, zabezpečením a selháním. Problémy se selháním obvykle souvisejí s kódem aplikace.
 
-V Application Diagnostics můžete zobrazit události seskupené těmito způsoby:
+V konzoli Application Diagnostics lze zobrazit události seskupené následujícími způsoby:
 
--   Vše (zobrazí všechny události)
--   Chyby aplikací (zobrazí události výjimky)
--   Výkon (zobrazuje události výkonu)
+-   Vše (Zobrazí se všechny události.)
+-   Chyby aplikace (Zobrazí se události související s výjimkami.)
+-   Výkon (Zobrazí se události související s výkonem.)
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 V části najdete další informace týkající se klíčových funkcí zabezpečení Azure Storage a souhrnné informace o těchto funkcích.
 
 ### <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
@@ -165,7 +165,7 @@ V případě mnoha organizací je šifrování dat v klidovém případě povinn
 -   [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) slouží k šifrování disků s operačním systémem a datových disků, které používá virtuální počítač s IaaS.
 
 ### <a name="storage-analytics"></a>Storage Analytics
-[Analýza úložiště Azure](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) provádí protokolování a poskytuje data metrik pro účet úložiště. Tato data můžete použít k trasování požadavků, analýze trendů použití a diagnostice problémů s účtem úložiště. Analýza úložiště protokoluje podrobné informace o úspěšných a neúspěšných požadavcích službě úložiště. Tyto informace lze použít k monitorování jednotlivých požadavků a k diagnostice problémů se službou úložiště. Požadavky jsou protokolovány na základě nejlepší úsilí. Protokolují se následující typy ověřených požadavků:
+[Analýza úložiště Azure](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) provádí protokolování a poskytuje data metrik pro účet úložiště. Tato data můžete použít k trasování požadavků, analýze trendů použití a diagnostice problémů s účtem úložiště. Analýza úložiště protokoluje podrobné informace o úspěšných a neúspěšných požadavcích na službu úložiště. Tyto informace je možné použít k monitorování jednotlivých požadavků a diagnostice problémů se službou úložiště. Požadavky jsou protokolovány na základě nejlepší úsilí. Protokolují se následující typy ověřovaných požadavků:
 -   Úspěšné požadavky.
 
 -   Neúspěšné požadavky, včetně časového limitu, omezování, sítě, autorizace a dalších chyb.
@@ -201,11 +201,11 @@ Vynucené tunelování se běžně používá k vynucení odchozího provozu na 
 I když skupiny zabezpečení sítě, uživatelsky definované trasy a vynucené tunelování poskytují úroveň zabezpečení v síťové a transportní vrstvě [modelu OSI](https://en.wikipedia.org/wiki/OSI_model), může nastat situace, kdy budete chtít povolit zabezpečení na vyšších úrovních zásobníku. K těmto rozšířeným funkcím zabezpečení sítě máte přístup pomocí řešení zařízení zabezpečení partnerské sítě Azure. Nejaktuálnější řešení zabezpečení pro Azure Partner Network najdete na [Azure Marketplace](https://azure.microsoft.com/marketplace/) a vyhledáte "zabezpečení" a "zabezpečení sítě".
 
 ### <a name="azure-virtual-network"></a>Azure Virtual Network
-Virtuální síť Azure (VNet) je reprezentace vaší vlastní sítě v cloudu. Jedná se o logickou izolaci prostředků infrastruktury sítě Azure vyhrazených pro vaše předplatné. V rámci této sítě máte plnou kontrolu nad bloky IP adres, nastavením DNS, zásadami zabezpečení a směrovacími tabulkami. Virtuální síť můžete segmentovat do podsítí a umísťovat virtuální počítače Azure IaaS a/nebo [cloudové služby (instance rolí PaaS)](../../cloud-services/cloud-services-choose-me.md) na virtuální sítě Azure.
+Virtuální síť Azure je reprezentace vaší vlastní sítě v cloudu. Jedná se o logickou izolaci prostředků infrastruktury sítě Azure vyhrazených pro vaše předplatné. V rámci této sítě máte plnou kontrolu nad bloky IP adres, nastavením DNS, zásadami zabezpečení a směrovacími tabulkami. Virtuální síť můžete segmentovat do podsítí a umísťovat virtuální počítače Azure IaaS a/nebo [cloudové služby (instance rolí PaaS)](../../cloud-services/cloud-services-choose-me.md) na virtuální sítě Azure.
 
 Virtuální síť můžete navíc připojit k místní síti pomocí jedné z [možností připojení](../../vpn-gateway/index.yml) dostupných v Azure. V podstatě můžete svoji síť rozšířit do Azure s úplnou kontrolou nad bloky IP adres a s výhodou poskytovatelů Azure celopodnikového rozsahu.
 
-Síť Azure podporuje různé scénáře zabezpečeného vzdáleného přístupu. Mezi ně patří:
+Síť Azure podporuje různé scénáře zabezpečeného vzdáleného přístupu. Zde jsou některá z vylepšení:
 
 -   [Připojení jednotlivých pracovních stanic k Azure Virtual Network](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
@@ -263,7 +263,7 @@ Microsoft [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview
 
 Traffic Manager poskytuje řadu metod směrování provozu, které vyhovují různým potřebám aplikací, [monitorování](../../traffic-manager/traffic-manager-monitoring.md)stavu koncových bodů a automatickému převzetí služeb při selhání. Služba Traffic Manager je odolná vůči selhání, a to i selhání celé oblasti Azure.
 
-### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
+### <a name="azure-load-balancer"></a>Azure Load Balancer
 [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) zajišťuje vysokou dostupnost a výkon sítě pro vaše aplikace. Jedná se o nástroj pro vyrovnávání zatížení vrstvy 4 (TCP, UDP), který distribuuje příchozí provoz mezi zdravými instancemi služeb definovaných v sadě s vyrovnáváním zatížení. Azure Load Balancer lze nakonfigurovat na:
 
 -   Vyrovnávání zatížení příchozího internetového provozu do virtuálních počítačů. Tato konfigurace se označuje jako [internetové vyrovnávání zatížení](../../load-balancer/load-balancer-overview.md#publicloadbalancer).
@@ -303,7 +303,7 @@ S Azure IaaS můžete použít antimalwarový software od dodavatelů zabezpeče
 ### <a name="azure-site-recovery"></a>Azure Site Recovery
 Důležitou součástí strategie [pro kontinuitu podnikových procesů a zotavení po havárii (BCDR)](../../best-practices-availability-paired-regions.md) vaší organizace se dozvíte, jak udržovat podnikové úlohy a aplikace v provozu, když dojde k plánovanému a neplánovanému výpadku. [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) pomáhá orchestrovat replikaci, převzetí služeb při selhání a obnovení úloh a aplikací tak, aby byly k dispozici ze sekundárního umístění, pokud dojde k výpadku vašeho primárního umístění.
 
-### <a name="sql-vm-tde"></a>TDE VIRTUÁLNÍHO POČÍTAČE SQL
+### <a name="sql-vm-tde"></a>SQL VM TDE
 [Transparentní šifrování dat (TDE)](../../virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-keyvault.md) a šifrování na úrovni sloupce (CLE) jsou funkce šifrování SQL serveru. Tato forma šifrování vyžaduje, aby zákazníci spravovali a ukládali kryptografické klíče, které používáte pro šifrování.
 
 Služba Azure Key Vault (integrace) je navržená tak, aby vylepšila zabezpečení a správu těchto klíčů v zabezpečeném a vysoce dostupném umístění. Konektor SQL Serveru umožňuje SQL Server používat tyto klíče z Azure Key Vault.
@@ -345,18 +345,18 @@ Microsoft používá pro správu identit a přístupu více postupů a technolog
 
 | Bezplatné a běžné funkce     | Základní funkce    |Funkce Premium P1 |Funkce Premium P2 | Připojení Azure Active Directory – jenom Windows 10 – související funkce|
 | :------------- | :------------- |:------------- |:------------- |:------------- |
-|   [Adresářové objekty](../../active-directory/active-directory-whatis.md), [Správa uživatelů a skupin (přidání/aktualizace/odstranění)/zřizování na základě uživatelů, registrace zařízení](../../active-directory/active-directory-whatis.md), [jednotné přihlašování (SSO)](../../active-directory/active-directory-whatis.md), [samoobslužná Změna hesla pro uživatele cloudu](../../active-directory/active-directory-whatis.md), [připojit (synchronizační modul rozšiřuje místní adresáře na Azure Active Directory)](../../active-directory/active-directory-whatis.md), [sestavy zabezpečení a využití](../../active-directory/active-directory-whatis.md) .       |   [Správa/zřizování přístupu na základě skupin](../../active-directory/active-directory-whatis.md), [Samoobslužné resetování hesla pro uživatele v cloudu](../../active-directory/active-directory-whatis.md), [Branding společnosti (přihlašovací stránky/vlastní nastavení přístupového panelu)](../../active-directory/active-directory-whatis.md), [proxy aplikací](../../active-directory/active-directory-whatis.md), [SLA 99,9%](../../active-directory/active-directory-whatis.md) |  [Samoobslužná správa skupin a aplikací/samoobslužné přidávání aplikací/dynamické skupiny](../../active-directory/active-directory-whatis.md), [Samoobslužné resetování hesla, změna/odemknutí pomocí místního zápisu back](../../active-directory/active-directory-whatis.md)- [Multi-Factor Authentication (cloudové a místní (MFA Server) )](../../active-directory/active-directory-whatis.md), [MIM CAL + MIM Server](../../active-directory/active-directory-whatis.md), [Cloud App Discovery](../../active-directory/active-directory-whatis.md), [Connect Health](../../active-directory/active-directory-whatis.md), [Automatická změna hesla pro skupinové účty](../../active-directory/active-directory-whatis.md)|    [Identity Protection](../../active-directory/identity-protection/overview.md), [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)|   [Připojení zařízení ke službě Azure AD, Desktop SSO, Microsoft Passport pro Azure AD, obnovení pomocí nástroje BitLocker pro správu](../../active-directory/active-directory-whatis.md), [automatické registraci MDM, samoobslužné obnovení nástroje BitLocker, dalším místním správcům na zařízení s Windows 10 prostřednictvím služby Azure AD JOIN](../../active-directory/active-directory-whatis.md)|
+|   [Adresářové objekty](../../active-directory/active-directory-whatis.md), [Správa uživatelů a skupin (přidání/aktualizace/odstranění)/zřizování na základě uživatelů, registrace zařízení](../../active-directory/active-directory-whatis.md), [jednotné přihlašování (SSO)](../../active-directory/active-directory-whatis.md), [samoobslužná Změna hesla pro cloudové uživatele](../../active-directory/active-directory-whatis.md), [připojení (synchronizační modul, který rozšiřuje místní adresáře do Azure Active Directory)](../../active-directory/active-directory-whatis.md), [sestavy zabezpečení/využití](../../active-directory/active-directory-whatis.md)       |   [Správa/zřizování přístupu na základě skupin](../../active-directory/active-directory-whatis.md), [Samoobslužné resetování hesla pro uživatele v cloudu](../../active-directory/active-directory-whatis.md), [Branding společnosti (přihlašovací stránky/vlastní nastavení přístupového panelu)](../../active-directory/active-directory-whatis.md), [proxy aplikací](../../active-directory/active-directory-whatis.md), [SLA 99,9%](../../active-directory/active-directory-whatis.md) |  [Samoobslužná správa skupin a aplikací/samoobslužné přidávání aplikací/dynamické skupiny](../../active-directory/active-directory-whatis.md), [Samoobslužné resetování hesla, změny/odemknutí místní služby back](../../active-directory/active-directory-whatis.md)-Store, [Multi-Factor Authentication (cloudové a místní (MFA Server))](../../active-directory/active-directory-whatis.md), [MIM CAL + MIM Server](../../active-directory/active-directory-whatis.md), [Cloud App Discovery](../../active-directory/active-directory-whatis.md), [Connect Health](../../active-directory/active-directory-whatis.md), [Automatická změna hesla pro skupinové účty](../../active-directory/active-directory-whatis.md)|    [Identity Protection](../../active-directory/identity-protection/overview.md), [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)|   [Připojení zařízení ke službě Azure AD, Desktop SSO, Microsoft Passport pro Azure AD, obnovení pomocí nástroje BitLocker pro správu](../../active-directory/active-directory-whatis.md), [automatické registraci MDM, samoobslužné obnovení nástroje BitLocker, dalším místním správcům na zařízení s Windows 10 prostřednictvím služby Azure AD JOIN](../../active-directory/active-directory-whatis.md)|
 
 
 - [Cloud App Discovery](../../active-directory/cloudappdiscovery-get-started.md) je funkce Premium Azure Active Directory, která umožňuje identifikovat cloudové aplikace používané zaměstnanci ve vaší organizaci.
 
-- [Azure Active Directory Identity Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/) je služba zabezpečení, která využívá Azure Active Directory možnosti detekce anomálií k zajištění konsolidovaného zobrazení v detekci rizik a potenciálních ohrožení zabezpečení, které by mohly ovlivnit vaši organizaci. nebyly.
+- [Azure Active Directory Identity Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/) je služba zabezpečení, která využívá Azure Active Directory možnosti detekce anomálií k zajištění konsolidovaného zobrazení pro detekci rizik a potenciální ohrožení zabezpečení, která by mohla ovlivnit identity vaší organizace.
 
 - [Azure Active Directory Domain Services](https://azure.microsoft.com/services/active-directory-ds/) umožňuje připojit virtuální počítače Azure k doméně, aniž by bylo nutné nasazovat řadiče domény. Uživatelé se k těmto virtuálním počítačům přihlásí pomocí svých podnikových přihlašovacích údajů pro Active Directory a můžou bezproblémově přistupovat k prostředkům.
 
 - [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) je vysoce dostupná a globální služba pro správu identit pro aplikace zaměřené na uživatele, která umožňuje škálování na stovky milionů identit a integraci napříč mobilními a webovými platformami. Vaši zákazníci se můžou ke všem vašim aplikacím přihlašovat prostřednictvím přizpůsobitelného prostředí, které používá stávající účty sociálních médií, nebo můžete vytvořit nové samostatné přihlašovací údaje.
 
-- [Azure Active Directory spolupráce B2B](https://aka.ms/aad-b2b-collaboration) je zabezpečené integrační řešení, které podporuje vztahy mezi společnostmi tím, že umožňuje partnerům přistupovat k podnikovým aplikacím a datům selektivně pomocí vlastních identit spravovaných v rámci sebe. .
+- [Azure Active Directory spolupráce B2B](https://aka.ms/aad-b2b-collaboration) je zabezpečené integrační řešení, které podporuje vztahy mezi společnostmi tím, že umožňuje partnerům přístup k podnikovým aplikacím a datům selektivně pomocí svých identit spravovaných svým držitelem.
 
 - [Azure Active Directory JOIN](https://azure.microsoft.com/documentation/articles/active-directory-azureadjoin-overview/) umožňuje rozšiřování cloudových možností do zařízení s Windows 10 pro centralizovanou správu. Umožňuje uživatelům připojit se k podnikovému nebo organizačnímu cloudu prostřednictvím Azure Active Directory a zjednodušit přístup k aplikacím a prostředkům.
 

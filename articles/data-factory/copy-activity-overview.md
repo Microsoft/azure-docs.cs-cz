@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 01/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 893ef88647824398ec106a964cbacf118bb14308
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0e138e954501df3cf3c3c8819d0198ad9a9288f0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440344"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754459"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Aktivita kopírování v Azure Data Factory
 
@@ -252,6 +252,25 @@ V některých scénářích při spuštění aktivity kopírování v Data Facto
 V této ukázce Data Factory v průběhu kopírování sledovat vysoké využití DTU v Azure SQL Database jímky. Tento stav zpomaluje operace zápisu. Návrh je zvýšit DTU na úrovni Azure SQL Database:
 
 ![Sledování kopírování pomocí tipů pro ladění výkonu](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+
+## <a name="resume-from-last-failed-run"></a>Obnovit z posledního neúspěšného spuštění
+
+Aktivita kopírování podporuje obnovení z posledního neúspěšného spuštění, když kopírujete velké velikosti souborů tak, aby byly v binárním formátu mezi úložišti založenými na souborech a zvolili, že se má zachovat hierarchie složky/souboru ze zdroje do jímky, třeba migrace dat ze služby Amazon S3 do Azure Data Lake Storage Gen2. Platí pro následující konektory založené na souborech: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [systém souborů](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md)a [SFTP](connector-sftp.md).
+
+Obnovení aktivity kopírováním můžete využít následujícími dvěma způsoby:
+
+- **Opakování na úrovni aktivity:** U aktivity kopírování můžete nastavit počet opakování. Pokud při spuštění kanálu dojde k selhání této aktivity kopírování, bude příští automatické opakování znovu spuštěno z bodu selhání poslední zkušební verze.
+- **Znovu spustit z neúspěšné aktivity:** Po dokončení spuštění kanálu můžete také aktivovat opětovné spuštění z neúspěšné aktivity v zobrazení monitorování uživatelského rozhraní ADF nebo programově. Pokud je neúspěšná aktivita aktivita kopírování, kanál nebude znovu spouštět z této aktivity, ale také obnoví z bodu selhání předchozího běhu.
+
+    ![Kopírovat pokračování](media/copy-activity-overview/resume-copy.png)
+
+Pár bodů k poznámení:
+
+- K pokračování dochází na úrovni souboru. Pokud aktivita kopírování selže při kopírování souboru, bude tento konkrétní soubor znovu zkopírován.
+- Aby obnovení fungovalo správně, neměňte nastavení aktivity kopírování mezi znovu spuštěnými.
+- Když kopírujete data ze služby Amazon S3, Azure Blob, Azure Data Lake Storage Gen2 a Google Cloud Storage, aktivita kopírování může pokračovat z libovolného počtu kopírovaných souborů. V případě, že ostatní konektory založené na souborech jako zdroj, v současné době kopírování podporuje obnovení z omezeného počtu souborů, obvykle v rozsahu desítkových tisíc a liší se v závislosti na délce cest souborů. soubory přesahující tento počet se během opakovaného spuštění znovu zkopírují.
+
+Pro jiné scénáře než kopírování binárních souborů začíná opětovné spuštění aktivity kopírování od začátku.
 
 ## <a name="preserve-metadata-along-with-data"></a>Zachování metadat spolu s daty
 

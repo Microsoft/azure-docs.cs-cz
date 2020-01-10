@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/16/2019
-ms.openlocfilehash: de1366b1bf45301d3d26a4f721ef2828f79be98d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6a84dee783240f7f662dab2f04275ead3a3dfe09
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460655"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750769"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metriky a protokolování diagnostiky
 
@@ -33,7 +33,7 @@ Izolované databáze, sdružené databáze v elastických fondech a databáze in
 Další informace o metrikách a kategoriích protokolů podporovaných různými službami Azure najdete v těchto tématech:
 
 - [Přehled metrik v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Přehled diagnostických protokolů Azure](../azure-monitor/platform/resource-logs-overview.md)
+- [Přehled diagnostických protokolů Azure](../azure-monitor/platform/platform-logs-overview.md)
 
 Tento článek poskytuje pokyny, které vám pomůžou povolit telemetrii diagnostiky pro databáze SQL Azure, elastické fondy a spravované instance. Může vám také porozumět tomu, jak nakonfigurovat Azure SQL Analytics jako monitorovací nástroj pro zobrazení telemetrie diagnostiky databáze.
 
@@ -736,7 +736,7 @@ Přečtěte si další informace o [formátu protokolu Intelligent Insights](sql
 Informace o tom, jak povolit protokolování a pochopit kategorie metrik a protokolů podporované různými službami Azure, najdete v těchto tématech:
 
 - [Přehled metrik v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Přehled diagnostických protokolů Azure](../azure-monitor/platform/resource-logs-overview.md)
+- [Přehled diagnostických protokolů Azure](../azure-monitor/platform/platform-logs-overview.md)
 
 Pokud se chcete dozvědět o Event Hubs, přečtěte si:
 

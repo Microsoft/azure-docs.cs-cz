@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1e11c5a570f899a5ac18673a71fe79db95de0f80
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0738e56cf6760a356b6e2b6db76f2dc3f6f157ee
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461075"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763160"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Řešení běžných chyb a upozornění v indexeru v Azure Kognitivní hledání
 
@@ -144,7 +144,7 @@ Dokument byl načten a zpracován, ale indexer ho nemohl přidat do indexu vyhle
 | --- | --- | --- |
 | Pole obsahuje termín, který je příliš velký. | Termín v dokumentu je větší než [limit 32 KB](search-limits-quotas-capacity.md#api-request-limits) . | Tomuto omezení se můžete vyhnout tím, že zajistíte, že pole není nakonfigurováno jako filtrovatelné, plošky nebo seřaditelné.
 | Dokument je moc velký a nedá se indexovat. | Dokument je větší než [maximální velikost požadavku rozhraní API](search-limits-quotas-capacity.md#api-request-limits) . | [Indexování velkých datových sad](search-howto-large-index.md)
-| Dokument obsahuje příliš mnoho objektů v kolekci. | Kolekce v dokumentu překračuje [maximální počet prvků napříč všemi komplexními kolekcemi](search-limits-quotas-capacity.md#index-limits) . | Doporučujeme zmenšit velikost komplexní kolekce v dokumentu pod limit a vyhnout se vysokému využití úložiště.
+| Dokument obsahuje příliš mnoho objektů v kolekci. | Kolekce v dokumentu překročila [maximální počet prvků napříč všemi složitými kolekcemi](search-limits-quotas-capacity.md#index-limits) . dokument s klíčovým `'1000052'` má `'4303'` objekty v kolekcích (pole JSON). V rámci celého dokumentu může být nejvýše `'3000'` objektů v kolekcích. Odeberte prosím objekty z kolekcí a zkuste dokument indexovat znovu. " | Doporučujeme zmenšit velikost komplexní kolekce v dokumentu pod limit a vyhnout se vysokému využití úložiště.
 | Problémy s připojením k cílovému indexu (které přetrvávají po opakování), protože služba je pod jiným zatížením, jako je například dotazování nebo indexování. | Nepovedlo se navázat spojení s indexem aktualizace. Služba vyhledávání je zatížená velkým zatížením. | [Horizontální navýšení kapacity služby Search](search-capacity-planning.md)
 | Služba Search je opravena pro aktualizaci služby nebo je uprostřed rekonfigurace topologie. | Nepovedlo se navázat spojení s indexem aktualizace. Služba Search je momentálně mimo provoz. služba Search prochází přechodem. | Konfigurace služby s minimálně 3 replikami pro 99,9% dostupnost na jednu z [dokladů SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)
 | Selhání základního výpočetního/síťového prostředku (zřídka) | Nepovedlo se navázat spojení s indexem aktualizace. Došlo k neznámému selhání. | Nakonfigurujte indexery, které se [spustí podle plánu](search-howto-schedule-indexers.md) pro výběr ze stavu selhání.

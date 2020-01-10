@@ -3,12 +3,12 @@ title: Nasazení nabízených oznámení zip pro Azure Functions
 description: K publikování Azure Functions použijte zařízení pro nasazení souboru. zip služby nasazení Kudu.
 ms.topic: conceptual
 ms.date: 08/12/2018
-ms.openlocfilehash: 88455e85607c608757067cea9d54b60e30cacb50
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6bda0859ca4741fe74f572b204e40130c56c46fc
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233065"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769659"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Nasazení souboru zip pro Azure Functions
 
@@ -66,10 +66,10 @@ Soubor. zip si můžete také stáhnout z úložiště GitHub. Když si stáhnet
 
 K aktivaci nasazení nabízených oznámení můžete použít rozhraní příkazového řádku Azure. Pomocí příkazu [AZ functionapp Deployment source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) nasaďte do aplikace Function app soubor. zip. Chcete-li použít tento příkaz, musíte použít Azure CLI verze 2.0.21 nebo novější. Pokud chcete zjistit, jakou verzi rozhraní příkazového řádku Azure používáte, použijte příkaz `az --version`.
 
-V následujícím příkazu nahraďte zástupný symbol `<zip_file_path>` cestou k umístění souboru. zip. Také nahraďte `<app_name>` jedinečným názvem vaší aplikace Function App. 
+V následujícím příkazu nahraďte zástupný symbol `<zip_file_path>` cestou k umístění souboru. zip. Také nahraďte `<app_name>` jedinečným názvem vaší aplikace Function App a nahraďte `<resource_group>` názvem vaší skupiny prostředků.
 
 ```azurecli-interactive
-az functionapp deployment source config-zip  -g myResourceGroup -n \
+az functionapp deployment source config-zip -g <resource_group> -n \
 <app_name> --src <zip_file_path>
 ```
 

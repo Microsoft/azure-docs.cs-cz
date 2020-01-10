@@ -3,12 +3,12 @@ title: Reference k nastavení aplikací pro službu Azure Functions
 description: Referenční dokumentace pro nastavení aplikace Azure Functions nebo proměnné prostředí.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 1c7f5f9f8f6f198c5fe74baa613306732fa9b55b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 4de6f093e43bbb8b3e258c3dd2a71f728beb7287
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977263"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769536"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Reference k nastavení aplikací pro službu Azure Functions
 
@@ -43,7 +43,7 @@ Připojovací řetězec účtu volitelné úložiště pro ukládání protokol�
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
-`true` znamená, že zakáže výchozí úvodní stránku, která se zobrazí pro kořenovou adresu URL aplikace function app. Výchozí hodnota je `false`.
+`true` znamená, že zakáže výchozí úvodní stránku, která se zobrazí pro kořenovou adresu URL aplikace function app. Výchozí je `false`.
 
 |Klíč|Ukázková hodnota|
 |---|------------|
@@ -55,7 +55,7 @@ Když je toto nastavení aplikace vynechán nebo nastaven na `false`, zobrazí s
 
 ## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
 
-`true` znamená, že použití režimu vydání, při kompilaci kódu .NET; `false` znamená, že použití režimu ladění. Výchozí hodnota je `true`.
+`true` znamená, že použití režimu vydání, při kompilaci kódu .NET; `false` znamená, že použití režimu ladění. Výchozí je `true`.
 
 |Klíč|Ukázková hodnota|
 |---|------------|
@@ -108,6 +108,19 @@ Verze modulu runtime Functions pro použití v této aplikace function app. Tild
 |Klíč|Ukázková hodnota|
 |---|------------|
 |FUNKCE\_ROZŠÍŘENÍ\_VERZE|~ 2|
+
+## <a name="functions_v2_compatibility_mode"></a>\_režimu kompatibility\_funkce\_v2
+
+Toto nastavení umožňuje, aby aplikace Function App běžela v režimu kompatibilním s verzí 2. x v modulu runtime verze 3. x. Toto nastavení použijte jenom v případě, že při [upgradování aplikace Function App z verze 2. x na 3. x z modulu runtime dojde k](functions-versions.md#migrating-from-2x-to-3x)problémům. 
+
+>[!IMPORTANT]
+> Toto nastavení je určeno pouze krátkodobým alternativním řešením při aktualizaci aplikace tak, aby běžela správně ve verzi 3. x. Toto nastavení se podporuje, pokud [je podporovaný modul runtime 2. x](functions-versions.md). Pokud narazíte na problémy, které brání spuštění vaší aplikace ve verzi 3. x bez použití tohoto nastavení, [nahlaste prosím svůj problém](https://github.com/Azure/azure-functions-host/issues/new?template=Bug_report.md).
+
+Vyžaduje, aby byla [verze\_funkcí\_rozšíření](functions-app-settings.md#functions_extension_version) nastavená na `~3`.
+
+|Klíč|Ukázková hodnota|
+|---|------------|
+|\_režimu kompatibility\_funkce\_v2|true|
 
 ## <a name="functions_worker_process_count"></a>POČET funkcí\_pracovní proces\_procesu\_
 
@@ -179,7 +192,7 @@ Ve výchozím nastavení proxy služby Functions bude využívat zástupce k ode
 |Klíč|Hodnota|Popis|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Volání s adresou URL back-endu ukazující na funkci v místním Function App již nebudou odesílána přímo do funkce a místo toho budou přesměrována zpět na front-end protokolu HTTP pro Function App|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Toto je výchozí hodnota. Volání s back-end adresy url odkazující na funkci v místní aplikaci Function App se předají přímo do této funkce|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Toto je výchozí hodnota. Volání s adresou URL back-endu ukazující na funkci v místním Function App budou předána přímo této funkci.|
 
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES

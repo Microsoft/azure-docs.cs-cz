@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a4a4393a25bfa49a8074793b572111f69dcc17c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 34c0c52945abc6e0ab74b1cb180581c76464bee8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459653"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749951"
 ---
 # <a name="azure-operational-security"></a>Provozní zabezpečení Azure
 ## <a name="introduction"></a>Představení
@@ -195,7 +195,7 @@ Tyto protokoly jsou vydávány prostředkem a poskytují bohatou a častou data 
 
 Například protokoly událostí systému Windows jsou jednou z kategorií diagnostického protokolu pro virtuální počítače a protokoly objektů blob, tabulek a front jsou kategoriemi diagnostických protokolů pro účty úložiště.
 
-Diagnostické protokoly se liší od [protokolu aktivit (dříve označovaného jako protokol auditu nebo operační protokol)](../../azure-monitor/platform/activity-logs-overview.md). Protokol aktivit nabízí přehled o operacích provedených u prostředků v rámci vašeho předplatného. Diagnostické protokoly poskytují přehled o operacích, které provedly samotné vaše prostředky.
+Diagnostické protokoly se liší od [protokolu aktivit (dříve označovaného jako protokol auditu nebo operační protokol)](../../azure-monitor/platform/platform-logs-overview.md). Protokol aktivit nabízí přehled o operacích provedených u prostředků v rámci vašeho předplatného. Diagnostické protokoly poskytují přehled o operacích, které provedly samotné vaše prostředky.
 
 ### <a name="metrics"></a>Metriky
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 4e9779f612bc4a2521459bf76a6e2b399fc89e07
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b5d35fc14d69da2246c0ef5d4ef6d19a9e0c8462
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894126"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750999"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor datovou platformu
 
@@ -48,7 +48,7 @@ Přečtěte si další informace o Azure Monitor metrikách, včetně jejich zdr
 Protokoly v Azure Monitor jsou uložené v pracovním prostoru Log Analytics, který je založený na [službě Azure Průzkumník dat](/azure/data-explorer/) , která poskytuje výkonný analytický modul a [bohatý dotazovací jazyk](/azure/kusto/query/). Protokoly obvykle poskytují dostatek informací, které poskytují úplný kontext zjištěného problému a jsou důležité pro identifikaci kořenového případu problémů.
 
 > [!NOTE]
-> Je důležité rozlišovat mezi protokoly Azure Monitor a zdroji dat protokolů v Azure. Například události na úrovni předplatného v Azure se zapisují do [protokolu aktivit](activity-logs-overview.md) , který můžete zobrazit v nabídce Azure monitor. Většina prostředků zapisuje provozní informace do [protokolu prostředků](resource-logs-overview.md) , který můžete přemístit do různých umístění. Protokoly Azure Monitor jsou datovou platformou protokolu, která shromažďuje protokoly aktivit a protokoly prostředků spolu s dalšími daty monitorování a zajišťuje tak hloubkovou analýzu v celé sadě prostředků.
+> Je důležité rozlišovat mezi protokoly Azure Monitor a zdroji dat protokolů v Azure. Například události na úrovni předplatného v Azure se zapisují do [protokolu aktivit](platform-logs-overview.md) , který můžete zobrazit v nabídce Azure monitor. Většina prostředků zapisuje provozní informace do [protokolu prostředků](platform-logs-overview.md) , který můžete přemístit do různých umístění. Protokoly Azure Monitor jsou datovou platformou protokolu, která shromažďuje protokoly aktivit a protokoly prostředků spolu s dalšími daty monitorování a zajišťuje tak hloubkovou analýzu v celé sadě prostředků.
 
 
  S [dotazy protokolu](../log-query/log-query-overview.md) můžete pracovat interaktivně pomocí [Log Analytics](../log-query/portals.md) v Azure Portal nebo přidat výsledky do [řídicího panelu Azure](../learn/tutorial-app-dashboards.md) pro vizualizaci v kombinaci s jinými daty. Můžete také vytvořit [výstrahy protokolu](alerts-log.md) , které aktivují výstrahu na základě výsledků dotazu plánu.

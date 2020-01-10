@@ -7,22 +7,25 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 2d08180d40233c0ab990bc700f0412d11647d5f1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dfdde1ae981dcd2d539dec3667e44e90cef4d1c8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349966"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748043"
 ---
 # <a name="azure-storage-samples-using-java"></a>Ukázky Azure Storage pomocí jazyka Java
 
 Následující tabulka poskytuje přehled našich ukázek úložiště a scénářů popsaných v jednotlivých ukázkách. Kliknutím na odkazy zobrazíte odpovídající vzorový kód v GitHubu.
 
-## <a name="blob-samples"></a>Ukázky objektů BLOB
+> [!NOTE]
+> Tyto ukázky používají knihovnu Azure Storage Java V11 Library. V12 Code najdete v tématu [ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob) v úložišti GitHub.
 
-| **Scénář** | **Vzorový kód** |
+## <a name="blob-samples-v11"></a>Ukázky objektů BLOB (V11)
+
+| **Scénář** | **Ukázkový kód** |
 |--------------|-----------------|
-| Objekt blob připojení | [Začínáme se službou Azure Blob Service v jazyce Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
+| Doplňovací objekt BLOB | [Začínáme se službou Azure Blob Service v jazyce Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 | Objekt blob bloku | [Začínáme se službou Azure Blob Service v jazyce Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 | Šifrování na straně klienta | [Začínáme se šifrováním na straně klienta Azure v jazyce Java](https://github.com/Azure-Samples/storage-java-client-side-encryption) |
 | Zkopírování objektu Blob | [Začínáme se službou Azure Blob Service v jazyce Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
@@ -39,9 +42,9 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 | Vlastnosti služby | [Začínáme se službou Azure Blob Service v jazyce Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java) |
 | Objekt BLOB snímku | [Začínáme se službou Azure Blob Service v jazyce Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 
-## <a name="file-samples"></a>Ukázky souborů
+## <a name="file-samples-v11"></a>Ukázky souborů (V11)
 
-| **Scénář** | **Vzorový kód** |
+| **Scénář** | **Ukázkový kód** |
 |--------------|-----------------|
 | Vytváření sdílených složek, adresářů a souborů | [Začínáme se službou Azure File Service v jazyce Java](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
 | Odstranit sdílené složky/adresáře/soubory | [Začínáme se službou Azure File Service v jazyce Java](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
@@ -53,9 +56,9 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 | Vypsat sdílené složky | [Začínáme se službou Azure File Service v jazyce Java](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
 | Vlastnosti sdílené složky/metadata/statistiky | [Začínáme se službou Azure File Service v jazyce Java](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java) |
 
-## <a name="queue-samples"></a>Ukázky front
+## <a name="queue-samples-v11"></a>Ukázky front (V11)
 
-| **Scénář** | **Vzorový kód** |
+| **Scénář** | **Ukázkový kód** |
 |--------------|-----------------|
 | Přidat zprávu | [Začínáme se službou Azure Queue v jazyce Java](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java#L63) |
 | Šifrování na straně klienta | [Začínáme se šifrováním na straně klienta Azure v jazyce Java](https://github.com/Azure-Samples/storage-java-client-side-encryption/blob/master/src/gettingstarted/KeyVaultGettingStarted.java) |
@@ -66,11 +69,11 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 | Vlastnosti služby Queue | [Začínáme se službou Azure Queue v jazyce Java](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java) |
 | Aktualizovat zprávu | [Začínáme se službou Azure Queue v jazyce Java](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java)
 |
-## <a name="table-samples"></a>Ukázky tabulek
+## <a name="table-samples-v11"></a>Ukázky tabulek (V11)
 
-| **Scénář** | **Vzorový kód** |
+| **Scénář** | **Ukázkový kód** |
 |--------------|-----------------|
-| Vytvořit tabulku | [Začínáme se službou Azure Table Storage v Javě](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
+| Create Table | [Začínáme se službou Azure Table Storage v Javě](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
 | Odstranit entitu/tabulku | [Začínáme se službou Azure Table Storage v Javě](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
 | Vložit/sloučit/nahradit entitu | [Začínáme se službou Azure Table Storage v Javě](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
 | Entity dotazu | [Začínáme se službou Azure Table Storage v Javě](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
@@ -96,7 +99,7 @@ Pokud hledáte pokyny k instalaci a Začínáme s klientskými knihovnami Azure 
 
 Informace o ukázkách pro jiné jazyky:
 
-* .NET: [Ukázky pro Azure Storage s použitím .NET](storage-samples-dotnet.md)
-* JavaScript/Node. js: [Ukázky Azure Storage pomocí JavaScriptu](storage-samples-javascript.md)
-* Python: [Ukázky Azure Storage pomocí Pythonu](storage-samples-python.md)
-* Všechny ostatní jazyky: [Ukázky Azure Storage](storage-samples.md)
+* .NET: [Azure Storage ukázky pomocí .NET](storage-samples-dotnet.md)
+* JavaScript/Node. js: [Azure Storage ukázky pomocí JavaScriptu](storage-samples-javascript.md)
+* Python: [Azure Storage ukázky pomocí Pythonu](storage-samples-python.md)
+* Všechny ostatní jazyky: [ukázky Azure Storage](storage-samples.md)

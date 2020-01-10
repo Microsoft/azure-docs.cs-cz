@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
-ms.openlocfilehash: ef5bbc00ae0d3c7751bdcd4808c5368b0f5e1523
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 8a644beede4089133f88b824fd8d34dddec3b15e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688247"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751111"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Instalace a použití odstínu v clusterech HDInsight Hadoop
 
@@ -72,7 +72,7 @@ Tunelové propojení SSH je jediným způsobem, jak ke stínům v clusteru přis
 
     Tato akce vrátí název podobný následujícímu:
 
-        hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
+        myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
     Toto je název hostitele primární hlavnímu uzlu, kde se nachází web odstín.
 

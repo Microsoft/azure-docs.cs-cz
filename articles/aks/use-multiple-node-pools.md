@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: f507619a1c8e80623a756b91f3fd6187283212f0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 9c72c8431907c52dab338114ce09be139608ab0a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996727"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768584"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
 
@@ -35,11 +35,11 @@ Při vytváření a správě clusterů AKS, které podporují více fondů uzlů
 * Nelze použít doplněk směrování aplikace HTTP.
 * Cluster AKS musí používat standardní nástroj pro vyrovnávání zatížení SKU pro použití více fondů uzlů, ale funkce nástroje pro vyrovnávání zatížení Basic SKU není podporována.
 * Cluster AKS musí pro uzly používat sadu škálování virtuálních počítačů.
-* Nemůžete přidat ani odstranit fondy uzlů pomocí existující šablony Správce prostředků jako u většiny operací. Místo toho [použijte šablonu samostatného správce prostředků](#manage-node-pools-using-a-resource-manager-template) k provádění změn v fondech uzlů v clusteru AKS.
 * Název fondu uzlů může obsahovat jenom malé alfanumerické znaky a musí začínat malým písmenem. U fondů uzlů se systémem Linux musí být délka v rozmezí od 1 do 12 znaků, v případě fondů uzlů systému Windows musí být délka mezi 1 a 6 znaky.
 * Cluster AKS může mít maximálně osm fondů uzlů.
 * Cluster AKS může mít maximálně 800 uzlů v těchto osmi fondech uzlů.
-* Všechny fondy uzlů se musí nacházet ve stejné podsíti.
+* Všechny fondy uzlů se musí nacházet ve stejné virtuální síti a podsíti.
+* Při vytváření více fondů uzlů v době vytváření clusteru se musí všechny verze Kubernetes používané fondy uzlů shodovat s verzí nastavenou pro plochu ovládacího prvku. Dá se aktualizovat po zřízení clusteru pomocí operací pro fond uzlů.
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 

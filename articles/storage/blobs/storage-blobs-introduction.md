@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 51f72011b89656d8f56e996d4654a2714f2f482b
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 8071fe12b925384465c1e570465ebaa0100c53e9
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615603"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749804"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Seznámení se službou Azure Blob Storage
 
@@ -50,7 +50,7 @@ Kontejner uspořádá sadu objektů blob, podobně jako adresář v systému sou
   > [!NOTE]
   > Názvy kontejnerů musí obsahovat jenom malá písmena. Další informace o pojmenování kontejnerů najdete v tématu [pojmenování kontejnerů, objektů BLOB a metadat a odkazování](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)na ně.
 
-### <a name="blobs"></a>Objekty blob
+### <a name="blobs"></a>Bloby
  
 Azure Storage podporuje tři typy objektů BLOB:
 
@@ -73,5 +73,5 @@ Pro migraci stávajících dat do úložiště objektů BLOB existuje několik �
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytvoření účtu úložiště](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [Azure Storage škálovatelnost a výkonnostní cíle](../common/storage-scalability-targets.md)
+- [vytvořit účet úložiště](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Škálovatelnost a výkonnostní cíle pro úložiště objektů BLOB](scalability-targets.md)

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/24/2019
-ms.openlocfilehash: 3923abd10fc3a64773d561b1f375f9e2f00a7e56
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.custom: hdinsightactive
+ms.date: 01/03/2020
+ms.openlocfilehash: 33110e9f1d45fcd11e5f4cad1b589ab929a9472d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044561"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767632"
 ---
 # <a name="generate-movie-recommendations-using-apache-mahout-with-apache-hadoop-in-hdinsight-ssh"></a>Generování filmových doporučení pomocí Apache Mahout s Apache Hadoop v HDInsight (SSH)
 
@@ -23,17 +23,15 @@ Naučte se používat knihovnu Machine Learning pro [Apache Mahout](https://maho
 
 Mahout je knihovna [strojového učení](https://en.wikipedia.org/wiki/Machine_learning) pro Apache Hadoop. Mahout obsahuje algoritmy pro zpracování dat, jako je filtrování, klasifikace a clusteringu. V tomto článku využijete modul pro doporučení ke generování filmových doporučení založených na videích, které vaši přátelé viděli.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Cluster Apache Hadoop v HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
-
-* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Cluster Apache Hadoop v HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="apache-mahout-versioning"></a>Apache Mahout – Správa verzí
 
 Další informace o verzi Mahout ve službě HDInsight najdete v tématu [verze a Apache Hadoop komponenty služby HDInsight](../hdinsight-component-versioning.md).
 
-## <a name="recommendations"></a>Princip doporučení
+## <a name="understanding-recommendations"></a>Princip doporučení
 
 Jednou z funkcí, které poskytuje Mahout, je modul doporučení. Tento modul přijímá data ve formátu `userID`, `itemId`a `prefValue` (Předvolby pro položku). Mahout může následně provádět analýzu souběžných výskytů k určení: *Uživatelé, kteří mají přednost pro položku, mají také předvolby pro tyto ostatní položky*. Mahout pak určí uživatele s preferencemi, které se dají použít k doporučení.
 
@@ -43,7 +41,7 @@ Následující pracovní postup je zjednodušený příklad, který používá d
 
 * **Společný výskyt**: Bob a Alice se také staly *fiktivním Menace*, *útokem klonů*a *Revengeem Sith*. Mahout určuje, že uživatelé, kteří se k předchozím třem filmům líbí, stejně jako tyto tři filmy.
 
-* **Doporučení na podobnost**: vzhledem k tomu, že Jana se líbí prvnímu třimu videu, Mahout podívá se na videa s podobnými preferencemi, ale Jana nesledoval (a). V tomto případě Mahout doporučuje *fiktivní Menace*, *útok klonů*a *Revengey Sith*.
+* **Doporučení na podobnost**: vzhledem k tomu, že Jana se líbí prvnímu třimu videu, Mahout vyhledá filmy, které s podobnými preferencemi líbí, ale Jana se nesleduje (líbí se nebo hodnotil). V tomto případě Mahout doporučuje *fiktivní Menace*, *útok klonů*a *Revengey Sith*.
 
 ### <a name="understanding-the-data"></a>Porozumění datům
 
@@ -51,7 +49,7 @@ Následující pracovní postup je zjednodušený příklad, který používá d
 
 Existují dva soubory `moviedb.txt` a `user-ratings.txt`. Soubor `user-ratings.txt` se používá při analýze. `moviedb.txt` slouží k poskytnutí informací o textu uživatelsky přívětivé při prohlížení výsledků.
 
-Data obsažená v User-ratings. txt mají strukturu `userID`, `movieID`, `userRating`a `timestamp`, která určují, jak vysoké mají jednotliví uživatelé hodnocení filmu. Tady je příklad dat:
+Data obsažená v `user-ratings.txt` mají strukturu `userID`, `movieID`, `userRating`a `timestamp`, která určují, jak vysoká mají jednotliví uživatelé hodnocení filmu. Tady je příklad dat:
 
     196    242    3    881250949
     186    302    3    891717742
@@ -61,11 +59,17 @@ Data obsažená v User-ratings. txt mají strukturu `userID`, `movieID`, `userRa
 
 ## <a name="run-the-analysis"></a>Spuštění analýzy
 
-Pomocí následujícího příkazu v rámci připojení SSH ke clusteru spusťte úlohu doporučení:
+1. Připojte se ke clusteru pomocí [příkazu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) . Níže uvedený příkaz upravte tak, že ho nahradíte názvem clusteru a pak zadáte tento příkaz:
 
-```bash
-mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/MahoutMovieData/user-ratings.txt -o /example/data/mahoutout --tempDir /temp/mahouttemp
-```
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
+
+1. Pomocí následujícího příkazu spusťte úlohu doporučení:
+
+    ```bash
+    mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/MahoutMovieData/user-ratings.txt -o /example/data/mahoutout --tempDir /temp/mahouttemp
+    ```
 
 > [!NOTE]  
 > Dokončení úlohy může trvat několik minut a může spustit více úloh MapReduce.
@@ -80,10 +84,12 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
     Výstup se zobrazí takto:
 
-        1    [234:5.0,347:5.0,237:5.0,47:5.0,282:5.0,275:5.0,88:5.0,515:5.0,514:5.0,121:5.0]
-        2    [282:5.0,210:5.0,237:5.0,234:5.0,347:5.0,121:5.0,258:5.0,515:5.0,462:5.0,79:5.0]
-        3    [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
-        4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
+    ```output
+    1    [234:5.0,347:5.0,237:5.0,47:5.0,282:5.0,275:5.0,88:5.0,515:5.0,514:5.0,121:5.0]
+    2    [282:5.0,210:5.0,237:5.0,234:5.0,347:5.0,121:5.0,258:5.0,515:5.0,462:5.0,79:5.0]
+    3    [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
+    4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
+    ```
 
     První sloupec je `userID`. Hodnoty obsažené v ' [' a '] ' jsou `movieId`:`recommendationScore`.
 
@@ -174,7 +180,17 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
      Výstup z tohoto příkazu je podobný následujícímu textu:
 
-       7 let v Tibet (1997), skóre = 5.0 Indiana Novotný a poslední Crusade (1989), skore = 5.0 JAWS (1975), skore = 5.0 Sense and Sensibility (1995), skóre = 5.0 den nezávislosti (ID4) (1996), skóre = 5.0 můj nejlepší přítel (1997), skóre = 5.0 Jerry Maguire (1996), skore = 5.0 Scream 2 (1997), skóre = 5.0 čas k ukončení, A (1996), skóre = 5.0
+        ```output
+        Seven Years in Tibet (1997), score=5.0
+        Indiana Jones and the Last Crusade (1989), score=5.0
+        Jaws (1975), score=5.0
+        Sense and Sensibility (1995), score=5.0
+        Independence Day (ID4) (1996), score=5.0
+        My Best Friend's Wedding (1997), score=5.0
+        Jerry Maguire (1996), score=5.0
+        Scream 2 (1997), score=5.0
+        Time to Kill, A (1996), score=5.0
+        ```
 
 ## <a name="delete-temporary-data"></a>Odstranit dočasná data
 
@@ -189,11 +205,9 @@ hdfs dfs -rm -f -r /temp/mahouttemp
 >
 > `hdfs dfs -rm -f -r /example/data/mahoutout`
 
-
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když jste se naučili, jak používat Mahout, můžete zjistit další způsoby práce s daty v HDInsight:
 
 * [Apache Hive se službou HDInsight](hdinsight-use-hive.md)
-* [Apache prasete s HDInsight](hdinsight-use-pig.md)
 * [MapReduce se službou HDInsight](hdinsight-use-mapreduce.md)

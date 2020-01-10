@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7dfa3df078ffe8aac3e63f14624a65a47b11a56a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 9b106ea43e6a11d616ed2212636975bbbbf65631
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353573"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75751527"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Kolik koncových bodů klienta VPN je možné mít v konfiguraci připojení Point-to-Site?
 
@@ -35,12 +35,6 @@ Podporovány jsou následující operační systémy:
 * iOS
 
 [!INCLUDE [TLS](vpn-gateway-tls-updates.md)]
-
-### <a name="what-should-i-do-if-i-am-getting-a-certificate-mismatch-when-connecting"></a>Co mám dělat, když při připojování dojde k neshodě certifikátů?
-
-Zrušte kontrolu **"ověřit identitu serveru ověřením certifikátu"** nebo **přidejte plně kvalifikovaný název domény serveru spolu s certifikátem** při vytváření profilu ručně. To můžete provést spuštěním souboru **Rasphone** z příkazového řádku a výběrem profilu z rozevíracího seznamu.
-
-![Point-to-site](./media/vpn-gateway-faq-p2s-all-include/servercert.png "Certifikát serveru")
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>Je možné procházet proxy servery a brány firewall s využitím schopnosti Point-to-Site?
 

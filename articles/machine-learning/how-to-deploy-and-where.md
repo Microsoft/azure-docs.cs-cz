@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/17/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 51d5afc365c33fe6d4cb719263bad19341170415
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 48ecaea82e8874ff521abafaa075b41367f8fbf1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689309"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75753999"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Nasazení modelů pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,8 +26,8 @@ Naučte se, jak nasadit model strojového učení jako webovou službu v cloudu 
 Pracovní postup je podobný bez ohledu na [to, kam model nasazujete](#target) :
 
 1. Zaregistrujte model.
-1. Připravte se na nasazení. (Zadejte prostředky, využití, cíl výpočtů.)
-1. Model nasaďte do cílového výpočetního prostředí.
+1. Připravte nasazení. (Zadejte prostředky, využití, cílový výpočetní objekt.)
+1. Nasaďte model do cílového výpočetního objektu.
 1. Otestujte nasazený model, označovaný také jako webová služba.
 
 Další informace o konceptech, které jsou součástí pracovního postupu nasazení, najdete v tématu [Správa, nasazení a monitorování modelů pomocí Azure Machine Learning](concept-model-management-and-deployment.md).
@@ -165,9 +165,16 @@ K hostování nasazení webové služby můžete použít následující výpoč
 
 [!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
 
+## <a name="single-versus-multi-model-endpoints"></a>Jednoduché koncové body versus více modelů
+Azure ML podporuje nasazení jednoho nebo více modelů za jediným koncovým bodem.
+
+Koncové body s více modely používají sdílený kontejner pro hostování více modelů. To pomáhá snižovat režijní náklady, zlepšuje využití a umožňuje zřetězit moduly dohromady do kompletů. Modely, které zadáte ve svém skriptu nasazení, jsou připojené a zpřístupňují se na disku kontejneru obsluhy – můžete je načíst do paměti na vyžádání a skóre na základě konkrétního modelu, který je požadován v době vyhodnocování.
+
+E2E příklad, který ukazuje použití více modelů za jedním kontejnerovým koncovým bodem, najdete v [tomto příkladu](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model) .
+
 ## <a name="prepare-to-deploy"></a>Příprava nasazení
 
-K nasazení modelu potřebujete následující položky:
+K nasazení modelu budete potřebovat tyto položky:
 
 * **Vstupní skript**. Tento skript přijímá požadavky, zarovnává požadavky pomocí modelu a vrátí výsledky.
 
@@ -180,21 +187,21 @@ K nasazení modelu potřebujete následující položky:
     >
     >   Alternativou, která může být pro váš scénář fungovat, je [předpověď dávky](how-to-run-batch-predictions.md), která poskytuje přístup k úložištím dat během bodování.
 
-* **Závislosti**, jako jsou například pomocné skripty nebo balíčky python/Conda, které jsou nutné ke spuštění vstupního skriptu nebo modelu.
+* **Závislosti**, jako jsou například pomocné skripty nebo balíčky Python/Conda vyžadované ke spuštění vstupního skriptu nebo modelu.
 
-* **Konfigurace nasazení** pro výpočetní cíl, který je hostitelem nasazeného modelu. Tato konfigurace popisuje například požadavky na paměť a procesor potřebný ke spuštění modelu.
+* **Konfigurace nasazení** pro cílový výpočetní objekt hostující nasazený model. Tato konfigurace popisuje například požadavky na paměť a procesor potřebné ke spuštění modelu.
 
-Tyto položky jsou zapouzdřeny do *Konfigurace odvození* a *Konfigurace nasazení*. Konfigurace odvození odkazuje na skript vstupu a další závislosti. Tyto konfigurace můžete definovat programově při použití sady SDK k provedení nasazení. Můžete je definovat v souborech JSON při použití rozhraní příkazového řádku.
+Tyto položky jsou zapouzdřeny do *odvozené konfigurace* a *konfigurace nasazení*. Odvozená konfigurace odkazuje na vstupní skript a další závislosti. Tyto konfigurace můžete definovat programově při použití sady SDK k provedení nasazení. Definujete je v souborech JSON, když použijete rozhraní příkazového řádku.
 
 ### <a id="script"></a>1. definice vstupního skriptu a závislostí
 
-Skript vstupu přijímá data odeslaná do nasazené webové služby a předává je do modelu. Pak vezme odpověď vrácenou modelem a vrátí ji klientovi. *Skript je specifický pro váš model*. Musí pochopit data, která model očekává a vrátí.
+Vstupní skript přijímá data odeslaná do nasazené webové služby a předává je do modelu. Potom vezme odpověď vrácenou modelem a vrátí ji klientovi. *Skript je specifický pro váš model*. Musí pochopit data, která model očekává a vrátí.
 
 Skript obsahuje dvě funkce, které načítají a spouštějí model:
 
 * `init()`: Tato funkce obvykle načte model do globálního objektu. Tato funkce se spustí jenom jednou, když se spustí kontejner Docker pro vaši webovou službu.
 
-* `run(input_data)`: Tato funkce využívá model k predikci hodnoty založené na vstupní data. Vstupy a výstupy běhu obvykle používají JSON pro serializaci a deserializaci. Můžete také pracovat s nezpracovanými binárními daty. Data je možné transformovat před jejich odesláním do modelu nebo před vrácením do klienta.
+* `run(input_data)`: Tato funkce využívá model k predikci hodnoty založené na vstupní data. Vstupy a výstupy spuštění obvykle pro serializaci a deserializaci používají JSON. Pracovat můžete také s nezpracovanými binárními daty. Data můžete transformovat před jejich odesláním do modelu nebo před jejich vrácením klientovi.
 
 #### <a name="locate-model-files-in-your-entry-script"></a>Vyhledání souborů modelu ve vstupním skriptu
 
@@ -618,6 +625,9 @@ Viz [nasazení na Azure Container Instances](how-to-deploy-azure-container-insta
 ### <a id="aks"></a>Služba Azure Kubernetes (vývoj, testování a produkce)
 
 Viz [nasazení do služby Azure Kubernetes](how-to-deploy-azure-kubernetes-service.md).
+
+### <a name="ab-testing-controlled-rollout"></a>Testování a/B (řízené zavedení)
+Další informace najdete v tématu [řízená zavedení modelů ml](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview) .
 
 ## <a name="consume-web-services"></a>Využívání webových služeb
 

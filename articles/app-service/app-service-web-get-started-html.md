@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 5c2aca1996d1ec764dcdca30c7657ee360b9c355
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: ed756a972b3887ac638a061075d2e6fbeea98104
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671484"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747945"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Vytvoření webové aplikace ve statickém HTML ve službě Azure
 
@@ -49,7 +49,7 @@ V následujícím příkladu nahraďte <app_name > jedinečným názvem aplikace
 ```bash
 cd html-docs-hello-world
 
-az webapp up --location westeurope --name <app_name>
+az webapp up --location westeurope --name <app_name> --html
 ```
 
 Příkaz `az webapp up` provádí tyto akce:
@@ -101,7 +101,7 @@ Uložte změny a editor nano zavřete. K uložení použijte příkaz `^O` a k z
 Teď aplikaci znovu nasadíte pomocí stejného příkazu `az webapp up`.
 
 ```bash
-az webapp up --location westeurope --name <app_name>
+az webapp up --location westeurope --name <app_name> --html
 ```
 
 Po dokončení nasazení se vraťte do okna prohlížeče, které se otevřelo v kroku **Přechod do aplikace**, a aktualizujte zobrazení stránky.

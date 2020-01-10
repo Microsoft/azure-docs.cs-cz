@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: a6b696e16d2c946572cc213115fb440775fce3fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 349d7d8206cc4139de020234ee063e85f9a8f9ef
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442976"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768635"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
 
@@ -95,24 +95,24 @@ Aby bylo možné udržovat výkon a funkce uzlu, jsou prostředky rezervovány n
 |---|---|---|---|---|---|---|---|
 |Kube – rezervováno (millicores)|60|100|140|180|260|420|740|
 
-- Paměť vyhrazená pro **paměť** zahrnuje součet dvou hodnot.
+- **Paměť,** kterou využívá AKS, zahrnuje součet dvou hodnot.
 
-1. Démon kubelet je nainstalován na všech uzlech agenta Kubernetes za účelem správy vytváření a ukončování kontejneru. Ve výchozím nastavení má démon následující pravidlo vyřazení: paměť. k dispozici < 750Mi, což znamená, že uzel musí vždy mít alespoň 750 mi ALLOCATABLE.  Když je hostitel pod touto prahovou hodnotou dostupné paměti, kubelet ukončí jednu z běžících lusků, aby uvolnil paměť na hostitelském počítači a chránil ji.
+1. Démon kubelet je nainstalován na všech uzlech agenta Kubernetes za účelem správy vytváření a ukončování kontejneru. Ve výchozím nastavení má démon následující pravidlo vyřazení: *paměť. k dispozici < 750Mi*, což znamená, že uzel musí vždy mít alespoň 750 mi ALLOCATABLE.  Když je hostitel pod touto prahovou hodnotou dostupné paměti, kubelet ukončí jednu z běžících lusků, aby uvolnil paměť na hostitelském počítači a chránil ji. Tato akce je reaktivní, jakmile se velikost dostupné paměti sníží nad prahovou hodnotu 750Mi.
 
-2. Druhá hodnota je progresivní míra, která je vyhrazena pro správné fungování démona kubelet (Kube – rezervováno).
+2. Druhá hodnota je progresivní frekvence rezervací paměti pro funkci démona kubelet na správnou funkci (Kube – rezervováno).
     - 25% prvních 4 GB paměti
     - 20% z dalších 4 GB paměti (až 8 GB)
     - 10% z dalších 8 GB paměti (až 16 GB)
     - 6% z dalších 112 GB paměti (až 128 GB)
     - 2% libovolné paměti nad 128 GB
 
-V důsledku toho, aby se tato dvě definovaná pravidla zachovala v dobrém stavu uzlů Kubernetes a agentů, bude se množství CPU ALLOCATABLE a paměti zobrazovat méně, než by mohl nabízet samotný uzel. Výše uvedené rezervace prostředků se nedají změnit.
+Výše uvedená pravidla pro paměť a přidělení procesoru se používají k udržení v pořádku uzlů agentů, ale některé hostující systémy jsou pro stav clusteru nepostradatelné. Tato pravidla přidělení také způsobí, že uzel hlásí méně ALLOCATABLE paměť a procesor, než by by neměl být součástí clusteru Kubernetes. Výše uvedené rezervace prostředků se nedají změnit.
 
-Například pokud uzel nabízí 7 GB, bude hlásit 34% ALLOCATABLE paměti:
+Například pokud uzel nabízí 7 GB, bude hlásit 34% ALLOCATABLE paměti, která není nad prahovou hodnotou 750Mi pevného vyřazení.
 
-`750Mi + (0.25*4) + (0.20*3) = 0.786GB + 1 GB + 0.6GB = 2.386GB / 7GB = 34% reserved`
+`(0.25*4) + (0.20*3) = + 1 GB + 0.6GB = 1.6GB / 7GB = 22.86% reserved`
 
-Kromě rezervací pro Kubernetes vyhradí základní operační systém Node také množství prostředků procesoru a paměti pro udržení funkcí operačního systému.
+Kromě rezervací pro samotný Kubernetes vyhradí základní operační systém Node také množství prostředků procesoru a paměti pro udržení funkcí operačního systému.
 
 Související osvědčené postupy najdete v tématu [osvědčené postupy pro základní funkce nástroje Scheduler v AKS][operator-best-practices-scheduler].
 

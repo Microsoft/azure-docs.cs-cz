@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 4708f2e0d6d4aadba228b82cf07e0a7f58b8f68a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0318f851f547aed7c7682c9e6841f71d56c98be1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825604"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750926"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>Vytvoření nové nabídky Dynamics 365 for Operations
 
@@ -99,11 +99,11 @@ Stránka **vlastností** vám umožní definovat kategorie a odvětví používa
 
 ### <a name="category"></a>Kategorie
 
-Vyberte minimálně jednu a maximálně tři kategorie. Budou použity k umístění vaší nabídky do příslušné oblasti hledání na webu Marketplace. Nezapomeňte si vyžádat, jak vaše nabídka podporuje tyto kategorie v popisu nabídky. 
+Výběr až dvou (2) kategorií, včetně primární a sekundární kategorie (volitelné). Vyberte až dvě (2) podkategorie pro každou primární nebo sekundární kategorii. Pokud není vybraná žádná podkategorie, nabídne se ve vybrané kategorii i nadále.
 
 ### <a name="industry"></a>Odvětví
 
-[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
+Volitelně můžete vybrat až dva obory a dvě svislá v rámci každého odvětví. Tyto kategorie slouží k zobrazení vaší nabídky, pokud se ve vyhledávacích filtrech používá obor a svislá a používají se v prezentace.  Pokud je vaše nabídka cílena na konkrétní obor a/nebo vertikálně, ujistěte se, jak vaše nabídka podporuje vybrané obory nebo svislé čáry v popisu nabídky.  V opačném případě, pokud vaše nabídka není specifická pro konkrétní obor, neprovádějte výběr a ponechte tuto část prázdnou.
 
 ### <a name="app-version"></a>verze aplikace
 
@@ -244,7 +244,7 @@ Zjištění identifikátoru řešení:
 1. V Microsoft Dynamics Lifecycle Services (LCS) vyberte **Správa řešení**.
 2. Vyberte své řešení a pak vyhledejte **identifikátor řešení** v **přehledu balíčku**. Pokud je identifikátor prázdný, vyberte **Upravit** a znovu publikovat balíček a pak to zkuste znovu.
 
-### <a name="release-version"></a>Verze vydaných verzí
+### <a name="release-version"></a>Prodejní verze
 
 Vyberte verzi Dynamics 365 pro finance a operace, se kterými toto řešení funguje.
 
@@ -269,13 +269,13 @@ K dispozici jsou následující typy testovacích jednotek, z nichž každá má
 
 - **Instance**: Vyberte typ (horká nebo studená) a počet dostupných instancí, které se vynásobí počtem oblastí, ve kterých je vaše nabídka dostupná.
 
-**Hot**: Tento typ instance je nasazený a očekává se přístup na vybranou oblast. Zákazníci můžou okamžitě přistupovat k *horkým* instancím testovacích jednotek, ale nemusíte čekat na nasazení. Kompromisem je, že tyto instance jsou vždycky spuštěné v předplatném Azure, takže budou mít větší náklady na dobu provozu. Důrazně doporučujeme mít aspoň jednu *aktivní* instanci, protože většina zákazníků nechce čekat na plná nasazení, takže když není k dispozici žádná *Hot* instance, výsledkem je vypnutí v zákaznickém využívání.
+**Hot**: Tento typ instance je nasazený a očekává se přístup na vybranou oblast. Zákazníci můžou okamžitě přistupovat k *horkým* instancím testovacích jednotek, ale nemusíte čekat na nasazení. Výměnou za to je, že tyto instance nepřetržitý provoz na vaše předplatné Azure, takže bude mít za následek větší dostupnost nákladů. Důrazně doporučujeme mít aspoň jednu *aktivní* instanci, protože většina zákazníků nechce čekat na plná nasazení, takže když není k dispozici žádná *Hot* instance, výsledkem je vypnutí v zákaznickém využívání.
 
 **Studená**: Tento typ instance představuje celkový počet instancí, které mohou být nasazeny v jednotlivých oblastech. Studené instance vyžadují pro nasazení celé testovací jednotky Správce prostředků šablonu, když zákazník požádá o testovací verzi, takže *studené* instance budou mnohem pomalejší, než se dosadí *za horké* instance. Kompromisy je, že je nutné platit jenom za dobu trvání testovacích jednotek *, ale v* předplatném Azure není vždycky spuštěná jako s *horkou* instancí.
 
 - **Šablona testovacích jednotek Azure Resource Manager**: Nahrajte soubor. zip obsahující šablonu Azure Resource Manager.  Další informace o vytvoření šablony Azure Resource Manager v článku rychlý Start [vytváření a nasazování Azure Resource Manager šablon pomocí Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
-- **Doba trvání testovacích jednotek** (povinné): zadejte dobu, po kterou bude testovací jednotka aktivní, v počtu hodin. Testovací jednotka se po skončení tohoto časového období ukončí automaticky. Tato doba může být nastavena pouze na celé číslo hodiny (například 2 hodiny, "1,5" není platný).
+- **Doba trvání testovacích jednotek** (povinné): zadejte dobu, po kterou bude testovací jednotka aktivní, v počtu hodin. Po skončení tohoto období se automaticky ukončí na testovací verzi. Tato doba může být nastavena pouze na celé číslo hodiny (například 2 hodiny, "1,5" není platný).
 
 ### <a name="technical-configuration-for-dynamics-365-test-drive"></a>Technická konfigurace pro testovací jednotku Dynamics 365
 
@@ -337,7 +337,7 @@ Možnost **výpisu na webu Marketplace** , která se nachází na kartě **testo
 
 - **User Manual** (povinné): podrobný návod k vašemu prostředí Test Drive. Ruční příručka uživatele by měla pokrývat přesně to, co chcete zákazníkovi získat ze zkušební jednotky a sloužit jako odkaz na případné dotazy, které mohou mít. Soubor musí být ve formátu PDF a po nahrání má název (maximálně 255 znaků).
 
-- **Videa: Přidání videí** (volitelné): videa je možné nahrát na YouTube nebo Vimeo a tady je odkazováno pomocí odkazu a miniatury (533 x 324 pixelů), aby si zákazník mohli prohlédnout informace, které jim pomohou lépe porozumět testovacím jednotkám, včetně Jak úspěšně používat funkce vaší nabídky a porozumět scénářům, které zvýrazní jejich výhody.
+- **Videa: Přidání videí** (volitelné): videa je možné nahrát na YouTube nebo Vimeo a tady je odkazováno s odkazem a obrázkem miniatury (533 x 324 pixelů), aby zákazník mohl zobrazit podrobné informace a lépe porozumět testovacím jednotkám, včetně toho, jak úspěšně používat funkce vaší nabídky a pochopit scénáře, které zvýrazní jejich výhody.
   - **Název** (povinné)
   - **Adresa URL (jenom YouTube nebo Vimeo)** (povinné)
   - **Miniatura (533 x 324px)** : soubor obrázku musí být ve formátu PNG.
@@ -354,11 +354,11 @@ Tento soubor musí být ve formátu. xls nebo. xlsx. Pokud máte více než jedn
 
 ### <a name="does-solution-include-localizations"></a>Zahrnuje řešení lokalizace?
 
-Vyberte **Ano** , pokud řešení umožňuje používání místních standardů a zásad (například pokud splňuje různá pravidla mezd, která vyžaduje jiné země nebo oblasti). V opačném případě vyberte možnost **ne**.
+Vyberte **Ano** , pokud řešení umožňuje používání místních standardů a zásad (například pokud splňuje různá pravidla mezd, která vyžaduje jiné země nebo oblasti). V opačném případě vyberte **ne**.
 
 ### <a name="does-solution-enable-translations"></a>Povoluje řešení překlady?
 
-Odpovězte na **Ano** , pokud se text v řešení dá přeložit do jiných jazyků. V opačném případě vyberte možnost **ne**.
+Odpovězte na **Ano** , pokud se text v řešení dá přeložit do jiných jazyků. V opačném případě vyberte **ne**.
 
 ## <a name="publish"></a>Publikování
 
@@ -377,4 +377,4 @@ Pokud tuto nabídku publikujete poprvé, můžete:
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Aktualizace stávající nabídky na komerčním webu Marketplace](./update-existing-offer.md)
+- [Aktualizace stávající nabídky na komerčním marketplace](./update-existing-offer.md)

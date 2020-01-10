@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 12/17/2019
+ms.date: 01/08/2020
 ms.author: helohr
-ms.openlocfilehash: 925894aea267e4f100f7bcdb817424b5cdfe6c25
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b2209e2ada2d825714d08b6ac3237583df28272a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459499"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749358"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Vytvoření tenanta a fondu hostitelů
 
@@ -59,7 +59,7 @@ Příklad nezpracované chyby:
 
 ## <a name="creating-windows-virtual-desktop-session-host-vms"></a>Vytváření virtuálních počítačů hostitele relace virtuálních počítačů s Windows
 
-Virtuální počítače hostitele relace je možné vytvořit několika způsoby, ale tým virtuálních ploch Windows podporuje jenom problémy zřizování virtuálních počítačů, které souvisejí s nabídkou [Azure Marketplace](https://azuremarketplace.microsoft.com/) . Další podrobnosti najdete v tématu [problémy s použitím virtuálního počítače s Windows – zřízení fondu hostitelů Azure Marketplace nabídky](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering).
+Virtuální počítače hostitele relace je možné vytvořit několika způsoby, ale tým virtuálních ploch Windows podporuje jenom problémy zřizování virtuálních počítačů, které souvisejí s nabídkou [Azure Marketplace](https://azuremarketplace.microsoft.com/) . Další informace najdete v tématu [problémy s použitím virtuálního počítače s Windows – zřízení fondu hostitelů Azure Marketplace nabídky](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering).
 
 ## <a name="issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering"></a>Problémy s používáním virtuálního počítače s Windows – zřízení fondu hostitelů Azure Marketplace nabídky
 
@@ -138,8 +138,16 @@ Příklad nezpracované chyby:
 
 **Příčina 2:** Název domény není přeložen.
 
-**Oprava 2:** Přečtěte si, že chyba "název domény nejde přeložit" pro virtuální počítače nejsou připojené k doméně v [konfiguraci virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md).
+**Oprava 2:** Viz [Chyba: název domény není přeložen](troubleshoot-vm-configuration.md#error-domain-name-doesnt-resolve) v [konfiguraci virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md).
 
+**Příčina 3:** Konfigurace DNS virtuální sítě (VNET) je nastavená na **výchozí**.
+
+Chcete-li tento problém vyřešit, proveďte následující akce:
+
+1. Otevřete Azure Portal a vyberte okno **virtuální sítě** .
+2. Najděte virtuální síť a pak vyberte **servery DNS**.
+3. V pravé části obrazovky by se měla zobrazit nabídka servery DNS. V této nabídce vyberte možnost **vlastní**.
+4. Ujistěte se, že servery DNS uvedené v části vlastní odpovídají vašemu řadiči domény nebo doméně služby Active Directory. Pokud server DNS nevidíte, můžete ho přidat zadáním jeho hodnoty do pole **Přidat server DNS** .
 
 ### <a name="error-your-deployment-failedunauthorized"></a>Chyba: nasazení selhalo. ..\Unauthorized
 
@@ -159,7 +167,7 @@ Příklad nezpracované chyby:
 
 **Příčina 2:** Přechodná chyba se spojením.
 
-**Oprava:** Ověřte, jestli je prostředí virtuálních počítačů s Windows v pořádku, když se přihlásíte pomocí PowerShellu. Dokončete registraci virtuálního počítače ručně v části [Vytvoření fondu hostitelů pomocí prostředí PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+**Oprava:** Ověřte, jestli je prostředí virtuálních počítačů s Windows v pořádku, když se přihlásíte pomocí PowerShellu. Dokončete registraci virtuálního počítače ručně v části [Vytvoření fondu hostitelů pomocí prostředí PowerShell](create-host-pools-powershell.md).
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>Chyba: zadané uživatelské jméno správce není povolené.
 
@@ -347,7 +355,7 @@ Příklad nezpracované chyby:
 
 **Příčina:** Zadaný správce tenanta virtuálních počítačů s Windows vyžaduje přihlášení k Azure Multi-Factor Authentication (MFA).
 
-**Oprava:** Pomocí kroků v tomto kurzu vytvořte instanční objekt a přiřaďte mu roli pro vašeho tenanta virtuálních klientů Windows. v [PowerShellu vytvořte instanční objekty a přiřazení rolí](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell). Po ověření, že se můžete přihlásit k virtuální ploše Windows pomocí instančního objektu, spusťte znovu nabídku Azure Marketplace nebo šablonu GitHub Azure Resource Manager, podle toho, kterou metodu používáte. Podle následujících pokynů zadejte správné parametry pro vaši metodu.
+**Oprava:** Pomocí kroků v tomto kurzu vytvořte instanční objekt a přiřaďte mu roli pro vašeho tenanta virtuálních klientů Windows. v [PowerShellu vytvořte instanční objekty a přiřazení rolí](create-service-principal-role-powershell.md). Po ověření, že se můžete přihlásit k virtuální ploše Windows pomocí instančního objektu, spusťte znovu nabídku Azure Marketplace nebo šablonu GitHub Azure Resource Manager, podle toho, kterou metodu používáte. Podle následujících pokynů zadejte správné parametry pro vaši metodu.
 
 Pokud používáte nabídku Azure Marketplace, zadejte hodnoty pro následující parametry pro správné ověření pro virtuální plochu Windows:
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ca172e16fc13d2b8e10d0797f5b57b5b48136349
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0fc5c32570e5a5920d1616a522120ea5d5b251d8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430451"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768323"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Úvod do služby App Service Environment #
  
@@ -41,6 +41,7 @@ Služby ASE jsou izolované tak, aby spouštěly jenom aplikace jednoho zákazn�
 * K horizontálnímu škálování se dá použít víc služeb ASE. Další informace najdete v článku [Nastavení náročnosti geografické distribuce aplikace](app-service-app-service-environment-geo-distributed-scale.md).
 * Služby ASE se dají použít ke konfiguraci architektury zabezpečení, jak je patrné z podrobných informací z konference AzureCon. Informace o způsobu konfigurace architektury zabezpečení v podrobných informacích z konference AzureCon najdete v [článku o implementaci vrstvené architektury zabezpečení](app-service-app-service-environment-layered-security.md) se službami App Service Environment.
 * U aplikací využívajících služby ASE mají je přístup chráněný branami v podobě upstreamovými zařízeními, jako jsou brány firewall webových aplikací (WAF). Další informace najdete v tématu [Firewall webových aplikací (WAF)][AppGW].
+* Prostředí App Service lze nasadit do Zóny dostupnosti (AZ) pomocí připnutí zóny.  Další podrobnosti najdete v tématu [podpora Zóny dostupnosti App Service Environment][ASEAZ] .
 
 ## <a name="dedicated-environment"></a>Vyhrazené prostředí ##
 
@@ -102,3 +103,4 @@ Verze ASEv1 používá jiný cenový model než verze ASEv2. Ve verzi ASEv1 se p
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/waf-overview.md
+[ASEAZ]: https://azure.github.io/AppService/2019/12/12/App-Service-Environment-Support-for-Availability-Zones.html

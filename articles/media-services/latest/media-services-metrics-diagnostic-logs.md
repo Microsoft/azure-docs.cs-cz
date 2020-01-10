@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 38fcda40a208da3f3f5aef5b13778ca38092d8f8
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 16897ad095afcacff04d53b0956a972c36a25893
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186122"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750816"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Monitorovat metriky Media Services a diagnostické protokoly přes Azure Monitor
 
 [Azure monitor](../../azure-monitor/overview.md) vám umožní monitorovat metriky a diagnostické protokoly, které vám pomůžou pochopit, jak vaše aplikace provádí. Všechna data shromažďovaná Azure Monitor se vejdou do jednoho ze dvou základních typů: metriky a protokoly. Můžete monitorovat protokoly diagnostiky Media Services a vytvářet výstrahy a oznámení pro shromážděné metriky a protokoly. Data metriky můžete vizualizovat a analyzovat pomocí [Průzkumníka metrik](../../azure-monitor/platform/metrics-getting-started.md). Můžete odeslat protokoly do [Azure Storage](https://azure.microsoft.com/services/storage/), streamovat je do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), exportovat je do [Log Analytics](https://azure.microsoft.com/services/log-analytics/)nebo použít služby třetích stran.
 
-Podrobný přehled najdete v tématu [Azure monitor metriky](../../azure-monitor/platform/data-platform.md) a [Azure monitor diagnostických protokolů](../../azure-monitor/platform/resource-logs-overview.md).
+Podrobný přehled najdete v tématu [Azure monitor metriky](../../azure-monitor/platform/data-platform.md) a [Azure monitor diagnostických protokolů](../../azure-monitor/platform/platform-logs-overview.md).
 
 Toto téma popisuje podporované [Media Services metriky](#media-services-metrics) a [protokoly Media Services diagnostiky](#media-services-diagnostic-logs).
 
@@ -62,7 +62,7 @@ Jsou podporovány následující Media Services metriky [koncových bodů stream
 
 |Název metriky|Zobrazované jméno|Popis|
 |---|---|---|
-|Žádosti|Žádosti|Poskytuje celkový počet požadavků HTTP poskytovaných koncovým bodem streamování.|
+|Požadavky|Požadavky|Poskytuje celkový počet požadavků HTTP poskytovaných koncovým bodem streamování.|
 |Výchozí přenos dat|Výchozí přenos dat|Celkový počet odchozích bajtů. Například bajty streamované koncovým bodem streamování.|
 |SuccessE2ELatency|Koncová latence úspěch|Doba trvání od okamžiku, kdy koncový bod streamování přijal požadavek na odeslání posledního bajtu odpovědi.|
 
@@ -78,13 +78,13 @@ Tady jsou příklady, jak vám monitorování Media Services metriky můžou por
 * Jak můžu zjistit, kolik požadavků na HLS nebo POMLČKu se z tohoto balíčku vyřazuje?
 * Návody nastavit výstrahu, která ví, že se dosáhlo prahové hodnoty # neúspěšných požadavků?
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Podívejte [se, jak monitorovat metriky Media Services](media-services-metrics-howto.md).
 
 ## <a name="media-services-diagnostic-logs"></a>Protokoly diagnostiky Media Services
 
-Diagnostické protokoly poskytují bohatou a častou data o provozu prostředku Azure. Další informace najdete v tématu [Jak shromažďovat a využívat data protokolu z vašich prostředků Azure](../../azure-monitor/platform/resource-logs-overview.md).
+Diagnostické protokoly poskytují bohatou a častou data o provozu prostředku Azure. Další informace najdete v tématu [Jak shromažďovat a využívat data protokolu z vašich prostředků Azure](../../azure-monitor/platform/platform-logs-overview.md).
 
 Media Services podporuje následující diagnostické protokoly:
 
@@ -92,7 +92,7 @@ Media Services podporuje následující diagnostické protokoly:
 
 ### <a name="key-delivery"></a>Doručení klíče
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |Požadavek služby doručení klíčů|Protokoly, které zobrazují informace o požadavku služby doručování klíčů Další informace najdete v tématu [schémata](media-services-diagnostic-logs-schema.md).|
 
@@ -105,13 +105,13 @@ Mezi další věci, které můžete prozkoumávat pomocí protokolů pro diagnos
 * Podívejte se na chyby podle DRM nebo typu zásad.
 * Podívejte se na počet neautorizovaných žádostí o licenci od klientů.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Viz [jak monitorovat diagnostické protokoly služby Media Service](media-services-diagnostic-logs-howto.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Jak shromažďovat a využívat data protokolu z vašich prostředků Azure](../../azure-monitor/platform/resource-logs-overview.md)
+* [Jak shromažďovat a využívat data protokolu z vašich prostředků Azure](../../azure-monitor/platform/platform-logs-overview.md)
 * [Vytváření, zobrazení a správa upozornění na metriky pomocí služby Azure Monitor](../../azure-monitor/platform/alerts-metric.md)
 * [Jak monitorovat metriky Media Services](media-services-metrics-howto.md)
 * [Monitorování diagnostických protokolů služby Media Service](media-services-diagnostic-logs-howto.md)

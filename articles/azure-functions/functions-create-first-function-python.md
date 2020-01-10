@@ -4,12 +4,12 @@ description: Zjistěte, jak vytvořit první funkce Pythonu v Azure pomocí Azur
 ms.date: 11/07/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: bd20c55fdaef5e820773b4ff4e0ddf3d36c6e371
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3de8c42c59455cc326fa909bc520a94daac68706
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433200"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769332"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Rychlý Start: vytvoření funkce Python aktivované protokolem HTTP v Azure
 
@@ -122,7 +122,7 @@ Než budete moct aplikaci nasadit, budete muset vytvořit nějaké prostředky A
 
 ## <a name="create-a-function-app-in-azure"></a>Vytvoření aplikace Function App v Azure
 
-Aplikace Function App poskytuje prostředí pro provádění kódu vaší funkce. Umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. 
+Aplikace Function App poskytuje prostředí pro provádění kódu vaší funkce. Umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování, škálování a sdílení prostředků.
 
 Spusťte následující příkaz: Nahraďte `<APP_NAME>` jedinečným názvem aplikace Function App. Nahraďte `<STORAGE_NAME>` názvem účtu úložiště. `<APP_NAME>` je také výchozí doména DNS pro aplikaci funkcí. Tento název musí být jedinečný mezi všemi aplikacemi v Azure.
 

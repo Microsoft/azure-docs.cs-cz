@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: 8f9592575da16b146423682d1250c577ab7c282e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 464807a7bf4a20b540e2d5344b721c8844bd7bca
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75486271"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750485"
 ---
 # <a name="scalability-and-performance-targets-for-queue-storage"></a>Škálovatelnost a výkonnostní cíle pro úložiště Queue
 
@@ -29,3 +29,4 @@ ms.locfileid: "75486271"
 - [Kontrolní seznam pro výkon a škálovatelnost pro úložiště Queue](storage-performance-checklist.md)
 - [Cíle škálovatelnosti pro účty úložiště úrovně Standard](../common/scalability-targets-standard-account.md)
 - [Cíle škálovatelnosti pro poskytovatele prostředků Azure Storage](../common/scalability-targets-resource-provider.md)
+- [Omezení a kvóty předplatného Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md)

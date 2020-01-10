@@ -12,10 +12,10 @@ ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 4d7deb02e28734eb2b4c42bad566fdfd0d380682
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 01/08/2020
 ms.locfileid: "75479082"
 ---
 # <a name="verification-display-control"></a>Ovládací prvek zobrazení ověřování

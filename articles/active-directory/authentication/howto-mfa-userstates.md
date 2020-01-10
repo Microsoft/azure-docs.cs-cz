@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c39546d47e9916dbc138a4660d73b79e54ebbe3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f7fadd974fdc572dddb403c25e90246fd92b1989
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425246"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763228"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak pro uživatele vyžadovat dvoustupňové ověřování
 
@@ -136,7 +136,7 @@ Použití prostředí PowerShell je vhodné, pokud potřebujete hromadně povoli
 Pokud chcete zakázat MFA, použijte tento skript:
 
    ```PowerShell
-   Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationMethods @()
+   Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationRequirements @()
    ```
 
 To může být také zkráceno na:

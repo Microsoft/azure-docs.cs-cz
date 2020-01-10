@@ -1,5 +1,5 @@
 ---
-title: Řešení chyb při registraci Update Management, Change Tracking a inventáře
+title: Řešení potíží s připojováním řešení pro správu Azure Automation
 description: Naučte se řešit chyby při připojování pomocí řešení Update Management, Change Tracking a inventáře.
 services: automation
 author: mgoedtel
@@ -8,14 +8,14 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 0371c59ae63389bc3f7f0132260b0d98f496086c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 737b963074a2bec851882bddd78ad0b89f48d1d9
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849305"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769893"
 ---
-# <a name="troubleshoot-errors-when-onboarding-solutions"></a>Řešení chyb při připojování řešení
+# <a name="troubleshoot-errors-when-onboarding-update-management-change-tracking-and-inventory"></a>Řešení chyb při připojování Update Management, Change Tracking a inventáře
 
 Při připojování řešení, jako je Update Management nebo Change Tracking a inventáře, může dojít k chybám. Tento článek popisuje různé chyby, ke kterým může dojít, a způsob jejich řešení.
 
@@ -140,7 +140,7 @@ The link cannot be updated or deleted because it is linked to Update Management 
 
 #### <a name="cause"></a>Příčina
 
-K této chybě dochází, když máte pořád aktivní řešení v pracovním prostoru Log Analytics, který závisí na vašem účtu Automation a na propojených pracovních prostorech analýzy log.
+K této chybě dochází, když máte pořád aktivní řešení v pracovním prostoru Log Analytics, který závisí na vašem účtu Automation a na propojených pracovních prostorech Log Analytics.
 
 ### <a name="resolution"></a>Rozlišení
 

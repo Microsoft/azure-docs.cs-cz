@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
-ms.openlocfilehash: a91035773d4427f0f3c07097eb3e02fc08c5f375
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 9798cbd2b1c9dca489e843a7102f213757e4de75
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75528755"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771815"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>Interaktivně se ladit na Azure Machine Learning výpočetní instanci s VS Code Vzdálená
 
@@ -23,7 +23,7 @@ V tomto článku se dozvíte, jak nastavit Visual Studio Code vzdáleně na inst
 > [!NOTE]
 > Výpočetní instance jsou k dispozici pouze pro pracovní prostory s oblastí **střed USA – sever** nebo **Velká Británie – jih**.
 
-+ [Instance služby Azure Machine Learning COMPUTE](/azure/machine-learning/service/concept-compute-instance) je plně spravovaná cloudová pracovní stanice pro odborníky přes data a poskytuje funkce pro správu a připravenost v podniku pro správce IT. 
++ [Instance služby Azure Machine Learning COMPUTE](concept-compute-instance.md) je plně spravovaná cloudová pracovní stanice pro odborníky přes data a poskytuje funkce pro správu a připravenost v podniku pro správce IT. 
 
 
 + [Visual Studio Code vzdálené](https://code.visualstudio.com/docs/remote/remote-overview) Vývoj umožňuje používat kontejner, vzdálený počítač nebo podsystém Windows pro Linux (WSL) jako plnohodnotné vývojové prostředí. 
@@ -117,4 +117,4 @@ Odtud jste na této službě naprosto pracovali na výpočetní instanci a teď 
 
 Teď, když jste nastavili Visual Studio Code vzdálené, můžete použít výpočetní instanci jako vzdálenou výpočetní prostředky z Visual Studio Code k interaktivnímu ladění kódu. 
 
-[Kurz: analýza prvního modelu ml](/azure/machine-learning/service/tutorial-1st-experiment-sdk-train) ukazuje, jak používat výpočetní instanci s integrovaným poznámkovým blokem.
+[Kurz: analýza prvního modelu ml](tutorial-1st-experiment-sdk-train.md) ukazuje, jak používat výpočetní instanci s integrovaným poznámkovým blokem.

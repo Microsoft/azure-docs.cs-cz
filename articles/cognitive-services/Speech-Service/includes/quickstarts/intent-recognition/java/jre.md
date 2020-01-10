@@ -10,19 +10,19 @@ ms.date: 01/02/2020
 ms.topic: include
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 420350f1fa119b53844a3c3f28405ced1c20fb91
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 7654d952469e35c3b45af252e910cb0e36693029
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660466"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772942"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
-* Pokud se jedná o váš první projekt Java (JRE), použijte tento průvodce k <a href="../quickstarts/create-project.md?tabs=jre" target="_blank">Vytvoření prázdného ukázkového projektu</a>.
-* <a href="../quickstarts/setup-platform.md?tabs=jre" target="_blank">Nainstalujte sadu Speech SDK pro vývojové prostředí</a>.
+* Pokud se jedná o váš první projekt Java (JRE), použijte tento průvodce k <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=jre" target="_blank">Vytvoření prázdného ukázkového projektu</a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">Nainstalujte sadu Speech SDK pro vývojové prostředí</a>.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Vytvoření aplikace v LUIS pro rozpoznávání záměrů
 

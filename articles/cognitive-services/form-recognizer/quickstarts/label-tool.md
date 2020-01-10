@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 2abbf06fee8189bc6ca678e546c8e88504409a51
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: f00702326cf6fe2efd8d4abbfce7174815ea0b1d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660388"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770284"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků
 
@@ -33,9 +33,11 @@ K dokončení tohoto rychlého startu musíte mít:
 
 Pomocí modulu Docker spustíte ukázkový nástroj pro označování vzorků. Pro nastavení kontejneru Docker použijte následující postup. Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).
 1. Nejdřív nainstalujte Docker na hostitelském počítači. Hostitelský počítač může být místní počítač ([Windows](https://docs.docker.com/docker-for-windows/), [MacOS](https://docs.docker.com/docker-for-mac/)nebo [Linux](https://docs.docker.com/install/)). Nebo můžete použít hostující službu Docker v Azure, jako je například [Služba Azure Kubernetes](https://docs.microsoft.com/azure/aks/index), [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/index)nebo cluster Kubernetes [nasazený do Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910). Hostitelský počítač musí splňovat následující požadavky na hardware:
+
     | Kontejner | Minimální | Doporučené|
     |:--|:--|:--|
-    |Ukázkový nástroj pro popisky|2 jádra, 4 GB paměti|4 jádra, 8 GB paměti
+    |Ukázkový nástroj pro popisky|2 jádra, 4 GB paměti|4 jádra, 8 GB paměti|
+    
 1. Dál budete potřebovat [rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Pokud jste to ještě neudělali, nainstalujte ji na svůj počítač.
 1. Pak na příkazovém řádku zadejte následující příkaz. Hodnoty pro `<username>` a `<password>` jsou v uvítacím e-mailu pro rozpoznávání formulářů.
     ```
@@ -49,7 +51,8 @@ Pomocí modulu Docker spustíte ukázkový nástroj pro označování vzorků. P
     ```
     docker run -it -p 3000:80 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool eula=accept
     ```
-    Tento příkaz zpřístupní ukázkovou jmenovku nástroje prostřednictvím webového prohlížeče. Přejděte do [ (Nastavení)http://localhost:3000](http://localhost:3000) (Integrace a služby).
+
+   Tento příkaz zpřístupní ukázkovou jmenovku nástroje prostřednictvím webového prohlížeče. Přejděte do [ (Nastavení)http://localhost:3000](http://localhost:3000) (Integrace a služby).
 
 > [!NOTE]
 > Můžete také označovat dokumenty a modely výuky pomocí REST API pro rozpoznávání formulářů. Chcete-li provést výuku a analýzu pomocí REST API, přečtěte si téma [výuka s popisky pomocí REST API a Pythonu](./python-labeled-data.md).

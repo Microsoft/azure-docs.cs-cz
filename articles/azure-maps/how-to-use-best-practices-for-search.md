@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6a51d764b8e42419bc331e3d4731ef5c5f511f91
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 88f864abc82ea6ba70559c8db5db2d0fe07383b1
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408720"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768822"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Osvědčené postupy pro použití Azure Maps Search Service
 
@@ -33,7 +33,7 @@ Pokud chcete volat rozhraní API služby Maps, potřebujete účet a klíč mapy
 > Pokud chcete zadat dotaz na vyhledávací službu, můžete k sestavení volání REST použít [aplikaci pro odesílání](https://www.getpostman.com/apps) nebo můžete použít jakékoli vývojové prostředí API, které dáváte přednost.
 
 
-## <a name="best-practices-for-geocoding"></a>Osvědčené postupy pro geografické kódování
+## <a name="best-practices-for-geocoding-address-search"></a>Osvědčené postupy pro geografické kódování (vyhledávání adres)
 
 Když vyhledáte úplnou nebo částečnou adresu pomocí Azure Maps Search Service, převezme se váš hledaný výraz a vrátí souřadnici zeměpisné délky a zeměpisné šířky adresy. Tento proces se nazývá geografické kódování. Schopnost geografického kódu v zemi závisí na pokrytí dat provozu a přesnosti geografického kódování služby geografického kódování.
 
@@ -58,10 +58,12 @@ Další informace o Azure Maps možností geografického kódování podle země
 
 
    **Parametry hledání přibližné vyhledávání**
+   
+   Azure Maps [rozhraní API pro vyhledávání s fuzzy logikou](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) je doporučená služba pro použití v případě, že nevíte, jaké uživatelské vstupy jsou pro vyhledávací dotaz. Rozhraní API kombinuje POI (Point of Interest) a geografické kódování do kanonického *víceřádkového vyhledávání*. 
 
    1. `minFuzzyLevel` a `maxFuzzyLevel`, vrátí relevantní shody i v případě, že parametry dotazu přesně neodpovídají požadovaným informacím. Většina vyhledávacích dotazů je ve výchozím nastavení `minFuzzyLevel=1` a `maxFuzzyLevel=2` tak, aby získala výkon a snížila neobvyklé výsledky. Příkladem hledaného termínu "restrant" se shoduje s názvem "restaurace", pokud je `maxFuzzyLevel` nastaveno na 2. Výchozí přibližné úrovně mohou být přepsány podle požadavků na požadavky. 
 
-   2. Můžete také zadat přesně sadu výsledných typů, které mají být vráceny pomocí parametru `idxSet`. Pro tento účel můžete odeslat seznam indexů oddělených čárkami, přičemž pořadí položek nezáleží. Podporovány jsou následující indexy:
+   2. Můžete také určit prioritu přesné sady typů výsledků, které mají být vráceny pomocí parametru `idxSet`. Pro tento účel můžete odeslat seznam indexů oddělených čárkami; pořadí položek nezáleží na tom. Podporovány jsou následující indexy:
 
        * `Addr`**rozsahy adres** - : u některých ulic jsou k dispozici adresní body, které se interpolují od začátku do konce ulice; Tyto body jsou reprezentovány jako rozsahy adres.
        * `Geo` - **geografické**oblasti: oblasti na mapě, které reprezentují správní rozdělení půdy, tj. země, stát, město.
@@ -317,7 +319,10 @@ Hledání bodů zájmu (POI) umožňuje vyžádat si výsledky POI podle názvu,
 
 Chcete-li zlepšit relevanci výsledků a informace v odpovědi hledání POI (Point of Interest), obsahuje informace o značce, které lze použít k analýze odpovědi.
 
+V žádosti můžete také odeslat seznam názvů značek oddělených čárkami. Seznam můžete použít k omezení výsledků na konkrétní značky pomocí parametru `brandSet`. Pořadí položek nezáleží na tom. Je-li k dispozici více značek, budou vráceny pouze výsledky, které patří (alespoň) jeden ze zadaných seznamů.
+
 Pojďme vytvořit [POIou](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) žádost o vyhledávání u plynárenských stanic v rámci Microsoft Campus (Redmond, WA). Pokud obdržíte odpověď, uvidíte informace o značce pro každou vrácenou POI.
+
 
 **Ukázkový dotaz:**
 

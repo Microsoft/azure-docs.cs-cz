@@ -1,6 +1,6 @@
 ---
-title: Vytvořit dynamickou skupinu a ověřit stav – Azure AD | Microsoft Docs
-description: Postup vytvoření pravidla členství ve skupině v Azure Portal najdete v části stav.
+title: Vytvoření nebo úprava dynamické skupiny a získání stavu – Azure AD | Microsoft Docs
+description: Jak vytvořit nebo aktualizovat pravidlo členství ve skupině v Azure Portal a zjistit stav jeho zpracování.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 01/07/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e8ce4f2fbdffc46d18a5f94496e9433c01a65fb
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: d2ed7f27e2145f666f38eec5ddc6c985a4d32138
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900931"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768757"
 ---
-# <a name="create-a-dynamic-group-and-check-status"></a>Vytvořit dynamickou skupinu a ověřit stav
+# <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Vytvoření nebo aktualizace dynamické skupiny v Azure Active Directory
 
 V Azure Active Directory (Azure AD) můžete pomocí pravidel určit členství ve skupině na základě vlastností uživatele nebo zařízení. V tomto článku se dozvíte, jak nastavit pravidlo pro dynamickou skupinu v Azure Portal.
 Dynamické členství je podporováno pro skupiny zabezpečení nebo skupiny Office 365. Při použití pravidla členství ve skupině se vyhodnotí atributy uživatelů a zařízení pro shody s pravidlem členství. Když se změní atribut uživatele nebo zařízení, zpracují se všechna pravidla dynamické skupiny v organizaci pro změny členství. Uživatelé a zařízení se přidají nebo odeberou, pokud splňují podmínky pro skupinu. Skupiny zabezpečení lze použít buď pro zařízení, nebo pro uživatele, ale skupiny sady Office 365 mohou být pouze skupiny uživatelů.
@@ -40,7 +40,7 @@ Tady jsou některé příklady pokročilých pravidel nebo syntaxe, pro které d
 > [!NOTE]
 > Tvůrce pravidel nemusí být schopný zobrazit některá pravidla vytvořená v textovém poli. Když tvůrce pravidel nemůže zobrazit pravidlo, může se zobrazit zpráva. Tvůrce pravidel nemění podporovanou syntaxi, ověřování ani zpracování pravidel dynamických skupin jakýmkoli způsobem.
 
-![Přidat pravidlo členství pro dynamickou skupinu](./media/groups-update-rule/update-dynamic-group-rule.png)
+![Přidat pravidlo členství pro dynamickou skupinu](./media/groups-create-rule/update-dynamic-group-rule.png)
 
 Příklady syntaxe, podporovaných vlastností, operátorů a hodnot pravidla členství najdete v tématu [dynamická pravidla členství pro skupiny v Azure Active Directory](groups-dynamic-membership.md).
 
@@ -63,6 +63,20 @@ Příklady syntaxe, podporovaných vlastností, operátorů a hodnot pravidla č
 1. Vyberte **vytvořit** na stránce **Nová skupina** a vytvořte skupinu.
 
 Pokud pravidlo, které jste zadali, není platné, zobrazí se v oznámení Azure na portálu vysvětlení, proč se pravidlo nedalo zpracovat. Pečlivě si přečtěte, abyste zjistili, jak pravidlo opravit.
+
+## <a name="to-update-an-existing-rule"></a>Aktualizace existujícího pravidla
+
+1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který se nachází v roli globální správce, správce skupin, správce Intune nebo Správce uživatelů v tenantovi.
+1. Vyberte **skupiny** > **všechny skupiny**.
+1. Vyberte skupinu a otevřete její profil.
+1. Na stránce profil pro skupinu vyberte **dynamická pravidla členství**. Tvůrce pravidel podporuje až pět výrazů. Chcete-li přidat více než pět výrazů, je nutné použít textové pole.
+
+   ![Přidat pravidlo členství pro dynamickou skupinu](./media/groups-create-rule/update-dynamic-group-rule.png)
+
+1. Chcete-li zobrazit vlastnosti vlastního rozšíření, které jsou k dispozici pro pravidlo členství:
+   1. Vyberte **získat vlastnosti vlastního rozšíření** .
+   1. Zadejte ID aplikace a pak vyberte **aktualizovat vlastnosti**.
+1. Po aktualizaci pravidla vyberte **Uložit**.
 
 ## <a name="turn-on-or-off-welcome-email"></a>Zapnutí nebo vypnutí uvítacího e-mailu
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 4d338708b143c88f8f416185e351531e74963bba
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: b06342d5034b820be4e6fd49436546a5aa7b7e02
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112004"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749796"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Kurz: monitorování virtuálního počítače se systémem Linux v Azure
 
@@ -40,7 +40,7 @@ V tomto kurzu se naučíte:
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložit je do Cloud Shellu a potom je spusťte stisknutím klávesy Enter.
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -119,7 +119,7 @@ az vm boot-diagnostics get-boot-log --resource-group myResourceGroupMonitor --na
 Virtuální počítač s Linuxem má vyhrazeného hostitele v Azure, který s ním komunikuje. Metriky se pro hostitele shromažďují automaticky a lze je zobrazit na portálu Azure Portal následujícím způsobem:
 
 1. Na webu Azure Portal vyberte **Skupiny prostředků**, zvolte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
-1. Pokud chcete získat informace o výkonu virtuálního počítače hostitele, vyberte v okně virtuálního počítače **Metriky** a potom v části *Dostupné metriky* vyberte některou z metrik **[hostitele]** .
+1. Pokud chcete získat informace o výkonu virtuálního počítače hostitele, vyberte v okně virtuálního počítače **Metriky** a potom v části **Dostupné metriky** vyberte některou z metrik *[hostitele]* .
 
     ![Zobrazení metrik hostitele](./media/tutorial-monitoring/monitor-host-metrics.png)
 

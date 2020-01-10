@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: e00da689820778a8cc7c5ce95184d4d8c79c70f2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: bf83c87c71c8e05dc74d7754c82c76489de1bd85
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977705"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750895"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Monitorování diagnostických protokolů Media Services
 
@@ -26,7 +26,7 @@ ms.locfileid: "74977705"
 
 V tomto článku se dozvíte, jak směrovat data do účtu úložiště a pak je zobrazit. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Vytvoření účtu Media Services](create-account-cli-how-to.md).
 - Zkontrolujte [monitorování Media Services metriky a diagnostické protokoly](media-services-metrics-diagnostic-logs.md).
@@ -49,7 +49,7 @@ V tomto článku se dozvíte, jak směrovat data do účtu úložiště a pak je
 
    ![Část Nastavení diagnostiky](media/media-services-diagnostic-logs/logs02.png)
 1. Nastavte posuvník **Doba uchování (dny)** na hodnotu 30. Tento posuvník nastavuje počet dnů, po který se mají data monitorování uchovávat v účtu úložiště. Azure Monitor automaticky odstraní data starší než zadaný počet dnů. Pokud jako dobu uchování nastavíte 0 dnů, data se uloží navždy.
-1. Klikněte na **Uložit**.
+1. Klikněte na možnost **Uložit**.
 
 Data monitorování z vašeho prostředku se teď přenášejí do účtu úložiště.
 
@@ -73,7 +73,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     }]'
 ```
 
-Například:
+Příklad:
 
 ```cli
 az monitor diagnostic-settings create --name amsv3diagnostic \
@@ -181,8 +181,8 @@ Na zobrazení události v účtu úložiště možná budete muset počkat až p
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Azure Monitor metriky](../../azure-monitor/platform/data-platform.md)
-* [Protokoly diagnostiky Azure Monitor](../../azure-monitor/platform/resource-logs-overview.md)
-* [Jak shromažďovat a využívat data protokolu z vašich prostředků Azure](../../azure-monitor/platform/resource-logs-overview.md)
+* [Protokoly diagnostiky Azure Monitor](../../azure-monitor/platform/platform-logs-overview.md)
+* [Jak shromažďovat a využívat data protokolu z vašich prostředků Azure](../../azure-monitor/platform/platform-logs-overview.md)
 
 ## <a name="next-steps"></a>Další kroky
 

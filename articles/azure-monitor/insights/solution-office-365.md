@@ -6,25 +6,113 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/27/2019
-ms.openlocfilehash: 1c482166ffe27bde900a102c39def400728c102f
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 01/08/2019
+ms.openlocfilehash: c3251cb26f5ab6dc211c61bc0a6d02b283de6ae5
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529707"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770335"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
 ![Logo Office 365](media/solution-office-365/icon.png)
 
 
-> [!NOTE]
-> Doporučená metoda pro instalaci a konfiguraci řešení Office 365 povoluje [konektor sady office 365](../../sentinel/connect-office-365.md) ve [službě Azure Sentinel](../../sentinel/overview.md) namísto použití kroků v tomto článku. Toto je aktualizovaná verze řešení Office 365 s vylepšeným prostředím pro konfiguraci. Pokud chcete připojit protokoly služby Azure AD, můžete použít buď [konektor Azure Sentinel Azure AD](../../sentinel/connect-azure-active-directory.md) , nebo [nakonfigurovat nastavení diagnostiky Azure AD](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md), které poskytuje rozsáhlá data protokolů než protokoly správy sady Office 365. 
+> [!IMPORTANT]
+> ## <a name="solution-update"></a>Aktualizace řešení
+> Toto řešení bylo nahrazeno řešením obecné dostupnosti [Office 365](../../sentinel/connect-office-365.md) ve [službě Azure Sentinel](../../sentinel/overview.md) a v [řešení pro vytváření sestav a monitorování Azure AD](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md). Společně poskytují aktualizovanou verzi předchozího řešení Azure Monitor Office 365 s vylepšeným prostředím pro konfiguraci. Stávající řešení můžete dál používat do 30. března 2020.
+> 
+> Azure Sentinel je nativní cloudové informace o zabezpečení a řešení pro správu událostí, které ingestují protokoly a poskytuje další funkce SIEM, včetně detekce, šetření, loveckí a řízené přehledy na základě strojového učení. Použití služby Azure Sentinel vám teď poskytne příjem aktivit Office 365 SharePoint a protokolů správy Exchange.
+> 
+> Vytváření sestav Azure AD poskytuje komplexnější přehled o protokolech z aktivity Azure AD ve vašem prostředí, včetně událostí přihlášení, událostí auditu a změn v adresáři. Pokud chcete připojit protokoly služby Azure AD, můžete použít buď [konektor Azure Sentinel Azure AD](../../sentinel/connect-azure-active-directory.md) , nebo nakonfigurovat [integraci protokolů služby azure AD pomocí Azure monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md). 
 >
-> Při [připojování služby Azure Sentinel](../../sentinel/quickstart-onboard.md)zadejte Log Analytics pracovní prostor, ve kterém chcete řešení Office 365 nainstalovat. Jakmile konektor povolíte, bude řešení dostupné v pracovním prostoru a bude použito přesně stejně jako jakékoli jiné monitorovací řešení, které jste nainstalovali.
+> Shromažďování protokolu Azure AD se řídí cenami Azure Monitor.  Další informace najdete v tématu [Azure monitor ceny](https://azure.microsoft.com/pricing/details/monitor/) .
 >
-> Uživatelé cloudu pro státní správu Azure musí nainstalovat Office 365 podle kroků v tomto článku, protože Azure Sentinel ještě není v cloudu pro státní správu k dispozici.
+> Použití řešení Azure Sentinel Office 365:
+> 1. Použití tohoto konektoru ovlivňuje ceny vašeho pracovního prostoru. Další informace najdete v tématu [ceny služby Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/).
+> 2. Pokud už používáte řešení Azure Monitor Office 365, musíte ho nejdřív odinstalovat pomocí skriptu v [níže uvedené části věnované odinstalaci](#uninstall).
+> 3. Povolte v pracovním prostoru [řešení Sentinel Azure](../../sentinel/quickstart-onboard.md) .
+> 4. Přejít na stránku **datových konektorů** v Azure Sentinel a povolit konektor **Office 365** .
+>
+> ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
+> 
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-march-30th"></a>Otázka: je možné začlenit řešení Office 365 Azure Monitor mezi dnes a dnem 30.
+> Ne, skripty pro připojování řešení Azure Monitor Office 365 už nejsou k dispozici. Řešení bude odstraněno 30. března.
+> 
+> ### <a name="q-will-the-tables-and-schemas-be-changed"></a>Otázka: budou se tabulky a schémata měnit?
+> Název a schéma **OfficeActivity** tabulky zůstane stejné jako v aktuálním řešení. V novém řešení můžete pokračovat v používání stejných dotazů, kromě dotazů, které odkazují na data Azure AD.
+> 
+> Nové protokoly [řešení pro vytváření sestav a monitorování služby Azure AD](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) budou ingestovat do tabulek [SigninLogs](../../active-directory/reports-monitoring/concept-sign-ins.md) a [AuditLogs](../../active-directory/reports-monitoring/concept-audit-logs.md) namísto **OfficeActivity**. Další informace najdete v tématu [Analýza protokolů služby Azure AD](../../active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics.md), které jsou relevantní taky pro uživatele Sentinel a Azure monitor uživatelů Azure.
+> 
+> Následují ukázky pro převod dotazů z **OfficeActivity** na **SigninLogs**:
+> 
+> **Dotaz na neúspěšné přihlášení podle uživatele:**
+> 
+> ```Kusto
+> OfficeActivity
+> | where TimeGenerated >= ago(1d) 
+> | where OfficeWorkload == "AzureActiveDirectory"                      
+> | where Operation == 'UserLoginFailed'
+> | summarize count() by UserId 
+> ```
+> 
+> ```Kusto
+> SigninLogs
+> | where ConditionalAccessStatus == "failure" or ConditionalAccessStatus == "notApplied"
+> | summarize count() by UserDisplayName
+> ```
+> 
+> **Zobrazit operace Azure AD:**
+> 
+> ```Kusto
+> OfficeActivity
+> | where OfficeWorkload =~ "AzureActiveDirectory"
+> | sort by TimeGenerated desc
+> | summarize AggregatedValue = count() by Operation
+> ```
+> 
+> ```Kusto
+> AuditLogs
+> | summarize count() by OperationName
+> ```
+> 
+> ### <a name="q-how-can-i-on-board-azure-sentinel"></a>Otázka: Jak můžu zapnout službu Azure Sentinel na kartě?
+> Azure Sentinel je řešení, které můžete povolit pro nový nebo existující Log Analytics pracovní prostor. Další informace najdete [v dokumentaci ke službě Azure Sentinel on-Desking](../../sentinel/quickstart-onboard.md).
+>
+> ### <a name="q-do-i-need-azure-sentinel-to-connect-the-azure-ad-logs"></a>Otázka: Potřebuji, abyste připojili protokoly Azure AD ke službě Azure Sentinel?
+> [Integraci protokolů služby Azure AD můžete nakonfigurovat pomocí Azure monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md), která nesouvisí s řešením Sentinel Azure. Služba Azure Sentinel poskytuje nativní konektor a předem připravený obsah pro protokoly služby Azure AD. Další informace najdete v následující otázce na předem připraveném obsahu orientovaném na zabezpečení.
+>
+> ###   <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-azure-sentinel-and-azure-monitor"></a>Otázka: Jaké jsou rozdíly při připojování protokolů služby Azure AD z Azure Sentinel a Azure Monitor?
+> Azure Sentinel a Azure Monitor se připojují k protokolům Azure AD na základě stejného [řešení pro vytváření sestav a monitorování Azure AD](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md). Azure Sentinel poskytuje nativní konektor, který spojuje stejná data a poskytuje informace o monitorování.
+>
+> ###   <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>Otázka: co musím změnit při přesunu do nových tabulek pro vytváření sestav a monitorování Azure AD?
+> Všechny dotazy, které používají data Azure AD, včetně dotazů v upozorněních, řídicích panelech a libovolného obsahu, který jste vytvořili pomocí Azure AD data v Office 365, se musí znovu vytvořit pomocí nových tabulek.
+>
+> Služba Azure Sentinel a Azure AD poskytují integrovaný obsah, který můžete použít při přechodu do řešení Azure AD Reporting a monitoring. Další informace najdete v další otázce na předem připraveném obsahu orientovaném na zabezpečení a [o tom, jak používat Azure monitor sešity pro Azure Active Directory sestavy](../../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md). 
+>
+> ### <a name="q-how-i-can-use-the-azure-sentinel-out-of-the-box-security-oriented-content"></a>Otázka: Jak můžu použít okamžitý obsah orientovaný na zabezpečení Azure Sentinel?
+> Služba Azure Sentinel poskytuje předem připravené řídicí panely zaměřené na zabezpečení, vlastní dotazy na výstrahy, lovecké dotazy, šetření a možnosti automatizované reakce založené na protokolech Office 365 a Azure AD. Další informace najdete v kurzech k Azure Sentinel a kurzům:
+>
+> - [Vyhledá hrozby předem.](../../sentinel/tutorial-detect-threats-built-in.md)
+> - [Vytváření vlastních pravidel pro analytiky k detekci podezřelých hrozeb](../../sentinel/tutorial-detect-threats-custom.md)
+> - [Monitorování dat](../../sentinel/tutorial-monitor-your-data.md)
+> - [Prozkoumat incidenty pomocí služby Azure Sentinel](../../sentinel/tutorial-investigate-cases.md)
+> - [Nastavení automatických odpovědí na hrozby v Azure Sentinel](../../sentinel/tutorial-respond-threats-playbook.md)
+> - [Komunita GitHubu Azure Sentinel](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)
+> 
+> ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>Otázka: umožňuje službě Azure Sentinel v rámci řešení přidat další konektory?
+> Ano, další informace najdete v tématu [zdroje dat služby Azure Sentinel Connect](../../sentinel/connect-data-sources.md).
+> 
+> ###   <a name="q-what-will-happen-on-march-30-do-i-need-to-offboard-beforehand"></a>Otázka: co se stane 30. března? Musím odpojení předem?
+> 
+> - Nebudete moci přijímat data z řešení **Office 365** a budou odebrána ze všech pracovních prostorů, kde jsou nainstalovány. Řešení už nebude dostupné na webu Marketplace.
+> - Pro zákazníky s Sentinelem v Azure se v řešení **Office 365** pro **SecurityInsights** pro Azure sentinel bude zahrnout řešení Log Analytics pracovního prostoru.
+> - Pokud vaše řešení neodpojení ručně, data se automaticky odpojí do 30. března.
+> 
+> ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>Otázka: budou moje data přenesena do nového řešení?
+> Ano. Když odeberete řešení **Office 365** z pracovního prostoru, jeho data budou dočasně nedostupná, protože schéma se odebere. Pokud povolíte nový konektor **sady Office 365** v nástroji Sentinel, obnoví se schéma do pracovního prostoru a veškerá shromážděná data budou k dispozici. 
+ 
 
 Řešení pro správu sady Office 365 umožňuje monitorovat prostředí sady Office 365 v Azure Monitor.
 
@@ -34,375 +122,6 @@ ms.locfileid: "75529707"
 - Předvedení auditu a dodržování předpisů. Například můžete monitorovat operace přístupu k souborům u důvěrných souborů, které vám pomůžou s procesem auditu a dodržování předpisů.
 - Řešení potíží s operačním systémem pomocí [dotazů protokolu](../log-query/log-query-overview.md) na data o aktivitách vaší organizace v Office 365.
 
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-## <a name="prerequisites"></a>Požadavky
-
-Před instalací a konfigurací tohoto řešení se vyžaduje následující:
-
-- Předplatné organizace Office 365.
-- Pověření pro uživatelský účet, který je globálním správcem.
-- Pokud chcete přijímat data auditu, musíte [nakonfigurovat auditování](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin) v předplatném sady Office 365.  [Auditování poštovní schránky](https://technet.microsoft.com/library/dn879651.aspx) je nakonfigurované samostatně.  Přesto můžete řešení nainstalovat a shromažďovat další data, pokud není nakonfigurováno auditování.
- 
-
-## <a name="management-packs"></a>Sady Management Pack
-
-Toto řešení neinstaluje žádné sady Management Pack v [připojených skupinách pro správu](../platform/om-agents.md).
-  
-
-## <a name="install-and-configure"></a>Instalace a konfigurace
-
-Začněte přidáním [řešení Office 365 do svého předplatného](solutions.md#install-a-monitoring-solution). Po přidání musíte provést kroky konfigurace v této části, abyste měli přístup k vašemu předplatnému Office 365.
-
-### <a name="required-information"></a>Požadované informace
-
-Než začnete s tímto postupem, shromážděte následující informace.
-
-Z Log Analytics pracovního prostoru:
-
-- Název pracovního prostoru: pracovní prostor, ve kterém se shromažďují data Office 365.
-- Název skupiny prostředků: Skupina prostředků, která obsahuje pracovní prostor.
-- ID předplatného Azure: předplatné, které obsahuje pracovní prostor.
-
-Z vašeho předplatného Office 365:
-
-- Username: e-mailová adresa účtu správce.
-- ID tenanta: jedinečné ID pro předplatné Office 365.
-
-Při vytváření a konfiguraci aplikace Office 365 v Azure Active Directory by se měly shromažďovat následující informace:
-
-- ID aplikace (klienta): 16 znaků řetězec, který představuje klienta Office 365.
-- Tajný kód klienta: pro ověřování je nutný šifrovaný řetězec.
-
-### <a name="create-an-office-365-application-in-azure-active-directory"></a>Vytvoření aplikace Office 365 v Azure Active Directory
-
-Prvním krokem je vytvoření aplikace v Azure Active Directory, že řešení pro správu bude používat pro přístup k řešení Office 365.
-
-1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com/).
-1. Vyberte **Azure Active Directory** a potom **Registrace aplikací**.
-1. Klikněte na **Nová registrace**.
-
-    ![Přidat registraci aplikace](media/solution-office-365/add-app-registration.png)
-1. Zadejte **název**aplikace. Pro **podporované typy účtů**vyberte **účty v jakémkoli organizačním adresáři (ve víceklientském adresáři Azure AD)** .
-    
-    ![Vytvořit aplikaci](media/solution-office-365/create-application.png)
-1. Klikněte na **Registrovat** a ověřte informace o aplikaci.
-
-    ![Registrovaná aplikace](media/solution-office-365/registered-app.png)
-
-1. Uložte si ID aplikace (klienta) spolu se zbytkem shromážděných informací.
-
-
-### <a name="configure-application-for-office-365"></a>Konfigurace aplikace pro Office 365
-
-1. Vyberte **ověřování** a ověřte, že se v části **podporované typy účtů**vybraly **účty v libovolné organizační složce (ve víceklientském adresáři Azure AD)** .
-
-    ![Nastavení víceklientské architektury](media/solution-office-365/settings-multitenant.png)
-
-1. Vyberte **oprávnění rozhraní API** a pak **přidejte oprávnění**.
-1. Klikněte na **rozhraní API pro správu sady Office 365**. 
-
-    ![Vybrat rozhraní API](media/solution-office-365/select-api.png)
-
-1. V části **jaký typ oprávnění vaše aplikace vyžaduje?** vyberte následující možnosti pro **oprávnění aplikace** i **delegovaná oprávnění**:
-   - Přečíst informace o stavu služby pro vaši organizaci
-   - Čtení dat o aktivitách ve vaší organizaci
-   - Čtení sestav aktivit pro vaši organizaci
-
-     ![Vybrat rozhraní API](media/solution-office-365/select-permissions-01.png)![Vybrat rozhraní API](media/solution-office-365/select-permissions-02.png)
-
-1. Klikněte na tlačítko **Přidat oprávnění**.
-1. Klikněte na **udělit souhlas správce** a po zobrazení výzvy k ověření klikněte na **Ano** .
-
-
-### <a name="add-a-secret-for-the-application"></a>Přidání tajného klíče pro aplikaci
-
-1. Vyberte **certifikáty & tajných** kódů a pak **nový tajný klíč klienta**.
-
-    ![Klíče](media/solution-office-365/secret.png)
- 
-1. Zadejte **Popis** a **dobu trvání** nového klíče.
-1. Klikněte na tlačítko **Přidat** a poté uložte **hodnotu** , která byla vygenerována jako tajný klíč klienta, spolu se zbytkem shromážděných informací.
-
-    ![Klíče](media/solution-office-365/keys.png)
-
-### <a name="add-admin-consent"></a>Přidat souhlas správce
-
-Chcete-li povolit účet správce poprvé, je nutné pro aplikaci zadat souhlas správce. Můžete to provést pomocí skriptu PowerShellu. 
-
-1. Uložte následující skript jako *office365_consent. ps1*.
-
-    ```powershell
-    param (
-        [Parameter(Mandatory=$True)][string]$WorkspaceName,     
-        [Parameter(Mandatory=$True)][string]$ResourceGroupName,
-        [Parameter(Mandatory=$True)][string]$SubscriptionId
-    )
-    
-    $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-    
-    IF ($Subscription -eq $null)
-        {Login-AzAccount -ErrorAction Stop}
-    $Subscription = (Select-AzSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
-    $Subscription
-    $Workspace = (Set-AzOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
-    $WorkspaceLocation= $Workspace.Location
-    $WorkspaceLocation
-    
-    Function AdminConsent{
-    
-    $domain='login.microsoftonline.com'
-    switch ($WorkspaceLocation.Replace(" ","").ToLower()) {
-           "eastus"   {$OfficeAppClientId="d7eb65b0-8167-4b5d-b371-719a2e5e30cc"; break}
-           "westeurope"   {$OfficeAppClientId="c9005da2-023d-40f1-a17a-2b7d91af4ede"; break}
-           "southeastasia"   {$OfficeAppClientId="09c5b521-648d-4e29-81ff-7f3a71b27270"; break}
-           "australiasoutheast"  {$OfficeAppClientId="f553e464-612b-480f-adb9-14fd8b6cbff8"; break}   
-           "westcentralus"  {$OfficeAppClientId="98a2a546-84b4-49c0-88b8-11b011dc8c4e"; break}
-           "japaneast"   {$OfficeAppClientId="b07d97d3-731b-4247-93d1-755b5dae91cb"; break}
-           "uksouth"   {$OfficeAppClientId="f232cf9b-e7a9-4ebb-a143-be00850cd22a"; break}
-           "centralindia"   {$OfficeAppClientId="ffbd6cf4-cba8-4bea-8b08-4fb5ee2a60bd"; break}
-           "canadacentral"  {$OfficeAppClientId="c2d686db-f759-43c9-ade5-9d7aeec19455"; break}
-           "eastus2"  {$OfficeAppClientId="7eb65b0-8167-4b5d-b371-719a2e5e30cc"; break}
-           "westus2"  {$OfficeAppClientId="98a2a546-84b4-49c0-88b8-11b011dc8c4e"; break} #Need to check
-           "usgovvirginia" {$OfficeAppClientId="c8b41a87-f8c5-4d10-98a4-f8c11c3933fe"; 
-                             $domain='login.microsoftonline.us'; break}
-           default {$OfficeAppClientId="55b65fb5-b825-43b5-8972-c8b6875867c1";
-                    $domain='login.windows-ppe.net'; break} #Int
-        }
-    
-        $domain
-        Start-Process -FilePath  "https://$($domain)/common/adminconsent?client_id=$($OfficeAppClientId)&state=12345"
-    }
-    
-    AdminConsent -ErrorAction Stop
-    ```
-
-2. Spusťte skript pomocí následujícího příkazu. Pro přihlašovací údaje se zobrazí dvakrát výzva. Nejdřív zadejte přihlašovací údaje pro svůj pracovní prostor Log Analytics a pak přihlašovací údaje globálního správce pro vašeho tenanta Office 365.
-
-    ```
-    .\office365_consent.ps1 -WorkspaceName <Workspace name> -ResourceGroupName <Resource group name> -SubscriptionId <Subscription ID>
-    ```
-
-    Příklad:
-
-    ```
-    .\office365_consent.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631- yyyyyyyyyyyy'
-    ```
-
-1. Zobrazí se okno podobné tomu jako na následujícím obrázku. Klikněte na tlačítko **přijmout**.
-    
-    ![Souhlas správce](media/solution-office-365/admin-consent.png)
-
-> [!NOTE]
-> Je možné, že budete přesměrováni na stránku, která neexistuje. Vezměte ho jako úspěšný.
-
-### <a name="subscribe-to-log-analytics-workspace"></a>Přihlášení k odběru Log Analytics pracovního prostoru
-
-Posledním krokem je přihlášení k odběru aplikace do vašeho pracovního prostoru Log Analytics. Provedete to také pomocí skriptu PowerShellu.
-
-1. Uložte následující skript jako *office365_subscription. ps1*.
-
-    ```powershell
-    param (
-        [Parameter(Mandatory=$True)][string]$WorkspaceName,
-        [Parameter(Mandatory=$True)][string]$ResourceGroupName,
-        [Parameter(Mandatory=$True)][string]$SubscriptionId,
-        [Parameter(Mandatory=$True)][string]$OfficeUsername,
-        [Parameter(Mandatory=$True)][string]$OfficeTennantId,
-        [Parameter(Mandatory=$True)][string]$OfficeClientId,
-        [Parameter(Mandatory=$True)][string]$OfficeClientSecret
-    )
-    $line='#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------'
-    $line
-    IF ($Subscription -eq $null)
-        {Login-AzAccount -ErrorAction Stop}
-    $Subscription = (Select-AzSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
-    $Subscription
-    $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-    $Workspace = (Set-AzOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
-    $Workspace
-    $WorkspaceLocation= $Workspace.Location
-    $OfficeClientSecret =[uri]::EscapeDataString($OfficeClientSecret)
-    
-    # Client ID for Azure PowerShell
-    $clientId = "1950a258-227b-4e31-a9cf-717495945fc2"
-    # Set redirect URI for Azure PowerShell
-    $redirectUri = "urn:ietf:wg:oauth:2.0:oob"
-    $domain='login.microsoftonline.com'
-    $adTenant = $Subscription[0].Tenant.Id
-    $authority = "https://login.windows.net/$adTenant";
-    $ARMResource ="https://management.azure.com/";
-    $xms_client_tenant_Id ='55b65fb5-b825-43b5-8972-c8b6875867c1'
-    
-    switch ($WorkspaceLocation) {
-           "USGov Virginia" { 
-                             $domain='login.microsoftonline.us';
-                              $authority = "https://login.microsoftonline.us/$adTenant";
-                              $ARMResource ="https://management.usgovcloudapi.net/"; break} # US Gov Virginia
-           default {
-                    $domain='login.microsoftonline.com'; 
-                    $authority = "https://login.windows.net/$adTenant";
-                    $ARMResource ="https://management.azure.com/";break} 
-                    }
-
-    Function RESTAPI-Auth { 
-    $global:SubscriptionID = $Subscription.Subscription.Id
-    # Set Resource URI to Azure Service Management API
-    $resourceAppIdURIARM=$ARMResource
-    # Authenticate and Acquire Token 
-    # Create Authentication Context tied to Azure AD Tenant
-    $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
-    # Acquire token
-    $platformParameters = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.PlatformParameters" -ArgumentList "Auto"
-    $global:authResultARM = $authContext.AcquireTokenAsync($resourceAppIdURIARM, $clientId, $redirectUri, $platformParameters)
-    $global:authResultARM.Wait()
-    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
-
-    $authHeader
-    }
-    
-    Function Failure {
-    $line
-    $formatstring = "{0} : {1}`n{2}`n" +
-                    "    + CategoryInfo          : {3}`n" +
-                    "    + FullyQualifiedErrorId : {4}`n"
-    $fields = $_.InvocationInfo.MyCommand.Name,
-              $_.ErrorDetails.Message,
-              $_.InvocationInfo.PositionMessage,
-              $_.CategoryInfo.ToString(),
-              $_.FullyQualifiedErrorId
-    
-    $formatstring -f $fields
-    $_.Exception.Response
-    
-    $line
-    break
-    }
-    
-    Function Connection-API
-    {
-    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
-    $ResourceName = "https://manage.office.com"
-    $SubscriptionId   =  $Subscription[0].Subscription.Id
-    
-    $line
-    $connectionAPIUrl = $ARMResource + 'subscriptions/' + $SubscriptionId + '/resourceGroups/' + $ResourceGroupName + '/providers/Microsoft.OperationalInsights/workspaces/' + $WorkspaceName + '/connections/office365connection_' + $SubscriptionId + $OfficeTennantId + '?api-version=2017-04-26-preview'
-    $connectionAPIUrl
-    $line
-    
-    $xms_client_tenant_Id ='1da8f770-27f4-4351-8cb3-43ee54f14759'
-    
-    $BodyString = "{
-                    'properties': {
-                                    'AuthProvider':'Office365',
-                                    'clientId': '" + $OfficeClientId + "',
-                                    'clientSecret': '" + $OfficeClientSecret + "',
-                                    'Username': '" + $OfficeUsername   + "',
-                                    'Url': 'https://$($domain)/" + $OfficeTennantId + "/oauth2/token',
-                                  },
-                    'etag': '*',
-                    'kind': 'Connection',
-                    'solution': 'Connection',
-                   }"
-    
-    $params = @{
-        ContentType = 'application/json'
-        Headers = @{
-        'Authorization'="$($authHeader)"
-        'x-ms-client-tenant-id'=$xms_client_tenant_Id #Prod-'1da8f770-27f4-4351-8cb3-43ee54f14759'
-        'Content-Type' = 'application/json'
-        }
-        Body = $BodyString
-        Method = 'Put'
-        URI = $connectionAPIUrl
-    }
-    $response = Invoke-WebRequest @params 
-    $response
-    $line
-    
-    }
-    
-    Function Office-Subscribe-Call{
-    try{
-    #----------------------------------------------------------------------------------------------------------------------------------------------
-    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
-    $SubscriptionId   =  $Subscription[0].Subscription.Id
-    $OfficeAPIUrl = $ARMResource + 'subscriptions/' + $SubscriptionId + '/resourceGroups/' + $ResourceGroupName + '/providers/Microsoft.OperationalInsights/workspaces/' + $WorkspaceName + '/datasources/office365datasources_' + $SubscriptionId + $OfficeTennantId + '?api-version=2015-11-01-preview'
-    
-    $OfficeBodyString = "{
-                    'properties': {
-                                    'AuthProvider':'Office365',
-                                    'office365TenantID': '" + $OfficeTennantId + "',
-                                    'connectionID': 'office365connection_" + $SubscriptionId + $OfficeTennantId + "',
-                                    'office365AdminUsername': '" + $OfficeUsername + "',
-                                    'contentTypes':'Audit.Exchange,Audit.AzureActiveDirectory,Audit.SharePoint'
-                                  },
-                    'etag': '*',
-                    'kind': 'Office365',
-                    'solution': 'Office365',
-                   }"
-    
-    $Officeparams = @{
-        ContentType = 'application/json'
-        Headers = @{
-        'Authorization'="$($authHeader)"
-        'x-ms-client-tenant-id'=$xms_client_tenant_Id
-        'Content-Type' = 'application/json'
-        }
-        Body = $OfficeBodyString
-        Method = 'Put'
-        URI = $OfficeAPIUrl
-      }
-    
-    $officeresponse = Invoke-WebRequest @Officeparams 
-    $officeresponse
-    }
-    catch{ Failure }
-    }
-    
-    #GetDetails 
-    RESTAPI-Auth -ErrorAction Stop
-    Connection-API -ErrorAction Stop
-    Office-Subscribe-Call -ErrorAction Stop
-    ```
-
-2. Spusťte skript s následujícím příkazem:
-
-    ```
-    .\office365_subscription.ps1 -WorkspaceName <Log Analytics workspace name> -ResourceGroupName <Resource Group name> -SubscriptionId <Subscription ID> -OfficeUsername <OfficeUsername> -OfficeTennantID <Tenant ID> -OfficeClientId <Client ID> -OfficeClientSecret <Client secret>
-    ```
-
-    Příklad:
-
-    ```powershell
-    .\office365_subscription.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeUsername 'admin@contoso.com' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx' -OfficeClientId 'f8f14c50-5438-4c51-8956-zzzzzzzzzzzz' -OfficeClientSecret 'y5Lrwthu6n5QgLOWlqhvKqtVUZXX0exrA2KRHmtHgQb='
-    ```
-
-### <a name="troubleshooting"></a>Řešení potíží
-
-Pokud je vaše aplikace už přihlášená k tomuto pracovnímu prostoru nebo pokud je tento tenant přihlášený k odběru jiného pracovního prostoru, může se zobrazit následující chyba.
-
-```Output
-Invoke-WebRequest : {"Message":"An error has occurred."}
-At C:\Users\v-tanmah\Desktop\ps scripts\office365_subscription.ps1:161 char:19
-+ $officeresponse = Invoke-WebRequest @Officeparams
-+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest], WebException
-    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand 
-```
-
-Pokud jsou zadány neplatné hodnoty parametrů, může se zobrazit následující chyba.
-
-```Output
-Select-AzSubscription : Please provide a valid tenant or a valid subscription.
-At line:12 char:18
-+ ... cription = (Select-AzSubscription -SubscriptionId $($Subscriptio ...
-+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : CloseError: (:) [Set-AzContext], ArgumentException
-    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.SetAzContextCommand
-
-```
 
 ## <a name="uninstall"></a>Odinstalace
 
@@ -511,12 +230,6 @@ Zobrazí se výzva k zadání přihlašovacích údajů. Zadejte přihlašovací
 
 ## <a name="data-collection"></a>Shromažďování dat
 
-### <a name="supported-agents"></a>Podporovaní agenti
-
-Řešení Office 365 nenačítá data z žádných [agentů Log Analytics](../platform/agent-data-sources.md).  Načte data přímo z Office 365.
-
-### <a name="collection-frequency"></a>Četnost shromažďování dat
-
 Shromažďování dat na začátku může trvat několik hodin. Po zahájení shromažďování se sada Office 365 pošle [oznámení Webhooku](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) s podrobnými daty, která se Azure monitor pokaždé, když se vytvoří záznam. Tento záznam je k dispozici v Azure Monitor během několika minut po přijetí.
 
 ## <a name="using-the-solution"></a>Použití řešení
@@ -573,7 +286,7 @@ Následující vlastnosti jsou společné pro všechny záznamy Azure Active Dir
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
 | AzureActiveDirectory_EventType | Typ události služby Azure AD. |
-| extendedProperties | Rozšířené vlastnosti události Azure AD. |
+| ExtendedProperties | Rozšířené vlastnosti události Azure AD. |
 
 
 ### <a name="azure-active-directory-account-logon"></a>Přihlášení Azure Active Directory účtu
@@ -747,16 +460,15 @@ Tyto záznamy jsou vytvořeny v reakci na operace se soubory ve službě SharePo
 
 
 
-## <a name="sample-log-searches"></a>Ukázky hledání v protokolech
+## <a name="sample-log-queries"></a>Ukázky dotazů protokolu
 
-V následující tabulce jsou uvedeny ukázky hledání v protokolech pro záznamy aktualizace shromážděné tímto řešením.
+Následující tabulka uvádí Ukázky dotazů protokolu pro záznamy aktualizací shromážděné tímto řešením.
 
 | Dotaz | Popis |
 | --- | --- |
 |Počet všech operací v předplatném sady Office 365 |OfficeActivity &#124; summarize count() by Operation |
 |Použití webů SharePointu|OfficeActivity &#124; WHERE OfficeWorkload = ~ "SharePoint" &#124; sumarizace Count () podle SiteUrl \| řazení podle počtu ASC|
-|Operace přístupu k souboru podle typu uživatele|Hledat v (OfficeActivity) OfficeWorkload = ~ "azureactivedirectory selhala" a "MyTest"|
-|Hledat pomocí konkrétního klíčového slova|Type = OfficeActivity OfficeWorkload = azureactivedirectory selhala "MyTest"|
+|Operace přístupu k souboru podle typu uživatele | OfficeActivity &#124; sumarizace Count () podle usertype |
 |Monitorování externích akcí na Exchangi|OfficeActivity &#124; WHERE OfficeWorkload = ~ "Exchange" and ExternalAccess = = true|
 
 

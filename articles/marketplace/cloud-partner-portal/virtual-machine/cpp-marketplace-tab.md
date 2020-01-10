@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: 9bc3c375c5111c144b6b137ca547875225aba58f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 283274986c753fc8ad05b9b7b0dd87aea956bcce
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824462"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75762888"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>Karta tržiště virtuálního počítače
 
@@ -37,7 +37,7 @@ Následující tabulka popisuje účel a obsah těchto polí. Požadovaná pole 
 | **\* identifikátoru marketingu**  | Jedinečná adresa URL, která se má přidružit k této nabídce, obvykle zahrnuje vaši organizaci a název řešení, maximální délka 50 znaků.  Příklad: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
 | **Náhled ID předplatných\*** | Přidejte jednu až 100 identifikátorů předplatného pro náhledy. Po publikování těchto bílých předplatných budou mít přístup k této nabídce k dispozici, než budou živá. |
 | **Užitečné odkazy**          | Přidejte adresy URL do dokumentů, poznámky k verzi, nejčastější dotazy a tak dále. |
-| **Navrhované kategorie (max. 5)\*** | Vícenásobné výběry obchodních a technických kategorií, které nabízejí možnost být nejlépe přidruženy k.  Maximálně pět povolených.  |
+| **Navrhované kategorie\*** | Výběr až dvou (2) kategorií, včetně primární a sekundární kategorie (volitelné). Vyberte až dvě (2) podkategorie pro každou primární nebo sekundární kategorii. Pokud není vybraná žádná podkategorie, nabídne se vám nabídka jenom pro vybranou kategorii. |
 |  |  |
 
 

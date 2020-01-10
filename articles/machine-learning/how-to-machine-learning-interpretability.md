@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 35623be4f0e4495388dc58b1e4d4f6c4663a93fd
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 7101cef6acd7c7b321fbd31c614063a1fa8fe17a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75537263"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771866"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>Interpretace modelu v Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -114,4 +114,4 @@ Balíček `explain` je navržený tak, aby fungoval s místními i vzdálenými 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si téma [postup](service/how-to-machine-learning-interpretability-aml.md) pro povolení interpretace u modelů v místním prostředí i na Azure Machine Learning vzdálených výpočetních prostředků. Další scénáře najdete v [ukázkových poznámkových blocích](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) .
+Přečtěte si téma [postup](how-to-machine-learning-interpretability-aml.md) pro povolení interpretace u modelů v místním prostředí i na Azure Machine Learning vzdálených výpočetních prostředků. Další scénáře najdete v [ukázkových poznámkových blocích](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) .

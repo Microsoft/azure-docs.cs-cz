@@ -5,12 +5,12 @@ ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: e321fcdf4b5871cf4a55e7018229569a337e8305
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 922babb4b9b80c91ea99062170cf224346df192a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230930"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769417"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Vytvoření funkce aktivované službou Azure Cosmos DB
 
@@ -57,14 +57,14 @@ Dál vytvoříte v nové aplikaci Function App funkci.
 
     ![Instalace rozšíření vazby](./media/functions-create-cosmos-db-triggered-function/functions-create-cosmos-db-trigger-portal.png)
 
-1. Nakonfigurujte nový trigger s nastaveními uvedenými v tabulce pod obrázkem.
+1. Nakonfigurujte novou aktivační událost s nastaveními uvedenými v tabulce pod obrázkem.
 
     ![Vytvoření funkce aktivované službou Azure Cosmos DB](./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png)
 
     | Nastavení      | Navrhovaná hodnota  | Popis                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **Název** | Výchozí | Použijte výchozí název funkce navrhovaný šablonou.|
-    | **Připojení účtu Azure Cosmos DB** | Nové nastavení | Vyberte **Nové**, vyberte **Předplatné** a **Databázový účet**, které jste předtím vytvořili, a zvolte **Vybrat**. Vytvoří se nastavení aplikace pro připojení k vašemu účtu. Toto nastavení vazba použije k připojení k databázi. |
+    | **Připojení účtu Azure Cosmos DB** | Nové nastavení | Vyberte **Nové**, vyberte **Předplatné** a **Databázový účet**, které jste předtím vytvořili, a zvolte **Vybrat**. Vytvoří se nastavení aplikace pro připojení k vašemu účtu. Toto nastavení používá vazba pro připojení k databázi. |
     | **Název kolekce** | Items | Název kolekce, která se má monitorovat. |
     | **Vytvořit kolekci zapůjčení, pokud neexistuje** | Zaškrtnuté | Kolekce ještě neexistuje, takže ji vytvořte. |
     | **Název databáze** | Úlohy | Název databáze s kolekcí, která se má monitorovat. |
@@ -75,7 +75,7 @@ Dál vytvoříte v nové aplikaci Function App funkci.
 
     Tato šablona funkce zapíše do protokolů počet dokumentů a ID prvního dokumentu.
 
-Potom se připojíte ke svému účtu služby Azure Cosmos DB a vytvoříte v databázi `Items` kolekci `Tasks`.
+Potom se připojíte ke svému účtu služby Azure Cosmos DB a vytvoříte v databázi `Tasks` kolekci `Items`.
 
 ## <a name="create-the-items-collection"></a>Vytvoření kolekce Items (Položky)
 

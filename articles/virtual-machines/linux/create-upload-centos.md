@@ -3,23 +3,20 @@ title: Vytvoření a nahrání virtuálního pevného disku se systémem Linux C
 description: Naučte se vytvořit a nahrát virtuální pevný disk Azure (VHD), který obsahuje operační systém Linux založený na CentOS.
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
-editor: tysonn
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 0e518e92-e981-43f4-b12c-9cba1064c4bb
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/25/2019
-ms.author: szark
-ms.openlocfilehash: 1ac2b24649363538d2728f302941b5a4bf5dd357
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.author: mimckitt
+ms.openlocfilehash: a5a6dd7e451d3204c8ab2bd2eae95db93c2f0837
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534158"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750228"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Příprava virtuálního počítače založeného na CentOS pro Azure
 
@@ -29,7 +26,7 @@ Naučte se vytvořit a nahrát virtuální pevný disk Azure (VHD), který obsah
 * [Příprava virtuálního počítače s CentOS 7.0 pro Azure](#centos-70)
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že jste už nainstalovali CentOS (nebo podobný odvozený) operační systém Linux na virtuální pevný disk. Pro vytváření souborů. VHD, například virtualizačního řešení, jako je například Hyper-V, existuje více nástrojů. Pokyny najdete v tématu [instalace role Hyper-V a konfigurace virtuálního počítače](https://technet.microsoft.com/library/hh846766.aspx).
 
@@ -43,7 +40,7 @@ V tomto článku se předpokládá, že jste už nainstalovali CentOS (nebo podo
 * Nekonfigurujte odkládací oddíl na disku s operačním systémem. Agent pro Linux se dá nakonfigurovat tak, aby na dočasném disku prostředků vytvořil odkládací soubor.  Další informace o tomto postupu najdete v následujících krocích.
 * Všechny virtuální pevné disky v Azure musí mít virtuální velikost zarovnaná na 1 MB. Při převodu z nezpracovaného disku na virtuální pevný disk je nutné před převodem zajistit, aby velikost nezpracovaného disku byla násobkem 1 MB. Další informace najdete v [poznámkách k instalaci systému Linux](create-upload-generic.md#general-linux-installation-notes) .
 
-## <a name="centos-6x"></a>CentOS 6. x
+## <a name="centos-6x"></a>CentOS 6.x
 
 1. Ve Správci technologie Hyper-V vyberte virtuální počítač.
 

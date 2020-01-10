@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: hamusa
-ms.openlocfilehash: 828f3078c992bed4fa556a374468e69dd58ebc04
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 75b2120b9fef904114d532e83d571c08e1a1034d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75494503"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772308"
 ---
 # <a name="dependency-visualization"></a>Vizualizace závislostí
 
@@ -93,6 +93,6 @@ Další informace o cenách služby Azure Migrate najdete [zde](https://azure.mi
 
 ## <a name="next-steps"></a>Další kroky
 - [Seskupení počítačů pomocí závislostí počítačů](how-to-create-group-machine-dependencies.md)
-- [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/resources-faq#what-is-dependency-visualization) o nejčastějších dotazech k vizualizaci závislostí.
+- [Přečtěte si další informace](common-questions-discovery-assessment.md#what-is-dependency-visualization) o nejčastějších dotazech k vizualizaci závislostí.
 
 

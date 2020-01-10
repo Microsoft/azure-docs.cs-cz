@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2fe15b09e32fee538958626d1f2dd7dac8fe9e51
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ba7976d602412037578d0a324916718b2d515aac
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75539135"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771781"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Proveďte výuku a zaregistrujte model klasifikace Keras pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -84,7 +84,7 @@ exp = Experiment(workspace=ws, name='keras-mnist')
 <a name="data-upload"></a>
 ### <a name="create-a-file-dataset"></a>Vytvoření datové sady souborů
 
-Objekt `FileDataset` odkazuje na jeden nebo více souborů v úložišti dat pracovního prostoru nebo veřejné adresy URL. Soubory mohou být libovolného formátu a třída poskytuje možnost stahovat nebo připojovat soubory do výpočtů. Vytvořením `FileDataset`vytvoříte odkaz na umístění zdroje dat. Pokud jste v sadě dat použili jakékoli transformace, budou uloženy i v datové sadě. Data zůstanou ve svém stávajícím umístění, takže se neúčtují žádné dodatečné náklady na úložiště. Další informace najdete [v příručce k](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets) `Dataset`mu balíčku.
+Objekt `FileDataset` odkazuje na jeden nebo více souborů v úložišti dat pracovního prostoru nebo veřejné adresy URL. Soubory mohou být libovolného formátu a třída poskytuje možnost stahovat nebo připojovat soubory do výpočtů. Vytvořením `FileDataset`vytvoříte odkaz na umístění zdroje dat. Pokud jste v sadě dat použili jakékoli transformace, budou uloženy i v datové sadě. Data zůstanou ve svém stávajícím umístění, takže se neúčtují žádné dodatečné náklady na úložiště. Další informace najdete [v příručce k](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) `Dataset`mu balíčku.
 
 ```python
 from azureml.core.dataset import Dataset

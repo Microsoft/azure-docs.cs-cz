@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: V tomto kurzu se dozvíte, jak používat Azure Dev Spaces a Visual Studio Code k ladění a rychlému iteraci aplikace Node. js ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: a5cfd0281b7f68a416f47e478292341bd708ed1a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cf065aa1c1e24eb30cc1b99102f1dc627d0716ee
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438539"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770658"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Vytvoření Kubernetes vývojového prostoru: Visual Studio Code a Node. js s Azure Dev Spaces
 
@@ -281,4 +281,4 @@ Při této konfiguraci kontejner spustí *nodemon*. Po úpravě kódu na straně
 > [Další informace o vývoji více služeb](multi-service-nodejs.md)
 
 
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

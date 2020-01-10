@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5cf357f5f0c1d58c390cf48d636aadf059579396
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410150"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769621"
 ---
 # <a name="http-api-reference"></a>Reference k rozhraní HTTP API
 

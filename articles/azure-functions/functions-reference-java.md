@@ -3,12 +3,12 @@ title: Referenční dokumentace pro vývojáře v jazyce Java pro Azure Function
 description: Naučte se vyvíjet funkce pomocí Java.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 50fc4dc278e274109725ff60ea8d438310ce464d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4af2a860657f6066112146e1f88d81861d9430ea
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230404"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769026"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions příručka pro vývojáře Java
 
@@ -156,7 +156,7 @@ Funkce umožňují přizpůsobit virtuální počítač Java (JVM), který se po
 
 Další argumenty můžete zadat v nastavení aplikace s názvem `JAVA_OPTS`. Do aplikace Function App nasazenou do Azure můžete přidat nastavení aplikace v Azure Portal nebo v rozhraní příkazového řádku Azure.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 
 V [Azure Portal](https://portal.azure.com)přidejte nastavení `JAVA_OPTS` pomocí [karty nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) .
 
@@ -331,7 +331,7 @@ Tuto funkci jste vyvolali na HttpRequest. Zapisuje do fronty úložiště více 
 
  Ty jsou definované v `azure-functions-java-library`. Jsou pomocné typy pro práci s HttpTrigger funkcemi.
 
-| Specializovaný typ      |       Cíl        | Typické použití                  |
+| Specializovaný typ      |       Výběr cílového umístění        | Typické použití                  |
 | --------------------- | :-----------------: | ------------------------------ |
 | `HttpRequestMessage<T>`  |    Trigger HTTP     | Načte metodu, hlavičky nebo dotazy |
 | `HttpResponseMessage` | Výstupní vazba HTTP | Vrátí stav jiný než 200.   |

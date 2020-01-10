@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 3a44dc35c27cd084e6589482f180b13b258f0b24
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1c3f2009dc71df1a5496d585bdcba986a79ac0d0
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471006"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768451"
 ---
 ## <a name="prepare-your-web-app"></a>Příprava webové aplikace
 
@@ -21,7 +21,7 @@ Pokud chcete vytvořit vazbu vlastního certifikátu SSL (certifikát třetí st
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Otevřete web [Azure Portal](https://portal.azure.com).
+Otevřete [portál Azure](https://portal.azure.com).
 
 ### <a name="navigate-to-your-web-app"></a>Přechod do webové aplikace
 
@@ -29,11 +29,11 @@ Vyhledejte a vyberte **App Services**.
 
 ![Vyberte App Services](./media/app-service-ssl-prepare-app/app-services.png)
 
-Na stránce **App Services** vyberte název aplikace Azure.
+Na stránce **App Services** vyberte název vaší webové aplikace.
 
 ![Přechod do aplikace Azure na portálu](./media/app-service-ssl-prepare-app/select-app.png)
 
-Byli jste přesměrování na stránku pro správu vaší webové aplikace.  
+Vyložili jste na stránce pro správu vaší webové aplikace.  
 
 ### <a name="check-the-pricing-tier"></a>Kontrola cenové úrovně
 
@@ -51,7 +51,7 @@ Na úrovni **F1** a **D1** se nepodporuje vlastní SSL. Pokud potřebujete verti
 
 Vyberte některou z placených úrovní (**B1**, **B2**, **B3** nebo kteroukoli úroveň v kategorii **Produkční**). Další možnosti se zobrazí po kliknutí na odkaz **Zobrazit další možnosti**.
 
-Klikněte na **Použít**.
+Klikněte na tlačítko **Použít**.
 
 ![Výběr cenové úrovně](./media/app-service-ssl-prepare-app/choose-pricing-tier.png)
 

@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d9890a393d9b2955c1eb0c9894d454a774af68ef
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 3cba7781ac80ae567b2bfd54c4131429ed94b90f
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701836"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772359"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Kurz: vytvoření a nasazení vlastních modulů IoT Edge
 
@@ -22,7 +22,7 @@ ms.locfileid: "74701836"
 
 V tomto článku vytvoříme tři IoT Edge moduly, které přijímají zprávy ze zařízení ze seznamu, spustíte data prostřednictvím modelu strojového učení a pak dodáte přehledy k IoT Hub.
 
-Centrum IoT Edge usnadňuje komunikaci s modulem. Použití centra IoT Edge jako zprostředkovatele zpráv uchovává moduly nezávislé na sobě. Moduly stačí pouze zadat vstupy, na kterých přijímá zprávy, a výstupy, na které zapisují zprávy.
+Centrum IoT Edge usnadňuje komunikaci s modulem. Použití centra IoT Edge jako zprostředkovatele zpráv uchovává moduly nezávislé na sobě. Moduly stačí zadat vstupy, na kterých přijetí zprávy a výstupy, ke kterým se zápis zpráv.
 
 Chceme, aby zařízení IoT Edge pro nás dosáhlo čtyř věcí:
 
@@ -39,13 +39,13 @@ K provedení těchto úloh používáme tři vlastní moduly:
 
 * **Modul směrovače:** Modul směrovače přijímá zprávy z podřízených zařízení a následně je formátuje a odesílá do třídění. Modul pak přijme zprávy ze klasifikátoru a předá zprávu do modulu zapisovače Avro. Nakonec modul pošle pouze předpověď RUL do IoT Hub.
 
-  * Vztahují
+  * Vstupy:
     * **deviceInput**: přijímá zprávy ze zařízení typu list
     * **rulInput:** přijímá zprávy z "amlOutput".
 
-  * Činnosti
+  * Výstupy:
     * **klasifikovat:** odesílá zprávy do amlInput.
-    * **writeAvro:** odesílá zprávy "avroModuleInput".
+    * **writeAvro:** odesílá zprávy do "avroModuleInput".
     * **toIotHub:** odesílá zprávy do $upstream, které předá zprávy připojeným IoT Hub
 
 Následující diagram znázorňuje moduly, vstupy, výstupy a trasy centra IoT Edge pro úplné řešení:
@@ -639,7 +639,7 @@ Když je směrovač a klasifikátor zavedený, očekáváme, že budete dostáva
 
 13. Vyberte možnost **testovací trasa**. Pokud je test úspěšný, zobrazí se zpráva, že dotaz odpovídá dotazu.
 
-14. Klikněte na **Uložit**.
+14. Klikněte na možnost **Uložit**.
 
 #### <a name="update-turbofandevicetostorage-route"></a>Aktualizovat turbofanDeviceToStorage trasu
 
@@ -691,7 +691,7 @@ Nechceme směrovat nová data předpovědi do našeho starého umístění úlo�
 
 5. Vyberte možnost **testovací trasa**. Pokud je test úspěšný, zobrazí se zpráva, že dotaz odpovídá dotazu.
 
-6. Vyberte **Save** (Uložit).
+6. Vyberte **Uložit**.
 
 ### <a name="configure-file-upload"></a>Konfigurace odesílání souborů
 
@@ -705,7 +705,7 @@ Nakonfigurujte funkci nahrávání souborů IoT Hub, aby modul zapisovače soubo
 
 4. Vyberte kontejner **uploadturbofanfiles** a klikněte na **Vybrat**.
 
-5. Vyberte **Save** (Uložit). Portál vás upozorní, až se uložení dokončí.
+5. Vyberte **Uložit**. Portál vás upozorní, až se uložení dokončí.
 
 > [!Note]
 > Pro tento kurz nezapneme oznámení o nahrání, ale další informace o tom, jak zpracovávat oznámení o nahrávání souborů, najdete v tématu [přijetí oznámení o nahrání souboru](../iot-hub/iot-hub-java-java-file-upload.md#receive-a-file-upload-notification) .
@@ -828,7 +828,7 @@ V tomto článku jsme vytvořili řešení IoT Edge v Visual Studio Code se tře
 Další informace najdete na následujících stránkách:
 
 * [Nasazování modulů a vytváření tras ve službě IoT Edge](module-composition.md)
-* [Syntaxe dotazu směrování zpráv IoT Hub](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
+* [Syntaxe dotazu směrování zpráv IoT Hubu](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
 * [Směrování zpráv IoT Hub: teď se směrováním na text zprávy](https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/)
 * [Nahrávání souborů s využitím služby IoT Hub](../iot-hub/iot-hub-devguide-file-upload.md)
 * [Nahrání souborů ze zařízení do cloudu pomocí IoT Hub](../iot-hub/iot-hub-python-python-file-upload.md)

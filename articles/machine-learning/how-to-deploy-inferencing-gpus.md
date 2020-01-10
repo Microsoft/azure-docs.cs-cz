@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: 4edf17026384ad8a6bfe4ecea847f4a91076634f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 49ee2690a54e58eee85dd4f9c5b7ef460ac597cc
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646570"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763585"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Nasazení modelu hloubkového učení pro odvození pomocí GPU
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ Odvození modelu nebo Bodové hodnocení je fáze, ve které je nasazený model 
 > I když fragmenty kódu v tomto článku používají model TensorFlow, můžete tyto informace použít pro jakékoli rozhraní Machine Learning, které podporuje GPU.
 
 > [!NOTE]
-> Informace v tomto článku jsou založeny na informacích v článku [Jak nasadit do služby Azure Kubernetes](service/how-to-deploy-azure-kubernetes-service.md) . V tomto článku se obecně zabývá nasazením na AKS. Tento článek popisuje nasazení specifické pro grafické procesory.
+> Informace v tomto článku jsou založeny na informacích v článku [Jak nasadit do služby Azure Kubernetes](how-to-deploy-azure-kubernetes-service.md) . V tomto článku se obecně zabývá nasazením na AKS. Tento článek popisuje nasazení specifické pro grafické procesory.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,7 +45,7 @@ Odvození modelu nebo Bodové hodnocení je fáze, ve které je nasazený model 
 
     * Chcete-li vytvořit a zaregistrovat model Tensorflow, který jste použili k vytvoření tohoto dokumentu, přečtěte si téma [Postup výuky modelu Tensorflow](how-to-train-tensorflow.md).
 
-* Obecné informace o [tom, jak a kde nasadit modely](service/how-to-deploy-and-where.md).
+* Obecné informace o [tom, jak a kde nasadit modely](how-to-deploy-and-where.md).
 
 ## <a name="connect-to-your-workspace"></a>Připojení k pracovnímu prostoru
 
@@ -94,7 +94,7 @@ except ComputeTargetException:
 > [!IMPORTANT]
 > Azure vám bude účtovat, dokud cluster AKS existuje. Až s tím budete hotovi, nezapomeňte cluster AKS odstranit.
 
-Další informace o použití AKS s Azure Machine Learning najdete v tématu [nasazení do služby Azure Kubernetes](service/how-to-deploy-azure-kubernetes-service.md).
+Další informace o použití AKS s Azure Machine Learning najdete v tématu [nasazení do služby Azure Kubernetes](how-to-deploy-azure-kubernetes-service.md).
 
 ## <a name="write-the-entry-script"></a>Zápis vstupního skriptu
 
@@ -135,7 +135,7 @@ def run(raw_data):
     return y_hat.tolist()
 ```
 
-Tento soubor má název `score.py`. Další informace o vstupních skriptech najdete v tématu [jak a kde nasadit](service/how-to-deploy-and-where.md).
+Tento soubor má název `score.py`. Další informace o vstupních skriptech najdete v tématu [jak a kde nasadit](how-to-deploy-and-where.md).
 
 ## <a name="define-the-conda-environment"></a>Definice prostředí conda
 
@@ -289,6 +289,6 @@ aks_target.delete()
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nasazení modelu na FPGA](service/how-to-deploy-fpga-web-service.md)
+* [Nasazení modelu na FPGA](how-to-deploy-fpga-web-service.md)
 * [Nasazení modelu pomocí ONNX](concept-onnx.md#deploy-onnx-models-in-azure)
 * [Výukové modely Tensorflow DNN](how-to-train-tensorflow.md)

@@ -4,12 +4,12 @@ description: Naučte se vytvářet funkce služby Azure Functions běžící na 
 ms.date: 09/27/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 5a7fbecca2dc7585ff7110d53deccbbbbf23087c
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: e70edac09c8b2d61c148c9ba0fd04ec231e9a965
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551484"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769315"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Vytvoření funkce na platformě Linux pomocí vlastní image
 
@@ -17,7 +17,7 @@ Služba Azure Functions umožňuje hostovat funkce v Linuxu ve vašem vlastním 
 
 V tomto kurzu se dozvíte, jak do Azure nasadit funkce jako vlastní image Dockeru. Tento model je užitečný v případě, že potřebujete přizpůsobit integrovanou image kontejneru. Když vaše funkce vyžadují určitou jazykovou verzi nebo konkrétní závislost nebo konfiguraci, kterou vestavěná image neposkytuje, můžete chtít použít vlastní image. Podporované základní image pro Azure Functions najdete v [úložišti Azure Functions Base images](https://hub.docker.com/_/microsoft-azure-functions-base). 
 
-V tomto kurzu se dozvíte, jak pomocí Azure Functions Core Tools vytvořit funkci ve vlastní imagi Linuxu. Tuto image publikujete do aplikace funkcí v Azure, která se vytvořila pomocí Azure CLI. Později aktualizujete funkci pro připojení k úložišti Azure Queue. Povolíte také.  
+V tomto kurzu se dozvíte, jak pomocí Azure Functions Core Tools vytvořit funkci ve vlastní imagi Linuxu. Tuto image publikujete do aplikace funkcí v Azure, která se vytvořila pomocí Azure CLI. Později aktualizujete funkci pro připojení k úložišti Azure Queue.
 
 V tomto kurzu se naučíte:
 
@@ -101,7 +101,7 @@ docker build --tag <docker-id>/mydockerimage:v1.0.0 .
 Po dokončení příkazu můžete nový kontejner spustit místně.
 
 ### <a name="run-the-image-locally"></a>Spustit bitovou kopii místně
-Ověřte si funkčnost sestavené image tak, že image Dockeru spustíte v místním kontejneru. Zadejte příkaz [docker run](https://docs.docker.com/engine/reference/commandline/run/) a předejte mu název a značku image. Nezapomeňte zadat port pomocí argumentu `-p`.
+Ověřte si funkčnost sestavené image tak, že image Dockeru spustíte v místním kontejneru. Zadejte příkaz [docker run](https://docs.docker.com/engine/reference/commandline/run/) a předejte mu název a značku image. Nezapomeňte zadat porty pomocí argumentu `-p`.
 
 ```bash
 docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
@@ -118,7 +118,7 @@ Po ověření aplikace Function App v kontejneru můžete aplikaci zastavit. Te�
 
 ## <a name="push-to-docker-hub"></a>Vložit do Docker Hub
 
-Registr je aplikace, která hostuje image a poskytuje image služeb a služby kontejneru. Pokud chcete svou image sdílet, musíte ji odeslat do registru. Docker Hub je registr pro image Dockeru, který umožňuje hostovat vlastní veřejná nebo privátní úložiště.
+Registr je aplikace, která je hostitelem imagí a poskytuje image a služby kontejneru. Pokud chcete svou image sdílet, musíte ji odeslat do registru. Docker Hub je registr pro image Dockeru, který umožňuje hostovat vlastní veřejná nebo privátní úložiště.
 
 Než budete moct odeslat image, musíte se přihlásit k Docker Hubu pomocí příkazu [docker login](https://docs.docker.com/engine/reference/commandline/login/). Položku `<docker-id>` nahraďte názvem svého účtu a po zobrazení výzvy zadejte do konzoly své heslo. Další možnosti hesla do Docker Hubu najdete v [dokumentaci k příkazu docker login](https://docs.docker.com/engine/reference/commandline/login/).
 
@@ -140,7 +140,7 @@ Po úspěšném vložení můžete image použít jako zdroj nasazení nové apl
 
 ## <a name="create-a-premium-plan"></a>Vytvořit plán Premium
 
-Hostování Linux pro kontejnery vlastních funkcí podporované na [vyhrazených plánech (App Service)](functions-scale.md#app-service-plan) a [plánech Premium](functions-premium-plan.md#features). V tomto kurzu se používá plán Premium, který se může podle potřeby škálovat. Další informace o hostování najdete v [porovnání plánů hostování služby Azure Functions](functions-scale.md).
+Hostování Linux pro kontejnery vlastních funkcí se podporuje na [vyhrazených plánech (App Service)](functions-scale.md#app-service-plan) a [plánech Premium](functions-premium-plan.md#features). V tomto kurzu se používá plán Premium, který se může podle potřeby škálovat. Další informace o hostování najdete v [porovnání plánů hostování služby Azure Functions](functions-scale.md).
 
 Následující příklad vytvoří plán Premium s názvem `myPremiumPlan` v cenové úrovni **elastické Premium 1** (`--sku EP1`) v oblasti Západní USA (`-location WestUS`) a v kontejneru Linux (`--is-linux`).
 
@@ -346,13 +346,13 @@ Po definování vazby můžete použít `name` vazby k přístupu jako atributu 
 V kořenové složce spusťte znovu příkaz [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) a tentokrát aktualizujte verzi ve značce na `v1.0.2`. Stejně jako dřív nahraďte `<docker-id>` číslem účtu Docker Hub. 
 
 ```bash
-docker build --tag <docker-id>/mydockerimage:v1.0.0 .
+docker build --tag <docker-id>/mydockerimage:v1.0.2
 ```
 
 Nahrajte aktualizovaný obrázek zpátky do úložiště.
 
 ```bash
-docker push <docker-id>/mydockerimage:v1.0.0
+docker push <docker-id>/mydockerimage:v1.0.2
 ```
 
 ### <a name="verify-the-updates-in-azure"></a>Ověření aktualizací v Azure

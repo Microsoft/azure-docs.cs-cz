@@ -7,19 +7,19 @@ ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: af47195a336739d604f0eb40ce6c5c54e15547cb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e744cdde298054de3631adb96b56bbc808f36a38
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894075"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750951"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Podporované služby, schémata a kategorie pro protokoly prostředků Azure
 
 > [!NOTE]
 > Protokoly prostředků se dříve nazývaly diagnostické protokoly.
 
-[Protokoly prostředků Azure monitor](../../azure-monitor/platform/resource-logs-overview.md) jsou protokoly emitované službami Azure, které popisují fungování těchto služeb nebo prostředků. Všechny protokoly prostředků dostupné prostřednictvím Azure Monitor sdílejí společné schéma nejvyšší úrovně s flexibilitou pro každou službu, aby vygenerovala jedinečné vlastnosti pro vlastní události.
+[Protokoly prostředků Azure monitor](../../azure-monitor/platform/platform-logs-overview.md) jsou protokoly emitované službami Azure, které popisují fungování těchto služeb nebo prostředků. Všechny protokoly prostředků dostupné prostřednictvím Azure Monitor sdílejí společné schéma nejvyšší úrovně s flexibilitou pro každou službu, aby vygenerovala jedinečné vlastnosti pro vlastní události.
 
 Kombinace typu prostředku (k dispozici ve vlastnosti `resourceId`) a `category` jednoznačně identifikují schéma. Tento článek popisuje schéma nejvyšší úrovně pro protokoly prostředků a odkazy na schémat pro každou službu.
 
@@ -74,7 +74,7 @@ Schéma pro protokoly diagnostiky prostředků se liší v závislosti na katego
 | Load Balancer |[Log Analytics pro Azure Load Balancer](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Vlastní schéma sledování B2B Logic Apps](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Skupiny zabezpečení sítě |[Analýza protokolu pro skupiny zabezpečení sítě (NSG)](../../virtual-network/virtual-network-nsg-manage-log.md) |
-| DDOS Protection | [Spravovat Azure DDoS Protection Standard](../../virtual-network/manage-ddos-protection.md) |
+| Ochrana před útoky DDoS | [Spravovat Azure DDoS Protection Standard](../../virtual-network/manage-ddos-protection.md) |
 | Vyhrazená služba Power BI | [Protokolování Power BI Embedded v Azure](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Datový model pro Azure Backup](../../backup/backup-azure-reports-data-model.md)|
 | Hledat |[Povolení a použití Analýza provozu vyhledávání](../../search/search-traffic-analytics.md) |
@@ -265,7 +265,7 @@ Schéma pro protokoly diagnostiky prostředků se liší v závislosti na katego
 |Microsoft.Sql/servers/databases|AutomaticTuning|Automatické ladění|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|Statistiky za běhu úložiště dotazů|
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|Statistika čekání na úložiště dotazů|
-|Microsoft.Sql/servers/databases|Chyby|Chyby|
+|Microsoft.Sql/servers/databases|chyby|chyby|
 |Microsoft.Sql/servers/databases|DatabaseWaitStatistics|Statistika čekání databáze|
 |Microsoft.Sql/servers/databases|Časové limity|Časové limity|
 |Microsoft.Sql/servers/databases|Bloky|Bloky|
@@ -282,7 +282,7 @@ Schéma pro protokoly diagnostiky prostředků se liší v závislosti na katego
 |Microsoft.Sql/managedInstances/databases|SQLInsights|SQL Insights|
 |Microsoft.Sql/managedInstances/databases|QueryStoreRuntimeStatistics|Statistiky za běhu úložiště dotazů|
 |Microsoft.Sql/managedInstances/databases|QueryStoreWaitStatistics|Statistika čekání na úložiště dotazů|
-|Microsoft.Sql/managedInstances/databases|Chyby|Chyby|
+|Microsoft.Sql/managedInstances/databases|chyby|chyby|
 |Microsoft.Storage/storageAccounts/tableServices|StorageRead|StorageRead|
 |Microsoft.Storage/storageAccounts/tableServices|StorageWrite|StorageWrite|
 |Microsoft.Storage/storageAccounts/tableServices|StorageDelete|StorageDelete|
@@ -313,7 +313,7 @@ Schéma pro protokoly diagnostiky prostředků se liší v závislosti na katego
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Další informace o protokolech prostředků](../../azure-monitor/platform/resource-logs-overview.md)
+* [Další informace o protokolech prostředků](../../azure-monitor/platform/platform-logs-overview.md)
 * [**Event Hubs** protokolů prostředku prostředku streamování](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 * [Změna nastavení diagnostiky protokolu prostředků pomocí Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 * [Analýza protokolů ze služby Azure storage s využitím Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)

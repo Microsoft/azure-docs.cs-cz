@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 12522de6bec4698f8a5b7a931bbc382f65a74265
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4ef268367d1c4c8808cbda3814c863940bcdc32b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75537250"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771900"
 ---
 # <a name="model-interpretability-for-local-and-remote-runs"></a>Interpretace modelu pro místní a vzdálené spuštění
 
@@ -362,7 +362,7 @@ Použijte jednu z těchto cest pro přístup k řídicímu panelu vizualizace v 
    [Důležitost místní funkce řídicího panelu vizualizace ![](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * Podokno **modely**
-  1. Pokud jste svůj původní model zaregistrovali pomocí postupu v části [nasazení modelů pomocí Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where), můžete v levém podokně vybrat **modely** a zobrazit je.
+  1. Pokud jste svůj původní model zaregistrovali pomocí postupu v části [nasazení modelů pomocí Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where), můžete v levém podokně vybrat **modely** a zobrazit je.
   1. Vyberte model a pak kartu **vysvětlení** pro zobrazení řídicího panelu vizualizace.
 
 ## <a name="interpretability-at-inference-time"></a>Výklad v době odvození
@@ -427,7 +427,7 @@ Můžete nasadit vysvětlení spolu s původním modelem a použít ho v době o
 
 1. Nasaďte bitovou kopii na cíl výpočtů pomocí následujících kroků:
 
-   1. V případě potřeby Zaregistrujte původní model předpovědi pomocí postupu v části [nasazení modelů pomocí Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where).
+   1. V případě potřeby Zaregistrujte původní model předpovědi pomocí postupu v části [nasazení modelů pomocí Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
 
    1. Vytvořte soubor bodování.
 

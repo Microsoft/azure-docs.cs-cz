@@ -7,14 +7,14 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 11/12/2019
+ms.date: 01/07/2020
 ms.custom: include file
-ms.openlocfilehash: 57373f31b91be81021d3f8382331d491e39b0f9c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 096e28c875634e248ee95e1010fa915dd35bddab
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74062866"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751594"
 ---
 > [!TIP]
 > K dispozici je vás zajímá Swagger Preview, který předvádí sadu funkcí rozhraní API.
@@ -26,7 +26,7 @@ K dokumentaci k nástroji pro vygenerované rozhraní API pro správu můžete z
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Název | Nahradit hodnotou |
+| Name (Název) | Nahradit hodnotou |
 | --- | --- |
 | YOUR_INSTANCE_NAME | Název instance digitálního vlákna Azure |
 | YOUR_LOCATION | Jaké oblasti serveru vaší instance je hostován aplikací |

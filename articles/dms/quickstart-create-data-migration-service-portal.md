@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.openlocfilehash: 71308b7f17d6009e8650cafbb02afd577fd73cf4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2020
+ms.openlocfilehash: 42638af9f51770a9a5738cd92f91c28439af273a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437733"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750098"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Rychlý start: Vytvoření instance služby Azure Database Migration Service pomocí webu Azure Portal
 
@@ -55,7 +55,7 @@ Než vytvoříte první instanci služby Database Migration Service, zaregistruj
     - Vyberte **Předplatné** Azure, ve kterém chcete instanci vytvořit.
     - Vyberte existující **skupinu prostředků** nebo vytvořte novou.
     - Zvolte **Umístění**, které je nejblíže vašemu zdrojovému nebo cílovému serveru.
-    - Vyberte existující **virtuální síť** (VNET) nebo ji vytvořte.
+    - Vyberte existující **virtuální síť** nebo ji vytvořte.
 
         Virtuální síť poskytuje Azure Database Migration Service s přístupem ke zdrojové databázi a cílovému prostředí.
 

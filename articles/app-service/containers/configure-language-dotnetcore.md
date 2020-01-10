@@ -4,12 +4,12 @@ description: Naučte se konfigurovat předem sestavený ASP.NET Core kontejner p
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/13/2019
-ms.openlocfilehash: d26c490ad37b25785ff1347cccf1e2be21bba277
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: cab99b9d20ce8a3190eb9aa59650dab32fca324d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670469"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768414"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Konfigurace aplikace ASP.NET Core pro Linux pro Azure App Service
 
@@ -44,7 +44,7 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 V App Service můžete [nastavit nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) mimo kód vaší aplikace. Pak k nim můžete přistupovat v libovolné třídě pomocí vzoru pro vkládání závislostí Standard ASP.NET Core:
 
 ```csharp
-include Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 
 namespace SomeNamespace 
 {
@@ -72,7 +72,7 @@ Pokud nakonfigurujete nastavení aplikace se stejným názvem v App Service a v 
 
 ## <a name="get-detailed-exceptions-page"></a>Získat podrobné stránky výjimek
 
-Když aplikace ASP.NET vygeneruje výjimku v ladicím programu sady Visual Studio, prohlížeč zobrazí stránku podrobností o výjimce, ale v App Service tuto stránku nahradila Obecná chyba **HTTP 500** nebo při **zpracování vaší žádosti došlo k chybě.** Zpráva. Pokud chcete zobrazit stránku podrobností o výjimce v App Service, přidejte do aplikace nastavení aplikace `ASPNETCORE_ENVIRONMENT` spuštěním následujícího příkazu v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
+Když aplikace ASP.NET vygeneruje výjimku v ladicím programu sady Visual Studio, prohlížeč zobrazí stránku podrobností o výjimce, ale v App Service tuto stránku nahradila Obecná chyba **HTTP 500** nebo při **zpracování vaší žádosti došlo k chybě.** . Pokud chcete zobrazit stránku podrobností o výjimce v App Service, přidejte do aplikace nastavení aplikace `ASPNETCORE_ENVIRONMENT` spuštěním následujícího příkazu v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"
@@ -113,7 +113,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-Další informace najdete v tématu [konfigurace ASP.NET Core pro práci se servery proxy a nástroji pro vyrovnávání zatížení](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer).
+Další informace najdete v tématu [konfigurace ASP.NET Core práci se servery proxy a nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer).
 
 ## <a name="deploy-multi-project-solutions"></a>Nasazení řešení s více projekty
 

@@ -5,12 +5,12 @@ ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 3f4e9f8a607856e3de92a4824a4221071f3c02a4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3d4cfc40f1849ecd2745b1d662973c7f64a0a60c
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227142"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769247"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Vytvoření funkce aktivované službou Azure Queue Storage
 
@@ -46,7 +46,7 @@ Dál vytvoříte v nové aplikaci Function App funkci.
 
 1. Do vyhledávacího pole zadejte `queue` a zvolte šablonu **Trigger fronty**.
 
-1. Pokud se zobrazí výzva, výběrem možnosti **Instalovat** nainstalujte do aplikace funkcí rozšíření Azure Storage a případné závislosti. Po úspěšném dokončení instalace vyberte **Pokračovat**.
+1. Pokud se zobrazí výzva, vyberte **instalovat** a nainstalujte Azure Storage rozšíření a všechny závislosti v aplikaci Function App. Po úspěšném dokončení instalace vyberte **Pokračovat**.
 
     ![Instalace rozšíření vazby](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
 
@@ -58,7 +58,7 @@ Dál vytvoříte v nové aplikaci Function App funkci.
     |---|---|---|
     | **Název** | Jedinečný název v rámci aplikace Function App | Název této funkce aktivované frontou. |
     | **Název fronty**   | myqueue-items    | Název fronty, ke které se připojíte ve svém účtu úložiště. |
-    | **Připojení k účtu úložiště** | AzureWebJobStorage | Můžete použít připojení k účtu úložiště, které už používá vaše aplikace Function App, nebo můžete vytvořit nové.  |    
+    | **Připojení k účtu úložiště** | AzureWebJobsStorage | Můžete použít připojení k účtu úložiště, které už používá vaše aplikace Function App, nebo můžete vytvořit nové.  |    
 
 1. Funkci vytvoříte kliknutím na **Vytvořit**.
 
@@ -88,7 +88,7 @@ Teď máte frontu úložiště a můžete funkci otestovat přidáním zprávy d
 
 1. Zpátky na webu Azure Portal přejděte ke svojí funkci, ve spodní části stránky rozbalte **Protokoly** a ujistěte se, že není pozastavené streamování protokolů.
 
-1. V Storage Exploreru rozbalte svůj účet úložiště, možnosti **Queues** (Fornty), a **myqueue-items** a potom klikněte na **Add message** (Přidat zprávu).
+1. V Průzkumník služby Storage rozbalte svůj účet úložiště, **fronty**a **MyQueue-Items**a pak klikněte na **přidat zprávu**.
 
     ![Přidejte do fronty zprávu.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-add-message.png)
 

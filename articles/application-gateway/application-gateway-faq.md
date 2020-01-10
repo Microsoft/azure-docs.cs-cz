@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 72c44f47060a745c5a5266a0ca7173276eb5cb66
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 14fe8780bb7919d942da186698275d5199f4586e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658300"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770080"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se Application Gateway
 
@@ -122,7 +122,7 @@ Použijte Traffic Manager k distribuci provozu mezi několik aplikačních bran 
 
 Ano, skladová položka Application Gateway v2 podporuje automatické škálování. Další informace najdete v tématu Automatické [škálování a redundantní Application Gateway v zóně](application-gateway-autoscaling-zone-redundant.md).
 
-### <a name="does-manual-scale-up-or-scale-down-cause-downtime"></a>Způsobuje ruční horizontální navýšení nebo snížení kapacity při výpadku?
+### <a name="does-manual-or-automatic-scale-up-or-scale-down-cause-downtime"></a>Způsobuje ruční nebo automatické horizontální navýšení nebo snížení kapacity při výpadku?
 
 Ne. Instance se distribuují napříč doménami upgradu a doménami selhání.
 

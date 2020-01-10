@@ -1,6 +1,6 @@
 ---
-title: Vysvětlení stavu Linux Hybrid Runbook Worker v Azure Update Management
-description: Naučte se řešit problémy s Hybrid Runbook Worker v systému Linux, která podporuje Update Management.
+title: Diagnostika Hybrid Runbook Worker pro Linux – Azure Update Management
+description: Naučte se řešit problémy s Azure Automation Hybrid Runbook Worker na Linux, která podporuje Update Management.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 924c2fd176b5b8e45352d616d226f484e814450d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: e60ba71607b99f0ea97e0725ffdd0740f3e9c579
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849255"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769825"
 ---
-# <a name="understand-the-linux-hybrid-runbook-worker-health-in-update-management"></a>Pochopení stavu Hybrid Runbook Worker pro Linux v Update Management
+# <a name="understand-and-resolve-linux-hybrid-runbook-worker-health-for-update-management"></a>Pochopení a řešení stavu Linux Hybrid Runbook Worker pro Update Management
 
 Příčinou může být to, že váš počítač není v Update Management **připravený** . V Update Management můžete zjistit příčinu problému tím, že zkontrolujete stav agenta Hybrid Runbook Worker. Tento článek popisuje, jak spustit Poradce při potížích pro počítače Azure z Azure Portal a počítačů mimo Azure v [offline scénáři](#troubleshoot-offline).
 

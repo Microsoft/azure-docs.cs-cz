@@ -8,95 +8,95 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 1476830313296615591a69a2cadd04bcc56b22bc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 40ba5a935e78cd75c4fcd7729e44f1cdf6c2859b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174944"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772949"
 ---
-Pokud při provádění jakýchkoli operací se sdílenými galeriemi imagí, definicemi imagí a verzemi imagí narazíte na problémy, spusťte příkaz, který selhal, znovu v režimu ladění. Režim ladění je aktivován předáním **– ladění** přepnout pomocí rozhraní příkazového řádku a **– ladění** přepnout pomocí Powershellu. Jakmile jste vyhledali chyby, postupujte podle tohoto dokumentu pro řešení těchto chyb.
+Pokud při provádění jakýchkoli operací se sdílenými galeriemi imagí, definicemi imagí a verzemi imagí narazíte na problémy, spusťte příkaz, který selhal, znovu v režimu ladění. Režim ladění je aktivován předáním přepínače **-Debug** s rozhraním CLI a přepínačem **-Debug** v prostředí PowerShell. Po vyhledání chyby použijte tento dokument k odstranění chyb.
 
 
-## <a name="unable-to-create-a-shared-image-gallery"></a>Nelze vytvořit Galerie sdílené bitové kopie
+## <a name="unable-to-create-a-shared-image-gallery"></a>Nepovedlo se vytvořit sdílenou galerii imagí.
 
 Možné příčiny:
 
 *Název galerie je neplatný.*
 
-Povolené znaky pro název galerie jsou malá a velká písmena, číslice, tečky a tečky. Název galerie nesmí obsahovat pomlčky. Změňte název galerie a zkuste to znovu. 
+Povolenými znaky pro název galerie jsou velká a malá písmena, číslice, tečky a tečky. Název galerie nesmí obsahovat pomlčky. Změňte název galerie a zkuste to znovu. 
 
-*Název galerie není jedinečné v rámci vašeho předplatného.*
+*Název galerie není v rámci vašeho předplatného jedinečný.*
 
-Vyberte jiný název galerie a zkuste to znovu.
-
-
-## <a name="unable-to-create-an-image-definition"></a>Nelze vytvořit definici image 
-
-Možné příčiny:
-
-*Název definice bitové kopie je neplatný.*
-
-Povolené znaky definici image jsou malá a velká písmena, číslice, tečky, pomlčky a tečky. Změnit název image definici a zkuste to znovu.
-
-*Nejsou naplněny povinné vlastnosti pro vytvoření definici image.*
-
-Vlastnosti, jako je název, vydavatele, nabídky, sku a typ operačního systému jsou povinné. Ověření, pokud jsou předávány všechny vlastnosti.
-
-Ujistěte se, že **OSType**, Linux nebo Windows, definice image je, stejný jako zdroj spravované image, kterou používáte k vytvoření verze image. 
+Vyberte název jiné galerie a zkuste to znovu.
 
 
-## <a name="unable-to-create-an-image-version"></a>Nelze vytvořit image verze 
+## <a name="unable-to-create-an-image-definition"></a>Nepovedlo se vytvořit definici image. 
 
 Možné příčiny:
 
-*Název verze bitové kopie je neplatný.*
+*název definice obrázku je neplatný.*
 
-Povolené znaky pro verze image jsou čísla a tečky. Čísla musí být v rozsahu 32bitového celého čísla. Formát: *MajorVersion.MinorVersion.Patch*. Změňte název verze image a zkuste to znovu.
+Povolené znaky pro definici obrázku jsou velká a malá písmena, číslice, tečky, pomlčky a tečky. Změňte název definice obrázku a zkuste to znovu.
 
-*Nebyl nalezen zdroj spravované image, ze kterého se vytváří verze image.* 
+*Povinné vlastnosti pro vytvoření definice obrázku nejsou naplněny.*
 
-Zkontrolujte, jestli zdrojový obraz existuje a je ve stejné oblasti jako verze image.
+Vlastnosti, jako je název, vydavatel, nabídka, SKU a typ operačního systému, jsou povinné. Ověřte, zda jsou předávány všechny vlastnosti.
 
-*Spravované image není Hotovo zřizuje.*
+Zajistěte, aby se **OSType**, ať už se systémem Linux nebo Windows, definice image shoduje se zdrojovou spravovanou imagí, kterou používáte k vytvoření verze image. 
 
-Ujistěte se, že je stav zřizování spravované image zdroj **Succeeded**.
 
-*Seznam oblastí cíl neobsahuje zdrojové oblasti.*
-
-Seznam cílové oblasti, musí obsahovat zdrojové oblasti verze image. Ujistěte se, že jste zadali v seznamu cílové oblasti, kde má Azure k replikaci adresáře vaší verze image do zdrojové oblasti.
-
-*Replikace na všechny cílové oblasti nebyla dokončena.*
-
-Použití **--rozbalte stav replikace** příznak ke kontrole, pokud má dokončení replikace na všechny zadané cílové oblasti. Pokud ne, počkejte, až 6 hodin se úloha dokončí. Pokud selže, spusťte příkaz znovu a vytvořit replikaci verze image. Pokud existuje velké množství cílové oblasti, kterou verzi image je právě replikován pro, zvažte replikaci ve fázích.
-
-## <a name="unable-to-create-a-vm-or-a-scale-set"></a>Nepodařilo se vytvořit virtuální počítač nebo škálovací sadu 
+## <a name="unable-to-create-an-image-version"></a>Nedá se vytvořit verze image. 
 
 Možné příčiny:
 
-*Uživatel pokusu o vytvoření škálovací sady virtuálního počítače nebo virtuální počítač nemá přístup pro čtení k verzi image.*
+*Název verze Image je neplatný.*
 
-Obraťte se na vlastníka předplatného a požádejte ji o udělení oprávnění ke čtení na verzi image nebo nadřazený prostředky (jako je Galerie sdílené bitové kopie nebo bitové kopie definice) prostřednictvím [řízení přístupu na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC). 
+Povolené znaky pro verzi obrázku jsou čísla a tečky. Čísla musí být v rozsahu 32 celé číslo. Formát: *MajorVersion. podverze. patch*. Změňte název verze image a zkuste to znovu.
 
-*Nebyla nalezena verze image.*
+*Zdrojová image, ze které se vytváří verze image, se nenašla.* 
 
-Ověřte, že se pokoušíte vytvořit škálovací sadu virtuálního počítače nebo virtuálního počítače v oblasti součástí seznamu cílových oblastí verze image. Pokud je již oblast v seznamu cílové oblasti, ověřte, pokud byla dokončena úloha replikace. Můžete použít **stav replikace -** příznak ke kontrole, pokud má dokončení replikace na všechny zadané cílové oblasti. 
+Zkontroluje, jestli zdrojová image existuje a je ve stejné oblasti jako verze image.
 
-*Virtuální počítač nebo virtuální počítač škálovací sady trvá dlouhou dobu vytvoření.*
+*Spravovaná image se neprovádí zřízené.*
 
-Ověřte, že **OSType** obrázku verze, kterou se pokoušíte vytvořit virtuální počítač nebo škálovací sady virtuálních počítačů z má stejnou **OSType** zdroje spravované image, kterou jste použili k vytvoření verze image. 
+Ujistěte se, že stav zřizování zdrojové spravované Image je **úspěšný**.
 
-## <a name="unable-to-share-resources"></a>Nelze sdílet prostředky
+*Seznam cílových oblastí neobsahuje zdrojovou oblast.*
 
-Sdílení Galerie sdílené bitové kopie, definici image a image verze prostředků napříč předplatnými se aktivuje pomocí [řízení přístupu na základě Role](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC). 
+Seznam cílových oblastí musí zahrnovat zdrojovou oblast verze image. Ujistěte se, že jste do seznamu cílových oblastí zahrnuli zdrojovou oblast, do které má Azure replikovat verzi image.
 
-## <a name="replication-is-slow"></a>Replikace je pomalá
+*Replikace do všech cílových oblastí není dokončená.*
 
-Použití **--rozbalte stav replikace** příznak ke kontrole, pokud má dokončení replikace na všechny zadané cílové oblasti. Pokud ne, počkejte, až 6 hodin se úloha dokončí. Pokud selže, spustí příkaz znovu a vytvořit replikaci verze image. Pokud existuje velké množství cílové oblasti, kterou verzi image je právě replikován pro, zvažte replikaci ve fázích.
+Pomocí příznaku **--expand ReplicationStatus** můžete ověřit, jestli se dokončila replikace do všech zadaných cílových oblastí. V takovém případě počkejte po dobu až 6 hodin, než se úloha dokončí. Pokud dojde k chybě, spusťte příkaz znovu pro vytvoření a replikaci verze image. Pokud existuje velký počet cílových oblastí, na které se replikuje verze image, zvažte provedení replikace ve fázích.
+
+## <a name="unable-to-create-a-vm-or-a-scale-set"></a>Nepovedlo se vytvořit virtuální počítač nebo sadu škálování. 
+
+Možné příčiny:
+
+*Uživatel, který se pokouší vytvořit virtuální počítač nebo sadu škálování virtuálního počítače, nemá přístup pro čtení k verzi image.*
+
+Obraťte se na vlastníka předplatného a požádejte ho, aby poskytl přístup pro čtení k verzi obrázku nebo k nadřazeným prostředkům (jako je galerie sdílených imagí nebo definice obrázku) prostřednictvím [Access Control na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC). 
+
+*Verze bitové kopie nebyla nalezena.*
+
+Ověřte, zda je oblast, ve které se pokoušíte vytvořit virtuální počítač nebo škálování virtuálního počítače v nástroji, obsažena v seznamu cílových oblastí verze bitové kopie. Pokud je oblast již v seznamu cílových oblastí, ověřte, zda byla úloha replikace dokončena. Pomocí příznaku **-ReplicationStatus** můžete ověřit, jestli se replikace do všech zadaných cílových oblastí dokončila. 
+
+*Vytvoření virtuálního počítače nebo sady škálování virtuálního počítače trvá dlouhou dobu.*
+
+Ověřte, že **OSType** verze image, ze které se pokoušíte vytvořit virtuální počítač nebo sadu škálování virtuálního počítače, z nástroje má stejný **OSType** ze zdrojové spravované image, kterou jste použili k vytvoření verze image. 
+
+## <a name="unable-to-share-resources"></a>Nepovedlo se sdílet prostředky.
+
+Sdílení Galerie sdílených imagí, definice obrázku a verzí obrázků v rámci předplatných je povoleno pomocí [Access Control na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC). 
+
+## <a name="replication-is-slow"></a>Replikace je pomalá.
+
+Pomocí příznaku **--expand ReplicationStatus** můžete ověřit, jestli se dokončila replikace do všech zadaných cílových oblastí. V takovém případě počkejte po dobu až 6 hodin, než se úloha dokončí. Pokud dojde k chybě, znovu spusťte příkaz pro vytvoření a replikaci verze image. Pokud existuje velký počet cílových oblastí, na které se replikuje verze image, zvažte provedení replikace ve fázích.
 
 ## <a name="azure-limits-and-quotas"></a>Omezení a kvóty Azure 
 
-[Omezení a kvóty Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits) platí pro všechny sdílené bitové kopie galerie, definici image a image verze zdroje. Ujistěte se, že jste v rámci vašich předplatných. 
+[Omezení a kvóty Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) se vztahují na všechny prostředky pro galerii sdílených imagí, definice obrázků a verze imagí. Ujistěte se, že jste v omezeních pro vaše předplatná. 
 
 
 

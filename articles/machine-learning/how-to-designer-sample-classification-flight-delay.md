@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: a8564ae8c3d7499dd3d194ec61a9b24b1d0d2393
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 02831555222597eacf9cf055f03fc65e1f599514
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660170"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763534"
 ---
 # <a name="build-a-classifier--use-r-to-predict-flight-delays-with-azure-machine-learning-designer"></a>Sestavování klasifikátoru & použití R k předpovědi zpoždění letu pomocí návrháře Azure Machine Learning
 
@@ -123,6 +123,6 @@ Prozkoumejte další ukázky, které jsou k dispozici pro návrháře:
 - [Ukázka 1 – regrese: předpověď ceny automobilu](how-to-designer-sample-regression-automobile-price-basic.md)
 - [Ukázka 2 – regrese: porovnání algoritmů pro předpověď cen automobilu](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
 - [Ukázka 3 – klasifikace s výběrem funkcí: předpověď příjmů](how-to-designer-sample-classification-predict-income.md)
-- [Ukázka 4 – klasifikace: předpověď úvěrového rizika (citlivé na náklady)](service/how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Ukázka 5 – klasifikace: předpověď změn](service/how-to-designer-sample-classification-churn.md)
+- [Ukázka 4 – klasifikace: předpověď úvěrového rizika (citlivé na náklady)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [Ukázka 5 – klasifikace: předpověď změn](how-to-designer-sample-classification-churn.md)
 - [Ukázka 7 – klasifikace textu: Wikipedii SP 500 DataSet](how-to-designer-sample-text-classification.md)

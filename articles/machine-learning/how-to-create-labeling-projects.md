@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 019c75e67534198494d7591602bd5f9023704a1d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 864cccc4629140754a326823cbaebd7ad8933d3d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533899"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75765065"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Vytvoření popisku dat pro projekt a Export popisků 
 
@@ -49,7 +49,7 @@ V tomto článku se dozvíte, jak:
 
 Označování projektů je spravováno z Azure Machine Learning. Stránku s **popisem projektů** můžete použít ke správě projektů a lidí. K projektu je přiřazen jeden nebo více týmů a tým má přiřazeného jednoho nebo více lidí.
 
-Pokud vaše data jsou už v úložišti objektů BLOB v Azure, měli byste je před vytvořením projektu s popisem zpřístupnit jako úložiště dat. Podrobnosti najdete v tématu [Vytvoření a registrace úložišť dat](https://docs.microsoft.com/azure/machine-learning/service/how-to-access-data#create-and-register-datastores).
+Pokud vaše data jsou už v úložišti objektů BLOB v Azure, měli byste je před vytvořením projektu s popisem zpřístupnit jako úložiště dat. Podrobnosti najdete v tématu [Vytvoření a registrace úložišť dat](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores).
 
 Chcete-li vytvořit projekt, vyberte možnost **Přidat projekt**. Dejte projektu vhodný název a vyberte **typ úlohy označování**.
 

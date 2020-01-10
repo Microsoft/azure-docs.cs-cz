@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 1c26e5c6b4bd484b643182e9e4ade3d71929fdba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 638a90615d248b3c2829770432dd6a08eb4bb2fb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75486206"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771730"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – příručka pro správce
 Správcům informačních technologií (IT), kteří spravují cloudové prostředky organizace, se obvykle zodpovídá za nastavení účtu testovacího prostředí pro svou organizaci. Správci nebo pedagogy vytvářejí učebn Labs v účtu testovacího prostředí. Tento článek poskytuje podrobný přehled o prostředcích Azure a pokyny pro jejich vytváření.
@@ -68,7 +68,7 @@ Následující seznam popisuje scénáře, ve kterých může být výhodné ví
 - **Oddělit rozpočet podle účtu testovacího prostředí**
 
     Místo toho, aby se všechny náklady na prostředí učebny nahlásily pro jeden účet testovacího prostředí, možná budete muset mít jasně oddělený rozpočet. V příkladu v předchozí odrážce byste mohli vytvořit účet testovacího prostředí pro každé středisko University, aby se rozpočet rozdělují odpovídajícím způsobem. Pomocí Azure Cost Management můžete zobrazit náklady na jednotlivé účty testovacího prostředí.
-• **Izolování pilotních cvičení z aktivní laboratoře**
+- **Izolace pilotních cvičení z aktivní laboratoře**
 
     Můžete mít případy, kdy chcete pilotní zásady změnit na účet testovacího prostředí, aniž by to mělo dopad na aktivní cvičení. V tomto typu scénáře vytvoření samostatného testovacího účtu pro účely pilotního nasazení umožňuje izolovat změny. 
 
@@ -129,7 +129,7 @@ Při nastavování prostředků Azure Lab Services je nutné zadat oblast nebo u
     Umístění účtu testovacího prostředí indikuje oblast pro tento prostředek. Učebna Labs vytvořená v účtu testovacího prostředí se dá nasadit do jakékoli oblasti v rámci stejné geografické oblasti. Konkrétní oblast, do které jsou nasazené virtuální počítače testovacího prostředí, se automaticky vybere v závislosti na kapacitě dostupné v oblasti v daném čase.  
     Pokud správce umožňuje tvůrcům testovacího prostředí zvolit umístění testovacího prostředí, budou umístění, která jsou k dispozici pro výběr, založena na dostupné místní kapacitě při vytváření testovacího prostředí.
 
-    Umístění testovacího prostředí pro učebnu také určuje, jaké výpočetní velikosti virtuálních počítačů jsou k dispozici pro výběr. Určité velikosti výpočetních prostředků jsou k dispozici pouze v rámci určitých umístění.
+    Umístění testovacího prostředí učebny také určuje, které výpočetní velikosti virtuálních počítačů jsou k dispozici pro výběr. Určité velikosti výpočetních prostředků jsou k dispozici pouze v rámci určitých umístění.
 - **Galerie sdílených imagí**
 
     Oblast označuje zdrojovou oblast, kde je uložena první verze obrázku před tím, než se automaticky replikuje do cílových oblastí.

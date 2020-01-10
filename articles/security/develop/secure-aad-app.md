@@ -1,10 +1,10 @@
 ---
 title: Vývoj zabezpečené webové aplikace Azure AD | Microsoft Docs
 description: Tato jednoduchá ukázková aplikace implementuje osvědčené postupy zabezpečení, které zlepšují vaši aplikaci a zabezpečení stav vaší organizace při vývoji v Azure.
-keywords: ná
+keywords: Není k dispozici
 services: security
 documentationcenter: na
-author: fehase
+author: TerryLanfear
 manager: alclabo
 editor: ''
 ms.assetid: cd906856-f4f9-4ddc-9249-c998386f4085
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
-ms.author: v-fehase
-ms.openlocfilehash: 88ef0874d760fb87700eac83c0d615be5887ddee
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.author: terrylan
+ms.openlocfilehash: a936fb4a0a6eadc2840fc6d642428091a6b0fe9e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159847"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771270"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Vývoj zabezpečené aplikace pro aplikaci Azure AD
 ## <a name="overview"></a>Přehled
@@ -55,7 +55,7 @@ Tato architektura se skládá z těchto součástí
 - [Azure Domain Name System](../../dns/dns-overview.md). Zadejte službu, která bude hostovat doménu.
 - [Azure Load Balancer:](../../load-balancer/load-balancer-overview.md) Umožňuje škálování aplikací a vytváření vysoké dostupnosti pro vaše služby.
 - [Webová aplikace Azure](../../app-service/overview.md).  Poskytuje službu založenou na protokolu HTTP pro hostování webových aplikací.
-- [Azure Security Center](../../security-center/index.yml). poskytuje rozšířenou ochranu před hrozbami napříč vašimi hybridními úlohami v cloudu.
+- v centru [Azure Security Center](../../security-center/index.yml). poskytuje rozšířenou ochranu před hrozbami napříč vašimi hybridními úlohami v cloudu.
 - [Azure Policy](../../governance/policy/overview.md). Poskytuje vyhodnocení prostředků pro nedodržování předpisů pomocí přiřazených zásad.
 
 ## <a name="threat-model"></a>Model hrozeb
@@ -71,7 +71,7 @@ Některé ukázkové hrozby a potenciální ohrožení zabezpečení, které ná
 
 ![Výstup modelu hrozeb](./media/secure-aad-app/threat-model-output.png)
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 Chcete-li aplikaci nainstalovat a spustit, je nutné nainstalovat tyto nástroje:
 
 - Editor kódu pro úpravu a zobrazení kódu aplikace. [Visual Studio Code](https://code.visualstudio.com/) je open-source možnost.
@@ -275,7 +275,7 @@ Azure App Service umožňuje sestavovat a hostovat webové aplikace s použitím
 
 ## <a name="guidance-and-recommendations"></a>Doprovodné materiály a doporučení
 
-### <a name="network"></a>Síť
+### <a name="network"></a>Network (Síť)
 Po dokončení nasazení máte bránu Application Gateway s povoleným firewallem webových aplikací.
 
 Instance brány zveřejňuje port 443 pro protokol HTTPS. Tato konfigurace zajišťuje, že naše aplikace je přístupná jenom na portu 443 přes protokol HTTPS.
@@ -334,7 +334,7 @@ Teď, když jste povolili integraci virtuální sítě, můžete do naší aplik
 
 5. V okně podsítě v NSG vyberte **přidružit**, vyberte virtuální síť vytvořenou v nasazení a vyberte podsíť brány s názvem **GS-Subnet**. NSG se aplikuje na podsíť.
 
-6. Vytvořte další NSG jako v předchozím kroku, tentokrát pro instanci App Service. Zadejte název. Přidejte příchozí pravidlo pro port 443 jako u služby Application Gateway NSG.
+6. Vytvořte další NSG jako v předchozím kroku, tentokrát pro instanci App Service. Pojmenujte ji. Přidejte příchozí pravidlo pro port 443 jako u služby Application Gateway NSG.
 
    Pokud máte nasazenou instanci App Service v instanci služby App Service Environment, která není pro tuto aplikaci případ, můžete přidat příchozí pravidla a povolit Azure Service Health sondy otevřením portů 454-455 v příchozích skupinách zabezpečení App Service NSG. Tady je konfigurace:
 
@@ -465,7 +465,7 @@ Povolení MFA pro přihlášení správce
    1. Přejít na kartu **Azure Active Directory** v Azure Portal
    2. V kategorii zabezpečení vyberte podmíněný přístup. Tato obrazovka se zobrazí
 
-       ![Podmíněný přístup – zásady](./media/secure-aad-app/ad-mfa-conditional-add.png)
+       ![Zásady podmíněného přístupu](./media/secure-aad-app/ad-mfa-conditional-add.png)
 
 Pokud nemůžete vytvořit novou zásadu
 
@@ -512,13 +512,13 @@ Vytvoření tohoto pracovního prostoru
    *Hledání Log Analytics pracovních prostorů*
 
    2. Na další stránce vyberte **Přidat** a potom zadejte název, skupinu prostředků a umístění pro pracovní prostor.
-   ![vytvořit pracovní prostor Log Analytics](./media/secure-aad-app/sentinel-log-analytics-create.png)
+   ![Vytvoření pracovního prostoru Log Analytics](./media/secure-aad-app/sentinel-log-analytics-create.png)
 
    *Vytvoření pracovního prostoru Log Analytics*
 
    3. Pomocí vyhledávacího pole vyhledejte službu **Azure Sentinel**.
 
-   ![Vyhledat Sentinel Azure](./media/secure-aad-app/sentinel-add.png)
+   ![Vyhledání textu Azure Sentinel](./media/secure-aad-app/sentinel-add.png)
 
    *Vyhledat Sentinel Azure*
 
@@ -544,7 +544,7 @@ Vytvoření tohoto pracovního prostoru
          
    *Přidat diagnostiku Application Gateway*
 
-   4. Na stránce **nastavení diagnostiky** vyberte pracovní prostor Log Analytics, který jste vytvořili, a pak vyberte všechny metriky, které chcete shromáždit a odeslat do Azure Sentinel. Vyberte **Save** (Uložit).
+   4. Na stránce **nastavení diagnostiky** vyberte pracovní prostor Log Analytics, který jste vytvořili, a pak vyberte všechny metriky, které chcete shromáždit a odeslat do Azure Sentinel. Vyberte **Uložit**.
 
    ![Nastavení konektoru služby Azure Sentinel](./media/secure-aad-app/sentinel-connector-settings.png)
 
@@ -558,6 +558,6 @@ Vytvoření tohoto pracovního prostoru
 ## <a name="next-steps"></a>Další kroky
    Následující články vám pomůžou při návrhu, vývoji a nasazení zabezpečených aplikací.
 
-- [Vytvořit](secure-design.md)
+- [Návrh](secure-design.md)
 - [Vývoj](secure-develop.md)
 - [Nasazení](secure-deploy.md)

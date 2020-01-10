@@ -3,12 +3,12 @@ title: Azure Functions – přehled verzí modulu runtime
 description: Azure Functions podporuje více verzí modulu runtime. Přečtěte si o rozdílech mezi nimi a o tom, jak zvolit tu, která je pro vás nejvhodnější.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 977d0cb445369cbc51ce3b90712d58ce8b6ebdc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1172f1cba3dfc10fe08863626db0aa8e7a4bf173
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433083"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769111"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions – přehled verzí modulu runtime
 
@@ -78,7 +78,7 @@ Ve verzi 2. x byly provedeny následující změny:
 
 ## <a name="migrating-from-2x-to-3x"></a>Migrace z 2. x na 3. x
 
-Azure Functions verze 3. x je vysoce zpětně kompatibilní s verzí 2. x.  Mnohé aplikace by měly být schopné bezpečně upgradovat na 3. x bez jakýchkoli změn kódu.  Při přechodu na 3. x je doporučováno, nezapomeňte spustit rozsáhlé testy před změnou hlavní verze v produkčních aplikacích.
+Verze Azure Functions 3. x je vysoce zpětně kompatibilní s verzí 2. x.  Mnohé aplikace by měly být schopné bezpečně upgradovat na 3. x bez jakýchkoli změn kódu.  Při přechodu na 3. x je doporučováno, nezapomeňte spustit rozsáhlé testy před změnou hlavní verze v produkčních aplikacích.
 
 ### <a name="breaking-changes-between-2x-and-3x"></a>Přerušení změn mezi 2. x a 3. x
 
@@ -119,7 +119,7 @@ Můžete provést následující aktualizace pro aplikace Functions, aby se mís
 
 #### <a name="visual-studio-runtime-versions"></a>Verze Visual Studio runtime
 
-V aplikaci Visual Studio vyberete verzi modulu runtime při vytváření projektu. Nástroje Azure Functions pro Visual Studio podporují hlavní verze modulu runtime. Správná verze se používá při ladění a publikování na základě nastavení projektu. Nastavení verze jsou definována v souboru `.csproj` v následujících vlastnostech:
+V aplikaci Visual Studio vyberete verzi modulu runtime při vytváření projektu. Nástroje Azure Functions pro Visual Studio podporují tři hlavní verze modulu runtime. Správná verze se používá při ladění a publikování na základě nastavení projektu. Nastavení verze jsou definována v souboru `.csproj` v následujících vlastnostech:
 
 ##### <a name="version-1x"></a>Verze 1. x
 
@@ -147,10 +147,10 @@ V aplikaci Visual Studio vyberete verzi modulu runtime při vytváření projekt
 
 ###### <a name="updating-2x-apps-to-3x-in-visual-studio"></a>Aktualizace 2. x aplikací na 3. x v aplikaci Visual Studio
 
-Můžete otevřít existující funkci cílící na 2. x a přesunout na 3. x úpravou souboru `.csproj` a aktualizací výše uvedených hodnot.  Visual Studio spravuje běhové verze automaticky pro vás na základě metadat projektu.  Je však možné, pokud jste ještě nevytvořili aplikaci 3. x ještě předtím, než Visual Studio ještě nemá šablony a modul runtime pro 3. x na vašem počítači.  Tato chyba se může vyskytovat s chybou, jako je například "není k dispozici modul runtime" bez funkcí, který odpovídá verzi zadané v projektu. "  Pokud chcete načíst nejnovější šablony a modul runtime, Projděte si prostředí a vytvořte nový projekt funkce.  Až se dostanete k výběru verze a šablony, počkejte, až Visual Studio dokončí načítání nejnovějších šablon.  Jakmile budou k dispozici nejnovější šablony .NET Core 3 a zobrazí se, měli byste být schopni spustit a ladit všechny projekty nakonfigurované pro verzi 3. x.
+Můžete otevřít existující funkci cílící na 2. x a přesunout na 3. x úpravou souboru `.csproj` a aktualizací výše uvedených hodnot.  Visual Studio spravuje běhové verze automaticky pro vás na základě metadat projektu.  Je však možné, pokud jste ještě nevytvořili aplikaci 3. x ještě předtím, než aplikace Visual Studio ještě nemá šablony a modul runtime pro 3. x na vašem počítači.  Tato chyba se může vyskytovat s chybou, jako je například "není k dispozici modul runtime" bez funkcí, který odpovídá verzi zadané v projektu. "  Pokud chcete načíst nejnovější šablony a modul runtime, Projděte si prostředí a vytvořte nový projekt funkce.  Až se dostanete k výběru verze a šablony, počkejte, až Visual Studio dokončí načítání nejnovějších šablon.  Jakmile budou k dispozici nejnovější šablony .NET Core 3 a zobrazí se, měli byste být schopni spustit a ladit všechny projekty nakonfigurované pro verzi 3. x.
 
 > [!IMPORTANT]
-> Funkce verze 3. x lze vyvíjet pouze v aplikaci Visual Studio, pokud používáte verzi 16,4 nebo novější.
+> Funkce verze 3. x lze vyvíjet pouze v aplikaci Visual Studio, pokud používáte Visual Studio verze 16,4 nebo novější.
 
 #### <a name="vs-code-and-azure-functions-core-tools"></a>VS Code a Azure Functions Core Tools
 

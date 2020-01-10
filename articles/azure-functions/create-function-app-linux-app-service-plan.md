@@ -3,12 +3,12 @@ title: Vytvoření aplikace Function App na platformě Linux z Azure Portal
 description: Naučíte se postup vytvoření první funkce Azure Function pro provádění pomocí webu Azure Portal bez serveru.
 ms.topic: quickstart
 ms.date: 02/28/2019
-ms.openlocfilehash: d48bfc8888afe6b7a46151d2030519f752169551
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1bae205c5d0466d06b499711c7af5bf7f3bbd88f
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410507"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769740"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Vytvoření aplikace Function App v systému Linux v plánu Azure App Service
 
@@ -24,7 +24,7 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com> pomocí s
 
 ## <a name="create-a-function-app"></a>Vytvoření Function App
 
-K hostování provádění funkcí v Linuxu musíte mít aplikaci funkcí. Aplikace funkcí poskytuje prostředí pro provádění kódu funkce. Umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. V tomto článku vytvoříte App Service plán při vytváření aplikace Function App.
+K hostování provádění funkcí v Linuxu musíte mít aplikaci funkcí. Aplikace funkcí poskytuje prostředí pro provádění kódu funkce. Umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování, škálování a sdílení prostředků. V tomto článku vytvoříte App Service plán při vytváření aplikace Function App.
 
 1. V levém horním rohu webu Azure Portal vyberte tlačítko **Vytvořit prostředek** a pak vyberte **Compute** > **Function App**.
 

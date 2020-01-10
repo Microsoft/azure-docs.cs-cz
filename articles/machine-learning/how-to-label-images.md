@@ -7,16 +7,16 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 7ff3651d082f1649326e1b41b13fa177069c40d3
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 1e27fca86613757c36ac664e2e449cabed68d550
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533367"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772444"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Označení obrázků v projektu s popisem
 
-Poté, co správce projektu [vytvoří projekt označování](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-labeling-projects#create-a-labeling-project) v Azure Machine Learning, můžete použít nástroj pro popisování k rychlé přípravě dat projektu Machine Learning. Tento článek popisuje:
+Poté, co správce projektu [vytvoří projekt označování](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) v Azure Machine Learning, můžete použít nástroj pro popisování k rychlé přípravě dat projektu Machine Learning. Tento článek popisuje:
 
 > [!div class="checklist"]
 > * Jak získat přístup k projektům označování
@@ -114,5 +114,5 @@ Až budete s popiskem hotovi, vyberte své jméno v pravém horním rohu portál
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte se naučit [modely klasifikace imagí v Azure](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml) .
+* Naučte se naučit [modely klasifikace imagí v Azure](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml) .
 * Přečtěte si o [detekci objektů pomocí Azure a "rychlejší R-CNN" technika](https://www.microsoft.com/developerblog/2017/10/24/bird-detection-with-azure-ml-workbench/)

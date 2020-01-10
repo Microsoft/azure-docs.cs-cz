@@ -4,12 +4,12 @@ description: Přečtěte si o službě Azure Migrate.
 ms.topic: overview
 ms.date: 12/29/2019
 ms.custom: mvc
-ms.openlocfilehash: 983ba420067bf2e4b6416287d8898943142c90c0
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: c336b2f95a17896edcc7eaad2b2586c6859804f9
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563560"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772189"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
@@ -39,7 +39,7 @@ Centrum Azure Migrate poskytuje následující nástroje.
 **Database Migration Service (DMS)** | Migrujte místní databáze na virtuální počítače Azure, na kterých běží SQL, Azure SQL DB a spravované instance Azure SQL. | [Přečtěte si další informace](https://docs.microsoft.com/azure/dms/dms-overview) o DMS.
 **Movere** | Vyhodnotit servery | [Přečtěte si další informace](#movere) o stěhovací společnosti.
 **Pomocník s migrací webové aplikace** | Posouzení a migrace místních webových aplikací do Azure |  Pomocník s migrací Azure App Service použijte k vyhodnocení místních webů pro migraci na Azure App Service.<br/><br/> Migrujte webové aplikace .NET a PHP do Azure pomocí Azure App Service Pomocník s migrací. [Přečtěte si další informace](https://appmigration.microsoft.com/) o Pomocníkovi.
-**Azure Data Box** | Migrace offline dat. | Pomocí Azure Data Box produktů můžete do Azure přesunout velké objemy dat offline. [Další informace](https:/docs.microsoft.com/azure/databox/).
+**Azure Data Box** | Migrace offline dat. | Pomocí Azure Data Box produktů můžete do Azure přesunout velké objemy dat offline. [Další informace](https://docs.microsoft.com/azure/databox/).
 
 ## <a name="isv-integration"></a>Integrace ISV
 

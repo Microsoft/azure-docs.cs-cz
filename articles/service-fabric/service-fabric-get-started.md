@@ -3,26 +3,30 @@ title: Nastavení vývojového prostředí pro Windows
 description: Nainstalujte modul runtime, sadu SDK a nástroje a vytvořte místní vývojový cluster. Po dokončení této instalace a nastavení budete moci sestavovat aplikace ve Windows.
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 11/18/2019
-ms.openlocfilehash: 9e055a0674804a15d307a879fd8cb609e3c2631d
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.date: 01/07/2020
+ms.custom: sfrev
+ms.openlocfilehash: e65ba228540529ec1f852442ebc838a60631fa5c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614379"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750209"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Příprava vývojového prostředí ve Windows
+
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started.md) 
 > * [Linux](service-fabric-get-started-linux.md)
 > * [OSX](service-fabric-get-started-mac.md)
-> 
-> 
+>
+>
 
 Pokud chcete vytvářet a spouštět [aplikace Service Fabric Azure][1] na vývojovém počítači s Windows, nainstalujte Service Fabric runtime, sadu SDK a nástroje. Musíte také [povolit spouštění skriptů Windows PowerShellu](#enable-powershell-script-execution), které jsou součástí sady SDK.
 
 ## <a name="prerequisites"></a>Požadavky
+
 ### <a name="supported-operating-system-versions"></a>Podporované verze operačních systémů
+
 Pro vývoj jsou podporovány tyto verze operačních systémů:
 
 * Windows 7
@@ -33,32 +37,37 @@ Pro vývoj jsou podporovány tyto verze operačních systémů:
 
 > [!NOTE]
 > Podpora Windows 7:
-> - Windows 7 ve výchozím nastavení obsahuje jenom prostředí Windows PowerShell 2.0 Rutiny prostředí PowerShell pro Service Fabric vyžadují PowerShell 3.0 nebo novější. [Windows PowerShell 5,0][powershell5-download] si můžete stáhnout z webu Stažení softwaru.
+> - Windows 7 ve výchozím nastavení obsahuje jenom prostředí Windows PowerShell 2.0 Rutiny prostředí PowerShell pro Service Fabric vyžadují PowerShell 3.0 nebo novější. [Windows PowerShell 5,1][powershell5-download] si můžete stáhnout z webu Stažení softwaru.
 > - Reverzní proxy Service Fabric není ve Windows 7 k dispozici.
->
 
 ## <a name="install-the-sdk-and-tools"></a>Instalace sady SDK a nástrojů
+
 Instalační program webové platformy (WebPI) je doporučeným způsobem, jak nainstalovat sadu SDK a nástroje. Pokud obdržíte chyby za běhu pomocí WebPI, můžete také najít přímé odkazy na instalační programy v poznámkách k verzi pro konkrétní verzi Service Fabric. Poznámky k verzi najdete v různých oznámeních k vydaným verzím na [blogu týmu Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/).
 
 > [!NOTE]
 > Upgrade místních Service Fabric vývoje clusteru se nepodporuje.
 
 ### <a name="to-use-visual-studio-2017-or-2019"></a>Použití sady Visual Studio 2017 nebo 2019
+
 Nástroje Service Fabric jsou součástí úlohy vývoje Azure v prostředí Visual Studio 2017 a 2019. Povolte tuto úlohu jako součást instalace sady Visual Studio.
 Kromě toho budete muset pomocí Instalace webové platformy nainstalovat sadu Microsoft Azure Service Fabric SDK a modul runtime.
 
 * [Nainstalovat sadu Microsoft Azure Service Fabric SDK][core-sdk].
 
 ### <a name="to-use-visual-studio-2015-requires-visual-studio-2015-update-2-or-later"></a>Použití sady Visual Studio 2015 (vyžaduje Visual Studio 2015 Update 2 nebo novější)
+
 Pro sadu Visual Studio 2015 se nástroje Service Fabric nainstalují společně se sadou SDK a modulem runtime pomocí Instalace webové platformy:
 
 * [Instalace Microsoft Azure Service Fabric SDK a nástrojů][full-bundle-vs2015]
 
 ### <a name="sdk-installation-only"></a>Jenom instalace sady SDK
+
 Pokud potřebujete jenom sadu SDK, můžete nainstalovat tento balíček:
+
 * [Nainstalovat sadu Microsoft Azure Service Fabric SDK][core-sdk].
 
 Aktuální verze jsou:
+
 * 4\.0.457 SDK a nástroje pro Service Fabric
 * Service Fabric modulu runtime 7.0.457
 
@@ -68,15 +77,19 @@ Seznam podporovaných verzí najdete v tématu [Service Fabric verze](service-fa
 > Clustery s jedním počítačem (OneBox) nejsou pro upgrady aplikací nebo clusterů podporovány; Odstraňte cluster OneBox a znovu ho vytvořte, pokud potřebujete provést upgrade clusteru nebo máte problémy s upgradem aplikace. 
 
 ## <a name="enable-powershell-script-execution"></a>Povolení spouštění skriptů prostředí PowerShell
+
 Platforma Service Fabric používá skripty prostředí Windows PowerShell k vytvoření místního vývojového clusteru a k nasazení aplikací ze sady Visual Studio. Systém Windows ve výchozím nastavení spouštění těchto skriptů blokuje. Pokud je chcete povolit, musíte upravit zásady spouštění prostředí PowerShell. Otevřete prostředí PowerShell jako správce a zadejte tento příkaz:
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ```
+
 ## <a name="install-docker-optional"></a>Nainstalovat Docker (volitelné)
+
 [Service Fabric je kontejner Orchestrator](service-fabric-containers-overview.md) pro nasazení mikroslužeb napříč clusterem počítačů. Chcete-li spustit aplikace služby Windows Container v místním vývojovém clusteru, je nutné nejprve nainstalovat Docker for Windows. Získat [Docker CE for Windows (stabilní)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description) Po nainstalování a spuštění Dockeru klikněte pravým tlačítkem myši na ikonu na hlavním panelu a vyberte **Switch to Windows containers** (Přepnout na kontejnery Windows). Tento krok se vyžaduje pro spuštění imagí Dockeru založených na Windows.
 
 ## <a name="next-steps"></a>Další kroky
+
 Teď, když jste dokončili nastavení vývojového prostředí, můžete začít sestavovat a spouštět aplikace.
 
 * [Naučte se vytvářet, nasazovat a spravovat aplikace.](service-fabric-tutorial-create-dotnet-app.md)
@@ -90,4 +103,4 @@ Teď, když jste dokončili nastavení vývojového prostředí, můžete začí
 [full-bundle-vs2015]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "Odkaz na VS 2015 WebPI"
 [full-bundle-dev15]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Odkaz na Dev15 WebPI"
 [core-sdk]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "Odkaz na Core SDK WebPI"
-[powershell5-download]:https://www.microsoft.com/en-us/download/details.aspx?id=50395
+[powershell5-download]:https://www.microsoft.com/download/details.aspx?id=54616

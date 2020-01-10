@@ -5,12 +5,12 @@ author: ahmedelnably
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: aelnably
-ms.openlocfilehash: 4ebf6ecea0b08f416bd1bd11382116dda2107ecf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f4af646569edc8a9274af752e7e4f2a36585ae4d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75409656"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769094"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Monitorování Azure Functions pomocí protokolů Azure Monitor
 
@@ -25,11 +25,11 @@ Azure Monitor používá verzi [dotazovacího jazyka Kusto](/azure/kusto/query/)
 
 ## <a name="setting-up"></a>Nastavení
 
-V části monitorování vyberte **nastavení diagnostiky** a pak klikněte na **Přidat**.
+V části **monitorování** vyberte **nastavení diagnostiky** a pak klikněte na **Přidat nastavení diagnostiky**.
 
 ![Přidat nastavení diagnostiky](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
 
-Na stránce nastavení vyberte **Odeslat do Log Analytics**a v části **protokol** zvolit **FunctionAppLogs**, tato tabulka obsahuje požadované protokoly.
+Na stránce **nastavení diagnostiky** zvolte **Odeslat do Log Analytics**a potom vyberte pracovní prostor Log Analytics. V části **protokol** zvolit **FunctionAppLogs**, tato tabulka obsahuje požadované protokoly.
 
 ![Přidat nastavení diagnostiky](media/functions-monitor-log-analytics/choose-table.png)
 
@@ -72,7 +72,7 @@ logging.info('My app logs here.')
 
 ## <a name="querying-the-logs"></a>Dotazování protokolů
 
-Pokud chcete zadat dotaz na vygenerované protokoly, přejděte do pracovního prostoru Log Analytics a klikněte na **protokoly**.
+Pokud chcete zadat dotaz na vygenerované protokoly, přejděte do pracovního prostoru Log Analytics, který jste nakonfigurovali pro odeslání protokolů funkce, a klikněte na **protokoly**.
 
 ![Okno dotazu v pracovním prostoru LA](media/functions-monitor-log-analytics/querying.png)
 

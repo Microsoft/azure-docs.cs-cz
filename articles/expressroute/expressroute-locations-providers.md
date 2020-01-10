@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 01/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1eb68f527bd764189459d454f929def0fd71d987
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 803451ca3e011cc60a4b87ce0d6a1e15a09c5f40
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561129"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750549"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -115,7 +115,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **New York** | [Equinix NY9](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny9/) | 1\. místo | – | – | CenturyLink Cloud Connect, Colt, Coresite, Equinix, spolucloud, Megaport, Packet, Zayo |
 | **Newport(Wales)** | [Brána firewall příští generace](https://www.nextgenerationdata.co.uk) | 1\. místo | Velká Británie – západ | – | British Telecom, Colt, Level 3 Communications, data nové generace |
 | **Ósaka** | [Equinix OS1](https://www.equinix.com/locations/asia-colocation/japan-colocation/osaka-data-centers/os1/) | 2 | Japonsko – západ | 10G, 100G | Colt, Equinix, Internet Initiative Japonska Inc. – IIJ, NTT Communications, NTT SmartConnect, Softbank |
-| **Oslo** | [DigiPlex Ulven](https://www.digiplex.com/locations/oslo-datacentre) | 1\. místo | Norsko – východ | 10G, 100G | Telenor |
+| **Oslo** | [DigiPlex Ulven](https://www.digiplex.com/locations/oslo-datacentre) | 1\. místo | Norsko – východ | 10G, 100G | Megaport, Telenor, Telia dopravce |
 | **Paříž** | [Interxion PAR5](https://www.interxion.com/Locations/paris/) | 1\. místo | Francie – střed | – | CenturyLink Cloud Connect, Colt, Equinix, Intercloud, Interxion, Orange, Telia Carrier, Zayo |
 | **Perth** | [NextDC P1](https://www.nextdc.com/data-centres/p1-perth-data-centre) | 2 | – | 10G | Megaport, NextDC |
 | **Québec** | [Vantage](https://vantage-dc.com/data_centers/quebec-city-data-center-campus/) | 1\. místo | Východní Kanada | – | Bell Canada, Megaport |
@@ -134,8 +134,8 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **WAN** | Hlavní telekomunikační systémy | 2 | – | 10G | Generální telekomunikace, FarEasTone |
 | **Tokio** | [Equinix TY4](https://www.equinix.com/locations/asia-colocation/japan-colocation/tokyo-data-centers/ty4/) | 2 | Japonsko – východ | 10G, 100G | Aryaka Networks sítě, v & T NetBond, British Telecom, CenturyLink Cloud Connect, Colt, Equinix, Internet Initiative Japonsko Inc.-IIJ, Megaport, NTT Communications, NTT východní, oranžová, Softbank, Verizon |
 | **Toronto** | [Cologix TOR1](https://www.cologix.com/data-centers/toronto/tor1/) | 1\. místo | Střední Kanada | 10G, 100G | AT&T NetBond, Bell Canada, CenturyLink Cloud Connect, Cologix, Equinix, IX Reach Megaport, Telus, Verizon, Zayo |
-| **Washington, D.C.** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | 1\. místo | Východní USA Východní USA 2 | 10G, 100G | Aryaka Networks sítě, v & T NetBond, British Telecom, CenturyLink Cloud Connect, Cologix, Colt, Comcastu, Coresite, Equinix, Internet2, spolucloud, Level 3 Communications, Megaport, Neutrona Networks, NTT Communications, pomeranče, PacketFabric, SES, Sprint, Tata komunikace, Telia dopravce, Verizon, Zayo |
-| **Washington DC2** | [Coresite Restonu](https://www.coresite.com/data-centers/locations/northern-virginia-washington-dc/reston-campus) | 1\. místo | Východní USA Východní USA 2 | 10G, 100G | CenturyLink Cloud Connect, Coresite, Viasat, Zayo | 
+| **Washington, D.C.** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | 1\. místo | Východní USA Východní USA 2 | 10G, 100G | Aryaka Networks sítě, v & T NetBond, British Telecom, CenturyLink Cloud Connect, Cologix, Colt, Comcastu, Coresite, Equinix, Internet2, spolucloudu, IX dosažitelný, Level 3 Communications, Megaport, Neutrona Networks, NTT Communications, pomeranče, PacketFabric, SES , Sprint, Tata Communications, Telia dopravce, Verizon, Zayo |
+| **Washington DC2** | [Coresite Restonu](https://www.coresite.com/data-centers/locations/northern-virginia-washington-dc/reston-campus) | 1\. místo | Východní USA Východní USA 2 | 10G, 100G | CenturyLink Cloud Connect, Coresite, Intelsat, Viasat, Zayo | 
 | **Curych** | [Interxion ZUR2](https://www.interxion.com/Locations/zurich/) | 1\. místo | Švýcarsko – sever | – | Spolucloud, Interxion, Megaport, Swisscom |
 
  **+** označuje brzké uvedení.

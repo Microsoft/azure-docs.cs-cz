@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: ffd459980c4750295e1045c3f8c1bb7fc18a25df
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: b413fd7efe865f1dc2062a8f2dcfae983ec2f27a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689364"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771917"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -118,7 +118,7 @@ Zobrazit [seznam známých problémů](resource-known-issues.md) Další informa
     + Opravili jsme problém s zavaděčem pytorch pro úlohu detekce objektu.
   + **AzureML-contrib – interpretace**
     + Odebrali jsme widget na řídicím panelu vysvětlení z AzureML-contrib-interpretované, změněného balíčku, který odkazuje na nový v interpret_community
-    + Aktualizovaná verze interpretu – komunita na 0.2.0
+    + aktualizovaná verze interpretu – komunita na 0.2.0
   + **azureml-core**
     + Zvyšte výkon `workspace.datasets`.
     + Přidání možnosti registrace Azure SQL Database úložiště dat pomocí ověřování uživatelského jména a hesla
@@ -228,7 +228,7 @@ Mezi hlavní funkce sady SDK patří:
 
 ### <a name="azure-machine-learning-integration-with-event-grid"></a>Azure Machine Learning integrace s Event Grid 
 
-Azure Machine Learning je teď poskytovatel prostředků pro Event Grid, můžete nakonfigurovat události strojového učení prostřednictvím rozhraní příkazového řádku Azure Portal nebo Azure CLI. Uživatelé můžou vytvářet události pro dokončení běhu, registraci modelů, nasazení modelů a rozpoznání posunu dat. Tyto události mohou být směrovány do obslužných rutin událostí podporovaných Event Grid pro spotřebu. Další podrobnosti najdete v článku věnovaném [schématu](https://docs.microsoft.com/azure/event-grid/event-schema-machine-learning)událostí machine learningu, [konceptům](https://docs.microsoft.com/azure/machine-learning/service/concept-event-grid-integration) a [kurzům](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-event-grid) .
+Azure Machine Learning je teď poskytovatel prostředků pro Event Grid, můžete nakonfigurovat události strojového učení prostřednictvím rozhraní příkazového řádku Azure Portal nebo Azure CLI. Uživatelé můžou vytvářet události pro dokončení běhu, registraci modelů, nasazení modelů a rozpoznání posunu dat. Tyto události mohou být směrovány do obslužných rutin událostí podporovaných Event Grid pro spotřebu. Další podrobnosti najdete v článku věnovaném [schématu](https://docs.microsoft.com/azure/event-grid/event-schema-machine-learning)událostí machine learningu, [konceptům](https://docs.microsoft.com/azure/machine-learning/concept-event-grid-integration) a [kurzům](https://docs.microsoft.com/azure/machine-learning/how-to-use-event-grid) .
 
 ## <a name="2019-10-31"></a>2019-10-31
 
@@ -236,7 +236,7 @@ Azure Machine Learning je teď poskytovatel prostředků pro Event Grid, můžet
 
 + **Nové funkce**
   + Přidali jsme monitorování datových sad prostřednictvím balíčku [**AzureML-** ](https://docs.microsoft.com/python/api/azureml-datadrift) datamarketo, což umožňuje monitorovat datové sady časových řad pro posun dat nebo jiné statistické změny v průběhu času. Výstrahy a události mohou být aktivovány, pokud je zjištěn posun nebo jsou splněny jiné podmínky pro data. Podrobnosti najdete v [naší dokumentaci](https://aka.ms/datadrift) .
-  + Oznamujeme dvě nové edice (označované také jako zaměnitelné SKU) v Azure Machine Learning. V této verzi teď můžete vytvořit pracovní prostor Basic nebo Enterprise Azure Machine Learning. Všechny existující pracovní prostory budou ve výchozím nastavení pro edici Basic a můžete přejít na Azure Portal nebo do studia a kdykoli upgradovat pracovní prostor. Z Azure Portal můžete vytvořit pracovní prostor Basic nebo Enterprise. Další informace najdete v [naší dokumentaci](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace) . V sadě SDK se dá edice pracovního prostoru určit pomocí vlastnosti SKU objektu pracovního prostoru.
+  + Oznamujeme dvě nové edice (označované také jako zaměnitelné SKU) v Azure Machine Learning. V této verzi teď můžete vytvořit pracovní prostor Basic nebo Enterprise Azure Machine Learning. Všechny existující pracovní prostory budou ve výchozím nastavení pro edici Basic a můžete přejít na Azure Portal nebo do studia a kdykoli upgradovat pracovní prostor. Z Azure Portal můžete vytvořit pracovní prostor Basic nebo Enterprise. Další informace najdete v [naší dokumentaci](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace) . V sadě SDK se dá edice pracovního prostoru určit pomocí vlastnosti SKU objektu pracovního prostoru.
   + Provedli jsme také vylepšení Azure Machine Learning COMPUTE – nyní můžete zobrazit metriky pro vaše clustery (jako celkem uzlů, spuštěné uzly, celková základní kvóta) v Azure Monitor, kromě zobrazení diagnostických protokolů pro ladění. Kromě toho můžete také zobrazit aktuálně spuštěné nebo zařazené běhy na clusteru a podrobnosti, jako jsou například IP adresy různých uzlů v clusteru. Můžete je zobrazit buď na portálu, nebo pomocí odpovídajících funkcí v sadě SDK nebo rozhraní příkazového řádku.
 
   + **Funkce ve verzi Preview**
@@ -1031,7 +1031,7 @@ Změnili jsme změnu, která zlepšila výkon, protože způsobila problémům p
   + Automatizované nové funkce strojového učení:
     + STL featurizer pro prognózování
     + Clustering KMeans je povolený pro rozmazání funkcí.
-  + AmlCompute se schvalování kvót jenom rychleji. Nyní jsme automatizovaný proces schvalování vašich žádostí o kvótu v rámci prahové hodnoty. Další informace o tom, jak kvóty fungují, najdete v tématu [Správa kvót](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas).
+  + AmlCompute se schvalování kvót jenom rychleji. Nyní jsme automatizovaný proces schvalování vašich žádostí o kvótu v rámci prahové hodnoty. Další informace o tom, jak kvóty fungují, najdete v tématu [Správa kvót](https://docs.microsoft.com/azure/machine-learning/how-to-manage-quotas).
 
 + **Funkce ve verzi Preview**
     + Integrace se sledováním [MLflow](https://mlflow.org) 1.0.0 prostřednictvím balíčku AzureML-MLflow ([ukázkových poznámkových bloků](https://aka.ms/azureml-mlflow-examples)).

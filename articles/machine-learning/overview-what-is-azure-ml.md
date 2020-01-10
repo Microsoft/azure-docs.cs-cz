@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: aea3e6d0e7b0a1d2f28d67f013701a9af5c3ba70
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: cd94001cfe795e7aa78a1332325052afce6b8ec6
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533941"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75762792"
 ---
 # <a name="what-is-azure-machine-learning"></a>Co je Azure Machine Learning?
 
@@ -46,13 +46,13 @@ Azure Machine Learning poskytuje vývojářům a odborníkům přes data, kteř�
 
 + Skripty nebo notebooky r, ve kterých používáte <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">sadu SDK pro R</a> k psaní vlastního kódu nebo použití modulů R v návrháři.
 
-+ [Rozšíření Visual Studio Code](service/how-to-vscode-tools.md)
++ [Rozšíření Visual Studio Code](how-to-vscode-tools.md)
 
 + [Rozhraní příkazového řádku pro Machine Learning](reference-azure-machine-learning-cli.md)
 
 + Open Source architektury, jako jsou PyTorch, TensorFlow a scikit – Naučte se a mnoho dalšího
 
-Můžete dokonce použít [MLflow ke sledování metrik a nasazení modelů](service/how-to-use-mlflow.md) nebo Kubeflow k [sestavení koncových kanálů pracovního postupu](https://www.kubeflow.org/docs/azure/).
+Můžete dokonce použít [MLflow ke sledování metrik a nasazení modelů](how-to-use-mlflow.md) nebo Kubeflow k [sestavení koncových kanálů pracovního postupu](https://www.kubeflow.org/docs/azure/).
 
 ## <a name="build-ml-models-in-python-or-r"></a>Vytváření modelů ML v Pythonu nebo R
 
@@ -104,12 +104,12 @@ Azure Machine Learning funguje s ostatními službami na platformě Azure a inte
 
 + Výpočetní cíle, jako je __Služba Azure Kubernetes__, __Azure Container Instances__, __Azure Databricks__, __Azure Data Lake Analytics__a __Azure HDInsight__. Další informace o výpočetních cílech najdete v tématu [co jsou výpočetní cíle?](concept-compute-target.md).
 + __Azure Event Grid__. Další informace najdete v tématu věnovaném [využívání Azure Machine Learningch událostí](concept-event-grid-integration.md).
-+ __Azure Monitor__. Další informace najdete v tématu [monitorování Azure Machine Learning](service/monitor-azure-machine-learning.md).
++ __Azure Monitor__. Další informace najdete v tématu [monitorování Azure Machine Learning](monitor-azure-machine-learning.md).
 + Úložiště dat, jako jsou __účty Azure Storage__, __Azure Data Lake Storage__, __Azure SQL Database__, __Azure Database for PostgreSQL__a __Azure Open DataSet__. Další informace najdete v tématech [přístup k datům ve službě Azure Storage Services](how-to-access-data.md) a [vytváření datových sad pomocí Azure Open DataSets](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets).
 + __Virtuální sítě Azure__. Další informace najdete v tématu [zabezpečené experimenty a odvozování ve virtuální síti](how-to-enable-virtual-network.md).
 + __Kanály Azure__. Další informace najdete v tématu [výuka a nasazení modelů strojového učení](/azure/devops/pipelines/targets/azure-machine-learning).
 + __Protokoly úložiště Git__ Další informace najdete v tématu [integrace Gitu](concept-train-model-git-integration.md).
-+ __MLFlow__. Další informace najdete v tématu [MLflow ke sledování metrik a nasazení modelů](service/how-to-use-mlflow.md) . 
++ __MLFlow__. Další informace najdete v tématu [MLflow ke sledování metrik a nasazení modelů](how-to-use-mlflow.md) . 
 + __Kubeflow__. Další informace najdete v tématu [vytváření koncových kanálů pracovního postupu](https://www.kubeflow.org/docs/azure/).
 
 ### <a name="secure-communications"></a>Zabezpečená komunikace
@@ -135,10 +135,10 @@ Zákazníci se za tuto dobu účtují za náklady, které se týkají výpočtů
 - Vytvořte svůj první experiment s upřednostňovanou metodou:
   + [Použití poznámkových bloků Pythonu k učení & nasazení modelů ML](tutorial-1st-experiment-sdk-setup.md)
   + [Použití R Markdown ke školení & nasazení modelů ML](tutorial-1st-r-experiment.md) 
-  + [Použití automatizovaného strojového učení ke studiu & nasazení modelů ML](  service/tutorial-first-experiment-automated-ml.md) 
+  + [Použití automatizovaného strojového učení ke studiu & nasazení modelů ML](tutorial-first-experiment-automated-ml.md) 
   + [Použití možností přetažení & designeru pro výuku & nasazení](tutorial-designer-automobile-price-train-score.md) 
   + [Použití rozhraní příkazového učení pro strojové učení ke školení a nasazení modelu](tutorial-train-deploy-model-cli.md)
 
-- Seznamte se s [kanály strojového učení](/azure/machine-learning/service/concept-ml-pipelines), které umožňují vytvářet, optimalizovat a spravovat scénáře strojového učení.
+- Seznamte se s [kanály strojového učení](concept-ml-pipelines.md), které umožňují vytvářet, optimalizovat a spravovat scénáře strojového učení.
 
 - Přečtěte si podrobnou [architekturu Azure Machine Learning a koncepty](concept-azure-machine-learning-architecture.md) .

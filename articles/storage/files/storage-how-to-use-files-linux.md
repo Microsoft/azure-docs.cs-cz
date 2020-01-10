@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3d8d7c6d3c4e752480310c122bcb7db237b3022b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0ef9609cded29c94260d027212abbf0c62f8653c
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209414"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772104"
 ---
 # <a name="use-azure-files-with-linux"></a>Použití služby Soubory Azure s Linuxem
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v rámci distribucí systému Linux pomocí [klienta jádra protokolu SMB](https://wiki.samba.org/index.php/LinuxCIFS). Tento článek ukazuje dva způsoby, jak připojit sdílenou složku Azure: na vyžádání pomocí příkazu `mount` a spuštění po vytvoření položky v `/etc/fstab`.
@@ -80,7 +80,7 @@ uname -r
         --name $storageAccountName \
         --query "primaryEndpoints.file" | tr -d '"')
     smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))
-    fileHost=$(echo $fileHost | tr -d "/")
+    fileHost=$(echo $smbPath | tr -d "/")
 
     nc -zvw3 $fileHost 445
     ```

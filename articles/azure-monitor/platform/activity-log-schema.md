@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 12/04/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: df2594165909c55de2de562c9717299d189a20d3
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 272b71fe5fddea9299e5d660484fcbb3eb367d58
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531016"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749465"
 ---
 # <a name="azure-activity-log-event-schema"></a>Schéma událostí protokolu aktivit Azure
-[Protokol aktivit Azure](activity-logs-overview.md) poskytuje přehled o všech událostech na úrovni předplatného, ke kterým došlo v Azure. Tento článek popisuje schéma událostí pro jednotlivé kategorie. 
+[Protokol aktivit Azure](platform-logs-overview.md) poskytuje přehled o všech událostech na úrovni předplatného, ke kterým došlo v Azure. Tento článek popisuje schéma událostí pro jednotlivé kategorie. 
 
 Následující příklady znázorňují schéma při přístupu k protokolu aktivit z portálu, PowerShellu, CLI a REST API. Schéma se liší při [streamování protokolu aktivit do úložiště nebo Event Hubs](resource-logs-stream-event-hubs.md). Mapování vlastností [schématu protokolů prostředků](diagnostic-logs-schema.md) je k dispozici na konci článku.
 
@@ -865,6 +865,6 @@ Následuje příklad události s použitím tohoto schématu..
 
 
 ## <a name="next-steps"></a>Další kroky
-* [Další informace o protokolu aktivit](activity-logs-overview.md)
+* [Další informace o protokolu aktivit](platform-logs-overview.md)
 * [Vytvoření nastavení diagnostiky pro odesílání protokolu aktivit do Log Analytics pracovního prostoru, úložiště Azure nebo Center událostí](diagnostic-settings.md)
 

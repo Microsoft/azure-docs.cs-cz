@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 92ff08d460e9bf11b49700570a156a101811a533
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0df55f4ce790d6ea38f44ce0ca6dab43085c3455
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436009"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770913"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -133,7 +133,7 @@ Většina aplikací musí ukládat data, takže se ale rozhodnete hostovat svou 
   > **Začínáme**: [Vytvoření databáze SQL během pár minut pomocí Azure Portal](../../sql-database/sql-database-get-started.md).
 
 
-Pomocí [Azure Data Factory](../../data-factory/introduction.md) můžete přesunout existující místní data do Azure. Pokud nejste připraveni přesunout data do cloudu, [Hybrid Connections](../../biztalk-services/integration-hybrid-connection-overview.md) v BizTalk Services umožňuje připojit vaši aplikaci v App Service hostované k místním prostředkům. Můžete se také připojit ke službě Azure data a Storage z vašich místních aplikací.
+Pomocí [Azure Data Factory](../../data-factory/introduction.md) můžete přesunout existující místní data do Azure. Pokud nejste připraveni přesunout data do cloudu, [Hybrid Connections](../../app-service/app-service-hybrid-connections.md) v Azure App Service umožňuje připojit vaši aplikaci v App Service hostované k místním prostředkům. Můžete se také připojit ke službě Azure data a Storage z vašich místních aplikací.
 
 #### <a name="docker-support"></a>Podpora Docker
 
@@ -147,11 +147,11 @@ Azure nabízí několik způsobů použití kontejnerů ve vašich aplikacích.
   > 
   > **Začínáme**: [vytvoření prostředí Docker v Azure pomocí rozšíření Docker VM](../../virtual-machines/virtual-machines-linux-dockerextension.md).
 
-- **Azure Container Service**: umožňuje vytvořit, konfigurovat a spravovat cluster virtuálních počítačů, které jsou předem nakonfigurované pro spouštění kontejnerových aplikací. Další informace o službě Container Service najdete v tématu [Azure Container Service Úvod](../../container-service/container-service-intro.md).
+- **Služba Azure Kubernetes**: umožňuje vytváření, konfiguraci a správu clusteru virtuálních počítačů, které jsou předem nakonfigurované pro spouštění kontejnerových aplikací. Další informace o službě Azure Kubernetes najdete v tématu [Úvod do služby Azure Kubernetes](../../aks/intro-kubernetes.md).
 
   > **Kdy použít**: když potřebujete vytvořit škálovatelná prostředí pro produkční prostředí, která poskytují další nástroje pro plánování a správu, nebo když nasazujete cluster Docker Swarm.
   > 
-  > **Začínáme**: [nasazení clusteru služby Container Service](../../container-service/dcos-swarm/container-service-deployment.md).
+  > **Začínáme**: [nasazení clusteru služby Kubernetes](../../aks/tutorial-kubernetes-deploy-cluster.md)
 
 - **Docker Machine**: umožňuje nainstalovat a spravovat modul Docker na virtuálních hostitelích pomocí příkazů Docker-Machine.
 
@@ -185,7 +185,7 @@ Další informace o osvědčených postupech zabezpečení v Azure najdete v té
 
 Když vaše aplikace běží v Azure, je potřeba monitorovat výkon, sledovat problémy a zjistit, jak zákazníci používají vaši aplikaci. Azure nabízí několik možností monitorování.
 
--   **Visual Studio Application Insights**: rozšiřitelná analytická služba Azure, která se integruje se sadou Visual Studio a monitoruje vaše živé webové aplikace. Poskytuje data, která potřebujete k nepřetržitému zlepšení výkonu a použitelnosti aplikací. K tomuto vylepšení dochází bez ohledu na to, jestli hostete své aplikace v Azure.
+-   **Application Insights**: rozšiřitelná služba Extensible Analytics hostovaná v Azure, která se integruje se sadou Visual Studio a monitoruje vaše živé webové aplikace. Poskytuje data, která potřebujete k nepřetržitému zlepšení výkonu a použitelnosti aplikací. K tomuto vylepšení dochází bez ohledu na to, jestli hostete své aplikace v Azure.
 
     >**Začínáme**: postupujte podle [kurzu Application Insights](../../azure-monitor/app/app-insights-overview.md).
 

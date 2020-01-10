@@ -3,12 +3,12 @@ title: Zásady správného řízení prostředků pro kontejnery a služby
 description: Azure Service Fabric umožňuje zadat omezení prostředků pro služby běžící uvnitř nebo vně kontejnerů.
 ms.topic: conceptual
 ms.date: 8/9/2017
-ms.openlocfilehash: 0a4cdc7dd7c2e81447201ca85843c9ba4c7e2af4
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 85520876d7f0c89450b572d28dee6cb66ed2231d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609448"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772376"
 ---
 # <a name="resource-governance"></a>Zásady správného řízení prostředků
 
@@ -65,7 +65,7 @@ Tady je příklad, jak dát Service Fabric k použití 50% dostupného procesoru
 </Section>
 ```
 
-Pokud potřebujete úplnou ruční instalaci kapacit uzlů, můžete použít běžný mechanismus pro popis uzlů v clusteru. Tady je příklad, jak nastavit uzel se čtyřmi jádry a 2 GB paměti:
+Pro většinu zákazníků a scénářů se jako doporučená konfigurace používá automatické zjišťování kapacit uzlů pro procesor a paměť (ve výchozím nastavení je automatické zjišťování zapnuté). Pokud ale potřebujete úplnou ruční instalaci kapacit uzlů, můžete je nakonfigurovat podle typu uzlu pomocí mechanismu pro popis uzlů v clusteru. Tady je příklad, jak nastavit typ uzlu se čtyřmi jádry a 2 GB paměti:
 
 ```xml
     <NodeType Name="MyNodeType">

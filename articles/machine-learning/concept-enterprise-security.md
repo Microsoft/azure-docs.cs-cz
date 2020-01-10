@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/17/2019
-ms.openlocfilehash: 4b2f9e7f12b468f12fcfbe1b0af5c2918aa6c6ad
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4a8a548e6a073c38dbc1f5600d721a7cdb97f120
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541163"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75762820"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
 
@@ -134,7 +134,7 @@ Další informace o tom, jak šifrování v klidovém umístění funguje v Azur
 
 Protokol SSL můžete použít k zabezpečení interní komunikace mezi Azure Machine Learning mikroslužby a k zabezpečení externích volání do bodového koncového bodu. K přístupu k Azure Storage dojde taky přes zabezpečený kanál.
 
-Další informace najdete v tématu [použití protokolu SSL k zabezpečení webové služby prostřednictvím Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-secure-web-service).
+Další informace najdete v tématu [použití protokolu SSL k zabezpečení webové služby prostřednictvím Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service).
 
 ### <a name="using-azure-key-vault"></a>Použití Azure Key Vault
 

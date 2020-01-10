@@ -10,16 +10,16 @@ ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 8f937bcfb1bd03c970f21263c1cd09a1c3baba0a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e353a65544e86e702bd216db5c8b5f81f033c46a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429422"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772240"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Kurz: vývoj a nasazení modulu Python IoT Edge pro zařízení se systémem Linux
 
-Pomocí Visual Studio Code můžete vyvíjet kód v jazyce C a nasazovat ho do zařízení se systémem Linux se spuštěným Azure IoT Edge. 
+Pomocí Visual Studio Code můžete vyvíjet kód v Pythonu a nasazovat ho do zařízení se systémem Linux s Azure IoT Edge. 
 
 Moduly Azure IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. Tento kurz vás provede vytvořením a nasazením modulu IoT Edge, který filtruje data ze senzorů na zařízení IoT Edge, které jste nastavili v rychlém startu. V tomto kurzu se naučíte:    
 
@@ -100,7 +100,7 @@ V souboru prostředí jsou uložené přihlašovací údaje pro kontejner úlož
 
 ### <a name="select-your-target-architecture"></a>Vyberte cílovou architekturu.
 
-V současné době Visual Studio Code může vyvíjet moduly C pro zařízení se systémem Linux AMD64 a Linux ARM32v7. Musíte vybrat architekturu, kterou cílíte na každé řešení, protože kontejner je sestavený a pro každý typ architektury funguje jinak. Výchozí hodnota je Linux AMD64. 
+V současné době Visual Studio Code může vyvíjet moduly Pythonu pro zařízení se systémem Linux AMD64 a Linux ARM32v7. Musíte vybrat architekturu, kterou cílíte na každé řešení, protože kontejner je sestavený a pro každý typ architektury funguje jinak. Výchozí hodnota je Linux AMD64. 
 
 1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro řešení Edge**nebo vyberte ikonu zástupce na bočním panelu v dolní části okna. 
 

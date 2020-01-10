@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: c7b8e41cc09137ee06e975d136dd999ba146731b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7d121e9aeb897897322f1253c332e7a1baabdc9e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226611"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768958"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Vytvoření funkce, která se integruje s Azure Logic Apps
 
@@ -43,7 +43,7 @@ Pokud jste tento krok zatím neprovedli, vraťte se k němu a vytvořte aplikaci
 
 Rozhraní API služeb Cognitive Services jsou v Azure k dispozici jako samostatné prostředky. K rozpoznávání mínění v monitorovaných tweetech použijte rozhraní API pro analýzu textu.
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
 
@@ -129,7 +129,7 @@ Teď máte funkci, která kategorizuje skóre mínění. Dále vytvoříte aplik
 
 ## <a name="create-a-logic-app"></a>Vytvoření aplikace logiky   
 
-1. Klikněte na tlačítko **Nový** v levém horním rohu webu Azure Portal.
+1. V Azure Portal klikněte na tlačítko **vytvořit prostředek** , které najdete v levém horním rohu Azure Portal.
 
 2. Klikněte na **Web** > **Aplikace logiky**.
  
@@ -205,7 +205,7 @@ Když je teď nakonfigurované rozpoznávání mínění, můžete do své funkc
 
 4. V části **Text požadavku** klikněte na **Skóre** a pak na **Uložit**.
 
-    ![Skóre](media/functions-twitter-email/17-function-input-score.png)
+    ![Hodnocení](media/functions-twitter-email/17-function-input-score.png)
 
 Vaše funkce se teď aktivuje při odeslání skóre mínění z aplikace logiky. Funkce do aplikace logiky vrátí barevně rozlišenou kategorii. Dále přidáte e-mailové oznámení, které se odešle, když funkce vrátí hodnotu mínění **RED** (Červená). 
 

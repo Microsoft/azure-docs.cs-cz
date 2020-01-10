@@ -3,16 +3,16 @@ title: Zobrazení oznámení o stavu služby s využitím webu Azure Portal
 description: Oznámení o stavu služby umožňují zobrazit zprávy o stavu služby publikované pomocí Microsoft Azure.
 ms.topic: conceptual
 ms.date: 6/27/2019
-ms.openlocfilehash: c8017d23e0f7e3ab7bf48c9d7ba6b930fa80d0da
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 21416edc95d345eb183030a9b0cccb7529305d6d
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451425"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748651"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Zobrazení oznámení o stavu služby s využitím webu Azure Portal
 
-Infrastruktura Azure zveřejňuje oznámení o stavu služby do [protokolu aktivit Azure](../azure-monitor/platform/activity-logs-overview.md).  Oznámení obsahují informace o prostředcích v rámci vašeho předplatného. Vzhledem k tomu, že je možné velké množství informací uložených v protokolu aktivit, je k dispozici samostatné uživatelské rozhraní, které usnadňuje zobrazení a nastavení výstrah pro oznámení o stavu služby. 
+Infrastruktura Azure zveřejňuje oznámení o stavu služby do [protokolu aktivit Azure](../azure-monitor/platform/platform-logs-overview.md).  Oznámení obsahují informace o prostředcích v rámci vašeho předplatného. Vzhledem k tomu, že je možné velké množství informací uložených v protokolu aktivit, je k dispozici samostatné uživatelské rozhraní, které usnadňuje zobrazení a nastavení výstrah pro oznámení o stavu služby. 
 
 Oznámení o stavu služby můžou být informativní nebo napadnutelná v závislosti na třídě.
 

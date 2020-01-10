@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 328e0c882ea2fb3860663e04b88488bd54339c75
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: ded812d5d7a0440466e7284b56c90965ea00406e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671496"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768482"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Osvědčené postupy pro Azure App Service
 Tento článek shrnuje osvědčené postupy pro používání [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). 
@@ -65,3 +65,13 @@ Pokud dojde k selhání zálohování, Projděte si nejnovější výsledky, aby
 ## <a name="nodejs"></a>Když jsou nové aplikace Node. js nasazeny na Azure App Service
 Azure App Service výchozí konfigurace pro aplikace Node. js má za cíl nejlépe vyhovovat potřebám většiny běžných aplikací. Pokud by konfigurace aplikace Node. js mohla těžit z přizpůsobeného ladění za účelem zlepšení výkonu nebo optimalizace využití prostředků procesoru, paměti nebo síťových prostředků, přečtěte si téma [osvědčené postupy a Průvodce odstraňováním potíží pro aplikace uzlů v Azure App Service](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md). Tento článek popisuje nastavení iisnode, která může být potřeba nakonfigurovat pro aplikaci Node. js, popisuje různé scénáře nebo problémy, na které vaše aplikace může být vystavena, a ukazuje, jak tyto problémy vyřešit.
 
+
+## <a name="next-steps"></a>Další kroky
+Další informace o osvědčených postupech najdete v [App Service Diagnostics](https://docs.microsoft.com/azure/app-service/overview-diagnostics) , kde najdete osvědčené postupy, které jsou specifické pro váš prostředek.
+
+- Přejděte do webové aplikace v [Azure Portal](https://portal.azure.com).
+- Klikněte na **Diagnostika a řešení problémů** v levém navigačním panelu, který otevře diagnostiku App Service.
+- Vyberte dlaždici domovské stránky s **doporučenými postupy** .
+- Pokud chcete zobrazit aktuální stav aplikace v souvislosti s těmito osvědčenými postupy, klikněte na **osvědčené postupy pro dostupnost & výkon** nebo **osvědčené postupy pro optimální konfiguraci** .
+
+Tento odkaz můžete použít také k přímému otevření App Service diagnostiky pro váš prostředek: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`.

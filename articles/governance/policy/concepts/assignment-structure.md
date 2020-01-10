@@ -3,12 +3,12 @@ title: Podrobnosti struktury přiřazení zásad
 description: Popisuje definici přiřazení zásad, kterou používá Azure Policy k přidružení definic a parametrů zásad k prostředkům pro vyhodnocení.
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5f6b097b82d31926b7b5d3099d1f3f23669e78c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436380"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747201"
 ---
 # <a name="azure-policy-assignment-structure"></a>Struktura přiřazení Azure Policy
 
@@ -55,7 +55,7 @@ K identifikaci přiřazení zásad a zadání kontextu pro jeho použití s konk
 
 ## <a name="enforcement-mode"></a>Režim vynucení
 
-Vlastnost **enforcementMode** poskytuje zákazníkům možnost Testovat výsledek zásad u existujících prostředků bez zahájení platnosti zásad nebo aktivace záznamů v [protokolu aktivit Azure](../../../azure-monitor/platform/activity-logs-overview.md). Tento scénář se běžně označuje jako "What If" a je v souladu s postupy bezpečného nasazení. **enforcementMode** se liší od [zakázaného](./effects.md#disabled) efektu, protože to zabrání v tom, aby vyhodnocování prostředků probíhají vůbec.
+Vlastnost **enforcementMode** poskytuje zákazníkům možnost Testovat výsledek zásad u existujících prostředků bez zahájení platnosti zásad nebo aktivace záznamů v [protokolu aktivit Azure](../../../azure-monitor/platform/platform-logs-overview.md). Tento scénář se běžně označuje jako "What If" a je v souladu s postupy bezpečného nasazení. **enforcementMode** se liší od [zakázaného](./effects.md#disabled) efektu, protože to zabrání v tom, aby vyhodnocování prostředků probíhají vůbec.
 
 Tato vlastnost má následující hodnoty:
 

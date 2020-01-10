@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 36215403f99cc86ab4fb111ce95a6b3190063d7b
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 1b03f5569386212905cdeb362cfe0a88774eb887
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406716"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754337"
 ---
 # <a name="tutorial-import-azure-sql-database-in-c-using-azure-cognitive-search-indexers"></a>Kurz: Import databáze SQL Azure v C# používání služby Azure kognitivní hledání indexery
 
@@ -159,7 +159,7 @@ V tomto kurzu indexer přetahuje data z jednoho zdroje dat. V praxi můžete ke 
 
 Hlavní program obsahuje logiku pro vytváření klienta, index, zdroj dat a indexer. Kód předpokládá, že byste tento program mohli spustit několikrát, a proto kontroluje a odstraňuje existující prostředky se stejným názvem.
 
-Objekt zdroje dat je nakonfigurovaný s nastavením, která jsou specifická pro prostředky Azure SQL Database, včetně [přírůstkového indexování](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) pro využití integrovaných [funkcí detekce změn](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) v Azure SQL. Ukázková databáze hotelů v Azure SQL má sloupec "obnovitelné odstranění" s názvem **IsDeleted**. Pokud je tento sloupec v databázi nastavený na hodnotu true, indexer odebere odpovídající dokument z indexu služby Azure Kognitivní hledání.
+Objekt zdroje dat je nakonfigurovaný s nastavením, která jsou specifická pro prostředky Azure SQL Database, včetně [částečného nebo přírůstkového indexování](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) pro využití integrovaných [funkcí detekce změn](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) v Azure SQL. Ukázková databáze hotelů v Azure SQL má sloupec "obnovitelné odstranění" s názvem **IsDeleted**. Pokud je tento sloupec v databázi nastavený na hodnotu true, indexer odebere odpovídající dokument z indexu služby Azure Kognitivní hledání.
 
   ```csharp
   Console.WriteLine("Creating data source...");

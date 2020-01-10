@@ -7,13 +7,13 @@ manager: cshankar
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: ef7d78b292561e87eac12200bc0b9d68299759d9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/07/2020
+ms.openlocfilehash: 1f6b753052b882b75884503f8c05f34b8cead821
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443615"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749386"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Vizualizace dat z Time Series Insights v Power BI
 
@@ -41,8 +41,8 @@ Nezapomeňte si zaregistrovat [bezplatné předplatné Azure](https://azure.micr
 
 Pokud chcete Power BI prostředí Time Series Insights připojit, postupujte takto:
 
-1. Otevřít Time Series Insights Explorer                      
-1. Exportovat data jako dotaz nebo jako nezpracovaná data                       
+1. Otevřít Time Series Insights Explorer
+1. Exportovat data jako dotaz nebo jako nezpracovaná data
 1. Otevřít Power BI Desktop
 1. Načíst z vlastního dotazu
 
@@ -51,13 +51,14 @@ Pokud chcete Power BI prostředí Time Series Insights připojit, postupujte tak
 Jak začít:
 
 1. Otevřete Průzkumníka Time Series Insights Preview a dohlédněte si data.
-1. Po vytvoření zobrazení, které jste splnili, přejděte do rozevírací nabídky **Další akce** a klikněte na **připojit k Power BI**. 
+1. Po vytvoření zobrazení, které jste splnili, přejděte do rozevírací nabídky **Další akce** a klikněte na **připojit k Power BI**.
 
     [Export Průzkumníka ![Time Series Insights Preview](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
 1. Nastavte parametry v této kartě:
 
-   1. Zadejte relativní časový rámec, který chcete zobrazit. Pokud máte s existujícím zobrazením spokojeni, ponechte to jako **stávající časový rámec**. 
+   1. Zadejte relativní časový rámec, který chcete zobrazit. Pokud máte s existujícím zobrazením spokojeni, ponechte to jako **stávající časový rámec**.
+   
    1. Vyberte mezi **agregovanými** a **nezpracovanými událostmi**. 
    
        > [!NOTE]

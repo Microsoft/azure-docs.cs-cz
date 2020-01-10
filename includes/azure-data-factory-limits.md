@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 5/30/2019
+ms.date: 01/08/2020
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: e1db978dbb7b63aaa4e9d189486faa0dfef520d1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 34e828a43567ffc701c1645c55f4ff0352b0e8d3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75662919"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75772922"
 ---
 Azure Data Factory je víceklientské služba, která má následující výchozí omezení, aby se zajistilo, že předplatná zákazníka budou chráněná před jednotlivými úlohami. Pokud chcete zvýšit limity až do maximálního počtu pro vaše předplatné, obraťte se na podporu.
 
@@ -25,7 +25,7 @@ Azure Data Factory je víceklientské služba, která má následující výchoz
 | Celkový počet entit, jako jsou kanály, datové sady, triggery, propojené služby a prostředí Integration runtime v rámci datové továrny | 5 000 | [Kontaktujte podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Celkový počet jader procesoru pro prostředí Azure-SSIS Integration runtime v rámci jednoho předplatného | 256 | [Kontaktujte podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Souběžné spouštění kanálů na objekt pro vytváření dat, která jsou sdílená mezi všemi kanály ve výrobě | 10 000  | [Kontaktujte podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Souběžná externí aktivita se spouští na základě předplatného na [Azure Integration runtime oblasti](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location) .<br><small>Externí aktivity jsou spravované v prostředí Integration runtime, ale spouštějí se na propojených službách, včetně datacihly, uložených procedur, HDInsights a dalších.</small> | 3000 | [Kontaktujte podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Souběžná externí aktivita se spouští na základě předplatného na [Azure Integration runtime oblasti](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location) .<br><small>Externí aktivity jsou spravované v prostředí Integration runtime, ale spouštějí se na propojených službách, včetně datacihly, uložených procedur, HDInsights, webů a dalších.</small> | 3000 | [Kontaktujte podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Souběžná spuštění aktivity kanálu na předplatné na [Azure Integration runtime oblast](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location) <br><small>Aktivity kanálu se spouštějí v prostředí Integration runtime, včetně vyhledávání, GetMetadata a odstranění.</small>| 1 000 | [Kontaktujte podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Souběžné operace vytváření obsahu na předplatné na [Azure Integration runtime oblasti](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)<br><small>včetně testovacího připojení, procházení seznamu složek a seznamu tabulek, náhled dat. | 200 | [Kontaktujte podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Počet současných jednotek integrace dat<sup>1</sup> na předplatné na [Azure Integration runtime oblast](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)| Skupina oblastí 1<sup>2</sup>: 6000<br>Skupina oblastí 2<sup>2</sup>: 3000<br>Skupina oblastí 3<sup>2</sup>: 1500 | [Kontaktujte podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |

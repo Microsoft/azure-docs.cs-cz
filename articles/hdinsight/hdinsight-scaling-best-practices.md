@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 15d44f95cccf15fd0f7615655f5bbac1b0c35127
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 2d26cbce3398b9a44530553fbff0413c631b7579
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706064"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744772"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Škálování clusterů Azure HDInsight
 
@@ -29,7 +29,7 @@ Cluster můžete škálovat ručně pomocí jedné z metod popsaných níže neb
 
 Microsoft poskytuje následující nástroje pro škálování clusterů:
 
-|Spuštění | Popis|
+|Nástroj | Popis|
 |---|---|
 |[PowerShell AZ](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -název_clusteru \<název clusteru >-TargetInstanceCount \<NewSize >|
 |[AzureRM PowerShellu](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -název_clusteru \<název clusteru >-TargetInstanceCount \<NewSize >|
@@ -126,7 +126,7 @@ Pokud chcete tuto spuštěnou aplikaci odstranit ručně, spusťte v prostředí
 yarn application -kill <application_id>
 ```
 
-Například:
+Příklad:
 
 ```bash
 yarn application -kill "application_1499348398273_0003"
@@ -147,10 +147,10 @@ org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create director
 ```
 
 ```
-org.apache.http.conn.HttpHostConnectException: Connect to hn0-clustername.servername.internal.cloudapp.net:10001 [hn0-clustername.servername. internal.cloudapp.net/1.1.1.1] failed: Connection refused
+org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.servername.internal.cloudapp.net:10001 [active-headnode-name.servername. internal.cloudapp.net/1.1.1.1] failed: Connection refused
 ```
 
-V případě, že dojde ke změně velikosti clusteru, můžete zkontrolovat protokoly uzlu názvu ze složky `/var/log/hadoop/hdfs/`. Soubory protokolu jsou pojmenovány `Hadoop-hdfs-namenode-hn0-clustername.*`.
+V případě, že dojde ke změně velikosti clusteru, můžete zkontrolovat protokoly uzlu názvu ze složky `/var/log/hadoop/hdfs/`. Soubory protokolu jsou pojmenovány `Hadoop-hdfs-namenode-<active-headnode-name>.*`.
 
 Hlavní příčinou předchozích chyb je, že při spouštění dotazů závisí podregistr na dočasné soubory v HDFS. Když HDFS vstoupí do bezpečného režimu, podregistr nemůže spustit dotazy, protože nemůže zapisovat do HDFS. Dočasné soubory v HDFS jsou umístěné na místní jednotce připojené k jednotlivým virtuálním počítačům uzlu pracovního procesu a replikují se mezi ostatními pracovními uzly na třech replikách, minimálně.
 
@@ -194,7 +194,7 @@ Pokud podregistr opustí dočasné soubory, můžete tyto soubory před horizont
     Zde je ukázkový výstup, když soubory existují:
 
     ```output
-    sshuser@hn0-scalin:~$ hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
+    sshuser@scalin:~$ hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
     drwx------   - hive hdfs          0 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c
     drwx------   - hive hdfs          0 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c/_tmp_space.db
     -rw-r--r--   3 hive hdfs         27 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c/inuse.info

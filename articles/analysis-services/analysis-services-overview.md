@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: eb69028a3b5ea232fbafe8286c3067a22f06d455
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ee107ffdc677a0feffbdaf1441d77a8ed05f2c94
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572815"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749682"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 
@@ -24,7 +24,7 @@ Azure Analysis Services je plně spravovaná platforma jako služba (PaaS), kter
 
 **Video:** Podívejte se na video s [přehledem služby Azure Analysis Services](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) a zjistěte, jak služba Azure Analysis Services zapadá do celkových možností BI od Microsoftu.
 
-## <a name="get-up-and-running-quickly"></a>Rychlé zprovoznění
+## <a name="get-up-and-running-quickly"></a>Řešení velmi rychle zprovozníte
 
 Na webu Azure Portal můžete [vytvořit server](analysis-services-create-server.md) během několika minut. A pomocí PowerShellu a [šablon](../azure-resource-manager/resource-manager-create-first-template.md) Azure Resource Manageru můžete vytvářet servery s využitím deklarativní šablony. S jedinou šablonou můžete nasadit prostředky serveru společně s dalšími komponentami Azure, jako jsou účty úložiště nebo služba Azure Functions. 
 
@@ -77,10 +77,10 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 
 ### <a name="americas"></a>Amerika
 
-|Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
+|Region (Oblast)  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Brazílie – jih     |    B1, B2, S0, S1, S2, S4, D1     |     1\. místo    |
-|Kanada – střed    |     B1, B2, S0, S1, S2, S4, D1    |     1\. místo    |
+|Střední Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1\. místo    |
 |Východní USA     |     B1, B2, S0, S1, S2, S4, D1    |    1\. místo     |
 |Východ USA 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
 |Východ USA 2     |     S8, S9, S8v2, S9v2   |    1\. místo    |
@@ -95,26 +95,26 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 
 ### <a name="europe"></a>Evropa
 
-|Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
+|Region (Oblast)  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Severní Evropa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Severní Evropa     |    S8v2, S9v2      |    3     |
-|Velká Británie – jih     |    B1, B2, S0, S1, S2, S4, D1      |     1\. místo    |
+|Spojené království – jih     |    B1, B2, S0, S1, S2, S4, D1      |     1\. místo    |
 |Západní Evropa     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
 |Západní Evropa    |   S8, S9, S8v2, S9v2  |  1\. místo  |
 
 ### <a name="asia-pacific"></a>Asie a Tichomoří 
 
-|Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
+|Region (Oblast)  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Austrálie – východ     |    B1, B2, S0, S1, S2, S4     |    3     |
 |Austrálie – východ     |    S8, S9, S8v2, S9v2    |    1\. místo     |
 |Austrálie – jihovýchod     | B1, B2, S0, S1, S2, S4, D1       |    1\. místo     |
 |Japonsko – východ     |   B1, B2, S0, S1, S2, S4, D1       |    1\. místo     |
 |Jihovýchodní Asie     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1\. místo      |
-|Indie – západ     |    B1, B2, S0, S1, S2, S4, D1     |    1\. místo     |
+|Západní Indie     |    B1, B2, S0, S1, S2, S4, D1     |    1\. místo     |
 
-## <a name="scale-to-your-needs"></a>Škálování podle vašich potřeb
+## <a name="scale-to-your-needs"></a>Škálujte podle svých potřeb
 
 ### <a name="scale-updown-pause-and-resume"></a>Vertikální navýšení/snížení kapacity, pozastavení a obnovení
 
@@ -189,7 +189,7 @@ Tabulkové modely na úrovni kompatibility 1400 podporují zabezpečení na úro
 
 Instanční objekty jsou prostředky aplikací služby Azure Active Directory, které vytvoříte v tenantovi za účelem provedení bezobslužných operací na úrovni prostředků a služeb. Instanční objekty se používají společně se službou Azure Automation, bezobslužným režimem PowerShellu, vlastními klientskými aplikacemi a webovými aplikacemi pro automatizaci běžných úloh, jako je aktualizace dat, vertikální navýšení a snížení kapacity a pozastavení a obnovení. Oprávnění se instančním objektům přiřazují prostřednictvím členství v roli. Pokud se chcete dozvědět více, podívejte se na článek o [automatizaci s využitím instančních objektů](analysis-services-service-principal.md).
 
-### <a name="azure-governance"></a>Zásady správného řízení služby Azure
+### <a name="azure-governance"></a>Zásady správného řízení Azure
 
 Služba Azure Analysis Services se řídí [podmínkami služeb Microsoft Online Services](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) a [prohlášením o zásadách ochrany osobních údajů společnosti Microsoft](https://privacy.microsoft.com/privacystatement).
 Pokud se o službě Azure Security chcete dozvědět víc, podívejte se na [Microsoft Trust Center](https://www.microsoft.com/trustcenter).
@@ -224,7 +224,7 @@ Podporují se všechny moderní nástroje pro zkoumání a vizualizaci dat, jako
 
 ## <a name="monitoring-and-diagnostics"></a>Monitorování a diagnostika
 
-Služba Azure Analysis Services je integrovaná do metriky Azure. Poskytuje velký počet metrik pro konkrétní prostředky, které vám pomůžou s monitorováním výkonu a stavu serverů. Další informace najdete v tématu [Monitorování metrik serveru](analysis-services-monitor.md). Metriky zaznamenávejte pomocí [diagnostických protokolů prostředků Azure](../azure-monitor/platform/resource-logs-overview.md). Monitorování a posílání protokolů [Azure Storage](https://azure.microsoft.com/services/storage/), jejich streamování do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a jejich export do [protokolů Azure monitor](https://azure.microsoft.com/services/log-analytics/), služby [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite). Další informace najdete v článku o [nastavení protokolování diagnostiky](analysis-services-logging.md).
+Služba Azure Analysis Services je integrovaná do metriky Azure. Poskytuje velký počet metrik pro konkrétní prostředky, které vám pomůžou s monitorováním výkonu a stavu serverů. Další informace najdete v tématu [Monitorování metrik serveru](analysis-services-monitor.md). Metriky zaznamenávejte pomocí [diagnostických protokolů prostředků Azure](../azure-monitor/platform/platform-logs-overview.md). Monitorování a posílání protokolů [Azure Storage](https://azure.microsoft.com/services/storage/), jejich streamování do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a jejich export do [protokolů Azure monitor](https://azure.microsoft.com/services/log-analytics/), služby [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite). Další informace najdete v článku o [nastavení protokolování diagnostiky](analysis-services-logging.md).
 
 Služba Azure Analysis Services také podporuje používání [zobrazení dynamické správy](https://docs.microsoft.com/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services). Zobrazení dynamické správy koordinují na základě syntaxe SQL sady řádků schématu, které vracejí metadata a informace monitorování týkající se instance serveru.
 
@@ -232,7 +232,7 @@ Služba Azure Analysis Services také podporuje používání [zobrazení dynami
 
 Konkrétní dokumentace pro službu Azure Analysis Services je uvedená zde. K vyhledání článků použijte obsah na levé straně obrazovky prohlížeče. 
 
-Vzhledem k tomu, že Azure Analysis Services tabelární modely jsou v SQL Server Analysis Services stejné jako tabelární modely, existuje rozsáhlá knihovna sdílených koncepčních, procedurálních, vývojářů a referenčních článků v [SQL Server Analysis Services Dokumentaci](https://docs.microsoft.com/analysis-services/analysis-services-overview). Články v dokumentaci ke službě SQL Server Analysis Services zobrazují také informaci, jestli je možné je použít pro službu Azure Analysis Services. Tuto informaci najdete v banneru PLATÍ PRO pod názvem článku.
+Vzhledem k tomu, že Azure Analysis Services tabelární modely jsou v SQL Server Analysis Services stejné jako tabelární modely, existuje v [dokumentaci ke službě SQL Server Analysis Services](https://docs.microsoft.com/analysis-services/analysis-services-overview)rozsáhlá knihovna sdílených koncepčních, procedurálních, vývojářských a referenčních článků. Články v dokumentaci ke službě SQL Server Analysis Services zobrazují také informaci, jestli je možné je použít pro službu Azure Analysis Services. Tuto informaci najdete v banneru PLATÍ PRO pod názvem článku.
 
 ![Sdílená dokumentace](./media/analysis-services-overview/aas-overview-applies-to.png)
 

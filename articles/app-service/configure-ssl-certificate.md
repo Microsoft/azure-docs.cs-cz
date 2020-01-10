@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 2cba4e8223e98f95fc8d0f0472c10b2f9b67a658
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 1a9801fc0d8a2a013fa737c9d53138dc7d52b398
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670739"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768452"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Přidat certifikát SSL v Azure App Service
 
@@ -29,7 +29,7 @@ V následující tabulce jsou uvedeny možnosti pro přidávání certifikátů 
 | Nahrání privátního certifikátu | Pokud už privátní certifikát máte od jiného poskytovatele, můžete ho nahrát. Viz [požadavky na privátní certifikát](#private-certificate-requirements). |
 | Nahrajte veřejný certifikát. | Veřejné certifikáty se nepoužívají k zabezpečení vlastních domén, ale můžete je načíst do kódu, pokud je potřebujete pro přístup ke vzdáleným prostředkům. |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Postup při použití tohoto průvodce:
 
@@ -112,9 +112,9 @@ Pomocí následující tabulky můžete nakonfigurovat certifikát. Jakmile bude
 | Nastavení | Popis |
 |-|-|
 | Name (Název) | Popisný název certifikátu App Service. |
-| Název hostitele holé domény | Sem zadejte kořenovou doménu. Vydaný certifikát zabezpečuje kořenovou *doménu i* subdoménu `www`. V vystaveném certifikátu obsahuje pole společné jméno kořenovou doménu a pole Alternativní název subjektu obsahuje doménu `www`. Chcete-li zabezpečit všechny subdomény, zadejte plně kvalifikovaný název domény, například `mysubdomain.contoso.com`).|
-| Předplatné | Datacentrum, které je hostitelem webové aplikace. |
-| Skupina prostředků | Skupina prostředků, která obsahuje certifikát. Můžete použít novou skupinu prostředků nebo vybrat stejnou skupinu prostředků jako aplikace App Service, například. |
+| Naked Domain Host Name | Sem zadejte kořenovou doménu. Vydaný certifikát zabezpečuje kořenovou *doménu i* subdoménu `www`. V vystaveném certifikátu obsahuje pole společné jméno kořenovou doménu a pole Alternativní název subjektu obsahuje doménu `www`. Chcete-li zabezpečit všechny subdomény, zadejte plně kvalifikovaný název domény, například `mysubdomain.contoso.com`).|
+| Předplatné | Odběr, který bude obsahovat certifikát. |
+| Skupina prostředků | Skupina prostředků, která bude obsahovat certifikát. Můžete použít novou skupinu prostředků nebo vybrat stejnou skupinu prostředků jako aplikace App Service, například. |
 | SKU certifikátu | Určuje typ certifikátu, který se má vytvořit, zda se jedná o standardní certifikát nebo [certifikát se zástupným znakem](https://wikipedia.org/wiki/Wildcard_certificate). |
 | Právní výrazy | Kliknutím potvrďte, že souhlasíte s právními podmínkami. Certifikáty se získávají z GoDaddy. |
 
@@ -128,7 +128,7 @@ Vyberte certifikát na stránce [App Service certifikáty](https://portal.azure.
 
 [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) je služba Azure, která pomáhá chránit kryptografické klíče a tajné klíče používané v cloudových aplikacích a službách. Je to úložiště, které je vhodné pro App Service certifikátů.
 
-Na stránce **stav Key Vault** klikněte na **úložiště Key Vault** a vytvořte nový trezor nebo vyberte existující trezor. Pokud se rozhodnete vytvořit nový trezor, použijte následující tabulku, která vám pomůžete nakonfigurovat trezor a kliknout na vytvořit. Další informace najdete v tématu Vytvoření nové Key Vault v rámci stejného předplatného a skupiny prostředků.
+Na stránce **stav Key Vault** klikněte na **úložiště Key Vault** a vytvořte nový trezor nebo vyberte existující trezor. Pokud se rozhodnete vytvořit nový trezor, použijte následující tabulku, která vám pomůžete nakonfigurovat trezor a kliknout na vytvořit. Vytvoří novou Key Vault v rámci stejného předplatného a skupiny prostředků jako aplikace App Service.
 
 | Nastavení | Popis |
 |-|-|
@@ -137,9 +137,9 @@ Na stránce **stav Key Vault** klikněte na **úložiště Key Vault** a vytvoř
 | Umístění | Vyberte stejné umístění jako aplikace App Service. |
 | Cenová úroveň | Informace najdete v tématu informace [o cenách Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Zásady přístupu| Definuje aplikace a povolený přístup k prostředkům trezoru. Později ji můžete nakonfigurovat podle kroků uvedených v části [udělení několika aplikací přístup k trezoru klíčů](../key-vault/key-vault-group-permissions-for-apps.md). |
-| Přístup k Virtual Network | Omezte přístup k trezoru na určité virtuální sítě Azure. Později ji můžete nakonfigurovat podle kroků v části [konfigurace Azure Key Vault brány firewall a virtuální sítě](../key-vault/key-vault-network-security.md) . |
+| Přístup k virtuální síti | Omezte přístup k trezoru na určité virtuální sítě Azure. Později ji můžete nakonfigurovat podle kroků v části [konfigurace Azure Key Vault brány firewall a virtuální sítě](../key-vault/key-vault-network-security.md) . |
 
-Po výběru trezoru zavřete stránku **Key Vault úložiště** . Možnost **Store** by měla zobrazit zelenou značku zaškrtnutí pro úspěch. Nechejte stránku otevřenou pro další krok.
+Po výběru trezoru zavřete stránku **Key Vault úložiště** . V části **Krok 1: úložiště** by se měla zobrazit zelená značka zaškrtnutí u možnosti úspěch. Nechejte stránku otevřenou pro další krok.
 
 ### <a name="verify-domain-ownership"></a>Ověřit vlastnictví domény
 
@@ -183,7 +183,7 @@ V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>v nabídce 
 
 V levém navigačním panelu aplikace vyberte **Nastavení TLS/SSL** > **certifikáty privátních klíčů (. pfx)**  > **importovat Key Vault certifikát**.
 
-![Importovat certifikát Key Vault v App Service](./media/configure-ssl-certificate/import-key-vault-cert.png))
+![Importovat certifikát Key Vault v App Service](./media/configure-ssl-certificate/import-key-vault-cert.png)
 
 Pomocí následující tabulky můžete vybrat certifikát.
 

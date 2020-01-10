@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 82e62b6d0925aa53fc8456addb4732b16e69080b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9b08dd60020dad6f747167f35e8d172fdc24a59e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74935863"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751879"
 ---
 Velikosti virtuálních počítačů optimalizované pro GPU jsou specializované virtuální počítače dostupné s jedním nebo několika grafickými procesory NVIDIA. Tyto velikosti jsou navržené pro úlohy náročné na výpočetní výkon, náročné na grafiku a vizualizaci. Tento článek poskytuje informace o počtu a typu GPU, vCPU, datových disků a síťových karet. Propustnost úložiště a šířka pásma sítě jsou také zahrnuty pro každou velikost v tomto seskupení.
 
@@ -93,22 +93,34 @@ Virtuální počítače řady NCv3-Series využívají grafické procesory [NVID
 
 *Podpora RDMA
 
-## <a name="ndv2-series-preview"></a>NDv2-Series (Preview)
+## <a name="updated-ndv2-series-preview"></a>Aktualizace NDv2-Series (Preview)
 
 Premium Storage: podporováno
 
 Ukládání Premium Storage do mezipaměti: podporováno
 
-InfiniBand: nepodporováno
+InfiniBand: podporované
 
-Virtuální počítač řady NDv2-Series je novým doplňkem k rodině GPU navržené pro potřeby úloh HPC, AI a Machine Learning. Využívá se 8 NVIDIA Tesla V100 NVLINK propojených GPU a 40 Intel Xeon Platinum 8168 (Skylake) a 672 GiB systémové paměti. Instance řady NDv2-Series poskytují špičkový výkon FP32 a FP64 pro úlohy HPC a AI využívající architektury Cuda, TensorFlow, Pytorch, Caffe a další.
+Virtuální počítač řady NDv2-Series je novým doplňkem k rodině GPU navržené pro potřeby nejnáročnějších úloh AI, strojového učení, simulace a prostředí HPC s podporou GPU. 
 
-[Zaregistrujte se a získejte přístup k těmto počítačům ve verzi Preview](https://aka.ms/ndv2signup).
+NDv2 je napájený pomocí 8 NVIDIA Tesla V100 NVLINK – připojené GPU s 32 GB paměti GPU. Každý virtuální počítač s NDv2 má taky 40 jader Intel Xeon Platinum 8168 (Skylake) 672, které neobsahují GiB systémové paměti. 
+
+Instance NDv2 poskytují vynikající výkon pro úlohy HPC a AI s využitím CUDA výpočetních jader optimalizovaných pro GPU a mnoha nástrojů AI, ML a Analytics, které podporují akceleraci GPU, jako je například TensorFlow, Pytorch, Caffe, RAPIDS a další. rozhraní. 
+
+V kritickém případě je NDv2 sestaven pro výpočetně náročné škálování (což znamená 8 GPU na virtuální počítač) a škálování na více instancí (úlohy vzájemně pracujících více virtuálních počítačů). NDv2 Series teď podporuje 100 gigabitové sítě InfiniBand s EDR back-end, podobně jako dostupné v řadě virtuálních počítačů HPC s vysokým výkonem, aby bylo možné podporovat vysoce výkonné clustery pro paralelní scénáře, včetně distribuovaného školení pro AI a ML. Tato síť back-end podporuje všechny hlavní protokoly InfiniBand, včetně těch, které pracují s knihovnami NCCL2 společnosti NVIDIA, což umožňuje bezproblémové clusteringu GPU.
+
+> Při [povolování InfiniBand](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband) na virtuálním počítači s ND40rs_v2 použijte prosím ovladač OFED 4.7-1.0.0.1 Mellanox.
+
+> V důsledku zvýšené paměti GPU vyžaduje nový virtuální počítač ND40rs_v2 použití [virtuálních počítačů generace 2](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) a imagí z Marketplace. 
+
+> [Přihlaste se, abyste si vyžádali předběžný přístup k virtuálnímu počítači NDv2 ve verzi Preview.](https://aka.ms/AzureNDrv2Preview)
+
+> Poznámka: ND40s_v2 o velikosti 16 GB na paměť GPU již není k dispozici pro verzi Preview a byla nahrazena aktualizovaným ND40rs_v2.
 <br>
 
 | Velikost | vCPU | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální šířka pásma sítě | Maximální počet síťových karet |
 |---|---|---|---|---|---|---|---|---|---|
-| Standard_ND40s_v2 | 40 | 672 | 2948 | 8 V100 (NVLink) | 16 | 32 | 80000 / 800 | 24000 MB/s | 8 |
+| Standard_ND40rs_v2 | 40 | 672 | 2948 | 8 V100 32 GB (NVLink) | 16 | 32 | 80000 / 800 | 24000 MB/s | 8 |
 
 ## <a name="nd-series"></a>ND-Series
 

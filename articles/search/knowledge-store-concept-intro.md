@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 2cde70579e61d1911008f7c8126ad7bda132eac1
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 9a6fa62384615f60da88bb41da8ad3538d34e62a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563492"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754111"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Seznámení s znalostními obchody v Azure Kognitivní hledání
 
@@ -30,7 +30,7 @@ Znalostní báze Knowledge Store je fyzicky [Azure Storage](https://docs.microso
 
 ## <a name="benefits-of-knowledge-store"></a>Výhody znalostní báze Knowledge Store
 
-Znalostní báze poskytuje strukturu, kontext a skutečný obsah – mohli z nestrukturovaných a částečně strukturovaných datových souborů, jako jsou objekty blob, soubory obrázků, které prošly analýzou, nebo dokonce strukturovaná data, která se přetvarují na nové formuláře. V [podrobném návodu](knowledge-store-howto.md)se můžete podívat, jak se má zhuštěný dokument JSON rozdělit do podstruktur, rekládat do nových struktur a jinak zpřístupnit pro podřízené procesy, jako jsou Machine Learning a úlohy datových věd.
+Znalostní báze poskytuje strukturu, kontext a skutečný obsah – mohli z nestrukturovaných a částečně strukturovaných datových souborů, jako jsou objekty blob, soubory obrázků, které prošly analýzou, nebo dokonce strukturovaná data, která se přetvarují na nové formuláře. V [podrobném návodu](knowledge-store-create-rest.md)se můžete podívat, jak se má zhuštěný dokument JSON rozdělit do podstruktur, rekládat do nových struktur a jinak zpřístupnit pro podřízené procesy, jako jsou Machine Learning a úlohy datových věd.
 
 I když je užitečné zjistit, co kanál pro obohacení AI může vytvořit, skutečný potenciál úložiště Knowledge Store je možnost změnit tvarování dat. Můžete začít se základní dovednosti a potom iterovat přes něj a přidat tak zvýšené úrovně struktury, které pak můžete zkombinovat do nových struktur, a to i v jiných aplikacích než Azure Kognitivní hledání.
 

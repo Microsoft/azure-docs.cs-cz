@@ -8,30 +8,37 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 08/28/2017
+ms.date: 01/08/2020
 ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a90d54932561ed564a23d4d2785170aa85b5c9c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 961444e15ae1c45db1fc7423a6ac3cc96cc7b3fb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422956"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768006"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Správa aplikací a přístup k prostředkům pomocí skupin Azure Active Directory
-Azure Active Directory (Azure AD) umožňuje spravovat vaše cloudové aplikace, místním aplikacím a prostředkům pomocí skupin vaší organizace. Vaše prostředky můžou být součástí adresáře, jako je například oprávnění ke správě objektů pomocí rolí v adresáři, nebo externí vzhledem k adresáři, jako jsou pro Software jako služba (SaaS) aplikací Azure services, Sharepointové weby a místním prostředkům.
+Azure Active Directory (Azure AD) umožňuje používat skupiny ke správě přístupu ke cloudovým aplikacím, místním aplikacím a vašim prostředkům. Vaše prostředky můžou být součástí organizace Azure AD, například oprávnění ke správě objektů prostřednictvím rolí v Azure AD nebo externích organizacím, jako jsou například aplikace pro aplikace SaaS (software jako služba), služby Azure, weby SharePoint a místní prostředky.
 
 >[!NOTE]
 >Abyste mohli používat Azure Active Directory, musíte mít účet Azure. Pokud účet Azure nemáte, můžete si [zaregistrovat bezplatný účet Azure](https://azure.microsoft.com/free/).
+>
+> V Azure Portal uvidíte některé skupiny, jejichž podrobnosti o členství a skupinách nemůžete spravovat na portálu:
+>
+> - Skupiny synchronizované z místní služby Active Directory je možné spravovat jenom v místní službě Active Directory.
+> - Jiné typy skupin, například distribuční seznamy a skupiny zabezpečení s povolenými e-maily, se spravují pouze v centru pro správu Exchange nebo v centru pro správu Microsoft 365. Abyste mohli spravovat tyto skupiny, musíte se přihlásit do centra pro správu Exchange nebo Microsoft 365 centra pro správu.
 
-## <a name="how-does-access-management-in-azure-ad-work"></a>Jak získat přístup k práci s Azure AD?
+## <a name="how-access-management-in-azure-ad-works"></a>Jak funguje Správa přístupu v Azure AD
+
 Azure AD vám poskytnout přístup k prostředkům ve vaší organizaci tím, že poskytuje přístupová práva k jenom jednoho konkrétního uživatele nebo pro celý Azure AD seskupit. Použití skupin umožňuje prostředku vlastníka (nebo vlastník adresář Azure AD), přiřadit sadu oprávnění k přístupu na všechny členy skupiny, místo nutnosti poskytují práva jeden po druhém. Vlastník prostředku nebo adresář můžete také udělit práva pro správu pro seznam členů někomu jinému, jako je například vedoucí oddělení nebo správce technické podpory, aby tato osoba přidávat a odebírat, podle potřeby. Další informace o tom, jak Správa vlastníků skupin najdete v tématu [Správa vlastníků skupin](active-directory-accessmanagement-managing-group-owners.md)
 
 ![Diagram správy přístupu ve službě Azure Active Directory](./media/active-directory-manage-groups/active-directory-access-management-works.png)
 
 ## <a name="ways-to-assign-access-rights"></a>Způsoby, jak přiřadit přístupová práva
+
 Existují čtyři způsoby, jak přiřadit přístupová práva uživatelům prostředků:
 
 - **Přímého přiřazení.** Vlastník prostředku přiřadí uživatele přímo k prostředku.

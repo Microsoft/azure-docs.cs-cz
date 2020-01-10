@@ -1,6 +1,6 @@
 ---
-title: Správa zásad autoshutdown v Azure DevTest Labs | Dokumentace Microsoftu
-description: Zjistěte, jak nastavit autoshutdown zásad pro testovací prostředí tak, aby virtuální počítače automaticky ukončí po jejich nejsou používány.
+title: Spravovat zásady pro automatické vypínání v Azure DevTest Labs | Microsoft Docs
+description: Naučte se, jak nastavit zásady automatického vypnutí pro testovací prostředí, aby se virtuální počítače automaticky vypnuly, když se nepoužívají.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,102 +14,105 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 9adf8dd4a5a3c469ed130b29308a0d828aee40bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c13414bb252da1192f82675da5b134bf43a40f0
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873987"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772631"
 ---
-# <a name="manage-autoshutdown-policies-for-a-lab-in-azure-devtest-labs"></a>Správa zásad autoshutdown pro testovací prostředí ve službě Azure DevTest Labs
-Azure DevTest Labs umožňuje řízení nákladů a minimalizace plýtvání v vaše testovací prostředí tím, že spravuje zásady (nastavení) pro každý testovací prostředí. V tomto článku se dozvíte, jak nakonfigurovat zásady autoshutdown pro účet testovacího prostředí a nastavení autoshutdown pro testovací prostředí v účtu testovacího prostředí. Chcete-li zobrazit nastavení všech zásad testovacího prostředí, najdete v článku [definice zásad testovacího prostředí ve službě Azure DevTest Labs](devtest-lab-set-lab-policy.md).  
+# <a name="manage-autoshutdown-policies-for-a-lab-in-azure-devtest-labs"></a>Správa zásad pro automatické vypínání v testovacím prostředí v Azure DevTest Labs
+Azure DevTest Labs vám umožní řídit náklady a minimalizovat plýtvání v laboratoři tím, že spravují zásady (nastavení) pro každé testovací prostředí. V tomto článku se dozvíte, jak nakonfigurovat zásady pro automatické vypínání pro účet testovacího prostředí a nakonfigurovat nastavení pro automatické vypínání pro testovací prostředí v účtu testovacího prostředí. Pokud chcete zobrazit, jak nastavit všechny zásady testovacího prostředí, přečtěte si téma [Definování zásad testovacího prostředí v Azure DevTest Labs](devtest-lab-set-lab-policy.md).  
 
-## <a name="set-auto-shutdown-policy-for-a-lab"></a>Nastavení automatického vypnutí zásad testovacího prostředí
-Jako vlastník testovacího prostředí můžete nakonfigurovat plán vypnutí pro všechny virtuální počítače ve vaší laboratoři. Díky tomu dá ušetřit z počítače, které nejsou používány spuštěno (nečinné). Můžou vynutit zásadu vypínání na všechny virtuální počítače testovacího prostředí centrálně, ale také uložit uživatelům testovacího prostředí úsilí z nastavení plánu pro jejich jednotlivých počítačů. Tato funkce umožňuje nastavit zásady v testovacím plánu od nabídky žádný ovládací prvek pro úplné řízení ke uživatelům testovacího prostředí. Jako vlastník testovacího prostředí můžete nakonfigurovat tyto zásady podle následujících kroků:
+## <a name="set-auto-shutdown-policy-for-a-lab"></a>Nastavení zásad automatického vypnutí pro testovací prostředí
+Jako vlastník testovacího prostředí můžete nakonfigurovat plán vypnutí pro všechny virtuální počítače v testovacím prostředí. Díky tomu můžete ušetřit náklady ze spuštěných počítačů, které se nepoužívají (nečinné). Zásady vypnutí můžete vystavit na všech virtuálních počítačích v testovacím prostředí centrálně, ale také ukládat uživatele testovacího prostředí s úsilím od nastavení plánu pro jednotlivé počítače. Tato funkce umožňuje nastavit zásady pro plán testovacího prostředí od nabídky bez řízení k úplnému řízení uživatelům testovacího prostředí. Jako vlastník testovacího prostředí můžete nakonfigurovat tuto zásadu provedením následujících kroků:
 
-1. Na domovské stránce testovacího prostředí, vyberte **konfigurace a zásad**.
-2. Vyberte **automatické vypnutí zásad** v **plány** část v levé nabídce.
-3. Vyberte jednu z možností. Následující části poskytují další podrobnosti o těchto možnostech: Nastavení zásad platí pouze pro nové virtuální počítače vytvořené v testovacím prostředí a ne na už existující virtuální počítače. 
+1. Na domovské stránce testovacího prostředí vyberte **Konfigurace a zásady**.
+2. V levé nabídce vyberte v části **plány** možnost **zásady automatického vypnutí** .
+3. Vyberte jednu z možností. Následující části obsahují další podrobnosti o těchto možnostech: nastavení zásad se vztahuje pouze na nové virtuální počítače vytvořené v testovacím prostředí, nikoli na již existující virtuální počítače. 
 
-    ![Automatické vypnutí možnosti zásad](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
+    ![Možnosti automatického vypnutí zásad](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
 
-## <a name="configure-auto-shutdown-settings"></a>Konfigurace nastavení automatického vypnutí
-Zásada autoshutdown pomáhá minimalizovat plýtvání testovacího prostředí, neboť umožňuje určit čas, který se vypnout virtuální počítače v tomto testovacím prostředí.
+## <a name="configure-auto-shutdown-settings"></a>Konfigurovat nastavení automatického vypnutí
+Zásady pro automatické vypínání pomáhají minimalizovat odpadní laboratoře tím, že vám umožní určit čas, kdy se virtuální počítače testovacího prostředí vypnuly.
 
-K zobrazení (a změna) zásad pro testovací prostředí, postupujte podle těchto kroků:
+Chcete-li zobrazit (a změnit) zásady pro testovací prostředí, postupujte podle následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu.
-3. V seznamu testovacích prostředí vyberte požadované prostředí.   
-4. Vyberte **konfigurace a zásad**.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
+3. V seznamu cvičení vyberte požadované testovací prostředí.   
+4. Vyberte **Konfigurace a zásady**.
 
     ![Podokno nastavení zásad](./media/devtest-lab-set-lab-policy/policies-menu.png)
-5. Cvičení **konfigurace a zásad** vyberte **automatického vypínání** pod **plány**.
+5. V podokně **Konfigurace a zásady** testovacího prostředí vyberte **automaticky vypínání** v části **plány**.
    
-    ![Autoshutdown](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
-6. Vyberte **na** pro tuto zásadu povolit a **vypnout** ho zakážete.
-7. Pokud tuto zásadu povolit, zadejte čas (a časové pásmo), vypnutí všech virtuálních počítačích v aktuálním testovacím prostředí.
-8. Zadejte **Ano** nebo **ne** pro možnost poslat oznámení 15 minut před časem zadané autoshutdown. Pokud se rozhodnete **Ano**, zadejte koncový bod adresy URL webhooku nebo e-mailovou adresu zadáte, ve kterém chcete oznámení k odeslání nebo odeslání. Uživatel obdrží oznámení a je zadána možnost zpoždění vypnutí počítače. Další informace najdete v tématu [oznámení](#notifications) oddílu. 
+    ![Automatické vypnutí](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
+6. Výběrem **zapnuto** tuto zásadu povolíte a zakážete.
+7. Pokud tuto zásadu povolíte, zadejte čas (a časové pásmo) pro vypnutí všech virtuálních počítačů v aktuálním testovacím prostředí.
+8. Zadejte **hodnotu yes** nebo **No** pro možnost odeslání oznámení 30 minut před zadaným časem automatické vypnutí. Pokud zvolíte **Ano**, zadejte koncový bod adresy URL Webhooku nebo e-mailovou adresu, která určuje, kam chcete oznámení publikovat nebo odeslat. Uživatel obdrží oznámení a získá možnost zpoždění vypnutí. Další informace najdete v části [oznámení](#notifications) . 
 9. Vyberte **Uložit**.
 
-    Ve výchozím nastavení, jakmile bude povoleno, tyto zásady platí pro všechny virtuální počítače v aktuálním testovacím prostředí. Tato nastavení odebrat z konkrétní virtuální počítač, otevřete panel pro správu Virtuálního počítače a změňte jeho **Autoshutdown** nastavení.
+    Ve výchozím nastavení platí, že když je tato zásada povolená, vztahuje se na všechny virtuální počítače v aktuálním testovacím prostředí. Pokud chcete toto nastavení odebrat z konkrétního virtuálního počítače, otevřete podokno pro správu virtuálního počítače a změňte jeho nastavení pro automatické **vypnutí** .
+    
+> [!NOTE]
+> Pokud aktualizujete plán automatické vypínání pro testovací prostředí nebo konkrétní virtuální počítač v testovacím prostředí do 30 minut od aktuálního naplánovaného času, bude se aktualizovaná Doba vypnutí vztahovat k plánu příštího dne. 
 
-### <a name="user-sets-a-schedule-and-can-opt-out"></a>Uživatel nastaví plánu a můžete je zrušit
-Pokud nastavíte testovacího prostředí na tuto zásadu, uživatelé testovacího prostředí můžete přepsat nebo vyjádřit výslovný nesouhlas v testovacím plánu. Tato možnost umožňuje uživatelé testovacího prostředí plnou kontrolu nad plán vypnutí automatického jejich virtuálních počítačů. Uživatelé testovacího prostředí naleznete v tématu žádné změny v jejich stránce plán vypnutí virtuálního počítače automaticky.
+### <a name="user-sets-a-schedule-and-can-opt-out"></a>Uživatel nastaví plán a může se odhlásit.
+Pokud nastavíte testovací prostředí na tuto zásadu, můžou uživatelé testovacího prostředí potlačit nebo odsouhlasit plán testovacího prostředí. Tato možnost uděluje uživatelům testovacího prostředí plnou kontrolu nad plánem automatického vypnutí svých virtuálních počítačů. Uživatelé testovacího prostředí uvidí na stránce plán automatického vypínání virtuálních počítačů žádné změny.
 
-![Automatické vypnutí zásad možnost - 1](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-1.png)
+![Možnost automatického vypnutí zásady – 1](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-1.png)
 
-### <a name="user-sets-a-schedule-and-cannot-opt-out"></a>Uživatel nastaví plán a nelze odhlásit
-Pokud nastavíte testovacího prostředí na tuto zásadu, uživatelé testovacího prostředí můžete přepsat v testovacím plánu. Ale že nemohou výslovně nesouhlasit automatické vypnutí zásad. Tato možnost zajišťuje, každý počítač ve vaší laboratoři je v rámci plánu automatické vypnutí. Uživatelé testovacího prostředí můžete aktualizovat plán vypnutí automatického jejich virtuálních počítačů a nastavení oznámení o vypnutí.
+### <a name="user-sets-a-schedule-and-cannot-opt-out"></a>Uživatel nastaví plán a nemůže se odhlásit.
+Pokud nastavíte testovací prostředí na tuto zásadu, můžou uživatelé testovacího prostředí přepsat plán testovacího prostředí. Nemůžou ale odhlásit zásady automatického vypnutí. Tato možnost zajistí, že každý počítač v testovacím prostředí je v plánu automatického vypnutí. Uživatelé testovacího prostředí můžou aktualizovat plán automatického vypnutí svých virtuálních počítačů a nastavit oznámení o vypnutí.
 
-![Automatické vypnutí zásad možnost - 2](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-2.png)
+![Možnost automatického vypnutí zásady – 2](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-2.png)
 
-### <a name="user-has-no-control-over-the-schedule-set-by-lab-admin"></a>Uživatel nemá žádnou kontrolu nad plánu nastaveného správcem testovacího prostředí
-Pokud nastavíte testovacího prostředí na tuto zásadu, uživatelé testovacího prostředí nelze přepsat nebo vyjádřit výslovný nesouhlas v testovacím plánu. Tato možnost nabízí správce testovacího prostředí úplnou kontrolu nad plán pro každý počítač v testovacím prostředí. Uživatelé testovacího prostředí můžete nastavit jenom automatické vypnutí oznámení pro své virtuální počítače.
+### <a name="user-has-no-control-over-the-schedule-set-by-lab-admin"></a>Uživatel nemá žádnou kontrolu nad plánem nastaveným správcem testovacího prostředí.
+Pokud nastavíte testovací prostředí na tuto zásadu, uživatelé testovacího prostředí nebudou moct přepsat nebo odhlásit plán testovacího prostředí. Tato možnost nabízí správci testovacího prostředí úplnou kontrolu nad plánem pro každý počítač v testovacím prostředí. Uživatelé testovacího prostředí můžou pro svoje virtuální počítače nastavit jenom oznámení o automatickém vypnutí.
 
-![Automatické vypnutí zásad možnost - 3](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-3.png)
+![Možnost automatického vypnutí zásady – 3](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-3.png)
 
 ## <a name="notifications"></a>Oznámení
-Jakmile autoshutdown nastavit vlastníkem testovacího prostředí, se budou odesílat oznámení uživatelům testovacího prostředí 15 minut před autoshutdown aktivovat v případě, že některé z jejich virtuálních počítačů bude mít vliv. Tato možnost poskytuje uživatelé testovacího prostředí a využijte šanci uložte svou práci před vypnutí. Oznámení obsahuje také odkazy pro každý virtuální počítač pro následující akce:
+Jakmile se automatické vypnutí nastaví vlastníkem testovacího prostředí, pošle se oznámení uživatelům testovacího prostředí 30 minut, než se aktivuje automatické vypnutí, pokud bude ovlivněn některý z jeho virtuálních počítačů. Tato možnost dává uživatelům testovacího prostředí možnost uložit práci před vypnutím. Oznámení také obsahuje odkazy na jednotlivé virtuální počítače pro následující akce:
 
-- Pro tuto chvíli přeskočit autoshutdown
-- Připomenout znovu autoshutdown pro hodinu nebo dvě hodiny tak, že můžete pokračovat v práci na virtuálním počítači.
+- Přeskočit automatické vypínání pro tentokrát
+- Automatické vypnutí se odhlásí po hodinu nebo 2 hodinách, aby mohli na virtuálním počítači dál pracovat.
 
-Oznámení se posílá prostřednictvím nakonfigurované webový koncový bod připojení nebo podle vlastníků testovacího prostředí v nastavení autoshutdown zadané e-mailovou adresu. Webhooky umožňují vytvářet nebo nastavení integrace, které se přihlásit k odběru určité události. Když některá z těchto událostí se aktivuje, DevTest Labs pošle datovou část HTTP POST na nakonfigurovanou adresu URL se webhook. Další informace o webhooků najdete v tématu [vytvoření webhooku nebo funkce rozhraní API Azure](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+Oznámení se odesílá prostřednictvím nakonfigurovaného koncového bodu webového zavěšení nebo e-mailové adresy zadané vlastníky testovacího prostředí v nastavení automatické vypnutí. Webhooky umožňují vytvářet nebo nastavovat integrace, které se přihlásí k odběru určitých událostí. Když se aktivuje jedna z těchto událostí, DevTest Labs pošle datovou část HTTP POST do konfigurované adresy URL Webhooku. Další informace o webhookech najdete v tématu [Vytvoření Webhooku nebo rozhraní API Azure Function](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
 
-Doporučujeme použít webhooků, protože se hojně podporuje různé aplikace (například Slack, Azure Logic Apps a atd.) a umožňuje implementovat vlastní způsob pro odesílání oznámení. Jako příklad Tento článek vás provede získání autoshutdown oznámení z e-mailů pomocí Azure Logic Apps. Nejprve můžeme rychle projít základními kroky ke zprovoznění autoshutdown oznámení ve vaší laboratoři.   
+Doporučujeme používat Webhooky, protože jsou široce podporované různými aplikacemi (například časová rezerva, Azure Logic Apps a tak dále) a umožňují vám implementovat vlastní způsob odesílání oznámení. Tento článek vás seznámí s postupem, jak získat oznámení o automatickém vypnutí z e-mailů pomocí Azure Logic Apps. Nejdřív se rychle provedeme základními kroky, které vám umožní oznámení o automatickém vypnutí v testovacím prostředí.   
 
-## <a name="create-a-logic-app-that-receives-email-notifications"></a>Vytvoření aplikace logiky, která bude přijímat e-mailových oznámení
-[Služba Azure Logic Apps](../logic-apps/logic-apps-overview.md) poskytuje celou řadu konektorů out-of-the-box, které umožňuje snadno integrovat službu s ostatními klienty, jako je Office 365 a twitter. Na vysoké úrovni kroky k nastavení aplikace logiky pro e-mailové oznámení můžete rozdělit do čtyř fází: 
+## <a name="create-a-logic-app-that-receives-email-notifications"></a>Vytvoření aplikace logiky, která přijímá e-mailová oznámení
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) poskytuje spoustu předem připravených konektorů, které usnadňují integraci služby s ostatními klienty, jako je třeba Office 365 a Twitter. Na nejvyšší úrovni se kroky pro nastavení aplikace logiky pro e-mailové oznámení dají rozdělit do čtyř fází: 
 
-- Vytvoření aplikace logiky. 
-- Konfigurovat předdefinované šablony.
-- Integrace s e-mailového klienta
-- Získáte adresu URL Webhooku.
+- Vytvořte aplikaci logiky. 
+- Nakonfigurujte předdefinovanou šablonu.
+- Integrace s vaším e-mailovým klientem
+- Získejte adresu URL Webhooku.
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-Abyste mohli začít, vytvořte aplikaci logiky ve vašem předplatném Azure pomocí následujících kroků:
+Začněte tím, že ve svém předplatném Azure vytvoříte aplikaci logiky pomocí následujících kroků:
 
-1. Vyberte **+ vytvořit prostředek** v nabídce vlevo vyberte **integrace**a vyberte **aplikace logiky**. 
+1. V nabídce vlevo vyberte **+ vytvořit prostředek** , vyberte **integrace**a pak vyberte **Aplikace logiky**. 
 
-    ![Nové nabídce aplikace logiky](./media/devtest-lab-auto-shutdown/new-logic-app.png)
-2. Na **aplikace logiky – vytvořit** stránce, postupujte podle těchto kroků: 
-    1. Zadejte **název** pro aplikaci logiky.
+    ![Nová nabídka aplikace logiky](./media/devtest-lab-auto-shutdown/new-logic-app.png)
+2. Na stránce **Aplikace logiky – vytvořit** proveďte následující kroky: 
+    1. Zadejte **název** aplikace logiky.
     2. Vyberte své **předplatné** Azure.
     3. Vytvořte nový **skupiny prostředků** nebo vyberte existující skupinu prostředků. 
     4. Vyberte **umístění** pro aplikaci logiky. 
 
-        ![Aplikace logiky – nastavení](./media/devtest-lab-auto-shutdown/new-logic-app-page.png)
-3. V **oznámení**vyberte **přejít k prostředku** na oznámení. 
+        ![Nová aplikace logiky – nastavení](./media/devtest-lab-auto-shutdown/new-logic-app-page.png)
+3. V okně **oznámení**vyberte v oznámení **Přejít na prostředek** . 
 
     ![Přejít k prostředku](./media/devtest-lab-auto-shutdown/go-to-resource.png)
-4. Vyberte **návrhář aplikace logiky** pod **nástroje pro nasazení** kategorie.
+4. V kategorii **Nástroje nasazení** vyberte **Návrhář aplikace logiky** .
 
-    ![Vyberte žádost/odpověď HTTP](./media/devtest-lab-auto-shutdown/select-http-request-response-option.png)
-5. Na **odpověď na požadavek HTTP** stránce **pomocí této šablony**. 
+    ![Vybrat požadavek a odpověď HTTP](./media/devtest-lab-auto-shutdown/select-http-request-response-option.png)
+5. Na stránce **požadavek HTTP – odpověď** vyberte **použít tuto šablonu**. 
 
-    ![Vyberte možnost použít tuto šablonu](./media/devtest-lab-auto-shutdown/select-use-this-template.png)
-6. Zkopírujte následující kód JSON do **požádat o schéma JSON hlavní části** části: 
+    ![Vyberte možnost použít tuto šablonu.](./media/devtest-lab-auto-shutdown/select-use-this-template.png)
+6. Zkopírujte následující kód JSON do části **schéma JSON textu žádosti** : 
 
     ```json
     {
@@ -167,20 +170,20 @@ Abyste mohli začít, vytvořte aplikaci logiky ve vašem předplatném Azure po
     ```
     
     ![Schéma JSON hlavní části požadavku](./media/devtest-lab-auto-shutdown/request-json.png)
-7. Vyberte **+ nový krok** v návrháři a postupujte podle těchto kroků:
-    1. Vyhledejte **Office 365 Outlook – odeslat e-mail**. 
-    2. Vyberte **odeslat e-mailu** z **akce**. 
+7. V návrháři vyberte **+ Nový krok** a proveďte tyto kroky:
+    1. Vyhledejte **Office 365 Outlook – odeslání e-mailu**. 
+    2. Vyberte **Odeslat e-mail** z **akcí**. 
     
-        ![Odeslání e-mailu – možnost](./media/devtest-lab-auto-shutdown/select-send-email.png)
-    3. Vyberte **přihlášení** pro přihlášení do vaší e-mailový účet. 
-    4. Vyberte **na** pole a tlačítko vlastníka.
-    5. Vyberte **subjektu**a zadejte předmět e-mailové oznámení. Příklad: "Vypnutí počítače vmName pro testovací prostředí: labName."
-    6. Vyberte **tělo**a definujte obsah textu e-mailové oznámení. Příklad: "vmName je naplánováno vypnutí za 15 minut. Přeskočte kliknutím na toto vypnutí: ADRESA URL. Zpoždění vypnutí hodinu: delayUrl60. Zpoždění vypnutí další 2 hodiny: delayUrl120. "
+        ![Možnost odeslání e-mailu](./media/devtest-lab-auto-shutdown/select-send-email.png)
+    3. Vyberte **Přihlásit** se a přihlaste se k e-mailovému účtu. 
+    4. Vyberte pole **do** a zvolte Owner (Vlastník).
+    5. Vyberte **Předmět**a zadejte předmět e-mailového oznámení. Příklad: "vypnutí počítače vmName pro testovací prostředí: labName".
+    6. Vyberte **text**a definujte obsah textu e-mailového oznámení. Příklad: "vmName se naplánovalo vypnutí za 15 minut. Toto vypnutí přeskočte kliknutím na: adresa URL. Odložit vypnutí po hodinu: delayUrl60. Odložit vypnutí na 2 hodiny: delayUrl120. "
 
         ![Schéma JSON hlavní části požadavku](./media/devtest-lab-auto-shutdown/email-options.png)
-1. Na panelu nástrojů vyberte **Uložit**. Teď můžete zkopírovat **adresa URL operace HTTP POST**. Vyberte tlačítko Kopírovat zkopírujte adresu URL do schránky. 
+1. Na panelu nástrojů vyberte **Uložit**. Nyní můžete zkopírovat **adresu URL post protokolu HTTP**. Kliknutím na tlačítko Kopírovat zkopírujte adresu URL do schránky. 
 
-    ![WebHook URL](./media/devtest-lab-auto-shutdown/webhook-url.png)
+    ![Adresa URL Webhooku](./media/devtest-lab-auto-shutdown/webhook-url.png)
 
-## <a name="next-steps"></a>Další postup
-Zjistěte, jak nastavit všechny zásady, najdete v článku [definice zásad testovacího prostředí ve službě Azure DevTest Labs](devtest-lab-set-lab-policy.md).
+## <a name="next-steps"></a>Další kroky
+Informace o tom, jak nastavit všechny zásady, najdete v tématu [Definování zásad testovacího prostředí v Azure DevTest Labs](devtest-lab-set-lab-policy.md).

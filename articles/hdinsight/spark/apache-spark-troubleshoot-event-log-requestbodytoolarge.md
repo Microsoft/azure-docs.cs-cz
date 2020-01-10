@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: 2d2e929335f6af2ee24a81e719d9d0d899f7b8ef
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 114f710c9d0e85ecde4ab163401c714c5e28a708
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241836"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771594"
 ---
 # <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>"NativeAzureFileSystem... RequestBodyTooLarge "se zobrazuje v protokolu aplikací streamování aplikace Apache Spark v HDInsight
 
@@ -26,7 +26,7 @@ Chyba: `NativeAzureFileSystem ... RequestBodyTooLarge` se zobrazí v protokolu o
 
 Váš soubor protokolu událostí Spark pravděpodobně zasáhne omezení délky souboru pro WASB.
 
-V Spark 2,3 každá aplikace Spark generuje jeden soubor protokolu událostí Spark. Soubor protokolu událostí Spark pro aplikaci pro streamování Sparku se v době, kdy je aplikace spuštěná, dál zvětšuje. V současné době má soubor v WASB limit bloku 50000 a výchozí velikost bloku je 4 MB. Proto je ve výchozí konfiguraci maximální velikost souboru 195 GB. Služba Azure Storage ale zvýšila maximální velikost bloku na 100 MB, což efektivně zavedlo omezení jednoho souboru na 4,75 TB. Další informace najdete v tématu [Azure Storage škálovatelnost a výkonnostní cíle](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets).
+V Spark 2,3 každá aplikace Spark generuje jeden soubor protokolu událostí Spark. Soubor protokolu událostí Spark pro aplikaci pro streamování Sparku se v době, kdy je aplikace spuštěná, dál zvětšuje. V současné době má soubor v WASB limit bloku 50000 a výchozí velikost bloku je 4 MB. Proto je ve výchozí konfiguraci maximální velikost souboru 195 GB. Azure Storage však zvýšila maximální velikost bloku na 100 MB, což efektivně zavedlo omezení jednoho souboru na 4,75 TB. Další informace najdete v tématu [škálovatelnost a výkonnostní cíle pro úložiště objektů BLOB](../../storage/blobs/scalability-targets.md).
 
 ## <a name="resolution"></a>Rozlišení
 

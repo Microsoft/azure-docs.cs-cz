@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 734bb48d1ddb50af7c28e948c8267b4cd88fcdf7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f2b106df531dfdf26c2c83b765e3f7270a63df5
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437031"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770981"
 ---
 # <a name="expressroute-faq"></a>Nejčastější dotazy k ExpressRoute
 
@@ -48,6 +48,14 @@ Ano. Okruhy ExpressRoute jsou nakonfigurovány a umožňuje tak burst až dvakr�
 
 Ano. Okruh ExpressRoute, jakmile je nastavená, umožňuje přístup k služby v rámci virtuální sítě a dalšími službami Azure současně. Připojení k virtuálním sítím přes cestou soukromého partnerského vztahu a k dalším službám přes cesta partnerského vztahu Microsoftu.
 
+### <a name="how-are-vnets-advertised-on-expressroute-private-peering"></a>Jak se virtuální sítě inzeruje na soukromý partnerský vztah ExpressRoute?
+
+Brána ExpressRoute bude inzerovat *adresní prostor* virtuální sítě Azure, nemůžete ho zahrnout ani vyloučit na úrovni podsítě. Vždy je adresní prostor virtuální sítě, který je inzerován. Pokud se používá partnerský vztah virtuálních sítí a virtuální síť s partnerským vztahem má povolenou možnost použít vzdálenou bránu, bude se taky inzerovat adresní prostor partnerské virtuální sítě.
+
+### <a name="can-i-filter-routes-coming-from-my-on-premises-network"></a>Můžu filtrovat trasy přicházející z místní sítě?
+
+Jediným způsobem, jak filtrovat/zahrnout trasy, je na místním hraničním směrovači. Trasy definované uživatelem lze ve virtuální síti přidat, aby bylo možné ovlivnit konkrétní směrování, ale tato akce bude statická a nebude součástí inzerování protokolu BGP.
+
 ### <a name="does-expressroute-offer-a-service-level-agreement-sla"></a>Nabízí ExpressRoute smlouva o úrovni služeb (SLA)?
 
 Informace najdete v tématu [ExpressRoute SLA](https://azure.microsoft.com/support/legal/sla/) stránky.
@@ -73,7 +81,8 @@ Pokud je pro partnerský vztah Microsoft Azure povolen okruh ExpressRoute, můž
 * Azure Active Directory
 * [Virtuální klient Windows](https://azure.microsoft.com/services/virtual-desktop/)
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (komunity Azure ke službám Global Services)
-* Většina služeb Azure jsou podporovány. Zkontrolujte prosím přímo se službou, kterou chcete použít k ověření podpory.
+* Veřejné IP adresy Azure pro IaaS (Virtual Machines, Virtual Network brány, nástroje pro vyrovnávání zatížení atd.)  
+* Podporuje se i většina ostatních služeb Azure. Zkontrolujte prosím přímo se službou, kterou chcete použít k ověření podpory.
 
 **Nepodporováno:**
 

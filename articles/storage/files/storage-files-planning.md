@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a315b012cf103840eae6b141fe5177dfa709896d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a51bb91a63f032f87da59fe95f5e3282cbaa0bea
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463932"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771611"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -24,7 +24,7 @@ ms.locfileid: "75463932"
 
 ![Struktura souborů](./media/storage-files-introduction/files-concepts.png)
 
-* **Účet služby Storage:** Veškerý přístup ke službě Azure Storage se provádí prostřednictvím účtu úložiště. Podrobné informace o kapacitě účtu úložiště najdete v článku [Škálovatelnost a cíle výkonosti](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+* **Účet služby Storage:** Veškerý přístup ke službě Azure Storage se provádí prostřednictvím účtu úložiště. Podrobnosti o kapacitě účtu úložiště najdete v tématu [škálovatelnost a výkonnostní cíle pro účty úložiště úrovně Standard](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
 
 * **Sdílená složka:** Sdílená složka služby File Storage představuje sdílenou složku protokolu SMB v Azure. Všechny adresáře a soubory musí být vytvořeny v nadřazené sdílené složce. Účet může obsahovat neomezený počet sdílených složek a sdílená složka může ukládat neomezený počet souborů až do celkové kapacity sdílené složky. Celková kapacita pro sdílené složky úrovně Premium a Standard je 100 TiB.
 
@@ -205,29 +205,40 @@ Standardní sdílené složky jsou k dispozici ve všech oblastech až do 5 TiB.
 
 |Region (Oblast) |Podporovaná redundance |
 |-------|---------|
+|Austrálie – střed    |LRS     |
+|Austrálie – střed 2    |LRS     |
 |Austrálie – východ |LRS     |
 |Austrálie – jihovýchod|LRS |
+|Brazílie – jih    |LRS     |
 |Střední Kanada  |LRS     |
 |Východní Kanada     |LRS     |
 |Střední Indie  |LRS     |
-|Střed USA *   |LRS     |
+|Střed USA *   |LRS, ZRS    |
 |Východní Asie      |LRS     |
 |Východní USA *        |LRS, ZRS|
-|Východní USA 2 *      |LRS     |
+|Východní USA 2 *      |LRS, ZRS     |
 |Francie – střed |LRS, ZRS|
 |Francie – jih   |LRS     |
 |Japonsko – východ     |LRS     |
+|Japonsko – západ     |LRS     |
+|Korea – střed  |LRS     |
+|Korea – jih    |LRS     |
 |Středoseverní USA |LRS   |
 |Severní Evropa   |LRS     |
 |Jižní Indie    |LRS     |
 |Středojižní USA |LRS     |
 |Jihovýchodní Asie |LRS, ZRS|
+|Švýcarsko – sever    |LRS     |
+|Švýcarsko – západ    |LRS     |
 |Spojené arabské emiráty – střed    |LRS     |
-|Spojené království – jih   |LRS     |
+|Spojené arabské emiráty – sever    |LRS     |
+|Spojené království – sever   |LRS, ZRS    |
+|Spojené království – jih    |LRS     |
 |Velká Británie – západ    |LRS     |
 |Středozápadní USA|LRS     |
 |Západní Evropa *    |LRS, ZRS|
-|Západní USA *        |LRS     |
+|Západní Indie   |LRS     |
+|Západní USA        |LRS     |
 |Západní USA 2      |LRS, ZRS|
 
 \* pro nové účty podporované, ne všechny stávající účty dokončily proces upgradu. Můžete zjistit, jestli vaše stávající účty úložiště dokončily proces upgradu tím, že se pokusí [Povolit velké sdílené složky souborů](storage-files-how-to-create-large-file-share.md).
@@ -248,7 +259,7 @@ Je možné synchronizovat více sdílených složek Azure na jeden souborový se
 
 Existuje mnoho jednoduchých možností, jak hromadně přenášet data z existující sdílené složky, jako je místní sdílená složka, do souborů Azure. Mezi několik oblíbených patří (nevyčerpávající seznam):
 
-* **Azure File Sync**: jako součást první synchronizace mezi sdílenou složkou Azure (koncovým bodem cloudu) a oborem názvů adresáře Windows (koncový bod serveru) Azure File Sync replikuje všechna data z existující sdílené složky do souborů Azure.
+* **[Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning)** : jako součást první synchronizace mezi sdílenou složkou Azure (koncovým bodem cloudu) a oborem názvů adresáře Windows (koncový bod serveru) Azure File Sync replikuje všechna data z existující sdílené složky do souborů Azure.
 * **[Import/export v Azure](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : Služba Azure import/export umožňuje bezpečně přenášet velké objemy dat do sdílené složky Azure tím, že je přenáší jednotky pevného disku do datacentra Azure. 
 * **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : Robocopy je dobře známý nástroj pro kopírování, který je dodáván s Windows a Windows serverem. Pomocí nástroje Robocopy můžete přenášet data do souborů Azure, a to tak, že sdílenou složku připojíte místně a potom v příkazu Robocopy použijete připojené umístění jako cíl.
 * **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy je nástroj příkazového řádku určený ke kopírování dat do a ze souborů Azure a také pro úložiště objektů BLOB v Azure pomocí jednoduchých příkazů s optimálním výkonem.

@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: V tomto rychlém startu se dozvíte, jak pomocí Azure Dev Spaces a Visual Studio Code ladit a rychle iterovat aplikaci Java ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Java, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 8050e7793146456894ce86ab89e1563c6282b8df
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c1f346aceb6e710001911d7575024288c9c2ba6b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438274"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771066"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-java---azure-dev-spaces"></a>Rychlý Start: ladění a iterace v Kubernetes pomocí Visual Studio Code a Java-Azure Dev Spaces
 
@@ -170,4 +170,4 @@ Přečtěte si, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace n
 > [Práce s více kontejnery a týmový vývoj](multi-service-java.md)
 
 
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

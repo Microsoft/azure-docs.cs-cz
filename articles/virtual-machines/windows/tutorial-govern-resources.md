@@ -1,5 +1,5 @@
 ---
-title: Kurz – Správa virtuálních počítačů Azure pomocí Azure PowerShell
+title: Kurz – Správa virtuálních počítačů pomocí PowerShellu
 description: V tomto kurzu zjistíte, jak pomocí Azure PowerShellu spravovat virtuální počítače Azure s využitím RBAC, zásad, zámků a značek.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 9f806c6790c953d86cf7fe99daf40c17a43d2d35
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 6a4c02883c80b2ad7e5283c6ac33a4604ee35c75
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74067950"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751373"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Kurz: informace o správě virtuálních počítačů s Windows pomocí Azure PowerShell
 
@@ -26,11 +26,9 @@ ms.locfileid: "74067950"
 
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
- 
-
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložit je do Cloud Shellu a potom je spusťte stisknutím klávesy Enter.
 
 ## <a name="understand-scope"></a>Orientace v oborech
 
@@ -46,7 +44,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 V tuto chvíli je skupina prostředků prázdná.
 
-## <a name="role-based-access-control"></a>Řízení přístupu na základě role
+## <a name="role-based-access-control"></a>Řízení přístupu založené na rolích
 
 Potřebujete zajistit, aby uživatelé ve vaší organizaci měli správnou úroveň přístupu k těmto prostředkům. Nechcete uživatelům dát neomezený přístup, ale zároveň jim potřebujete umožnit dělat svou práci. Pomocí [řízení přístupu na základě rolí](../../role-based-access-control/overview.md) můžete spravovat oprávnění uživatelů k provádění určitých akcí v daném oboru.
 

@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 11/22/2019
-ms.openlocfilehash: 2f5658d6df2b20e5bce0fab2ca1787ede5ab7883
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 77e23467551df8d72fd999049c490600eff11825
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75540227"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763628"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Nasazení modelu Machine Learning do Azure Functions (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Pomocí Azure Machine Learning můžete vytvářet image Docker z školicích mo
     > * `model` – registrovaný model, který se nasadí.
     > * `inference_config` – odvození konfigurace modelu.
     >
-    > Další informace o nastavení těchto proměnných najdete v tématu [nasazení modelů pomocí Azure Machine Learning](service/how-to-deploy-and-where.md).
+    > Další informace o nastavení těchto proměnných najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="prepare-for-deployment"></a>Příprava nasazení
 
@@ -53,12 +53,12 @@ Před nasazením musíte definovat, co je potřeba ke spuštění modelu jako we
     >
     > Pokud jsou data požadavku ve formátu, který model nepoužívá, skript ho může transformovat do přijatelného formátu. Může také transformovat odpověď předtím, než se vrátí do klienta.
     >
-    > Ve výchozím nastavení je při balení pro funkce vstup považován za text. Pokud vás zajímá využívání nezpracovaných bajtů vstupu (například pro triggery objektů BLOB), měli byste použít [AMLRequest k přijetí nezpracovaných dat](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#binary-data).
+    > Ve výchozím nastavení je při balení pro funkce vstup považován za text. Pokud vás zajímá využívání nezpracovaných bajtů vstupu (například pro triggery objektů BLOB), měli byste použít [AMLRequest k přijetí nezpracovaných dat](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#binary-data).
 
 
 * **Závislosti**, například pomocné skripty nebo balíčky python/conda potřebné ke spuštění skriptu vstupu nebo modelu
 
-Tyto entity jsou zapouzdřeny do __Konfigurace odvození__. Konfigurace odvození odkazuje na skript vstupu a další závislosti.
+Tyto entity jsou zapouzdřeny do __Konfigurace odvození__. Odvozená konfigurace odkazuje na vstupní skript a další závislosti.
 
 > [!IMPORTANT]
 > Při vytváření odvozených konfigurací pro použití s Azure Functions je nutné použít objekt [prostředí](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) . Počítejte s tím, že pokud definujete vlastní prostředí, musíte přidat AzureML-Defaults s Version > = 1.0.45 jako závislost v PIP. Tento balíček obsahuje funkce potřebné pro hostování modelu jako webové služby. Následující příklad ukazuje vytvoření objektu prostředí a jeho použití s odvozenou konfigurací:
@@ -79,7 +79,7 @@ Tyto entity jsou zapouzdřeny do __Konfigurace odvození__. Konfigurace odvozen�
 
 Další informace o prostředích najdete v tématu [vytváření a Správa prostředí pro školení a nasazení](how-to-use-environments.md).
 
-Další informace o konfiguraci odvození najdete v tématu [nasazení modelů pomocí Azure Machine Learning](service/how-to-deploy-and-where.md).
+Další informace o konfiguraci odvození najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 > [!IMPORTANT]
 > Při nasazování do funkcí není nutné vytvářet __konfiguraci nasazení__.
@@ -97,7 +97,7 @@ pip install azureml-contrib-functions
 Chcete-li vytvořit bitovou kopii Docker, která je nasazena do Azure Functions, použijte funkci [AzureML. contrib. Functions. Package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py) nebo konkrétního balíčku pro aktivační událost, které vás zajímá. Následující fragment kódu ukazuje, jak vytvořit nový balíček s triggerem objektu BLOB z modelu a odvozené konfigurace:
 
 > [!NOTE]
-> Fragment kódu předpokládá, že `model` obsahuje registrovaný model a že `inference_config` obsahuje konfiguraci pro odvození prostředí. Další informace najdete v tématu [nasazení modelů pomocí Azure Machine Learning](service/how-to-deploy-and-where.md).
+> Fragment kódu předpokládá, že `model` obsahuje registrovaný model a že `inference_config` obsahuje konfiguraci pro odvození prostředí. Další informace najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 ```python
 from azureml.contrib.functions import package
@@ -238,6 +238,6 @@ V tuto chvíli začne aplikace Function App načítat obrázek.
 
 * Naučte se konfigurovat aplikaci Functions v dokumentaci k [funkcím](/azure/azure-functions/functions-create-function-linux-custom-image) .
 * Další informace o službě BLOB Storage spouští [vazby úložiště objektů BLOB v Azure](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob).
-* [Nasaďte model do Azure App Service](service/how-to-deploy-app-service.md).
+* [Nasaďte model do Azure App Service](how-to-deploy-app-service.md).
 * [Používání modelu ML nasadit jako webovou službu](how-to-consume-web-service.md)
 * [Referenční materiály k rozhraní API](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py)

@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 09/10/2019
-ms.openlocfilehash: ed95d95db3849026763e4537a832c9feda98aa40
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2020
+ms.openlocfilehash: 45b0c012ec8b8d70c1fad99db40f38fb92daf8a0
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437589"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770641"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Kurz: migrace Oracle pro Azure Database for PostgreSQL online pomocí DMS (Preview)
 
@@ -52,17 +52,18 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 * Stáhněte a nainstalujte ora2pg buď na [Windows](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf) , nebo [Linux](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Linux.pdf).
 * [Vytvořte instanci v Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal).
 * Připojte se k instanci a vytvořte databázi pomocí instrukcí v tomto [dokumentu](https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal).
-* Vytvořte Azure Virtual Network (VNet) pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který zajišťuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Další informace o vytvoření virtuální sítě najdete v dokumentaci k [Virtual Network](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlý Start s podrobnými údaji.
+* Vytvořte Microsoft Azure Virtual Network pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který umožňuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Další informace o vytváření virtuálních sítí najdete v [dokumentaci k Virtual Network](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlý Start s podrobnými údaji.
 
   > [!NOTE]
   > Pokud při instalaci virtuální sítě používáte ExpressRoute s partnerským vztahem k síti Microsoftu, přidejte do podsítě, ve které se služba zřídí, tyto [koncové body](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) služby:
+  >
   > * Koncový bod cílové databáze (například koncový bod SQL, Cosmos DB koncový bod atd.)
   > * Koncový bod úložiště
   > * Koncový bod služby Service Bus
   >
   > Tato konfigurace je nezbytná, protože Azure Database Migration Service nemá připojení k Internetu.
 
-* Zajistěte, aby pravidla skupiny zabezpečení sítě (NSG) ve vaší virtuální síti neblokovala následující příchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování přenosů Azure VNet NSG najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
+* Zajistěte, aby pravidla skupiny zabezpečení sítě (NSG) vaší virtuální sítě neblokovala následující příchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
 * Nakonfigurujte bránu [Windows Firewall pro přístup k databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Otevřete bránu Windows Firewall a umožněte Azure Database Migration Service přistupovat ke zdrojovému serveru Oracle, který je ve výchozím nastavení port TCP 1521.
 * Pokud používáte zařízení brány firewall před zdrojovými databázemi, budete možná muset přidat pravidla firewallu, která Azure Database Migration Service umožní přístup ke zdrojovým databázím pro migraci.
@@ -173,7 +174,7 @@ Doporučujeme používat ora2pg k vyhodnocení úsilí potřebného k migraci z 
 
 Většina zákazníků bude strávit značnou dobu, kterou si prohlédnete v sestavě posouzení a bere v úvahách automatické a ruční převody.
 
-Pokud chcete nakonfigurovat a spustit ora2pg pro vytvoření sestavy posouzení, přečtěte si část **"předmigrace: posouzení"** v tématu [Oracle na Azure Database for PostgreSQL kuchařka](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf). K dispozici je ukázková sestava ora2pg Assessment [pro referenci.](http://ora2pg.darold.net/report.html)
+Pokud chcete nakonfigurovat a spustit ora2pg pro vytvoření sestavy posouzení, přečtěte si část **"předmigrace: posouzení"** v tématu [Oracle na Azure Database for PostgreSQL kuchařka](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf). K dispozici je ukázková sestava ora2pg Assessment [pro referenci.](https://ora2pg.darold.net/report.html)
 
 ## <a name="export-the-oracle-schema"></a>Export schématu Oracle
 

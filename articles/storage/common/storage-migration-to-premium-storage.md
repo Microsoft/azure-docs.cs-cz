@@ -9,12 +9,12 @@ ms.date: 06/27/2017
 ms.author: rogarana
 ms.reviewer: yuemlu
 ms.subservice: common
-ms.openlocfilehash: b8b3679676cf019a48c55211d81bee0523764db5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7cb5a335af7093bc217578d57340b03b8b9c08b3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351240"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748341"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrace do Azure Premium Storage (nespravované disky)
 
@@ -64,7 +64,8 @@ Existuje pět typů disků, které lze použít s VIRTUÁLNÍm počítačem a ka
 V závislosti na vašich úlohách Zjistěte, jestli jsou pro váš virtuální počítač potřeba další datové disky. K VIRTUÁLNÍmu počítači můžete připojit několik trvalých datových disků. V případě potřeby můžete proložením na disky zvýšit kapacitu a výkon svazku. (Další informace najdete v tématu Co je to disk [Stripe.)](../../virtual-machines/windows/premium-storage-performance.md#disk-striping) Pokud Premium Storage datové disky pomocí [prostorů úložiště][4], měli byste je nakonfigurovat pomocí jednoho sloupce pro každý disk, který se používá. V opačném případě může být celkový výkon prokládaného svazku nižší, než se očekává kvůli nerovnoměrné distribuci provozu mezi disky. Pro virtuální počítače se systémem Linux můžete použít nástroj *mdadm* ke stejnému účelu. Podrobnosti najdete v článku [Konfigurace softwarového pole RAID v systému Linux](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
 #### <a name="storage-account-scalability-targets"></a>Cíle škálovatelnosti účtu úložiště
-Kromě [cílů Azure Storage škálovatelnosti a výkonu](storage-scalability-targets.md)Premium Storage účty mají následující cíle škálovatelnosti. Pokud požadavky vaší aplikace překračují cíle škálovatelnosti jednoho účtu úložiště, sestavte aplikaci tak, aby používala více účtů úložiště, a vytvořte oddíly dat v rámci těchto účtů úložiště.
+
+Premium Storage účty mají následující cíle škálovatelnosti. Pokud požadavky vaší aplikace překračují cíle škálovatelnosti jednoho účtu úložiště, sestavte aplikaci tak, aby používala více účtů úložiště, a vytvořte oddíly dat v rámci těchto účtů úložiště.
 
 | Celková kapacita účtu | Celková šířka pásma pro místně redundantní účet úložiště |
 |:--- |:--- |
@@ -162,7 +163,8 @@ U datových disků si můžete vybrat, jestli chcete zachovat některé datové 
 Abyste mohli zpracovat jednu z těchto dvou možností, budete muset najít cestu ke kontejneru a klíč účtu úložiště. Cesta ke kontejneru a klíč účtu úložiště najdete na webu **Azure Portal** > **Storage**. Adresa URL kontejneru bude jako https:\//myaccount.blob.core.windows.net/mycontainer/.
 
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Možnost 1: zkopírování VHD pomocí AzCopy (asynchronní kopírování)
-Pomocí AzCopy můžete snadno nahrát virtuální pevný disk přes Internet. V závislosti na velikosti virtuálních pevných disků může to chvíli trvat. Při použití této možnosti Nezapomeňte ověřit omezení pro příchozí/odchozí přenos účtu úložiště. Podrobnosti najdete v tématu [Azure Storage škálovatelnost a cíle výkonnosti](storage-scalability-targets.md) .
+
+Pomocí AzCopy můžete snadno nahrát virtuální pevný disk přes Internet. V závislosti na velikosti virtuálních pevných disků může to chvíli trvat. Při použití této možnosti Nezapomeňte ověřit omezení pro příchozí/odchozí přenos účtu úložiště. Podrobnosti najdete v tématu [škálovatelnost a výkonnostní cíle pro účty úložiště úrovně Standard](scalability-targets-standard-account.md) .
 
 1. Stáhněte a nainstalujte AzCopy odsud: [nejnovější verze AzCopy](https://aka.ms/downloadazcopy) .
 2. Otevřete Azure PowerShell a přejdete do složky, kde je nainstalovaná AzCopy.
@@ -259,7 +261,8 @@ Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 Příklad \<> identifikátoru URI může být **_"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"_** . Příkladem \<FileInfo > může být **_"C:\path\to\upload.VHD"_** .
 
 ##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Možnost 2: použití AzCopy k nahrání souboru. VHD
-Pomocí AzCopy můžete snadno nahrát virtuální pevný disk přes Internet. V závislosti na velikosti virtuálních pevných disků může to chvíli trvat. Při použití této možnosti Nezapomeňte ověřit omezení pro příchozí/odchozí přenos účtu úložiště. Podrobnosti najdete v tématu [Azure Storage škálovatelnost a cíle výkonnosti](storage-scalability-targets.md) .
+
+Pomocí AzCopy můžete snadno nahrát virtuální pevný disk přes Internet. V závislosti na velikosti virtuálních pevných disků může to chvíli trvat. Při použití této možnosti Nezapomeňte ověřit omezení pro příchozí/odchozí přenos účtu úložiště. Podrobnosti najdete v tématu [škálovatelnost a výkonnostní cíle pro účty úložiště úrovně Standard](scalability-targets-standard-account.md) .
 
 1. Stáhněte a nainstalujte AzCopy odsud: [nejnovější verze AzCopy](https://aka.ms/downloadazcopy) .
 2. Otevřete Azure PowerShell a přejdete do složky, kde je nainstalovaná AzCopy.

@@ -13,18 +13,18 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77763ac30b4ba98e4849a25690302469843b4d06
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 57d313e7620361f976cc1670c2370e5f19bdb99a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920629"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768125"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu JavaScript
 
 V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové aplikace v JavaScriptu (SPA) můžou přihlašovat uživatelům osobních účtů, pracovních účtů a školních účtů. K volání rozhraní API pro Microsoft Graph nebo libovolné webové rozhraní API může získat přístupový token, a to prostřednictvím JavaScriptu. (Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * [Node.js](https://nodejs.org/en/download/).
@@ -89,7 +89,7 @@ var msalConfig = {
     auth: {
         clientId: "Enter_the_Application_Id_here",
         authority: "https://login.microsoftonline.com/Enter_the_Tenant_info_here",
-        redirectURI: "http://localhost:30662/"
+        redirectUri: "http://localhost:30662/"
     },
     cache: {
         cacheLocation: "localStorage",
@@ -238,7 +238,7 @@ myMSALObj.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Existují situace, kdy potřebujete vynutit, aby uživatelé mohli pracovat s koncovým bodem Microsoft Identity Platform. Například:
+Existují situace, kdy potřebujete vynutit, aby uživatelé mohli pracovat s koncovým bodem Microsoft Identity Platform. Příklad:
 * Uživatelé možná budou muset znovu zadat svoje přihlašovací údaje, protože vypršela platnost hesla.
 * Vaše aplikace požaduje přístup k dalším oborům prostředků, ke kterým uživatel musí vyjádřit souhlas.
 * Je vyžadováno dvojúrovňové ověřování.

@@ -8,12 +8,12 @@ ms.date: 09/05/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: c2f6847a286a9c106fc094e9f0aa315d6b1f337d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 62e2e3f1a80cef04dc778d5a1950cca97d79dcb0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257090"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748372"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metriky Azure Storage na platformě Azure Monitor
 
@@ -25,7 +25,7 @@ Azure Monitor poskytuje jednotná uživatelská rozhraní pro monitorování nap
 
 Azure Monitor poskytuje několik způsobů přístupu metriky. K nim můžete přistupovat z [Azure Portal](https://portal.azure.com), rozhraní API Azure monitor (Rest a .NET) a analytických řešení, jako je například Event Hubs. Další informace najdete v tématu [Azure monitor metriky](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
-Metriky jsou ve výchozím nastavení povolené a můžete získat přístup k datům v posledních 93 dnech. Pokud je potřeba data uchovávat po delší dobu, můžete archivovat data metrik do účtu služby Azure Storage. Toto je nakonfigurováno v [nastavení diagnostiky](../../azure-monitor/platform/resource-logs-overview.md) ve službě Azure Monitor.
+Metriky jsou ve výchozím nastavení povolené a můžete získat přístup k datům v posledních 93 dnech. Pokud je potřeba data uchovávat po delší dobu, můžete archivovat data metrik do účtu služby Azure Storage. Toto je nakonfigurováno v [nastavení diagnostiky](../../azure-monitor/platform/platform-logs-overview.md) ve službě Azure Monitor.
 
 ### <a name="access-metrics-in-the-azure-portal"></a>Přístup k metrikám v Azure Portal
 
@@ -136,7 +136,7 @@ Následující odpověď obsahuje hodnoty metrik ve formátu JSON:
 
 ### <a name="access-metrics-with-the-net-sdk"></a>Přístup k metrikám pomocí .NET SDK
 
-Azure Monitor poskytuje [sadu .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) pro čtení definice metrik a hodnot. [Vzorový kód](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) ukazuje, jak použít sadu SDK s různými parametry. Pro metriky úložiště `0.18.0-preview` je nutné použít nebo novější verzi. ID prostředku se používá v sadě .NET SDK. Další informace najdete v článku Principy ID prostředku pro služby v úložišti.
+Azure Monitor poskytuje [sadu .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) pro čtení definice metrik a hodnot. [Vzorový kód](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) ukazuje, jak použít sadu SDK s různými parametry. Pro metriky úložiště je nutné použít `0.18.0-preview` nebo novější verzi. ID prostředku se používá v sadě .NET SDK. Další informace najdete v článku Principy ID prostředku pro služby v úložišti.
 
 Následující příklad ukazuje, jak použít sadu Azure Monitor .NET SDK ke čtení metrik úložiště.
 
@@ -302,19 +302,19 @@ Následující příklad uvádí formát pro zadání ID prostředku pro účet 
 
 Následující příklad uvádí formát pro zadání ID prostředku pro každou službu úložiště.
 
-* ID prostředku služby Blob
+* ID prostředku Blob service
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/blobServices/default
 ```
-* ID prostředku služby Table
+* ID prostředku Table service
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/tableServices/default
 ```
-* ID prostředku služby Queue
+* ID prostředku Služba front
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
 ```
-* ID prostředku služby File
+* ID prostředku souborové služby
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
 ```
@@ -327,7 +327,7 @@ Následující příklad ukazuje vzor používaný při volání REST API Azure 
 GET {resourceId}/providers/microsoft.insights/metrics?{parameters}
 ```
 
-## <a name="capacity-metrics"></a>Metriky kapacity
+## <a name="capacity-metrics"></a>Kapacitní metriky
 Hodnoty metrik kapacity se odesílají do Azure Monitor každou hodinu. Hodnoty se aktualizují každý den. Časové rozpětí definuje časový interval, pro který jsou prezentovány hodnoty metrik. Podporovaná časová zrna pro všechny metriky kapacity je jedna hodina (PT1H).
 
 Azure Storage poskytuje v Azure Monitor následující metriky kapacity.
@@ -336,42 +336,42 @@ Azure Storage poskytuje v Azure Monitor následující metriky kapacity.
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-| UsedCapacity | Velikost úložiště využitého účtem úložiště U standardních účtů úložiště je to součet kapacity využité objektem blob, tabulkou, souborem a frontou. U účtů úložiště úrovně Premium a účtů služby Blob se rovná hodnotě BlobCapacity. <br/><br/> Jednotce B <br/> Typ agregace: Average <br/> Příklad hodnoty: 1024 |
+| UsedCapacity | Velikost úložiště využitého účtem úložiště U standardních účtů úložiště je to součet kapacity využité objektem blob, tabulkou, souborem a frontou. U účtů úložiště úrovně Premium a účtů služby Blob se rovná hodnotě BlobCapacity. <br/><br/> Jednotka: bajty <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 |
 
-### <a name="blob-storage"></a>Blob Storage
+### <a name="blob-storage"></a>Úložiště blobů
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-| BlobCapacity | Celkem úložiště objektů BLOB použité v účtu úložiště. <br/><br/> Jednotce B <br/> Typ agregace: Average <br/> Příklad hodnoty: 1024 <br/> Rozměry: **BlobType**a **BlobTier** ([definice](#metrics-dimensions)) |
-| BlobCount    | Počet objektů BLOB uložených v účtu úložiště. <br/><br/> Jednotce Count <br/> Typ agregace: Average <br/> Příklad hodnoty: 1024 <br/> Rozměry: **BlobType**a **BlobTier** ([definice](#metrics-dimensions)) |
-| ContainerCount    | Počet kontejnerů v účtu úložiště. <br/><br/> Jednotce Count <br/> Typ agregace: Average <br/> Příklad hodnoty: 1024 |
-| IndexCapacity     | Velikost úložiště, kterou používá ADLS Gen2 hierarchický index <br/><br/> Jednotce B <br/> Typ agregace: Average <br/> Příklad hodnoty: 1024 |
+| BlobCapacity | Celkem úložiště objektů BLOB použité v účtu úložiště. <br/><br/> Jednotka: bajty <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 <br/> Dimensions: **BlobType**a **BlobTier** ([definice](#metrics-dimensions)) |
+| BlobCount    | Počet objektů BLOB uložených v účtu úložiště. <br/><br/> Jednotky: počet <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 <br/> Dimensions: **BlobType**a **BlobTier** ([definice](#metrics-dimensions)) |
+| ContainerCount    | Počet kontejnerů v účtu úložiště. <br/><br/> Jednotky: počet <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 |
+| IndexCapacity     | Velikost úložiště, kterou používá ADLS Gen2 hierarchický index <br/><br/> Jednotka: bajty <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 |
 
 ### <a name="table-storage"></a>Úložiště tabulek
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-| TableCapacity | Velikost úložiště tabulek, kterou používá účet úložiště <br/><br/> Jednotce B <br/> Typ agregace: Average <br/> Příklad hodnoty: 1024 |
-| TableCount   | Počet tabulek v účtu úložiště <br/><br/> Jednotce Count <br/> Typ agregace: Average <br/> Příklad hodnoty: 1024 |
-| TableEntityCount | Počet entit tabulky v účtu úložiště <br/><br/> Jednotce Count <br/> Typ agregace: Average <br/> Příklad hodnoty: 1024 |
+| TableCapacity | Velikost úložiště tabulek, kterou používá účet úložiště <br/><br/> Jednotka: bajty <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 |
+| TableCount   | Počet tabulek v účtu úložiště <br/><br/> Jednotky: počet <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 |
+| TableEntityCount | Počet entit tabulky v účtu úložiště <br/><br/> Jednotky: počet <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 |
 
-### <a name="queue-storage"></a>Queue Storage
-
-| Název metriky | Popis |
-| ------------------- | ----------------- |
-| QueueCapacity | Velikost úložiště fronty, kterou účet úložiště používá <br/><br/> Jednotce B <br/> Typ agregace: Average <br/> Příklad hodnoty: 1024 |
-| QueueCount   | Počet front v účtu úložiště. <br/><br/> Jednotce Count <br/> Typ agregace: Average <br/> Příklad hodnoty: 1024 |
-| QueueMessageCount | Počet zpráv ve frontě s neplatným vypršením platnosti v účtu úložiště <br/><br/>Jednotce Count <br/> Typ agregace: Average <br/> Příklad hodnoty: 1024 |
-
-### <a name="file-storage"></a>File Storage
+### <a name="queue-storage"></a>Úložiště front
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-| Kapacita zařízení | Velikost úložiště souborů, kterou používá účet úložiště. <br/><br/> Jednotce B <br/> Typ agregace: Average <br/> Příklad hodnoty: 1024 |
-| FileCount   | Počet souborů v účtu úložiště. <br/><br/> Jednotce Count <br/> Typ agregace: Average <br/> Příklad hodnoty: 1024 |
-| FileShareCount | Počet sdílených složek v účtu úložiště. <br/><br/> Jednotce Count <br/> Typ agregace: Average <br/> Příklad hodnoty: 1024 |
+| QueueCapacity | Velikost úložiště fronty, kterou účet úložiště používá <br/><br/> Jednotka: bajty <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 |
+| QueueCount   | Počet front v účtu úložiště. <br/><br/> Jednotky: počet <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 |
+| QueueMessageCount | Počet zpráv ve frontě s neplatným vypršením platnosti v účtu úložiště <br/><br/>Jednotky: počet <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 |
 
-## <a name="transaction-metrics"></a>Metriky transakcí
+### <a name="file-storage"></a>Úložiště souborů
+
+| Název metriky | Popis |
+| ------------------- | ----------------- |
+| Kapacita zařízení | Velikost úložiště souborů, kterou používá účet úložiště. <br/><br/> Jednotka: bajty <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 |
+| FileCount   | Počet souborů v účtu úložiště. <br/><br/> Jednotky: počet <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 |
+| FileShareCount | Počet sdílených složek v účtu úložiště. <br/><br/> Jednotky: počet <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 |
+
+## <a name="transaction-metrics"></a>Transakční metriky
 
 Metriky transakcí jsou vydávány při každém požadavku na účet úložiště z Azure Storage do Azure Monitor. V případě, že váš účet úložiště neobsahuje žádné aktivity, nebudou v obdobích metrik transakcí žádná data. Všechny transakční metriky jsou k dispozici na úrovni účtu i služby (úložiště objektů blob, úložiště tabulek, soubory Azure a úložiště front). Časové rozpětí definuje časový interval, po který jsou zobrazeny hodnoty metriky. Podporovaná časová zrna pro všechny transakční metriky jsou PT1H a PT1M.
 
@@ -379,12 +379,12 @@ Azure Storage poskytuje následující metriky transakcí v Azure Monitor.
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-| Transakce | Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a také požadavky, u kterých došlo k chybě. <br/><br/> Jednotce Count <br/> Typ agregace: Celkem <br/> Použitelné dimenze: ResponseType, typ, ApiName a ověřování ([definice](#metrics-dimensions))<br/> Příklad hodnoty: 1024 |
-| Příchozí přenos dat | Množství příchozích dat. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure. <br/><br/> Jednotce B <br/> Typ agregace: Celkem <br/> Použitelné dimenze: Typ, ApiName a ověřování ([definice](#metrics-dimensions)) <br/> Příklad hodnoty: 1024 |
-| Výchozí přenos | Množství výchozích dat. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat. <br/><br/> Jednotce B <br/> Typ agregace: Celkem <br/> Použitelné dimenze: Typ, ApiName a ověřování ([definice](#metrics-dimensions)) <br/> Příklad hodnoty: 1024 |
-| SuccessServerLatency | Průměrná doba zpracování úspěšného požadavku službou Azure Storage. Tato hodnota nezahrnuje latenci sítě zadanou v metrice Celková latence při úspěchu. <br/><br/> Jednotce Milisekundy <br/> Typ agregace: Average <br/> Použitelné dimenze: Typ, ApiName a ověřování ([definice](#metrics-dimensions)) <br/> Příklad hodnoty: 1024 |
-| SuccessE2ELatency | Průměrná celková latence úspěšných požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi. <br/><br/> Jednotce Milisekundy <br/> Typ agregace: Average <br/> Použitelné dimenze: Typ, ApiName a ověřování ([definice](#metrics-dimensions)) <br/> Příklad hodnoty: 1024 |
-| Dostupnost | Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že se hodnota celkových fakturovatelných požadavků vydělí počtem příslušných požadavků včetně těch, u kterých došlo k neočekávaným chybám. Všechny neočekávané chyby za následek sníženou dostupnost pro službu úložiště nebo zadanou operaci rozhraní API. <br/><br/> Jednotce Percent <br/> Typ agregace: Average <br/> Použitelné dimenze: Typ, ApiName a ověřování ([definice](#metrics-dimensions)) <br/> Příklad hodnoty: 99,99 |
+| Transakce | Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a také požadavky, u kterých došlo k chybě. <br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Použitelné dimenze: ResponseType, typ, ApiName a ověřování ([definice](#metrics-dimensions))<br/> Příklad hodnoty: 1024 |
+| Příchozí přenos dat | Množství příchozích dat. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure. <br/><br/> Jednotka: bajty <br/> Typ agregace: Celkový počet <br/> Použitelné dimenze: typ, ApiName a ověřování ([definice](#metrics-dimensions)) <br/> Příklad hodnoty: 1024 |
+| Výchozí přenos dat | Množství výchozích dat. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat. <br/><br/> Jednotka: bajty <br/> Typ agregace: Celkový počet <br/> Použitelné dimenze: typ, ApiName a ověřování ([definice](#metrics-dimensions)) <br/> Příklad hodnoty: 1024 |
+| SuccessServerLatency | Průměrná doba zpracování úspěšného požadavku službou Azure Storage. Tato hodnota nezahrnuje latenci sítě zadanou v metrice Celková latence při úspěchu. <br/><br/> Jednotka: milisekundy <br/> Typ agregace: průměr <br/> Použitelné dimenze: typ, ApiName a ověřování ([definice](#metrics-dimensions)) <br/> Příklad hodnoty: 1024 |
+| SuccessE2ELatency | Průměrná celková latence úspěšných požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Tato hodnota zahrnuje čas zpracování ve službě Azure Storage potřebný k přečtení požadavku, odeslání odpovědi a přijetí potvrzení dané odpovědi. <br/><br/> Jednotka: milisekundy <br/> Typ agregace: průměr <br/> Použitelné dimenze: typ, ApiName a ověřování ([definice](#metrics-dimensions)) <br/> Příklad hodnoty: 1024 |
+| Dostupnost | Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že se hodnota celkových fakturovatelných požadavků vydělí počtem příslušných požadavků včetně těch, u kterých došlo k neočekávaným chybám. Všechny neočekávané chyby mají pro službu úložiště nebo zadanou operaci rozhraní API za následek sníženou dostupnost. <br/><br/> Jednotka: procenta <br/> Typ agregace: průměr <br/> Použitelné dimenze: typ, ApiName a ověřování ([definice](#metrics-dimensions)) <br/> Příklad hodnoty: 99,99 |
 
 ## <a name="metrics-dimensions"></a>Dimenze metriky
 
@@ -393,19 +393,19 @@ Azure Storage podporuje pro metriky v Azure Monitor následující dimenze.
 | Název dimenze | Popis |
 | ------------------- | ----------------- |
 | **BlobType** | Typ objektu BLOB pouze pro metriky objektů BLOB Podporované hodnoty jsou **BlockBlob**, **PageBlob**a **Azure Data Lake Storage**. Doplňovací objekt BLOB je zahrnutý v BlockBlob. |
-| **BlobTier** | Služba Azure Storage nabízí různé úrovně přístupu, které umožňují ukládat data objektů BLOB nejefektivnějším způsobem. Další informace najdete v [Azure Storage úrovni objektů BLOB](../blobs/storage-blob-storage-tiers.md). Mezi podporované hodnoty patří: <br/> <li>**Horká**: Horká vrstva</li> <li>**Studená**: Studená vrstva</li> <li>**Archiv**: Úroveň archivu</li> <li>**Premium**: Úroveň Premium pro objekt blob bloku</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Typy vrstev pro objekt blob stránky úrovně Premium</li> <li>**Standardní**: Typ vrstvy pro objekt BLOB Standard Page</li> <li>**Nevrstvený**: Typ vrstvy pro účet úložiště pro obecné účely v1</li> |
+| **BlobTier** | Služba Azure Storage nabízí různé úrovně přístupu, které umožňují ukládat data objektů BLOB nejefektivnějším způsobem. Další informace najdete v [Azure Storage úrovni objektů BLOB](../blobs/storage-blob-storage-tiers.md). Mezi podporované hodnoty patří: <br/> <li>**Hot**: vrstva Hot</li> <li>**Studená**: studená vrstva</li> <li>**Archivace**: archivní vrstva</li> <li>**Premium**: úroveň Premium pro objekt blob bloku</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: typy vrstev pro objekt blob stránky úrovně Premium</li> <li>**Standard**: typ vrstvy pro objekt blob stránky úrovně Standard</li> <li>**Nevrstvený**: typ vrstvy pro účet úložiště pro obecné účely v1</li> |
 | **GeoType** | Transakce z primárního nebo sekundárního clusteru. Dostupné hodnoty zahrnují **Primary** a **Secondary**. Vztahuje se na geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) při čtení objektů ze sekundárního tenanta. |
-| **ResponseType** | Typ odpovědi transakce. Dostupné hodnoty zahrnují: <br/><br/> <li>**ServerOtherError**: Všechny ostatní chyby na straně serveru kromě zde popsaných </li> <li>**ServerBusyError**: Ověřená žádost, která vrátila stavový kód HTTP 503. </li> <li>**ServerTimeoutError**: Ověřená žádost s vypršeným časovým limitem, který vrátil stavový kód HTTP 500. Časový limit vypršel kvůli chybě serveru. </li> <li>**AuthorizationError**: Ověřená žádost, která selhala kvůli neoprávněnému přístupu k datům nebo chybě autorizace. </li> <li>**NetworkError**: Ověřená žádost, která selhala kvůli chybě sítě. K tomu nejčastěji dochází, když klient předčasně ukončí spojení před vypršením časového limitu. </li> <li>**ClientThrottlingError**: Chyba omezování využití sítě na straně klienta. </li> <li>**ClientTimeoutError**: Ověřená žádost s vypršeným časovým limitem, který vrátil stavový kód HTTP 500. Pokud je časový limit sítě klienta nebo časový limit žádosti nastavený na hodnotu nižší, než služba úložiště očekávala, jde o očekávané vypršení časového limitu. V opačném případě bude ohlášeno jako ServerTimeoutError. </li> <li>**ClientOtherError**: Všechny ostatní chyby na straně klienta kromě zde popsaných. </li> <li>**Success**: Úspěšná žádost</li> <li> **SuccessWithThrottling**: Úspěšná žádost, když se klient SMB omezí při prvním pokusu (s), ale po opakování proběhne úspěch.</li> |
+| **ResponseType** | Typ odpovědi transakce. Dostupné hodnoty zahrnují: <br/><br/> <li>**ServerOtherError**: všechny ostatní chyby na straně serveru s výjimkou těch popsaných </li> <li>**ServerBusyError**: ověřený požadavek, který vrátil stavový kód HTTP 503. </li> <li>**ServerTimeoutError**: vypršel časový limit ověřené žádosti, která vrátila stavový kód HTTP 500. Časový limit vypršel kvůli chybě serveru. </li> <li>**AuthorizationError**: ověřený požadavek, který se nezdařil z důvodu neoprávněného přístupu k datům nebo selhání autorizace. </li> <li>**NetworkError**: ověřený požadavek, který se nezdařil z důvodu chyb sítě. K tomu nejčastěji dochází, když klient předčasně ukončí spojení před vypršením časového limitu. </li> <li>**ClientThrottlingError**: Chyba omezování na straně klienta. </li> <li>**ClientTimeoutError**: vypršel časový limit ověřené žádosti, která vrátila stavový kód HTTP 500. Pokud je časový limit sítě klienta nebo časový limit žádosti nastavený na hodnotu nižší, než služba úložiště očekávala, jde o očekávané vypršení časového limitu. V opačném případě bude ohlášeno jako ServerTimeoutError. </li> <li>**ClientOtherError**: všechny ostatní chyby na straně klienta s výjimkou těch popsaných. </li> <li>**Úspěch**: úspěšná žádost</li> <li> **SuccessWithThrottling**: požadavek byl úspěšný, když se klient SMB omezí při prvním pokusu, ale po opakování dojde k úspěšnému dokončení.</li> |
 | **ApiName** | Název operace. Příklad: <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> Všechny názvy operací naleznete v [dokumentu](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
-| **Autentizace** | Typ ověřování používaný v transakcích. Dostupné hodnoty zahrnují: <br/> <li>**AccountKey**: Transakce se ověřuje pomocí klíče účtu úložiště.</li> <li>**SAS**: Transakce je ověřena pomocí sdílených přístupových podpisů.</li> <li>**OAuth**: Transakce se ověřuje pomocí přístupových tokenů OAuth.</li> <li>**Anonymní**: Transakce se požaduje anonymně. Neobsahuje požadavky na kontrolu před výstupem.</li> <li>**AnonymousPreflight**: Transakce je požadavek na kontrolu před výstupem.</li> |
+| **Ověřování** | Typ ověřování používaný v transakcích. Dostupné hodnoty zahrnují: <br/> <li>**AccountKey**: transakce se ověřuje pomocí klíče účtu úložiště.</li> <li>**SAS**: transakce je ověřena pomocí sdílených přístupových podpisů.</li> <li>**OAuth**: transakce je ověřená pomocí přístupových tokenů OAuth.</li> <li>**Anonymní**: transakce se požaduje anonymně. Neobsahuje požadavky na kontrolu před výstupem.</li> <li>**AnonymousPreflight**: transakce je požadavkem na kontrolu před výstupem.</li> |
 
-Pro metriky podporující dimenze je nutné zadat hodnotu dimenze, aby se zobrazily odpovídající hodnoty metrik. Například pokud se podíváte na hodnotu **transakce** pro úspěšné odpovědi, je nutné filtrovat dimenzi **ResponseType** s úspěchem. Nebo pokud se podíváte na **BlobCount** hodnotu pro objekt blob bloku, musíte filtrovat dimenzi **BlobType** pomocí **BlockBlob**.
+Pro metriky podporující dimenze je nutné zadat hodnotu dimenze, aby se zobrazily odpovídající hodnoty metrik. Například pokud se podíváte na hodnotu **transakce** pro úspěšné odpovědi, je nutné filtrovat dimenzi **ResponseType** s **úspěchem**. Nebo pokud se podíváte na **BlobCount** hodnotu pro objekt blob bloku, musíte filtrovat dimenzi **BlobType** pomocí **BlockBlob**.
 
 ## <a name="service-continuity-of-legacy-metrics"></a>Kontinuita služeb zastaralých metrik
 
 Starší metriky jsou k dispozici paralelně s Azure Monitor spravovanými metrikami. Podpora zůstává stejná, dokud Azure Storage neukončí službu ve starších metrikách.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Podporují nové metriky klasický účet úložiště?**
 

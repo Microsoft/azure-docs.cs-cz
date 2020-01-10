@@ -7,15 +7,15 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 09/18/2019
 ms.author: mialdrid
-ms.openlocfilehash: db728de120a50461257d8e85e708aa4c7f4d6190
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: d2f31be5e7ece32fb1e0f6d9a2e482688d46eeb3
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083413"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770947"
 ---
 # <a name="expressroute-overview"></a>Přehled ExpressRoute
-ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute můžete navázat připojení ke cloudovým službám Microsoftu, jako jsou Microsoft Azure a Office 365.
+ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute můžete navazovat připojení ke cloudovým službám Microsoftu, jako je Microsoft Azure nebo Office 365.
 
 Co se týká připojení, může se jednat o síť typu any-to-any (IP VPN), síť Ethernet typu point-to-point nebo virtuální křížové připojení prostřednictvím poskytovatele připojení ve společném umístění. Připojení ExpressRoute se nepřenášejí prostřednictvím veřejného internetu. To umožňuje připojením ExpressRoute nabídnout spolehlivější, rychlejší rychlost, konzistentní latenci a vyšší zabezpečení než typická připojení přes Internet. Informace o připojení sítě k Microsoftu pomocí ExpressRoute najdete v tématu o [modelech připojení ExpressRoute](expressroute-connectivity-models.md).
 
@@ -39,7 +39,7 @@ Další informace najdete v tématu [ExpressRoute – nejčastější dotazy](ex
 Microsoft používá standardní protokol dynamického směrování BGP k výměně tras mezi vaší místní sítí, vašimi instancemi v Azure a veřejnými adresami Microsoftu. Navážeme několik relací protokolu BGP s vaší sítí pro různé profily přenosu. Další informace jsou uvedené v tématu [Okruh ExpressRoute a domény směrování](expressroute-circuit-peerings.md).
 
 ### <a name="redundancy"></a>Redundance
-Každý okruh ExpressRoute sestává ze dvou připojení ke dvěma hraničním směrovačům Microsoft Enterprise (MSEE) od poskytovatele připojení nebo z hranice vaší sítě. Microsoft vyžaduje od poskytovatele připojení nebo z hranice vaší sítě ke každému směrovači MSEE duální připojení BGP. Můžete se rozhodnout nenasazovat redundantní zařízení nebo ethernetové okruhy na vaší straně. Poskytovatelé připojení však používají redundantní zařízení k zajištění, že vaše připojení jsou předávána Microsoftu redundantním způsobem. Konfigurace redundantního připojení vrstvy 3 je požadavkem k tomu, aby byla naše smlouva [SLA](https://azure.microsoft.com/support/legal/sla/) platná.
+Každý okruh ExpressRoute sestává ze dvou připojení ke dvěma hraničním směrovačům Microsoft Enterprise (směrovači msee) na [umístění ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-locations#expressroute-locations) od poskytovatele připojení nebo z hraniční sítě. Microsoft vyžaduje od poskytovatele připojení nebo z hranice vaší sítě ke každému směrovači MSEE duální připojení BGP. Můžete se rozhodnout nenasazovat redundantní zařízení nebo ethernetové okruhy na vaší straně. Poskytovatelé připojení však používají redundantní zařízení k zajištění, že vaše připojení jsou předávána Microsoftu redundantním způsobem. Konfigurace redundantního připojení vrstvy 3 je požadavkem k tomu, aby byla naše smlouva [SLA](https://azure.microsoft.com/support/legal/sla/) platná.
 
 ### <a name="connectivity-to-microsoft-cloud-services"></a>Připojení ke cloudovým službám Microsoftu
 Připojení ExpressRoute umožňují přístup k následujícím službám:
@@ -106,10 +106,10 @@ Můžete si vybrat fakturační model, který vám nejlépe vyhovuje. Zvolte si 
 * **Měření podle objemu dat**. Fakturuje se na základě měsíčních poplatků a všechny příchozí přenosy dat jsou zdarma. Odchozí přenosy dat se účtují podle přenesených gigabajtů. Sazby za přenos dat se liší podle oblasti.
 * **Doplněk ExpressRoute Premium**. ExpressRoute Premium je doplněk k okruhu ExpressRoute. Doplněk ExpressRoute Premium poskytuje následující možnosti: 
   * Zvýšené limity tras pro veřejný partnerský vztah Azure a soukromý partnerský vztah Azure ze 4 000 tras na 10 000 tras.
-  * Globální připojení pro služby. Okruh ExpressRoute vytvořený v libovolné oblasti (s výjimkou národních cloudů) bude mít přístup k prostředkům v libovolné jiné oblasti na světě. Například virtuální sítě vytvořené v oblasti Západní Evropa budou přístupné prostřednictvím okruhu ExpressRoute zřízeného ze Silicon Valley.
+  * Globální konektivita služeb. Okruh ExpressRoute vytvořený v libovolné oblasti (s výjimkou národních cloudů) bude mít přístup k prostředkům v libovolné jiné oblasti na světě. Třeba virtuální síť vytvořená v západní Evropě bude dosažitelná přes okruh ExpressRoute zřízený v Silicon Valley.
   * Zvýšení počtu propojení virtuálních sítí na jeden okruh ExpressRoute z 10 na vyšší limit, v závislosti na šířce pásma okruhu.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 Nejčastější dotazy týkající se ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
 
 ## <a name="next-steps"></a>Další kroky

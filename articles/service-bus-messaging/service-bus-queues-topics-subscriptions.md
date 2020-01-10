@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: aschhab
-ms.openlocfilehash: bc549f9bfbb48da9263493c21ec38735b3cc0c24
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9ac8d95dda392bd3f2a438389f5f6aa434b8a2fa
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426932"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772138"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Fronty, témata a odběry služby Service Bus
 
@@ -41,7 +41,7 @@ Pracovní ukázku najdete v [ukázce BasicSendReceiveUsingQueueClient](https://g
 
 ### <a name="receive-modes"></a>Režimy příjmu
 
-Můžete zadat dva různé režimy, v nichž Service Bus přijímá zprávy: *ReceiveAndDelete* nebo *PeekLock*. V režimu [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) je operace Receive v jednom snímku; To znamená, že když Service Bus obdrží požadavek, označí zprávu jako spotřebou a vrátí ji do aplikace. **ReceiveAndDelete** režim je nejjednodušší model a funguje nejlépe ve scénářích, ve kterých aplikace může tolerovat nezpracovávání zprávy, pokud dojde k selhání. Pro pochopení tohoto scénáře Vezměte v úvahu scénář, ve kterém příjemce vystaví žádost o přijetí, a poté dojde k chybě před jejím zpracováním. Vzhledem k tomu, že Service Bus označí zprávu jako spotřebou, když se aplikace znovu spustí a začne znovu přijímat zprávy, vynechá zprávu, která byla spotřebována před selháním.
+Můžete zadat dva různé režimy, v nichž Service Bus přijímá zprávy: *ReceiveAndDelete* nebo *PeekLock*. V režimu [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) je operace Receive v jednom snímku; To znamená, že když Service Bus obdrží požadavek od příjemce, označí zprávu jako spotřebou a vrátí ji do aplikace příjemce. **ReceiveAndDelete** režim je nejjednodušší model a funguje nejlépe ve scénářích, ve kterých aplikace může tolerovat nezpracovávání zprávy, pokud dojde k selhání. Pro pochopení tohoto scénáře Vezměte v úvahu scénář, ve kterém příjemce vystaví žádost o přijetí, a poté dojde k chybě před jejím zpracováním. Vzhledem k tomu, že Service Bus označí zprávu jako spotřebou, když se aplikace znovu spustí a začne znovu přijímat zprávy, vynechá zprávu, která byla spotřebována před selháním.
 
 V režimu [PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) se operace Receive stane dvěma fázemi, což umožňuje podporovat aplikace, které nemůžou tolerovat chybějící zprávy. Když Service Bus obdrží požadavek, najde další zprávu, která se má spotřebovat, zamkne ji, aby zabránila ostatním příjemcům v jejich přijetí, a pak ji vrátí do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo ji uloží spolehlivě pro budoucí zpracování), dokončí druhou fázi procesu Receive voláním [CompleteAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) na přijaté zprávě. Když Service Bus uvidí volání **CompleteAsync** , označí zprávu jako spotřebovaná.
 

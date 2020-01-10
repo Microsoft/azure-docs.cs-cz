@@ -11,12 +11,12 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 47fa0d97f21c5e3734cb1104c7d0ab72c14d9679
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ee594bf4e17a06c8333f0836a17e75cc99a2dde3
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533318"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771849"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Spuštění dávkového odvozování pro velké objemy dat pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -92,7 +92,7 @@ Nyní potřebujete nakonfigurovat vstupy a výstupy dat, včetně:
 
 Můžete také odkazovat na jiné datové sady ve vlastním skriptu pro odvození. Můžete ho například použít k přístupu k popiskům ve skriptu pro označování obrázků pomocí `Dataset.register` a `Dataset.get_by_name`.
 
-Další informace o Azure Machine Learning datových sadách najdete v tématu [Vytvoření a přístup k datovým sadám (Preview)](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets).
+Další informace o Azure Machine Learning datových sadách najdete v tématu [Vytvoření a přístup k datovým sadám (Preview)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets).
 
 objekty `PipelineData` se používají k přenosu mezilehlých dat mezi jednotlivými kroky kanálu. V tomto příkladu je použit pro odvození výstupů.
 

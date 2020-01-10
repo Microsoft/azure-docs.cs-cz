@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 11/06/2019
-ms.openlocfilehash: d783751137510febf9fb2e31d9d44728a049d88d
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: d8f0f6c63c584cacfa5c996bd541ce4dfc4bd289
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611812"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763925"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>Použít existující model s Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ Pokud máte model strojového učení, který byl vyškolený mimo Azure Machine
 >
 > Další informace o konceptech a pojmech, které se tady používají, najdete v tématu [Správa, nasazení a monitorování modelů strojového učení](concept-model-management-and-deployment.md).
 >
-> Obecné informace o procesu nasazení najdete v tématu [nasazení modelů pomocí Azure Machine Learning](service/how-to-deploy-and-where.md).
+> Obecné informace o procesu nasazení najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -138,7 +138,7 @@ dependencies:
     - keras
 ```
 
-Další informace o konfiguraci odvození najdete v tématu [nasazení modelů pomocí Azure Machine Learning](service/how-to-deploy-and-where.md).
+Další informace o konfiguraci odvození najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 ### <a name="entry-script"></a>Vstupní skript
 
@@ -223,7 +223,7 @@ def predict(text, include_neutral=True):
        "elapsed_time": time.time()-start_at}  
 ```
 
-Další informace o vstupních skriptech najdete v tématu [nasazení modelů pomocí Azure Machine Learning](service/how-to-deploy-and-where.md).
+Další informace o vstupních skriptech najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="define-deployment"></a>Definovat nasazení
 
@@ -250,7 +250,7 @@ Rozhraní příkazového řádku načte konfiguraci nasazení ze souboru YAML:
 }
 ```
 
-Nasazení do jiného cílového výpočetního prostředí, jako je Azure Kubernetes Service v cloudu Azure, je stejně snadné jako změna konfigurace nasazení. Další informace najdete v tématu [jak a kde nasadit modely](service/how-to-deploy-and-where.md).
+Nasazení do jiného cílového výpočetního prostředí, jako je Azure Kubernetes Service v cloudu Azure, je stejně snadné jako změna konfigurace nasazení. Další informace najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
 
 ## <a name="deploy-the-model"></a>Nasazení modelu
 
@@ -277,7 +277,7 @@ az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc de
 
 Další informace najdete v referenčních informacích k [nasazení modelu AZ ml model](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) .
 
-Další informace o nasazení najdete v tématu [jak a kde nasadit modely](service/how-to-deploy-and-where.md).
+Další informace o nasazení najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
 
 ## <a name="request-response-consumption"></a>Spotřeba požadavků a odpovědí
 
@@ -304,5 +304,5 @@ Další informace o tom, jak využít nasazenou službu, najdete v tématu [Vytv
 
 * [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
 * [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)
-* [Jak a kde nasadit modely](service/how-to-deploy-and-where.md)
+* [Jak a kde nasadit modely](how-to-deploy-and-where.md)
 * [Postup vytvoření klienta pro nasazený model](how-to-consume-web-service.md)

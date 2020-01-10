@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3c6fd3de43f80c4cbe8f1f822faebad861c64d64
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: a76f149b8ab9ca8515a7475cd7954b6d4862a92d
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610603"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746874"
 ---
 # <a name="connect-data-sources"></a>Připojení zdrojů dat
 
@@ -97,7 +97,7 @@ Případně můžete agenta nasadit ručně na existující virtuální počíta
 | **Datový typ** | **Jak se připojit** | **Datový konektor?** | **Komentáře** |
 |------|---------|-------------|------|
 | AWSCloudTrail | [Připojení AWS](connect-aws.md) | V | |
-| AzureActivity | Přehled [připojení aktivit](connect-azure-activity.md) a [protokolů aktivit](../azure-monitor/platform/activity-logs-overview.md) Azure| V | |
+| AzureActivity | Přehled [připojení aktivit](connect-azure-activity.md) a [protokolů aktivit](../azure-monitor/platform/platform-logs-overview.md) Azure| V | |
 | AuditLogs | [Připojit Azure AD](connect-azure-active-directory.md)  | V | |
 | SigninLogs | [Připojit Azure AD](connect-azure-active-directory.md)  | V | |
 | AzureFirewall |[Diagnostika Azure](../firewall/tutorial-diagnostics.md) | V | |

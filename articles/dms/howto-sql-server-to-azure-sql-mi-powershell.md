@@ -11,15 +11,16 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 04/29/2019
-ms.openlocfilehash: 227ef72b53b7334cffcb485e23c3e4227613b344
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2020
+ms.openlocfilehash: 3b434bc8a495f47f7fb2de8429069283821cf397
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437918"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746624"
 ---
 # <a name="migrate-sql-server-to-sql-database-managed-instance-with-powershell--azure-database-migration-service"></a>Migrace SQL Server do SQL Database spravované instance pomocí prostředí PowerShell & Azure Database Migration Service
+
 V tomto článku migrujete databázi **Adventureworks2016** obnovenou do místní instance SQL Server 2005 nebo vyšší do Azure SQL Database spravované instance pomocí Microsoft Azure PowerShell. Databáze z místní instance SQL Server můžete migrovat do Azure SQL Database spravované instance pomocí modulu `Az.DataMigration` v Microsoft Azure PowerShell.
 
 V tomto článku získáte informace o těchto tématech:
@@ -45,14 +46,14 @@ K provedení těchto kroků potřebujete:
 * Předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * Azure SQL Database spravovaná instance. Azure SQL Database spravovanou instanci můžete vytvořit podle podrobností v článku [Vytvoření spravované instance Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started).
 * Stažení a instalace [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3 nebo novějších verzích.
-* Služba Azure Virtual Network (VNet) vytvořená pomocí modelu nasazení Azure Resource Manager, který poskytuje Azure Database Migration Service připojení typu Site-to-site k vašim místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+* Microsoft Azure Virtual Network vytvořili pomocí modelu nasazení Azure Resource Manager, který poskytuje Azure Database Migration Service připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
 * Dokončili jste vyhodnocení místní migrace databáze a schématu pomocí Data Migration Assistant, jak je popsáno v článku, který [provádí hodnocení migrace SQL Server](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem).
 * Pokud chcete stáhnout a nainstalovat modul `Az.DataMigration` (verze 0.7.2 nebo novější) z Galerie prostředí PowerShell pomocí [rutiny Install-Module prostředí PowerShell](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1).
 * Aby bylo zajištěno, že přihlašovací údaje použité pro připojení ke zdrojové SQL Server instance mají oprávnění [Control Server](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) .
 * Aby bylo zajištěno, že pověření používaná pro připojení k cíli Azure SQL Database Managed instance mají oprávnění řídicí databáze pro cílové Azure SQL Database databáze spravované instance.
 
     > [!IMPORTANT]
-    > Pro online migrace musíte už nastavit přihlašovací údaje pro Azure Active Directory. Další informace najdete v článku [použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+    > Pro online migrace musíte mít již nastavené přihlašovací údaje Azure Active Directory. Další informace najdete v článku [použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
 ## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Přihlaste se k předplatnému Microsoft Azure.
 

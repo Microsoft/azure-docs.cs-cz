@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 65fa8502be43076e06cea18b2499ceed9d7d770e
-ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
+ms.openlocfilehash: feaecbf3b9a39d77f6a60593c8e5f57f14c24ad7
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75667533"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768975"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -26,8 +26,8 @@ Vývoj funkcí v místním počítači a jejich publikování v Azure pomocí z�
 > * [Zaregistrujte Trigger a rozšíření vazby.](#register-extensions)
 > * [Definujte úložiště a další připojení.](#local-settings-file)
 > * [Vytvořte funkci z triggeru a šablony pro konkrétní jazyk.](#create-func)
-> * [Místní spuštění funkce](#start)
-> * [Publikování projektu do Azure](#publish)
+> * [Spusťte funkci místně.](#start)
+> * [Publikujte projekt do Azure.](#publish)
 
 ## <a name="core-tools-versions"></a>Verze nástrojů Core Tools
 
@@ -56,7 +56,7 @@ Následující kroky používají npm k instalaci základních nástrojů v syst
 
 1. Nainstalujte [Node.js], který zahrnuje npm.
     - Pro verzi 2. x nástroje se podporují jenom Node. js 8,5 a novější verze.
-    - Pro verzi 3. x nástroje se podporuje jenom uzel 10 a novější verze.
+    - Pro verzi 3. x nástroje je podporována pouze Node. js 10 a novější verze.
 
 1. Nainstalujte balíček Core Tools:
 
@@ -234,7 +234,7 @@ I při použití Emulátor úložiště Microsoft Azure pro vývoj budete možn�
   Vyberte svůj účet úložiště, vyberte **přístupové klíče** v **Nastavení**a pak zkopírujte jednu z hodnot **připojovacího řetězce** .
   ![zkopírování připojovacího řetězce z Azure Portal](./media/functions-run-local/copy-storage-connection-portal.png)
 
-- Pomocí [Průzkumník služby Azure Storage](https://storageexplorer.com/) se připojte ke svému účtu Azure. V **Průzkumníku**rozbalte své předplatné, vyberte svůj účet úložiště a zkopírujte primární nebo sekundární připojovací řetězec.
+- Pomocí [Průzkumník služby Azure Storage](https://storageexplorer.com/) se připojte ke svému účtu Azure. V **Průzkumníku**rozbalte své předplatné, rozbalte **účty úložiště**, vyberte svůj účet úložiště a zkopírujte primární nebo sekundární připojovací řetězec.
 
   ![Kopírovat připojovací řetězec z Průzkumník služby Storage](./media/functions-run-local/storage-explorer.png)
 
@@ -351,8 +351,8 @@ func host start
 | **`--cert`** | Cesta k souboru. pfx, který obsahuje privátní klíč. Používá se jenom pro `--useHttps`. Pouze verze 2. x. |
 | **`--cors-credentials`** | Povolte pouze ověřené požadavky mezi zdroji (tj. soubory cookie a záhlaví ověřování) pouze verze 2. x. |
 | **`--cors`** | Čárkami oddělený seznam původů CORS bez mezer. |
-| **`--language-worker`** | Argumenty pro konfiguraci modulu Language Worker. Můžete například povolit ladění pro Language Worker tím, že poskytnete [port ladění a další požadované argumenty](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers). Pouze verze 2. x. |
-| **`--nodeDebugPort -n`** | Port pro použití ladicího programu uzlu. Výchozí: hodnota ze sady Launch. JSON nebo 5858. Pouze verze 1. x. |
+| **`--language-worker`** | Argument pro konfiguraci modulu Language Worker. Můžete například povolit ladění pro Language Worker tím, že poskytnete [port ladění a další požadované argumenty](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers). Pouze verze 2. x. |
+| **`--nodeDebugPort -n`** | Port pro použití ladicího programu Node. js. Výchozí: hodnota ze sady Launch. JSON nebo 5858. Pouze verze 1. x. |
 | **`--password`** | Buď heslo, nebo soubor, který obsahuje heslo pro soubor. pfx. Používá se jenom pro `--cert`. Pouze verze 2. x. |
 | **`--port -p`** | Místní port, na kterém má naslouchat. Výchozí hodnota: 7071. |
 | **`--pause-on-error`** | Před ukončením procesu ponechejte další vstup. Používá se jenom při spouštění základních nástrojů z integrovaného vývojového prostředí (IDE).|
@@ -371,7 +371,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->Při místním spuštění není ověřování pro koncové body HTTP vynutilo. To znamená, že všechny místní požadavky HTTP jsou zpracovávány jako `authLevel = "anonymous"`. Další informace najdete v [článku vázání http](functions-bindings-http-webhook.md#authorization-keys).
+>Při místním spuštění není autorizace pro koncové body HTTP vynutila. To znamená, že všechny místní požadavky HTTP jsou zpracovávány jako `authLevel = "anonymous"`. Další informace najdete v [článku vázání http](functions-bindings-http-webhook.md#authorization-keys).
 
 ### <a name="passing-test-data-to-a-function"></a>Předávání testovacích dat do funkce
 

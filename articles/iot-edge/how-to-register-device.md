@@ -4,17 +4,17 @@ description: Použití rozšíření IoT pro rozhraní příkazového řádku Az
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/12/2019
+ms.date: 01/08/2020
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5ab9c778adef29a8e531158e062e9d35d4e80ae4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32121681b14989f23e29c3701826b4494988c263
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434132"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772427"
 ---
 # <a name="register-an-azure-iot-edge-device"></a>Registrace zařízení Azure IoT Edge
 
@@ -22,9 +22,9 @@ Než budete moct zařízení IoT používat s Azure IoT Edge, musíte je zaregis
 
 Můžete si vybrat registraci pomocí jednoho z následujících nástrojů:
 
-* [Azure Portal](https://portal.azure.com) poskytuje grafické uživatelské rozhraní pro vytváření, zobrazování a správu prostředků Azure.
-* [Visual Studio Code](https://code.visualstudio.com/) je Editor zdrojového kódu. Rozšíření Azure IoT usnadňují správu prostředků IoT ze stejného nástroje, ve kterém vyvíjíte řešení IoT.
-* [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) je nástroj příkazového řádku pro správu prostředků Azure. Příkazy, které lze opakovaně použít, jsou užitečné pro automatizaci úloh.
+* Pokud dáváte přednost grafickému uživatelskému rozhraní, které umožňuje vytvářet, zobrazovat a spravovat prostředky Azure, [Zaregistrujte si zařízení v Azure Portal](#register-in-the-azure-portal) .
+* Pokud upřednostňujete správu prostředků Azure IoT na stejném místě, kde budete vyvíjet řešení IoT, [Zaregistrujte zařízení v Visual Studio Code](#register-with-visual-studio-code) .
+* Pokud dáváte přednost nástrojům příkazového řádku pro správu prostředků Azure, [Zaregistrujte zařízení pomocí Azure CLI](#register-with-the-azure-cli) , nebo v úmyslu automatizovat úlohy.
 
 ## <a name="register-in-the-azure-portal"></a>Zaregistrujte se do Azure Portal
 

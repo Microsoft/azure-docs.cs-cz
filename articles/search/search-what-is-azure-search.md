@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 1df8bb293834fca123b2573f02871410754a6bdc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 01/06/2020
+ms.openlocfilehash: 17cefdd5976efdd86d9f171f4eb1518f63fe043b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73479649"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754297"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Co je kognitivní hledání Azure?
 
-Azure Kognitivní hledání ([dřív označované jako "Azure Search"](whats-new.md#new-service-name)) je cloudové řešení hledání jako služby, které poskytuje vývojářům rozhraní API a nástroje pro přidání bohatých možností vyhledávání přes soukromý, heterogenní obsah ve webových, mobilních a podnikových aplikacích. . Váš kód nebo nástroj vyvolá přijímání dat (indexování) pro vytvoření a načtení indexu. Volitelně můžete přidat dovednosti rozpoznávání pro použití procesů AI během indexování. Díky tomu můžete přidat nové informace a struktury užitečné pro hledání a další scénáře.
+Azure Kognitivní hledání ([dřív označované jako "Azure Search"](whats-new.md#new-service-name)) je cloudové řešení hledání jako služby, které vývojářům poskytuje rozhraní API a nástroje pro přidání bohatých možností vyhledávání přes soukromý, heterogenní obsah ve webových, mobilních a podnikových aplikacích. Váš kód nebo nástroj vyvolá přijímání dat (indexování) pro vytvoření a načtení indexu. Volitelně můžete přidat dovednosti rozpoznávání pro použití procesů AI během indexování. Díky tomu můžete přidat nové informace a struktury užitečné pro hledání a další scénáře.
 
 Na druhé straně služby váš kód aplikace vystavuje požadavky na dotazy a zpracovává odpovědi. Možnosti vyhledávání jsou ve vašem klientovi definované pomocí funkcí z Azure Kognitivní hledání. provádění dotazů se provádí prostřednictvím trvalého indexu, který vytvoříte, vlastníte a ukládáte do své služby.
 
@@ -41,7 +41,7 @@ Azure Kognitivní hledání je vhodné pro následující scénáře aplikací:
 
 <a name="feature-drilldown"></a>
 
-## <a name="feature-descriptions"></a>Popisy funkcí
+## <a name="feature-descriptions"></a>Popis funkcí
 
 | Core&nbsp;Search&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Funkce |
 |-------------------|----------|
@@ -51,10 +51,11 @@ Azure Kognitivní hledání je vhodné pro následující scénáře aplikací:
 | Filtry a omezující vlastnosti | [**Fasetová navigace**](search-faceted-navigation.md) se aktivuje jedním parametrem dotazu. Azure Kognitivní hledání vrátí vlastnost s omezující navigační strukturou, kterou můžete použít jako kód za seznamem kategorií, pro filtrování samy sebe (například pro filtrování položek katalogu podle cenového rozsahu nebo značky). <br/><br/> [**Filtry**](query-odata-filter-orderby-syntax.md) se dají použít k začlenění fasetové navigace do uživatelského rozhraní aplikace, rozšíření možností formulování dotazu a filtrování na základě kritérií zadaných uživatelem nebo vývojářem. Filtry se vytvářejí pomocí syntaxe OData. |
 | Funkce a možnosti pro uživatele | Na panelu hledání lze povolit [**Automatické dokončování**](search-autocomplete-tutorial.md) dotazů typu dotazování. <br/><br/>[**Návrhy hledání**](https://docs.microsoft.com/rest/api/searchservice/suggesters) fungují také s částečnými textovými vstupy na panelu hledání, ale výsledky jsou skutečné dokumenty ve vašem indexu, a ne termíny dotazu. <br/><br/>[**Synonyma**](search-synonyms.md) přidružují ekvivalentní termíny, které implicitně rozšiřují rozsah dotazu, aniž by uživatel musel zadávat alternativní termíny. <br/><br/>[**Zvýrazňování nalezených položek**](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) použije formátování textu na odpovídající klíčové slovo ve výsledcích hledání. Můžete si zvolit pole, která budou vracet zvýrazněné fragmenty.<br/><br/>[**Řazení**](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) se poskytuje pro několik polí prostřednictvím schématu indexu. Zapíná se pak v době dotazu jedním parametrem vyhledávání.<br/><br/> [**Stránkování**](search-pagination-page-layout.md) a omezení výsledků hledání je jednoduché s jemně vyladěným ovládacím prvkem, který Azure kognitivní hledání nabízí nad výsledky hledání.  <br/><br/>|
 
-| &nbsp;&nbsp;pro rozšíření AI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | Funkce |
+| &nbsp;&nbsp;pro rozšíření AI &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | Funkce |
 |-------------------|----------|
-|Dokumenty AI obohacené | [**Rozšíření AI**](cognitive-search-concept-intro.md) pro analýzu obrázků a textu lze použít pro kanál indexování k extrakci textových informací z nezpracovaného obsahu. Mezi příklady [integrovaných dovedností](cognitive-search-predefined-skills.md) patří optické rozpoznávání znaků (umožňuje prohledávání naskenovaných obrázků JPEG), rozpoznávání entit (identifikuje organizaci, název nebo umístění) a rozpoznávání klíčových frází. Můžete také [naprogramovat vlastní dovednosti](cognitive-search-create-custom-skill-example.md), které připojíte ke kanálu. |
-| Uložená rozšíření pro analýzu a spotřebu| [**Znalostní báze Knowledge Store (Preview)** ](knowledge-store-concept-intro.md) je rozšíření indexování založené na AI. Díky službě Azure Storage jako back-endu můžete ukládat rozšíření vytvořená během indexování. Tyto artefakty lze použít k návrhu lepšího dovednostií nebo k vytváření tvarů a strukturování z Amorphous nebo nejednoznačných dat. Můžete vytvořit projekce těchto struktur, které cílí na konkrétní úlohy nebo uživatele. Můžete také přímo analyzovat extrahovaná data nebo je načíst do jiných aplikací.<br/><br/> |
+|Zpracování AI při indexování | [**Rozšíření AI**](cognitive-search-concept-intro.md) pro analýzu obrázků a textu lze použít pro kanál indexování k extrakci textových informací z nezpracovaného obsahu. Mezi příklady [integrovaných dovedností](cognitive-search-predefined-skills.md) patří optické rozpoznávání znaků (umožňuje prohledávání naskenovaných obrázků JPEG), rozpoznávání entit (identifikuje organizaci, název nebo umístění) a rozpoznávání klíčových frází. Můžete také [naprogramovat vlastní dovednosti](cognitive-search-create-custom-skill-example.md), které připojíte ke kanálu. |
+| Ukládání obohaceného obsahu pro analýzu a spotřebu ve scénářích bez vyhledávání | [**Znalostní báze Knowledge Store (Preview)** ](knowledge-store-concept-intro.md) je rozšíření indexování založené na AI. Díky službě Azure Storage jako back-endu můžete ukládat rozšíření vytvořená během indexování. Tyto artefakty lze použít k návrhu lepšího dovednostií nebo k vytváření tvarů a strukturování z Amorphous nebo nejednoznačných dat. Můžete vytvořit projekce těchto struktur, které cílí na konkrétní úlohy nebo uživatele. Můžete také přímo analyzovat extrahovaná data nebo je načíst do jiných aplikací.<br/><br/> |
+| Obsah uložený v mezipaměti | [**Přírůstkové obohacení (verze Preview)** ](cognitive-search-incremental-indexing-conceptual.md) omezuje zpracování na pouze dokumenty, které byly změněny konkrétní úpravou v kanálu, a to pomocí obsahu uloženého v mezipaměti pro části kanálu, které se nemění. |
 
 | Import a indexování dat&nbsp; | Funkce |
 |----------------------------------|----------|

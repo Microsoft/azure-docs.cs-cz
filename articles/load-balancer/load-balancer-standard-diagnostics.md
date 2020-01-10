@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: ff42c6e9bd3c25721d2b77e49c2dd98a3eebdb43
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: f5fa39e07eba6bdf24d96e72c9229e215ff6730b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048732"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772036"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostika služby Standard Load Balancer s metrikami, upozorněními a stavem prostředků
 
 Azure Standard Load Balancer zpřístupňuje následující diagnostické možnosti:
 
-* Multidimenzionální **metriky a upozornění**: poskytuje nové multidimenzionální diagnostické možnosti prostřednictvím [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) pro standardní konfigurace nástroje pro vyrovnávání zatížení. Můžete monitorovat, spravovat a řešit potíže s prostředky standardního nástroje pro vyrovnávání zatížení.
+* Multidimenzionální **metriky a upozornění**: poskytuje multidimenzionální diagnostické možnosti prostřednictvím [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) pro standardní konfigurace nástroje pro vyrovnávání zatížení. Můžete monitorovat, spravovat a řešit potíže s prostředky standardního nástroje pro vyrovnávání zatížení.
 
 * **Resource Health**: stránka Load Balancer v Azure Portal a stránka Resource Health (pod položkou monitor) zpřístupňuje oddíl Resource Health pro standard Load Balancer. 
 
@@ -31,7 +31,7 @@ Tento článek poskytuje rychlou prohlídku těchto funkcí a nabízí způsoby 
 
 ## <a name = "MultiDimensionalMetrics"></a>Multidimenzionální metriky
 
-Azure Load Balancer poskytuje nové multidimenzionální metriky prostřednictvím nových metrik Azure v Azure Portal a pomáhá získat diagnostické přehledy v reálném čase do vašich prostředků nástroje pro vyrovnávání zatížení. 
+Azure Load Balancer poskytuje multidimenzionální metriky prostřednictvím metrik Azure v Azure Portal a pomáhá získat diagnostické přehledy v reálném čase do vašich prostředků nástroje pro vyrovnávání zatížení. 
 
 Různé konfigurace Standard Load Balancer poskytují následující metriky:
 
@@ -195,7 +195,7 @@ V následující tabulce jsou uvedeny různé stavy prostředků a jejich popisy
 
 | Stav prostředku | Popis |
 | --- | --- |
-| K dispozici. | Váš prostředek standardního nástroje pro vyrovnávání zatížení je v pořádku a dostupný. |
+| Dostupné | Váš prostředek standardního nástroje pro vyrovnávání zatížení je v pořádku a dostupný. |
 | Neaktivní | Váš prostředek standardního nástroje pro vyrovnávání zatížení není v pořádku. Diagnostikujte stav tak, že vyberete **Azure Monitor** > **metriky**.<br>(*Nedostupný* stav může také znamenat, že prostředek není připojený k vašemu standardnímu nástroji pro vyrovnávání zatížení.) |
 | Není známo | Stav prostředku pro prostředek standardního nástroje pro vyrovnávání zatížení se ještě neaktualizoval.<br>(*Neznámý* stav může také znamenat, že prostředek není připojen k vašemu standardnímu nástroji pro vyrovnávání zatížení.)  |
 

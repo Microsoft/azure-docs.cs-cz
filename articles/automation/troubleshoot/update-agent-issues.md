@@ -1,6 +1,6 @@
 ---
-title: Vysvětlení stavu Windows Hybrid Runbook Worker v Azure Update Management
-description: Naučte se řešit potíže s Hybrid Runbook Worker ve Windows, které podporují Update Management.
+title: Diagnostika Windows Hybrid Runbook Worker – Azure Update Management
+description: Naučte se řešit problémy s Azure Automation Hybrid Runbook Worker ve Windows, které podporují Update Management.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 284376759e9e2da1f42bd04eea6e564c9690d4a9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: bfc2c4a660afa4341a676fc79ab447c8cb86d5e1
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850121"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769808"
 ---
-# <a name="understand-the-windows-hybrid-runbook-worker-health-in-update-management"></a>Vysvětlení stavu Windows Hybrid Runbook Worker v Update Management
+# <a name="understand-and-resolve-windows-hybrid-runbook-worker-health-in-update-management"></a>Pochopení a řešení stavu Windows Hybrid Runbook Worker v Update Management
 
 Příčinou může být to, že váš počítač není v Update Management **připravený** . V Update Management můžete zjistit příčinu problému tím, že zkontrolujete stav agenta Hybrid Runbook Worker. Tento článek popisuje, jak spustit Poradce při potížích pro počítače Azure z Azure Portal a počítačů mimo Azure v [offline scénáři](#troubleshoot-offline).
 

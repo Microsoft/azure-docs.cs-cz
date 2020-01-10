@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 01/08/2020
 ms.author: jingwang
-ms.openlocfilehash: cb7091cf61efab8e5bd7e9321911980a1f681476
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ef8d6a8d97b2f2c2cff62c629219efb43077c77
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929279"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754134"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Kopírování dat z HubSpot pomocí Azure Data Factory (Preview)
 
@@ -50,19 +50,19 @@ HubSpot propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **Hubspot** | Ano |
-| clientId | ID klienta přidružené k aplikaci Hubspot.  | Ano |
-| clientSecret | Tajný kód klienta přidruženého k aplikaci Hubspot. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| accessToken | Přístupový token získané při počátečním ověřování integraci vašich OAuth. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| clientId | ID klienta přidružené k vaší aplikaci HubSpot Naučte se vytvářet aplikace v HubSpot [odsud.](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot) | Ano |
+| clientSecret | Tajný kód klienta přidružený k vaší aplikaci HubSpot Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| accessToken | Přístupový token získané při počátečním ověřování integraci vašich OAuth. Přečtěte si, jak získat přístupový token pomocí ID klienta a tajného kódu z [tohoto místa](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens). Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | refreshToken | Obnovovací token získané při počátečním ověřování integraci vašich OAuth. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
-| useHostVerification | Určuje, jestli se vyžaduje název hostitele v certifikátu serveru tak, aby odpovídaly názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
-| usePeerVerification | Určuje, jestli se má ověřit identitu serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
+| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
+| useHostVerification | Určuje, jestli se vyžaduje název hostitele v certifikátu serveru tak, aby odpovídaly názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnotou je hodnota true.  | Ne |
+| usePeerVerification | Určuje, jestli se má ověřit identitu serveru při připojení přes protokol SSL. Výchozí hodnotou je hodnota true.  | Ne |
 
 **Příklad:**
 
 ```json
 {
-    "name": "HubspotLinkedService",
+    "name": "HubSpotLinkedService",
     "properties": {
         "type": "Hubspot",
         "typeProperties": {
@@ -99,13 +99,13 @@ Ke zkopírování dat z HubSpot, nastavte vlastnost typ datové sady na **Hubspo
 
 ```json
 {
-    "name": "HubspotDataset",
+    "name": "HubSpotDataset",
     "properties": {
         "type": "HubspotObject",
         "typeProperties": {},
         "schema": [],        
         "linkedServiceName": {
-            "referenceName": "<Hubspot linked service name>",
+            "referenceName": "<HubSpot linked service name>",
             "type": "LinkedServiceReference"
         }
     }
@@ -134,7 +134,7 @@ Ke zkopírování dat z HubSpot, nastavte typ zdroje v aktivitě kopírování d
         "type": "Copy",
         "inputs": [
             {
-                "referenceName": "<Hubspot input dataset name>",
+                "referenceName": "<HubSpot input dataset name>",
                 "type": "DatasetReference"
             }
         ],
