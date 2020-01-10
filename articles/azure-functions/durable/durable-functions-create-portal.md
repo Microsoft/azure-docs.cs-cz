@@ -4,12 +4,12 @@ description: Naučte se, jak nainstalovat rozšíření Durable Functions pro Az
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: azfuncdf
-ms.openlocfilehash: eaa241eff6e1c359045a0ea3d8871fde6c60a059
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0060088acb100036c094406e01d0d736a4af88eb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231488"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769638"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Vytvoření Durable Functions pomocí Azure Portal
 
@@ -22,7 +22,7 @@ ms.locfileid: "74231488"
 
 ## <a name="create-a-function-app"></a>Vytvoření Function App
 
-Musíte mít aplikaci Function App, která bude hostovat provádění jakékoli funkce. Aplikace Function App vám umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. Můžete vytvořit aplikaci pro .NET nebo JavaScript.
+Musíte mít aplikaci Function App, která bude hostovat provádění jakékoli funkce. Aplikace Function App vám umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování, škálování a sdílení prostředků. Můžete vytvořit aplikaci pro .NET nebo JavaScript.
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
@@ -68,7 +68,7 @@ Pokud vytváříte Durable Functions JavaScriptu, budete muset nainstalovat [bal
 
 1. Do vyhledávacího pole zadejte `durable` a pak vyberte šablonu **Durable FUNCTIONS http Starter** .
 
-1. Po zobrazení výzvy vyberte **nainstalovat** , abyste nainstalovali rozšíření Azure DurableTask a všechny závislosti v aplikaci Function App. Rozšíření stačí nainstalovat jenom jednou pro aplikaci Function App. Po úspěšném dokončení instalace vyberte **Pokračovat**.
+1. Po zobrazení výzvy vyberte **nainstalovat** a nainstalujte rozšíření Azure DurableTask a všechny závislosti v aplikaci Function App. Rozšíření pro danou aplikaci Function App stačí nainstalovat pouze jednou. Po úspěšném dokončení instalace vyberte **Pokračovat**.
 
     ![Instalace rozšíření vazby](./media/durable-functions-create-portal/install-durabletask-extension.png)
 
@@ -88,7 +88,7 @@ Pokud vytváříte Durable Functions JavaScriptu, budete muset nainstalovat [bal
     curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
     ```
 
-    V tomto příkladu je `{your-function-app-name}` doménou, která je názvem vaší aplikace Function App. Zpráva odpovědi obsahuje sadu koncových bodů identifikátoru URI, které lze použít k monitorování a správě spuštění, což vypadá jako v následujícím příkladu:
+    V tomto příkladu je `{your-function-app-name}` doménou, která je názvem vaší aplikace Function App. Zpráva odpovědi obsahuje sadu koncových bodů URI, které můžete použít k monitorování a správě spouštění. Může vypadat jako v následujícím příkladu:
 
     ```json
     {  

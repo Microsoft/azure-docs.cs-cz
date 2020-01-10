@@ -1,70 +1,70 @@
 ---
-title: Řešení potíží s převzetí služeb při selhání do Azure selhání | Dokumentace Microsoftu
-description: Tento článek popisuje, jak řešit běžné chyby v přebírání služeb při selhání do Azure
+title: Řešení potíží s převzetím služeb při selhání v Azure | Microsoft Docs
+description: Tento článek popisuje způsoby řešení běžných chyb při selhání služby v Azure.
 author: ponatara
 manager: abhemraj
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
 ms.workload: storage-backup-recovery
-ms.date: 03/04/2019
+ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 2156ee6cf27ecfa32b19ad5bbef7549e99c3f7ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6de37daa0b9e0ebc711a5dacbdce352e3675a3db
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61280598"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754423"
 ---
-# <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Řešení chyb při selhání virtuálního počítače VMware nebo fyzických počítačů do Azure
+# <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Řešení chyb při převzetí služeb při selhání virtuálního počítače VMware nebo fyzického počítače do Azure
 
-Může zobrazit jedna z následující chyby při provádění převzetí služeb při selhání virtuálního počítače do Azure. Řešení potíží s, popsané kroky použijte pro všechny chybové stavy.
+Při převzetí služeb při selhání virtuálního počítače do Azure se může zobrazit jedna z následujících chyb. K řešení potíží použijte popsané kroky pro jednotlivé chybové podmínky.
 
-## <a name="failover-failed-with-error-id-28031"></a>Převzetí služeb při selhání s ID chyby 28031
+## <a name="failover-failed-with-error-id-28031"></a>Převzetí služeb při selhání se nezdařilo s ID chyby 28031
 
-Site Recovery se nepodařilo vytvořit nezdařené přes virtuální počítač v Azure. K tomu mohlo dojít vlivem jednoho z následujících důvodů:
+Site Recovery se nepovedlo vytvořit virtuální počítač s převzetím služeb při selhání v Azure. K tomu může dojít z některého z následujících důvodů:
 
-* Není k dispozici dostatečnou kvótu pro vytvoření virtuálního počítače k dispozici: Dostupnou kvótu můžete zkontrolovat tak, že přejdete k předplatnému -> využití a kvóty. Můžete otevřít [novou žádost o podporu](https://aka.ms/getazuresupport) o navýšení kvóty.
+* Pro vytvoření virtuálního počítače není k dispozici dostatečná kvóta. dostupná kvóta se dá ověřit tak, že přejdete na předplatné-> využití a kvóty. Můžete otevřít [novou žádost o podporu](https://aka.ms/getazuresupport) a zvýšit tak kvótu.
 
-* Pokoušíte se převzetí služeb při selhání virtuálních počítačů z různých velikostní řady ve stejné sadě dostupnosti. Ujistěte se, že zvolíte stejnou řadu velikostí pro všechny virtuální počítače ve stejné sadě dostupnosti. Změnit velikost tak, že přejdete do nastavení výpočty a síť virtuálního počítače a pak zkuste převzetí služeb při selhání.
+* Pokoušíte se převzetí služeb při selhání virtuálních počítačů různých skupin velikostí ve stejné skupině dostupnosti. Ujistěte se, že jste vybrali stejnou rodinu velikostí pro všechny virtuální počítače ve stejné skupině dostupnosti. Přejděte na nastavení výpočty a síť virtuálního počítače a pak zkuste převzetí služeb při selhání zopakovat.
 
-* Na předplatné, které brání vytvoření virtuálního počítače není zásadu. Změna zásad pro povolení vytvoření virtuálního počítače a potom opakujte převzetí služeb při selhání.
+* U předplatného je k dispozici zásada, která brání vytvoření virtuálního počítače. Změňte zásadu tak, aby povolovala vytváření virtuálního počítače, a pak zkuste převzetí služeb při selhání zopakovat.
 
-## <a name="failover-failed-with-error-id-28092"></a>Převzetí služeb při selhání s ID chyby 28092
+## <a name="failover-failed-with-error-id-28092"></a>Převzetí služeb při selhání se nezdařilo s ID chyby 28092
 
-Site Recovery se nepodařilo vytvořit síťové rozhraní, pro které bylo provedeno přes virtuální počítač. Ujistěte se, že máte dostatečnou kvótu pro vytvoření síťových rozhraní v rámci předplatného k dispozici. Dostupnou kvótu můžete zkontrolovat tak, že přejdete k předplatnému -> využití a kvóty. Můžete otevřít [novou žádost o podporu](https://aka.ms/getazuresupport) o navýšení kvóty. Pokud máte dostatečnou kvótu, pak může se jednat přerušovaný vydávání, zkuste operaci zopakovat. Pokud se problém nevyřeší ani po opakovaných pokusů, pak napište komentář na konci tohoto dokumentu.  
+Site Recovery nebylo možné vytvořit síťové rozhraní pro virtuální počítač, u kterého došlo k převzetí služeb při selhání. Ujistěte se, že máte k dispozici dostatečnou kvótu pro vytváření síťových rozhraní v rámci předplatného. Dostupnou kvótu můžete ověřit tak, že přejdete na předplatné-> využití a kvóty. Můžete otevřít [novou žádost o podporu](https://aka.ms/getazuresupport) a zvýšit tak kvótu. Pokud máte dostatečnou kvótu, může to být přechodný problém, zkuste operaci zopakovat. Pokud problém přetrvává i po opakování, pak na konci tohoto dokumentu ponechte komentář.  
 
-## <a name="failover-failed-with-error-id-70038"></a>Převzetí služeb při selhání s ID chyby 70038
+## <a name="failover-failed-with-error-id-70038"></a>Převzetí služeb při selhání se nezdařilo s ID chyby 70038
 
-Site Recovery se nepodařilo vytvořit nezdařené přes klasický virtuální počítač v Azure. K tomu mohlo dojít, protože:
+Site Recovery se nepovedlo vytvořit klasický virtuální počítač v Azure. K tomu může dojít z těchto důvodů:
 
-* Jeden z prostředků, jako je například virtuální síť, která se vyžaduje pro virtuální počítač, který se má vytvořit neexistuje. Vytvoření virtuální sítě, jak je uvedeno v části Nastavení výpočty a síť virtuálního počítače nebo upravit nastavení pro virtuální síť, která již existuje a zkuste převzetí služeb při selhání.
+* Jeden z prostředků, jako je třeba virtuální síť, která je nutná pro vytvoření virtuálního počítače, neexistuje. Vytvořte virtuální síť, která je k dispozici v nastavení výpočty a síť virtuálního počítače, nebo změňte nastavení na virtuální síť, která už existuje, a pak zkuste převzetí služeb při selhání zopakovat.
 
-## <a name="failover-failed-with-error-id-170010"></a>Převzetí služeb při selhání s 170010 ID chyby
+## <a name="failover-failed-with-error-id-170010"></a>Převzetí služeb při selhání se nezdařilo s ID chyby 170010
 
-Site Recovery se nepodařilo vytvořit nezdařené přes virtuální počítač v Azure. K tomu mohlo dojít, protože se nepovedlo interní aktivitu dosazení dat pro místní virtuální počítač.
+Site Recovery se nepovedlo vytvořit virtuální počítač s převzetím služeb při selhání v Azure. Může to být způsobeno tím, že se pro místní virtuální počítač nezdařila interní aktivita pro vysazování.
 
-Zobrazíte všechny počítače v Azure, prostředí Azure vyžaduje některé z ovladačů ve spouštěcí start stavu a služeb, jako je DHCP ve stavu automatické spuštění. Proto dosazení dat do aktivity, v okamžiku převzetí služeb při selhání, převede typ spouštění **atapi, intelide, storflt, vmbus a storvsc ovladače** do začátku spuštění. Také převádí typ spuštění několik služeb, jako je DHCP na automatické spuštění. Tato aktivita může selhat z důvodu konkrétní chyby prostředí. 
+Aby bylo možné v Azure vyvolat libovolný počítač, prostředí Azure vyžaduje, aby některé z ovladačů byly ve stavu spuštění spouštění a aby služby jako DHCP byly ve stavu autostart. V době převzetí služeb při selhání pak činnost pro vystavení převede typ spouštění pro **ovladače ATAPI, Intelide, storflt, VMBus a storvsc** na spouštění po spuštění. Také převede typ spouštění několika služeb, jako je DHCP, na automatické spuštění. Tato aktivita může selhat z důvodu problémů specifických pro prostředí. 
 
-Ruční změna typu spouštění ovladače pro **hostovaného operačního systému Windows**, postupujte následujících kroků:
+Chcete-li ručně změnit typ spouštění ovladačů pro **hostovaný operační systém Windows**, postupujte podle následujících kroků:
 
-1. [Stáhněte si](https://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1) ne dosazování skript a spustit ho jako následující. Tento skript kontroluje, pokud virtuální počítač dosazování.
+1. [Stáhněte](https://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1) si skript pro No-vysazování a spusťte ho následujícím způsobem. Tento skript zkontroluje, jestli virtuální počítač vyžaduje službu pro vysazování.
 
     `.\Script-no-hydration.ps1`
 
-    Pokud je potřeba dosazení dat poskytuje následující výsledek:
+    Pokud je požadováno vysazování, poskytuje následující výsledek:
 
         REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
         This system doesn't meet no-hydration requirement.
 
-    V případě, že virtuální počítač splňuje požadavek na dosazení Ne, tento skript vám poskytne výsledek "Tento systém splňuje požadavek na dosazení ne". V takovém případě všechny ovladače a služby jsou ve stavu podle potřeby Azure a dosazení dat na virtuálním počítači se nevyžaduje.
+    V případě, že virtuální počítač splňuje požadavek bez nutnosti vysazování, skript poskytne výsledek "Tento systém splní požadavek bez nutnosti vysazování". V takovém případě jsou všechny ovladače a služby ve stavu, jak to vyžaduje Azure a kdy se na virtuálním počítači nepožaduje aplikace pro vysazování.
 
-2. Spusťte skript č. dosazení dat do sady následujícím způsobem, pokud virtuální počítač nesplňuje požadavek na dosazení č.
+2. Pokud virtuální počítač nesplňuje požadavek na použití bez nutnosti vystavování, spusťte skript pro ne-vysazování.
 
     `.\Script-no-hydration.ps1 -set`
     
-    Tím se převede typ spouštění ovladačů a poskytne výsledek podobná níže uvedenému příkladu:
+    Tato akce převede typ spouštění ovladačů a poskytne výsledek podobný tomuto:
     
         REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0 
 
@@ -72,93 +72,105 @@ Ruční změna typu spouštění ovladače pro **hostovaného operačního syst�
 
         This system is now no-hydration compatible. 
 
-## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Nelze se připojit nebo RDP/SSH k se přes virtuální počítač z důvodu nejde aktivovat tlačítko Připojit na virtuálním počítači
+## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Nepovedlo se připojit/RDP/SSH k virtuálnímu počítači převzetí služeb při selhání kvůli šedě připojenému tlačítku připojení na virtuálním počítači.
 
-Pokud **připojit** tlačítko na převzetí virtuálního počítače v Azure je zobrazena šedě a nejste připojení k Azure přes Expressroute nebo VPN typu Site-to-Site připojení, potom
+Pokud se tlačítko **připojit** na virtuálním počítači služby převzít služby při selhání v Azure zobrazuje šedě a nejste k Azure připojeni přes Express Route nebo připojení VPN typu Site-to-site,
 
-1. Přejděte na **virtuálního počítače** > **sítě**, klikněte na název požadované síťové rozhraní.  ![network-interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
-2. Přejděte do **konfigurací protokolu Ip**, potom klikněte na název pole požadované konfigurace protokolu IP. ![Konfigurací IP adresy](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
-3. Pokud chcete povolit veřejné IP adresy, klikněte na **povolit**. ![Povolit IP adresu](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
-4. Klikněte na **konfigurovat požadované nastavení** > **vytvořit nový**. ![Vytvořit nový](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
-5. Zadejte název veřejné adresy, vyberte výchozí možnosti pro **SKU** a **přiřazení**, pak klikněte na tlačítko **OK**.
-6. Nyní uložit změny, klikněte na tlačítko **Uložit**.
-7. Zavřete panely a přejděte do **přehled** části virtuální počítač pro připojení nebo protokol RDP.
+1. Přejděte na **virtuální počítač** > **sítě**, klikněte na název požadovaného síťového rozhraní.  ![network-interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+2. Přejděte do části **Konfigurace protokolu IP**a potom klikněte na pole název požadované konfigurace protokolu IP. ![IPConfiguration](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
+3. Pokud chcete povolit veřejnou IP adresu, klikněte na **Povolit**. ![povolit IP](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
+4. Klikněte na **konfigurovat požadovaná nastavení** > **vytvořit nový**. ![vytvořit nové](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
+5. Zadejte název veřejné adresy, zvolte výchozí možnosti pro položku **SKU** a **přiřazení**a pak klikněte na **OK**.
+6. Nyní uložte provedené změny kliknutím na **Uložit**.
+7. Zavřete panely a přejděte do části **Přehled** virtuálního počítače pro připojení/RDP.
 
-## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>Nelze se připojit nebo RDP/SSH - připojení virtuálního počítače k dispozici tlačítko
+## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>Připojení/RDP/SSH – tlačítko připojit k virtuálnímu počítači není k dispozici
 
-Pokud **připojit** tlačítko na převzetí virtuálního počítače v Azure je k dispozici (není zobrazena šedě), a pak ověřte **Diagnostika spouštění** na virtuálním počítači a zkontrolujte chyby, jak je uvedeno v [v tomto článku](../virtual-machines/windows/boot-diagnostics.md).
+Pokud je tlačítko **připojit** na virtuálním počítači služby při selhání v Azure k dispozici (není zobrazeno šedě), zkontrolujte **diagnostiku spouštění** na virtuálním počítači a zkontrolujte chyby, jak je uvedeno v [tomto článku](../virtual-machines/windows/boot-diagnostics.md).
 
-1. Pokud se virtuální počítač nespustil, zkuste převzetí služeb při selhání do staršího bodu obnovení.
-2. Pokud aplikace ve virtuálním počítači není zapnutý, zkuste převzetí služeb při selhání do bodu obnovení s konzistentní aplikací.
-3. Pokud je virtuální počítač k doméně, pak zajistěte, aby že řadiče domény funguje správně. To lze provést pomocí následujících níže uvedené kroky:
+1. Pokud se virtuální počítač nespustil, zkuste provést převzetí služeb při selhání do staršího bodu obnovení.
+2. Pokud aplikace není ve virtuálním počítači funkční, zkuste provést převzetí služeb při selhání do bodu obnovení konzistentního vzhledem k aplikacím.
+3. Pokud je virtuální počítač připojený k doméně, ujistěte se, že řadič domény správně funguje. Můžete to udělat pomocí následujících kroků:
 
     a. Vytvořte nový virtuální počítač ve stejné síti.
 
-    b.  Ujistěte se, že se může připojit ke stejné doméně, ve kterém se přes virtuální počítač se očekává.
+    b.  Zajistěte, aby se mohl připojit ke stejné doméně, na které se očekává, že se má virtuální počítač převzetí služeb při selhání nacházet.
 
-    c. Pokud je řadič domény **není** funguje správně, zkuste protokolování, u kterého proběhlo přes virtuální počítač pomocí místního účtu správce.
-4. Pokud používáte vlastní server DNS, ujistěte se, že je dostupný. To lze provést pomocí následujících níže uvedené kroky:
+    c. Pokud řadič domény **nepracuje správně** , zkuste se přihlásit k virtuálnímu počítači s převzetím služeb při selhání pomocí místního účtu správce.
+4. Pokud používáte vlastní server DNS, ujistěte se, že je dostupný. Můžete to udělat pomocí následujících kroků:
 
-    a. Vytvoření nového virtuálního počítače ve stejné síti a
+    a. Vytvořit nový virtuální počítač ve stejné síti a
 
-    b. Zkontrolujte, jestli je virtuální počítač moct dokáže překládat pomocí vlastního serveru DNS.
+    b. Ověřte, jestli virtuální počítač dokáže překládat IP adresy pomocí vlastního serveru DNS.
 
 >[!Note]
->Povolení kteréhokoli jiného nastavení než Diagnostika spouštění by vyžadovalo Azure VM Agent nainstalovaný na virtuálním počítači před převzetí služeb
+>Povolení jakéhokoli jiného nastavení než diagnostiky spouštění vyžaduje, aby byl na virtuálním počítači před převzetím služeb při selhání nainstalovaný agent virtuálního počítače Azure.
 
-## <a name="unexpected-shutdown-message-event-id-6008"></a>Neočekávané vypnutí zprávy (6008 ID události)
+## <a name="unable-to-open-serial-console-after-failover-of-a-uefi-based-machine-into-azure"></a>Po převzetí služeb při selhání počítače založeného na rozhraní UEFI do Azure se nedá otevřít sériová konzola.
 
-Při spouštění virtuálním počítači Windows příspěvek převzetí služeb při selhání, pokud se zobrazí zpráva neočekávané vypnutí na obnoveného virtuálního počítače, znamená to, že stav vypnutí virtuálního počítače nebyly zaznamenány v bodu obnovení pro převzetí služeb při selhání. To se stane, když obnovíte do bodu, když virtuální počítač kdyby byl vypnutý plně.
+Pokud se k počítači můžete připojit pomocí protokolu RDP, ale nemůžete spustit sériovou konzolu, postupujte podle následujících kroků:
 
-To není obvykle příčinou znepokojení a obvykle se dá ignorovat pro neplánované převzetí služeb při selhání. Pokud je naplánovaná převzetí služeb při selhání, ujistěte se, že virtuální počítač je správně vypnutý před převzetí služeb při selhání a poskytnout dostatek času na probíhající replikaci dat v místním k odeslání do Azure. Potom použijte **nejnovější** možnost [převzetí služeb při selhání obrazovky](site-recovery-failover.md#run-a-failover) tak, aby všechny čekající data v Azure je zpracován do bodu obnovení, který potom slouží pro převzetí služeb při selhání virtuálního počítače.
+* Pokud je operační systém v systému Red Hat nebo Oracle Linux 7. */8.0, spusťte na virtuálním počítači Azure s podporou převzetí služeb při selhání následující příkaz s oprávněními root. Restartujte virtuální počítač za příkazem.
 
-## <a name="unable-to-select-the-datastore"></a>Nelze vybrat úložiště
+        grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
 
-Tento problém je označeno, když jste na portálu nezobrazuje úložišti dat v Azure, při pokusu o znovunastavením ochrany tohoto virtuálního počítače, který má došlo k selhání. Důvodem je, že hlavní cíl se nerozpoznal jako virtuální počítač v rámci vCenters přidán do Azure Site Recovery.
+* Pokud je operační systém počítače CentOS 7. *, spusťte na VIRTUÁLNÍm počítači Azure s podporou převzetí služeb při selhání následující příkaz s oprávněními root. Restartujte virtuální počítač za příkazem.
 
-Další informace o virtuální počítač znovu se zapíná ochrana, najdete v části [znovunastavení ochrany a navrácení služeb po back počítače k místní lokalitě po převzetí služeb při selhání do Azure](vmware-azure-reprotect.md).
+        grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
 
-Řešení tohoto problému:
+## <a name="unexpected-shutdown-message-event-id-6008"></a>Neočekávaná zpráva vypnutí (ID události 6008)
 
-Ručně vytvořit hlavní cíl na vCenter, který spravuje váš zdrojový počítač. Úložiště bude k dispozici po další operace vCenter zjišťování a aktualizace prostředků infrastruktury.
+Pokud při spuštění virtuálního počítače s Windows po převzetí služeb při selhání obdržíte neočekávanou zprávu o vypnutí v obnoveném virtuálním počítači, znamená to, že v bodu obnovení používaném pro převzetí služeb při selhání nebyl zachycen stav vypínání virtuálního počítače. K tomu dojde při obnovení do bodu, kdy se virtuální počítač zcela neukončil.
+
+To obvykle není příčinou obav a je možné je obvykle ignorovat pro neplánované převzetí služeb při selhání. Pokud je naplánovaná převzetí služeb při selhání, ujistěte se, že je virtuální počítač před převzetím služeb při selhání řádně vypnutý, a poskytněte dostatek času pro odeslání místně vyřízených dat pro replikaci do Azure. Pak na [obrazovce převzetí služeb při selhání](site-recovery-failover.md#run-a-failover) použijte **nejnovější** možnost, aby se všechna nevyřízená data v Azure zpracovala do bodu obnovení, který se pak používá pro převzetí služeb virtuálního počítače při selhání.
+
+## <a name="unable-to-select-the-datastore"></a>Nepovedlo se vybrat úložiště dat.
+
+Tento problém je uveden, pokud se nemůžete podívat na úložiště dat v Azure portálu při pokusu o opětovné zapnutí ochrany virtuálního počítače, u kterého došlo k převzetí služeb při selhání. Důvodem je to, že hlavní cíl není rozpoznán jako virtuální počítač v servery vCenter přidaný do Azure Site Recovery.
+
+Další informace o tom, jak znovu chránit počítač s virtuální, najdete v tématu o [opětovném zapnutí ochrany a navrácení služeb po obnovení do Azure po převzetí služeb při selhání do místní lokality](vmware-azure-reprotect.md).
+
+Problém vyřešíte takto:
+
+Ručně vytvořte hlavní cíl v vCenter, který spravuje zdrojový počítač. Úložiště dat bude k dispozici po dalších operacích zjišťování vCenter a aktualizaci prostředků infrastruktury.
 
 > [!Note]
 > 
-> Zjišťování a aktualizace prostředků infrastruktury operace může trvat až 30 minut. 
+> Dokončení operací zjišťování a aktualizace prostředků infrastruktury může trvat až 30 minut. 
 
-## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>Registrace hlavního cíle Linuxu ve službě CS se nezdaří s chybou SSL 35 
+## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>Registrace hlavní cílové platformy Linux s CS se nezdařila s chybou SSL 35 
 
-Registrace konfiguračního serveru do Azure Site Recovery Master Target nezdaří z důvodu ověření proxy serveru se povoluje na hlavním cíli. 
+Registrace hlavního cíle Azure Site Recovery se konfiguračním serverem se nezdařila z důvodu povolení ověřeného proxy serveru na hlavním cíli. 
  
-Tato chyba je indikován následující řetězce v protokolu instalace: 
+Tato chyba je uvedena v protokolu instalace v následujících řetězcích: 
 
 ```
 RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] CurlWrapper Post failed : server : 10.38.229.221, port : 443, phpUrl : request_handler.php, secure : true, ignoreCurlPartialError : false with error: [at curlwrapperlib/curlwrapper.cpp:processCurlResponse:231]   failed to post request: (35) - SSL connect error. 
 ```
 
-Řešení tohoto problému:
+Problém vyřešíte takto:
  
-1. Na konfiguračním serveru virtuálního počítače otevřete příkazový řádek a ověřte nastavení proxy serveru pomocí následujících příkazů:
+1. Na virtuálním počítači konfiguračního serveru otevřete příkazový řádek a ověřte nastavení proxy pomocí následujících příkazů:
 
-    CAT /etc/environment echo $http_proxy echo $https_proxy 
+    Cat/etc/Environment echo $http _proxy echo $https _proxy 
 
-2. Výstup z předchozích příkazů ukazuje, že jsou definovány http_proxy nebo https_proxy nastavení, použijte jednu z následujících metod odblokujete komunikaci hlavní cíl se konfigurační server:
+2. Pokud výstup předchozích příkazů ukazuje, že jsou definovaná nastavení http_proxy nebo https_proxy, pomocí jedné z následujících metod odblokujte komunikaci hlavního cíle pomocí konfiguračního serveru:
    
-   - Stáhněte si [nástroj PsExec](https://aka.ms/PsExec).
-   - Použijte nástroj pro přístup k systému uživatelský kontext a určit, jestli je nakonfigurovaná adresa proxy serveru. 
-   - Pokud je nakonfigurován proxy server, otevřete aplikaci Internet Explorer v kontextu uživatele systému pomocí nástroje PsExec.
+   - Stáhněte si [Nástroj PsExec](https://aka.ms/PsExec).
+   - Použijte nástroj pro přístup k systémovému kontextu uživatele a určete, jestli je adresa proxy serveru nakonfigurovaná. 
+   - Pokud je proxy server nakonfigurován, otevřete aplikaci Internet Explorer v kontextu uživatele systému pomocí nástroje PsExec.
   
-     **psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"**
+     **PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe"**
 
-   - Chcete-li zajistit, že hlavní cílový server může komunikovat s konfiguračním serverem:
+   - Chcete-li zajistit, aby hlavní cílový server mohl komunikovat s konfiguračním serverem:
   
-     - Upravte nastavení proxy serveru v aplikaci Internet Explorer obejít IP adresu hlavního cílového serveru přes proxy server.   
-     Nebo
-     - Vypněte proxy server na hlavním cílovém serveru. 
+     - Upravte nastavení proxy serveru v Internet Exploreru, aby se IP adresa hlavního cílového serveru nepoužívala prostřednictvím proxy serveru.   
+     nebo
+     - Zakažte proxy server na hlavním cílovém serveru. 
 
 
-## <a name="next-steps"></a>Další postup
-- Řešení potíží s [připojení RDP k virtuálnímu počítači Windows](../virtual-machines/windows/troubleshoot-rdp-connection.md)
-- Řešení potíží s [připojení SSH k virtuálnímu počítači s Linuxem](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md)
+## <a name="next-steps"></a>Další kroky
+- Řešení potíží s [připojením RDP k virtuálnímu počítači s Windows](../virtual-machines/windows/troubleshoot-rdp-connection.md)
+- Řešení potíží s [připojením SSH k virtuálnímu počítači se systémem Linux](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md)
 
-Pokud potřebujete další pomoc, pak zveřejněte svůj dotaz na [fórum Site Recovery](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) nebo komentář na konci tohoto dokumentu. Aktivní komunitě, který by měl být schopni pomoct, máme.
+Pokud potřebujete další informace, odešlete dotaz na [Site Recovery Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) nebo ponechte komentář na konci tohoto dokumentu. Máme aktivní komunitu, která vám může pomoct.

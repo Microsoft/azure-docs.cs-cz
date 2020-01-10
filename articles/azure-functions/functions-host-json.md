@@ -2,13 +2,13 @@
 title: Reference Host. JSON pro Azure Functions 2. x
 description: Referenční dokumentace pro soubor Azure Functions Host. JSON s modulem runtime v2
 ms.topic: conceptual
-ms.date: 09/08/2018
-ms.openlocfilehash: 374d00a75423274d03320b9c1299a2c2dae080ef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/06/2020
+ms.openlocfilehash: d33b63e2eb733e2cea360d3c5f6096fca3521736
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433175"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769162"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Reference Host. JSON pro Azure Functions 2. x a novější 
 
@@ -27,7 +27,7 @@ Některá nastavení Host. JSON se používají jenom v případě, že se spou�
 
 ## <a name="sample-hostjson-file"></a>Ukázkový soubor host. JSON
 
-Následující ukázkové soubory *Host. JSON* mají uvedené všechny možné možnosti.
+Následující ukázkový soubor *Host. JSON* má všechny možné zadané možnosti (kromě těch, které jsou jenom pro interní použití).
 
 ```json
 {
@@ -67,7 +67,48 @@ Následující ukázkové soubory *Host. JSON* mají uvedené všechny možné m
         "applicationInsights": {
             "samplingSettings": {
               "isEnabled": true,
-              "maxTelemetryItemsPerSecond" : 20
+              "maxTelemetryItemsPerSecond" : 20,
+              "evaluationInterval": "01:00:00",
+              "initialSamplingPercentage": 1.0, 
+              "samplingPercentageIncreaseTimeout" : "00:00:01",
+              "samplingPercentageDecreaseTimeout" : "00:00:01",
+              "minSamplingPercentage": 0.1,
+              "maxSamplingPercentage": 0.1,
+              "movingAverageRatio": 1.0
+            },
+            "samplingExcludedTypes" : "Dependency;Event",
+            "samplingIncludedTypes" : "PageView;Trace",
+            "enableLiveMetrics": true,
+            "enableDependencyTracking": true,
+            "enablePerformanceCountersCollection": true,            
+            "httpAutoCollectionOptions": {
+                "enableHttpTriggerExtendedInfoCollection": true,
+                "enableW3CDistributedTracing": true,
+                "enableResponseHeaderInjection": true
+            },
+            "snapshotConfiguration": {
+                "agentEndpoint": null,
+                "captureSnapshotMemoryWeight": 0.5,
+                "failedRequestLimit": 3,
+                "handleUntrackedExceptions": true,
+                "isEnabled": true,
+                "isEnabledInDeveloperMode": false,
+                "isEnabledWhenProfiling": true,
+                "isExceptionSnappointsEnabled": false,
+                "isLowPrioritySnapshotUploader": true,
+                "maximumCollectionPlanSize": 50,
+                "maximumSnapshotsRequired": 3,
+                "problemCounterResetInterval": "24:00:00",
+                "provideAnonymousTelemetry": true,
+                "reconnectInterval": "00:15:00",
+                "shadowCopyFolder": null,
+                "shareUploaderProcess": true,
+                "snapshotInLowPriorityThread": true,
+                "snapshotsPerDayLimit": 30,
+                "snapshotsPerTenMinutesLimit": 1,
+                "tempFolder": null,
+                "thresholdForSnapshotting": 1,
+                "uploaderProxy": null
             }
         }
     },
@@ -97,32 +138,73 @@ Toto nastavení je podřízenou položkou [protokolování](#logging).
 
 Řídí možnosti pro Application Insights, včetně [možností vzorkování](./functions-monitoring.md#configure-sampling).
 
-```json
-{
-    "applicationInsights": {        
-        "enableDependencyTracking": true,
-        "enablePerformanceCountersCollection": true,
-        "samplingExcludedTypes": "Trace;Exception",
-        "samplingIncludedTypes": "Request;Dependency",
-        "samplingSettings": {
-          "isEnabled": true,
-          "maxTelemetryItemsPerSecond" : 20
-        }
-    }
-}
-```
+Úplnou strukturu JSON naleznete v předchozím [ukázkovém souboru Host. JSON](#sample-hostjson-file).
 
 > [!NOTE]
-> Vzorkování protokolu může způsobit, že se některá spuštění v okně monitorování Application Insights neprojeví.
+> Vzorkování protokolu může způsobit, že se některá spuštění v okně monitorování Application Insights neprojeví. Chcete-li se vyhnout vzorkování protokolu, přidejte `samplingExcludedTypes: "Request"` do `applicationInsights` hodnoty.
 
-|Vlastnost  |Výchozí | Popis |
-|---------|---------|---------| 
-|enableDependencyTracking|true|Povolí sledování závislostí.|
-|enablePerformanceCountersCollection|true|Povolí shromažďování čítačů výkonu.|
-|samplingExcludedTypes|null|Středníkem oddělený seznam typů, které nechcete vzorkovat. Rozpoznané typy jsou: závislost, událost, výjimka, PageView, požadavek, trasování. Jsou přenášeny všechny instance zadaných typů; typy, které nejsou zadány, jsou vzorkované.| 
-|samplingIncludedTypes|null|Středníkem oddělený seznam typů, které chcete vzorkovat. Rozpoznané typy jsou: závislost, událost, výjimka, PageView, požadavek, trasování. Zadané typy jsou vzorkovat; všechny instance ostatních typů budou vždy přeneseny.|
-|samplingSettings. deenable|true|Povolí nebo zakáže vzorkování.| 
-|samplingSettings.maxTelemetryItemsPerSecond|20|Prahová hodnota, při které začíná vzorkování.|
+| Vlastnost | Výchozí | Popis |
+| --------- | --------- | --------- | 
+| samplingSettings | – | Viz [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
+| samplingExcludedTypes | null | Středníkem oddělený seznam typů, které nechcete vzorkovat. Rozpoznané typy jsou: závislost, událost, výjimka, PageView, požadavek, trasování. Jsou přenášeny všechny instance zadaných typů; typy, které nejsou určeny, jsou vzorkované. |
+| samplingIncludedTypes | null | Seznam typů, které chcete vzorkovat, oddělený středníky; prázdný seznam zahrnuje všechny typy. Níže uvedený typ `samplingExcludedTypes` přepsat typy. Rozpoznané typy jsou: závislost, událost, výjimka, PageView, požadavek, trasování. Jsou přenášeny všechny instance zadaných typů; typy, které nejsou určeny, jsou vzorkované. |
+| enableLiveMetrics | true | Povoluje shromažďování živých metrik. |
+| enableDependencyTracking | true | Povolí sledování závislostí. |
+| enablePerformanceCountersCollection | true | Povolí shromažďování čítačů výkonu Kudu. |
+| liveMetricsInitializationDelay | 00:00:15 | Pouze pro interní použití. |
+| httpAutoCollectionOptions | – | Viz [applicationInsights. httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions). |
+| snapshotConfiguration | – | Viz [applicationInsights. snapshotConfiguration](#applicationinsightssnapshotconfiguration). |
+
+### <a name="applicationinsightssamplingsettings"></a>applicationInsights. samplingSettings
+
+|Vlastnost | Výchozí | Popis |
+| --------- | --------- | --------- | 
+| isEnabled | true | Povolí nebo zakáže vzorkování. | 
+| maxTelemetryItemsPerSecond | 20 | Cílový počet položek telemetrie protokolovaných za sekundu na každém hostiteli serveru. Pokud vaše aplikace běží na mnoha hostitelích, snižte tuto hodnotu tak, aby zůstala v rámci celkové cílové míry provozu. | 
+| evaluationInterval | 01:00:00 | Interval, ve kterém je aktuální frekvence telemetrie znovu vyhodnocena. Hodnocení se provádí jako klouzavý průměr. Pokud je vaše telemetrie příčinou náhlého nárůstu, možná budete chtít tento interval zkrátit. |
+| initialSamplingPercentage| 1.0 | Počáteční procentuální hodnota vzorkování použitá na začátku procesu vzorkování, která dynamicky mění procento. Při ladění nezmenšujte hodnotu. |
+| samplingPercentageIncreaseTimeout | 00:00:01 | Když se změní procentuální hodnota vzorkování, tato vlastnost určuje, jak brzo Application Insights může znovu vyvolat procento vzorkování a zachytit další data. |
+| samplingPercentageDecreaseTimeout | 00:00:01 | Když se změní procentuální hodnota vzorkování, tato vlastnost určuje, jak brzo Application Insights může snížit procento vzorkování znovu a zachytit tak méně dat. |
+| minSamplingPercentage | 0.1 | Když se procento vzorkování liší, tato vlastnost určuje minimální povolený procentuální podíl vzorkování. |
+| maxSamplingPercentage | 0.1 | Když se procento vzorkování liší, tato vlastnost určuje maximální povolené procento vzorkování. |
+| movingAverageRatio | 1.0 | Při výpočtu klouzavého průměru je váha přiřazená k nejnovější hodnotě. Použijte hodnotu rovnou nebo menší než 1. Menší hodnoty nastaví algoritmus méně aktivní na náhlé změny. |
+
+### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights. httpAutoCollectionOptions
+
+|Vlastnost | Výchozí | Popis |
+| --------- | --------- | --------- | 
+| enableHttpTriggerExtendedInfoCollection | true | Povoluje nebo zakazuje rozšířené informace o požadavku HTTP pro aktivační události protokolu HTTP: příchozí hlavičky žádostí o relaci, podpora klíčů pro více instrumentací, metoda HTTP, cesta a odpověď. |
+| enableW3CDistributedTracing | true | Povolí nebo zakáže podporu protokolu W3C Distributed Tracing Protocol (a zapne starší verzi schématu korelace). Povolí se ve výchozím nastavení, pokud `enableHttpTriggerExtendedInfoCollection` true. Pokud je `enableHttpTriggerExtendedInfoCollection` false, vztahuje se tento příznak jenom na odchozí požadavky, ne na příchozí požadavky. |
+| enableResponseHeaderInjection | true | Povolí nebo zakáže vkládání hlaviček korelace s více komponentami do odpovědí. Povolení injektáže umožňuje Application Insights sestavit mapu aplikace, když se používají několik klíčů instrumentace. Povolí se ve výchozím nastavení, pokud `enableHttpTriggerExtendedInfoCollection` true. Toto nastavení se nepoužije, pokud je `enableHttpTriggerExtendedInfoCollection` false. |
+
+### <a name="applicationinsightssnapshotconfiguration"></a>applicationInsights. snapshotConfiguration
+
+Další informace o snímcích najdete v tématu [ladění snímků při výjimkách v aplikacích .NET](/azure-monitor/app/snapshot-debugger) a řešení potíží s [povolením Application Insights Snapshot Debugger nebo zobrazením snímků](/azure/azure-monitor/app/snapshot-debugger-troubleshoot).
+
+|Vlastnost | Výchozí | Popis |
+| --------- | --------- | --------- | 
+| agentEndpoint | null | Koncový bod, který se používá pro připojení ke službě Application Insights Snapshot Debugger. Pokud je null, použije se výchozí koncový bod. |
+| captureSnapshotMemoryWeight | 0,5 | Váha přidělená aktuální velikosti paměti procesu při kontrole, zda je k dispozici dostatek paměti pro pořízení snímku. Očekávaná hodnota je větší než 0 správný zlomek (0 < CaptureSnapshotMemoryWeight < 1). |
+| failedRequestLimit | 3 | Omezení počtu neúspěšných žádostí o snímky, než je procesor telemetrie zakázán.|
+| handleUntrackedExceptions | true | Povolí nebo zakáže sledování výjimek, které nejsou sledovány Application Insights telemetrie. |
+| isEnabled | true | Povolí nebo zakáže shromažďování snímků. | 
+| isEnabledInDeveloperMode | false | Povolí nebo zakáže shromažďování snímků v režimu pro vývojáře. |
+| isEnabledWhenProfiling | true | Povolí nebo zakáže vytváření snímků, i když Application Insights Profiler shromažďuje podrobnou relaci profilování. |
+| isExceptionSnappointsEnabled | false | Povolí nebo zakáže filtrování výjimek. |
+| isLowPrioritySnapshotUploader | true | Určuje, zda spustit proces SnapshotUploader pod normální prioritou. |
+| maximumCollectionPlanSize | 50 | Maximální počet problémů, které můžeme kdykoli sledovat v rozsahu od 1 do 9999. |
+| maximumSnapshotsRequired | 3 | Maximální počet snímků shromážděných pro jeden problém v rozsahu od 1 do 999. Problém může být v aplikaci považován za individuální příkaz throw. Jakmile počet snímků shromážděných pro daný problém dosáhne této hodnoty, nebudou pro tento problém shromažďovány žádné další snímky, dokud nebudou čítače problémů obnoveny (viz `problemCounterResetInterval`) a je znovu dosaženo limitu `thresholdForSnapshotting`. |
+| problemCounterResetInterval | 24:00:00 | Jak často se mají resetovat čítače problémů v rozsahu od 1 minuty do sedmi dnů. Po dosažení tohoto intervalu se všechny počty problémů resetují na nula. Stávající problémy, které již dosáhly prahové hodnoty pro vytváření snímků, ale dosud negenerovaly počet snímků v `maximumSnapshotsRequired`, zůstávají aktivní. |
+| provideAnonymousTelemetry | true | Určuje, jestli se má Microsoftu odesílat anonymní využití a chybové telemetrie. Tato telemetrie se dá použít, pokud se obrátíte na Microsoft, abyste pomohli řešit problémy s Snapshot Debugger. Používá se také k monitorování vzorců používání. |
+| reconnectInterval | 00:15:00 | Jak často se znovu připojujeme ke koncovému bodu Snapshot Debugger. Povolený rozsah je 1 minuta až jeden den. |
+| shadowCopyFolder | null | Určuje složku, která se má použít pro stínové kopírování binárních souborů. Pokud není nastavené, vyzkouší se složky určené následujícími proměnnými prostředí v pořadí: Fabric_Folder_App_Temp, LOCALAPPDATA, data a TEMP. |
+| shareUploaderProcess | true | V případě hodnoty true bude shromažďovat a nahrávat snímky pro několik aplikací, které sdílí InstrumentationKey, jenom jedna instance SnapshotUploader. Pokud je nastavena hodnota false, bude SnapshotUploader jedinečný pro každou řazenou kolekci členů (Process, InstrumentationKey). |
+| snapshotInLowPriorityThread | true | Určuje, zda se mají zpracovávat snímky ve vlákně s nízkým/v prioritou. Vytvoření snímku je rychlá operace, ale aby bylo možné nahrát snímek do služby Snapshot Debugger, musí být nejprve zapsán na disk jako s minimálním výpisem. K tomu dochází v procesu SnapshotUploader. Pokud nastavíte hodnotu true, použije se pro zápis s minimálním výpisem v/v s nízkou prioritou, takže se vaše aplikace nebude konkurovat za prostředky. Nastavením této hodnoty na false zrychlí s minimálním výpisem vytváření na úkor zpomalení aplikace. |
+| snapshotsPerDayLimit | 30 | Maximální počet snímků povolených za jeden den (24 hodin). Toto omezení se taky vynutilo na straně Application Insights služby. Nahrávání jsou pro jednotlivé aplikace omezené na 50 a den (tj. na klíč instrumentace). Tato hodnota pomáhá zabránit vytváření dalších snímků, které se nakonec během nahrávání odmítnou. Hodnota nula odstraní celý limit, což se nedoporučuje. |
+| snapshotsPerTenMinutesLimit | 1\. místo | Maximální počet snímků povolených za 10 minut. I když na této hodnotě není žádná horní mez, požádejte o zvýšení opatrnosti v produkčních úlohách, protože by to mohlo mít vliv na výkon aplikace. Vytvoření snímku je rychlé, ale vytvoření s minimálním výpisem snímku a jeho nahrání do služby Snapshot Debugger je mnohem pomalejší operace, která bude konkurovat vaší aplikaci pro prostředky (procesor i I/O). |
+| tempFolder | null | Určuje složku pro zápis souborů protokolu Mini výpisy a odeslání. Pokud není nastavená, použije se *%TEMP%\Dumps* . |
+| thresholdForSnapshotting | 1\. místo | Kolikrát Application Insights nutné zobrazit výjimku před tím, než bude požádána o snímky. |
+| uploaderProxy | null | Přepíše proxy server použitou v procesu odeslání snímku. Toto nastavení může být nutné použít, pokud se vaše aplikace připojí k Internetu prostřednictvím proxy server. Snapshot Collector běží v rámci procesu aplikace a bude používat stejné nastavení proxy serveru. Odeslání snímku se ale spustí jako samostatný proces a možná budete muset proxy server nakonfigurovat ručně. Pokud je tato hodnota null, Snapshot Collector se pokusí automaticky zjistit adresu proxy pomocí prověření System .NET. WebRequest. DefaultWebProxy a předáním hodnoty pro odeslání snímku. Pokud tato hodnota není null, nepoužije se možnost autodetection a v nástroji pro odeslání snímku se použije proxy server, kterou tady zadáte. |
 
 ## <a name="cosmosdb"></a>cosmosDb
 
@@ -221,7 +303,7 @@ Nastavení konfigurace najdete v [aktivačních událostech http a vazbách](fun
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Definuje, jakou úroveň protokolování souborů je povoleno.  Možnosti jsou `never`, `always``debugOnly`. |
-|logLevel|–|Objekt, který definuje filtrování kategorií protokolů pro funkce v aplikaci. Verze 2. x a novější postupují podle ASP.NET Core rozložení pro filtrování kategorií protokolů. To vám umožní filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolů](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
+|logLevel|–|Objekt, který definuje filtrování kategorií protokolů pro funkce v aplikaci. Verze 2. x a novější postupují podle ASP.NET Core rozložení pro filtrování kategorií protokolů. Toto nastavení umožňuje filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolů](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
 |konzola|–| [console](#console) nastavení protokolování. |
 |applicationInsights|–| Nastavení [applicationInsights](#applicationinsights) |
 

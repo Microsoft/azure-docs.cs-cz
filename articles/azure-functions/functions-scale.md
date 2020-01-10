@@ -5,24 +5,24 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6b8f5708aa14b4cc7cffa62da055f92f8d99dee5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2eba0c7ae546b5f5ab7525cc8c84e6b6de431085
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75409110"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768911"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions škálování a hostování
 
-Když vytvoříte aplikaci Function App v Azure, musíte zvolit plán hostování pro vaši aplikaci. K dispozici jsou tři plány hostování pro Azure Functions: [plán spotřeby](#consumption-plan), [Plán Premium](#premium-plan)a [plán App Service](#app-service-plan).
+Když vytvoříte aplikaci Function App v Azure, musíte zvolit plán hostování pro vaši aplikaci. K dispozici jsou tři plány hostování pro Azure Functions: [plán spotřeby](#consumption-plan), [Plán Premium](#premium-plan)a [vyhrazený plán (App Service)](#app-service-plan).
 
 Plán hostování, který zvolíte, bude určovat následující chování:
 
 * Jak se škáluje aplikace Function App
 * Prostředky dostupné pro jednotlivé instance aplikace Function App.
-* Podpora pro pokročilé funkce, jako je třeba připojení k virtuální síti.
+* Podpora pro pokročilé funkce, jako je například připojení k Azure Virtual Network.
 
-Plány spotřeby i úrovně Premium automaticky přidávají výpočetní výkon, když je váš kód spuštěný. Vaše aplikace se škáluje v případě potřeby na zpracování zatížení a při zastavení kódu se škáluje dolů. Pro plán spotřeby také nemusíte platit za nečinné virtuální počítače nebo rezervovat kapacitu předem.  
+Plány spotřeby i úrovně Premium automaticky přidávají výpočetní výkon, když je váš kód spuštěný. Vaše aplikace se škáluje v případě potřeby na zpracování zatížení a při změně kapacity v době, kdy se kód přestane spouštět. Pro plán spotřeby také nemusíte platit za nečinné virtuální počítače nebo rezervovat kapacitu předem.  
 
 Plán Premium poskytuje další funkce, jako jsou výpočetní instance Premium, schopnost udržet instance na neomezenou dobu a připojení k virtuální síti.
 
@@ -33,7 +33,7 @@ App Service plán vám umožní využít výhod vyhrazené infrastruktury, ktero
 Podpora funkcí spadá do následujících dvou kategorií:
 
 * _Všeobecně dostupná (GA)_ : plně podporované a schválené pro použití v produkčním prostředí.
-* _Preview_: ještě není plně podporované a schválené pro použití v produkčním prostředí.
+* _Verze Preview_: ještě není plně podporovaná ani schválená pro použití v produkčním prostředí.
 
 Následující tabulka uvádí aktuální úroveň podpory pro tři plány hostování při použití v systému Windows nebo Linux:
 
@@ -78,7 +78,7 @@ Vezměte v úvahu plán Azure Functions Premium v následujících situacích:
 * Máte vysoký počet malých spuštění a máte vysoké náklady na spuštění, ale v plánu spotřeby se účtují za méně GB.
 * Budete potřebovat více možností procesoru nebo paměti, než jaké je k dispozici v plánu spotřeby.
 * Váš kód musí běžet delší dobu, než je [Maximální doba spuštění](#timeout) v plánu spotřeby.
-* Vyžadujete funkce, které jsou k dispozici pouze v plánu Premium, například připojení VNET/VPN.
+* Vyžadujete funkce, které jsou k dispozici pouze v plánu Premium, například připojení k virtuální síti.
 
 Při spouštění funkcí JavaScriptu na plánu Premium byste měli zvolit instanci, která má méně vCPU. Další informace najdete v tématu [Výběr plánů Premium s jedním jádrem](functions-reference-node.md#considerations-for-javascript-functions).  
 

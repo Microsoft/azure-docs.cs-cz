@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a15b55aa3d8cc8f16a35c858d11e3d20c260bff8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 55de5a5c604273225a85e49ca682980f83a951d2
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425023"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767564"
 ---
 # <a name="what-are-baseline-policies"></a>Co jsou základní zásady?
 
@@ -25,7 +25,7 @@ Základní zásady představují sadu předdefinovaných zásad, které vám pom
 Správa vlastních zásad podmíněného přístupu vyžaduje licenci Azure AD Premium.
 
 > [!IMPORTANT]
-> Depricated se základní zásady. Další informace najdete [v tématu Co je nového v Azure Active Directory?](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults) .
+> Základní zásady jsou zastaralé. Další informace najdete [v tématu Co je nového v Azure Active Directory?](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults) .
 
 ## <a name="baseline-policies"></a>Základní zásady
 

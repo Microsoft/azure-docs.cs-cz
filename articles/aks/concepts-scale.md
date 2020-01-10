@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 5bceb6715fc3fd2f9f23738936df2f2c549d0212
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: aaa279596532d3a1d47a974b48a45bd67101fa95
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048190"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768618"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Možnosti škálování pro aplikace ve službě Azure Kubernetes (AKS)
 
@@ -28,6 +28,8 @@ V tomto článku se seznámíte se základními koncepty, které vám pomůžou 
 ## <a name="manually-scale-pods-or-nodes"></a>Ruční škálování v luskech nebo uzlech
 
 Můžete ručně škálovat repliky (lusky) a uzly, abyste otestovali, jak vaše aplikace reaguje na změnu dostupných prostředků a stavu. Ruční škálování prostředků také umožňuje definovat sadu množství prostředků, které se mají použít k údržbě pevných nákladů, jako je třeba počet uzlů. Chcete-li ručně škálovat, definujte počet replik nebo uzlů. Rozhraní Kubernetes API pak plánuje vytváření dalších lusků nebo vyprazdňování uzlů na základě této repliky nebo počtu uzlů.
+
+Při horizontálním škálování uzlů volá rozhraní API Kubernetes příslušné rozhraní API služby Azure COMPUTE vázané na výpočetní typ používaný clusterem. Například pro clustery založené na VM Scale Sets logiku pro výběr uzlů, které mají být odebrány, je určena rozhraním API VM Scale Sets. Další informace o tom, jak jsou uzly vybrané k odstranění při horizontálním navýšení kapacity, najdete v tématu [VMSS – Nejčastější dotazy](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed).
 
 Pokud chcete začít s ručním škálováním v luskech a uzlech, přečtěte si téma [škálování aplikací v AKS][aks-scale]
 

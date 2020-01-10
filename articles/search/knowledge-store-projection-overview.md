@@ -1,5 +1,5 @@
 ---
-title: Práce s projekcemi ve znalostní bázi Knowledge Store (Preview)
+title: Projekce ve znalostní bázi Knowledge Store (Preview)
 titleSuffix: Azure Cognitive Search
 description: Uložte obohacená data z kanálu indexování pro rozšíření AI do úložiště znalostí pro použití ve scénářích, které nejsou fulltextovým vyhledáváním. znalostní databáze je aktuálně ve verzi Public Preview.
 manager: nitinme
@@ -7,20 +7,20 @@ author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 47c63118888bc0eaf7a025cd95e2a4c43d6a6cfb
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/08/2020
+ms.openlocfilehash: d8302b69f1e868536eb954a650a62f41e4006b82
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790004"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754520"
 ---
-# <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Práce s projekcemi ve znalostní bázi v Azure Kognitivní hledání
+# <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Projekce ve znalostní bázi ve službě Azure Kognitivní hledání
 
 > [!IMPORTANT] 
 > znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
 
-Azure Kognitivní hledání v rámci indexování umožňuje rozšíření obsahu prostřednictvím integrovaných schopností rozpoznávání a vlastní dovednosti. Obohacení do dokumentů přidávají strukturu a vyhledává se efektivněji. V mnoha instancích jsou obohacené dokumenty užitečné pro jiné scénáře, než je hledání, například pro dolování znalostí.
+Azure Kognitivní hledání v rámci indexování umožňuje rozšíření obsahu prostřednictvím integrovaných schopností rozpoznávání a vlastní dovednosti. Obohacení vytvoří nové informace tam, kde už dříve neexistovaly: extrakce informací z obrázků, detekce mínění, klíčových slov a entit z textu, na několik názvů. Rozšíření také přidává strukturu na nerozlišený text. Výsledkem všech těchto procesů jsou dokumenty, které usnadňují vyhledávání fulltextového vyhledávání. V mnoha instancích jsou obohacené dokumenty užitečné pro jiné scénáře, než je hledání, například pro dolování znalostí.
 
 Projekce, součást služby [Knowledge Store](knowledge-store-concept-intro.md), představují zobrazení obohacených dokumentů, které je možné uložit do fyzického úložiště pro účely dolování v rámci vědomostí. Projekce umožňuje "projekt" vašich dat do tvaru, který se podle vašich potřeb sjednotí, zachovávání vztahů, aby nástroje, jako Power BI, mohly data číst bez dalšího úsilí.
 
@@ -34,7 +34,7 @@ Znalostní databáze podporuje tři typy projekce:
 
 + **Soubory**: Pokud potřebujete uložit obrázky extrahované z dokumentů, projekce souborů vám umožní ukládat normalizované image do úložiště objektů BLOB.
 
-Pokud chcete zobrazit projekce definované v kontextu, Projděte si téma [jak začít s úložištěm Knowledge Store](knowledge-store-howto.md).
+Pokud chcete zobrazit projekce definované v kontextu, Projděte si téma [Vytvoření úložiště znalostí v REST](knowledge-store-create-rest.md).
 
 ## <a name="projection-groups"></a>Skupiny projekce
 
@@ -114,12 +114,6 @@ Tady je příklad projekce tabulek.
 
 Jak je znázorněno v tomto příkladu, klíčové fráze a entity jsou modelovány do různých tabulek a budou obsahovat odkaz zpátky na nadřazenou (hlavní tabulku) pro každý řádek.
 
-<!---
-The following illustration is a reference to the Case-law exercise in [How to get started with knowledge store](knowledge-store-howto.md). In a scenario where a case has multiple opinions, and each opinion is enriched by identifying entities contained within it, you could model the projections as shown here.
-
-![Entities and relationships in tables](media/knowledge-store-projection-overview/TableRelationships.png "Modeling relationships in table projections")
---->
-
 ## <a name="object-projections"></a>Projekce objektů
 
 Projekce objektů jsou reprezentace JSON stromu obohacení, kterou lze naformátovat z libovolného uzlu. V mnoha případech může být k vygenerování projekce objektu použita stejná **Shaper** dovednost, která vytvoří projekci tabulky. 
@@ -143,10 +137,8 @@ Projekce objektů jsou reprezentace JSON stromu obohacení, kterou lze naformát
         {
           "objects": [
             {
-              "storageContainer": "Reviews", 
-              "format": "json", 
-              "source": "/document/Review", 
-              "key": "/document/Review/Id" 
+              "storageContainer": "hotelreviews", 
+              "source": "/document/hotel"
             }
           ]
         },
@@ -160,9 +152,8 @@ Projekce objektů jsou reprezentace JSON stromu obohacení, kterou lze naformát
 
 Generování projekce objektu vyžaduje několik atributů specifických pro objekt:
 
-+ storageContainer: kontejner, do kterého se budou ukládat objekty
++ storageContainer: kontejner objektů blob, do kterého se uloží objekty
 + Zdroj: cesta k uzlu stromu obohacení, který je kořenem projekce.
-+ Key: cesta, která představuje jedinečný klíč pro objekt, který má být uložen. Použije se k vytvoření názvu objektu BLOB v kontejneru.
 
 ## <a name="file-projection"></a>Projekce souboru
 
@@ -219,4 +210,4 @@ Nakonec, pokud potřebujete exportovat data z znalostní báze Knowledge Store, 
 Jako další krok si vytvořte svoje první úložiště znalostní báze s použitím ukázkových dat a pokynů.
 
 > [!div class="nextstepaction"]
-> [Postup vytvoření znalostní databáze](knowledge-store-howto.md).
+> [Vytvořte znalostní bázi v klidovém úložišti](knowledge-store-create-rest.md).

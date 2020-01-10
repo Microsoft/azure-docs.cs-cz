@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 3a57fbb010f8a04352d09d4b6d57cf465e3e6988
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3dd7399b68388d92d38b0f64c6e816cb94b3f295
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279156"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768567"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuální omezení pro fondy uzlů Windows serveru a úlohy aplikací ve službě Azure Kubernetes Service (AKS)
 
@@ -65,6 +65,10 @@ Uzly Windows serveru v AKS se musí *upgradovat* , aby se získaly nejnovější
 > [!NOTE]
 > Aktualizovaná image Windows serveru se použije jenom v případě, že se před upgradem fondu uzlů provede upgrade clusteru (upgrade roviny ovládacího prvku).
 >
+
+## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>Návody otočit instanční objekt pro fond uzlů Windows?
+
+Ve verzi Preview fondy uzlů Windows nepodporují otočení instančního objektu jako omezení verze Preview. Pokud chcete aktualizovat instanční objekt, vytvořte nový fond uzlů Windows a migrujte své lusky ze staršího fondu do nového. Až to dokončíte, odstraňte starší fond uzlů.
 
 ## <a name="how-many-node-pools-can-i-create"></a>Kolik fondů uzlů lze vytvořit?
 

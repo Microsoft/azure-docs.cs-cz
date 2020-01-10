@@ -8,20 +8,11 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: ca6c57b139b195b94dc7171336cfcc34d18b1872
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 2fd03c70cffa4efcb30518ebe6c54ca899869e16
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74828842"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75751626"
 ---
-Následující omezení platí do služby Azure Backup.
-
-| **Omezení** | **Výchozí** |
-| --- | --- |
-| Servery nebo počítače, které je možné zaregistrovat v trezoru. | Windows Server/klient Windows/System Center Data Protection Manager: 50. <br/><br/> Virtuální počítače IaaS: 1 000.  |
-| Velikost zdroje dat v úložišti trezoru. |54 400 – maximum GB Limit se nedá použít pro zálohování virtuálního počítače IaaS. |
-| Trezory služby Backup v předplatném Azure. |500 trezorů na oblast |
-| Naplánujte denní zálohy. |Windows Server/klient: tři dny.<br/> System Center DPM: dva dny. <br/> Virtuální počítače IaaS: jednou denně.  |
-| Datové disky připojené k virtuálnímu počítači Azure pro zálohování. | 16 |
-| Jednotlivý datový disk připojený k virtuálnímu počítači Azure, který se má zálohovat| 32 TB|
+Shrnutí Azure Backup podpory nastavení a omezení najdete v tématu [Azure Backup podpora matic](https://docs.microsoft.com/azure/backup/backup-support-matrix).

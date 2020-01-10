@@ -1,19 +1,19 @@
 ---
 title: Opětovné sestavení indexu vyhledávání
 titleSuffix: Azure Cognitive Search
-description: Můžete přidat nové prvky, aktualizovat existující prvky nebo dokumenty nebo odstranit zastaralé dokumenty v rámci úplného opětovného sestavení nebo částečně přírůstkového indexování a aktualizovat index služby Azure Kognitivní hledání.
+description: Můžete přidat nové prvky, aktualizovat existující prvky nebo dokumenty nebo odstranit zastaralé dokumenty v rámci úplného opětovného sestavení nebo částečného indexování a aktualizovat index služby Azure Kognitivní hledání.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b14c153f52e0427e289afeccdfd22d6510e4ace1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 18cfa3c6fde399ea61e09c5788c72ce20e5570e8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112968"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754386"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Postup opětovného sestavení indexu v Azure Kognitivní hledání
 
@@ -36,7 +36,7 @@ Na rozdíl od opětovného sestavení, které přebírají index v režimu offli
 
 Jakékoli další úpravy lze provádět bez vlivu na existující fyzické struktury. Konkrétně následující změny *nevyžadují opětovné* sestavení indexu:
 
-+ Přidat nové pole
++ Přidání nového pole
 + Nastavení navýšení **atributu v** existujícím poli
 + Nastavení **searchAnalyzer** pro existující pole
 + Přidání nové definice analyzátoru v indexu
@@ -93,7 +93,7 @@ Při načtení indexu se převedený index každého pole vyplní všemi jedine�
 
 Můžete zahájit dotazování indexu, jakmile se načte první dokument. Pokud znáte ID dokumentu, [vyhledávací dokument REST API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) vrátí konkrétní dokument. Pro širší testování byste měli počkat, až se index zcela načte, a pak použít dotazy k ověření kontextu, který očekáváte, abyste viděli.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 + [Přehled indexeru](search-indexer-overview.md)
 + [Indexování velkých datových sad ve velkém měřítku](search-howto-large-index.md)

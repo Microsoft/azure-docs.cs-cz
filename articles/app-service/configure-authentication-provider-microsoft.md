@@ -5,12 +5,12 @@ ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.topic: article
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: f9158a4094b7d2ec148c2cae85decb3ad959b7c3
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 12e16cc7e17ae217a334fe25d71672ab2cafa5a8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671920"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768431"
 ---
 # <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>Konfigurace aplikace App Service pro používání přihlášení k účtu Microsoft
 
@@ -22,7 +22,7 @@ V tomto tématu se dozvíte, jak nakonfigurovat Azure App Service pro použití 
 
 1. V Azure Portal přejít na [**Registrace aplikací**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) . V případě potřeby se přihlaste pomocí účet Microsoft.
 1. Vyberte **Nová registrace**a pak zadejte název aplikace.
-1. V v **identifikátorech URI pro přesměrování**vyberte **Web**a pak zadejte `https://<app-domain-name>/.auth/login/microsoftaccount/callback supply the endpoint for your application`. Nahraďte *\<App-Domain-name >* názvem domény vaší aplikace.  Například, `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`. Nezapomeňte použít schéma HTTPS v adrese URL.
+1. V v **identifikátorech URI pro přesměrování**vyberte **Web**a pak zadejte `https://<app-domain-name>/.auth/login/microsoftaccount/callback`. Nahraďte *\<App-Domain-name >* názvem domény vaší aplikace.  Například, `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`. Nezapomeňte použít schéma HTTPS v adrese URL.
 
 1. Vyberte **Zaregistrovat**.
 1. Zkopírujte **ID aplikace (klienta)** . Budete ho potřebovat později.
@@ -30,7 +30,7 @@ V tomto tématu se dozvíte, jak nakonfigurovat Azure App Service pro použití 
 1. Zkopírujte hodnotu, která se zobrazí na stránce **certifikáty & tajných** kódů. Po opuštění stránky se znovu nezobrazí.
 
     > [!IMPORTANT]
-    > Heslo je důležité bezpečnostní pověření. Nesdílejte heslo s kýmkoli ani ho distribuujte v klientské aplikaci.
+    > Hodnota tajného klíče klienta (heslo) je důležité bezpečnostní pověření. Nesdílejte heslo s kýmkoli ani ho distribuujte v klientské aplikaci.
 
 ## <a name="secrets"> </a>Přidání informací o účtu Microsoft do aplikace App Service
 
@@ -46,11 +46,11 @@ V tomto tématu se dozvíte, jak nakonfigurovat Azure App Service pro použití 
    > [!CAUTION]
    > Omezení přístupu tímto způsobem se vztahuje na všechna volání aplikace, která nemusí být žádoucí pro aplikace, které mají veřejně dostupnou domovskou stránku, stejně jako v mnoha aplikacích s jednou stránkou. Pro takové aplikace může být vhodnější použití **anonymních požadavků (žádná akce)** , aby aplikace ručně spouštěla ověřování. Další informace najdete v tématu [tok ověřování](overview-authentication-authorization.md#authentication-flow).
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 Nyní jste připraveni použít účet Microsoft k ověřování ve vaší aplikaci.
 
-## <a name="related-content"></a>Další kroky
+## <a name="related-content"> </a>Další kroky
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 

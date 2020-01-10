@@ -1,6 +1,6 @@
 ---
-title: Kurz – řízení virtuálních počítačů Azure pomocí Azure CLI
-description: V tomto kurzu zjistíte, jak pomocí Azure CLI spravovat virtuální počítače Azure s využitím řízení přístupu na základě role, zásad, zámků a značek.
+title: Kurz – Správa virtuálních počítačů pomocí rozhraní příkazového řádku
+description: V tomto kurzu se naučíte používat rozhraní příkazového řádku Azure ke správě virtuálních počítačů Azure pomocí RBAC, policies, zámků a značek.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: e9475f4226a65ad06d45170e0ab802c6cdb79d8f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 97003699f8dbaa028ff7d4739a4f0576a8790716
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034532"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749920"
 ---
-# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>Kurz: Řízení virtuálních počítačů s Linuxem pomocí Azure CLI
+# <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Kurz: informace o správě virtuálních počítačů s Linux pomocí Azure CLI
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
@@ -42,7 +42,7 @@ az group create --name myResourceGroup --location "East US"
 
 V tuto chvíli je skupina prostředků prázdná.
 
-## <a name="role-based-access-control"></a>Řízení přístupu na základě role
+## <a name="role-based-access-control"></a>Řízení přístupu založené na rolích
 
 Potřebujete zajistit, aby uživatelé ve vaší organizaci měli správnou úroveň přístupu k těmto prostředkům. Nechcete uživatelům dát neomezený přístup, ale zároveň jim potřebujete umožnit dělat svou práci. Pomocí [řízení přístupu na základě rolí](../../role-based-access-control/overview.md) můžete spravovat oprávnění uživatelů k provádění určitých akcí v daném oboru.
 

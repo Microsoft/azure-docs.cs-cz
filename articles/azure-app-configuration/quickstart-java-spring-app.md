@@ -1,17 +1,21 @@
 ---
 title: Rychlý Start, kde se dozvíte, jak používat konfiguraci aplikací Azure
 description: Rychlý Start pro použití konfigurace aplikací Azure s aplikacemi pro pružinu v jazyce Java
-author: yidon
-ms.author: yidon
+services: azure-app-configuration
+documentationcenter: ''
+author: lisaguthrie
+manager: maiye
+editor: ''
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
-ms.openlocfilehash: c4fee6c61ba58a8a1629b5c98d7eebdadfdf1a89
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.author: lcozzens
+ms.openlocfilehash: 172fe646b294ca511a22128094c56172c4268018
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495203"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750281"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace s pružinou v jazyce Java pomocí konfigurace aplikace Azure
 
@@ -46,7 +50,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
    * Vygenerujte projekt **Maven** pomocí **jazyka Java**.
    * Zadejte verzi pro **jarní spuštění** , která je rovna nebo větší než 2,0.
    * Zadejte název **skupiny** a **artefakty** pro vaši aplikaci.
-   * Přidejte **webovou** závislost.
+   * Přidejte **webovou závislost pružiny** .
 
 3. Po zadání předchozích možností vyberte **generovat projekt**. Po zobrazení výzvy Stáhněte projekt do cesty na místním počítači.
 
@@ -60,13 +64,17 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M5</version>
+        <version>1.1.0</version>
     </dependency>
     ```
 
 3. V adresáři balíčku aplikace vytvořte nový soubor Java s názvem *MessageProperties. Java* . Přidejte následující řádky:
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.boot.context.properties.ConfigurationProperties;
+
     @ConfigurationProperties(prefix = "config")
     public class MessageProperties {
         private String message;
@@ -84,6 +92,11 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 4. V adresáři balíčku aplikace vytvořte nový soubor Java s názvem *HelloController. Java* . Přidejte následující řádky:
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.web.bind.annotation.GetMapping;
+    import org.springframework.web.bind.annotation.RestController;
+
     @RestController
     public class HelloController {
         private final MessageProperties properties;
@@ -102,11 +115,13 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 5. Otevřete soubor hlavní aplikace v jazyce Java a přidejte `@EnableConfigurationProperties` pro povolení této funkce.
 
     ```java
+    import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
     @SpringBootApplication
     @EnableConfigurationProperties(MessageProperties.class)
-    public class AzureConfigApplication {
+    public class DemoApplication {
         public static void main(String[] args) {
-            SpringApplication.run(AzureConfigApplication.class, args);
+            SpringApplication.run(DemoApplication.class, args);
         }
     }
     ```
@@ -125,11 +140,13 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
     mvn clean package
     mvn spring-boot:run
     ```
+
 2. Po spuštění aplikace použijte k otestování aplikace *kudrlinkou* . Příklad:
 
       ```CLI
       curl -X GET http://localhost:8080/
       ```
+
     Zobrazí se zpráva, kterou jste zadali v úložišti konfigurace aplikace.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

@@ -1,23 +1,23 @@
 ---
 title: Geografické pokrytí v Azure Maps | Microsoft Docs
-description: Přečtěte si o pokrytí geografického kódování v Azure Maps
+description: Přečtěte si o pokrytí geografické kódování v mapách Microsoft Azure a o tom, ve kterých oblastech a zemích můžete Azure Maps geografického kódu použít.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 03/22/2019
+ms.date: 12/31/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 999e545d49b11eef84d1a03401eb28cde36e82af
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 4def947c13588cde57b55aeaa9d958eafa923093
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991372"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768805"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps pokrytí geografické kódování
 
-Když vyhledáte umístění s Azure Maps, vyhledávací služba převezme hledané výrazy a vrátí souřadnice zeměpisné šířky a délky, což je proces s názvem geografické kódování. Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti a země. V tomto článku zjistíte, jaký druh umístění můžete spolehlivě Hledat v každé oblasti. 
+Když vyhledáte umístění pomocí Azure Maps, vyhledávací služba, například [získat adresu hledání](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress), převezme hledané výrazy a vrátí souřadnice zeměpisné šířky a délky. Tento proces se nazývá geografické kódování. Azure Maps ale nemá stejnou úroveň informací a přesnost pro všechny oblasti a země. V tomto článku zjistíte, jaký druh umístění můžete spolehlivě Hledat v každé oblasti. 
 
 Schopnost geografického kódu v zemi nebo oblasti je závislá na pokrytí dat a přesnosti geografického kódování ve službě geografické kódování. Následující kategorizace se používají k určení úrovně podpory geografického kódování v každé zemi nebo oblasti.
 * **Adresované body** – data adres se dají přeložit na souřadnici zeměpisné šířky a délky v rámci adresního pozemku (hranice vlastnosti). Někdy označované jako "Rooftop". Toto je nejvyšší úroveň přesnosti, která je k dispozici pro adresy. 
@@ -72,15 +72,15 @@ Schopnost geografického kódu v zemi nebo oblasti je závislá na pokrytí dat 
 | Svatý Bartoloměj                                    |                 |                |       ✓      |      ✓     |          ✓         |
 | Svatý Kryštof a Nevis                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Svatá Lucie                                         |                 |                |              |      ✓     |          ✓         |
-| Svatý Martin                                        |                 |                |       ✓      |      ✓     |          ✓         |
+| Svatý Martin (Francie)                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint-Pierre a Miquelon                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Svatý Vincenc a Grenadiny                    |                 |                |              |      ✓     |          ✓         |
-| Svatý Martin                                        |                 |                |       ✓      |      ✓     |          ✓         |
+| Svatý Martin (Nizozemsko)                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Jižní Georgie a Jižní Sandwichovy ostrovy        |                 |                |              |      ✓     |          ✓         |
 | Surinam                                            |                 |                |              |      ✓     |          ✓         |
 | Trinidad a Tobago                                 |                 |                |       ✓      |      ✓     |          ✓         |
 | Menší odlehlé ostrovy Spojených států amerických                |                 |                |              |      ✓     |          ✓         |
-| USA Amerika                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| USA                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Uruguay                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Venezuela                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Britské Panenské ostrovy                              |                 |                |              |      ✓     |          ✓         |
@@ -95,11 +95,11 @@ Schopnost geografického kódu v zemi nebo oblasti je závislá na pokrytí dat 
 | Bangladéš                                          |                 |                |              |      ✓     |          ✓         |
 | Bhútán                                              |                 |                |              |      ✓     |          ✓         |
 | Britské území v Indickém oceánu                      |                 |                |              |      ✓     |          ✓         |
-| Sultanát                                              |        ✓        |                |       ✓      |      ✓     |          ✓         |
+| Brunej                                              |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Kambodža                                            |                 |                |              |      ✓     |          ✓         |
 | Čína                                               |                 |                |              |      ✓     |          ✓         |
 | Vánoční ostrov                                    |        ✓        |                |       ✓      |      ✓     |          ✓         |
-| Kokosové (Keelingovy) ostrovy                             |                 |                |              |      ✓     |          ✓         |
+| Kokosové ostrovy                             |                 |                |              |      ✓     |          ✓         |
 | Komory                                             |                 |                |              |      ✓     |          ✓         |
 | Cookovy ostrovy                                        |                 |                |              |      ✓     |          ✓         |
 | Fidži                                                |                  |                |              |      ✓     |          ✓        |
@@ -111,8 +111,8 @@ Schopnost geografického kódu v zemi nebo oblasti je závislá na pokrytí dat 
 | Japonsko                                               |                 |                |              |      ✓     |          ✓         |
 | Kiribati                                            |                 |                |              |      ✓     |          ✓         |
 | Korea                                         |                 |                |              |      ✓     |          ✓         |
-| Laoská                                                |                 |                |              |      ✓     |          ✓         |
-| Macao – zvláštní správní oblast                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Laos                                                |                 |                |              |      ✓     |          ✓         |
+| Macao – zvláštní administrativní oblast                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Malajsie                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Mikronésie                                          |                 |                |              |      ✓     |          ✓         |
 | Mongolsko                                            |                 |                |              |      ✓     |          ✓         |
@@ -121,14 +121,14 @@ Schopnost geografického kódu v zemi nebo oblasti je závislá na pokrytí dat 
 | Nová Kaledonie                                       |                 |                |              |      ✓     |          ✓         |
 | Nový Zéland                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Niue                                                |                 |                |              |      ✓     |          ✓         |
-| Ostrov Norfolk                                      |                 |                |              |      ✓     |          ✓         |
+| Norfolk                                      |                 |                |              |      ✓     |          ✓         |
 | Severní Korea                                         |                 |                |              |      ✓     |          ✓         |
 | Severní Mariany                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Pákistán                                            |                 |                |              |      ✓     |          ✓         |
 | Palau                                               |                 |                |              |      ✓     |          ✓         |
-| Papua – Nová Guinea                                    |                 |                |              |      ✓     |          ✓         |
+| Papua-Nová Guinea                                    |                 |                |              |      ✓     |          ✓         |
 | Filipíny                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Pitcairnovy                                            |                 |                |              |      ✓     |          ✓         |
+| Pitcairn                                            |                 |                |              |      ✓     |          ✓         |
 | Samoa                                               |                 |                |              |      ✓     |          ✓         |
 | Senkaku ostrovy                                     |        ✓        |                |              |      ✓     |          ✓         |
 | Singapur                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -198,7 +198,7 @@ Schopnost geografického kódu v zemi nebo oblasti je závislá na pokrytí dat 
 | \+ Azory a Madeira                                 |                 |                |       ✓      |      ✓     |          ✓         |
 | Rumunsko                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Ruská federace                                  |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Síť San Marino                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| San Marino                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Srbsko                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Slovensko                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Slovinsko                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -232,7 +232,7 @@ Schopnost geografického kódu v zemi nebo oblasti je závislá na pokrytí dat 
 | Cabo Verde                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Středoafrická republika                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Čad                                                |                 |                |       ✓      |      ✓     |          ✓         |
-| Svahilština                                               |                 |                |       ✓      |      ✓     |          ✓         |
+| Kongo                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Pobřeží slonoviny                                       |                 |                |       ✓      |      ✓     |          ✓         |
 | Demokratická republika Kongo                    |                 |                |       ✓      |      ✓     |          ✓         |
 | Džibutsko                                            |                 |                |       ✓      |      ✓     |          ✓         |
@@ -246,7 +246,7 @@ Schopnost geografického kódu v zemi nebo oblasti je závislá na pokrytí dat 
 | Ghana                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Guinea                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Guinea-Bissau                                       |                 |                |       ✓      |      ✓     |          ✓         |
-| Írán                                                |                 |                |              |      ✓     |          ✓         |
+| Iran                                                |                 |                |              |      ✓     |          ✓         |
 | Irák                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Izrael                                              |        ✓        |       ✓        |              |      ✓     |          ✓         |
 | Jordánsko                                              |        ✓        |       ✓        |       ✓      |      ✓     |          ✓         |
@@ -277,7 +277,7 @@ Schopnost geografického kódu v zemi nebo oblasti je závislá na pokrytí dat 
 | Svatá Helena                                        |                 |                |              |      ✓     |          ✓         |
 | Saúdská Arábie                                        |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Senegal                                             |                 |                |       ✓      |      ✓     |          ✓         |
-| Seychel                                          |                 |                |       ✓      |      ✓     |          ✓         |
+| Seychely                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Sierra Leone                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Somálsko                                             |                 |                |              |      ✓     |          ✓         |
 | Jihoafrická republika                                        |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 13c58ddf5f51e5b63d2dbe425b3ec795e21dabb8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5a45b9e3ba59a91f580ce0f2dc180adf5d20c87d
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810356"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754052"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Průvodce postupy pro Azure SQL Database fondy instancí (Preview)
 
@@ -26,7 +26,7 @@ Tento článek poskytuje podrobné informace o tom, jak vytvářet a spravovat [
 
 V následující tabulce jsou uvedeny dostupné operace týkající se fondů instancí a jejich dostupnosti v Azure Portal a prostředí PowerShell.
 
-|Příkaz|portál Azure|PowerShell|
+|Příkaz|Portál Azure|PowerShell|
 |:---|:---|:---|
 |Vytvoření fondu instancí|Ne|Ano|
 |Aktualizovat fond instancí (omezený počet vlastností)|Ne |Ano |
@@ -92,11 +92,17 @@ Následující omezení platí pro fondy instancí:
 
 - Ve verzi Public Preview jsou k dispozici pouze Pro obecné účely a Gen5.
 - Název fondu může obsahovat jenom malá písmena, číslice a spojovníky a nemůže začínat spojovníkem.
-- K získání ID podsítě použijte `Get-AzVirtualNetworkSubnetConfig -Name "miPoolSubnet" -VirtualNetwork $virtualNetwork`.
 - Pokud chcete použít AHB (Zvýhodněné hybridní využití Azure), použije se na úrovni fondu instancí. Typ licence můžete nastavit během vytváření fondu nebo ho aktualizovat kdykoli po vytvoření.
 
 > [!IMPORTANT]
 > Nasazení fondu instancí je dlouhodobě běžící operace, která trvá přibližně 4,5 hodin.
+
+Postup získání parametrů sítě:
+
+```powershell
+$virtualNetwork = Get-AzVirtualNetwork -Name "miPoolVirtualNetwork" -ResourceGroupName "myResourceGroup"
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name "miPoolSubnet" -VirtualNetwork $virtualNetwork
+```
 
 Vytvoření fondu instancí:
 
@@ -104,7 +110,7 @@ Vytvoření fondu instancí:
 $instancePool = New-AzSqlInstancePool `
   -ResourceGroupName "myResourceGroup" `
   -Name "mi-pool-name" `
-  -SubnetId "/subscriptions/subscriptionID/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/miPoolVirtualNetwork/subnets/miPoolSubnet" `
+  -SubnetId $subnet.Id `
   -LicenseType "LicenseIncluded" `
   -VCore 80 `
   -Edition "GeneralPurpose" `

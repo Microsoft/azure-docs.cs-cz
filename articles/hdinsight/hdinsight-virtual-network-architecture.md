@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 0a1139f7bf1711a5f6d980e67a8a9027bfd3af52
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b3f622b360f565ef5b16d5376cb1aa2498655017
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665325"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744747"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Architektura virtuální sítě Azure HDInsight
 
@@ -31,6 +31,16 @@ Clustery Azure HDInsight mají různé typy virtuálních počítačů nebo uzl�
 | Uzel oblasti | Pro typ clusteru HBA uzel region (také označovaný jako datový uzel) spouští server oblasti. Servery oblastí slouží a spravují část dat spravovaných pomocí adaptérů HBA. Uzly oblasti je možné přidat nebo odebrat z clusteru, abyste mohli škálovat výpočetní funkce a spravovat náklady.|
 | Uzel Nimbus | Pro typ clusteru neNimbus poskytuje uzel funkce podobné hlavnímu uzlu. Uzel Nimbus přiřazuje úlohy jiným uzlům v clusteru prostřednictvím Zookeeper, který koordinuje spouštění topologií s více průchody. |
 | Uzel vedoucího | Pro typ clusteru s více podprocesy provede uzel Správce pokyny poskytované uzlem Nimbus k provedení požadovaného zpracování. |
+
+## <a name="resource-naming-conventions"></a>Zásady vytváření názvů prostředků
+
+Při adresování uzlů v clusteru prosím použijte plně kvalifikované názvy domény (FQDN). Plně kvalifikované názvy domény pro různé typy uzlů v clusteru můžete získat pomocí [rozhraní Ambari API](hdinsight-hadoop-manage-ambari-rest-api.md). 
+
+Tyto plně kvalifikované názvy domén budou mít `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net`formuláře.
+
+`<node-type-prefix>` bude *HN* pro hlavních, *dolů* pro uzly pracovních procesů a *zn* pro uzly Zookeeper.
+
+Pokud potřebujete jenom název hostitele, použijte jenom první část plně kvalifikovaného názvu domény: `<node-type-prefix><instance-number>-<abbreviated-clustername>`
 
 ## <a name="basic-virtual-network-resources"></a>Základní prostředky virtuální sítě
 

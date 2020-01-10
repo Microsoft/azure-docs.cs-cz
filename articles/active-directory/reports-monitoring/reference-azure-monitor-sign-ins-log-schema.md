@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98157009b5a005d1d1f9efbe2f59bac1302cdb01
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5525f2f8ab4ef83ba9c3aeeff945bc9d875600d5
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014318"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748666"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Interpretujte schéma přihlašovacích protokolů služby Azure AD v Azure Monitor
 
@@ -145,7 +145,7 @@ Tento článek popisuje schéma protokolu přihlašování Azure Active Director
 
 | Název pole | Popis |
 |------------|-------------|
-| Čas | Datum a čas ve standardu UTC. |
+| Time | Datum a čas ve standardu UTC. |
 | ResourceId | Tato hodnota není mapována a můžete toto pole bezpečně ignorovat.  |
 | OperationName | Pro přihlášení je tato hodnota vždy *aktivita přihlášení*. |
 | OperationVersion | Verze REST API, kterou klient požaduje. |
@@ -163,11 +163,11 @@ Tento článek popisuje schéma protokolu přihlašování Azure Active Director
 | CallerIpAddress | IP adresa klienta, který odeslal požadavek. | 
 | CorrelationId | Volitelný identifikátor GUID, který je předán klientem. Tato hodnota může pomoct sladit operace na straně klienta s operacemi na straně serveru a je užitečná při sledování protokolů, které zahrnují služby. |
 | Identita | Identita z tokenu, který byl předložen při podání žádosti. Může to být uživatelský účet, systémový účet nebo instanční objekt. |
-| Level | Poskytuje typ zprávy. Pro audit je vždy *informativní*. |
+| Úroveň | Poskytuje typ zprávy. Pro audit je vždy *informativní*. |
 | Umístění | Poskytuje umístění přihlašovací aktivity. |
 | Vlastnosti | Zobrazí seznam všech vlastností, které jsou spojeny s přihlášeními. Další informace najdete v tématu [Microsoft Graph Reference k rozhraní API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). Toto schéma používá pro účely čitelnosti stejné názvy atributů jako přihlašovací prostředek.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Interpretace schématu protokolů auditu ve službě Azure Monitor](reference-azure-monitor-audit-log-schema.md)
-* [Další informace o diagnostických protokolech Azure](../../azure-monitor/platform/resource-logs-overview.md)
+* [Další informace o diagnostických protokolech Azure](../../azure-monitor/platform/platform-logs-overview.md)

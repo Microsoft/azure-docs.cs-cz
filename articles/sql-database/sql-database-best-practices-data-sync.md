@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 75fe07dc9847ae32248688bc20fac01e74c7b26a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ee929fa227cb105b73bc929c13a768aabef37ce3
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821855"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771679"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Osvědčené postupy pro synchronizaci dat SQL 
 
@@ -39,7 +39,7 @@ Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několi
 
 ### <a name="database-accounts-with-least-required-privileges"></a>Účty databáze s minimálními požadovanými oprávněními
 
--   **Pro nastavení synchronizace**. Vytvořit nebo změnit tabulku; ALTER DATABASE; Vytvořit proceduru; Vybrat/změnit schéma; Vytvořte uživatelsky definovaný typ.
+-   **Pro nastavení synchronizace**. Vytvořit nebo Alter Table; Příkaz ALTER Database; Vytvořit proceduru; Vybrat / Alter schématu; Vytvořte uživatelsky definovaný typ.
 
 -   **Pro průběžnou synchronizaci**. Výběr/vložení/aktualizace/odstranění u tabulek, které jsou vybrány pro synchronizaci a pro synchronizaci metadat a sledovacích tabulek; Oprávnění EXECUTE pro uložené procedury vytvořené službou; Oprávnění EXECUTE pro uživatelsky definované typy tabulek.
 
@@ -116,7 +116,7 @@ Aby se minimalizovala latence, udržujte databázi centra blízkou největší k
 
 Použijte předchozí pokyny ke komplexním konfiguracím skupin synchronizace, jako jsou ty, které jsou kombinací podnikových scénářů a scénářů cloudu do cloudu.
 
-## <a name="sync"></a>Sync
+## <a name="sync"></a>Synchronizace
 
 ### <a name="avoid-a-slow-and-costly-initial-synchronization"></a>Vyhněte se pomalé a nákladné počáteční synchronizaci
 
@@ -218,6 +218,14 @@ Místo toho nejprve odeberte databázi ze skupiny synchronizace. Pak nasaďte zm
 
 Pokud se pokusíte odebrat databázi a pak upravit skupinu synchronizace, aniž byste nejdřív nasadili jednu ze změn, jedna nebo jiná operace se nezdaří. Rozhraní portálu může být nekonzistentní. Pokud k tomu dojde, aktualizujte stránku, aby obnovila správný stav.
 
+### <a name="avoid-schema-refresh-timeout"></a>Vyhnout se časovému limitu aktualizace schématu
+
+Pokud máte komplexní schéma, které se má synchronizovat, můžete při aktualizaci schématu zaznamenat "časový limit operace", pokud má databáze metadat synchronizace nižší SKU (příklad: Basic). 
+
+#### <a name="solution"></a>Řešení
+
+Pokud chcete tento problém zmírnit, nahorizontální navýšení kapacity databáze metadat synchronizace můžete mít vyšší SKU, například S3. 
+
 ## <a name="next-steps"></a>Další kroky
 Další informace o Synchronizace dat SQL najdete v tématech:
 
@@ -227,7 +235,7 @@ Další informace o Synchronizace dat SQL najdete v tématech:
     - S využitím PowerShellu
         -  [Synchronizace mezi několika databázemi Azure SQL pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)
--   Agent synchronizace dat – [Agent synchronizace dat pro Azure synchronizace dat SQL](sql-database-data-sync-agent.md)
+-   Agent – synchronizace dat [Data synchronizovat Agent pro synchronizaci dat Azure SQL](sql-database-data-sync-agent.md)
 -   Monitorování – [monitorování synchronizace dat SQL pomocí protokolů Azure monitor](sql-database-sync-monitor-oms.md)
 -   Řešení potíží – [řešení potíží s Azure synchronizace dat SQL](sql-database-troubleshoot-data-sync.md)
 -   Aktualizace schématu synchronizace

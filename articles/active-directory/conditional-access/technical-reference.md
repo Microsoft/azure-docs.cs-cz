@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1023583b5527e4d565580e8f094dc2f68d38f4ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 78f148f435edee16805cc8b0ae78652a17826727
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424792"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768144"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz na nastavení Azure Active Directory podmíněného přístupu
 
@@ -29,8 +29,6 @@ V tomto článku najdete informace o podpoře pro následující možnosti konfi
 - Podmínka klientských aplikací
 - Požadavek na schválenou aplikaci klienta
 
-Pokud se nejedná o informace, které hledáte, ponechte prosím na konci tohoto článku komentář.
-
 ## <a name="cloud-apps-assignments"></a>Přiřazení cloudových aplikací
 
 Pomocí zásad podmíněného přístupu můžete řídit, jak uživatelé přistupují k vašim [cloudovým aplikacím](conditions.md#cloud-apps-and-actions). Když konfigurujete zásady podmíněného přístupu, musíte vybrat aspoň jednu cloudovou aplikaci. 
@@ -41,6 +39,7 @@ Pomocí zásad podmíněného přístupu můžete řídit, jak uživatelé přis
 
 Zásady podmíněného přístupu můžete přiřadit k těmto cloudovým aplikacím od Microsoftu:
 
+- Office 365 (Preview)
 - Azure Analysis Services
 - Azure DevOps
 - Azure SQL Database a datový sklad – další [informace](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
@@ -73,6 +72,22 @@ Zásady podmíněného přístupu můžete přiřadit k těmto cloudovým aplika
 - Online Skype pro firmy
 - Virtuální privátní síť (VPN)
 - Ochrana ATP v programu Windows Defender
+
+### <a name="office-365-preview"></a>Office 365 (Preview)
+
+Office 365 poskytuje cloudové služby pro produktivitu a spolupráci, jako je Exchange, SharePoint a Microsoft Teams. Cloudové služby Office 365 jsou integrovány, aby bylo zajištěno hladké a spolupracující prostředí. Aplikace Office 365 (Preview) umožňuje zaměřit se na tyto služby najednou. Doporučujeme použít novou aplikaci Office 365 (Preview) místo cílení na jednotlivé cloudové aplikace, jako je Office 365 Exchange Online a Office 365 SharePoint Online, aby nedocházelo k problémům, které by mohly nastat kvůli nekonzistentním zásadám a závislostem služeb.
+
+Klíčové aplikace, které jsou zahrnuté v klientské aplikaci Office 365 (Preview):
+
+- Office 365 Exchange Online
+- Office 365 SharePoint Online
+- Microsoft Teams
+- Office 365 Yammer
+- Portál Office
+- Microsoft Forms
+- Microsoft Power automatizuje
+- Microsoft Planner
+- Microsoft PowerApps
 
 ### <a name="other-applications"></a>Další aplikace
 

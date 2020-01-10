@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: b101fd30ddbdbf0f8fdf6e02394cb10b9af5f4b0
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: a5ed91cef6e49fcb71c35f2262479be45a018651
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666359"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754303"
 ---
 # <a name="threat-detection-for-vms-and-servers-in-azure-security-center"></a>Detekce hrozeb pro virtuální počítače a servery v Azure Security Center
 
@@ -41,7 +41,7 @@ Azure Security Center se integruje se službami Azure za účelem monitorování
 
     Pomocí analýzy paměti ale můžete zjistit tento druh útoku. Díky analýze paměti ve výpisu stavu systému může Security Center detekovat techniky, které útok používá. Útok se například může pokusit zneužít ohrožení zabezpečení softwaru, přistupovat k důvěrným datům a nenápadně uchovat v napadeném počítači. Security Center to funguje s minimálním dopadem na výkon hostitelů.
 
-    Seznam výstrah analýzy výpisu stavu systému najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-crashdump).
+    Podrobnosti o výstrahách analýzy výpisu stavu systému najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-windows).
 
 * **Detekce** <a name="windows-fileless"></a> útoků typu soubor – společné útoky pomocí souborů, které cílí na vaše koncové body, jsou běžné. Aby nedocházelo k detekci, útoky bez souborů vkládají do paměti škodlivá datová data. V paměti napadených procesů a provádění široké škály škodlivých aktivit může dojít k trvalému uložení datových částí.
 
@@ -49,7 +49,7 @@ Azure Security Center se integruje se službami Azure za účelem monitorování
 
     Najde důkazy o zneužití, vkládání kódu a spuštění škodlivých datových částí. Detekce útoků bez souborů generuje podrobné výstrahy zabezpečení, které urychlují jejich třídění, korelace a dobu odezvy za provozu. Tento přístup doplňuje řešení EDR založené na událostech a zajišťuje větší pokrytí detekce.
 
-    Seznam výstrah detekce útoků bez souborů najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-filelessattackdetect).
+    Podrobnosti o výstrahách detekce útoků bez souborů najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-windows).
 
 > [!NOTE]
 > Výstrahy Windows můžete simulovat stažením [Azure Security Center PlayBook: výstrahy zabezpečení](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046).

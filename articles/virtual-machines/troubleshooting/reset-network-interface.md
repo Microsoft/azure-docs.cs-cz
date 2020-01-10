@@ -12,16 +12,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: 1c49c6221e9b310a1b14a4e06a296befc7f6da4d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a809cabd2ace1b18af6c93dc54348137e9ba5750
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111719"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749902"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Postup resetování síťového rozhraní pro virtuální počítač Azure s Windows 
-
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Tento článek popisuje, jak resetovat síťové rozhraní pro virtuální počítače Azure s Windows za účelem řešení problémů, když se nemůžete připojit k Microsoft Azure virtuálnímu počítači s Windows (VM) po:
 
@@ -47,7 +45,7 @@ Tento článek popisuje, jak resetovat síťové rozhraní pro virtuální poč�
 8. Virtuální počítač se restartuje a Inicializuje novou síťovou kartu pro systém.
 9.  Zkuste k počítači protokol RDP. Pokud chcete, můžete privátní IP adresu v případě úspěchu změnit zpátky na původní. V opačném případě ji můžete zachovat. 
 
-#### <a name="use-azure-powershell"></a>Použití Azure Powershell
+#### <a name="use-azure-powershell"></a>Použití Azure PowerShellu
 
 1. Ujistěte se, že máte nainstalovanou [nejnovější Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
 2. Otevřete relaci Azure PowerShell se zvýšenými oprávněními (Spustit jako správce). Spusťte následující příkazy:
@@ -88,7 +86,7 @@ K resetování síťového rozhraní použijte tento postup:
 8.  Virtuální počítač se restartuje a Inicializuje novou síťovou kartu pro systém.
 9.  Zkuste k počítači protokol RDP. V případě úspěchu můžete privátní IP adresu obnovit zpátky na původní.  
 
-#### <a name="use-azure-powershell"></a>Použití Azure Powershell
+#### <a name="use-azure-powershell"></a>Použití Azure PowerShellu
 
 1. Ujistěte se, že máte nainstalovanou [nejnovější Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) .
 2. Otevřete relaci Azure PowerShell se zvýšenými oprávněními (Spustit jako správce). Spusťte následující příkazy:
@@ -116,7 +114,7 @@ K resetování síťového rozhraní použijte tento postup:
 ## <a name="delete-the-unavailable-nics"></a>Odstranění nedostupných síťových karet
 Po provedení vzdálené plochy k počítači je nutné odstranit staré síťové karty, aby nedocházelo k potenciálním potížím:
 
-1.  Otevřete Device Manager.
+1.  Spusťte Správce zařízení.
 2.  Vyberte **zobrazit** > **Zobrazit skrytá zařízení**.
 3.  Vyberte **síťové adaptéry**. 
 4.  Vyhledejte adaptéry s názvem Microsoft Hyper-V síťový adaptér.

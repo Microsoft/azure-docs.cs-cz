@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/22/2019
+ms.date: 1/8/2020
 ms.author: sutalasi
-ms.openlocfilehash: 09cd814ade25be438a17b83fb73e74b89c14e22f
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 9fe3b4c0b7acc9c1e980d5885043d30503c211c4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954209"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754496"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>O sítích v zotavení po havárii virtuálního počítače Azure
 
@@ -55,25 +55,26 @@ login.microsoftonline.com | Vyžaduje se pro autorizaci a ověřování adres UR
 
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>Odchozí připojení pro rozsahy IP adres
 
-Pokud používáte proxy server brány firewall založený na protokolu IP nebo NSG pravidla pro řízení odchozího připojení, tyto rozsahy IP adres musí být povoleny.
+Pokud používáte proxy server brány firewall založený na protokolu IP nebo NSG k řízení odchozího připojení, musí být tyto rozsahy IP adres povoleny.
 
 - Všechny rozsahy IP adres, které odpovídají účtům úložiště ve zdrojové oblasti
     - Vytvořte pravidlo NSG založené na [značce služby úložiště](../virtual-network/security-overview.md#service-tags) pro zdrojovou oblast.
     - Povolte tyto adresy, aby bylo možné do účtu úložiště mezipaměti zapsat data z virtuálního počítače.
 - Vytvoření [značky služby Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) na základě pravidel skupiny zabezpečení sítě umožňující přístup ke všem IP adresám v odpovídající službě AAD
     - Pokud do Azure Active Directory (AAD) se přidají nové adresy v budoucnu, musíte vytvořit nová pravidla skupiny zabezpečení sítě.
-- Site Recovery IP adresy koncového bodu služby – k dispozici v [souboru XML](https://aka.ms/site-recovery-public-ips) a závisí na cílovém umístění. 
+- Vytvořte pravidlo NSG na základě značky služby EventsHub pro cílovou oblast a umožněte přístup Site Recovery monitorování.
+- Vytvořte pravidlo NSG na základě značky služby AzureSiteRecovery, které umožní přístup k Site Recovery službě v libovolné oblasti.
 - Doporučujeme, abyste vytvořili požadovaná pravidla NSG na NSG testu a ověřili, že neexistují žádné problémy předtím, než vytvoříte pravidla na produkčním NSG.
 
 
-Site Recovery rozsahy IP adres jsou následující:
+Pokud upřednostňujete použití Site Recovery rozsahy IP adres (nedoporučujeme), přečtěte si následující tabulku:
 
    **Cíl** | **Site Recovery IP** |  **Site Recovery monitorování IP adresy**
    --- | --- | ---
    Východní Asie | 52.175.17.132 | 13.94.47.61
    Jihovýchodní Asie | 52.187.58.193 | 13.76.179.223
-   Střed Indie | 52.172.187.37 | 104.211.98.185
-   Indie – jih | 52.172.46.220 | 104.211.224.190
+   Střední Indie | 52.172.187.37 | 104.211.98.185
+   Jižní Indie | 52.172.46.220 | 104.211.224.190
    Středoseverní USA | 23.96.195.247 | 168.62.249.226
    Severní Evropa | 40.69.212.238 | 52.169.18.8
    Západní Evropa | 52.166.13.64 | 40.68.93.145
@@ -81,33 +82,33 @@ Site Recovery rozsahy IP adres jsou následující:
    Západní USA | 40.83.179.48 | 104.40.26.199
    Středojižní USA | 13.84.148.14 | 104.210.146.250
    Střední USA | 40.69.144.231 | 52.165.34.144
-   Východní USA 2 | 52.184.158.163 | 40.79.44.59
+   Východ USA 2 | 52.184.158.163 | 40.79.44.59
    Japonsko – východ | 52.185.150.140 | 138.91.1.105
    Japonsko – západ | 52.175.146.69 | 138.91.17.38
    Brazílie – jih | 191.234.185.172 | 23.97.97.36
    Austrálie – východ | 104.210.113.114 | 191.239.64.144
    Austrálie – jihovýchod | 13.70.159.158 | 191.239.160.45
-   Kanada – střed | 52.228.36.192 | 40.85.226.62
-   Kanada – východ | 52.229.125.98 | 40.86.225.142
+   Střední Kanada | 52.228.36.192 | 40.85.226.62
+   Východní Kanada | 52.229.125.98 | 40.86.225.142
    Středozápadní USA | 52.161.20.168 | 13.78.149.209
-   USA – západ 2 | 52.183.45.166 | 13.66.228.204
-   Spojené království – západ | 51.141.3.203 | 51.141.14.113
-   Velká Británie – jih | 51.140.43.158 | 51.140.189.52
-   Velká Británie – jih 2 | 13.87.37.4| 13.87.34.139
-   Velká Británie – sever | 51.142.209.167 | 13.87.102.68
-   Jižní Korea – střed | 52.231.28.253 | 52.231.32.85
-   Jižní Korea – jih | 52.231.198.185 | 52.231.200.144
+   Západní USA 2 | 52.183.45.166 | 13.66.228.204
+   Velká Británie – západ | 51.141.3.203 | 51.141.14.113
+   Spojené království – jih | 51.140.43.158 | 51.140.189.52
+   Spojené království – jih 2 | 13.87.37.4| 13.87.34.139
+   Spojené království – sever | 51.142.209.167 | 13.87.102.68
+   Korea – střed | 52.231.28.253 | 52.231.32.85
+   Korea – jih | 52.231.198.185 | 52.231.200.144
    Francie – střed | 52.143.138.106 | 52.143.136.55
    Francie – jih | 52.136.139.227 |52.136.136.62
    Austrálie – střed| 20.36.34.70 | 20.36.46.142
    Austrálie – střed 2| 20.36.69.62 | 20.36.74.130
    Jižní Afrika – západ | 102.133.72.51 | 102.133.26.128
    Jižní Afrika – sever | 102.133.160.44 | 102.133.154.128
-   USA (Gov) – Virginia | 52.227.178.114 | 23.97.0.197
-   US Gov – Iowa | 13.72.184.23 | 23.97.16.186
-   USA (Gov) – Arizona | 52.244.205.45 | 52.244.48.85
-   USA (Gov) – Texas | 52.238.119.218 | 52.238.116.60
-   US DoD – východ | 52.181.164.103 | 52.181.162.129
+   USA – Virginie | 52.227.178.114 | 23.97.0.197
+   USA – Iowa | 13.72.184.23 | 23.97.16.186
+   US Gov – Arizona | 52.244.205.45 | 52.244.48.85
+   US Gov – Texas | 52.238.119.218 | 52.238.116.60
+   Ministerstvo obrany USA – východ | 52.181.164.103 | 52.181.162.129
    US DoD – střed | 52.182.95.237 | 52.182.90.133
    Čína – sever | 40.125.202.254 | 42.159.4.151
    Čína – sever 2 | 40.73.35.193 | 40.73.33.230
@@ -137,11 +138,9 @@ Tento příklad ukazuje, jak nakonfigurovat NSG pravidla pro replikaci virtuáln
 
       ![aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
 
-3. Vytvořit odchozí pravidla HTTPS (443) pro Site Recovery IP adresy, které odpovídají cílovému umístění:
+3. Podobně jako u výše uvedených pravidel zabezpečení vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro "EventHub. CentralUS" na NSG, které odpovídá cílovému umístění. To umožňuje přístup k Site Recovery monitorování.
 
-   **Umístění** | **Site Recovery IP adresa** |  **IP adresa monitorování Site Recovery**
-    --- | --- | ---
-   Střední USA | 40.69.144.231 | 52.165.34.144
+4. Vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro AzureSiteRecovery na NSG. To umožňuje přístup ke službě Site Recovery v libovolné oblasti.
 
 ### <a name="nsg-rules---central-us"></a>Pravidla NSG – Střed USA
 
@@ -151,12 +150,9 @@ Tato pravidla jsou nutná, aby bylo možné replikaci z cílové oblasti do zdro
 
 2. Vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro Azureactivedirectory selhala na NSG.
 
-3. Vytvořit odchozí pravidla HTTPS (443) pro Site Recovery IP adresy, které odpovídají zdrojovému umístění:
+3. Podobně jako u výše uvedených pravidel zabezpečení vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro "EventHub. EastUS" na NSG, které odpovídá zdrojovému umístění. To umožňuje přístup k Site Recovery monitorování.
 
-   **Umístění** | **Site Recovery IP adresa** |  **IP adresa monitorování Site Recovery**
-    --- | --- | ---
-   Východní USA | 13.82.88.226 | 104.45.147.24
-
+4. Vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro AzureSiteRecovery na NSG. To umožňuje přístup ke službě Site Recovery v libovolné oblasti.
 
 ## <a name="network-virtual-appliance-configuration"></a>Konfigurace síťového virtuálního zařízení
 
@@ -175,7 +171,7 @@ V rámci virtuální sítě můžete vytvořit koncový bod síťové služby pr
 >[!NOTE]
 >Neomezovat přístup k virtuální síti pro účty úložiště používané pro ASR. Měli byste mít povolený přístup ze všech sítí.
 
-### <a name="forced-tunneling"></a>Vynucené tunelování
+### <a name="forced-tunneling"></a>Vynucené tunelové propojení
 
 Výchozí systémovou trasu Azure pro předponu adresy 0.0.0.0/0 můžete přepsat [vlastní trasou](../virtual-network/virtual-networks-udr-overview.md#custom-routes) a přesměrováním provozu virtuálního počítače do místního síťového virtuálního zařízení (síťové virtuální zařízení), ale tato konfigurace se nedoporučuje pro Site Recovery replikaci. Pokud používáte vlastní trasy, měli byste ve virtuální síti [vytvořit koncový bod služby virtuální sítě](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) pro úložiště, aby provoz replikace neopouští hranice Azure.
 

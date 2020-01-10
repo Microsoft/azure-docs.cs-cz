@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 12/04/2019
-ms.openlocfilehash: 5e840960c66f586882e64a655ddbfa078dae51ef
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 01/08/2019
+ms.openlocfilehash: eb181cbf6c647c816886f330502a9a46cb956dee
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646638"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763279"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Kurz: výuka a nasazení modelu z rozhraní příkazového řádku
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -213,7 +213,7 @@ Pokud chcete vytvořit výuku modelu, můžete zadat školicí data pomocí dato
 Chcete-li datovou sadu zaregistrovat pomocí souboru `dataset.json`, použijte následující příkaz:
 
 ```azurecli-interactive
-az ml dataset register -f dataset.json
+az ml dataset register -f dataset.json --skip-validation
 ```
 
 Výstup tohoto příkazu je podobný následujícímu formátu JSON:
@@ -368,6 +368,9 @@ Chcete-li nasadit model, použijte následující příkaz:
 az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aciDeploymentConfig.yml
 ```
 
+> [!NOTE]
+> Může se zobrazit upozornění týkající se selhání kontroly existence LocalWebservice. Tuto možnost můžete bez obav ignorovat, protože neprovádíte nasazení místní webové služby.
+
 Tento příkaz nasadí novou službu s názvem `myservice`s použitím verze 1 modelu, který jste předtím zaregistrovali.
 
 Soubor `inferenceConfig.yml` poskytuje informace o tom, jak provést odvození, jako je například vstupní skript (`score.py`) a závislosti softwaru. Další informace o struktuře tohoto souboru naleznete v tématu [schéma konfigurace odvození](reference-azure-machine-learning-cli.md#inference-configuration-schema). Další informace o vstupních skriptech najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md#prepare-to-deploy).
@@ -413,6 +416,13 @@ I když můžete vytvořit klientskou aplikaci pro volání koncového bodu, slu
 ```azurecli-interactive
 az ml service run -n myservice -d @testdata.json
 ```
+
+> [!TIP]
+> Pokud používáte PowerShell, použijte místo toho následující příkaz:
+>
+> ```powershell
+> az ml service run -n myservice -d `@testdata.json
+> ```
 
 Odpověď z příkazu je podobná `[ 3 ]`.
 

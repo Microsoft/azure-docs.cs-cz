@@ -7,15 +7,15 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 12/20/2019
-ms.openlocfilehash: 4c910fd72805ce8cb1e7baa6b4252d6b2192fe36
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: e3a8048d8bcb8bb737c511a8b8bb6b57f9e81403
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541514"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750979"
 ---
 # <a name="collect-azure-activity-log-with-legacy-settings"></a>Shromažďovat protokol aktivit Azure se staršími nastaveními
-[Protokol aktivit Azure](activity-logs-overview.md) je [protokol platformy](platform-logs-overview.md) , který poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo v Azure. Až do poslední doby jste vytvořili profil protokolu pro odesílání položek protokolu aktivit do [centra událostí nebo účtu úložiště](activity-log-export.md) a použili jste konektor pro jejich shromáždění do [Log Analytics pracovního prostoru](activity-log-collect.md). Tento článek popisuje rozdíl mezi metodami, jak pracovat se stávajícími verzemi nastavení a jak vymazat nastavení starší verze v článku Příprava pro nastavení diagnostiky.
+[Protokol aktivit Azure](platform-logs-overview.md) je [protokol platformy](platform-logs-overview.md) , který poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo v Azure. Až do poslední doby jste vytvořili profil protokolu pro odesílání položek protokolu aktivit do [centra událostí nebo účtu úložiště](activity-log-export.md) a použili jste konektor pro jejich shromáždění do [Log Analytics pracovního prostoru](activity-log-collect.md). Tento článek popisuje rozdíl mezi metodami, jak pracovat se stávajícími verzemi nastavení a jak vymazat nastavení starší verze v článku Příprava pro nastavení diagnostiky.
 
 
 ## <a name="differences-between-methods"></a>Rozdíly mezi metodami

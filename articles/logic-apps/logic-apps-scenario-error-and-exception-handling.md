@@ -7,12 +7,12 @@ author: hedidin
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 99141787c5133b578c943f0e11e5ab15171a2e3d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 03ed4731e59280a3879d77ca3fb82f0158313aeb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792975"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771559"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scénář: zpracování výjimek a protokolování chyb pro Logic Apps
 
@@ -25,7 +25,7 @@ Tento scénář popisuje, jak můžete rozšířit aplikaci logiky pro lepší p
 
 Toto je příběh jako případ použití pro tento scénář: 
 
-Dobře známá zdravotní organizace se zapojí do vývoje řešení Azure, které by vytvořilo portál pacienty pomocí Microsoft Dynamics CRM Online. Jsou potřeba k posílání záznamů událostí mezi portálem pacientů Dynamics CRM Online a Salesforce. Požádali jsme o použití standardu [změněného HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) pro všechny záznamy pacienta.
+Dobře známá zdravotní organizace se zapojí do vývoje řešení Azure, které by vytvořilo portál pacienty pomocí Microsoft Dynamics CRM Online. Jsou potřeba k posílání záznamů událostí mezi portálem pacientů Dynamics CRM Online a Salesforce. Požádali jsme o použití standardu [změněného HL7 FHIR](https://www.hl7.org/implement/standards/fhir/) pro všechny záznamy pacienta.
 
 Projekt má dva hlavní požadavky:  
 

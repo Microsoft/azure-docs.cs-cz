@@ -3,12 +3,12 @@ title: Referenční dokumentace pro vývojáře v Pythonu pro Azure Functions
 description: Vysvětlení, jak vyvíjet funkce pomocí Pythonu
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 55eb1fe53aa4256f1b7eee44547703328816cd32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: adea5603c997380dde6731b53bc99ba7443e310b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75409086"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768997"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -100,8 +100,8 @@ Hlavní složka projektu (\_\_App\_\_) může obsahovat následující soubory:
 * *Local. Settings. JSON*: používá se k ukládání nastavení aplikace a připojovacích řetězců při místním spuštění. Tento soubor se nepublikuje do Azure. Další informace najdete v tématu [Local. Settings. File](functions-run-local.md#local-settings-file).
 * *požadavky. txt*: obsahuje seznam balíčků, které systém nainstaluje při publikování do Azure.
 * *Host. JSON*: obsahuje možnosti globální konfigurace, které ovlivňují všechny funkce aplikace Function App. Tento soubor se publikuje do Azure. Ne všechny možnosti jsou podporovány při místním spuštění. Další informace najdete v tématu [Host. JSON](functions-host-json.md).
-* *funcignore*: (volitelné) deklaruje soubory, které by neměly být publikovány do Azure.
-* *gitignore*: (nepovinný) deklaruje soubory, které jsou vyloučené z úložiště Git, jako je Local. Settings. JSON.
+* *. funcignore*: (volitelné) deklaruje soubory, které by neměly být publikovány do Azure.
+* *. gitignore*: (nepovinný) deklaruje soubory, které jsou vyloučené z úložiště Git, jako je Local. Settings. JSON.
 
 Každá funkce má svůj vlastní soubor kódu a konfigurační soubor vazby (Function. JSON). 
 
@@ -171,7 +171,7 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-Když je funkce vyvolána, požadavek HTTP se předává funkci jako `req`. Položka bude načtena z Blob Storage Azure na základě _ID_ v adrese URL trasy a zpřístupněna jako `obj` v těle funkce.  Tady je uvedený účet úložiště, který je připojovacím řetězcem, který se nachází v, což je stejný účet úložiště, který používá aplikace Function App.
+Když je funkce vyvolána, požadavek HTTP se předává funkci jako `req`. Položka bude načtena z Blob Storage Azure na základě _ID_ v adrese URL trasy a zpřístupněna jako `obj` v těle funkce.  Tady je zadaný účet úložiště připojovací řetězec, který se nachází v nastavení aplikace AzureWebJobsStorage, což je stejný účet úložiště, který používá aplikace Function App.
 
 
 ## <a name="outputs"></a>Výstupy
@@ -303,7 +303,7 @@ async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-Funkce bez klíčového slova `async` se spustí automaticky ve fondu vláken asyncio:
+Funkce bez klíčového slova `async` se automaticky spustí ve fondu vláken asyncio:
 
 ```python
 # Runs in an asyncio thread-pool
@@ -641,7 +641,7 @@ Ujistěte se, že jste taky aktualizovali Function. JSON, aby podporoval metodu 
     ...
 ```
 
-Tuto metodu používá prohlížeč Chrome k vyjednání seznamu povolených zdrojů. 
+Tuto metodu HTTP používají webové prohlížeče k vyjednání seznamu povolených zdrojů. 
 
 ## <a name="next-steps"></a>Další kroky
 

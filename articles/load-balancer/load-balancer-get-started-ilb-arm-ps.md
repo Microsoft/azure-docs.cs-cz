@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 547402fd2cca94f47a9ff0db3131d359bafd967a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b2c94e51e25fd34b7332e6653a9c2f2d5bb53139
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225390"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754234"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Vytvoření interního nástroje pro vyrovnávání zatížení pomocí modulu Azure PowerShellu
 
@@ -48,7 +48,7 @@ Pokud chcete nasadit nástroj pro vyrovnávání zatížení, musíte vytvořit 
 * Konfigurace sondy: Sondy stavu pro virtuální počítače.
 * Příchozí pravidla NAT: Pravidla portů pro přímý přístup k virtuálním počítačům.
 
-Další informace součástech nástroje pro vyrovnávání zatížení najdete v tématu [Podpora nástroje pro vyrovnávání zatížení v Azure Resource Manageru](load-balancer-arm.md).
+Další informace o součástech nástroje pro vyrovnávání zatížení najdete v tématu [Azure Load Balancer Components](load-balancer-overview.md#load-balancer-components).
 
 V následujícím postupu se dozvíte, jak nakonfigurovat nástroj pro vyrovnávání zatížení mezi dvěma virtuálními počítači.
 

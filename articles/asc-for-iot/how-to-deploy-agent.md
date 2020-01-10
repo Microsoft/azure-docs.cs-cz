@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 18031400155b92f243877ae8c8d7a56e1d5295a0
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d70f2f3ec87c8673013bcf7b6f70ebcbb8d06f08
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933643"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770012"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Výběr a nasazení agenta zabezpečení na zařízení IoT
 
@@ -48,18 +48,18 @@ Agent zabezpečení založený na jazyce C má nižší nároky na paměť a je 
 | Podporované platformy Windows? | Ne | Ano |
 | Požadavky Windows | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
 | Podporované platformy Linux? | Ano, x64 a x86 | Ano, pouze x64 |
-| Předpoklady pro Linux | libunwind8, libcurl3, UUID – modul runtime, audit, audispd – moduly plug-in | libunwind8, libcurl3, UUID-runtime, audited, audispd-plugins, sudo, netstat, softwaru iptables |
+| Požadované součásti systému Linux | libunwind8, libcurl3, UUID – modul runtime, audit, audispd – moduly plug-in | libunwind8, libcurl3, UUID-runtime, audited, audispd-plugins, sudo, netstat, softwaru iptables |
 | Nároky na disk | 10,5 MB | 90 MB |
 | Nároky na paměť (v průměru) | 5,5 MB | 33 MB |
 | [Ověřování](concept-security-agent-authentication-methods.md) pro IoT Hub | Ano | Ano |
 | [Shromažďování](how-to-agent-configuration.md#supported-security-events) dat zabezpečení | Ano | Ano |
 | Agregace událostí | Ano | Ano |
-| Vzdálená konfigurace prostřednictvím [modulu zabezpečení](concept-security-module.md) je dvojitá. | Ano | Ano |
+| Vzdálená konfigurace prostřednictvím [modulu zabezpečení je dvojitá](concept-security-module.md) . | Ano | Ano |
 |
 
 ## <a name="security-agent-installation-guidelines"></a>Pokyny k instalaci agenta zabezpečení
 
-Pro **Windows**: Skript Install SecurityAgent. ps1 se musí spustit z okna PowerShellu pro správu. 
+Pro **Windows**: skript Install SecurityAgent. ps1 se musí spustit z okna PowerShellu pro správu. 
 
 Pro **Linux**: InstallSecurityAgent.sh musí být spuštěný jako uživatel. Doporučujeme použít předponu instalačního příkazu s názvem "sudo".
 
@@ -91,16 +91,16 @@ Následující seznam obsahuje všechny aktuálně podporované platformy.
 |Azure Security Center pro agenta IoT |Operační systém |Architektura |
 |--------------|------------|--------------|
 |C|Ubuntu 16.04 |   x64|
-|C|Ubuntu 18.04 |   x64|
+|C|Ubuntu 18.04 |   x64, ARMv7|
 |C|Debian 9 |   x64, x86|
 |C#|Ubuntu 16.04    |x64|
-|C#|Ubuntu 18.04    |x64|
+|C#|Ubuntu 18.04    |x64, ARMv7|
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    X64|
 |C#|Windows 10 IoT Core, Build 17763    |x64|
 |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete získat další informace o možnostech konfigurace, přejděte k příručce Průvodce konfigurací agenta. 
 > [!div class="nextstepaction"]

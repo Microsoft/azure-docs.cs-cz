@@ -2,17 +2,17 @@
 title: Shromažďovat & analyzovat protokoly prostředků
 description: Zaznamenává a analyzuje události protokolu prostředků pro Azure Container Registry, jako je například ověřování, vkládání obrázků a vyžádanou image.
 ms.topic: article
-ms.date: 10/30/2019
-ms.openlocfilehash: ada8502724c1779b9bdab2e8ac7e8ea61c256e44
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/03/2020
+ms.openlocfilehash: 72d03149cd24636ba2086dfaaff0dbba16d30f1e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456426"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747999"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Protokoly Azure Container Registry pro vyhodnocení a auditování diagnostiky
 
-Tento článek vysvětluje, jak shromažďovat data protokolu pro službu Azure Container Registry pomocí funkcí [Azure monitor](../azure-monitor/overview.md). Azure Monitor shromažďuje [protokoly prostředků](../azure-monitor/platform/resource-logs-overview.md) (dříve nazývané *diagnostické protokoly*) pro události řízené uživateli v registru. Shromažďování a využívání těchto dat pro splnění potřeb, jako jsou:
+Tento článek vysvětluje, jak shromažďovat data protokolu pro službu Azure Container Registry pomocí funkcí [Azure monitor](../azure-monitor/overview.md). Azure Monitor shromažďuje [protokoly prostředků](../azure-monitor/platform/platform-logs-overview.md) (dříve nazývané *diagnostické protokoly*) pro události řízené uživateli v registru. Shromažďování a využívání těchto dat pro splnění potřeb, jako jsou:
 
 * Auditování událostí ověřování registru za účelem zajištění zabezpečení a dodržování předpisů 
 
@@ -26,9 +26,14 @@ Shromažďování dat protokolu prostředků pomocí Azure Monitor může nabýv
 
 ## <a name="preview-limitations"></a>Omezení verze Preview
 
-Protokolování událostí na úrovni úložiště v současné době neobsahuje události Delete nebo zrušit označení. Protokolují se jenom tyto události úložiště:
-* **Vložení událostí** pro obrázky a další artefakty
-* **Vyžádané události** pro image a jiné artefakty
+V současné době jsou protokolovány následující události na úrovni úložiště pro bitové kopie a jiné artefakty:
+
+* **Události push**
+* **Události vyžádání**
+* **Události zrušit označení**
+* **Odstranit události** (včetně událostí odstranění úložiště)
+
+Události na úrovni úložiště, které nejsou aktuálně přihlášené: vyprázdnit události
 
 ## <a name="registry-resource-logs"></a>Protokoly prostředků registru
 
@@ -42,7 +47,7 @@ V případě operací zahrnuje data protokolu:
   * Stav úspěch nebo neúspěch
   * Počáteční a koncové časové razítko
 
-Kromě protokolů prostředků poskytuje Azure [Protokol aktivit](../azure-monitor/platform/activity-logs-overview.md), což je jeden záznam událostí správy Azure na úrovni předplatného, jako je například vytvoření nebo odstranění registru kontejneru.
+Kromě protokolů prostředků poskytuje Azure [Protokol aktivit](../azure-monitor/platform/platform-logs-overview.md), což je jeden záznam událostí správy Azure na úrovni předplatného, jako je například vytvoření nebo odstranění registru kontejneru.
 
 ## <a name="enable-collection-of-resource-logs"></a>Povolit shromažďování protokolů prostředků
 

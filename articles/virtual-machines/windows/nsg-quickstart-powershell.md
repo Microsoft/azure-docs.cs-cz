@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: ecc996cc07cfbf22a04a620ca426ca97056a9a9d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 547ca9c98d77b2aaa6d3630bff4b2ec10dcc5be0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75371203"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754166"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Postup otevření portů a koncových bodů pro virtuální počítač v Azure pomocí PowerShellu
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -97,5 +97,5 @@ V tomto příkladu jste vytvořili jednoduché pravidlo pro povolení přenosů 
 
 * [Přehled Azure Resource Manageru](../../azure-resource-manager/management/overview.md)
 * [Co je skupina zabezpečení sítě?](../../virtual-network/security-overview.md)
-* [Přehled Azure Resource Manager pro nástroje pro vyrovnávání zatížení](../../load-balancer/load-balancer-arm.md)
+* [Přehled Azure Load Balancer](../../load-balancer/load-balancer-overview.md)
 

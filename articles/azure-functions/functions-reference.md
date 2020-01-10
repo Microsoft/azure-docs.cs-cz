@@ -4,12 +4,12 @@ description: Naučte se Azure Functions koncepty a techniky, které potřebujete
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 3ccfc28dc332d2ff90ec09256a43a9143e37c03b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7dd7ef3c4833fb9ffa3781f06faba4f40cd40cfb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974219"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768993"
 ---
 # <a name="azure-functions-developers-guide"></a>Příručka pro vývojáře Azure Functions
 V Azure Functions konkrétní funkce sdílí několik základních technických konceptů a komponent bez ohledu na jazyk nebo vazbu, které používáte. Než přejdete k podrobnostem učení, které jsou specifické pro daný jazyk nebo vazbu, přečtěte si tento přehled, který platí pro všechny.
@@ -102,4 +102,4 @@ Další informace najdete v následujících materiálech:
 * [Místní psaní kódu a testování funkcí Azure Functions](./functions-develop-local.md)
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 * [Referenční C# informace pro vývojáře Azure Functions](functions-dotnet-class-library.md)
-* [Referenční informace pro vývojáře Azure Functions NodeJS](functions-reference-node.md)
+* [Azure Functions referenční materiály pro vývojáře Node. js](functions-reference-node.md)

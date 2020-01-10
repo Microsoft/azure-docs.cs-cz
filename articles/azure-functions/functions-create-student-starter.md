@@ -6,16 +6,16 @@ author: alexkarcher-msft
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: 5c0228feb88296e0c82efa52648ce38d70e5b921
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d20f56e0fba3af5885043fa344e7c6aa4e13d1b2
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75409883"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769230"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Vytvoření funkce pomocí Azure for Students Starter
 
-V tomto kurzu vytvoříme ve službě Azure for Students Starter předplatné funkce Hello World HTTP. Také vás probereme, co je k dispozici v Azure Functions v tomto typu předplatného.
+V tomto kurzu vytvoříme funkci "Hello World" HTTP v předplatném Azure for Students Starter. Také vás probereme, co je k dispozici v Azure Functions v tomto typu předplatného.
 
 Microsoft *Azure for Students Starter* vám pomůže začít s produkty Azure, které potřebujete pro vývoj v cloudu, a to bez nákladů. [Další informace o této nabídce najdete tady.](https://azure.microsoft.com/offers/ms-azr-0144p/)
 
@@ -33,9 +33,9 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com> pomocí s
 
 ## <a name="create-a-function-app"></a>Vytvoření Function App
 
-K hostování provádění funkcí musíte mít aplikaci Function App. Aplikace Function App umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. 
+K hostování provádění funkcí musíte mít aplikaci Function App. Aplikace Function App umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování, škálování a sdílení prostředků.
 
-1. Klikněte na tlačítko **Nový** v levém horním rohu portálu Azure Portal a pak vyberte **Compute** > **Function App**.
+1. Vyberte tlačítko **vytvořit prostředek** v levém horním rohu Azure Portal. Pak vyberte **compute** > **Function App**.
 
     ![Vytvoření aplikace Function App na portálu Azure Portal](./media/functions-create-student-starter/function-app-create-flow.png)
 
@@ -110,7 +110,7 @@ Novou funkci můžete spustit odesláním požadavku HTTP.
 
 ## <a name="supported-features-in-azure-for-students-starter"></a>Podporované funkce v Azure for Students Starter
 
-V Azure for student Starter máte přístup k většině funkcí prostředí Azure Functions runtime s několika omezeními, která jsou uvedená níže:
+V Azure for Students Starter máte přístup k většině funkcí prostředí Azure Functions runtime s několika omezeními, která jsou uvedená níže:
 
 * Trigger HTTP je jediným podporovaným typem triggeru.
     * Podporují se všechny vstupní a výstupní vazby. [Úplný seznam najdete tady.](functions-triggers-bindings.md)

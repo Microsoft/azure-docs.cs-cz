@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 89364a3ee948abbe5d233052878abe92bc7663a7
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: ece6fdb743035069bc6c666d6e90c76860f63e82
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241685"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744904"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Použití Apache Oozie s Apache Hadoop k definování a spuštění pracovního postupu pro Azure HDInsight se systémem Linux
 
@@ -28,7 +28,7 @@ Oozie můžete použít také k plánování úloh, které jsou specifické pro 
 > [!NOTE]  
 > Další možností definování pracovních postupů pomocí HDInsight je použití Azure Data Factory. Další informace o Data Factory najdete v tématu [použití nástroje Apache prasete a Apache Hive s Data Factory][azure-data-factory-pig-hive]. Pokud chcete používat Oozie v clusterech s Balíček zabezpečení podniku, přečtěte si téma [spuštění Apache Oozie v clusterech HDInsight Hadoop s balíček zabezpečení podniku](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Cluster Hadoop ve službě HDInsight**. Viz Začínáme [se službou HDInsight v systému Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
@@ -299,8 +299,8 @@ Definice úlohy popisuje, kde najít soubor Workflow. XML. Popisuje také místo
     |Hodnota zástupného textu| Nahrazená hodnota|
     |---|---|
     |wasbs://mycontainer\@mystorageaccount.blob.core.windows.net| Hodnota přijatá z kroku 1.|
-    |Správ| Přihlašovací jméno pro cluster HDInsight, pokud není správce.|
-    |serverName| Název serveru služby Azure SQL Database.|
+    |správce| Přihlašovací jméno pro cluster HDInsight, pokud není správce.|
+    |název_serveru| Název serveru služby Azure SQL Database.|
     |sqlLogin| Přihlášení k serveru služby Azure SQL Database.|
     |sqlPassword| Přihlašovací heslo serveru Azure SQL Database.|
 
@@ -394,10 +394,10 @@ Následující kroky používají příkaz Oozie k odesílání a správě praco
 
     ```xml
     <name>oozie.base.url</name>
-    <value>http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie</value>
+    <value>http://ACTIVE-HEADNODE-NAME.UNIQUEID.cx.internal.cloudapp.net:11000/oozie</value>
     ```
 
-    Část `http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie` je adresa URL, která se má použít v příkazu Oozie.
+    Část `http://ACTIVE-HEADNODE-NAME.UNIQUEID.cx.internal.cloudapp.net:11000/oozie` je adresa URL, která se má použít v příkazu Oozie.
 
 2. Upravte kód tak, aby nahradil adresu URL tu, kterou jste získali dříve. Chcete-li vytvořit proměnnou prostředí pro adresu URL, použijte následující, takže ji nemusíte zadávat pro každý příkaz:
 
@@ -480,7 +480,7 @@ Pomocí REST API Oozie můžete vytvářet vlastní nástroje, které pracují s
 
 * **URI**: přístup k REST API můžete získat mimo cluster při `https://CLUSTERNAME.azurehdinsight.net/oozie`.
 
-* **Ověřování**: k ověření použijte rozhraní API. účet http clusteru (správce) a heslo. Například:
+* **Ověřování**: k ověření použijte rozhraní API. účet http clusteru (správce) a heslo. Příklad:
 
     ```bash
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/oozie/versions

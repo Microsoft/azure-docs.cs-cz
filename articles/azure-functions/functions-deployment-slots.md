@@ -5,16 +5,16 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
-ms.openlocfilehash: a59b62e19ac1e470dcdaaf0281dde9904a70b583
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0e8c93ea6d5c2b525ccbea2af900f100afcc3d93
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230667"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769213"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions sloty nasazení
 
-Azure Functions sloty nasazení umožňují vaší aplikaci Function App spouštět různé instance s názvem "sloty". Sloty jsou různá prostředí, která se zveřejňují prostřednictvím veřejně dostupného koncového bodu. Jedna instance aplikace je vždycky namapovaná na produkční slot a můžete měnit instance přiřazené k slotu na vyžádání. Aplikace Function App spuštěné v plánu služby App Service mohou mít několik slotů, zatímco v části spotřeba je povolena pouze jedna patice.
+Azure Functions sloty nasazení umožňují vaší aplikaci Function App spouštět různé instance s názvem "sloty". Sloty jsou různá prostředí, která se zveřejňují prostřednictvím veřejně dostupného koncového bodu. Jedna instance aplikace je vždycky namapovaná na produkční slot a můžete měnit instance přiřazené k slotu na vyžádání. Aplikace Function App spuštěné v plánu služby App Service mohou mít několik slotů, zatímco v rámci plánu spotřeby je povolen pouze jeden slot.
 
 Následující informace odrážejí, jak jsou funkce ovlivněné odkládacími Sloty:
 
@@ -132,17 +132,17 @@ Pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/
 - [vytvoření](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
 - [odstranění](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
 - [list](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
-- [adresu](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
+- [swap](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
 - [Automatické prohození](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
 
 ## <a name="change-app-service-plan"></a>Změnit plán služby App Service
 
-Pomocí aplikace Function App, která běží v plánu App Service, máte možnost změnit základní plán služby App Service pro slot.
+Pomocí aplikace Function App, která běží v plánu App Service, máte možnost změnit základní plán App Service pro slot.
 
 > [!NOTE]
 > V plánu spotřeby nemůžete změnit plán App Service přihrádky.
 
-Pomocí následujícího postupu změníte plán služby App Service pro slot:
+Pomocí následujících kroků můžete změnit plán App Service přihrádky:
 
 1. Přejít na slot
 

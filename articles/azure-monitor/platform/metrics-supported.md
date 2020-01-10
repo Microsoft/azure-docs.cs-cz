@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/18/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: af0c5a42b71829bbfd51d77c047af45c1df6fd4b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 67e2675dbf65daf929407a437447f5d977c7a6c3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363638"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750408"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky s Azure Monitor
 
@@ -2324,4 +2324,4 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 ## <a name="next-steps"></a>Další kroky
 * [Přečtěte si o metrikách v Azure Monitor](data-platform.md)
 * [Vytváření upozornění na metriky](alerts-overview.md)
-* [Exportovat metriky do úložiště, centra událostí nebo Log Analytics](resource-logs-overview.md)
+* [Exportovat metriky do úložiště, centra událostí nebo Log Analytics](platform-logs-overview.md)

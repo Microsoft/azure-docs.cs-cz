@@ -5,12 +5,12 @@ author: ahmedelnably
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: f30211b2b5863294976420d3f903a36abe76deba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c34847577b7e83228fafad431f541497be9a21ae
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433162"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769145"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Průběžné doručování pomocí akce GitHubu
 
@@ -46,7 +46,7 @@ V tomto příkladu Nahraďte zástupné symboly v prostředku ID vašeho předpl
 
 ## <a name="download-the-publishing-profile"></a>Stáhnout profil publikování
 
-Profil publikování vašeho functionapp můžete stáhnout tak, že přejdete na stránku **Přehled** vaší aplikace a kliknete na **získat profil publikování**.
+Profil publikování aplikace Function App si můžete stáhnout tak, že přejdete na stránku **Přehled** vaší aplikace a kliknete na **získat profil publikování**.
 
    ![Stáhnout profil publikování](media/functions-how-to-github-actions/get-publish-profile.png)
 
@@ -58,7 +58,10 @@ Zkopírujte obsah souboru.
 
    ![Přidat tajný kód](media/functions-how-to-github-actions/add-secret.png)
 
-1. Pokud pak vyberete **Přidat tajný klíč**, použijte `AZURE_CREDENTIALS` pro **název** a zkopírovaný výstup příkazu pro **hodnotu**. Pokud používáte profil publikování, použijte `SCM_CREDENTIALS` pro **název** a obsah souboru pro **hodnotu**.
+1. Přidejte nový tajný kód.
+
+   * Pokud používáte instanční objekt, který jste vytvořili pomocí Azure CLI, použijte pro **název**`AZURE_CREDENTIALS`. Pak vložte zkopírovaný výstup objektu JSON pro **hodnotu**a vyberte **Přidat tajný klíč**.
+   * Pokud používáte profil publikování, použijte pro **název**`SCM_CREDENTIALS`. Pak použijte obsah souboru profilu publikování pro **hodnotu**a vyberte **Přidat tajný kód**.
 
 GitHub se teď může ověřit pro vaši aplikaci Function App v Azure.
 

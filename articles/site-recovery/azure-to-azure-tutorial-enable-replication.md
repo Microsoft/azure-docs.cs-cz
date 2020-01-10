@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/28/2019
+ms.date: 1/8/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8a99bdb1d181142b456c00f696d0271805f1567a
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: a7d25dfad20d8eff25020070d0bb32d5777fdb62
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561490"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754592"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Nastavení zotavení po havárii pro virtuální počítače Azure
 
@@ -25,24 +25,24 @@ V tomto kurzu se dozvíte, jak nastavit zotavení po havárii pro virtuální po
 > * Vytvoření trezoru Služeb zotavení
 > * Ověření nastavení cílových prostředků
 > * Nastavení odchozího připojení k síti pro virtuální počítače
-> * Povolit replikaci virtuálního počítače
+> * Povolení replikace virtuálního počítače
 
 > [!NOTE]
 > Tento článek poskytuje pokyny pro nasazení zotavení po havárii s nejjednodušším nastavením. Pokud se chcete dozvědět o přizpůsobených nastaveních, přečtěte si články v části [postupy](azure-to-azure-how-to-enable-replication.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
 - Prostudujte si [architekturu a komponenty scénáře](concepts-azure-to-azure-architecture.md).
 - Než začnete, přečtěte si [požadavky na podporu](site-recovery-support-matrix-azure-to-azure.md) .
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
-V libovolné oblasti (s výjimkou zdrojové oblasti) vytvořte trezor.
+Vytvořte trezor v libovolné oblasti, s výjimkou zdrojové oblasti.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) > **Recovery Services**.
-2. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**. Pak vyberte **Nástroje pro správu** > **zálohování a Site Recovery**.
+2. V nabídce webu Azure Portal nebo na **domovské** stránce vyberte **Vytvořit prostředek**. Pak vyberte **Nástroje pro správu** > **zálohování a Site Recovery**.
 3. Do pole **Název** zadejte popisný název pro identifikaci trezoru. Pokud máte více předplatných, vyberte příslušné předplatné.
 4. Vytvořte skupinu prostředků nebo vyberte existující. Zadejte oblast Azure. Informace o tom, které oblasti jsou podporované, najdete v části s geografickou dostupností v tématu s [podrobnostmi o cenách Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
 5. Pokud chcete mít možnost rychle se dostat k trezoru z řídicího panelu, klikněte na **Připnout na řídicí panel** a potom klikněte na **Vytvořit**.
@@ -77,15 +77,18 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Odchozí připojení pro rozsahy IP adres
 
-Pokud chcete řídit odchozí připojení pomocí IP adres místo adres URL, povolte tyto adresy pro brány firewall založené na protokolu IP, proxy nebo NSG pravidla.
+Pokud používáte NSG, vytvořte pravidla NSG založená na značkách služby pro přístup k Azure Storage, Azure Active Directory Site Recovery služby a sledování Site Recovery. [Další informace](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges).
+
+Pokud chcete řídit odchozí připojení pomocí IP adres místo pravidel NSG, povolte tyto adresy pro brány firewall založené na protokolu IP, proxy nebo pravidla NSG.
+
+>[!NOTE]
+>Doporučuje se vždycky nakonfigurovat pravidla NSG pomocí značek služeb pro odchozí přístup.
 
   - [Rozsahy IP adres datacentra Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653)
   - [Rozsahy IP adres datacentra Windows Azure v Německu](https://www.microsoft.com/download/details.aspx?id=54770)
   - [Rozsahy IP adres datacentra Windows Azure v Číně](https://www.microsoft.com/download/details.aspx?id=42064)
   - [Adresy URL a rozsahy IP adres pro Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
   - [IP adresy koncových bodů služby Site Recovery](https://aka.ms/site-recovery-public-ips)
-
-Pokud používáte NSG, můžete pro zdrojovou oblast vytvořit pravidla pro NSG značky služby Storage. [Další informace](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges).
 
 ## <a name="verify-azure-vm-certificates"></a>Ověření certifikátů virtuálních počítačů Azure
 
@@ -106,7 +109,7 @@ Azure Site Recovery poskytuje pro řízení operací správy Site Recovery tři 
 
 Přečtěte si další informace o [předdefinovaných rolích Azure RBAC](../role-based-access-control/built-in-roles.md).
 
-## <a name="enable-replication-for-a-vm"></a>Povolit replikaci virtuálního počítače
+## <a name="enable-replication-for-a-vm"></a>Povolení replikace virtuálního počítače
 
 ### <a name="select-the-source"></a>Výběr zdroje
 

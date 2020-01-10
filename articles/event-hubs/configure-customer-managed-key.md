@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 3af951d120282767bd71bc569d8c0bfe39dafffe
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a5aa6a2e2578a995e4ef00489557fc02623e2d6a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705470"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744821"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal-preview"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat Azure Event Hubs v klidovém formátu pomocí Azure Portal (Preview)
 Azure Event Hubs poskytuje šifrování neaktivních dat pomocí šifrování služby Azure Storage (Azure SSE). Event Hubs spoléhá na Azure Storage uložení dat a ve výchozím nastavení se všechna data uložená pomocí Azure Storage šifrují pomocí klíčů spravovaných Microsoftem. 
@@ -87,7 +87,7 @@ Po odvolání šifrovacího klíče se služba Event Hubs v zašifrovaném oboru
 > Pokud odstraníte existující šifrovací klíč z trezoru klíčů a nahradíte ho novým klíčem na Event Hubs oboru názvů, protože odstranit klíč je stále platný (protože je uložený v mezipaměti) až do hodiny, můžou být vaše stará data (která byla zašifrovaná pomocí starého klíče) i nadále dostupná společně.  s novými daty, která jsou teď dostupná jenom pomocí nového klíče. Toto chování je záměrné v rámci verze Preview této funkce. 
 
 ## <a name="set-up-diagnostic-logs"></a>Nastavení diagnostických protokolů 
-Nastavení protokolů diagnostiky pro obory názvů s povoleným BYOK poskytuje požadované informace o operacích, když je obor názvů zašifrovaný pomocí klíčů spravovaných zákazníkem. Tyto protokoly je možné povolit a později streamovat do centra událostí nebo analyzovat prostřednictvím Log Analytics nebo streamovat do úložiště a provádět přizpůsobené analýzy. Další informace o diagnostických protokolech najdete v tématu [Přehled diagnostických protokolů Azure](../azure-monitor/platform/resource-logs-overview.md).
+Nastavení protokolů diagnostiky pro obory názvů s povoleným BYOK poskytuje požadované informace o operacích, když je obor názvů zašifrovaný pomocí klíčů spravovaných zákazníkem. Tyto protokoly je možné povolit a později streamovat do centra událostí nebo analyzovat prostřednictvím Log Analytics nebo streamovat do úložiště a provádět přizpůsobené analýzy. Další informace o diagnostických protokolech najdete v tématu [Přehled diagnostických protokolů Azure](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="enable-user-logs"></a>Povolit protokoly uživatelů
 Pomocí těchto kroků povolte protokoly pro klíče spravované zákazníkem.
@@ -105,19 +105,19 @@ Pomocí těchto kroků povolte protokoly pro klíče spravované zákazníkem.
     ![Vybrat možnost uživatelských protokolů pro klíč uživatele spravovaný zákazníkem](./media/configure-customer-managed-key/select-customer-managed-key-user-logs.png)
 
 ## <a name="log-schema"></a>Schéma protokolu 
-Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON). Každá položka má pole řetězce, která používají formát popsaný v následující tabulce. 
+Všechny protokoly se ukládají ve formátu JavaScript Object Notation (JSON). Každá položka má pole řetězce, která používají formát popsaný v následující tabulce. 
 
 | Name (Název) | Popis |
 | ---- | ----------- | 
-| /TN | Popis úlohy, která selhala. |
-| ActivityId | Interní ID, které se používá ke sledování. |
+| TaskName | Popis úkolu, který se nezdařilo. |
+| ID aktivity | Interní ID, které se používá ke sledování. |
 | category | Definuje klasifikaci úkolu. Například pokud je klíč z vašeho trezoru klíčů zakázaný, pak se jedná o kategorii informací, nebo pokud se klíč nedá rozdělit, může dojít k chybě. |
 | resourceId | ID prostředku Azure Resource Manager |
 | keyVault | Úplný název trezoru klíčů |
 | key | Název klíče, který slouží k šifrování oboru názvů Event Hubs. |
 | version | Verze používaného klíče |
-| NázevOperace | Operace, která se provádí na klíči v trezoru klíčů. Můžete například zakázat/povolit klíč, zalamovat nebo rozbalení. |
-| Znakovou | Kód, který je přidružen k operaci. Příklad: kód chyby 404 znamená, že klíč nebyl nalezen. |
+| operation | Operace, která se provádí na klíči v trezoru klíčů. Můžete například zakázat/povolit klíč, zalamovat nebo rozbalení. |
+| kód | Kód, který je přidružen k operaci. Příklad: kód chyby 404 znamená, že klíč nebyl nalezen. |
 | zpráva | Jakákoli chybová zpráva přidružená k operaci |
 
 Tady je příklad protokolu pro klíč spravovaný zákazníkem:

@@ -1,5 +1,5 @@
 ---
-title: Co je Azure AD Connect a Connect Health. | Dokumenty Microsoft
+title: Co je Azure AD Connect a Connect Health. | Dokumentace Microsoftu
 description: Popisuje nástroje pro synchronizaci a monitorovat místní prostředí s využitím Azure AD.
 services: active-directory
 author: billmath
@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48b81d508711f35a75efe1c93fe0a5556c5bb960
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c984faf22b8e4cd499a5588f45d7072610f33544
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65784465"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767921"
 ---
 # <a name="what-is-azure-ad-connect"></a>Co je Azure AD Connect?
 
@@ -46,32 +46,32 @@ Integrace místních adresářů se službou Azure AD zvyšuje produktivitu uži
 
 * Uživatelé můžou používat jedinou identitu pro přístup k místním aplikacím i ke cloudovým službám, jako je například Office 365.
 * Získáváte jeden nástroj, který umožňuje snadné nasazení pro synchronizaci a přihlašování.
-* Přináší nejnovější schopnosti pro vaše scénáře. Azure AD Connect nahrazuje starší verze nástrojů pro integraci identity, jako jsou například DirSync nebo Azure AD Sync. Další informace najdete v článku o [orovnání nástrojů pro integraci adresáře hybridní identity](plan-hybrid-identity-design-considerations-tools-comparison.md).
+* Přináší nejnovější schopnosti pro vaše scénáře. Azure AD Connect nahrazuje starší verze nástrojů pro integraci identity, jako je DirSync a Azure AD Sync. Další informace najdete v tématu [porovnání nástrojů pro integraci adresářů hybridní identity](plan-hybrid-identity-design-considerations-tools-comparison.md).
 
 ## <a name="why-use-azure-ad-connect-health"></a>Proč používat službu Azure AD Connect Health?
 Při práci s Azure AD, jsou vaši uživatelé zvýšit produktivitu práce protože společnou identitu pro přístup ke cloudovým i místním prostředkům. Zajištění, že prostředí je spolehlivé, aby uživatelé měli přístup ke tyto prostředky se změní na výzvu.  Azure AD Connect Health pomáhá monitorovat a získávat přehledy o vaší místní infrastruktury identit zajistila spolehlivost tohoto prostředí. Stačí jednoduše nainstalovat agenta na každý z vašich místních serverů identity.
 
 Azure AD Connect Health pro službu AD FS podporuje službu AD FS 2.0 v systémech Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 a Windows Server 2016. Podporuje také monitorování proxy serveru služby AD FS a proxy serverů webových aplikací, které poskytují ověřování pro přístup z extranetu. Díky snadné a rychlé instalaci agenta služby Health poskytuje Azure AD Connect Health pro službu AD FS sadu klíčových funkcí.
 
-Mezi klíčové výhody a osvědčené postupy:
+Klíčové výhody a osvědčené postupy:
 
-|Klíčové výhody|Osvědčené postupy|
+|Klíčové výhody|Doporučené postupy|
 |-----|-----|
-|Vylepšené zabezpečení|[Trendy uzamčení extranetu](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)</br>[Sestava neúspěšných přihlášení](how-to-connect-health-adfs-risky-ip.md)</br>[V kompatibilní ochrany osobních údajů](reference-connect-health-user-privacy.md)|
-|Nechte se upozornit na [všechny kritické problémy systému služby AD FS](how-to-connect-health-alert-catalog.md#alerts-for-active-directory-federation-services)|Konfigurace serveru a dostupnost</br>[Výkon a možnosti připojení](how-to-connect-health-adfs.md#performance-monitoring-for-ad-fs)</br>Pravidelná údržba|
-|Snadné nasazení a správa|[Instalace agenta rychlé](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)</br>Automatický upgrade agenta na nejnovější verzi</br>Dostupnost dat na portálu během několika minut|
-Bohaté [metriky využití](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)|Využití nejčastějších aplikací</br>Umístění v síti a připojení TCP</br>Žádosti o tokeny pro každý server|
+|Vylepšené zabezpečení|[Trendy uzamčení extranetu](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)</br>[Sestava neúspěšných přihlášení](how-to-connect-health-adfs-risky-ip.md)</br>[V souladu s ochranou osobních údajů](reference-connect-health-user-privacy.md)|
+|Získání upozornění na [všechny kritické problémy systému služby ADFS](how-to-connect-health-alert-catalog.md#alerts-for-active-directory-federation-services)|Konfigurace serveru a dostupnost</br>[Výkon a možnosti připojení](how-to-connect-health-adfs.md#performance-monitoring-for-ad-fs)</br>Pravidelná údržba|
+|Snadné nasazení a správa|[Rychlá instalace agenta](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)</br>Automatický upgrade agenta na nejnovější verzi</br>Dostupnost dat na portálu během několika minut|
+Bohatá [metriky využití](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)|Využití nejčastějších aplikací</br>Umístění v síti a připojení TCP</br>Žádosti o tokeny pro každý server|
 |Skvělé uživatelské prostředí|Styl řídicího panelu z webu Azure Portal</br>[Upozornění prostřednictvím e-mailů](how-to-connect-health-adfs.md#alerts-for-ad-fs)|
 
 
-## <a name="license-requirements-for-using-azure-ad-connect"></a>Licenční požadavky pro používání služby Azure AD Connect
+## <a name="license-requirements-for-using-azure-ad-connect"></a>Licenční požadavky pro použití Azure AD Connect
 
 [!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-free-license.md)]
 
+## <a name="license-requirements-for-using-azure-ad-connect-health"></a>Licenční požadavky pro použití Azure AD Connect Health
+[!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-p1-license.md)]
 
-
-
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Hardware a předpoklady](how-to-connect-install-prerequisites.md) 
 - [Expresní nastavení](how-to-connect-install-express.md)

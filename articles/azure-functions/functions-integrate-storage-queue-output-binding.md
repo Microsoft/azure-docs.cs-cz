@@ -5,12 +5,12 @@ ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.topic: quickstart
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: fb5fc2fadf4087ebc42253cf568af424a80cb9d5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 73f8d23dcd53b4cbbb3fbd902c789e868c2b021b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226888"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769179"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Přidání zpráv do fronty Azure Storage pomocí funkcí
 
@@ -34,7 +34,7 @@ V této části použijete uživatelské rozhraní portálu pro přidání výst
 
 1. Vyberte funkci, kterou jste vytvořili v tomto dřívějším rychlém startu.
 
-1. Vyberte **Integrovat > Nový výstup > Azure Queue Storage**.
+1. Vyberte **integration > New Output > Azure Queue Storage**.
 
 1. Klikněte na **Vybrat**.
 
