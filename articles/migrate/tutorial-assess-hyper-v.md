@@ -1,19 +1,15 @@
 ---
 title: Posouzení virtuálních počítačů Hyper-V pro migraci do Azure pomocí Azure Migrate | Microsoft Docs
 description: Popisuje, jak vyhodnotit místní virtuální počítače Hyper-V pro migraci do Azure pomocí Azure Migrate.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/18/2019
-ms.author: raynew
+ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: d8a4a6d650684cd5c8c0f22ad683c3952e2f6d08
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f2a7caad13ad845d5b2aeb3240b7d77fa89faf12
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158381"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720255"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Posouzení virtuálních počítačů Hyper-V pomocí Azure Migrate posouzení serveru
 
@@ -43,7 +39,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 - [Dokončete](tutorial-prepare-hyper-v.md) první kurz v této sérii. Pokud to neuděláte, pokyny v tomto kurzu nebudou fungovat.
 - Tady je seznam toho, co byste měli udělat v prvním kurzu:
     - [Nastavte oprávnění Azure](tutorial-prepare-hyper-v.md#prepare-azure) pro Azure Migrate.
-    - [Příprava clusterů Hyper-V](tutorial-prepare-hyper-v.md#prepare-for-hyper-v-assessment) , hostitelů a virtuálních počítačů k posouzení.
+    - [Příprava clusterů Hyper-V](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment) , hostitelů a virtuálních počítačů k posouzení.
+    - [Příprava na nasazení](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment) Azure Migrate zařízení, které se používá pro zjišťování a vyhodnocení virtuálních počítačů Hyper-V.
 
 ## <a name="set-up-an-azure-migrate-project"></a>Nastavení Azure Migrateho projektu
 
@@ -131,14 +128,14 @@ Naimportujte stažený soubor a vytvořte virtuální počítač.
     - Tato složka obsahuje podsložku, která se také označuje jako **AzureMigrateAppliance_VersionNumber**.
     - Tato podsložka obsahuje tři další podsložky – **snímky**, **virtuální pevné disky**a **Virtual Machines**.
 
-2. Otevřete Správce technologie Hyper-V. V nabídce **Akce**klikněte na **importovat virtuální počítač**.
+2. Spusťte Správce technologie Hyper-V. V nabídce **Akce**klikněte na **importovat virtuální počítač**.
 
     ![Nasazení VHD](./media/tutorial-assess-hyper-v/deploy-vhd.png)
 
 2. V Průvodci importem virtuálního počítače > **než začnete**, klikněte na **Další**.
-3. V části **najít složku**vyberte složku **Virtual Machines** . Potom klikněte na tlačítko **Další**.
+3. V části **najít složku**vyberte složku **Virtual Machines** . Pak klikněte na tlačítko **Další**.
 1. V nabídce **Vybrat virtuální počítač**klikněte na **Další**.
-2. V části **zvolit typ importu**klikněte na **zkopírovat virtuální počítač (vytvořit nové jedinečné ID)** . Potom klikněte na tlačítko **Další**.
+2. V části **zvolit typ importu**klikněte na **zkopírovat virtuální počítač (vytvořit nové jedinečné ID)** . Pak klikněte na tlačítko **Další**.
 3. V části **zvolit cíl**ponechte výchozí nastavení. Klikněte na **Další**.
 4. V části **složky úložiště**ponechte výchozí nastavení. Klikněte na **Další**.
 5. V části **zvolit síť**zadejte virtuální přepínač, který bude virtuální počítač používat. Přepínač potřebuje připojení k Internetu, aby bylo možné odesílat data do Azure.
@@ -184,7 +181,7 @@ Nastavte zařízení poprvé.
 
 Pokud používáte na SMB virtuální pevné disky, musíte povolit delegování přihlašovacích údajů ze zařízení na hostitele Hyper-V. To vyžaduje následující:
 
-- Povolíte každému hostiteli, aby fungoval jako delegát pro zařízení. Měli byste to udělat v předchozím kurzu, když jste připravili Hyper-V pro posouzení a migraci. Měli byste buď nastavit CredSSP pro hostitele [ručně](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts), nebo [Spustit konfigurační skript požadavků technologie Hyper-V](tutorial-prepare-hyper-v.md#hyper-v-prerequisites-configuration-script).
+- Povolíte každému hostiteli, aby fungoval jako delegát pro zařízení. Pokud jste postupovali podle kurzů v předchozím kurzu, provedli jste to v předchozím kurzu, když jste připravili technologii Hyper-V pro účely posouzení a migrace. Měli byste buď nastavit CredSSP pro hostitele [ručně](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts), nebo [Spustit skript](tutorial-prepare-hyper-v.md#prepare-with-a-script) , který to dělá.
 - Povolte delegování CredSSP, aby zařízení Azure Migrate mohlo fungovat jako klient a delegování přihlašovacích údajů na hostitele.
 
 Povolit na zařízení následujícím způsobem:

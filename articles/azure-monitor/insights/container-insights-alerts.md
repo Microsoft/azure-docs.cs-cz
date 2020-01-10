@@ -1,18 +1,14 @@
 ---
 title: Vytváření výstrah výkonu pro Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje, jak vytvořit vlastní výstrahy na základě dotazů protokolu pro paměť a využití procesoru z Azure Monitor pro kontejnery.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
-ms.date: 04/26/2019
-ms.openlocfilehash: 66baa3095744c8b486430d587b992ba507d87733
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 01/07/2020
+ms.openlocfilehash: 5d73f4399d10683597fb2a2e8a3a2ab4ba0d1165
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841621"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75730921"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Nastavení výstrah pro problémy s výkonem v Azure Monitor pro kontejnery
 
@@ -288,13 +284,14 @@ Pomocí těchto kroků vytvořte v Azure Monitor upozornění protokolu pomocí 
 >
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-2. V podokně na levé straně vyberte **monitor** . V části **přehledy**vyberte **kontejnery**.
-3. Na kartě **monitorované clustery** vyberte cluster ze seznamu.
-4. V podokně na levé straně **monitorování**vyberte **protokoly** a otevřete stránku Azure monitor protokoly. Tato stránka slouží k zápisu a provádění dotazů Azure Log Analytics.
-5. Na stránce **protokoly** vyberte **+ nové pravidlo výstrahy**.
-6. V části **Podmínka** vyberte **pokaždé, když je hledání vlastního protokolu \<logic nedefinované >** předem definované podmínky vlastního protokolu. Vlastní typ signálu **hledání vlastního protokolu** se vybere automaticky, protože vytváříme pravidlo upozornění přímo ze stránky Azure monitor protokoly.  
-7. Vložte jeden z [dotazů](#resource-utilization-log-search-queries) , které byly zadány dříve, do pole **vyhledávacího dotazu** .
-8. Výstrahy nakonfigurujte následujícím způsobem:
+2. V Azure Portal vyhledejte a vyberte **Log Analytics pracovní prostory**.
+3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor podporující Azure Monitor pro kontejnery. 
+4. V podokně na levé straně vyberte **protokoly** a otevřete stránku Azure monitor protokoly. Tato stránka slouží k zápisu a provádění dotazů Azure Log Analytics.
+5. Na stránce **protokoly** vložte jeden z [dotazů](#resource-utilization-log-search-queries) , které jste zadali dříve do pole **vyhledávací dotaz** , a pak výběrem **příkazu Spustit** Ověřte výsledky. Pokud tento krok neprovedete, možnost **+ nová výstraha** není dostupná k výběru.
+6. Vyberte **+ nová výstraha** a vytvořte výstrahu protokolu.
+7. V části **Podmínka** vyberte **pokaždé, když je hledání vlastního protokolu \<logic nedefinované >** předem definované podmínky vlastního protokolu. Vlastní typ signálu **hledání vlastního protokolu** se vybere automaticky, protože vytváříme pravidlo upozornění přímo ze stránky Azure monitor protokoly.  
+8. Vložte jeden z [dotazů](#resource-utilization-log-search-queries) , které byly zadány dříve, do pole **vyhledávacího dotazu** .
+9. Výstrahy nakonfigurujte následujícím způsobem:
 
     1. V rozevíracím seznamu **Na základě** vyberte **Měření metriky**. Měření metriky vytvoří výstrahu pro každý objekt v dotazu, který má hodnotu nad naši zadanou prahovou hodnotou.
     1. Jako **podmínku**vyberte **větší než**a jako počáteční **hodnotu prahové hodnoty** počátečního směrného plánu pro výstrahy využití procesoru a paměti zadejte **75** . Pro upozornění na nedostatek místa na disku zadejte **90**. Nebo zadejte jinou hodnotu, která vyhovuje vašim kritériím.
@@ -302,11 +299,11 @@ Pomocí těchto kroků vytvořte v Azure Monitor upozornění protokolu pomocí 
     1. Chcete-li nakonfigurovat výstrahu pro využití procesoru nebo paměti kontejneru, vyberte v části **agregace zapnuto**možnost **ContainerName**. Pokud chcete konfigurovat pro upozornění na nízký disk uzlu clusteru, vyberte **ClusterId**.
     1. V části **vyhodnocováno na základě** oddílu nastavte hodnotu **perioda** na **60 minut**. Pravidlo se spustí každých 5 minut a vrátí záznamy, které byly vytvořeny během poslední hodiny od aktuálního času. Nastavení časového období pro velké účty oken za účelem potenciální latence dat. Také zajišťuje, že dotaz vrátí data, aby se předešlo nezápornému falešně pozitivnímu upozornění, že výstraha nebude nikdy aktivována.
 
-9. Vyberte **Hotovo** a dokončete pravidlo výstrahy.
-10. Do pole **název pravidla výstrahy** zadejte název. Zadejte **Popis** , který poskytuje podrobnosti o výstraze. A vyberte příslušnou úroveň závažnosti z poskytnutých možností.
-11. Chcete-li ihned aktivovat pravidlo výstrahy, přijměte výchozí hodnotu pro **pravidlo Povolit při vytváření**.
-12. Vyberte existující **skupinu akcí** nebo vytvořte novou skupinu. Tento krok zajistí, aby se při každém spuštění výstrahy provedly stejné akce. Nakonfigurujte na základě toho, jak váš tým IT nebo DevOps Operations spravuje incidenty.
-13. Vyberte **vytvořit pravidlo výstrahy** a dokončete pravidlo výstrahy. Pravidlo se okamžitě spustí.
+10. Vyberte **Hotovo** a dokončete pravidlo výstrahy.
+11. Do pole **název pravidla výstrahy** zadejte název. Zadejte **Popis** , který poskytuje podrobnosti o výstraze. A vyberte příslušnou úroveň závažnosti z poskytnutých možností.
+12. Chcete-li ihned aktivovat pravidlo výstrahy, přijměte výchozí hodnotu pro **pravidlo Povolit při vytváření**.
+13. Vyberte existující **skupinu akcí** nebo vytvořte novou skupinu. Tento krok zajistí, aby se při každém spuštění výstrahy provedly stejné akce. Nakonfigurujte na základě toho, jak váš tým IT nebo DevOps Operations spravuje incidenty.
+14. Vyberte **vytvořit pravidlo výstrahy** a dokončete pravidlo výstrahy. Pravidlo se okamžitě spustí.
 
 ## <a name="next-steps"></a>Další kroky
 

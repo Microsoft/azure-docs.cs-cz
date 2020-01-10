@@ -1,19 +1,15 @@
 ---
 title: Příprava virtuálních počítačů Hyper-V pro posouzení/migraci pomocí Azure Migrate
 description: Přečtěte si, jak připravit na posouzení/migraci virtuálních počítačů Hyper-V pomocí Azure Migrate.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/19/2019
-ms.author: raynew
+ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: f93528e2a35661f8a233aea476a958a079d7cd59
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: a76c249f3d179a34fbb14e6c8bfb3666816fa160
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196262"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720204"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Příprava na posouzení a migraci virtuálních počítačů Hyper-V do Azure
 
@@ -25,7 +21,8 @@ Tento kurz je první v řadě, kde se dozvíte, jak vyhodnotit a migrovat virtu�
 
 > [!div class="checklist"]
 > * Připravte Azure. Nastavte oprávnění pro účet a prostředky Azure pro práci s Azure Migrate.
-> * Připravte místní hostitele Hyper-V a virtuální počítače pro vyhodnocování serveru.
+> * Připravte místní hostitele Hyper-V a virtuální počítače pro vyhodnocování serveru. Můžete připravit pomocí konfiguračního skriptu nebo ručně.
+> * Příprava na nasazení Azure Migrate zařízení Zařízení se používá ke zjišťování a vyhodnocení místních virtuálních počítačů.
 > * Připravte místní hostitele Hyper-V a virtuální počítače pro migraci serveru.
 
 
@@ -43,7 +40,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 Je nutné nastavit oprávnění pro nasazení Azure Migrate.
 
 - Oprávnění pro účet Azure k vytvoření projektu Azure Migrate.
-- Oprávnění pro váš účet k registraci zařízení Azure Migrate. Zařízení se používá pro zjišťování a migraci technologie Hyper-V. Při registraci zařízení Azure Migrate vytvoří dvě aplikace Azure Active Directory (Azure AD), které zařízení jednoznačně identifikují:
+- Oprávnění pro váš účet k registraci zařízení Azure Migrate. Zařízení se používá ke zjišťování a hodnocení virtuálních počítačů Hyper-V, které migrujete. Při registraci zařízení Azure Migrate vytvoří dvě aplikace Azure Active Directory (Azure AD), které zařízení jednoznačně identifikují:
     - První aplikace komunikuje s koncovými body služby Azure Migrate.
     - Druhá aplikace přistupuje k Azure Key Vault vytvořenému během registrace, aby se ukládaly informace o aplikaci Azure AD a nastavení konfigurace zařízení.
 
@@ -62,7 +59,7 @@ Ověřte, že máte oprávnění k vytvoření projektu Azure Migrate.
 
 ### <a name="assign-permissions-to-register-the-appliance"></a>Přiřazení oprávnění k registraci zařízení
 
-Pomocí jedné z následujících metod můžete přiřadit oprávnění pro Azure Migrate k vytváření aplikací Azure AD, které vytváří během registrace zařízení.
+Můžete přiřadit oprávnění pro Azure Migrate k vytváření aplikací Azure AD vytvořených během registrace zařízení pomocí jedné z následujících metod:
 
 - Tenant nebo globální správce může udělit oprávnění uživatelům v tenantovi, aby mohli vytvářet a registrovat aplikace služby Azure AD.
 - Tenant nebo globální správce může k účtu přiřadit roli vývojáře aplikace (která má oprávnění).
@@ -92,30 +89,25 @@ Tenant nebo globální správce může udělit oprávnění následujícím způ
 Tenant/globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
 
-## <a name="prepare-for-hyper-v-assessment"></a>Příprava na posouzení technologie Hyper-V
+## <a name="prepare-hyper-v-for-assessment"></a>Příprava technologie Hyper-V pro posouzení
 
-Při přípravě na posouzení technologie Hyper-V postupujte následovně:
+Hyper-V pro vyhodnocení virtuálních počítačů můžete připravit ručně nebo pomocí konfiguračního skriptu. Tady je seznam toho, co je potřeba připravit:
 
-1. Ověřte nastavení hostitele Hyper-V.
-2. Nastavte pro každého hostitele vzdálenou komunikaci PowerShellu, aby zařízení Azure Migrate mohlo na hostiteli spouštět příkazy PowerShellu přes připojení WinRM.
-3. Pokud se disky virtuálních počítačů nacházejí ve vzdálených úložištích SMB, je nutné delegování přihlašovacích údajů.
-    - Povolte delegování CredSSP, aby zařízení Azure Migrate mohlo fungovat jako klient a delegování přihlašovacích údajů na hostitele.
-    - Povolíte každému hostiteli, aby fungoval jako delegát pro zařízení, jak je popsáno níže.
-    - Později při nastavení zařízení budete na zařízení umožňovat delegování.
-4. Zkontrolujte požadavky na zařízení a přístup k adrese URL/portu potřebný pro dané zařízení.
-5. Nastavte účet, který bude zařízení používat pro zjišťování virtuálních počítačů.
-6. Nastavte integrační služby technologie Hyper-V na každém virtuálním počítači, který chcete zjišťovat a hodnotit.
+- Ověřte nastavení hostitele Hyper-V a ujistěte se, že jsou na hostitelích Hyper-V otevřené požadované porty.
+- Nastavte pro každého hostitele vzdálenou komunikaci PowerShellu, aby zařízení Azure Migrate mohlo na hostiteli spouštět příkazy PowerShellu přes připojení WinRM.
+- Pověření delegáta, pokud se disky virtuálních počítačů nacházejí ve vzdálených sdílených složkách protokolu SMB.
+- Nastavte účet, který bude zařízení používat ke zjištění virtuálních počítačů na hostitelích Hyper-V.
+- Nastavte integrační služby technologie Hyper-V na každém virtuálním počítači, který chcete zjišťovat a hodnotit.
 
 
-Tato nastavení můžete nakonfigurovat ručně pomocí níže uvedených postupů. Případně spustíte konfigurační skript požadavků technologie Hyper-V.
 
-### <a name="hyper-v-prerequisites-configuration-script"></a>Konfigurační skript požadavků technologie Hyper-V
+## <a name="prepare-with-a-script"></a>Příprava pomocí skriptu
 
-Tento skript ověří hostitele Hyper-V a nakonfiguruje nastavení, která potřebujete ke zjišťování a vyhodnocení virtuálních počítačů Hyper-V. Tady je postup:
+Skript provede následující akce:
 
 - Kontroluje, zda spouštíte skript v podporované verzi prostředí PowerShell.
 - Ověřuje, že jste (uživatel, který spouští skript), má oprávnění správce na hostiteli Hyper-V.
-- Umožňuje vytvořit místní uživatelský účet (nikoli správce), který se používá pro službu Azure Migrate ke komunikaci s hostitelem Hyper-V. Tento uživatelský účet se přidá do těchto skupin na hostiteli:
+- Umožňuje vytvořit místní uživatelský účet (nejedná se o správce), který služba Azure Migrate používá ke komunikaci s hostitelem Hyper-V. Tento uživatelský účet se přidá do těchto skupin na hostiteli:
     - Uživatelé vzdálené správy
     - Správci technologie Hyper-V
     - Uživatelé sledování výkonu
@@ -129,7 +121,7 @@ Spusťte skript následujícím způsobem:
 
 1. Ujistěte se, že na hostiteli Hyper-V máte nainstalovanou verzi prostředí PowerShell verze 4,0 nebo novější.
 2. Stáhněte si skript z webu [Microsoft Download Center](https://aka.ms/migrate/script/hyperv). Skript je kryptograficky podepsán společností Microsoft.
-3. Ověřte integritu skriptu buď pomocí souborů hash MD5, nebo SHA256. Hodnoty hashtagu jsou uvedené níže. Spuštěním tohoto příkazu vygenerujte hodnotu hash pro tento skript:
+3. Ověřte integritu skriptu buď pomocí MD5, nebo souborů SHA256 hash. Hodnoty hashtagu jsou uvedené níže. Spuštěním tohoto příkazu vygenerujte hodnotu hash pro tento skript:
     ```
     C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]
     ```
@@ -144,14 +136,38 @@ Spusťte skript následujícím způsobem:
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
     ```
 
-#### <a name="hashtag-values"></a>Hodnoty hashtagu
+### <a name="hashtag-values"></a>Hodnoty hashtagu
 
 Hodnoty hash jsou:
 
-| **Kontrole** | **Hodnota** |
+| **Hash** | **Hodnota** |
 | --- | --- |
 | **ALGORITMY** | 0ef418f31915d01f896ac42a80dc414e |
 | **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |
+
+
+## <a name="prepare-hyper-v-manually"></a>Ruční Příprava technologie Hyper-V
+
+Pomocí postupů v této části můžete ručně připravit technologii Hyper-V namísto použití skriptu.
+
+### <a name="verify-powershell-version"></a>Ověřit verzi PowerShellu
+
+Ujistěte se, že na hostiteli Hyper-V máte nainstalovanou verzi prostředí PowerShell verze 4,0 nebo novější.
+
+
+
+### <a name="set-up-an-account-for-vm-discovery"></a>Nastavení účtu pro zjišťování virtuálních počítačů
+
+Azure Migrate potřebuje oprávnění ke zjišťování místních virtuálních počítačů.
+
+- Nastavte doménu nebo místní uživatelský účet s oprávněními správce v hostitelích nebo clusteru Hyper-V.
+
+    - Pro všechny hostitele a clustery, které chcete zahrnout do zjišťování, potřebujete jeden účet.
+    - Účet může být místní nebo doménový účet. Doporučujeme, aby měl oprávnění správce na hostitelích nebo clusterech Hyper-V.
+    - Případně, pokud nechcete přiřadit oprávnění správce, jsou potřeba následující oprávnění:
+        - Uživatelé vzdálené správy
+        - Správci technologie Hyper-V
+        - Uživatelé sledování výkonu
 
 ### <a name="verify-hyper-v-host-settings"></a>Ověřit nastavení hostitele Hyper-V
 
@@ -168,6 +184,12 @@ Na každém hostiteli nastavte vzdálenou komunikaci PowerShellu následujícím
     ```
     Enable-PSRemoting -force
     ```
+### <a name="enable-integration-services-on-vms"></a>Povolit integrační služby na virtuálních počítačích
+
+V každém virtuálním počítači by měly být povolené integrační služby, aby Azure Migrate mohl zachytit informace o operačním systému na VIRTUÁLNÍm počítači.
+
+Na virtuálních počítačích, které chcete zjišťovat a hodnotit, povolte na každém virtuálním počítači [integrační služby technologie Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) .
+
 
 ### <a name="enable-credssp-on-hosts"></a>Povolení CredSSP na hostitelích
 
@@ -185,10 +207,10 @@ Povolte následujícím způsobem:
     Enable-WSManCredSSP -Role Server -Force
     ```
 
-Když nastavíte zařízení, které dokončíte nastavením CredSSP, [jeho povolením na zařízení](tutorial-assess-hyper-v.md#delegate-credentials-for-smb-vhds). Tento postup je popsaný v dalším kurzu této série.
+Když zařízení nastavíte, dokončíte nastavení CredSSP [jeho povolením na zařízení](tutorial-assess-hyper-v.md#delegate-credentials-for-smb-vhds). Tento postup je popsaný v dalším kurzu této série.
 
 
-### <a name="verify-appliance-settings"></a>Ověření nastavení zařízení
+## <a name="prepare-for-appliance-deployment"></a>Příprava na nasazení zařízení
 
 Před nastavením zařízení Azure Migrate a zahájením posouzení v dalším kurzu připravte na nasazení zařízení.
 
@@ -197,25 +219,6 @@ Před nastavením zařízení Azure Migrate a zahájením posouzení v dalším 
 3. Zkontrolujte data, která bude zařízení shromažďovat během zjišťování a posouzení.
 4. [Poznamenejte si](migrate-support-matrix-hyper-v.md#assessment-port-requirements) požadavky na přístup k portu pro dané zařízení.
 
-
-### <a name="set-up-an-account-for-vm-discovery"></a>Nastavení účtu pro zjišťování virtuálních počítačů
-
-Azure Migrate potřebuje oprávnění ke zjišťování místních virtuálních počítačů.
-
-- Nastavte doménu nebo místní uživatelský účet s oprávněními správce v hostitelích nebo clusteru Hyper-V.
-
-    - Pro všechny hostitele a clustery, které chcete zahrnout do zjišťování, potřebujete jeden účet.
-    - Účet může být místní nebo doménový účet. Doporučujeme, aby měl oprávnění správce na hostitelích nebo clusterech Hyper-V.
-    - Případně, pokud nechcete přiřadit oprávnění správce, jsou potřeba následující oprávnění:
-        - Uživatelé vzdálené správy
-        - Správci technologie Hyper-V
-        - Uživatelé sledování výkonu
-
-### <a name="enable-integration-services-on-vms"></a>Povolit integrační služby na virtuálních počítačích
-
-V každém virtuálním počítači by měly být povolené integrační služby, aby Azure Migrate mohl zachytit informace o operačním systému na VIRTUÁLNÍm počítači.
-
-Na virtuálních počítačích, které chcete zjišťovat a hodnotit, povolte na každém virtuálním počítači [integrační služby technologie Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) .
 
 ## <a name="prepare-for-hyper-v-migration"></a>Příprava na migraci technologie Hyper-V
 
@@ -230,8 +233,9 @@ V tomto kurzu jste:
 > [!div class="checklist"]
 > * Nastavte oprávnění účtu Azure.
 > * Připraví hostitelé a virtuální počítače Hyper-V pro posouzení a migraci.
+> * Připraveno pro nasazení zařízení Azure Migrate.
 
-Přejděte k dalšímu kurzu a vytvořte projekt Azure Migrate a vyhodnoťte virtuální počítače Hyper-V pro migraci do Azure.
+Přejděte k dalšímu kurzu, abyste vytvořili Azure Migrate projekt, nasadili zařízení a zjistili a vyhodnotili virtuální počítače Hyper-V pro migraci do Azure.
 
 > [!div class="nextstepaction"]
 > [Posouzení virtuálních počítačů Hyper-V](./tutorial-assess-hyper-v.md)

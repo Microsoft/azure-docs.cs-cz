@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 6f9368dfa230817e985de09b1ee398c55693e425
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 99ba530d4857520693060d83ad78a7f127003a3d
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214818"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732314"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti pomocí Load Balanceru úrovně Standard na webu Azure Portal
 
@@ -56,10 +56,10 @@ Load Balancer úrovně Standard podporuje pouze standardní veřejnou IP adresu.
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte *MyResourceGroupLBAZ* .|
-    | Název                   | *myLoadBalancer*                                   |
-    | Oblast         | Vyberte **Západní Evropa**.                                        |
-    | Typ          | Vyberte možnost **veřejné**.                                        |
-    | SKU           | Vyberte **Standard**.                          |
+    | Name (Název)                   | *myLoadBalancer*                                   |
+    | Region (Oblast)         | Vyberte **Západní Evropa**.                                        |
+    | Typ          | Vyberte **Veřejný**.                                        |
+    | Skladová položka           | Vyberte **Standard**.                          |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
     | Název veřejné IP adresy              | Do textového pole zadejte *myPublicIP* .   |
     |Zóna dostupnosti| Vyberte **zóna redundantní**.    |
@@ -98,24 +98,24 @@ V této části vytvoříte pravidla skupiny zabezpečení sítě, která povol�
 1. Na webu Azure Portal v levé nabídce klikněte na **Všechny prostředky** a pak vyhledejte a vyberte **myNetworkSecurityGroup** ve skupině prostředků **myResourceGroupLBAZ**.
 2. V části **Nastavení** klikněte na **Příchozí pravidla zabezpečení** a pak klikněte na **Přidat**.
 3. Zadáním následujících hodnot pro příchozí pravidlo zabezpečení *myHTTPRule* povolte příchozí připojení HTTP na portu 80:
-    - Jako *Zdroj* zadejte **Značka služby**.
-    - Jako *Značka zdrojové služby* zadejte **Internet**.
-    - Jako *Rozsahy cílových portů* zadejte **80**.
-    - Jako *Protokol* zadejte **TCP**.
-    - Jako *Akce* zadejte **Povolit**.
-    - Jako *Priorita* zadejte **100**.
+    - Jako **Zdroj** zadejte *Značka služby*.
+    - Jako **Značka zdrojové služby** zadejte *Internet*.
+    - Jako **Rozsahy cílových portů** zadejte *80*.
+    - Jako **Protokol** zadejte *TCP*.
+    - Jako **Akce** zadejte *Povolit*.
+    - Jako **Priorita** zadejte *100*.
     - Jako název pravidla nástroje pro vyrovnávání zatížení zadejte *myHTTPRule*.
     - Jako popis pravidla nástroje pro vyrovnávání zatížení zadejte *Povolení protokolu HTTP*.
-4. Klikněte na tlačítko **OK**.
+4. Klikněte na **OK**.
  
    ![Vytvoření virtuální sítě](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 5. Zopakováním kroků 2 až 4 vytvořte další pravidlo *myRDPRule*, které povolí příchozí připojení RDP na portu 3389, s použitím následujících hodnot:
-    - Jako *Zdroj* zadejte **Značka služby**.
-    - Jako *Značka zdrojové služby* zadejte **Internet**.
-    - Jako *Rozsahy cílových portů* zadejte **3389**.
-    - Jako *Protokol* zadejte **TCP**.
-    - Jako *Akce* zadejte **Povolit**.
-    - Jako *Priorita* zadejte **200**.
+    - Jako **Zdroj** zadejte *Značka služby*.
+    - Jako **Značka zdrojové služby** zadejte *Internet*.
+    - Jako **Rozsahy cílových portů** zadejte *3389*.
+    - Jako **Protokol** zadejte *TCP*.
+    - Jako **Akce** zadejte *Povolit*.
+    - Jako **Priorita** zadejte *200*.
     - Jako název zadejte *myRDPRule*.
     - Jako popis zadejte *Povolení protokolu RDP*.
 
@@ -127,7 +127,7 @@ Vytvořte v různých zónách (zóny 1, 2 a 3) pro danou oblast virtuální po�
     - *myVM1* – název virtuálního počítače.        
     - *azureuser* – uživatelské jméno správce.    
     - *myResourceGroupLBAZ* – v části **Skupina prostředků** vyberte **Použít existující** a pak vyberte *myResourceGroupLBAZ*.
-2. Klikněte na tlačítko **OK**.
+2. Klikněte na **OK**.
 3. Vyberte velikost virtuálního počítače **DS1_V2** a klikněte na **Vybrat**.
 4. Zadejte následující hodnoty nastavení virtuálního počítače:
     - *zone 1* – zóna, do které umístíte virtuální počítač.
@@ -179,7 +179,7 @@ Za účelem distribuce provozu do virtuálních počítačů obsahuje fond back-
     - Pro možnost **Virtuální počítač** v rozevírací nabídce klikněte na **myVM1**.
     - Pro možnost **IP adresa** v rozevírací nabídce klikněte na IP adresu myVM1.
 4. Kliknutím na **Přidat nový back-endový prostředek** přidejte jednotlivé virtuální počítače (*myVM2* a *myVM3*), které chcete přidat do back-endového fondu nástroje pro vyrovnávání zatížení.
-5. Klikněte na **Přidat**.
+5. Klikněte na tlačítko **Add** (Přidat).
 
     ![Přidání do back-endového fondu adres –](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
 
@@ -197,7 +197,7 @@ Pokud chcete nástroji pro vyrovnávání zatížení povolit monitorování sta
     - *80* – číslo portu.
     - *15* – **Interval** mezi pokusy o testování v sekundách.
     - *2* – **Prahová hodnota špatného stavu** neboli počet po sobě jdoucích selhání sondy, ke kterým musí dojít, aby se virtuální počítač považoval za poškozený.
-4. Klikněte na tlačítko **OK**.
+4. Klikněte na **OK**.
 
    ![Přidání testu](./media/load-balancer-standard-public-availability-zones-portal/4-load-balancer-probes.png)
 
@@ -214,7 +214,8 @@ Pravidlo nástroje pro vyrovnávání zatížení slouží k definování způso
     - *80* – back-endový port.
     - *myBackendPool* – název backendového fondu.
     - *myHealthProbe* – název sondy stavu.
-4. Klikněte na tlačítko **OK**.
+4. Klikněte na **OK**.
+    
     
     ![Přidání pravidla vyrovnávání zatížení](./media/load-balancer-standard-public-availability-zones-portal/load-balancing-rule.png)
 

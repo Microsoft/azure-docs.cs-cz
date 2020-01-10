@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6af9da060f7742fe2a9b9656199edd5feb67bec1
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3238de3f1d3416964af05db031b5ecec20e4f140
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687411"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720187"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace Ruby a Postgres v Azure App Service v systému Linux
 
@@ -30,9 +30,9 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
 * [Nainstalovat Git](https://git-scm.com/).
 * [Nainstalovat jazyk Ruby 2.3](https://www.ruby-lang.org/en/documentation/installation/).
@@ -151,7 +151,7 @@ Po vytvoření serveru Azure Database for PostgreSQL se v Azure CLI zobrazí pod
 Ve službě Cloud Shell pomocí příkazu [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az-postgres-server-firewall-rule-create) vytvořte pro svůj server Postgres pravidlo brány firewall umožňující klientská připojení. Pokud je jako počáteční i koncová adresa IP nastavená hodnota 0.0.0.0, je brána firewall otevřená jen pro ostatní prostředky Azure. Zástupný text *\<Postgres-server-name >* nahraďte jedinečným názvem serveru.
 
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres-server-name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
+az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres-server-name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
 > [!TIP] 
@@ -208,7 +208,7 @@ production:
 
 Uložte změny.
 
-### <a name="test-the-application-locally"></a>Testování aplikace v místním prostředí
+### <a name="test-the-application-locally"></a>Test aplikace v místním prostředí
 
 Vraťte se do místního terminálu a nastavte následující proměnné prostředí:
 
@@ -366,7 +366,7 @@ Pro scénář úkolů upravíte aplikaci tak, abyste mohli úkol označit jako d
 
 ### <a name="add-a-column"></a>Přidání sloupce
 
-V terminálu přejděte do kořenového adresáře úložiště Gitu.
+V terminálu přejděte do kořenového adresáře úložiště Git.
 
 Vytvořte novou migraci, která přidá do tabulky `Tasks` logický sloupec s názvem `Done`:
 
