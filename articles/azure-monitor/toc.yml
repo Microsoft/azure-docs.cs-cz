@@ -91,6 +91,8 @@
       items:
         - name: Protokolování dat
           href: platform/data-security.md
+        - name: Klíče spravované zákazníkem
+          href: platform/customer-managed-keys.md
         - name: Zpracování osobních protokolovaných dat
           href: platform/personal-data-mgmt.md
         - name: 'Shromažďování, uchovávání a ukládání dat aplikací'

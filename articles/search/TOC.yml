@@ -113,6 +113,8 @@
       items:
         - name: Přehled zabezpečení
           href: search-security-overview.md
+        - name: Vytvoření privátního koncového bodu
+          href: service-create-private-endpoint.md
         - name: Správa klíčů služeb
           href: search-security-api-keys.md
         - name: Přístup správce na základě role
@@ -333,7 +335,7 @@
       items:
         - name: 'Rozhraní API, verze 2019-05-06-Preview'
           href: search-api-preview.md
-        - name: Rozhraní ResetSkills API
+        - name: Rozhraní API pro resetování dovedností
           href: preview-api-resetskills.md
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.search/searchservices
