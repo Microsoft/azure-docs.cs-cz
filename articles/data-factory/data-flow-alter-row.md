@@ -1,57 +1,85 @@
 ---
-title: Mapování převodu toku dat na změnu řádku
-description: Postup aktualizace cíle databáze pomocí Azure Data Factory mapování datového toku změna transformace řádku
+title: Změna transformace řádku v toku dat mapování
+description: Postup aktualizace cíle databáze pomocí transformace ALTER Row v toku dat při mapování
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/12/2019
-ms.openlocfilehash: 1301b89ef1a6fb02356c6dcd4e568401eb5e9cd2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 01/08/2020
+ms.openlocfilehash: 0798a3f9ab45ce68086681e7aea96deeb9639f94
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930478"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834543"
 ---
-# <a name="azure-data-factory-alter-row-transformation"></a>Azure Data Factory ALTER Row transformovat
+# <a name="alter-row-transformation-in-mapping-data-flow"></a>Změna transformace řádku v toku dat mapování
 
 Použijte transformaci ALTER Row k nastavení zásad vložení, odstranění, aktualizace a Upsert na řádcích. Jako výrazy můžete přidat podmínky 1: n. Tyto podmínky by měly být zadány v pořadí podle priority, protože každý řádek bude označen zásadou odpovídající výrazu, který odpovídá prvnímu. Každá z těchto podmínek může mít za následek vložení, aktualizaci, odstranění nebo upserted řádku (nebo řádků). Příkaz ALTER Row může pro vaši databázi vyvolat i akci DDL & DML.
 
-
-
 ![Změnit nastavení řádku](media/data-flow/alter-row1.png "Změnit nastavení řádku")
 
-> [!NOTE]
-> Příkaz ALTER Row transformes bude pracovat jenom s databázemi nebo CosmosDB jímkami v toku dat. Akce, které přiřadíte do řádků (INSERT, Update, DELETE, Upsert), nebudou během relace ladění provedeny. Do kanálu musíte přidat úlohu spustit tok dat a pomocí ladění kanálu nebo triggerů můžete v databázových tabulkách přijmout zásady ALTER Row.
+Příkaz ALTER Row transformes bude pracovat jenom s databázemi nebo CosmosDB jímkami v toku dat. Akce, které přiřadíte k řádkům (vložení, aktualizace, odstranění, Upsert), nebudou během relace ladění provedeny. Spuštěním aktivity spustit tok dat v kanálu můžete v databázových tabulkách přijmout zásady ALTER Row.
 
-## <a name="indicate-a-default-row-policy"></a>Označení výchozích zásad řádků
+## <a name="specify-a-default-row-policy"></a>Zadání výchozích zásad řádků
 
-Vytvořte transformaci ALTER Row a zadejte zásadu řádku s podmínkou `true()`. Každý řádek, který nesplňuje žádný z dříve definovaných výrazů, bude označen pro zadané zásady řádků. Ve výchozím nastavení budou všechny řádky, které nesplňují žádný podmíněný výraz, označeny pro `Insert`.
+Vytvořte transformaci ALTER Row a zadejte zásadu řádku s podmínkou `true()`. Každý řádek, který neodpovídá žádnému z dříve definovaných výrazů, bude označen pro zadané zásady řádků. Ve výchozím nastavení budou všechny řádky, které neodpovídají žádnému podmíněnému výrazu, označeny pro `Insert`.
 
-![Změnit řádek jedna zásada](media/data-flow/alter-row4.png "Změnit řádek jedna zásada")
+![Změnit zásady řádků](media/data-flow/alter-row4.png "Změnit zásady řádků")
 
 > [!NOTE]
 > Pokud chcete označit všechny řádky jednou zásadou, můžete pro tuto zásadu vytvořit podmínku a určit podmínku jako `true()`.
 
-## <a name="view-policies"></a>Zobrazit zásady
+## <a name="view-policies-in-data-preview"></a>Zobrazit zásady v náhledu dat
 
-Zapnout režim ladění toku dat, aby se zobrazily výsledky zásad ALTER Row v podokně náhledu dat. Provedení příkazu ALTER Row v režimu ladění toku dat nevygeneruje knihovny DDL ani DML v rámci vašeho cíle. Aby tyto akce probíhaly, spusťte tok dat v rámci aktivity toku dat spuštění v rámci kanálu.
+Použijte [režim ladění](concepts-data-flow-debug-mode.md) k zobrazení výsledků zásad ALTER Row v podokně Náhled dat. Data ve verzi Preview transformace ALTER Row nepřinesou v cíli akce DDL ani DML.
 
 ![Změna zásad řádků](media/data-flow/alter-row3.png "Změna zásad řádků")
 
-To vám umožní ověřit a zobrazit stav každého řádku na základě vašich podmínek. K dispozici je ikona pro každou akci vložení, aktualizace, odstranění a Upsert, ke které dojde v toku dat, což znamená, která akce bude probíhat při spuštění toku dat uvnitř kanálu.
+Jednotlivé zásady pro změnu řádků jsou reprezentované ikonou, která indikuje, jestli se má provést akce INSERT, Update, Upsert nebo Deleted. V horním záhlaví se zobrazuje počet řádků ovlivněných každou zásadou ve verzi Preview.
 
-## <a name="sink-settings"></a>Nastavení jímky
+## <a name="allow-alter-row-policies-in-sink"></a>Povoluje změnu zásad řádků v jímky.
 
-Chcete-li změnit řádek na práci, je nutné mít typ jímky databáze. V nastavení jímky byste měli nastavit všechny akce, které odpovídají vašim podmínkám pro změnu řádku, které mají být povoleny.
+Aby fungovaly změny zásad řádků, musí datový proud zapisovat do databáze nebo Cosmos jímky. Na kartě **Nastavení** v jímky povolte, které změny zásad řádků jsou pro tuto jímku povoleny.
 
 ![Změnit jímku řádků](media/data-flow/alter-row2.png "Změnit jímku řádků")
 
-Výchozím chováním při toku dat ADF pomocí jímky databáze je vložení řádků. Pokud chcete, aby byly povoleny aktualizace, upsertuje a DELETE, je také nutné zaškrtnout políčka v jímky, aby byly akce povoleny.
+ Výchozím chováním je povolení vkládání pouze. Pokud chcete povolení aktualizací, upsertuje nebo odstranění, zaškrtněte políčko v jímky odpovídající této podmínce. Pokud jsou povoleny aktualizace, upsertuje nebo, je třeba určit, které klíčové sloupce se mají v jímky shodovat.
 
 > [!NOTE]
-> Pokud vaše vložení, aktualizace nebo upsertuje upraví schéma cílové tabulky v jímky, tok dat se nezdaří. Chcete-li změnit cílové schéma v databázi, je nutné zvolit možnost znovu vytvořit tabulku v jímky. Tím se vynechá a znovu vytvoří tabulka s novou definicí schématu.
+> Pokud vaše vložení, aktualizace nebo upsertuje upraví schéma cílové tabulky v jímky, tok dat se nezdaří. Chcete-li upravit cílové schéma v databázi, vyberte možnost **znovu vytvořit tabulku** jako akci tabulky. Tím se vynechá a znovu vytvoří tabulka s novou definicí schématu.
+
+## <a name="data-flow-script"></a>Skript toku dat
+
+### <a name="syntax"></a>Syntaxe
+
+```
+<incomingStream>
+    alterRow(
+           insertIf(<condition>?),
+           updateIf(<condition>?),
+           deleteIf(<condition>?),
+           upsertIf(<condition>?),
+        ) ~> <alterRowTransformationName>
+```
+
+### <a name="example"></a>Příklad:
+
+Níže uvedený příklad je změna transformace řádku s názvem `CleanData`, která přebírá příchozí datový proud `SpecifyUpsertConditions` a vytváří tři stavy ALTER Row. V předchozí transformaci je vypočítán sloupec s názvem `alterRowCondition`, který určuje, zda je řádek vložen, aktualizován nebo odstraněn v databázi. Pokud má hodnota sloupce hodnotu řetězce, která odpovídá pravidlu ALTER Row, přiřadí se tato zásada.
+
+V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
+
+![Příklad ALTER Row](media/data-flow/alter-row4.png "Příklad ALTER Row")
+
+Skript toku dat pro tuto transformaci je v následujícím fragmentu kódu:
+
+```
+SpecifyUpsertConditions alterRow(insertIf(alterRowCondition == 'insert'),
+    updateIf(alterRowCondition == 'update'),
+    deleteIf(alterRowCondition == 'delete')) ~> AlterRow
+```
 
 ## <a name="next-steps"></a>Další kroky
 

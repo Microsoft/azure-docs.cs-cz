@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: a63202fd5f29c3c2eee4ecaaae9a940078c15edc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f61fdedcd3c910ef5d09685fea00473a83b321f1
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421880"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834287"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Zprovoznění řešení Update Management, Change Tracking a inventáře
 
@@ -59,7 +59,7 @@ Pokud vybraný pracovní prostor už toto řešení obsahuje, řešení se znovu
 
 Když se počítač přidá do Update Management nebo řešení Change Tracking a inventáře, přidají se do jednoho ze dvou uložených hledání ve vašem pracovním prostoru. Tato uložená hledání jsou dotazy, které obsahují počítače cílené na tato řešení.
 
-Přejděte do svého účtu Automation a v části **Obecné**vyberte **uložená hledání** . Dvě uložená hledání, která používají tato řešení, se dají zobrazit v následující tabulce:
+Přejděte do pracovního prostoru Log Analytics a v části **Obecné**vyberte **uložená hledání** . Dvě uložená hledání, která používají tato řešení, se dají zobrazit v následující tabulce:
 
 |Name (Název)     |Kategorie  |Alias  |
 |---------|---------|---------|

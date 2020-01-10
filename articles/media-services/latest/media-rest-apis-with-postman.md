@@ -1,5 +1,5 @@
 ---
-title: Nakonfigurovat metodu post pro Azure Media Services REST API volání
+title: Konfigurace metody post pro Azure Media Services V3 REST API volání
 description: V tomto článku se dozvíte, jak nakonfigurovat metodu post, aby ji bylo možné použít k volání rozhraní REST API pro Azure Media Services (AMS).
 services: media-services
 documentationcenter: ''
@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2019
 ms.author: juliako
-ms.openlocfilehash: eee46bd8642f5ad4a8d036b9f6bf9a464c0d09f3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 872dad95fc5b536c51e251612f40439da020a059
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888100"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779633"
 ---
-# <a name="configure-postman-for-media-services-rest-api-calls"></a>Nakonfigurovat metodu post pro Media Services REST API volání
+# <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Konfigurace metody post pro Media Services V3 REST API volání
 
 V tomto článku se dozvíte, jak nakonfigurovat **metodu post** , aby ji bylo možné použít k volání rozhraní REST api pro Azure Media Services (AMS). V tomto článku se dozvíte, jak importovat soubory prostředí a kolekcí do nástroje **post**. Kolekce obsahuje seskupené definice požadavků HTTP, které volají Azure Media Services (AMS) REST API. Soubor prostředí obsahuje proměnné, které kolekce používá.
 
 Než začnete s vývojem, přečtěte si téma [vývoj s rozhraními api Media Services V3](media-services-apis-overview.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Vytvoření účtu Media Services](create-account-cli-how-to.md). Ujistěte se, že si pamatovat název skupiny prostředků a název účtu Media Services. 
 - Získání informací potřebných pro [přístup k rozhraním API](access-api-cli-how-to.md)

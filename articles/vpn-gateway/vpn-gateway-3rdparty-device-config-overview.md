@@ -1,60 +1,52 @@
 ---
-title: Partner konfigurací zařízení VPN pro připojení k Azure VPN Gateway | Dokumentace Microsoftu
-description: Tento článek obsahuje přehled konfigurací zařízení VPN partner pro připojení k Azure VPN Gateway.
+title: Konfigurace zařízení sítě VPN partnera pro připojení ke službě Azure VPN Gateway
+description: Tento článek poskytuje přehled konfigurací partnerských zařízení sítě VPN pro připojení ke službě Azure VPN Gateway.
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
-manager: rossort
-editor: ''
-tags: ''
-ms.assetid: a8bfc955-de49-4172-95ac-5257e262d7ea
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: 7d3a32b5f2b2742a36716bac9747f20c47c98858
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 733add5aa86ebd7faaaab78bb301ba9469433fdd
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66150180"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778018"
 ---
-# <a name="overview-of-partner-vpn-device-configurations"></a>Přehled konfigurací zařízení VPN partnera
-Tento článek obsahuje základní informace o konfiguraci místní zařízení VPN pro připojení k Azure VPN Gateway. A ukázkový virtuální síť Azure a nastavení brány sítě VPN se používá k ukazují, jak se připojit s použitím stejné parametry do různých místních konfigurací zařízení VPN.
+# <a name="overview-of-partner-vpn-device-configurations"></a>Přehled konfigurací partnerských zařízení sítě VPN
+Tento článek poskytuje přehled konfigurace místních zařízení VPN pro připojení ke službě Azure VPN Gateway. Ukázková instalace Azure Virtual Network a brány VPN se používá k zobrazení způsobu připojení k různým konfiguracím místních zařízení VPN pomocí stejných parametrů.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="device-requirements"></a>Požadavky na zařízení
-Azure VPN Gateway pomocí standardní sady protokolu IPsec/IKE pro site-to-site (S2S) VPN tunely. Seznam parametrů protokolu IPsec/IKE a kryptografické algoritmy pro služby Azure VPN Gateway najdete v tématu [informace o zařízeních VPN](vpn-gateway-about-vpn-devices.md). Můžete také zadáte přesný algoritmy a síly klíče pro konkrétní připojení jak je popsáno v [informace o kryptografických požadavcích](vpn-gateway-about-compliance-crypto.md).
+Brány VPN Azure používají standardní sady protokolů IPsec/IKE pro tunely VPN typu Site-to-Site (S2S). Seznam parametrů protokolu IPsec/IKE a šifrovacích algoritmů pro brány Azure VPN najdete v tématu [informace o zařízeních VPN](vpn-gateway-about-vpn-devices.md). Můžete také zadat přesné algoritmy a síly klíčů pro konkrétní připojení, jak je popsáno v [tématu o kryptografických požadavcích](vpn-gateway-about-compliance-crypto.md).
 
-## <a name ="singletunnel"></a>Jedno tunelové propojení sítě VPN
-První konfigurace v ukázce se skládá z jednoho tunelu S2S VPN mezi službou Azure VPN gateway a místní zařízení VPN. Volitelně můžete nakonfigurovat [protokol BGP (Border Gateway) přes tunelové propojení VPN](#bgp).
+## <a name ="singletunnel"></a>Jedno tunelové připojení VPN
+První konfigurace v ukázce se skládá z jednoho tunelu VPN S2S mezi službou Azure VPN Gateway a místním zařízením VPN. Volitelně můžete nakonfigurovat [Border Gateway Protocol (BGP) napříč tunelem sítě VPN](#bgp).
 
-![Diagram jeden tunel S2S VPN](./media/vpn-gateway-3rdparty-device-config-overview/singletunnel.png)
+![Diagram jednoho tunelového propojení S2S VPN](./media/vpn-gateway-3rdparty-device-config-overview/singletunnel.png)
 
-Podrobné pokyny k nastavení jeden tunel VPN najdete v tématu [konfigurace připojení typu site-to-site](vpn-gateway-howto-site-to-site-resource-manager-portal.md). Následující části zadejte parametry připojení pro ukázkové konfiguraci a zadejte skript prostředí PowerShell, který vám pomůžou začít.
+Podrobné pokyny k nastavení jediného tunelu VPN najdete v tématu [Konfigurace připojení typu Site-to-site](vpn-gateway-howto-site-to-site-resource-manager-portal.md). V následujících částech jsou uvedeny parametry připojení pro ukázkovou konfiguraci a zadání skriptu prostředí PowerShell, který vám může pomáhat začít.
 
 ### <a name="connection-parameters"></a>Parametry připojení
-Tato část obsahuje seznam parametrů pro příklady, které jsou popsané v předchozích částech.
+V této části jsou uvedeny parametry pro příklady, které jsou popsány v předchozích částech.
 
 | **Parametr**                | **Hodnota**                    |
 | ---                          | ---                          |
 | Předpony adres virtuální sítě        | 10.11.0.0/16<br>10.12.0.0/16 |
-| Azure VPN gateway IP         | Azure VPN Gateway IP         |
+| IP adresa brány VPN Azure         | Azure VPN Gateway IP         |
 | Předpony místních adres | 10.51.0.0/16<br>10.52.0.0/16 |
-| Místní IP adresa zařízení sítě VPN    | Místní IP adresa zařízení sítě VPN    |
-| * Virtuální sítě BGP číslo ASN                | 65010                        |
-| * Azure místní adresu partnera BGP           | 10.12.255.30                 |
-| * Místní ASN protokolu BGP         | 65050                        |
-| * Místní adresu partnera BGP on-premises     | 10.52.255.254                |
+| Místní IP adresa zařízení VPN    | Místní IP adresa zařízení VPN    |
+| * ASN protokolu BGP virtuální sítě                | 65010                        |
+| * IP adresa partnerského uzlu protokolu BGP Azure           | 10.12.255.30                 |
+| * Místní ASN BGP         | 65050                        |
+| * Místní IP adresa partnerského uzlu protokolu BGP     | 10.52.255.254                |
 
-\* Volitelný parametr BGP pouze.
+\* volitelný parametr pouze pro protokol BGP.
 
-### <a name="sample-powershell-script"></a>Ukázkový skript Powershellu
-Tato část obsahuje ukázkový skript, které vám pomůžou začít. Podrobné pokyny najdete v tématu [vytvořte připojení S2S VPN s použitím prostředí PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md).
+### <a name="sample-powershell-script"></a>Ukázkový skript PowerShellu
+V této části najdete ukázkový skript, který vám umožní začít. Podrobné pokyny najdete v tématu [vytvoření připojení S2S VPN pomocí PowerShellu](vpn-gateway-create-site-to-site-rm-powershell.md).
 
 ```powershell
 # Declare your variables
@@ -119,18 +111,18 @@ $lng5gw  = Get-AzLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1
 New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $False
 ```
 
-### <a name ="policybased"></a>(Volitelné) Použití vlastních zásad IPsec/IKE s UsePolicyBasedTrafficSelectors
-Pokud vaše zařízení VPN nepodporují selektory provozu na any-to-any, jako jsou založené na směrování nebo na základě VTI konfigurace, vytvoření vlastní zásady IPsec/IKE s [UsePolicyBasedTrafficSelectors](vpn-gateway-connect-multiple-policybased-rm-ps.md) možnost.
+### <a name ="policybased"></a>Volitelné Použití vlastních zásad IPsec/IKE s UsePolicyBasedTrafficSelectors
+Pokud vaše zařízení VPN nepodporují selektory přenosu dat, jako jsou například konfigurace založené na trasách nebo VTI, vytvořte vlastní zásadu IPsec/IKE s možností [UsePolicyBasedTrafficSelectors](vpn-gateway-connect-multiple-policybased-rm-ps.md) .
 
 > [!IMPORTANT]
-> Musíte vytvořit zásady IPsec/IKE Povolit **UsePolicyBasedTrafficSelectors** možnost připojení.
+> Pokud chcete povolit možnost **UsePolicyBasedTrafficSelectors** na připojení, musíte vytvořit zásadu IPSec/IKE.
 
 
-Ukázkový skript vytvoří zásady IPsec/IKE s následující algoritmy a parametry:
+Vzorový skript vytvoří zásadu IPsec/IKE s následujícími algoritmy a parametry:
 * IKEv2: AES256, SHA384, DHGroup24
-* Protokol IPsec: AES256, SHA1, PFS24, až 7 200 doba života přidružení zabezpečení sekund a 20,480,000 KB (20 GB)
+* IPsec: AES256, SHA1, PFS24, životnost SA 7 200 sekund a 20 480 000 KB (20 GB)
 
-Skript platí zásady IPsec/IKE a umožňuje **UsePolicyBasedTrafficSelectors** možnost připojení.
+Skript použije zásady IPsec/IKE a povolí možnost **UsePolicyBasedTrafficSelectors** na připojení.
 
 ```powershell
 $ipsecpolicy5 = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA1 -PfsGroup PFS24 -SALifeTimeSeconds 7200 -SADataSizeKilobytes 20480000
@@ -141,21 +133,21 @@ $lng5gw  = Get-AzLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1
 New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $False -IpsecPolicies $ipsecpolicy5 -UsePolicyBasedTrafficSelectors $True
 ```
 
-### <a name ="bgp"></a>(Volitelné) Použít protokol BGP pro připojení S2S VPN
-Když vytvoříte připojení S2S VPN, můžete volitelně použít [protokol BGP pro bránu VPN](vpn-gateway-bgp-resource-manager-ps.md). Tento přístup má dva rozdíly:
+### <a name ="bgp"></a>Volitelné Použít protokol BGP u připojení S2S VPN
+Když vytvoříte připojení S2S VPN, můžete volitelně použít protokol [BGP pro bránu VPN](vpn-gateway-bgp-resource-manager-ps.md). Tento přístup má dva rozdíly:
 
-* Předpony místních adres může být adresa jednoho hostitele. IP adresa partnerského uzlu protokolu BGP s místními určena následujícím způsobem:
+* Předpony místních adres můžou být jedinou adresou hostitele. Místní IP adresa partnerského uzlu BGP je uvedená níže:
 
     ```powershell
     New-AzLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP5 -AddressPrefix $LNGPrefix50 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP5
     ```
 
-* Když vytvoříte připojení, je nutné nastavit **- EnableBGP** možnost $True:
+* Když vytvoříte připojení, musíte nastavit možnost **-EnableBGP** na $true:
 
     ```powershell
     New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
     ```
 
-## <a name="next-steps"></a>Další postup
-Podrobné pokyny k nastavení bran VPN typu aktivní aktivní najdete v tématu [Konfigurace bran VPN typu aktivní aktivní pro připojení VNet-to-VNet mezi různými místy a](vpn-gateway-activeactive-rm-powershell.md).
+## <a name="next-steps"></a>Další kroky
+Podrobné pokyny k nastavení bran VPN typu aktivní-aktivní najdete v tématu [Konfigurace bran VPN typu aktivní-aktivní pro připojení mezi různými místy a připojení typu VNet-to-VNet](vpn-gateway-activeactive-rm-powershell.md).
 

@@ -1,32 +1,32 @@
 ---
-title: Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem (Preview)
+title: Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem
 titleSuffix: Azure Cognitive Search
-description: Doplňte šifrování na straně serveru přes indexy a mapy synonym v Azure Kognitivní hledání prostřednictvím klíčů, které vytvoříte a spravujete v Azure Key Vault. Tato funkce je aktuálně ve verzi Public Preview.
+description: Doplňte šifrování na straně serveru přes indexy a mapy synonym v Azure Kognitivní hledání pomocí klíčů, které vytvoříte a spravujete v Azure Key Vault.
 manager: nitinme
 author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: 4f78b4b7b38c6e67aa8aebf04e3a8ef0fdbd000f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 01/08/2020
+ms.openlocfilehash: 2663e6c37819acf7cb781779107673b8ee3aec53
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112934"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832244"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Šifrování v klidovém formátu obsahu v Azure Kognitivní hledání používání klíčů spravovaných zákazníkem v Azure Key Vault
 
-> [!IMPORTANT] 
-> Podpora šifrování v klidovém umístění je momentálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) a [.net SDK verze 8,0-Preview](search-dotnet-sdk-migration-version-9.md) . V tuto chvíli není dostupná žádná podpora portálu.
-
-Ve výchozím nastavení používá Azure Kognitivní hledání šifrování obsahu uživatele v klidovém stavu pomocí [klíčů spravovaných službou](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models). Výchozí šifrování můžete doplnit pomocí dalších vrstev šifrování s použitím klíčů, které vytvoříte a spravujete v Azure Key Vault. Tento článek vás provede jednotlivými kroky.
+Ve výchozím nastavení služba Azure Kognitivní hledání šifruje indexovaný obsah v klidovém stavu pomocí [klíčů spravovaných službou](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models). Výchozí šifrování můžete doplnit pomocí dalších vrstev šifrování s použitím klíčů, které vytvoříte a spravujete v Azure Key Vault. Tento článek vás provede jednotlivými kroky.
 
 Šifrování na straně serveru je podporováno prostřednictvím integrace s [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview). Můžete vytvořit vlastní šifrovací klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování šifrovacích klíčů. Pomocí Azure Key Vault můžete také auditovat použití klíče. 
 
 Šifrování pomocí klíčů spravovaných zákazníkem se při vytváření těchto objektů konfiguruje na úrovni mapy index nebo synonym, a ne na úrovni vyhledávací služby. Nemůžete zašifrovat obsah, který už existuje. 
 
-Můžete použít různé klíče z různých trezorů klíčů. To znamená, že jedna vyhledávací služba může hostovat několik šifrovaných indexes\synonym map, z nichž každý zašifrovaný potenciálně používá jiný klíč spravovaný zákazníkem spolu s indexes\synonym mapami, které nejsou šifrované pomocí klíčů spravovaných zákazníkem. 
+Klíče nemusí být ve stejném Key Vault. Jedna vyhledávací služba může hostovat víc šifrovaných indexů nebo synonym, která se zašifrují vlastními šifrovacími klíči spravovanými zákazníky uloženými v různých trezorech klíčů.  Můžete mít také indexy a mapy synonym ve stejné službě, které nejsou šifrovány pomocí klíčů spravovaných zákazníkem. 
+
+> [!IMPORTANT] 
+> Tato funkce je k dispozici na [REST API verze 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) a [.net SDK verze 8,0-Preview](search-dotnet-sdk-migration-version-9.md). V tuto chvíli není v Azure Portal žádná podpora ke konfiguraci šifrovacích klíčů spravovaných zákazníkem.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -38,11 +38,14 @@ V tomto příkladu se používají následující služby.
 
 + Pro úlohy konfigurace se používá [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) nebo [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
-+ K volání REST API verze Preview můžete použít [post](search-get-started-postman.md), [Azure PowerShell](search-create-index-rest-api.md) a [Azure kognitivní hledání SDK](https://aka.ms/search-sdk-preview) . V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK pro šifrování spravované zákazníkem.
++ K volání REST API lze použít [post](search-get-started-postman.md), [Azure PowerShell](search-create-index-rest-api.md) a [Azure kognitivní hledání SDK](https://aka.ms/search-sdk-preview) . V tuto chvíli není k dispozici žádná podpora portálu pro šifrování spravované zákazníkem.
+
+>[!Note]
+> Vzhledem k povaze šifrování s použitím klíčů spravovaných zákazníkem nebude Azure Kognitivní hledání moct načíst vaše data, pokud se odstraní klíč trezoru klíčů Azure. Aby nedošlo ke ztrátě dat způsobenému Key Vault náhodným odstraněním klíčů, **musíte** povolit ochranu před odstraněním a vyprázdněním v Key Vault, aby ji bylo možné použít. Další informace najdete v tématu [Azure Key Vault obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).   
 
 ## <a name="1---enable-key-recovery"></a>1 – povolit obnovení klíče
 
-Tento krok je volitelný, ale důrazně se doporučuje. Po vytvoření prostředku Azure Key Vault Povolte ochranu proti **odstranění** a **vyprázdnění** ve vybraném trezoru klíčů spuštěním následujících příkazů PowerShellu nebo rozhraní příkazového řádku Azure CLI:   
+Po vytvoření prostředku Azure Key Vault Povolte ochranu proti **odstranění** a **vyprázdnění** ve vybraném trezoru klíčů spuštěním následujících příkazů PowerShellu nebo rozhraní příkazového řádku Azure CLI:   
 
 ```powershell
 $resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "<vault_name>").ResourceId
@@ -57,9 +60,6 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 ```azurecli-interactive
 az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --enable-purge-protection
 ```
-
->[!Note]
-> Z důvodu velmi vysoké povahy šifrování s použitím klíčů spravovaných zákazníkem nebude Azure Kognitivní hledání moct načíst vaše data, pokud se odstraní klíč trezoru klíčů Azure. Aby nedošlo ke ztrátě dat způsobenému Key Vault náhodným odstraněním klíčů, důrazně doporučujeme, abyste u vybraného trezoru klíčů povolili ochranu pomocí obnovitelného odstranění a vyprázdnění. Další informace najdete v tématu [Azure Key Vault obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).   
 
 ## <a name="2---create-a-new-key"></a>2\. vytvoření nového klíče
 
@@ -85,7 +85,7 @@ Přiřazení identity ke službě Search vám umožní udělit službě vyhledá
 
 Azure Kognitivní hledání podporuje dva způsoby přiřazení identity: spravovaná identita nebo externě spravovaná Azure Active Directory aplikace. 
 
-Pokud je to možné, použijte spravovanou identitu. Je nejjednodušší způsob, jak přiřadit identitu službě vyhledávání a ve většině scénářů fungovat. Pokud používáte více klíčů pro indexy a mapy synonym nebo pokud je vaše řešení v distribuované architektuře, která ruší ověřování na základě identity, použijte pokročilý [externě spravovaný Azure Active Directory přístup](#aad-app) , který je popsaný na konci. v tomto článku.
+Pokud je to možné, použijte spravovanou identitu. Je nejjednodušší způsob, jak přiřadit identitu službě vyhledávání a ve většině scénářů fungovat. Pokud používáte více klíčů pro indexy a mapy synonym nebo pokud je vaše řešení v distribuované architektuře, která ruší ověřování na základě identity, použijte pokročilý [externě spravovaný Azure Active Directory přístup](#aad-app) , který je popsaný na konci tohoto článku.
 
  Obecně spravovaná identita umožňuje službě vyhledávání ověřovat Azure Key Vault bez uložení přihlašovacích údajů do kódu. Životní cyklus tohoto typu spravované identity je svázán s životním cyklem služby vyhledávání, který může mít pouze jednu spravovanou identitu. [Přečtěte si další informace o spravovaných identitách](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
@@ -228,7 +228,7 @@ Vytvoření aplikace AAD na portálu:
 
 >[!Important]
 > Pokud se rozhodnete použít aplikaci AAD ověřování místo spravované identity, zvažte skutečnost, že Azure Kognitivní hledání nemá oprávnění ke správě vaší aplikace AAD vaším jménem a je až do správy aplikace AAD, jako je například pravidelná. rotace ověřovacího klíče aplikace
-> Při změně aplikace AAD nebo jejího ověřovacího klíče se musí nejdřív aktualizovat index služby Azure Kognitivní hledání nebo mapa synonym, která tuto aplikaci používá, aby používala novou aplikaci ID\key **před** odstraněním předchozí aplikace nebo její autorizace. klíč a před odvoláním Key Vault k němu.
+> Při změně aplikace AAD nebo jejího ověřovacího klíče se musí nejdřív aktualizovat index služby Azure Kognitivní hledání nebo mapa synonym, která tuto aplikaci používá, aby používala novou aplikaci ID\key **před** odstraněním předchozí aplikace nebo jejího autorizačního klíče a před tím, než odvoláte Key Vault přístup k ní.
 > Když se to nepovede, vykreslí se index nebo mapa synonym nepoužitelné, protože po ztrátě přístupu ke klíči nebude moct obsah dešifrovat.   
 
 ## <a name="next-steps"></a>Další kroky

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 1641a1020193395d7d2ddb9c4893bd7bc89cdcd0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 90658e030c907a9fd99dd8fb9a6e90698d72b1f0
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681858"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834465"
 ---
 # <a name="active-and-inactive-events"></a>Aktivní a neaktivní události
 
@@ -25,10 +25,11 @@ V některých scénářích může aplikace před tím, než bude vědět, zda b
 
 K těmto scénářům obvykle dochází v následujících případech:
 
-* Předvedete si předvykreslování uživatelského rozhraní, které uživatel může nebo nemusí zobrazit. 
-* Vaše aplikace provádí prediktivní přizpůsobení, ve kterém se provádí volání pořadí s malým kontextem v reálném čase a aplikace může nebo nemusí používat výstup. 
+* Předvedete si předvykreslování uživatelského rozhraní, které uživatel může nebo nemusí zobrazit.
+* Vaše aplikace provádí prediktivní přizpůsobení, ve kterém se provádí volání pořadí s malým kontextem v reálném čase a aplikace může nebo nemusí používat výstup.
 
-V těchto případech použijte přizpůsobení pro volání pořadí, které vyžaduje, aby událost byla _neaktivní_. Přizpůsobování neočekává pro tuto událost odměňování a nepoužije výchozí odměnu. Pokud aplikace používá informace z volání pořadí, použijte později v obchodní logice, stačí událost _aktivovat_ . Jakmile je událost aktivní, přizpůsobování očekává nějakou odměnu události. Pokud neprovede žádné explicitní volání rozhraní API pro odměnu, přizpůsobuje se výchozí odměna.
+V těchto případech použijte přizpůsobení pro volání pořadí, které vyžaduje, aby událost byla _neaktivní_. Přizpůsobování neočekává pro tuto událost odměňování a nepoužije výchozí odměnu.
+Pokud aplikace používá informace z volání pořadí, použijte později v obchodní logice, stačí událost _aktivovat_ . Jakmile je událost aktivní, přizpůsobování očekává nějakou odměnu události. Pokud neprovede žádné explicitní volání rozhraní API pro odměnu, přizpůsobuje se výchozí odměna.
 
 ## <a name="inactive-events"></a>Neaktivní události
 
@@ -42,15 +43,28 @@ Nastavení učení určuje základní *parametry* školení modelů. Dva modely 
 
 Soubory zásad učení můžete importovat a exportovat z Azure Portal. Tuto metodu použijte, chcete-li uložit existující zásady, otestovat je, nahradit je a archivovat je v rámci správy zdrojového kódu jako artefakty pro budoucí referenci a audit.
 
+Naučte [se](how-to-learning-policy.md) importovat a exportovat zásady učení.
+
 ### <a name="understand-learning-policy-settings"></a>Principy nastavení zásad učení
 
 Nastavení v zásadách učení není určené ke změně. Nastavení změňte pouze v případě, že rozumíte tomu, jak ovlivňují přizpůsobování. Bez tohoto vědomí byste mohli způsobovat problémy, včetně neověřování modelů přizpůsobeného pro přizpůsobování.
+
+Přizpůsobení používá [vowpalwabbit](https://github.com/VowpalWabbit) ke školení a hodnocení událostí. Informace o tom, jak upravit nastavení výuky pomocí vowpalwabbit, najdete v [dokumentaci k vowpalwabbit](https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Command-line-arguments) . Jakmile budete mít správné argumenty příkazového řádku, uložte příkaz do souboru s následujícím formátem (nahraďte hodnotu vlastnosti argumenty požadovaným příkazem) a nahrajte soubor pro import nastavení výuky v podokně **Nastavení modelu a učení** v Azure Portal pro váš prostředek pro přizpůsobování.
+
+Následující `.json` jsou příkladem zásad učení.
+
+```json
+{
+  "name": "new learning settings",
+  "arguments": " --cb_explore_adf --epsilon 0.2 --power_t 0 -l 0.001 --cb_type mtr -q ::"
+}
+```
 
 ### <a name="compare-learning-policies"></a>Porovnání zásad učení
 
 Můžete porovnat, jak různé zásady učení provádějí data z minulých protokolů v protokolech přizpůsobených pomocí [offline vyhodnocení](concepts-offline-evaluation.md).
 
-[Nahrajte vlastní zásady učení](how-to-offline-evaluation.md) a porovnejte je s aktuálními zásadami učení.
+[Nahrajte vlastní zásady učení](how-to-learning-policy.md) a porovnejte je s aktuálními zásadami učení.
 
 ### <a name="optimize-learning-policies"></a>Optimalizace výukových zásad
 

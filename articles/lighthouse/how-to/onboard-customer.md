@@ -1,14 +1,14 @@
 ---
 title: Nasazení zákazníků do správy delegovaných prostředků Azure
 description: Naučte se, jak začlenit správu delegovaných prostředků do Azure, aby k nim bylo možné získat a spravovat jejich prostředky prostřednictvím vašeho vlastního tenanta.
-ms.date: 12/17/2019
+ms.date: 01/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 16d1b4d9d51c377c4aa09b5e35b02790d8a1b8dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 09e42a65891494370250fbab9b22cdf37a6fd318
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453554"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834132"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Nasazení zákazníků do správy delegovaných prostředků Azure
 
@@ -32,9 +32,12 @@ Pokud chcete připojit tenanta zákazníka, musí mít aktivní předplatné Azu
 
 - ID tenanta tenanta poskytovatele služeb (kde budete spravovat prostředky zákazníka)
 - ID tenanta tenanta zákazníka (který bude mít prostředky spravované poskytovatelem služeb)
-- ID předplatných pro každé konkrétní předplatné v tenantovi zákazníka, které bude spravovat poskytovatel služeb (nebo který obsahuje skupiny prostředků, které bude spravovat poskytovatel služeb)
+- ID předplatných pro každé konkrétní předplatné v tenantovi zákazníka, které bude spravovat poskytovatel služeb (nebo který obsahuje skupiny prostředků, které bude spravovat poskytovatel služeb).
 
-Pokud tyto informace ještě nemáte, můžete si je načíst jedním z následujících způsobů. Ujistěte se, že používáte tyto přesné hodnoty v nasazení.
+> [!NOTE]
+> I když chcete jen začlenit jednu nebo více skupin prostředků v rámci předplatného, je nutné nasazení provést na úrovni předplatného, takže budete potřebovat ID předplatného.
+
+Pokud tyto hodnoty ID již nemáte, můžete je načíst jedním z následujících způsobů. Ujistěte se, že používáte tyto přesné hodnoty v nasazení.
 
 ### <a name="azure-portal"></a>Portál Azure
 
@@ -113,9 +116,9 @@ K připojení zákazníka budete muset vytvořit šablonu [Azure Resource Manage
 |Pole  |Definice  |
 |---------|---------|
 |**mspOfferName**     |Název popisující tuto definici. Tato hodnota se zobrazí zákazníkovi jako název nabídky.         |
-|**mspOfferDescription**     |Stručný popis vaší nabídky (například "nabídka správy virtuálních počítačů contoso"),      |
+|**mspOfferDescription**     |Stručný popis vaší nabídky (například "nabídka správy virtuálních počítačů contoso").      |
 |**managedByTenantId**     |Vaše ID tenanta.          |
-|**autorizace**     |Hodnoty **principalId** pro uživatele/skupiny/hlavní názvy služby z vašeho tenanta, každý s **principalIdDisplayName** , které vašemu zákazníkovi pomůžou pochopit účel autorizace a namapovány na předdefinovanou **roleDefinitionId** hodnotu k určení úrovně přístupu,         |
+|**autorizace**     |Hodnoty **principalId** pro uživatele/skupiny/hlavní názvy služby z vašeho tenanta, každý s **principalIdDisplayName** , které vašemu zákazníkovi pomůžou pochopit účel autorizace a namapovány na integrovanou hodnotu **roleDefinitionId** , která určuje úroveň přístupu.      |
 
 > [!TIP]
 > Ujistěte se, že položky **managedByTenantID**, **principalIdDisplayName**a **roleDefinitionId** jsou stejné jako hodnoty používané v Azure. V těchto hodnotách nepoužívejte žádná velká písmena.
@@ -132,7 +135,7 @@ Proces zprovoznění vyžaduje šablonu Azure Resource Manager (poskytnutá v [�
 |Předplatné (při použití nabídky publikované do Azure Marketplace)   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
-> Proces, který je zde popsán, vyžaduje samostatné nasazení každého předplatného, i když jsou ve stejném tenantovi zákazníka. Pokud se připojujete k několika skupinám prostředků v rámci různých předplatných ve stejném tenantovi zákazníka, vyžaduje se také samostatné nasazení. Připojování více skupin prostředků v rámci jednoho předplatného se ale dá udělat v jednom nasazení.
+> Proces, který je zde popsán, vyžaduje samostatné nasazení na úrovni předplatného pro každé připojení na úrovni předplatného, a to i v případě, že odběry provádíte ve stejném tenantovi zákazníka. Pokud se připojujete k několika skupinám prostředků v rámci různých předplatných ve stejném tenantovi zákazníka, vyžaduje se také samostatné nasazení. Připojování více skupin prostředků v rámci jednoho předplatného se ale dá udělat v jednom nasazení na úrovni předplatného.
 >
 > Pro stejné předplatné (nebo skupiny prostředků v rámci předplatného se taky vyžadují samostatná nasazení). Každá použitá nabídka musí používat jiný **mspOfferName**.
 
@@ -198,7 +201,7 @@ Po aktualizaci souboru parametrů musí uživatel v tenantovi zákazníka nasadi
 Vzhledem k tomu, že se jedná o nasazení na úrovni předplatného, nejde ho iniciovat v Azure Portal. Nasazení se dá provést pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI, jak vidíte níže.
 
 > [!IMPORTANT]
-> Toto nasazení musí provést účet bez hosta v tenantovi zákazníka, který má [předdefinovanou roli](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) předplatného pro odběr (nebo který obsahuje skupiny prostředků, které jsou připojené). Pokud chcete zobrazit všechny uživatele, kteří můžou delegovat předplatné, uživatel v tenantovi zákazníka může vybrat předplatné v Azure Portal, otevřít **řízení přístupu (IAM)** , [vypsat všechny role](../../role-based-access-control/role-definitions-list.md#list-all-roles)a pak vybrat **vlastníka** a zobrazit tak všechny uživatele s touto rolí.
+> Toto nasazení na úrovni předplatného musí provést jiný účet než host v tenantovi zákazníka, který má [předdefinovanou roli](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) předplatného pro odběr (nebo který obsahuje skupiny prostředků, které jsou připojené). Pokud chcete zobrazit všechny uživatele, kteří můžou delegovat předplatné, uživatel v tenantovi zákazníka může vybrat předplatné ve Azure Portal, otevřít **řízení přístupu (IAM)** a [Zobrazit všechny uživatele s rolí vlastníka](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
 
 ### <a name="powershell"></a>PowerShell
 

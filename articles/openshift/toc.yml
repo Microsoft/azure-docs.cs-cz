@@ -37,6 +37,16 @@
       href: howto-deploy-prometheus.md
     - name: Správa projektů v clusteru Azure Red Hat OpenShift
       href: howto-manage-projects.md
+    - name: Monitorování a protokolování
+      items:
+        - name: Azure Monitor pro kontejnery (Preview)
+          items:
+            - name: Konfigurace Azure Monitoru pro kontejnery
+              href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
+              maintainContext: true
+            - name: Deaktivace Azure Monitoru pro kontejnery
+              href: ../azure-monitor/insights/container-insights-optout-openshift.md
+              maintainContext: true
 - name: Referenční informace
   items:
     - name: Rozhraní příkazového řádku platformy Azure Red Hat OpenShift

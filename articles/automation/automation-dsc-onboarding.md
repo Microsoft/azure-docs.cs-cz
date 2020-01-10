@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 9ebe38b54c042a0c945200bc3d88076b16c2e6f9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c5876dd293a97414ff4f48dbb8645e64226a6ba8
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75366375"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834105"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Připojování počítačů pro správu podle konfigurace stavu Azure Automation
 
@@ -31,8 +31,7 @@ Konfigurace stavu Azure Automation se dá použít ke správě různých počít
 
 - Virtuální počítače Azure
 - Virtuální počítače Azure (klasické)
-- Instance EC2 Amazon Web Services (AWS)
-- Fyzické nebo virtuální počítače s Windows v místním prostředí nebo v jiném cloudu než Azure/AWS
+- Fyzické nebo virtuální počítače s Windows v místním prostředí nebo v jiném cloudu než Azure (včetně instancí AWS EC2)
 - Fyzické nebo virtuální počítače se systémem Linux v místním prostředí, v Azure nebo v jiném cloudu než Azure
 
 Pokud nejste připravení spravovat konfiguraci počítače z cloudu, můžete také použít konfiguraci stavu Azure Automation jako koncový bod pouze sestavy.
@@ -82,11 +81,7 @@ Nejlepším způsobem, jak registrovat virtuální počítače z jiných předpl
 Příklady jsou k dispozici v [rozšíření konfigurace požadovaného stavu pomocí šablon Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template).
 Pokud chcete najít registrační klíč a registrační adresu URL, které se použijí jako parametry v šabloně, přečtěte si následující část [**Zabezpečená registrace**](#secure-registration) .
 
-## <a name="amazon-web-services-aws-virtual-machines"></a>Virtuální počítače s Amazon Web Services (AWS)
-
-Pomocí sady nástrojů AWS DSC můžete snadno připojit Amazon Web Services virtuálních počítačů ke správě konfigurace pomocí Azure Automation konfigurace stavu. Další informace o sadě nástrojů najdete [tady](https://blogs.msdn.microsoft.com/powershell/2016/04/20/aws-dsc-toolkit/).
-
-## <a name="physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws"></a>Fyzické nebo virtuální počítače s Windows v místním prostředí nebo v jiném cloudu než Azure/AWS
+## <a name="physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances"></a>Fyzické nebo virtuální počítače s Windows v místním prostředí nebo v jiném cloudu než Azure (včetně instancí AWS EC2)
 
 Servery Windows, na kterých běží místně nebo v jiných cloudových prostředích, je taky možné připojit k Azure Automation konfiguraci stavu, pokud mají [odchozí přístup k Azure](automation-dsc-overview.md#network-planning):
 

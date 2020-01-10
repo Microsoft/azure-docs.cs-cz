@@ -5,16 +5,16 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: b17bec5663cc8e9d199ad79bb5282b052b8c0182
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 74b0f83500903170616034d9d18d8ad31fa7065c
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670396"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834318"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux v Ruby pro Azure App Service
 
-Tento článek popisuje, jak [Azure App Service](app-service-linux-intro.md) spouští aplikace Ruby a jak můžete v případě potřeby přizpůsobit chování App Service. Aplikace Ruby musí být nasazeny se všemi požadovanými moduly [PIP](https://pypi.org/project/pip/) .
+Tento článek popisuje, jak [Azure App Service](app-service-linux-intro.md) spouští aplikace Ruby a jak můžete v případě potřeby přizpůsobit chování App Service. Aplikace Ruby musí být nasazené se všemi požadovanými [Gems](https://rubygems.org/gems).
 
 V této příručce najdete klíčové koncepty a pokyny pro vývojáře Ruby, kteří používají integrovaný kontejner Linux v nástroji App Service. Pokud jste nikdy Azure App Service nepoužili, měli byste nejdřív postupovat podle kurzu [Ruby pro rychlé](quickstart-ruby.md) zprovoznění a [Ruby v PostgreSQL](tutorial-ruby-postgres-app.md) .
 
@@ -47,7 +47,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 > ```
 > Your Ruby version is 2.3.3, but your Gemfile specified 2.3.1
 > ```
-> nebo
+> – nebo –
 > ```
 > rbenv: version `2.3.1' is not installed
 > ```
@@ -82,7 +82,7 @@ Pokud je toto nastavení definované, modul pro nasazení se spustí `bundle ins
 
 ### <a name="precompile-assets"></a>Předkompilovat prostředky
 
-Kroky po nasazení nekompiluje ve výchozím nastavení prostředky. Chcete-li zapnout předkompilaci assetů, nastavte [nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) `ASSETS_PRECOMPILE` na hodnotu `true`. Pak se příkaz `bundle exec rake --trace assets:precompile` spustí na konci postupu po nasazení. Například:
+Kroky po nasazení nekompiluje ve výchozím nastavení prostředky. Chcete-li zapnout předkompilaci assetů, nastavte [nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) `ASSETS_PRECOMPILE` na hodnotu `true`. Pak se příkaz `bundle exec rake --trace assets:precompile` spustí na konci postupu po nasazení. Příklad:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASSETS_PRECOMPILE=true
@@ -111,7 +111,7 @@ Proces spouštění můžete přizpůsobit následujícími způsoby:
 Server kolejnice v kontejneru Ruby běží ve výchozím nastavení v produkčním režimu a [předpokládá, že prostředky jsou předkompilovány a obsluhovány vaším webovým serverem](https://guides.rubyonrails.org/asset_pipeline.html#in-production). K obsluze statických prostředků ze serveru kolejnice je třeba provést dvě věci:
 
 - **Předkompilování prostředků** - [předkompilování statických prostředků místně](https://guides.rubyonrails.org/asset_pipeline.html#local-precompilation) a jejich ruční nasazení. Nebo ho modul pro nasazení místo toho zpracuje (viz [předkompilování prostředků](#precompile-assets).
-- **Povolit obsluze statických souborů** – pro obsluhu statických prostředků z kontejneru Ruby [nastavte nastavení aplikace `RAILS_SERVE_STATIC_FILES`](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) na `true`. Například:
+- **Povolit obsluze statických souborů** – pro obsluhu statických prostředků z kontejneru Ruby [nastavte nastavení aplikace `RAILS_SERVE_STATIC_FILES`](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) na `true`. Příklad:
 
     ```azurecli-interactive
     az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_SERVE_STATIC_FILES=true
@@ -125,7 +125,7 @@ Server kolejnice běží ve výchozím nastavení v provozním režimu. Chcete-l
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_ENV="development"
 ```
 
-Toto nastavení ale samostatně způsobí, že se server kolejnice spustí v režimu vývoje, který přijímá pouze požadavky localhost a není přístupný mimo kontejner. Pokud chcete přijmout žádosti vzdáleného klienta, nastavte [nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) `APP_COMMAND_LINE` na `rails server -b 0.0.0.0`. Toto nastavení aplikace umožňuje spustit vlastní příkaz v kontejneru Ruby. Například:
+Toto nastavení ale samostatně způsobí, že se server kolejnice spustí v režimu vývoje, který přijímá pouze požadavky localhost a není přístupný mimo kontejner. Pokud chcete přijmout žádosti vzdáleného klienta, nastavte [nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) `APP_COMMAND_LINE` na `rails server -b 0.0.0.0`. Toto nastavení aplikace umožňuje spustit vlastní příkaz v kontejneru Ruby. Příklad:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings APP_COMMAND_LINE="rails server -b 0.0.0.0"
@@ -133,7 +133,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ### <a name="set-secret_key_base-manually"></a>Nastavit secret_key_base ručně
 
-Pokud chcete místo toho, aby se vám App Service vygenerovala, použít vlastní `secret_key_base` hodnotu, nastavte `SECRET_KEY_BASE` [nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) tak, aby byla požadovaná hodnota. Například:
+Pokud chcete místo toho, aby se vám App Service vygenerovala, použít vlastní `secret_key_base` hodnotu, nastavte `SECRET_KEY_BASE` [nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) tak, aby byla požadovaná hodnota. Příklad:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings SECRET_KEY_BASE="<key-base-value>"

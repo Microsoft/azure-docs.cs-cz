@@ -1,20 +1,20 @@
 ---
 title: Ověřování pomocí Azure Maps | Microsoft Docs
-description: Ověřování pro používání služby Azure Maps Services.
+description: Azure Active Directory (Azure AD) nebo ověřování pomocí sdíleného klíče pro používání služeb Microsoft Azure Maps. Přečtěte si, jak získat Azure Maps klíč předplatného.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/24/2019
+ms.date: 12/30/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 84af496a92bd3c7b30062e965335782f7661aa4a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a58436063009b732a15e74c8a3fc3f95b8df29cf
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575659"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834198"
 ---
 # <a name="authentication-with-azure-maps"></a>Ověřování s využitím Azure Maps
 
@@ -22,12 +22,14 @@ Azure Maps podporuje dva způsoby ověřování požadavků: Shared Key and Azur
 
 ## <a name="shared-key-authentication"></a>Ověřování sdíleného klíče
 
-Ověřování pomocí sdíleného klíče předává klíče vygenerované Azure Mapsm účtem s každým požadavkem Azure Maps.  Při vytváření Azure Maps účtu se generují dva klíče. Pro každý požadavek na Azure Maps služby je nutné přidat klíč předplatného do adresy URL jako parametr.
+Ověřování pomocí sdíleného klíče předává klíče vygenerované Azure Mapsm účtem s každým požadavkem Azure Maps. Pro každý požadavek na Azure Maps služby je nutné přidat *klíč předplatného* do adresy URL jako parametr. Primární a sekundární klíče jsou generovány po vytvoření účtu Azure Maps. Při volání Azure Maps pomocí ověřování pomocí sdíleného klíče doporučujeme použít primární klíč jako klíč předplatného. Sekundární klíč lze použít ve scénářích, jako jsou například klíčové změny.  
+
+Informace o zobrazení klíčů v Azure Portal najdete v tématu [Správa ověřování](https://aka.ms/amauthdetails).
 
 > [!Tip]
 > Doporučujeme pravidelně znovu generovat klíče. Máte k dispozici dva klíče, abyste mohli při opětovném generování druhé klávesy zachovat připojení s jedním klíčem. Když znovu vygenerujete klíče, budete muset aktualizovat všechny aplikace, které přistupují k účtu, aby používaly nové klíče.
 
-Informace o zobrazení klíčů najdete v tématu [zobrazení podrobností o ověřování](https://aka.ms/amauthdetails).
+
 
 ## <a name="authentication-with-azure-active-directory-preview"></a>Ověřování pomocí Azure Active Directory (Preview)
 
@@ -45,7 +47,7 @@ Azure Maps pro každý účet Azure Maps vygeneruje *jedinečný identifikátor 
 
 | Prostředí Azure   | Koncový bod tokenu Azure AD |
 | --------------------|-------------------------|
-| Veřejné Azure        | https://login.microsoftonline.com |
+| Veřejný partnerský vztah Azure        | https://login.microsoftonline.com |
 | Azure Government    | https://login.microsoftonline.us |
 
 
@@ -59,7 +61,7 @@ Po přijetí tokenu z Azure AD se dá odeslat žádost do Azure Maps s následuj
 
 | Hlavička požadavku    |    Hodnota    |
 |:------------------|:------------|
-| x-MS-Client-ID    | 30d7cc....9f55|
+| x-ms-client-id    | 30d7cc….9f55|
 | Autorizace     | Nosič eyJ0e... HNIVN |
 
 > [!Note]

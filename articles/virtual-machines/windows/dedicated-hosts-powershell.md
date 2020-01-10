@@ -12,41 +12,25 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 92dca6f4f41ff426aebcb8e580653afaa71afff8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ae7c6f2d5f05b3d4ed3744be57112a62606cf622
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033371"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833838"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Preview: nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure PowerShell
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure PowerShell
 
 Tento článek vás provede procesem vytvoření [vyhrazeného hostitele](dedicated-hosts.md) Azure pro hostování virtuálních počítačů. 
 
-Ujistěte se, že máte nainstalovanou Azure PowerShell verze 2.4.2 nebo novější a že jste se k účtu Azure přihlásili pomocí `Connect-AzAccount`. Pokud chcete nainstalovat verzi 2.4.2, otevřete příkazový řádek PowerShellu a zadejte:
+Ujistěte se, že máte nainstalovanou verzi Azure PowerShell 2.8.0 nebo novější a že jste k účtu Azure přihlášení pomocí `Connect-AzAccount`. 
 
-```powershell
-Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrerelease
-```
+## <a name="limitations"></a>Omezení
 
-K povolení funkcí modulu Preview v PowerShellu budete potřebovat aspoň 1.6.0 verze modulu PowerShellGet. Nejnovější verze prostředí PowerShell Core mají tuto možnost automaticky vestavěnou, ale u starších verzí PowerShellu můžete spustit následující příkaz, který aktualizuje na nejnovější verzi:
+- Sady škálování virtuálních počítačů se na vyhrazených hostitelích aktuálně nepodporují.
+- Podporují se tyto řady virtuálních počítačů: DSv3 a ESv3. 
 
-```powershell
-Install-Module -Name PowerShellGet -Repository PSGallery -Force
-```
-
-
-> [!IMPORTANT]
-> Vyhrazené hostitele Azure jsou momentálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> **Známá omezení verze Preview**
-> - Sady škálování virtuálních počítačů se na vyhrazených hostitelích aktuálně nepodporují.
-> - Počáteční verze Preview podporuje následující řadu virtuálních počítačů: DSv3 a ESv3. 
-
-
-
-## <a name="create-a-host-group"></a>Vytvoření skupiny hostitelů
+## <a name="create-a-host-group"></a>Vytvoření hostitelské skupiny
 
 **Skupina hostitelů** je prostředek, který představuje kolekci vyhrazených hostitelů. Vytvoříte skupinu hostitelů v oblasti a zóně dostupnosti a přidáte do ní hostitele. Při plánování vysoké dostupnosti jsou k dispozici další možnosti. U vyhrazených hostitelů můžete použít jednu z následujících možností: 
 - Rozsah napříč několika zónami dostupnosti. V takovém případě je nutné mít skupinu hostitelů v každé z zón, které chcete použít.

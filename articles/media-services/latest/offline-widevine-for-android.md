@@ -1,5 +1,5 @@
 ---
-title: Konfigurace účtu pro offline streamování chráněného obsahu Widevine – Azure
+title: Online streamování Widevine pro Android s Azure Media Services V3
 description: V tomto tématu se dozvíte, jak nakonfigurovat účet Azure Media Services pro offline streamování chráněného obsahu Widevine.
 services: media-services
 keywords: POMLČKa, DRM, režim offline, Widevine, ExoPlayer, Android
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 1c1142f995376a8a640f33402294e20c925bbfbb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 17416fce887f5f5b952232e284873e539fd68337
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974151"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779905"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Online streamování Widevine pro Android
 
@@ -42,7 +42,7 @@ Pro sestavování aplikací pro Android Player se vytvoří osnova tří možnos
 > [!NOTE]
 > Offline DRM se účtuje jenom při vytváření jediné žádosti o licenci při stažení obsahu. Neúčtují se žádné chyby.
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 Před implementací offline DRM pro Widevine v zařízeních s Androidem byste měli nejdřív:
 

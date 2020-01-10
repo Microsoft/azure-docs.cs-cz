@@ -3,12 +3,12 @@ title: Funkce zabezpečení, které vám pomůžou chránit cloudové úlohy
 description: Naučte se používat funkce zabezpečení v Azure Backup k zajištění většího zabezpečení záloh.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 9a3c13856d3c130f2396488fed09313578dda79c
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: e3da4778a82cd5eb50fbb82c7f9f00cf6c6f1a85
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75496922"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829625"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Funkce zabezpečení, které vám pomůžou chránit cloudové úlohy, které používají Azure Backup
 
@@ -26,7 +26,7 @@ Obnovitelné odstranění se v současné době podporuje v Středozápadní USA
 
 ### <a name="soft-delete-for-vms-using-azure-portal"></a>Obnovitelné odstranění pro virtuální počítače pomocí Azure Portal
 
-1. Aby bylo možné odstranit zálohovaná data virtuálního počítače, je třeba zastavit zálohování. V Azure Portal přejděte do trezoru služby Recovery Services, klikněte pravým tlačítkem na zálohovanou položku a vyberte **Zastavit zálohování**.
+1. K odstranění zálohovaných dat virtuálního počítače je třeba zastavit zálohování. V Azure Portal přejděte do trezoru služby Recovery Services, klikněte pravým tlačítkem na zálohovanou položku a vyberte **Zastavit zálohování**.
 
    ![Snímek obrazovky Azure Portal zálohované položky](./media/backup-azure-security-feature-cloud/backup-stopped.png)
 
@@ -89,7 +89,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 #### <a name="undoing-the-deletion-operation-using-azure-powershell"></a>Zrušení operace odstranění pomocí Azure PowerShellu
 
-Nejdřív načtěte příslušnou zálohovanou položku, která je ve stavu tichého odstranění, tj., chystá se odstranit.
+Nejdřív načtěte příslušnou zálohovanou položku, která je ve stavu tichého odstranění (tj., chystá se odstranit).
 
 ```powershell
 
@@ -164,7 +164,7 @@ Zálohovaná data v tichém odstraněném stavu před zakázáním této funkce 
 Postupujte následovně:
 
 1. Chcete-li [Zakázat obnovitelné odstranění](#disabling-soft-delete), postupujte podle pokynů.
-2. V Azure Portal přejdete do svého trezoru, přejdete na **zálohované položky** a zvolíte obnovitelné odstraněný virtuální počítač.
+2. V Azure Portal přejdete do trezoru, přejdete na **položku zálohované položky**a zvolíte odstraněný virtuální počítač.
 
 ![Výběr obnovitelného odstraněného virtuálního počítače](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
@@ -232,19 +232,32 @@ Pokud byly položky odstraněny před vypnutím obnovitelného odstranění, pak
 2. Pak pomocí REST API podle kroků uvedených [tady](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)zakažte funkci obnovitelného odstranění.
 3. Pak zálohy odstraňte pomocí REST API, jak je uvedeno [zde](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data).
 
-## <a name="other-security-features"></a>Další funkce zabezpečení
+## <a name="encryption"></a>Šifrování
 
-### <a name="storage-side-encryption"></a>Šifrování na straně úložiště
+### <a name="encryption-of-backup-data-using-microsoft-managed-keys"></a>Šifrování zálohovaných dat pomocí spravovaných klíčů společnosti Microsoft
 
-Azure Storage automaticky šifruje vaše data při jejich uchování do cloudu. Šifrování chrání vaše data a usnadňuje splnění závazků týkajících se zabezpečení a dodržování předpisů v organizaci. Data v Azure Storage jsou šifrována a dešifrována transparentně pomocí 256 šifrování AES, je k dispozici jedna z nejúčinnějších šifrovacích šifr a je kompatibilní se standardem FIPS 140-2. Šifrování Azure Storage se v systému Windows podobá šifrování BitLockeru. Azure Backup data před uložením automaticky šifrují. Před načtením Azure Storage data dešifruje.  
+Zálohovaná data se šifrují automaticky pomocí Azure Storage šifrování. Šifrování chrání vaše data a pomáhá splnit závazky zabezpečení a dodržování předpisů vaší organizace. Data se šifrují a dešifrují transparentně pomocí 256 šifrování AES, což je jedna z nejúčinnějších šifrovacích šifr, která jsou kompatibilní se standardem FIPS 140-2. Šifrování Azure Storage se v systému Windows podobá šifrování BitLockeru.
 
 V rámci Azure jsou data přenášená mezi službou Azure Storage a trezorem chráněná protokolem HTTPS. Tato data zůstávají v páteřní síti Azure.
 
-Další informace najdete v [Azure Storage šifrování pro](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)neaktivní neaktivní data.  V [Azure Backup nejčastějších dotazech](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) k zodpovězení všech otázek, které se vám týkají šifrování.
+Další informace najdete v tématu [Azure Storage šifrování pro](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)neaktivní neaktivní data. V tématu [Azure Backup – Nejčastější dotazy](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) , které vám pomohou zodpovědět případné dotazy týkající se šifrování.
 
-### <a name="vm-encryption"></a>Šifrování virtuálního počítače
+### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Šifrování zálohovaných dat pomocí klíčů spravovaných zákazníkem
+
+Při zálohování Azure Virtual Machines máte také možnost šifrovat zálohovaná data v Recovery Services trezoru pomocí šifrovacích klíčů uložených v Azure Key Vault.
+
+>[!NOTE]
+>Tato funkce je aktuálně v brzkém použití. Pokud chcete data záloh šifrovat pomocí zákaznických klíčů, vyplňte [Tento průzkum](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURE9TTDRIUEUyNFhNT1lZS1BNVDdZVllHWi4u) . Všimněte si, že možnost použití této funkce podléhá schválení Azure Backup služby.
+
+### <a name="backup-of-managed-disk-vm-encrypted-using-customer-managed-keys"></a>Zálohování virtuálního počítače se spravovaným diskem zašifrovaným pomocí klíčů spravovaných zákazníkem
+
+Azure Backup umožňuje zálohovat Azure Virtual Machines obsahující disky šifrované pomocí zákaznických spravovaných klíčů. Podrobnosti najdete v tématu [šifrování spravovaných disků pomocí klíčů spravovaných zákazníkem](https://docs.microsoft.com//azure/virtual-machines/windows/disk-encryption#customer-managed-keys-public-preview).
+
+### <a name="backup-of-encrypted-vms"></a>Zálohování šifrovaných virtuálních počítačů
 
 Pomocí služby Azure Backup můžete zálohovat a obnovovat virtuální počítače Azure s Windows nebo Linuxem pomocí šifrovaných disků. Pokyny najdete v tématu [zálohování a obnovení šifrovaných virtuálních počítačů pomocí Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
+
+## <a name="other-security-features"></a>Další funkce zabezpečení
 
 ### <a name="protection-of-azure-backup-recovery-points"></a>Ochrana Azure Backup bodů obnovení
 
@@ -282,11 +295,11 @@ Operace zrušit odstranění, po které následuje operace pokračovat, bude chr
 
 #### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>Můžu odstranit svůj trezor, pokud jsou v trezoru obnovitelné odstraněné položky?
 
-Trezor Recovery Services nelze odstranit, pokud jsou v trezoru nějaké zálohované položky. Odstraněné položky jsou trvale odstraněny 14 dnů po operaci odstranění. Pokud nemůžete počkat na 14 dní, pak [zakažte obnovitelné odstranění](#disabling-soft-delete), odstrante obnovitelné odstraněné položky a znovu je odstraňte, aby se trvale odstranily. Po zajistěte, aby nedocházelo k žádným chráněným položkám a žádné měkké odstraněné položky nemohly být odstraněny.  
+Trezor Recovery Services nelze odstranit, pokud jsou v trezoru nějaké zálohované položky. Odstraněné položky jsou trvale odstraněny 14 dnů po operaci odstranění. Pokud nemůžete počkat na 14 dní, pak [zakažte obnovitelné odstranění](#disabling-soft-delete), odstrante obnovitelné odstraněné položky a znovu je odstraňte, aby se trvale odstranily. Po zajistěte, aby nedocházelo k žádným chráněným položkám a žádné tiché odstraněné položky, Trezor je možné odstranit.  
 
 #### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Můžu odstranit data starší než 14 dní, po jejichž uplynutí bude období obnovitelného odstranění?
 
-Ne. Nelze odstranit dočasně odstraněné položky, budou automaticky odstraněny po 14 dnech. Tato funkce zabezpečení má povolenou ochranu zálohovaných dat před náhodnými nebo škodlivými odstraněními.  Měli byste počkat na 14 dní před provedením jakékoli jiné akce na virtuálním počítači.  Odstraněné položky se nebudou účtovat.  Pokud potřebujete znovu ochránit virtuální počítače označené pro obnovitelné odstranění během 14 dní do nového trezoru, obraťte se na podporu Microsoftu.
+Ne. Nelze odstranit dočasně odstraněné položky, budou automaticky odstraněny po 14 dnech. Tato funkce zabezpečení má povolenou ochranu zálohovaných dat před náhodnými nebo škodlivými odstraněními.  Měli byste počkat na 14 dní před provedením jakékoli jiné akce na virtuálním počítači.  Odstraněné položky se nebudou účtovat.  Pokud potřebujete znovu zapnout ochranu virtuálních počítačů označených pro obnovitelné odstranění do 14 dní do nového trezoru, obraťte se na podporu Microsoftu.
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>Může dojít k obnovitelnému odstranění operací v PowerShellu nebo rozhraní příkazového řádku?
 

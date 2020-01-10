@@ -1,18 +1,19 @@
 ---
-title: 'Připojení místní sítě ke službě Azure virtual network: Síť Site-to-Site VPN: ROZHRANÍ PŘÍKAZOVÉHO ŘÁDKU | Dokumentace Microsoftu'
+title: 'Připojení místních sítí k virtuální síti: síť Site-to-Site VPN: CLI'
 description: Postup vytvoření připojení IPsec z vaší místní sítě k virtuální síti Azure přes veřejný internet. Tyto kroky vám pomůžou vytvořit připojení VPN Gateway typu Site-to-Site mezi různými místy pomocí rozhraní příkazového řádku.
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: 6cf427ee1dbd47d3b762035abc2236bda65db116
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6d28a5a37be2947ea6cc7019d2b3cc73932c60d6
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66161538"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779089"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>Vytvoření virtuální sítě s připojením VPN typu Site-to-Site pomocí rozhraní příkazového řádku
 
@@ -38,7 +39,7 @@ Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 * Ujistěte se, že máte kompatibilní zařízení VPN a někoho, kdo jej umí nakonfigurovat. Další informace o kompatibilních zařízeních VPN a konfiguraci zařízení najdete v tématu [Informace o zařízeních VPN](vpn-gateway-about-vpn-devices.md).
 * Ověřte, že máte veřejnou IPv4 adresu pro vaše zařízení VPN.
 * Pokud neznáte rozsahy IP adres v konfiguraci vaší místní sítě, budete se muset spojit s někým, kdo vám s tím pomůže. Při vytváření této konfigurace musíte zadat předpony rozsahu IP adres, které bude Azure směrovat do vašeho místního umístění. Žádná z podsítí vaší místní sítě se nesmí překrývat s podsítěmi virtuální sítě, ke kterým se chcete připojit.
-* Azure Cloud Shell můžete použít ke spuštění příkazů rozhraní příkazového řádku (níže uvedených pokynů). Pokud chcete spustit příkazům místně, ověřte však, že máte nainstalovanou nejnovější verzi příkazů rozhraní příkazového řádku (2.0 nebo novější). Informace o instalaci příkazů rozhraní příkazového řádku najdete v tématech [Instalace Azure CLI](/cli/azure/install-azure-cli) a [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli). 
+* Pomocí Azure Cloud Shell můžete spustit příkazy rozhraní příkazového řádku (pokyny najdete níže). Pokud ale dáváte přednost spouštění příkazů místně, ověřte, že máte nainstalovanou nejnovější verzi příkazů rozhraní příkazového řádku (2,0 nebo novější). Informace o instalaci příkazů rozhraní příkazového řádku najdete v tématech [Instalace Azure CLI](/cli/azure/install-azure-cli) a [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli). 
  
   [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -67,9 +68,9 @@ GatewayType             = Vpn 
 ConnectionName          = VNet1toSite2
 ```
 
-## <a name="Login"></a>1. Připojení k vašemu předplatnému
+## <a name="Login"></a>1. Připojte se k předplatnému
 
-Pokud budete chtít spustit rozhraní příkazového řádku místně, připojení k vašemu předplatnému. Pokud používáte Azure Cloud Shell v prohlížeči, není potřeba připojení k vašemu předplatnému. Automaticky se připojí ve službě Azure Cloud Shell. Však můžete chtít ověřit, že používáte správné předplatné, jakmile se připojíte.
+Pokud se rozhodnete spustit rozhraní příkazového řádku místně, připojte se k vašemu předplatnému. Pokud používáte Azure Cloud Shell v prohlížeči, nemusíte se připojovat ke svému předplatnému. Automaticky se připojíte v Azure Cloud Shell. Můžete ale chtít ověřit, že po připojení používáte správné předplatné.
 
 [!INCLUDE [CLI login](../../includes/vpn-gateway-cli-login-include.md)]
 
@@ -81,7 +82,7 @@ Následující příklad vytvoří skupinu prostředků TestRG1 v umístění ea
 az group create --name TestRG1 --location eastus
 ```
 
-## <a name="VNet"></a>3. Vytvoření virtuální sítě
+## <a name="VNet"></a>3. vytvoření virtuální sítě
 
 Pokud ještě nemáte virtuální síť, vytvořte ji pomocí příkazu [az network vnet create](/cli/azure/network/vnet). Při vytváření virtuální sítě ověřte, že se zadané adresní prostory nepřekrývají s adresními prostory ve vaší místní síti.
 
@@ -96,7 +97,7 @@ Následující příklad vytvoří virtuální síť TestVNet1 a podsíť Subnet
 az network vnet create --name TestVNet1 --resource-group TestRG1 --address-prefix 10.11.0.0/16 --location eastus --subnet-name Subnet1 --subnet-prefix 10.11.0.0/24
 ```
 
-## 4. <a name="gwsub"></a>Vytvoření podsítě brány
+## 4. <a name="gwsub"> </a>vytvoření podsítě brány
 
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-include.md)]
@@ -124,7 +125,7 @@ Pomocí příkazu [az network local-gateway create](/cli/azure/network/local-gat
 az network local-gateway create --gateway-ip-address 23.99.221.164 --name Site2 --resource-group TestRG1 --local-address-prefixes 10.0.0.0/24 20.0.0.0/24
 ```
 
-## <a name="PublicIP"></a>6. Vyžádání veřejné IP adresy
+## <a name="PublicIP"></a>6. vyžádání veřejné IP adresy
 
 Brána VPN musí mít veřejnou IP adresu. Nejprve si vyžádáte prostředek IP adresy a pak na něj budete odkazovat při vytváření brány virtuální sítě. IP adresa se dynamicky přiřadí k prostředku po vytvoření brány VPN. Služba VPN Gateway aktuálně podporuje pouze *dynamické* přidělení veřejné IP adresy. Nemůžete si vyžádat statické přiřazení IP adresy. To ale neznamená, že se IP adresa po přiřazení k vaší bráně VPN bude měnit. Veřejná IP adresa se změní pouze v případě odstranění a nového vytvoření brány. V případě změny velikosti, resetování nebo jiné operace údržby/upgradu vaší brány VPN se nezmění.
 
@@ -150,7 +151,7 @@ Vytvořte bránu VPN pomocí příkazu [az network vnet-gateway create](/cli/azu
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWIP --resource-group TestRG1 --vnet TestVNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait 
 ```
 
-## <a name="VPNDevice"></a>8. Konfigurace zařízení VPN
+## <a name="VPNDevice"></a>8. konfigurace zařízení VPN
 
 Připojení Site-to-Site k místní síti vyžadují zařízení VPN. V tomto kroku nakonfigurujete zařízení VPN. Při konfiguraci zařízení VPN potřebujete následující:
 
@@ -165,7 +166,7 @@ Připojení Site-to-Site k místní síti vyžadují zařízení VPN. V tomto kr
 [!INCLUDE [Configure VPN device](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
 
-## <a name="CreateConnection"></a>9. Vytvoření připojení VPN
+## <a name="CreateConnection"></a>9. vytvoření připojení k síti VPN
 
 Vytvořte připojení VPN typu Site-to-Site mezi bránou virtuální sítě a místním zařízením VPN. Věnujte zvláštní pozornost hodnotě sdíleného klíče, která se musí shodovat s hodnotou sdíleného klíče nakonfigurovanou pro zařízení VPN.
 
@@ -177,7 +178,7 @@ az network vpn-connection create --name VNet1toSite2 --resource-group TestRG1 --
 
 Za malou chvíli dojde k vytvoření připojení.
 
-## <a name="toverify"></a>10. Ověření připojení VPN
+## <a name="toverify"></a>10. Ověřte připojení VPN.
 
 [!INCLUDE [verify connection](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
 
@@ -193,7 +194,7 @@ Tato část obsahuje běžné příkazy, které jsou užitečné při práci s k
 
 [!INCLUDE [local network gateway common tasks](../../includes/vpn-gateway-common-tasks-cli-include.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v tématu [Virtuální počítače](https://docs.microsoft.com/azure/).
 * Informace o protokolu BGP najdete v tématech [Přehled protokolu BGP](vpn-gateway-bgp-overview.md) a [Postup při konfiguraci protokolu BGP](vpn-gateway-bgp-resource-manager-ps.md).

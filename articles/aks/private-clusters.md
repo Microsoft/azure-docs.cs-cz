@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: mlearned
-ms.openlocfilehash: 8af0f998df2a92e51078a2e23806cca07ff08ca3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6152becb8debd0700ddab6190284514c6d6cf69d
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480083"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830050"
 ---
 # <a name="public-preview---private-azure-kubernetes-service-cluster"></a>Public Preview – privátní cluster služby Azure Kubernetes
 
@@ -81,16 +81,16 @@ Kde--Enable-Private-cluster je povinný příznak pro privátní cluster
 #### <a name="advanced-networking"></a>Pokročilé sítě  
 
 ```azurecli-interactive
-az aks create \ 
-    --resource-group <private-cluster-resource-group>\ 
-    --name <private-cluster-name> \ 
-    --load-balancer-sku standard
-    --enable-private-cluster 
-    --network-plugin azure \ 
-    --vnet-subnet-id <subnet-id> \ 
-    --docker-bridge-address 172.17.0.1/16 \ 
-    --dns-service-ip 10.2.0.10 \ 
-    --service-cidr 10.2.0.0/24 \ 
+az aks create \
+    --resource-group <private-cluster-resource-group> \
+    --name <private-cluster-name> \
+    --load-balancer-sku standard \
+    --enable-private-cluster \
+    --network-plugin azure \
+    --vnet-subnet-id <subnet-id> \
+    --docker-bridge-address 172.17.0.1/16 \
+    --dns-service-ip 10.2.0.10 \
+    --service-cidr 10.2.0.0/24 
 ```
 Kde--Enable-Private-cluster je povinný příznak pro privátní cluster 
 
@@ -108,6 +108,11 @@ Koncový bod serveru API nemá žádnou veřejnou IP adresu. V důsledku toho bu
     * klikněte na zónu Privátní DNS. 
     * v levém podokně vyberte odkaz virtuální síť.
     * Vytvořte nový odkaz pro přidání virtuální sítě virtuálního počítače do zóny Privátní DNS *(pro zpřístupnění odkazu zóny DNS trvá několik minut)* .
+    * Přejít zpět na skupinu prostředků MC_ * na portálu
+    * v pravém podokně vyberte virtuální síť. Název virtuální sítě bude ve formátu AKS-VNET-*.
+    * Výběr partnerských vztahů v levém podokně
+    * klikněte na Přidat a přidejte virtuální síť virtuálního počítače a vytvořte partnerský vztah.
+    * Přejděte do virtuální sítě, kde máte virtuální počítač, a potom klikněte na partnerské vztahy a vyberte virtuální síť AKS a vytvořte partnerský vztah. Pokud se rozsahy adres ve virtuální síti AKS a virtuální síti virtuálního počítače neprojeví, partnerský vztah selže. Další informace o partnerském vztahu virtuálních sítí najdete v tomto [dokumentu][virtual-network-peering] .
 * Přihlaste se k virtuálnímu počítači přes SSH
 * Instalace nástroje Kubectl a spuštění příkazů Kubectl
 
@@ -132,3 +137,5 @@ Koncový bod serveru API nemá žádnou veřejnou IP adresu. V důsledku toho bu
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [private-link-service]: https://docs.microsoft.com/azure/private-link/private-link-service-overview
+[virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
+

@@ -3,23 +3,20 @@ title: Nasazení vyhrazených hostitelů Azure pomocí Azure Portal
 description: Nasaďte virtuální počítače na vyhrazené hostitele pomocí Azure Portal.
 services: virtual-machines-linux
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/25/2019
+ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: 296c43c7c1345c67cc5b83749272e56c122ee535
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: c8e2ac929b3285b0ba122928485b423e34dc8f4f
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036423"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75835136"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-portal"></a>Verze Preview: nasazení virtuálních počítačů na vyhrazené hostitele pomocí portálu
+# <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Nasazení virtuálních počítačů na vyhrazené hostitele pomocí portálu
 
 Tento článek vás provede procesem vytvoření [vyhrazeného hostitele](dedicated-hosts.md) Azure pro hostování virtuálních počítačů. 
 
@@ -30,7 +27,7 @@ Tento článek vás provede procesem vytvoření [vyhrazeného hostitele](dedica
 1. V levém horním rohu webu Azure Portal zvolte **Vytvořit prostředek**.
 1. Ve vyhledávacím poli nad seznamem prostředků Azure Marketplace vyhledejte a vyberte **Ubuntu Server 16.04 LTS** od společnosti Canonical a pak zvolte **Vytvořit**.
 1. Na kartě **základy** v části **Project Details (podrobnosti projektu**) Zkontrolujte, že je vybrané správné předplatné, a pak jako **skupinu prostředků**vyberte *myDedicatedHostsRG* . 
-1. V části **Podrobnosti o instancích** jako *Název virtuálního počítače* zadejte **myVM** a u možnosti *Umístění* zvolte **USA – východ**.
+1. V části **Podrobnosti o instancích** jako **Název virtuálního počítače** zadejte *myVM* a u možnosti **Umístění** zvolte *USA – východ*.
 1. V části **Možnosti dostupnosti** vyberte **zóna dostupnosti**, v rozevíracím seznamu vyberte *1* .
 1. V poli Velikost vyberte **změnit velikost**. V seznamu dostupných velikostí vyberte jednu z Esv3 řad, jako je **Standard E2s V3**. Možná budete muset filtr vymazat, aby se zobrazily všechny dostupné velikosti.
 1. V části **Účet správce** vyberte **Veřejný klíč SSH**, zadejte své uživatelské jméno a potom do textového pole vložte svůj veřejný klíč. Ve veřejném klíči odeberte počáteční a koncové prázdné znaky.

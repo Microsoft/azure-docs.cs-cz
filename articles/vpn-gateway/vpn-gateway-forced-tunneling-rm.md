@@ -1,36 +1,29 @@
 ---
-title: 'Konfigurace vynuceného tunelování pro Azure Site-to-Site připojení: Resource Manager | Dokumentace Microsoftu'
+title: Konfigurace vynuceného tunelování pro připojení typu Site-to-site
 description: Jak přesměrování nebo "Vynutit" veškerý provoz směřující na Internet zpět do místního umístění.
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: cbe58db8-b598-4c9f-ac88-62c865eb8721
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 02/01/2018
 ms.author: cherylmc
-ms.openlocfilehash: b4d9a469e46d964055d9459901ebdb9c6d04cf24
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0b32bfba61f1c6f3f00c5189f611d84069dd9da
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66157455"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779667"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Konfigurace vynuceného tunelování pomocí modelu nasazení Azure Resource Manageru
 
-Vynucené tunelování umožňuje přesměrování nebo "Vynutit" veškerý provoz směřující na Internet zpět do místního umístění prostřednictvím tunelu VPN typu Site-to-Site pro kontrolu a auditování. Toto je důležité zabezpečení požadavek pro většinu podnikových IT zásady. Bez vynucené tunelování, internetový provoz z virtuálních počítačů v Azure vždy překračuje z Azure síťovou infrastrukturu přímo na Internetu, bez možnosti a umožňuje tak kontrolovat nebo auditování provozu. Neoprávněný přístup k Internetu může potenciálně vést k zpřístupnění informací nebo jiných druhů porušení zabezpečení.
+Vynucené tunelování umožňuje přesměrování nebo „vynucení“ směrování veškerého provozu vázaného na internet zpět do místního umístění prostřednictvím tunelu VPN typu site-to-site pro kontrolu a auditování. Toto je důležité zabezpečení požadavek pro většinu podnikových IT zásady. Bez vynuceného tunelování se internetový provoz z vašich virtuálních počítačů v Azure vždycky projde z síťové infrastruktury Azure přímo na Internet bez možnosti kontroly a auditu provozu. Neoprávněný přístup k Internetu může potenciálně vést k zpřístupnění informací nebo jiných druhů porušení zabezpečení.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)] 
 
-Tento článek vás provede konfigurací vynuceného tunelového propojení virtuální sítě vytvořené pomocí modelu nasazení Resource Manager. Vynucené tunelování se dá konfigurovat pomocí prostředí PowerShell, na portálu. Pokud chcete nakonfigurovat vynucené tunelování pro model nasazení classic, vyberte z rozevíracího seznamu následující klasické článku:
+Tento článek vás provede konfigurací vynuceného tunelování pro virtuální sítě vytvořené pomocí modelu nasazení Správce prostředků. Vynucené tunelování se dá konfigurovat pomocí prostředí PowerShell, na portálu. Pokud chcete nakonfigurovat vynucené tunelové propojení pro model nasazení Classic, vyberte z následujícího rozevíracího seznamu klasický článek:
 
 > [!div class="op_single_selector"]
 > * [PowerShell – Classic](vpn-gateway-about-forced-tunneling.md)
@@ -38,52 +31,52 @@ Tento článek vás provede konfigurací vynuceného tunelového propojení virt
 > 
 > 
 
-## <a name="about-forced-tunneling"></a>Informace o vynuceném tunelování
+## <a name="about-forced-tunneling"></a>O vynuceném tunelování
 
-Následující diagram znázorňuje, jak vynucené tunelování funguje. 
+Následující diagram znázorňuje, jak funguje vynucené tunelování. 
 
 ![Vynucené tunelování](./media/vpn-gateway-forced-tunneling-rm/forced-tunnel.png)
 
-V předchozím příkladu front-endové podsítě není vynucené tunelové propojení. Úlohy ve front-endové podsíti můžete nadále přijímat a reagovat na požadavky zákazníků z Internetu přímo. Střední vrstvě a back-endové podsítě jsou vynuceného tunelového propojení. Odchozí připojení k Internetu, tyto dvě podsítě se vynucené nebo přesměrován zpět do místní lokality přes jeden tunel VPN s2s.
+V předchozím příkladu není podsíť front-end vynucená tunelem. Úlohy ve front-endové podsíti můžete nadále přijímat a reagovat na požadavky zákazníků z Internetu přímo. Střední vrstvě a back-endové podsítě jsou vynuceného tunelového propojení. Odchozí připojení k Internetu, tyto dvě podsítě se vynucené nebo přesměrován zpět do místní lokality přes jeden tunel VPN s2s.
 
-Můžete omezit a kontrolovat přístup k Internetu z vašich virtuálních počítačů nebo cloudových služeb v Azure a přitom dál povolit architektury víceúrovňová služba vyžaduje. Pokud ve virtuálních sítích nejsou žádné úlohy přístupem k Internetu, můžete také provést vynucené tunelové propojení pro celý virtuální sítě.
+Můžete omezit a kontrolovat přístup k Internetu z vašich virtuálních počítačů nebo cloudových služeb v Azure a přitom dál povolit architektury víceúrovňová služba vyžaduje. Pokud ve virtuálních sítích neexistují žádné úlohy s přístupem k Internetu, můžete také použít vynucené tunelování pro celé virtuální sítě.
 
 ## <a name="requirements-and-considerations"></a>Požadavky a předpoklady
 
-Vynucené tunelování v Azure se konfiguruje prostřednictvím virtuální sítě trasy definované uživatelem. Přesměrování přenosů do místní lokality je vyjádřena jako výchozí trasu pro bránu Azure VPN. Další informace o směrování definovaného uživatelem a virtuálními sítěmi najdete v tématu [trasy definované uživatelem a předávání IP](../virtual-network/virtual-networks-udr-overview.md).
+Vynucené tunelování v Azure se konfiguruje prostřednictvím uživatelsky definovaných tras definovaných pomocí virtuální sítě. Přesměrování přenosů do místní lokality je vyjádřena jako výchozí trasu pro bránu Azure VPN. Další informace o uživatelem definovaných směrování a virtuálních sítích najdete v tématu [trasy definované uživatelem a předávání IP](../virtual-network/virtual-networks-udr-overview.md).
 
 * Každé podsíti virtuální sítě má integrované, směrovací tabulky systému. Systémovou tabulku směrování má následující tři skupiny tras:
   
-  * **Místní virtuální sítě trasy:** Přímo do cílového umístění virtuálních počítačů ve stejné virtuální síti.
-  * **Místní trasy:** Ke službě Azure VPN gateway.
-  * **Výchozí trasy:** Přímo k Internetu. Pakety směřující na privátní IP adresy není pokrytá předchozí dvě trasy se zahodí.
-* Tento postup používá trasy definované uživatelem (UDR) k vytvoření směrovací tabulky k přidání výchozí trasy a přidružte směrovací tabulky do vaší virtuální síti tento počet podsítí: Povolit vynucené tunelování na těchto podsítí.
-* Vynucené tunelování musí být přidružen virtuální síť, která má bránu sítě VPN založené na směrování. Budete muset nastavit "výchozí web" mezi místy místní servery připojené k virtuální síti. Navíc místního zařízení VPN musí být nakonfigurovaný pomocí 0.0.0.0/0 jako selektory provozu. 
-* ExpressRoute se vynucené tunelování přes tento mechanismus není nakonfigurovaná, ale místo toho zajišťuje inzeruje výchozí trasu prostřednictvím relací vytvoření partnerského vztahu protokolu BGP ExpressRoute. Další informace najdete v tématu [dokumentace ke službě ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).
+  * **Místní virtuální sítě trasy:** přímo do cílového umístění virtuálních počítačů ve stejné virtuální síti.
+  * **Místní trasy:** pro Azure VPN gateway.
+  * **Výchozí trasa:** přímo k Internetu. Pakety určené k privátním IP adresám, které nejsou pokryté předchozími dvěma trasami, jsou vyřazeny.
+* Tento postup používá uživatelem definované trasy (UDR) k vytvoření směrovací tabulky pro přidání výchozí trasy a následné přidružení směrovací tabulky k vašim virtuálním podsítím, aby bylo možné v těchto podsítích povolit vynucené tunelové propojení.
+* Vynucené tunelování musí být přidružené k virtuální síti, která má bránu sítě VPN založenou na trasách. Budete muset nastavit "výchozí web" mezi místy místní servery připojené k virtuální síti. Místní zařízení VPN musí být také nakonfigurováno s použitím 0.0.0.0/0 jako selektorů provozu. 
+* ExpressRoute se vynucené tunelování přes tento mechanismus není nakonfigurovaná, ale místo toho zajišťuje inzeruje výchozí trasu prostřednictvím relací vytvoření partnerského vztahu protokolu BGP ExpressRoute. Další informace najdete v [dokumentaci k ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).
 
 ## <a name="configuration-overview"></a>Přehled konfigurace
 
-Následující postup vám pomůže vytvořit skupinu prostředků a virtuální sítě. Potom vytvořte bránu VPN a konfigurace vynuceného tunelování. Virtuální síť "MultiTier virtuální sítě" v tomto postupu má tři podsítě: "Frontend", "Midtier" a "Backend", s čtyřmi různými místy: "DefaultSiteHQ" a tři větve.
+Následující postup vám pomůže vytvořit skupinu prostředků a virtuální síť. Pak vytvoříte bránu VPN a nakonfigurujete vynucené tunelování. V tomto postupu má virtuální síť s více vrstvami VNet tři podsítě: front-end, Midtier a back-end se čtyřmi připojeními mezi různými místy: "DefaultSiteHQ" a tři větve.
 
-Kroky postupu nastavte "DefaultSiteHQ' jako výchozí web připojení pro vynucené tunelování a konfigurovat"Midtier"a"Backend"podsítě pro použití vynuceného tunelování.
+Kroky pro vynucené tunelové propojení nastaví "DefaultSiteHQ" jako výchozí připojení lokality a nakonfigurují podsítě Midtier a back-end, aby používaly vynucené tunelování.
 
 ## <a name="before"></a>Než začnete
 
 Nainstalujte nejnovější verzi rutin PowerShellu pro Azure Resource Manager. Další informace o instalaci rutin prostředí PowerShell najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
 
 > [!IMPORTANT]
-> Instalace nejnovější verzi rutin Powershellu je povinný. Při spuštění některých z rutiny, jinak může vyskytnout chyby ověření.
+> Vyžaduje se instalace nejnovější verze rutin PowerShellu. V opačném případě může při spuštění některých rutin docházet k chybám ověřování.
 >
 >
 
-### <a name="to-log-in"></a>Pro přihlášení
+### <a name="to-log-in"></a>Přihlášení
 
 [!INCLUDE [To log in](../../includes/vpn-gateway-ps-login-include.md)]
 
-## <a name="configure-forced-tunneling"></a>Konfigurace vynuceného tunelování
+## <a name="configure-forced-tunneling"></a>Konfigurace vynuceného tunelového propojení
 
 > [!NOTE]
-> Může se zobrazit upozornění oznamující "typ objektu výstup této rutiny se změní v budoucí verzi". Toto je očekávané chování a tato upozornění můžete klidně ignorovat.
+> Můžou se zobrazit upozornění, že typ výstupního objektu této rutiny se v budoucí verzi upraví. Jedná se o očekávané chování a tato upozornění můžete bezpečně ignorovat.
 >
 >
 
@@ -93,7 +86,7 @@ Nainstalujte nejnovější verzi rutin PowerShellu pro Azure Resource Manager. D
    ```powershell
    New-AzResourceGroup -Name 'ForcedTunneling' -Location 'North Europe'
    ```
-2. Vytvoření virtuální sítě a zadejte podsítě.
+2. Vytvořte virtuální síť a zadejte podsítě.
 
    ```powershell 
    $s1 = New-AzVirtualNetworkSubnetConfig -Name "Frontend" -AddressPrefix "10.1.0.0/24"
@@ -102,7 +95,7 @@ Nainstalujte nejnovější verzi rutin PowerShellu pro Azure Resource Manager. D
    $s4 = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix "10.1.200.0/28"
    $vnet = New-AzVirtualNetwork -Name "MultiTier-VNet" -Location "North Europe" -ResourceGroupName "ForcedTunneling" -AddressPrefix "10.1.0.0/16" -Subnet $s1,$s2,$s3,$s4
    ```
-3. Vytvoření brány místní sítě.
+3. Vytvořte brány místní sítě.
 
    ```powershell
    $lng1 = New-AzLocalNetworkGateway -Name "DefaultSiteHQ" -ResourceGroupName "ForcedTunneling" -Location "North Europe" -GatewayIpAddress "111.111.111.111" -AddressPrefix "192.168.1.0/24"
@@ -110,7 +103,7 @@ Nainstalujte nejnovější verzi rutin PowerShellu pro Azure Resource Manager. D
    $lng3 = New-AzLocalNetworkGateway -Name "Branch2" -ResourceGroupName "ForcedTunneling" -Location "North Europe" -GatewayIpAddress "111.111.111.113" -AddressPrefix "192.168.3.0/24"
    $lng4 = New-AzLocalNetworkGateway -Name "Branch3" -ResourceGroupName "ForcedTunneling" -Location "North Europe" -GatewayIpAddress "111.111.111.114" -AddressPrefix "192.168.4.0/24"
    ```
-4. Vytvoření směrovací tabulky a trasy pravidla.
+4. Vytvořte směrovací tabulku a pravidlo směrování.
 
    ```powershell
    New-AzRouteTable –Name "MyRouteTable" -ResourceGroupName "ForcedTunneling" –Location "North Europe"
@@ -118,7 +111,7 @@ Nainstalujte nejnovější verzi rutin PowerShellu pro Azure Resource Manager. D
    Add-AzRouteConfig -Name "DefaultRoute" -AddressPrefix "0.0.0.0/0" -NextHopType VirtualNetworkGateway -RouteTable $rt
    Set-AzRouteTable -RouteTable $rt
    ```
-5. Přidružení směrovací tabulky k podsítím provozu Midtier a back-endu.
+5. Přidružte směrovací tabulku k podsítím Midtier a back-endu.
 
    ```powershell
    $vnet = Get-AzVirtualNetwork -Name "MultiTier-Vnet" -ResourceGroupName "ForcedTunneling"
@@ -126,7 +119,7 @@ Nainstalujte nejnovější verzi rutin PowerShellu pro Azure Resource Manager. D
    Set-AzVirtualNetworkSubnetConfig -Name "Backend" -VirtualNetwork $vnet -AddressPrefix "10.1.2.0/24" -RouteTable $rt
    Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
-6. Vytvořte bránu virtuální sítě. Tento krok trvá delší dobu, někdy 45 minut nebo déle, protože jsou vytváření a konfiguraci brány. Pokud se zobrazí chyby ValidateSet týkající se hodnota GatewaySKU, ověřte, že máte nainstalovanou [nejnovější verzi rutin Powershellu](#before). Nejnovější verzi rutin Powershellu obsahuje nové ověřené hodnoty pro nejnovější skladové položky brány.
+6. Vytvořte bránu virtuální sítě. Dokončení tohoto kroku trvá určitou dobu, někdy 45 minut nebo i déle, protože bránu vytváříte a konfigurujete. Pokud se zobrazí chyby ValidateSet týkající se hodnoty GatewaySKU, ověřte, že máte nainstalovanou [nejnovější verzi rutin PowerShellu](#before). Nejnovější verze rutin PowerShellu obsahují nové ověřené hodnoty pro nejnovější SKU brány.
 
    ```powershell
    $pip = New-AzPublicIpAddress -Name "GatewayIP" -ResourceGroupName "ForcedTunneling" -Location "North Europe" -AllocationMethod Dynamic
@@ -134,14 +127,14 @@ Nainstalujte nejnovější verzi rutin PowerShellu pro Azure Resource Manager. D
    $ipconfig = New-AzVirtualNetworkGatewayIpConfig -Name "gwIpConfig" -SubnetId $gwsubnet.Id -PublicIpAddressId $pip.Id
    New-AzVirtualNetworkGateway -Name "Gateway1" -ResourceGroupName "ForcedTunneling" -Location "North Europe" -IpConfigurations $ipconfig -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -EnableBgp $false
    ```
-7. Přiřadíte výchozí lokalitu k bráně virtuální sítě. **- GatewayDefaultSite** je parametr rutiny, která umožňuje konfiguraci vynucené směrování fungovat, proto opatrní nakonfigurovat toto nastavení správně. 
+7. Přiřaďte k bráně virtuální sítě výchozí lokalitu. Parametr **-GatewayDefaultSite** je parametr rutiny, který umožňuje, aby Konfigurace vynuceného směrování fungovala, proto je potřeba pečlivě nakonfigurovat toto nastavení. 
 
    ```powershell
    $LocalGateway = Get-AzLocalNetworkGateway -Name "DefaultSiteHQ" -ResourceGroupName "ForcedTunneling"
    $VirtualGateway = Get-AzVirtualNetworkGateway -Name "Gateway1" -ResourceGroupName "ForcedTunneling"
    Set-AzVirtualNetworkGatewayDefaultSite -GatewayDefaultSite $LocalGateway -VirtualNetworkGateway $VirtualGateway
    ```
-8. Vytvoření připojení Site-to-Site VPN.
+8. Vytvořte připojení VPN typu Site-to-site.
 
    ```powershell
    $gateway = Get-AzVirtualNetworkGateway -Name "Gateway1" -ResourceGroupName "ForcedTunneling"

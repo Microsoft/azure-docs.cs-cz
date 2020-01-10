@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3024d77c02f623f8b8dc1a8956e692c208c8c9e5
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 6a107936d290609fec73d46a93a277c3bdcce354
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799398"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832922"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>O klíčích, tajných klíčích a certifikátech
 
@@ -85,7 +85,7 @@ Kde:
 Kryptografické klíče v Key Vault jsou reprezentovány jako objekty webového klíče JSON [JWK]. Základní specifikace JWK/JWA se také rozšiřují tak, aby umožňovaly použití typů klíčů jedinečných pro Key Vault implementaci. Například import klíčů pomocí balení specifického pro dodavatele HSM umožňuje zabezpečenou přepravu klíčů, které se dají používat jenom v Key Vault HSM.  
 
 - **"Tiché" klíče**: klíč zpracovaný v softwaru Key Vault, ale je zašifrovaný v klidovém formátu pomocí systémového klíče, který je v modulu hardwarového zabezpečení. Klienti mohou importovat stávající klíč RSA nebo EC (eliptická křivka) nebo požádat, aby ho Key Vault vygeneroval.
-- Klíčové **klíče**: klíč zpracovaný v modulu HSM (Hardware Security Module). Tyto klíče jsou chráněné v jednom z Key Vault Zabezpečení HSM světů (pro zachování izolace existuje jeden celosvětový svět na geografickou oblast). Klienti mohou importovat klíč RSA nebo ES, v případě slabé formy nebo exportováním z kompatibilního zařízení HSM. Klienti si taky můžou vyžádat Key Vault, aby vygenerovali klíč. Tento typ klíče přidá atribut key_hsm do JWK, který získá, aby se provedl materiál klíče HSM.
+- Klíčové **klíče**: klíč zpracovaný v modulu HSM (Hardware Security Module). Tyto klíče jsou chráněné v jednom z Key Vault Zabezpečení HSM světů (pro zachování izolace existuje jeden celosvětový svět na geografickou oblast). Klienti mohou importovat klíč RSA nebo ES, v případě slabé formy nebo exportováním z kompatibilního zařízení HSM. Klienti si taky můžou vyžádat Key Vault, aby vygenerovali klíč. Tento typ klíče přidá atribut key_hsm do JWK pro získání materiálu klíče HSM.
 
      Další informace o geografických hranicích najdete v tématu [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/privacy/) .  
 
@@ -124,7 +124,7 @@ Kryptografické moduly, které Key Vault používá, je-li modul HARDWAROVÉho z
 
 #### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>WRAPKEY/UNWRAPKEY, ŠIFROVAT/DEŠIFROVAT
 
--   **RSA1_5** -RSAES-výplně PKCS1-V1_5 [RFC3447] šifrování klíče  
+-   **RSA1_5** -RSAES-výplně pkcs1-V1_5 [RFC3447] šifrování klíče  
 -   **RSA-výplně OAEP** -RSAES s použitím optimálního odsazení asymetrického šifrování (výplně OAEP) [RFC3447] s výchozími parametry URČENÝMI specifikací RFC 3447 v oddílu A. 2.1. Tyto výchozí parametry používají funkci hash SHA-1 a funkci generování masky MGF1 s SHA-1.  
 
 #### <a name="signverify"></a>PODEPSAT/OVĚŘIT
@@ -160,13 +160,13 @@ I když se WRAPKEY/UNWRAPKEY s použitím asymetrických klíčů může zdát n
 
 Key Vault nepodporuje operace exportu. Jakmile se v systému zřídí klíč, nedá se extrahovat ani upravovat materiál klíče. Uživatelé Key Vault však mohou vyžadovat jejich klíč pro jiné případy použití, například po odstranění. V takovém případě mohou pomocí operací zálohování a obnovení exportovat nebo importovat klíč v chráněném formuláři. Klíče vytvořené operací zálohování nejsou použitelné mimo Key Vault. Alternativně lze operaci importu použít pro více instancí Key Vault.  
 
-Uživatelé mohou omezit jakékoli kryptografické operace, které Key Vault podporuje na základě klíče, pomocí vlastnosti key_ops objektu JWK.  
+Uživatelé mohou omezit jakékoli kryptografické operace, které Key Vault podporuje na základě klíče pomocí vlastnosti key_ops objektu JWK.  
 
 Další informace o objektech JWK naleznete v tématu [JSON web Key (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41).  
 
 ###  <a name="key-attributes"></a>Klíčové atributy
 
-Kromě klíčového materiálu lze zadat následující atributy. V požadavku JSON jsou klíčové slovo atributů a složené závorky ({' '} ') vyžadovány i v případě, že nejsou zadány žádné atributy.  
+Vedle nastavení týkajících se klíčů samotných je možné ještě zadat následující atributy. V požadavku JSON jsou klíčové slovo atributů a složené závorky ({' '} ') vyžadovány i v případě, že nejsou zadány žádné atributy.  
 
 - *povoleno*: logická hodnota, volitelná, výchozí hodnota je **true**. Určuje, jestli je klíč povolený a použitelný pro kryptografické operace. Atribut *Enabled* se používá ve spojení s *NBF* a *exp*. Pokud dojde k operaci mezi *NBF* a *exp*, bude povoleno pouze v případě, že je vlastnost *Enabled* nastavena na **hodnotu true**. Operace mimo okno *nbf* / *exp* se automaticky nepovolují, s výjimkou určitých typů operací za určitých [podmínek](#date-time-controlled-operations).
 - *NBF*: IntDate, volitelné, výchozí nastavení je teď. Atribut *NBF* (nikoli před) určuje dobu, po jejímž uplynutí nesmí být klíč použit pro kryptografické operace, s výjimkou určitých typů operací za určitých [podmínek](#date-time-controlled-operations). Zpracování atributu *NBF* vyžaduje, aby aktuální datum a čas musel být pozdější nebo rovno datu a času, které je uvedené v atributu *NBF* . Key Vault může poskytovat některé malé Leeway, obvykle ne více než několik minut, aby se zohlednila časová zkosená část. Jeho hodnota musí být číslo obsahující hodnotu IntDate.  
@@ -230,7 +230,7 @@ Další informace o práci s klíči naleznete v tématu [klíčové operace v o
 
 Z pohledu vývojáře Key Vault rozhraní API akceptuje a vrací tajné hodnoty jako řetězce. Interně Key Vault ukládá a spravuje tajné klíče jako sekvence oktetů (8bitové bajty) a maximální velikost 25k bajtů. Služba Key Vault neposkytuje sémantiku tajných kódů. Přijímá pouze data, šifruje je, ukládá je a vrací tajný identifikátor (ID). Identifikátor lze použít k pozdějšímu načtení tajného klíče.  
 
-Pro vysoce citlivá data by klienti měli zvážit další vrstvy ochrany dat. Šifrování dat pomocí samostatného klíče ochrany před úložištěm v Key Vault je jedním příkladem.  
+U vysoce citlivých dat by klienti měli zvážit další vrstvy ochrany dat. Příkladem může být šifrování dat pomocí samostatného ochranného klíče před uložením ve službě Key Vault.  
 
 Key Vault také podporuje pole contentType pro tajné klíče. Klienti můžou určit typ obsahu tajného kódu, který pomůže při interpretaci tajných dat při jejich načítání. Maximální délka tohoto pole je 255 znaků. Neexistují žádné předem definované hodnoty. Navrhované použití je jako pomocný parametr pro interpretaci tajných dat. Implementace může například ukládat hesla i certifikáty jako tajné klíče a pak je odlišit pomocí tohoto pole. Nejsou k dispozici žádné předdefinované hodnoty.  
 
@@ -376,7 +376,7 @@ Následující tabulka představuje mapování zásad použití klíče x509 na 
 
 Objekt certifikátu Key Vault obsahuje konfiguraci, která se používá ke komunikaci s vybraným poskytovatelem vystavitele certifikátu pro řazení certifikátů x509.  
 
--   Key Vault partneři s následujícími poskytovateli vystavitelů certifikátů pro certifikáty SSL
+-   Key Vault partneři s následujícími poskytovateli vystavitelů certifikátů pro certifikáty TLS/SSL
 
 |**Název zprostředkovatele**|**Umístění**|
 |----------|--------|
@@ -389,7 +389,7 @@ Předtím, než je možné vytvořit vystavitele certifikátu v Key Vault, je nu
 
     -   Správce organizace musí být na své společnosti na své společnosti (např. Contoso) s alespoň jedním poskytovatelem CA.  
 
-2. Správce vytvoří přihlašovací údaje žadatele pro Key Vault k registraci (a obnovení) certifikátů SSL.  
+2. Správce vytvoří přihlašovací údaje žadatele pro Key Vault k registraci (a obnovení) certifikátů TLS/SSL.  
 
     -   Poskytuje konfiguraci, která se má použít k vytvoření objektu vystavitele zprostředkovatele v trezoru klíčů.  
 

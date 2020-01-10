@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/22/2019
-ms.openlocfilehash: 4ec542609d8984d1d03c326854590c834840b33f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/09/2020
+ms.openlocfilehash: 9ba4fe318db86760e0dbc326730d03ad09203a88
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363366"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834210"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager
 
@@ -20,7 +20,7 @@ ms.locfileid: "75363366"
 
 [Šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) můžete použít k vytvoření a konfiguraci Log Analytics pracovních prostorů v Azure monitor. Mezi úlohy, které můžete provádět pomocí šablon, patří:
 
-* Vytvoření pracovního prostoru včetně nastavení cenové úrovně 
+* Vytvoření pracovního prostoru včetně nastavení cenové úrovně a rezervace kapacity
 * Přidání řešení
 * Vytvořit uložená hledání
 * Vytvořit skupinu počítačů
@@ -47,7 +47,19 @@ Následující tabulka uvádí verzi rozhraní API pro prostředky použité v t
 
 ## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru služby Log Analytics
 
-Následující příklad vytvoří pracovní prostor pomocí šablony z místního počítače. Šablona JSON je nakonfigurovaná tak, aby vyžadovala pouze název a umístění nového pracovního prostoru (s použitím výchozích hodnot pro ostatní parametry pracovního prostoru, jako je například cenová úroveň a uchování).  
+Následující příklad vytvoří pracovní prostor pomocí šablony z místního počítače. Šablona JSON je nakonfigurována tak, aby vyžadovala pouze název a umístění nového pracovního prostoru. Používá hodnoty zadané pro jiné parametry pracovního prostoru, jako je [režim řízení přístupu](design-logs-deployment.md#access-control-mode), cenová úroveň, uchování a úroveň rezervace kapacity.
+
+Pro rezervaci kapacity definujte vybranou rezervaci kapacity pro ingestování dat zadáním `CapacityReservation` SKU a hodnoty v GB pro vlastnost `capacityReservationLevel`. Následující seznam podrobně popisuje podporované hodnoty a chování při jejich konfiguraci.
+
+- Po nastavení limitu rezervace se nemůžete změnit na jinou skladovou jednotku během 31 dnů.
+
+- Jakmile nastavíte hodnotu rezervace, můžete ji zvětšit pouze do 31 dnů.
+
+- Hodnotu `capacityReservationLevel` lze nastavit pouze v násobcích 100, přičemž maximální hodnota je 50000.
+
+- Pokud zvýšíte úroveň rezervace, časovač se resetuje a dokud ho nebudete moct změnit na další 31 dní z této aktualizace.  
+
+- Pokud upravíte jakoukoli jinou vlastnost pracovního prostoru, ale zachováte limit rezervace na stejnou úroveň, časovač se neresetuje. 
 
 ### <a name="create-and-deploy-template"></a>Vytvoření a nasazení šablony
 
@@ -64,6 +76,21 @@ Následující příklad vytvoří pracovní prostor pomocí šablony z místní
               "description": "Specifies the name of the workspace."
             }
         },
+      "pricingTier": {
+      "type": "string",
+      "allowedValues": [
+        "pergb2018",
+        "Free",
+        "Standalone",
+        "PerNode",
+        "Standard",
+        "Premium"
+      ],
+      "defaultValue": "pergb2018",
+      "metadata": {
+        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
+           }
+       },
         "location": {
             "type": "String",
             "allowedValues": [
@@ -101,11 +128,18 @@ Následující příklad vytvoří pracovní prostor pomocí šablony z místní
         {
             "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2015-11-01-preview",
+            "apiVersion": "2017-03-15-preview",
             "location": "[parameters('location')]",
             "properties": {
+                "sku": { 
+                    "name": "CapacityReservation",
+                    "capacityReservationLevel": 100
+                },
+                "retentionInDays": 120,
                 "features": {
-                    "searchVersion": 1
+                    "searchVersion": 1,
+                    "legacy": 0,
+                    "enableLogAccessUsingOnlyResourcePermissions": true
                 }
             }
           }
@@ -168,9 +202,9 @@ Následující ukázka šablony ukazuje, jak:
         "Standard",
         "Premium"
       ],
-      "defaultValue": "PerGB2018",
+      "defaultValue": "pergb2018",
       "metadata": {
-        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
+        "description": "Pricing tier: pergb2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
       }
     },
     "dataRetention": {
@@ -257,7 +291,7 @@ Následující ukázka šablony ukazuje, jak:
   },
   "resources": [
     {
-      "apiVersion": "2015-11-01-preview",
+      "apiVersion": "2017-03-15-preview",
       "type": "Microsoft.OperationalInsights/workspaces",
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
@@ -267,7 +301,9 @@ Následující ukázka šablony ukazuje, jak:
           "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
         },
         "sku": {
-          "name": "[parameters('pricingTier')]"
+          "name": "[parameters('pricingTier')]",
+          "name": "CapacityReservation",
+          "capacityReservationLevel": 100
         }
       },
       "resources": [

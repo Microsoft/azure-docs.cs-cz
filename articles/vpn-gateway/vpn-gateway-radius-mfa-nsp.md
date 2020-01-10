@@ -1,5 +1,5 @@
 ---
-title: Zabezpečení Azure VPN gateway ověřování pomocí protokolu RADIUS se serverem NPS pro ověřování službou Multi-Factor Authentication | Dokumentace Microsoftu
+title: Integrace serveru NPS s VPN Gateway ověřování protokolu RADIUS pro MFA
 description: Popisuje integrace Azure gateway ověření služby RADIUS se serverem NPS pro ověřování službou Multi-Factor Authentication.
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: ab152cca1d809d92803a3e50ea83da1cbcd8243c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 941b6ac86941824351f83592998e8735e3eb8ee5
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174613"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780364"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Integrace ověření služby RADIUS brány Azure VPN se serverem NPS pro ověřování službou Multi-Factor Authentication 
 

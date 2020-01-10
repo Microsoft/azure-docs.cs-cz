@@ -11,147 +11,56 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 530bfbe85a564b3dd517e14df819586dee332a78
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 565707b0e081a495f01f369125584038981b4ae8
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076965"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834650"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Nakonfigurujte nastavení časového limitu nečinnosti protokolu TCP pro Azure Load Balancer
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.4.1 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, musíte také spustit `Connect-AzAccount` vytvořit připojení k Azure.
+
+## <a name="tcp-idle-timeout"></a>Časový limit nečinnosti protokolu TCP
 V jeho výchozí konfiguraci má Azure Load Balancer nastavení časového limitu nečinnosti na 4 minuty. Pokud je období neaktivity delší než hodnota časového limitu, není nijak zaručeno, že relace TCP nebo HTTP mezi klientem a vaší cloudovou službou bude zachovaná.
 
 Po zavření připojení může klientská aplikace zobrazit následující chybovou zprávu: "základní připojení bylo zavřeno: připojení, které bylo očekáváno jako aktivní, bylo zavřeno serverem."
 
-Běžným postupem je používání udržování připojení TCP. Tento postup zachovává aktivní připojení po delší dobu. Další informace najdete v těchto [příkladech rozhraní .NET](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Když je povolená možnost Keep-Alive, pakety se odešlou během období nečinnosti na připojení. Tyto pakety Keep-Alive zajišťují, že hodnota časového limitu nečinnosti není nikdy dosažena a připojení bude udržováno po dlouhou dobu.
+Běžným postupem je používání udržování připojení TCP. Tento postup zachovává aktivní připojení po delší dobu. Další informace najdete v těchto [příkladech rozhraní .NET](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Když je povolená možnost Keep-Alive, pakety se odešlou během období nečinnosti na připojení. Pakety Keep-Alive zajišťují, že hodnota časového limitu nečinnosti není dosažena a připojení je udržováno po dlouhou dobu.
 
-Toto nastavení funguje jenom pro příchozí připojení. Aby nedošlo ke ztrátě připojení, je nutné nakonfigurovat udržování připojení TCP s intervalem nižším, než je nastavení časového limitu nečinnosti nebo zvýšit hodnotu časového limitu nečinnosti. Pro podporu takových scénářů jsme přidali podporu konfigurovatelného časového limitu nečinnosti. Teď můžete nastavit dobu trvání 4 až 30 minut.
+Nastavení funguje jenom pro příchozí připojení. Aby nedošlo ke ztrátě připojení, nakonfigurujte udržování připojení TCP pomocí intervalu kratšího, než je nastavení časového limitu nečinnosti, nebo zvyšte hodnotu časového limitu nečinnosti. Pro podporu těchto scénářů byla přidána podpora konfigurovatelného časového limitu nečinnosti. Teď můžete nastavit dobu trvání 4 až 30 minut.
 
-Udržování připojení TCP je dobré i pro situace, kdy životnost baterie není omezením. Nedoporučuje se pro mobilní aplikace. Při použití udržování připojení TCP v mobilní aplikaci můžete baterii zařízení rychleji vyprázdnit.
+Udržování připojení TCP funguje ve scénářích, kdy životnost baterie není omezením. Nedoporučuje se pro mobilní aplikace. Při použití udržování připojení TCP v mobilní aplikaci můžete baterii zařízení rychleji vyprázdnit.
 
 ![Časový limit TCP](./media/load-balancer-tcp-idle-timeout/image1.png)
 
-Následující části popisují, jak změnit nastavení časového limitu nečinnosti ve virtuálních počítačích a cloudových službách.
+Následující části popisují, jak změnit nastavení časového limitu nečinnosti pro prostředky veřejné IP adresy a nástroje pro vyrovnávání zatížení.
 
 ## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>Nakonfigurujte časový limit TCP pro veřejnou IP adresu na úrovni instance na 15 minut.
 
-```powershell
-Set-AzurePublicIP -PublicIPName webip -VM MyVM -IdleTimeoutInMinutes 15
+```azurepowershell-interactive
+$publicIP = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyResourceGroup
+$publicIP.IdleTimeoutInMinutes = "15"
+Set-AzPublicIpAddress -PublicIpAddress $publicIP
 ```
 
-Parametr `IdleTimeoutInMinutes` je volitelný. Pokud tato hodnota není nastavená, výchozí časový limit je 4 minuty. Přípustný rozsah časového limitu je 4 až 30 minut.
+Parametr `IdleTimeoutInMinutes` je volitelný. Pokud není nastavené, výchozí časový limit je 4 minuty. Přípustný rozsah časového limitu je 4 až 30 minut.
 
-## <a name="set-the-idle-timeout-when-creating-an-azure-endpoint-on-a-virtual-machine"></a>Nastavení časového limitu nečinnosti při vytváření koncového bodu Azure na virtuálním počítači
+## <a name="set-the-tcp-timeout-on-a-load-balanced-rule-to-15-minutes"></a>Nastavte časový limit TCP pro pravidlo vyrovnávání zatížení na 15 minut.
 
-Chcete-li změnit nastavení časového limitu pro koncový bod, použijte následující:
+Chcete-li nastavit časový limit nečinnosti pro nástroj pro vyrovnávání zatížení, je v pravidle vyrovnávání zatížení nastaven atribut ' IdleTimeoutInMinutes '. Příklad:
 
-```powershell
-Get-AzureVM -ServiceName "mySvc" -Name "MyVM1" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 8080 -IdleTimeoutInMinutes 15| Update-AzureVM
+```azurepowershell-interactive
+$lb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroup "MyResourceGroup"
+$lb | Set-AzLoadBalancerRuleConfig -Name myLBrule -IdleTimeoutInMinutes 15
 ```
-
-Chcete-li načíst konfiguraci časového limitu nečinnosti, použijte následující příkaz:
-
-    PS C:\> Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Get-AzureEndpoint
-    VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
-    LBSetName : MyLoadBalancedSet
-    LocalPort : 80
-    Name : HTTP
-    Port : 80
-    Protocol : tcp
-    Vip : 65.52.xxx.xxx
-    ProbePath :
-    ProbePort : 80
-    ProbeProtocol : tcp
-    ProbeIntervalInSeconds : 15
-    ProbeTimeoutInSeconds : 31
-    EnableDirectServerReturn : False
-    Acl : {}
-    InternalLoadBalancerName :
-    IdleTimeoutInMinutes : 15
-
-## <a name="set-the-tcp-timeout-on-a-load-balanced-endpoint-set"></a>Nastavení časového limitu TCP pro sadu koncových bodů s vyrovnáváním zatížení
-
-Pokud jsou koncové body součástí sady koncových bodů s vyrovnáváním zatížení, je nutné nastavit časový limit TCP pro sadu koncových bodů s vyrovnáváním zatížení. Příklad:
-
-```powershell
-Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Protocol tcp -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 -IdleTimeoutInMinutes 15
-```
-
-## <a name="change-timeout-settings-for-cloud-services"></a>Změna nastavení časového limitu pro cloudové služby
-
-K aktualizaci cloudové služby můžete použít sadu Azure SDK. Nastavení koncového bodu pro cloudové služby provedete v souboru. csdef. Aktualizace časového limitu TCP pro nasazení cloudové služby vyžaduje upgrade nasazení. Výjimkou je, že časový limit TCP je určen pouze pro veřejnou IP adresu. Nastavení veřejné IP adresy jsou v souboru. cscfg a můžete je aktualizovat prostřednictvím aktualizace a upgradu nasazení.
-
-Změny. csdef pro nastavení koncového bodu jsou:
-
-```xml
-<WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
-    <Endpoints>
-    <InputEndpoint name="input-endpoint-name" protocol="[http|https|tcp|udp]" localPort="local-port-number" port="port-number" certificate="certificate-name" loadBalancerProbe="load-balancer-probe-name" idleTimeoutInMinutes="tcp-timeout" />
-    </Endpoints>
-</WorkerRole>
-```
-
-Změny. cscfg pro nastavení timeout u veřejných IP adres:
-
-```xml
-<NetworkConfiguration>
-    <VirtualNetworkSite name="VNet"/>
-    <AddressAssignments>
-    <InstanceAddress roleName="VMRolePersisted">
-    <PublicIPs>
-        <PublicIP name="public-ip-name" idleTimeoutInMinutes="timeout-in-minutes"/>
-    </PublicIPs>
-    </InstanceAddress>
-    </AddressAssignments>
-</NetworkConfiguration>
-```
-
-## <a name="rest-api-example"></a>Příklad REST API
-
-Časový limit nečinnosti TCP můžete nakonfigurovat pomocí rozhraní API pro správu služeb. Ujistěte se, že je záhlaví `x-ms-version` nastaveno na verzi `2014-06-01` nebo novější. Aktualizuje konfiguraci zadaných vstupních koncových bodů s vyrovnáváním zatížení na všech virtuálních počítačích v nasazení.
-
-### <a name="request"></a>Žádost
-
-    POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>
-
-### <a name="response"></a>Odpověď
-
-```xml
-<LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
-    <InputEndpoint>
-    <LoadBalancedEndpointSetName>endpoint-set-name</LoadBalancedEndpointSetName>
-    <LocalPort>local-port-number</LocalPort>
-    <Port>external-port-number</Port>
-    <LoadBalancerProbe>
-        <Path>path-of-probe</Path>
-        <Port>port-assigned-to-probe</Port>
-        <Protocol>probe-protocol</Protocol>
-        <IntervalInSeconds>interval-of-probe</IntervalInSeconds>
-        <TimeoutInSeconds>timeout-for-probe</TimeoutInSeconds>
-    </LoadBalancerProbe>
-    <LoadBalancerName>name-of-internal-loadbalancer</LoadBalancerName>
-    <Protocol>endpoint-protocol</Protocol>
-    <IdleTimeoutInMinutes>15</IdleTimeoutInMinutes>
-    <EnableDirectServerReturn>enable-direct-server-return</EnableDirectServerReturn>
-    <EndpointACL>
-        <Rules>
-        <Rule>
-            <Order>priority-of-the-rule</Order>
-            <Action>permit-rule</Action>
-            <RemoteSubnet>subnet-of-the-rule</RemoteSubnet>
-            <Description>description-of-the-rule</Description>
-        </Rule>
-        </Rules>
-    </EndpointACL>
-    </InputEndpoint>
-</LoadBalancedEndpointList>
-```
-
 ## <a name="next-steps"></a>Další kroky
 
 [Interní přehled nástroje pro vyrovnávání zatížení](load-balancer-internal-overview.md)

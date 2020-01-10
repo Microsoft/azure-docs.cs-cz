@@ -61,6 +61,16 @@
           href: stream-analytics-sql-output-perf.md
         - name: Vzory vlastních cest objektů blob
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
+    - name: Optimalizace úlohy Stream Analytics
+      items:
+        - name: Principy a úpravy jednotek streamování
+          href: stream-analytics-streaming-unit-consumption.md
+        - name: Vylepšení výkonu dotazů
+          href: stream-analytics-parallelization.md
+        - name: Přerozdělení vstupu
+          href: repartition.md
+        - name: Zvýšení propustnosti úlohy
+          href: stream-analytics-scale-jobs.md
     - name: Stavy úlohy
       href: job-states.md
     - name: Funkce okna
@@ -148,20 +158,6 @@
           href: stream-analytics-monitor-jobs.md
         - name: Monitorování úloh – Visual Studio
           href: stream-analytics-monitor-jobs-use-vs.md
-    - name: Měřítko
-      items:
-        - name: Škálování využitím s jednotek streamování
-          href: stream-analytics-streaming-unit-consumption.md
-        - name: Škálování s využitím paralelizace
-          items:
-            - name: Paralelizace dotazů
-              href: stream-analytics-parallelization.md
-            - name: Zvýšení prostupnosti
-              href: stream-analytics-scale-jobs.md
-        - name: Škálování s využitím funkcí ML
-          href: stream-analytics-scale-with-machine-learning-functions.md
-        - name: Škálování s opakovaným dělením
-          href: repartition.md
     - name: Automatizace
       items:
         - name: Pomocí sady .NET SDK
@@ -218,6 +214,8 @@
           href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
     - name: Ladění s využitím diagramu úloh
       href: stream-analytics-job-diagram-with-metrics.md
+    - name: Škálování s využitím funkcí ML
+      href: stream-analytics-scale-with-machine-learning-functions.md
 - name: Dotazovací jazyk Stream Analytics
   items:
     - name: Předdefinované funkce

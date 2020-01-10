@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: b36e5d88c67a4aabf530aa8d945c17870e9c126b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: bef259aa741e9c50ffaf28c6f81f63658ebda0a2
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892647"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778069"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Rychlý start: Řízení zařízení připojeného k centru IoT (Python)
 
@@ -27,17 +27,13 @@ Rychlý start používá dvě předem napsané aplikace Python:
 
 * Aplikaci simulovaného zařízení, která odpovídá na přímé metody volané z back-endové aplikace. Aby bylo možné přijímat volání přímé metody, připojí se tato aplikace ke koncovému bodu centra IoT pro konkrétní zařízení.
 
-* Back-endovou aplikaci, která na simulovaném zařízení volá přímé metody. Aby na zařízení bylo možné volat přímou metodu, připojí se tato aplikace ke koncovému bodu centra IoT na straně služby.
-
-> [!IMPORTANT]
-> V tomto článku aplikace back-end používá klienta služby Python V1 a aplikace zařízení používá klienta zařízení Python v2. Klient služby v1 je umístěný ve [větvi v1 – zastaralé](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated) úložiště GitHub sady SDK Azure IoT Pythonu. Balíček PIP pro klienta služby V1, *Azure-iothub-Service-Client*, má striktní požadavky specifické pro platformu – včetně verze Pythonu nainstalovaného na vývojovém počítači. Tyto požadavky jsou uvedeny v části **požadavky** .
->
+* Back-endovou aplikaci, která na simulovaném zařízení volá přímé metody. Aby na zařízení bylo možné volat přímou metodu, připojí se tato aplikace ke koncovému bodu na straně služby ve vašem centru IoT.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IOT přidá do Azure CLI příkazy určené pro služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
 
@@ -47,13 +43,7 @@ az extension add --name azure-cli-iot-ext
 
 Pokud jste to ještě neudělali, stáhněte si ukázkový projekt Python z webu https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip a extrahujte archiv ZIP.
 
-**Pro Windows jsou pro**instalaci balíčku PIP klienta služby v1 IoT Hub požadovány tyto požadavky:
-
-* Ujistěte se, že máte nainstalovanou [Python verze **3.6. x** ](https://www.python.org/downloads/) .
-
-* Ujistěte se, že máte nainstalovanou [aplikaci Microsoft Visual C++ Redistributable pro Visual Studio](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) .
-
-**Pro platformy jiné než Windows**si přečtěte část [distribuční tabulka balíčku Python PIP](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md#python-pip-package-distribution-table) v dokumentaci k sadě v1 SDK. Ujistěte se, že je na vašem vývojovém počítači nainstalovaná verze Python 3. x určená pro vaši platformu a všechny související požadavky. Instalace Pythonu 3. x místo 2,7 umožňuje asynchronní operace v klientovi zařízení v2, který se používá také v tomto rychlém startu.
+Ve vývojovém počítači je nainstalovaný [Python verze 3,7 nebo novější](https://www.python.org/downloads/) . Další podporované verze Pythonu najdete v dokumentaci k sadě SDK v tématu [funkce zařízení Azure IoT](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features) .
 
 ## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
 
@@ -147,7 +137,7 @@ Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na stra
 1. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny pro aplikaci simulovaného zařízení:
 
     ```cmd/sh
-    pip install azure-iothub-service-client future
+    pip install azure-iot-hub
     ```
 
 1. Spuštěním následujících příkazů v okně místního terminálu spusťte back-endovou aplikaci:
@@ -163,10 +153,6 @@ Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na stra
     Po spuštění back-endové aplikace se v okně konzoly se simulovaným zařízením zobrazí zpráva a rychlost odesílání zpráv se změní:
 
     ![Změna simulovaného klienta](./media/quickstart-control-device-python/SimulatedDevice-2.png)
-
-    > [!NOTE]
-    > Pokud při importu *iothub_service_client*dojde k chybě, ujistěte se, že jste nainstalovali přesnou verzi Pythonu a všechny další přidružené artefakty, které jsou určené pro vaši platformu, v části [požadavky](#prerequisites). Pokud po ověření požadavků dojde k chybě, možná budete muset vytvořit klienta služby pro vaši platformu. Informace o tom, jak sestavit sadu SDK pro vaši platformu, najdete v dokumentaci k [Nastavení devbox](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) v dokumentaci k sadě v1 SDK.
-    >
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

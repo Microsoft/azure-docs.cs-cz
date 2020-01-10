@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 365692cccb3f1ed2646272521c84bdc4ef2b2147
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 66c5873749924df2133cb1ba4711b779e0aba24a
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75538108"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834746"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Nasazení modelu pomocí vlastního obrázku Docker Base
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -262,7 +262,9 @@ service.wait_for_deployment(show_output = True)
 print(service.state)
 ```
 
-Další informace o nasazení najdete v tématu [nasazení modelů pomocí Azure Machine Learning](service/how-to-deploy-and-where.md).
+Další informace o nasazení najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
+
+Další informace o přizpůsobení prostředí Pythonu najdete v tématu [vytváření a Správa prostředí pro školení a nasazení](how-to-use-environments.md). 
 
 ### <a name="use-an-image-with-the-machine-learning-cli"></a>Použití obrázku s Machine Learning CLI
 
@@ -294,5 +296,5 @@ Další informace o nasazení modelu pomocí rozhraní příkazového řádku (M
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [tom, kde nasadit a jak](service/how-to-deploy-and-where.md).
+* Přečtěte si další informace o [tom, kde nasadit a jak](how-to-deploy-and-where.md).
 * Naučte se [, jak pomocí Azure Pipelines naučit a nasazovat modely strojového učení](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops).

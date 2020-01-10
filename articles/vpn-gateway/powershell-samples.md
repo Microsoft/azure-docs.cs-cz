@@ -1,8 +1,7 @@
 ---
-title: Ukázky Azure PowerShellu pro VPN Gateway | Microsoft Docs
+title: Ukázky Azure PowerShellu pro VPN Gateway
 description: Ukázky Azure PowerShellu pro VPN Gateway
 services: vpn-gateway
-documentationcenter: ''
 author: cherylmc
 manager: jeconnoc
 editor: ''
@@ -15,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/25/2018
 ms.author: cherylmc
-ms.openlocfilehash: bdc9fd503f3ae1a3ededb9eba71268765c8801aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9e55655f73b6cae6c664d51b0db2ee62a92f17ae
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60539617"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778171"
 ---
 # <a name="azure-powershell-samples-for-vpn-gateway"></a>Ukázky Azure PowerShellu pro VPN Gateway
 

@@ -1,18 +1,19 @@
 ---
-title: 'Připojení místní sítě k virtuální síti Azure: Síť VPN typu Site-to-site: PowerShell | Microsoft Docs'
+title: 'Připojení místní sítě k virtuální síti Azure: síť VPN typu Site-to-site: PowerShell'
 description: Postup vytvoření připojení IPsec z vaší místní sítě k virtuální síti Azure přes veřejný internet. Tyto kroky vám pomůžou vytvořit připojení VPN Gateway typu Site-to-Site mezi různými místy pomocí PowerShellu.
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: cherylmc
-ms.openlocfilehash: 69cdf248e299ce4fdf08540836d44958438a2665
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 85ea3855b13350901d85701e9bca8d87ff6632c3
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699899"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778783"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Vytvoření virtuální sítě pomocí připojení VPN Site-to-Site s použitím prostředí PowerShell
 
@@ -76,7 +77,7 @@ ConnectionName          = VNet1toSite1
 
 ```
 
-## <a name="VNet"></a>1. Vytvoření virtuální sítě a podsítě brány
+## <a name="VNet"></a>1. vytvoření virtuální sítě a podsítě brány
 
 Pokud ještě nemáte virtuální síť, vytvořte si ji. Při vytváření virtuální sítě ověřte, že se zadané adresní prostory nepřekrývají s adresními prostory ve vaší místní síti. 
 
@@ -136,7 +137,7 @@ Postup v této části použijte v případě, že už máte virtuální síť, 
    Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
 
-## 2. <a name="localnet"></a>Vytvoření brány místní sítě
+## 2. <a name="localnet"> </a>vytvořte bránu místní sítě.
 
 Brána místní sítě (LNG) obvykle odkazuje na vaše místní umístění. Nejedná se o stejnou bránu virtuální sítě. Pro toto umístění určíte název, podle kterého na něj bude Azure odkazovat, a pak zadáte IP adresu místního zařízení VPN, ke kterému vytvoříte připojení. Zadáte také předpony IP adres, které se budou přes bránu VPN směrovat do zařízení VPN. Předpony adres, které zadáte, jsou předpony ve vaší místní síti. V případě změny vaší místní sítě můžete tyto předpony snadno aktualizovat.
 
@@ -163,7 +164,7 @@ Chcete-li upravit předpony IP adres pro bránu místní sítě:
 
 Někdy dojde ke změně předpon brány místní sítě. Postup upravení předpon IP adresy závisí na tom, zda jste vytvořili připojení k bráně VPN. Viz oddíl [Úprava předpon IP adresy pro bránu místní sítě](#modify) v tomto článku.
 
-## <a name="PublicIP"></a>3. Vyžádání veřejné IP adresy
+## <a name="PublicIP"></a>3. vyžádání veřejné IP adresy
 
 Brána VPN musí mít veřejnou IP adresu. Nejprve si vyžádáte prostředek IP adresy a pak na něj budete odkazovat při vytváření brány virtuální sítě. IP adresa se dynamicky přiřadí k prostředku po vytvoření brány VPN. 
 
@@ -175,7 +176,7 @@ Vyžádejte si veřejnou IP adresu, která bude přiřazena k bráně VPN vaší
 $gwpip= New-AzPublicIpAddress -Name VNet1GWPIP -ResourceGroupName TestRG1 -Location 'East US' -AllocationMethod Dynamic
 ```
 
-## <a name="GatewayIPConfig"></a>4. Vytvoření konfigurace adresování IP brány
+## <a name="GatewayIPConfig"></a>4. vytvoření konfigurace adresování IP brány
 
 Konfigurace brány definuje podsíť (GatewaySubnet) a veřejnou IP adresu, která se má použít. Podle následujícího příkladu vytvořte vlastní konfiguraci brány:
 
@@ -203,7 +204,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 
 Po spuštění tohoto příkazu může dokončení konfigurace brány trvat až 45 minut.
 
-## <a name="ConfigureVPNDevice"></a>6. Konfigurace zařízení VPN
+## <a name="ConfigureVPNDevice"></a>6. konfigurace zařízení VPN
 
 Připojení Site-to-Site k místní síti vyžadují zařízení VPN. V tomto kroku nakonfigurujete zařízení VPN. Při konfiguraci zařízení VPN, budete potřebovat následující položky:
 
@@ -217,9 +218,9 @@ Připojení Site-to-Site k místní síti vyžadují zařízení VPN. V tomto kr
 [!INCLUDE [Configure VPN device](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
 
-## <a name="CreateConnection"></a>7. Vytvoření připojení VPN
+## <a name="CreateConnection"></a>7. vytvoření připojení k síti VPN
 
-Dále vytvoříte připojení VPN typu Site-to-Site mezi bránou virtuální sítě a zařízením VPN. Nezapomeňte hodnoty nahradit vlastními. Sdílený klíč se musí shodovat s hodnotou, kterou jste použili pro konfiguraci zařízení VPN. Všimněte si, že hodnota -ConnectionType pro připojení typu Site-to-Site je **IPsec**.
+Dále vytvoříte připojení VPN typu Site-to-Site mezi bránou virtuální sítě a zařízením VPN. Hodnoty na obrázcích nahraďte vlastními hodnotami. Sdílený klíč se musí shodovat s hodnotou, kterou jste použili pro konfiguraci zařízení VPN. Všimněte si, že hodnota -ConnectionType pro připojení typu Site-to-Site je **IPsec**.
 
 1. Nastavte proměnné.
    ```azurepowershell-interactive
@@ -236,7 +237,7 @@ Dále vytvoříte připojení VPN typu Site-to-Site mezi bránou virtuální sí
 
 Za malou chvíli dojde k vytvoření připojení.
 
-## <a name="toverify"></a>8. Ověření připojení VPN
+## <a name="toverify"></a>8. ověření připojení VPN
 
 Existuje několik různých způsobů, jak ověřit připojení VPN.
 
@@ -257,7 +258,7 @@ Pokud se změní předpony IP adres, které chcete směrovat do vašeho místní
 
 [!INCLUDE [Modify gateway IP address](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 *  Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v tématu [Virtuální počítače](https://docs.microsoft.com/azure/).
 * Informace o protokolu BGP najdete v tématech [Přehled protokolu BGP](vpn-gateway-bgp-overview.md) a [Postup při konfiguraci protokolu BGP](vpn-gateway-bgp-resource-manager-ps.md).

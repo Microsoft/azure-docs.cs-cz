@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: b7f8b98e8241b4502c86cce8c893beb315767d55
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 7874a6b274939c233dd1c4e6d146df2a9a409e65
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816508"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833993"
 ---
 # <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>Použití kontejnerů služby Speech s Kubernetes a Helm
 
 Jednou z možností správy vašich místních kontejnerů řeči je použití Kubernetes a Helm. Když použijete Kubernetes a Helm k definování imagí na kontejnerech pro text a převod textu na řeč, vytvoříme balíček Kubernetes. Tento balíček se nasadí do místního clusteru Kubernetes. Nakonec se podíváme, jak otestovat nasazené služby a různé možnosti konfigurace. Další informace o spouštění kontejnerů Docker bez orchestrace Kubernetes najdete v tématu [instalace a spuštění kontejnerů služby Speech](speech-container-howto.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před použitím kontejnerů řeči v místním prostředí použijte následující požadavky:
 
@@ -48,20 +48,20 @@ V hostitelském počítači se očekává, že bude dostupný cluster Kubernetes
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Sdílení přihlašovacích údajů Docker s clusterem Kubernetes
 
-Aby mohl cluster Kubernetes `docker pull` nakonfigurovaných imagí z `mcr.microsoft.com` registru kontejneru, je nutné přenést přihlašovací údaje Docker do clusteru. Spuštěním následujícího příkazu [`kubectl create`][kubectl-create] vytvořte *tajný klíč registru Docker-Registry* založený na přihlašovacích údajích poskytnutých z předpokladu přístupu k registru kontejneru.
+Aby mohl cluster Kubernetes `docker pull` nakonfigurovaných imagí z `containerpreview.azurecr.io` registru kontejneru, je nutné přenést přihlašovací údaje Docker do clusteru. Spuštěním následujícího příkazu [`kubectl create`][kubectl-create] vytvořte *tajný klíč registru Docker-Registry* založený na přihlašovacích údajích poskytnutých z předpokladu přístupu k registru kontejneru.
 
 V rozhraní příkazového řádku, které zvolíte, spusťte následující příkaz. Nezapomeňte nahradit `<username>`, `<password>`a `<email-address>` přihlašovací údaje registru kontejneru.
 
 ```console
 kubectl create secret docker-registry mcr \
-    --docker-server=mcr.microsoft.com \
+    --docker-server=containerpreview.azurecr.io \
     --docker-username=<username> \
     --docker-password=<password> \
     --docker-email=<email-address>
 ```
 
 > [!NOTE]
-> Pokud již máte přístup k `mcr.microsoft.com` registru kontejnerů, můžete místo toho vytvořit tajný kód Kubernetes pomocí obecného příznaku. Vezměte v úvahu následující příkaz, který se provede proti vašemu kódu JSON konfigurace Docker.
+> Pokud již máte přístup k `containerpreview.azurecr.io` registru kontejnerů, můžete místo toho vytvořit tajný kód Kubernetes pomocí obecného příznaku. Vezměte v úvahu následující příkaz, který se provede proti vašemu kódu JSON konfigurace Docker.
 > ```console
 >  kubectl create secret generic mcr \
 >      --from-file=.dockerconfigjson=~/.docker/config.json \
@@ -106,8 +106,8 @@ speechToText:
   numberOfConcurrentRequest: 3
   optimizeForAudioFile: true
   image:
-    registry: mcr.microsoft.com
-    repository: azure-cognitive-services/speech-to-text
+    registry: containerpreview.azurecr.io
+    repository: microsoft/cognitive-services-speech-to-text
     tag: latest
     pullSecrets:
       - mcr # Or an existing secret
@@ -122,8 +122,8 @@ textToSpeech:
   numberOfConcurrentRequest: 3
   optimizeForTurboMode: true
   image:
-    registry: mcr.microsoft.com
-    repository: azure-cognitive-services/text-to-speech
+    registry: containerpreview.azurecr.io
+    repository: microsoft/cognitive-services-text-to-speech
     tag: latest
     pullSecrets:
       - mcr # Or an existing secret
@@ -138,21 +138,20 @@ textToSpeech:
 
 ### <a name="the-kubernetes-package-helm-chart"></a>Balíček Kubernetes (Helm graf)
 
-*Graf Helm* obsahuje konfiguraci, které imagí Docker mají být vyžádané z registru kontejneru `mcr.microsoft.com`.
+*Graf Helm* obsahuje konfiguraci, které imagí Docker mají být vyžádané z registru kontejneru `containerpreview.azurecr.io`.
 
 > [Graf Helm][helm-charts] je kolekce souborů, které popisují související sadu prostředků Kubernetes. Jeden graf se dá použít k nasazení jednoduchého, podobného memcached nebo nějakého složitého, jako je úplný zásobník webových aplikací se servery HTTP, databázemi, mezipamětemi a tak dále.
 
-Uvedené *grafy Helm* vyžádají image Docker služby řeči, jak převod textu na řeč, tak ze služby `mcr.microsoft.com` registru kontejneru.
+Uvedené *grafy Helm* vyžádají image Docker služby řeči, jak převod textu na řeč, tak ze služby `containerpreview.azurecr.io` registru kontejneru.
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>Instalace grafu Helm v clusteru Kubernetes
 
 K instalaci *grafu Helm* je potřeba spustit příkaz [`helm install`][helm-install-cmd] a nahradit `<config-values.yaml>` vhodným argumentem cesta a název souboru. `microsoft/cognitive-services-speech-onpremise` graf Helm, na který se odkazuje níže, je k dispozici v [centru Microsoft Helm][ms-helm-hub-speech-chart].
 
 ```console
-helm install microsoft/cognitive-services-speech-onpremise \
+helm install onprem-speech microsoft/cognitive-services-speech-onpremise \
     --version 0.1.1 \
-    --values <config-values.yaml> \
-    --name onprem-speech
+    --values <config-values.yaml> 
 ```
 
 Tady je příklad výstupu, který byste mohli očekávat od úspěšného provedení instalace:

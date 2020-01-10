@@ -41,11 +41,11 @@
       href: tutorial-monitor.md
     - name: 13. Správa zabezpečení virtuálních počítačů
       href: tutorial-azure-security.md
-    - name: 14. Nasazení Jenkinse
+    - name: 14a. Sestavení s využitím Jenkinse
       href: tutorial-jenkins-github-docker-cicd.md
-    - name: 15a. Nasazení s využitím Azure Pipelines
+    - name: 14b. Nasazení s využitím Azure Pipelines (Classic)
       href: tutorial-build-deploy-jenkins.md
-    - name: 15b. Průběžná integrace a doručování s využitím Azure Pipelines
+    - name: 15. Průběžná integrace a doručování s využitím Azure Pipelines (YAML)
       href: tutorial-build-deploy-azure-pipelines.md
     - name: 16a. Vytvoření zásobníku LAMP
       href: tutorial-lamp-stack.md

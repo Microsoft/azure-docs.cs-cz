@@ -10,26 +10,26 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/05/2019
+ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: d11239aa49a53a90a38f2b5336d36cea6c97e9df
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7c25455e28e57ff40664a69718a2e406b52b7632
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824162"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834301"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Jak používat pojmenované hodnoty v zásadách Azure API Management
 
 Zásady API Management představují výkonnou schopnost systému, která umožňuje Azure Portal změnit chování rozhraní API prostřednictvím konfigurace. Zásady představují kolekci příkazů, které se postupně provádí na základě požadavku nebo odezvy z rozhraní API. Příkazy zásad lze vytvořit pomocí textových hodnot literálů, výrazů zásad a pojmenovaných hodnot.
 
-Každá instance API Management služby má kolekci vlastností párů klíč/hodnota, které se nazývají pojmenované hodnoty, které jsou globální pro instanci služby. Počet položek v kolekci není nijak omezen. Pojmenované hodnoty se dají použít ke správě konstantních řetězcových hodnot napříč všemi konfiguracemi a zásadami rozhraní API. Každá pojmenovaná hodnota může mít následující atributy:
+Každá instance API Management služby má kolekci párů klíč/hodnota, které se nazývají pojmenované hodnoty, které jsou globální pro instanci služby. Počet položek v kolekci není nijak omezen. Pojmenované hodnoty se dají použít ke správě konstantních řetězcových hodnot napříč všemi konfiguracemi a zásadami rozhraní API. Každá pojmenovaná hodnota může mít následující atributy:
 
-| Atribut      | Typ            | Popis                                                                                                                         |
-| -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `Display name` | řetězec          | Používá se pro odkazování pojmenované hodnoty v zásadách. Řetězec o 1 až 256 znaků. Jsou povoleny pouze písmena, číslice, tečky a spojovníky. |
-| `Value`        | řetězec          | Skutečná hodnota. Nesmí být prázdný nebo obsahovat pouze prázdné znaky. Maximálně 4096 znaků.                                     |
-| `Secret`       | Boolean         | Určuje, zda je hodnota tajná a měla by být zašifrovaná.                                                            |
+| Atribut      | Typ            | Popis                                                                                                                            |
+| -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `Display name` | string          | Používá se pro odkazování pojmenované hodnoty v zásadách. Řetězec o 1 až 256 znaků. Jsou povoleny pouze písmena, číslice, tečky a spojovníky. |
+| `Value`        | string          | Skutečná hodnota. Nesmí být prázdný nebo obsahovat pouze prázdné znaky. Maximálně 4096 znaků.                                        |
+| `Secret`       | Boolean         | Určuje, zda je hodnota tajná a měla by být zašifrovaná.                                                               |
 | `Tags`         | pole řetězce | Slouží k filtrování seznamu pojmenovaných hodnot. Až 32 značek.                                                                                    |
 
 ![Pojmenované hodnoty](./media/api-management-howto-properties/named-values.png)
@@ -38,9 +38,12 @@ Pojmenované hodnoty mohou obsahovat řetězce literálů a [výrazy zásad](/az
 
 | Name (Název)       | Hodnota                      | Tajný kód | Značky          |
 | ---------- | -------------------------- | ------ | ------------- |
-| Hodnota      | 42                         | False  | důležitá – čísla |
-| Přihlašovací údaj | ••••••••••••••••••••••     | True   | security      |
-| Výraz | @ (DateTime. Now. ToString ()) | False  |               |
+| Hodnota      | 42                         | Nepravda  | důležitá – čísla |
+| Přihlašovací údaj | ••••••••••••••••••••••     | Pravda   | zabezpečení      |
+| Expression | @(DateTime.Now.ToString()) | Nepravda  |               |
+
+> [!NOTE]
+> Místo pojmenovaných hodnot uložených v rámci služby API Management můžete použít hodnoty uložené ve službě [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) , jak je znázorněno v tomto [příkladu](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml).
 
 ## <a name="to-add-and-edit-a-named-value"></a>Přidání a úprava pojmenované hodnoty
 
@@ -50,9 +53,9 @@ Pojmenované hodnoty mohou obsahovat řetězce literálů a [výrazy zásad](/az
 2. Vyberte **pojmenované hodnoty**.
 3. Stiskněte **+ Přidat**.
 
-    Název a hodnota jsou požadované hodnoty. Pokud je hodnota tajná, zaškrtněte políčko *Toto je tajné* . Zadejte jednu nebo více volitelných značek, které vám pomůžou s uspořádáním pojmenovaných hodnot, a klikněte na Uložit.
+    Název a hodnota jsou požadované hodnoty. Pokud je hodnota tajná, zaškrtněte políčko _Toto je tajné_ . Zadejte jednu nebo více volitelných značek, které vám pomůžou s uspořádáním pojmenovaných hodnot, a klikněte na Uložit.
 
-4. Klikněte na možnost **Vytvořit**.
+4. Klikněte na **Vytvořit**.
 
 Jakmile je pojmenovaná hodnota vytvořena, můžete ji upravit kliknutím na ni. Změníte-li název pojmenované hodnoty, budou automaticky aktualizovány všechny zásady, které odkazují na tuto pojmenovanou hodnotu, aby používaly nový název.
 
@@ -99,9 +102,9 @@ Když se tato zásada vyhodnotí, `{{ExpressionProperty}}` se nahradí její hod
 
 Tuto možnost můžete vyzkoušet na portálu pro vývojáře voláním operace, která má zásadu s pojmenovanými hodnotami v oboru. V následujícím příkladu je volána operace se dvěma předchozími příklady `set-header` zásad s pojmenovanými hodnotami. Všimněte si, že odpověď obsahuje dvě vlastní hlavičky, které byly nakonfigurovány pomocí zásad s pojmenovanými hodnotami.
 
-![Portál pro vývojáře][api-management-send-results]
+![Vývojářský portál][api-management-send-results]
 
-Pokud se podíváte na [trasování rozhraní API](api-management-howto-api-inspector.md) pro volání, které obsahuje dvě předchozí ukázkové zásady s pojmenovanými hodnotami, uvidíte dvě `set-header` zásady s vloženými pojmenovanými hodnotami i vyhodnocením výrazu zásady pro pojmenovanou hodnotu. byl obsažen výraz zásad.
+Pokud se podíváte na [trasování rozhraní API](api-management-howto-api-inspector.md) pro volání, které obsahuje dvě předchozí ukázkové zásady s pojmenovanými hodnotami, uvidíte dvě `set-header` zásady s vloženými pojmenovanými hodnotami a vyhodnocením výrazu zásady pro pojmenovanou hodnotu, která obsahovala výraz zásad.
 
 ![Trasování v inspektoru API][api-management-api-inspector-trace]
 

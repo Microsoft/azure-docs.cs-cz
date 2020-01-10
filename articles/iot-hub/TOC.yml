@@ -83,7 +83,9 @@
       href: tutorial-connectivity.md
 - name: Koncepty
   items:
-    - name: Vynucení protokolu TLS 1.2
+    - name: Podpora TLS
+      href: iot-hub-tls.md
+    - name: Vyřazení TLS 1.0 a 1.1
       href: tls-1.2-everywhere.md
     - name: Přehled obohacení zpráv
       href: iot-hub-message-enrichments-overview.md

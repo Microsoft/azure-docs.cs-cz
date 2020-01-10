@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: nitinme
-ms.openlocfilehash: e6f074dd6748f58a86a6ac8166ca0ee858926975
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 544ca198b846ca5032bdf400b300ac076d729d88
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75379789"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834146"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co je Azure Cognitive Services?
 
@@ -36,7 +36,7 @@ Azure Cognitive Services jsou dostupná rozhraní API, sady SDK a služby, kter�
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Služba řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Služba řeči")|Služba Speech přidává do aplikací funkce podporující rozpoznávání řeči.|
+|[Služba řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Služba Speech")|Služba Speech přidává do aplikací funkce podporující rozpoznávání řeči.|
 |[Rozhraní API pro rozpoznávání mluvčího](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "Rozhraní API pro rozpoznání mluvčího") (Preview)|Rozhraní API pro rozpoznávání mluvčího poskytuje algoritmy pro identifikaci a ověřování mluvčího.|
 |[Zpracování řeči Bingu](https://docs.microsoft.com/azure/cognitive-services/speech/home "Zpracování řeči Bingu") (vyřazení z provozu)|Rozhraní API pro zpracování řeči Bingu poskytuje snadný způsob, jak ve svých aplikacích vytvářet funkce podporující rozpoznávání řeči.|
 |[Translator Speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "Translator Speech") (vyřazení z provozu)|Translator Speech je služba strojového překladu.|
@@ -114,7 +114,7 @@ Cognitive Services bylo uděleno certifikace, jako je třeba certifikace v CSA S
 
 Můžete [si stáhnout](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) certifikace pro vlastní audity a bezpečnostní recenze.
 
-Pro pochopení ochrany osobních údajů a správy dat navštivte [Centrum zabezpečení](https://servicetrust.microsoft.com/)... MD
+Pro pochopení ochrany osobních údajů a správy dat navštivte [Centrum zabezpečení](https://servicetrust.microsoft.com/).
 
 ## <a name="support"></a>Podpora
 

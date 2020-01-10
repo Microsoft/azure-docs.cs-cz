@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 1811796de96e87343544f63fcee7acdd9907693c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 8d48c889681eabc2519a0a60d0f9846b8f30bfd5
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530982"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830135"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor
 
@@ -103,7 +103,7 @@ Následující tabulka uvádí, kolik agentů může komunikovat se serverem br�
 
 ## <a name="download-the-log-analytics-gateway"></a>Stáhněte si bránu Log Analytics
 
-Nejnovější verzi instalačního souboru brány Log Analytics Gateway získáte buď z webu [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=54443) , nebo z Azure Portal.
+Nejnovější verzi instalačního souboru brány Log Analytics Gateway získáte buď z webu Microsoft Download Center ([odkaz ke stažení](https://go.microsoft.com/fwlink/?linkid=837444)), nebo Azure Portal.
 
 Pokud chcete bránu Log Analytics z Azure Portal získat, postupujte takto:
 
@@ -159,7 +159,7 @@ V následující tabulce jsou vysvětlené parametry podporované instalačním 
 |ČÍSLO_PORTU | Číslo portu TCP, na kterém má brána naslouchat |
 |SOUBORY | IP adresa proxy server |
 |INSTALLDIR | Plně kvalifikovaná cesta pro určení instalačního adresáře souborů softwaru brány |
-|UŽIVATELSKÉ HESLO | ID uživatele, které se má ověřit pomocí proxy server |
+|UŽIVATELSKÉ JMÉNO | ID uživatele, které se má ověřit pomocí proxy server |
 |HESLO | Heslo ID uživatele, které se má ověřit pomocí proxy |
 |LicenseAccepted | Zadejte hodnotu **1** , pokud chcete ověřit, že souhlasíte s licenční smlouvou. |
 |HASAUTH | Zadejte hodnotu **1** , pokud jsou zadány parametry uživatelského jména a hesla. |

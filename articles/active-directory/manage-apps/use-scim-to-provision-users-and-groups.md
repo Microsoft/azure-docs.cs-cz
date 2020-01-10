@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e43eae8b7308f71886d855bbc53f341bd674e6c5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfe51558cf96e77288186c2ed2b4a2773cbc5cf2
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433817"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829863"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure Active Directory (Azure AD)
 
@@ -62,15 +62,16 @@ Všimněte si, že nemusíte podporovat uživatele i skupiny ani všechny níže
 | Uživatele Azure Active Directory | "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User" |
 | --- | --- |
 | IsSoftDeleted |aktivní |
+|Oddělení|urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|
 | displayName |displayName |
+|employeeId|urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: employeeNumber|
 | Ve TelephoneNumber |phoneNumbers [typ eq "fax"] .value |
 | givenName |name.givenName |
 | pracovní funkce |title |
 | e-mailu |e-mailů [typ eq "pracovní"] .value |
 | mailNickname |externalId |
-| manažer |manažer |
+| manažer |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager |
 | Mobilní zařízení |phoneNumbers [eq typ "mobilní"] .value |
-| ID objektu |ID |
 | PSČ |.postalCode adresy [typ eq "pracovní"] |
 | Adresy proxy serveru |e-mailů [Zadejte eq "other"]. Hodnota |
 | fyzický Delivery-OfficeName |adresy [Zadejte eq "other"]. Ve formátu |
@@ -79,15 +80,16 @@ Všimněte si, že nemusíte podporovat uživatele i skupiny ani všechny níže
 | telefonní číslo |phoneNumbers [typ eq "pracovní"] .value |
 | user-PrincipalName |userName |
 
+
 ### <a name="table-2-default-group-attribute-mapping"></a>Tabulka 2: Výchozí skupiny atributů mapování
 
 | Skupina Azure Active Directory | urn:ietf:params:scim:schemas:core:2.0:Group |
 | --- | --- |
-| displayName |externalId |
+| displayName |displayName |
 | e-mailu |e-mailů [typ eq "pracovní"] .value |
 | mailNickname |displayName |
 | členové |členové |
-| ID objektu |ID |
+| ID objektu |externalId |
 | proxyAddresses |e-mailů [Zadejte eq "other"]. Hodnota |
 
 ## <a name="step-2-understand-the-azure-ad-scim-implementation"></a>Krok 2: pochopení implementace Azure AD SCIM

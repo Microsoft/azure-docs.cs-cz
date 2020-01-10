@@ -10,18 +10,18 @@ keywords: Azure Automation, DSC, PowerShell, konfigurace požadovaného stavu, S
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: e7a527fc290433390436eac3d4c291f2a32bf2b3
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 814be233c80213f84fb81a62caf152536ef4811f
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951441"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834080"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>Rychlý Start: připojení počítačů k Azure pomocí ARC Azure pro servery – PowerShell
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Přečtěte si téma Podporované klienty a požadovaná konfigurace sítě v článku [Přehled služby Azure ARC pro servery](overview.md).
 
@@ -35,6 +35,9 @@ Instanční objekt je speciální omezená identita pro správu, která je uděl
 ### <a name="steps-to-create-the-service-principal"></a>Postup vytvoření instančního objektu
 
 V tomto příkladu použijeme [Azure PowerShell](/powershell/azure/install-az-ps) k vytvoření hlavního názvu služby (SPN). Případně můžete postupovat podle kroků uvedených v části [Vytvoření instančního objektu pomocí Azure Portal](../../active-directory/develop/howto-create-service-principal-portal.md) pro tuto úlohu.
+
+> [!NOTE]
+> Při vytváření instančního objektu musíte být vlastníkem nebo správcem přístupu uživatele k předplatnému, které chcete použít pro registraci. Pokud nemáte dostatečná oprávnění k vytváření přiřazení rolí, může být objekt služby vytvořen, ale nebude moci připojit počítače.
 
 Role `Azure Connected Machine Onboarding` obsahuje pouze oprávnění požadovaná pro registraci. Můžete definovat oprávnění hlavního názvu služby (SPN), abyste povolili její obor pro pokrytí skupiny prostředků nebo předplatného.
 
@@ -142,7 +145,7 @@ Ve Windows otevřete PowerShell jako správce na cílovém uzlu a spusťte:
   --service-principal-secret "{your-spn-password}" `
   --resource-group "{your-resource-group-name}" `
   --tenant-id "{your-tenant-id}" `
-  --location "{location-of-your-resource-group}" `
+  --location "{desired-location}" `
   --subscription-id "{your-subscription-id}"
 ```
 
@@ -164,7 +167,7 @@ Parametry:
 * `tenant-id`: identifikátor GUID klienta. Můžete ji najít v Azure Portal tak, že vyberete **vlastnosti** **služby Azure Active Directory** ->  -> **ID adresáře**.
 * `subscription-id`: identifikátor GUID předplatného v Azure, kde se má počítač připojit.
 * `resource-group`: Skupina prostředků, do které chcete počítač připojit.
-* `location`: Přečtěte si téma [oblasti a umístění Azure](https://azure.microsoft.com/global-infrastructure/regions/). Toto umístění může být stejné nebo jiné jako umístění skupiny prostředků. Ve verzi Public Preview se služba podporuje v **WestUS2** a **západní Evropa**.
+* `location`: Přečtěte si téma [oblasti a umístění Azure](https://azure.microsoft.com/global-infrastructure/regions/). Toto umístění může být stejné nebo jiné jako umístění skupiny prostředků. Ve verzi Public Preview se služba podporuje v **WestUS2**, **jihovýchodní Asie**a **západní Evropa**.
 * `resource-name`: (*volitelné*) se používá pro reprezentaci prostředků Azure vašeho místního počítače. Pokud tuto hodnotu nezadáte, použije se název hostitele počítače.
 
 Další informace o nástroji ' azcmagent ' najdete v [referenčních](azcmagent-reference.md)informacích k azcmagent.

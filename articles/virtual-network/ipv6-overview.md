@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/19/2019
 ms.author: kumud
-ms.openlocfilehash: a44f99b5a7f25a7350e6a63cf85c6b2287647162
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9214886f468a4a052328a99289845361a059b650
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75373243"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780075"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Co je protokol IPv6 pro Azure Virtual Network? (Preview)
 
@@ -75,7 +75,7 @@ Protokol IPv6 pro virtuální síť Azure je základní sada funkcí, která zá
 ## <a name="limitations"></a>Omezení
 Aktuální protokol IPv6 pro vydanou verzi služby Azure Virtual Network má následující omezení:
 - Protokol IPv6 pro Azure Virtual Network (Preview) je k dispozici ve všech globálních oblastech Azure, ale v cloudech státní správy je jenom v globálním Azure.
-- V síti VNET s povoleným protokolem IPv6 se nedají používat Express Route a brány VPN Gateway, a to buď přímo, nebo s partnerským vztahem "UseRemoteGateway". 
+- Brány ExpressRoute a VPN se nedají používat ve virtuální síti s povoleným protokolem IPv6, a to buď přímo, nebo s partnerským vztahem "UseRemoteGateway". 
 - Platforma Azure (AKS atd.) nepodporuje komunikaci IPv6 pro kontejnery.  
 
 ## <a name="pricing"></a>Ceny

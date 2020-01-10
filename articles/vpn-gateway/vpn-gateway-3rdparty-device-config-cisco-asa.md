@@ -1,123 +1,123 @@
 ---
-title: Ukázková konfigurace pro připojení zařízení Cisco ASA k Azure VPN Gateway | Dokumentace Microsoftu
-description: Tento článek poskytuje ukázkové konfiguraci pro připojení zařízení Cisco ASA k branám Azure VPN.
+title: Ukázková konfigurace pro připojení zařízení Cisco ASA ke službě Azure VPN Gateway
+description: Tento článek poskytuje ukázkovou konfiguraci pro připojení zařízení se systémem Cisco ASA ke službě Azure VPN Gateway.
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: yushwang
-ms.openlocfilehash: e575fac61a1c5d9351391d39d200b87e34ff26cd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 96e5c26ea7b5f1baa33fd8830491ee3aa1e60221
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60648747"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778078"
 ---
-# <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Ukázková konfigurace: Zařízení Cisco ASA (IKEv2, bez BGP)
-Tento článek poskytuje ukázkové konfigurace pro připojení zařízení Cisco adaptivní zabezpečení zařízení (ASA) branám Azure VPN. V příkladu platí pro zařízení Cisco ASA s IKEv2 bez protokol BGP (Border Gateway). 
+# <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Ukázková konfigurace: zařízení Cisco ASA (IKEv2/bez BGP)
+Tento článek poskytuje ukázkové konfigurace pro připojení zařízení se zařízením s bránou Cisco Adaptive Security (ASA) do bran Azure VPN Gateway. Tento příklad se vztahuje na zařízení Cisco ASA, na kterých běží IKEv2 bez Border Gateway Protocol (BGP). 
 
-## <a name="device-at-a-glance"></a>Zařízení na první pohled
+## <a name="device-at-a-glance"></a>První pohled na zařízení
 
 |                        |                                   |
 | ---                    | ---                               |
-| Výrobce zařízení          | Cisco                             |
+| Dodavatel zařízení          | Cisco                             |
 | Model zařízení           | ASA                               |
-| Cílová verze         | 8.4 a novější                     |
-| Otestované modelu           | ASA 5505                          |
-| Otestované verze         | 9.2                               |
-| Verze IKE            | IKEv2                             |
+| Cílová verze         | 8,4 a novější                     |
+| Testovaný model           | ASA 5505                          |
+| Testovaná verze         | 9.2                               |
+| Verze protokolu IKE            | IKEv2                             |
 | Protokol BGP                    | Ne                                |
-| Typ brány Azure VPN | Brána VPN založená na trasách           |
+| Typ brány VPN Azure | Brána sítě VPN založená na trasách           |
 |                        |                                   |
 
 > [!NOTE]
-> Zařízení Cisco ASA v ukázkové konfiguraci se připojí k Azure **založené na trasách** brány sítě VPN. Připojení používá vlastní zásady IPsec/IKE s **UsePolicyBasedTrafficSelectors** možnosti, jak je popsáno v [v tomto článku](vpn-gateway-connect-multiple-policybased-rm-ps.md).
+> Ukázková konfigurace připojí zařízení Cisco ASA k bráně sítě VPN **založené na trasách** Azure. Připojení používá vlastní zásadu IPsec/IKE s možností **UsePolicyBasedTrafficSelectors** , jak je popsáno v [tomto článku](vpn-gateway-connect-multiple-policybased-rm-ps.md).
 >
-> Ukázka vyžaduje zařízení využívající Azure Stream Analytics **IKEv2** zásady na základě přístupu seznamu konfigurace není VTI založen. Vyhledejte vaše specifikace dodavatele zařízení VPN pro ověření, že IKEv2 je podporován zásady pro vaše místní zařízení VPN.
+> Ukázka vyžaduje, aby zařízení ASA používala zásadu **IKEv2** s konfiguracemi založenými na přístupových seznamech, nikoli na VTI. Projděte si specifikace dodavatele zařízení VPN a ověřte, jestli je na vašich místních zařízeních VPN podporovaná zásada IKEv2.
 
 
 ## <a name="vpn-device-requirements"></a>Požadavky na zařízení VPN
-Azure VPN Gateway pomocí standardní sady protokolu IPsec/IKE navažte tunelech VPN typu Site-to-Site (S2S). Podrobné informace o parametrech protokolu IPsec/IKE a výchozí kryptografické algoritmy pro služby Azure VPN Gateway najdete v tématu [informace o zařízeních VPN](vpn-gateway-about-vpn-devices.md).
+Brány VPN Azure používají standardní sady protokolu IPsec/IKE k vytvoření tunelů VPN typu Site-to-Site (S2S). Podrobné informace o parametrech protokolu IPsec/IKE a výchozích šifrovacích algoritmech pro Azure VPN Gateway najdete v tématu [informace o zařízeních VPN](vpn-gateway-about-vpn-devices.md).
 
 > [!NOTE]
-> Volitelně můžete zadat přesný kombinací kryptografické algoritmy a síly klíče pro konkrétní připojení, jak je popsáno v [informace o kryptografických požadavcích](vpn-gateway-about-compliance-crypto.md). Pokud chcete zadat přesné kombinací algoritmy a síly klíče, nezapomeňte použít odpovídající specifikace pro vaše zařízení VPN.
+> Volitelně můžete zadat přesnou kombinaci kryptografických algoritmů a pevnosti klíčů pro konkrétní připojení, jak je popsáno v [tématu o kryptografických požadavcích](vpn-gateway-about-compliance-crypto.md). Pokud zadáte přesnou kombinaci algoritmů a pevnosti klíčů, nezapomeňte použít odpovídající specifikace v zařízeních VPN.
 
-## <a name="single-vpn-tunnel"></a>Jedno tunelové propojení sítě VPN
-Tato konfigurace se skládá z jednoho tunelu S2S VPN mezi službou Azure VPN gateway a místní zařízení VPN. Volitelně můžete nakonfigurovat protokol BGP přes tunel VPN.
+## <a name="single-vpn-tunnel"></a>Jedno tunelové připojení VPN
+Tato konfigurace se skládá z jednoho tunelu VPN S2S mezi službou Azure VPN Gateway a místním zařízením VPN. Protokol BGP můžete volitelně nakonfigurovat napříč tunelem sítě VPN.
 
-![Jeden tunel S2S VPN](./media/vpn-gateway-3rdparty-device-config-cisco-asa/singletunnel.png)
+![Tunelové propojení VPN typu Single S2S](./media/vpn-gateway-3rdparty-device-config-cisco-asa/singletunnel.png)
 
-Podrobné pokyny týkající se Azure konfigurace sestavení, naleznete v tématu [nastavení tunelového propojení sítě VPN jeden](vpn-gateway-3rdparty-device-config-overview.md#singletunnel).
+Podrobné pokyny k sestavování konfigurací Azure najdete v tématu [Nastavení tunelu pro jedno připojení k síti VPN](vpn-gateway-3rdparty-device-config-overview.md#singletunnel).
 
-### <a name="virtual-network-and-vpn-gateway-information"></a>Virtuální síť a informace o VPN gateway
-Tato část obsahuje seznam parametrů pro vzorku.
+### <a name="virtual-network-and-vpn-gateway-information"></a>Informace o virtuální síti a bráně VPN
+Tato část obsahuje seznam parametrů pro ukázku.
 
 | **Parametr**                | **Hodnota**                    |
 | ---                          | ---                          |
 | Předpony adres virtuální sítě        | 10.11.0.0/16<br>10.12.0.0/16 |
-| Azure VPN gateway IP         | Azure_Gateway_Public_IP      |
+| IP adresa brány VPN Azure         | Azure_Gateway_Public_IP      |
 | Předpony místních adres | 10.51.0.0/16<br>10.52.0.0/16 |
-| Místní IP adresa zařízení sítě VPN    | OnPrem_Device_Public_IP     |
-| * Virtuální sítě BGP číslo ASN                | 65010                        |
-| * Azure místní adresu partnera BGP           | 10.12.255.30                 |
-| * Místní ASN protokolu BGP         | 65050                        |
-| * Místní adresu partnera BGP on-premises     | 10.52.255.254                |
+| Místní IP adresa zařízení VPN    | OnPrem_Device_Public_IP     |
+| * ASN protokolu BGP virtuální sítě                | 65010                        |
+| * IP adresa partnerského uzlu protokolu BGP Azure           | 10.12.255.30                 |
+| * Místní ASN BGP         | 65050                        |
+| * Místní IP adresa partnerského uzlu protokolu BGP     | 10.52.255.254                |
 |                              |                              |
 
-\* Volitelný parametr BGP pouze.
+\* volitelný parametr pouze pro protokol BGP.
 
-### <a name="ipsecike-policy-and-parameters"></a>Zásady IPsec/IKE a parametry
-V následující tabulce jsou uvedeny algoritmy protokolu IPsec/IKE a parametry, které se používají v ukázce. Zkontrolujte vaše specifikace zařízení VPN ověřit algoritmy, které jsou podporovány pro modely zařízení VPN a verzemi firmwaru.
+### <a name="ipsecike-policy-and-parameters"></a>Zásady a parametry protokolu IPsec/IKE
+V následující tabulce jsou uvedeny algoritmy a parametry protokolu IPsec/IKE používané v ukázce. Podívejte se na specifikace zařízení VPN a ověřte algoritmy, které jsou podporované pro modely zařízení VPN a verze firmwaru.
 
 | **IPsec/IKEv2**  | **Hodnota**                            |
 | ---              | ---                                  |
 | Šifrování protokolem IKEv2 | AES256                               |
 | Integrita protokolu IKEv2  | SHA384                               |
 | Skupina DH         | DHGroup24                            |
-| * Šifrování protokolem IPsec | AES256                               |
+| * Šifrování IPsec | AES256                               |
 | * Integrita protokolu IPsec  | SHA1                                 |
 | Skupina PFS        | PFS24                                |
-| Doba života přidružení zabezpečení v rychlém režimu   | 7200 sekund                         |
+| Doba života přidružení zabezpečení v rychlém režimu   | 7 200 sekund                         |
 | Selektor provozu | UsePolicyBasedTrafficSelectors $True |
 | Předsdílený klíč   | PreSharedKey                         |
 |                  |                                      |
 
-\* Na některých zařízeních Integrity protokolu IPsec musí mít hodnotu null při algoritmus šifrování protokolem IPsec je AES-GCM.
+\* na některých zařízeních musí být integrita protokolu IPsec nastavena na hodnotu null, pokud je šifrovací algoritmus IPsec AES-GCM.
 
-### <a name="asa-device-support"></a>Podpora zařízení Azure Stream Analytics
+### <a name="asa-device-support"></a>Podpora zařízení ASA
 
-* Podpora IKEv2 vyžaduje ASA verze 8.4 a novější.
+* Podpora IKEv2 vyžaduje ASA verze 8,4 a novější.
 
-* Podpora pro skupiny Diffie-Hellman a skupinu PFS nad rámec 5 skupina vyžaduje ASA verze 9.x.
+* Podpora skupiny DH a skupiny PFS mimo skupinu 5 vyžaduje ASA verze 9. x.
 
-* Podpora šifrování protokolem IPsec s AES-GCM a integrita protokolu IPsec pomocí algoritmu SHA-256, SHA-384 a SHA-512, vyžaduje, aby ASA verze 9.x. Tento požadavek na podporu se vztahuje na novějších zařízeních Azure Stream Analytics. V době publikace modely ASA 5505 5510, 5520, 5540, 5550 a 5580 nemusí podporovat tyto algoritmy. Zkontrolujte vaše specifikace zařízení VPN ověřit algoritmy, které jsou podporovány pro modely zařízení VPN a verzemi firmwaru.
+* Podpora šifrování protokolu IPsec pomocí algoritmu AES-GCM a integrity protokolu IPsec pomocí algoritmu SHA-256, SHA-384 nebo SHA-512 vyžaduje ASA verze 9. x. Tento požadavek na podporu platí pro novější zařízení ASA. V době publikace nepodporují tyto algoritmy modely ASA 5505, 5510, 5520, 5540, 5550 a 5580. Podívejte se na specifikace zařízení VPN a ověřte algoritmy, které jsou podporované pro modely zařízení VPN a verze firmwaru.
 
 
-### <a name="sample-device-configuration"></a>Ukázky konfigurace zařízení
-Skript obsahuje ukázky, která je založená na konfiguraci a parametry, které jsou popsané v předchozích částech. Konfigurace tunelu S2S VPN se skládá z následujících částí:
+### <a name="sample-device-configuration"></a>Ukázka konfigurace zařízení
+Skript poskytuje ukázku, která je založena na konfiguraci a parametrech, které jsou popsány v předchozích částech. Konfigurace tunelu S2S VPN se skládá z následujících částí:
 
 1. Rozhraní a trasy
 2. Seznamy přístupu
-3. Zásady protokolu IKE a parametry (fáze 1 nebo hlavní režim)
-4. Zásady protokolu IPsec a parametry (fáze 2 nebo rychlý režim)
-5. Další parametry, jako je například upnutí MSS protokolu TCP
+3. Zásady a parametry protokolu IKE (fáze 1 nebo hlavní režim)
+4. Zásady a parametry protokolu IPsec (fáze 2 nebo rychlý režim)
+5. Další parametry, jako je například přichycení protokolu TCP MSS
 
 > [!IMPORTANT]
-> Než použijete ukázkový skript, proveďte následující kroky. Nahraďte zástupné hodnoty ve skriptu nastavení zařízení pro vaši konfiguraci.
+> Před použitím ukázkového skriptu proveďte následující kroky. Nahraďte zástupné hodnoty ve skriptu nastavením zařízení pro vaši konfiguraci.
 
-* Zadejte konfiguraci rozhraní i mimo ně rozhraní.
-* Identifikujte trasy pro vnitřní/soukromé a mimo/veřejné sítě.
-* Zkontrolujte všechny názvy a čísla zásad, které jsou jedinečné ve vašem zařízení.
-* Ujistěte se, že kryptografické algoritmy jsou podporovány ve vašem zařízení.
+* Určete konfiguraci rozhraní pro rozhraní uvnitř i vně.
+* Identifikujte trasy pro interní/privátní a vnější/veřejné sítě.
+* Ujistěte se, že jsou všechny názvy a čísla zásad na vašem zařízení jedinečné.
+* Ujistěte se, že jsou v zařízení podporované kryptografické algoritmy.
 * Nahraďte následující **zástupné hodnoty** skutečnými hodnotami pro vaši konfiguraci:
-  - Mimo název rozhraní: **mimo**
+  - Název vnějšího rozhraní: **mimo**
   - **Azure_Gateway_Public_IP**
   - **OnPrem_Device_Public_IP**
   - IKE: **Pre_Shared_Key**
-  - Virtuální síť a názvy bran místní sítě: **VNetName** a **LNGName**
-  - Virtuální síť a místní síťová adresa **předpony**
-  - Správné **masky sítě**
+  - Názvy bran virtuální sítě a místní sítě: **VNetName** a **LNGName**
+  - **Předpony** adresy virtuální sítě a místní sítě
+  - Správné **síťové masky**
 
 #### <a name="sample-script"></a>Ukázkový skript
 
@@ -272,11 +272,11 @@ sysopt connection tcpmss 1350
 !
 ```
 
-## <a name="simple-debugging-commands"></a>Jednoduché ladění příkazů
+## <a name="simple-debugging-commands"></a>Jednoduché příkazy ladění
 
-Pomocí následujících příkazů Azure Stream Analytics pro účely ladění:
+Pro účely ladění použijte následující příkazy ASA:
 
-* Zobrazit protokol IPsec nebo IKE přidružení zabezpečení (SA):
+* Zobrazit přidružení zabezpečení (SA) protokolu IPsec nebo IKE:
     ```
     show crypto ipsec sa
     show crypto ikev2 sa
@@ -287,18 +287,18 @@ Pomocí následujících příkazů Azure Stream Analytics pro účely ladění:
     debug crypto ikev2 platform <level>
     debug crypto ikev2 protocol <level>
     ```
-    `debug` Příkazy mohou generovat významné výstup na konzole.
+    Příkazy `debug` mohou generovat významný výstup v konzole nástroje.
 
-* Zobrazit aktuální konfigurace zařízení:
+* Zobrazit aktuální konfigurace na zařízení:
     ```
     show run
     ```
-    Použití `show` dílčí na seznamu konkrétní části o konfiguraci zařízení, například:
+    Pomocí `show` dílčích příkazů můžete vypsat konkrétní části Konfigurace zařízení, například:
     ```
     show run crypto
     show run access-list
     show run tunnel-group
     ```
 
-## <a name="next-steps"></a>Další postup
-Konfigurace připojení typu VNet-to-VNet a aktivní aktivní mezi různými místy, najdete v článku [konfigurace brány VPN typu aktivní aktivní](vpn-gateway-activeactive-rm-powershell.md).
+## <a name="next-steps"></a>Další kroky
+Pokud chcete nakonfigurovat připojení typu aktivní-aktivní pro více míst a VNET-to-VNet, přečtěte si téma [Konfigurace bran VPN typu aktivní-aktivní](vpn-gateway-activeactive-rm-powershell.md).

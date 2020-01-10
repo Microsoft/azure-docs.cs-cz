@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: d6370509b49ae464b53525e7320676b04912bd12
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 1c06c1d0403e526e1ed58a193cfe9b57bb9fe561
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113706"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780231"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Dehydratované data objektů BLOB z archivní úrovně
 
@@ -47,6 +47,68 @@ Objekty BLOB v archivní úrovni by měly být uložené minimálně 180 dnů. O
 
 > [!NOTE]
 > Další informace o cenách pro objekty blob bloku a data pro dehydrataci najdete v tématu [Azure Storage ceny](https://azure.microsoft.com/pricing/details/storage/blobs/). Další informace o poplatcích za odchozí přenosy dat najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/data-transfers/)přenosů dat.
+
+## <a name="quickstart-scenarios"></a>Scénáře Rychlý start
+
+### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Dehydratované objekt BLOB archivu do online úrovně
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+
+1. V Azure Portal vyhledejte a vyberte **všechny prostředky**.
+
+1. Vyberte svůj účet úložiště.
+
+1. Vyberte svůj kontejner a pak vyberte objekt BLOB.
+
+1. Ve **vlastnostech objektu BLOB**vyberte **změnit úroveň**.
+
+1. Vyberte **horkou** nebo **studenou** úroveň přístupu. 
+
+1. Vyberte rehydratované prioritu **Standard** nebo **High**.
+
+1. V dolní části vyberte **Uložit** .
+
+![Změna úrovně účtu úložiště](media/storage-tiers/blob-access-tier.png)
+
+# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+Pomocí následujícího skriptu PowerShellu můžete změnit úroveň objektu BLOB archivu. Proměnná `$rgName` musí být inicializována názvem vaší skupiny prostředků. Proměnná `$accountName` musí být inicializována s názvem vašeho účtu úložiště. Proměnná `$containerName` musí být inicializována s názvem kontejneru. Proměnná `$blobName` musí být inicializována s vaším názvem objektu BLOB. 
+```powershell
+#Initialize the following with your resource group, storage account, container, and blob names
+$rgName = ""
+$accountName = ""
+$containerName = ""
+$blobName == ""
+
+#Select the storage account and get the context
+$storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
+$ctx = $storageAccount.Context
+
+#Select the blob from a container
+$blobs = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $context
+
+#Change the blob’s access tier to Hot using Standard priority rehydrate
+$blob.ICloudBlob.SetStandardBlobTier("Hot", “Standard”)
+```
+---
+
+### <a name="copy-an-archive-blob-to-a-new-blob-with-an-online-tier"></a>Kopírování objektu BLOB archivu do nového objektu BLOB s online vrstvou
+K zkopírování objektu BLOB archivu do nového objektu BLOB v rámci stejného účtu úložiště můžete použít následující skript PowerShellu. Proměnná `$rgName` musí být inicializována názvem vaší skupiny prostředků. Proměnná `$accountName` musí být inicializována s názvem vašeho účtu úložiště. Proměnné `$srcContainerName` a `$destContainerName` musí být inicializovány pomocí názvů kontejnerů. Proměnné `$srcBlobName` a `$destBlobName` musí být inicializovány s názvy objektů BLOB. 
+```powershell
+#Initialize the following with your resource group, storage account, container, and blob names
+$rgName = ""
+$accountName = ""
+$srcContainerName = ""
+$destContainerName = ""
+$srcBlobName == ""
+$destBlobName == ""
+
+#Select the storage account and get the context
+$storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
+$ctx = $storageAccount.Context
+
+#Copy source blob to a new destination blob with access tier hot using standard rehydrate priority
+Start-AzStorageBlobCopy -SrcContainer $srcContainerName -SrcBlob $srcBlobName -DestContainer $destContainerName -DestBlob $destBlobName -StandardBlobTier Hot -RehydratePriority Standard -Context $ctx
+```
 
 ## <a name="next-steps"></a>Další kroky
 

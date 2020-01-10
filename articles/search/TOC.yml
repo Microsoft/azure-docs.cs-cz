@@ -93,7 +93,7 @@
       href: knowledge-store-concept-intro.md
     - name: Projekce
       href: knowledge-store-projection-overview.md
-    - name: Přírůstkové indexování
+    - name: Přírůstkové obohacení
       href: cognitive-search-incremental-indexing-conceptual.md
 - name: Návody
   items:
@@ -237,9 +237,9 @@
               href: cognitive-search-concept-annotations-syntax.md
             - name: Mapování na pole indexu
               href: cognitive-search-output-field-mapping.md
-            - name: Zpracování a extrahování informací z obrázků
+            - name: Extrahování informací z obrázků
               href: cognitive-search-concept-image-scenarios.md
-            - name: Nastavení přírůstkového indexování
+            - name: Obohacení mezipaměti (přírůstkové)
               href: search-howto-incremental-index.md
         - name: Vlastní dovednosti
           items:
@@ -330,7 +330,11 @@
     - name: REST (správa)
       href: /rest/api/searchmanagement
     - name: REST (Preview)
-      href: search-api-preview.md
+      items:
+        - name: 'Rozhraní API, verze 2019-05-06-Preview'
+          href: search-api-preview.md
+        - name: Rozhraní ResetSkills API
+          href: preview-api-resetskills.md
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.search/searchservices
     - name: Referenční informace k jazyku OData

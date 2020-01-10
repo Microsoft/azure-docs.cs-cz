@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a0697e151c50b9722fef908eeb2c7498503b8c0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 09012d93a1f9fd24427cb8b3937b3a36cf75d9e4
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027379"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834174"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Přebírat nespravovaný adresář jako správce v Azure Active Directory
 
@@ -56,7 +56,7 @@ Po dokončení předchozích kroků jste nyní globálním správcem čtvrtého 
 
 ### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Přidání názvu domény do spravovaného tenanta ve službě Azure AD
 
-1. Otevřete [Centrum pro správu Microsoft 365](https://admin.microsoft.com).
+1. Otevřete [Centrum pro správu Microsoftu 365](https://admin.microsoft.com).
 2. Vyberte kartu **Uživatelé** a vytvořte nový uživatelský účet s názvem, například *uživatel\@fourthcoffeexyz.onmicrosoft.com* , který nepoužívá vlastní název domény. 
 3. Ujistěte se, že nový uživatelský účet má pro tenanta Azure AD oprávnění globálního správce.
 4. Otevřete kartu **domény** v centru pro správu Microsoft 365, vyberte název domény a vyberte **Odebrat**. 
@@ -113,7 +113,7 @@ I když je služba RMS pro jednotlivce navržená tak, aby podporovala ověřov�
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>Rutiny Azure AD PowerShellu pro možnost ForceTakeover
 Tyto rutiny se zobrazují v [příkladu PowerShellu](#powershell-example).
 
-rutiny | Využití
+Rutina  prostředí | Využití
 ------- | -------
 `connect-msolservice` | Po zobrazení výzvy se přihlaste ke spravovanému tenantovi.
 `get-msoldomain` | Zobrazuje názvy domén přidružené k aktuálnímu tenantovi.
@@ -130,40 +130,40 @@ rutiny | Využití
 
 1. Připojte se k Azure AD s použitím přihlašovacích údajů, které se použily k reakci na nabídku samoobslužných služeb:
    ```powershell
-    Install-Module -Name MSOnline
-    $msolcred = get-credential
+   Install-Module -Name MSOnline
+   $msolcred = get-credential
     
-    connect-msolservice -credential $msolcred
+   connect-msolservice -credential $msolcred
    ```
 2. Získat seznam domén:
   
    ```powershell
-    Get-MsolDomain
+   Get-MsolDomain
    ```
 3. Spuštěním rutiny Get-MsolDomainVerificationDns vytvořte výzvu:
    ```powershell
-    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
-  
-    For example:
-  
-    Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
+   Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
+   ```
+    Příklad:
+   ```
+   Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
    ```
 
 4. Zkopírujte hodnotu (Challenge), která se vrátí z tohoto příkazu. Příklad:
    ```powershell
-    MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
+   MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
 5. Ve svém veřejném oboru názvů DNS vytvořte záznam TXT DNS, který obsahuje hodnotu, kterou jste zkopírovali v předchozím kroku. Název tohoto záznamu je název nadřazené domény, takže pokud vytvoříte tento záznam o prostředku pomocí role DNS z Windows serveru, ponechte název záznamu prázdný a vložte hodnotu do textového pole.
 6. Spusťte rutinu Confirm-MsolDomain k ověření výzvy:
   
    ```powershell
-    Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
+   Confirm-MsolDomain –DomainName *your_domain_name* –ForceTakeover Force
    ```
   
    Příklad:
   
    ```powershell
-    Confirm-MsolEmailVerifiedDomain -DomainName contoso.com
+   Confirm-MsolDomain –DomainName contoso.com –ForceTakeover Force
    ```
 
 Úspěšná výzva vás vrátí do výzvy bez chyby.

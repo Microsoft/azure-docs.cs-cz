@@ -10,24 +10,73 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 10/27/2019
+ms.date: 01/07/2020
 ms.author: juliako
-ms.openlocfilehash: 0583c0093d240026e3ebcdad7b14494f07986ec2
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 88effd58e807d39e5915aa41425ecf2e8ca8e3cc
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968720"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832314"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
 
-V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vývojem.
+>Přečtěte si informace o tom, kdy se tato stránka na aktualizace znovu navštíví zkopírováním a vložením této adresy URL: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+Video+Indexer+release+notes%22&locale=en-us` do čtečky kanálů RSS.
 
-* Nejnovější verze
+Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek poskytuje informace o:
+
+* Nejnovější vydané verzi
 * Známé problémy
 * Opravy chyb
 * Zastaralé funkce
 
+## <a name="december-2019"></a>Prosinec 2019
+
+### <a name="update-transcript-with-the-new-api"></a>Aktualizace přepisu pomocí nového rozhraní API
+
+Aktualizujte konkrétní oddíl v přepisu pomocí rozhraní API [Update-video-index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?&pattern=update) .
+
+### <a name="fix-account-configuration-from-the-video-indexer-portal"></a>Oprava konfigurace účtu z Video Indexerového portálu
+
+Teď můžete aktualizovat konfiguraci připojení Media Services, abyste mohli sami pomáhat s problémy, jako je: 
+
+* nesprávný prostředek Azure Media Services
+* změny hesla
+* Mezi předplatnými se přesunuly Media Services prostředky.  
+
+Pokud chcete opravit konfiguraci účtu, přejděte na portálu Video Indexer na kartu Nastavení > účet (jako vlastník).
+
+### <a name="configure-the-custom-vision-account"></a>Konfigurace účtu Custom Vision
+
+Nakonfigurujte si účet Custom Vision na placené účty pomocí portálu Video Indexer (dřív to podporovala jenom rozhraní API). Pokud to chcete provést, přihlaste se k portálu Video Indexer, vyberte přizpůsobení modelu > animovaných znaků > nakonfigurovat. 
+
+### <a name="scenes-shots-and-keyframes--now-in-one-insight-pane"></a>Scény, snímky a klíčové snímky – nyní v jednom podokně přehledu
+
+Scény, snímky a klíčové snímky se teď sloučí do jednoho přehledu, aby bylo snazší spotřebovat a navigovat. Když vyberete požadovanou scénu, uvidíte, ze kterých snímků a klíčových snímků se skládá. 
+
+### <a name="notification-about-a-long-video-name"></a>Oznámení o dlouhém názvu videa
+
+Pokud je název videa delší než 80 znaků, Video Indexer při nahrávání zobrazovat popisnou chybu.
+
+### <a name="streaming-endpoint-is-disabled-notification"></a>Oznámení o zakázaném koncovém bodu streamování
+
+Pokud je koncový bod streamování zakázaný, Video Indexer se na stránce Player zobrazí popisná chyba.
+
+### <a name="error-handling-improvement"></a>Vylepšení zpracování chyb
+
+Stavový kód 409 se teď vrátí z [přeindexování videa](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video? https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?) a aktualizuje rozhraní API pro [video index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?) pro případ, že se video aktivně indexuje, aby se zabránilo přepsání aktuálních změn v indexu omylem.
+
+## <a name="november-2019"></a>Listopad 2019
+ 
+* Podpora jazykových modelů v korejštině
+
+    Video indexer teď podporuje vlastní jazykové modely v korejštině (`ko-KR`) jak na rozhraní API, tak i na portálu. 
+* Nové jazyky podporované pro převod řeči na text (STT)
+
+    Rozhraní API pro Video Indexer teď podporují STT v arabštině Levantine (ar-SY), dialekt anglické Británie (en-GB) a dialektu Austrálie (EN-AU).
+    
+    V případě nahrávání videa nahrazujeme zh-HANS na zh-CN, obě jsou podporované, ale doporučuje se použít zh-CN a přesnější.
+    
 ## <a name="october-2019"></a>Říjen 2019
  
 * Hledání animovaných znaků v galerii

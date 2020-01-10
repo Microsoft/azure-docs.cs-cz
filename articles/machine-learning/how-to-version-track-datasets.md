@@ -11,12 +11,12 @@ author: sihhu
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: ''
-ms.openlocfilehash: f70c826d839be1de82f3f21cf615f261a2193358
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4c8f3e7e47f9c8f924faf513d984d5474c105038
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536431"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834796"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Verze a sledování datových sad v experimentech
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -169,9 +169,9 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-`input_datasets` můžete také vyhledat z experimentů pomocí [Azure Machine Learning Studio (Classic)](https://ml.azure.com/). 
+`input_datasets` můžete také vyhledat z experimentů pomocí nástroje [Azure Machine Learning Studio](https://ml.azure.com/). 
 
-Následující obrázek ukazuje, kde najít vstupní datovou sadu experimentu na Azure Machine Learning Studio (Classic). V tomto příkladu přejdete do podokna **experimenty** a otevřete kartu **vlastnosti** pro konkrétní spuštění experimentu, `keras-mnist`.
+Následující obrázek ukazuje, kde najít vstupní datovou sadu experimentu v Azure Machine Learning Studiu. V tomto příkladu přejdete do podokna **experimenty** a otevřete kartu **vlastnosti** pro konkrétní spuštění experimentu, `keras-mnist`.
 
 ![Vstupní datové sady](./media/how-to-version-track-datasets/input-datasets.png)
 
@@ -183,7 +183,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-Po registraci můžete zobrazit seznam modelů registrovaných s datovou sadou pomocí Pythonu nebo [Azure Machine Learning Studio (Classic)](https://ml.azure.com/). Následující zobrazení je z podokna datové **sady** v části **assety**. Vyberte datovou sadu a pak vyberte kartu **modely** pro seznam modelů, které jsou zaregistrované s datovou sadou. 
+Po registraci můžete zobrazit seznam modelů registrovaných s datovou sadou pomocí Pythonu nebo [Azure Machine Learning studia](https://ml.azure.com/). Následující zobrazení je z podokna datové **sady** v části **assety**. Vyberte datovou sadu a pak vyberte kartu **modely** pro seznam modelů, které jsou zaregistrované s datovou sadou. 
 
 ![Vstupní modely datových sad](./media/how-to-version-track-datasets/dataset-models.png)
 

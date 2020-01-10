@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: b1df328f151a4085ec0aadd1b880048f81483a51
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.date: 01/07/2020
+ms.openlocfilehash: 0ce2884a2382c7dff2bdb90bd92934609675f314
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901330"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834391"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -29,13 +29,19 @@ Verze API, balíčky NuGet, obory názvů a koncové body se nezměnily. Vaše s
 
 ## <a name="feature-announcements"></a>Oznámení funkcí
 
-### <a name="december-2019"></a>Prosince 2019
+### <a name="january-2020"></a>Leden 2020
+
++ [Šifrovací klíče spravované zákazníkem](search-security-manage-encryption-keys.md) jsou teď všeobecně dostupné. Pokud používáte REST, můžete k této funkci přistupovat pomocí `api-version=2019-05-06`. Pro spravovaný kód je správný balíček stále [.NET SDK verze 8,0-Preview](search-dotnet-sdk-migration-version-9.md) , i když funkce není ve verzi Preview. 
+
++ V **rozhraní API-Version = 2019-10 -01-Preview**je teď k dispozici *omezený přístup k IP adresám a soukromým koncovým bodem (Preview)* na koncovém bodu vyhledávací služby. Zabezpečený koncový bod můžete nastavit pomocí nových vlastností **IpRule** a **NetworkRuleSet** ve REST API [vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate) správu. Další informace o verzích rozhraní API a regionální dostupnosti najdete v tématu [Jak používat REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
+
+### <a name="december-2019"></a>Prosinec 2019
 
 + [Vytvořit aplikaci (Preview)](search-create-app-portal.md) je nový průvodce na portálu, který GENERUJE soubor HTML ke stažení. Soubor se dodává se skriptem Embedded, který vykreslí provozní webovou aplikaci ve stylu "localhost", která je svázána s indexem ve vaší vyhledávací službě. Stránky lze v průvodci konfigurovat a mohou obsahovat panel hledání, oblast výsledků, navigaci bočním panelem a podporu dotazů typeahead. Můžete upravit HTML v offline režimu pro rozšiřování nebo přizpůsobení pracovního postupu nebo vzhledu.
 
 ### <a name="november-2019---ignite-conference"></a>Listopadu 2019 – konference Ignite
 
-+ [Přírůstkové indexování (Preview)](cognitive-search-incremental-indexing-conceptual.md) umožňuje vybrat a zvolit kroky, které se mají znovu zpracovat při provádění úprav kanálu rozšíření. Přírůstkové indexování je užitečné, pokud máte image s obsahem, který jste předtím analyzovali. Výstup drahých analýz je uložený a pak se používá jako základ pro další indexování nebo obohacení.
++ [Přírůstkové obohacení (Preview)](cognitive-search-incremental-indexing-conceptual.md) přidá do kanálu pro rozšíření ukládání do mezipaměti a statefullness, aby bylo možné pracovat na konkrétních krocích nebo fázích, aniž by došlo ke ztrátě již zpracovávaného obsahu. Předchozí Změna kanálu rozšíření vyžadovala úplné opětovné sestavení. Při přírůstkovém obohacení se zachová výstup nákladné analýzy, zejména analýza obrazu.
 
 <!-- 
 + Custom Entity Lookup is a cognitive skill used during indexing that allows you to provide a list of custom entities (such as part numbers, diseases, or names of locations you care about) that should be found within the text. It supports fuzzy matching, case-insensitive matching, and entity synonyms. -->

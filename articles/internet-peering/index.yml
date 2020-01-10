@@ -1,0 +1,74 @@
+### YamlMime:Landing
+title: Dokumentace k internetovému peeringu
+summary: Další informace o internetovém peeringu s Microsoftem
+metadata:
+  title: Dokumentace k internetovému peeringu
+  titleSuffix: Azure
+  description: Další informace o peeringu s Microsoftem
+  services: internet-peering
+  ms.service: internet-peering
+  ms.topic: landing-page
+  author: prmitiki
+  ms.author: prmitiki
+  ms.date: 11/27/2019
+  ms.openlocfilehash: 83549a56b3fb81c66827d1e9f87718467fb1098a
+  ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 01/09/2020
+  ms.locfileid: "75773515"
+landingContent:
+- title: Informace o internetovém peeringu
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Informace o internetovém peeringu
+      url: overview.md
+    - text: Internetový peering vs. Peering Service
+      url: overview-peering-service.md
+  - linkListType: concept
+    links:
+    - text: Zásady peeringu
+      url: policy.md
+    - text: Předpoklady pro nastavení partnerského vztahu s Microsoftem
+      url: prerequisites.md
+    - text: Nejčastější dotazy k internetovému peeringu
+      url: faqs.md
+- title: Začínáme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Přidružení partnerského čísla ASN k předplatnému Azure s využitím portálu
+      url: howto-subscription-association-portal.md
+- title: Peering typu Exchange
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Podrobný průvodce peeringem typu Exchange
+      url: walkthrough-exchange-all.md
+    - text: Vytvoření nebo úprava peeringu typu Exchange s využitím portálu
+      url: howto-exchange-portal.md
+    - text: Převod starší verze peeringu typu Exchange na prostředek Azure s využitím portálu
+      url: howto-legacy-exchange-portal.md
+- title: Peering typu Direct
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Podrobný průvodce peeringem typu Direct
+      url: walkthrough-direct-all.md
+    - text: Vytvoření nebo úprava peeringu typu Direct s využitím portálu
+      url: howto-direct-portal.md
+    - text: Převod starší verze peeringu typu Direct na prostředek Azure s využitím portálu
+      url: howto-legacy-direct-portal.md
+- title: Peering Service
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Nejčastější dotazy ke službě Peering Service
+      url: service-faqs.md
+  - linkListType: how-to-guide
+    links:
+    - text: Podrobný průvodce programem Peering Service Partner
+      url: walkthrough-peering-service-all.md
+    - text: Povolení služby Peering Service u peeringu typu Direct s využitím portálu
+      url: howto-peering-service-portal.md

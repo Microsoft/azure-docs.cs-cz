@@ -29,84 +29,98 @@
       href: data-flow-create.md
 - name: Kurzy
   items:
-    - name: Kopírování dat v cloudu
+    - name: Kopírování a příjem dat
       items:
-        - name: Nástroj pro kopírování dat
-          href: tutorial-copy-data-tool.md
-        - name: Uživatelské rozhraní
-          href: tutorial-copy-data-portal.md
-        - name: .NET
-          href: tutorial-copy-data-dot-net.md
-    - name: Kopírování místních dat do cloudu
-      items:
-        - name: Nástroj pro kopírování dat
-          href: tutorial-hybrid-copy-data-tool.md
-        - name: Uživatelské rozhraní
-          href: tutorial-hybrid-copy-portal.md
-        - name: Azure PowerShell
-          href: tutorial-hybrid-copy-powershell.md
-    - name: Hromadné kopírování dat
-      items:
-        - name: Uživatelské rozhraní
-          href: tutorial-bulk-copy-portal.md
-        - name: Azure PowerShell
-          href: tutorial-bulk-copy.md
-    - name: Přírůstkové kopírování dat
-      href: tutorial-incremental-copy-overview.md
-      items:
-        - name: 1. Kopírování z jedné tabulky
-          items:
-            - name: Uživatelské rozhraní
-              href: tutorial-incremental-copy-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-powershell.md
-        - name: 2. Kopírování z několika tabulek
-          items:
-            - name: Uživatelské rozhraní
-              href: tutorial-incremental-copy-multiple-tables-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-multiple-tables-powershell.md
-        - name: 3. Použití funkce sledování změn
-          items:
-            - name: Uživatelské rozhraní
-              href: tutorial-incremental-copy-change-tracking-feature-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-change-tracking-feature-powershell.md
-        - name: 4. Kopírování nových souborů na základě lastmodifieddate
+        - name: Z Azure Blob Storage do Azure SQL Database
           items:
             - name: Nástroj pro kopírování dat
+              href: tutorial-copy-data-tool.md
+            - name: Uživatelské rozhraní
+              href: tutorial-copy-data-portal.md
+            - name: .NET
+              href: tutorial-copy-data-dot-net.md
+        - name: Z místní databáze SQL Serveru do Azure Blob Storage
+          items:
+            - name: Nástroj pro kopírování dat
+              href: tutorial-hybrid-copy-data-tool.md
+            - name: Uživatelské rozhraní
+              href: tutorial-hybrid-copy-portal.md
+            - name: Azure PowerShell
+              href: tutorial-hybrid-copy-powershell.md
+        - name: Z Amazon Web Services S3 do Azure Data Lake Storage
+          items:
+            - name: Azure Data Lake Storage Gen2
+              href: load-azure-data-lake-storage-gen2.md
+            - name: Azure Data Lake Storage Gen1
+              href: load-azure-data-lake-store.md
+        - name: Z Azure Data Lake Storage Gen1 do Azure Data Lake Storage Gen2
+          href: load-azure-data-lake-storage-gen2-from-gen1.md
+        - name: Z Azure SQL Database do Azure Synapse Analytics
+          href: load-azure-sql-data-warehouse.md
+        - name: Ze SAP BW do Azure Data Lake Storage Gen2
+          href: load-sap-bw-data.md
+        - name: Z Office 365 do Azure Blob Storage
+          href: load-office-365-data.md
+        - name: Několik tabulek dohromady
+          items:
+            - name: Uživatelské rozhraní
+              href: tutorial-bulk-copy-portal.md
+            - name: Azure PowerShell
+              href: tutorial-bulk-copy.md
+        - name: Přírůstkové načtení dat
+          href: tutorial-incremental-copy-overview.md
+          items:
+            - name: Z jedné tabulky Azure SQL Database
+              items:
+                - name: Uživatelské rozhraní
+                  href: tutorial-incremental-copy-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-incremental-copy-powershell.md
+            - name: Z několika místních tabulek SQL Serveru
+              items:
+                - name: Uživatelské rozhraní
+                  href: tutorial-incremental-copy-multiple-tables-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-incremental-copy-multiple-tables-powershell.md
+            - name: S využitím informací o sledování změn v SQL Serveru
+              items:
+                - name: Uživatelské rozhraní
+                  href: tutorial-incremental-copy-change-tracking-feature-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-incremental-copy-change-tracking-feature-powershell.md
+            - name: Nové soubory podle data poslední úpravy
               href: tutorial-incremental-copy-lastmodified-copy-data-tool.md
-        - name: 5. Kopírování nových souborů na základě názvu souboru
-          items:
-            - name: Nástroj pro kopírování dat
+            - name: Nové soubory podle názvu souboru
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
-    - name: Transformace a příprava dat s využitím toků dat
+    - name: Transformace dat
       items:
-        - name: Transformace dat s využitím toku dat mapování
-          href: tutorial-data-flow.md
-        - name: Videokurzy mapování toku dat
-          href: data-flow-tutorials.md
-        - name: Příprava dat s využitím toku dat transformace
+        - name: Transformace dat s využitím toků dat mapování
+          items:
+            - name: Transformace dat s využitím toků dat mapování
+              href: tutorial-data-flow.md
+            - name: Videokurzy mapování toku dat
+              href: data-flow-tutorials.md
+        - name: Příprava dat s využitím toků dat transformace
           href: wrangling-data-flow-tutorial.md
-    - name: Externí transformace
-      items:
-        - name: HDInsight Spark
+        - name: Použití externích služeb
           items:
-            - name: Uživatelské rozhraní
-              href: tutorial-transform-data-spark-portal.md
-            - name: Azure PowerShell
-              href: tutorial-transform-data-spark-powershell.md
-        - name: Poznámkový blok Databricks
-          items:
-            - name: Uživatelské rozhraní
-              href: transform-data-using-databricks-notebook.md
-    - name: Transformace Hivu ve virtuální síti
-      items:
-        - name: Uživatelské rozhraní
-          href: tutorial-transform-data-hive-virtual-network-portal.md
-        - name: Azure PowerShell
-          href: tutorial-transform-data-hive-virtual-network.md
-    - name: Přidání větvení a řetězení
+            - name: HDInsight Spark
+              items:
+                - name: Uživatelské rozhraní
+                  href: tutorial-transform-data-spark-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-transform-data-spark-powershell.md
+            - name: Poznámkový blok Databricks
+              items:
+                - name: Uživatelské rozhraní
+                  href: transform-data-using-databricks-notebook.md
+            - name: Transformace Hivu ve virtuální síti
+              items:
+                - name: Uživatelské rozhraní
+                  href: tutorial-transform-data-hive-virtual-network-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-transform-data-hive-virtual-network.md
+    - name: Tok řízení
       items:
         - name: Uživatelské rozhraní
           href: tutorial-control-flow-portal.md
@@ -118,19 +132,6 @@
           href: tutorial-deploy-ssis-packages-azure.md
         - name: Azure PowerShell
           href: tutorial-deploy-ssis-packages-azure-powershell.md
-    - name: Load Data Lake Storage Gen2
-      href: load-azure-data-lake-storage-gen2.md
-      items:
-        - name: Kopírování ze služby Data Lake Storage Gen1
-          href: load-azure-data-lake-storage-gen2-from-gen1.md
-    - name: Načtení Synapse Analytics (dříve SQL Data Warehouse)
-      href: load-azure-sql-data-warehouse.md
-    - name: Načtení služby Data Lake Storage Gen1
-      href: load-azure-data-lake-store.md
-    - name: Načtení dat SAP BW
-      href: load-sap-bw-data.md
-    - name: Načtení dat Office 365
-      href: load-office-365-data.md
 - name: ukázky
   items:
     - name: Ukázky kódů
@@ -518,12 +519,14 @@
           href: control-flow-expression-language-functions.md
         - name: Systémové proměnné
           href: control-flow-system-variables.md
-        - name: Parametry toku dat
+        - name: Parametrizace mapování toků dat
           href: parameters-data-flow.md
     - name: Zabezpečení
       items:
         - name: Aspekty zabezpečení přesunu dat
           href: data-movement-security-considerations.md
+        - name: ID adresy modulu Azure Integration Runtime
+          href: azure-integration-runtime-ip-addresses.md
         - name: Uložení přihlašovacích údajů v Azure Key Vault
           href: store-credentials-in-key-vault.md
         - name: Použití tajných kódů služby Azure Key Vault v aktivitách kanálu
@@ -616,20 +619,20 @@
           href: solution-template-move-files.md
         - name: Transformace dat s využitím Databricks
           href: solution-template-databricks-notebook.md
-    - name: Průvodce odstraňováním potíží
+    - name: Průvodci odstraňováním potíží
       items:
-        - name: Řešení potíží s aktivitami
+        - name: Aktivity
           href: data-factory-troubleshoot-guide.md
-        - name: Řešení potíží s konektory
+        - name: Konektory
           href: connector-troubleshoot-guide.md
-        - name: Řešení potíží se správou Azure-SSIS IR
-          href: ssis-integration-runtime-management-troubleshoot.md
-        - name: Řešení potíží s místním prostředím IR
-          href: self-hosted-integration-runtime-troubleshoot-guide.md
-        - name: Řešení potíží se spuštěním balíčku v prostředí Azure-SSIS IR
-          href: ssis-integration-runtime-ssis-activity-faq.md
-        - name: Řešení potíží s toky dat
+        - name: Toky dat
           href: data-flow-troubleshoot-guide.md
+        - name: Místní prostředí Integration Runtime
+          href: self-hosted-integration-runtime-troubleshoot-guide.md
+        - name: Prostředí Azure-SSIS Integration Runtime
+          href: ssis-integration-runtime-management-troubleshoot.md
+        - name: Spouštění balíčků v prostředí Azure-SSIS IR
+          href: ssis-integration-runtime-ssis-activity-faq.md
 - name: Scénáře
   items:
     - name: Migrace dat pro datové jezero a EDW
@@ -670,18 +673,18 @@
       href: /python/api/overview/azure/datafactory?view=azure-python
 - name: Zdroje a prostředky
   items:
+    - name: Dokumenty white paper
+      href: whitepapers.md
+    - name: Nejčastější dotazy
+      href: frequently-asked-questions.md
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=data-factory'
     - name: Zeptejte se – fórum MSDN
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory&filter=alltypes&sort=lastpostdesc'
     - name: Zeptejte se – Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
     - name: Žádost o funkci
       href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
-    - name: Nejčastější dotazy
-      href: frequently-asked-questions.md
-    - name: Dokumenty white paper
-      href: whitepapers.md
-    - name: Plán
-      href: 'https://azure.microsoft.com/roadmap/?tag=data-factory'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/data-factory/'
     - name: Dostupnost podle oblasti

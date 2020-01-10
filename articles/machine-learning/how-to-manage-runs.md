@@ -10,18 +10,18 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 1a82b6592782973920f4381129e9659eaebca033
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 01/09/2020
+ms.openlocfilehash: cd9cada24ba5e7d2a2001d4ef0efef2a157b0fd6
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75537185"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834728"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Spuštění, monitorování a zrušení školicích běhů v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-[Sada Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) a [Machine Learning CLI](reference-azure-machine-learning-cli.md) nabízí různé metody pro monitorování, uspořádání a správu vašich běhů pro školení a experimentování.
+[Sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), [Machine Learning CLI](reference-azure-machine-learning-cli.md)a [Azure Machine Learning Studio](https://ml.azure.com) nabízí různé metody pro monitorování, organizování a správu vašich běhů pro školení a experimentování.
 
 Tento článek ukazuje příklady následujících úloh:
 
@@ -105,6 +105,16 @@ Pro spuštění experimentu použijte následující postup:
 
     Další informace najdete v tématu [AZ ml Run odeslání-Script](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 
+### <a name="using-azure-machine-learning-studio"></a>Používání Azure Machine Learning studia
+
+Pokud chcete spustit odeslání kanálu v Návrháři (Preview), použijte následující postup:
+
+1. Nastavte pro svůj kanál výchozí výpočetní cíl.
+
+1. V horní části plátna kanálu vyberte **Spustit** .
+
+1. Vyberte experiment pro seskupení spuštění kanálu.
+
 ## <a name="monitor-the-status-of-a-run"></a>Monitoruje stav spuštění.
 
 ### <a name="using-the-sdk"></a>Použití sady SDK
@@ -160,6 +170,22 @@ print(notebook_run.get_status())
 
     Další informace najdete v tématu [AZ ml Run show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show).
 
+
+### <a name="using-azure-machine-learning-studio"></a>Používání Azure Machine Learning studia
+
+Pro zobrazení počtu aktivních běhů experimentu v studiu.
+
+1. Přejděte do části **experimenty** ... 
+
+1. Vyberte experiment.
+
+    Na stránce experiment můžete zobrazit počet aktivních cílových výpočtů a dobu trvání každého spuštění. 
+
+1. Vyberte konkrétní číslo spuštění.
+
+1. Na kartě **protokoly** můžete najít diagnostické a chybové protokoly pro spuštění kanálu.
+
+
 ## <a name="cancel-or-fail-runs"></a>Zrušení nebo selhání spuštění
 
 Pokud si všimnete omylem nebo pokud dokončení běhu trvá příliš dlouho, můžete spustit operaci.
@@ -194,6 +220,17 @@ az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
 Další informace najdete v tématu [AZ ml Run Cancel](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel).
+
+### <a name="using-azure-machine-learning-studio"></a>Používání Azure Machine Learning studia
+
+Chcete-li zrušit spuštění v nástroji Studio, použijte následující postup:
+
+1. V části **experimenty** nebo **kanály** se dostanete na běžící kanál. 
+
+1. Vyberte číslo běhu kanálu, které chcete zrušit.
+
+1. Na panelu nástrojů vyberte **Zrušit** .
+
 
 ## <a name="create-child-runs"></a>Vytvořit podřízená spuštění
 
@@ -331,6 +368,12 @@ az ml run list --experiment-name experiment [?properties.author=='azureml-user' 
 ```
 
 Další informace o dotazování na výsledky rozhraní příkazového řádku Azure najdete v tématu [dotazování výstupu příkazu Azure CLI](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest).
+
+### <a name="using-azure-machine-learning-studio"></a>Používání Azure Machine Learning studia
+
+1. Přejděte do části **kanály** .
+
+1. Pomocí panelu hledání můžete filtrovat kanály pomocí značek, popisů, názvů experimentů a jména odesílatele.
 
 ## <a name="example-notebooks"></a>Příklad poznámkové bloky
 

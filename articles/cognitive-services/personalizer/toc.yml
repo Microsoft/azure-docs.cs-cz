@@ -66,6 +66,8 @@
     - name: Vytvoření a konfigurace služby Personalizace
       href: how-to-settings.md
       displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
+    - name: Správa zásad učení
+      href: how-to-learning-policy.md
     - name: Analýza
       items:
         - name: Offline vyhodnocení

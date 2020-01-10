@@ -71,14 +71,18 @@
       href: howto-develop-solution.md
 - name: Referenční informace
   items:
-    - name: Digital Twins
-      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/digitaltwin'
-    - name: Služba Digital Twins
-      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/service'
-    - name: Úložiště modelu Digital Twins
-      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdatemodel'
-    - name: Vygenerování tokenu zabezpečení REST
-      href: howto-generate-sas-token.md
+    - name: Knihovny a sady SDK
+      href: libraries-sdks.md
+    - name: REST API
+      items:
+        - name: Digital Twins
+          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/digitaltwin'
+        - name: Služba Digital Twins
+          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/service'
+        - name: Úložiště modelu Digital Twins
+          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdatemodel'
+        - name: Vygenerování tokenu zabezpečení REST
+          href: howto-generate-sas-token.md
 - name: Související
   items:
     - name: Řešení

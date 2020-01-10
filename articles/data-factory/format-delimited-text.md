@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 01/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 77d2daf3fa17632d8a1c633c23815e0035e45481
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f2e70a7b900ad918cda05ce34204e2de1e6e67ef
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931265"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830186"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Textový formát s oddělovači v Azure Data Factory
 
@@ -85,7 +85,7 @@ Podporuje **nastavení čtení textu s oddělovači** v rámci `formatSettings`:
 
 | Vlastnost      | Popis                                                  | Požaduje se |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Typ formatSettings musí být nastaven na hodnotu **DelimitedTextReadSetting**. | Ano      |
+| type          | Typ formatSettings musí být nastaven na hodnotu **DelimitedTextReadSettings**. | Ano      |
 | skipLineCount | Označuje počet **neprázdný** řádků, které mají přeskočit při čtení dat ze vstupních souborů. <br>Pokud je zadaný parametr skipLineCount i firstRowAsHeader, nejdřív se přeskočí příslušný počet řádků a potom se ze vstupního souboru načtou informace záhlaví. | Ne       |
 
 ### <a name="delimited-text-as-sink"></a>Text s oddělovači jako jímku
@@ -102,8 +102,8 @@ Podporované **nastavení zápisu textu s oddělovači** v rámci `formatSetting
 
 | Vlastnost      | Popis                                                  | Požaduje se                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| type          | Typ formatSettings musí být nastaven na hodnotu **DelimitedTextWriteSetting**. | Ano                                                   |
-| fileExtension | Přípona souboru, která slouží k pojmenování výstupních souborů, např. `.csv`, `.txt`. Je nutné zadat, když `fileName` není zadána ve výstupní datové sadě DelimitedText. | Ano, pokud není zadaný název souboru v výstupní datové sadě |
+| type          | Typ formatSettings musí být nastaven na hodnotu **DelimitedTextWriteSettings**. | Ano                                                   |
+| fileExtension | Přípona souboru, která slouží k pojmenování výstupních souborů, např. `.csv`, `.txt`. Je nutné zadat, když `fileName` není zadána ve výstupní datové sadě DelimitedText. Když je ve výstupní datové sadě nakonfigurovaný název souboru, použije se jako název souboru jímky a nastavení přípony souboru se bude ignorovat.  | Ano, pokud není zadaný název souboru v výstupní datové sadě |
 
 ## <a name="mapping-data-flow-properties"></a>Mapování vlastností toku dat
 

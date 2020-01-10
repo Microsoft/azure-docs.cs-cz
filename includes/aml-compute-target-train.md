@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 12/04/2019
-ms.openlocfilehash: 2c275e1d8f54191e12454f7e97a8dd59e7c84be2
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 06800e7bb18634f1cbe847ced5450172106ec6f9
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75539382"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75840678"
 ---
 **Cíle výpočetní služby se dají znovu použít z jedné školicí úlohy do další**. Když například připojíte vzdálený virtuální počítač k pracovnímu prostoru, můžete ho znovu použít pro více úloh.  Pro kanály strojového učení použijte odpovídající [Krok kanálu](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py) pro každý cíl výpočtů.
 
@@ -24,7 +24,7 @@ ms.locfileid: "75539382"
 |[Instance COMPUTE Azure Machine Learning (Preview)](../articles/machine-learning/concept-compute-instance.md) | | ano |  |
 |[Azure Machine Learning výpočetní cluster](../articles/machine-learning/how-to-set-up-training-targets.md#amlcompute)| Ano & <br/>&nbsp;ladění parametrů | ano | ano |
 |[Vzdáleném virtuálním počítači](../articles/machine-learning/how-to-set-up-training-targets.md#vm) | Ano & <br/>ladění parametrů | ano | &nbsp; |
-|[Datacihly Azure&nbsp;](../articles/machine-learning/how-to-create-your-first-pipeline.md#databricks)| ano | ano | &nbsp; |
+|[Datacihly Azure&nbsp;](../articles/machine-learning/how-to-create-your-first-pipeline.md#databricks)| Ano (pouze místní režim sady SDK) | ano | &nbsp; |
 |[Azure Data Lake Analytics](../articles/machine-learning/how-to-create-your-first-pipeline.md#adla) | &nbsp; | ano | &nbsp; |
 |[Azure HDInsight](../articles/machine-learning/how-to-set-up-training-targets.md#hdinsight) | &nbsp; | ano | &nbsp; |
 |[Azure Batch](../articles/machine-learning/how-to-set-up-training-targets.md#azbatch) | &nbsp; | ano | &nbsp; |

@@ -2,38 +2,32 @@
 title: Nasazení vyhrazených hostitelů Azure pomocí rozhraní příkazového řádku
 description: Nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure CLI.
 services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/29/2019
+ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: ece9967321cfca44b102d78722f0df3d8f980bdb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b301012425e0a2590fa5ac22985abe9c96fbd419
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036407"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834926"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Verze Preview: nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure CLI
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure CLI
  
 
 Tento článek vás provede procesem vytvoření [vyhrazeného hostitele](dedicated-hosts.md) Azure pro hostování virtuálních počítačů. 
 
 Ujistěte se, že máte nainstalovanou verzi Azure CLI 2.0.70 nebo novější a přihlásili jste se k účtu Azure pomocí `az login`. 
 
-> [!IMPORTANT]
-> Vyhrazené hostitele Azure jsou momentálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> **Známá omezení verze Preview**
-> - Sady škálování virtuálních počítačů se na vyhrazených hostitelích aktuálně nepodporují.
-> - Počáteční verze Preview podporuje následující řadu virtuálních počítačů: DSv3 a ESv3. 
+
+## <a name="limitations"></a>Omezení
+
+- Sady škálování virtuálních počítačů se na vyhrazených hostitelích aktuálně nepodporují.
+- Počáteční verze podporuje následující řadu virtuálních počítačů: DSv3 a ESv3. 
  
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků 
@@ -43,7 +37,7 @@ Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spra
 az group create --name myDHResourceGroup --location eastus 
 ```
  
-## <a name="create-a-host-group"></a>Vytvoření skupiny hostitelů 
+## <a name="create-a-host-group"></a>Vytvoření hostitelské skupiny 
 
 **Skupina hostitelů** je prostředek, který představuje kolekci vyhrazených hostitelů. Vytvoříte skupinu hostitelů v oblasti a zóně dostupnosti a přidáte do ní hostitele. Při plánování vysoké dostupnosti jsou k dispozici další možnosti. U vyhrazených hostitelů můžete použít jednu z následujících možností: 
 - Rozsah napříč několika zónami dostupnosti. V takovém případě je nutné mít skupinu hostitelů v každé z zón, které chcete použít.
@@ -86,8 +80,7 @@ az vm host group create \
  
 ## <a name="create-a-host"></a>Vytvoření hostitele 
 
-Nyní vytvoříme vyhrazeného hostitele ve skupině hostitelů. Kromě názvu pro hostitele je nutné zadat SKU pro hostitele. SKU hostitele zachytí podporovanou řadu virtuálních počítačů a také generování hardwaru pro vyhrazeného hostitele.  Během období Preview budeme podporovat následující hodnoty SKU hostitele: DSv3_Type1 a ESv3_Type1.
-
+Nyní vytvoříme vyhrazeného hostitele ve skupině hostitelů. Kromě názvu pro hostitele je nutné zadat SKU pro hostitele. SKU hostitele zachytí podporovanou řadu virtuálních počítačů a také generování hardwaru pro vyhrazeného hostitele.  Podporovány jsou následující hodnoty SKU: DSv3_Type1 a ESv3_Type1.
 
 Další informace o SKU a cenách hostitelů najdete v tématu [ceny za vyhrazené hostitele Azure](https://aka.ms/ADHPricing).
 

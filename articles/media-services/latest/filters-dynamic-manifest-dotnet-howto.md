@@ -1,5 +1,5 @@
 ---
-title: Vytváření filtrů pomocí sady Azure Media Services .NET SDK
+title: Vytváření filtrů pomocí sady Azure Media Services V3 .NET SDK
 description: Toto téma popisuje, jak vytvářet filtry, takže klient může používat na určité části datový proud stream. Služba Media Services vytvoří dynamických manifestů k selektivní Streamovat.
 services: media-services
 documentationcenter: ''
@@ -13,36 +13,36 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: juliako
-ms.openlocfilehash: 2bcb8762b94347f4409507fb89a18cb6c9d0dacd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ef04b1b7b5030189482e89e26e4565397cbdd7c8
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66494294"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779242"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Vytváření filtrů pomocí sady Media Services .NET SDK
 
 Při doručování obsahu zákazníkům (streamování živých událostí a videa na vyžádání) vašeho klienta může být nutné více flexibility než co je popsána v souboru manifestu výchozí asset. Azure Media Services umožňuje definovat účtu filtry a filtry asset pro obsah. 
 
-Podrobný popis této funkce a scénáře, ve kterém se používá, najdete v části [dynamických manifestů](filters-dynamic-manifest-overview.md) a [filtry](filters-concept.md).
+Podrobný popis této funkce a scénářů, kde se používá, najdete v tématu [dynamické manifesty](filters-dynamic-manifest-overview.md) a [filtry](filters-concept.md).
 
-Toto téma ukazuje, jak pomocí Media Services .NET SDK můžete definovat filtr pro Video na vyžádání assetu a vytvořit [filtrů účtů](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet) a [Asset filtry](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet). 
+V tomto tématu se dozvíte, jak pomocí Media Services .NET SDK definovat filtr pro prostředek video na vyžádání a vytvořit [filtry účtu](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet) a [filtry assetů](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet). 
 
 > [!NOTE]
-> Přečtěte si [presentationTimeRange](filters-concept.md#presentationtimerange).
+> Nezapomeňte zkontrolovat [presentationTimeRange](filters-concept.md#presentationtimerange).
 
 ## <a name="prerequisites"></a>Požadavky 
 
 - Kontrola [filtrů a dynamických manifestů](filters-dynamic-manifest-overview.md).
 - [Vytvoření účtu Media Services](create-account-cli-how-to.md). Ujistěte se, že si pamatovat název skupiny prostředků a název účtu Media Services. 
-- Získání informací potřebných k [přístup k rozhraním API](access-api-cli-how-to.md)
-- Kontrola [nahrávání, kódování a streamování využívajícího službu Azure Media Services](stream-files-tutorial-with-api.md) zobrazíte jak [začít používat sadu .NET SDK](stream-files-tutorial-with-api.md#start_using_dotnet)
+- Získání informací potřebných pro [přístup k rozhraním API](access-api-cli-how-to.md)
+- Podívejte se na [nahrávání, kódování a streamování pomocí Azure Media Services,](stream-files-tutorial-with-api.md) abyste viděli, jak [začít používat sadu .NET SDK](stream-files-tutorial-with-api.md#start_using_dotnet) .
 
 ## <a name="define-a-filter"></a>Definujte filtr  
 
-V rozhraní .NET, nakonfigurujte sledování výběrů [FilterTrackSelection](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) a [FilterTrackPropertyCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) třídy. 
+V rozhraní .NET nakonfigurujete výběry sledování pomocí tříd [FilterTrackSelection](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) a [FilterTrackPropertyCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) . 
 
-Následující kód definuje filtr, který zahrnuje všechny zvukové stopy, které jsou ES-3 a jakékoli video sledují, které mají s přenosovou rychlostí v 0 – 1 000 000 rozsahu.
+Následující kód definuje filtr, který obsahuje všechny zvukové stopy, které jsou ES-3, a všechny videosoubory, které mají přenosovou rychlost v rozsahu 0-1000000.
 
 ```csharp
 var audioConditions = new List<FilterTrackPropertyCondition>()
@@ -66,7 +66,7 @@ List<FilterTrackSelection> includedTracks = new List<FilterTrackSelection>()
 
 ## <a name="create-account-filters"></a>Vytvoření účtu filtrů
 
-Následující kód ukazuje, jak pomocí .NET vytvořit filtr účet, který zahrnuje všechny výběry sledování [výše](#define-a-filter). 
+Následující kód ukazuje, jak použít .NET k vytvoření filtru účtu, který obsahuje všechny [výše uvedené](#define-a-filter)možnosti sledování. 
 
 ```csharp
 AccountFilter accountFilterParams = new AccountFilter(tracks: includedTracks);
@@ -75,18 +75,18 @@ client.AccountFilters.CreateOrUpdate(config.ResourceGroup, config.AccountName, "
 
 ## <a name="create-asset-filters"></a>Vytvoření assetu filtrů
 
-Následující kód ukazuje, jak pomocí .NET vytvořit filtr asset, který zahrnuje všechny výběry sledování [výše](#define-a-filter). 
+Následující kód ukazuje, jak použít .NET k vytvoření filtru assetů, který obsahuje všechny [výše uvedené](#define-a-filter)možnosti sledování. 
 
 ```csharp
 AssetFilter assetFilterParams = new AssetFilter(tracks: includedTracks);
 client.AssetFilters.CreateOrUpdate(config.ResourceGroup, config.AccountName, encodedOutputAsset.Name, "assetFilterName1", assetFilterParams);
 ```
 
-## <a name="associate-filters-with-streaming-locator"></a>Filtry přidružit Lokátor streamování
+## <a name="associate-filters-with-streaming-locator"></a>Přidružit filtry k lokátoru streamování
 
-Můžete zadat seznam prostředků nebo účet filtrů, které pro vaše Lokátor streamování. [Dynamické Packager (koncový bod streamování)](dynamic-packaging-overview.md) platí tento seznam filtrů společně s ty klientem v adrese URL. Tato kombinace generuje [dynamické Manifest](filters-dynamic-manifest-overview.md), která je založena na filtry v adrese URL a filtry, které jste zadali na Lokátor streamování. Doporučujeme použít tuto funkci, pokud chcete použít filtry, ale nechcete, aby k vystavení filtr názvů v adrese URL.
+Můžete určit seznam filtrů Asset nebo Account, které se vztahují na Lokátor streamování. [Dynamický balíček (koncový bod streamování)](dynamic-packaging-overview.md) používá tento seznam filtrů společně s nastavením, které klient ZADÁ v adrese URL. Tato kombinace generuje [dynamický manifest](filters-dynamic-manifest-overview.md), který je založen na filtrech v URL + filtry, které zadáte na lokátoru streamování. Tuto funkci doporučujeme používat, pokud chcete použít filtry, ale nechcete vystavit názvy filtrů v adrese URL.
 
-Následující C# kód ukazuje, jak vytvořit lokátor streamování a zadejte `StreamingLocator.Filters`. Toto je volitelná vlastnost, která přebírá `IList<string>` filtru názvů.
+Následující C# kód ukazuje, jak vytvořit Lokátor streamování a zadat `StreamingLocator.Filters`. Toto je volitelná vlastnost, která přebírá `IList<string>` názvů filtrů.
 
 ```csharp
 IList<string> filters = new List<string>();
@@ -104,19 +104,19 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
     });
 ```
       
-## <a name="stream-using-filters"></a>Stream pomocí filtrů
+## <a name="stream-using-filters"></a>Streamování pomocí filtrů
 
-Jakmile definujete filtry, klienty je použít v adrese URL streamování. Filtry můžete uplatnit adaptivní přenosové rychlosti streamování protokolů: Apple HTTP Live Streaming (HLS), MPEG-DASH a Smooth Streaming.
+Po definování filtrů je můžou klienti používat v adrese URL streamování. Filtry mohou být aplikovány na protokoly streamování s adaptivní přenosovou rychlostí: Apple HTTP Live Streaming (HLS), MPEG-POMLČKa a Smooth Streaming.
 
-V následující tabulce jsou uvedeny příklady adresy URL s filtry:
+V následující tabulce jsou uvedeny některé příklady adres URL s filtry:
 
-|Protocol|Příklad:|
+|Protocol (Protokol)|Příklad:|
 |---|---|
 |HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
 |Technologie Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Stream videa](stream-files-tutorial-with-api.md) 
 

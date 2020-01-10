@@ -1,5 +1,5 @@
 ---
-title: Dynamické balení v Media Services
+title: Dynamické balení v Azure Media Services V3
 titleSuffix: Azure Media Services
 description: Tento článek obsahuje přehled dynamického balení v Azure Media Services.
 author: Juliako
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: c12ebe307eb370e07b785b4379f82a4274964492
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 05a515d5f74569ff8d0fa8aec68eb681dc79d2fc
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977756"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779599"
 ---
-# <a name="dynamic-packaging-in-media-services"></a>Dynamické balení v Media Services
+# <a name="dynamic-packaging-in-media-services-v3"></a>Dynamické balení v Media Services V3
 
 Microsoft Azure Media Services lze použít ke kódování mnoha mediálních formátů souborů. Dodává je prostřednictvím různých protokolů streamování s ochranou obsahu nebo bez nich, aby se dosáhlo všech hlavních zařízení (jako jsou zařízení s iOS a Androidem). Tito klienti rozumí různým protokolům. Například iOS vyžaduje doručení datových proudů ve formátu HTTP Live Streaming (HLS) a zařízení s Androidem podporují HLS a také formát MPEG POMLČKy.
 

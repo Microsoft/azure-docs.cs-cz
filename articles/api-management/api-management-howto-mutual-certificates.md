@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 70c1e22fc7f1fb1cda3fd4af1c2d3aa2cd257201
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 39a1e224173dc021cf49b535957eb4b49f4c91ee
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442621"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834340"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Jak zabezpečit back-endové služby pomocí ověřování klientských certifikátů v Azure API Management
 
@@ -30,9 +30,12 @@ Informace o správě certifikátů pomocí REST API API Management najdete v té
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-V této příručce se dozvíte, jak nakonfigurovat instanci služby API Management tak, aby pro přístup k back-endové službě pro rozhraní API používala ověřování klientským certifikátem. Než budete postupovat podle kroků v tomto článku, měli byste mít nakonfigurované back-endové služby pro ověřování klientským certifikátem ([ke konfiguraci ověřování certifikátů na Azure websites najdete informace v tomto článku][to configure certificate authentication in Azure WebSites refer to this article]). K certifikátu potřebujete přístup a heslo pro jeho odeslání do služby API Management.
+V této příručce se dozvíte, jak nakonfigurovat instanci služby API Management tak, aby pro přístup k back-endové službě pro rozhraní API používala ověřování klientským certifikátem. Než budete postupovat podle kroků v tomto článku, měli byste mít nakonfigurované back-end služby pro ověřování klientským certifikátem ([ke konfiguraci ověřování certifikátů v Azure App Service najdete v tomto článku][to configure certificate authentication in Azure WebSites refer to this article]). K certifikátu potřebujete přístup a heslo pro jeho odeslání do služby API Management.
 
 ## <a name="step1"> </a>Odeslat certifikát
+
+> [!NOTE]
+> Místo nahraného certifikátu můžete použít certifikát uložený ve službě [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) , jak je znázorněno v tomto [příkladu](https://github.com/galiniliev/api-management-policy-snippets/blob/galin/AkvCert/examples/Look%20up%20Key%20Vault%20certificate%20using%20Managed%20Service%20Identity%20and%20call%20backend.policy.xml).
 
 ![Přidat klientské certifikáty](media/api-management-howto-mutual-certificates/apim-client-cert-new.png)
 
@@ -40,9 +43,9 @@ Pomocí následujících kroků Nahrajte nový certifikát klienta. Pokud jste i
 
 1. V Azure Portal přejděte do své instance služby Azure API Management.
 2. V nabídce vyberte **certifikáty** .
-3. Klikněte na tlačítko **+Přidat**.  
-    ![přidat klientské certifikáty](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)  
-4. Vyhledejte certifikát a zadejte jeho ID a heslo.  
+3. Klikněte na tlačítko **+Přidat**.
+    ![přidat klientské certifikáty](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
+4. Vyhledejte certifikát a zadejte jeho ID a heslo.
 5. Klikněte na **Vytvořit**.
 
 > [!NOTE]
@@ -65,14 +68,14 @@ Pokud je certifikát používán rozhraním API, zobrazí se obrazovka s upozorn
 
 ## <a name="step2"> </a>Konfigurace rozhraní API pro použití klientského certifikátu pro ověřování brány
 
-1. V nabídce **API Management** na levé straně klikněte na **rozhraní API** a přejděte na rozhraní API.  
+1. V nabídce **API Management** na levé straně klikněte na **rozhraní API** a přejděte na rozhraní API.
     ![povolit klientské certifikáty](media/api-management-howto-mutual-certificates/apim-client-cert-enable.png)
 
-2. Na kartě **Návrh** klikněte na ikonu tužky oddílu **back-end** . 
-3. Změňte **přihlašovací údaje brány** na **certifikát klienta** a vyberte svůj certifikát z rozevíracího seznamu.  
+2. Na kartě **Návrh** klikněte na ikonu tužky oddílu **back-end** .
+3. Změňte **přihlašovací údaje brány** na **certifikát klienta** a vyberte svůj certifikát z rozevíracího seznamu.
     ![povolit klientské certifikáty](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
 
-4. Klikněte na možnost **Uložit**. 
+4. Klikněte na možnost **Uložit**.
 
 > [!WARNING]
 > Tato změna je okamžitě účinná a volání do provozu tohoto rozhraní API použijí certifikát k ověření na back-end serveru.

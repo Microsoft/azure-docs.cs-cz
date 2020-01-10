@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82360dacd68de512bc12ff5d39ddbd3a21578aa7
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 1f018edfa7cbb244c57f12c3b83dba086e1590f2
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120117"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778341"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Zřizování aplikací na základě atributů s filtry oborů
 Cílem tohoto článku je vysvětlit, jak používat filtry oborů k definování pravidel založených na atributech, která určují, kteří uživatelé se zřídí do aplikace.
@@ -94,8 +94,9 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
    g. **porovnávání regulárních**znaků. Klauzule vrátí "true", pokud vyhodnocený atribut odpovídá vzoru regulárního výrazu. Například: ([1-9] [0-9]) odpovídá libovolnému číslu mezi 10 a 99.
 
    h. **NEshoda s regulárním výrazem** Klauzule vrátí "true", pokud se vyhodnocený atribut neshoduje se vzorem regulárního výrazu.
-
-8. Vyberte **Přidat novou klauzuli oboru**.
+ 
+>[!IMPORTANT] 
+> Filtry include a MemberOf nejsou podporovány. Budou brzy odebrány z uživatelského rozhraní.
 
 9. Volitelně můžete opakováním kroků 7-8 přidat další klauzule rozsahu.
 
@@ -116,7 +117,7 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
 |----|----|----|----|
 |userPrincipalName (Hlavní název uživatele)|POROVNÁVÁNÍ REGULÁRNÍCH HODNOT|.\*@domain.com |Všichni uživatelé, kteří mají userPrincipal @domain.com domény, budou v oboru pro zřizování.|
 |userPrincipalName (Hlavní název uživatele)|NESHODA S REGULÁRNÍM VÝRAZEM|.\*@domain.com|Pro všechny uživatele, kteří mají userPrincipal @domain.com domény, budou mimo rozsah zřizování.|
-|Oddělení|ROVNÁ|SalesTable|Všichni uživatelé z prodejního oddělení jsou v oboru pro zřizování.|
+|Oddělení|ROVNÁ|prodej|Všichni uživatelé z prodejního oddělení jsou v oboru pro zřizování.|
 |workerID|POROVNÁVÁNÍ REGULÁRNÍCH HODNOT|(1[0-9][0-9][0-9][0-9][0-9][0-9])| Všichni zaměstnanci s workerIDs mezi 1000000 a 2000000 jsou v oboru pro zřizování.|
 
 ## <a name="related-articles"></a>Související články

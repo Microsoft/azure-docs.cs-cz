@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: ce60062a49f08bb3409c8445e0aaf79c0d361865
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 5a4240065039bd6e0633a19c8aad00604970c216
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552810"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834679"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Přehled služby Azure Standard Load Balancer
 
@@ -195,18 +195,18 @@ SKU nejsou proměnlivé. Postupujte podle kroků v této části, chcete-li pře
 
 ## <a name="region-availability"></a>Regionální dostupnost
 
-Standard Load Balancer je aktuálně k dispozici ve všech oblastech veřejného cloudu.
+Standard Load Balancer je aktuálně k dispozici ve všech oblastech Azure.
 
-## <a name="sla"></a>Smlouva SLA
+## <a name="sla"></a>Smlouva SLA 
 
-Služby Vyrovnávání zatížení úrovně Standard jsou dostupné s 99,99% smlouvou SLA.  Podrobnosti najdete v [Standard Load Balancer smlouvě SLA](https://aka.ms/lbsla) .
+Služby Vyrovnávání zatížení úrovně Standard jsou dostupné s 99,99% smlouvou SLA.  Podrobnosti najdete v [Standard Load Balancer smlouvě SLA](https://aka.ms/lbsla) . 
 
-## <a name="pricing"></a>Ceny
+## <a name="pricing"></a>Ceny 
 
-Účtuje se Standard Load Balancer využití.
+Účtuje se Standard Load Balancer využití. 
 
-- Počet konfigurovaných a odchozích pravidel vyrovnávání zatížení (příchozí pravidla překladu adres (NAT) se nepočítají na základě celkového počtu pravidel)
-- Množství zpracovaných příchozích a odchozích dat bez ohledu na pravidlo 
+- Počet konfigurovaných a odchozích pravidel vyrovnávání zatížení (příchozí pravidla překladu adres (NAT) se nepočítají na základě celkového počtu pravidel) 
+- Množství zpracovaných příchozích a odchozích dat bez ohledu na pravidlo
 
 Informace o cenách za Load Balancer úrovně Standard najdete na stránce s [cenami za Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/).
 
@@ -216,15 +216,15 @@ Informace o cenách za Load Balancer úrovně Standard najdete na stránce s [ce
 - Samostatný prostředek virtuálního počítače, prostředek sady dostupnosti nebo prostředek sady škálování virtuálního počítače můžou odkazovat na jednu SKU, nikdy ne obojí.
 - Pravidlo Load Balancer nemůže zasahovat do dvou virtuálních sítí.  Front-endové a jejich související instance back-end musí být umístěné ve stejné virtuální síti.  
 - [Operace přesunu předplatného](../azure-resource-manager/resource-group-move-resources.md) se u prostředků Standard SKU a PIP nepodporují.
-- Role webového pracovního procesu bez virtuální sítě a dalších služeb platformy Microsoft můžou být dostupné, když se k vedlejšímu účinku používá jenom vnitřní Standard Load Balancer, která se dá použít jenom pro služby předplatného a jiné služby platformy. Nesmíte spoléhat na to, že se jedná o samotnou službu nebo že se může změnit základní platforma bez předchozího upozornění. Vždy musíte předpokládat, že pokud budete chtít používat jenom interní Standard Load Balancer, musíte v případě potřeby explicitně vytvořit [odchozí připojení](load-balancer-outbound-connections.md) .
+- Role webového pracovního procesu bez virtuální sítě a dalších služeb platformy Microsoft můžou být dostupné jenom z instancí za interním Standard Load Balancer v důsledku vedlejšího efektu z toho, jak služby předplatného a jiné služby platformy fungují. Nesmíte spoléhat na to, že se jedná o samotnou službu nebo že se může změnit základní platforma bez předchozího upozornění. Vždy musíte předpokládat, že pokud budete chtít používat jenom interní Standard Load Balancer, musíte v případě potřeby explicitně vytvořit [odchozí připojení](load-balancer-outbound-connections.md) .
 - Load Balancer je produkt TCP nebo UDP určený k vyrovnávání zatížení a přesměrování portů pro tyto konkrétní protokoly IP.  Pravidla vyrovnávání zatížení a příchozí pravidla překladu adres (NAT) se podporují pro protokoly TCP a UDP, ale nikoli pro ostatní protokoly IP včetně protokolu ICMP. Load Balancer neukončuje datovou část toku protokolu UDP ani TCP, nereaguje na ni, ani s ní neprovádí jiné interakce. Nejedná se o proxy server. Úspěšné ověření připojení k front-endu musí probíhat v pásmu se stejným protokolem, který se používá ve vyrovnávání zatížení nebo příchozím pravidlu NAT (TCP nebo UDP) _, a_ nejméně jeden z vašich virtuálních počítačů musí vygenerovat odpověď pro klienta, aby zobrazil odpověď z front-endu.  Nepříjem vložené odpovědi z Load Balancer front-endu indikuje, že žádné virtuální počítače nedokázaly odpovědět.  Není možné pracovat s Load Balancer front-endu bez toho, aby virtuální počítač mohl reagovat.  To platí i pro odchozí připojení, kde se [maskovací SNAT portů](load-balancer-outbound-connections.md#snat) podporuje pouze pro protokoly TCP a UDP – všechny ostatní protokoly IP včetně protokolu ICMP také selžou.  Pokud chcete tento problém zmírnit, přiřaďte veřejnou IP adresu na úrovni instance.
 - Na rozdíl od veřejných nástrojů pro vyrovnávání zatížení, které poskytují [odchozí připojení](load-balancer-outbound-connections.md) při přechodu z privátních IP adres uvnitř virtuální sítě na veřejné IP adresy, interní nástroje pro vyrovnávání zatížení nepřevádějí odchozí nepřipojená připojení k front-endu interního Load Balancer, jak jsou v privátním adresním prostoru IP adres.  Tím se zabrání možnému vyčerpání SNAT v rámci jedinečného interního adresního prostoru IP adres, kde překlad není požadován.  Vedlejším účinkem je to, že pokud odchozí tok z virtuálního počítače v záložním fondu pokusy o tok do front-endu interního Load Balancer, ve kterém se nachází fond, _a_ namapuje se zpátky na sebe, obě ramena toku se neshodují a tok selže.  Pokud tok nemapoval zpátky na stejný virtuální počítač ve fondu back-end, který tok vytvořil pro front-end, tok bude úspěšný.   Když se tok mapuje zpátky sám na sebe, zdá se, že odchozí tok pochází z virtuálního počítače na front-end a odpovídající příchozí tok se zdá, že pochází z virtuálního počítače do sebe samé. Z pohledu hostovaného operačního systému se příchozí a odchozí části stejného toku na virtuálním počítači neshodují. Zásobník protokolu TCP nerozpozná, že jsou tyto poloviny stejného toku součástí stejného toku, protože se zdroj neshoduje s cílem.  Když se tok mapuje na jakýkoli jiný virtuální počítač ve fondu back-end, budou se tyto poloviny toku shodovat a virtuální počítač může úspěšně reagovat na tok.  Příznakem pro tento scénář jsou přerušované časové limity připojení. Existuje několik běžných alternativních řešení pro spolehlivé dosažení tohoto scénáře (pocházející z fondu back-end do fondů back-endu odpovídajících interním Load Balancer front-end), který zahrnuje vložení proxy serveru třetí strany za interní Load Balancer nebo [použití pravidel stylu DSR](load-balancer-multivip-overview.md).  Přestože ke zmírnění problému můžete použít veřejný Load Balancer, výsledný scénář je náchylný k [vyčerpání SNAT](load-balancer-outbound-connections.md#snat) a měli byste se mu vyhnout, pokud nebude pečlivě řízený.
 
 ## <a name="next-steps"></a>Další kroky
 
+- Přečtěte si další informace o [Azure Load Balancer](load-balancer-overview.md).
 - Přečtěte si o používání [Standard Load Balancer a zóny dostupnosti](load-balancer-standard-availability-zones.md).
 - Seznamte se s [sondami stavu](load-balancer-custom-probe-overview.md).
-- Přečtěte si další informace o [zóny dostupnosti](../availability-zones/az-overview.md).
 - Další informace o [diagnostice Standard Load Balancer](load-balancer-standard-diagnostics.md).
 - Přečtěte si o [podporovaných multidimenzionálních metrikách](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) pro diagnostiku v [Azure monitor](../monitoring-and-diagnostics/monitoring-overview.md).
 - Další informace o použití [nástroje pro vyrovnávání zatížení pro odchozí připojení](load-balancer-outbound-connections.md).
@@ -232,8 +232,4 @@ Informace o cenách za Load Balancer úrovně Standard najdete na stránce s [ce
 - Přečtěte si o [resetování protokolu TCP při nečinnosti](load-balancer-tcp-reset.md).
 - Přečtěte si o [Standard Load Balancer s pravidly pro vyrovnávání zatížení portů vysoké dostupnosti](load-balancer-ha-ports-overview.md).
 - Přečtěte si o použití [Load Balancer s více front-endu](load-balancer-multivip-overview.md).
-- Seznamte se s [virtuálními sítěmi](../virtual-network/virtual-networks-overview.md).
 - Přečtěte si další informace o [skupinách zabezpečení sítě](../virtual-network/security-overview.md).
-- Přečtěte si o [koncových bodech služby virtuální](../virtual-network/virtual-network-service-endpoints-overview.md)sítě.
-- Přečtěte si o některých dalších klíčových [možnostech sítě](../networking/networking-overview.md) v Azure.
-- Přečtěte si další informace o [Load Balancer](load-balancer-overview.md).

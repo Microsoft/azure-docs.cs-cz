@@ -1,10 +1,10 @@
-- name: Srovnávací test zabezpečení Azure
+- name: Srovnávací testy zabezpečení Azure
   href: index.yml
 - name: Úvod
   href: introduction.md
-- name: Ovládací prvky zabezpečení
+- name: Zabezpečovací mechanismy
   items:
-    - name: Přehled
+    - name: Přehled mechanismů zabezpečení Azure
       href: overview.md
     - name: Zabezpečení sítě
       href: security-control-network-security.md

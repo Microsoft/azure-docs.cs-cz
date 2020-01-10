@@ -1,28 +1,21 @@
 ---
-title: 'Připojte virtuální síť k více webům pomocí VPN Gateway a Powershellu: Classic | Dokumentace Microsoftu'
-description: Připojení více lokalit místní k klasickou virtuální síť používat bránu VPN.
+title: 'Připojení virtuální sítě k několika webům pomocí VPN Gateway: Classic'
+description: Připojení několika místních místních lokalit k klasické virtuální síti pomocí VPN Gateway.
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: yushwang
-manager: rossort
-editor: ''
-tags: azure-service-management
-ms.assetid: b043df6e-f1e8-4a4d-8467-c06079e2c093
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: 77f8b7094c96e507eef1d360a26240627bc0e350
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23ca87a597f37c301ac3777decfe7949c06cc5b2
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836076"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779650"
 ---
-# <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Přidat připojení Site-to-Site k virtuální síti se existující připojení brány VPN (classic)
+# <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Přidání připojení typu Site-to-site k virtuální síti s existujícím připojením brány VPN (Classic)
 
 [!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
 
@@ -32,61 +25,61 @@ ms.locfileid: "60836076"
 >
 >
 
-Tento článek vás provede přidáním připojení Site-to-Site (S2S), který má existující připojení brány VPN pomocí Powershellu. Tento typ připojení se často označuje jako "s více lokalitami" konfigurace. Postupy v tomto článku se týkají do virtuální sítě vytvořené pomocí modelu nasazení classic (také označované jako správa služeb). Tyto kroky nevztahují na konfigurace současně existujících připojení ExpressRoute a Site-to-Site.
+Tento článek vás provede postupem použití PowerShellu k přidání připojení typu Site-to-Site (S2S) k bráně VPN, která má existující připojení. Tento typ připojení se často označuje jako konfigurace s více lokalitami. Kroky v tomto článku se vztahují na virtuální sítě vytvořené pomocí modelu nasazení Classic (označuje se také jako Správa služeb). Tyto kroky se nevztahují na existující konfigurace připojení ExpressRoute/site-to-site.
 
 ### <a name="deployment-models-and-methods"></a>Modely a metody nasazení
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-Tuto tabulku aktualizujeme přidáváním nových článků a dalších nástrojů bude k dispozici pro tuto konfiguraci. Když je článek k dispozici, odkaz na něj přímo z této tabulky.
+Tuto tabulku aktualizujeme, protože nové články a další nástroje budou k dispozici pro tuto konfiguraci. Když je článek k dispozici, odkazujeme přímo na něj z této tabulky.
 
 [!INCLUDE [vpn-gateway-table-multi-site](../../includes/vpn-gateway-table-multisite-include.md)]
 
 ## <a name="about-connecting"></a>O připojení
 
-Připojení několika místních lokalit k jedné virtuální sítě. To je zvláště atraktivní pro vytváření hybridních cloudových řešení. Vytvoření připojení více lokalit pro vaši bránu virtuální sítě Azure je podobné jako vytvoření další připojení Site-to-Site. Ve skutečnosti můžete použít existující bráně Azure VPN, jako je dynamická brána (trasové).
+Můžete propojit několik místních serverů s jednou virtuální sítí. To je obzvláště atraktivní pro vytváření hybridních cloudových řešení. Vytvoření připojení s více lokalitami pro bránu virtuální sítě Azure se podobá vytváření dalších připojení typu Site-to-site. Ve skutečnosti můžete použít existující bránu Azure VPN Gateway, pokud je tato brána dynamická (založená na trasách).
 
-Pokud už máte statické brány připojené k vaší virtuální sítě, můžete změnit typ brány na dynamické aniž byste museli znovu vytvořit virtuální síť obsáhnout více lokalit. Před změnou typu směrování, ujistěte se, že vaše místní brána podporuje konfigurace sítě VPN založené na směrování.
+Pokud již máte připojenou statickou bránu k virtuální síti, můžete změnit typ brány na dynamický, aniž by bylo nutné znovu sestavit virtuální síť, aby bylo možné pojmout více lokalit. Než začnete měnit typ směrování, ujistěte se, že místní Brána VPN podporuje konfigurace sítě VPN založené na směrování.
 
-![diagram Multi-Site](./media/vpn-gateway-multi-site/multisite.png "Multi-Site")
+![diagram s více weby](./media/vpn-gateway-multi-site/multisite.png "více lokalit")
 
 ## <a name="points-to-consider"></a>Body ke zvážení
 
-**Nebude moct provést změny do této virtuální sítě pomocí portálu.** Budete muset změnit soubor konfigurace sítě, místo použití na portálu. Pokud provedete změny na portálu, budete se přepsat nastavení Multi-Site odkaz pro tuto virtuální síť.
+**K provádění změn v této virtuální síti nebudete moct používat portál.** Místo používání portálu je nutné provést změny v souboru konfigurace sítě. Pokud provedete změny na portálu, přepíší se nastavení odkazů na více lokalit pro tuto virtuální síť.
 
-Musí se klidem, je používán konfigurační soubor sítě podle času jste dokončili postup Multi-Site. Pokud máte více lidí pracujících na konfiguraci sítě, budete však muset Ujistěte se, že všichni ví o toto omezení. To neznamená, že nelze použít na portálu ve všech. Můžete ho použít pro všechno ostatní, s výjimkou změn konfigurace do této konkrétní virtuální sítě.
+V případě, že jste dokončili postup pro více webů, byste měli mít pocit, že budete mít k pohodlné používání konfiguračního souboru sítě. Pokud ale v konfiguraci sítě pracujete s více uživateli, musíte se ujistit, že o tomto omezení ví všichni. To neznamená, že portál nemůžete vůbec použít. Můžete ho použít pro všechno ostatní, s výjimkou změny konfigurace této konkrétní virtuální sítě.
 
 ## <a name="before-you-begin"></a>Než začnete
 
 Než začnete s konfigurací, ověřte, že máte následující:
 
-* Kompatibilní hardware sítě VPN pro jednotlivé v místním umístění. Zkontrolujte [o zařízeních VPN pro připojení k virtuální síti](vpn-gateway-about-vpn-devices.md) ověřit, jestli je zařízení, který chcete použít něco, co je znám jako kompatibilní.
-* Veřejnou IP adresa protokolu IPv4 adresu pro každé zařízení VPN. IP adresa nesmí být umístěná za službou NAT. Toto je požadavek.
-* Budete potřebovat nainstalovat nejnovější verzi rutin Azure PowerShellu. Ujistěte se, že instalace verze služby správy (SM) kromě verze Resource Manageru. Zobrazit [instalace a konfigurace Azure Powershellu](/powershell/azure/overview) Další informace.
-* Někoho, kdo zdatní při konfiguraci hardwarem sítě VPN. Budete muset mít silné znalosti o tom, jak nakonfigurovat zařízení VPN, nebo pracovat s někým, kdo dělá.
-* Rozsahy IP adres, které chcete použít pro vaši virtuální síť (pokud už jste ještě nevytvořili jeden).
-* Rozsahy IP adres pro každou z místních síťových lokalit, které budete připojovat k. Musíte zajistit, že rozsahy IP adres pro každou z místních síťových lokalit, které chcete připojit k nemusí být stejné. Na portálu nebo rozhraní REST API v opačném případě bude taková konfigurace v průběhu nahrávání.<br>Například pokud máte dvě místní síťové lokality, že oba obsahují 10.2.3.0/24 rozsah IP adres a máte balíček s cílovou adresou 10.2.3.3 Azure vlastně nevěděli o které lokalitě, kterou chcete odeslat balíček, protože jsou překrývající se rozsahy adres. Aby se zabránilo problémům směrování, Azure neumožňuje nahrát konfigurační soubor, který obsahuje překrývající se rozsahy.
+* Kompatibilní hardware sítě VPN pro každé místní umístění. Projděte si [informace o zařízeních VPN pro připojení Virtual Network](vpn-gateway-about-vpn-devices.md) , abyste ověřili, jestli zařízení, které chcete použít, je něco, co je známo kompatibilní.
+* Veřejná IP adresa IPv4, která je externě přístupná pro každé zařízení VPN. IP adresa nesmí být umístěná za překladem adres (NAT). Toto je požadavek.
+* Budete potřebovat nainstalovat nejnovější verzi rutin Azure PowerShellu. Nezapomeňte kromě verze Správce prostředků nainstalovat i verzi správy služeb (SM). Další informace najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/overview) .
+* Někdo, který je zdatní na konfiguraci hardwaru VPN. Budete muset mít silný přehled o tom, jak nakonfigurovat zařízení VPN, nebo pracovat s někým, kdo má.
+* Rozsahy IP adres, které chcete použít pro virtuální síť (Pokud jste ji ještě nevytvořili).
+* Rozsahy IP adres pro všechny místní síťové lokality, ke kterým se budete připojovat. Bude nutné zajistit, aby se rozsahy IP adres pro všechny místní síťové lokality, ke kterým se chcete připojit, překrývaly. V opačném případě bude portál nebo REST API odmítat nahranou konfiguraci.<br>Například pokud máte dvě místní síťové lokality, které obě obsahují rozsah IP adres 10.2.3.0/24 a máte balíček s cílovou adresou 10.2.3.3, Azure by neznal, na který web chcete balíček odeslat, protože rozsahy adres se překrývají. Aby nedocházelo k problémům s směrováním, Azure vám neumožní nahrát konfigurační soubor, který má překrývající se rozsahy.
 
-## <a name="1-create-a-site-to-site-vpn"></a>1. Vytvoření S2S (Site-to-site) VPN
-Pokud už máte sítě Site-to-Site VPN pomocí brány dynamického směrování, skvěle! Můžete přejít k [exportovat nastavení konfigurace virtuální sítě](#export). Pokud ne, postupujte takto:
+## <a name="1-create-a-site-to-site-vpn"></a>1. vytvoření sítě VPN typu Site-to-site
+Pokud už máte síť VPN typu Site-to-site s bránou dynamického směrování, Skvělé! Můžete pokračovat a [Exportovat nastavení konfigurace virtuální sítě](#export). Pokud ne, udělejte toto:
 
-### <a name="if-you-already-have-a-site-to-site-virtual-network-but-it-has-a-static-policy-based-routing-gateway"></a>Pokud už máte virtuální síť Site-to-Site, ale obsahuje statické směrování brány (zásadové):
-1. Změňte typ brány na dynamické směrování. Multi-Site VPN vyžaduje (označované také jako založené na směrování) brány dynamického směrování. Chcete-li změnit váš typ brány, budete muset nejdřív odstraňte existující bránu a potom vytvořte novou.
-2. Konfigurace nové brány a vytvoření tunelu VPN. Pokyny, pokyny najdete v tématu [zadání SKU a síť VPN typu](vpn-gateway-howto-site-to-site-classic-portal.md#sku). Ujistěte se, že zadáte typ směrování jako 'Dynamic'.
+### <a name="if-you-already-have-a-site-to-site-virtual-network-but-it-has-a-static-policy-based-routing-gateway"></a>Pokud již máte virtuální síť typu Site-to-site, ale má statickou bránu směrování (založenou na zásadách):
+1. Změňte typ brány na dynamické směrování. SÍŤ VPN s více lokalitami vyžaduje dynamickou (také známou jako směrovací bránu založenou na trasách). Pokud chcete změnit typ brány, musíte nejdřív odstranit existující bránu a pak vytvořit novou.
+2. Nakonfigurujte novou bránu a vytvořte tunel VPN. Pokyny najdete v tématu [určení typu SKU a sítě VPN](vpn-gateway-howto-site-to-site-classic-portal.md#sku). Ujistěte se, že jste zadali typ směrování jako dynamický.
 
-### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>Pokud nemáte virtuální síť Site-to-Site:
-1. Vytvoření virtuální sítě Site-to-Site pomocí těchto pokynů: [Vytvoření virtuální sítě s připojením VPN typu Site-to-Site](vpn-gateway-site-to-site-create.md).  
-2. Konfigurace brány dynamického směrování podle těchto pokynů: [Konfigurace brány VPN](vpn-gateway-configure-vpn-gateway-mp.md). Je potřeba vybrat možnost **s dynamickým směrováním** pro váš typ brány.
+### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>Pokud nemáte virtuální síť typu Site-to-site:
+1. Pomocí těchto pokynů vytvořte virtuální síť Site-to-site: [vytvořte Virtual Network s připojením VPN typu Site-to-site](vpn-gateway-site-to-site-create.md).  
+2. Pomocí těchto pokynů nakonfigurujte bránu dynamického směrování: [nakonfigurujte VPN Gateway](vpn-gateway-configure-vpn-gateway-mp.md). Ujistěte se, že jste vybrali možnost **dynamické směrování** pro typ brány.
 
-## <a name="export"></a>2. Exportovat soubor konfigurace sítě
-Spuštěním následujícího příkazu exportujte konfigurační soubor sítě Azure. Můžete změnit umístění souboru pro export do jiného umístění v případě potřeby.
+## <a name="export"></a>2. exportujte konfigurační soubor sítě.
+Exportujte soubor konfigurace sítě Azure spuštěním následujícího příkazu. V případě potřeby můžete změnit umístění souboru, aby se v případě potřeby exportovali do jiného umístění.
 
 ```powershell
 Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
-## <a name="3-open-the-network-configuration-file"></a>3. Otevřete soubor konfigurace sítě
-Otevřete soubor konfigurace sítě, který jste stáhli v předchozím kroku. Pomocí editoru xml, který vás zajímá. Soubor by měl vypadat nějak takto:
+## <a name="3-open-the-network-configuration-file"></a>3. Otevřete soubor konfigurace sítě.
+Otevřete soubor konfigurace sítě, který jste stáhli v posledním kroku. Použijte libovolný editor XML, který chcete. Soubor by měl vypadat nějak takto:
 
         <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
           <VirtualNetworkConfiguration>
@@ -135,8 +128,8 @@ Otevřete soubor konfigurace sítě, který jste stáhli v předchozím kroku. P
           </VirtualNetworkConfiguration>
         </NetworkConfiguration>
 
-## <a name="4-add-multiple-site-references"></a>4. Přidání více odkazů
-Při přidání nebo odebrání referenční informace o lokalitě, budete provádět ConnectionsToLocalNetwork/LocalNetworkSiteRef změny konfigurace. Přidání nových triggerů odkaz na místní lokality Azure za účelem vytvoření nové tunelové propojení. V následujícím příkladu je konfigurace sítě pro připojení k jedné lokalitě. Po provedení změn uložte soubor.
+## <a name="4-add-multiple-site-references"></a>4. Přidání více odkazů webu
+Když přidáte nebo odeberete informace o odkazech na lokalitu, provedete změny konfigurace ConnectionsToLocalNetwork/LocalNetworkSiteRef. Přidáním nového odkazu na místní lokalitu se spustí Azure a vytvoří se nové tunelové propojení. V následujícím příkladu je konfigurace sítě určena pro připojení s jednou lokalitou. Až změny dokončíte, soubor uložte.
 
 ```xml
   <Gateway>
@@ -146,7 +139,7 @@ Při přidání nebo odebrání referenční informace o lokalitě, budete prov�
   </Gateway>
 ```
 
-Chcete-li přidat odkazy na další lokality (vytvořit konfiguraci více lokalit), jednoduše přidat další řádky "LocalNetworkSiteRef", jak je znázorněno v následujícím příkladu:
+Chcete-li přidat další odkazy na web (vytvořit konfiguraci s více lokalitami), stačí přidat další řádky "LocalNetworkSiteRef", jak je znázorněno v následujícím příkladu:
 
 ```xml
   <Gateway>
@@ -157,11 +150,11 @@ Chcete-li přidat odkazy na další lokality (vytvořit konfiguraci více lokali
   </Gateway>
 ```
 
-## <a name="5-import-the-network-configuration-file"></a>5. Importujte soubor konfigurace sítě
-Importujte soubor konfigurace sítě. Při importování tohoto souboru se změnami se přidá nový tunelů. Tunely budou používat dynamické brány, kterou jste vytvořili dříve. Prostředí PowerShell můžete použít k importu souboru.
+## <a name="5-import-the-network-configuration-file"></a>5. importujte soubor konfigurace sítě.
+Importujte soubor konfigurace sítě. Při importu tohoto souboru se změnami budou přidány nové tunely. Tunely budou používat dynamickou bránu, kterou jste vytvořili dříve. K importu tohoto souboru můžete použít PowerShell.
 
-## <a name="6-download-keys"></a>6. Stáhnout klíče
-Po přidání nové tunely použijte rutinu Powershellu: Get-AzureVNetGatewayKey"zobrazíte předsdílené klíče protokolu IPsec/IKE pro každé tunelové propojení.
+## <a name="6-download-keys"></a>6. stažení klíčů
+Až budou vaše nové tunely přidané, pomocí rutiny Get-AzureVNetGatewayKey v PowerShellu Získejte předsdílené klíče IPsec/IKE pro každé tunelové propojení.
 
 Příklad:
 
@@ -170,16 +163,16 @@ Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site1"
 Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site2"
 ```
 
-Pokud dáváte přednost, můžete také použít *získat virtuální sítě brány sdíleného klíče* rozhraní REST API k získání předsdílené klíče.
+Pokud chcete, můžete k získání předsdílených klíčů použít taky REST API *sdíleného klíče Virtual Network pro bránu get* .
 
-## <a name="7-verify-your-connections"></a>7. Zkontrolujte svá připojení
-Zkontrolujte stav tunelového propojení Multi-Site. Po stažení klíče pro každé tunelové propojení, budete chtít ověřit připojení. Pomocí "Get-AzureVnetConnection" můžete získat seznam tunelových propojení virtuální sítě, jak je znázorněno v následujícím příkladu. Síť VNet1 je název sítě VNet.
+## <a name="7-verify-your-connections"></a>7. Ověřte připojení.
+Ověřte stav tunelového propojení více lokalit. Po stažení klíčů pro každé tunelové propojení budete chtít ověřit připojení. Pomocí příkazu Get-AzureVnetConnection získáte seznam tunelů virtuální sítě, jak je znázorněno v následujícím příkladu. VNet1 je název virtuální sítě.
 
 ```powershell
 Get-AzureVnetConnection -VNetName VNET1
 ```
 
-Příklad vrácené:
+Příklad návratu:
 
 ```
     ConnectivityState         : Connected
@@ -207,6 +200,6 @@ Příklad vrácené:
     OperationStatus           : Succeeded
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o branách VPN najdete v tématu [informace o branách VPN](vpn-gateway-about-vpngateways.md).
