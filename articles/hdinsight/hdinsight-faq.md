@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: f688f0ddfb62e988ddebada1f612aa842afa5181
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d9daefaec33c435ae9f8eceec370c83de4535f8b
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644592"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830373"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight – Nejčastější dotazy
 
@@ -84,23 +84,9 @@ Ano. K instalaci dalších součástí nebo přizpůsobení konfigurace clusteru
 
 - Skripty během nebo po vytvoření. Skripty jsou vyvolány pomocí [akce skriptu](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux), což je možnost konfigurace, kterou můžete použít z Azure Portal, rutin prostředí Windows PowerShell pro HDInsight nebo sady HDInsight .NET SDK. Tuto možnost konfigurace můžete použít z Azure Portal rutin prostředí Windows PowerShell nebo sady HDInsight .NET SDK.
 
-- `sudo` nebo jiné metody po zřízení clusteru.
-  
 - [Aplikační platforma HDInsight](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) pro instalaci aplikací ekosystému.
 
-Podpora Microsoftu týmy však mohou nabízet podporu pouze v následujících situacích:
-
-- Problémy nebo chyby, ke kterým dochází při načítání skriptu. Jakékoli chyby při provádění vlastních skriptů jsou nad rámec lístku podpory.
-
-- Další aplikace, které jsou součástí procesu vytváření clusteru. 
-
 Seznam podporovaných součástí najdete v tématu [co jsou komponenty Apache Hadoop a verze dostupné v HDInsight?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)
-
-Podpora jednotlivých komponent se může lišit také podle typu clusteru. Například Spark není podporován v clusteru Kafka a naopak.
-
-Pro aplikace a služby mimo proces vytváření clusteru kontaktujte dodavatele nebo poskytovatele služeb a požádejte ho o podporu. Můžete také použít mnoho webů podpory komunity. Příklady jsou [Fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) a [Stack Overflow](https://stackoverflow.com/). Projekty Apache také obsahují projektové weby na [webu Apache](https://apache.org/). Příkladem je [Hadoop](https://hadoop.apache.org/). 
-
-Další informace o podpoře Azure najdete v nejčastějších dotazech k [podpoře Azure](https://azure.microsoft.com/support/faq/).
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>Můžu upgradovat jednotlivé komponenty, které jsou v clusteru předem nainstalované?
 

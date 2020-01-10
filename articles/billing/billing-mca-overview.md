@@ -1,5 +1,5 @@
 ---
-title: Začínáme s fakturačními účty pro smlouvu se zákazníkem Microsoftu – Azure
+title: Začínáme s fakturací pro smlouvu se zákazníkem Microsoftu – Azure
 description: Seznamte se se svým fakturačním účtem pro smlouvu se zákazníkem Microsoftu
 author: bandersmsft
 manager: amberbhargava
@@ -10,18 +10,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: banders
-ms.openlocfilehash: e27d2116cf58c64fca7fb0273c852d6223f00c6e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 46918810648deb15ce0ae0dd13824702dcfb7073
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226120"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75389226"
 ---
 # <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>Začínáme s fakturačními účty pro smlouvu se zákazníkem Microsoftu
 
 Fakturační účet se vytváří při registraci k Azure. Slouží ke správě faktur a plateb a sledování nákladů. Přístup můžete mít k více fakturačním účtům. Je to například tehdy, když se zaregistrujete v Azure pro práci na svých osobních projektech, ale současně máte k Azure přístup i prostřednictvím smlouvy Enterprise vaší organizace nebo smlouvy se zákazníkem Microsoftu. Pro každý z těchto scénářů tak máte samostatný fakturační účet.
 
-Tento článek se týká fakturačních účtů smluv se zákazníky Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement).
+Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement).
 
 ## <a name="your-billing-account"></a>Váš fakturační účet
 
@@ -78,7 +78,7 @@ Po vytvoření oddílu faktury můžete ostatním uživatelům udělit oprávně
 
 Pro role v oddílu faktury jsou k dispozici oprávnění, pomocí kterých můžete určovat, kdo smí předplatná Azure vytvářet. Role přiřazujete uživatelům, kteří nastavují prostředí Azure pro týmy ve vaší organizaci, například technickým vedoucím nebo architektům. Podrobnosti najdete v části [Role a úlohy související s oddíly faktury](billing-understand-mca-roles.md#invoice-section-roles-and-tasks).
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu ke smlouvě se zákazníkem Microsoftu
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu k zákaznické smlouvě Microsoftu
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoc? Obraťte se na podporu.

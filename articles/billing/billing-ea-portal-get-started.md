@@ -4,16 +4,16 @@ description: Tento článek vysvětluje, jak mohou zákazníci Azure EA využív
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 2f7c4f0d4d8bd7e5209f666dbfca34eaffc8ebc7
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 92581cfcace6ec566428c9cb54d205f108399b1f
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841366"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660660"
 ---
 # <a name="get-started-with-the-azure-ea-portal"></a>Začínáme s portálem Azure EA
 
@@ -48,12 +48,13 @@ Následující diagram znázorňuje jednoduché hierarchie Azure EA.
 
 ## <a name="enterprise-user-roles"></a>Role podnikových uživatelů
 
-Ke správě služeb Azure ve vaší registraci jsou k dispozici čtyři různé uživatelské role pro podnikovou správu:
+Ke správě služeb Azure ve vaší registraci je k dispozici pět různých uživatelských rolí pro podnikovou správu:
 
 - Podnikový správce
 - Správce oddělení
 - Vlastník účtu
 - Správce služeb
+- Kontakt pro oznámení
 
 Role se používají při provádění úloh na dvou různých portálech Microsoft Azure. Portál Azure EA (https://ea.azure.com) slouží k usnadnění správy fakturace a nákladů). Azure Portal (https://portal.azure.com) slouží ke správě služeb Azure.
 
@@ -101,9 +102,15 @@ Každý účet vyžaduje jedinečný pracovní či školní účet nebo účet M
 
 Správce služeb má oprávnění ke správě služeb přes Azure Portal a k přiřazování role spolusprávce jiným uživatelům.
 
+### <a name="notification-contact"></a>Kontakt pro oznámení
+
+Kontakt pro oznámení dostává oznámení o využití související s příslušnou smlouvou.
+
 ## <a name="activate-your-enrollment"></a>Aktivace registrace
 
 Aktivace služeb probíhá tak, že počáteční podnikový správce otevře portál Azure EA na adrese [https://ea.azure.com](https://ea.azure.com) a přihlásí se pomocí e-mailové adresy z e-mailu s pozvánkou.
+
+Pokud vás někdo nastavil jako správce EA, nemusíte čekat, až dostanete aktivační e-mail, abyste se mohli k portálu Azure EA přihlásit. Můžete přejít na [https://ea.azure.com](https://ea.azure.com) a přihlásit se pomocí vaší e-mailové adresy (školní, pracovní nebo Live ID) a hesla.
 
 Pokud máte více než jednu registraci, vyberte tu, kterou chcete aktivovat. Ve výchozím nastavení se zobrazují jenom aktivní registrace. Historii registrací zobrazíte tak, že v pravém horním rohu portálu Azure EA vymažete možnost **Active** (Aktivní).
 

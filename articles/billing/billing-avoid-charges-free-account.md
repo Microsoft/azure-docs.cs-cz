@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 9f75b630dd26e2cdef009771ad5e09cc3d230449
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1b7d08ba25a02334152e661501acf826d6c9bdf7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226443"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449637"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Jak se vyhnout poplatkům na bezplatném účtu Azure
 
@@ -26,7 +26,7 @@ Teď se podíváme na některé důvody, kvůli kterým se vám na bezplatném �
 
 ## <a name="your-credit-runs-out-or-is-expired"></a>Dojde vám kredit nebo vyprší jeho platnost
 
-Pokud vám dojde kredit nebo po uplynutí 30 dnů jeho platnost vyprší, vaše předplatné a služby se deaktivují. Pokud chcete dál využívat služby Azure, musíte upgradovat svůj účet. Další informace najdete v tématu [Upgrade bezplatného účtu Azure](billing-upgrade-azure-subscription.md). Po upgradu stále budete mít 12měsíční přístup k bezplatným službám a bude se vám účtovat pouze využití nad rámec bezplatných služeb a množství.
+Pokud vám dojde kredit nebo po uplynutí 30 dnů jeho platnost vyprší, vaše předplatné a služby se deaktivují. Pokud chcete dál využívat služby Azure, musíte upgradovat svůj účet. Další informace najdete v tématu [Upgrade bezplatného účtu Azure](billing-upgrade-azure-subscription.md). Po upgradu stále budete mít 12měsíční přístup k bezplatným službám a bude se vám účtovat jenom využití nad rámec bezplatných služeb a množství.
 
 
 ## <a name="usage-exceeds-the-limits-of-free-services"></a>Využití překračuje limity bezplatných služeb

@@ -1,129 +1,185 @@
 ---
-title: Přidat přírůstkové indexování (Náhled)
+title: Konfigurace mezipaměti a přírůstkové obohacení (Preview)
 titleSuffix: Azure Cognitive Search
-description: Povolte sledování změn a zachovejte stav obohaceného obsahu pro řízené zpracování v dovednostii rozpoznávání. Tato funkce je aktuálně ve verzi Public Preview.
+description: Povolit ukládání do mezipaměti a zachovat stav obohaceného obsahu pro řízené zpracování v dovednostii rozpoznávání. Tato funkce je aktuálně ve verzi Public Preview.
 author: vkurpad
 manager: eladz
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 92da697c95f2b9ea544bb1f9bfa689c13bd0d2ae
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 01/06/2020
+ms.openlocfilehash: 1eaf4e7b2d769217ceace3ece339adff727c7835
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806758"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832047"
 ---
-# <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>Jak nastavit přírůstkové indexování obohacených dokumentů v Azure Kognitivní hledání
+# <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Jak nakonfigurovat ukládání do mezipaměti pro přírůstkové obohacení v Azure Kognitivní hledání
 
 > [!IMPORTANT] 
-> Přírůstkové indexování je aktuálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
+> Přírůstkové obohacení je aktuálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
 
-V tomto článku se dozvíte, jak přidat stav a ukládání do mezipaměti pro obohacené dokumenty, které se pohybují prostřednictvím kanálu pro rozšíření Azure Kognitivní hledání, abyste mohli přírůstkově indexovat dokumenty z libovolného podporovaného zdroje dat. Ve výchozím nastavení je dovednosti Bezstavová a změna jakékoli části jejího složení vyžaduje úplné spuštění indexeru. V případě přírůstkového indexování může indexer určit, které části kanálu se změnily, znovu použít existující rozšíření pro nezměněné části a revidovat obohacení kroků, které se mění. Obsah uložený v mezipaměti je umístěný v Azure Storage.
+V tomto článku se dozvíte, jak přidat do kanálu pro obohacení do mezipaměti, abyste mohli postupně upravovat kroky, aniž by bylo nutné pokaždé znovu sestavovat. Ve výchozím nastavení je dovednosti Bezstavová a změna jakékoli části jejího složení vyžaduje úplné spuštění indexeru. Pomocí přírůstkového obohacení může indexer určit, které části stromu dokumentů se musí aktualizovat na základě změn zjištěných v definicích dovednosti nebo indexer. Existující zpracovaný výstup se zachová a znovu použije tam, kde je to možné. 
 
-Pokud nejste obeznámeni s nastavením indexerů, začněte nástrojem [indexer](search-indexer-overview.md) a potom pokračujte na [dovednosti](cognitive-search-working-with-skillsets.md) a získejte další informace o kanálech pro obohacení. Další informace o klíčových konceptech najdete v tématu [přírůstkové indexování](cognitive-search-incremental-indexing-conceptual.md).
+Obsah uložený v mezipaměti je umístěný v Azure Storage pomocí informací o účtu, který zadáte. Kontejner s názvem `ms-az-search-indexercache-<alpha-numerc-string>`se vytvoří při spuštění indexeru. Měl by se považovat za interní komponentu spravovanou vaší vyhledávací službou a nesmí se měnit.
 
-## <a name="modify-an-existing-indexer"></a>Úprava existujícího indexeru
+Pokud nejste obeznámeni s nastavením indexerů, začněte nástrojem [indexer](search-indexer-overview.md) a potom pokračujte na [dovednosti](cognitive-search-working-with-skillsets.md) a získejte další informace o kanálech pro obohacení. Další informace o klíčových konceptech najdete v tématu [přírůstkové obohacení](cognitive-search-incremental-indexing-conceptual.md).
 
-Pokud máte indexer, postupujte podle těchto kroků a povolte přírůstkové indexování.
+## <a name="enable-caching-on-an-existing-indexer"></a>Povolit ukládání do mezipaměti u stávajícího indexeru
 
-### <a name="step-1-get-the-indexer"></a>Krok 1: získání indexeru
+Pokud máte stávajícího indexeru, který už má dovednosti, postupujte podle kroků v této části a přidejte ukládání do mezipaměti. V rámci jednorázové operace budete muset indexer resetovat a znovu spustit v plném rozsahu, než se může přírůstkové zpracování projevit.
 
-Začněte s platným existujícím indexerem, který má požadovaný zdroj dat a index již definován. Indexer by měl být spustitelný. Pomocí klienta rozhraní API Sestavte [požadavek GET](https://docs.microsoft.com/rest/api/searchservice/get-indexer) , který získá aktuální konfiguraci indexeru, ke kterému chcete přidat přírůstkové indexování.
+> [!TIP]
+> Jako koncept si můžete projít pomocí tohoto rychlého startu na [portálu](cognitive-search-quickstart-blob.md) a vytvořit potřebné objekty a pak použít post nebo portál k provedení aktualizací. Je možné, že budete chtít připojit Fakturovatelné Cognitive Services prostředku. Pokud chcete indexer spustit několikrát, vyčerpá bezplatné denní přidělení, než budete moct dokončit všechny kroky.
+
+### <a name="step-1-get-the-indexer-definition"></a>Krok 1: získání definice indexeru
+
+Začněte s platným existujícím indexerem, který má tyto komponenty: zdroj dat, dovednosti, index. Indexer by měl být spustitelný. Pomocí klienta rozhraní API Sestavte [požadavek GET indexeru](https://docs.microsoft.com/rest/api/searchservice/get-indexer) , který získá aktuální konfiguraci indexeru.
 
 ```http
-GET https://[service name].search.windows.net/indexers/[your indexer name]?api-version=2019-05-06-Preview
+GET https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2019-05-06-Preview
 Content-Type: application/json
-api-key: [admin key]
+api-key: [YOUR-ADMIN-KEY]
 ```
 
-### <a name="step-2-add-the-cache-property"></a>Krok 2: Přidání vlastnosti cache
+Zkopírujte definici indexeru z odpovědi.
 
-Upravte odpověď z požadavku GET a přidejte do indexeru vlastnost `cache`. Objekt mezipaměti vyžaduje jenom jednu vlastnost, `storageConnectionString` což je připojovací řetězec k účtu úložiště. 
+### <a name="step-2-modify-the-cache-property-in-the-indexer-definition"></a>Krok 2: Úprava vlastnosti cache v definici indexeru
+
+Ve výchozím nastavení má vlastnost `cache` hodnotu null. Použití klienta rozhraní API k přidání konfigurace mezipaměti (portál nepodporuje tuto aktualizaci částic). 
+
+Upravte objekt mezipaměti tak, aby obsahoval následující povinné a volitelné vlastnosti: 
+
++ `storageConnectionString` se vyžaduje a musí se nastavit na připojovací řetězec úložiště Azure. 
++ Vlastnost `enableReprocessing` Boolean je volitelná (`true` ve výchozím nastavení) a označuje, že je povoleno přírůstkové rozšíření. Můžete ji nastavit tak, `false` aby se pozastavilo přírůstkové zpracování, zatímco jiné operace náročné na prostředky, jako je například indexování nových dokumentů, probíhá a pak je převrátíte zpět na `true` později.
 
 ```json
 {
-    "name": "myIndexerName",
-    "targetIndexName": "myIndex",
-    "dataSourceName": "myDatasource",
-    "skillsetName": "mySkillset",
+    "name": "<YOUR-INDEXER-NAME>",
+    "targetIndexName": "<YOUR-INDEX-NAME>",
+    "dataSourceName": "<YOUR-DATASOURCE-NAME>",
+    "skillsetName": "<YOUR-SKILLSET-NAME>",
     "cache" : {
-        "storageConnectionString" : "Your storage account connection string",
-        "enableReprocessing": true,
-        "id" : "Auto generated Id you do not need to set"
+        "storageConnectionString" : "<YOUR-STORAGE-ACCOUNT-CONNECTION-STRING>",
+        "enableReprocessing": true
     },
     "fieldMappings" : [],
     "outputFieldMappings": [],
-    "parameters": {
-        "configuration": {
-            "enableAnnotationCache": true
-        }
-    }
+    "parameters": []
 }
 ```
-#### <a name="enable-reporocessing"></a>Povolit reporocessing
-
-Volitelně můžete nastavit vlastnost Boolean `enableReprocessing` v mezipaměti, která je standardně nastavená na hodnotu true. Příznak `enableReprocessing` umožňuje řídit chování indexeru. Ve scénářích, kde chcete, aby indexer přidával do indexu nové dokumenty, byste příznak nastavili na false. Jakmile se indexer zachytí s novými dokumenty, převrácení příznaku na hodnotu true by pak indexeru umožnil zahájit řízení stávajících dokumentů na konečnou konzistenci. V období, kdy je příznak `enableReprocessing` nastaven na hodnotu false, indexer zapíše pouze do mezipaměti, ale nezpracuje žádné existující dokumenty na základě identifikovaných změn kanálu rozšíření.
 
 ### <a name="step-3-reset-the-indexer"></a>Krok 3: resetování indexeru
 
-> [!NOTE]
-> Resetování indexeru způsobí, že se znovu zpracují všechny dokumenty ve zdroji dat, aby se obsah mohla ukládat do mezipaměti. Všechna obohacení vnímání se spustí znovu ve všech dokumentech.
->
-
-Při nastavování přírůstkového indexování pro existující indexery se vyžaduje resetování indexeru, aby se zajistilo, že všechny dokumenty jsou v konzistentním stavu. Resetujte indexer pomocí [REST API](https://docs.microsoft.com/rest/api/searchservice/reset-indexer).
+Při nastavování přírůstkového obohacení pro existující indexery se vyžaduje resetování indexeru, aby se zajistilo, že všechny dokumenty jsou v konzistentním stavu. Pro tuto úlohu můžete použít portál nebo klienta rozhraní API a [REST API resetování indexeru](https://docs.microsoft.com/rest/api/searchservice/reset-indexer) .
 
 ```http
-POST https://[service name].search.windows.net/indexers/[your indexer name]/reset?api-version=2019-05-06-Preview
+POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/reset?api-version=2019-05-06-Preview
 Content-Type: application/json
-api-key: [admin key]
+api-key: [YOUR-ADMIN-KEY]
 ```
 
 ### <a name="step-4-save-the-updated-definition"></a>Krok 4: uložení aktualizované definice
 
-Aktualizujte definici indexeru s požadavkem PUT, tělo požadavku by mělo obsahovat aktualizovanou definici indexeru.
+Aktualizujte definici indexeru s požadavkem PUT, tělo požadavku by mělo obsahovat aktualizovanou definici indexeru, která má vlastnost cache. Pokud získáte 400, zkontrolujte definici indexeru a ujistěte se, že jsou splněné všechny požadavky (zdroj dat, dovednosti, index).
 
 ```http
-PUT https://[service name].search.windows.net/indexers/[your indexer name]/reset?api-version=2019-05-06-Preview
+PUT https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2019-05-06-Preview
 Content-Type: application/json
-api-key: [admin key]
+api-key: [YOUR-ADMIN-KEY]
 {
-    "name" : "your indexer name",
+    "name" : "<YOUR-INDEXER-NAME>",
     ...
     "cache": {
-        "storageConnectionString": "[your storage connection string]",
+        "storageConnectionString": "<YOUR-STORAGE-ACCOUNT-CONNECTION-STRING>",
         "enableReprocessing": true
     }
 }
 ```
 
-Pokud teď v indexeru vydáte jinou žádost o získání, bude odpověď ze služby zahrnovat vlastnost `cacheId` v objektu mezipaměti. `cacheId` je název kontejneru, který bude obsahovat všechny výsledky v mezipaměti a průběžný stav každého dokumentu zpracovaného tímto indexerem.
+Pokud teď v indexeru vydáte jinou žádost o získání, bude odpověď ze služby zahrnovat vlastnost `ID` v objektu mezipaměti. Alfanumerický řetězec je připojen k názvu kontejneru obsahujícímu všechny výsledky v mezipaměti a průběžný stav každého dokumentu zpracovaného tímto indexerem. ID se použije k jedinečnému pojmenování mezipaměti v úložišti objektů BLOB.
 
-## <a name="enable-incremental-indexing-on-new-indexers"></a>Povolit přírůstkové indexování u nových indexerů
+    "cache": {
+        "ID": "<ALPHA-NUMERIC STRING>",
+        "enableReprocessing": true,
+        "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<YOUR-STORAGE-ACCOUNT>;AccountKey=<YOUR-STORAGE-KEY>;EndpointSuffix=core.windows.net"
+    }
 
-Pokud chcete nastavit přírůstkové indexování pro nového indexeru, zahrňte do datové části definice indexeru vlastnost `cache`. Ujistěte se, že používáte `2019-05-06-Preview` verzi rozhraní API.
+### <a name="step-5-run-the-indexer"></a>Krok 5: spuštění indexeru
 
-## <a name="overriding-incremental-indexing"></a>Přepsání přírůstkového indexování
+Chcete-li spustit indexer, můžete použít také portál. V seznamu indexery vyberte indexer a klikněte na **Spustit**. Jednou z výhod používání portálu je, že můžete monitorovat stav indexeru, poznamenat dobu trvání úlohy a počet zpracovávaných dokumentů. Stránky portálu se aktualizují každých několik minut.
 
-Když se nakonfiguruje, přírůstkové indexování sleduje změny v rámci vašeho kanálu indexování a v dokumentech zjišťuje konzistenci napříč vaším indexem a výčnělky. V některých případech budete muset toto chování přepsat, abyste zajistili, že indexovací člen neprovede další práci v důsledku aktualizace kanálu indexování. Například aktualizace připojovacího řetězce DataSource bude vyžadovat obnovení indexeru a nové indexování všech dokumentů, protože zdroj dat se změnil. Pokud ale aktualizujete připojovací řetězec jenom pomocí nového klíče, nechcete, aby tato změna způsobila aktualizace stávajících dokumentů. V opačném případě může indexer zrušit platnost mezipaměti a rozšířit dokumenty i v případě, že nejsou provedeny žádné změny kanálu indexování. Například můžete chtít indexer deověřit, pokud byste chtěli znovu nasadit vlastní dovednost s novým modelem a chtěli byste se pokusit znovu spustit u všech vašich dokumentů.
+Alternativně můžete použít REST ke spuštění indexeru:
 
-### <a name="override-reset-requirement"></a>Přepsat požadavek na resetování
+```http
+POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/run?api-version=2019-05-06-Preview
+Content-Type: application/json
+api-key: [YOUR-ADMIN-KEY]
+```
 
-Při provádění změn v kanálu indexování vyžaduje všechny změny, které mají za následek neplatnost mezipaměti, resetování indexeru. Pokud provedete změnu kanálu indexeru a nechcete, aby sledování změn zrušilo platnost mezipaměti, budete muset nastavit parametr `ignoreResetRequirement` QueryString na `true` pro operace indexeru nebo zdroje dat.
+Po spuštění indexeru můžete najít mezipaměť v úložišti objektů BLOB v Azure. Název kontejneru má následující formát: `ms-az-search-indexercache-<YOUR-CACHE-ID>`
 
-### <a name="override-change-detection"></a>Přepsat detekci změn
+> [!NOTE]
+> Resetování a opakované spuštění indexeru má za následek úplné opětovné sestavení, aby se obsah mohl ukládat do mezipaměti. Všechna obohacení vnímání se znovu spustí u všech dokumentů.
+>
 
-Při provádění aktualizací dovednosti, jejichž výsledkem je označení dokumentů jako nekonzistentní, například aktualizace vlastní adresy URL dovedností při opětovném nasazení dovednosti, nastavte parametr řetězce dotazu `disableCacheReprocessingChangeDetection` tak, aby `true` na aktualizace dovednosti.
+### <a name="step-6-modify-a-skillset-and-confirm-incremental-enrichment"></a>Krok 6: Úprava dovednosti a potvrzení přírůstkového obohacení
 
-### <a name="force-change-detection"></a>Vynutit detekci změn
+Chcete-li upravit dovednosti, můžete pomocí portálu upravit definici JSON. Například pokud používáte překlad textu, jednoduchou vloženou změnu z `en` na `es` nebo jiný jazyk postačuje pro testování přírůstkového obohacení při testování konceptu.
 
-Instance: Pokud chcete, aby kanál indexování rozpoznal změnu externí entity, jako je třeba nasazení nové verze vlastní dovednosti, budete muset aktualizovat dovednosti a "dotykové" konkrétní dovednost úpravou definice dovednosti, konkrétně adresy URL, která se má vynutit. Změňte detekci a neověří mezipaměť této dovednosti.
+Spusťte indexer znovu. Aktualizují se jenom ty části obohaceného stromu dokumentů. Pokud jste jako zkušební verzi používali nástroj pro [rychlé zprovoznění portálu](cognitive-search-quickstart-blob.md) a měníte dovednost překladu textu na ES, všimnete si, že místo původních 14 se aktualizují jenom 8 dokumentů. Soubory imagí neovlivněné procesem překladu se znovu použijí z mezipaměti.
+
+## <a name="enable-caching-on-new-indexers"></a>Povolit ukládání do mezipaměti pro nové indexery
+
+Chcete-li nastavit přírůstkové obohacení pro nového indexeru, je nutné při volání metody [Create indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer)zahrnout do datové části definice indexeru vlastnost `cache`. Při vytváření indexeru s touto vlastností Nezapomeňte zadat `2019-05-06-Preview` verzi rozhraní API. 
+
+
+```json
+{
+    "name": "<YOUR-INDEXER-NAME>",
+    "targetIndexName": "<YOUR-INDEX-NAME>",
+    "dataSourceName": "<YOUR-DATASOURCE-NAME>",
+    "skillsetName": "<YOUR-SKILLSET-NAME>",
+    "cache" : {
+        "storageConnectionString" : "<YOUR-STORAGE-ACCOUNT-CONNECTION-STRING>",
+        "enableReprocessing": true
+    },
+    "fieldMappings" : [],
+    "outputFieldMappings": [],
+    "parameters": []
+    }
+}
+```
+
+## <a name="checking-for-cached-output"></a>Kontrola výstupu v mezipaměti
+
+Mezipaměť je vytvořena, používána a spravována indexerem a její obsah není reprezentován ve formátu, který je čitelný pro člověka. Nejlepším způsobem, jak určit, jestli se mezipaměť používá, je spustit indexer a porovnat je s metrikami pro dobu provádění a počet dokumentů. 
+
+Předpokládejme například, že dovednosti začíná s analýzou obrazu a optického rozpoznávání znaků (OCR) naskenovaných dokumentů následovaných analýzou pro výsledný text. Pokud upravíte dovednost textu pro příjem dat, indexer může načíst všechny dříve zpracované image a obsah OCR z mezipaměti, aktualizovat a zpracovávat pouze změny související s textem, které jsou označeny vašimi úpravami. Můžete očekávat, že se v počtu dokumentů zobrazí méně dokumentů (například 8/8 na rozdíl od 14/14 v původním běhu), kratší doba spuštění a méně poplatků za vaše vyúčtování.
+
+## <a name="working-with-the-cache"></a>Práce s mezipamětí
+
+Jakmile je mezipaměť funkční, indexery kontrolují mezipaměť vždy, když je volána rutina [Spustit indexer](https://docs.microsoft.com/rest/api/searchservice/run-indexer) , aby bylo možné zjistit, které části stávajícího výstupu lze použít. 
+
+Následující tabulka shrnuje, jak různá rozhraní API souvisí s mezipamětí:
+
+| API           | Dopad mezipaměti     |
+|---------------|------------------|
+| [Vytvořit indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) | Vytvoří a spustí indexer při prvním použití, včetně vytvoření mezipaměti, pokud ho definuje definice indexeru. |
+| [Spustit indexer](https://docs.microsoft.com/rest/api/searchservice/run-indexer) | Spustí na vyžádání kanál pro obohacení. Toto rozhraní API načte z mezipaměti, pokud existuje, nebo vytvoří mezipaměť, pokud jste přidali do aktualizované definice indexeru ukládání do mezipaměti. Když spustíte indexer s povoleným ukládáním do mezipaměti, indexer vynechá kroky, pokud je možné použít výstup z mezipaměti. |
+| [Resetovat indexer](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)| Vymaže indexer všech přírůstkových informací o indexování. Další indexer se spustí (buď na vyžádání, nebo podle plánu) zcela znovu od začátku, včetně opětovného spuštění všech dovedností a nové sestavení mezipaměti. Je funkčně ekvivalentní k odstranění indexeru a jeho opětovnému vytvoření. |
+| [Resetovat dovednosti](preview-api-resetskills.md) | Určuje, které dovednosti se mají znovu spustit u dalšího indexeru, i když jste nezměnili žádnou dovednost. Mezipaměť se odpovídajícím způsobem aktualizuje. Výstupy, jako je znalostní báze úložiště nebo vyhledávací index, se aktualizují pomocí opakovaně použitelných dat z mezipaměti a nového obsahu na aktualizovanou dovednost. |
+
+Další informace o řízení, co se stane s mezipamětí, najdete v tématu [Správa mezipaměti](cognitive-search-incremental-indexing-conceptual.md#cache-management).
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek popisuje přírůstkové indexování pro indexery, které zahrnují dovednosti. Pokud chcete dál vymezit své znalosti, Projděte si články o opětovném indexování obecně použitelné pro všechny scénáře indexování v Azure Kognitivní hledání.
+Přírůstkové obohacení se vztahuje na indexery, které obsahují dovednosti. V dalším kroku najdete dokumentaci k dovednosti, která vám pomůže pochopit koncepty a kompozici. 
 
-+ [Postup opětovného sestavení indexu služby Azure kognitivní hledání](search-howto-reindex.md). 
-+ [Indexování velkých datových sad v Azure kognitivní hledání](search-howto-large-index.md). 
+Navíc po povolení mezipaměti budete chtít znát parametry a rozhraní API, které přiřadí do mezipaměti, včetně toho, jak přepsat nebo vynutit konkrétní chování. Další informace najdete na následujících odkazech.
+
++ [Dovednosti koncepty a složení](cognitive-search-working-with-skillsets.md)
++ [Vytvoření dovednosti](cognitive-search-defining-skillset.md)
++ [Úvod k přírůstkové obohacení a ukládání do mezipaměti](cognitive-search-incremental-indexing-conceptual.md)

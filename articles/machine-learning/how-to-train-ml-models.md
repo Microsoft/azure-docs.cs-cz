@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 11/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3205f853088245461e854562999164f9813f3bd5
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: f8f7d16c9fa5141add5c661c0e05cc93da436614
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536626"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834886"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Výuka modelů pomocí Azure Machine Learning s využitím Estimator
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -158,3 +158,4 @@ Poznámkové bloky na školicích modelech pomocí odhady specifických pro rozs
 * [Trénování TensorFlow modelů](how-to-train-tensorflow.md)
 * [Vyladění hyperparameters](how-to-tune-hyperparameters.md)
 * [Nasazení trénovaného modelu](how-to-deploy-and-where.md)
+* [Vytváření a Správa prostředí pro školení a nasazení](how-to-use-environments.md)

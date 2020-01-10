@@ -1,5 +1,5 @@
 ---
-title: Vysvětlení poplatků na faktuře za smlouvu se zákazníkem Microsoftu – Azure
+title: Poplatky na faktuře za smlouvu se zákazníkem Microsoftu – Azure
 description: Zjistěte, jak číst a chápat poplatky uvedené na faktuře.
 author: jureid
 manager: jureid
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: e9c74fd18bf80dfb8fa406912795fb53e655bd88
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b5dfffecbd2908e987b76f29b14937f0e50ce64f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226157"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388988"
 ---
 # <a name="understand-charges-on-your-microsoft-customer-agreement-invoice"></a>Vysvětlení poplatků na faktuře za smlouvu se zákazníkem Microsoftu
 
@@ -77,7 +77,7 @@ Na fakturačním účtu souvisejícím s určitou smlouvou se zákazníkem Micro
 
    ![Snímek obrazovky znázorňující hledání položky Správa nákladů a fakturace na webu Azure Portal](./media/billing-understand-your-bill-mca/billing-search-cost-management-billing.png)
 
-3. Zvolte fakturační profil. V závislosti na úrovni vašeho přístupu možná bude potřeba vybrat fakturační účet. Na fakturačním účtu vyberte **Fakturační profily** a potom vyberte fakturační profil.
+3. Vyberte fakturační profil. V závislosti na úrovni vašeho přístupu možná bude potřeba vybrat fakturační účet. Na fakturačním účtu vyberte **Fakturační profily** a potom vyberte fakturační profil.
 
 4. V horní části obrazovky vyberte kartu **Shrnutí**.
 
@@ -97,7 +97,7 @@ Nevyřízené poplatky můžete lépe pochopit díky analýze jednotlivých tran
 
    ![Snímek obrazovky znázorňující hledání položky Správa nákladů a fakturace na webu Azure Portal](./media/billing-understand-your-bill-mca/billing-search-cost-management-billing.png)
 
-3. Zvolte fakturační profil. V závislosti na úrovni vašeho přístupu možná bude potřeba vybrat fakturační účet. Na fakturačním účtu vyberte **Fakturační profily** a potom vyberte fakturační profil.
+3. Vyberte fakturační profil. V závislosti na úrovni vašeho přístupu možná bude potřeba vybrat fakturační účet. Na fakturačním účtu vyberte **Fakturační profily** a potom vyberte fakturační profil.
 
 4. Na levé straně stránky Vyberte **Všechny transakce**.
 
@@ -113,7 +113,7 @@ Nevyřízené poplatky můžete lépe pochopit díky analýze jednotlivých tran
 
    ![Snímek obrazovky znázorňující hledání položky Správa nákladů a fakturace na webu Azure Portal](./media/billing-understand-your-bill-mca/billing-search-cost-management-billing.png)
 
-3. Zvolte fakturační profil. V závislosti na úrovni vašeho přístupu možná bude potřeba vybrat fakturační účet. Na fakturačním účtu vyberte **Fakturační profily** a potom vyberte fakturační profil.
+3. Vyberte fakturační profil. V závislosti na úrovni vašeho přístupu možná bude potřeba vybrat fakturační účet. Na fakturačním účtu vyberte **Fakturační profily** a potom vyberte fakturační profil.
 
 4. V levé části stránky vyberte **Všechna předplatná**.
 
@@ -166,7 +166,7 @@ Pokyny pro úhradu faktury najdete ve spodní části faktury. [Zjistěte, jak p
 
 Pokud jste už fakturu zaplatili, na stránce Faktury na webu Azure Portal se můžete podívat na stav platby.
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Ověření přístupu ke smlouvě se zákazníkem Microsoftu
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu k zákaznické smlouvě Microsoftu
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.

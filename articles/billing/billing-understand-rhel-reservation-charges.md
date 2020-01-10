@@ -1,5 +1,5 @@
 ---
-title: Vysvětlení slevy za plán rezervace softwaru Red Hat a jeho využití – Azure | Microsoft Docs
+title: Slevy rezervačních plánů pro Red Hat – Azure
 description: Zjistěte, jak se na software Red Hat na virtuálních počítačích uplatňují slevy za plán Red Hat.
 services: billing
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2019
 ms.author: cwatson
-ms.openlocfilehash: 0ac7425ed695d7ceac134e29b20cd12b01545239
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7af9f6ae0c274f38798d96dd9228a68ce709686c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225768"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388444"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Vysvětlení způsobu uplatňování slevy za plán rezervace softwaru Red Hat Linux Enterprise v Azure
 
@@ -59,7 +59,7 @@ Názvy z Marketplace na webu Azure Portal:
 - Red Hat Enterprise Linux 7.6
 - Red Hat Enterprise Linux 7 (nejnovější LVM)
 
-|Virtuální počítač se softwarem Red Hat | ID měřiče| Koeficient| Velikost ukázkového virtuálního počítače|
+|Virtuální počítač se softwarem Red Hat | MeterId| Koeficient| Velikost ukázkového virtuálního počítače|
 | -------| ------------------------| --- |--- |
 |Licence na virtuální počítač s 1–4 vCPU|077a07bb-20f8-4bc6-b596-ab7211a1e247|1|D4s_v3|
 |Licence na virtuální počítač s 1–4 vCPU|2f96d035-3bac-46d6-b2bc-c6daa0938536|1|D4s_v3|
@@ -83,7 +83,7 @@ Názvy z Marketplace na webu Azure Portal:
 
 Název z Marketplace na webu Azure Portal:
 
-|Virtuální počítač se softwarem Red Hat | ID měřiče | Koeficient|Velikost ukázkového virtuálního počítače|
+|Virtuální počítač se softwarem Red Hat | MeterId | Koeficient|Velikost ukázkového virtuálního počítače|
 | ------- | --- | ------------------------| --- | --- |
 |Licence na virtuální počítač s 1–4 vCPU |4d902611-eed7-4060-a33e-3c7fdbac6406|1|D4s_v3|
 |Licence na virtuální počítač s 5 a více vCPU|6dfb482b-23ea-487f-810c-e66360f025de|2,333333333|D8s_v3|
@@ -92,7 +92,7 @@ Název z Marketplace na webu Azure Portal:
 
 Názvy z Marketplace na webu Azure Portal:
 
-|Virtuální počítač se softwarem Red Hat | ID měřiče | Koeficient|Velikost ukázkového virtuálního počítače|
+|Virtuální počítač se softwarem Red Hat | MeterId | Koeficient|Velikost ukázkového virtuálního počítače|
 | ------- |------------------------| --- | --- |
 |Licence na virtuální počítač s 1–4 vCPU|e9711132-d9d9-450c-8203-25cfc4bce8de|1|D4s_v3|
 |Licence na virtuální počítač s 5 a více vCPU|93954aa4-b55f-4b7b-844d-a119d6bf3c4e|2|D8s_v3|
@@ -106,7 +106,7 @@ Názvy z Marketplace na webu Azure Portal:
 - Red Hat Enterprise Linux 7.4 pro SAP
 - Red Hat Enterprise Linux 7.5 pro SAP
 
-|Virtuální počítač se softwarem Red Hat | ID měřiče | Koeficient|Velikost ukázkového virtuálního počítače|
+|Virtuální počítač se softwarem Red Hat | MeterId | Koeficient|Velikost ukázkového virtuálního počítače|
 | ------- |------------------------| --- |--- |
 |Licence na virtuální počítač s 1 vCPU|25889e91-c740-42ac-bc52-6b8f73b98575|1|D2s_v3|
 |Licence na virtuální počítač se 2 vCPU|2a0c92c8-23a7-4dc9-a39c-c4a73a85b5da|1|D2s_v3|
@@ -134,7 +134,7 @@ Názvy z Marketplace na webu Azure Portal:
 - Red Hat Enterprise Linux 7.2 pro SAP HANA
 - Red Hat Enterprise Linux 7.3 pro SAP HANA
 
-|Virtuální počítač se softwarem Red Hat | ID měřiče | Koeficient|Velikost ukázkového virtuálního počítače|
+|Virtuální počítač se softwarem Red Hat | MeterId | Koeficient|Velikost ukázkového virtuálního počítače|
 | ------- |------------------------| --- |--- |
 |Licence na virtuální počítač s 1 vCPU|be0a59d1-eed7-47ec-becd-453267753793|1|D2s_v3|
 |Licence na virtuální počítač se 2 vCPU|3b97c9f5-f5d5-4fd3-a421-b78fca32a656|1|D2s_v3|

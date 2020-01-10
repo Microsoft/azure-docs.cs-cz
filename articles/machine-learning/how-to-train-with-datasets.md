@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: e77bf5226a216c04beae86a23f1c08303d56db94
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: f10de425bf83720b06f3ea7772343edfefc8d952
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536548"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834830"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Výuka s datovými sadami v Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -188,11 +188,12 @@ y_test = load_data(y_test, True).reshape(-1)
 
 ## <a name="notebook-examples"></a>Příklady poznámkových bloků
 
-[Poznámkové bloky datové sady](https://aka.ms/dataset-tutorial) ukazují a rozšiřují koncepty v tomto článku. 
+[Poznámkové bloky datové sady](https://aka.ms/dataset-tutorial) ukazují a rozšiřují koncepty v tomto článku.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Automatické učení modelů strojového učení](how-to-auto-train-remote.md) pomocí TabularDatasets.
+* [Automatické učení modelů strojového učení](how-to-auto-train-remote.md) pomocí TabularDatasets
 
-* [Analýza modelů klasifikace obrázků](https://aka.ms/filedataset-samplenotebook) s využitím datových sad
+* [Analýza modelů klasifikace obrázků](https://aka.ms/filedataset-samplenotebook) pomocí datových sad
 
+* [Vytváření a Správa prostředí pro školení a nasazení](how-to-use-environments.md)

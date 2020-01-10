@@ -4,16 +4,16 @@ description: V tomto článku jsou vysvětlené nejčastější úkoly, které p
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: c53a051df0a0100d9209530490d910612be2f30d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4db710dc93b0a1fc3c85d24e9d79fb2e2d552cd1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849917"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644541"
 ---
 # <a name="azure-ea-portal-administration"></a>Správa portálu Azure EA
 
@@ -117,6 +117,8 @@ Nabídka Vývoj/testování se v současné době nevztahuje na zákazníky Azur
 
 ## <a name="transfer-an-enterprise-account-to-a-new-enrollment"></a>Převod podnikového účtu do nové registrace
 
+Při převodu účtu se jeho vlastník přenese z jedné registrace do druhé. Do cílové registrace se přesunou všechna související předplatná pod tímto vlastníkem. Tato operace se provede, když máte víc aktivních registrací a chcete přesunout jenom vybrané vlastníky účtů.
+
 Při převodu podnikového účtu do nové registrace mějte na paměti následující body:
 
 - Převádějí se jenom účty, které jsou zadané v požadavku. Pokud zvolíte všechny účty, přenesou se všechny.
@@ -124,44 +126,37 @@ Při převodu podnikového účtu do nové registrace mějte na paměti následu
 
 ### <a name="effective-transfer-date"></a>Platné datum převodu
 
-Platným datem převodu může být datum, které je stejné nebo následuje po počátečním datu registrace, do které chcete provést převod. Registrace, do které účet převádíte, se nazývá _cílová registrace_. Po převodu účtu zůstanou všechny informace o použití, které byly v účtu před platným datem převodu, v registraci, ze které provádíte převod. Registrace, ze které provádíte převod, je _zdrojová registrace_.  Využití zdrojové registrace se odečte z peněžního závazku nebo se účtuje jako nadlimitní využití. Využití, ke kterému dojde po platném datu převodu, se přenese do nové registrace, kde se odpovídajícím způsobem odúčtuje.
-
-Převod registrace je možné provést k dřívějšímu datu, ale nejpozději k počátečnímu datu cílové registrace. Nebo nejpozději k platnému počátečnímu datu zdrojové registrace.
-
-### <a name="monetary-commitment"></a>Peněžní závazek
-
-Peněžní závazek nejde mezi registracemi převést. Zůstatky peněžních závazků jsou smluvně vázány na registraci, kde byly objednány. V rámci převodu účtu nebo registrace se peněžní závazek nepřevádí.
-
-### <a name="services-affected"></a>Dotčené služby
-
-Při převodu účtu nedochází k výpadku. Pokud jsou poskytnuté všechny potřebné informace, může převod proběhnout tentýž den jako požadavek.
+Převod účtu je možné provést k dřívějšímu datu, ale nejpozději k počátečnímu datu cílové registrace nebo počátečnímu datu účtu, podle toho, které z těchto dat je pozdější. Po převodu účtu zůstanou všechny informace o použití, které byly v účtu před platným datem převodu, v registraci, ze které provádíte převod. Informace o využití po datu převodu se přesunou do cílové registrace.
 
 ### <a name="prerequisites"></a>Požadavky
 
 K žádosti o převod účtu je potřeba sdělit následující informace:
 
-
-- Název převáděného účtu a ID jeho vlastníka.
+- Číslo cílové registrace, název účtu a e-mail vlastníka účtu, který se má převést
 - U zdrojové registrace uveďte její číslo a převáděný účet.
-- U cílové registrace uveďte číslo registrace, do které probíhá převod.
-- Platné datum převodu účtu může být stejné datum, jako je počáteční datum cílové registrace, nebo datum pozdější.
+- Datem účinnosti převodu účtu může být dřívější datum, ale musí to být nejpozději počáteční datum cílové registrace nebo počáteční datum účtu, podle toho, které z těchto dat je pozdější.
 
 Další body, na které je potřeba myslet před převodem účtu:
 
 - Cílovou a zdrojovou registraci musí schválit správce EA.
 - Pokud převod účtu vašim požadavkům nevyhovuje, můžete zvážit převod registrace.
 - Převod účtů přenese všechny služby a předplatná související s konkrétními účty.
-- Po dokončení převodu se převedený účet v rámci zdrojové registrace zobrazí jako neaktivní.
-- Převod účtu jde antedatovat k libovolnému datu v rámci počátečního data cílové registrace.
+- Po dokončení převodu se převedený účet v rámci zdrojové registrace zobrazí jako neaktivní a v cílové registraci naopak jako aktivní.
 - Účet zobrazuje koncové datum odpovídající efektivnímu datu převodu zdrojové registrace jako počáteční datum cílové registrace.
 - Jakékoliv použití účtu před efektivním datem převodu zůstane v rámci zdrojové registrace.
 
 
 ## <a name="transfer-enterprise-enrollment-to-a-new-one"></a>Převod podnikové registrace do nové registrace
 
+Převod registrace se bere v úvahu v těchto případech:
+
+- Skončilo období závazku aktuální registrace.
+- Registrace je ve stavu vypršení platnosti nebo prodloužení a dojednává se nová smlouva.
+- Pokud máte více registrací a chcete konsolidovat všechny účty a fakturaci v rámci jediné registrace.
+
 Pokud požádáte o převod celé podnikové registrace do jiné registrace, provedou se následující akce:
 
-- Převedou se všechny služby Azure, všechna předplatná, účty, oddělení a celá struktura registrace, včetně všech správců oddělení EA.
+- Na novou registraci se převedou všechny služby Azure, všechna předplatná, účty, oddělení a celá struktura registrace, včetně všech správců oddělení EA.
 - U registrace se nastaví stav _Přenesené_. Přenesená registrace bude k dispozici jenom pro sestavy, které se týkají historie použití.
 - Do přenesené registrace už nemůžete přidávat role ani předplatná. Přenesený stav brání dalšímu použití této registrace.
 - Zbývající zůstatek peněžního závazku ve smlouvě se ruší, včetně budoucích podmínek.
@@ -171,36 +166,33 @@ Pokud požádáte o převod celé podnikové registrace do jiné registrace, pro
 
 ### <a name="effective-transfer-date"></a>Platné datum převodu
 
-Platným datem převodu může být datum, které je stejné nebo následuje po počátečním datu registrace, kterou chcete převést do cílové registrace.
+Platným datem převodu může být datum, které je stejné nebo následuje po počátečním datu cílové registrace.
 
 Využití zdrojové registrace se odečte z peněžního závazku nebo se účtuje jako nadlimitní využití. Využití, ke kterému dojde po platném datu převodu, se přenese do nové registrace, kde se odpovídajícím způsobem odúčtuje.
 
-### <a name="effective-transfer-date-in-the-past"></a>Platné datum převodu v minulosti
-
-Převod účtu je možné provést k dřívějšímu datu, ale nejpozději k počátečnímu datu cílové registrace. Nebo nejpozději k platnému počátečnímu datu zdrojové registrace.
-
-### <a name="monetary-commitment"></a>Peněžní závazek
-
-Peněžní závazek nejde mezi registracemi převést. Zůstatky peněžních závazků jsou smluvně vázány na registraci, kde byly objednány. V rámci převodu účtu nebo registrace se peněžní závazek nepřevádí.
-
-### <a name="services-affected"></a>Dotčené služby
-
-Při převodu účtu nedochází k výpadku. Pokud jsou poskytnuté všechny požadované informace, může převod proběhnout tentýž den jako požadavek.
+Převod k dřívějšímu datu se podporuje, ale musí to být nejpozději k počátečnímu datu cílové registrace. Zadání zvoleného data převodu nemá vliv na využití z hlediska faktury za nadlimitní využití, která již byla vydána.
 
 ### <a name="prerequisites"></a>Požadavky
 
 K žádosti o převod registrace je potřeba sdělit následující informace:
 
-- U zdrojové registrace uveďte její číslo a převáděný účet.
+- U zdrojové registrace uveďte její číslo.
 - U cílové registrace uveďte číslo registrace, do které probíhá převod.
 - Platné datum převodu registrace může být stejné datum, jako je počáteční datum cílové registrace, nebo datum pozdější. Vybrané datum neovlivňuje použití u již vydaných faktur za nadlimitní využití.
 
 Další body, na které je potřeba myslet před převodem registrace:
 
-- Cílovou a zdrojovou registraci musí schválit správce EA.
+- Cílovou a zdrojovou registraci musí schválit správci EA.
 - Pokud převod registrace vašim požadavkům nevyhovuje, zvažte možnost převodu účtu.
-- Převádějí se jenom účty, které zadáte. Můžete požádat o převod všech svých účtů.
-- Zdrojová registrace zůstane v aktivním nebo prodlouženém stavu. Registraci můžete používat dál, dokud jí nevyprší platnost.
+- Stav zdrojové registrace se změní na Převedeno nesený a bude k dispozici jenom pro účely generování sestav historie využití.
+
+### <a name="monetary-commitment"></a>Peněžní závazek
+
+Peněžní závazek nejde mezi registracemi převést. Zůstatky peněžních závazků jsou smluvně vázány na registraci, kde byly objednány. V rámci převodu účtu nebo registrace se peněžní závazek nepřevádí.
+
+### <a name="no-services-affected-for-account-and-enrollment-transfers"></a>Převody účtů a registrací nemají vliv na služby
+
+Při převodu účtu nebo registrace nedochází k výpadkům. Pokud jsou poskytnuté všechny požadované informace, může převod proběhnout tentýž den jako požadavek.
 
 ## <a name="change-account-owner"></a>Změna vlastníka účtu
 

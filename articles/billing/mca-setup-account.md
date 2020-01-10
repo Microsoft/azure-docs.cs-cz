@@ -1,5 +1,5 @@
 ---
-title: Nastavení fakturačního účtu pro smlouvu se zákazníkem Microsoftu – Azure
+title: Nastavení fakturace pro smlouvu se zákazníkem Microsoftu – Azure
 description: Přečtěte si, jak nastavit fakturační účet pro smlouvu se zákazníkem Microsoftu.
 author: amberbhargava
 manager: amberb
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 5d01fa5f4bb7367bdd1939d77dc1f80bd4436765
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8855552ef4bc5e8135d1df62cca384b5ee14a02d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225583"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388342"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Nastavení fakturačního účtu pro smlouvu se zákazníkem Microsoftu
 
@@ -187,7 +187,7 @@ K provedení tohoto nastavení potřebujete přístup k novému fakturačnímu �
     - V novém fakturačním účtu se vytvoří hierarchie fakturace odpovídající hierarchii vaší smlouvy Enterprise. Další informace najdete ve [vysvětlení změn v hierarchii fakturace](#understand-changes-to-your-billing-hierarchy).
     - Správcům z vaší registrace smlouvy Enterprise se udělí přístup k novému fakturačnímu účtu, aby mohli nadále spravovat fakturaci vaší organizace.
     - Fakturace vašich předplatných Azure se převede na nový účet. **Během tohoto přechodu nedojde k žádnému ovlivnění vašich služeb Azure. Tyto služby poběží i nadále bez přerušení.**
-    - Pokud máte rezervace Azure, převedou se na váš nový fakturační účet beze změny výhod nebo termínu. 
+    - Pokud máte rezervace Azure, převedou se na váš nový fakturační účet beze změny výhod nebo termínu.
 
 4. Stav převodu můžete sledovat na stránce **Stav převodu**.
 

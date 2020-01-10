@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab, sstein
-ms.date: 12/11/2019
-ms.openlocfilehash: 1c419e0550561e99694d9256c9c9111a2549b82e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 01/09/2020
+ms.openlocfilehash: f6b7797fbebd3d1df3da3405926543d716e584f4
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647862"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75835103"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí modelu nákupu vCore
 
@@ -52,8 +52,8 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Maximální velikost dat databáze TempDB (GB)|32|64|96|128|160|192|
 |Typ úložiště|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|
 |Vstupně-výstupní latence (přibližné)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
-|Maximální počet datových IOPS *|400|800|1200|1600|2000|2400|
-|Maximální rychlost protokolu (MB/s)|4.7|9.4|14,1|18,8|23,4|28,1|
+|Maximální počet datových IOPS na fond *|400|800|1200|1600|2000|2400|
+|Maximální počet protokolů na fond (MB/s)|4.7|9.4|14,1|18,8|23,4|28,1|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) * * |210|420|630|840|1050|1260|
 |Maximální počet souběžných přihlášení na fond * * |210|420|630|840|1050|1260|
 |Maximální počet souběžných relací|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -82,8 +82,8 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Maximální velikost dat databáze TempDB (GB)|224|256|288|320|512|768|
 |Typ úložiště|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|
 |Vstupně-výstupní latence (přibližné)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
-|Maximální počet datových IOPS *|2800|3200|3600|4000|6400|9600|
-|Maximální rychlost protokolu (MB/s)|32,8|37,5|37,5|37,5|37,5|37,5|
+|Maximální počet datových IOPS na fond *|2800|3200|3600|4000|6400|9600|
+|Maximální počet protokolů na fond (MB/s)|32,8|37,5|37,5|37,5|37,5|37,5|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|1470|1680|1890|2 100|3360|5040|
 |Maximální počet souběžných přihlášení ve fondu (požadavky) *|1470|1680|1890|2 100|3360|5040|
 |Maximální počet souběžných relací|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -112,8 +112,8 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Maximální velikost dat databáze TempDB (GB)|64|128|192|256|320|384|448|
 |Typ úložiště|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|
 |Vstupně-výstupní latence (přibližné)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
-|Maximální počet datových IOPS *|800|1600|2400|3200|4000|4800|5600|
-|Maximální rychlost protokolu (MB/s)|9.4|18,8|28,1|37,5|37,5|37,5|37,5|
+|Maximální počet datových IOPS na fond *|800|1600|2400|3200|4000|4800|5600|
+|Maximální počet protokolů na fond (MB/s)|9.4|18,8|28,1|37,5|37,5|37,5|37,5|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) * *|210|420|630|840|1050|1260|1470|
 |Maximální počet souběžných přihlášení na fond (požadavky) * *|210|420|630|840|1050|1260|1470|
 |Maximální počet souběžných relací|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -142,8 +142,8 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Maximální velikost dat databáze TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Typ úložiště|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|
 |Vstupně-výstupní latence (přibližné)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
-|Maximální počet datových IOPS * |6,400|7 200|8 000|9 600|12,800|16,000|32,000|
-|Maximální rychlost protokolu (MB/s)|37,5|37,5|37,5|37,5|37,5|37,5|37,5|
+|Maximální počet datových IOPS na fond * |6,400|7 200|8 000|9 600|12,800|16,000|32,000|
+|Maximální počet protokolů na fond (MB/s)|37,5|37,5|37,5|37,5|37,5|37,5|37,5|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) * *|1680|1890|2 100|2520|3360|4200|8400|
 |Maximální počet souběžných přihlášení na fond (požadavky) * *|1680|1890|2 100|2520|3360|4200|8400|
 |Maximální počet souběžných relací|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -174,10 +174,10 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Maximální velikost dat databáze TempDB (GB)|333|
 |Typ úložiště|Úložiště úrovně Premium (vzdálené)|
 |Vstupně-výstupní latence (přibližné)|5-7 ms (zápis)<br>5-10 ms (čtení)|
-|Maximální počet datových IOPS *|28 800|
-|Maximální rychlost protokolu (MB/s)|37,5|
-|Maximální počet souběžných pracovních procesů na fond (požadavky) * *|1680|
-|Maximální počet souběžných přihlášení na fond (požadavky) * *|1680|
+|Maximální počet datových IOPS na fond *|16,000|
+|Maximální počet protokolů na fond (MB/s)|37,5|
+|Maximální počet souběžných pracovních procesů na fond (požadavky) * *|3780|
+|Maximální počet souběžných přihlášení na fond (požadavky) * *|3780|
 |Maximální počet souběžných relací|30,000|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0-72|
 |Počet replik|1\. místo|
@@ -209,8 +209,8 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Maximální velikost protokolu (GB)|307|307|307|307|307|
 |Maximální velikost dat databáze TempDB (GB)|64|96|128|160|192|
 |Vstupně-výstupní latence (přibližné)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|
-|Maximální počet datových IOPS *|9 000|13 500|18 000|22 500|27 000|
-|Maximální rychlost protokolu (MB/s)|20|30|40|50|60|
+|Maximální počet datových IOPS na fond *|9 000|13 500|18 000|22 500|27 000|
+|Maximální počet protokolů na fond (MB/s)|20|30|40|50|60|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) * *|420|630|840|1050|1260|
 |Maximální počet souběžných přihlášení na fond (požadavky) * *|420|630|840|1050|1260|
 |Maximální počet souběžných relací|30,000|30,000|30,000|30,000|30,000|
@@ -239,8 +239,8 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Maximální velikost protokolu (GB)|307|307|307|307|307|307|
 |Maximální velikost dat databáze TempDB (GB)|224|256|288|320|512|768|
 |Vstupně-výstupní latence (přibližné)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|
-|Maximální počet datových IOPS *|31 500|36 000|40 500|45,000|72 000|90,000|
-|Maximální rychlost protokolu (MB/s)|70|80|80|80|80|80|
+|Maximální počet datových IOPS na fond *|31 500|36 000|40 500|45,000|72 000|96 000|
+|Maximální počet protokolů na fond (MB/s)|70|80|80|80|80|80|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) * *|1470|1680|1890|2 100|3360|5040|
 |Maximální počet souběžných přihlášení na fond (požadavky) * *|1470|1680|1890|2 100|3360|5040|
 |Maximální počet souběžných relací|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -271,8 +271,8 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Maximální velikost dat databáze TempDB (GB)|128|192|256|320|384|448|
 |Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
 |Vstupně-výstupní latence (přibližné)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|
-|Maximální počet datových IOPS *|18 000|27 000|36 000|45,000|54,000|63 000|
-|Maximální rychlost protokolu (MB/s)|60|90|120|120|120|120|
+|Maximální počet datových IOPS na fond *|18 000|27 000|36 000|45,000|54,000|63 000|
+|Maximální počet protokolů na fond (MB/s)|60|90|120|120|120|120|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) * *|420|630|840|1050|1260|1470|
 |Maximální počet souběžných přihlášení na fond (požadavky) * *|420|630|840|1050|1260|1470|
 |Maximální počet souběžných relací|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -301,8 +301,8 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Maximální velikost dat databáze TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
 |Vstupně-výstupní latence (přibližné)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|
-|Maximální počet datových IOPS *|72 000|81 000|90,000|108 000|144 000|180,000|256 000|
-|Maximální rychlost protokolu (MB/s)|120|120|120|120|120|120|120|
+|Maximální počet datových IOPS na fond *|72 000|81 000|90,000|108 000|144 000|180,000|256 000|
+|Maximální počet protokolů na fond (MB/s)|120|120|120|120|120|120|120|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) * *|1680|1890|2 100|2520|3360|4200|8400|
 |Maximální počet souběžných přihlášení na fond (požadavky) * *|1680|1890|2 100|2520|3360|4200|8400|
 |Maximální počet souběžných relací|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -320,23 +320,23 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 
 ### <a name="m-series-compute-generation-preview"></a>Generování výpočetních prostředků řady M-Series (Preview)
 
-|Velikost výpočetního prostředí|GP_M_128|
+|Velikost výpočetního prostředí|BC_M_128|
 |:--- | --: |
 |Generování výpočtů|M-Series|
 |Virtuální jádra|128|
-|Paměť (GB)|3767|
+|Paměť (GB)|3767,1|
 |Maximální počet databází pro každý fond|100|
 |Podpora columnstore|Ano|
-|Úložiště OLTP v paměti (GB)|481|
+|Úložiště OLTP v paměti (GB)|1768|
 |Maximální velikost dat (GB)|4 096|
 |Maximální velikost protokolu (GB)|2 048|
 |Maximální velikost dat databáze TempDB (GB)|4 096|
 |Typ úložiště|Místní disk SSD|
 |Vstupně-výstupní latence (přibližné)|1-2 ms (zápis)<br>1-2 ms (čtení)|
-|Maximální počet datových IOPS *|40,000|
-|Maximální rychlost protokolu (MB/s)|120|
-|Maximální počet souběžných pracovních procesů na fond (požadavky) *|1680|
-|Maximální počet souběžných přihlášení na fond (požadavky) *|1680|
+|Maximální počet datových IOPS na fond *|200 000|
+|Maximální počet protokolů na fond (MB/s)|333|
+|Maximální počet souběžných pracovních procesů na fond (požadavky) *|13 440|
+|Maximální počet souběžných přihlášení na fond (požadavky) *|13 440|
 |Maximální počet souběžných relací|30,000|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0-128|
 |Počet replik|4|

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: b409824c2adb544560dfa17b4871ba23760d35c7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 81f776428303ad5e6486ba52c1acdf70d051563e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443861"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75835012"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy k SQL Database Managed Instances (FAQ)
 
@@ -105,7 +105,7 @@ Pokud se ve stejné oblasti nepodporují hardwarové generace, změna hardwarov�
 
 ## <a name="tune-performance"></a>Ladění výkonu
 
-\* * Návody vyladit výkon mé spravované instance? **
+**Návody vyladit výkon mé spravované instance?**
 
 Pro obecné účely spravovaná instance používá vzdálené úložiště, protože se jedná o velikost dat a souborů protokolu, které jsou důležité pro výkon. Další informace najdete v tématu [vliv velikosti souboru protokolu na výkon pro obecné účely spravované instance](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e).
 
@@ -180,8 +180,8 @@ Pro lepší porozumění výhodám, nákladům a rizikům spojeným s nasazením
 
 ## <a name="dns-refresh"></a>Aktualizace DNS 
 
-\* * Můžu aktualizovat DNS? **
-  
+**Můžu aktualizovat DNS?**
+
 V současné době neposkytujeme funkci pro aktualizaci konfigurace serveru DNS pro spravovanou instanci.
 
 Konfigurace DNS se nakonec aktualizuje:

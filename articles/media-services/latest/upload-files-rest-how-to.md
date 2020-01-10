@@ -1,5 +1,5 @@
 ---
-title: Nahrání souborů do účtu Azure Media Services pomocí REST | Microsoft Docs
+title: Nahrání souborů do účtu Azure Media Services V3 pomocí REST | Microsoft Docs
 description: Naučte se, jak získat mediální obsah do Media Services vytvořením a nahráním prostředků.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 78c07330558241c889f284bcaf7302ce1327b5b8
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: a9fd38b857f513ff67ae2fbe4ccd0c6c9540967e
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389806"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779157"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Nahrání souborů do účtu Media Services pomocí REST
 
@@ -39,7 +39,7 @@ K dokončení kroků popsaných v tomto tématu, budete muset:
 
 V této části se dozvíte, jak vytvořit nový prostředek.
 
-1. Vyberte assety**vytvořit nebo aktualizovat Asset**. -> 
+1. Vyberte assety -> **vytvořit nebo aktualizovat Asset**.
 2. Stiskněte **Odeslat**.
 
     ![Vytvoření assetu](./media/upload-files/postman-create-asset.png)
@@ -50,10 +50,10 @@ Zobrazí se **odpověď** s informacemi o nově vytvořeném prostředku.
 
 V této části se dozvíte, jak získat adresu URL SAS, která byla vygenerována pro vytvořený Asset. Adresa URL SAS byla vytvořena s oprávněním pro čtení i zápis a lze ji použít k nahrání digitálních souborů do kontejneru assetů.
 
-1. Vyberte **položku assets** **list adresy URL assetů.**  -> 
+1. Vyberte assety -> **seznam adres URL assetů**.
 2. Stiskněte **Odeslat**.
 
-    ![Nahrát soubor](./media/upload-files/postman-create-sas-locator.png)
+    ![Nahrání souboru](./media/upload-files/postman-create-sas-locator.png)
 
 Zobrazí se **odpověď** s informacemi o adresách URL prostředku. Zkopírujte první adresu URL a použijte ji k nahrání souboru.
 
@@ -61,6 +61,6 @@ Zobrazí se **odpověď** s informacemi o adresách URL prostředku. Zkopírujte
 
 Použijte rozhraní API Azure Storage nebo sady SDK (například [úložiště REST API](../../storage/common/storage-rest-api-auth.md) nebo [sadu .NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Kurz: Kódování vzdáleného souboru na základě adresy URL a streamování videa – REST](stream-files-tutorial-with-rest.md)
+[Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video](stream-files-tutorial-with-rest.md)

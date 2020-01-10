@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 734b0a516d4a9fe882545dd5cde5a57d8af719cb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1265861a872b01d558646ea2adb6cba27fa3ebd4
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034568"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778409"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Kurz: Nasazení aplikace na linuxové virtuální počítače v Azure pomocí Jenkins a Azure DevOps Services
 
@@ -130,7 +130,7 @@ Koncový bod služby umožňuje službě Azure DevOps Services připojení k Jen
    > [!NOTE]
    > V následujícím postupu nainstalujte všechno, co je potřeba, a *nespouštějte skript s oprávněními sudo*.
 
-1. Otevřete kartu **Vydání** centra **Sestavení a vydání&amp;, otevřete** Skupiny nasazení**a vyberte**+ Nový **.
+1. Otevřete kartu **Vydání** centra **Sestavení a vydání**, otevřete **Skupiny nasazení** a vyberte **+ Nový**.
 2. Zadejte název skupiny nasazení a volitelný popis. Potom vyberte **Vytvořit**.
 3. Zvolte operační systém virtuálního počítače cíle nasazení. Vyberte například **Ubuntu 16.04+** .
 4. Vyberte **Použít ve skriptu token PAT k ověřování**.
@@ -146,7 +146,7 @@ Kanál verze určuje proces, který Azure Pipelines používá k nasazení aplik
 
 Kanál verze vytvoříte v Azure Pipelines takto:
 
-1. Otevřete kartu **Vydání** centra **Sestavení a vydání&amp; a vyberte** Vytvořit kanál verze **. 
+1. Otevřete kartu **Vydání** centra **Sestavení a vydání** a vyberte **Vytvořit kanál verze**. 
 2. Zvolte, že chcete začít **prázdným procesem** a vyberte **prázdnou** šablonu.
 3. V části **Artefakty** vyberte **+ Přidat artefakt** a jako **Typ zdroje** zvolte **Jenkins**. Vyberte připojení ke koncovému bodu služby Jenkins. Pak vyberte zdrojovou úlohu Jenkins a vyberte **Přidat**.
 4. Vyberte tři tečky vedle **Prostředí 1**. Vyberte **Přidat fázi skupiny nasazení**.
@@ -182,9 +182,11 @@ V tomto kurzu jste automatizovali nasazení aplikace do Azure pomocí služby Je
 > * Sestavení aplikace v Jenkins
 > * Konfigurace Jenkins pro integraci Azure DevOps Services
 > * Vytvoření skupiny nasazení pro virtuální počítače Azure
-> * Vytvoření kanálu verze, který nakonfiguruje virtuální počítače a nasadí aplikaci
+> * Vytvořte kanál Azure, který nakonfiguruje virtuální počítače a nasadí aplikaci.
 
-Pokud chcete zjistit, jak nasadit sadu LAMP (Linux, Apache, MySQL a PHP), přejděte k dalšímu kurzu.
+Další informace o tom, jak použít Azure Pipelines pro kroky sestavení i vydání, najdete v [tomto](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-linuxvm-deploygroups)tématu.
+
+Další informace o tom, jak vytvořit kanál CI/CD založený na YAML pro nasazení na virtuální počítače, najdete v dalším kurzu.
 
 > [!div class="nextstepaction"]
-> [Nasazení zásobníku LAMP](tutorial-lamp-stack.md)
+> [CI/CD s využitím Azure Pipelines](tutorial-build-deploy-azure-pipelines.md)

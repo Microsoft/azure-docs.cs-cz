@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 338619a13ec3f5fcd0d4fd62cf387f955c556a7c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b6a44bc31e21a63b12a0d06c537cc026ed77e386
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879305"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832853"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Začínáme s Key Vault certifikáty
 Následující scénáře popisují několik primárních použití služby správy certifikátů Key Vault, včetně dalších kroků potřebných k vytvoření prvního certifikátu v trezoru klíčů.
@@ -38,14 +38,14 @@ Certifikáty se skládají ze tří vzájemně propojených prostředků společ
 **Krok 1** – poskytovatelé certifikační autority (CA)  
 -   Připojování jako správce IT, správce PKI nebo kdokoli, kdo spravuje účty s CAs pro danou společnost (např. Contoso) je předpokladem pro použití Key Vaultch certifikátů.  
     Následující CA jsou aktuální partneři partnerských služeb s Key Vault:  
-    -   DigiCert-Key Vault nabízí OV certifikáty SSL s DigiCert.  
-    -   GlobalSign-Key Vault nabízí OV certifikáty SSL s GlobalSign.  
+    -   DigiCert-Key Vault nabízí OV certifikáty TLS/SSL s DigiCert.  
+    -   GlobalSign-Key Vault nabízí OV certifikáty TLS/SSL s GlobalSign.  
 
-**Krok 2** – správce účtu pro poskytovatele certifikační autority vytvoří přihlašovací údaje, které Key Vault použít k registraci, obnovení a používání certifikátů SSL prostřednictvím Key Vault.
+**Krok 2** – správce účtu pro poskytovatele certifikační autority vytvoří přihlašovací údaje, které Key Vault použít k registraci, obnovení a používání certifikátů TLS/SSL prostřednictvím Key Vault.
 
 **Krok 3** – správce společnosti Contoso, společně se zaměstnancem společnosti Contoso (Key Vault uživatel), který vlastní certifikáty v závislosti na certifikační autoritě, může získat certifikát od správce nebo přímo od účtu s certifikační autoritou.  
 
-- Zahajte operaci přidání přihlašovacích údajů do trezoru klíčů nastavením prostředku vystavitele [certifikátu](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) . Vystavitel certifikátu je entita reprezentovaná v Azure Key Vault (KV) jako prostředek CertificateIssuer. Slouží k poskytnutí informací o zdroji certifikátu KV; název vystavitele, poskytovatel, přihlašovací údaje a další podrobnosti o správě.
+- Zahajte operaci přidání přihlašovacích údajů do trezoru klíčů [nastavením prostředku vystavitele certifikátu](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) . Vystavitel certifikátu je entita reprezentovaná v Azure Key Vault (KV) jako prostředek CertificateIssuer. Slouží k poskytnutí informací o zdroji certifikátu KV; název vystavitele, poskytovatel, přihlašovací údaje a další podrobnosti o správě.
   - Například MyDigiCertIssuer  
     -   Poskytovatel  
     -   Přihlašovací údaje – přihlašovací údaje účtu certifikační autority Každá certifikační autorita má vlastní konkrétní data.  
@@ -62,9 +62,9 @@ Poznámka: Tento proces, prostřednictvím kroku 3,1, je operace jednorázová.
 
 **Krok 4** : následující popisy odpovídají zeleným očíslovaným krokům v předchozím diagramu.  
   (1) – v diagramu výše vaše aplikace vytváří certifikát, který interně začíná vytvořením klíče v trezoru klíčů.  
-  (2)-Key Vault odešle certifikační autoritě žádost o certifikát SSL.  
-  (3) – vaše aplikace se dotazuje v rámci smyčky a procesu čekání pro Key Vault pro dokončení certifikátu. Vytvoření certifikátu je dokončeno, když Key Vault obdrží odpověď certifikační autority s certifikátem x509.  
-  (4) – certifikační autorita odpoví na žádost o certifikát SSL v Key Vault s certifikátem x509 SSL.  
+  (2) – Key Vault odešle certifikační autoritě žádost o certifikát TLS/SSL.  
+  (3) – vaše aplikace se dotazuje v rámci smyčky a procesu čekání pro Key Vault pro dokončení certifikátu. Vytvoření certifikátu je dokončeno, když Key Vault obdrží odpověď certifikační autority s certifikátem X.509.  
+  (4) – certifikační autorita reaguje na žádosti o certifikát TLS/SSL v Key Vault s certifikátem x509 TLS/SSL.  
   (5) – vytvoření nového certifikátu se dokončí s fúzí certifikátu x509 pro certifikační autoritu.  
 
   Key Vault uživatel – vytvoří certifikát zadáním zásady.

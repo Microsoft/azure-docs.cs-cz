@@ -4,16 +4,16 @@ description: V tomto článku je vysvětlená správa faktury za Azure Enterpris
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 15c2e84742ff0f552c688ccf1ba795f742e288ca
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d6faf56554d666ce29b68ba90bb920b4e6c56c30
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849883"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644558"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Faktury za registraci do Azure Enterprise
 
@@ -22,8 +22,6 @@ V tomto článku je vysvětlená správa faktury za Azure Enterprise a její dal
 ## <a name="change-a-po-number-for-an-overage-invoice"></a>Změna čísla nákupní objednávky u faktury za nadlimitní využití
 
 Portál Azure EA automaticky generuje výchozí číslo nákupní objednávky, pokud správce EA nenastavil před datem faktury jiné číslo. Správce EA může číslo nákupní objednávky aktualizovat až sedm dnů od přijetí automatického e-mailu s oznámením o faktuře.
-
-Číslo nákupní objednávky je možné zadat také pro konkrétní účet nebo předplatné. Sestavy jako výchozí hodnotu používají nejnižší číslo nákupní objednávky nastavené v hierarchii. To znamená, že pokud nezadáte číslo nákupní objednávky, použije se číslo nákupní objednávky účtu, a pokud nezadáte číslo nákupní objednávky účtu, použije se číslo nákupní objednávky oddělení.
 
 ### <a name="to-update-the-azure-services-purchase-order-number"></a>Aktualizace čísla nákupní objednávky služeb Azure:
 
@@ -150,7 +148,7 @@ Pokud si chcete prohlédnout podrobné údaje o využití konkrétních účtů,
 
 U nepřímých registrací je potřeba, aby partner před zobrazením informací o cenách nejprve zapnul funkci přirážky.
 
-## <a name="reports"></a>Reports
+## <a name="reports"></a>Sestavy
 
 Podnikoví správci si na portálu Enterprise Portal můžou zobrazit souhrnné údaje o využití, výši spotřebovaného peněžního závazku a poplatky za další využití. Tyto poplatky budou vyjádřené souhrnně za všechny účty a všechna předplatná.
 
@@ -372,7 +370,7 @@ Při modelování pravidel zaokrouhlování a převodu používaných na portál
 | Zaokrouhlování cen (na 2 desetinná místa) | =MROUND({_zdroj_}, 0.02) |
 | Zaokrouhlování cen (na 0 desetinných míst) | =MROUND({_zdroj_}, 2) |
 
-**Tabulka** **2** – **Převod cloudových služeb a hodin virtuálních počítačů**
+**Tabulka** **2** **– Převod cloudových služeb a hodin virtuálních počítačů**
 
 ### <a name="conversion-between-download-usage-file-and-usage-summary-portal-view"></a>Převod mezi souborem s informacemi o využití ke stažení a zobrazením Souhrn využití na portálu
 
@@ -419,7 +417,7 @@ Následující tabulka ukazuje mapování geografických oblastí a oblastí pro
 | Zóna 2 | Asie a Tichomoří – východ <br> Asie a Tichomoří – jihovýchod <br> Japonsko – východ <br> Japonsko – západ <br> Austrálie – východ <br> Austrálie – jihovýchod | Asie a Tichomoří <br> Japonsko <br> Latinská Amerika <br> Střední východ / Afrika <br> Austrálie – východ <br> Austrálie – jihovýchod |
 | Zóna 3 | Brazílie – jih |   |
 
-**Tabulka** **4** – **Oblasti pro přenos dat**
+**Tabulka** **4** **– Oblasti pro přenos dat**
 
 Za výchozí přenos dat mezi službami (např. mezi O365 a Azure) hostovanými ve stejném datacentru se neúčtují žádné poplatky.
 
@@ -559,7 +557,7 @@ Další podrobnosti najdete v těchto zdrojích dalších informací. Tyto soubo
 | [**Friendly Service Names**](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) (Popisné názvy služeb) | Obsahuje seznam všech aktivních služeb společně s kategorií služby, popisným názvem služby, názvem a číslem produktu závazku, názvem a číslem části spotřeby, měrnými jednotkami a převodním koeficientem mezi nahlášeným využitím a zobrazeným využitím na portálu Enterprise Portal. | Friendly\_Service\_Names.xlsx |
 | [**Service Download Fields**](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) (Pole ve stažených informacích o službách) | Tato tabulka obsahuje seznam všech možných kombinací polí souvisejících se službami v sestavě využití ke stažení. | Service\_Download\_Fields.xlsx |
 
-**Tabulka** **5** – **Další zdroje informací**
+**Tabulka** **5** **– Další zdroje informací**
 
 ## <a name="power-bi-reporting"></a>Generování sestav Power BI
 

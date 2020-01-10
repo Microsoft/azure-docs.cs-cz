@@ -3,21 +3,17 @@ title: Zobrazení a stažení informací o využití a poplatcích za Azure
 description: Vysvětluje, jak stáhnout nebo zobrazit informace o denním využití a poplatcích za Azure.
 keywords: billing usage, usage charges, usage download, view usage, azure invoice, azure usage
 author: bandersmsft
-manager: jureid
+ms.author: banders
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2019
-ms.author: banders
-ms.openlocfilehash: dcf4e3b9d85909c8f1d149c9d1940a6755b431a1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 01/03/2020
+ms.openlocfilehash: dbb7956bf58d6b997f782d8f88e1eeaf19d6ade8
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224007"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665085"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Zobrazení a stažení informací o využití a poplatcích za Azure
 
@@ -35,8 +31,8 @@ Pokud máte smlouvu se zákazníkem Microsoftu (MCA) a chcete zobrazit informace
 1. V závislosti na úrovni vašeho přístupu možná budete muset vybrat fakturační účet nebo fakturační profil.
 1. V nabídce vlevo v části **Fakturace** vyberte **Faktury**.
 1. V tabulce faktur najděte řádek s fakturačním obdobím odpovídajícím informacím o využití, které chcete stáhnout.
-1. Klikněte na ikonu stahování nebo tři tečky (`...`) na pravé straně.
-1. V nabídce Stáhnout vyberte **Stáhnout informace o využití a poplatcích za Azure**.
+1. Klikněte na **ikonu stahování** nebo tři tečky (`...`) na pravé straně.
+1. Napravo se otevře podokno stahování. V části **Podrobnosti o využití** vyberte **Stáhnout**.
 
 ## <a name="download-usage-for-ea-customers"></a>Stažení informací o využití pro zákazníky se smlouvou Enterprise
 

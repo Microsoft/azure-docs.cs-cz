@@ -9,15 +9,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 09/30/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: b32c1be93e2fb16da9ce9ebb65b664017e70cac6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 60e366466e399bbde78b026e0b401cd6bd1edbee
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223944"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644388"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>Zobrazení a stažení cen Azure pro vaši organizaci
 
@@ -104,6 +104,6 @@ Pokud máte smlouvu se zákazníkem Microsoftu, projděte si tato témata:
 
 - [Vysvětlení výrazů v ceníku pro smlouvu se zákazníkem Microsoftu](billing-mca-understand-pricesheet.md)
 - [Zobrazení a stažení faktury za Microsoft Azure](billing-download-azure-invoice.md)
-- [Zobrazení a stažení informací o využití a poplatcích za Microsoft Azure](billing-download-azure-daily-usage.md)
+- [Zobrazení a stažení informací o využití a poplatcích Microsoft Azure](billing-download-azure-daily-usage.md)
 - [Zobrazení a stažení daňových dokumentů pro váš fakturační profil](billing-mca-download-tax-document.md)
 - [Vysvětlení poplatků na faktuře pro váš fakturační profil](billing-mca-understand-your-bill.md)

@@ -1,5 +1,5 @@
 ---
-title: Uspořádání nákladů na faktuře pomocí oddílů – Azure
+title: Vytváření oddílů na faktuře pro organizaci nákladů – Azure
 description: Naučte se organizovat náklady pomocí oddílů faktury.
 author: amberbhargava
 manager: amberb
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: d70460f5a492c9699a6110d5ba164283934c584b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ff8b2da353d623cd9f05c8d0b0317587d7093ce3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226138"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75389260"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>Uspořádání nákladů na faktuře pomocí oddílů
 
@@ -39,13 +39,13 @@ Pokud chcete vytvořit oddíl faktury, musíte být **vlastníkem fakturačního
 
 4. V horní části stránky vyberte **Přidat**.
 
-5. Zadejte název oddílu faktury a vyberte fakturační profil. Teto oddíl se zobrazí na faktuře pro fakturační profil a bude odrážet využití jednotlivých předplatných a nákupy, které jste k oddílu přiřadili. 
+5. Zadejte název oddílu faktury a vyberte fakturační profil. Teto oddíl se zobrazí na faktuře pro fakturační profil a bude odrážet využití jednotlivých předplatných a nákupy, které jste k oddílu přiřadili.
 
    ![Snímek obrazovky, který zobrazuje stránku pro vytvoření oddílu faktury](./media/billing-mca-section-invoice/mca-create-invoice-section.png)
 
 6. Vyberte **Vytvořit**.
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu ke smlouvě se zákazníkem Microsoftu
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu k zákaznické smlouvě Microsoftu
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: ''
-ms.date: 12/11/2019
-ms.openlocfilehash: 4455181ddf69613ba07bcaeedb26273a4bb5a74d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.reviewer: carlrab
+ms.date: 01/09/2020
+ms.openlocfilehash: 27868f062cd628347e38b5fdb9f243347dea3e23
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647845"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834980"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Omezení prostředků pro izolované databáze pomocí modelu nákupu vCore
 
@@ -322,9 +322,10 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Maximální velikost dat databáze TempDB (GB)|333|
 |Typ úložiště|Vzdálený disk SSD|
 |Vstupně-výstupní latence (přibližné)|5-7 ms (zápis)<br>5-10 ms (čtení)|
-|Maximální počet datových IOPS *|23 040|
+|Maximální počet datových IOPS *|12,800|
 |Maximální rychlost protokolu (MB/s)|30|
 |Maximální počet souběžných pracovních procesů (požadavků)|3600|
+|Maximální počet souběžných přihlášení|3600|
 |Maximální počet souběžných relací|30,000|
 |Počet replik|1\. místo|
 |Více AZ|Nevztahuje se|
@@ -448,21 +449,22 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 
 ### <a name="m-series-compute-generation-preview"></a>Generování výpočetních prostředků řady M-Series (Preview)
 
-|Velikost výpočetního prostředí|GP_M_128|
+|Velikost výpočetního prostředí|BC_M_128|
 |:--- | --: |
 |Generování výpočtů|M-Series|
 |Virtuální jádra|128|
-|Paměť (GB)|3767|
+|Paměť (GB)|3767,1|
 |Podpora columnstore|Ano|
-|Úložiště OLTP v paměti (GB)|481|
+|Úložiště OLTP v paměti (GB)|1768|
 |Maximální velikost dat (GB)|4 096|
 |Maximální velikost protokolu (GB)|2 048|
 |Maximální velikost dat databáze TempDB (GB)|4 096|
 |Typ úložiště|Místní disk SSD|
 |Vstupně-výstupní latence (přibližné)|1-2 ms (zápis)<br>1-2 ms (čtení)|
-|Maximální počet datových IOPS *|204 800|
-|Maximální rychlost protokolu (MB/s)|192|
-|Maximální počet souběžných pracovních procesů (požadavků)|12800|
+|Maximální počet datových IOPS *|160 000|
+|Maximální rychlost protokolu (MB/s)|264|
+|Maximální počet souběžných pracovních procesů (požadavků)|12,800|
+|Maximální počet souběžných přihlášení|12,800|
 |Maximální počet souběžných relací|30000|
 |Počet replik|4|
 |Více AZ|Ano|

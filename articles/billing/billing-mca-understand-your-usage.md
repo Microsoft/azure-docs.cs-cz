@@ -1,5 +1,5 @@
 ---
-title: Výrazy v souboru s informacemi o využití Azure a poplatcích pro smlouvu se zákazníkem Microsoftu
+title: Výrazy v soubor s informacemi o využití Azure a poplatcích pro smlouvu se zákazníkem Microsoftu
 description: Zjistěte, jak číst různé oddíly souboru CSV s informacemi o využití Azure a poplatcích pro váš fakturační profil a jak je chápat.
 author: bandersmsft
 manager: jureid
@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: b46c635b28d693cb0d6ab9e643a8a1ee9e55fc64
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f619d11c3df29a629b8b4da7b440376d6e9aedbd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226091"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388886"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Výrazy v souboru s informacemi o využití Azure a poplatcích pro smlouvu se zákazníkem Microsoftu
 
-Tento článek se týká fakturačních účtů smluv se zákazníky Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement).
+Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement).
 
 Soubor CSV s informacemi o využití Azure a poplatcích obsahuje poplatky za využívání za den a na úrovni jednotlivých měřičů pro aktuální fakturační období.
 
@@ -36,8 +36,8 @@ Pokud jste byli zákazníkem se smlouvou Enterprise, zjistíte, že se výrazy v
 | --- | --- |
 | Datum | date |
 | Month| date |
-| Day | date |
-| Year | date |
+| Den | date |
+| Rok | date |
 | Produkt | product |
 | MeterId | meterID |
 | MeterCategory | meterCategory |
@@ -54,7 +54,7 @@ Pokud jste byli zákazníkem se smlouvou Enterprise, zjistíte, že se výrazy v
 | ServiceInfo2 | serviceInfo2 |
 | AdditionalInfo | additionalInfo |
 | Značky | tags |
-| StoreServiceIdentifier | neuvedeno |
+| StoreServiceIdentifier | – |
 | DepartmentName | invoiceSection |
 | CostCenter | costCenter |
 | UnitOfMeasure | unitofMeasure |
@@ -118,7 +118,7 @@ tags | Značky, které přiřadíte k prostředku
 
 Pokud se chcete ujistit, že jsou v souboru s podrobnými informacemi o využití uvedené správné poplatky, můžete je zkontrolovat. Informace najdete v tématu [Vysvětlení poplatků na faktuře pro váš fakturační profil](billing-mca-understand-your-bill.md).
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Ověření přístupu ke smlouvě se zákazníkem Microsoftu
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu k zákaznické smlouvě Microsoftu
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.

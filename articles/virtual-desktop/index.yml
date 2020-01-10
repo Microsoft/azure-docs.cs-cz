@@ -5,7 +5,7 @@ metadata:
   title: Dokumentace ke službě Windows Virtual Desktop | Microsoft Docs
   description: Windows Virtual Desktop pro Azure je prostředí Windows 10 Enterprise pro více uživatelů virtualizované v cloudu.
   author: Heidilohr
-  manager: daveba
+  manager: lizross
   ms.service: virtual-desktop
   services: virtual-desktop
   ms.topic: landing-page

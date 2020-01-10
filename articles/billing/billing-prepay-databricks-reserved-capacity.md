@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 0165da8adbb28b97d524f1a07c725716b69277d4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8f3b38b3455b171701ff78345a3ee667c2c45071
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223636"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449328"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>Optimalizace nákladů na Azure Databricks díky předběžnému nákupu
 
@@ -41,8 +41,8 @@ Před nákupem si vypočtěte celkové množství DBU spotřebované různými �
 
 Plány Databricks si můžete zakoupit na webu [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D). Pokud si chcete koupit rezervovanou kapacitu, musíte mít roli vlastníka aspoň u jednoho předplatného se smlouvou Enterprise.
 
-- Předběžný nákup je v současné době dostupný jenom pro zákazníky se smlouvou Enterprise.
-- Musíte mít roli Vlastník aspoň u jednoho předplatného se smlouvou Enterprise.
+- Musíte mít roli Vlastník aspoň u jedné smlouvy Enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P) nebo smlouvy se zákazníkem Microsoftu nebo individuální předplatné s průběžnými platbami (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P).
+- U předplatných se smlouvou Enterprise musí být na portálu EA povolená možnost Přidat rezervované instance. Pokud je toto nastavení zakázané, musíte být správcem smlouvy Enterprise pro příslušné předplatné.
 - U předplatných se smlouvou Enterprise musí být na webu [EA Portal](https://ea.azure.com/) povolená možnost **Přidat rezervované instance**. Pokud je toto nastavení zakázané, musíte být správcem smlouvy Enterprise pro dané předplatné.
 
 **Postup při nákupu:**

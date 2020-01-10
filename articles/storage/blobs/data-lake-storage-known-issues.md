@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 099dc723db44ba71fc4672c382d24ac93ffe742f
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 951d707c898ad0efa1f21480c12f0c733f5218ee
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689145"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834949"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -66,7 +66,7 @@ Následující tabulka obsahuje seznam všech dalších funkcí a nástrojů, kt
 |--------|-----------|
 | **Převzetí služeb při selhání účtu** |Zatím nepodporováno|
 | **AzCopy** | Podpora specifická pro verzi <br><br>Použijte pouze nejnovější verzi AzCopy ([AzCopy v10 za účelem](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Starší verze AzCopy, jako je AzCopy v 8.1, nejsou podporovány.|
-| **Zásady správy životního cyklu Azure Blob Storage** | Podporují se zásady správy životního cyklu (Preview).  Podporují se všechny úrovně přístupu. Úroveň přístupu archivu je momentálně ve verzi Preview. Odstranění snímků objektů BLOB ještě není podporováno. <br><br> V současné době existují nějaké chyby ovlivňující zásady správy životního cyklu a úroveň přístupu archivu.  Zaregistrujte se do verze Preview zásad správy životního cyklu a archivní úrovně přístupu [zde](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u).   |
+| **Zásady správy životního cyklu Azure Blob Storage** | Podporují se zásady správy životního cyklu (Preview).  Zaregistrujte se do verze Preview zásad správy životního cyklu a archivní úrovně přístupu [zde](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u).   <br><br>Podporují se všechny úrovně přístupu. Úroveň přístupu archivu je momentálně ve verzi Preview. Odstranění snímků objektů BLOB ještě není podporováno.  V současné době existují nějaké chyby ovlivňující zásady správy životního cyklu a úroveň přístupu archivu.  |
 | **Azure Content Delivery Network (CDN)** | Zatím nepodporováno|
 | **Hledání Azure** |Podporováno (Preview)|
 | **Azure Storage Explorer** | Podpora specifická pro verzi. <br><br>Používejte pouze verze `1.6.0` nebo vyšší. <br> V tuto chvíli existuje chyba úložiště ovlivňující `1.11.0` verze, která může v některých scénářích způsobit chyby ověřování. Zavádí se oprava chyby úložiště, ale jako alternativní řešení doporučujeme použít verzi `1.10.x`, která je k dispozici jako [bezplatné stahování](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes). `1.10.x` není ovlivněná chybou úložiště.|
@@ -74,7 +74,7 @@ Následující tabulka obsahuje seznam všech dalších funkcí a nástrojů, kt
 | **Blobfuse** |Zatím nepodporováno|
 | **Vlastní domény** |Zatím nepodporováno|
 | **Průzkumník služby Storage v Azure Portal** | Omezená podpora. Seznamy řízení přístupu (ACL) ještě nejsou podporované. |
-| **Protokolování diagnostiky** |Diagnostické protokoly jsou podporovány (Preview).<br><br>Povolení protokolů v Azure Portal není aktuálně podporováno. Tady je příklad, jak povolit protokoly pomocí PowerShellu. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Nezapomeňte zadat `Blob` jako hodnotu parametru `-ServiceType`, jak je znázorněno v tomto příkladu. <br><br>V současné době nelze Průzkumník služby Azure Storage použít pro zobrazení diagnostických protokolů. Pokud chcete zobrazit protokoly, použijte prosím AzCopy nebo sady SDK.
+| **Protokolování diagnostiky** |Diagnostické protokoly jsou podporovány (Preview). <br><br>Průzkumník služby Azure Storage 1.10. x nelze použít pro zobrazení diagnostických protokolů. Pokud chcete zobrazit protokoly, použijte prosím AzCopy nebo sady SDK.
 | **Neměnné úložiště** |Zatím nepodporováno <br><br>Neměnné úložiště poskytuje možnost ukládat data v [červech (jeden způsob zápisu, čtení mnoha)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) .|
 | **Vrstvy na úrovni objektů** |Jsou podporovány studené a archivní úrovně. Archivní úroveň je ve verzi Preview. Všechny ostatní úrovně přístupu ještě nejsou podporované. <br><br> V současné době dochází k nějakým chybám, které mají vliv na úroveň přístupu archivu.  Zaregistrujte si verzi Preview úrovně přístupu archivu [tady](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u).|
 | **Statické weby** |Zatím nepodporováno <br><br>Konkrétně možnost poskytovat soubory [statickým webům](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website).|

@@ -8,24 +8,28 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: 439617c07b8059860c6d412cc60d56d4ac8c36a5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 39dea152545d210c48e21853c3c03c63843a4d81
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818669"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779098"
 ---
 # <a name="offer-listing-best-practices"></a>Osvědčené postupy nabídky
 
 Tabulky v této části obsahují návrhy na vytváření a poutavé nabídky Marketplace. Pokud chcete napsat a nakonfigurovat marketingové materiály, navštivte [portál Cloud Partner](https://cloudpartner.azure.com/#insights). 
 
 ## <a name="storefront-offer-details"></a>Podrobnosti nabídky prezentace
+
 | Nastavení prezentace | Osvědčený postup |
 |:--- |:--- |  
 | Název nabídky | Zadejte silný název:<br> <ul> <li> Název vaší aplikace by měl sdělit základní hodnotu vašim zákazníkům. </li> <li> V názvu aplikace zahrňte klíčová slova pro hledání, abyste získali vyšší hodnocení ve výsledcích vyhledávacího stroje. </li> </ul> Pro servisní výpisy konzultační služby použijte nastavený formát názvu:<br>[Název nabídky: [Duration] [typ nabídky] (například *Contoso: implementace 2-Week*) <br><br> Dodržování pokynů pro značky:<br>Podle pokynů [Microsoftu a pokynů pro značky](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) a dalších relevantních pokynů pro produkty, které jsou specifické pro daný produkt, se můžete podívat na ochranné známky společnosti Microsoft a názvy softwaru, produktů a služeb společnosti Microsoft. |
 | Popis nabídky | Zadejte jasný popis nabídky:<br> <ul> <li> Jasně popište, jak se má v prvních několika větách popisu v této nabídce vyhodnotit. </li> <li> Mějte na paměti, že ve výsledcích vyhledávacího modulu se může zobrazit několik prvních vět. </li> <li> Nespoléhá se na funkce a funkce k prodeji vašeho produktu. Místo toho se zaměřte na hodnotu, kterou doručujete. </li> <li> Používejte co nejvíc slovníků specifických pro konkrétní obor nebo využití s výhodami.</li> <li> Konzultační služby, které poskytnete, navíc musí mít jasně stav služby Professional. </li></ul> Základní komponenty pro vaši polohu hodnoty by měly obsahovat následující informace:<ul><li>Popis produktu</li><li>Typ uživatele, který je z produktu přínosný</li><li>Potřeby zákazníků nebo bolesti adres produktů.</li></ul> |
 
+Tabulky v této části obsahují návrhy na vytváření a poutavé nabídky Marketplace. Pokud chcete napsat a nakonfigurovat marketingové materiály, navštivte [portál Cloud Partner](https://cloudpartner.azure.com/#insights). 
+
 ## <a name="storefront-listing-details"></a>Podrobnosti o prezentace seznamu
+
 | Nastavení prezentace | Osvědčený postup |
 |:--- |:--- |  
 | Odvětví: jenom aplikace AppSource a konzultační služby | Vyberte odvětví, pokud vaše nabídka adresuje konkrétní oborové potřeby: <ul><li> V popisu své nabídky zavolejte specifické funkce pro konkrétní obor.</li> </ul> **Poznámka**: maximální počet možností se liší podle typu nabídky a je uveden na [portálu Cloud Partner](https://cloudpartner.azure.com/#insights). |
@@ -44,7 +48,7 @@ Pro nabídku můžete vybrat až dvě kategorie a dvě podkategorie. Níže uved
 | \* Automobilový     | \* Automobilový |
 | Zemědělství     | \* Jiné – nesegmentované |
 | Distribuce    | \* Velkoobchod <br> \* Zásilka balíčku & expedice |
-| Education     | \* Vyšší vzdělávání <br> \* Primární vzdělávání sekundárního &/K-12 <br> \* Knihovny & muzeí |
+| Vzdělávání     | \* Vyšší vzdělávání <br> \* Primární vzdělávání sekundárního &/K-12 <br> \* Knihovny & muzeí |
 | Finanční služby     | \* Bankovní & kapitálové trhy <br> \* Pojištění |
 | Státní správa    | \* Obrana & Intelligence (používá se pro volání národního a veřejného zabezpečení) <br> \* Státní bezpečnost & spravedlnosti <br> \* Civilní samospráva |
 | Zdravotní péče (používá se pro volání stavu)   | \* Plátce stavu <br> \* Poskytovatel stavu <br> \* Farmaceutické výrobky |
@@ -57,12 +61,24 @@ Pro nabídku můžete vybrat až dvě kategorie a dvě podkategorie. Níže uved
 | \* Ostatní odvětví veřejného sektoru  | \* Lesní & rybolov <br> \* Neziskové |
 | \* Nemovitosti  | \* Jiné – nesegmentované |
 
+### <a name="industries"></a>Odvětví
+
+Výběr v odvětví se vztahuje jenom na nabídky publikované v AppSource a konzultačních službách publikovaných v Azure Marketplace. Vyberte možnost odvětví a/nebo vertikálně, pokud vaše nabídka adresuje specifické potřeby a v popisu nabídky zavolá funkce specifické pro konkrétní obor. Můžete vybrat až dva (2) obory a dvě (2) svislého počtu vybraných pro jednotlivé obory.
+
+### <a name="applicable-products"></a>Příslušné produkty
+
+Vyberte příslušné produkty, ve kterých aplikace pracuje, aby se nabídka zobrazovala v části vybrané produkty v AppSource.
+
+### <a name="search-keywords"></a>Hledat klíčová slova
+
+Klíčová slova můžou zákazníkům pomáhat při hledání vaší nabídky. Identifikujte nejdůležitější klíčová slova pro vyhledávání pro vaši nabídku, zahrňte je do souhrnu a popisu nabídky a také do části klíčové slovo v části Podrobnosti seznamu nabídky.
+
 ## <a name="storefront-marketing-details"></a>Podrobnosti o marketingu prezentace
 | Nastavení prezentace | Osvědčený postup |
 |:--- |:--- |  
 | Logo nabídky (formát PNG, 48&nbsp;&times;&nbsp;48): stránka hledání | Návrh a optimalizace loga pro digitální média:<br>Nahrajte logo ve formátu PNG na stránku vyhledávání vaší nabídky. |
 | Logo nabídky (formát PNG, 216&nbsp;&times;&nbsp;216): Stránka s podrobnostmi aplikace | Návrh a optimalizace loga pro digitální média:<br>Nahrajte logo ve formátu PNG na stránku se seznamem podrobností aplikace vaší nabídky. |
-| Dokumenty "Další informace" | Do části "Další informace" zahrňte podporu prodejních a marketingových prostředků: <ul> <li> dokumenty White Paper, </li> <li> brožury, </li> <li> kontrolní seznamy nebo </li> <li> Prezentace aplikace PowerPoint.</li> </ul>Uloží všechny soubory ve formátu PDF. Tady by měl být váš cíl informovat zákazníky a neprodávat jim. <br><br>Přidejte odkaz na cílovou stránku aplikace do všech dokumentů a přidejte parametry adresy URL, které vám pomohou sledovat návštěvníky a zkušební verze. |
+| Dokumenty "Další informace" | Do části "Další informace" zahrňte podporu prodejních a marketingových prostředků: <ul> <li> dokumenty White Paper, </li> <li> Brožury, </li> <li> kontrolní seznamy nebo </li> <li> Prezentace aplikace PowerPoint.</li> </ul>Uloží všechny soubory ve formátu PDF. Tady by měl být váš cíl informovat zákazníky a neprodávat jim. <br><br>Přidejte odkaz na cílovou stránku aplikace do všech dokumentů a přidejte parametry adresy URL, které vám pomohou sledovat návštěvníky a zkušební verze. |
 | Videa: AppSource, konzultační služby a SaaS nabídky | Nejsilnější videa sdělují hodnotu vaší nabídky ve formě mluveného komentáře:<ul> <li> Udělejte zákazníka, ne firmu, Hero příběh. </li> <li> Vaše video by mělo řešit hlavní výzvy a cíle vašeho cílového zákazníka. </li> <li> Doporučená délka: 60-90 sekund.</li> <li> Zahrňte klíčová slova pro hledání, která používají název videí. </li> <li> Zvažte přidání dalších videí, jako jsou postupy, začátky nebo zákaznické reference. </li> </ul> |
 | Snímky obrazovky (1280&nbsp;&times;&nbsp;720) | Přidat až pět snímků obrazovky:<br>Do názvů souborů zahrňte klíčová slova pro hledání klíčů. |
 
@@ -80,6 +96,6 @@ Přidáním parametrů k AppSource adrese URL si můžete prohlédnout efektivit
 
 Přečtěte si další informace o [výhodách komerčního tržiště](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
 
-Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com) a vytvořte a nakonfigurujte vaši nabídku.
+Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com) k vytvoření a konfiguraci nabídky.
 
 ---

@@ -10,41 +10,38 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 12/13/2019
+ms.date: 01/08/2020
 ms.author: raiye
-ms.openlocfilehash: 742f54ffb6c77d9f84582d6a68dff936fdbbe99c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 97f4283e02dd3b67df5381f78e87c3ee5b23b74e
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75386200"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779582"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační systém Azure
 V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Security Response Center (MSRC) použité v hostovaném operačním systému Azure. V tomto článku zjistíte, jestli se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace vždy předávají pro konkrétní [rodinu][family-explain] , ve které byly zavedeny.
 
 ## <a name="december-2019-guest-os"></a>Operační systém hosta 2019. prosince
 
->[!NOTE]
->Operační systém hosta v prosinci se v tuto chvíli zavádí do virtuálních počítačů cloudových služeb, které jsou nakonfigurované pro automatické aktualizace. Po dokončení zavedení bude tato verze zpřístupněna k ruční aktualizaci prostřednictvím Azure Portal a konfiguračních souborů. V hostovaném operačním systému v prosinci jsou k dispozici následující opravy. Tento seznam se může změnit.
-
 | Kategorie produktů | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel. 19-12  |  [4530692]  |  Zabezpečení Windows  | 2.93 | Od 10. prosince 2019 |
-|  Rel. 19-12  |  [4530677]  |  Internet Explorer  | 2.93 | Od 10. prosince 2019 |
-|  Rel. 19-12  |  [4530677]  |  Internet Explorer  | 3,80 | Od 10. prosince 2019 |
-|  Rel. 19-12  |  [4530698]  |  Zabezpečení Windows  | 3,80 | Od 10. prosince 2019 |
-|  Rel. 19-12  |  [4530730]  |  Zabezpečení Windows  | 4,73 | Od 10. prosince 2019 |
-|  Rel. 19-12  |  [4530677]  |  Internet Explorer  | 4,73 | Od 10. prosince 2019 |
-|  Rel. 19-12  |  [4530689]  |  Nejnovější kumulativní aktualizace  | 5,38 | Od 10. prosince 2019 |
-|  Rel. 19-12  |  [4530715]  |  Nejnovější kumulativní aktualizace  | 6,14 | Od 10. prosince 2019 |
-|  Rel. 19-12  |  [4525235]  |  Bez zabezpečení  | 2.93 | 12. listopadu 2019 |
-|  Rel. 19-12  |  [4531786]  |  Aktualizace servisního zásobníku  | 2.93 | Od 10. prosince 2019 |
-|  Rel. 19-12  |  [4525246]  |  Bez zabezpečení  | 3,80 | 12. listopadu 2019 |
-|  Rel. 19-12  |  [4523208]  |  Aktualizace servisního zásobníku  | 3.8 | 12. listopadu 2019 |
-|  Rel. 19-12  |  [4525243]  |  Bez zabezpečení  | 4,73 | 12. listopadu 2019 |
-|  Rel. 19-12  |  [4524445]  |  Aktualizace servisního zásobníku  | 4,73 | 12. listopadu 2019 |
-|  Rel. 19-12  |  [4520724]  |  Aktualizace servisního zásobníku  | 5,38 | 12. listopadu 2019 |
-|  Rel. 19-12  |  [4523204]  |  ServicingStackUpdate  | 6,14 | 12. listopadu 2019 |
+|  Rel. 19-12  |  [4530692]  |  Zabezpečení Windows  | [2,93] | Od 10. prosince 2019 |
+|  Rel. 19-12  |  [4530677]  |  Internet Explorer  | [2,93] | Od 10. prosince 2019 |
+|  Rel. 19-12  |  [4530677]  |  Internet Explorer  | [3,80] | Od 10. prosince 2019 |
+|  Rel. 19-12  |  [4530698]  |  Zabezpečení Windows  | [3,80] | Od 10. prosince 2019 |
+|  Rel. 19-12  |  [4530730]  |  Zabezpečení Windows  | [4,73] | Od 10. prosince 2019 |
+|  Rel. 19-12  |  [4530677]  |  Internet Explorer  | [4,73] | Od 10. prosince 2019 |
+|  Rel. 19-12  |  [4530689]  |  Nejnovější kumulativní aktualizace  | [5,38] | Od 10. prosince 2019 |
+|  Rel. 19-12  |  [4530715]  |  Nejnovější kumulativní aktualizace  | [6,14] | Od 10. prosince 2019 |
+|  Rel. 19-12  |  [4525235]  |  Bez zabezpečení  | [2,93] | 12. listopadu 2019 |
+|  Rel. 19-12  |  [4531786]  |  Aktualizace servisního zásobníku  | [2,93] | Od 10. prosince 2019 |
+|  Rel. 19-12  |  [4525246]  |  Bez zabezpečení  | [3,80] | 12. listopadu 2019 |
+|  Rel. 19-12  |  [4523208]  |  Aktualizace servisního zásobníku  | [3,80] | 12. listopadu 2019 |
+|  Rel. 19-12  |  [4525243]  |  Bez zabezpečení  | [4,73] | 12. listopadu 2019 |
+|  Rel. 19-12  |  [4524445]  |  Aktualizace servisního zásobníku  | [4,73] | 12. listopadu 2019 |
+|  Rel. 19-12  |  [4520724]  |  Aktualizace servisního zásobníku  | [5,38] | 12. listopadu 2019 |
+|  Rel. 19-12  |  [4523204]  |  ServicingStackUpdate  | [6,14] | 12. listopadu 2019 |
 
 [4530692]: https://support.microsoft.com/kb/4530692
 [4530677]: https://support.microsoft.com/kb/4530677
@@ -62,6 +59,12 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4524445]: https://support.microsoft.com/kb/4524445
 [4520724]: https://support.microsoft.com/kb/4520724
 [4523204]: https://support.microsoft.com/kb/4523204
+[6,14]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5,38]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4,73]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3,80]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2,93]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+
 
 
 ## <a name="november-2019-guest-os"></a>Operační systém hosta v listopadu 2019
