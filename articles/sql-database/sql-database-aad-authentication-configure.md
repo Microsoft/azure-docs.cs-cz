@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 11/06/2019
-ms.openlocfilehash: 76ca8a5d781c22279ccad633cc7c5bc98d645df8
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.date: 01/07/2020
+ms.openlocfilehash: dc2661bbc443201d6a2da4b5efb7ecdc2caad444
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901383"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732565"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurace a Správa ověřování Azure Active Directory pomocí SQL
 
@@ -345,14 +345,17 @@ Další informace o příkazech rozhraní příkazového řádku najdete v téma
 Na všech klientských počítačích, ze kterých se vaše aplikace nebo uživatelé připojují k Azure SQL Database nebo Azure SQL Data Warehouse pomocí identit Azure AD, je nutné nainstalovat následující software:
 
 - .NET Framework 4,6 nebo novější z [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx).
-- Azure Active Directory knihovny ověřování pro SQL Server (*ADALSQL. Knihovna DLL*) je k dispozici v několika jazycích (x86 i amd64) z webu služby Stažení softwaru [společnosti Microsoft Active Directory Authentication Library pro Microsoft SQL Server](https://www.microsoft.com/download/details.aspx?id=48742).
+- Knihovna ověřování Azure Active Directory pro SQL Server (*ADAL. DLL*). Níže jsou uvedené odkazy ke stažení pro instalaci nejnovějšího ovladače SSMS, ODBC a OLE DB, který obsahuje *ADAL. Knihovna DLL* .
+    1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
+    1. [ODBC Driver 17 pro SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
+    1. [OLE DB ovladače 18 pro SQL Server](https://www.microsoft.com/download/details.aspx?id=56730)
 
 Tyto požadavky můžete splnit:
 
-- Instalace [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) nebo [SQL Server Data Tools for Visual Studio 2015](https://msdn.microsoft.com/library/mt204009.aspx) splňuje požadavek .NET Framework 4,6.
-- SSMS nainstaluje verzi x86 nástroje *ADALSQL. Knihovna DLL*:
-- SSDT nainstaluje verzi nástroje amd64 *ADALSQL. Knihovna DLL*:
-- Nejnovější verze sady Visual Studio ze sady [Visual Studio ke stažení](https://www.visualstudio.com/downloads/download-visual-studio-vs) splňuje požadavek .NET Framework 4,6, ale neinstaluje požadovanou verzi amd64 *ADALSQL. Knihovna DLL*:
+- Instalace nejnovější verze [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) nebo [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) splňuje požadavky .NET Framework 4,6.
+    - SSMS nainstaluje verzi x86 knihovny *ADAL. Knihovna DLL*:
+    - SSDT nainstaluje verzi knihovny *ADAL. Knihovna DLL*:
+    - Nejnovější verze sady Visual Studio ze sady [Visual Studio ke stažení](https://www.visualstudio.com/downloads/download-visual-studio-vs) splňuje požadavek .NET Framework 4,6, ale neinstaluje požadovanou verzi amd64 knihovny *ADAL. Knihovna DLL*:
 
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>Umožňuje vytvořit uživatele databáze s omezením v databázi namapované na identity Azure AD.
 
@@ -513,9 +516,13 @@ Následující příkazy se připojují pomocí nástroje Sqlcmd verze 13,1, kte
 > `sqlcmd` s příkazem `-G` nefunguje u systémových identit a vyžaduje přihlášení k hlavnímu uživateli.
 
 ```cmd
-sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  
+sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -G  
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyAADPassword -G -l 30
 ```
+
+## <a name="troubleshooting-azure-ad-authentication"></a>Řešení potíží s ověřováním Azure AD
+
+Pokyny k řešení problémů s ověřováním Azure AD najdete na následujícím blogu: <https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
 ## <a name="next-steps"></a>Další kroky
 

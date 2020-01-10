@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 64d70390b3563e17bbe0c70ed426dcda81b50198
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 0f9378b80b4985ad542d6f602ba361f59737fc9d
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872736"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707910"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Rychlý Start: Vytvoření aplikace Java na Azure App Service v systému Linux
 
@@ -21,7 +21,7 @@ ms.locfileid: "74872736"
 
 > [!NOTE]
 >
-> Stejné věci je taky možné udělat pomocí oblíbených prostředí, jako je IntelliJ a zatmění. Podívejte se na naše podobné dokumenty při [Azure Toolkit for IntelliJ rychlý Start](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) nebo v [rychlém startu Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app).
+> Stejné věci je taky možné udělat pomocí oblíbených prostředí pro IDEs, jako je IntelliJ, zatmění a VS Code. Podívejte se na naše podobné dokumenty v [Azure Toolkit for IntelliJ rychlý Start](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app), [Azure Toolkit for Eclipse rychlý Start](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app) nebo [vs Code rychlý Start](https://code.visualstudio.com/docs/java/java-webapp).
 >
 ![Ukázková aplikace spuštěná v Azure App Service](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
@@ -35,6 +35,11 @@ Spusťte následující příkaz Maven na příkazovém řádku Cloud Shell k vy
 
 ```bash
 mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp"
+```
+Pak změňte pracovní adresář na složku projektu:
+
+```bash
+cd helloworld
 ```
 
 ## <a name="configure-the-maven-plugin"></a>Konfigurace modulu plug-in Maven
@@ -91,7 +96,7 @@ Confirm (Y/N)? : Y
 
 Přejděte na `pom.xml` znovu, abyste viděli konfiguraci modulu plug-in. v případě potřeby můžete upravit jiné konfigurace pro App Service přímo v souboru pom:
 
- Vlastnost | Požaduje se | Popis | Version
+ Vlastnost | Požaduje se | Popis | Verze
 ---|---|---|---
 `<schemaVersion>` | false | Zadejte verzi schématu konfigurace. Podporované hodnoty jsou: `v1`, `v2`. | 1.5.2
 `<resourceGroup>` | true | Skupina prostředků Azure pro vaši webovou aplikaci | 0.1.0 +

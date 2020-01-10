@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 529568cf4f667e72b0b4fb7ba83d0b85c4a90341
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fcf7051a631e74f2f6db918c7c861e32295ae9e8
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499992"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732633"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Podpora jazyků a oblastí pro rozhraní API pro analýzu textu
 
@@ -31,7 +31,7 @@ Pokud máte obsah vyjádřený v méně často používaném jazyce, můžete zk
 
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Analýza mínění, Extrakce klíčových frází a rozpoznávání pojmenovaných entit
 
-V případě analýzy mínění, extrakce klíčových frází a rozpoznávání entit je seznam podporovaných jazyků pokročilejší, protože analyzátory jsou upřesněny tak, aby vyhovovaly jazykovým pravidlům dalších jazyků. V případě rozpoznávání pojmenovaných entit v2 je podpora pro úplnou sadu [typů entit](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition-v2) aktuálně omezena na následující jazyky: 
+V případě analýzy mínění, extrakce klíčových frází a rozpoznávání entit je seznam podporovaných jazyků pokročilejší, protože analyzátory jsou upřesněny tak, aby vyhovovaly jazykovým pravidlům dalších jazyků. V případě rozpoznávání pojmenovaných entit v2 je podpora pro úplnou sadu [typů entit](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) aktuálně omezena na následující jazyky: 
 * Angličtina
 * Čínština (zjednodušená)
 * Francouzština
@@ -47,7 +47,7 @@ Jazyková podpora je zpočátku zavedená ve verzi Preview a je nezávislá na s
 > [!NOTE]
 > Podrobnou jazykovou podporu pro funkci rozpoznávání pojmenovaných entit (NER) v3 Public Preview najdete v tématu [typy pojmenovaných entit](named-entity-types.md).
 
-| Jazyk              | Kód jazyka | Mínění | Klíčové fráze | Rozpoznávání pojmenovaných entit | Propojení entit |       Poznámky:        |
+| Jazyk              | Kód jazyka | Zabarvení | Klíčové fráze | Rozpoznávání pojmenovaných entit | Propojení entit |       Poznámky        |
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
 | arabština                |     `ar`      |           |             |           ✔ \*           |                |                    |
 | Čeština                 |     `cs`      |           |             |           ✔ \*           |                |                    |
@@ -75,9 +75,9 @@ Jazyková podpora je zpočátku zavedená ve verzi Preview a je nezávislá na s
 
 Podpora jazyka \* je ve verzi Preview.
 
-\** k dispozici také v [Analýza mínění V3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview) a/nebo ve verzi Public Preview pro [rozpoznávání entit V3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-v3-public-preview) .
+\** k dispozici také v [Analýza mínění V3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-versions-and-features) a/nebo ve verzi Public Preview pro [rozpoznávání entit V3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) .
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 [Stránka dokumentace Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)   
 [Produktová stránka služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

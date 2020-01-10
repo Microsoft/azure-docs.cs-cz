@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 68515c51862ada0b1aa794c09b3a6730504a57ee
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: a8df220be211c3c8d8cdeab8a8aebfd35e77ebf8
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873246"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732582"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>Klauzule LIMIT POSUNu v Azure Cosmos DB
 
@@ -37,7 +37,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 ## <a name="remarks"></a>Poznámky
   
-  V klauzuli LIMIT POSUNu je vyžadován jak počet POSUNUTí, tak počet omezení. Pokud je použita volitelná klauzule `ORDER BY`, sada výsledků se vytvoří tak, že přeskočí seřazené hodnoty. V opačném případě bude dotaz vracet pevné pořadí hodnot. V současné době je tato klauzule podporována pro dotazy pouze v rámci jednoho oddílu, dotazy na více oddílů je ještě nepodporují.
+  V klauzuli LIMIT POSUNu je vyžadován jak počet POSUNUTí, tak počet omezení. Pokud je použita volitelná klauzule `ORDER BY`, sada výsledků se vytvoří tak, že přeskočí seřazené hodnoty. V opačném případě bude dotaz vracet pevné pořadí hodnot. Tato klauzule se teď podporuje pro dotazy v rámci jednoho oddílu a také pro Mezioddílové dotazy.
 
 ## <a name="examples"></a>Příklady
 

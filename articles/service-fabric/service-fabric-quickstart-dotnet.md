@@ -1,26 +1,17 @@
 ---
 title: Rychlé vytvoření aplikace .NET v Service Fabric v Azure
 description: V tomto rychlém startu vytvoříte aplikaci .NET pro Azure s využitím ukázkové aplikace Service Fabric Reliable Services.
-services: service-fabric
-documentationcenter: .net
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: azure-vs
 ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: dfc8890d58763bd193f6a0b4137fc972d26beb9f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e3d984fee75dcdb8d4e14e7b454e74a3f7c629f2
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013212"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75730135"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Rychlý start: Nasazení aplikace spolehlivých služeb v .NET do Service Fabric
 
@@ -41,7 +32,7 @@ Pomocí této aplikace se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu Rychlý start je potřeba:
+K dokončení tohoto rychlého startu je potřeba:
 
 1. [Nainstalujte Visual Studio 2019](https://www.visualstudio.com/) s úlohami vývoje pro vývoj a vývoj pro **Azure** a **vývoj pro web ASP.NET** .
 2. [Nainstalovat Git](https://git-scm.com/).
@@ -60,6 +51,8 @@ Až nainstalujete modul runtime, sady SDK, nástroje sady Visual Studio, Docker 
 > Důvodem pro použití Docker při vytváření clusteru je to, že cluster je vytvořený s povolenými funkcemi kontejnerů. Pokud Docker není spuštěný, budete muset cluster znovu vytvořit, aby se povolily funkce kontejneru.
 > I když v tomto konkrétním rychlém startu není potřeba, pokyny k tomu, aby měl Docker spuštěný při vytváření clusteru, jsou zahrnuté jako osvědčené postupy.
 > Zkontrolujte, že je Dockeru spuštěný, otevřením okna terminálu a zadáním příkazu `docker ps`, abyste viděli, jestli došlo k chybě. Pokud odpověď neindikuje chybu, Docker je spuštěný a vy jste připravení vytvořit cluster.
+>
+> [Nastavení Windows 10 nebo Windows serveru pro kontejnery](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client)
 
 1. Jako správce otevřete nové okno PowerShellu se zvýšenými oprávněními.
 2. Vývojový cluster vytvoříte spuštěním následujícího příkazu PowerShellu:

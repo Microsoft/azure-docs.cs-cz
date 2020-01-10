@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: c00749191b83423e771535525afcbdd7892da88e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0d3bc43d5e639c0de9059da300d91494948f1770
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895446"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707216"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Rychlý Start: spuštění aplikace pružiny v jazyce Java pomocí rozhraní příkazového řádku Azure
 
@@ -28,7 +28,7 @@ Po tomto rychlém startu se dozvíte, jak:
 > * Nasazení jednotlivých mikroslužeb
 > * Přiřazení veřejného koncového bodu vaší aplikaci
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 >[!Note]
 > Jarní cloud Azure se teď nabízí jako verze Public Preview. Nabídky veřejné verze Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.  Další informace o podpoře v rámci verzí Preview najdete v našich [nejčastějších dotazech](https://azure.microsoft.com/support/faq/) nebo v souboru o [support Request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) , kde se dozvíte víc.
@@ -36,7 +36,7 @@ Po tomto rychlém startu se dozvíte, jak:
 >[!TIP]
 > Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku.  Má předinstalované běžné nástroje Azure, včetně nejnovějších verzí Git, JDK, Maven a Azure CLI. Pokud jste přihlášeni ke svému předplatnému Azure, spusťte [Azure Cloud Shell](https://shell.azure.com) z Shell.Azure.com.  Další informace o Azure Cloud Shell najdete v [naší dokumentaci](../cloud-shell/overview.md) .
 
-K provedení kroků v tomto kurzu Rychlý start je potřeba:
+K dokončení tohoto rychlého startu je potřeba:
 
 1. [Nainstalovat Git](https://git-scm.com/).
 2. [Nainstalovat JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
@@ -69,7 +69,7 @@ az extension add --name spring-cloud
     ```azurecli
         az group create --location eastus --name <resource group name>
     ```
-    Další informace o [skupinách prostředků Azure](../azure-resource-manager/resource-group-overview.md).
+    Další informace o [skupinách prostředků Azure](../azure-resource-manager/management/overview.md).
 
 4. Otevřete okno Azure CLI a spusťte následující příkazy, abyste zřídili instanci Azure Pramenitého cloudu.
 
@@ -86,6 +86,9 @@ az extension add --name spring-cloud
         az configure --defaults spring-cloud=<service instance name>
     ```
 
+> [!div class="nextstepaction"]
+> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=provision)
+
 ## <a name="setup-your-configuration-server"></a>Nastavení konfiguračního serveru
 
 Aktualizujte konfiguraci-server s umístěním úložiště Git pro náš projekt:
@@ -93,6 +96,9 @@ Aktualizujte konfiguraci-server s umístěním úložiště Git pro náš projek
 ```git
 az spring-cloud config-server git set -n <your-service-name> --uri https://github.com/Azure-Samples/piggymetrics --label config
 ```
+
+> [!div class="nextstepaction"]
+> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=config-server)
 
 ## <a name="build-the-microservices-applications-locally"></a>Místní sestavení aplikací mikroslužeb
 
@@ -132,6 +138,9 @@ az spring-cloud app deploy -n account-service --jar-path ./account-service/targe
 az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth-service.jar
 ```
 
+> [!div class="nextstepaction"]
+> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=deploy)
+
 ## <a name="assign-public-endpoint-to-gateway"></a>Přiřazení veřejného koncového bodu k bráně
 
 Potřebujeme způsob, jak získat přístup k aplikaci přes webový prohlížeč. Naše aplikace brány potřebuje veřejný koncový bod, který se dá přiřadit pomocí tohoto příkazu:
@@ -156,6 +165,9 @@ Můžete také přejít na Azure Portal a najít tak adresu URL.
 
     ![Snímek obrazovky s PiggyMetrics spuštěným](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
 1. Na stránce s **přehledem brány** ![snímku obrazovky, na které běží](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png) PiggyMetrics, najdete adresu URL.
+
+> [!div class="nextstepaction"]
+> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)
 
 ## <a name="next-steps"></a>Další kroky
 

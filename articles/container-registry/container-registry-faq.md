@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 1f2c79b47df4cf44b6fa3981bac4a5a3bf61c4df
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 74863823f3e8ef32565e01981d3a742d696a8165
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456385"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708304"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy ke službě Azure Container Registry
 
@@ -32,7 +32,7 @@ Ano. Tady je [Šablona](https://github.com/Azure/azure-quickstart-templates/tree
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>Kontroluje se u obrázků v ACR chyba zabezpečení?
 
-Ano. Podívejte se na dokumentaci z [TwistLock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) a [azurová](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
+Ano. Přečtěte si dokumentaci od [Azure Security Center](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration), [TwistLock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) a [azurová](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Návody nakonfigurovat Kubernetes pomocí Azure Container Registry?
 
@@ -101,7 +101,7 @@ Rozšiřování změn pravidel brány firewall trvá nějakou dobu. Po změně n
 - [Proč se po odstranění imagí nesnižuje využití kvóty registru?](#why-does-the-registry-quota-usage-not-reduce-after-deleting-images)
 - [Návody ověřit změny kvóty úložiště?](#how-do-i-validate-storage-quota-changes)
 - [Návody ověřování pomocí registru při spuštění CLI v kontejneru?](#how-do-i-authenticate-with-my-registry-when-running-the-cli-in-a-container)
-- [Nabízí Azure Container Registry jenom konfiguraci TLS v 1.2 a jak povolit TLS v 1.2?](#does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12)
+- [Jak povolit TLS 1,2?](#how-to-enable-tls-12)
 - [Podporuje Azure Container Registry důvěryhodnost obsahu?](#does-azure-container-registry-support-content-trust)
 - [Návody udělit přístup k vyžádanému nebo nabízenému obrázku bez oprávnění ke správě prostředku registru?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [Návody povolit automatickou karanténu imagí pro registr](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
@@ -181,9 +181,12 @@ Pak proveďte ověření v registru:
 az acr login -n MyRegistry
 ```
 
-### <a name="does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12"></a>Nabízí Azure Container Registry jenom konfiguraci TLS v 1.2 a jak povolit TLS v 1.2?
+### <a name="how-to-enable-tls-12"></a>Jak povolit TLS 1,2?
 
-Ano. Povolte protokol TLS pomocí libovolného nedávného klienta Docker (verze 18.03.0 a vyšší). 
+Povolte TLS 1,2 pomocí libovolného nedávného klienta Docker (verze 18.03.0 a vyšší). 
+
+> [!IMPORTANT]
+> Od 13. ledna 2020 bude Azure Container Registry vyžadovat, aby všechna zabezpečená připojení ze serverů a aplikací používala protokol TLS 1,2. Bude vyřazena podpora TLS 1,0 a 1,1.
 
 ### <a name="does-azure-container-registry-support-content-trust"></a>Podporuje služba Azure Container Registry důvěryhodnost obsahu?
 
@@ -427,8 +430,8 @@ Obraťte se prosím na správce sítě nebo Zkontrolujte konfiguraci sítě a p�
 
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Proč dojde k selhání žádosti o přijetí změn nebo nabízení oznámení s nepovolenou operací?
 
-Tady je několik senarios, kde je možné nepovolené operace:
-* Klasické Registry už nejsou podporované. Upgradujte prosím na podporované [SKU](https://aka.ms/acr/skus) pomocí [AZ ACR Update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) nebo Azure Portal.
+Tady je několik scénářů, kdy je možné, že operace nejsou povolené:
+* Klasické Registry už nejsou podporované. Upgradujte prosím na podporované [SKU](https://aka.ms/acr/skus) pomocí [AZ acr Update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) nebo Azure Portal.
 * Bitová kopie nebo úložiště je možná zamčené, aby se nemohlo odstranit ani aktualizovat. Aktuální atributy můžete zobrazit pomocí příkazu [AZ ACR show úložištì](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) .
 * Pokud je obrázek v karanténě, některé operace jsou zakázané. Přečtěte si další informace o [karanténě](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 
@@ -495,7 +498,7 @@ V tuto chvíli nepodporujeme GitLab pro aktivační události zdroje.
 
 ## <a name="run-error-message-troubleshooting"></a>Řešení potíží s chybovou zprávou
 
-| Chybová zpráva | Průvodce odstraňováním potíží |
+| Chybová zpráva | Průvodce řešením potíží |
 |---|---|
 |Pro virtuální počítač se nenakonfiguroval přístup, proto se nenašly žádné odběry.|K tomu může dojít, pokud v ACR úloze používáte `az login --identity`. Jedná se o přechodnou chybu a nastane, když se přiřazení role spravované identity nerozšíří. Počkejte několik sekund, než se znovu pokusí pracovat.|
 

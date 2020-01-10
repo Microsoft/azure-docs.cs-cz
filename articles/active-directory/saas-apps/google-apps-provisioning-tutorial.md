@@ -10,17 +10,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 01/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c259371ccdb55eff01eb7f0605315b17c33cdd3
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8239b25f5ebf94d7368190f3169d0637d9943df1
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842726"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720278"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Kurz: Konfigurace G Suite pro Automatické zřizování uživatelů
 
@@ -35,7 +34,7 @@ Cílem tohoto kurzu je předvést kroky, které je třeba provést v G Suite a A
 - Aktualizované názvy atributů cíle G Suite tak, aby odpovídaly, co se [tady](https://developers.google.com/admin-sdk/directory)definuje.
 - Mapování výchozích atributů se aktualizovala.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s využitím G Suite potřebujete následující položky:
 
@@ -65,18 +64,18 @@ Před konfigurací G Suite pro Automatické zřizování uživatelů pomocí Azu
 
     ![Vyberte zabezpečení.][10]
 
-2. Na stránce **zabezpečení** vyberte **odkaz rozhraní API**.
+1. Na stránce **zabezpečení** vyberte **odkaz rozhraní API**.
 
     ![Vyberte odkaz rozhraní API.][15]
 
-3. Vyberte **Povolit přístup přes rozhraní API**.
+1. Vyberte **Povolit přístup přes rozhraní API**.
 
     ![Vyberte odkaz rozhraní API.][16]
 
    > [!IMPORTANT]
    > Pro každého uživatele, kterého máte v úmyslu zřídit sadu G Suite, **musí** být jeho uživatelské jméno ve službě Azure AD vázané na vlastní doménu. Například uživatelská jména, která vypadají jako bob@contoso.onmicrosoft.com, nejsou přijata sadou G Suite. Na druhé straně se bob@contoso.com akceptuje. Stávající doménu uživatele můžete změnit podle pokynů uvedených [tady](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain).
 
-4.  Jakmile přidáte a ověříte vaše požadované vlastní domény pomocí Azure AD, musíte je znovu ověřit pomocí G Suite. Pokud chcete ověřit domény v G Suite, přečtěte si následující postup:
+1. Jakmile přidáte a ověříte vaše požadované vlastní domény pomocí Azure AD, musíte je znovu ověřit pomocí G Suite. Pokud chcete ověřit domény v G Suite, přečtěte si následující postup:
 
     a. V [konzole pro správu G Suite](https://admin.google.com/)vyberte **domény**.
 
@@ -94,11 +93,11 @@ Před konfigurací G Suite pro Automatické zřizování uživatelů pomocí Azu
 
     e. Předchozí kroky opakujte pro všechny další domény, které máte v úmyslu přidat do G Suite.
 
-5. Dále určete, který účet správce chcete použít ke správě zřizování uživatelů v G Suite. Přejděte na **role správce**.
+1. Dále určete, který účet správce chcete použít ke správě zřizování uživatelů v G Suite. Přejděte na **role správce**.
 
     ![Vybrat Google Apps][26]
-    
-6. Pro **roli správce** tohoto účtu upravte **oprávnění** pro tuto roli. Ujistěte se, že jste povolili všechna **oprávnění rozhraní API pro správu** , aby se tento účet mohl použít k zřizování.
+
+1. Pro **roli správce** tohoto účtu upravte **oprávnění** pro tuto roli. Ujistěte se, že jste povolili všechna **oprávnění rozhraní API pro správu** , aby se tento účet mohl použít k zřizování.
 
     ![Vybrat Google Apps][27]
 
@@ -110,15 +109,15 @@ Pokud chcete nakonfigurovat G Suite pro Automatické zřizování uživatelů po
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
+1. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
     ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **g Suite**, v panelu výsledků vyberte **g Suite** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+1. Do vyhledávacího pole zadejte **g Suite**, v panelu výsledků vyberte **g Suite** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![G Suite v seznamu výsledků](common/search-new-app.png)
 
@@ -138,65 +137,68 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **G Suite**.
+1. V seznamu aplikace vyberte **G Suite**.
 
     ![Odkaz G Suite v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+1. Vyberte kartu **zřizování** .
 
     ![Karta zřizování](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+1. Nastavte **režim zřizování** na **automaticky**.
 
     ![Karta zřizování](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** vyberte **autorizovat**. Otevře se dialogové okno autorizace Google v novém okně prohlížeče.
+1. V části **přihlašovací údaje správce** vyberte **autorizovat**. Otevře se dialogové okno autorizace Google v novém okně prohlížeče.
 
     ![Autorizace G Suite](media/google-apps-provisioning-tutorial/authorize.png)
 
-6. Potvrďte, že chcete udělit oprávnění služby Azure AD, aby bylo možné provádět změny v tenantovi G Suite. Vyberte **Přijmout**.
+1. Potvrďte, že chcete udělit oprávnění služby Azure AD, aby bylo možné provádět změny v tenantovi G Suite. Vyberte **Přijmout**.
 
     ![Potvrďte oprávnění.][28]
 
-7. V Azure Portal vyberte **Test připojení** , aby se služba Azure AD mohla připojit k vaší aplikaci. Pokud se připojení nepovede, ujistěte se, že váš účet G Suite má oprávnění správce týmu. Pak zkuste znovu spustit krok **autorizace** .
+1. V Azure Portal vyberte **Test připojení** , aby se služba Azure AD mohla připojit k vaší aplikaci. Pokud se připojení nepovede, ujistěte se, že váš účet G Suite má oprávnění správce týmu. Pak zkuste znovu spustit krok **autorizace** .
 
-8. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
+1. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
     ![Oznamovací e-mail](common/provisioning-notification-email.png)
 
-8. Klikněte na **Uložit**.
+1. Klikněte na možnost **Uložit**.
 
-9. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatelů do G Suite**.
+1. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatelů do G Suite**.
 
     ![Mapování uživatelů G Suite](media/google-apps-provisioning-tutorial/usermappings.png)
 
-10. Zkontrolujte atributy uživatele synchronizované z Azure AD do G Suite v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v G Suite pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+1. Zkontrolujte atributy uživatele synchronizované z Azure AD do G Suite v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v G Suite pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
     ![Uživatelské atributy G Suite](media/google-apps-provisioning-tutorial/userattributes.png)
 
-11. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do G Suite**.
+1. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do G Suite**.
 
     ![Mapování skupin G Suite](media/google-apps-provisioning-tutorial/groupmappings.png)
 
-12. Zkontrolujte atributy skupiny synchronizované z Azure AD do G Suite v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v G Suite pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny. Uživatelské rozhraní zobrazuje výchozí sadu mapování atributů mezi Azure AD a G Suite. Kliknutím na Přidat nové mapování se můžete rozhodnout přidat další atributy, jako je například organizační jednotka. 
+1. Zkontrolujte atributy skupiny synchronizované z Azure AD do G Suite v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v G Suite pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny. Uživatelské rozhraní zobrazuje výchozí sadu mapování atributů mezi Azure AD a G Suite. Kliknutím na Přidat nové mapování se můžete rozhodnout přidat další atributy, jako je například organizační jednotka.
 
     ![Atributy skupiny G Suite](media/google-apps-provisioning-tutorial/groupattributes.png)
 
-13. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+1. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-14. Pokud chcete povolit službu Azure AD Provisioning pro G Suite, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
+1. Pokud chcete povolit službu Azure AD Provisioning pro G Suite, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
     ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
 
-15. Definujte uživatele nebo skupiny, které chcete zřídit pro sadu G Suite výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
+1. Definujte uživatele nebo skupiny, které chcete zřídit pro sadu G Suite výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
 
     ![Rozsah zřizování](common/provisioning-scope.png)
 
-16. Až budete připraveni zřídit, klikněte na **Uložit**.
+1. Až budete připraveni zřídit, klikněte na **Uložit**.
 
     ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
 
 Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. Část **Podrobnosti o synchronizaci** můžete použít k monitorování průběhu a následnému sledování odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v G Suite.
+
+> [!NOTE]
+> Pokud už uživatelé mají pomocí e-mailové adresy uživatele služby Azure AD existující osobní/uživatelský účet, může dojít k nějakému problému, který by se mohl vyřešit pomocí nástroje pro přenos Google před provedením synchronizace adresáře.
 
 Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
@@ -211,7 +213,6 @@ Další informace o tom, jak číst zřizování protokoly Azure AD najdete v t�
 ## <a name="next-steps"></a>Další kroky
 
 * [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../manage-apps/check-status-user-account-provisioning.md)
-
 
 <!--Image references-->
 

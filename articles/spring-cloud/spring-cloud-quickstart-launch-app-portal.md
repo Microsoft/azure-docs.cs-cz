@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: a96429a84fab10c033cc18a2c35edb4b2a056924
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b9d7e7f705d091834b0a3b694ea8bf0cf6b65ef9
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895390"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708334"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Rychlý Start: spuštění aplikace ve jarním cloudu Azure pomocí Azure Portal
 
@@ -28,7 +28,7 @@ Po tomto rychlém startu se dozvíte, jak:
 > * Nasazení jednotlivých mikroslužeb
 > * Přiřazení veřejného koncového bodu vaší aplikaci
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 >[!Note]
 > Jarní cloud Azure se teď nabízí jako verze Public Preview. Nabídky veřejné verze Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.  Další informace o podpoře v rámci verzí Preview najdete v našich [nejčastějších dotazech](https://azure.microsoft.com/support/faq/) nebo v souboru o [support Request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) , kde se dozvíte víc.
@@ -36,7 +36,7 @@ Po tomto rychlém startu se dozvíte, jak:
 >[!TIP]
 > Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku.  Má předinstalované běžné nástroje Azure, včetně nejnovějších verzí Git, JDK, Maven a Azure CLI. Pokud jste přihlášeni ke svému předplatnému Azure, spusťte [Azure Cloud Shell](https://shell.azure.com) z Shell.Azure.com.  Další informace o Azure Cloud Shell najdete v [naší dokumentaci](../cloud-shell/overview.md) .
 
-K provedení kroků v tomto kurzu Rychlý start je potřeba:
+K dokončení tohoto rychlého startu je potřeba:
 
 1. [Nainstalovat Git](https://git-scm.com/).
 2. [Nainstalovat JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
@@ -68,6 +68,10 @@ az extension add --name spring-cloud
 
 Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **přehledem** instance služby.
 
+> [!div class="nextstepaction"]
+> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=provision)
+
+
 ## <a name="set-up-your-configuration-server"></a>Nastavení konfiguračního serveru
 
 1. Přejít na stránku **Přehled** služby a vyberte možnost **konfigurační server**.
@@ -79,6 +83,9 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
 1. Pokud chcete změny uložit, vyberte **Použít**.
 
     ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+
+> [!div class="nextstepaction"]
+> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=config-server)
 
 ## <a name="build-and-deploy-microservice-applications"></a>Sestavování a nasazování aplikací mikroslužeb
 
@@ -121,6 +128,9 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
 
 1. Dokončení nasazování aplikací trvá několik minut. Pokud chcete potvrdit, že se nasadili, vyberte v Azure Portal okno **aplikace** . Mělo by se zobrazit řádek každé ze tří aplikací.
 
+> [!div class="nextstepaction"]
+> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=deploy)
+
 ## <a name="assign-a-public-endpoint-to-gateway"></a>Přiřazení veřejného koncového bodu k bráně
 
 1. Otevřete kartu **aplikace** v nabídce na levé straně.
@@ -135,6 +145,8 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
 
     ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/sample-app.png)
 
+> [!div class="nextstepaction"]
+> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=public-endpoint)
 
 ## <a name="next-steps"></a>Další kroky
 

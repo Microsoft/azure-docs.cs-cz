@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak vytvořit Recovery Services trezo
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 144d8cdb870e12474dfc47784749b5f0e466f8bf
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 6a880f84d5e8626d36ac3f4b440436b479ec5f6d
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273395"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708503"
 ---
 # <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
@@ -21,7 +21,7 @@ Chcete-li vytvořit trezor Služeb zotavení:
 
 2. V nabídce vlevo vyberte **všechny služby**.
 
-    ![Vybrat všechny služby](./media/backup-create-rs-vault/click-all-services.png)
+    ![vybrat všechny služby](./media/backup-create-rs-vault/click-all-services.png)
 
 3. V dialogovém okně **všechny služby** zadejte **Recovery Services**. Seznam prostředků se filtruje podle vašeho zadání. V seznamu prostředků vyberte **Recovery Services trezory**.
 
@@ -73,12 +73,54 @@ Azure Backup automaticky zpracovává úložiště pro trezor. Musíte určit zp
 > [!NOTE]
 > Změna **typu replikace úložiště** (místně redundantní/geograficky redundantní) pro trezor služby Recovery Services je potřeba provést před konfigurací záloh v trezoru. Když nakonfigurujete zálohování, možnost změnit je zakázaná a **typ replikace úložiště**nemůžete změnit.
 
+## <a name="set-cross-region-restore"></a>Nastavení obnovení mezi oblastmi
+
+Jedna z možností obnovení (CRR) umožňuje obnovení virtuálních počítačů Azure v sekundární oblasti, která je [spárována se službou Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Tato možnost vám umožní:
+
+- postupovat v případě, že dojde k auditu nebo požadavkům na dodržování předpisů
+- Pokud dojde k havárii v primární oblasti, obnovte virtuální počítač nebo jeho disk.
+
+Tuto funkci zvolíte tak, že v okně **Konfigurace zálohování** vyberete **Povolit obnovení mezi oblastmi** .
+
+Pro tento proces se na úrovni úložiště účtují cenové dopady.
+
+>[!NOTE]
+>Než začnete:
+>
+>- Seznam podporovaných spravovaných typů a oblastí najdete v [matici podpory](backup-support-matrix.md#cross-region-restore) .
+>- Funkce obnovení mezi oblastmi (CRR) je aktuálně dostupná jenom v oblasti WCUS.
+>- CRR je funkce výslovných přihlášení na úrovni trezoru pro libovolný trezor GRS (ve výchozím nastavení vypnutý).
+>- K připojení předplatného k této funkci použijte prosím *vlastnost "CrossRegionRestore": ""* .
+>- Pokud jste se k této funkci připojili ve verzi Public Limited Preview, bude e-mail s potvrzením schválení obsahovat podrobnosti o cenové zásadě.
+>- Po odsouhlasení může trvat až 48 hodin, než se zálohované položky zpřístupní v sekundárních oblastech.
+>- Aktuálně se podporuje jenom CRR typu správy zálohování – ARM Azure (klasický virtuální počítač Azure se nepodporuje).  Když další typy správy podporují CRR, pak se **automaticky** zaregistrují.
+
+### <a name="configure-cross-region-restore"></a>Konfigurace obnovení mezi oblastmi
+
+Trezor vytvořený s redundancí GRS zahrnuje možnost konfigurace funkce obnovení mezi oblastmi. Každý trezor GRS bude obsahovat banner, který bude odkazovat na dokumentaci. Pokud chcete nakonfigurovat CRR pro trezor, otevřete okno Konfigurace zálohování, které obsahuje možnost povolit tuto funkci.
+
+ ![Banner konfigurace zálohování](./media/backup-azure-arm-restore-vms/banner.png)
+
+1. Na portálu klikněte na Recovery Services trezor > Nastavení > Vlastnosti.
+2. Pokud chcete povolit funkci, klikněte na **Povolit obnovení mezi oblastmi v tomto trezoru** .
+
+   ![Než kliknete na Povolit obnovení mezi oblastmi v tomto trezoru](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
+
+   ![Po kliknutí na Povolit obnovení mezi oblastmi v tomto trezoru](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
+
+Přečtěte si, jak [Zobrazit zálohované položky v sekundární oblasti](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region).
+
+Naučte se [obnovit v sekundární oblasti](backup-azure-arm-restore-vms.md#restore-in-secondary-region).
+
+Naučte se [monitorovat úlohy obnovení sekundární oblasti](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs).
+
 ## <a name="modifying-default-settings"></a>Úprava výchozích nastavení
 
-Důrazně doporučujeme před konfigurací záloh v trezoru zkontrolovat výchozí nastavení pro **typ replikace úložiště** a **nastavení zabezpečení** . 
-* **Typ replikace úložiště** je ve výchozím nastavení nastaven na **geograficky redundantní**. Po nakonfigurování zálohy bude možnost úprav zakázána. Chcete-li zkontrolovat a upravit nastavení, postupujte podle těchto [kroků](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) . 
-* **Obnovitelné odstranění** je ve výchozím nastavení **povolené** u nově vytvořených trezorů za účelem ochrany zálohovaných dat před náhodnými nebo škodlivými odstraněními. Chcete-li zkontrolovat a upravit nastavení, postupujte podle těchto [kroků](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#disabling-soft-delete) .
+Důrazně doporučujeme před konfigurací záloh v trezoru zkontrolovat výchozí nastavení pro **typ replikace úložiště** a **nastavení zabezpečení** .
 
+- **Typ replikace úložiště** je ve výchozím nastavení nastaven na **geograficky redundantní**. Po nakonfigurování zálohy bude možnost úprav zakázána. Chcete-li zkontrolovat a upravit nastavení, postupujte podle těchto [kroků](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) .
+
+- **Obnovitelné odstranění** je ve výchozím nastavení **povolené** u nově vytvořených trezorů za účelem ochrany zálohovaných dat před náhodnými nebo škodlivými odstraněními. Chcete-li zkontrolovat a upravit nastavení, postupujte podle těchto [kroků](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#disabling-soft-delete) .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdf4e5dfc48fdeee86526257d6d8c47a464ce113
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b1e8128066794932abaca4290a5c896354522544
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786414"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732446"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Naplánování nasazení automatického zřizování uživatelů
 
@@ -132,13 +132,13 @@ Vezměte v úvahu, že vaše organizace musí určit strategii nasazení zřizov
 
 Když projekty technologie selžou, je obvykle z důvodu neshodných očekávání na dopad, výsledky a odpovědnosti. Aby se tyto nástrahy nezobrazovaly, ujistěte se, že [jste připravujete správné zúčastněné strany](https://aka.ms/deploymentplans) a že role účastníka v projektu jsou dobře srozumitelné při dokumentaci zúčastněných stran a jejich vstupu do projektu a accountabilities.
 
-### <a name="plan-communications"></a>Plánování komunikace
+### <a name="plan-communications"></a>Plán komunikace
 
 Komunikace je zásadní pro úspěch jakékoli nové služby. Proaktivně komunikujte s vašimi uživateli, jak se změní, když se změní, a jak získat podporu, pokud se jim setkávají problémy.
 
 ### <a name="plan-a-pilot"></a>Plánování pilotního projektu
 
-Doporučujeme, aby počáteční konfigurace automatického zřizování uživatelů byla v testovacím prostředí s malou podmnožinou uživatelů, než se škáluje na všechny uživatele v produkčním prostředí.
+Doporučujeme, aby počáteční konfigurace automatického zřizování uživatelů byla v testovacím prostředí s malou podmnožinou uživatelů, než se škáluje na všechny uživatele v produkčním prostředí. Podívejte se na [osvědčené postupy](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans#best-practices-for-a-pilot) pro spuštění pilotního projektu.
 
 #### <a name="best-practices-for-a-pilot"></a>Osvědčené postupy pro pilotní nasazení  
 

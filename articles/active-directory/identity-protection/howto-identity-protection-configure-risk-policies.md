@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 01/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37091b2551d68e241c7179949c3eb1db9a381de6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 4ffa08f7ebf013d42d6da0589ce0f1ccc97289de
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382181"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707001"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Postupy: konfigurace a povolení zásad rizik
 
@@ -47,6 +47,8 @@ Výběr **vysoké** prahové hodnoty snižuje počet aktivovaných zásad a mini
 
 Všechny zásady umožňují vyloučit uživatele, jako jsou například účty pro [nouzový přístup nebo správce přestávek](../users-groups-roles/directory-emergency-access.md). Organizace můžou určit, že budou muset vyloučit další účty z konkrétních zásad na základě způsobu použití účtů. Všechna vyloučení by měla být pravidelně přezkoumána, aby bylo možné zjistit, zda jsou stále k dispozici.
 
+Nakonfigurovaná důvěryhodná [Síťová umístění](../conditional-access/location-condition.md) jsou používána ochranou identity v některých detekcích rizik k omezení falešně pozitivních hodnot.
+
 ## <a name="enable-policies"></a>Povolit zásady
 
 Pokud chcete povolit rizika uživatele a zásady rizik přihlašování, proveďte následující kroky.
@@ -70,7 +72,7 @@ Pokud chcete povolit rizika uživatele a zásady rizik přihlašování, proveď
    1. Pod **ovládacími prvky**
       1. **Přístup** – doporučení Microsoftu je **Povolení přístupu** a **vyžadování služby Multi-Factor Authentication**.
    1. **Vynutilit** ** - ** zásad
-   1. **Uloží**
+   1. **Uložení**
 
 ## <a name="next-steps"></a>Další kroky
 

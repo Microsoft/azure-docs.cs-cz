@@ -1,6 +1,6 @@
 ---
-title: Monitorujte svá data pomocí řídicích panelů na základě Azure Monitorch sešitů v Azure Sentinel | Microsoft Docs
-description: V tomto kurzu se naučíte monitorovat data pomocí řídicích panelů na základě sešitů v Azure Sentinel.
+title: Vizualizace dat pomocí řídicích panelů na základě Azure Monitorch sešitů v nástroji Azure Sentinel | Microsoft Docs
+description: V tomto kurzu se naučíte vizualizovat data pomocí řídicích panelů na základě sešitů v Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/17/2019
+ms.date: 01/01/2020
 ms.author: rkarlin
-ms.openlocfilehash: c5f4bd079fa215e3fbd4241f603aa29d19f7aad7
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 7baf8cf2e954d773376b7c3c989bce01f60ae0a6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158864"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610450"
 ---
-# <a name="tutorial-monitor-your-data"></a>Kurz: monitorování vašich dat
+# <a name="tutorial-visualize-and-monitor-your-data"></a>Kurz: vizualizace a monitorování dat
 
 
 
-Po [připojení zdrojů dat](quickstart-onboard.md) ke službě Azure Sentinel můžete monitorovat data pomocí integrace služby Azure Sentinel se sešity Azure monitor, která poskytuje univerzálnost při vytváření vlastních řídicích panelů. Přestože se sešity ve službě Azure Sentinel zobrazují odlišně, může být užitečné, abyste viděli, jak [vytvářet interaktivní sestavy pomocí Azure monitor sešity](../azure-monitor/app/usage-workbooks.md). Azure Sentinel umožňuje vytvářet vlastní sešity napříč vašimi daty a také nabízí předdefinované šablony sešitu, které vám umožní rychle získat přehled o vašich datech, jakmile připojíte zdroj dat.
+Po [připojení zdrojů dat](quickstart-onboard.md) ke službě Azure Sentinel můžete vizualizovat a monitorovat data pomocí Azure Monitorch sešitů Azure Sentinel, který poskytuje univerzálnost při vytváření vlastních řídicích panelů. Přestože se sešity ve službě Azure Sentinel zobrazují odlišně, může být užitečné, abyste viděli, jak [vytvářet interaktivní sestavy pomocí Azure monitor sešity](../azure-monitor/app/usage-workbooks.md). Azure Sentinel umožňuje vytvářet vlastní sešity napříč vašimi daty a také nabízí předdefinované šablony sešitu, které vám umožní rychle získat přehled o vašich datech, jakmile připojíte zdroj dat.
 
 
-Tento kurz vám pomůže monitorovat data v rámci Azure Sentinel.
+Tento kurz vám pomůže vizualizovat data v Azure Sentinel.
 > [!div class="checklist"]
 > * Použití vestavěných sešitů
 > * Vytváření nových sešitů

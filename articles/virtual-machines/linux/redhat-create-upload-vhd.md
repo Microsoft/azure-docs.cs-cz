@@ -3,7 +3,7 @@ title: Vytvoření a nahrání Red Hat Enterprise Linux VHD pro použití v Azur
 description: Naučte se vytvořit a nahrát virtuální pevný disk Azure (VHD), který obsahuje operační systém Red Hat Linux.
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
-ms.author: szark
-ms.openlocfilehash: 7c03271dc5fda5cee0b210370a965a45a6a7ef42
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: mimckitt
+ms.openlocfilehash: 77334e3e807776e9072bb4ad9674bf7ba5a8f915
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035158"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732514"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Příprava virtuálního počítače založeného na Red Hat pro Azure
 V tomto článku se dozvíte, jak připravit virtuální počítač s Red Hat Enterprise Linux (RHEL) pro použití v Azure. Verze RHEL, které jsou pokryté v tomto článku, jsou 6.7 + a 7.1 +. Hypervisory pro přípravu, které jsou pokryté v tomto článku, jsou Hyper-V, virtuální počítač založený na jádrech (KVM) a VMware. Další informace o požadavcích na způsobilost pro účast v programu cloudového přístupu Red Hat najdete na [webu Cloud Access Red Hat](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) a [na platformě Azure s RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). Způsob automatizace vytváření RHEL imagí najdete v tématu [Azure image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview).
@@ -154,7 +154,7 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
+    PERSISTENT_DHCLIENT = Ano NM_CONTROLLED = Ano
 
 1. Spuštěním následujícího příkazu zajistěte, aby se síťová služba spouštěla v době spuštění:
 
@@ -408,7 +408,7 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
+    PERSISTENT_DHCLIENT = Ano NM_CONTROLLED = Ano
 
 1. Spuštěním následujícího příkazu zajistěte, aby se síťová služba spouštěla v době spuštění:
 
@@ -666,7 +666,7 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
+    PERSISTENT_DHCLIENT = Ano NM_CONTROLLED = Ano
 
 1. Spuštěním následujícího příkazu zajistěte, aby se síťová služba spouštěla v době spuštění:
 
@@ -883,8 +883,7 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
-        EOF
+    PERSISTENT_DHCLIENT = Yes NM_CONTROLLED = Yes EOF
 
         # Deprovision and prepare for Azure if you are creating a generalized image
         waagent -force -deprovision
@@ -903,7 +902,7 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
 
     c.  Nastavte systém BIOS na spouštění z disku CD-ROM.
 
-1. Spusťte virtuální počítač. Po zobrazení Průvodce instalací stiskněte klávesu **TAB** a nakonfigurujte možnosti spuštění.
+1. Spusťte virtuální počítač Po zobrazení Průvodce instalací stiskněte klávesu **TAB** a nakonfigurujte možnosti spuštění.
 
 1. Na konci možností spuštění zadejte `inst.ks=<the location of the kickstart file>` a stiskněte klávesu **ENTER**.
 

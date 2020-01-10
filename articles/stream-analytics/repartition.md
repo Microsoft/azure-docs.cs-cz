@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: bbea71464e8a1f4e93e510106d372257f155b0c6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c70cfb6c1626908a2ba4e707a890f6dc7481c51a
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935048"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732378"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Použití změny rozdělení na oddíly pro optimalizaci zpracování pomocí Azure Stream Analytics
 
@@ -21,11 +21,11 @@ V tomto článku se dozvíte, jak použít změnu rozdělení na oddíly pro šk
 Je možné, že nebudete moci použít [paralelní](stream-analytics-parallelization.md) postup v těchto případech:
 
 * Neovládáte klíč oddílu pro vstupní datový proud.
-* Váš zdroj "se zastříká" ve více oddílech, které jsou později potřeba sloučit. 
-
-## <a name="how-to-repartition"></a>Postup změny rozdělení
+* Váš zdroj "se zastříká" ve více oddílech, které jsou později potřeba sloučit.
 
 Při zpracování dat v datovém proudu, který není horizontálně dělené podle přirozeného vstupního schématu, jako je například **PartitionID** pro Event Hubs, se vyžaduje přerozdělení na oddíly nebo přerozdělování. Když změníte oddíly, jednotlivé horizontálních oddílů se dají zpracovat nezávisle, což vám umožní lineárně škálovat kanál streamování.
+
+## <a name="how-to-repartition"></a>Postup změny rozdělení
 
 Chcete-li změnit rozdělení na oddíly, použijte klíčové slovo **do** výrazu po příkazu **partition by** v dotazu. Následující příklad rozdělí data podle typu **DeviceID** na počet oddílů na hodnotu 10. Pomocí algoritmu hash typu **DeviceID** se určí, který oddíl bude akceptovat daný podproud. Data se vyprázdní nezávisle pro každý datový proud, za předpokladu, že výstup podporuje dělené zápisy a má 10 oddílů.
 

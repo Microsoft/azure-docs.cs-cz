@@ -3,12 +3,12 @@ title: Matice podpory pro Azure Backup
 description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Backup.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 2c33c71e579cc6fa5d01ba086fb1a9a4fc9c142c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dc709294b92fd26343e9520e3775b9f079aba94f
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172073"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708476"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
 
@@ -54,7 +54,7 @@ Co je se podporuje, pokud chcete zálohovat místní počítače:
 
 **Omezení** | **Podrobnosti**
 --- | ---
-**Datové disky virtuálních počítačů Azure** | Omezení 16
+**Datové disky virtuálních počítačů Azure** | Omezení 16 <br> Pokud se chcete zaregistrovat k privátní verzi Preview virtuálních počítačů s víc než 16 disky (až 32 disků), napište nám na AskAzureBackupTeam@microsoft.com.
 **Velikost datového disku virtuálního počítače Azure** | Velikost jednotlivých disků může být až 32 TB a pro všechny disky ve virtuálním počítači je v kombinaci maximálně 256 TB.
 
 ### <a name="azure-vm-backup-options"></a>Možnosti zálohování virtuálních počítačů Azure
@@ -74,7 +74,7 @@ Co je se podporuje, pokud chcete zálohovat počítače se systémem Linux:
 
 **Typ zálohování** | **Linux (schváleno Azure)**
 --- | ---
-**Přímá záloha místního počítače se systémem Linux** | Nepodporuje se. Agenta MARS lze nainstalovat pouze do počítačů se systémem Windows.
+**Přímá záloha místního počítače se systémem Linux** | Není podporováno. Agenta MARS lze nainstalovat pouze do počítačů se systémem Windows.
 **Použití rozšíření agenta pro zálohování virtuálního počítače Azure se systémem Linux** | Zálohování konzistentní s aplikací pomocí [vlastních skriptů](backup-azure-linux-app-consistent.md).<br/><br/> Obnovení na úrovni souborů.<br/><br/> Obnovte vytvořením virtuálního počítače z bodu obnovení nebo disku.
 **Použití DPM k zálohování místního prostředí nebo virtuálního počítače Azure se systémem Linux** | Zálohování virtuálních počítačů hosta v systému Linux na technologii Hyper-V a VMWare.<br/><br/> Obnovení virtuálních počítačů s virtuálními počítači hosta Hyper-V a VMWare Linux.<br/><br/> Zálohování konzistentní se soubory není pro virtuální počítač Azure k dispozici.
 **Zálohování místního počítače nebo virtuálního počítače Azure se systémem Linux pomocí MABS** | Zálohování virtuálních počítačů hosta v systému Linux na technologii Hyper-V a VMWare.<br/><br/> Obnovení virtuálních počítačů s virtuálními počítači hosta Hyper-V a VMWare Linux.<br/><br/> Zálohování konzistentní se soubory není pro virtuální počítače Azure k dispozici.
@@ -126,8 +126,8 @@ Zálohování podporuje komprimaci provozu zálohování, jak je shrnuto v násl
 
 **Počítačové** | **Komprimovat do MABS/DPM (TCP)** | **Komprimovat do trezoru (HTTPS)**
 --- | --- | ---
-**Přímá záloha místních počítačů s Windows** | Není k dispozici | ![Ano][green]
-**Zálohování virtuálních počítačů Azure pomocí rozšíření virtuálního počítače** | Není k dispozici | Není k dispozici
+**Přímá záloha místních počítačů s Windows** | není k dispozici | ![Ano][green]
+**Zálohování virtuálních počítačů Azure pomocí rozšíření virtuálního počítače** | není k dispozici | není k dispozici
 **Zálohování místních nebo Azure počítačů pomocí MABS/DPM** | ![Ano][green] | ![Ano][green]
 
 ## <a name="retention-limits"></a>Omezení uchování
@@ -141,6 +141,19 @@ Zálohování podporuje komprimaci provozu zálohování, jak je shrnuto v násl
 **Uchování bodu obnovení** | Denně, týdně, měsíčně, ročně
 **Maximální doba uchování** | Závisí na četnosti zálohování
 **Body obnovení na disku DPM/MABS** | 64 pro souborové servery; 448 pro aplikační servery <br/><br/>Neomezené body obnovení pásky pro místní DPM
+
+## <a name="cross-region-restore"></a>Obnovení mezi oblastmi
+
+Azure Backup přidal funkci obnovení mezi oblastmi, aby se posílila dostupnost dat a schopnost odolnosti, což zákazníkům umožňuje úplné řízení obnovení dat do sekundární oblasti. Pokud chcete tuto funkci nakonfigurovat, přejděte [na článek nastavení obnovení mezi oblastmi.](backup-create-rs-vault.md#set-cross-region-restore) Tato funkce je podporována pro následující typy správy:
+
+| Typ správy zálohování | Podporováno                                                    | Podporované oblasti |
+| ---------------------- | ------------------------------------------------------------ | ----------------- |
+| Virtuální počítač Azure               | Ano. Veřejné omezené verze Preview podporované pro šifrované virtuální počítače a virtuální počítače s méně než 4 TB disků | Středozápadní USA   |
+| Agent MARS/místní | Ne                                                           | Nevztahuje se               |
+| SQL/SAP HANA          | Ne                                                           | Nevztahuje se               |
+| AFS                    | Ne                                                           | Nevztahuje se               |
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

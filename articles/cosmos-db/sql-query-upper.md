@@ -7,16 +7,18 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 6b0f025948803a23c5b3c8bb6415c0e111b946b2
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 9809a138a5e28eb069d545d39cfda815c915bd78
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349042"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75728884"
 ---
 # <a name="upper-azure-cosmos-db"></a>UPPER (Azure Cosmos DB)
  Vrátí řetězcový výraz po převedení data znaků na malá písmena na velká písmena.  
-  
+
+Funkce horní soustavy nevyužívá index. Pokud se chystáte provádět časté porovnávání velkých a malých písmen, může funkce HORNÍch systémových funkcí spotřebovat značné množství RU. Pokud se jedná o tento případ, namísto použití horní systémové funkce k normalizaci dat pokaždé, když se postará o porovnávání, můžete při vložení normalizovat velká a malá písmena. Pak dotaz, jako je SELECT * FROM c, kde UPPER (c. Name) = ' BOB ', se jednoduše vybere jako * FROM c WHERE c.name = ' BOB '.
+
 ## <a name="syntax"></a>Syntaxe
   
 ```sql
@@ -40,7 +42,7 @@ UPPER(<str_expr>)
 SELECT UPPER("Abc") AS upper  
 ```  
   
- Tady je sada výsledků.  
+ Zde je sada výsledků.  
   
 ```json
 [{"upper": "ABC"}]  

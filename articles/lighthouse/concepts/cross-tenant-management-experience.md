@@ -1,14 +1,14 @@
 ---
 title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
-ms.date: 11/7/2019
+ms.date: 01/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0f69fc6b606f2f848b9a14d29addbbde11f07a3e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 661ada4e5d620d4977290986f5649b91363202fe
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928009"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75706984"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -19,7 +19,7 @@ Jako poskytovatel služeb můžete použít [správu delegovaných prostředků 
 
 ## <a name="understanding-customer-tenants"></a>Porozumění klientům zákazníka
 
-Tenant Azure Active Directory (Azure AD) je zastoupení organizace. Jedná se o vyhrazenou instanci služby Azure AD, kterou organizace obdrží, když vytvoří relaci se společností Microsoft tím, že se přihlásí k Azure, Microsoft 365 nebo jiným službám. Každý tenant služby Azure AD je jedinečný a oddělený od ostatních tenantů Azure AD a má své vlastní ID tenanta (identifikátor GUID). Další informace najdete v tématu [co je Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
+Tenant Azure Active Directory (Azure AD) je zastoupení organizace. Jedná se o vyhrazenou instanci služby Azure AD, kterou organizace obdrží, když vytvoří relaci se společností Microsoft tím, že se přihlásí k Azure, Microsoft 365 nebo jiným službám. Každý tenant služby Azure AD je jedinečný a oddělený od ostatních tenantů Azure AD a má své vlastní ID tenanta (identifikátor GUID). Další informace najdete v tématu [co je Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md)
 
 Aby bylo možné spravovat prostředky Azure pro zákazníka, poskytovatelé služeb by se museli přihlašovat k Azure Portal pomocí účtu přidruženého k tenantovi daného zákazníka a vyžadovat správce v tenantovi zákazníka k vytváření a správě uživatelských účtů. pro poskytovatele služeb.
 
@@ -43,31 +43,31 @@ Poskytujeme také rozhraní API k provádění úloh správy delegovaných prost
 
 Většinu úkolů a služeb je možné provádět na delegovaných prostředcích ve spravovaných klientech. Níže jsou uvedeny některé z klíčových scénářů, ve kterých může být Správa mezi klienty efektivní.
 
-[Azure ARC pro servery (Preview)](https://docs.microsoft.com/azure/azure-arc/servers/overview):
+[Azure ARC pro servery (Preview)](../../azure-arc/servers/overview.md):
 
-- [Připojení počítačů se systémem Windows Server nebo Linux mimo Azure](https://docs.microsoft.com/azure/azure-arc/servers/quickstart-onboard-portal) k delegovaným předplatným nebo skupinám prostředků v Azure
+- [Připojení počítačů se systémem Windows Server nebo Linux mimo Azure](../../azure-arc/servers/quickstart-onboard-portal.md) k delegovaným předplatným nebo skupinám prostředků v Azure
 - Spravujte připojené počítače pomocí konstrukcí Azure, například Azure Policy a označování.
 
-[Azure Automation](https://docs.microsoft.com/azure/automation/):
+[Azure Automation](../../automation/index.yml):
 
 - Použití účtů Automation pro přístup k prostředkům delegovaného zákazníka a práce s nimi
 
-[Azure Backup:](https://docs.microsoft.com/azure/backup/)
+[Azure Backup:](../../backup/index.yml)
 
 - Zálohování a obnovení zákaznických dat v klientech zákazníků
 
-[Azure Kubernetes Service (AKS)](https://docs.microsoft.com//azure/aks/):
+[Azure Kubernetes Service (AKS)](../../aks/index.yml):
 
 - Správa hostovaných prostředí Kubernetes a nasazení a Správa kontejnerových aplikací v rámci zákaznických tenantů
 
-[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/):
+[Azure Monitor](../../azure-monitor/index.yml):
 
 - Zobrazit výstrahy pro delegovaná předplatná s možností zobrazovat výstrahy napříč všemi předplatnými
 - Zobrazit podrobnosti protokolu aktivit pro delegované odběry
 - Log Analytics: dotazování dat ze vzdálených pracovních prostorů zákazníka ve více klientech
 - Vytváření výstrah v klientech zákazníka, kteří spouštějí automatizaci, například Azure Automation Runbooky nebo Azure Functions v tenantovi poskytovatele služeb prostřednictvím webhooků
 
-[Azure Policy](https://docs.microsoft.com/azure/governance/policy/):
+[Azure Policy](../../governance/policy/index.yml):
 
 - Snímky dodržování předpisů zobrazují podrobnosti o přiřazených zásadách v rámci delegovaných předplatných.
 - Vytvoření a úprava definic zásad v rámci delegovaného předplatného
@@ -75,11 +75,11 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 - Zákazníci uvidí zásady vytvořené poskytovatelem služeb společně se všemi zásadami, které sami vytvořily.
 - Může [napravit deployIfNotExists nebo upravit přiřazení v rámci tenanta zákazníka](../how-to/deploy-policy-remediation.md) .
 
-[Graf prostředků Azure](https://docs.microsoft.com/azure/governance/resource-graph/):
+[Graf prostředků Azure](../../governance/resource-graph/index.yml):
 
 - Teď obsahuje ID tenanta v vrácených výsledcích dotazu, které vám umožní určit, jestli předplatné patří klientovi zákazníka nebo poskytovateli služeb.
 
-[Azure Security Center](https://docs.microsoft.com/azure/security-center/):
+[Azure Security Center](../../security-center/index.yml):
 
 - Viditelnost mezi klienty
   - Monitorování dodržování zásad zabezpečení a zajištění pokrytí zabezpečení napříč prostředky všech tenantů
@@ -96,27 +96,28 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
   - Zajistěte, aby na serverech běžely jenom aplikace a procesy, které by měly být s adaptivními řízeními aplikací.
   - Sledování změn důležitých souborů a položek registru pomocí monitorování integrity souborů (FIM)
 
-[Sentinel Azure](https://docs.microsoft.com/azure/sentinel/multiple-tenants-service-providers):
+[Sentinel Azure](../../sentinel/multiple-tenants-service-providers.md):
 
-- Správa prostředků Azure Sentinel v klientech zákazníků
+- Správa prostředků Azure Sentinel [v klientech zákazníků](../../sentinel/multiple-tenants-service-providers.md)
+- [Sledování útoků a zobrazování výstrah zabezpečení napříč klienty s více zákazníky](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
 
-[Azure Service Health](https://docs.microsoft.com/azure/service-health/):
+[Azure Service Health](../../service-health/index.yml):
 
 - Monitorujte stav zákaznických prostředků pomocí Azure Resource Health
 - Sledujte stav služeb Azure používaných vašimi zákazníky.
 
-[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/):
+[Azure Site Recovery](../../site-recovery/index.yml):
 
 - Spravujte možnosti zotavení po havárii pro virtuální počítače Azure v klientech zákazníků (Všimněte si, že účty RunAs nemůžete použít ke kopírování rozšíření virtuálních počítačů).
 
-[Virtual Machines Azure](https://docs.microsoft.com/azure/virtual-machines/):
+[Virtual Machines Azure](../../virtual-machines/index.yml):
 
 - Použití rozšíření virtuálních počítačů k zajištění konfigurace po nasazení a úloh automatizace na virtuálních počítačích Azure v klientech zákazníků
 - Řešení potíží s virtuálními počítači Azure v klientech zákazníků pomocí diagnostiky spouštění
 - Přístup k virtuálním počítačům pomocí sériové konzoly v klientech zákazníků
 - Všimněte si, že nemůžete použít Azure Active Directory pro vzdálené přihlášení k virtuálnímu počítači a nemůžete integrovat virtuální počítač s Key Vaultem pro hesla, tajné klíče a kryptografické klíče pro šifrování disků.
 
-[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/):
+[Azure Virtual Network](../../virtual-network/index.yml):
 
 - Nasazení a správa virtuálních sítí a karet virtuální síťové adaptéry (Virtual Network Interface) v rámci zákaznických tenantů
 
@@ -128,9 +129,9 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 U všech scénářů Prosím mějte na paměti následující stávající omezení:
 
 - Požadavky, které jsou zpracovávány Azure Resource Manager, lze provádět pomocí delegované správy prostředků Azure. Identifikátory URI operace pro tyto požadavky začínají na `https://management.azure.com`. Nicméně požadavky, které jsou zpracovávány instancí typu prostředku (například přístup k tajným klíčům klíčů nebo přístup k datům úložiště), se nepodporují se správou delegovaných prostředků Azure. Operace s identifikátory URI pro tyto požadavky obvykle začínají adresou, která je pro vaši instanci jedinečná, například `https://myaccount.blob.core.windows.net` nebo `https://mykeyvault.vault.azure.net/`. Druhá z nich také obvykle slouží k operacím s daty a nikoli k operacím správy. 
-- Přiřazení rolí musí používat [předdefinované role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)řízení přístupu na základě role (RBAC). Všechny předdefinované role se v současné době podporují se správou delegovaných prostředků Azure s výjimkou vlastníka nebo jakýchkoli integrovaných rolí s oprávněním pro [Dataactions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) . Role správce přístupu uživatelů je podporovaná jenom pro omezené použití při [přiřazování rolí ke spravovaným identitám](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Vlastní role a [role správců pro klasický odběr](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) nejsou podporovány.
+- Přiřazení rolí musí používat [předdefinované role](../../role-based-access-control/built-in-roles.md)řízení přístupu na základě role (RBAC). Všechny předdefinované role se v současné době podporují se správou delegovaných prostředků Azure s výjimkou vlastníka nebo jakýchkoli integrovaných rolí s oprávněním pro [Dataactions](../../role-based-access-control/role-definitions.md#dataactions) . Role správce přístupu uživatelů je podporovaná jenom pro omezené použití při [přiřazování rolí ke spravovaným identitám](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Vlastní role a [role správců pro klasický odběr](../../role-based-access-control/classic-administrators.md) nejsou podporovány.
 - V současné době nemůžete připojit předplatné (nebo skupinu prostředků v rámci předplatného) pro správu delegovaných prostředků Azure, pokud předplatné používá Azure Databricks. Podobně platí, že pokud bylo předplatné zaregistrované pro registraci u poskytovatele prostředků **Microsoft. ManagedServices** , nebudete moct v tomto okamžiku vytvořit pracovní prostor datacihly pro toto předplatné.
-- I když můžete připojit odběry a skupiny prostředků pro správu delegovaných prostředků Azure, které mají zámky prostředků, nebudou tyto zámky bránit provádění akcí uživatelům ve správě tenanta. [Zakažte přiřazení](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) , která chrání systémem spravované prostředky, jako jsou ty, které vytvořily spravované aplikace Azure nebo plány Azure (přiřazení zamítnutí přiřazení systémem), zabrání uživatelům ve správě tenanta na těchto prostředcích. Nicméně v tomto okamžiku nemohou uživatelé v tenantovi zákazníka vytvořit vlastní přiřazení odepřít (přiřazení odepřít uživateli).
+- I když můžete připojit odběry a skupiny prostředků pro správu delegovaných prostředků Azure, které mají zámky prostředků, nebudou tyto zámky bránit provádění akcí uživatelům ve správě tenanta. [Zakažte přiřazení](../../role-based-access-control/deny-assignments.md) , která chrání systémem spravované prostředky, jako jsou ty, které vytvořily spravované aplikace Azure nebo plány Azure (přiřazení zamítnutí přiřazení systémem), zabrání uživatelům ve správě tenanta na těchto prostředcích. Nicméně v tomto okamžiku nemohou uživatelé v tenantovi zákazníka vytvořit vlastní přiřazení odepřít (přiřazení odepřít uživateli).
 
 ## <a name="next-steps"></a>Další kroky
 

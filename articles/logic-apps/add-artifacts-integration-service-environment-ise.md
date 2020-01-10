@@ -5,19 +5,19 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: 7221619c8d9388a9f6d46ec1dfbb11e467db861a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/08/2020
+ms.openlocfilehash: c597bc4430e4390f0e29e4fe8ae4014521e1ae74
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793303"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732209"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Přidání artefaktů do prostředí ISE (Integration Service Environment) v Azure Logic Apps
 
-Po vytvoření [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)přidejte artefakty, jako jsou Logic Apps, integrační účty a konektory, aby měly přístup k prostředkům ve službě Azure Virtual Network.
+Po vytvoření [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)přidejte artefakty, jako jsou Logic Apps, integrační účty a konektory, aby měly přístup k prostředkům ve službě Azure Virtual Network. Například spravované ISE konektory, které jsou k dispozici po vytvoření ISE, se v návrháři aplikace logiky nezobrazí automaticky. Než budete moct tyto konektory ISE používat, musíte je ručně [Přidat a nasadit do ISE](#add-ise-connectors-environment) , aby se zobrazily v návrháři aplikace logiky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -84,17 +84,17 @@ Pokud chcete vytvořit účet pro integraci, který používá ISE, postupujte p
 
 ## <a name="add-ise-connectors"></a>Přidat konektory ISE
 
-Můžete přidat konektory spravované Microsoftem, které jsou k dispozici pro použití ve vašem ISE, ale nejsou nasazeny ve vašich ISE.
+Konektory spravované Microsoftem, které jsou k dispozici po vytvoření ISE, se nezobrazují automaticky v ovládacím prvku pro výběr konektoru v návrháři aplikace logiky. Než budete moct používat tyto konektory ISE, musíte je ručně přidat a nasadit do ISE, aby se zobrazily v návrháři aplikace logiky.
 
 1. V nabídce ISE v části **Nastavení**vyberte **spravované konektory**. Na panelu nástrojů vyberte **Přidat**.
 
    ![Zobrazit spravované konektory](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. V podokně **Přidat nový spravovaný konektor** otevřete seznam **najít konektor** . Pokud je požadovaný konektor k dispozici, vyberte tento konektor a pak vyberte **vytvořit**.
+1. V podokně **Přidat nový spravovaný konektor** otevřete seznam **najít konektor** . Vyberte konektor ISE, který chcete použít, ale ve vašem ISE ještě není nasazený. Vyberte **Vytvořit**.
 
-   V seznamu se zobrazují jenom konektory, které mají nárok, ale nejsou nasazené v ISE. Konektory, které jsou už nasazené ve vašem ISE, nejsou dostupné pro výběr.
+   ![Vyberte konektor ISE, který chcete nasadit v ISE.](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 
-   ![Vybrat způsobilý konektor](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
+   Pro vás budou dostupné jenom ISE konektory, které jsou pro vás vhodné, ale ještě nenasazené do vašeho ISEu. Konektory, které jsou už nasazené ve vašem ISE, nejsou dostupné pro výběr.
 
 <a name="create-custom-connectors-environment"></a>
 

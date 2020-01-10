@@ -4,15 +4,15 @@ description: Tento dokument popisuje způsoby řešení běžných potíží, ke
 author: roaror
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 06/05/2019
 ms.author: roaror
-ms.openlocfilehash: ece975fa37e500b1c160210684a0cb46e719c48b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 41d667f4e90114052a17c5707989634bbb5fc421
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754957"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75719830"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Řešení běžných problémů v rozhraní Azure Cosmos DB API pro MongoDB
 
@@ -22,12 +22,12 @@ Azure Cosmos DB i když je rozhraní API pro MongoDB kompatibilní s 3,2 verzí 
 
 ## <a name="common-errors-and-solutions"></a>Běžné chyby a řešení
 
-| Chyba               | Kód  | Popis  | Řešení  |
+| Chyba               | kód  | Popis  | Řešení  |
 |---------------------|-------|--------------|-----------|
-| TooManyRequests     | 16500 | Celkový počet spotřebovaných jednotek žádostí je vyšší než stanovená sazba žádosti-jednotka pro kolekci a byla omezena. | Zvažte možnost škálování propustnosti přiřazené kontejneru nebo sady kontejnerů ze Azure Portal nebo můžete operaci zopakovat. |
-| ExceededMemoryLimit | 16501 | Jako služba pro více tenantů se operace převzala v průběhu plnění paměti klienta. | Snižte rozsah operace prostřednictvím přísnějších kritérií dotazu nebo kontaktujte podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Příklad: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
+| TooManyRequests     | 16500 | Celkový počet spotřebovaných jednotek žádostí je větší než počet zřízených jednotky žádosti pro kolekci a se omezila. | Zvažte možnost škálování propustnosti přiřazené kontejneru nebo sady kontejnerů ze Azure Portal nebo můžete operaci zopakovat. |
+| ExceededMemoryLimit | 16501 | Jako víceklientská služba operace přešel přes klienta přidělení paměti. | Redukujte obor operaci prostřednictvím více omezující kritéria dotazu nebo se obraťte na podporu – od [webu Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Příklad: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
 | Cesta k indexu odpovídající určenému pořadí podle položky je vyloučena/dotaz ORDER by nemá odpovídající složený index, ze kterého může být obsluhován. | 2 | Dotaz požádá o řazení pro pole, které není indexované. | Pro pokusy o řadicí dotaz vytvořte stejný index (nebo složený index). |
-| Problémy s verzí MongoDB drátu | - | Starší verze ovladačů MongoDB nemůžou v připojovacích řetězech rozpoznat název účtu Azure Cosmos. | Připojením *AppName = @**account** @* na konci rozhraní API služby Cosmos DB pro připojovací řetězec MongoDB, kde ***account*** Name je váš Cosmos DB název účtu. |
+| Problémy s verzí MongoDB drátu | - | Starší verze ovladačů MongoDB nemůžou v připojovacích řetězech rozpoznat název účtu Azure Cosmos. | Připojením *AppName = @**account**@* na konci rozhraní API služby Cosmos DB pro připojovací řetězec MongoDB, kde ***account*** Name je váš Cosmos DB název účtu. |
 
 
 ## <a name="next-steps"></a>Další kroky

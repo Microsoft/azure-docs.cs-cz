@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: dbc17cff2347cd86db3296f4aa2de76ef0f75460
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 41289110049a7f907b76c8f9a8b2d9dc850f201c
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468071"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707199"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
-Tento článek poskytuje Úvod do služby zabezpečení v Azure, které vám pomůžou chránit data, prostředky a aplikace v cloudu a splňovat požadavky na zabezpečení vaší firmy.
+Tento článek poskytuje Úvod do služby zabezpečení v Azure, které vám pomůžou chránit vaše data, prostředky a aplikace v cloudu a splňovat požadavky na zabezpečení vaší firmy.
 
 ## <a name="azure-platform"></a>Platforma Azure
 
@@ -57,7 +57,7 @@ Azure vám pomůže chránit obchodní a osobní údaje tím, že vám umožní 
 
 Výhody zabezpečení Azure Active Directory (Azure AD) zahrnují tyto možnosti:
 
-- Můžete vytvářet a spravovat jednu identitu pro každého uživatele v rámci hybridního podniku, udržovat uživatele, skupiny a zařízení v synchronizaci.
+- Umožňuje vytvořit a spravovat jednu identitu pro každého uživatele v celém podniku a přitom zajistit synchronizaci uživatelů, skupin a zařízení.
 
 - Poskytněte přístup k aplikacím s jednotným přihlašováním, včetně tisíců předem integrovaných aplikací SaaS.
 
@@ -91,7 +91,7 @@ Níže jsou uvedené základní možnosti správy identit Azure:
 
 Mnoho organizací spoléhá na aplikace typu software jako služba (SaaS), jako je například Office 365, box a Salesforce, pro produktivitu koncových uživatelů. Historicky zaměstnanci IT potřebují pro jednotlivé aplikace SaaS vytvářet a aktualizovat uživatelské účty a uživatelé si museli pamatovat heslo pro každou aplikaci SaaS.
 
-[Azure AD rozšiřuje místní službu Active Directory do cloudu](../../active-directory/manage-apps/what-is-single-sign-on.md)a umožňuje uživatelům používat jejich primární účet organizace jenom k tomu, aby se k nim přihlásili jenom zařízením připojeným k doméně a prostředkům společnosti, ale také všem aplikacím web a SaaS, které potřebují. funkcí.
+[Azure AD rozšiřuje místní službu Active Directory do cloudu](../../active-directory/manage-apps/what-is-single-sign-on.md)a umožňuje uživatelům používat jejich primární účet organizace jenom k tomu, aby se přihlásili jenom k zařízením připojeným k doméně a prostředkům společnosti, ale také k aplikacím web a SaaS, které potřebuje pro svou práci.
 
 Nejen uživatelé nepotřebují spravovat více sad uživatelských jmen a hesel, přístup k aplikaci se dá automaticky zřídit nebo zrušit na základě organizačních skupin a jejich stavu jako zaměstnanec. [Azure AD zavádí zabezpečení a přístup k řízení zásad správného řízení](../../active-directory/active-directory-enterprise-apps-manage-sso.md) , které vám umožní centrálně spravovat přístup uživatelů napříč SaaS aplikacemi.
 
@@ -171,7 +171,7 @@ Jedním z klíčů k ochraně dat v cloudu je monitorování účtů možných s
 
 - V klidovém formátu: to zahrnuje všechny informace o objektech úložiště, kontejnerech a typech, které existují staticky na fyzickém médiu, jedná se o magnetický nebo optický disk.
 
-- Při přenosu: při přenosu dat mezi součástmi, umístěními nebo programy, například přes síť, v rámci služby Service Bus (z místního prostředí do cloudu a naopak, včetně hybridních připojení, jako je ExpressRoute) nebo během vstupně-výstupních procesů , je považována za probíhající.
+- Při přenosu: při přenosu dat mezi součástmi, umístěními nebo programy, například přes síť, v rámci služby Service Bus (z místního prostředí do cloudu a naopak, včetně hybridních připojení, jako je ExpressRoute) nebo během vstupně-výstupního procesu, je považována za probíhající.
 
 ### <a name="encryption-at-rest"></a>Šifrování v klidovém stavu
 
@@ -194,7 +194,7 @@ Cílem šifrování v klidovém umístění je šifrování všech dat. Tím se 
 > [!Note]
 > Nejen "data aplikace" nebo "PII", ale veškerá data týkající se aplikace včetně metadat účtu (mapování předplatných, informace o smlouvě, PII).
 
-Zvažte, jaké obchody používáte k ukládání dat. Například:
+Zvažte, jaké obchody používáte k ukládání dat. Příklad:
 
 - Externí úložiště (například SQL Azure, dokumentová databáze, HDInsights, Data Lake atd.)
 
@@ -256,7 +256,7 @@ Větší sady dat lze přesunout pomocí vyhrazeného vysokorychlostního propoj
 
 Pokud spolupracujete s Azure Storage prostřednictvím webu Azure Portal, všechny transakce nastávají prostřednictvím protokolu HTTPS. K interakci s [Azure Storage](https://azure.microsoft.com/services/storage/) a [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)je také možné použít [REST API úložiště](https://msdn.microsoft.com/library/azure/dd179355.aspx) prostřednictvím protokolu HTTPS.
 
-Organizace, které nechrání data při přenosu, jsou náchylnější k [útokům](https://technet.microsoft.com/library/gg195821.aspx)prostředníkem, [odposlouchávání](https://technet.microsoft.com/library/gg195641.aspx)a zneužití relace. Tyto útoky můžou být prvním krokem při získávání přístupu k důvěrným datům.
+Organizace, které nechrání data při přenosu, jsou náchylnější k [útokům](https://technet.microsoft.com/library/gg195821.aspx)prostředníkem, [odposlouchávání](https://technet.microsoft.com/library/gg195641.aspx)a zneužití relace. Tyto útoky mohou představovat první krok k získání přístupu k důvěrným datům.
 
 Další informace o možnosti Azure VPN najdete v článku [plánování a návrh VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
@@ -388,7 +388,7 @@ Kromě toho kontrolní seznam:
 
 Provozní zabezpečení Azure je postavené na platformě, která zahrnuje znalostní bázi z různých možností, které jsou jedinečné pro společnost Microsoft, včetně Microsoft Security Development Lifecycle (SDL), programu Microsoft Security Response Center. a podrobné povědomí o kyberbezpečnosti hrozbách.
 
-### <a name="microsoft-azure-monitor"></a>Monitorování Microsoft Azure
+### <a name="microsoft-azure-monitor"></a>Microsoft Azure Monitor
 
 [Azure monitor](../../azure-monitor/index.yml) je řešení pro správu IT pro hybridní cloud. Azure Monitor protokoly vám pro cloudovou správu vaší infrastruktury měli možnost použít samostatně nebo pro rozšiřování stávajícího nasazení nástroje System Center.
 
@@ -432,7 +432,7 @@ Security Center automaticky shromažďuje, analyzuje a integruje data protokolu 
 
 - Výstrahy zabezpečení z integrovaných antimalwarových programů a bran firewall
 
-### <a name="azure-monitor"></a>Monitorování Azure
+### <a name="azure-monitor"></a>Azure monitor
 
 [Azure monitor](../../azure-monitor/overview.md) poskytuje odkazy na informace o konkrétních typech prostředků. Nabízí vizualizaci, dotaz, směrování, upozorňování, automatické škálování a automatizaci dat jak z infrastruktury Azure (protokol aktivit), tak z každého jednotlivého prostředku Azure (diagnostické protokoly).
 
@@ -476,7 +476,7 @@ Monitoruje tyto parametry:
 
 - **Vlastní události a metriky** , které napíšete sami v klientském nebo serverovém kódu, abyste mohli sledovat obchodní události, jako jsou prodané položky nebo vyhrané hry.
 
-Infrastrukturu aplikace obvykle tvoří celá řada komponent, může to být třeba virtuální počítač, účet úložiště a virtuální síť nebo webová aplikace, databáze, databázový server a služby jiných výrobců. Tyto komponenty nevidíte jako samostatné entity, ale jako související a vzájemně provázané části jedné entity. Chcete je nasadit, spravovat a monitorovat jako skupinu. [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) vám umožní pracovat s prostředky ve vašem řešení jako se skupinou.
+Infrastrukturu aplikace obvykle tvoří celá řada komponent, může to být třeba virtuální počítač, účet úložiště a virtuální síť nebo webová aplikace, databáze, databázový server a služby jiných výrobců. Tyto komponenty nevidíte jako samostatné entity, ale jako související a vzájemně provázané části jedné entity. Chcete je nasadit, spravovat a monitorovat jako skupinu. [Azure Resource Manager](../../azure-resource-manager/management/overview.md) vám umožní pracovat s prostředky ve vašem řešení jako se skupinou.
 
 Všechny prostředky pro vaše řešení můžete nasadit, aktualizovat nebo odstranit v rámci jediné koordinované operace. Pro nasazení použijete šablonu a tato šablona může fungovat v různých prostředích, jako například v testovacím, přípravném nebo produkčním prostředí. Resource Manager poskytuje funkce zabezpečení, auditování a označování, které vám po nasazení pomohou prostředky spravovat.
 

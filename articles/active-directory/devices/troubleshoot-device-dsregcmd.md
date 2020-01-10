@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ef3edace53cf7367716027811cf3061b617a9a6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: fb7fed7cf5f38f9f7677126aff92492ccacd6e12
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379203"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707940"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Řešení potíží se zařízeními pomocí příkazu dsregcmd
 
@@ -28,10 +28,10 @@ V této části jsou uvedené parametry stavu připojení zařízení. V násled
 
 | AzureAdJoined | EnterpriseJoined | DomainJoined | Stav zařízení |
 | ---   | ---   | ---   | ---   |
-| Ano | NO | NO | Připojeno k Azure AD |
-| NO | NO | Ano | Připojeno k doméně |
-| Ano | NO | Ano | Připojeno k hybridní službě AD |
-| NO | Ano | Ano | Připojené k místnímu DRS |
+| ANO | NO | NO | Připojeno k Azure AD |
+| NO | NO | ANO | Připojeno k doméně |
+| ANO | NO | ANO | Připojeno k hybridní službě AD |
+| NO | ANO | ANO | Připojené k místnímu DRS |
 
 > [!NOTE]
 > V části "stav uživatele" se zobrazí stav Workplace Join (registrovaný Azure AD).
@@ -54,7 +54,7 @@ V této části jsou uvedené parametry stavu připojení zařízení. V násled
 +----------------------------------------------------------------------+
 ```
 
-## <a name="device-details"></a>Podrobnosti o zařízení
+## <a name="device-details"></a>Podrobnosti zařízení
 
 Zobrazuje se jenom v případě, že je zařízení připojené k Azure AD nebo je připojené k hybridní službě Azure AD (není zaregistrované Azure AD). V této části jsou uvedené informace o identifikaci zařízení, které jsou uložené v cloudu.
 
@@ -297,10 +297,22 @@ Tato část zobrazuje výstup kontrol správnosti provedených v zařízení př
 
 ## <a name="ngc-prerequisite-check"></a>Kontrola požadavků služby NGC
 
-Tato část provádí předpokladech kontroly zřízení klíče NGC. 
+Tato část provádí předpokladech kontroly pro zřizování Windows Hello pro firmy (WHFB). 
 
 > [!NOTE]
-> Pokud už uživatel úspěšně nakonfiguroval přihlašovací údaje služby NGC, nesmíte v dsregcmd/status zobrazit podrobnosti o kontrole požadavků na NGC.
+> Pokud už uživatel úspěšně nakonfiguroval WHFB, v dsregcmd/status se nemusí zobrazit podrobnosti o kontrole požadavků na NGC.
+
+- **IsDeviceJoined:** -Pokud je zařízení připojené ke službě Azure AD, nastavte na hodnotu Ano.
+- **IsUserAzureAD:** -Pokud se přihlášený uživatel nachází v Azure AD, nastavte na hodnotu Ano.
+- **PolicyEnabled:** -Pokud je na zařízení povolená zásada WHFB, nastavte na hodnotu Ano.
+- **PostLogonEnabled:** -nastavte na hodnotu Ano, pokud se registrace WHFB spustí nativně platformou. Pokud je nastavená na ne, znamená to, že registrace Windows Hello pro firmy se aktivuje vlastním mechanismem.
+- **DeviceEligible:** -nastavte na hodnotu Ano, pokud zařízení splňuje požadavky na hardware pro registraci v WHFB.
+- **SessionIsNotRemote:** -nastavte na hodnotu Ano, pokud je aktuální uživatel přihlášen přímo k zařízení, nikoli vzdáleně.
+- **CertEnrollment:** specifické pro WHFB nasazení důvěryhodných certifikátů, které označuje autoritu pro zápis certifikátu pro WHFB. Nastavte na "autorita pro registraci", pokud je zdroj zásad WHFB Zásady skupiny, "Správa mobilních zařízení", pokud je zdrojem MDM. None (žádné) jinak
+- **AdfsRefreshToken:** specifické pro WHFB nasazení důvěryhodných certifikátů. K dispozici pouze v případě, že CertEnrollment je "autorita pro registraci". Určuje, jestli má zařízení PRT Enterprise pro uživatele.
+- **AdfsRaIsReady:** specifické pro WHFB nasazení důvěryhodných certifikátů.  K dispozici pouze v případě, že CertEnrollment je "autorita pro registraci". Nastavte na hodnotu Ano, pokud se služba AD v metadatech zjišťování označila jako WHFB *a* je dostupná šablona přihlašovacího certifikátu.
+- **LogonCertTemplateReady:** specifické pro WHFB nasazení důvěryhodných certifikátů. K dispozici pouze v případě, že CertEnrollment je "autorita pro registraci". Nastavte na Ano, pokud je šablona přihlašovacího certifikátu platná a pomáhá řešit problémy s RA v AD FS.
+- **PreReqResult:** – poskytuje výsledek pro všechna vyhodnocení požadavků WHFB. Pokud se uživatel poprvé přihlásí, bude se tato možnost zřídit, pokud se registrace WHFB spustí jako úloha po přihlášení.
 
 ### <a name="sample-ngc-prerequisite-check-output"></a>Ukázka výstupu kontroly požadavků služby NGC
 

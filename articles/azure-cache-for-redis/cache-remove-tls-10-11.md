@@ -6,18 +6,26 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 74fcce412b2673a3ec9e4809cef018f1afbc3530
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 2f6203deb5e06ba69a3b4d06297d5e702992c79d
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812839"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708052"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Odeberte TLS 1,0 a 1,1 pro použití s Azure cache pro Redis.
 
 K exkluzivnímu používání protokolu TLS (Transport Layer Security) verze 1,2 nebo novější se nabízí celé odvětví. Je známo, že TLS verze 1,0 a 1,1 jsou náchylné k útokům, jako je TOUCHDOWN a POODLE, a k dalším běžným slabým místám zabezpečení a ohrožením (CVE). Nepodporují také moderní šifrovací metody a šifrovací sady Doporučené standardy dodržování předpisů v oboru platebních karet (PCI). Tento [blog o zabezpečení TLS](https://www.acunetix.com/blog/articles/tls-vulnerabilities-attacks-final-part/) podrobněji popisuje některé z těchto ohrožení zabezpečení.
 
-I když žádný z těchto otázek nepředstavuje okamžitý problém, doporučujeme, abyste zastavili používání protokolu TLS 1,0 a 1,1 brzy. Azure cache pro Redis přestane podporovat tyto verze protokolu TLS od 31. března 2020. Po tomto datu bude vaše aplikace vyžadovat použití TLS 1,2 nebo novější ke komunikaci s mezipamětí.
+V rámci tohoto úsilí budeme provádět následující změny v mezipaměti Azure pro Redis:
+
+* Od 13. ledna 2020 nakonfigurujeme výchozí minimální verzi TLS na 1,2 pro nově vytvořené instance mezipaměti.  Existující instance mezipaměti se v tomto okamžiku neaktualizují.  V případě potřeby budete moct [změnit minimální verzi TLS](cache-configure.md#access-ports) zpátky na 1,0 nebo 1,1 na zpětnou kompatibilitu.  Tato změna se dá udělat prostřednictvím Azure Portal nebo jiných rozhraní API pro správu.
+* Od 31. března 2020 přestanou podporovat verze TLS 1,0 a 1,1. Po této změně bude vaše aplikace vyžadovat použití TLS 1,2 nebo novější ke komunikaci s mezipamětí.
+
+Kromě toho se v rámci této změny odstraní podpora pro starší, nezabezpečené sady šifrováním.  Naše podporované sady šifrováním budou omezeny na následující, pokud je mezipaměť konfigurována s minimální verzí TLS 1,2.
+
+* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384
+* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
 
 Tento článek poskytuje obecné pokyny k detekci závislostí na těchto starších verzích TLS a jejich odebrání z aplikace.
 
@@ -42,15 +50,15 @@ Redis klienti .NET Core používají ve výchozím nastavení nejnovější verz
 
 ### <a name="java"></a>Java
 
-Redis klienti Java používají TLS 1,0 v Java verze 6 nebo starší. Jedis, Lettuce a Radisson se nemůžou připojit ke službě Azure cache pro Redis, pokud je v mezipaměti zakázané TLS 1,0. V současné době není k dispozici žádné známé alternativní řešení.
+Redis klienti Java používají TLS 1,0 v Java verze 6 nebo starší. Jedis, Lettuce a Redisson se nemůžou připojit ke službě Azure cache pro Redis, pokud je v mezipaměti zakázané TLS 1,0. Upgradujte rozhraní Java, aby používalo nové verze TLS.
 
-V jazyce Java 7 nebo novějším používají klienti Redis ve výchozím nastavení TLS 1,2, ale můžou se pro něj nakonfigurovat. Lettuce a Radisson tuto konfiguraci teď nepodporují. Přeruší se, pokud mezipaměť akceptuje pouze připojení TLS 1,2. Jedis umožňuje zadat základní nastavení TLS s následujícím fragmentem kódu:
+Pro Java 7 nepoužívají klienti Redis ve výchozím nastavení TLS 1,2, ale můžou se pro něj nakonfigurovat. Jedis umožňuje zadat základní nastavení TLS s následujícím fragmentem kódu:
 
 ``` Java
 SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
 SSLParameters sslParameters = new SSLParameters();
 sslParameters.setEndpointIdentificationAlgorithm("HTTPS");
-sslParameters.setProtocols(new String[]{"TLSv1", "TLSv1.1", "TLSv1.2"});
+sslParameters.setProtocols(new String[]{"TLSv1.2"});
  
 URI uri = URI.create("rediss://host:port");
 JedisShardInfo shardInfo = new JedisShardInfo(uri, sslSocketFactory, sslParameters, null);
@@ -59,6 +67,10 @@ shardInfo.setPassword("cachePassword");
  
 Jedis jedis = new Jedis(shardInfo);
 ```
+
+Klienti Lettuce a Redisson ještě nepodporují určení verze protokolu TLS, takže budou přerušit, pokud mezipaměť akceptuje jenom připojení TLS 1,2. Opravy pro tyto klienty se kontrolují, proto si s touto podporou Přečtěte aktualizované verze těchto balíčků.
+
+V jazyce Java 8 se standardně používá TLS 1,2 a ve většině případů nemusí vyžadovat aktualizace konfigurace klienta. Chcete-li být bezpečné, otestujte svoji aplikaci.
 
 ### <a name="nodejs"></a>Node.js
 

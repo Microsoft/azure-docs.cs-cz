@@ -11,16 +11,16 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 10/14/2019
-ms.openlocfilehash: 86a3fd7c67dc2e544a1510dc910951452c32245d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b560cee23855d1c0e8a7b3c2cb9d82c184a1ebf6
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811352"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732395"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 
-Cílem architektury vysoké dostupnosti v Azure SQL Database je zaručit, že je vaše databáze v provozu a bude běžet 99,99% času, aniž byste se museli starat o dopad na operace údržby a výpadky. Azure automaticky zpracovává důležité úlohy údržby, jako jsou třeba opravy, zálohování, upgrady Windows a SQL, a také neplánované události, jako je například základní hardware, software nebo selhání sítě.  Pokud je podkladová instance SQL opravena nebo převezme služby při selhání, nemůžete si všimnout, pokud ve své aplikaci použijete [logiku opakování](sql-database-develop-overview.md#resiliency) . Azure SQL Database můžete rychle obnovit i v nejdůležitějších případech, které zajistí, že vaše data jsou vždycky k dispozici.
+Cílem architektury vysoké dostupnosti v Azure SQL Database je zaručit, že vaše databáze je v provozu minimálně 99,99% času (Další informace týkající se konkrétní smlouvy SLA pro různé úrovně najdete v tématu [SLA pro Azure SQL Database](https://azure.microsoft.com/support/legal/sla/sql-database/)), aniž byste se museli starat o dopad operací údržby a výpadků. Azure automaticky zpracovává důležité úlohy údržby, jako jsou třeba opravy, zálohování, upgrady Windows a SQL, a také neplánované události, jako je například základní hardware, software nebo selhání sítě.  Pokud je podkladová instance SQL opravena nebo převezme služby při selhání, nemůžete si všimnout, pokud ve své aplikaci použijete [logiku opakování](sql-database-develop-overview.md#resiliency) . Azure SQL Database můžete rychle obnovit i v nejdůležitějších případech, které zajistí, že vaše data jsou vždycky k dispozici.
 
 Řešení vysoké dostupnosti je navrženo tak, aby se zajistilo, že potvrzená data nejsou nikdy ztracena z důvodu selhání, že operace údržby neovlivní vaše zatížení a že databáze nebude v rámci softwarové architektury jediným bodem selhání. Neexistují žádná časová období údržby ani výpadky, které by měly vyžadovat, abyste při upgradu nebo údržbě databáze zastavili úlohy. 
 

@@ -1,34 +1,27 @@
 ---
-title: Integrace se spravovanými identitami Azure | Microsoft Docs
+title: Integrace se spravovanými identitami Azure
 description: Zjistěte, jak pomocí spravovaných identit Azure ověřit pomocí a získat přístup ke konfiguraci aplikací Azure.
-services: azure-app-configuration
-documentationcenter: ''
-author: yegu-ms
-manager: balans
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.workload: tbd
-ms.devlang: na
+author: lisaguthrie
 ms.topic: conceptual
-ms.date: 02/24/2019
-ms.author: yegu
-ms.openlocfilehash: b0c6e39aebe7864ab132805b78aa7be2d61c5160
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 12/29/2019
+ms.author: lcozzens
+ms.openlocfilehash: 7461f378a4f95a43971f5893fe70739511e942ff
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185145"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75731997"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Integrace se spravovanými identitami Azure
 
-Azure Active Directory [spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) vám pomůžou zjednodušit správu tajných kódů pro vaši cloudovou aplikaci. Se spravovanou identitou můžete nastavit kód pro použití instančního objektu vytvořeného pro službu Azure, na které běží. Místo samostatného přihlašovacího údaje uloženého v Azure Key Vault nebo v místním připojovacím řetězci použijete spravovanou identitu. 
+Azure Active Directory [spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) vám pomůžou zjednodušit správu tajných kódů pro vaši cloudovou aplikaci. Se spravovanou identitou může váš kód používat instanční objekt, který byl vytvořen pro službu Azure, na které běží. Místo samostatného přihlašovacího údaje uloženého v Azure Key Vault nebo v místním připojovacím řetězci použijete spravovanou identitu. 
 
-Konfigurace aplikací Azure a její klientské knihovny pro technologie .NET Core, .NET Framework a Java jsou dodávány s podporou spravovaných identit. I když ho použít nemusíte, spravovaná identita eliminuje potřebu přístupového tokenu, který obsahuje tajné klíče. Váš kód má přístup k úložišti konfigurace aplikace jenom pomocí koncového bodu služby. Tuto adresu URL můžete do kódu vložit přímo, aniž byste museli vystavit jakýkoliv tajný klíč.
+Konfigurace aplikace Azure a její klientské knihovny pro navýšení .NET Core, .NET Framework a Java mají do nich vestavěnou podporu spravovaných identit. I když ho použít nemusíte, spravovaná identita eliminuje potřebu přístupového tokenu, který obsahuje tajné klíče. Váš kód má přístup k úložišti konfigurace aplikace jenom pomocí koncového bodu služby. Tuto adresu URL můžete do kódu vložit přímo, aniž byste museli vystavit jakýkoliv tajný klíč.
 
 V tomto kurzu se dozvíte, jak můžete využít spravovanou identitu pro přístup ke konfiguraci aplikací. Sestavuje se ve webové aplikaci představené v rychlých startech. Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s konfigurací aplikace](./quickstart-aspnet-core-app.md) .
 
-V tomto kurzu se navíc volitelně ukáže, jak můžete používat spravovanou identitu ve spojení s Key Vault odkazy na konfiguraci aplikace. Díky tomu můžete hladce přistupovat k tajným klíčům uloženým v Key Vault a také konfiguračním hodnotám v konfiguraci aplikace. Pokud chcete tuto funkci prozkoumat, dokončete nejprve [použití Key Vault odkazů ASP.NET Core](./use-key-vault-references-dotnet-core.md) .
+V tomto kurzu se také dozvíte, jak můžete použít spravovanou identitu ve spojení s Key Vault odkazy na konfiguraci aplikace. S jedinou spravovanou identitou můžete bezproblémově přistupovat k oběma tajným klíčům z Key Vault a konfiguračních hodnot z konfigurace aplikace. Pokud chcete tuto funkci prozkoumat, dokončete nejprve [použití Key Vault odkazů ASP.NET Core](./use-key-vault-references-dotnet-core.md) .
 
 K provedení kroků v tomto kurzu můžete použít libovolný editor kódu. [Visual Studio Code](https://code.visualstudio.com/) je vynikající možnost dostupná na platformách Windows, MacOS a Linux.
 
@@ -50,15 +43,15 @@ K dokončení tohoto kurzu potřebujete:
 
 ## <a name="add-a-managed-identity"></a>Přidat spravovanou identitu
 
-Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvořit aplikaci jako normální a pak tuto funkci povolit.
+Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvořit aplikaci a pak ji povolit.
 
 1. Vytvořte instanci App Services v [Azure Portal](https://portal.azure.com) běžným způsobem. Přejít na něj na portálu.
 
-2. Přejděte dolů do skupiny **Nastavení** v levém podokně a vyberte možnost **Identita**.
+1. Přejděte dolů do skupiny **Nastavení** v levém podokně a vyberte možnost **Identita**.
 
-3. Na kartě **přiřazené systémem** přepněte **stav** na **zapnuto** a vyberte **Uložit**.
+1. Na kartě **přiřazené systémem** přepněte **stav** na **zapnuto** a vyberte **Uložit**.
 
-4. Pokud se zobrazí výzva k povolení spravované identity přiřazené systémem, odpovězte na **Ano** .
+1. Pokud se zobrazí výzva k povolení spravované identity přiřazené systémem, odpovězte na **Ano** .
 
     ![Nastavení spravované identity v App Service](./media/set-managed-identity-app-service.png)
 
@@ -70,7 +63,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
 
 1. Na kartě **kontrolovat přístup** vyberte **Přidat** v uživatelském rozhraní karty **Přidat přiřazení role** .
 
-1. V části **role**vyberte **Přispěvatel**. V části **přiřadit přístup k**vyberte **App Service** v části **spravovaná identita přiřazená systémem**.
+1. V části **role**vyberte **čtečka konfiguračních dat aplikace**. V části **přiřadit přístup k**vyberte **App Service** v části **spravovaná identita přiřazená systémem**.
 
 1. V části **předplatné**vyberte své předplatné Azure. Vyberte prostředek App Service pro vaši aplikaci.
 
@@ -82,7 +75,13 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
 
 ## <a name="use-a-managed-identity"></a>Použití spravované identity
 
-1. Najděte adresu URL úložiště konfigurace aplikace tak, že přejdete na obrazovku konfigurace v Azure Portal a pak kliknete na kartu **přístupové klíče** .
+1. Přidejte odkaz na balíček *Azure. identity* :
+
+    ```cli
+    dotnet add package Azure.Identity --version 1.1.0
+    ```
+
+1. Najděte koncový bod do úložiště konfigurace aplikace. Tato adresa URL je uvedena na kartě **přístupové klíče** pro úložiště v Azure Portal.
 
 1. Otevřete *appSettings. JSON*a přidejte následující skript. Nahraďte *\<service_endpoint >* včetně závorek s adresou URL vašeho úložiště konfigurace aplikace. 
 
@@ -92,21 +91,19 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
     }
     ```
 
-1. Pokud chcete získat přístup pouze k hodnotám uloženým přímo v konfiguraci aplikace, otevřete *program.cs*a aktualizujte metodu `CreateWebHostBuilder` nahrazením metody `config.AddAzureAppConfiguration()`.
+1. Otevřete *program.cs*a přidejte odkaz na `Azure.Identity` a `Microsoft.Azure.Services.AppAuthentication` obory názvů:
 
-    ```csharp
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                var settings = config.Build();
-                config.AddAzureAppConfiguration(options =>
-                    options.ConnectWithManagedIdentity(settings["AppConfig:Endpoint"]));
-            })
-            .UseStartup<Startup>();
+    ```csharp-interactive
+    using Azure.Identity;
+    using Microsoft.Azure.Services.AppAuthentication;
     ```
 
-1. Pokud chcete použít hodnoty konfigurace aplikace a také Key Vault odkazy, otevřete *program.cs*a aktualizujte `CreateWebHostBuilder` metodu, jak je znázorněno níže. Tím se vytvoří nový `KeyVaultClient` pomocí `AzureServiceTokenProvider` a předá tento odkaz voláním metody `UseAzureKeyVault`.
+1. Pokud chcete získat přístup pouze k hodnotám uloženým přímo v konfiguraci aplikace, aktualizujte metodu `CreateWebHostBuilder` nahrazením metody `config.AddAzureAppConfiguration()`.
+
+    > [!IMPORTANT]
+    > `CreateHostBuilder` nahrazuje `CreateWebHostBuilder` v .NET Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
+
+    ### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -114,30 +111,78 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
                     var settings = config.Build();
-                    AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
-                    KeyVaultClient kvClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
-                    
-                    config.AddAzureAppConfiguration(options => options.ConnectWithManagedIdentity(settings["AppConfig:Endpoint"])).UseAzureKeyVault(kvClient));
+                    config.AddAzureAppConfiguration(options =>
+                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
                 })
                 .UseStartup<Startup>();
     ```
+
+    ### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+
+    ```csharp
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                var settings = config.Build();
+                    config.AddAzureAppConfiguration(options =>
+                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
+                })
+                .UseStartup<Startup>());
+    ```
+    ---
+
+1. Pokud chcete použít konfigurační hodnoty aplikace i odkazy na Key Vault, aktualizujte *program.cs* , jak je znázorněno níže. Tento kód vytvoří nový `KeyVaultClient` pomocí `AzureServiceTokenProvider` a předá tento odkaz voláním metody `UseAzureKeyVault`.
+
+    ### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+
+    ```csharp
+            public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+                WebHost.CreateDefaultBuilder(args)
+                    .ConfigureAppConfiguration((hostingContext, config) =>
+                    {
+                        var settings = config.Build();
+                        AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
+                        KeyVaultClient kvClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
+                        
+                        config.AddAzureAppConfiguration(options => options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()).UseAzureKeyVault(kvClient));
+                    })
+                    .UseStartup<Startup>();
+    ```
+
+    ### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+
+    ```csharp
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                var settings = config.Build();
+                        AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
+                        KeyVaultClient kvClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
+                        
+                        config.AddAzureAppConfiguration(options => options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()).UseAzureKeyVault(kvClient));
+                    })
+                    .UseStartup<Startup>());
+    ```
+    ---
 
     Nyní máte přístup k Key Vault odkazům stejně jako jakýkoli jiný konfigurační klíč aplikace. Poskytovatel konfigurace použije `KeyVaultClient`, které jste nakonfigurovali k ověřování, aby Key Vault a načetl hodnotu.
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
-[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="deploy-from-local-git"></a>Nasazení z místního Gitu
 
-Nejjednodušší způsob, jak povolit místní nasazení Git pro vaši aplikaci pomocí serveru Kudu Build, je použít Azure Cloud Shell.
+Nejjednodušší způsob, jak povolit místní nasazení Git pro vaši aplikaci pomocí serveru Kudu Build, je použít [Azure Cloud Shell](https://shell.azure.com).
 
 ### <a name="configure-a-deployment-user"></a>Konfigurace uživatele nasazení
 
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
 ### <a name="enable-local-git-with-kudu"></a>Povolení místního Gitu pomocí Kudu
-Pokud pro vaši aplikaci nemáte místní úložiště Git, budete ho muset inicializovat. Pokud to chcete provést, spusťte následující příkazy z adresáře projektu vaší aplikace:
+Pokud pro vaši aplikaci nemáte místní úložiště Git, budete ho muset inicializovat. Pokud chcete inicializovat místní úložiště Git, spusťte následující příkazy z adresáře projektu vaší aplikace:
 
 ```cmd
 git init
@@ -151,33 +196,17 @@ Pokud chcete povolit místní nasazení Git pro vaši aplikaci s Kudu Build serv
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
 ```
 
-Pokud chcete místo toho vytvořit aplikaci s povoleným Git, spusťte [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) v Cloud shell s parametrem `--deployment-local-git`.
-
-```azurecli-interactive
-az webapp create --name <app_name> --resource-group <group_name> --plan <plan_name> --deployment-local-git
-```
-
-Příkaz `az webapp create` poskytuje něco podobného následujícímu výstupu:
+Tento příkaz vám poskytne něco podobného následujícímu výstupu:
 
 ```json
-Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
 {
-  "availabilityState": "Normal",
-  "clientAffinityEnabled": true,
-  "clientCertEnabled": false,
-  "cloningInfo": null,
-  "containerSize": 0,
-  "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app_name>.azurewebsites.net",
-  "deploymentLocalGitUrl": "https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git",
-  "enabled": true,
-  < JSON data removed for brevity. >
+  "url": "https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git"
 }
 ```
 
 ### <a name="deploy-your-project"></a>Nasazení projektu
 
-Zpět v _okně místního terminálu_ přidejte vzdálené úložiště Azure do místního úložiště Git. Nahraďte _adresu url\<>_ adresou URL vzdáleného úložiště Git, kterou jste získali v [rámci povolení Git pro vaši aplikaci](#enable-local-git-with-kudu).
+V _okně místního terminálu_přidejte vzdálené úložiště Azure do místního úložiště Git. Nahraďte _adresu url\<_ adresou URL vzdáleného úložiště Git, kterou jste získali v části [Povolení místního Gitu pomocí Kudu](#enable-local-git-with-kudu).
 
 ```bash
 git remote add azure <url>
@@ -203,7 +232,9 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="use-managed-identity-in-other-languages"></a>Použití spravované identity v jiných jazycích
 
-Poskytovatelé konfigurace aplikací pro .NET Framework a Java pružiny mají také integrovanou podporu pro spravovanou identitu. V těchto případech použijte koncový bod adresy URL vašeho úložiště konfigurace aplikace namísto úplného připojovacího řetězce při konfiguraci poskytovatele. Například pro konzolovou aplikaci .NET Framework vytvořenou v rychlém startu zadejte následující nastavení v souboru *App. config* :
+Poskytovatelé konfigurace aplikací pro .NET Framework a Java pružiny mají také integrovanou podporu pro spravovanou identitu. Když nakonfigurujete některého z těchto zprostředkovatelů, můžete použít koncový bod adresy URL vašeho obchodu místo jeho úplného připojovacího řetězce. 
+
+Například můžete aktualizovat konzolovou aplikaci .NET Framework vytvořenou v rychlém startu a zadat v souboru *App. config* následující nastavení:
 
 ```xml
     <configSections>

@@ -8,12 +8,12 @@ ms.author: babanisa
 ms.date: 11/15/2019
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 5c4ba510360475e1365d4901136c94181e8c3da3
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a9281ba1e2bf68da2318c32ab7037515697f92a5
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174367"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708842"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Rychlý Start: směrování vlastních událostí do funkce Azure pomocí Event Grid
 
@@ -21,7 +21,7 @@ Azure Event Grid je služba zpracování událostí pro cloud. Azure Functions j
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-azure-function"></a>Vytvoření funkce Azure Functions
+## <a name="create-azure-function"></a>Vytvoření funkce Azure
 
 Před přihlášením k odběru vlastního tématu pojďme vytvořit funkci pro zpracování událostí. V Azure Portal klikněte na vytvořit prostředek, zadejte ' function ' a pak zvolte ' Function App ' a klikněte na vytvořit. V části Skupina prostředků vyberte vytvořit novou a pojmenujte ji. Použijete ji pro zbytek kurzu. Zadejte Function App název, ponechte přepínač ' publikovat ' na ' Code ', vyberte libovolný modul runtime a oblast a potom stiskněte vytvořit.
 
@@ -184,13 +184,12 @@ Pokud chcete pokračovat v práci s touto událostí, nevyčišťujte prostředk
     ![Skupiny prostředků](./media/custom-event-to-function/delete-resource-groups.png)
 
     Další skupina prostředků, kterou vidíte v imagi, byla vytvořena a používána oknem Cloud Shell. Pokud neplánujete použít okno Cloud Shell později, odstraňte ho. 
-```
 
-## Next steps
+## <a name="next-steps"></a>Další kroky
 
-Now that you know how to create topics and event subscriptions, learn more about what Event Grid can help you do:
+Když teď víte, jak vytvářet témata a odběry událostí, zjistěte, s čím vám služba Event Grid ještě může pomoct:
 
-- [About Event Grid](overview.md)
-- [Route Blob storage events to a custom web endpoint](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
-- [Monitor virtual machine changes with Azure Event Grid and Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md)
-- [Stream big data into a data warehouse](event-grid-event-hubs-integration.md)
+- [Informace o službě Event Grid](overview.md)
+- [Směrování událostí služby Blob Storage do vlastního webového koncového bodu](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
+- [Monitorování změn virtuálního počítače pomocí služeb Azure Event Grid a Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md)
+- [Streamování velkých objemů dat do datového skladu](event-grid-event-hubs-integration.md)

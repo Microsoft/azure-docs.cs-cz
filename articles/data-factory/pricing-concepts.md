@@ -9,13 +9,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/25/2018
-ms.openlocfilehash: c42946733ee49ed6acf2c8deadf850208e003339
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 12/27/2019
+ms.openlocfilehash: 247e41faa39520089dc5c95a34b4fb4b6b618761
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684534"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552130"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Seznámení se Data Factory cenami prostřednictvím příkladů
 
@@ -126,13 +126,13 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
   - Aktivita kanálu = $0,00003 (poměr 1 minuty doby spuštění. $0.002 za hodinu v Azure Integration Runtime)
   - Aktivita externího kanálu = $0,000041 (poměr po 10 minutách doby spuštění. $0.00025 za hodinu v Azure Integration Runtime)
 
-## <a name="using-mapping-data-flow-debug-for-a-normal-workday-preview-pricing"></a>Použití mapování toku dat pro normální pracovní den (ceny verze Preview)
+## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>Použití mapování toku dat pro normální pracovní den
 
-Jako inženýr dat zodpovídáte za návrh, sestavování a testování toků dat mapování každý den. Přihlásíte se k uživatelskému rozhraní ADF v ráno a povolíte režim ladění pro toky dat. Výchozí hodnota TTL pro relace ladění je 60 minut. Po dobu 10 hodin budete pracovat v průběhu dne, takže relace ladění nikdy nevyprší. Proto poplatek za den bude:
+Jako inženýr dat zodpovídáte za návrh, sestavování a testování toků dat mapování každý den. Přihlásíte se k uživatelskému rozhraní ADF v ráno a povolíte režim ladění pro toky dat. Výchozí hodnota TTL pro relace ladění je 60 minut. Po dobu 8 hodin budete pracovat v průběhu dne, takže relace ladění nikdy nevyprší. Proto poplatek za den bude:
 
-**10 (hodiny) × 8 (jádra) × $0,112 = $8,96**
+**8 (hodiny) × 8 (jader optimalizované pro výpočty) × $0,193 = $12,35**
 
-## <a name="transform-data-in-blob-store-with-mapping-data-flows-preview-pricing"></a>Transformace dat v úložišti objektů BLOB s využitím toků mapování dat (verze Preview)
+## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>Transformace dat v úložišti objektů BLOB s využitím toků mapování dat
 
 V tomto scénáři chcete transformovat data v úložišti objektů BLOB vizuálně v toku dat mapování ADF na hodinový plán.
 
@@ -153,7 +153,7 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 | Vytvořit kanál | 3 entity pro čtení a zápis (1 pro vytvoření kanálu, 2 pro odkazy na datovou sadu) |
 | Získat kanál | 1 entita pro čtení a zápis |
 | Spustit kanál | 2 spuštění aktivit (1 pro spuštění triggeru, 1 pro spuštění aktivit) |
-| Předpoklady toku dat: doba provádění = 10 min + 10 min. TTL | 10 \* 8 jader obecného COMPUTE s hodnotou TTL z 10 |
+| Předpoklady toku dat: doba provádění = 10 min + 10 min. TTL | 10 \* s 16 jádry obecného COMPUTE s TTL z 10 |
 | Předpoklad monitorování kanálu: došlo k pouze 1 spuštění. | 2 pokus o sledování záznamů o spuštění (1 pro spuštění kanálu, 1 pro spuštění aktivity) |
 
 **Ceny za celkový scénář: $0,3011**
@@ -161,9 +161,9 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 - Operace Data Factory = **$0,0001**
   - Čtení/zápis = 10\*00001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
   - Monitorování = 2\*000005 = $0,00001 [1 monitorování = $0,25/50000 = 0,000005]
-- Orchestrace kanálu &amp; provádění = **$0,301**
+- Orchestrace kanálu &amp; provádění = **$1,463**
   - Spuštění aktivit = 001\*2 = 0,002 [1 běh = $1/1000 = 0,001]
-  - Aktivity toku dat = $0,299 poměrná hodnota po dobu 20 minut (10 minut doba provádění + 10 minut TTL). $0.112 za hodinu na Azure Integration Runtime s 8 jádry obecného COMPUTE
+  - Aktivity toku dat = $1,461 poměrná hodnota po dobu 20 minut (10 minut doba provádění + 10 minut TTL). $0.274 za hodinu v Azure Integration Runtime se základními výpočetními jádry 16 jader
 
 ## <a name="next-steps"></a>Další kroky
 

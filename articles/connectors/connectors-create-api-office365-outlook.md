@@ -1,91 +1,93 @@
 ---
 title: Připojení k Office 365 Outlooku
-description: Správa e-mailů, kontaktů a kalendářů pomocí rozhraní REST API Office 365 a Azure Logic Apps
+description: Automatizace úloh a pracovních postupů, které spravují e-maily, kontakty a kalendáře v Office 365 Outlooku pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 01/08/2020
 tags: connectors
-ms.openlocfilehash: 858366947fe21a20d6f112fc51899d1533a36472
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b0f2b8b9c369fdb42c7e0e7f77fc090424ae3729
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789615"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732665"
 ---
-# <a name="get-started-with-the-office-365-outlook-connector"></a>Začínáme s konektorem Office 365 Outlook
-Konektor sady Office 365 Outlook umožňuje interakci s aplikací Outlook v sadě Office 365. Pomocí tohoto konektoru můžete vytvářet, upravovat a aktualizovat kontakty a položky kalendáře a také získávat, odesílat a reagovat na e-mail.
+# <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Správa e-mailů, kontaktů a kalendářů v Office 365 Outlooku pomocí Azure Logic Apps
 
-V případě Office 365 Outlooku máte tyto akce:
+Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru Office 365 Outlook](/connectors/office365connector/)můžete vytvářet automatizované úlohy a pracovní postupy, které spravují účet Office 365 pomocí vytváření Logic Apps. Tyto úlohy můžete automatizovat například takto:
 
-* Sestavujte pracovní postup pomocí funkcí e-mailu a kalendáře v sadě Office 365. 
-* Použijte triggery ke spuštění pracovního postupu v případě, že je k dispozici nový e-mail, když je položka kalendáře aktualizována a další.
-* Použijte akce k odeslání e-mailu, vytvoření nové události kalendáře a dalších akcí. Pokud je například nový objekt v Salesforce (aktivační událost), pošle se e-mail na Office 365 Outlook (akce). 
+* Získání, odeslání a odpověď na e-mail. 
+* Naplánujte schůzky v kalendáři.
+* Přidávání a úpravy kontaktů. 
 
-V tomto článku se dozvíte, jak používat konektor Office 365 Outlook v aplikaci logiky a také seznam triggerů a akcí.
+Libovolný Trigger můžete použít ke spuštění pracovního postupu, například při přijetí nového e-mailu, při aktualizaci položky kalendáře nebo při výskytu události v rozdílové službě, jako je například Salesforce. Můžete použít akce, které reagují na událost triggeru, například odeslat e-mail nebo vytvořit novou událost v kalendáři. 
 
 > [!NOTE]
-> Tato verze článku se týká Logic Apps všeobecné dostupnosti (GA).
-> 
-> 
+> K automatizaci úloh pro účet @outlook.com nebo @hotmail.com použijte [konektor Outlook.com](../connectors/connectors-create-api-outlook.md).
 
-Další informace o Logic Apps najdete v tématu [co jsou Logic Apps](../logic-apps/logic-apps-overview.md) a [vytvořte aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="connect-to-office-365"></a>Připojení k Office 365
-Předtím, než vaše aplikace logiky bude mít přístup k jakékoli službě, musíte nejprve vytvořit *připojení* ke službě. Připojení zajišťuje připojení mezi aplikací logiky a jinou službou. Pokud se například chcete připojit k Office 365 Outlook, budete nejdřív potřebovat *připojení*Office 365. Pokud chcete vytvořit připojení, zadejte přihlašovací údaje, které běžně používáte pro přístup ke službě, ke které se chcete připojit. Takže v Office 365 Outlooku zadejte přihlašovací údaje k vašemu účtu Office 365 a vytvořte připojení.
+* [Účet Office 365](https://www.office.com/)
 
-## <a name="create-the-connection"></a>Vytvoření připojení
-> [!INCLUDE [Steps to create a connection to Office 365](../../includes/connectors-create-api-office365-outlook.md)]
-> 
-> 
+* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
-## <a name="use-a-trigger"></a>Použití triggeru
-Trigger je událost, která se dá použít ke spuštění pracovního postupu definovaného v aplikaci logiky. Aktivuje službu cyklického dotazování služby v intervalu a četnosti, které chcete. [Další informace o aktivačních událostech](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+* Aplikace logiky, ke které chcete získat přístup k účtu Office 365 Outlook. Abyste mohli pracovní postup spustit pomocí triggeru Office 365 Outlooku, musíte mít [prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Chcete-li do pracovního postupu přidat akci sady Office 365 Outlook, aplikace logiky musí mít již Trigger.
 
-1. V aplikaci logiky zadáním příkazu "Office 365" získáte seznam aktivačních událostí:  
-   
-    ![](./media/connectors-create-api-office365-outlook/office365-trigger.png)
-2. Vyberte **Office 365 Outlook – až se nadcházející událost začne brzo spouštět**. Pokud připojení již existuje, pak v rozevíracím seznamu vyberte kalendář.
-   
-    ![](./media/connectors-create-api-office365-outlook/sample-calendar.png)
-   
-    Pokud se zobrazí výzva k přihlášení, zadejte přihlašovací údaje pro vytvoření připojení. [Vytvoření připojení](connectors-create-api-office365-outlook.md#create-the-connection) v tomto tématu uvádí postup. 
-   
-   > [!NOTE]
-   > V tomto příkladu se aplikace logiky spustí při aktualizaci události kalendáře. Chcete-li zobrazit výsledky této aktivační události, přidejte další akci, která vám pošle textovou zprávu. Můžete například přidat akci Twilio *Odeslat zprávu* , která text při zahájení události kalendáře začíná za 15 minut. 
-   > 
-   > 
-3. Vyberte tlačítko **Upravit** a nastavte hodnoty **frekvence** a **interval** . Například pokud chcete, aby se Trigger dotazoval každých 15 minut, nastavte **četnost** na **minuty**a nastavte **interval** na **15**. 
-   
-    ![](./media/connectors-create-api-office365-outlook/calendar-settings.png)
-4. **Uložte** změny (v levém horním rohu panelu nástrojů). Vaše aplikace logiky se uloží a může se automaticky povolit.
+## <a name="add-a-trigger"></a>Přidání triggeru
 
-## <a name="use-an-action"></a>Použít akci
-Akce je operace prováděná pracovním postupem, který je definován v aplikaci logiky. [Přečtěte si další informace o akcích](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+[Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) je událost, která spouští pracovní postup ve vaší aplikaci logiky. Tato ukázková aplikace logiky používá aktivační událost "cyklického dotazování", která v závislosti na zadaném intervalu a četnosti kontroluje všechny aktualizované události v kalendáři v e-mailovém účtu.
 
-1. Vyberte znaménko plus. Zobrazí se několik možností: **přidat akci**, **Přidat podmínku**nebo jednu z **dalších** možností.
+1. V [Azure Portal](https://portal.azure.com)otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
+
+1. Do vyhledávacího pole zadejte `office 365 outlook` jako filtr. Tento příklad vybírá, **kdy brzy začíná nadcházející událost**.
    
-    ![](./media/connectors-create-api-office365-outlook/add-action.png)
-2. Vyberte **přidat akci**.
-3. Do textového pole zadejte "Office 365" a získejte seznam všech dostupných akcí.
-   
-    ![](./media/connectors-create-api-office365-outlook/office365-actions.png) 
-4. V našem příkladu vyberte **Office 365 Outlook – vytvořit kontakt**. Pokud připojení již existuje, zvolte **ID složky**, **název**a další vlastnosti:  
-   
-    ![](./media/connectors-create-api-office365-outlook/office365-sampleaction.png)
-   
-    Pokud se zobrazí výzva k zadání informací o připojení, zadejte podrobnosti pro vytvoření připojení. [Vytvoření připojení](connectors-create-api-office365-outlook.md#create-the-connection) v tomto tématu popisuje tyto vlastnosti. 
-   
-   > [!NOTE]
-   > V tomto příkladu vytvoříme nový kontakt v Office 365 Outlooku. K vytvoření kontaktu můžete použít výstup z jiné aktivační události. Například přidejte SalesForce *při vytvoření objektu* Trigger. Pak přidejte kontaktní akci pro *Vytvoření kontaktu* Office 365 Outlooku, která pomocí polí Salesforce vytvoří nový kontakt v Office 365. 
-   > 
-   > 
-5. **Uložte** změny (v levém horním rohu panelu nástrojů). Vaše aplikace logiky se uloží a může se automaticky povolit.
+   ![Výběr triggeru pro spuštění aplikace logiky](./media/connectors-create-api-office365-outlook/office365-trigger.png)
+
+1. Pokud se zobrazí výzva k přihlášení, zadejte přihlašovací údaje pro Office 365, aby se vaše aplikace logiky mohla připojit k vašemu účtu. V opačném případě, pokud vaše připojení již existuje, zadejte informace o vlastnostech triggeru.
+
+   V tomto příkladu se vybere kalendář, který Trigger kontroluje, například:
+
+   ![Konfigurace vlastností triggeru](./media/connectors-create-api-office365-outlook/select-calendar.png)
+
+1. V aktivační události nastavte hodnoty **frekvence** a **interval** . Chcete-li přidat další dostupné vlastnosti triggeru, jako je například **časové pásmo**, vyberte tyto vlastnosti ze seznamu **Přidat nový parametr** .
+
+   Například pokud chcete, aby Trigger kontroloval kalendář každých 15 minut, nastavte **četnost** na **minutu**a nastavte **interval** na `15`. 
+
+   ![Nastavte četnost a interval pro aktivační událost.](./media/connectors-create-api-office365-outlook/calendar-settings.png)
+
+1. Na panelu nástrojů návrháře vyberte **Uložit**.
+
+Teď přidejte akci, která se spustí po aktivování triggeru. Můžete například přidat akci **Odeslat zprávu** Twilio, která pošle text, když se událost Calendar spustí za 15 minut.
+
+## <a name="add-an-action"></a>Přidání akce
+
+[Akce](../logic-apps/logic-apps-overview.md#logic-app-concepts) je operace, kterou spouští pracovní postup ve vaší aplikaci logiky. Tato ukázková aplikace logiky vytvoří nový kontakt v Office 365 Outlooku. K vytvoření kontaktu můžete použít výstup z jiné triggeru nebo akce. Předpokládejme například, že vaše aplikace logiky používá Trigger Dynamics 365 **při vytvoření záznamu**. Chcete-li vytvořit nový kontakt, můžete přidat akci **kontaktu vytvořit kontakt** pro Office 365 Outlook a použít výstupy z triggeru Salesforce.
+
+1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky.
+
+1. Pokud chcete přidat akci jako poslední krok pracovního postupu, vyberte **Nový krok**. 
+
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi těmito kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
+
+1. Do vyhledávacího pole zadejte `office 365 outlook` jako filtr. Tento příklad vybere **vytvořit kontakt**.
+
+   ![Vyberte akci, která se má spustit v aplikaci logiky.](./media/connectors-create-api-office365-outlook/office365-actions.png) 
+
+1. Pokud se zobrazí výzva k přihlášení, zadejte přihlašovací údaje pro Office 365, aby se vaše aplikace logiky mohla připojit k vašemu účtu. V opačném případě, pokud vaše připojení již existuje, zadejte informace o vlastnostech akce.
+
+   V tomto příkladu se vybere složka kontaktů, kde akce vytvoří nový kontakt, například:
+
+   ![Konfigurace vlastností akce](./media/connectors-create-api-office365-outlook/select-contacts-folder.png)
+
+   Chcete-li přidat další dostupné vlastnosti akce, vyberte tyto vlastnosti ze seznamu **Přidat nový parametr** .
+
+1. Na panelu nástrojů návrháře vyberte **Uložit**.
 
 ## <a name="connector-specific-details"></a>Podrobnosti specifické pro spojnici
 
-Zobrazit všechny triggery a akce definované v Swagger a také zobrazit omezení v [podrobnostech konektoru](/connectors/office365connector/). 
+Technické podrobnosti o aktivačních událostech, akcích a omezeních, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](/connectors/office365connector/). 
 
 ## <a name="next-steps"></a>Další kroky
 

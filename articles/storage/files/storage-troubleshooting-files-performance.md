@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: d4269480887dba994559271de7e68b2ba2b460b6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 00187051eec27ee7b6b2d4927510a2ab9dee442e
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227812"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708253"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Řešení potíží s výkonem souborů Azure
 
@@ -26,7 +26,7 @@ Výchozí kvótou pro sdílenou složku Premium je 100 GiB, která poskytuje 100
 
 Pokud chcete ověřit, jestli se vaše sdílená složka omezuje, můžete využít metriky Azure na portálu.
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. Vyberte **všechny služby** a pak vyhledejte **metriky**.
 
@@ -41,6 +41,9 @@ Pokud chcete ověřit, jestli se vaše sdílená složka omezuje, můžete využ
 1. Přidejte filtr pro **ResponseType** a zkontrolujte, zda nějaké požadavky obsahují kód odpovědi **SuccessWithThrottling** (pro protokol SMB) nebo **ClientThrottlingError** (pro REST).
 
 ![Možnosti metrik pro sdílené složky Premium](media/storage-troubleshooting-premium-fileshares/metrics.png)
+
+> [!NOTE]
+> Pokud chcete dostávat upozornění, pokud je sdílená složka omezená, přečtěte si téma [Postup vytvoření výstrahy, pokud je sdílená složka omezená](#how-to-create-an-alert-if-a-file-share-is-throttled).
 
 ### <a name="solution"></a>Řešení
 
@@ -168,3 +171,38 @@ Vyšší než očekávaná latence při přístupu k souborům Azure pro úlohy 
 ### <a name="workaround"></a>Alternativní řešení
 
 - Nainstalujte dostupnou [opravu hotfix](https://support.microsoft.com/help/3114025/slow-performance-when-you-access-azure-files-storage-from-windows-8-1).
+
+## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>Postup vytvoření výstrahy, pokud je sdílená složka omezená
+
+1. V [Azure Portal](https://portal.azure.com)klikněte na **monitorování**. 
+
+2. Klikněte na **výstrahy** a pak klikněte na **+ nové pravidlo výstrahy**.
+
+3. Klikněte na **Vybrat** a vyberte **účet úložiště/prostředek souboru** , který obsahuje sdílenou složku, na které chcete upozornit, a potom klikněte na **Hotovo**. Pokud je třeba název účtu úložiště contoso, vyberte prostředek contoso/File.
+
+4. Kliknutím na **Přidat** přidejte podmínku.
+
+5. Zobrazí se seznam signálů, které jsou pro účet úložiště podporované, vyberte metriku **transakcí** .
+
+6. V okně **Konfigurovat logiku signálu** přejděte na dimenze **typ odpovědi** , klikněte na rozevírací seznam **hodnoty dimenze** a vyberte **SuccessWithThrottling** (pro SMB) nebo **ClientThrottlingError** (pro REST). 
+
+  > [!NOTE]
+  > Pokud není uvedená hodnota dimenze SuccessWithThrottling nebo ClientThrottlingError, znamená to, že prostředek nebyl omezen.  Chcete-li přidat hodnotu dimenze, klikněte na **+** vedle rozevíracího seznamu **hodnoty dimenzí** , zadejte **SuccessWithThrottling** nebo **ClientThrottlingError**, klikněte na tlačítko **OK** a potom opakujte krok #6.
+
+7. Přejděte do dimenze **sdílení souborů** , klikněte na rozevírací seznam **hodnoty dimenze** a vyberte sdílené složky, na kterých chcete upozornit. 
+
+  > [!NOTE]
+  > Pokud je sdílená složka standardní sdílenou složkou, budou hodnoty dimenzí prázdné, protože pro standardní sdílené složky nejsou k dispozici metriky vázané na sdílení. Výstrahy omezování pro standardní sdílené složky se aktivují, pokud je omezená jakákoli sdílená složka v rámci účtu úložiště a výstraha neurčí, která sdílená složka byla omezená. Vzhledem k tomu, že pro standardní sdílené složky nejsou k dispozici metriky jednotlivých sdílených složek, doporučuje se mít pro každý účet úložiště jednu sdílenou složku. 
+
+8. Definujte **Parametry výstrahy** (prahová hodnota, operátor, členitost a frekvence agregaci), které se používají k vyhodnocení pravidla upozornění na metriky, a klikněte na **Hotovo**.
+
+  > [!TIP]
+  > Pokud používáte statickou prahovou hodnotu, graf metriky může pomoci určit rozumnou prahovou hodnotu, pokud je sdílená složka momentálně omezená. Pokud používáte dynamickou prahovou hodnotu, v grafu metriky se zobrazí vypočtené prahové hodnoty na základě nedávných dat.
+
+9. Přidejte **skupinu akcí** (E-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
+
+10. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, **Popis** a **závažnost**.
+
+11. Kliknutím na **vytvořit pravidlo výstrahy** vytvořte výstrahu.
+
+Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Přehled výstrah v Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).

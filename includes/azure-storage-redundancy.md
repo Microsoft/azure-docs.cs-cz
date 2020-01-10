@@ -19,5 +19,5 @@ ms.locfileid: "71122957"
 - [Zónově redundantní úložiště (ZRS)](../articles/storage/common/storage-redundancy-zrs.md)
 - [Geograficky redundantní úložiště (GRS)](../articles/storage/common/storage-redundancy-grs.md)
 - [Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
-- [Geografická zóna – redundantní úložiště (GZRS)](../articles/storage/common/storage-redundancy-gzrs.md)
+- [Geograficky zónově redundantní úložiště (GZRS)](../articles/storage/common/storage-redundancy-gzrs.md)
 - [Geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS)](../articles/storage/common/storage-redundancy-gzrs.md)

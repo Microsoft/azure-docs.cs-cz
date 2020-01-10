@@ -3,12 +3,12 @@ title: Zálohování souborů a složek – běžné otázky
 description: Řeší běžné otázky týkající se zálohování souborů a složek pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: b66eb7bca3c9a57f6b44697aa0340cd852fc3db4
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 45c01a08151060b60b0f3e3b27b2fcc16ec8e60b
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173061"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720357"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Běžné dotazy týkající se zálohování souborů a složek
 
@@ -66,7 +66,7 @@ Při přejmenování počítače se systémem Windows se zastaví všechna aktu�
 
 * Nový název počítače je potřeba zaregistrovat v úložišti záloh.
 * Když zaregistrujete nový název trezoru, první operace je *Úplná* záloha.
-* Pokud potřebujete obnovit data zálohovaná do trezoru se starým názvem serveru, použijte možnost obnovení do alternativního umístění v Průvodci obnovením dat. [Další informace](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
+* Pokud potřebujete obnovit data zálohovaná do trezoru se starým názvem serveru, použijte možnost obnovení do alternativního umístění v Průvodci obnovením dat. [Další informace](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>Jaká je maximální délka cesty k souboru pro zálohování?
 
@@ -132,7 +132,7 @@ Velikost složky mezipaměti určuje množství dat, která zálohujete.
 
 Pro složku mezipaměti nedoporučujeme používat následující umístění:
 
-* Sdílená síťová složka nebo vyměnitelná média: Složka mezipaměti musí být místní pro server, který potřebuje zálohování pomocí online zálohování. Síťová umístění nebo vyměnitelná média jako jednotky USB nejsou podporovaná.
+* Sdílená síťová složka nebo vyměnitelná média: Složka mezipaměti musí být místní pro server, který potřebuje zálohování pomocí online zálohování. Síťová umístění nebo vyměnitelná média jako jednotky USB nejsou podporována.
 * Offline svazky: Složka mezipaměti musí být online pro očekávané zálohování pomocí agenta Azure Backup
 
 ### <a name="are-there-any-attributes-of-the-cache-folder-that-arent-supported"></a>Existují nějaké atributy složky mezipaměti, které nejsou podporované?
@@ -145,17 +145,53 @@ Složka mezipaměti nepodporuje následující atributy nebo jejich kombinace:
 * Řídké
 * Bod rozboru
 
-Složka mezipaměti ani virtuální pevný disk s metadaty nemají atributy vyžadované pro agenta Azure Backup.
+Složka mezipaměti a virtuální pevný disk metadat nemají potřebné atributy pro agenta Azure Backup.
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>Existuje způsob, jak upravit šířku pásma používanou pro zálohování?
 
-Ano, pomocí možnosti **změnit vlastnosti** v agentovi Mars můžete upravit šířku pásma a časování. [Další informace](backup-configure-vault.md#enable-network-throttling)
+Ano, pomocí možnosti **změnit vlastnosti** v agentovi Mars můžete upravit šířku pásma a časování. [Další informace](backup-configure-vault.md#enable-network-throttling).
 
 ## <a name="restore"></a>Obnovení
+
+### <a name="manage"></a>Spravujte
+
+**Můžu obnovit heslo?**
+Agent Azure Backup vyžaduje heslo (které jste zadali během registrace) k dešifrování zálohovaných dat během obnovování. Přečtěte si níže uvedené scénáře, abyste porozuměli vašim možnostem zpracování ztraceného hesla:
+
+| Původní počítač <br> *(zdrojový počítač, ve kterém proběhlo zálohování)* | Passphrase | Dostupné možnosti |
+| --- | --- | --- |
+| Dostupné |Ztráty |Pokud je váš původní počítač (kde bylo vygenerováno zálohování) dostupný a je stále zaregistrován ve stejném úložišti Recovery Services, můžete heslo znovu vygenerovat pomocí následujících [kroků](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase).  |
+| Ztráty |Ztráty |Není možné obnovit data nebo data nejsou k dispozici. |
+
+Vezměte v úvahu následující podmínky:
+
+* Pokud agenta odinstalujete a znovu zaregistrujete na stejný původní počítač s
+  * *Stejné heslo*, pak budete moct obnovit zálohovaná data.
+  * *Jiné heslo*, pak nebudete moci obnovit zálohovaná data.
+* Pokud nainstalujete agenta na *jiný počítač* s
+  * *Stejné přístupové heslo* (používá se v původním počítači), pak budete moct obnovit zálohovaná data.
+  * *Jiné heslo*, nebudete moci obnovit zálohovaná data.
+* Pokud je původní počítač poškozený (bráníte opětovnému generování hesla přes konzolu MARS), ale můžete obnovit nebo získat přístup k původní pomocné složce používané agentem Mars, pak budete moct obnovit (Pokud jste zapomněli heslo). Pokud potřebujete další pomoc, obraťte se na zákaznickou podporu.
+
+**Návody obnovení po ztrátě původního počítače (kde se prováděly zálohy)?**
+
+Pokud máte stejné heslo (které jste zadali během registrace) původního počítače, pak můžete zálohovaná data obnovit na jiný počítač. Další informace o možnostech obnovení najdete v následujících scénářích.
+
+| Původní počítač | Passphrase | Dostupné možnosti |
+| --- | --- | --- |
+| Ztráty |Dostupné |Agenta MARS můžete nainstalovat a zaregistrovat na jiném počítači se stejným heslem, které jste zadali během registrace původního počítače. Chcete-li provést obnovení, vyberte **možnost obnovení** > **jiné umístění** . Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine).
+| Ztráty |Ztráty |Není možné obnovit data nebo data nejsou k dispozici. |
+
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Co se stane, když zruším probíhající úlohu obnovení?
 
 Pokud je probíhající úloha obnovení zrušena, proces obnovení se zastaví. Všechny soubory obnovené před zrušením zůstávají v nakonfigurovaném cíli (původní nebo alternativní umístění) bez vrácení zpět.
+
+### <a name="does-the-mars-agent-back-up-and-restore-acls-set-on-files-folders-and-volumes"></a>Zálohuje agent MARS a obnoví seznamy řízení přístupu (ACL) nastavené u souborů, složek a svazků?
+
+* Agent MARS zálohuje seznamy řízení přístupu (ACL) nastavené na soubory, složky a svazky.
+* U možnosti obnovení svazku pro obnovení svazku nabízí agent MARS možnost přeskočit obnovení oprávnění ACL k souboru nebo složce, která se obnovuje.
+* V případě možnosti obnovení jednotlivých souborů a složek se agent MARS obnoví s oprávněním seznamu ACL (není k dispozici možnost přeskočit obnovení seznamu ACL).
 
 ## <a name="next-steps"></a>Další kroky
 

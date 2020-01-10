@@ -1,5 +1,5 @@
 ---
-title: Srovnávací testy vaší aplikace na Azure Disk Storage spravovaných discích
+title: Srovnávací testování vaší aplikace v Azure Disk Storage
 description: Přečtěte si o procesu srovnávacích testů vaší aplikace v Azure.
 author: roygara
 ms.author: rogarana
@@ -7,12 +7,12 @@ ms.date: 01/11/2019
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: e5ac60811eb4fb7735feae6a62ee1b20c8983e0e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 640ec54e9634751d05c2cea90d7c03d02e7a3387
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695849"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720051"
 ---
 # <a name="benchmarking-a-disk"></a>Srovnávací testování disku
 
@@ -24,9 +24,8 @@ Pokud chcete postupovat podle níže uvedených příkladů, vytvořte standardn
 
 [!INCLUDE [virtual-machines-disks-benchmarking](../../../includes/virtual-machines-managed-disks-benchmarking.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Projděte si náš návrh pro vysoce výkonný článek. V tomto případě vytvoříte kontrolní seznam podobný vašemu existující aplikaci pro prototyp. Pomocí nástrojů pro srovnávací testy můžete simulovat úlohy a měřit výkon v aplikaci prototypu. Díky tomu můžete určit, která disková nabídka může odpovídat nebo překračovat požadavky na výkon vaší aplikace. Pak můžete pro svou produkční aplikaci implementovat stejné pokyny.
+Pokud chcete mít [vysoký výkon](premium-storage-performance.md), přejděte k našemu článku o návrhu.
 
-> [!div class="nextstepaction"]
-> Pokud chcete začít s [vysokým výkonem](premium-storage-performance.md) , přečtěte si článek o návrhu.
+V tomto článku vytvoříte kontrolní seznam podobný vašemu existující aplikaci pro prototyp. Pomocí nástrojů pro srovnávací testy můžete simulovat úlohy a měřit výkon v aplikaci prototypu. Díky tomu můžete určit, která disková nabídka může odpovídat nebo překračovat požadavky na výkon vaší aplikace. Pak můžete pro svou produkční aplikaci implementovat stejné pokyny.

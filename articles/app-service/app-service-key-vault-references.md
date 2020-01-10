@@ -6,17 +6,14 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: f0d3d36d3489557f0a07e9400c59debb2dca7073
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 7fdb7c980a278e2dcd4b64a4b70de50721d0b72a
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671458"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75728748"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Použití Key Vault odkazů pro App Service a Azure Functions
-
-> [!NOTE] 
-> Odkazy na Key Vault nejsou aktuálně k dispozici v plánech spotřeby Linux.
 
 V tomto tématu se dozvíte, jak pracovat s tajnými kódy z Azure Key Vault v App Service nebo Azure Functions aplikace bez nutnosti jakýchkoli změn kódu. [Azure Key Vault](../key-vault/key-vault-overview.md) je služba, která poskytuje centralizovanou správu tajných kódů s úplnou kontrolou zásad přístupu a historie auditu.
 
@@ -43,15 +40,15 @@ Odkaz na Key Vault má `@Microsoft.KeyVault({referenceString})`formuláře, kde 
 > [!div class="mx-tdBreakAll"]
 > | Řetězec odkazu                                                            | Popis                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri =_SecretUri_                                                       | **SecretUri** by měl být úplný identifikátor URI datové roviny tajného klíče v Key Vault, včetně verze, například https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
-> | Trezor =_trezor_; Tajné heslo =_tajné heslo_ Verzetajnéhoklíče =_verzetajnéhoklíče_ | Název **trezoru** by měl být název vašeho prostředku Key Vault. Název **tajného** kódu by měl být název cílového tajného klíče. **Verzetajnéhoklíče** by měla být verze tajného klíče, který se má použít. |
+> | SecretUri=_secretUri_                                                       | **SecretUri** by měl být úplný identifikátor URI datové roviny tajného klíče v Key Vault, včetně verze, například https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
+> | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | Název **trezoru** by měl být název vašeho prostředku Key Vault. Název **tajného** kódu by měl být název cílového tajného klíče. **Verzetajnéhoklíče** by měla být verze tajného klíče, který se má použít. |
 
 Například kompletní odkaz s verzí by vypadal takto:
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
 ```
-Jinou
+Další možností:
 
 ```
 @Microsoft.KeyVault(VaultName=myvault;SecretName=mysecret;SecretVersion=ec96f02080254f109c51a1f14cdb1931)
@@ -190,7 +187,7 @@ K získání dalších informací můžete použít také jeden z vestavěných 
 ### <a name="using-the-detector-for-app-service"></a>Použití detektoru pro App Service
 
 1. Na portálu přejděte do aplikace.
-2. Vyberte možnost **diagnostikovat a vyřešit problémy**.
+2. Vyberte **Diagnostikovat a řešit problémy**.
 3. Zvolte možnost **dostupnost a výkon** a vyberte možnost **Webová aplikace dolů.**
 4. Najděte **Key Vault Diagnostika nastavení aplikace** a klikněte na **Další informace**.
 
@@ -199,6 +196,6 @@ K získání dalších informací můžete použít také jeden z vestavěných 
 
 1. Na portálu přejděte do aplikace.
 2. Přejděte k **funkcím platformy.**
-3. Vyberte možnost **diagnostikovat a vyřešit problémy**.
+3. Vyberte **Diagnostikovat a řešit problémy**.
 4. Zvolte možnost **dostupnost a výkon** a vyberte **funkce aplikace dolů nebo hlášení chyb.**
 5. Klikněte na **Key Vault Diagnostika nastavení aplikace.**

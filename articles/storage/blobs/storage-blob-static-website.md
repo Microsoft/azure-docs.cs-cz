@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: 8de36ea9f7bb77443b22e038172ee69bb8435b29
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 8dc5599e681d9aee84f884cd4990163a2481d386
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311215"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708158"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostování statického webu v Azure Storage
 
@@ -56,13 +56,16 @@ Uživatelé mohou zobrazit obsah webu z prohlížeče pomocí veřejné adresy U
 |**Azure CLI** | [Vyhledání adresy URL webu pomocí rozhraní příkazového řádku Azure](storage-blob-static-website-how-to.md#cli-find-url) |
 |**Modul Azure PowerShell** | [Vyhledání adresy URL webu pomocí PowerShellu](storage-blob-static-website-how-to.md#powershell-find-url) |
 
-Adresa URL vašeho webu obsahuje regionální kód. Například adresa URL `https://contosoblobaccount.z22.web.core.windows.net/` obsahuje oblastní kód `z22`.
+Adresa URL vašeho webu obsahuje regionální kód. Například adresa URL `https://contosoblobaccount.z22.web.core.windows.net/` obsahuje oblastní `z22`kódu.
 
 I když tento kód musí zůstat v adrese URL, je k dispozici pouze pro interní použití a tento kód nebude nutné používat žádným jiným způsobem.
 
 Indexový dokument, který zadáte při povolování hostování statických webů, se zobrazí, když uživatelé otevřou web a nezadáte konkrétní soubor (například: `https://contosoblobaccount.z22.web.core.windows.net`).  
 
 Pokud server vrátí chybu 404 a nezadali jste dokument s chybou, když jste web povolili, bude uživateli vrácena výchozí stránka 404.
+
+> [!NOTE]
+> Pro statický web není podporována [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) .
 
 ## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>Dopad nastavení úrovně veřejného přístupu webového kontejneru
 
@@ -74,9 +77,9 @@ Následující snímek obrazovky ukazuje nastavení úrovně veřejného příst
 
 I když primární koncový bod statického webu není ovlivněný, změna úrovně veřejného přístupu ovlivní primární koncový bod služby BLOB Service.
 
-Pokud například změníte úroveň veřejného přístupu kontejneru **$Web** z **privátního (bez anonymního přístupu)** do **objektu BLOB (anonymní přístup pro čtení jenom pro objekty BLOB)** , pak úroveň veřejného přístupu k primárnímu koncovému bodu statického webu `https://contosoblobaccount.z22.web.core.windows.net/index.html`. nemění se.
+Pokud například změníte úroveň veřejného přístupu kontejneru **$Web** z **privátního (bez anonymního přístupu)** do **objektu BLOB (anonymní přístup pro čtení jenom pro objekty BLOB)** , pak se úroveň veřejného přístupu k primárnímu koncovému bodu statického webu `https://contosoblobaccount.z22.web.core.windows.net/index.html` nemění.
 
-Veřejný přístup k primárnímu koncovému bodu služby BLOB Service `https://contosoblobaccount.blob.core.windows.net/$web/index.html` se ale změní z Private na Public. Nyní mohou uživatelé tento soubor otevřít pomocí některého z těchto dvou koncových bodů.
+Veřejný přístup k primárnímu koncovému bodu služby BLOB Service se ale `https://contosoblobaccount.blob.core.windows.net/$web/index.html` změní z Private na Public. Nyní mohou uživatelé tento soubor otevřít pomocí některého z těchto dvou koncových bodů.
 
 ## <a name="content-delivery-network-cdn-and-secure-socket-layer-ssl-support"></a>Content Delivery Network (CDN) a podpora protokolu SSL (Secure Socket Layer)
 
