@@ -1,24 +1,24 @@
 ---
 title: 'Rychlý Start: rozpoznávání řeči uložené ve službě BLOB Storage, Java-Speech Service'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: Bude doplněno
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: d4a436540460240ebd97c39d3406b2886586a6df
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e110c87835cdf517bdd54adda0ef6d9168a44d52
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74829156"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468256"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, nezapomeňte:
 

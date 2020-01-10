@@ -11,14 +11,14 @@ ms.service: virtual-machines-sql
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 12/05/2017
+ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: a91098d06f481afaae75eb497d5a076c3eb42c07
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 231c8cb8e66d658ad49e02fd585f6c8a1593cb2d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72896955"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75373982"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Konfigurace úložiště pro virtuální počítače s SQL Server
 
@@ -28,7 +28,7 @@ V tomto tématu se dozvíte, jak Azure nakonfiguruje úložiště pro vaše SQL 
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete použít nastavení konfigurace automatizovaného úložiště, váš virtuální počítač musí mít následující vlastnosti:
 
@@ -40,7 +40,7 @@ Pokud chcete použít nastavení konfigurace automatizovaného úložiště, vá
 
 Následující části popisují, jak nakonfigurovat úložiště pro nové virtuální počítače SQL Server.
 
-### <a name="azure-portal"></a>Portál Azure
+### <a name="azure-portal"></a>portál Azure
 
 Při zřizování virtuálního počítače Azure pomocí Image Galerie SQL Server vyberte **změnit konfiguraci** na kartě **nastavení SQL Server** a otevřete stránku konfigurace optimalizovaného úložiště pro výkon. Můžete buď ponechat hodnoty ve výchozím nastavení, nebo upravit typ konfigurace disku, který nejlépe vyhovuje vašim potřebám na základě vašich úloh. 
 
@@ -99,7 +99,7 @@ U stávajících SQL Server virtuálních počítačů můžete upravit někter�
 * Data SQL
 * Protokol SQL
 * Jiné (jiné úložiště než SQL)
-* Dostupné
+* K dispozici
 
 Pokud chcete upravit nastavení úložiště, vyberte **Konfigurovat** v části **Nastavení**. 
 
@@ -108,7 +108,6 @@ Pokud chcete upravit nastavení úložiště, vyberte **Konfigurovat** v části
 Můžete upravit nastavení disku pro jednotky, které byly nakonfigurované během procesu vytváření virtuálního počítače SQL Server. Když vyberete možnost **Zvětšit jednotku** , otevře se stránka pro úpravy jednotky, která umožňuje změnit typ disku a přidat další disky. 
 
 ![Konfigurace úložiště pro existující virtuální počítač SQL Server](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-drive.png)
-
 
 
 ## <a name="storage-configuration"></a>Konfigurace úložiště
@@ -127,8 +126,8 @@ Azure na SQL Server virtuálních počítačích vytvoří fond úložiště pom
 | Nastavení | Hodnota |
 | --- | --- |
 | Velikost pruhu |256 KB (datové sklady); 64 KB (transakční) |
-| Velikost disků |1 TB |
-| Mezipaměť |Čtení |
+| Velikosti disků |1 TB |
+| Mezipaměť |Pro čtení |
 | Velikost přidělení |velikost alokační jednotky systému souborů NTFS v 64 KB |
 | Obnovení | Jednoduché obnovení (bez odolnosti) |
 | Počet sloupců |Počet datových disků až do 8<sup>1</sup> |
@@ -143,7 +142,7 @@ Následující tabulka popisuje tři dostupné možnosti typu úlohy a jejich od
 
 | Typ úlohy | Popis | Optimalizace |
 | --- | --- | --- |
-| **Obecné** |Výchozí nastavení, které podporuje většinu úloh |Žádné |
+| **Obecné** |Výchozí nastavení, které podporuje většinu úloh |Žádný |
 | **Zpracování transakcí** |Optimalizuje úložiště pro tradiční databázové OLTP úlohy. |Příznak trasování 1117<br/>Příznak trasování 1118 |
 | **Datové sklady** |Optimalizuje úložiště pro analytické a generování sestav úloh. |Příznak trasování 610<br/>Příznak trasování 1117 |
 

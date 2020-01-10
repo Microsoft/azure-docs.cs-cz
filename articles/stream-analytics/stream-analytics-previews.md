@@ -1,27 +1,26 @@
 ---
-title: Funkce ve verzi Preview pro Azure Stream Analytics
-description: V tomto článku jsou uvedené Azure Stream Analytics funkce, které jsou momentálně ve verzi Preview.
-services: stream-analytics
+title: Funkce Azure Stream Analytics ve verzi preview
+description: Tento článek obsahuje seznam funkcí Azure Stream Analytics, které jsou aktuálně ve verzi preview.
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: df3e8c1cd91c676c64d15c46c5acdc3d5bcfaa8e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 59bb866d7a339608555f0bb802e1716eba5d3255
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161371"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431576"
 ---
-# <a name="azure-stream-analytics-preview-features"></a>Funkce ve verzi Preview pro Azure Stream Analytics
+# <a name="azure-stream-analytics-preview-features"></a>Funkce Azure Stream Analytics ve verzi preview
 
-Tento článek shrnuje všechny funkce, které jsou v současnosti ve verzi Preview, k disAzure Stream Analytics. Používání funkcí verze Preview v produkčním prostředí se nedoporučuje.
+Tento článek shrnuje všechny funkce aktuálně ve verzi preview pro Azure Stream Analytics. Pomocí funkce ve verzi preview v produkčním prostředí se nedoporučuje.
 
-## <a name="public-previews"></a>Veřejné náhledy
+## <a name="public-previews"></a>Verze Public Preview
 
-Následující funkce jsou ve verzi Public Preview. Tyto funkce můžete využívat ještě dnes, ale nepoužívejte je v produkčním prostředí.
+Následující funkce jsou ve verzi public preview. Můžete využít výhod těchto funkcích ještě dnes, ale nemusíte používat v produkčním prostředí.
 
 ### <a name="online-scaling"></a>Škálování online
 
@@ -62,17 +61,17 @@ Azure Stream Analytics zavádí nové modely strojového učení s podporou pro 
 
 ### <a name="integration-with-azure-machine-learning"></a>Integrace s Azure Machine Learning
 
-Stream Analytics úlohy můžete škálovat pomocí funkcí Machine Learning (ML). Další informace o tom, jak můžete používat funkce ML v úloze Stream Analytics, najdete v tématu [škálování úlohy Stream Analytics pomocí Azure Machine Learning funkcí](stream-analytics-scale-with-machine-learning-functions.md). Projděte si reálný scénář s [prováděním analýz mínění pomocí Azure Stream Analytics a Azure Machine Learning](stream-analytics-machine-learning-integration-tutorial.md).
+Je možné škálovat úlohy Stream Analytics s funkcemi Machine Learning (ML). Další informace o tom, jak můžete používat funkce ML v úloze Stream Analytics, najdete v tématu [škálování úlohy Stream Analytics pomocí Azure Machine Learning funkcí](stream-analytics-scale-with-machine-learning-functions.md). Projděte si reálný scénář s [prováděním analýz mínění pomocí Azure Stream Analytics a Azure Machine Learning](stream-analytics-machine-learning-integration-tutorial.md).
 
 
-### <a name="live-data-testing-in-visual-studio"></a>Živé testování dat v aplikaci Visual Studio
+### <a name="live-data-testing-in-visual-studio"></a>Živé testování data v sadě Visual Studio
 
-Nástroje Visual Studio Tools for Azure Stream Analytics zlepšují funkci místního testování, která vám umožní testovat dotazy na proudy událostí živého vysílání z cloudových zdrojů, jako je centrum událostí nebo centrum IoT. Přečtěte si, jak [místně testovat živá data pomocí Azure Stream Analyticsch nástrojů pro Visual Studio](stream-analytics-live-data-local-testing.md).
+Visual Studio tools pro Azure Stream Analytics rozšířit místní testování funkce, která využijete k otestování dotazů vůči datové proudy živou událost z cloudových zdrojů, jako je například Event Hubu nebo služby IoT hub. Přečtěte si, jak [místně testovat živá data pomocí Azure Stream Analyticsch nástrojů pro Visual Studio](stream-analytics-live-data-local-testing.md).
 
 
-### <a name="net-user-defined-functions-on-iot-edge"></a>Uživatelsky definované funkce rozhraní .NET v IoT Edge
+### <a name="net-user-defined-functions-on-iot-edge"></a>.NET uživatelsky definovaných funkcí na hraničních zařízeních IoT
 
-S uživatelsky definovanými funkcemi .NET Standard můžete spustit kód .NET Standard jako součást kanálu streamování. Můžete vytvářet jednoduché C# třídy nebo importovat úplný projekt a knihovny. V aplikaci Visual Studio je podporováno úplné prostředí pro vytváření obsahu a ladění. Další informace najdete na webu [vývoj .NET Standard uživatelsky definovaných funkcí pro úlohy Azure Stream Analytics Edge](stream-analytics-edge-csharp-udf-methods.md).
+Pomocí .NET standard uživatelem definované funkce můžete spustit .NET Standard kódu jako součást vašeho streamovacího kanálu. Můžete vytvořit jednoduché třídy jazyka C# nebo import projektů a knihovny. Úplné pro vytváření a ladění je podporováno v sadě Visual Studio. Další informace najdete na webu [vývoj .NET Standard uživatelsky definovaných funkcí pro úlohy Azure Stream Analytics Edge](stream-analytics-edge-csharp-udf-methods.md).
 
 ## <a name="other-previews"></a>Další verze Preview
 

@@ -1,25 +1,14 @@
 ---
-title: Zabalit existující spustitelný soubor do Azure Service Fabric | Microsoft Docs
+title: Zabalení stávajícího spustitelného souboru do Azure Service Fabric
 description: Přečtěte si o sbalení existující aplikace jako spustitelného souboru hosta, aby ji bylo možné nasadit do clusteru Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: na
 ms.date: 03/15/2018
-ms.author: atsenthi
-ms.openlocfilehash: bd6984db67a8a7b9c38988558ada51e12d337f52
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 3d7aab28a32effa2caf7b04b830d72e5e3dfda56
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013256"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457834"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Nasaďte existující spustitelný soubor pro Service Fabric
 Můžete spustit libovolný typ kódu, jako je Node. js, Java nebo C++ v Azure Service Fabric jako služba. Service Fabric odkazuje na tyto typy služeb jako spustitelné soubory typu Host.
@@ -35,7 +24,7 @@ Pro spuštění spustitelného souboru hosta v Service Fabric clusteru je k disp
 * Výsadb. V clusteru můžete spustit několik aplikací, což eliminuje nutnost spuštění každé aplikace na vlastním hardwaru.
 * Zjistitelnost: použití REST můžete zavolat službu pojmenování Service Fabric a najít další služby v clusteru. 
 
-## <a name="samples"></a>Ukázky
+## <a name="samples"></a>Ukázky kódu
 * [Ukázka balení a nasazení hostovaného spustitelného souboru](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Ukázka dvou spustitelných souborů hostaC# (a NodeJS), které komunikují přes službu pojmenování pomocí REST](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 

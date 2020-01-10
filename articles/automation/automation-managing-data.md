@@ -2,31 +2,27 @@
 title: Správa dat Azure Automation
 description: Tento článek obsahuje několik témat pro správu Azure Automationho prostředí.  V současné době zahrnuje uchovávání dat a zálohování Azure Automation zotavení po havárii v Azure Automation.
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: da1b151a150dfbf602593451d3d68043352b73eb
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: daa5bab7c8d4cbe98ffe9a8a8a4b66da029fef5c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850767"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421893"
 ---
 # <a name="managing-azure-automation-data"></a>Správa dat Azure Automation
 Tento článek obsahuje několik témat pro správu Azure Automationho prostředí.
 
-## <a name="data-retention"></a>Uchování dat
+## <a name="data-retention"></a>Uchovávání dat
 Když prostředek odstraníte z Azure Automation, bude před tím, než se trvale odebere, uchovávat 90 dní pro účely auditování.  Během této doby nemůžete tento prostředek zobrazit ani použít.  Tato zásada platí i pro prostředky, které patří k účtu Automation, který je odstraněný.
 
 Azure Automation automaticky odstraní a trvale odebere úlohy starší než 90 dní.
 
 Následující tabulka shrnuje zásady uchovávání informací pro různé prostředky.
 
-| Data | Zásady |
+| Data | Zásada |
 |:--- |:--- |
 | Účty |Trvale odebrané 90 dní poté, co uživatel odstraní účet. |
 | Prostředky |Trvale odebrané 90 dní po odstranění prostředku uživatelem nebo 90 dnů po účtu, který je držitelem majetku, je odstraněn uživatelem. |
@@ -69,8 +65,8 @@ V následující tabulce jsou uvedeny dostupné dvojice primární a sekundárn�
 
 | Primární | Sekundární |
 | --- | --- |
-| Středojižní USA |Středoseverní USA |
-| USA – východ 2 |Střední USA |
+| Střed USA – jih |Střed USA – sever |
+| USA – východ 2 |Střed USA |
 | Západní Evropa |Severní Evropa |
 | Jihovýchodní Asie |Východní Asie |
 | Japonsko – východ |Japonsko – západ |

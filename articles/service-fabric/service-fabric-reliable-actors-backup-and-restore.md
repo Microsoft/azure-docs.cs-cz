@@ -1,33 +1,24 @@
 ---
-title: Zálohování a obnovení Azure Service Fabric actors | Dokumentace Microsoftu
-description: Zjistěte, jak implementovat zálohování a obnovení ve vaší aplikaci Azure Service Fabric actors.
-services: service-fabric
-documentationcenter: .net
+title: Zálohování a obnovení Azure Service Fabric Actors
+description: Naučte se implementovat zálohování a obnovení ve službě Azure Service Fabric Actors.
 author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/29/2018
 ms.author: vturecek
-ms.openlocfilehash: cb397141c86f40f02d8046838865106e0fb8992c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41ba3f9c7d362756b800005d0c140c23dd96caa6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726617"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75370455"
 ---
-# <a name="implement-reliable-actors-backup-and-restore"></a>Reliable Actors implementovat zálohování a obnovení
+# <a name="implement-reliable-actors-backup-and-restore"></a>Implementace Reliable Actors zálohování a obnovení
 
 > [!NOTE]
-> Společnost Microsoft doporučuje používat [pravidelné zálohování a obnovení](service-fabric-backuprestoreservice-quickstart-azurecluster.md) pro konfiguraci zálohování dat Reliable Stateful services a Reliable Actors. 
+> Společnost Microsoft doporučuje používat pro konfiguraci zálohování spolehlivých stavových služeb a Reliable Actors [pravidelné zálohování a obnovování](service-fabric-backuprestoreservice-quickstart-azurecluster.md) dat. 
 > 
 
-V následujícím příkladu služba objektu actor vlastní zpřístupní metodu k zálohování dat objektu actor s využitím naslouchací proces vzdálené komunikace, která je již v `ActorService`:
+V následujícím příkladu zpřístupňuje služba vlastního objektu actor metodu zálohování dat objektu actor využitím naslouchacího procesu vzdálené komunikace, který je již přítomen v `ActorService`:
 
 ```csharp
 public interface IMyActorService : IService
@@ -103,7 +94,7 @@ class MyActorServiceImpl extends ActorService implements MyActorService
 }
 ```
 
-V tomto příkladu `IMyActorService` je kontrakt vzdálené komunikace, která implementuje `IService` (C#) a `Service` (Java) a následně implementované `MyActorService`. Přidáním této smlouvy vzdálené komunikace, metod na `IMyActorService` jsou teď dostupné na klienta tak, že vytvoříte proxy server vzdálené komunikace prostřednictvím `ActorServiceProxy`:
+V tomto příkladu je `IMyActorService` kontraktem vzdálené komunikace, který implementuje `IService`C#() a `Service` (Java) a následně se implementuje pomocí `MyActorService`. Přidáním této smlouvy vzdálené komunikace jsou metody v `IMyActorService` nyní k dispozici klientovi vytvořením vzdálené proxy serveru prostřednictvím `ActorServiceProxy`:
 
 ```csharp
 IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(
@@ -118,10 +109,10 @@ MyActorService myActorServiceProxy = ActorServiceProxy.create(MyActorService.cla
 myActorServiceProxy.backupActorsAsync();
 ```
 
-Další informace o Reliable Actors v následujících článcích:
+Pokud chcete získat další informace o Reliable Actors, přečtěte si následující články:
 * [Správa stavu objektu actor](service-fabric-reliable-actors-state-management.md)
-* [Životní cyklus a uvolňování paměti kolekce objektu actor](service-fabric-reliable-actors-lifecycle.md)
-* [Referenční dokumentace rozhraní API objektů actor](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Životní cyklus objektu actor a uvolňování paměti](service-fabric-reliable-actors-lifecycle.md)
+* [Referenční dokumentace k rozhraní actor API](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [Vzorový kód .NET](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Vzorový kód Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

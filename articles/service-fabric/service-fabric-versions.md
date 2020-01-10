@@ -1,25 +1,14 @@
 ---
-title: Podporované verze clusteru v Azure Service Fabric | Microsoft Docs
-description: Přečtěte si o verzích clusterů v Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Podporované verze clusteru v Azure Service Fabric
+description: Přečtěte si o verzích clusterů v Azure Service Fabric, včetně odkazu na nejnovější verze z blogu týmu Service Fabric.
 ms.topic: troubleshooting
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/18/2019
-ms.author: atsenthi
-ms.openlocfilehash: c2453167bbdabbb201f2463e1eec8206be6d4223
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 1d54f4f459b71469c5d10c949d35841572242c07
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186481"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638999"
 ---
 # <a name="supported-service-fabric-versions"></a>Podporované verze Service Fabric
 
