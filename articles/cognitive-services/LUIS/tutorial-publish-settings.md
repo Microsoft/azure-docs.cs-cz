@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: diberry
-ms.openlocfilehash: 7683a73fd1f403847089dc722e5f6382acd948cb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2df32c20bebf4243f383a0cccd8f037721533602
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447695"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890393"
 ---
 # <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>Kurz: Přidání analýzy mínění jako nastavení publikování
 
@@ -128,7 +128,7 @@ Vzhledem k tomu, že se jedná o nastavení publikování, nezobrazují se na st
 
 ## <a name="related-information"></a>Související informace
 
-* Mínění je k dispozici pomocí [Analýza textu](../Text-Analytics/index.yml)služby pro rozpoznávání. Tato funkce je omezená, aby Analýza textu [podporované jazyky](luis-language-support.md##languages-supported).
+* Mínění je k dispozici pomocí [Analýza textu](../Text-Analytics/index.yml)služby pro rozpoznávání. Tato funkce je omezená, aby Analýza textu [podporované jazyky](luis-language-support.md#languages-supported).
 * [Postup výuky](luis-how-to-train.md)
 * [Jak publikovat](luis-how-to-publish-app.md)
 * [Testování na portálu LUIS](luis-interactive-test.md)

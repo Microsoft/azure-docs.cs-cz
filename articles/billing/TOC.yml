@@ -232,7 +232,7 @@
     - name: Zákaz zobrazení firemních nákladů
       href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
     - name: Kontaktování podpory
-      href: ../azure-supportability/how-to-create-azure-support-request.md
+      href: ../azure-portal/supportability/how-to-create-azure-support-request.md
 - name: ukázky
   items:
     - name: REST API

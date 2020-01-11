@@ -6,7 +6,7 @@
       href: overview.md
     - name: Kterou možnost MariaDB mám zvolit?
       href: select-right-deployment-type.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření databáze – portál
@@ -25,7 +25,7 @@
           href: tutorial-design-database-using-portal.md
         - name: Azure CLI
           href: tutorial-design-database-cli.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
@@ -59,6 +59,8 @@
           href: concepts-firewall-rules.md
         - name: Virtual Network
           href: concepts-data-access-security-vnet.md
+        - name: Privátní propojení
+          href: concepts-data-access-security-private-link.md
         - name: Rozšířená ochrana před internetovými útoky
           href: concepts-data-access-and-security-threat-protection.md
     - name: Kontinuita podnikových procesů
@@ -176,6 +178,12 @@
           href: howto-manage-vnet-portal.md
         - name: Azure CLI
           href: howto-manage-vnet-cli.md
+    - name: Privátní propojení
+      items:
+        - name: portál Azure
+          href: howto-configure-privatelink-portal.md
+        - name: Azure CLI
+          href: howto-configure-privatelink-cli.md
     - name: Restartování serveru
       items:
         - name: portál Azure
