@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: 7ccd908c96e68190f09da37a83e0a34a09f5e697
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4659274110add96613ca88560edfb459b20a99cb
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087136"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894353"
 ---
 # <a name="apache-spark-streaming-job-that-reads-apache-kafka-data-fails-with-noclassdeffounderror-in-hdinsight"></a>Úloha streamování Apache Spark, která čte Apache Kafka data, se nezdařila s NoClassDefFoundError ve službě HDInsight
 
@@ -20,7 +20,7 @@ Tento článek popisuje postup řešení potíží a možná řešení potíží
 
 ## <a name="issue"></a>Problém
 
-Cluster Apache Spark spustí úlohu streamování Sparku, která čte data z clusteru Apache Kafka. Úloha streamování Sparku se nezdařila, pokud je zapnutá komprese streamu Kafka. V takovém případě se aplikace application_1525986016285_0193 streamování Sparku nezdařila, protože došlo k chybě:
+Cluster Apache Spark spustí úlohu streamování Sparku, která čte data z clusteru Apache Kafka. Úloha streamování Sparku se nezdařila, pokud je zapnutá komprese streamu Kafka. V takovém případě se application_1525986016285_0193 aplikace pro streamování Sparku nezdařila, protože došlo k chybě:
 
 ```
 18/05/17 20:01:33 WARN YarnAllocator: Container marked as failed: container_e25_1525986016285_0193_01_000032 on host: wn87-Scaled.2ajnsmlgqdsutaqydyzfzii3le.cx.internal.cloudapp.net. Exit status: 50. Diagnostics: Exception from container-launch.
@@ -32,7 +32,7 @@ Stack trace: ExitCodeException exitCode=50:
 
 ## <a name="cause"></a>Příčina
 
-Tato chyba se může vypříčinit zadáním verze `spark-streaming-kafka` souboru jar, který se liší od verze clusteru Kafka, který používáte.
+Tato chyba může být způsobena zadáním verze `spark-streaming-kafka` souboru jar, která se liší od verze clusteru Kafka, který používáte.
 
 Pokud například používáte cluster Kafka verze 0.10.1, následující příkaz způsobí chybu:
 
@@ -44,16 +44,16 @@ spark-submit \
 ~/Kafka_Spark_SQL.py <bootstrap server details>
 ```
 
-## <a name="resolution"></a>Řešení
+## <a name="resolution"></a>Rozlišení
 
-Použijte příkaz Spark-submit s `–packages` možností a zajistěte, aby verze souboru jar-streaming-Kafka byla stejná jako verze clusteru Kafka, kterou používáte.
+Použijte příkaz Spark-submit s možností `–packages` a ujistěte se, že verze souboru jar-streaming-Kafka je stejná jako verze clusteru Kafka, kterou používáte.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
+* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

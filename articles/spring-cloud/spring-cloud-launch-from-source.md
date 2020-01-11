@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 37af0ee99e48bfeddf4be81241b75318d1afda40
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: f9d7fa5df1f7568aa357abf8b5864344d768cf75
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75707880"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891755"
 ---
 # <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>Rychlý Start: spuštění vaší jarní cloudové aplikace ze zdrojového kódu
 
@@ -31,7 +31,7 @@ Po tomto rychlém startu se dozvíte, jak:
 ## <a name="prerequisites"></a>Požadavky
 
 >[!Note]
-> Jarní cloud Azure se teď nabízí jako verze Public Preview. Nabídky veřejné verze Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.  Další informace o podpoře v rámci verzí Preview najdete v našich [nejčastějších dotazech](https://azure.microsoft.com/support/faq/) nebo v souboru o [support Request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) , kde se dozvíte víc.
+> Jarní cloud Azure se teď nabízí jako verze Public Preview. Nabídky veřejné verze Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.  Další informace o podpoře v rámci verzí Preview najdete v našich [nejčastějších dotazech](https://azure.microsoft.com/support/faq/) nebo v souboru o [support Request](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) , kde se dozvíte víc.
 
 Než začnete, ujistěte se, že vaše předplatné Azure má požadované závislosti:
 

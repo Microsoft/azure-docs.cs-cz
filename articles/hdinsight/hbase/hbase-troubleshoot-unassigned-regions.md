@@ -7,18 +7,18 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
-ms.openlocfilehash: 377a75d098ab4238fadc16b218bc69235f2e732a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 85aeafb2c4461b50d399e40d9abff2ac04b677c0
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091552"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887134"
 ---
 # <a name="issues-with-region-servers-in-azure-hdinsight"></a>Problémy se servery oblastí ve službě Azure HDInsight
 
 Tento článek popisuje postup řešení potíží a možná řešení potíží při komunikaci s clustery Azure HDInsight.
 
-## <a name="scenario-unassigned-regions"></a>Scénář: Nepřiřazené oblasti
+## <a name="scenario-unassigned-regions"></a>Scénář: nepřiřazené oblasti
 
 ### <a name="issue"></a>Problém
 
@@ -34,25 +34,25 @@ V uživatelském rozhraní Apache HBase Master uvidíte počet oblastí, které 
 
 Otvory můžou být výsledkem offline oblastí.
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 
 Opravte přiřazení. Podle následujících kroků přeneste nepřiřazené oblasti zpět do normálního stavu:
 
 1. Přihlaste se ke clusteru HDInsight HBA pomocí SSH.
 
-1. Spusťte `hbase zkcli` příkaz pro připojení k prostředí Zookeeper Shell.
+1. Pokud se chcete připojit pomocí prostředí ZooKeeper, spusťte příkaz `hbase zkcli`.
 
-1. Spusťte `rmr /hbase/regions-in-transition` příkaz `rmr /hbase-unsecure/regions-in-transition` nebo.
+1. Spusťte příkaz `rmr /hbase/regions-in-transition` nebo `rmr /hbase-unsecure/regions-in-transition`.
 
-1. Ukončete prostředí Zookeeper pomocí `exit` příkazu.
+1. Ukončete prostředí Zookeeper pomocí příkazu `exit`.
 
 1. Otevřete uživatelské rozhraní Apache Ambari a pak restartujte službu Active HBase Master.
 
-1. Spusťte `hbase hbck` příkaz znovu (bez dalších možností). Zkontrolujte výstup a zajistěte, aby byly přiřazeny všechny oblasti.
+1. Spusťte příkaz `hbase hbck` znovu (bez dalších možností). Zkontrolujte výstup a zajistěte, aby byly přiřazeny všechny oblasti.
 
 ---
 
-## <a name="scenario-dead-region-servers"></a>Scénář: Servery neaktivních oblastí
+## <a name="scenario-dead-region-servers"></a>Scénář: servery nedoručené oblasti
 
 ### <a name="issue"></a>Problém
 
@@ -64,19 +64,19 @@ Několik rozdělených adresářů WAL
 
 1. Získat seznam aktuálních WALs: `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out`.
 
-1. `wals.out` Zkontrolujte soubor. Pokud je k dispozici příliš mnoho rozdělených adresářů (počínaje oddělovači), server oblasti se pravděpodobně nedaří kvůli těmto adresářům.
+1. Zkontrolujte soubor `wals.out`. Pokud je k dispozici příliš mnoho rozdělených adresářů (počínaje oddělovači), server oblasti se pravděpodobně nedaří kvůli těmto adresářům.
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 
 1. Z portálu Ambari zastavte HBA.
 
-1. Spusťte `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out` , abyste získali nový seznam WALs.
+1. Spusťte `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out` pro získání nového seznamu WALs.
 
-1. Přesuňte rozdělené adresáře * na dočasnou složku, `splitWAL`a odstraňte složky s oddělovači (*).
+1. Přesuňte rozdělené adresáře * na dočasnou složku, `splitWAL`a odstraňte složky rozdělené do *.
 
 1. Spusťte `hbase zkcli` příkaz pro připojení k prostředí Zookeeper Shell.
 
-1. Provést `rmr /hbase-unsecure/splitWAL`.
+1. Spusťte `rmr /hbase-unsecure/splitWAL`.
 
 1. Restartujte službu HBA.
 
@@ -86,6 +86,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

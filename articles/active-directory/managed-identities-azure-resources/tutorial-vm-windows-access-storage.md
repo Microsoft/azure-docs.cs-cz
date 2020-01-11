@@ -1,5 +1,5 @@
 ---
-title: Přístup k Azure Storage pomocí spravované identity přiřazené systému Windows virtuální počítač | Dokumentace Microsoftu
+title: Přístup k Azure Storage pomocí spravované identity přiřazené systémem Windows VM | Microsoft Docs
 description: Tento kurz vás postupně provede používáním spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Storage.
 services: active-directory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/12/2018
+ms.date: 01/10/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d7200dd89d51817a5d146ff4d33e2501ed2826
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4da78fbb15aea2bd0f54ffec1b0851466c799584
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278017"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888579"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Storage
 
@@ -40,7 +40,7 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-account"></a>Vytvoření účtu
 
 V této části vytvoříte účet úložiště.
 
@@ -49,7 +49,7 @@ V této části vytvoříte účet úložiště.
 3. V části **Název** zadejte název účtu úložiště.
 4. V polích **Model nasazení** a **Druh účtu** nastavte **Resource manager** a **Úložiště (v1 pro obecné účely)** .
 5. Ověřte, že pole **Předplatné** a **Skupina prostředků** se shodují s údaji zadanými při vytvoření virtuálního počítače v předchozím kroku.
-6. Klikněte na možnost **Vytvořit**.
+6. Klikněte na **Vytvořit**.
 
     ![Vytvoření nového účtu úložiště](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -69,25 +69,25 @@ Soubory vyžadují úložiště objektů blob. Proto potřebujete vytvořit kont
 7. V podokně **Nahrát objekt blob** v části **Soubory** klikněte na ikonu složky a přejděte k souboru **hello world.txt** na místním počítači, vyberte ho a klikněte na **Nahrát**.
     ![Nahrání textového souboru](./media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
-## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>Udělení přístupu virtuálnímu počítači ke kontejneru Azure Storage
+## <a name="grant-access"></a>Udělení přístupu
 
-Spravovanou identitu přiřazenou systémem na virtuálním počítači můžete použít k načtení dat, která jsou v úložišti Azure Storage Blob.
+V této části se dozvíte, jak udělit VIRTUÁLNÍmu počítači přístup k kontejneru Azure Storage. Spravovanou identitu přiřazenou systémem na virtuálním počítači můžete použít k načtení dat, která jsou v úložišti Azure Storage Blob.
 
 1. Přejděte zpět k nově vytvořenému účtu úložiště.
 2. Na panelu vlevo klikněte na odkaz **Řízení přístupu (IAM)** .
-3. Klikněte na tlačítko **+ přidat přiřazení role** nad stránky a přidat nové přiřazení role pro váš virtuální počítač.
-4. V části **Role**, z rozevíracího seznamu vyberte **čtecí modul dat pro úložiště objektů Blob**.
+3. Kliknutím na **+ Přidat přiřazení role** v horní části stránky přidejte nové přiřazení role pro svůj virtuální počítač.
+4. V části **role**v rozevíracím seznamu vyberte **čtečka dat objektů BLOB úložiště**.
 5. V dalším rozevíracím seznamu **Přiřadit přístup k** vyberte **Virtuální počítač**.
 6. Potom se ujistěte, že v rozevíracím seznamu **Předplatné** je správné předplatné, a nastavte **Skupinu prostředků** na **Všechny skupiny prostředků**.
 7. V části **Vybrat** zvolte svůj virtuální počítač a klikněte na **Uložit**.
 
     ![Přiřazení oprávnění](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
 
-## <a name="get-an-access-token-and-use-it-to-call-azure-storage"></a>Získání a použití přístupového tokenu k volání Azure Storage 
+## <a name="get-an-access-token"></a>Získání přístupového tokenu 
 
 Azure Storage nativně podporuje ověřování Azure AD, takže může přímo přijímat přístupové tokeny získané pomocí spravované identity. Je to součást integrace Azure Storage do Azure AD, ale nejde o poskytnutí přihlašovacích údajů v připojovacím řetězci.
 
-Tady je příklad kódu .NET otevření připojení do služby Azure Storage pomocí přístupového tokenu a pak se čte obsah souboru, který jste vytvořili dříve. Tento kód je potřeba spustit na virtuálním počítači, aby byl možný přístup ke koncovému bodu spravované identity virtuálního počítače. Rozhraní .NET framework 4.6 nebo novější je nutné použít metodu tokenu přístupu. Parametr `<URI to blob file>` nahraďte odpovídající hodnotou. Tuto hodnotu získáte, když přejdete k vytvořenému souboru, který jste nahráli do úložiště objektů blob, a zkopírujete **adresu URL**, která je na stránce **Přehled** v části **Vlastnosti**.
+Tady je příklad kódu .NET pro otevření připojení k Azure Storage pomocí přístupového tokenu a následného čtení obsahu souboru, který jste vytvořili dříve. Tento kód je potřeba spustit na virtuálním počítači, aby byl možný přístup ke koncovému bodu spravované identity virtuálního počítače. K použití metody přístupového tokenu se vyžaduje .NET Framework 4,6 nebo vyšší. Parametr `<URI to blob file>` nahraďte odpovídající hodnotou. Tuto hodnotu získáte, když přejdete k vytvořenému souboru, který jste nahráli do úložiště objektů blob, a zkopírujete **adresu URL**, která je na stránce **Přehled** v části **Vlastnosti**.
 
 ```csharp
 using System;
@@ -157,11 +157,11 @@ namespace StorageOAuthToken
 }
 ```
 
-V odpovědi je obsah souboru:
+Odpověď bude obsahovat obsah souboru:
 
 `Hello world! :)`
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak identitě přiřazené systémem na virtuálním počítači s Windows povolit přístup k Azure Storage.  Další informace o Azure Storage:
 

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: d1def81a1f5d6b1b3a6d64d2d302ceb9d5f17dfb
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 40456b2a756d5ae2241b54ff65f675004c22f0a2
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769502"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890353"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions triggerů HTTP a vazeb
 
@@ -682,7 +682,7 @@ Ve výchozím nastavení jsou všechny trasy funkcí s předponou *rozhraní API
 
 ### <a name="using-route-parameters"></a>Použití parametrů směrování
 
-Parametry směrování definované modelem `route` funkce jsou k dispozici pro každou vazbu. Například pokud máte trasu definovanou jako `"route": "products/{id}"` pak může vazba úložiště tabulky použít hodnotu parametru `{id}` v konfiguraci vazby.
+Parametry směrování, které definují vzor `route` funkce jsou k dispozici pro každou vazbu. Například pokud máte trasu definovanou jako `"route": "products/{id}"` pak může vazba úložiště tabulky použít hodnotu parametru `{id}` v konfiguraci vazby.
 
 Následující konfigurace ukazuje, jak se parametr `{id}` předává do `rowKey`vazby.
 
@@ -868,7 +868,7 @@ Autorizace Webhooku se zpracovává komponentou přijímače Webhooku, součást
 
 Délka požadavku HTTP je omezená na 100 MB (104 857 600 bajtů) a délka adresy URL je omezená na 4 KB (4 096 bajtů). Tato omezení jsou určena `httpRuntime` prvkem [souboru Web. config](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config)modulu runtime.
 
-Pokud funkce, která používá Trigger HTTP, nebude dokončena během přibližně 2,5 minut, brána vyprší a vrátí chybu HTTP 502. Funkce bude pokračovat v běhu, ale nebude moci vrátit odpověď HTTP. U dlouhotrvajících funkcí doporučujeme, abyste provedli asynchronní vzorce a vraceli umístění, kde můžete testovat stav žádosti pomocí příkazového testu. Informace o tom, jak dlouho může funkce běžet, najdete v tématu [škálování a plán využití hostování](functions-scale.md#timeout).
+Pokud funkce, která používá Trigger HTTP, nebude dokončena během 230 sekund, vyprší časový limit [Azure Load Balancer](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds) a vrátí chybu HTTP 502. Funkce bude pokračovat v běhu, ale nebude moci vrátit odpověď HTTP. U dlouhotrvajících funkcí doporučujeme, abyste provedli asynchronní vzorce a vraceli umístění, kde můžete testovat stav žádosti pomocí příkazového testu. Informace o tom, jak dlouho může funkce běžet, najdete v tématu [škálování a plán využití hostování](functions-scale.md#timeout).
 
 ## <a name="output"></a>Výstup
 
@@ -923,7 +923,7 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
 |dynamicThrottlesEnabled|true<sup>\*</sup>|Když je toto nastavení povolené, bude v kanálu zpracování požadavků pravidelně kontrolovat čítače výkonu systému, jako jsou připojení/vlákna, procesy/paměti/CPU/a, pokud některý z těchto čítačů překročí vestavěnou vysokou prahovou hodnotu (80%), požadavky se odmítnou se 429 "příliš zaneprázdněnou", dokud se čítače nevrátí na normální úrovně.<br/><sup>\*</sup> Výchozí hodnota v plánu spotřeby je `true`. Výchozí hodnota ve vyhrazeném plánu je `false`.|
 |HSTS|Nepovoleno|Pokud je `isEnabled` nastaveno na `true`, vynutilo se [chování HSTS (http Strict Transport Security) .NET Core](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts) , jak je definováno ve [třídě`HstsOptions`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0). Výše uvedený příklad také nastaví vlastnost [`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge) na hodnotu 10 dnů. Podporované vlastnosti `hsts` jsou: <table><tr><th>Vlastnost</th><th>Popis</th></tr><tr><td>excludedHosts</td><td>Pole řetězců názvů hostitelů, pro které není přidáno záhlaví HSTS.</td></tr><tr><td>includeSubDomains</td><td>Logická hodnota, která označuje, zda je povolen parametr includeSubDomain hlavičky Strict-Transport-Security.</td></tr><tr><td>maxAge</td><td>Řetězec definující parametr maximálního stáří záhlaví Strict-Transport-Security.</td></tr><tr><td>preload</td><td>Logická hodnota, která označuje, zda je povolen parametr přednačtení záhlaví Strict-Transport-Security.</td></tr></table>|
 |maxConcurrentRequests|100<sup>\*</sup>|Maximální počet funkcí HTTP, které jsou spouštěny paralelně. To vám umožňuje řídit souběžnost, což pomáhá spravovat využití prostředků. Můžete mít například funkci HTTP, která používá velké množství systémových prostředků (paměť/procesor/sokety), což způsobuje problémy, pokud je souběžnost příliš vysoká. Nebo může být funkce, která vytváří odchozí požadavky na službu třetí strany, a tyto hovory musí být omezené na míru. V těchto případech vám může pomáhat použití omezení. <br/><sup>*</sup> Výchozí hodnota pro plán spotřeby je 100. Výchozí hodnota pro vyhrazený plán je nevázaná (`-1`).|
-|maxOutstandingRequests|200<sup>\*</sup>|Maximální počet nezpracovaných požadavků, které jsou v daném okamžiku uchovávány. Tento limit zahrnuje požadavky, které jsou ve frontě, ale nezačaly běžet, a také jakékoli probíhající provádění. Všechny příchozí žádosti přes toto omezení se odmítnou s 429 "příliš zaneprázdněnou" odezvou. Umožňuje volajícím využívat strategie opakování na základě času a také vám pomůže řídit maximální latenci žádostí. Tato možnost řídí služby Řízení front zpráv, ke kterým dochází v cestě spuštění hostitele skriptu. Další fronty, například fronta žádostí ASP.NET, budou stále platit a nebudou ovlivněny tímto nastavením. <br/><sup>\*</sup>\The ve výchozím nastavení pro plán spotřeby je 200. Výchozí hodnota pro vyhrazený plán je nevázaná (`-1`).|
+|maxOutstandingRequests|200<sup>\*</sup>|Maximální počet nezpracovaných požadavků, které jsou v daném okamžiku uchovávány. Tento limit zahrnuje požadavky, které jsou ve frontě, ale nezačaly běžet, a také jakékoli probíhající provádění. Všechny příchozí žádosti přes toto omezení se odmítnou s 429 "příliš zaneprázdněnou" odezvou. Umožňuje volajícím využívat strategie opakování na základě času a také vám pomůže řídit maximální latenci žádostí. Tato možnost řídí služby Řízení front zpráv, ke kterým dochází v cestě spuštění hostitele skriptu. Další fronty, například fronta žádostí ASP.NET, budou stále platit a nebudou ovlivněny tímto nastavením. <br/><sup>\*</sup> Výchozí hodnota pro plán spotřeby je 200. Výchozí hodnota pro vyhrazený plán je nevázaná (`-1`).|
 |routePrefix|rozhraní api|Předpona trasy, která se vztahuje na všechny trasy. K odebrání výchozí předpony použijte prázdný řetězec. |
 
 

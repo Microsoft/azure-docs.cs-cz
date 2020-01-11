@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 01/10/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 106252b7c77f9ee3d6b9bdebafce3441d9c4b090
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 08a5c2c101b934f07ab85082e726cb8e1341e5d0
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224228"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888726"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Key Vaultu 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systémem pro virtuální počítač s Windows získat přístup ke službě Azure Key Vault. Služba Key Vault se používá ke spuštění. Umožňuje klientské aplikaci použít tajný kód pro přístup k prostředkům, které nejsou zabezpečené službou Azure Active Directory (AD). Identity spravovaných služeb, které se spravují automaticky v Azure, slouží k ověřování přihlášení ke službám podporujícím ověřování Azure AD bez nutnosti vložení přihlašovacích údajů do kódu. 
+V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systémem pro virtuální počítač s Windows získat přístup ke službě Azure Key Vault. Key Vault slouží ke spuštění. Klientské aplikaci umožňuje použít tajný kód pro přístup k prostředkům, které nejsou zabezpečené službou Azure Active Directory (AD). Identity spravovaných služeb, které se spravují automaticky v Azure, slouží k ověřování přihlášení ke službám podporujícím ověřování Azure AD bez nutnosti vložení přihlašovacích údajů do kódu. 
 
 Získáte informace o těchto tématech:
 
@@ -39,9 +39,9 @@ Získáte informace o těchto tématech:
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>Udělení přístupu virtuálnímu počítači k tajnému kódu uloženému ve službě Key Vault 
+## <a name="grant-access"></a>Udělení přístupu  
  
-Když použijete spravované identity pro prostředky Azure, může kód získat přístupové tokeny sloužící k ověření přístupu k prostředkům, které podporují ověřování Azure AD.  Ale ne všechny služby Azure podporují ověřování Azure AD. Pokud chcete používat spravované identity pro prostředky Azure s těmito službami, uložte přihlašovací údaje služby v Azure Key Vault a použijte spravovanou identitu virtuálního počítače pro přístup k Key Vault k získání přihlašovacích údajů. 
+V této části se dozvíte, jak udělit přístup k VIRTUÁLNÍmu počítači pro tajný kód uložený v Key Vault. Když použijete spravované identity pro prostředky Azure, může kód získat přístupové tokeny sloužící k ověření přístupu k prostředkům, které podporují ověřování Azure AD.  Ale ne všechny služby Azure podporují ověřování Azure AD. Pokud chcete používat spravované identity pro prostředky Azure s těmito službami, uložte přihlašovací údaje služby v Azure Key Vault a použijte spravovanou identitu virtuálního počítače pro přístup k Key Vault k získání přihlašovacích údajů. 
 
 Napřed potřebujete vytvořit Key Vault a pak k němu udělíte přístup spravované identitě přiřazené systémem virtuálního počítače.   
 
@@ -54,7 +54,7 @@ Napřed potřebujete vytvořit Key Vault a pak k němu udělíte přístup sprav
 7. Kliknutím na **OK** dokončete přidání nové zásady přístupu. Kliknutím na **OK** dokončete výběr zásady přístupu. 
 8. Kliknutím na **Vytvořit** dokončete vytvoření trezoru klíčů. 
 
-    ![Text k alternativnímu obrázku](./media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
+    ![Alternativní text k obrázku](./media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
 
 
 Potom přidejte do trezoru klíčů tajný kód, abyste ho mohli později načíst kódem spuštěným na vašem virtuálním počítači: 
@@ -66,9 +66,9 @@ Potom přidejte do trezoru klíčů tajný kód, abyste ho mohli později načí
 5. Nechte datum aktivace i datum konce platnosti nevyplněné a **Povoleno** nechte nastavené na **Ano**. 
 6. Kliknutím na **Vytvořit** vytvořte tajný kód. 
  
-## <a name="get-an-access-token-using-the-vm-identity-and-use-it-to-retrieve-the-secret-from-the-key-vault"></a>Použití identity virtuálního počítače k získání přístupového tokenu a použití tohoto tokenu k načtení tajného kódu ze služby Key Vault  
+## <a name="get-an-access-token"></a>Získání přístupového tokenu  
 
-Pokud nemáte nainstalovaný PowerShell 4.3.1 nebo novější, budete si muset [stáhnout a nainstalovat nejnovější verzi](https://docs.microsoft.com/powershell/azure/overview).
+V této části se dozvíte, jak získat přístupový token pomocí identity virtuálního počítače a jak ho použít k načtení tajného kódu z Key Vault. Pokud nemáte nainstalovaný PowerShell 4.3.1 nebo novější, budete si muset [stáhnout a nainstalovat nejnovější verzi](https://docs.microsoft.com/powershell/azure/overview).
 
 Nejdřív použijeme spravovanou identitu přiřazenou systémem virtuálního počítače k získání přístupového tokenu pro ověření v Key Vaultu:
  
@@ -107,11 +107,11 @@ Nejdřív použijeme spravovanou identitu přiřazenou systémem virtuálního p
     {"value":"p@ssw0rd!","id":"https://mytestkeyvault.vault.azure.net/secrets/MyTestSecret/7c2204c6093c4d859bc5b9eff8f29050","attributes":{"enabled":true,"created":1505088747,"updated":1505088747,"recoveryLevel":"Purgeable"}} 
     ```
     
-Jakmile z Key Vault načtete tajný kód, můžete ho použít k ověření přístupu ke službě, která vyžaduje jméno a heslo. 
+Jakmile ze služby Key Vault načtete tajný kód, můžete ho použít při přihlášení ke službě, která vyžaduje jméno a heslo. 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak využít spravovanou identitu přiřazenou systémem na virtuálním počítači s Windows pro přístup k Azure Key Vaultu.  Další informace o Azure Key Vault:
+V tomto kurzu jste zjistili, jak využít spravovanou identitu přiřazenou systémem na virtuálním počítači s Windows pro přístup k Azure Key Vaultu.  Další informace o službě Azure Key Vault najdete tady:
 
 > [!div class="nextstepaction"]
 >[Azure Key Vault](/azure/key-vault/key-vault-overview)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: apimpm
-ms.openlocfilehash: 4a188a8de4f1cbf9d5bc20f7e514e3f5a2c752dc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 26a353251bd85a30ab26c86f3d6b363b0a84e074
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074626"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889528"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat API Management Azure s virtuálními sítěmi
 Virtuální sítě Azure umožňují umístit jakékoli prostředky Azure do jiné než internetové sítě podporující směrování, ke které můžete řídit přístup. Tyto sítě je pak možné připojit k místním sítím pomocí různých technologií VPN. Další informace o virtuálních sítích Azure najdete tady: [Přehled Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -45,37 +45,40 @@ K provedení kroků popsaných v tomto článku musíte mít:
 
 ### <a name="enable-vnet-connectivity-using-the-azure-portal"></a>Povolení připojení VNET pomocí Azure Portal
 
-1. V [Azure Portal](https://portal.azure.com/)přejděte na svou instanci APIM.
-2. Vyberte **Virtual Network**.
-3. Nakonfigurujte instanci API Management, která se má nasadit v rámci virtuální sítě.
+1. Pokud chcete najít instanci API Management, přejít na [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **API Management Services**.
+
+2. Vyberte instanci API Management.
+
+3. Vyberte **Virtuální síť**.
+4. Nakonfigurujte instanci API Management, která se má nasadit v rámci virtuální sítě.
 
     ![Nabídka virtuální síť API Management][api-management-using-vnet-menu]
-4. Vyberte požadovaný typ přístupu:
+5. Vyberte požadovaný typ přístupu:
 
-   * **Off**: Toto je výchozí nastavení. API Management není nasazený ve virtuální síti.
+    * **Off**: Toto je výchozí nastavení. API Management není nasazený ve virtuální síti.
 
-   * **Externí**: API Management brána a portál pro vývojáře jsou přístupné z veřejného Internetu prostřednictvím externího nástroje pro vyrovnávání zatížení. Brána má přístup k prostředkům v rámci virtuální sítě.
+    * **Externí**: API Management brána a portál pro vývojáře jsou přístupné z veřejného Internetu prostřednictvím externího nástroje pro vyrovnávání zatížení. Brána má přístup k prostředkům v rámci virtuální sítě.
 
-     ![Veřejný partnerský vztah][api-management-vnet-public]
+        ![Veřejný partnerský vztah][api-management-vnet-public]
 
-   * **Interní**: API Management brána a portál pro vývojáře jsou přístupné jenom z virtuální sítě prostřednictvím interního nástroje pro vyrovnávání zatížení. Brána má přístup k prostředkům v rámci virtuální sítě.
+    * **Interní**: API Management brána a portál pro vývojáře jsou přístupné jenom z virtuální sítě prostřednictvím interního nástroje pro vyrovnávání zatížení. Brána má přístup k prostředkům v rámci virtuální sítě.
 
-     ![Soukromý partnerský vztah][api-management-vnet-private]
+        ![Soukromý partnerský vztah][api-management-vnet-private]
 
-     Zobrazí se seznam všech oblastí, ve kterých se zřídí vaše služba API Management. Vyberte virtuální síť a podsíť pro každou oblast. V seznamu se naplní klasické i Správce prostředků virtuální sítě, které jsou dostupné ve vašich předplatných Azure, které jsou nastavené v oblasti, kterou konfigurujete.
+6. Pokud jste vybrali možnost **externí** nebo **interní**, zobrazí se seznam všech oblastí, ve kterých se služba API Management zřídí. Zvolte **umístění**a pak vyberte svou **virtuální síť** a **podsíť**. Seznam Virtual Network se naSprávce prostředků plní v rámci předplatného Azure, které jsou dostupné v předplatných Azure, které jsou nastavené v oblasti, kterou konfigurujete.
 
-     > [!IMPORTANT]
-     > Při nasazování instance Azure API Management do virtuální sítě Správce prostředků musí být služba ve vyhrazené podsíti, která neobsahuje žádné další prostředky s výjimkou instancí Azure API Management. Pokud se provede pokus o nasazení instance služby Azure API Management do podsítě Správce prostředků virtuální sítě, která obsahuje další prostředky, nasazení se nezdaří.
-     >
+    > [!IMPORTANT]
+    > Při nasazování instance Azure API Management do virtuální sítě Správce prostředků musí být služba ve vyhrazené podsíti, která neobsahuje žádné další prostředky s výjimkou instancí Azure API Management. Pokud se provede pokus o nasazení instance služby Azure API Management do podsítě Správce prostředků virtuální sítě, která obsahuje další prostředky, nasazení se nezdaří.
 
-     ![Vybrat síť VPN][api-management-setup-vpn-select]
+    Pak vyberte **Použít**. Stránka **virtuální síť** vaší instance API Management se aktualizuje novými možnostmi virtuální sítě a podsítě.
 
-5. V horním navigačním panelu klikněte na **Uložit** .
-6. V horním navigačním panelu klikněte na **použít konfiguraci sítě** .
+    ![Vybrat síť VPN][api-management-setup-vpn-select]
+
+7. V horním navigačním panelu vyberte **Uložit**a pak vyberte **použít konfiguraci sítě**.
 
 > [!NOTE]
 > Adresa VIP instance API Management se změní pokaždé, když je virtuální síť povolená nebo zakázaná.
-> Tato IP adresa se změní také při přesunu API Management z **externích** do **interního** nebo naopak.
+> Adresa VIP se také změní, když API Management přesunete z **externích** do **interního**nebo naopak.
 >
 
 > [!IMPORTANT]
@@ -105,7 +108,7 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
 
 <a name="required-ports"></a> Když je instance služby API Management hostovaná ve virtuální síti, použijí se porty v následující tabulce.
 
-| Zdrojový nebo cílový port (y) | Direction          | Transportní protokol |   [Značky služeb](../virtual-network/security-overview.md#service-tags) <br> Zdroj/cíl   | Účel (*)                                                 | Typ Virtual Network |
+| Zdrojový nebo cílový port (y) | Směr          | Transportní protokol |   [Značky služeb](../virtual-network/security-overview.md#service-tags) <br> Zdroj/cíl   | Účel (*)                                                 | Typ Virtual Network |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | * / 80, 443                  | Příchozí            | TCP                | INTERNET/VIRTUAL_NETWORK            | Komunikace klienta s API Management                      | Externí             |
 | * / 3443                     | Příchozí            | TCP                | ApiManagement/VIRTUAL_NETWORK       | Koncový bod správy pro Azure Portal a PowerShell         | Externí & interní  |
@@ -133,7 +136,7 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
 
     | Prostředí Azure | Koncové body                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Veřejné Azure      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com, kde `East US 2` je eastus2.warm.ingestion.msftcloudes.com</li></ul> |
+    | Veřejný partnerský vztah Azure      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com, kde `East US 2` je eastus2.warm.ingestion.msftcloudes.com</li></ul> |
     | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
     | Azure (Čína)       | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
 
@@ -151,7 +154,7 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
     
      | Prostředí Azure | IP adresy pro správu                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Veřejné Azure      | 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 52.159.16.255/32, 40.82.157.167/32, 51.137.136.0/32, 40.81.185.8/32, 40.81.47.216/32, 51.145.56.125/32, 40.81.89.24/32, 52.224.186.99/32, 51.145.179.78/32, 52.140.238.179/32, 40.66.60.111/32, 52.139.80.117/32, 20.46.144.85/32, 191.233.24.179/32, 40.90.185.46/32, 102.133.130.197/32, 52.139.20.34/32, 40.80.232.185/32, 13.71.49.1/32, 13.64.39.16/32, 20.40.160.107/32, 20.37.52.67/32, 20.44.33.246/32, 13.86.102.66/32, 20.40.125.155/32, 51.143.127.203/32, 52.253.225.124/32, 52.253.159.160/32, 20.188.77.119/32, 20.44.72.3/32, 52.142.95.35/32, 52.139.152.27/32, 20.39.80.2/32, 51.107.96.8/32, 20.39.99.81/32, 20.37.81.41/32, 51.107.0.91/32, 102.133.0.79/32, 51.116.96.0/32, 51.116.0.0/32 |
+    | Veřejný partnerský vztah Azure      | 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 52.159.16.255/32, 40.82.157.167/32, 51.137.136.0/32, 40.81.185.8/32, 40.81.47.216/32, 51.145.56.125/32, 40.81.89.24/32, 52.224.186.99/32, 51.145.179.78/32, 52.140.238.179/32, 40.66.60.111/32, 52.139.80.117/32, 20.46.144.85/32, 191.233.24.179/32, 40.90.185.46/32, 102.133.130.197/32, 52.139.20.34/32, 40.80.232.185/32, 13.71.49.1/32, 13.64.39.16/32, 20.40.160.107/32, 20.37.52.67/32, 20.44.33.246/32, 13.86.102.66/32, 20.40.125.155/32, 51.143.127.203/32, 52.253.225.124/32, 52.253.159.160/32, 20.188.77.119/32, 20.44.72.3/32, 52.142.95.35/32, 52.139.152.27/32, 20.39.80.2/32, 51.107.96.8/32, 20.39.99.81/32, 20.37.81.41/32, 51.107.0.91/32, 102.133.0.79/32, 51.116.96.0/32, 51.116.0.0/32 |
     | Azure Government  | 52.127.42.160/32, 52.127.34.192/32 |
     | Azure (Čína)       | 139.217.51.16/32, 139.217.171.176/32 |
 
@@ -164,7 +167,7 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
 ## <a name="troubleshooting"> </a>Řešení potíží
 * **Počáteční nastavení**: když počáteční nasazení služby API Management do podsítě neproběhne úspěšně, doporučuje se nejdřív nasadit virtuální počítač do stejné podsítě. Další Vzdálená plocha na virtuální počítač a ověřte, že existuje připojení k jednomu z prostředků níže v předplatném Azure.
     * Azure Storage objekt BLOB
-    * Azure SQL Database
+    * Databáze SQL Azure
     * Azure Storage tabulka
 
   > [!IMPORTANT]

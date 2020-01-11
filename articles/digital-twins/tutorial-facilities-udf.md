@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/13/2019
-ms.openlocfilehash: b988d500ed2a201bb31f0d3a7cbeb7df00af9faf
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/10/2020
+ms.openlocfilehash: 6cf6a8f7de181a81d60028e33ba2631815c8ca04
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860890"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895375"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Kurz: zřízení a sledování pracovních podmínek pomocí Azure Digital Workers Preview
 
@@ -38,7 +38,7 @@ V tomto kurzu se předpokládá, že jste [dokončili nastavení digitálních v
 - [.NET Core SDK verze 2.1.403 nebo novější](https://www.microsoft.com/net/download) ve vývojovém počítači pro sestavení a spuštění ukázky. Spusťte `dotnet --version` a ověřte, zda je nainstalovaná správná verze. 
 - [Visual Studio Code](https://code.visualstudio.com/) pro zkoumání vzorového kódu. 
 
-> [!TIP]
+>[!TIP]
 > Pokud zřizujete novou instanci, použijte jedinečný název instance digitálního vlákna.
 
 ## <a name="define-conditions-to-monitor"></a>Definice podmínek, které se mají monitorovat
@@ -74,7 +74,7 @@ Všimněte si také části **roleassignments**. Přiřadí roli správce prosto
 
    Upravte soubor JavaScriptu pro monitorování teploty a dalších podmínek. Přidejte následující řádky kódu, aby hledaly podmínky, když v místnosti není zjištěn žádný pohyb, úrovně oxidu uhličitého jsou nižší než 1 000 ppm a teplota je nižší než 78 stupňů Fahrenheita.
 
-   > [!NOTE]
+   >[!NOTE]
    > V této části se upraví soubor *src\actions\userDefinedFunctions\availability.js* , takže se můžete podrobněji dozvědět, jak napsat uživatelsky definovanou funkci. Můžete se ale rozhodnout přímo použít soubor [src\actions\userDefinedFunctions\availabilityForTutorial.js](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) v instalačním programu. Tento soubor obsahuje všechny potřebné změny pro tento kurz. Pokud tento soubor použijete místo toho, ujistěte se, že jste pro klíč **skriptu** v [src\actions\provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml)použili správný název souboru.
 
     a. Na začátek souboru přidejte pod komentář `// Add your sensor type here` následující řádky pro senzor teploty:
@@ -178,7 +178,7 @@ Všimněte si také části **roleassignments**. Přiřadí roli správce prosto
     dotnet run ProvisionSample
     ```
 
-   > [!IMPORTANT]
+   >[!IMPORTANT]
    > Aby se zabránilo neoprávněnému přístupu k rozhraní API pro správu digitálních vláken, **vyžaduje se přihlášení** pomocí přihlašovacích údajů k účtu Azure. Ukládá vaše přihlašovací údaje po krátkou dobu, takže se při každém spuštění nemusíte přihlašovat. Při prvním spuštění tohoto programu a po vypršení platnosti vašich uložených přihlašovacích údajů vám aplikace přesměruje na přihlašovací stránku a zadá na ni kód specifický pro relaci. Podle pokynů se přihlaste pomocí svého účtu Azure.
 
 1. Po ověření účtu se v aplikaci spustí vytvoření ukázkového prostorového grafu, jak je nakonfigurováno v *provisionSample. yaml*. Počkejte, než se zřizování dokončí. Bude to trvat několik minut. Potom Sledujte zprávy v příkazovém okně a Všimněte si, jak se vytvořil prostorový graf. Všimněte si, jak aplikace vytvoří centrum IoT v kořenovém uzlu nebo `Venue`.
@@ -187,7 +187,7 @@ Všimněte si také části **roleassignments**. Přiřadí roli správce prosto
 
     [Ukázka zřízení ![](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
-> [!TIP]
+>[!TIP]
 > Pokud se zobrazí chybová zpráva podobná operaci vstupně-výstupní operace byla přerušena z důvodu ukončení vlákna nebo žádosti o aplikaci (uprostřed zřizování), zkuste příkaz spustit znovu. K tomu může dojít, pokud u klienta HTTP vypršel časový limit problému se sítí.
 
 ## <a name="simulate-sensor-data"></a>Simulace dat ze senzorů
@@ -229,7 +229,7 @@ V této části použijete projekt s názvem *zařízení-připojení* v ukázce
     dotnet run
     ```
 
-   > [!NOTE]
+   >[!NOTE]
    > Vzhledem k tomu, že ukázka simulace přímo nekomunikuje s instancí digitálního vlákna, nevyžaduje ověření.
 
 ## <a name="get-results-of-the-user-defined-function"></a>Získání výsledků uživatelsky definované funkce
@@ -246,7 +246,7 @@ Uživatelem definovaná funkce se spustí pokaždé, když vaše instance přijm
 
 Okno výstup ukazuje, jak uživatelsky definovaná funkce běží a zachycuje události z simulace zařízení. 
 
-   [Výstup ![pro systém souborů UDF](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
+   [Výstup ![pro systém souborů UDF](./media/tutorial-facilities-udf/adt-tutorial-udf-running.png)](./media/tutorial-facilities-udf/adt-tutorial-udf-running.png#lightbox)
 
 Pokud je splněna monitorovaná podmínka, uživatelsky definovaná funkce nastaví hodnotu prostoru s příslušnou zprávou, jak jsme viděli [dříve](#create-a-user-defined-function). Funkce `GetAvailableAndFreshSpaces` vytiskne zprávu v konzole nástroje.
 
@@ -256,7 +256,7 @@ Pokud chcete zastavit v tuto chvíli seznámení digitální dvojče Azure, bez 
 
 1. V levé nabídce v [webu Azure portal](https://portal.azure.com)vyberte **všechny prostředky**, vyberte skupinu prostředků digitální dvojče a vyberte **odstranit**.
 
-    > [!TIP]
+    >[!TIP]
     > Pokud zaznamenal/zaznamenala jste potíže odstraníte instanci digitální dvojče, aktualizace služby se týká jenom s opravou. Zkuste to prosím znovu odstraníte instanci.
 
 2. V případě potřeby odstraňte ukázkové aplikace v pracovním počítači.

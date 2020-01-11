@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: 3febdbc8f55f6ccd65eba97de984a9a38ddf214e
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: f4164966d1a9662a72d41fefcb7cfbb1b444d614
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129320"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888988"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Nejčastější dotazy týkající se platformy Azure Databricks
 
@@ -92,7 +92,7 @@ Pokud jste pracovní prostor nevytvořili a Přidali jste ho jako uživatel, obr
 
 #### <a name="solution"></a>Řešení
 
-Clustery Databricks používají jednu veřejnou IP adresu na uzel. Pokud vaše předplatné už používalo všechny veřejné IP adresy, měli byste [požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request). Jako **typ problému**vyberte **kvóta** a v části **síť: ARM** jako **typ kvóty**. V **podrobnostech**si vyžádejte zvýšení kvóty veřejných IP adres. Například pokud je váš limit aktuálně 60 a chcete vytvořit cluster 100, požádejte o zvýšení limitu na 160.
+Clustery Databricks používají jednu veřejnou IP adresu na uzel. Pokud vaše předplatné už používalo všechny veřejné IP adresy, měli byste [požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request). Jako **typ problému**vyberte **kvóta** a v části **síť: ARM** jako **typ kvóty**. V **podrobnostech**si vyžádejte zvýšení kvóty veřejných IP adres. Například pokud je váš limit aktuálně 60 a chcete vytvořit cluster 100, požádejte o zvýšení limitu na 160.
 
 ### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>Problém: druhý typ neúspěšného spuštění poskytovatele cloudu při nastavování clusteru (MissingSubscriptionRegistration)
 

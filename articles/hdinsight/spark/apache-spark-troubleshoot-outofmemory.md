@@ -7,18 +7,18 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
-ms.openlocfilehash: f3f89de07e2e17a4dda47ce3650391af38663004
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087191"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894317"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError výjimky pro Apache Spark ve službě Azure HDInsight
 
 Tento článek popisuje postup řešení potíží a možná řešení potíží při používání komponent Apache Spark v clusterech Azure HDInsight.
 
-## <a name="scenario-outofmemoryerror-exception-for-apache-spark"></a>Scénář: Výjimka OutOfMemoryError pro Apache Spark
+## <a name="scenario-outofmemoryerror-exception-for-apache-spark"></a>Scénář: OutOfMemoryError výjimka pro Apache Spark
 
 ### <a name="issue"></a>Problém
 
@@ -56,11 +56,11 @@ java.lang.OutOfMemoryError
 
 Nejpravděpodobnější příčinou této výjimky je, že není dostatek paměti haldy je přidělit virtuálním počítačům Java (JVMs). Tyto JVMs jsou spouštěny jako vykonavatelé nebo ovladače jako součást aplikace Apache Spark.
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 
 1. Určete maximální velikost dat, která bude aplikace Spark zpracovávat. Vyhodnotit odhad velikosti na základě maximální velikosti vstupních dat, zprostředkujících dat vytvořených transformací vstupních dat a výstupními daty vytvořenými dalšími transformacemi mezilehlých dat. Pokud počáteční odhad není dostačující, zvětšete velikost mírně a Iterujte, dokud neproběhne Chyba paměti.
 
-1. Ujistěte se, že cluster HDInsight, který se má použít, má dostatek prostředků v podobě paměti a jader k obsluze aplikace Spark. To lze určit zobrazením oddílu metriky clusteru v uživatelském rozhraní PŘÍZe clusteru pro hodnoty **používané paměti** vs. **Celková paměť** a **využití virtuální jádra** vs. **Celkových virtuálních jader**.
+1. Ujistěte se, že cluster HDInsight, který se má použít, má dostatek prostředků v podobě paměti a jader k obsluze aplikace Spark. To lze určit zobrazením oddílu metriky clusteru v uživatelském rozhraní PŘÍZe clusteru pro hodnoty **využité paměti** vs. **Celková velikost paměti** a virtuální jádra a **Celkový počet** **využitých** dat. virtuální jádra.
 
     ![zobrazení základní paměti příze](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
 
@@ -90,7 +90,7 @@ Nejpravděpodobnější příčinou této výjimky je, že není dostatek pamět
 
 ---
 
-## <a name="scenario-java-heap-space-error-when-trying-to-open-apache-spark-history-server"></a>Scénář: Chyba místa v haldě Java při pokusu o otevření serveru historie Apache Spark
+## <a name="scenario-java-heap-space-error-when-trying-to-open-apache-spark-history-server"></a>Scénář: Chyba prostoru v haldě Java při pokusu o otevření serveru historie Apache Spark
 
 ### <a name="issue"></a>Problém
 
@@ -114,15 +114,15 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 **2.1 G**  wasb:///hdp/spark2-events/application_1503957839788_0264_1
 ```
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 
-Velikost paměti serveru Spark můžete zvýšit úpravou `SPARK_DAEMON_MEMORY` vlastnosti v konfiguraci Sparku a restartováním všech služeb.
+Můžete zvýšit velikost paměti serveru pro historii Spark úpravou vlastnosti `SPARK_DAEMON_MEMORY` v konfiguraci Sparku a restartováním všech služeb.
 
 To můžete provést v uživatelském rozhraní prohlížeče Ambari, a to tak, že vyberete oddíl Spark2/config/Advanced Spark2-env.
 
 ![Oddíl Advanced spark2-ENV](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png)
 
-Přidejte následující vlastnost pro změnu paměti serveru Spark historie z 1G na 4G: `SPARK_DAEMON_MEMORY=4g`.
+Přidejte následující vlastnost pro změnu paměti serveru služby Spark v historii z 1G na 4G: `SPARK_DAEMON_MEMORY=4g`.
 
 ![Spark – vlastnost](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png)
 
@@ -130,7 +130,7 @@ Ujistěte se, že jste všechny zasažené služby restartovali z Ambari.
 
 ---
 
-## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>Scénář: Livy Server nelze spustit v clusteru Apache Spark
+## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>Scénář: Livy Server se nepovede spustit v clusteru Apache Spark.
 
 ### <a name="issue"></a>Problém
 
@@ -194,13 +194,13 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 ### <a name="cause"></a>Příčina
 
-`java.lang.OutOfMemoryError: unable to create new native thread`Hlavní operační systém nemůže přiřadit více nativních vláken pro JVMs. Potvrzuje, že je tato výjimka způsobena porušením limitu počtu vláken pro procesy.
+`java.lang.OutOfMemoryError: unable to create new native thread` zdůrazňuje operační systém nemůže přiřadit více nativních vláken JVMs. Potvrzuje, že je tato výjimka způsobena porušením limitu počtu vláken pro procesy.
 
 Při neočekávaném ukončení serveru Livy se také ukončí všechna připojení ke clusterům Spark, což znamená, že všechny úlohy a související data budou ztracena. V rámci mechanismu obnovení relace HDP 2,6 Livy ukládá podrobnosti o relaci v Zookeeper po obnovení serveru Livy.
 
 Při odeslání velkého počtu úloh prostřednictvím Livy jako součást vysoké dostupnosti pro Livy server ukládá tyto stavy relací v ZK (v clusterech HDInsight) a obnovuje tyto relace při restartování služby Livy. Při restartování po neočekávaném ukončení vytvoří Livy jedno vlákno na relaci a tato hodnota sestaví určitý počet relací na obnovení, což způsobí, že se vytváří příliš mnoho vláken.
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 
 Všechny položky odstraňte pomocí kroků popsaných níže.
 
@@ -239,11 +239,11 @@ Všechny položky odstraňte pomocí kroků popsaných níže.
 1. Počkejte, než se výše uvedený příkaz dokončí, a kurzorem vraťte výzvu a pak restartujte službu Livy z Ambari, která by měla být úspěšná.
 
 > [!NOTE]
-> `DELETE`relace Livy po dokončení jejího provádění. Relace Livy Batch se neodstraní automaticky hned po dokončení aplikace Spark, což je záměrné. Relace Livy je entita vytvořená požadavkem POST proti serveru Livy REST. K odstranění této entity je potřeba volání.`DELETE` Nebo bychom měli počkat na navázání GC.
+> Po dokončení spuštění `DELETE` relace Livy. Relace Livy Batch se neodstraní automaticky hned po dokončení aplikace Spark, což je záměrné. Relace Livy je entita vytvořená požadavkem POST proti serveru Livy REST. K odstranění této entity je potřeba `DELETE` volání. Nebo bychom měli počkat na navázání GC.
 
 ---
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
@@ -253,6 +253,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

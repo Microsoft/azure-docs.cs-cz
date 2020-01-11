@@ -8,12 +8,12 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 737b963074a2bec851882bddd78ad0b89f48d1d9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: c949556949e0c187d7c23c4dd32436e245bfbb95
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769893"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889336"
 ---
 # <a name="troubleshoot-errors-when-onboarding-update-management-change-tracking-and-inventory"></a>Řešení chyb při připojování Update Management, Change Tracking a inventáře
 
@@ -156,7 +156,7 @@ Po odebrání řešení můžete zrušit propojení pracovního prostoru. Z těc
   * Odeberte nasazení aktualizací (plány) z účtu Automation.
 * Spuštění/zastavení virtuálních počítačů mimo špičku
   * V části **nastavení** > **zámky**odeberte všechny zámky v součástech řešení v účtu Automation.
-  * Další kroky pro odebrání řešení Start/Stop VMs during off-hours najdete v tématu [Odebrání virtuálního počítače spustit/zastavit během doby mimo špičku](../automation-solution-vm-management.md##remove-the-solution).
+  * Další kroky pro odebrání řešení Start/Stop VMs during off-hours najdete v tématu [Odebrání virtuálního počítače spustit/zastavit během doby mimo špičku](../automation-solution-vm-management.md#remove-the-solution).
 
 ## <a name="mma-extension-failures"></a>Selhání rozšíření MMA
 

@@ -3,7 +3,7 @@ title: Používání sady Visual Studio na virtuálním počítači Azure
 description: Použití sady Visual Studio na virtuálním počítači Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: PhilLee-MSFT
+author: cathysull
 manager: cathys
 editor: tysonn
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: azure-vs
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.date: 12/04/2019
-ms.author: phillee
+ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: 25e5cda3b91dd4b14d0a3d82963404dde7a80aa4
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2977fb6f14468429eb651e4f8a6034c060cdee2f
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851396"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895946"
 ---
 # <a name="visual-studio-images-on-azure"></a>Image sady Visual Studio v Azure
 Pomocí sady Visual Studio v předkonfigurovaném Azure virtuální počítač (VM) je rychlý a snadný způsob, jak přejít od ničeho nahoru a spuštění vývojové prostředí. Bitové kopie systému s různými konfiguracemi sady Visual Studio jsou k dispozici v [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure).

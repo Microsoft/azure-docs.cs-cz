@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5b6e99c803fb703f18b61200c28cbdac3282750
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 036c8361af3f6631b6151782fa18495542d2e3f6
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272741"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888895"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Přímá federace pomocí AD FS a poskytovatelů třetích stran pro uživatele typu Host (Preview)
 |     |
@@ -83,7 +83,7 @@ Nejdřív vaše partnerská organizace potřebuje nakonfigurovat poskytovatele i
 Azure AD B2B se dá nakonfigurovat tak, aby federovat s poskytovateli identity, kteří používají protokol SAML s konkrétními požadavky uvedenými níže. Další informace o nastavení vztahu důvěryhodnosti mezi poskytovatelem identity SAML a Azure AD najdete v tématu [použití zprostředkovatele identity saml 2,0 (IDP) pro jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-saml-idp).  
 
 > [!NOTE]
-> Všimněte si, že cílová doména pro přímou federaci nesmí být ověřená DNS v Azure AD. Doména URL ověřování musí odpovídat cílové doméně, nebo musí být doménou povoleného zprostředkovatele identity. Podrobnosti najdete v části [omezení](#limitations) . 
+> Cílová doména pro přímou federaci nesmí být ověřená DNS v Azure AD. Doména URL ověřování musí odpovídat cílové doméně, nebo musí být doménou povoleného zprostředkovatele identity. Podrobnosti najdete v části [omezení](#limitations) . 
 
 #### <a name="required-saml-20-attributes-and-claims"></a>Povinné atributy a deklarace SAML 2,0
 V následujících tabulkách jsou uvedeny požadavky na konkrétní atributy a deklarace identity, které je třeba nakonfigurovat u poskytovatele identity třetí strany. Pokud chcete nastavit přímou federaci, musí se v odpovědi SAML 2,0 od poskytovatele identity přijmout následující atributy. Tyto atributy je možné nakonfigurovat tak, že propojíte se souborem XML služby token zabezpečení online nebo je zadáte ručně.

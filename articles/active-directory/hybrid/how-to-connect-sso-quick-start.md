@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cf1e5f9f47ebdc132bdc826af3e54d206095085
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3ec56d37ca2c0a199968707b3d93f4797be2beca
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603413"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888664"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý Start
 
@@ -115,7 +115,7 @@ Prohlížeč standardně automaticky vypočítá správnou zónu, buď Internet,
 
 Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
 
-| Možnost | Aspekt správce | Činnost koncového uživatele |
+| Možnost | Aspekt správce | Z pohledu uživatele |
 | --- | --- | --- |
 | Zásady skupiny | Správce uzamkne úpravy nastavení zóny intranetu. | Uživatelé nemůžou upravovat svoje vlastní nastavení. |
 | Preference zásad skupiny |  Správce umožňuje úpravy nastavení zóny intranetu. | Uživatelé můžou změnit svoje vlastní nastavení. |
@@ -124,7 +124,7 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
 
 1. Otevřete nástroj Editor pro správu zásad skupiny.
 2. Upravte zásady skupiny, které se aplikují na některé nebo všechny uživatele. V tomto příkladu se používá **výchozí zásada domény**.
-3. Přejděte ke **konfiguraci uživatele** >  ** > ** **Šablony pro správu** > **součásti systému Windows** > **Internet Explorer** > **Internet Control Panel** >  **Stránka zabezpečení** Pak vyberte **seznam přiřazení lokality k zóně**.
+3. Přejděte ke **konfiguraci uživatele** > **zásady** > **Šablony pro správu** > **součásti systému Windows** > **Internet Explorer** ** > Internet** Explorer > **Stránka zabezpečení**. Pak vyberte **seznam přiřazení lokality k zóně**.
     ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso6.png)
 4. Povolte tuto zásadu a v dialogovém okně zadejte následující hodnoty:
    - **Název hodnoty**: adresa URL služby Azure AD, na které se předávají lístky protokolu Kerberos.
@@ -140,11 +140,11 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
    > Pokud chcete, aby někteří uživatelé nepoužívali bezproblémové přihlašování (například pokud se tito uživatelé přihlásí ke sdíleným terminálům), nastavte předchozí hodnoty na **4**. Tato akce přidá adresu URL služby Azure AD do zóny s omezeným přístupem a pokaždé neumožní bezproblémové jednotné přihlašování.
    >
 
-5. Vyberte **OK**a pak znovu vyberte **OK** .
+5. Vyberte **OK** a potom znovu vyberte **OK**.
 
     ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. Přejděte ke **konfiguraci uživatele** >  ** > ** **Šablony pro správu** > **součásti systému Windows** > **Internet Explorer** > **Internet Control Panel** >  **Stránka zabezpečení** > **intranetové zóny**. Pak vyberte možnost **Povolení aktualizací stavového řádku prostřednictvím skriptu**.
+6. Přejděte ke **konfiguraci uživatele** > **zásady** > **Šablony pro správu** > **součásti systému Windows** > **Internet Explorer** > Internet **Control Panel** ** >  > ** **zóna intranetu**. Pak vyberte možnost **Povolení aktualizací stavového řádku prostřednictvím skriptu**.
 
     ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso11.png)
 
@@ -213,7 +213,7 @@ Chcete-li otestovat funkci pro konkrétního uživatele, ujistěte se, že jsou 
   - Uživatel se přihlásí v podnikovém zařízení.
   - Zařízení je připojené k doméně služby Active Directory. Zařízení _není_ nutné [připojit k Azure AD](../active-directory-azureadjoin-overview.md).
   - Zařízení má přímé připojení k řadiči domény (DC) v podnikové kabelové nebo bezdrátové síti nebo prostřednictvím připojení vzdáleného přístupu, jako je třeba připojení k síti VPN.
-  - Tuto [funkci](##step-3-roll-out-the-feature) jste do tohoto uživatele zavedli prostřednictvím zásady skupiny.
+  - Tuto [funkci](#step-3-roll-out-the-feature) jste do tohoto uživatele zavedli prostřednictvím zásady skupiny.
 
 Chcete-li otestovat scénář, ve kterém uživatel zadá pouze uživatelské jméno, ale ne heslo:
    - Přihlaste se k `https://myapps.microsoft.com/` v nové privátní relaci prohlížeče.

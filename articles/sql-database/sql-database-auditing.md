@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 70cbc761c7e334ed9b13e3cd7d915102917ff149
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 0266c08052cd3db7d9081d6b617da94703b9ab77
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780194"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896325"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 
@@ -86,8 +86,11 @@ V následující části je popsána konfigurace auditování pomocí Azure Port
     ![Navigační podokno][3]
 
 5. **Novinka** – máte k dispozici několik možností konfigurace, kam budou zapsány protokoly auditu. Protokoly můžete zapsat do účtu služby Azure Storage, do Log Analytics pracovního prostoru pro spotřebu pomocí protokolů Azure Monitor nebo do centra událostí pro spotřebu pomocí centra událostí. Můžete nakonfigurovat libovolnou kombinaci těchto možností a protokoly auditu se zapíší do každého z nich.
-
-   > [!WARNING]
+  
+  > [!NOTE]
+   >Zákazník, který chce nakonfigurovat neměnné úložiště protokolů pro události auditu na úrovni serveru nebo databáze, by měl postupovat podle pokynů [pokyny Azure Storage] (https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)
+  
+  > [!WARNING]
    > Povolením auditování pro Log Analytics se účtují náklady na základě sazeb ingestování. Pomocí této [Možnosti](https://azure.microsoft.com/pricing/details/monitor/)si pamatujte na související náklady, nebo zvažte uložení protokolů auditu v účtu úložiště Azure.
 
     ![Možnosti úložiště](./media/sql-database-auditing-get-started/auditing-select-destination.png)

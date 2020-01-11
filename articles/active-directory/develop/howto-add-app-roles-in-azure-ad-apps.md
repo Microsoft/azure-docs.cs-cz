@@ -15,12 +15,12 @@ ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 805f984ebdb5e95a9f3a46fab010cecf5c811547
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c042cf22334a0163cd5b89e556210db0cd5c15f4
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424498"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888774"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Postupy: Přidání rolí aplikace do aplikace a jejich přijetí v tokenu
 
@@ -37,9 +37,9 @@ Tyto aplikační role jsou definovány v [Azure Portal](https://portal.azure.com
 ### <a name="declare-app-roles-using-azure-portal"></a>Deklarace rolí aplikace pomocí Azure Portal
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-1. V horním panelu vyberte svůj účet a pak **Přepněte adresář**.
-1. Po otevření podokna **adresář a odběr** vyberte v seznamu **Oblíbené** nebo **všechny adresáře** klienta služby Active Directory, kde chcete aplikaci zaregistrovat.
-1. V levém navigačním panelu vyberte **všechny služby** a zvolte **Azure Active Directory**.
+1. Na panelu nástrojů portálu vyberte ikonu **adresář + předplatné** .
+1. V seznamu **Oblíbené** nebo **všechny adresáře** vyberte tenanta služby Active Directory, do kterého chcete aplikaci zaregistrovat.
+1. V Azure Portal vyhledejte a vyberte **Azure Active Directory**.
 1. V podokně **Azure Active Directory** vyberte **Registrace aplikací** a zobrazte seznam všech aplikací.
 1. Vyberte aplikaci, ve které chcete role aplikace definovat. Pak vyberte **manifest**.
 1. Upravte manifest aplikace tak, že vyhledáte nastavení `appRoles` a přidáte všechny své aplikační role.

@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: c05b29dd5909d1371c71bffb9db555c15c5d23ed
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 00a316f69cfa77d705a789d40868105e9a098def
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75764639"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894021"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Vytvářejte, Zkoumejte a nasaďte automatizované experimenty strojového učení pomocí Azure Machine Learning studia
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -150,11 +150,12 @@ Odchylka| Měření, jak daleko rozprostření dat tohoto sloupce z průměrné 
 Zešikmení| Měření, jak se liší data tohoto sloupce od normálního rozdělení.
 Míra fluktuace| Měření, jak často se data tohoto sloupce v porovnání s normální distribucí.
 
+
 <a name="preprocess"></a>
 
 ## <a name="advanced-preprocessing-options"></a>Rozšířené možnosti předběžného zpracování
 
-Při konfiguraci experimentů můžete povolit upřesňující nastavení `Preprocess`. To znamená, že následující kroky předběžného zpracování dat a featurization se provádí automaticky.
+Při konfiguraci experimentů můžete povolit upřesňující nastavení `Preprocess`. To znamená, že jako součást předběžného zpracování následujících guardrails dat a featurization kroků se provádí automaticky.
 
 |Předzpracování&nbsp;kroků| Popis |
 | ------------- | ------------- |
@@ -167,6 +168,20 @@ Při konfiguraci experimentů můžete povolit upřesňující nastavení `Prepr
 |Kódování cílového textu|V případě textového vstupu se pro generování pravděpodobnosti každé třídy používá skládaný lineární model s použitím typu penalta-slova.|
 |Váha důkazů (WoE)|Vypočítá WoE jako míru korelace kategorií sloupců do cílového sloupce. Počítá se jako protokol poměru mezi třídou a pravděpodobnosti mimo třídu. Tento krok provede výstup jednoho sloupce číselné funkce na každou třídu a odstraní nutnost explicitně imputace chybějících hodnot a izolované zpracování.|
 |Vzdálenost clusteru|Vlaky a k – znamenají model clusteringu ve všech číselných sloupcích.  Výstupy k novým funkcím, jedna nová číselná funkce na cluster, která obsahuje vzdálenost jednotlivých vzorků k těžiště každého clusteru.|
+
+### <a name="data-guardrails"></a>Guardrails dat
+
+Automatizované Machine Learning nabízí data guardrails, která vám pomůžou identifikovat možné problémy s daty (např. chybějící hodnoty, nerovnováha tříd) a pomáhat s tím, aby byly vylepšené akce pro lepší výsledky. K dispozici je celá řada osvědčených postupů, které je možné použít k dosažení spolehlivých výsledků. 
+
+V následující tabulce jsou popsány aktuálně podporované datové guardrails a související stavy, které mohou uživatelé pocházet při odesílání jejich experimentů.
+
+Guardrail|Stav|Podmínka&nbsp;pro aktivační událost&nbsp;
+---|---|---
+Chybějící hodnoty&nbsp;&nbsp;imputace |**Předaný** <br> <br> **Pevný**|    Žádná chybějící hodnota v žádném ze vstupních&nbsp;sloupců <br> <br> U některých sloupců chybí hodnoty.
+Křížové ověření|**Hotovo**|Pokud není zadaná žádná explicitní ověřovací sada
+&nbsp;funkce&nbsp;detekce&nbsp;mohutnosti vysoké úrovně.|  **Předaný** <br> <br>**Hotovo**|   Nezjistily se žádné funkce vysoké mohutnosti. <br><br> Zjistily se vstupní sloupce vysoké mohutnosti.
+Detekce zůstatku třídy |**Předaný** <br><br><br>**Upozorněni** |Třídy jsou vyvážené do školicích dat; Datová sada je považována za vyváženou, pokud každá třída má v datové sadě dobrý reprezentace, měřená podle počtu a poměru vzorků. <br> <br> Třídy v školicích datech jsou nevyrovnané
+Konzistence dat časové řady|**Předaný** <br><br><br><br> **Pevný** |<br> Vybrané hodnoty {horizont, lag, kumulovaný interval} byly analyzovány a nebyly zjištěny žádné potenciální problémy způsobené nedostatkem paměti. <br> <br>Vybrané hodnoty {horizont, lag, kumulovaný interval} byly analyzovány a mohou způsobit nedostatek paměti experimentu. Zpoždění nebo posuvné okno bylo vypnuto.
 
 ## <a name="run-experiment-and-view-results"></a>Spuštění experimentu a zobrazení výsledků
 

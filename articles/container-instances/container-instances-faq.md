@@ -3,13 +3,13 @@ title: Nejčastější dotazy
 description: Odpovědi na nejčastější dotazy týkající se služby Azure Container Instances
 author: dkkapur
 ms.topic: article
-ms.date: 4/25/2019
-ms.openlocfilehash: b5888efe210ab0f3794895d350c5647b6f685880
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 01/07/2020
+ms.openlocfilehash: 4a3fb4c1818d86f7fe2913790fd9e573c630cbfd
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484134"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888018"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Nejčastější dotazy týkající se Azure Container Instances
 
@@ -83,7 +83,7 @@ V současné době není pro kontejnery nebo skupiny kontejnerů k dispozici šk
 
 ### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>Jaké funkce jsou k dispozici pro instance spuštěné ve vlastní virtuální síti?
 
-Skupiny kontejnerů můžete nasadit ve virtuální síti Azure podle svého výběru a delegovat privátní IP adresy na skupiny kontejnerů, abyste mohli směrovat provoz v rámci virtuální sítě napříč prostředky Azure. Nasazení skupiny kontejnerů do virtuální sítě je v tuto chvíli ve verzi Preview a některé aspekty této funkce se můžou změnit před všeobecnou dostupností (GA). Aktualizované informace najdete v tématu [omezení verze Preview](container-instances-vnet.md#preview-limitations) .
+[Skupiny kontejnerů můžete nasadit ve virtuální síti Azure](container-instances-vnet.md) podle svého výběru a delegovat privátní IP adresy na skupiny kontejnerů, abyste mohli směrovat provoz v rámci virtuální sítě napříč prostředky Azure. Nasazení skupiny kontejnerů do virtuální sítě je v současnosti k dispozici pro produkční úlohy v podmnožině oblastí Azure.
 
 ## <a name="pricing"></a>Ceny
 

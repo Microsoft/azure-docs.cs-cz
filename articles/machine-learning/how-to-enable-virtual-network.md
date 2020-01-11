@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/13/2019
-ms.openlocfilehash: 548b74dbaf36fa0a0b5f999d1de61a0c05241c61
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.date: 01/03/2020
+ms.openlocfilehash: 333d7faacfb5965e74eae69f07ff974a8fff8f25
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690822"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894013"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpečení experimentů s Azure ML a odvození úloh v rámci Azure Virtual Network
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,7 +44,7 @@ Tento článek také poskytuje podrobné informace o *pokročilých nastaveních
 
 ## <a name="use-a-storage-account-for-your-workspace"></a>Použití účtu úložiště pro váš pracovní prostor
 
-Pokud chcete použít účet úložiště Azure pro pracovní prostor ve virtuální síti, udělejte toto:
+Pokud chcete použít účet úložiště Azure pro pracovní prostor ve virtuální síti, použijte následující postup:
 
 1. Vytvořte výpočetní prostředek (například Machine Learning výpočetní instance nebo cluster) za virtuální sítí nebo připojte výpočetní prostředek k pracovnímu prostoru (například cluster HDInsight, virtuální počítač nebo cluster služby Azure Kubernetes). Výpočetní prostředek může být pro experimentování nebo nasazení modelu.
 
@@ -58,7 +58,7 @@ Pokud chcete použít účet úložiště Azure pro pracovní prostor ve virtuá
 
    ![Oblast brány firewall a virtuální sítě na stránce Azure Storage v Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
 
-1. Na stránce __brány firewall a virtuální sítě__ proveďte tyto kroky:
+1. Na stránce __brány firewall a virtuální sítě__ proveďte následující akce:
     - Vyberte __Vybrané sítě__.
     - V části __virtuální sítě__vyberte odkaz __Přidat existující virtuální síť__ . Tato akce přidá virtuální síť, ve které se nachází vaše výpočetní výkon (viz krok 1).
 
@@ -88,7 +88,8 @@ Instance trezoru klíčů, která je přidružená k pracovnímu prostoru, se po
 * Hesla k instancím služby Azure Container úložiště
 * Připojovací řetězce k úložištím dat
 
-Pokud chcete používat Azure Machine Learning možnosti experimentování s Azure Key Vault za virtuální sítí, udělejte toto:
+Pokud chcete používat Azure Machine Learning možnosti experimentování s Azure Key Vault za virtuální sítí, použijte následující postup:
+
 1. Přejít do trezoru klíčů, který je přidružený k pracovnímu prostoru.
 
    [![trezoru klíčů, který je přidružený k pracovnímu prostoru Azure Machine Learning](./media/how-to-enable-virtual-network/workspace-key-vault.png)](./media/how-to-enable-virtual-network/workspace-key-vault.png#lightbox)
@@ -97,7 +98,7 @@ Pokud chcete používat Azure Machine Learning možnosti experimentování s Azu
 
    ![Část "brány firewall a virtuální sítě" v podokně Key Vault](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
 
-1. Na stránce __brány firewall a virtuální sítě__ proveďte tyto kroky:
+1. Na stránce __brány firewall a virtuální sítě__ proveďte následující akce:
     - V části __Povolení přístupu z__vyberte __vybrané sítě__.
     - V části __virtuální sítě__vyberte __Přidat existující virtuální sítě__ a přidejte tak virtuální síť, ve které se nachází vaše výpočetní služby experimentování.
     - V části __umožňuje důvěryhodným službám Microsoftu obejít tuto bránu firewall__, vyberte __Ano__.
@@ -158,11 +159,11 @@ Konfigurace pravidla NSG se v Azure Portal zobrazuje na následujících obrázc
 
 ### <a id="limiting-outbound-from-vnet"></a>Omezení odchozího připojení z virtuální sítě
 
-Pokud nechcete používat výchozí odchozí pravidla a chcete omezit odchozí přístup k virtuální síti, udělejte toto:
+Pokud nechcete používat výchozí odchozí pravidla a chcete omezit odchozí přístup k virtuální síti, použijte následující postup:
 
 - Odmítne odchozí připojení k Internetu pomocí pravidel NSG.
 
-- Omezte odchozí provoz na následující:
+- Omezte odchozí provoz na následující položky:
    - Azure Storage pomocí __označení služby__ __úložiště. Region_Name__ (například Storage. EastUS)
    - Azure Container Registry pomocí __označení služby__ __AzureContainerRegistry. Region_Name__ (například AzureContainerRegistry. EastUS)
    - Azure Machine Learning pomocí __označení služby__ __AzureMachineLearning__
@@ -223,13 +224,13 @@ Další informace najdete v tématu [Vytvoření fondu Azure Batch ve virtuáln�
 
 ### <a name="create-a-compute-cluster-in-a-virtual-network"></a>Vytvoření výpočetního clusteru ve virtuální síti
 
-Pokud chcete vytvořit cluster Výpočetní prostředky služby Machine Learning, udělejte toto:
+Chcete-li vytvořit cluster Výpočetní prostředky služby Machine Learning, použijte následující postup:
 
 1. V [Azure Portal](https://portal.azure.com)vyberte pracovní prostor Azure Machine Learning.
 
 1. V části __aplikace__ vyberte __COMPUTE__a pak vyberte __Přidat výpočetní__prostředky.
 
-1. Pokud chcete tento výpočetní prostředek nakonfigurovat tak, aby používal virtuální síť, postupujte takto:
+1. Pokud chcete tento výpočetní prostředek nakonfigurovat tak, aby používal virtuální síť, proveďte následující akce:
 
     a. V případě __Konfigurace sítě__vyberte __Upřesnit__.
 
@@ -297,14 +298,14 @@ Konkrétní informace o použití Azure Databricks s virtuální sítí najdete 
 > [!IMPORTANT]
 > Azure Machine Learning podporuje pouze virtuální počítače se systémem Ubuntu.
 
-Pokud chcete použít virtuální počítač nebo cluster Azure HDInsight ve virtuální síti s vaším pracovním prostorem, udělejte toto:
+Pokud chcete použít virtuální počítač nebo cluster Azure HDInsight ve virtuální síti s vaším pracovním prostorem, použijte následující postup:
 
 1. Vytvořte virtuální počítač nebo cluster HDInsight pomocí Azure Portal nebo Azure CLI a vložte cluster do virtuální sítě Azure. Další informace najdete v těchto článcích:
     * [Vytváření a správa virtuálních sítí Azure pro virtuální počítače se systémem Linux](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 
     * [Rozšiřování HDInsight pomocí virtuální sítě Azure](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)
 
-1. Pokud chcete Azure Machine Learning komunikovat s portem SSH na virtuálním počítači nebo v clusteru, nakonfigurujte položku zdroje pro skupinu zabezpečení sítě. Port SSH je obvykle port 22. Pokud chcete povolit přenos z tohoto zdroje, postupujte takto:
+1. Pokud chcete Azure Machine Learning komunikovat s portem SSH na virtuálním počítači nebo v clusteru, nakonfigurujte položku zdroje pro skupinu zabezpečení sítě. Port SSH je obvykle port 22. Pokud chcete povolit přenos z tohoto zdroje, proveďte následující akce:
 
     * V rozevíracím seznamu __zdroj__ vyberte možnost __značka služby__.
 
@@ -332,7 +333,7 @@ Pokud chcete použít virtuální počítač nebo cluster Azure HDInsight ve vir
 
 ## <a name="use-azure-kubernetes-service-aks"></a>Použití služby Azure Kubernetes Service (AKS)
 
-Pokud chcete do svého pracovního prostoru přidat AKS ve virtuální síti, udělejte toto:
+Pokud chcete do svého pracovního prostoru přidat AKS ve virtuální síti, použijte následující postup:
 
 > [!IMPORTANT]
 > Než začnete s následujícím postupem, postupujte podle pokynů v tématu [Konfigurace pokročilé sítě ve službě Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/configure-advanced-networking#prerequisites) postupy a naplánování IP adres pro váš cluster.
@@ -347,7 +348,7 @@ Pokud chcete do svého pracovního prostoru přidat AKS ve virtuální síti, ud
 
 1. V části __aplikace__ vyberte __COMPUTE__a pak vyberte __Přidat výpočetní__prostředky.
 
-1. Pokud chcete tento výpočetní prostředek nakonfigurovat tak, aby používal virtuální síť, postupujte takto:
+1. Pokud chcete tento výpočetní prostředek nakonfigurovat tak, aby používal virtuální síť, proveďte následující akce:
 
     - V případě __Konfigurace sítě__vyberte __Upřesnit__.
 
@@ -393,6 +394,82 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 Po dokončení procesu vytváření můžete spustit odvození nebo model bodování v clusteru AKS za virtuální sítí. Další informace najdete v tématu [Jak nasadit do AKS](how-to-deploy-and-where.md).
 
+### <a name="use-private-ips-with-azure-kubernetes-service"></a>Použití privátních IP adres ve službě Azure Kubernetes
+
+Ve výchozím nastavení je veřejná IP adresa přiřazená AKS nasazením. Při použití AKS v rámci virtuální sítě můžete místo toho použít privátní IP adresu. Privátní IP adresy jsou dostupné jenom v rámci virtuální sítě nebo v připojených sítích.
+
+Privátní IP adresa je povolena konfigurací AKS k použití _interního nástroje pro vyrovnávání zatížení_. 
+
+> [!IMPORTANT]
+> Při vytváření clusteru služby Azure Kubernetes není možné povolit privátní IP adresu. Musí být povolená jako Aktualizace existujícího clusteru.
+
+Následující fragment kódu ukazuje, jak **vytvořit nový cluster AKS**a pak ho aktualizovat tak, aby používal privátní IP/interní nástroj pro vyrovnávání zatížení:
+
+```python
+import azureml.core
+from azureml.core.compute.aks import AksUpdateConfiguration
+from azureml.core.compute import AksCompute, ComputeTarget
+
+# Verify that cluster does not exist already
+try:
+    aks_target = AksCompute(workspace=ws, name=aks_cluster_name)
+    print("Found existing aks cluster")
+
+except:
+    print("Creating new aks cluster")
+
+    # Create AKS configuration
+    prov_config = AksCompute.provisioning_configuration(location = "eastus2")
+    # Set info for existing virtual network to create the cluster in
+    prov_config.vnet_resourcegroup_name = "myvnetresourcegroup"
+    prov_config.vnet_name = "myvnetname"
+    prov_config.service_cidr = "10.0.0.0/16"
+    prov_config.dns_service_ip = "10.0.0.10"
+    prov_config.subnet_name = "default"
+    prov_config.docker_bridge_cidr = "172.17.0.1/16"
+
+    # Create compute target
+    aks_target = ComputeTarget.create(workspace = ws, name = “myaks”, provisioning_configuration = prov_config)
+    # Wait for the operation to complete
+    aks_target.wait_for_completion(show_output = True)
+    
+    # Update AKS configuration to use an internal load balancer
+    update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", "default")
+    aks_target.update(update_config)
+    # Wait for the operation to complete
+    aks_target.wait_for_completion(show_output = True)
+```
+
+__Azure CLI__
+
+```azurecli-interactive
+az rest --method put --uri https://management.azure.com"/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>?api-version=2018-11-19 --body @body.json
+```
+
+Obsah souboru `body.json`, na který odkazuje příkaz, je podobný následujícímu dokumentu JSON:
+
+```json
+{ 
+    "location": “<region>”, 
+    "properties": { 
+        "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>", 
+        "computeType": "AKS", 
+        "provisioningState": "Succeeded", 
+        "properties": { 
+            "loadBalancerType": "InternalLoadBalancer", 
+            "agentCount": <agent-count>, 
+            "agentVmSize": "vm-size", 
+            "clusterFqdn": "<cluster-fqdn>" 
+        } 
+    } 
+} 
+```
+
+> [!NOTE]
+> Nástroj pro vyrovnávání zatížení se v současné době nedá nakonfigurovat při provádění operace __připojení__ pro existující cluster. Musíte nejdřív připojit cluster a pak provést operaci aktualizace pro změnu nástroje pro vyrovnávání zatížení.
+
+Další informace o používání interního nástroje pro vyrovnávání zatížení s AKS najdete v tématu [použití interního nástroje pro vyrovnávání zatížení se službou Azure Kubernetes Service](/azure/aks/internal-lb).
+
 ## <a name="use-azure-firewall"></a>Použít Azure Firewall
 
 Při použití Azure Firewall musíte nakonfigurovat síťové pravidlo, které povoluje provoz do a z následujících adres:
@@ -414,4 +491,3 @@ Další informace o konfiguraci pravidla sítě najdete v tématu [nasazení a k
 * [Nastavení školicích prostředí](how-to-set-up-training-targets.md)
 * [Kam chcete nasazovat modely](how-to-deploy-and-where.md)
 * [Bezpečné nasazení modelů pomocí protokolu SSL](how-to-secure-web-service.md)
-

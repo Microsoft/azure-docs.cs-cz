@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: rajanaki
-ms.openlocfilehash: fb1e22b0ca1da00bf2665d863b40f19fa1621771
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 0e409ffdedbac822aedf48833f2dd85f8e04afa2
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721300"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894983"
 ---
-# <a name="delete-a-site-recovery-services-vault"></a>Odstranění trezoru služby Site Recovery Services
+# <a name="delete-a-site-recovery-services-vault"></a>Odstranění trezoru služby Recovery Services
 
 Tento článek popisuje, jak odstranit Recovery Services trezor pro Site Recovery. Postup odstranění trezoru používaného v Azure Backup najdete v tématu [odstranění trezoru záloh v Azure](../backup/backup-azure-delete-vault.md).
 
@@ -44,7 +44,7 @@ Než budete moct odstranit trezor, musíte odebrat registrované servery a polo�
 
 1. Pomocí [těchto kroků](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario) odstraňte virtuální počítače Hyper-V spravované nástrojem System Center VMM.
 2. Zrušte přidružení a odstranění všech zásad replikace. Provedete to ve vašem trezoru > **Site Recovery infrastruktury** > pro **Zásady replikace** > **System Center VMM** .
-3. Pomocí [těchto kroků](site-recovery-manage-registration-and-protection.md##unregister-a-vmm-server) zrušíte registraci připojeného serveru VMM.
+3. Pomocí [těchto kroků](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server) zrušíte registraci připojeného serveru VMM.
 4. Pak odstraňte trezor.
 
 ## <a name="delete-a-vault-hyper-v-vm-to-azure"></a>Odstranění trezoru – virtuální počítač Hyper-V do Azure

@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/07/2019
+ms.date: 01/10/2020
 ms.author: radeltch
-ms.openlocfilehash: ba8dc3080f3b584ae3a60576e4cc670dc60c28a0
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 8acb4819c6ef7a1969a85a056dfdde1fd021a5e6
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151823"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894652"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP
 
@@ -172,6 +172,7 @@ Při zvažování Azure NetApp Files pro SAP NetWeaver v architektuře SUSE pro 
 - Vybraná virtuální síť musí mít podsíť, delegovanou na Azure NetApp Files.
 - Azure NetApp Files nabízí [zásady exportu](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): můžete řídit povolené klienty, typ přístupu (čtení & zápisu, jen pro čtení atd.). 
 - Azure NetApp Files funkce zatím nereaguje na zóny. Aktuálně Azure NetApp Files funkce není nasazená ve všech zónách dostupnosti v oblasti Azure. Mějte na paměti, že v některých oblastech Azure máte vliv na potenciální latenci. 
+- Azure NetApp Files svazky lze nasadit jako svazky NFSv3 nebo NFSv 4.1. Pro aplikační vrstvu SAP (ASCS/OLAJÍCÍCH, aplikační servery SAP) se podporují oba protokoly. 
 
 ## <a name="setting-up-ascs"></a>Nastavení (A) SCS
 
@@ -187,7 +188,7 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte front-end IP fond a klikněte na Přidat.
          1. Zadejte název nového fondu IP adres front-endu (například **front-end. QAS. ASCS**)
          1. Nastavte přiřazení na statické a zadejte IP adresu (například **192.168.14.9**).
-         1. Klikněte na OK.
+         1. Klikněte na tlačítko OK.
       1. 192.168.14.10 IP adres pro ASCS OLAJÍCÍCH
          * Opakujte výše uvedené kroky v části a a vytvořte tak IP adresu pro OLAJÍCÍCH (například **192.168.14.10** a **front-end. QAS. OLAJÍCÍCH**)
    1. Vytvoření back-end fondů
@@ -203,7 +204,7 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
          1. Zadejte název nového testu stavu (například **stav). QAS. ASCS**)
          1. Vybrat TCP as Protocol, port 620**00**, zachovat interval 5 a špatný práh 2
-         1. Klikněte na OK.
+         1. Klikněte na tlačítko OK.
       1. Port 621**01** pro ASCS olajících
             * Opakujte výše uvedené kroky v části "c", chcete-li vytvořit sondu stavu pro OLAJÍCÍCH (například 621**01** a **stav). QAS. OLAJÍCÍCH**)
    1. Pravidla vyrovnávání zatížení
@@ -214,7 +215,7 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. Vybrat **porty ha**
          1. Prodloužit časový limit nečinnosti na 30 minut
          1. **Ujistěte se, že jste povolili plovoucí IP adresu.**
-         1. Klikněte na OK.
+         1. Klikněte na tlačítko OK.
          * Opakujte výše uvedené kroky a vytvořte tak pravidla vyrovnávání zatížení pro OLAJÍCÍCH (například **kg. QAS. OLAJÍCÍCH**)
 1. Případně, pokud váš scénář vyžaduje základní nástroj pro vyrovnávání zatížení (interní), postupujte podle následujících kroků:  
    1. Vytvoření IP adresy front-endu
@@ -222,7 +223,7 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte front-end IP fond a klikněte na Přidat.
          1. Zadejte název nového fondu IP adres front-endu (například **front-end. QAS. ASCS**)
          1. Nastavte přiřazení na statické a zadejte IP adresu (například **192.168.14.9**).
-         1. Klikněte na OK.
+         1. Klikněte na tlačítko OK.
       1. 192.168.14.10 IP adres pro ASCS OLAJÍCÍCH
          * Opakujte výše uvedené kroky v části a a vytvořte tak IP adresu pro OLAJÍCÍCH (například **192.168.14.10** a **front-end. QAS. OLAJÍCÍCH**)
    1. Vytvoření back-end fondů
@@ -232,13 +233,13 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. Klikněte na Přidat virtuální počítač.
          1. Vyberte skupinu dostupnosti, kterou jste vytvořili dříve pro ASCS. 
          1. Vyberte virtuální počítače v clusteru (A) SCS.
-         1. Klikněte na OK.
+         1. Klikněte na tlačítko OK.
    1. Vytvoření sond stavu
       1. Port 620**00** pro ASCS
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
          1. Zadejte název nového testu stavu (například **stav). QAS. ASCS**)
          1. Vybrat TCP as Protocol, port 620**00**, zachovat interval 5 a špatný práh 2
-         1. Klikněte na OK.
+         1. Klikněte na tlačítko OK.
       1. Port 621**01** pro ASCS olajících
             * Opakujte výše uvedené kroky v části "c", chcete-li vytvořit sondu stavu pro OLAJÍCÍCH (například 621**01** a **stav). QAS. OLAJÍCÍCH**)
    1. Pravidla vyrovnávání zatížení
@@ -249,17 +250,52 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. Zachovejte protokol **TCP**, zadejte port **3200**
          1. Prodloužit časový limit nečinnosti na 30 minut
          1. **Ujistěte se, že jste povolili plovoucí IP adresu.**
-         1. Klikněte na OK.
+         1. Klikněte na tlačítko OK.
       1. Další porty pro ASCS
          * Opakujte výše uvedené kroky v části "d" pro porty**36 00**,**39 00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 a TCP pro ASCS
       1. Další porty pro ASCS OLAJÍCÍCH
          * Opakujte výše uvedené kroky v části "d" pro porty 32**01**, 33**01**, 5**01**13, 5**01**14, 5**01**16 a TCP pro ASCS olajících
 
-> [!Note]
-> Pokud se virtuální počítače bez veřejných IP adres nacházejí v back-end fondu interní služby pro vyrovnávání zatížení (bez veřejné IP adresy), nebude žádné odchozí připojení k Internetu, pokud se neprovede další konfigurace, která umožní směrování na veřejné koncové body. Podrobnosti o tom, jak dosáhnout odchozího připojení, najdete v tématu [připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích s vysokou dostupností SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)  
+      > [!Note]
+      > Pokud se virtuální počítače bez veřejných IP adres nacházejí v back-end fondu interní služby pro vyrovnávání zatížení (bez veřejné IP adresy), nebude žádné odchozí připojení k Internetu, pokud se neprovede další konfigurace, která umožní směrování na veřejné koncové body. Podrobnosti o tom, jak dosáhnout odchozího připojení, najdete v tématu [připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích s vysokou dostupností SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)  
 
-> [!IMPORTANT]
-> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+      > [!IMPORTANT]
+      > Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+
+## <a name="disable-id-mapping-if-using-nfsv41"></a>Zakázat mapování ID (Pokud používáte NFSv 4.1)
+
+Pokyny v této části se použijí jenom v případě, že používáte Azure NetApp Files svazky s protokolem NFSv 4.1. Proveďte konfiguraci na všech virtuálních počítačích, kde budou připojené svazky Azure NetApp Files NFSv 4.1.  
+
+1. Ověřte nastavení domény systému souborů NFS. Ujistěte se, že je doména nakonfigurovaná jako výchozí doména Azure NetApp Files, tj. **`defaultv4iddomain.com`** a mapování je nastavené na **nikdo**.  
+
+    > [!IMPORTANT]
+    > Ujistěte se, že jste na virtuálním počítači nastavili doménu systému souborů NFS na `/etc/idmapd.conf` tak, aby odpovídala výchozí konfiguraci domény v Azure NetApp Files: **`defaultv4iddomain.com`** . Pokud dojde k neshodě mezi konfigurací domény v klientovi NFS (tj. virtuálním počítačem) a serverem NFS, tj. konfigurací Azure NetApp, pak se oprávnění k souborům na svazcích Azure NetApp, která jsou připojená k virtuálním počítačům, zobrazí jako `nobody`.  
+
+    <pre><code>
+    sudo cat /etc/idmapd.conf
+    # Example
+    [General]
+    Domain = <b>defaultv4iddomain.com</b>
+    [Mapping]
+    Nobody-User = <b>nobody</b>
+    Nobody-Group = <b>nobody</b>
+    </code></pre>
+
+4. **[A]** ověřte `nfs4_disable_idmapping`. Měl by být nastaven na **Y**. Chcete-li vytvořit adresářovou strukturu, kde je umístěn `nfs4_disable_idmapping`, spusťte příkaz Mount. V/sys/modules nebudete moct ručně vytvořit adresář, protože přístup je vyhrazený pro jádro nebo ovladače.  
+
+    <pre><code>
+    # Check nfs4_disable_idmapping 
+    cat /sys/module/nfs/parameters/nfs4_disable_idmapping
+    # If you need to set nfs4_disable_idmapping to Y
+    mkdir /mnt/tmp
+    mount 192.168.24.5:/sap<b>QAS</b>
+    umount  /mnt/tmp
+    echo "Y" > /sys/module/nfs/parameters/nfs4_disable_idmapping
+    # Make the configuration permanent
+    echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
+    </code></pre>
+
+   Další informace o tom, jak změnit parametr `nfs4_disable_idmapping`, najdete v článku https://access.redhat.com/solutions/1749883.
 
 ### <a name="create-pacemaker-cluster"></a>Vytvoření clusteru Pacemaker
 
@@ -295,9 +331,12 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    Dočasně připojte Azure NetApp Files svazek na jeden z virtuálních počítačů a vytvořte adresáře SAP (cesty k souborům).  
 
     ```
-     #mount temporarily the volume
+     # mount temporarily the volume
      sudo mkdir -p /saptmp
+     # If using NFSv3
      sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 192.168.24.5:/sapQAS /saptmp
+     # If using NFSv4.1
+     sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,sec=sys,tcp 192.168.24.5:/sapQAS /saptmp
      # create the SAP directories
      sudo cd /saptmp
      sudo mkdir -p sapmntQAS
@@ -361,6 +400,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
 
 1. **[A]** přidat položky připojení
 
+   Pokud používáte NFSv3:
    ```
    sudo vi /etc/fstab
    
@@ -370,8 +410,18 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
     192.168.24.4:/transSAP /usr/sap/trans nfs rw,hard,rsize=65536,wsize=65536,vers=3
    ```
 
+   Pokud používáte NFSv 4.1:
+   ```
+   sudo vi /etc/fstab
+   
+   # Add the following lines to fstab, save and exit
+    192.168.24.5:/sapQAS/sapmntQAS /sapmnt/QAS nfs rw,hard,rsize=65536,wsize=65536,vers=4.1,sec=sys
+    192.168.24.5:/sapQAS/usrsapQASsys /usr/sap/QAS/SYS nfs rw,hard,rsize=65536,wsize=65536,vers=4.1,sec=sys
+    192.168.24.4:/transSAP /usr/sap/trans nfs rw,hard,rsize=65536,wsize=65536,vers=4.1,sec=sys
+   ```
+
    > [!NOTE]
-   > Při připojování svazků nezapomeňte odpovídat verzi protokolu NFS Azure NetApp Files svazků. V tomto příkladu se Azure NetApp Files svazky vytvořily jako NFSv3 svazky.  
+   > Při připojování svazků nezapomeňte odpovídat verzi protokolu NFS Azure NetApp Files svazků. Pokud se Azure NetApp Files svazky vytvoří jako svazky NFSv3, použijte odpovídající konfiguraci NFSv3. Pokud se Azure NetApp Files svazky vytvoří jako svazky NFSv 4.1, podle pokynů zakažte mapování ID a ujistěte se, že používáte odpovídající konfiguraci NFSv 4.1. V tomto příkladu se Azure NetApp Files svazky vytvořily jako NFSv3 svazky.  
 
    Připojit nové sdílené složky
 
@@ -410,9 +460,14 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
 
    ```
    sudo pcs node standby anftstsapcl2
-   
+   # If using NFSv3
    sudo pcs resource create fs_QAS_ASCS Filesystem device='192.168.24.5:/sapQAS/usrsapQASascs' \
      directory='/usr/sap/QAS/ASCS00' fstype='nfs' \
+     --group g-QAS_ASCS
+   
+   # If using NFSv4.1
+   sudo pcs resource create fs_QAS_ASCS Filesystem device='192.168.24.5:/sapQAS/usrsapQASascs' \
+     directory='/usr/sap/QAS/ASCS00' fstype='nfs' options='sec=sys,vers=4.1' \
      --group g-QAS_ASCS
    
    sudo pcs resource create vip_QAS_ASCS IPaddr2 \
@@ -442,7 +497,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
 
 1. **[1]** instalace SAP NetWeaver ASCS  
 
-   Nainstalujte SAP NetWeaver ASCS jako kořen v prvním uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu nástroje pro vyrovnávání zatížení pro ASCS, například <b>anftstsapvh</b>, <b>192.168.14.9</b> a číslo instance, kterou jste použili pro sonda nástroje pro vyrovnávání zatížení, například <b>00</b>.
+   Nainstalujte SAP NetWeaver ASCS jako kořen v prvním uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu služby Vyrovnávání zatížení pro ASCS, například <b>anftstsapvh</b>, <b>192.168.14.9</b> a číslo instance, kterou jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>00</b>.
 
    Pomocí parametru sapinst SAPINST_REMOTE_ACCESS_USER můžete pro uživatele, který není rootem, připojovat se k sapinst.
 
@@ -466,10 +521,16 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    sudo pcs node unstandby anftstsapcl2
    sudo pcs node standby anftstsapcl1
    
+   # If using NFSv3
    sudo pcs resource create fs_QAS_AERS Filesystem device='192.168.24.5:/sapQAS/usrsapQASers' \
      directory='/usr/sap/QAS/ERS01' fstype='nfs' \
     --group g-QAS_AERS
-
+   
+   # If using NFSv4.1
+   sudo pcs resource create fs_QAS_AERS Filesystem device='192.168.24.5:/sapQAS/usrsapQASers' \
+     directory='/usr/sap/QAS/ERS01' fstype='nfs' options='sec=sys,vers=4.1' \
+    --group g-QAS_AERS
+   
    sudo pcs resource create vip_QAS_AERS IPaddr2 \
      ip=192.168.14.10 cidr_netmask=24 \
     --group g-QAS_AERS
@@ -501,7 +562,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
 
 1. **[2]** instalace SAP NetWeaver olajících  
 
-   Nainstalujte SAP NetWeaver OLAJÍCÍCH jako kořenovou složku na druhém uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu služby Vyrovnávání zatížení pro OLAJÍCÍCH, například <b>anftstsapers</b>, <b>192.168.14.10</b> a číslo instance, kterou jste použili pro sonda nástroje pro vyrovnávání zatížení, například <b>01</b>.
+   Nainstalujte SAP NetWeaver OLAJÍCÍCH jako kořenovou složku na druhém uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu služby Vyrovnávání zatížení pro OLAJÍCÍCH, například <b>anftstsapers</b>, <b>192.168.14.10</b> a číslo instance, které jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>01</b>.
 
    Pomocí parametru sapinst SAPINST_REMOTE_ACCESS_USER můžete pro uživatele, který není rootem, připojovat se k sapinst.
 
@@ -721,13 +782,22 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    ```
 
 1. **[A]** přidat položky připojení  
-
+   Pokud používáte NFSv3:
    ```
    sudo vi /etc/fstab
    
    # Add the following lines to fstab, save and exit
    192.168.24.5:/sapQAS/sapmntQAS /sapmnt/QAS nfs rw,hard,rsize=65536,wsize=65536,vers=3
    192.168.24.4:/transSAP /usr/sap/trans nfs rw,hard,rsize=65536,wsize=65536,vers=3
+   ```
+
+   Pokud používáte NFSv 4.1:
+   ```
+   sudo vi /etc/fstab
+   
+   # Add the following lines to fstab, save and exit
+   192.168.24.5:/sapQAS/sapmntQAS /sapmnt/QAS nfs rw,hard,rsize=65536,wsize=65536,vers=4.1,sec=sys
+   192.168.24.4:/transSAP /usr/sap/trans nfs rw,hard,rsize=65536,wsize=65536,vers=4.1,sec=sys
    ```
 
    Připojit nové sdílené složky
@@ -737,7 +807,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    ```
 
 1. **[P]** vytvoření a připojení adresáře pas  
-
+   Pokud používáte NFSv3:
    ```
    sudo mkdir -p /usr/sap/QAS/D02
    sudo chattr +i /usr/sap/QAS/D02
@@ -750,8 +820,21 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    sudo mount -a
    ```
 
-1. **[S]** vytvořte a připojte adresář AAS  
+   Pokud používáte NFSv 4.1:
+   ```
+   sudo mkdir -p /usr/sap/QAS/D02
+   sudo chattr +i /usr/sap/QAS/D02
+   
+   sudo vi /etc/fstab
+   # Add the following line to fstab
+   92.168.24.5:/sapQAS/usrsapQASpas /usr/sap/QAS/D02 nfs rw,hard,rsize=65536,wsize=65536,vers=4.1,sec=sys
+   
+   # Mount
+   sudo mount -a
+   ```
 
+1. **[S]** vytvořte a připojte adresář AAS  
+   Pokud používáte NFSv3:
    ```
    sudo mkdir -p /usr/sap/QAS/D03
    sudo chattr +i /usr/sap/QAS/D03
@@ -764,6 +847,18 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    sudo mount -a
    ```
 
+   Pokud používáte NFSv 4.1:
+   ```
+   sudo mkdir -p /usr/sap/QAS/D03
+   sudo chattr +i /usr/sap/QAS/D03
+   
+   sudo vi /etc/fstab
+   # Add the following line to fstab
+   92.168.24.5:/sapQAS/usrsapQASaas /usr/sap/QAS/D03 nfs rw,hard,rsize=65536,wsize=65536,vers=4.1,sec=sys
+   
+   # Mount
+   sudo mount -a
+   ```
 
 1. **[A]** konfigurace odkládacího souboru
  

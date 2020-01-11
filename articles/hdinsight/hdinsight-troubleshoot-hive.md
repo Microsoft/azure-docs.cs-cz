@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 9169bd9a63666238e9d6b97d86bf1e9e10312c1b
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 02247adb9852a72b386feb2ef0924b0f1b3d6277
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076512"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895235"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hive pomocí Azure HDInsight
 
@@ -120,17 +120,17 @@ Kód v krocích řešení předpokládá, že cesty k datům v novém clusteru j
    Jako první argument musíte zadat vzorový program.
 
    Platné názvy programů zahrnují:
-    - **ContainerReuseAnalyzer**: Tisk podrobností o opětovném použití kontejneru v DAG
-    - **CriticalPath**: Vyhledání kritické cesty k DAG
-    - **LocalityAnalyzer**: Tisk podrobností o národní prostředí v DAG
-    - **ShuffleTimeAnalyzer**: Analyzovat podrobnosti o čase náhodného přehrávání v DAG
-    - **SkewAnalyzer**: Analyzovat detaily zkosení v DAG
-    - **SlowNodeAnalyzer**: Tisk podrobností uzlu v DAG
-    - **SlowTaskIdentifier**: Tisk s pomalými podrobnostmi o úloze v DAG
-    - **SlowestVertexAnalyzer**: Tisk nejpomalejších detailů vrcholu v DAG
-    - **SpillAnalyzer**: Tisk podrobností o rozlití v DAG
-    - **TaskConcurrencyAnalyzer**: Tisk podrobností o souběžnosti úkolu ve DAG
-    - **VertexLevelCriticalPathAnalyzer**: Najde kritickou cestu na úrovni vrcholu v DAG.
+    - **ContainerReuseAnalyzer**: tisk podrobností o opětovném použití kontejneru v Dag
+    - **CriticalPath**: vyhledejte kritickou cestu pro DAG.
+    - **LocalityAnalyzer**: podrobnosti o místním tisku v Dag
+    - **ShuffleTimeAnalyzer**: analyzovat podrobnosti času náhodného přehrávání v Dag
+    - **SkewAnalyzer**: analyzovat podrobnosti zkosení v Dag
+    - **SlowNodeAnalyzer**: tisk podrobností uzlu v Dag
+    - **SlowTaskIdentifier**: tisk pomalých úloh v Dag
+    - **SlowestVertexAnalyzer**: vytiskněte nejpomalejší podrobnosti vrcholu v Dag
+    - **SpillAnalyzer**: tisk podrobností o rozlití v Dag
+    - **TaskConcurrencyAnalyzer**: tisk podrobností o souběžnosti úkolu v Dag
+    - **VertexLevelCriticalPathAnalyzer**: najít kritickou cestu na úrovni vrcholu v Dag
 
 ### <a name="additional-reading"></a>Další čtení
 
@@ -167,6 +167,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 - Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-- Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+- Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-- Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+- Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

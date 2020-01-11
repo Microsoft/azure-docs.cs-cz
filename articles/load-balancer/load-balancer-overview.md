@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/05/2019
 ms.author: allensu
-ms.openlocfilehash: 4f6a0a2631c3f7458548a2ff435c3e565e744f41
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: c4f06afb63279f2b493c8938da2e9954b2c7e6c3
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660204"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894491"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
@@ -93,7 +93,7 @@ Následující obrázek znázorňuje koncový bod s vyrovnáváním zatížení 
 
 *Obrázek: vyrovnávání webového provozu pomocí veřejné Load Balancer*
 
-Internetoví klienti odesílají žádosti webové stránky na veřejnou IP adresu webové aplikace na portu TCP 80. Azure Load Balancer distribuuje požadavky mezi tři virtuální počítače v sadě s vyrovnáváním zatížení. Další informace o algoritmech Load Balancer najdete v tématu [Load Balancer koncepty](load-balancer-overview.md##load-balancer-concepts).
+Internetoví klienti odesílají žádosti webové stránky na veřejnou IP adresu webové aplikace na portu TCP 80. Azure Load Balancer distribuuje požadavky mezi tři virtuální počítače v sadě s vyrovnáváním zatížení. Další informace o algoritmech Load Balancer najdete v tématu [Load Balancer koncepty](load-balancer-overview.md#load-balancer-concepts).
 
 Ve výchozím nastavení Azure Load Balancer distribuuje síťový provoz rovnoměrně mezi několik instancí virtuálních počítačů. Můžete také nakonfigurovat spřažení relací. Další informace najdete v tématu [Konfigurace distribučního režimu pro Azure Load Balancer](load-balancer-distribution-mode.md).
 

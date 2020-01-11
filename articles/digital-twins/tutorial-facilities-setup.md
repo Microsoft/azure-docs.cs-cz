@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/12/2019
-ms.openlocfilehash: 68bc6f8c81fb44dc26d2208d33893c21ff9b5b3c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/10/2020
+ms.openlocfilehash: bf07a165b6ea933719eb06b6625a91033030a120
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860975"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895458"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Kurz: nasazení digitálních vláken Azure ve verzi Preview a konfigurace prostorového grafu
 
@@ -129,7 +129,6 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
     return results;
 }
-
 ```
 
 Tato funkce využívá [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) ve stejné složce. Tento soubor otevřít, a poznamenejte si hierarchii kancelářskou budovu: *příslušností*, *Floor*, *oblasti*, a *místnosti*. Každý z těchto fyzických prostorů může obsahovat *zařízení* a *senzory*. Každý záznam obsahuje i předdefinovanou `type` &mdash;například Floor, místnosti.
@@ -150,7 +149,7 @@ Další informace o prostorové grafy a objektové modely, najdete v článku [m
 
 - **devices:** Prostory můžou obsahovat zařízení (`devices`), což jsou fyzické nebo virtuální entity, které spravují několik senzorů. Zařízení může být například telefonu uživatele, pod senzor Raspberry Pi nebo brány. V imaginární budově v naší ukázce si všimněte, že místnost **Focus Room** obsahuje zařízení **Raspberry Pi 3 A1**. Jednotlivé uzly zařízení jsou identifikované jedinečnou hodnotou `hardwareId` (ID hardwaru), která je v této ukázce pevně zakódovaná. Pokud chcete tuto ukázku nakonfigurovat pro skutečný provoz v produkčním prostředí, nahraďte tyto hodnoty odpovídajícími hodnotami z vašeho systému.  
 
-- **senzorů**: zařízení může obsahovat více `sensors`. Dokáže detekovat a teploty, pohybu a stav baterie, jako jsou fyzické změny záznamu. Každý uzel senzoru je jednoznačně identifikovaný hodnotou `hardwareId` (ID hardwaru), která je zde pevně zakódovaná. Pro aplikace skutečný nahraďte tyto pomocí jedinečných identifikátorů pro čidel v nastavení aplikace. Soubor provisionSample.yaml má dvě senzorů k zaznamenání *pohybu* a *CarbonDioxide*. Přidejte další senzor, který bude zaznamenávat teplotu (*Temperature*), a to přidáním následujících řádků pod řádky senzoru CarbonDioxide. Všimněte si, že tyto jsou k dispozici v provisionSample.yaml jako komentovaná řádky. Můžete je Odkomentujte tak, že odeberete `#` znak ve každého řádku. 
+- **senzorů**: zařízení může obsahovat více `sensors`. Dokáže detekovat a teploty, pohybu a stav baterie, jako jsou fyzické změny záznamu. Každý uzel senzoru je jednoznačně identifikovaný hodnotou `hardwareId` (ID hardwaru), která je zde pevně zakódovaná. Pro aplikace skutečný nahraďte tyto pomocí jedinečných identifikátorů pro čidel v nastavení aplikace. Soubor provisionSample.yaml má dvě senzorů k zaznamenání *pohybu* a *CarbonDioxide*. Přidejte další senzor, který bude zaznamenávat teplotu (*Temperature*), a to přidáním následujících řádků pod řádky senzoru CarbonDioxide. Ty jsou k dispozici v provisionSample. yaml jako řádky s komentářem. Můžete je Odkomentujte tak, že odeberete `#` znak ve každého řádku. 
 
     ```yaml
             - dataType: Temperature

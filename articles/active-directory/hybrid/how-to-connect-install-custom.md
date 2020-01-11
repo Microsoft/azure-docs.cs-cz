@@ -14,17 +14,17 @@ ms.date: 11/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80b90a22a793c15104bba3eb91e88f851158e13f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 301fe9c213ec6d78d32d6ccde84a689c4659acb3
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106940"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888981"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Vlastní instalace Azure AD Connect
 **Vlastní nastavení** Azure AD Connect se používá, pokud chcete využít další možnosti instalace. Používá se, pokud máte víc doménových struktur, nebo pokud chcete nakonfigurovat volitelné funkce, které nejsou zahrnuty v rychlé instalaci. Používá se ve všech případech, kde možnost [**rychlá instalace**](how-to-connect-install-express.md) nevyhovuje nasazení nebo topologii.
 
-Před zahájením instalace služby Azure AD Connect nezapomeňte [stáhnout službu Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771) a dokončit nezbytné kroky uvedené v tématu [Azure AD Connect: Hardware a nezbytné předpoklady](how-to-connect-install-prerequisites.md). Taky se ujistěte, jestli máte požadované účty, které jsou popsané v tématu [Účty a oprávnění Azure AD Connect](reference-connect-accounts-permissions.md).
+Před zahájením instalace Azure AD Connect nezapomeňte [stáhnout Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771) a provést požadovanou přípravu popsanou v tématu [Azure AD Connect: Hardware a nezbytné předpoklady](how-to-connect-install-prerequisites.md). Taky se ujistěte, jestli máte požadované účty, které jsou popsané v tématu [Účty a oprávnění Azure AD Connect](reference-connect-accounts-permissions.md).
 
 Pokud vlastní nastavení neodpovídá vaší topologii, například k upgradu DirSync, přečtěte si související dokumentaci pro jiné scénáře.
 
@@ -82,7 +82,7 @@ Po vytvoření názvu doménové struktury a kliknutí na **Přidat adresář** 
 | Možnost | Popis |
 | --- | --- |
 | Vytvořit nový účet | Tuto možnost vyberte, pokud chcete, aby průvodce Azure AD Connect vytvořil účet AD DS vyžadovaný pro připojení Azure AD Connect k doménové struktuře AD během synchronizace adresáře. Když je tato možnost vybrána, zadejte uživatelské jméno a heslo účtu podnikového správce. Zadaný účet podnikového správce použije průvodce Azure AD Connect k vytvoření požadovaného účtu AD DS. Součást domény můžete zadat buď ve formátu NetBios, nebo jako plně kvalifikovaný název domény, tj. FABRIKAM\administrator nebo fabrikam.com\administrator. |
-| Použít existující účet | Tuto možnost vyberte, pokud chcete, aby Azure AD Connect pro připojení k doménové struktuře AD během synchronizace adresáře použil existující účet AD DS. Součást domény můžete zadat buď ve formátu NetBios, nebo jako plně kvalifikovaný název domény, tj. jako FABRIKAM\syncuser nebo fabrikam.com\syncuser. Tento účet může být běžný uživatelský účet, protože potřebuje pouze výchozí oprávnění ke čtení. Je ale možné, že v závislosti na scénáři budete potřebovat větší oprávnění. Další informace najdete v tématu [Účty a oprávnění v Azure AD Connect](reference-connect-accounts-permissions.md##create-the-ad-ds-connector-account). |
+| Použít existující účet | Tuto možnost vyberte, pokud chcete, aby Azure AD Connect pro připojení k doménové struktuře AD během synchronizace adresáře použil existující účet AD DS. Součást domény můžete zadat buď ve formátu NetBios, nebo jako plně kvalifikovaný název domény, tj. jako FABRIKAM\syncuser nebo fabrikam.com\syncuser. Tento účet může být běžný uživatelský účet, protože potřebuje pouze výchozí oprávnění ke čtení. Je ale možné, že v závislosti na scénáři budete potřebovat větší oprávnění. Další informace najdete v tématu [Účty a oprávnění v Azure AD Connect](reference-connect-accounts-permissions.md#create-the-ad-ds-connector-account). |
 
 ![Připojení adresáře](./media/how-to-connect-install-custom/connectdir02.png)
 
@@ -107,7 +107,7 @@ Zkontrolujte všechny domény označené jako **Nepřidáno** a **Neověřeno**.
 >
 >
 
-### <a name="domain-and-ou-filtering"></a>doména a filtrování organizační jednotky
+### <a name="domain-and-ou-filtering"></a>Filtrování domén a organizačních jednotek
 Ve výchozím nastavení se synchronizují všechny domény a organizační jednotky. Pokud některé domény nebo organizační jednotky nechcete synchronizovat do Azure AD, můžete zrušit výběr těchto domén a organizačních jednotek.  
 ![Filtrování organizačních jednotek domén](./media/how-to-connect-install-custom/domainoufiltering.png)  
 Tato stránka průvodce konfiguruje filtrování podle domén a organizačních jednotek. Pokud plánujete změny, před jejich provedením si přečtěte témata [filtrování podel domén](how-to-connect-sync-configure-filtering.md#domain-based-filtering) a [filtrování podle organizačních jednotek](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering). Některé organizační jednotky jsou zásadní pro funkčnost a měly by být vybrány.
@@ -125,7 +125,7 @@ Pokud se zobrazí toto upozornění, ujistěte se, jestli jsou tyto domény skut
 #### <a name="select-how-users-should-be-identified-in-your-on-premises-directories"></a>Vyberte způsob, jakým se mají uživatelé identifikovat v místních adresářích
 Funkce párování napříč doménovými strukturami vám umožňuje definovat, jak jsou uživatelé z vašich doménových struktur AD DS reprezentováni v Azure AD. Uživatel buď může být reprezentován jenom jednou v rámci všech doménových struktur, nebo může mít kombinaci povolených a zakázaných účtů. Uživatel také může být v některých doménových strukturách reprezentován jako kontakt.
 
-![Jedinečná](./media/how-to-connect-install-custom/unique2.png)
+![Unique](./media/how-to-connect-install-custom/unique2.png)
 
 | Nastavení | Popis |
 | --- | --- |

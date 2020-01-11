@@ -4,12 +4,12 @@ description: Seznamte se se skupinami kontejnerů v Azure Container Instances, k
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: 19fa50f83a2593b8914931e25fa99cb2e4896227
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 73781418321c3932bf3e0190b646dcd3bb178195
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770267"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888052"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Skupiny kontejnerů v Azure Container Instances
 
@@ -32,7 +32,7 @@ Tato ukázková skupina kontejnerů:
 * Zahrnuje dvě sdílené složky Azure jako připojení svazku a každý kontejner připojí jednu z těchto sdílených složek místně.
 
 > [!NOTE]
-> Skupiny více kontejnerů aktuálně podporují pouze kontejnery Linux. V případě kontejnerů Windows podporuje Azure Container Instances jenom nasazení jedné instance. Pracujeme na tom, abychom do kontejnerů Windows provedli všechny funkce. v [přehledu](container-instances-overview.md#linux-and-windows-containers)služeb můžete najít aktuální rozdíly v platformách.
+> Skupiny více kontejnerů aktuálně podporují pouze kontejnery Linux. V případě kontejnerů Windows podporuje Azure Container Instances jenom nasazení jediné instance kontejneru. Pracujeme na tom, abychom do kontejnerů Windows provedli všechny funkce. v [přehledu](container-instances-overview.md#linux-and-windows-containers)služeb můžete najít aktuální rozdíly v platformách.
 
 ## <a name="deployment"></a>Nasazení
 
@@ -44,19 +44,19 @@ Pokud chcete zachovat konfiguraci skupiny kontejnerů, můžete tuto konfiguraci
 
 ## <a name="resource-allocation"></a>Přidělení prostředků
 
-Azure Container Instances přiděluje prostředky, jako jsou CPU, paměť a volitelně [GPU][gpus] (Preview), do skupiny více kontejnerů přidáním požadavků na [prostředky][resource-requests] instancí ve skupině. Pokud jako příklad vytvoříte skupinu kontejnerů se dvěma instancemi, každý z nich bude mít každý požadavek 1 procesor, skupina kontejnerů se přidělí 2 procesory.
+Azure Container Instances přiděluje prostředky, jako jsou CPU, paměť a volitelně [GPU][gpus] (Preview), do skupiny více kontejnerů přidáním požadavků na [prostředky][resource-requests] instancí ve skupině. Když jako příklad vytvoříte skupinu kontejnerů se dvěma instancemi kontejnerů, každý z nich požaduje 1 procesor, skupiny kontejnerů se přidělí 2 procesory.
 
-### <a name="resource-usage-by-instances"></a>Využití prostředků podle instancí
+### <a name="resource-usage-by-container-instances"></a>Využití prostředků podle instancí kontejnerů
 
-Každá instance kontejneru ve skupině má přidělené prostředky zadané v její žádosti o prostředky. Maximální počet prostředků využívaných instancí ve skupině ale může být jiný, pokud nakonfigurujete její volitelnou vlastnost [limitu prostředků][resource-limits] . Limit prostředků instance musí být větší nebo roven vlastnosti povinného [požadavku na prostředek][resource-requests] .
+Každá instance kontejneru ve skupině má přidělené prostředky zadané v její žádosti o prostředky. Maximální počet prostředků využívaných instancí kontejneru ve skupině se ale může lišit, pokud nakonfigurujete její volitelnou vlastnost [limitu prostředků][resource-limits] . Limit prostředků instance kontejneru musí být větší nebo roven vlastnosti povinného [požadavku na prostředek][resource-requests] .
 
-* Pokud nezadáte omezení prostředků, maximální využití prostředků instance je stejné jako jeho požadavek na prostředek.
+* Pokud nezadáte omezení prostředků, maximální využití prostředků instance kontejneru je stejné jako jeho požadavek na prostředek.
 
-* Pokud zadáte omezení instance, maximální využití instance může být větší než požadavek, až do nastaveného limitu. Odpovídající využití prostředků jinými instancemi ve skupině může snížit. Maximálním omezením prostředků, které můžete nastavit pro instanci, je celkový počet prostředků přidělených skupině.
+* Pokud zadáte limit pro instanci kontejneru, maximální využití instance může být větší než požadavek, až do nastaveného limitu. Odpovídající využití prostředků jinými instancemi kontejnerů ve skupině může snížit. Maximální omezení prostředků, které můžete nastavit pro instanci kontejneru, je celkový počet prostředků přidělených skupině.
     
-Například ve skupině se dvěma instancemi každý požaduje 1 procesor může jeden z vašich kontejnerů spustit úlohu, která vyžaduje více procesorů pro spuštění než druhá.
+Například ve skupině se dvěma instancemi kontejnerů každý požaduje 1 procesor může jeden z vašich kontejnerů spustit úlohu, která vyžaduje více procesorů, než je druhý.
 
-V tomto scénáři můžete pro instanci nastavit omezení prostředků na 2 procesory. Tato konfigurace umožňuje, aby se kontejner používal k plným 2 procesorům, pokud je k dispozici.
+V tomto scénáři můžete pro instanci kontejneru nastavit omezení prostředků na 2 procesory. Tato konfigurace umožňuje, aby instance kontejneru používala k plným procesorům 2, pokud je k dispozici.
 
 ### <a name="minimum-and-maximum-allocation"></a>Minimální a maximální přidělení
 
@@ -70,7 +70,7 @@ Skupiny kontejnerů můžou sdílet externí IP adresu, jeden nebo víc portů n
 
 V rámci skupiny kontejnerů se instance kontejnerů můžou vzájemně kontaktovat přes localhost na jakémkoli portu, a to i v případě, že se tyto porty nezveřejňují externě na IP adrese skupiny nebo z kontejneru.
 
-Volitelně nasaďte skupiny kontejnerů do služby [Azure Virtual Network][virtual-network] (Preview), abyste kontejnerům umožnili zabezpečenou komunikaci s ostatními prostředky ve virtuální síti.
+Volitelně nasaďte skupiny kontejnerů do služby [Azure Virtual Network][virtual-network] , abyste kontejnerům umožnili zabezpečenou komunikaci s ostatními prostředky ve virtuální síti.
 
 ## <a name="storage"></a>Storage
 

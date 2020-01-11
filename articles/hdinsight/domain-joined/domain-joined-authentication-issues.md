@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
-ms.openlocfilehash: 2ffc3ced360e1fdf00f69ea5826e6c6af7806f71
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 26eec9cdd327ceb51e72deb1d6f40d585ce368fb
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215982"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896124"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Problémy s ověřováním ve službě Azure HDInsight
 
@@ -36,7 +36,7 @@ Reason: Bad Request, Detailed Response: {"error":"invalid_grant","error_descript
 
 Kód chyby Azure AD 50126 znamená, že tenant nestavil zásady `AllowCloudPasswordValidation`.
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 
 Správce společnosti tenanta Azure AD by měl povolit, aby služba Azure AD používala pro uživatele v AD FS hodnoty hash hesel.  Použijte `AllowCloudPasswordValidationPolicy`, jak je znázorněno v článku [použití balíček zabezpečení podniku ve službě HDInsight](../domain-joined/apache-domain-joined-architecture.md).
 
@@ -56,7 +56,7 @@ Přihlášení se nezdařilo s kódem chyby 50034. Chybová zpráva vypadá něj
 
 Uživatelské jméno je nesprávné (neexistuje). Uživatel nepoužívá stejné uživatelské jméno, které se používá v Azure Portal.
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 
 Použijte stejné uživatelské jméno, které funguje na portálu.
 
@@ -76,7 +76,7 @@ Uživatelský účet je uzamčený, kód chyby 50053. Chybová zpráva vypadá n
 
 Příliš mnoho pokusů o přihlášení s nesprávným heslem
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 
 Počkejte 30 minut nebo zastavte všechny aplikace, které se mohou pokoušet ověřit.
 
@@ -96,7 +96,7 @@ Platnost hesla vypršela, kód chyby 50053. Chybová zpráva vypadá nějak takt
 
 Platnost hesla vypršela.
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 
 Změňte heslo v Azure Portal (v místním systému) a potom počkejte 30 minut, než se synchronizace zachytí.
 
@@ -112,7 +112,7 @@ Změňte heslo v Azure Portal (v místním systému) a potom počkejte 30 minut,
 
 Pro uživatele platí zásady podmíněného přístupu nebo vícefaktorové ověřování. Vzhledem k tomu, že interaktivní ověřování se zatím nepodporuje, je potřeba daného uživatele nebo cluster vyloučit z vícefaktorového ověřování nebo podmíněného přístupu. Pokud se rozhodnete vyloučit cluster (zásady výjimky na základě IP adresy), ujistěte se, že je služba AD `ServiceEndpoints` pro tuto virtuální síť povolená.
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 
 Použijte zásady podmíněného přístupu a vylučte clustery HDInsight od MFA, jak je znázorněno v části [Konfigurace clusteru HDInsight s balíček zabezpečení podniku pomocí Azure Active Directory Domain Services](./apache-domain-joined-configure-using-azure-adds.md).
 
@@ -128,7 +128,7 @@ Přihlášení bylo odepřeno.
 
 V této fázi není ověřování OAuth problémem, ale ověřování protokolem Kerberos je. Pokud je tento cluster zálohovaný pomocí ADLS, přihlášení OAuth se úspěšně přihlásilo předtím, než se pokusí ověřování protokolem Kerberos. U clusterů WASB se přihlášení OAuth nepokouší. Mohlo by se jednat o spoustu důvodů selhání protokolu Kerberos, protože hodnoty hash hesla se nesynchronizují, uživatelský účet byl uzamčen v Azure služba AD DS atd. Hodnoty hash hesla se synchronizují pouze v případě, že uživatel změní heslo. Při vytváření instance služby Azure služba AD DS spustí synchronizaci hesel, která se po vytvoření změnila. Nebude se zpětně synchronizovat hesla, která byla nastavena před jeho zahájením.
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 
 Pokud si myslíte, že hesla možná nebudou synchronizovaná, zkuste změnit heslo a počkejte několik minut, než se synchronizuje.
 
@@ -146,7 +146,7 @@ Kinit se nezdařila.
 
 Se liší.
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 
 Aby kinit bylo úspěšné, musíte znát `sAMAccountName` (Toto je krátký název účtu bez sféry). `sAMAccountName` je obvykle předpona účtu (například Bob v `bob@contoso.com`). Pro některé uživatele se může lišit. Abyste se dozvěděli `sAMAccountName`, budete potřebovat možnost Procházet adresář a hledat v něm.
 
@@ -172,7 +172,7 @@ Kinit selže s chybou `Preauthentication`.
 
 Nesprávné uživatelské jméno nebo heslo.
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 
 Ověřte uživatelské jméno a heslo. Také se podívejte na další vlastnosti popsané výše. Chcete-li povolit podrobné ladění, před pokusem o kinit spusťte z relace `export KRB5_TRACE=/tmp/krb.log`.
 
@@ -188,7 +188,7 @@ Příkaz Job/HDFS se nezdařil z důvodu `TokenNotFoundException`.
 
 Požadovaný přístupový token OAuth se nenašel pro úspěšné provedení úlohy nebo příkazu. Ovladač ADLS/ABFS se pokusí načíst přístupový token OAuth ze služby přihlašovacích údajů před vytvořením požadavků na úložiště. Tento token se zaregistruje při přihlášení k portálu Ambari pomocí stejného uživatele.
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 
 Ujistěte se, že jste se úspěšně přihlásili k portálu Ambari, a to pomocí uživatelského jména, jehož identita se používá ke spuštění úlohy.
 
@@ -204,7 +204,7 @@ Uživatel obdrží chybovou zprávu `Error fetching access token`.
 
 K této chybě dochází občas, když se uživatelé pokusí o přístup k ADLS Gen2 pomocí seznamů ACL a platnost tokenu protokolu Kerberos vypršela.
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 
 * V případě Azure Data Lake Storage Gen1 vyčistěte mezipaměť prohlížeče a znovu se přihlaste do Ambari.
 
@@ -220,4 +220,4 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Součástí předplatného Microsoft Azure je přístup ke správě předplatného a podpora fakturace. Technická podpora se poskytuje prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

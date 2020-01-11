@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: 7cb3b4d6b490d09d14046465e0fc58526be5b045
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b5a48a686a238d724680e806daaed431107ec72
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433848"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894826"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura připojení pro spravovanou instanci v Azure SQL Database
 
@@ -66,7 +66,7 @@ Pojďme se na architekturu připojení pro spravované instance pořizovat hlub�
 
 ![Architektura připojení virtuálního clusteru](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-Klienti se připojují ke spravované instanci pomocí názvu hostitele, který má `<mi_name>.<dns_zone>.database.windows.net`formuláře. Tento název hostitele se překládá na privátní IP adresu, i když je zaregistrovaný ve veřejné zóně DNS (Domain Name System) a je veřejně přeložitelný. `zone-id` se při vytváření clusteru automaticky vygeneruje. Pokud je nově vytvořený cluster hostitelem sekundární spravované instance, sdílí své ID zóny s primárním clusterem. Další informace najdete v tématu [použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets).
+Klienti se připojují ke spravované instanci pomocí názvu hostitele, který má `<mi_name>.<dns_zone>.database.windows.net`formuláře. Tento název hostitele se překládá na privátní IP adresu, i když je zaregistrovaný ve veřejné zóně DNS (Domain Name System) a je veřejně přeložitelný. `zone-id` se při vytváření clusteru automaticky vygeneruje. Pokud je nově vytvořený cluster hostitelem sekundární spravované instance, sdílí své ID zóny s primárním clusterem. Další informace najdete v tématu [použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets).
 
 Tato privátní IP adresa patří do interního nástroje pro vyrovnávání zatížení spravované instance. Nástroj pro vyrovnávání zatížení směruje provoz do brány spravované instance. Vzhledem k tomu, že je možné spustit více spravovaných instancí v rámci stejného clusteru, brána používá název hostitele spravované instance pro přesměrování provozu do správné služby SQL Engine.
 

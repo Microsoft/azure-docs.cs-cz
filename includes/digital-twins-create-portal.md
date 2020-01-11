@@ -9,28 +9,28 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 01/07/2020
 ms.custom: include file
-ms.openlocfilehash: afce629cc4aa5e3bb62bd2cf2eeaf8af12dc7d9f
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 9ccdc7a438d1dade534d39dc97a39a3bdae37dc4
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751569"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895454"
 ---
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. Vyberte domovskou stránku domů a potom **+ vytvořit prostředek**. 
 
-   [![rozbalte postranní panel domů a potom vyberte + vytvořit prostředek.](./media/create-digital-twins-portal/create-a-resource.png)](./media/create-digital-twins-portal/create-a-resource.png#lightbox)
+   [![rozbalte postranní panel domů a potom vyberte + vytvořit prostředek.](./media/create-digital-twins-portal/azure-portal-create-a-resource.png)](./media/create-digital-twins-portal/azure-portal-create-a-resource.png#lightbox)
 
 1. Vyhledejte **digitální vlákna**a vyberte **digitální vlákna**. 
 
-   [![výběry pro vytvoření nové instance digitálního vlákna](./media/create-digital-twins-portal/create-digital-twins.png)](./media/create-digital-twins-portal/create-digital-twins.png#lightbox)
+   [![výběry pro vytvoření nové instance digitálního vlákna](./media/create-digital-twins-portal/azure-portal-create-digital-twins.png)](./media/create-digital-twins-portal/azure-portal-create-digital-twins.png#lightbox)
 
    Případně vyberte **Internet věcí**a vyberte **digitální vlákna (Preview)** .
 
 1. Výběrem možnosti **Vytvořit** zahájíte proces nasazení.
 
-   [![vytvořit a potvrdit nasazení prostředku](./media/create-digital-twins-portal/create-and-confirm-resource.png)](./media/create-digital-twins-portal/create-and-confirm-resource.png#lightbox)
+   [![vytvořit a potvrdit nasazení prostředku](./media/create-digital-twins-portal/azure-create-and-confirm-resource.png)](./media/create-digital-twins-portal/azure-create-and-confirm-resource.png#lightbox)
 
 1. V podokně **Digital Twins** zadejte následující informace:
    * **Název prostředku:** Vytvořte jedinečný název vaší instance služby Digital Twins.

@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 666868d723b5e040b69762cdb39f472f2f8822c9
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: bc637976632551eb1afce1894714fc96baabfe03
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057921"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894234"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Nelze provést vzdálené plochy k virtuálnímu počítači, protože síťové rozhraní je zakázaná.
 
 Tento článek vysvětluje, jak vyřešit problém, ve kterém nemůžete provádět připojení ke vzdálené ploše do Azure Windows Virtual Machines (VM) je zakázána. síťové rozhraní.
 
 > [!NOTE]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
+> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
 
 ## <a name="symptoms"></a>Příznaky
 
@@ -34,7 +34,7 @@ Připojení ke vzdálené ploše nebo jakýkoli jiný typ připojení k dalším
 
 Předtím, než budete postupovat podle těchto kroků, vytvořte snímek disku s operačním systémem virtuálního počítače ovlivněný jako záložní. Další informace najdete v tématu [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md).
 
-Pokud chcete povolit rozhraní pro virtuální počítač, použití sériového portu ovládacího prvku nebo [resetování síťové rozhraní](##reset-network-interface) pro virtuální počítač.
+Pokud chcete povolit rozhraní pro virtuální počítač, použití sériového portu ovládacího prvku nebo [resetování síťové rozhraní](#reset-network-interface) pro virtuální počítač.
 
 ### <a name="use-serial-control"></a>Použití sériového portu ovládacího prvku
 

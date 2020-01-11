@@ -7,18 +7,18 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/13/2019
-ms.openlocfilehash: 7b511ab0c3093747d6e713754c04533e5f25b6ad
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 21269f7d5a9ec832a49a613351702dd24be156af
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087397"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894153"
 ---
 # <a name="unable-to-access-data-lake-storage-files-in-azure-hdinsight"></a>Nepovedlo se získat přístup k souborům úložiště Data Lake ve službě Azure HDInsight.
 
 Tento článek popisuje postup řešení potíží a možná řešení potíží při komunikaci s clustery Azure HDInsight.
 
-## <a name="issue-acl-verification-failed"></a>Problém: Ověření seznamu ACL se nezdařilo
+## <a name="issue-acl-verification-failed"></a>Problém: ověření seznamu ACL selhalo.
 
 Zobrazí se chybová zpráva podobná této:
 
@@ -30,7 +30,7 @@ LISTSTATUS failed with error 0x83090aa2 (Forbidden. ACL verification failed. Eit
 
 Uživatel může mít odvolaná oprávnění k instančnímu objektu (SP) pro soubory nebo složky.
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 
 1. Ověřte, zda má aktualizace SP oprávnění "x", aby bylo možné procházet podél cesty. Další informace najdete v tématu [oprávnění](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html). Ukázka příkazu DFS pro kontrolu přístupu k souborům nebo složkám v Data Lakem účtu úložiště:
 
@@ -42,7 +42,7 @@ Uživatel může mít odvolaná oprávnění k instančnímu objektu (SP) pro so
 
 ---
 
-## <a name="issue-service-principal-certificate-expiry"></a>Problém: Vypršení platnosti certifikátu objektu služby
+## <a name="issue-service-principal-certificate-expiry"></a>Problém: vypršení platnosti certifikátu instančního objektu
 
 Zobrazí se chybová zpráva podobná této:
 
@@ -66,7 +66,7 @@ Platnost certifikátu zadaného pro přístup k instančnímu objektu možná vy
     {"stderr": "-ls: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://gw0-abccluster.24ajrd4341lebfgq5unsrzq0ue.fx.internal.cloudapp.net:909/api/oauthtoken}}...
     ```
 
-1. Získejte jednu z adres URL z `core-site.xml property`.  -  `fs.azure.datalake.token.provider.service.urls`
+1. Získejte jednu z adres URL z `core-site.xml property` - `fs.azure.datalake.token.provider.service.urls`.
 
 1. Spuštěním následujícího příkazu složeného načtěte token OAuth.
 
@@ -99,7 +99,7 @@ Platnost certifikátu zadaného pro přístup k instančnímu objektu možná vy
     Error: java.lang.IllegalArgumentException: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://clustername.hmssomerandomstringc.cx.internal.cloudapp.net:909/api/oauthtoken}
     ```
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 
 Vytvořte nový certifikát nebo přiřaďte existující certifikát pomocí následujícího skriptu prostředí PowerShell:
 
@@ -165,12 +165,12 @@ Pokud chcete přiřadit existující certifikát, vytvořte certifikát a připr
 
 Po nahrazení parametrů skutečnými hodnotami spusťte příkaz prostředí PowerShell.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

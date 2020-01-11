@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 3aee53b823af5929ce48045d1addcbc4881b2825
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 768d01346b7697953d44742458c7e507ae7c115a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638268"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894598"
 ---
 # <a name="what-is-azure-virtual-network"></a>Co je Azure Virtual Network?
 
@@ -79,7 +79,7 @@ Azure ve výchozím nastavení směruje provoz mezi podsítěmi, propojenými vi
 
 ## <a name="azure-vnet-limits"></a>Omezení virtuální sítě Azure
 
-Existují určitá omezení počtu prostředků Azure, které můžete nasadit. Většina omezení sítě Azure je na maximálních hodnotách. Můžete ale [zvýšit určitá omezení sítě](../azure-supportability/networking-quota-requests.md) , jak je uvedeno na [stránce omezení virtuální](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)sítě. 
+Existují určitá omezení počtu prostředků Azure, které můžete nasadit. Většina omezení sítě Azure je na maximálních hodnotách. Můžete ale [zvýšit určitá omezení sítě](../azure-portal/supportability/networking-quota-requests.md) , jak je uvedeno na [stránce omezení virtuální](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)sítě. 
 
 ## <a name="pricing"></a>Ceny
 

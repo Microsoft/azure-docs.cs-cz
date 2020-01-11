@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 33e4b22bd4455d19fc334c4a3093183a8f9872f0
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 4d7c094904529323b0665d14255d1eb76cb78bd3
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830118"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891911"
 ---
 # <a name="copy-data-from-and-to-sftp-server-using-azure-data-factory"></a>Kopírování dat z a do serveru SFTP pomocí Azure Data Factory
 
@@ -442,4 +442,4 @@ Další informace o vlastnostech najdete v části [Odstranění aktivity](delet
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

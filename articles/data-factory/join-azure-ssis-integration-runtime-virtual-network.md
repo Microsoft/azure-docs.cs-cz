@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: b068eeeada842f2439f6135bfa8567a6c9709d12
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 58bfc35776e83df7754379a12ad4b7afca73e32c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862811"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75892342"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Připojení prostředí Azure-SSIS Integration runtime k virtuální síti
 
@@ -57,7 +57,7 @@ Při připojování k vašemu Azure-SSIS IR k virtuální síti si pamatujte tyt
 
 - Pokud je klasická virtuální síť již připojená k vaší místní síti v jiném umístění, než je vaše Azure-SSIS IR, můžete pro připojení Azure-SSIS IR vytvořit [Azure Resource Manager virtuální síť](../virtual-network/quick-create-portal.md#create-a-virtual-network) . Pak nakonfigurujte připojení [k virtuální síti typu Classic-to-Azure Resource Manager](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md) . 
  
-- Pokud je už virtuální síť Azure Resource Manager připojená k vaší místní síti v jiném umístění, než je vaše Azure-SSIS IR, můžete nejdřív vytvořit [Azure Resource Manager virtuální síť](../virtual-network/quick-create-portal.md##create-a-virtual-network) , pro kterou Azure-SSIS IR se chcete připojit. Pak nakonfigurujte připojení k virtuální síti Azure Resource Manager-to-Azure Resource Manager. 
+- Pokud je už virtuální síť Azure Resource Manager připojená k vaší místní síti v jiném umístění, než je vaše Azure-SSIS IR, můžete nejdřív vytvořit [Azure Resource Manager virtuální síť](../virtual-network/quick-create-portal.md#create-a-virtual-network) , pro kterou Azure-SSIS IR se chcete připojit. Pak nakonfigurujte připojení k virtuální síti Azure Resource Manager-to-Azure Resource Manager. 
 
 ## <a name="hosting-the-ssis-catalog-in-sql-database"></a>Hostování katalogu SSIS v SQL Database
 

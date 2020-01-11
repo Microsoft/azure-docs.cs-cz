@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/16/2019
+ms.date: 01/10/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a743df545450f87a01785f6f8a15fe08b8eafe
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 9cdbc4e155ec1a41ee5e35226b5beda7639c151e
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74181183"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888358"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure SQL
 
@@ -38,7 +38,7 @@ V tomto kurzu se dozvíte, jak pomocí identity přiřazené systémem pro virtu
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>Udělení přístupu virtuálnímu počítači k databázi na serveru SQL Azure
+## <a name="grant-access"></a>Udělení přístupu
 
 Pokud chcete virtuálnímu počítači udělit přístup k databázi na serveru SQL Azure, můžete použít existující server SQL nebo vytvořit nový. Pokud chcete vytvořit nový server a databázi pomocí webu Azure Portal, postupujte podle tohoto [rychlého startu k Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal). Rychlé starty s využitím Azure CLI a Azure PowerShellu najdete v [dokumentaci k Azure SQL](https://docs.microsoft.com/azure/sql-database/).
 
@@ -47,7 +47,7 @@ Udělení přístupu virtuálnímu počítači k databázi se skládá ze dvou k
 1. Povolení ověřování Azure AD pro server SQL
 2. Vytvoření **uživatele** v databázi reprezentujícího systémem přiřazenou identitu virtuálního počítače
 
-## <a name="enable-azure-ad-authentication-for-the-sql-server"></a>Povolení ověřování Azure AD pro server SQL
+## <a name="enable-azure-ad-authentication"></a>Povolit ověřování Azure AD
 
 [Nakonfigurujte pro server SQL ověřování Azure AD](/azure/sql-database/sql-database-aad-authentication-configure) pomocí následujících kroků:
 
@@ -58,9 +58,9 @@ Udělení přístupu virtuálnímu počítači k databázi se skládá ze dvou k
 5.  Vyberte uživatelský účet Azure AD, který se má stát správcem serveru, a klikněte na **Vybrat**.
 6.  Na panelu příkazů klikněte na **Uložit**.
 
-## <a name="create-a-contained-user-in-the-database-that-represents-the-vms-system-assigned-identity"></a>Vytvoření uživatele v databázi reprezentujícího systémem přiřazenou identitu virtuálního počítače
+## <a name="create-user"></a>Vytvořit uživatele
 
-Pro tento další krok budete potřebovat aplikaci [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). Než začnete, můžete si také přečíst následující články se základními informacemi o integraci Azure AD:
+V této části se dozvíte, jak v databázi vytvořit obsaženého uživatele, který reprezentuje identitu přiřazenou systémem virtuálního počítače. Pro tento krok potřebujete [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). Než začnete, můžete si také přečíst následující články se základními informacemi o integraci Azure AD:
 
 - [Univerzální ověřování s využitím služeb SQL Database a SQL Data Warehouse (podpora SSMS pro MFA)](/azure/sql-database/sql-database-ssms-mfa-authentication)
 - [Konfigurace a správa ověřování služby Azure Active Directory s využitím služby SQL Database nebo SQL Data Warehouse](/azure/sql-database/sql-database-aad-authentication-configure)
@@ -99,9 +99,9 @@ DATABÁZE SQL vyžaduje jedinečné zobrazované názvy AAD. V tomto případě 
 
 Kód spuštěný na virtuálním počítači teď může ze spravované identity přiřazené systémem získat token a pomocí něj provést ověření na serveru SQL.
 
-## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-sql"></a>Získání přístupového tokenu pomocí spravované identity přiřazené systémem virtuálního počítače a jeho použití k volání Azure SQL
+## <a name="get-an-access-token"></a>Získání přístupového tokenu
 
-Azure SQL nativně podporuje ověřování Azure AD, takže může přímo přijímat přístupové tokeny získané pomocí spravovaných identit pro prostředky Azure. Pomocí metody s využitím **přístupového tokenu** můžete vytvořit připojení k SQL. Jedná se o součást integrace Azure SQL s Azure AD a liší se od zadávání přihlašovacích údajů v připojovacím řetězci.
+V této části se dozvíte, jak získat přístupový token pomocí spravované identity přiřazené systémem virtuálního počítače a použít ho k volání Azure SQL. Azure SQL nativně podporuje ověřování Azure AD, takže může přímo přijímat přístupové tokeny získané pomocí spravovaných identit pro prostředky Azure. Pomocí metody s využitím **přístupového tokenu** můžete vytvořit připojení k SQL. Jedná se o součást integrace Azure SQL s Azure AD a liší se od zadávání přihlašovacích údajů v připojovacím řetězci.
 
 Tady je příklad kódu .NET pro otevření připojení k SQL pomocí přístupového tokenu. Tento kód je potřeba spustit na virtuálním počítači, aby byl možný přístup ke koncovému bodu spravované identity přiřazené systémem virtuálního počítače. K použití metody přístupového tokenu se vyžaduje **.NET Framework 4,6** nebo vyšší nebo **.NET Core 2,2** nebo vyšší. Nahraďte hodnoty AZURE-SQL-SERVERNAME a DATABASE odpovídajícím způsobem. Všimněte si, že ID prostředku pro Azure SQL je `https://database.windows.net/`.
 
@@ -150,8 +150,8 @@ if (accessToken != null) {
 Dalším způsobem, jak rychle otestovat kompletní nastavení bez nutnosti psát kód a nasazovat aplikaci do virtuálního počítače, je použít PowerShell.
 
 1.  Na portálu přejděte na **Virtuální počítače**, přejděte ke svému virtuálnímu počítači s Windows a v části **Přehled** klikněte na **Připojit**.
-2.  Zadejte své **uživatelské jméno** a **heslo**, které jste přidali při vytváření virtuálního počítače s Windows.
-3.  Teď, když jste vytvořili **připojení ke vzdálené ploše** virtuálního počítače, otevřete ve vzdálené relaci **PowerShell**.
+2.  Zadejte své **Uživatelské jméno** a **Heslo**, které jste přidali při vytváření virtuálního počítače s Windows.
+3.  Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem, otevřete ve vzdálené relaci **PowerShell**.
 4.  Pomocí příkazu `Invoke-WebRequest` v PowerShellu odešlete do místního koncového bodu spravované identity žádost o přístupový token pro Azure SQL.
 
     ```powershell

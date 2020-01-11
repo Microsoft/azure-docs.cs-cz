@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: 971d7432c841c4ef984c7bbd7899fce733512303
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 232b17852e89ebdfa6f81b5aadcdbcd9c83d4055
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74787178"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888137"
 ---
 # <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Odeslání odchozích volání do koncových bodů HTTP nebo HTTPS pomocí Azure Logic Apps
 
@@ -26,7 +26,7 @@ Akci HTTP můžete použít jako jakýkoliv jiný krok pracovního postupu pro v
 
 Konektor HTTP podporuje na základě schopnosti cílového koncového bodu protokol TLS (Transport Layer Security) verze 1,0, 1,1 a 1,2. Logic Apps vyjednávat s koncovým bodem pomocí nejvyšší možné podporované verze. Pokud například koncový bod podporuje 1,2, konektor používá nejprve 1,2. V opačném případě konektor používá další nejvyšší podporovanou verzi.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -48,7 +48,7 @@ Tato integrovaná aktivační událost provede volání HTTP na zadanou adresu U
 
    V tomto příkladu se aktivační událost přejmenuje na Trigger HTTP, aby měl krok výstižnější název. Dále tento příklad přidá akci HTTP a oba názvy musí být jedinečné.
 
-1. Zadejte hodnoty pro [parametry triggeru protokolu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger) , které chcete zahrnout do volání cílového koncového bodu. Nastavte opakování pro to, jak často chcete, aby aktivační událost kontrolovala cílový koncový bod.
+1. Zadejte hodnoty pro [parametry triggeru protokolu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger) , které chcete zahrnout do volání cílového koncového bodu. Nastavte opakování pro to, jak často chcete, aby aktivační událost kontrolovala cílový koncový bod.
 
    Pokud vyberete jiný typ ověřování než **žádné**, nastavení ověřování se liší v závislosti na vašem výběru. Další informace najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
@@ -78,7 +78,7 @@ Tato Vestavěná akce provede volání HTTP na zadanou adresu URL pro koncový b
 
    Tento příklad přejmenuje akci na "HTTP Action", takže krok má výstižnější název.
 
-1. Zadejte hodnoty [parametrů akce protokolu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action) , které chcete zahrnout do cílového koncového bodu.
+1. Zadejte hodnoty [parametrů akce protokolu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) , které chcete zahrnout do cílového koncového bodu.
 
    Pokud vyberete jiný typ ověřování než **žádné**, nastavení ověřování se liší v závislosti na vašem výběru. Další informace najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
@@ -138,8 +138,8 @@ Tady je stejný příklad, který ukazuje definici JSON akce HTTP v základní d
 
 Další informace o parametrech Trigger a Action najdete v těchto částech:
 
-* [Parametry triggeru HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger)
-* [Parametry akce HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action)
+* [Parametry triggeru HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)
+* [Parametry akce HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)
 
 ### <a name="output-details"></a>Podrobnosti výstupu
 
@@ -148,19 +148,19 @@ Zde jsou další informace o výstupech z triggeru nebo akce HTTP, které vrací
 | Název vlastnosti | Typ | Popis |
 |---------------|------|-------------|
 | záhlaví | object | Hlavičky z požadavku |
-| těles | object | Objekt JSON | Objekt s obsahem textu z požadavku |
-| Stavový kód | int | Stavový kód z požadavku |
+| text | object | JSON – objekt | Objekt s obsahem textu z požadavku |
+| stavový kód | int | Stavový kód z požadavku |
 |||
 
 | Kód stavu | Popis |
 |-------------|-------------|
 | 200 | OK |
-| 202 | Přijata |
-| 400 | Chybný požadavek |
+| 202 | Přijato |
+| 400 | Nesprávná žádost |
 | 401 | Neautorizováno |
 | 403 | Forbidden |
 | 404 | Nenalezeno |
-| 500 | Došlo k vnitřní chybě serveru. Došlo k neznámé chybě. |
+| 500 | Vnitřní chyba serveru. Došlo k neznámé chybě. |
 |||
 
 ## <a name="next-steps"></a>Další kroky

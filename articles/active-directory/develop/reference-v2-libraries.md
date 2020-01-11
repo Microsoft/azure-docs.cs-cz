@@ -18,12 +18,12 @@ ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d2b2ea9d878db8284aa44cdbdacb92c8cd4fabe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e7ff9e2015b4621c89b6a831cf7000aa32db5ea6
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424004"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888948"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Knihovny ověřování platformy Microsoft identity
 
@@ -108,7 +108,7 @@ Pro všechny knihovny vyhovující standardům můžete použít koncový bod Mi
 * Pro problémy a nové žádosti o funkce v kódu knihovny se obraťte na vlastníka knihovny.
 * Problémy a požadavky na nové funkce v rámci implementace protokolu na straně služby vám poskytne společnost Microsoft.
 * Zadáte [žádost o funkci](https://feedback.azure.com/forums/169401-azure-active-directory) pro další funkce, které chcete v protokolu zobrazit.
-* Pokud zjistíte problém, kde koncový bod platformy Microsoft identity není kompatibilní s OAuth 2,0 nebo OpenID Connect 1,0, [vytvořte žádost o podporu](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) .
+* Pokud zjistíte problém, kde koncový bod platformy Microsoft identity není kompatibilní s OAuth 2,0 nebo OpenID Connect 1,0, [vytvořte žádost o podporu](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) .
 
 ## <a name="related-content"></a>Související obsah
 

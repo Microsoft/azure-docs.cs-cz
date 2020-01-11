@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/10/2018
+ms.date: 01/10/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97a89e87dad1e940f30e255a919f3f2cf25f21d7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c9b744ed40e2b8c360117f638bab6d10e9ae2975
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224247"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888475"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Cosmos DB
 
@@ -42,7 +42,7 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 
 ## <a name="create-a-cosmos-db-account"></a>Vytvoření účtu služby Cosmos DB 
 
-Vytvořte si účet služby Cosmos DB (pokud ho ještě nemáte). Tento krok můžete přeskočit a můžete použít stávající účet služby Cosmos DB. 
+Pokud ho ještě nemáte, vytvořte si účet služby Cosmos DB. Tento krok můžete přeskočit a můžete použít stávající účet služby Cosmos DB. 
 
 1. V levém horním rohu na webu Azure Portal klikněte na tlačítko pro **vytvoření nové služby**.
 2. Klikněte na **Databáze**, pak na **Azure Cosmos DB** a zobrazí se nový panel Nový účet.
@@ -51,17 +51,17 @@ Vytvořte si účet služby Cosmos DB (pokud ho ještě nemáte). Tento krok mů
 5. Ověřte, že pole **Předplatné** a **Skupina prostředků** se shodují s údaji zadanými při vytvoření virtuálního počítače v předchozím kroku.  Vyberte **Umístění**, ve kterém je Cosmos DB k dispozici.
 6. Klikněte na **Vytvořit**.
 
-## <a name="create-a-collection-in-the-cosmos-db-account"></a>Vytvoření kolekce v účtu služby Cosmos DB
+## <a name="create-a-collection"></a>Vytvoření kolekce 
 
 Potom přidejte shromažďování dat v účtu služby Cosmos DB, kterého se můžete v dalších krocích dotazovat.
 
 1. Přejděte na nově vytvořený účet Cosmos DB.
 2. Na kartě **Přehled** klikněte na tlačítko **pro přidání kolekce** a vysune se panel Přidat kolekci.
-3. Pro kolekci zadejte ID databáze, ID kolekce, vyberte kapacitu úložiště, zadejte klíč oddílu, zadejte hodnotu propustnosti a potom klikněte na **OK**.  Pro účely tohoto kurzu stačí, když použijete „Test“ jako ID databáze a ID kolekce, vyberete kapacitu pevného úložiště a nejnižší propustnost (400 RU/s).  
+3. Pro kolekci zadejte ID databáze, ID kolekce, vyberte kapacitu úložiště, zadejte klíč oddílu, zadejte hodnotu propustnosti a potom klikněte na **OK**.  Pro účely tohoto kurzu stačí, když jako ID databáze a ID kolekce použijete „Test“, vyberete pevnou kapacitu úložiště a nejnižší propustnost (400 RU/s).  
 
-## <a name="grant-windows-vm-system-assigned-managed-identity-access-to-the-cosmos-db-account-access-keys"></a>Udělení přístupu k přístupovým klíčům účtu Cosmos DB spravované identitě přiřazené systémem na virtuálním počítači s Windows
+## <a name="grant-access"></a>Udělení přístupu
 
-Cosmos DB nativně nepodporuje ověřování Azure AD. Spravovanou identitu přiřazenou systémem ale můžete použít k načtení přístupového klíče ke Cosmos DB z Resource Manageru a tento klíč použít pro přístup ke Cosmos DB. V tomto kroku udělíte spravované identitě přiřazené systémem na virtuálním počítači s Windows přístup ke klíčům k účtu Cosmos DB.
+V této části se dozvíte, jak udělit přístup spravované identitě přiřazený systémem Windows VM k přístupovým klíčům Cosmos DB účtu. Cosmos DB nativně nepodporuje ověřování Azure AD. Spravovanou identitu přiřazenou systémem ale můžete použít k načtení přístupového klíče ke Cosmos DB z Resource Manageru a tento klíč použít pro přístup ke Cosmos DB. V tomto kroku udělíte spravované identitě přiřazené systémem na virtuálním počítači s Windows přístup ke klíčům k účtu Cosmos DB.
 
 Pokud chcete spravované identitě přiřazené systémem na počítači s Windows udělit v Azure Resource Manageru pomocí PowerShellu přístup k účtu Cosmos DB, aktualizujte hodnoty `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` a `<COSMOS DB ACCOUNT NAME>` pro svoje prostředí. Služba Cosmos DB podporuje při použití přístupových klíčů dvě úrovně: přístup k účtu pro čtení/zápis a přístup k účtu jen pro čtení.  Roli `DocumentDB Account Contributor` přiřaďte, pokud chcete k účtu získat klíče pro přístup pro čtení a zápis. Pokud chcete k účtu získat klíče pro přístup jen pro čtení, přiřaďte roli `Cosmos DB Account Reader Role`.  Pro účely tohoto kurzu přiřaďte `Cosmos DB Account Reader Role`:
 
@@ -69,14 +69,14 @@ Pokud chcete spravované identitě přiřazené systémem na počítači s Windo
 $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
 New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Reader Role" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>"
 ```
-## <a name="get-an-access-token-using-the-windows-vm-system-assigned-managed-identity-to-call-azure-resource-manager"></a>Získání přístupového tokenu pomocí spravované identity přiřazené systémem na virtuálním počítači s Windows k volání Azure Resource Manageru
+## <a name="get-an-access-token"></a>Získání přístupového tokenu
 
-Ve zbývající části kurzu použijeme k práci dříve vytvořený virtuální počítač. 
+V této části se dozvíte, jak získat přístupový token pomocí spravované identity přiřazené systémem Windows VM k volání Azure Resource Manager. Ve zbývající části kurzu použijeme k práci dříve vytvořený virtuální počítač. 
 
 Na virtuální počítač s Windows budete muset nainstalovat nejnovější verzi rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
 1. Na webu Azure Portal přejděte na **Virtuální počítače**, přejděte ke svému virtuálnímu počítači s Windows a potom nahoře na stránce **Přehled** klikněte na **Připojit**. 
-2. Zadejte své **uživatelské jméno** a **heslo**, které jste přidali při vytváření virtuálního počítače s Windows. 
+2. Zadejte své **Uživatelské jméno** a **Heslo**, které jste přidali při vytváření virtuálního počítače s Windows. 
 3. Teď, když jste vytvořili **připojení ke vzdálené ploše** virtuálního počítače, otevřete ve vzdálené relaci PowerShell.
 4. Pomocí příkazu Invoke-WebRequest v PowerShellu požádejte místní spravované identity o koncový bod prostředků Azure k získání přístupového tokenu pro Azure Resource Manager.
 
@@ -98,9 +98,9 @@ Na virtuální počítač s Windows budete muset nainstalovat nejnovější verz
    $ArmToken = $content.access_token
    ```
 
-## <a name="get-access-keys-from-azure-resource-manager-to-make-cosmos-db-calls"></a>Získání přístupových klíčů z Azure Resource Manageru kvůli volání služby Cosmos DB
+## <a name="get-access-keys"></a>Získání přístupových klíčů 
 
-Teď použijte PowerShell k volání Resource Manageru. Použijte přístupový token, který jste načetli v předchozí části, a načtěte přístupový klíč k účtu služby Cosmos DB. Jakmile budeme mít přístupový klíč, můžeme zadat dotaz na službu Cosmos DB. Nezapomeňte nahradit parametry `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` a `<COSMOS DB ACCOUNT NAME>` vlastními hodnotami. Hodnotu `<ACCESS TOKEN>` nahraďte dříve získaným přístupovým tokenem.  Pokud chcete načíst klíče pro čtení/zápis, použijte typ operace klíče `listKeys`.  Pokud chcete načíst klíče jen pro čtení, použijte typ operace klíče `readonlykeys`:
+V této části se dozvíte, jak získat přístupové klíče z Azure Resource Manager, aby bylo možné Cosmos DB volání. Teď použijte PowerShell k volání Resource Manageru. Použijte přístupový token, který jste načetli v předchozí části, a načtěte přístupový klíč k účtu služby Cosmos DB. Jakmile budeme mít přístupový klíč, můžeme zadat dotaz na službu Cosmos DB. Nezapomeňte nahradit hodnoty parametrů `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` a `<COSMOS DB ACCOUNT NAME>` vlastními hodnotami. Hodnotu `<ACCESS TOKEN>` nahraďte dříve získaným přístupovým tokenem.  Pokud chcete načíst klíče pro čtení/zápis, použijte typ operace klíče `listKeys`.  Pokud chcete načíst klíče jen pro čtení, použijte typ operace klíče `readonlykeys`:
 
 ```powershell
 Invoke-WebRequest -Uri 'https://management.azure.com/subscriptions/<SUBSCRIPTION-ID>/resourceGroups/<RESOURCE-GROUP>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>/listKeys/?api-version=2016-03-31' -Method POST -Headers @{Authorization="Bearer $ARMToken"}

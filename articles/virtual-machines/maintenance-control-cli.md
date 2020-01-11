@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: cynthn
-ms.openlocfilehash: f336bd0e208e847dbb24123285066330d8a1ce40
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 6172b5da60037051517a43b1b3b8b91b50ab2aac
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535844"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895890"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>Verze Preview: řízení aktualizací pomocí řízení údržby a Azure CLI
 
@@ -94,7 +94,7 @@ az maintenance assignment create \
    --resource-type virtualMachines \
    --provider-name Microsoft.Compute \
    --configuration-assignment-name myConfig \
-   --maintenance-configuration-id '/subscriptions/1111abcd-1a11-1a2b-1a12-123456789abc/resourcegroups/myMaintenanceRG/providers/Microsoft.Maintenance/maintenanceConfigurations/myConfig'
+   --maintenance-configuration-id "/subscriptions/1111abcd-1a11-1a2b-1a12-123456789abc/resourcegroups/myMaintenanceRG/providers/Microsoft.Maintenance/maintenanceConfigurations/myConfig"
 ```
 
 ### <a name="dedicated-host"></a>Vyhrazený hostitel

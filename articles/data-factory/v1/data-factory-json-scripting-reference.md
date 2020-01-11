@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: dc79582efd2f009f1715e04b769d030cfd36561f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e85696afde5f0332ff6481bfadabbde5ac2d4800
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972456"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894913"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – reference skriptování JSON
 > [!NOTE]
@@ -50,7 +50,7 @@ Následující tabulka popisuje vlastnosti v rámci definice JSON kanálu:
 | jméno | Název kanálu. Zadejte název, který představuje akci, na kterou je nastavená aktivita nebo kanál.<br/><ul><li>Maximální počet znaků: 260.</li><li>Musí začínat číslem písmenem nebo podtržítkem (\_).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\\"</li></ul> |Ano |
 | description |Text popisující, k čemu se aktivita nebo kanál používá | Ne |
 | activities | Obsahuje seznam aktivit. | Ano |
-| zahájení |Počáteční datum a čas pro kanál. Musí být ve [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Příklad: 2014-10-14T16:32:41. <br/><br/>Je možné zadat místní čas, například čas EST. Tady je příklad: `2016-02-27T06:00:00**-05:00`, což je 6 AM EST.<br/><br/>Vlastnosti Start a end společně určují aktivní období pro daný kanál. Výstupní řezy se vytvářejí jenom v tomto aktivním období. |Ne<br/><br/>Pokud zadáte hodnotu vlastnosti end, je nutné zadat hodnotu vlastnosti Start.<br/><br/>Časy zahájení a ukončení můžou být pro vytvoření kanálu prázdné. Chcete-li nastavit aktivní období pro spuštění kanálu, je nutné zadat obě hodnoty. Pokud při vytváření kanálu nezadáte počáteční a koncový čas, můžete je pomocí rutiny Set-AzDataFactoryPipelineActivePeriod nastavit později. |
+| start |Počáteční datum a čas pro kanál. Musí být ve [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Příklad: 2014-10-14T16:32:41. <br/><br/>Je možné zadat místní čas, například čas EST. Tady je příklad: `2016-02-27T06:00:00**-05:00`, což je 6 AM EST.<br/><br/>Vlastnosti Start a end společně určují aktivní období pro daný kanál. Výstupní řezy se vytvářejí jenom v tomto aktivním období. |Ne<br/><br/>Pokud zadáte hodnotu vlastnosti end, je nutné zadat hodnotu vlastnosti Start.<br/><br/>Časy zahájení a ukončení můžou být pro vytvoření kanálu prázdné. Chcete-li nastavit aktivní období pro spuštění kanálu, je nutné zadat obě hodnoty. Pokud při vytváření kanálu nezadáte počáteční a koncový čas, můžete je pomocí rutiny Set-AzDataFactoryPipelineActivePeriod nastavit později. |
 | konec |Koncové datum a čas kanálu. Je-li parametr zadán, musí být ve formátu ISO. Příklad: 2014-10-14T17:32:41 <br/><br/>Je možné zadat místní čas, například čas EST. Tady je příklad: `2016-02-27T06:00:00**-05:00`, což je 6 AM EST.<br/><br/>Pokud chcete kanál spustit po neomezenou dobu, zadejte 9999-09-09 jako hodnotu vlastnosti end. |Ne <br/><br/>Pokud zadáte hodnotu vlastnosti Start, je nutné zadat hodnotu vlastnosti end.<br/><br/>Viz poznámky pro vlastnost **Start** . |
 | isPaused |Pokud je nastavená hodnota true, kanál se nespustí. Výchozí hodnota = false. Tuto vlastnost můžete použít k povolení nebo zakázání. |Ne |
 | pipelineMode |Metoda pro plánování běhu pro kanál. Povolené hodnoty jsou: naplánované (výchozí), jednorázová.<br/><br/>Možnost naplánované znamená, že se kanál spouští v zadaném časovém intervalu podle jeho aktivního období (počáteční a koncový čas). Jednorázová označuje, že se kanál spouští jenom jednou. Jednorázová kanály se po vytvoření nedají změnit nebo aktualizovat aktuálně. Podrobnosti o nastavení jednorázová najdete v tématu [jednorázová Pipeline](data-factory-create-pipelines.md#onetime-pipeline) . |Ne |
@@ -298,7 +298,7 @@ Každý sloupec v části **Struktura** obsahuje následující vlastnosti:
 | --- | --- | --- |
 | jméno |Název sloupce |Ano |
 | type |Datový typ sloupce  |Ne |
-| culture |Jazyková verze založená na rozhraní .NET, která se má použít při zadání typu a je typu .NET `Datetime` nebo `Datetimeoffset`. Výchozí hodnota je `en-us`. |Ne |
+| culture |Jazyková verze založená na rozhraní .NET, která se má použít při zadání typu a je typu .NET `Datetime` nebo `Datetimeoffset`. Výchozí je `en-us`. |Ne |
 | formát |Řetězec formátu, který má být použit, pokud je zadán typ a je typu .NET `Datetime` nebo `Datetimeoffset`. |Ne |
 
 V následujícím příkladu má datová sada tři sloupce `slicetimestamp`, `projectname`a `pageviews` a jsou typu: String, String a Decimal.
@@ -337,7 +337,7 @@ Oddíl **Policy** v definici datové sady definuje kritéria nebo podmínku, kte
 | Název zásady | Popis | Použito pro | Požaduje se | Výchozí |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |Ověří, jestli data v **objektu blob Azure** splňují požadavky na minimální velikost (v megabajtech). |Azure Blob |Ne |není k dispozici |
-| minimumRows |Ověří, jestli data v **databázi SQL Azure** nebo **tabulce Azure** obsahují minimální počet řádků. |<ul><li>Azure SQL Database</li><li>Tabulka Azure</li></ul> |Ne |není k dispozici |
+| minimumRows |Ověří, jestli data v **databázi SQL Azure** nebo **tabulce Azure** obsahují minimální počet řádků. |<ul><li>Databáze SQL Azure</li><li>Tabulka Azure</li></ul> |Ne |není k dispozici |
 
 **Příklad:**
 
@@ -929,7 +929,7 @@ Pokud kopírujete data do Azure Cosmos DB, nastavte **typ jímky** aktivity kop�
 
 Další informace najdete v článku [konektor Azure Cosmos DB](data-factory-azure-documentdb-connector.md#copy-activity-properties) .
 
-## <a name="azure-sql-database"></a>Azure SQL Database
+## <a name="azure-sql-database"></a>Databáze SQL Azure
 
 ### <a name="linked-service"></a>Propojená služba
 Pro definování propojené služby Azure SQL Database nastavte **typ** propojené služby na **AzureSqlDatabase**a v části **typeProperties** zadejte následující vlastnosti:
@@ -1340,7 +1340,7 @@ Pokud kopírujete data do indexu hledání, nastavte **typ jímky** aktivity kop
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Určuje, zda se má sloučit nebo nahradit, když dokument v indexu již existuje. | sloučení (výchozí)<br/>Nahrávání| Ne |
+| WriteBehavior | Určuje, zda se má sloučit nebo nahradit, když dokument v indexu již existuje. | Sloučení (výchozí)<br/>Nahrávání| Ne |
 | WriteBatchSize | Když velikost vyrovnávací paměti dosáhne writeBatchSize, nahraje data do indexu vyhledávání. | 1 až 1 000. Výchozí hodnota je 1000. | Ne |
 
 #### <a name="example"></a>Příklad:
@@ -1536,7 +1536,7 @@ Pokud kopírujete data do služby Azure Table Storage, nastavte **typ jímky** a
 | azureTableDefaultPartitionKeyValue |Výchozí hodnota klíče oddílu, kterou může jímka použít. |Řetězcová hodnota. |Ne |
 | azureTablePartitionKeyName |Zadejte název sloupce, jehož hodnoty se používají jako klíče oddílů. Pokud není zadaný, použije se jako klíč oddílu AzureTableDefaultPartitionKeyValue. |Název sloupce |Ne |
 | azureTableRowKeyName |Zadejte název sloupce, jehož hodnoty sloupce jsou používány jako klíč řádku. Není-li tento parametr zadán, použijte pro každý řádek identifikátor GUID. |Název sloupce |Ne |
-| azureTableInsertType |Režim pro vložení dat do tabulky Azure.<br/><br/>Tato vlastnost určuje, zda mají být existující řádky ve výstupní tabulce se shodnými klíči oddílů a řádky nahrazeny nebo sloučeny. <br/><br/>Další informace o tom, jak tato nastavení (sloučit a nahradit) fungují, najdete v tématech [vložení nebo sloučení entit](https://msdn.microsoft.com/library/azure/hh452241.aspx) a [vložení nebo nahrazení entit](https://msdn.microsoft.com/library/azure/hh452242.aspx) . <br/><br> Toto nastavení se vztahuje na úrovni řádků, nikoli na úrovni tabulky a ani možnost neodstraní řádky ve výstupní tabulce, které ve vstupu neexistují. |sloučení (výchozí)<br/>nahradit |Ne |
+| azureTableInsertType |Režim pro vložení dat do tabulky Azure.<br/><br/>Tato vlastnost určuje, zda mají být existující řádky ve výstupní tabulce se shodnými klíči oddílů a řádky nahrazeny nebo sloučeny. <br/><br/>Další informace o tom, jak tato nastavení (sloučit a nahradit) fungují, najdete v tématech [vložení nebo sloučení entit](https://msdn.microsoft.com/library/azure/hh452241.aspx) a [vložení nebo nahrazení entit](https://msdn.microsoft.com/library/azure/hh452242.aspx) . <br/><br> Toto nastavení se vztahuje na úrovni řádků, nikoli na úrovni tabulky a ani možnost neodstraní řádky ve výstupní tabulce, které ve vstupu neexistují. |sloučení (výchozí)<br/>replace |Ne |
 | writeBatchSize |Vloží data do tabulky Azure, když je dosaženo writeBatchSize nebo writeBatchTimeout. |Integer (počet řádků) |Ne (výchozí: 10000) |
 | writeBatchTimeout |Vloží data do tabulky Azure, když je dosaženo writeBatchSize nebo writeBatchTimeout. |TimeSpan<br/><br/>Příklad: "00:20:00" (20 minut) |Ne (výchozí hodnota pro výchozí nastavení klienta úložiště hodnota časového limitu 90 s) |
 
@@ -4107,7 +4107,7 @@ Chcete-li použít základní ověřování, nastavte `authenticationType` jako 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | embeddedCertData | Obsah binárních dat v souboru PFX (Personal Information Exchange) kódovaný v kódování Base64. | Zadejte buď `embeddedCertData`, nebo `certThumbprint`. |
-| CertThumbprint | Kryptografický otisk certifikátu, který byl nainstalován v úložišti certifikátů počítače brány. Platí pouze při kopírování dat z místního zdroje HTTP. | Zadejte buď `embeddedCertData`, nebo `certThumbprint`. |
+| certThumbprint | Kryptografický otisk certifikátu, který byl nainstalován v úložišti certifikátů počítače brány. Platí pouze při kopírování dat z místního zdroje HTTP. | Zadejte buď `embeddedCertData`, nebo `certThumbprint`. |
 | heslo | Heslo přidružené k certifikátu | Ne |
 
 Pokud používáte `certThumbprint` pro ověřování a certifikát je nainstalován v osobním úložišti místního počítače, je třeba udělit oprávnění ke čtení pro službu brány:
@@ -4160,7 +4160,7 @@ Chcete-li definovat datovou sadu HTTP, nastavte **typ** datové sady na **http**
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Pokud cesta není zadaná, použije se jenom adresa URL zadaná v definici propojené služby. <br><br> Chcete-li vytvořit dynamickou adresu URL, můžete použít [funkce Data Factory a systémové proměnné](data-factory-functions-variables.md), například: `"relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)"`. | Ne |
-| requestMethod | Metoda HTTP. Povolené hodnoty jsou **Get** nebo **post**. | Ne. Výchozí hodnota je `GET`. |
+| requestMethod | Metoda HTTP. Povolené hodnoty jsou **Get** nebo **post**. | Ne. Výchozí je `GET`. |
 | additionalHeaders | Další hlavičky požadavku HTTP | Ne |
 | částmi | Tělo požadavku HTTP | Ne |
 | formát | Pokud chcete jednoduše **načíst data z koncového bodu http, jak je** bez analýzy, přeskočte toto nastavení formátu. <br><br> Pokud chcete analyzovat obsah odpovědi HTTP během kopírování, podporují se tyto typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. |Ne |
@@ -5540,7 +5540,7 @@ Další informace najdete v tématu [Data Lake Analytics aktivity U-SQL](data-fa
 V definici JSON aktivity uložené procedury můžete zadat následující vlastnosti. Vlastnost Type aktivity musí být: **SqlServerStoredProcedure**. Musíte vytvořit jednu z následujících propojených služeb a zadat název propojené služby jako hodnotu pro vlastnost **linkedServiceName** :
 
 - SQL Server
-- Azure SQL Database
+- Databáze SQL Azure
 - Azure SQL Data Warehouse
 
 Následující vlastnosti jsou podporovány v části **typeProperties** při nastavení typu aktivity na SqlServerStoredProcedure:
@@ -5552,7 +5552,7 @@ Následující vlastnosti jsou podporovány v části **typeProperties** při na
 
 Pokud zadáte vstupní datovou sadu, musí být k dispozici (ve stavu "připraveno") pro spuštění aktivity uložená procedura. Vstupní datovou sadu nelze v uložené proceduře jako parametr spotřebovat. Slouží pouze ke kontrole závislosti před spuštěním aktivity uložené procedury. Pro aktivitu uložené procedury musíte zadat výstupní datovou sadu.
 
-Výstupní datová sada určuje **plán** aktivity uložené procedury (každou hodinu, týdně, měsíčně atd.). Výstupní datová sada musí používat **propojenou službu** , která odkazuje na Azure SQL Database nebo Azure SQL Data Warehouse nebo SQL Server databázi, ve které chcete spustit uloženou proceduru. Výstupní datová sada může sloužit jako způsob, jak předat výsledek uložené procedury pro následné zpracování jinou aktivitou ([řetězení aktivit](data-factory-scheduling-and-execution.md##multiple-activities-in-a-pipeline)) v kanálu. Data Factory však do této datové sady automaticky nezapisuje výstup uložené procedury. Jedná se o uloženou proceduru, která zapisuje do tabulky SQL, na kterou odkazuje výstupní datová sada. V některých případech může být výstupní datovou sadou **fiktivní datová**sada, která se používá pouze k zadání plánu pro spuštění aktivity uložené procedury.
+Výstupní datová sada určuje **plán** aktivity uložené procedury (každou hodinu, týdně, měsíčně atd.). Výstupní datová sada musí používat **propojenou službu** , která odkazuje na Azure SQL Database nebo Azure SQL Data Warehouse nebo SQL Server databázi, ve které chcete spustit uloženou proceduru. Výstupní datová sada může sloužit jako způsob, jak předat výsledek uložené procedury pro následné zpracování jinou aktivitou ([řetězení aktivit](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) v kanálu. Data Factory však do této datové sady automaticky nezapisuje výstup uložené procedury. Jedná se o uloženou proceduru, která zapisuje do tabulky SQL, na kterou odkazuje výstupní datová sada. V některých případech může být výstupní datovou sadou **fiktivní datová**sada, která se používá pouze k zadání plánu pro spuštění aktivity uložené procedury.
 
 ### <a name="json-example"></a>Příklad JSON
 
@@ -5587,11 +5587,11 @@ V definici JSON vlastní aktivity rozhraní .NET můžete zadat následující v
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| AssemblyName | Název sestavení V tomto příkladu je to: **MyDotnetActivity. dll**. | Ano |
+| Doplňk | Název sestavení V tomto příkladu je to: **MyDotnetActivity. dll**. | Ano |
 | EntryPoint |Název třídy, která implementuje rozhraní IDotNetActivity. V tomto příkladu je to: **MyDotNetActivityNS. MyDotNetActivity** , kde MyDotNetActivityNS je obor názvů a MyDotNetActivity je třída.  | Ano |
 | PackageLinkedService | Název propojené služby Azure Storage, která odkazuje na úložiště objektů blob, které obsahuje soubor zip vlastní aktivity. V tomto příkladu je to: **AzureStorageLinkedService**.| Ano |
 | PackageFile | Název souboru ZIP V tomto příkladu je to: **customactivitycontainer/MyDotNetActivity. zip**. | Ano |
-| extendedProperties | Rozšířené vlastnosti, které lze definovat a předat kódu .NET. V tomto příkladu je proměnná **vlastnosti slicestart** nastavena na hodnotu založenou na systémové proměnné vlastnosti slicestart. | Ne |
+| ExtendedProperties | Rozšířené vlastnosti, které lze definovat a předat kódu .NET. V tomto příkladu je proměnná **vlastnosti slicestart** nastavena na hodnotu založenou na systémové proměnné vlastnosti slicestart. | Ne |
 
 ### <a name="json-example"></a>Příklad JSON
 

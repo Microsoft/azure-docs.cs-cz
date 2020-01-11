@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
-ms.openlocfilehash: 90b871c2b75f7ed40c290231ef822258c6b4e6d4
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 28111e45d365069f80f10b88c38618dbb2b4651d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606872"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896224"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Nasazení virtuálního počítače s Windows 7 do Windows Virtual Desktopu
 
@@ -35,20 +35,21 @@ Postup nastavení virtuálního počítače se systémem Windows 7 na virtuáln�
 5. Na svém VIRTUÁLNÍm počítači přejdete na web Windows Update.
 6. Nainstalujte všechny aktualizace Windows v důležité kategorii.
 7. Nainstalovat všechny aktualizace systému Windows v nepovinné kategorii (kromě jazykových sad). Tím se nainstaluje aktualizace protokol RDP (Remote Desktop Protocol) 8,0 ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35393)), kterou potřebujete k dokončení těchto pokynů.
-8. Otevřete Editor místních zásad skupiny a přejděte na **Konfigurace počítače** > **šablony pro správu** > **součásti systému Windows** > **Vzdálená plocha** > **hostitel relace vzdálené plochy**  > **prostředí vzdálené relace**.
+8. Otevřete Editor místních zásad skupiny a přejděte na **Konfigurace počítače** > **šablony pro správu** > **součásti systému Windows** > **Vzdálená plocha** > **hostitel relace vzdálené plochy** > **prostředí vzdálené relace**.
 9. Povolte zásadu protokol RDP (Remote Desktop Protocol) 8,0.
-10. Restartujte virtuální počítač spuštěním následujícího příkazu:
+10. Připojte tento virtuální počítač k doméně služby Active Directory.
+11. Restartujte virtuální počítač spuštěním následujícího příkazu:
     
      ```cmd
      shutdown /r /t 0
      ```
     
-11. Pokud chcete získat registrační token, postupujte podle pokynů uvedených [tady](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo) .
-12. [Stáhněte si agenta virtuální plochy Windows pro Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
-13. [Stáhněte správce agenta virtuálních počítačů s Windows pro Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
-14. Spusťte instalační program agenta virtuálních počítačů s Windows a postupujte podle pokynů. Po zobrazení výzvy zadejte registrační klíč, který jste vytvořili v kroku 11.
-15. Spusťte instalační program virtuálních klientů Windows a postupujte podle pokynů.
-16. Volitelně můžete port TCP/3389 zablokovat, aby se odebral přímý protokol RDP (Remote Desktop Protocol) přístup k virtuálnímu počítači.
+12. Pokud chcete získat registrační token, postupujte podle pokynů uvedených [tady](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo) .
+13. [Stáhněte si agenta virtuální plochy Windows pro Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
+14. [Stáhněte správce agenta virtuálních počítačů s Windows pro Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
+15. Spusťte instalační program agenta virtuálních počítačů s Windows a postupujte podle pokynů. Po zobrazení výzvy zadejte registrační klíč, který jste vytvořili v kroku 12.
+16. Spusťte instalační program virtuálních klientů Windows a postupujte podle pokynů.
+17. Volitelně můžete port TCP/3389 zablokovat, aby se odebral přímý protokol RDP (Remote Desktop Protocol) přístup k virtuálnímu počítači.
 
 ## <a name="next-steps"></a>Další kroky
 

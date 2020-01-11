@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
-ms.openlocfilehash: 0e6631d36f8b8153c34f787f8941b45b7522aceb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: b59f933fedd5f1d3ed3f7972b1a1fe653df31be2
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083927"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893898"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Řešení potíží se selháním upgradu Microsoft Azure Site Recovery Provider
 
@@ -27,7 +27,7 @@ Upgrade není podporován, protože je již nainstalována vyšší verze softwa
 K upgradu použijte následující postup:
 
 1. Stáhněte si Microsoft Azure Site Recovery Unified Setup:
-   1. V části "odkazy na aktuálně podporované kumulativní aktualizace" [v článku aktualizace služby v Azure Site Recovery](service-updates-how-to.md##links-to-currently-supported-update-rollups) vyberte poskytovatele, kterého chcete upgradovat.
+   1. V části "odkazy na aktuálně podporované kumulativní aktualizace" [v článku aktualizace služby v Azure Site Recovery](service-updates-how-to.md#links-to-currently-supported-update-rollups) vyberte poskytovatele, kterého chcete upgradovat.
    2. Na stránce Souhrn vyhledejte část **informace o aktualizaci** a Stáhněte kumulativní aktualizaci pro Microsoft Azure Site Recovery Unified Setup.
 
 2. Otevřete příkazový řádek a přejděte do složky, do které jste stáhli soubor sjednocené instalace. Extrahujte instalační soubory ze souboru ke stažení pomocí následujícího příkazu, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x:&lt;cestu ke složce extrahovaných souborů&gt;.
@@ -51,7 +51,7 @@ K vyřešení tohoto problému.
 1. Spusťte Editor registru (Regedit. exe) a otevřete větev HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10.
 1. Zkontrolujte hodnotu `Build_Version` klíč. Pokud je nastavená na nejnovější verzi, snižte číslo verze. Například pokud je nejnovější verze 9,22.\* a klíč `Build_Version` na tuto hodnotu nastavte a pak ho snižte na 9,21.\*.
 1. Stáhněte si nejnovější Microsoft Azure Site Recovery Unified Setup:
-   1. V části "odkazy na aktuálně podporované kumulativní aktualizace" [v článku aktualizace služby v Azure Site Recovery](service-updates-how-to.md##links-to-currently-supported-update-rollups) vyberte poskytovatele, kterého chcete upgradovat.
+   1. V části "odkazy na aktuálně podporované kumulativní aktualizace" [v článku aktualizace služby v Azure Site Recovery](service-updates-how-to.md#links-to-currently-supported-update-rollups) vyberte poskytovatele, kterého chcete upgradovat.
    2. Na stránce Souhrn vyhledejte část **informace o aktualizaci** a Stáhněte kumulativní aktualizaci pro Microsoft Azure Site Recovery Unified Setup.
 1. Otevřete příkazový řádek a přejděte do složky, do které jste stáhli soubor sjednocené instalace, a extrahujte instalační soubory ze souboru ke stažení pomocí následujícího příkazu, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x:&lt;cestu ke složce extrahovaných souborů&gt;.
 

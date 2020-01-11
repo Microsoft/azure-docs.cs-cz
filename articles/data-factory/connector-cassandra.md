@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 41547787a3b7add1baa05a41d6785d1cd926165d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9339fff820c0a0d915258ce3a0bc5371242ad50d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929596"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75892831"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Kopírování dat z Cassandra pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -42,7 +42,7 @@ Konkrétně tento konektor Cassandra podporuje:
 >[!NOTE]
 >V případě aktivity spuštěné v místním prostředí Integration Runtime se Cassandra 3. x podporuje od verze IR 3,7 a vyšší.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -184,8 +184,8 @@ Při kopírování dat z Cassandra se v datových typech Cassandra používají 
 | BIGINT |Int64 |
 | BLOB |Byte[] |
 | BOOLEAN |Logická hodnota |
-| DESÍTKOVÉ |Decimal |
-| DOUBLE |Double |
+| NOTACI |Decimal |
+| KLEPAT |Double |
 | FLOAT |Jednoduchá |
 | INET |Řetězec |
 | INT |Datový typ Int32 |
@@ -270,4 +270,4 @@ V následujících tabulkách jsou uvedeny virtuální tabulky, které znovu nor
 Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

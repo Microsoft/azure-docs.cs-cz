@@ -6,13 +6,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
-ms.author: asgang
-ms.openlocfilehash: b3c459c0eaac98a1cb704b4346153f77ec974188
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: asgangal
+ms.openlocfilehash: efa05f5769bcd174992a7a91a522c5f30ce6e448
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084927"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895008"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Řešení chyb replikace virtuálních počítačů z Azure do Azure
 
@@ -34,7 +34,7 @@ Pokud neexistují žádné velikosti, která podporuje konfiguraci zdrojového v
 
 ### <a name="fix-the-problem"></a>Tento problém vyřešit
 
-Obraťte se na [podporu fakturace Azure](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) a umožněte vašemu předplatnému vytváření virtuálních počítačů požadovaných velikostí v cílovém umístění. Pak zkuste neúspěšnou operaci zopakovat.
+Obraťte se na [podporu fakturace Azure](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) a umožněte vašemu předplatnému vytváření virtuálních počítačů požadovaných velikostí v cílovém umístění. Pak zkuste neúspěšnou operaci zopakovat.
 
 Pokud má cílové umístění omezení kapacity, zakažte na něj replikaci. Potom povolte replikaci do jiného umístění, kde má vaše předplatné dostatečnou kvótu pro vytvoření virtuálních počítačů požadovaných velikostí.
 
@@ -80,7 +80,7 @@ Vzhledem k tomu, že SuSE Linux používá k údržbě seznamu certifikátů sym
 
 1. Pokud se certifikát kořenové certifikační autority Symantec nenajde, spusťte následující příkaz a Stáhněte soubor. Vyhledejte případné chyby a proveďte doporučené akce při selhání sítě.
 
-    **# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem-O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem**
+    **# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem -O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem**
 
 1. Ověřte, jestli je přítomný certifikát kořenové certifikační autority Baltimore:
 
@@ -88,7 +88,7 @@ Vzhledem k tomu, že SuSE Linux používá k údržbě seznamu certifikátů sym
 
 1. Pokud se nenalezne certifikát kořenové certifikační autority Baltimore, spusťte tento příkaz a Stáhněte certifikát:
 
-    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem-O Baltimore_CyberTrust_Root. pem**
+    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem -O Baltimore_CyberTrust_Root. pem**
 
 1. Ověřte, zda je k dispozici DigiCert_Global_Root_CA certifikát:
 
@@ -106,7 +106,7 @@ Vzhledem k tomu, že SuSE Linux používá k údržbě seznamu certifikátů sym
 
 1. Spusťte tyto příkazy a ověřte, zda byly pro certifikáty vytvořeny hodnoty hash předmětu jako symbolických odkazů:
 
-    - Systému
+    - Příkaz:
 
         **# ls-l | Baltimore grep**
 
@@ -116,7 +116,7 @@ Vzhledem k tomu, že SuSE Linux používá k údržbě seznamu certifikátů sym
 
         `-rw-r--r-- 1 root root 1303 Jun  5  2014 Baltimore_CyberTrust_Root.pem`
 
-    - Systému
+    - Příkaz:
 
         **# ls-l | VeriSign_Class_3_Public_Primary_Certification_Authority_G5 grep**
 
@@ -126,7 +126,7 @@ Vzhledem k tomu, že SuSE Linux používá k údržbě seznamu certifikátů sym
 
         `lrwxrwxrwx 1 root root   62 Jan  8 09:48 facacbc6.0 -> VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem`
 
-    - Systému
+    - Příkaz:
 
         **# ls-l | DigiCert_Global_Root grep**
 
@@ -150,7 +150,7 @@ Vzhledem k tomu, že SuSE Linux používá k údržbě seznamu certifikátů sym
 
 1. Ověřte, zda jsou soubory k dispozici:
 
-    - Systému
+    - Příkaz:
 
         **# ls-l 653b494a. 0 b204d74a. 0 3513523f. 0**
 

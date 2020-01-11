@@ -11,34 +11,28 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: f9361f1ca998d32a998794a7e95220ee5c7ac623
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: bf86826d77c690b60c7b091d6250a85fffd21fc0
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834770"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896341"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Řešení potíží s Azure Machine Learning služby Azure Kubernetes a nasazení Azure Container Instances
 
 Naučte se, jak obejít nebo vyřešit běžné chyby nasazení Docker pomocí Azure Container Instances (ACI) a Azure Kubernetes Service (AKS) pomocí Azure Machine Learning.
 
-Při nasazování modelu v Azure Machine Learning systém provádí řadu úloh. Úkoly nasazení jsou:
+Při nasazování modelu v Azure Machine Learning systém provádí řadu úloh.
+
+Doporučený a nejaktuálnější přístup k nasazení modelu je prostřednictvím rozhraní API [modelu. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) pomocí objektu [prostředí](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) jako vstupní parametr. V tomto případě naše služba vytvoří základní image Docker za vás během fáze nasazení a všechny požadované modely připojte v jednom volání. Základní úlohy nasazení:
 
 1. Zaregistrujte model v registru pracovního prostoru modelu.
 
-2. Sestavíte image Dockeru, včetně:
-    1. Stáhněte si registrovanému modelu z registru. 
-    2. Vytvoření souboru dockerfile, pomocí prostředí Pythonu na základě závislostí, které zadáte v souboru yaml prostředí.
-    3. Přidáte soubory modelu a hodnoticí skript, který zadáte v souboru dockerfile.
-    4. Vytvářejte nová image Dockeru pomocí souboru dockerfile.
-    5. Zaregistrujte image Dockeru s Azure Container Registry přidružený k pracovnímu prostoru.
+2. Definovat odvozenou konfiguraci:
+    1. Vytvořte objekt [prostředí](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) na základě závislostí, které zadáte v souboru YAML prostředí, nebo použijte jedno z našich pořízených prostředí.
+    2. Vytvořte odvozenou konfiguraci (objekt InferenceConfig) na základě prostředí a hodnoticího skriptu.
 
-    > [!IMPORTANT]
-    > V závislosti na vašem kódu probíhá vytváření obrázků automaticky bez vašeho vstupu.
-
-3. Nasaďte image Dockeru do služby Azure Container Instance (ACI) nebo do Azure Kubernetes Service (AKS).
-
-4. Spuštění nového kontejneru (nebo kontejnery) v ACI a AKS. 
+3. Nasaďte model do služby Azure Container instance (ACI) nebo do služby Azure Kubernetes Service (AKS).
 
 Další informace o tomto procesu v [Správa modelů ve službě](concept-model-management-and-deployment.md) úvod.
 
@@ -56,11 +50,14 @@ Další informace o tomto procesu v [Správa modelů ve službě](concept-model-
 
 Pokud narazíte na jakékoli potíže, je prvním krokem je rozdělit úlohu nasazení (viz předchozí) do jednotlivých kroků a izolovat daný problém.
 
-Přerušení nasazení na úlohy je užitečné, pokud používáte rozhraní API [WebService. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none--overwrite-false-) nebo [WebService. deploy_from_model ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none--overwrite-false-) , protože obě tyto funkce provádějí výše uvedené kroky jako jednu akci. Tato rozhraní API jsou obvykle užitečná, ale pomáhají při odstraňování potíží, když je nahradíte pomocí níže uvedených volání rozhraní API.
+Za předpokladu, že používáte novou/doporučenou metodu nasazení prostřednictvím rozhraní API [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) s objektem [prostředí](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) jako vstupní parametr, váš kód může být rozdělen na tři hlavní kroky:
 
-1. Zaregistrujte model. Tady je ukázkový kód:
+1. Zaregistrujte model. Zde je ukázkový kód:
 
     ```python
+    from azureml.core.model import Model
+
+
     # register a model out of a run record
     model = best_run.register_model(model_name='my_best_model', model_path='outputs/my_model.pkl')
 
@@ -68,99 +65,35 @@ Přerušení nasazení na úlohy je užitečné, pokud používáte rozhraní AP
     model = Model.register(model_path='my_model.pkl', model_name='my_best_model', workspace=ws)
     ```
 
-2. Sestavení image. Tady je ukázkový kód:
+2. Definovat odvozenou konfiguraci pro nasazení:
 
     ```python
-    # configure the image
-    image_config = ContainerImage.image_configuration(runtime="python",
-                                                      entry_script="score.py",
-                                                      conda_file="myenv.yml")
+    from azureml.core.model import InferenceConfig
+    from azureml.core.environment import Environment
 
-    # create the image
-    image = Image.create(name='myimg', models=[model], image_config=image_config, workspace=ws)
 
-    # wait for image creation to finish
-    image.wait_for_creation(show_output=True)
+    # create inference configuration based on the requirements defined in the YAML
+    myenv = Environment.from_conda_specification(name="myenv", file_path="myenv.yml")
+    inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
     ```
 
-3. Nasazení bitové kopie jako služba. Tady je ukázkový kód:
+3. Nasaďte model pomocí konfigurace odvození vytvořeného v předchozím kroku:
 
     ```python
-    # configure an ACI-based deployment
-    aci_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
+    from azureml.core.webservice import AciWebservice
 
-    aci_service = Webservice.deploy_from_image(deployment_config=aci_config, 
-                                               image=image, 
-                                               name='mysvc', 
-                                               workspace=ws)
-    aci_service.wait_for_deployment(show_output=True)    
+
+    # deploy the model
+    aci_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
+    aci_service = Model.deploy(workspace=ws,
+                           name='my-service',
+                           models=[model],
+                           inference_config=inference_config,
+                           deployment_config=aci_config)
+    aci_service.wait_for_deployment(show_output=True)
     ```
 
 Jakmile máte rozdělené procesu nasazení do jednotlivých kroků, abychom se mohli podívat na některé z nejběžnějších chyb.
-
-## <a name="image-building-fails"></a>Bitové kopie sestavení se nezdaří
-
-Pokud se image Docker nedá sestavit, neproběhne volání [image. wait_for_creation ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-) nebo [Service. wait_for_deployment ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#wait-for-deployment-show-output-false-) s některými chybovými zprávami, které můžou nabízet některá pole. Můžete také zjistit další podrobnosti o chybách v protokolu sestavení image. Níže je vzorový kód ukazuje, jak zjistit identifikátor uri protokolu bitové kopie sestavení.
-
-```python
-# if you already have the image object handy
-print(image.image_build_log_uri)
-
-# if you only know the name of the image (note there might be multiple images with the same name but different version number)
-print(ws.images['myimg'].image_build_log_uri)
-
-# list logs for all images in the workspace
-for name, img in ws.images.items():
-    print(img.name, img.version, img.image_build_log_uri)
-```
-
-Identifikátor uri protokolu bitové kopie je adresa URL SAS odkazující na soubor protokolu se ukládají ve službě Azure blob storage. Jednoduše zkopírujte a vložte identifikátor uri do okna prohlížeče a můžete stáhnout a zobrazit soubor protokolu.
-
-### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure Key Vault zásady přístupu a šablony Azure Resource Manager
-
-Kvůli potížím se zásadami přístupu na Azure Key Vault může sestavení bitové kopie selhat i v důsledku problému. K této situaci může dojít, když použijete šablonu Azure Resource Manager k vytvoření pracovního prostoru a přidružených prostředků (včetně Azure Key Vault) několikrát. Například použití šablony několikrát se stejnými parametry jako součást kanálu průběžné integrace a nasazení.
-
-Většina operací vytváření prostředků prostřednictvím šablon je idempotentní, ale Key Vault neodstraní zásady přístupu pokaždé, když se šablona používá. Vymazání zásad přístupu přeruší přístup k Key Vault pro libovolný existující pracovní prostor, který ho používá. Tato podmínka způsobí chyby při pokusu o vytvoření nových imagí. Následují příklady chyb, které můžete získat:
-
-__Portál__:
-```text
-Create image "myimage": An internal server error occurred. Please try again. If the problem persists, contact support.
-```
-
-__Sada SDK__:
-```python
-image = ContainerImage.create(name = "myimage", models = [model], image_config = image_config, workspace = ws)
-Creating image
-Traceback (most recent call last):
-  File "C:\Python37\lib\site-packages\azureml\core\image\image.py", line 341, in create
-    resp.raise_for_status()
-  File "C:\Python37\lib\site-packages\requests\models.py", line 940, in raise_for_status
-    raise HTTPError(http_error_msg, response=self)
-requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://eastus.modelmanagement.azureml.net/api/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.MachineLearningServices/workspaces/<workspace-name>/images?api-version=2018-11-19
-
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "C:\Python37\lib\site-packages\azureml\core\image\image.py", line 346, in create
-    'Content: {}'.format(resp.status_code, resp.headers, resp.content))
-azureml.exceptions._azureml_exception.WebserviceException: Received bad response from Model Management Service:
-Response Code: 500
-Headers: {'Date': 'Tue, 26 Feb 2019 17:47:53 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'api-supported-versions': '2018-03-01-preview, 2018-11-19', 'x-ms-client-request-id': '3cdcf791f1214b9cbac93076ebfb5167', 'x-ms-client-session-id': '', 'Strict-Transport-Security': 'max-age=15724800; includeSubDomains; preload'}
-Content: b'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}'
-```
-
-__CLI__:
-```text
-ERROR: {'Azure-cli-ml Version': None, 'Error': WebserviceException('Received bad response from Model Management Service:\nResponse Code: 500\nHeaders: {\'Date\': \'Tue, 26 Feb 2019 17:34:05
-GMT\', \'Content-Type\': \'application/json\', \'Transfer-Encoding\': \'chunked\', \'Connection\': \'keep-alive\', \'api-supported-versions\': \'2018-03-01-preview, 2018-11-19\', \'x-ms-client-request-id\':
-\'bc89430916164412abe3d82acb1d1109\', \'x-ms-client-session-id\': \'\', \'Strict-Transport-Security\': \'max-age=15724800; includeSubDomains; preload\'}\nContent:
-b\'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}\'',)}
-```
-
-Chcete-li se tomuto problému vyhnout, doporučujeme jeden z následujících přístupů:
-
-* Nesaďte šablonu více než jednou pro stejné parametry. Nebo odstraňte existující prostředky, abyste je mohli znovu vytvořit pomocí šablony.
-* Zkontrolujte zásady přístupu Key Vault a pak pomocí těchto zásad nastavte vlastnost `accessPolicies` šablony.
-* Ověřte, zda prostředek Key Vault již existuje. Pokud tomu tak není, nevytvářejte ho znovu prostřednictvím šablony. Například přidejte parametr, který umožňuje zakázat vytvoření prostředku Key Vault, pokud již existuje.
 
 ## <a name="debug-locally"></a>Místní ladění
 
@@ -169,17 +102,17 @@ Pokud narazíte na problémy s nasazením modelu do ACI nebo AKS, zkuste ho nasa
 > [!WARNING]
 > Nasazení místních webových služeb se v produkčních scénářích nepodporují.
 
-Chcete-li nasadit místně, upravte kód tak, aby používal `LocalWebservice.deploy_configuration()` k vytvoření konfigurace nasazení. Pak použijte `Model.deploy()` k nasazení služby. Následující příklad nasadí model (obsažený v `model` proměnné) jako místní webovou službu:
+Chcete-li nasadit místně, upravte kód tak, aby používal `LocalWebservice.deploy_configuration()` k vytvoření konfigurace nasazení. Pak použijte `Model.deploy()` k nasazení služby. Následující příklad nasadí model (obsažený v proměnné modelu) jako místní webovou službu:
 
 ```python
-from azureml.core.model import InferenceConfig, Model
 from azureml.core.environment import Environment
+from azureml.core.model import InferenceConfig, Model
 from azureml.core.webservice import LocalWebservice
+
 
 # Create inference configuration based on the environment definition and the entry script
 myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
 inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
-
 # Create a local deployment, using port 8890 for the web service endpoint
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 # Deploy the service
@@ -329,13 +262,12 @@ K dispozici jsou dvě věci, které vám pomůžou zabránit stavovým kódům 5
 
 Další informace o nastavení `autoscale_target_utilization`, `autoscale_max_replicas`a `autoscale_min_replicas` pro najdete v tématu Reference k modulu [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) .
 
-
 ## <a name="advanced-debugging"></a>Pokročilé ladění
 
 V některých případech možná budete muset interaktivně ladit kód Pythonu obsažený v nasazení modelu. Například pokud se skript vstupu nezdařil a důvod nelze určit pomocí dalšího protokolování. Pomocí Visual Studio Code a Python Tools for Visual Studio (PTVSD) se můžete připojit ke kódu běžícímu uvnitř kontejneru Docker.
 
 > [!IMPORTANT]
-> Tato metoda ladění nefunguje při použití `Model.deploy()` a `LocalWebservice.deploy_configuration` k nasazení modelu místně. Místo toho je nutné vytvořit Image pomocí třídy [ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) . 
+> Tato metoda ladění nefunguje při použití `Model.deploy()` a `LocalWebservice.deploy_configuration` k nasazení modelu místně. Místo toho je nutné vytvořit bitovou kopii pomocí metody [model. Package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) .
 
 Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovacího prostředí v místním systému. Další informace o používání Docker najdete v [dokumentaci k Docker](https://docs.docker.com/).
 
@@ -384,13 +316,14 @@ Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovac�
 
     ```python
     from azureml.core.conda_dependencies import CondaDependencies 
-    
+
+
     # Usually a good idea to choose specific version numbers
     # so training is made on same packages as scoring
     myenv = CondaDependencies.create(conda_packages=['numpy==1.15.4',            
                                 'scikit-learn==0.19.1', 'pandas==0.23.4'],
-                                 pip_packages = ['azureml-defaults==1.0.17', 'ptvsd'])
-    
+                                 pip_packages = ['azureml-defaults==1.0.45', 'ptvsd'])
+
     with open("myenv.yml","w") as f:
         f.write(myenv.serialize_to_string())
     ```
@@ -406,70 +339,33 @@ Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovac�
     print("Debugger attached...")
     ```
 
-1. Během ladění možná budete chtít provést změny v souborech v imagi, aniž byste je museli znovu vytvářet. Pokud chcete v imagi Docker nainstalovat textový editor (vim), vytvořte nový textový soubor s názvem `Dockerfile.steps` a jako obsah souboru použijte následující:
-
-    ```text
-    RUN apt-get update && apt-get -y install vim
-    ```
-
-    Textový editor umožňuje upravovat soubory v imagi Docker a testovat změny bez vytvoření nové image.
-
-1. Pokud chcete vytvořit image, která používá soubor `Dockerfile.steps`, použijte při vytváření image parametr `docker_file`. Následující příklad ukazuje, jak to provést:
+1. Vytvořte bitovou kopii založenou na definici prostředí a přetáhnout image do místního registru. Během ladění možná budete chtít provést změny v souborech v imagi, aniž byste je museli znovu vytvářet. Chcete-li nainstalovat textový editor (vim) v imagi Docker, použijte vlastnosti `Environment.docker.base_image` a `Environment.docker.base_dockerfile`:
 
     > [!NOTE]
     > V tomto příkladu se předpokládá, že `ws` odkazuje na pracovní prostor Azure Machine Learning a že `model` je model nasazený. `myenv.yml` soubor obsahuje závislosti conda vytvořené v kroku 1.
 
     ```python
-    from azureml.core.image import Image, ContainerImage
-    image_config = ContainerImage.image_configuration(runtime= "python",
-                                 execution_script="score.py",
-                                 conda_file="myenv.yml",
-                                 docker_file="Dockerfile.steps")
+    from azureml.core.conda_dependencies import CondaDependencies
+    from azureml.core.model import InferenceConfig
+    from azureml.core.environment import Environment
 
-    image = Image.create(name = "myimage",
-                     models = [model],
-                     image_config = image_config, 
-                     workspace = ws)
-    # Print the location of the image in the repository
-    print(image.image_location)
+
+    myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
+    myenv.docker.base_image = NONE
+    myenv.docker.base_dockerfile = "FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04\nRUN apt-get update && apt-get install vim -y"
+    inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
+    package = Model.package(ws, [model], inference_config)
+    package.wait_for_creation(show_output=True)  # Or show_output=False to hide the Docker build logs.
+    package.pull()
     ```
 
-Po vytvoření bitové kopie se zobrazí umístění bitové kopie v registru. Umístění se podobá následujícímu textu:
+    Po vytvoření a stažení Image se zobrazí cesta k imagi (včetně úložiště, názvu a značky, která v tomto případě je také její výtah), a to podobně jako v následující zprávě:
 
-```text
-myregistry.azurecr.io/myimage:1
-```
-
-V tomto textovém příkladu je název registru `myregistry` a image má název `myimage`. Verze bitové kopie je `1`.
-
-### <a name="download-the-image"></a>Stáhnout image
-
-1. Otevřete příkazový řádek, terminál nebo jiné prostředí a pomocí následujícího příkazu [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) proveďte ověření předplatného Azure, které obsahuje váš Azure Machine Learning pracovní prostor:
-
-    ```azurecli
-    az login
+    ```text
+    Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
     ```
 
-1. K ověření Azure Container Registry (ACR), který obsahuje vaši image, použijte následující příkaz. Nahradí `myregistry`, který se vrátil při registraci Image:
-
-    ```azurecli
-    az acr login --name myregistry
-    ```
-
-1. Pokud chcete stáhnout image do místního Docker, použijte následující příkaz. Nahraďte `myimagepath` umístěním vráceným při registraci Image:
-
-    ```bash
-    docker pull myimagepath
-    ```
-
-    Cesta k obrázku by měla být podobná `myregistry.azurecr.io/myimage:1`. Kde `myregistry` je váš registr, `myimage` je vaše image a `1` je verze image.
-
-    > [!TIP]
-    > Ověřování z předchozího kroku nekončí trvale. Pokud mezi příkazem pro ověřování a příkazem Pull počkáte dostatečně dlouho, obdržíte chybu ověřování. Pokud k tomu dojde, znovu proveďte ověření.
-
-    Doba potřebná k dokončení stahování závisí na rychlosti připojení k Internetu. Během procesu se zobrazí stav stahování. Po dokončení stahování můžete pomocí příkazu `docker images` ověřit, zda bylo staženo.
-
-1. Pro usnadnění práce s imagí použijte následující příkaz a přidejte značku. Nahraďte `myimagepath` hodnotou umístění z kroku 2.
+1. Pro usnadnění práce s imagí použijte následující příkaz a přidejte značku. Nahraďte `myimagepath` hodnotou umístění z předchozího kroku.
 
     ```bash
     docker tag myimagepath debug:1

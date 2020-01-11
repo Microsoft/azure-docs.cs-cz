@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3c9e10df9f2be2a07bc7b7af0e01905d5b278d35
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924873"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894212"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Přesun dat z Amazon RedShift pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -34,7 +34,7 @@ Data Factory aktuálně podporuje pouze přesun dat z Amazon RedShift do [podpor
 > [!TIP]
 > Pokud chcete dosáhnout nejlepšího výkonu při kopírování velkých objemů dat z Amazon RedShift, zvažte použití integrovaného příkazu RedShift **Unload** prostřednictvím služby Amazon Simple Storage Service (Amazon S3). Podrobnosti najdete v tématu [použití uvolnění ke kopírování dat z Amazon RedShift](#use-unload-to-copy-data-from-amazon-redshift).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Pokud přesouváte data do místního úložiště dat, nainstalujte [Správa dat bránu](data-factory-data-management-gateway.md) na místní počítač. Udělte bráně přístup ke clusteru Amazon RedShift pomocí IP adresy místního počítače. Pokyny najdete v tématu [autorizace přístupu ke clusteru](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
 * Pokud chcete přesunout data do úložiště dat Azure, přečtěte si část [výpočetní IP adresa a rozsahy SQL používané datacentry Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 
@@ -146,7 +146,7 @@ Ukázka má následující Entity Data Factory:
 * Propojená služba typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
 * Vstupní [datová sada](data-factory-create-datasets.md) [relačních](#dataset-properties) objektů typu
 * Výstupní [datová sada](data-factory-create-datasets.md) typu [azureblobu](data-factory-azure-blob-connector.md#dataset-properties)
-* [Kanál](data-factory-create-pipelines.md) s aktivitou kopírování, která používá vlastnosti [RelationalSource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md##copy-activity-properties)
+* [Kanál](data-factory-create-pipelines.md) s aktivitou kopírování, která používá vlastnosti [RelationalSource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)
 
 Ukázka kopíruje data z výsledku dotazu v Amazon RedShift do objektu blob Azure za hodinu. Vlastnosti JSON, které jsou používány v ukázce, jsou popsány v částech, které následují za definicemi entit.
 
@@ -332,7 +332,7 @@ Následující mapování se používají, když aktivita kopírování převede
 | SMALLINT |Int16 |
 | INTEGER |Datový typ Int32 |
 | BIGINT |Int64 |
-| DESÍTKOVÉ |Decimal |
+| NOTACI |Decimal |
 | REÁLNÉ |Jednoduchá |
 | DOUBLE PRECISION |Double |
 | BOOLEAN |Řetězec |

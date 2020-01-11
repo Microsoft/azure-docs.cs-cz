@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 63b778379dda39a795cccdcfa0c1443870d50365
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 653e57a69e1c7ff8dbeadb14cda6e415ff3a9ee9
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440983"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887559"
 ---
 # <a name="understand-and-work-with-scopes"></a>Vysvětlení a práce s rozsahy
 
@@ -110,7 +110,7 @@ Předplatná Azure vytvořená z jednotlivých nabídek, jako jsou průběžné 
 
 Jednotlivé účty pro správu předplatného Azure můžou z [centrum účtů Azure](https://account.azure.com/subscriptions)zobrazovat a spravovat fakturační data, jako jsou faktury a platby. Nemůžou ale zobrazovat nákladová data ani spravovat prostředky v Azure Portal. Pokud chcete udělit přístup správci účtu, použijte výše zmíněné role Cost Management.
 
-Na rozdíl od EA můžou jednotliví správci účtů předplatného Azure vidět své faktury v Azure Portal. Mějte na paměti, že Cost Management čtenář a Cost Management role přispěvatele neposkytují přístup k fakturám. Další informace najdete v tématu [jak udělit přístup k fakturám](../billing/billing-manage-access.md##give-read-only-access-to-billing).
+Na rozdíl od EA můžou jednotliví správci účtů předplatného Azure vidět své faktury v Azure Portal. Mějte na paměti, že Cost Management čtenář a Cost Management role přispěvatele neposkytují přístup k fakturám. Další informace najdete v tématu [jak udělit přístup k fakturám](../billing/billing-manage-access.md#give-read-only-access-to-billing).
 
 ## <a name="microsoft-customer-agreement-scopes"></a>Obory zákaznické smlouvy Microsoftu
 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/10/2018
+ms.date: 01/10/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0999492f0d9c7d28da3ac896792fb2d7b898fd18
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ee331435cbc7d0cb580b3ad5865030aba6d372ea
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224218"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888460"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Kurz: použití spravované identity přiřazené uživatelem na virtuálním počítači s Windows pro přístup k Azure Resource Manager
 
@@ -54,9 +54,9 @@ Získáte informace o těchto tématech:
 - Spuštěním rutiny `Install-Module -Name PowerShellGet -AllowPrerelease` získejte předběžnou verzi modulu `PowerShellGet` (po spuštění tohoto příkazu možná budete muset pomocí příkazu `Exit` ukončit aktuální relaci PowerShellu, aby se modul `Az.ManagedServiceIdentity` nainstaloval).
 - Spuštěním rutiny `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` nainstalujte předběžnou verzi modulu `Az.ManagedServiceIdentity`, který umožňuje provádět operace s identitou přiřazenou uživatelem v tomto článku.
 
-## <a name="create-a-user-assigned-identity"></a>Vytvoření identity přiřazené uživatelem
+## <a name="create-identity"></a>Vytvořit identitu
 
-Identita přiřazená uživatelem se vytváří jako samostatný prostředek Azure. Pomocí [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity)vytvoří Azure v TENANTOVI Azure AD identitu, kterou je možné přiřadit k jedné nebo více instancím služby Azure.
+V této části se dozvíte, jak vytvořit uživatelem přiřazenou identitu. Identita přiřazená uživatelem se vytváří jako samostatný prostředek Azure. Pomocí [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity)vytvoří Azure v TENANTOVI Azure AD identitu, kterou je možné přiřadit k jedné nebo více instancím služby Azure.
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -80,18 +80,18 @@ Type: Microsoft.ManagedIdentity/userAssignedIdentities
 }
 ```
 
-## <a name="assign-the-user-assigned-identity-to-a-windows-vm"></a>Přiřazení identity přiřazené uživatelem k virtuálnímu počítači s Windows
+## <a name="assign-identity"></a>Přiřadit identitu
 
-Klienti můžou identitu přiřazenou uživatelem používat pro několik prostředků Azure. Pomocí následujících příkazů přiřaďte identitu přiřazenou uživatelem k jednomu virtuálnímu počítači. Jako hodnotu parametru `Id` použijte vlastnost `-IdentityID` vrácenou v předchozím kroku.
+V této části se dozvíte, jak přiřadit uživatelem přiřazenou identitu k virtuálnímu počítači s Windows. Klienti můžou identitu přiřazenou uživatelem používat pro několik prostředků Azure. Pomocí následujících příkazů přiřaďte identitu přiřazenou uživatelem k jednomu virtuálnímu počítači. Jako hodnotu parametru `-IdentityID` použijte vlastnost `Id` vrácenou v předchozím kroku.
 
 ```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
 Update-AzVM -ResourceGroupName TestRG -VM $vm -IdentityType "UserAssigned" -IdentityID "/subscriptions/<SUBSCRIPTIONID>/resourcegroups/myResourceGroupVM/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"
 ```
 
-## <a name="grant-your-user-assigned-identity-access-to-a-resource-group-in-azure-resource-manager"></a>Udělení přístupu identitě přiřazené uživatelem ke skupině prostředků v Azure Resource Manageru 
+## <a name="grant-access"></a>Udělení přístupu 
 
-Spravované identity pro prostředky Azure poskytují identity, které můžete v kódu použít k odesílání požadavků na přístupové tokeny pro ověření v rozhraních API prostředků, která podporují ověřování Azure AD. V tomto kurzu budete v kódu přistupovat k rozhraní API Azure Resource Manageru. 
+V této části se dozvíte, jak udělit uživatelem přiřazenou identitu přístupu ke skupině prostředků v Azure Resource Manager. Spravované identity pro prostředky Azure poskytují identity, které můžete v kódu použít k odesílání požadavků na přístupové tokeny pro ověření v rozhraních API prostředků, která podporují ověřování Azure AD. V tomto kurzu budete v kódu přistupovat k rozhraní API Azure Resource Manageru. 
 
 Než bude mít kód přístup k rozhraní API, je potřeba udělit identitě přístup k prostředku v Azure Resource Manageru. V tomto případě ke skupině prostředků, která obsahuje virtuální počítač. Aktualizujte hodnotu `<SUBSCRIPTION ID>` odpovídajícím způsobem pro vaše prostředí.
 
@@ -114,7 +114,7 @@ ObjectType: ServicePrincipal
 CanDelegate: False
 ```
 
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-resource-manager"></a>Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k volání Resource Manageru 
+## <a name="get-an-access-token"></a>Získání přístupového tokenu 
 
 Ve zbývající části kurzu použijete k práci dříve vytvořený virtuální počítač.
 
@@ -124,9 +124,9 @@ Ve zbývající části kurzu použijete k práci dříve vytvořený virtuáln�
 
 3. Zadejte **Uživatelské jméno** a **Heslo**, které jste použili při vytváření virtuálního počítače s Windows.
 
-4. Teď, když jste vytvořili **připojení ke vzdálené ploše** virtuálního počítače, otevřete ve vzdálené relaci **PowerShell**.
+4. Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem, otevřete ve vzdálené relaci **PowerShell**.
 
-5. Pomocí příkazu `Invoke-WebRequest` v PowerShellu požádejte místní spravované identity o koncový bod prostředků Azure k získání přístupového tokenu pro Azure Resource Manager.  Hodnota `client_id` je hodnota, která se vrátila při [vytvoření spravované identity přiřazené uživatelem](#create-a-user-assigned-identity).
+5. Pomocí příkazu `Invoke-WebRequest` v PowerShellu požádejte místní spravované identity o koncový bod prostředků Azure k získání přístupového tokenu pro Azure Resource Manager.  Hodnota `client_id` je hodnota vrácená při vytváření spravované identity přiřazené uživatelem.
 
     ```azurepowershell
     $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=af825a31-b0e0-471f-baea-96de555632f9&resource=https://management.azure.com/' -Method GET -Headers @{Metadata="true"}
@@ -134,7 +134,7 @@ Ve zbývající části kurzu použijete k práci dříve vytvořený virtuáln�
     $ArmToken = $content.access_token
     ```
 
-## <a name="read-the-properties-of-a-resource-group"></a>Čtení vlastností skupiny prostředků
+## <a name="read-properties"></a>Číst vlastnosti
 
 Použijte přístupový token načtený v předchozím kroku k přístupu k Azure Resource Manageru a čtení vlastností skupiny prostředků, ke které jste identitě spravované uživatelem udělili přístup. Místo `<SUBSCRIPTION ID>` použijte ID předplatného pro vaše prostředí.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 8ff245d851f83031d40cfcb8672d42b4dce1e108
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c194dbeb0183e64535342f8aaf9a770a93b3e332
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646672"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896186"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Kvóty virtuálních procesorů pro virtuální počítače
 
@@ -64,7 +64,7 @@ Premium Storage Managed Disks                  5    10000
 ## <a name="reserved-vm-instances"></a>Reserved VM Instances
 Pro rezervované instance virtuálních počítačů, které jsou vymezené na jedno předplatné bez flexibilní velikosti virtuálních počítačů, se do kvót vCPU přidá nový aspekt. Tyto hodnoty popisují počet instancí uvedené velikosti, které je nutné nasadit v předplatném. V systému kvót fungují jako zástupný symbol, aby bylo zajištěno, že je kvóta vyhrazena pro zajištění nasazení rezervací Azure v rámci předplatného. Pokud má například konkrétní předplatné 10 Standard_D1 rezervací, omezení využití pro Standard_D1 rezervace budou 10. Tím dojde k tomu, že Azure zajistí, že bude k dispozici vždy aspoň 10 vCPU v celkové místní kvótě vCPU, která se má použít pro instance Standard_D1 a k dispozici je aspoň 10 vCPU v úrovni Standard řady D Family vCPU, která se bude používat pro Standard_D1 instance.
 
-Pokud se vyžaduje navýšení kvóty k nákupu jediného předplatného na rezervovaném počítači, můžete [požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) u svého předplatného.
+Pokud se vyžaduje navýšení kvóty k nákupu jediného předplatného na rezervovaném počítači, můžete [požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) u svého předplatného.
 
 ## <a name="next-steps"></a>Další kroky
 

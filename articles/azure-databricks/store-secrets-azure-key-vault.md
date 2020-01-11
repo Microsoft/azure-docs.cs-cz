@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 27e166a8798f851f6c086c025dd82957b2dcfb84
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 15399d5a00c13141877dcf44640df2c1f9b9ba5c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849271"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889055"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Kurz: přístup k Azure Blob Storage z Azure Databricks pomocí Azure Key Vault
 
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření pracovního prostoru Azure Databricks a přidání oboru tajného klíče
 > * Přístup k kontejneru objektů BLOB z Azure Databricks
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 
@@ -36,7 +36,7 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 > [!Note]
 > Tento kurz se nedá provést pomocí **předplatného Azure free zkušební verze**.
-> Pokud máte bezplatný účet, přejděte na svůj profil a změňte si předplatné na **průběžné platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/). Pak [odeberte limit útraty](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)a [požádejte o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) pro vCPU ve vaší oblasti. Když vytváříte pracovní prostor Azure Databricks, můžete vybrat cenovou úroveň **DBU (Premium-14-days)** a poskytnout tak přístup k pracovnímu prostoru zdarma Premium Azure Databricks DBU po dobu 14 dnů.
+> Pokud máte bezplatný účet, přejděte na svůj profil a změňte si předplatné na **průběžné platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/). Pak [odeberte limit útraty](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)a [požádejte o zvýšení kvóty](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) pro vCPU ve vaší oblasti. Když vytváříte pracovní prostor Azure Databricks, můžete vybrat cenovou úroveň **DBU (Premium-14-days)** a poskytnout tak přístup k pracovnímu prostoru zdarma Premium Azure Databricks DBU po dobu 14 dnů.
 
 ## <a name="create-a-storage-account-and-blob-container"></a>Vytvoření účtu úložiště a kontejneru objektů BLOB
 
@@ -68,7 +68,7 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
    ![Vytvoření vyhledávacího pole prostředku Azure](./media/store-secrets-azure-key-vault/find-key-vault-resource.png)
 
-2. Prostředek Key Vault je automaticky vybrán. Vyberte **Create** (Vytvořit).
+2. Prostředek Key Vault je automaticky vybrán. Vyberte **Vytvořit**.
 
    ![Vytvoření prostředku Key Vault](./media/store-secrets-azure-key-vault/create-key-vault-resource.png)
 
@@ -121,7 +121,7 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
    ![Vlastnosti pracovního prostoru datacihly](./media/store-secrets-azure-key-vault/create-databricks-service.png)
 
-   Vyberte **Create** (Vytvořit).
+   Vyberte **Vytvořit**.
 
 3. Přejděte k nově vytvořenému prostředku Azure Databricks v Azure Portal a vyberte **Spustit pracovní prostor**.
 

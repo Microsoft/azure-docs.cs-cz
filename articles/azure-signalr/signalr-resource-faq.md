@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 013cf619edd998752265b8fa7e58e36869c830c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dde11b6097dddb1568f5adfea811606214a9759e
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450217"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891253"
 ---
 # <a name="azure-signalr-service-faq"></a>Nejčastější dotazy ke službě Azure Signal
 
@@ -37,7 +37,7 @@ Pokud máte aplikační servery, tato chybová zpráva znamená, že k vaší in
 Možné příčiny:
 - Služba signalizace není připojená k aplikačnímu serveru. V protokolech aplikačního serveru vyhledejte možné chyby připojení. Tento případ je vzácná v nastavení vysoké dostupnosti s více než jedním aplikačním serverem.
 - Existují problémy s připojením k instancím služby signalizace. Tento problém je přechodný a automaticky se obnoví.
-Pokud bude trvat déle než hodinu, [otevřete problém na GitHubu](https://github.com/Azure/azure-signalr/issues/new) nebo [vytvořte žádost o podporu v Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
+Pokud bude trvat déle než hodinu, [otevřete problém na GitHubu](https://github.com/Azure/azure-signalr/issues/new) nebo [vytvořte žádost o podporu v Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
 ## <a name="when-there-are-multiple-application-servers-are-client-messages-sent-to-all-servers-or-just-one-of-them"></a>Pokud je k dispozici více aplikačních serverů, jsou klientské zprávy odesílány na všechny servery nebo pouze na jednu z nich?
 

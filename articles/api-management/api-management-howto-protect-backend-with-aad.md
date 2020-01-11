@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 82341f29ffda03c5f047d7566ff64884c6698b07
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 36b4b597ae70642fee8726555ea71b5164c13cca
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442519"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889383"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Chraňte rozhraní API pomocí OAuth 2,0 s Azure Active Directory a API Management
 
@@ -47,12 +47,12 @@ Tady je rychlý přehled kroků:
 
 Aby bylo možné chránit rozhraní API pomocí Azure AD, prvním krokem je registrace aplikace v Azure AD, která představuje rozhraní API. 
 
-1. Přejděte na stránku [Azure Portal-registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) . 
+1. Pro registraci aplikace použijte [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **registrace rozhraní API**.
 
 1. Vyberte **Nová registrace**. 
 
 1. Když se zobrazí **stránka Registrace aplikace**, zadejte registrační informace vaší aplikace: 
-    - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `backend-app`. 
+    - V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, jako je například *back-end aplikace*. 
     - V části **podporované typy účtů** vyberte možnost, která vyhovuje vašemu scénáři. 
 
 1. Část **identifikátor URI přesměrování** nechejte prázdná.
@@ -63,23 +63,23 @@ Aby bylo možné chránit rozhraní API pomocí Azure AD, prvním krokem je regi
 
 1. Vyberte **zveřejnit rozhraní API** a nastavte **identifikátor URI ID aplikace** na výchozí hodnotu. Poznamenejte si tuto hodnotu pro pozdější.
 
-1. Na stránce **Přidat obor** vytvořte nový obor podporovaný rozhraním API. (např. číst) potom kliknutím na *Přidat obor* vytvořte obor. Opakováním tohoto kroku přidejte všechny obory podporované vaším rozhraním API.
+1. Kliknutím na tlačítko **Přidat obor** zobrazíte stránku **Přidat obor** . Pak vytvořte nový obor podporovaný rozhraním API (například `Files.Read`). Nakonec pro vytvoření oboru vyberte tlačítko **Přidat obor** . Opakováním tohoto kroku přidejte všechny obory podporované vaším rozhraním API.
 
-1. Po vytvoření oboru si ho poznamenejte, abyste ho mohli použít v dalším kroku. 
+1. Když se vytvoří obory, poznamenejte si je, aby je bylo potřeba použít v dalším kroku. 
 
 ## <a name="register-another-application-in-azure-ad-to-represent-a-client-application"></a>Registrace jiné aplikace ve službě Azure AD, která představuje klientskou aplikaci
 
 Každá klientská aplikace, která volá rozhraní API, musí být registrovaná taky jako aplikace v Azure AD. V tomto příkladu je klientská aplikace konzolou pro vývojáře na portálu API Management Developer Portal. Tady je postup, jak zaregistrovat jinou aplikaci ve službě Azure AD, která bude reprezentovat konzolu pro vývojáře.
 
-1. Přejděte na stránku [Azure Portal-registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) . 
+1. Pro registraci aplikace použijte [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **registrace rozhraní API**.
 
 1. Vyberte **Nová registrace**.
 
 1. Když se zobrazí **stránka Registrace aplikace**, zadejte registrační informace vaší aplikace: 
-    - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `client-app`. 
-    - V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři**. 
+    - V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, jako je například *klientská aplikace*. 
+    - V části **podporované typy účtů** vyberte **účty v jakémkoli adresáři organizace (libovolný adresář služby Azure AD – víceklientské tenant)** . 
 
-1. V části **identifikátor URI pro přesměrování** vyberte `Web` a zadejte adresu URL `https://contoso5.portal.azure-api.net/signin`
+1. V části **identifikátor URI pro přesměrování** vyberte `Web` a zadejte adresu URL `https://contoso5.portal.azure-api.net/signin`.
 
 1. Výběrem možnosti **Registrovat** aplikaci vytvořte. 
 
@@ -91,23 +91,23 @@ Teď pro tuto aplikaci vytvořte tajný klíč klienta, který se použije v dal
 
 1. V části **Přidat tajný klíč klienta**zadejte **Popis**. Zvolte, kdy má klíč vypršet, a vyberte **Přidat**.
 
-Po vytvoření tajného kódu si poznamenejte hodnotu klíče, která se použije v dalším kroku. 
+Po vytvoření tajného klíče si poznamenejte klíčovou hodnotu pro použití v dalším kroku. 
 
 ## <a name="grant-permissions-in-azure-ad"></a>Udělení oprávnění ve službě Azure AD
 
 Teď, když jste zaregistrovali dvě aplikace, které představují rozhraní API a konzolu pro vývojáře, musíte udělit oprávnění, aby klientská aplikace mohla volat back-end aplikaci.  
 
-1. Přejděte na **Registrace aplikací**. 
+1. Chcete-li udělit oprávnění k klientské aplikaci, použijte [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **registrace rozhraní API**.
 
-1. Vyberte `client-app`a v seznamu stránek aplikace otevřete **oprávnění rozhraní API**.
+1. Vyberte klientskou aplikaci. Pak v seznamu stránek aplikace vyberte **oprávnění rozhraní API**.
 
 1. Vyberte **Přidat oprávnění**.
 
-1. V části **Vybrat rozhraní API**vyhledejte a vyberte `backend-app`.
+1. V části **Vybrat rozhraní API**vyberte **Moje rozhraní API**a pak vyhledejte a vyberte back-end aplikaci.
 
-1. V části **delegovaná oprávnění**vyberte požadovaná oprávnění pro `backend-app` potom klikněte na **Přidat oprávnění**.
+1. V části **delegovaná oprávnění**vyberte požadovaná oprávnění pro back-end aplikaci a pak vyberte **Přidat oprávnění**.
 
-1. Volitelně můžete na stránce **oprávnění rozhraní API** kliknout na **udělit souhlas správce pro < >** v dolní části stránky udělit souhlas jménem všech uživatelů v tomto adresáři. 
+1. Volitelně můžete na stránce **oprávnění rozhraní API** vybrat **udělit souhlas správce pro \<název-tenanta >** udělit souhlas jménem všech uživatelů v tomto adresáři. 
 
 ## <a name="enable-oauth-20-user-authorization-in-the-developer-console"></a>Povolení autorizace uživatele OAuth 2,0 v konzole pro vývojáře
 

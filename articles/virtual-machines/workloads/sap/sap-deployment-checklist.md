@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ddba2b70bc9d9e01518cdc0f373fc31224e9c932
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b3a424c142fbfcbfe5e4c1802f3ba61da655f77f
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425935"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896029"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Úlohy SAP v Azure: kontrolní seznam pro plánování a nasazení
 
@@ -76,7 +76,7 @@ V průběhu této fáze naplánujete migraci úlohy SAP na platformu Azure. V pr
     - [Strategie označování](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#tags-and-billing).
     - Zásady vytváření názvů pro virtuální počítače a další součásti infrastruktury nebo logické názvy.
 5.  Kontrakt Microsoft Premier Support. Identifikujte svého zástupce TAM (Technical Account Manager) společnosti Microsoft. Požadavky na podporu SAP najdete v [poznámkách k podpoře sap #2015553](https://launchpad.support.sap.com/#/notes/2015553).
-6.  Počet předplatných Azure a kvóta jádra pro odběry. [Otevřete žádosti o podporu pro zvýšení kvót předplatných Azure](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) podle potřeby.
+6.  Počet předplatných Azure a kvóta jádra pro odběry. [Otevřete žádosti o podporu pro zvýšení kvót předplatných Azure](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) podle potřeby.
 7.  Omezení dat a plán migrace dat pro migraci dat SAP do Azure. Pro systémy SAP NetWeaver má SAP pokyny, jak omezit objem velkých objemů dat. Viz [Tato příručka](https://wiki.scn.sap.com/wiki/download/attachments/247399467/DVM_%20Guide_7.2.pdf?version=1&modificationDate=1549365516000&api=v2) pro systém SAP o správě dat v systému SAP ERP. Část obsahu platí i pro systémy NetWeaver a S/4HANA obecně.
 8.  Přístup k automatizovanému nasazení. Cílem automatizace nasazení infrastruktury v Azure je nasadit deterministický způsob a získat deterministické výsledky. Spousta zákazníků používá PowerShell nebo skripty založené na rozhraní příkazového řádku. Existují však různé Open Source technologie, které můžete použít k nasazení infrastruktury Azure pro SAP a dokonce i k instalaci softwaru SAP. Příklady najdete na GitHubu:
     - [Automatizované nasazení SAP v cloudu Azure](https://github.com/Azure/sap-hana)

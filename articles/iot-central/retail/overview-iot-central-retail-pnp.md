@@ -1,42 +1,48 @@
 ---
 title: Vytváření maloobchodních řešení s využitím Azure IoT Central | Microsoft Docs
-description: Naučte se sestavovat připojenou logistickou distribuci, digitálním centrem distribuce, monitorováním podmínek analýzy v obchodě, rezervacích a správě inteligentních inventářů, maloobchodních řešení s Azure IoT Central pomocí šablon aplikací.
-author: KishorIoT
-ms.author: nandab
-ms.date: 10/22/2019
+description: Přečtěte si o používání šablon aplikací pro Azure IoT Central k vytvoření připojené logistiky, digitálního distribučního centra, analýz v obchodě, monitorování podmínek, rezervací, správy inteligentních inventářů a maloobchodních řešení.
+author: avneet723
+ms.author: avneets
+ms.date: 01/10/2020
 ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 7f82e2a539c968d0dde44cbc2ed411710054c290
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 8b1861b96f7ed53388d49e226bf3880bfcf657cb
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890709"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895867"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Sestavování řešení pro maloobchod s využitím služby Azure IoT Central
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Azure IoT Central je aplikační platforma pro Internet věcí (IoT) pro sestavovatele řešení, která zjednodušuje problémy při sestavování & správě škálovatelných aplikací. V tomto článku vyzvýrazníme několik šablon aplikací specifických pro maloobchodní prodej v rámci IoT Central. Tvůrci řešení můžou pomocí publikovaných šablon sestavovat řešení IoT pro optimalizaci dodavatelského řetězce, zlepšit prostředí v obchodě pro zákazníky a efektivněji sledovat inventář.
+Azure IoT Central je aplikační platforma IoT, která snižuje zatížení a náklady spojené s vývojem, správou a údržbou řešení IoT na podnikové úrovni. Když zvolíte sestavení pomocí Azure IoT Central, získáte možnost zaměřit se na vaše podnikání, peníze a energii při transformaci vaší firmy na data IoT, a ne jenom zachovat a aktualizovat složitou a nepřetržitou vývojovou infrastrukturu IoT.
+
+Tento článek popisuje několik šablon aplikací IoT Central specifických pro maloobchodní prodej. Jako tvůrce řešení můžete tyto šablony použít k sestavování řešení IoT, která optimalizují dodavatelské řetězce, vylepšit prostředí v obchodě pro zákazníky a efektivněji sledovat inventář.
 
 > [!div class="mx-imgBorder"]
 > ![přehled maloobchodního prodeje Azure IoT](./media/overview-iot-central-retail/retail-app-templates.png)
 
+Následující části popisují možnosti těchto šablon aplikací:
 
-## <a name="what-is-connected-logistics-solution"></a>Co je řešení pro logistiku připojené?
-U celkové logistické útraty se očekává přístup k $10.6 trn v 2020, což je největší HDP podle odvětví. Přeprava zboží je většinou (70%) z celkových logistických nákladů. Poskytovatelé expedice mají silný konkurenční tlak a omezení. 3PL poskytovatelé se zabývat stále se zkrácením časových snímků a účtují náklady na kompenzaci. Logistika se dále omezuje riziky, které představují geopolitické, extrémní klimatické události a trestné činy. 
+## <a name="connected-logistics"></a>Propojená logistika
 
-V rámci pomoci se senzory IoT můžeme shromažďovat & monitorovat okolní podmínky, tj. v oblasti teploty, vlhkosti, náklonu, nárazu, světla a umístění expedice, a to prostřednictvím GPS v rámci více modálních transformací, tj. vzduch, voda, země. Data získaná ze senzorů, zařízení, počasí a &ch událostí je možné integrovat s cloudovým systémem Business Intelligence. Výhody spojené logistické řešení jsou,
-* Odvození dodávek pomocí sledování & trasování v reálném čase 
-* Integrita dodávek pomocí monitorování podmínek okolí v reálném čase & studeným řetězcem
-* Zabezpečení před odcizením, ztrátou nebo poškozením dodávky
-* Monitorování geografických zón, optimalizace tras a řízení loďstva. Analýzy vozidel
-* Prognózování & předvídatelnosti pomocí & pro odchodení 
+U celkové logistické útraty se očekává, že se dosáhne $10.6 TN v 2020. Přeprava nákladových účtů pro většinu těchto výdajů a poskytovatelů námořní dopravy je v rámci výrazného konkurenčního tlaku a omezení.
 
-### <a name="out-of-box-experience"></a>Prostředí mimo box
-Partneři můžou využít šablonu k vývoji koncových a koncových řešení pro všechna připojená logistická řešení & popsaných výhodách. Tato publikovaná šablona se zaměřuje na připojení zařízení, konfiguraci & správě zařízení v IoT Central. 
+Pomocí senzorů IoT můžete shromažďovat a monitorovat okolní podmínky, jako je teplota, vlhkost, náklon, náraz, světlo a umístění dodávky. Telemetrii získaná ze senzorů a zařízení IoT můžete kombinovat s dalšími zdroji dat, jako jsou například informace o počasí a provozu v cloudových business intelligencech systémech.
+
+Mezi výhody připojeného logistického řešení patří:
+
+* Monitorování dodávek pomocí sledování a sledování v reálném čase. 
+* Integrita dodávek s monitorováním okolních podmínek v reálném čase.
+* Zabezpečení proti krádeži, ztrátě nebo poškození dodávek.
+* Monitorování geografických zón, optimalizace tras, řízení loďstva a analýzy vozidel.
+* Prognózování pro předvídatelné odchod a dodání dodávek.
+
+Následující snímky obrazovky zobrazují předem připravený řídicí panel v šabloně aplikace. Řídicí panel je plně přizpůsobitelný tak, aby splňoval konkrétní požadavky řešení:
 
 > [!div class="mx-imgBorder"]
 > Řídicí panel ![připojená logistika](./media/overview-iot-central-retail/connected-logistics-dashboard1.png)
@@ -44,110 +50,125 @@ Partneři můžou využít šablonu k vývoji koncových a koncových řešení 
 > [!div class="mx-imgBorder"]
 > Řídicí panel ![připojená logistika](./media/overview-iot-central-retail/connected-logistics-dashboard2.png)
 
-Všimněte si, že výše uvedený řídicí panel je ukázka a vy můžete tuto aplikaci zcela přizpůsobit tak, aby odpovídala požadovanému případu použití.
+Další informace najdete v kurzu [nasazení a Projděte si článek s připojenou logistickou aplikací](./tutorial-iot-central-connected-logistics-pnp.md) .
 
-Začínáme s [koncovým kurzem](./tutorial-iot-central-connected-logistics-pnp.md) , který vás provede vytvořením řešení s využitím jedné z šablon pro logistické řešení.
+## <a name="digital-distribution-center"></a>Digitální distribuční centrum
 
+Výrobci a prodejci si naváží celosvětové prostředí a jejich dodavatelské řetězy vystaví a stanou se složitějšími. Příjemci teď očekávají velké výběry produktů, které jsou dostupné, a pro tyto předměty dorazí do jednoho nebo dvou dnů od nákupu. Distribuční centra se musí přizpůsobit těmto trendům a přitom přejdou stávající neefektivity. 
 
+V současné době spoléhá na ruční práci, což znamená, že účty pro výdej a balení 55-65% nákladů služby Distribution Center. Ruční výdej a balení jsou také obvykle pomalejší než automatizované systémy a rychlé kolísání potřeb zaměstnanců je ještě obtížnější, aby se objemy přenosu splňovaly. Tato sezónní kolísání vede k dosažení vysokého počtu zaměstnanců a zvyšuje pravděpodobnost nákladných chyb.
 
-## <a name="what-is-digital-distribution-center-solution"></a>Co je to řešení Digital Distribution Center?
-Jak si další výrobci a prodejci naváží celosvětové přítomnosti, jejich dodavatelské řetězce se rozvětvení na více než kdy dřív. Distribučním centrům se stává primární výzvou. Distribuční centrum/sklady si Brunt tlak od elektronického obchodování. Spotřebitelé teď očekávají velké množství výběrů produktů, které mají být dostupné, a za to, že se tyto produkty dojdou do jednoho až dvou dnů od nákupu. Distribuční centra se musí přizpůsobit těmto trendům a přitom přejdou stávající neefektivity. 
+Řešení založená na fotoaparátech s podporou IoT můžou poskytovat transformační výhody tím, že umožňují smyčku digitální zpětné vazby. Data z v rámci distribučního centra vede k užitečným přehledům, které naopak mají za následek lepší data.
 
-V současné době se při ruční práci na ruční práci označuje účty pro vybírání a balení pro 55-65% nákladů služby Distribution Center. I když je to špatné, že ruční práce zpomaluje distribuční centrum, rychle se měnící potřeby personálního oddělení (od zaměstnanců si 10X), zajistěte ještě obtížnější vyhovět expedičním objemům. Tato sezónní kolísání vede k vyššímu obratu a pravděpodobnosti chyb a zvyšuje se i nutnost nákladného přepracování.
-Řešení založená na fotoaparátech s podporou IoT můžou poskytovat transformační výhody tím, že umožňují smyčku digitální zpětné vazby. Tento datový tok z celého distribučního centra vede k užitečným přehledům, které zase vede k lepšímu využití dat.
+K výhodám digitálního distribučního centra patří:
 
-Výhody jsou, 
-* Fotoaparáty monitorují zboží po doručení a pohyb přes systém dopravníku.
-* Identifikujte chybné zboží a odešlete je k opravě
-* Efektivní udržování přehledu o objednávkách
-* Snížení nákladů, zvýšení produktivity & maximalizace využití
+* Kamery monitorují zboží po doručení a pohyb přes systém dopravníku.
+* Automatická identifikace vadných zboží
+* Efektivní sledování pořadí.
+* Snížené náklady, Vylepšená produktivita a optimalizované využití.
 
-### <a name="out-of-box-experience"></a>Prostředí mimo box
-Partneři mohou tuto šablonu aplikace využít k vytvoření digitálního distribučního centra, které vám umožní získat užitečné poznatky & výše popsané výhody. Publikovaná šablona se zaměřuje na konfiguraci připojení zařízení & správě kamery a hraničních zařízení v IoT Central. 
+Následující snímek obrazovky ukazuje předem připravený řídicí panel v šabloně aplikace. Řídicí panel je plně přizpůsobitelný tak, aby splňoval konkrétní požadavky řešení: 
 
 > [!div class="mx-imgBorder"]
 > Řídicí panel ![digital Distribution Center](./media/overview-iot-central-retail/digital-distribution-center-dashboard.png)
 
-Všimněte si, že výše uvedený řídicí panel je ukázka a vy můžete tuto aplikaci zcela přizpůsobit tak, aby odpovídala požadovanému případu použití.
+Další informace najdete v kurzu [nasazení a procházení prostřednictvím šablony aplikace digitálního distribučního centra](./tutorial-iot-central-digital-distribution-center-pnp.md) .
 
-Začínáme s [koncovým kurzem](./tutorial-iot-central-digital-distribution-center-pnp.md) , který vás provede vytvořením řešení s využitím jedné ze šablon digitálních distribučních center.
+## <a name="in-store-analytics---condition-monitoring"></a>Analýzy v obchodě – monitorování podmínek
 
+V případě mnoha prodejců jsou podmínky prostředí v rámci svých obchodů klíčovým rozdílem od jejich konkurence. Maloobchodní prodejci chtějí zachovat ve svých obchodech zvýhodněné podmínky pro využívání svých zákazníků.  
 
+Jako tvůrce řešení můžete použít šablonu aplikace monitorování podmínky analýzy IoT Central v rámci úložiště k sestavení uceleného řešení. Šablona aplikace vám umožní digitálně se připojit k prodejnímu prostředí pro prodejny a monitorovat je pomocí různých zařízení snímačů. Tato zařízení snímače generují telemetrii, kterou můžete převést na obchodní přehledy, které pomáhají maloobchodníkovi snižovat provozní náklady a vytvářet skvělé prostředí pro zákazníky.
 
-## <a name="what-is-in-store-analytics-condition-monitoring"></a>Co je monitorování podmínek analýzy in-Store?
-V dnešní konkurenční konkurenci vyhledává maloobchodní prodejci nové způsoby, jak zákazníkům nabídnout jedinečné nebo zvláštní možnosti, aby mohli řídit provoz přes jejich fyzické obchody. Řada maloobchodních prodejců uznává důležitost podmínek v oblasti životního prostředí v obchodě jako nástroj, který je rozlišuje s konkurencí. Maloobchodní prodejci chtějí zajistit, aby ve všech obchodech udržovali nepřetržité podmínky, aby zákazníkům poskytovali příjemné zkušenosti.  
+Použijte šablonu aplikace k těmto akcím:
 
-Šablona aplikace monitorování podmínky analýzy v rámci úložiště v rámci IoT Central poskytuje tvůrce řešení s plátnem, které se dá využít k sestavení kompletního řešení. Šablona aplikace jim umožní digitálně připojit a monitorovat prostředí pro maloobchodní obchod pomocí různých zařízení snímačů. Tato zařízení snímače zachycují smysluplné signály, které je možné převést na obchodní přehledy, což umožňuje maloobchodníkům snižovat provozní náklady a vytvářet prostředí, která jejich zákazníci chtějí.
+* Připojte celou řadu senzorů IoT k instanci aplikace IoT Central.
+* Monitorujte a spravujte stav sítě snímačů a také všechna zařízení brány v daném prostředí.
+* Vytvořte si vlastní pravidla týkající se podmínek prostředí v rámci obchodu, abyste mohli aktivovat výstrahy pro správce Storu.
+* Transformujte podmínky prostředí v obchodě na přehledy, které může tým maloobchodního obchodu využít ke zlepšení prostředí pro zákazníky.
+* Exportujte agregované poznatky do stávajících nebo nových obchodních aplikací a poskytněte jim užitečné informace pro maloobchodní pracovníky.
 
-Šablona aplikace vám umožní:
+Šablona aplikace je dodávána se sadou šablon zařízení a používá sadu simulovaných zařízení k naplnění řídicího panelu. 
 
-*  K instanci IoT Central aplikace můžete hladce připojit nejrůznější senzory IoT.
-*  Monitorujte a spravujte stav sítě snímače i zařízení brány v prostředí.
-*  Umožňuje vytvořit vlastní pravidla týkající se podmínek prostředí v rámci obchodu, aby se aktivovaly příslušné výstrahy.
-*  Transformujte podmínky prostředí v obchodě na přehledy, které může využívat tým maloobchodního obchodu.
-* Exportujte agregované poznatky do stávajících nebo nových obchodních aplikací, které umožňují prodejcům v maloobchodních prodejích.
-
-### <a name="out-of-box-experience"></a>Prostředí mimo box
-Šablona aplikace je dodávána se sadou šablon zařízení a s operátorem, který se neobjeví v poli. Využívá sadu simulovaných zařízení k naplnění prvků řídicího panelu. Když nasadíte aplikaci IoT Central pomocí šablony aplikace [monitorování podmínky analýzy v úložišti](https://aka.ms/conditiontemplate) , budete mít na výchozím řídicím panelu aplikace, jak je znázorněno níže. 
+Následující snímek obrazovky ukazuje předem připravený řídicí panel v šabloně aplikace. Řídicí panel je plně přizpůsobitelný tak, aby splňoval konkrétní požadavky řešení: 
 
 > [!div class="mx-imgBorder"]
 > Monitorování podmínky analýzy ![v úložišti](./media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png)
 
-Všimněte si, že výše uvedený řídicí panel je ukázka a vy můžete tuto aplikaci zcela přizpůsobit tak, aby odpovídala požadovanému případu použití. 
+Další informace najdete v kurzu [Vytvoření analytické aplikace v rámci úložiště v Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md) .
 
-Začínáme s [koncovým kurzem](./tutorial-in-store-analytics-create-app-pnp.md) , který vás provede vytvořením řešení s využitím jedné z šablon monitorování podmínky analýzy v úložišti.
+## <a name="in-store-analytics---checkout"></a>Analýza v obchodě – rezervace
 
+U některých prodejců jsou možnosti rezervace v rámci svých obchodů klíčovým rozdílem od jejich konkurence. Maloobchodní prodejci chtějí poskytovat hladké možnosti rezervace v rámci svých obchodů, aby mohli zákazníkům povzbudit návrat.  
 
+Jako tvůrce řešení můžete použít šablonu aplikace pro rezervaci IoT Central in-Store Analytics k sestavení řešení, které poskytuje přehledy z oblasti rezervace obchodu pro maloobchodní pracovníky. Senzory můžou například poskytovat informace o délkách fronty a průměrné době čekání pro každou rezervaci.
 
-## <a name="what-is-in-store-analytics-checkout"></a>Co je rezervace analýz v obchodě?
-Ve stále rostoucí konkurenci mají moderní maloobchodníky neustále rostoucí tlak na zajištění prostředí v obchodě, které překračuje očekávání zákazníků a ukládá je zpátky. Zatímco několik prodejců začal nasazovat technologii, aby splnila tuto potřebu, je oblast, která je v podstatě neznáma, možností registrace.
+Použijte šablonu aplikace k těmto akcím:
 
-Šablona aplikace pro rezervaci v rámci úložiště v rámci IoT Central umožňuje tvůrcům řešení vytvářet prostředí, která zákazníkům umožňují získat smysluplné přehledy o zóně rezervací jejich obchodu. Využívá sadu simulovaných zařízení k určení stavu obsazenosti každé z rezervací v rámci maloobchodního obchodu. Senzory umožňují zachytit počet osob a také průměrnou dobu čekání pro každou z rezervací.
+* Připojte celou řadu senzorů IoT k instanci aplikace IoT Central.
+* Monitorujte a spravujte stav sítě snímačů a také všechna zařízení brány v daném prostředí.
+* Vytvořte vlastní pravidla týkající se podmínky rezervace v rámci obchodu, která aktivuje výstrahy pro pracovníky v maloobchodě.
+* Transformujte podmínky rezervace v rámci Storu na přehledy, které může tým maloobchodního obchodu využít ke zlepšení prostředí pro zákazníky.
+* Exportujte agregované poznatky do stávajících nebo nových obchodních aplikací a poskytněte jim užitečné informace pro maloobchodní pracovníky.
 
-Šablona pomáhá tvůrci řešení urychlit své plány pro uvedení na trh tím, že poskytuje základní řešení IoT, které jim umožní: 
+Šablona aplikace je dodávána se sadou šablon zařízení a používá sadu simulovaných zařízení k naplnění řídicího panelu daty obsazení dráhy. 
 
-* K instanci IoT Central aplikace můžete hladce připojit nejrůznější senzory IoT.
-* Monitorujte a spravujte stav sítě snímače i zařízení brány v prostředí.
-* Vytvořte vlastní pravidla týkající se podmínky rezervace v rámci úložiště, aby se aktivovaly příslušné výstrahy.
-* Transformujte podmínky rezervace v rámci svého obchodu na přehledy, které může využívat tým maloobchodního obchodu.
-* Exportujte agregované poznatky do stávajících nebo nových obchodních aplikací, které umožňují prodejcům v maloobchodních prodejích.
-
-### <a name="out-of-box-experience"></a>Prostředí mimo box
-Šablona aplikace je dodávána se sadou šablon zařízení a s operátorem, který se neobjeví v poli. Využívá sadu simulovaných zařízení k naplnění prvků řídicího panelu. Když nasadíte aplikaci IoT Central pomocí šablony aplikace pro [rezervaci v rámci úložiště](https://aka.ms/checkouttemplate) , bude se na výchozím řídicím panelu aplikace nakládat, jak vidíte níže. 
+Následující snímek obrazovky ukazuje předem připravený řídicí panel v šabloně aplikace. Řídicí panel je plně přizpůsobitelný tak, aby splňoval konkrétní požadavky řešení: 
 
 > [!div class="mx-imgBorder"]
 > ![rezervace analýz v obchodě](./media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png)
 
-Všimněte si, že výše uvedený řídicí panel je ukázka a vy můžete tuto aplikaci zcela přizpůsobit tak, aby odpovídala požadovanému případu použití. 
+Další informace najdete v kurzu [Vytvoření analytické aplikace v rámci úložiště v Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md) .
 
+## <a name="smart-inventory-management"></a>Inteligentní správa inventáře
 
-Začínáme s koncovým [kurzem](./tutorial-in-store-analytics-create-app-pnp.md) , který vás provede vytvořením řešení s využitím jedné z šablon pro rezervaci v rámci úložiště.
+Inventář je akcie zboží, které prodejce uchovává. Správa inventáře je kritická, aby se zajistilo, že je správný produkt na správném místě ve správnou dobu. Maloobchodní prodejce musí vyrovnávat náklady na ukládání příliš velkého množství inventáře, a to za cenu, která nemá dostatek položek na skladě, aby splnila požadavky.
 
+Data IoT vygenerovaná z značek radiofrekvenční identifikace (RFID), signály a fotoaparáty poskytují příležitosti pro zlepšení procesů správy inventáře. Telemetrii získaná ze senzorů a zařízení IoT můžete kombinovat s dalšími zdroji dat, jako jsou například informace o počasí a provozu v cloudových business intelligencech systémech.
 
-## <a name="what-is-smart-inventory-management-solution"></a>Co je řešení pro správu inteligentních inventářů?
-"Inventář" je akcie zboží držené prodejcem. Každý prodejce potřebuje inventář, aby se postaral o poskytnutí a logistiku doby realizace. Inventář je pravděpodobně nejdůležitějším prostředkem, který každý prodejce potřebuje k obchodování. V dnešním omnichannel světě je Správa inventáře zásadním požadavkem, aby se zajistilo, že je správný produkt na správném místě ve správnou dobu. Ukládání velkého množství nebo příliš malého inventáře by mohlo snížit firemního prodejce. Maloobchodní maloobchodní prodejci ztratí 8-10% výnosů z důvodu nedostatku možností správy inventáře.
+Mezi výhody správy inteligentních zásob patří:
 
-Data IoT, která jsou povolená identifikací rádiového kmitočtu (RFID), signalizace & kamera je příležitost řešit tuto velkou výzvu ve velkém měřítku. Připojení a analýzy v reálném čase vyplývající z signálů IoT se stávají Game měničem pro inventář prodejce maloobchodního Woes.  Data získaná ze senzorů, zařízení, počasí a &ch událostí je možné integrovat s cloudovým systémem Business Intelligence.  
-Výhody správy inteligentního inventáře jsou, 
-* Chrání organizaci před zásobami a zajišťuje požadovanou úroveň služeb pro zákazníky. 
-* Hloubková analýza & přehledy o přesnosti inventáře téměř v reálném čase
-* Rozhodnutí o správném množství inventáře, který postačuje objednávky zákazníka
+* Snížení rizika nedostatku položek na sklad a zajištění požadované úrovně služeb pro zákazníky. 
+* Podrobné analýzy a přehledy o přesnosti inventáře téměř v reálném čase.
+* Nástroje, které vám pomůžou se rozhodnout o správném množství inventáře, aby odpovídal zákaznickým objednávkám
 
-### <a name="out-of-box-experience"></a>Prostředí mimo box
-Partneři můžou využít šablonu k vývoji kompletních řešení pro správu inteligentních inventářů & popsaných výhodách. Tato publikovaná šablona se zaměřuje na připojení zařízení, konfiguraci & správu RFID & čtenáři s nízkými energií (v) v IoT Central. 
+Tato šablona aplikace se zaměřuje na připojení zařízení a konfiguraci a správu zařízení čtečky s nízkou spotřebou (v/v) zařízení s technologií Bluetooth.
+
+Následující snímek obrazovky ukazuje předem připravený řídicí panel v šabloně aplikace. Řídicí panel je plně přizpůsobitelný tak, aby splňoval konkrétní požadavky řešení:
 
 > [!div class="mx-imgBorder"]
 > Řídicí panel pro správu inteligentního inventáře ![](./media/overview-iot-central-retail/smart-inventory-management-dashboard.png)
 
-Všimněte si, že výše uvedený řídicí panel je ukázka a vy můžete tuto aplikaci zcela přizpůsobit tak, aby odpovídala požadovanému případu použití. 
+Další informace najdete v kurzu [nasazení a procházení pomocí šablony aplikace pro správu inteligentního inventáře](./tutorial-iot-central-smart-inventory-management-pnp.md) .
 
-Začínáme s [koncovým kurzem](./tutorial-iot-central-smart-inventory-management-pnp.md) , který vás provede vytvořením řešení s využitím jedné ze šablon pro správu inteligentního inventáře.
+## <a name="micro-fulfillment-center"></a>Centrum Micro-vyplňování
 
+Ve stále rostoucí maloobchodní konkurenci mají maloobchodníci nepřetržitý tlak na uzavírání mezer mezi poptávkou a plněním. Nový trend, který se ukázal na rostoucí poptávku spotřebitelů, je vytvoření inventáře poblíž koncových zákazníků a obchodů, které navštíví.
+
+Šablona aplikace IoT Centralého centra vyplňování umožňuje tvůrcům řešení monitorovat a spravovat všechny aspekty jejich plně automatizovaného centra pro plnění. Šablona obsahuje sadu simulovaných senzorů monitorování a automatických dopravců pro zrychlení procesu vývoje řešení. Tato zařízení snímače zachycují smysluplné signály, které je možné převést na obchodní přehledy, což umožňuje maloobchodníkům snižovat provozní náklady a vytvářet prostředí pro své zákazníky.
+
+Šablona aplikace vám umožní: 
+
+- Bez problémů spojíte celou řadu senzorů IoT, jako jsou snímače robotů nebo monitorování podmínek, do instance aplikace IoT Central.
+- Monitorujte a spravujte stav sítě snímačů a také všechna zařízení brány v daném prostředí.
+- Vytvořte si vlastní pravidla týkající se podmínek v oblasti životního prostředí v rámci centra plnění, která aktivuje příslušné výstrahy.
+- Transformujte podmínky prostředí v rámci vašeho centra plnění na přehledy, které může využívat tým maloobchodního skladu.
+- Exportujte agregované poznatky do stávajících nebo nových obchodních aplikací pro výhody maloobchodních zaměstnanců.
+
+Následující snímek obrazovky ukazuje předem připravený řídicí panel v šabloně aplikace. Řídicí panel je plně přizpůsobitelný tak, aby splňoval konkrétní požadavky řešení:
+
+> [!div class="mx-imgBorder"]
+> ](./media/overview-iot-central-retail/MFC-Dashboard.png) ![Micro-splní centrum
+
+Další informace najdete v kurzu [nasazení a procházení pomocí šablony aplikace centra vyplňování](./tutorial-iot-central-smart-inventory-management-pnp.md) .
 
 ## <a name="next-steps"></a>Další kroky
+
 Začněte vytvářet maloobchodní řešení:
-* Začínáme s koncovým [kurzem](./tutorial-in-store-analytics-create-app-pnp.md) , který vás provede vytvořením řešení s využitím jedné z šablon aplikací pro analýzu v úložišti.
-* Naučte se nasadit [připojenou šablonu logistického řešení](./tutorial-iot-central-connected-logistics-pnp.md) .
-* Postup nasazení šablony nástroje [digital Distribution Center](./tutorial-iot-central-digital-distribution-center-pnp.md)
-* Naučte se nasadit [šablonu správy inteligentních inventářů](./tutorial-iot-central-smart-inventory-management-pnp.md) .
-* Další informace o IoT Central najdete v tématu [IoT Central Overview](../preview/overview-iot-central.md) .
+
+* Začněte s [vytvořením analytické aplikace v Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md) kurzu, která vás provede postupem sestavení řešení pomocí jedné z šablon aplikací pro analýzu v rámci služby Store.
+* [Nasaďte a Projděte si připojenou šablonu logistické aplikace](./tutorial-iot-central-connected-logistics-pnp.md).
+* [Nasaďte a Projděte si šablonu aplikace digitálního distribučního centra](./tutorial-iot-central-digital-distribution-center-pnp.md).
+* [Nasazení a procházení šablonou aplikace pro správu inteligentního inventáře](./tutorial-iot-central-smart-inventory-management-pnp.md).
+* [Nasaďte a Projděte si šablonu aplikace centra pro mikroplnění](./tutorial-iot-central-smart-inventory-management-pnp.md).
+* Další informace o IoT Central najdete v [přehledu IoT Central](../preview/overview-iot-central.md).

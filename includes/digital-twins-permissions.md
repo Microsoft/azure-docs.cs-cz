@@ -9,19 +9,19 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 01/06/2020
 ms.custom: include file
-ms.openlocfilehash: 6f8eaa1d13e7a8c4ea69118cdea4286f2dd90860
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: a6adbe095b3ed486be8eb2e2611db5a40162d5dd
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75692557"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895500"
 ---
 >[!NOTE]
 >V této části najdete pokyny k [registraci aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
 
 1. V [Azure Portal](https://portal.azure.com)otevřete **Azure Active Directory** v nabídce rozbalitelné vlevo a otevřete podokno **Registrace aplikací** . 
 
-    [![výběr podokna Azure Active Directory](./media/digital-twins-permissions/select-aad-pane.png)](./media/digital-twins-permissions/select-aad-pane.png#lightbox)
+    [![výběr podokna Azure Active Directory](./media/digital-twins-permissions/azure-portal-select-aad-pane.png)](./media/digital-twins-permissions/azure-portal-select-aad-pane.png#lightbox)
 
 1. Klikněte na tlačítko **+ Nová registrace** .
 
@@ -35,7 +35,7 @@ ms.locfileid: "75692557"
 
     Ověřte **přístupové tokeny** a povolte nastavení **oauth2AllowImplicitFlow** v manifestu. JSON.
 
-    [![nastavení konfigurace veřejného klienta](./media/digital-twins-permissions/aad-public-client.png)](./media/digital-twins-permissions/aad-public-client.png#lightbox)
+    [![nastavení konfigurace veřejného klienta](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
 
 1.  Otevřete podokno **Přehled** vaší registrované aplikace a zkopírujte hodnoty následujících entit do dočasného souboru. Tyto hodnoty použijete ke konfiguraci ukázkové aplikace v následujících oddílech.
 

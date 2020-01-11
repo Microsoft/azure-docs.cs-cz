@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 01/10/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f12ec41b661ac2cb462c6bf9ef62d6d831ebac0a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a0fe442741ae0b8fa817c9ea177ff244a413720e
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224286"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888511"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Kurz: Použití spravované identity přiřazené systémem virtuálního počítače s Linuxem pro přístup k Azure Data Lake Storu
 
@@ -38,9 +38,9 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>Udělení přístupu virtuálnímu počítači k Azure Data Lake Store
+## <a name="grant-access"></a>Udělení přístupu
 
-Teď můžete virtuálnímu počítači udělit přístup k souborům a složkám ve službě Azure Data Lake Store. Pro tento krok můžete použít stávající instanci Data Lake Store nebo vytvořit novou. Pokud chcete vytvořit instanci Data Lake Store na webu Azure Portal, postupujte podle tohoto článku [Rychlý start ke službě Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal). V [dokumentaci ke službě Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) také najdete články Rychlý start pro použití Azure CLI nebo Azure PowerShellu.
+V této části se dozvíte, jak udělit VIRTUÁLNÍmu počítači přístup k souborům a složkám v Azure Data Lake Store. Pro tento krok můžete použít stávající instanci Data Lake Store nebo vytvořit novou. Pokud chcete vytvořit instanci Data Lake Store na webu Azure Portal, postupujte podle tohoto článku [Rychlý start ke službě Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal). V [dokumentaci ke službě Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) také najdete články Rychlý start pro použití Azure CLI nebo Azure PowerShellu.
 
 V Data Lake Storu vytvořte novou složku a udělte spravované identitě přiřazené systémem virtuálního počítače s Linuxem oprávnění ke čtení, zápisu a spouštění souborů v této složce:
 
@@ -49,18 +49,18 @@ V Data Lake Storu vytvořte novou složku a udělte spravované identitě přiř
 3. Na panelu příkazů vyberte **Průzkumník dat**.
 4. Vybere se kořenová složka instance Data Lake Store. Na příkazovém řádku vyberte **Přístup**.
 5. Vyberte **Přidat**.  Do pole **Vybrat** zadejte název virtuálního počítače, například **DevTestVM**. Ve výsledcích hledání vyberte svůj virtuální počítač a pak klikněte na **Vybrat**.
-6. Klikněte na **Vybrat oprávnění**.  Vyberte oprávnění **Číst** a **Spustit**, přidejte je k **Tato složka** a přidejte je jako **Položka oprávnění k přístupu**. Vyberte **OK**.  Oprávnění by mělo být úspěšně přidané.
+6. Klikněte na **Vybrat oprávnění**.  Vyberte **Čtení** a **Spuštění**, přidejte oprávnění k **této složce** a přidejte ho jako **Oprávnění pouze k přístupu**. Vyberte **OK**.  Oprávnění by se mělo úspěšně přidat.
 7. Zavřete podokno **Přístup**.
-8. Pro tento kurz vytvořte novou složku. Na panelu příkazů klikněte na **Nová složka** a zadejte název nové složky, například **TestFolder**.  Vyberte **OK**.
+8. Pro účely tohoto kurzu vytvořte novou složku. Na panelu příkazů klikněte na **Nová složka** a zadejte název nové složky, například **TestFolder**.  Vyberte **OK**.
 9. Vyberte složku, kterou jste vytvořili, a pak na panelu příkazů vyberte **Přístup**.
 10. Podobně jako v 5. kroku vyberte **Přidat**. Do pole **Vybrat** zadejte název virtuálního počítače. Ve výsledcích hledání vyberte svůj virtuální počítač a pak klikněte na **Vybrat**.
-11. Podobně jako v 6. kroku vyberte **Vybrat oprávnění**. Vyberte oprávnění **Číst**, **Zápis** a **Spustit**, přidejte je k **Tato složka** a přidejte je jako **Položka oprávnění k přístupu a výchozí položka oprávnění**. Vyberte **OK**.  Oprávnění by mělo být úspěšně přidané.
+11. Podobně jako v 6. kroku vyberte **Vybrat oprávnění**. Vyberte oprávnění **Číst**, **Zápis** a **Spustit**, přidejte je k **Tato složka** a přidejte je jako **Položka oprávnění k přístupu a výchozí položka oprávnění**. Vyberte **OK**.  Oprávnění by se mělo úspěšně přidat.
 
 Spravované identity pro prostředky Azure teď můžou se soubory ve vytvořené složce provádět všechny operace. Další informace o správě přístupu ke službě Data Lake Store najdete v článku o [řízení přístupu v Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control).
 
-## <a name="get-an-access-token-and-call-the-data-lake-store-file-system"></a>Získání přístupového tokenu a volání systému souborů Data Lake Store
+## <a name="get-an-access-token"></a>Získání přístupového tokenu 
 
-Azure Data Lake Store nativně podporuje ověřování Azure AD, takže může přímo přijímat přístupové tokeny získané pomocí spravovaných identit pro prostředky Azure. Pokud chcete ověřit přístup k systému souborů Data Lake Store, pošlete přístupový token vydaný službou Azure AD koncovému bodu systému souborů Data Lake Store. Přístupový token je v autorizační hlavičce ve formátu „Bearer \<HODNOTA_PŘÍSTUPOVÉHO_TOKENU\>“.  Další informace o podpoře ověřování Azure AD ve službě Data Lake Store najdete v článku o [ověřování ve službě Data Lake Store pomocí Azure Active Directory](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory).
+V této části se dozvíte, jak získat přístupový token a volat Data Lake Store systému souborů. Azure Data Lake Store nativně podporuje ověřování Azure AD, takže může přímo přijímat přístupové tokeny získané pomocí spravovaných identit pro prostředky Azure. Pokud chcete ověřit přístup k systému souborů Data Lake Store, pošlete přístupový token vydaný službou Azure AD koncovému bodu systému souborů Data Lake Store. Přístupový token je v autorizační hlavičce ve formátu „Bearer \<HODNOTA_PŘÍSTUPOVÉHO_TOKENU\>“.  Další informace o podpoře ověřování Azure AD ve službě Data Lake Store najdete v článku o [ověřování ve službě Data Lake Store pomocí Azure Active Directory](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory).
 
 V tomto kurzu použijete při ověření přístupu k REST API systému souborů Data Lake Store nástroj cURL pro požadavky REST.
 
@@ -101,7 +101,7 @@ K dokončení tohoto postupu potřebujete klienta SSH. Pokud používáte Window
    {"FileStatuses":{"FileStatus":[{"length":0,"pathSuffix":"TestFolder","type":"DIRECTORY","blockSize":0,"accessTime":1507934941392,"modificationTime":1508105430590,"replication":0,"permission":"770","owner":"bd0e76d8-ad45-4fe1-8941-04a7bf27f071","group":"bd0e76d8-ad45-4fe1-8941-04a7bf27f071"}]}}
    ```
 
-5. Teď můžete zkusit do instance Data Lake Store nahrát soubor. Napřed vytvořte soubor, který chcete nahrát.
+5. Teď můžete zkusit do instance Data Lake Store nahrát soubor. Nejprve vytvořte soubor, který chcete nahrát.
 
    ```bash
    echo "Test file." > Test1.txt

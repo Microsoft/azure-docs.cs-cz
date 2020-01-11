@@ -2,14 +2,14 @@
 title: Nasazení skupiny kontejnerů do služby Azure Virtual Network
 description: Naučte se nasazovat skupiny kontejnerů do nové nebo existující virtuální sítě Azure.
 ms.topic: article
-ms.date: 12/17/2019
+ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 9c9f1d114ea3883a947fb454d5958c1479bd4a4e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 12260dcb43a675414d38cb5067b230832dd2d16b
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442257"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887952"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Nasazení instancí kontejnerů do služby Azure Virtual Network
 
@@ -24,7 +24,7 @@ Skupiny kontejnerů nasazené do služby Azure Virtual Network povolují scéná
 * Komunikace kontejneru s místními prostředky prostřednictvím [brány VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [ExpressRoute](../expressroute/expressroute-introduction.md)
 
 > [!IMPORTANT]
-> Tato funkce je aktuálně ve verzi Preview a [platí některá omezení](#preview-limitations). Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
+> Nasazení skupiny kontejnerů do virtuální sítě je všeobecně dostupné pro produkční úlohy pouze v následujících oblastech: **východní USA, střed USA – jih a západní USA 2**. V jiných oblastech, kde je funkce dostupná, jsou nasazení virtuálních sítí v současnosti ve verzi Preview, přičemž v blízké budoucnosti je plánována Obecná dostupnost. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. 
 
 
 ## <a name="virtual-network-deployment-limitations"></a>Omezení nasazení virtuální sítě
@@ -35,10 +35,6 @@ Určitá omezení platí při nasazení skupin kontejnerů do virtuální sítě
 * [Spravovanou identitu](container-instances-managed-identity.md) nemůžete použít ve skupině kontejnerů nasazené do virtuální sítě.
 * Kvůli dalším zapojení síťových prostředků je nasazení skupiny kontejnerů na virtuální síť obvykle pomalejší než nasazení standardní instance kontejneru.
 
-## <a name="preview-limitations"></a>Omezení verze Preview
-
-I když je tato funkce ve verzi Preview, platí při nasazení skupin kontejnerů do virtuální sítě následující omezení. 
-
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
 Omezení prostředků kontejneru se mohou lišit od omezení pro instance kontejnerů, které nejsou v síti v těchto oblastech. Pro tuto funkci jsou aktuálně podporovány pouze kontejnery Linux. Podpora Windows je plánována.
@@ -46,8 +42,10 @@ Omezení prostředků kontejneru se mohou lišit od omezení pro instance kontej
 ### <a name="unsupported-networking-scenarios"></a>Nepodporované scénáře sítě 
 
 * **Azure Load Balancer** – umístění Azure Load Balancer před instancemi kontejnerů v síťové skupině kontejnerů se nepodporuje.
-* **Partnerský vztah virtuální sítě** – partnerský vztah virtuálních sítí nebude fungovat pro ACI, pokud síť, ke které se virtuální síť ACI nachází z partnerských vztahů, používá veřejný prostor IP adres. Aby partnerské vztahy fungovaly, musí síť s partnerským vztahem RFC1918 místo pro privátní IP adresu. Kromě toho můžete aktuálně vytvořit partnerský vztah pouze k jedné virtuální síti.
-* **Směrování provozu virtuální sítě** – trasy zákazníků nelze nastavit kolem veřejných IP adres. Trasy je možné nastavit v privátním IP prostoru delegované podsítě, ve které jsou nasazené prostředky ACI. 
+* **Partnerské vztahy virtuálních sítí**
+  * Partnerský vztah virtuálních sítí nebude fungovat pro ACI, pokud síť, kterou virtuální síť ACI využívá partnerský vztah k používání veřejného prostoru IP adres. Aby partnerský vztah virtuálních sítí fungoval, potřebuje síť s privátním IP adresou RFC 1918. 
+  * Síť VNet se dá vytvořit jenom pro jednu jinou virtuální síť.
+* **Směrování provozu virtuální sítě** – vlastní trasy nejde nastavit kolem veřejných IP adres. Trasy je možné nastavit v privátním IP prostoru delegované podsítě, ve které jsou nasazené prostředky ACI. 
 * **Skupiny zabezpečení sítě** – odchozí pravidla zabezpečení v skupin zabezpečení sítě použitá pro podsíť delegovaná na Azure Container Instances se momentálně neuplatňují. 
 * **Veřejná IP adresa nebo popisek DNS** – skupiny kontejnerů nasazené ve virtuální síti aktuálně nepodporují vystavování kontejnerů přímo na internetu s použitím veřejné IP adresy nebo plně kvalifikovaného názvu domény.
 * **Interní překlad adres IP** – překlad názvů pro prostředky Azure ve virtuální síti prostřednictvím interního Azure DNS není podporovaný.
@@ -99,7 +97,7 @@ Po nasazení první skupiny kontejnerů pomocí této metody můžete nasadit do
 
 Nasazení skupiny kontejnerů do existující virtuální sítě:
 
-1. Vytvořte podsíť v rámci stávající virtuální sítě nebo vyprázdněte stávající podsíť *všech* dalších prostředků.
+1. Vytvořte podsíť v rámci stávající virtuální sítě, použijte existující podsíť, ve které je skupina kontejnerů už nasazená, nebo použijte existující podsíť, která je vyprázdná u *všech* ostatních prostředků.
 1. Nasaďte skupinu kontejnerů pomocí [AZ Container Create][az-container-create] a zadejte jednu z následujících možností:
    * Název virtuální sítě a název podsítě
    * ID prostředku virtuální sítě a ID prostředku podsítě, které umožňuje používat virtuální síť z jiné skupiny prostředků.
@@ -115,7 +113,7 @@ Následující části popisují, jak nasadit skupiny kontejnerů do virtuální
 
 Nejdřív nasaďte skupinu kontejnerů a zadejte parametry pro novou virtuální síť a podsíť. Při zadání těchto parametrů Azure vytvoří virtuální síť a podsíť, deleguje podsíť do služby Azure Container Instances a vytvoří taky profil sítě. Po vytvoření těchto prostředků se vaše skupina kontejnerů nasadí do podsítě.
 
-Spusťte následující příkaz [AZ Container Create][az-container-create] , který určuje nastavení pro novou virtuální síť a podsíť. Je potřeba, abyste zadali název skupiny prostředků, která byla vytvořená v oblasti, která [podporuje](#preview-limitations) skupiny kontejnerů ve virtuální síti. Tento příkaz nasadí veřejný kontejner Microsoft [ACI-HelloWorld][aci-helloworld] , který spouští malý webový server Node. js obsluhující statickou webovou stránku. V další části nasadíte druhou skupinu kontejnerů do stejné podsítě a otestujete komunikaci mezi dvěma instancemi kontejneru.
+Spusťte následující příkaz [AZ Container Create][az-container-create] , který určuje nastavení pro novou virtuální síť a podsíť. Je potřeba, abyste zadali název skupiny prostředků, která byla vytvořená v oblasti, ve které jsou [dostupná](#virtual-network-deployment-limitations)nasazení skupin kontejnerů ve virtuální síti. Tento příkaz nasadí veřejný kontejner Microsoft [ACI-HelloWorld][aci-helloworld] , který spouští malý webový server Node. js obsluhující statickou webovou stránku. V další části nasadíte druhou skupinu kontejnerů do stejné podsítě a otestujete komunikaci mezi dvěma instancemi kontejneru.
 
 ```azurecli
 az container create \
@@ -180,7 +178,7 @@ Výstup protokolu by měl ukázat, že `wget` se dokázal připojit a stáhnout 
 
 ### <a name="deploy-to-existing-virtual-network---yaml"></a>Nasazení do existující virtuální sítě – YAML
 
-Můžete také nasadit skupinu kontejnerů do existující virtuální sítě pomocí souboru YAML. K nasazení do podsítě ve virtuální síti zadáte několik dalších vlastností v YAML:
+Můžete také nasadit skupinu kontejnerů do existující virtuální sítě pomocí souboru YAML, šablony Správce prostředků nebo jiné programové metody, jako je sada Python SDK. K nasazení do podsítě ve virtuální síti zadáte několik dalších vlastností v YAML:
 
 * `ipAddress`: nastavení IP adresy pro skupinu kontejnerů.
   * `ports`: porty, které se mají otevřít (pokud nějaké jsou).
@@ -225,7 +223,7 @@ properties:
     - protocol: tcp
       port: '80'
   networkProfile:
-    id: /subscriptions/<Subscription ID>/resourceGroups/container/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-subnet
+    id: /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-subnet
   osType: Linux
   restartPolicy: Always
 tags: null
@@ -263,9 +261,9 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 
 > [!NOTE]
-> Pokud dojde k chybě při pokusu o odebrání profilu sítě, povolte 2-3 dní, aby platforma automaticky zmírnila problém a znovu se pokusila o odstranění. Pokud stále máte problémy s odebráním profilu sítě, [otevřete podporu reqest.](https://azure.microsoft.com/support/create-ticket/)
+> Pokud při pokusu o odebrání profilu sítě dojde k chybě, povolte 2-3 dní, aby platforma automaticky zmírnila problém a znovu se pokusila o odstranění. Pokud stále máte problémy s odebráním profilu sítě, [otevřete žádost o podporu](https://azure.microsoft.com/support/create-ticket/).
 
-Počáteční verze Preview této funkce vyžaduje několik dalších příkazů k odstranění síťových prostředků, které jste vytvořili dříve. Pokud jste použili ukázkové příkazy v předchozích částech tohoto článku k vytvoření virtuální sítě a podsítě, můžete k odstranění těchto síťových prostředků použít následující skript.
+Tato funkce v současnosti vyžaduje několik dalších příkazů k odstranění síťových prostředků, které jste vytvořili dříve. Pokud jste použili ukázkové příkazy v předchozích částech tohoto článku k vytvoření virtuální sítě a podsítě, můžete k odstranění těchto síťových prostředků použít následující skript.
 
 Před spuštěním skriptu nastavte `RES_GROUP` proměnnou na název skupiny prostředků obsahující virtuální síť a podsíť, která se má odstranit. Aktualizujte název virtuální sítě, pokud jste nepoužívali dříve navržený název `aci-vnet`. Skript je naformátován pro prostředí bash shell. Pokud dáváte přednost jinému prostředí, například PowerShellu nebo příkazovému řádku, budete muset odpovídajícím způsobem upravit proměnnou přiřazení a přistupující objekty.
 

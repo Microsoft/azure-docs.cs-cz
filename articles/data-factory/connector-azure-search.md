@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/13/2019
-ms.openlocfilehash: 8a5b7bd366c504f0f5f4652728bf265289fb92e8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 418026d5569cd7e4a7c5239f99650833b1b9514d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929678"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75892940"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Kopírování dat do indexu služby Azure Kognitivní hledání pomocí Azure Data Factory
 
@@ -181,4 +181,4 @@ Následující tabulka určuje, jestli je datový typ Azure Kognitivní hledán�
 V současné době nejsou podporovány jiné datové typy, například ComplexType. Úplný seznam podporovaných datových typů Azure Kognitivní hledání najdete v tématu [podporované datové typy (Azure kognitivní hledání)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types).
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

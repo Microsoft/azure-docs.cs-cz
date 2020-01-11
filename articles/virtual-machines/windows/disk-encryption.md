@@ -2,17 +2,17 @@
 title: Šifrování na straně serveru Azure Managed Disks – PowerShell
 description: Azure Storage chrání vaše data tím, že je před tím, než je zachová v clusterech úložiště, v klidovém prostředí. Pro šifrování svých spravovaných disků můžete spoléhat na klíče spravované Microsoftem, případně můžete pomocí klíčů spravovaných zákazníkem spravovat šifrování pomocí vlastních klíčů.
 author: roygara
-ms.date: 12/13/2019
+ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: c84c3b5b7e299cdd83f10746adb31ec539c2badd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0955e4082056963b075544aad2c66be9c0f8c8d9
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460080"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893826"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Šifrování na straně serveru Azure Managed disks
 
@@ -24,7 +24,7 @@ Další informace o kryptografických modulech založených na službě Azure Ma
 
 ## <a name="about-encryption-key-management"></a>O správě šifrovacích klíčů
 
-Pro šifrování spravovaného disku můžete spoléhat na klíče spravované platformou, nebo můžete šifrování spravovat pomocí vlastních klíčů (Public Preview). Pokud se rozhodnete spravovat šifrování pomocí vlastních klíčů, můžete zadat *klíč spravovaný zákazníkem* , který se použije k šifrování a dešifrování všech dat ve službě Managed disks. 
+Pro šifrování spravovaného disku můžete spoléhat na klíče spravované platformou, nebo můžete šifrování spravovat pomocí vlastních klíčů. Pokud se rozhodnete spravovat šifrování pomocí vlastních klíčů, můžete zadat *klíč spravovaný zákazníkem* , který se použije k šifrování a dešifrování všech dat ve službě Managed disks. 
 
 V následujících částech jsou podrobněji popsány všechny možnosti správy klíčů.
 
@@ -32,7 +32,7 @@ V následujících částech jsou podrobněji popsány všechny možnosti správ
 
 Ve výchozím nastavení používají spravované disky šifrovací klíče spravované platformou. Od 10. června 2017 se všechny nové spravované disky, snímky, image a nová data zapsaná na stávající spravované disky automaticky zašifrují bez použití klíčů spravovaných platformou. 
 
-## <a name="customer-managed-keys-public-preview"></a>Klíče spravované zákazníkem (Public Preview)
+## <a name="customer-managed-keys"></a>Klíče spravované zákazníkem
 
 Můžete zvolit správu šifrování na úrovni každého spravovaného disku s vlastními klíči. Šifrování na straně serveru pro spravované disky pomocí klíčů spravovaných zákazníkem nabízí integrované prostředí s Azure Key Vault. Můžete buď importovat [klíče RSA](../../key-vault/key-vault-hsm-protected-keys.md) do svého Key Vault, nebo vygenerovat nové klíče rsa v Azure Key Vault. Azure Managed disks zpracovává šifrování a dešifrování plně transparentním způsobem pomocí [šifrování obálek](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique). Šifruje data pomocí šifrovacího klíče založeného na [standardu AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 (klíč DEK), který je zase chráněn pomocí vašich klíčů. Abyste mohli používat klíče pro šifrování a dešifrování klíč DEK, musíte udělit přístup ke spravovaným diskům ve vašem Key Vault. To vám umožní plnou kontrolu nad daty a klíči. Můžete kdykoli zakázat vaše klíče nebo odvolat přístup ke spravovaným diskům. Pomocí monitorování Azure Key Vault taky můžete auditovat použití šifrovacího klíče a zajistit, aby se ke klíčům přistupovaly jenom spravované disky nebo jiné důvěryhodné služby Azure.
 
@@ -56,27 +56,34 @@ Pokud chcete odvolat přístup k klíčům spravovaným zákazníkem, přečtět
 
 ### <a name="supported-scenarios-and-restrictions"></a>Podporované scénáře a omezení
 
-V rámci verze Preview jsou podporovány pouze následující scénáře:
+V současné době jsou podporovány pouze následující scénáře:
 
 - Pomocí klíčů spravovaných zákazníkem vytvořte virtuální počítač (VM) z bitové kopie Azure Marketplace a Zašifrujte disk s operačním systémem pomocí šifrování na straně serveru.
 - Vytvoření vlastní image šifrované pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem.
 - Vytvořte virtuální počítač z vlastní image a Zašifrujte disk s operačním systémem pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem.
 - Vytvářejte datové disky šifrované pomocí šifrování na straně serveru a kódů spravovaných zákazníkem.
-- Vytvářejte snímky šifrované pomocí šifrování na straně serveru a kódů spravovaných zákazníkem.
+- (Pouze CLI/PowerShell) Vytvářejte snímky šifrované pomocí šifrování na straně serveru a kódů spravovaných zákazníkem.
 - Vytvářejte sady škálování virtuálních počítačů, které se šifrují pomocí šifrování na straně serveru a kódů spravovaných zákazníkem.
+- Podporovány jsou ["měkké" a "pevné" klíče RSA](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) o velikosti 2080.
 
-Verze Preview má taky tato omezení:
+V současné době máme také tato omezení:
 
-- K dispozici pouze v Středozápadní USA.
+- **K dispozici pouze v Středozápadní USA, Střed USA – jih, Východní USA 2, Východní USA, Západní USA 2, centrálním Kanadě a Severní Evropa.**
 - Disky vytvořené z vlastních imagí šifrovaných pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem musí být šifrované pomocí stejných klíčů spravovaných zákazníkem a musí být ve stejném předplatném.
 - Snímky vytvořené z disků šifrovaných pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem musí být šifrované pomocí stejných klíčů spravovaných zákazníkem.
 - Vlastní image šifrované pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem se nedají použít v galerii sdílených imagí.
-- Vaše Key Vault musí být ve stejném předplatném a oblasti jako klíče spravované zákazníkem.
+- Všechny prostředky, které souvisejí s vašimi klíči spravovanými zákazníky (trezory klíčů Azure, sady šifrování disků, virtuální počítače, disky a snímky), musí být ve stejném předplatném a oblasti.
 - Disky, snímky a image šifrované pomocí klíčů spravovaných zákazníkem se nedají přesunout do jiného předplatného.
+- Pokud k vytvoření sady pro šifrování disků používáte Azure Portal, nemůžete teď snímky použít.
+- Podporovány jsou pouze ["měkké" a "pevné" klíče RSA](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) o velikosti 2080, žádné jiné klíče ani velikosti.
 
-### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>Nastavení Azure Key Vault a DiskEncryptionSet
+### <a name="powershell"></a>PowerShell
 
-1.  Vytvořte instanci Azure Key Vault a šifrovací klíč.
+#### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>Nastavení Azure Key Vault a DiskEncryptionSet
+
+1. Ujistěte se, že máte nainstalovanou nejnovější [verzi Azure PowerShell](/powershell/azure/install-az-ps)a že jste k účtu Azure přihlášení pomocí Connect-AzAccount.
+
+1. Vytvořte instanci Azure Key Vault a šifrovací klíč.
 
     Při vytváření instance Key Vault musíte povolit ochranu po tichém odstranění a vyprázdnění. Obnovitelné odstranění zajistí, že Key Vault obsahuje odstraněný klíč pro dané období uchování (výchozí hodnota je 90 den). Vyčištění ochrany zajišťuje, že odstraněný klíč nebude možné trvale odstranit, dokud doba uchování neuplyne. Tato nastavení chrání před ztrátou dat kvůli náhodnému odstranění. Tato nastavení jsou povinná při použití Key Vault k šifrování spravovaných disků.
 
@@ -103,15 +110,18 @@ Verze Preview má taky tato omezení:
 
 1.  Udělte DiskEncryptionSet prostředku přístup k trezoru klíčů.
 
+    > [!NOTE]
+    > V případě, že Azure může v Azure Active Directory vytvořit identitu vašeho DiskEncryptionSetu, může to několik minut trvat. Pokud při spuštění následujícího příkazu dojde k chybě, například "Nejde najít objekt služby Active Directory", počkejte pár minut a zkuste to znovu.
+    
     ```powershell
     $identity = Get-AzADServicePrincipal -DisplayName myDiskEncryptionSet1  
      
     Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $des.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
      
-    New-AzRoleAssignment -ResourceName $keyVaultName -ResourceGroupName $ResourceGroupName -ResourceType "Microsoft.KeyVault/vaults" -  ObjectId $des.Identity.PrincipalId -RoleDefinitionName "Reader" 
+    New-AzRoleAssignment -ResourceName $keyVaultName -ResourceGroupName $ResourceGroupName -ResourceType "Microsoft.KeyVault/vaults" -ObjectId $des.Identity.PrincipalId -RoleDefinitionName "Reader" 
     ```
 
-### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Vytvoření virtuálního počítače pomocí Image Marketplace, šifrování OS a datových disků pomocí klíčů spravovaných zákazníkem
+#### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Vytvoření virtuálního počítače pomocí Image Marketplace, šifrování OS a datových disků pomocí klíčů spravovaných zákazníkem
 
 ```powershell
 $VMLocalAdminUser = "yourVMLocalAdminUserName"
@@ -149,7 +159,7 @@ $VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name $($VMName +"DataDis
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine -Verbose
 ```
 
-### <a name="create-an-empty-disk-encrypted-using-server-side-encryption-with-customer-managed-keys-and-attach-it-to-a-vm"></a>Vytvořte prázdný disk zašifrovaný pomocí šifrování na straně serveru s použitím klíčů spravovaných zákazníkem a připojte ho k virtuálnímu počítači.
+#### <a name="create-an-empty-disk-encrypted-using-server-side-encryption-with-customer-managed-keys-and-attach-it-to-a-vm"></a>Vytvořte prázdný disk zašifrovaný pomocí šifrování na straně serveru s použitím klíčů spravovaných zákazníkem a připojte ho k virtuálnímu počítači.
 
 ```PowerShell
 $vmName = "yourVMName"
@@ -172,6 +182,10 @@ Update-AzVM -ResourceGroupName $rgName -VM $vm
 
 ```
 
+> [!IMPORTANT]
+> Klíče spravované zákazníkem spoléhají na spravované identity prostředků Azure, což je funkce Azure Active Directory (Azure AD). Při konfiguraci klíčů spravovaných zákazníkem se spravovaná identita automaticky přiřadí k vašim prostředkům v rámci pokrývání. Pokud později přesunete předplatné, skupinu prostředků nebo spravovaný disk z jednoho adresáře služby Azure AD do jiného, nepřesune se do nového tenanta spravovaná identita přidružená ke spravovaným diskům, takže klíče spravované zákazníkem už možná nebudou fungovat. Další informace najdete v tématu [přenos předplatného mezi adresáři služby Azure AD](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).
+
+[!INCLUDE [virtual-machines-disks-encryption-portal](../../../includes/virtual-machines-disks-encryption-portal.md)]
 
 > [!IMPORTANT]
 > Klíče spravované zákazníkem spoléhají na spravované identity prostředků Azure, což je funkce Azure Active Directory (Azure AD). Při konfiguraci klíčů spravovaných zákazníkem se spravovaná identita automaticky přiřadí k vašim prostředkům v rámci pokrývání. Pokud později přesunete předplatné, skupinu prostředků nebo spravovaný disk z jednoho adresáře služby Azure AD do jiného, nepřesune se do nového tenanta spravovaná identita přidružená ke spravovaným diskům, takže klíče spravované zákazníkem už možná nebudou fungovat. Další informace najdete v tématu [přenos předplatného mezi adresáři služby Azure AD](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).

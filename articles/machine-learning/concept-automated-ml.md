@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: c4177e4310be3e03b64c260d88239de71f70c17a
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 778b369e08ff6b0c6e4075c5a8d3d2a234bde70e
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720136"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894886"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co je automatické machine learning?
 
@@ -95,7 +95,7 @@ V každém automatizovaném experimentu Machine Learning se vaše data automatic
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>Pokročilý předzpracování: volitelné featurization
 
-K dispozici jsou také další rozšířené předzpracování a featurization, například chybějící hodnoty imputac, Encoding a transformes. [Přečtěte si další informace o tom, co je zahrnuté featurization](how-to-create-portal-experiments.md#preprocess). Povolit toto nastavení pomocí:
+K dispozici jsou také další rozšířené předzpracování a featurization, například data guardrails, Encoding a transformes. [Přečtěte si další informace o tom, co je zahrnuté featurization](how-to-create-portal-experiments.md#preprocess). Povolit toto nastavení pomocí:
 
 + Azure Machine Learning Studio: [pomocí těchto kroků](how-to-create-portal-experiments.md)v části **spuštění konfigurace** vyberte **Nastavení zobrazení featurization** .
 
@@ -161,7 +161,7 @@ Přečtěte si další informace a podívejte se na příklad [automatizovaného
 
 * detekce svátků a featurization
 * DNN (auto-ARIMA, Prophet, ForecastTCN)
-* řada podpory modelů prostřednictvím seskupení
+* mnoho modelů podporuje seskupení
 * křížové ověření pro návratové zdroje
 * konfigurovatelné prodlevy
 * souhrnné funkce kumulovaných oken

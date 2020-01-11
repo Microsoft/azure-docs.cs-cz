@@ -7,34 +7,34 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
-ms.openlocfilehash: 800182498ab77993d0861c9b5383e0d71b302b6f
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 5604b42e1611830f3aaea9ae180cdb8142ab0942
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091557"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887185"
 ---
-# <a name="scenario-timeouts-with-hbase-hbck-command-in-azure-hdinsight"></a>Scénář: Vypršení časových limitů s příkazem ' HBA hbck ' ve službě Azure HDInsight
+# <a name="scenario-timeouts-with-hbase-hbck-command-in-azure-hdinsight"></a>Scénář: vypršení časových limitů s příkazem ' HBA hbck ' ve službě Azure HDInsight
 
 Tento článek popisuje postup řešení potíží a možná řešení potíží při komunikaci s clustery Azure HDInsight.
 
 ## <a name="issue"></a>Problém
 
-Při opravě přiřazení oblastí `hbase hbck` dojde k vypršení časového limitu pomocí příkazu.
+Při odstraňování přiřazení oblastí dojde k vypršení časového limitu u `hbase hbck` příkazu.
 
 ## <a name="cause"></a>Příčina
 
-Možnou příčinou potíží s vypršením časového limitu `hbck` při použití příkazu může být, že několik oblastí je ve stavu "v přechodu" po dlouhou dobu. Tyto oblasti můžete zobrazit v uživatelském rozhraní HBase Master v režimu offline. Vzhledem k tomu, že se snaží přejít velký počet oblastí, HBase Master pravděpodobně vyprší časový limit a nebude možné tyto oblasti převést zpět do stavu online.
+Možnou příčinou potíží s vypršením časového limitu při použití `hbck` příkazu může být, že po dlouhou dobu je ve stavu "v přechodu" několik oblastí. Tyto oblasti můžete zobrazit v uživatelském rozhraní HBase Master v režimu offline. Vzhledem k tomu, že se snaží přejít velký počet oblastí, HBase Master pravděpodobně vyprší časový limit a nebude možné tyto oblasti převést zpět do stavu online.
 
-## <a name="resolution"></a>Řešení
+## <a name="resolution"></a>Rozlišení
 
 1. Přihlaste se ke clusteru HDInsight HBA pomocí SSH.
 
-1. Spusťte `hbase zkcli` příkaz pro připojení pomocí Apache Zookeeper Shell.
+1. Spuštěním příkazu `hbase zkcli` se připojte pomocí prostředí Apache ZooKeeper Shell.
 
-1. Spusťte `rmr /hbase/regions-in-transition` příkaz `rmr /hbase-unsecure/regions-in-transition` nebo.
+1. Spusťte příkaz `rmr /hbase/regions-in-transition` nebo `rmr /hbase-unsecure/regions-in-transition`.
 
-1. Ukončete prostředí pomocí `exit`příkazu. `hbase zkcli`
+1. Ukončete z `hbase zkcli` Shell pomocí příkazu `exit`.
 
 1. V uživatelském rozhraní Apache Ambari restartujte službu Active HBase Master.
 
@@ -48,6 +48,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 - Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-- Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+- Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-- Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+- Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

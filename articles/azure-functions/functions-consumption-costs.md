@@ -3,12 +3,12 @@ title: Odhad nákladů na plán spotřeby v Azure Functions
 description: Naučte se, jak lépe odhadnout náklady, které vám mohou vzniknout při spuštění aplikace Function App v plánu spotřeby v Azure.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 38a3435ddbc6e7cce5d18c99e227d405fdc2e7dd
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 6a68069ab9af54c1c8cfaf6c20727181e48ba1ec
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613054"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890322"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Odhad nákladů na plán spotřeby
 
@@ -22,7 +22,7 @@ Existují tři typy hostujících plánů pro aplikaci, která běží v Azure F
 
 Zvolili jste plán, který nejlépe podporuje výkon vaší funkce a požadavky na náklady. Další informace najdete v tématu [škálování Azure functions a hostování](functions-scale.md).
 
-Tento článek se zabývá pouze plánem spotřeby, protože výsledkem tohoto plánu jsou variabilní náklady. 
+Tento článek se zabývá pouze plánem spotřeby, protože výsledkem tohoto plánu jsou variabilní náklady. Tento článek nahrazuje článek [Nejčastější dotazy týkající se fakturace za cenu plánu spotřeby](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ) .
 
 Durable Functions může také běžet v plánu spotřeby. Další informace o nákladových faktorech při použití Durable Functions najdete v tématu [Durable Functions fakturaci](./durable/durable-functions-billing.md).
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: 262afd00428c61d828837fd4692fd4fe110448c8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4d729a0117c7c409d1a3e0c3fd440aed96153203
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931796"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893323"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Kopírování dat z Amazon RedShift pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -40,7 +40,7 @@ Konkrétně tento konektor Amazon RedShift podporuje načítání dat z RedShift
 > [!TIP]
 > Abyste dosáhli nejlepšího výkonu při kopírování velkých objemů dat z RedShift, zvažte použití integrovaného Redshiftu pro uvolnění prostřednictvím Amazon S3. Podrobnosti najdete v tématu věnovaném [kopírování dat z oddílu Amazon RedShift pomocí uvolnění](#use-unload-to-copy-data-from-amazon-redshift) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud kopírujete data do místního úložiště dat pomocí [Integration runtime](create-self-hosted-integration-runtime.md)v místním prostředí, udělte přístup ke clusteru Amazon RedShift Integration runtime (použijte IP adresu počítače). Pokyny najdete v tématu [autorizace přístupu ke clusteru](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) .
 * Pokud kopírujete data do úložiště dat Azure, přečtěte si téma [rozsahy IP adres datového centra Azure](https://www.microsoft.com/download/details.aspx?id=41653) pro výpočetní IP adresu a rozsahy SQL používané datovými centry Azure.
@@ -222,7 +222,7 @@ Při kopírování dat z Amazon RedShift se z datových typů Amazon RedShift po
 | BOOLEAN |Řetězec |
 | CHAR |Řetězec |
 | DATE (Datum) |Datum a čas |
-| DESÍTKOVÉ |Decimal |
+| NOTACI |Decimal |
 | DOUBLE PRECISION |Double |
 | INTEGER |Datový typ Int32 |
 | REÁLNÉ |Jednoduchá |
@@ -236,4 +236,4 @@ Při kopírování dat z Amazon RedShift se z datových typů Amazon RedShift po
 Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

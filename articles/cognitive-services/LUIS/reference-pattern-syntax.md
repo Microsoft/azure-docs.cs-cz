@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: e1393b02948f2d86329263504d582fe78a474377
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 696f4bdc22bed01a4b5be8bff63ade482a8dbe0a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974338"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890259"
 ---
 # <a name="pattern-syntax"></a>Syntaxe vzoru
 
@@ -33,7 +33,7 @@ Syntaxe vzoru podporuje následující syntaxi:
 |entita| {} – složené závorky|2|Kde je tvar {entity-Name}?|
 |volitelné|[] – hranaté závorky<BR><BR>Existuje limit 3 pro vnořování úrovní jakékoli kombinace Optional and Grouping. |2|Otazník je nepovinný [?].|
 |grouping|() – závorky|2|je (a \| b)|
-|nebo| \| – svislá čára (svislá čára)<br><br>U svislých pruhů (nebo) v jedné skupině je povolený limit 2. |-|Kde je tvar ({Form-Name-short} &#x7c; {Form-Name-Long} &#x7c; {Form-Number})|
+|– nebo –| \| – svislá čára (svislá čára)<br><br>U svislých pruhů (nebo) v jedné skupině je povolený limit 2. |-|Kde je tvar ({Form-Name-short} &#x7c; {Form-Name-Long} &#x7c; {Form-Number})|
 |začátek a/nebo konec utterance|^ – blikající kurzor|-|^ začátek utterance<br>utterance je hotové ^<br>^ striktní shoda literálu celého utterance s {Number} entitou ^|
 
 ## <a name="nesting-syntax-in-patterns"></a>Syntaxe vnořování ve vzorcích
@@ -142,7 +142,7 @@ Interpunkční znaménka (`?`, `!`, `.`) by měla být ignorována a je třeba j
 Další informace o vzorcích:
 
 * [Postup přidání vzorů](luis-how-to-model-intent-pattern.md)
-* [Postup přidání vzoru. kterákoli entita](luis-how-to-add-entities.md##add-a-patternany-entity)
+* [Postup přidání vzoru. kterákoli entita](luis-how-to-add-entities.md#add-a-patternany-entity)
 * [Koncepty vzorů](luis-concept-patterns.md)
 
 Zjistěte, jak je vrácen [mínění](luis-reference-prebuilt-sentiment.md) v odpovědi. JSON.

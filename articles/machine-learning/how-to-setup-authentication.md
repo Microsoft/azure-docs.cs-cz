@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: c3da9c6a49fd79946d62b0319bead1bd721f3aa6
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ce85c45d80a776af84a0987cfbc3f496c2bbb72b
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536704"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893955"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -170,7 +170,8 @@ ws.get_details()
 
 Instanční objekt vytvořený v krocích výše se dá použít taky k ověření [REST API](https://docs.microsoft.com/rest/api/azureml/)Azure Machine Learning. Použijete [tok udělení přihlašovacích údajů klienta](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)Azure Active Directory, který umožňuje volání mezi službami pro ověřování bez periferních procesů v automatizovaných pracovních postupech. Příklady jsou implementovány pomocí [knihovny ADAL](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) v Pythonu a Node. js, ale můžete také použít jakoukoli Open Source knihovnu, která podporuje OpenID Connect 1,0. 
 
-> ! ZNAČTE MSAL. js je novější knihovna než ADAL, ale ověřování pomocí služby nemůžete použít s přihlašovacími údaji klienta v MSAL. js, protože se primárně jedná o knihovnu na straně klienta určenou pro interaktivní nebo uživatelské ověřování vázané na konkrétního uživatele. Pro vytváření automatizovaných pracovních postupů s REST API doporučujeme použít ADAL, jak vidíte níže.
+> [!NOTE]
+> MSAL. js je novější knihovna než ADAL, ale ověřování pomocí služby nemůžete použít s přihlašovacími údaji klienta v MSAL. js, protože se primárně jedná o knihovnu na straně klienta určenou pro interaktivní nebo uživatelské ověřování vázané na konkrétního uživatele. Pro vytváření automatizovaných pracovních postupů s REST API doporučujeme použít ADAL, jak vidíte níže.
 
 ### <a name="nodejs"></a>Node.js
 
@@ -268,15 +269,19 @@ aci_config = AciWebservice.deploy_configuration(cpu_cores = 1,
                                                 auth_enable=True)
 ```
 
-Pak můžete použít vlastní konfiguraci ACI v nasazení pomocí nadřazené `WebService` třídy.
+Pak můžete použít vlastní konfiguraci ACI v nasazení pomocí třídy `Model`.
 
 ```python
-from azureml.core.webservice import Webservice
+from azureml.core.model import Model, InferenceConfig
 
-aci_service = Webservice.deploy_from_image(deployment_config=aci_config,
-                                           image=image,
-                                           name="aci_service_sample",
-                                           workspace=ws)
+
+inference_config = InferenceConfig(entry_script="score.py",
+                                   environment=myenv)
+aci_service = Model.deploy(workspace=ws,
+                       name="aci_service_sample",
+                       models=[model],
+                       inference_config=inference_config,
+                       deployment_config=aci_config)
 aci_service.wait_for_deployment(True)
 ```
 

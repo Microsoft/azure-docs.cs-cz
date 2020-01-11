@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/07/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 8070e209910425f9baa0ae81aca349a067c70f76
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 68c50d3455c0ed240fa62532818a0b07b39ec772
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658538"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889526"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrace do služby Azure Kubernetes (AKS)
 
@@ -87,9 +87,9 @@ Při migraci clusterů máte pravděpodobně připojené externí služby Azure.
 
 ## <a name="ensure-valid-quotas"></a>Zajištění platných kvót
 
-Vzhledem k tomu, že během migrace budou do svého předplatného nasazené další virtuální počítače, měli byste ověřit, že vaše kvóty a limity jsou pro tyto prostředky dostatečné. Možná budete muset požádat o zvýšení [kvóty vCPU](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
+Vzhledem k tomu, že během migrace budou do svého předplatného nasazené další virtuální počítače, měli byste ověřit, že vaše kvóty a limity jsou pro tyto prostředky dostatečné. Možná budete muset požádat o zvýšení [kvóty vCPU](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests).
 
-Možná budete muset požádat o zvýšení [kvót sítě](https://docs.microsoft.com/azure/azure-supportability/networking-quota-requests) , abyste se ujistili, že nevyčerpáte IP adresy. Další informace najdete v tématu [sítě a rozsahy IP adres pro AKS](https://docs.microsoft.com/azure/aks/configure-kubenet) .
+Možná budete muset požádat o zvýšení [kvót sítě](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests) , abyste se ujistili, že nevyčerpáte IP adresy. Další informace najdete v tématu [sítě a rozsahy IP adres pro AKS](https://docs.microsoft.com/azure/aks/configure-kubenet) .
 
 Další informace najdete v tématu [omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Pokud chcete zjistit aktuální kvóty, v Azure Portal v okně pro [předplatné](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)vyberte své předplatné a pak vyberte **využití + kvóty**.
 

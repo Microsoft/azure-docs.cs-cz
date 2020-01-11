@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: dec5d1c7c7664bf72d92e5aca4333ba64db26d02
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 9ee989a079366a470d086a8b931685a6c1dbc757
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671906"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889351"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurace aplikace pro Windows Java pro Azure App Service
 
@@ -46,7 +46,7 @@ Další informace najdete v tématu [protokoly streamování v Cloud Shell](trou
 
 Povolte [protokolování aplikací](troubleshoot-diagnostic-logs.md#enable-application-logging-windows) prostřednictvím Azure Portal nebo pomocí [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) a nakonfigurujte App Service tak, aby se do místního systému souborů nebo do služby Azure Blob Storage napsaly standardní a standardní chybové proudy konzolové aplikace. Protokolování do místní instance systému souborů App Service je po konfiguraci zakázáno 12 hodin. Pokud budete potřebovat delší dobu uchování, nakonfigurujte aplikaci tak, aby zapisovala výstup do kontejneru úložiště objektů BLOB. Protokoly aplikací Java a Tomcat najdete v adresáři */Logfiles/Application/* .
 
-Pokud vaše aplikace používá pro trasování [Logback](https://logback.qos.ch/) nebo [log4j](https://logging.apache.org/log4j) , můžete tato trasování přepošlete pro účely revize do Azure Application Insights pomocí pokynů pro konfiguraci protokolovacího rozhraní v tématu [prozkoumávání protokolů trasování Java v Application Insights ](/azure/application-insights/app-insights-java-trace-logs).
+Pokud vaše aplikace používá pro trasování [Logback](https://logback.qos.ch/) nebo [log4j](https://logging.apache.org/log4j) , můžete tyto trasování přepošlete pro účely revize do Azure Application Insights pomocí pokynů pro konfiguraci protokolovacího rozhraní v tématu [prozkoumat protokoly trasování Java v Application Insights](/azure/application-insights/app-insights-java-trace-logs).
 
 
 ## <a name="customization-and-tuning"></a>Přizpůsobení a ladění
@@ -209,7 +209,7 @@ V této části se dozvíte, jak připojit aplikace Java nasazené na Azure App 
 
 Tyto pokyny platí pro všechna databázová připojení. Zástupné symboly budete muset vyplnit pomocí názvu třídy ovladače zvolené databáze a souboru JAR. Poskytuje se tabulka s názvy tříd a stahování ovladačů pro běžné databáze.
 
-| Databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
+| databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [Stáhnout](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Stáhnout](https://dev.mysql.com/downloads/connector/j/) (vyberte "nezávislé na platformě") |
@@ -313,9 +313,9 @@ Vývojáři mohou stáhnout provozní edici Azul Zulu Enterprise JDK pro místn�
 
 Podpora produktů pro [JDK Zulu s podporou Azure Azul](https://www.azul.com/downloads/azure-only/zulu/) je dostupná prostřednictvím Microsoftu při vývoji pro Azure nebo [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) s [kvalifikovaným plánem podpory Azure](https://azure.microsoft.com/support/plans/).
 
-### <a name="runtime-support"></a>Podpora modulu runtime
+### <a name="runtime-support"></a>Podpora modulu CLR
 
-Vývojáři mohou [otevřít problém](/azure/azure-supportability/how-to-create-azure-support-request) s Azul Zulu sady JDK prostřednictvím podpory Azure, pokud mají [kvalifikovaný plán podpory](https://azure.microsoft.com/support/plans/).
+Vývojáři mohou [otevřít problém](/azure/azure-portal/supportability/how-to-create-azure-support-request) s Azul Zulu sady JDK prostřednictvím podpory Azure, pokud mají [kvalifikovaný plán podpory](https://azure.microsoft.com/support/plans/).
 
 ## <a name="next-steps"></a>Další kroky
 

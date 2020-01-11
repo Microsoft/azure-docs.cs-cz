@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: 7ff411ae082acfe2d465ab9d3371982b0693c226
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 14daa37a414e814ed6de036bbb625933ce2532e0
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74787042"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888120"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Vytváření a spouštění automatizovaných pracovních postupů založených na událostech pomocí webhooků HTTP v Azure Logic Apps
 
@@ -44,7 +44,7 @@ Další informace najdete v těchto tématech:
 * [Webhooky a předplatná](../logic-apps/logic-apps-workflow-actions-triggers.md#webhooks-and-subscriptions)
 * [Vytváření vlastních rozhraní API, která podporují Webhook](../logic-apps/logic-apps-create-api-app.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -100,7 +100,7 @@ Tato Vestavěná akce zaregistruje adresu URL zpětného volání se zadanou slu
 
    Tento příklad přejmenuje akci na akci Webhooku protokolu HTTP, aby měl krok výstižnější název.
 
-1. Zadejte hodnoty parametrů akce Webhooku protokolu HTTP, které se podobají [parametrům triggeru Webhooku protokolu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger) , které chcete použít pro přihlášení k odběru a zrušení odběru, například:
+1. Zadejte hodnoty parametrů akce Webhooku protokolu HTTP, které se podobají [parametrům triggeru Webhooku protokolu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) , které chcete použít pro přihlášení k odběru a zrušení odběru, například:
 
    ![Zadejte parametry akce Webhooku protokolu HTTP.](./media/connectors-native-webhook/http-webhook-action-parameters.png)
 
@@ -114,7 +114,7 @@ Tato Vestavěná akce zaregistruje adresu URL zpětného volání se zadanou slu
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Další informace o parametrech Trigger a Action, které jsou podobné ostatním, najdete v tématu [parametry Webhooku protokolu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger).
+Další informace o parametrech Trigger a Action, které jsou podobné ostatním, najdete v tématu [parametry Webhooku protokolu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger).
 
 ### <a name="output-details"></a>Podrobnosti výstupu
 
@@ -123,19 +123,19 @@ Zde jsou další informace o výstupech z triggeru nebo akce Webhooku HTTP, kter
 | Název vlastnosti | Typ | Popis |
 |---------------|------|-------------|
 | záhlaví | object | Hlavičky z požadavku |
-| těles | object | Objekt JSON | Objekt s obsahem textu z požadavku |
-| Stavový kód | int | Stavový kód z požadavku |
+| text | object | JSON – objekt | Objekt s obsahem textu z požadavku |
+| stavový kód | int | Stavový kód z požadavku |
 |||
 
 | Kód stavu | Popis |
 |-------------|-------------|
 | 200 | OK |
-| 202 | Přijata |
-| 400 | Chybný požadavek |
+| 202 | Přijato |
+| 400 | Nesprávná žádost |
 | 401 | Neautorizováno |
 | 403 | Forbidden |
 | 404 | Nenalezeno |
-| 500 | Došlo k vnitřní chybě serveru. Došlo k neznámé chybě. |
+| 500 | Vnitřní chyba serveru. Došlo k neznámé chybě. |
 |||
 
 ## <a name="next-steps"></a>Další kroky

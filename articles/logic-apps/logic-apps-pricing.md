@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 80eadcadad58cc126a9213c9e5bc5c65c1eb5c6c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 1c21a84bd9aaa259d0459b4e16c7a62aabaa615d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793416"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896384"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Cenový model pro Azure Logic Apps
 
@@ -29,7 +29,7 @@ Například akce zahrnují:
 
 * Triggery, což jsou speciální akce. Všechny Logic Apps vyžadují Trigger jako první krok.
 * ["Předdefinované" nebo nativní akce](../connectors/apis-list.md#built-in) , jako je například http, volání Azure Functions a API Management atd.
-* Volání [spravovaných konektorů](../connectors/apis-list.md##managed-connectors) , jako je například Outlook 365, Dropbox atd.
+* Volání [spravovaných konektorů](../connectors/apis-list.md#managed-connectors) , jako je například Outlook 365, Dropbox atd.
 * Postup řízení kroků toku, jako jsou smyčky, podmíněné příkazy atd.
 
 [Standardní konektory](../connectors/apis-list.md#managed-connectors) se účtují podle [ceny za konektor Standard](https://azure.microsoft.com/pricing/details/logic-apps). Všeobecně dostupné [podnikové konektory](../connectors/apis-list.md#managed-connectors) se účtují podle [ceny za konektor Enterprise](https://azure.microsoft.com/pricing/details/logic-apps), zatímco konektory Enterprise ve verzi Public Preview se účtují podle [ceny za konektor Standard](https://azure.microsoft.com/pricing/details/logic-apps).

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 304d0615a12871fb4a9610058bc1be0ad6dff806
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6dd0734d39237545b7a9bc2553fcd9dea75b8ee0
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929534"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75892822"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Kopírování dat z DB2 pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -51,7 +51,7 @@ Konkrétně tento konektor DB2 podporuje následující platformy a verze IBM DB
 > - DB2 pro i (AS400): před použitím aktivity kopírování umožněte Power User vytvořit kolekci pro přihlašovacího uživatele. Příkaz: `create collection <username>`
 > - DB2 pro z/OS nebo LUW: použití účtu s vysokou úrovní oprávnění – uživatel nebo správce s oprávněními balíčku a BIND, BINDADD, udělení oprávnění k VEŘEJNÉmu spuštění aktivity kopírování – potřebný balíček se automaticky vytvoří během kopírování. Následně můžete přejít zpět na normálního uživatele pro následné spuštění kopírování.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -222,4 +222,4 @@ Při kopírování dat z DB2 se z datových typů DB2 používají následujíc�
 Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

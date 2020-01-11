@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: fa4e403733c418a4ceff417dd0cf7b54f9409a49
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 50b751d8e4e1a69a34e6421884f8b99c3eeb5924
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151659"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895978"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway – nejčastější dotazy
 
@@ -34,7 +34,7 @@ K více serverům se lze připojovat prostřednictvím prostředí Windows Power
 
 Ne. 
 
-### <a name="what-are-my-cross-premises-connection-options"></a>Jaké jsou možnosti připojení na víc místech?
+### <a name="what-are-my-cross-premises-connection-options"></a>Jaké jsou možnosti připojení mezi různými místy?
 
 Podporovány jsou následující možnosti připojení mezi různými místy:
 
@@ -66,7 +66,7 @@ Brány založené na zásadách implementují sítě VPN založené na zásadác
 
 ### <a name="what-is-a-route-based-dynamic-routing-gateway"></a>Co je to brána založená na směrování (s dynamickým směrováním)?
 
-Brány založené na směrování implementují sítě VPN založené na směrování. Sítě VPN založené na trasách používají ke směrování paketů do příslušných rozhraní tunelových propojení „trasy“ v tabulce předávání IP nebo směrovací tabulce IP. Rozhraní tunelového propojení potom zašifruje nebo dešifruje pakety směřující do tunelových propojení nebo z nich. Zásady nebo selektor provozu pro sítě VPN založené na směrování používají konfiguraci typu any-to-any (se zástupnými znaky).
+Brány založené na směrování implementují sítě VPN založené na směrování. Sítě VPN založené na směrování používají ke směrování paketů do příslušných rozhraní tunelových propojení „trasy“ v tabulce předávání IP nebo směrovací tabulce IP. Rozhraní tunelového propojení potom šifrují nebo dešifrují pakety směřující do tunelových propojení nebo z nich. Zásady nebo selektor provozu pro sítě VPN založené na směrování používají konfiguraci typu any-to-any (se zástupnými znaky).
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Můžu aktualizovat bránu VPN založenou na zásadách tak, aby byla založená na směrování?
 Ne. Typ brány virtuální sítě Azure se nedá změnit ze zásad, které jsou založené na směrování nebo jiným způsobem. Brána se musí odstranit a znovu vytvořit a tento proces trvá přibližně 60 minut. IP adresa brány ani předsdílený klíč (PSK) se nezachovají.

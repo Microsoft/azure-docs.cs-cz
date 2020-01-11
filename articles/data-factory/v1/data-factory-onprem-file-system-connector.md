@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 47dbd28f301009969ae02acfac6f4b272ef608f0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d298c83c0c1a0f33f28644e2e467ad5035300221
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918640"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895668"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Kopírování dat do a z místního systému souborů pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -436,7 +436,7 @@ Následující příklad ukazuje:
 * Propojená služba typu [OnPremisesFileServer](#linked-service-properties).
 * Vstupní datová sada typu [AzureSqlTable](data-factory-azure-sql-connector.md#dataset-properties).
 * Výstupní datová sada typu [sdílení](#dataset-properties)souborů.
-* Kanál s aktivitou kopírování, která používá [SqlSource](data-factory-azure-sql-connector.md##copy-activity-properties) a [FileSystemSink](#copy-activity-properties).
+* Kanál s aktivitou kopírování, která používá [SqlSource](data-factory-azure-sql-connector.md#copy-activity-properties) a [FileSystemSink](#copy-activity-properties).
 
 Ukázka kopíruje data časových řad z tabulky Azure SQL do místního systému souborů každou hodinu. Vlastnosti JSON, které jsou používány v těchto ukázkách, jsou popsány v částech po ukázkách.
 

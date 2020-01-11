@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 03/28/2017
 ms.author: mlearned
 ms.custom: H1Hack27Feb201
-ms.openlocfilehash: 0165ace1d373d267658c78e020356816fb9cc02f
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 317862b694b93de44422ac3c28575c732ffc5be5
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286469"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887916"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>ZASTARALÉ Nejčastější dotazy ke službě kontejneru
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-## <a name="orchestrators"></a>Orchestrátory
+## <a name="orchestrators"></a>Orchestrátoři
 
 ### <a name="which-container-orchestrators-do-you-support-on-azure-container-service"></a>Jaké orchestrátory kontejneru podporujete ve službě Azure Container Service? 
 
@@ -64,7 +64,7 @@ Pokud k nasazení clusteru Kubernetes použijete [příkazy rozhraní příkazov
 Můžete vytvořit cluster s 1, 3 nebo 5 řídicími uzly. Můžete vybrat až 100 uzlů agentů.
 
 > [!IMPORTANT]
-> Pro větší clustery a v závislosti na velikosti virtuálního počítače, kterou jste vybrali pro uzly, může být v rámci vašeho předplatného potřeba zvýšit kvótu pro jádra. Chcete-li požádat o zvýšení kvóty, otevřete bezplatnou [online žádost o zákaznickou podporu](../../azure-supportability/how-to-create-azure-support-request.md). Pokud používáte [bezplatný účet Azure](https://azure.microsoft.com/free/), můžete použít pouze omezený počet výpočetních jader Azure.
+> Pro větší clustery a v závislosti na velikosti virtuálního počítače, kterou jste vybrali pro uzly, může být v rámci vašeho předplatného potřeba zvýšit kvótu pro jádra. Chcete-li požádat o zvýšení kvóty, otevřete bezplatnou [online žádost o zákaznickou podporu](../../azure-portal/supportability/how-to-create-azure-support-request.md). Pokud používáte [bezplatný účet Azure](https://azure.microsoft.com/free/), můžete použít pouze omezený počet výpočetních jader Azure.
 > 
 
 ### <a name="how-do-i-increase-the-number-of-masters-after-a-cluster-is-created"></a>Jak se dá po vytvoření clusteru zvýšit počet hlavních serverů? 
@@ -112,7 +112,7 @@ ssh userName@masterFQDN –A –p 22 
 
 Další informace najdete v [Připojení ke clusteru služby Azure Container Service](../../container-service/kubernetes/container-service-connect.md).
 
-### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>Nefunguje mi překlad názvů DNS ve Windows. Co bych měl/a dělat?
+### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>Nefunguje mi překlad názvů DNS ve Windows. Co mám dělat?
 
 V systému Windows existují známé problémy služby DNS, jejichž opravy jsou stále aktivně odebírány. Ujistěte se prosím, že používáte nejnovější aktualizovanou verzi služby ACS-Engine a Windows (s nainstalovanou [KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) a [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) ), aby vaše prostředí mohlo využívat výhod. Jinak si přečtěte kroky pro zmírnění rizika v následující tabulce:
 

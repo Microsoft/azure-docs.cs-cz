@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 16de1d9fcf86459b6bcadd9d8c372e436aad0915
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 44fcaa0a4292ac86c7371c27f29faf0e7246e9d5
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802940"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894797"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database a řízení přístupu k síti v datovém skladu
 
@@ -47,24 +47,53 @@ Toto nastavení můžete také změnit přes podokno brány firewall po vytvoře
 
 Když je tato možnost nastavená na **on** Azure SQL Server, umožňuje komunikaci ze všech prostředků v rámci hranice Azure, která může nebo nemusí být součástí vašeho předplatného.
 
-V mnoha případech je nastavení **on** přísnější než to, co nejvíc zákazníci chtějí. Můžou chtít nastavit toto nastavení na **vypnuto** a nahradit ho více omezujícími pravidly FIREWALLU protokolu IP nebo Virtual Network pravidly brány firewall. To má vliv na následující funkce:
+V mnoha případech je nastavení **on** přísnější než to, co nejvíc zákazníci chtějí. Můžou chtít nastavit toto nastavení na **vypnuto** a nahradit ho více omezujícími pravidly FIREWALLU protokolu IP nebo Virtual Network pravidly brány firewall. To má vliv na následující funkce, které běží na virtuálních počítačích v Azure, které nejsou součástí vaší virtuální sítě, a proto se k SQL Database připojí přes IP adresu Azure.
 
 ### <a name="import-export-service"></a>Import služby export
+Služba import exportu nefunguje, **umožňuje službám Azure přístup k serveru** nastavenému na off. Problém ale můžete obejít [tak, že ručně spustíte SqlPackage. exe z virtuálního počítače Azure nebo exportujete](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) přímo do kódu pomocí rozhraní DACFx API.
 
-Služba Azure SQL Database import exportu běží na virtuálních počítačích v Azure. Tyto virtuální počítače nejsou ve vaší virtuální síti, a proto při připojování k databázi získají IP adresu Azure. Při odebrání možnosti **umožnit službám Azure přístup k serveru** nebudou mít přístup k databázím tyto virtuální počítače.
-Problém můžete obejít tak, že spustíte BACPAC import nebo export přímo v kódu pomocí rozhraní DACFx API.
+### <a name="data-sync"></a>Synchronizace dat
+Chcete-li použít funkci synchronizace dat s **povoleným přístupem ke službě Azure Services k serveru** na off, je třeba vytvořit jednotlivé položky pravidla brány firewall a [Přidat IP adresy](sql-database-server-level-firewall-rule.md) ze **značky služby SQL** pro oblast hostující databázi **centra** .
+Přidejte tato pravidla brány firewall na úrovni serveru do logických serverů, které hostují databáze **centrálních** i **členských** databází (které mohou být v různých oblastech).
 
-### <a name="sql-database-query-editor"></a>Editor dotazů SQL Database
+Pomocí následujícího skriptu PowerShellu vygenerujte IP adresy odpovídající značce služby SQL pro Západní USA oblast.
+```powershell
+PS C:\>  $serviceTags = Get-AzNetworkServiceTag -Location eastus2
+PS C:\>  $sql = $serviceTags.Values | Where-Object { $_.Name -eq "Sql.WestUS" }
+PS C:\> $sql.Properties.AddressPrefixes.Count
+70
+PS C:\> $sql.Properties.AddressPrefixes
+13.86.216.0/25
+13.86.216.128/26
+13.86.216.192/27
+13.86.217.0/25
+13.86.217.128/26
+13.86.217.192/27
+```
 
-Editor dotazů Azure SQL Database je nasazený na virtuálních počítačích v Azure. Tyto virtuální počítače nejsou ve vaší virtuální síti. Virtuální počítače proto při připojování k databázi získají IP adresu Azure. Při odebrání možnosti **umožnit službám Azure přístup k serveru**nebudou mít tyto virtuální počítače přístup k vašim databázím.
+> [!TIP]
+> Get-AzNetworkServiceTag vrátí globální rozsah pro tag služby SQL navzdory zadání parametru Location. Nezapomeňte ho filtrovat do oblasti, která je hostitelem databáze centra používané skupinou synchronizace.
 
-### <a name="table-auditing"></a>Auditování tabulek
+Všimněte si, že výstup skriptu PowerShellu je v zápisu CIDR (Classless Inter-Domain Routing) a je potřeba ho převést na formát počáteční a koncové IP adresy pomocí [Get-IPrangeStartEnd. ps1,](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) jako je to.
+```powershell
+PS C:\> Get-IPrangeStartEnd -ip 52.229.17.93 -cidr 26                                                                   
+start        end
+-----        ---
+52.229.17.64 52.229.17.127
+```
 
-V současnosti existují dva způsoby, jak povolit auditování na SQL Database. Po povolení koncových bodů služby v Azure SQL Server se auditování tabulek nezdařilo. Zmírnění se omezuje na auditování objektů BLOB.
+Provedením následujících dalších kroků převedete všechny IP adresy z CIDR do počátečního a koncového formátu IP adresy.
 
-### <a name="impact-on-data-sync"></a>Dopad na synchronizaci dat
+```powershell
+PS C:\>foreach( $i in $sql.Properties.AddressPrefixes) {$ip,$cidr= $i.split('/') ; Get-IPrangeStartEnd -ip $ip -cidr $cidr;}                                                                                                                
+start          end
+-----          ---
+13.86.216.0    13.86.216.127
+13.86.216.128  13.86.216.191
+13.86.216.192  13.86.216.223
+```
+Nyní je můžete přidat jako jedinečná pravidla brány firewall a potom nastavit možnost **Povolení služeb Azure přístup k serveru** na off.
 
-Azure SQL Database má funkci synchronizace dat, která se připojuje k vašim databázím pomocí Azure IP. Při použití koncových bodů služby vypnete možnost **Povolit službám Azure přístup k serveru** SQL Database serveru a přerušit funkci synchronizace dat.
 
 ## <a name="ip-firewall-rules"></a>Pravidla brány firewall protokolu IP
 Brána firewall založená na protokolu IP je funkcí služby Azure SQL Server, která zabraňuje všem přístupům k databázovému serveru, dokud explicitně [nepřidáte IP adresy](sql-database-server-level-firewall-rule.md) klientských počítačů.

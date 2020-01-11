@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: e70cd6d7745b2754bdda6992c587c5c72643869b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0cc9328fa08f7e9125ecb41576c67f95382bc1bf
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74912508"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75892378"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Kopírování dat ze zdroje OData pomocí Azure Data Factory
 
@@ -40,7 +40,7 @@ Konkrétně tento konektor OData podporuje:
 - OData verze 3,0 a 4,0.
 - Kopírování dat pomocí jednoho z následujících ověřování: **anonymní**, **základní**, **Windows, systémový** **instanční objekt**a **spravované identity pro prostředky Azure**.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -310,4 +310,4 @@ Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](c
 
 ## <a name="next-steps"></a>Další kroky
 
-Seznam úložišť dat, která aktivitu kopírování, která podporuje jako zdroje a jímky ve službě Azure Data Factory najdete v tématu [podporovaných úložišť dat a formáty](copy-activity-overview.md##supported-data-stores-and-formats).
+Seznam úložišť dat, která aktivitu kopírování, která podporuje jako zdroje a jímky ve službě Azure Data Factory najdete v tématu [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).

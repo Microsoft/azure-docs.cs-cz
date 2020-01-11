@@ -1,25 +1,22 @@
 ---
-title: Nasazení nástroje pro správu – Azure
-description: Postup instalace nástroje uživatelského rozhraní pro správu prostředků virtuálních počítačů s Windows
+title: Nasazení nástroje pro správu pomocí šablony Azure Resource Manager – Azure
+description: Jak nainstalovat nástroj uživatelského rozhraní se šablonou Azure Resource Manager pro správu prostředků virtuálních klientů Windows
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: tutorial
-ms.date: 11/09/2019
+ms.topic: conceptual
+ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: ad0c67cea6a5a9b487cd47aa7c10d10da1438050
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 187c92f8e5b0148577f204f68077c58ea9ab9a3d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384287"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887355"
 ---
-# <a name="tutorial-deploy-a-management-tool"></a>Kurz: nasazení nástroje pro správu
+# <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Nasazení nástroje pro správu pomocí šablony Azure Resource Manager
 
-Nástroj pro správu poskytuje uživatelské rozhraní (UI) pro správu prostředků virtuálních klientů společnosti Microsoft. V tomto kurzu se naučíte, jak nasadit nástroj pro správu a připojit se k němu.
-
->[!NOTE]
->Tyto pokyny se týkají konfigurace specifické pro virtuální počítače s Windows, které se dají použít s existujícími procesy vaší organizace.
+Pokyny v tomto článku vám sdělí, jak nasadit uživatelské rozhraní pomocí šablony Azure Resource Manager.
 
 ## <a name="important-considerations"></a>Důležité informace
 
@@ -33,18 +30,17 @@ Pro následující prohlížeče jsou kompatibilní s nástrojem pro správu:
 - Mozilla Firefox 52,0 nebo novější
 - Safari 10 nebo novější (jenom macOS)
 
-## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>Co potřebujete ke spuštění šablony Azure Resource Manager
+## <a name="what-you-need-to-deploy-the-management-tool"></a>Co potřebujete k nasazení nástroje pro správu
 
-Před nasazením šablony Azure Resource Manager budete potřebovat Azure Active Directoryho uživatele pro nasazení uživatelského rozhraní pro správu. Tento uživatel musí:
+Před nasazením nástroje pro správu budete potřebovat uživatele Azure Active Directory (Azure AD) k vytvoření registrace aplikace a nasazení uživatelského rozhraní pro správu. Tento uživatel musí:
 
 - Máte zakázanou službu Azure Multi-Factor Authentication (MFA)
 - Mít oprávnění k vytváření prostředků ve vašem předplatném Azure
-- Mít oprávnění k vytvoření aplikace služby Azure AD. Pomocí těchto kroků zjistíte, jestli má uživatel [požadovaná oprávnění](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+- Mít oprávnění k vytvoření aplikace služby Azure AD. Pomocí těchto kroků zkontrolujete, jestli má uživatel požadovaná oprávnění, podle pokynů v tématu [požadovaná oprávnění](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
 
-Po nasazení šablony Azure Resource Manager budete chtít spustit uživatelské rozhraní pro správu, které chcete ověřit. Tento uživatel musí:
-- Přiřazení role pro zobrazení nebo úpravy tenanta virtuálních klientů s Windows
+Po nasazení a konfiguraci nástroje pro správu doporučujeme, abyste požádali uživatele, aby spustil uživatelské rozhraní pro správu, aby se zajistilo, že všechno funguje. Uživatel, který spouští uživatelské rozhraní pro správu, musí mít přiřazení role, které jim umožní zobrazit nebo upravit klienta virtuální plochy Windows.
 
-## <a name="run-the-azure-resource-manager-template-to-provision-the-management-ui"></a>Spuštění šablony Azure Resource Manager pro zřízení uživatelského rozhraní pro správu
+## <a name="deploy-the-management-tool"></a>Nasazení nástroje pro správu
 
 Než začnete, ujistěte se, že serverové a klientské aplikace mají souhlas, a to návštěvou na [stránce pro vyjádření souhlasu s virtuálním počítačem s Windows](https://rdweb.wvd.microsoft.com) pro Azure Active Directory (AAD) reprezentované.
 
@@ -52,26 +48,24 @@ Pomocí těchto pokynů nasaďte šablonu Azure Resource Management:
 
 1. Přejít na [stránku GitHub Azure RDS-Templates](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy).
 2. Nasaďte šablonu do Azure.
-    - Pokud nasazujete v podnikovém předplatném, přejděte dolů a vyberte **nasadit do Azure**. Viz [doprovodné materiály k parametrům šablon](#guidance-for-template-parameters).
+    - Pokud nasazujete v podnikovém předplatném, přejděte dolů a vyberte **nasadit do Azure**. 
     - Pokud nasazujete v rámci předplatného poskytovatele Cloud Solution Provider, při nasazení do Azure postupujte podle těchto pokynů:
         1. Posuňte se dolů a klikněte pravým tlačítkem myši na **nasadit do Azure**a pak vyberte **Kopírovat umístění odkazu**.
         2. Otevřete textový editor, jako je Poznámkový blok, a vložte odkaz sem.
         3. Hned po <https://portal.azure.com/> a před hashtagem (#) zadejte znak hvězdička (@) následovaný názvem domény klienta. Tady je příklad formátu: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
         4. Přihlaste se k Azure Portal jako uživatel s oprávněním správce/Přispěvatel k předplatnému poskytovatele Cloud Solution Provider.
         5. Vložte odkaz, který jste zkopírovali do textového editoru, do adresního řádku.
-
-### <a name="guidance-for-template-parameters"></a>Doprovodné materiály k parametrům šablon
-Tady je postup, jak zadat parametry pro konfiguraci nástroje:
-
-- Pro parametr **isServicePrincipal** vyberte false ( **NEPRAVDA**).
-- Pro přihlašovací údaje zadejte přihlašovací údaje Azure Active Directory se zakázaným službou Multi-Factor Authentication. Tyto přihlašovací údaje budou ty, které používáte pro přihlášení k Azure a vytvoření prostředků Azure AD a prostředků webové aplikace Azure. Další informace najdete v tématu [co potřebujete ke spuštění šablony Azure Resource Manager](#what-you-need-to-run-the-azure-resource-manager-template).
-- Pro **ApplicationName**použijte jedinečný název aplikace, který se zaregistruje ve vašem Azure Active Directory. Tento název se použije taky pro adresu URL webové aplikace. Můžete například použít název, například "Apr3UX".
+3. Při zadávání parametrů udělejte toto:
+    - Pro parametr **isServicePrincipal** vyberte false ( **NEPRAVDA**).
+    - Pro přihlašovací údaje zadejte svoje přihlašovací údaje služby Azure AD se zakázaným ověřováním službou Multi-Factor Authentication. Tyto přihlašovací údaje budou použity k vytvoření aplikace služby Azure AD a prostředků Azure. Další informace najdete v tématu [co potřebujete k nasazení nástroje pro správu](#what-you-need-to-deploy-the-management-tool).
+    - Pro **ApplicationName**použijte jedinečný název aplikace, který se zaregistruje ve vašem Azure Active Directory. Tento název se použije taky pro adresu URL webové aplikace. Můžete například použít název, například "Apr3UX".
+4. Jakmile zadáte parametry, přijměte podmínky a zvolte **koupit**.
 
 ## <a name="provide-consent-for-the-management-tool"></a>Poskytnutí souhlasu pro nástroj pro správu
 
 Po dokončení šablony Azure Resource Manager GitHubu najdete v Azure Portal skupinu prostředků, která obsahuje dvě aplikační služby společně s jedním plánem služby App Service.
 
-Předtím, než se přihlásíte a použijete nástroj pro správu, musíte poskytnout souhlas s novou Azure Active Directory aplikací, která je přidružená k nástroji pro správu. Poskytnutím souhlasu umožníte nástroji pro správu provádět volání správy virtuálních počítačů s Windows jménem uživatele, který je přihlášený k nástroji.
+Před přihlášením a použitím nástroje pro správu musíte poskytnout souhlas nové aplikace Azure AD přidružené k nástroji pro správu. Poskytnutí souhlasu umožňuje nástroji pro správu provést volání správy virtuálních počítačů s Windows jménem uživatele, který je aktuálně přihlášený k nástroji.
 
 ![Snímek obrazovky zobrazující oprávnění, která jsou k dispozici při souhlasu nástroje pro správu uživatelského rozhraní.](media/management-ui-delegated-permissions.png)
 
@@ -102,18 +96,15 @@ Při spuštění nástroje postupujte podle těchto pokynů:
 1. Vyberte prostředek služby Azure App Services s názvem, který jste zadali v šabloně (například Apr3UX), a přejděte na adresu URL, která je k ní přidružená. například <https://rdmimgmtweb-210520190304.azurewebsites.net>.
 2. Přihlaste se pomocí svých přihlašovacích údajů k virtuálnímu počítači s Windows.
 3. Po zobrazení výzvy k výběru skupiny tenantů vyberte v rozevíracím seznamu **výchozí skupinu tenantů** .
-4. Když vyberete výchozí skupinu tenantů, měla by se zobrazit nabídka na pravé straně okna. V této nabídce najděte název skupiny tenantů a vyberte ji.
-
-> [!NOTE]
-> Pokud máte vlastní skupinu tenantů, zadejte název ručně místo volby v rozevíracím seznamu.
+4. Když vyberete **výchozí skupinu tenantů**, měla by se zobrazit nabídka na levé straně okna. V této nabídce najděte název skupiny tenantů a vyberte ji.
+  
+  > [!NOTE]
+  > Pokud máte vlastní skupinu tenantů, zadejte název ručně místo volby v rozevíracím seznamu.
 
 ## <a name="report-issues"></a>Nahlásit problémy
 
-Pokud narazíte na nějaké problémy s nástrojem pro správu nebo jinými nástroji pro virtuální počítače s Windows, pořiďte si pokyny v [šablonách ARM pro vzdálenou plochu](https://github.com/Azure/RDS-Templates/blob/master/README.md) , abyste je nahlásili na GitHubu.
+Pokud jste nahlásili mezi problémy s nástrojem pro správu nebo jinými nástroji pro virtuální počítače s Windows, postupujte podle pokynů v části [šablony Azure Resource Manager pro vzdálenou plochu](https://github.com/Azure/RDS-Templates/blob/master/README.md) , které jim podávají oznámení na GitHubu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak nasadit nástroj pro správu a připojit se k němu, se dozvíte, jak pomocí Azure Service Health monitorovat problémy se službami a Poradce pro stav.
-
-> [!div class="nextstepaction"]
-> [Kurz nastavení výstrah služby](./set-up-service-alerts.md)
+Teď, když jste se naučili, jak nasadit a připojit se k nástroji pro správu, se dozvíte, jak pomocí služby Azure Services monitorovat problémy se službou a Poradce pro stav. Další informace najdete v našem [kurzu nastavení výstrah služby](./set-up-service-alerts.md).

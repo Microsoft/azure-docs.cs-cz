@@ -9,13 +9,13 @@ services: digital-twins
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
-ms.date: 11/12/2019
-ms.openlocfilehash: 621b02363310ccc6f3dc1b32807874307210e964
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/10/2020
+ms.openlocfilehash: 6c9c5df27f4a361e534bac2fe21b2c470f8d0186
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861128"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895608"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Rychlý start: Najít dostupné místnosti s použitím digitálních Dvojčat Azure
 
@@ -23,7 +23,7 @@ Služba Azure digitální dvojče umožňuje znovu vytvořit digitální obráze
 
 Tento rychlý start využívá [pár ukázek .NET](https://github.com/Azure-Samples/digital-twins-samples-csharp) digitalizaci imaginární kancelářskou budovu. To se dozvíte, jak se mají najít místnosti k dispozici v budovy. S digitální dvojče můžete přidružit mnoho senzorů s vaším prostředím. Také můžete zjistit při optimální pomocí simulovaných senzorů k oxidu uhličitého air kvalitu dostupné místo. Jednu z ukázkových aplikací generuje náhodné senzor data pro lepší vizualizaci v tomto scénáři.
 
-Následující video shrnuje nastavení pro rychlý start:
+Následující video shrnuje nastavení rychlého startu:
 
 >[!VIDEO https://www.youtube.com/embed/1izK266tbMI]
 
@@ -83,11 +83,11 @@ Prostorový graf zřizován s použitím [provisionSample.yaml](https://github.c
 
 1. Zřizování krok může trvat několik minut. Také zřídí služby IoT Hub v rámci vaší digitální dvojče instance. Cyklicky projde až do služby IoT Hub se zobrazuje stav =`Running`.
 
-    [![zřídit vzorový stav = spuštěno.](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png#lightbox)
+    [![zřídit vzorový stav = spuštěno.](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-provision-sample.png)](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-provision-sample.png#lightbox)
 
 1. Na konci provádění, zkopírujte `ConnectionString` zařízení pro použití v ukázkovém simulátor zařízení. Zkopírujte pouze řetězec uvedených v tomto obrázku.
 
-    [![zkopírování připojovacího řetězce](media/quickstart-view-occupancy-dotnet/digital-twins-connection-string.png)](media/quickstart-view-occupancy-dotnet/digital-twins-connection-string.png#lightbox)
+    [![zkopírování připojovacího řetězce](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-connection-string.png)](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-connection-string.png#lightbox)
 
     >[!TIP]
     > Můžete zobrazit a upravit pomocí vaší prostorový graf [prohlížeč Azure digitální dvojče grafu](https://github.com/Azure/azure-digital-twins-graph-viewer).
@@ -104,7 +104,7 @@ Pomocí následujících kroků Sestavte a spusťte aplikaci zařízení simulá
 1. Upravit [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) aktualizovat **DeviceConnectionString** s předchozím `ConnectionString`. Aktualizovaný soubor uložte.
 1. Spustit `dotnet run` aby začalo odesílat data ze senzorů. Pošle se do digitálních vláken Azure, jak je znázorněno na následujícím obrázku.
 
-     [![připojení zařízení](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png#lightbox)
+     [![připojení zařízení](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-device-connectivity.png#lightbox)
 
 1. Umožní simulátor spustit tak, abyste mohli zobrazit výsledky souběžně s akce dalšího kroku. Toto okno zobrazuje simulovaných senzorů data odeslaná do digitální dvojče. Další krok dotazy v reálném čase, které se mají najít místnosti k dispozici s novou vzduchu.
 
@@ -123,7 +123,7 @@ Ukázka senzor simuluje hodnoty náhodných dat pro dvě senzory. Jsou to pohybu
    - `Room is available and air is fresh`
    - `Room is not available or air quality is poor`
 
-     [![získat dostupné prostory s čerstvým vzduchem](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png)](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png#lightbox)
+     [![získat dostupné prostory s čerstvým vzduchem](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-get-available.png)](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-get-available.png#lightbox)
 
 Chcete-li pochopit, co se stalo v tomto rychlém startu a jaká rozhraní API byla volána, otevřete [Visual Studio Code](https://code.visualstudio.com/Download) v projektu pracovního prostoru kód v `digital-twins-samples-csharp`. Použijte následující příkaz:
 

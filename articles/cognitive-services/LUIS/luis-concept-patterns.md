@@ -1,7 +1,7 @@
 ---
 title: Vzorce – předpověď pro LUIS
 titleSuffix: Azure Cognitive Services
-description: Vzor umožňuje získat vyšší přesnost pro záměru bez zadání projevy mnoho více.
+description: Vzory umožňují dosáhnout určení záměru s větší přesností bez nutnosti poskytovat mnoho dalších promluv.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,15 +11,15 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 32b9b42ee0962353405616e501de95b19e40ea1a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 6c1b548de25369c162b4a08dfa20fce62c17f99f
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280859"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890289"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Vzory zvyšte přesnost předpovědi
-Vzory jsou navržené pro zlepšení přesnosti, když několik projevy jsou velmi podobné.  Vzor umožňuje získat vyšší přesnost pro záměru bez zadání projevy mnoho více. 
+Vzory jsou navržené pro zlepšení přesnosti, když několik projevy jsou velmi podobné.  Vzory umožňují dosáhnout určení záměru s větší přesností bez nutnosti poskytovat mnoho dalších promluv. 
 
 ## <a name="patterns-solve-low-intent-confidence"></a>Způsoby řešení s nízkou spolehlivostí záměru
 Vezměte v úvahu aplikaci lidských zdrojů, která generuje sestavy v organizační grafu ve vztahu k zaměstnance. Zadaný název a relace zaměstnance, LUIS vrátí zaměstnanci zahrnuté. Vezměte v úvahu zaměstnanec Petr, se správcem název Alice a tým s názvem podřízené uzly: Michael Milena a Carl.
@@ -50,7 +50,7 @@ Vzor je primárně určen pro lepší předpověď záměrů a rolí. _Vzor. Ka�
 Neočekává se, že se lepší předpověď entity zobrazí, pokud sbalíte více projevy do jediného vzoru. Aby bylo možné jednoduché entity aktivovat, je nutné přidat projevy nebo použít entity seznamu jinak se váš vzor neaktivuje.
 
 ## <a name="patterns-use-entity-roles"></a>Vzory použít entitu role
-Pokud jsou dvě nebo více entit ve vzorci kontextově závislé, vzory používají [role](luis-concept-roles.md) entit k extrakci kontextových informací o entitách.  
+Pokud souvisí kontextově dva nebo více entit ve vzorku, použijte vzory entity [role](luis-concept-roles.md) extrahovat kontextové informace o entitách.  
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>Predikce skóre a bez nich vzory
 Zadaný dostatek příklad projevy, LUIS bylo by možné zvýšit důvěru předpovědi vzorů. Vzory zvýšení skóre spolehlivosti aniž by musel zadávat tolik projevy.  
@@ -62,9 +62,9 @@ Vzor je nalezena shoda podle nejprve zjišťování entit v modelu a ověření 
 Můžete vytvořit aplikaci s záměry, které nemají žádný vzorový projevy, pokud existuje vzor pro každý záměr. V případě aplikace jenom se vzorkem by neměl vzor obsahovat entity, které se naučily počítačem, protože to vyžaduje příklad projevy. 
 
 ## <a name="best-practices"></a>Osvědčené postupy
-Seznamte se s [osvědčenými postupy](luis-concept-best-practices.md).
+Přečtěte si [osvědčené postupy](luis-concept-best-practices.md).
 
-## <a name="pattern-syntax"></a>Vzor syntaxe
+## <a name="pattern-syntax"></a>Syntaxe vzoru
 
 Přečtěte si syntaxi vzorů z [odkazu syntaxe vzoru](reference-pattern-syntax.md). 
 
@@ -73,8 +73,8 @@ Přečtěte si syntaxi vzorů z [odkazu syntaxe vzoru](reference-pattern-syntax.
 Další informace o vzorcích:
 
 * [Postup přidání vzorů](luis-how-to-model-intent-pattern.md)
-* [Postup přidání vzoru. kterákoli entita](luis-how-to-add-entities.md##add-a-patternany-entity)
+* [Postup přidání vzoru. kterákoli entita](luis-how-to-add-entities.md#add-a-patternany-entity)
 * [Syntaxe vzorů](reference-pattern-syntax.md)
 
 > [!div class="nextstepaction"]
-> [Naučte se implementovat vzory v tomto kurzu.](luis-tutorial-pattern.md)
+> [Zjistěte, jak implementovat vzory v tomto kurzu](luis-tutorial-pattern.md)

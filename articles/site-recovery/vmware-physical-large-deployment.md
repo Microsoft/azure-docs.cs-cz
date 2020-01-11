@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: e08c7d5f794611a92688e931f35da7482c04407f
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 36cc63721fe003934aabfb3ae2a03a4113937ca4
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082227"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895795"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Nastavení zotavení po havárii ve velkém měřítku pro virtuální počítače VMware nebo fyzické servery
 
@@ -83,9 +83,9 @@ Tato doporučení můžete použít k plánování prostředků Azure, šířky 
 
 Chceme zajistit, aby dostupné kvóty v cílovém předplatném byly dostatečné pro zpracování převzetí služeb při selhání.
 
-**Úloha** | **Podrobnosti** | **Akce**
+**Úkol** | **Podrobnosti** | **Akce**
 --- | --- | ---
-**Kontrolovat jádra** | Pokud se jádra v dostupné kvótě nerovnají nebo překračují celkový počet cílů v době převzetí služeb při selhání, převzetí služeb při selhání se nezdaří. | V případě virtuálních počítačů VMware ověřte, že je v cílovém předplatném dostatek jader, aby splňovaly doporučení Plánovač nasazení Core.<br/><br/> U fyzických serverů ověřte, že Azure Core vyhovují vašim ručním odhadům.<br/><br/> Pokud chcete kontrolovat kvóty, klikněte v **Předplatném**Azure Portal > na **využití + kvóty**.<br/><br/> [Přečtěte si další informace](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) o zvýšení kvót.
+**Kontrolovat jádra** | Pokud se jádra v dostupné kvótě nerovnají nebo překračují celkový počet cílů v době převzetí služeb při selhání, převzetí služeb při selhání se nezdaří. | V případě virtuálních počítačů VMware ověřte, že je v cílovém předplatném dostatek jader, aby splňovaly doporučení Plánovač nasazení Core.<br/><br/> U fyzických serverů ověřte, že Azure Core vyhovují vašim ručním odhadům.<br/><br/> Pokud chcete kontrolovat kvóty, klikněte v **Předplatném**Azure Portal > na **využití + kvóty**.<br/><br/> [Přečtěte si další informace](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) o zvýšení kvót.
 **Kontrolovat omezení převzetí služeb při selhání** | Počet převzetí služeb při selhání nesmí překračuje Site Recovery limity převzetí služeb při selhání. |  Pokud převzetí služeb při selhání překročilo limity, můžete přidat odběry, převzít služby při selhání na více předplatných nebo zvýšit kvótu pro předplatné. 
 
 
@@ -95,13 +95,13 @@ Omezení označují počet převzetí služeb při selhání, které Site Recove
 
 Co to znamená? Aby bylo možné spustit virtuální počítač Azure, Azure vyžaduje, aby byly některé ovladače v počátečním stavu spouštění, a služby jako DHCP mají být nastavené tak, aby se spouštěly automaticky.
 - Počítače, které vyhovují, již mají tato nastavení zavedena.
-- V případě počítačů s Windows můžete proaktivní kontrolu dodržování předpisů a v případě potřeby je v případě potřeby nastavit jako vyhovující. [Další informace](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010)
+- V případě počítačů s Windows můžete proaktivní kontrolu dodržování předpisů a v případě potřeby je v případě potřeby nastavit jako vyhovující. [Další informace](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010).
 - Počítače se systémem Linux se v době převzetí služeb při selhání zanesou do dodržování předpisů.
 
 **Počítač vyhovuje Azure?** | **Omezení virtuálních počítačů Azure (převzetí služeb při selhání spravovaného disku)**
 --- | --- 
 Ano | 2000
-Ne | 1000
+Ne | 1 000
 
 - Omezení předpokládají, že v cílové oblasti pro předplatné probíhá minimálně jiné úlohy.
 - Některé oblasti Azure jsou menší a můžou mít mírně nižší omezení.
