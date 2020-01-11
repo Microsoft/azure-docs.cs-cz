@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 10/23/2019
+ms.date: 01/09/2020
 ms.author: diberry
-ms.openlocfilehash: f999a54c7841437e169205fed2edea1630aa81a2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0073b03cd06bcf5a6e0733ef1b72061e72c3afe2
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75378938"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860295"
 ---
 # <a name="quickstart-personalizer-client-library-for-python"></a>Rychlý Start: Klientská knihovna pro přizpůsobování pro Python
 
@@ -26,7 +26,7 @@ Začínáme s klientskou knihovnou přizpůsobování pro Python Pomocí těchto
  * Seřadit seznam akcí pro přizpůsobení.
  * Vykázat skóre odměňování, které indikuje úspěšnost horní seřazené akce.
 
-[Balíček (PyPi)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | [ukázky](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
+[Referenční dokumentace](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python) |  | [ukázky](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)| balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-personalizer) [(PyPi)](https://pypi.org/project/azure-cognitiveservices-personalizer/)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -49,7 +49,7 @@ V tomto rychlém startu se používá několik kroků:
 
 Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro přizpůsobení pomocí [Azure Portal](https://portal.azure.com/) nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na místním počítači. Další podrobnosti najdete [v tématu Postup vytvoření prostředku Cognitive Services pomocí Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) . Můžete také:
 
-* Získejte [zkušební klíč](https://azure.microsoft.com/try/cognitive-services) platný po dobu 7 dnů zdarma. Po registraci bude k dispozici na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
+* Získejte [zkušební klíč](https://azure.microsoft.com/try/cognitive-services) platný po dobu 7 dnů zdarma. Po registraci bude k dispozici na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).
 * Prohlédněte si prostředek na [Azure Portal](https://portal.azure.com/).
 
 Po získání klíče ze zkušebního předplatného nebo prostředku vytvořte dvě [proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
@@ -80,11 +80,11 @@ Když se poprvé vytvoří instance smyčky pro přizpůsobení, neexistuje žá
 
 Klient pro přizpůsobování je objekt PersonalizerClient, který se ověřuje v Azure pomocí Microsoft. REST. ServiceClientCredentials, který obsahuje váš klíč.
 
-Chcete-li se zeptat na rozměr obsahu, vytvořte RankRequest a pak ho předejte klientovi. Rank – metoda Metoda Rank vrátí RankResponse, který obsahuje seřazený obsah. 
+Chcete-li se zeptat na rozměr obsahu, vytvořte RankRequest a pak ho předejte klientovi. Rank – metoda Metoda Rank vrátí RankResponse, který obsahuje seřazený obsah.
 
-Pokud chcete odeslat odměnu pro přizpůsobení, vytvořte RewardRequest a pak ho předejte klientovi. Metoda odměňování. 
+Pokud chcete odeslat odměnu pro přizpůsobení, vytvořte RewardRequest a pak ho předejte klientovi. Metoda odměňování.
 
-Stanovení odměňování je v tomto rychlém startu triviální. V produkčním systému se určení toho, co ovlivňuje [skóre záměna](concept-rewards.md) a kolik může být složitý proces, se může stát, že se v průběhu času rozhodnete změnit. To by mělo být jedno z primárních rozhodnutí o návrhu v architektuře pro přizpůsobování. 
+Stanovení odměňování je v tomto rychlém startu triviální. V produkčním systému se určení toho, co ovlivňuje [skóre záměna](concept-rewards.md) a kolik může být složitý proces, se může stát, že se v průběhu času rozhodnete změnit. To by mělo být jedno z primárních rozhodnutí o návrhu v architektuře pro přizpůsobování.
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -96,7 +96,7 @@ Tyto fragmenty kódu ukazují, jak provést následující akce pomocí klientsk
 
 ## <a name="create-a-new-python-application"></a>Vytvoření nové aplikace v Pythonu
 
-Vytvořte novou aplikaci v Pythonu v upřednostňovaném editoru nebo integrovaném vývojovém prostředí s názvem `sample.py`. 
+Vytvořte novou aplikaci v Pythonu v upřednostňovaném editoru nebo integrovaném vývojovém prostředí s názvem `sample.py`.
 
 ## <a name="add-the-dependencies"></a>Přidat závislosti
 
@@ -130,7 +130,7 @@ Akce reprezentují volby obsahu, které má přizpůsobené přizpůsobovat. Př
 
 ## <a name="create-the-learning-loop"></a>Vytvoření výukové smyčky
 
-Výuková smyčka pro přizpůsobování je cyklem volání [pořadí](#request-a-rank) a [odměňování](#send-a-reward) . V tomto rychlém startu každé volání pořadí, pro přizpůsobení obsahu, je následováno volání odměna, které přizpůsobuje, jak dobře se služba přiřadí k obsahu. 
+Výuková smyčka pro přizpůsobování je cyklem volání [pořadí](#request-a-rank) a [odměňování](#send-a-reward) . V tomto rychlém startu každé volání pořadí, pro přizpůsobení obsahu, je následováno volání odměna, které přizpůsobuje, jak dobře se služba přiřadí k obsahu.
 
 Následující smyčka kódu projde cyklem, který uživateli požádá o své předvolby na příkazovém řádku, aby si tyto informace přihlásili k zařazení, a prezentuje seřazený výběr zákazníkovi, který si vybírá ze seznamu, a pak posílá odměnu přizpůsobenému nástroji. signalizace, jak dobře služba provedla řazení výběru.
 
@@ -146,9 +146,9 @@ Přidejte následující metody, které [získají volby obsahu](#get-content-ch
 
 ## <a name="request-a-rank"></a>Vyžádat pořadí
 
-Chcete-li dokončit požadavek na řazení, program požádá o předvolby uživatele, aby vytvořil `currentContent` možností obsahu. Proces může vytvořit obsah, který se má vyloučit z rozsahu, který je zobrazený jako `excludeActions`. Požadavek na řazení potřebuje akce, currentContext, excludeActions a jedinečné ID události klasifikace (jako identifikátor GUID), aby mohl přijímat seřazené odpovědi. 
+Chcete-li dokončit požadavek na řazení, program požádá o předvolby uživatele, aby vytvořil `currentContent` možností obsahu. Proces může vytvořit obsah, který se má vyloučit z rozsahu, který je zobrazený jako `excludeActions`. Požadavek na řazení potřebuje akce, currentContext, excludeActions a jedinečné ID události klasifikace (jako identifikátor GUID), aby mohl přijímat seřazené odpovědi.
 
-Tento rychlý Start má jednoduché kontextové funkce pro denní prioritu a uživatelské preference. V produkčních systémech může být určení a [vyhodnocení](concept-feature-evaluation.md) [akcí a funkcí](concepts-features.md) netriviální.  
+Tento rychlý Start má jednoduché kontextové funkce pro denní prioritu a uživatelské preference. V produkčních systémech může být určení a [vyhodnocení](concept-feature-evaluation.md) [akcí a funkcí](concepts-features.md) netriviální.
 
 [!code-python[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/python/sample.py?name=rank)]
 
@@ -156,7 +156,7 @@ Tento rychlý Start má jednoduché kontextové funkce pro denní prioritu a už
 
 Aby bylo možné dokončit požadavek na odměnu, program získá výběr uživatele z příkazového řádku, přiřadí číselné hodnoty každému výběru a pak pošle jedinečné ID události klasifikace a číselnou hodnotu k metodě odměňování.
 
-V tomto rychlém startu se přiřadí jednoduché číslo jako odměna, buď nula, nebo 1. V produkčních systémech může být určení, kdy a co má být odesláno volání [odměna](concept-rewards.md) , v závislosti na konkrétních potřebách netriviální povahy. 
+V tomto rychlém startu se přiřadí jednoduché číslo jako odměna, buď nula, nebo 1. V produkčních systémech může být určení, kdy a co má být odesláno volání [odměna](concept-rewards.md) , v závislosti na konkrétních potřebách netriviální povahy.
 
 [!code-python[The Personalizer learning loop sends a reward.](~/samples-personalizer/quickstarts/python/sample.py?name=reward&highlight=9)]
 

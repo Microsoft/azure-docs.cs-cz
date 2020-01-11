@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: b54034dc8828fb8a96f488197e517ef07ed55ab5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 960eb9b48a158358a076202db0d435feb918a6c8
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460417"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863474"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Ověřování a autorizace pro rozhraní Azure Time Series Insights API
 
@@ -87,7 +87,7 @@ V rámci **kroku 3**oddělení aplikace a přihlašovací údaje uživatele vám
 
    1. Použijte **ID aplikace** a **tajný klíč klienta** (aplikační klíč) z části registrace aplikace Azure Active Directory k získání tokenu jménem aplikace.
 
-   1. V C#nástroji může následující kód získat token jménem aplikace. Úplnou ukázku najdete v tématu [dotazování na data C#pomocí ](time-series-insights-query-data-csharp.md).
+   1. V C#nástroji může následující kód získat token jménem aplikace. Úplnou ukázku najdete v článku [data dotazů pomocí C# ](time-series-insights-query-data-csharp.md).
 
         [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs?range=170-199)]
 
@@ -107,7 +107,7 @@ Tato část popisuje společné hlavičky a parametry požadavků protokolu HTTP
 Aby bylo možné provádět ověřené dotazy proti [Time Series Insights rozhraní REST API](https://docs.microsoft.com/rest/api/time-series-insights/), musí se v [autorizační hlavičce](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) předávat platný token OAuth 2,0 s použitím klienta REST podle vašeho výběru (post, JavaScript, C#). 
 
 > [!TIP]
-> Podívejte se na [ukázkovou vizualizaci sady SDK](https://tsiclientsample.azurewebsites.net/) hostovaného Azure Time Series Insights a zjistěte, jak pomocí rozhraní API [klienta pro JavaScript](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) společně s grafy a grafy ověřit ověřování pomocí rozhraní API pro Time Series Insights prostřednictvím kódu programu.
+> Přečtěte si [ukázkovou vizualizaci hostované Azure Time Series Insights klientské sady SDK](https://tsiclientsample.azurewebsites.net/) a Naučte se ověřovat pomocí rozhraní api pro Time Series Insights programově pomocí [klientské sady SDK pro JavaScript](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) spolu s grafy a grafy.
 
 ### <a name="http-headers"></a>Hlavičky protokolu HTTP
 
@@ -135,7 +135,7 @@ Volitelné, ale Doporučené hlavičky odpovědí jsou popsány níže.
 
 | Hlavička odpovědi | Popis |
 | --- | --- |
-| Typ obsahu | Podporuje se jenom `application/json`. |
+| Typ obsahu | podporuje se jenom `application/json`. |
 | x-MS-Request-ID | ID žádosti generované serverem Dá se použít ke kontaktování žádosti Microsoftu o vyšetření žádosti. |
 | x-MS-Property-Nenalezeno – chování | Volitelná hlavička odpovědi pro rozhraní API GA Možné hodnoty jsou `ThrowError` (výchozí) nebo `UseNull`. |
 
@@ -161,10 +161,10 @@ Volitelné parametry řetězce dotazu adresy URL zahrnují nastavení časového
 
 ## <a name="next-steps"></a>Další kroky
 
-- Vzorový kód, který volá rozhraní API GA Time Series Insights, najdete v tématu [dotazování dat pomocí C# ](./time-series-insights-query-data-csharp.md).
+- Pro vzorový kód, který volá rozhraní API GA Time Series Insights, si přečtěte [data dotazu pomocí C# ](./time-series-insights-query-data-csharp.md).
 
-- Náhled ukázek kódu rozhraní API Time Series Insights najdete v tématu [dotazování dat C#ve verzi Preview pomocí ](./time-series-insights-update-query-data-csharp.md).
+- Pro náhled Time Series Insights ukázek kódu rozhraní API čtěte [data ve verzi Preview C#dotazu pomocí ](./time-series-insights-update-query-data-csharp.md).
 
-- Referenční informace k rozhraní API najdete v [referenční dokumentaci rozhraní API pro dotazy](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api) .
+- Informace o referenčních informacích k rozhraní API najdete v referenční dokumentaci k [rozhraní API pro dotazy](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api) .
 
 - Naučte se [vytvořit instanční objekt](../active-directory/develop/howto-create-service-principal-portal.md).

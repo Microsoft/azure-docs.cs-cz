@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 37846aacd9e2c5c63cdf5d29bccb42df8e02fce9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 567770c00c645aeb79e1efb0e9119b9ac829f3fe
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452618"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861655"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Tvar událostí pomocí Azure čas Series Insights ve verzi Preview
 
@@ -31,7 +31,7 @@ Zamyslete se nad tím, jak odesíláte události do Time Series Insights ve verz
 Pro nejlepší výkon dotazů udělejte toto:
 
 * Neposílat zbytečné vlastnosti. Čas Series Insights ve verzi Preview účtuje poplatky na použití. Doporučujeme ukládat a zpracovávat data, která budete dotazovat.
-* Pomocí pole instancí pro statická data. Tento postup umožňuje vyhnout se odesílat statická data přes síť. Pole instancí – komponenta modelu časové řady, která funguje jako referenční data ve službě Time Series Insights všeobecně dostupná. Další informace o polích instance najdete v tématu [model časové řady](./time-series-insights-update-tsm.md).
+* Pomocí pole instancí pro statická data. Tento postup umožňuje vyhnout se odesílat statická data přes síť. Pole instancí – komponenta modelu časové řady, která funguje jako referenční data ve službě Time Series Insights všeobecně dostupná. Další informace o polích instance získáte v [modelu časové řady](./time-series-insights-update-tsm.md)pro čtení.
 * Sdílení vlastností dimenze mezi dva nebo více událostí. Tento postup pomáhá efektivněji posílat data přes síť.
 * Nepoužívejte vnoření hloubkové pole. Time Series Insights Preview podporuje až dvě úrovně vnořených polí, která obsahují objekty. Čas Series Insights ve verzi Preview sloučí pole zpráv do více událostí pomocí dvojice vlastnost.
 * Pokud jenom pár opatření existovat pro všechny nebo většina události, je lepší odesílat tyto míry jako samostatné vlastnosti v rámci stejného objektu. Jejich odeslání samostatně snižuje počet událostí a může zlepšit výkon dotazů, protože je potřeba zpracovat méně událostí.
@@ -156,5 +156,5 @@ V předchozím příkladu by vlastnost plochých `data_flow` představovala koli
 
 ## <a name="next-steps"></a>Další kroky
 
-- Tyto pokyny převést do praxe, naleznete v tématu [syntaxe dotazů Azure čas Series Insights ve verzi Preview](./time-series-insights-query-data-csharp.md). Přečtěte si další informace o syntaxi dotazů pro Time Series Insights Preview REST API pro přístup k datům.
-- Další informace o podporované tvary JSON najdete v tématu [tvary JSON nepodporuje](./time-series-insights-send-events.md#supported-json-shapes).
+- Pokud chcete tyto pokyny do praxe přidat, přečtěte si [syntaxi dotazu Azure Time Series Insights Preview](./time-series-insights-query-data-csharp.md). Přečtěte si další informace o syntaxi dotazů pro Time Series Insights Preview REST API pro přístup k datům.
+- Další informace o podporovaných tvarech JSON najdete v článku [podporované tvary JSON](./time-series-insights-send-events.md#supported-json-shapes).

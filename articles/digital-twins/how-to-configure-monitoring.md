@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 66be29b6d16e422eebd381cddb83ce94adf9f76e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 38f5af3cb2006e4b029f8979a213c0af10f1ed8a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745458"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863576"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Jak nakonfigurovat monitorování v digitálních prozdvojeních Azure
 
@@ -97,7 +97,7 @@ Příklady použití zahrnují:
 Úplné dotazování protokolu je k dispozici prostřednictvím [protokolů Azure monitor](../azure-monitor/log-query/log-query-overview.md). Nastavení těchto výkonných funkcí:
 
 1. Vyhledejte **Log Analytics** v Azure Portal.
-1. Zobrazí se vaše dostupné **Log Analytics instance pracovních prostorů** . Vyberte jednu z **protokolů** pro dotazování:
+1. Budou se zobrazovat vaše dostupné instance **Log Analytics pracovního prostoru** . Vyberte jednu z **protokolů** pro dotazování:
 
     [![Log Analytics](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
@@ -109,7 +109,7 @@ Po zřízení instance **pracovního prostoru Log Analytics** můžete použít 
 
    [Správa protokolu ![](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
 
-Další informace o výkonných operacích dotazů najdete v tématu [Začínáme s dotazy](../azure-monitor/log-query/get-started-queries.md).
+Další informace o výkonných operacích dotazů najdete v článku [Začínáme s dotazy](../azure-monitor/log-query/get-started-queries.md).
 
 > [!NOTE]
 > Při prvním posílání událostí do **Log Analytics pracovního prostoru** může docházet k prodlevě 5 minut.
@@ -123,7 +123,7 @@ Protokoly Azure Monitor také poskytují výkonné služby chyb a výstrah, kter
 
 ## <a name="other-options"></a>Další možnosti
 
-Digitální vlákna Azure také podporují protokolování a auditování zabezpečení specifické pro aplikace. Podrobný přehled všech možností protokolování Azure, které jsou dostupné pro vaši instanci digitálních vláken Azure, najdete v článku věnovaném [auditu protokolu Azure](../security/fundamentals/log-audit.md) .
+Digitální vlákna Azure také podporují protokolování a auditování zabezpečení specifické pro aplikace. Podrobný přehled všech možností protokolování Azure, které jsou dostupné pro instanci digitálních vláken Azure, najdete v článku věnovaném [auditu protokolu Azure](../security/fundamentals/log-audit.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,12 +5,12 @@ ms.date: 07/25/2019
 ms.topic: conceptual
 description: Naučte se spouštět Azure Dev Spaces v existujícím clusteru s kontejnery Windows.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, kontejnery Windows
-ms.openlocfilehash: 7410c0e38b84979f0977973b2d6ccf588e2b1230
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 855b877653d4cf60c8165af3094fe0e68ca5e6dd
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484005"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867291"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Interakce s kontejnery Windows pomocí Azure Dev Spaces
 
@@ -146,7 +146,12 @@ azds prep --public
 azds up
 ```
 
-Příkaz `azds prep --public` generuje graf Helm a fázemi pro vaši aplikaci. Příkaz `azds up` spustí vaši službu v oboru názvů.
+Příkaz `azds prep --public` generuje graf Helm a fázemi pro vaši aplikaci.
+
+> [!TIP]
+> [Graf souboru Dockerfile a Helm](../how-dev-spaces-works.md#prepare-your-code) pro váš projekt je používán Azure dev Spaces k sestavení a spuštění kódu, ale tyto soubory lze změnit, pokud chcete změnit způsob sestavení a spuštění projektu.
+
+Příkaz `azds up` spustí vaši službu v oboru názvů.
 
 ```console
 $ azds up

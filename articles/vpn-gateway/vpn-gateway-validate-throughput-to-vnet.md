@@ -1,20 +1,20 @@
 ---
-title: Ověření propustnosti sítě VPN do Microsoft Azure Virtual Networku | Microsoft Docs
+title: Ověření propustnosti sítě VPN pro Microsoft Azure Virtual Network
 description: Účelem tohoto dokumentu je pomáhat uživateli ověřit propustnost sítě z místních prostředků na virtuální počítač Azure.
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
-manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: 9c2f50c49037305663330a3c455e40291b9e6242
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: a88e339e82484c2ec1cd2276f6218fa718b990f9
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058796"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860482"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Ověření propustnosti sítě VPN do virtuální sítě
 
@@ -32,7 +32,7 @@ Připojení ke službě VPN Gateway zahrnuje následující součásti:
 * Místní zařízení VPN (zobrazení seznamu [ověřených zařízení VPN](vpn-gateway-about-vpn-devices.md#devicetable))
 * Veřejný Internet
 * Azure VPN Gateway
-* Azure VM
+* Virtuální počítač Azure
 
 Následující diagram znázorňuje logické připojení místní sítě k virtuální síti Azure prostřednictvím sítě VPN.
 
@@ -64,7 +64,7 @@ Tento nástroj neprovede žádné operace čtení a zápisu na disk. Výhradně 
 Stáhněte si [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Podrobnosti najdete v [dokumentaci k iPerf](https://iperf.fr/iperf-doc.php).
 
  > [!NOTE]
- > Produkty třetích stran, které jsou popsány v tomto článku, jsou vyráběny společnostmi, které jsou nezávislé na společnosti Microsoft. Společnost Microsoft neposkytuje žádnou záruku, předpokládanou ani jinak, o výkonu a spolehlivosti těchto produktů.
+ > Produkty třetích stran, které jsou popsány v tomto článku, jsou vyráběny společnostmi, které jsou nezávislé na společnosti Microsoft. Společnost Microsoft neposkytuje v souvislosti s výkonem a spolehlivostí těchto produktů žádnou záruku, předpokládanou ani jinou.
 
 ### <a name="run-iperf-iperf3exe"></a>Spustit iPerf (iperf3. exe)
 
@@ -84,7 +84,7 @@ Stáhněte si [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip)
    netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
    ```
 
-   **Azure Linux:** Image Azure Linux mají opravňující brány firewall. Pokud je aplikace naslouchá na portu, je povolen přenos prostřednictvím služby. Vlastní image, které jsou zabezpečené, můžou vyžadovat explicitní otevření portů. Mezi běžné brány firewall pro Linux OS patří `iptables`, `ufw`, nebo `firewalld`.
+   **Azure Linux:** Image Azure Linux mají opravňující brány firewall. Pokud je aplikace naslouchá na portu, je povolen přenos prostřednictvím služby. Vlastní image, které jsou zabezpečené, můžou vyžadovat explicitní otevření portů. Mezi běžné brány firewall pro Linux OS patří `iptables`, `ufw`nebo `firewalld`.
 
 1. V uzlu serveru přejděte do adresáře, kde je extrahována aplikace iperf3. exe. Pak spusťte iPerf v režimu serveru a nastavte ho tak, aby naslouchal na portu 5001 jako následující příkazy:
 
@@ -126,7 +126,7 @@ Stáhněte si [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip)
 
 Stažení nejnovější verze nástroje [latte. exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
 
-Zvažte umístění latte. exe do samostatné složky, například`c:\tools`
+Zvažte umístění latte. exe do samostatné složky, například `c:\tools`
 
 ### <a name="allow-latteexe-through-the-windows-firewall"></a>Povolení latte. exe přes bránu Windows Firewall
 
@@ -224,7 +224,7 @@ Konkrétně analýza trasování paketů (Wireshark/Sledování sítě) shromá�
 
 I v případě, že celková propustnost vyhodnocená pomocí předchozích kroků (iPERF/NTTTCP/atd.) byla dobrá, může docházet ke zpomalení souboru kopírování při použití Průzkumníka Windows nebo přetahování přes relaci RDP. K tomuto problému obvykle dochází v důsledku jednoho nebo obou následujících faktorů:
 
-* Kopírování souborů aplikace, jako je například Průzkumník Windows nebo RDP, nepoužívají při kopírování souborů více vláken. Pro lepší výkon použijte vícevláknovou aplikaci kopírování souborů, například [RichCopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) , ke kopírování souborů pomocí 16 nebo 32 vláken. Pokud chcete změnit číslo vlákna pro kopírování souborů v RichCopy, klikněte na **Akce** > kopírovat**Možnosti** > kopírování**souborů**.
+* Kopírování souborů aplikace, jako je například Průzkumník Windows nebo RDP, nepoužívají při kopírování souborů více vláken. Pro lepší výkon použijte vícevláknovou aplikaci kopírování souborů, například [RichCopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) , ke kopírování souborů pomocí 16 nebo 32 vláken. Pokud chcete změnit číslo vlákna pro kopírování souborů v RichCopy, klikněte na **akce** > **Možnosti kopírování** > **kopírování souborů**.
 
    ![Pomalé problémy při kopírování souborů](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 
@@ -238,9 +238,9 @@ I v případě, že celková propustnost vyhodnocená pomocí předchozích krok
 
 Uvedli jsme podsítě místních rozsahů, které chcete, aby Azure dosáhl přes VPN v bráně místní sítě. Současně definujte adresní prostor virtuální sítě v Azure na místní zařízení.
 
-* **Brána založená na trasách**: Zásady nebo selektor provozu pro sítě VPN založené na směrování používají konfiguraci typu any-to-any (se zástupnými znaky).
+* **Brána založená na trasách**: zásady nebo selektor provozu pro sítě VPN založené na trasách jsou nakonfigurovány jako any (nebo zástupné karty).
 
-* **Brána založená na zásadách**: Sítě VPN založené na zásadách šifrují pakety a směrují je do tunelových propojení IPsec na základě kombinací předpon adres mezi vaší místní sítí a virtuální sítí VNet Azure. Zásada (nebo selektor provozu) se většinou v konfiguraci sítě VPN definuje jako přístupový seznam.
+* **Brána založená**na zásadách: sítě VPN založené na zásadách šifrují a směrují pakety prostřednictvím tunelů IPsec na základě kombinací předpon adres mezi vaší místní sítí a virtuální sítí Azure. Zásada (nebo selektor provozu) se většinou v konfiguraci sítě VPN definuje jako přístupový seznam.
 
 * Připojení **UsePolicyBasedTrafficSelector** : ("UsePolicyBasedTrafficSelectors" pro $true v připojení nakonfiguruje bránu Azure VPN, aby se připojila k místní bráně firewall sítě VPN na základě zásad. Pokud povolíte PolicyBasedTrafficSelectors, musíte zajistit, aby vaše zařízení VPN odpovídalo selektorům přenosu, které jsou definované se všemi kombinacemi předpon vaší místní sítě (místní síťová brána) a z předpon služby Azure Virtual Network místo libovolný.
 
@@ -252,7 +252,7 @@ Latenci můžete kontrolovat pomocí následujících nástrojů:
 
 * WinMTR
 * TCPTraceroute
-* `ping`a `psping` (tyto nástroje můžou poskytovat dobrý odhad času RTT, ale nedají se použít ve všech případech.)
+* `ping` a `psping` (tyto nástroje můžou poskytovat dobrý odhad času RTT, ale nedají se použít ve všech případech.)
 
 ![Kontrolovat latenci](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
 
@@ -260,8 +260,8 @@ Pokud si všimnete vysoké latence u libovolného směrování před přechodem 
 
 Pokud se v rámci "msn.net" zaznamená velký špička latence, kontaktujte prosím podporu společnosti MS a požádejte o další šetření.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Chcete-li získat další informace nebo nápovědu, podívejte se na následující odkaz:
 
-* [Podpora Microsoftu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+* [podpora Microsoftu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)

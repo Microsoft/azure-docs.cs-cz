@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 06/21/2019
-ms.openlocfilehash: bef259aa741e9c50ffaf28c6f81f63658ebda0a2
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.date: 01/09/2020
+ms.openlocfilehash: 11768a0d72549d917d93c0f6f7f4d0c7e8217da4
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778069"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864388"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Rychlý start: Řízení zařízení připojeného k centru IoT (Python)
 
@@ -122,7 +122,7 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT 
 
     Následující snímek obrazovky ukazuje výstup, zatímco aplikace simulovaného zařízení odesílá telemetrická data do vašeho centra IoT:
 
-    ![Spuštění simulovaného zařízení](./media/quickstart-control-device-python/SimulatedDevice-1.png)
+    ![Spuštění simulovaného zařízení](./media/quickstart-control-device-python/simulated-device-1.png)
 
 ## <a name="call-the-direct-method"></a>Volání přímé metody
 
@@ -148,11 +148,11 @@ Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na stra
 
     Následující snímek obrazovky ukazuje výstup, ve kterém aplikace představuje přímé volání metody do zařízení a přijímá potvrzení:
 
-    ![Spuštění back-endové aplikace](./media/quickstart-control-device-python/BackEndApplication.png)
+    ![Spuštění back-endové aplikace](./media/quickstart-control-device-python/backend-application.png)
 
     Po spuštění back-endové aplikace se v okně konzoly se simulovaným zařízením zobrazí zpráva a rychlost odesílání zpráv se změní:
 
-    ![Změna simulovaného klienta](./media/quickstart-control-device-python/SimulatedDevice-2.png)
+    ![Změna simulovaného klienta](./media/quickstart-control-device-python/simulated-device-2.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

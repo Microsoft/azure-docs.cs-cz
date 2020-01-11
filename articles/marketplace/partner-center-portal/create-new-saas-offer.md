@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: b59600ffa6a83d00a83d642ab337df2e71cbee06
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 1df30b25d2029ba31525eaea232d258bbb134366
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777899"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863801"
 ---
 # <a name="create-a-new-saas-offer"></a>Vytvořit novou nabídku SaaS
 
@@ -374,7 +374,8 @@ Karta **Technická konfigurace** definuje technické podrobnosti (cesta URL, Web
 
 - **ID aplikace Azure AD** (povinné): budete také potřebovat [ID aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) a ověřovací klíč. Tyto hodnoty získáte tak, že přejdete na Azure Active Directory a vyberete **Registrace aplikací**a pak vyhledáte uvedené číslo **ID aplikace** (např. 50c464d3-4930-494c-963c-1e951d15360e). Ověřovací klíč najdete tak, že přejdete na **Nastavení** a vyberete **klíče**. Budete muset zadat popis a dobu trvání a pak zadat číselnou hodnotu.
 
- Všimněte si, že ID aplikace Azure je přidružené k vašemu ID vydavatele, takže se ujistěte, že se stejné ID aplikace používá ve všech vašich nabídkách.
+>[!Note]
+>ID aplikace Azure je přidruženo k vašemu ID vydavatele, takže se ujistěte, že se stejné ID aplikace používá ve všech nabídkách.
 
 ## <a name="plan-overview"></a>Přehled plánu
 

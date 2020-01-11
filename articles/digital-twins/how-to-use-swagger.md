@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d4470a89455fd4b49fb7bb5ae26375f9cf9884c
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: a14f3f6c17423dd9a86cbafe477fb8148932d43c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456978"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863525"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Referenční dokumentace k sadě Swagger pro Azure Digital revlákens
 
@@ -50,9 +50,9 @@ Jsou uvedeny také modely objektů rozhraní API pro správu.
 
 Každý uvedený objektový model můžete vybrat pro podrobnější souhrn klíčových atributů.
 
-[![rozbalené modely Swagger pro zobrazení obsahu modelů](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
+[pro čtení obsahu modelů se rozšířily ![modely Swagger.](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
 
-Vygenerované objektové modely Swagger jsou vhodné k zobrazení všech dostupných [objektů a rozhraní API](./concepts-objectmodel-spatialgraph.md)pro Azure Digital revlákens. Vývojáři můžou tento prostředek použít při vytváření řešení pro digitální vlákna Azure.
+Vygenerované objektové modely Swagger jsou vhodné ke čtení všech dostupných [objektů a rozhraní API](./concepts-objectmodel-spatialgraph.md)služby Azure Digital revlákens. Vývojáři můžou tento prostředek použít při vytváření řešení pro digitální vlákna Azure.
 
 ## <a name="endpoint-summary"></a>Souhrn koncového bodu
 
@@ -66,13 +66,13 @@ Každý uvedený koncový bod obsahuje také požadované informace o požadavku
 
 [![koncových bodů Swagger zobrazených v uživatelském rozhraní Swagger](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
 
-Pokud chcete zobrazit podrobnější přehled, vyberte jednotlivé prostředky.
+Vyberte jednotlivé prostředky, abyste zobrazili další obsah, abyste získali podrobnější přehled.
 
 ## <a name="use-swagger-to-test-endpoints"></a>Použití Swagger k testování koncových bodů
 
 Jednou z výkonných funkcí Swagger je schopnost otestovat koncový bod rozhraní API přímo prostřednictvím uživatelského rozhraní dokumentace.
 
-Po výběru konkrétního koncového bodu se zobrazí výzva **vyzkoušet si ho**.
+Po výběru konkrétního koncového bodu se zobrazí tlačítko **vyzkoušet** .
 
 [![tlačítko vyzkoušet Swagger](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
 
@@ -84,7 +84,7 @@ Po provedení testu můžete ověřit data odpovědi.
 
 ## <a name="swagger-response-data"></a>Data odpovědi Swagger
 
-Každý uvedený koncový bod obsahuje také data textu odpovědi pro ověření vývoje a testů. Tyto příklady zahrnují stavové kódy a JSON, které chcete zobrazit pro úspěšné požadavky HTTP.
+Každý uvedený koncový bod obsahuje také data textu odpovědi pro ověření vývoje a testů. Tyto příklady zahrnují stavové kódy a JSON pro úspěšné požadavky HTTP.
 
 [Příklad odpovědi JSON pro ![v Swagger](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
 
@@ -104,7 +104,7 @@ Příklady také obsahují chybové kódy, které vám pomůžou ladit nebo vyle
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
     ```
-    | Název  | Nahradit hodnotou | Příklad |
+    | Name (Název)  | Nahradit hodnotou | Příklad: |
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | Adresa URL vašeho REST API pro správu se našla na portálu.  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 

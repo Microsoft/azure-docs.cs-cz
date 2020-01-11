@@ -5,12 +5,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 12/06/2019
-ms.openlocfilehash: 8d0c1edd2766d5fa46603d241c4f769fe5777cd1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: dec7f022a73c5eb47c99b2d2d38e1a3258bcf14e
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74981464"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861454"
 ---
 ## <a name="business-disaster-recovery"></a>Zotavení po havárii podniku
 

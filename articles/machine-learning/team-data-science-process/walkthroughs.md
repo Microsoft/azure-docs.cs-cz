@@ -3,24 +3,24 @@ title: Návody pro provádění vědecké zpracování týmových dat v Azure
 description: Jak kombinovat cloudové a místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 08/17/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 98595ea0ef5b6d9d4cef0f239390b364fb1e4e75
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8fa21cc690742a71100c53b4e5b6ce122d1a6147
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589066"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864073"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>Názorné postupy vědeckého zpracování týmových dat provádění
 
-Tyto **začátku do konce návody** předvádíme kroky v vědecké zpracování týmových dat pro konkrétní scénáře. Jejich ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo k vytvoření kanálu **inteligentní aplikaci**. Názorné postupy jsou seskupené podle **platformy** , které používají.
+Tyto **komplexní návody** ukazují kroky v procesu vědeckého zpracování týmových dat pro konkrétní scénáře. Ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu **inteligentní aplikace**. Názorné postupy jsou seskupené podle **platformy** , které používají.
 
 
 ## <a name="walkthrough-descriptions"></a>Názorný postup popisy
@@ -36,11 +36,11 @@ Zde je stručný popis těchto příkladech návod poskytuje na příslušné pl
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Diskuzi o klíčové součásti, které tvoří vědecké zpracování týmových dat, naleznete v tématu [přehled vědeckého zpracování týmových dat](overview.md).
 
-Diskuzi o životní cyklus vědeckého zpracování týmových dat, který vám pomůže strukturovat vaše projekty datových věd, naleznete v tématu [životní cyklus vědeckého zpracování týmových dat](lifecycle.md). Životní cyklus popisuje kroky, od začátku do konce, projekty obvykle postupujte při jejich spuštění. 
+Diskuzi o životním cyklu vědeckého zpracování týmových dat najdete v tématu [životní cyklus procesu vědeckého zpracování dat týmu](lifecycle.md). Tento životní cyklus popisuje kroky od začátku do konce, které projekty obvykle následují při jejich spuštění. 
 
-Přehled o tématech, které vás provedou úkoly, které tvoří vědecké zpracování dat v Azure, najdete v části [vědecké zpracování dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 
+Přehled najdete v tématu věnovaném [vědeckému zpracování dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 
 

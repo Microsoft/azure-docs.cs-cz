@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: dada1a8ed8b1725905ee2ad159e385d1bee62fc6
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 1deca696ba576849701eb8719de7fbaa7895a26a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615098"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861400"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Ukládání dat a příchozí přenosy v Azure Time Series Insights ve verzi Preview
 
@@ -116,9 +116,9 @@ Můžete chtít získat přístup k datům zobrazeným v Průzkumníkovi služby
 
 K datům můžete získat přístup třemi obecnými způsoby:
 
-* Z Průzkumníka služby Time Series Insights Preview. Data můžete z Průzkumníka exportovat jako soubor CSV. Další informace najdete v tématu [Time Series Insights Průzkumníku Preview](./time-series-insights-update-explorer.md).
-* Z rozhraní API služby Time Series Insights Preview. Ke koncovému bodu rozhraní API se můžete dostat na `/getRecorded`. Další informace o tomto rozhraní API najdete v tématu [dotazování časových řad](./time-series-insights-update-tsq.md).
-* Přímo z účtu Azure Storage. Potřebujete přístup pro čtení k libovolnému účtu, který používáte pro přístup k datům ve verzi Preview Time Series Insights. Další informace najdete v tématu [Správa přístupu k prostředkům účtu úložiště](../storage/blobs/storage-manage-access-to-resources.md).
+* Z Průzkumníka služby Time Series Insights Preview. Data můžete z Průzkumníka exportovat jako soubor CSV. Další informace najdete v tématu [Time Series Insights Exploreru pro náhled](./time-series-insights-update-explorer.md).
+* Z rozhraní API služby Time Series Insights Preview. Ke koncovému bodu rozhraní API se můžete dostat na `/getRecorded`. Pokud chcete získat další informace o tomto rozhraní API, dotaz pro čtení [časové řady](./time-series-insights-update-tsq.md).
+* Přímo z účtu Azure Storage. Potřebujete přístup pro čtení k libovolnému účtu, který používáte pro přístup k datům ve verzi Preview Time Series Insights. Další informace najdete v článku [Správa přístupu k prostředkům účtu úložiště](../storage/blobs/storage-manage-access-to-resources.md).
 
 ### <a name="data-deletion"></a>Odstranění dat
 
@@ -128,7 +128,7 @@ Neodstraňujte soubory ve verzi Preview Time Series Insights. Spravujte souvisej
 
 Parquet je open source formát sloupcového souboru, který byl navržen pro efektivní úložiště a výkon. Time Series Insights Preview v těchto případech používá Parquet. Rozdělí data podle ID časové řady pro výkon dotazů ve velkém měřítku.  
 
-Další informace o typu souboru Parquet naleznete v [dokumentaci Parquet](https://parquet.apache.org/documentation/latest/).
+Další informace o typu souboru Parquet najdete v [dokumentaci k Parquet](https://parquet.apache.org/documentation/latest/).
 
 Time Series Insights Preview ukládá kopie vašich dat následujícím způsobem:
 

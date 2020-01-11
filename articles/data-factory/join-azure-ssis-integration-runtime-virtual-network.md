@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: a4b0debc712504e8cb3c6d61372bd3a82c7932bb
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: b068eeeada842f2439f6135bfa8567a6c9709d12
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497032"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862811"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Připojení prostředí Azure-SSIS Integration runtime k virtuální síti
 
@@ -30,10 +30,20 @@ Při použití služba SSIS (SQL Server Integration Services) (SSIS) v Azure Dat
 
 - Chcete se připojit k úložištím nebo zdrojům dat nakonfigurovaným pomocí pravidel brány firewall protokolu IP z balíčků SSIS, které běží na vašem Azure-SSIS IR.
 
-Data Factory umožňuje připojit se k Azure-SSIS IR k virtuální síti vytvořené prostřednictvím modelu nasazení Classic nebo modelu nasazení Azure Resource Manager. 
+Data Factory umožňuje připojit se k Azure-SSIS IR k virtuální síti vytvořené prostřednictvím modelu nasazení Classic nebo modelu nasazení Azure Resource Manager.
 
 > [!IMPORTANT]
 > Klasická virtuální síť se už nepoužívá, proto místo ní použijte Azure Resource Manager virtuální síť.  Pokud už používáte klasický virtuální síť, přepněte co nejdříve do Azure Resource Manager virtuální sítě.
+
+Kurz [Konfigurace prostředí Azure-služba SSIS (SQL Server Integration Services) (SSIS) Integration runtime (IR) pro připojení k virtuální síti](tutorial-deploy-ssis-virtual-network.md) zobrazuje minimální kroky prostřednictvím Azure Portal. Tento článek se rozbalí v tomto kurzu a popisuje všechny volitelné úlohy:
+
+- Pokud používáte virtuální síť (Classic).
+- Pokud přenesete vlastní veřejné IP adresy pro Azure-SSIS IR.
+- Pokud používáte vlastní server DNS (Domain Name System).
+- Použijete-li v podsíti skupinu zabezpečení sítě (NSG).
+- Pokud používáte Azure ExpressRoute nebo trasu definovanou uživatelem (UDR).
+- Pokud používáte vlastní Azure-SSIS IR.
+- Pokud používáte zřizování Azure PowerShellu.
 
 ## <a name="access-to-on-premises-data-stores"></a>Přístup k místním úložištím dat
 
@@ -319,7 +329,7 @@ Po nakonfigurování Azure Resource Manager virtuální sítě nebo klasické vi
 
    ![Seznam datových továren](media/join-azure-ssis-integration-runtime-virtual-network/data-factories-list.png)
 
-1. Vyberte datovou továrnu pomocí Azure-SSIS IR v seznamu. Zobrazí se Domovská stránka pro datovou továrnu. Vyberte dlaždici **autora & nasazení** . Na samostatné kartě se zobrazí uživatelské rozhraní Data Factory. 
+1. Vyberte datovou továrnu pomocí Azure-SSIS IR v seznamu. Zobrazí se Domovská stránka pro datovou továrnu. Vyberte dlaždici **Author & monitor** . Na samostatné kartě se zobrazí uživatelské rozhraní Data Factory. 
 
    ![Domovská stránka objektu pro vytváření dat](media/join-azure-ssis-integration-runtime-virtual-network/data-factory-home-page.png)
 

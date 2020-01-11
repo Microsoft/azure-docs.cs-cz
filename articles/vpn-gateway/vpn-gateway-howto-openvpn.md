@@ -1,5 +1,5 @@
 ---
-title: 'Jak nakonfigurovat OpenVPN ve službě Azure VPN Gateway: Prostředí PowerShell | Dokumentace Microsoftu'
+title: 'Jak nakonfigurovat OpenVPN v Azure VPN Gateway: PowerShell'
 description: Postup konfigurace OpenVPN pro Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -7,37 +7,37 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: 609c2ef91fafe0ae955252a594292d861e772f87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02514285570b764c6f7392b789f2ff7b427bb3a6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002962"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863753"
 ---
-# <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>Konfigurace OpenVPN pro bránu Azure VPN point-to-site
+# <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>Konfigurace OpenVPN pro Azure Point-to-Site VPN Gateway
 
-Tento článek vám pomůže nastavit **OpenVPN® protokol** ve službě Azure VPN Gateway. Tento článek předpokládá, že jste již pracovní prostředí point-to-site. Pokud ho nevidíte, postupujte podle pokynů v kroku 1 k vytvoření sítě VPN point-to-site.
+Tento článek vám pomůže nastavit **Protokol OpenVPN®** v Azure VPN Gateway. Článek předpokládá, že již máte funkční prostředí typu Point-to-site. Pokud to neuděláte, postupujte podle pokynů v kroku 1 a vytvořte síť VPN typu Point-to-site.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="vnet"></a>1. Vytvoření sítě VPN point-to-site
+## <a name="vnet"></a>1. vytvoření sítě VPN typu Point-to-site
 
-Pokud ještě nemáte funkční prostředí point-to-site, postupujte podle pokynů a vytvořte si ho. Zobrazit [vytvořit síť point-to-site VPN](vpn-gateway-howto-point-to-site-resource-manager-portal.md) vytváření a konfiguraci brány VPN typu point-to-site s ověřováním pomocí nativního certifikátu Azure. 
+Pokud ještě nemáte funkční prostředí Point-to-site, postupujte podle pokynů a vytvořte si ho. V tématu [vytvoření sítě VPN typu Point-to-site](vpn-gateway-howto-point-to-site-resource-manager-portal.md) můžete vytvořit a nakonfigurovat BRÁNu VPN typu Point-to-site s nativním ověřováním certifikátů Azure. 
 
 > [!IMPORTANT]
-> Základní SKU se nepodporuje pro OpenVPN.
+> Základní skladová položka není pro OpenVPN podporovaná.
 
-## <a name="enable"></a>2. Povolit OpenVPN na bráně
+## <a name="enable"></a>2. povolení OpenVPN v bráně
 
-Povolte OpenVPN na bráně. Ujistěte se, že brána je už nakonfigurovaná pro point-to-site (protokol IKEv2 nebo SSTP) před spuštěním následujících příkazů:
+Povolte v bráně OpenVPN. Před spuštěním následujících příkazů se ujistěte, že je brána už nakonfigurovaná pro protokol IKEv2 nebo SSTP:
 
 ```azurepowershell-interactive
 $gw = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $name
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientProtocol OpenVPN
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Konfigurování klientů pro OpenVPN, naleznete v tématu [klienty nakonfigurovat OpenVPN](vpn-gateway-howto-openvpn-clients.md).
+Pokud chcete nakonfigurovat klienty pro OpenVPN, přečtěte si téma [Konfigurace klientů OpenVPN](vpn-gateway-howto-openvpn-clients.md).
 
 **"OpenVPN" je ochranná známka společnosti OpenVPN Inc.**

@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: cab13fd65e9fdbd7179e6ba759b1aa696ef95fa1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d955711c44e3822f9c37d47b390b928701ab773b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790335"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860992"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Kurz: vizualizace a analýza událostí z digitálních vláken Azure pomocí Time Series Insights
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Streamování dat pomocí Event Hubs Azure
 > * Analýza pomocí Time Series Insights.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá, že jste [nakonfigurovali](tutorial-facilities-setup.md) a [zřídili](tutorial-facilities-udf.md) vlastní systém Azure Digital Twins. Než budete pokračovat, ujistěte se, že máte následující:
 
@@ -52,11 +52,11 @@ Službu [Event Hubs](../event-hubs/event-hubs-about.md) můžete použít k vytv
 
 1. V levém podokně vyberte **Vytvořit prostředek**.
 
-1. Vyhledejte a vyberte **Event Hubs**. Vyberte **Create** (Vytvořit).
+1. Vyhledejte a vyberte **Event Hubs**. Vyberte **Vytvořit**.
 
     [![vytvořit obor názvů Event Hubs](./media/tutorial-facilities-analyze/create-event-hubs.png)](./media/tutorial-facilities-analyze/create-event-hubs.png#lightbox)
 
-1. Zadejte **název** oboru názvů Event Hubs. Pro **cenovou úroveň**, vaše **předplatné**, **skupinu prostředků** , kterou jste použili pro instanci digitálního vlákna a **umístění**, vyberte **Standard** . Vyberte **Create** (Vytvořit).
+1. Zadejte **název** oboru názvů Event Hubs. Pro **cenovou úroveň**, vaše **předplatné**, **skupinu prostředků** , kterou jste použili pro instanci digitálního vlákna a **umístění**, vyberte **Standard** . Vyberte **Vytvořit**.
 
 1. V Event Hubs nasazení oboru názvů vyberte podokno **Přehled** a pak vyberte **Přejít k prostředku**.
 
@@ -69,7 +69,7 @@ Službu [Event Hubs](../event-hubs/event-hubs-about.md) můžete použít k vytv
 
    Po nasazení centra událostí se zobrazí v podokně **Event Hubs** Event Hubs oboru názvů s **aktivním** stavem. Vyberte toto centrum událostí a otevřete jeho podokno **přehledu** .
 
-1. V horní části vyberte tlačítko **Skupina příjemců** a jako skupinu příjemců zadejte název, třeba **tsievents** . Vyberte **Create** (Vytvořit).
+1. V horní části vyberte tlačítko **Skupina příjemců** a jako skupinu příjemců zadejte název, třeba **tsievents** . Vyberte **Vytvořit**.
 
     [![skupina uživatelů centra událostí](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
 
@@ -139,7 +139,7 @@ Službu [Event Hubs](../event-hubs/event-hubs-about.md) můžete použít k vytv
 
 1. V levém podokně [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek**. 
 
-1. Vyhledejte a vyberte prostředek **Time Series Insights** obecné dostupnosti (GA). Vyberte **Create** (Vytvořit).
+1. Vyhledejte a vyberte prostředek **Time Series Insights** obecné dostupnosti (GA). Vyberte **Vytvořit**.
 
 1. Zadejte **Název** vaší instance služby Time Series Insights a pak vyberte své **Předplatné**. Vyberte **skupinu prostředků** , kterou jste použili pro instanci digitálního vlákna a vaši **polohu**. Vyberte **Další: tlačítko zdroje události** nebo karta **zdroj události** .
 
@@ -157,7 +157,7 @@ Službu [Event Hubs](../event-hubs/event-hubs-about.md) můžete použít k vytv
 
 1. Tlačítko **Přejít na prostředí** otevře [Průzkumníka Time Series Insights](../time-series-insights/time-series-insights-explorer.md). Pokud se nezobrazí žádné události, simulujte události zařízení tak, že přejdete na projekt pro **připojení k zařízení** v ukázce digitálního vlákna a spustíte `dotnet run`.
 
-1. Po vygenerování několika simulovaných událostí se vraťte do Průzkumníka Time Series Insights a v horní části vyberte tlačítko Aktualizovat. Měli byste vidět analytické grafy, které se vytvářejí pro Simulovaná data senzorů. 
+1. Po vygenerování několika simulovaných událostí se vraťte do Průzkumníka Time Series Insights a v horní části vyberte tlačítko Aktualizovat. Zobrazí se vaše analytické grafy, které se vytvářejí pro data simulovaného senzoru. 
 
     [![grafu v Průzkumníkovi Time Series Insights](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
 
@@ -174,7 +174,7 @@ Pokud chcete přestat zkoumat digitální vlákna Azure nad rámec tohoto bodu, 
 1. V nabídce vlevo v [Azure Portal](https://portal.azure.com)vyberte **všechny prostředky**, vyberte svou skupinu prostředků digitálního vynechání a pak vyberte **Odstranit**.
 
     > [!TIP]
-    > Pokud jste narazili na potíže s odstraněním instance digitálního vlákna, aktualizovala se aktualizace služby s touto opravou. Zkuste prosím instanci znovu odstranit.
+    > Pokud zaznamenal/zaznamenala jste potíže odstraníte instanci digitální dvojče, aktualizace služby se týká jenom s opravou. Zkuste to prosím znovu odstraníte instanci.
 
 2. V případě potřeby odstraňte ukázkové aplikace v pracovním počítači.
 

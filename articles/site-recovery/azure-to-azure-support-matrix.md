@@ -2,13 +2,14 @@
 title: Matice podpory pro zotavení po havárii virtuálního počítače Azure pomocí Azure Site Recovery
 description: Shrnuje podporu zotavení po havárii virtuálních počítačů Azure do sekundární oblasti pomocí Azure Site Recovery.
 ms.topic: article
-ms.date: 12/23/2019
-ms.openlocfilehash: b8809682f4d2bed72eec1d64b2ac40b664237632
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 01/10/2020
+ms.author: raynew
+ms.openlocfilehash: 1e30170f521fa21cb69fb1879ea4335025d8d959
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551586"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863923"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -202,7 +203,7 @@ Redundance | LRS a GRS jsou podporovány.<br/><br/> ZRS se nepodporuje.
 Studené a horké úložiště | Nepodporováno | Disky virtuálních počítačů se nepodporují na studeném a horkém úložišti.
 Prostory úložiště | Podporováno |
 Šifrování v klidovém prostředí (SSE) | Podporováno | Pro účty úložiště je výchozí nastavení SSE.   
-Šifrování v klidovém umístění (CMK) | Nepodporuje se |   
+Šifrování v klidovém umístění (CMK) | Podporováno | U spravovaných disků se podporuje jak software, tak klíče HSM.    
 Azure Disk Encryption (ADE) pro operační systém Windows | Podporováno pro virtuální počítače se spravovanými disky. Virtuální počítače používající nespravované disky se nepodporují. |
 Azure Disk Encryption (ADE) pro Linux OS | Podporováno |
 Horké přidání | Podporováno | Povolení replikace pro datový disk, který přidáte do replikovaného virtuálního počítače Azure, se podporuje pro virtuální počítače, které používají spravované disky.

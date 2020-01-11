@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2019
+ms.date: 01/10/2020
 ms.author: b-juche
-ms.openlocfilehash: 94fc4906478e44365d03e9c8eeadd7cb1946a43a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 6b1946cdaebd01a0742f9ce2b2efb5054ac9d2a8
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300539"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867435"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
@@ -45,19 +45,17 @@ Podsíť musí být delegovaná na Azure NetApp Files.
     |    Webové služby AD    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    neuvedeno       |    Odpověď na ozvěnu    |
-    |    Sdílené           |    464       |    TCP           |
-    |    Sdílené           |    464       |    UDP           |
-    |    Sdílené           |    88        |    TCP           |
-    |    Sdílené           |    88        |    UDP           |
+    |    ICMPv4             |    Nevztahuje se       |    Odpověď na ozvěnu    |
+    |    Kerberos           |    464       |    TCP           |
+    |    Kerberos           |    464       |    UDP           |
+    |    Kerberos           |    88        |    TCP           |
+    |    Kerberos           |    88        |    UDP           |
     |    LDAP               |    389       |    TCP           |
     |    LDAP               |    389       |    UDP           |
     |    LDAP               |    3268      |    TCP           |
-    |    Název pro rozhraní NetBIOS       |    138       |    UDP           |
+    |    Název NetBIOS       |    138       |    UDP           |
     |    SAM/LSA            |    445       |    TCP           |
     |    SAM/LSA            |    445       |    UDP           |
-    |    Protokol Secure LDAP        |    636       |    TCP           |
-    |    Protokol Secure LDAP        |    3269      |    TCP           |
     |    W32Time            |    123       |    UDP           |
 
 * Topologie lokality pro cílovou Active Directory Domain Services musí splňovat osvědčené postupy, zejména v případě, že je nasazená síť Azure Azure NetApp Files.  

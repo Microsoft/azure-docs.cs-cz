@@ -2,18 +2,17 @@
 title: 'Azure VPN Gateway: odstranění brány: portál'
 description: Odstraňte bránu virtuální sítě pomocí Azure Portal v modelu nasazení Správce prostředků.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
 ms.service: vpn-gateway
 ms.date: 10/23/2018
 ms.author: cherylmc
 ms.topic: conceptual
-ms.openlocfilehash: e8c7a9c7b6d38c5fee4f57f65dd61a71f9723c07
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: fba213be2de3b747d3ba962674a03c0bc7df3ed5
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74146336"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863661"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>Odstranění brány virtuální sítě pomocí portálu
 
@@ -61,5 +60,5 @@ V tomto okamžiku se odstraní Brána virtuální sítě. Další kroky vám pom
 Pokud si nejste jisti tím, že si z vašich prostředků ve skupině prostředků zachováte nějaké prostředky a chcete ji jenom začít znovu, můžete odstranit celou skupinu prostředků. To je rychlý způsob, jak odebrat vše. Následující postup se vztahuje pouze na model nasazení Správce prostředků.
 
 1. V části **všechny prostředky**vyhledejte skupinu prostředků a kliknutím otevřete toto okno.
-2. Klikněte na tlačítko **odstranit**. V okně Odstranit Zobrazte ovlivněné prostředky. Ujistěte se, že chcete odstranit všechny tyto prostředky. V takovém případě použijte postup v části odstranění brány VPN v horní části tohoto článku.
+2. Klikněte na **Odstranit**. V okně Odstranit Zobrazte ovlivněné prostředky. Ujistěte se, že chcete odstranit všechny tyto prostředky. V takovém případě použijte postup v části odstranění brány VPN v horní části tohoto článku.
 3. Pokud chcete pokračovat, zadejte název skupiny prostředků, kterou chcete odstranit, a pak klikněte na **Odstranit**.

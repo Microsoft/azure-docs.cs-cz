@@ -8,40 +8,64 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c5a16d957f1e0414f92d0cc03442d88d438e4c92
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d1efd44614cc2384043b32da20f38c91f006459c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793633"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863100"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Řešení běžných potíží indexerů v Azure Kognitivní hledání
 
 Indexery můžou být spuštěné v množství problémů při indexování dat do Azure Kognitivní hledání. Mezi hlavní kategorie selhání patří:
 
-* [Připojení ke zdroji dat](#data-source-connection-errors)
+* [Připojení ke zdroji dat nebo jiným prostředkům](#connection-errors)
 * [Zpracování dokumentů](#document-processing-errors)
 * [Přijímání dokumentů do indexu](#index-errors)
 
-## <a name="data-source-connection-errors"></a>Chyby připojení ke zdroji dat
+## <a name="connection-errors"></a>Chyby připojení
 
-### <a name="blob-storage"></a>Blob Storage
+> [!NOTE]
+> Indexery mají omezené podpory pro přístup ke zdrojům dat a dalším prostředkům zabezpečeným mechanismy zabezpečení sítě Azure. V současné době můžou indexery přistupovat pouze ke zdrojům dat prostřednictvím odpovídajících mechanismů omezení rozsahu IP adres nebo pravidel NSG. Podrobnosti o přístupu ke každému podporovanému zdroji dat najdete níže.
+>
+> IP adresu vaší vyhledávací služby můžete zjistit tak, že otestujete jeho plně kvalifikovaný název domény (například `<your-search-service-name>.search.windows.net`).
+>
+> Rozsah IP adres `AzureCognitiveSearch` [značku služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) pro konkrétní oblast, ve které je služba Azure kognitivní hledání přítomná, buď pomocí [souborů JSON ke stažení](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) nebo přes [rozhraní API pro zjišťování značek služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview). Rozsah IP adres se aktualizuje týdně.
 
-#### <a name="storage-account-firewall"></a>Brána firewall účtu úložiště
+### <a name="configure-firewall-rules"></a>Konfigurace pravidel brány firewall
 
-Azure Storage poskytuje konfigurovatelnou bránu firewall. Ve výchozím nastavení je brána firewall vypnutá, aby se služba Azure Kognitivní hledání mohla připojit k vašemu účtu úložiště.
+Azure Storage, CosmosDB a Azure SQL poskytují konfigurovatelnou bránu firewall. V případě povolení brány firewall není k dispozici žádná konkrétní chybová zpráva. Chyby brány firewall jsou obvykle obecné a vypadají jako `The remote server returned an error: (403) Forbidden` nebo `Credentials provided in the connection string are invalid or have expired`.
 
-V případě povolení brány firewall není k dispozici žádná konkrétní chybová zpráva. Chyby brány firewall obvykle vypadají jako `The remote server returned an error: (403) Forbidden`.
+Existují dvě možnosti, jak povolit indexerům přístup k těmto prostředkům v takové instanci:
 
-Můžete ověřit, jestli je na [portálu](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal)povolená brána firewall. Jediným podporovaným řešením je zakázat bránu firewall tak, že vyberete možnost povolit přístup ze [všech sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal).
+* Bránu firewall zakažte tak, že povolíte přístup ze **všech sítí** (Pokud je to možné).
+* Případně můžete v pravidlech brány firewall prostředku (omezení rozsahu IP adres) povolení přístupu pro IP adresu služby Search a rozsahu IP adres `AzureCognitiveSearch` [značky služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) .
 
-Pokud indexer nemá připojen dovednosti _, můžete se pokusit_ [Přidat výjimku](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules) pro IP adresy vaší vyhledávací služby. Tento scénář však není podporován a není zaručena funkčnost.
+Podrobnosti o konfiguraci omezení rozsahu IP adres pro každý typ zdroje dat najdete na následujících odkazech:
 
-IP adresu vaší vyhledávací služby můžete zjistit pomocí testu jejich plně kvalifikovaného názvu domény (`<your-search-service-name>.search.windows.net`).
+* [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)
 
-### <a name="cosmos-db"></a>Cosmos DB
+* [Databáze Cosmos](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)
 
-#### <a name="indexing-isnt-enabled"></a>Indexování není povoleno.
+* [Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)
+
+**Omezení**: jak je uvedeno v dokumentaci výše pro Azure Storage, omezení rozsahu IP adres budou fungovat jenom v případě, že vaše vyhledávací služba a váš účet úložiště jsou v různých oblastech.
+
+Funkce Azure Functions (které se dají použít jako [vlastní dovednosti webového rozhraní API](cognitive-search-custom-skill-web-api.md)) podporují také [omezení IP adres](https://docs.microsoft.com/azure/azure-functions/ip-addresses#ip-address-restrictions). Seznam IP adres, které se mají konfigurovat, by představoval IP adresu vaší vyhledávací služby a rozsah IP adres `AzureCognitiveSearch` tag služby.
+
+[Tady](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md) jsou uvedené podrobnosti o přístupu k datům na SQL serveru na virtuálním počítači Azure.
+
+### <a name="configure-network-security-group-nsg-rules"></a>Konfigurace pravidel skupiny zabezpečení sítě (NSG)
+
+Při přístupu k datům ve spravované instanci SQL nebo při použití virtuálního počítače Azure jako identifikátoru URI webové služby pro [vlastní dovednosti webového rozhraní API](cognitive-search-custom-skill-web-api.md)se zákazníkům nemusí zabývat konkrétními IP adresami.
+
+V takových případech se virtuální počítač Azure nebo spravovaná instance SQL dají nakonfigurovat tak, aby se nacházely v rámci virtuální sítě. Pak se skupina zabezpečení sítě dá nakonfigurovat tak, aby se vyfiltroval typ síťového provozu, který může přecházet do podsítí a síťových rozhraní virtuální sítě.
+
+Značku služby `AzureCognitiveSearch` můžete přímo použít v příchozích [pravidlech NSG](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#work-with-security-rules) , aniž byste museli vyhledat svůj rozsah IP adres.
+
+Podrobnější informace o přístupu k datům ve spravované instanci SQL jsou uvedené [tady](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md) .
+
+### <a name="cosmosdb-indexing-isnt-enabled"></a>CosmosDB "indexování" není povoleno
 
 Azure Kognitivní hledání má implicitní závislost na Cosmos DB indexování. Pokud automatické indexování v Cosmos DB vypnete, Azure Kognitivní hledání vrátí úspěšný stav, ale index obsahu kontejneru se nezdařil. Pokyny, jak kontrolovat nastavení a zapnout indexování, najdete v tématu [Správa indexování v Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-azure-portal).
 

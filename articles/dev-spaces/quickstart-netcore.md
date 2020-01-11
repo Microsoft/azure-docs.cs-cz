@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: V tomto rychlém startu se dozvíte, jak používat Azure Dev Spaces a Visual Studio Code k ladění a rychlé iteraci aplikace .NET Core ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 29d601b9996b9cdf7825e367cae04521d4c4bc4a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 0025f395c89a8a9f2eff4204ed0859cda0fa86fc
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771083"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867526"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>Rychlý Start: ladění a iterace na Kubernetes: Visual Studio Code a .NET Core – Azure Dev Spaces
 
@@ -92,6 +92,9 @@ Když Visual Studio Code taky vyzve ke konfiguraci veřejného koncového bodu, 
 ![Vybrat veřejný koncový bod](media/common/select-public-endpoint.png)
 
 Tento příkaz připraví projekt tak, aby běžel v Azure Dev Spaces generováním grafu typu souboru Dockerfile a Helm. Také generuje adresář *. VSCode* s konfigurací ladění v kořenovém adresáři projektu.
+
+> [!TIP]
+> [Graf souboru Dockerfile a Helm](how-dev-spaces-works.md#prepare-your-code) pro váš projekt je používán Azure dev Spaces k sestavení a spuštění kódu, ale tyto soubory lze změnit, pokud chcete změnit způsob sestavení a spuštění projektu.
 
 ## <a name="build-and-run-code-in-kubernetes-from-visual-studio"></a>Sestavování a spouštění kódu v Kubernetes ze sady Visual Studio
 

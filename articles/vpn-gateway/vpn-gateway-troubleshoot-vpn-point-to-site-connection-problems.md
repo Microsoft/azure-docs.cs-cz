@@ -1,25 +1,19 @@
 ---
-title: Řešení potíží s připojením Point-to-site pro Azure | Microsoft Docs
+title: Řešení problémů s připojením Point-to-site k Azure
+titleSuffix: Azure VPN Gateway
 description: Naučte se řešit potíže s připojením Point-to-site.
 services: vpn-gateway
-documentationcenter: na
 author: chadmath
-manager: dcscontentpm
-editor: ''
-tags: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 09/30/2019
 ms.author: genli
-ms.openlocfilehash: cfa95f2aab5ba270aea0a36b037ae293b36c7b28
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 2c5e8b344cad6928ee586dc5a5b69095f0b14552
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695527"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863644"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Řešení potíží: problémy s připojením k bodům Azure Point-to-site
 
@@ -133,7 +127,7 @@ Když se pokusíte připojit ke službě Azure Virtual Network pomocí klienta V
 
 ### <a name="symptom"></a>Příznak
 
-Zobrazí se následující chybová zpráva:
+Zobrazí se tato chybová zpráva:
 
 **Chyba stahování souboru Není zadaný cílový identifikátor URI.**
 
@@ -339,10 +333,10 @@ Ovladač síťové karty je zastaralý.
 
 Aktualizujte ovladač síťových adaptérů:
 
-1. Klikněte na **Start**, zadejte **Device Manager**a vyberte ho ze seznamu výsledků. Pokud se zobrazí výzva k zadání hesla správce nebo k potvrzení, zadejte heslo nebo zadejte potvrzení.
+1. Klikněte na **Start**, zadejte **Device Manager**a vyberte ho ze seznamu výsledků. Pokud se zobrazí výzva k zadání hesla správce nebo k potvrzení, zadejte heslo nebo potvrďte akci.
 2. V kategorii **síťové adaptéry** Najděte síťovou kartu, kterou chcete aktualizovat.  
 3. Dvakrát klikněte na název zařízení, vyberte **Aktualizovat ovladač**a **pro aktualizovaný software ovladače vyberte automaticky hledat**.
-4. Pokud systém Windows nenalezne nový ovladač, zkuste ho vyhledat na webu výrobce zařízení a postupujte podle pokynů.
+4. Pokud Windows nenajde nový ovladač, zkuste ho vyhledat na webu výrobce zařízení a postupujte podle pokynů výrobce.
 5. Restartujte počítač a zkuste připojení znovu.
 
 ## <a name="error-file-download-error-target-uri-is-not-specified"></a>Chyba: cílový identifikátor URI při stahování souboru není zadaný.

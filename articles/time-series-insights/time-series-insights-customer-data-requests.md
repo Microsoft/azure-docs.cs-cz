@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: 5f0f1cf4202eebd3639d3946cd4c800bc5c216a0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c33fce5b6999c5b8372fe4c04401bf55898aee8d
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460320"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863440"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Souhrnné informace o zákaznická data žádosti o funkce
 
@@ -34,9 +34,9 @@ Správce klienta může odstranit zákaznická data pomocí Azure Portal.
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-Než však odstraníte zákaznická data prostřednictvím portálu, měli byste odebrat zásady přístupu uživatele z Time Series Insightsho prostředí v rámci Azure Portal. Další informace najdete v tématu [udělení přístupu k datům Time Series Insights prostředí pomocí Azure Portal](time-series-insights-data-access.md).
+Než však odstraníte zákaznická data prostřednictvím portálu, měli byste odebrat zásady přístupu uživatele z Time Series Insightsho prostředí v rámci Azure Portal. Další informace najdete v článku [udělení přístupu k datům Time Series Insights prostředí pomocí Azure Portal](time-series-insights-data-access.md).
 
-Operace odstranění můžete také provádět v zásadách přístupu pomocí REST API. Další informace najdete v tématu [zásady přístupu – odstranění](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/delete).
+Operace odstranění můžete také provádět v zásadách přístupu pomocí REST API. Další informace najdete v tématu [zásady přístupu pro čtení – odstranění](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/delete).
 
 Time Series Insights je integrován do okna zásad v Azure Portal. Jak Time Series Insights, tak okno zásad vám umožní zobrazit, exportovat a odstranit uživatelská data uložená v rámci služby. Jakákoli akce odstranění provedené v okně zásad Azure Portal vede k odstranění uživatelských dat v rámci Time Series Insights. Pokud má uživatel například uložený osobní dotaz, tento dotaz je trvale odstraněn z Průzkumníka Time Series Insights. Pokud má uživatel uložený sdílený dotaz, dotaz bude trvat, ale informace o uživateli se trvale odstraní. Následující poznámka obsahuje pokyny k provedení těchto úloh.
 
@@ -46,9 +46,9 @@ Podobně jako při odstraňování dat může správce klienta zobrazit a export
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-Pokud jste správcem tenanta, můžete v Azure Portal zobrazit zásady přístupu k datům v prostředí Time Series Insights. Další informace najdete v tématu [udělení přístupu k datům Time Series Insights prostředí pomocí Azure Portal](time-series-insights-data-access.md).
+Pokud jste správcem tenanta, můžete v Azure Portal zobrazit zásady přístupu k datům v prostředí Time Series Insights. Další informace najdete v článku [udělení přístupu k datům Time Series Insights prostředí pomocí Azure Portal](time-series-insights-data-access.md).
 
-Je také možné provádět operace exportu pro zásady přístupu pomocí operace "výpis podle prostředí" v zadaném REST API. Další informace najdete v tématu [zásady přístupu – seznam podle prostředí](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/listbyenvironment).
+Je také možné provádět operace exportu pro zásady přístupu pomocí operace "výpis podle prostředí" v zadaném REST API. Další informace najdete v tématu [zásady přístupu pro čtení – seznam podle prostředí](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/listbyenvironment).
 
 ## <a name="to-delete-data-stored-within-time-series-insights"></a>Odstranění dat uložených v Time Series Insights
 
@@ -58,7 +58,7 @@ Osobní údaje se můžou přizpůsobovat do Time Series Insights úložiště, 
 
 Chcete-li zobrazit a exportovat data uložená v Time Series Insights, je nutné vyhledat tato data. K zobrazení a exportu dat můžete použít rozhraní API pro Time Series Insights nebo Time Series Insights dotazů. Chcete-li zobrazit a exportovat data pomocí Průzkumníka Time Series Insights, nejprve vyhledejte konkrétní uživatelská data. Po hledání klikněte pravým tlačítkem na graf a vyberte **prozkoumat události**. Zobrazí se mřížka události a prezentuje možnosti exportu dat ve formátu CSV a formátu JSON.
 
-Další informace najdete v tématu [Azure Time Series Insights Explorer](time-series-insights-explorer.md).
+Další informace najdete v [Azure Time Series Insights Exploreru](time-series-insights-explorer.md).
 
 **Odstranit data**
 

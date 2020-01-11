@@ -3,12 +3,12 @@ title: Kurz – vytvoření kontroleru Application Gateway příchozího přenos
 description: Kurz ilustrující postup vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service pomocí Application Gateway jako řadiče pro příchozí přenosy
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: 6d07fc6becf76453de792c69b25aea49c39775ae
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 898a2052f31965ee45ab2cc5df6956af4831b0d2
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159089"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867404"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Kurz: vytvoření kontroleru Application Gateway příchozího přenosu ve službě Azure Kubernetes
 
@@ -67,7 +67,7 @@ Prvním krokem je vytvoření adresáře s konfiguračními soubory Terraformu p
 
 Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele Azure.
 
-1. Ve Cloud Shellu vytvořte soubor s názvem `main.tf`.
+1. Ve službě Cloud Shell vytvořte soubor s názvem `main.tf`.
 
     ```bash
     code main.tf
@@ -91,7 +91,7 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele 
 
 Vytvořte konfigurační soubor Terraformu, který obsahuje seznam všech proměnných potřebných pro toto nasazení.
 
-1. Ve Cloud Shellu vytvořte soubor s názvem `variables.tf`.
+1. Ve službě Cloud Shell vytvořte soubor s názvem `variables.tf`.
 
     ```bash
     code variables.tf
@@ -233,7 +233,7 @@ Vytvořte konfigurační soubor Terraformu, který obsahuje seznam všech promě
 ## <a name="define-the-resources"></a>Definování prostředků 
 Vytvořte konfigurační soubor Terraformu, který vytvoří všechny prostředky. 
 
-1. Ve Cloud Shellu vytvořte soubor s názvem `resources.tf`.
+1. Ve službě Cloud Shell vytvořte soubor s názvem `resources.tf`.
 
     ```bash
     code resources.tf
@@ -261,7 +261,7 @@ Vytvořte konfigurační soubor Terraformu, který vytvoří všechny prostředk
       name = var.resource_group_name
     }
 
-    # User Assigned Idntities 
+    # User Assigned Identities 
     resource "azurerm_user_assigned_identity" "testIdentity" {
       resource_group_name = data.azurerm_resource_group.rg.name
       location            = data.azurerm_resource_group.rg.location
@@ -481,7 +481,7 @@ Se službou AKS platíte jenom za pracovní uzly. Záznam `agent_pool_profile` n
 
 [Terraformuové výstupy](https://www.terraform.io/docs/configuration/outputs.html) umožňují definovat hodnoty, které jsou zvýrazněné uživateli, když terraformu použije plán, a dá se dotázat pomocí příkazu `terraform output`. V této části vytvoříte výstupní soubor, který pomocí [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) umožňuje přístup ke clusteru.
 
-1. Ve Cloud Shellu vytvořte soubor s názvem `output.tf`.
+1. Ve službě Cloud Shell vytvořte soubor s názvem `output.tf`.
 
     ```bash
     code output.tf
@@ -543,7 +543,7 @@ Terraform sleduje stav místně prostřednictvím souboru `terraform.tfstate`. T
 
     ![Nabídka účtu úložiště](./media/terraform-k8s-cluster-appgw-with-tf-aks/storage-account.png)
 
-1. Poznamenejte si hodnotu **Klíč** v části **klíč1**. (Výběr ikony napravo od klíče zkopíruje příslušnou hodnotu do schránky.)
+1. Poznamenejte si hodnotu **klíče** klíč1. (Výběr ikony napravo od klíče zkopíruje příslušnou hodnotu do schránky.)
 
     ![Přístupové klíče účtu úložiště](./media/terraform-k8s-cluster-appgw-with-tf-aks/storage-account-access-key.png)
 

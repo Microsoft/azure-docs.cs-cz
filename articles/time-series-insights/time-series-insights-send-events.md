@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dfd9a8d2723136ef68d983eb99bf2391fb87879
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 159f79e61b43761db5a65c101928d4e6ac5b4d29
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894794"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861774"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Odesílání událostí do prostředí Time Series Insights pomocí centra událostí
 
@@ -24,7 +24,7 @@ Tento článek vysvětluje, jak vytvořit a nakonfigurovat centrum událostí v 
 
 ## <a name="configure-an-event-hub"></a>Konfigurace centra událostí
 
-1. Zjistěte, jak vytvořit Centrum událostí, najdete v článku [dokumentace ke službě Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
+1. Pokud se chcete dozvědět, jak vytvořit centrum událostí, přečtěte si [dokumentaci Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
 1. Do vyhledávacího pole vyhledejte **Event Hubs**. Ve vráceném seznamu vyberte **Event Hubs**.
 1. Vyberte Centrum událostí.
 1. Při vytváření centra událostí vytváříte obor názvů centra událostí. Pokud jste ještě nevytvořili centrum událostí v rámci oboru názvů, vytvořte v nabídce v části **entity**centrum událostí.  
@@ -55,13 +55,13 @@ Tento článek vysvětluje, jak vytvořit a nakonfigurovat centrum událostí v 
 
 ## <a name="add-a-time-series-insights-instance"></a>Přidání instance služby Time Series Insights
 
-Aktualizace služby Time Series Insights používá k přidání kontextové údaje do příchozí telemetrická data instance. Data je spojena v době zpracování dotazu **ID řady času**. **ID časové řady** ukázkového projektu Windmills, který používáme dále v tomto článku, je `id`. Další informace o instancích Insight Series Insights a **ID časových řad**najdete v tématu [modely časových řad](./time-series-insights-update-tsm.md).
+Aktualizace služby Time Series Insights používá k přidání kontextové údaje do příchozí telemetrická data instance. Data je spojena v době zpracování dotazu **ID řady času**. **ID časové řady** ukázkového projektu Windmills, který používáme dále v tomto článku, je `id`. Pokud se chcete dozvědět víc o instancích Insights Time Series Insights a **ID časových řad**, přečtěte si [modely časových řad](./time-series-insights-update-tsm.md)pro čtení.
 
 ### <a name="create-a-time-series-insights-event-source"></a>Vytvoření zdroje událostí Time Series Insights
 
 1. Pokud jste ještě nevytvořili zdroj událostí, dokončete postup [vytvoření zdroje událostí](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 
-1. Nastavit hodnotu pro `timeSeriesId`. Další informace o **ID řady času**, naleznete v tématu [čas řady modely](./time-series-insights-update-tsm.md).
+1. Nastavit hodnotu pro `timeSeriesId`. Další informace o **ID časových řad**najdete v tématu [modely časových řad](./time-series-insights-update-tsm.md)pro čtení.
 
 ### <a name="push-events-to-windmills-sample"></a>Vložení událostí do Windmills Sample
 
@@ -80,7 +80,7 @@ Aktualizace služby Time Series Insights používá k přidání kontextové úd
 
 1. Vyberte **Kliknutím spustíte**. Simulátor generuje instance JSON, které můžete použít přímo.
 
-1. Vraťte se do vašeho centra událostí na webu Azure Portal. Na stránce **Přehled** se zobrazí nové události, které centrum událostí přijme.
+1. Vraťte se do vašeho centra událostí na webu Azure Portal. Na stránce **Přehled** se zobrazí nové události, které centrum událostí přijalo.
 
     [![stránku Přehled centra událostí, která zobrazuje metriky pro centrum událostí.](media/send-events/review-windmill-telemetry.png)](media/send-events/review-windmill-telemetry.png#lightbox)
 

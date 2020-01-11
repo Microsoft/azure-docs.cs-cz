@@ -1,5 +1,5 @@
 ---
-title: Skript Azure Powershellu ukázkový – vytvoření brány VPN Gateway | Dokumentace Microsoftu
+title: Ukázka skriptu Azure PowerShell – vytvoření VPN Gateway | Microsoft Docs
 description: Vytvořte bránu sítě VPN pomocí PowerShellu.
 services: vpn-gateway
 documentationcenter: vpn-gateway
@@ -7,14 +7,14 @@ author: anzaman
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 04/17/2018
+ms.date: 01/09/2020
 ms.author: alzam
-ms.openlocfilehash: 433899c2b558a5182ca1a5c7c0e0ac76c87e0007
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 52a5a70bc8c9f56ff4c5a2e971775d582c8db94d
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66113757"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862386"
 ---
 # <a name="create-a-vpn-gateway-with-powershell"></a>Vytvoření brány sítě VPN pomocí PowerShellu
 
@@ -58,7 +58,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete prostředky, které jste vytvořili, použijte [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) příkazu k odstranění skupiny prostředků. Tím odstraníte skupinu prostředků a všechny prostředky, které obsahuje.
+Když už nepotřebujete prostředky, které jste vytvořili, odstraňte skupinu prostředků pomocí příkazu [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) . Tím odstraníte skupinu prostředků a všechny prostředky, které obsahuje.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name TestRG1
@@ -80,6 +80,6 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. |
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Nastaví konfiguraci podsítě pro virtuální síť. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).

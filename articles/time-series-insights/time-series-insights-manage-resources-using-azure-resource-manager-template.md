@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4edf5189b54a5b1fb1b953064c5db1cd50930b84
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c4902ff5194c1648a8353b2a21ea559d15d574b3
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452849"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861842"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Vytváření Time Series Insightsch prostředků pomocí šablon Azure Resource Manager
 
@@ -26,7 +26,7 @@ Time Series Insights podporuje následující zdroje:
 
    | Prostředek | Popis |
    | --- | --- |
-   | Prostředí | Time Series Insights prostředí je logické seskupení událostí, které jsou čteny od zprostředkovatelů událostí, uloženy a zpřístupněny pro dotaz. Další informace najdete v tématu [plánování Azure Time Series Insightsho prostředí](time-series-insights-environment-planning.md) . |
+   | Prostředí | Time Series Insights prostředí je logické seskupení událostí, které jsou čteny od zprostředkovatelů událostí, uloženy a zpřístupněny pro dotaz. Další informace najdete v článku [plánování Azure Time Series Insightsho prostředí](time-series-insights-environment-planning.md) . |
    | Zdroj události | Zdroj události je připojení ke zprostředkovateli událostí, ze kterého Time Series Insights čte události do prostředí a ingestuje je. Aktuálně podporované zdroje událostí jsou IoT Hub a centra událostí. |
    | Referenční sada dat | Referenční sady dat poskytují metadata o událostech v prostředí. Metadata v referenčních sadách dat budou během příchozího přenosu propojena s událostmi. Referenční sady dat jsou definovány jako prostředky podle jejich vlastností klíče události. Skutečná metadata, která tvoří referenční datovou sadu, se nahrají nebo upraví prostřednictvím rozhraní API roviny dat. |
    | Zásady přístupu | Zásady přístupu udělují oprávnění k vydávání dotazů na data, manipulaci s referenčními daty v prostředí a sdílení uložených dotazů a perspektiv přidružených k prostředí. Další informace najdete v článku [udělení přístupu k datům Time Series Insights prostředí pomocí Azure Portal](time-series-insights-data-access.md) |
@@ -75,8 +75,8 @@ Následující postup popisuje, jak pomocí PowerShellu nasadit šablonu Azure R
      | --- | --- |
      | existingEventHubResourceId | Volitelné ID prostředku existujícího centra událostí, které bude připojeno ke Time Series Insights prostředí prostřednictvím zdroje událostí. **Poznámka:** Uživatel, který šablonu nasazuje, musí mít oprávnění k provedení operace klíče listkey v centru událostí. Pokud není předána žádná hodnota, vytvoří se v šabloně nové centrum událostí. |
      | environmentDisplayName | Volitelný popisný název, který se zobrazí v nástrojích nebo uživatelských rozhraních místo názvu prostředí. |
-     | environmentSkuName | Název skladové jednotky. Další informace najdete na stránce s [cenami Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).  |
-     | environmentSkuCapacity | Kapacita jednotky SKU. Další informace najdete na stránce s [cenami Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).|
+     | environmentSkuName | Název skladové jednotky. Další informace najdete na stránce s [cenami pro Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).  |
+     | environmentSkuCapacity | Kapacita jednotky SKU. Další informace najdete na stránce s [cenami pro Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).|
      | environmentDataRetentionTime | Minimální časové rozpětí, které budou události prostředí k dispozici pro dotaz. Hodnota musí být zadána ve formátu ISO 8601, například `P30D` pro zásady uchovávání informací po dobu 30 dnů. |
      | eventSourceDisplayName | Volitelný popisný název, který se zobrazí v nástrojích nebo uživatelských rozhraních namísto názvu zdroje události. |
      | eventSourceTimestampPropertyName | Vlastnost události, která bude použita jako časové razítko zdroje události. Pokud není zadána hodnota pro timestampPropertyName, nebo pokud je zadána hodnota null nebo prázdný řetězec, bude použit čas vytvoření události. |
@@ -86,7 +86,7 @@ Následující postup popisuje, jak pomocí PowerShellu nasadit šablonu Azure R
 
    * Například následující soubor parametrů by se použil k vytvoření prostředí a zdroje událostí, který čte události z existujícího centra událostí. Vytvoří také dvě zásady přístupu, které udělí přispěvatelům přístup k prostředí.
 
-     ```json
+     ```JSON
      {
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
          "contentVersion": "1.0.0.0",
@@ -252,4 +252,4 @@ Následující postup popisuje, jak pomocí PowerShellu nasadit šablonu Azure R
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o programové správě Time Series Insightsch prostředků pomocí rozhraní REST API najdete v tématu [Time Series Insights Management](https://docs.microsoft.com/rest/api/time-series-insights-management/).
+- Informace o programové správě Time Series Insightsch prostředků pomocí rozhraní REST API najdete v článku [správa Time Series Insights Management](https://docs.microsoft.com/rest/api/time-series-insights-management/).

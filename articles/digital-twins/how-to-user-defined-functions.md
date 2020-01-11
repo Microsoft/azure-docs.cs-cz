@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 824fe611867216233e223e505f5321b23b7406fb
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7334d4292db710a32b888d9a3ad4e78872d15227
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383313"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863508"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Jak vytvořit uživatelsky definované funkce v digitálních prostředníkech Azure
 
@@ -193,11 +193,11 @@ function process(telemetry, executionContext) {
 }
 ```
 
-Složitější ukázku kódu uživatelsky definované funkce naleznete v [rychlém](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js)startu.
+Složitější ukázku kódu uživatelsky definované funkce najdete v [rychlém](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js)startu pro obsazení.
 
 ## <a name="create-a-role-assignment"></a>Vytvoření přiřazení role
 
-Vytvořte přiřazení role pro funkci definovanou uživatelem, která se má spustit. Pokud pro uživatelsky definovanou funkci neexistuje žádné přiřazení role, nebude mít správná oprávnění k interakci s rozhraním API pro správu nebo musí mít přístup k provádění akcí v objektech grafu. Akce, které může uživatelsky definovaná funkce provádět, jsou určené a definované prostřednictvím řízení přístupu na základě role v rámci rozhraní API pro správu digitálních vláken Azure. Například uživatelsky definované funkce mohou být omezeny oborem zadáním určitých rolí nebo určitých cest řízení přístupu. Další informace najdete v dokumentaci [řízení přístupu na základě rolí](./security-role-based-access-control.md) .
+Vytvořte přiřazení role pro funkci definovanou uživatelem, která se má spustit. Pokud pro uživatelsky definovanou funkci neexistuje žádné přiřazení role, nebude mít správná oprávnění k interakci s rozhraním API pro správu nebo musí mít přístup k provádění akcí v objektech grafu. Akce, které může uživatelsky definovaná funkce provádět, jsou určené a definované prostřednictvím řízení přístupu na základě role v rámci rozhraní API pro správu digitálních vláken Azure. Například uživatelsky definované funkce mohou být omezeny oborem zadáním určitých rolí nebo určitých cest řízení přístupu. Další informace najdete v dokumentaci pro [řízení přístupu na základě rolí](./security-role-based-access-control.md) .
 
 1. [Dotaz na systémové rozhraní API](./security-create-manage-role-assignments.md#retrieve-all-roles) pro všechny role, abyste získali ID role, kterou chcete přiřadit k uživatelsky definované funkci. Provedete to tak, že vytvoříte ověřený požadavek HTTP GET na:
 

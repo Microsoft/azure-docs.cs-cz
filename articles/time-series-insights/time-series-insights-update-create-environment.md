@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 12/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6adb48b9d6c490b60302f93101506ec53679ae4f
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: bebc7dde30dad57157d0abee7f2294d9da58fd5c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530235"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861808"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Kurz: Nastavení prostředí Azure čas Series Insights ve verzi Preview
 
@@ -39,7 +39,7 @@ Zaregistrujte si [bezplatné předplatné Azure](https://azure.microsoft.com/fre
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Minimálně musíte mít roli **přispěvatele** pro předplatné Azure. Další informace najdete v tématu [Správa přístupu pomocí řízení přístupu na základě role a Azure Portal](../role-based-access-control/role-assignments-portal.md).
+* Minimálně musíte mít roli **přispěvatele** pro předplatné Azure. Další informace najdete v článku [Správa přístupu pomocí řízení přístupu na základě role a Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="create-a-device-simulation"></a>Vytvoření simulace zařízení
 
@@ -62,12 +62,12 @@ V této části vytvoříte tři simulovaná zařízení, která odesílají dat
 
    [![zřízení řešení pro simulaci zařízení.](media/v2-update-provision/iot-solution-accelerators-configuration.png)](media/v2-update-provision/iot-solution-accelerators-configuration.png#lightbox)
 
-1. Po dokončení zřizování se zobrazí dvě aktualizace, které zobrazují, že stav nasazení se přesunul ze **zřizování** na **připraveno**. 
+1. Po dokončení zřizování se zobrazí dvě oznámení oznamující, že stav nasazení se přesunul ze **zřizování** na **připraveno**. 
 
    >[!IMPORTANT]
    > Ještě nezadávejte akcelerátor řešení. Tuto webovou stránku nechte otevřenou, protože se k ní vrátíte později.
 
-   [zřizování řešení pro simulaci zařízení ![dokončeno.](media/v2-update-provision/iot-solution-accelerator-ready.png)](media/v2-update-provision/iot-solution-accelerator-ready.png#lightbox)
+   [![se zřizování řešení pro simulaci zařízení dokončila.](media/v2-update-provision/iot-solution-accelerator-ready.png)](media/v2-update-provision/iot-solution-accelerator-ready.png#lightbox)
 
 1. Nyní zkontrolujte nově vytvořené prostředky v Azure Portal. Na stránce **skupiny prostředků** si všimněte, že se vytvořila nová skupina prostředků pomocí **názvu řešení** , který jste zadali v posledním kroku. Poznamenejte si prostředky, které byly vytvořeny pro simulaci zařízení.
 
@@ -92,7 +92,7 @@ Tato část popisuje, jak vytvořit prostředí Azure Time Series Insights Previ
     | **Skupina prostředků** | Vyberte existující skupinu prostředků nebo vytvořte novou skupinu prostředků pro prostředek prostředí Azure Time Series Insights Preview. Skupina prostředků představuje kontejner prostředků Azure. Osvědčeným postupem je použití stejné skupiny prostředků jako u jiných prostředků IoT, které jsou vytvořené simulátorem zařízení. |
     | **Umístění** | Vyberte oblast datového centra pro prostředí Azure Time Series Insights Preview. Abyste se vyhnuli další latenci, je nejlepší vytvořit prostředí Azure Time Series Insights Preview ve stejné oblasti, ve které je služba IoT Hub vytvořená simulátorem zařízení. |
     | **Vrstva** |  Vyberte **PAYG** (průběžné*platby*). Toto je SKU produktu Azure Time Series Insights Preview. |
-    | **Název vlastnosti** | Zadejte hodnotu, která jedinečně identifikuje vaši instanci časové řady. Hodnotu, kterou zadáte v poli **ID vlastnosti** , nelze později změnit. Pro tento kurz zadejte ***iothub-Connection-Device-ID***. Další informace o ID časových řad najdete v tématu [osvědčené postupy pro výběr ID časové řady](./time-series-insights-update-how-to-id.md). |
+    | **Název vlastnosti** | Zadejte hodnotu, která jedinečně identifikuje vaši instanci časové řady. Hodnotu, kterou zadáte v poli **ID vlastnosti** , nelze později změnit. Pro tento kurz zadejte ***iothub-Connection-Device-ID***. Pokud se chcete dozvědět víc o ID časových řad, přečtěte si [osvědčené postupy pro výběr ID časové řady](./time-series-insights-update-how-to-id.md). |
     | **Název účtu úložiště** | Zadejte globálně jedinečný název nového účtu úložiště.|
     |**Povolit teplé úložiště**|Vyberte **Ano** , pokud chcete povolit teplé úložiště. Později se můžete vrátit a povolit toto nastavení. |
     |**Uchovávání dat (ve dnech)**|Vyberte výchozí možnost 7 dní. |
@@ -125,7 +125,7 @@ Tato část popisuje, jak vytvořit prostředí Azure Time Series Insights Previ
 
     [pomocí tlačítka vytvořit ![stránku revize a vytvořit.](media/v2-update-provision/tsi-environment-confirmation.png)](media/v2-update-provision/tsi-environment-confirmation.png#lightbox)
 
-    Můžete zobrazit stav nasazení:
+    Můžete zkontrolovat stav nasazení:
 
     [![oznámení, že nasazení bylo dokončeno.](media/v2-update-provision/tsi-deployment-notification.png)](media/v2-update-provision/tsi-deployment-notification.png#lightbox)
 
@@ -169,7 +169,7 @@ Teď, když jste nasadili Time Series Insights prostředí, začněte streamovat
 
     Vyberte **spustit simulaci**.
 
-    V řídicím panelu pro simulaci zařízení se zobrazí **aktivní zařízení** a **Celkový počet zpráv**.
+    V řídicím panelu pro simulaci zařízení se zobrazí **aktivní zařízení** a **Celkový počet zpráv** .
 
     [![řídicí panel simulace Azure IoT.](media/v2-update-provision/tsi-see-active-devices-and-messages.png)](media/v2-update-provision/tsi-see-active-devices-and-messages.png#lightbox)
 
@@ -181,9 +181,9 @@ V této části provedete základní analýzy dat časových řad pomocí [Průz
 
     [![URL aplikace Time Series Insights Preview.](media/v2-update-provision/tsi-select-explorer-url.png)](media/v2-update-provision/tsi-select-explorer-url.png#lightbox)
 
-1. V Průzkumníku Time Series Insights se zobrazí pruh v horní části obrazovky. Toto je váš výběr vaší dostupnosti. Ujistěte se, že máte vybrané aspoň dvě 2 m, a v případě potřeby rozbalte časový rámec výběrem a přetažením úchytů pro výběr vlevo a vpravo.
+1. V Průzkumníkovi Time Series Insights se zobrazí pruh rozložený na horní části obrazovky. Toto je váš výběr vaší dostupnosti. Ujistěte se, že máte vybrané aspoň dvě 2 m, a v případě potřeby rozbalte časový rámec výběrem a přetažením úchytů pro výběr vlevo a vpravo.
 
-1. Na levé straně budete moct vidět **instance časových řad** .
+1. **Instance časových řad** se zobrazí na levé straně.
 
     [![seznam nenadřazených instancí.](media/v2-update-provision/tsi-explorer-unparented-instances.png)](media/v2-update-provision/tsi-explorer-unparented-instances.png#lightbox)
 
@@ -205,7 +205,7 @@ V této části provedete základní analýzy dat časových řad pomocí [Průz
 
 ## <a name="define-and-apply-a-model"></a>Definování a použití modelu
 
-V této části použijete model ke strukturování dat. Pro dokončení modelu definujete typy, hierarchie a instance. Další informace o modelování dat najdete v tématu [model časové řady](./time-series-insights-update-tsm.md).
+V této části použijete model ke strukturování dat. Pro dokončení modelu definujete typy, hierarchie a instance. Další informace o modelování dat získáte v [modelu časové řady](./time-series-insights-update-tsm.md)pro čtení.
 
 1. V Průzkumníku vyberte kartu **model** :
 
@@ -254,9 +254,9 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
 
     Vyberte **Použít**.
 
-1. Vyberte **Uložit**. Měli byste vidět tři proměnné, které byly vytvořeny.
+1. Vyberte **Uložit**. Vytvoří a zobrazí tři proměnné.
 
-    [![po přidání typu se zobrazí v zobrazení modelu.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
+    [![po přidání typu, přečtěte si ho v zobrazení modelu.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
 
 1. Vyberte kartu **hierarchie** . Pak vyberte **+ Přidat**.
    

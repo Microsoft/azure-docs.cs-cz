@@ -7,14 +7,14 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 7bf47731f2a3621e7bbdc1b104d94e97f2d03099
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: b9ad5ea6def79c4d7f132558b8b5339bac6f1bc3
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158650"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861298"
 ---
-# <a name="assess-servers-using-imported-data"></a>Vyhodnocování serverů pomocí importovaných dat
+# <a name="assess-servers-using-imported-data"></a>Vyhodnocení fyzických serverů s využitím importovaných dat
 
 Tento článek vysvětluje, jak vyhodnotit místní servery s [Azure Migrate: posouzení serveru](migrate-services-overview.md#azure-migrate-server-assessment-tool)pomocí importu metadat serveru pomocí CSV. Pomocí této metody vyhodnocení není nutné nastavovat zařízení Azure Migrate, abyste mohli vytvořit posouzení. To je užitečné v případě, že:
 
@@ -26,7 +26,7 @@ Tento článek vysvětluje, jak vyhodnotit místní servery s [Azure Migrate: po
 
 ## <a name="before-you-start"></a>Než začnete
 
-Všimněte si, že:
+Poznámky:
 
 - V jednom souboru CSV můžete přidat maximálně 20000 serverů.
 - Do Azure Migrate projektu můžete přidat až 20000 serverů pomocí CSV.
@@ -96,7 +96,7 @@ Stáhněte šablonu sdíleného svazku clusteru a přidejte do ní informace o s
 
 1. V ** > ** **cíli migrace** > **Azure Migrate: posouzení serveru**, klikněte na **zjistit**.
 2. V možnosti **zjistit počítače**vyberte **importovat pomocí. Sdílený svazek clusteru**.
-3. Kliknutím na **Stáhnout** Stáhněte. Šablona sdíleného svazku clusteru. Případně si ho můžete [stáhnout přímo](https://go.microsoft.com/fwlink/?linkid=2108404).
+3. Kliknutím na **Stáhnout** Stáhněte. Šablona sdíleného svazku clusteru. Případně si ho můžete [stáhnout přímo](https://go.microsoft.com/fwlink/?linkid=2109031).
 
     ![Stáhnout. Šablona sdíleného svazku clusteru](./media/tutorial-assess-import/download-template.png)
 
@@ -295,7 +295,7 @@ Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úlo�
 
 ## <a name="supported-operating-system-names"></a>Podporované názvy operačních systémů
 
-Název | Název
+Name (Název) | Name (Název)
 --- | ---
 **A-H** |
 Apple Mac OS X 10 | Asianux 3<br/>Asianux 4<br/>Asianux 5
@@ -310,7 +310,7 @@ SCO OpenServer 5<br/>SCO OpenServer 6<br/>SCO UnixWare 7 | Serenity systémy eCo
 Systém Sun Microsystems Solaris 8<br/>Sun Microsystems Solaris 9 | SUSE Linux Enterprise 10<br/> SUSE Linux Enterprise 11<br/>SUSE Linux Enterprise 12<br/>SUSE Linux Enterprise 8/9<br/>SUSE Linux Enterprise 11<br/>SUSE openSUSE
 **U-Z** |
 Ubuntu Linux | VMware ESXi 4<br/>VMware ESXi 5<br/>VMware ESXi 6
-Windows 10<br/>Windows 2000<br/>Systém Windows 3<br/>Windows 7<br/>Windows 8<br/>Systém Windows 95<br/>Systém Windows 98<br/>Systém Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003 | Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Prahová hodnota pro Windows Server<br/>Windows Vista<br/>Webový server Windows 2008 R2<br/>Windows XP Professional
+Windows 10<br/>Windows 2000<br/>Systém Windows 3<br/>Windows 7<br/>Windows 8<br/>Windows 95<br/>Windows 98<br/>Systém Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003 | Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Prahová hodnota pro Windows Server<br/>Windows Vista<br/>Windows Web Server 2008 R2<br/>Windows XP Professional
 
 
 ## <a name="next-steps"></a>Další kroky

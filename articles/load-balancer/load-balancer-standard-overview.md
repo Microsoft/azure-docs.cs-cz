@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: 5a4240065039bd6e0633a19c8aad00604970c216
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 68f95c893646d76a80a4edfeb557064660ff9f1c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834679"
+ms.locfileid: "75864260"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Přehled služby Azure Standard Load Balancer
 
@@ -38,20 +38,6 @@ Funkce prostředku Load Balancer se vždycky vyjadřují jako front-end, pravidl
 Jedním z klíčových aspektů je obor virtuální sítě pro daný prostředek.  I když základní Load Balancer existují v oboru skupiny dostupnosti, Standard Load Balancer je plně integrovaná s oborem virtuální sítě a platí všechny koncepce virtuálních sítí.
 
 Prostředky Load Balancer jsou objekty, ve kterých můžete vyjádřit, jak by měl Azure naprogramovat svoji víceklientské infrastrukturu, aby dosáhli scénáře, který chcete vytvořit.  Mezi prostředky Load Balancer a skutečnou infrastrukturou neexistuje žádný přímý vztah. vytvořením Load Balancer není vytvořena instance, kapacita je vždy k dispozici a neexistuje žádná prodleva při počátečním nebo škálování, která by bylo možné zvážit. 
-
-## <a name="why-use-standard-load-balancer"></a>Proč použít Standard Load Balancer?
-
-Standard Load Balancer umožňuje škálovat aplikace a zajistit vysokou dostupnost pro nasazení v malém měřítku až po rozsáhlé a složité architektury s více zónami.
-
-Přehled rozdílů mezi Standard Load Balancer a základními Load Balancer najdete v následující tabulce:
-
->[!NOTE]
-> V nových návrzích by se měl používat Load Balancer úrovně Standard. 
-
-[!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]
-
-Projděte si [omezení služby pro Load Balancer](https://aka.ms/lblimits)a [ceny](https://aka.ms/lbpricing)a [smlouvy SLA](https://aka.ms/lbsla).
-
 
 ### <a name="backend"></a>Back-end fond
 
@@ -184,12 +170,6 @@ SKU nejsou proměnlivé. Postupujte podle kroků v této části, chcete-li pře
 4. Připojte všechny instance virtuálních počítačů k novým prostředkům standardní skladové položky.
 
 >[!IMPORTANT]
->
->Existují omezení týkající se použití základních a standardních SKU.
->
->Porty HA a diagnostika standardní SKU jsou k dispozici pouze v SKU Standard. Nemůžete migrovat ze standardní SKU na základní SKU a také tyto funkce uchovávat.
->
->Základní a standardní SKU mají několik rozdílů, jak je uvedeno v tomto článku.  Ujistěte se, že rozumíte a připravíte se na ně.
 >
 >Pro Load Balancer a veřejné IP prostředky se musí použít vyhovující skladové položky. Nemůžete mít kombinaci základních prostředků SKU a prostředků standardních SKU. Samostatné virtuální počítače, virtuální počítače v prostředku skupiny dostupnosti ani prostředky škálovacích sad virtuálních počítačů není možné připojit k oběma SKU zároveň.
 

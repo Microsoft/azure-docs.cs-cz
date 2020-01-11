@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: a810076c8836acccf83733df02fbd0a29a8eba9b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b5950c3769431420c199711190a02ad0be1e177
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460302"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863491"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Vytvoření referenční sady dat pro prostředí Time Series Insights pomocí Azure Portal
 
@@ -72,7 +72,7 @@ Referenční data se nepřipojí zpětně. Proto budou odpovídat jenom aktuáln
 
    [![Kontrola referenčních dat](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
 
-1. Projděte si jednotlivé sloupce, abyste viděli typ dat, který se předpokládá, a v případě potřeby změňte datový typ.  Vyberte symbol datového typu v záhlaví sloupce: **#** pro dvojitá (číselná data), **t | F** pro logickou hodnotu nebo **ABC** pro řetězec.
+1. Projděte si jednotlivé sloupce, abyste porozuměli předpokládanému typu dat a v případě potřeby změnili datový typ.  Vyberte symbol datového typu v záhlaví sloupce: **#** pro dvojitá (číselná data), **t | F** pro logickou hodnotu nebo **ABC** pro řetězec.
 
    [![zvolit typy dat pro záhlaví sloupců.](media/add-reference-data-set/select-column-types.png)](media/add-reference-data-set/select-column-types.png#lightbox)
 
@@ -116,4 +116,4 @@ Referenční data se nepřipojí zpětně. Proto budou odpovídat jenom aktuáln
 
 * [Spravujte referenční data](time-series-insights-manage-reference-data-csharp.md) prostřednictvím kódu programu.
 
-* Úplnou referenční dokumentaci k rozhraní API najdete v dokumentu [Rozhraní API referenčních dat](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).
+* Úplný odkaz na rozhraní API najdete v dokumentu [rozhraní API pro referenční data](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) .

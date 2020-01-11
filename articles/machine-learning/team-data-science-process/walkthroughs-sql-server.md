@@ -1,24 +1,24 @@
 ---
 title: Analýzy serveru SQL pomocí jazyka R, Python a T-SQL - vědecké zpracování týmových dat
-description: Příklady, které vás provedou použití R, Python a T-SQL v systému SQL Server pro prediktivní analýzy.
+description: Příklady, které vás provedou použitím R, Pythonu a T-SQL v SQL Server k provádění prediktivní analýzy.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 342db6cc7c6c9f50345d7e72b7d68d5f116c87f9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 880ee0a4a1eb396312ea9692b7586d724d6fd410
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589087"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864090"
 ---
-# <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>SQL Server data science návody pomocí jazyka R, Python a T-SQL
+# <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>SQL Server návody pro datové vědy pomocí jazyků R, Python a T-SQL
 
 Tyto postupy použijte SQL Server, SQL Server R Services a služby SQL Server Pythonu pro prediktivní analýzy. V uložených procedurách je nasazený kód R a Python. Postupujte podle kroků uvedených v vědecké zpracování týmových dat. Přehled vědeckého zpracování týmových dat, naleznete v tématu [vědecké zpracování dat](overview.md). 
 
@@ -27,12 +27,12 @@ Další data science návody, které jsou spouštěny vědecké zpracování tý
 
 ## <a name="predict-taxi-tips-using-python-and-sql-queries-with-sql-server"></a>Předpovídání spropitného pro taxikáře pomocí Pythonu a dotazů SQL s SQL serverem 
 
-[Použít SQL Server](sql-walkthrough.md) návod ukazuje, jak sestavit a nasadit klasifikace machine learning a regresní modely s využitím SQL serveru a veřejně dostupné NYC taxi cesty a tarif datové sady.
+Návod k [použití SQL Server](sql-walkthrough.md) ukazuje, jak sestavit a nasadit modely klasifikace a regrese Machine Learning.  Tato data jsou veřejně dostupnou datovou sadou NYC taxislužby Trip a jízdné.
 
 
 ## <a name="predict-taxi-tips-using-microsoft-r-with-sql-server"></a>Předpovídání spropitného pro taxikáře pomocí Microsoft R serveru SQL Server 
 
-[Pomocí SQL Server R Services](https://msdn.microsoft.com/library/mt612857.aspx) názorný postup obsahuje odborníci přes data s kombinací kódu R, data systému SQL Server a model vlastní funkce SQL k vytvoření a nasazení R na SQL Server. Průvodce je určen představí vývojářům R služby R (v databázi).
+Návod k [použití SQL Server R Services](https://msdn.microsoft.com/library/mt612857.aspx) ukazuje, jak sestavit a nasadit model R pro SQL Server. Průvodce je určen představí vývojářům R služby R (v databázi).
 
 
 ## <a name="predict-taxi-tips-using-r-from-t-sql-or-stored-procedures-with-sql-server"></a>Předpovídání spropitného pro taxikáře pomocí jazyka R z jazyka T-SQL nebo úložné procedury s SQL serverem
@@ -45,7 +45,7 @@ Další data science návody, které jsou spouštěny vědecké zpracování tý
 [Pomocí jazyka T-SQL služby SQL Server Python](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-python-for-sql-developers) názorný postup obsahuje programátoři SQL se zkušenostmi s vývojem řešení strojového učení v systému SQL Server. Ukazuje, jak začlenit do aplikace Python přidáním kódu v Pythonu do uložených procedur.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Diskuzi o klíčové součásti, které tvoří vědecké zpracování týmových dat, naleznete v tématu [přehled vědeckého zpracování týmových dat](overview.md).
 

@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: V tomto rychlém startu se dozvíte, jak používat Azure Dev Spaces a příkazový řádek pro vývoj aplikace ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 99e234fc838ef173b25989f888cb9d3ca80d649f
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 553c316587d27e0921fbbbf78b02ddb048532c43
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770607"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867251"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>Rychlý Start: vývoj aplikace na Kubernetes-Azure Dev Spaces
 V tomto průvodci se naučíte:
@@ -80,6 +80,9 @@ azds prep --public
 ```
 
 Chcete-li správně vygenerovat prostředky Docker a Helm Chart, je nutné spustit příkaz `prep` z adresáře *dev-Spaces/Samples/NodeJS/Začínáme/webfront-Endu* .
+
+> [!TIP]
+> Příkaz `prep` se pokusí vygenerovat [graf souboru Dockerfile a Helm](how-dev-spaces-works.md#prepare-your-code) pro váš projekt. Azure Dev Spaces používá tyto soubory k sestavení a spuštění kódu, ale můžete upravit tyto soubory, pokud chcete změnit způsob sestavení a spuštění projektu.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Sestavení a spuštění kódu v Kubernetes
 

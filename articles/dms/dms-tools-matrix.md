@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/09/2020
-ms.openlocfilehash: 323ce6d5bcb70a97c6a2cad2c185ad53e796c47d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 01/10/2020
+ms.openlocfilehash: 6259f365edeb3c3d94646a4b2ae019d0776dcc23
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771049"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860839"
 ---
 # <a name="services-and-tools-available-for-data-migration-scenarios"></a>Služby a nástroje dostupné pro scénáře migrace dat
 
@@ -29,7 +29,7 @@ Následující tabulky identifikují služby a nástroje, které můžete použ�
 
 ## <a name="business-justification-phase"></a>Fáze obchodního odůvodnění
 
-| **Zdroj** | **Cíl** | **Vyhledávání**<br/>**Inventář** | **Cíl a SKU**<br/>**základě** | **Celkové náklady na ni a**<br/>**Obchodní případ** |
+| Zdroj | Výběr cílového umístění | Vyhledávání<br/>Inventarizace | Cíl a SKU<br/>základě | Celkové náklady na ni a<br/>Obchodní zdůvodnění |
 | --- | --- | --- | --- | --- |
 | SQL Server | Azure SQL DB | [Sada MAP](https://msdn.microsoft.com/library/bb977556.aspx)<br/>[Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [Kalkulačka celkových nákladů na vlastnictví](https://azure.microsoft.com/pricing/tco/calculator/) |
  SQL Server | Azure SQL DB MI | [Sada MAP](https://msdn.microsoft.com/library/bb977556.aspx)<br/>[Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [Kalkulačka celkových nákladů na vlastnictví](https://azure.microsoft.com/pricing/tco/calculator/) |
@@ -38,14 +38,14 @@ Následující tabulky identifikují služby a nástroje, které můžete použ�
 | RDS SQL | Azure SQL DB, MI, VM |  | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | [Kalkulačka celkových nákladů na vlastnictví](https://azure.microsoft.com/pricing/tco/calculator/) |
 | Oracle | Azure SQL DB, MI, VM | [Sada MAP](https://msdn.microsoft.com/library/bb977556.aspx)<br/>[Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017)<br/>[MigVisor*](https://www.migvisor.com/) |  |
 | Oracle | SQL DW | [Sada MAP](https://msdn.microsoft.com/library/bb977556.aspx)<br/>[Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
-| Oracle | Azure DB for PostgreSQL | [Sada MAP](https://msdn.microsoft.com/library/bb977556.aspx)<br/>[Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) |  |  |
+| Oracle | Azure DB pro PostgreSQL –<br/>Jeden server | [Sada MAP](https://msdn.microsoft.com/library/bb977556.aspx)<br/>[Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) |  |  |
 | MongoDB | Cosmos DB | [Cloudamize*](https://www.cloudamize.com/) | [Cloudamize*](https://www.cloudamize.com/) |  |
 | Cassandra | Cosmos DB |  |  |  |
 | MySQL | Azure SQL DB, MI, VM | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017)<br/>[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/) | [Kalkulačka celkových nákladů na vlastnictví](https://azure.microsoft.com/pricing/tco/calculator/) |
 | MySQL | Azure DB for MySQL | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) |  | [Kalkulačka celkových nákladů na vlastnictví](https://azure.microsoft.com/pricing/tco/calculator/) |
 | RDS MySQL | Azure DB for MySQL |  |  | [Kalkulačka celkových nákladů na vlastnictví](https://azure.microsoft.com/pricing/tco/calculator/) |
-| PostgreSQL | Azure DB pro PostgreSQL – jeden server | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) |  | [Kalkulačka celkových nákladů na vlastnictví](https://azure.microsoft.com/pricing/tco/calculator/) |
-| RDS PostgreSQL | Azure DB pro PostgreSQL – jeden server |  |  | [Kalkulačka celkových nákladů na vlastnictví](https://azure.microsoft.com/pricing/tco/calculator/) |
+| PostgreSQL | Azure DB pro PostgreSQL –<br/>Jeden server | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) |  | [Kalkulačka celkových nákladů na vlastnictví](https://azure.microsoft.com/pricing/tco/calculator/) |
+| RDS PostgreSQL | Azure DB pro PostgreSQL –<br/>Jeden server |  |  | [Kalkulačka celkových nákladů na vlastnictví](https://azure.microsoft.com/pricing/tco/calculator/) |
 | DB2 | Azure SQL DB, MI, VM | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
 | Přístup | Azure SQL DB, MI, VM | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
 | Sybase – pomocného mechanismu SAP | Azure SQL DB, MI, VM | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
@@ -54,7 +54,7 @@ Následující tabulky identifikují služby a nástroje, které můžete použ�
 
 ## <a name="pre-migration-phase"></a>Fáze před migrací
 
-| **Zdroj** | **Cíl** | **Přístup k datům aplikace**<br/>**Vyhodnocení vrstvy** | **Database**<br/>**Posouzení** | **Výkon**<br/>**Posouzení** |
+| Zdroj | Výběr cílového umístění | Přístup k datům aplikace<br/>Vyhodnocení vrstvy | databáze<br/>Posouzení | Výkon<br/>Posouzení |
 | --- | --- | --- | --- | --- |
 | SQL Server | Azure SQL DB | [DAMT](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) / [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DEA](https://www.microsoft.com/download/details.aspx?id=54090)<br/>[Cloudamize*](https://www.cloudamize.com/) |
 | SQL Server | Azure SQL DB MI | [DAMT](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) / [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DEA](https://www.microsoft.com/download/details.aspx?id=54090)<br/>[Cloudamize*](https://www.cloudamize.com/) |
@@ -63,14 +63,14 @@ Následující tabulky identifikují služby a nástroje, které můžete použ�
 | RDS SQL | Azure SQL DB, MI, VM | [DAMT](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) / [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | [DEA](https://www.microsoft.com/download/details.aspx?id=54090) |
 | Oracle | Azure SQL DB, MI, VM | [DAMT](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) / [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
 | Oracle | SQL DW | [DAMT](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) / [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
-| Oracle | Azure DB pro PostgreSQL – jeden server |  | [Ora2Pg*](http://ora2pg.darold.net/start.html) |  |
+| Oracle | Azure DB pro PostgreSQL –<br/>Jeden server |  | [Ora2Pg*](http://ora2pg.darold.net/start.html) |  |
 | MongoDB | Cosmos DB |  | [Cloudamize*](https://www.cloudamize.com/) | [Cloudamize*](https://www.cloudamize.com/) |
 | Cassandra | Cosmos DB |  |  |  |
 | MySQL | Azure SQL DB, MI, VM | [DAMT](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) / [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017)<br/>[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/) |  |
 | MySQL | Azure DB for MySQL |  |  |  |
 | RDS MySQL | Azure DB for MySQL |  |  |  |
-| PostgreSQL | Azure DB pro PostgreSQL – jeden server |  |  |  |
-| RDS PostgreSQL | Azure DB pro PostgreSQL – jeden server |  |  |  |
+| PostgreSQL | Azure DB pro PostgreSQL –<br/>Jeden server |  |  |  |
+| RDS PostgreSQL | Azure DB pro PostgreSQL –<br/>Jeden server |  |  |  |
 | DB2 | Azure SQL DB, MI, VM | [DAMT](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) / [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
 | Přístup | Azure SQL DB, MI, VM |  | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
 | Sybase – pomocného mechanismu SAP | Azure SQL DB, MI, VM | [DAMT](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) / [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
@@ -79,7 +79,7 @@ Následující tabulky identifikují služby a nástroje, které můžete použ�
 
 ## <a name="migration-phase"></a>Fáze migrace
 
-| **Zdroj** | **Cíl** | **schéma** | **Data**<br/>**Stav** | **Data**<br/>**Online** |
+| Zdroj | Výběr cílového umístění | Schéma | Data<br/>Stav | Data<br/>Online |
 | --- | --- | --- | --- | --- |
 | SQL Server | Azure SQL DB | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/)<br/>[Attunity](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | SQL Server | Azure SQL DB MI | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/)<br/>[Attunity](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
@@ -88,14 +88,14 @@ Následující tabulky identifikují služby a nástroje, které můžete použ�
 | RDS SQL | Azure SQL DB, MI, VM | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[DMS](https://azure.microsoft.com/services/database-migration/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Attunity](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | Oracle | Azure SQL DB, MI, VM | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017)<br/>[SharePlex*](https://www.quest.com/products/shareplex/) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017)<br/>[SharePlex*](https://www.quest.com/products/shareplex/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[SharePlex*](https://www.quest.com/products/shareplex/)<br/>[Attunity](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | Oracle | SQL DW | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[SharePlex*](https://www.quest.com/products/shareplex/)<br/>[Attunity](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
-| Oracle | Azure DB pro PostgreSQL – jeden server |  |  | [DMS](https://azure.microsoft.com/services/database-migration/) |
+| Oracle | Azure DB pro PostgreSQL –<br/>Jeden server |  |  | [DMS](https://azure.microsoft.com/services/database-migration/) |
 | MongoDB | Cosmos DB | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/)<br/>[Imanis data *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/)<br/>[Imanis data *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/)<br/>[Imanis data *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | Cassandra | Cosmos DB | [Imanis data *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) | [Imanis data *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) | [Imanis data *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) |
 | MySQL | Azure SQL DB, MI, VM | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [Attunity](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | MySQL | Azure DB for MySQL | [Výpis paměti MySQL *](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) |  | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Attunity](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | RDS MySQL | Azure DB for MySQL | [Výpis paměti MySQL *](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) |  | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Attunity](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
-| PostgreSQL | Azure DB pro PostgreSQL – jeden server | [Výpis PG *](https://www.postgresql.org/docs/11/static/app-pgdump.html) |  | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Attunity](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
-| RDS PostgreSQL | Azure DB pro PostgreSQL – jeden server | [Výpis PG *](https://www.postgresql.org/docs/11/static/app-pgdump.html) |  | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Attunity](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
+| PostgreSQL | Azure DB pro PostgreSQL –<br/>Jeden server | [Výpis PG *](https://www.postgresql.org/docs/11/static/app-pgdump.html) |  | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Attunity](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
+| RDS PostgreSQL | Azure DB pro PostgreSQL –<br/>Jeden server | [Výpis PG *](https://www.postgresql.org/docs/11/static/app-pgdump.html) |  | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Attunity](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | DB2 | Azure SQL DB, MI, VM | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [Attunity](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | Přístup | Azure SQL DB, MI, VM | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |
 | Sybase – pomocného mechanismu SAP | Azure SQL DB, MI, VM | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [Attunity](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
@@ -104,7 +104,7 @@ Následující tabulky identifikují služby a nástroje, které můžete použ�
 
 ## <a name="post-migration-phase"></a>Fáze po migraci
 
-| **Zdroj** | **Cíl** | **Optimalizovat** |
+| Zdroj | Výběr cílového umístění | Optimalizace |
 | --- | --- | --- |
 | SQL Server | Azure SQL DB | [Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) |
 | SQL Server | Azure SQL DB MI | [Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) |
@@ -113,14 +113,14 @@ Následující tabulky identifikují služby a nástroje, které můžete použ�
 | RDS SQL | Azure SQL DB, MI, VM |  |
 | Oracle | Azure SQL DB, MI, VM |  |
 | Oracle | SQL DW |  |
-| Oracle | Azure DB for PostgreSQL |  |
+| Oracle | Azure DB pro PostgreSQL –<br/>Jeden server |  |
 | MongoDB | Cosmos DB | [Cloudamize*](https://www.cloudamize.com/) |
 | Cassandra | Cosmos DB |  |
 | MySQL | Azure SQL DB, MI, VM |  |
 | MySQL | Azure DB for MySQL |  |
 | RDS MySQL | Azure DB for MySQL |  |
-| PostgreSQL | Azure DB pro PostgreSQL – jeden server |  |
-| RDS PostgreSQL | Azure DB pro PostgreSQL – jeden server |  |
+| PostgreSQL | Azure DB pro PostgreSQL –<br/>Jeden server |  |
+| RDS PostgreSQL | Azure DB pro PostgreSQL –<br/>Jeden server |  |
 | DB2 | Azure SQL DB, MI, VM |  |
 | Přístup | Azure SQL DB, MI, VM |  |
 | Sybase – pomocného mechanismu SAP | Azure SQL DB, MI, VM |  |

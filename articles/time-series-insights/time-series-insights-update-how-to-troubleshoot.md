@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0e4ec63ffe715b17f55fde2a53c15d96d391cdba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1fc3aa6caa6266d2cd42e4783e8e39d5cc92c220
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452522"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861570"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>Diagnostika a řešení potíží s prostředím verze Preview
 
@@ -29,7 +29,7 @@ K tomuto problému může dojít, pokud nemáte oprávnění pro přístup k Tim
 
 ## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>Problém: v Průzkumníkovi Preview se nezobrazí žádná data.
 
-K dispozici je několik běžných důvodů, proč se data v Průzkumníkovi služby [Azure Time Series Insights Preview](https://insights.timeseries.azure.com/preview)nemusejí zobrazovat.
+K dispozici je několik běžných důvodů, proč se vaše data nemusí zobrazit v [Průzkumníkovi služby Azure Time Series Insights Preview](https://insights.timeseries.azure.com/preview).
 
 - Váš zdroj událostí pravděpodobně nepřijímá data.
 
@@ -39,7 +39,7 @@ K dispozici je několik běžných důvodů, proč se data v Průzkumníkovi slu
 
 - Vaše zdrojová data události nejsou ve formátu JSON.
 
-    Time Series Insights podporuje pouze data JSON. Ukázky JSON najdete v tématu [tvary JSON nepodporuje](./how-to-shape-query-json.md).
+    Time Series Insights podporuje pouze data JSON. V případě ukázek JSON čtěte [podporované tvary JSON](./how-to-shape-query-json.md).
 
 - V klíči zdroje událostí chybí požadovaná oprávnění.
 
@@ -61,13 +61,13 @@ K dispozici je několik běžných důvodů, proč se data v Průzkumníkovi slu
 
 - Vaše vlastnost ID časové řady zadaná v době zřizování není správná, chybí nebo je null.
 
-    K tomuto problému může dojít, pokud je vlastnost ID časové řady v době zřizování prostředí nesprávně nakonfigurovaná. Další informace najdete v tématu [osvědčené postupy pro výběr ID časové řady](./time-series-insights-update-how-to-id.md). V tuto chvíli nemůžete aktualizovat existující prostředí Time Series Insights tak, aby používalo jiné ID časové řady.
+    K tomuto problému může dojít, pokud je vlastnost ID časové řady v době zřizování prostředí nesprávně nakonfigurovaná. Další informace najdete v článku [osvědčené postupy pro výběr ID časové řady](./time-series-insights-update-how-to-id.md). V tuto chvíli nemůžete aktualizovat existující prostředí Time Series Insights tak, aby používalo jiné ID časové řady.
 
 ## <a name="problem-some-data-shows-but-some-is-missing"></a>Problém: některá data jsou zobrazená, ale chybí.
 
 Můžete odesílat data bez ID časové řady.
 
-- K tomuto problému může dojít při odesílání událostí bez pole ID časové řady v datové části. Další informace najdete v tématu [podporované tvary JSON](./how-to-shape-query-json.md).
+- K tomuto problému může dojít při odesílání událostí bez pole ID časové řady v datové části. Další informace najdete v článku [podporované tvary JSON](./how-to-shape-query-json.md).
 - K tomuto problému může dojít, protože vaše prostředí je omezené.
 
     > [!NOTE]
@@ -97,7 +97,7 @@ Pokud není explicitně zadaná vlastnost timestamp, použije se jako výchozí 
 
 - Možná přistupujete k Time Series Insights prostředí S1 nebo S2.
 
-   Modely časových řad se podporují jenom v prostředí s průběžnými platbami. Další informace o tom, jak získat přístup k prostředí S1 nebo S2 z Průzkumníka Time Series Insights Preview, najdete v tématu [vizualizace dat v Průzkumníkovi](./time-series-insights-update-explorer.md).
+   Modely časových řad se podporují jenom v prostředí s průběžnými platbami. Další informace o tom, jak získat přístup k prostředí S1 nebo S2 z Průzkumníka Time Series Insights Preview, najdete [v článku vizualizace dat v Průzkumníkovi](./time-series-insights-update-explorer.md).
 
    [v prostředí ![žádné události.](media/preview-troubleshoot/troubleshoot-no-events.png)](media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
 
@@ -107,7 +107,7 @@ Pokud není explicitně zadaná vlastnost timestamp, použije se jako výchozí 
 
 ## <a name="problem-all-my-instances-in-the-preview-explorer-lack-a-parent"></a>Problém: všechny moje instance v Průzkumníkovi Preview nemají nadřazený prvek
 
-K tomuto problému může dojít, pokud vaše prostředí nemá definovánu hierarchii modelu časové řady. Další informace najdete v tématu [práce s modely časových řad](./time-series-insights-update-how-to-tsm.md).
+K tomuto problému může dojít, pokud vaše prostředí nemá definovánu hierarchii modelu časové řady. Další informace najdete v článku [práce s modely časových řad](./time-series-insights-update-how-to-tsm.md).
 
   [Při ![nenadřazených instancí se zobrazí upozornění.](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 

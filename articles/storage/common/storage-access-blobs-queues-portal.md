@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/19/2019
+ms.date: 01/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 89816e3640c0afad6290e77faa3904c691df4318
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 602be49ef0c60274f1cd016c4f8e870cf033ec7b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892393"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75866899"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Použití Azure Portal k přístupu k datům objektů BLOB nebo Queue
 
@@ -57,8 +57,10 @@ Mezi předdefinované role, které podporují přístup k datům objektů BLOB n
     
 Vlastní role mohou podporovat různé kombinace stejných oprávnění poskytovaných integrovanými rolemi. Další informace o vytváření vlastních rolí RBAC najdete v tématech [vlastní role pro prostředky Azure](../../role-based-access-control/custom-roles.md) a [Principy definic rolí pro prostředky Azure](../../role-based-access-control/role-definitions.md).
 
-> [!NOTE]
-> Výpis front s rolí správce předplatného s klasickou sadou není podporován. K vypsání front se musí uživatel přiřadit k rolím **čtenář** Azure Resource Manager, roli **čtečky dat fronty úložiště** nebo k roli **Přispěvatel dat fronty úložiště** .
+Výpis front s rolí správce předplatného s klasickou sadou není podporován. K vypsání front se musí uživatel přiřadit k rolím **čtenář** Azure Resource Manager, roli **čtečky dat fronty úložiště** nebo k roli **Přispěvatel dat fronty úložiště** .
+
+> [!IMPORTANT]
+> Verze Preview Průzkumník služby Storage v Azure Portal nepodporuje použití přihlašovacích údajů Azure AD k zobrazení a úpravě dat objektů BLOB nebo Queue. Průzkumník služby Storage v Azure Portal vždy používá klíče účtu pro přístup k datům. Pokud chcete použít Průzkumník služby Storage v Azure Portal, musíte mít přiřazenou roli, která zahrnuje **Microsoft. Storage/storageAccounts/klíče listkey/Action**.
 
 ## <a name="navigate-to-blobs-or-queues-in-the-portal"></a>Přechod na objekty blob nebo fronty na portálu
 

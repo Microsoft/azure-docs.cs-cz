@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 784e31b823c65c0b908dc07582805e7a69d19563
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: d87112697bfa3aa7bb6b4c8f14420598ccd914cb
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304857"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864311"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Jak nakonfigurovat metodu post pro digitální vlákna Azure
 
@@ -86,7 +86,7 @@ Nastavte a nakonfigurujte metodu post pro získání tokenu Azure Active Directo
     https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     ```
 
-    | Název  | Nahradit hodnotou | Příklad |
+    | Name (Název)  | Nahradit hodnotou | Příklad: |
     |---------|---------|---------|
     | YOUR_AZURE_TENANT | Název vašeho tenanta nebo organizace | `microsoft` |
 
@@ -96,17 +96,17 @@ Nastavte a nakonfigurujte metodu post pro získání tokenu Azure Active Directo
     |---------|---------|
     | Typ udělení | `Implicit` |
     | Adresa URL zpětného volání | `https://www.getpostman.com/oauth2/callback` |
-    | Adresa URL ověření | Použijte **autorizační adresu URL** z **kroku 2** . |
+    | Ověřovací adresa URL | Použijte **autorizační adresu URL** z **kroku 2** . |
     | ID klienta | Použijte **ID aplikace** pro aplikaci Azure Active Directory, která se vytvořila nebo znovu použila z předchozí části. |
     | Rozsah | Ponechte prázdné |
-    | State | Ponechte prázdné |
-    | Ověřování klienta | `Send as Basic Auth header` |
+    | Stav | Ponechte prázdné |
+    | Ověření klienta | `Send as Basic Auth header` |
 
 1. Klient by teď měl vypadat takto:
 
     [Příklad tokenu klienta ![post](media/how-to-configure-postman/configure-postman-oauth-token.png)](media/how-to-configure-postman/configure-postman-oauth-token.png#lightbox)
 
-1. Vyberte **token žádosti**.
+1. Vyberte **Request Token** (Vyžádat token).
   
 1. Posuňte se dolů a vyberte **použít token**.
 
@@ -130,7 +130,7 @@ Po dokončení předchozích kroků nakonfigurujte metodu post, aby se ověřil 
    > * Pro každou část není nutné zadávat tato záhlaví.
    > * Pro celý požadavek musíte vybrat `multipart/mixed` nebo jiný vhodný **typ obsahu** .
 
-1. Nakonec vyberte **Odeslat** a odešlete požadavek HTTP POST s více částmi. Stavový kód `200` nebo `201` označuje úspěšnou žádost. Zobrazí se také příslušná zpráva odpovědi.
+1. Nakonec vyberte **Odeslat** a odešlete požadavek HTTP POST s více částmi. Stavový kód `200` nebo `201` označuje úspěšnou žádost. V klientském rozhraní se zobrazí odpovídající zpráva odpovědi.
 
 ## <a name="next-steps"></a>Další kroky
 

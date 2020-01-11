@@ -4,15 +4,15 @@ description: Naučte se, jak nastavit replikaci a převzetí služeb při selhá
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
-ms.date: 06/30/2019
+ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: 9546ae590918cdf6f3a6a95b9a68e9208054dcee
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953935"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861265"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Nastavení zotavení po havárii virtuálních počítačů VMware do Azure pomocí PowerShellu
 
@@ -351,11 +351,11 @@ K ochraně zjištěného virtuálního počítače budete potřebovat následuj�
 Teď replikujte následující virtuální počítače pomocí nastavení zadaných v této tabulce.
 
 
-|Virtuální počítač  |Procesový Server        |Účet úložiště              |Účet úložiště protokolů  |Zásada           |Účet pro instalaci služby mobility|Cílová skupina prostředků  | Cílová virtuální síť  |Cílová podsíť  |
+|Virtuální počítač  |Procesový Server        |Účet úložiště              |Účet úložiště protokolů  |Zásady           |Účet pro instalaci služby mobility|Cílová skupina prostředků  | Cílová virtuální síť  |Cílová podsíť  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
-|CentOSVM1       |ConfigurationServer   |neuvedeno| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |
-|Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |   
-|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| neuvedeno                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |   
+|CentOSVM1       |ConfigurationServer   |Nevztahuje se| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť-1       |
+|Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť-1       |   
+|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| Nevztahuje se                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť-1       |   
 
 
 ```azurepowershell
@@ -372,9 +372,13 @@ $PolicyMap  = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionCon
 #Get the protectable item corresponding to the virtual machine CentOSVM1
 $VM1 = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $ProtectionContainer -FriendlyName "CentOSVM1"
 
-# Enable replication for virtual machine CentOSVM1 using the Az.RecoveryServices module 2.0.0
+# Enable replication for virtual machine CentOSVM1 using the Az.RecoveryServices module 2.0.0 onwards to replicate to managed disks
 # The name specified for the replicated item needs to be unique within the protection container. Using a random GUID to ensure uniqueness
 $Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1"
+
+# Alternatively, if the virtual machine CentOSVM1 has CMK enabled disks, enable replication using Az module 3.3.0 onwards as below
+# $diskID is the Disk Encryption Set ID to be used for all replica managed disks and target managed disks in the target region
+$Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId -DiskEncryptionSetId $diskId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1"
 
 #Get the protectable item corresponding to the virtual machine Win2K12VM1
 $VM2 = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $ProtectionContainer -FriendlyName "Win2K12VM1"

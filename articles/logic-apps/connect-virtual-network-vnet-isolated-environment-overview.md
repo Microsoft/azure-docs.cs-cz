@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 12/16/2019
-ms.openlocfilehash: d6bb57c8163f7653f4b10142d7ec2b34f50456f1
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: d8d57c15fffaa6a9d18ad3c83716f99247512c15
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75527854"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860741"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Přístup k prostředkům Azure Virtual Network z Azure Logic Apps pomocí prostředí integračních služeb (ISEs)
 
@@ -23,7 +23,7 @@ Po vytvoření ISE můžete při vytváření vaší aplikace logiky nebo účtu
 
 ![Vybrat prostředí integrační služby](./media/connect-virtual-network-vnet-isolated-environment-overview/select-logic-app-integration-service-environment.png)
 
-Vaše aplikace logiky teď může přímo přistupovat k systémům, které jsou uvnitř nebo připojené k vaší virtuální síti pomocí kterékoli z těchto položek:
+Vaše aplikace logiky teď může přímo přistupovat k systémům, které jsou uvnitř nebo připojené k vaší virtuální síti pomocí kterékoli z těchto položek, které se spouštějí ve stejném ISE jako vaše aplikace logiky:
 
 * Konektor **ISE**s popiskem pro tento systém
 * Integrovaná aktivační událost nebo akce s označením **Core**, jako je například Trigger nebo akce http
@@ -43,23 +43,21 @@ Tento přehled popisuje další podrobnosti o tom, jak ISE poskytuje vašim apli
 
 Když v Azure vytvoříte prostředí integrovaných služeb (ISE), můžete vybrat virtuální síť Azure, do které chcete *Vložit* své ISE. Azure potom do vaší virtuální sítě vloží nebo nasadí soukromou instanci služby Logic Apps. Tato akce vytvoří izolované prostředí, kde můžete vytvářet a spouštět aplikace logiky na vyhrazených prostředcích. Když vytvoříte aplikaci logiky, vyberete svou ISE jako umístění vaší aplikace, což umožní vaší aplikaci logiky přímý přístup k vaší virtuální síti a prostředkům v této síti.
 
-Logic Apps v ISE poskytují stejné uživatelské prostředí a podobné možnosti jako služba Global Logic Apps. Nestačí, když použijete stejné integrované aktivační události, integrované akce a konektory z globální Logic Apps služby, ale můžete také použít konektory specifické pro ISE. Tady jsou například některé standardní konektory, které nabízejí verze, které běží na ISE:
+Logic Apps v ISE poskytují stejné uživatelské prostředí a podobné možnosti jako veřejná služba globálního Logic Apps. Můžete použít všechny stejné integrované triggery, akce a spravované konektory, které jsou k dispozici v globální Logic Apps službě. Některé spravované konektory nabízejí další verze ISE. Rozdíly existují v tom, kde se spouštějí, a popisky, které se zobrazují v návrháři aplikace logiky při práci v rámci ISE.
 
-* Blob Storage Azure, File Storage a Table Storage
-* Fronty Azure, Azure Service Bus, Azure Event Hubs a IBM MQ
-* FTP a SFTP – SSH
-* SQL Server, Azure SQL Data Warehouse Azure Cosmos DB
-* AS2, X12 a EDIFACT
+![Konektory s popisky a bez nich v ISE](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-built-in-actions-triggers-managed-connectors.png)
 
-Rozdíl mezi konektory ISE a non-ISE je v umístěních, kde se spouštějí triggery a akce:
+* Vestavěné triggery a akce zobrazují **základní** popisek a vždy se spouštějí ve stejném ISE jako vaše aplikace logiky. Spravované konektory, které zobrazují popisek **ISE** , se také spouštějí ve stejném ISE jako vaše aplikace logiky.
 
-* V ISE jsou integrované triggery a akce, jako je HTTP, vždy spouštěny ve stejném ISE jako aplikace logiky a zobrazují **základní** popisek.
+  Například tady jsou některé konektory, které nabízejí verze ISE:
 
-  ![Výběr vestavěných aktivačních událostí a akcí "Core"](./media/connect-virtual-network-vnet-isolated-environment-overview/select-core-built-in-actions-triggers.png)
+  * Blob Storage Azure, File Storage a Table Storage
+  * Fronty Azure, Azure Service Bus, Azure Event Hubs a IBM MQ
+  * FTP a SFTP – SSH
+  * SQL Server, Azure SQL Data Warehouse Azure Cosmos DB
+  * AS2, X12 a EDIFACT
 
-* Konektory, které běží v ISE, mají veřejně hostované verze, které jsou k dispozici v globálním Logic Apps službě. Pro konektory, které nabízí dvě verze, konektory s popiskem **ISE** se vždycky spouštějí ve stejném ISE jako vaše aplikace logiky. Konektory bez popisku **ISE** se spouštějí v globálním Logic Apps službě.
-
-  ![Vybrat konektory ISE](./media/connect-virtual-network-vnet-isolated-environment-overview/select-ise-connectors.png)
+* Spravované konektory, které neobsahují žádné další štítky, se vždy spouštějí ve veřejné globální Logic Apps službě, ale tyto konektory můžete používat i v aplikaci logiky založené na ISE.
 
 ISE také poskytuje zvýšené limity pro dobu trvání běhu, uchovávání úložiště, propustnost, požadavky HTTP a vypršení časového limitu odpovědí, velikosti zpráv a požadavky vlastních konektorů. Další informace najdete v tématu [omezení a konfigurace pro Azure Logic Apps](logic-apps-limits-and-config.md).
 

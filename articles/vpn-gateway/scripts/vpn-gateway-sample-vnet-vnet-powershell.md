@@ -7,14 +7,14 @@ author: anzaman
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 04/30/2018
+ms.date: 01/09/2020
 ms.author: alzam
-ms.openlocfilehash: 0d49e65ccfd13637a2e7313a5ec3a48b2ce900ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a4d23f34553881b6425514572f9122edf693a57a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66113652"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862199"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí PowerShellu
 
@@ -136,7 +136,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupName $RG
  
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete prostředky, které jste vytvořili, použijte [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) příkazu k odstranění skupiny prostředků. Tím odstraníte skupiny prostředků a všechny prostředky, které obsahují.
+Když už nepotřebujete prostředky, které jste vytvořili, odstraňte skupinu prostředků pomocí příkazu [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) . Tím odstraníte skupiny prostředků a všechny prostředky, které obsahují.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name TestRG1
@@ -165,6 +165,6 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Nastaví konfiguraci podsítě pro virtuální síť. |
 | [Set-AzVirtualNetworkGateway](/powershell/module/az.network/set-azvirtualnetworkgateway) | Nastaví konfiguraci brány sítě VPN. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).

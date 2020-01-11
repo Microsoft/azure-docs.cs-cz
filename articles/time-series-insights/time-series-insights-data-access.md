@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b79ca1d93baf1941d5de8db0c314f9cd21e51056
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c7a70d8209c5c349fc082d939a24deac23fa954d
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328048"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863423"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Udělení přístupu k datům do prostředí
 
@@ -27,7 +27,7 @@ Tento článek pojednává o dvou typech zásad přístupu ke službě Azure Tim
 
 ## <a name="sign-in-to-time-series-insights"></a>Přihlášení k Time Series Insights
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 1. Najděte své Time Series Insights prostředí. Do **vyhledávacího** pole zadejte `Time Series`. Ve výsledcích hledání vyberte **prostředí Time Series** .
 1. Ze seznamu vyberte vaše prostředí Time Series Insights.
 
@@ -113,7 +113,7 @@ Pomocí těchto kroků udělíte uživateli služby Azure AD přístup hosta k T
 
 1. Host teď může přistupovat ke sdílenému prostředí pomocí adresy URL prostředí poskytnuté správcem. Můžou zadat tuto adresu URL do svého webového prohlížeče pro okamžitý přístup.
 
-1. Uživatel typu Host uvidí tenanta správce tak, že vybere ikonu profilu v pravém horním rohu Průzkumníka časových řad.
+1. Po výběru ikony profilu v pravém horním rohu Průzkumníka časových řad se tenant správce zobrazí uživateli typu Host.
 
     [![výběr avataru na insights.azure.com](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
 

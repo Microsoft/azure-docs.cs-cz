@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 43fc928b1274159839dc0df395e86d065f84b4c7
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 2dae0a31ad53a777f5ae88c1c12f988d2f80630a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75550262"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867424"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Sestavení zařízení IoT technologie Plug and Play ve verzi Preview, které je připravené k certifikaci
 
@@ -35,7 +35,7 @@ Pro absolvování tohoto kurzu potřebujete:
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - Sady [nástrojů Azure IoT pro rozšíření vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Extension Pack
 
-Budete také potřebovat zařízení IoT technologie Plug and Play, které vytvoříte v [rychlém startu: k vytvoření zařízení použijte model schopností zařízení](quickstart-create-pnp-device-windows.md).
+K vytvoření rychlého startu zařízení pro Windows je také potřeba dokončit [model použití schopností zařízení](quickstart-create-pnp-device-windows.md) . V tomto rychlém startu se dozvíte, jak nastavit vývojové prostředí pomocí Vcpkg a vytvořit ukázkový projekt.
 
 ## <a name="store-a-capability-model-and-interfaces"></a>Uložení modelu a rozhraní schopností
 
@@ -107,20 +107,53 @@ Aby zařízení bylo možné certifikovat, musí povolit zřizování prostředn
 
 1. Vyberte soubor DCM, který chcete použít k vygenerování zástupné procedury kódu zařízení.
 
-1. Zadejte název projektu, jedná se o název aplikace vašeho zařízení.
+1. Zadejte název projektu, například **sample_device**. Toto je název aplikace zařízení.
 
 1. Jako jazyk vyberte **ANSI C** .
 
 1. Jako metodu připojení vyberte možnost **přes DPS (služba Device Provisioning Service)** .
 
-1. V závislosti na operačním systému zařízení vyberte v projektu Windows nebo **v sadě CMAK** projekt **cmake v systému** Linux jako šablonu projektu.
+1. Jako šablonu projektu vyberte možnost **projekt cmake v systému Windows** .
+
+1. Vyberte **prostřednictvím Vcpkg** jako způsob, jak zahrnout sadu SDK pro zařízení.
 
 1. VS Code otevře nové okno s generovanými zástupnými soubory kódu zařízení.
 
-1. Po sestavení kódu zadejte přihlašovací údaje k DPS (**obor ID DPS**, **symetrický klíč DPS**, **ID zařízení**) jako parametry pro aplikaci. Pokud chcete získat přihlašovací údaje z certifikačního portálu, přečtěte si téma [připojení a testování zařízení IoT technologie Plug and Play](tutorial-certification-test.md#connect-and-discover-interfaces).
+## <a name="build-and-run-the-code"></a>Sestavit a spustit kód
 
-    ```cmd/sh
-    .\your_pnp_app.exe [DPS ID Scope] [DPS symmetric key] [device ID]
+Pomocí balíčku Vcpkg vytvoříte zástupný kód vygenerovaných kódů zařízení. Vytvořená aplikace simuluje zařízení, které se připojuje ke službě IoT Hub. Aplikace odesílá telemetrie a vlastnosti a přijímá příkazy.
+
+1. Vytvořte podadresář `cmake` ve složce `sample_device` a přejděte do této složky:
+
+    ```cmd
+    mkdir cmake
+    cd cmake
+    ```
+
+1. Spuštěním následujících příkazů Sestavte zástupnou proceduru vygenerovaného kódu (zástupný symbol nahraďte adresářem úložiště Vcpkg):
+
+    ```cmd
+    cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
+
+    cmake --build .
+    ```
+    
+    > [!NOTE]
+    > Pokud používáte sadu Visual Studio 2017 nebo 2015, je nutné určit generátor CMake na základě nástrojů pro sestavení, které používáte:
+    >```cmd
+    ># Either
+    >cmake .. -G "Visual Studio 15 2017" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    ># or
+    >cmake .. -G "Visual Studio 14 2015" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    >```
+
+    > [!NOTE]
+    > Pokud cmake nenajde váš C++ kompilátor, při spuštění předchozího příkazu se zobrazí chyby sestavení. Pokud k tomu dojde, zkuste spustit tento příkaz na příkazovém [řádku sady Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs).
+
+1. Po úspěšném dokončení sestavení zadejte přihlašovací údaje k DPS (**Rozsah ID DPS**, **symetrický klíč DPS**, **ID zařízení**) jako parametry pro aplikaci. Pokud chcete získat přihlašovací údaje z certifikačního portálu, přečtěte si téma [připojení a testování zařízení IoT technologie Plug and Play](tutorial-certification-test.md#connect-and-discover-interfaces).
+
+    ```cmd\sh
+    .\Debug\sample_device.exe [Device ID] [DPS ID Scope] [DPS symmetric key]
     ```
 
 ### <a name="implement-standard-interfaces"></a>Implementovat standardní rozhraní

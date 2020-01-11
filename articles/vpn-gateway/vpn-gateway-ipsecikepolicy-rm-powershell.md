@@ -3,25 +3,17 @@ title: Zásady IPsec/IKE pro S2S VPN & připojení VNet-to-VNet
 titleSuffix: Azure VPN Gateway
 description: Nakonfigurujte zásady IPsec/IKE pro připojení S2S nebo VNet-to-VNet se službami Azure VPN Gateway pomocí Azure Resource Manager a PowerShellu.
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
-manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: b0dabf0ee3370abab3d0f9d6f1bf26dd622862cf
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: ed7b12b24e6129d6cf609f4345203abc783e9f62
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151779"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864056"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>Konfigurace zásad IPsec/IKE pro připojení S2S VPN nebo VNet-to-VNet
 
@@ -106,7 +98,7 @@ V následující tabulce jsou uvedeny odpovídající skupiny Diffie-Hellman pod
 
 | **Skupina Diffie-Hellman**  | **DHGroup**              | **PFSGroup** | **Délka klíče** |
 | --- | --- | --- | --- |
-| 1                         | DHGroup1                 | PFS1         | 768bitová skupina MODP   |
+| 1\. místo                         | DHGroup1                 | PFS1         | 768bitová skupina MODP   |
 | 2                         | DHGroup2                 | PFS2         | 1024bitová skupina MODP  |
 | 14                        | DHGroup14<br>DHGroup2048 | PFS2048      | 2048bitová skupina MODP  |
 | 19                        | ECP256                   | ECP256       | 256bitová skupina ECP    |

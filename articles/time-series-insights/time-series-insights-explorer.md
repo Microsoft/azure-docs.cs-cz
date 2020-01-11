@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: f6fafb2d4d363ee0d01d5bd9f18a1294ae8110b7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 738f2fe028439601835f18a16a5d98cc2d6dc243
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327754"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863355"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Průzkumník Azure Time Series Insights
 
@@ -35,13 +35,13 @@ Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládán�
 > [!VIDEO https://www.youtube.com/embed/SHFPZvrR71s]
 
 >[!NOTE]
->Projděte si předchozí video <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">"Začínáme s Time Series Insights pomocí akcelerátoru řešení Azure IoT".</a>
+>Přehrajte si předchozí video <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">"Začínáme s Time Series Insights pomocí akcelerátoru řešení Azure IoT".</a>
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než budete moct použít Time Series Insights Explorer, musíte:
 
-- Vytvoření prostředí Time Series Insights. Další informace najdete v tématu [jak začít s Time Series Insights](./time-series-insights-get-started.md).
+- Vytvoření prostředí Time Series Insights. Další informace najdete v článku [jak začít s Time Series Insights](./time-series-insights-get-started.md).
 - [Poskytněte](time-series-insights-data-access.md) v prostředí přístup k vašemu účtu.
 - Přidejte do něj zdroj události služby [IoT Hub](time-series-insights-how-to-add-an-event-source-iothub.md) nebo [centra událostí](time-series-insights-how-to-add-an-event-source-eventhub.md) .
 
@@ -51,7 +51,7 @@ Během několika minut od připojení zdroje událostí k vašemu Time Series In
 
 1. Začněte tím, že ve webovém prohlížeči otevřete [průzkumníka Time Series Insights](https://insights.timeseries.azure.com/) . Na levé straně okna vyberte prostředí. Všechna prostředí, ke kterým máte přístup, jsou uvedena v abecedním pořadí.
 
-1. Po výběru prostředí buď použijte konfigurace **od** a **do** v horní části, nebo klikněte a přetáhněte ukazatel na časový rozsah, který chcete. Vyberte lupu v pravém horním rohu nebo klikněte pravým tlačítkem na vybraný časový interval a vyberte **Hledat**.
+1. Po výběru prostředí buď použijte konfigurace **od** a **do** v horní části, nebo vyberte a přetáhněte přes časový rozsah, který chcete. Vyberte lupu v pravém horním rohu nebo klikněte pravým tlačítkem na vybraný časový interval a vyberte **Hledat**.
 
 1. Dostupnost můžete také automaticky aktualizovat, a to tak, že vyberete tlačítko **automaticky zapnuto** . Tlačítko **automaticky zapnuto** se vztahuje pouze na graf dostupnosti, nikoli na obsah hlavní vizualizace.
 
@@ -59,7 +59,7 @@ Během několika minut od připojení zdroje událostí k vašemu Time Series In
 
    [Výběr prostředí ![Time Series Insights](media/time-series-insights-explorer/tsi-ga-explorer-environments.png)](media/time-series-insights-explorer/tsi-ga-explorer-environments.png#lightbox)
 
-1. V dalším kroku se zobrazí graf, který zobrazuje počet všech událostí během vybraného časového rozmezí. Tady máte několik ovládacích prvků:
+1. V dalším kroku se zobrazí graf zobrazující počet všech událostí během vybraného časového rozmezí. Tady máte několik ovládacích prvků:
 
     - **Panel editoru podmínek**: termín místo, kde se dotazuje na vaše prostředí. Nachází se na levé straně obrazovky:
       - **Measure**: Tento rozevírací seznam zobrazuje všechny číselné sloupce (**Double**).
@@ -71,22 +71,22 @@ Během několika minut od připojení zdroje událostí k vašemu Time Series In
 
       - **Predikát**: pomocí predikátu můžete rychle filtrovat události pomocí sady operandů uvedených v následující tabulce. Pokud hledání provádíte tak, že vyberete nebo kliknete, predikát se na základě tohoto hledání automaticky aktualizuje. Operand podporované typy patří:
 
-         |Operace  |Podporované typy  |Poznámky:  |
+         |Operace  |Podporované typy  |Poznámky  |
          |---------|---------|---------|
          |**<** , **>** , **<=** **>=**    |  **Double**, **DateTime**, **TimeSpan**       |         |
          |**=** , **! =** , **<>**     | **String**, **bool**, **Double**, **DateTime**, **TimeSpan**, **null**        |         |
-         |**PRO**     | **String**, **bool**, **Double**, **DateTime**, **TimeSpan**, **null**        |  Všechny operandy by měly být stejného typu nebo mít **nulovou** konstantu.        |
-         |**MÁ**     | **Řetezce**        |  Na pravé straně jsou povoleny pouze konstantní řetězcové literály. Prázdný řetězec a **hodnota null** nejsou povoleny.       |
+         |**IN**     | **String**, **bool**, **Double**, **DateTime**, **TimeSpan**, **null**        |  Všechny operandy by měly být stejného typu nebo mít **nulovou** konstantu.        |
+         |**MÁ**     | **řetězec**        |  Na pravé straně jsou povoleny pouze konstantní řetězcové literály. Prázdný řetězec a **hodnota null** nejsou povoleny.       |
 
       - **Příklady dotazů**
 
          [Příklady dotazů GA ![](media/time-series-insights-explorer/tsi-ga-example-queries.png)](media/time-series-insights-explorer/tsi-ga-example-queries.png#lightbox)
 
-1. Pomocí nástroje posuvník **velikosti intervalu** můžete přiblížit nebo oddálit intervaly ve stejném časovém intervalu. Posuvník poskytuje přesnější kontrolu nad pohybem mezi velkými řezy času, které znázorňují hladké trendy v průřezech až do milisekund, což vám umožní zobrazit podrobné a vysoce rozlišení vašich dat. Výchozí počáteční bod posuvníku je nastaven jako optimální zobrazení dat z výběru pro vyvážení rozlišení, rychlosti dotazů a členitosti.
+1. Pomocí nástroje posuvník **velikosti intervalu** můžete přiblížit nebo oddálit intervaly ve stejném časovém intervalu. Posuvník poskytuje přesnější kontrolu nad pohybem mezi velkými řezy času, které znázorňují hladké trendy až po milisekundy, což umožňuje zobrazit a analyzovat podrobné a vysoce rozlišení vašich dat. Výchozí počáteční bod posuvníku je nastaven jako optimální zobrazení dat z výběru pro vyvážení rozlišení, rychlosti dotazů a členitosti.
 
 1. Nástroj **Time štětec** usnadňuje přechod z jednoho časového rozpětí do druhého.
 
-1. Výběrem ikony **Uložit** uložte aktuální dotaz a sdílejte ho s dalšími uživateli prostředí. Když vyberete ikonu **otevřít** , uvidíte všechny uložené dotazy a všechny sdílené dotazy dalších uživatelů v prostředích, ke kterým máte přístup.
+1. Výběrem ikony **Uložit** uložte aktuální dotaz a sdílejte ho s dalšími uživateli prostředí. Když vyberete ikonu **otevřít** , můžete zkontrolovat všechny uložené dotazy a všechny sdílené dotazy dalších uživatelů v prostředích, ke kterým máte přístup.
 
    [![dotazy](media/time-series-insights-explorer/tsi-ga-explorer-saved-queries.png)](media/time-series-insights-explorer/tsi-ga-explorer-saved-queries.png#lightbox)
 
@@ -101,8 +101,8 @@ Během několika minut od připojení zdroje událostí k vašemu Time Series In
     - **Vyberte** nebo **klikněte** na konkrétní časový rozsah nebo jednu datovou řadu.
     - V rámci výběru TimeSpan můžete události přiblížit nebo prozkoumat.
     - V rámci datové řady můžete řadu rozdělit na jiný sloupec, přidat řadu jako nový termín, zobrazit jenom vybrané řady, vyřadit z nich vybrané řady, vyloučíte je z této řady a prozkoumáte události z vybrané řady.
-    - V oblasti filtru nalevo od grafu můžete zobrazit všechny zobrazené datové řady a změnit jejich pořadí podle hodnoty nebo názvu. Můžete také zobrazit všechny datové řady nebo připnuté nebo nepřipnutých řad. Můžete vybrat jednu datovou řadu a rozdělit ji na jiný sloupec, přidat řadu jako nový termín, zobrazit jenom vybrané řady, vyloučit vybrané řady, připnout tyto řady nebo prozkoumat události z vybrané řady.
-    - Pokud současně zobrazujete více podmínek, můžete vytvořit zásobník, odskládat, zobrazit další data o datové řadě a použít stejnou osu y napříč všemi podmínkami. Použijte tlačítka v pravém horním rohu grafu.
+    - V oblasti filtru nalevo od grafu můžete zkontrolovat všechny zobrazené datové řady a změnit jejich pořadí podle hodnoty nebo názvu. Můžete také zobrazit všechny datové řady nebo připnuté nebo nepřipnutých řad. Můžete vybrat jednu datovou řadu a rozdělit ji na jiný sloupec, přidat řadu jako nový termín, zobrazit jenom vybrané řady, vyloučit vybrané řady, připnout tyto řady nebo prozkoumat události z vybrané řady.
+    - Když si zobrazíte víc podmínek najednou, můžete Stack, odskládat, kontrolovat další data o datové řadě a používat stejnou osu y napříč všemi podmínkami. Použijte tlačítka v pravém horním rohu grafu.
 
     [nastavení možnosti pravého horního rohu nástroje ![Chart Tool](media/time-series-insights-explorer/tsi-ga-example-chart-options.png)](media/time-series-insights-explorer/tsi-ga-example-chart-options.png#lightbox)
 
@@ -110,7 +110,7 @@ Během několika minut od připojení zdroje událostí k vašemu Time Series In
 
     [![grafice heatmapu pro GA v Průzkumníkovi](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
 
-1. Když prozkoumáte události tak, že vyberete nebo kliknete pravým tlačítkem myši, zpřístupní se panel **události** . Tady uvidíte všechny nezpracované události a exportujte události jako soubory JSON nebo CSV. Time Series Insights ukládá všechna nezpracovaná data.
+1. Když prozkoumáte události tak, že vyberete nebo kliknete pravým tlačítkem myši, zpřístupní se panel **události** . Tady můžete zkontrolovat všechny nezpracované události a vyexportovat události jako soubory JSON nebo CSV. Time Series Insights ukládá všechna nezpracovaná data.
 
     [Události ![](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png)](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png#lightbox)
 
@@ -121,7 +121,7 @@ Během několika minut od připojení zdroje událostí k vašemu Time Series In
 
       [grafy a možnosti ![statistiky](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png)](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png#lightbox)
 
-Nyní jste viděli různé funkce a možnosti, které jsou k dispozici v rámci webové aplikace Time Series Insights Explorer.
+Nyní jste se seznámili s klíčovými funkcemi, konfiguračními nastaveními a možnostmi zobrazení, které jsou k dispozici v aplikaci Time Series Insights Explorer Web App.
 
 ## <a name="next-steps"></a>Další kroky
 

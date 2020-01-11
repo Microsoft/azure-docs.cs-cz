@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: f29bd4ab679d734c3acce967a5d60784b9884ba6
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 5000d79db0d9036fe8904322764e4c480111d6cc
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561380"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863389"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorování a zmírnění omezení pro snížení latence v Azure Time Series Insights
 
@@ -74,11 +74,11 @@ Výstrahy vám můžou pomáhat diagnostikovat a zmírnit problémy latence způ
 
 ## <a name="throttling-and-ingress-management"></a>Omezování a správa pro příchozí přenosy
 
-* Pokud se omezíte, zobrazí se hodnota *prodlevy při příchozím příjmu zpráv*, která vás informuje o tom, kolik sekund má vaše prostředí Time Series Insights od skutečné doby, kdy zpráva narazí na zdroj události (s výjimkou času indexování appx). 30-60 sekund).  
+* Pokud jste omezili omezení, bude zaregistrována hodnota *časové prodlevy přijatých zpráv příchozího* přenosu informací o tom, kolik sekund má vaše prostředí Time Series Insights od skutečné doby, kdy zpráva narazí na zdroj události (s výjimkou času indexování appx). 30-60 sekund).  
 
   *Prodleva počtu přijatých zpráv příchozího* přenosu dat by měla mít také hodnotu, která vám umožní určit, kolik zpráv je za vás.  Nejjednodušší způsob, jak se získat, je zvýšit kapacitu vašeho prostředí na velikost, která vám umožní překonat rozdíl.  
 
-  Pokud například zjistíte, že vaše prostředí S1 zobrazuje prodlevu 5 000 000 zpráv, můžete zvýšit velikost svého prostředí na šest jednotek po dobu okolního dne, abyste se mohli zachytit.  Můžete ještě víc zvýšit, abyste rychleji zachytili. Při počátečním zřizování prostředí, zejména v případě, že ho připojíte ke zdroji událostí, který už obsahuje události nebo když hromadně nahráváte spoustu historických dat, je období zachycení běžným výskytem.
+  Pokud například vaše prostředí S1 předchází prodlevě 5 000 000 zpráv, můžete zvýšit velikost svého prostředí na šest jednotek po dobu zhruba dne, abyste se mohli zachytit.  Můžete ještě víc zvýšit, abyste rychleji zachytili. Při počátečním zřizování prostředí, zejména v případě, že ho připojíte ke zdroji událostí, který už obsahuje události nebo když hromadně nahráváte spoustu historických dat, je období zachycení běžným výskytem.
 
 * Další možností je nastavit upozornění na **uložené události** příchozího přenosu > = mezní hodnota mírně pod celkovou kapacitou prostředí po dobu 2 hodin.  Tato výstraha vám pomůže pochopit, jestli máte neustále na kapacitě, což znamená vysokou pravděpodobnost latence. 
 
@@ -86,7 +86,7 @@ Výstrahy vám můžou pomáhat diagnostikovat a zmírnit problémy latence způ
 
 * Pokud se domníváte, že jste omezili, můžete porovnat **přijaté zprávy s příchozími** zprávami ve zdroji událostí.  Pokud příchozí přenos dat do centra událostí je větší než vaše **příchozí zprávy**, vaše Time Series Insights jsou nejspíš omezené.
 
-## <a name="improving-performance"></a>Zlepšení výkonu
+## <a name="improving-performance"></a>Zvýšení výkonu
 
 Aby se snížila latence nebo dochází k latenci, nejlepším způsobem, jak ho opravit, je zvýšit kapacitu vašeho prostředí.
 

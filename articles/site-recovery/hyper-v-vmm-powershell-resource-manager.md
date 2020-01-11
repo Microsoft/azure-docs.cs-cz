@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: 2fc66514bdf33611f9e6266d35a2d537fe3b9261
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: d2f25774f89182004e23605bf4c37d1e1d739df7
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084907"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867036"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Nastavení zotavení po havárii virtuálních počítačů Hyper-V do sekundární lokality pomocí prostředí PowerShell (Správce prostředků)
 
@@ -194,6 +194,14 @@ Až budou servery, cloudy a sítě správně nakonfigurované, povolte ochranu p
 3. Povolte replikaci pro virtuální počítač.
 
           $jobResult = Set-AzSiteRecoveryProtectionEntity -ProtectionEntity $protectionentity -Protection Enable -Policy $policy
+
+> [!NOTE]
+> Pokud chcete replikovat na spravované disky s povoleným CMK v Azure, proveďte následující kroky pomocí AZ PowerShell 3.3.0 a další:
+>
+> 1. Povolení převzetí služeb při selhání u spravovaných disků aktualizací vlastností virtuálního počítače
+> 2. Pomocí rutiny Get-AsrReplicationProtectedItem načtěte ID disku pro každý disk chráněné položky.
+> 3. Vytvořte objekt Dictionary pomocí rutiny New-Object ' System. Collections. Generic. Dictionary ' ' 2 [System. String, System. String] ', která bude obsahovat mapování ID disku na sadu šifrování disku. Tyto sady diskových šifrovacích sad se v cílové oblasti předem vytvoří.
+> 4. Aktualizujte vlastnosti virtuálního počítače pomocí rutiny Set-AsrReplicationProtectedItem předáním objektu Dictionary v parametru-DiskIdToDiskEncryptionSetMap.
 
 ## <a name="run-a-test-failover"></a>Spuštění testovacího převzetí služeb při selhání
 

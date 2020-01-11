@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 5b1c3e6dcd106e16ab07f707729f31ee1e269461
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 75ed2029582438ede43687addfd54c0a187e0120
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660303"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861094"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Zpracování dat a uživatelsky definované funkce
 
@@ -104,7 +104,7 @@ Uživatelsky definované funkce lze zapsat v JavaScriptu. Pomocné metody komuni
 - Vytvoří oznámení v případě, že jsou splněny určité podmínky pro čtení příchozího senzoru.
 - Než odešlete oznámení, připojte metadata grafu ke senzoru, který čte.
 
-Další informace najdete v tématu [Jak používat uživatelsky definované funkce](./how-to-user-defined-functions.md).
+Další informace najdete v článku [Jak používat uživatelsky definované funkce](./how-to-user-defined-functions.md).
 
 #### <a name="examples"></a>Příklady
 

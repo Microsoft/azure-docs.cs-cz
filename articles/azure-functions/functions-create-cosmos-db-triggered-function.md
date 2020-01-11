@@ -5,12 +5,12 @@ ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 922babb4b9b80c91ea99062170cf224346df192a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 830c7cdee247118ed24fc9b3a2a9efe8609c75d0
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769417"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863265"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Vytvoření funkce aktivované službou Azure Cosmos DB
 
@@ -64,10 +64,10 @@ Dál vytvoříte v nové aplikaci Function App funkci.
     | Nastavení      | Navrhovaná hodnota  | Popis                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **Název** | Výchozí | Použijte výchozí název funkce navrhovaný šablonou.|
-    | **Připojení účtu Azure Cosmos DB** | Nové nastavení | Vyberte **Nové**, vyberte **Předplatné** a **Databázový účet**, které jste předtím vytvořili, a zvolte **Vybrat**. Vytvoří se nastavení aplikace pro připojení k vašemu účtu. Toto nastavení používá vazba pro připojení k databázi. |
-    | **Název kolekce** | Items | Název kolekce, která se má monitorovat. |
-    | **Vytvořit kolekci zapůjčení, pokud neexistuje** | Zaškrtnuté | Kolekce ještě neexistuje, takže ji vytvořte. |
-    | **Název databáze** | Úlohy | Název databáze s kolekcí, která se má monitorovat. |
+    | **Připojení účtu Azure Cosmos DB** | Nové nastavení | Vyberte **Nové**, vyberte **Předplatné** a **Databázový účet**, které jste předtím vytvořili, a zvolte **Vybrat**. Vytvoří se nastavení aplikace pro připojení k vašemu účtu. Toto nastavení vazba použije k připojení k databázi. |
+    | **Název kontejneru** | Items | Název kontejneru, který se má monitorovat |
+    | **Vytvořit kontejner zapůjčení, pokud neexistuje** | Zaškrtnuté | Kontejner ještě neexistuje, proto ho vytvořte. |
+    | **Název databáze** | Úlohy | Název databáze s kontejnerem, který se má monitorovat |
 
 1. Kliknutím na **Vytvořit** vytvořte funkci aktivovanou službou Azure Cosmos DB. Po vytvoření funkce se zobrazí kód funkce založené na šabloně.  
 
@@ -75,9 +75,9 @@ Dál vytvoříte v nové aplikaci Function App funkci.
 
     Tato šablona funkce zapíše do protokolů počet dokumentů a ID prvního dokumentu.
 
-Potom se připojíte ke svému účtu služby Azure Cosmos DB a vytvoříte v databázi `Tasks` kolekci `Items`.
+Pak se připojíte k účtu Azure Cosmos DB a vytvoříte kontejner `Items` v databázi `Tasks`.
 
-## <a name="create-the-items-collection"></a>Vytvoření kolekce Items (Položky)
+## <a name="create-the-items-container"></a>Vytvořit kontejner položek
 
 1. Na nové kartě prohlížeče otevřete druhou instanci webu [Azure Portal](https://portal.azure.com).
 
@@ -87,33 +87,32 @@ Potom se připojíte ke svému účtu služby Azure Cosmos DB a vytvoříte v da
 
 1. Zvolte váš účet služby Azure Cosmos DB a vyberte **Průzkumník dat**. 
 
-1. V části **Kolekce** zvolte **taskDatabase** a vyberte **Nová kolekce**.
+1. V části **SQL API**zvolte možnost databáze **úkolů** a vyberte **Nový kontejner**.
 
-    ![Vytvoření kolekce](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection.png)
+    ![Vytvoření kontejneru](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container.png)
 
-1. V části **Přidat kolekci** použijte nastavení uvedená v tabulce pod obrázkem. 
+1. V části **Přidat kontejner**použijte nastavení uvedená v tabulce pod obrázkem. 
 
-    ![Definování kolekce taskCollection](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection2.png)
+    ![Definování kontejneru úkoly](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container2.png)
 
     | Nastavení|Navrhovaná hodnota|Popis |
     | ---|---|--- |
     | **ID databáze** | Úlohy |Název nové databáze. Musí se shodovat s názvem definovaným ve vazbě vaší funkce. |
-    | **ID kolekce** | Items | Název nové kolekce. Musí se shodovat s názvem definovaným ve vazbě vaší funkce.  |
-    | **Kapacita úložiště** | Pevná (10 GB)|Použijte výchozí hodnotu. Tato hodnota je kapacita úložiště databáze. |
-    | **Propustnost** |400 RU| Použijte výchozí hodnotu. Pokud budete chtít snížit latenci, můžete propustnost později navýšit. |
-    | **[Klíč oddílu](../cosmos-db/partition-data.md)** | /kategorie|Klíč oddílu, který rovnoměrně distribuuje data do jednotlivých oddílů. Výběr správného klíče oddílu je důležitý pro vytvoření výkonné kolekce. | 
+    | **ID kontejneru** | Items | Název nového kontejneru. Musí se shodovat s názvem definovaným ve vazbě vaší funkce.  |
+    | **[Klíč oddílu](../cosmos-db/partition-data.md)** | /kategorie|Klíč oddílu, který rovnoměrně distribuuje data do jednotlivých oddílů. Výběr správného klíče oddílu je důležitý při vytváření výkonného kontejneru. | 
+    | **Propustnost** |400 RU| Použijte výchozí hodnotu. Pokud budete chtít snížit latenci, můžete propustnost později navýšit. |    
 
-1. Kliknutím na **OK** vytvořte kolekci Items. Vytvoření kolekce může chvíli trvat.
+1. Kliknutím na tlačítko **OK** vytvořte kontejner položek. Vytvoření kontejneru může trvat krátkou dobu.
 
-Jakmile bude existovat kolekce definovaná ve vazbě funkce, můžete funkci otestovat přidáním dokumentů do této nové kolekce.
+Po tom, co kontejner zadaný ve vazbě funkce existuje, můžete funkci otestovat přidáním položek do tohoto nového kontejneru.
 
 ## <a name="test-the-function"></a>Testování funkce
 
-1. V Průzkumníku dat rozbalte novou kolekci **taskCollection**, zvolte **Dokumenty** a vyberte **Nový dokument**.
+1. Rozbalte kontejner nové **položky** v Průzkumník dat, zvolte položku **položky**a vyberte možnost **Nová položka**.
 
-    ![Vytvoření dokumentu v kolekci taskCollection](./media/functions-create-cosmos-db-triggered-function/create-document-in-collection.png)
+    ![Vytvoření položky v kontejneru položek](./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png)
 
-1. Nahraďte obsah nového dokumentu následujícím obsahem a pak zvolte **Uložit**.
+1. Nahraďte obsah nové položky následujícím obsahem a pak zvolte **Uložit**.
 
         {
             "id": "task1",

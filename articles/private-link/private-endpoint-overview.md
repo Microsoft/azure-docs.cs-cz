@@ -5,14 +5,14 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 673b74515ba03bc71e60a68b21b9330f9e62d424
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 38f424287788537cc5711bab8da60b5798a84b3a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647386"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867695"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
 
@@ -58,6 +58,9 @@ Prostředek privátního propojení je cílovým cílem daného privátního kon
 |**Azure Storage**  | Microsoft.Storage/storageAccounts    |  BLOB (objekt blob, blob_secondary)<BR> Tabulka (tabulka, table_secondary)<BR> Queue (Queue, queue_secondary)<BR> Soubor (soubor, file_secondary)<BR> Web (web, web_secondary)        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  BLOB (objekt blob, blob_secondary)       |
 |**Azure Cosmos DB** | Microsoft. AzureCosmosDB/databaseAccounts | SQL, MongoDB, Cassandra, Gremlin, tabulka|
+|**Azure Database for PostgreSQL – jeden server** | Microsoft.DBforPostgreSQL/servers   | postgresqlServer |
+|**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | mysqlServer |
+|**Azure Database for MariaDB** | Microsoft.DBforMariaDB/servers    | mariadbServer |
  
 ## <a name="network-security-of-private-endpoints"></a>Zabezpečení sítě privátních koncových bodů 
 Při používání privátních koncových bodů pro služby Azure je provoz zabezpečený pro konkrétní prostředek privátního propojení. Platforma provede řízení přístupu, aby se ověřilo, že síťová připojení dosáhnou pouze zadaného prostředku privátního propojení. Pokud chcete získat přístup k dalším prostředkům v rámci stejné služby Azure, vyžadují se další privátní koncové body. 
@@ -112,6 +115,9 @@ Pro služby Azure použijte doporučené názvy zón, jak je popsáno v následu
 |Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
 |Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.com|
 |Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Table|privatelink.table.cosmos.azure.com|
+|Azure Database for PostgreSQL – jeden server (Microsoft. DBforPostgreSQL/servery)|postgresqlServer|privatelink.postgres.database.azure.com|
+|Azure Database for MySQL (Microsoft. DBforMySQL/servery)|mysqlServer|privatelink.mysql.database.azure.com|
+|Azure Database for MariaDB (Microsoft. DBforMariaDB/servery)|mariadbServer|privatelink.mariadb.database.azure.com|
  
 Azure vytvoří záznam DNS (CNAME) kanonického názvu (CNAME) na veřejném serveru DNS pro přesměrování řešení na navržené názvy domén. Řešení bude možné přepsat privátní IP adresou vašich privátních koncových bodů. 
  
@@ -136,3 +142,9 @@ Následující tabulka obsahuje seznam známých omezení při použití privát
 - [Vytvoření privátního koncového bodu pro účet úložiště pomocí portálu](create-private-endpoint-storage-portal.md)
 - [Vytvoření privátního koncového bodu pro účet Azure Cosmos pomocí portálu](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Vytvoření vlastní služby privátního propojení pomocí Azure PowerShell](create-private-link-service-powershell.md)
+- [Vytvoření vlastního privátního odkazu pro Azure Database for PostgreSQL s jedním serverem pomocí portálu](../postgresql/howto-configure-privatelink-portal.md)
+- [Vytvoření vlastního privátního odkazu pro Azure Database for PostgreSQL s jedním serverem pomocí rozhraní příkazového řádku](../postgresql/howto-configure-privatelink-cli.md)
+- [Vytvoření vlastního privátního odkazu pro Azure Database for MySQL pomocí portálu](../mysql/howto-configure-privatelink-portal.md)
+- [Vytvoření vlastního privátního odkazu pro Azure Database for MySQL pomocí rozhraní příkazového řádku](../mysql/howto-configure-privatelink-cli.md)
+- [Vytvoření vlastního privátního odkazu pro Azure Database for MariaDB pomocí portálu](../mariadb/howto-configure-privatelink-portal.md)
+- [Vytvoření vlastního privátního odkazu pro Azure Database for MariaDB pomocí rozhraní příkazového řádku](../mariadb/howto-configure-privatelink-cli.md)

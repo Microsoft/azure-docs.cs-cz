@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 1f6b753052b882b75884503f8c05f34b8cead821
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 22053bdc3a9836b76aa92303234a095cac6448ef
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749386"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863838"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Vizualizace dat z Time Series Insights v Power BI
 
@@ -51,7 +51,7 @@ Pokud chcete Power BI prostředí Time Series Insights připojit, postupujte tak
 Jak začít:
 
 1. Otevřete Průzkumníka Time Series Insights Preview a dohlédněte si data.
-1. Po vytvoření zobrazení, které jste splnili, přejděte do rozevírací nabídky **Další akce** a klikněte na **připojit k Power BI**.
+1. Po vytvoření zobrazení, které jste splnili, přejděte do rozevírací nabídky **Další akce** a vyberte **připojit k Power BI**.
 
     [Export Průzkumníka ![Time Series Insights Preview](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
@@ -118,7 +118,7 @@ Teď, když jste data importovali do Power BI, je čas sestavovat sestavu s vizu
 
     [![vytvoření spojnicového grafu](media/how-to-connect-power-bi/power-bi-line-chart.png)](media/how-to-connect-power-bi/power-bi-line-chart.png#lightbox)
 
-1.  Pokud chcete přidat další graf na plátno, klikněte kamkoli na plátno mimo spojnicový graf a tento postup opakujte.
+1.  Pokud chcete na plátno přidat další graf, vyberte kdekoliv na plátně mimo spojnicový graf a tento postup opakujte.
 
     [![vytvořit další grafy ke sdílení](media/how-to-connect-power-bi/power-bi-additional-charts.png)](media/how-to-connect-power-bi/power-bi-additional-charts.png#lightbox)
 
@@ -138,7 +138,7 @@ Jako přehled:
 1. Upravte datovou část JSON podle potřeby.
 1. Vyberte **Hotovo** a pak **zavřete & použít** v **okně editoru Power Query**.
 
-Měli byste vidět požadované změny.  
+Rozhraní nyní bude odrážet požadované změny, které jste použili.  
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -146,4 +146,4 @@ Měli byste vidět požadované změny.
 
 * Přečtěte si další informace o [Power BI desktopu](https://docs.microsoft.com/power-bi/desktop-query-overview).
 
-* Přečtěte si téma Time Series Insights v Průzkumníkovi [GA](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart) a [Time Series Insights Preview](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).
+* Přečtěte si Time Series Insights v Průzkumníkovi [GA](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart) a [Time Series Insights Preview](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).

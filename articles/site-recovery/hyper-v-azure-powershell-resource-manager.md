@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 01/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: 73f5f64a64ab28cdb4b57d0904911f62c2020cf0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 548fa8181c4841d8f57de485c0a4e714b5e9321a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082681"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863906"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Nastavení zotavení po havárii do Azure pro virtuální počítače Hyper-V pomocí PowerShellu a Azure Resource Manager
 
@@ -38,7 +38,7 @@ K použití tohoto článku nemusíte být odborník na PowerShell, ale musíte 
 Ujistěte se, že máte zavedené tyto požadavky:
 
 * Účet [Microsoft Azure](https://azure.microsoft.com/) . Můžete začít s [bezplatnou zkušební verzí](https://azure.microsoft.com/pricing/free-trial/). Navíc si můžete přečíst o [cenách Azure Site Recovery Manageru](https://azure.microsoft.com/pricing/details/site-recovery/).
-* Azure PowerShell Informace o této verzi a o tom, jak ji nainstalovat, najdete v tématu [install Azure PowerShell](/powershell/azure/install-az-ps).
+* Azure Powershell Informace o této verzi a o tom, jak ji nainstalovat, najdete v tématu [install Azure PowerShell](/powershell/azure/install-az-ps).
 
 Kromě toho konkrétní příklad, který je popsaný v tomto článku, má následující požadavky:
 
@@ -188,7 +188,13 @@ Než začnete, mějte na paměti, že zadaný účet úložiště by měl být v
 
         Succeeded
 
-
+> [!NOTE]
+> Pokud chcete replikovat na spravované disky s povoleným CMK v Azure, proveďte následující kroky pomocí AZ PowerShell 3.3.0 a další:
+>
+> 1. Povolení převzetí služeb při selhání u spravovaných disků aktualizací vlastností virtuálního počítače
+> 2. Pomocí rutiny Get-AsrReplicationProtectedItem načtěte ID disku pro každý disk chráněné položky.
+> 3. Vytvořte objekt Dictionary pomocí rutiny New-Object ' System. Collections. Generic. Dictionary ' ' 2 [System. String, System. String] ', která bude obsahovat mapování ID disku na sadu šifrování disku. Tyto sady diskových šifrovacích sad se v cílové oblasti předem vytvoří.
+> 4. Aktualizujte vlastnosti virtuálního počítače pomocí rutiny Set-AsrReplicationProtectedItem předáním objektu Dictionary v parametru-DiskIdToDiskEncryptionSetMap.
 
 ## <a name="step-8-run-a-test-failover"></a>Krok 8: spuštění testovacího převzetí služeb při selhání
 1. Spusťte testovací převzetí služeb při selhání následujícím způsobem:

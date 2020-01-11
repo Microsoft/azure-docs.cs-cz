@@ -1,19 +1,18 @@
 ---
-title: Starší skladové položky brány VPN Gateway služby Azure Virtual Network Microsoft Docs
+title: Starší skladové položky brány sítě VPN služby Azure Virtual Network
 description: Jak pracovat se starými SKU brány virtuální sítě; Basic, Standard a HighPerformance.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 08/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5c745258929d495c1e568a156690f569de9f0e36
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 9c5e6d5aca51bd560a46837ba47de86362665773
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533904"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861910"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Práce s SKU brány virtuální sítě (zastaralé SKU)
 
@@ -37,7 +36,7 @@ Ceny starší brány můžete zobrazit v části **Virtual Network brány** , kt
 
 Bránu můžete změnit na SKU brány ve stejné rodině SKU. Například pokud máte standardní SKU, můžete změnit velikost na HighPerformance SKU. Nemůžete ale změnit velikost služby VPN Gateway mezi původními SKU a nové rodiny SKU. Například nemůžete přejít ze standardní SKU na SKU VpnGw2 nebo základní SKU na VpnGw1.
 
-### <a name="resource-manager"></a>Resource Manager
+### <a name="resource-manager"></a>Správce prostředků
 
 Chcete-li změnit velikost brány pro model nasazení Správce prostředků pomocí prostředí PowerShell, použijte následující příkaz:
 

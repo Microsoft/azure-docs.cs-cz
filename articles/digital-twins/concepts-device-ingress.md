@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: f9f0a74a6ca57f90ed8bd217d0d2f57e4bc16749
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 5c2c519ece9806b92c3e455d5f550bc2abfc9f3b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660337"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862471"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Možnosti připojení zařízení a příchozí přenos telemetrických dat
 
@@ -21,7 +21,7 @@ Data telemetrie odesílaná zařízeními a snímači tvoří páteřní síť �
 
 Začněte tím, že vytvoříte prostředek služby Azure IoT Hub v kořenovém adresáři prostorového grafu. Prostředek IoT Hub umožňuje všem zařízením pod kořenovým místem odesílat zprávy. Po vytvoření IoT Hub zaregistrujte zařízení se senzory v instanci digitálního vlákna. Zařízení můžou odesílat data do služby digitálního vlákna přes [sadu SDK pro zařízení Azure IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks).
 
-Podrobný návod, jak přenést zařízení do desky, najdete v [kurzu nasazení a konfigurace digitálních vláken](tutorial-facilities-setup.md). Na první pohled je postup:
+Podrobný návod, jak přenést zařízení do zprovoznění, najdete v [kurzu nasazení a konfigurace digitálních vláken](tutorial-facilities-setup.md). Na první pohled je postup:
 
 - Nasaďte z [Azure Portal](https://portal.azure.com)instanci digitálních vláken.
 - Vytvořte v grafu mezery.

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 34abb93dd54245e03baaa6efe0130d951f7565bf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3e0dd6e0bb81aef340dc83288e6e5c0af0bf11c6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927732"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867370"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Kopírování dat z koncového bodu REST pomocí Azure Data Factory
 
@@ -42,7 +42,7 @@ Konkrétně tento obecný konektor REST podporuje:
 > [!TIP]
 > Chcete-li otestovat požadavek na načtení dat před konfigurací konektoru REST v Data Factory, přečtěte si informace o specifikaci rozhraní API pro požadavky hlaviček a textu. K ověření můžete použít nástroje, jako je například nástroj pro odeslání nebo webový prohlížeč.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -371,6 +371,75 @@ Odpovídající konfigurace zdroje aktivity pro kopírování REST, zejména `pa
     }
 }
 ```
+
+## <a name="use-oauth"></a>Použití OAuth
+Tato část popisuje, jak použít šablonu řešení ke kopírování dat z konektoru REST do Azure Data Lake Storage ve formátu JSON pomocí OAuth. 
+
+### <a name="about-the-solution-template"></a>O šabloně řešení
+
+Šablona obsahuje dvě aktivity:
+- Aktivita **webu** načte nosný token a pak ho předá do následné aktivity kopírování jako autorizaci.
+- Aktivita **kopírování** kopíruje data z REST do Azure Data Lake Storage.
+
+Šablona definuje dva parametry:
+- **SinkContainer** je cesta ke kořenové složce, do které se zkopírují data do svého Azure Data Lake Storage. 
+- **SinkDirectory** je cesta k adresáři v kořenovém adresáři, kam se zkopírují data do Azure Data Lake Storage. 
+
+### <a name="how-to-use-this-solution-template"></a>Jak používat tuto šablonu řešení
+
+1. Přejděte na adresu **REST nebo HTTP pomocí šablony OAuth** . Vytvořte nové připojení pro zdrojové připojení. 
+    ![vytvořit nová připojení](media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png)
+
+    Níže jsou uvedené klíčové kroky pro nastavení nové propojené služby (REST):
+    
+     1. V části **základní adresa URL**zadejte parametr adresy URL pro vlastní zdrojovou službu REST. 
+     2. Jako **typ ověřování**vyberte *Anonymous (anonymní*).
+        ![nové připojení REST](media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png)
+
+2. Vytvoří nové připojení pro cílové připojení.  
+    ![Nové připojení Gen2](media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png)
+
+3. Vyberte **Použít tuto šablonu**.
+    ![použít tuto šablonu](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
+
+4. Zobrazí se vytvořený kanál, jak je znázorněno v následujícím příkladu: kanál ![](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+
+5. Vyberte aktivitu **webu** . V **Nastavení**zadejte odpovídající **adresu URL**, **metodu**, **záhlaví**a **text** pro načtení tokenu Bearer OAuth z rozhraní API pro přihlášení služby, ze které chcete kopírovat data. Zástupný symbol v šabloně prezentuje ukázku protokolu OAuth pro Azure Active Directory (AAD). Poznámka: ověřování AAD je nativně podporované konektorem REST, tady je jenom příklad toku OAuth. 
+
+    | Vlastnost | Popis |
+    |:--- |:--- |:--- |
+    | Adresa URL |Zadejte adresu URL, ze které se má načíst token nosiče OAuth. například v ukázce je https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
+    | Metoda | Metoda HTTP Povolené hodnoty jsou **post** a **Get**. | 
+    | Hlavičky | Záhlaví je definováno uživatelem, které odkazuje na jeden název záhlaví v požadavku HTTP. | 
+    | Tělo | Tělo požadavku HTTP | 
+
+    ![Kanál](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
+
+6. V části aktivita **kopírování dat** vyberte kartu *zdroj* . můžete vidět, že nosný token (access_token) načtený z předchozího kroku se předává aktivitě kopírovat data jako **autorizace** v dalších hlavičkách. Před spuštěním spuštění kanálu potvrďte nastavení následujících vlastností.
+
+    | Vlastnost | Popis |
+    |:--- |:--- |:--- | 
+    | Request – metoda | Metoda HTTP Povolené hodnoty jsou **Get** (default) a **post**. | 
+    | Další záhlaví | Další hlavičky požadavku HTTP| 
+
+   ![Kopírovat ověření zdroje](media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png)
+
+7. Vyberte **ladit**, zadejte **parametry**a pak vyberte **Dokončit**.
+   ![spuštění kanálu](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
+
+8. Po úspěšném dokončení kanálu by se zobrazil výsledek podobný následujícímu příkladu: ![výsledek spuštění kanálu](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
+
+9. Klikněte na ikonu "výstup" aktivity webactivity ve sloupci **Actions (akce** ). zobrazí se access_token vrácená službou.
+
+   ![Výstup tokenu](media/solution-template-copy-from-rest-or-http-using-oauth/token-output.png) 
+
+10. Klikněte na ikonu Input (vstup) CopyActivity ve sloupci **Actions (akce** ). zobrazí se zpráva, Access_token že aktivita získaná funkcí webactivity se předává CopyActivity pro ověřování. 
+
+    ![Vstup tokenu](media/solution-template-copy-from-rest-or-http-using-oauth/token-input.png)
+        
+    >[!CAUTION] 
+    >Aby nedocházelo k přihlašování do prostého textu, povolte v aktivitě kopírování "zabezpečený výstup" v aktivitě web a "zabezpečený vstup".
+
 
 ## <a name="export-json-response-as-is"></a>Exportovat odpověď JSON tak, jak je
 

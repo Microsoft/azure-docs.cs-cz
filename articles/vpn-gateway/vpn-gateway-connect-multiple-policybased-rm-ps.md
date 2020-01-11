@@ -2,18 +2,17 @@
 title: 'Azure VPN Gateway: připojení bran k několika místním zařízením VPN založeným na zásadách'
 description: Nakonfigurujte bránu VPN založenou na směrováních Azure na několik zařízení VPN založených na zásadách pomocí Azure Resource Manager a PowerShellu.
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: yushwang
-ms.openlocfilehash: f307e37debe47d2d352b1a375259fe7a0d6dd3cd
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 029b7ce31e7e3f1c71d9fbe806b2d76d8a98d24b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74146714"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863736"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Připojení bran Azure VPN k několika místním zařízením VPN založeným na zásadách pomocí PowerShellu
 
@@ -25,7 +24,7 @@ Tento článek vám pomůže nakonfigurovat bránu sítě VPN založenou na tras
 
 Zásady a zařízení VPN založená *na trasách* se liší v tom, jak jsou selektory přenosu protokolu IPSec nastaveny u připojení:
 
-* **Založené na zásadách** Zařízení VPN používají kombinace předpon z obou sítí k definování způsobu šifrování/dešifrování provozu prostřednictvím tunelů IPsec. Obvykle je postaven na zařízeních brány firewall, která provádějí filtrování paketů. Do modulu pro filtrování a zpracování paketů je přidáno šifrování a dešifrování tunelu IPsec.
+* **Založené na zásadách** Zařízení VPN používají kombinace předpon z obou sítí k definování způsobu šifrování/dešifrování provozu prostřednictvím tunelů IPsec. Obvykle je postaven na zařízeních brány firewall, která provádějí filtrování paketů. Šifrování a dešifrování tunelů IPsec se přidává do modulu filtrování a zpracování paketů.
 * **Založené na trasách** Zařízení VPN používají selektory přenosu libovolných a všech (se zástupnými znaky) a umožňují směrování a předávání dat směrovat do různých tunelů IPsec. Obvykle je postaven na platformách směrovačů, kde každé tunelové propojení IPsec je modelováno jako síťové rozhraní nebo VTI (virtuální tunelové rozhraní).
 
 Následující diagramy zvýrazňují dva modely:
@@ -41,7 +40,7 @@ V současné době podporuje Azure oba režimy bran sítě VPN: brány sítě VP
 
 |                          | **PolicyBased VPN Gateway** | **RouteBased VPN Gateway**       |**RouteBased VPN Gateway**                          |
 | ---                      | ---                         | ---                              |---                                                 |
-| **SKU brány Azure**    | Basic                       | Basic                            | Standard, HighPerformance, VpnGw1, VpnGw2, VpnGw3  |
+| **SKU brány Azure**    | Úroveň Basic                       | Úroveň Basic                            | Standard, HighPerformance, VpnGw1, VpnGw2, VpnGw3  |
 | **Verze protokolu IKE**          | IKEv1                       | IKEv2                            | IKEv1 a IKEv2                                    |
 | **Počet. Připojení S2S** | **1**                       | 10                               |Standard: 10<br> Jiné SKU: 30                     |
 |                          |                             |                                  |                                                    |

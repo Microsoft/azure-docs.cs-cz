@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b447a0328de210caeb23a1beb91c532853c180bc
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: e80194f53a406b8b378d0fb787df627937125a27
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75550413"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867492"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>Rychlý Start: vytvoření zařízení IoT technologie Plug and Play Preview pomocí modelu schopností zařízení (Windows)
 
@@ -85,9 +85,9 @@ V tomto rychlém startu pomocí Správce knihovny [Vcpkg](https://github.com/mic
 
 V tomto rychlém startu použijete existující Vzorový model zařízení a přidružená rozhraní.
 
-1. Vytvořte `pnp_app` adresář na místním disku. Tuto složku použijete pro soubory modelů zařízení a pro zástupné kódy zařízení.
+1. Vytvořte `pnp_app` složku na místním disku. Tuto složku použijete pro soubory modelů zařízení a pro zástupné kódy zařízení.
 
-1. Stáhněte si [model funkce zařízení a ukázkové soubory rozhraní](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json) a [ukázky](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) rozhraní a uložte soubory do složky `pnp_app`.
+1. Stáhněte si [model funkce zařízení a ukázkové soubory rozhraní](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json) a [ukázky](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) rozhraní a soubory uložte do složky `pnp_app`.
 
     > [!TIP]
     > Pokud chcete stáhnout soubor z GitHubu, přejděte do souboru, klikněte pravým tlačítkem na **nezpracovaný**a pak vyberte **Uložit odkaz jako**.
@@ -109,7 +109,7 @@ Teď, když máte modul DCM a jeho přidružená rozhraní, můžete vygenerovat
 
 1. Vyberte soubor **SampleDevice. capabilitymodel. JSON** , který se použije k vygenerování zástupné procedury pro kód zařízení.
 
-1. Zadejte název projektu **sample_device**. Toto bude název aplikace vašeho zařízení.
+1. Zadejte název projektu **sample_device**. Toto je název aplikace zařízení.
 
 1. Jako jazyk vyberte **ANSI C** .
 
@@ -124,7 +124,7 @@ Teď, když máte modul DCM a jeho přidružená rozhraní, můžete vygenerovat
 
 ## <a name="build-and-run-the-code"></a>Sestavit a spustit kód
 
-Zdrojový kód sady SDK pro zařízení slouží k sestavení zástupné procedury pro vygenerovaný kód zařízení. Vytvořená aplikace simuluje zařízení, které se připojuje ke službě IoT Hub. Aplikace odesílá telemetrie a vlastnosti a přijímá příkazy.
+Pomocí balíčku Vcpkg vytvoříte zástupný kód vygenerovaných kódů zařízení. Vytvořená aplikace simuluje zařízení, které se připojuje ke službě IoT Hub. Aplikace odesílá telemetrie a vlastnosti a přijímá příkazy.
 
 1. Vytvořte podadresář `cmake` ve složce `sample_device` a přejděte do této složky:
 

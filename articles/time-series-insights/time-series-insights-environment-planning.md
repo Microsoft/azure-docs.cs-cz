@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 13bff4abcb308e4d5ea55f360d979e3e67d313c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 39665e0361747e0f75fa6c92f244317b995ce6a8
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452869"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863372"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Plánování prostředí Azure Time Series Insights GA
 
@@ -32,7 +32,7 @@ Tento článek popisuje, jak naplánovat Azure Time Series Insights prostředí 
 
 Pokud chcete začít s Azure Time Series Insights, je nejlepší, pokud víte, kolik dat jste čekali po minutách a jak dlouho budete potřebovat ukládat data.  
 
-Další informace o kapacitě a uchování obou Time Series Insights SKU najdete v tématu [Time Series Insights ceny](https://azure.microsoft.com/pricing/details/time-series-insights/).
+Další informace o kapacitě a uchování obou Time Series Insights SKU najdete v [Time Series Insights cenách](https://azure.microsoft.com/pricing/details/time-series-insights/).
 
 Chcete-li nejlépe naplánovat Time Series Insights prostředí pro dlouhodobou úspěšnost, vezměte v úvahu následující atributy:
 
@@ -71,7 +71,7 @@ Můžete upravit dobu uchovávání a přepínání mezi oběma režimy na strá
    [![konfigurace uchovávání](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
 > [!TIP]
-> Další informace o tom, jak implementovat příslušné zásady uchovávání dat, najdete v tématu [Postup konfigurace uchovávání](./time-series-insights-how-to-configure-retention.md).
+> Další informace o tom, jak implementovat příslušné zásady uchovávání dat, najdete v tématu [Jak konfigurovat uchovávání](./time-series-insights-how-to-configure-retention.md).
 
 ## <a name="ingress-capacity"></a>Kapacita příchozího přenosu dat
 
@@ -103,7 +103,7 @@ Výpočet požadavků na příchozí přenos dat:
 
 ### <a name="mitigate-throttling-and-latency"></a>Zmírnění omezení a latence
 
-Informace o tom, jak zabránit omezování a latenci, najdete v tématu [zmírnění latence a omezování](time-series-insights-environment-mitigate-latency.md).
+Informace o tom, jak zabránit omezování a latenci, získáte v tématu [zmírnění latence a omezování](time-series-insights-environment-mitigate-latency.md).
 
 ## <a name="shape-your-events"></a>Natvarování událostí
 
@@ -119,7 +119,7 @@ Je důležité zajistit, aby způsob, jakým odesíláte události do Time Serie
 > [!NOTE]
 > Referenční data nejsou připojená zpětně. Po konfiguraci a nahrání referenční datové sady se budou shodovat pouze aktuální a budoucí data příchozího přenosu dat. Pokud plánujete odeslat velké množství historických dat Time Series Insights a nemusíte nejdřív nahrávat nebo vytvářet referenční data v Time Series Insights, možná budete muset opakovat svou práci (pomocný parametr: ne zábavné).  
 
-Další informace o tom, jak vytvářet, nahrávat a spravovat referenční data v Time Series Insights, najdete v [dokumentaci k referenční datové sadě](time-series-insights-add-reference-data-set.md).
+Pokud chcete získat další informace o tom, jak vytvářet, nahrávat a spravovat referenční data v Time Series Insights, přečtěte si [dokumentaci k referenční datové sadě](time-series-insights-add-reference-data-set.md).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

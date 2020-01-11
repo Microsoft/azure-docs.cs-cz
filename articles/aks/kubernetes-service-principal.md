@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mlearned
-ms.openlocfilehash: ded3fc97c4cdf041fdf50d7b4aa9a9b2fbdf1c84
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1b0d3dec3925518922c5f668560889edd6f5de0b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913489"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867167"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Instanční objekty se službou Azure Kubernetes Service (AKS)
 
@@ -108,7 +108,7 @@ Můžete použít pokročilé sítě, ve kterých se virtuální síť a podsí�
   - *Microsoft.Network/publicIPAddresses/write*
 - Nebo přiřaďte integrovanou roli [Přispěvatel sítě][rbac-network-contributor] k podsíti v rámci virtuální sítě.
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 
 Možná budete potřebovat přístup k existujícím diskovým prostředkům v jiné skupině prostředků. Přiřaďte jednu z následujících sad oprávnění role:
 
@@ -131,6 +131,8 @@ Při použití instančních objektů služeb Azure AD a AKS mějte na paměti n
 - Při zadávání **ID klienta** instančního objektu použijte hodnotu `appId`.
 - Na virtuálních počítačích uzlů agentů v clusteru Kubernetes se přihlašovací údaje instančního objektu ukládají do souboru `/etc/kubernetes/azure.json`
 - Když použijete příkaz [AZ AKS Create][az-aks-create] k automatickému vygenerování instančního objektu, zapíší se přihlašovací údaje instančního objektu do souboru `~/.azure/aksServicePrincipal.json` v počítači, který se používá ke spuštění příkazu.
+- Pokud instanční objekt nebudete výslovně předávat v dalších příkazech rozhraní příkazového řádku AKS, použije se výchozí instanční objekt umístěný v `~/.azure/aksServicePrincipal.json`.  
+- Volitelně můžete také odebrat soubor aksServicePrincipal. JSON a AKS vytvoří nový instanční objekt.
 - Když odstraníte cluster AKS, který byl vytvořen pomocí [AZ AKS Create][az-aks-create], objekt služby, který byl vytvořen automaticky, nebude odstraněn.
     - Pokud chcete odstranit instanční objekt, zadejte dotaz na svůj cluster *servicePrincipalProfile. ClientID* a pak ho odstraňte pomocí příkazu [AZ AD App Delete][az-ad-app-delete]. Nahraďte následující názvy skupin prostředků a názvů clusterů vlastními hodnotami:
 

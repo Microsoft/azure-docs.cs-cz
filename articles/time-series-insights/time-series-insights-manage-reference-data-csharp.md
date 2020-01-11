@@ -11,18 +11,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: ebc616d07c24a02b71010e315f288543dfd92b74
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 964a3865fcb646a52822286e809703d507304ca6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705952"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861876"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Správa referenčních dat GA pro Azure Time Series Insights prostředí pomocíC#
 
 Tento článek popisuje vzorový C# projekt, který můžete zkompilovat pro správu referenčních dat pro prostředí Azure Time Series Insights.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před kompilací a spuštěním ukázkového kódu proveďte následující kroky:
 
@@ -30,7 +30,7 @@ Před kompilací a spuštěním ukázkového kódu proveďte následující krok
 
 1. Nakonfigurujte autorizační přístupový token pro aplikaci. Ujistěte se, že se token získává prostřednictvím rozhraní Azure Active Directory API. Tento token byste měli předat v hlavičce `Authorization` každé žádosti rozhraní API pro dotazy.
 
-   Informace o tom, jak nastavit neinteraktivní aplikace, najdete v tématu [ověřování a autorizace](time-series-insights-authentication-and-authorization.md).
+   Informace o tom, jak nastavit neinteraktivní aplikace, najdete v článku [ověřování a autorizaci](time-series-insights-authentication-and-authorization.md).
 
 1. Upravte vzorový kód, který nahradí ukázkové konstanty určené v **#DUMMY #** , poblíž začátku kódu.
 

@@ -8,12 +8,12 @@ ms.author: victliu
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 16daf4a79252134703715ccd88f0b10dda7f4fa6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 0f91775e0175b4b4af9b57fa96e389c3a2a22564
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792158"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863117"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Konfigurace připojení ze služby Azure Kognitivní hledání indexer na spravovanou instanci SQL
 
@@ -33,6 +33,13 @@ V existující spravované instanci SQL můžete také povolit veřejný koncov�
 Ověřte, že skupina zabezpečení sítě má správná **příchozí pravidla zabezpečení** , která umožňují připojení ze služeb Azure.
 
    ![NSG příchozí pravidlo zabezpečení](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/nsg-rule.png "NSG příchozí pravidlo zabezpečení")
+
+> [!NOTE]
+> Omezením současného přístupu ke spravované instanci SQL se můžete rozhodnout, že nahradíte aktuální pravidlo (`public_endpoint_inbound`) pomocí 2 pravidel:
+>
+> * Povolení příchozího přístupu ze [značky služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) `AzureCognitiveSearch` ("zdroj" = `AzureCognitiveSearch`)
+>
+> * Povolení příchozího přístupu z IP adresy služby vyhledávání, která se dá získat pomocí příkazového testu pro plně kvalifikovaný název domény (např. `<your-search-service-name>.search.windows.net`). ("Zdroj" = `IP address`)
 
 ## <a name="get-public-endpoint-connection-string"></a>Získat připojovací řetězec veřejného koncového bodu
 Ujistěte se, že používáte připojovací řetězec pro **veřejný koncový bod** (port 3342, ne port 1433).

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 426ec57b3dbce884e55ef7a11ccca32ed295d70d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 12e642e59a1341926a0c4d66533465cecfc21709
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111888"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863134"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurace připojení ze služby Azure Kognitivní hledání indexer pro SQL Server na virtuálním počítači Azure
 
@@ -72,8 +72,12 @@ Odkazy níže poskytují pokyny týkající se konfigurace NSG pro nasazení vir
 
 Přidělování IP adres může představovat několik výzev, které je možné snadno překonat, pokud víte o problému a možných alternativních řešeních. Zbývající části poskytují doporučení pro zpracování problémů souvisejících s IP adresami v seznamu ACL.
 
-#### <a name="restrict-access-to-the-search-service-ip-address"></a>Omezení přístupu k IP adrese vyhledávací služby
-Důrazně doporučujeme, abyste omezili přístup k IP adrese vaší vyhledávací služby v seznamu ACL a nechcete, aby se vaše SQL Azure virtuální počítače otevíraly na jakékoli žádosti o připojení. IP adresu můžete snadno zjistit pomocí testu plně kvalifikovaného názvu domény (například `<your-search-service-name>.search.windows.net`) vaší vyhledávací služby.
+#### <a name="restrict-access-to-the-azure-cognitive-search"></a>Omezení přístupu k Azure Kognitivní hledání
+Důrazně doporučujeme, abyste omezili přístup k IP adrese vaší vyhledávací služby a rozsahu IP adres `AzureCognitiveSearch` [značka služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) v seznamu ACL místo toho, aby byly virtuální počítače SQL Azure otevřené pro všechny požadavky na připojení.
+
+IP adresu můžete zjistit tak, že otestujete plně kvalifikovaný název domény (například `<your-search-service-name>.search.windows.net`) vaší vyhledávací služby.
+
+Rozsah IP adres `AzureCognitiveSearch` [značku služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) pro konkrétní oblast, ve které se služba Azure kognitivní hledání nachází, buď pomocí [souborů JSON ke stažení](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) nebo přes [rozhraní API pro zjišťování značek služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview). Rozsah IP adres se aktualizuje týdně.
 
 #### <a name="managing-ip-address-fluctuations"></a>Správa výkyvů IP adres
 Pokud vaše vyhledávací služba obsahuje jenom jednu jednotku vyhledávání (tj. jednu repliku a jeden oddíl), IP adresa se během rutiny běžného spuštění služby změní a naruší se platnost stávajícího seznamu ACL s IP adresou vaší vyhledávací služby.

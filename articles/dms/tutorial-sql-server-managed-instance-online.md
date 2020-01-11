@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 88bc90a50fb9579e29b8b31b4be23052275b2b28
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 01/10/2020
+ms.openlocfilehash: e9a24daeeab906419416a3a10fda901c91d9fb33
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746851"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863219"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Kurz: migrace SQL Server do Azure SQL Database spravované instance online pomocí DMS
 
@@ -44,7 +44,7 @@ V tomto kurzu se naučíte:
 > Pro optimální prostředí migrace doporučuje Microsoft vytvořit instanci Azure Database Migration Service ve stejné oblasti Azure jako cílová databáze. Přenášení dat mezi oblastmi geografickými lokalitami může zpomalit proces migrace a způsobit chyby.
 
 > [!IMPORTANT]
-> Je důležité zkrátit dobu trvání online migrace co nejvíc, abyste minimalizovali riziko přerušení způsobené změnou konfigurace instance nebo plánovanou údržbou. V případě takové události začne proces migrace od začátku. V případě plánované údržby je období odkladu 36 hodin před restartováním procesu migrace.
+> Zmenšete dobu trvání online procesu migrace co nejvíc, abyste minimalizovali riziko přerušení způsobené změnou konfigurace instance nebo plánovanou údržbou. V případě takové události začne proces migrace od začátku. V případě plánované údržby je období odkladu 36 hodin před restartováním procesu migrace.
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
@@ -70,7 +70,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
     > [!IMPORTANT]
     > V souvislosti s účtem úložiště použitým v rámci migrace je nutné buď:
     > * Vyberte, pokud chcete, aby přístup k účtu úložiště umožňovala všechna síť.
-    > * Nastavte seznamy řízení přístupu (ACL) pro virtuální síť. Další informace najdete v článku [konfigurace Azure Storage bran firewall a virtuálních sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+    > * Zapněte [delegování podsítě](https://docs.microsoft.com/azure/virtual-network/manage-subnet-delegation) v podsíti mi a aktualizujte pravidla brány firewall účtu úložiště tak, aby umožňovala tuto podsíť.
 
 * Zajistěte, aby pravidla skupiny zabezpečení sítě virtuálních sítí neblokovala následující příchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 * Nakonfigurujte bránu [Windows Firewall pro přístup ke zdrojovému databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
@@ -208,7 +208,7 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
 
     | | |
     |--------|---------|
-    |**Sdílená složka SMB v síťovém umístění** | Místní sdílená síťová složka SMB nebo sdílená složka Azure, která obsahuje soubory zálohy úplné databáze a záložní soubory protokolu transakcí, které Azure Database Migration Service můžou použít k migraci. Účet služby, ve kterém je spuštěná zdrojová instance SQL Serveru, musí pro tuto sdílenou síťovou složku mít oprávnění ke čtení i zápisu. Zadejte plně kvalifikovaný název domény nebo IP adresy serveru ve sdílené síťové složce, například \\\název_serveru.název_domény.com\záložní_složka nebo \\\IP_adressa\záložní_složka.|
+    |**Sdílená složka SMB v síťovém umístění** | Místní sdílená síťová složka SMB nebo sdílená složka Azure, která obsahuje soubory zálohy úplné databáze a záložní soubory protokolu transakcí, které Azure Database Migration Service můžou použít k migraci. Účet služby, ve kterém je spuštěná zdrojová instance SQL Serveru, musí pro tuto sdílenou síťovou složku mít oprávnění ke čtení i zápisu. Zadejte plně kvalifikovaný název domény nebo IP adresy serveru ve sdílené síťové složce, například \\\název_serveru.název_domény.com\záložní_složka nebo \\\IP_adressa\záložní_složka. Pro lepší výkon doporučujeme pro každou databázi, kterou chcete migrovat, použít samostatnou složku. Cestu ke sdílené složce na úrovni databáze můžete zadat pomocí možnosti **Upřesnit nastavení** . |
     |**Uživatelské jméno** | Ujistěte se, že má uživatel Windows oprávnění Úplné řízení ke sdílené síťové složce, kterou jste určili dříve. Azure Database Migration Service zosobní přihlašovací údaje uživatele, aby nahrála záložní soubory do Azure Storage kontejneru pro operaci obnovení. Pokud používáte sdílenou složku Azure, použijte jako uživatelské jméno název účtu úložiště označené jako nedokončené s AZURE. |
     |**Heslo** | Heslo pro tohoto uživatele. Pokud používáte službu Azure File Share, jako heslo použijte klíč účtu úložiště. |
     |**Předplatné účtu úložiště Azure** | Vyberte předplatné obsahující účet úložiště Azure. |
@@ -216,10 +216,11 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
 
     ![Konfigurace nastavení migrace](media/tutorial-sql-server-to-managed-instance-online/dms-configure-migration-settings4.png)
 
+    > [!NOTE]
+    > Pokud se Azure Database Migration Service zobrazuje chyba "Systémová chyba 53" nebo "Systémová chyba 57", příčinou může být neschopnost Azure Database Migration Service přistupovat ke sdílené složce Azure. Pokud narazíte na jednu z těchto chyb, udělte [vám pokyny k](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)účtu úložiště z virtuální sítě.
 
-> [!NOTE]
-  > Pokud se Azure Database Migration Service zobrazuje chyba "Systémová chyba 53" nebo "Systémová chyba 57", může dojít k tomu, že by výsledkem byla neschopnost Azure Database Migration Service přistupovat ke sdílené složce Azure. Pokud narazíte na jednu z těchto chyb, udělte [vám pokyny k](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)účtu úložiště z virtuální sítě.
-
+    > [!IMPORTANT]
+    > Pokud je zapnutá funkce kontroly zpětné smyčky a zdrojové SQL Server a sdílená složka jsou ve stejném počítači, pak zdroj nebude mít přístup k souborům ožky pomocí plně kvalifikovaného názvu domény. Pokud chcete tento problém vyřešit, zakažte funkci kontroly zpětné smyčky podle pokynů uvedených [tady](https://support.microsoft.com/help/926642/error-message-when-you-try-to-access-a-server-locally-by-using-its-fqd).
 
 2. Vyberte **Uložit**.
 

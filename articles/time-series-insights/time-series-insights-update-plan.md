@@ -10,19 +10,19 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: c305da097a4474e6a4aa91ec0e784e627533ee43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b25639b237979aff8980c1ff5b8787d298c157e1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452435"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861455"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Plánování prostředí pro Azure Time Series Insights Preview
 
 Tento článek popisuje osvědčené postupy pro plánování a rychlé zprovoznění pomocí Azure Time Series Insights verze Preview.
 
 > [!NOTE]
-> Osvědčené postupy pro plánování obecné dostupnosti Time Series Insights instance najdete v tématu [plánování prostředí pro obecné dostupnosti Azure Time Series Insights](time-series-insights-environment-planning.md).
+> Osvědčené postupy pro plánování obecné dostupnosti Time Series Insights instance najdete v tématu [plánování Azure Time Series Insights prostředí pro obecné dostupnosti](time-series-insights-environment-planning.md).
 
 ## <a name="best-practices-for-planning-and-preparation"></a>Osvědčené postupy pro plánování a přípravu
 
@@ -34,7 +34,7 @@ Osvědčené postupy při plánování a přípravě prostředí jsou podrobněj
 * Jak [odesílat události efektivně ve formátu JSON](#shape-your-events).
 * Time Series Insights [možností zotavení po havárii firmy](#business-disaster-recovery).
 
-Azure Time Series Insights využívá obchodní model s průběžnými platbami. Další informace o nákladech a kapacitě najdete v tématu [Time Series Insights ceny](https://azure.microsoft.com/pricing/details/time-series-insights/).
+Azure Time Series Insights využívá obchodní model s průběžnými platbami. Pokud chcete získat další informace o nákladech a kapacitě, přečtěte si [Time Series Insights ceny](https://azure.microsoft.com/pricing/details/time-series-insights/).
 
 ## <a name="the-preview-environment"></a>Prostředí verze Preview
 
@@ -48,7 +48,7 @@ V rámci procesu zřizování určíte, jestli chcete povolit teplé úložišt�
 Dotazy na teplém úložišti jsou bezplatné, zatímco dotazy na chladírenský sklad účtují náklady. Je důležité porozumět vašim vzorům dotazů a odpovídajícím způsobem naplánovat konfiguraci pro svůj záložní obchod. Doporučujeme, aby se interaktivní analýzy na nejaktuálnějších datech nacházely v provozním úložišti a analýze vzorků a dlouhodobé trendy se nachází v chladu.
 
 > [!NOTE]
-> Další informace o tom, jak zadávat dotazy na zahřívání data, [najdete tady](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters).
+> Pokud si chcete přečíst další informace o tom, jak zadávat dotazy na zahřívání, přečtěte si [referenci rozhraní API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters).
 
 Začněte tím, že budete potřebovat tři další položky:
 
@@ -80,7 +80,7 @@ Pokud je ponecháno prázdné, použije se čas zařazení do fronty události j
 
 Nyní můžete nakonfigurovat model časové řady Time Series Insightsho prostředí. Nový model usnadňuje hledání a analýzu dat IoT. Umožňuje léčební, údržbu a obohacení dat časových řad a pomáhá připravit datové sady připravené pro uživatele. Model používá ID časových řad, které se mapují na instanci, která přidruží jedinečný prostředek k proměnným, označovaným jako typy a hierarchie. Přečtěte si o novém [modelu časové řady](./time-series-insights-update-tsm.md).
 
-Model je dynamický, takže se dá vytvořit kdykoli. Aby bylo možné rychle začít, sestavte a nahrajte ho před vložením dat do Time Series Insights. Informace o sestavování modelu najdete v tématu [použití modelu časové řady](./time-series-insights-update-how-to-tsm.md).
+Model je dynamický, takže se dá vytvořit kdykoli. Aby bylo možné rychle začít, sestavte a nahrajte ho před vložením dat do Time Series Insights. Při sestavování modelu si přečtěte část [použití modelu časové řady](./time-series-insights-update-how-to-tsm.md).
 
 Pro mnoho zákazníků se model časových řad mapuje na existující model assetů nebo systém ERP, který je už na svém místě. Pokud nemáte existující model, je k [dispozici](https://github.com/Microsoft/tsiclient) předem sestavené uživatelské prostředí, které vám umožní rychle začít pracovat. Chcete-li předvést, jak vám model může pomáhat, podívejte se do [ukázkového](https://insights.timeseries.azure.com/preview/demo)ukázkového prostředí.
 
@@ -93,7 +93,7 @@ Dobré pravidlo pro palec:
 * Uložte metadata v modelu časové řady.
 * Zajistěte, aby režim časové řady, pole instancí a události zahrnoval pouze potřebné informace, například ID časové řady nebo vlastnost časového razítka.
 
-Další informace najdete v tématu [události obrazce](./time-series-insights-send-events.md#supported-json-shapes).
+Další informace najdete v tématu čtení [událostí obrazce](./time-series-insights-send-events.md#supported-json-shapes).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

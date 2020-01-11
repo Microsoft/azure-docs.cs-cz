@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: 80fd1275f3bf9585ff8e40a94d0de2d422baec71
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b988d500ed2a201bb31f0d3a7cbeb7df00af9faf
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383226"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860890"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Kurz: zřízení a sledování pracovních podmínek pomocí Azure Digital Workers Preview
 
@@ -234,7 +234,7 @@ V této části použijete projekt s názvem *zařízení-připojení* v ukázce
 
 ## <a name="get-results-of-the-user-defined-function"></a>Získání výsledků uživatelsky definované funkce
 
-Uživatelem definovaná funkce se spustí pokaždé, když vaše instance přijme data ze senzorů a zařízení. Tato část se dotazuje na instanci digitálního vlákna Azure, aby získala výsledky uživatelsky definované funkce. Zobrazí se téměř v reálném čase, pokud je k dispozici místnost, vzduchem je čerstvá a teplota je pravá. 
+Uživatelem definovaná funkce se spustí pokaždé, když vaše instance přijme data ze senzorů a zařízení. Tato část se dotazuje na instanci digitálního vlákna Azure, aby získala výsledky uživatelsky definované funkce. Až bude dostupná místnost, bude se vám zobrazovat oznámení téměř v reálném čase, a to až do okamžiku, kdy je vzduch v čerstvém stavu a teplota je pravá. 
 
 1. Otevřete okno příkazového řádku, které jste použili k zřízení ukázky, nebo nové příkazové okno a znovu se zajděte do složky **Occupancy-quickstart\src** v ukázce.
 
@@ -254,7 +254,7 @@ Pokud je splněna monitorovaná podmínka, uživatelsky definovaná funkce nasta
 
 Pokud chcete zastavit v tuto chvíli seznámení digitální dvojče Azure, bez obav odstraňte prostředky vytvořené v tomto kurzu:
 
-1. V nabídce vlevo v [Azure Portal](https://portal.azure.com)vyberte **všechny prostředky**, vyberte skupinu prostředků vaše digitální vlákna a vyberte **Odstranit**.
+1. V levé nabídce v [webu Azure portal](https://portal.azure.com)vyberte **všechny prostředky**, vyberte skupinu prostředků digitální dvojče a vyberte **odstranit**.
 
     > [!TIP]
     > Pokud zaznamenal/zaznamenala jste potíže odstraníte instanci digitální dvojče, aktualizace služby se týká jenom s opravou. Zkuste to prosím znovu odstraníte instanci.

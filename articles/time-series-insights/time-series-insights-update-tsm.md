@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d588e11525e5087f8667da4602797e5299c76f0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1f560a7aa746ce7c6262dcaddf74c9d573332fa6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75374689"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861383"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Model časové řady v Azure Time Series Insights Preview
 
@@ -186,7 +186,7 @@ V předchozím příkladu JSON:
 * `ManufactureDate` definuje hierarchii s nadřazenými `year` a podřízenými `month`. Každý `ManufactureDate` může mít více `years`, což může mít více `months`.
 
 > [!TIP]
-> Informace o rozhraních API instancí Time Series Insights a podpoře CRUD najdete v článku [dotazování na data](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) a v [dokumentaci k rozhraní API hierarchie REST](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
+> Pro Time Series Insights rozhraní API instance a podporu CRUD si přečtěte článek [dotazování na data](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) a [dokumentaci k rozhraní API hierarchie REST](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
 
 ### <a name="hierarchy-example"></a>Příklad hierarchie
 
@@ -231,7 +231,7 @@ Typ může mít jednu nebo více proměnných. Například instance modelu časo
 [Příklad typu modelu časové řady ![](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> Podporu rozhraní API instancí Time Series Insights a CRUD najdete v článku [dotazování na data](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) a v [dokumentaci k rozhraní API typu REST](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
+> Pro Time Series Insights rozhraní API instance a podporu CRUD si přečtěte článek [dotazování na data](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) a [dokumentaci k rozhraní API typu REST](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
 
 ### <a name="type-properties"></a>Vlastnosti typu
 
@@ -391,7 +391,7 @@ Proměnné jsou uloženy v definici typu modelu časové řady a lze je poskytno
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si téma [Azure Time Series Insights a příchozí úložiště ve verzi Preview](./time-series-insights-update-storage-ingress.md).
+- Přečtěte si [Azure Time Series Insights a příchozí úložiště ve verzi Preview](./time-series-insights-update-storage-ingress.md).
 
 - Přečtěte si o běžných operacích modelu časových řad v [modelování dat ve službě Azure Time Series Insights Preview](./time-series-insights-update-how-to-tsm.md) .
 

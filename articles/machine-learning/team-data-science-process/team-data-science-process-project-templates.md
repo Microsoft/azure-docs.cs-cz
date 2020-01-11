@@ -2,21 +2,21 @@
 title: Týmové plánování projektu vědecké zpracování dat
 description: Aplikace Microsoft Project a Excel šablony, které vám pomůžou plánovat a spravovat projekty datových věd.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bbedaa554e9c97a24e26c7927c1bf9c94d5cd507
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c003145acd423fd96dd0ac6c054884024c2ce4a0
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253014"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864226"
 ---
 # <a name="team-data-science-process-project-planning"></a>Týmové plánování projektu vědecké zpracování dat
 
@@ -35,11 +35,11 @@ Popis každého z těchto fází, naleznete v tématu [životního cyklu vědeck
  
 ## <a name="microsoft-project-template"></a>Šablony aplikace Microsoft Project
 
-Šablona aplikace Microsoft Project pro vědecké zpracování týmových dat je k dispozici zde: [Šablony aplikace Microsoft Project](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
+Šablona aplikace Microsoft Project pro vědecké zpracování týmových dat je k dispozici zde: [šablony aplikace Microsoft Project](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
 
 Když otevřete plán, klikněte na odkaz úplně vlevo TDSP. Změňte název a popis a potom přidat do jiných týmových prostředků, které potřebujete. Odhad kalendářní data od prostředí vyžadovat.
 
-![1](./media/team-data-science-process-project-templates/ms-project-templates.png)
+![1\. místo](./media/team-data-science-process-project-templates/ms-project-templates.png)
 
 Každý úkol má poznámku. Otevřené úkoly zobrazte prostředky, které již byly vytvořeny pro vás.
 
@@ -48,7 +48,7 @@ Každý úkol má poznámku. Otevřené úkoly zobrazte prostředky, které již
 
 ## <a name="excel-template"></a>Šablona aplikace Excel
 
-Pokud nemáte přístup k Microsoft Project, Excelového listu se stejnými daty je také k dispozici ke stažení zde: [Šablona aplikace Excel](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.xlsx) můžete využít ji do nástrojů, kterou chcete použít.
+Pokud nemáte přístup k Microsoft Project, Excelového listu se stejnými daty je také k dispozici ke stažení zde: [šablonu v Excelu](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.xlsx) můžete využít ji do nástrojů, kterou chcete použít.
 
 Tyto šablony používáte na vlastní nebezpečí. [Obvykle právní omezení](https://www.gnu.org/licenses/gpl-3.0.en.html) použít.
 
@@ -56,9 +56,9 @@ Tyto šablony používáte na vlastní nebezpečí. [Obvykle právní omezení](
 
 Použijte tento [úložiště šablon projektu](https://github.com/Azure/Azure-TDSP-ProjectTemplate) k podpoře project efektivní provádění a spolupráci. Toto úložiště poskytuje standardizované directory strukturu a dokumentu šablony, které můžete použít pro svůj projekt TDSP.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Agilní vývoj projekty datových věd](agile-development.md) tento dokument popisuje spustit projekt vědeckého zpracování dat v systematicky, správy verzí a spolupráce v týmu projektu pomocí vědeckého zpracování týmových dat.
+[Agilní vývoj projektů pro datové vědy](agile-development.md) V tomto dokumentu je popsána systematická, řízená a týmová verze projektu pro datové vědy s využitím vědeckého procesu týmového zpracování dat.
 
 Postupy, které popisují všechny kroky v procesu pro **konkrétních scénářů** jsou také k dispozici. Jsou uvedena v seznamu a propojené s Miniatura popisy v [příklad návody](walkthroughs.md) článku. Jejich ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací. 
 

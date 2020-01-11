@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
-ms.openlocfilehash: 49c925cfe61084d8fedfdf953d469db4bd2c10b1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 714faa43f34de965055ceba80de08972dd4192ac
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792676"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861196"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Ověřování přístupu k prostředkům Azure pomocí spravovaných identit v Azure Logic Apps
 
@@ -24,7 +24,7 @@ Další informace najdete v těchto tématech:
 * [Podporované typy ověřování při odchozích voláních](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
 * [Omezení spravovaných identit pro Logic Apps](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure, nebo pokud předplatné nemáte, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). Spravovaná identita i cílový prostředek Azure, na kterém chcete mít přístup, musí používat stejné předplatné Azure.
 
@@ -42,8 +42,6 @@ Na rozdíl od uživatelsky přiřazených identit nemusíte ručně vytvářet i
 
 * [Azure Portal](#azure-portal-system-logic-app)
 * [Šablony Azure Resource Manager](#template-system-logic-app)
-* [Azure PowerShell](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md)
-* [Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)
 
 <a name="azure-portal-system-logic-app"></a>
 
@@ -61,7 +59,7 @@ Na rozdíl od uživatelsky přiřazených identit nemusíte ručně vytvářet i
 
    | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
-   | **ID objektu** | <*identity-Resource-ID*> | Globálně jedinečný identifikátor (GUID), který představuje identitu přiřazenou systémem pro vaši aplikaci logiky ve vašem tenantovi Azure AD |
+   | **ID objektu** | <*identity-resource-ID*> | Globálně jedinečný identifikátor (GUID), který představuje identitu přiřazenou systémem pro vaši aplikaci logiky ve vašem tenantovi Azure AD |
    ||||
 
 1. Nyní postupujte podle [kroků, které přidávají identitě přístup k prostředku](#access-other-resources).
@@ -115,7 +113,17 @@ Když Azure vytvoří definici prostředků aplikace logiky, objekt `identity` z
 
 ## <a name="give-identity-access-to-resources"></a>Udělení přístupu k prostředkům v identitě
 
-Po nastavení spravované identity pro vaši aplikaci logiky můžete [této identitě udělit přístup k jiným prostředkům Azure](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md). Tuto identitu pak můžete použít k ověřování.
+Předtím, než budete moci použít spravovanou identitu vaší aplikace logiky pro ověřování, poskytněte této identitě přístup k prostředku Azure, ve kterém chcete identitu použít. K dokončení této úlohy přiřaďte příslušné roli k této identitě v cílovém prostředku Azure. Tady jsou možnosti, které můžete použít:
+
+* [Azure Portal](#azure-portal-assign-access)
+* [Šablona Azure Resource Manageru](../role-based-access-control/role-assignments-template.md)
+* Azure PowerShell ([New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)) – Další informace najdete v tématu [Přidání přiřazení role pomocí Azure RBAC a Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
+* Azure CLI ([AZ role Assignment Create](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)) – Další informace najdete v tématu [Přidání přiřazení role pomocí Azure RBAC a Azure CLI](../role-based-access-control/role-assignments-cli.md).
+* [Azure REST API](../role-based-access-control/role-assignments-rest.md)
+
+<a name="azure-portal-assign-access"></a>
+
+### <a name="assign-access-in-the-azure-portal"></a>Přiřadit přístup v Azure Portal
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do prostředku Azure, ke kterému chcete mít přístup ke spravované identitě.
 

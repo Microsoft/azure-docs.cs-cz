@@ -4,14 +4,14 @@ description: Jak spravovat a aktualizovat mezipaměť HPC Azure pomocí Azure Po
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 1/08/2020
 ms.author: rohogue
-ms.openlocfilehash: 9cd5ad151c977838fea30f52c7d4a93b4663c8ff
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a166a904b2e63419efd5803fd54be1d1b59836fb
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166708"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867086"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>Správa mezipaměti z Azure Portal
 
@@ -23,7 +23,7 @@ Chcete-li otevřít stránku Přehled, vyberte prostředek mezipaměti v Azure P
 
 Tlačítka v horní části stránky vám pomůžou spravovat mezipaměť:
 
-* [**Flush**](#flush-cached-data) – zapisuje všechna data uložená v mezipaměti do cílů úložiště.
+* [**Flush**](#flush-cached-data) – zapisuje změněná data do cílů úložiště
 * [**Upgrade**](#upgrade-cache-software) – aktualizuje software pro mezipaměť.
 * **Refresh** -znovu načte stránku Přehled.
 * [**Odstranit**](#delete-the-cache) – trvale zničí mezipaměť
@@ -63,9 +63,18 @@ Kliknutím na tlačítko **upgradovat** zahájíte aktualizaci softwaru. Stav me
 
 Tlačítko **Odstranit** zničí mezipaměť. Když mezipaměť odstraníte, všechny její prostředky se zničí a už se neúčtují poplatky za účet.
 
-Cíle úložiště nejsou při odstraňování mezipaměti ovlivněny. Později je můžete přidat do budoucí mezipaměti nebo je vyřadit samostatně.
+Záložní úložné svazky používané jako cíle úložiště nejsou při odstraňování mezipaměti ovlivněny. Později je můžete přidat do budoucí mezipaměti nebo je vyřadit samostatně.
 
-Mezipaměť automaticky vyprázdní Všechna neuložená data do cílů úložiště v rámci jejího finálního vypnutí.
+> [!NOTE]
+> Mezipaměť HPC Azure nepřed odstraněním mezipaměti automaticky nezapisuje změněná data z mezipaměti do back-endové systémů úložiště.
+>
+> Chcete-li zajistit, aby byla veškerá data v mezipaměti zapsána do dlouhodobého úložiště, postupujte podle následujících pokynů:
+>
+> 1. Pomocí tlačítka odstranit na stránce cíle úložiště [odeberte](hpc-cache-edit-storage.md#remove-a-storage-target) všechny cíle úložiště z mezipaměti prostředí Azure HPC. Systém před odstraněním cíle automaticky zapisuje všechna změněná data z mezipaměti do back-endového systému úložiště.
+> 1. Počkejte na úplné odebrání cíle úložiště. Pokud je pro zápis z mezipaměti k dispozici velké množství dat, může proces trvat hodinu nebo déle. Když je to hotové, oznámení na portálu říká, že operace odstranění byla úspěšná a cíl úložiště zmizí ze seznamu.
+> 1. Po odstranění všech ovlivněných cílů úložiště je bezpečné mezipaměť odstranit.
+>
+> Alternativně můžete použít možnost [flush](#flush-cached-data) k uložení dat uložených v mezipaměti, ale dojde k malému riziku ztráty práce, pokud klient zapíše změnu do mezipaměti po dokončení vyprázdnění, ale před zničením instance mezipaměti.
 
 ## <a name="cache-metrics-and-monitoring"></a>Metriky a monitorování mezipaměti
 

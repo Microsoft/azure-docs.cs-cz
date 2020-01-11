@@ -2,13 +2,14 @@
 title: Obecné otázky ke službě Azure Site Recovery
 description: Tento článek popisuje oblíbené obecné otázky týkající se Azure Site Recovery.
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: f64b885e82d2f790d7d146e16bb6ccb44e207465
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 1/10/2020
+ms.author: raynew
+ms.openlocfilehash: 44abe9eafa9aef9e027778470d3f0483f99b0d32
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497529"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863559"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Obecné otázky týkající se Azure Site Recovery
 
@@ -101,7 +102,8 @@ Ano. Když vytvoříte trezor Site Recovery v oblasti, zajišťujeme, aby všech
 ### <a name="does-site-recovery-encrypt-replication"></a>Šifruje Site Recovery replikaci?
 V případě virtuálních počítačů a fyzických serverů se podporuje replikace mezi místními lokalitami – přenos v provozu. Pro virtuální počítače a fyzické servery, které se replikují do Azure, se podporují jak šifrování, tak i [šifrování v klidovém režimu (v Azure)](https://docs.microsoft.com/azure/storage/storage-service-encryption) .
 
-
+### <a name="how-can-i-enforce-tls-12-on-all-on-premises-azure-site-recovery-components"></a>Jak vyberu protokol TLS 1,2 na všechny místní Azure Site Recovery součásti?
+Agenti mobility nainstalované na replikovaných položkách komunikují pouze na procesovém serveru TLS 1,2. Nicméně komunikace z konfiguračního serveru do Azure a z procesového serveru do Azure může být v TLS 1,1 nebo 1,0. Postupujte prosím podle [pokynů](https://support.microsoft.com/en-us/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi) , abyste vynutili TLS 1,2 na všech konfiguračních serverech a procesových serverech, které nastavíte sami.
 
 
 ## <a name="disaster-recovery"></a>Zotavení po havárii

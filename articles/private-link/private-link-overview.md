@@ -5,14 +5,14 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: overview
-ms.date: 11/04/2019
+ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 127807a57598fcfe239db39cb9874bca955da44e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 299cd81c05af385c435eaf3788e3d7e39c486623
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647352"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867548"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Co je privátní propojení Azure? (Preview)
 Privátní odkaz Azure vám umožní přístup ke službám Azure PaaS (například Azure Storage, Azure Cosmos DB a SQL Database) a hostovaným zákazníkům a partnerským službám Azure prostřednictvím [privátního koncového bodu](private-endpoint-overview.md) ve vaší virtuální síti. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Ve své virtuální síti můžete také vytvořit vlastní [službu privátního propojení](private-link-service-overview.md) a poskytnout ji soukromým uživatelům. Prostředí pro nastavení a spotřebu pomocí privátního propojení Azure je konzistentní v rámci služeb Azure PaaS, Customer a Shared partnered.
@@ -46,6 +46,9 @@ Privátní propojení Azure přináší následující výhody:
 |  |  Databáze SQL Azure         | Všechny veřejné oblasti      |   Preview      |
 ||Azure SQL Data Warehouse| Všechny veřejné oblasti |Preview|
 ||Azure Cosmos DB| Středozápadní USA, WestUS, Střed USA – sever |Preview|
+|  |  Azure Database for PostgreSQL – jeden server         | Všechny veřejné oblasti      |   Preview      |
+|  |  Azure Database for MySQL         | Všechny veřejné oblasti      |   Preview      |
+|  |  Azure Database for MariaDB         | Všechny veřejné oblasti      |   Preview      |
 
 Nejaktuálnější oznámení najdete na [stránce s aktualizacemi služby Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 

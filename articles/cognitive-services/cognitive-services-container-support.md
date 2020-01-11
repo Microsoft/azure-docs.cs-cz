@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 11/11/2019
+ms.date: 01/10/2020
 ms.author: dapine
-ms.openlocfilehash: a35ceed4cefa47b903ceec915388b4831cd9e69b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: d75962b98543991a065f6b165279215614175925
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173765"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75866951"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Podpora kontejnerů ve službě Azure Cognitive Services
 

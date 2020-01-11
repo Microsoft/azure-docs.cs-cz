@@ -1,18 +1,19 @@
 ---
-title: 'Připojte se k virtuální síti Azure z počítače pomocí sítě VPN typu Point-to-site a nativního ověřování certifikátů Azure: PowerShell | Microsoft Docs'
+title: 'Připojení k virtuální síti z počítače – P2S VPN a nativní ověřování certifikátů Azure: PowerShell'
 description: Připojíte zabezpečeně klienty Windows a Mac OS X k virtuální síti Azure pomocí P2S (Point-to-Site) a certifikátů podepsaných svým držitelem (self-signed certificate) nebo vydaných certifikační autoritou. Tento článek používá PowerShell.
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 17d07b508c7ecd8b5750bf5f4108cb789a419c42
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: b67c77f25b14263abe7207359c00660df635df13
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843554"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863787"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Konfigurace připojení VPN typu Point-to-site k virtuální síti s použitím nativního ověřování certifikátů Azure: PowerShell
 
@@ -29,7 +30,7 @@ Nativní připojení Azure typu Point-to-Site k ověřování certifikátů pou�
 * Klientský certifikát, který se generuje z kořenového certifikátu. Klientský certifikát nainstalovaný na každém klientském počítači, který se bude připojovat k virtuální síti. Tento certifikát se používá k ověřování klienta.
 * Konfigurace klienta VPN. Konfigurační soubory klienta VPN obsahují informace potřebné pro připojení klienta k virtuální síti. Soubory konfigurují stávajícího klienta VPN nativního pro příslušný operační systém. Každý klient, který se připojuje, musí být nakonfigurovaný pomocí nastavení v konfiguračních souborech.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -43,28 +44,28 @@ Většina kroků v tomto článku může Cloud Shell použít. Chcete-li však o
 
 Příklady hodnot můžete použít k vytvoření testovacího prostředí nebo můžou sloužit k lepšímu pochopení příkladů v tomto článku. Proměnné se nastaví v části [1](#declare) článku. Můžete buď využít kroky jako podrobný postup a převzít hodnoty beze jejich změny, nebo je změnit tak, aby odpovídaly vašemu prostředí.
 
-* **Jméno: VNet1**
+* **Název: VNet1**
 * **Adresní prostor: 192.168.0.0/16** a **10.254.0.0/16**<br>V tomto příkladu se používá více adresních prostorů k ilustraci, že tato konfigurace funguje s více adresními prostory. Více adresních prostorů pro ni ale není potřeba.
-* **Název podsítě: Endy**
+* **Název podsítě: FrontEnd**
   * **Rozsah adres podsítě: 192.168.1.0/24**
-* **Název podsítě: Back-end**
+* **Název podsítě: BackEnd**
   * **Rozsah adres podsítě: 10.254.1.0/24**
 * **Název podsítě: GatewaySubnet**<br>Název podsítě *GatewaySubnet* je pro správnou funkci brány VPN Gateway povinný.
-  * **Rozsah adres GatewaySubnet: 192.168.200.0/24** 
+  * **Rozsah adres podsítě brány: 192.168.200.0/24** 
 * **Fond adres klienta VPN: 172.16.201.0/24**<br>Klienti VPN, kteří se budou k síti VNet připojovat pomocí tohoto připojení Point-to-Site, dostanou IP adresu ze zadaného fondu adres klienta VPN.
-* **Formě** Pokud máte více než jedno předplatné, ověřte, že používáte správný.
+* **Předplatné:** Ujistěte se, že máte správné předplatné, pokud máte více než jedno.
 * **Skupina prostředků: TestRG**
-* **Oblasti Východní USA**
-* **Server DNS: IP adresa** serveru DNS, který chcete použít pro překlad názvů. (volitelné)
-* **Název GS: Vnet1GW**
+* **Umístění: Východní USA**
+* **Server DNS: IP adresa** serveru DNS, který chcete používat pro překlad názvů. (volitelné)
+* **Název brány: Vnet1GW**
 * **Název veřejné IP adresy: VNet1GWPIP**
-* **VpnType RouteBased** 
+* **Typ sítě VPN: RouteBased** 
 
-## <a name="declare"></a>1. Přihlášení a nastavení proměnných
+## <a name="declare"></a>1. přihlášení a nastavení proměnných
 
 V této části se přihlašujete a deklarujete hodnoty používané pro tuto konfiguraci. Deklarované hodnoty jsou použity v ukázkových skriptech. Změňte hodnoty tak, aby odpovídaly vašemu prostředí. Můžete také použít deklarované hodnoty a projít kroky jako cvičení.
 
-### <a name="sign-in"></a>Přihlášení
+### <a name="sign-in"></a>Přihlásit se
 
 [!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
@@ -90,7 +91,7 @@ Deklarujte proměnné, které chcete použít. Použijte následující příkla
   $GWIPconfName = "gwipconf"
   ```
 
-## <a name="ConfigureVNet"></a>2. Konfigurace virtuální sítě
+## <a name="ConfigureVNet"></a>2. konfigurace virtuální sítě
 
 1. Vytvořte skupinu prostředků.
 
@@ -141,7 +142,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientProtocol "IKEv2"
 ```
 
-## <a name="addresspool"></a>4. Přidání fondu adres klienta VPN
+## <a name="addresspool"></a>4. přidejte fond adres klienta VPN.
 
 Po dokončení vytváření brány VPN můžete přidat fond adres klienta VPN. Fond adres klienta VPN je rozsah, ze kterého dostanou klienti VPN IP adresu při svém připojení. Použijte rozsah privátních IP adres, který se nepřekrývá s místním umístěním, ze kterého se připojujete, ani s virtuální sítí, ke které se chcete připojit. V tomto příkladu je fond adres klienta VPN deklarován jako [proměnná](#declare) v kroku 1.
 
@@ -150,22 +151,22 @@ $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientAddressPool $VPNClientAddressPool
 ```
 
-## <a name="Certificates"></a>5. Generování certifikátů
+## <a name="Certificates"></a>5. generování certifikátů
 
 Azure používá certifikáty k ověřování klientů VPN pro sítě VPN Point-to-Site. Nahrajete do Azure informace o veřejném klíči kořenového certifikátu. Veřejný klíč se pak bude považovat za důvěryhodný. Klientské certifikáty musí být vygenerované z důvěryhodného kořenového certifikátu a pak nainstalované na každém klientském počítači v úložišti certifikátů v adresáři Certificates-Current User/Personal. Tento certifikát se používá k ověřování klienta při zahájení připojení k virtuální síti. 
 
 Pokud používáte certifikáty podepsané svým držitelem, musí se vytvořit pomocí konkrétních parametrů. Certifikát podepsaný svým držitelem můžete vytvořit podle pokynů pro [PowerShell a Windows 10](vpn-gateway-certificates-point-to-site.md). Pokud nemáte Windows 10, můžete použít [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md). Je důležité, abyste při generování kořenových certifikátů podepsaných svým držitelem a klientských certifikátů postupovali podle pokynů. Jinak certifikáty, které vytvoříte, nebudou kompatibilní s připojeními typu P2S a zobrazí se chyba připojení.
 
-### <a name="cer"></a>1. Získání souboru .cer pro kořenový certifikát
+### <a name="cer"></a>1. získání souboru. cer pro kořenový certifikát
 
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-p2s-rootcert-include.md)]
 
 
-### <a name="generate"></a>2. Vygenerování klientského certifikátu
+### <a name="generate"></a>2. vygenerujte klientský certifikát.
 
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-p2s-clientcert-include.md)]
 
-## <a name="upload"></a>6. Nahrání informací o veřejném klíči kořenového certifikátu
+## <a name="upload"></a>6. Nahrajte informace o veřejném klíči kořenového certifikátu.
 
 Ověřte, že se dokončilo vytváření brány VPN. Po dokončení můžete nahrát soubor .cer (obsahující informace o veřejném klíči) důvěryhodného kořenového certifikátu do Azure. Jakmile je soubor .cer nahraný, Azure ho může použít k ověřování klientů s nainstalovaným klientským certifikátem vygenerovaným z důvěryhodného kořenového certifikátu. Později můžete podle potřeby nahrát další soubory s důvěryhodnými kořenovými certifikáty – celkem až 20.
 
@@ -190,7 +191,7 @@ Tyto informace nemůžete nahrát pomocí Azure Cloud Shell. V počítači můž
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG" -PublicCertData $CertBase64
    ```
 
-## <a name="clientcertificate"></a>7. Instalace exportovaného klientského certifikátu
+## <a name="clientcertificate"></a>7. Nainstalujte exportovaný certifikát klienta.
 
 Pokud chcete vytvořit připojení P2S z jiného klientského počítače, než který jste použili k vytvoření klientských certifikátů, budete muset klientský certifikát nainstalovat. Při instalaci klientského certifikátu budete potřebovat heslo, které bylo vytvořeno při jeho exportu.
 
@@ -198,11 +199,11 @@ Zkontrolujte, že se klientský certifikát vyexportoval jako soubor .pfx spolu 
 
 Postup instalace najdete v tématu věnovaném [instalaci klientského certifikátu](point-to-site-how-to-vpn-client-install-azure-cert.md).
 
-## <a name="clientconfig"></a>8. Konfigurace nativního klienta VPN
+## <a name="clientconfig"></a>8. konfigurace nativního klienta VPN
 
 Konfigurační soubory klienta VPN obsahují nastavení pro konfiguraci zařízení, která umožňuje připojit se k virtuální síti přes připojení P2S. Pokyny pro generování a instalaci konfiguračních souborů klienta VPN najdete v tématu věnovaném [vytvoření a instalaci konfiguračních souborů klienta VPN pro konfigurace PS2 s nativním ověřováním certifikátů Azure](point-to-site-vpn-client-configuration-azure-cert.md).
 
-## <a name="connect"></a>9. Připojení k Azure
+## <a name="connect"></a>9. připojení k Azure
 
 ### <a name="to-connect-from-a-windows-vpn-client"></a>Připojení z klienta VPN systému Windows
 
@@ -406,4 +407,4 @@ Klientský certifikát lze obnovit odebráním jeho kryptografického otisku ze 
 ## <a name="next-steps"></a>Další kroky
 Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v tématu [Virtuální počítače](https://docs.microsoft.com/azure/). Bližší informace o sítích a virtuálních počítačích najdete v tématu s [přehledem sítě virtuálních počítačů s Linuxem v Azure](../virtual-machines/linux/azure-vm-network-overview.md).
 
-Informace o řešení potíží s [P2S najdete v těchto potížích: Problémy s](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)připojením k bodům Azure Point-to-site.
+Informace o odstraňování potíží s P2S najdete v článku [Poradce při potížích: Problémy s připojením Azure typu point-to-site](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).

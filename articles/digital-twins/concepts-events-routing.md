@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 094a3a838269921339dcd6c2c3b551720f394251
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 65b760eaf28d907fab3654ed92f960be7556b0d6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660320"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862352"
 ---
 # <a name="routing-iot-events-and-messages"></a>Směrování událostí a zpráv IoT
 
@@ -53,7 +53,7 @@ Digitální vlákna Azure v současné době podporují následující **EventTy
 
 > [!IMPORTANT]  
 > Ne všechny **EndpointTypes** podporují všechny **EventType**.
-> V následující tabulce jsou pro **EventType** , které jsou povoleny pro jednotlivé **EndpointType**.
+> Zkontrolujte následující tabulku pro **EventType** , které jsou povoleny pro jednotlivé **EndpointType**.
 
 |             | DeviceMessages | TopologyOperation | SpaceChange | SensorChange | UdfCustom |
 | ----------- | -------------- | ----------------- | ----------- | ------------ | --------- |
@@ -62,10 +62,10 @@ Digitální vlákna Azure v současné době podporují následující **EventTy
 | EventGrid|               |         ×         |     ×       |      ×       |   ×       |
 
 >[!NOTE]  
->Další informace o vytváření koncových bodů a příkladů "schématu událostí" najdete v tématu [výstupní informace a koncové body](how-to-egress-endpoints.md).
+>Další informace o vytváření koncových bodů a příkladů "schématu událostí", výstup čtení [a koncových bodů](how-to-egress-endpoints.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o omezeních Azure Digital Forms Preview najdete v tématu [omezení služby Public Preview](concepts-service-limits.md).
+- Pokud se chcete dozvědět víc o omezeních Azure Digital Forms Preview, přečtěte si [omezení služby Public Preview](concepts-service-limits.md).
 
-- Ukázku digitálních vláken Azure si můžete vyzkoušet v rychlém startu, kde najdete [dostupné místnosti](quickstart-view-occupancy-dotnet.md).
+- Pokud si chcete vyzkoušet ukázku digitálních vláken Azure, přečtěte si [rychlý Start, kde najdete dostupné místnosti](quickstart-view-occupancy-dotnet.md).

@@ -1,27 +1,20 @@
 ---
-title: Řešení potíží s připojením VPN typu Site-to-site, která nelze připojit | Microsoft Docs
+title: 'Řešení potíží s připojením VPN typu Site-to-site, která nemůže připojit titleSuffix: Azure VPN Gateway'
 description: Naučte se řešit potíže s připojením VPN typu Site-to-site, které náhle přestane fungovat a nelze je znovu připojit.
 services: vpn-gateway
-documentationcenter: na
 author: chadmath
-manager: dcscontentpm
-editor: ''
-tags: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: e196c4b512de3fac97347e4c252b697ed6818227
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 4e827c5f6eedc819bc3635cb09a28f65df51312c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058877"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862573"
 ---
-# <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Při Připojení VPN typu Site-to-Site VPN se nemůže připojit a přestane fungovat.
+# <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Řešení potíží: připojení VPN typu Site-to-Site VPN se nemůže připojit a přestane fungovat.
 
 Po nakonfigurování připojení VPN typu Site-to-site mezi místní sítí a virtuální sítí Azure se připojení VPN náhle zastaví a nebude možné ho znovu připojit. Tento článek popisuje kroky pro řešení potíží, které vám pomůžou tento problém vyřešit. 
 
@@ -35,15 +28,15 @@ Problém vyřešíte tak, že se nejdřív pokusíte [resetovat bránu Azure VPN
 
 Ověřte typ brány VPN Azure.
 
-1. Přejděte na [Azure Portal](https://portal.azure.com).
+1. Přejděte na [portál Azure](https://portal.azure.com).
 
-2. Informace o typu najdete na stránce s přehledem služby VPN Gateway.
+2. Informace o typu najdete na stránce s **přehledem** služby VPN Gateway.
     
     ![Přehled brány](media/vpn-gateway-troubleshoot-site-to-site-cannot-connect/gatewayoverview.png)
 
 ### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>Krok 1. Zkontrolovat, jestli je místní zařízení VPN ověřené
 
-1. Ověřte, zda používáte ověřené [zařízení VPN a verzi operačního systému](vpn-gateway-about-vpn-devices.md#devicetable). Pokud se nejedná o ověřené zařízení VPN, možná budete muset kontaktovat výrobce zařízení a zjistit, jestli došlo k potížím s kompatibilitou.
+1. Ověřte, zda používáte [ověřené zařízení VPN a verzi operačního systému](vpn-gateway-about-vpn-devices.md#devicetable). Pokud se nejedná o ověřené zařízení VPN, možná budete muset kontaktovat výrobce zařízení a zjistit, jestli došlo k potížím s kompatibilitou.
 
 2. Ujistěte se, že je zařízení VPN správně nakonfigurované. Další informace najdete v tématu [Úprava ukázek konfigurace zařízení](vpn-gateway-about-vpn-devices.md#editing).
 
@@ -111,7 +104,7 @@ Zkontrolujte a odeberte uživatelsky definované směrování (UDR) nebo skupiny
 
 Funkce Perfect Forward Secrecy může způsobit problémy s odpojením. Pokud má zařízení VPN povolené PFS (Perfect Forward Secrecy), zakažte tuto funkci. Pak aktualizujte zásady protokolu IPsec brány VPN.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 -   [Konfigurace připojení typu Site-to-site k virtuální síti](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 -   [Konfigurace zásad IPsec/IKE pro připojení VPN typu Site-to-site](vpn-gateway-ipsecikepolicy-rm-powershell.md)

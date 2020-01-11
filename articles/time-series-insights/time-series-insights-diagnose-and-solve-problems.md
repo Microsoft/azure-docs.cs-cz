@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff723f490a3f6d34f652e0b21e5f6e0b16f0a841
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 3e73afa89ee61243784c5952eeda26a79d508dee
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900265"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863406"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Diagnostikujte a řešte problémy v prostředí Time Series Insights.
 
@@ -34,7 +34,7 @@ V [průzkumníkovi Azure Time Series Insights](https://insights.timeseries.azure
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>Příčina: zdrojová data události nejsou ve formátu JSON.
 
-Azure Time Series Insights podporuje pouze data JSON. Ukázky JSON najdete v tématu [tvary JSON nepodporuje](./how-to-shape-query-json.md).
+Azure Time Series Insights podporuje pouze data JSON. V případě ukázek JSON čtěte [podporované tvary JSON](./how-to-shape-query-json.md).
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Příčina B: ve zdrojovém klíči události chybí požadovaná oprávnění.
 
@@ -69,7 +69,7 @@ Pokud máte ve zdroji událostí staré události, můžete k omezování přís
 - Změňte limity uchování zdroje událostí, aby bylo možné odebrat staré události, které nechcete zobrazit v Time Series Insights.
 - Zřídit větší velikost prostředí (počet jednotek), aby se zvýšila propustnost starých událostí. Pokud v předchozím příkladu zvýšíte stejné prostředí S1 na pět jednotek za jeden den, prostředí by mělo být během jednoho dne zachytávání. Pokud má vaše výroba události ustálených stavů hodnotu 1 000 000 nebo méně událostí za den, můžete snížit kapacitu události na jednu jednotku po jejím zachycení.
 
-Omezení omezování se vynutilo na základě typu SKU a kapacity prostředí. Všechny zdroje událostí v prostředí sdílejí tuto kapacitu. Pokud zdroj událostí služby IoT Hub nebo centra událostí odesílá data nad rámec vynuceného limitu, uvidíte omezení a prodlevu.
+Omezení omezování se vynutilo na základě typu SKU a kapacity prostředí. Všechny zdroje událostí v prostředí sdílejí tuto kapacitu. Pokud zdroj událostí pro Centrum IoT nebo centrum událostí přenáší data nad rámec vynuceného limitu, dojde k omezení a prodlevě.
 
 Následující obrázek ukazuje Time Series Insights prostředí, které má SKU S1 a kapacitu 3. Může to mít až 3 000 000 událostí za den.
 
@@ -82,7 +82,7 @@ Předpokládejme například, že prostředí přijímá zprávy z centra událo
 
 Prostředí SKU S1, které má kapacitu 3, může při každé minutě přijímat jenom 2 100 událostí (1 000 000 událostí za den = 700 událostí za minutu se třemi jednotkami = 2 100 událostí za minutu). 
 
-Podrobné informace o tom, jak funguje shrnutá logika, najdete v tématu [podporované tvary JSON](./how-to-shape-query-json.md).
+Pro účely vysokého porozumění způsobu, jakým funguje shrnutá logika, si přečtěte článek [podporované tvary JSON](./how-to-shape-query-json.md).
 
 #### <a name="recommended-resolutions-for-excessive-throttling"></a>Doporučená řešení pro nadměrné omezení
 
@@ -109,9 +109,9 @@ Ujistěte se, že název a hodnota vlastnosti časového razítka odpovídají n
 
 Nejjednodušší způsob, jak zajistit, aby byl název vlastnosti časového razítka zachycen a správně fungoval, je použití Průzkumníka Time Series Insights. V Průzkumníku Time Series Insights pomocí grafu vyberte časový úsek po zadání názvu vlastnosti časového razítka. Klikněte pravým tlačítkem na výběr a potom vyberte možnost **prozkoumat události** .
 
-První záhlaví sloupce by mělo být název vlastnosti časového razítka. Vedle **časového razítka**slova by se měla zobrazit **($TS)** .
+První záhlaví sloupce by mělo být název vlastnosti časového razítka. Vedle **časového razítka**slova **($TS)** se zobrazí.
 
-Neměly by se zobrazovat tyto hodnoty:
+Následující hodnoty nebudou zobrazeny:
 
 - *(ABC)* : označuje, že Time Series Insights čte datové hodnoty jako řetězce.
 - *Ikona kalendáře*: označuje, že Time Series Insights čte datovou hodnotu jako *DateTime*.

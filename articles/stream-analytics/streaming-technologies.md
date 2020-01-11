@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: f3ecb3bedb8e0f55590aca1aa1c0e0c185f9acc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2146b1bd782aba5d98729a2d37d956744e469ba1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369248"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860244"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Volba analýzy v reálném čase a technologie zpracování streamování v Azure
 
@@ -41,10 +41,6 @@ Azure Stream Analytics má bohatě připravený zážitek. Bez dalších nastave
 * V části 100-MS koncová latence ze vstupu přicházejících na Event Hubs, do výstupního odpočívadla v Event Hubs, včetně zpoždění sítě od a do Event Hubs, při trvalé vysoké propustnosti
 
 ## <a name="when-to-use-other-technologies"></a>Kdy použít jiné technologie
-
-### <a name="you-need-to-input-from-or-output-to-kafka"></a>Musíte vstup nebo výstup do Kafka.
-
-Azure Stream Analytics nemá Apache Kafka vstupní nebo výstupní adaptér. Pokud máte události, které přidáváte nebo potřebujete odeslat do Kafka a nemáte požadavek na spuštění vlastního clusteru Kafka, můžete dál používat Stream Analytics odesláním událostí do Event Hubs pomocí rozhraní API Event Hubs Kafka, aniž byste museli měnit odesílatele události. Pokud potřebujete spustit vlastní cluster Kafka, můžete použít strukturované streamování Sparku, která je plně podporovaná na [Azure Databricks](../azure-databricks/index.yml)nebo v [Azure HDInsight](../hdinsight/storm/apache-storm-overview.md).
 
 ### <a name="you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c"></a>Chcete zapisovat UDF, Uda a vlastní deserializace v jiném jazyce než JavaScript neboC#
 

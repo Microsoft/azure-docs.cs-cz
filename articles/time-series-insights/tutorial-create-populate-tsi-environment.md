@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 387f3df7313c26c5cd8f7fee7c9b58ec3b5c4552
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 83462d47af49a02817dcfa05afcd8fdb5e0beab1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872376"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863702"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Kurz: Vytvoření prostředí Azure Time Series Insights
 
@@ -30,9 +30,9 @@ Tento kurz vás provede procesem vytvoření Azure Time Series Insights prostře
 > [!IMPORTANT]
 > Zaregistrujte si [bezplatné předplatné Azure](https://azure.microsoft.com/free/) , pokud ho ještě nemáte.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Účet pro přihlášení do Azure musí být také členem role **vlastníka** předplatného. Další informace najdete v tématu [Správa přístupu pomocí řízení přístupu na základě role a Azure Portal](../role-based-access-control/role-assignments-portal.md).
+* Účet pro přihlášení do Azure musí být také členem role **vlastníka** předplatného. Další informace najdete v článku [Správa přístupu pomocí řízení přístupu na základě role a Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="review-video"></a>Zkontrolovat video
 
@@ -72,7 +72,7 @@ Nejprve vytvořte řešení pro simulaci zařízení, které generuje testovací
 
    [![zřízení řešení pro simulaci zařízení](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png#lightbox)
 
-1. Po dokončení zřizování se zobrazí dvě aktualizace, které zobrazují, že stav nasazení se přesunul ze **zřizování** na **připraveno**. 
+1. Po dokončení zřizování se zobrazí dvě aktualizace oznamující, že stav nasazení se přesunul ze **zřizování** na **připraveno**. 
 
    >[!IMPORTANT]
    > Ještě nezadávejte akcelerátor řešení. Tuto webovou stránku nechte otevřenou, protože se k ní vrátíte později.
@@ -162,7 +162,7 @@ V této poslední části ověříte, že se data telemetrie vygenerovala a ulo�
 
    [Průzkumník ![Time Series Insights](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png)](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png#lightbox)
 
-1. Průzkumník Time Series Insights načítá a ověřuje pomocí účtu Azure Portal. Při počátečním zobrazení se můžete podívat v oblasti grafu, ve které Time Series Insights prostředí naplněno pomocí simulovaných dat telemetrie. Pokud chcete filtrovat užší časový rozsah, vyberte rozevírací nabídku v levém horním rohu. Zadejte časový rozsah, který je dostatečně velký pro rozsah trvání simulace zařízení. Pak vyberte lupu hledání.
+1. Průzkumník Time Series Insights načítá a ověřuje pomocí účtu Azure Portal. Zpočátku se zobrazí oblast grafu, ve které Time Series Insights prostředí naplnilo společně s jejich simulovanými daty telemetrie. Pokud chcete filtrovat užší časový rozsah, vyberte rozevírací nabídku v levém horním rohu. Zadejte časový rozsah, který je dostatečně velký pro rozsah trvání simulace zařízení. Pak vyberte lupu hledání.
 
    [filtr časového rozsahu v Průzkumníkovi ![Time Series Insights](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png#lightbox)
 
@@ -198,4 +198,4 @@ V tomto kurzu jste se naučili:
 Teď, když víte, jak vytvořit vlastní prostředí Time Series Insights, se naučíte, jak vytvořit webovou aplikaci, která využívá data z prostředí Time Series Insights:
 
 > [!div class="nextstepaction"]
-> [Viz Ukázky vizualizace hostovaných klientských SDK](https://tsiclientsample.azurewebsites.net/)
+> [Čtení ukázek pro vizualizaci hostovaného klienta sady SDK](https://tsiclientsample.azurewebsites.net/)

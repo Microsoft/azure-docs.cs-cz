@@ -3,16 +3,16 @@ title: Použít Azure Machine Learning v Azure Notebooks Preview
 description: Přehled ukázkových poznámkových bloků pro Azure Machine Learning, které můžete použít s Azure Notebooks Preview.
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 3c0e0e9ccea079d7e8f4e35e9af2a0e1c1ec5051
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 435abca83255221d438d530b63c237c08bb0b672
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646948"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860567"
 ---
 # <a name="use-azure-machine-learning-in-azure-notebooks-preview"></a>Použít Azure Machine Learning v Azure Notebooks Preview
 
-Azure Notebooks je předem nakonfigurovaný s potřebným prostředím pro práci s [Azure Machine Learning](/azure/machine-learning/service/). Ukázkový projekt můžete snadno naklonovat do svého účtu poznámkových bloků a prozkoumejte různé scénáře Machine Learning.
+Azure Notebooks je předem nakonfigurovaný s potřebným prostředím pro práci s [Azure Machine Learning](/azure/machine-learning/). Ukázkový projekt můžete snadno naklonovat do svého účtu poznámkových bloků a prozkoumejte různé scénáře Machine Learning.
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
@@ -39,9 +39,9 @@ Azure Notebooks je předem nakonfigurovaný s potřebným prostředím pro prác
 
 Dokumentace k Azure Machine Learning obsahuje řadu dalších prostředků, které vás provedou prací s Machine Learning v rámci poznámkových bloků:
 
-- [Rychlý start: Použití Pythonu k seznámení s Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/quickstart-create-workspace-with-python)
-- [Kurz #1: výuka modelu klasifikace obrázků pomocí Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)
-- [#2. kurz: Nasazení modelu klasifikace image v Azure Container Instance (ACI)](https://docs.microsoft.com/azure/machine-learning/service/tutorial-deploy-models-with-aml)
-- [Kurz: analýza modelu klasifikace pomocí automatizovaného strojového učení v Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/tutorial-auto-train-models)
+- [Rychlý start: Použití Pythonu k seznámení s Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#local)
+- [Kurz #1: výuka modelu klasifikace obrázků pomocí Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml)
+- [#2. kurz: Nasazení modelu klasifikace image v Azure Container Instance (ACI)](https://docs.microsoft.com/azure/machine-learning/tutorial-deploy-models-with-aml)
+- [Kurz: analýza modelu klasifikace pomocí automatizovaného strojového učení v Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/tutorial-auto-train-models)
 
 Také naleznete v dokumentaci k [Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).

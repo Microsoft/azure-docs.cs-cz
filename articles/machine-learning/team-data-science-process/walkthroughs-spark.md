@@ -1,22 +1,22 @@
 ---
 title: Analytics v prostředí HDInsight Spark s PySpark, Scala - týmu vědecké zpracování dat
-description: Příklady vědecké zpracování týmových dat, které se provedou pomocí Pysparkem a Scalou na Azure HDInsight Spark pro prediktivní analýzy.
+description: Příklady vědeckého procesu týmového zpracování dat, který prochází používáním PySpark a Scala na Azure HDInsight Spark.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ce57c37791f9fcf353d08e177eb243f4939b52a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 91aac279a264d64ace5988d147c4caf8c52e9656
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60805529"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864141"
 ---
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>Pomocí Pysparkem a Scalou v Azure HDInsight Spark data science návody
 
@@ -26,7 +26,7 @@ Další data science návody, které jsou spouštěny vědecké zpracování tý
 
 ## <a name="predict-taxi-tips-using-pyspark-on-azure-spark"></a>Předpovídání spropitného pro taxikáře pomocí PySpark ve Sparku v Azure
 
-[Používejte Spark v Azure HDInsight](spark-overview.md) návod používá data z New Yorku taxi předpovědět, jestli jde placenou tip a rozsah částky očekává, že se budou hradit. Používá vědecké zpracování týmových dat ve scénáři pomocí [clusteru Azure HDInsight Spark](https://azure.microsoft.com/services/hdinsight/) k ukládání, prozkoumat a funkce zpětnou analýzu dat z veřejně dostupné cesty taxíkem NYC a jízdenky datové sady. Toto přehledové téma nastaví vám s clusterem HDInsight Spark a Jupyter PySpark používá ve zbývající části návodu poznámkových bloků. Tyto poznámkové bloky ukazují, jak zkoumat data a jak vytvářet a využívat modely. Poznámkový blok pro zkoumání a modelování pokročilými datovými ukazuje, jak zahrnout křížového ověřování, hyperparametrické cílit na konkrétní a vyhodnocení modelů.
+Pomocí nástroje New York taxislužby data předpovídá návod [Použití Sparku v Azure HDInsight](spark-overview.md) , jestli je Tip vyplacený, a rozsah očekávaných částek. V tomto příkladu se používá vědecký proces týmových dat ve scénáři, který používá [cluster Azure HDInsight Spark](https://azure.microsoft.com/services/hdinsight/) k ukládání, prozkoumávání a zpracovávání dat funkcí z veřejně dostupné datové sady služby NYC taxislužby TRIPS a jízdné. Toto přehledové téma používá cluster HDInsight Spark a poznámkové bloky Jupyter PySpark. Tyto poznámkové bloky ukazují, jak zkoumat data a jak vytvářet a využívat modely. Poznámkový blok pro zkoumání a modelování pokročilými datovými ukazuje, jak zahrnout křížového ověřování, hyperparametrické cílit na konkrétní a vyhodnocení modelů.
 
 ### <a name="data-exploration-and-modeling-with-spark"></a>Zkoumání a modelování se Sparkem 
 Prozkoumejte datovou sadu a vytvořit, stanovení skóre a vyhodnotit modely strojového učení z práce prostřednictvím [vytvoření binární klasifikačních a regresních modelů pro data se sadou nástrojů knihovna Spark MLlib](spark-data-exploration-modeling.md) tématu.
@@ -40,12 +40,12 @@ Naleznete v tématu [rozšířené zkoumání a modelování se Sparkem](spark-a
 
 ## <a name="predict-taxi-tips-using-scala-on-azure-spark"></a>Předpovídání spropitného pro taxikáře pomocí Scala ve Sparku v Azure
 
-[Použití Scaly se Sparkem v Azure](scala-walkthrough.md) návod používá data z New Yorku taxi předpovědět, jestli jde placenou tip a rozsah částky očekává, že se budou hradit. Ukazuje, jak pomocí Scala pro technik strojového učení úlohy Spark strojového učení knihovny (MLlib) a ve SparkML balíčky v clusteru Azure HDInsight Spark. Provede vás provedou úlohami, které tvoří [vědecké zpracování dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): příjem dat a zkoumání, vizualizaci, vytváření funkcí, modelování a modelu využití. Historické modely budou vytvářeny zahrnují logistické a lineární regrese, náhodných doménové struktury a přechodu Posílený stromové struktury.
+Návod [použít Scala s Sparkem v Azure](scala-walkthrough.md) předpovídá, jestli je Tip placená, a rozsah částek, které mají být placené. Ukazuje, jak pomocí Scala pro technik strojového učení úlohy Spark strojového učení knihovny (MLlib) a ve SparkML balíčky v clusteru Azure HDInsight Spark. Provede vás provedou úlohami, které tvoří [vědecké zpracování dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): příjem dat a zkoumání, vizualizaci, vytváření funkcí, modelování a modelu využití. Historické modely budou vytvářeny zahrnují logistické a lineární regrese, náhodných doménové struktury a přechodu Posílený stromové struktury.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Diskuzi o klíčové součásti, které tvoří vědecké zpracování týmových dat, naleznete v tématu [přehled vědeckého zpracování týmových dat](overview.md).
+Přehled vědeckého zpracování týmových dat najdete v tématu [Přehled procesu vědeckého zpracování](overview.md)týmových dat.
 
-Diskuzi o životní cyklus vědeckého zpracování týmových dat, který vám pomůže strukturovat vaše projekty datových věd, naleznete v tématu [životní cyklus vědeckého zpracování týmových dat](lifecycle.md). Životní cyklus popisuje kroky, od začátku do konce, projekty obvykle postupujte při jejich spuštění. 
+Diskuzi o životním cyklu vědeckého zpracování týmových dat najdete v tématu [životní cyklus procesu vědeckého zpracování dat týmu](lifecycle.md). Tento životní cyklus popisuje kroky od začátku do konce, které projekty obvykle následují při jejich spuštění. 
 

@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 12/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9b9491a4438ff07222bb5ce5bd684964bdfc0031
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c068e33bc7844c464bc8a289387990128d96dd35
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452836"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861791"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Co je Azure Time Series Insights?
 
@@ -67,7 +67,7 @@ Azure Time Series Insights zachycuje a ukládá každou novou událost jako řá
 
 ## <a name="capabilities"></a>Možnosti
 
-- **Rychlé zahájení**: Azure Time Series Insights nevyžaduje přípravu dat předem, takže se můžete rychle připojit k miliónům událostí ve službě IoT Hub nebo v centru událostí. Po připojení můžete vizualizovat a interagovat s daty ze senzorů, abyste mohli rychle ověřit vaše řešení IoT. S daty můžete pracovat, aniž byste museli psát kód a nemusíte se učit nový jazyk. Time Series Insights poskytuje detailní a volné plochy pro dotazování pro pokročilé uživatele, a to tak, že vyhledáme a kliknete na průzkum.
+- **Rychlé zahájení**: Azure Time Series Insights nevyžaduje přípravu dat předem, takže se můžete rychle připojit k miliónům událostí ve službě IoT Hub nebo v centru událostí. Po připojení můžete vizualizovat a interagovat s daty ze senzorů, abyste mohli rychle ověřit vaše řešení IoT. S daty můžete pracovat, aniž byste museli psát kód a nemusíte se učit nový jazyk. Time Series Insights poskytuje detailní a volné plochy pro dotazování pro pokročilé uživatele a průzkum Point-to-Click.
 
 - **Přehledy téměř v reálném**čase: Time Series Insights můžou ingestovat miliony událostí senzorů za den a latence v minutách. Time Series Insights vám pomůže získat přehled o datech ze senzorů. Využijte ji k vyřízení trendů a anomálií, provádění analýz hlavní příčiny a zamezení nákladnému výpadku. Křížové korelace mezi daty v reálném čase a historická data vám pomůžou najít skryté trendy v datech.
 
@@ -82,7 +82,7 @@ Chcete-li začít, postupujte podle těchto kroků.
 1. Zřízení Time Series Insightsho prostředí v Azure Portal.
 1. Připojte se ke zdroji událostí, jako je centrum IoT nebo centrum událostí.
 1. Nahrajte referenční data. Nejedná se o další službu.
-1. Během několika minut můžete data zobrazit v průzkumníku Time Series Insights.
+1. Zkontrolujte a zobrazte si data během několika minut pomocí Time Series Insights Exploreru.
 
 ## <a name="explorer"></a>Průzkumník
 

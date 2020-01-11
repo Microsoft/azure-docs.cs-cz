@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 38aa45a9fe9e182fa98756725a8b20d737929d23
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 654ca34ae4c0e393920965083567e3d9c71148d0
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585365"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863627"
 ---
 # <a name="what-is-azure-stack-edge"></a>Co je Azure Stack Edge? 
 
@@ -27,7 +27,7 @@ Azure Stack Edge je řešení typu hardware jako služba. Microsoft dodá zaří
 
 Tady jsou různé scénáře, kdy je možné Azure Stack Edge použít pro rychlé Machine Learning (ML) Inferencing na hranici a předzpracování dat před jejich odesláním do Azure.
 
-- Při **odvozování pomocí Azure Machine Learning** – s Azure Stack Edge můžete spouštět modely ml, abyste získali rychlé výsledky, na jejichž základě se dá data odeslat do cloudu. Úplnou datovou sadu lze volitelně přenést, aby bylo možné pokračovat v přeučení a vylepšení modelů ML. Další informace o tom, jak používat hardwarové akcelerované modely Azure ML na Azure Stack hraničním zařízení, najdete v tématu [nasazení hardwarových akcelerovaných modelů Azure ml na Azure Stack Edge](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
+- Při **odvozování pomocí Azure Machine Learning** – s Azure Stack Edge můžete spouštět modely ml, abyste získali rychlé výsledky, na jejichž základě se dá data odeslat do cloudu. Úplnou datovou sadu lze volitelně přenést, aby bylo možné pokračovat v přeučení a vylepšení modelů ML. Další informace o tom, jak používat hardwarové akcelerované modely Azure ML na Azure Stack hraničním zařízení, najdete v tématu [nasazení hardwarových akcelerovaných modelů Azure ml na Azure Stack Edge](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
 
 - Před odesláním do Azure můžete **předzpracovat** data – Transformujte data, abyste mohli vytvořit další napadnutelnou datovou sadu. Předzpracování lze použít k těmto účelům: 
 

@@ -4,18 +4,30 @@ description: Úprava cílů úložiště mezipaměti HPC Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 11/4/2019
+ms.date: 1/08/2020
 ms.author: rohogue
-ms.openlocfilehash: 115e75c0149a35104d9c3696710bf8231a98743d
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 5635bfc6ea5faea41b125037c76c0b8635e0f528
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74168514"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867005"
 ---
 # <a name="edit-storage-targets"></a>Úprava cílů úložiště
 
-Změnou cílů úložiště můžete upravit některé z jejich vlastností. Různé vlastnosti lze upravovat pro různé typy úložišť:
+Cíl úložiště můžete odebrat nebo upravit ze stránky **cíle úložiště** mezipaměti.
+
+## <a name="remove-a-storage-target"></a>Odebrání cíle úložiště
+
+Pokud chcete cíl úložiště odebrat, vyberte ho v seznamu a klikněte na tlačítko **Odstranit** .
+
+Tato akce odebere přidružení cíle úložiště k tomuto systému mezipaměti prostředí Azure HPC, ale nemění back-end systém úložiště. Pokud jste například použili kontejner úložiště objektů BLOB v Azure, kontejner a jeho obsah stále existují i po jeho odstranění z mezipaměti. Kontejner můžete přidat do jiné mezipaměti prostředí Azure HPC, znovu ho přidat do této mezipaměti nebo ho odstranit pomocí Azure Portal.
+
+Všechny změny souborů uložené v mezipaměti se zapisují do back-endového systému úložiště před odebráním cíle úložiště. Pokud se velké množství změněných dat nachází v mezipaměti, může tento proces trvat hodinu nebo déle.
+
+## <a name="update-storage-targets"></a>Aktualizace cílů úložiště
+
+Změnou cílů úložiště můžete upravit některé z jejich vlastností. Různé vlastnosti jsou editovatelné pro různé typy úložiště:
 
 * V případě cílů služby Blob Storage můžete změnit cestu k oboru názvů.
 
@@ -23,7 +35,7 @@ Změnou cílů úložiště můžete upravit některé z jejich vlastností. Rů
 
   * Cesta oboru názvů
   * Model využití
-  * Export
+  * Exportovat
   * Exportovat podadresář
 
 Nemůžete upravit název, typ nebo back-end úložiště cíle úložiště (kontejner objektů BLOB nebo název hostitele nebo IP adresa systému souborů NFS). Pokud potřebujete tyto vlastnosti změnit, odstraňte cíl úložiště a vytvořte náhradu s novou hodnotou.

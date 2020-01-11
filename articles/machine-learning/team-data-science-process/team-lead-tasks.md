@@ -2,26 +2,26 @@
 title: Úlohy pro tým vést v týmu Data Science procesu týmu
 description: Podrobný návod pro úlohy týmu vedoucí týmu vědeckého zpracování týmových dat
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/23/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9c6d0fcc20afc613094f10e9f3fb7c917ec6fa73
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327249"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864277"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Úlohy týmu vedoucích k týmovému zpracování týmových dat
 
 Tento článek popisuje úkoly, které *tým vedoucí* dokončí pro svůj tým pro datové vědy. Cílem zájemce týmu je vytvořit týmovou spolupráci, která se bude standardizovat na [vědecký proces týmových dat](overview.md) (TDSP). TDSP je navržený tak, aby pomohla zdokonalit spolupráci a týmovou výuku. 
 
-TDSP je agilní a iterativní metodologie pro datové vědy, která umožňuje efektivně dodávat prediktivní Analytická řešení a inteligentní aplikace. Tento proces je podnikající osvědčené postupy a struktury od společnosti Microsoft a oboru, který je potřeba pro úspěšnou implementaci iniciativ v oblasti datových věd, aby společnosti plně uvědomily výhody svých analytických programů. Přehled rolí personálu a přidružených úloh pro tým pro datové vědy, který se na TDSPe standardizace, najdete v tématu [role procesů a úlohy vědeckého zpracování dat týmu](roles-tasks.md).
+TDSP je agilní a iterativní metodologie pro datové vědy, která umožňuje efektivně dodávat prediktivní Analytická řešení a inteligentní aplikace. Proces zpracovává i osvědčené postupy a struktury od společnosti Microsoft a odvětví.  Cílem je úspěšná implementace iniciativ v oblasti datových věd a plně se doplněním výhod svých analytických programů. Přehled rolí personálu a přidružených úloh pro tým pro datové vědy, který se na TDSPe standardizace, najdete v tématu [role procesů a úlohy vědeckého zpracování dat týmu](roles-tasks.md).
 
 Vedoucí týmu spravuje tým, který se skládá z několika vědců v oblasti datových věd v podniku. V závislosti na velikosti a struktuře datové vědy a vedoucí [skupiny](group-manager-tasks.md) a vedoucího týmu může být stejná osoba nebo by mohla delegovat jejich úkoly na náhrady. Avšak nezměníte samotné úkoly. 
 
@@ -142,7 +142,7 @@ Pokud chcete naplnit svá úložiště v týmu obsahem společných úložišť 
    
 1. V dialogovém okně **importovat úložiště Git** jako **typ zdroje**vyberte **Git** a v části **Adresa URL klonu**zadejte adresu URL pro úložiště šablon společné šablony. Adresa URL je *https:\//\<název serveru >/\<název organizace >/_git/\<název úložiště >* . Například: *https:\//dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
    
-1. Vyberte **importovat**. Obsah úložiště šablony skupiny se importuje do vašeho týmového úložiště šablony. 
+1. Vyberte **Import** (Importovat). Obsah úložiště šablony skupiny se importuje do vašeho týmového úložiště šablony. 
    
    ![Importovat společné úložiště šablon skupin](./media/team-lead-tasks/import-repo-2.png)
    
@@ -170,7 +170,7 @@ Postup úpravy, nahrávání nebo vytváření souborů nebo složek přímo v A
      
    - Chcete-li odeslat soubory, vyberte možnost **nahrát**soubory. 
      
-     ![Nahrání souborů](./media/team-lead-tasks/upload-files.png)
+     ![Nahrávání souborů](./media/team-lead-tasks/upload-files.png)
      
    - Pokud chcete upravit existující soubory, přejděte k souboru a pak vyberte **Upravit**. 
      

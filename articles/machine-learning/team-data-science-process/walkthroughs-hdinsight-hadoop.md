@@ -3,20 +3,20 @@ title: Analýzy v Azure HDInsight Hadoop pomocí Hivu - vědecké zpracování t
 description: Příklady vědecké zpracování týmových dat, které se provedou pomocí Hivu v Azure HDInsight Hadoop pro prediktivní analýzy.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d3c3278a058162632a6ba7ea9731e5f233190700
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f72ea6ed5f0eec076d181ef56c99c4f1308a7741
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60804671"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864158"
 ---
 # <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>Pomocí Hivu v Azure HDInsight Hadoop data science návody 
 
@@ -36,10 +36,10 @@ Tento scénář je implementována pomocí Hivu s [clusteru Azure HDInsight Hado
 
 ## <a name="predict-advertisement-clicks-using-hive-with-hdinsight-hadoop"></a>Předpověď kliknutí oznámení o inzerovaném programu pomocí Hivu se službou HDInsight Hadoop
 
-[Použití Azure HDInsight Hadoop clusterů v datové sadě 1 TB](hive-criteo-walkthrough.md) názorný postup využívá veřejně dostupné [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) klikněte na datovou sadu, která předpovědět, jestli jde placenou tip a rozsah částky očekávání. Tento scénář je implementována pomocí Hivu s [clusteru Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) k ukládání, prozkoumejte, funkce technik a dolů ukázková data. Využívá Azure Machine Learning k vytváření, trénování a stanovíte jeho skóre binární klasifikační model predikci, jestli uživatel klikne na reklamu. Dojde k závěru návodu ukazuje, jak publikování některého z těchto modelů jako webové služby.
+Criteo [clustery s Azure HDInsight Hadoop využitím návodu pro datovou sadu s 1 TB](hive-criteo-walkthrough.md) používá veřejně dostupnou datovou sadu [](https://labs.criteo.com/downloads/download-terabyte-click-logs/) a předpovídá, jestli je Tip placená, a očekávané částky. Tento scénář je implementována pomocí Hivu s [clusteru Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) k ukládání, prozkoumejte, funkce technik a dolů ukázková data. Využívá Azure Machine Learning k vytváření, trénování a stanovíte jeho skóre binární klasifikační model predikci, jestli uživatel klikne na reklamu. Dojde k závěru návodu ukazuje, jak publikování některého z těchto modelů jako webové služby.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Diskuzi o klíčové součásti, které tvoří vědecké zpracování týmových dat, naleznete v tématu [přehled vědeckého zpracování týmových dat](overview.md).
 

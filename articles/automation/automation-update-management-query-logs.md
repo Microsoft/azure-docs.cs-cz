@@ -1,22 +1,171 @@
 ---
 title: Dotazování protokolů služby Azure Update Management
-description: Tento článek popisuje, jak zadat dotaz na protokoly pro Update Management
+description: Tento článek popisuje, jak zadat dotaz na protokoly pro Update Management v pracovním prostoru Log Analytics.
 services: automation
 ms.subservice: update-management
-ms.date: 09/26/2019
+ms.date: 01/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 85b09aa32c8ddee6406469a2adc44e067c58e186
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5a1979b0e714f35694999c04e1f890b710d54ac9
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420326"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867071"
 ---
-# <a name="query-update-records-for-update-management-in-log-analytics"></a>Dotaz na aktualizace záznamů pro Update Management v Log Analytics
+# <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Dotaz na aktualizace záznamů pro Update Management v protokolech Azure Monitor
 
-Kromě podrobností, které jsou k dispozici v Azure Portal, můžete hledat v protokolech. Na stránkách řešení vyberte **Log Analytics**. Otevře se podokno **prohledávání protokolu** .
+Kromě podrobností, které jsou k dispozici v řešení Update Management, můžete vyhledávat v protokolech uložených v pracovním prostoru Log Analytics. Na stránce řešení vyberte v levém podokně **protokoly**. Otevře se stránka **hledání protokolu** .
 
 Můžete se také seznámit s postupem přizpůsobení dotazů nebo jejich použití od různých klientů a dalších návštěv: [Log Analytics dokumentaci rozhraní API pro hledání](https://dev.loganalytics.io/).
+
+## <a name="update-records"></a>Záznamy typu Aktualizace
+
+Záznamy shromažďované Update Management pro virtuální počítače s Windows a Linux a typy dat, které se zobrazí ve výsledcích prohledávání protokolu. Tyto záznamy jsou popsány v následujících částech.
+
+### <a name="required-updates"></a>Požadované aktualizace
+
+Vytvoří se záznam s typem `RequiredUpdate`, který představuje aktualizace vyžadované počítačem. Tyto záznamy mají vlastnosti v následující tabulce:
+
+| Vlastnost | Popis | 
+|----------|-------------|
+| Počítač | Plně kvalifikovaný název domény počítače pro vytváření sestav. |
+| KBID | ID článku znalostní báze pro Windows Update |
+| ManagementGroupName | Název Operations Manager skupiny pro správu nebo pracovního prostoru Log Analytics. | 
+| Produkt | Produkty, pro které je aktualizace platná. | 
+| PublishDate | Datum, kdy je aktualizace připravena ke stažení a instalaci z web Windows Update. |
+| Server | | 
+| SourceHealthServiceId | Jedinečný identifikátor představující Log Analytics ID agenta Windows. |
+| SourceSystem | *OperationsManager* | 
+| TenantId | Jedinečný identifikátor, který představuje instanci vaší organizace Azure Active Directory. | 
+| TimeGenerated | Datum a čas vytvoření záznamu | 
+| Typ | *Aktualizace* | 
+| UpdateClassification | Určuje typ aktualizací, které lze použít. Ve Windows:<br> *Důležité aktualizace*<br> *Aktualizace zabezpečení*<br> *Kumulativní aktualizace*<br> *Balíčky funkcí*<br> *Aktualizace Service Pack*<br> *Aktualizace definicí*<br> *Nástroje*<br> *Aktualizace*. Pro Linux:<br> *Kritické aktualizace a aktualizace zabezpečení*<br> *Ostatní* |
+| UpdateSeverity | Hodnocení závažnosti pro chybu zabezpečení. Hodnoty jsou:<br> *Kritické*<br> *Důležité upozornění*<br> *Střední*<br> *Nízká* |
+| UpdateTitle | Název aktualizace|
+
+### <a name="update"></a>Aktualizovat
+
+Vytvoří se záznam s typem `Update`, který představuje dostupné aktualizace a stav instalace pro daný počítač. Tyto záznamy mají vlastnosti v následující tabulce:
+
+| Vlastnost | Popis | 
+|----------|-------------|
+| ApprovalSource | Platí jenom pro operační systém Windows. Hodnota je *Microsoft Update*. |
+| Schválené | *True* nebo *false* |
+| Classification | *Aktualizace* |
+| Počítač | Plně kvalifikovaný název domény počítače pro vytváření sestav. |
+| ComputerEnvironment | *Azure* nebo *mimo Azure*. |
+| MSRCBulletinID | Číslo ID bulletinu zabezpečení | 
+| MSRCSeverity | Hodnocení závažnosti pro chybu zabezpečení. Hodnoty jsou:<br> *Kritické*<br> *Důležité upozornění*<br> *Střední*<br> *Nízká* |  
+| KBID | ID článku znalostní báze pro Windows Update |
+| ManagementGroupName | Název Operations Manager skupiny pro správu nebo pracovního prostoru Log Analytics. |
+| UpdateID | Jedinečný identifikátor aktualizace softwaru. |
+| RevisionNumber | Číslo revize konkrétní revize aktualizace. |
+| Volitelné | *True* nebo *false* | 
+| RebootBehavior | Chování při restartování po instalaci nebo odinstalaci aktualizace. |
+| _ResourceId | Jedinečný identifikátor prostředku, ke kterému je záznam přidružen. |
+| Typ | *Aktualizace* |
+| VMUUID | Jedinečný identifikátor pro virtuální počítač. |
+| MG | Jedinečný identifikátor pro skupinu pro správu nebo pracovní prostor Log Analytics. | 
+| TenantId | Jedinečný identifikátor, který představuje instanci vaší organizace Azure Active Directory. | 
+| SourceSystem | *OperationsManager* | 
+| TimeGenerated | Datum a čas vytvoření záznamu | 
+| SourceComputerId | Jedinečný identifikátor představující zdrojový počítač. | 
+| Nadpis | Název aktualizace |
+| PublishedDate (UTC) | Datum, kdy je aktualizace připravena ke stažení a instalaci z web Windows Update.  |
+| UpdateState | Aktuální stav aktualizace. | 
+| Produkt | Produkty, pro které je aktualizace platná. |
+| SubscriptionId | Jedinečný identifikátor předplatného Azure. | 
+| ResourceGroup | Název skupiny prostředků, ve které je prostředek členem | 
+| ResourceProvider | Určuje poskytovatele prostředků. | 
+| Prostředek | Název prostředku. | 
+| ResourceType | Název typu prostředku | 
+
+### <a name="update-agent"></a>Aktualizace agenta
+
+Vytvoří se záznam s typem `UpdateAgent`, který poskytuje podrobnosti o agentovi aktualizace v počítači. Tyto záznamy mají vlastnosti v následující tabulce:
+
+| Vlastnost | Popis | 
+|----------|-------------|
+| AgeofOldestMissingRequiredUpdate | | 
+| AutomaticUpdateEnabled | | 
+| Počítač | Plně kvalifikovaný název domény počítače pro vytváření sestav. |
+| DaySinceLastUpdateBucket | | 
+| ManagementGroupName | Název Operations Manager skupiny pro správu nebo pracovního prostoru Log Analytics. |
+| OSVersion | Verze operačního systému. |
+| Server | |
+| SourceHealthServiceId | Jedinečný identifikátor představující Log Analytics ID agenta Windows. |
+| SourceSystem | *OperationsManager* | 
+| TenantId | Jedinečný identifikátor, který představuje instanci vaší organizace Azure Active Directory. |
+| TimeGenerated | Datum a čas vytvoření záznamu |
+| Typ | *Aktualizace* | 
+| WindowsUpdateAgentVersion | Verze agenta web Windows Update. |
+| WSUSServer | Zobrazuje chyby, pokud má agent web Windows Update problém při řešení potíží. |
+
+### <a name="update-deployment-status"></a>Stav nasazení aktualizace 
+
+Vytvoří se záznam s typem `UpdateRunProgress`, který poskytuje stav nasazení aktualizace pro plánované nasazení v počítači. Tyto záznamy mají vlastnosti v následující tabulce:
+
+| Vlastnost | Popis | 
+|----------|-------------|
+| Počítač | Plně kvalifikovaný název domény počítače pro vytváření sestav. |
+| ComputerEnvironment | *Azure* nebo *mimo Azure*. | 
+| CorrelationId | Jedinečný identifikátor spuštění úlohy Runbooku pro aktualizaci. |
+| EndTime | Čas ukončení procesu synchronizace. | 
+| ErrorResult | Při instalaci aktualizace se vygeneroval kód chyby web Windows Update. | 
+| InstallationStatus | Možné stavy instalace aktualizace v klientském počítači *probíhají* *úspěšně*, *částečně selhaly*. |
+| KBID | ID článku znalostní báze pro Windows Update | 
+| ManagementGroupName | Název Operations Manager skupiny pro správu nebo pracovního prostoru Log Analytics. |
+| OSType | Určuje typ operačního systému, *Windows* nebo *Linux*. | 
+| Produkt | Produkty, pro které je aktualizace platná. |
+| Prostředek | Název prostředku. | 
+| ResourceId | Jedinečný identifikátor prostředku, ke kterému je záznam přidružen. |
+| ResourceProvider | Určuje poskytovatele prostředků. | 
+| ResourceType | Název typu prostředku | 
+| SourceComputerId | Jedinečný identifikátor představující zdrojový počítač. | 
+| SourceSystem | *OperationsManager* |
+| StartTime | Čas, kdy má být aktualizace naplánována k instalaci. |
+| SubscriptionId | Jedinečný identifikátor předplatného Azure. | 
+| SucceededOnRetry | Ukazuje, že při prvním pokusu došlo k chybě při spuštění aktualizace a aktuální operace je pokus o opakování. |
+| TimeGenerated | Datum a čas vytvoření záznamu |
+| Nadpis | Název aktualizace |
+| Typ | *UpdateRunProgress* |
+| UpdateID naformátovat | Jedinečný identifikátor aktualizace softwaru. |
+| VMUUID | Jedinečný identifikátor pro virtuální počítač. |
+| _ResourceId | Jedinečný identifikátor prostředku, ke kterému je záznam přidružen. |
+
+### <a name="update-summary"></a>Souhrn aktualizací 
+
+Vytvoří se záznam s typem `UpdateSummary`, který poskytuje souhrn aktualizací podle počítače. Tyto záznamy mají vlastnosti v následující tabulce:
+
+| Vlastnost | Popis | 
+|----------|-------------|
+| Počítač | Plně kvalifikovaný název domény počítače pro vytváření sestav. |
+| ComputerEnvironment | *Azure* nebo *mimo Azure*. | 
+| CriticalUpdatesMissing | Počet neplatných důležitých aktualizací. | 
+| ManagementGroupName | Název Operations Manager skupiny pro správu nebo pracovního prostoru Log Analytics. |
+| NETRuntimeVersion | Verze .NET Framework nainstalovaná na počítači s Windows. |
+| OldestMissingSecurityUpdateBucket | | 
+| OldestMissingSecurityUpdateInDays | |
+| OsVersion | Verze operačního systému. |
+| OtherUpdatesMissing | Počet chybějících zjištěných aktualizací |
+| Prostředek |  Název prostředku. | 
+| ResourceGroup | Název skupiny prostředků, ve které je prostředek členem |
+| ResourceId | Jedinečný identifikátor prostředku, ke kterému je záznam přidružen. |
+| ResourceProvider | Určuje poskytovatele prostředků. |
+| ResourceType | Název typu prostředku |
+| RestartPending | *True* nebo *false*. |
+| SecurityUpdatesMissing | Počet použitelných chybějících aktualizací zabezpečení| 
+| SourceComputerId | Jedinečný identifikátor pro virtuální počítač. |
+| SourceSystem | *OpsManager* | 
+| SubscriptionId | Jedinečný identifikátor předplatného Azure. |
+| TimeGenerated | Datum a čas vytvoření záznamu |
+| TotalUpdatesMissing | Celkový počet platných chybějících aktualizací | 
+| Typ | *UpdateSummary* |
+| VMUUID | Jedinečný identifikátor pro virtuální počítač. |
+| WindowsUpdateAgentVersion | Verze agenta web Windows Update. |
+| WindowsUpdateSetting | Zobrazuje stav agenta web Windows Update. Možné hodnoty:<br> *Naplánovaná instalace*<br> *Upozorňovat před instalací*<br> Z chybného agenta WUA byla vrácena chyba. | 
+| WSUSServer | Zobrazuje chyby, pokud má agent web Windows Update problém při řešení potíží. |
+| _ResourceId | Jedinečný identifikátor prostředku, ke kterému je záznam přidružen. |
 
 ## <a name="sample-queries"></a>Ukázkové dotazy
 

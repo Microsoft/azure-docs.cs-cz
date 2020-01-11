@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: d94daa5fbda4ee60ffc6671f7b50126662416043
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c117510749abcf997e414371faa6dea1dc79ea7a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746583"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861757"
 ---
 # <a name="azure-time-series-insights-preview-explorer"></a>Průzkumník Preview Azure Time Series Insights
 
@@ -48,7 +48,7 @@ Průzkumník Preview Azure Time Series Insights se skládá z následujících s
 
 ## <a name="1-environment-panel"></a>1. panel prostředí
 
-V panelu prostředí se zobrazí všechna prostředí Time Series Insights, ke kterým máte přístup k. Seznam obsahuje prostředí s průběžnými platbami (Preview) a také prostředí S1/S2 (všeobecně dostupné). Jednoduše klikněte na prostředí Time Series Insights, které chcete použít k okamžitému pořízení.
+V panelu prostředí se zobrazí všechna prostředí Time Series Insights, ke kterým máte přístup k. Seznam obsahuje prostředí s průběžnými platbami (Preview) a také prostředí S1/S2 (všeobecně dostupné). Jednoduše vyberte prostředí Time Series Insights, které chcete použít k okamžitému pořízení.
 
 1. Vyberte šipku rozevíracího seznamu vedle zobrazeného prostředí.
 
@@ -75,7 +75,7 @@ Azure Time Series Insights Preview podporuje operace úplného vytváření, čt
 * **Časové řady modelu hierarchie**: hierarchií jsou systematické organizace vaše data. Hierarchie znázornění vztahy mezi různými entitami ve vašich datech Time Series Insights.
 * **Instance řady modelu čas**: instance jsou časové řady sami. Ve většině případů se jedná o **DeviceID** nebo **AssetID**, což je jedinečný identifikátor assetu v prostředí.
 
-Další informace o modelu časové řady, naleznete v tématu [časy řady modely](./time-series-insights-update-tsm.md).
+Pokud chcete získat další informace o modelu časové řady, pročtěte si [modely časů řady](./time-series-insights-update-tsm.md).
 
 ## <a name="3-hierarchy-tree-and-search-panel"></a>3. strom hierarchie a panel hledání
 
@@ -98,7 +98,7 @@ Kromě toho vám ovládací prvek průzkumy umožňuje snadno vytvářet časov�
   [možnosti vzhledu ![](media/v2-update-explorer/well-layout-options.png)](media/v2-update-explorer/well-layout-options.png#lightbox)
 
 > [!NOTE]
-> Pokud se zobrazí následující zpráva, tato instance nemá žádná data během vybraného časového intervalu. Chcete-li tento problém vyřešit, zvyšte časový rozsah nebo potvrďte, že instance přenáší data.
+> Pokud se zobrazí následující zpráva, tato instance nebude mít během vybraného časového intervalu žádná data. Chcete-li tento problém vyřešit, zvyšte časový rozsah nebo potvrďte, že instance přenáší data.
 >
 > ![Žádná oznámení k datům](media/v2-update-explorer/tsi-preview-no-data-warning.png)
 
@@ -110,9 +110,9 @@ Graf umožňuje zobrazovat instance časových řad jako řádky. Klepnutím na 
 
 1. **Typ grafu**: Určuje, které datové prvky jsou k dispozici pro vizualizaci.
 
-1. **Velikost intervalu**: nástroj dráha velikosti intervalu vám umožní přiblížit nebo oddálit intervaly ve stejném časovém intervalu. To poskytuje přesnější kontrolu nad pohybem mezi velkými řezy času, které znázorňují hladké trendy až po milisekundy, což vám umožní zobrazit podrobné a vysoce rozlišení vašich dat. Výchozí počáteční bod posuvníku je nastaven jako optimální pohled na data z výběru. vyvážení řešení, rychlost dotazu a členitost.
+1. **Velikost intervalu**: nástroj dráha velikosti intervalu vám umožní přiblížit nebo oddálit intervaly ve stejném časovém intervalu. To poskytuje přesnější kontrolu nad pohybem mezi velkými řezy času, které znázorňují hladké trendy v různých řezech až do milisekund, což vám umožní kontrolovat podrobné a vysoce vyřešené části dat. Výchozí počáteční bod posuvníku je nastaven jako optimální pohled na data z výběru. vyvážení řešení, rychlost dotazu a členitost.
 
-1. **Lupa a posouvání**: kliknutím na tento ovládací prvek můžete graf zvětšit a posunout.
+1. **Lupa a posouvání**: Tento ovládací prvek vyberte, pokud chcete graf zvětšit a posunout.
 
 1. **Ovládací prvek osy y**: cyklicky dostupné možnosti zobrazení osy y:
 
@@ -122,15 +122,15 @@ Graf umožňuje zobrazovat instance časových řad jako řádky. Klepnutím na 
 
 1. **Element marker**: aktuálně vybraný datový prvek a jeho přidružené podrobnosti.
 
-Kliknutím **levým** na datový bod v aktuálním grafu a podržením myši a přetažením vybrané oblasti na koncový bod podle vlastního výběru můžete přejít k podrobnostem konkrétního datového řezu. Klikněte **pravým tlačítkem myši** na modrou vybranou oblast a klikněte na tlačítko **Zvětšit** , jak je znázorněno níže. Můžete také zobrazit a stáhnout události telemetrie ve vybraném časovém rozmezí.
+Kliknutím **levým** na datový bod v aktuálním grafu a podržením myši a přetažením vybrané oblasti na koncový bod podle vlastního výběru můžete přejít k podrobnostem konkrétního datového řezu. Klikněte **pravým tlačítkem myši** na modrou, vybranou oblast a pak vyberte možnost **Zvětšit** , jak je znázorněno níže. Můžete také zobrazit a stáhnout události telemetrie ve vybraném časovém rozmezí.
 
   [přiblížení ![náhledu grafu](media/v2-update-explorer/preview-chart-zoom.png)](media/v2-update-explorer/preview-chart-zoom.png#lightbox)
 
-Po provedení akce **Lupa** se zobrazí Vybraná datová sada. Vyberte ovládací prvek formát, který bude procházet tři reprezentace osy y vašich Time Series Insights dat.
+Po provedení akce **přiblížení** se zobrazí Vybraná datová sada. Vyberte ovládací prvek formát, který bude procházet tři reprezentace osy y vašich Time Series Insights dat.
 
   [osa y ![náhled grafu](media/v2-update-explorer/tsi-preview-explorer-standard-chart.png)](media/v2-update-explorer/tsi-preview-explorer-standard-chart.png#lightbox)
 
-Tady vidíte příklad **překrývající se grafu**:
+Zde je uveden příklad **překrývající se grafu** :
 
   [![překrývající se možnost grafu](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png)](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png#lightbox)
 
@@ -207,7 +207,7 @@ Azure čas Series Insights ve verzi Preview podporuje dva motivy:
 
 Tato část platí jenom pro stávající prostředí S1, S2, které se pokouší použít v aktualizované uživatelské rozhraní v Průzkumníku. Možná budete chtít použít všeobecně dostupný produkt a náhled v kombinaci. Přidali jsme některé funkce z existující uživatelského rozhraní do Průzkumníka aktualizované, ale můžete získat plnou funkčnost uživatelského rozhraní pro existující Průzkumníka Time Series Insights S1/S2 prostředí. 
 
-Místo hierarchie se zobrazí panel Time Series Insights podmínky, kde můžete ve svém prostředí definovat dotazy. Použijte ho k filtrování dat na základě predikátu.
+Místo hierarchie se zobrazí panel Time Series Insightsé výrazy. Panel podmínky vám umožní definovat dotazy ve vašem prostředí. Použijte ho k filtrování dat na základě predikátu.
 
   [![, kde panel dotazů](media/v2-update-explorer/s1-s2-preview-query.png)](media/v2-update-explorer/s1-s2-preview-query.png#lightbox)
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 12/20/2019
-ms.openlocfilehash: b97c8c51bc63fb0c1ff0070714e7393d11ea0dbf
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 023128d35030f99458bc5fd2c7a4a155a856e4c9
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497477"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861502"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Rychlý Start: Prozkoumejte ukázkové prostředí Azure Time Series Insights Preview
 
@@ -45,7 +45,7 @@ Průzkumník Preview Time Series Insights ukazuje historická data a analýzu p�
 
       [![W7 ve společnosti Contoso 1](media/v2-update-quickstart/quick-start-generator-speed.png)](media/v2-update-quickstart/quick-start-generator-speed.png#lightbox)
 
-1. V poslední době společnost Contoso našla požár v větrné **turbíně**. Názory se liší v tom, co způsobilo požár. V Time Series Insights vidíte, že senzor výstrah při požáru byl aktivován.
+1. V poslední době společnost Contoso našla požár v větrné **turbíně**. Názory se liší v tom, co způsobilo požár. V Time Series Insights se zobrazí senzor výstrah, který byl aktivován během požáru.
 
    1. Změňte rozsah zobrazení na **3/9/17 20:00:00.00 na 3/10/17 20:00:00.00 (UTC)** .
    1. Vyberte možnost **zabezpečení systému** > **FireAlert**.
@@ -59,7 +59,7 @@ Průzkumník Preview Time Series Insights ukazuje historická data a analýzu p�
 
       [![kontrolovat další události přibližně ve stejnou dobu](media/v2-update-quickstart/quick-start-active-warning.png)](media/v2-update-quickstart/quick-start-active-warning.png#lightbox)
 
-1. Tlak v oleji a senzory aktivního upozornění se dopravují přímo před požárem. Rozbalením zobrazené časové řady zobrazíte další příznaky, které byly patrné na oheň. Oba senzory se v průběhu času pohybovaly konzistentně. Kolísání označují trvalý a worrisome vzorek.
+1. Tlak v oleji a senzory aktivního upozornění se dopravují přímo před požárem. Rozbalení zobrazených časových řad pro kontrolu dalších příznaků, které byly zjevně zavedené do požáru. Oba senzory se v průběhu času pohybovaly konzistentně. Kolísání označují trvalý a worrisome vzorek.
 
     * Změňte rozsah zobrazení na **2/24/17 20:00:00.00 na 3/10/17 20:00:00.00 (UTC)** .
 
@@ -86,7 +86,7 @@ Pomocí Time Series Insights a telemetrie senzorů jsme zjistili, že v historic
 
        [![změnit rozsah zobrazení a vybrat možnost W6](media/v2-update-quickstart/quick-start-voltage-switch-warning.png)](media/v2-update-quickstart/quick-start-voltage-switch-warning.png#lightbox)
 
-1. Upozornění indikuje problém s napětím ze generátoru. Celkový výstup tohoto generátoru je v rámci běžných parametrů v aktuálním intervalu. Zvýšením našeho intervalu se zobrazí další vzor. Odkládací adresář je zřejmý.
+1. Upozornění indikuje problém s napětím ze generátoru. Celkový výstup tohoto generátoru je v rámci běžných parametrů v aktuálním intervalu. Zvýšením našeho intervalu se objeví další vzor. Odkládací adresář je zřejmý.
 
     1. Odeberte senzor **VoltageActuatorSwitchWarning** .
     1. Vyberte **generátor System** > **ActivePower**.

@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 477f13f58d9b630519faa79424f22cb1bb34918c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ffd91bbcc33ef313d496e793c8263126db81b685
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351261"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863940"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-java"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V12 pro jazyk Java
 
@@ -349,7 +349,7 @@ Deleting the local source and downloaded files...
 Done
 ```
 
-Než zahájíte proces vyčištění, vyhledejte tyto dva soubory ve složce *dokumenty* . Můžete je otevřít a podívat se, že jsou identické.
+Než zahájíte proces vyčištění, vyhledejte tyto dva soubory ve složce *dat* . Můžete je otevřít a podívat se, že jsou identické.
 
 Po ověření souborů stiskněte klávesu **ENTER** , aby se odstranily soubory testu, a dokončete ukázku.
 

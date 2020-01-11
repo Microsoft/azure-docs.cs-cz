@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2c68c64202efec6d7dab745b6e1bdc029fa3976f
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: f479433ef486c12a00f74b220d46f84f5f979e7c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561309"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863457"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Pochopení uchovávání dat v Azure Time Series Insights
 
@@ -44,7 +44,7 @@ Obě zásady uchovávání dat jsou popsané podrobněji.
 ## <a name="purge-old-data"></a>Vyprázdnit stará data
 
 - **Vyprázdnit stará data** je výchozím nastavením pro Azure Time Series Insights prostředí.  
-- **Vyprázdnit stará data** jsou upřednostňovaná, když uživatelé chtějí ve svém Time Series Insights prostředí vždycky zobrazovat nejnovější *data* .
+- **Vyprázdnit stará data** jsou upřednostňovaná, když uživatelé chtějí mít ve svém Time Series Insights prostředí vždy nejnovější *data* .
 - Nastavení **vyprázdnění starých dat** *vymaže* data po dosažení limitů prostředí (doba uchování, velikost nebo počet, podle toho, co nastane dřív). Doba uchování je ve výchozím nastavení nastavená na 30 dní.
 - Nejstarší ingestovaná data se vyprázdní jako první (přístup "první v prvním)".
 

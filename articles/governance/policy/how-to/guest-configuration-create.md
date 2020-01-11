@@ -3,12 +3,12 @@ title: Postup vytvoření zásad konfigurace hostů
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro virtuální počítače s Windows nebo Linux s Azure PowerShell.
 ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: f2e611998e42510eccde64ff6f945f58133fc4e9
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: dbdb4288812b8d1016c3ccc879582f76222d17cd
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608520"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867339"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Postup vytvoření zásad konfigurace hostů
 
@@ -65,7 +65,7 @@ Když konfigurace hosta Audituje počítač, nejprve se spustí `Test-TargetReso
 
 #### <a name="configuration-requirements"></a>Požadavky na konfiguraci
 
-Jediný požadavek na konfiguraci hosta pro použití vlastní konfigurace je, aby se název konfigurace shodoval všude, kde se používá.  To zahrnuje název souboru. zip pro balíček obsahu, název konfigurace v souboru MOF, který je uložený v balíčku obsahu, a název konfigurace používaný jako název přiřazení hosta v ARM.
+Jediný požadavek na konfiguraci hosta pro použití vlastní konfigurace je, aby se název konfigurace shodoval všude, kde se používá. Tento požadavek na název zahrnuje název souboru. zip pro balíček obsahu, název konfigurace v souboru MOF, který je uložený uvnitř balíčku obsahu, a název konfigurace, který se používá v šabloně Správce prostředků jako název přiřazení hostů.
 
 #### <a name="get-targetresource-requirements"></a>Požadavky GET-TargetResource
 
@@ -181,7 +181,7 @@ Můžete také implementovat [koncový bod služby](../../../storage/common/stor
 
 V konfiguraci Azure Policy hosta je optimální způsob, jak spravovat tajné klíče používané v době běhu, ukládat je do Azure Key Vault. Tento návrh se implementuje v rámci vlastních prostředků DSC.
 
-1. Nejprve v Azure vytvořte spravovanou identitu přiřazenou uživatelem.
+1. V Azure vytvořte spravovanou identitu přiřazenou uživatelem.
 
    Tato identita je používána počítači pro přístup k tajným klíčům uloženým v Key Vault. Podrobný postup najdete v tématu [Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem pomocí Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
@@ -193,9 +193,9 @@ V konfiguraci Azure Policy hosta je optimální způsob, jak spravovat tajné kl
 1. Přiřaďte počítači identitu přiřazenou uživatelem.
 
    Podrobný postup najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí PowerShellu](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
-   Ve velkém měřítku přiřaďte tuto identitu pomocí Azure Resource Manager přes Azure Policy. Podrobný postup najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí šablony](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
+   Přiřaďte tuto identitu pomocí Azure Resource Manager přes Azure Policy škálování. Podrobný postup najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí šablony](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
 
-1. Nakonec v rámci vlastního prostředku použijte ID klienta vygenerované výše pro přístup k Key Vault pomocí tokenu dostupného z počítače.
+1. Pro přístup k Key Vault pomocí tokenu dostupného z počítače použijte ID klienta vygenerované výše v rámci vašeho vlastního prostředku.
 
    `client_id` a adresu URL instance Key Vault lze předat prostředku jako [vlastnosti](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema) , takže prostředek nebude nutné aktualizovat pro více prostředí nebo v případě, že je třeba změnit hodnoty.
 
@@ -305,7 +305,7 @@ New-GuestConfigurationPolicy
     -Verbose
 ```
 
-V případě zásad pro Linux zahrňte vlastnost **AttributesYmlContent** do konfigurace a příslušné hodnoty odpovídajícím způsobem přepsat. Agent konfigurace hosta automaticky vytvoří soubor YaML používaný nespecifikací k ukládání atributů. Příklad je uvedený níže.
+V případě zásad pro Linux zahrňte vlastnost **AttributesYmlContent** do konfigurace a podle potřeby hodnoty přepište. Agent konfigurace hosta automaticky vytvoří soubor YAML používaný nespecifikací k ukládání atributů. Příklad je uvedený níže.
 
 ```powershell
 Configuration FirewalldEnabled {

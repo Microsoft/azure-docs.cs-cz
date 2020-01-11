@@ -6,22 +6,25 @@ manager: nitinme
 description: Dvě tabulky reprezentující Registry kontejnerů, úložiště a názvy imagí pro všechny nabídky služby pro rozpoznávání.
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/15/2019
+ms.date: 01/10/2020
 ms.author: dapine
-ms.openlocfilehash: 2058dd6e52ddb417e24368b27384df9a222c378e
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 7c229ea306d89f85fb37a68fc84e3e4f6770e5ad
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74142189"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75866948"
 ---
 ### <a name="container-repositories-and-images"></a>Úložiště kontejnerů a obrázky
 
-Následující tabulky obsahují seznam dostupných imagí kontejneru nabízených službou Azure Cognitive Services. Úplný seznam všech dostupných názvů imagí kontejneru a jejich dostupných značek najdete v tématu [Cognitive Services značek imagí kontejneru](../container-image-tags.md).
+Následující tabulky obsahují seznam dostupných imagí kontejneru nabízených službou Azure Cognitive Services. Úplný seznam všech dostupných názvů imagí kontejneru a jejich dostupných značek najdete v tématu [Cognitive Services značek imagí kontejneru](../container-image-tags.md). V současné době nejsou k dispozici žádné Cognitive Services kontejnery, které jsou všeobecně dostupné (GA). V době, kdy je to možné, dokud nebudou vytvořeny další oznámení – kontejnery jsou k dispozici buď jako *veřejné* , nebo jako *veřejně ověřované verze Preview*.
+
+ - *Veřejný nebraný*: kontejnery jsou veřejně dostupné bez mechanismu uzavírání.
+ - *Public gated Preview*: kontejnery jsou veřejně dostupné, ale nejdřív vyžadují formální požadavek na přístup k registru kontejneru.
 
 #### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>Public "inhradloed" (Registry kontejneru: `mcr.microsoft.com`)
 
-Microsoft Container Registry (MCR) zpřístupňuje všechny veřejně dostupné "nebránované" kontejnery pro Cognitive Services. Jsou k dispozici také přímo z [dokovacího centra](https://hub.docker.com/_/microsoft-azure-cognitive-services).
+Microsoft Container Registry (MCR) zpřístupňuje všechny veřejně dostupné "nebránované" kontejnery pro Cognitive Services. Kontejnery jsou k dispozici také přímo z [dokovacího centra](https://hub.docker.com/_/microsoft-azure-cognitive-services).
 
 | Služba | Kontejner | Název Container Registry/úložiště/image |
 |--|--|--|
@@ -32,7 +35,7 @@ Microsoft Container Registry (MCR) zpřístupňuje všechny veřejně dostupné 
 
 #### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Public "gated" Preview (registr kontejneru: `containerpreview.azurecr.io`)
 
-Registry Preview kontejneru hostují všechny veřejně dostupné kontejnery "gated" pro Cognitive Services. Tyto kontejnery vyžadují formální žádost o přístup, aby je bylo možné spotřebovat.
+Registry Preview kontejneru hostují všechny veřejně dostupné kontejnery "gated" pro Cognitive Services. Tyto kontejnery vyžadují formální žádost o přístup k nim prostřednictvím jejich registru kontejnerů.
 
 | Služba | Kontejner | Název Container Registry/úložiště/image |
 |--|--|--|

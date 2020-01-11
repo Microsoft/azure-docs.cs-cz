@@ -1,5 +1,5 @@
 ---
-title: 'Připojení virtuální sítě Azure k jiné virtuální síti pomocí připojení typu VNet-to-VNet: PowerShell | Microsoft Docs'
+title: 'Připojení virtuální sítě k jiné virtuální síti pomocí připojení typu VNet-to-VNet v Azure VPN Gateway: PowerShell'
 description: Propojení virtuálních sítí s použitím připojení typu VNet-to-VNet a PowerShellu.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: dbf59740af64bf8d403b6596a17646304c0f1eb0
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: eebe66ca038b31f23ca864b107816b8cf761b29c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385789"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860516"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí PowerShellu
 
@@ -40,7 +40,7 @@ Konfigurace připojení VNet-to-VNet je dobrým způsobem, jak snadno připojit 
 
 Pokud pracujete se složitou konfigurací sítě, můžete chtít vaše virtuální sítě raději připojit pomocí kroků [Site-to-Site](vpn-gateway-create-site-to-site-rm-powershell.md) než pomocí kroků VNet-to-VNet. Při použití kroků Site-to-Site vytvoříte a nakonfigurujete brány místní sítě ručně. Brána místní sítě pro každou virtuální síť zpracovává jiné virtuální sítě jako místní síť. Ten vám umožní pro místní síťovou bránu zadat další adresní prostor pro směrování provozu. Pokud se adresní prostor pro virtuální síť změní, musíte aktualizovat odpovídající bránu místní sítě tak, aby tuto změnu odrážela. Nedojde k automatické aktualizaci.
 
-### <a name="vnet-peering"></a>Partnerské vztahy virtuálních sítí
+### <a name="vnet-peering"></a>VNet Peering
 
 Můžete chtít zvážit připojení vašich virtuálních sítí pomocí VNET Peering. VNET Peering nepoužívá bránu sítě VPN a má jiná omezení. Kromě toho [ceny pro VNET Peering](https://azure.microsoft.com/pricing/details/virtual-network) se vypočítávají odlišně než [ceny pro VNet-to-VNet VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway). Další informace najdete v tématu [Partnerské vztahy virtuálních sítí](../virtual-network/virtual-network-peering-overview.md).
 
@@ -65,17 +65,17 @@ Klíčovým rozdílem mezi těmito sadami je, že pokud konfigurujete připojen�
 
 Pro toto cvičení můžete konfigurace kombinovat nebo prostě vybrat tu, se kterou chcete pracovat. Všechny konfigurace používají typ připojení VNet-to-VNet. Provoz probíhá mezi virtuálními sítěmi, které jsou vzájemně přímo propojené. V tomto cvičení se provoz ze sítě TestVNet4 nesměruje do sítě TestVNet5.
 
-* [Virtuální sítě nacházející se ve stejném](#samesub)předplatném: Kroky pro tuto konfiguraci využívají TestVNet1 a TestVNet4.
+* [Virtuální sítě patřící do stejného předplatného:](#samesub) V postupu pro tuto konfiguraci se používají sítě TestVNet1 a TestVNet4.
 
   ![Diagram v2v](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
-* [Virtuální sítě nacházející se v různých](#difsub)předplatných: Kroky pro tuto konfiguraci využívají virtuální sítě testvnet1 a TestVNet5.
+* [Virtuální sítě patřící do různých předplatných:](#difsub) V postupu pro tuto konfiguraci se používají sítě TestVNet1 a TestVNet5.
 
   ![Diagram v2v](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
 ## <a name="samesub"></a>Postup při propojování virtuálních sítí patřících ke stejnému předplatnému
 
-### <a name="before-you-begin"></a>Před zahájením
+### <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -93,32 +93,32 @@ V příkladech používáme následující hodnoty:
 
 * Název virtuální sítě: TestVNet1
 * Skupina prostředků: TestRG1
-* Umístění: East US
-* TestVNet1: 10.11.0.0/16 & 10.12.0.0/16
-* Endy 10.11.0.0/24
-* Back-end 10.12.0.0/24
+* Umístění: Východní USA
+* TestVNet1: 10.11.0.0/16 a 10.12.0.0/16
+* FrontEnd: 10.11.0.0/24
+* BackEnd: 10.12.0.0/24
 * GatewaySubnet: 10.12.255.0/27
-* GatewayName: VNet1GW
+* Název brány: VNet1GW
 * Veřejná IP adresa: VNet1GWIP
-* VPNType: RouteBased
-* Připojení (1to4): VNet1toVNet4
+* Typ sítě VPN: RouteBased
+* Připojení (1 ke 4): VNet1toVNet4
 * Připojení (1 k 5): VNet1toVNet5 (pro virtuální sítě v různých předplatných)
-* ConnectionType VNet2VNet
+* Typ připojení: VNet2VNet
 
 **Hodnoty pro virtuální síť TestVNet4:**
 
 * Název virtuální sítě: TestVNet4
-* TestVNet2: 10.41.0.0/16 & 10.42.0.0/16
-* Endy 10.41.0.0/24
-* Back-end 10.42.0.0/24
+* TestVNet2: 10.41.0.0/16 a 10.42.0.0/16
+* FrontEnd: 10.41.0.0/24
+* BackEnd: 10.42.0.0/24
 * GatewaySubnet: 10.42.255.0/27
 * Skupina prostředků: TestRG4
-* Umístění: USA – západ
-* GatewayName: VNet4GW
+* Umístění: Západní USA
+* Název brány: VNet4GW
 * Veřejná IP adresa: VNet4GWIP
-* VPNType: RouteBased
+* Typ sítě VPN: RouteBased
 * Připojení: VNet4toVNet1
-* ConnectionType VNet2VNet
+* Typ připojení: VNet2VNet
 
 
 ### <a name="Step2"></a>Krok 2: Vytvoření a konfigurace virtuální sítě TestVNet1
@@ -168,7 +168,7 @@ V příkladech používáme následující hodnoty:
    ```
 4. Vytvořte konfigurace podsítí pro virtuální síť TestVNet1. Tato ukázka vytvoří virtuální síť s názvem TestVNet1 a tři podsítě: jednu s názvem GatewaySubnet, jednu s názvem FrontEnd a jednu s názvem BackEnd. Při nahrazování hodnot je důležité vždy přiřadit podsíti brány konkrétní název GatewaySubnet. Pokud použijete jiný název, vytvoření brány se nezdaří. Z tohoto důvodu není přiřazena přes proměnnou níže.
 
-   Následující příklad používá proměnné, které jste nastavili dříve. V příkladu používá podsíť brány možnost /27. I když je možné vytvořit podsíť brány s minimální velikostí /29, doporučujeme vytvořit větší podsíť, která pojme více adres, tzn. vybrat velikost alespoň /28 nebo /27. Tím vznikne dostatečný prostor pro adresy, který umožní nastavení případných dalších konfigurací v budoucnu.
+   Následující příklad používá proměnné, které jste nastavili dříve. V příkladu používá podsíť brány možnost /27. I když je možné vytvořit podsíť brány s minimální velikostí /29, doporučujeme vytvořit větší podsíť, která pojme více adres, tzn. vybrat velikost aspoň /28 nebo /27. Tím vznikne dostatečný prostor pro adresy, který umožní nastavení případných dalších konfigurací v budoucnu.
 
    ```azurepowershell-interactive
    $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
@@ -313,15 +313,15 @@ Je důležité zajistit, aby se prostor IP adres nové virtuální sítě TestVN
 * Název virtuální sítě: TestVNet5
 * Skupina prostředků: TestRG5
 * Umístění: Japonsko – východ
-* TestVNet5: 10.51.0.0/16 & 10.52.0.0/16
-* Endy 10.51.0.0/24
-* Back-end 10.52.0.0/24
+* TestVNet5: 10.51.0.0/16 a 10.52.0.0/16
+* FrontEnd: 10.51.0.0/24
+* BackEnd: 10.52.0.0/24
 * GatewaySubnet: 10.52.255.0.0/27
-* GatewayName: VNet5GW
+* Název brány: VNet5GW
 * Veřejná IP adresa: VNet5GWIP
-* VPNType: RouteBased
+* Typ sítě VPN: RouteBased
 * Připojení: VNet5toVNet1
-* ConnectionType VNet2VNet
+* Typ připojení: VNet2VNet
 
 ### <a name="step-7---create-and-configure-testvnet5"></a>Krok 7: Vytvoření a konfigurace virtuální sítě TestVNet5
 
@@ -481,7 +481,7 @@ Jelikož brány v tomto příkladu patří do různých předplatných, rozděl�
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v [dokumentaci ke službě Virtual Machines](https://docs.microsoft.com/azure/).
 * Informace o protokolu BGP najdete v tématech [Přehled protokolu BGP](vpn-gateway-bgp-overview.md) a [Postup při konfiguraci protokolu BGP](vpn-gateway-bgp-resource-manager-ps.md).

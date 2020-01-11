@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: f5c0f6d9f6f7f35722f3df5f35dc1da945f21b9a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5d2fe5a00d131af54862551991cf984d8576b57e
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229038"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860941"
 ---
 # <a name="azure-digital-twins-security-best-practices"></a>Osvědčené postupy zabezpečení u digitálních vláken Azure
 
@@ -46,7 +46,7 @@ Mezi klíčové postupy pro bezpečné zabezpečení prostoru IoT patří:
 > [!div class="checklist"]
 > * Šifrování uložených, uložených nebo trvalých dat.
 > * Vyžadovat, aby hesla nebo klíče byly pravidelně měněny nebo aktualizovány.
-> * Pozorně omezte přístup a oprávnění podle role. Další informace najdete v části [osvědčené postupy řízení přístupu založené na rolích](#role-based-access-control-best-practices) níže.
+> * Pozorně omezte přístup a oprávnění podle role. Přečtěte si téma [Doporučené postupy řízení přístupu na základě rolí](#role-based-access-control-best-practices) níže.
 > * Vezměte v úvahu dělenou topologii sítě, aby byla zařízení v každé síti izolovaná od ostatních.
 > * Používejte výkonné šifrování. Vyžadovat dlouhá hesla, používat zabezpečené protokoly a [vícefaktorové ověřování](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).
 
@@ -56,7 +56,7 @@ Mezi klíčové postupy pro bezpečné zabezpečení prostoru IoT patří:
 > Projděte si [osvědčené postupy zabezpečení Azure IoT](../iot-fundamentals/iot-security-best-practices.md) a začněte komplexní strategii zabezpečení IoT.
 
 > [!NOTE]
-> Další informace o zpracování a monitorování událostí najdete v tématu [události a zprávy směrování pomocí digitálních vláken Azure](./concepts-events-routing.md).
+> Pokud chcete získat další informace o zpracování a monitorování událostí, přečtěte si téma [Směrování událostí a zpráv pomocí digitálních vláken Azure](./concepts-events-routing.md).
 
 ## <a name="azure-active-directory-best-practices"></a>Azure Active Directory osvědčené postupy
 

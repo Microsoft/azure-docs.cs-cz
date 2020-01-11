@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 ms.custom: mvc
-ms.openlocfilehash: c0413e4b9b0995c6712d30bbc22550d0ae10183b
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: a3c696a5bfa9286e664f69bd379bac408b7459d6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562183"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863236"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Přehled služby Azure Digital Twins
 
@@ -95,7 +95,7 @@ Azure Digital Twins se pomocí služby Azure IoT Hub připojuje k zařízením a
 
 [![digitálních vláken Azure je služba postavená na Azure IoT Hub](media/overview/azure-digital-twins-in-iot-ecosystem.png)](media/overview/azure-digital-twins-in-iot-ecosystem.png#lightbox)
 
-Další informace o IoT najdete v tématu [technologie a řešení Azure IoT](../iot-fundamentals/iot-services-and-technologies.md).
+Další informace o IoT najdete v článku [technologie a řešení Azure IoT](../iot-fundamentals/iot-services-and-technologies.md).
 
 ## <a name="next-steps"></a>Další kroky
 

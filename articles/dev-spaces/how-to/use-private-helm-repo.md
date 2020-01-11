@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: Využijte soukromé úložiště Helm v prostoru pro vývoj v Azure.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery, Helm
 manager: gwallace
-ms.openlocfilehash: f212df74ab8102391e4170ccef6b0c3b1129b046
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: dddec69dc019f286c714a09e6f1a7e47240d5572
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279921"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867289"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Použití privátního úložiště Helm v Azure Dev Spaces
 
@@ -35,6 +35,9 @@ Přejděte do adresáře projektu a spusťte `azds prep`.
 ```cmd
 azds prep --public
 ```
+
+> [!TIP]
+> Příkaz `prep` se pokusí vygenerovat [graf souboru Dockerfile a Helm](../how-dev-spaces-works.md#prepare-your-code) pro váš projekt. Azure Dev Spaces používá tyto soubory k sestavení a spuštění kódu, ale můžete upravit tyto soubory, pokud chcete změnit způsob sestavení a spuštění projektu.
 
 Pomocí grafu v adresáři grafu vaší aplikace vytvořte soubor [. yaml požadavků][helm-requirements] . Například pokud má vaše aplikace název *app1*, měli byste vytvořit *grafy/app1/požadavky. yaml*.
 

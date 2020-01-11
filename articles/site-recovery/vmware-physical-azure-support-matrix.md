@@ -3,13 +3,14 @@ title: Matice podpory pro zotavení po havárii VMware/fyzický v Azure Site Rec
 description: Shrnuje podporu pro zotavení po havárii virtuálních počítačů VMware a fyzického serveru do Azure pomocí Azure Site Recovery.
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/23/2019
-ms.openlocfilehash: 752f2276f23aa22feac870493e1ea5c1fdc4ca98
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 1/10/2020
+ms.author: raynew
+ms.openlocfilehash: 1d6f5df59a318388a7a5fea75d1fd17e18cb7745
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645935"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864328"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -226,7 +227,7 @@ Studené úložiště | Ne
 Horké úložiště| Ne
 Objekty blob bloku | Ne
 Šifrování v Rest (SSE)| Ano
-Šifrování v klidovém případě (CMK)| Ne
+Šifrování v klidovém případě (CMK)| Ano (přes PowerShell AZ 3.3.0 Module a vyšší)
 Premium Storage | Ano
 Služba import/export | Ne
 Azure Storage brány firewall pro virtuální sítě | Ano.<br/> Nakonfigurováno na cílovém účtu úložiště nebo úložiště mezipaměti (používá se k ukládání dat replikace).

@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 6c2b0ec5165652e77c92426bb62a30468eef04c2
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 0aed84dc4d78f8e83f568ff3e73d1300aaedbcaa
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456909"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860958"
 ---
 # <a name="connect-to-and-authenticate-with-apis"></a>Připojení k rozhraním API a ověřování pomocí nich
 
@@ -24,7 +24,7 @@ Přehled služby Azure AD najdete na [stránce základy](https://docs.microsoft.
 > [!TIP]
 > Postupujte podle [kurzu](tutorial-facilities-setup.md) a nastavte a spusťte ukázkovou aplikaci pro digitální vlákna Azure.
 
-K integraci aplikace nebo služby pomocí Azure AD musí vývojář nejdřív aplikaci zaregistrovat v Azure AD. Podrobné pokyny a snímky obrazovky najdete v [tomto rychlém](../active-directory/develop/quickstart-register-app.md)startu.
+K integraci aplikace nebo služby pomocí Azure AD musí vývojář nejdřív aplikaci zaregistrovat v Azure AD. Podrobné pokyny a snímky obrazovky si přečtěte v [tomto rychlém](../active-directory/develop/quickstart-register-app.md)startu.
 
 Služba Azure AD podporuje [pět scénářů primárních aplikací](../active-directory/develop/v2-app-types.md) :
 
@@ -49,7 +49,7 @@ Když vývojáři naprogramují řešení digitálních vláken, obvykle vytvoř
 
 1. Získaný token se pak použije k ověřování nebo volání rozhraní API, která jsou dále podřízená za použití toku za běhu.
 
-Pokyny k orchestraci služby Flow najdete v tématu [tok OAuth 2,0 za](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)běhu. Můžete si také zobrazit ukázky kódu při [volání webového rozhraní API pro příjem dat](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof).
+Pokyny k orchestraci tohoto toku najdete [v tématu tok OAuth 2,0 za](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)běhu. Můžete si také zobrazit ukázky kódu při [volání webového rozhraní API pro příjem dat](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof).
 
 ## <a name="next-steps"></a>Další kroky
 
