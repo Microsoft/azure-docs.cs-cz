@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b479717491c9bf4962ff633795b98e1d016ed288
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: efcbdb2ebd7f4830214dbd0f2ea2ea1cfe36c3de
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646927"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893517"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Virtuální počítače s Windows v Azure
 
@@ -65,7 +65,7 @@ Platforma Azure oznámila špičkovou smlouvu o úrovni služeb (SLA) s 99,9% do
 Azure účtuje [hodinovou cenu](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) na základě velikosti virtuálního počítače a na jeho operačním systému. V případě neúplných hodin Azure účtuje jenom využité minuty. Služba Storage je oceněna a účtována samostatně.
 
 ## <a name="vm-limits"></a>Omezení virtuálního počítače
-Vaše předplatné má nastavené výchozí [kvóty](../../azure-resource-manager/management/azure-subscription-service-limits.md), které mohou ovlivnit nasazení velkého počtu virtuálních počítačů pro váš projekt. Aktuální limit jednoho předplatného je 20 virtuálních počítačů na oblast. Limity můžete navýšit tak, že [vyplníte lístek podpory s žádostí o navýšení](../../azure-supportability/resource-manager-core-quotas-request.md).
+Vaše předplatné má nastavené výchozí [kvóty](../../azure-resource-manager/management/azure-subscription-service-limits.md), které mohou ovlivnit nasazení velkého počtu virtuálních počítačů pro váš projekt. Aktuální limit jednoho předplatného je 20 virtuálních počítačů na oblast. Limity můžete navýšit tak, že [vyplníte lístek podpory s žádostí o navýšení](../../azure-portal/supportability/resource-manager-core-quotas-request.md).
 
 ### <a name="operating-system-disks-and-images"></a>Disky a image operačních systémů
 Virtuální počítače používají [virtuální pevné disky (VHD)](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), na které ukládají svůj operační systém (OS) a data. Virtuální pevné disky se používají i pro image, ze kterých si můžete nainstalovat operační systém. 
