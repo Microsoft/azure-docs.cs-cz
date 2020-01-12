@@ -7,12 +7,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 277a745d26961ed509258d5423fc3c0da9b79a24
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: ae357d25a37e188ed043aaa0ca750bb0e52d58da
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219410"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903547"
 ---
 # <a name="security-controls-for-azure-event-hubs"></a>Řízení zabezpečení pro Azure Event Hubs
 
@@ -20,7 +20,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Eve
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
-## <a name="network"></a>Síť
+## <a name="network"></a>Network (Síť)
 
 | Řízení zabezpečení | Ano/Ne | Poznámky | Dokumentace |
 |---|---|--|--|
@@ -41,16 +41,16 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Eve
 
 | Řízení zabezpečení | Ano/Ne | Poznámky| Dokumentace |
 |---|---|--|--|
-| Ověřování| Ano | | [Autorizace přístupu k Azure Event Hubs](authorize-access-event-hubs.md), [autorizace přístupu k prostředkům Event Hubs pomocí Azure Active Directory](authorize-access-azure-active-directory.md), [autorizace přístupu k prostředkům Event Hubs pomocí sdílených přístupových podpisů](authorize-access-shared-access-signature.md) |
-| Authorization|  Ano | | [Ověřování spravované identity pomocí Azure Active Directory pro přístup k prostředkům Event Hubs](authenticate-managed-identity.md), [ověření aplikace pomocí Azure Active Directory pro přístup](authenticate-application.md)k prostředkům Event Hubs, [ověření přístupu k Event Hubs prostředkům pomocí sdílené přístupové podpisy (SAS)](authenticate-shared-access-signature.md) |
+| Ověření| Ano | | [Autorizace přístupu k Azure Event Hubs](authorize-access-event-hubs.md), [autorizace přístupu k prostředkům Event Hubs pomocí Azure Active Directory](authorize-access-azure-active-directory.md), [autorizace přístupu k prostředkům Event Hubs pomocí sdílených přístupových podpisů](authorize-access-shared-access-signature.md) |
+| Autorizace|  Ano | | [Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Event Hubs](authenticate-managed-identity.md), [ověření aplikace pomocí Azure Active Directory pro přístup](authenticate-application.md)k prostředkům Event Hubs, [ověření přístupu k Event Hubs prostředkům pomocí sdílených přístupových podpisů (SAS)](authenticate-shared-access-signature.md) |
 
 ## <a name="data-protection"></a>Ochrana dat
 
 | Řízení zabezpečení | Ano/Ne | Poznámky | Dokumentace |
 |---|---|--|--|
-| Šifrování na straně serveru v klidovém umístění: Klíče spravované společností Microsoft |  Ano | |  |
-| Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Ne |  |  |
-| Šifrování na úrovni sloupce (Azure Data Services)| neuvedeno | |  |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft |  Ano | |  |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Ano. K dispozici pro vyhrazené clustery. | Klíč spravovaný zákazníkem ve službě Azure Key trezor se dá použít k šifrování dat v centru událostí v klidovém formátu. | [Konfigurace klíčů spravovaných zákazníkem pro šifrování dat Azure Event Hubs v klidovém formátu pomocí Azure Portal](configure-customer-managed-key.md) |
+| Šifrování na úrovni sloupce (Azure Data Services)| Nevztahuje se | |  |
 | Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ano | |  |
 | Zašifrovaná volání rozhraní API| Ano |  |  |
 

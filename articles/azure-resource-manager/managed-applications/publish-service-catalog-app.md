@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: de2b79c5016b44011a14c1071eab6579f3a0b6df
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e756617a700d258078e84a3fa11c8aceb6f4dd88
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650251"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903271"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>Vytvoření a publikování definice spravované aplikace
 
@@ -18,7 +18,7 @@ ms.locfileid: "75650251"
 
 Můžete vytvořit a publikovat [spravovanou aplikaci](overview.md) Azure, která je určená pro členy vaší organizace. Oddělení IT může například publikovat spravované aplikace, které vyhovují standardům organizace. Tyto spravované aplikace jsou k dispozici prostřednictvím katalogu služeb, ne prostřednictvím Azure Marketplace.
 
-Pokud chcete publikovat spravovanou aplikaci pro katalog služeb, je třeba provést tyto kroky:
+Pokud chcete publikovat spravovanou aplikaci do katalogu služeb Azure, musíte:
 
 * Vytvořte šablonu, která definuje prostředky pro nasazení se spravovanou aplikací.
 * Definujte prvky uživatelského rozhraní portálu pro nasazení spravované aplikace.
@@ -207,6 +207,108 @@ New-AzManagedApplicationDefinition `
   -Authorization "${groupID}:$ownerID" `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
+
+## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Přineste si vlastní úložiště pro definici spravované aplikace
+Definici spravované aplikace si můžete uložit v rámci účtu úložiště, který vám poskytl během vytváření, aby bylo možné její umístění a přístup plně spravovat podle vašich zákonných potřeb.
+
+> [!NOTE]
+> Využití vlastního úložiště je podporované jenom šablonou ARM nebo nasazením REST API definice spravované aplikace.
+
+### <a name="select-your-storage-account"></a>Vyberte svůj účet úložiště.
+Musíte [vytvořit účet úložiště](../../storage/common/storage-account-create.md) , který bude obsahovat definici spravované aplikace pro použití s katalogem služeb.
+
+Zkopírujte ID prostředku účtu úložiště. Použije se později při nasazování definice.
+
+### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>Nastavte přiřazení role pro "poskytovatele prostředků zařízení" v účtu úložiště.
+Předtím, než bude možné nasadit definici spravované aplikace do svého účtu úložiště, musíte udělit oprávnění přispěvatele k roli **poskytovatele prostředků zařízení** , aby mohla zapisovat definiční soubory do kontejneru účtu úložiště.
+
+1. Na webu [Azure Portal](https://portal.azure.com) přejděte ke svému účtu úložiště.
+1. Vyberte **řízení přístupu (IAM)** a zobrazte nastavení řízení přístupu pro účet úložiště. Vyberte kartu **přiřazení rolí** a zobrazte seznam přiřazení rolí.
+1. V okně **Přidat přiřazení role** vyberte roli **Přispěvatel** . 
+1. V poli **přiřadit přístup k** vyberte možnost **uživatel, skupina nebo instanční objekt služby Azure AD**.
+1. V části **Vyberte** vyhledat roli **poskytovatele prostředků zařízení** a vyberte ji.
+1. Uložte přiřazení role.
+
+### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>Nasazení definice spravované aplikace pomocí šablony ARM 
+
+Pomocí následující šablony ARM nasaďte zabalené spravované aplikace jako novou definici spravované aplikace v katalogu služeb, jejíž definiční soubory se ukládají a udržují ve vašem vlastním účtu úložiště:
+   
+```json
+    {
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        },
+        "applicationName": {
+            "type": "string",
+            "metadata": {
+                "description": "Managed Application name"
+            }
+        },
+        "storageAccountType": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_ZRS",
+        "Premium_LRS"
+      ],
+      "metadata": {
+        "description": "Storage Account type"
+      }
+    },
+        "definitionStorageResourceID": {
+            "type": "string",
+            "metadata": {
+                "description": "Storage account resource ID for where you're storing your definition"
+            }
+        },
+        "_artifactsLocation": {
+            "type": "string",
+            "metadata": {
+                "description": "The base URI where artifacts required by this template are located."
+            }
+        }
+    },
+    "variables": {
+        "lockLevel": "None",
+        "description": "Sample Managed application definition",
+        "displayName": "Sample Managed application definition",
+        "managedApplicationDefinitionName": "[parameters('applicationName')]",
+        "packageFileUri": "[parameters('_artifactsLocation')]",
+        "defLocation": "[parameters('definitionStorageResourceID')]",
+        "managedResourceGroupId": "[concat(subscription().id,'/resourceGroups/', concat(parameters('applicationName'),'_managed'))]",
+        "applicationDefinitionResourceId": "[resourceId('Microsoft.Solutions/applicationDefinitions',variables('managedApplicationDefinitionName'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Solutions/applicationDefinitions",
+            "apiVersion": "2019-07-01",
+            "name": "[variables('managedApplicationDefinitionName')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "lockLevel": "[variables('lockLevel')]",
+                "description": "[variables('description')]",
+                "displayName": "[variables('displayName')]",
+                "packageFileUri": "[variables('packageFileUri')]",
+                "storageAccountId": "[variables('defLocation')]"
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+Přidali jsme do vlastností applicationDefintion novou vlastnost s názvem **storageAccountId** a zadáte ID účtu úložiště, do kterého chcete definici uložit, jako její hodnotu:
+
+V kontejneru s názvem **applicationdefinitions**můžete ověřit, zda jsou soubory definic aplikace uloženy v zadaném účtu úložiště.
+
+> [!NOTE]
+> Pro zvýšení zabezpečení můžete vytvořit definici spravovaných aplikací v [objektu BLOB účtu úložiště Azure, kde je šifrování povolené](../../storage/common/storage-service-encryption.md). Obsah definice se šifruje prostřednictvím možností šifrování účtu úložiště. Jenom uživatelé s oprávněními k tomuto souboru uvidí definici v katalogu služeb.
 
 ### <a name="make-sure-users-can-see-your-definition"></a>Je potřeba zajistit, že budou uživatelé vidět vaši definici.
 

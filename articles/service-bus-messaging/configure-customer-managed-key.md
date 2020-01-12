@@ -8,14 +8,14 @@ author: axisc
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 356f825524192c3b6cf7df7f0460975f23ea4f7c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6d20d4031f0ed4d1be4dddf9e33946251d6dd523
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852286"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903324"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal-preview"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování Azure Service Bus dat v klidovém formátu pomocí Azure Portal (Preview)
+# <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování Azure Service Bus dat v klidovém formátu pomocí Azure Portal
 Azure Service Bus Premium poskytuje šifrování neaktivních dat pomocí šifrování služby Azure Storage (Azure SSE). Service Bus Premium spoléhá na Azure Storage uložení dat a ve výchozím nastavení se všechna data uložená pomocí Azure Storage šifrují pomocí klíčů spravovaných Microsoftem. 
 
 ## <a name="overview"></a>Přehled
@@ -27,7 +27,6 @@ Povolení funkce BYOK je jednorázovým procesem nastavení v oboru názvů.
 > Pro šifrování na straně služby jsou k dispozici určitá upozornění ke spravovanému klíči zákazníka. 
 >   * Tuto funkci podporuje Azure Service Bus úrovně [Premium](service-bus-premium-messaging.md) . Nedá se povolit pro obory názvů Service Bus úrovně Standard.
 >   * Šifrování lze povolit pouze pro nové nebo prázdné obory názvů. Pokud obor názvů obsahuje data, operace šifrování selže.
->   * Pokud jsou [koncové body služby virtuální sítě (VNET)](service-bus-service-endpoints.md) nakonfigurovány na Azure Key Vault pro obor názvů Service Bus, BYOK se nepodporuje. 
 
 Pomocí Azure Key Vault můžete spravovat klíče a auditovat používání klíčů. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů. Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](../key-vault/key-vault-overview.md)
 
@@ -40,7 +39,7 @@ V tomto článku se dozvíte, jak nakonfigurovat Trezor klíčů pomocí klíč�
 Pokud chcete povolit klíčům spravovaným zákazníkem v Azure Portal, postupujte následovně:
 
 1. Přejděte do oboru názvů Service Bus Premium.
-2. Na stránce **Nastavení** v oboru názvů Service Bus vyberte **šifrování (Preview)** .
+2. Na stránce **Nastavení** v oboru názvů Service Bus vyberte **šifrování**.
 3. Vyberte **šifrování klíče spravovaného zákazníkem v klidovém** formátu, jak je znázorněno na následujícím obrázku.
 
     ![Povolit spravovaný klíč zákazníka](./media/configure-customer-managed-key/enable-customer-managed-key.png)
@@ -106,9 +105,6 @@ Svůj klíč můžete v trezoru klíčů otočit pomocí mechanismu rotace trezo
 Odvolání přístupu k šifrovacím klíčům neodstraní data z Service Bus. K datům ale nelze přicházet z oboru názvů Service Bus. Šifrovací klíč můžete odvolat pomocí zásad přístupu nebo odstraněním klíče. Přečtěte si další informace o zásadách přístupu a zabezpečení trezoru klíčů před [zabezpečeným přístupem k trezoru klíčů](../key-vault/key-vault-secure-your-key-vault.md).
 
 Po odvolání šifrovacího klíče se služba Service Bus v zašifrovaném oboru názvů stane nefunkčním. Pokud je povolený přístup k klíči nebo dojde k obnovení odstraněného klíče, Service Bus služba vybere klíč, abyste mohli přistupovat k datům z šifrovaného názvového prostoru Service Bus.
-
-> [!NOTE]
-> Pokud odstraníte existující šifrovací klíč z trezoru klíčů a nahradíte ho novým klíčem na Service Bus oboru názvů, protože Klávesa Delete je stále platná (protože je uložená v mezipaměti) až do hodiny, můžou být stará data (která byla zašifrovaná pomocí starého klíče) stále přístupná Alon g s novými daty, která jsou teď dostupná jenom pomocí nového klíče. Toto chování je záměrné v rámci verze Preview této funkce. 
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:

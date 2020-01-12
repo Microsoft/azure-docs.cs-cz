@@ -1,18 +1,18 @@
 ---
 title: Řešení potíží s replikací virtuálních počítačů Azure v Azure Site Recovery
 description: Řešení chyb při replikaci virtuálních počítačů Azure na zotavení po havárii.
-author: asgang
+author: rochakm
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
-ms.author: asgangal
-ms.openlocfilehash: efa05f5769bcd174992a7a91a522c5f30ce6e448
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.author: rochakm
+ms.openlocfilehash: 3f97975f09d846cd3277bb8a53a4ad922f1b5b69
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895008"
+ms.locfileid: "75902559"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Řešení chyb replikace virtuálních počítačů z Azure do Azure
 
@@ -66,7 +66,7 @@ Další informace najdete v tématu [Konfigurace důvěryhodných kořenových a
 
 Pokud chcete získat nejnovější důvěryhodné kořenové certifikáty a nejnovější seznam odvolaných certifikátů na virtuálním počítači, postupujte podle pokynů, které poskytuje distributor vaší verze operačního systému Linux.
 
-Vzhledem k tomu, že SuSE Linux používá k údržbě seznamu certifikátů symbolické odkazy (nebo *symbolických odkazů*), postupujte podle následujících kroků:
+Vzhledem k tomu, že SUSE Linux používá k údržbě seznamu certifikátů symbolické odkazy (nebo *symbolických odkazů*), postupujte podle následujících kroků:
 
 1. Přihlaste se jako uživatel root.
 

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 21b4dffa135e1311be8c738c634de22304665695
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 4f7fd3ea1c83e1bf5183aedf4fe894809884414c
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74768142"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903510"
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql---single-server"></a>Konfigurace připojení SSL v Azure Database for PostgreSQL – jeden server
 Azure Database for PostgreSQL upřednostňuje připojení klientských aplikací ke službě PostgreSQL pomocí SSL (Secure Sockets Layer) (SSL). Vynucování připojení SSL mezi vaším databázovým serverem a klientskými aplikacemi pomáhá chránit před útoky typu "prostředníkem" tím, že šifruje datový proud mezi serverem a vaší aplikací.
@@ -26,8 +26,11 @@ Připojovací řetězce, které jsou předem definované v nastavení "připojov
 ## <a name="configure-enforcement-of-ssl"></a>Konfigurace vynucení SSL
 Volitelně můžete zakázat vynucování připojení SSL. Microsoft Azure doporučuje vždycky povolit nastavení **připojení SSL vynutilo** pro zvýšené zabezpečení.
 
+> [!NOTE]
+> V současné době je verze TLS podporovaná pro Azure Database for PostgreSQL TLS 1,0, TLS 1,1, TLS 1,2.
+
 ### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
-Přejděte na server Azure Database for PostgreSQL a klikněte na **zabezpečení připojení**. Pomocí přepínacího tlačítka povolíte nebo zakážete nastavení **Vynutilí připojení SSL** . Pak klikněte na **Uložit**. 
+Přejděte na server Azure Database for PostgreSQL a klikněte na **zabezpečení připojení**. Pomocí přepínacího tlačítka povolíte nebo zakážete nastavení **Vynutilí připojení SSL** . Potom klikněte na **Uložit**. 
 
 ![Zabezpečení připojení – zakázat vymáhání SSL](./media/concepts-ssl-connection-security/1-disable-ssl.png)
 

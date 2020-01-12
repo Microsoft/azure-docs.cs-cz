@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 06/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 9b08dd60020dad6f747167f35e8d172fdc24a59e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b9637265d263a75949d5a70c3e4f0ce06044d93c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751879"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75901815"
 ---
-Velikosti virtuálních počítačů optimalizované pro GPU jsou specializované virtuální počítače dostupné s jedním nebo několika grafickými procesory NVIDIA. Tyto velikosti jsou navržené pro úlohy náročné na výpočetní výkon, náročné na grafiku a vizualizaci. Tento článek poskytuje informace o počtu a typu GPU, vCPU, datových disků a síťových karet. Propustnost úložiště a šířka pásma sítě jsou také zahrnuty pro každou velikost v tomto seskupení.
+GPU optimized VM sizes are specialized virtual machines available with single or multiple NVIDIA GPUs. These sizes are designed for compute-intensive, graphics-intensive, and visualization workloads. This article provides information about the number and type of GPUs, vCPUs, data disks, and NICs. Storage throughput and network bandwidth are also included for each size in this grouping.
 
-* Velikosti **NC, NCv2 a NCv3** jsou optimalizované pro aplikace a algoritmy náročné na výpočetní výkon a síťové prostředky. Mezi příklady patří aplikace a simulace založené na CUDA a OpenCL, AI a obsáhlý Learning. NCv3-Series se zaměřuje na vysoce výkonné výpočetní úlohy s grafickým procesorem NVIDIA Tesla V100. Řada NC-Series používá procesor Intel Xeon E5-2690 V3 V3 (Haswell) a virtuální počítače řady NCv2-Series a NCv3-Series používají procesor Intel Xeon E5-2690 v4 (Broadwell).
+* **NC, NCv2, NCv3** sizes are optimized for compute-intensive and network-intensive applications and algorithms. Some examples are CUDA- and OpenCL-based applications and simulations, AI, and Deep Learning. The NCv3-series is focused on high-performance computing workloads featuring NVIDIA’s Tesla V100 GPU. The NC-series uses the Intel Xeon E5-2690 v3 2.60GHz v3 (Haswell) processor, and the NCv2-series and NCv3-series VMs use the Intel Xeon E5-2690 v4 (Broadwell) processor.
 
-* **ND a NDv2** Řada ND-Series se zaměřuje na školicí a odvozené scénáře pro obsáhlý Learning. Používá NVIDIA Tesla P40 GPU a procesor Intel Xeon E5-2690 v4 (Broadwell). NDv2-Series používá procesor Intel Xeon Platinum 8168 (Skylake).
+* **ND, and NDv2** The ND-series is focused on training and inference scenarios for deep learning. It uses the NVIDIA Tesla P40 GPU and the Intel Xeon E5-2690 v4 (Broadwell) processor. The NDv2-series uses the Intel Xeon Platinum 8168 (Skylake) processor.
 
-* Velikosti **NV a NVv3** jsou optimalizované a navržené pro vzdálené vizualizace, streamování, hraní, kódování a scénáře VDI pomocí platforem, jako je OpenGL a DirectX.  Tyto virtuální počítače jsou řízené grafickým procesorem NVIDIA Tesla M60.
+* **NV and NVv3** sizes are optimized and designed for remote visualization, streaming, gaming, encoding, and VDI scenarios using frameworks such as OpenGL and DirectX.  These VMs are backed by the NVIDIA Tesla M60 GPU.
 
-* Velikosti **NVv4** jsou optimalizované a navržené pro VDI a vzdálenou vizualizaci. Díky partioned GPU nabízí NVv4 správnou velikost pro úlohy, které vyžadují menší prostředky GPU.  Tyto virtuální počítače jsou řízené grafickým procesorem AMD Radeon Instinct MI25.
+* **NVv4** sizes are optimized and designed for VDI and remote visualization. With partioned GPUs, NVv4 offers the right size for workloads requiring smaller GPU resources.  These VMs are backed by the AMD Radeon Instinct MI25 GPU.
 
 
 ## <a name="nc-series"></a>NC-Series
@@ -32,7 +32,7 @@ Premium Storage: nepodporováno
 
 Ukládání Premium Storage do mezipaměti: nepodporováno
 
-Virtuální počítače řady NC-Series jsou napájené kartou [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) a procesorem Intel Xeon E5-2690 V3 (Haswell). Uživatelé můžou zpracovávejte data rychleji tím, že využívají CUDA pro aplikace pro průzkumy energie, simulace havárií, trasování paprsků, hloubkové učení a další. Konfigurace NC24r poskytuje síťové rozhraní s nízkou latencí a vysokou propustností optimalizované pro vysoce provázané úlohy paralelního zpracování.
+NC-series VMs are powered by the [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) card and the Intel Xeon E5-2690 v3 (Haswell) processor. Users can crunch through data faster by leveraging CUDA for energy exploration applications, crash simulations, ray traced rendering, deep learning, and more. The NC24r configuration provides a low latency, high-throughput network interface optimized for tightly coupled parallel computing workloads.
 
 | Velikost | vCPU | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální počet síťových karet |
 | --- | --- | --- | --- | --- | --- | --- | ---- |
@@ -56,7 +56,7 @@ Virtuální počítače řady NCv2-Series využívají grafické procesory [NVID
 Konfigurace NC24rs v2 poskytuje síťové rozhraní s nízkou latencí a vysokou propustností optimalizované pro vysoce provázané úlohy paralelního zpracování.
 
 > [!IMPORTANT]
-> Pro tuto řadu velikostí je kvóta vCPU (jádro) ve vašem předplatném zpočátku v každé oblasti nastavená na 0. [Požádejte o zvýšení kvóty vCPU](../articles/azure-supportability/resource-manager-core-quotas-request.md) pro tuto rodinu v [dostupné oblasti](https://azure.microsoft.com/regions/services/).
+> Pro tuto řadu velikostí je kvóta vCPU (jádro) ve vašem předplatném zpočátku v každé oblasti nastavená na 0. [Požádejte o zvýšení kvóty vCPU](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md) pro tuto rodinu v [dostupné oblasti](https://azure.microsoft.com/regions/services/).
 >
 
 | Velikost | vCPU | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet |
@@ -79,7 +79,7 @@ Ukládání Premium Storage do mezipaměti: podporováno
 Virtuální počítače řady NCv3-Series využívají grafické procesory [NVIDIA Tesla V100](https://www.nvidia.com/en-us/data-center/tesla-v100/) . Tyto GPU můžou poskytnout 1,5 x výpočetní výkon NCv2-Series. Zákazníci můžou využít těchto aktualizovaných GPU pro tradiční úlohy HPC, jako je modelování zásobníku, sekvence DNA, analýza bílkovin, simulace Monte Carlo a další. Konfigurace NC24rs V3 poskytuje síťové rozhraní s nízkou latencí a vysokou propustností optimalizované pro vysoce provázané úlohy paralelního zpracování. Kromě GPU využívají virtuální počítače řady NCv3-Series také procesory Intel Xeon E5-2690 v4 (Broadwell).
 
 > [!IMPORTANT]
-> Pro tuto řadu velikostí je kvóta vCPU (jádro) ve vašem předplatném zpočátku v každé oblasti nastavená na 0. [Požádejte o zvýšení kvóty vCPU](../articles/azure-supportability/resource-manager-core-quotas-request.md) pro tuto rodinu v [dostupné oblasti](https://azure.microsoft.com/regions/services/).
+> Pro tuto řadu velikostí je kvóta vCPU (jádro) ve vašem předplatném zpočátku v každé oblasti nastavená na 0. [Požádejte o zvýšení kvóty vCPU](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md) pro tuto rodinu v [dostupné oblasti](https://azure.microsoft.com/regions/services/).
 >
 
 | Velikost | vCPU | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet |
@@ -131,7 +131,7 @@ Ukládání Premium Storage do mezipaměti: podporováno
 Virtuální počítače řady ND-Series jsou nově přidané do rodiny GPU navržené pro AI a pro úlohy s hloubkovým učením. Nabízí vynikající výkon pro školení a odvozování. Instance ND jsou napájené pomocí [NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) GPU a procesorů Intel Xeon E5-2690 v4 (Broadwell). Tyto instance poskytují vynikající výkon pro operace s plovoucí desetinnou čárkou s jednoduchou přesností pro úlohy AI s využitím Microsoft Cognitive Toolkit, TensorFlow, Caffe a dalších platforem. Řada ND-Series také nabízí mnohem větší paměť GPU (24 GB) a umožňuje zpracovat mnohem větší modely neuronových sítí. Podobně jako řada NC-Series nabízí konfiguraci se sekundární sítí s nízkou latencí a vysokou propustností prostřednictvím RDMA a InfiniBand konektivitu, takže můžete spouštět rozsáhlé školicí úlohy zahrnující mnoho GPU.
 
 > [!IMPORTANT]
-> Pro tuto řadu velikostí je kvóta vCPU (jader) na oblast ve vašem předplatném zpočátku nastavená na 0. [Požádejte o zvýšení kvóty vCPU](../articles/azure-supportability/resource-manager-core-quotas-request.md) pro tuto rodinu v [dostupné oblasti](https://azure.microsoft.com/regions/services/).
+> Pro tuto řadu velikostí je kvóta vCPU (jader) na oblast ve vašem předplatném zpočátku nastavená na 0. [Požádejte o zvýšení kvóty vCPU](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md) pro tuto rodinu v [dostupné oblasti](https://azure.microsoft.com/regions/services/).
 >
 
 | Velikost | vCPU | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet |

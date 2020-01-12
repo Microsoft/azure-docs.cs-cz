@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn;joelpell
 ms.custom: include file
-ms.openlocfilehash: 5d652eb3bad72bded8e85a6ac841aae7a9c82a40
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: e66314e06aa87a01dcd2a3ff0a51ae86082173e3
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75663035"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75904428"
 ---
 Velikosti virtuálních počítačů pro obecné účely poskytují vyvážený poměr PROCESORů k paměti. Ideální pro testování a vývoj, malé a střední databáze a webové servery s nízkým a středním provozem. Tento článek poskytuje informace o počtu vCPU, datových discích a síťových adaptérů i propustnosti úložiště pro velikosti v tomto seskupení.
 
@@ -29,7 +29,7 @@ Velikosti virtuálních počítačů pro obecné účely poskytují vyvážený 
 
   Příklady případů použití řady D-Series zahrnují aplikace na podnikové úrovni, relační databáze, ukládání do mezipaměti v paměti a analýzy.
 
-- Řady Dav4-Series a Dasv4-Series jsou novými velikostmi, které využívají procesor AMD 2.35 EPYC<sup>TM</sup> 7452 v konfiguraci 256 s více vlákny, která vynásobí 8 GB této mezipaměti L3 do každých 8 jader a zvyšuje tak možnosti zákazníků pro provoz svých úloh pro obecné účely. Řady Dav4-Series a Dasv4-Series mají stejnou konfiguraci paměti a disku jako řada D & Dsv3-Series.
+- Řady Dav4-Series a Dasv4-Series jsou novými velikostmi, které využívají procesor AMD 2.35 EPYC<sup>TM</sup> 7452 v konfiguraci s více vlákny, a to s až 256 MB mezipaměti L3, která vynásobí 8 GB této mezipaměti L3 každých 8 jader a zvyšuje tak možnosti zákazníků pro provoz svých úloh pro obecné účely. Řady Dav4-Series a Dasv4-Series mají stejnou konfiguraci paměti a disku jako řada D & Dsv3-Series.
   
 ## <a name="b-series"></a>B-Series
 

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 9b47d3bde4c4c5ef7fd3d41c038ea078c19db900
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e590c07c3969865d573838352a8a778caa1cc799
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005724"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75901981"
 ---
 Tento článek obsahuje katalog nejběžnějších chyb a omezení rizik při migraci prostředků IaaS z modelu nasazení Azure Classic do zásobníku Azure Resource Manageru.
 
@@ -19,9 +19,9 @@ Tento článek obsahuje katalog nejběžnějších chyb a omezení rizik při mi
 
 | Text chyby | Omezení rizik |
 | --- | --- |
-| Vnitřní chyba serveru |V některých případech se jedná o přechodnou chybu, která zmizí při opakování pokusu. Pokud k chybě dochází i nadále, [kontaktujte podporu Azure](../articles/azure-supportability/how-to-create-azure-support-request.md), protože je potřeba prošetřit protokoly platformy. <br><br> **POZNÁMKA:** Jakmile incident začne sledovat tým podpory, nepokoušejte se sami o omezení rizik. Mohlo by to mít nežádoucí důsledky pro vaše prostředí. |
+| Vnitřní chyba serveru |V některých případech se jedná o přechodnou chybu, která zmizí při opakování pokusu. Pokud k chybě dochází i nadále, [kontaktujte podporu Azure](../articles/azure-portal/supportability/how-to-create-azure-support-request.md), protože je potřeba prošetřit protokoly platformy. <br><br> **POZNÁMKA:** Jakmile incident začne sledovat tým podpory, nepokoušejte se sami o omezení rizik. Mohlo by to mít nežádoucí důsledky pro vaše prostředí. |
 | Migrace se u nasazení {název_nasazení} v hostované službě {název_hostované_služby} nepodporuje, protože jde o nasazení PaaS (webová role/role pracovního procesu). |K tomu dochází v případě, že nasazení obsahuje webovou roli nebo roli pracovního procesu. Protože se migrace podporuje pouze u virtuálních počítačů, odeberte z nasazení webovou roli nebo roli pracovního procesu a zkuste migrovat znovu. |
-| Nasazení šablony {název_šablony} selhalo. CorrelationId={guid} |V back-endu služby migrace používáme k vytváření prostředků v zásobníku Azure Resource Manageru šablony Azure Resource Manageru. Vzhledem k tomu, že šablony jsou idempotentní, obvykle můžete bez obav opakovat operaci migrace a obejít tuto chybu. Pokud k této chybě dochází i nadále, [kontaktujte podporu Azure](../articles/azure-supportability/how-to-create-azure-support-request.md) a sdělte jim hodnotu CorrelationId. <br><br> **POZNÁMKA:** Jakmile incident začne sledovat tým podpory, nepokoušejte se sami o omezení rizik. Mohlo by to mít nežádoucí důsledky pro vaše prostředí. |
+| Nasazení šablony {název_šablony} selhalo. CorrelationId={guid} |V back-endu služby migrace používáme k vytváření prostředků v zásobníku Azure Resource Manageru šablony Azure Resource Manageru. Vzhledem k tomu, že šablony jsou idempotentní, obvykle můžete bez obav opakovat operaci migrace a obejít tuto chybu. Pokud k této chybě dochází i nadále, [kontaktujte podporu Azure](../articles/azure-portal/supportability/how-to-create-azure-support-request.md) a sdělte jim hodnotu CorrelationId. <br><br> **POZNÁMKA:** Jakmile incident začne sledovat tým podpory, nepokoušejte se sami o omezení rizik. Mohlo by to mít nežádoucí důsledky pro vaše prostředí. |
 | Virtuální síť {název_virtuální_sítě} neexistuje. |K tomu může dojít v případě, že jste virtuální síť vytvořili na novém webu Azure Portal. Skutečný Virtual Network název následuje vzor "skupina * \<název virtuální sítě >" |
 | Virtuální počítač {název_virtuálního_počítače} v hostované službě {název_hostované_služby} obsahuje rozšíření {název_rozšíření}, které se v Azure Resource Manageru nepodporuje. Před pokračováním v migraci se doporučuje toto rozšíření odinstalovat z virtuálního počítače. |Přípona XML, jako je například BGInfo 1.\* nejsou v Azure Resource Manager podporovány. Proto tato rozšíření není možné migrovat. Pokud tato rozšíření zůstanou nainstalována na virtuálním počítači, před dokončením migrace se automaticky odinstalují. |
 | Virtuální počítač {název_virtuálního_počítače} v hostované službě {název_hostované_služby} obsahuje rozšíření VMSnapshot/VMSnapshotLinux, jehož migrace se aktuálně nepodporuje. Odinstalujte ho z virtuálního počítače a po dokončení migrace ho přidejte zpět pomocí Azure Resource Manageru. |Jedná se o scénář, kde je virtuální počítač nakonfigurovaný pro službu Azure Backup. Vzhledem k tomu, že se jedná o nepodporovaný scénář, postupujte prosím podle pokynů na https://aka.ms/vmbackupmigration |

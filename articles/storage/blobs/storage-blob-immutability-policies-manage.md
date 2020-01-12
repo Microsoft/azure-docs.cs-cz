@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 79d7454722900eb1d9d6280e35313ef2f4a5cd54
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 68b144a838f0c6e65f3e399f610644315d109fde
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555675"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903477"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>Nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB
 
@@ -57,7 +57,7 @@ Tento článek popisuje, jak pomocí Azure Portal, PowerShellu nebo rozhraní p�
 
     ![Pole "název značky" pod položkou Typ zásady](media/storage-blob-immutability-policies-manage/portal-image-set-legal-hold-tags.png)
 
-9. Pokud chcete odstranit právní blokování, jednoduše odeberte použitou značku identifikátoru blokování.
+9. Chcete-li odstranit právní blokování, odeberte značku identifikátoru používaného právního blokování.
 
 ### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -73,7 +73,7 @@ Modul AZ. Storage podporuje neměnné úložiště.  Pokud chcete tuto funkci po
 2. Odeberte všechny předchozí instalace Azure PowerShell.
 3. Nainstalovat Azure PowerShell: `Install-Module Az –Repository PSGallery –AllowClobber`.
 
-Následující vzorový skript PowerShellu je určen pro referenci. Tento skript vytvoří nový účet úložiště a kontejner. Pak ukazuje, jak nastavit a vymazat právní blokování, vytvořit a uzamknout zásady uchovávání informací založené na čase (označované také jako zásady neměnnosti) a rozšíří interval uchovávání informací.
+Následující vzorový skript PowerShellu je určen pro referenci. Tento skript vytvoří nový účet úložiště a kontejner. Pak se dozvíte, jak nastavit a vymazat právní omezení, vytvořit a uzamknout zásady uchovávání informací založené na čase (označované také jako zásady neměnnosti) a rozšíří interval uchovávání informací.
 
 Nejdřív vytvořte účet Azure Storage:
 
@@ -165,6 +165,20 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 ```
 
 ---
+
+## <a name="enabling-allow-protected-append-blobs-writes"></a>Povoluje se povolit zápisy chráněných objektů BLOB
+
+V tuto chvíli můžete přístup k nastavení `allowProtectedAppendWrites` použít jenom pro zásady uchovávání informací prostřednictvím tohoto konkrétního [odkazu na portál](https://aka.ms/immutableappendblobs). 
+
+> [!IMPORTANT] 
+>  V současné době je k dispozici nastavení povolení chráněných objektů BLOB zápisů v závislosti na čase a viditelné pouze v následujících oblastech:
+> - Východní USA
+> - Středojižní USA
+> - Západní USA 2
+>
+> Další informace najdete v tématu [Povolení zápisů v zabezpečeném připojení objektů BLOB](storage-blob-immutable-storage.md#allow-protected-append-blobs-writes).
+
+![Povolení dalších připojovat zápisů](media/storage-blob-immutability-policies-manage/immutable-allow-additional-append-writes.png)
 
 ## <a name="next-steps"></a>Další kroky
 

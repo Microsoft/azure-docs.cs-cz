@@ -7,12 +7,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: spelluru
-ms.openlocfilehash: d0118f815a2ceb149c62363fa334c16d28c6d615
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: af119ef026b70fcb4a56b4f823d20c0e9eddddc8
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894409"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903249"
 ---
 # <a name="security-controls-for-azure-service-bus-messaging"></a>Řízení zabezpečení pro zasílání zpráv Azure Service Bus
 
@@ -20,7 +20,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované v Azure Serv
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
-## <a name="network"></a>Síť
+## <a name="network"></a>Network (Síť)
 
 | Řízení zabezpečení | Ano/Ne | Poznámky | Dokumentace |
 |---|---|--|--|
@@ -49,7 +49,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované v Azure Serv
 | Řízení zabezpečení | Ano/Ne | Poznámky | Dokumentace |
 |---|---|--|--|
 | Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft |  Ano, pokud je ve výchozím nastavení zapnuté šifrování na straně serveru. |  |  |
-| Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Ano. Aktuálně ve verzi Preview | Klíč spravovaný zákazníkem ve službě Azure webrecovery se dá použít k šifrování dat v Service Busm oboru názvů v klidovém umístění. | [Konfigurace klíčů spravovaných zákazníkem pro šifrování Azure Service Bus dat v klidovém formátu pomocí Azure Portal (Preview)](configure-customer-managed-key.md)  |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Ano. | Klíč spravovaný zákazníkem ve službě Azure webrecovery se dá použít k šifrování dat v Service Busm oboru názvů v klidovém umístění. | [Konfigurace klíčů spravovaných zákazníkem pro šifrování Azure Service Bus dat v klidovém formátu pomocí Azure Portal](configure-customer-managed-key.md)  |
 | Šifrování na úrovni sloupce (Azure Data Services)| Nevztahuje se | |   |
 | Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ano | Podporuje standardní mechanismus HTTPS/TLS. |   |
 | Zašifrovaná volání rozhraní API| Ano | Volání rozhraní API se provádí prostřednictvím [Azure Resource Manager](../azure-resource-manager/index.yml) a HTTPS. |   |

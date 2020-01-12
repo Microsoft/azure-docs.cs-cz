@@ -8,18 +8,15 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: a5aa6a2e2578a995e4ef00489557fc02623e2d6a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 50d12a0aba9018b1ecb30c018249e8f94ebe6d95
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744821"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903290"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal-preview"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat Azure Event Hubs v klidovém formátu pomocí Azure Portal (Preview)
+# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat Azure Event Hubs v klidovém formátu pomocí Azure Portal
 Azure Event Hubs poskytuje šifrování neaktivních dat pomocí šifrování služby Azure Storage (Azure SSE). Event Hubs spoléhá na Azure Storage uložení dat a ve výchozím nastavení se všechna data uložená pomocí Azure Storage šifrují pomocí klíčů spravovaných Microsoftem. 
-
->[!NOTE]
-> Tato funkce je aktuálně ve verzi Preview. Doporučujeme, abyste nepoužívali v produkčním prostředí.
 
 ## <a name="overview"></a>Přehled
 Azure Event Hubs teď podporuje možnost šifrování neaktivních dat buď pomocí klíčů spravovaných Microsoftem nebo klíčů spravovaných zákazníkem (Bring Your Own Key – BYOK). Tato funkce umožňuje vytvořit, otočit, zakázat a odvolat přístup k klíčům spravovaným zákazníkem, které se používají k šifrování neaktivních dat služby Azure Event Hubs.
@@ -41,7 +38,7 @@ Pokud chcete povolit klíčům spravovaným zákazníkem v Azure Portal, postupu
 
 1. Přejděte do clusteru Event Hubs úrovně Dedicated.
 1. Vyberte obor názvů, na kterém chcete povolit BYOK.
-1. Na stránce **Nastavení** v oboru názvů Event Hubs vyberte **šifrování (Preview)** . 
+1. Na stránce **Nastavení** v oboru názvů Event Hubs vyberte **šifrování**. 
 1. Vyberte **šifrování klíče spravovaného zákazníkem v klidovém** formátu, jak je znázorněno na následujícím obrázku. 
 
     ![Povolit spravovaný klíč zákazníka](./media/configure-customer-managed-key/enable-customer-managed-key.png)
@@ -72,8 +69,6 @@ Po povolení klíčů spravovaných zákazníkem je potřeba přidružit spravov
         ![Vyberte klíč z trezoru klíčů.](./media/configure-customer-managed-key/select-key-from-key-vault.png)
     1. Zadejte podrobnosti pro klíč a klikněte na **Vybrat**. Tím se povolí Šifrování neaktivních dat v oboru názvů pomocí klíče spravovaného zákazníkem. 
 
-        > [!NOTE]
-        > Ve verzi Preview můžete vybrat jenom jeden klíč. 
 
 ## <a name="rotate-your-encryption-keys"></a>Otočení šifrovacích klíčů
 Svůj klíč můžete v trezoru klíčů otočit pomocí mechanismu rotace trezorů klíčů Azure. Další informace najdete v tématu [Nastavení rotace klíčů a auditování](../key-vault/key-vault-key-rotation-log-monitoring.md). Data o aktivaci a vypršení platnosti je také možné nastavit na automatizaci střídání klíčů. Služba Event Hubs detekuje nové verze klíčů a automaticky je začne používat.
@@ -82,9 +77,6 @@ Svůj klíč můžete v trezoru klíčů otočit pomocí mechanismu rotace trezo
 Odvolání přístupu k šifrovacím klíčům neodstraní data z Event Hubs. K datům ale nelze přicházet z oboru názvů Event Hubs. Šifrovací klíč můžete odvolat pomocí zásad přístupu nebo odstraněním klíče. Přečtěte si další informace o zásadách přístupu a zabezpečení trezoru klíčů před [zabezpečeným přístupem k trezoru klíčů](../key-vault/key-vault-secure-your-key-vault.md).
 
 Po odvolání šifrovacího klíče se služba Event Hubs v zašifrovaném oboru názvů stane nefunkčním. Pokud je povolený přístup ke klíči nebo je obnovený klíč, Event Hubs služba vybere klíč, abyste měli přístup k datům z šifrovaného názvového prostoru Event Hubs.
-
-> [!NOTE]
-> Pokud odstraníte existující šifrovací klíč z trezoru klíčů a nahradíte ho novým klíčem na Event Hubs oboru názvů, protože odstranit klíč je stále platný (protože je uložený v mezipaměti) až do hodiny, můžou být vaše stará data (která byla zašifrovaná pomocí starého klíče) i nadále dostupná společně.  s novými daty, která jsou teď dostupná jenom pomocí nového klíče. Toto chování je záměrné v rámci verze Preview této funkce. 
 
 ## <a name="set-up-diagnostic-logs"></a>Nastavení diagnostických protokolů 
 Nastavení protokolů diagnostiky pro obory názvů s povoleným BYOK poskytuje požadované informace o operacích, když je obor názvů zašifrovaný pomocí klíčů spravovaných zákazníkem. Tyto protokoly je možné povolit a později streamovat do centra událostí nebo analyzovat prostřednictvím Log Analytics nebo streamovat do úložiště a provádět přizpůsobené analýzy. Další informace o diagnostických protokolech najdete v tématu [Přehled diagnostických protokolů Azure](../azure-monitor/platform/platform-logs-overview.md).
@@ -171,10 +163,6 @@ Níže jsou uvedené běžné kódy chyb, které se hledají, když je povolené
 
 > [!IMPORTANT]
 > Pokud chcete povolit geografickou možnost DR na oboru názvů, který používá šifrování BYOK, sekundární obor názvů pro párování musí být v vyhrazeném clusteru a musí mít povolenou spravovanou identitu přiřazenou systémem. Další informace najdete v tématu [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
-
-> [!NOTE]
-> Pokud jsou koncové body služby virtuální sítě (VNet) nakonfigurovány na Azure Key Vault pro obor názvů Event Hubs, BYOK se nepodporuje. 
-
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:

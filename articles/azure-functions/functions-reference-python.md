@@ -3,12 +3,12 @@ title: Referenční dokumentace pro vývojáře v Pythonu pro Azure Functions
 description: Vysvětlení, jak vyvíjet funkce pomocí Pythonu
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: adea5603c997380dde6731b53bc99ba7443e310b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 374770c50300b9ca37253b3323a02c3371bfa521
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768997"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903236"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -382,7 +382,7 @@ Pro místní vývoj se nastavení aplikace [uchovávají v souboru Local. Settin
 
 ## <a name="python-version"></a>Verze Pythonu 
 
-V současné době Azure Functions podporuje Python 3.6. x a 3.7. x (oficiální distribuce CPython). Při místním spuštění používá modul runtime dostupnou verzi Pythonu. Pokud chcete požádat o konkrétní verzi Pythonu při vytváření aplikace Function App v Azure, použijte možnost `--runtime-version` příkazu [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) .  
+V současné době Azure Functions podporuje Python 3.6. x a 3.7. x (oficiální distribuce CPython). Při místním spuštění používá modul runtime dostupnou verzi Pythonu. Pokud chcete požádat o konkrétní verzi Pythonu při vytváření aplikace Function App v Azure, použijte možnost `--runtime-version` příkazu [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) . Změna verze je povolena pouze při vytváření Function App.  
 
 ## <a name="package-management"></a>Správa balíčků
 

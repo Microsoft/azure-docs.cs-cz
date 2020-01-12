@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: ad6e912f976095ae7d8fd5276b0f1365566c181a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 4df22108591fe3f80078bce050081c4953443847
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74143798"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903001"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro konfigurace nativního ověřování certifikátů Azure P2S
 
@@ -95,7 +95,7 @@ Pomocí následujících kroků můžete nakonfigurovat nativního klienta VPN n
 
    Hodnota **rozhraní** je VPN a **Typ VPN Type** je IKEv2. Do pole **název služby** zadejte název profilu a potom kliknutím na **vytvořit** vytvořte profil připojení klienta VPN.
 
-   ![Sítě](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
+   ![síť](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
 4. V **Obecné** složce ze souboru **VpnSettings. XML** Zkopírujte hodnotu značky **VpnServer** . Vložte tuto hodnotu do polí **Adresa serveru** a **vzdálený identifikátor** v profilu.
 
    ![informace o serveru](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
@@ -107,7 +107,7 @@ Pomocí následujících kroků můžete nakonfigurovat nativního klienta VPN n
    ![certifikát](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 7. **Volba identity** zobrazí seznam certifikátů, ze kterých si můžete vybrat. Vyberte vhodný certifikát a potom klikněte na **pokračovat**.
 
-   ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
+   ![identita](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. Do pole **místní ID** zadejte název certifikátu (z kroku 6). V tomto příkladu je to "ikev2Client.com". Potom kliknutím na tlačítko **použít** uložte změny.
 
    ![vyrovnat](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)

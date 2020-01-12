@@ -7,14 +7,14 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 11/13/2019
+ms.date: 01/10/2020
 ms.custom: include file
-ms.openlocfilehash: 7a1ee8cdbe4c80af78df381933d4fcfefde1ab93
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: ee105969282dd41b4b56abb50e06f9fa219388ae
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75865156"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75901881"
 ---
 Tento článek předpokládá určitou znalost ověřování pro rozhraní API pro správu digitálních vláken Azure.
 

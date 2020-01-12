@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 10/17/2019
+ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: f1d30ef56350c3e1df796f20e3f9f39fdbc6428a
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 93e13592d9c434b159ad4f4c10ef30328941c64e
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666490"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902826"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>O kryptografických požadavcích a branách Azure VPN Gateway
 
@@ -34,7 +34,7 @@ Výchozí nastavení zásad pro Azure VPN Gateway najdete v článku: [informace
 
 ## <a name="cryptographic-requirements"></a>Kryptografické požadavky
 
-Pro komunikaci, která vyžaduje konkrétní kryptografické algoritmy nebo parametry, obvykle kvůli požadavkům na dodržování předpisů nebo zabezpečení, teď můžete nakonfigurovat své brány VPN Azure tak, aby používaly vlastní zásadu IPsec/IKE s konkrétními kryptografickými algoritmy a síly klíčů, nikoli výchozí zásady Azure.
+V případě komunikace, která vyžaduje konkrétní kryptografické algoritmy nebo parametry, obvykle kvůli požadavkům na dodržování předpisů nebo zabezpečení, teď můžete nakonfigurovat své brány Azure VPN tak, aby používaly vlastní zásadu IPsec/IKE s konkrétními kryptografickými algoritmy a silnými klíči, nikoli výchozími sadami zásad Azure.
 
 Například zásady hlavního režimu IKEv2 pro služby Azure VPN Gateway využívají jenom skupinu Diffie-Hellman Group 2 (1024 bitů), zatímco možná budete muset zadat silnější skupiny, které se mají použít v protokolu IKE, jako je například skupina 14 (2048 bitů), skupina 24 (2048-bit MODP Group) nebo ECP (eliptická křivka skupiny) 256 nebo 384 (skupina 19 a skupina 20 v uvedeném pořadí). Podobné požadavky platí i pro zásady rychlého režimu IPsec.
 

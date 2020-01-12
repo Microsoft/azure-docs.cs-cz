@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: e7ddb548d8dad5bdcc3021941877903377af9318
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9e585f7d13e1686f125055056fd1e2d88e2bf8ff
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771474"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903338"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer úrovně Standard a zóny dostupnosti
 
@@ -209,10 +209,6 @@ Redundantní zóna může poskytovat jednoduchost s možností nezávislá zóny
 Oblast může poskytnout explicitní záruku pro zónu, explicitně sdílení osudu se stavem zóny. Vytvoření pravidla Load Balancer s IP adresou v oblasti front-endu nebo interní Load Balancer front-endu může být žádoucí, zejména v případě, že připojený prostředek je virtuální počítač ve stejné zóně.  Nebo možná vaše aplikace vyžaduje explicitní znalosti o tom, ve které zóně se prostředek nachází předem, a Vy si přejete mít důvod k jejich dostupnosti v samostatných zónách explicitně.  Můžete zvolit, aby se pro koncovou službu distribuovanou v různých zónách vystavilo několik front-endu (to znamená, že zóna má na front-endové služby pro víc virtuálních počítačů Scale Sets).  A pokud vaše oblast front-endu jsou veřejné IP adresy, můžete použít tyto více front-endu pro vystavení vaší služby s [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Nebo můžete použít více front-endu k získání informací o stavu jednotlivých zón a přehledy o výkonu prostřednictvím řešení monitorování třetích stran a zpřístupnit celkovou službu pomocí předávacího typu zóny redundantní. Měli byste používat jenom ty prostředky s oblastí front-endu zarovnané do stejné zóny a vyhnout se potenciálně škodlivým scénářům pro různé zóny pro oblasti prostředků.  Prostředky oblastí existují pouze v oblastech, kde existují zóny dostupnosti.
 
 Neexistují žádné obecné pokyny, které je lepší volbou než druhá bez znalosti architektury služby.  Projděte si [vzory návrhu cloudu Azure](https://docs.microsoft.com/azure/architecture/patterns/) , abyste vylepšili odolnost vaší aplikace vůči scénářům selhání.
-
-## <a name="limitations"></a>Omezení
-
-- Zatímco rovina dat je zcela redundantní (není-li zaručena oblastce), provozní operace roviny nejsou plně v zóně redundantní.
 
 ## <a name="next-steps"></a>Další kroky
 - Další informace o [zóny dostupnosti](../availability-zones/az-overview.md)

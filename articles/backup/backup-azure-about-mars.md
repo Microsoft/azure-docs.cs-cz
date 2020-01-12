@@ -4,20 +4,20 @@ description: Zjistěte, jak agent MARS podporuje scénáře zálohování.
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: c036d93c09195c0c330cfe86f307d28866131d9f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d558a19b3025ab1400e873f97b0ce5e5a860c75a
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74897322"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902861"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>O agentovi Microsoft Azure Recovery Services (MARS)
 
-Tento článek popisuje, jak služba Azure Backup používá agenta Microsoft Azure Recovery Services (MARS) k zálohování a obnovení souborů či složek, svazku nebo stavu systému z místního počítače do Azure.
+Tento článek popisuje, jak služba Azure Backup používá agenta Microsoft Azure Recovery Services (MARS) k zálohování a obnovení souborů, složek a svazku nebo stavu systému z místního počítače do Azure.
 
 Agent MARS podporuje následující scénáře zálohování:
 
-![řídicí panel trezoru služby Recovery Services](./media/backup-try-azure-backup-in-10-mins/backup-scenarios.png)
+![Scénáře zálohování MARS](./media/backup-try-azure-backup-in-10-mins/backup-scenarios.png)
 
 - **Soubory a složky**: selektivně chránit soubory a složky systému Windows.
 - **Úroveň svazku**: Chraňte celý svazek Windows počítače.
@@ -25,40 +25,43 @@ Agent MARS podporuje následující scénáře zálohování:
 
 Agent MARS podporuje následující scénáře obnovení:
 
-![řídicí panel trezoru služby Recovery Services](./media/backup-try-azure-backup-in-10-mins/restore-scenarios.png)
+![Scénáře obnovení MARS](./media/backup-try-azure-backup-in-10-mins/restore-scenarios.png)
 
--   **Stejný server**: stejný server, na kterém se původně vytvořila záloha.
-    -    **Soubory a složky**: můžete procházet a zvolit jednotlivé soubory a složky, které chcete obnovit.
-    -    **Úroveň svazku**: můžete vybrat svazek a bod obnovení, který chcete obnovit, a obnovit ho do stejného umístění nebo alternativního umístění ve stejném počítači.  Můžete buď vytvořit kopii existujících souborů, přepsat existující soubory nebo přeskočit obnovování stávajících souborů.
-    -    **Úroveň systému**: můžete zvolit stav systému a bod obnovení, který se má obnovit do stejného počítače v zadaném umístění.
+-   **Stejný server**: Server, na kterém byla záloha původně vytvořena.
+    -    **Soubory a složky**: vyberte jednotlivé soubory a složky, které chcete obnovit.
+    -    **Úroveň svazku**: zvolte svazek a bod obnovení, který chcete obnovit, a pak ho obnovte do stejného umístění nebo do alternativního umístění ve stejném počítači.  Vytvořte kopii existujících souborů, přepište stávající soubory nebo vynechejte obnovování stávajících souborů.
+    -    **Úroveň systému**: vyberte stav systému a bod obnovení, který se má obnovit do stejného počítače v zadaném umístění.
 
 
--   **Alternativní server**: jiný server, to znamená, že se nejedná o stejný server, na kterém byla záloha provedena.
-    -    **Soubory a složky**: můžete procházet a zvolit jednotlivé soubory a složky, které chcete obnovit v cílovém počítači.
-    -    **Úroveň svazku**: můžete vybrat svazek a bod obnovení, který chcete obnovit do alternativního umístění, a to tak, že vytvoříte kopii existujících souborů, přepíšete existující soubory nebo vynecháte obnovení existujících souborů.
-    -    **Úroveň systému**: můžete zvolit stav systému a bod obnovení, který se má obnovit jako soubor stavu systému na alternativním počítači.
+-   **Alternativní server**: jiný server, než je server, na kterém se zálohování uskutečnilo.
+    -    **Soubory a složky**: vyberte jednotlivé soubory a složky, jejichž bod obnovení chcete obnovit do cílového počítače.
+    -    **Úroveň svazku**: Vyberte svazek a bod obnovení, který chcete obnovit do jiného umístění. Vytvořte kopii existujících souborů, přepište stávající soubory nebo vynechejte obnovování stávajících souborů.
+    -    **Úroveň systému**: vyberte stav systému a bod obnovení, který se má obnovit jako soubor stavu systému na alternativním počítači.
 
 ## <a name="backup-process"></a>Proces zálohování
 
-1.  Z Azure Portal vytvořte [trezor služby Recovery Services](https://docs.microsoft.com/azure/backup/backup-configure-vault#create-a-recovery-services-vault) a v části cíle zálohování vyberte soubory a složky a stav systému.
-2.  [Stáhněte](https://docs.microsoft.com/azure/backup/backup-configure-vault#download-the-mars-agent) si přihlašovací údaje trezoru služby Recovery Services a instalátor agenta do místního počítače. Chcete-li chránit místní počítač, vyberte možnost zálohování a pak zvolte soubory a složky a stav systému a stáhněte agenta MARS.
-3.  Příprava infrastruktury:
+1. Z Azure Portal vytvořte [trezor Recovery Services](https://docs.microsoft.com/azure/backup/backup-configure-vault#create-a-recovery-services-vault)a v části cíle zálohování vyberte soubory, složky a stav systému.
+2. [Stáhněte si přihlašovací údaje úložiště Recovery Services a instalátor agenta](https://docs.microsoft.com/azure/backup/backup-configure-vault#download-the-mars-agent) do místního počítače. 
 
-    a.    Spusťte instalační program a [nainstalujte](https://docs.microsoft.com/azure/backup/backup-configure-vault#install-and-register-the-agent) agenta.
+    Chcete-li chránit místní počítač, vyberte možnost zálohování, zvolte možnost soubory, složky a stav systému a poté Stáhněte agenta MARS.
 
-    b.  Použijte stažené přihlašovací údaje trezoru k registraci počítače do úložiště Recovery Services.
-4.  V konzole agenta na klientovi pomocí nástroje [naplánovat zálohování](https://docs.microsoft.com/azure/backup/backup-configure-vault#create-a-backup-policy) nakonfigurujte zálohování. Zadejte zásady uchovávání dat záloh a začněte chránit.
+3. Příprava infrastruktury:
 
-![řídicí panel trezoru služby Recovery Services](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
+    a. Spusťte instalační program a [nainstalujte agenta](https://docs.microsoft.com/azure/backup/backup-configure-vault#install-and-register-the-agent).
+
+    b. K registraci počítače do trezoru Recovery Services použijte své stažené přihlašovací údaje trezoru.
+4. V konzole agenta na klientovi [nakonfigurujte zálohu](https://docs.microsoft.com/azure/backup/backup-configure-vault#create-a-backup-policy). Zadejte zásady uchovávání dat záloh, aby se začaly chránit.
+
+![Diagram agenta Azure Backup](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
 
 
 ### <a name="additional-scenarios"></a>Další scénáře
--   **Zálohování specifických souborů a složek ve virtuálním počítači Azure** – primární metodou pro zálohování virtuálních počítačů Azure je použití rozšíření Azure Backup na virtuálním počítači. Tím se zálohuje celý virtuální počítač. Pokud chcete zálohovat konkrétní soubory a složky na virtuálním počítači, můžete agenta MARS nainstalovat na virtuální počítače Azure. [Další informace](https://docs.microsoft.com/azure/backup/backup-architecture#architecture-built-in-azure-vm-backup).
+-   **Zálohování konkrétních souborů a složek v rámci virtuálních počítačů Azure**: primární metodou pro zálohování virtuálních počítačů Azure je použití rozšíření Azure Backup na virtuálním počítači. Rozšíření zálohuje celý virtuální počítač. Pokud chcete zálohovat konkrétní soubory a složky v rámci virtuálního počítače, můžete agenta MARS nainstalovat na virtuální počítače Azure. Další informace najdete v tématu [Architektura: Integrovaná záloha virtuálních počítačů Azure](https://docs.microsoft.com/azure/backup/backup-architecture#architecture-built-in-azure-vm-backup).
 
--   **Offline osazení** – počáteční úplné zálohování dat do Azure, obvykle přenáší velké objemy dat a vyžaduje větší šířku pásma v porovnání s dalšími zálohami, které přenášejí jenom rozdílová/přírůstková. Azure Backup zkomprimuje počáteční zálohy. Díky procesu offline osazení může Azure Backup použít disky k nahrání komprimovaných počátečních zálohovaných dat offline do Azure. [Další informace](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export-).
+-   **Offline osazení**: počáteční úplné zálohování dat do Azure obvykle přenáší velké objemy dat a vyžadují větší šířku pásma sítě. Následující zálohy přenesou jenom rozdílové nebo přírůstkové množství dat. Azure Backup zkomprimuje počáteční zálohy. Díky procesu *offline osazení*může Azure Backup použít disky k nahrání komprimovaných počátečních zálohovaných dat offline do Azure. Další informace najdete v tématu [pracovní postup offline zálohování pro aplikaci DPM a Azure Backup Server](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export-).
 
 
 ## <a name="next-steps"></a>Další kroky
 [Matice podpory agenta MARS](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)
 
-[Nejčastější dotazy – agent MARS](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq)
+[Nejčastější dotazy k agentovi MARS](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq)
