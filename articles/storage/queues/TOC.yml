@@ -144,9 +144,9 @@
                   href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Správa šifrování služby Azure Storage
               items:
-                - name: Kontrola modelu šifrovacího klíče pro účet
-                  href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-                - name: Konfigurace šifrovacích klíčů spravovaných zákazníkem
+                - name: 'Vytvoření účtu, který podporuje klíče spravované zákazníkem'
+                  href: ../common/account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: Konfigurace klíčů spravovaných zákazníkem
                   items:
                     - name: Portál
                       href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
@@ -154,6 +154,8 @@
                       href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                     - name: Azure CLI
                       href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: Kontrola modelu šifrovacího klíče pro účet
+                  href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Konfigurace šifrování na straně klienta
           items:
             - name: .NET
