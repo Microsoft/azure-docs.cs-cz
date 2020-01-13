@@ -184,7 +184,7 @@
           items:
             - name: Optimalizované z hlediska GPU
               href: sizes-gpu.md
-            - name: Nastavení ovladačů GPU
+            - name: Nastavení ovladačů NVIDIA GPU
               href: n-series-driver-setup.md
             - name: Nastavení ovladačů AMD GPU
               href: n-series-amd-driver-setup.md

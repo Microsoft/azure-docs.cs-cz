@@ -848,6 +848,8 @@
           href: ./hdinsight-management-ip-addresses.md
         - name: Značky služby pro bránu Azure Firewall
           href: ./hdinsight-service-tags.md
+        - name: Šifrování disků s využitím klíčů spravovaných zákazníky
+          href: ./disk-encryption.md
     - name: Postup
       items:
         - name: Použití zprostředkovatele ID pro správu přihlašovacích údajů

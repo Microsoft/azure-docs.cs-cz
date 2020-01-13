@@ -4,7 +4,7 @@
   items:
     - name: Služba Azure Container Instances
       href: container-instances-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Nasazení instance kontejneru – Rozhraní příkazového řádku
@@ -33,7 +33,7 @@
       items:
         - name: Aktivace pomocí Azure Functions
           href: container-instances-tutorial-azure-function-trigger.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&term=aci'
@@ -55,10 +55,14 @@
   items:
     - name: Nasazení
       items:
-        - name: Nasazení ve virtuální síti (Preview)
+        - name: Nasazení ve virtuální síti
           href: container-instances-vnet.md
         - name: Nasazení ze služby Azure Container Registry
           href: container-instances-using-azure-container-registry.md
+        - name: Šifrování dat nasazení
+          href: container-instances-encrypt-data.md
+        - name: Nasazování na vyhrazené hostitele
+          href: container-instances-dedicated-hosts.md
     - name: Scénáře kontejnerů
       items:
         - name: Nastavení zásad restartování pro jednorázové úlohy

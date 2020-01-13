@@ -32,6 +32,30 @@
       href: azure-portal-export-delete-settings.md
     - name: Série videí s postupy pro Azure Portal
       href: azure-portal-video-series.md
+    - name: Vytváření a správa žádostí o podporu
+      items:
+        - name: Vytvoření žádosti o podporu Azure
+          href: supportability/how-to-create-azure-support-request.md
+        - name: Odeslání souborů pro žádost o podporu
+          href: supportability/how-to-use-file-uploader.md
+        - name: Žádost o navýšení kvóty
+          items:
+            - name: Zvýšení limitu virtuálních jader pro služby Compute
+              items:
+                - name: Model nasazení Resource Manager
+                  items:
+                    - name: Zvýšení limitu virtuálních jader řady virtuálních počítačů
+                      href: supportability/per-vm-quota-requests.md
+                    - name: Zvýšení celkového oblastního limitu virtuálních jader
+                      href: supportability/regional-quota-requests.md
+                    - name: Zvýšení limitu spotové kvóty
+                      href: supportability/low-priority-quota.md
+                - name: Model nasazení Classic
+                  href: supportability/classic-deployment-model-quota-increase-requests.md
+            - name: Zvýšení limitů sítě
+              href: supportability/networking-quota-requests.md
+        - name: Řešení potíží s oblastí nebo předplatným skladové položky
+          href: supportability/sku-series-unavailable.md
 - name: Referenční informace
   items:
     - name: Klávesové zkratky

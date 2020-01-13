@@ -16,9 +16,7 @@
       href: manage-app-groups.md
     - name: 5. Vytvoření fondu hostitelů pro ověření aktualizací služeb
       href: create-validation-host-pool.md
-    - name: 6. Nasazení nástroje pro správu
-      href: manage-resources-using-ui.md
-    - name: 7. Nastavení upozornění služeb
+    - name: 6. Nastavení upozornění služeb
       href: set-up-service-alerts.md
 - name: Postupy
   items:
@@ -70,6 +68,12 @@
       href: set-up-scaling-script.md
     - name: Vlastní kanál
       href: customize-feed-for-virtual-desktop-users.md
+    - name: Nasazení nástroje pro správu
+      items:
+        - name: Šablona Azure Resource Manageru
+          href: manage-resources-using-ui.md
+        - name: PowerShell
+          href: manage-resources-using-ui-powershell.md
     - name: Použití diagnostiky služeb
       items:
         - name: Nasazení diagnostických nástrojů

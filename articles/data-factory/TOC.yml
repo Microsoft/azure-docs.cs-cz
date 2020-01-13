@@ -617,6 +617,8 @@
           href: solution-template-copy-new-files-lastmodifieddate.md
         - name: Hromadná kopie z databáze
           href: solution-template-bulk-copy-with-control-table.md
+        - name: Hromadné kopírování ze souborů do databáze
+          href: solution-template-bulk-copy-from-files-to-database.md
         - name: Rozdílová kopie z databáze
           href: solution-template-delta-copy-with-control-table.md
         - name: Migrace dat z Amazonu S3 do Azure Storage

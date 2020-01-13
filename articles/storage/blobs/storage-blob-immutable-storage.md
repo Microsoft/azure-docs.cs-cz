@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 61a8cf366d5ae03f5267718f8ab20580295ddab5
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 473f1d12188a8686748d19c8c35d4421f9477ae9
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903445"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912800"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Ukládání důležitých podnikových dat objektů BLOB s neměnném úložištěm
 
@@ -80,7 +80,7 @@ Nastavení `allowProtectedAppendWrites` mají jenom zásady uchovávání inform
 
 Vzhledem k tomu, že toto nastavení je součástí zásad uchovávání informací založených na čase, doplňovací objekty blob zůstanou v neměnném stavu po dobu trvání *efektivní* doby uchování. Vzhledem k tomu, že je možné přidat nová data mimo počáteční vytvoření doplňovacího objektu blob, dojde k mírnému rozdílu v tom, jak se určuje doba uchování. Efektivní doba uchování je rozdíl mezi přidaným **časem poslední změny** připojení objektu BLOB a intervalem uchování zadaného uživatelem. Podobně když je interval uchovávání rozšířený, neměnné úložiště používá k výpočtu efektivní doby uchování nejnovější hodnotu intervalu uchování zadaného uživatelem.
 
-Předpokládejme například, že uživatel vytvoří zásady uchovávání dat s povoleným `allowProtectedAppendWrites` a interval uchování 90 dní. V současné době se vytvoří doplňovací objekt blob, _logblob1_a v kontejneru se nové protokoly přidají do připojeného objektu BLOB po dobu příštích 10 dnů. Efektivní doba uchování pro _logblob1_ je tedy 100 dní od dnešního dne (čas poslední změny/připojení).
+Předpokládejme například, že uživatel vytvoří zásady uchovávání dat s povoleným `allowProtectedAppendWrites` a interval uchování 90 dní. V současné době se vytvoří doplňovací objekt blob, _logblob1_a v kontejneru se nové protokoly přidají do připojeného objektu BLOB po dobu příštích 10 dnů. Efektivní doba uchování pro _logblob1_ je tedy 100 dnů od dnešního dne (čas posledního připojení + 90 dní).
 
 Odemknuté zásady uchovávání informací umožňují, aby nastavení `allowProtectedAppendWrites` bylo kdykoli povolené a zakázané. Jakmile jsou zásady uchovávání informací založené na čase zamčeny, nastavení `allowProtectedAppendWrites` nelze změnit.
 

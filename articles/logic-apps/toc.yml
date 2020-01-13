@@ -4,7 +4,7 @@
   items:
     - name: Co je Azure Logic Apps?
       href: logic-apps-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytváření aplikací logiky – Azure Portal
@@ -21,7 +21,7 @@
       href: tutorial-process-mailing-list-subscriptions-workflow.md
     - name: Vytvoření pracovního postupu Azure Storage a Azure Functions
       href: tutorial-process-email-attachments-workflow.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódu Azure
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-logic-apps'
@@ -111,6 +111,8 @@
           href: connect-virtual-network-vnet-set-up-single-ip-address.md
         - name: Přidání artefaktů do prostředí integrační služby
           href: add-artifacts-integration-service-environment-ise.md
+        - name: Nastavení šifrovacích klíčů spravovaných zákazníkem pro prostředí integrační služby
+          href: customer-managed-keys-integration-service-environment.md
     - name: Přístup k místním datům
       items:
         - name: Instalace brány dat

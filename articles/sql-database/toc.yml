@@ -337,6 +337,8 @@
               href: sql-database-design-first-database-csharp.md
         - name: Načtení a přesun dat
           items:
+            - name: Import nebo export z virtuálního počítače Azure
+              href: import-export-from-vm.md
             - name: Import databáze ze souboru BACPAC
               href: sql-database-import.md
             - name: Export databáze do souboru BACPAC

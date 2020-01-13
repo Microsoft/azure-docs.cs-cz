@@ -82,6 +82,8 @@
       href: resource-manager-samples.md
 - name: Koncepty
   items:
+    - name: NoSQL vs. relační databáze
+      href: relational-nosql.md
     - name: Globální distribuce
       items:
         - name: Přehled
@@ -976,6 +978,8 @@
           href: certificate-based-authentication.md
         - name: Omezení přístupu uživatelů jenom na datové operace
           href: how-to-restrict-user-data.md
+        - name: Konfigurace klíčů spravovaných zákazníkem
+          href: how-to-setup-cmk.md
     - name: Připravenost pro podnikové zpracování
       items:
         - name: Obnovení dat ze zálohy
@@ -1058,6 +1062,8 @@
           href: cassandra-migrate-cosmos-db-blitzz.md
         - name: Migrace stovek terabajtů dat do Azure Cosmos DB
           href: migrate-cosmosdb-data.md
+        - name: 'Migrace relačních dat typu 1:několik'
+          href: migrate-relational-to-cosmos-db-sql-api.md
     - name: Knihovna Bulk Executor
       items:
         - name: Informace o knihovně Bulk Executoru

@@ -241,7 +241,7 @@
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: Azure IoT Edge pro VS Code
       href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge'
-    - name: Azure IoT Hub Toolkit pro VS Code
+    - name: Azure IoT Hub pro VS Code
       href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit'
     - name: Nástroj DeviceExplorer
       href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'

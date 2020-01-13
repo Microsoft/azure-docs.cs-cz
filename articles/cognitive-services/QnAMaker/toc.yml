@@ -147,6 +147,8 @@
       href: troubleshooting.md
     - name: Formáty souborů
       items:
+        - name: Referenční informace k markdownu
+          href: reference-markdown-format.md
         - name: Dávkové testování TSV
           href: reference-tsv-format-batch-testing.md
     - name: Reference k rozhraní REST API

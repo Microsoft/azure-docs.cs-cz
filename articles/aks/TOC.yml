@@ -229,6 +229,8 @@
           href: certificate-rotation.md
         - name: Vytvoření privátního clusteru
           href: private-clusters.md
+        - name: BYOK pro disky
+          href: azure-disk-customer-managed-keys.md
     - name: Monitorování a protokolování
       items:
         - name: Azure Monitor pro kontejnery

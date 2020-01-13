@@ -177,6 +177,8 @@
               href: azure-to-azure-how-to-enable-replication.md
             - name: Povolení replikace z Azure do Azure pro šifrované virtuální počítače
               href: azure-to-azure-how-to-enable-replication-ade-vms.md
+            - name: Povolení replikace z Azure do Azure pro virtuální počítače s disky s podporou CMK
+              href: azure-to-azure-how-to-enable-replication-cmk-disks.md
             - name: Povolení replikace z Azure do Azure pro virtuální počítače S2D
               href: azure-to-azure-how-to-enable-replication-s2d-vms.md
             - name: Povolení replikace pro přidaný disk

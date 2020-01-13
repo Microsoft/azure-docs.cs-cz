@@ -15,6 +15,8 @@
       displayName: certificate renewal
     - name: Konfigurace ověřování pomocí AWS
       href: automation-config-aws-account.md
+    - name: Šifrování zabezpečených prostředků ve službě Azure Automation
+      href: automation-secure-asset-encryption.md
     - name: Správa řízení přístupu na základě rolí
       href: automation-role-based-access-control.md
       displayName: RBAC
@@ -40,7 +42,7 @@
           displayName: 'graphical, python, powershell, powershell workflow'
         - name: Informace o pracovním postupu PowerShellu
           href: automation-powershell-workflow.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Vytvoření runbooku
           href: automation-quickstart-create-runbook.md
@@ -243,9 +245,9 @@
       items:
         - name: PowerShell DSC
           href: /powershell/dsc/overview/overview
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
-        - name: Začínáme
+        - name: začínáme
           href: automation-dsc-getting-started.md
           displayName: DSC
         - name: Správa konfigurace počítače
