@@ -3,12 +3,12 @@ title: Nastavení výstrah stavu prostředků Azure – Správce prostředků š
 description: Vytvářejte výstrahy programově, které vás upozorní, když vaše prostředky Azure nebudou k dispozici.
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: 34367c89666fd486f233136ce7968c7f3bf61912
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: c14e3c327d83e75b08f3b52b59970557ec87f5b5
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551711"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912830"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurace upozornění na stav prostředků pomocí šablon Správce prostředků
 
@@ -16,8 +16,6 @@ V tomto článku se dozvíte, jak pomocí šablon Azure Resource Manager a Azure
 
 Azure Resource Health vás informují o aktuálním a historickém stavu vašich prostředků Azure. Výstrahy Azure Resource Health vás můžou zobrazit téměř v reálném čase, když tyto prostředky mají změnu stavu. Vytváření výstrah Resource Health programově umožňuje uživatelům vytvářet a přizpůsobovat hromadnou výstrahu.
 
-> [!NOTE]
-> Výstrahy Resource Health jsou momentálně ve verzi Preview.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

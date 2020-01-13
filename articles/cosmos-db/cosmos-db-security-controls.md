@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: sngun
-ms.openlocfilehash: 5ab4281f1ad591befda5a439906604331a1ab323
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 1ac4d12f58977497642cdb0706ab7e85e9a4db64
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872141"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75913080"
 ---
 # <a name="security-controls-for-azure-cosmos-db"></a>Ovládací prvky zabezpečení pro Azure Cosmos DB
 
@@ -20,7 +20,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Cos
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
-## <a name="network"></a>Síť
+## <a name="network"></a>Network (Síť)
 
 | Řízení zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
@@ -48,11 +48,11 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Cos
 
 | Řízení zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft | Ano | Ve výchozím nastavení jsou všechny databáze a zálohy Azure Cosmos šifrované. viz [šifrování dat v Azure Cosmos DB](database-encryption-at-rest.md). Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem se nepodporuje. |
-| Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Ne |  |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft | Ano | Ve výchozím nastavení jsou všechny databáze a zálohy Azure Cosmos šifrované. viz [šifrování dat v Azure Cosmos DB](database-encryption-at-rest.md). |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Ano | Viz [konfigurace klíčů spravovaných zákazníkem pro váš účet Azure Cosmos DB](how-to-setup-cmk.md) .  |
 | Šifrování na úrovni sloupce (Azure Data Services)| Ano | Pouze v rozhraních API tabulky Premium. Tato funkce nepodporuje všechna rozhraní API. Viz [Úvod do Azure Cosmos DB: rozhraní API pro tabulky](table-introduction.md). |
 | Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ano | Všechna Azure Cosmos DBová data jsou při přenosu šifrovaná. |
-| Zašifrovaná volání rozhraní API| Ano | Všechna připojení k Azure Cosmos DB podporují protokol HTTPS. Azure Cosmos DB podporuje také připojení TLS 1,2, ale toto není ještě vynutilo. Pokud zákazníci na svém konci vypnou nižší úroveň TLS, můžou se připojit k Cosmos DB.  |
+| Zašifrovaná volání rozhraní API| Ano | Všechna připojení k Azure Cosmos DB podporují protokol HTTPS. Azure Cosmos DB podporuje také protokol TLS 1,2.<br>Je možné vyhovět minimální verzi TLS na straně serveru. Pokud to chcete udělat, kontaktujte prosím [cosmosdbpm@microsoft.com](maito:cosmosdbpm@microsoft.com]). |
 
 ## <a name="configuration-management"></a>Správa konfigurace
 

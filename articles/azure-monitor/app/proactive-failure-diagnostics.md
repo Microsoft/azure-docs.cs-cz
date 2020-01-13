@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 1eebb41c83071f34cf367826a21c4bfbf0189394
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c556f726cd63971abe1e9b6d8b87117bb3e378db
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748979"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912839"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Inteligentní zjišťování – anomálie selhání
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) vás automaticky upozorní téměř v reálném čase, pokud vaše webová aplikace působí abnormální nárůst frekvence neúspěšných žádostí. Detekuje neobvyklé zvýšení rychlosti požadavků HTTP nebo volání závislostí, která jsou hlášena jako neúspěšná. V případě požadavků mají neúspěšné požadavky obvykle kódy odpovědí 400 nebo vyšší. V podrobnostech výstrahy jsou k dispozici analýzy vlastností selhání a souvisejících dat aplikací, které vám pomůžou při třídění a diagnostikování problému. K dispozici jsou také odkazy na portál Application Insights pro další diagnostiku. Tato funkce nevyžaduje žádné nastavení ani konfiguraci, protože používá algoritmy strojového učení pro předpověď běžné míry selhání.
@@ -48,13 +48,11 @@ Když se aktivuje analýza, služba provede analýzu clusteru na neúspěšném 
 
 V předchozím příkladu se při analýze zjistilo, že většina selhání se týká konkrétního kódu výsledku, názvu žádosti, hostitele adresy URL serveru a instance role. 
 
-Naproti tomu analýza zjistila, že vlastnost klientského operačního systému je distribuována přes více hodnot, takže není uvedena.
-
 Když je vaše služba instrumentovaná pomocí těchto volání, analyzátor vyhledá výjimku a chybu závislosti, která je přidružená k žádostem v clusteru, který identifikoval, spolu s příkladem všech protokolů trasování přidružených k těmto žádostem.
 
 Výsledná analýza se vám pošle jako výstraha, pokud jste ji nenakonfigurovali na.
 
-Podobně jako u [výstrah, které jste nastavili ručně](../../azure-monitor/app/alerts.md), můžete zkontrolovat stav výstrahy a nakonfigurovat ji na stránce s výstrahami v prostředku Application Insights. Ale na rozdíl od jiných výstrah nemusíte nastavovat nebo konfigurovat inteligentní zjišťování. Pokud chcete, můžete ho zakázat nebo změnit jeho cílové e-mailové adresy.
+Podobně jako u [výstrah, které jste nastavili ručně](../../azure-monitor/app/alerts.md), můžete zkontrolovat stav aktivované výstrahy, která může být vyřešena, pokud je problém vyřešen. Nakonfigurujte pravidla výstrahy na stránce výstrahy v prostředku Application Insights. Ale na rozdíl od jiných výstrah nemusíte nastavovat nebo konfigurovat inteligentní zjišťování. Pokud chcete, můžete ho zakázat nebo změnit jeho cílové e-mailové adresy.
 
 ### <a name="alert-logic-details"></a>Podrobnosti logiky výstrahy
 
@@ -63,6 +61,7 @@ Výstrahy spouští náš proprietární algoritmus strojového učení, takže 
 * Analýza procenta selhání požadavků nebo závislostí v časovém intervalu po 20 minutách.
 * Porovnání procenta selhání za posledních 20 minut s sazbou za posledních 40 minut a posledních sedm dní a hledání významných odchylek, které překračují standardní odchylku, se rovná hodnotě X.
 * Použití adaptivního limitu pro minimální procento selhání, které se liší v závislosti na objemu požadavků a závislostí aplikace.
+* K dispozici je logika, která může automaticky vyřešit stav aktivovaného monitorování výstrah, pokud se tento problém již nedetekuje 8-24 hodin.
 
 ## <a name="configure-alerts"></a>Konfigurace upozornění
 
@@ -83,7 +82,7 @@ Kliknutím na výstrahu ji nakonfigurujte.
 
 [![](./media/proactive-failure-diagnostics/032.png "Rule configuration screen")](./media/proactive-failure-diagnostics/032.png#lightbox)
 
-Všimněte si, že můžete zakázat inteligentní zjišťování, ale nemůžete ho odstranit (nebo ho vytvořit jinak).
+Všimněte si, že můžete zakázat nebo odstranit pravidlo upozornění na anomálie při selhání, ale nemůžete ho vytvořit na stejném Application Insights prostředku.
 
 ## <a name="example-of-failure-anomalies-alert-webhook-payload"></a>Příklad anomálií při selhání datová část Webhooku výstrahy
 

@@ -1,6 +1,6 @@
 ---
-title: Detekce hrozeb pro produkty zabezpečení Azure v Azure Security Center
-description: Toto téma prezentuje produkty zabezpečení Azure, které Azure Security Center můžou poskytovat detekci hrozeb.
+title: Výstrahy detekce hrozeb z produktů zabezpečení Azure v Azure Security Center
+description: Toto téma prezentuje produkty zabezpečení Azure, na kterých Azure Security Center můžou zobrazovat výstrahy hrozeb.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -8,18 +8,18 @@ manager: rkarlin
 ms.assetid: ad4b0373-08ee-46ca-a573-638ed93a647c
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 01/05/2020
+ms.date: 01/12/2020
 ms.author: memildin
-ms.openlocfilehash: 1ea207f0ba09e0637a08632d5c56591fd1335b22
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 16cae819b1714c2b410cfa311a3602e0f4ed968a
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75665721"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75913041"
 ---
-# <a name="threat-detection-for-azure-waf-and-azure-ddos-protection"></a>Detekce hrozeb pro Azure WAF a Azure DDoS Protection
+# <a name="threat-detection-alerts-from-azure-waf-and-azure-ddos-protection"></a>Výstrahy detekce hrozeb z Azure WAF a Azure DDoS Protection
 
-Azure Security Center může poskytovat detekci hrozeb pro následující produkty zabezpečení Azure (pro každý produkt se vyžaduje samostatná licence):
+Azure Security Center může zobrazit a shromažďovat výstrahy detekce hrozeb vygenerované následujícími produkty zabezpečení Azure (pro každý produkt se vyžaduje samostatná licence):
 
 * [Azure WAF](#azure-waf)
 * [Azure DDoS Protection](#azure-ddos)

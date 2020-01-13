@@ -3,12 +3,12 @@ title: Nejčastější dotazy k Azure Resource Health
 description: Přehled Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 5a15ded1c279e700fb71e5ea7aa866e5afc29f8a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f626dc4366cbdd9215704de97bb03fad19422eb
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426522"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912772"
 ---
 # <a name="azure-resource-health-faq"></a>Nejčastější dotazy k Azure Resource Health
 Přečtěte si odpovědi na nejčastější dotazy týkající se Azure Resource Health.
@@ -46,7 +46,7 @@ Ano, pokud prostředek není k dispozici, Resource Health identifikuje hlavní p
 Na portálu se uživatelem iniciované akce zobrazují pomocí modré ikony oznámení, zatímco plánované a neplánované události se zobrazují pomocí červené výstražné ikony. Další podrobnosti najdete v [přehledu Resource Health](Resource-health-overview.md).  
 
 ## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Můžu Resource Health integrovat s nástroji pro monitorování?
-Resource Health má [podporu Preview](resource-health-alert-arm-template-guide.md) pro výstrahy založené na protokolu aktivit. Výstrahy protokolu aktivit používají [skupiny akcí](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) k upozornění uživatelů na aktivaci výstrahy. Skupiny akcí podporují různé kanály oznámení, jako jsou e-maily, SMS, Webhooky a ITSM akce.
+Stav prostředku [podporuje](resource-health-alert-arm-template-guide.md) výstrahy založené na protokolu aktivit. Výstrahy protokolu aktivit používají [skupiny akcí](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) k upozornění uživatelů na aktivaci výstrahy. Skupiny akcí podporují různé kanály oznámení, jako jsou e-maily, SMS, Webhooky a ITSM akce.
 
 ## <a name="where-do-i-find-resource-health"></a>Kde najdu Resource Health?
 Až se přihlásíte k Azure Portal, máte k dispozici několik způsobů, jak získat přístup k Resource Health:
