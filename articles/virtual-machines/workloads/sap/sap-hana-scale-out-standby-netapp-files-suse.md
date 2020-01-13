@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/21/2019
+ms.date: 01/10/2020
 ms.author: radeltch
-ms.openlocfilehash: 49e7fd49e000a3d4475c60a0c58cf6a2c7455fa5
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 243bbd431b7332d06a4e14581aa5c02bae2b7cba
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531414"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896280"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>Nasazení SAP HANA systému se škálováním na více systémů s pohotovostním uzlem na virtuálních počítačích Azure pomocí Azure NetApp Files v SUSE Linux Enterprise Server 
 
@@ -184,7 +184,7 @@ Aby splňovala požadavky na minimální propustnost SAP pro data a protokol, a 
 
 | Svazek | Velikost<br>Premium Storage úroveň | Velikost<br>Úroveň úložiště Ultra Storage | Podporovaný protokol NFS |
 | --- | --- | --- | --- |
-| /hana/log/ | 4 TiB | 2 TiB | v 4.1 |
+| /hana/log/ | 4 TiB | 2 TB | v 4.1 |
 | /hana/data | 6,3 TiB | 3,2 TiB | v 4.1 |
 | /hana/shared | Max (512 GB, 1xRAM) na 4 pracovní uzly | Max (512 GB, 1xRAM) na 4 pracovní uzly | V3 nebo v 4.1 |
 
@@ -192,11 +192,11 @@ Konfigurace SAP HANA pro rozložení prezentovaná v tomto článku, která vyu�
 
 | Svazek | Velikost<br>Úroveň úložiště Ultra Storage | Podporovaný protokol NFS |
 | --- | --- | --- |
-| /hana/log/mnt00001 | 2 TiB | v 4.1 |
-| /hana/log/mnt00002 | 2 TiB | v 4.1 |
+| /hana/log/mnt00001 | 2 TB | v 4.1 |
+| /hana/log/mnt00002 | 2 TB | v 4.1 |
 | /hana/data/mnt00001 | 3,2 TiB | v 4.1 |
 | /hana/data/mnt00002 | 3,2 TiB | v 4.1 |
-| /hana/shared | 2 TiB | V3 nebo v 4.1 |
+| /hana/shared | 2 TB | V3 nebo v 4.1 |
 
 > [!NOTE]
 > Níže uvedená doporučení pro nastavení velikosti Azure NetApp Files jsou zaměřená na splnění minimálních požadavků, které SAP doporučuje pro poskytovatele infrastruktury. V reálných scénářích nasazení a úloh nemusí být tyto velikosti dostatečné. Tato doporučení použijte jako výchozí bod a přizpůsobte je na základě požadavků konkrétního zatížení.  
@@ -249,7 +249,7 @@ V dalších pokynech se předpokládá, že jste už vytvořili skupinu prostře
 
     d. Vyberte **sítě**a pak připojte síťové rozhraní. V rozevíracím seznamu **připojit síťové rozhraní** vyberte již vytvořená síťová rozhraní pro `storage` a `hana` podsítě.  
     
-    e. Vyberte **Save** (Uložit). 
+    e. Vyberte **Uložit**. 
  
     f. Opakujte kroky b až e pro zbývající virtuální počítače (v našem příkladu **hanadb2** a **hanadb3**).
  
@@ -429,7 +429,9 @@ Pomocí následujících kroků nakonfigurujte a připravte operační systém:
     mount 10.23.1.4:/HN1-shared /mnt/tmp
     umount  /mnt/tmp
     echo "Y" > /sys/module/nfs/parameters/nfs4_disable_idmapping
-    </code></pre>`
+    # Make the configuration permanent
+    echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
+    </code></pre>
 
 5. **[A]** vytvořte skupinu SAP Hana a uživatele ručně. ID pro skupiny sapsys a User **HN1**ADM musí být nastavená na stejné identifikátory, které jsou k dispozici během připojování. (V tomto příkladu jsou identifikátory nastavené na **1001**.) Pokud nejsou ID správně nastavená, nebudete mít přístup ke svazkům. ID skupinových sapsys a uživatelských účtů **HN1**ADM a sapadm musí být na všech virtuálních počítačích stejné.  
 

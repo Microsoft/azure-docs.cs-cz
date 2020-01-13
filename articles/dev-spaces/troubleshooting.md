@@ -1,16 +1,16 @@
 ---
-title: Poradce při potížích
+title: Řešení potíží
 services: azure-dev-spaces
 ms.date: 09/25/2019
 ms.topic: conceptual
-description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
+description: Naučte se řešit problémy a řešit běžné problémy při povolování a používání Azure Dev Spaces.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: 64b9cda61e5af3e8b9ea52477b5bf4fa879f48e6
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: a52d27733168c55f9e34d15f6675dd7bce0f8aad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483850"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438112"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Řešení potíží s Azure Dev Spaces
 
@@ -18,13 +18,13 @@ Tato příručka obsahuje informace o běžných problémů, možná bude při p
 
 Pokud máte problém s použitím Azure Dev Spaces, vytvořte [problém v úložišti Azure dev Spaces GitHubu](https://github.com/Azure/dev-spaces/issues).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pokud chcete řešit problémy efektivněji, může vám pomoct vytvořit podrobnější protokoly pro kontrolu.
 
-Pro rozšíření sady Visual Studio nastavte proměnnou prostředí `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` na 1. Je potřeba restartovat Visual Studio pro proměnné prostředí se projeví. Po povolení se do adresáře `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` zapisují podrobné protokoly.
+Pro rozšíření sady Visual Studio, nastavte `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` proměnné prostředí na hodnotu 1. Je potřeba restartovat Visual Studio pro proměnné prostředí se projeví. Po povolení se do adresáře `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` zapisují podrobné protokoly.
 
-V rozhraní příkazového řádku můžete výstupem více informací během provádění příkazu pomocí přepínače `--verbose`. Můžete také procházet podrobnější protokoly v `%TEMP%\Azure Dev Spaces`. V počítači Mac můžete dočasný adresář najít spuštěním `echo $TMPDIR` z okna terminálu. V počítači se systémem Linux je dočasný adresář obvykle `/tmp`.
+V rozhraní příkazového řádku, můžete pomocí výstupní informace během provádění příkazu `--verbose` přepnout. Můžete také procházet podrobnější protokoly v `%TEMP%\Azure Dev Spaces`. Na počítači Mac, můžete najít svého adresáře TEMP spuštěním `echo $TMPDIR` z okna terminálu. Na počítači s Linuxem adresář TEMP je obvykle `/tmp`.
 
 Azure Dev Spaces také funguje nejlépe při ladění jedné instance nebo pod. `azds.yaml` soubor obsahuje nastavení *replicaCount*, které označuje počet lusků, které Kubernetes pro vaši službu spustí. Změníte-li *replicaCount* pro konfiguraci aplikace tak, aby spouštěla více lusků pro danou službu, ladicí program se připojí k prvnímu pod, pokud je uveden abecedně. Ladicí program se připojí k jinému pod při recyklování původní pod, což může vést k neočekávanému chování.
 
@@ -115,7 +115,7 @@ Jakmile budete mít vhodný souboru Dockerfile, spustíte `azds up` ke spuštěn
 
 Při spuštění `azds up`se může zobrazit tato chyba. `azds up` i `azds prep` musí být spuštěny z kořenového adresáře projektu, který chcete spustit ve vývojovém prostoru.
 
-Chcete-li tento problém vyřešit:
+Pokud chcete tento problém vyřešit:
 1. Do kořenové složky, která obsahuje kód služby změňte aktuální adresář. 
 1. Pokud ve složce kódu nemáte soubor _azds. yaml_ , spusťte `azds prep` pro vygenerování Docker, Kubernetes a Azure dev Spaces assetů.
 
@@ -157,7 +157,7 @@ Předpokládejme například, že použijete příkaz Helm ke spuštění celé 
 
 ### <a name="existing-dockerfile-not-used-to-build-a-container"></a>Stávající souboru Dockerfile se nepoužilo k sestavení kontejneru.
 
-Azure Dev Spaces lze nakonfigurovat tak, aby odkazovaly na konkrétní _souboru Dockerfile_ v projektu. Pokud se zobrazí Azure Dev Spaces nepoužívá _souboru Dockerfile_ , kterou očekáváte k sestavování kontejnerů, možná budete muset explicitně sdělit Azure dev Spaces které souboru Dockerfile se mají použít. 
+Azure Dev prostory můžete nakonfigurovat tak, aby odkazoval na konkrétní _soubor Dockerfile_ ve vašem projektu. Pokud se zobrazí Azure Dev Spaces nepoužívá _souboru Dockerfile_ , kterou očekáváte k sestavování kontejnerů, možná budete muset explicitně sdělit Azure dev Spaces které souboru Dockerfile se mají použít. 
 
 Chcete-li tento problém vyřešit, otevřete soubor _azds. yaml_ , který Azure dev Spaces vygeneroval v projektu. *Konfigurace aktualizací: vývoj: sestavení: souboru Dockerfile* odkazuje na souboru Dockerfile, který chcete použít. Příklad:
 
@@ -214,8 +214,8 @@ azds up --verbose --output json
 
 V sadě Visual Studio:
 
-1. Otevřete **nástroje > možnosti** a v části **projekty a řešení**vyberte **vytvořit a spustit**.
-2. Změňte nastavení pro **Podrobnosti výstupu sestavení projektu MSBuild** na **podrobné** nebo **diagnostické**.
+1. Otevřít **nástroje > Možnosti** a v části **projekty a řešení**, zvolte **sestavíte a spustíte**.
+2. Změnit nastavení pro **podrobnosti výstupu sestavení projektu nástroje MSBuild** k **podrobné** nebo **diagnostických**.
 
     ![Možnosti nástrojů – snímek obrazovky dialogového okna](media/common/VerbositySetting.PNG)
 
@@ -267,7 +267,7 @@ Chcete-li například zastavit a zakázat službu *Windows BranchCache* :
 * Klikněte pravým tlačítkem na *BranchCache* a vyberte *vlastnosti*.
 * Klikněte na tlačítko *zastavit*.
 * Volitelně ho můžete zakázat nastavením *Typ spuštění* na *zakázáno*.
-* Klikněte na tlačítko *OK*.
+* Klikněte na *OK*.
 
 ## <a name="common-issues-using-visual-studio-and-visual-studio-code-with-azure-dev-spaces"></a>Běžné problémy s používáním sady Visual Studio a Visual Studio Code s Azure Dev Spaces
 
@@ -302,9 +302,9 @@ Chcete-li tento problém vyřešit, nainstalujte [rozšíření vs Code pro Azur
 
 ### <a name="error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>Chyba "neplatná" hodnota "CWD"/src ". Systém nemůže najít zadaný soubor." nebo "spuštění: program '/ src / [cesta k projektu binární]' neexistuje."
 
-Tato chyba se může zobrazit při spuštění ladicího programu Visual Studio Code. Ve výchozím nastavení používá rozšíření VS Code `src` jako pracovní adresář pro projekt na kontejneru. Pokud jste `Dockerfile` aktualizovali, abyste určili jiný pracovní adresář, může se zobrazit tato chyba.
+Tato chyba se může zobrazit při spuštění ladicího programu Visual Studio Code. Ve výchozím nastavení, používá rozšíření VS Codu `src` jako pracovní adresář pro projekt v kontejneru. Pokud jste aktualizovali vaši `Dockerfile` Pokud chcete zadat jinou pracovní adresář, může se zobrazit tato chyba.
 
-Chcete-li tento problém vyřešit, aktualizujte soubor `launch.json` v podadresáři `.vscode` složky projektu. Změňte direktivu `configurations->cwd` tak, aby odkazovala na stejný adresář jako `WORKDIR` definovaná v `Dockerfile`projektu. Možná bude také potřeba aktualizovat taky direktivu `configurations->program`.
+Chcete-li tento problém vyřešit, aktualizujte soubor `launch.json` v podadresáři `.vscode` složky projektu. Změnit `configurations->cwd` směrnice tak, aby odkazoval do stejného adresáře jako `WORKDIR` definované ve vašem projektu `Dockerfile`. Budete muset taky aktualizovat `configurations->program` také směrnice.
 
 ### <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Chyba "program kanálu ' azds ' se neočekávaně ukončil s kódem 126."
 
@@ -324,7 +324,7 @@ Dočasným řešením tohoto problému je zvýšit hodnotu *FS. inotify. max_use
 
 K této chybě může dojít, pokud `azds.exe` není správně nainstalován nebo nakonfigurován.
 
-Chcete-li tento problém vyřešit:
+Pokud chcete tento problém vyřešit:
 
 1. Pro `azds.exe`se podívejte na umístění% ProgramFiles%/Microsoft SDKs\Azure\Azure dev Spaces CLI. Pokud existuje, přidejte do proměnné prostředí PATH v tomto umístění.
 2. Pokud `azds.exe` není nainstalován, spusťte následující příkaz:
@@ -397,7 +397,7 @@ Aktualizace role uživatele RBAC pro kontroler:
 
 Můžete nakonfigurovat koncový bod veřejné adresy URL pro vaši službu zadáním `--public` přepínačem na příkaz `azds prep`, nebo zaškrtnutím políčka `Publicly Accessible` v aplikaci Visual Studio. Veřejný název DNS se automaticky zaregistruje při spuštění služby ve vývojových prostorech. Pokud tento název DNS není zaregistrovaný, zobrazí se ve webovém prohlížeči při připojování k veřejné adrese URL *Stránka nemůžete zobrazit* nebo *se k webu nedá dostat* chyba.
 
-Chcete-li tento problém vyřešit:
+Pokud chcete tento problém vyřešit:
 
 * Ověřte stav všech adres URL přidružených k vašim službám dev Spaces:
 
@@ -416,22 +416,22 @@ Chcete-li tento problém vyřešit:
 
 Při pokusu o přístup ke službě, může se zobrazit tato chyba. Například když přejdete na adresu URL služby v prohlížeči. Tato chyba znamená, že port kontejneru není k dispozici. To může být z následujících důvodů:
 
-* Kontejner se stále ještě probíhá sestavíte a nasadíte. K tomuto problému může dojít, pokud spustíte `azds up` nebo spustíte ladicí program a potom se pokusíte o přístup k kontejneru předtím, než se úspěšně nasadí.
-* Konfigurace portů není konzistentní v rámci _souboru Dockerfile_, grafu Helm a libovolného kódu serveru, který otevírá port.
+* Kontejner se stále ještě probíhá sestavíte a nasadíte. Tento problém může nastat, pokud spustíte `azds up` nebo spuštění ladicího programu a pak zkuste přístup ke kontejneru předtím, než byl úspěšně nasazen.
+* Konfigurace portu není konzistentní napříč vaší _soubor Dockerfile_, diagram helmu a libovolný kód serveru, které se otevře port.
 
-Chcete-li tento problém vyřešit:
+Pokud chcete tento problém vyřešit:
 
 1. Jestli je kontejner právě vytvořená/nasazuje, můžete počkejte 2-3 sekund a zkuste to znovu přístupu ke službě. 
 1. Zkontrolujte konfiguraci portů. Zadaná čísla portů by měla být **shodná** se všemi těmito prostředky:
-    * **Souboru Dockerfile:** Určeno instrukcí `EXPOSE`.
-    * **[Graf Helm](https://docs.helm.sh):** Určené `externalPort` a `internalPort` hodnoty pro službu (často se nachází v `values.yml` souboru),
-    * Jakékoli porty, které jsou otevřeny v kódu aplikace, například v Node. js: `var server = app.listen(80, function () {...}`
+    * **Soubor Dockerfile:** určené `EXPOSE` instrukce.
+    * **[Diagram helmu](https://docs.helm.sh):** určené `externalPort` a `internalPort` hodnoty pro službu (nacházejí se často ve `values.yml` souboru),
+    * Žádné porty se otevřely v kódu aplikace, například v Node.js: `var server = app.listen(80, function () {...}`
 
 ### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>Název typu nebo oboru názvů "MyLibrary" se nenašel.
 
 Projekt knihovny, který používáte, se nenašel. Pomocí vývojových prostorů je kontext buildu ve výchozím nastavení na úrovni projektu nebo služby.  
 
-Chcete-li tento problém vyřešit:
+Pokud chcete tento problém vyřešit:
 
 1. Upravte soubor `azds.yaml` pro nastavení kontextu sestavení na úroveň řešení.
 2. Upravte soubory `Dockerfile` a `Dockerfile.develop` tak, aby odkazovaly na soubory projektu, například `.csproj`správně vzhledem k novému kontextu sestavení.

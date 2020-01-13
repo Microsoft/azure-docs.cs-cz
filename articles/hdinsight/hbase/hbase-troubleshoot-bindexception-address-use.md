@@ -7,20 +7,20 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
-ms.openlocfilehash: 52e91b6b5cacef8ed7d0d9b578a8dd4f21e1a271
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 80f984643d6d8be88b381881c6fc1cb1cb5f1815
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091697"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887338"
 ---
-# <a name="scenario-bindexception---address-already-in-use-in-azure-hdinsight"></a>Scénář: BindException – adresa se už používá ve službě Azure HDInsight.
+# <a name="scenario-bindexception---address-already-in-use-in-azure-hdinsight"></a>Scénář: BindException-Address se už používá ve službě Azure HDInsight.
 
 Tento článek popisuje postup řešení potíží a možná řešení potíží při komunikaci s clustery Azure HDInsight.
 
 ## <a name="issue"></a>Problém
 
-Operaci restartování na serveru oblasti Apache Hbas se nepodařilo dokončit. V adresáři `/var/log/hbase` v pracovních uzlech, kde se nepovede Server oblasti Start, se může zobrazit chybová zpráva podobná následující: `region-server.log`
+Operaci restartování na serveru oblasti Apache Hbas se nepodařilo dokončit. Z `region-server.log` v adresáři `/var/log/hbase` v pracovních uzlech, kde se nepovede Server oblasti Start, se může zobrazit chybová zpráva podobná následující:
 
 ```
 Caused by: java.net.BindException: Problem binding to /10.2.0.4:16020 : Address already in use
@@ -40,13 +40,13 @@ Restartování serverů oblastí Apache HBA během náročné aktivity úlohy. N
 
 1. Pokud se vaše aplikace nadále připojuje k serveru oblastí, server se nevypne hned. Časový limit 30 sekund vyprší, než dojde k vypnutí.
 
-1. Po 30 sekundách pošle agent Ambari na server oblasti příkaz Force-`kill -9`Kill ().
+1. Po 30 sekundách pošle agent Ambari na server oblasti příkaz Force-Kill (`kill -9`).
 
-1. Z důvodu tohoto náhlého vypnutí se i když proces serveru oblasti ukončí, port přidružený k procesu se nemusí uvolnit, což nakonec vede k `AddressBindException`tomu.
+1. Z důvodu tohoto náhlého vypnutí se i když proces serveru oblasti ukončí, port přidružený k procesu se nemusí uvolnit, což nakonec vede k `AddressBindException`.
 
-## <a name="resolution"></a>Řešení
+## <a name="resolution"></a>Rozlišení
 
-Před zahájením restartování snižte zatížení serverů oblastí HBA. Je také vhodné nejprve vyprázdnit všechny tabulky. Referenční informace o tom, jak vyprázdnit tabulky [, najdete v tématu HDInsight HBA: Jak vylepšit dobu restartování clusteru Apache HBA vyprázdněním tabulek](https://web.archive.org/web/20190112153155/https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
+Před zahájením restartování snižte zatížení serverů oblastí HBA. Je také vhodné nejprve vyprázdnit všechny tabulky. Referenční informace o tom, jak vyprázdnit tabulky, najdete v tématu [HDInsight hbas: jak zlepšit dobu restartování clusteru Apache HBA vyprázdněním tabulek](https://web.archive.org/web/20190112153155/https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
 
 Případně se pokuste ručně restartovat servery oblastí na pracovních uzlech pomocí následujících příkazů:
 
@@ -55,12 +55,12 @@ sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh stop
 sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh start regionserver"
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

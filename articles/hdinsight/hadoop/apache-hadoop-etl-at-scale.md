@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: ashishth
-ms.openlocfilehash: d19640d19c3b7fa611f5bfe0e4fd0868924650c5
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ceafee2d3356d37e74039789c8243ace41c141b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066925"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435780"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Extrakce, transformace a načítání (ETL) ve velkém měřítku
 
@@ -51,11 +51,11 @@ Další informace o Azure Data Factory najdete v [dokumentaci](../../data-factor
 
 ## <a name="ingest-file-storage-and-result-storage"></a>Ingestování úložiště souborů a výsledků úložiště výsledků
 
-Zdrojové datové soubory jsou obvykle načteny do umístění v Azure Storage nebo Azure Data Lake Storage. Soubory mohou být v libovolném formátu, ale obvykle se jedná o ploché soubory, jako je CSV. 
+Zdrojové datové soubory jsou obvykle načteny do umístění v Azure Storage nebo Azure Data Lake Storage. Soubory mohou být v libovolném formátu, ale obvykle se jedná o ploché soubory, jako je CSV.
 
-### <a name="azure-storage"></a>Azure Storage 
+### <a name="azure-storage"></a>Azure Storage
 
-[Azure Storage](https://azure.microsoft.com/services/storage/blobs/) má [specifické cíle škálovatelnosti](../../storage/common/storage-scalability-targets.md).  U většiny analytických uzlů Azure Storage lépe škálovat při práci s mnoha menšími soubory.  Azure Storage garantuje stejný výkon, bez ohledu na počet souborů nebo velikost souborů (Pokud jste v rámci vašich limitů).  To znamená, že můžete ukládat terabajty dat a stále dosáhnout konzistentního výkonu, ať už používáte podmnožinu dat nebo všechna data.
+[Azure Storage](https://azure.microsoft.com/services/storage/blobs/) má specifické cíle škálovatelnosti. Další informace najdete v tématu [škálovatelnost a výkonnostní cíle pro úložiště objektů BLOB](../../storage/blobs/scalability-targets.md). U většiny analytických uzlů Azure Storage lépe škálovat při práci s mnoha menšími soubory.  Azure Storage garantuje stejný výkon, bez ohledu na počet souborů nebo velikost souborů (Pokud jste v rámci vašich limitů).  To znamená, že můžete ukládat terabajty dat a stále dosáhnout konzistentního výkonu, ať už používáte podmnožinu dat nebo všechna data.
 
 Azure Storage má několik různých typů objektů BLOB.  *Doplňovací objekt BLOB* je skvělou možností pro ukládání webových protokolů nebo dat ze senzorů.  
 
@@ -77,7 +77,7 @@ ADLS je taky optimalizovaná pro příjem událostí pomocí centra událostí A
 
 V případě nahrávání datových sad v rozsahu terabajtů může být latence sítě významným problémem, zejména pokud data pocházejí z místního umístění.  V takových případech můžete použít následující možnosti:
 
-* ExpressRoute Azure:  Azure ExpressRoute vám umožňuje vytvářet privátní připojení mezi datacentry Azure a místní infrastrukturou. Tato připojení poskytují spolehlivou možnost pro přenos velkých objemů dat. Další informace najdete v [dokumentaci ke službě Azure ExpressRoute](../../expressroute/expressroute-introduction.md).
+* Azure ExpressRoute: Azure ExpressRoute umožňuje vytvářet privátní připojení mezi datacentry Azure a místní infrastrukturou. Tato připojení poskytují spolehlivou možnost pro přenos velkých objemů dat. Další informace najdete v [dokumentaci ke službě Azure ExpressRoute](../../expressroute/expressroute-introduction.md).
 
 * "Offline" nahrávání dat. Pomocí [služby Azure import/export](../../storage/common/storage-import-export-service.md) můžete dodávat pevné disky s daty do datového centra Azure. Vaše data se napřed nahrají do Azure Storage objektů BLOB. Potom můžete pomocí [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) nebo nástroje [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) kopírovat data z Azure Storage objektů blob do data Lake Storage.
 
