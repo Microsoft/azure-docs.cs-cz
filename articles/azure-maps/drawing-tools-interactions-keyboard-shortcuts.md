@@ -1,6 +1,6 @@
 ---
-title: Kreslení nástrojů typy interakce a klávesové zkratky v Azure Maps | Microsoft Docs
-description: Postup kreslení a úprav tvarů pomocí myši, dotykové obrazovky nebo klávesnice v sadě Azure Maps Web SDK
+title: Kreslení nástrojů typy interakce a klávesové zkratky na mapě | Mapy Microsoft Azure
+description: Postup kreslení a úprav tvarů pomocí myši, dotykové obrazovky nebo klávesnice v sadě Microsoft Azure Maps Web SDK
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/05/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 8385f294426f6d793f7b539006eafd0b2cb940ea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 267579f7b4bbfe026f3aa01b00f01f3b872cf4a6
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75481942"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911661"
 ---
 # <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>Typy interakcí a klávesové zkratky v modulu nástrojů pro kreslení
 

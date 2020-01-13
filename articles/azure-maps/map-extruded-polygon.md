@@ -1,6 +1,6 @@
 ---
-title: Přidejte vrstvu vysunutí mnohoúhelníku do Azure Maps | Microsoft Docs
-description: Postup přidání vrstvy vysunutí mnohoúhelníku do Azure Maps webové sady SDK.
+title: Přidání vrstvy vysunutí mnohoúhelníku na mapu | Mapy Microsoft Azure
+description: Postup přidání vrstvy vysunutí mnohoúhelníku do webové sady SDK Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 10/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: a357545bedde6a4e859a671005083a0fc665340d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 36914240caf3c1321dfa0102bd87cb29173f8b1d
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432843"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911053"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Přidání vrstvy vysunutí mnohoúhelníku na mapu
 

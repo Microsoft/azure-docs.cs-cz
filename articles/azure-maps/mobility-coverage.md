@@ -1,6 +1,6 @@
 ---
-title: Pokrytí mobility v Azure Maps | Microsoft Docs
-description: Přečtěte si o pokrytí mobility v Azure Maps
+title: Mobilita (tranzitní) pokrytí | Mapy Microsoft Azure
+description: V tomto článku se dozvíte o pokrytí mobility v Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 06/05/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1fcad7d3d0cc45f0cfdc0d6523d5fdbc8f573fe2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 658d282260b6c9c427527fdc07bf05a0218fda4a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576993"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910703"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Pokrytí Azure Maps mobility
 
@@ -24,7 +24,7 @@ Azure Maps nemá stejnou úroveň informací a přesnost pro všechna města a z
 Následující tabulka poskytuje informace o pokrytí služby Azure Maps mobility.
 
 
-| Písmeno | Význam |
+| Symbol | Význam |
 |--------|---------|
 | *      |Skoro úplné pokrytí země nebo oblasti.|
 
@@ -45,8 +45,8 @@ Následující tabulka poskytuje informace o pokrytí služby Azure Maps mobilit
 | Panama | Panama| 
 | Peru | Cusco, Lima |
 | Portoriko | Juan San |
-| Uruguay | Montevideo (, Punta del Este |
-| USA Amerika | <p>Albany (NY), Albuquerque (NM), úchyt (AK), Appleton-Oshkosh-Neenah (WI), Asheville (NC), Atény (OH), Brno (GA), Austin (TX), Bakersfield (CA), Baltimore), Bellevue (v), Berkshire (ID), Birmingham ( MA), Boulder (CO) Brevard okres (FL), buvolí (NY), Butte (MT), mysu COD), okres (PA), Champaign-Urbana (IL), Charleston (SC), Charleston (WV), Charlotte (NC), Charlottesville (VA), Chattanooga (c), Cheyenne (TN), WY (Cincinnati), Chicago (IL), ( Citrusový okres (FL), Cleveland (OH), Coachella sedl (CA), Coloradu pružiny (CO), Kolumbie (TN), Columbus (OH), Corpus Christi (TX), v Dallasu/tam (TX), Dayton (OH), Delaware, Denver (CO), Des Moines (IA), Detroit (MI), Duluth (MN), Paso ( ), Fairbanks (AK), Fargo (ND), Fayetteville (NC), Flagstaff (AZ), Kamínk (MI) Fort Collins (CO), Fort Wayne (IN), Fresno (CA), Gainesville (FL), y (ND), Rapids (CO), Greensboro (a), Greenville ), Hanford (CA), Hartford (CT), Hernando okres (FL), Honolulu (HI), Houstonu (TX), Humboldt okres (CA), Huntsville (AL), Indianapolis (IN), Ithaca (NY), Jacksonův diagram (MS), Jacksonův diagram (TN), Jacksonville-St. Jan okres (FL), Johnsonem City (TN), Jonesboro (AR), Joplin (MO), Juneau (AK), Kalamazoo (MI), Kansas City (MO), Kauai (HI), Ketchum (ID), Knoxville (TN), Lafayette (IN), Lancasteru (PA), Lansing (MI), Las Vegas (NV), Lawrence (KS), Stoklasa okres (FL), Lexington (KY), Lincoln okres (nebo), Little Rock (AR), Los Angeles ( CA), Louisville (KY), Madison (WI), McAllen (TX), Memphis (TN), Miami (FL), Milwaukee/Waukesha (WI), Minneapolis-St. Paul (MN), Missoula (MT), Modesto (USA), Moline (IL), Monroe okres (PA), Montgomery (AL), Morgantown (WV), Nashville (TN), světle krémová New některé (CT), New Orleans (LA), NYC-NEWARKU), Ocala (FL), Okaloosa okres (FL), Oklahoma City (OK), Omaha (NE), Orlandu (FL), Panama město (FL), Pensacola (FL), Peoria (IL), Philadelphia (PA), Phoenix (AZ), pensylvánském (PA), Portland (nebo), Racine (WI), Raleigh (NC), Redding (CA), Reno & Lake Tahoe (NV), Roanoke sedl (VA-Lynchburg), Rochester (NY), Rocky horských parků), neautorizovaný sedl (nebo), Roseburg (nebo), Roseville (CA), Sacramento (CA), Salem (nebo), sůl Lake City (UT), San Antonio (), San Diegu ( CA), San Luis Obispo (CA), Santa Barbara (CA), Santa Fe (NM), Sarasota (FL), Savannah (GA), Seacoast region (NH), Seattle-Tacoma-Bellevue (WA), oblast SF (certifikační autorita), Sioux (IA), Sioux (pro velké objemy), Sitka (AK), Spokane (WA), Springfieldu (IL), Springfieldu (hmotnost), Svatý Jiří (UT), St. Louis (MO), Stockton (CA), Syracuse-Utica (NY), Tallahassee (FL), Tampa-St. Petěrburg (FL), Terre Haute (IN), Toledo (OH), Topeka (KS), procházet města (MI), Tucson (AZ), Tulsa (OK), Vermont, Victorville (CA), Volusia okres (FL), Waco (TX); Washington (DC), Waterbury (CT), Wichita (KS), Wilmington (NC), Yakima (WA), York okres (PA), Yuma okres (AZ)</p>|
+| Uruguay | Montevideo, Punta del Este |
+| USA | <p>Albany (NY), Albuquerque (NM), úchyt (AK), Appleton-Oshkosh-Neenah (WI), Asheville (NC), Atény (OH), Brno (GA), Austin (TX), Bakersfield (CA), Baltimore), Bellevue (WA), Berkshire okres (MA), Birmingham (AL), Bloomington (v), Boise (ID), Boston (MA), (v); Boulder (CO) Brevard okres (FL), buvolí (NY), Butte (MT), mysu COD), okres (PA), Champaign-Urbana (IL), Charleston (SC), Charleston (WV), Charlotte (NC), Charlottesville (VA), Chattanooga (c), Cheyenne (TN), WY (Cincinnati), Chicago (IL), ( Citrusový okres (FL), Cleveland (OH), Coachella sedl (CA), Coloradu pružiny (CO), Kolumbie (TN), Columbus (OH), Corpus Christi (TX), v Dallasu/v (TX), Dayton (OH), Delaware, Denver (CO), Des Moines (IA), Detroit (nebo), Duluth (Fairbanks (AK), Fargo (ND), Fayetteville (NC), Flagstaff (AZ), Kamínk (MI) Fort Collins (CO), Fort Wayne (IN), Fresno (CA), Gainesville (FL), celkové rozvětvení (ND), Grand Rapids (MI), zelená pozice (WI), Greensboro (NC), Greenville (SC), Gunnison (CO), Hampton silnice (VA ), Hanford (CA), Hartford (CT), Hernando okres (FL), Honolulu (zdraví USA), Houstonu (TX), Humboldt okres (CA), Huntsville (AL), Indianapolis (IN), Ithaca (NY), Jacksonův diagram (MS), Jacksonův diagram (TN), Jacksonville-St. Jan okres (FL), Johnsonem City (TN), Jonesboro (d), Joplin (MO), Juneau (AK), Kalamazoo (MI), Kansas City (MO), Kauai (dobrý den), Ketchum (ID), Knoxville (TN), Lafayette (IN), Lancasteru (PA), Lansing (MI), Las Vegas (NV), Lawrence (KS), Stoklasa okres (FL), Lexington (KY), Lincoln okres (nebo), malý rock (AR), Los Angeles (CA), Louisville (KY), Madison (WI), McAllen (TX), Memphis (TN), Miami (FL), Milwaukee/Waukesha (WI), Minneapolis-St. Paul (MN), Missoula (MT), Modesto (USA), Moline (IL), Monroe okres (PA), Montgomery (AL), Morgantown (WV), Nashville (TN), světle krémová země), New některé (CT); New Orleans (LA), NYC-NEWARKU), Ocala (FL), Okaloosa okres (FL), Oklahoma City (OK), Omaha (NE), Orlandu (FL), Panama City (FL), Pensacola (FL), Peoria (IL), Philadelphia (PA), Phoenix (AZ), pensylvánském (PA), Portland (já), Portland (nebo), Racine (WI), Raleigh (NC), Redding (CA), Reno & Lake Tahoe (NV), Roanoke sedl (VA-Lynchburg), Rochester (NY), Rocky horská oblast horského parku), neautorizovaný sedlo (nebo), Roseburg (nebo), Roseville (CA), Sacramento (CA), Salem (nebo), Salt Lake City (UT), San Antonio (), San Diegu (CA), Santa Barbara (CA), Santa Fe (NM), Sarasota (FL), Savannah (GA), Seacoast region (NH), Seattle-Tacoma-Bellevue (WA), oblast SF (certifikační autorita), Sioux (IA), Sioux (pro velké objemy), Sitka (AK), Spokane (WA), Springfieldu (IL), Springfieldu (hmotnost), Svatý Jiří (UT), St. Louis (MO), Stockton (CA), Syracuse-Utica (NY), Tallahassee (FL), Tampa-Svatý Petěrburg (FL), Terre Haute (IN), Toledo (OH), Topeka (KS), procházet City (MI), Tucson (AZ), Tulsa (OK), Vermont, Victorville (CA), Volusia okres (FL), Waco (TX), Washington (DC), Waterbury (CT), Wichita (KS), Wilmington (NC), Yakima (WA), Yuma (PA),</p>|
 | \+ Americké Panenské ostrovy | Americké Panenské ostrovy * |
 
 
@@ -57,7 +57,7 @@ Následující tabulka poskytuje informace o pokrytí služby Azure Maps mobilit
 | Austrálie      | <p>Adelaide, Alice pružiny, Bowen, Brisbane, Bundaberg QLD, hořák, Cairns, Canberra, Darwin, Gladstone, Hobart, Innisfail, Launceston, Mackayovou, magnetické ostrovy, Maryborough-Hervey Bay, Melbourne, New Jižní Wales, Perth, RockHampton, jižní východ Queenslandu, Sydney, Toowoomba, Townsville, Victoria, Warwick, Yeppoon</p> |
 | Čína | <p> Changchun, Changsha, Chengdu, Čchung-čching, Dalian, Datong, Dongguan, Hangzhou, Jiangyin, Jinan, Nanking, Nantong, Ningbo, Pingdingshan, Qingdao, Shenyang, Suzhou, Tangshan, Tianjin, Weifang, Wuhan, Wuxi, Yantai, yixing, Zhuhai, Shanghai, Peking, Guangzhou, Shenzhen, Zhengzhou</P>| 
 | Hongkong – zvláštní správní oblast | Hongkong – zvláštní správní oblast *|
-| Macao – zvláštní správní oblast | Macao – zvláštní administrativní oblast *|
+| Macao – zvláštní administrativní oblast | Macao – zvláštní administrativní oblast *|
 | Indie | Ahmedabad, Bengaluru, Dillís, Bombaj, Mysuru|
 | Indonésie | Bandung, Banyuwangi, Batam, Denpasar, Jakarta, Kediri, Malang, Palembang, Semarang, Surabaya, Surakarta, Yogyakarta |
 | Japonsko | Shizuoka Prefektura, Tokio, Wakkanai, Yamanashi Prefektura |
@@ -77,7 +77,7 @@ Následující tabulka poskytuje informace o pokrytí služby Azure Maps mobilit
 |----------------|---------|
 | Andorra        | Andorry la Vella |
 | Atény         | Chios | 
-| Rakousko        | Vídni |
+| Rakousko        | Vienna |
 | Bělorusko        | Gomel, Grodno, Polotsk & Novopolotsk, Zhlobin, Vileyka, Maladziečna, Minsk, Rechytsa | 
 | Belgie        | Belgie |
 | Bolívie        | La Paz, Santa Cruz de la Sierra | 
@@ -95,7 +95,7 @@ Následující tabulka poskytuje informace o pokrytí služby Azure Maps mobilit
 | Gruzie | Tbilisi | 
 | Německo | <p>Berlín, Brandenburg, Bremen & Niedersachsen, Cologne, Eisenach, Frankfurt, Hamburg, Karlsruhe, Mainz, München-Mnichov, Rhein-Neckar region, Rhein-Ruhr region, Stuttgart, Titisee-Neustadt, Ulm</P> | 
 | Řecko | <p>Atény, Arta, Amorgos, Chania, Corfu, Chios Kos, Heraklion, Ioannina, Kavala, Kalamata, Komotini, Kos, Larissa, Meganisi, Mykonos, patra, Rethimno, Rhodes, Santorini, Serres, Syros, Tinos, Thessaloniki, Veria, Volos, Xanthi </P> |
-| Maďarsko | Budapešť, Szeged, Székesfehérvár |
+| Maďarsko | Budapest, Szeged, Székesfehérvár |
 | Island | Ísland – Island * | 
 | Irsko | Irsko |   
 | Itálie   | <p>Agrigento, Alessandria, Ancona, Bari, Bologna-Bologne, Cagliari-Sardinie, Campobasso, Catania e Messina, Cosenza, Crema, Cremona, Crotone, Cuneo, Firenze-Florencie, Foggia, Genova-Genoa, Iglesias, La Spezia, Lecce, Matera, Milano-Milán, Napoli-Naples , Padova, Palermo, Parma, Perugia, Pescara, Pisa, Potenza, Roma – Řím, Siena e Grosseto, Siracusa-Syracuse, Taranto, Torino-Turin, Trento, Trieste, Udine, Venezia-Venice, </p> |
@@ -133,7 +133,7 @@ Následující tabulka poskytuje informace o pokrytí služby Azure Maps mobilit
 | Madagaskar | Antananarivo |
 | Maroko | Casablanca, Khouribga, Tétouan|
 | Saúdská Arábie | Thuwal |
-| Jižní Afrika | Kapské město |
+| Jihoafrická republika | Kapské město |
 | Tunisko | Kairouan |
 | Spojené arabské emiráty  | Abú Dhabi, Dubaj |
 

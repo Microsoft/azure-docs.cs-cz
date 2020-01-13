@@ -1,6 +1,6 @@
 ---
-title: Zobrazit výsledky hledání s Azure Maps | Microsoft Docs
-description: Jak provést požadavek hledání pomocí Azure Maps pak zobrazit výsledky na Azure Maps webové sadě SDK.
+title: Zobrazit výsledky hledání na mapě | Mapy Microsoft Azure
+description: V tomto článku se naučíte, jak provést požadavek hledání pomocí nástroje Microsoft Azure Maps Web SDK a zobrazit výsledky na mapě.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 7c4c78e1d21754d42391a3762e9f7ed199a7376b
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 7123bfda0baa3054dbed336dc4bed8958680cb62
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975967"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910925"
 ---
 # <a name="show-search-results-on-the-map"></a>Zobrazit výsledky hledání na mapě
 
@@ -29,11 +29,11 @@ Existují dva způsoby, jak vyhledat umístění zájmu. Jedním ze způsobů, j
 
 Ve výše uvedeném kódu první blok kódu vytvoří objekt mapy a nastaví mechanismus ověřování pro využití přístupového tokenu. Pokyny najdete v tématu [vytvoření mapy](./map-create.md) .
 
-Druhý blok kódu vytvoří `TokenCredential` pro ověření požadavků HTTP pro Azure Maps pomocí přístupového tokenu. Pak předá `TokenCredential` `atlas.service.MapsURL.newPipeline()` a vytvoří instanci [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) . Představuje adresu URL pro Azure Maps vyhledávacích operací. [](https://docs.microsoft.com/rest/api/maps/search) `searchURL`
+Druhý blok kódu vytvoří `TokenCredential` k ověření požadavků HTTP pro Azure Maps pomocí přístupového tokenu. Poté předá `TokenCredential` `atlas.service.MapsURL.newPipeline()` a vytvoří instanci [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) . `searchURL` představuje adresu URL pro Azure Maps operace [vyhledávání](https://docs.microsoft.com/rest/api/maps/search) .
 
 Třetí blok kódu vytvoří objekt zdroje dat pomocí třídy [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) a přidá do něj výsledky hledání. [Symbolová vrstva](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) používá text nebo ikony pro vykreslení dat na základě bodu zabalených ve [zdroji dat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symboly na mapě.  Pak se vytvoří vrstva symbolů a zdroj dat se přidá do vrstvy symbolu, která se pak přidá do mapy.
 
-Čtvrtý blok kódu používá metodu [SearchFuzzy](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams) v [modulu služby](how-to-use-services-module.md). Umožňuje provést bezplatné hledání textu formuláře prostřednictvím [rozhraní Get REST API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) pro hledání bodů zájmu. Získat přibližné rozhraní API pro hledání může zpracovat jakoukoli kombinaci neostrých vstupů. Kolekce funkcí pro injson z odpovědi je pak extrahována pomocí `geojson.getFeatures()` metody a přidána do zdroje dat, což automaticky vede k vykreslování dat na mapě prostřednictvím vrstvy symbolů.
+Čtvrtý blok kódu používá metodu [SearchFuzzy](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams) v [modulu služby](how-to-use-services-module.md). Umožňuje provést bezplatné hledání textu formuláře prostřednictvím [rozhraní Get REST API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) pro hledání bodů zájmu. Získat přibližné rozhraní API pro hledání může zpracovat jakoukoli kombinaci neostrých vstupů. Kolekce funkcí pro injson z odpovědi je pak extrahována pomocí metody `geojson.getFeatures()` a přidána do zdroje dat, což automaticky vede k vykreslování dat na mapě prostřednictvím vrstvy symbolů.
 
 Poslední blok kódu upraví meze kamery pro mapu pomocí vlastnosti [SetCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) mapy.
 
@@ -42,7 +42,7 @@ Požadavek hledání, zdroj dat a vrstva symbolů a hranice kamery jsou vytvoře
 
 ## <a name="make-a-search-request-via-fetch-api"></a>Vytvoření žádosti o vyhledávání prostřednictvím rozhraní API pro načtení
 
-<iframe height='500' scrolling='no' title='Zobrazení výsledků hledání na mapě' src='//codepen.io/azuremaps/embed/KQbaeM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/KQbaeM/'>zobrazení výsledků hledání na mapě</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Zobrazení výsledků hledání na mapě' src='//codepen.io/azuremaps/embed/KQbaeM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/KQbaeM/'>zobrazení výsledků hledání na mapě</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Ve výše uvedeném kódu první blok kódu vytvoří objekt mapy a nastaví mechanismus ověřování pro využití přístupového tokenu. Pokyny najdete v tématu [vytvoření mapy](./map-create.md) .
@@ -67,7 +67,7 @@ Další informace o **přibližném vyhledávání**:
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 Úplné příklady kódu najdete v následujících článcích:
 

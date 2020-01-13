@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: více tras s Azure Maps'
-description: 'Kurz: Vyhledání tras pro různé režimy cestování pomocí Azure Maps'
+title: 'Kurz: vyhledání více tras podle režimu cestování | Mapy Microsoft Azure'
+description: V tomto kurzu se naučíte, jak najít trasy pro různé režimy cestování pomocí Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cec7027ee0eadae2284e9aa2b127c195870ee929
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 258572d4451be6d9a1090c032467e85889148d14
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613631"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910854"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>Kurz: Vyhledání tras pro různé režimy cestování pomocí Azure Maps
 
@@ -117,7 +117,7 @@ Následující kroky ukazují, jak vytvořit statickou stránku HTML s vložený
 
 2. Uložte soubor **MapTruckRoute.html** a aktualizujte stránku v prohlížeči. Pokud s mapou pracujete a přiblížíte se k Los Angeles, měla by se zobrazit ulice s aktuálními daty o provozu.
 
-   ![Zobrazení mapy provozu](./media/tutorial-prioritized-routes/traffic-map.png)
+   ![Zobrazení provozu na mapě](./media/tutorial-prioritized-routes/traffic-map.png)
 
 <a id="queryroutes"></a>
 

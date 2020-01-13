@@ -3,7 +3,7 @@ title: Aktualizace agenta Azure Linux z GitHubu
 description: Informace o tom, jak aktualizovat agenta Azure Linux pro virtuální počítač Linux v Azure
 services: virtual-machines-linux
 documentationcenter: ''
-author: axayjo
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
-ms.author: akjosh
-ms.openlocfilehash: 02180af0b388a8f10e0689bc4ea176ee60974666
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: mimckitt
+ms.openlocfilehash: 03e1689ca495d3fd3c8efce6b039386711a49472
+ms.sourcegitcommit: d48afd9a09f850b230709826d4a5cd46e57d19fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75359004"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75904910"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Postup aktualizace agenta Azure Linux na virtuálním počítači
 
@@ -88,77 +88,6 @@ initctl restart walinuxagent
 
 ```bash
 systemctl restart walinuxagent.service
-```
-
-## <a name="debian"></a>Debian
-
-### <a name="debian-7-wheezy"></a>Debian 7 "Wheezy"
-
-#### <a name="check-your-current-package-version"></a>Ověřit aktuální verzi balíčku
-
-```bash
-dpkg -l | grep waagent
-```
-
-#### <a name="update-package-cache"></a>Aktualizovat mezipaměť balíčku
-
-```bash
-sudo apt-get -qq update
-```
-
-#### <a name="install-the-latest-package-version"></a>Nainstalovat nejnovější verzi balíčku
-
-```bash
-sudo apt-get install waagent
-```
-
-#### <a name="enable-agent-auto-update"></a>Povolit automatickou aktualizaci agenta
-Tato verze Debian nemá verzi > = 2.0.16, proto není pro ni k dispozici žádná aktualizace. Výstup z výše uvedeného příkazu vám ukáže, jestli je balíček aktuální.
-
-### <a name="debian-8-jessie--debian-9-stretch"></a>Debian 8 "Jessie"/Debian 9 "Stretch"
-
-#### <a name="check-your-current-package-version"></a>Ověřit aktuální verzi balíčku
-
-```bash
-apt list --installed | grep waagent
-```
-
-#### <a name="update-package-cache"></a>Aktualizovat mezipaměť balíčku
-
-```bash
-sudo apt-get -qq update
-```
-
-#### <a name="install-the-latest-package-version"></a>Nainstalovat nejnovější verzi balíčku
-
-```bash
-sudo apt-get install waagent
-```
-#### <a name="ensure-auto-update-is-enabled"></a>Zajistěte, aby byla povolená Automatická aktualizace. 
-
-Nejprve zkontrolujte, zda je povolena:
-
-```bash
-cat /etc/waagent.conf
-```
-
-Najde ' AutoUpdate. Enabled '. Pokud se zobrazí tento výstup, je povolený:
-
-```bash
-# AutoUpdate.Enabled=y
-AutoUpdate.Enabled=y
-```
-
-Chcete-li povolit běh:
-
-```bash
-sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
-```
-
-### <a name="restart-the-waagent-service"></a>Restartujte službu waagent.
-
-```
-sudo systemctl restart walinuxagent.service
 ```
 
 ## <a name="red-hat--centos"></a>Red Hat/CentOS

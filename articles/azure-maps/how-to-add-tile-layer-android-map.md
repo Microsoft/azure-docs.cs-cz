@@ -1,6 +1,6 @@
 ---
-title: Přidání vrstvy dlaždic do map pro Android v Azure Maps | Microsoft Docs
-description: Postup přidání vrstvy dlaždic na mapu pomocí Azure Maps Android SDK
+title: Přidat dlaždicovou vrstvu do map pro Android | Mapy Microsoft Azure
+description: V tomto článku se naučíte, jak vykreslit vrstvu dlaždice na mapě pomocí Android SDK Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5d5f50a38db95f6e62bdd8c51aefd5957041e682
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e54eeaa6dafd60e5fc481f2f4b45929edda77c44
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886608"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911512"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Přidání vrstvy dlaždice na mapu pomocí Azure Maps Android SDK
 
@@ -23,19 +23,19 @@ Vrstva dlaždice se načte do dlaždic ze serveru. Tyto obrázky mohou být buď
 
 * X, Y, přibližování zápisu na úrovni přiblížení, x je sloupec a Y je pozice dlaždice v mřížce dlaždice.
 * Quadkey Notation – kombinace x, y, informace o přiblížení na jednu řetězcovou hodnotu, která je jedinečný identifikátor pro dlaždici.
-* Souřadnice ohraničovacího rámečku ohraničovacího rámečku se dají použít k určení obrázku ve formátu `{west},{south},{east},{north}` , který se běžně používá ve [službě mapování webu (WMS)](https://www.opengeospatial.org/standards/wms).
+* Souřadnice ohraničovacího rámečku vázaného rámečku lze použít k určení obrázku ve formátu `{west},{south},{east},{north}`, který se běžně používá službou [mapování webu (WMS)](https://www.opengeospatial.org/standards/wms).
 
 > [!TIP]
 > TileLayer je skvělý způsob, jak vizualizovat velké datové sady na mapě. Z obrázku lze generovat pouze dlaždicovou vrstvu, ale vektorová data lze také vykreslovat jako dlaždicovou vrstvu. Vykreslováním vektorových dat jako dlaždicovou vrstvou musí mapový ovládací prvek načíst pouze dlaždice, jejichž velikost může být mnohem menší než vektorová data, která představují. Tato technika je používána mnoha uživateli, kteří potřebují vykreslit miliony řádků dat na mapě.
 
 Adresa URL dlaždice předaná do vrstvy dlaždice musí být adresa URL protokolu HTTP/HTTPS pro prostředek TileJSON nebo šablona adresy URL dlaždice, která používá následující parametry: 
 
-* `{x}`-X pozice dlaždice. Také potřebuje `{y}` a `{z}`.
-* `{y}`-Y pozice dlaždice. Také potřebuje `{x}` a `{z}`.
-* `{z}`– Úroveň přiblížení dlaždice Také potřebuje `{x}` a `{y}`.
-* `{quadkey}`-Dlaždice quadkey identifikátor založený na konvenci pojmenování systému dlaždice mapy Bing.
-* `{bbox-epsg-3857}`– Řetězec ohraničujícího pole ve formátu `{west},{south},{east},{north}` v prostorovém referenčním systému EPSG 3857.
-* `{subdomain}`– Zástupný symbol, kde budou přidány hodnoty subdomény, pokud budou zadány.
+* pozice dlaždice `{x}`-X Také musí `{y}` a `{z}`.
+* pozice dlaždice `{y}`-Y. Také musí `{x}` a `{z}`.
+* `{z}` – úroveň přiblížení dlaždice Také musí `{x}` a `{y}`.
+* `{quadkey}` – quadkey identifikátor dlaždice založený na konvenci pojmenování systému dlaždic mapy Bing
+* `{bbox-epsg-3857}` – řetězec ohraničujícího pole s formátem `{west},{south},{east},{north}` v prostorovém referenčním systému EPSG 3857.
+* `{subdomain}` – zástupný symbol, kde se budou hodnoty subdomény zadat, se přidají.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -48,7 +48,7 @@ Chcete-li dokončit proces v tomto článku, je nutné nainstalovat [Azure Maps 
 
 Na mapu můžete přidat vrstvu dlaždice podle následujících kroků.
 
-1. Upravte **> rozložení > activity_main. XML** , aby vypadala takto:
+1. Upravte **> layout > activity_main. XML** , aby vypadal takto:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -71,7 +71,7 @@ Na mapu můžete přidat vrstvu dlaždice podle následujících kroků.
     </FrameLayout>
     ```
 
-2. Zkopírujte následující fragment kódu níže do metody **Create ()** vaší `MainActivity.java` třídy.
+2. Zkopírujte následující fragment kódu níže do metody **Create ()** třídy `MainActivity.java`.
 
     ```Java
     mapControl.onReady(map -> {
@@ -84,9 +84,9 @@ Na mapu můžete přidat vrstvu dlaždice podle následujících kroků.
     });
     ```
     
-    Výše uvedený fragment kódu získá Azure Maps instanci ovládacího prvku mapy pomocí zpětného volání metody **Reada ()** . Potom vytvoří `TileLayer` objekt a předá do `tileUrl` možnosti adresu URL dlaždice **XYZ** s formátováním. Neprůhlednost vrstvy je nastavena na hodnotu a `0.8` vzhledem k tomu, že dlaždice ze použité služby dlaždice jsou 256 pixelů, jsou tyto informace předány `tileSize` do možnosti. Vrstva dlaždice se pak předává do Správce vrstev mapy.
+    Výše uvedený fragment kódu získá Azure Maps instanci ovládacího prvku mapy pomocí zpětného volání metody **Reada ()** . Pak vytvoří objekt `TileLayer` a předá do možnosti `tileUrl` naformátovanou adresu URL dlaždice **XYZ** . Neprůhlednost vrstvy je nastavena na `0.8` a vzhledem k tomu, že dlaždice ze použité služby dlaždice jsou 256 pixelů, jsou tyto informace předány do možnosti `tileSize`. Vrstva dlaždice se pak předává do Správce vrstev mapy.
 
-    Po přidání výše uvedeného `MainActivity.java` fragmentu kódu by měl vypadat takto:
+    Po přidání fragmentu kódu výše by `MainActivity.java` mělo vypadat takto:
     
     ```Java
     package com.example.myapplication;
@@ -172,9 +172,9 @@ Pokud teď svou aplikaci spustíte, měli byste vidět čáru na mapě, jak vid�
 
 <center>
 
-![Čára mapy Android](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
+![](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center> čáry mapy Androidu
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o tom, jak nastavit styly mapy, najdete v následujícím článku.
 

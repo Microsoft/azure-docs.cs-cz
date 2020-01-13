@@ -1,6 +1,6 @@
 ---
-title: Pokrytí směrování v Azure Maps | Microsoft Docs
-description: Přečtěte si o pokrytí směrování v Azure Maps
+title: Pokrytí směrování | Mapy Microsoft Azure
+description: V tomto článku se dozvíte o oblastech s pokrytím směrování pro Microsoft Azure Maps.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 04/04/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 4ca837d871dc439cadd1ca5b69bf9c7a5d12fddc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f6e16ed6646340a5c623ecd027e8b0fe323bf7f9
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408354"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910615"
 ---
 # <a name="azure-maps-routing-coverage"></a>Pokrytí směrování Azure Maps
 

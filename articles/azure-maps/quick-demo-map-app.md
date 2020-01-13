@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: interaktivní vyhledávání map pomocí Azure Maps'
-description: Rychlý Start Azure – Vytvoření ukázky interaktivního hledání v mapě pomocí Azure Maps
+title: 'Rychlý Start: interaktivní vyhledávání map pomocí Azure Maps | Mapy Microsoft Azure'
+description: Naučte se vytvářet ukázkovou webovou aplikaci pro interaktivní vyhledávání v mapě pomocí webové sady SDK služby Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7553499dc9aba8d20bee126204b6d19f2386d295
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5f11fa4fce38b125e21564b4cfbe4582e55a7b64
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408429"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910680"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Rychlý Start: vytvoření interaktivní vyhledávací mapy pomocí Azure Maps
 
@@ -57,7 +57,7 @@ Po úspěšném vytvoření účtu Maps načtěte klíč, který vám umožní d
 2. V části nastavení vyberte **ověřování**.
 3. Zkopírujte do schránky **Primární klíč**. Místně ho uložte, abyste ho mohli použít později v tomto kurzu.
 
-![Získání primárního klíče na portálu](./media/quick-demo-map-app/get-key.png)
+![Získání klíče primárního klíče Azure Maps v Azure Portal](./media/quick-demo-map-app/get-key.png)
 
 ## <a name="download-the-application"></a>Stažení aplikace
 
@@ -73,7 +73,7 @@ Po úspěšném vytvoření účtu Maps načtěte klíč, který vám umožní d
 4. Vyzkoušejte interaktivní hledání. Do vyhledávacího pole v levém horním rohu ukázkové webové aplikace vyhledejte **restaurace**.
 5. Přesuňte ukazatel myši na seznam adres a umístění, která se zobrazí pod vyhledávacím polem. Všimněte si, jak odpovídající kód PIN na mapě vychází z informací o tomto umístění. Z důvodu zajištění ochrany soukromých podniků jsou zobrazené fiktivní názvy a adresy.
 
-    ![Webová aplikace interaktivního hledání](./media/quick-demo-map-app/interactive-search.png)
+    ![Webová aplikace interaktivního vyhledávání map](./media/quick-demo-map-app/interactive-search.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

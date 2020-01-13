@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 39051014e5e474264a44983fb366bc08f02c31e0
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dd315277e6e8f29a103760d605a7da4603190c20
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639850"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75908871"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Nejčastější dotazy ke službě Azure front-dveří
 
@@ -99,7 +99,7 @@ Pokud chcete aplikaci uzamknout, aby přijímala provoz jenom z vašich konkrét
     > Back-endové IP místo pro front-endu se může později změnit, ale zajistíme, že budeme integrovat s [rozsahy IP adres Azure a značkami služeb](https://www.microsoft.com/download/details.aspx?id=56519). Doporučujeme, abyste se přihlásili k odběru [rozsahů IP adres Azure a značek služeb](https://www.microsoft.com/download/details.aspx?id=56519) pro jakékoli změny nebo aktualizace.
 
 -   Vyfiltruje hodnoty pro příchozí hlavičku**X předaného hostitele**odesílané předními dvířky. Jediné povolené hodnoty pro hlavičku by měly být všechny hostitele front-endu, jak jsou definovány ve vaší frontě konfiguraci před dvířky. Ve skutečnosti přesněji řečeno jenom názvy hostitelů, ze kterých chcete přijímat provoz, v tomto konkrétním back-endu.
-    - Příklad – řekněme, že konfigurace front-endu má následující front-endové hostitele _`contoso.azurefd.net`_ (A), _`www.contoso.com`_ (B), _ (C) a _`notifications.contoso.com`_ (D). Pojďme předpokládat, že máte dvě back-endy X a Y. 
+    - Příklad: řekněme, že konfigurace front-endu má následující front-endové hostitele _`contoso.azurefd.net`_ (A), _`www.contoso.com`_ (B), _`api.contoso.com`_ (C) a _`notifications.contoso.com`_ (D). Pojďme předpokládat, že máte dvě back-endy X a Y. 
     - Back-end X by měl přijímat jenom přenosy z názvů hostitelů a a B. back-end Y může přijímat přenosy z A, C a D.
     - V případě back-endu X byste proto měli přijmout jenom provoz s hlavičkou "**X předávaných hostitelů**" nastavenou na buď _`contoso.azurefd.net`_ , nebo _`www.contoso.com`_ . Pro všechno ostatní by back-end X měl zamítnout přenos.
     - Podobně platí, že na back-endu Y byste měli přijmout jenom provoz s hlavičkou "**X předávaných hostitelů**" nastavenou na _`contoso.azurefd.net`_ , _`api.contoso.com`_ nebo _`notifications.contoso.com`_ . Pro všechno ostatní back-end Y by měl přenos zamítnout.

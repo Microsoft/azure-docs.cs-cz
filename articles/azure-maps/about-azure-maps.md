@@ -1,6 +1,6 @@
 ---
-title: Přehled Azure Maps | Microsoft Docs
-description: Seznámení s Azure Maps
+title: Přehled | Mapy Microsoft Azure
+description: V tomto článku se dozvíte o službách a funkcích v Microsoft Azure Maps a o tom, jak je používat ve svých aplikacích.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/04/2019
@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: dbcb0e87159efc7cc33101cdd5eee55afbdf3c10
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 353850cacb06dcc8a0db1b957114db314d7002a3
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516642"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911836"
 ---
 # <a name="what-is-azure-maps"></a>Co je služba Azure Maps?
 
-Azure Maps je kolekce geoprostorových služeb, které používají data z nového mapování k zajištění přesného geografického kontextu pro webové a mobilní aplikace. Azure Maps poskytuje:
+Azure Maps je kolekce geoprostorových služeb, které používají čerstvá data mapování k zajištění přesného geografického kontextu pro webové a mobilní aplikace. Azure Maps poskytuje:
 
 * Rozhraní REST API pro vykreslování map v několika stylech a v satelitních proobrázcích.
 * Vyhledá adresy, místa a body zájmu po celém světě.
@@ -38,7 +38,7 @@ Následující video vysvětluje Azure Maps do hloubky:
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps/player?format=ny" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
-## <a name="map-controls"></a>Mapové ovládací prvky
+## <a name="map-controls"></a>Ovládací prvky mapy
 
 ### <a name="web-sdk"></a>Sada Web SDK
 
@@ -90,9 +90,9 @@ Služba směrování nabízí verzi Preview pokročilých funkcí, jako napřík
 
 Podrobnosti o možnostech směrování najdete v [dokumentaci k rozhraní API pro směrování](https://docs.microsoft.com/rest/api/maps/route).
 
-### <a name="search-service"></a>Služba vyhledávání
+### <a name="search-service"></a>Služba Search
 
-Vyhledávací služba pomáhá vývojářům vyhledávat adresy, místa, obchodní výpisy podle názvu nebo kategorie a dalších geografických informací. Služba vyhledávání může přesměrovat adresy zeměpisných a meziulic v závislosti na Latitudes a zeměpisných délkách. [](https://en.wikipedia.org/wiki/Reverse_geocoding)
+Vyhledávací služba pomáhá vývojářům vyhledávat adresy, místa, obchodní výpisy podle názvu nebo kategorie a dalších geografických informací. Služba vyhledávání může [přesměrovat](https://en.wikipedia.org/wiki/Reverse_geocoding) adresy zeměpisných a meziulic v závislosti na Latitudes a zeměpisných délkách.
 
 ![Příklad hledání na mapě](media/about-azure-maps/Introduction_Search.png)
 
@@ -145,8 +145,8 @@ Podrobnosti o této službě najdete v [dokumentaci k rozhraní API pro časové
 
 Přenosová služba je sada webových služeb, které můžou vývojáři použít k vytváření webových a mobilních aplikací, které vyžadují informace o provozu. Služba nabízí dva datové typy:
 
-* Tok přenosů: Zaznamenané rychlosti v reálném čase a doby provozu pro všechny klíčové cesty v síti.
-* Incidenty provozu: Aktuální zobrazení zablokovaných a incidentů provozu kolem sítě.
+* Tok přenosů: zaznamenané rychlosti v reálném čase a doby provozu pro všechny klíčové cesty v síti.
+* Incidenty provozu: aktuální přehled o zaseknutí a incidentech provozu kolem sítě v provozu.
 
 ![Příklad mapy s informacemi o provozu](media/about-azure-maps/Introduction_Traffic.png)
 
@@ -164,7 +164,7 @@ Azure Maps je postavená na mobilitu a může vám pomáhat vyvíjet aplikace pr
 
 Kromě toho Azure Maps nabízí pohodlný [mapový ovládací prvek v JavaScriptu](https://docs.microsoft.com/javascript/api/azure-maps-control) s jednoduchým programovacím modelem pro rychlý a snadný vývoj webových i mobilních aplikací.
 
-## <a name="usage"></a>Použití
+## <a name="usage"></a>Využití
 
 Přístup ke službám Azure Maps Services je podstatou [Azure Portal](https://portal.azure.com) a vytvořením účtu Azure Maps.
 
@@ -179,12 +179,12 @@ Rozhraní API pro Azure Maps jsou aktuálně k dispozici ve všech zemích nebo 
 
 Zkontrolujte, že umístění aktuální IP adresy není v jedné z uvedených nepodporovaných zemí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Vyzkoušejte si ukázkovou aplikaci, která prezentuje Azure Maps:
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Vytvoření webové aplikace](quick-demo-map-app.md)
+> [Rychlý Start: Vytvoření webové aplikace](quick-demo-map-app.md)
 
 Udržujte si přehled o Azure Maps: 
 

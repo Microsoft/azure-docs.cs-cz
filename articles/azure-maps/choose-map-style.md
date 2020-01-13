@@ -1,7 +1,6 @@
 ---
-title: Zvolit styl mapy v Azure Maps
-titleSuffix: Azure Maps
-description: Přečtěte si o funkcích souvisejících s Azure Maps stylu.
+title: Funkce stylů mapy | Mapy Microsoft Azure
+description: V tomto článku se dozvíte o funkcích souvisejících s funkcemi, které jsou k dispozici v sadě Microsoft Azure Maps Web SDK.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 07/29/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: e1d3d1b5904eded9f35c5ba628bea6426e7afaf0
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b92e03c4e5346dd39eaba84cfeeedb93e418678c
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531543"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911794"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>Zvolit styl mapy v Azure Maps
 

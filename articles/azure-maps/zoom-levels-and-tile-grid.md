@@ -1,6 +1,6 @@
 ---
-title: Úrovně přiblížení a mřížka dlaždic v Azure Maps | Microsoft Docs
-description: Přečtěte si o úrovních přiblížení a mřížce dlaždic v Azure Maps
+title: Úrovně přiblížení a mřížka dlaždic | Mapy Microsoft Azure
+description: V tomto článku se dozvíte o úrovních přiblížení a mřížce dlaždic v mapách Microsoft Azure.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 68fbb9b8cd65e24d0fea0c571e5cf01b53560ba7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 09d6e357b87b59e8010e38693806da5f26f5b679
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407571"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910775"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Úrovně přiblížení a mřížka dlaždic
 
@@ -26,7 +26,7 @@ Pro optimalizaci výkonu načítání a zobrazování map je mapa rozdělena na 
 
 <center>
 
-dlaždice ![World](./media/zoom-levels-and-tile-grid/world0.png)</center>
+dlaždice ![World Map](./media/zoom-levels-and-tile-grid/world0.png)</center>
 
 Úroveň přiblížení 1 používá k vykreslení světa čtyři dlaždice: 2 x 2 čtverec
 

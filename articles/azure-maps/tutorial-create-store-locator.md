@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: vytvoření lokátoru úložiště pomocí Azure Maps'
-description: 'Kurz: vytvoření lokátoru úložiště pomocí Azure Maps.'
+title: 'Kurz: Vytvoření aplikace lokátoru úložiště pomocí Azure Maps | Mapy Microsoft Azure'
+description: V tomto kurzu se naučíte, jak vytvořit webovou aplikaci lokátoru úložiště pomocí webu Microsoft Azure Maps Web SDK.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b5ce78e95d139cf16b6193fedffc563513b39719
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 830641ae1421b799ab8e7d8b47a1c1a6e38419cf
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408029"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910952"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Kurz: vytvoření lokátoru úložiště pomocí Azure Maps
 
@@ -43,13 +43,13 @@ Před přechodem do kódu je dobré začít s návrhem. Vaše Lokátory úloži�
 
 <center>
 
-![drátový model lokátoru úložiště pro umístění contoso kávy v kavárně](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
+![drátový model aplikace lokátoru úložiště pro umístění pro kavárnu v rámci služby contoso](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
 
 Abychom maximalizovali užitečnost tohoto lokátoru úložiště, zahrnuli jsme rozložení, které se přizpůsobí, když je šířka obrazovky uživatele menší než 700 pixelů. Rozložení s odezvou usnadňuje používání lokátoru úložiště na malé obrazovce, například na mobilním zařízení. Zde je drátěný model rozložení malého obrazovky:  
 
 <center>
 
-![drátový model lokátoru společnosti Contoso pro úložiště na mobilních zařízeních](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
+![drátěný model aplikace lokátoru ve společnosti Contoso pro úložiště na mobilních zařízeních](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
 
 Drátěné diagramy znázorňují poměrně jasné aplikace. Aplikace má vyhledávací pole, seznam přilehlých obchodů, mapu s některými značkami (symboly) a automaticky otevírané okno, které zobrazí další informace, když uživatel vybere značku. Podrobněji najdete tady funkce, které v tomto kurzu sestavíme do tohoto lokátoru úložiště:
 

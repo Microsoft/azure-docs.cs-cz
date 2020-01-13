@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 4cd4cffdb0357b1cd73b1613e52c2a6c1a60f71e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc861126cd723bbb0f7c43d5d2db4eed1503605a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457048"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911894"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Trasování zpráv ze zařízení do cloudu Azure IoT pomocí distribuované trasování (Preview)
 
@@ -208,15 +208,15 @@ Chcete-li změnit procento zpráv, které mají být trasovány z cloudu, je nut
 
 1. Volitelné Nastavte vzorkovací frekvenci na jinou hodnotu a sledujte změnu v četnosti, kterou zprávy do vlastností aplikace zahrnují `tracestate`.
 
-### <a name="update-using-azure-iot-hub-toolkit-for-vs-code"></a>Aktualizace pomocí sady Azure IoT Hub Toolkit pro VS Code
+### <a name="update-using-azure-iot-hub-for-vs-code"></a>Aktualizace pomocí IoT Hub Azure pro VS Code
 
-1. Nainstalujte VS Code a potom z [tohoto místa](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)nainstalujte nejnovější verzi služby Azure IoT Hub Toolkit for vs Code.
+1. Nainstalujte VS Code a potom z [tohoto místa](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)nainstalujte nejnovější verzi Azure IoT Hub pro vs Code.
 
 1. Otevřete VS Code a [nastavte připojovací řetězec IoT Hub](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit#user-content-prerequisites).
 
 1. Rozbalte zařízení a vyhledejte **Nastavení distribuované trasování (Preview)** . V takovém případě klikněte na možnost **aktualizovat nastavení distribuovaného trasování (Preview)** dílčího uzlu.
 
-    ![Povolit distribuované trasování v sadě Azure IoT Hub Toolkit](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
+    ![Povolit distribuované trasování v rozšíření Azure IoT Hub](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
 
 1. V místním okně vyberte **Povolit**a stisknutím klávesy ENTER potvrďte 100 jako vzorkovací frekvenci.
 

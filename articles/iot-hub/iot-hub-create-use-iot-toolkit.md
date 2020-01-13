@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 3fe4dfae2e86d549056805e87c0fd3927697fe24
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 668087ae596688e86b7b84a16bc5c0fd0f9fcef6
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890573"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912257"
 ---
 # <a name="create-an-iot-hub-using-the-azure-iot-tools-for-visual-studio-code"></a>Vytvoření centra IoT pomocí nástrojů Azure IoT pro Visual Studio Code
 
@@ -30,15 +30,15 @@ K dokončení tohoto článku potřebujete následující:
 
 - [Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) pro Visual Studio Code.
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
 
-1. V Visual Studio Code otevřete zobrazení **Průzkumníka** .
+1. V sadě Visual Studio Code otevřete **Explorer** zobrazení.
 
-2. V dolní části Průzkumníka rozbalte část **zařízení Azure IoT Hub** . 
+2. V dolní části Průzkumníku, rozbalte **zařízení Azure IoT Hub** oddílu. 
 
    ![Rozšíření zařízení Azure IoT Hub](./media/iot-hub-create-use-iot-toolkit/azure-iot-hub-devices.png)
 
-3. V záhlaví oddílu **zařízení IoT Hub Azure** klikněte na **...** Pokud se tři tečky nevidí, najeďte myší na záhlaví. 
+3. Klikněte na **...**  v **zařízení Azure IoT Hub** hlavičku oddílu. Pokud nevidíte tři tečky, najeďte myší na záhlaví. 
 
 4. Vyberte **vytvořit IoT Hub**.
 
@@ -64,4 +64,4 @@ Nyní jste nasadili službu IoT Hub pomocí nástrojů Azure IoT pro Visual Stud
 
 * [Použití nástrojů Azure IoT pro Visual Studio Code pro správu zařízení IoT Hub Azure](iot-hub-device-management-iot-toolkit.md)
 
-* [Podívejte se na stránku wiki sady Azure IoT Hub Toolkit](https://github.com/microsoft/vscode-azure-iot-toolkit/wiki).
+* [Přečtěte si stránku wikiwebu IoT Hub Azure pro vs Code](https://github.com/microsoft/vscode-azure-iot-toolkit/wiki).

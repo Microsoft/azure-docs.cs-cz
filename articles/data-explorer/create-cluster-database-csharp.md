@@ -1,18 +1,18 @@
 ---
 title: Vytvoření clusteru a databáze Azure Průzkumník dat pomocíC#
 description: Naučte se vytvořit cluster a databázi Azure Průzkumník dat pomocíC#
-author: oflipman
-ms.author: oflipman
+author: lucygoldbergmicrosoft
+ms.author: lugoldbe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 1260b7754f80a3d008084f632d299c684162628e
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 7dc032d52a8cb3c5c54cf57c7ae7bf697796b5cc
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667877"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910603"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Vytvoření clusteru a databáze Azure Průzkumník dat pomocíC#
 
@@ -26,7 +26,7 @@ ms.locfileid: "74667877"
 
 Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Pokud chcete použít Azure Průzkumník dat, musíte nejdřív vytvořit cluster a v tomto clusteru vytvořit jednu nebo víc databází. Pak data ingestujte do databáze, abyste na ni mohli spouštět dotazy. V tomto článku vytvoříte cluster a databázi pomocí nástroje C#.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud nemáte nainstalovanou aplikaci Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
@@ -105,7 +105,7 @@ Pokud výsledek obsahuje `ProvisioningState` s hodnotou `Succeeded`, cluster se 
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
    | clusterName | *mykustocluster* | Název clusteru, ve kterém se databáze vytvoří.|
-   | Databáze | *mykustodatabase* | Název vaší databáze.|
+   | databaseName | *mykustodatabase* | Název vaší databáze.|
    | resourceGroupName | *testrg* | Název skupiny prostředků, ve které se cluster vytvoří. |
    | softDeletePeriod | *3650:00:00:00* | Doba, po kterou budou data uchována k dispozici pro dotaz. |
    | hotCachePeriod | *3650:00:00:00* | Doba, po kterou budou data uchována v mezipaměti. |

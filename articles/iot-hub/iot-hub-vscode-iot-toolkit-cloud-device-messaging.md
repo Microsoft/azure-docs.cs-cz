@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
-ms.openlocfilehash: 785c6f2b36396558cc21ce6c025be59c456ff32d
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 0b081229dcb382786fea03dff358b5cc47d77ee7
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083260"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912020"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Použití nástrojů Azure IoT pro Visual Studio Code k posílání a přijímání zpráv mezi zařízením a IoT Hub
 
@@ -64,11 +64,11 @@ Pokud chcete monitorovat zprávy odesílané ze zařízení do služby IoT Hub, 
 
 1. Klikněte pravým tlačítkem na své zařízení a vyberte **Spustit sledování integrovaný koncový bod události**.
 
-2. Monitorované zprávy se zobrazí ve **výstupu** > zobrazení sady **nástrojů Azure IoT Hub** .
+2. Monitorované zprávy se zobrazí ve **výstupu** > zobrazení **Azure IoT Hub** .
 
 3. Chcete-li ukončit monitorování, klikněte pravým tlačítkem myši na zobrazení **výstupu** a vyberte možnost **Zastavit sledování vestavěného koncového bodu události**.
 
-## <a name="send-cloud-to-device-messages"></a>Odesílání zpráv z cloudu do zařízení
+## <a name="send-cloud-to-device-messages"></a>Posílání zpráv z cloudu na zařízení
 
 Pokud chcete poslat zprávu ze služby IoT Hub do svého zařízení, postupujte podle těchto kroků:
 
@@ -76,7 +76,7 @@ Pokud chcete poslat zprávu ze služby IoT Hub do svého zařízení, postupujte
 
 2. Do vstupního pole zadejte zprávu.
 
-3. Výsledky se zobrazí ve **výstupu** > zobrazení sady **nástrojů Azure IoT Hub** .
+3. Výsledky se zobrazí ve **výstupu** > zobrazení **Azure IoT Hub** .
 
 ## <a name="next-steps"></a>Další kroky
 

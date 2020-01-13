@@ -1,36 +1,36 @@
 ---
 title: Vytvoření clusteru a databáze Azure Průzkumník dat pomocí Pythonu
 description: Naučte se vytvářet cluster a databázi Azure Průzkumník dat pomocí Pythonu.
-author: oflipman
-ms.author: oflipman
+author: lucygoldbergmicrosoft
+ms.author: lugoldbe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: b3329ccb3edb3077a45e3bbf9ba7b48d7e3a93a2
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 5a3a7d79e43a4e0b4a160837be4d7f3cc33f4a91
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996229"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911942"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Vytvoření clusteru a databáze Azure Průzkumník dat pomocí Pythonu
 
 > [!div class="op_single_selector"]
-> * [Bran](create-cluster-database-portal.md)
-> * [CLI](create-cluster-database-cli.md)
-> * [Prostředí](create-cluster-database-powershell.md)
+> * [Azure Portal](create-cluster-database-portal.md)
+> * [Rozhraní příkazového řádku](create-cluster-database-cli.md)
+> * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [Šablona ARM](create-cluster-database-resource-manager.md)
 
-Azure Průzkumník dat je rychlá a plně spravovaná služba analýzy dat pro analýzu velkých objemů datových proudů z aplikací, webů, zařízení IoT a dalších prostředků v reálném čase. Pokud chcete použít Azure Průzkumník dat, musíte nejdřív vytvořit cluster a v tomto clusteru vytvořit jednu nebo víc databází. Pak data ingestujte do databáze, abyste na ni mohli spouštět dotazy. V tomto článku vytvoříte cluster a databázi pomocí Pythonu.
+Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Pokud chcete použít Azure Průzkumník dat, musíte nejdřív vytvořit cluster a v tomto clusteru vytvořit jednu nebo víc databází. Pak data ingestujte do databáze, abyste na ni mohli spouštět dotazy. V tomto článku vytvoříte cluster a databázi pomocí Pythonu.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="install-python-package"></a>Nainstalovat balíček Pythonu
+## <a name="install-python-package"></a>Instalovat balíček Pythonu
 
 Pro instalaci balíčku Pythonu pro Azure Průzkumník dat (Kusto) otevřete příkazový řádek, který má v cestě Python. Spusťte tento příkaz:
 
@@ -38,8 +38,8 @@ Pro instalaci balíčku Pythonu pro Azure Průzkumník dat (Kusto) otevřete př
 pip install azure-common
 pip install azure-mgmt-kusto
 ```
-## <a name="authentication"></a>Ověřování
-Pro spuštění příkladů v tomto článku potřebujeme aplikaci služby Azure AD a instanční objekt, který má přístup k prostředkům. Pokud chcete vytvořit bezplatnou aplikaci Azure AD a přidat přiřazení role v oboru předplatného, podívejte se na [vytvořit aplikaci Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) . Také ukazuje, jak získat `Directory (tenant) ID`, `Application ID` a `Client Secret`.
+## <a name="authentication"></a>Ověření
+Pro spuštění příkladů v tomto článku potřebujeme aplikaci služby Azure AD a instanční objekt, který má přístup k prostředkům. Pokud chcete vytvořit bezplatnou aplikaci Azure AD a přidat přiřazení role v oboru předplatného, podívejte se na [vytvořit aplikaci Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) . Také ukazuje, jak získat `Directory (tenant) ID`, `Application ID`a `Client Secret`.
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Vytvoření clusteru Azure Průzkumník dat
 
@@ -78,16 +78,16 @@ Pro spuštění příkladů v tomto článku potřebujeme aplikaci služby Azure
     poller = cluster_operations.create_or_update(resource_group_name, cluster_name, cluster)
     ```
 
-   |**Nastavením** | **Navrhovaná hodnota** | **Popis pole**|
+   |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
    | cluster_name | *mykustocluster* | Požadovaný název clusteru.|
    | sku_name | *Standard_D13_v2* | SKU, které bude použito pro váš cluster. |
-   | vrstva | *Standardní* | Úroveň SKU. |
-   | klíčivost | *Automatické* | Počet instancí clusteru |
+   | Basic | *Standard* | Úroveň SKU. |
+   | capacity | *Automatické* | Počet instancí clusteru |
    | resource_group_name | *testrg* | Název skupiny prostředků, ve které se cluster vytvoří. |
 
     > [!NOTE]
-    > **Vytvoření clusteru** je dlouhodobá operace. Metoda **create_or_update** vrací instanci LROPoller, viz [Třída LROPoller](/python/api/msrest/msrest.polling.lropoller?view=azure-python) pro získání dalších informací.
+    > **Vytvoření clusteru** je dlouhodobá operace. Metoda **create_or_update** vrací instanci třídy LROPoller, viz [LROPoller Class](/python/api/msrest/msrest.polling.lropoller?view=azure-python) a získejte další informace.
 
 1. Spusťte následující příkaz a ověřte, zda byl cluster úspěšně vytvořen:
 
@@ -95,7 +95,7 @@ Pro spuštění příkladů v tomto článku potřebujeme aplikaci služby Azure
     cluster_operations.get(resource_group_name = resource_group_name, cluster_name= clusterName, custom_headers=None, raw=False)
     ```
 
-Pokud výsledek obsahuje `provisioningState` s hodnotou `Succeeded`, cluster byl úspěšně vytvořen.
+Pokud výsledek obsahuje `provisioningState` s hodnotou `Succeeded`, cluster se úspěšně vytvořil.
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Vytvoření databáze v clusteru Azure Průzkumník dat
 
@@ -118,10 +118,10 @@ Pokud výsledek obsahuje `provisioningState` s hodnotou `Succeeded`, cluster byl
     poller =database_operations.create_or_update(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName, parameters = _database)
     ```
 
-   |**Nastavením** | **Navrhovaná hodnota** | **Popis pole**|
+   |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
    | cluster_name | *mykustocluster* | Název clusteru, ve kterém se databáze vytvoří.|
-   | název_databáze | *mykustodatabase* | Název vaší databáze.|
+   | database_name | *mykustodatabase* | Název vaší databáze.|
    | resource_group_name | *testrg* | Název skupiny prostředků, ve které se cluster vytvoří. |
    | soft_delete_period | *3650 dní, 0:00:00* | Doba, po kterou budou data uchována k dispozici pro dotaz. |
    | hot_cache_period | *3650 dní, 0:00:00* | Doba, po kterou budou data uchována v mezipaměti. |

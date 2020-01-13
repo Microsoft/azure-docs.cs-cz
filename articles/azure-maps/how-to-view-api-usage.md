@@ -1,6 +1,6 @@
 ---
-title: Jak zobrazit využití rozhraní API služby Azure Maps | Dokumentace Microsoftu
-description: Zjistěte, jak na portálu zobrazovat metriky pro volání rozhraní API služby Azure Maps.
+title: Zobrazit metriky využití Azure Maps API | Mapy Microsoft Azure
+description: V tomto článku se dozvíte, jak zobrazit metriky pro volání rozhraní API služby Microsoft Azure Maps v Azure Portal.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 08/06/2018
@@ -8,62 +8,62 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 716f9fbc02905a8981771c2fd9dd2be0baeb8196
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 7ba50f63fb015a8696904df3decd13c811625459
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460191"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911340"
 ---
-# <a name="view-azure-maps-api-usage"></a>Zobrazit využití rozhraní API služby Azure Maps
+# <a name="view-azure-maps-api-usage-metrics"></a>Zobrazit Azure Maps metriky využití rozhraní API
 
-Tento článek popisuje, jak chcete zobrazit metriky využití rozhraní API pro váš účet Azure Maps portálu [portál](https://portal.azure.com). Metriky jsou zobrazeny ve formátu pohodlný grafu podél přizpůsobitelné dobu trvání.
+V tomto článku se dozvíte, jak zobrazit metriky využití rozhraní API pro účet Azure Maps na [portálu](https://portal.azure.com). Metriky se zobrazují ve vhodném formátu grafu po upravitelnou dobu trvání.
 
-## <a name="view-metric-snapshot"></a>Zobrazit metriky snímek
+## <a name="view-metric-snapshot"></a>Zobrazit snímek metriky
 
-Zobrazí se některé běžné metriky na **přehled** stránku vašeho účtu mapy. Aktuálně ukazuje *celkový počet požadavků*, *celkový počet chyb*, a *dostupnosti* přes vybrat dobu trvání.
+Některé běžné metriky si můžete prohlédnout na stránce **Přehled** v účtu Maps. V současné době zobrazuje *Celkový počet požadavků*, *Celkový počet chyb*a *dostupnost* v rámci selektivního časového intervalu.
 
-![Přehled metriky Azure Maps](media/how-to-view-api-usage/portal-overview.png)
+![Přehled Azure Maps metriky využití](media/how-to-view-api-usage/portal-overview.png)
 
-Pokračujte k další části, pokud je potřeba upravit tyto grafy pro konkrétní analýzy.
+Pokud potřebujete přizpůsobit tyto grafy pro konkrétní analýzu, přejděte k další části.
 
 ## <a name="view-detailed-metrics"></a>Zobrazit podrobné metriky
 
-1. Přihlaste se ke svému předplatnému Azure v [portál](https://portal.azure.com).
+1. Přihlaste se k předplatnému Azure na [portálu](https://portal.azure.com).
 
-2. Klikněte na tlačítko **všechny prostředky** nabídky položku na levé straně a přejděte do vaší *účet Azure Maps*.
+2. Klikněte na položku nabídky **všechny prostředky** na levé straně a přejděte na svůj *účet Azure Maps*.
 
-3. Jakmile váš účet v Maps se otevře, klikněte na **metriky** nabídky na levé straně.
+3. Po otevření účtu Maps klikněte na nabídku **metrik** na levé straně.
 
-4. Na **metriky** podokně zvolit jednu z následujících akcí:
+4. V podokně **metriky** vyberte jednu z následujících možností:
 
-   1. **Dostupnost** -vidíme *průměrné* dostupnost rozhraní API po určitou dobu.
-   2. **Využití** – který ukazuje způsob použití *počet* pro váš účet.
+   1. **Dostupnost** – zobrazuje *průměr* dostupnosti rozhraní API za určité časové období.
+   2. **Využití** – ukazuje, jak se zobrazuje *počet* použití pro váš účet.
 
-      ![Podokno Azure Maps metriky](media/how-to-view-api-usage/portal-metrics.png)
+      ![Podokno metriky využití Azure Maps](media/how-to-view-api-usage/portal-metrics.png)
 
-5. Dále můžete vybrat *časový rozsah* kliknutím **posledních 24 hodin (automaticky)** . Ve výchozím nastavení je čas rozsah nastavený na 24 hodin. Po kliknutí na tlačítko, zobrazí se všechny volitelné časového rozsahu. Můžete vybrat *časové intervaly* a chcete zobrazit čas jako *místní* nebo *GMT* ve stejném rozevíracího seznamu. Klikněte na tlačítko **Použít**.
+5. V dalším kroku můžete vybrat *časový rozsah* kliknutím na **posledních 24 hodin (automaticky)** . Ve výchozím nastavení je časový rozsah nastavený na 24 hodin. Po kliknutí se zobrazí všechny vybrané časové rozsahy. Můžete vybrat *časové rozlišení* a zvolit, že se má v jednom rozevíracím seznamu zobrazit čas jako *místní* nebo *GMT* . Klikněte na tlačítko **Použít**.
 
-    ![Azure Maps metriky časový rozsah](media/how-to-view-api-usage/time-range.png)
+    ![Časový rozsah Azure Mapsch metrik](media/how-to-view-api-usage/time-range.png)
 
-6. Jakmile přidáte vaše metriky, pak můžete **přidat filtr** v mezi vlastnosti, které odpovídají metriky a pak vyberte hodnotu vlastnosti, které chcete zobrazit grafu pro.
+6. Po přidání metriky můžete **Přidat filtr** z vlastností, které jsou pro danou metriku relevantní, a pak vybrat hodnotu vlastnosti, pro kterou chcete graf zobrazit.
 
-    ![Filtrovat metriky Azure Maps](media/how-to-view-api-usage/filter.png)
+    ![Filtr metrik Azure Maps využití](media/how-to-view-api-usage/filter.png)
 
-7. Můžete také **použít rozdělení** vaše metriky na základě vaší vybrané metriky vlastnosti. To umožňuje graf, který se má rozdělit do více grafů, jeden pro každou hodnotu této vlastnosti. Na následujícím obrázku barva každý graf odpovídá hodnotě vlastnosti se zobrazí v dolní části grafu.
+7. V závislosti na zvolené vlastnosti metriky můžete také **použít rozdělení** metriky. To umožňuje, aby byl graf rozdělen do více grafů, jednu pro každou hodnotu této vlastnosti. Na následujícím obrázku odpovídá barva každého grafu hodnotě vlastnosti zobrazené v dolní části grafu.
 
-    ![Azure Maps metriky rozdělení](media/how-to-view-api-usage/splitting.png)
+    ![Rozdělení Azure Mapsch metrik využití](media/how-to-view-api-usage/splitting.png)
 
-8. Můžete také sledovat několik metrik do stejného grafu, jednoduše tak, že kliknete na **přidat metriku** tlačítko v horní části.
+8. Můžete také sledovat více metrik ve stejném grafu pouhým kliknutím na tlačítko **Přidat metriku** nahoře.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o rozhraní API map Azure, které chcete sledovat využití:
+Další informace o rozhraních API Azure Maps, pro která chcete sledovat využití:
 > [!div class="nextstepaction"] 
 > [Postupy Azure Maps Web SDK](how-to-use-map-control.md)
 
 > [!div class="nextstepaction"] 
-> [Azure Maps Android SDK How-To](how-to-use-android-map-control-library.md)
+> [Azure Maps Android SDK postupy](how-to-use-android-map-control-library.md)
 
 > [!div class="nextstepaction"]
-> [Dokumentace k rozhraní REST API pro mapy Azure](https://docs.microsoft.com/rest/api/maps)
+> [Dokumentace k Azure Maps REST API](https://docs.microsoft.com/rest/api/maps)

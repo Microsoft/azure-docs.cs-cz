@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Vyhledání trasy pomocí Azure Maps'
-description: 'Kurz: směrování do bodu zájmu pomocí Azure Maps'
+title: 'Kurz: Vyhledání trasy do umístění | Mapy Microsoft Azure'
+description: V tomto kurzu se dozvíte, jak vykreslit cestu k umístění (bod zájmu) na mapě pomocí služby směrování Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: efc60acae78c96983e79044ae1ba7399154f3568
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 7f13e5342e880a9ed5e2cb35ebaf558a1641618b
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613597"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910837"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Kurz: směrování do bodu zájmu pomocí Azure Maps
 
@@ -168,7 +168,7 @@ V tomto kurzu se vykreslí jednoduchá trasa. Pro začátek a konec trasy se pou
 
 3. Uložte soubor **MapRoute.html** a aktualizujte prohlížeč. Mapa se teď nacentruje na střed Seattle a vidíte modrý kód PIN, který označuje počáteční bod a kulatě modrý kód PIN označení bodu dokončení.
 
-   ![Zobrazení mapy s označeným počátečním a koncovým bodem](media/tutorial-route-location/map-pins.png)
+   ![Zobrazení počátečního a koncového bodu na mapě](media/tutorial-route-location/map-pins.png)
 
 <a id="getroute"></a>
 

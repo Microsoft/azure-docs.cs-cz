@@ -1,6 +1,6 @@
 ---
-title: Koncepty služeb počasí v Azure Maps | Microsoft Docs
-description: Přečtěte si o počasí služeb v Azure Maps
+title: Koncepty služeb počasí | Mapy Microsoft Azure
+description: V tomto článku se dozvíte o konceptech, které se vztahují na Microsoft Azure mapování povětrnostních služeb.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/20/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9d464ab172fcb375d62b9928818362574a485231
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 4bf13477bfee39b5be39715374592811e8f8cc89
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382442"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911030"
 ---
 # <a name="weather-services-in-azure-maps"></a>Služby počasí v Azure Maps
 
@@ -26,8 +26,8 @@ Některá z rozhraní API služby počasí umožňují uživateli určit, jestli
 |Jednotkách UnitType|Popis         |
 |--------|--------------------|
 |0       |větve                |
-|1       |cm              |
-|2       |mílí               |
+|1\. místo       |Cm              |
+|2       |miles               |
 |3       |mm          |
 |4       |×          |
 |5       |měřiče               |
@@ -54,9 +54,9 @@ Některá z rozhraní API služby počasí umožňují uživateli určit, jestli
 
 Některá z rozhraní API služby počasí vrací kódy ikon (iconCode) v odpovědi, číselnou hodnotu, která se dá použít k definování ikony. Neodkazujte na tyto image přímo z vašich aplikací, adresy URL se můžou a změní.
 
-| Číslo ikony |Ikona| Day | veletrh | Text |
+| Číslo ikony |Ikona| Den | Veletrh | Text |
 |-------------|:----:|-----|-------|------|
-| 1           |![](./media/weather-services-concepts/sunny-i.png)                      | Ano |  Ne    | Slunečné|
+| 1\. místo           |![](./media/weather-services-concepts/sunny-i.png)                      | Ano |  Ne    | Slunečné|
 | 2           |![](./media/weather-services-concepts/mostly-sunny.png)                | Ano |  Ne    | Hlavně Slunečné|
 | 3           |![](./media/weather-services-concepts/partly-sunny.png)                | Ano |  Ne    | Částečně Slunečné|
 | 4           |![](./media/weather-services-concepts/intermittent-clouds.png)         | Ano |  Ne    | Přerušované cloudy|
@@ -82,7 +82,7 @@ Některá z rozhraní API služby počasí vrací kódy ikon (iconCode) v odpov�
 | 26           |![](./media/weather-services-concepts/freezing-rain.png)              | Ano |  Ano   | Zamrznutí deště|
 | 29           |![](./media/weather-services-concepts/rain-snow.png)                  | Ano |  Ano   | Deště a sněhu|
 | 30           |![](./media/weather-services-concepts/hot-i.png)                       | Ano |  Ano   | Hot|
-| 31           |![](./media/weather-services-concepts/cold-i.png)                      | Ano |  Ano   | Chladírenský|
+| 31           |![](./media/weather-services-concepts/cold-i.png)                      | Ano |  Ano   | Bez zájmu|
 | 32           |![](./media/weather-services-concepts/windy-i.png)                     | Ano |  Ano   | Vítr|
 | 33           |![](./media/weather-services-concepts/clear-night.png)                | Ne  |  Ano   | Vymazat|
 | 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | Ne  |  Ano   | Hlavně jasné|

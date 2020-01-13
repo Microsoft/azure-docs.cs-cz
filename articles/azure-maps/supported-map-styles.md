@@ -1,6 +1,6 @@
 ---
-title: Podporované styly mapy v Azure Maps | Microsoft Docs
-description: Styly mapy podporované Azure Maps
+title: Podporované styly mapy | Mapy Microsoft Azure
+description: V tomto článku se seznámíte s různými styly vykreslování map, které podporuje Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 05/06/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 5368aec04eb0a57654adf5b0d5914282a979dcfd
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 92e48486777d82589a56074790dd709c5d525859
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325400"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910644"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps podporované styly mapy
 Azure Maps podporuje několik různých vestavěných stylů mapy, jak je popsáno níže.
@@ -21,7 +21,7 @@ Azure Maps podporuje několik různých vestavěných stylů mapy, jak je popsá
 ## <a name="road"></a>silniční
 Mapa **cest** je standardní mapa, která zobrazuje cesty, přirozené a umělé funkce spolu s popisky pro tyto funkce.
 
-![silniční](./media/supported-map-styles/road.png)
+![typ mapy cest](./media/supported-map-styles/road.png)
 
 **Platná rozhraní API:**
 * [Obrázek mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
@@ -39,10 +39,10 @@ Mapa **cest** je standardní mapa, která zobrazuje cesty, přirozené a umělé
 **Platná rozhraní API:**
 * Mapový ovládací prvek sady web SDK
 
-## <a name="satellite"></a>satelitní 
+## <a name="satellite"></a>satellite 
 **Satelitní** styl je kombinací satelitních a leteckých snímků.
 
-![satelitní](./media/supported-map-styles/satellite.png)
+![styl mapy dlaždice satelitu](./media/supported-map-styles/satellite.png)
 
 **Platná rozhraní API:**
 * [Satelitní dlaždice](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
@@ -52,7 +52,7 @@ Mapa **cest** je standardní mapa, která zobrazuje cesty, přirozené a umělé
 ## <a name="satellite_road_labels"></a>satellite_road_labels
 Tento styl mapy je hybridem cest a popisků, které se překrývají na družicovém a leteckém mikrosnímků.
 
-![satellite_road_labels](./media/supported-map-styles/satellite_road_labels.png)
+![satellite_road_labels styl mapy](./media/supported-map-styles/satellite_road_labels.png)
 
 **Platná rozhraní API:**
 * Mapový ovládací prvek sady web SDK
@@ -61,7 +61,7 @@ Tento styl mapy je hybridem cest a popisků, které se překrývají na družico
 ## <a name="grayscale_dark"></a>grayscale_dark
 **tmavě šedá** je tmavá verze stylu mapy cest.
 
-![gray_scale](./media/supported-map-styles/grayscale_dark.png)
+![gray_scale styl mapy](./media/supported-map-styles/grayscale_dark.png)
 
 **Platná rozhraní API:**
 * [Obrázek mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
@@ -73,17 +73,17 @@ Tento styl mapy je hybridem cest a popisků, které se překrývají na družico
 ## <a name="grayscale_light"></a>grayscale_light
 **šedé světlo** je světlá verze stylu mapy cest.
 
-![světlo stupňů šedé](./media/supported-map-styles/grayscale_light.png)
+![světlý styl mapy ve stupních šedi](./media/supported-map-styles/grayscale_light.png)
 
 **Platná rozhraní API:**
 * Mapový ovládací prvek sady web SDK
 * Ovládací prvek mapy pro Android
 
 
-## <a name="night"></a>veletrh
+## <a name="night"></a>noční
 **noční** je tmavá verze stylu mapy cest s barevnými cestami a symboly.
 
-![veletrh](./media/supported-map-styles/night.png)
+![styl noční mapy](./media/supported-map-styles/night.png)
 
 **Platná rozhraní API:**
 * Mapový ovládací prvek sady web SDK
@@ -92,7 +92,7 @@ Tento styl mapy je hybridem cest a popisků, které se překrývají na družico
 ## <a name="road_shaded_relief"></a>road_shaded_relief
 **odlehčené vybarvené z provozu** je Azure Maps hlavní styl dokončený pomocí kokolace země.
 
-![vybarvený reliéf](./media/supported-map-styles/shaded-relief.png)
+![styl mapy reliéfu ve stínovém tvaru](./media/supported-map-styles/shaded-relief.png)
 
 **Platná rozhraní API:**
 * [Dlaždice mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)

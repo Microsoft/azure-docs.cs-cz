@@ -1,18 +1,18 @@
 ---
 title: Vytvoření clusteru a databáze Azure Průzkumník dat pomocí prostředí PowerShell
 description: Naučte se vytvářet cluster a databázi Azure Průzkumník dat pomocí prostředí PowerShell.
-author: oflipman
-ms.author: oflipman
+author: lucygoldbergmicrosoft
+ms.author: lugoldbe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 1975125dd3bcd327ae7520e4cc413718e48d6ba9
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: b855fde88173fe9a14a964ba1f9fd07aa74d85eb
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326758"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911982"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Vytvoření clusteru a databáze Azure Průzkumník dat pomocí prostředí PowerShell
 
@@ -67,8 +67,8 @@ Následující kroky se nevyžadují, pokud spouštíte příkazy v Azure Cloud 
 
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
-   | Name | *mykustocluster* | Požadovaný název clusteru.|
-   | Skladová jednotka (SKU) | *D13_v2* | SKU, které bude použito pro váš cluster. |
+   | Name (Název) | *mykustocluster* | Požadovaný název clusteru.|
+   | SKU | *D13_v2* | SKU, které bude použito pro váš cluster. |
    | ResourceGroupName | *testrg* | Název skupiny prostředků, ve které se cluster vytvoří. |
 
     Existují další nepovinné parametry, které můžete použít, například kapacitu clusteru.
@@ -79,7 +79,7 @@ Následující kroky se nevyžadují, pokud spouštíte příkazy v Azure Cloud 
     Get-AzKustoCluster -Name mykustocluster -ResourceGroupName testrg
     ```
 
-Pokud výsledek obsahuje `provisioningState` `Succeeded` hodnotu, cluster se úspěšně vytvořil.
+Pokud výsledek obsahuje `provisioningState` s hodnotou `Succeeded`, cluster se úspěšně vytvořil.
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Vytvoření databáze v clusteru Azure Průzkumník dat
 
@@ -91,10 +91,10 @@ Pokud výsledek obsahuje `provisioningState` `Succeeded` hodnotu, cluster se ús
 
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
-   | ClusterName | *mykustocluster* | Název clusteru, ve kterém se databáze vytvoří.|
-   | Name | *mykustodatabase* | Název vaší databáze.|
+   | Název clusteru | *mykustocluster* | Název clusteru, ve kterém se databáze vytvoří.|
+   | Name (Název) | *mykustodatabase* | Název vaší databáze.|
    | ResourceGroupName | *testrg* | Název skupiny prostředků, ve které se cluster vytvoří. |
-   | softDeletePeriod | *3650:00:00:00* | Doba, po kterou budou data uchována k dispozici pro dotaz. |
+   | SoftDeletePeriod | *3650:00:00:00* | Doba, po kterou budou data uchována k dispozici pro dotaz. |
    | HotCachePeriod | *3650:00:00:00* | Doba, po kterou budou data uchována v mezipaměti. |
 
 1. Spuštěním následujícího příkazu zobrazíte databázi, kterou jste vytvořili:

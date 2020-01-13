@@ -1,6 +1,6 @@
 ---
-title: Přidání vrstvy symbolů do map pro Android v Azure Maps | Microsoft Docs
-description: Postup přidání symbolů na mapu pomocí Azure Maps Android SDK
+title: Přidat vrstvu symbolů do map pro Android | Mapy Microsoft Azure
+description: V tomto článku se naučíte, jak vykreslovat data bodů na mapě přidáním vrstvy symbolů pomocí Android SDK Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0292c8a441589a01241fbef6923246b4bcafb5c8
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 877147bc0fd680278f999d2007040a92b0cbff38
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976260"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911541"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Přidání vrstvy symbolů na mapu pomocí Azure Maps Android SDK
 
@@ -27,7 +27,7 @@ Chcete-li provést úplné provedení kroků v tomto článku, je nutné nainsta
 
 Chcete-li přidat značku na mapě pomocí vrstvy symbolů, postupujte podle následujících kroků:
 
-1. Upravte > rozloženíres > **activity_main. XML** , aby vypadal jako následující kód XML:
+1. Upravte > **rozložení** **res** > **activity_main. XML** , aby vypadala jako následující kód XML:
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -50,7 +50,7 @@ Chcete-li přidat značku na mapě pomocí vrstvy symbolů, postupujte podle ná
     </FrameLayout>
     ```
 
-2. Zkopírujte následující fragment kódu do metody **Create ()** vaší `MainActivity.java` třídy.
+2. Zkopírujte následující fragment kódu do metody **Create ()** třídy `MainActivity.java`.
 
     ```Java
     mapControl.onReady(map -> {
@@ -74,7 +74,7 @@ Chcete-li přidat značku na mapě pomocí vrstvy symbolů, postupujte podle ná
     
     Výše uvedený fragment kódu získá Azure Maps instanci ovládacího prvku mapy pomocí zpětného volání metody **Reada ()** . Potom vytvoří objekt zdroje dat pomocí třídy **DataSource** a přidá jej do mapy. Pak přidá **funkci** , která obsahuje geometrii bodu. Červený obrázek značky se pak nastaví jako ikona pro symbol. **Symbolová vrstva** používá text nebo ikony pro vykreslení dat na základě bodu zabalených ve zdroji dat jako symbol na mapě. Pak se vytvoří vrstva symbolů a do ní se předává zdroj dat, který vykreslí a přidá se do vrstev mapy.
     
-    Po přidání výše uvedeného `MainActivity.java` fragmentu kódu by měl vypadat takto:
+    Po přidání fragmentu kódu výše by `MainActivity.java` mělo vypadat takto:
     
     ```Java
     package com.example.myapplication;
@@ -170,7 +170,7 @@ V tomto okamžiku, pokud spouštíte aplikaci, měla by se zobrazit značka na m
 
 <center>
 
-![PIN mapování pro Android](./media/how-to-add-symbol-to-android-map/android-map-pin.png)</center>
+![PIN](./media/how-to-add-symbol-to-android-map/android-map-pin.png)</center> mapy Androidu
 
 
 ## <a name="next-steps"></a>Další kroky

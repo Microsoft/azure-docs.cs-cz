@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 3cdeecd5b7698274b899832d7a66a5572a114e4b
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 139d1a470c67d5dab310c4fa2a9171f433df2061
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954503"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912365"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Připojení IoT DevKit AZ3166 k Azure IoT Hub
 
@@ -63,7 +63,7 @@ Chcete-li připojit DevKit k počítači, postupujte podle následujících krok
 
 Rychlý Start používá předem kompilovaný firmware DevKit k odeslání telemetrie do IoT Hub. Než ho spustíte, vytvoříte centrum IoT a zaregistrujete zařízení do centra.
 
-### <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+### <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -84,7 +84,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
    > [!NOTE]
    > Pokud se zobrazí chyba `device-identity`, nainstalujte si další podrobnosti v [Azure IoT rozšíření pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md) .
   
-1. Spuštěním následujícího příkazu v Azure Cloud Shellu získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
+1. Spuštěním následujícího příkazu ve službě Azure Cloud Shell získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
    **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který zvolíte pro Centrum IoT.
 
@@ -174,7 +174,7 @@ Pomocí těchto kroků Připravte vývojové prostředí pro DevKit:
     > [Nainstalovat balíček rozšíření pro nástroje Azure IoT](vscode:extension/vsciot-vscode.azure-iot-tools)
 
     > [!NOTE]
-    > Balíček rozšíření Azure IoT Tools obsahuje [Workbench Azure IoT](https://aka.ms/iot-workbench) , která se používá k vývoji a ladění různých zařízení IoT DevKit. [Sada azure IoT Hub Toolkit](https://aka.ms/iot-toolkit), která je také součástí balíčku rozšíření Azure IoT Tools, se používá ke správě a interakci s Azure IoT Hub.
+    > Balíček rozšíření Azure IoT Tools obsahuje [Workbench Azure IoT](https://aka.ms/iot-workbench) , která se používá k vývoji a ladění různých zařízení IoT DevKit. [Rozšíření azure IoT Hub](https://aka.ms/iot-toolkit), které je součástí balíčku rozšíření Azure IoT Tools, se používá ke správě a interakci s Azure IoT Hub.
 
 5. Nakonfigurujte VS Code s nastavením Arduino.
 
@@ -328,7 +328,7 @@ Pomocí [nástrojů Azure IoT](https://marketplace.visualstudio.com/items?itemNa
 
 1. Přihlaste se [Azure Portal](https://portal.azure.com/), najděte IoT Hub, který jste vytvořili.
 
-    ![portál Azure](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
+    ![Portál Azure](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
 
 1. V podokně **zásady sdíleného přístupu** klikněte na **zásadu iothubowner**a zapište připojovací řetězec služby IoT Hub.
 

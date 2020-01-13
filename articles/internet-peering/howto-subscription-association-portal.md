@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: d3737be5a3186774f230aef9d932464a27a764f4
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: cee548aff49cd5e4a57eed994b8ade2d157c6313
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75775638"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912148"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Přidružení partnerského čísla ASN k předplatnému Azure pomocí portálu
 
@@ -25,6 +25,34 @@ Pokud budete chtít, můžete tuto příručku dokončit pomocí [PowerShellu](h
 
 ### <a name="sign-in-to-the-portal"></a>Přihlásit se k portálu
 [!INCLUDE [Account](./includes/account-portal.md)]
+
+### <a name="register-for-peering-resource-provider"></a>Registrace pro poskytovatele prostředků partnerského vztahu
+Pomocí následujícího postupu zaregistrujte pro poskytovatele prostředků partnerského vztahu v předplatném. Pokud to neprovedete, prostředky Azure potřebné k nastavení partnerského vztahu nejsou přístupné.
+
+1. V levém horním rohu portálu klikněte na **odběry** . Pokud ho nevidíte, klikněte na **Další služby** a vyhledejte ho.
+
+    > [!div class="mx-imgBorder"]
+    > ![otevření předplatných](./media/rp-subscriptions-open.png)
+
+1. Klikněte na předplatné, které chcete použít pro partnerský vztah.
+
+    > [!div class="mx-imgBorder"]
+    > ![spustit odběr](./media/rp-subscriptions-launch.png)
+
+1. Po otevření předplatného klikněte na levé straně na **poskytovatelé prostředků**. Pak v pravém podokně vyhledejte *partnerské vztahy* v okně hledání nebo pomocí posuvníku Najděte **Microsoft. peering** a podívejte se na **stav**. Pokud je stav ***zaregistrován***, přeskočte následující postup a přejděte k části **Vytvoření PeerAsn**. Pokud je stav ***NotRegistered***, vyberte **Microsoft. peering** a klikněte na **zaregistrovat**.
+
+    > [!div class="mx-imgBorder"]
+    > ![zahájení registrace](./media/rp-register-start.png)
+
+1. Všimněte si, že se stav změní na ***registrování***.
+
+    > [!div class="mx-imgBorder"]
+    > Probíhá registrace ![](./media/rp-register-progress.png)
+
+1. Počkejte na minimální nebo tak, aby se registrace dokončila. Pak klikněte na **aktualizovat** a ověřte, jestli je stav ***zaregistrovaný***.
+
+    > [!div class="mx-imgBorder"]
+    > Registrace ![dokončena](./media/rp-register-completed.png)
 
 ### <a name="create-peerasn"></a>Vytvořit PeerAsn
 Můžete vytvořit nový prostředek PeerAsn pro přiřazení čísla autonomního systému (ASN) k předplatnému Azure. K předplatnému můžete přidružit více čísla ASN vytvořením **PeerAsn** pro každé číslo ASN, které potřebujete přidružit.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 78b73688306fb51278afba7283a1ea82af603349
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7705ea3b60d8c8e2b189ad555d1b53fa395aa1fb
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459175"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912490"
 ---
 Azure Compute nabízí velikosti virtuálních počítačů, které jsou izolované na konkrétní typ hardwaru a vyhrazené pro jednoho zákazníka.  Tyto velikosti virtuálních počítačů jsou nejvhodnější pro úlohy, které vyžadují vysoký stupeň izolace od ostatních zákazníků a kterých se týkají například požadavky na dodržování předpisů a zákonné požadavky.  Zákazníci si také můžou rozdělit prostředky těchto izolovaných virtuálních počítačů s využitím [podpory Azure pro vnořené virtuální počítače](https://azure.microsoft.com/blog/nested-virtualization-in-azure/).
 
@@ -30,7 +30,7 @@ Využitím izolované velikosti zaručujete, že váš virtuální počítač bu
 Další informace o všech dostupných izolovaných velikostech najdete [tady](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory).
 
 ## <a name="retiring-d15_v2ds15_v2-isolation-on-february-15-2020"></a>Vyřazení D15_v2/DS15_v2 izolace od 15. února 2020
-Vyhrazený hostitel Azure je teď GA, což umožňuje provozovat virtuální počítače se systémy Linux a Windows ve vaší organizaci na fyzických serverech s jedním klientem. Plánujeme plně nahradit izolované virtuální počítače Azure pomocí vyhrazeného hostitele Azure. **15. února 2020** D15_v2/DS15_v2 virtuální počítače Azure už nemusí být izolované hardwarem.
+Vyhrazený hostitel Azure je teď GA, což umožňuje provozovat virtuální počítače se systémy Linux a Windows ve vaší organizaci na fyzických serverech s jedním klientem. Plánujeme plně nahradit izolované virtuální počítače Azure pomocí vyhrazeného hostitele Azure. Od **15. února 2020** D15_v2/DS15_v2 virtuální počítače Azure už nebudou izolované hardwarem.
 
 ## <a name="how-does-this-affect-me"></a>Co to pro mě znamená?
 Od 15. února 2020 už nebudeme pro vaše D15_v2/DS15_v2 virtuálních počítačů Azure poskytovat záruku izolace. 

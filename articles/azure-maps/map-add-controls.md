@@ -1,6 +1,6 @@
 ---
-title: Přidat ovládací prvky do Azure Maps | Microsoft Docs
-description: Postup přidání ovládacího prvku Lupa, ovládacího prvku sklonu, otočení ovládacího prvku a výběru stylu na mapu v Azure Maps.
+title: Přidat ovládací prvky do mapy | Mapy Microsoft Azure
+description: Postup přidání ovládacího prvku Lupa, ovládacího prvku sklonu, otočení ovládacího prvku a výběru stylu na mapu v Microsoft Azure Maps
 author: walsehgal
 ms.author: v-musehg
 ms.date: 07/29/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 7267f77ed3d296ac586dcfd0f525b94d5e6eb7a0
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 6652ca30d9f38eb6184fce5f1ff5428d29c271a6
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976228"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911270"
 ---
 # <a name="add-controls-to-a-map"></a>Přidání ovládacích prvků do mapy
 
@@ -34,7 +34,7 @@ Níže je uvedená ukázka kompletního spuštění kódu výše uvedené funkce
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Přidání ovládacího prvku lupy' src='//codepen.io/azuremaps/embed/WKOQyN/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Přečtěte si pero <a href='https://codepen.io/azuremaps/pen/WKOQyN/'>Přidání ovládacího prvku Lupa</a> podle Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Přidání ovládacího prvku lupy' src='//codepen.io/azuremaps/embed/WKOQyN/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Přečtěte si pero <a href='https://codepen.io/azuremaps/pen/WKOQyN/'>Přidání ovládacího prvku lupa</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="add-pitch-control"></a>Přidat ovládací prvek sklonu
@@ -52,7 +52,7 @@ Níže je uvedená ukázka kompletního spuštění kódu výše uvedené funkce
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Přidání ovládacího prvku sklon' src='//codepen.io/azuremaps/embed/xJrwaP/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Přečtěte si pero <a href='https://codepen.io/azuremaps/pen/xJrwaP/'>Přidání ovládacího prvku sklonu</a> pomocí<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Přidání ovládacího prvku sklon' src='//codepen.io/azuremaps/embed/xJrwaP/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Přečtěte si pero <a href='https://codepen.io/azuremaps/pen/xJrwaP/'>Přidání ovládacího prvku sklonu</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="add-compass-control"></a>Přidat ovládací prvek kompas
@@ -70,7 +70,7 @@ Níže je uvedená ukázka kompletního spuštění kódu výše uvedené funkce
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Přidání ovládacího prvku otočit' src='//codepen.io/azuremaps/embed/GBEoRb/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Přečtěte si pero <a href='https://codepen.io/azuremaps/pen/GBEoRb/'>Přidání ovládacího prvku otočit</a> pomocí Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Přidání ovládacího prvku otočit' src='//codepen.io/azuremaps/embed/GBEoRb/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Přečtěte si pero <a href='https://codepen.io/azuremaps/pen/GBEoRb/'>Přidání ovládacího prvku otočit</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="a-map-with-all-controls"></a>Mapa se všemi ovládacími prvky
@@ -79,7 +79,7 @@ Následující ukázka kódu přidá ovládací prvky pro výběr stylu, Lupa, r
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Mapa se všemi ovládacími prvky' src='//codepen.io/azuremaps/embed/qyjbOM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Přečtěte si pero <a href='https://codepen.io/azuremaps/pen/qyjbOM/'>a mapu se všemi ovládacími prvky</a> pomocí<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Mapa se všemi ovládacími prvky' src='//codepen.io/azuremaps/embed/qyjbOM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Přečtěte si pero <a href='https://codepen.io/azuremaps/pen/qyjbOM/'>a mapu se všemi ovládacími prvky</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Ovládací prvek pro výběr stylu je definován třídou [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) . Další informace o použití ovládacího prvku pro výběr stylu naleznete v tématu [Volba stylu mapy](choose-map-style.md).
@@ -91,12 +91,12 @@ Tady je nástroj pro otestování různých možností přizpůsobení ovládac�
 <br/>
 
 <iframe height="700" style="width: 100%;" scrolling="no" title="Možnosti ovládacího prvku navigace" src="//codepen.io/azuremaps/embed/LwBZMx/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Prohlédněte si <a href='https://codepen.io/azuremaps/pen/LwBZMx/'>možnosti ovládacího prvku navigace</a> perem podle<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
+Prohlédněte si <a href='https://codepen.io/azuremaps/pen/LwBZMx/'>možnosti ovládacího prvku navigace</a> perem Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Chcete-li vytvořit přizpůsobené ovládací prvky navigace, vytvořte třídu, která rozšiřuje z `atlas.Control` třídy, nebo vytvořte prvek HTML a umístěte jej nad div mapy. Tento ovládací prvek uživatelského rozhraní volá funkci `setCamera` Maps a přesune mapu. 
+Chcete-li vytvořit přizpůsobené ovládací prvky navigace, vytvořte třídu, která bude rozšířena z `atlas.Control` třídy, nebo vytvořte prvek HTML a umístěte jej nad div mapy. Tento ovládací prvek uživatelského rozhraní volá funkci Maps `setCamera` pro přesunutí mapy. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o třídách a metodách, které se používají v tomto článku:
 

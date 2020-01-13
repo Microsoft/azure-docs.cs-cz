@@ -1,6 +1,6 @@
 ---
-title: Správa účtu Azure Maps | Microsoft Docs
-description: Ke správě účtu Azure Maps můžete použít Azure Portal.
+title: Správa účtu Azure Maps na webu Azure Portal | Mapy Microsoft Azure
+description: V tomto článku se dozvíte, jak pomocí Azure Portal spravovat účet služby Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/14/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: a5697989696d0d375e52baeb9f7332e7013d16bf
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 92c76780473372c3e2ef87cdf4da0f21a22d9ac6
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768839"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911500"
 ---
 # <a name="manage-your-azure-maps-account"></a>Správa účtu Azure Maps
 
@@ -31,13 +31,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 4. Zadejte informace o svém novém účtu.
 
-![Zadání informací o účtu na portálu](./media/how-to-manage-account-keys/new-account-portal.png)
+![Zadejte informace o Azure Maps účtu v Azure Portal](./media/how-to-manage-account-keys/new-account-portal.png)
 
 ## <a name="delete-an-account"></a>Odstranění účtu
 
 Účet můžete z Azure Portal odstranit. Přejděte na stránku Přehled účtu a vyberte **Odstranit**.
 
-![Odstranění účtu na portálu](./media/how-to-manage-account-keys/account-delete-portal.png)
+![Odstranit účet Azure Maps v Azure Portal](./media/how-to-manage-account-keys/account-delete-portal.png)
 
 Zobrazí se stránka s potvrzením. Odstranění účtu můžete potvrdit zadáním jeho názvu.
 

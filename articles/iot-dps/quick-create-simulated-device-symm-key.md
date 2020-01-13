@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 73d2e075dd4d3cf9e9b37aa9131ab5f4c822e140
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 4e84a43f8984e2adeac916e467a8cac693ee453d
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895909"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912438"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Rychlý start: Zřízení simulovaného zařízení se symetrickými klíči
 
@@ -51,6 +51,8 @@ Sada SDK obsahuje vzorový kód pro simulované zařízení. Toto simulované za
 1. Stáhněte si [sestavovací systém cmake](https://cmake.org/download/).
 
     Je důležité, aby požadavky na sadu Visual Studio (Visual Studio a sada funkcí Vývoj desktopových aplikací pomocí C++) byly na vašem počítači nainstalované ještě **před** zahájením instalace `CMake`. Jakmile jsou požadované součásti k dispozici a stažený soubor je ověřený, nainstalujte sestavovací systém CMake.
+
+    Starší verze systému sestavení CMake negenerují soubor řešení použitý v tomto článku. Ujistěte se, že používáte novější verzi CMake.
 
 2. Klikněte na **značky** a na [stránce vydání v sadě Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c/releases/latest)najděte název značky pro nejnovější verzi.
 
@@ -136,6 +138,8 @@ V této části aktualizujete vzorový kód tak, aby odeslal spouštěcí sekven
     ```
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
     ```
+
+    Pokud se soubor v adresáři cmake negeneruje, ujistěte se, že jste použili poslední verzi sestavovacího systému CMake.
 
 3. V podokně *Průzkumník řešení* sady Visual Studio přejděte do složky **Provision\_Samples**. Rozbalte ukázkový projekt s názvem **prov\_dev\_client\_sample**. Rozbalte **zdrojové soubory** a otevřete **prov\_dev\_client\_sample.c**.
 

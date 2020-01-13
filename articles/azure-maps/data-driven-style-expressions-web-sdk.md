@@ -1,6 +1,6 @@
 ---
-title: Výrazy stylu řízené daty v sadě Azure Maps Web SDK | Microsoft Docs
-description: Použití výrazů se stylem založených na datech v sadě Azure Maps Web SDK.
+title: Výrazy stylu řízené daty v sadě Azure Maps Web SDK | Mapy Microsoft Azure
+description: V tomto článku se dozvíte, jak používat výrazy stylu řízené daty v sadě Microsoft Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 4/4/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 6cd69ba8abe243daadf5d517ab7c5a224953cc99
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 8372012734d937da99c32d2d18fed91ae52c7444
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480641"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911777"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Výrazy stylu řízené daty (webová sada SDK)
 
@@ -81,10 +81,10 @@ Všechny příklady v tomto dokumentu budou používat následující funkci k d
 
 Datové výrazy poskytují přístup k datům vlastností ve funkci. 
 
-| Výraz | Návratový typ | Popis |
+| Expression | Návratový typ | Popis |
 |------------|-------------|-------------|
-| `['at', number, array]` | objekt | Načte položku z pole. |
-| `['geometry-type']` | řetězec | Získá typ geometrie funkce: Point, MultiPoint, LineString, MultiLineString, mnohoúhelník, promnohoúhelník. |
+| `['at', number, array]` | object | Načte položku z pole. |
+| `['geometry-type']` | string | Získá typ geometrie funkce: Point, MultiPoint, LineString, MultiLineString, mnohoúhelník, promnohoúhelník. |
 | `['get', string]` | hodnota | Získá hodnotu vlastnosti z vlastností aktuální funkce. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
 | `['get', string, object]` | hodnota | Získá hodnotu vlastnosti z vlastností poskytnutého objektu. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
 | `['has', string]` | Boolean | Určuje, zda vlastnosti funkce mají zadanou vlastnost. |
@@ -139,7 +139,7 @@ Podobně, obrys mnohoúhelníků se vykreslí do vrstev čar. Chcete-li toto cho
 
 Matematické výrazy poskytují matematické operátory pro provádění výpočtů řízených daty v rámci rozhraní Expression Framework.
 
-| Výraz | Návratový typ | Popis |
+| Expression | Návratový typ | Popis |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | číslo | Vypočítá součet zadaných čísel. |
 | `['-', number]` | číslo | Odečte 0 zadaným číslem. |
@@ -194,7 +194,7 @@ Logické výrazy poskytují sadu logických výrazů operátorů pro vyhodnocen�
 
 Při porovnávání hodnot je porovnání striktně typované. Hodnoty různých typů jsou vždy považovány za nerovné. Případy, kde se označují, že typy jsou odlišné v době analýzy, jsou považovány za neplatné a vytvoří chybu analýzy. 
 
-| Výraz | Návratový typ | Popis |
+| Expression | Návratový typ | Popis |
 |------------|-------------|-------------|
 | `['! ', boolean]` | Boolean | Logická negace. Vrátí `true`, pokud je vstup `false`a `false`, pokud je vstup `true`. |
 | `['!= ', value, value]` | Boolean | Vrátí `true`, pokud vstupní hodnoty nejsou stejné, `false` jinak. |
@@ -397,15 +397,15 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 Výrazy typu poskytují nástroje pro testování a převod různých typů dat, jako jsou řetězce, čísla a logické hodnoty.
 
-| Výraz | Návratový typ | Popis |
+| Expression | Návratový typ | Popis |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | Array \| objekt | Vrátí literálovou hodnotu pole nebo objektu. Tento výraz použijte k zabránění vyhodnocení pole nebo objektu jako výrazu. To je nezbytné, pokud musí být pole nebo objekt vráceny výrazem. |
-| `['image', string]` | řetězec | Kontroluje, zda je zadané ID obrázku načteno do Sprite obrázku mapy. Pokud je, vrátí se ID, jinak se vrátí hodnota null. |
+| `['image', string]` | string | Kontroluje, zda je zadané ID obrázku načteno do Sprite obrázku mapy. Pokud je, vrátí se ID, jinak se vrátí hodnota null. |
 | `['to-boolean', value]` | Boolean | Převede vstupní hodnotu na logickou hodnotu. Výsledek je `false`, když je vstup prázdný řetězec, `0`, `false`, `null`nebo `NaN`; v opačném případě `true`. |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | Převede vstupní hodnotu na barvu. Pokud je zadáno více hodnot, je každá z nich vyhodnocována v pořadí, dokud nebude získán první úspěšný převod. Pokud žádný ze vstupů nelze převést, je výraz chybou. |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | číslo | Pokud je to možné, převede vstupní hodnotu na číslo. Pokud je vstup `null` nebo `false`, výsledek je 0. Pokud je vstup `true`, výsledkem je 1. Pokud je vstup řetězcem, je převeden na číslo pomocí funkce řetězce [tonumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) ve specifikaci jazyka ECMAScript. Pokud je zadáno více hodnot, je každá z nich vyhodnocována v pořadí, dokud nebude získán první úspěšný převod. Pokud žádný ze vstupů nelze převést, je výraz chybou. |
-| `['to-string', value]` | řetězec | Převede vstupní hodnotu na řetězec. Pokud je vstup `null`, výsledek je `""`. Pokud je vstup logická hodnota, výsledek je `"true"` nebo `"false"`. Pokud je vstup číslo, je převedeno na řetězec pomocí funkce [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) Number specifikace jazyka ECMAScript. Je-li vstup barva, je převedena na RGBA řetězce barev CSS `"rgba(r,g,b,a)"`. V opačném případě je vstup převeden na řetězec pomocí funkce [JSON. Stringify](https://tc39.github.io/ecma262/#sec-json.stringify) specifikace jazyka ECMAScript. |
-| `['typeof', value]` | řetězec | Vrátí řetězec popisující typ dané hodnoty. |
+| `['to-string', value]` | string | Převede vstupní hodnotu na řetězec. Pokud je vstup `null`, výsledek je `""`. Pokud je vstup logická hodnota, výsledek je `"true"` nebo `"false"`. Pokud je vstup číslo, je převedeno na řetězec pomocí funkce [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) Number specifikace jazyka ECMAScript. Je-li vstup barva, je převedena na RGBA řetězce barev CSS `"rgba(r,g,b,a)"`. V opačném případě je vstup převeden na řetězec pomocí funkce [JSON. Stringify](https://tc39.github.io/ecma262/#sec-json.stringify) specifikace jazyka ECMAScript. |
+| `['typeof', value]` | string | Vrátí řetězec popisující typ dané hodnoty. |
 
 > [!TIP]
 > Pokud se v konzole prohlížeče zobrazí chybová zpráva podobná `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].`, znamená to, že ve vašem kódu je výraz, který obsahuje pole, které nemá řetězec pro svou první hodnotu. Pokud chcete, aby výraz vrátil pole, zabalte pole pomocí výrazu `literal`. Následující příklad nastaví ikonu `offset` možnosti vrstvy symbolu, která musí být pole obsahující dvě čísla pomocí výrazu `match` pro výběr dvou hodnot posunu na základě hodnoty vlastnosti `entityType` funkce Point.
@@ -433,7 +433,7 @@ Výrazy typu poskytují nástroje pro testování a převod různých typů dat,
 
 Výrazy s barvami usnadňují vytváření a manipulaci s hodnotami barev.
 
-| Výraz | Návratový typ | Popis |
+| Expression | Návratový typ | Popis |
 |------------|-------------|-------------|
 | `['rgb', number, number, number]` | color | Vytvoří hodnotu barvy z *červených*, *zelených*a *modrých* komponent, které musí být v rozsahu mezi `0` a `255`a komponentou Alpha `1`. Pokud je některá součást mimo rozsah, je výraz chybou. |
 | `['rgba', number, number, number, number]` | color | Vytvoří hodnotu barvy z *červené*, *zelené*a *modré* komponenty, které musí být v rozsahu mezi `0` a `255`a komponentou alfa v rámci rozsahu `0` a `1`. Pokud je některá součást mimo rozsah, je výraz chybou. |
@@ -461,11 +461,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 Výrazy operátoru řetězce provádějí operace převodu na řetězcích, jako je zřetězení a převod případu. 
 
-| Výraz | Návratový typ | Popis |
+| Expression | Návratový typ | Popis |
 |------------|-------------|-------------|
-| `['concat', string, string, …]` | řetězec | Zřetězí více řetězců dohromady. Každá hodnota musí být řetězec. Pokud je třeba, použijte výraz typu `to-string` k převodu ostatních typů hodnot na řetězec. |
-| `['downcase', string]` | řetězec | Převede zadaný řetězec na malá písmena. |
-| `['upcase', string]` | řetězec | Převede zadaný řetězec na velká písmena. |
+| `['concat', string, string, …]` | string | Zřetězí více řetězců dohromady. Každá hodnota musí být řetězec. Pokud je třeba, použijte výraz typu `to-string` k převodu ostatních typů hodnot na řetězec. |
+| `['downcase', string]` | string | Převede zadaný řetězec na malá písmena. |
+| `['upcase', string]` | string | Převede zadaný řetězec na velká písmena. |
 
 **Příklad**
 
@@ -821,9 +821,9 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 Výrazy vazeb proměnných ukládají výsledky výpočtu v proměnné tak, aby na ně bylo možné odkazovat jinde ve výrazu, aniž by bylo nutné je přepočítat. Toto je užitečná optimalizace pro výrazy, které zahrnují mnoho výpočtů.
 
-| Výraz | Návratový typ | Popis |
+| Expression | Návratový typ | Popis |
 |--------------|---------------|--------------|
-| \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;let,<br/>&nbsp;&nbsp;&nbsp;&nbsp;název1: String,<br/>&nbsp;&nbsp;&nbsp;&nbsp;hodnota1: Any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;název2: String,<br/>&nbsp;&nbsp;&nbsp;&nbsp;hodnota2: Any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;...<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Ukládá jednu nebo více hodnot jako proměnné pro použití výrazem `var` v podřízeném výrazu, který vrací výsledek. |
+| \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;let,<br/>&nbsp;&nbsp;&nbsp;&nbsp;název1: String,<br/>&nbsp;&nbsp;&nbsp;&nbsp;hodnota1: Any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;název2: String,<br/>&nbsp;&nbsp;&nbsp;&nbsp;hodnota2: Any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Ukládá jednu nebo více hodnot jako proměnné pro použití výrazem `var` v podřízeném výrazu, který vrací výsledek. |
 | `['var', name: string]` | jakýmikoli | Odkazuje na proměnnou, která byla vytvořena pomocí výrazu `let`. |
 
 **Příklad**

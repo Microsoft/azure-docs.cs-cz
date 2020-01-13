@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: vytvoření geografického plotu pomocí Azure Maps'
-description: 'Kurz: nastavení geografického ohraničení pomocí Azure Maps.'
+title: 'Kurz: vytvoření geografického a sledovacího zařízení na mapě | Mapy Microsoft Azure'
+description: V tomto kurzu se dozvíte, jak nastavit geografickou a sledovací zařízení relativně k geografickému rozvržení pomocí služby Microsoft Azure Maps (prostorová služba).
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2998c67bf00c74422baa19af0b389118600ba1c7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0e408adfe1daed402ef690224368e846bd0a97c8
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407833"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910941"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Kurz: nastavení geografického plotu pomocí Azure Maps
 
@@ -58,7 +58,7 @@ Otevřete aplikaci pro vyúčtování a podle následujících pokynů nahrajte 
 
 3. Klikněte na **parametry**a zadejte následující páry klíč/hodnota, které se použijí pro adresu URL požadavku POST. Nahraďte hodnotu klíčového předplatného klíčem Azure Maps.
    
-    ![Post – parametry klíč-hodnota](./media/tutorial-geofence/postman-key-vals.png)
+    ![Parametry pro nahrávání dat (geografické plot) v předzálohovacím](./media/tutorial-geofence/postman-key-vals.png)
 
 4. Klikněte na **tělo** a pak vyberte formát nezpracovaného vstupu a jako vstupní formát v rozevíracím seznamu zvolte JSON. Zadejte následující JSON pro nahrání dat:
 
@@ -177,7 +177,7 @@ Další informace najdete v tématu všechny [podporované obslužné rutiny ud�
 
 1. Vytvoření aplikace logiky v Azure Portal
 
-   ![vytvořit Logic Apps](./media/tutorial-geofence/logic-app.png)
+   ![Vytvoření Azure Logic Apps pro zpracování událostí geografické plotu](./media/tutorial-geofence/logic-app.png)
 
 2. Vyberte Trigger požadavku HTTP a pak jako akci v konektoru Outlooku zvolte Odeslat e-mail.
   
@@ -185,7 +185,7 @@ Další informace najdete v tématu všechny [podporované obslužné rutiny ud�
 
 3. Uložte aplikaci logiky, aby se vygeneroval koncový bod adresy URL HTTP a zkopírujte adresu URL protokolu HTTP.
 
-   ![Logic Apps koncový bod](./media/tutorial-geofence/logic-app-endpoint.png)
+   ![Vygenerovat Logic Apps koncový bod](./media/tutorial-geofence/logic-app-endpoint.png)
 
 
 ## <a name="create-an-azure-maps-events-subscription"></a>Vytvoření předplatného Azure Mapsch událostí
@@ -196,15 +196,15 @@ Pomocí následujících kroků vytvořte odběr událostí pro události zadán
 
 1. Pomocí [tohoto odkazu na portál](https://ms.portal.azure.com/#@microsoft.onmicrosoft.com/dashboard/) přejděte na účet Azure Maps a vyberte kartu události.
 
-   ![Události Azure Maps](./media/tutorial-geofence/events-tab.png)
+   ![Přejít na události Azure Maps účtu](./media/tutorial-geofence/events-tab.png)
 
 2. Chcete-li vytvořit odběr události, vyberte možnost odběr události ze stránky události.
 
-   ![Předplatné Azure Mapsch událostí](./media/tutorial-geofence/create-event-subscription.png)
+   ![Vytvoření předplatného Azure Mapsch událostí](./media/tutorial-geofence/create-event-subscription.png)
 
 3. Pojmenujte odběr události a přihlaste se k odběru typu události Enter. Teď vyberte Webhook jako "typ koncového bodu" a zkopírujte koncový bod adresy URL HTTP aplikace logiky do koncového bodu.
 
-   ![Odběr událostí](./media/tutorial-geofence/events-subscription.png)
+   ![Podrobnosti předplatného Azure Mapsch událostí](./media/tutorial-geofence/events-subscription.png)
 
 
 ## <a name="use-geofence-api"></a>Použití rozhraní API pro geografické ploty
@@ -214,7 +214,7 @@ Rozhraní API pro geografickou práci můžete použít ke kontrole, jestli je *
 > [!Note]
 > Výše uvedený scénář a chování jsou založené na stejném **ID zařízení** , aby odráželo pět různých umístění, jak je znázorněno na následujícím obrázku.
 
-![Mapa geografického rozvržení](./media/tutorial-geofence/geofence.png)
+![Mapa geografického rozvržení v Azure Maps](./media/tutorial-geofence/geofence.png)
 
 V aplikaci pro odesílání otevřete novou kartu ve stejné kolekci, kterou jste vytvořili výše. Na kartě tvůrce vyberte získat metodu HTTP:
 

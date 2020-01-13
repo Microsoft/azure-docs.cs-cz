@@ -1,6 +1,6 @@
 ---
-title: Zobrazit pokyny s Azure Maps | Microsoft Docs
-description: Jak zobrazit směry mezi dvěma místy na mapě pomocí Azure Maps Web SDK.
+title: Zobrazit směr směrování na mapě | Mapy Microsoft Azure
+description: V tomto článku se dozvíte, jak zobrazit směry mezi dvěma umístěními na mapě pomocí webové sady SDK Microsoft Azure Maps.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: cf997d4ae120f3e9309892b112f9954bde97bc76
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 53e207e33c56455642edc9dcfcf328f5ca87945f
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976494"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910971"
 ---
 # <a name="show-directions-from-a-to-b"></a>Zobrazení pokynů pro trasu z A do B
 
@@ -24,12 +24,12 @@ Existují dva způsoby, jak to provést. Prvním způsobem je dotazování [rozh
 
 ## <a name="query-the-route-via-service-module"></a>Dotazování trasy prostřednictvím modulu služby
 
-<iframe height='500' scrolling='no' title='Zobrazit pokyny od A do B na mapě (modul služby)' src='//codepen.io/azuremaps/embed/RBZbep/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Informace o tom, jak na CodePen (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'></a>, najdete na stránce s <a href='https://codepen.io/azuremaps/pen/RBZbep/'>pokyny od a do B na mapě (Service Module Azure Maps)</a> .
+<iframe height='500' scrolling='no' title='Zobrazit pokyny od A do B na mapě (modul služby)' src='//codepen.io/azuremaps/embed/RBZbep/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>se na <a href='https://codepen.io/azuremaps/pen/RBZbep/'>mapě (modul služby) Podívejte na pero, které ukazuje směr od a do B</a> .
 </iframe>
 
 Ve výše uvedeném kódu první blok kódu vytvoří objekt mapy a nastaví mechanismus ověřování pro využití přístupového tokenu. Pokyny najdete v tématu [vytvoření mapy](./map-create.md) .
 
-Druhý blok kódu vytvoří `TokenCredential` pro ověření požadavků HTTP pro Azure Maps pomocí přístupového tokenu. Pak předá `TokenCredential` `atlas.service.MapsURL.newPipeline()` a vytvoří instanci [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) . Představuje adresu URL pro Azure Maps operací [směrování.](https://docs.microsoft.com/rest/api/maps/route) `routeURL`
+Druhý blok kódu vytvoří `TokenCredential` k ověření požadavků HTTP pro Azure Maps pomocí přístupového tokenu. Poté předá `TokenCredential` `atlas.service.MapsURL.newPipeline()` a vytvoří instanci [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) . `routeURL` představuje adresu URL pro Azure Maps operace [Směrování](https://docs.microsoft.com/rest/api/maps/route) .
 
 Třetí blok kódu vytvoří a přidá objekt [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) do mapy.
 
@@ -39,7 +39,7 @@ Třetí blok kódu vytvoří a přidá objekt [DataSource](https://docs.microsof
 
 [Symbolová vrstva](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) používá text nebo ikony pro vykreslení dat na základě bodu zabalených ve [zdroji dat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symboly na mapě. Pátý blok kódu vytvoří a přidá na mapu vrstvu symbolů.
 
-Šestý blok kódu se dotazuje směrovací služby Azure Maps, která je součástí [modulu služby](how-to-use-services-module.md). Metoda [CalculateRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods) RouteUrl se používá k získání trasy mezi počátečním a koncovým bodem. Kolekce funkcí pro injson z odpovědi je pak extrahována pomocí `geojson.getFeatures()` metody a přidána do zdroje dat. Následně vykreslí odpověď jako trasu na mapě. Další informace o přidání čáry na mapu najdete v tématu [Přidání čáry na mapě](map-add-line-layer.md).
+Šestý blok kódu se dotazuje směrovací služby Azure Maps, která je součástí [modulu služby](how-to-use-services-module.md). Metoda [CalculateRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods) RouteUrl se používá k získání trasy mezi počátečním a koncovým bodem. Kolekce funkcí pro injson z odpovědi se pak extrahuje pomocí metody `geojson.getFeatures()` a přidá se do zdroje dat. Následně vykreslí odpověď jako trasu na mapě. Další informace o přidání čáry na mapu najdete v tématu [Přidání čáry na mapě](map-add-line-layer.md).
 
 Poslední blok kódu nastaví meze mapy pomocí vlastnosti [SetCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) mapy.
 
@@ -47,7 +47,7 @@ Dotaz směrování, zdroj dat, symbol a vrstvy čáry a hranice kamery jsou vytv
 
 ## <a name="query-the-route-via-fetch-api"></a>Dotazování trasy prostřednictvím rozhraní API pro načtení
 
-<iframe height='500' scrolling='no' title='Zobrazit směr od A do B na mapě' src='//codepen.io/azuremaps/embed/zRyNmP/?height=469&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na téma <a href='https://codepen.io/azuremaps/pen/zRyNmP/'>zobrazení pokynů z a na B na mapě</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Zobrazit směr od A do B na mapě' src='//codepen.io/azuremaps/embed/zRyNmP/?height=469&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Přečtěte si informace o tom, jak se na mapě Azure Maps (@azuremaps) v <a href='https://codepen.io'>CodePen</a>(<a href='https://codepen.io/azuremaps'> </a>) zobrazuje <a href='https://codepen.io/azuremaps/pen/zRyNmP/'>směr</a> pera.
 </iframe>
 
 Ve výše uvedeném kódu první blok kódu vytvoří objekt mapy a nastaví mechanismus ověřování pro využití přístupového tokenu. Pokyny najdete v tématu [vytvoření mapy](./map-create.md) .
@@ -60,18 +60,18 @@ Třetí blok kódu vytvoří počáteční a cílový bod pro trasu a přidá je
 
 [Symbolová vrstva](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) používá text nebo ikony pro vykreslení dat na základě bodu zabalených ve [zdroji dat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symboly na mapě. Pátý blok kódu vytvoří a přidá na mapu vrstvu symbolů. Viz Vlastnosti vrstvy symbolů na [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest).
 
-Další blok kódu vytvoří `SouthWest` `NorthEast` body od počátečního a cílového bodu a nastaví meze mapy pomocí vlastnosti [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) mapy.
+Další blok kódu vytvoří `SouthWest` a `NorthEast` body z počátečního a cílového bodu a nastaví meze mapy pomocí vlastnosti [SetCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) mapy.
 
 Poslední blok kódu používá [rozhraní Fetch API](https://fetch.spec.whatwg.org/) k vytvoření žádosti o vyhledávání na [rozhraní API pro Azure Maps tras](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Odpověď se pak analyzuje. Pokud byla odpověď úspěšná, informace o zeměpisné šířce a délce se použijí k vytvoření řádku a propojení těchto bodů. Data řádku se pak přidají do zdroje dat, aby se vygenerovala trasa na mapě. Pokyny najdete [na stránce Přidání čáry na mapě](map-add-line-layer.md) .
 
 Dotaz směrování, zdroj dat, symbol a vrstvy čáry a hranice kamery jsou vytvořeny a nastaveny v rámci [naslouchacího procesu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) v mapě, aby se zajistilo, že se výsledky zobrazí po úplném načtení mapy.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 Úplné příklady kódu najdete v následujících článcích:
 

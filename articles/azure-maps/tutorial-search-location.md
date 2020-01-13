@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: hledání pomocí Azure Maps'
-description: 'Kurz: hledání okolního bodu zájmu pomocí Azure Maps'
+title: 'Kurz: hledání blízkých míst na mapě | Mapy Microsoft Azure'
+description: V tomto kurzu se naučíte, jak na mapě vyhledat umístění sousedních míst (bodů zájmu) pomocí map Microsoft Azure.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ae2d7b3d855f1c06397d4eb0f977dd04aa841942
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65a091dbe935967d63a11c3c40dd834207f34782
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432751"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910830"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Kurz: hledání okolních bodů zájmu pomocí Azure Maps
 
@@ -49,7 +49,7 @@ Pomocí následujících kroků vytvořte nový účet Maps:
     * Přečtěte si *Licenční podmínky* a *Prohlášení o zásadách ochrany osobních údajů* a zaškrtnutím příslušného políčka podmínky přijměte.
     * Klikněte na tlačítko **Vytvořit**.
 
-![Vytvoření účtu Maps na portálu](./media/tutorial-search-location/create-account.png)
+![Vytvořit účet Azure Maps v Azure Portal](./media/tutorial-search-location/create-account.png)
 
 <a id="getkey"></a>
 
@@ -61,7 +61,7 @@ Po úspěšném vytvoření účtu Maps načtěte klíč, který vám umožní d
 2. V části nastavení vyberte **ověřování**.
 3. Zkopírujte do schránky **Primární klíč**. Místně ho uložte, abyste ho mohli použít později v tomto kurzu.
 
-![Získání primárního klíče na portálu](./media/tutorial-search-location/get-key.png)
+![Získat primární klíč v Azure Portal](./media/tutorial-search-location/get-key.png)
 
 Další podrobnosti o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 

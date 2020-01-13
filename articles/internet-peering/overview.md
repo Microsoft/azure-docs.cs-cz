@@ -8,16 +8,16 @@ ms.service: internet-peering
 ms.topic: overview
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: c5fd37c532e2abf2697c741e4dab10a945926e2b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 576bc3e37711851acd7d6c7ac811a10e40080710
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75775688"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75908920"
 ---
 # <a name="internet-peering-overview"></a>Přehled internetového partnerského vztahu
 
-Partnerský vztah je propojení mezi globální sítí společnosti Microsoft (AS8075) a vaší sítí pro účely výměny internetového provozu od společnosti Microsoft online služby a Microsoft Azure Services. Nosiče nebo poskytovatelé služeb můžou požádat o spojení se společností Microsoft na kterékoli z našich míst na okrajích. Každý požadavek se prověřuje Microsoft Azure sítě, aby se zajistilo, že bude vyhovovat našim zásadám partnerských vztahů. Partnerský vztah se sítí Microsoftu můžete nastavit dvěma způsoby:
+Partnerský vztah je propojení mezi globální sítí společnosti Microsoft (AS8075) a vaší sítí pro účely výměny internetového provozu od společnosti Microsoft online služby a Microsoft Azure Services. Nosiče nebo poskytovatelé služeb můžou požádat o spojení se společností Microsoft na kterékoli z našich míst na okrajích. Každý požadavek prověřuje společnost Microsoft, aby se zajistilo, že bude vyhovovat našim zásadám partnerských vztahů. Partnerský vztah se sítí Microsoftu můžete nastavit dvěma způsoby:
 
 * **Přímý partnerský vztah:**
 
@@ -33,7 +33,7 @@ Partnerský vztah je propojení mezi globální sítí společnosti Microsoft (A
 * Pomocí partnerského vztahu se společností Microsoft na redundantních místech chránit provoz zákazníků proti chybám ve vaší síti nebo síti poskytovatele přenosu.
 * Podívejte se na metriky výkonu o připojeních partnerských vztahů a využijte přehledy k řešení problémů se sítí.
 
-## <a name="benefits-of-using-azure"></a>Výhody používání Azure
+## <a name="benefits-of-using-azure-to-set-up-peering"></a>Výhody použití Azure k nastavení partnerského vztahu
 
 Můžete požádat o partnerský vztah s Microsoftem pomocí Azure PowerShell nebo portálu. Nastavení partnerských vztahů tímto způsobem se spravuje jako prostředek Azure a nabízí následující výhody:
 * Zjednodušené a automatizovatelné kroky pro nastavení a správu partnerského vztahu s Microsoftem

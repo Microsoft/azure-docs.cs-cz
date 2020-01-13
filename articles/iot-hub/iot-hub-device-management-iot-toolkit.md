@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 03997bb6999af9ebaad36cc95f7834e3b9ed4569
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 9d4d82472664900c96b77b31740573d0463465b8
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953194"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911916"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Použití nástrojů Azure IoT pro Visual Studio Code pro správu zařízení Azure IoT Hub
 
@@ -71,7 +71,7 @@ Spusťte nástroje Azure IoT Tools pro Visual Studio Code s různými možnostmi
 
 2. Do vstupního pole zadejte název metody a datovou část.
 
-3. Výsledky se zobrazí ve **výstupu** > zobrazení sady **nástrojů Azure IoT Hub** .
+3. Výsledky se zobrazí ve **výstupu** > zobrazení **Azure IoT Hub** .
 
 ## <a name="read-device-twin"></a>Čtení z vlákna zařízení
 
@@ -87,7 +87,7 @@ Spusťte nástroje Azure IoT Tools pro Visual Studio Code s různými možnostmi
 
 3. Vyberte možnost **aktualizovat dvojitou adresu zařízení** , aby se aktualizovaly vlákna zařízení.
 
-## <a name="send-cloud-to-device-messages"></a>Odesílání zpráv z cloudu do zařízení
+## <a name="send-cloud-to-device-messages"></a>Posílání zpráv z cloudu na zařízení
 
 Pokud chcete poslat zprávu ze služby IoT Hub do svého zařízení, postupujte podle těchto kroků:
  
@@ -95,7 +95,7 @@ Pokud chcete poslat zprávu ze služby IoT Hub do svého zařízení, postupujte
 
 2. Do vstupního pole zadejte zprávu.
 
-3. Výsledky se zobrazí ve **výstupu** > zobrazení sady **nástrojů Azure IoT Hub** .
+3. Výsledky se zobrazí ve **výstupu** > zobrazení **Azure IoT Hub** .
 
 ## <a name="next-steps"></a>Další kroky
 

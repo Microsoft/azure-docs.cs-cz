@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: guide
 ms.date: 12/04/2019
 ms.author: dibotero
-ms.openlocfilehash: a7216e697680bcc049d2ceb4caec74adfc1760b0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 74bf0422bbe6c2c1c84365c1e8f9329a01ff9fdd
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74897387"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75909039"
 ---
 # <a name="azure-internet-analyzer-troubleshooting"></a>Řešení potíží s Azure Internet Analyzer
 
@@ -22,6 +22,7 @@ Tento článek obsahuje postup pro řešení běžných problémů s Internet An
 **V části přehledy výkonnostních metrik se pro tento Scorecard neshromáždila dostatečná měření.**
 
 Poznámky:
+- Klientský skript musí být vložen do webu **https** . Měření se nebudou shromažďovat, pokud se skript spouští na webu v prostém textu (**http://** ) nebo místní (**File://** ).
 - Data měření budou shromažďována pouze v případě, že je klientský skript profilu nástroje Internet Analyzer vložen do aplikace, která přijímá reálný uživatelský provoz. Syntetické přenosy (například testy výkonu Azure WebApp) obvykle nespouštějí vložený kód JavaScriptu, takže tento typ provozu nebude generovat žádná měření.
 - Časová řada se generuje jednou za hodinu, takže budete muset počkat aspoň tuto dobu, než se data nových měření zobrazí.
 - Scorecardy se generují každý den (na konci každého dne, čas UTC).

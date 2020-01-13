@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: e7239fdedafedc96a382de6c3c2f90b5da4df00c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 77cc4732e017d95cbae19578cf26b1111b08fdde
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75774247"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75908990"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>Přidružení partnerského čísla ASN k předplatnému Azure pomocí PowerShellu
 
@@ -29,7 +29,24 @@ Pokud budete chtít, můžete tuto příručku dokončit pomocí [portálu](howt
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Přihlaste se ke svému účtu Azure a vyberte své předplatné
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
+### <a name="register-for-peering-resource-provider"></a>Registrace pro poskytovatele prostředků partnerského vztahu
+Zaregistrujte se do poskytovatele prostředků partnerského vztahu ve vašem předplatném Pomocí následujícího příkazu. Pokud to neprovedete, prostředky Azure potřebné k nastavení partnerského vztahu nejsou přístupné.
+
+```powershell
+Register-AzResourceProvider -ProviderNamespace Microsoft.Peering
+```
+
+Stav registrace můžete kontrolovat pomocí níže uvedených příkazů:
+```powershell
+Get-AzResourceProvider -ProviderNamespace Microsoft.Peering
+```
+
+> [!IMPORTANT]
+> Než budete pokračovat, počkejte, až *RegistrationState* zaregistrujte. Po provedení příkazu může trvat 5 až 30 minut.
+
 ### <a name="update-the-peer-information-associated-with-this-subscription"></a>Aktualizovat informace o partnerském vztahu přidruženého k tomuto předplatnému
+
+Níže je příklad, jak aktualizovat informace o partnerovi.
 
 ```powershell
 New-AzPeerAsn `

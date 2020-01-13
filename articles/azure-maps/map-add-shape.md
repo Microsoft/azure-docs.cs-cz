@@ -1,6 +1,6 @@
 ---
-title: Přidat mnohoúhelníkovou vrstvu pro Azure Maps | Microsoft Docs
-description: Jak přidat mnohoúhelníkovou vrstvu do Azure Maps webové sady SDK.
+title: Přidat mnohoúhelníkovou vrstvu k mapě | Mapy Microsoft Azure
+description: V tomto článku se naučíte, jak vykreslit mnohoúhelník a vícenásobný mnohoúhelník na mapě v sadě Microsoft Azure Maps Web SDK.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: ca6c0f5e6fde5a31655ed17f4a016bf44216643f
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 77d952666be12d7dea780b3aa8f094cf5f70f2d3
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976144"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911130"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>Přidat mnohoúhelníkovou vrstvu k mapě
 
-V tomto článku se dozvíte, jak vykreslovat `Polygon` oblasti `MultiPolygon` a funkce geometrií na mapě pomocí mnohoúhelníkové vrstvy. Sada Azure Maps Web SDK také podporuje vytváření geometrií kroužků, jak je definováno v [rozšířeném schématu](extend-geojson.md#circle)pro stanovení biojson. Tyto kružnice jsou transformované na mnohoúhelníky při vykreslování na mapě. Všechny funkce geometrií je také možné snadno aktualizovat, pokud jsou zabaleny pomocí nástroje [Atlas. Třída Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)
+V tomto článku se dozvíte, jak vykreslit oblasti `Polygon` a `MultiPolygon` funkcí geometrií na mapě pomocí mnohoúhelníkové vrstvy. Sada Azure Maps Web SDK také podporuje vytváření geometrií kroužků, jak je definováno v [rozšířeném schématu pro stanovení biojson](extend-geojson.md#circle). Tyto kružnice jsou transformované na mnohoúhelníky při vykreslování na mapě. Všechny funkce geometrií je také možné snadno aktualizovat, pokud jsou zabaleny pomocí nástroje [Atlas. Třída Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)
 
 ## <a name="use-a-polygon-layer"></a>Použít mnohoúhelníkovou vrstvu 
 
-Když je mnohoúhelníková vrstva připojena ke zdroji dat a načtena na mapě, vykreslí oblast `Polygon` funkcí a. `MultiPolygon` Následující kód ukazuje, jak vytvořit mnohoúhelník, přidat ho do zdroje dat a vykreslit ho pomocí mnohoúhelníkové vrstvy pomocí třídy [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) .
+Když je mnohoúhelníková vrstva připojená ke zdroji dat a načte se na mapě, vykreslí oblast `Polygon` a `MultiPolygon` funkce. Následující kód ukazuje, jak vytvořit mnohoúhelník, přidat ho do zdroje dat a vykreslit ho pomocí mnohoúhelníkové vrstvy pomocí třídy [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) .
 
 ```javascript
 //Create a data source and add it to the map.
@@ -51,19 +51,19 @@ Níže je uvedená ukázka kompletního spuštění kódu výše uvedené funkce
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Přidání mnohoúhelníku k mapě ' src='//codepen.io/azuremaps/embed/yKbOvZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero a <a href='https://codepen.io/azuremaps/pen/yKbOvZ/'>přidejte mnohoúhelník na mapu</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Přidání mnohoúhelníku k mapě ' src='//codepen.io/azuremaps/embed/yKbOvZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero a <a href='https://codepen.io/azuremaps/pen/yKbOvZ/'>přidejte mnohoúhelník na mapu</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="use-a-polygon-and-line-layer-together"></a>Použít mnohoúhelník a čáru vrstev společně
 
 Spojnicová vrstva se dá použít k vykreslení obrysu mnohoúhelníků. Následující ukázka kódu vykreslí mnohoúhelník jako předchozí příklad, ale nyní přidá řádkovou vrstvu jako druhou vrstvu připojenou ke zdroji dat.  
 
-<iframe height='500' scrolling='no' title='Mnohoúhelníková a Spojnicová vrstva pro přidání mnohoúhelníku' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Pokud chcete přidat mnohoúhelník podle Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>, podívejte se na <a href='https://codepen.io/azuremaps/pen/aRyEPy/'>mnohoúhelník a vrstvu čáry</a> .
+<iframe height='500' scrolling='no' title='Mnohoúhelníková a Spojnicová vrstva pro přidání mnohoúhelníku' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Pokud chcete přidat mnohoúhelník Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>, podívejte se na <a href='https://codepen.io/azuremaps/pen/aRyEPy/'>mnohoúhelník a vrstvu čáry</a> .
 </iframe>
 
 ## <a name="fill-a-polygon-with-a-pattern"></a>Naplnění mnohoúhelníku vzorem
 
-Kromě naplnění mnohoúhelníku barvou lze také použít vzor obrázku. Načtěte vzorek obrázku do prostředků mapy Sprite obrázku a pak na tento obrázek odkázat pomocí `fillPattern` vlastnosti mnohoúhelníkové vrstvy.
+Kromě naplnění mnohoúhelníku barvou lze také použít vzor obrázku. Načtěte vzorek obrázku do prostředků mapy Sprite obrázku a pak na tento obrázek odkázat pomocí vlastnosti `fillPattern` vrstvy mnohoúhelníku.
 
 <br/>
 
@@ -81,14 +81,14 @@ Vrstva mnohoúhelníku má pouze několik možností stylů. Tady je nástroj pr
 
 <br/>
 
-<iframe height='700' scrolling='no' title='LXvxpg' src='//codepen.io/azuremaps/embed/LXvxpg/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/LXvxpg/'></a> Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>LXvxpg pera na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='LXvxpg' src='//codepen.io/azuremaps/embed/LXvxpg/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na Azure Maps <a href='https://codepen.io/azuremaps/pen/LXvxpg/'>LXvxpg</a> pera na CodePen (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'></a>.
 </iframe>
 
 <a id="addACircle"></a>
 
 ## <a name="add-a-circle-to-the-map"></a>Přidání kruhu k mapě
 
-Azure Maps používá rozšířenou verzi schématu injson, která poskytuje definici pro kruhy, jak je uvedeno [zde](extend-geojson.md#circle). Kruh lze na mapě `Point` vykreslit vytvořením funkce, která `subType` má `"Circle"` vlastnost s hodnotou a `radius` vlastností, která má číslo, které představuje poloměr v metrech. Příklad:
+Azure Maps používá rozšířenou verzi schématu injson, která poskytuje definici pro kruhy, jak je uvedeno [zde](extend-geojson.md#circle). Kruh lze na mapě vykreslit vytvořením funkce `Point`, která má vlastnost `subType` s hodnotou `"Circle"` a `radius` vlastností, která má číslo představující poloměr v metrech. Příklad:
 
 ```javascript
 {
@@ -104,16 +104,16 @@ Azure Maps používá rozšířenou verzi schématu injson, která poskytuje def
 }  
 ```
 
-Azure Maps webová sada SDK převede tyto `Point` `Polygon` funkce na funkce v rámci pokrývání a lze je vykreslit na mapě pomocí mnohoúhelníkových a spojnicových vrstev, jak je znázorněno v následující ukázce kódu.
+Azure Maps webová sada SDK převede tyto `Point` funkce na `Polygon` funkce v rámci pokrývání a lze je vykreslit na mapě pomocí vrstev mnohoúhelníku a čáry, jak je znázorněno v následujícím příkladu kódu.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Přidání kruhu k mapě' src='//codepen.io/azuremaps/embed/PRmzJX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero a <a href='https://codepen.io/azuremaps/pen/PRmzJX/'>přidejte do mapy</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Přidání kruhu k mapě' src='//codepen.io/azuremaps/embed/PRmzJX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero a <a href='https://codepen.io/azuremaps/pen/PRmzJX/'>přidejte do mapy kruh</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="make-a-geometry-easy-to-update"></a>Usnadnění aktualizace geometrie
 
-Třída obaluje geometrii nebo [funkci](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) a usnadňuje jejich aktualizaci a údržbu. [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest) `Shape` Obrazec lze vytvořit předáním do geometrie a sady vlastností nebo předáním funkce, jak je znázorněno v následujícím kódu.
+Třída `Shape` obaluje [geometrii](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest) nebo [funkci](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) a usnadňuje jejich aktualizaci a údržbu. Obrazec lze vytvořit předáním do geometrie a sady vlastností nebo předáním funkce, jak je znázorněno v následujícím kódu.
 
 ```javascript
 //Creating a shape by passing in a geometry and a object containing properties.
@@ -127,10 +127,10 @@ Následující ukázka kódu ukazuje, jak zabalit objekt informující o středn
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Aktualizovat vlastnosti obrazce' src='//codepen.io/azuremaps/embed/ZqMeQY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Prohlédněte si <a href='https://codepen.io/azuremaps/pen/ZqMeQY/'>vlastnosti obrazce aktualizace</a> pera podle Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Aktualizovat vlastnosti obrazce' src='//codepen.io/azuremaps/embed/ZqMeQY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Prohlédněte si <a href='https://codepen.io/azuremaps/pen/ZqMeQY/'>vlastnosti obrazce aktualizace</a> pera podle Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o třídách a metodách, které se používají v tomto článku:
 
@@ -160,7 +160,7 @@ Další příklady kódu pro přidání do map najdete v následujících člán
 > [!div class="nextstepaction"]
 > [Přidat řádkovou vrstvu](map-add-line-layer.md)
 
-Další prostředky:
+Další materiály:
 
 > [!div class="nextstepaction"]
 > [Azure Maps rozšíření pro injson Specification](extend-geojson.md#circle)

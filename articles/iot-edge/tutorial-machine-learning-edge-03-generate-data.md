@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d51a577b8a460e872b2baddcb668b13981609e40
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1c56dd23084feabeb72f084b03e055d4aa09a11d
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707742"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912263"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Kurz: generování dat simulovaného zařízení
 
@@ -111,7 +111,7 @@ Teď, když máme sestavení projektu, připojte se k centru IoT, abyste měli p
 
    Pokud se zobrazí výzva, vyberte zadat.
 
-1. Do terminálu zadejte `dotnet run`.
+1. Zadejte `dotnet run` v terminálu.
 
 1. Po zobrazení výzvy k zadání připojovacího řetězce IoT Hub vložte připojovací řetězec zkopírovaný v předchozí části.
 
@@ -123,7 +123,7 @@ Teď, když máme sestavení projektu, připojte se k centru IoT, abyste měli p
 
 1. Zprávy odesílané do centra můžete zobrazit tak, že pravým tlačítkem myši kliknete na libovolné zařízení a vyberete **zahájit sledování integrovaného koncového bodu události**. Zprávy se zobrazí v podokně výstup v Visual Studio Code.
 
-1. Kliknutím na výstupní podokno služby **Azure IoT Hub Toolkit** ukončete monitorování a vyberte možnost **Zastavit sledování integrovaného koncového bodu události**.
+1. Kliknutím do podokna výstup v **Azure IoT Hub** ukončete monitorování a vyberte **zastavit monitorování integrovaný koncový bod události**.
 
 1. Nechte aplikaci spuštěnou k dokončení, což trvá několik minut.
 

@@ -1,6 +1,6 @@
 ---
-title: Povětrnostní pokrytí v Azure Maps | Microsoft Docs
-description: Přečtěte si o počasí v Azure Maps
+title: Povětrnostní pokrytí | Mapy Microsoft Azure
+description: V tomto článku se dozvíte o počasí v Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/20/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a197f95963e5a4138136f5d336e276ec1c7f7af7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 630a018c25ac8663fd369c1256e376b8039182c9
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407634"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910806"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps povětrnostní pokrytí
 

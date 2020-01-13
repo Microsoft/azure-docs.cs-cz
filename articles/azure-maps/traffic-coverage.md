@@ -1,6 +1,6 @@
 ---
-title: Pokrytí provozu v Azure Maps | Microsoft Docs
-description: Přečtěte si o pokrytí provozu v Azure Maps
+title: Pokrytí provozu | Mapy Microsoft Azure
+description: V tomto článku se dozvíte o pokrytí provozu ve službě Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 09/22/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: cb7ebe5d9519f1a3967a29f4c883c420a892817f
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 544cae7f33bfb1077bfdf7f215fb313974334216
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958003"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910403"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps pokrytí provozu
 
@@ -42,11 +42,11 @@ Mapy ale nemají stejnou úroveň informací a přesnost pro všechny země nebo
 |Země/oblast   |Incidenty  |Tok  |
 |---------|:---------:|:---------:|
 |Austrálie     |✓         |✓        |
-|Sultanát   |✓         |✓        |
+|Brunej   |✓         |✓        |
 |Hongkong – zvláštní správní oblast     |✓         |✓         |
 |Indie   |✓         |✓         |
 |Indonésie     |✓         |✓         |
-|Macao – zvláštní správní oblast     |✓         |✓         |
+|Macao – zvláštní administrativní oblast     |✓         |✓         |
 |Malajsie     |✓         |✓         |
 |Nový Zéland     |✓         |✓         |
 |Filipíny  |✓         |✓         |
@@ -129,7 +129,7 @@ Mapy ale nemají stejnou úroveň informací a přesnost pro všechny země nebo
 |Omán     |✓         |✓         |
 |Katar     |✓         |✓         |
 |Saúdská Arábie     |✓         |✓         |
-|Jižní Afrika     |✓         |✓         |
+|Jihoafrická republika     |✓         |✓         |
 |Spojené arabské emiráty  |✓         |✓         |
 
 ## <a name="next-steps"></a>Další kroky

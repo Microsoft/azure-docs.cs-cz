@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 02/14/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: fc4b613eb9e77acef4568ef93b7606fb43568f82
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8bf7f3a423b97f6cd84f0b575d00d60776c598c
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476009"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911928"
 ---
-Chcete-li pokračovat, abyste mohli začít s Azure IoT Hub a prozkoumat všechny rozšířené scénáře IoT, najdete tady:
+Pokud chcete pokračovat v seznámení se službou Azure IoT Hub a prozkoumat všechny rozšířené scénáře IoT, podívejte se na tyto informace:
 
-- [Správa zasílání zpráv pomocí rozšíření Azure IoT Hub Toolkit pro Visual Studio Code cloudových zařízení](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)
+- [Správa zasílání zpráv cloudových zařízení pomocí rozšíření Azure IoT Hub pro Visual Studio Code](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)
 
-- [Správa zařízení pomocí rozšíření Azure IoT Hub Toolkit pro Visual Studio Code](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)
+- [Správa zařízení pomocí rozšíření Azure IoT Hub pro Visual Studio Code](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)
 
 - [Nastavení směrování zpráv](../articles/iot-hub/tutorial-routing.md)
 
 - [Použití Power BI k vizualizaci dat snímačů ze služby IoT Hub v reálném čase](../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md)
 
-- [Použijte nějakou webovou aplikaci k vizualizaci dat snímačů v reálném čase ze služby IoT hub](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)
+- [Použití webové aplikace k vizualizaci dat snímačů v reálném čase ze služby IoT Hub](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)
 
 - [Předpověď počasí ve službě Azure Machine Learning s využitím dat snímačů ze služby IoT Hub](../articles/iot-hub/iot-hub-weather-forecast-machine-learning.md)
 

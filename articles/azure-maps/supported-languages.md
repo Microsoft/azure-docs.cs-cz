@@ -1,6 +1,6 @@
 ---
-title: Podpora lokalizace v Azure Maps | Microsoft Docs
-description: Přečtěte si o podporovaných jazycích pro služby v Azure Maps
+title: Podpora lokalizace | Mapy Microsoft Azure
+description: V tomto článku se dozvíte o podporovaných jazycích pro služby v Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/20/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 64197cc85822997926a8011af8cb3b981fa9064d
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 4926cb2bb4cb1aa15b212cc7130e0db995a24ed9
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286425"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910438"
 ---
 # <a name="localization-support-in-azure-maps"></a>Podpora lokalizace v Azure Maps
 
@@ -25,7 +25,7 @@ Azure Maps podporuje různé jazyky a zobrazení založené na zemi nebo oblasti
 Azure Maps jsou lokalizované v různých jazycích v rámci služeb. Následující tabulka uvádí podporované kódy jazyků pro každou službu.  
   
 
-| ID         | Název                   |  Maps | Hledat | Směrování | Počasí | Incidenty provozu | JS – ovládací prvek mapy |
+| ID         | Name (Název)                   |  Mapy | Hledat | Plánování tras | Počasí | Incidenty provozu | JS – ovládací prvek mapy |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | af-ZA      | Afrikánština              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | arabština                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -36,23 +36,23 @@ Azure Maps jsou lokalizované v různých jazycích v rámci služeb. Následuj�
 | bg-BG      | Bulharština              |   ✓   |    ✓   |    ✓    |     ✓     |                   |        ✓       |
 | ES certifikační autority      | Katalánština                |       |    ✓   |         |    ✓      |                   |                |
 | zh-HanS    | Čínština (zjednodušená)   |       |  zh-CN |         |     zh-CN   |                   |                |
-| zh-HanT    | Čínština (Hongkong – zvláštní administrativní oblast)  |  |   |    |    zh-HK   |                   |           |
+| zh-HanT    | Hongkong (zvláštní správní oblast ČLR)  |  |   |    |    zh-HK   |                   |           |
 | zh-HanT    | Čínština (Tchaj-wan)  | zh-TW |  zh-TW |  zh-TW  |    zh-TW   |                   |      zh-TW     |
 | hr-HR      | Chorvatština               |       |    ✓   |         |    ✓      |                   |                |
 | cs-CZ      | Čeština                  |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
 | da-DK      | dánština                 |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| nl-BE      | Holandština (Belgie)        |       |    ✓   |         |      ✓    |                   |                |
+| nl-BE      | Nizozemština (Belgie)        |       |    ✓   |         |      ✓    |                   |                |
 | NL-NL      | Nizozemština (Nizozemsko)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | cs AU      | angličtina (Austrálie)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | cs NZ      | angličtina (Nový Zéland)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | en-GB      | Angličtina (Velká Británie) |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| en-US      | Angličtina (USA)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
-| et – EE      | Estonština               |       |    ✓   |         |      ✓    |         ✓         |                |
+| cs-CZ      | Angličtina (USA)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
+| et-EE      | Estonština               |       |    ✓   |         |      ✓    |         ✓         |                |
 | náhl-PH     | Filipínština               |       |       |         |     ✓    |                   |                |
 | fi-FI      | Finština                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | fr-FR      | Francouzština                 |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | fr-CA      | Francouzština (Kanada)      |       |    ✓   |         |     ✓     |                   |                |
-| HK – ES      | Galicijština               |       |    ✓   |         |         |                   |                |
+| gl-ES      | Galicijština               |       |    ✓   |         |         |                   |                |
 | de-DE      | Němčina                 |   ✓   |    ✓   |    ✓    |   ✓      |         ✓         |        ✓       |
 | el-GR      | Řečtina                  |   ✓   |    ✓   |    ✓    |    ✓     |         ✓         |        ✓       |
 | Gu – IN      | Gudžarátština                |       |       |         |     ✓    |                   |                |
@@ -63,7 +63,7 @@ Azure Maps jsou lokalizované v různých jazycích v rámci služeb. Následuj�
 | ID ID      | Indonéština             |   ✓   |    ✓    |    ✓    |     ✓    |         ✓         |        ✓       |
 | IT-IT      | italština                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | ja-JP      | Japonština               |       |        |         |     ✓    |                   |                |
-| KN-IN      | Kannada                |       |       |         |     ✓    |                   |                |
+| KN-IN      | Kannadština                |       |       |         |     ✓    |                   |                |
 | kk-KZ      | Kazaština                 |       |    ✓   |         |     ✓    |                   |                |
 | ko-KR      | Korejština                 |   ✓   |        |    ✓    |     ✓    |                   |        ✓       |
 | es-419     | Latinskoamerická španělština |       |    ✓   |         |         |                   |                |
@@ -72,7 +72,7 @@ Azure Maps jsou lokalizované v různých jazycích v rámci služeb. Následuj�
 | MK-MK      | Makedonie             |       |       |         |     ✓    |                   |                |
 | Moje MS      | Malajština (latinka)          |   ✓   |    ✓   |    ✓    |    ✓   |                   |        ✓       |
 | mr-IN      | Maráthština                 |       |       |         |     ✓    |                   |                |
-| nb-NO      | Norština, Bokmål       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
+| nb-NO      | Norština bokmål       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | NGT        | Neutrální uzemněné – úřední jazyky pro všechny oblasti v místních skriptech, pokud jsou k dispozici |   ✓     |        |         |       |        |      ✓          |
 | NGT – Latn   | Neutrální uzemnění – Latinská exonyms Pokud je k dispozici skript latinky, bude použit |   ✓     |        |         |         |                |        ✓         |
 | pl-PL      | polština                 |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
@@ -80,9 +80,9 @@ Azure Maps jsou lokalizované v různých jazycích v rámci služeb. Následuj�
 | pt-PT      | Portugalština (Portugalsko)  |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | PA – v      | Paňdžábština                 |       |       |         |     ✓    |                   |                |
 | ro RO      | Rumunština               |       |    ✓    |         |     ✓    |         ✓         |                |
-| ru-RU      | Ruština                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
+| ru-RU      | ruština                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | sr-Cyrl-RS | Srbština (cyrilice)     |       |   SR-RS  |         |    SR-RS     |                   |                |
-| SR-Latn-RS | Srbština (latinka)        |       |       |         |     SR-Latn    |                   |                |
+| sr-Latn-RS | Srbština (latinka)        |       |       |         |     SR-Latn    |                   |                |
 | sk-SK      | Slovenština             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | sl-SL      | Slovinština              |   ✓   |    ✓   |    ✓    |     ✓    |                   |        ✓       |
 | es-ES      | Španělština                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
@@ -92,7 +92,7 @@ Azure Maps jsou lokalizované v různých jazycích v rámci služeb. Následuj�
 | te v      | telugština (Indie)                 |       |       |         |     ✓    |                   |                |
 | th TH      | Thajština                   |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | tr-TR      | turečtina                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| Spojené království – UA      | Ukrajinština               |       |    ✓   |         |     ✓    |                   |                |
+| uk-UA      | Ukrajinština               |       |    ✓   |         |     ✓    |                   |                |
 | ur-PK      | Urdština                 |       |       |         |     ✓    |                   |                |
 | uz-Latn-UZ | Uzbečtina                 |       |       |         |     ✓    |                   |                |
 | vi-VN      | Vietnamština             |       |    ✓   |         |      ✓    |                  |                |
@@ -148,7 +148,7 @@ Ve výchozím nastavení je parametr zobrazení nastaven na hodnotu **sjednocen�
 
 Následující tabulka poskytuje podporovaná zobrazení.
 
-| Zobrazení         | Popis                            |  Maps | Hledat | Ovládací prvek Mapa JS |
+| Zobrazit         | Popis                            |  Mapy | Hledat | Ovládací prvek Mapa JS |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Spojené arabské emiráty (pohled na arabské písmo)    |   ✓   |        |     ✓          |
 | AR           | Argentina (pohled z argentinského)           |   ✓   |    ✓   |     ✓          |
@@ -166,5 +166,5 @@ Následující tabulka poskytuje podporovaná zobrazení.
 | SA           | Saúdská Arábie (zobrazení arabštiny)            |   ✓   |        |     ✓          |
 | SY           | Sýrie (zobrazení arabštiny)                   |   ✓   |        |     ✓          |
 | JE           | Jemen (zobrazení arabštiny)                   |   ✓   |        |     ✓          |
-| automaticky         | Vraťte data mapy na základě IP adresy žádosti.|   ✓   |    ✓   |     ✓          |
+| Auto         | Vraťte data mapy na základě IP adresy žádosti.|   ✓   |    ✓   |     ✓          |
 | Unifikace      | Sjednocené zobrazení (ostatní)                  |   ✓   |   ✓     |     ✓          |

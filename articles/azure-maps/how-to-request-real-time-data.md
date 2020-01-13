@@ -1,6 +1,6 @@
 ---
-title: Jak vyžádat data v reálném čase v Azure Maps | Microsoft Docs
-description: Vyžádejte data v reálném čase pomocí služby Azure Maps mobility.
+title: Požadavek na přenosová data v reálném čase | Mapy Microsoft Azure
+description: Vyžádejte data v reálném čase pomocí služby mobility Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 09/06/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 5f69bcafbc3abb39b4185e0144ff6029808c0704
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 169764f015f332d07c21ef815e6044c653489774
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432976"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911437"
 ---
 # <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>Vyžádat data v reálném čase pomocí služby Azure Maps mobility
 

@@ -1,6 +1,6 @@
 ---
-title: Začínáme s ovládacím prvkem pro mapování Androidu v Azure Maps | Microsoft Docs
-description: Ovládací prvek pro mapování Androidu v Azure Maps.
+title: Začínáme s ovládacím prvkem pro mapování Androidu | Mapy Microsoft Azure
+description: V tomto článku se naučíte, jak začít s mapovým ovládacím prvkem pro Android pomocí Android SDK Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cb79b24a37758307657c1245622fa980123cc5c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb9dc16eabbd6065e05d26258c1421aa7a46dbd7
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432924"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911397"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Začínáme s Azure Maps Android SDK
 
@@ -43,7 +43,7 @@ Nejprve vytvořte nový projekt s prázdnou aktivitou. Chcete-li vytvořit proje
 
 Další nápovědu k instalaci Android Studio a vytvoření nového projektu najdete v [dokumentaci k Android Studio](https://developer.android.com/studio/intro/) .
 
-![Vytvoření projektu](./media/how-to-use-android-map-control-library/form-factor-android.png)
+![Vytvoření projektu v Android studiu ](./media/how-to-use-android-map-control-library/form-factor-android.png)
 
 ## <a name="set-up-a-virtual-device"></a>Nastavení virtuálního zařízení
 
@@ -217,7 +217,7 @@ Sestavení aplikace bude trvat několik sekund Android Studio. Po dokončení se
 
 <center>
 
-![](./media/how-to-use-android-map-control-library/android-map.png)</center> mapy pro Android
+![Azure Maps v aplikaci pro Android](./media/how-to-use-android-map-control-library/android-map.png)</center>
 
 ## <a name="localizing-the-map"></a>Lokalizace mapy
 
@@ -263,7 +263,7 @@ Tady je příklad Azure Maps s jazykem, který je nastaven na "fr-FR" a místní
 
 <center>
 
-Obrázek mapy ![znázorňující popisky ve francouzštině](./media/how-to-use-android-map-control-library/android-localization.png)
+![Azure Maps, obrázek mapy znázorňující popisky ve francouzštině](./media/how-to-use-android-map-control-library/android-localization.png)
 </center>
 
 Úplný seznam podporovaných jazyků a regionálních zobrazení je popsán [zde](supported-languages.md).

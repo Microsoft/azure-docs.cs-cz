@@ -1,6 +1,6 @@
 ---
-title: Hledat kategorie ve službě Azure Maps | Dokumentace Microsoftu
-description: Další informace o kategoriích vyhledávání ve službě Azure Maps
+title: Kategorie hledání | Mapy Microsoft Azure
+description: V tomto článku se dozvíte o podporovaných kategoriích hledání v mapách Microsoft Azure.
 author: sataneja
 ms.author: sataneja
 ms.date: 05/14/2018
@@ -8,125 +8,125 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 4d854aef62af1004faacf73c11bb417cf508a727
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: de44d07b5ebc6a898e3c098f16e553e9d4a46150
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64727141"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910412"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure Maps podporované kategorie
 
-Při provádění [vyhledávání kategorie](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) bodů zájmu existuje více než stovku podporovaných kategorií. Níže je seznam kódů kategorie pro názvy podporovaných kategorií. Kategorie kódy jsou generovány pro kategorie nejvyšší úrovně. Všechny kategorie sub sdílet stejný kód kategorie. Mějte prosím na paměti, že tento seznam kategorií se může změnit novými vydanými verzemi data.
+Když provedete [Hledání kategorií](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) bodů zájmu, existují více než sto podporovaných kategorií. Níže je uveden seznam kódů kategorií pro podporované názvy kategorií. Kódy kategorií se generují pro kategorie nejvyšší úrovně. Všechny dílčí kategorie sdílejí stejný kód kategorie. Všimněte si, že v tomto seznamu kategorií se může změnit nová verze dat.
 
 <br/>
 
-| **Kód kategorie** | **Kategorie odpovídající kód** |
+| **Kód kategorie** | **Kategorie, které odpovídají kódu** |
 | --- | --- |
-| PŘÍSTUP\_BRÁNY | letecká společnost přístup, bránu zabezpečení, stanice přístup, brána přístup |
-| PRO SPRÁVU\_DĚLENÍ | provincie, čtvrtý pořadí správní území, prvního řádu správní území, historické, třetí pořadí správní území, místo správní území čtvrté úrovně, místo správní území druhého řádu, závislé na politické správní území třetí pořadí, mají údaj vyplněný míst, druhé pořadí správní území, pracovní stanici pro správu v pořadí první pracovní stanice entity, místo mají údaj vyplněný, dělení, správní území, vyplní místo, historické oblast, historické lokality, historické mají údaj vyplněný místo, izraelská vyrovnání, historické čtvrté pořadí správní území, správní území pátého pořadí, historické prvního řádu správní území, třetí pořadí správní území historických politické entity, historické správní území, místo government politické entity, historické druhé pořadí správní území, velké politické entity |
-| ADVENTURE\_SPORTOVNÍ\_MÍST | Adventure sportovní míst |
-| ZEMĚDĚLSTVÍ | zahradnictví, primární výrobce, zemědělství, farmy, vesnice farmy, farmstead, věci odvál čas, pastviny oblasti, běžné, akvakultury zařízení, farmy, rybolov oblasti mléka, polí |
-| LETIŠTI | privátní autority, armádní autority, Vrtulníkové letiště, letiště uzavřené, střední, velké letiště, malé letiště, letištního, seaplane base, veřejné autority, bubliny port, letiště |
-| ZÁBAVNÍCH\_PARK | arkádová zábavní, místo zábavní, zábavní |
-| AUTOMOBILOVÝ PRŮMYSL\_PRODEJCE | atv/snowmobile, loď, Service bus, motocykl, nákladní vůz, van, rekreační vozidla, Auto, automobilový průmysl prodejce |
-| BANK | bank, bank, bank(s) |
-| BEACH | Beach, pláže |
-| VYTVÁŘENÍ\_BODU | sestavování (bodů) |
-| OBCHODNÍ\_PARK | obchodní park, průmyslové oblasti |
-| CAFE\_PUBLIKOVÁNÍ A ODBĚRU | Internet kavárny, čaje house, kavárny, kavárny internet, kavárny, kavárny, microbrewery/pivo kachnami, publikování a odběru, kavárny/publikování a odběru, kavárny/pub |
-| TÁBOŘIŠŤ\_ZÁKLADU | organizace Recreational, lokality obytného vozu tábořišť základu |
-| AUTO\_WASH | Auto wash |
-| CASH\_ROZPRAŠOVAČ | Automatické pokladny počítače hotovosti rozprašovač |
-| CASINO | casino |
-| KINA | Drive-in kina, kina |
-| MĚSTO\_SYSTEM CENTER | detekovaná sousední oblasti pro správu, Město center System center |
-| CLUB\_PŘIDRUŽENÍ | Beach club, hokeji club, club přidružení |
-| ŠKOLE\_UNIVERSITY | nižší škole/komunitní škole, vysoké školy, Fakultě, univerzitu prep školu, university |
-| KOMERČNÍ\_SESTAVENÍ | vytváření sestavení park ústředí, obchodní Office |
-| SPOLEČENSTVÍ\_SYSTEM CENTER | Community center. |
-| SPOLEČNOSTI | daňové Electronics počítače datové služby, technologie veřejného zdraví, poradenství, zvířat chránila, letecká společnost, pronájem zařízení, služby, doručování e-mailu/balíčku a přístavů, řádky Service bus, oprava domácí spotřebiče, čištění služby, oem, výroba služby, ropy, plynu přirozeného, právní služby, konstrukce, telekomunikace, přenosu, automobilů výroby, chemikálií, mortuaries pohřební služby, most tunelového propojení operations, automobile, strojírenství, služby, investice poradci reklamu nebo marketingových, přesunutí úložiště, úspory instituce, pojištění, počítačový software pharmaceuticals společnosti svatební služeb, zemědělská technologie, nemovitosti, taxi, limousine shuttle service, Service bus pronajme další směrování, dolování, publikování technologie, telefonní kabel, distribuce import/export, společnosti, o, uhlí mine(s), estate(s), brewery, gold mine(s) |
+| PŘÍSTUP\_brány | přístup k leteckému terminálu, brána zabezpečení, přístup ke stanici, přístup k bráně |
+| \_divize pro správu | provincie, čtvrté pořadí správy, první pořadí administrativního dělení, historické třídění v rámci třetího řádu, umístění čtvrtého řádu pro správu, umístění druhého řádu pro správu, závislé na politické úrovni entita, naplnění místa, umístění třetí objednávky správy, naplnění míst, uspořádání pro správu druhé objednávky, umístění první objednávky pro správu, rozmístění správy, naplnění národní části, historická oblast, historická lokalita, historické vyplněné místo, izraelský smír, historická čtvrtá objednávka pro správu, páté pořadí správy, historická první objednávka pro správu, třetí objednávka správy, historická politická entita, historická administrativní divize, sídlo státní správy politické entity, historické členění druhé objednávky, Velká část politické entity |
+| ADVENTURe\_Sport\_konání | místo na Adventure Sport |
+| ZEMĚDĚLSTVÍ | zahradnictví, primární producent, zemědělství, farma, farma, Village, farmstead, Homestead, pastvinová oblast, společná, zařízení akvakultury, farmy, rybářská oblast, mléčné výrobky, pole |
+| NĚJ | soukromé autority, vojenská samospráva, heliport, uzavřené, střední letiště, velké letiště, malé letiště, Airfield, Seaplane Base, veřejné autority, port bubliny, letiště |
+| ZÁBAVNÁ aplikace\_PARK | zábavná aplikace arkádová, zábavná aplikace místo, zábavná aplikace Park |
+| PRODEJCE AUTOMOBILového\_ | ATV/Snowmobile, člun, autobus, motocykl, nákladní vůz, van, rekreační vozidla, automobil, prodejce automobilu |
+| SPLATNÁ | banka, banky, banky |
+| MÍČŮ | plážový, pláže |
+| Sestavování\_ho bodu | sestavování (Point) |
+| PODNIKOVÝ\_PARK | obchodní Park, průmyslová oblast |
+| CAFE\_PUB | internetové kavárny, čaj House, kavárny, internetové kavárny, kavárny, kavárny, mikropivovary/piva – zahradu, pub, kavárna/Pub, kavárna/Pub |
+| KEMPINKová\_země | rekreační a obytné weby, kempinková země |
+| AUT\_mycí cyklus | mytí aut |
+| ZÁSOBNÍK\_hotovosti | počítač automatických oznámení, platební držák |
+| HAZARDNÍ | hazardní |
+| KINA | jednotka – na kino, kino |
+| Centrum pro\_CITY | okolní, oblast správy, centrum měst, střed |
+| ASOCIACE klubu\_ | plážový klub, hokeji klub, asociace klubu |
+| ŠKOLNÍ\_univerzita | nižší školní škola/komunitní univerzita, univerzita, univerzita, univerzita, školní škola, Univerzita |
+| Komerční\_– sestavování | budova Office, parková ústředí, komerční budova |
+| Komunita centra\_ | Centrum komunity |
+| SPOLEČNOST | elektronika, výroba, počítačové datové služby, technologie veřejného zdraví, propracovaná finanční oddělení, letecká společnost, letecké dopravce, pronájem zařízení, služba, e-mail/balení/nákladní dopravné, sběrnicové linky, opravy domácích zařízení, čisticí služby, výrobce OEM, daňové služby, olivový olej ze zemního plynu, zákonné služby, konstrukce, telekomunikace, přeprava, Technický inženýr, služby, investiční poradce, inzerce, marketing, přesun úložišť, úspory a instituce, pojišťovnictví, počítačový software, farmaceutické výrobky, stravovací služby, zemědělská technologie, obchod, obchod, taxislužby, Limousine kyvadlo, nájemce autobusů, těžba, technologie pro publikování, nemovitého telefonu, distribuce pro import/export, společnost, azyl, oblasti pro uhlí |
 | COURTHOUSE | courthouse |
-| KULTURNÍ\_SYSTEM CENTER | jazykové verze System center |
-| ZUBNÍ LÉKAŘ | zubní lékař |
-| ODDĚLENÍ\_ÚLOŽIŠTĚ | oddělení úložiště |
-| LÉKAŘ | Obecné lékaře, specialistou na produkty, lékař |
-| ELECTRIC\_VOZIDLA\_STANICE | stanice Electric vozidel |
-| APLIKACE | embassy |
-| NOUZOVÉ\_LÉKAŘSKÉ\_SLUŽBY | Nouzový zdravotní služby |
-| ZÁBAVA | Zábava |
-| EXCHANGE | Zlatá exchange, exchange měny, burze, exchange |
-| VEŠKERÉ\_KONVENCE\_SYSTEM CENTER | veškeré vytváření center |
-| FERRY\_TERMINÁLU | ferry, ferry terminálu |
-| OHEŇ\_STANICE\_BRIGÁDA | oheň stanice/Brigáda |
-| HRANICE\_PŘECHÁZENÍ MEZI | překročení hranice |
-| PALIVO\_ZAŘÍZENÍ | palivo zařízení |
-| GEOGRAFICKÉ\_FUNKCE | pozice, cove, posouvání, národní prostředí, ridge, minerální/horkou pružiny tak průsaků, marsh/bažina/vlei, lom, řeka hraničních, údolí, ve špičce Horská oblast, ostrov, duna, laguny, prostý/paušální, rapids, Cabo, při, oasis, safe harbor, jeskyně, rocks, geografické funkce, promontory(-ies), ostrovy, jeden, pier, příroda, cliff(s), hill, desert, portage, glacier(s), poklopy, gejzír, coral reef(s), mezery, zálivu, jetty, ghat, riziko, příroda jezer, plynu pole, islet, crater(s), cove(s), louky, štěrku oblasti, zóny rozlomení, stavu, gorge(s), ostrov, headwaters předsazení valley, vrcholy, hot spring(s), furrow, anabranch |
-| GOLFOVÁ\_KURZU | kurz Golf |
-| GOVERNMENT\_OFFICE | pořadí 5 oblasti, pořadí 8 oblasti, oblast pořadí 9, objednávka 2 oblasti, pořadí 7 oblasti, pořadí 3 oblasti supra pořadí national, oblast pořadí 4, 6 oblastí, office pro státní správu, diplomatické zařízení, zařízení státní správy USA, místní státní office, celních house, celních příspěvek |
-| STAV\_PÉČE\_SLUŽBY | krve bank, osobní služby, péče o osobní zařízení, ambulance jednotek, zdravotnické služby, leprosarium, pobyt v sanatoriu, nemocnice, lékařské center, clinic |
-| HELIPAD\_VRTULNÍKU\_ÚVODNÍ | úvodní helipad/vrtulníku |
-| SVÁTEČNÍ\_PRONÁJEM | bungalow byt, chalet, villa, objektu apartment, pronájem svátek |
-| NEMOCNICE\_POLYCLINIC | speciální, nemocnice čínský lékařství nemocnice pro ženy podřízené položky, Obecné, nemocnice/polyclinic |
-| HOTELU\_MOTEL | žádá kabiny základnu snídani hosta jsou uloženy, hotelu, campy rest, motel, možnost, hostel, hotelu/motel, resthouse, hammock(s) house hosta |
-| ICE\_SKATING\_UMĚLÉ KLUZIŠTĚ | umělé ICE bruslařská kluziště |
-| DŮLEŽITÉ\_UBYTOVACÍ\_PŘITAŽLIVOSTI | vytváření, stanice, arch, tunelové propojení, předpisem, tower, most, planetarium, čárkou nad mausoleum/vlevo, památkách, vody riziko, přirozené přitažlivosti, přitažlivosti důležité cestovního ruchu, promenade, pyramid, pagoda, castle, palace, hermitage, pyramidového diagramu, fort, brány, house země , matka, maják vážné |
-| PRŮMYSLOVÉ\_SESTAVENÍ | Foundry, depot palivo, průmyslové sestavování, objekt pro vytváření |
-| VE VOLNÉM\_SYSTEM CENTER | kuželky, snooker, kulečníkové fondu, letíte club, dance studio školy, sauna, solární masáž, center ve volném, spa |
-| KNIHOVNA | Knihovna |
-| VÝROBNÍ\_ZAŘÍZENÍ | výrobního závodu |
-| MARINA | soukromé povodí, marina |
-| NA TRHU | supermarkety samoobsluh, farmářům, veřejné, neformální, trhu |
-| MÉDIA\_ZAŘÍZENÍ | zařízení Media |
-| ARMÁDNÍ\_INSTALACE | armádní base, pobřeží guard stanice, armádní instalace, pomocná base |
-| POHON\_ORGANIZACE\_OFFICE | kterých organizace office |
-| HORSKÁ OBLAST\_PŘEDAT | Horská oblast pass |
-| MUZEJNÍCH | muzejních |
-| NATIVNÍ\_REZERVACE | nativní rezervace, rezervaci |
-| NIGHTLIFE | panel, karaoke club, jazz club, privátní club, vína panelu, komedie club, Mary panelu, discotheque, nightlife |
-| BEZ\_GOVERNMENTAL\_ORGANIZACE | nevládních organizací |
-| OTEVŘÍT\_PARKOVACÍ\_OBLASTI | Otevřete parkovací oblasti parkovací dávky |
-| OSTATNÍ | umístění, zóna volného obchodu, provozu kruh, neznámé |
-| PARKOVACÍ\_GARÁŽI | parkovací garáži |
-| PARK\_REKONSTRUKCE\_OBLASTI | historické lokality, lakeshore, seashore, řeka scenic oblasti, rybolov typu oblasti, webu battlefield, sportu zimních olympijských, spuštění doběhu loď, zachovat, oblasti doménové struktury, rekonstrukce oblasti, možnost identifikátor klíče subjektu, cemetery, historické park, parkway, Památný, vystavovaných, výlet oblasti, wilderness oblasti, park rekonstrukce oblasti, nepovolí, fossilized doménové struktury, garden(s), volně žijících rezervy, povahy rezervy, stanici doménové struktury, myslivost rezervy, rezervy doménové struktury, park |
-| BENZÍN\_STANICE | čerpací stanice |
-| FARMACIE | farmacie, dispensary |
-| MÍSTO\_OF\_BOHOSLUŽEB | ashram synagogue, mešita, gurudwara, Kirke, temple, místo bohoslužby, zvláště, retreat, temple(s), náboženské lokality, náboženské center, monastery, convent |
-| POLICEJNÍ\_STANICE | pořadí 1 oblast, policejní stanice, policejní příspěvku |
-| PORT\_SKLADU\_ZAŘÍZENÍ | Harbor(s) ukotvení povodí, port, port/warehouse zařízení dock(s) dockyard, |
-| PŘÍSPĚVEK\_OFFICE | místní, příspěvek office |
-| PRIMÁRNÍ\_PROSTŘEDKŮ\_UTILITY | primární prostředek/nástroj, elektrárny, plynu ropy oddělovač zařízení |
-| VĚZEŇSKÉ\_CORRECTIONAL\_ZAŘÍZENÍ | vězeňské vězeňské/nápravné zařízení |
-| VEŘEJNÉ\_REKREAČNÍM | chodce subway, vyprazdňování, zachránit cestách, osobní přenos lístku office, veřejné pole volání, veřejné rekreačním, center komunikace |
-| VEŘEJNÉ\_PŘENOSU\_ZASTAVIT | Coach stop, zastavit Service bus, taxi samostatné, tramvají stop, stop dopravu, metro stanice, železniční stanice, stanice Service bus, železniční stop |
-| ŽELEZNIČNÍ\_STANICE | státní železniční vedlejší, metro, měst, železniční stanice (sub) |
-| NADŘAZENÉ\_A\_CAR\_ZAŘÍZENÍ | Rent-a-CAR zařízení |
-| NADŘAZENÉ\_A\_CAR\_PARKOVACÍ | rent-a-car-parking |
-| OPRAVA\_ZAŘÍZENÍ | bodyshops, služby pneumatiky (můžete zadat), opravny, car skla nahrazení kavárnách, opravy obecné auta, údržbě, prodej instalace car příslušenství, motocykl opravit, servis nákladní vůz, opravte zařízení |
-| VÝZKUM\_ZAŘÍZENÍ | výzkum zařízení |
-| DOMÁCÍ\_UBYTOVACÍ | vyřazení komunity, městský dům komplexní, bytů/komplexu apartmánů, condominium komplexní, bydliště portfolia, ubytování bydliště |
-| RESTAURACE | Němčina kreolština Cajun, Nizozemské, banket místnosti, bistro, izraelským, slovenština, Jamajský, vegetarian, ryby, vietnamština, Maltština, Sichuan, welsh, čínština, japonština, alžírská, Californian fusion, Shandong, polníček panelu Savoie, španělština, Etiopský, tchajwanských, prstence, Íránu, Kanada, American, norština, francouzština, Hunan, Polynéský, afghan, silniční, Asie, Švýcarsko, erotic, crêperie, Surinamese Egyptian, maďarština, Nepálská, táborák, pot aktivní, hamburgers, Středozemního, Latinské Ameriky, tapas, British, Mexico, Guangdongu, Asie (ostatní), Švédský stůl sushi, Mongolské písmo, mezinárodní, slávek, thajština, Venezuelský, Rumanian, kuřecí, polévky kosher, steak house, panel jogurt z/džusu, italština, korejština, Cypriot, Bosenština, Bolívijský, Dominikánská, Belgie, tuniská, Skotská, Angličtina, pákistánský, čeština, Havajština, Maghrib, Tibetština, SA, Střední východ, Chilské, Šanghaj, polské, Filipínština, súdánský, arménština, Barmština, Brazílie, skandinávské, bulharština, soul food, Kolumbijském, židovský, pizza Sicilian, organické, řečtina, Baskiètina, Uruguayské, cafeterias, finština, Středoafrická, Korsičtina, Syrská, Karibská oblast, Dongbei, ruština, gril, odnést, rychlého občerstvení, Austrálie, Irská, publikování a odběru food, fondue Libanonská, indonéština, dánština, Provençal, teppanyaki, Indie, Mauricijská, západní kontinentální části Peruánský Kambodžský, občerstvení, švédština, macrobiotic, ice cream parlor, Slovanské jazyky, turečtina, Argentiské, Rakousko, exotické, portugalština, Lucembursko –, Maroko, Cuban, restaurace Sandwichovy, |
-| RESTAURACE\_OBLASTI | restaurace oblasti |
-| REST\_AREA | oblast REST, místo zastavení |
-| SCENIC\_PANORAMIC\_ZOBRAZENÍ | krajiny/panoramatické zobrazení, bodu zjišťování |
-| SCHOOL | kořeninové školy, MDG, školní obrázky, vyšší střední škole, řízení školy, jazyka škola, sport school, preschool, střední škole, střední školy, odbornou, speciální školy, podřízené péči o budovy, školní, technické školy, armádní školy, zemědělská školy |
-| OBCHOD | objekt pro vytváření výstupu, produkty zabezpečení, vánoční/sváteční úložiště, opticians, house kachnami: osvětlení, loterie kol, hudební nástroje nail salon, organizace kachnami: upravení Malování, čas koníčku/zdarma, newsagents tobacconists, příslušenství oblečení: specializace, Zkušební zařízení, kontejnery objektů a dat leatherwear domácími zásob, oblečení příslušenství: podřízené položky, konstrukce materiálu zařízení, špercích, označí hodinky, oblečení příslušenství: obuv bot opravy, house kachnami: záclony/textilu elektrické, office ji: příjemce Electronics, elektrický, office ji: fotoaparát&#39;s fotografie, cd&#39;s, disk DVD videa, prací, příslušenství oblečení: muže, pěstiteli květin, pěšec kol, knihy kavárnách, námořního elektronických zařízení, potravin drinky den před začátkem: potravinový trh, house kachnami: carpet/podlahové krytiny , kopírovacích, plachtění zařízení příslušenství, mobilní telefon kol, toys hry, speciální foods, oblečení příslušenství: Obecné, potravin drinky den před začátkem: pekařů, přizpůsobení kol, dárků, karty, upomínky předmětů, zvířat služby, oblečení zařízení sportovní, razítko kol, elektrické zařízení elektrické, office ji: zařízení office, fotky lab/vývoj, velkoobchodní kluby, house kachnami: vybavení nábytek, místní specializací, potravin drinky den před začátkem: řezníkům, různých úložiště, potravin drinky den před začátkem: potravin kavárnách, potravin drinky den před začátkem: světě alkoholických vína, drug úložiště , nábytek či domácí kanceláře elektrické, zařízení, jeho: počítač zásob, pronájem cd/video, zařízení zdravotnických zásob, zemědělská zásob, krásy salon, house kachnami: kachnami centra služeb, potravin drinky den před začátkem: fishmongers krásy zásob, oblečení příslušenství: ženy, cestování agentů, maloobchodního prodejce, recyklace kol, house kachnami: leněný windows hardware, zástupce realitní, skla/ceramic, delicatessen, house kachnami: kuchyně koupelny, sází stanice, hairdressers barbers, potravin drinky den před začátkem: grocers, potravin drinky den před začátkem: zelený grocers pohodlí úložišť, jednotka prostřednictvím bottle kol, house kachnami: sestavili centra, starožitnosti/obrázky, kol, úložiště |
-| NÁKUPNÍ\_SYSTEM CENTER | malé, nákupní centrum |
-| SPORTOVNÍ\_SYSTEM CENTER | tematických sport vtěsnat soud, vhodnosti club centrum, sportu Centrum |
-| STADIONEM | netball, football, baseballu, sledovat závodu, víceúčelové, motor sportu, cricket základu, ragbyový základu, ice hokej, sportovní, kůň racing Basketbalový, soccer, stadionem, sportovní pole, oválný |
-| SWIMMING\_FONDU | motorcycle fondu |
-| TENIS\_SOUD | Tenis soud |
-| CELÉ OBRAZOVKY | amphitheater, informovalo, dinner celé obrazovky, Hudba center, opera, cabaret, celé obrazovky, opera house |
-| UBYTOVACÍ\_INFORMACE\_OFFICE | ubytovací informace office |
-| PROVOZ\_SVĚTLA | Semafor |
-| PROVOZ\_SLUŽBY\_SYSTEM CENTER | přenosy ovládacího prvku oddělení péče o zákazníky provozu |
-| PROVOZ\_PŘIHLAŠOVÁNÍ | provoz přihlašování |
-| POSLOUPNOST\_SYSTÉMU | Adventure vozidla, jdeme na to tato hodnota roste, kůň záleželo, kolo Horská oblast, toulám, posloupnost systému |
-| PŘENOS\_AUTORITY VOZIDLA\_REGISTRACE | registrační autority/vozidla přenosu |
-| TRUCK\_ZASTAVIT | Truck stop |
-| LÉKAŘ | veterinární zařízení, lékař |
-| VODY\_SPORTU | sport vody |
-| ZVAŽTE\_STANICE | Zvažte měřítek, zvažte stanice |
-| DOBRÉ\_ORGANIZACE | dobré organizace |
-| WINERY | winery |
-| ZOOLOGICKÉ ZAHRADY\_ARBORETA\_BOTANICKÉ\_ZAHRADA | volně žijících park, vodní zoo námořní park, arboreta botanické zahrady, zoo, zoologické zahrady, arboreta divokými kachnami |
+| KULTURNÍ centrum\_ | kulturní centrum |
+| DENTIST | dentist |
+| ODDĚLENÍ\_Storu | úložiště oddělení |
+| LÉKAŘ | obecný Specialist, Specialist, lékař |
+| Elektrická\_vozidla\_stanice | Elektrická stanice vozidla |
+| EMBASSY | Embassy |
+| Služba zdravotnictví v nouzi\_\_ | Mimořádná zdravotní služba |
+| PREZENTACI | prezentaci |
+| VÝMĚN | Gold Exchange, výměna měn, burzovní výměna, Exchange |
+| VÝSTAVNÍ\_KONVENCe\_CENTER | centrum výstavních konvencí |
+| \_terminálu pro TRAJEKTy | trajekt, terminál trajekt |
+| STANICE\_\_BRIGADE | požární stanice/Brigade |
+| Hraniční\_křížení | hraniční křížení |
+| ZAŘÍZENÍ\_pro palivo | Palivová zařízení |
+| FUNKCE geografické\_ | pozice, Cove, pánev, národní prostředí, Ridge, minerální/horké pružiny, Well, vzduchojem, Marsh/Swamp/Vlei, těžba, těžba řek, sedlo, špička horského prostředí, Reef, Duna, Lagoon, prostých a plochých, Rapids, mysu, stabilní úrovně, Oasis, přístavu, Rocks,, zeměpisná funkce, Promontory, Headland, Pier, Crater Lake, vzhlíželi, Desert, Portage, Glacier, Gully, Geyser, Reef, korálová Jetty (s), mezera, mexických, Ghat, Crater, díra, Islet laků, polního odvětví, Crater, Cove, Gravel,, pastvina, stavu oblast, rozlomení zóny, Gorge, (y), ostrov, headwaters, zavěšení, Hills, horké pružiny, furrow, anabranch |
+| \_kurz GOLF | kurz Golf |
+| STÁTNÍ\_OFFICE | objednávka 5 oblast, oblast 8, objednávka 9, oblast 2, oblast, objednávka 2, oblast order 7, objednávka 3, Supra National, objednávka 4, oblast 6, oblast, státní úřad, diplomatické zařízení, státní správa USA, místní úřad státní správy, celní úřad, celní příspěvek |
+| Služba\_péče o zdravotní\_ | krevní banka, osobní služba, osobní zařízení, ambulance jednotka, služba Health péče, leprosarium, sanatorium, nemocnice, lékařské centrum, Clinic |
+| HELIPAD\_vrtulník\_ODPOČÍVADLo | Helipad/vrtulník – odpočívadlo |
+| Dovolená\_pronájmu | Bungalow, domácký, Chalet, Villa, Apartment, nájem, prázdniny |
+| NEMOCNICE\_CLINIC | speciální, nemocnice v čínské medicíně, nemocnice pro ženy, obecné, nemocnice/clinicická |
+| HOTEL\_MOTEL | informační kabiny, postel pro hosty, Hotel, REST Campy, Motel, středisko, Hostel, Hotel, Motel, Resthouse, Hammock, Host House |
+| ICE\_SKATING\_RINK | Rink Ice skating |
+| DŮLEŽITÉ\_turistické\_přitažlivosti | sestavování, Observatory, propojení, tunelu, Statue, věž, most, Planetarium, Mausoleum/čárka, památkách, díra, zemní přitažlivosti, důležité turistické přitažlivosti, Promenade, pyramidy, Pagoda, Castle, Palace, Hermitage, pyramida, Fort, hradlo,, přehradní, Lighthouse, přízvuk |
+| VYTVÁŘENÍ průmyslových\_ | slévárenský, palivový sklad, průmyslové budovy, továrna |
+| CENTRUM\_pro volný čas | Bowling, Snooker, pool kulečníkové, létající klub, roztancoval Studio School, sauna, solarium Massage, centrum pro volný čas, Spa |
+| KNIHOVNA | knihovna |
+| VÝROBNÍ\_– zařízení | výrobní zařízení |
+| MARINA | povodí Yacht, Marina |
+| UVÁDĚT | Hypermarkets, zemědělce, veřejný, neformální, trh |
+| MEDIA\_zařízení | Media facilita |
+| INSTALACE VOJENSKÉho\_ | vojenská základna, pobřeží ochranné stanice, vojenská instalace, vojenská základna |
+| \_OFFICE\_organizace | rozmotorová kancelářská organizace |
+| HORSKá\_PASS | Horský průchod |
+| MUSEUM | museum |
+| NATIVNÍ\_– rezervace | nativní rezervace, rezervace |
+| NIGHTLIFE | pruhový, karaoke klub, nápadný klub, soukromý klub, vinný pruh, komedie klub, koktejlu bar, Discotheque, Nightlife |
+| ORGANIZACE, která není\_vládní\_ | nevládní organizace |
+| OTEVŘÍT oblast\_\_parkování | otevřít parkovací oblast, zaparkovat šarži |
+| JINÉ | místní, volná obchodní zóna, dopravní kruh, neznámý |
+| GARÁŽe PARKOVACÍho\_ | parkovací garáž |
+| \_oblast pro rekreační\_v PARKu | historické pracoviště, Lakeshore, Seashore, oblast Scenic řeky, rybolovná oblast pro lov ryb, Battlefield, zimní sport, spouštěcí rampa, zachování, oblast doménové struktury, oblast pro rekreaci,, Ski, Cemetery, historický park, Parkway, Memorial, Fairground, pikniková oblast, oblast Wilderness, oblast rekreačního dostání, doménové struktury, vystrukturovaná doménová struktura, zahrady, rezerva pro volně žijící osoby, rezervní síť, stanoviště doménové struktury, lovecká rezerva, rezerva doménové struktury, Park |
+| ČERPACÍ stanice\_ | čerpací stanice |
+| LÉKÁRN | lékárna, nepostradatelná |
+| UMÍSTIT\_\_bohoslužby | Ashram, Synagogue, Mosque, Gurudwara, staroslověnština, Temple, místo bohoslužby, mise, ústup, Temple, náboženského webu, náboženského centra, Monastery, Convent |
+| POLICEJNÍ\_stanice | objednávka 1 oblast, policejní stanice, policejní příspěvek |
+| \_zařízení\_ového skladu portu | přístav (PP), docking povodí, port, zařízení, port/sklad, Dockyard, Dock (s) |
+| POST\_OFFICE | místní, poštovní kancelář |
+| Nástroj pro\_prostředků primární\_ | primární prostředek/nástroj, napájecí stanice, odlučovač zemního oleje |
+| \_zařízení ve CORRECTIONALu\_ | necorrectionalé zařízení |
+| VEŘEJNÉ\_AMENITY | pěší Subway, toaletní, silniční záchrana, kancelář pro osobní dopravu, veřejné volání, veřejné Amenity, komunikační centrum |
+| \_zastavení přenosu veřejného\_ | zastavení autokarů, zastavení sběrnice, taxislužby stojan, zastavení veřejné dopravy, zastavení veřejných přenosů, stanice Metro, Railroad stanice, stanice sběrnice, railroadové zastavení |
+| ŽELEZNIČNÍ\_stanice | národní, železniční železnice, metro, (sub) městské, železniční stanice |
+| PRONAJMUTÍ\_zařízení\_\_auta | Pronájem – automobilový prostředek |
+| PRONAJÍMAT\_\_auto\_parkování | rent-a-car-parking |
+| OPRAVIT\_zařízení | bodyshops, pneumatiky (Tire), služby opravy, prodejny pro nahrazení aut, Obecné opravy aut, údržba automobilu, instalace příslušenství auta, oprava motocyklu, opravárenská služba, Opravná zařízení |
+| ZAŘÍZENÍ\_pro výzkum | výzkumné zařízení |
+| UBYTOVÁNÍ\_v domácích zařízeních | vyřazení komunit, Townhouse složitých, ploch a komplexních, Condominium komplexních, obytných a domácích ubytování |
+| RESTAURACÍ | Němčina, kreolština-Cajun, holandština, Banquet místnosti, Bistro, Izrael, slovenština, jamajský, vegetarian, mořští, vietnamština, maltština, iština, velština, čínština, japonština alžírský, Californian, fúze, Shandong, salát, Savoy a, španělština, etiopský, Tchaj-Fi, prstence, íránský, kanadská, americká, norština, francouzština, Hunan, Polynesian, afghánský,, British, maďarština, Kanada, Erotic, USA, British, mexický , Guangdong, asijský (Other), Buffet, sushi, mongolština, mezinárodní, mussels, thajština, venezuelská, Rumanian, kuřecí, polévka, Kosher, Steak House, Yogurt/šťáva, italština, korejština, Cypriot, bosenština, bolívijský, Dominikánská, Belgická, tuniský, Brazílie, portugalština, čeština, italština, angličtina, havajština, Maghrib, italština, Arábie (, Střední východ, Chilská, Shanghai, čeština, Súdánská, barmština, Brazílie, Scandinavian, Soul, organické, řečtina, baskičtina Uruguayské, cafeterias, finština, africké, korsičtina, syrská, Karibská oblast, Dongbei, ruština, mřížka, rychlá jídla, Austrálie, Irská krmiva, fondue, Libanonská, indonéský, dánština, Provençal, Teppanyaki, Indie, mauricijská, západní kontinentální, peruánský, kambodžský, snacks, švédština, macrobiotic, zmrzlina, portugalština, Parlor, marocký, Rakousko, kubánské, restaurace |
+| OBLAST\_restaurace | oblast restaurace |
+| OBLAST\_REST | oblast REST, zastavení místa |
+| SCENIC\_panoramatické\_zobrazení | Scenic/panoramatické zobrazení, bod pozorování |
+| SCHOOL | Culinary School, primární škola, školní škola, školní školní škola, řídící škola, jazyková škola, Sport School, školní škola, Velká škola, střední škola, odborná příprava, specializovaná škola, školní péče, škola, technická škola, vojenská škola, zemědělský školní |
+| STŘEDISKO | výrobní zásuvka, produkty zabezpečení, vánoční/svátky, opticians, House: osvětlení, loterie shop, hudební nástroje, nail salon, House House: Malování upravení, hobby/Free Time, newsagents tobacconists, oděvní doplňky: speciality, suché čištění, tašky leatherwear, PET, oděvy, oděvní doplňky: děti, stavební materiálová zařízení, Jewelry, hodinky hodin, oděvy a příslušenství: opravy obuvi, domovní zahrady: Curtains elektronika, elektrotechnika, kancelář IT&#39;: fotografie kamery,&#39;CD s, videa DVD, prádelna, oděvy, oděvy: muži, florists, pěšcský obchod, prodejny, elektronická zařízení, potravinové nápoje: trhy na trzích, domovní zahrady: koberc/podlahové krytiny, kopie, příslušenství vybavení pro lodní zařízení, mobilní telefon, hry, hry, specializované potraviny, oděvní příslušenství: Obecné, potravinové nápoje: pekařské, přizpůsobování elektrické zařízení, elektroinstalace, kancelář IT: kancelářské vybavení, Foto Lab/vývoj, velkoobchodní klub, House House: příslušenství pro nábytek, místní specializací, potravinové nápoje: butchers, obchod s různými druhy a potravinové nápoje: stravování, potravinové nápoje: lihoviny, obchod s drogami, nábytek/domů, elektrické, kancelář IT: zařízení, zapůjčení CD/videa, lékařské vybavení, zemědělské dodávky, krásy salon, domovní zahrada: služby zahradní centra, stravování příslušenství: ženy, cestovní agenti, maloobchodní prodej, recyklace, domovní zahrady: skleněné okna, hardware, jeho držitelé, sklo/keramické, Delicatessen, domovní zahrady: bathrooms, sází stanice, hairdressers barbers, potravinové nápoje: maloobchodníky, nápoje: zelené země, praktická místa,, prodejny, stravování, obchod |
+| NÁKUPNÍ centrum\_ | malé, nákupní centrum |
+| SPORTOVNÍ centrum\_ | tematické sport, "squash soud, klubu pro klub, sportovní centrum |
+| STADIUM | netball, fotbal, baseball, záznam rasy, multi-účel, motorový automobil, Cricket země, ragbyový země, Ice hokeji, Athletic, koňské dostihy, basketbalový, fotbalový, Stadium, Athletic Field, Racetrack |
+| \_bazén | bazénový bazén |
+| TENIS\_soud | tenisový soud |
+| PROMÍTANÉ | Amphitheater, jednání o koshodě, kino v hostincích, aplikace pro hudební centrum, Opera, Cabaret, kino, operaská House |
+| Turistické informace\_\_OFFICE | Turistické informace Office |
+| \_provozu – světlo | světlo provozu |
+| Služba TRAFFIC\_SERVICE\_CENTER | oddělení řízení provozu, Traffic Service Center |
+| PODPIS\_ho přenosu | symbol přenosu |
+| SYSTÉM KONCOVÉho\_ | Adventure vozidla, rock stoupání, koňské koni, horské kolo, nachodíme, koncový systém |
+| REGISTRACE\_vozidel AUTORITy pro přenos\_ | Přenosová autorita/registrace vozidla |
+| ZASTAVENÍ\_VOZÍKu | zastavení nákladní automobilu |
+| VETERINÁRNÍ | veterinární lékař, veterinární lékař |
+| VODA\_SPORT | vodní sport |
+| ZVÁŽIT\_stanice | Vážení stupnice, vážení stanice |
+| \_organizace pro sociální péče | organizace pro životní podmínky |
+| WINERY | Winery |
+| ZOOS\_ARBORETA\_botanické\_zahrady | volně žijící parky, vodní zahrady mořští parky, arboreta botanické zahrady, zahradu, zoos, arboreta botanické zahrady |

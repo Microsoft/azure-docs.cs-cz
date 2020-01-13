@@ -1,6 +1,6 @@
 ---
-title: Reagujte na události Azure Maps pomocí služby Event Grid | Dokumentace Microsoftu
-description: Zjistěte, jak reagovat na události Azure Maps pomocí služby Event Grid.
+title: Reakce na události mapování pomocí Event Grid | Mapy Microsoft Azure
+description: V tomto článku se dozvíte, jak reagovat na události Microsoft Azure Maps pomocí Event Grid.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/08/2019
@@ -9,36 +9,36 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a70011b934398ac4e7f74bb67013e93bb5e86e4e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a946d189706c9c789ab884670d13b0b3e7fcb0c
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60799180"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911816"
 ---
-# <a name="react-to-azure-maps-events-by-using-event-grid"></a>Reagujte na události Azure Maps pomocí služby Event Grid 
+# <a name="react-to-azure-maps-events-by-using-event-grid"></a>Reakce na události Azure Maps pomocí Event Grid 
 
-Azure Maps se integruje s Azure Event Grid tak, aby mohlo odesílat oznámení událostí k dalším službám a podřízené procesy aktivační procedury. Cílem tohoto článku je vám pomohou nakonfigurovat vaše obchodní aplikace tak, aby naslouchala událostem Azure Maps tak, aby mohly reagovat na kritické události spolehlivé, škálovatelné a zabezpečeným způsobem. Například sestavte aplikaci, která se provede několik akcí, jako je aktualizace databáze, vytvářet lístek a doručování e-mailové oznámení pokaždé, když zařízení přejde monitorové geografické zóny.
+Azure Maps se integruje s Azure Event Grid, abyste mohli odesílat oznámení o událostech jiným službám a aktivovat podřízené procesy. Tento článek vám umožní nakonfigurovat obchodní aplikace tak, aby naslouchaly událostem Azure Maps, abyste mohli reagovat na kritické události spolehlivým, škálovatelným a zabezpečeným způsobem. Můžete například sestavit aplikaci, která provede více akcí, jako je aktualizace databáze, vytvoření lístku a doručování e-mailových oznámení pokaždé, když zařízení vstoupí do geografické zóny.
 
-Azure Event Grid je plně spravovaná služba Směrování událostí, který používá publikování-odběru modelu. Event Grid obsahuje integrovanou podporu pro služby Azure, jako je [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) a [Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview)a může poskytovat výstrahy na události na jiné než Azure services pomocí webhooků. Úplný seznam obslužných rutin událostí, které podporuje Služba Event Grid najdete v tématu [Úvod do služby Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
-
-
-![Azure Event Grid funkční modelu](./media/azure-maps-event-grid-integration/azure-event-grid-functional-model.png)
+Azure Event Grid je plně spravovaná služba Směrování událostí, která používá model publikování a odběru. Event Grid má integrovanou podporu pro služby Azure, jako je [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) a [Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview), a může doručovat výstrahy událostí na služby mimo Azure pomocí webhooků. Úplný seznam obslužných rutin událostí, které Event Grid podporuje, najdete v [úvodu k Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
 
 
-## <a name="azure-maps-events-types"></a>Typy událostí Azure Maps
+![Azure Event Grid funkční model](./media/azure-maps-event-grid-integration/azure-event-grid-functional-model.png)
 
-Pomocí služby Event grid [odběry událostí](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions) pro směrování zpráv událostí pro předplatitele. Účet Azure Maps generuje následující typy událostí: 
+
+## <a name="azure-maps-events-types"></a>Typy Azure Mapsch událostí
+
+Event Grid používá [odběry událostí](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions) ke směrování zpráv událostí odběratelům. Účet Azure Maps emituje následující typy událostí: 
 
 | Typ události | Popis |
 | ---------- | ----------- |
-| Microsoft.Maps.GeofenceEntered | Vyvolá, když souřadnice přijatých přesunuty z mimo danou monitorové geografické zóny pro v rámci |
-| Microsoft.Maps.GeofenceExited | Vyvolá, když souřadnice přijatých přesunuty z v rámci danou monitorové geografické zóny na mimo |
-| Microsoft.Maps.GeofenceResult | Vyvoláno pokaždé, když monitorování geografických zón dotaz vrátí výsledek, bez ohledu na stav |
+| Microsoft.Maps.GeofenceEntered | Vyvolá se, když se přijaté souřadnice přesunuly mimo danou geografickou oblast do v rámci. |
+| Microsoft.Maps.GeofenceExited | Vyvolá se, když se přijaté souřadnice přesunuly z dané geografické oblasti na vnější. |
+| Microsoft.Maps.GeofenceResult | Vyvoláno pokaždé, když dotaz monitorování geografických zón vrátí výsledek bez ohledu na stav. |
 
 ## <a name="event-schema"></a>Schéma událostí
 
-Následující příklad zobrazit schéma pro GeofenceResult
+Následující příklad ukazuje schéma pro GeofenceResult
 
 ```JSON
 {   
@@ -76,17 +76,17 @@ Následující příklad zobrazit schéma pro GeofenceResult
 }
 ```
 
-## <a name="tips-for-consuming-events"></a>Tipy pro používání událostí
+## <a name="tips-for-consuming-events"></a>Tipy pro náročné události
 
-Aplikace, které zpracovávají události monitorové geografické zóny Azure Maps postupujte podle několik doporučených postupů:
+Aplikace, které zpracovávají Azure Maps události geografického plotu, by měly dodržovat několik doporučených postupů:
 
-* Několik předplatných lze nakonfigurovat pro směrování událostí na stejný ovladač událostí. Je důležité, abyste se předpokládá, že jsou události z určitého zdroje. Vždy zkontrolujte zpráv tématu k zajištění, že pocházejí ze zdroje, které jste očekávali.
-* Můžete doručování zpráv mimo pořadí nebo po prodlevě. Použití `X-Correlation-id` pole v hlavičce odpovědi pochopit, pokud je aktuální informace o objektech.
-* Když Get a POST monitorové geografické zóny API je volána s režimu parametrem nastaveným na `EnterAndExit`, je generována událost Enter nebo ukončení pro každý geometrie v monitorové geografické zóny, pro který se změnil stav z předchozího volání rozhraní API monitorové geografické zóny.
+* Více předplatných lze nakonfigurovat pro směrování událostí do stejné obslužné rutiny události. Je důležité, aby se nepředpokládalo, že události jsou z konkrétního zdroje. Vždy zkontrolujte téma zprávy a ověřte, zda pochází ze zdroje, který jste očekávali.
+* Zprávy mohou být doručeny mimo pořadí nebo po zpoždění. Použijte pole `X-Correlation-id` v hlavičce odpovědi, abyste pochopili, jestli jsou informace o objektech v aktuálním stavu.
+* Při volání metody Get a POST rozhraní API pro monitorování geografických zón se `EnterAndExit`pro každou geometrii v geografickém stavu, pro který se změnil stav z předchozího volání rozhraní API geografického ohraničení, vygeneruje událost Enter nebo Exit.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak použít monitorování geografických zón pro operace správy v lokalitě konstrukce, naleznete v tématu:
+Další informace o tom, jak používat monitorování geografických zón k řízení operací v konstrukci webu, najdete tady:
 
 > [!div class="nextstepaction"] 
-> [Nastavení monitorové geografické zóny s využitím Azure Maps](tutorial-geofence.md)
+> [Nastavení geografické zóny pomocí Azure Maps](tutorial-geofence.md)
