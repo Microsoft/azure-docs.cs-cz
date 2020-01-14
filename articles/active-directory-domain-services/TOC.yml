@@ -25,7 +25,7 @@
       href: tutorial-create-instance-advanced.md
     - name: Vytvoření vztahu důvěryhodnosti doménové struktury (Preview)
       href: tutorial-create-forest-trust.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Vytvoření spravované domény pomocí Azure PowerShellu
       href: powershell-create-instance.md
@@ -49,8 +49,6 @@
       href: ../active-directory/fundamentals/active-directory-whatis.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
     - name: Architektura Azure Active Directory
       href: ../active-directory/fundamentals/active-directory-architecture.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
-    - name: Implementace administrativních modelů s minimálními oprávněními
-      href: /windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
 - name: Postup
   items:
     - name: Konfigurace běžných nastavení

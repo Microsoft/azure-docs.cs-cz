@@ -7,7 +7,17 @@
 - name: Dokumentace k rozšířením virtuálních počítačů
   href: ./extensions/overview.md
 - name: Úlohy
-  href: ./workloads/workloads.md
+  items:
+    - name: Red Hat
+      href: /redhat/redhat-overview.md
+    - name: Vysokovýkonné výpočetní prostředí (HPC)
+      href: /hpc/overview.md
+    - name: SAP
+      href: /sap/get-started.md
+    - name: Oracle
+      href: /oracle/oracle-considerations.md
+    - name: Změna hostování mainframů
+      href: /mainframe-rehosting/overview.md
 - name: Nasazení Classic
   items:
     - name: Virtuální počítače s Linuxem používající nasazení Classic
