@@ -2,24 +2,24 @@
 title: Řešení potíží s připojením pro zotavení po havárii Azure do Azure pomocí Azure Site Recovery
 description: Řešení chyb a problémů při replikaci virtuálních počítačů Azure pro zotavení po havárii
 services: site-recovery
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 08/05/2019
-ms.author: asgang
-ms.openlocfilehash: 4995a4086c471a06fe859febfd2d1af7fbb22a76
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.author: carmonm
+ms.openlocfilehash: 41b5203c328243c9ef7cc74e6b9771c677a54c7c
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622451"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933411"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Řešení potíží s připojením k síti virtuálních počítačů z Azure do Azure
 
 Tento článek popisuje běžné problémy související s připojením k síti při replikaci a obnovení virtuálních počítačů Azure z jedné oblasti do jiné oblasti. Další informace o požadavcích na síť najdete v tématu [požadavky na připojení pro replikaci virtuálních počítačů Azure](azure-to-azure-about-networking.md).
 
-Aby mohla replikace Site Recovery fungovat, z virtuálního počítače se vyžaduje odchozí připojení ke konkrétním adresám URL nebo rozsahům IP adres. Pokud je váš virtuální počítač za bránou firewall nebo používá pravidla skupiny zabezpečení sítě (NSG) k řízení odchozího připojení, můžete se setkat s jedním z těchto problémů.
+U replikace Site Recovery pro práci, odchozí připojení ke konkrétní adresy URL nebo IP rozsahy se vyžaduje z virtuálního počítače. Pokud se váš virtuální počítač nachází za bránou firewall nebo používá síť pravidla skupiny zabezpečení (NSG) k řízení odchozího připojení, může setkat jednu z těchto problémů.
 
 **Adresa URL** | **Podrobnosti**  
 --- | ---
@@ -28,30 +28,30 @@ login.microsoftonline.com | Vyžaduje se pro autorizaci a ověřování adres UR
 *.hypervrecoverymanager.windowsazure.com | Vyžaduje se, aby na virtuálním počítači mohla probíhat komunikace služby Site Recovery. Pokud proxy server firewall podporuje IP adresy, můžete použít odpovídající Site Recovery IP adresu.
 *.servicebus.windows.net | Požadováno, aby se z virtuálního počítače mohla zapisovat data monitorování Site Recovery a diagnostická data. V případě, že proxy server brány firewall podporuje IP adresy, můžete použít odpovídající "Site Recovery monitorování IP adres".
 
-## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Odchozí připojení pro adresy URL Site Recovery nebo rozsahy IP adres (kód chyby 151037 nebo 151072)
+## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Odchozí připojení pro rozsahy adresám URL služby Site Recovery nebo adresy IP (kód chyby 151037 nebo 151072)
 
 ## <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>Problém 1: registrace virtuálního počítače Azure pomocí Site Recovery se nezdařila (151195) </br>
 - **Možná příčina** </br>
   - Nelze navázat připojení k Site Recovery koncovým bodům z důvodu chyby překladu názvů DNS.
   - Častěji k tomu dochází při opětovném nastavování ochrany po převzetí služeb při selhání virtuálního počítače, kdy server DNS není dostupný z oblasti pro zotavení po havárii.
 
-- **Rozhodnutí**
-   - Pokud používáte vlastní server DNS, ujistěte se, že je server DNS přístupný z oblasti zotavení po havárii. Pokud chcete zjistit, jestli máte vlastní DNS, přečtěte si tento virtuální počítač > > servery DNS na síť VM pro zotavení po havárii. Zkuste získat přístup k serveru DNS z virtuálního počítače. Pokud k ní nelze získat přístup, zpřístupněte ji buď při selhání přes server DNS, nebo při vytváření sítě mezi sítí DR a DNS.
+- **Řešení**
+   - Pokud používáte vlastní server DNS, ujistěte se, že je server DNS přístupný z oblasti zotavení po havárii. Ke kontrole, pokud máte vlastní DNS, přejděte do virtuálního počítače > síť pro obnovení po havárii > servery DNS. Zkuste získat přístup k serveru DNS z virtuálního počítače. Pokud k ní nelze získat přístup, zpřístupněte ji buď při selhání přes server DNS, nebo při vytváření sítě mezi sítí DR a DNS.
 
-    ![com – chyba](./media/azure-to-azure-troubleshoot-errors/custom_dns.png)
+    ![Chyba com](./media/azure-to-azure-troubleshoot-errors/custom_dns.png)
 
 
-## <a name="issue-2-site-recovery-configuration-failed-151196"></a>Problém 2: Konfigurace Site Recovery se nezdařila (151196)
+## <a name="issue-2-site-recovery-configuration-failed-151196"></a>Úkol 2: (151196) se nepovedlo nakonfigurovat službu Site Recovery
 
 > [!NOTE]
 > Pokud jsou virtuální počítače za **standardním** interním nástrojem pro vyrovnávání zatížení, nebude mít ve výchozím nastavení přístup k IP adresám O365 (tj. Login.microsoftonline.com). Buď změňte na **základní** typ interního nástroje pro vyrovnávání zatížení, nebo vytvořte odchozí přístup, jak je uvedeno v [článku](https://aka.ms/lboutboundrulescli).
 
 - **Možná příčina** </br>
-  - Nejde navázat připojení k ověřování Office 365 a koncovým bodům IP4 identity.
+  - Nelze navázat připojení k Office 365 ověřování a identita IP4 koncových bodů.
 
-- **Rozhodnutí**
-  - Azure Site Recovery požadovaný přístup k rozsahům IP adres Office 365 pro ověřování.
-    Pokud k řízení odchozího připojení k síti na virtuálním počítači používáte pravidla skupiny zabezpečení sítě Azure (NSG) nebo proxy server brány firewall, ujistěte se, že jste povolili komunikaci s rozhraními O365 IPrange. Azure Active Directory vytvoření NSG pravidla pro [poskytování služeb na základě značky služby (Azure AD)](../virtual-network/security-overview.md#service-tags) pro povolení přístupu ke všem IP adresám, které odpovídají službě Azure AD
+- **Řešení**
+  - Azure Site Recovery požadovaných pro ověřování přístupu k rozsahy IP adres Office 365.
+    Pokud k řízení odchozího síťového připojení u virtuálního počítače používáte proxy server pravidla nebo brána firewall sítě Azure zabezpečení skupiny (NSG), zajistěte, aby že byla povolena komunikace s O365 rozsahy IP adres. Azure Active Directory vytvoření NSG pravidla pro [poskytování služeb na základě značky služby (Azure AD)](../virtual-network/security-overview.md#service-tags) pro povolení přístupu ke všem IP adresám, které odpovídají službě Azure AD
       - Pokud v budoucnu přidáte do Azure AD nové adresy, budete muset vytvořit nová pravidla NSG.
 
 ### <a name="example-nsg-configuration"></a>Příklad konfigurace NSG
@@ -69,7 +69,7 @@ Tento příklad ukazuje, jak nakonfigurovat NSG pravidla pro replikaci virtuáln
 
 2. Vytvořte pravidlo zabezpečení odchozího HTTPS (443) pro "Azureactivedirectory selhala" na NSG, jak je znázorněno na snímku obrazovky níže.
 
-      ![AAD – značka](./media/azure-to-azure-about-networking/aad-tag.png)
+      ![aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
 
 3. Vytvořit odchozí pravidla HTTPS (443) pro Site Recovery IP adresy, které odpovídají cílovému umístění:
 
@@ -90,11 +90,11 @@ Tato pravidla jsou nutná, aby bylo možné replikaci z cílové oblasti do zdro
    **Umístění** | **Site Recovery IP adresa** |  **IP adresa monitorování Site Recovery**
     --- | --- | ---
    Střední USA | 13.82.88.226 | 104.45.147.24
-## <a name="issue-3-site-recovery-configuration-failed-151197"></a>Problém 3: Konfigurace Site Recovery se nezdařila (151197)
+## <a name="issue-3-site-recovery-configuration-failed-151197"></a>Úkol 3: (151197) se nepovedlo nakonfigurovat službu Site Recovery
 - **Možná příčina** </br>
-  - Nelze navázat připojení k Azure Site Recovery koncovým bodům služby.
+  - Nelze navázat připojení ke koncovým bodům služby Azure Site Recovery.
 
-- **Rozhodnutí**
+- **Řešení**
   - Azure Site Recovery vyžaduje přístup k [rozsahům IP adres služby Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) v závislosti na konkrétní oblasti. Ujistěte se, že virtuální počítač má přístup k požadovaným rozsahům IP adres.
 
 
@@ -103,18 +103,18 @@ Tato pravidla jsou nutná, aby bylo možné replikaci z cílové oblasti do zdro
   - Vlastní nastavení proxy serveru je neplatné a Azure Site Recovery agent služby mobility automaticky nerozpoznal nastavení proxy serveru z IE.
 
 
-- **Rozhodnutí**
-  1. Agent služby mobility detekuje nastavení proxy serveru z IE ve Windows a/etc/Environment v systému Linux.
+- **Řešení**
+  1. Agent služby mobility zjišťuje nastavení proxy serveru z aplikace Internet Explorer ve Windows a /etc/environment v Linuxu.
   2. Pokud dáváte přednost nastavení proxy serveru jenom pro Azure Site Recovery služby mobility, můžete zadat podrobnosti o proxy serveru v souboru ProxyInfo. conf, který najdete na adrese:</br>
-     - ``/usr/local/InMage/config/`` v systému ***Linux***
-     - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` ve ***Windows***
+     - ``/usr/local/InMage/config/`` na ***Linux***
+     - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` na ***Windows***
   3. Soubor ProxyInfo.conf by měl obsahovat nastavení proxy v následujícím formátu INI:</br>
-                *soubory*</br>
+                *proxy [Server]*</br>
                 *Adresa =http://1.2.3.4*</br>
                 *Port = 567*</br>
   4. Agent služby mobility Azure Site Recovery podporuje jenom ***neověřené proxy servery***.
 
-### <a name="fix-the-problem"></a>Opravit problém
+### <a name="fix-the-problem"></a>Tento problém vyřešit
 Pokud chcete povolené [adresy URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) nebo požadované [rozsahy IP](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)adres, postupujte podle kroků v [dokumentu s pokyny k síti](site-recovery-azure-to-azure-networking-guidance.md).
 
 

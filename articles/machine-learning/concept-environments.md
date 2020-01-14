@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: trbye
 author: trevorbye
 ms.date: 01/06/2020
-ms.openlocfilehash: ad520c7e6503f28de0bd5538662c223575a078fa
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 3216248943ccc0dba788816cdba38732f9e43e14
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75692729"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930754"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Co jsou Azure Machine Learning prostředí?
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,6 +44,7 @@ Prostředí lze vytvořit pomocí:
 * Definování nových `Environment` objektů, a to buď pomocí spravovaného prostředí, nebo definováním vlastních závislostí
 * Používání stávajících `Environment` objektů z pracovního prostoru. To umožňuje konzistenci a reprodukovatelnosti s vašimi závislostmi.
 * Probíhá import z existující definice prostředí Anaconda.
+* Použití rozhraní příkazového řádku Azure Machine Learning
 
 Příklady specifických kódů [naleznete v tématu](how-to-use-environments.md#create-an-environment) . Prostředí je také možné snadno spravovat přes pracovní prostor a zahrnovat následující funkce:
 

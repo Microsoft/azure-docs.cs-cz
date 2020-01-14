@@ -11,19 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/08/2020
+ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9582881626f58ebbbae5648fe5d4b46e14fd5850
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 6117f22b24887e913ed2f8d3a43e80335121636d
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763316"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934482"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Seznam přiřazení rolí pomocí Azure RBAC a Azure Portal
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] tomto článku se dozvíte, jak zobrazit seznam přiřazení rolí pomocí Azure Portal.
+
+> [!NOTE]
+> Pokud má vaše organizace samoobslužné funkce správy pro poskytovatele služeb, který používá [správu delegovaných prostředků Azure](../lighthouse/concepts/azure-delegated-resource-management.md), tady se nezobrazí přiřazení rolí autorizovaných tímto poskytovatelem služeb.
 
 ## <a name="list-role-assignments-for-a-user-or-group"></a>Seznam přiřazení rolí pro uživatele nebo skupinu
 

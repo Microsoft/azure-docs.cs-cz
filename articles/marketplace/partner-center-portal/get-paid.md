@@ -1,20 +1,20 @@
 ---
 title: Platba na komerční tržiště | Azure Marketplace
 description: Přečtěte si, jak přijímat platby za tržby na komerčním webu Marketplace.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: a87c74c2c344670d2d305e472245c56946d658ad
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7f539d4165df04ddca198385f9eef4f90ed15189
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980345"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933601"
 ---
-# <a name="getting-paid"></a>Příjem plateb
+# <a name="getting-paid"></a>Vyplacení
 Zde jsou některé důležité informace o tom, jak přijímat platby za vaše nabídky, doplňky a příjmy za reklamu.
 
 > [!IMPORTANT]

@@ -1,19 +1,19 @@
 ---
 title: Přesouváme image virtuálních počítačů do úložiště spravovaného disku v Azure Marketplace
 description: Abychom zajistili rychlejší a spolehlivější úložiště a podporu pro nové funkce a možnosti Marketplace, přesouváme image virtuálních počítačů Marketplace do úložiště spravovaného disku.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 81503b08c5c45a671ac7996905f0772dccaf2f5a
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 5eeb223601a3990ef899d7eea96378a8b2a28eee
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456679"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933537"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Přesouváme image virtuálních počítačů v Azure Marketplace do úložiště spravovaného disku.
 

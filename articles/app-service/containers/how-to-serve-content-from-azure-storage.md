@@ -5,21 +5,20 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
-ms.openlocfilehash: 0a1e811787a43be76f94b13a6ec9886510c47d1d
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 752c9dfd1ae67397713cdffce9ba530ad6a2c159
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75866963"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930015"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Obsluha obsahu z Azure Storage v App Service v systému Linux
 
-V této příručce se dozvíte, jak připojit Azure Storage k App Service v systému Linux. K výhodám patří zabezpečený obsah, přenositelnost obsahu, trvalé úložiště, přístup k více aplikacím a více metod přenosu.
-
-
-> [!IMPORTANT]
-> Azure Storage v App Service na Linux je funkce ve **verzi Preview** . Tato funkce není **podporována v produkčních scénářích**.
+> [!NOTE]
+> Tento článek se týká kontejnerů Linux. Pokud chcete nasadit vlastní kontejnery Windows, přečtěte si téma [Konfigurace souborů Azure v kontejneru Windows na App Service](../configure-connect-to-azure-storage.md). Azure Storage v App Service na Linux je funkce ve **verzi Preview** . Tato funkce není **podporována v produkčních scénářích**.
 >
+
+V této příručce se dozvíte, jak připojit Azure Storage k App Service v systému Linux. K výhodám patří zabezpečený obsah, přenositelnost obsahu, trvalé úložiště, přístup k více aplikacím a více metod přenosu.
 
 ## <a name="prerequisites"></a>Požadavky
 

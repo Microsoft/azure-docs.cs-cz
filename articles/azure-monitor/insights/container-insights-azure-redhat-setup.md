@@ -1,14 +1,14 @@
 ---
 title: Konfigurace clusterů Azure Red Hat OpenShift pomocí Azure Monitor for Containers | Microsoft Docs
-description: Tento článek popisuje, jak můžete nakonfigurovat Azure Monitor pro kontejnery pro monitorování clusterů Kubernetes hostovaných na Azure Red Hat OpenShift.
+description: Tento článek popisuje, jak nakonfigurovat monitorování clusteru Kubernetes s Azure Monitor hostovaným na Azure Red Hat OpenShift.
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 6922cb7b143989ba329df972a06825629c4c5020
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.openlocfilehash: cb68d08f86efa395f9d4567a00e74632a293ea3f
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405577"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930364"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Konfigurace clusterů Azure Red Hat OpenShift pomocí Azure Monitor for Containers
 
@@ -27,10 +27,8 @@ Azure Monitor for Containers je možné povolit pro nové nebo jedno nebo více 
 
 Azure Monitor for Containers podporuje monitorování Azure Red Hat OpenShift, jak je popsáno v článku [Přehled](container-insights-overview.md) s výjimkou následujících funkcí:
 
-- Živá data
-- Likvidace metrik Prometheus
+- Živá data (Preview)
 - [Shromážděte metriky](container-insights-update-metrics.md) z uzlů clusteru a lusky a ukládají je do databáze Azure Monitorch metrik.
-- Funkce stavu
 
 ## <a name="prerequisites"></a>Požadavky
 

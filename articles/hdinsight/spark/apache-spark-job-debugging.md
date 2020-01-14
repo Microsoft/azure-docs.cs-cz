@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 110a8e86fc1916254ab914630ce10d2b7ae073b7
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: bcf2f97e855126c86dbb1d74cd430704e2af3af1
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775329"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932141"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Ladění úloh Apache Spark spuštěných ve službě Azure HDInsight
 
@@ -21,7 +21,7 @@ V tomto článku se dozvíte, jak sledovat a ladit [Apache Spark](https://spark.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
@@ -116,7 +116,7 @@ Po dokončení úlohy jsou informace o úloze trvalé na serveru historie Sparku
 * [Apache Spark s Machine Learning: pomocí Sparku v HDInsight předpovídat výsledky kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
 * [Analýza webového protokolu pomocí Apache Spark ve službě HDInsight](apache-spark-custom-library-website-log-analysis.md)
 * [Analýza dat telemetrie Application Insight pomocí Apache Spark ve službě HDInsight](apache-spark-analyze-application-insight-logs.md)
-* [Použití Caffe na Azure HDInsight Spark pro distribuované hloubkové učení](apache-spark-deep-learning-caffe.md)
+
 
 ### <a name="for-spark-developers"></a>Pro vývojáře Spark
 

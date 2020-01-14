@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 25d0adecb51811cae4b3670010588e68bcc7433c
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 952103d517e03230cdfa4e7531e27bb2d5f53a07
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564124"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934304"
 ---
 # <a name="security-control-penetration-tests-and-red-team-exercises"></a>Řízení zabezpečení: testy průniku a cvičení červeného týmu
 
@@ -29,7 +29,7 @@ Využijte pravidla zapojení Microsoftu, abyste zajistili, že testy průniku ne
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-V této části najdete další informace o strategii a provádění testování na základě červeného týmu a testování průniku na cloudové infrastruktuře, služby a aplikace spravované Microsoftem: 
+V této části najdete další informace o strategii a provádění testování na základě červeného týmu a testování průniku na cloudové infrastruktuře, služby a aplikace spravované Microsoftem:
 
 https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 

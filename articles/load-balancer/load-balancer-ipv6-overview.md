@@ -4,7 +4,7 @@ description: Pomocí této cesty výukového programu začněte s podporou proto
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: IPv6, Azure Load Balancer, duální zásobník, veřejná IP adresa, nativní IPv6, mobilní zařízení, IoT
+keywords: protokol IPv6, nástroje pro vyrovnávání zatížení azure, duálním zásobníkem, veřejné IP adresy, nativní protokol ipv6, mobilní zařízení, iot
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,17 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: 4f4baea1c293a1707d87780044a21ff675cb7f98
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 6bc7f45d84d525156a3d25bdceef4d1012844afa
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666201"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931986"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Přehled protokolu IPv6 pro Azure Load Balancer
 
 
 >[!NOTE] 
+>Tento obsah byl nahrazen [protokolem IPv6 pro virtuální síť Azure](https://docs.microsoft.com/azure/virtual-network/ipv6-overview). Azure doporučuje nová nasazení IPv6 používat nové funkce protokolu IPv6 pro virtuální sítě Azure.
+
+>[!NOTE]
 >Azure Load Balancer podporuje dva různé typy: Basic a Standard. Tento článek popisuje Load Balancer úrovně Basic. Další informace o Standard Load Balancer najdete v tématu [Standard Load Balancer Overview](load-balancer-standard-overview.md).
 
 Základní služba Vyrovnávání zatížení na základě Internetu se dá nasadit s adresou IPv6. Kromě připojení protokolem IPv4 Tato funkce umožňuje následující možnosti:

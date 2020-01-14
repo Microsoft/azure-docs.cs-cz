@@ -1,18 +1,18 @@
 ---
 title: Shrnutí výběrů na komerčním webu Marketplace | Azure Marketplace
 description: Ve shrnutí výběr se zobrazí podrobnosti o peníze, které jste získali s vaší nabídkou. Také vám umožní zjistit, kdy obdržíte platby a kolik vám bude placeno.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 3836e815d296456ff95f87f0592e3277503420fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 38717ae103ac72d35042ced9bf662d295ed8a29b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427145"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931808"
 ---
 # <a name="payout-reporting"></a>Vytváření sestav o výběrech
 
@@ -162,7 +162,7 @@ Tato možnost nabízí stažení každé položky řádku k přijetí, kterou vi
 | taxZipCode       | Prodáno do PSČ zákazníka                                                                                                                  |
 | LicensingProgramName       |                                                                                                                   |
 | Kód programu       | Řetězec, který se má mapovat s názvem programu                                                                                                                   |
-| EarningAmountInLastPaymentCurrency       | Peněžní částka v poslední platební měně (pole bude prázdné, pokud se nezaplatily žádné předchozí platby)                                                                                                                   |
+| earningAmountInLastPaymentCurrency       | Peněžní částka v poslední platební měně (pole bude prázdné, pokud se nezaplatily žádné předchozí platby)                                                                                                                   |
 | lastPaymentCurrency       | Poslední platební měna (pole bude prázdné, pokud se nevyplatila žádná předchozí platba)                                                                                                                   |
 | AssetId       | Jedinečný identifikátor objednávek zákazníků pro vaši službu Marketplace  Představuje položky transakčního nákupu v řádku. Může existovat více prostředků.                                                                                                                   |
 | OrderId       | má vztah k faktuře zákazníka.                                                                                                                   |

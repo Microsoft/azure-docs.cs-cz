@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: e2d0227f7481f75c1b0a4e3fe9d0fa3134a7261c
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 732f4b460a3a97f84dd79a37715aff972e8482ed
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778596"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934533"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Nastavení výstrah pro události diagnostického protokolu z VPN Gateway
 
@@ -56,6 +56,10 @@ Následující příklad postupu vytvoří výstrahu pro událost odpojení, kte
 6. Vyplňte podrobnosti a ujistěte se, že je vybraná možnost **Odeslat do Log Analytics** a **TunnelDiagnosticLog** . Vyberte pracovní prostor Log Analytics, který jste vytvořili v kroku 3.
 
    ![Vybraná zaškrtávací políčka](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "Vyberte")
+   
+> [!NOTE]
+> Počáteční zobrazení dat může trvat několik hodin.
+>
 
 7. Přejít na přehled prostředku brány virtuální sítě a vybrat **výstrahy** na kartě **monitorování** . Pak vytvořte nové pravidlo výstrahy nebo upravte existující pravidlo výstrahy.
 

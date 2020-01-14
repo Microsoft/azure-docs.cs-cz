@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 1cd3e39fd504b5095a83192a4a6314c71d3ca980
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: c585ebd903d4070f6247456e06efffbc6ec45270
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564293"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934495"
 ---
 # <a name="security-control-data-recovery"></a>Řízení zabezpečení: obnovení dat
 
@@ -27,7 +27,9 @@ Ujistěte se, že jsou pravidelně zálohována všechna systémová data, konfi
 
 Povolte Azure Backup a nakonfigurujte zdroj zálohy (virtuální počítače Azure, SQL Server nebo sdílené složky) a také požadovanou frekvenci a dobu uchování.
 
-Postup povolení Azure Backup: https://docs.microsoft.com/azure/backup/
+Postup povolení Azure Backup:
+
+https://docs.microsoft.com/azure/backup/
 
 ## <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: proveďte kompletní systémové zálohy a zálohujte všechny spravované klíče zákazníka.
 
@@ -37,9 +39,13 @@ Postup povolení Azure Backup: https://docs.microsoft.com/azure/backup/
 
 Povolte Azure Backup a cílové virtuální počítače a také požadovanou četnost a dobu uchování. Zálohujte spravované klíče zákazníka v rámci Azure Key Vault.
 
-Postup povolení Azure Backup: https://docs.microsoft.com/azure/backup/
+Postup povolení Azure Backup:
 
-Postup zálohování klíčů trezoru klíčů v Azure: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
+https://docs.microsoft.com/azure/backup/
+
+Postup zálohování klíčů trezoru klíčů v Azure:
+
+https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
 
 ## <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: Ověřte všechny zálohy včetně spravovaných klíčů zákazníků.
 
@@ -63,7 +69,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 |--|--|--|
 | 9.4 | 10,4 | Zákazník |
 
-V případě místního zálohování se šifrování v klidovém prostředí zajišťuje pomocí hesla, které zadáte při zálohování do Azure. Pro virtuální počítače Azure se data zašifrují – na REST pomocí Šifrování služby Storage (SSE). Můžete povolit obnovitelné odstranění v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
+V případě místního zálohování se šifrování v klidovém stavu zajišťuje pomocí hesla, které zadáte při zálohování do Azure. Pro virtuální počítače Azure jsou neaktivní uložená data zašifrovaná pomocí Šifrování služby Storage (SSE). Můžete povolit obnovitelné odstranění v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
 
 Jak povolit obnovitelné odstranění v Key Vault:
 

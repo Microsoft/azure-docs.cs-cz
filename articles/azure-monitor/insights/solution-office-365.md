@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
-ms.openlocfilehash: c3251cb26f5ab6dc211c61bc0a6d02b283de6ae5
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: aaa083ef52dcf18fade3315f598b5f57e791cbe0
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770335"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932975"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -30,7 +30,7 @@ ms.locfileid: "75770335"
 > Shromažďování protokolu Azure AD se řídí cenami Azure Monitor.  Další informace najdete v tématu [Azure monitor ceny](https://azure.microsoft.com/pricing/details/monitor/) .
 >
 > Použití řešení Azure Sentinel Office 365:
-> 1. Použití tohoto konektoru ovlivňuje ceny vašeho pracovního prostoru. Další informace najdete v tématu [ceny služby Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/).
+> 1. Používání konektoru Office 365 ve službě Azure Sentinel má vliv na ceny pro váš pracovní prostor. Další informace najdete v tématu [ceny služby Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/).
 > 2. Pokud už používáte řešení Azure Monitor Office 365, musíte ho nejdřív odinstalovat pomocí skriptu v [níže uvedené části věnované odinstalaci](#uninstall).
 > 3. Povolte v pracovním prostoru [řešení Sentinel Azure](../../sentinel/quickstart-onboard.md) .
 > 4. Přejít na stránku **datových konektorů** v Azure Sentinel a povolit konektor **Office 365** .

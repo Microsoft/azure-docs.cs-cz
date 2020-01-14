@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/24/2019
+ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a99b9089e568351cf736310e778ba477441407
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1d1faf501aff8960a4b1961b34164be07b1d685d
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422578"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932481"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Co je správa nároků Azure AD?
 
@@ -134,17 +134,32 @@ Chcete-li lépe pochopit správu nároků a její dokumentaci, můžete se vrát
 
 Specializované cloudy, jako jsou Azure Government, Azure Německo a Azure Čína 21Vianet, nejsou aktuálně dostupné pro použití.
 
-### <a name="which-users-must-have-licenses"></a>Kteří uživatelé musí mít licence?
+### <a name="how-many-licenses-must-you-have"></a>Kolik licencí potřebujete?
 
-Aby váš tenant měl aktivní uživatele ve správě nároků, musí mít aspoň tolik licencí Azure AD Premium P2. Mezi aktivní členské uživatele v řízení nároků patří:
+Zajistěte, aby měl váš adresář aspoň tolik licencí Azure AD Premium P2, protože máte zaměstnance, kteří budou provádět následující úlohy:
 
-- Uživatel, který iniciuje nebo schválí požadavek na balíček pro přístup
-- Uživatel, kterému byl přiřazen balíček přístupu.
-- Uživatel, který spravuje přístupové balíčky.
+- Uživatelé členů, kteří **můžou** požádat o přístup k balíčku.
+- Členové a uživatelé typu Host, kteří požadují balíček pro přístup
+- Členové a uživatelé typu Host, kteří schvalují žádosti o přístup k balíčku.
 
-V rámci licencí pro členské uživatele můžete také uživatelům dovolit, aby mohli pracovat s řízením nároků na řadu uživatelů typu Host. Informace o tom, jak vypočítat počet uživatelů typu Host, které můžete zahrnout, najdete v tématu [Azure Active Directory doprovodné materiály k licencování B2B pro spolupráci](../b2b/licensing-guidance.md).
+Licence Azure AD Premium P2 nejsou **požadovány** pro následující úlohy:
 
-Informace o tom, jak přiřadit licence uživatelům, najdete v tématu [přiřazení nebo odebrání licencí pomocí portálu Azure Active Directory](../fundamentals/license-users-groups.md). Všimněte si, že správa nároků aktuálně neuplatňuje přiřazování licencí pro uživatele.
+- Pro uživatele s rolí globálního správce, kteří nastavují počáteční katalogy, balíčky přístupu a zásady a delegované úkoly správy pro ostatní uživatele, nejsou potřeba žádné licence.
+- Pro uživatele, kteří byli delegovani úlohy správy, jako je například tvůrce katalogu, vlastník katalogu a správce balíčků přístupu, nejsou vyžadovány žádné licence.
+- Pro hosty, kteří **můžou** žádat o přístup k balíčkům, nejsou potřeba žádné licence, ale **nevyžadují přístup** k balíčku.
+
+Pro každou placená licenci Azure AD Premium P2, kterou si koupíte pro vaše členské uživatele (zaměstnanci), můžete pomocí Azure AD B2B pozvat až 5 uživatelů typu Host. Tito uživatelé typu Host můžou také používat funkce Azure AD Premium P2. Další informace najdete v tématu [pokyny k licencování spolupráce Azure AD B2B](../b2b/licensing-guidance.md).
+
+Další informace o licencích najdete v tématu [přiřazení nebo odebrání licencí pomocí portálu Azure Active Directory](../fundamentals/license-users-groups.md).
+
+### <a name="example-license-scenarios"></a>Příklady scénářů licencí
+
+Tady je několik ukázkových scénářů licencí, které vám pomůžou určit počet licencí, které musíte mít.
+
+| Scénář | Výpočet | Počet licencí |
+| --- | --- | --- |
+| Globální správce v Woodgrove Bank vytvoří počáteční katalogy a deleguje úlohy správy na 6 dalších uživatelů. Jedna ze zásad určuje, že **Všichni zaměstnanci** (2 000 zaměstnanců) si můžou vyžádat konkrétní sadu přístupových balíčků. 150 zaměstnanci požadují balíčky pro přístup. | 2 000 zaměstnanců, kteří **můžou** žádat o přístup k balíčkům | 2 000 |
+| Globální správce v Woodgrove Bank vytvoří počáteční katalogy a deleguje úlohy správy na 6 dalších uživatelů. Jedna ze zásad určuje, že **Všichni zaměstnanci** (2 000 zaměstnanců) si můžou vyžádat konkrétní sadu přístupových balíčků. Jiné zásady určují, že někteří uživatelé z **partnerských společností Contoso** (Guests) můžou vyžádat stejné balíčky přístupu, které se vztahují ke schválení. Společnost Contoso má 30 000 uživatelů. 150 zaměstnanci požadují balíčky pro přístup a 10 500 uživatelům požadavek na přístup k žádosti společnosti Contoso. | 2 000 zaměstnanců + 500 uživatelé typu Host od společnosti Contoso, kteří překračují poměr 1:5 (10 500-(2 000 * 5)) | 2,500 |
 
 ## <a name="next-steps"></a>Další kroky
 

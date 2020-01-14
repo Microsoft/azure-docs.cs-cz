@@ -1,18 +1,18 @@
 ---
 title: Běžné dotazy týkající se zotavení po havárii virtuálních počítačů Azure pomocí Azure Site Recovery
 description: Tento článek obsahuje odpovědi na běžné dotazy týkající se zotavení po havárii virtuálních počítačů Azure do jiné oblasti Azure pomocí Azure Site Recovery
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.author: asgang
-ms.openlocfilehash: 5ed501a9f11e790bcc2196d57c6479beb54f1a17
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.author: carmonm
+ms.openlocfilehash: 2e1689a4f6d3a2271da868350263bef098562127
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621071"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929905"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Běžné otázky: zotavení po havárii z Azure do Azure
 
@@ -45,7 +45,7 @@ Tým Site Recovery spolupracuje s týmem Azure Capacity Management k naplánová
 Ano, Site Recovery podporuje zotavení po havárii virtuálních počítačů s povoleným službou Azure Disk Encryption (ADE). Pokud povolíte replikaci, všechny požadované šifrovací klíče disku a tajné klíče se zkopírují ze zdrojové oblasti do cílové oblasti v kontextu uživatele. Pokud nemáte příslušná oprávnění, skript připravený k použití může být předán správci zabezpečení, aby mohl zkopírovat klíče a tajné kódy.
 
 - Site Recovery podporuje ADE pro virtuální počítače Azure s Windows.
-- Site Recovery podporuje ADE verze 0,1 se schématem, které používá Azure Active Directory (AAD) a verze 1,1 bez AAD. [Další informace](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata)
+- Site Recovery podporuje ADE verze 0,1 se schématem, které používá Azure Active Directory (AAD) a verze 1,1 bez AAD. [Další informace](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata).
 - ADE verze 1,1: virtuální počítače s Windows musí používat spravované disky.
 - [Přečtěte si další informace](azure-to-azure-how-to-enable-replication-ade-vms.md) o povolení replikace pro šifrované virtuální počítače.
 
@@ -97,7 +97,7 @@ Definuje nastavení pro historii uchovávání bodů obnovení a četnosti sním
 * 24 hodin pro historii uchovávání bodů obnovení.
 * 60 minut pro četnost snímků konzistentních vzhledem k aplikacím.
 
-[Další informace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#configure-replication-settings)
+[Další informace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#configure-replication-settings).
 
 ### <a name="what-is-a-crash-consistent-recovery-point"></a>Co je bod obnovení konzistentní vzhledem k selháním?
 Bod obnovení konzistentní vzhledem k selháním představuje data na disku, jako kdyby došlo k chybě virtuálního počítače nebo napájecí kabel byl získán ze serveru v době pořízení snímku. Neobsahuje vše, co bylo v paměti při pořízení snímku.
@@ -225,7 +225,7 @@ V následujícím příkladu úloha s názvem SAPTestRecoveryPlan trvala 8 minut
 ![Seznam úloh Site Recovery](./media/azure-to-azure-troubleshoot-errors/recoveryplanrto.PNG)
 
 ### <a name="can-i-add-automation-runbooks-to-the-recovery-plan"></a>Můžu do plánu obnovení přidat Runbooky Automation?
-Ano, do svého plánu obnovení můžete integrovat Azure Automation Runbooky. [Další informace](site-recovery-runbook-automation.md)
+Ano, do svého plánu obnovení můžete integrovat Azure Automation Runbooky. [Další informace](site-recovery-runbook-automation.md).
 
 ## <a name="reprotection-and-failback"></a>Znovu naochrana a navrácení služeb po obnovení
 
@@ -244,7 +244,7 @@ Po reochraně je doba navrácení služeb po obnovení obecně podobná času, k
 Tým Site Recovery spolupracuje s týmem Azure Capacity Management k naplánování dostatečné kapacity infrastruktury, aby bylo možné zajistit, aby se virtuální počítače s povoleným zotavením po havárii v cílové oblasti úspěšně nasadily při zahájení převzetí služeb při selhání.
 
 ### <a name="does-site-recovery-work-with-reserved-instances"></a>Pracuje Site Recovery s rezervovanými instancemi?
-Ano, můžete si koupit [instance rezerv](https://azure.microsoft.com/pricing/reserved-vm-instances/) v oblasti zotavení po havárii a Site Recovery v nich tyto operace převzetí služeb při selhání budou používat. </br> Není nutná žádná další konfigurace.
+Ano, můžete si koupit [instance rezerv](https://azure.microsoft.com/pricing/reserved-vm-instances/) v oblasti zotavení po havárii a Site Recovery v nich tyto operace převzetí služeb při selhání budou používat. </br> Je potřeba žádná další konfigurace.
 
 
 ## <a name="security"></a>Zabezpečení

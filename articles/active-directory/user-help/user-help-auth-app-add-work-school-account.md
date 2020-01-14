@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1d781ee16cd1c78f03b58288bf75e036e38cf00
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 9c520931344e98d1547530dcf8192c145837f24e
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75681221"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933083"
 ---
 # <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>Přidání pracovního nebo školního účtu do aplikace Microsoft Authenticator
 
@@ -42,7 +42,7 @@ Pokud vaše organizace používá dvojúrovňové ověřování, můžete nastav
 3. Otevřete aplikaci Microsoft Authenticator, v pravém horním rohu vyberte **Přidat účet** **a potom** vyberte **pracovní nebo školní účet**.
 
     >[!Note]
-    >Pokud Microsoft Authenticator aplikaci nakonfigurujete poprvé, může se zobrazit výzva s dotazem, jestli chcete, aby aplikace měla přístup k vaší kameře (iOS), nebo aby aplikaci mohla pořizovat snímky a nahrávat video (Android). Je nutné vybrat možnost **umožnit** , aby mohla aplikace ověřovatele získat přístup k fotoaparátu, aby pomohlo vytvořit obrázek kódu QR v dalším kroku. Pokud fotoaparát nepovolíte, můžete přesto nastavit ověřovací aplikaci, ale budete muset informace o kódu přidat ručně. Informace o tom, jak kód přidat ručně, najdete v tématu věnovaném [ručnímu přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
+    >Pokud Microsoft Authenticator aplikaci nakonfigurujete poprvé, může se zobrazit výzva s dotazem, jestli chcete, aby aplikace měla přístup k vaší kameře (iOS), nebo aby aplikaci mohla pořizovat snímky a nahrávat video (Android). Je nutné vybrat možnost **umožnit** , aby mohla aplikace ověřovatele získat přístup k fotoaparátu, aby pomohlo vytvořit obrázek kódu QR v dalším kroku. Pokud fotoaparát nepovolíte, můžete přesto nastavit ověřovací aplikaci, ale budete muset informace o kódu přidat ručně. Informace o tom, jak kód přidat ručně, najdete v tématu [Ruční přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
 
 4. Pomocí kamery zařízení Naskenujte kód QR z obrazovky **Konfigurace mobilní aplikace** na vašem počítači a pak zvolte **Hotovo**.
 

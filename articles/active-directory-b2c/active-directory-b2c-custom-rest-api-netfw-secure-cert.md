@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1d396de57a12285fb6cc682510fa6f95585465d0
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 0201c0947c2f6052182721294e8972e29479825d
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949853"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930639"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>Zabezpečte službu RESTful pomocí klientských certifikátů.
 
@@ -34,7 +34,7 @@ Tento článek podrobně popisuje, jak:
 * Nahrajte certifikát do klíčů zásad Azure AD B2C.
 * Nakonfigurujte vlastní zásady na používání klientského certifikátu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Proveďte kroky popsané v článku [integrace REST APIch deklarací identity](active-directory-b2c-custom-rest-api-netfw.md) .
 * Získejte platný certifikát (soubor. pfx s privátním klíčem).
 
@@ -67,7 +67,7 @@ Po nastavení `clientCertEnabled` na *hodnotu true*vyžaduje komunikace s rozhra
 
     ![Odeslat klíč zásad na stránce vytvořit klíč v Azure Portal](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-upload.png)
 
-7. Vyberte **Create** (Vytvořit).
+7. Vyberte **Vytvořit**.
 
 8. Pokud chcete zobrazit klíče, které jsou k dispozici ve vašem tenantovi, a potvrďte, že jste vytvořili `B2C_1A_B2cRestClientCertificate` klíč, vyberte **klíče zásad**.
 
@@ -100,17 +100,19 @@ Pro podporu ověřování klientských certifikátů ve vlastních zásadách zm
 
 ## <a name="step-4-upload-the-policy-to-your-tenant"></a>Krok 4: nahrání zásady do tenanta
 
-1. V [Azure Portal](https://portal.azure.com)přepněte do [kontextu vašeho tenanta Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a pak vyberte **Azure AD B2C**.
+1. V [Azure Portal](https://portal.azure.com)na panelu nástrojů portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 
-2. Vyberte **architekturu prostředí identity**.
+1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 
-3. Vyberte **všechny zásady**.
+1. Vyberte **architekturu prostředí identity**.
 
-4. Vyberte **Odeslat zásadu**.
+1. Vyberte **všechny zásady**.
 
-5. Zaškrtněte políčko **přepsat zásadu, pokud existuje** .
+1. Vyberte **Odeslat zásadu**.
 
-6. Nahrajte soubor *TrustFrameworkExtensions. XML* a ověřte, zda projde ověřením.
+1. Zaškrtněte políčko **přepsat zásadu, pokud existuje** .
+
+1. Nahrajte soubor *TrustFrameworkExtensions. XML* a ověřte, zda projde ověřením.
 
 ## <a name="step-5-test-the-custom-policy-by-using-run-now"></a>Krok 5: Vyzkoušejte si vlastní zásady pomocí rutiny spustit hned
 1. Otevřete **Azure AD B2C nastavení**a pak vyberte **Architektura prostředí identity**.

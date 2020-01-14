@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/12/2019
-ms.openlocfilehash: 7700c61a978532a63fc5b3298d45b8e7041dba40
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/10/2020
+ms.openlocfilehash: 1cd617204bbc12a99b6ae9e3b55fbc59b0e0578a
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790344"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933705"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Kurz: příjem oznámení z digitálních vláken Azure pomocí Logic Apps
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Integrujte události s Azure Event Grid.
 > * Upozorněte události pomocí Logic Apps.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá, že jste [nakonfigurovali](tutorial-facilities-setup.md) a [zřídili](tutorial-facilities-udf.md) vlastní systém Azure Digital Twins. Než budete pokračovat, ujistěte se, že máte následující:
 
@@ -55,9 +55,9 @@ V této části nastavíte [Event Grid](../event-grid/overview.md) pro shromaž�
 
 1. V levém podokně vyberte **Vytvořit prostředek**. 
 
-1. Vyhledejte a vyberte **Téma Event Gridu**. Vyberte **Create** (Vytvořit).
+1. Vyhledejte a vyberte **Téma Event Gridu**. Vyberte **Vytvořit**.
 
-1. Zadejte **Název** tématu Event Gridu a zvolte **Předplatné**. Vyberte **skupinu prostředků** , kterou jste použili nebo vytvořili pro instanci digitálního vlákna a **umístění**. Vyberte **Create** (Vytvořit). 
+1. Zadejte **Název** tématu Event Gridu a zvolte **Předplatné**. Vyberte **skupinu prostředků** , kterou jste použili nebo vytvořili pro instanci digitálního vlákna a **umístění**. Vyberte **Vytvořit**. 
 
     [![vytvoření tématu Event gridu](./media/tutorial-facilities-events/create-event-grid-topic.png)](./media/tutorial-facilities-events/create-event-grid-topic.png#lightbox)
 
@@ -65,7 +65,7 @@ V této části nastavíte [Event Grid](../event-grid/overview.md) pro shromaž�
 
 1. Vyberte **přístupové klíče**a zkopírujte **klíč 1** a **2** do dočasného souboru. Tyto hodnoty budete potřebovat pro vytvoření koncového bodu v další části.
 
-    [![Event Grid klíče](./media/tutorial-facilities-events/event-grid-keys.png)](./media/tutorial-facilities-events/event-grid-keys.png#lightbox)
+    [![Event Grid klíče](./media/tutorial-facilities-events/tutorial-event-grid-keys.png)](./media/tutorial-facilities-events/tutorial-event-grid-keys.png#lightbox)
 
 ### <a name="create-an-endpoint-for-the-event-grid-topic"></a>Vytvoření koncového bodu pro téma Event gridu
 
@@ -110,11 +110,11 @@ Službu [Azure Logic Apps](../logic-apps/logic-apps-overview.md) můžete použ�
 
 1. V levém podokně [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek**.
 
-1. Vyhledejte a vyberte nový prostředek **Aplikace logiky**. Vyberte **Create** (Vytvořit).
+1. Vyhledejte a vyberte nový prostředek **Aplikace logiky**. Vyberte **Vytvořit**.
 
-1. Zadejte **název** prostředku aplikace logiky a pak vyberte své **předplatné**, **skupinu prostředků**a **umístění**. Vyberte **Create** (Vytvořit).
+1. Zadejte **název** prostředku aplikace logiky a pak vyberte své **předplatné**, **skupinu prostředků**a **umístění**. Vyberte **Vytvořit**.
 
-    [![vytvořit prostředek Logic Apps](./media/tutorial-facilities-events/create-logic-app.png)](./media/tutorial-facilities-events/create-logic-app.png#lightbox)
+    [![vytvořit prostředek Logic Apps](./media/tutorial-facilities-events/tutorial-create-logic-app.png)](./media/tutorial-facilities-events/tutorial-create-logic-app.png#lightbox)
 
 1. Otevřete prostředek Logic Apps, když se nasadí, a pak otevřete podokno **návrháře aplikace logiky** . 
 
@@ -172,7 +172,7 @@ Službu [Azure Logic Apps](../logic-apps/logic-apps-overview.md) můžete použ�
 
    c. V druhém textovém poli **zvolit hodnotu** zadejte `UdfCustom`.
 
-   [![vybrané podmínky](./media/tutorial-facilities-events/logic-app-condition.png)](./media/tutorial-facilities-events/logic-app-condition.png#lightbox)
+   [![vybrané podmínky](./media/tutorial-facilities-events/tutorial-logic-app-condition.png)](./media/tutorial-facilities-events/tutorial-logic-app-condition.png#lightbox)
 
 1. V okně **if true** :
 
@@ -182,9 +182,9 @@ Službu [Azure Logic Apps](../logic-apps/logic-apps-overview.md) můžete použ�
 
    c. Do pole **Příjemce** zadejte ID svého e-mailu, abyste dostávali oznámení. V části **Předmět**zadejte text **digitální zdvojení oznámení pro špatnou kvalitu ovzduší v prostoru**. Pak vyberte **TopologyObjectId** ze seznamu **dynamického obsahu** pro **analyze JSON**.
 
-   d. V části **tělo** v jednom okně zadejte text podobný tomuto: **snížená kvalita vzduchu zjištěná v místnosti a teplota musí být upravena**. Můžete si je klidně vypracovat pomocí prvků ze seznamu **dynamického obsahu** .
+   d. V části **tělo** v jednom okně zadejte text podobný následujícímu: **v místnosti se zjistila špatná kvalita vzduchu a je potřeba upravit teplotu**. Můžete si je klidně vypracovat pomocí prvků ze seznamu **dynamického obsahu** .
 
-   [![Logic Apps výběry "Odeslat e-mail"](./media/tutorial-facilities-events/logic-app-send-email.png)](./media/tutorial-facilities-events/logic-app-send-email.png#lightbox)
+   [![Logic Apps výběry "Odeslat e-mail"](./media/tutorial-facilities-events/tutorial-logic-app-send-email.png)](./media/tutorial-facilities-events/tutorial-logic-app-send-email.png#lightbox)
 
 1. V horní části podokna **návrháře aplikace logiky** vyberte tlačítko **Uložit** .
 
@@ -194,16 +194,16 @@ Během několika minut byste měli začít dostávat e-mailová oznámení od to
 
    [![e-mailové oznámení](./media/tutorial-facilities-events/logic-app-notification.png)](./media/tutorial-facilities-events/logic-app-notification.png#lightbox)
 
-Pokud chcete přestat přijímat tyto e-maily, na portálu klikněte na prostředek Logic Apps a vyberte podokno **Přehled** . Vyberte **Zakázat**.
+Pokud chcete přestat přijímat tyto e-maily, na portálu klikněte na prostředek Logic Apps a vyberte podokno **Přehled** . Vyberte **zakázat**.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete přestat zkoumat digitální vlákna Azure v tomto okamžiku, můžete odstranit prostředky vytvořené v tomto kurzu:
+Pokud chcete zastavit v tuto chvíli seznámení digitální dvojče Azure, bez obav odstraňte prostředky vytvořené v tomto kurzu:
 
-1. V nabídce vlevo v [Azure Portal](https://portal.azure.com)vyberte **všechny prostředky**, vyberte skupinu prostředků vaše digitální vlákna a vyberte **Odstranit**.
+1. V levé nabídce v [webu Azure portal](https://portal.azure.com)vyberte **všechny prostředky**, vyberte skupinu prostředků digitální dvojče a vyberte **odstranit**.
 
     > [!TIP]
-    > Pokud jste narazili na potíže s odstraněním instance digitálního vlákna, aktualizovala se aktualizace služby s touto opravou. Zkuste prosím instanci znovu odstranit.
+    > Pokud zaznamenal/zaznamenala jste potíže odstraníte instanci digitální dvojče, aktualizace služby se týká jenom s opravou. Zkuste to prosím znovu odstraníte instanci.
 
 2. V případě potřeby odstraňte ukázkové aplikace v pracovním počítači.
 

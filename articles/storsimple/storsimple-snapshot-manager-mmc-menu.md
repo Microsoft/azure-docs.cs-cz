@@ -1,9 +1,9 @@
 ---
-title: Správa akcí MMC prostřednictvím StorSimple Snapshot Manageru nabídky | Dokumentace Microsoftu
-description: Popisuje, jak používat StorSimple Snapshot Manageru standardní nabídku akcí Microsoft Management Console (MMC).
+title: StorSimple Snapshot Manager MMC menu actions | Microsoft Docs
+description: Describes how to use the standard Microsoft Management Console (MMC) menu actions in StorSimple Snapshot Manager.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 78ef81af-0d3a-4802-be54-ad192f9ac8a6
@@ -13,92 +13,92 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: be761f0a2e59878139ae54dba62634a53b172711
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: ced075395c4f2a51308d5d3b0cbe4c0153a17816
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64715283"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931468"
 ---
-# <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>Použijte nabídku akcí MMC prostřednictvím StorSimple Snapshot Manageru
+# <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>Use the MMC menu actions in StorSimple Snapshot Manager
 
 ## <a name="overview"></a>Přehled
-StorSimple Snapshot Manageru, zobrazí se následující akce na všechny nabídky akce a všechny varianty **akce** podokně.
+In StorSimple Snapshot Manager, you will see the following actions listed on all action menus and all variations of the **Actions** pane.
 
-* Zobrazení
-* Nové okno 
-* Obnovení 
-* Exportovat seznam 
-* Help 
+* Zobrazit
+* New Window from Here 
+* Obnovit 
+* Export List 
+* Nápověda 
 
-Tyto akce jsou součástí Microsoft Management Console (MMC) a nejsou specifická pro StorSimple Snapshot Manageru. Tento kurz popisuje tyto akce a vysvětluje, jak každý z nich pomocí StorSimple Snapshot Manageru.
+These actions are part of the Microsoft Management Console (MMC) and are not specific to StorSimple Snapshot Manager. This tutorial describes these actions and explains how to use each of them in StorSimple Snapshot Manager.
 
-## <a name="view"></a>Zobrazení
-Můžete použít **zobrazení** možnost změnit **výsledky** podokna zobrazení a změna zobrazení okna konzoly. 
+## <a name="view"></a>Zobrazit
+You can use the **View** option to change the **Results** pane view and to change the console window view. 
 
-#### <a name="to-change-the-results-pane-view"></a>Chcete-li změnit zobrazení podokna výsledků
-1. Klepněte na ikonu klasické pracovní plochy spusťte StorSimple Snapshot Manageru.
-2. V **oboru** podokně klikněte pravým tlačítkem na libovolný uzel nebo rozbalte uzel a klikněte pravým tlačítkem na položku **výsledky** podokně a pak klikněte na tlačítko **zobrazení** možnost. 
-3. Přidat nebo odebrat sloupce, které se zobrazují v **výsledky** podokně klikněte na tlačítko **Přidat/odebrat sloupce**. **Přidat/odebrat sloupce** zobrazí se dialogové okno.
+#### <a name="to-change-the-results-pane-view"></a>To change the Results pane view
+1. Click the desktop icon to start StorSimple Snapshot Manager.
+2. In the **Scope** pane, right-click any node or expand the node and right-click an item in the **Results** pane, and then click the **View** option. 
+3. To add or remove the columns that appear in the **Results** pane, click **Add/Remove Columns**. The **Add/Remove Columns** dialog box appears.
    
-    ![Přidání nebo odebrání sloupců z podokna výsledků](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Add_remove_columns.png) 
-4. Vyplňte formulář následujícím způsobem:
+    ![Add or remove columns from Results pane](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Add_remove_columns.png) 
+4. Complete the form as follows:
    
-   * Vybrat položky z **dostupné** sloupce seznamu a klikněte na tlačítko **přidat** jejich přidání do **zobrazené sloupce** seznamu. 
-   * Klikněte na položky v **zobrazené sloupce** seznamu a klikněte na tlačítko **odebrat** je odebrat ze seznamu. 
-   * Vyberte nějakou položku v **zobrazené** sloupce seznamu a klikněte na tlačítko **nahoru** nebo **přesunout dolů** přesunout položku nahoru nebo dolů v seznamu. 
-   * Klikněte na tlačítko **obnovit výchozí nastavení** se vraťte do výchozího **výsledky** konfigurace podokna. 
-5. Až budete s výběry hotovi, klikněte na tlačítko **OK**. 
+   * Select items from the **Available** columns list and click **Add** to add them to the **Displayed columns** list. 
+   * Click items in the **Displayed columns** list, and click **Remove** to remove them from the list. 
+   * Select an item in the **Displayed** columns list and click **Move Up** or **Move Down** to move the item up or down in the list. 
+   * Click **Restore Defaults** to return to the default **Results** pane configuration. 
+5. When you are finished with your selections, click **OK**. 
 
-#### <a name="to-change-the-console-window-view"></a>Chcete-li změnit zobrazení okna konzoly
-1. Klepněte na ikonu klasické pracovní plochy spusťte StorSimple Snapshot Manageru.
-2. V **oboru** podokně klikněte pravým tlačítkem na libovolný uzel, klikněte na tlačítko **zobrazení**a potom klikněte na tlačítko **vlastní**. **Vlastní** zobrazí se dialogové okno.
+#### <a name="to-change-the-console-window-view"></a>To change the console window view
+1. Click the desktop icon to start StorSimple Snapshot Manager.
+2. In the **Scope** pane, right-click any node, click **View**, and then click **Customize**. The **Customize** dialog box appears.
    
-    ![Přizpůsobení okna konzoly](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Customize.png) 
-3. Zaškrtněte nebo zrušte zaškrtnutí políček pro zobrazení nebo skrytí položky v okně konzoly. Až budete s výběry hotovi, klikněte na tlačítko **OK**.
+    ![Customize the console window](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Customize.png) 
+3. Select or clear the check boxes to show or hide items in the console window. When you are finished with your selections, click **OK**.
 
-## <a name="new-window-from-here"></a>Nové okno
-Můžete použít **nové okno** možnost otevřete nové okno konzoly.
+## <a name="new-window-from-here"></a>New Window from Here
+You can use the **New Window from Here** option to open a new console window.
 
-#### <a name="to-open-a-new-console-window"></a>Otevřete nové okno konzoly
-1. Klepněte na ikonu klasické pracovní plochy spusťte StorSimple Snapshot Manageru.
-2. V **oboru** podokně klikněte pravým tlačítkem na libovolný uzel a potom klikněte na tlačítko **nové okno**. 
+#### <a name="to-open-a-new-console-window"></a>To open a new console window
+1. Click the desktop icon to start StorSimple Snapshot Manager.
+2. In the **Scope** pane, right-click any node, and then click **New Window from Here**. 
    
-    Zobrazí se nové okno zobrazující pouze obor, který jste vybrali. Například, pokud kliknete pravým tlačítkem myši **zásady zálohování** uzlu, nové okno se zobrazí pouze **zásady zálohování** uzlu v **oboru** podokno a seznam definovaných zálohování zásady **výsledky** podokně. Prohlédněte si následující příklad.
+    A new window appears, showing only the scope that you selected. For example, if you right-click the **Backup Policies** node, the new window will show only the **Backup Policies** node in the **Scope** pane and a list of defined backup policies in the **Results** pane. Prohlédněte si následující příklad.
    
-    ![Nové okno](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_NewWindow.png) 
+    ![New Window from Here](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_NewWindow.png) 
 
-## <a name="refresh"></a>Obnovení
-Můžete použít **aktualizovat** akce aktualizovat v okně konzoly.
+## <a name="refresh"></a>Obnovit
+You can use the **Refresh** action to update the console window.
 
-#### <a name="to-update-the-console-window"></a>Chcete-li aktualizovat v okně konzoly
-1. Klepněte na ikonu klasické pracovní plochy spusťte StorSimple Snapshot Manageru.
-2. V **oboru** podokně klikněte pravým tlačítkem na libovolný uzel nebo rozbalte uzel a klikněte pravým tlačítkem na položku **výsledky** podokně a pak klikněte na tlačítko **aktualizovat**. 
+#### <a name="to-update-the-console-window"></a>To update the console window
+1. Click the desktop icon to start StorSimple Snapshot Manager.
+2. In the **Scope** pane, right-click any node or expand the node and right-click an item in the **Results** pane, and then click **Refresh**. 
 
-## <a name="export-list"></a>Exportovat seznam
-Můžete použít **exportovat seznam** akci Uložit seznam v souboru hodnot oddělených čárkami (CSV). Například můžete exportovat seznam zásad zálohování a katalog záloh. Pak můžete importovat soubor CSV do tabulky aplikace pro analýzu.
+## <a name="export-list"></a>Export List
+You can use the **Export List** action to save a list in a comma-separated value (CSV) file. For example, you can export the list of backup policies or the backup catalog. You can then import the CSV file into a spreadsheet application for analysis.
 
-#### <a name="to-save-a-list-in-a-comma-separated-value-csv-file"></a>Chcete-li uložit seznam v souboru hodnot oddělených čárkami (CSV)
-1. Klepněte na ikonu klasické pracovní plochy spusťte StorSimple Snapshot Manageru. 
-2. V **oboru** podokně klikněte pravým tlačítkem na libovolný uzel nebo rozbalte uzel a klikněte pravým tlačítkem na položku **výsledky** podokně a pak klikněte na tlačítko **exportovat seznam**. 
-3. **Exportovat seznam** zobrazí se dialogové okno. Vyplňte formulář následujícím způsobem: 
+#### <a name="to-save-a-list-in-a-comma-separated-value-csv-file"></a>To save a list in a comma-separated value (CSV) file
+1. Click the desktop icon to start StorSimple Snapshot Manager. 
+2. In the **Scope** pane, right-click any node or expand the node and right-click an item in the **Results** pane, and then click **Export List**. 
+3. The **Export List** dialog box appears. Complete the form as follows: 
    
-   1. V **název_souboru** zadejte název souboru CSV nebo klikněte na šipku a vyberte z rozevíracího seznamu.
-   2. V **uložit jako typ** pole, klikněte na šipku a z rozevíracího seznamu vyberte typ souboru.
-   3. Pokud chcete uložit pouze vybrané položky, vyberte řádky a klikněte **uložit pouze vybrané řádky** zaškrtávací políčko. Chcete-li uložit všechny exportované seznamy, zrušte **uložit pouze vybrané řádky** zaškrtávací políčko.
-   4. Klikněte na **Uložit**.
+   1. In the **File name** box, type a name for the CSV file or click the arrow to select from the drop-down list.
+   2. In the **Save as type** box, click the arrow and select a file type from the drop-down list.
+   3. To save only selected items, select the rows and then click the **Save Only Selected Rows** check box. To save all exported lists, clear the **Save Only Selected Rows** check box.
+   4. Klikněte na možnost **Uložit**.
       
-      ![Exportovat seznam jako soubor hodnot oddělených čárkami](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
+      ![Export list as a comma-separated value file](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
 
-## <a name="help"></a>Help
-Můžete použít **pomáhají** nabídce pro zobrazení k dispozici online nápovědu pro StorSimple Snapshot Manageru a konzoly MMC.
+## <a name="help"></a>Nápověda
+You can use the **Help** menu to view available online help for StorSimple Snapshot Manager and the MMC.
 
-#### <a name="to-view-available-online-help"></a>Chcete-li zobrazit dostupné online nápovědy
-1. Klepněte na ikonu klasické pracovní plochy spusťte StorSimple Snapshot Manageru.
-2. V **oboru** podokně klikněte pravým tlačítkem na libovolný uzel nebo rozbalte uzel a klikněte pravým tlačítkem na položku **výsledky** podokně a pak klikněte na tlačítko **pomáhají**. 
+#### <a name="to-view-available-online-help"></a>To view available online help
+1. Click the desktop icon to start StorSimple Snapshot Manager.
+2. In the **Scope** pane, right-click any node or expand the node and right-click an item in the **Results** pane, and then click **Help**. 
 
-## <a name="next-steps"></a>Další postup
-* Další informace o [uživatelské rozhraní StorSimple Snapshot Manageru](storsimple-use-snapshot-manager.md).
-* Další informace o [pomocí StorSimple Snapshot Manager ke správě vašeho řešení StorSimple](storsimple-snapshot-manager-admin.md).
+## <a name="next-steps"></a>Další kroky
+* Learn more about the [StorSimple Snapshot Manager user interface](storsimple-use-snapshot-manager.md).
+* Learn more about [using StorSimple Snapshot Manager to administer your StorSimple solution](storsimple-snapshot-manager-admin.md).
 

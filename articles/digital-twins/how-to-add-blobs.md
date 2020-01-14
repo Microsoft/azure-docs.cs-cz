@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 01/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6ab9d0ae07978e69bebb0fc24c8965cce971cfd5
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: c85db05e6feeea43023c2391998f837348caed4e
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082335"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929656"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Přidávání objektů blob do objektů v digitálních proobjektech Azure
 
@@ -36,7 +36,7 @@ Kromě **obsahu Content-Type** a **Content-Disposition**musí požadavky na obje
 
 Existují čtyři hlavní schémata JSON:
 
-[![schémat JSON](media/how-to-add-blobs/blob-models-img.png)](media/how-to-add-blobs/blob-models-img.png#lightbox)
+[![schémat JSON](media/how-to-add-blobs/blob-models-swagger-img.png)](media/how-to-add-blobs/blob-models-swagger-img.png#lightbox)
 
 Metadata objektu BLOB JSON odpovídají následujícímu modelu:
 
@@ -196,7 +196,7 @@ curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
 | YOUR_SPACE_ID | ID prostoru, ke kterému se má objekt BLOB přidružit |
 | PATH_TO_FILE | Cesta k textovému souboru |
 
-[Příklad ![kudrlinkou](media/how-to-add-blobs/curl-img.png)](media/how-to-add-blobs/curl-img.png#lightbox)
+[Příklad ![kudrlinkou](media/how-to-add-blobs/http-blob-post-through-curl-img.png)](media/how-to-add-blobs/http-blob-post-through-curl-img.png#lightbox)
 
 Úspěšný příspěvek vrátí ID nového objektu BLOB.
 
@@ -208,7 +208,7 @@ Následující části popisují základní koncové body rozhraní API souvisej
 
 Objekty blob můžete připojit k zařízením. Následující obrázek ukazuje referenční dokumentaci Swagger pro vaše rozhraní API pro správu. Určuje koncové body rozhraní API týkající se zařízení pro využití objektů BLOB a všechny požadované parametry cesty, které se jim budou předávat.
 
-[![objekty blob zařízení](media/how-to-add-blobs/blobs-device-api-img.png)](media/how-to-add-blobs/blobs-device-api-img.png#lightbox)
+[![objekty blob zařízení](media/how-to-add-blobs/blobs-device-api-swagger-img.png)](media/how-to-add-blobs/blobs-device-api-swagger-img.png#lightbox)
 
 Pokud třeba chcete aktualizovat nebo vytvořit objekt BLOB a připojit objekt BLOB k zařízení, proveďte ověřený požadavek na opravu HTTP:
 
@@ -226,7 +226,7 @@ YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
 
 Objekty blob můžete také připojit k prostorům. Následující obrázek uvádí všechny koncové body rozhraní API prostoru zodpovědné za zpracování objektů BLOB. Obsahuje také seznam parametrů cesty, které se mají předat do těchto koncových bodů.
 
-[objekty blob prostoru ![](media/how-to-add-blobs/blobs-space-api-img.png)](media/how-to-add-blobs/blobs-space-api-img.png#lightbox)
+[objekty blob prostoru ![](media/how-to-add-blobs/blobs-space-api-swagger-img.png)](media/how-to-add-blobs/blobs-space-api-swagger-img.png#lightbox)
 
 Pokud například chcete vrátit objekt BLOB připojený k prostoru, proveďte ověřený požadavek HTTP GET na:
 
@@ -246,7 +246,7 @@ Požadavek PATCH na stejný koncový bod aktualizuje popisy metadat a vytvoří 
 
 Objekty blob můžete připojit k uživatelským modelům (například k přidružení obrázku profilu). Následující obrázek ukazuje relevantní koncové body rozhraní API pro uživatele a všechny požadované parametry cesty, například `id`:
 
-[![objekty blob uživatele](media/how-to-add-blobs/blobs-users-api-img.png)](media/how-to-add-blobs/blobs-users-api-img.png#lightbox)
+[![objekty blob uživatele](media/how-to-add-blobs/blobs-users-api-swagger-img.png)](media/how-to-add-blobs/blobs-users-api-swagger-img.png#lightbox)
 
 Pokud například chcete načíst objekt BLOB připojený k uživateli, vytvořte ověřený požadavek HTTP GET s libovolnými požadovanými daty formuláře:
 
@@ -262,23 +262,41 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
 
 ## <a name="common-errors"></a>Běžné chyby
 
-Běžná chyba se týká neposkytnutí správné informace hlavičky:
+* Běžná chyba se týká neposkytnutí správné informace hlavičky:
 
-```JSON
-{
-    "error": {
-        "code": "400.600.000.000",
-        "message": "Invalid media type in first section."
-    }
-}
-```
+  ```JSON
+  {
+      "error": {
+          "code": "400.600.000.000",
+          "message": "Invalid media type in first section."
+      }
+  }
+  ```
 
-Chcete-li tuto chybu vyřešit, ověřte, zda má celková žádost odpovídající hlavičku **Content-Type** :
+  Chcete-li tuto chybu vyřešit, ověřte, zda má celková žádost odpovídající hlavičku **Content-Type** :
 
-* `multipart/mixed`
-* `multipart/form-data`
+     * `multipart/mixed`
+     * `multipart/form-data`
 
-Ověřte také, že každý blok s více částmi má podle potřeby odpovídající **typ obsahu** .
+  Ověřte také, že každý *blok s více částmi* má odpovídající odpovídající **typ obsahu**.
+
+* Druhá běžná chyba nastane, když se ke stejnému prostředku v [grafu prostorové logiky](concepts-objectmodel-spatialgraph.md)přiřazují víc objektů BLOB:
+
+  ```JSON
+  {
+      "error": {
+          "code": "400.600.000.000",
+          "message": "SpaceBlobMetadata already exists."
+      }
+  }
+  ```
+
+  > [!NOTE]
+  > Atributy **zprávy** se budou lišit v závislosti na prostředku. 
+
+  Ke každému prostředku v prostorovém grafu může být připojen pouze jeden objekt BLOB (každého druhu). 
+
+  Tuto chybu můžete vyřešit tak, že aktualizujete existující objekt BLOB pomocí vhodné operace opravy HTTP rozhraní API. Tím se nahradí existující data objektů BLOB požadovanými daty.
 
 ## <a name="next-steps"></a>Další kroky
 

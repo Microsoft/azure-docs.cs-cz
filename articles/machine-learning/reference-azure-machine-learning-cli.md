@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 11/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 355640a900411ccedffa587824694343067817be
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 5a2acb3a6bd7401de2a5b934f539adbb63c3f129
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536314"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930385"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>Pro Azure Machine Learning použít rozšíření CLI
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -262,6 +262,65 @@ Následující příkazy ukazují, jak vytvořit, zaregistrovat a vypsat Azure M
     ```
 
     Další informace najdete v tématu [AZ ml Environment Download](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-download).
+
+### <a name="environment-configuration-schema"></a>Schéma konfigurace prostředí
+
+Pokud jste použili příkaz `az ml environment scaffold`, vygeneruje soubor `azureml_environment.json` šablony, který lze upravit a použít k vytvoření vlastních konfigurací prostředí pomocí rozhraní příkazového řádku. Objekt nejvyšší úrovně se v sadě Python SDK volně mapuje na třídu [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) . 
+
+```json
+{
+    "name": "testenv",
+    "version": null,
+    "environmentVariables": {
+        "EXAMPLE_ENV_VAR": "EXAMPLE_VALUE"
+    },
+    "python": {
+        "userManagedDependencies": false,
+        "interpreterPath": "python",
+        "condaDependenciesFile": null,
+        "baseCondaEnvironment": null
+    },
+    "docker": {
+        "enabled": false,
+        "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
+        "baseDockerfile": null,
+        "sharedVolumes": true,
+        "shmSize": "2g",
+        "arguments": [],
+        "baseImageRegistry": {
+            "address": null,
+            "username": null,
+            "password": null
+        }
+    },
+    "spark": {
+        "repositories": [],
+        "packages": [],
+        "precachePackages": true
+    },
+    "databricks": {
+        "mavenLibraries": [],
+        "pypiLibraries": [],
+        "rcranLibraries": [],
+        "jarLibraries": [],
+        "eggLibraries": []
+    },
+    "inferencingStackVersion": null
+}
+```
+
+Následující tabulka podrobně popisuje každé pole nejvyšší úrovně v souboru JSON, jeho typ a popis. Pokud je typ objektu propojený se třídou ze sady Python SDK, je mezi jednotlivými poli JSON a názvem veřejné proměnné ve třídě Pythonu volná 1:1. V některých případech může být pole namapováno na argument konstruktoru, nikoli na proměnnou třídy. Například pole `environmentVariables` se mapuje na `environment_variables` proměnnou ve třídě [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) .
+
+| Pole JSON | Typ | Popis |
+|---|---|---|
+| `name` | `string` | Název prostředí. Nespouštějte jméno pomocí **Microsoft** nebo **AzureML**. |
+| `version` | `string` | Verze prostředí. |
+| `environmentVariables` | `{string: string}` | Mapa hodnoty hash názvů a hodnot proměnných prostředí. |
+| `python` | [`PythonSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py) | Objekt, který definuje prostředí a překladač v Pythonu, který se má použít u cílového výpočetního prostředku. |
+| `docker` | [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py) | Definuje nastavení pro přizpůsobení image Docker sestavené do specifikací prostředí. |
+| `spark` | [`SparkSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.sparksection?view=azure-ml-py) | Oddíl nakonfiguruje nastavení Sparku. Používá se jenom v případě, že je architektura nastavená na PySpark. |
+| `databricks` | [`DatabricksSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.databricks.databrickssection?view=azure-ml-py) | Konfiguruje závislosti knihoven datacihly. |
+| `inferencingStackVersion` | `string` | Určuje verzi zásobníku Inferencing přidanou k imagi. Chcete-li se vyhnout přidání Inferencing zásobníku, nechte toto pole `null`. Platná hodnota: "poslední". |
 
 ## <a name="ml-pipeline-management"></a>Správa kanálu ML
 

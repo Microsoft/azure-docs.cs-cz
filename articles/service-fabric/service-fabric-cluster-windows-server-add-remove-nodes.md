@@ -5,48 +5,68 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: aa9550d1ec6201f7cbaf552fac5f71c875428e21
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f9bee35ee8e82070b4cf601139b471562ba5e10b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458252"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934209"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Přidání nebo odebrání uzlů do samostatného Service Fabric clusteru se systémem Windows Server
 Po [vytvoření samostatného clusteru Service Fabric na počítačích s Windows serverem](service-fabric-cluster-creation-for-windows-server.md)se můžou vaše (firmy) změnit a bude potřeba přidat nebo odebrat uzly do clusteru. Tento článek poskytuje podrobné pokyny k tomuto účelu. Všimněte si, že místní vývojové clustery nepodporuje funkce Přidat nebo odebrat uzel.
 
 ## <a name="add-nodes-to-your-cluster"></a>Přidání uzlů do clusteru
 
-1. Pomocí kroků uvedených v části [plánování a příprava nasazení clusteru Service Fabric](service-fabric-cluster-creation-for-windows-server.md) Připravte virtuální počítač nebo počítač, který chcete přidat do clusteru.
-2. Identifikujte doménu selhání a upgradovací doménu, do které budete tento virtuální počítač/počítač přidávat.
+1. Připravte virtuální počítač/počítač, který chcete přidat do clusteru, podle kroků uvedených v části [plánování a příprava nasazení clusteru Service Fabric](service-fabric-cluster-standalone-deployment-preparation.md).
+
+2. Identifikujte doménu selhání a upgradovací doménu, do které budete tento virtuální počítač nebo počítač přidávat.
+
+   Pokud používáte certifikáty k zabezpečení clusteru, očekává se, že certifikáty budou nainstalovány v místních úložištích certifikátů, které se připravují pro uzel, který se připojí ke clusteru. Analogie je k dispozici při použití jiných forem zabezpečení.
+
 3. Vzdálená plocha (RDP) do virtuálního počítače nebo počítače, který chcete přidat do clusteru.
-4. Kopírování nebo [stažení samostatného balíčku pro Service Fabric pro Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690) do virtuálního počítače/počítače a extrahování balíčku
-5. Spusťte PowerShell se zvýšenými oprávněními a přejděte do umístění balíčku unzip.
-6. Spusťte skript *této. ps1* s parametry, které popisují nový uzel, který chcete přidat. Následující příklad přidá nový uzel s názvem VM5 s typem NodeType0 a IP adresa 182.17.34.52 do UD1 a FD:/DC1/R0. *ExistingClusterConnectionEndPoint* je koncový bod připojení pro uzel, který už je v existujícím clusteru, což může být IP adresa *kteréhokoli* uzlu v clusteru.
 
-    ```
-    .\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -AcceptEULA
-    ```
-    Jakmile se skript dokončí, můžete zjistit, jestli byl nový uzel přidaný spuštěním rutiny [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) .
+4. Zkopírujte nebo [Stáhněte samostatný balíček pro Service Fabric pro Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690) do virtuálního počítače nebo počítače a rozbalíte balíček.
 
-7. Aby byla zajištěna konzistence napříč různými uzly v clusteru, je nutné zahájit upgrade konfigurace. Spuštěním příkazu [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) Získejte nejnovější konfigurační soubor a přidejte nově přidaný uzel do části Nodes. V případě, že je potřeba znovu nasadit cluster se stejnou konfigurací, doporučujeme, abyste měli vždy k dispozici nejnovější konfiguraci clusteru.
+5. Spusťte PowerShell se zvýšenými oprávněními a přejdete do umístění balíčku Get.
 
-    ```
-        {
-            "nodeName": "vm5",
-            "iPAddress": "182.17.34.52",
-            "nodeTypeRef": "NodeType0",
-            "faultDomain": "fd:/dc1/r0",
-            "upgradeDomain": "UD1"
-        }
-    ```
+6. Spusťte skript *této. ps1* s parametry, které popisují nový uzel, který chcete přidat. Následující příklad přidá nový uzel s názvem VM5 s typem NodeType0 a IP adresa 182.17.34.52 do UD1 a FD:/DC1/R0. `ExistingClusterConnectionEndPoint` je koncový bod připojení pro uzel, který už je v existujícím clusteru, což může být IP adresa *kteréhokoli* uzlu v clusteru. 
+
+   Nezabezpečené (vytváření prototypů):
+
+   ```
+   .\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -AcceptEULA
+   ```
+
+   Zabezpečení (založené na certifikátech):
+
+   ```  
+   $CertThumbprint= "***********************"
+    
+   .\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -X509Credential -ServerCertThumbprint $CertThumbprint  -AcceptEULA
+
+   ```
+
+   Až se skript dokončí, můžete zjistit, jestli byl nový uzel přidaný spuštěním rutiny [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) .
+
+7. Aby byla zajištěna konzistence napříč různými uzly v clusteru, je nutné zahájit upgrade konfigurace. Spuštěním příkazu [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) Získejte nejnovější konfigurační soubor a přidejte nově přidaný uzel do oddílu "Nodes". Pro případ, že je potřeba znovu nasadit cluster, který má stejnou konfiguraci, je také doporučeno mít k dispozici nejnovější konfiguraci clusteru.
+
+   ```
+    {
+        "nodeName": "vm5",
+        "iPAddress": "182.17.34.52",
+        "nodeTypeRef": "NodeType0",
+        "faultDomain": "fd:/dc1/r0",
+        "upgradeDomain": "UD1"
+    }
+   ```
+
 8. Spuštěním rutiny [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) zahajte upgrade.
 
-    ```
-    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
+   ```
+   Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
+   ```
 
-    ```
-    Průběh upgradu můžete monitorovat na Service Fabric Explorer. Alternativně můžete spustit rutinu [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)
+   Průběh upgradu můžete monitorovat na Service Fabric Explorer. Alternativně můžete spustit rutinu [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps).
 
 ### <a name="add-nodes-to-clusters-configured-with-windows-security-using-gmsa"></a>Přidání uzlů do clusterů nakonfigurovaných pomocí zabezpečení systému Windows pomocí gMSA
 Pro clustery nakonfigurované pomocí skupinového účtu spravované služby (gMSA) (https://technet.microsoft.com/library/hh831782.aspx) je možné přidat nový uzel pomocí upgradu konfigurace:
@@ -104,7 +124,7 @@ Přidejte do oddílu "nastavení" v části "FabricSettings" parametr "NodesToBe
     Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
 
     ```
-    Průběh upgradu můžete monitorovat na Service Fabric Explorer. Alternativně můžete spustit rutinu [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)
+    Průběh upgradu můžete monitorovat na Service Fabric Explorer. Alternativně můžete spustit rutinu [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps).
 
 > [!NOTE]
 > Odebrání uzlů může iniciovat více upgradů. Některé uzly jsou označeny `IsSeedNode=”true”` značkou a lze je identifikovat pomocí dotazování manifestu clusteru pomocí `Get-ServiceFabricClusterManifest`. Odebrání takových uzlů může trvat déle než jiné, protože počáteční uzly se v takových scénářích musí pohybovat. Cluster musí udržovat minimálně 3 uzly typu primární uzel.

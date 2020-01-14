@@ -2,18 +2,18 @@
 title: Aktualizace existující nabídky virtuálních počítačů v Azure Marketplace
 description: Vysvětluje, jak aktualizovat existující nabídku virtuálních počítačů na Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/27/2018
-ms.author: ansud
-ms.openlocfilehash: 5cbee909b4bd6353ad8fbe9fcbc126dc4a245012
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: evansma
+ms.openlocfilehash: 1ba2abb3fbeb1d08ed780669fb94a2ef83cbfb1b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823986"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934250"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Aktualizace existující nabídky virtuálních počítačů na Azure Marketplace
 
@@ -129,7 +129,7 @@ Po publikování nabídky s průběžnými platbami se vám ceny za SKU nedají 
 
 4.  Pokud jste nastavili ceny v grafickém uživatelském rozhraní 1x1, můžete změnit cenu přímo v uživatelském rozhraní. Pokud jste nastavili ceny pomocí tabulky import/export, můžete snížit ceny jenom pomocí funkce Import/export.
 
-3.  Klikněte na **Uložit**.
+3.  Klikněte na možnost **Uložit**.
 
 4.  Kliknutím na **publikovat** spustíte pracovní postup, aby se změny publikovaly.
 

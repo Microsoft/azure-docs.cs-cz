@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 844b62f9575249c7b99672e9e67c94cea7ec9f99
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 32897994e4ef22845b1d19d6e0eb3e6b2c968c01
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931433"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930732"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Model fakturace pro Azure Active Directory B2C
 
@@ -58,7 +58,7 @@ Tady je postup, jak převést MAU na fakturaci na stávající prostředek Azure
 
 Měření založené na MAU je povolené, jakmile budete vy, předplatné nebo vlastníka prostředků, potvrďte změnu. Vaše měsíční vyúčtování bude odrážet jednotky ověřování účtované do změny a nové jednotky MAU, které začínají změnou.
 
-Uživatelé se během přechodného měsíce nepočítají dvakrát. Jedinečným aktivním uživatelům, kteří se před změnou ověřují, se za kalendářní měsíc účtuje sazba za ověřování. Tyto stejné uživatele nejsou zahrnuté do výpočtu MAU pro zbývající část fakturačního cyklu předplatného. Například:
+Uživatelé se během přechodného měsíce nepočítají dvakrát. Jedinečným aktivním uživatelům, kteří se před změnou ověřují, se za kalendářní měsíc účtuje sazba za ověřování. Tyto stejné uživatele nejsou zahrnuté do výpočtu MAU pro zbývající část fakturačního cyklu předplatného. Příklad:
 
 * Tenant společnosti Contoso B2C má 1 000 uživatelů. 250 uživatelů v daném měsíci jsou aktivní. Správce předplatného se od desátého dne v měsíci změní z ověřování na měsíčně aktivních uživatelů (MAU).
 * Fakturace za 1. den se účtuje podle modelu ověřování.
@@ -76,13 +76,13 @@ Nejnovější informace o fakturaci využití a cenách pro Azure AD B2C najdete
 
 ## <a name="link-an-azure-ad-b2c-tenant-to-a-subscription"></a>Propojení klienta Azure AD B2C k předplatnému
 
-Poplatky za využití Azure Active Directory B2C (Azure AD B2C) se účtují do předplatného Azure. Když se vytvoří tenant Azure AD B2C, musí správce klienta explicitně propojit klienta Azure AD B2C s předplatným Azure.
+Poplatky za využití Azure Active Directory B2C (Azure AD B2C) se účtují do předplatného Azure. Při vytvoření tenanta Azure AD B2C, musí správce klienta pro explicitní propojení tenanta Azure AD B2C s předplatným Azure.
 
 Odkaz na předplatné se dosahuje vytvořením *prostředku* Azure AD B2C v rámci cílového předplatného Azure. V jednom předplatném Azure se dá vytvořit několik prostředků Azure AD B2C společně s dalšími prostředky Azure, jako jsou virtuální počítače, účty úložiště a Logic Apps. Všechny prostředky v rámci předplatného můžete zobrazit tak, že na tenanta Azure Active Directory (Azure AD) přiřadíte k předplatnému.
 
-Předplatné propojené s klientem Azure AD B2C se dá použít k fakturaci využití Azure AD B2C nebo dalších prostředků Azure, včetně dalších prostředků Azure AD B2C. Nedá se použít k přidání dalších služeb založených na licencích Azure nebo licencí Office 365 v rámci tenanta Azure AD B2C.
+Předplatné propojené s klientem Azure AD B2C se dá použít k fakturaci využití Azure AD B2C nebo dalších prostředků Azure, včetně dalších prostředků Azure AD B2C. Nelze použít pro přidání další služby Azure na základě licence nebo licence Office 365 v rámci tenanta Azure AD B2C.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 * [Předplatné Azure](https://azure.microsoft.com/free/)
 * [Azure AD B2C tenanta](active-directory-b2c-get-started.md) , kterého chcete propojit s předplatným
@@ -99,7 +99,7 @@ Předplatné propojené s klientem Azure AD B2C se dá použít k fakturaci vyu�
 1. Z rozevíracího seznamu vyberte **klienta Azure AD B2C** . Zobrazují se jenom klienti, pro které jste globální správce a kteří ještě nejsou propojení s předplatným. Do pole **Azure AD B2C název prostředku** se naplní název domény Azure AD B2C tenanta, kterého jste vybrali.
 1. Vyberte aktivní **předplatné** Azure, které jste správcem.
 1. V části **Skupina prostředků**vyberte **vytvořit novou**a zadejte **umístění skupiny prostředků**. Toto nastavení skupiny prostředků nemá žádný vliv na váš Azure AD B2C umístění tenanta, výkon ani stav fakturace.
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
     ![stránka pro vytváření prostředků Azure AD B2C v Azure Portal](./media/active-directory-b2c-how-to-enable-billing/portal-01-create-b2c-resource-page.png)
 
 Po dokončení těchto kroků pro klienta Azure AD B2C se vaše předplatné Azure bude účtovat podle údajů přímo v Azure Direct nebo smlouva Enterprise, pokud jsou k dispozici.
@@ -108,11 +108,11 @@ Po dokončení těchto kroků pro klienta Azure AD B2C se vaše předplatné Azu
 
 Po vytvoření prostředku Azure AD B2C v rámci předplatného Azure by se měl zobrazit nový prostředek typu "tenant B2C" s ostatními prostředky Azure.
 
-Tento prostředek můžete použít k těmto akcím:
+Můžete použít tento prostředek na:
 
 * Přejděte do předplatného, kde najdete informace o fakturaci.
 * Získá ID tenanta Azure AD B2C tenanta ve formátu GUID.
-* Přejít na svého tenanta Azure AD B2C
+* Přejděte do svého tenanta Azure AD B2C
 * Odeslání žádosti o podporu
 * Přesunutí prostředku tenanta Azure AD B2C do jiného předplatného nebo skupiny prostředků Azure
 
@@ -134,7 +134,7 @@ Správa Azure AD B2C pomocí řízení přístupu na základě role není ovlivn
 
 Pokud zdrojové a cílové odběry existují v rámci stejného Azure Active Directory tenanta, můžete Azure AD B2C klienty přesunout do jiného předplatného.
 
-Informace o tom, jak přesunout prostředky Azure jako tenanta Azure AD B2C do jiného předplatného, najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md).
+Informace o tom, jak přesunout prostředky Azure jako tenanta Azure AD B2C do jiného předplatného, najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 Než začnete s přesunem, nezapomeňte si přečíst celý článek, abyste plně pochopili omezení a požadavky pro takové přesunutí. Kromě pokynů pro přesunutí prostředků obsahuje důležité informace, jako je například kontrolní seznam před přesunem a ověření operace přesunutí.
 

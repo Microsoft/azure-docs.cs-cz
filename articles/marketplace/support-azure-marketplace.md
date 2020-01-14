@@ -2,26 +2,26 @@
 title: Podpora pro Azure Marketplace a AppSource | Azure
 description: Informace o podpoře a odkazy na Azure Marketplace a AppSource
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 7/25/2019
-ms.author: v-qiwe
-ms.openlocfilehash: b036f7f7455d265849db3c0b82a21471ed1a902c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: evansma
+ms.openlocfilehash: 40d466bd4e5959453f8c3042c4b14f6c3ef605bf
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822624"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933461"
 ---
 # <a name="support-for-the-marketplace"></a>Podpora pro Marketplace  
 Tady je seznam možností podpory pro Marketplace.  
 
 Navíc můžete získat spoustu vašich otázek na webu Marketplace v komunitním [fóru C + AI](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222).  
 
-## <a name="onboarding"></a>Onboarding
+## <a name="onboarding"></a>Připojování
 
 Otevřete lístek s [podporou vydavatelů na webu Microsoft Marketplace](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820) pro problémy s připojováním a zahájením práce, nebo s [podporou partnerů](https://partner.microsoft.com/support) Microsoftu, pokud máte dotazy k Microsoft Partner Network.
 
@@ -31,7 +31,7 @@ Otevřete lístek s [podporou vydavatelů na webu Microsoft Marketplace](https:/
 |:--- |:--- |:--- |  
 | Pomoc najdete na stránce vytvoření incidentu, která se nachází na [webu podpora Marketplace](https://go.microsoft.com/fwlink/?linkid=844975) .</li> </ul> | Podpora partnerského centra nebo portál partnerů cloudu. | Podpora se poskytuje mezi 6:00-18:00 PST. |  
 
-## <a name="technical"></a>Odbornou  
+## <a name="technical"></a>Technické  
 
 | Kanál podpory | Popis |  
 |:--- |:--- |  

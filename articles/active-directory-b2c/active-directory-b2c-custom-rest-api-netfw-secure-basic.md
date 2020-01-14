@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1a956638e8bd74c974012834ca650195e5bee37e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 24aa0d3d3f12934c54ac9aaa5ab8ae5c0d710825
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949436"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930507"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Zabezpečte své služby RESTful pomocí ověřování HTTP Basic.
 
@@ -28,7 +28,7 @@ V tomto článku přidáte ke službě RESTful základní ověřování HTTP, ab
 
 Další informace najdete v tématu [základní ověřování ve webovém rozhraní API ASP.NET](https://docs.microsoft.com/aspnet/web-api/overview/security/basic-authentication).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Dokončete kroky v článku [integrace REST API deklarací identity v rámci vaší Azure AD B2C cesty uživatelů](active-directory-b2c-custom-rest-api-netfw.md) .
 
@@ -249,7 +249,7 @@ Po ochraně služby RESTful pomocí ID klienta (uživatelské jméno) a tajného
 
 7. V případě **použití klíče**vyberte možnost **podpis**.
 
-8. Vyberte **Create** (Vytvořit).
+8. Vyberte **Vytvořit**.
 
 9. Potvrďte, že jste vytvořili `B2C_1A_B2cRestClientId` klíč.
 
@@ -270,7 +270,7 @@ Po ochraně služby RESTful pomocí ID klienta (uživatelské jméno) a tajného
 
 7. V případě **použití klíče**vyberte možnost **podpis**.
 
-8. Vyberte **Create** (Vytvořit).
+8. Vyberte **Vytvořit**.
 
 9. Potvrďte, že jste vytvořili `B2C_1A_B2cRestClientSecret` klíč.
 
@@ -303,17 +303,19 @@ Po ochraně služby RESTful pomocí ID klienta (uživatelské jméno) a tajného
 
 ## <a name="step-5-upload-the-policy-to-your-tenant"></a>Krok 5: nahrání zásady do tenanta
 
-1. V [Azure Portal](https://portal.azure.com)přepněte do [kontextu vašeho tenanta Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a pak otevřete **Azure AD B2C**.
+1. V [Azure Portal](https://portal.azure.com)na panelu nástrojů portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 
-2. Vyberte **architekturu prostředí identity**.
+1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 
-3. Otevřete **všechny zásady**.
+1. Vyberte **architekturu prostředí identity**.
 
-4. Vyberte **Odeslat zásadu**.
+1. Otevřete **všechny zásady**.
 
-5. Zaškrtněte políčko **přepsat zásadu, pokud existuje** .
+1. Vyberte **Odeslat zásadu**.
 
-6. Nahrajte soubor *TrustFrameworkExtensions. XML* a ověřte, zda projde ověřením.
+1. Zaškrtněte políčko **přepsat zásadu, pokud existuje** .
+
+1. Nahrajte soubor *TrustFrameworkExtensions. XML* a ověřte, zda projde ověřením.
 
 ## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>Krok 6: Vyzkoušejte si vlastní zásady pomocí rutiny spustit hned
 

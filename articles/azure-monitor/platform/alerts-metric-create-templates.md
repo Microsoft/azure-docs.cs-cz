@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 12/5/2019
+ms.date: 1/13/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 7b2751957bf341b37527697f92931bacfb425c09
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f8ed6be825470504b5e7b45a15c4faa9cf5ccfc
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397346"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932886"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
 
@@ -555,7 +555,12 @@ az group deployment create \
 
 Novější výstrahy metrik podporují upozorňování na multidimenzionální metriky a podporují více kritérií. Pomocí následující šablony můžete vytvořit pokročilejší pravidlo výstrahy metriky pro multidimenzionální metriky a zadat více kritérií.
 
-Všimněte si, že pokud pravidlo výstrahy obsahuje více kritérií, je použití dimenzí omezeno na jednu hodnotu na dimenzi v rámci každého kritéria.
+Při použití dimenzí v pravidle výstrahy obsahujícím více kritérií Pamatujte na následující omezení:
+- V rámci každého kritéria můžete vybrat jenom jednu hodnotu na dimenzi.
+- Jako hodnotu dimenze nelze použít "\*".
+- Pokud metriky, které jsou konfigurovány v různých kriteriích, podporují stejnou dimenzi, pak musí být nakonfigurovaná hodnota dimenze explicitně nastavena stejným způsobem pro všechny tyto metriky (v příslušných kritériích).
+    - V následujícím příkladu, protože **transakce** i metriky **SuccessE2ELatency** mají dimenzi **název rozhraní API** a *criterion1* Určuje hodnotu *"getblob"* pro dimenzi **názvu rozhraní API** , pak *criterion2* musí také nastavit hodnotu *getblob* pro dimenzi **názvu rozhraní API** .
+
 
 Následující kód JSON uložte jako advancedstaticmetricalert. JSON pro účely tohoto Názorného postupu.
 
@@ -784,9 +789,6 @@ az group deployment create \
     --parameters @advancedstaticmetricalert.parameters.json
 ```
 
->[!NOTE]
->
-> Pokud pravidlo výstrahy obsahuje více kritérií, je použití dimenzí omezeno na jednu hodnotu na dimenzi v rámci každého kritéria.
 
 ## <a name="template-for-a-static-metric-alert-that-monitors-multiple-dimensions"></a>Šablona pro statickou výstrahu metriky, která monitoruje více dimenzí
 

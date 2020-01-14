@@ -6,29 +6,29 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 01/07/2020
-ms.openlocfilehash: d6419e86e1a541638a7053654bfcd7945aa41ae7
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 01/11/2020
+ms.openlocfilehash: 04bda5b016234f96d4bef7796799f2526296dd26
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75891062"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932772"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor konfiguraci klíče spravovaného zákazníkem 
 
-Tento článek poskytuje základní informace a kroky ke konfiguraci klíčů spravovaných zákazníkem (CMK) pro vaše pracovní prostory Log Analytics a Application Insights součásti. Po nakonfigurování se všechna data odesílaná do vašich pracovních prostorů šifrují pomocí klíče Azure Key Vault.
+Tento článek poskytuje základní informace a kroky ke konfiguraci klíčů spravovaných zákazníkem (CMK) pro vaše pracovní prostory Log Analytics a Application Insights součásti. Po nakonfigurování budou všechna data odesílaná do vašich pracovních prostorů nebo součástí šifrována pomocí Azure Key Vaultho klíče.
 
 Před konfigurací doporučujeme zkontrolovat níže uvedená [omezení a omezení](#Limitations and constraints) .
 
 ## <a name="disclaimers"></a>Právní omezení
 
-- Azure Monitor CMK je funkce předčasného přístupu a povolená pro registrovaná předplatná.
+- Azure Monitor CMK je funkce předčasného přístupu a povoluje se u registrovaných předplatných.
 
 - Nasazení CMK popsané v tomto článku se dodává v produkční kvalitě a podporuje se, protože se jedná o funkci předčasného přístupu.
 
-- Funkce CMK se doručuje na vyhrazený cluster úložiště dat, který je clusterem Azure Průzkumník dat (ADX), který je vhodný pro zákazníky, kteří odesílají 1 TB za den. 
+- Funkce CMK se doručuje na vyhrazený cluster úložiště dat, což je cluster Azure Průzkumník dat (ADX), který je vhodný pro zákazníky, kteří odesílají 1 TB za den. 
 
-- Cenové modely CMK nejsou momentálně dostupné a nejsou uvedené v tomto článku. V druhém čtvrtletí kalendářního roku (CY) 2020 se očekává cenový model vyhrazeného úložiště dat – cluster by se měl uplatňovat pro všechna existující nasazení CMK.
+- Cenové modely CMK nejsou momentálně dostupné a nejsou uvedené v tomto článku. V druhém čtvrtletí kalendářního roku (CY) 2020 se očekává cenový model pro vyhrazený cluster ADX, který se bude vztahovat na všechna existující nasazení CMK.
 
 - Tento článek popisuje CMK konfiguraci pro pracovní prostory Log Analytics. CMK pro součásti Application Insights jsou také podporovány pomocí tohoto článku, zatímco rozdíly jsou uvedeny v příloze.
 
@@ -46,11 +46,17 @@ Azure Monitor použití šifrování je stejné jako způsob, jakým [Azure Stor
 Frekvence, kterou Azure Monitor přístup úložiště Key Vault pro zabalení a rozbalení operací je mezi 6 až 60 sekund. Azure Monitor úložiště  
 vždy respektuje změny v klíčových oprávněních během hodiny.
 
+Ingestovaná data za posledních 14 dní jsou také uchovávána v Hot cache (zazálohovaně SSD) pro efektivní operaci dotazovacího stroje. Tato data zůstávají šifrovaná pomocí klíčů Microsoftu bez ohledu na konfiguraci CMK, ale pracujeme na tom, aby se disk SSD zašifroval s CMK počáteční 2020.
+
 ## <a name="how-cmk-works-in-azure-monitor"></a>Jak CMK funguje v Azure Monitor
 
-Azure Monitor využívá spravovanou identitu přiřazenou systémem k udělení přístupu k vašemu Azure Key Vault. Spravovaná identita přiřazená systémem se dá přidružit jenom k jednomu prostředku Azure. Identita Azure Monitorho úložiště dat (ADX) je podporovaná na úrovni clusteru a tím se určuje, že se funkce CMK doručí ve vyhrazeném clusteru ADX. Aby bylo možné podporovat CMK ve více pracovních prostorech, nový prostředek Log Analytics (*cluster*) provádí jako zprostředkující připojení identity mezi Key Vault a vašimi pracovními prostory Log Analytics. Tento pojem odpovídá omezení identity přiřazené systémem a identita se udržuje mezi clusterem ADX a prostředkem *clusteru* Log Analytics *,* zatímco data všech přidružených pracovních prostorů jsou chráněná pomocí vašeho Key Vault klíče. Úložiště clusteru Underlay ADX používá spravovanou identitu, kterou\'s přidruženou ke *clusteru* prostředků k ověřování a přístup k Azure Key Vault prostřednictvím Azure Active Directory.
+Azure Monitor využívá spravovanou identitu přiřazenou systémem k udělení přístupu k vašemu Azure Key Vault. Spravovaná identita přiřazená systémem se dá přidružit jenom k jednomu prostředku Azure. Identita Azure Monitorho úložiště dat (ADX) je podporovaná na úrovni clusteru a tím se určí, že se funkce CMK doručí ve vyhrazeném clusteru ADX. Aby bylo možné podporovat CMK ve více pracovních prostorech, nový prostředek Log Analytics (*cluster*) provádí jako zprostředkující připojení identity mezi Key Vault a vašimi pracovními prostory Log Analytics. Tento pojem odpovídá omezení identity přiřazené systémem a identita se udržuje mezi clusterem ADX a prostředkem *clusteru* Log Analytics *,* zatímco data všech přidružených pracovních prostorů jsou chráněná pomocí vašeho Key Vault klíče. Úložiště clusteru Underlay ADX používá spravovanou identitu, kterou\'s přidruženou ke *clusteru* prostředků k ověřování a přístup k Azure Key Vault prostřednictvím Azure Active Directory.
 
-![CMK – přehled](media/customer-managed-keys/cmk-overview-8bit.png)
+![CMK – přehled](media/customer-managed-keys/cmk-overview.png)
+1.  Key Vault zákazníka.
+2.  Prostředek clusteru Log Analytics zákazníka, který má spravovanou identitu s oprávněním Key Vault – identita je podporovaná na úrovni clusteru úložiště dat (ADX).
+3.  Azure Monitor vyhrazený cluster ADX.
+4.  Pracovní prostory zákazníka přidružené k prostředku clusteru pro šifrování CMK.
 
 ## <a name="encryption-keys-management"></a>Správa šifrovacích klíčů
 
@@ -82,7 +88,7 @@ Proces zřizování zahrnuje tyto kroky:
 2. Vytváření Azure Key Vault a ukládání klíče
 3. Vytvoření prostředku *clusteru*
 4. Udělení oprávnění vašemu Key Vault
-5. Zřizování úložiště dat Azure Monitor (ADX)
+5. Zřizování úložiště dat Azure Monitor (cluster ADX)
 6. Log Analytics přidružení pracovních prostorů
 
 Procedura není momentálně v uživatelském rozhraní podporovaná a proces zřizování se provádí prostřednictvím REST API.
@@ -94,11 +100,11 @@ Příklad:
 
 ```rst
 GET
-https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}?api-version=2015-11-01-preview]
-  authorization: Bearer eyJ0eXAiO....
+https://management.azure.com/subscriptions/<subscriptionId>/resourcegroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>?api-version=2015-11-01-preview
+Authorization: Bearer eyJ0eXAiO....
 ```
 
-kde *eyJ0eXAiO....* představuje úplný autorizační token. 
+Kde *eyJ0eXAiO....* představuje úplný autorizační token. 
 
 Token můžete získat pomocí jedné z těchto metod:
 
@@ -124,25 +130,25 @@ Vytvořte prostředek Azure Key Vault a pak vygenerujte nebo importujte klíč, 
 
 Aby bylo možné klíč a přístup k datům Azure Monitor chránit, musí být Azure Key Vault nakonfigurovaný jako obnovitelný.
 
-[Zapnutí možností obnovení](https://docs.microsoft.com/azure/key-vault/key-vault-best-practices#turn-on-recovery-options):
+Tato nastavení jsou k dispozici prostřednictvím rozhraní příkazového řádku a PowerSell:
 - Je nutné zapnout [obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) .
-- Pro ochranu proti vynucenému odstranění tajného nebo trezoru i po obnovitelném odstranění by měla být zapnutá ochrana vyprázdnění.
+- Pro ochranu proti vynucenému odstranění tajného nebo trezoru i po obnovitelném odstranění by měla být zapnutá [ochrana vyprázdnění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection) .
 
 ### <a name="create-cluster-resource"></a>Vytvořit prostředek *clusteru*
 
-Tento prostředek se používá jako zprostředkující připojení identity mezi vaším Key Vault a vašimi pracovními prostory. Až se vám zobrazí potvrzení, že vaše předplatná byla povolená, vytvořte prostředek *clusteru* Log Analytics v oblasti, ve které se vaše pracovní prostory nacházejí.
+Tento prostředek se používá jako zprostředkující připojení identity mezi vaším Key Vault a vašimi pracovními prostory. Až se vám zobrazí potvrzení, že vaše předplatná byla povolená, vytvořte prostředek *clusteru* Log Analytics v oblasti, ve které se vaše pracovní prostory nacházejí. Application Insights a Log Analytics vyžadují samostatné prostředky clusteru. Typ prostředku clusteru je definován při vytvoření nastavením vlastnosti "clusterType" na hodnotu "LogAnalytics" nebo "ApplicationInsights". Typ prostředku clusteru se nedá změnit.
 
 **Vytvoření**
 
-```json
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.OperationalInsights/clusters/{cluster-name}?api-version=2019-08-01-preview
+```rst
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
 {
-  "location": "region-name",
+  "location": "<region-name>",
    "properties": {
-      "clusterType": "LogAnalytics"
+      "clusterType": "LogAnalytics"   //Should be "ApplicationInsights" for Application Insights CMK
     },
    "identity": {
       "type": "systemAssigned"
@@ -152,40 +158,47 @@ Content-type: application/json
 
 **Odpověď**
 
-Identita je přiřazena ke *clusteru* v okamžiku vytvoření.
+Identita je přiřazena ke zdroji *clusteru* v době vytváření.
 
 ```json
 {
   "identity": {
     "type": "SystemAssigned",
     "tenantId": "tenant-id",
-    "principalId": "principle-id" //A GUID that was generated by the managed identity service
+    "principalId": "principle-id"    //A GUID that was generated by the managed identity service
   },
   "properties": {
     "provisioningState": "Succeeded",
     "clusterType": "LogAnalytics", 
-    "clusterId": "cluster-id"   //A GUID that Log Analytics generates for the cluster
+    "clusterId": "cluster-id"    //A GUID that Log Analytics generates for the cluster
   },
-  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name", //The cluster resource Id
+  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",    //The cluster resource Id
   "name": "cluster-name",
   "type": "Microsoft.OperationalInsights/clusters",
   "location": "region-name"
 }
 
 ```
+> [!IMPORTANT]
+> Zkopírujte a ponechte "cluster-ID", protože ho budete potřebovat v dalších krocích.
 
 Pokud chcete prostředek *clusteru* odstranit z jakéhokoli důvodu (například ho vytvořit s jiným názvem), použijte toto volání rozhraní API:
 
-```
+```rst
 DELETE
-https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.OperationalInsights/clusters/{cluster-name}?api-version=2019-08-01-preview
+https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
 ```
 
 ### <a name="grant-key-vault-permissions"></a>Udělení oprávnění Key Vault
 
-Aktualizujte Key Vault a přidejte zásady přístupu pomocí oprávnění Get, Wrap Key a Unwrap Key k ID prostředku *clusteru* nebo názvu prostředku *clusteru* . Tato oprávnění se rozšíří do Azure Monitor úložiště.
+Aktualizujte Key Vault a přidejte zásady přístupu pro prostředek clusteru. Oprávnění k vašemu Key Vault se pak šíří do Azure Monitor úložiště, které se má použít k šifrování dat.
+Otevřete Key Vault v Azure Portal a klikněte na "zásady přístupu", pak "+ Přidat zásadu přístupu" a vytvořte novou zásadu s těmito nastaveními:
 
-![Udělení oprávnění Key Vault](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
+- Klíčová oprávnění: vyberte Get, Wrap Key a Unwrap Key oprávnění.
+
+- Vyberte objekt zabezpečení: Zadejte ID clusteru, což je hodnota "clusterId" v odpovědi předchozího kroku.
+
+![Udělení oprávnění Key Vault](media/customer-managed-keys/grant-key-vault-permissions.png)
 
 Aby bylo možné ověřit, jestli je vaše Key Vault nakonfigurovaná tak, aby chránila váš klíč a přístup k datům Azure Monitor, je potřeba oprávnění *získat* .
 
@@ -193,7 +206,9 @@ Bude trvat několik minut, než se prostředek *clusteru* rozšíří do Azure R
 
 ### <a name="update-cluster-resource-with-key-identifier-details"></a>Aktualizace prostředku clusteru s podrobnostmi identifikátoru klíče
 
-Když vytváříte novou verzi klíče, musíte aktualizovat prostředek clusteru s Azure Key Vault podrobností o identifikátoru klíče, aby úložiště Azure Monitor mohlo používat novou verzi. Pokud chcete získat identifikátor klíče, vyberte aktuální verzi klíče v Azure Key Vault:
+Tento postup platí také při vytvoření nové verze klíče.
+
+Aktualizujte prostředek clusteru pomocí Azure Key Vault podrobností identifikátoru klíče, aby bylo možné Azure Monitor úložiště používat novou verzi klíče. Vyberte aktuální verzi klíče v Azure Key Vault, abyste získali podrobnosti o identifikátoru klíče:
 
 ![Udělení oprávnění Key Vault](media/customer-managed-keys/key-identifier-8bit.png)
 
@@ -201,20 +216,20 @@ Aktualizujte prostředek *clusteru* KeyVaultProperties s podrobnostmi identifik�
 
 **Aktualizace**
 
-```json
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.OperationalInsights/clusters/{cluster-name}?api-version=2019-08-01-preview
+```rst
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
 {
    "properties": {
-       "KeyVaultProperties": { //Key Vault key identifier
-            KeyVaultUri: "https://{key-vault-name}.vault.azure.net,
-            KeyName: {key-name},
-            KeyVersion: {current-version}
+       "KeyVaultProperties": {     //Key Vault key identifier details taken from Key identifier URI
+            KeyVaultUri: "https://<key-vault-name>.vault.azure.net",
+            KeyName: "<key-name>",
+            KeyVersion: "<current-version>"
             },
    },
-   "location":"region-name",
+   "location":"<region-name>",
    "identity": { 
         "type": "systemAssigned" 
         }
@@ -232,18 +247,18 @@ Content-type: application/json
   },
   "properties": {
        "KeyVaultProperties": {     // Key Vault key identifier
-            KeyVaultUri: "https://{key-vault-name}.vault.azure.net,
-            KeyName: {key-name},
-            KeyVersion: {current-version}
+            KeyVaultUri: "https://key-vault-name.vault.azure.net",
+            KeyName: "key-name",
+            KeyVersion: "current-version"
             },
     "provisioningState": "Succeeded",
     "clusterType": "LogAnalytics", 
     "clusterId": "cluster-id"
   },
-  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name", //The cluster resource Id
+  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",    //The cluster resource Id
   "name": "cluster-name",
   "type": "Microsoft.OperationalInsights/clusters",
-  "location": "region-name" //Example: Switzerland North
+  "location": "region-name"    //Example: Switzerland North
 }
 ```
 
@@ -253,18 +268,12 @@ Během období předčasného přístupu k této funkci cluster ADX zřídí pro
 
 1. Potvrzení, že výše uvedené kroky jsou dokončeny
 
-2. ID prostředku *clusteru* , které jste dostali v odpovědi, vypadá takto:
-
-```
-"id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name"
-```
-
-ID prostředku *clusteru* lze kdykoli získat pomocí volání metody Get rozhraní API.
+2. Odpověď rozhraní API prostředků clusteru dá se kdykoli načíst pomocí volání metody Get rozhraní API.
 
 **Přečtěte si ID prostředku *clusteru* .**
 
-```
-GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.OperationalInsights/clusters/{cluster-name}?api-version=2019-08-01-preview
+```rst
+GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
 Authorization: Bearer <token>
 ```
 
@@ -277,10 +286,10 @@ Authorization: Bearer <token>
     "principalId": "principal-Id"
   },
   "properties": {
-       "KeyVaultProperties": { // Key Vault key identifier
-            KeyVaultUri: "https://{key-vault-name}.vault.azure.net,
-            KeyName: {key-name},
-            KeyVersion: {current-version}
+       "KeyVaultProperties": {    // Key Vault key identifier
+            KeyVaultUri: "https://key-vault-name.vault.azure.net",
+            KeyName: "key-name",
+            KeyVersion: "current-version"
             },
     "provisioningState": "Succeeded",
     "clusterType": "LogAnalytics", 
@@ -298,31 +307,31 @@ Authorization: Bearer <token>
 > [!NOTE]
 > Tento krok je **potřeba provést až** po přijetí potvrzení ze skupiny produktů prostřednictvím kanálu Microsoft, že **zřízení Azure Monitorho úložiště dat (ADX cluster)** bylo splněné. Pokud přidružíte pracovní prostory a ingestování dat před tímto **zřizováním**, budou data vyřazena a nebude obnovitelné.
 
-**Přidružení pracovního prostoru k prostředku *clusteru***
+**Přidružení pracovního prostoru k prostředku *clusteru* pomocí [pracovních prostorů – vytvoření nebo aktualizace](https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) rozhraní API**
 
-```json
-PUT https://management.azure.com.resources.windows-int.net/Customer.svc/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.operationalinsights/workspaces/{workspace-name} 
+```rst
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>?api-version=2015-11-01-preview 
 Authorization: Bearer <token>
 Content-type: application/json
 
 {
   "properties": {
     "source": "Azure",
-    "customerId": {workspace-id}, //Available in Azure portal under Log Analytics workspace Overview section
+    "customerId": "<workspace-id>",    //Available in Azure portal under Log Analytics workspace Overview section
     "features": {
-      "clusterDefinitionId": "cluster-id" //The id of the Cluster resource
+      "clusterDefinitionId": "<cluster-id>"    //It's the "clusterId" value provided in the respond from the previous step 
     }
   },
-  "id": "/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.operationalinsights/workspaces/{workspace-name}",
-  "name": "workspace-name",
+  "id": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>",
+  "name": "<workspace-name>",
   "type": "Microsoft.OperationalInsights/workspaces",
-  "location": "region-name"
+  "location": "<region-name>"
 }
 ```
 
 **Odpověď**
 
-```
+```json
 {
   "properties": {
     "source": "Azure",
@@ -339,12 +348,11 @@ Content-type: application/json
       "dataIngestionStatus": "RespectQuota"
     }
   },
-  "id": "/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.operationalinsights/workspaces/{workspace-name}",
+  "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name",
   "name": "workspace-name",
   "type": "Microsoft.OperationalInsights/workspaces",
   "location": "region-name"
 }
-
 ```
 
 Po přidružení se data odesílaná do vašich pracovních prostorů ukládají zašifrovaný pomocí spravovaného klíče.
@@ -380,6 +388,8 @@ Rotace CMK vyžaduje explicitní aktualizaci prostředku clusteru s novou verzí
   - [Obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) je zapnuté.
   - Možnost Nemazat je zapnutá pro ochranu proti vynucenému odstranění tajného klíče nebo trezoru i po obnovitelném odstranění.
 
+- Application Insights a Log Analytics vyžadují samostatné prostředky *clusteru* . Typ prostředku *clusteru* je definován při vytvoření nastavením vlastnosti "clusterType" na hodnotu "LogAnalytics" nebo "ApplicationInsights". Typ prostředku *clusteru* se nedá změnit.
+
 - Prostředek *clusteru* přesunout do jiné skupiny prostředků nebo předplatného se momentálně nepodporuje.
 
 - Přidružení pracovního prostoru k prostředku *clusteru* selže, pokud je prostředek *clusteru* v jiném tenantovi.
@@ -403,62 +413,66 @@ Rotace CMK vyžaduje explicitní aktualizaci prostředku clusteru s novou verzí
 
 - Pokud se pokusíte odstranit prostředek *clusteru* , který je přidružen k pracovnímu prostoru, operace odstranění selže.
 
-- Získat všechny clustery pro skupinu prostředků:
+- Načíst všechny prostředky *clusteru* pro skupinu prostředků:
 
-    ```
-    GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
-    ```
+  ```rst
+  GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
+  Authorization: Bearer <token>
+  ```
     
-    *Odpověď*
+**Odpověď**
 
-    ```json
+```json
+{
+  "value": [
     {
-      "value": [
-        {
-          "identity": {
-            "type": "SystemAssigned",
-            "tenantId": "tenant-id",
-            "principalId": "principal-Id"
-          },
-          "properties": {
-             "KeyVaultProperties": { // Key Vault key identifier
-                KeyVaultUri: "https://{key-vault-name}.vault.azure.net,
-                KeyName: {key-name},
-                KeyVersion: {current-version}
-                },
-            "provisioningState": "Succeeded",
-            "clusterType": "LogAnalytics", 
-            "clusterId": "cluster-id"
-          },
-          "id": "/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.operationalinsights/workspaces/{workspace-name}",
-          "name": "cluster-name",
-          "type": "Microsoft.OperationalInsights/clusters",
-          "location": "region-name"
-        }
-      ]
+      "identity": {
+        "type": "SystemAssigned",
+        "tenantId": "tenant-id",
+        "principalId": "principal-Id"
+      },
+      "properties": {
+         "KeyVaultProperties": {    // Key Vault key identifier
+            KeyVaultUri: "https://{key-vault-name}.vault.azure.net",
+            KeyName: "key-name",
+            KeyVersion: "current-version"
+            },
+        "provisioningState": "Succeeded",
+        "clusterType": "LogAnalytics", 
+        "clusterId": "cluster-id"
+      },
+      "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name",
+      "name": "cluster-name",
+      "type": "Microsoft.OperationalInsights/clusters",
+      "location": "region-name"
     }
-    ```
+  ]
+}
+```
 
-- Získání všech clusterů pro předplatné
+- Získá všechny prostředky *clusteru* pro předplatné.
 
-    ```
-    GET https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
-    ```
+  ```rst
+  GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
+  Authorization: Bearer <token>
+  ```
     
-    *Odpověď*
+**Odpověď**
     
-    Stejné jako odpověď z pro všechny clustery pro skupinu prostředků, ale v oboru předplatného.
+Stejná odpověď jako u ' prostředků*clusteru* pro skupinu prostředků ', ale v oboru předplatného.
     
-- Odstranění prostředku *clusteru* :
+- Odstranění prostředku *clusteru* – je nutné odstranit všechny přidružené pracovní prostory, aby bylo možné odstranit *clusterový* prostředek:
 
-> Aby bylo možné odstranit *clusterový* prostředek, musíte odstranit všechny přidružené pracovní prostory:
->
-> DELETE https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.OperationalInsights/clusters/{cluster-name}?api-version=2019-08-01-preview
->
+  ```rst
+  DELETE
+  https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+  Authorization: Bearer <token>
+  ```
 
-Odpověď
+**Odpověď**
 
 200 OK
+
 
 ## <a name="appendix"></a>Příloha
 
@@ -468,13 +482,13 @@ Log Analytics a Application Insights používají stejnou platformu pro úloži�
 2020. Tato změna přinese data do vašich aplikací do Log Analytics pracovních prostorů a provede dotazy, přehledy a další vylepšení, které je možné použít i v případě, že se konfigurace CMK v pracovním prostoru vztahuje i na vaše Application Insights data.
 
 > [!NOTE]
-> Pokud nemusíte nasazovat CMK na data přehledu vaší aplikace před druhou čtvrti kr 2020, doporučujeme počkat na dokončení konsolidace, protože taková nasazení budou přerušena konsolidací a budete muset CMK znovu nakonfigurovat na pracovní prostor za ním.
+> Pokud nemusíte nasazovat CMK pro vaše Application Insight data, doporučujeme počkat na dokončení konsolidace, protože tato nasazení budou přerušena konsolidací a po migraci na protokol bude nutné znovu nakonfigurovat CMK. Pracovní prostor analýzy. Minimálně 1 TB za den se vztahuje na úrovni clusteru a až do dokončení konsolidace během druhého čtvrtletí Application Insights a Log Analytics vyžadují samostatné clustery.
 
 ## <a name="application-insights-cmk-configuration"></a>Konfigurace Application Insights CMK
 
 Konfigurace Application Insights CMK je stejná jako proces, který je znázorněný v tomto článku, včetně omezení a řešení potíží s výjimkou těchto kroků:
 
-- Vytvořit prostředek *clusteru*
+- Vytvoření prostředku *clusteru*
 
 - Přidružení součásti k prostředku *clusteru*
 
@@ -484,15 +498,15 @@ Při konfiguraci CMK pro Application Insights použijte tento postup namísto t�
 
 Tento prostředek se používá jako zprostředkující připojení identity mezi vaším Key Vault a vašimi komponentami. AŽ obdržíte potvrzení, že vaše předplatná byla povolená, vytvořte prostředek clusteru Log Analytics v oblasti, ve které jsou umístěné vaše komponenty. Typ prostředku clusteru je definován při vytvoření nastavením vlastnosti *clusterType* na hodnotu *LogAnalytics*nebo *ApplicationInsights*. Měl by být *ApplicationInsights* pro Application Insights CMK. Nastavení *clusterType* nelze po konfiguraci změnit.
 
-Vytváření:
+**Vytvoření**
 
-```json
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.OperationalInsights/clusters/{cluster-name}?api-version=2019-08-01-preview
+```rst
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
 {
-  "location": "region-name",
+  "location": "<region-name>",
   "properties": {
       "clusterType":"ApplicationInsights"
   },
@@ -502,9 +516,9 @@ Content-type: application/json
 }
 ```
 
-Odpověď:
+**Odpověď**
 
-Identita je přiřazena ke clusteru v okamžiku vytvoření.
+Identita je přiřazena ke zdroji *clusteru* v době vytváření.
 
 ```json
 
@@ -512,12 +526,12 @@ Identita je přiřazena ke clusteru v okamžiku vytvoření.
   "identity": {
     "type": "SystemAssigned",
     "tenantId": "tenant-id",
-    "principalId": "principle-id" //A GUID that was generated by the managed identity service
+    "principalId": "principle-id"    //A GUID that was generated by the managed identity service
   },
   "properties": {
     "provisioningState": "Succeeded",
-    "clusterType": "ApplicationInsights", //The value is ‘ApplicationInsights’ for Application Insights CMK
-    "clusterId": "cluster-id"   //A GUID that Log Analytics generates for the cluster
+    "clusterType": "ApplicationInsights",    //The value is ‘ApplicationInsights’ for Application Insights CMK
+    "clusterId": "cluster-id"   //A GUID that Log Analytics generates for the cluster - copy it since you need it for Key Vault and components association 
   },
   "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name", //The cluster resource Id
   "name": "cluster-name",
@@ -526,23 +540,23 @@ Identita je přiřazena ke clusteru v okamžiku vytvoření.
 }
 ```
 
-### <a name="associate-a-component-to-a-cluster-resource"></a>Přidružení součásti k prostředku clusteru
+### <a name="associate-a-component-to-a-cluster-resource"></a>Přidružení součásti k prostředku *clusteru*
 
-```json
+```rst
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Insights/components/{component-name}?api-version=2015-05-01
 Authorization: Bearer <token>
 Content-type: application/json
 
 {
   "properties": {
-    "clusterDefinitionId": "cluster-id" //The id of the cluster resource
+    "clusterDefinitionId": "cluster-id" //It's the "clusterId" value provided in the respond from the previous step
   },
   "location": "region-name",
   "kind": "component-type",
 }
 ```
 
-Odpověď
+**Odpověď**
 
 ```json
 {
@@ -553,7 +567,7 @@ Odpověď
   "tags": "",
   "kind": "",
   "properties": {
-    "clusterDefinitionId": "cluster-id" //The id of the cluster resource
+    "clusterDefinitionId": "cluster-id" //The Cluster resource ID that is associated to this component
     "ApplicationId": "",
     "AppId": "",
     "Application_Type": "",

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 12e642e59a1341926a0c4d66533465cecfc21709
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 7933e2608ae0b59a6dce89169f4bb1faba0aa25e
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863134"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934137"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurace připojení ze služby Azure Kognitivní hledání indexer pro SQL Server na virtuálním počítači Azure
 
@@ -77,7 +77,7 @@ Důrazně doporučujeme, abyste omezili přístup k IP adrese vaší vyhledávac
 
 IP adresu můžete zjistit tak, že otestujete plně kvalifikovaný název domény (například `<your-search-service-name>.search.windows.net`) vaší vyhledávací služby.
 
-Rozsah IP adres `AzureCognitiveSearch` [značku služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) pro konkrétní oblast, ve které se služba Azure kognitivní hledání nachází, buď pomocí [souborů JSON ke stažení](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) nebo přes [rozhraní API pro zjišťování značek služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview). Rozsah IP adres se aktualizuje týdně.
+Rozsah IP adres `AzureCognitiveSearch` [značky služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) můžete zjistit buď pomocí [souborů JSON ke stažení](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) , nebo přes [rozhraní API pro zjišťování značek služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview). Rozsah IP adres se aktualizuje týdně.
 
 #### <a name="managing-ip-address-fluctuations"></a>Správa výkyvů IP adres
 Pokud vaše vyhledávací služba obsahuje jenom jednu jednotku vyhledávání (tj. jednu repliku a jeden oddíl), IP adresa se během rutiny běžného spuštění služby změní a naruší se platnost stávajícího seznamu ACL s IP adresou vaší vyhledávací služby.

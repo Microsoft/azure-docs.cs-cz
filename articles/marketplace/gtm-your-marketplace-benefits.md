@@ -2,18 +2,18 @@
 title: Služby pro uvedení na trh – výhody vašich komerčních webů na webu Marketplace | Azure
 description: Služby pro uvedení na trh – prostředky společnosti Microsoft, které mohou vydavatelé používat, jsou popsány v této části.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security, Partner Center
-author: qianw211
+author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/10/2019
-ms.author: v-qiwe
-ms.openlocfilehash: 7b563cd90ec3e46dfd2d4420b728cd6f69df40eb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: evansma
+ms.openlocfilehash: b8c1034b047e0c72db41bbbbff06feb0bdf06517
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818645"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933926"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Výhody vašeho komerčního tržiště
 
@@ -103,7 +103,7 @@ Společnost Microsoft si vyhrazuje právo odvolat a zrušit výhody, které mů�
 
 Tato nabídka je prováděna v angličtině pro všechny partnery s živou nabídkou v Azure Marketplace nebo Microsoft AppSource.
 
-Transakce, které jsou ověřené jako podvodné, se nepočítají směrem k [prodejní úrovni programu v programu](https://aka.ms/marketplacepublisherrewards)Publisher, jak je uvedeno v části [seznam, zkušební verze, konzultace](#list-trial-and-consulting-benefits) , [výhody pro partnery](#marketplace-rewards-for-transact-partners) v programu Transact a [podrobný programový balíček. ](https://aka.ms/marketplacepublisherrewards). Po odebrání podvodu bude Microsoft přidělovat partnerům nárok na úrovně způsobilosti na základě jejich skutečného účtovaného prodeje. 
+Transakce, které jsou ověřené jako podvodné, se nepočítají směrem k [prodejní úrovni programu v programu](https://aka.ms/marketplacepublisherrewards)Publisher, jak je uvedeno v části [seznam, zkušební verze, konzultace](#list-trial-and-consulting-benefits) , [výhody partnera](#marketplace-rewards-for-transact-partners) pro příjem a [podrobné programové balíčky](https://aka.ms/marketplacepublisherrewards). Po odebrání podvodu bude Microsoft přidělovat partnerům nárok na úrovně způsobilosti na základě jejich skutečného účtovaného prodeje. 
 
 ## <a name="next-steps"></a>Další kroky
 

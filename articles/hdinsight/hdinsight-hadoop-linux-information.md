@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: 21acbde147d5c1751480332e5cd9c89cdb43f8e8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3d9dec0065bb62821fcedcbc4f6e5b578c061caf
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644949"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934546"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informace o používání HDInsightu v Linuxu
 
@@ -254,11 +254,7 @@ HDInsight je spravovaná služba. Pokud Azure zjistí problém s clusterem, mů�
 * Instalace a konfigurace služby nebo webu.
 * Nainstalujte a nakonfigurujte komponentu, která vyžaduje změny konfigurace na více uzlech v clusteru.
 
-Akce skriptů jsou skripty bash. Skripty se spouští během vytváření clusteru a používají se k instalaci a konfiguraci dalších součástí. Ukázkové skripty jsou k dispozici pro instalaci následujících součástí:
-
-* [Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
-
-Informace o vývoji vlastních akcí skriptů naleznete v tématu [Vývoj akcí skriptů v prostředí HDInsight](hdinsight-hadoop-script-actions-linux.md).
+Akce skriptů jsou skripty bash. Skripty se spouští během vytváření clusteru a používají se k instalaci a konfiguraci dalších součástí. Informace o vývoji vlastních akcí skriptů naleznete v tématu [Vývoj akcí skriptů v prostředí HDInsight](hdinsight-hadoop-script-actions-linux.md).
 
 ### <a name="jar-files"></a>Soubory jar
 

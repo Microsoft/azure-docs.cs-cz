@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3bea04ba077aebe9a52400a1292c5cd27c15b72e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8bc6a9c8910c25f5fdb403e7f45c5f567f7c1224
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950914"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930664"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C jako ověření vstupu uživatele
 
@@ -57,7 +57,7 @@ Přehled:
 * Poslat číslo loajality zpět
 * Přidat věrnostní číslo do JSON Web Token (JWT)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Proveďte kroky popsané v článku [Začínáme s vlastními zásadami](active-directory-b2c-get-started-custom.md) .
 
@@ -337,7 +337,9 @@ Po přidání nové deklarace bude kód předávající strany vypadat takto:
 
 ## <a name="step-7-upload-the-policy-to-your-tenant"></a>Krok 7: nahrání zásady do tenanta
 
-1. V [Azure Portal](https://portal.azure.com)přepněte do [kontextu vašeho tenanta Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a pak otevřete **Azure AD B2C**.
+1. V [Azure Portal](https://portal.azure.com)na panelu nástrojů portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
+
+1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 
 1. Vyberte **architekturu prostředí identity**.
 

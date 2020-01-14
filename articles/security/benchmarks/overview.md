@@ -8,44 +8,47 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-baselines
-ms.openlocfilehash: 6140d64d7af6f5ccd4864e4cbc5c313cdae3acaf
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 2d12fa85fbc134ba2578795619db89f4a5058b26
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835025"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934747"
 ---
 # <a name="overview-of-azure-security-controls"></a>Přehled ovládacích prvků zabezpečení Azure
 
-Srovnávací test zabezpečení Azure obsahuje doporučení, která vám pomůžou vylepšit zabezpečení vašich aplikací a dat v Azure.   
+Srovnávací test zabezpečení Azure obsahuje doporučení, která vám pomůžou vylepšit zabezpečení vašich aplikací a dat v Azure.
 
-Tento srovnávací test se zaměřuje na cloudové oblasti zaměřené na Cloud. Tyto ovládací prvky jsou konzistentní s dobře známými srovnávacími testy zabezpečení, jako jsou ty, které jsou popsány v centru pro řízení internetového zabezpečení (CIS) verze 7,1. 
+Tento srovnávací test se zaměřuje na cloudové oblasti zaměřené na Cloud. Tyto ovládací prvky jsou konzistentní s dobře známými srovnávacími testy zabezpečení, jako jsou ty, které jsou popsány v centru pro řízení internetového zabezpečení (CIS) verze 7,1.
 
 V srovnávacím testu zabezpečení Azure se používají následující ovládací prvky: 
 
-- Zabezpečení sítě 
-- Protokolování a sledování 
-- Identita a Access Control 
-- Data Protection 
-- Správa ohrožení zabezpečení 
-- Inventář a Správa prostředků 
-- Zabezpečená konfigurace 
-- Obrana proti malwaru 
-- Obnovení dat 
-- Reakce na incidenty 
-- Testy průniku a cvičení červeného týmu
+- [Zabezpečení sítě](security-control-network-security.md)
+- [Protokolování a sledování](security-control-logging-monitoring.md)
+- [Identita a Access Control](security-control-identity-access-control.md)
+- [Ochrana dat](security-control-data-protection.md)
+- [Správa ohrožení zabezpečení](security-control-vulnerability-management.md)
+- [Inventář a Správa prostředků](security-control-inventory-asset-management.md)
+- [Zabezpečená konfigurace](security-control-secure-configuration.md)
+- [Obrana proti malwaru](security-control-malware-defense.md)
+- [Obnovení dat](security-control-data-recovery.md)
+- [Reakce na incidenty](security-control-incident-response.md)
+- [Testy průniku a cvičení červeného týmu](security-control-penetration-tests-red-team-exercises.md)
+
+Můžete si také stáhnout [excelovou tabulku Azure Security benchmark v1](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/spreadsheets).
 
 ## <a name="azure-security-benchmark-recommendations"></a>Doporučení pro srovnávací testy zabezpečení Azure 
 
 Každé doporučení zahrnuje následující informace: 
 
 - **Azure ID**: ID srovnávacího testu zabezpečení Azure, které odpovídá doporučení. 
-- **ID CIS**: doporučení pro srovnávací testy CIS #, které odpovídá tomuto doporučení.  
+- **ID CIS**: doporučení pro srovnávací testy CIS, která odpovídají tomuto doporučení.  
 - **Zodpovědnost**: zda je zákazník nebo poskytovatel služeb (nebo obojí) zodpovědný za implementaci tohoto doporučení. Bezpečnostní odpovědnost se sdílí ve veřejném cloudu. Některé ovládací prvky zabezpečení jsou dostupné jenom poskytovateli cloudové služby, a proto je poskytovatel zodpovědný za jejich adresování. Jedná se o obecná pozorování – pro některé jednotlivé služby se bude odpovědnost lišit od toho, co je uvedeno v srovnávacím testu zabezpečení Azure. Tyto rozdíly jsou popsané v základních doporučeních pro jednotlivé služby. 
-- **Podrobnosti**: odůvodnění doporučení a odkazy na pokyny k implementaci doporučení. Pokud je doporučení Azure Security Center podporováno, budou tyto informace uvedeny zde.  
+- **Podrobnosti**: odůvodnění doporučení a odkazy na pokyny k jeho implementaci. Pokud Azure Security Center doporučení podporuje, budou tyto informace také uvedené.
 
 Uvítáme vaši podrobnou zpětnou vazbu a aktivní účast v úsilí Azure Security test. Pokud chcete zadat přímý vstup ve srovnávacím týmu, vyplňte prosím formulář na [https://aka.ms/AzSecBenchmark](https://aka.ms/AzSecBenchmark).
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na první ovládací prvek zabezpečení: [zabezpečení sítě](security-control-network-security.md)
+- Podívejte se na první ovládací prvek zabezpečení: [zabezpečení sítě](security-control-network-security.md)
+- Stažení [tabulky Azure Security test benchmark v1 Excel](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/spreadsheets)

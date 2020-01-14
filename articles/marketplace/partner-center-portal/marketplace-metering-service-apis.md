@@ -1,19 +1,19 @@
 ---
 title: Rozhraní API služby měření softwaru Marketplace | Azure Marketplace
 description: Událost použití pro nabídky SaaS v Azure Marketplace.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 36ca95191e0e6422bd93360b98243393acad8147
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: dea950ff72eff2372fc10f989d4ce77fa746c4bf
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825480"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933576"
 ---
 # <a name="marketplace-metering-service-apis"></a>Rozhraní API služeb měření na marketplace
 
@@ -31,7 +31,7 @@ Rozhraní API události využití umožňuje generovat události využití pro k
 
 *Hlavičky žádosti:*
 
-| typ obsahu       | `application/json`    |
+| Typ obsahu       | `application/json`    |
 | ------------------ | ---------------------------- |
 | `x-ms-requestid`     | Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe pro identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi. |
 | `x-ms-correlationid` | Jedinečná řetězcová hodnota pro operaci na klientovi. Tento parametr koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi. |
@@ -131,7 +131,7 @@ Rozhraní API události využití dávky umožňuje generovat události využit�
 
 *Hlavičky žádosti:*
 
-| typ obsahu       | `application/json`       |
+| Typ obsahu       | `application/json`       |
 | ------------------ | ------ |
 | `x-ms-requestid`     | Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe pro identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi. |
 | `x-ms-correlationid` | Jedinečná řetězcová hodnota pro operaci na klientovi. Tento parametr koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi. |
@@ -200,7 +200,7 @@ Popis stavového kódu odkazovaného v `BatchUsageEvent` odezva rozhraní API:
 | `Accepted` | Přijatý kód. |
 | `Expired` | Použití vypršelo. |
 | `Duplicate` | Bylo zadáno duplicitní použití. |
-| `Error` | Kód chyby. |
+| `Error` | Kód chyby |
 | `ResourceNotFound` | Poskytnutý prostředek využití je neplatný. |
 | `ResourceNotAuthorized` | Nemáte oprávnění k zajištění využití tohoto prostředku. |
 | `InvalidDimension` | Dimenze, pro kterou je toto použití předáno, není pro tuto nabídku nebo plán platná. |

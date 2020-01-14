@@ -1,9 +1,9 @@
 ---
-title: StorSimple Snapshot Manageru skupin svazků | Dokumentace Microsoftu
-description: Popisuje způsob použití modulu snap-in konzoly MMC StorSimple Snapshot Manageru k vytvoření a Správa skupin svazků.
+title: StorSimple Snapshot Manager volume groups | Microsoft Docs
+description: Describes how to use the StorSimple Snapshot Manager MMC snap-in to create and manage volume groups.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: carmonm
 editor: ''
 ms.assetid: 7a232414-6a28-4b81-bd7b-cf61e28b33d7
@@ -13,119 +13,119 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: e84bc790ac577796e91be010deecc8c5cea1b010
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: 5198729cf96fb48c5dcd05096c04ea4d77c26de5
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699716"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931496"
 ---
-# <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Vytvoření a Správa skupin svazků pomocí StorSimple Snapshot Manageru
+# <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Use StorSimple Snapshot Manager to create and manage volume groups
 ## <a name="overview"></a>Přehled
-Můžete použít **skupin svazků** uzlu na **oboru** podoknem přiřadit svazky na svazku skupiny, zobrazení informací o skupině svazku naplánovat zálohování a upravit skupiny svazku.
+You can use the **Volume Groups** node on the **Scope** pane to assign volumes to volume groups, view information about a volume group, schedule backups, and edit volume groups.
 
-Svazek skupiny jsou fondy související svazky používané k zajištění konzistentní zálohy. Další informace najdete v tématu [svazky a skupin svazků](storsimple-what-is-snapshot-manager.md#volumes-and-volume-groups) a [integrace s Windows služby Stínová kopie svazku](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service).
+Volume groups are pools of related volumes used to ensure that backups are application-consistent. For more information, see [Volumes and volume groups](storsimple-what-is-snapshot-manager.md#volumes-and-volume-groups) and [Integration with Windows Volume Shadow Copy Service](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service).
 
 > [!IMPORTANT]
-> * Všechny svazky ve skupině svazku musí pocházet z jednoho poskytovatele cloudových služeb.
-> * Při konfiguraci skupin svazků Nekombinujte sdílené svazky clusteru (CSV) a jiné-sdílených svazků clusteru ve stejné skupině svazku. StorSimple Snapshot Manageru nepodporuje sdílené svazky clusteru i sdílených svazků clusteru ve stejné snímku.
+> * All volumes in a volume group must come from a single cloud service provider.
+> * When you configure volume groups, do not mix cluster-shared volumes (CSVs) and non-CSVs in the same volume group. StorSimple Snapshot Manager does not support a mix of CSVs and non-CSVs in the same snapshot.
 
-![Uzel skupiny svazků](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Volume_groups.png)
+![Volume groups node](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Volume_groups.png)
 
-**Obrázek 1: Uzel skupin StorSimple Snapshot Manager svazků** 
+**Figure 1: StorSimple Snapshot Manager Volume Groups node** 
 
-Tento kurz vysvětluje, jak můžete pomocí StorSimple Snapshot Manageru do:
+This tutorial explains how you can use StorSimple Snapshot Manager to:
 
-* Zobrazení informací o svazku skupin
-* Vytvoření skupiny svazků
-* Zálohování skupiny svazků
-* Upravit skupiny svazků
-* Odstranění skupiny svazků
+* View information about your volume groups
+* Create a volume group
+* Back up a volume group
+* Edit a volume group
+* Delete a volume group
 
-Všechny tyto akce jsou také k dispozici na **akce** podokně.
+All of these actions are also available on the **Actions** pane.
 
-## <a name="view-volume-groups"></a>Zobrazení skupin svazků
-Pokud kliknete **skupin svazků** uzlu, **výsledky** podokně se zobrazí následující informace o každé skupiny svazku, v závislosti na vybrané sloupce provedete. (Ve sloupcích v **výsledky** podokno se dají konfigurovat. Klikněte pravým tlačítkem myši **svazky** uzlu, vyberte **zobrazení**a pak vyberte **Přidat/odebrat sloupce**.)
+## <a name="view-volume-groups"></a>View volume groups
+If you click the **Volume Groups** node, the **Results** pane shows the following information about each volume group, depending on the column selections you make. (The columns in the **Results** pane are configurable. Right-click the **Volumes** node, select **View**, and then select **Add/Remove Columns**.)
 
-| Sloupec výsledků | Popis |
+| Results column | Popis |
 |:--- |:--- |
-| Název |**Název** sloupec obsahuje název skupiny svazků. |
-| Aplikace |**Aplikací** sloupci se zobrazuje počet zapisovače VSS jsou aktuálně nainstalovaná a spuštěná na hostiteli s Windows. |
-| Vybráno |**Vybrané** sloupci se zobrazuje počet svazků, které jsou obsaženy ve skupině svazku. Nula (0) znamená, že žádná aplikace přidružené svazky ve skupině svazku. |
-| Importovat |**Importováno** sloupci se zobrazuje počet importovaných svazků. Pokud je nastavena na **True**, v tomto sloupci označuje, že skupiny svazků jsou naimportovaná z webu Azure portal a nebyl vytvořen StorSimple Snapshot Manageru. |
+| Name (Název) |The **Name** column contains the name of the volume group. |
+| Aplikace |The **Applications** column shows the number of VSS writers currently installed and running on the Windows host. |
+| Vybráno |The **Selected** column shows the number of volumes that are contained in the volume group. A zero (0) indicates that no application is associated with the volumes in the volume group. |
+| Naimportováno |The **Imported** column shows the number of imported volumes. When set to **True**, this column indicates that a volume group was imported from the Azure portal and was not created in StorSimple Snapshot Manager. |
 
 > [!NOTE]
-> Skupiny svazek StorSimple Snapshot Manageru se zobrazují na **zásady zálohování** karta na portálu Azure portal.
+> StorSimple Snapshot Manager volume groups are also displayed on the **Backup Policies** tab in the Azure portal.
 > 
 > 
 
-## <a name="create-a-volume-group"></a>Vytvoření skupiny svazků
-Pomocí následujícího postupu můžete vytvořit skupinu svazku.
+## <a name="create-a-volume-group"></a>Create a volume group
+Use the following procedure to create a volume group.
 
-#### <a name="to-create-a-volume-group"></a>Chcete-li vytvořit skupiny svazků
-1. Klepněte na ikonu klasické pracovní plochy spusťte StorSimple Snapshot Manageru.
-2. V **oboru** podokně klikněte pravým tlačítkem na **skupin svazků**a potom klikněte na tlačítko **vytvořit skupiny svazků**.
+#### <a name="to-create-a-volume-group"></a>To create a volume group
+1. Click the desktop icon to start StorSimple Snapshot Manager.
+2. In the **Scope** pane, right-click **Volume Groups**, and then click **Create Volume Group**.
    
-    ![Vytvoření skupiny svazků](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Create_volume_group.png)
+    ![Create volume group](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Create_volume_group.png)
    
-    **Vytvořte skupinu svazku** zobrazí se dialogové okno.
+    The **Create a volume group** dialog box appears.
    
-    ![Vytvoření dialogového okna skupiny svazků](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_CreateVolumeGroup_dialog.png)
+    ![Create a volume group dialog](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_CreateVolumeGroup_dialog.png)
 3. Zadejte následující informace:
    
-   1. V **název** zadejte jedinečný název pro novou skupinu svazku.
-   2. V **aplikací** pole, vyberte aplikace, které jsou přidružené svazky, které přidáváte do skupiny svazku.
+   1. In the **Name** box, type a unique name for the new volume group.
+   2. In the **Applications** box, select applications associated with the volumes that you will be adding to the volume group.
       
-       **Aplikací** seznamy pouze aplikace, které používají svazky zařízení StorSimple a mají zapisovače VSS jsou povolené pro ně. Zapisovač VSS je povolená jenom v případě, že všechny svazky, které modul pro zápis je seznámen se svazky zařízení StorSimple. Pokud pole aplikace je prázdný, nenainstalují se žádné aplikace, které používají svazky zařízení StorSimple v Azure a máte podporovanou zapisovače VSS. (V současné době Azure StorSimple podporuje Microsoft Exchange a SQL Server.) Další informace o zapisovače VSS najdete v tématu [integrace s Windows služby Stínová kopie svazku](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service).
+       The **Applications** box lists only those applications that use StorSimple volumes and have VSS writers enabled for them. A VSS writer is enabled only if all the volumes that the writer is aware of are StorSimple volumes. If the Applications box is empty, then no applications that use Azure StorSimple volumes and have supported VSS writers are installed. (Currently, Azure StorSimple supports Microsoft Exchange and SQL Server.) For more information about VSS writers, see [Integration with Windows Volume Shadow Copy Service](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service).
       
-       Pokud vyberete aplikace, automaticky se vyberou všechny svazky, které s ním spojená. Naopak, pokud jste vybrali svazky přidružené k určité aplikace, aplikace je automaticky vybrána **aplikací** pole. 
-   3. V **svazky** vyberte svazky zařízení StorSimple pro přidání do skupiny svazků. 
+       If you select an application, all volumes associated with it are automatically selected. Conversely, if you select volumes associated with a specific application, the application is automatically selected in the **Applications** box. 
+   3. In the **Volumes** box, select StorSimple volumes to add to the volume group. 
       
-      * Můžete zahrnout svazků s jedním nebo několika oddílů. (Více svazků oddílů může být dynamické disky nebo základní disky s více oddílů.) Svazek, který obsahuje několik oddílů je považován za jednu jednotku. V důsledku toho pokud chcete přidat pouze jeden z oddílů na skupiny svazků, všechny ostatní oddíly jsou automaticky přidány do této skupiny svazku ve stejnou dobu. Po přidání více oddílů svazku do skupiny svazků více svazku oddílu i nadále být považován za jednu jednotku.
-      * Můžete vytvořit prázdný svazek skupiny tak, že není k nim přiřadíte žádné svazky. 
-      * Nekombinujte sdílené svazky clusteru (CSV) a jiné-sdílených svazků clusteru ve stejné skupině svazku. StorSimple Snapshot Manageru nepodporuje Sdílené svazky clusteru i bez Sdílené svazky clusteru ve stejné snímku.
-4. Klikněte na tlačítko **OK** se uložit skupinu svazku.
+      * You can include volumes with single or multiple partitions. (Multiple partition volumes can be dynamic disks or basic disks with multiple partitions.) A volume that contains multiple partitions is treated as a single unit. Consequently, if you add only one of the partitions to a volume group, all the other partitions are automatically added to that volume group at the same time. After you add a multiple partition volume to a volume group, the multiple partition volume continues to be treated as a single unit.
+      * You can create empty volume groups by not assigning any volumes to them. 
+      * Do not mix cluster-shared volumes (CSVs) and non-CSVs in the same volume group. StorSimple Snapshot Manager does not support a mix of CSV volumes and non-CSV volumes in the same snapshot.
+4. Click **OK** to save the volume group.
 
-## <a name="back-up-a-volume-group"></a>Zálohování skupiny svazků
-Pomocí následujícího postupu zálohování skupiny svazků.
+## <a name="back-up-a-volume-group"></a>Back up a volume group
+Use the following procedure to back up a volume group.
 
-#### <a name="to-back-up-a-volume-group"></a>K zálohování skupiny svazků
-1. Klepněte na ikonu klasické pracovní plochy spusťte StorSimple Snapshot Manageru.
-2. V **oboru** podokně rozbalte **skupin svazků** uzel, klikněte pravým tlačítkem na název skupiny svazků a pak klikněte na **provést zálohování**.
+#### <a name="to-back-up-a-volume-group"></a>To back up a volume group
+1. Click the desktop icon to start StorSimple Snapshot Manager.
+2. In the **Scope** pane, expand the **Volume Groups** node, right-click a volume group name, and then click **Take Backup**.
    
-    ![Zálohovat hned skupiny svazků](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Take_backup.png)
-3. V **provést zálohování** dialogu **místní snímek** nebo **Cloudový snímek**a potom klikněte na tlačítko **vytvořit**.
+    ![Back up volume group immediately](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Take_backup.png)
+3. In the **Take Backup** dialog box, select **Local Snapshot** or **Cloud Snapshot**, and then click **Create**.
    
-    ![Provést zálohování dialogového okna](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_TakeBackup_dialog.png)
-4. Chcete-li ověřit, že zálohování běží, rozbalte **úlohy** uzlu a pak klikněte na tlačítko **systémem**. Záloha by měla být uvedená.
-5. Chcete-li zobrazit dokončené snímku, rozbalte **katalog zálohování** uzlu, rozbalte název skupiny svazků a pak klikněte na tlačítko **místní snímek** nebo **Cloudový snímek**. Zálohování se zobrazí, pokud byl úspěšně dokončen.
+    ![Take backup dialog](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_TakeBackup_dialog.png)
+4. To confirm that the backup is running, expand the **Jobs** node, and then click **Running**. The backup should be listed.
+5. To view the completed snapshot, expand the **Backup Catalog** node, expand the volume group name, and then click **Local Snapshot** or **Cloud Snapshot**. The backup will be listed if it finished successfully.
 
-## <a name="edit-a-volume-group"></a>Upravit skupiny svazků
-Pomocí následujícího postupu upravit skupiny svazků.
+## <a name="edit-a-volume-group"></a>Edit a volume group
+Use the following procedure to edit a volume group.
 
-#### <a name="to-edit-a-volume-group"></a>Chcete-li upravit skupiny svazků
-1. Klepněte na ikonu klasické pracovní plochy spusťte StorSimple Snapshot Manageru.
-2. V **oboru** podokně rozbalte **skupin svazků** uzel, klikněte pravým tlačítkem na název skupiny svazků a pak klikněte na **upravit**.
-3. ** Vytvořte skupinu svazku ** se zobrazí dialogové okno. Můžete změnit **název**, **aplikací**, a **svazky** položky.
+#### <a name="to-edit-a-volume-group"></a>To edit a volume group
+1. Click the desktop icon to start StorSimple Snapshot Manager.
+2. In the **Scope** pane, expand the **Volume Groups** node, right-click a volume group name, and then click **Edit**.
+3. The **Create a volume group **dialog box appears. You can change the **Name**, **Applications**, and **Volumes** entries.
 4. Klikněte na tlačítko **OK** a uložte změny.
 
-## <a name="delete-a-volume-group"></a>Odstranění skupiny svazků
-Pomocí následujícího postupu odstranit skupiny svazků. 
+## <a name="delete-a-volume-group"></a>Delete a volume group
+Use the following procedure to delete a volume group. 
 
 > [!WARNING]
-> Tím se odstraní také všechny zálohy, které jsou přidružené ke skupině svazku.
+> This also deletes all the backups associated with the volume group.
 > 
 > 
 
-#### <a name="to-delete-a-volume-group"></a>Chcete-li odstranit skupiny svazků
-1. Klepněte na ikonu klasické pracovní plochy spusťte StorSimple Snapshot Manageru.
-2. V **oboru** podokně rozbalte **skupin svazků** uzel, klikněte pravým tlačítkem na název skupiny svazků a pak klikněte na **odstranit**.
-3. **Odstranit skupiny svazků** zobrazí se dialogové okno. Typ **potvrdit** textového pole a pak klikněte na **OK**.
+#### <a name="to-delete-a-volume-group"></a>To delete a volume group
+1. Click the desktop icon to start StorSimple Snapshot Manager.
+2. In the **Scope** pane, expand the **Volume Groups** node, right-click a volume group name, and then click **Delete**.
+3. The **Delete Volume Group** dialog box appears. Type **Confirm** in the text box, and then click **OK**.
    
-    Skupiny svazků odstraněné zmizí ze seznamu **výsledky** podokně a všechny zálohy, které jsou spojené s touto skupinou svazku se odstraní ze katalog záloh.
+    The deleted volume group vanishes from the list in the **Results** pane and all backups that are associated with that volume group are deleted from the backup catalog.
 
-## <a name="next-steps"></a>Další postup
-* Zjistěte, jak [použít ke správě vašeho řešení StorSimple Snapshot Manageru zařízení StorSimple](storsimple-snapshot-manager-admin.md).
-* Zjistěte, jak [pomocí StorSimple Snapshot Manageru k vytvoření a Správa zásad zálohování](storsimple-snapshot-manager-manage-backup-policies.md).
+## <a name="next-steps"></a>Další kroky
+* Learn how to [use StorSimple Snapshot Manager to administer your StorSimple solution](storsimple-snapshot-manager-admin.md).
+* Learn how to [use StorSimple Snapshot Manager to create and manage backup policies](storsimple-snapshot-manager-manage-backup-policies.md).
 

@@ -2,22 +2,22 @@
 title: Řešení potíží s probíhající replikací virtuálních počítačů s Azrue pomocí Azure Site Recovery
 description: Řešení chyb a problémů při replikaci virtuálních počítačů Azure na zotavení po havárii
 services: site-recovery
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 8/2/2019
-ms.author: asgang
-ms.openlocfilehash: 7b9da202704b20e5770343f857c044ea19ae696a
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.author: carmonm
+ms.openlocfilehash: b738ffc36334fc540582ba29e803eb2790e2119e
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620888"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930746"
 ---
 # <a name="troubleshoot-ongoing-problems-in-azure-to-azure-vm-replication"></a>Řešení potíží s probíhajícími operacemi v Azure-to-Azure – replikace virtuálních počítačů
 
-Tento článek popisuje běžné problémy v Azure Site Recovery při replikaci a obnovování virtuálních počítačů Azure z jedné oblasti do jiné oblasti. Vysvětluje také, jak je řešit. Další informace o podporovaných konfiguracích najdete v [matrici podpory pro replikaci virtuálních počítačů Azure](site-recovery-support-matrix-azure-to-azure.md).
+Tento článek popisuje běžné problémy v Azure Site Recovery při replikaci a obnovování virtuálních počítačů Azure z jedné oblasti do jiné oblasti. Vysvětluje také, jak je řešit. Další informace o podporovaných konfiguracích najdete v tématu [matice podpory pro replikaci virtuálních počítačů Azure](site-recovery-support-matrix-azure-to-azure.md).
 
 Azure Site Recovery konzistentně replikuje data ze zdrojové oblasti do oblasti zotavení po havárii a vytváří bod obnovení konzistentního vzhledem k selháním každých 5 minut. Pokud Site Recovery nemůžou vytvářet body obnovení po dobu 60 minut, upozorní vás na tyto informace:
 
@@ -79,7 +79,7 @@ Pokud chcete zjistit problém týkající se latence, pomocí [AzCopy](https://d
 Doporučujeme vytvořit koncový bod síťové služby ve virtuální síti pro úložiště, aby provoz replikace nepřešel do síťové virtuální zařízení. Další informace najdete v tématu [Konfigurace síťového virtuálního zařízení](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration).
 
 ### <a name="network-connectivity"></a>Připojení k síti
-Aby mohla replikace Site Recovery fungovat, z virtuálního počítače se vyžaduje odchozí připojení ke konkrétním adresám URL nebo rozsahům IP adres. Pokud je váš virtuální počítač za bránou firewall nebo používá pravidla skupiny zabezpečení sítě (NSG) k řízení odchozího připojení, můžete se setkat s jedním z těchto problémů. Pokud chcete mít jistotu, že jsou všechny adresy URL připojené, přečtěte si téma [odchozí připojení pro adresy url Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges). 
+U replikace Site Recovery pro práci, odchozí připojení ke konkrétní adresy URL nebo IP rozsahy se vyžaduje z virtuálního počítače. Pokud je váš virtuální počítač za bránou firewall nebo používá pravidla skupiny zabezpečení sítě (NSG) k řízení odchozího připojení, můžete se setkat s jedním z těchto problémů. Pokud chcete mít jistotu, že jsou všechny adresy URL připojené, přečtěte si téma [odchozí připojení pro adresy url Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges). 
 
 ## <a name="error-id-153006---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>ID chyby 153006 – pro virtuální počítač není k dispozici žádný bod obnovení konzistentní vzhledem k aplikacím během posledních ' XXX ' minut
 
@@ -88,7 +88,7 @@ Níže jsou uvedené některé z nejběžnějších problémů.
 #### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>Příčina 1: známý problém v systému SQL Server 2008/2008 R2 
 **Jak opravit** : došlo k známému problému s SQL serverem 2008/2008 R2. Přečtěte si prosím tento článek znalostní báze [Azure Site Recovery agent nebo jiná nekomponentová záloha služby VSS u serveru, který hostuje SQL Server 2008 R2, se nezdařil](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2) .
 
-#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>Příčina 2: Azure Site Recovery úlohy selžou na serverech hostujících jakékoli verze SQL Server instancí pomocí AUTO_CLOSE databáze 
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>Příčina 2: Azure Site Recovery úlohy selžou na serverech hostujících jakékoli verze SQL Server instancí AUTO_CLOSE databáze 
 **Jak opravit** : Přečtěte si [článek](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) znalostní báze 
 
 
@@ -132,8 +132,8 @@ Přečtěte si [článek pro řešení potíží s instalací zapisovače VSS](h
 **Jak opravit**: vygeneruje se značka konzistence aplikace Azure Site Recovery používá službu Microsoft Volume stín Copy Service (VSS). Ověřte, jestli je nainstalovaná služba poskytovatele VSS Azure Site Recovery, nebo ne. </br>
 
 - Opakujte instalaci poskytovatele pomocí následujících příkazů:
-- Odinstalace stávajícího zprostředkovatele: C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\InMageVSSProvider_Uninstall.cmd
-- Přeinstalujte: C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd
+- Odinstalace stávajícího zprostředkovatele: C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\ InMageVSSProvider_Uninstall. cmd
+- Přeinstalujte: C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\ InMageVSSProvider_Install. cmd.
  
 Ověřte, zda je typ spouštění služby VSS Provider nastaven na hodnotu **automaticky**.
     - Restartujte následující služby:

@@ -1,18 +1,18 @@
 ---
 title: Zotavení po havárii pro nasazení ve více vrstvách Dynamics AX s Azure Site Recovery | Microsoft Docs
 description: Tento článek popisuje, jak nastavit zotavení po havárii pro Dynamics AX pomocí Azure Site Recovery
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
-ms.author: asgang
-ms.openlocfilehash: 5b8aaff3a3418177f92c3b54fb3bb3e99f93810e
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.author: carmonm
+ms.openlocfilehash: 089edd1f408494f59c8f0042b57d2d79c7faffae
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620743"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930173"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Nastavení zotavení po havárii pro aplikaci s více vrstvami Dynamics AX   
 
@@ -109,7 +109,7 @@ Můžete vytvořit plán obnovení v Site Recovery pro automatizaci procesu pře
 
 4. Vyberte aplikační objektový server a klientské virtuální počítače pro plán obnovení a pak vyberte ✓.
 
-    ![Vybrat položky](./media/site-recovery-dynamics-ax/selectvms.png)
+    ![Výběr položek](./media/site-recovery-dynamics-ax/selectvms.png)
 
     Příklad plánu obnovení:
 

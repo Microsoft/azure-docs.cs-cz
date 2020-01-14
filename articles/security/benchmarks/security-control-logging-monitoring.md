@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 1354bd2895a8fe6e8aa1f12cd92295c77ca2d4b2
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: ceb82bf729470f9996bc9ecc766329a0d1242ec4
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564163"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930036"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Řízení zabezpečení: protokolování a sledování
 
@@ -67,7 +67,7 @@ Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings
 
-Principy protokolování a různých typů protokolů v Azure:
+Pochopení protokolování a různých typů protokolů v Azure:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
 
@@ -79,9 +79,13 @@ https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
 
 Pokud je výpočetní prostředek vlastněn společností Microsoft, zodpovídá za jeho monitorování společnost Microsoft. Pokud je výpočetní prostředek vlastněn vaší organizací, máte zodpovědnost za jeho monitorování. Pomocí Azure Security Center můžete monitorovat operační systém. Data shromažďovaná Security Center z operačního systému zahrnují typ a verzi operačního systému, operační systém (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy a přihlášený uživatel. Agent Log Analytics také shromažďuje soubory s výpisem stavu systému.
 
-Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure pomocí Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm
+Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure s Azure Monitor:
 
-Princip Azure Security Center shromažďování dat: https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection
+https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm
+
+Pochopení Azure Security Center shromažďování dat:
+
+https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection
 
 ## <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurace uchovávání úložiště protokolu zabezpečení
 
@@ -91,7 +95,9 @@ Princip Azure Security Center shromažďování dat: https://docs.microsoft.com/
 
 V rámci Azure Monitor nastavte dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště.
 
-Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory:
+
+https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
 ## <a name="26-monitor-and-review-logs"></a>2,6: Sledujte a kontrolujte protokoly
 
@@ -107,7 +113,7 @@ Jak připojit Azure Sentinel:
 
 https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-Principy Log Analyticsho pracovního prostoru:
+Pochopení Log Analytics pracovního prostoru:
 
 https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 
@@ -153,7 +159,7 @@ Jak nakonfigurovat Microsoft Antimalware pro Cloud Services:
 
 https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureserviceantimalwareextension?view=azuresmps-4.0.0
 
-Porozumění programu Microsoft Antimalware:
+Pochopení antimalwaru Microsoftu:
 
 https://docs.microsoft.com/azure/security/fundamentals/antimalware
 

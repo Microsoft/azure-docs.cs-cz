@@ -1,6 +1,6 @@
 ---
-title: Odstín pomocí Hadoop v clusterech se systémem HDInsight Linux – Azure
-description: Naučte se instalovat odstín v clusterech HDInsight a pomocí tunelového propojení směrovat požadavky do odstínu. Pomocí odstínu můžete procházet úložiště a spustit podregistr nebo prase.
+title: Hue with Hadoop on HDInsight Linux-based clusters - Azure
+description: Learn how to install Hue on HDInsight clusters and use tunneling to route the requests to Hue. Use Hue to browse storage and run Hive or Pig.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,78 +8,78 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
-ms.openlocfilehash: 8a644beede4089133f88b824fd8d34dddec3b15e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 69acfd4f2edab9be1b1dcfbb52eafbd00aec712f
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751111"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934560"
 ---
-# <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Instalace a použití odstínu v clusterech HDInsight Hadoop
+# <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Install and use Hue on HDInsight Hadoop clusters
 
-Naučte se instalovat odstín v clusterech HDInsight a pomocí tunelového propojení směrovat požadavky do odstínu.
+Learn how to install Hue on HDInsight clusters and use tunneling to route the requests to Hue.
 
-## <a name="what-is-hue"></a>Co je odstín?
+## <a name="what-is-hue"></a>What is Hue?
 
-Odstín je sada webových aplikací používaných pro interakci s clusterem Apache Hadoop. Pomocí odstínu můžete procházet úložiště přidružené k clusteru Hadoop (WASB, v případě clusterů HDInsight), spouštět úlohy podregistru a skripty pro vepřové prostředí a tak dále. Následující komponenty jsou k dispozici s odstínem instalací v clusteru HDInsight Hadoop.
+Hue is a set of Web applications used to interact with an Apache Hadoop cluster. You can use Hue to browse the storage associated with a Hadoop cluster (WASB, in the case of HDInsight clusters), run Hive jobs and Pig scripts, and so on. The following components are available with Hue installations on an HDInsight Hadoop cluster.
 
-* Editor podregistru beeswax
+* Beeswax Hive Editor
 * Apache Pig
-* Metastore Manager
+* Metastore manager
 * Apache Oozie
-* Prohlížeč (který mluví s WASB výchozím kontejnerem)
-* Prohlížeč úloh
+* FileBrowser (which talks to WASB default container)
+* Job Browser
 
 > [!WARNING]  
-> Komponenty dodávané s clusterem HDInsight jsou plně podporované a podpora Microsoftu vám pomůžou izolovat a řešit problémy související s těmito součástmi.
+> Components provided with the HDInsight cluster are fully supported and Microsoft Support will help to isolate and resolve issues related to these components.
 >
-> Vlastní komponenty získají komerčně přiměřenou podporu, která vám může pomoct s dalším řešením tohoto problému. To může vést k vyřešení problému nebo požádá vás o zapojení dostupných kanálů pro technologie Open Source, ve kterých se najde hlubokou odbornost pro danou technologii. Například existuje mnoho webů komunity, které lze použít, například [Fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Projekty Apache také obsahují projektové weby na [https://apache.org](https://apache.org), například: [Hadoop](https://hadoop.apache.org/).
+> Custom components receive commercially reasonable support to help you to further troubleshoot the issue. This might result in resolving the issue OR asking you to engage available channels for the open source technologies where deep expertise for that technology is found. For example, there are many community sites that can be used, like: [MSDN forum for HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Also Apache projects have project sites on [https://apache.org](https://apache.org), for example: [Hadoop](https://hadoop.apache.org/).
 
-## <a name="install-hue-using-script-actions"></a>Instalace odstínu pomocí akcí skriptů
+## <a name="install-hue-using-script-actions"></a>Install Hue using Script Actions
 
-Pro akci skriptu použijte informace v následující tabulce. Konkrétní pokyny k používání akcí skriptů najdete v tématu [Přizpůsobení clusterů HDInsight pomocí akcí skriptů](hdinsight-hadoop-customize-cluster-linux.md) .
+Use the information in the table below for your Script Action. See [Customize HDInsight clusters with Script Actions](hdinsight-hadoop-customize-cluster-linux.md) for specific instructions on using Script Actions.
 
 > [!NOTE]  
-> K instalaci odstínu u clusterů HDInsight je doporučená velikost hlavnímu uzlu aspoň A4 (8 jader, 14 GB paměti).
+> To install Hue on HDInsight clusters, the recommended headnode size is at least A4 (8 cores, 14 GB memory).
 
 |Vlastnost |Hodnota |
 |---|---|
-|Typ skriptu:|– Vlastní|
+|Script type:|- Custom|
 |Name (Název)|Instalace rozhraní Hue|
-|Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`|
-|Typ (typy) uzlů:|Hlavní uzel|
+|Bash script URI|`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`|
+|Node type(s):|Hlavní uzel|
 
-## <a name="use-hue-with-hdinsight-clusters"></a>Použití odstínu u clusterů HDInsight
+## <a name="use-hue-with-hdinsight-clusters"></a>Use Hue with HDInsight clusters
 
-Tunelové propojení SSH je jediným způsobem, jak ke stínům v clusteru přistupovat po jeho spuštění. Tunelové propojení prostřednictvím SSH umožňuje provoz přejít přímo na hlavnímu uzlu clusteru, kde je spuštěný odstín. Po dokončení zřizování clusteru použijte následující postup k použití odstínu v clusteru HDInsight.
+SSH Tunneling is the only way to access Hue on the cluster once it is running. Tunneling via SSH allows the traffic to go directly to the headnode of the cluster where Hue is running. After the cluster has finished provisioning, use the following steps to use Hue on an HDInsight cluster.
 
 > [!NOTE]  
-> Doporučujeme použít webový prohlížeč Firefox a postupovat podle následujících pokynů.
+> We recommend using Firefox web browser to follow the instructions below.
 
-1. Použijte informace v části [použití tunelového propojení SSH pro přístup k webovému uživatelskému rozhraní Apache Ambari, ResourceManager, JobHistory, NameNode, Oozie a jinému webovému uživatelskému rozhraní](hdinsight-linux-ambari-ssh-tunnel.md) k vytvoření tunelu SSH z klientského systému do clusteru HDInsight a pak nakonfigurujte webový prohlížeč tak, aby používal tunel SSH jako proxy.
+1. Use the information in [Use SSH Tunneling to access Apache Ambari web UI, ResourceManager, JobHistory, NameNode, Oozie, and other web UI's](hdinsight-linux-ambari-ssh-tunnel.md) to create an SSH tunnel from your client system to the HDInsight cluster, and then configure your Web browser to use the SSH tunnel as a proxy.
 
-1. Připojte se ke clusteru pomocí [příkazu SSH](./hdinsight-hadoop-linux-use-ssh-unix.md) . Níže uvedený příkaz upravte tak, že ho nahradíte názvem clusteru a pak zadáte tento příkaz:
+1. Use [ssh command](./hdinsight-hadoop-linux-use-ssh-unix.md) to connect to your cluster. Edit the command below by replacing CLUSTERNAME with the name of your cluster, and then enter the command:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Po připojení k získání plně kvalifikovaného názvu domény primárního hlavnímu uzlu použijte následující příkaz:
+1. Once connected, use the following command to obtain the fully qualified domain name of the primary headnode:
 
     ```bash
     hostname -f
     ```
 
-    Tato akce vrátí název podobný následujícímu:
+    This will return a name similar to the following:
 
         myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
-    Toto je název hostitele primární hlavnímu uzlu, kde se nachází web odstín.
+    This is the hostname of the primary headnode where the Hue website is located.
 
-1. Pomocí prohlížeče otevřete portál pro odstínování na `http://HOSTNAME:8888`. Nahraďte název hostitele názvem, který jste získali v předchozím kroku.
+1. Use the browser to open the Hue portal at `http://HOSTNAME:8888`. Replace HOSTNAME with the name you obtained in the previous step.
 
    > [!NOTE]  
-   > Při prvním přihlášení se zobrazí výzva k vytvoření účtu pro přihlášení k portálu odstínování. Přihlašovací údaje, které tady zadáte, budou omezené na portál a nesouvisejí s přihlašovacími údaji uživatele správce nebo SSH, které jste zadali při zřizování clusteru.
+   > When you log in for the first time, you will be prompted to create an account to log in to the Hue portal. Přihlašovací údaje, které tady zadáte, budou omezené na portál a nesouvisejí s přihlašovacími údaji uživatele správce nebo SSH, které jste zadali při zřizování clusteru.
 
     ![Přihlašovací okno portálu pro barevný interval HDInsight](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png "Zadat přihlašovací údaje pro portál odstínů")
 
@@ -127,6 +127,4 @@ Tunelové propojení SSH je jediným způsobem, jak ke stínům v clusteru přis
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nainstalujte Apache Giraph v clusterech HDInsight](hdinsight-hadoop-giraph-install-linux.md). K instalaci Giraph do clusterů HDInsight Hadoop použijte vlastní nastavení clusteru. Giraph vám umožňuje provádět zpracování grafů pomocí Hadoop a dá se použít s Azure HDInsight.
-
-* [Nainstalujte R v clusterech HDInsight](hdinsight-hadoop-r-scripts-linux.md). Pomocí vlastního nastavení clusteru můžete v clusterech HDInsight Hadoop nainstalovat R. R je open source jazyk a prostředí pro statistické výpočty. Poskytuje stovky integrovaných statistických funkcí a jejich vlastního programovacího jazyka, který kombinuje aspekty funkčního a objektově orientovaného programování. Poskytuje také rozsáhlé grafické možnosti.
+[Nainstalujte R v clusterech HDInsight](hdinsight-hadoop-r-scripts-linux.md). Pomocí vlastního nastavení clusteru můžete v clusterech HDInsight Hadoop nainstalovat R. R je open source jazyk a prostředí pro statistické výpočty. Poskytuje stovky integrovaných statistických funkcí a jejich vlastního programovacího jazyka, který kombinuje aspekty funkčního a objektově orientovaného programování. Poskytuje také rozsáhlé grafické možnosti.

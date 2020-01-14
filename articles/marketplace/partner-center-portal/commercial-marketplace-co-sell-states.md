@@ -1,19 +1,19 @@
 ---
 title: Kódy stavů pro spoluprodejní pracovní | Azure Marketplace
 description: Tyto kódy států nebo provincie použijte při poskytování kontaktních údajů na stránce pro spoluprodej vaší nabídky.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 38dcfe04473e8d2fbd81614908adef9636c44b19
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c64fc161108560e893ef7b207782d79b6c3c01d4
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812864"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934366"
 ---
 # <a name="co-sell-state-codes"></a>Kódy stavu společného prodeje
 
@@ -21,10 +21,10 @@ Pokud je to možné, použijte tyto kódy k poskytnutí informací o stavu nebo 
 
 ## <a name="stateprovince-table"></a>Tabulka krajního/provincie
 
-|   Název země/provincie               |   Kód    |
+|   Název země/provincie               |   kód    |
 |-------------------------------------|-----------|
 | Alabama                             | US-AL     |
-| Alaska                              | US – AK     |
+| Aljaška                              | US – AK     |
 | Arizona                             | US – AZ     |
 | Arkansas                            | SPOJENÉ STÁTY – AR     |
 | Kalifornie                          | US – CA     |
@@ -33,17 +33,17 @@ Pokud je to možné, použijte tyto kódy k poskytnutí informací o stavu nebo 
 | Delaware                            | US-DE     |
 | Florida                             | US-FL     |
 | Gruzie                             | US-GA     |
-| Ostrovy                              | US – HI     |
-| Plzeň                               | US-ID     |
+| Havaj                              | US – HI     |
+| Idaho                               | US-ID     |
 | Illinois                            | US-IL     |
 | Indiana                             | US     |
 | Iowa                                | US – IA     |
 | Kansas                              | US – KS     |
 | Kentucky                            | US – KY     |
-| Louisianě                           | US-LA     |
+| Louisiana                           | US-LA     |
 | Maine                               | US     |
 | Maryland                            | US-MD     |
-| Organizace                       | US-MA     |
+| Massachusetts                       | US-MA     |
 | Michigan                            | US – MI     |
 | Minnesota                           | US-MN     |
 | Mississippi                         | US-MS     |
@@ -51,18 +51,18 @@ Pokud je to možné, použijte tyto kódy k poskytnutí informací o stavu nebo 
 | Montana                             | US-MT     |
 | Nebraska                            | US-NE     |
 | Nevada                              | US-NV     |
-| Nový Hampshire                       | US – NH     |
-| Nový Jersey                          | US – NEWARKU     |
+| New Hampshire                       | US – NH     |
+| New Jersey                          | US – NEWARKU     |
 | Nové Mexiko                          | US-NM     |
 | New York                            | US-NY     |
 | Severní Karolína                      | US-NC     |
 | Severní Dakota                        | US – ND     |
 | Ohio                                | US – NE     |
 | Oklahoma                            | US – OK     |
-| Brno                              | US-NEBO     |
+| Oregon                              | US-NEBO     |
 | Pensylvánie                        | US-PA     |
-| Rhode ostrov                        | US-RI     |
-| Jižní Karolíně                      | US – SC     |
+| Rhode Island                        | US-RI     |
+| Jižní Karolína                      | US – SC     |
 | Jižní Dakota                        | US-SD     |
 | Tennessee                           | US-TN     |
 | Texas                               | US-TX     |
@@ -70,10 +70,10 @@ Pokud je to možné, použijte tyto kódy k poskytnutí informací o stavu nebo 
 | Vermont                             | US-VT     |
 | Virginie                            | US-VA     |
 | Washington                          | US – WA     |
-| Západní) – Virginia                       | US – WV     |
+| West Virginia                       | US – WV     |
 | Wisconsin                           | US-WI     |
 | Wyoming                             | US – WY     |
-| Oblast Kolumbie                | US-DC     |
+| District of Columbia                | US-DC     |
 | Americká Samoa                      | US – JAKO     |
 | Guam                                | US-GU     |
 | Severní Mariany            | US-MP     |

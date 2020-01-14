@@ -2,19 +2,23 @@
 title: Konfigurace Azure Monitor pro shromažďování dat agenta kontejnerů | Microsoft Docs
 description: Tento článek popisuje, jak můžete nakonfigurovat agenta Azure Monitor for Containers pro řízení kolekce protokolů stdout/stderr a proměnných prostředí.
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 0bde696f39af22f864500e0c79b5e03ca66cc7f0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.openlocfilehash: 28b93190298ae61732ff7d2e297899af4ba0e5f2
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405683"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933020"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Konfigurace shromažďování dat agenta pro Azure Monitor pro kontejnery
 
-Azure Monitor pro kontejnery shromažďují z kontejneru kontejnerů stdout, stderr a proměnné prostředí z úloh kontejneru nasazených do spravovaných clusterů Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS). Nastavení shromažďování dat agenta můžete nakonfigurovat vytvořením vlastního ConfigMaps Kubernetes pro řízení tohoto prostředí. 
+Azure Monitor pro kontejnery shromáždí z kontejnerového agenta prostředí stdout, stderr a environmentální proměnné z úloh kontejneru nasazených do spravovaných clusterů Kubernetes. Nastavení shromažďování dat agenta můžete nakonfigurovat vytvořením vlastního ConfigMaps Kubernetes pro řízení tohoto prostředí. 
 
 Tento článek ukazuje, jak vytvořit ConfigMap a nakonfigurovat shromažďování dat podle vašich požadavků.
+
+>[!NOTE]
+>V případě Azure Red Hat OpenShift se vytvoří soubor šablony ConfigMap v oboru názvů *OpenShift-Azure-Logging* . 
+>
 
 ## <a name="configmap-file-settings-overview"></a>Přehled nastavení souboru ConfigMap
 
@@ -44,9 +48,12 @@ ConfigMaps je globální seznam a v agentovi může být použit pouze jeden Con
 
 Provedením následujících kroků nakonfigurujete a nasadíte konfigurační soubor ConfigMap do clusteru.
 
-1. [Stáhněte](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml) si soubor Template ConfigMap YAML a uložte ho jako Container-AZM-MS-agentconfig. yaml.  
+1. [Stáhněte](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml) si soubor Template ConfigMap YAML a uložte ho jako Container-AZM-MS-agentconfig. yaml. 
 
-2. Upravte soubor ConfigMap YAML s vlastními nastaveními pro shromažďování proměnných prostředí stdout, stderr a/nebo.
+   >[!NOTE]
+   >Tento krok není nutný při práci s Azure Red Hat OpenShift, protože šablona ConfigMap už v clusteru existuje.
+
+2. Upravte soubor ConfigMap YAML s vlastními nastaveními pro shromažďování proměnných prostředí stdout, stderr a/nebo. Pokud upravujete soubor ConfigMap YAML pro Azure Red Hat OpenShift, nejprve spusťte příkaz `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` pro otevření souboru v textovém editoru.
 
     - Chcete-li vyloučit konkrétní obory názvů pro shromažďování protokolů stdout, nakonfigurujte klíč nebo hodnotu pomocí následujícího příkladu: `[log_collection_settings.stdout] enabled = true exclude_namespaces = ["my-namespace-1", "my-namespace-2"]`.
     
@@ -54,15 +61,17 @@ Provedením následujících kroků nakonfigurujete a nasadíte konfigurační s
     
     - Pokud chcete zakázat shromažďování protokolů protokolu stderr v clusteru, nakonfigurujte klíč/hodnotu pomocí následujícího příkladu: `[log_collection_settings.stderr] enabled = false`.
 
-3. Vytvořte ConfigMap spuštěním následujícího příkazu kubectl: `kubectl apply -f <configmap_yaml_file.yaml>`.
+3. Pro jiné clustery než Azure Red Hat OpenShift vytvořte ConfigMap spuštěním následujícího příkazu kubectl: `kubectl apply -f <configmap_yaml_file.yaml>` v jiných clusterech než Azure Red Hat OpenShift. 
     
     Příklad: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
-    
-    Dokončení změny konfigurace může trvat několik minut, než se projeví, a všechny omsagent v clusteru se restartují. Restartování je postupné restartování pro všechny omsagent lusky, ne pro všechna restartování ve stejnou dobu. Po dokončení restartů se zobrazí zpráva podobná následujícímu příkladu, která obsahuje výsledek: `configmap "container-azm-ms-agentconfig" created`.
 
-## <a name="verify-configuration"></a>Ověření konfigurace 
+    V případě Azure Red Hat OpenShift uložte změny v editoru.
 
-Chcete-li ověřit, zda byla konfigurace úspěšně použita, pomocí následujícího příkazu zkontrolujte protokoly z agenta pod: `kubectl logs omsagent-fdf58 -n=kube-system`. Pokud dojde k chybám konfigurace z omsagent lusků, ve výstupu se zobrazí chyby podobné následujícímu:
+Dokončení změny konfigurace může trvat několik minut, než se projeví, a všechny omsagent v clusteru se restartují. Restartování je postupné restartování pro všechny omsagent lusky, ne pro všechna restartování ve stejnou dobu. Po dokončení restartů se zobrazí zpráva podobná následujícímu příkladu, která obsahuje výsledek: `configmap "container-azm-ms-agentconfig" created`.
+
+## <a name="verify-configuration"></a>Ověření konfigurace
+
+Pokud chcete ověřit, jestli se konfigurace úspěšně použila na jiný cluster než Azure Red Hat OpenShift, pomocí následujícího příkazu zkontrolujte protokoly z agenta pod: `kubectl logs omsagent-fdf58 -n=kube-system`. Pokud dojde k chybám konfigurace z omsagent lusků, ve výstupu se zobrazí chyby podobné následujícímu:
 
 ``` 
 ***************Start Config Processing******************** 
@@ -73,6 +82,10 @@ Chyby související s použitím změn konfigurace jsou k dispozici také ke kon
 
 - Od agenta pod protokoly pomocí stejného `kubectl logs` příkazu. 
 
+    >[!NOTE]
+    >Tento příkaz se nedá použít pro cluster Azure Red Hat OpenShift.
+    > 
+
 - Z živých protokolů. Live logs zobrazuje chyby podobné následujícímu:
 
     ```
@@ -81,11 +94,21 @@ Chyby související s použitím změn konfigurace jsou k dispozici také ke kon
 
 - Z tabulky **KubeMonAgentEvents** v pracovním prostoru Log Analytics. Data se odesílají každou hodinu s *chybovou* závažností pro chyby konfigurace. Pokud nedochází k žádným chybám, bude mít položka v tabulce údaje *o*závažnosti, které hlásí žádné chyby. Vlastnost **tagss** obsahuje další informace o ID pod a kontejneru, na kterém došlo k chybě, a také o prvním výskytu, posledním výskytu a počtu za poslední hodinu.
 
-Chyby zabraňují omsagent analýze souboru, což způsobí, že se restartuje a použije se výchozí konfigurace. Po opravě chyb v ConfigMap uložte soubor YAML a použijte aktualizovaný ConfigMaps spuštěním příkazu: `kubectl apply -f <configmap_yaml_file.yaml`.
+- Pomocí Azure Red Hat OpenShift Zkontrolujte protokoly omsagent, a to tak, že vyhledáte tabulku **ContainerLog** a ověříte, jestli je povolená kolekce protokolů OpenShift-Azure-Logging.
+
+Po opravě chyb v ConfigMap na jiných clusterech než Azure Red Hat OpenShift uložte soubor YAML a použijte aktualizovaný ConfigMaps spuštěním příkazu: `kubectl apply -f <configmap_yaml_file.yaml`. V případě Azure Red Hat OpenShift upravte a uložte aktualizované ConfigMaps spuštěním příkazu:
+
+``` bash
+oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
+```
 
 ## <a name="applying-updated-configmap"></a>Použití aktualizovaných ConfigMap
 
-Pokud jste už nasadili ConfigMap do clusteru a chcete ji aktualizovat pomocí novější konfigurace, můžete upravit soubor ConfigMap, který jste dřív použili, a pak použít stejný příkaz jako předtím, `kubectl apply -f <configmap_yaml_file.yaml`.
+Pokud jste už ConfigMap nasadili na jiné clustery než Azure Red Hat OpenShift a chcete ji aktualizovat pomocí novější konfigurace, můžete upravit soubor ConfigMap, který jste dřív použili, a pak použít stejný příkaz jako předtím, `kubectl apply -f <configmap_yaml_file.yaml`. V případě Azure Red Hat OpenShift upravte a uložte aktualizované ConfigMaps spuštěním příkazu:
+
+``` bash
+oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
+```
 
 Dokončení změny konfigurace může trvat několik minut, než se projeví, a všechny omsagent v clusteru se restartují. Restartování je postupné restartování pro všechny omsagent lusky, ne pro všechna restartování ve stejnou dobu. Po dokončení restartů se zobrazí zpráva podobná následujícímu příkladu, která obsahuje výsledek: `configmap "container-azm-ms-agentconfig" updated`.
 

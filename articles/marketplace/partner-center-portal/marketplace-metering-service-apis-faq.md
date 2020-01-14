@@ -1,55 +1,55 @@
 ---
-title: Rozhraní API služby měření softwaru Marketplace – Nejčastější dotazy | Azure Marketplace
-description: Vygeneruje použití nabídky SaaS v Azure Marketplace.
-author: qianw211
+title: Marketplace metering service APIs - FAQ | Azure Marketplace
+description: Emit usage of a SaaS offer in the Azure Marketplace.
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: c4f51adbcaa5e5b750169f53a1333544365fd4f3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 044d92e79d8a885f553a7d081ce40c8b6de880a1
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825499"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931220"
 ---
 # <a name="marketplace-metering-service-apis---faq"></a>Rozhraní API služeb měření na marketplace – nejčastější dotazy
 
-Jakmile se uživatel Azure přihlásí k odběru služby SaaS, která zahrnuje účtované podle objemu dat, budete sledovat spotřebu pro každou fakturační dimenzi, kterou zákazník používá. Pokud spotřeba překročí zahrnuté množství nastavené pro termín vybraný zákazníkem, služba vygeneruje události využití společnosti Microsoft.
+Once an Azure user subscribes to a SaaS service that includes metered billing, you will track consumption for each billing dimension being used by the customer. If the consumption exceeds the included quantities set for the term selected by the customer, your service will emit usage events to Microsoft.
 
-## <a name="emit-usage-events"></a>Generování událostí využití
+## <a name="emit-usage-events"></a>Emit usage events
 
 >[!Note]
->Tato část platí jenom pro nabídky SaaS, kde aspoň jeden z plánů má dimenze služby měření, které jsou definované v době publikování nabídky.
+>This section is applicable only for SaaS offers, where at least one of the plans has metering service dimensions defined at the time of publishing the offer.
 
-![Generování událostí využití](media/isv-emits-usage-event.png)
+![Emit usage events](media/isv-emits-usage-event.png)
 
-Informace o kontraktu rozhraní API pro vygenerování událostí využití najdete v tématu [rozhraní API pro události SaaS Batch](./marketplace-metering-service-apis.md#batch-usage-event) .
+See the [SaaS batch usage event API](./marketplace-metering-service-apis.md#batch-usage-event) for information on the API contract for emitting usage events.
 
-### <a name="how-often-is-it-expected-to-emit-usage"></a>Jak často se očekává, že vygenerujete využití?
+### <a name="how-often-is-it-expected-to-emit-usage"></a>How often is it expected to emit usage?
 
-V ideálním případě se očekává, že vygenerujete využití každou hodinu za poslední hodinu, a to jenom v případě, že je využití během předchozí hodiny.
+Ideally, you are expected to emit usage every hour for the past hour, only if there is usage in the previous hour.
 
-### <a name="what-is-the-maximum-delay-between-the-time-an-event-occurs-and-the-time-a-usage-event-is-emitted-to-microsoft"></a>Jaká je maximální prodleva mezi okamžikem výskytu události a časem, kdy je událost využití vyvolána společnosti Microsoft?
+### <a name="what-is-the-maximum-delay-between-the-time-an-event-occurs-and-the-time-a-usage-event-is-emitted-to-microsoft"></a>What is the maximum delay between the time an event occurs, and the time a usage event is emitted to Microsoft?
 
-V ideálním případě se událost využití generuje každou hodinu pro události, ke kterým došlo během poslední hodiny. Očekává se ale zpoždění. Maximální povolené zpoždění je 24 hodin, po kterém nebudou události využití přijaty.
+Ideally, usage event is emitted every hour for events that occurred in the past hour. However, delays are expected. The maximum delay allowed is 24 hours, after which usage events will not be accepted.
 
-Pokud například událost využití nastane 1. den, budete k vygenerování události využití přidružené k této události mít až 1 ODP. To znamená, že v případě, že využití systému vygeneruje čas mimo provoz, může dojít k obnovení a odeslání události využití v intervalu hodin, ve kterém bylo použití provedeno, bez ztráty přesnosti.
+For example, if a usage event occurs at 1 PM on a day, you have until 1 PM on the next day to emit a usage event associated with this event. This means in the case of the system emitting usage has a down time, it can recover and then send the usage event for the hour interval in which the usage happened, without loss of fidelity.
 
-### <a name="what-happens-when-you-send-more-than-one-usage-event-on-the-same-hour"></a>Co se stane, když do jedné hodiny odešlete více než jednu událost použití?
+### <a name="what-happens-when-you-send-more-than-one-usage-event-on-the-same-hour"></a>What happens when you send more than one usage event on the same hour?
 
-Pro hodinový interval je přijímána pouze jedna událost použití. Interval hodin začíná na minuty 0 a končí v minutách 59.  Pokud je pro stejný interval hodin vygenerována více než jedna událost použití, budou všechny následné události použití vyřazeny jako duplicitní.
+Only one usage event is accepted for the hour interval. The hour interval starts at minute 0 and ends at minute 59.  If more than one usage event is emitted for the same hour interval, any subsequent usage events are dropped as duplicates.
 
-### <a name="what-happens-when-you-emit-usage-for-a-saas-subscription-that-has-been-unsubscribed-already"></a>Co se stane, když vygenerujete využití u předplatného SaaS, které se už odhlásilo?
+### <a name="what-happens-when-you-emit-usage-for-a-saas-subscription-that-has-been-unsubscribed-already"></a>What happens when you emit usage for a SaaS subscription that has been unsubscribed already?
 
-Jakákoli událost využití vygenerovaná na platformu Marketplace nebude po odstranění předplatného SaaS přijata.
+Any usage event emitted to marketplace platform will not be accepted after a SaaS subscription has been deleted.
 
-### <a name="can-you-get-a-list-of-all-saas-subscriptions-including-active-and-unsubscribed-subscriptions"></a>Můžete získat seznam všech předplatných SaaS, včetně aktivních a odhlásilých předplatných?
+### <a name="can-you-get-a-list-of-all-saas-subscriptions-including-active-and-unsubscribed-subscriptions"></a>Can you get a list of all SaaS subscriptions, including active and unsubscribed subscriptions?
 
-Ano, při volání rozhraní `GET /saas/subscriptions` API zahrnuje seznam všech předplatných SaaS. Pole stav v reakci pro každé předplatné SaaS zachycuje, jestli je předplatné aktivní, nebo se odhlásí. Volání funkce list Subscriptions vrátí maximálně 100 odběrů v čase.
+Yes, when you call the `GET /saas/subscriptions` API it includes a list of all SaaS subscriptions. The status field in the response for each SaaS subscription captures whether the subscription is active or unsubscribed. The call to list Subscriptions returns a maximum of 100 subscriptions at the time.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v tématu [rozhraní API služby měření softwaru Marketplace](./marketplace-metering-service-apis.md) .
+- See [Marketplace metering service APIs](./marketplace-metering-service-apis.md) for more information.

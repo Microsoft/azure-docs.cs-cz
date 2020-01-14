@@ -1,37 +1,37 @@
 ---
-title: Spoluprodejní účast partnerů | Azure Marketplace
-description: Spolupracující program Microsoftu pro partnery vám může postihnout základní zákaznickou základnu a vygenerovat nové prodeje.
-author: qianw211
+title: Co-sell partner engagement | Azure Marketplace
+description: Microsoft's co-sell program for partners can help you reach a vast customer base and generate new sales.
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: fcc275b7534ebbfd65b28cbfce170dc6e1b926d9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 389e6f512f05c7bd1a6e9963e60afbcf27067fb3
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823040"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934675"
 ---
 # <a name="co-sell-partner-engagement"></a>Zapojení partnerů do společného prodeje
 
-Společně přidaný program Microsoftu umožňuje partnerům pracovat přímo se společností Microsoft při společném prodeji příležitostí. Můžete dosáhnout rozsáhlé komunity zákazníků a vytvořit nové prodejní příležitosti, které vám pomůžou zrychlit růst firmy.
+Microsoft's co-sell program enables partners to work directly with Microsoft on joint selling opportunities. You can reach a vast community of customers and create new sales opportunities that can help accelerate business growth.
 
-## <a name="partner-selling-motions"></a>Prodejní pohyb partnerů
+## <a name="partner-selling-motions"></a>Partner selling motions
 
-Existují tři nabízená prodejní pohyb:
+There are three partner selling motions:
 
-* *Prodej prostřednictvím partnera*: technologii Microsoftu můžete dál prodávat prostřednictvím svých prodejců.
-* *Služby, které společně prodávají*: prodejci a partneři spolupracují na prodeji vašeho projektu nebo spravovaných služeb pomocí technologie Microsoft Embedded.
-* *Společný prodej*: prodejci/partneři spolupracují na tom, aby prodávali vaše opakované a zabalené řešení IP *.
+* *Sell through partner*: You can resell Microsoft technology through your own sellers.
+* *Services co-sell*: Sellers and partners collaborate to sell your project or managed services with Microsoft technology embedded.
+* *IP co-sell*: Sellers/partners collaborate to sell your repeatable, packaged IP solution*.
 
-\* některá z těchto řešení pro prodej IP adres můžou obdržet další pobídky při jejich úspěšném prodeji a nasazení s prodejními týmy pro pole Microsoftu.
+\* Some of these IP co-sell solutions may receive additional incentives when successfully sold and deployed with Microsoft's field sales teams.
 
-![Společný prodej proběhne](./media/marketplace-publishers-guide/marketplace-co-sell.png)
+![Co-sell happens](./media/marketplace-publishers-guide/marketplace-co-sell.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [prodeji s Microsoftem](https://partner.microsoft.com/membership/sell-with-microsoft).
-- Přečtěte si informace o [možnosti společného prodeje v partnerském centru](./partner-center-portal/commercial-marketplace-co-sell.md) .
+- Learn more about [selling with Microsoft](https://partner.microsoft.com/membership/sell-with-microsoft).
+- Learn about the [Co-sell option in Partner Center](./partner-center-portal/commercial-marketplace-co-sell.md) .

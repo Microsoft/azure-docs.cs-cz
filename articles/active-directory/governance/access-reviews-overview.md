@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 08/05/2019
+ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d9922f1c4cbb0afca74c911d9b2bc9f0eab0714
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7e77f507f2a3bd89069f25bf984cf4059009faa6
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422778"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932646"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Co jsou kontroly přístupu Azure AD?
 
@@ -97,27 +97,34 @@ Pokud jste připraveni nasadit kontroly přístupu ve vaší organizaci, postupu
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-### <a name="which-users-must-have-licenses"></a>Kteří uživatelé musí mít licence?
+### <a name="how-many-licenses-must-you-have"></a>Kolik licencí potřebujete?
 
-Každý uživatel, který komunikuje s recenzemi kontroly přístupu, musí mít placenou Azure AD Premiumovou licenci P2. Patří mezi ně například:
+Zajistěte, aby měl váš adresář aspoň tolik licencí Azure AD Premium P2, protože máte zaměstnance, kteří budou provádět následující úlohy:
 
-- Správci, kteří vytvářejí kontrolu přístupu
+- Členové a uživatelé typu Host, kteří jsou přiřazeni jako kontroloři
+- Členové a uživatelé typu Host, kteří provádějí samy si kontrolu
 - Vlastníci skupiny, kteří provádějí kontrolu přístupu
-- Uživatelé přiřazení jako kontroloři
-- Uživatelé, kteří provádějí kontrolu sami
+- Vlastníci aplikace, kteří provádějí kontrolu přístupu
 
-Můžete také požádat uživatele typu Host, aby zkontrolovali vlastní přístup. Pro každou placená licenci Azure AD Premium P2, kterou přiřadíte k jednomu z uživatelů vaší organizace, můžete použít Azure AD Business-to-Business (B2B) k pozvání až pěti uživatelů typu Host v rámci osvobození od externích uživatelů. Tito uživatelé typu Host můžou také používat funkce Azure AD Premium P2. Další informace najdete v tématu [pokyny k licencování spolupráce Azure AD B2B](../b2b/licensing-guidance.md).
+Licence Azure AD Premium P2 nejsou **požadovány** pro následující úlohy:
 
-Tady je několik ukázkových scénářů, které vám pomůžou určit počet licencí, které musíte mít.
+- Pro uživatele s rolemi globálního správce nebo Správce uživatelů nejsou vyžadovány žádné licence, které nastavují kontroly přístupu, konfigurují nastavení nebo používají rozhodnutí z recenzí.
 
-| Scénář | Výpočet | Požadovaný počet licencí |
+Pro každou placená licenci Azure AD Premium P2, kterou přiřadíte k jednomu z uživatelů vaší organizace, můžete použít Azure AD Business-to-Business (B2B) k pozvání až pěti uživatelů typu Host v rámci osvobození od externích uživatelů. Tito uživatelé typu Host můžou také používat funkce Azure AD Premium P2. Další informace najdete v tématu [pokyny k licencování spolupráce Azure AD B2B](../b2b/licensing-guidance.md).
+
+Další informace o licencích najdete v tématu [přiřazení nebo odebrání licencí pomocí portálu Azure Active Directory](../fundamentals/license-users-groups.md).
+
+### <a name="example-license-scenarios"></a>Příklady scénářů licencí
+
+Tady je několik ukázkových scénářů licencí, které vám pomůžou určit počet licencí, které musíte mít.
+
+| Scénář | Výpočet | Počet licencí |
 | --- | --- | --- |
-| Správce vytvoří kontrolu přístupu skupiny A s uživateli 500. Přiřadí 3 vlastníky skupiny jako kontrolory. | 1 licence pro správce + 3 licence pro každého vlastníka skupiny jako kontroloři. | 4 |
-| Správce vytvoří kontrolu přístupu skupiny A s uživateli 500. Provede si ho samy se změnami. | 1 licence pro licence správce + 500 pro každého uživatele jako kontroloři pro sebe. | 501 |
-| Správce vytvoří kontrolu přístupu skupiny B s 5 uživateli a 25 uživateli typu Host. Provede si ho samy se změnami. | 1 licence pro licence správce + 5 pro každého uživatele jako kontroloři pro sebe.<br/>(uživatelé typu Host jsou zahrnuti v požadovaném poměru 1:5.) | 6 |
-| Správce vytvoří kontrolu přístupu skupiny C s 5 uživateli a 108 uživateli typu Host. Provede si ho samy se změnami. | 1 licence pro licence správce + 5 pro každého uživatele jako samoobslužné uživatele + 16 dalších licencí k pokrytí všech 108 uživatelů typu Host v požadované 1:5 poměru.<br/>1 + 5 = 6 licencí, které pokrývají 5\*6 = 30 uživatelů typu Host. Pro zbývající (108-5\*6) = 78 uživatelů typu Host se vyžaduje 78/5 = 16 dalších licencí. Proto jsou vyžadovány celkem 6 + 16 = 22 licencí. | 22 |
-
-Informace o tom, jak přiřadit licence k vašim účelům, najdete v tématu [přiřazení nebo odebrání licencí pomocí portálu Azure Active Directory](../fundamentals/license-users-groups.md).
+| Správce vytvoří kontrolu přístupu skupiny A s 75 uživateli a 1 vlastníkem skupiny a přiřadí vlastníka skupiny jako kontrolora. | 1 licence pro vlastníka skupiny jako kontrolor | 1\. místo |
+| Správce vytvoří kontrolu přístupu skupiny B s 500 uživateli a 3 vlastníky skupiny a přiřadí 3 vlastníky skupiny jako kontrolory. | 3 licence pro každého vlastníka skupiny jako kontroloři | 3 |
+| Správce vytvoří kontrolu přístupu skupiny B s 500 uživateli. Provede si ho samy se změnami. | licence 500 pro každého uživatele jako kontroloři samoobslužné. | 500 |
+| Správce vytvoří kontrolu přístupu skupiny C s 50 členskými uživateli a 25 uživateli typu Host. Provede si ho samy se změnami. | licence 50 pro každého uživatele jako kontroloři pro sebe.<br/>(uživatelé typu Host jsou zahrnuti v požadovaném poměru 1:5.) | 50 |
+| Správce vytvoří kontrolu přístupu skupiny D s 6 členskými uživateli a 108 uživateli typu Host. Provede si ho samy se změnami. | 6 licencí pro každého uživatele jako samoobslužných revidujících + 16 dalších licencí, které pokrývají všechny 108 uživatelů typu Host v požadované 1:5 poměru. 6 licencí, které zahrnují 6\*5 = 30 uživatelů typu Host. Pro zbývající (108-6\*5) = 78 uživatelů typu Host se vyžaduje 78/5 = 16 dalších licencí. Proto jsou vyžadovány celkem 6 + 16 = 22 licencí. | 22 |
 
 ## <a name="next-steps"></a>Další kroky
 

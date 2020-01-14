@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: a947ff11fbbe418af84ff49033cba3857bb8447f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 108294e3f125da9fb009eb0a85585dab026c8d01
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925187"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933318"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Aktivační událost Azure Functions zahřívání
 
@@ -30,11 +30,11 @@ Vyžaduje se balíček NuGet [Microsoft. Azure. WebJobs. Extensions](https://www
 
 ## <a name="trigger"></a>Trigger
 
-Aktivační událost zahřívání umožňuje definovat funkci, která se spustí na instanci při přidání do spuštěné aplikace. Funkci zahřívání můžete použít k otevření připojení, načtení závislostí nebo spuštění libovolné jiné vlastní logiky ještě předtím, než aplikace začne přijímat přenosy. 
+Aktivační událost zahřívání umožňuje definovat funkci, která se spustí na nové instanci při přidání do spuštěné aplikace. Funkci zahřívání můžete použít k otevření připojení, načtení závislostí nebo spuštění libovolné jiné vlastní logiky ještě předtím, než aplikace začne přijímat přenosy. 
 
 Aktivační událost zahřívání slouží k vytváření sdílených závislostí, které budou používány jinými funkcemi ve vaší aplikaci. [Tady najdete příklady sdílených závislostí](./manage-connections.md#client-code-examples).
 
-Všimněte si, že Trigger zahřívání je volán pouze během operací škálování, nikoli během restartování nebo jiných neškálovatelných spuštění. Je nutné zajistit, aby vaše logika mohla načíst všechny nezbytné závislosti bez použití triggeru zahřívání. K tomu je dobrým vzorem opožděné načítání.
+Všimněte si, že Trigger zahřívání je volán pouze během operací škálování na více instancí, nikoli během restartování nebo jiných neškálovatelných spuštění. Je nutné zajistit, aby vaše logika mohla načíst všechny nezbytné závislosti bez použití triggeru zahřívání. K tomu je dobrým vzorem opožděné načítání.
 
 ## <a name="trigger---example"></a>Aktivační události – příklad
 

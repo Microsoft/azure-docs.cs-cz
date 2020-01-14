@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d1efd44614cc2384043b32da20f38c91f006459c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 5f646b4cef782b569910bdf881208c9984194589
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863100"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931109"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Řešení běžných potíží indexerů v Azure Kognitivní hledání
 
@@ -30,7 +30,7 @@ Indexery můžou být spuštěné v množství problémů při indexování dat 
 >
 > IP adresu vaší vyhledávací služby můžete zjistit tak, že otestujete jeho plně kvalifikovaný název domény (například `<your-search-service-name>.search.windows.net`).
 >
-> Rozsah IP adres `AzureCognitiveSearch` [značku služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) pro konkrétní oblast, ve které je služba Azure kognitivní hledání přítomná, buď pomocí [souborů JSON ke stažení](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) nebo přes [rozhraní API pro zjišťování značek služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview). Rozsah IP adres se aktualizuje týdně.
+> Rozsah IP adres `AzureCognitiveSearch` [značky služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) můžete zjistit buď pomocí [souborů JSON ke stažení](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) , nebo přes [rozhraní API pro zjišťování značek služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview). Rozsah IP adres se aktualizuje týdně.
 
 ### <a name="configure-firewall-rules"></a>Konfigurace pravidel brány firewall
 

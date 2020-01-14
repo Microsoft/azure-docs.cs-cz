@@ -1,42 +1,42 @@
 ---
-title: Migrace účtu z portál partnerů cloudu do partnerského centra – komerční tržiště pro Azure
-description: Postup migrace účtu z CPP do partnerského centra – Komerční tržiště pro Azure
-author: ChJenk
+title: Account migration from Cloud Partner Portal to Partner Center - Commercial Marketplace for Azure
+description: How to migrate your account from CPP to Partner Center. - Commercial Marketplace for Azure
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: f8644a2aa989b7013cbbd64e8a8194bc08f40251
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 076250444989d4edb3ec86039ab25887ff1e206b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813104"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931317"
 ---
-# <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Migrace účtu z portál partnerů cloudu do partnerského centra
+# <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Account migration from Cloud Partner Portal to Partner Center
 
-Pokud máte existující účet portál partnerů cloudu (CPP), musí být vaše nastavení účtu migrována do partnerského centra.
+If you have an existing Cloud Partner Portal (CPP) account, your account settings need to be migrated to Partner Center.
 
-## <a name="account-migration-process"></a>Proces migrace účtu
+## <a name="account-migration-process"></a>Account migration process
 
-Pokud jste uživatel s rolí vlastníka v CPP pro daný účet, zobrazí se na stránce vašeho profilu vydavatele žlutý banner. Můžete patřit do jednoho z následujících dvou případů:
+If you're a user with the Owner role in CPP for a given account, a yellow banner is shown on your Publisher Profile page. You may belong to one of the following two cases:
 
-- Váš účet už je migrovaný a Vy jste připraveni spravovat nastavení svého účtu v partnerském centru.
-- Váš účet nebyl migrován do partnerského centra a je třeba provést další akci.
+- Your account has already been migrated, and you're ready to manage your Account Settings in Partner Center.
+- Your account has not been migrated to Partner Center and you need to take further action.
 
-### <a name="your-account-has-been-migrated-to-partner-center"></a>Váš účet se migruje do partnerského centra.
+### <a name="your-account-has-been-migrated-to-partner-center"></a>Your account has been migrated to Partner Center
 
-Pro všechny účty, které dokončily migraci z CPP do partnerského centra, se Správa účtů stane v partnerském centru. Změny, jako je přidání nebo odstranění uživatele, budou synchronizovány zpět do CPP.
+For all accounts that have completed migration from the CPP to Partner Center, account management will happen in Partner Center. Changes such as user addition/deletion will be synced back to CPP.
 
-### <a name="you-have-not-yet-migrated-your-account-to-partner-center"></a>Váš účet jste ještě nemigrovali do partnerského centra.
+### <a name="you-have-not-yet-migrated-your-account-to-partner-center"></a>You have not yet migrated your account to Partner Center
 
-Kliknutím na hlavičku spusťte proces migrace účtu. Očekává se, že zadáte následující položky:
+Click on the banner to start your account migration process. You're expected to enter the following items:
 
-1. Pracovní e-mailová adresa: <br> <br> Ve většině případů se přihlaste pomocí e-mailové adresy, kterou používáte k přihlášení do CPP. V některých případech je třeba použít jinou e-mailovou adresu:
+1. Work email address: <br> <br> In most cases, sign in with the email address that you use to sign into CPP. In certain cases, a different email address must be used:
 
-    * Účet Microsoft: Pokud je účet CPP účet Microsoft, zadejte platný pracovní e-mail přidružený ke klientovi, pro kterého je ID Microsoft Partner Network (MPN) zaregistrované. Další informace najdete v tématu [Registrace k Microsoft Partner Network programu](#sign-up-for-microsoft-partner-network-program).
+    * Microsoft account: If the CPP account is a Microsoft account, enter a valid work email associated with the tenant for whom the Microsoft Partner Network (MPN) ID is registered. For more information, see [Sign up for Microsoft Partner Network Program](#sign-up-for-microsoft-partner-network-program).
 
     * Neshoda tenanta: Pokud vaše pracovní e-mailová adresa nepatří klientovi, který je přidružený k ID Microsoft Partner Network k dispozici ve vašem účtu CPP, zobrazí se chyba. Pokud chcete přesunout předchozí chybu, zadejte e-mailovou adresu přidruženou k tenantovi. Zobrazí se chybová zpráva, která poskytne název tenanta.
 
@@ -72,7 +72,7 @@ Konkrétní informace o tom, co je potřeba udělat **15. října 2019** pro nab
     * Certifikace nebo recertifikace vyžaduje, aby vaše aplikace podporovala nejnovější verzi naší Business Applications platformy.
     * Po schválení vaší aplikace obdržíte e-mail, který se má vrátit na nabídku, a vyberte "přejít do živého", aby se nabídka mohla na Microsoft AppSource živě začít.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 Připojte se k týdennímu [volání komunity Dynamics ISV](https://aka.ms/DynamicsISV-CommunityCall) pro podporu a aktualizace.
 

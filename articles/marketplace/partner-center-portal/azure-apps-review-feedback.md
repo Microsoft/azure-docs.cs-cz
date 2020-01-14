@@ -1,19 +1,19 @@
 ---
 title: Zpracování zpětné vazby revize pro nabídky aplikací Azure na komerčním webu Marketplace
 description: Jak zpracovávat zpětnou vazbu k nabídce aplikací Azure pro výpis nebo prodej v Azure Marketplace, AppSource nebo prostřednictvím programu Cloud Solution Provider (CSP) pomocí portálu pro komerční tržiště v partnerském centru Microsoftu.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 7406a6e35929e3df5d342affbcb4b740efa0cab8
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5dd74a7be95ecf92289f2a144c9c509c71ce935b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74281217"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933649"
 ---
 # <a name="handling-review-feedback"></a>Zpracování zpětné vazby
 

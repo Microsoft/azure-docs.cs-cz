@@ -1,7 +1,7 @@
 ---
-title: Dynamické přizpůsobení uživatelského rozhraní (UI) vlastními zásadami
+title: Customize the user interface (UI) dynamically with custom policies
 titleSuffix: Azure AD B2C
-description: Podpora více funkcí brandingu pomocí obsahu HTML5/CSS, který se dynamicky mění za běhu.
+description: Support multiple branding experiences with HTML5/CSS content that changes dynamically at runtime.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -11,100 +11,100 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dbc932bd7a68212ce94f2ad07de6e625d26c0918
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: ae29a068ef29898c3fa27d3620d1e6be0be4bf3b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950234"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931204"
 ---
-# <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Konfigurace uživatelského rozhraní s dynamickým obsahem pomocí vlastních zásad
+# <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Configure the UI with dynamic content by using custom policies
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Pomocí vlastních zásad Azure Active Directory B2C (Azure AD B2C) můžete odeslat parametr v řetězci dotazu. Předáním parametru do vašeho koncového bodu HTML můžete dynamicky měnit obsah stránky. Můžete například změnit obrázek pozadí na registrační nebo přihlašovací stránce Azure AD B2C na základě parametru, který předáte z vašeho webu nebo mobilní aplikace.
+By using Azure Active Directory B2C (Azure AD B2C) custom policies, you can send a parameter in a query string. Předáním parametru do vašeho koncového bodu HTML můžete dynamicky měnit obsah stránky. Můžete například změnit obrázek pozadí na registrační nebo přihlašovací stránce Azure AD B2C na základě parametru, který předáte z vašeho webu nebo mobilní aplikace.
 
-## <a name="prerequisites"></a>Předpoklady
-Tento článek se zaměřuje na přizpůsobení Azure AD B2C uživatelského rozhraní s *dynamickým obsahem* pomocí vlastních zásad. Informace o tom, jak začít, najdete v tématu [přizpůsobení uživatelského rozhraní ve vlastních zásadách](active-directory-b2c-ui-customization-custom.md).
+## <a name="prerequisites"></a>Požadavky
+This article focuses on how to customize the Azure AD B2C user interface with *dynamic content* by using custom policies. To get started, see [UI customization in a custom policy](active-directory-b2c-ui-customization-custom.md).
 
 >[!NOTE]
->Článek Azure AD B2C, [Konfigurace přizpůsobení uživatelského rozhraní ve vlastních zásadách](active-directory-b2c-ui-customization-custom.md), popisuje následující základy:
-> * Funkce přizpůsobení uživatelského rozhraní stránky (UI).
-> * Základní nástroje pro testování funkce přizpůsobení uživatelského rozhraní stránky pomocí našeho ukázkového obsahu.
-> * Základní prvky uživatelského rozhraní každého typu stránky.
-> * Osvědčené postupy pro použití této funkce.
+>The Azure AD B2C article, [Configure UI customization in a custom policy](active-directory-b2c-ui-customization-custom.md), discusses the following fundamentals:
+> * The page user interface (UI) customization feature.
+> * Essential tools for testing the page UI customization feature by using our sample content.
+> * The core UI elements of each page type.
+> * Best practices for applying this feature.
 
-## <a name="add-a-link-to-html5css-templates-to-your-user-journey"></a>Přidání odkazu na vaši cestu uživatele do šablon HTML5/CSS
+## <a name="add-a-link-to-html5css-templates-to-your-user-journey"></a>Add a link to HTML5/CSS templates to your user journey
 
-V vlastní zásadě definice obsahu definuje identifikátor URI stránky HTML5, který se používá pro zadaný krok uživatelského rozhraní (například přihlašovací stránky nebo přihlašovací stránky). Základní zásady definují výchozí vzhled a chování tak, že odkazují na identifikátor URI souborů HTML5 (v šabloně stylů CSS). V zásadách rozšíření můžete upravit vzhled a chování přepsáním LoadUri pro soubor HTML5. Definice obsahu obsahují adresy URL externího obsahu, které jsou definovány podle potřeby pro vytváření souborů HTML5/CSS.
+In a custom policy, a content definition defines the HTML5 page URI that is used for a specified UI step (for example, the sign-in or sign-up pages). The base policy defines the default look and feel by pointing to a URI of HTML5 files (in the CSS). In the extension policy, you can modify the look and feel by overriding the LoadUri for the HTML5 file. Content definitions contain URLs to external content that is defined by crafting HTML5/CSS files, as appropriate.
 
-Oddíl `ContentDefinitions` obsahuje řadu `ContentDefinition` prvků XML. Atribut ID prvku `ContentDefinition` určuje typ stránky, která se vztahuje k definici obsahu. To znamená, že element definuje kontext, který bude použita vlastní šablona HTML5/CSS. Následující tabulka popisuje sadu ID definic obsahu rozpoznávaných modulem IEF a typy stránek, které se na ně vztahují.
+The `ContentDefinitions` section contains a series of `ContentDefinition` XML elements. The ID attribute of the `ContentDefinition` element specifies the type of page that relates to the content definition. That is, the element defines the context that a custom HTML5/CSS template is going to apply. The following table describes the set of content definition IDs that are recognized by the IEF engine, and the page types that relate to them.
 
-| ID definice obsahu | Výchozí šablona HTML5| Popis |
+| Content definition ID | Default HTML5 template| Popis |
 |-----------------------|--------|-------------|
-| *api.error* | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Chybová stránka**. Tato stránka se zobrazí, pokud dojde k výjimce nebo chybě. |
-| *api.idpselections* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Stránka výběru zprostředkovatele identity** Tato stránka obsahuje seznam zprostředkovatelů identity, ze kterých si uživatelé můžou vybírat během přihlašování. Tyto možnosti jsou obvykle poskytovatelé podnikových identit, poskytovatelé sociálních identit, jako je Facebook, Google + nebo místní účty. |
-| *api.idpselections.signup* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Výběr zprostředkovatele identity pro registraci**. Tato stránka obsahuje seznam zprostředkovatelů identity, ze kterých si uživatelé můžou vybírat během registrace. Možnosti jsou buď poskytovatelé podnikových identit, zprostředkovatelé sociálních identit, jako je Facebook, Google + nebo místní účty. |
-| *api.localaccountpasswordreset* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Stránka zapomenuté heslo** Tato stránka obsahuje formulář, který musí uživatelé dokončit pro zahájení resetování hesla.  |
-| *api.localaccountsignin* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Přihlašovací stránka místního účtu** Tato stránka obsahuje formulář pro přihlášení pomocí místního účtu, který je založen na e-mailové adrese nebo uživatelském jménu. Formulář může obsahovat textové pole pro zadání textu a heslo. |
-| *api.localaccountsignup* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Přihlašovací stránka místního účtu** Tato stránka obsahuje formulář pro registraci místního účtu, který vychází z e-mailové adresy nebo uživatelského jména. Formulář může obsahovat různé vstupní ovládací prvky, jako je například textové pole pro zadání hesla, pole pro zadávání hesla, přepínač, rozevírací seznamy s jedním výběrem a zaškrtávací políčka vícenásobného výběru. |
-| *api.phonefactor* | [multifactor-1.0.0.cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Stránku Multi-Factor Authentication**. Na této stránce můžou uživatelé při registraci nebo přihlašování ověřit svoje telefonní čísla (pomocí textu nebo hlasu). |
-| *api.selfasserted* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Stránka pro registraci účtu sociální**sítě Tato stránka obsahuje formulář, který uživatelé musí dokončit při registraci pomocí existujícího účtu od poskytovatele sociálních identit. Tato stránka se podobá na předchozí stránce pro registraci účtu sociální sítě, s výjimkou polí zadání hesla. |
-| *api.selfasserted.profileupdate* | [updateprofile.html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Stránka aktualizace profilu**. Tato stránka obsahuje formulář, ke kterému můžou uživatelé získat přístup, aby mohli aktualizovat svůj profil. Tato stránka se podobá stránce pro registraci účtu sociální sítě, s výjimkou polí zadání hesla. |
-| *api.signuporsignin* | [unified.html](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Jednotná registrace nebo přihlašovací stránka**. Tato stránka zpracovává proces registrace a přihlášení uživatele. Uživatelé můžou používat podnikové zprostředkovatele identity, poskytovatele sociálních identit, jako je Facebook nebo Google +, nebo místní účty.  |
+| *api.error* | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Error page**. This page is displayed when an exception or an error is encountered. |
+| *api.idpselections* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Identity provider selection page**. This page lists identity providers that users can choose from during sign-in. The options are usually enterprise identity providers, social identity providers such as Facebook and Google+, or local accounts. |
+| *api.idpselections.signup* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Identity provider selection for sign-up**. This page lists identity providers that users can choose from during sign-up. The options are either enterprise identity providers, social identity providers such as Facebook and Google+, or local accounts. |
+| *api.localaccountpasswordreset* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Forgot password page**. This page contains a form that users must complete to initiate a password reset.  |
+| *api.localaccountsignin* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Local account sign-in page**. This page contains a form for signing in with a local account that's based on an email address or a user name. The form can contain a text input box and password entry box. |
+| *api.localaccountsignup* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Local account sign up page**. This page contains a form for signing up for a local account that's based on an email address or a user name. The form can contain various input controls, such as: a text input box, a password entry box, a radio button, single-select drop-down boxes, and multi-select check boxes. |
+| *api.phonefactor* | [multifactor-1.0.0.cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Multi-factor authentication page**. On this page, users can verify their phone numbers (by using text or voice) during sign-up or sign-in. |
+| *api.selfasserted* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Social account sign-up page**. This page contains a form that users must complete when they sign up by using an existing account from a social identity provider. This page is similar to the preceding social account sign-up page, except for the password entry fields. |
+| *api.selfasserted.profileupdate* | [updateprofile.html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Profile update page**. This page contains a form that users can access to update their profile. This page is similar to the social account sign-up page, except for the password entry fields. |
+| *api.signuporsignin* | [unified.html](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Unified sign-up or sign-in page**. This page handles the user sign-up and sign-in process. Users can use enterprise identity providers, social identity providers such as Facebook or Google+, or local accounts.  |
 
-## <a name="serving-dynamic-content"></a>Obsluha dynamického obsahu
-V článku [Konfigurace přizpůsobení uživatelského rozhraní ve vlastní zásadě](active-directory-b2c-ui-customization-custom.md) nahrajete soubory HTML5 do úložiště objektů BLOB v Azure. Tyto soubory HTML5 jsou statické a vykreslují pro každý požadavek stejný obsah HTML.
+## <a name="serving-dynamic-content"></a>Serving dynamic content
+In the [Configure UI customization in a custom policy](active-directory-b2c-ui-customization-custom.md) article, you upload HTML5 files to Azure Blob storage. Those HTML5 files are static and render the same HTML content for each request.
 
-V tomto článku použijete webovou aplikaci ASP.NET, která může přijmout parametry řetězce dotazu a odpovídajícím způsobem reagovat.
+In this article, you use an ASP.NET web app, which can accept query string parameters and respond accordingly.
 
-V tomto návodu:
-* Vytvořte ASP.NET Core webovou aplikaci, která je hostitelem šablon HTML5.
-* Přidejte vlastní šablonu HTML5, _Unified. cshtml_.
-* Publikujte webovou aplikaci na Azure App Service.
-* Nastavte sdílení prostředků mezi zdroji (CORS) pro vaši webovou aplikaci.
-* Přepište prvky `LoadUri` tak, aby odkazovaly na váš soubor HTML5.
+In this walkthrough, you:
+* Create an ASP.NET Core web application that hosts your HTML5 templates.
+* Add a custom HTML5 template, _unified.cshtml_.
+* Publish your web app to Azure App Service.
+* Set cross-origin resource sharing (CORS) for your web app.
+* Override the `LoadUri` elements to point to your HTML5 file.
 
-## <a name="step-1-create-an-aspnet-web-app"></a>Krok 1: Vytvoření webové aplikace v ASP.NET
+## <a name="step-1-create-an-aspnet-web-app"></a>Step 1: Create an ASP.NET web app
 
-1. V aplikaci Visual Studio vytvořte projekt tak, že vyberete **soubor** > **Nový** > **projekt**.
+1. In Visual Studio, create a project by selecting **File** > **New** > **Project**.
 
-2. V okně **Nový projekt** vyberte **Visual C#**  > **Web** > **ASP.NET Core webová aplikace (.NET Core)** .
+2. In the **New Project** window, select **Visual C#**  > **Web** > **ASP.NET Core Web Application (.NET Core)** .
 
-3. Pojmenujte aplikaci (například *contoso. AADB2C. UI*) a pak vyberte **OK**.
+3. Name the application (for example, *Contoso.AADB2C.UI*), and then select **OK**.
 
-    ![Vytvořit nový projekt sady Visual Studio](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-create-project1.png)
+    ![Create new Visual Studio project](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-create-project1.png)
 
-4. Vyberte šablonu **webové aplikace** .
+4. Select the **Web Application** template.
 
-5. Nastavte ověřování na **bez ověřování**.
+5. Set the authentication to **No Authentication**.
 
-    ![Vybrat šablonu webové aplikace](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-create-project2.png)
+    ![Select Web Application template](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-create-project2.png)
 
 6. Vyberte **OK** a vytvořte projekt.
 
-## <a name="step-2-create-mvc-view"></a>Krok 2: Vytvoření zobrazení MVC
-### <a name="step-21-download-the-b2c-built-in-html5-template"></a>Krok 2,1: stažení předdefinované šablony HTML5 B2C
-Vaše vlastní šablona HTML5 je založena na Azure AD B2C předdefinované šabloně HTML5. Můžete si stáhnout [soubor Unified. html](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) nebo stáhnout šablonu z [Úvodní sady](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates/wingtip). Tento soubor HTML5 použijete k vytvoření sjednocené přihlašovací stránky nebo přihlašovací stránky.
+## <a name="step-2-create-mvc-view"></a>Step 2: Create MVC view
+### <a name="step-21-download-the-b2c-built-in-html5-template"></a>Step 2.1: Download the B2C built-in HTML5 template
+Your custom HTML5 template is based on the Azure AD B2C built-in HTML5 template. You can download the [unified.html file](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) or download the template from [starter pack](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates/wingtip). You use this HTML5 file to create a unified sign-up or sign-in page.
 
-### <a name="step-22-add-the-mvc-view"></a>Krok 2,2: Přidání zobrazení MVC
-1. Klikněte pravým tlačítkem na položku zobrazení nebo domovskou složku a **přidejte** > **novou položku**.
+### <a name="step-22-add-the-mvc-view"></a>Step 2.2: Add the MVC view
+1. Right-click the Views/Home folder, and then **Add** > **New Item**.
 
-    ![Přidat položku nabídky nová položka v aplikaci Visual Studio](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view1.png)
+    ![Add New Item menu item in Visual Studio](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view1.png)
 
-2. V okně **Přidat novou položku – contoso. AADB2C. UI** vyberte **Web > ASP.NET**.
+2. In the **Add New Item - Contoso.AADB2C.UI** window, select **Web > ASP.NET**.
 
-3. Vyberte **stránku zobrazení MVC**.
+3. Select **MVC View Page**.
 
-4. V poli **název** změňte název na **Unified. cshtml**.
+4. In the **Name** box, change the name to **unified.cshtml**.
 
 5. Vyberte **Přidat**.
 
-    ![Dialogové okno Přidat novou položku v aplikaci Visual Studio se zvýrazněnou stránkou zobrazení MVC](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view2.png)
+    ![Add New Item dialog in Visual Studio with MVC View Page highlighted](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view2.png)
 
-6. Pokud soubor *Unified. cshtml* ještě není otevřený, otevřete ho tak, že na něj dvakrát kliknete a pak jeho obsah vymažete.
+6. If the *unified.cshtml* file is not open already, double-click the file to open it, and then clear the file contents.
 
-7. Pro tento návod odebereme odkaz na stránku rozložení. Do _sjednoceného. cshtml_přidejte následující fragment kódu:
+7. For this walkthrough, we remove the reference to layout-page. Add the following code snippet to _unified.cshtml_:
 
     ```csharp
     @{
@@ -112,23 +112,23 @@ Vaše vlastní šablona HTML5 je založena na Azure AD B2C předdefinované šab
     }
     ```
 
-8. Otevřete soubor _Unified. cshtml_ , který jste stáhli z Azure AD B2C integrovanou šablonu HTML5.
+8. Open the _unified.cshtml_ file you downloaded from Azure AD B2C built-in HTML5 template.
 
-9. Nahraďte znak @ u znaku (@) dvojitým znaménkem (@ @).
+9. Replace the single at signs (@) with double at signs (@@).
 
-10. Zkopírujte obsah souboru a vložte jej pod definici rozložení. Váš kód by měl vypadat takto:
+10. Copy the content of the file and paste it below the Layout definition. Your code should look like:
 
-    ![Sjednocený soubor. cshtml po přidání jazyka HTML5](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-edit-view1.png)
+    ![unified.cshtml file after adding the HTML5](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-edit-view1.png)
 
-### <a name="step-23-change-the-background-image"></a>Krok 2,3: Změna obrázku na pozadí
+### <a name="step-23-change-the-background-image"></a>Step 2.3: Change the background image
 
-Vyhledejte prvek `<img>`, který obsahuje hodnotu `ID` *background_background_image*a pak hodnotu `src` nahraďte **https://kbdevstorage1.blob.core.windows.net/asset-blobs/19889_en_1** nebo jinou imagí pozadí, kterou chcete použít.
+Locate the `<img>` element that contains the `ID` value *background_background_image*, and then replace the `src` value with **https://kbdevstorage1.blob.core.windows.net/asset-blobs/19889_en_1** or any other background image you want to use.
 
-![IMG – element s vlastní hodnotou background_background_image src](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-static-background.png)
+![img element with custom background_background_image src value](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-static-background.png)
 
-### <a name="step-24-add-your-view-to-the-mvc-controller"></a>Krok 2,4: Přidání zobrazení do kontroleru MVC
+### <a name="step-24-add-your-view-to-the-mvc-controller"></a>Step 2.4: Add your view to the MVC controller
 
-1. Otevřete **souboru controllers\homecontroller.cs**a přidejte následující metodu:
+1. Open **Controllers\HomeController.cs**, and add following method:
 
     ```C
     public IActionResult unified()
@@ -136,119 +136,121 @@ Vyhledejte prvek `<img>`, který obsahuje hodnotu `ID` *background_background_im
         return View();
     }
     ```
-    Tento kód určuje, že metoda má použít soubor šablony *zobrazení* k vykreslení odpovědi do prohlížeče. Vzhledem k tomu, že explicitně neurčíte název souboru šablony *zobrazení* , MVC použije výchozí hodnotu pro použití _sjednoceného souboru zobrazení. cshtml_ ve složce */views/Home* .
+    This code specifies that the method should use a *View* template file to render a response to the browser. Because we don't explicitly specify the name of the *View* template file, MVC defaults to using the _unified.cshtml_ View file in the */Views/Home* folder.
 
-    Když přidáte _sjednocenou_ metodu, váš kód by měl vypadat takto:
+    After you add the _unified_ method, your code should look like:
 
-    ![Změna kontroleru pro vykreslení zobrazení](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-controller-view.png)
+    ![Change the controller to render the view](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-controller-view.png)
 
-2. Proveďte ladění webové aplikace a ujistěte se, že je _jednotná_ stránka přístupná (například `http://localhost:<Port number>/Home/unified`).
+2. Debug your web app, and make sure that the _unified_ page is accessible (for example, `http://localhost:<Port number>/Home/unified`).
 
-### <a name="step-25-publish-to-azure"></a>Krok 2,5: publikování do Azure
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt **contoso. AADB2C. UI** a pak vyberte **publikovat**.
+### <a name="step-25-publish-to-azure"></a>Step 2.5: Publish to Azure
+1. In **Solution Explorer**, right-click the **Contoso.AADB2C.UI** project, and then select **Publish**.
 
     ![Publikování do Microsoft Azure App Service](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-publish1.png)
 
-2. Vyberte dlaždici **Microsoft Azure App Service** a pak vyberte **publikovat**.
+2. Select the **Microsoft Azure App Service** tile, and then select **Publish**.
 
-    ![Vytvořit novou Microsoft Azure App Service](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-publish2.png)
+    ![Create new Microsoft Azure App Service](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-publish2.png)
 
-    Otevře se okno **vytvořit App Service** . V takovém případě můžete začít vytvářet všechny potřebné prostředky Azure ke spuštění webové aplikace v ASP.NET v Azure.
+    The **Create App Service** window opens. In it you can begin to create all the necessary Azure resources to run the ASP.NET web app in Azure.
 
     > [!NOTE]
-    > Další informace o publikování najdete v tématu [Vytvoření webové aplikace v ASP.NET v Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet).
+    > For more information about publishing, see [Create an ASP.NET web app in Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet).
 
-3. Do pole **název webové aplikace** zadejte jedinečný název aplikace (platné znaky jsou a-z, a-z, 0-9 a spojovník (-). Adresa URL webové aplikace je `http://<app_name>.azurewebsites.NET`, kde `<app_name>` je název vaší webové aplikace. Můžete přijmout automaticky vygenerovaný název, který je jedinečný.
+3. In the **Web App Name** box, type a unique app name (valid characters are a-z, A-Z, 0-9, and the hyphen (-). Adresa URL webové aplikace je `http://<app_name>.azurewebsites.NET`, kde `<app_name>` je název vaší webové aplikace. Můžete přijmout automaticky vygenerovaný název, který je jedinečný.
 
 4. Výběrem možnosti **Vytvořit** spustíte vytváření prostředků Azure.
 
-    ![Zadat App Service vlastnosti](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-publish3.png)
+    ![Provide App Service properties](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-publish3.png)
 
-    Po dokončení procesu vytváření publikuje Průvodce webovou aplikaci ASP.NET do Azure a pak aplikaci spustí ve výchozím prohlížeči.
+    After the creation process is complete, the wizard publishes the ASP.NET web app to Azure and then launches the app in the default browser.
 
-5. Zkopírujte adresu URL _sjednocené_ stránky (například _https://< APP_NAME >. azurewebsites. NET/Home/Unified_).
+5. Copy the URL of the _unified_ page (for example, _https://<app_name>.azurewebsites.net/home/unified_).
 
-## <a name="step-3-configure-cors-in-azure-app-service"></a>Krok 3: Konfigurace CORS v Azure App Service
-1. V [Azure Portal](https://portal.azure.com/)vyberte **App Services**a pak vyberte název vaší aplikace API.
+## <a name="step-3-configure-cors-in-azure-app-service"></a>Step 3: Configure CORS in Azure App Service
+1. In the [Azure portal](https://portal.azure.com/), Select **App Services**, and then select the name of your API app.
 
-    ![V Azure Portal vyberte aplikace API.](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS1.png)
+    ![Select API app in the Azure portal](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS1.png)
 
-2. V části **Nastavení** v části **rozhraní API** vyberte **CORS**.
+2. In the **Settings** section, under **API** section, select **CORS**.
 
-    ![Položka nabídky CORS zvýrazněná v nabídce App Service v Azure Portal](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS2.png)
+    ![CORS menu item highlighted in App Service menu in Azure portal](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS2.png)
 
-3. V okně **CORS** v poli **Povolené zdroje** proveďte jednu z následujících akcí:
+3. In the **CORS** window, in the **Allowed Origins** box, do either of the following:
 
-    * Zadejte adresu URL nebo adresy URL, ze kterých mají být povolena volání JavaScriptu. V adresách URL, které zadáte, je třeba použít všechna malá písmena.
-    * Zadejte hvězdičku (*), chcete-li určit, zda jsou všechny zdrojové domény přijímány.
+    * Enter the URL or URLs that you want to allow JavaScript calls to come from. You need to use all lowercase letters in the URLs that you enter.
+    * Enter an asterisk (*) to specify that all origin domains are accepted.
 
-4. Vyberte **Save** (Uložit).
+4. Vyberte **Uložit**.
 
-    ![Stránka nastavení CORS se zvýrazněnou hvězdičkou v povolených zdrojích](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS3.png)
+    ![CORS settings page with asterisk highlighted in Allowed Origins](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS3.png)
 
-    Po výběru **Uložit**aplikace API přijme volání JavaScriptu ze zadaných adres URL.
+    After you select **Save**, the API app accepts JavaScript calls from the specified URLs.
 
-## <a name="step-4-html5-template-validation"></a>Krok 4: ověření šablony HTML5
-Vaše šablona HTML5 je připravena k použití. Není však k dispozici v kódu `ContentDefinition`. Než budete moct přidat `ContentDefinition` k vlastním zásadám, ujistěte se, že:
-* Váš obsah je kompatibilní s HTML5 a je přístupný.
-* Pro CORS je povolený váš server obsahu.
-
-    >[!NOTE]
-    >Pokud chcete ověřit, jestli lokalita, na které hostuje váš obsah, má povolený CORS a může testovat žádosti CORS, navštivte web [test-CORS.org](https://test-cors.org/) .
-
-* Poskytovaný obsah je zabezpečený přes **protokol HTTPS**.
-* Pro všechny odkazy, obsah CSS a obrázky používáte *absolutní adresy URL*, například `https://yourdomain/content`.
-
-## <a name="step-5-configure-your-content-definition"></a>Krok 5: Konfigurace definice obsahu
-Pokud chcete nakonfigurovat `ContentDefinition`, udělejte toto:
-1. Otevřete základní soubor zásad (například *TrustFrameworkBase. XML*).
-
-2. Vyhledejte prvek `<ContentDefinitions>` a potom zkopírujte celý obsah uzlu `<ContentDefinitions>`.
-
-3. Otevřete soubor rozšíření (například *TrustFrameworkExtensions. XML*) a vyhledejte `<BuildingBlocks>` element. Pokud element neexistuje, přidejte jej.
-
-4. Vložte celý obsah uzlu `<ContentDefinitions>`, který jste zkopírovali jako podřízený prvek `<BuildingBlocks>` elementu.
-
-5. Vyhledejte uzel `<ContentDefinition>`, který obsahuje `Id="api.signuporsignin"` ve formátu XML, který jste zkopírovali.
-
-6. Změňte hodnotu `LoadUri` z _~/tenant/default/Unified_ na _https://< APP_NAME >. azurewebsites. NET/Home/Unified_.
-    Vaše vlastní zásada by měla vypadat takto:
-
-    ![Příklad fragmentu XML s zvýrazněným elementem LoadUri](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-content-definition.png)
-
-## <a name="step-6-upload-the-policy-to-your-tenant"></a>Krok 6: nahrání zásady do tenanta
-1. V [Azure Portal](https://portal.azure.com)přepněte do [kontextu vašeho tenanta Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a pak vyberte **Azure AD B2C**.
-
-2. Vyberte **architekturu prostředí identity**.
-
-3. Vyberte **všechny zásady**.
-
-4. Vyberte **Odeslat zásadu**.
-
-5. Zaškrtněte políčko **přepsat zásadu, pokud existuje** .
-
-6. Nahrajte soubor *TrustFrameworkExtensions. XML* a ujistěte se, že projde ověřením.
-
-## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>Krok 7: Vyzkoušejte si vlastní zásady pomocí rutiny spustit hned
-1. Vyberte **nastavení Azure AD B2C**a pak vyberte **Architektura prostředí identity**.
+## <a name="step-4-html5-template-validation"></a>Step 4: HTML5 template validation
+Your HTML5 template is ready to use. However, it is not available in the `ContentDefinition` code. Before you can add `ContentDefinition` to your custom policy, ensure that:
+* Your content is HTML5 compliant and accessible.
+* Your content server is enabled for CORS.
 
     >[!NOTE]
-    >Spustit teď vyžaduje, aby se v tenantovi předem zaregistrovala aspoň jedna aplikace. Informace o tom, jak zaregistrovat aplikace, najdete v článku Azure AD B2C [Začínáme](active-directory-b2c-get-started.md) nebo v článku věnovaném [registraci aplikace](active-directory-b2c-app-registration.md) .
+    >To verify that the site where you're hosting your content has enabled CORS and can test CORS requests, go to the [test-cors.org](https://test-cors.org/) website.
 
-2. Otevřete **B2C_1A_signup_signin**, vlastní zásady předávající strany (RP), které jste nahráli, a pak vyberte **Spustit nyní**.
-    Měli byste být schopni zobrazit vlastní HTML5 pomocí pozadí, které jste vytvořili dříve.
+* Your served content is secure over **HTTPS**.
+* You are using *absolute URLS*, such as `https://yourdomain/content`, for all links, CSS content, and images.
 
-    ![Vaše zásady registrace nebo přihlašování](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo1.png)
+## <a name="step-5-configure-your-content-definition"></a>Step 5: Configure your content definition
+To configure `ContentDefinition`, do the following:
+1. Open the base file of your policy (for example, *TrustFrameworkBase.xml*).
 
-## <a name="step-8-add-dynamic-content"></a>Krok 8: Přidání dynamického obsahu
-Změňte pozadí na základě parametru řetězce dotazu s názvem _campaignId_. Vaše aplikace RP (webové a mobilní aplikace) odešle parametr do Azure AD B2C. Vaše zásada přečte parametr a pošle jeho hodnotu do šablony HTML5.
+2. Search for the `<ContentDefinitions>` element, and then copy the entire contents of the `<ContentDefinitions>` node.
 
-### <a name="step-81-add-a-content-definition-parameter"></a>Krok 8,1: Přidání parametru definice obsahu
+3. Open the extension file (for example, *TrustFrameworkExtensions.xml*) and then search for the `<BuildingBlocks>` element. If the element doesn't exist, add it.
 
-Přidejte `ContentDefinitionParameters` element pomocí následujícího postupu:
-1. Otevřete soubor *SignUpOrSignin* vaší zásady (například *SignUpOrSignin. XML*).
+4. Paste the entire contents of the `<ContentDefinitions>` node that you copied as a child of the `<BuildingBlocks>` element.
 
-2. Pod uzlem `<DefaultUserJourney>` přidejte `UserJourneyBehaviors` uzel:
+5. Search for the `<ContentDefinition>` node that contains `Id="api.signuporsignin"` in the XML that you copied.
+
+6. Change the value of `LoadUri` from _~/tenant/default/unified_ to _https://<app_name>.azurewebsites.net/home/unified_.
+    Your custom policy should look like the following:
+
+    ![Example XML snippet with LoadUri element highlighted](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-content-definition.png)
+
+## <a name="step-6-upload-the-policy-to-your-tenant"></a>Step 6: Upload the policy to your tenant
+1. In the [Azure portal](https://portal.azure.com), select the **Directory + Subscription** icon in the portal toolbar, and then select the directory that contains your Azure AD B2C tenant.
+
+1. In the Azure portal, search for and select **Azure AD B2C**.
+
+1. Select **Identity Experience Framework**.
+
+1. Select **All Policies**.
+
+1. Select **Upload Policy**.
+
+1. Select the **Overwrite the policy if it exists** check box.
+
+1. Upload the *TrustFrameworkExtensions.xml* file, and ensure that it passes validation.
+
+## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>Step 7: Test the custom policy by using Run Now
+1. Select **Azure AD B2C Settings**, and then select **Identity Experience Framework**.
+
+    >[!NOTE]
+    >Run Now requires at least one application to be preregistered on the tenant. To learn how to register applications, see the Azure AD B2C [Get started](active-directory-b2c-get-started.md) article or the [Application registration](active-directory-b2c-app-registration.md) article.
+
+2. Open **B2C_1A_signup_signin**, the relying party (RP) custom policy that you uploaded, and then select **Run now**.
+    You should be able to see your custom HTML5 with the background that you created earlier.
+
+    ![Your sign-up or sign-in policy](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo1.png)
+
+## <a name="step-8-add-dynamic-content"></a>Step 8: Add dynamic content
+Change the background based on query string parameter named _campaignId_. Your RP application (web and mobile apps) sends the parameter to Azure AD B2C. Your policy reads the parameter and sends its value to your HTML5 template.
+
+### <a name="step-81-add-a-content-definition-parameter"></a>Step 8.1: Add a content definition parameter
+
+Add the `ContentDefinitionParameters` element by doing the following:
+1. Open the *SignUpOrSignin* file of your policy (for example, *SignUpOrSignin.xml*).
+
+2. Under the `<DefaultUserJourney>` node, add the `UserJourneyBehaviors` node:
 
     ```XML
     <RelyingParty>
@@ -262,10 +264,10 @@ Přidejte `ContentDefinitionParameters` element pomocí následujícího postupu
     </RelyingParty>
     ```
 
-### <a name="step-82-change-your-code-to-accept-a-query-string-parameter-and-replace-the-background-image"></a>Krok 8,2: Změňte kód tak, aby přijímal parametr řetězce dotazu a nahradil obrázek na pozadí.
-Úpravou metody HomeController `unified` přijměte parametr campaignId. Metoda pak zkontroluje hodnotu parametru a nastaví `ViewData["background"]` proměnnou odpovídajícím způsobem.
+### <a name="step-82-change-your-code-to-accept-a-query-string-parameter-and-replace-the-background-image"></a>Step 8.2: Change your code to accept a query string parameter, and replace the background image
+Modify the HomeController `unified` method to accept the campaignId parameter. The method then checks the parameter's value and sets the `ViewData["background"]` variable accordingly.
 
-1. Otevřete soubor *souboru controllers\homecontroller.cs* a poté změňte metodu `unified` přidáním následujícího fragmentu kódu:
+1. Open the *Controllers\HomeController.cs* file, and then change the `unified` method by adding the following code snippet:
 
     ```csharp
     public IActionResult unified(string campaignId)
@@ -291,61 +293,57 @@ Přidejte `ContentDefinitionParameters` element pomocí následujícího postupu
 
     ```
 
-2. Vyhledejte prvek `<img>` s ID `background_background_image`a nahraďte hodnotu `src` `@ViewData["background"]`.
+2. Locate the `<img>` element with ID `background_background_image`, and replace the `src` value with `@ViewData["background"]`.
 
-    ![IMG – element s zvýrazněnou hodnotou src ](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-dynamic-background.png)
+    ![img element with src value highlighted ](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-dynamic-background.png)
 
-### <a name="83-upload-the-changes-and-publish-your-policy"></a>8,3: Nahrání změn a publikování zásad
-1. Publikujte projekt sady Visual Studio na Azure App Service.
+### <a name="83-upload-the-changes-and-publish-your-policy"></a>8.3: Upload the changes and publish your policy
+1. Publish your Visual Studio project to Azure App Service.
 
-2. Nahrajte do Azure AD B2C zásadu *SignUpOrSignin. XML* .
+2. Upload the *SignUpOrSignin.xml* policy to Azure AD B2C.
 
-3. Otevřete **B2C_1A_signup_signin**, vlastní zásady RP, kterou jste nahráli, a pak vyberte **Spustit nyní**.
-    Měli byste vidět stejný obrázek na pozadí, který se dřív zobrazil.
+3. Open **B2C_1A_signup_signin**, the RP custom policy that you uploaded, and then select **Run now**.
+    You should see the same background image that was previously displayed.
 
-4. Zkopírujte adresu URL z panelu Adresa v prohlížeči.
+4. Copy the URL from the browser's address bar.
 
-5. Přidejte parametr řetězce dotazu _campaignId_ k identifikátoru URI. Přidejte například `&campaignId=hawaii`, jak je znázorněno na následujícím obrázku:
+5. Add the _campaignId_ query string parameter to the URI. For example, add `&campaignId=hawaii`, as shown in following image:
 
-    ![Identifikátor URI s vybraným parametrem řetězce dotazu campaignId](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-campaignId-param.png)
+    ![URI with campaignId query string parameter highlighted](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-campaignId-param.png)
 
-6. Pokud chcete zobrazit obrázek na pozadí Havajské ostrovy, vyberte **ENTER** .
+6. Select **Enter** to display the Hawaii background image.
 
-    ![Přihlašovací stránka pro přihlášení s vlastním pozadím ve havajské imagi](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo2.png)
+    ![Sign-up sign-in page with Hawaii image custom background](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo2.png)
 
-7. Změňte hodnotu na *Tokio*a pak vyberte **ENTER**.
-    V prohlížeči se zobrazí pozadí v Brně.
+7. Change the value to *Tokyo*, and then select **Enter**.
+    The browser displays the Tokyo background.
 
-    ![Přihlašovací stránka pro přihlášení s vlastním pozadím v neřízeném obrázku](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo3.png)
+    ![Sign-up sign-in page with Tokyo image custom background](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo3.png)
 
-## <a name="step-9-change-the-rest-of-the-user-journey"></a>Krok 9: Změna zbývající části cesty pro uživatele
-Pokud vyberete odkaz **zaregistrovat se nyní** na přihlašovací stránce, prohlížeč zobrazí výchozí obrázek pozadí, nikoli obrázek, který jste definovali. K tomuto chování dojde, protože jste změnili pouze přihlašovací stránku nebo přihlašovací stránku. Změna zbytku definic obsahu s vlastním kontrolním výrazem:
-1. Vraťte se zpět na krok 2 a udělejte toto:
+## <a name="step-9-change-the-rest-of-the-user-journey"></a>Step 9: Change the rest of the user journey
+If you select the **Sign up now** link on the sign-in page, the browser displays the default background image, not the image you defined. This behavior arises because you've changed only the sign-up or sign-in page. To change the rest of the Self-Assert content definitions:
+1. Go back to "Step 2," and do the following:
 
-    a. Stáhněte si soubor *selfasserted* .
+    a. Download the *selfasserted* file.
 
-    b. Zkopírujte obsah souboru.
+    b. Copy the file content.
 
-    c. Vytvořte nové zobrazení *selfasserted*.
+    c. Create a new view, *selfasserted*.
 
-    d. Přidejte *selfasserted* do **domovského** kontroleru.
+    d. Add *selfasserted* to the **Home** controller.
 
-2. Vraťte se zpět na krok 4 a postupujte takto:
+2. Go back to "Step 4," and do the following:
 
-    a. V zásadách rozšíření Najděte uzel `<ContentDefinition>`, který obsahuje `Id="api.selfasserted"`, `Id="api.localaccountsignup"`a `Id="api.localaccountpasswordreset"`.
+    a. In your extension policy, find the `<ContentDefinition>` node that contains `Id="api.selfasserted"`, `Id="api.localaccountsignup"`, and `Id="api.localaccountpasswordreset"`.
 
-    b. U atributu `LoadUri` nastavte identifikátor URI *selfasserted* .
+    b. Set the `LoadUri` attribute to your *selfasserted* URI.
 
-3. Vraťte se zpět na krok "Step 8,2" a změňte kód tak, aby přijímal parametry řetězce dotazu, ale tentokrát do funkce *selfasserted* .
+3. Go back to "Step 8.2," and change your code to accept query string parameters, but this time to the *selfasserted* function.
 
-4. Nahrajte zásady *TrustFrameworkExtensions. XML* a zajistěte, aby prošly ověřením.
+4. Upload the *TrustFrameworkExtensions.xml* policy, and ensure that it passes validation.
 
-5. Spusťte test zásad a kliknutím na tlačítko **zaregistrovat** se zobrazí výsledek.
+5. Run the policy test, and then select **Sign up now** to see the result.
 
-## <a name="optional-download-the-complete-policy-files-and-code"></a>Volitelné Stažení úplných souborů a kódu zásad
-* Po dokončení návodu [Začínáme s vlastními zásadami](active-directory-b2c-get-started-custom.md) doporučujeme sestavit svůj scénář pomocí vlastních souborů zásad. Pro váš odkaz jsme zadali [ukázkové soubory zásad](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization).
-* Můžete si stáhnout kompletní kód z [ukázkového řešení sady Visual Studio pro referenci](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization).
-
-
-
-
+## <a name="optional-download-the-complete-policy-files-and-code"></a>(Optional) Download the complete policy files and code
+* After you complete the [Get started with custom policies](active-directory-b2c-get-started-custom.md) walkthrough, we recommend that you build your scenario by using your own custom policy files. For your reference, we have provided [Sample policy files](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization).
+* You can download the complete code from [Sample Visual Studio solution for reference](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization).

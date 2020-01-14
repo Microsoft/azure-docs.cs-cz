@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 5cae2bdd7d1f2f26e626c81ea95d2cee3cc8ae13
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc5c875f4ae54ed334318efc5a1d5610b89bdda5
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444793"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929586"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Klauzule ORDER BY v Azure Cosmos DB
 
@@ -52,7 +52,7 @@ ORDER BY <sort_specification>
    Klauzule ORDER BY vyžaduje, aby zásady indexování zahrnovaly index pro pole, která se seřadí. Modul runtime dotazu Azure Cosmos DB podporuje řazení proti názvu vlastnosti a nikoli k vypočítaným vlastnostem. Azure Cosmos DB podporuje více pořadí podle vlastností. Chcete-li spustit dotaz s více OBJEDNÁVKAmi podle vlastností, měli byste pro pole, která jsou seřazena, definovat [složený index](index-policy.md#composite-indexes) .
    
 > [!Note] 
-> Pokud používáte sadu .NET SDK 3.4.0 nebo vyšší, mohou být v případě, že jsou vlastnosti seřazené proti, pro některé dokumenty nedefinovány, nutné pro tyto vlastnosti explicitně vytvořit index. Výchozí zásada indexování neumožní načtení dokumentů, kde není definovaná vlastnost Sort.
+> Pokud jsou vlastnosti seřazené proti pro některé dokumenty nedefinované a chcete je načíst v dotazech ORDER BY, musíte na těchto vlastnostech explicitně vytvořit index. Výchozí zásada indexování neumožní načtení dokumentů, kde není definovaná vlastnost Sort.
 
 ## <a name="examples"></a>Příklady
 

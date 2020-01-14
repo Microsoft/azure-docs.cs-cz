@@ -13,19 +13,22 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 01/10/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2585457d22b773407c41bb6ea82c30a25fbfb88e
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 905acd206ba574e092f41707c9a5625bcaed7f8d
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847144"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932378"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>Zobrazení historie aktivit a auditu pro role prostředků Azure v Privileged Identity Management
 
 S Azure Active Directory (Azure AD) Privileged Identity Management (PIM) můžete zobrazit aktivity, aktivace a historii auditu pro role prostředků Azure v rámci vaší organizace. Patří sem předplatná, skupiny prostředků a i virtuální počítače. Všechny prostředky v rámci Azure Portal, které využívají funkci řízení přístupu na základě role (RBAC) v Azure, můžou využívat možnosti správy zabezpečení a životního cyklu v Privileged Identity Management.
+
+> [!NOTE]
+> Pokud má vaše organizace samoobslužné funkce správy pro poskytovatele služeb, který používá [správu delegovaných prostředků Azure](../../lighthouse/concepts/azure-delegated-resource-management.md), tady se nezobrazí přiřazení rolí autorizovaných tímto poskytovatelem služeb.
 
 ## <a name="view-activity-and-activations"></a>Zobrazit aktivity a aktivace
 

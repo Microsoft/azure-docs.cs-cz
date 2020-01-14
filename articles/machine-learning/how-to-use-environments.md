@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: af6848e85db5d2a557835b063a499e3439557eb6
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 93a70bf0d9189368135b8007e95627fc64064c51
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690429"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932187"
 ---
 # <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>Použití prostředí pro školení & nasazení pomocí Azure Machine Learning.
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -344,6 +344,34 @@ service = Model.deploy(
 ## <a name="example-notebooks"></a>Příklad poznámkové bloky
 
 Tento [ukázkový Poznámkový blok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments) se rozbalí na základě konceptů a metod popsaných v tomto článku.
+
+## <a name="create-and-manage-environments-with-the-cli"></a>Vytváření a Správa prostředí pomocí rozhraní příkazového řádku
+
+[Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) zrcadlí většinu funkcí sady Python SDK a lze je použít k vytvoření a správě prostředí. Následující příkazy demonstrují základní funkce.
+
+Následující příkaz vygeneruje soubory pro výchozí definici prostředí v určeném adresáři. Tyto soubory jsou soubory JSON, které jsou podobné funkcím v rámci příslušné třídy v sadě SDK, a lze je použít k vytvoření nových prostředí s vlastními nastaveními. 
+
+```azurecli-interactive
+az ml environment scaffold -n myenv -d myenvdir
+```
+
+Spuštěním následujícího příkazu zaregistrujete prostředí ze zadaného adresáře.
+
+```azurecli-interactive
+az ml environment register -d myenvdir
+```
+
+Spuštěním následujícího příkazu zobrazíte seznam všech registrovaných prostředí.
+
+```azurecli-interactive
+az ml environment list
+```
+
+Zaregistrovaným prostředí stáhněte pomocí následujícího příkazu.
+
+```azurecli-interactive
+az ml environment download -n myenv -d downloaddir
+```
 
 ## <a name="next-steps"></a>Další kroky
 

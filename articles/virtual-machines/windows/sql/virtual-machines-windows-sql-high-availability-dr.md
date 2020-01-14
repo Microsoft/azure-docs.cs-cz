@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: ac62ec49803bf55bbe61e08e60b648dd6c268510
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f58bb534728660b85f7d16910dde7a37914fd571
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357962"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933959"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Vysoká dostupnost a zotavení po havárii pro SQL Server v Azure Virtual Machines
 
@@ -77,7 +77,7 @@ Můžete mít řešení zotavení po havárii pro vaše SQL Server databáze v h
 
 ## <a name="free-dr-replica-in-azure"></a>Bezplatná replika DR v Azure
 
-Pokud máte [program Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3), můžete implementovat plány hybridního zotavení po havárii s SQL Server pomocí skupin dostupnosti Always On nebo instancí clusteru s podporou převzetí služeb při selhání bez dalších nákladů na licencování pro pasivní instanci zotavení po havárii.
+Pokud máte [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3), můžete implementovat plány hybridního zotavení po havárii s SQL Server bez dalších nákladů na licencování pro pasivní instanci zotavení po havárii.
 
 Na následujícím obrázku instalační program používá SQL Server běžící na virtuálním počítači Azure, který využívá 12 jader jako repliku zotavení po havárii pro místní SQL Server nasazení pomocí 12 jader. V minulosti byste potřebovali licenci 12 jader SQL Server pro místní prostředí a nasazení virtuálního počítače Azure. Nové zvýhodnění nabízí výhody pasivních replik, které běží na virtuálním počítači Azure. Nyní byste potřebovali jenom licenci 12 jader SQL Server běžet místně, pokud je splněné kritérium zotavení po havárii pro pasivní repliku na virtuálním počítači Azure.
 

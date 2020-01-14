@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 08458777d8a8c5c74ac20a63245135ffaf0a5c04
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 03564effeee36ddb3316d48329ccab8ccfce75b9
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564111"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934300"
 ---
 # <a name="security-control-secure-configuration"></a>Řízení zabezpečení: zabezpečená konfigurace
 
@@ -27,7 +27,9 @@ Navažte, implementujte a aktivně spravujte (sledujte, vykazovat, opravujte) ko
 
 K údržbě konfigurací zabezpečení pro všechny prostředky Azure použijte Azure Policy nebo Azure Security Center.
 
-Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak nakonfigurovat a spravovat Azure Policy:
+
+https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ## <a name="72-establish-secure-operating-system-configurations"></a>7,2: Vytvoření zabezpečených konfigurací operačního systému
 
@@ -57,7 +59,7 @@ Jak nakonfigurovat a spravovat Azure Policy:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Porozumění efektům Azure Policy:
+Pochopení Azure Policych účinků:
 
 https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
@@ -85,7 +87,7 @@ https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-overview
 |--|--|--|
 | 7.5 | 5.3 | Zákazník |
 
-Pokud používáte vlastní definice zásad Azure, použijte Azure Azure DevOps nebo Azure Repos k bezpečnému ukládání a správě kódu.
+Pokud používáte vlastní definice zásad Azure, použijte k bezpečnému ukládání a správě kódu službu Azure DevOps nebo Azure Repos.
 
 Jak ukládat kód v Azure DevOps:
 
@@ -159,7 +161,7 @@ https://docs.microsoft.com/azure/security-center/security-center-remediate-recom
 
 Pomocí Azure Security Center můžete provádět kontroly základní hodnoty pro kontejnery a nastavení Docker.
 
-Principy Azure Security Centerch doporučení ke kontejneru:
+Vysvětlení Azure Security Centerch doporučení ke kontejneru:
 
 https://docs.microsoft.com/azure/security-center/security-center-container-recommendations
 
@@ -171,11 +173,17 @@ https://docs.microsoft.com/azure/security-center/security-center-container-recom
 
 K zjednodušení a zabezpečení správy tajných kódů pro cloudové aplikace můžete použít Identita spravované služby ve spojení s Azure Key Vault.
 
-Jak integrovat se spravovanými identitami Azure: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Jak integrovat se spravovanými identitami Azure:
 
-Vytvoření Key Vault: https://docs.microsoft.com/azure/key-vault/quick-create-portal
+https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Jak zajistit Key Vault ověřování pomocí spravované identity: https://docs.microsoft.com/azure/key-vault/managed-identity
+Postup vytvoření Key Vault:
+
+https://docs.microsoft.com/azure/key-vault/quick-create-portal
+
+Jak zajistit Key Vault ověřování pomocí spravované identity:
+
+https://docs.microsoft.com/azure/key-vault/managed-identity
 
 ## <a name="712-manage-identities-securely-and-automatically"></a>7,12: bezpečně a automaticky spravujte identity
 
@@ -185,7 +193,9 @@ Jak zajistit Key Vault ověřování pomocí spravované identity: https://docs.
 
 Spravované identity použijte k poskytování služeb Azure s automaticky spravovanou identitou ve službě Azure AD. Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování Azure AD, včetně Key Vault bez jakýchkoli přihlašovacích údajů ve vašem kódu.
 
-Postup konfigurace spravovaných identit: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
+Postup konfigurace spravovaných identit:
+
+https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
 ## <a name="713-eliminate-unintended-credential-exposure"></a>7,13: Eliminujte nezamýšlenou expozici přihlašovacích údajů
 
@@ -195,7 +205,9 @@ Postup konfigurace spravovaných identit: https://docs.microsoft.com/azure/activ
 
 Implementujte kontrolu přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault. 
 
-Jak nastavit skener přihlašovacích údajů: https://secdevtools.azurewebsites.net/helpcredscan.html
+Jak nastavit skener přihlašovacích údajů:
+
+https://secdevtools.azurewebsites.net/helpcredscan.html
 
 ## <a name="next-steps"></a>Další kroky
 

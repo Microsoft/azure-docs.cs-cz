@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c6f3405354136e11600ae059f3e05890d3534ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 266234f2872cfe99509d564c9460bfba4a0e2bf2
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422729"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932551"
 ---
 # <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Dokončení kontroly přístupu skupin a aplikací v prohlídekch Azure AD Access
 
@@ -34,7 +34,7 @@ Jako správce [vytvoříte kontrolu přístupu pro skupiny nebo aplikace](create
 - Azure AD Premium P2
 - Globální správce, Správce uživatelů, správce zabezpečení nebo čtecí modul zabezpečení
 
-Další informace najdete v tématu o [uživatelích, kteří musí mít licence?](access-reviews-overview.md#which-users-must-have-licenses).
+Další informace najdete v tématu [licenční požadavky](access-reviews-overview.md#license-requirements).
 
 ## <a name="view-an-access-review"></a>Zobrazit kontrolu přístupu
 

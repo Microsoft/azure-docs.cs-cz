@@ -1,19 +1,19 @@
 ---
 title: Jak zakoupit software v AppSource | Azure Marketplace
 description: Postup pro nákup softwaru v AppSource | Azure Marketplace.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/05/2019
-ms.openlocfilehash: 3ca07f060aebcea82895f0463cac693c66f0c629
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 70e51d7c05e93e7d5f4451fa383023605a02af99
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827732"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933498"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Jak koupit software na Microsoft AppSource
 
@@ -41,7 +41,7 @@ K nákupu nabídek SaaS potřebujete:
     > [!Note]
     > AppSource poskytuje výběr aplikací, ze kterých si můžete vybrat, včetně bezplatného, zkušebního a placeného předplatného. Tento článek popisuje, jak můžou být placené odběry zakoupeny prostřednictvím AppSource.
 
-1. Vyberte **získat hned**.
+1. Vyberte **Získat**.
 1. Vyberte plán:
 
     1. Nastavení počtu stanic
@@ -63,7 +63,7 @@ Po přijetí vaší objednávky může trvat několik sekund, než se potvrzení
     > [!Note]
     > Tento krok je povinný a může být kdykoli dokončen.
 
-## <a name="contact-support"></a>Kontaktování podpory
+## <a name="contact-support"></a>Kontakty na podporu
 
 [Lístek podpory můžete odeslat](https://admin.microsoft.com/Adminportal/Home?source=applauncher#/homepage) prostřednictvím centra pro správu Microsoft 365.
 

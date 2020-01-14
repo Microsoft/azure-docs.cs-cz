@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/28/2019
-ms.openlocfilehash: 23d2c771c8918099c0db2b68c290e7d90077932a
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ad9b4b69b0be34c89d03b677c1889e486aae0379
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687729"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931693"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Vývoj akcí skriptů pomocí HDInsight
 
@@ -161,13 +161,13 @@ HDInsight protokoluje výstup skriptu, který je zapsaný do STDOUT a STDERR. Ty
 > [!NOTE]  
 > Apache Ambari je k dispozici pouze v případě, že byl cluster úspěšně vytvořen. Použijete-li během vytváření clusteru akci skriptu a vytváření se nepovede, přečtěte si část věnované řešení problémů [Přizpůsobení clusterů HDInsight pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) pro jiné způsoby přístupu k protokolovaným informacím.
 
-Většina nástrojů a instalačních balíčků již zapisuje informace do STDOUT a STDERR, ale možná budete chtít přidat další protokolování. K odeslání textu do STDOUT použijte `echo`. Například:
+Většina nástrojů a instalačních balíčků již zapisuje informace do STDOUT a STDERR, ale možná budete chtít přidat další protokolování. K odeslání textu do STDOUT použijte `echo`. Příklad:
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-Ve výchozím nastavení `echo` odesílá řetězec do STDOUT. Pokud ho chcete směrovat do STDERR, přidejte `>&2` před `echo`. Například:
+Ve výchozím nastavení `echo` odesílá řetězec do STDOUT. Pokud ho chcete směrovat do STDERR, přidejte `>&2` před `echo`. Příklad:
 
 ```bash
 >&2 echo "An error occurred installing Foo"
@@ -322,10 +322,7 @@ Další informace o použití jednotlivých metod naleznete v tématu [How to us
 
 ## <a name="sampleScripts"></a>Ukázky vlastních skriptů
 
-Společnost Microsoft poskytuje ukázkové skripty pro instalaci komponent do clusteru HDInsight. Další příklady akcí skriptů najdete na následujících odkazech.
-
-* [Instalace a použití odstínu v clusterech HDInsight](hdinsight-hadoop-hue-linux.md)
-* [Instalace a použití Apache Giraph v clusterech HDInsight](hdinsight-hadoop-giraph-install-linux.md)
+Společnost Microsoft poskytuje ukázkové skripty pro instalaci komponent do clusteru HDInsight. Podívejte se [na téma Instalace a použití odstínu v clusterech HDInsight](hdinsight-hadoop-hue-linux.md) jako příklad akce skriptu.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

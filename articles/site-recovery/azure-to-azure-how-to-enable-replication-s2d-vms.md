@@ -2,18 +2,18 @@
 title: Replikace virtuálních počítačů Azure se systémem Prostory úložiště s přímým přístupem pomocí Azure Site Recovery
 description: Tento článek popisuje, jak replikovat virtuální počítače Azure se systémem Prostory úložiště s přímým přístupem pomocí Azure Site Recovery.
 services: site-recovery
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: asgang
-ms.openlocfilehash: 25ac7fa577aa33eda036c0f8544cc5ab03b12cd7
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.author: carmonm
+ms.openlocfilehash: 49a4f59e68a409696480f89ee4b606fbed2b77ed
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954468"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929845"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Replikace virtuálních počítačů Azure s Prostory úložiště s přímým přístupem do jiné oblasti
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak povolit zotavení po havárii virtuálních počít
 >Pro clustery prostorů úložiště s přímým přístupem jsou podporovány pouze body obnovení konzistentní vzhledem k selháním.
 >
 
-## <a name="introduction"></a>Úvod 
+## <a name="introduction"></a>Představení 
 [Prostory úložiště s přímým přístupem (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) je softwarově definované úložiště, které poskytuje způsob vytváření [clusterů hostů](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure) v Azure.  Cluster hostů v Microsoft Azure je cluster s podporou převzetí služeb při selhání tvořený IaaS virtuálními počítači. Umožňuje, aby hostované úlohy virtuálních počítačů převzaly služby při selhání napříč clustery hostů a dosáhli se vyšší dostupnosti pro aplikace, než jeden virtuální počítač Azure může poskytnout. Je vhodný ve scénářích, kdy virtuální počítač hostuje kritickou aplikaci, jako je SQL nebo souborový server se škálováním na více instancí atd.
 
 ## <a name="disaster-recovery-of-azure-virtual-machines-using-storage-spaces-direct"></a>Zotavení po havárii Azure Virtual Machines pomocí prostorů úložiště s přímým přístupem

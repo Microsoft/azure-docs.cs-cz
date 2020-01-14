@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 9081f74aee7ff503c7fe29cef6ca76e6d6b46a4f
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 543573610c2ea3ab0bcd89e1b8f4ee5f5a34dbc0
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564267"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934435"
 ---
 # <a name="security-control-identity-and-access-control"></a>Řízení zabezpečení: identita a Access Control
 
@@ -63,9 +63,11 @@ Další informace: https://docs.microsoft.com/azure/active-directory/privileged-
 
 Kdykoliv je to možné, použijte Azure Active Directory jednotného přihlašování (SSO), než nakonfigurujete jednotlivé samostatné přihlašovací údaje na službu. Použijte Azure Security Center doporučení pro správu identit a přístupu.
 
-Princip jednotného přihlašování s Azure AD: https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+Vysvětlení jednotného přihlašování pomocí služby Azure AD:
 
-## <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: použijte vícefaktorové ověřování pro veškerý přístup založený na Azure Active Directory.
+https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+
+## <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Používejte vícefaktorové ověřování pro veškerý přístup založený na Azure Active Directory
 
 | ID Azure | ID služby CI | Odpovědnost |
 |--|--|--|
@@ -89,9 +91,13 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 Použijte privilegovaným přístupem (Privileged Access Workstations) s MFA nakonfigurovaným pro přihlášení k prostředkům Azure a jejich konfigurace.
 
-Další informace o pracovních stanicích s privilegovaným přístupem: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+Další informace o pracovních stanicích s privilegovaným přístupem:
 
-Jak povolit vícefaktorové ověřování v Azure: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+
+Jak povolit vícefaktorové ověřování v Azure:
+
+https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
 ## <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: protokolování a upozornění na podezřelou aktivitu z účtů pro správu
@@ -130,19 +136,25 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-
 
 Jako centrální ověřování a systém autorizací použijte Azure Active Directory (AAD). AAD chrání data pomocí silného šifrování pro data v klidovém umístění a při přenosu. AAD taky soli, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele.
 
-Postup vytvoření a konfigurace instance AAD: https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
+Jak vytvořit a nakonfigurovat instanci AAD:
+
+https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
 ## <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: pravidelně kontrolovat a sjednotit přístup uživatelů
 
 | ID Azure | ID služby CI | Odpovědnost |
 |--|--|--|
-| 3.1 | 16,9, 16,10 | Zákazník |
+| 3,10 | 16,9, 16,10 | Zákazník |
 
 Azure AD poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé. 
 
-https://docs.microsoft.com/azure/active-directory/reports-monitoring/ vytváření sestav Azure AD
+Vytváření sestav Azure AD:
 
-Jak používat kontroly přístupu Azure identity: https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+
+Jak používat kontroly přístupu Azure identity:
+
+https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 ## <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: monitorování pokusů o přístup k deaktivovaným účtům
 
@@ -186,7 +198,7 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 Ve scénářích podpory, kde Microsoft potřebuje získat přístup k zákaznickým datům, Customer Lockbox poskytuje rozhraní pro kontrolu a schválení nebo odmítnutí žádostí o přístup k datům zákazníků.
 
-Princip Customer Lockbox:
+Pochopení Customer Lockbox:
 
 https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview
 

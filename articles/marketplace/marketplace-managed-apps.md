@@ -1,53 +1,53 @@
 ---
-title: Průvodce publikováním nabídky aplikací spravovaných aplikacemi Azure
-description: Tento článek popisuje požadavky na publikování spravované aplikace na webu Marketplace.
+title: Azure Applications Managed Application Offer Publishing Guide
+description: This article describes the requirements to publish a managed application in the Marketplace
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/14/2018
-ms.author: v-qiwe
-ms.openlocfilehash: bdb2a54748c734d7b44dfa0b1f106d37e817f80e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: evansma
+ms.openlocfilehash: 764212ac148b336b07d29c29a72314c5d889d47c
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822931"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934656"
 ---
-# <a name="azure-applications-managed-application-offer-publishing-guide"></a>Aplikace Azure: Průvodce publikováním nabídky spravovaných aplikací
+# <a name="azure-applications-managed-application-offer-publishing-guide"></a>Azure Applications: Managed Application Offer Publishing Guide
 
-Spravovaná aplikace je jedním z hlavních způsobů publikování řešení na webu Marketplace. Tento průvodce vám pomůže pochopit požadavky této nabídky. 
+A managed application is one of the main ways to publish a solution in the Marketplace. Use this guide to understand the requirements for this offer. 
 
-Jedná se o nabídky transakcí, které se nasazují a účtují prostřednictvím webu Marketplace. Volání akce, které uživatel vidí, je "získat hned".
+These are transaction offers which are deployed and billed through the Marketplace. The call to action that a user sees is "Get It Now."
 
-Použití aplikace Azure: typ nabídky spravované aplikace, pokud jsou potřeba následující podmínky:
-- K nasazení řešení založeného na předplatném pro zákazníka můžete použít buď virtuální počítač, nebo celé řešení založené na IaaS.
-- Vy nebo váš zákazník požadujete, aby bylo řešení spravované partnerem.
+Use the Azure app: managed app offer type when the following conditions are required:
+- You deploy either a subscription-based solution for your customer using either a VM or an entire IaaS-based solution.
+- You or your customer require that the solution is managed by a partner.
 
 >[!NOTE]
->Partner může být například typu SI nebo poskytovatele spravované služby (MSP).  
+>For example, a partner may be an SI or managed service provider (MSP).  
 
-## <a name="managed-application-offer"></a>Nabídka spravovaných aplikací
+## <a name="managed-application-offer"></a>Managed Application Offer
 
 |Požadavky |Podrobnosti  |
 |---------|---------|
-|Nasazené do předplatného Azure zákazníka | Spravované aplikace musí být nasazené v předplatném zákazníka a můžou je spravovat třetí stranou. | 
-|Fakturace a měření    |  Prostředky se zřídí v předplatném Azure zákazníka. Virtuální počítače s průběžnými platbami (PAYGO) se budou s zákazníky účtovat prostřednictvím Microsoftu, které se účtují prostřednictvím předplatného Azure zákazníka (PAYGO). <br> V případě používání vlastní licence se společnost Microsoft bude účtovat náklady na infrastrukturu, které se účtují v rámci předplatného zákazníka. poplatky za licence na software budete účtovat přímo zákazníkovi.        |
-|Virtuální pevný disk kompatibilní s Azure (VHD)    |   Virtuální počítače musí být postavené na Windows nebo Linux.<ul> <ul> <li>Další informace o vytvoření virtuálního pevného disku se systémem Linux najdete v tématu [distribuce systému Linux schválené v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>Další informace o vytvoření virtuálního pevného disku s Windows najdete v tématu [Vytvoření virtuálního pevného disku kompatibilního s Azure](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md).</li> </ul> |
+|Deployed to a customer's Azure subscription | Managed Apps must be deployed in the customer's subscription and can be managed by a third party. | 
+|Billing and metering    |  The resources will be provisioned in the customer's Azure subscription. Pay-as-you-go (PAYGO) virtual machines will be transacted with the customer via Microsoft, billed via the customer's Azure subscription (PAYGO). <br> In the case of bring-your-own-license, while Microsoft will bill infrastructure costs incurred in the customer subscription, you will transact your software licensing fees to the customer directly.        |
+|Azure-compatible virtual hard disk (VHD)    |   VMs must be built on Windows or Linux.<ul> <ul> <li>For more information about creating a Linux VHD, see [Linux distributions endorsed on Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>For more information about creating a Windows VHD, see [Create an Azure-compatible VHD](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md).</li> </ul> |
 
 >[!NOTE]
-> Spravované aplikace musí být možné nasadit prostřednictvím webu Marketplace. Pokud je záležitost komunikace s zákazníkem, měli byste se obrátit na zúčastněné zákazníky až po povolení sdílení potenciálních zákazníků.  
+> Managed apps must be deployable through the Marketplace. If customer communication is a concern, then you should reach out to interested customers after you have enabled lead sharing.  
 
 >[!Note]
->Výslovný souhlas kanálu pro partnery Cloud Solution Providers (CSP) je teď k dispozici.  Další informace o marketingu vaší nabídky prostřednictvím kanálů partnerů Microsoft CSP najdete v tématu [Poskytovatelé cloudových řešení](./cloud-solution-providers.md) .
+>Cloud Solution Providers (CSP) partner channel opt-in is now available.  Please see [Cloud Solution Providers](./cloud-solution-providers.md) for more information on marketing your offer through the Microsoft CSP partner channels.
 
 ## <a name="next-steps"></a>Další kroky
-Pokud jste to ještě neudělali, 
+If you haven't already done so, 
 
-- [Zaregistrujte](https://azuremarketplace.microsoft.com/sell) se na webu Marketplace.
+- [Register](https://azuremarketplace.microsoft.com/sell) in the marketplace.
 
-Pokud jste zaregistrováni a vytváříte novou nabídku nebo pracujete na stávajícím typu,
+If you're registered and are creating a new offer or working on an existing one,
 
-- [Přihlaste se k portál partnerů cloudu](https://cloudpartner.azure.com) a vytvořte nebo dokončete vaši nabídku.
+- [Sign in to the Cloud Partner Portal](https://cloudpartner.azure.com) to create or complete your offer.

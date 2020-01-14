@@ -2,19 +2,19 @@
 title: Běžné problémy při vytváření virtuálního pevného disku (FAQ) pro Azure Marketplace
 description: Nejčastější dotazy týkající se vytvoření virtuálního pevného disku a souvisejících problémů.
 services: Azure Marketplace
-author: HannibalSII
+author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/02/2018
-ms.author: hascipio
+ms.author: evansma
 ms.reviewer: v-divte; v-miclar
-ms.openlocfilehash: 1d4224d8f1f735ecef3d4551e3032b916e81dc3c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 152a2f6fda081b2612197cc4848207b336adf8dc
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826618"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934266"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>Běžné problémy při vytváření virtuálního pevného disku (FAQ)
 
@@ -73,9 +73,9 @@ Následující článek podrobně popisuje, jak používat rozšíření vlastn�
 
 ## <a name="are-32-bit-applications-or-services-supported-in-the-azure-marketplace"></a>Jsou 32 aplikace nebo služby podporované v Azure Marketplace?
 
-Obecně platí, ne.  Podporované operační systémy a standardní služby pro virtuální počítače Azure jsou v 64 bitů.  Z technického hlediska ale většina 64 operačních systémů podporuje spouštění 32 verzí aplikací z důvodu zpětné kompatibility.  Používání 32ch aplikací v rámci řešení virtuálních počítačů se ale nepodporuje, takže se proto *důrazně nedoporučuje*.  Místo toho aplikaci znovu zkompilujte jako 64 projekt.
+Obecně to možné není.  Podporované operační systémy a standardní služby pro virtuální počítače Azure jsou v 64 bitů.  Z technického hlediska ale většina 64 operačních systémů podporuje spouštění 32 verzí aplikací z důvodu zpětné kompatibility.  Používání 32ch aplikací v rámci řešení virtuálních počítačů se ale nepodporuje, takže se proto *důrazně nedoporučuje*.  Místo toho aplikaci znovu zkompilujte jako 64 projekt.
 
-Další informace najdete v následujících článcích:
+Další informace najdete v těchto článcích:
 - [Spouštění 32 aplikací](https://docs.microsoft.com/windows/desktop/WinProg64/running-32-bit-applications)
 - [Podpora pro 32 operační systémy ve virtuálních počítačích Azure](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)
 - [Podpora serverového softwaru Microsoft pro virtuální počítače Microsoft Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)

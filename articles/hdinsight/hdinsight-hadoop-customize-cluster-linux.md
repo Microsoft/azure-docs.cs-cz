@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: df5dbfc9c86294c7ec046d3a02832192bf67b4ce
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 555596ba1040fcbd5c9131869fd275d749e0d734
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747085"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934027"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Přizpůsobení clusterů Azure HDInsight pomocí akcí skriptů
 
@@ -148,7 +148,6 @@ HDInsight poskytuje skripty pro instalaci následujících komponent do cluster�
 | --- | --- |
 | Přidat účet Azure Storage |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Viz [Přidání dalších účtů úložiště do služby HDInsight](hdinsight-hadoop-add-storage.md). |
 | Instalace rozhraní Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Viz [instalace a použití odstínu v clusterech HDInsight Hadoop](hdinsight-hadoop-hue-linux.md). |
-| Nainstalovat Giraph |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh`. Viz [instalace Apache Giraph v clusterech HDInsight Hadoop](hdinsight-hadoop-giraph-install-linux.md). |
 | Předběžné načtení knihoven podregistru |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`. Viz [Přidání vlastních knihoven Apache Hive při vytváření clusteru HDInsight](hdinsight-hadoop-add-hive-libraries.md). |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>Použití akce skriptu během vytváření clusteru
@@ -221,7 +220,7 @@ Může to trvat několik minut, než se cluster vytvoří.
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-hdinsight-net-sdk"></a>Použití akce skriptu během vytváření clusteru ze sady HDInsight .NET SDK
 
-Sada HDInsight .NET SDK poskytuje klientské knihovny, které usnadňují práci s HDInsight z aplikace .NET. Ukázku kódu najdete v tématu [vytváření clusterů se systémem Linux v HDInsight pomocí sady .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-script-action).
+Sada HDInsight .NET SDK poskytuje klientské knihovny, které usnadňují práci s HDInsight z aplikace .NET. Ukázku kódu naleznete v tématu [akce skriptu](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#script-actions).
 
 ## <a name="apply-a-script-action-to-a-running-cluster"></a>Použití akce skriptu u běžícího clusteru
 
@@ -507,7 +506,6 @@ Existují dvě výjimky:
 ## <a name="next-steps"></a>Další kroky
 
 * [Vývoj skriptů akcí skriptu pro HDInsight](hdinsight-hadoop-script-actions-linux.md)
-* [Instalace a použití Apache Giraph v clusterech HDInsight](hdinsight-hadoop-giraph-install-linux.md)
 * [Přidání dalšího úložiště do clusteru HDInsight](hdinsight-hadoop-add-storage.md)
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/cluster-provisioning-states.png "Fáze při vytváření clusteru"

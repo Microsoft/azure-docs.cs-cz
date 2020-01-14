@@ -1,19 +1,19 @@
 ---
 title: Vytvoření nové nabídky aplikací Azure na komerčním webu Marketplace
 description: Postup vytvoření nové nabídky aplikací Azure pro výpis nebo prodej v Azure Marketplace, AppSource nebo prostřednictvím programu Cloud Solution Provider (CSP) pomocí portálu pro komerční tržiště v partnerském centru Microsoftu.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: d7e05f12c04136c8394dbcb27b7a950fc5ce85d9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 60a3392474d11c306d28b9d95668a1e783cdfbb0
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74281269"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930714"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -67,7 +67,7 @@ Přečtěte si následující dokumentaci k aplikaci Azure, která poskytuje ryc
     * [Vytváření definičních souborů](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
     * [Publikování aplikace Marketplace](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app)
 
-* Vzory
+* Ukázky:
 
     * [Azure CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
     * [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
@@ -179,7 +179,7 @@ Pro každý jazyk nebo trh budete muset zadat podrobnosti o Marketplace (název 
 > [!NOTE]
 > Obsah seznamu nabídek (například popis, dokumenty, snímky obrazovky, podmínky použití atd.) nemusí být v angličtině, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v [jazykovém jazyce, který není v angličtině]." Je také přijatelné poskytnout *užitečnou adresu URL pro odkaz* k poskytnutí obsahu v jiném jazyce, než který je použit v obsahu nabídky.
 
-### <a name="name"></a>Název
+### <a name="name"></a>Name (Název)
 
 Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole se předem vyplní textem, který jste zadali jako **alias nabídky** při vytváření nabídky, ale tuto hodnotu můžete změnit. Tento název může být ochranných známek (a může obsahovat symboly ochranných známek a autorských práv). Název nesmí být delší než 50 znaků a nesmí obsahovat žádné emoji.
 
@@ -319,7 +319,7 @@ Služba Azure Government Services zpracovává data, která se vztahují na urč
 
 Karta **seznam plánů** zobrazuje informace o seznamu specifického plánu, které se mohou lišit mezi různými plány pro stejnou nabídku.
 
-### <a name="name"></a>Název
+### <a name="name"></a>Name (Název)
 
 Předem vyplněné podle vašeho jména, které jste přiřadili k plánu při jeho vytvoření.  Tento název se zobrazí jako název tohoto "plánu softwaru" zobrazeného na webu Marketplace.  Může obsahovat až 100 znaků.
 
@@ -461,7 +461,7 @@ U každého objektu zabezpečení vyberte v seznamu (vlastník nebo přispěvate
 
 Použijte [zásady Azure](https://docs.microsoft.com/azure/governance/policy/overview) na spravovanou aplikaci, abyste určili požadavky na dodržování předpisů pro nasazené řešení.  Definice zásad a formátování hodnot parametrů najdete v tématu [Ukázky Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/index).  Můžete nakonfigurovat maximálně pět zásad a jenom jednu instanci jednotlivých zásad.  Některé zásady vyžadují další parametry.  Pro zásady auditu se vyžaduje standardní SKU.  Název zásad je omezený na 50 znaků.
 
-## <a name="co-sell"></a>Společný prodej
+## <a name="co-sell"></a>Spoluprodej
 
 Poskytování informací na kartě spoluprodeje je zcela volitelné pro publikování vaší nabídky. Je nutné, abyste dosáhli svého stavu připraveného pro spoluprodejní a IP adresy pro vlastní prodej. Informace, které poskytnete, budou využívat prodejní týmy Microsoftu k získání dalších informací o řešení při vyhodnocování svých potřeb pro zákazníky. Není k dispozici přímo pro zákazníky.
 
@@ -501,7 +501,7 @@ Možnost **výpisy testovacích jednotek** , která se nachází na kartě **tes
 
 - **User Manual** (povinné): podrobný návod k vašemu prostředí Test Drive. Ruční příručka uživatele by měla pokrývat přesně to, co chcete zákazníkovi získat ze zkušební jednotky a sloužit jako odkaz na případné dotazy, které mohou mít. Soubor musí být ve formátu PDF a po nahrání má název (maximálně 255 znaků).
 
-- **Videa: přidat videa** (volitelné): videa se dají nahrát na YouTube nebo Vimeo a tady se odkazuje pomocí odkazu a miniatury (533 x 324 pixelů), aby si zákazník mohli zobrazit návod k informacím, který jim pomůže lépe porozumět testovacím jednotkám, včetně Jak úspěšně používat funkce vaší nabídky a porozumět scénářům, které zvýrazní jejich výhody.
+- **Videa: Přidání videí** (volitelné): videa je možné nahrát na YouTube nebo Vimeo a tady je odkazováno s odkazem a obrázkem miniatury (533 x 324 pixelů), aby zákazník mohl zobrazit návod k informacím, který jim pomůže lépe pochopit testovací verzi, včetně toho, jak úspěšně používat funkce vaší nabídky a pochopit scénáře, které zvýrazní jejich výhody.
   - **Název** (povinné)
   - **Adresa URL (jenom YouTube nebo Vimeo)** (povinné)
   - **Miniatura (533 x 324 px)** : soubor obrázku musí být ve formátu PNG.

@@ -12,21 +12,24 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/25/2019
+ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e20edcb5e2406c216711a2e0f696ef06e19fe21e
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8a9841e2a8a8ec0aede94f849b7818c86f9862df
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74710396"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934086"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-rest-api"></a>Seznam přiřazení rolí pomocí Azure RBAC a REST API
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] tomto článku se dozvíte, jak zobrazit seznam přiřazení rolí pomocí REST API.
 
-## <a name="list-role-assignments"></a>Seznam přiřazení rolí
+> [!NOTE]
+> Pokud má vaše organizace samoobslužné funkce správy pro poskytovatele služeb, který používá [správu delegovaných prostředků Azure](../lighthouse/concepts/azure-delegated-resource-management.md), tady se nezobrazí přiřazení rolí autorizovaných tímto poskytovatelem služeb.
+
+## <a name="list-role-assignments"></a>Zobrazení seznamu přiřazení rolí
 
 V části RBAC pro vypsání přístupu k seznamu se zobrazí seznam přiřazení rolí. K vypsání přiřazení rolí použijte jedno ze [seznamu přiřazení rolí – seznam](/rest/api/authorization/roleassignments/list) rozhraní REST API. K upřesnění výsledků zadáte obor a volitelný filtr.
 

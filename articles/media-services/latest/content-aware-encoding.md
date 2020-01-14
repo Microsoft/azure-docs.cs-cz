@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 9389466b6291542563c068706479bf981c5880da
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: c2846759a8daa04fc5c1d3b7f69e2c061bacb272
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75692755"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933486"
 ---
 # <a name="experimental-preset-for-content-aware-encoding"></a>Experimentální přednastavení pro kódování zohledňující obsah
 
@@ -29,7 +29,9 @@ Po Netflix publikování [blogu](https://medium.com/netflix-techblog/per-title-e
 
 V rané 2017 společnost Microsoft vydala přednastavení [adaptivního streamování](autogen-bitrate-ladder.md) , které řeší problém proměnlivosti kvality a rozlišení zdrojových videí. Naši zákazníci měli různou škálu obsahu, některé na webu 1080p, dalších ve 720p a pár v SD a nižších rozlišeních. Kromě toho ne všechen zdrojový obsah byl vysoce kvalitní mezzanines z filmu nebo TV studia. Přednastavení adaptivního streamování řeší tyto problémy tím, že zajišťuje, že žebřík přenosů nikdy nepřekračuje rozlišení nebo průměrnou rychlost vstupního mezzanineu.
 
-Experimentální přednastavení kódování zohledňující obsah rozšiřuje tento mechanismus tím, že začleňuje vlastní logiku, která umožňuje, aby kodér hledal optimální přenosovou hodnotu pro dané řešení, ale bez nutnosti rozsáhlých výpočetních analýz. Výsledkem je, že tato nová předvolba vytvoří výstup, který má nižší přenosovou rychlost než přednastavení adaptivního streamování, ale s vyšší kvalitou. Podívejte se na následující ukázkové grafy, které znázorňují porovnání pomocí metrik kvality, jako je [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) a [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion). Zdroj byl vytvořen zřetězením krátkých klipů vysoce složitých snímků z filmů a televizních pořadů, které mají za cíl zátěž kodéru. Podle definice Tato předvolba vytvoří výsledky, které se liší od obsahu k obsahu – to také znamená, že u určitého obsahu se nemusí významně snížit přenosová rychlost nebo zlepšení kvality.
+Nová předvolba kódování zohledňující obsah rozšiřuje tento mechanismus tím, že začleňuje vlastní logiku, která umožňuje, aby kodér hledal optimální přenosovou hodnotu pro dané řešení, ale bez nutnosti rozsáhlé výpočetní analýzy. Tato předvolba vytvoří sadu rychlostmi zarovnaných na skupinu GOP. Vzhledem k jakémukoli vstupnímu obsahu služba provádí počáteční odlehčenou analýzu vstupního obsahu a výsledky používá k určení optimálního počtu vrstev, vhodné rychlosti a nastavení rozlišení pro doručování pomocí adaptivního streamování. Tato předvolba je zvláště platná pro videa s nízkou a střední složitostí, kde výstupní soubory budou s nižšími přenosovými rychlostmi, než je přednastavení adaptivního streamování, ale kvalita, která uživatelům poskytuje dobrý zážitek. Výstup bude obsahovat soubory MP4 se zakládaným videem a zvukem.
+
+Podívejte se na následující ukázkové grafy, které znázorňují porovnání pomocí metrik kvality, jako je [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) a [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion). Zdroj byl vytvořen zřetězením krátkých klipů vysoce složitých snímků z filmů a televizních pořadů, které mají za cíl zátěž kodéru. Podle definice Tato předvolba vytvoří výsledky, které se liší od obsahu k obsahu – to také znamená, že u určitého obsahu se nemusí významně snížit přenosová rychlost nebo zlepšení kvality.
 
 ![Frekvence – deformace (RD) – křivka pomocí PSNR](media/cae-experimental/msrv1.png)
 
@@ -39,7 +41,7 @@ Experimentální přednastavení kódování zohledňující obsah rozšiřuje t
 
 **Obrázek 2: křivka deformace (RD) pomocí metriky VMAF pro zdroj s vysokou složitostí**
 
-Předvolba je aktuálně vyladěná pro vysokou složitost a vysoce kvalitní zdrojová videa (filmy, televizní pořady). Práce probíhá s cílem přizpůsobovat obsah s nízkou složitostí (například prezentace aplikace PowerPoint) a také kvalitní videa. Tato předvolba také používá stejnou sadu rozlišení jako přednastavení adaptivního streamování. Microsoft pracuje na metodách pro výběr minimální sady rozlišení na základě obsahu. Takto jsou výsledky jiné kategorie zdrojového obsahu, kde kodér dokázal určit, že vstup má špatnou kvalitu (mnohé kompresní artefakty z důvodu nízké přenosové rychlosti). Všimněte si, že pomocí experimentální předvolby se kodér rozhodl vytvořit pouze jednu výstupní vrstvu – s dostatečně nízkou rychlostí, aby většina klientů mohla přehrát datový proud bez zastavení.
+Níže jsou uvedeny výsledky jiné kategorie zdrojového obsahu, kde kodér dokázal určit, že vstup má špatnou kvalitu (mnohé kompresní artefakty z důvodu nízké přenosové rychlosti). Všimněte si, že u přednastaveného obsahu, kodér se rozhodl vytvořit jenom jednu výstupní vrstvu – s dostatečně nízkou přenosovou rychlostí, aby většina klientů mohla přehrát datový proud bez zastavení.
 
 ![Křivka VP pomocí PSNR](media/cae-experimental/msrv3.png)
 
@@ -62,16 +64,16 @@ TransformOutput[] output = new TransformOutput[]
       // You can customize the encoding settings by changing this to use "StandardEncoderPreset" class.
       Preset = new BuiltInStandardEncoderPreset()
       {
-         // This sample uses the new experimental preset for content-aware encoding
-         PresetName = EncoderNamedPreset.ContentAwareEncodingExperimental
+         // This sample uses the new preset for content-aware encoding
+         PresetName = EncoderNamedPreset.ContentAwareEncoding
       }
    }
 };
 ```
 
 > [!NOTE]
-> Předpona "experimentální" se tady používá k signalizaci, že se základní algoritmy pořád rozvíjejí. V průběhu času mohou být v průběhu času provedeny změny logiky používané k tvorbě přenosových žebříků, s cílem sbližování algoritmu, který je robustní a přizpůsobený nejrůznějším vstupním podmínkám. Úlohy kódování s použitím této předvolby se budou dál účtovat na základě výstupních minut a výstupní Asset se dá doručit z našich koncových bodů streamování v protokolech, jako jsou POMLČKy a HLS.
+> Základní algoritmy jsou předmětem dalších vylepšení. V průběhu času mohou být v průběhu času provedeny změny logiky používané pro generování přenosových žebříků s cílem poskytnout algoritmus, který je robustní a přizpůsobí se široké škále vstupních podmínek. Úlohy kódování s použitím této předvolby se budou dál účtovat na základě výstupních minut a výstupní Asset se dá doručit z našich koncových bodů streamování v protokolech, jako jsou POMLČKy a HLS.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se seznámili s touto novou možností optimalizace vašich videí, vás budeme zvát k tomu, abyste si ji vyzkoušeli. Můžete nám poslat zpětnou vazbu pomocí odkazů na konci tohoto článku nebo nás přímo na <amsved@microsoft.com>.
+Teď, když jste se seznámili s touto novou možností optimalizace vašich videí, vás budeme zvát k tomu, abyste si ji vyzkoušeli. Pomocí odkazů na konci tohoto článku můžete poslat nám svůj názor.

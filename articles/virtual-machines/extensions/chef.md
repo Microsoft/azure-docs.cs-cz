@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: 2b69a17c7f9de62187d9dc99f7c1d5c5b74c25ad
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 8a5b54131210d243015b37bf234408fd9d2b4c12
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073187"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933612"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Rozšíření VM VM pro Linux a Windows
 
@@ -67,26 +67,26 @@ Následující JSON zobrazuje schéma rozšíření virtuálního počítače pr
 
 ### <a name="core-property-values"></a>Hodnoty základních vlastností
 
-| Název | Hodnota / příklad | Typ dat
+| Name (Název) | Hodnota / příklad | Typ dat
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (date) |
-| publisher | `Chef.Bootstrap.WindowsAzure` | řetězec |
-| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | řetězec |
+| publisher | `Chef.Bootstrap.WindowsAzure` | string |
+| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
 | typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Nastavení
 
-| Název | Hodnota / příklad | Typ dat | Požadováno?
+| Name (Název) | Hodnota / příklad | Typ dat | Povinné?
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | Ano |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | řetězec | Ano |
-| settings/runlist | `recipe[mycookbook::default]` | řetězec | Ano |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | Ano |
+| settings/runlist | `recipe[mycookbook::default]` | string | Ano |
 
 ### <a name="protected-settings"></a>Chráněná nastavení
 
-| Název | Příklad | Typ dat | Požadováno?
+| Name (Název) | Příklad: | Typ dat | Povinné?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | řetězec | Ano |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | Ano |
 
 <!--
 ### Linux-specific settings
@@ -151,6 +151,9 @@ C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\
 | 51 | Toto rozšíření není v operačním systému virtuálního počítače podporované. | |
 
 Další informace o řešení potíží najdete v [souboru Readme s rozšířením virtuálního počítače sady virtuálních počítačů](https://github.com/chef-partners/azure-chef-extension).
+
+> [!NOTE]
+> U cokoli jiného, co se přímo týká, kontaktujte [podporu](https://www.chef.io/support/)pro výrobce.
 
 ## <a name="next-steps"></a>Další kroky
 

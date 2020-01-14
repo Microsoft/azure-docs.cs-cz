@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: 575dda47b5e6fc0d70ef80dfd7a1baba0f63be2d
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: a96a3de7c8ad309986417e21a13d5e18f56cbd24
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74814851"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934128"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Časté otázky týkající se řeči na text
 
@@ -79,7 +79,7 @@ Odpověď **: REST API**omezuje požadavky na 25 za 5 sekund. Podrobnosti najdet
 
 **Otázka: jak se mi účtuje zvuk Dual Channel?**
 
-**O**: Pokud odesíláte každý kanál samostatně (každý kanál ve vlastním souboru), bude se vám účtovat po dobu trvání souboru. Pokud odešlete jeden soubor s každým multiplexem kanálu, bude se vám účtovat doba trvání jednoho souboru.
+Odpověď **: Pokud**odešlete každý kanál samostatně (každý kanál ve vlastním souboru), bude se vám účtovat doba trvání každého souboru. Pokud odešlete jeden soubor s každým multiplexem kanálu, bude se vám účtovat doba trvání jednoho souboru. Podrobnosti o cenách najdete na [stránce s cenami za Azure Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 > [!IMPORTANT]
 > Pokud máte k dispozici další aspekty ochrany osobních údajů, které vám zabrání v používání služby Custom Speech Service, obraťte se na jeden z kanálů podpory.
@@ -110,7 +110,7 @@ a buď
 
 - přístupový token pro vaše předplatné (viz [tady](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)),
 
-nebo
+– nebo –
 
 - ID prostředku pro vaše předplatné:
   - Přejít na [Azure Portal](https://portal.azure.com),

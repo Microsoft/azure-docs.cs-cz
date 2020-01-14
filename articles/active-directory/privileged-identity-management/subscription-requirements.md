@@ -13,45 +13,50 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 01/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6e336ec40ba2b9f6d3018e6a4f5b2ac721077aa
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 70696cdb95fffc1e5faa46ca1b5f2180633ed63a
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895122"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932324"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>Licenční požadavky pro použití Privileged Identity Management
 
 Aby bylo možné používat Azure Active Directory (Azure AD) Privileged Identity Management (PIM), musí mít adresář platnou licenci. Kromě toho musí být licence přiřazeny správcům a relevantním uživatelům. Tento článek popisuje licenční požadavky pro použití Privileged Identity Management.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="valid-licenses"></a>Platné licence
 
-Pokud chcete použít Privileged Identity Management, musí mít adresář jednu z následujících placených nebo zkušebních licencí:
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-- Azure AD Premium P2
-- Enterprise Mobility + Security (EMS) E5
-- Microsoft 365 M5
+## <a name="how-many-licenses-must-you-have"></a>Kolik licencí potřebujete?
 
-Další informace najdete v tématu [Co je Azure Active Directory?](../fundamentals/active-directory-whatis.md).
+Zajistěte, aby měl váš adresář aspoň tolik licencí Azure AD Premium P2, protože máte zaměstnance, kteří budou provádět následující úlohy:
 
-## <a name="which-users-must-have-licenses"></a>Kteří uživatelé musí mít licence?
-
-Každý správce nebo uživatel, který komunikuje s nebo obdrží výhodu od Privileged Identity Management, musí mít licenci. Patří mezi ně například:
-
-- Správci s rolemi Azure AD spravovanými pomocí PIM
-- Správci s rolemi prostředků Azure spravovanými pomocí PIM
-- Správci přiřazení k roli správce privilegovaných rolí
 - Uživatelé přiřazení k rolím služby Azure AD, které jsou spravovány pomocí PIM
-- Uživatelé mohou schvalovat nebo odmítat požadavky v PIM
+- Uživatelé mohou schvalovat nebo odmítat žádosti o aktivaci v PIM
 - Uživatelé přiřazení k roli prostředku Azure pomocí přiřazení za běhu nebo přímo (podle času)  
 - Uživatelé přiřazení k recenzi přístupu
 - Uživatelé, kteří provádějí kontroly přístupu
 
-Informace o tom, jak přiřadit licence k vašim účelům, najdete v tématu [přiřazení nebo odebrání licencí pomocí portálu Azure Active Directory](../fundamentals/license-users-groups.md).
+Licence Azure AD Premium P2 nejsou **požadovány** pro následující úlohy:
+
+- Pro uživatele s rolemi správce globálního správce nebo privilegované role, kteří nastavili PIM, konfigurují zásady, dostanou výstrahy a nastavují kontroly přístupu, nejsou potřeba žádné licence.
+
+Další informace o licencích najdete v tématu [přiřazení nebo odebrání licencí pomocí portálu Azure Active Directory](../fundamentals/license-users-groups.md).
+
+## <a name="example-license-scenarios"></a>Příklady scénářů licencí
+
+Tady je několik ukázkových scénářů licencí, které vám pomůžou určit počet licencí, které musíte mít.
+
+| Scénář | Výpočet | Počet licencí |
+| --- | --- | --- |
+| Woodgrove banka má 10 správců pro různá oddělení a 2 globální správce, kteří konfigurují a spravují PIM. Poskytují pět správcům nároků. | Pět licencí pro správce, kteří mají nárok | 5 |
+| Graphics design Institute má 25 správců, z nichž 14 spravuje PIM. Aktivace role vyžaduje schválení a v organizaci existují tři různé uživatele, kteří můžou schvalovat aktivace. | 14 licencí na opravňující role a tři schvalovatele | 17 |
+| Společnost Contoso má 50 správců, které 42 spravuje PIM. Aktivace role vyžaduje schválení a v organizaci existuje pět různých uživatelů, kteří můžou schvalovat aktivace. Společnost Contoso také provádí měsíční přezkoumání uživatelů přiřazených rolím Správce a kontrolorům, kteří nejsou v rolích správce spravovaných pomocí PIM. | 42 licencí na opravňující role + pět schvalovatelů + šest revidujících | 53 |
 
 ## <a name="what-happens-when-a-license-expires"></a>Co se stane, když platnost licence vyprší?
 
