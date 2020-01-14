@@ -3,12 +3,12 @@ title: Azure Functions – přehled verzí modulu runtime
 description: Azure Functions podporuje více verzí modulu runtime. Přečtěte si o rozdílech mezi nimi a o tom, jak zvolit tu, která je pro vás nejvhodnější.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 1172f1cba3dfc10fe08863626db0aa8e7a4bf173
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 88c151149d1d960746ff449819d31e8b32d98120
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769111"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921854"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions – přehled verzí modulu runtime
 

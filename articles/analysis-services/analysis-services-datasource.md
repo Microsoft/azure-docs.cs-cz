@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b08a124ade6e2db8ca27ef61c7f5a6b3fe839885
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4a99bfe8d8235400f9122423aa4592fc6898abc1
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442764"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922288"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Zdroje dat podporované v Azure Analysis Services
 
@@ -120,7 +120,9 @@ Pro cloudové zdroje dat:
 
 ## <a name="oauth-credentials"></a>Přihlašovací údaje OAuth
 
-Pro tabelární modely na úrovni kompatibility 1400 a vyšší úrovně kompatibility Azure SQL Database, Azure SQL Data Warehouse, Dynamics 365 a SharePointový seznam podporují přihlašovací údaje OAuth. Azure Analysis Services spravuje aktualizace tokenu pro zdroje dat OAuth, aby nedocházelo k vypršení časových limitů pro dlouhotrvající operace aktualizace. Pokud chcete generovat platné tokeny, nastavte přihlašovací údaje pomocí SSMS.
+Pro tabelární modely na úrovni kompatibility 1400 a vyšší s použitím režimu v paměti podporují Azure SQL Database, Azure SQL Data Warehouse, Dynamics 365 a SharePointový seznam přihlašovací údaje OAuth. Azure Analysis Services spravuje aktualizace tokenu pro zdroje dat OAuth, aby nedocházelo k vypršení časových limitů pro dlouhotrvající operace aktualizace. Pokud chcete generovat platné tokeny, nastavte přihlašovací údaje pomocí SSMS.
+
+Režim přímého dotazu není u přihlašovacích údajů OAuth podporován.
 
 ## <a name="next-steps"></a>Další kroky
 [Místní brána](analysis-services-gateway.md)   

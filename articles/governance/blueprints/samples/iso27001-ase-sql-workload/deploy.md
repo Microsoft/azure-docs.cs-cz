@@ -1,14 +1,14 @@
 ---
 title: Ukázka předmocného pomocného kódu ISO 27001/úlohy SQL
 description: Nasaďte kroky ukázkového plánu úloh ISO 27001 App Service Environment/SQL Database, včetně podrobností parametrů artefaktu podrobného plánu.
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 3cf3c062b1e8b69a6a0b9eb585b30ce2d5c4acfb
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 6b8f3b753f1dd8cfbc247a77f2004e3c4d3423bb
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546753"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922584"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Nasazení ukázka ISO 27001 App Service Environment/SQL Database úlohy podrobný plán
 
@@ -33,7 +33,7 @@ Před nasazením tohoto ukázkového podrobného plánu musí být ukázka podro
 
 Nejdřív implementujte ukázku podrobného plánu vytvořením nového podrobného plánu ve vašem prostředí pomocí ukázky jako Starter.
 
-1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
 
 1. Na stránce **Začínáme** na levé straně vyberte v části _vytvořit podrobný plán_tlačítko **vytvořit** .
 
@@ -52,7 +52,7 @@ Nejdřív implementujte ukázku podrobného plánu vytvořením nového podrobn�
 
 Vaše kopie ukázky podrobného plánu se teď vytvořila ve vašem prostředí. Je vytvořená v režimu **konceptu** a musí být **publikována** před tím, než bude možné ji přiřadit a nasadit. Kopii ukázky podrobného plánu můžete přizpůsobit vašemu prostředí a potřebám, ale tato změna se může přesunout mimo Standard ISO 27001.
 
-1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
 
 1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů Najděte kopii ukázky podrobného plánu a vyberte ji.
 
@@ -62,7 +62,7 @@ Vaše kopie ukázky podrobného plánu se teď vytvořila ve vašem prostředí.
 
 Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku je uvedeno, že jsou k dispozici parametry pro každé nasazení kopie ukázky podrobného plánu.
 
-1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
 
 1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů Najděte kopii ukázky podrobného plánu a vyberte ji.
 

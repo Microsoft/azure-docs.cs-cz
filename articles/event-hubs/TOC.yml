@@ -10,7 +10,7 @@
       href: event-hubs-capture-overview.md
     - name: Event Hubs úrovně Dedicated
       href: event-hubs-dedicated-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření centra událostí
@@ -65,7 +65,7 @@
     - name: Streamování dat do Azure Databricks pomocí služby Event Hubs
       href: ../azure-databricks/databricks-stream-from-eventhubs.md
       maintainContext: true
-- name: Ukázky
+- name: ukázky
   href: event-hubs-samples.md
 - name: Koncepty
   items:
@@ -164,7 +164,7 @@
           href: event-hubs-service-endpoints.md
         - name: Povolení bran firewall a integrace virtuálních sítí v oboru názvů Event Hubs
           href: event-hubs-tutorial-virtual-networks-firewalls.md
-        - name: Konfigurace klíčů spravovaných zákazníkem pro šifrování neaktivních uložených dat (Preview)
+        - name: Konfigurace klíčů spravovaných zákazníkem pro šifrování neaktivních uložených dat
           href: configure-customer-managed-key.md
     - name: Řešení potíží
       items:

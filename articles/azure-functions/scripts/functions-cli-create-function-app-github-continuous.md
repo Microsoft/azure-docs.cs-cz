@@ -4,16 +4,16 @@ description: Vytvořte aplikaci funkcí a nasaďte kód funkce z úložiště Gi
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc
-ms.openlocfilehash: 37dc0235b258f6d47f8813546fe953e92799454a
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: e424737b67be58ac0c3880ad2454c87fab803a15
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532807"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922722"
 ---
 # <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>Vytvoření aplikace funkcí v Azure nasazené z GitHubu
 
-Tento ukázkový skript Azure Functions vytvoří aplikaci funkcí s použitím [plánu Consumption](../functions-scale.md#consumption-plan) a její související prostředky. Skript také nakonfiguruje kód vaší funkce pro průběžné nasazování z úložiště GitHub. 
+Tento Azure Functions ukázkový skript vytvoří aplikaci funkcí pomocí [plánu spotřeby](../functions-scale.md#consumption-plan)společně se souvisejícími prostředky. Skript také nakonfiguruje kód vaší funkce pro průběžné nasazování z úložiště GitHub. 
 
 V této ukázce potřebujete:
 
@@ -42,7 +42,7 @@ Každý příkaz v tabulce odkazuje na příslušnou část dokumentace. Tento s
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Vytvoří účet úložiště vyžadovaný aplikací funkcí. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Vytvoří aplikaci funkcí v [plánu Consumption](../functions-scale.md#consumption-plan) bez serveru a přidruží ji k úložišti Git nebo Mercurial. |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Vytvoří aplikaci funkcí v [plánu spotřeby](../functions-scale.md#consumption-plan) bez serveru a přidruží ji k úložišti Git nebo Mercurial. |
 
 ## <a name="next-steps"></a>Další kroky
 

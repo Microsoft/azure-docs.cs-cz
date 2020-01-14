@@ -6,16 +6,16 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: c4e3ce148b3cc2db9681bd9c7a7ba0e33335d2cc
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a64f680adbfca08e334f51697a305c93a408e1e4
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925765"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922376"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus vazby pro službu Azure Functions
 
-Tento článek vysvětluje, jak pracovat s Azure Service Bus vazby ve službě Azure Functions. Azure Functions podporuje aktivaci a výstupní vazby pro fronty a témata Service Bus.
+Tento článek vysvětluje, jak pracovat s Azure Service Bus vazby ve službě Azure Functions. Služba Azure Functions podporuje vazby výstupu a triggerů pro témata a fronty služby Service Bus.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -496,7 +496,7 @@ let Run(myTimer: TimerInfo, log: ILogger, outputSbQueue: byref<string>) =
 
 ### <a name="output---java-example"></a>Výstup – příklad v jazyce Java
 
-Následující příklad ukazuje funkci Java, která odešle zprávu do fronty služby Service Bus `myqueue` aktivovaného požadavku HTTP.
+Následující příklad ukazuje funkci jazyka Java, která pošle zprávu do fronty Service Bus `myqueue` při aktivaci požadavkem HTTP.
 
 ```java
 @FunctionName("httpToServiceBusQueue")

@@ -1,14 +1,14 @@
 ---
 title: Ukázka podrobného plánu nasazení sdílených služeb ISO 27001
 description: Nasaďte kroky pro ukázka podrobného plánu sdílených služeb ISO 27001, včetně podrobností o parametrech artefaktu podrobného plánu.
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 1ef96a3ccffa705290a90caf436fe1857d9442a7
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: a9dabc99469321445006e449757a10fbc51aba87
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546711"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920692"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Ukázka podrobného plánu pro nasazování sdílených služeb ISO 27001
 
@@ -25,7 +25,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Nejdřív implementujte ukázku podrobného plánu vytvořením nového podrobného plánu ve vašem prostředí pomocí ukázky jako Starter.
 
-1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
 
 1. Na stránce **Začínáme** na levé straně vyberte v části _vytvořit podrobný plán_tlačítko **vytvořit** .
 
@@ -44,7 +44,7 @@ Nejdřív implementujte ukázku podrobného plánu vytvořením nového podrobn�
 
 Vaše kopie ukázky podrobného plánu se teď vytvořila ve vašem prostředí. Je vytvořená v režimu **konceptu** a musí být **publikována** před tím, než bude možné ji přiřadit a nasadit. Kopii ukázky podrobného plánu můžete přizpůsobit vašemu prostředí a potřebám, ale tato změna se může přesunout mimo Standard ISO 27001.
 
-1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
 
 1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů Najděte kopii ukázky podrobného plánu a vyberte ji.
 
@@ -54,7 +54,7 @@ Vaše kopie ukázky podrobného plánu se teď vytvořila ve vašem prostředí.
 
 Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku je uvedeno, že jsou k dispozici parametry pro každé nasazení kopie ukázky podrobného plánu.
 
-1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
 
 1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů Najděte kopii ukázky podrobného plánu a vyberte ji.
 
@@ -104,12 +104,12 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 |Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
 |\[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru|Volitelné Výchozí hodnota je _["none"]_ .|
-|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru|Volitelné Výchozí hodnota je _["none"]_ .|
+|\[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru|Volitelné Výchozí hodnota je _["none"]_ .|
 |\[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru|Volitelné Výchozí hodnota je _["none"]_ .|
-|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru|Volitelné Výchozí hodnota je _["none"]_ .|
+|\[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru|Volitelné Výchozí hodnota je _["none"]_ .|
 |Povolené typy prostředků|Přiřazení zásad|Povolené typy prostředků|Seznam typů prostředků, které je možné nasadit Tento seznam se skládá ze všech typů prostředků nasazených ve sdílených službách.|
 |Povolené skladové položky účtu úložiště|Přiřazení zásad|Povolené skladové položky úložiště|Seznam povolených SKU účtu úložiště pro diagnostické protokoly. Výchozí hodnota je _["Standard_LRS"]_ .|
-|Povolené SKU virtuálních počítačů|Přiřazení zásad|Seznam SKU virtuálních počítačů, které je možné nasadit Výchozí hodnota je _["Standard_DS1_v2", "Standard_DS2_v2"]_ .|
+|Povolené skladové položky virtuálních počítačů|Přiřazení zásad|Seznam SKU virtuálních počítačů, které je možné nasadit Výchozí hodnota je _["Standard_DS1_v2", "Standard_DS2_v2"]_ .|
 |Plán iniciativy pro ISO 27001|Přiřazení zásad|Typy prostředků pro audit diagnostických protokolů|Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
 |Log Analytics skupina prostředků|Skupina prostředků|Name (Název)|**Uzamkl** – zřetězí **název organizace** s `-sharedsvsc-log-rg`, aby se skupina prostředků jedinečná.|
 |Log Analytics skupina prostředků|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|

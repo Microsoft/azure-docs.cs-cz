@@ -10,18 +10,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 3cd3cef4d70ea3f78d7e135ad01e0e00b38c60b9
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 6fc4b40e9b65f17b0af61b601826279e99410ed1
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666274"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920761"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Výstrahy zabezpečení ve službě Azure Security Center
 
 V Azure Security Center existuje celá řada výstrah pro mnoho různých typů prostředků. Security Center generuje výstrahy pro prostředky nasazené v Azure a také pro prostředky nasazené v místních i hybridních cloudových prostředích.
 
-Rozšířená detekce je k dispozici v úrovni Standard služby Azure Security Center. K dispozici je bezplatná zkušební verze. Upgrade můžete provést z nabídky cenových úrovní v [Zásadách zabezpečení](security-center-pricing.md). Další informace o cenách naleznete na stránce [služby Security Center](https://azure.microsoft.com/pricing/details/security-center/).
+Výstrahy zabezpečení se spouštějí pokročilými detekcemi a jsou dostupné jenom na úrovni Standard Azure Security Center. K dispozici je bezplatná zkušební verze. Upgrade můžete provést z nabídky cenových úrovní v [Zásadách zabezpečení](security-center-pricing.md). Další informace o cenách naleznete na stránce [služby Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## Reakce na dnešní hrozby <a name="respond-threats"></a>
 

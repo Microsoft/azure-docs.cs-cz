@@ -1,19 +1,19 @@
 ---
 title: REST API verze 2019-05-06-Preview
 titleSuffix: Azure Cognitive Search
-description: Služba Azure Kognitivní hledání REST API verze 2019-05-06-Preview zahrnuje experimentální funkce, jako jsou znalostní báze Knowledge Store a zákaznické šifrovací klíče spravované zákazníky.
+description: Služba Azure Kognitivní hledání REST API verze 2019-05-06-Preview zahrnuje experimentální funkce, jako je úložiště znalostí a ukládání do mezipaměti indexerů pro přírůstkové obohacení...
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/04/2020
-ms.openlocfilehash: ee8e11670d5b3e0f0edd57e3f87566faa60d4bc4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: eb73d614ca94bc1fa007a14f3705e50c74ab9e4f
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754415"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922476"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Rozhraní REST API pro službu Azure Kognitivní hledání – verze 2019-05-06 – Preview
 
@@ -36,8 +36,6 @@ Tento článek popisuje REST API `api-version=2019-05-06-Preview` verzi služby 
 + [Překlad textu (ve verzi Preview)](cognitive-search-skill-text-translation.md) je vnímání dovedností použitou při indexování, která vyhodnocuje text a pro každý záznam vrátí text přeložený do zadaného cílového jazyka.
 
 + [Znalostní báze Knowledge Store](knowledge-store-concept-intro.md) je nový cíl kanálu pro rozšíření na bázi AI. Fyzická datová struktura existuje v úložišti objektů BLOB v Azure a v úložišti tabulek Azure a je vytvořená a naplněná při spuštění indexeru, který má připojené rozpoznávání dovednosti. Definice samotného úložiště znalostí je specifikována v rámci definice dovednosti. V rámci definice znalostní báze Knowledge Store můžete řídit fyzické struktury dat prostřednictvím prvků *projekce* , které určují způsob, jakým jsou data uložená v úložišti tabulek nebo objektů blob, a to, jestli existuje více zobrazení.
-
-+ [Šifrovací klíče spravované zákazníkem](search-security-manage-encryption-keys.md) pro šifrování na straně služby je také novou funkcí ve verzi Preview. Kromě integrovaného šifrování v klidovém formátu, které spravuje Microsoft, můžete použít další vrstvu šifrování, kde jste jediným vlastníkem klíčů.
 
 ## <a name="earlier-preview-features"></a>Dřívější funkce ve verzi Preview
 

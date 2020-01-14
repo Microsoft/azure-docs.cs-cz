@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: 2627e4be20d80251e3753e46624c58a0c6244aba
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/13/2020
+ms.openlocfilehash: e115316daf3673d9ad854e7ccd6d5256d729b5af
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863083"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921011"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -33,7 +33,11 @@ Verze API, balíčky NuGet, obory názvů a koncové body se nezměnily. Vaše s
 
 + [Šifrovací klíče spravované zákazníkem](search-security-manage-encryption-keys.md) jsou teď všeobecně dostupné. Pokud používáte REST, můžete k této funkci přistupovat pomocí `api-version=2019-05-06`. Pro spravovaný kód je správný balíček stále [.NET SDK verze 8,0-Preview](search-dotnet-sdk-migration-version-9.md) , i když funkce není ve verzi Preview. 
 
-+ V **rozhraní API-Version = 2019-10 -01-Preview**je teď k dispozici *omezený přístup k IP adresám a soukromým koncovým bodem (Preview)* na koncovém bodu vyhledávací služby. Zabezpečený koncový bod můžete nastavit pomocí nových vlastností **IpRule** a **NetworkRuleSet** ve REST API [vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate) správu. Další informace o verzích rozhraní API a regionální dostupnosti najdete v tématu [Jak používat REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
++ Privátní přístup k vyhledávací službě je k dispozici prostřednictvím dvou mechanismů:
+
+  + Přístup ke konkrétním IP adresám můžete omezit pomocí REST API pro správu `api-version=2019-10-01-Preview` k vytvoření služby. Rozhraní API ve verzi Preview má nové vlastnosti **IpRule** a **NetworkRuleSet** v [rozhraní CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate). Tato funkce ve verzi Preview je dostupná ve vybraných oblastech. Další informace najdete v tématu [Jak používat REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
+
+  + Aktuálně dostupné prostřednictvím omezeného přístupu ve verzi Preview můžete zřídit Azure Search službu, která podporuje privátní koncový bod Azure pro připojení od klientů ve stejné virtuální síti. Další informace najdete v tématu [Vytvoření privátního koncového bodu pro zabezpečené připojení](service-create-private-endpoint.md).
 
 ### <a name="december-2019"></a>Prosinec 2019
 

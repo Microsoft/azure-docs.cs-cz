@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 9ddf72e8e54245e3ce7ab9a926288587e205fc9c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 593d596881d0ec53b0f18e8af5a71b55c619f7a5
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769468"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922121"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Vazby úložiště objektů BLOB v Azure pro Azure Functions
 

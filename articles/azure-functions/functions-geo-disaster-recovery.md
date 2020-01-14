@@ -6,12 +6,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: jehollan
-ms.openlocfilehash: db072d90c39b3856127925306cb1407c5837a0bb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bdeff0194bda620250481a215c145b1ec3b2207e
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226973"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920798"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions geografické zotavení po havárii
 
@@ -34,7 +34,7 @@ Pro zajištění aktivní/aktivní nasazení funkcí vyžaduje některá součá
 
 ## <a name="activeactive-for-non-https-functions"></a>Aktivní/aktivní pro funkce jiného typu než HTTPS
 
-K dispozici jsou i nadále aktivní/aktivní nasazení pro funkce bez HTTPS.  Je však třeba vzít v úvahu, jak budou tyto dvě oblasti vzájemně spolupracovat nebo se vzájemně koordinovat.  Pokud jste stejnou aplikaci Function App nasadili do dvou oblastí, každá aktivuje se ve stejné Service Busové frontě, která by mohla vystupovat jako konkurenční příjemce ve frontě.  To znamená, že každá zpráva je zpracovávána pouze jednou z instancí, znamená to také, že v jedné službě Service Bus je stále jediný bod selhání.  Pokud nasadíte dvě fronty služby Service Bus (jednu v primární oblasti, jednu v sekundární oblasti) a dvě aplikace Function App odkazovaly na jejich oblast, zobrazí se výzva nyní ve způsobu, jakým jsou zprávy fronty distribuovány mezi dvě oblasti.  To často znamená, že se každý Vydavatel pokusí publikovat zprávy do *obou* oblastí a každá zpráva je zpracována aktivní funkcí aplikace.  V takovém případě se vytvoří model aktivní/aktivní a vytvoří se další výzvy týkající se duplikace výpočetních prostředků a při konsolidaci dat nebo způsobu jejich konsolidace.  Z těchto důvodů se doporučuje, aby triggery bez HTTPS používaly vzorek aktivní/pasivní.
+K dispozici jsou i nadále aktivní/aktivní nasazení pro funkce bez HTTPS.  Je však třeba vzít v úvahu, jak budou tyto dvě oblasti vzájemně spolupracovat nebo se vzájemně koordinovat.  Pokud jste stejnou aplikaci Function App nasadili do dvou oblastí, každá aktivuje se ve stejné Service Busové frontě, která by mohla vystupovat jako konkurenční příjemce ve frontě.  To znamená, že každá zpráva je zpracovávána pouze jednou z instancí, znamená to také, že v jednom Service Bus je stále jediný bod selhání.  Pokud nasadíte dvě fronty Service Bus (jednu v primární oblasti, jednu v sekundární oblasti) a dvě aplikace funkcí odkazovaly na jejich oblast, zobrazí se výzva nyní ve způsobu, jakým jsou zprávy fronty distribuovány mezi dvě oblasti.  To často znamená, že se každý Vydavatel pokusí publikovat zprávy do *obou* oblastí a každá zpráva je zpracována aktivní funkcí aplikace.  V takovém případě se vytvoří model aktivní/aktivní a vytvoří se další výzvy týkající se duplikace výpočetních prostředků a při konsolidaci dat nebo způsobu jejich konsolidace.  Z těchto důvodů se doporučuje, aby triggery bez HTTPS používaly vzorek aktivní/pasivní.
 
 ## <a name="activepassive-for-non-https-functions"></a>Aktivní/pasivní pro funkce bez HTTPS
 
@@ -52,7 +52,7 @@ Pomocí aktivačních událostí Azure Event Hubs jako příklad může vzor akt
 
 Před převzetím služeb při selhání budou vydavatelé odesílající do sdíleného aliasu směrovat do primárního centra událostí.  Primární aplikace Function naslouchá výhradně primárnímu centru událostí.  Sekundární aplikace Function App bude pasivní a nečinný.  Po zahájení převzetí služeb při selhání budou vydavatelé odesílající do sdíleného aliasu přesměrováni do sekundárního centra událostí.  Sekundární aplikace Function App se teď aktivuje jako aktivní a spustí se automaticky.  Efektivní převzetí služeb při selhání u sekundární oblasti se dá zcela řídit z centra událostí. funkce se stanou aktivní jenom v případě, že je příslušné centrum událostí aktivní.
 
-Přečtěte si další informace a požadavky pro převzetí služeb při selhání pomocí [služby Service Bus](../service-bus-messaging/service-bus-geo-dr.md) a [centra událostí](../event-hubs/event-hubs-geo-dr.md).
+Přečtěte si další informace a požadavky pro převzetí služeb při selhání pomocí [Service Bus](../service-bus-messaging/service-bus-geo-dr.md) a [centra událostí](../event-hubs/event-hubs-geo-dr.md).
 
 ## <a name="next-steps"></a>Další kroky
 

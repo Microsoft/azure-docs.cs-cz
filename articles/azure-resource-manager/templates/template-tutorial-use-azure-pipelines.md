@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2dfe17b99c1a9b1130695c8e5cd9c65ca7681d35
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e7d6b23aa3f35c99cf03f855152b2b231a60a965
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472447"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921622"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Kurz: průběžná integrace šablon Azure Resource Manager s Azure Pipelines
 
@@ -194,7 +194,7 @@ Vytvoření kanálu s krokem pro nasazení šablony:
 
     Proveďte následující změny:
 
-    * **deloymentScope**: vyberte rozsah nasazení z možností: `Management Group`, `Subscription` a `Resource Group`. Použijte **skupinu prostředků** v tomto kurzu. Další informace o oborech najdete v tématu [obory nasazení](deploy-rest.md#deployment-scope).
+    * **deploymentScope**: vyberte rozsah nasazení z možností: `Management Group`, `Subscription` a `Resource Group`. Použijte **skupinu prostředků** v tomto kurzu. Další informace o oborech najdete v tématu [obory nasazení](deploy-rest.md#deployment-scope).
     * **ConnectedServiceName**: zadejte název připojení služby, který jste vytvořili dříve.
     * **Subscription**: Zadejte ID cílového předplatného.
     * **Akce**: akce **vytvořit nebo aktualizovat skupinu prostředků** provede 2 akce-1. Pokud je zadaný název nové skupiny prostředků, vytvořte skupinu prostředků. odst. Nasaďte zadanou šablonu.

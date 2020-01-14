@@ -1,26 +1,25 @@
 ---
 title: 'Rychlý Start: rozpoznávání řeči z mikrofonu C# , (Unity) – služba pro rozpoznávání řeči'
 titleSuffix: Azure Cognitive Services
-description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 10/28/2019
+ms.topic: include
+ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: b0a9eddf147eedfa972e0574e62c9e7c2eace84f
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 149ec84732171cd57b3f8a9590d5340107536eac
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818774"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75927955"
 ---
 > [!NOTE]
 > Sada Speech SDK for Unity podporuje Desktop Windows (x86 a x64) nebo Univerzální platforma Windows (x86, x64, ARM/ARM64), Android (x86, ARM32/64) a iOS (simulátor x64, ARM32 a ARM64).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
@@ -43,7 +42,7 @@ Pokud jste to již provedli, Skvělé. Pojďme pokračovat.
 1. Do **název projektu**zadejte **CSharp-Unity**.
 1. Pokud se v **šablonách**ještě není vybraná možnost **3D** , vyberte ji.
 1. V části **umístění**vyberte nebo vytvořte složku, do které chcete projekt uložit.
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 Po uplynutí časového intervalu se zobrazí okno Editor Unity.
 

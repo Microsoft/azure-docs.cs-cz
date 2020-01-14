@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: b8de6df5761baef79310062614f578a92f17b826
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 2570e3753dd93173166c6b563e9add69bed3f862
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670479"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922274"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux v Pythonu pro Azure App Service
 
@@ -50,7 +50,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="container-characteristics"></a>Vlastnosti kontejneru
 
-Aplikace Python nasazené do App Service v systému Linux běží v kontejneru Docker, který je definovaný v úložišti GitHubu, [Python 3,6](https://github.com/Azure-App-Service/python/tree/master/3.6.6) nebo [Python 3,7](https://github.com/Azure-App-Service/python/tree/master/3.7.0).
+Aplikace Python nasazené do App Service v systému Linux běží v kontejneru Docker, který je definovaný v [úložišti GitHub App Service Pythonu](https://github.com/Azure-App-Service/python). Konfigurace imagí najdete v adresářích, které jsou specifické pro danou verzi.
 
 Tento kontejner má následující vlastnosti:
 

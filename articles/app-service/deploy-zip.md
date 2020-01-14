@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 3569c6a066b09daa0c24975b9de840a844b6ba2c
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 28bd45b0e9bdaf87c29b0118c47595db9179edc5
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670229"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921158"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Nasazení aplikace pro Azure App Service pomocí souboru ZIP nebo WAR
 
@@ -30,7 +30,7 @@ Nasazení souboru WAR nasadí váš soubor [War](https://wikipedia.org/wiki/WAR_
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Postup dokončení kroků v tomto článku:
 
@@ -88,6 +88,8 @@ Další informace najdete v [dokumentaci k Kudu](https://github.com/projectkudu/
 ## <a name="deploy-war-file"></a>Nasadit soubor WAR
 
 Chcete-li nasadit soubor WAR pro App Service, odešlete požadavek POST na `https://<app_name>.scm.azurewebsites.net/api/wardeploy`. Požadavek POST musí obsahovat soubor .war v textu zprávy. Přihlašovací údaje pro nasazení vaší aplikace jsou zahrnuté v požadavku s použitím HTTP BASIC Authentication.
+
+Při nasazování souborů WAR vždycky používejte `/api/wardeploy`. Toto rozhraní API rozbalí soubor WAR a umístí ho do jednotky sdíleného souboru. použití jiných rozhraní API pro nasazení může mít za následek nekonzistentní chování. 
 
 Pro základní ověřování HTTP budete potřebovat přihlašovací údaje pro nasazení App Service. Informace o nastavení přihlašovacích údajů pro nasazení najdete v tématu [nastavení a resetování přihlašovacích údajů na úrovni uživatele](deploy-configure-credentials.md#userscope).
 

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: babanisa
-ms.openlocfilehash: 6a0e24ce7fa11c6373fbaada40cd9f1b1e7f55a2
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 78498f06a1ec921813d886b426d62452f850f5e5
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325471"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922750"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Použití schématu CloudEvents v 1.0 s Event Grid
 
@@ -60,7 +60,7 @@ Tady je příklad události Azure Blob Storage ve formátu CloudEvents:
 }
 ```
 
-Podrobný popis dostupných polí, jejich typy a definice v CloudEvents v 0,1 jsou [k dispozici zde](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes).
+Podrobný popis dostupných polí, jejich typy a definice v CloudEvents v 1.0 jsou [k dispozici zde](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes).
 
 Hodnoty hlaviček pro události doručené ve schématu CloudEvents a schématu Event Grid jsou stejné s výjimkou `content-type`. V případě schématu CloudEvents je hodnota hlavičky `"content-type":"application/cloudevents+json; charset=utf-8"`. Pro Event Grid schéma je hodnota hlavičky `"content-type":"application/json; charset=utf-8"`.
 
@@ -76,7 +76,7 @@ Event Grid můžete použít pro vstupní i výstupní události ve schématu Cl
 | Formát CloudEvents | Formát Event Grid
 | Formát Event Grid  | Formát Event Grid
 
-Pro všechna schémata událostí Event Grid vyžaduje ověření při publikování do služby Event Grid a při vytváření odběru události. Další informace najdete v tématu [Event Grid zabezpečení a ověřování](security-authentication.md).
+Pro všechna schémata událostí Event Grid vyžaduje ověření při publikování do služby Event Grid a při vytváření odběru události. Další informace najdete v tématu [ověřování a zabezpečení služby Event Grid](security-authentication.md).
 
 ### <a name="input-schema"></a>Vstupní schéma
 

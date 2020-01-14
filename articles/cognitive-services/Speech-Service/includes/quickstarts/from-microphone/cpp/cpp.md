@@ -1,21 +1,20 @@
 ---
 title: 'Rychlý Start: rozpoznávání řeči pomocí mikrofonu C++ – služba řeči'
 titleSuffix: Azure Cognitive Services
-description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 11/19/2019
+ms.topic: include
+ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: 692ed0b758cd33471b02b71d8434c6fc5337f6a0
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 13e2bf74de4f2118b338e7b21a7e3e7e818775aa
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818657"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75927860"
 ---
 **Volba cílového prostředí**
 

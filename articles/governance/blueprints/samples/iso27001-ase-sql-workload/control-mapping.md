@@ -1,14 +1,14 @@
 ---
 title: Ovládací prvky podrobného řízení pro úlohy (ISO 27001)/řízení úloh SQL
 description: Mapování ovládacího prvku podrobného plánu úloh App Service Environment/SQL Database ISO 27001 na Azure Policy a RBAC.
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 5c5b83669a477255f0cdce45993a5871b5a9c6f8
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: bc370170374654bf8bc9ae9ed3f1b545f4db8cba
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546775"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920704"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>Mapování ovládacího prvku ukázka ISO 27001 pomocného programu/úlohy SQL
 
@@ -43,7 +43,7 @@ Principy prostředků, které jsou v rozporu s těmito zásadami, vám pomůžou
 - \[Preview\]: Auditovat virtuální počítač Linux umožňující vzdálená připojení z účtů bez hesla
 - Auditovat používání klasických účtů úložiště
 - Auditovat používání klasických virtuálních počítačů
-- Auditovat virtuální počítače, které nepoužívají spravované disky
+- Auditovat virtuální počítače, které nevyužívají spravované disky
 
 ## <a name="a923-management-of-privileged-access-rights"></a>A. 9.2.3 Správa privilegovaných přístupových práv
 
@@ -53,7 +53,7 @@ Tento podrobný plán vám pomůže omezit a řídit privilegovaná přístupov�
 - \[Preview\]: audit účtů s oprávněními k zápisu, kteří nejsou u předplatného povolená MFA
 - \[Preview\]: Auditovat externí účty s oprávněním vlastníka u předplatného
 - \[Preview\]: Auditovat externí účty s oprávněním k zápisu do předplatného
-- Audit zřizování správce Azure Active Directory pro SQL Server
+- Auditovat zřizování správce Azure Active Directory pro server SQL
 - Auditovat využití Azure Active Directory pro ověřování klientů v Service Fabric
 - Auditovat využití vlastních pravidel RBAC
 

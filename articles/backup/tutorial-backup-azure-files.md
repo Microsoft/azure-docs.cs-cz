@@ -3,12 +3,12 @@ title: Kurz – zálohování sdílených složek souborů Azure
 description: V tomto kurzu se naučíte, jak pomocí Azure Portal nakonfigurovat trezor Recovery Services a zálohovat sdílené složky Azure.
 ms.date: 06/10/2019
 ms.topic: tutorial
-ms.openlocfilehash: f3c1956a0344d300fff9a745a4733b7bef45a367
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b002d1ea092d2d0507dc761f56ca7835f1521fb3
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171868"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921643"
 ---
 # <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Zálohování sdílených složek Azure v Azure Portal
 
@@ -28,7 +28,6 @@ Než budete moct zálohovat sdílenou složku Azure, ujistěte se, že se nachá
 
 Zálohování sdílených složek Azure je ve verzi Preview. Podporují se sdílené složky Azure v účtech úložiště pro obecné účely v1 i pro obecné účely v2. Následující scénáře zálohování se nepodporují u sdílených složek Azure:
 
-* Nemůžete chránit sdílené složky Azure v účtech úložiště s povolenými virtuálními sítěmi nebo bránou firewall.
 * K ochraně souborů Azure pomocí Azure Backup není k dispozici žádné rozhraní příkazového řádku.
 * Maximální počet plánovaných záloh je jedna za den.
 * Maximální počet záloh na vyžádání jsou čtyři za den.

@@ -1,14 +1,14 @@
 ---
 title: Ukázka podrobného plánu ISO 27001 – přehled
 description: Přehled ukázky podrobného plánu ISO 27001 Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly ISO 27001.
-ms.date: 07/22/2019
+ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: bc7403e668d27413427afeff7879eb851a884ac1
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: e61ccaea9903eb2aa050b0b49ea9cfe9b8c52d72
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546647"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920583"
 ---
 # <a name="overview-of-the-iso-27001-blueprint-sample"></a>Přehled ukázky podrobného plánu ISO 27001
 

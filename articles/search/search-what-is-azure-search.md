@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 17cefdd5976efdd86d9f171f4eb1518f63fe043b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0d2fca7b46cd0392fe8e94c1371443e7fcebc2fd
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754297"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922483"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Co je kognitivní hledání Azure?
 
@@ -68,7 +68,7 @@ Azure Kognitivní hledání je vhodné pro následující scénáře aplikací:
 |-------------------|----------|
 | Nástroje pro vytváření prototypů a kontrolu | Na portálu můžete pomocí [**Průvodce importem dat**](search-import-data-portal.md) nakonfigurovat indexery, návrháře indexů, aby sestavil index, a [**Průzkumníka služby Search**](search-explorer.md), abyste mohli testovat dotazy a upřesňovat profily vyhodnocování. Můžete také otevřít index a zobrazit jeho schéma. |
 | Monitorování a diagnostika | [**Umožněte funkcím monitorování**](search-monitor-usage.md) , abyste mohli přesáhnout metriky, které jsou vždy viditelné na portálu. Metriky pro dotazy za sekundu, latenci a omezování se zachycují a uvádějí na stránkách portálu bez další nezbytné konfigurace.|
-| Šifrování na straně serveru | [**Šifrování spravované Microsoftem v klidovém režimu**](search-security-overview.md#encrypted-transmission-and-storage) je integrované do interní vrstvy úložiště a je neodvolatelné. Volitelně můžete výchozí šifrování doplnit pomocí [**šifrovacích klíčů spravovaných zákazníkem (Preview)** ](search-security-manage-encryption-keys.md). Klíče, které vytvoříte a spravujete v Azure Key Vault slouží k šifrování indexů a mapování synonym v Azure Kognitivní hledání. |
+| Šifrování na straně serveru | [**Šifrování spravované Microsoftem v klidovém režimu**](search-security-overview.md#encrypted-transmission-and-storage) je integrované do interní vrstvy úložiště a je neodvolatelné. Volitelně můžete výchozí šifrování doplnit pomocí [**šifrovacích klíčů spravovaných zákazníkem**](search-security-manage-encryption-keys.md). Klíče, které vytvoříte a spravujete v Azure Key Vault slouží k šifrování indexů a mapování synonym v Azure Kognitivní hledání. |
 | Infrastruktura | Díky **vysoce dostupné platformě** je prostředí vyhledávací služby nadmíru spolehlivé. V případě správné škály [Azure kognitivní hledání nabízí smlouvu SLA 99,9%](https://azure.microsoft.com/support/legal/sla/search/v1_0/).<br/><br/> Azure Kognitivní hledání **plně spravované a škálovatelné** jako ucelené řešení, ale vyžaduje naprostou správu infrastruktury. Služba se dá přizpůsobit na míru vašim potřebám pomocí nastavení kapacity ve dvou dimenzích, aby mohla pracovat s větším úložištěm dokumentů, vyšším objemem dotazů nebo obojím.<br/><br/>|
 
 ## <a name="how-to-use-azure-cognitive-search"></a>Jak používat Azure Kognitivní hledání

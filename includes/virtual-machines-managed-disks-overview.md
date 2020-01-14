@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 50dd97107296c70ba9dde162b723f49a658a3994
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 72b6c1f86b18df172994827ec78eb109fe82454e
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355917"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75913786"
 ---
 ## <a name="benefits-of-managed-disks"></a>Výhody spravovaných disků
 
@@ -55,7 +55,7 @@ Managed disks nabízí dva různé druhy šifrování. První je šifrování na
 
 ### <a name="server-side-encryption"></a>Šifrování na straně serveru
 
-[Šifrování na straně serveru Azure](../articles/virtual-machines/windows/disk-encryption.md) zajišťuje šifrování v klidovém prostředí a chrání vaše data, aby splňovala závazky zabezpečení vaší organizace a dodržování předpisů. Šifrování na straně serveru je ve výchozím nastavení povolené pro všechny spravované disky, snímky a image ve všech oblastech, kde jsou dostupné spravované disky. Můžete buď dovolit, aby Azure spravoval vaše klíče za vás, jedná se o klíče spravované platformou, nebo můžete klíče spravovat sami, jedná se o klíče spravované zákazníkem (Preview). Další podrobnosti najdete na [stránce s nejčastějšími dotazy Managed disks](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) .
+[Šifrování na straně serveru Azure](../articles/virtual-machines/windows/disk-encryption.md) zajišťuje šifrování v klidovém prostředí a chrání vaše data, aby splňovala závazky zabezpečení vaší organizace a dodržování předpisů. Šifrování na straně serveru je ve výchozím nastavení povolené pro všechny spravované disky, snímky a image ve všech oblastech, kde jsou dostupné spravované disky. Můžete buď dovolit, aby Azure spravoval vaše klíče za vás, jedná se o klíče spravované platformou, nebo můžete klíče spravovat sami, jedná se o klíče spravované zákazníkem. Další podrobnosti najdete na [stránce s nejčastějšími dotazy Managed disks](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) .
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 

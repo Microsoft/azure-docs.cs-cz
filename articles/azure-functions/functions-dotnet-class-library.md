@@ -3,12 +3,12 @@ title: Referenční C# informace pro vývojáře Azure Functions
 description: Naučte se vyvíjet Azure Functions pomocí C#.
 ms.topic: reference
 ms.date: 09/12/2018
-ms.openlocfilehash: f412e5ea358fe7b97476802f432616c37b05dbd9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 89b3ae927b14454ac3f58fb510626e315842240f
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975478"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921049"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Referenční C# informace pro vývojáře Azure Functions
 
@@ -378,7 +378,7 @@ public static class IBinderExample
 
 ### <a name="multiple-attribute-example"></a>Příklad více atributů
 
-Předchozí příklad získá nastavení aplikace pro připojovací řetězec hlavního účtu úložiště aplikace Function App (což je `AzureWebJobsStorage`). Můžete zadat vlastní nastavení aplikace, které se má použít pro účet úložiště, a to přidáním [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) a předáním pole atributu do `BindAsync<T>()`. Použijte parametr `Binder`, nikoli `IBinder`.  Například:
+Předchozí příklad získá nastavení aplikace pro připojovací řetězec hlavního účtu úložiště aplikace Function App (což je `AzureWebJobsStorage`). Můžete zadat vlastní nastavení aplikace, které se má použít pro účet úložiště, a to přidáním [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) a předáním pole atributu do `BindAsync<T>()`. Použijte parametr `Binder`, nikoli `IBinder`.  Příklad:
 
 ```cs
 public static class IBinderExampleMultipleAttributes

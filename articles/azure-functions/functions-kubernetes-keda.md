@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: ab851f3156f09a808833c0b31f8c5ce2b7dd5138
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9978bd567b1b07e8dd0e22e1f02834626281a5dd
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230483"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920663"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Azure Functions v Kubernetes s KEDA
 
@@ -94,7 +94,7 @@ KEDA podporuje následující aktivační události Azure Functions:
 Můžete použít Azure Functions, který zveřejňuje aktivační události HTTP, ale KEDA je přímo nespravuje.  Azure Functions Core Tools nainstaluje související projekt Osiris, který umožňuje škálování koncových bodů HTTP z 0 na 1.  Škálování od 1 do *n* se spoléhá na tradiční zásady škálování Kubernetes.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete v následujících zdrojích:
+Další informace najdete v následujících materiálech:
 
 * [Vytvoření funkce s použitím vlastní image](functions-create-function-linux-custom-image.md)
 * [Místní psaní kódu a testování funkcí Azure Functions](functions-develop-local.md)

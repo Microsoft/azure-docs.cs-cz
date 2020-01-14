@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 40456b2a756d5ae2241b54ff65f675004c22f0a2
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: e97a6e1adff02001e36a43d9fb4a917b7e133257
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75890353"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922436"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions triggerů HTTP a vazeb
 

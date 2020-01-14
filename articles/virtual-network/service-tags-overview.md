@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 95d0e1dfc977d77f7cd9853945dabefee3bb7bbd
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: d0d7d9a4dd39428468d05ddf7297a424832d1020
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903409"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921206"
 ---
 # <a name="virtual-network-service-tags"></a>Značky služby virtuální sítě 
 <a name="network-service-tags"></a>
 
-Značka služby představuje skupinu předpon IP adres z dané služby Azure. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy, což minimalizuje složitost častých aktualizací pravidel Securitiy sítě. 
+Značka služby představuje skupinu předpon IP adres z dané služby Azure. Společnost Microsoft spravuje předpony adres, které jsou zahrnuté ve značce služby, a automaticky aktualizuje značku služby, protože se mění adresy. tím se minimalizuje složitost častých aktualizací pravidel zabezpečení sítě. 
 
 Pomocí značek služeb můžete definovat řízení přístupu k síti pro [skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) nebo [Azure firewall](https://docs.microsoft.com/azure/firewall/service-tags). Při vytváření pravidel zabezpečení používejte značky služby místo konkrétních IP adres. Zadáním názvu značky služby (například **ApiManagement**) v příslušném *zdrojovém* nebo *cílovém* poli pravidla můžete povolit nebo zamítnout provoz pro odpovídající službu. 
 
@@ -43,17 +43,25 @@ Ve výchozím nastavení značky služby odráží rozsahy celého cloudu. Někt
 | Tag | Účel | Dá se použít příchozí nebo odchozí? | Je možné je rozregionovat? | Lze použít s Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ApiManagement** | Provoz správy pro nasazení ve službě Azure API Management vyhrazena. | Obojí | Ne | Ano |
+| **ApplicationInsightsAvailability** | Application Insights dostupnost. | Obojí | Ne | Ne |
 | **AppService**    | Azure App Service. Tato značka se doporučuje pro odchozí pravidla zabezpečení na front-endy webové aplikace. | Odchozí | Ano | Ano |
 | **AppServiceManagement** | Provoz správy pro nasazení vyhrazená pro App Service Environment. | Obojí | Ne | Ano |
 | **Azureactivedirectory selhala** | Azure Active Directory. | Odchozí | Ne | Ano |
 | **AzureActiveDirectoryDomainServices** | Provoz správy pro nasazení vyhrazená pro Azure Active Directory Domain Services. | Obojí | Ne | Ano |
+| **AzureAdvancedThreatProtection** | Rozšířená ochrana před internetovými útoky Azure. | Odchozí | Ne | Ne |
 | **AzureBackup** |Azure Backup.<br/><br/>*Poznámka:* Tato značka má závislost na značkách **úložiště** a **azureactivedirectory selhala** . | Odchozí | Ne | Ano |
+| **AzureBotService** | Azure Bot Service. | Odchozí | Ne | Ne |
 | **AzureCloud** | Všechny [veřejné IP adresy Datacenter](https://www.microsoft.com/download/details.aspx?id=41653) | Odchozí | Ano | Ano |
+| **AzureCognitiveSearch** | Azure Kognitivní hledání (Pokud používáte indexery s dovednosti). | Obojí | Ne | Ne |
 | **AzureConnectors** | Konektory Azure Logic Apps pro připojení sondy/back-end. | Příchozí | Ano | Ano |
 | **AzureContainerRegistry** | Azure Container Registry. | Odchozí | Ano | Ano |
 | **AzureCosmosDB** | Azure Cosmos DB. | Odchozí | Ano | Ano |
+| **AzureDatabricks** | Azure Databricks. | Obojí | Ne | Ne |
+| **AzureDataExplorerManagement** | Správa Azure Průzkumník dat. | Příchozí | Ne | Ne |
 | **AzureDataLake** | Azure Data Lake. | Odchozí | Ne | Ano |
-| **AzureHDInsight** | Azure HDInsight. | Příchozí | Ano | Ne |
+| **AzureEventGrid** | Azure Event Grid. <br/><br/>*Poznámka:* Tato značka se zabývá Azure Event Gridmi koncovými body v USA (střed) – jih, USA – východ, USA – východ 2, USA – západ 2 a USA – střed. | Obojí | Ne | Ne |
+| **AzureFrontDoor** | Přední dveře Azure. | Obojí | Ne | Ne |
+| **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Poznámka:* Tato značka má závislost na značkách **azureactivedirectory selhala** a **AzureFrontDoor. front-endu** . Seznamte se prosím i po následujících IP adresách (Tato závislost bude brzy odebrána): 13.107.6.181 & 13.107.9.181. | Odchozí | Ne | Ne |
 | **AzureIoTHub** | IoT Hub Azure. | Odchozí | Ne | Ne |
 | **AzureKeyVault** | Azure Key Vault.<br/><br/>*Poznámka:* Tato značka má závislost na značce **azureactivedirectory selhala** . | Odchozí | Ano | Ano |
 | **AzureLoadBalancer** | Nástroj pro vyrovnávání zatížení infrastruktury Azure. Značka se přeloží na [virtuální IP adresu hostitele](security-overview.md#azure-platform-considerations) (168.63.129.16), ve které vznikly sondy stavu Azure. Pokud nepoužíváte Azure Load Balancer, můžete toto pravidlo přepsat. | Obojí | Ne | Ne |
@@ -62,13 +70,19 @@ Ve výchozím nastavení značky služby odráží rozsahy celého cloudu. Někt
 | **AzurePlatformDNS** | Služba DNS základní infrastruktury (výchozí).<br/><br>Pomocí této značky můžete zakázat výchozí DNS. Při použití této značky buďte opatrní. Doporučujeme, abyste si přečetli [informace o platformě Azure](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations). Doporučujeme také, abyste před použitím této značky provedli testování. | Odchozí | Ne | Ne |
 | **AzurePlatformIMDS** | Azure Instance Metadata Service (IMDS), což je základní služba infrastruktury.<br/><br/>Pomocí této značky můžete zakázat výchozí IMDS. Při použití této značky buďte opatrní. Doporučujeme, abyste si přečetli [informace o platformě Azure](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations). Doporučujeme také, abyste před použitím této značky provedli testování. | Odchozí | Ne | Ne |
 | **AzurePlatformLKM** | Licencování Windows nebo služba správy klíčů.<br/><br/>Pomocí této značky můžete zakázat výchozí hodnoty licencování. Při použití této značky buďte opatrní. Doporučujeme, abyste si přečetli [informace o platformě Azure](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations).  Doporučujeme také, abyste před použitím této značky provedli testování. | Odchozí | Ne | Ne |
+| **AzureResourceManager** | Azure Resource Manager. | Odchozí | Ne | Ne |
+| **AzureSiteRecovery** | Azure Site Recovery.<br/><br/>*Poznámka:* Tato značka má závislost na značkách **úložiště**, **azureactivedirectory selhala**a **EventHub** . | Odchozí | Ne | Ne |
 | **AzureTrafficManager** | IP adresy služby Azure Traffic Manager PROBE.<br/><br/>Další informace o Traffic Manager IP adres sondy najdete v tématu [Nejčastější dotazy k Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). | Příchozí | Ne | Ano |  
 | **BatchNodeManagement** | Provoz správy pro nasazení vyhrazená pro Azure Batch. | Obojí | Ne | Ano |
 | **CognitiveServicesManagement** | Rozsah adres pro přenos pro Azure Cognitive Services. | Odchozí | Ne | Ne |
 | **Dynamics365ForMarketingEmail** | Rozsah adres pro marketingovou e-mailovou službu Dynamics 365. | Odchozí | Ano | Ne |
+| **ElasticAFD** | Elastické přední dveře Azure. | Obojí | Ne | Ne |
 | **EventHub** | Event Hubs Azure. | Odchozí | Ano | Ano |
 | **GatewayManager** | Provoz správy pro nasazení vyhrazená pro Azure VPN Gateway a Application Gateway. | Příchozí | Ne | Ne |
+| **GuestAndHybridManagement** | Azure Automation a konfigurace hostů. | Obojí | Ne | Ano |
+| **HDInsight** | Azure HDInsight. | Příchozí | Ano | Ne |
 | **Internet** | Adresní prostor IP adres, který je mimo virtuální síť a dosažitelný veřejným internetem.<br/><br/>Rozsah adres zahrnuje [veřejný adresní prostor IP adres ve vlastnictví Azure](https://www.microsoft.com/download/details.aspx?id=41653). | Obojí | Ne | Ne |
+| **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security. | Odchozí | Ne | Ne |
 | **MicrosoftContainerRegistry** | Azure Container Registry. | Odchozí | Ano | Ano |
 | **ServiceBus** | Azure Service Bus provoz, který využívá úroveň služby Premium. | Odchozí | Ano | Ano |
 | **ServiceFabric** | Service Fabric Azure. | Odchozí | Ne | Ne |

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: a95f5ee5105c45ba9e5b1705e83d60bf24b1dc12
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: dc80141d796b66dd7e610342166f7b88df58f530
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175236"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75928061"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Vytvoření oboru názvů na webu Azure Portal
 Pokud chcete začít používat entity zasílání zpráv služby Service Bus v Azure, musíte nejprve vytvořit obor názvů s jedinečným názvem v rámci Azure. Obor názvů poskytuje kontejner oboru pro adresování prostředků služby Service Bus v rámci vaší aplikace.
@@ -21,40 +21,40 @@ Pokud chcete začít používat entity zasílání zpráv služby Service Bus v 
 Vytvoření oboru názvů:
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
-2. V levém navigačním podokně portálu vyberte **+ vytvořit prostředek**vyberte **integrace**a pak vyberte **služby Service Bus**.
+2. V levém navigačním podokně portálu vyberte **+ vytvořit prostředek**, vyberte **integrace**a pak vyberte **Service Bus**.
 
-    ![Vytvořit prostředek -> integrace -> služby Service Bus](./media/service-bus-create-namespace-portal/create-resource-service-bus-menu.png)
-3. V **vytvoření oboru názvů** dialogového okna, proveďte následující kroky: 
-    1. Zadejte **název pro obor názvů**. Systém okamžitě kontroluje, jestli je název dostupný. Seznam pravidel pro pojmenování obory názvů, naleznete v tématu [REST API vytvořte Namespace](/rest/api/servicebus/create-namespace).
-    2. Vyberte cenovou úroveň (Basic, Standard nebo Premium) pro obor názvů. Pokud chcete použít [témata a odběry](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions), zvolit úroveň Standard nebo Premium. Témata/předplatná se v cenové úrovni Basic nepodporují.
-    3. Pokud jste vybrali **Premium** cenovou úroveň, postupujte podle těchto kroků: 
-        1. Zadejte počet **jednotky zasílání zpráv**. Úroveň premium zajišťuje izolaci prostředků na úrovni procesoru a paměti, takže každá úloha běží izolovaně. Kontejner prostředků se nazývá jednotka zasílání zpráv. Obor názvů úrovně premium má alespoň jedna jednotka zasílání zpráv. Můžete vybrat 1, 2 nebo 4 jednotky zasílání zpráv pro každý obor názvů Service Bus úrovně Premium. Další informace najdete v tématu [služby zasílání zpráv Service Bus úrovně Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md).
-        2. Určete, jestli chcete vytvořit obor názvů **zónově redundantní**. Redundanci zón poskytuje vylepšenou dostupnost šířením replik napříč zónami dostupnosti v rámci jedné oblasti bez dalších poplatků. Další informace najdete v tématu [zón dostupnosti v Azure](../articles/availability-zones/az-overview.md).
-    4. Pro **předplatné**, zvolte předplatné Azure, ve kterém chcete vytvořit obor názvů.
-    5. Pro **skupiny prostředků**, zvolte existující skupinu prostředků, ve které bude obor názvů live, nebo vytvořte novou.      
-    6. Pro **umístění**, vyberte oblast, ve kterém by měl váš obor názvů hostovat.
+    ![Vytvoření > > integrací prostředků Service Bus](./media/service-bus-create-namespace-portal/create-resource-service-bus-menu.png)
+3. V dialogovém okně **vytvořit obor názvů** proveďte následující kroky: 
+    1. Zadejte **název oboru názvů**. Systém okamžitě kontroluje, jestli je název dostupný. Seznam pravidel pro názvové obory názvů najdete v tématu [Create Namespace REST API](/rest/api/servicebus/create-namespace).
+    2. Vyberte cenovou úroveň (Basic, Standard nebo Premium) pro obor názvů. Pokud chcete používat [témata a odběry](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions), vyberte buď Standard, nebo Premium. Témata/předplatná se v cenové úrovni Basic nepodporují.
+    3. Pokud jste vybrali cenovou úroveň **Premium** , postupujte podle následujících kroků: 
+        1. Zadejte počet **jednotek zasílání zpráv**. Úroveň Premium poskytuje izolaci prostředků na úrovni procesoru a paměti, aby se jednotlivé úlohy spouštěly izolovaně. Tento kontejner prostředků se nazývá jednotka zasílání zpráv. Obor názvů Premium má alespoň jednu jednotku zasílání zpráv. Pro každý obor názvů Service Bus Premium můžete vybrat 1, 2 nebo 4 jednotky zasílání zpráv. Další informace najdete v tématu [Service Bus zasílání zpráv](../articles/service-bus-messaging/service-bus-premium-messaging.md)na úrovni Premium.
+        2. Určete, zda má být zóna oboru názvů **redundantní**. Redundance zóny poskytuje rozšířenou dostupnost tím, že šíří repliky napříč zónami dostupnosti v rámci jedné oblasti bez dalších nákladů. Další informace najdete v tématu [zóny dostupnosti v Azure](../articles/availability-zones/az-overview.md).
+    4. V části **předplatné**vyberte předplatné Azure, ve kterém chcete vytvořit obor názvů.
+    5. V poli **Skupina prostředků**vyberte existující skupinu prostředků, ve které bude obor názvů živý, nebo vytvořte novou.      
+    6. V poli **umístění**vyberte oblast, ve které by měl být hostovaný obor názvů.
     7. Vyberte **Vytvořit**. Systém teď vytvoří obor názvů a povolí ho. Pravděpodobně budete muset několik minut počkat, než systém zřídí prostředky pro váš účet.
    
         ![Vytvoření oboru názvů](./media/service-bus-create-namespace-portal/create-namespace.png)
-4. Potvrďte, že je obor názvů služby Service bus úspěšné nasazení. Pokud chcete zobrazit oznámení, vyberte **ikonu zvonku (výstrahy)** na panelu nástrojů. Vyberte **název skupiny prostředků** v oznámení, jak je znázorněno na obrázku. Zobrazí se skupiny prostředků, který obsahuje obor názvů služby Service bus.
+4. Potvrďte, že obor názvů služby Service Bus byl úspěšně nasazen. Oznámení zobrazíte výběrem **ikony zvonku (výstrahy)** na panelu nástrojů. Vyberte **název skupiny prostředků** v oznámení, jak je znázorněno na obrázku. Zobrazí se skupina prostředků, která obsahuje obor názvů služby Service Bus.
 
     ![Výstraha nasazení](./media/service-bus-create-namespace-portal/deployment-alert.png)
-5. Na **skupiny prostředků** stránce vaší skupiny prostředků, vyberte vaše **obor názvů služby Service bus**. 
+5. Na stránce **skupiny prostředků** pro vaši skupinu prostředků vyberte svůj **obor názvů služby Service Bus**. 
 
-    ![Skupina prostředků stránce – Výběr oboru názvů služby service bus](./media/service-bus-create-namespace-portal/resource-group-select-service-bus.png)
-6. Zobrazí domovská stránka pro váš obor názvů služby Service bus. 
+    ![Stránka skupiny prostředků – vyberte obor názvů služby Service Bus.](./media/service-bus-create-namespace-portal/resource-group-select-service-bus.png)
+6. Zobrazí se Domovská stránka oboru názvů služby Service Bus. 
 
-    ![Domovská stránka oboru názvů služby service bus](./media/service-bus-create-namespace-portal/service-bus-namespace-home-page.png)
+    ![Domovská stránka oboru názvů služby Service Bus](./media/service-bus-create-namespace-portal/service-bus-namespace-home-page.png)
 
 ## <a name="get-the-connection-string"></a>Získání připojovacího řetězce 
-Vytvořením nového oboru názvů se automaticky vygeneruje počáteční pravidlo sdíleného přístupového podpisu (SAS) s přidruženým párem primárního a sekundárního klíče, které udělují úplnou kontrolu nad všemi aspekty tohoto oboru názvů. Zobrazit [ověřování a autorizace Service Bus](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md) informace o tom, jak vytvořit pravidla s větším omezeného práva pro pravidelné odesílateli a příjemci. Pokud chcete zkopírovat primární a sekundární klíče pro váš obor názvů, postupujte takto: 
+Vytvořením nového oboru názvů se automaticky vygeneruje počáteční pravidlo sdíleného přístupového podpisu (SAS) s přidruženým párem primárního a sekundárního klíče, které udělují úplnou kontrolu nad všemi aspekty tohoto oboru názvů. Informace o tom, jak vytvořit pravidla s více omezenými právy pro pravidelné odesílatele a přijímače, najdete v tématu [Service Bus ověřování a autorizaci](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md) . K zkopírování primárního a sekundárního klíče pro svůj obor názvů použijte následující postup: 
 
 1. Klikněte na **Všechny prostředky** a pak klikněte na název nově vytvořeného oboru názvů.
 2. V okně oboru názvů klikněte na **Zásady sdíleného přístupu**.
 3. Na obrazovce **Zásady sdíleného přístupu** klikněte na **RootManageSharedAccessKey**.
    
     ![connection-info](./media/service-bus-create-namespace-portal/connection-info.png)
-4. V **zásad: RootManageSharedAccessKey** okna, klikněte na tlačítko kopírování vedle **primární připojovací řetězec**, zkopírujte připojovací řetězec do schránky pro pozdější použití. Vložte tuto hodnotu do Poznámkového bloku nebo jiného dočasného umístění.
+4. V okně **Zásada: RootManageSharedAccessKey** klikněte na tlačítko Kopírovat vedle položky **Primární připojovací řetězec** a zkopírujte si připojovací řetězec do schránky pro pozdější použití. Vložte tuto hodnotu do Poznámkového bloku nebo jiného dočasného umístění.
    
     ![connection-string](./media/service-bus-create-namespace-portal/connection-string.png)
 5. Opakujte předchozí krok, zkopírujte si hodnotu pro **primární klíč** a vložte ji do dočasného umístění pro pozdější použití.

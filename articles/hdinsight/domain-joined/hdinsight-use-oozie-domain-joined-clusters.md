@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seodec18
 ms.date: 12/09/2019
-ms.openlocfilehash: 125450394a829667d45479e6e0b7844a0357f009
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: ecc4d5053ef6d9194f09b8a5aa6ba1528f9d94fa
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750016"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920715"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Spusťte Apache Oozie v clusterech HDInsight Hadoop s Balíček zabezpečení podniku
 
@@ -214,39 +214,21 @@ Definice pracovních postupů Oozie jsou napsané v jazyce hPDL (Apache Hadoop p
 
 2. Po otevření editoru nano použijte jako obsah souboru následující kód XML:
 
-<<<<<<< HEAD
    ```bash
-       nameNode=adl://home
-       jobTracker=headnodehost:8050
-       queueName=default
-       examplesRoot=examples
-       oozie.wf.application.path=${nameNode}/user/[domainuser]/examples/apps/map-reduce/workflow.xml
-       hiveScript1=${nameNode}/user/${user.name}/countrowshive1.hql
-       hiveScript2=${nameNode}/user/${user.name}/countrowshive2.hql
-       oozie.use.system.libpath=true
-       user.name=[domainuser]
-       jdbcPrincipal=hive/<active-headnode-name>.<Domain>.com@<Domain>.COM
-       jdbcURL=[jdbcurlvalue]
-       hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
-       hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
+   nameNode=adl://home
+   jobTracker=headnodehost:8050
+   queueName=default
+   examplesRoot=examples
+   oozie.wf.application.path=${nameNode}/user/[domainuser]/examples/apps/map-reduce/workflow.xml
+   hiveScript1=${nameNode}/user/${user.name}/countrowshive1.hql
+   hiveScript2=${nameNode}/user/${user.name}/countrowshive2.hql
+   oozie.use.system.libpath=true
+   user.name=[domainuser]
+   jdbcPrincipal=hive/<active-headnode-name>.<Domain>.com@<Domain>.COM
+   jdbcURL=[jdbcurlvalue]
+   hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
+   hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
    ```
-=======
-    ```bash
-    nameNode=adl://home
-    jobTracker=headnodehost:8050
-    queueName=default
-    examplesRoot=examples
-    oozie.wf.application.path=${nameNode}/user/[domainuser]/examples/apps/map-reduce/workflow.xml
-    hiveScript1=${nameNode}/user/${user.name}/countrowshive1.hql
-    hiveScript2=${nameNode}/user/${user.name}/countrowshive2.hql
-    oozie.use.system.libpath=true
-    user.name=[domainuser]
-    jdbcPrincipal=hive/hn0-<ClusterShortName>.<Domain>.com@<Domain>.COM
-    jdbcURL=[jdbcurlvalue]
-    hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
-    hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
-    ```
->>>>>>> 0650d78429b6d1b43cddf90fc713eb4050d71eef
 
    - Pokud jste Azure Data Lake Storage Gen1 jako primární úložiště clusteru, použijte `adl://home` identifikátor URI pro vlastnost `nameNode`. Pokud používáte Azure Blob Storage, změňte tuto akci na `wasb://home`. Pokud používáte Azure Data Lake Storage Gen2, změňte tuto akci na `abfs://home`.
    - Nahraďte `domainuser` vaším uživatelským jménem pro doménu.  

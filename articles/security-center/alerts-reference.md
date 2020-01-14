@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: bd21d55583489ead3ce82d0df685806ce63fad98
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 696bba195ac3902a3a90a82bcc7665591eba643f
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780024"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922340"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Výstrahy zabezpečení – referenční příručka
 
@@ -48,13 +48,21 @@ Pod tabulkou upozornění je Tabulka popisující Azure Security Center dezaktiv
 |**Potenciální přeposílání portů na externí IP adresu**|Analýza dat hostitele zjistila zahájení předávání portů externí IP adrese.|Exfiltrace/CommandAndControl|
 ||<a name="alerts-azureappserv"></a><h3>Azure App Service</h3> [Další podrobnosti a poznámky](security-center-alerts-compute.md#azure-app-service-)||
 |**Zjistila se podezřelá vyvolání motivu WordPress.**|Protokol aktivity App Service označuje možnou aktivitu vkládání kódu na prostředek App Service.<br>Tato podezřelá aktivita se podobá aktivitě, která pracuje s motivem WordPress, aby podporovala spouštění kódu na straně serveru následovaný přímým webovým požadavkem na vyvolání souboru s tímto tématem. Tento typ aktivity může být součástí kampaně útoku přes WordPress.|-|
-|**V nástroji Analýza hrozeb se našla IP adresa, která se připojila k vašemu Azure App Service rozhraní FTP.**|Analýza protokolů App Service FTP zjistila připojení ze zdrojové adresy, která byla nalezena v informačním kanálu analýzy hrozeb. Během tohoto připojení uživatel přistupoval k uvedeným stránkám.|-|
-|**Zjistilo se webové otisky prstů.**|Protokol aktivit App Service označuje možnou aktivitu otisku webu na prostředku App Service.<br>Tato podezřelá aktivita je přidružená k nástroji s názvem blind slonů. Nástroj vyhledá webové servery otiskem prstů a pokusí se zjistit nainstalované aplikace a jejich verze. Útočníci často používají tento nástroj k tomu, aby vyhledali chyby zabezpečení webových aplikací. |-|
+|**Zjistilo se webové otisky prstů.**<br>(NMAP/blind slonů)|Protokol aktivit App Service označuje možnou aktivitu otisku webu na prostředku App Service.<br>Tato podezřelá aktivita je přidružená k nástroji s názvem blind slonů. Nástroj vyhledá webové servery otiskem prstů a pokusí se zjistit nainstalované aplikace a jejich verze. Útočníci často používají tento nástroj k tomu, aby vyhledali chyby zabezpečení webových aplikací. |-|
 |**Zjištěn podezřelý přístup k potenciálně ohroženým webovým stránkám**|Protokol aktivity App Service označuje, že se použila webová stránka, na kterou se jeví citlivý.<br>Tato podezřelá aktivita pochází ze zdrojové adresy, jejíž model přístupu se podobá webovému skeneru. Tento druh aktivity se často přidruží k pokusu útočníka, aby zkontroloval vaši síť a pokusil se získat přístup k citlivým nebo ohroženým webovým stránkám. |-|
+|**V nástroji Analýza hrozeb se našla IP adresa, která se připojila k vašemu Azure App Service rozhraní FTP.**|Analýza protokolů App Service FTP zjistila připojení ze zdrojové adresy, která byla nalezena v informačním kanálu analýzy hrozeb. Během tohoto připojení uživatel přistupoval k uvedeným stránkám.|-|
 |**Pokus o spuštění příkazů systému Linux na App Service Windows**|Analýza App Servicech procesů zjistila pokus o spuštění příkazu pro Linux v App Service Windows. Tuto akci spustila webová aplikace. Toto chování se často zobrazuje při kampaních, které využívají chybu zabezpečení ve společné webové aplikaci.|-|
 |**Zjistilo se podezřelé spuštění PHP.**|Protokoly počítače označují, že je spuštěný podezřelý proces PHP. Akce zahrnovala pokus o spuštění příkazů operačního systému nebo kódu PHP z příkazového řádku pomocí procesu PHP. I když může být toto chování legitimní, ve webových aplikacích může toto chování znamenat škodlivé aktivity, například pokusy o nainfikování webů pomocí webových prostředí.|Provedení|
 |**Zpracovat zpracování z dočasné složky**|Analýza App Servicech procesů zjistila spuštění procesu z dočasné složky aplikace. I když může být toto chování legitimní, ve webových aplikacích může toto chování znamenat škodlivé aktivity.|-|
 |**Byl zjištěn pokus o spuštění příkazu s vysokým oprávněním.**|Analýza App Servicech procesů zjistila, že došlo k pokusu o spuštění příkazu, který vyžaduje vysoké oprávnění. Příkaz běžel v kontextu webové aplikace. I když může být toto chování legitimní, ve webových aplikacích může toto chování znamenat škodlivé aktivity.|-|
+|**Bylo zjištěno ukládání výstupu na disk.**|Analýza App Servicech procesů zjistila spuštění příkazu složeného příkazu, ve kterém byl výstup uložen na disk. I když toto chování může být legitimní, ve webových aplikacích je toto chování také pozorováno v škodlivých aktivitách, jako jsou pokusy o nainfikování webů pomocí webových prostředí.|-|
+|**Bylo zjištěno stahování nezpracovaných dat.**|Analýza App Servicech procesů zjistila pokus o stažení kódu z nezpracovaných webů, jako je Pastebin. Tuto akci spustil proces PHP. Toto chování je přidruženo k pokusům o stažení webových prostředí nebo jiných škodlivých součástí do App Service.|-|
+|**Byl zjištěn skener ohrožení zabezpečení**<br>(Joomla/WordPress/CMS)|Protokol aktivit Azure App Service označuje, že se v prostředku App Service použil možný skener ohrožení zabezpečení. Zjištěná podezřelá aktivita se podobá těm nástrojům, které cílí na aplikace Joomla/aplikace WordPress/systém správy obsahu (CMS).|-|
+|**Byla zjištěna zpráva o spamu ve složce**|Azure App Service protokol aktivit indikuje aktivitu webu, která se identifikovala jako původ z webu přidruženého k aktivitě SPAMu. Tato situace může nastat, pokud je váš web ohrožen a používá se pro aktivitu spamu.|-|
+|**Bylo zjištěno připojení k webové stránce z neobvyklé IP adresy.**|Protokol aktivit Azure App Service označuje připojení k citlivé webové stránce ze zdrojové IP adresy (% {zdrojová IP adresa}), ke které se k ní nikdy nepřipojí. To může znamenat, že se někdo pokusí o útok hrubou silou na stránky pro správu vaší webové aplikace. Může to být také výsledkem nové IP adresy, kterou používá oprávněný uživatel.|-|
+|**Zjištěn podezřelý uživatelský agent**|Azure App Service protokol aktivit indikuje požadavky s podezřelým uživatelským agentem. Toto chování může ukazovat na pokusy o zneužití ohrožení zabezpečení ve vaší aplikaci App Service.|-|
+|**Soubor PHP ve složce pro nahrání**|Protokol aktivity Azure App Service označuje přístup k podezřelé stránce PHP, která se nachází ve složce pro nahrání. Tento typ složky obvykle neobsahuje soubory PHP. Existence tohoto typu souboru může ukazovat na zneužití s využitím libovolných chyb zabezpečení při nahrávání souborů.|-|
+|**Byl zjištěn vzor požadavků neobvyklé**|Protokol aktivit Azure App Service označuje aktivitu protokolu HTTP neobvyklé App Service z% {source IP}. Tato aktivita se podobá modelu přibližné aktivity \ hrubá síla.|-|
 ||<a name="alerts-akscluster"></a><h3>Úroveň clusteru AKS</h3> [Další podrobnosti a poznámky](security-center-alerts-compute.md#azure-containers-)||
 |**VERZE PREVIEW – zjistila se vazba role Správce clusteru.**|Analýza protokolu auditu Kubernetes zjistila novou vazbu na roli Správce clusteru, která má za následek oprávnění správce. Zbytečné poskytování oprávnění správce může mít za následek problémy s eskalací oprávnění v clusteru.|Trvalost|
 |**Zjištěný řídicí panel Kubernetes vystavený verzí PREVIEW**|Analýza protokolu auditu Kubernetes zjistila expozici řídicího panelu Kubernetes službou Vyrovnávání zatížení. Vystavené řídicí panely umožňují neověřený přístup ke správě clusteru a představují bezpečnostní hrozbu.|Trvalost|

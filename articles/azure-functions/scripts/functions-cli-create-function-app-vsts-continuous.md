@@ -4,16 +4,16 @@ description: Vytvoření aplikace funkcí a nasazení kódu funkce z Azure DevOp
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc
-ms.openlocfilehash: 3fa11d5cd81d93b89b6e8ae63fd491842be78633
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: d10c3987aef6e0a32081acd17425517f5109c4bb
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532789"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922640"
 ---
 # <a name="create-a-function-in-azure-that-is-deployed-from-azure-devops"></a>Vytvoření funkce v Azure nasazené z Azure DevOps
 
-Toto téma ukazuje použití služby Azure Functions k vytvoření aplikace funkcí [bez serveru](https://azure.microsoft.com/solutions/serverless/) s použitím [plánu Consumption](../functions-scale.md#consumption-plan). Aplikace Function App, která je kontejnerem pro vaše funkce, je průběžně nasazena z úložiště Azure DevOps. 
+V tomto tématu se dozvíte, jak pomocí Azure Functions vytvořit aplikaci s funkcemi bez [serveru](https://azure.microsoft.com/solutions/serverless/) s využitím [plánu spotřeby](../functions-scale.md#consumption-plan). Aplikace Function App, která je kontejnerem pro vaše funkce, je průběžně nasazena z úložiště Azure DevOps. 
 
 K dokončení tohoto tématu potřebujete:
 
@@ -42,7 +42,7 @@ Tento skript k vytvoření skupiny prostředků, účtu úložiště, aplikace f
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Vytvoří účet úložiště vyžadovaný aplikací funkcí. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Vytvoří aplikaci funkcí v [plánu Consumption](../functions-scale.md#consumption-plan) bez serveru. |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Vytvoří aplikaci funkcí v [plánu spotřeby](../functions-scale.md#consumption-plan)bez serveru. |
 | [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config) | Přidruží aplikaci funkcí k úložišti Git nebo Mercurial. |
 
 ## <a name="next-steps"></a>Další kroky

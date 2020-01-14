@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 0eeb9c0c938793bb13218c5407f2a3fa117880e7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6c946667befdf34a2ae6769b2c1bb43871111c24
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226995"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921025"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie nasazení v Azure Functions
 
@@ -36,7 +36,7 @@ Každý plán má jiné chování. Ne všechny technologie nasazení jsou k disp
 | Správa zdrojového kódu |✔|✔|✔| |✔|✔|
 | Místní Git<sup>1</sup> |✔|✔|✔| |✔|✔|
 | Cloudová synchronizace<sup>1</sup> |✔|✔|✔| |✔|✔|
-| Protokol FTP<sup>1</sup> |✔|✔|✔| |✔|✔|
+| FTP<sup>1</sup> |✔|✔|✔| |✔|✔|
 | Úpravy portálu |✔|✔|✔| |✔<sup>2</sup>|✔<sup>2</sup>|
 
 <sup>1</sup> technologie nasazení, která vyžaduje [synchronizaci ručních triggerů](#trigger-syncing).  
@@ -114,7 +114,7 @@ Pomocí nástroje zip Deploy nahrajte soubor. zip, který obsahuje vaši aplikac
 
 Můžete nasadit image kontejneru pro Linux, která obsahuje vaši aplikaci Function App.
 
->__Jak ji použít:__ Vytvořte aplikaci Functions pro Linux v plánu Premium nebo vyhrazené a určete, ze které image kontejneru se má spustit. Můžete to provést dvěma způsoby:
+>__Jak ji použít:__ Vytvořte aplikaci Functions pro Linux v plánu Premium nebo vyhrazené a určete, ze které image kontejneru se má spustit. To můžete provést dvěma způsoby:
 >
 >* Vytvořte aplikaci funkcí pro Linux v plánu Azure App Service Azure Portal. V části **publikovat**vyberte **Image Docker**a pak nakonfigurujte kontejner. Zadejte umístění, kde je bitová kopie hostovaná.
 >* Pomocí Azure CLI vytvoříte aplikaci funkcí pro Linux v plánu App Service. Další informace o postupu najdete v tématu [Vytvoření funkce na platformě Linux pomocí vlastní image](functions-create-function-linux-custom-image.md#create-a-premium-plan).

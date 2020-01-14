@@ -1,23 +1,22 @@
 ---
 title: 'Rychlý Start: rozpoznávání řeči pomocí mikrofonu C++ (MacOS) – služba Speech'
 titleSuffix: Azure Cognitive Services
-description: Naučte se rozpoznávat řeč v C++ MacOS pomocí sady Speech SDK
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 07/05/2019
+ms.topic: include
+ms.date: 12/17/2019
 ms.author: wolfma
-ms.openlocfilehash: 885e853528eb0b20079e6a7739450687ed001b8e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 08459238173b379280cb513ccb3242e4f15ef0bc
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818905"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75927820"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 

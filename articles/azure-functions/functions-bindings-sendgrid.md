@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: a0731a66af32b45215145c1d4f4404eb008cf897
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d70b05842fc7f251af6aefd743f064c037f63b7b
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410048"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922356"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions vazby SendGrid
 
@@ -27,9 +27,6 @@ Vazby SendGrid jsou k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs. Ex
 ## <a name="packages---functions-2x-and-higher"></a>Balíčky – funkce 2. x a vyšší
 
 Vazby SendGrid jsou k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs. Extensions. SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) , verze 3. x. Zdrojový kód balíčku je v úložišti GitHub [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) .
-
-> [!NOTE]
-> Verze 2. x a vyšší nevytvářejí téma nebo předplatné nakonfigurované v instanci `ServiceBusTrigger`. Tyto verze jsou založené na [Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) , který nezpracovává správu fronty.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -351,12 +348,12 @@ V následující tabulce jsou uvedeny vlastnosti konfigurace vazby, které jsou 
 
 | *Function. JSON* – vlastnost | Atribut nebo vlastnost anotace | Popis | Volitelné |
 |--------------------------|-------------------------------|-------------|----------|
-| type || Musí být nastaveno na `sendGrid`.| Ne |
-| směr || Musí být nastaveno na `out`.| Ne |
-| jméno || Název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. Tato hodnota je `$return`, pokud je k dispozici pouze jedna návratová hodnota. | Ne |
+| type |–| Musí být nastaveno na `sendGrid`.| Ne |
+| směr |–| Musí být nastaveno na `out`.| Ne |
+| jméno |–| Název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. Tato hodnota je `$return`, pokud je k dispozici pouze jedna návratová hodnota. | Ne |
 | apiKey | ApiKey | Název nastavení aplikace, které obsahuje klíč rozhraní API. Pokud není nastavená, výchozí název nastavení aplikace je *AzureWebJobsSendGridApiKey*.| Ne |
 | na| až | E-mailová adresa příjemce | Ano |
-| od| Od | e-mailová adresa odesílatele |  Ano |
+| od| Od | E-mailová adresa odesílatele |  Ano |
 | subject| Předmět | Předmět daného e-mailu. | Ano |
 | text| Text | Obsah e-mailu | Ano |
 

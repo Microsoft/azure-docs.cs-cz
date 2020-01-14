@@ -4,12 +4,12 @@ description: Ukázkový skript Azure CLI – Vytvoření funkce Azure, která se
 ms.topic: sample
 ms.date: 07/03/2018
 ms.custom: mvc
-ms.openlocfilehash: d881a5eb6132f95239418f032da51d002af01905
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 5ee80283ed39789eabb702a48aa97f678a6409f9
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532871"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922713"
 ---
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>Vytvoření funkce Azure, která se připojuje ke službě Azure Cosmos DB
 
@@ -36,8 +36,8 @@ Tento skript používá následující příkazy: Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků s umístěním. |
-| [az storage accounts create](/cli/azure/storage/account#az-storage-account-create) | vytvořit účet úložiště |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Vytvoří aplikaci funkcí v [plánu Consumption](../functions-scale.md#consumption-plan) bez serveru. |
+| [az storage accounts create](/cli/azure/storage/account#az-storage-account-create) | Vytvoření účtu úložiště |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Vytvoří aplikaci funkcí v [plánu spotřeby](../functions-scale.md#consumption-plan)bez serveru. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Vytvoří účet databáze Azure Cosmos DB. |
 | [AZ cosmosdb show](/cli/azure/cosmosdb#az-cosmosdb-show)| Získá připojení k databázovému účtu. |
 | [az cosmosdb list-keys](/cli/azure/cosmosdb#az-cosmosdb-list-keys)| Získá klíče pro databázi. |

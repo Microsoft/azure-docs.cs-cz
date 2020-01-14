@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2e509535473fa50fd3150965e1513e056ead18a6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1949aca26f68f12dfb133da8ef45662294140c25
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794337"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922566"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Zabezpečení a ochrana dat v Azure Kognitivní hledání
 
@@ -28,7 +28,7 @@ Azure Kognitivní hledání je certifikovaný v následujících standardech, ja
 + [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html) 
 + [SOC 2 typ 2 – dodržování předpisů](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) Pro celou sestavu použijte [sestavu Azure-a Azure Government SOC 2 Type II](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports). 
 + [Zákon o odpovědnosti za ochranu zdravotního pojištění a AKT (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
-+ [GxP (21 CFR část 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
++ [GxP (21 CFR Part 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
 + [HITRUST](https://en.wikipedia.org/wiki/HITRUST)
 + [PCI DSS úroveň 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
 + [Austrálie IRAP – neklasifikované DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
@@ -41,9 +41,9 @@ Dodržování standardů se vztahuje na všeobecně dostupné funkce. Funkce ve 
 
 | Vrstva zabezpečení | Popis |
 |----------------|-------------|
-| Šifrování při přenosu <br>(HTTPS/SSL/TLS) | Azure Kognitivní hledání naslouchá na portu HTTPS 443. V rámci platformy jsou připojení ke službám Azure zašifrovaná. <br/><br/>Všechny interakce mezi klientem a službou Azure Kognitivní hledání jsou s podporou protokolu SSL/TLS 1,2.  Ujistěte se, že pro připojení SSL k vaší službě používáte TLSv 1.2.|
+| Šifrování během přenosu <br>(HTTPS/SSL/TLS) | Azure Kognitivní hledání naslouchá na portu HTTPS 443. V rámci platformy jsou připojení ke službám Azure zašifrovaná. <br/><br/>Všechny interakce mezi klientem a službou Azure Kognitivní hledání jsou s podporou protokolu SSL/TLS 1,2.  Ujistěte se, že pro připojení SSL k vaší službě používáte TLSv 1.2.|
 | Šifrování v klidovém stavu <br>Spravované klíče společnosti Microsoft | Šifrování je plně v procesu indexování plně prohlášeno bez měřitelnosti při indexování času na dokončení nebo velikost indexu. K tomu dochází automaticky při každém indexování, včetně přírůstkových aktualizací indexu, který není plně šifrovaný (vytvořený před lednem 2018).<br><br>Šifrování je interně založené na [šifrování Azure Storage služby](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)pomocí 256 [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).<br><br> Šifrování je interní pro Azure Kognitivní hledání, pomocí certifikátů a šifrovacích klíčů spravovaných interně Microsoftem a univerzálně se používá. Šifrování nelze zapnout nebo vypnout, spravovat nebo nahrazovat vlastní klíče nebo zobrazit nastavení šifrování na portálu nebo programově.<br><br>Šifrování v klidovém umístění bylo oznámeno 24. ledna 2018 a vztahuje se na všechny úrovně služeb, včetně úrovně Free, ve všech oblastech. Pro úplné šifrování musí být indexy vytvořené před tímto datem vyřazeny a znovu sestaveny, aby mohlo dojít k šifrování. V opačném případě jsou zašifrována pouze nová data přidaná po 24. ledna.|
-| Šifrování v klidovém stavu <br>Klíče spravované zákazníkem | Šifrování pomocí zákaznických klíčů je funkce ve **verzi Preview** , která není dostupná pro bezplatné služby. Pro placené služby je k dispozici jenom pro vyhledávací služby vytvořené v nebo po lednu 2019 s použitím nejnovější verze Preview rozhraní API (API-Version = 2019-05 -06-Preview).<br><br>Indexy Azure Kognitivní hledání a mapy synonym se teď dají zašifrovat v klidovém stavu pomocí klíčů zákazníka spravovaných klíči v Azure Key Vault. Další informace najdete v tématu [Správa šifrovacích klíčů v Azure kognitivní hledání](search-security-manage-encryption-keys.md).<br>Tato funkce nenahrazuje výchozí šifrování v klidovém stavu, ale místo toho se používá.<br>Povolením této funkce se zvýší velikost indexu a sníží se výkon dotazů. Na základě pozorování k datu můžete očekávat zvýšení 30% až 60% v době dotazu, přestože skutečný výkon se bude lišit v závislosti na definici indexu a typech dotazů. Z důvodu tohoto dopadu na výkon doporučujeme tuto funkci povolit pouze pro indexy, které ji skutečně vyžadují.
+| Šifrování v klidovém stavu <br>Klíče spravované zákazníkem | Šifrování se spravovanými klíči Customer je teď všeobecně dostupné.<br><br>Indexy Azure Kognitivní hledání a mapy synonym se teď dají zašifrovat v klidovém stavu pomocí klíčů zákazníka spravovaných klíči v Azure Key Vault. Další informace najdete v tématu [Správa šifrovacích klíčů v Azure kognitivní hledání](search-security-manage-encryption-keys.md).<br>Tato funkce nenahrazuje výchozí šifrování v klidovém stavu, ale místo toho se používá.<br>Povolením této funkce se zvýší velikost indexu a sníží se výkon dotazů. Na základě pozorování k datu můžete očekávat zvýšení 30% až 60% v době dotazu, přestože skutečný výkon se bude lišit v závislosti na definici indexu a typech dotazů. Z důvodu tohoto dopadu na výkon doporučujeme tuto funkci povolit pouze pro indexy, které ji skutečně vyžadují.
 
 ## <a name="azure-wide-user-access-controls"></a>Řízení přístupu uživatelů na úrovni Azure
 

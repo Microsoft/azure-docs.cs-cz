@@ -4,12 +4,12 @@ description: Nasaďte první vlastní kontejner Windows do Azure App Service. Vy
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b618c4f1a24e4089cac2ddf34e61bab156aefdd
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 7901498772b8e746fb2c87a5237f06ab279e3b64
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671353"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922301"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Spuštění vlastního kontejneru s Windows v Azure (Preview)
 
@@ -17,9 +17,9 @@ ms.locfileid: "74671353"
 
 V tomto rychlém startu se dozvíte, jak nasadit aplikaci ASP.NET v imagi Windows do [Docker Hub](https://hub.docker.com/) ze sady Visual Studio. Aplikaci spustíte ve vlastním kontejneru v Azure App Service.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
 - <a href="https://hub.docker.com/" target="_blank">Zaregistrovat si účet Centra Dockeru</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Nainstalujte Docker for Windows</a>.
@@ -43,7 +43,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci v ASP.NET:
 
 1. Do Azure můžete nasadit jakýkoli typ webové aplikace ASP.NET. Pro tento rychlý Start vyberte šablonu **MVC** .
 
-1. Vyberte možnost **Podpora Docker**a ujistěte se, že je ověřování nastaveno na **bez ověřování**. Vyberte **Create** (Vytvořit).
+1. Vyberte možnost **Podpora Docker**a ujistěte se, že je ověřování nastaveno na **bez ověřování**. Vyberte **Vytvořit**.
 
    ![Vytvoření webové aplikace v ASP.NET](./media/app-service-web-get-started-windows-container/select-mvc-template-for-container.png)
 
@@ -103,7 +103,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci v ASP.NET:
 
 Po dokončení operace Azure se zobrazí okno s oznámením.
 
-![Nasazení bylo úspěšné.](media/app-service-web-get-started-windows-container/portal-create-finished.png)
+![Nasazení bylo úspěšné](media/app-service-web-get-started-windows-container/portal-create-finished.png)
 
 1. Klikněte na **Přejít k prostředku**.
 
@@ -163,15 +163,15 @@ Znovu [přejděte do aplikace typu kontejner](#browse-to-the-container-app). Po 
 
 ## <a name="use-a-different-parent-image"></a>Použití jiné nadřazené image
 
-Pro spuštění vaší aplikace můžete použít jinou vlastní image Docker. Musíte však zvolit správnou [nadřazenou image](https://docs.docker.com/develop/develop-images/baseimages/) pro požadovanou architekturu:
+Pro spuštění vaší aplikace můžete použít jinou vlastní image Docker. Je však nutné zvolit správnou [nadřazenou Image (základní bitovou kopii)](https://docs.docker.com/develop/develop-images/baseimages/) pro rozhraní, které chcete:
 
 - K nasazení aplikací .NET Framework použijte nadřazenou bitovou kopii na základě verze Windows Server Core 2019 [(LTSC) (dlouhodobá údržba kanálu)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) . 
 - Pokud chcete nasadit aplikace .NET Core, použijte nadřazenou bitovou kopii založenou na vydání Windows Server nano 1809 [(konzola pro správu)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) . 
 
 Stažení nadřazené image při spuštění aplikace nějakou dobu trvá. Čas spuštění však můžete zkrátit použitím některé z následujících nadřazených imagí, které jsou již uložené v mezipaměti ve službě Azure App Service:
 
-- [MCR.Microsoft.com/DotNET/Framework/ASPNET](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/): 4.7.2-windowsservercore-ltsc2019
-- [MCR.Microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809 – tento obrázek je základní kontejner používaný v Microsoft [ASP.NET Core](https://hub.docker.com/_microsoft-dotnet-cores-aspnet) imagí Microsoft Windows nano serveru.
+- [mcr.microsoft.com/dotnet/framework/aspnet](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/):4.7.2-windowsservercore-ltsc2019
+- [MCR.Microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809 – tento obrázek je základní kontejner používaný v Microsoft [ASP.NET Core](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/) imagí Microsoft Windows nano serveru.
 
 ## <a name="next-steps"></a>Další kroky
 
