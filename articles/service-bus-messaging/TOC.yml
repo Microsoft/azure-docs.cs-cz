@@ -7,7 +7,7 @@
     - name: Porovnání služeb zasílání zpráv
       href: ../event-grid/compare-messaging-services.md
       maintainContext: true
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Fronty služby Service Bus
       items:
@@ -73,7 +73,7 @@
       href: service-bus-tutorial-topics-subscriptions-portal.md
     - name: Aktualizace inventáře – CLI
       href: service-bus-tutorial-topics-subscriptions-cli.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky služby Service Bus
       href: service-bus-samples.md
@@ -205,7 +205,7 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: Zabezpečení
       items:
-        - name: Konfigurace klíčů spravovaných zákazníkem pro šifrování neaktivních uložených dat (Preview)
+        - name: Konfigurace klíčů spravovaných zákazníkem pro šifrování neaktivních uložených dat
           href: configure-customer-managed-key.md
     - name: Řešení potíží
       items:
