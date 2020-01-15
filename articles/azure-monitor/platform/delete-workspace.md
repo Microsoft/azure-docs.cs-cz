@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/28/2019
-ms.openlocfilehash: 2b54dd5161312a081d439b3e10d2cb4bf9014d52
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 01/14/2020
+ms.openlocfilehash: 739f97e912a33402aa7482e59dd78f5aeb005772
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75496529"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75944430"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Odstranění a obnovení pracovního prostoru služby Azure Log Analytics
 
@@ -55,7 +55,7 @@ Pracovní prostor můžete odstranit pomocí [PowerShellu](https://docs.microsof
 
 ### <a name="powershell"></a>PowerShell
 ```PowerShell
-PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "ContosResourceGroup" -Name "MyWorkspace"
+PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
 
 ## <a name="recover-workspace"></a>Obnovit pracovní prostor
@@ -68,6 +68,12 @@ Pracovní prostor můžete obnovit tak, že ho znovu vytvoříte pomocí násled
 * Název skupiny prostředků
 * Název pracovního prostoru
 * Region (Oblast)
+
+### <a name="powershell"></a>PowerShell
+```PowerShell
+PS C:\>Select-AzSubscription "subscription-name-the-workspace-was-in"
+PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name-the-workspace-was-in" -Name "deleted-workspace-name" -Location "region-name-the-workspace-was-in"
+```
 
 Pracovní prostor a všechna jeho data se po operaci obnovení vrátí zpět. Řešení a propojené služby byly při odstranění trvale odebrány z pracovního prostoru a měly by být překonfigurovány, aby byl pracovní prostor nastaven do dříve nakonfigurovaného stavu. Některá data nemusí být k dispozici pro dotaz po obnovení pracovního prostoru, dokud nebudou přidružená řešení znovu nainstalována a jejich schémata jsou přidána do pracovního prostoru.
 

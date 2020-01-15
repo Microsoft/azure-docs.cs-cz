@@ -1,56 +1,56 @@
 ---
-title: Připojení k Azure Cosmos DB s použitím Compass
-description: Zjistěte, jak pomocí MongoDB Compass můžete ukládat a spravovat data ve službě Azure Cosmos DB.
+title: Připojení k Azure Cosmos DB pomocí kompasu
+description: Naučte se používat MongoDB kompas k ukládání a správě dat v Azure Cosmos DB.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
 ms.date: 06/24/2019
-author: roaror
-ms.author: roaror
-ms.openlocfilehash: 102d3fdc2e36f812e9a86286383a06f9930a1947
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+author: LuisBosquez
+ms.author: lbosq
+ms.openlocfilehash: 5c01bd02b1fef7c7b27a3119465cad53155b9bbf
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67665919"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940982"
 ---
-# <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>Použít MongoDB Compass pro připojení k rozhraní API služby Azure Cosmos DB pro MongoDB 
+# <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>Použití MongoDB kompasu pro připojení k rozhraní API Azure Cosmos DB pro MongoDB 
 
-Tento kurz ukazuje, jak používat [MongoDB Compass](https://www.mongodb.com/products/compass) při ukládání a správu dat v databázi Cosmos DB. Tohoto návodu používáme rozhraní API Azure Cosmos DB pro MongoDB. Neznáte, Compass je grafické uživatelské rozhraní pro MongoDB. Běžně slouží k vizualizaci dat, spouštění dotazů ad-hoc, spolu s spravovat vaše data. 
+V tomto kurzu se dozvíte, jak pomocí [MongoDB kompasu](https://www.mongodb.com/products/compass) ukládat a spravovat data v Cosmos DB. Pro tento návod používáme rozhraní API Azure Cosmos DB pro MongoDB. U těch, které neznáte, je kompas pro MongoDB grafické uživatelské rozhraní. Často se používá k vizualizaci dat, spouštění ad-hoc dotazů spolu se správou vašich dat. 
 
-Cosmos DB je globálně distribuovaná vícemodelová databázová služba od Microsoftu. Můžete rychle vytvořit a dotazovat dokument, klíč/hodnota a databáze grafů, které můžou využívat výhody globální distribuce a možností horizontálního škálování v jádru služby Cosmos DB.
+Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete rychle vytvořit a dotazovat databáze dokumentů, klíčů a hodnot a grafů, z nichž všechno přináší výhody funkcí globální distribuce a horizontálního škálování v jádru Cosmos DB.
 
 
 ## <a name="pre-requisites"></a>Požadavky 
-Pro připojení k účtu služby Cosmos DB pomocí Robo 3T, musíte mít:
+Pokud se chcete připojit k účtu Cosmos DB pomocí 3T Robo, musíte:
 
-* Stáhněte a nainstalujte [Compass](https://www.mongodb.com/download-center/compass?jmp=hero)
-* Cosmos DB mají [připojovací řetězec](connect-mongodb-account.md) informace
+* Stažení a instalace [kompasu](https://www.mongodb.com/download-center/compass?jmp=hero)
+* Informace o [připojovacím řetězci](connect-mongodb-account.md) Cosmos DB
 
-## <a name="connect-to-cosmos-dbs-api-for-mongodb"></a>Připojit k rozhraní API Cosmos DB pro MongoDB 
-Připojení účtu Cosmos DB k Compass, můžete postupovat podle následujících kroků:
+## <a name="connect-to-cosmos-dbs-api-for-mongodb"></a>Připojení k rozhraní API Cosmos DB pro MongoDB 
+Pokud chcete účet Cosmos DB připojit k kompasu, můžete postupovat podle následujících kroků:
 
-1. Načíst informace o připojení účtu Cosmos nakonfigurovanou API MongoDB služby Azure Cosmos DB pomocí pokynů [tady](connect-mongodb-account.md).
+1. Načtěte informace o připojení pro účet Cosmos nakonfigurovaný pomocí rozhraní API služby Azure Cosmos DB MongoDB pomocí pokynů [zde](connect-mongodb-account.md).
 
     ![Snímek obrazovky okna připojovací řetězec](./media/mongodb-compass/mongodb-compass-connection.png)
 
-2. Klikněte na tlačítko s textem **kopírování do schránky** vedle vašeho **primárního a sekundárního připojovacího řetězce** ve službě Cosmos DB. Klepnutím na toto tlačítko bude zkopírujte celý připojovací řetězec do schránky. 
+2. Klikněte na tlačítko, které říká **kopírování do schránky** vedle vašeho **primárního a sekundárního připojovacího řetězce** v Cosmos DB. Kliknutím na toto tlačítko se zkopíruje celý připojovací řetězec do schránky. 
 
-    ![Snímek obrazovky kopírovat do schránky tlačítko](./media/mongodb-compass/mongodb-connection-copy.png)
+    ![Snímek obrazovky s tlačítkem kopírovat do schránky](./media/mongodb-compass/mongodb-connection-copy.png)
 
-3. Na ploše nebo počítač, otevřete Compass a klikněte na **připojit** a potom **připojení k...** . 
+3. Otevřete kompas na ploše nebo počítači a klikněte na **připojit** a pak **se připojte k...** . 
 
-4. Compass automaticky zjistí připojovací řetězec do schránky a zobrazí výzvu pro dotaz, zda chcete použít pro připojení. Klikněte na **Ano** jak je znázorněno v následujícím snímku obrazovky.
+4. Kompas automaticky zjistí připojovací řetězec ve schránce a zobrazí výzvu k dotazování, jestli chcete použít, aby se připojil. Klikněte na **Ano** , jak je znázorněno na snímku obrazovky níže.
 
-    ![Snímek obrazovky Compass výzvy pro připojení](./media/mongodb-compass/mongodb-compass-detect.png)
+    ![Snímek obrazovky s výzvou k připojení](./media/mongodb-compass/mongodb-compass-detect.png)
 
-5. Po kliknutí na tlačítko **Ano** v předchozím kroku, podrobnosti o vašem z připojovacího řetězce automaticky doplněno. Odebrat hodnotu v vyplní automaticky **nastavte název repliky** pole k zajištění, který je ponecháno prázdné. 
+5. Po kliknutí na tlačítko **Ano** ve výše uvedeném kroku budou automaticky vyplněny podrobnosti z připojovacího řetězce. Odeberte hodnotu automaticky naplněnou v poli **název sady replik** , abyste zajistili, že zůstane prázdné. 
 
-    ![Snímek obrazovky Compass výzvy pro připojení](./media/mongodb-compass/mongodb-compass-replica.png)
+    ![Snímek obrazovky s výzvou k připojení](./media/mongodb-compass/mongodb-compass-replica.png)
 
-6. Klikněte na **připojit** v dolní části stránky. Účet služby Cosmos DB a databáze by měla nyní být viditelné v rámci MongoDB Compass.
+6. V dolní části stránky klikněte na **připojit** . Váš účet Cosmos DB a databáze by se teď měly zobrazovat v rámci MongoDB kompasu.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zjistěte, jak [použití studia 3T](mongodb-mongochef.md) s rozhraním API služby Azure Cosmos DB pro MongoDB.
-- Prozkoumejte MongoDB [ukázky](mongodb-samples.md) s rozhraním API služby Azure Cosmos DB pro MongoDB.
+- Naučte se [používat Studio 3T](mongodb-mongochef.md) s rozhraním API Azure Cosmos DB pro MongoDB.
+- Prozkoumejte [ukázky](mongodb-samples.md) MONGODB s rozhraním API Azure Cosmos DB pro MongoDB.

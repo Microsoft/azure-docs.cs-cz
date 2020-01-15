@@ -13,20 +13,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 01/08/2020
 ms.author: shvija
-ms.openlocfilehash: ade4aa79b2de005bfecd7a5882f06cb491ea4e6d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: e81871e27c04f8a43f678110d7f44cc9c3be149c
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717839"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940762"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python"></a>Rychlý Start: návod Event Hubsho zachycení: Python
 
-Capture je funkce služby Azure Event Hubs. Pomocí Capture můžete automaticky doručovat streamovaná data v centru událostí do účtu Azure Blob Storage podle vašeho výběru. Tato funkce usnadňuje dávkové zpracování dat streamování v reálném čase. Tento článek popisuje, jak používat Event Hubs zachytávání pomocí Pythonu. Další informace o Event Hubs Capture najdete v tématu [zachycení událostí prostřednictvím Azure Event Hubs][Overview of Event Hubs Capture].
+Sběr dat je funkce služby Azure Event Hubs. Pomocí Capture můžete automaticky doručovat streamovaná data v centru událostí do účtu Azure Blob Storage podle vašeho výběru. Tato funkce usnadňuje dávkové zpracování dat streamování v reálném čase. Tento článek popisuje, jak používat Event Hubs Capture pomocí Pythonu. Další informace o Event Hubs Capture najdete v tématu [zachycení událostí prostřednictvím Azure Event Hubs][Overview of Event Hubs Capture].
 
 Tento návod používá [sadu Azure Python SDK](https://azure.microsoft.com/develop/python/) k předvedení funkce Capture. Program *sender.py* odesílá simulovanou telemetrii o životním prostředí do Event Hubs ve formátu JSON. Centrum událostí používá funkci Capture k zápisu těchto dat do úložiště objektů BLOB v dávkách. Aplikace *capturereader.py* tyto objekty blob přečte, vytvoří pro každé zařízení soubor připojení a na každé zařízení zapíše data do souborů *. csv* .
+
+> [!IMPORTANT]
+> V tomto rychlém startu se používá verze 1 sady Azure Event Hubs Python SDK. Pokud s Event Hubs Azure začínáte, použijte verzi 5 sady Python SDK. Rychlý Start, který používá verzi 5 sady Python SDK, najdete v [tomto článku](get-started-capture-python-v2.md). Pokud potřebujete migrovat existující kód z verze 1 na verzi 5, přečtěte si [příručku k migraci](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md).
 
 V tomto návodu: 
 
@@ -40,7 +43,7 @@ V tomto návodu:
 
 - Python 3,4 nebo novější s `pip` nainstalované a aktualizované.
   
-- Předplatné Azure. Pokud ho nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+- Předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
   
 - Obor názvů Active Event Hubs a centrum událostí vytvořené podle pokynů v tématu [rychlý Start: vytvoření centra událostí pomocí Azure Portal](event-hubs-create.md). Poznamenejte si název oboru názvů a centra událostí, které použijete později v tomto návodu. 
   
@@ -54,7 +57,7 @@ V tomto návodu:
 
 Vytvořte účet úložiště a kontejner, který chcete použít pro zachytávání. 
 
-1. Přihlaste se k webu [Azure Portal][Azure portal].
+1. Přihlaste se na web [Azure Portal][Azure portal].
 2. V levém navigačním panelu vyberte **účty úložiště**a na obrazovce **účty úložiště** vyberte **Přidat**.
 3. Na obrazovce vytvoření účtu úložiště vyberte předplatné a skupinu prostředků a zadejte název účtu úložiště. Ostatní výběry můžete ponechat ve výchozím nastavení. Vyberte **zkontrolovat + vytvořit**, zkontrolujte nastavení a pak vyberte **vytvořit**. 
    
@@ -74,7 +77,7 @@ Vytvořte účet úložiště a kontejner, který chcete použít pro zachytáv�
 5. Na obrazovce **zachycení** vyberte **Uložit změny**. 
 
 ## <a name="create-a-python-script-to-send-events-to-event-hub"></a>Vytvoření skriptu v jazyce Python pro odesílání událostí do centra událostí
-Tento skript pošle do centra událostí 200 událostí. Události jsou jednoduché čtení z prostředí odesílané ve formátu JSON.
+Tento skript odesílá 200 události do vašeho centra událostí. Události jsou jednoduché čtení z prostředí odesílané ve formátu JSON.
 
 1. Otevřete oblíbený editor Pythonu, například [Visual Studio Code][Visual Studio Code].
 2. Vytvořte nový soubor s názvem *sender.py*. 

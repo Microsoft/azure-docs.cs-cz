@@ -1,5 +1,5 @@
 ---
-title: Správa úloh
+title: Správa zatížení
 description: Pokyny pro implementaci správy úloh v Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 10/30/2019
+ms.date: 01/13/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2563ea4ab498c11c846cfe79f0e668f7d491c2e7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 66edde9591d4491fa630772f99372f9901319b2f
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692353"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940581"
 ---
 # <a name="what-is-workload-management"></a>Co je Správa úloh?
 
@@ -42,7 +42,7 @@ Například udělení členství role uživatele ad hoc, aby smallrc povoleno, a
 
 Správa úloh na SQL Data Warehouse se skládá ze tří konceptů vysoké úrovně: [klasifikace úloh](sql-data-warehouse-workload-classification.md), [důležité úlohy](sql-data-warehouse-workload-importance.md) a [izolace úloh](sql-data-warehouse-workload-isolation.md).  Tyto funkce poskytují větší kontrolu nad tím, jak vaše zatížení využívají systémové prostředky.
 
-Klasifikace úloh je koncept přiřazení žádosti do skupiny úloh a nastavení úrovní důležitosti.  Historická Tato přiřazení byla provedena prostřednictvím členství role pomocí [sp_addrolemember](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management#change-a-users-resource-class).  To se teď dá udělat pomocí [CLASSIFERu vytvořit úlohu](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  Funkce klasifikace poskytuje bohatou sadu možností, jako je například popisek, relace a čas pro klasifikaci požadavků.
+Klasifikace úloh je koncept přiřazení žádosti do skupiny úloh a nastavení úrovní důležitosti.  Historicky bylo toto přiřazení provedeno prostřednictvím členství role pomocí [sp_addrolemember](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management#change-a-users-resource-class).  To se teď dá udělat pomocí [CLASSIFERu vytvořit úlohu](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  Funkce klasifikace poskytuje bohatou sadu možností, jako je například popisek, relace a čas pro klasifikaci požadavků.
 
 Důležité informace o úlohách mají vliv na pořadí, ve kterém požadavek získá přístup k prostředkům.  V zaneprázdněném systému má žádost s vyšší důležitost prvním přístup k prostředkům.  Důležitost taky může zajistit, aby byl přístup k zámkům uspořádaný. 
 
@@ -54,3 +54,4 @@ Izolace úloh rezervuje prostředky pro skupinu úloh.  Prostředky rezervované
 - Další informace o klasifikaci úloh najdete v tématu [klasifikace úloh](sql-data-warehouse-workload-classification.md).  
 - Další informace o izolaci úloh najdete v tématu věnovaném [izolaci úloh](sql-data-warehouse-workload-isolation.md).  
 - Další informace o důležitosti úloh najdete v tématu [důležitost úloh](sql-data-warehouse-workload-importance.md).  
+- Další informace o monitorování správy úloh najdete v tématu [sledování portál pro správu úloh](sql-data-warehouse-workload-management-portal-monitor.md).  

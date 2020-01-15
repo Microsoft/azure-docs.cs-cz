@@ -1,32 +1,25 @@
 ---
-title: 'Rychlý Start: rozpoznávání řeči uložených v BLOB Storage C# , – Speech Service'
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 2f06d0015bd80b37407df28045d4ced4a128e47e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.author: dapine
+ms.openlocfilehash: bfecfa1918d2e9199971b2f9738530dc1b4e3c4c
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468380"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942752"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, nezapomeňte:
 
 > [!div class="checklist"]
-> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
-> * [Nahrání zdrojového souboru do objektu blob Azure](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 > * [Nastavení vývojového prostředí](../../../../quickstarts/setup-platform.md)
 > * [Vytvořit prázdný ukázkový projekt](../../../../quickstarts/create-project.md)
+> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
+> * [Nahrání zdrojového souboru do objektu blob Azure](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 ## <a name="download-and-install-the-api-client-library"></a>Stažení a instalace klientské knihovny rozhraní API
 
@@ -43,7 +36,8 @@ Pro instalaci použijte tento postup:
 1. Do prostředí Pythonu nainstalujte extrahovaný klientský modul Pythonu pomocí PIP: `pip install path/to/package/python-client`.
 1. Nainstalovaný balíček má název `swagger_client`. Pomocí příkazu `python -c "import swagger_client"`můžete ověřit, zda byla instalace úspěšná.
 
-> **Poznámka:** Kvůli [známé chybě v modulu pro vytváření Swagger](https://github.com/swagger-api/swagger-codegen/issues/7541)může dojít k chybám při importu balíčku `swagger_client`.
+> [!NOTE]
+> Kvůli [známé chybě v modulu pro vytváření Swagger](https://github.com/swagger-api/swagger-codegen/issues/7541)může dojít k chybám při importu balíčku `swagger_client`.
 > Ty je možné opravit odstraněním řádku s obsahem.
 > ```py
 > from swagger_client.models.model import Model  # noqa: F401,E501
@@ -67,7 +61,8 @@ pip install requests
 Pojďme přidat kód, který funguje jako kostra pro náš projekt.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=1-2,7-34,115-119)]
-(Hodnoty `YourSubscriptionKey`, `YourServiceRegion`a `YourFileUrl` budete muset nahradit vlastními hodnotami.)
+
+[!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
 ## <a name="create-and-configure-an-http-client"></a>Vytvoření a konfigurace klienta http
 První věc, kterou budeme potřebovat, je klient http, který má správnou základní adresu URL a sadu ověřování.

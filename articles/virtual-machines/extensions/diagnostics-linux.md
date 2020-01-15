@@ -2,19 +2,19 @@
 title: Diagnostické rozšíření pro Azure COMPUTE – Linux
 description: Jak nakonfigurovat diagnostické rozšíření Azure Linux (LAD) pro shromažďování metrik a protokolování událostí z virtuálních počítačů se systémem Linux spuštěných v Azure.
 services: virtual-machines-linux
-author: abhijeetgaiha
+author: MicahMcKittrick-MSFT
 manager: gwallace
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
-ms.author: gwallace
-ms.openlocfilehash: 046e61d82893bf1fcdb2d6697cfaaa9f5bde8c2c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: mimckitt
+ms.openlocfilehash: 96ec4f2a76616cf4bb1d824faa4e4ca0fff1ff62
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75359358"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941880"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Monitorování metrik a protokolů pomocí diagnostického rozšíření systému Linux
 
@@ -197,7 +197,7 @@ Pokud jste vytvořili SAS vhodným až do půlnoci UTC od 1. ledna 2018, může 
 https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.windows.net%2fsyslogmsgs&sig=xxxxxxxxxxxxxxxxxxxxxxxxx&se=1514764800&skn=writer
 ```
 
-Další informace o generování tokenů SAS pro Event Hubs najdete na [této webové stránce](../../event-hubs/event-hubs-authentication-and-security-model-overview.md).
+Další informace o generování a načítání informací o tokenech SAS pro Event Hubs naleznete na [této webové stránce](https://docs.microsoft.com/rest/api/eventhub/generate-sas-token#powershell).
 
 #### <a name="the-jsonblob-sink"></a>Jímka JsonBlob
 

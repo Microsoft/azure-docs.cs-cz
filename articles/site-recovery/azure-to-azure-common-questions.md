@@ -1,18 +1,16 @@
 ---
 title: Běžné dotazy týkající se zotavení po havárii virtuálních počítačů Azure pomocí Azure Site Recovery
-description: Tento článek obsahuje odpovědi na běžné dotazy týkající se zotavení po havárii virtuálních počítačů Azure do jiné oblasti Azure pomocí Azure Site Recovery
-author: carmonmills
+description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se zotavení po havárii virtuálního počítače Azure pomocí Azure Site Recovery.
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.author: carmonm
-ms.openlocfilehash: 2e1689a4f6d3a2271da868350263bef098562127
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 8ed5df15b8ae8e9836c5b8ac8e7d6ad0111f63e1
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75929905"
+ms.locfileid: "75941895"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Běžné otázky: zotavení po havárii z Azure do Azure
 
@@ -45,7 +43,7 @@ Tým Site Recovery spolupracuje s týmem Azure Capacity Management k naplánová
 Ano, Site Recovery podporuje zotavení po havárii virtuálních počítačů s povoleným službou Azure Disk Encryption (ADE). Pokud povolíte replikaci, všechny požadované šifrovací klíče disku a tajné klíče se zkopírují ze zdrojové oblasti do cílové oblasti v kontextu uživatele. Pokud nemáte příslušná oprávnění, skript připravený k použití může být předán správci zabezpečení, aby mohl zkopírovat klíče a tajné kódy.
 
 - Site Recovery podporuje ADE pro virtuální počítače Azure s Windows.
-- Site Recovery podporuje ADE verze 0,1 se schématem, které používá Azure Active Directory (AAD) a verze 1,1 bez AAD. [Další informace](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata).
+- Site Recovery podporuje ADE verze 0,1 se schématem používajícím Azure Active Directory (AAD) a verzí 1,1 bez AAD. [Další informace](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata).
 - ADE verze 1,1: virtuální počítače s Windows musí používat spravované disky.
 - [Přečtěte si další informace](azure-to-azure-how-to-enable-replication-ade-vms.md) o povolení replikace pro šifrované virtuální počítače.
 

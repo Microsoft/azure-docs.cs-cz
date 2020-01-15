@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e05557b0391a1d698dad000aa9df54424588afe0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ede43e3ed939083e7b5ff94899d12f6f4795a880
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892256"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941483"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Získání tokenu z Azure AD pro autorizaci žádostí z klientské aplikace
 
@@ -124,7 +124,7 @@ Hotová Ukázková webová aplikace, která získá token a používá ho k vytv
 
 #### <a name="add-references-and-using-statements"></a>Přidání odkazů a příkazy using  
 
-V aplikaci Visual Studio nainstalujte Azure Storage klientské knihovny. Z **nástroje** nabídce vyberte možnost **Správce balíčků Nuget**, pak **Konzola správce balíčků**. Do okna konzoly zadejte následující příkazy pro instalaci potřebných balíčků z klientské knihovny Azure Storage pro .NET:
+V aplikaci Visual Studio nainstalujte Azure Storage klientské knihovny. V nabídce **Nástroje** vyberte **Správce balíčků NuGet** a potom **Konzola Správce balíčků**. Do okna konzoly zadejte následující příkazy pro instalaci potřebných balíčků z klientské knihovny Azure Storage pro .NET:
 
 ```console
 Install-Package Microsoft.Azure.Storage.Blob

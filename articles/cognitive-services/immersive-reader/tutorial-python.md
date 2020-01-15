@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Spuštění moderního čtečky pomocí Pythonu'
+title: 'Kurz: spuštění moderního čtečky pomocí Pythonu'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu vytvoříte aplikaci v Pythonu, která spustí moderní čtečku.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/02/2019
 ms.author: dylankil
-ms.openlocfilehash: 6404a5d49bd7af1ed5d74299f03eda8d0bb14b89
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 3293c4ea76010e5f39c793a1faee14d9a74226a0
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326404"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945228"
 ---
-# <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Kurz: Spuštění moderního čtečky pomocí ukázkového projektu Pythonu
+# <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Kurz: spuštění moderního čtečky pomocí ukázkového projektu Python
 
 V tomto [přehledu](./overview.md)jste se dozvěděli o tom, co je moderní čtečka a jak implementuje osvědčené techniky pro zlepšení porozumění čtení pro jazykové učení, vznikající čtenáři a studenty s rozdíly v učení. Tento kurz popisuje, jak vytvořit webovou aplikaci v Pythonu, která spustí moderní čtečku. V tomto kurzu se naučíte:
 
@@ -30,7 +30,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory (Azure AD). Pomocí [těchto pokynů](./azure-active-directory-authentication.md) si můžete nastavit. Při konfiguraci vlastností prostředí budete potřebovat některé z hodnot, které jsou zde vytvořeny. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
+* Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory. Pomocí [těchto pokynů](./how-to-create-immersive-reader.md) si můžete nastavit. Při konfiguraci vlastností prostředí budete potřebovat některé z hodnot, které jsou zde vytvořeny. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
 * [Git](https://git-scm.com/)
 * [SADA moderní čtečky](https://github.com/microsoft/immersive-reader-sdk)
 * [Python](https://www.python.org/downloads/) a [PIP](https://docs.python.org/3/installing/index.html). Od Pythonu 3,4 je PIP ve výchozím nastavení součástí s binárními instalačními programy Pythonu.
@@ -40,20 +40,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 * [požadavky – modul](https://pypi.org/project/requests/2.7.0/)
 * Rozhraní IDE, jako je například [Visual Studio Code](https://code.visualstudio.com/)
 
-## <a name="acquire-an-azure-ad-authentication-token"></a>Získání ověřovacího tokenu Azure AD
+## <a name="configure-authentication-credentials"></a>Konfigurace ověřovacích přihlašovacích údajů
 
-Napíšeme back-end rozhraní API pro načtení ověřovacího tokenu Azure AD.
-
-Pro tuto část potřebujete od výše uvedeného kroku požadavků konfigurace ověřování Azure AD nějaké hodnoty. Vraťte se zpět k textovému souboru, který jste si uložili do této relace.
-
-````text
-TenantId     => Azure subscription TenantId
-ClientId     => Azure AD ApplicationId
-ClientSecret => Azure AD Application Service Principal password
-Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the resource was created in the Azure portal, or 'CustomSubDomain' option if the resource was created with Azure CLI Powershell. Check the Azure portal for the subdomain on the Endpoint in the resource Overview page, for example, 'https://[SUBDOMAIN].cognitiveservices.azure.com/')
-````
-
-Jakmile máte tyto hodnoty, vytvořte nový soubor s názvem _. env_a vložte do něj následující kód a zadejte hodnoty vlastních vlastností z výše uvedeného. Nahraďte _. env._ soubor v ukázkové aplikaci s nově vytvořeným souborem.
+Vytvořte nový soubor s názvem _. env_a vložte do něj následující kód a zadejte hodnoty, které jste zadali při vytváření prostředku pro moderní čtečku.
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -68,7 +57,7 @@ Koncový bod rozhraní API **getimmersivereadertoken** by měl být zabezpečen�
 
 ## <a name="create-a-python-web-app-on-windows"></a>Vytvoření webové aplikace v Pythonu ve Windows
 
-Vytvoření webové aplikace v Pythonu pomocí `flask` ve Windows.
+Vytvoření webové aplikace v Pythonu pomocí `flask` ve Windows
 
 Nainstalujte [Git](https://git-scm.com/).
 
@@ -88,7 +77,7 @@ Přidejte volitelné funkce zaškrtnutím příslušných políček a potom klik
 
 ![Dialogové okno instalace systému Windows Python – krok 2](./media/pythoninstalltwo.jpg)
 
-Zvolte vlastní instalace a nastavte cestu instalace jako kořenovou složku, třeba `C:\Python37-32\` a pak klikněte na tlačítko nainstalovat.
+Zvolte vlastní instalace a nastavte cestu instalace jako kořenovou složku, třeba `C:\Python37-32\` klikněte na tlačítko nainstalovat.
 
 ![Dialog pro instalaci Windows v Pythonu – krok 3](./media/pythoninstallthree.jpg)
 
@@ -140,7 +129,7 @@ Vytvoření virtuálního prostředí
 mkvirtualenv advanced-python
 ```
 
-`cd` do kořenové složky projektu.
+`cd` do ukázkové kořenové složky projektu.
 
 ```cmd
 cd C:\immersive-reader-sdk\js\samples\advanced-python
@@ -166,9 +155,9 @@ Deaktivuje prostředí.
 deactivate
 ```
 
-Prefix `(advanced-python)` by teď měl být pryč, protože prostředí je teď deaktivované.
+Předpona `(advanced-python)` by teď měla být pryč, protože prostředí je teď deaktivované.
 
-Chcete-li znovu aktivovat prostředí, spusťte `workon advanced-python` z kořenové složky ukázkového projektu.
+Chcete-li znovu aktivovat prostředí runtime `workon advanced-python` z kořenové složky ukázkového projektu.
 
 ```cmd
 workon advanced-python
@@ -176,7 +165,7 @@ workon advanced-python
 
 ### <a name="launch-the-immersive-reader-with-sample-content"></a>Spuštění moderního čtecího zařízení s ukázkovým obsahem
 
-Když je prostředí aktivní, spusťte vzorový projekt zadáním `flask run` z kořenové složky ukázkového projektu.
+Když je prostředí aktivní, spusťte vzorový projekt zadáním `flask run` z kořenové složky projektu Sample.
 
 ```cmd
 flask run
@@ -198,7 +187,7 @@ git clone https://github.com/microsoft/immersive-reader-sdk.git
 
 Nainstalovat [Python](https://www.python.org/downloads/).
 
-Kořenová složka Pythonu, například `Python37-32`, by měla být nyní ve složce aplikace.
+Kořenová složka Pythonu, například `Python37-32` by měla být ve složce aplikace.
 
 Po dokončení instalace Pythonu otevřete terminál a `cd` do složky Python Scripts.
 
@@ -226,7 +215,7 @@ sudo nano /etc/paths
 - Přidejte cestu k instalaci PIP do proměnné PATH.
 - Přejděte do dolní části souboru a zadejte cestu, kterou chcete přidat jako poslední položku seznamu, např. `PATH=$PATH:/usr/local/bin`.
 - Stisknutím klávesy CTRL-x ukončíte.
-- Pokud chcete upravenou vyrovnávací paměť uložit, zadejte `Y`.
+- Zadejte `Y` pro uložení upravené vyrovnávací paměti.
 - A to je vše! Chcete-li ji otestovat, v okně nové okno terminálu zadejte: `echo $PATH`.
 
 Nainstalovat baňce.
@@ -271,7 +260,7 @@ Vyberte složku, ve které chcete zachovat vaše virtuální prostředí, a spus
 mkdir ~/.virtualenvs
 ```
 
-`cd` do složky ukázek aplikací pro moderní čtečku Python.
+`cd` do složky ukázkové aplikace Pythonu pro sadu SDK pro moderní čtečku.
 
 ```bash
 cd immersive-reader-sdk/js/samples/advanced-python
@@ -303,9 +292,9 @@ Deaktivuje prostředí.
 deactivate
 ```
 
-Prefix `(advanced-python)` by teď měl být pryč, protože prostředí je teď deaktivované.
+Předpona `(advanced-python)` by teď měla být pryč, protože prostředí je teď deaktivované.
 
-Chcete-li znovu aktivovat prostředí, spusťte `workon advanced-python` z kořenové složky ukázkového projektu.
+Chcete-li znovu aktivovat prostředí runtime `workon advanced-python` z kořenové složky ukázkového projektu.
 
 ```bash
 workon advanced-python
@@ -313,7 +302,7 @@ workon advanced-python
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>Spuštění moderního čtecího zařízení s ukázkovým obsahem
 
-Když je prostředí aktivní, spusťte vzorový projekt zadáním `flask run` z kořenové složky ukázkového projektu.
+Když je prostředí aktivní, spusťte vzorový projekt zadáním `flask run` z kořenové složky projektu Sample.
 
 ```bash
 flask run

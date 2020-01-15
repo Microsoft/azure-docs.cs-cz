@@ -1,32 +1,26 @@
 ---
-title: 'Rychlý Start: rozpoznávání řeči uložené ve službě BLOB Storage, Java-Speech Service'
-titleSuffix: Azure Cognitive Services
-description: Bude doplněno
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: e110c87835cdf517bdd54adda0ef6d9168a44d52
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.author: dapine
+ms.openlocfilehash: 1225a1e528b32401f350374fb9393c52225c49e8
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468256"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942834"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, nezapomeňte:
 
 > [!div class="checklist"]
+> * [Nastavení vývojového prostředí](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programmming-language-java)
+> * [Vytvořit prázdný ukázkový projekt](../../../../quickstarts/create-project.md?pivots=programmming-language-java)
 > * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
 > * [Nahrání zdrojového souboru do objektu blob Azure](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-> * [Nastavení vývojového prostředí](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [Vytvořit prázdný ukázkový projekt](../../../../quickstarts/create-project.md?tabs=dotnet)
+
 
 ## <a name="open-your-project-in-eclipse"></a>Otevření projektu v zatmění
 
@@ -45,7 +39,8 @@ Otevřete soubor pom. XML a přidejte následující odkaz: [!code-xml[](~/sampl
 Pojďme přidat kód, který funguje jako kostra pro náš projekt.
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=1-13,95-105,206-207)]
-(Hodnoty `YourSubscriptionKey`, `YourServiceRegion`a `YourFileUrl` budete muset nahradit vlastními hodnotami.)
+
+[!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
 ## <a name="json-wrappers"></a>Obálky JSON
 

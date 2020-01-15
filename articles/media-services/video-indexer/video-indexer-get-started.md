@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
-ms.date: 10/10/2019
+ms.date: 01/13/2020
 ms.author: juliako
-ms.openlocfilehash: 957acc25c3218069a20e90fe83e00e441b6303d6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 3a5ddf5bd4614b68e97e7616173a3e0640007530
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839564"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941559"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Rychlý Start: jak se zaregistrovat a nahrát své první video
 
@@ -32,10 +32,16 @@ Pokud chcete začít s vývojem pomocí Video Indexeru, přejděte na web [Video
 > [!NOTE]
 > Název videa nesmí být delší než 80 znaků.
 
+### <a name="supported-file-formats-for-video-indexer"></a>Podporované formáty souborů pro Video Indexer
+
+Seznam formátů souborů, které můžete použít s Video Indexer, najdete v článku o [formátech vstupního kontejneru/souboru](../latest/media-encoder-standard-formats.md#input-containerfile-formats) .
+
+### <a name="upload-a-video"></a>Nahrání videa
+
 1. Přihlaste se k webu [Video Indexer](https://www.videoindexer.ai/).
 2. Pokud chcete nahrát video na server, stiskněte tlačítko nebo odkaz **Upload** (Nahrát).
 
-    ![Odeslat](./media/video-indexer-get-started/video-indexer-upload.png)
+    ![Nahrávání](./media/video-indexer-get-started/video-indexer-upload.png)
 
     Když se vaše video nahraje na server, začne ho Video Indexer indexovat a analyzovat.
 
@@ -45,9 +51,11 @@ Pokud chcete začít s vývojem pomocí Video Indexeru, přejděte na web [Video
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď můžete použít web [video indexer](video-indexer-view-edit.md) nebo portál pro [vývojáře video indexer](video-indexer-use-apis.md) k zobrazení přehledů videa. 
+Další podrobnosti najdete v tématu [videa pro nahrávání a indexování](upload-index-videos.md) .
 
-## <a name="see-also"></a>Viz také
+Po nahrání a indexování videa můžete začít používat web [video indexer](video-indexer-view-edit.md) nebo [portál pro vývojáře video indexer](video-indexer-use-apis.md) , abyste viděli přehledy videa. 
+
+## <a name="see-also"></a>Další informace najdete v tématech
 
 [Přehled Video Indexeru](video-indexer-overview.md)
 

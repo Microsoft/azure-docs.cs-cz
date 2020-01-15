@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 32c1ca95c01edec74f22fc051e453f2ac0dbd03f
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 88b19257a6a7d335e6a928a9eaf7526fbfd5b02e
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564797"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942790"
 ---
 ## <a name="application-performance-indicators"></a>Indikátory výkonu aplikace
 
@@ -126,7 +126,7 @@ Další informace o velikostech virtuálních počítačů a počtu vstupně-vý
 | **Velikost v/v** |Menší velikost vstupně-výstupních operací má vyšší IOPS. |Větší množství vstupně-výstupních operací, které poskytuje vyšší propustnost. | &nbsp;|
 | **Velikost virtuálního počítače** |Použijte velikost virtuálního počítače, která nabízí IOPS větší než požadavek vaší aplikace. |Použijte velikost virtuálního počítače s limitem propustnosti větším, než je požadavek vaší aplikace. |Použijte velikost virtuálního počítače, která nabízí limity škálování větší než požadavek vaší aplikace. |
 | **Velikost disku** |Použijte velikost disku, která nabízí IOPS větší než požadavek vaší aplikace. |Použijte velikost disku s limitem propustnosti větším, než je požadavek vaší aplikace. |Použijte velikost disku, která nabízí limity škálování větší než požadavek vaší aplikace. |
-| **Omezení škálování virtuálního počítače a disku** |Limit IOPS zvolené velikosti virtuálního počítače by měl být větší než celkový počet IOPS řízený disky Premium Storage, které jsou k ní připojené. |Limit propustnosti zvolené velikosti virtuálního počítače by měl být větší než celková propustnost řízená disky Premium Storage, které jsou k ní připojené. |Limity škálování zvolené velikosti virtuálního počítače musí být větší než celková omezení škálování připojených disků úložiště úrovně Premium. |
+| **Omezení škálování virtuálního počítače a disku** |Limit IOPS zvolené velikosti virtuálního počítače by měl být větší než celkový počet IOPS, který je založený na discích úložiště, které jsou k němu připojené. |Limit propustnosti zvolené velikosti virtuálního počítače by měl být větší než celková propustnost řízená disky Premium Storage, které jsou k ní připojené. |Limity škálování zvolené velikosti virtuálního počítače musí být větší než celková omezení škálování připojených disků úložiště úrovně Premium. |
 | **Ukládání disku do mezipaměti** |Povolte mezipaměť jen pro čtení na discích úložiště úrovně Premium s operacemi čtení těžkých operací, abyste získali vyšší počet IOPS. | &nbsp; |Povolte mezipaměť jen pro čtení na discích úložiště úrovně Premium s připravenými náročnými operacemi, abyste dosáhli velmi nízké latence čtení. |
 | **Diskové svazky** |Použijte více disků a propojte je dohromady, abyste získali kombinovaný limit s vyšším počtem vstupně-výstupních operací a propustnosti. Kombinovaný limit na virtuální počítač musí být vyšší než kombinované limity připojených prémiových disků. | &nbsp; | &nbsp; |
 | **Velikost pruhu** |Menší velikost obložení pro náhodný vzor malých vstupně-výstupních operací, který se zobrazuje v aplikacích OLTP. Například použijte velikost Stripe 64 KB pro aplikaci SQL Server OLTP. |Větší velikost proložení pro sekvenční velký vstupně-výstupní vzor, který se zobrazuje v aplikacích datového skladu. Například použijte velikost pruhu 256 KB pro SQL Server aplikaci datového skladu. | &nbsp; |

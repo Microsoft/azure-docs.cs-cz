@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4788dc700324637d69ffbcb4308df3a323b9590c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: c1a800ceb12c2e7ad69329d0391478a8e2ae268b
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934071"
+ms.locfileid: "75945693"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Zabezpečení a ochrana dat v Azure Kognitivní hledání
 
@@ -43,7 +43,7 @@ Dodržování standardů se vztahuje na všeobecně dostupné funkce. Funkce ve 
 |----------------|-------------|
 | Šifrování během přenosu <br>(HTTPS/SSL/TLS) | Azure Kognitivní hledání naslouchá na portu HTTPS 443. V rámci platformy jsou připojení ke službám Azure zašifrovaná. <br/><br/>Všechny interakce mezi klientem a službou Azure Kognitivní hledání jsou s podporou protokolu SSL/TLS 1,2.  Ujistěte se, že pro připojení SSL k vaší službě používáte TLSv 1.2.|
 | Šifrování v klidovém stavu <br>Spravované klíče společnosti Microsoft | Šifrování je plně v procesu indexování plně prohlášeno bez měřitelnosti při indexování času na dokončení nebo velikost indexu. K tomu dochází automaticky při každém indexování, včetně přírůstkových aktualizací indexu, který není plně šifrovaný (vytvořený před lednem 2018).<br><br>Šifrování je interně založené na [šifrování Azure Storage služby](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)pomocí 256 [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).<br><br> Šifrování je interní pro Azure Kognitivní hledání, pomocí certifikátů a šifrovacích klíčů spravovaných interně Microsoftem a univerzálně se používá. Šifrování nelze zapnout nebo vypnout, spravovat nebo nahrazovat vlastní klíče nebo zobrazit nastavení šifrování na portálu nebo programově.<br><br>Šifrování v klidovém umístění bylo oznámeno 24. ledna 2018 a vztahuje se na všechny úrovně služeb, včetně úrovně Free, ve všech oblastech. Pro úplné šifrování musí být indexy vytvořené před tímto datem vyřazeny a znovu sestaveny, aby mohlo dojít k šifrování. V opačném případě jsou zašifrována pouze nová data přidaná po 24. ledna.|
-| Šifrování v klidovém stavu <br>Klíče spravované zákazníkem | Šifrování se spravovanými klíči Customer je teď všeobecně dostupné pro vyhledávací služby vytvořené v nebo po lednu 2019.<br><br>Indexy Azure Kognitivní hledání a mapy synonym se teď dají zašifrovat v klidovém stavu pomocí klíčů zákazníka spravovaných klíči v Azure Key Vault. Další informace najdete v tématu [Správa šifrovacích klíčů v Azure kognitivní hledání](search-security-manage-encryption-keys.md).<br><br>Tato funkce nenahrazuje výchozí šifrování v klidovém stavu, ale místo toho se používá.<br><br>Povolením této funkce se zvýší velikost indexu a sníží se výkon dotazů. Na základě pozorování k datu můžete očekávat zvýšení 30% až 60% v době dotazu, přestože skutečný výkon se bude lišit v závislosti na definici indexu a typech dotazů. Z důvodu tohoto dopadu na výkon doporučujeme tuto funkci povolit pouze pro indexy, které ji skutečně vyžadují.
+| Šifrování v klidovém stavu <br>Klíče spravované zákazníkem | Šifrování se spravovanými klíči Customer je teď všeobecně dostupné pro vyhledávací služby vytvořené v nebo po lednu 2019. Nepodporuje se na bezplatných (sdílených) službách.<br><br>Indexy Azure Kognitivní hledání a mapy synonym se teď dají zašifrovat v klidovém stavu pomocí klíčů zákazníka spravovaných klíči v Azure Key Vault. Další informace najdete v tématu [Správa šifrovacích klíčů v Azure kognitivní hledání](search-security-manage-encryption-keys.md).<br><br>Tato funkce nenahrazuje výchozí šifrování v klidovém stavu, ale místo toho se používá.<br><br>Povolením této funkce se zvýší velikost indexu a sníží se výkon dotazů. Na základě pozorování k datu můžete očekávat zvýšení 30% až 60% v době dotazu, přestože skutečný výkon se bude lišit v závislosti na definici indexu a typech dotazů. Z důvodu tohoto dopadu na výkon doporučujeme tuto funkci povolit pouze pro indexy, které ji skutečně vyžadují.
 
 ## <a name="azure-wide-user-access-controls"></a>Řízení přístupu uživatelů na úrovni Azure
 

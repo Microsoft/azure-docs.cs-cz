@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.openlocfilehash: f5b47a5ae9d13711233d0e4852ec487af7344622
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 1bc63ac4dc3930ad0423baa98453bd927c295a72
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173795"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945756"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>Monitorování výkonu, stavu a využití Azure Průzkumník dat s metrikami
 
@@ -26,7 +26,7 @@ Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro anal�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlásit se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="using-metrics"></a>Použití metrik
 
@@ -42,18 +42,22 @@ V podokně metriky:
 
     **Metrika** | **Jednotce** | **Agregace** | **Popis metriky**
     |---|---|---|---|
-    | Využití mezipaměti | Procento | Střední, Max, min | Procento přidělených prostředků mezipaměti, které tento cluster aktuálně používá. Mezipaměť odkazuje na velikost jednotky SSD přidělené aktivitě uživatele podle definovaných zásad mezipaměti. Průměrné využití mezipaměti 80% nebo méně je udržitelný stav pro cluster. Pokud je průměrné využití mezipaměti nad 80%, cluster by se měl [škálovat až](manage-cluster-vertical-scaling.md) na cenovou úroveň optimalizované pro úložiště nebo [škálovat](manage-cluster-horizontal-scaling.md) na více instancí. Případně můžete zásadu mezipaměti upravit (méně dní v mezipaměti). Pokud je využití mezipaměti větší než 100%, velikost dat, která se mají ukládat do mezipaměti, podle zásad ukládání do mezipaměti, je větší než celková velikost mezipaměti v clusteru. |
+    | Využití mezipaměti | Procento | Střední, Max, min | Procento přidělených prostředků mezipaměti, které tento cluster aktuálně používá. Mezipaměť je velikost jednotky SSD přidělená aktivitě uživatele podle definovaných zásad mezipaměti. Průměrné využití mezipaměti 80% nebo méně je udržitelný stav pro cluster. Pokud je průměrné využití mezipaměti nad 80%, cluster by se měl [škálovat až](manage-cluster-vertical-scaling.md) na cenovou úroveň optimalizované pro úložiště nebo [škálovat](manage-cluster-horizontal-scaling.md) na více instancí. Případně můžete zásadu mezipaměti upravit (méně dní v mezipaměti). Pokud je využití mezipaměti větší než 100%, velikost dat, která se mají ukládat do mezipaměti, podle zásad ukládání do mezipaměti, je větší než celková velikost mezipaměti v clusteru. |
     | Procesor | Procento | Střední, Max, min | Procento přidělených výpočetních prostředků, které jsou aktuálně používány počítači v clusteru. Průměrný procesor o 80% nebo méně je udržitelný pro cluster. Maximální hodnota CPU je 100%, což znamená, že pro zpracování dat nejsou k dispozici žádné další výpočetní prostředky. Pokud cluster nefunguje dobře, zkontrolujte maximální hodnotu CPU, abyste zjistili, jestli jsou blokované konkrétní procesory. |
     | Zpracované události (pro Event Hubs) | Počet | Max, min, Sum | Celkový počet událostí načtených z Center událostí a zpracovávaných clusterem. Události jsou rozdělené na odmítnuté události a události akceptované modulem clusteru. |
-    | Latence přijímání | Sekundy | Střední, Max, min | Latence přijímaných dat od okamžiku, kdy byla data v clusteru přijata, dokud nebudou připravené pro dotaz. Doba latence příjmu závisí na scénáři přijímání. |
+    | Latence přijímání | Sekund | Střední, Max, min | Latence přijímaných dat od okamžiku, kdy byla data v clusteru přijata, dokud nebudou připravené pro dotaz. Doba latence příjmu závisí na scénáři přijímání. |
     | Výsledek ingestování | Počet | Počet | Celkový počet neúspěšných a úspěšných operací příjmu. Pomocí **použít rozdělení** můžete vytvořit intervaly úspěchu a výsledky selhání a analyzovat dimenze (**hodnota** > **stav**).|
     | Využití příjmu | Procento | Střední, Max, min | Procento skutečných prostředků používaných k ingestování dat z celkových přidělených prostředků v zásadě kapacity k provádění ingestování. Výchozí zásady kapacity neobsahují více než 512 souběžných operací příjmu nebo 75% prostředků clusteru, které jsou investovaly do ingestování. Průměrné využití příjmu 80% nebo méně je udržitelný stav pro cluster. Maximální hodnota využití příjmu je 100%, což znamená, že se používá veškerá schopnost ingestování clusteru a výsledkem může být fronta přijímání. |
     | Objem příjmu (v MB) | Počet | Max, min, Sum | Celková velikost dat, která se ingestují do clusteru (v MB) před kompresí |
-    | Zachovat naživu | Počet | Volání | Sleduje rychlost odezvy clusteru. Plně reagující cluster vrátí hodnotu 1 a blokovaný nebo odpojený cluster vrátí hodnotu 0. |
-    | Doba trvání dotazu | Sekundy | Count, AVG, min, Max, suma | Celková doba do přijetí výsledků dotazu (nezahrnuje latenci sítě). |
-    | | | |
+    | Zachovat naživu | Počet | Průměr | Sleduje rychlost odezvy clusteru. Plně reagující cluster vrátí hodnotu 1 a blokovaný nebo odpojený cluster vrátí hodnotu 0. |
+    | Doba trvání dotazu | Sekund | Count, AVG, min, Max, suma | Celková doba do přijetí výsledků dotazu (nezahrnuje latenci sítě). |
+    | Celkový počet souběžných dotazů | Počet | Střední, Max, min, Sum | Počet dotazů běží paralelně v clusteru. Tato metrika je dobrým způsobem, jak odhadnout zatížení clusteru. |
+    | Celkový počet omezených dotazů | Počet | Střední, Max, min, Sum | Počet neomezených (zamítnutých) dotazů v clusteru. Maximální povolený počet souběžných (paralelních) dotazů je definovaný v zásadách souběžného dotazování. |
+    | Celkový počet příkazů s omezením | Počet | Střední, Max, min, Sum | Počet příkazů s omezením (zamítnutých) v clusteru, protože bylo dosaženo maximálního povoleného počtu souběžných (paralelních) příkazů. |
+    | Celkový počet rozsahů | Počet | Střední, Max, min, Sum | Celkový počet rozsahů dat v clusteru. Změny v této metrikě můžou znamenat obrovské změny struktury dat a vysoké zatížení clusteru, protože sloučení rozsahů dat je náročné na procesor. |
+    | | | | |
 
-    Další informace týkající se [podporovaných metrik clusteru Azure Průzkumník dat](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters)
+    Další informace o [podporovaných metrikách clusteru Azure Průzkumník dat](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters)
 
 2. Výběrem tlačítka **Přidat metriku** zobrazíte více metrik vykreslených ve stejném grafu.
 3. Kliknutím na tlačítko **+ Nový graf** zobrazíte více grafů v jednom zobrazení.

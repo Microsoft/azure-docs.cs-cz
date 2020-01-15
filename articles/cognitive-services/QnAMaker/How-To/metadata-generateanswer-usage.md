@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: 0190b94cc6195163de4d428c2cae0de3620bdb01
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e84a6c93ad8757b302670af202f9d4b407f3ef57
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422700"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945321"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Získat odpověď s GenerateAnswer API a metadaty
 
@@ -41,7 +41,7 @@ Každá entita QnA má jedinečné a trvalé ID. Pomocí ID můžete provádět 
 
 <a name="generateanswer-endpoint"></a>
 
-## <a name="publish-to-get-generateanswer-endpoint"></a>Publikování pro získání koncového bodu GenerateAnswer 
+## <a name="publish-to-get-generateanswer-endpoint"></a>Publikování pro získání koncového bodu GenerateAnswer
 
 Po publikování znalostní báze z [QnA Makerového portálu](https://www.qnamaker.ai)nebo pomocí [rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)můžete získat podrobnosti o koncovém bodu GenerateAnswer.
 
@@ -59,15 +59,15 @@ Podrobnosti o koncových bodech můžete také získat z karty **Nastavení** ve
 
 ## <a name="generateanswer-request-configuration"></a>Konfigurace žádosti GenerateAnswer
 
-GenerateAnswer zavoláte s požadavkem HTTP POST. Vzorový kód, který ukazuje, jak volat GenerateAnswer, naleznete v tématu [rychlé starty](../quickstarts/create-publish-kb-csharp-sdk.md#generate-an-answer-from-the-knowledge-base). 
+GenerateAnswer zavoláte s požadavkem HTTP POST. Vzorový kód, který ukazuje, jak volat GenerateAnswer, naleznete v tématu [rychlé starty](../quickstarts/quickstart-sdk.md#generate-an-answer-from-the-knowledge-base).
 
 Požadavek POST používá:
 
 * Požadované [parametry identifikátoru URI](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
 * Požadovaná [vlastnost hlavičky](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer), `Authorization`, pro zabezpečení
-* Požadované [vlastnosti těla](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto). 
+* Požadované [vlastnosti těla](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto).
 
-Adresa URL GenerateAnswer má následující formát: 
+Adresa URL GenerateAnswer má následující formát:
 
 ```
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
@@ -95,7 +95,7 @@ Ukázkový text JSON vypadá takto:
 
 Přečtěte si další informace o [rankerType](../concepts/best-practices.md#choosing-ranker-type).
 
-Předchozí kód JSON požádal pouze o odpovědi, které jsou na 30% nebo vyšší než prahové skóre. 
+Předchozí kód JSON požádal pouze o odpovědi, které jsou na 30% nebo vyšší než prahové skóre.
 
 <a name="generateanswer-response"></a>
 
@@ -125,7 +125,7 @@ Předchozí kód JSON požádal pouze o odpovědi, které jsou na 30% nebo vyš�
 }
 ```
 
-Předchozí znak JSON odpověděl s odpovědí s skóre 38,5%. 
+Předchozí znak JSON odpověděl s odpovědí s skóre 38,5%.
 
 ## <a name="use-qna-maker-with-a-bot-in-c"></a>Použití QnA Maker s robotem vC#
 
@@ -144,7 +144,7 @@ qnaOptions.ScoreThreshold = 0.3F;
 var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnContext, qnaOptions);
 ```
 
-Předchozí kód JSON požádal pouze o odpovědi, které jsou na 30% nebo vyšší než prahové skóre. 
+Předchozí kód JSON požádal pouze o odpovědi, které jsou na 30% nebo vyšší než prahové skóre.
 
 Robot podpory obsahuje [příklad](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-support/csharp_dotnetcore/Service/SupportBotService.cs#L418) s tímto kódem.
 
@@ -164,7 +164,7 @@ var qnaMakerOptions = {
 var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOptions);
 ```
 
-Předchozí kód JSON požádal pouze o odpovědi, které jsou na 30% nebo vyšší než prahové skóre. 
+Předchozí kód JSON požádal pouze o odpovědi, které jsou na 30% nebo vyšší než prahové skóre.
 
 Robot podpory obsahuje [příklad](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs/Helpers/dialogHelper.js#L36) s tímto kódem.
 
@@ -200,7 +200,7 @@ Vzhledem k tomu, že se výsledky vyžadují jenom pro restaurace "Paradise", m�
 
 ## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>Použití výsledků otázek a odpovědí k zachování kontextu konverzace
 
-Odpověď na GenerateAnswer obsahuje odpovídající informace metadat pro sadu odpovědí a otázku, které odpovídají. Tyto informace můžete v klientské aplikaci použít k uložení kontextu předchozí konverzace pro použití v pozdějších konverzacích. 
+Odpověď na GenerateAnswer obsahuje odpovídající informace metadat pro sadu odpovědí a otázku, které odpovídají. Tyto informace můžete v klientské aplikaci použít k uložení kontextu předchozí konverzace pro použití v pozdějších konverzacích.
 
 ```json
 {
@@ -245,7 +245,7 @@ Můžete prohledat publikované znalostní báze KB, pomocí `isTest=false`nebo 
 
 ## <a name="common-http-errors"></a>Běžné chyby protokolu HTTP
 
-|Kód|Vysvětlení|
+|kód|Vysvětlení|
 |:--|--|
 |2xx|Úspěch|
 |400|Parametry žádosti jsou nesprávné, což znamená, že požadované parametry jsou chybí, je poškozený nebo je příliš velký|

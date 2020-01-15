@@ -1,21 +1,18 @@
 ---
-title: Řešení potíží s probíhající replikací virtuálních počítačů s Azrue pomocí Azure Site Recovery
-description: Řešení chyb a problémů při replikaci virtuálních počítačů Azure na zotavení po havárii
-services: site-recovery
-author: carmonmills
+title: Řešení potíží s replikací virtuálních počítačů Azure pomocí Azure Site Recovery
+description: Řešení potíží s replikací v zotavení po havárii virtuálního počítače Azure pomocí Azure Site Recovery
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 8/2/2019
-ms.author: carmonm
-ms.openlocfilehash: b738ffc36334fc540582ba29e803eb2790e2119e
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fe300c1efc8f5802397a59296f8b127c321bd871
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930746"
+ms.locfileid: "75941567"
 ---
-# <a name="troubleshoot-ongoing-problems-in-azure-to-azure-vm-replication"></a>Řešení potíží s probíhajícími operacemi v Azure-to-Azure – replikace virtuálních počítačů
+# <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Řešení potíží s replikací v zotavení po havárii virtuálního počítače Azure
 
 Tento článek popisuje běžné problémy v Azure Site Recovery při replikaci a obnovování virtuálních počítačů Azure z jedné oblasti do jiné oblasti. Vysvětluje také, jak je řešit. Další informace o podporovaných konfiguracích najdete v tématu [matice podpory pro replikaci virtuálních počítačů Azure](site-recovery-support-matrix-azure-to-azure.md).
 
@@ -67,7 +64,7 @@ Pokud je špička z příležitostného nárůstu dat a frekvence změny dat je 
     - Přejděte do okna disky ovlivněného replikovaného počítače a zkopírujte název disku repliky.
     - Přejít na tento spravovaný disk repliky
     - V okně Přehled se může zobrazit informační zpráva s informací o tom, že se vygenerovala adresa URL SAS. Klikněte na tuto hlavičku a zrušte export. Pokud se banner nezobrazuje, tento krok ignorujte.
-    - Jakmile se adresa URL SAS odvolá, přejdete do okna konfigurace spravovaného disku a zvýšíte velikost tak, aby ASR podporovala pozorovanou četnost změn na zdrojovém disku.
+    - Jakmile se adresa URL SAS odvolá, otevřete okno konfigurace spravovaného disku a zvyšte velikost tak, aby Site Recovery podporovala pozorovanou četnost změn na zdrojovém disku.
 
 ## <a name="Network-connectivity-problem"></a>Problémy s připojením k síti
 

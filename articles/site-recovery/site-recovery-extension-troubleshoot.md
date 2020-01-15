@@ -1,20 +1,18 @@
 ---
-title: Řešení potíží s agenty Azure Site Recovery | Microsoft Docs
-description: Poskytuje informace o symptomech, příčinách a řešeních selhání agenta Azure Site Recovery.
-author: carmonmills
+title: Řešení potíží s rozšířením virtuálního počítače Azure pro zotavení po havárii pomocí Azure Site Recovery
+description: Řešení potíží s rozšířením virtuálního počítače Azure pro zotavení po havárii s Azure Site Recovery.
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.author: carmonm
-ms.openlocfilehash: 0de5a9843b8029c1e1926ae296f43fc95b48106c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 7f9ae32b95d629ef79f085ed590d9057b0414911
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930133"
+ms.locfileid: "75941541"
 ---
-# <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Řešení potíží s agentem Azure Site Recovery
+# <a name="troubleshoot-azure-vm-extension-issues"></a>Řešení potíží s rozšířením virtuálních počítačů Azure
 
 Tento článek popisuje kroky pro řešení potíží, které vám pomůžou vyřešit chyby Azure Site Recovery související s agentem a rozšířením virtuálního počítače.
 
@@ -30,7 +28,7 @@ Kód chyby: "151076"
 **Příčina 2: [Agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače se systémem Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) .**  
 **Příčina 3: Nepodařilo se [aktualizovat nebo načíst rozšíření Site Recovery](#the-site-recovery-extension-fails-to-update-or-load) .**  
 
-Chybová zpráva: předchozí operace rozšíření Site Recovery trvá déle, než se čekalo.<br>
+Chybová zpráva: "předchozí operace rozšíření Site Recovery trvá déle, než se čekalo."<br>
 Kód chyby: "150066"<br>
 
 **Příčina 1: [Agent je nainstalovaný na virtuálním počítači, ale nereaguje (pro virtuální počítače s Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     

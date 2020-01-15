@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvořte aplikaci pro iOS, která bude mít fotografii a spustí ji v moderní čtečce (SWIFT).'
+title: 'Kurz: Vytvoření aplikace pro iOS, která přijímá fotografii a spustí ji v moderní čtečce (SWIFT)'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu vytvoříte aplikaci pro iOS od začátku a přidáte obrázek do funkce moderního čtečky.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: metan
-ms.openlocfilehash: bdaee97c8c5d7e19076847c5f1f7c07c528c1747
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: defa49bd5ca6be6862412e3caf40295ef1d639cf
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899376"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945302"
 ---
-# <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Kurz: Vytvořte aplikaci pro iOS, která spustí moderní čtečku s obsahem z fotky (SWIFT).
+# <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Kurz: Vytvoření aplikace pro iOS, která spustí moderní čtečku s obsahem z fotky (SWIFT)
 
 [Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
 
@@ -29,7 +29,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="prerequisites"></a>Požadavky
 
 * [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
-* Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory (Azure AD). Pomocí [těchto pokynů](./azure-active-directory-authentication.md) si můžete nastavit. Při konfiguraci ukázkových vlastností projektu budete potřebovat některé z hodnot, které jsou zde vytvořeny. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
+* Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory. Pomocí [těchto pokynů](./how-to-create-immersive-reader.md) si můžete nastavit. Při konfiguraci ukázkových vlastností projektu budete potřebovat některé z hodnot, které jsou zde vytvořeny. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
 * Použití této ukázky vyžaduje předplatné Azure pro službu Počítačové zpracování obrazu pro rozpoznávání. [Vytvořte prostředek služby počítačové zpracování obrazu vnímání v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision).
 
 ## <a name="create-an-xcode-project"></a>Vytvoření projektu Xcode
@@ -46,7 +46,7 @@ Vyberte **aplikaci s jedním zobrazením**.
 Nejjednodušší způsob, jak použít sadu moderního čtecího zařízení sady SDK, je prostřednictvím CocoaPods. Instalace prostřednictvím Cocoapods:
 1. [Instalace CocoaPods](http://guides.cocoapods.org/using/getting-started.html) – postupujte podle příručky Začínáme a nainstalujte CocoaPods.
 2. Vytvořte souboru podfile spuštěním `pod init` v kořenovém adresáři vašeho projektu Xcode.
-3.  Přidejte CocoaPod do svého souboru podfile `pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/immersive-reader-sdk'`přidáním. Váš souboru podfile by měl vypadat jako na následujícím obrázku s názvem vašeho cíle, který nahrazuje obrázkový a rychlý čtenář – SWIFT:
+3.  Přidejte CocoaPod do svého souboru podfile přidáním `pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/immersive-reader-sdk'`. Váš souboru podfile by měl vypadat jako na následujícím obrázku s názvem vašeho cíle, který nahrazuje obrázkový a rychlý čtenář – SWIFT:
  ```ruby
   platform :ios, '9.0'
 
@@ -56,9 +56,9 @@ Nejjednodušší způsob, jak použít sadu moderního čtecího zařízení sad
   pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/immersive-reader-sdk'
   end
 ```
-4. V terminálu v adresáři projektu Xcode spusťte příkaz `pod install` pro instalaci sady moderní čtečka SDK pod.
+4. V terminálu v adresáři projektu Xcode spusťte příkaz `pod install` a nainstalujte sadu moderní čtečka SDK pod.
 5. Přidejte `import immersive_reader_sdk` do všech souborů, které vyžadují odkaz na sadu SDK.
-6. Zajistěte otevření projektu otevřením `.xcworkspace` souboru, `.xcodeproj` nikoli souboru.
+6. Zajistěte otevření projektu otevřením souboru `.xcworkspace`, nikoli souboru `.xcodeproj`.
 
 ## <a name="acquire-an-azure-ad-authentication-token"></a>Získání ověřovacího tokenu Azure AD
 
@@ -90,8 +90,8 @@ Přejmenujte soubor viewcontroller. SWIFT na PictureLaunchViewController. SWIFT 
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
 Nastavte schéma archivu v Xcode tak, že vyberete simulátor nebo cíl zařízení.
-![Schéma archivu](./media/ios/xcode-archive-scheme.png)<br/>
-![Vybrat cíl](./media/ios/xcode-select-target.png)
+](./media/ios/xcode-archive-scheme.png) schématu ![archivu<br/>
+![vybrat cílovou](./media/ios/xcode-select-target.png)
 
 V Xcode stiskněte kombinaci kláves CTRL + R nebo klikněte na tlačítko Přehrát a spusťte projekt a aplikace by se měla spustit na zadaném simulátoru nebo zařízení.
 
@@ -103,6 +103,6 @@ V aplikaci můžete přebírat nebo nahrajte fotografii textu tak, že kliknete 
 
 ![Asistivní čtečka](./media/ios/picture-to-immersive-reader-ipad.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Prozkoumejte [sadu moderního čtecího zařízení pro iOS SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS) a [referenční informace pro moderní ČTEČKu iOS SDK](./ios-reference.md)
+* Prozkoumejte [referenční materiály k sadě pro moderní čtečku](./reference.md)

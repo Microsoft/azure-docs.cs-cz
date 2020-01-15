@@ -1,6 +1,6 @@
 ---
-title: Změna velikosti virtuálního počítače s Windows v Azure pomocí PowerShellu
-description: Změňte velikost virtuálního počítače s Windows vytvořeného v modelu nasazení Správce prostředků pomocí Azure PowerShellu.
+title: Změna velikosti virtuálního počítače s Windows v Azure
+description: Změňte velikost virtuálního počítače, která se používá pro virtuální počítač Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -12,26 +12,34 @@ ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: 4b30f2fd8e095b00898e083e33c23c7c9a915b99
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 6718804d4635edb2628b53017ab9d377928afad8
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073367"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941725"
 ---
 # <a name="resize-a-windows-vm"></a>Změna velikosti virtuálního počítače s Windows
 
-V tomto článku se dozvíte, jak přesunout virtuální počítač na jinou [Velikost virtuálního počítače](sizes.md) pomocí Azure PowerShellu.
+V tomto článku se dozvíte, jak přesunout virtuální počítač na jinou [Velikost virtuálního počítače](sizes.md).
 
 Po vytvoření virtuálního počítače můžete virtuální počítač škálovat nahoru nebo dolů změnou velikosti virtuálního počítače. V některých případech je nutné nejprve zrušit přidělení virtuálního počítače. K tomu může dojít v případě, že nová velikost není k dispozici v hardwarovém clusteru, který je aktuálně hostitelem virtuálního počítače.
 
 Pokud virtuální počítač používá Premium Storage, ujistěte se, že zvolíte verzi **s** , abyste získali Premium Storage podporu. Například vyberte Standard_E4**s**_v3 namísto Standard_E4_v3.
 
- 
+## <a name="use-the-portal"></a>Použití portálu
 
-## <a name="resize-a-windows-vm-not-in-an-availability-set"></a>Změna velikosti virtuálního počítače s Windows, který není ve skupině dostupnosti
+1. Otevřete [portál Azure](https://portal.azure.com).
+1. Otevřete stránku pro virtuální počítač.
+1. V nabídce vlevo vyberte **Velikost**.
+1. Ze seznamu dostupných velikostí vyberte novou velikost a pak vyberte **změnit velikost**.
+
+
+Pokud je virtuální počítač momentálně spuštěný, změna jeho velikosti způsobí jeho restartování. Zastavení virtuálního počítače může odhalit další velikosti.
+
+## <a name="use-powershell-to-resize-a-vm-not-in-an-availability-set"></a>Použití PowerShellu k změně velikosti virtuálního počítače, který není ve skupině dostupnosti
 
 Nastavte některé proměnné. Nahraďte hodnoty vlastními informacemi.
 
@@ -69,7 +77,7 @@ Start-AzVM -ResourceGroupName $resourceGroup -Name $vmName
 > 
 > 
 
-## <a name="resize-a-windows-vm-in-an-availability-set"></a>Změna velikosti virtuálního počítače s Windows ve skupině dostupnosti
+## <a name="use-powershell-to-resize-a-vm-in-an-availability-set"></a>Změna velikosti virtuálního počítače ve skupině dostupnosti pomocí PowerShellu
 
 Pokud není nová velikost pro virtuální počítač ve skupině dostupnosti v hardwarovém clusteru, který je hostitelem virtuálního počítače, k dispozici, pak bude potřeba uvolnit všechny virtuální počítače ve skupině dostupnosti, aby se změnila velikost virtuálního počítače. Po změně velikosti jednoho virtuálního počítače možná budete muset aktualizovat velikost ostatních virtuálních počítačů ve skupině dostupnosti. Pokud chcete změnit velikost virtuálního počítače ve skupině dostupnosti, proveďte následující kroky.
 

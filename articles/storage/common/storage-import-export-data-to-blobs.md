@@ -8,24 +8,24 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: bd15e406cdbee57112ff8ecba158d503e908b73f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: cab9d309d052acca493e112965c8477a325d8c88
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73178014"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75944752"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Použití služby Azure import/export k importu dat do Azure Blob Storage
 
 Tento článek poskytuje podrobné pokyny, jak pomocí služby importu a exportu v Azure bezpečně importovat velké objemy dat do úložiště objektů BLOB v Azure. Aby bylo možné importovat data do objektů blob Azure, služba vyžaduje, abyste dodali šifrované diskové jednotky obsahující vaše data do datacentra Azure.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než vytvoříte úlohu importu pro přenos dat do Azure Blob Storage, pečlivě zkontrolujte a dokončete následující seznam požadavků pro tuto službu. Musíte:
 
 - Mít aktivní předplatné Azure, které se dá použít pro službu import/export.
 - Musí mít aspoň jeden Azure Storage účet s kontejnerem úložiště. Podívejte se na seznam [podporovaných účtů úložiště a typů úložiště pro službu import/export](storage-import-export-requirements.md). 
-    - Informace o vytvoření nového účtu úložiště najdete v tématu [Vytvoření účtu úložiště](storage-quickstart-create-account.md). 
+    - Informace o vytvoření nového účtu úložiště najdete v tématu [způsob vytvoření účtu úložiště](storage-quickstart-create-account.md). 
     - Informace o kontejneru úložiště najdete v pro [vytvoření kontejneru úložiště](../blobs/storage-quickstart-blobs-portal.md#create-a-container).
 - Mít dostatečný počet disků [podporovaných typů](storage-import-export-requirements.md#supported-disks). 
 - Má systém Windows s [podporovanou verzí operačního systému](storage-import-export-requirements.md#supported-operating-systems). 
@@ -66,13 +66,13 @@ K přípravě jednotek proveďte následující kroky.
 
     |Možnost  |Popis  |
     |---------|---------|
-    |/j     |Název souboru deníku s příponou. jrn. Vygeneruje se soubor deníku na jednotku. Doporučujeme použít sériové číslo disku jako název souboru deníku.         |
+    |/j:     |Název souboru deníku s příponou. jrn. Vygeneruje se soubor deníku na jednotku. Doporučujeme použít sériové číslo disku jako název souboru deníku.         |
     |/ID     |ID relace Pro každou instanci příkazu použijte jedinečné číslo relace.      |
-    |parametr     |Písmeno jednotky disku, který má být dodán. Například jednotku `D`.         |
+    |/t:     |Písmeno jednotky disku, který má být dodán. Například jednotku `D`.         |
     |/bk:     |Klíč BitLockeru pro jednotku. Jeho číselné heslo z výstupu `manage-bde -protectors -get D:`      |
     |/srcdir:     |Písmeno jednotky disku, který se má odeslat, a `:\`. Například, `D:\`.         |
     |/dstdir:     |Název cílového kontejneru v Azure Storage.         |
-    |/blobtype:     |Tato možnost určuje typ objektů blob, do kterých chcete importovat data. Pro objekty blob bloku je to `BlockBlob` a pro objekty blob stránky je `PagaBlob`.         |
+    |/blobtype:     |Tato možnost určuje typ objektů blob, do kterých chcete importovat data. Pro objekty blob bloku je to `BlockBlob` a pro objekty blob stránky je `PageBlob`.         |
     |/skipwrite:     |Možnost, která určuje, že se nevyžadují žádná nová data ke zkopírování a stávající data na disku se připravují.          |
     |/enablecontentmd5:     |Možnost, pokud je povolená, zajistí, že se algoritmus MD5 vypočítá a nastaví jako `Content-md5` vlastnost u každého objektu BLOB. Tuto možnost použijte pouze v případě, že po nahrání dat do Azure chcete použít pole `Content-md5`. <br> Tato možnost nemá vliv na kontrolu integrity dat (ke které dochází ve výchozím nastavení). Nastavení zvyšuje čas potřebný k nahrání dat do cloudu.          |
 7. Opakujte předchozí krok pro každý disk, který je třeba odeslat. Soubor deníku se zadaným názvem se vytvoří pro každé spuštění příkazového řádku.
@@ -114,7 +114,7 @@ Provedením následujících kroků vytvořte v Azure Portal úlohu importu.
 
 4. V **informace o expedici zpět**:
 
-   - V rozevíracím seznamu vyberte přepravce. Pokud chcete použít operátor jiného než FedEx/DHL, vyberte z rozevíracího seznamu existující možnost. Kontaktujte Azure Data Box provozní tým na `adbops@microsoft.com` s informacemi o nosiči, který plánujete použít.
+   - V rozevíracím seznamu vyberte přepravce. Pokud chcete použít operátor jiného než FedEx/DHL, vyberte z rozevíracího seznamu existující možnost. Kontaktujte Azure Data Box provozní tým na `adbops@microsoft.com` s informacemi týkajícími se nosiče, který plánujete použít.
    - Zadejte platné číslo účtu dopravce, který jste vytvořili pomocí tohoto dopravce. Společnost Microsoft používá tento účet k dodávání jednotek zpátky po dokončení úlohy importu. Pokud nemáte číslo účtu, vytvořte účet dopravce [FedEx](https://www.fedex.com/us/oadr/) nebo [DHL](https://www.dhl.com/) .
    - Zadejte celé a platné kontaktní jméno, telefonní číslo, e-mail, ulici, město, PSČ, kraj a zemi/oblast. 
         

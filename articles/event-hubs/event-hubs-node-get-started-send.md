@@ -8,20 +8,23 @@ ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 01/08/2020
 ms.author: spelluru
-ms.openlocfilehash: ded2c83bc648e509c8cf00236cdf453b9c61af53
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 39087b189c424866fffcc3ea8723c712883f288c
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720574"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940714"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs"></a>Rychlý Start: odeslání událostí do nebo příjem událostí z Azure Event Hubs pomocí Node. js
 
 Azure Event Hubs je platforma pro zpracování velkých objemů dat a služba pro příjem událostí, která může přijímat a zpracovávat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
 
 V tomto kurzu se dozvíte, jak vytvářet aplikace v Node. js pro posílání událostí nebo přijímání událostí z centra událostí.
+
+> [!IMPORTANT]
+> V tomto rychlém startu se používá verze 2 sady SDK skriptů pro Azure Event Hubs Java. Pokud s Event Hubs Azure začínáte, použijte verzi 5 skriptu Java Script SDK. Rychlý Start, který používá verzi 5 sady SDK skriptu Java, najdete v [tomto článku](get-started-node-send-v2.md). Pokud potřebujete migrovat existující kód z verze 2 na verzi 5, přečtěte si [příručku k migraci](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md).
 
 > [!NOTE]
 > Tento rychlý start si můžete stáhnout jako ukázku z [GitHubu](https://github.com/Azure/azure-event-hubs-node/tree/master/client), nahradit řetězce `EventHubConnectionString` a `EventHubName`, hodnotami pro vaše centrum událostí a spustit. Alternativně můžete vytvořit vlastní řešení podle kroků v tomto kurzu.
@@ -31,16 +34,16 @@ V tomto kurzu se dozvíte, jak vytvářet aplikace v Node. js pro posílání ud
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 - Aktivní účet Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
-- Node. js verze 8. x a vyšší. Stáhněte si nejnovější verzi LTS z [https://nodejs.org](https://nodejs.org).
-- Visual Studio Code (doporučeno) nebo jakékoli jiné integrované vývojové prostředí (IDE)
+- Verze Node.js 8.x a vyšší. Stáhněte si nejnovější verzi LTS pomocí [ https://nodejs.org ](https://nodejs.org).
+- Visual Studio Code (doporučeno) nebo jakékoli jiné integrované vývojové prostředí
 - **Vytvoří obor názvů Event Hubs a centrum událostí**. Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md)a pak pokračujte následujícími kroky v tomto kurzu. Pak Získejte připojovací řetězec pro obor názvů centra událostí podle pokynů uvedených v článku [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Připojovací řetězec použijete později v tomto kurzu.
 
 
 ### <a name="install-npm-package"></a>Nainstalovat balíček npm
-Pro instalaci [balíčku npm pro Event Hubs](https://www.npmjs.com/package/@azure/event-hubs)otevřete příkazový řádek, který má v cestě `npm`, změňte adresář na složku, ve které chcete mít ukázky, a pak spusťte tento příkaz.
+Pro instalaci [balíčku npm pro Event Hubs](https://www.npmjs.com/package/@azure/event-hubs/v/2.1.0)otevřete příkazový řádek, který má v cestě `npm`, změňte adresář na složku, ve které chcete mít ukázky, a pak spusťte tento příkaz.
 
 ```shell
-npm install @azure/event-hubs
+npm install @azure/event-hubs@2
 ```
 
 Pokud chcete nainstalovat [balíček npm pro hostitele procesoru událostí](https://www.npmjs.com/package/@azure/event-processor-host), spusťte následující příkaz.
@@ -54,10 +57,10 @@ npm install @azure/event-processor-host
 V této části se dozvíte, jak vytvořit aplikaci Node. js, která odesílá události do centra událostí. 
 
 1. Otevřete oblíbený editor, například [Visual Studio Code](https://code.visualstudio.com). 
-2. Vytvořte soubor s názvem `send.js` a vložte do něj následující kód. Pomocí pokynů v článku Získejte připojovací řetězec pro obor názvů centra událostí: [získat připojovací řetězec](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). 
+2. Vytvořte soubor s názvem `send.js` a vložte do něj následující kód. Získání připojovacího řetězce pro obor názvů centra událostí podle pokynů v článku: [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). 
 
     ```javascript
-    const { EventHubClient } = require("@azure/event-hubs");
+    const { EventHubClient } = require("@azure/event-hubs@2");
 
     // Connection string - primary key of the Event Hubs namespace. 
     // For example: Endpoint=sb://myeventhubns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -95,7 +98,7 @@ V této části se dozvíte, jak vytvořit aplikaci Node. js, která přijímá 
 1. Otevřete oblíbený editor, například [Visual Studio Code](https://code.visualstudio.com). 
 2. Vytvořte soubor s názvem `receive.js` a vložte do něj následující kód.
     ```javascript
-    const { EventHubClient, delay } = require("@azure/event-hubs");
+    const { EventHubClient, delay } = require("@azure/event-hubs@2");
 
     // Connection string - primary key of the Event Hubs namespace. 
     // For example: Endpoint=sb://myeventhubns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -133,7 +136,7 @@ Blahopřejeme! Nyní jste přijali události z centra událostí.
 
 ## <a name="receive-events-using-event-processor-host"></a>Příjem událostí pomocí třídy EventProcessorHost
 
-V této části se dozvíte, jak přijímat události z centra událostí pomocí Azure [EventProcessorHost](event-hubs-event-processor-host.md) v aplikaci Node. js. EventProcessorHost (EPH) pomáhá efektivně přijímat události z centra událostí tím, že vytváří přijímače napříč všemi oddíly ve skupině uživatelů centra událostí. V pravidelných intervalech v Azure Storage Blob kontrolní body v nich jsou metadata přijatých zpráv. Tento přístup usnadňuje příjem zpráv z místa, kde jste v pozdější době ponechali.
+V této části se dozvíte, jak přijímat události z centra událostí pomocí Azure [EventProcessorHost](event-hubs-event-processor-host.md) v aplikaci Node. js. EventProcessorHost (EPH) pomáhá efektivněji přijímat události z centra událostí tak, že vytvoříte příjemce na všechny oddíly v se skupina uživatelů centra událostí. Je kontrolní body metadat v přijatých zpráv v pravidelných intervalech v objektu Blob služby Azure Storage. Tento přístup usnadňuje pokračovat příjem zpráv z tam, kde jste přestali později.
 
 1. Otevřete oblíbený editor, například [Visual Studio Code](https://code.visualstudio.com). 
 2. Vytvořte soubor s názvem `receiveAll.js` a vložte do něj následující kód.

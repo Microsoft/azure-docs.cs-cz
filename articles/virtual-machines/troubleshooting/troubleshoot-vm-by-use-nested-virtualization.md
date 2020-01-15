@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: 4565eb86727e768ba894d701cbc5e0073c07ee01
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 87faea5385f5b0fd2c481c6aa7c45a9867b34163
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185523"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942184"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Řešení potíží s virtuálním počítačem Azure pomocí vnořené virtualizace v Azure
 
@@ -29,8 +29,6 @@ V tomto článku se dozvíte, jak vytvořit vnořené prostředí virtualizace v
 Chcete-li připojit problémový virtuální počítač, musí záchranný virtuální počítač splňovat následující požadavky:
 
 -   Záchranný virtuální počítač musí být ve stejném umístění jako virtuální počítač problému.
-
--   Záchranný virtuální počítač musí být ve stejné skupině prostředků jako problémový virtuální počítač.
 
 -   Záchranný virtuální počítač musí používat stejný typ účtu úložiště (Standard nebo Premium) jako virtuální počítač problému.
 

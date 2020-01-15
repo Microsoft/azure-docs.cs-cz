@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 696bba195ac3902a3a90a82bcc7665591eba643f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 4ef2987ee72348fb4353ba735d6da76fb218f01e
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922340"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942144"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Výstrahy zabezpečení – referenční příručka
 
@@ -97,6 +97,7 @@ Pod tabulkou upozornění je Tabulka popisující Azure Security Center dezaktiv
 |**Neobvyklé množství dat extrahovaných z účtu úložiště**|Indikuje, že se v porovnání s poslední aktivitou tohoto kontejneru úložiště extrahuje neobvykle velké množství dat. Možnou příčinou je, že útočník extrahuje velké množství dat z kontejneru, který obsahuje úložiště objektů BLOB.|Exfiltrace|
 |**Neobvyklé odstranění v účtu úložiště**|Označuje, že v účtu úložiště se vyskytla jedna nebo víc neočekávaných operací odstranění v porovnání s poslední aktivitou tohoto účtu. Možnou příčinou je, že útočník odstranil data z vašeho účtu úložiště.|Exfiltrace|
 |**Neobvyklé nahrání. cspkg do účtu úložiště**|Indikuje, že balíček Azure Cloud Services (soubor. cspkg) se neobvyklým způsobem nahrál do účtu úložiště, a to v porovnání s poslední aktivitou na tomto účtu. Možnou příčinou je to, že se útočník připravuje na nasazení škodlivého kódu z vašeho účtu úložiště do cloudové služby Azure.|LateralMovement/spuštění|
+|**Neobvyklé nahrání souboru. exe do účtu úložiště**|Označuje, že soubor. exe se v porovnání s poslední aktivitou tohoto účtu nahrál do účtu úložiště neobvyklým způsobem. Možnou příčinou je to, že útočník nahrál škodlivý spustitelný soubor do vašeho účtu úložiště nebo jestli si oprávněný uživatel nahrál spustitelný soubor.|LateralMovement/spuštění|
 |**Neobvyklé změny přístupových oprávnění v účtu úložiště**|Indikuje, že oprávnění k přístupu tohoto kontejneru úložiště se změnila neobvyklým způsobem. Možnou příčinou je to, že útočník změnil oprávnění kontejneru pro oslabení stav zabezpečení nebo získání trvalosti.|Trvalost|
 |**Neobvyklá kontrola přístupu v účtu úložiště**|Označuje, že přístupová oprávnění účtu úložiště byla v porovnání s poslední aktivitou tohoto účtu prověřena neobvyklým způsobem. Možnou příčinou je, že útočník provedl rekognoskace k budoucímu útoku.|Kolekce|
 |**Neobvyklé zkoumání dat v účtu úložiště**|Označuje, že objekty blob nebo kontejnery v účtu úložiště jsou v porovnání s poslední aktivitou tohoto účtu vyhodnoceny neobvyklým způsobem. Možnou příčinou je, že útočník provedl rekognoskace k budoucímu útoku.|Kolekce|

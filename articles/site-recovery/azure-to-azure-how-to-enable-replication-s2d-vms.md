@@ -1,19 +1,16 @@
 ---
-title: Replikace virtuálních počítačů Azure se systémem Prostory úložiště s přímým přístupem pomocí Azure Site Recovery
-description: Tento článek popisuje, jak replikovat virtuální počítače Azure se systémem Prostory úložiště s přímým přístupem pomocí Azure Site Recovery.
-services: site-recovery
-author: carmonmills
+title: Replikace virtuálních počítačů Azure se systémem Prostory úložiště s přímým přístupem s využitím Azure Site Recovery
+description: Přečtěte si, jak replikovat virtuální počítače Azure se systémem Prostory úložiště s přímým přístupem pomocí Azure Site Recovery.
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/29/2019
-ms.author: carmonm
-ms.openlocfilehash: 49a4f59e68a409696480f89ee4b606fbed2b77ed
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 465c0ddd91e81bb597a996637fdc2147e90464de
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75929845"
+ms.locfileid: "75942220"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Replikace virtuálních počítačů Azure s Prostory úložiště s přímým přístupem do jiné oblasti
 
@@ -23,13 +20,13 @@ Tento článek popisuje, jak povolit zotavení po havárii virtuálních počít
 >Pro clustery prostorů úložiště s přímým přístupem jsou podporovány pouze body obnovení konzistentní vzhledem k selháním.
 >
 
-## <a name="introduction"></a>Představení 
-[Prostory úložiště s přímým přístupem (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) je softwarově definované úložiště, které poskytuje způsob vytváření [clusterů hostů](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure) v Azure.  Cluster hostů v Microsoft Azure je cluster s podporou převzetí služeb při selhání tvořený IaaS virtuálními počítači. Umožňuje, aby hostované úlohy virtuálních počítačů převzaly služby při selhání napříč clustery hostů a dosáhli se vyšší dostupnosti pro aplikace, než jeden virtuální počítač Azure může poskytnout. Je vhodný ve scénářích, kdy virtuální počítač hostuje kritickou aplikaci, jako je SQL nebo souborový server se škálováním na více instancí atd.
+[Prostory úložiště s přímým přístupem (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) jsou softwarově definované úložiště, které poskytuje způsob, jak vytvořit [clustery hostů](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure) v Azure.  Cluster hostů v Microsoft Azure je cluster s podporou převzetí služeb při selhání tvořený IaaS virtuálními počítači. Umožňuje, aby hostované úlohy virtuálních počítačů převzaly služby při selhání napříč clustery hostů a dosáhly se smlouvy SLA pro vyšší dostupnost pro aplikace, než může poskytnout jeden virtuální počítač Azure. To je užitečné ve scénářích, kdy virtuální počítač hostuje kritickou aplikaci, jako je SQL nebo souborový server se škálováním na více systémů.
 
-## <a name="disaster-recovery-of-azure-virtual-machines-using-storage-spaces-direct"></a>Zotavení po havárii Azure Virtual Machines pomocí prostorů úložiště s přímým přístupem
+## <a name="disaster-recovery-with-storage-spaces-direct"></a>Zotavení po havárii pomocí prostorů úložiště s přímým přístupem
+
 V typickém scénáři můžete mít hostovaný cluster virtuálních počítačů v Azure pro zajištění vyšší odolnosti vaší aplikace, třeba souborového serveru se škálováním na více instancí. I když to může zajistit vyšší dostupnost vaší aplikace, chcete tyto aplikace ochránit pomocí Site Recovery pro jakékoli selhání úrovně oblasti. Site Recovery replikuje data z jedné oblasti do jiné oblasti Azure a v případě převzetí služeb při selhání vyvolá cluster v oblasti zotavení po havárii.
 
-Pod diagramem se zobrazuje vyobrazení dvou virtuálních počítačů Azure s podporou převzetí služeb při selhání pomocí prostorů úložiště s přímým přístupem
+Pod diagramem je znázorněn cluster s podporou převzetí služeb při selhání virtuálního počítače Azure se dvěma uzly pomocí prostorů úložiště s
 
 ![storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacedirect.png)
 
@@ -42,7 +39,7 @@ Pod diagramem se zobrazuje vyobrazení dvou virtuálních počítačů Azure s p
 **Požadavky na zotavení po havárii**
 
 1. Při nastavování [cloudového](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp) clusteru pro cluster udržujte v oblasti zotavení po havárii složku s kopií clusteru.
-2. Pokud převezmete služby virtuálních počítačů při selhání k podsíti v oblasti zotavení po havárii, která se liší od zdrojové oblasti, po převzetí služeb při selhání musí být IP adresa clusteru změněna.  Pokud chcete změnit IP adresu clusteru, musíte použít [skript plánu obnovení ASR.](https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation)</br>
+2. Pokud převezmete služby virtuálních počítačů při selhání k podsíti v oblasti zotavení po havárii, která se liší od zdrojové oblasti, po převzetí služeb při selhání musí být IP adresa clusteru změněna.  Pokud chcete změnit IP adresu clusteru, musíte použít [skript plánu obnovení Site Recovery.](https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation)</br>
 [Ukázkový skript](https://github.com/krnese/azure-quickstart-templates/blob/master/asr-automation-recovery/scripts/ASR-Wordpress-ChangeMysqlConfig.ps1) pro provedení příkazu uvnitř virtuálního počítače pomocí rozšíření vlastních skriptů 
 
 ### <a name="enabling-site-recovery-for-s2d-cluster"></a>Povolování Site Recovery pro cluster S2D:
@@ -69,11 +66,11 @@ Plán obnovení podporuje sekvencování různých vrstev v vícevrstvé aplikac
 
 
 ### <a name="add-scripts-to-the-recovery-plan"></a>Přidání skriptů do plánu obnovení
-Aby vaše aplikace fungovaly správně, možná budete muset provést některé operace na virtuálních počítačích Azure po převzetí služeb při selhání nebo během testovacího převzetí služeb při selhání. Některé operace po převzetí služeb při selhání můžete automatizovat. Tady je například připojení pro vyrovnávání zatížení a změna IP adresy clusteru.
+Aby vaše aplikace fungovaly správně, možná budete muset provést některé operace na virtuálních počítačích Azure po převzetí služeb při selhání nebo během testovacího převzetí služeb při selhání. Některé operace po převzetí služeb při selhání můžete automatizovat. Tady je například připojení nástroje pro vyrovnávání zatížení a změna IP adresy clusteru.
 
 
 ### <a name="failover-of-the-virtual-machines"></a>Převzetí služeb při selhání virtuálních počítačů 
-Oba uzly virtuálních počítačů musí při převzetí služeb při selhání použít [plán obnovení ASR](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans) . 
+Uzly virtuálních počítačů musí při převzetí služeb při selhání použít [plán obnovení](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans) Site Recovery. 
 
 ![Ochrana storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/recoveryplan.PNG)
 

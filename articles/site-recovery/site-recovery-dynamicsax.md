@@ -1,18 +1,16 @@
 ---
-title: Zotavení po havárii pro nasazení ve více vrstvách Dynamics AX s Azure Site Recovery | Microsoft Docs
-description: Tento článek popisuje, jak nastavit zotavení po havárii pro Dynamics AX pomocí Azure Site Recovery
-author: carmonmills
+title: Zotavení po havárii Dynamics AX s Azure Site Recovery
+description: Přečtěte si, jak nastavit zotavení po havárii pro Dynamics AX pomocí Azure Site Recovery
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2018
-ms.author: carmonm
-ms.openlocfilehash: 089edd1f408494f59c8f0042b57d2d79c7faffae
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 0b32f00374aa8ce6c41415e28f319e3e7d5abddb
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930173"
+ms.locfileid: "75941596"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Nastavení zotavení po havárii pro aplikaci s více vrstvami Dynamics AX   
 
@@ -39,7 +37,7 @@ Implementace zotavení po havárii pro aplikaci Dynamics AX pomocí Site Recover
 
 ## <a name="site-recovery-support"></a>Podpora Site Recovery
 
-Pro účely vytvoření tohoto článku jsme používali virtuální počítače VMware s Dynamics AX 2012 R3 v systému Windows Server 2012 R2 Enterprise. Vzhledem k tomu, že replikace služby Site Recovery je nezávislá aplikace, očekáváme, že zde uvedená doporučení najdete v následujících scénářích.
+Pro účely vytvoření tohoto článku jsme používali virtuální počítače VMware s Dynamics AX 2012 R3 v systému Windows Server 2012 R2 Enterprise. Vzhledem k tomu, že Site Recovery replikace je nezávislá aplikace, očekáváme, že zde uvedená doporučení se budou uchovávat v následujících scénářích.
 
 ### <a name="source-and-target"></a>Zdroj a cíl
 

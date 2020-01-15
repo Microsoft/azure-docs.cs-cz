@@ -3,14 +3,14 @@ title: Řešení Update Management v Azure
 description: Tento článek popisuje, jak pomocí řešení Azure Update Management spravovat aktualizace pro počítače se systémem Windows a Linux.
 services: automation
 ms.subservice: update-management
-ms.date: 12/03/2019
+ms.date: 01/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 924f5bee94544c533f3a2548d931fce292469567
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0cf47538f7db1cef629c2b58a9fbde16640a50ae
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420340"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945126"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -166,7 +166,7 @@ U každého spravovaného počítače se systémem Windows se kontrola provádí
 
 Kontrola se provádí každou hodinu každého spravovaného počítače se systémem Linux.
 
-Zobrazení aktuálních dat o spravovaných počítačích může trvat 30 minut nebo až 6 hodin.
+Zobrazení aktuálních dat o spravovaných počítačích může trvat 30 minut až 6 hodin.
 
 Průměrné využití dat pomocí Azure Monitor protokolů pro počítač používající Update Management je přibližně 25 megabajtů (MB) měsíčně. Tato hodnota je jenom aproximace a v závislosti na vašem prostředí se může změnit. Doporučujeme monitorovat své prostředí, abyste mohli sledovat přesné využití.
 
@@ -237,7 +237,9 @@ V případě systému Linux může Update Management rozlišovat mezi důležit�
 sudo yum -q --security check-update
 ```
 
-V současné době není podporována žádná podporovaná metoda pro povolení nativní klasifikace – dostupnost dat v CentOS. V tuto chvíli se zákazníkům, kteří si můžou tuto možnost sami povolit, poskytnou jenom podporu s lepší námahou.
+V současné době není podporována žádná podporovaná metoda pro povolení nativní klasifikace – dostupnost dat v CentOS. V tuto chvíli se zákazníkům, kteří si můžou tuto možnost sami povolit, poskytnou jenom podporu s lepší námahou. 
+
+Chcete-li klasifikovat aktualizace na Red Hat Enterprise verze 6, je nutné nainstalovat modul plug-in Yumu-Security. V Red Hat Enterprise Linux 7 je modul plug-in již součástí samotného Yumu, není nutné nic instalovat. Další informace najdete v následujícím [článku znalostní báze](https://access.redhat.com/solutions/10021)Red Hat.
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integrace se System Center Configuration Managerem
 
@@ -251,7 +253,7 @@ Update Management spoléhá na místně nakonfigurované úložiště aktualizac
 
 ## <a name="patch-linux-machines"></a>Oprava počítačů se systémem Linux
 
-Následující části vysvětlují možné problémy s opravami systému Linux.
+V následujících oddílech se vysvětlují možné problémy s opravou distribuce Linux.
 
 ### <a name="unexpected-os-level-upgrades"></a>Neočekávané upgrady na úrovni operačního systému
 

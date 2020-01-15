@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 01/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 6dd0734d39237545b7a9bc2553fcd9dea75b8ee0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3d3a1704b75de53bf65012329fba5f8522adff3a
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892822"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941755"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Kopírování dat z DB2 pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -46,11 +46,6 @@ Konkrétně tento konektor DB2 podporuje následující platformy a verze IBM DB
 * IBM DB2 pro LUW 10,5
 * IBM DB2 pro LUW 10,1
 
-> [!TIP]
-> Pokud se zobrazí chybová zpráva oznamující, že balíček odpovídající požadavku na spuštění příkazu SQL nebyl nalezen. SQLSTATE = 51002 SQLCODE =-805 ", důvod je potřebný balíček není vytvořen pro normálního uživatele v takovém operačním systému. Postupujte podle těchto pokynů podle vašeho typu serveru DB2:
-> - DB2 pro i (AS400): před použitím aktivity kopírování umožněte Power User vytvořit kolekci pro přihlašovacího uživatele. Příkaz: `create collection <username>`
-> - DB2 pro z/OS nebo LUW: použití účtu s vysokou úrovní oprávnění – uživatel nebo správce s oprávněními balíčku a BIND, BINDADD, udělení oprávnění k VEŘEJNÉmu spuštění aktivity kopírování – potřebný balíček se automaticky vytvoří během kopírování. Následně můžete přejít zpět na normálního uživatele pro následné spuštění kopírování.
-
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
@@ -78,6 +73,9 @@ Pro propojenou službu DB2 jsou podporovány následující vlastnosti:
 | balíček balíčkucollection | Určete, kde jsou potřebné balíčky automaticky vytvořeny pomocí ADF při dotazování databáze. | Ne |
 | certificateCommonName | Pokud používáte šifrování SSL (Secure Sockets Layer) (SSL) nebo TLS (Transport Layer Security), musíte zadat hodnotu pro běžný název certifikátu. | Ne |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
+
+> [!TIP]
+> Pokud se zobrazí chybová zpráva s oznámením, že `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805`, je důvod, proč se pro tohoto uživatele nevytvoří požadovaný balíček. Ve výchozím nastavení se ADF pokusí vytvořit balíček v kolekci s názvem jako uživatel, kterého jste použili pro připojení k DB2. Určete vlastnost kolekce balíčku, která bude označovat, kde má ADF při dotazování na databázi vytvořit potřebné balíčky.
 
 **Příklad:**
 

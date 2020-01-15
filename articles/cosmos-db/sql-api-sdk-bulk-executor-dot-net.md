@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 12/02/2019
+ms.date: 01/14/2020
 ms.author: ramkris
-ms.openlocfilehash: 2d573d329ad27a4801c091d0dcfb10c5f530169f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b5d4f490f7710824b8382091a1e814f6847766fa
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707272"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945556"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Knihovna hromadného prováděcího modulu .NET: informace o stažení 
 
@@ -36,9 +36,9 @@ ms.locfileid: "74707272"
 | **Popis**| Knihovna hromadného prováděcího modulu .NET umožňuje klientským aplikacím provádět hromadné operace s účty Azure Cosmos DB. Tato knihovna poskytuje obory názvů BulkImport, BulkUpdate a BulkDelete. Modul BulkImport dokáže hromadně ingestovat dokumenty optimalizovaným způsobem tak, že propustnost zřízená pro kolekci se spotřebovává do svého maximálního rozsahu. Modul BulkUpdate může hromadně aktualizovat existující data v kontejnerech Azure Cosmos jako opravy. Modul BulkDelete může rychle odstranit dokumenty optimalizovaným způsobem tak, aby propustnost zřízená pro kolekci byla spotřebována do maximálního rozsahu.|
 |**Stažení sady SDK**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
 | **Knihovna hromadných prováděcích modulů na GitHubu**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
-|**Dokumentace k rozhraní API**|[Referenční dokumentace rozhraní .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
+|**Dokumentace k rozhraní API**|[Referenční dokumentace rozhraní API .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
 |**Začínáme**|[Začínáme s knihovnou .NET SDK pro hromadnou vykonavatelskou práci](bulk-executor-dot-net.md)|
-| **Aktuální podporovaná architektura**| Microsoft .NET Framework 4.5.2, 4.6.1 a .NET Standard 2,0 |
+| **Aktuální podporované architektury**| Microsoft .NET Framework 4.5.2, 4.6.1 a .NET Standard 2,0 |
 
 > [!NOTE]
 > Pokud používáte hromadný prováděcí modul, přečtěte si prosím nejnovější verzi 3. x sady [.NET SDK](tutorial-sql-api-dotnet-bulk-import.md), která obsahuje hromadný prováděcí modul integrovaný do sady SDK. 
@@ -53,7 +53,7 @@ ms.locfileid: "74707272"
 
 * Změna závislosti sady SDK na > = 2.5.1
 
-### <a name="a-name230-preview2230-preview2"></a><a name="2.3.0-preview2"/>2.3.0 – preview2
+### <a name="a-name230-preview2230-preview2"></a><a name="2.3.0-preview2"/>2.3.0-preview2
 
 * Přidání podpory hromadného prováděcího modulu grafu pro příjem hodnoty TTL u vrcholů a hran
 
@@ -65,13 +65,17 @@ ms.locfileid: "74707272"
 
 * Přidali jsme podporu BulkDelete pro účty rozhraní SQL API k přijetí klíče oddílu, k odstranění řazených kolekcí členů dokumentu. Tato změna zajišťuje funkčně rovnocennou verzi 1.4.0.
 
-### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0 – preview2
+### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
 
 * Včetně MongoBulkExecutor pro podporu .NET Standard 2,0. Tato funkce je funkčně ekvivalentní verzi 1.3.0, s přidáním podpory .NET Standard 2,0 jako cílové rozhraní.
 
-### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0 – Preview
+### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-Preview
 
 * Přidání .NET Standard 2,0 jako jedné z podporovaných cílových rozhraní umožňuje, aby knihovna hromadného prováděcího modulu fungovala s aplikacemi .NET Core.
+
+### <a name="a-name187187"></a><a name="1.8.7"/>1.8.7
+
+* Opravili jsme problém s BulkDeleteAsync, když kolekce obsahuje cesty k klíčům vnořeného oddílu.
 
 ### <a name="a-name186186"></a><a name="1.8.6"/>1.8.6
 

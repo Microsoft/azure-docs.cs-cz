@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 78f8b7097060f1091bfed30722c9ea456feed384
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 39078e298093c2c2ab4835925a2ba8a70269f5f5
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007275"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945588"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>World bez hesel s Azure Active Directory
 
@@ -242,7 +242,7 @@ Kromě výběru hardwarového tokenu jako výchozí metody Multi-Factor Authenti
 
 #### <a name="user-using-fido2-security-key-for-sign-in"></a>Uživatel používající FIDO2 bezpečnostní klíč pro přihlášení
 
-FIDO2 poskytuje abstrakci mezi systémem, který se používá jako ověřovatel a kryptografie veřejného a privátního klíče k tomu, aby byly integrované ověřovatele platforem, například Windows Hello a klíče zabezpečení, předávány na privátní klíč a doručují veřejný klíč. který lze použít jako identifikátor pro přístup k externím prostředkům. Bezpečnostní klíče FIDO2 jsou vybavené vlastním integrovaným zabezpečeným enklávy, který ukládá soukromý klíč a vyžaduje, aby se biometrika nebo kód PIN odemkl. Přihlašovací údaje se nedají znovu použít, přehrát ani sdílet mezi službami a nevztahují se k útokům phishing a MiTM nebo k narušením serveru.
+FIDO2 poskytuje abstrakci mezi systémem, který se používá jako ověřovatel a kryptografie veřejného a privátního klíče k tomu, aby umožnila předdefinovaná ověřovatelům platforem, jako jsou Windows Hello a bezpečnostní klíče, aby se vyřešily na privátní klíč a doručily veřejný klíč, který se dá použít jako identifikátor pro přístup k externím prostředkům. Bezpečnostní klíče FIDO2 jsou vybavené vlastním integrovaným zabezpečeným enklávy, který ukládá soukromý klíč a vyžaduje, aby se biometrika nebo kód PIN odemkl. Přihlašovací údaje se nedají znovu použít, přehrát ani sdílet mezi službami a nevztahují se k útokům phishing a MiTM nebo k narušením serveru.
 
 ![Přihlášení k FIDO2](./media/ad-passwordless/azure-ad-pwdless-image6.png)
 
@@ -284,7 +284,7 @@ Tady je několik faktorů, které byste měli vzít v úvahu při výběru techn
 ||**Windows Hello pro firmy**|**Přihlášení bez hesla pomocí aplikace Microsoft Authenticator**|**FIDO2 klíče zabezpečení**|
 |:-|:-|:-|:-|
 |**Před požadavky**| Windows 10 verze 1809 nebo novější<br>Azure Active Directory| Aplikace Microsoft Authenticator<br>Telefon (zařízení s iOS a Androidem se systémem Android 6,0 nebo vyšším)|Windows 10 verze 1809 nebo novější<br>Azure Active Directory|
-|**Mode**|Platforma|Software|Hardware|
+|**Režim**|Platforma|Software|Hardware|
 |**Systémy a zařízení**|POČÍTAČ s integrovaným čipem TPM (Trusted Platform Module)<br>Připnutí a biometrika rozpoznávání |Připnutí a biometrika rozpoznávání na telefonu|FIDO2 zabezpečení zařízení, která jsou kompatibilní s Microsoftem|
 |**Činnost koncového uživatele**|Přihlaste se pomocí PIN nebo biometrického rozpoznávání (obličeje, Iris nebo otisk prstu) pomocí zařízení s Windows.<br>Ověřování Windows Hello je vázané na zařízení; pro přístup k firemním prostředkům potřebuje uživatel zařízení i přihlašovací komponentu, jako je PIN nebo biometrické faktor.|Přihlaste se pomocí mobilního telefonu pomocí skenování otisků prstů, obličeje nebo Iris nebo PIN kódu.<br>Uživatelé se přihlásí k pracovnímu nebo osobnímu účtu na svém počítači nebo mobilním telefonu.|Přihlášení pomocí zařízení zabezpečení FIDO2 (biometrika, PIN a NFC)<br>Uživatel může získat přístup k zařízení na základě organizačních ovládacích prvků a ověřování na základě kódu PIN, biometrika pomocí zařízení, jako jsou klíče zabezpečení USB a čipové karty, klíče nebo wearables s podporou NFC.|
 |**Povolené scénáře**| Heslo – bez možnosti použití zařízení s Windows<br>Platí pro vyhrazený pracovní počítač s možností jednotného přihlašování k zařízením a aplikacím.|Řešení bez hesla odkudkoli pomocí mobilního telefonu.<br>Platí pro přístup k pracovním nebo osobním aplikacím na webu z libovolného zařízení.|Prostředí bez hesla pro pracovní procesy s využitím biometrika, kódu PIN a NFC.<br>Platí pro sdílené počítače a v případě, že mobilní telefon není možnost životaschopnosti (například pro pracovníky helpdesku, veřejný terminál nebo tým v nemocnicích).|
@@ -311,7 +311,7 @@ Ověřování bez hesla je vlnovkou budoucnosti a cesta k bezpečnějšímu pros
 
 * Nasaďte aplikaci Microsoft Authenticator pro mobilitu.
 
-* Nasaďte Windows Hello pro firmy (1903: Zůstaňte aktuální).
+* Nasaďte Windows Hello pro firmy (1909: Zůstaňte aktuální).
 
 * Nasaďte zařízení FIDO2 pro uživatele, kteří nemůžou používat telefony.
 

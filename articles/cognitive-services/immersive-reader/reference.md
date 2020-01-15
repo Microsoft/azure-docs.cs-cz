@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 09244b634fa2603a7dc92af3c78d171f8d6bd9df
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 47d10f75775c49fda0effe10c32e219b3682866d
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903111"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945285"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Referenční příručka k sadě pro moderní čtečku SDK
 
@@ -41,14 +41,14 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="parameters"></a>Parametry
 
-| Název | Typ | Popis |
+| Name (Název) | Typ | Popis |
 | ---- | ---- |------------ |
-| `token` | řetězec | Ověřovací token Azure AD. Podívejte se na [postupy ověřování Azure AD](./azure-active-directory-authentication.md). |
-| `subdomain` | řetězec | Vlastní subdoména prostředku pro moderní čtečku v Azure. Podívejte se na [postupy ověřování Azure AD](./azure-active-directory-authentication.md). |
+| `token` | string | Ověřovací token Azure AD. |
+| `subdomain` | string | Vlastní subdoména prostředku pro moderní čtečku v Azure. |
 | `content` | [Obsah](#content) | Objekt obsahující obsah, který se má zobrazit v moderní čtečce. |
-| `options` | [Možnosti](#options) | Možnosti pro konfiguraci určitého chování moderního čtecího zařízení. Volitelné. |
+| `options` | [Možnosti](#options) | Možnosti pro konfiguraci určitého chování moderního čtecího zařízení. Nepovinný parametr. |
 
-### <a name="returns"></a>Vrátí
+### <a name="returns"></a>Vrací
 
 Vrátí `Promise<HTMLDivElement>`, který se vyřeší, když se nahraje moderní čtečka. `Promise` se přeloží na `div` element, jehož jediným podřízeným prvkem je prvek `iframe`, který obsahuje stránku s atraktivním čtečkou.
 
@@ -80,9 +80,9 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>Parametry
 
-| Název | Typ | Popis |
+| Name (Název) | Typ | Popis |
 | ---- | ---- |------------ |
-| `options` | [RenderButtonsOptions](#renderbuttonsoptions) | Možnosti pro konfiguraci určitého chování funkce renderButtons Volitelné. |
+| `options` | [RenderButtonsOptions](#renderbuttonsoptions) | Možnosti pro konfiguraci určitého chování funkce renderButtons Nepovinný parametr. |
 
 ## <a name="types"></a>Typy
 
@@ -97,7 +97,7 @@ Obsahuje obsah, který se zobrazí v moderní čtečce.
 }
 ```
 
-### <a name="chunk"></a>Indikátor
+### <a name="chunk"></a>Blok dat
 
 Jeden blok dat, který se předává do obsahu moderního čtecího zařízení.
 
@@ -109,13 +109,21 @@ Jeden blok dat, který se předává do obsahu moderního čtecího zařízení.
 }
 ```
 
+### <a name="cookiepolicy-enum"></a>Výčet CookiePolicy
+
+Výčet, který slouží k nastavení zásad pro použití souboru cookie pro moderní čtečku. Viz [Možnosti](#options).
+
+```typescript
+enum CookiePolicy { Disable, Enable }
+```
+
 #### <a name="supported-mime-types"></a>Podporované typy MIME
 
 | Typ MIME | Popis |
 | --------- | ----------- |
-| Text/prostý | Prostý text. |
-| text/HTML | Obsah HTML. [Další informace](#html-support)|
-| Application/MathML + XML | Jazyk MathML (Matematická Markup Language). [Další informace](https://developer.mozilla.org/en-US/docs/Web/MathML)
+| text/plain | Prostý text. |
+| text/html | Obsah HTML. [Další informace](#html-support)|
+| Application/MathML + XML | Jazyk MathML (Matematická Markup Language). [Další informace](./how-to/display-math.md).
 | application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Dokument formátu Microsoft Word. docx.
 
 ### <a name="html-support"></a>Podpora HTML
@@ -124,7 +132,7 @@ Jeden blok dat, který se předává do obsahu moderního čtecího zařízení.
 | Styly písma | Tučné, kurzíva, podtržení, kód, přeškrtnutí, horní index, dolní index |
 | Neuspořádané seznamy | Disk, kruh, čtverec |
 | Seřazené seznamy | Decimal, Upper-Alpha, nižší-alfa, horní – Roman, nižší – Roman |
-| Vytváření | Připravuje se |
+| Hypertextové odkazy | Už brzo |
 
 Nepodporované značky budou vykresleny srovnatelně. Obrázky a tabulky se aktuálně nepodporují.
 
@@ -142,6 +150,7 @@ Obsahuje vlastnosti, které konfigurují určité chování moderního čtecího
     customDomain?: string;     // Reserved for internal use. Custom domain where the Immersive Reader webapp is hosted (default is null).
     allowFullscreen?: boolean; // The ability to toggle fullscreen (default is true).
     hideExitButton?: boolean;  // Whether or not to hide the Immersive Reader's exit button arrow (default is false). This should only be true if there is an alternative mechanism provided to exit the Immersive Reader (e.g a mobile toolbar's back arrow).
+    cookiePolicy?: CookiePolicy; // Setting for the Immersive Reader's cookie usage (default is CookiePolicy.Disable). It's the responsibility of the host application to obtain any necessary user consent in accordance with EU Cookie Compliance Policy.
 }
 ```
 
@@ -168,10 +177,10 @@ Obsahuje informace o chybě.
 
 #### <a name="error-codes"></a>Kódy chyb
 
-| Kód | Popis |
+| kód | Popis |
 | ---- | ----------- |
 | BadArgument | Zadaný argument je neplatný, podrobnosti najdete v `message`. |
-| Prodlev | V rámci zadaného časového limitu se nepovedlo načíst moderní čtečku. |
+| časový limit | V rámci zadaného časového limitu se nepovedlo načíst moderní čtečku. |
 | TokenExpired | Platnost zadaného tokenu vypršela. |
 | Omezené | Překročilo se omezení četnosti volání. |
 
@@ -193,7 +202,7 @@ Pomocí následujících atributů můžete nakonfigurovat vzhled a chování tl
 | `data-locale` | Nastaví národní prostředí. Například `en-US` nebo `fr-FR`. Výchozí hodnota je `en`angličtiny. |
 | `data-icon-px-size` | Nastaví velikost ikony v pixelech. Výchozí hodnota je 20px. |
 
-## <a name="browser-support"></a>Podpora prohlížeče
+## <a name="browser-support"></a>Podpora prohlížečů
 
 K dosažení nejlepšího prostředí pro moderní čtečku použijte nejnovější verze následujících prohlížečů.
 

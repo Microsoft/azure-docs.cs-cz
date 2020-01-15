@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 01/14/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8cb644495d99b331ec95eb0a9759be45a65e97a6
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: bab95f6494fad86c9fdfc0b8fb044c22a7c5a628
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895345"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945452"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Návrh vysoce dostupných aplikací s využitím geograficky redundantního úložiště s přístupem pro čtení
 
@@ -99,7 +99,7 @@ Existuje mnoho způsobů, jak zpracovávat žádosti o aktualizaci při spuště
 
 ## <a name="handling-retries"></a>Zpracování opakovaných pokusů
 
-Klientská knihovna Azure Storage vám pomůže určit, které chyby se můžou opakovat. Například Chyba 404 (prostředek se nepovedlo najít) se může opakovat, protože opakování nebude pravděpodobně mít za následek úspěch. Na druhé straně se chyba 500 nedá opakovat, protože se jedná o chybu serveru a může se jednat jenom o přechodný problém. Další podrobnosti najdete v [kódu open source pro třídu ExponentialRetry](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) v klientské knihovně úložiště .NET. (Vyhledejte metodu ShouldRetry.)
+Klientská knihovna Azure Storage vám pomůže určit, které chyby se můžou opakovat. Například Chyba 404 (prostředek se nepovedlo najít) se nebude opakovat, protože opakování nebude pravděpodobně mít za následek úspěch. Na druhé straně se může opakovat Chyba 500, protože se jedná o chybu serveru a problém může být jednoduše přechodným problémem. Další podrobnosti najdete v [kódu open source pro třídu ExponentialRetry](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) v klientské knihovně úložiště .NET. (Vyhledejte metodu ShouldRetry.)
 
 ### <a name="read-requests"></a>Žádosti o čtení
 
@@ -204,7 +204,7 @@ Následující tabulka ukazuje příklad toho, co se může stát, když aktuali
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | Transakce A: <br> Vložit zaměstnance <br> entita v primárním objektu |                                   |                    | Transakce A vložená na primární,<br> ještě není replikované. |
 | T1       |                                                            | Transakce A <br> replikováno do<br> sekundární | T1 | Transakce byla replikována do sekundárního. <br>Čas poslední synchronizace se aktualizoval.    |
-| T2       | Transakce B:<br>Aktualizovat<br> Entita zaměstnance<br> v primárním  |                                | T1                 | Transakce B se zapsala do primárního,<br> ještě není replikované.  |
+| T2       | Transakce B:<br>Aktualizovat<br> entita zaměstnance<br> v primárním  |                                | T1                 | Transakce B se zapsala do primárního,<br> ještě není replikované.  |
 | T3       | Transakce C:<br> Aktualizovat <br>správce<br>entita role v<br>primární |                    | T1                 | Transakce C byla zapsána do primárního,<br> ještě není replikované.  |
 | *T4*     |                                                       | Transakce C <br>replikováno do<br> sekundární | T1         | Transakce C byla replikována do sekundárního.<br>LastSyncTime se neaktualizovala, protože <br>transakce B se ještě nereplikoval.|
 | *T5*     | Čtení entit <br>ze sekundární                           |                                  | T1                 | Získáte zastaralou hodnotu pro zaměstnance. <br> entita, protože transakce B nebyla <br> replika ještě proběhla. Získáte novou hodnotu pro<br> entita role správce, protože C má<br> replikovateln. Čas poslední synchronizace ještě není.<br> Aktualizováno, protože transakce B<br> nereplikuje se. Můžete říct, že<br>entita role správce je nekonzistentní. <br>protože je datum/čas entity po <br>Čas poslední synchronizace |

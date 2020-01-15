@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 8c694cbd8d9386401b8ad26cf5ce6ce31e6b9bd9
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 9cce221946a16103e706875e179c677190f32af1
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614933"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940809"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
 
@@ -251,6 +251,7 @@ Jedná se o aktuální omezení úrovně služby škálování na úrovni služe
 | Kopie databáze | Ještě nemůžete použít kopii databáze k vytvoření nové databáze ve službě Azure SQL s škálovatelným škálováním. |
 | Integrace TDE/integrace | Transparentní šifrování databáze pomocí Azure Key Vault (obecně označované jako BYOK) ještě není podporované pro Azure SQL Database škálování, ale TDE se spravovanými klíči služby se plně podporuje. |
 |Funkce inteligentní databáze | S výjimkou možnosti "vynutit plán" nejsou všechny ostatní možnosti automatického ladění zatím podporovány v rámci škálování: možnosti mohou být povoleny, ale nebudou zde učiněna žádná doporučení ani akce. |
+|Query Performance Insights | Dotazy na výkon dotazů se v současné době nepodporují pro databáze s škálovatelnými škálováními. |
 | Zmenšit databázi | Příkaz DBCC SHRINKDATABASE nebo DBCC SHRINKFILE není v současné době podporován pro databáze s měřítkem. |
 | Kontrola integrity databáze | Příkaz DBCC CHECKDB není v současné době podporován pro databáze s měřítkem. Podrobnosti o správě integrity dat v Azure SQL Database najdete v tématu [Integrita dat v Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/) . |
 

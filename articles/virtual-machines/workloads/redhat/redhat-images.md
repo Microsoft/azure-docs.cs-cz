@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/18/2019
 ms.author: alsin
-ms.openlocfilehash: 27cd5b775fbd2af58d93d539420262665d70ead4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 211ac68fd10cd745faf68a5efae7392345008d7b
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75486323"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941448"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Přehled Red Hat Enterprise Linuxch imagí
 Tento článek popisuje dostupné image Red Hat Enterprise Linux (RHEL) v Azure Marketplace společně se zásadami týkajícími se jejich pojmenování a uchovávání.
@@ -154,5 +154,5 @@ Naše aktuální zásada zachová všechny dříve publikované image. Vyhrazuje
 ## <a name="next-steps"></a>Další kroky
 * Podívejte se na úplný seznam [imagí RHEL v Azure](./redhat-imagelist.md).
 * Přečtěte [si další informace o infrastruktuře aktualizací](https://aka.ms/rhui-update)Red Hat pro Azure.
-* Přečtěte si další informace o [nabídce RHEL BYOS](./redhat-byos.md).
+* Přečtěte si další informace o [nabídce RHEL BYOS](./byos.md).
 * Informace o zásadách podpory Red Hat pro všechny verze RHEL najdete na stránce [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata) .

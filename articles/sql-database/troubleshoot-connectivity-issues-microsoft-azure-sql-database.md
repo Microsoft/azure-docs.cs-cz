@@ -1,55 +1,70 @@
 ---
-title: Problémy při připojování a používání pro Azure SQL Database
+title: Řešení běžných problémů s připojením k SQL Database
 description: Poskytuje kroky pro řešení potíží s Azure SQL Databasemi připojení a řešení problémů s jinými SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.topic: troubleshooting
 ms.custom: seo-lt-2019, OKR 11/2019
-author: v-miegge
+author: ramakoni1
 ms.author: ramakoni
-ms.reviewer: carlrab
+ms.reviewer: carlrab,vanto
 ms.date: 11/14/2019
-ms.openlocfilehash: 0bd018d90f4ca2c64df56d27eebdc6c9160309ac
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 445048531826861afb13c5fff6af407348aa9c2e
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082411"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940790"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-microsoft-azure-sql-database"></a>Řešení potíží s připojením a dalších chyb pomocí Microsoft Azure SQL Database
 
-Pokud připojení ke službě Azure SQL Database selže, zobrazí se chybové zprávy. Tyto problémy s připojením mohou být způsobeny Azure SQL Database změnou konfigurace, nastavením brány firewall, vypršením časového limitu připojení nebo nesprávnými přihlašovacími informacemi. Pokud se navíc dosáhne maximálního limitu u některých prostředků Azure SQL Database, nemůžete se připojit k Azure SQL Database.
+Pokud připojení ke službě Azure SQL Database selže, zobrazí se chybové zprávy. Tyto problémy s připojením mohou být způsobeny Azure SQL Database změnou konfigurace, nastavením brány firewall, vypršením časového limitu připojení, nesprávnými přihlašovacími informacemi nebo neúspěšným uplatněním osvědčených postupů a pokynů pro návrh při [návrhu aplikace] ( sql-database-develop-overview.md) proces. Pokud se navíc dosáhne maximálního limitu u některých prostředků Azure SQL Database, nemůžete se připojit k Azure SQL Database.
 
-## <a name="transient-fault-error-messages"></a>Přechodné chyby – chybové zprávy
+## <a name="transient-fault-error-messages-40197-40613-and-others"></a>Chybové zprávy přechodného selhání (40197, 40613 a další)
 
-Když ve službě SQL Database dojde k vysokému zatížení, infrastruktura Azure dokáže dynamicky rekonfigurovat servery.  Toto dynamické chování může způsobit, že váš klientský program ztratí své připojení ke službě SQL Database. Tento druh chybové podmínky se nazývá *přechodná chyba*. Důrazně doporučujeme, aby váš klientský program měl logiku opakování, aby mohl znovu navázat připojení, a to tak, že by došlo k přechodné chybě při jejich opravě.  Před prvním opakováním doporučujeme, abyste prodlevu zaznamenali na 5 sekund. Opakuje se pokus po zpoždění kratším než 5 sekund při zahlcení cloudové služby. U každého následného opakování by se mělo zpozdit exponenciálně, maximálně 60 sekund.
+Když ve službě SQL Database dojde k vysokému zatížení, infrastruktura Azure dokáže dynamicky rekonfigurovat servery.  Toto dynamické chování může způsobit, že váš klientský program ztratí své připojení ke službě SQL Database. Tento druh chybové podmínky se nazývá *přechodná chyba*. Události opětovné konfigurace databáze nastávají z důvodu plánované události (například upgrade softwaru) nebo neplánované události (například selhání procesu nebo vyrovnávání zatížení). Většina událostí opětovné konfigurace je obecně krátkodobá a měla by být dokončena během méně než 60 sekund. Tyto události mohou nicméně občas trvat déle, například když velká transakce způsobí dlouhotrvající obnovení. Následující tabulka uvádí různé přechodné chyby, které aplikace může obdržet při připojování k SQL Database
+
+### <a name="list-of-transient-fault-error-codes"></a>Seznam chybových kódů přechodných chyb
+
+
+| Kód chyby | Závažnost | Popis |
+| ---:| ---:|:--- |
+| 4060 |16 |Databázi nelze otevřít "%.&#x2a;ls" požadovaný v přihlášení. Přihlášení se nezdařilo. Další informace najdete v tématu [chyby 4000 až 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999) .|
+| 40197 |17 |Služba zjistila chybu při zpracování vaší žádosti. Zkuste to prosím znovu. Kód chyby:% d.<br/><br/>Tato chyba se zobrazí, když dojde k výpadku služby kvůli softwarovým nebo hardwarovým upgradům, selháním hardwaru nebo jakýmkoli jiným problémům s podporou převzetí služeb při selhání. Kód chyby (% d) vložený v rámci zprávy Error 40197] poskytuje další informace o druhu selhání nebo převzetí služeb při selhání. Některé příklady kódů chyb jsou vložené v rámci zprávy chyby 40197 jsou 40020, 40143, 40166 a 40540.<br/><br/>Po opětovném připojení k vašemu SQL Database serveru se vás automaticky připojí k kopii vaší databáze v pořádku. Vaše aplikace musí zachytit chybu 40197, zaprotokolovat vložený kód chyby (% d) ve zprávě pro řešení potíží a zkusit se znovu připojit k SQL Database, dokud nebudou k dispozici prostředky a připojení se znovu naváže. Další informace najdete v tématu [přechodné chyby](sql-database-connectivity-issues.md#transient-errors-transient-faults).|
+| 40501 |20 |Služba je aktuálně zaneprázdněna. Požadavek opakujte po 10 sekundách. ID incidentu:% ls. Kód:% d. Další informace: <br/>[omezení prostředků databázového serveru](sql-database-resource-limits-database-server.md) &bull; &nbsp;<br/>&bull; &nbsp;[omezení založené na DTU pro izolované databáze](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[omezení založené na DTU pro elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity založené na Vcore pro jednotlivé databáze](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; [omezení pro elastické fondy na základě &nbsp;Vcore](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; [omezení prostředků spravované instance](sql-database-managed-instance-resource-limits.md)&nbsp;.|
+| 40613 |17 |Databáze '%.&#x2a;ls' na serveru '%.&#x2a;ls' není aktuálně k dispozici. Zkuste prosím připojení znovu později. Pokud potíže potrvají, obraťte se na zákaznickou podporu a poskytněte ID trasování relace '%.&#x2a;ls'.<br/><br/> K této chybě může dojít, pokud již existuje existující vyhrazené připojení správce (DAC) pro databázi. Další informace najdete v tématu [přechodné chyby](sql-database-connectivity-issues.md#transient-errors-transient-faults).|
+| 49918 |16 |Požadavek nejde zpracovat. Pro zpracování požadavku není dostatek prostředků.<br/><br/>Služba je aktuálně zaneprázdněna. Opakujte prosím požadavek později. Další informace: <br/>[omezení prostředků databázového serveru](sql-database-resource-limits-database-server.md) &bull; &nbsp;<br/>&bull; &nbsp;[omezení založené na DTU pro izolované databáze](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[omezení založené na DTU pro elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity založené na Vcore pro jednotlivé databáze](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; [omezení pro elastické fondy na základě &nbsp;Vcore](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; [omezení prostředků spravované instance](sql-database-managed-instance-resource-limits.md)&nbsp;. |
+| 49919 |16 |Nelze zpracovat žádost o vytvoření nebo aktualizaci. Pro předplatné% ld probíhá příliš mnoho probíhajících operací vytvoření nebo aktualizace.<br/><br/>Služba je zaneprázdněná zpracováním více žádostí o vytvoření nebo aktualizaci vašeho předplatného nebo serveru. Požadavky jsou aktuálně blokovány pro optimalizaci prostředků. Dotaz [Sys. dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) pro operace, které čekají na zpracování. Počkejte, dokud nebudou dokončeny žádosti o vytvoření nebo aktualizaci, nebo odstraňte jednu z vašich čekajících žádostí a opakujte požadavek později. Další informace: <br/>[omezení prostředků databázového serveru](sql-database-resource-limits-database-server.md) &bull; &nbsp;<br/>&bull; &nbsp;[omezení založené na DTU pro izolované databáze](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[omezení založené na DTU pro elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity založené na Vcore pro jednotlivé databáze](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; [omezení pro elastické fondy na základě &nbsp;Vcore](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; [omezení prostředků spravované instance](sql-database-managed-instance-resource-limits.md)&nbsp;. |
+| 49920 |16 |Požadavek nejde zpracovat. U předplatného% ld probíhá příliš mnoho operací.<br/><br/>Služba je zaneprázdněná zpracováním více požadavků pro toto předplatné. Požadavky jsou aktuálně blokovány pro optimalizaci prostředků. Dotaz [Sys. dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) pro stav operace. Počkejte na dokončení čekajících žádostí nebo odstraňte jednu z vašich čekajících žádostí a opakujte požadavek později. Další informace: <br/>[omezení prostředků databázového serveru](sql-database-resource-limits-database-server.md) &bull; &nbsp;<br/>&bull; &nbsp;[omezení založené na DTU pro izolované databáze](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[omezení založené na DTU pro elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity založené na Vcore pro jednotlivé databáze](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; [omezení pro elastické fondy na základě &nbsp;Vcore](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; [omezení prostředků spravované instance](sql-database-managed-instance-resource-limits.md)&nbsp;. |
+| 4221 |16 |Přihlášení k sekundárnímu pro čtení se nezdařilo z důvodu dlouhého čekání na ' HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING '. Replika není k dispozici pro přihlášení, protože pro transakce, které byly v letadle při recyklování repliky, chybí verze řádků. Problém se dá vyřešit vrácením zpět nebo potvrzením aktivních transakcí na primární replice. Výskyty tohoto stavu lze minimalizovat tím, že se vyhnete dlouhým transakcím zápisu na primárním. |
+
+
+### <a name="steps-to-resolve-transient-connectivity-issues"></a>Postup řešení potíží s přechodným připojením
+
+1. Podívejte se na [řídicí panel služby Microsoft Azure](https://azure.microsoft.com/status) pro všechny známé výpadky, ke kterým došlo v době, během které aplikace ohlásila chyby.
+2. Aplikace, které se připojují ke cloudové službě, jako je třeba Azure SQL Database, by měly očekávat události pravidelného překonfigurování a implementují logiku opakování pro zpracování těchto chyb, místo aby je zpřístupnění jako chyby aplikací pro uživatele. 
+3. Vzhledem k tomu, že se databáze blíží omezení prostředků, může se jednat o přechodný problém s připojením. Viz [omezení prostředků](sql-database-resource-limits-database-server.md#what-happens-when-database-resource-limits-are-reached).
+4. Pokud potíže s připojením trvají nebo pokud doba, po kterou vaše aplikace narazí na chybu, překračuje 60 sekund, nebo pokud se v daném dni zobrazí více výskytů chyby, zastavte žádost o podporu Azure výběrem možnosti **získat podporu** na webu [podpory Azure](https://azure.microsoft.com/support/options) .
+
+#### <a name="implementing-retry-logic"></a>Implementace logiky opakování
+Důrazně doporučujeme, aby váš klientský program měl logiku opakování, aby mohl znovu navázat připojení, a to tak, že by došlo k přechodné chybě při jejich opravě.  Před prvním opakováním doporučujeme, abyste prodlevu zaznamenali na 5 sekund. Opakuje se pokus po zpoždění kratším než 5 sekund při zahlcení cloudové služby. U každého následného opakování by se mělo zpozdit exponenciálně, maximálně 60 sekund.
 
 Příklady kódu logiky opakování naleznete zde:
+- [Odolné připojení k SQL pomocí ADO.NET](https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net)
+- [Odolné připojení k SQL pomocí PHP](https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)
 
-* [Knihovny připojení pro SQL Database a SQL Server](sql-database-libraries.md)
-* [Akce pro opravu chyb připojení a přechodných chyb v SQL Database](sql-database-connectivity-issues.md)
+Další informace o zpracování přechodných chyb v rámci revize aplikace
+* [Řešení chyb přechodného připojení k SQL Database](sql-database-connectivity-issues.md)
 
-> [!TIP]
-> Pokud chcete vyřešit problémy popsané v následujících částech, zkuste postupovat podle kroků (v uvedeném pořadí) v části [Postup řešení běžných potíží s připojením](#steps-to-fix-common-connection-issues) .
+Diskuze o *době blokování* klientů, kteří používají ADO.NET, je k dispozici v části [připojení k fondu SQL Server (ADO.NET)](https://msdn.microsoft.com/library/8xx3tyca.aspx).
 
-### <a name="error-40613-database--x--on-server--y--is-not-currently-available"></a>Chyba 40613: < > databáze na serveru < a > není aktuálně k dispozici.
-
-``40613: Database <DBname> on server < server name > is not currently available. Please retry the connection later. If the problem persists, contact customer support, and provide them the session tracing ID of '< Tracing ID >'.``
-
-K vyřešení tohoto problému:
-
-1. Podívejte se na [řídicí panel služby Microsoft Azure](https://status.azure.com/status) pro všechny známé výpadky.
-2. Pokud neexistují žádné známé výpadky, otevřete na [webu podpory Microsoft Azure](https://azure.microsoft.com/support/options) , kde otevřete případ podpory.
-
-Další informace najdete v tématu [řešení potíží s informacemi o tom, že databáze na serveru není aktuálně k dispozici](sql-database-troubleshoot-common-connection-issues.md#troubleshoot-transient-errors).
-
-### <a name="a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-database-server"></a>Při navazování připojení k serveru SQL Database došlo k chybě související se sítí nebo instanci.
+## <a name="a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-database-server"></a>Při navazování připojení k serveru SQL Database došlo k chybě související se sítí nebo instanci.
 
 K tomuto problému dochází, pokud se aplikace nemůže připojit k serveru.
 
 Pokud chcete tento problém vyřešit, zkuste postupovat podle kroků (v uvedeném pořadí) v části [Postup řešení běžných potíží s připojením](#steps-to-fix-common-connection-issues) .
 
-### <a name="the-serverinstance-was-not-found-or-was-not-accessible-errors-26-40-10053"></a>Server/instance se nepodařilo najít nebo není přístupná (chyby 26, 40, 10053).
+## <a name="the-serverinstance-was-not-found-or-was-not-accessible-errors-26-40-10053"></a>Server/instance se nepodařilo najít nebo není přístupná (chyby 26, 40, 10053).
 
 #### <a name="error-26-error-locating-server-specified"></a>Chyba 26: Chyba při hledání zadaného serveru
 
@@ -63,28 +78,9 @@ Pokud chcete tento problém vyřešit, zkuste postupovat podle kroků (v uveden�
 
 ``10053: A transport-level error has occurred when receiving results from the server. (Provider: TCP Provider, error: 0 - An established connection was aborted by the software in your host machine)``
 
-#### <a name="cannot-connect-to-a-secondary-database"></a>Nejde se připojit k sekundární databázi.
+K těmto potížím dochází, pokud se aplikace nemůže připojit k serveru.
 
-Pokus o připojení k sekundární databázi se nezdařil, protože databáze probíhá rekonfigurace a je zaneprázdněna při použití nových stránek v průběhu aktivní transakce v primární databázi.
-
-#### <a name="adonet-and-blocking-period"></a>ADO.NET a doba blokování
-
-Diskuze o *době blokování* klientů, kteří používají ADO.NET, je k dispozici v části [připojení k fondu SQL Server (ADO.NET)](https://msdn.microsoft.com/library/8xx3tyca.aspx).
-
-### <a name="list-of-transient-fault-error-codes"></a>Seznam chybových kódů přechodných chyb
-
-Následující chyby jsou přechodné a měly by se opakovat v aplikační logice:
-
-| Kód chyby | Severity | Popis |
-| ---:| ---:|:--- |
-| 4060 |16 |Databázi nelze otevřít "%.&#x2a;ls" požadovaný v přihlášení. Přihlášení se nezdařilo. Další informace najdete v tématu [chyby 4000 až 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999) .|
-| 40197 |17 |Služba zjistila chybu při zpracování vaší žádosti. Zkuste to prosím znovu. Kód chyby:% d.<br/><br/>Tato chyba se zobrazí, když dojde k výpadku služby kvůli softwarovým nebo hardwarovým upgradům, selháním hardwaru nebo jakýmkoli jiným problémům s podporou převzetí služeb při selhání. Kód chyby (% d) vložený v rámci zprávy Error 40197] poskytuje další informace o druhu selhání nebo převzetí služeb při selhání. Některé příklady kódů chyb jsou vložené v rámci zprávy chyby 40197 jsou 40020, 40143, 40166 a 40540.<br/><br/>Po opětovném připojení k vašemu SQL Database serveru se vás automaticky připojí k kopii vaší databáze v pořádku. Vaše aplikace musí zachytit chybu 40197, zaprotokolovat vložený kód chyby (% d) ve zprávě pro řešení potíží a zkusit se znovu připojit k SQL Database, dokud nebudou k dispozici prostředky a připojení se znovu naváže. Další informace najdete v tématu [přechodné chyby](sql-database-connectivity-issues.md#transient-errors-transient-faults).|
-| 40501 |20 |Služba je momentálně zaneprázdněna. Požadavek opakujte po 10 sekundách. ID incidentu:% ls. Kód:% d. Další informace naleznete v tématu: <br/>[omezení prostředků databázového serveru](sql-database-resource-limits-database-server.md) &bull; &nbsp;<br/>&bull; &nbsp;[omezení založené na DTU pro izolované databáze](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[omezení založené na DTU pro elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity založené na Vcore pro jednotlivé databáze](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; [omezení pro elastické fondy na základě &nbsp;Vcore](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; [omezení prostředků spravované instance](sql-database-managed-instance-resource-limits.md)&nbsp;.|
-| 40613 |17 |Databáze '%.&#x2a;ls' na serveru '%.&#x2a;ls' není aktuálně k dispozici. Zkuste prosím připojení znovu později. Pokud potíže potrvají, obraťte se na zákaznickou podporu a poskytněte ID trasování relace '%.&#x2a;ls'.<br/><br/> K této chybě může dojít, pokud již existuje existující vyhrazené připojení správce (DAC) pro databázi. Další informace najdete v tématu [přechodné chyby](sql-database-connectivity-issues.md#transient-errors-transient-faults).|
-| 49918 |16 |Požadavek nejde zpracovat. Pro zpracování požadavku není dostatek prostředků.<br/><br/>Služba je momentálně zaneprázdněna. Opakujte prosím požadavek později. Další informace naleznete v tématu: <br/>[omezení prostředků databázového serveru](sql-database-resource-limits-database-server.md) &bull; &nbsp;<br/>&bull; &nbsp;[omezení založené na DTU pro izolované databáze](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[omezení založené na DTU pro elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity založené na Vcore pro jednotlivé databáze](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; [omezení pro elastické fondy na základě &nbsp;Vcore](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; [omezení prostředků spravované instance](sql-database-managed-instance-resource-limits.md)&nbsp;. |
-| 49919 |16 |Nelze zpracovat žádost o vytvoření nebo aktualizaci. Pro předplatné% ld probíhá příliš mnoho probíhajících operací vytvoření nebo aktualizace.<br/><br/>Služba je zaneprázdněná zpracováním více žádostí o vytvoření nebo aktualizaci vašeho předplatného nebo serveru. Požadavky jsou aktuálně blokovány pro optimalizaci prostředků. Dotaz [Sys. dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) pro operace, které čekají na zpracování. Počkejte, dokud nebudou dokončeny žádosti o vytvoření nebo aktualizaci, nebo odstraňte jednu z vašich čekajících žádostí a opakujte požadavek později. Další informace naleznete v tématu: <br/>[omezení prostředků databázového serveru](sql-database-resource-limits-database-server.md) &bull; &nbsp;<br/>&bull; &nbsp;[omezení založené na DTU pro izolované databáze](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[omezení založené na DTU pro elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity založené na Vcore pro jednotlivé databáze](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; [omezení pro elastické fondy na základě &nbsp;Vcore](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; [omezení prostředků spravované instance](sql-database-managed-instance-resource-limits.md)&nbsp;. |
-| 49920 |16 |Požadavek nejde zpracovat. U předplatného% ld probíhá příliš mnoho operací.<br/><br/>Služba je zaneprázdněná zpracováním více požadavků pro toto předplatné. Požadavky jsou aktuálně blokovány pro optimalizaci prostředků. Dotaz [Sys. dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) pro stav operace. Počkejte na dokončení čekajících žádostí nebo odstraňte jednu z vašich čekajících žádostí a opakujte požadavek později. Další informace naleznete v tématu: <br/>[omezení prostředků databázového serveru](sql-database-resource-limits-database-server.md) &bull; &nbsp;<br/>&bull; &nbsp;[omezení založené na DTU pro izolované databáze](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[omezení založené na DTU pro elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity založené na Vcore pro jednotlivé databáze](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; [omezení pro elastické fondy na základě &nbsp;Vcore](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; [omezení prostředků spravované instance](sql-database-managed-instance-resource-limits.md)&nbsp;. |
-| 4221 |16 |Přihlášení k sekundárnímu pro čtení se nezdařilo z důvodu dlouhého čekání na ' HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING '. Replika není k dispozici pro přihlášení, protože pro transakce, které byly v letadle při recyklování repliky, chybí verze řádků. Problém se dá vyřešit vrácením zpět nebo potvrzením aktivních transakcí na primární replice. Výskyty tohoto stavu lze minimalizovat tím, že se vyhnete dlouhým transakcím zápisu na primárním. |
+Pokud chcete tyto problémy vyřešit, zkuste postupovat podle kroků (v uvedeném pořadí) v části [Postup řešení běžných potíží s připojením](#steps-to-fix-common-connection-issues) .
 
 ## <a name="cannot-connect-to-server-due-to-firewall-issues"></a>Nejde se připojit k serveru kvůli problémům s bránou firewall.
 
@@ -176,16 +172,6 @@ Další informace najdete v tématu [Správa databází a přihlášení v Azure
 K těmto výjimkám může dojít buď kvůli problémům s připojením nebo dotazům. Pokud se chcete ujistit, že k této chybě dochází v důsledku potíží s připojením, přečtěte si téma [ověření, jestli chyba způsobila problém s připojením](#confirm-whether-an-error-is-caused-by-a-connectivity-issue).
 
 K vypršení časového limitu připojení dojde, protože se aplikace nemůže připojit k serveru. Pokud chcete tento problém vyřešit, zkuste postupovat podle kroků (v uvedeném pořadí) v části [Postup řešení běžných potíží s připojením](#steps-to-fix-common-connection-issues) .
-
-## <a name="transient-errors-errors-40197-40545"></a>Přechodné chyby (chyby 40197, 40545)
-
-### <a name="error-40197-the-service-has-encountered-an-error-processing-your-request-please-try-again-error-code--code-"></a>Chyba 40197: služba zjistila chybu při zpracování vaší žádosti. Zkuste to prosím znovu. Kód chyby < kód >
-
-K tomuto problému dochází kvůli přechodné chybě při změně konfigurace nebo převzetí služeb při selhání na back-endu.
-
-Pokud chcete tento problém vyřešit, počkejte krátkou dobu a zkuste to znovu. Není vyžadován případ podpory, pokud problém přetrvává.
-
-Jako osvědčený postup se ujistěte, že je nastavená logika opakování. Další informace o logice opakování naleznete v tématu [řešení přechodných chyb a chyb připojení k SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-issues).
 
 ## <a name="resource-governance-errors"></a>Chyby zásad správného řízení prostředků
 
@@ -282,7 +268,7 @@ Podrobný postup pro řešení potíží najdete v tématu [je můj dotaz běž�
 
 ``40551: The session has been terminated because of excessive TEMPDB usage. Try modifying your query to reduce the temporary table space usage.``
 
-Pokud chcete tento problém obejít, postupujte podle těchto kroků:
+Pokud chcete tento problém obejít, postupujte takto:
 
 1. Změňte dotazy tak, aby se snížilo využití místa v dočasné tabulce.
 2. Vyřaďte dočasné objekty, které už nejsou potřeba.
@@ -311,10 +297,10 @@ Podrobný postup pro řešení potíží najdete v tématu [je můj dotaz běž�
 
 ### <a name="table-of-additional-resource-governance-error-messages"></a>Tabulka dalších chybových zpráv zásad správného řízení prostředků
 
-| Kód chyby | Severity | Popis |
+| Kód chyby | Závažnost | Popis |
 | ---:| ---:|:--- |
 | 10928 |20 |ID prostředku:% d. Limit% s pro databázi je% d a byl dosažen. Další informace najdete v tématu [SQL Database omezení prostředků pro databáze s jednou a ve fondu](sql-database-resource-limits-database-server.md).<br/><br/>ID prostředku indikuje prostředek, který dosáhl limitu. Pro pracovní vlákna, ID prostředku = 1. Pro relace, ID prostředku = 2.<br/><br/>Další informace o této chybě a o tom, jak ji vyřešit, najdete v těchto tématech: <br/>[omezení prostředků databázového serveru](sql-database-resource-limits-database-server.md) &bull; &nbsp;<br/>&bull; &nbsp;[omezení založené na DTU pro izolované databáze](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[omezení založené na DTU pro elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity založené na Vcore pro jednotlivé databáze](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; [omezení pro elastické fondy na základě &nbsp;Vcore](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; [omezení prostředků spravované instance](sql-database-managed-instance-resource-limits.md)&nbsp;. |
-| 10929 |20 |ID prostředku:% d. Minimální záruka% s je% d, maximální limit je% d a aktuální využití databáze je% d. Server je však v současnosti příliš zaneprázdněn, aby podporoval žádosti větší než% d pro tuto databázi. ID prostředku indikuje prostředek, který dosáhl limitu. Pro pracovní vlákna, ID prostředku = 1. Pro relace, ID prostředku = 2. Další informace naleznete v tématu: <br/>[omezení prostředků databázového serveru](sql-database-resource-limits-database-server.md) &bull; &nbsp;<br/>&bull; &nbsp;[omezení založené na DTU pro izolované databáze](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[omezení založené na DTU pro elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity založené na Vcore pro jednotlivé databáze](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; [omezení pro elastické fondy na základě &nbsp;Vcore](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; [omezení prostředků spravované instance](sql-database-managed-instance-resource-limits.md)&nbsp;. <br/>V opačném případě zkuste to prosím znovu později. |
+| 10929 |20 |ID prostředku:% d. Minimální záruka% s je% d, maximální limit je% d a aktuální využití databáze je% d. Server je však v současnosti příliš zaneprázdněn, aby podporoval žádosti větší než% d pro tuto databázi. ID prostředku indikuje prostředek, který dosáhl limitu. Pro pracovní vlákna, ID prostředku = 1. Pro relace, ID prostředku = 2. Další informace: <br/>[omezení prostředků databázového serveru](sql-database-resource-limits-database-server.md) &bull; &nbsp;<br/>&bull; &nbsp;[omezení založené na DTU pro izolované databáze](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[omezení založené na DTU pro elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[limity založené na Vcore pro jednotlivé databáze](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; [omezení pro elastické fondy na základě &nbsp;Vcore](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; [omezení prostředků spravované instance](sql-database-managed-instance-resource-limits.md)&nbsp;. <br/>V opačném případě zkuste to prosím znovu později. |
 | 40544 |20 |Databáze dosáhla kvóty velikosti. Můžete rozdělit nebo odstranit data, vyřadit indexy nebo si v dokumentaci vyhledat možná řešení. Informace o škálování databáze najdete v tématu [škálování prostředků jedné databáze](sql-database-single-database-scale.md) a [škálování prostředků elastického fondu](sql-database-elastic-pool-scale.md).|
 | 40549 |16 |Relace je ukončena, protože máte dlouhotrvající transakci. Zkuste zkrátit transakci. Informace o dávkovém zpracování najdete v tématu [použití dávkového zpracování ke zlepšení výkonu aplikace SQL Database](sql-database-use-batching-to-improve-performance.md).|
 | 40550 |16 |Relace byla ukončena, protože získala příliš mnoho zámků. Zkuste číst nebo upravit méně řádků v jedné transakci. Informace o dávkovém zpracování najdete v tématu [použití dávkového zpracování ke zlepšení výkonu aplikace SQL Database](sql-database-use-batching-to-improve-performance.md).|
@@ -326,11 +312,11 @@ Podrobný postup pro řešení potíží najdete v tématu [je můj dotaz běž�
 
 Následující chyby souvisejí s vytvářením a používáním elastických fondů:
 
-| Kód chyby | Severity | Popis | Nápravná opatření |
+| Kód chyby | Závažnost | Popis | Nápravná opatření |
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |Elastický fond dosáhl svého limitu úložiště. Využití úložiště pro elastický fond nemůže přesáhnout (% d) MB. Došlo k pokusu o zápis dat do databáze, když bylo dosaženo limitu úložiště elastického fondu. Informace o omezeních prostředků najdete v těchto tématech: <br/>&bull; &nbsp;[omezení založené na DTU pro elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; [omezení pro elastické fondy na základě &nbsp;Vcore](sql-database-vcore-resource-limits-elastic-pools.md). <br/> |Pokud je to možné, zvažte zvýšení DTU a/nebo Přidání úložiště do elastického fondu, pokud je to možné, abyste zvýšili jeho limit úložiště, omezili jste úložiště používané jednotlivými databázemi v elastickém fondu nebo z elastického fondu odebíráte databáze. Škálování elastického fondu najdete v tématu [škálování prostředků elastického fondu](sql-database-elastic-pool-scale.md).|
 | 10929 | 16 |Minimální záruka% s je% d, maximální limit je% d a aktuální využití databáze je% d. Server je však v současnosti příliš zaneprázdněn, aby podporoval žádosti větší než% d pro tuto databázi. Informace o omezeních prostředků najdete v těchto tématech: <br/>&bull; &nbsp;[omezení založené na DTU pro elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; [omezení pro elastické fondy na základě &nbsp;Vcore](sql-database-vcore-resource-limits-elastic-pools.md). <br/> V opačném případě zkuste to prosím znovu později. Minimální počet jednotek DTU/vCore na databázi; DTU/vCore Max na databázi. Celkový počet souběžných pracovních procesů (požadavků) napříč všemi databázemi v elastickém fondu se pokusil překročit limit fondu. |Pokud je to možné, můžete zvýšit DTU nebo virtuální jádra elastického fondu, pokud je to možné, aby se zvýšil jeho limit pracovního procesu, nebo odebrat databáze z elastického fondu. |
-| 40844 | 16 |Databáze% ls na serveru% LS je databáze edice% LS v elastickém fondu a nemůže mít relaci průběžného kopírování.  |neuvedeno |
+| 40844 | 16 |Databáze% ls na serveru% LS je databáze edice% LS v elastickém fondu a nemůže mít relaci průběžného kopírování.  |Nevztahuje se |
 | 40857 | 16 |Nenašel se elastický fond pro server:% ls, název elastického fondu:% ls. Zadaný elastický fond na zadaném serveru neexistuje. | Zadejte platný název elastického fondu. |
 | 40858 | 16 |Elastický fond% LS už na serveru:% LS existuje. Zadaný elastický fond již na zadaném serveru SQL Database existuje. | Zadejte nový název elastického fondu. |
 | 40859 | 16 |Elastický fond nepodporuje úroveň služby% ls. Zadaná úroveň služby není podporovaná pro zřizování elastického fondu. |Zadejte správnou edici nebo ponechte prázdnou vrstvu služby, aby používala výchozí úroveň služby. |
@@ -347,7 +333,7 @@ Následující chyby souvisejí s vytvářením a používáním elastických fo
 | 40881 | 16 |Elastický fond%. * ls dosáhl svého limitu počtu databází.  Omezení počtu databází pro elastický fond nemůže překročit (% d) pro elastický fond s (% d) DTU. Došlo k pokusu o vytvoření nebo přidání databáze do elastického fondu, pokud bylo dosaženo limitu počtu databází elastického fondu. | Zvažte zvýšení DTU elastického fondu, pokud je to možné, aby se zvýšil limit databáze nebo odebraly databáze z elastického fondu. |
 | 40889 | 16 |DTU nebo úložiště pro elastický fond%. * ls nejde snížit, protože by neposkytoval dostatek úložného prostoru pro své databáze. Probíhá pokus o snížení limitu úložiště elastického fondu pod využitím úložiště. | Zvažte snížení využití úložiště pro jednotlivé databáze v elastickém fondu nebo odebírání databází z fondu, aby se snížila velikost DTU nebo úložiště. |
 | 40891 | 16 |Minimální počet jednotek DTU na databázi (% d) nemůže být vyšší než maximální počet jednotek DTU na databázi (% d). Došlo k pokusu o nastavení minimální hodnoty DTU na databázi vyšší než maximální počet jednotek DTU na databázi. |Zajistěte, aby minimální počet jednotek DTU na databázi nepřesáhl maximální hodnotu DTU na databázi. |
-| Bude doplněno | 16 |Velikost úložiště pro jednotlivé databáze v elastickém fondu nemůže překročit maximální velikost povolenou pro elastický fond úrovně služby%. * ls. Maximální velikost databáze překračuje maximální velikost povolenou vrstvou služby elastického fondu. |Nastavte maximální velikost databáze v rámci omezení maximální velikosti povolené úrovní služby elastického fondu. |
+| TBD | 16 |Velikost úložiště pro jednotlivé databáze v elastickém fondu nemůže překročit maximální velikost povolenou pro elastický fond úrovně služby%. * ls. Maximální velikost databáze překračuje maximální velikost povolenou vrstvou služby elastického fondu. |Nastavte maximální velikost databáze v rámci omezení maximální velikosti povolené úrovní služby elastického fondu. |
 
 ## <a name="cannot-open-database-master-requested-by-the-login-the-login-failed"></a>Databázi "Master" požadovanou v rámci přihlášení nelze otevřít. Přihlášení nebylo úspěšné.
 

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfe51558cf96e77288186c2ed2b4a2773cbc5cf2
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: ee241c9b4d26377931e828df60db1c50a9c86b84
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829863"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940869"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure Active Directory (Azure AD)
 
@@ -153,8 +153,11 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
   - [Aktualizace uživatele [vlastnosti s více hodnotami]](#update-user-multi-valued-properties) ([žádost](#request-4) /  [odpověď](#response-4))
   - [Aktualizace uživatele [vlastnosti s jednou hodnotou]](#update-user-single-valued-properties) ([žádost](#request-5)
 / [odpověď](#response-5)) 
+  - [Zakázat uživatele](#disable-user) ([požadavek](#request-14) / 
+[Response](#response-14))
   - [Odstranit uživatele](#delete-user) ([žádost o](#request-6) [odpověď](#response-6) / 
 )
+
 
 [Operace skupiny](#group-operations)
   - [Vytvořit skupinu](#create-group) ( [žádost o](#request-7) [odpověď](#response-7) / )
@@ -435,6 +438,60 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
+### <a name="disable-user"></a>Zakázat uživatele
+
+##### <a name="request-14"></a>Request
+
+*Oprava/Users/5171a35d82074e068ce2 HTTP/1.1*
+```json
+{
+    "Operations": [
+        {
+            "op": "Replace",
+            "path": "active",
+            "value": false
+        }
+    ],
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ]
+}
+```
+
+##### <a name="response-14"></a>Základě
+
+```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:schemas:core:2.0:User"
+    ],
+    "id": "CEC50F275D83C4530A495FCF@834d0e1e5d8235f90a495fda",
+    "userName": "deanruiz@testuser.com",
+    "name": {
+        "familyName": "Harris",
+        "givenName": "Larry"
+    },
+    "active": false,
+    "emails": [
+        {
+            "value": "gloversuzanne@testuser.com",
+            "type": "work",
+            "primary": true
+        }
+    ],
+    "addresses": [
+        {
+            "country": "ML",
+            "type": "work",
+            "primary": true
+        }
+    ],
+    "meta": {
+        "resourceType": "Users",
+        "location": "/scim/5171a35d82074e068ce2/Users/CEC50F265D83B4530B495FCF@5171a35d82074e068ce2"
+    }
+}
+```
 #### <a name="delete-user"></a>Odstranění uživatele
 
 ##### <a name="request-6"></a>Request

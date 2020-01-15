@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f5be34a58d8f0416a31cd575ef0fea614b3d43e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 8ff2ff69ca00a9ed9c48ebd6f1704fac0b16d068
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768706"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940997"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny v Azure Active Directory
 
@@ -99,8 +99,8 @@ Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvořen
 | země |Libovolná hodnota řetězce nebo hodnota *null* |(User. Country-EQ "value") |
 | Společnosti | Libovolná hodnota řetězce nebo hodnota *null* | (User. companyName-EQ "value") |
 | Oddělení |Libovolná hodnota řetězce nebo hodnota *null* |(User. Department-EQ "hodnota") |
-| displayName |Libovolná hodnota řetězce |(User. DisplayName-EQ "value") |
-| employeeId |Libovolná hodnota řetězce |(User. employeeId-EQ "value")<br>(User. ČísloZaměstnance-ne *null*) |
+| displayName |libovolná hodnota řetězce |(User. DisplayName-EQ "value") |
+| employeeId |libovolná hodnota řetězce |(User. employeeId-EQ "value")<br>(User. ČísloZaměstnance-ne *null*) |
 | facsimileTelephoneNumber |Libovolná hodnota řetězce nebo hodnota *null* |(User. facsimileTelephoneNumber-EQ "value") |
 | givenName |Libovolná hodnota řetězce nebo hodnota *null* |(User. Value-EQ "value") |
 | pracovní funkce |Libovolná hodnota řetězce nebo hodnota *null* |(User. jobTitle-EQ "value") |
@@ -119,14 +119,14 @@ Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvořen
 | Příjmení |Libovolná hodnota řetězce nebo hodnota *null* |(User. příjmení-EQ "hodnota") |
 | telephoneNumber |Libovolná hodnota řetězce nebo hodnota *null* |(User. telephoneNumber-EQ "value") |
 | usageLocation |Dva směrové číslo země |(User. usageLocation-EQ "US") |
-| userPrincipalName (Hlavní název uživatele) |Libovolná hodnota řetězce |(user.userPrincipalName -eq "alias@domain") |
+| userPrincipalName (Hlavní název uživatele) |libovolná hodnota řetězce |(user.userPrincipalName -eq "alias@domain") |
 | userType |člen typu host *null* |(User. userType-EQ "Member") |
 
 ### <a name="properties-of-type-string-collection"></a>Vlastnosti kolekce řetězců typu
 
 | Vlastnosti | Povolené hodnoty | Využití |
 | --- | --- | --- |
-| otherMails |Libovolná hodnota řetězce |(User. otherMails-obsahuje "alias@domain") |
+| otherMails |libovolná hodnota řetězce |(User. otherMails-obsahuje "alias@domain") |
 | proxyAddresses |SMTP: alias@domain SMTP: alias@domain |(User. proxyAddresses-obsahuje "SMTP: alias@domain") |
 
 Vlastnosti používané pro pravidla zařízení najdete v tématu [pravidla pro zařízení](#rules-for-devices).
@@ -321,7 +321,12 @@ Můžete vytvořit skupinu obsahující všechny uživatele v rámci tenanta pom
 Pravidlo "Všichni uživatelé" je tvořeno pomocí jednoduchého výrazu s použitím operátoru-ne a hodnoty null. Toto pravidlo přidá uživatele typu Guest B2B i členské uživatele do skupiny.
 
 ```
-user.objectid -ne null
+user.objectId -ne null
+```
+Pokud chcete, aby skupina vyloučila uživatele typu Host a zahrnovala pouze členy vašeho tenanta, můžete použít následující syntaxi:
+
+```
+(user.objectId -ne null) -and (user.userType -eq “Member”)
 ```
 
 ### <a name="create-an-all-devices-rule"></a>Vytvořit pravidlo pro všechna zařízení
@@ -331,7 +336,7 @@ Můžete vytvořit skupinu obsahující všechna zařízení v rámci tenanta po
 Pravidlo všechna zařízení je vytvořené pomocí jednoho výrazu s použitím operátoru-ne a hodnoty null:
 
 ```
-device.objectid -ne null
+device.objectId -ne null
 ```
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>Vlastnosti rozšíření a vlastnosti vlastního rozšíření

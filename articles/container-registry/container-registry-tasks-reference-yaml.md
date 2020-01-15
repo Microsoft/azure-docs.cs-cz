@@ -3,12 +3,12 @@ title: YAML reference – úlohy ACR
 description: Referenční informace k definování úkolů v YAML pro úlohy ACR, včetně vlastností úloh, typů kroků, vlastností kroku a integrovaných proměnných.
 ms.topic: article
 ms.date: 10/23/2019
-ms.openlocfilehash: da1b1613d880b9edf6ec6d6018011f43a7ac69a5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d86eb0e24233afb536d27f5d0938d4748941e88a
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445696"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945746"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Odkazy na úlohy ACR: YAML
 
@@ -79,7 +79,7 @@ Vlastnosti úlohy se obvykle zobrazují v horní části souboru `acr-task.yaml`
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | string | Ano | Verze `acr-task.yaml` souboru, jak je analyzována službou úlohy ACR. I když se ACR úlohy snaží zachovat zpětnou kompatibilitu, tato hodnota umožňuje úlohám ACR zachovat kompatibilitu v rámci definované verze. Pokud tento parametr nezadáte, použije se výchozí verze na nejnovější verzi. | Ne | Žádné |
 | `stepTimeout` | int (sekundy) | Ano | Maximální počet sekund, po které může být krok spuštěn. Pokud je vlastnost určena pro úlohu, nastaví výchozí vlastnost `timeout` všech kroků. Pokud je vlastnost `timeout` v kroku určena, Přepisuje vlastnost poskytnutou úlohou. | Ano | 600 (10 minut) |
-| `workingDirectory` | string | Ano | Pracovní adresář kontejneru během běhu. Pokud je vlastnost určena pro úlohu, nastaví výchozí vlastnost `workingDirectory` všech kroků. Pokud je zadáno v kroku, přepíše vlastnost poskytnutou úlohou. | Ano | `$HOME` |
+| `workingDirectory` | string | Ano | Pracovní adresář kontejneru během běhu. Pokud je vlastnost určena pro úlohu, nastaví výchozí vlastnost `workingDirectory` všech kroků. Pokud je zadáno v kroku, přepíše vlastnost poskytnutou úlohou. | Ano | `/workspace` |
 | `env` | [řetězec, řetězec,...] | Ano |  Pole řetězců ve formátu `key=value`, které definují proměnné prostředí pro úlohu. Pokud je vlastnost určena pro úlohu, nastaví výchozí vlastnost `env` všech kroků. V případě zadání v kroku přepíše všechny proměnné prostředí zděděné z úlohy. | Žádné |
 | `secrets` | [tajný klíč, tajný kód,...] | Ano | Pole [tajných](#secret) objektů. | Žádné |
 | `networks` | [síť, síť,...] | Ano | Pole [síťových](#network) objektů. | Žádné |
@@ -379,7 +379,7 @@ Každý typ kroku podporuje několik vlastností vhodných pro svůj typ. Násle
 | `timeout` | int (sekundy) | Ano | Maximální počet sekund, po které může krok běžet, než se ukončí. | 600 |
 | [`when`](#example-when) | [řetězec, řetězec,...] | Ano | Nakonfiguruje závislost kroku na jednom nebo několika dalších krocích v rámci úlohy. | Žádné |
 | `user` | string | Ano | Uživatelské jméno nebo UID kontejneru | Žádné |
-| `workingDirectory` | string | Ano | Nastaví pracovní adresář pro krok. Ve výchozím nastavení ACR úlohy vytvoří kořenový adresář jako pracovní adresář. Nicméně pokud má sestavení několik kroků, předchozí kroky mohou sdílet artefakty s pozdějšími kroky zadáním stejného pracovního adresáře. | `$HOME` |
+| `workingDirectory` | string | Ano | Nastaví pracovní adresář pro krok. Ve výchozím nastavení ACR úlohy vytvoří kořenový adresář jako pracovní adresář. Nicméně pokud má sestavení několik kroků, předchozí kroky mohou sdílet artefakty s pozdějšími kroky zadáním stejného pracovního adresáře. | `/workspace` |
 
 ### <a name="examples-task-step-properties"></a>Příklady: vlastnosti kroku úlohy
 

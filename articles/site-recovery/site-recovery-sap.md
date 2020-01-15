@@ -1,18 +1,16 @@
 ---
 title: Nastavení zotavení po havárii SAP NetWeaver pomocí Azure Site Recovery
-description: Tento článek popisuje, jak nastavit zotavení po havárii pro nasazení aplikací SAP NetWeaver pomocí Azure Site Recovery.
-author: carmonmills
+description: Přečtěte si, jak nastavit zotavení po havárii pro SAP NetWeaver pomocí Azure Site Recovery.
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/27/2018
-ms.author: carmonm
-ms.openlocfilehash: 3ae9a92a27da1b736bf9db6dff88660f7d40143b
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: eeb85e97d653b0faac171e2986cb933fc41e6606
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934445"
+ms.locfileid: "75940670"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Nastavení zotavení po havárii pro nasazení aplikace NetWeaver SAP ve více vrstvách
 
@@ -62,28 +60,28 @@ Tato referenční architektura ukazuje spuštění SAP NetWeaver v prostředí W
 Pro zotavení po havárii (DR) musíte být schopni převzetí služeb při selhání do sekundární oblasti. Každá úroveň používá k zajištění ochrany při zotavení po havárii jinou strategii.
 
 #### <a name="vms-running-sap-web-dispatcher-pool"></a>Virtuální počítače s fondem webového dispečera SAP 
-Komponenta Web Dispatchera slouží jako nástroj pro vyrovnávání zatížení pro provoz SAP mezi aplikačními servery SAP. Pro zajištění vysoké dostupnosti pro komponentu webového dispečera Azure Load Balancer slouží k implementaci nastavení paralelního webového dispečera v konfiguraci kruhového dotazování pro distribuci přenosů HTTP (S) mezi dostupnými webovými odinstalačními soubory ve fondu vyrovnávání. Tato akce bude replikována pomocí Azure Site Recovery (ASR) a skripty služby Automation budou použity ke konfiguraci nástroje pro vyrovnávání zatížení v oblasti zotavení po havárii. 
+Komponenta Web Dispatchera slouží jako nástroj pro vyrovnávání zatížení pro provoz SAP mezi aplikačními servery SAP. Pro zajištění vysoké dostupnosti pro komponentu webového dispečera Azure Load Balancer slouží k implementaci nastavení paralelního webového dispečera v konfiguraci kruhového dotazování pro distribuci přenosů HTTP (S) mezi dostupnými webovými odinstalačními soubory ve fondu vyrovnávání. Tato akce bude replikována pomocí Site Recovery a skripty služby Automation budou použity ke konfiguraci nástroje pro vyrovnávání zatížení v oblasti zotavení po havárii. 
 
 #### <a name="vms-running-application-servers-pool"></a>Virtuální počítače s fondem aplikačních serverů
-Ke správě skupin přihlášení pro ABAP aplikační servery, je použít SMLG transakce. Jak rozdělit zatížení mezi fond serverů pro aplikace SAP pro SAPGUIs a v dokumentu RFC využívá funkce v rámci zprávy serveru z centrální služby Vyrovnávání zatížení provozu. Tato akce bude replikována pomocí Azure Site Recovery 
+Ke správě skupin přihlášení pro ABAP aplikační servery, je použít SMLG transakce. Jak rozdělit zatížení mezi fond serverů pro aplikace SAP pro SAPGUIs a v dokumentu RFC využívá funkce v rámci zprávy serveru z centrální služby Vyrovnávání zatížení provozu. Tato akce bude replikována pomocí Site Recovery.
 
 #### <a name="vms-running-sap-central-services-cluster"></a>Virtuální počítače se spuštěným clusterem SAP Central Services
 Tato referenční architektura centrální služby běží na virtuálních počítačích v aplikační vrstvě. Centrální služby je možné jediný bod selhání (SPOF) při nasazení na jeden virtuální počítač – typické nasazení při vysoké dostupnosti není povinné.<br>
 
 K implementaci řešení vysoké dostupnosti lze použít buď cluster sdíleného disku, nebo cluster sdílené složky. Pokud chcete nakonfigurovat virtuální počítače pro cluster sdíleného disku, použijte cluster Windows serveru s podporou převzetí služeb při selhání. Disk s kopií cloudu se doporučuje jako určující disk kvora. 
  > [!NOTE]
- > Azure Site Recovery nereplikuje sdílené složky v cloudu. proto se doporučuje nasadit v oblasti zotavení po havárii cloudovou kopii clusteru.
+ > Site Recovery nereplikuje sdílené složky v cloudu. proto se doporučuje nasadit v oblasti zotavení po havárii cloudovou kopii clusteru.
 
 Pro podporu prostředí clusteru převzetí služeb při selhání [SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) provádí funkci clusteru sdíleného svazku to replikací nezávislých disků, které jsou ve vlastnictví uzlů clusteru. Azure nativně nepodporuje sdílené disky a proto vyžaduje řešení poskytovaných SIOS. 
 
 Dalším způsobem, jak zvládnout clustering, je implementovat cluster sdílené složky. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) naposledy upravovaných model nasazení centrální služby pro přístup k /sapmnt globální adresáře prostřednictvím cesty UNC. Přesto se však doporučuje zajistit vysokou dostupnost sdílení/sapmnt UNC. To se dá udělat na instanci centrální služby pomocí clusteru s podporou převzetí služeb při selhání Windows serveru se souborovým serverem se škálováním na více systémů (SOFS) a funkcí Prostory úložiště s přímým přístupem (S2D) ve Windows serveru 2016. 
  > [!NOTE]
- > V současné době Azure Site Recovery podporovat jenom replikaci bodů s konzistentním selháním pro virtuální počítače s využitím prostorů úložiště s přímým přístupem a pasivního uzlu s datakeep
+ > V současné době Site Recovery podporovat jenom replikaci bodů s konzistentním selháním pro virtuální počítače s využitím prostorů úložiště s přímým přístupem a pasivního uzlu s datakeep
 
 
 ## <a name="disaster-recovery-considerations"></a>Aspekty zotavení po havárii
 
-Azure Site Recovery můžete použít k orchestraci převzetí služeb při selhání celého nasazení SAP napříč oblastmi Azure.
+Site Recovery můžete použít k orchestraci převzetí služeb při selhání celého nasazení SAP napříč oblastmi Azure.
 Níže jsou uvedené kroky pro nastavení zotavení po havárii. 
 
 1. Replikace virtuálních počítačů 
@@ -133,7 +131,7 @@ Plán obnovení podporuje sekvencování různých vrstev v vícevrstvé aplikac
 Aby vaše aplikace fungovaly správně, možná budete muset provést některé operace na virtuálních počítačích Azure po převzetí služeb při selhání nebo během testovacího převzetí služeb při selhání. Některé operace po převzetí služeb při selhání můžete automatizovat. Můžete například aktualizovat položku DNS a změnit vazby a připojení přidáním odpovídajících skriptů do plánu obnovení.
 
 
-Nejčastěji používané Azure Site Recovery skripty můžete nasadit do svého účtu Automation kliknutím na tlačítko nasadit do Azure níže. Při použití publikovaného skriptu se ujistěte, že budete postupovat podle pokynů ve skriptu.
+Nejčastěji používané Site Recovery skripty můžete nasadit do svého účtu Automation kliknutím na tlačítko nasadit do Azure níže. Při použití publikovaného skriptu se ujistěte, že budete postupovat podle pokynů ve skriptu.
 
 [![Nasazení do Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
@@ -164,5 +162,5 @@ Další informace najdete v tématu [testování převzetí služeb při selhán
 Další informace najdete v tématu [převzetí služeb při selhání v Site Recovery](site-recovery-failover.md).
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o tom, jak vytvořit řešení zotavení po havárii pro nasazení SAP NetWeaver pomocí Site Recovery, najdete v dokumentu White paper o podpoře ke stažení v dokumentu [SAP NetWeaver: sestavování řešení zotavení po havárii pomocí Azure Site Recovery](https://aka.ms/asr_sap). Dokument white paper popisuje doporučení pro různé architektury SAP, uvádí podporované aplikace a typy virtuálních počítačů pro SAP v Azure a popisuje možnosti testovacího plánu pro řešení zotavení po havárii.
+* Další informace o tom, jak vytvořit řešení zotavení po havárii pro nasazení SAP NetWeaver pomocí Site Recovery, najdete v dokumentu White paper o podpoře ke stažení v dokumentu [SAP NetWeaver: sestavování řešení zotavení po havárii pomocí Site Recovery](https://aka.ms/asr_sap). Dokument white paper popisuje doporučení pro různé architektury SAP, uvádí podporované aplikace a typy virtuálních počítačů pro SAP v Azure a popisuje možnosti testovacího plánu pro řešení zotavení po havárii.
 * Přečtěte si další informace o [replikaci dalších úloh](site-recovery-workload.md) pomocí Site Recovery.

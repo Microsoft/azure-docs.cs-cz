@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-baselines
-ms.openlocfilehash: 3169959250eb45346456c64e606f25efb0ea44f0
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 8f65eb008d5df6ea3f2f85778d538023e6ce98eb
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934230"
+ms.locfileid: "75945323"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Úvod do Azure Security srovnávacích testů
 
@@ -27,7 +27,7 @@ Srovnávací test zabezpečení Azure zahrnuje kolekci vysoce ovlivňujících d
 
 Dokumentace k bezpečnostnímu testu Azure v dokumentaci určuje bezpečnostní mechanismy a doporučení pro služby.
 
-- **Řízení zabezpečení**: doporučení pro srovnávací testy zabezpečení Azure jsou rozdělená do kategorií podle řízení zabezpečení. Ovládací prvky zabezpečení reprezentují požadavky na zabezpečení nezávislá dodavatele na vysoké úrovni, jako je například zabezpečení sítě a ochrana dat. Každé řízení zabezpečení má sadu doporučení zabezpečení a pokyny, které vám pomůžou implment tato doporučení. 
+- **Řízení zabezpečení**: doporučení pro srovnávací testy zabezpečení Azure jsou rozdělená do kategorií podle řízení zabezpečení. Ovládací prvky zabezpečení reprezentují požadavky na zabezpečení nezávislá dodavatele na vysoké úrovni, jako je například zabezpečení sítě a ochrana dat. Každé řízení zabezpečení má sadu doporučení zabezpečení a pokyny, které vám pomůžou tato doporučení implementovat. 
 - **Doporučení služby**: Pokud je k dispozici, doporučení pro srovnávací testy pro služby Azure budou zahrnovat doporučení pro srovnávací testy zabezpečení Azure, která jsou upravena speciálně pro danou službu. 
 
 Výrazy "Control", "srovnávací" a "základní" jsou často používány v dokumentaci srovnávacích testů zabezpečení Azure a je důležité porozumět tomu, jak Azure tyto výrazy používá. 

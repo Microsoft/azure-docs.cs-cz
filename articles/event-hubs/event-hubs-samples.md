@@ -13,44 +13,46 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2018
+ms.date: 01/09/2020
 ms.author: shvija
-ms.openlocfilehash: 1c1198733fb56303d328ee97152442d25dbe945a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1d8106b60433f8f9023c892a2cf0ab8044b4f22c
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60343473"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939979"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>Úložiště Git s ukázkami pro Azure Event Hubs 
 Ukázky služby Event Hubs můžete najít na [Githubu](https://github.com/Azure/azure-event-hubs/tree/master/samples). Tyto ukázky ukazují klíčové funkce v [Azure Event Hubs](/azure/event-hubs/). Tento článek slouží ke kategorizaci a popisuje ukázek dostupných s odkazy na každý.
 
 ## <a name="net-samples"></a>Ukázky .NET
 
-| Ukázkový název | Popis | 
-| ----------- | ----------- | 
-| [SampleSender](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) | Tento příklad ukazuje, jak napsat konzolovou aplikaci .NET Core, který odesílá události do centra událostí. |
-| [SampleEHReceiver](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) | Tento příklad ukazuje, jak psát aplikace konzoly .NET Core, která přijímá sadu událostí z centra událostí pomocí knihovny Event Processor Host.  | 
+| Verze | Umístění ukázek |
+| ------- | ---------------- | 
+| 5.0.0 nebo více | [Ukázky služby Event Hubs na Githubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)<br/>[Ukázky Event Hubsch procesorů na GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples) | 
+| 4.1.0 | [Umístění GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/) |
 
 ## <a name="java-samples"></a>Ukázky Java
 
-| Ukázkový název | Popis | 
-| ----------- | ----------- | 
-| [SendBatch](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SendBatch)  | Tento příklad ukazuje, jak ingestování dávky události do vašeho centra událostí. | 
-| [SimpleSend](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend) | Tento příklad ukazuje, jak pro zpracování příjmu událostí do centra událostí. |
-| [AdvanceSendOptions](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/AdvancedSendOptions) | Tento příklad ukazuje různé možnosti k dispozici s Event Hubs k ingestování událostí. |
-| [ReceiveByDateTime](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/ReceiveByDateTime) | Tento příklad ukazuje, jak přijímat události z oddílu centra událostí pomocí konkrétní posun data a času. |
-| [ReceiveUsingOffset](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/ReceiveUsingOffset) | Tento příklad ukazuje, jak přijímat události z oddílu centra událostí pomocí specifických dat posun. |  
-| [ReceiveUsingSequenceNumber](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/ReceiveUsingSequenceNumber) | Tento příklad ukazuje, jak můžou přijímat z oddílů centra událostí pomocí pořadové číslo. |   
-| [EventProcessorSample](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/EventProcessorSample) |Tento příklad ukazuje, jak přijímat události z centra událostí pomocí třídy event processor host, který poskytuje automatické oddílu výběru a převzetí služeb při selhání mezi několik příjemců souběžných. | 
-| [AutoScaleOnIngress](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Benchmarks/AutoScaleOnIngress) | Tento příklad ukazuje, jak v Centru událostí automaticky vertikálně navýšit kapacitu na vysoké zatížení. Ukázka bude odesílat události s rychlostí, které právě překračují nakonfigurované frekvence centra událostí, způsobí vertikálně navýšit kapacitu centra událostí. | 
-| [IngressBenchmark](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Benchmarks/IngressBenchmark) | Tato ukázka umožňuje měřit rychlost příchozího přenosu dat. | 
+| Verze | Umístění ukázek |
+| ------- | ---------------- | 
+| 5.0.0 nebo více | [Umístění GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs) | 
+| 3.0.2 | [Umístění GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/) |
 
 ## <a name="python-samples"></a>Ukázky Pythonu
-Můžete najít ukázky Pythonu pro Azure Event Hubs [azure event hubs python](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) úložiště GitHub.
+
+| Verze | Umístění ukázek |
+| ------- | ---------------- | 
+| 5.0.0 nebo více | [Umístění GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples) | 
+| 1.3.3 | [Umístění GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/release/eventhub-v1/sdk/eventhub/azure-eventhubs/examples) |
 
 ## <a name="nodejs-samples"></a>Ukázky Node.js
-Můžete najít ukázky Node.js pro Azure Event Hubs [azure sdk pro js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples) úložiště GitHub.
+
+| Verze | Umístění ukázek |
+| ------- | ---------------- | 
+| 5.0.0 nebo více | [Umístění GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples) | 
+| 2.1.0 | [Umístění GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/%40azure/event-hubs_2.1.0/sdk/eventhub/event-hubs/samples) |
+
 
 ## <a name="go-samples"></a>Ukázky v go
 Můžete najít ukázky Go pro Azure Event Hubs v [azure event hubs průběžně](https://github.com/Azure/azure-event-hubs-go/tree/master/_examples) úložiště GitHub.
@@ -64,7 +66,7 @@ Můžete najít ukázky Azure Powershellu pro Azure Event Hubs [azure-event-hubs
 ## <a name="apache-kafka-samples"></a>Apache Kafka ukázky
 Můžete najít ukázky pro službu Event Hubs pro Apache Kafka funkci [azure-event-hubs pro kafka](https://github.com/Azure/azure-event-hubs-for-kafka) úložiště GitHub.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Dozvíte víc o službě Event Hubs v následujících článcích:
 
 - [Přehled služby Event Hubs](event-hubs-what-is-event-hubs.md)

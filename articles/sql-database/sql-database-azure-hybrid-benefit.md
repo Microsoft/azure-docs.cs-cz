@@ -9,16 +9,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
-ms.openlocfilehash: 394c674da63bbda643246c3d61fb670d6ac8d1f7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d1a59e7ad86191bcc30b7d898d00f327c20fbc5e
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928624"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945624"
 ---
 # <a name="azure-hybrid-benefit"></a>Zvýhodněné hybridní využití Azure
 
-V zřízené výpočetní úrovni v rámci nákupního modelu založeném na vCore můžete vyměňovat stávající licence pro zvýhodněné sazby SQL Database pomocí [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Tato výhoda Azure vám umožní ušetřit až 30 procent na Azure SQL Database pomocí místních licencí SQL Server se Software Assurance. 
+V zřízené výpočetní úrovni v rámci nákupního modelu založeném na vCore můžete vyměňovat stávající licence pro zvýhodněné sazby SQL Database pomocí [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Tato výhoda Azure vám umožňuje ušetřit až 30 procent nebo dokonce vyšší na Azure SQL Database pomocí místních licencí SQL Server se Software Assurance. Použijte prosím Zvýhodněné hybridní využití Azure kalkulačku pomocí odkazu zmíněného níže pro správné hodnoty. 
 
 > [!NOTE]
 > Změna na Zvýhodněné hybridní využití Azure nevyžaduje žádné výpadky.

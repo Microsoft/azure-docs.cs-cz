@@ -10,21 +10,21 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 1558b2eb12b1d4745cdfeab41fc2d1bd829b3d9c
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: eef9a99e4c94fa45e21abfc9d19fcef1230ffe76
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816692"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75944677"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Rychlý Start: asynchronní Shrnutí pro dlouhý formát zvuku v Pythonu (Preview)
 
-V tomto rychlém startu použijete dlouhé zvukové rozhraní API k asynchronnímu převodu textu na řeč a načtete zvukový výstup z identifikátoru URI, který poskytuje služba. Tato REST API je ideální pro poskytovatele obsahu, kteří potřebují převést textové soubory o více než 10 000 znaků nebo 50 odstavcích na syntetizované řeč. Další informace najdete v tématu [dlouhé zvukové rozhraní API](../../long-audio-api.md).
+V tomto rychlém startu použijete dlouhé zvukové rozhraní API k asynchronnímu převodu textu na řeč a načtete zvukový výstup z identifikátoru URI, který poskytuje služba. Tato REST API je ideální pro poskytovatele obsahu, kteří potřebují syntetizovat zvuk z textu delšího než 5 000 znaků (nebo delší než 10 minut). Další informace najdete v tématu [dlouhé zvukové rozhraní API](../../long-audio-api.md).
 
 > [!NOTE]
 > Asynchronní Shrnutí pro dlouhý formát zvuku se dá použít jenom s [vlastními hlasy neuronové](../../how-to-custom-voice.md#custom-neural-voices).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K tomuto rychlému startu potřebujete:
 
@@ -50,13 +50,13 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 ```
 
 > [!NOTE]
-> Pokud jste tyto moduly ještě nikdy nepoužili, budete je muset před spuštěním programu nainstalovat. Tyto balíčky nainstalujete spuštěním příkazu `pip install requests urllib3`.
+> Pokud jste tyto moduly nepoužili, budete je muset nainstalovat před spuštěním programu. Tyto balíčky nainstalujete spuštěním příkazu `pip install requests urllib3`.
 
 Tyto moduly se používají k analýze argumentů, sestavení požadavku HTTP a volání dlouhého REST APIho textu na řeč.
 
 ## <a name="get-a-list-of-supported-voices"></a>Získat seznam podporovaných hlasů
 
-Tento kód získá seznam dostupných hlasů, pomocí kterých můžete převést převod textu na řeč. Přidejte tento kód `voice_synthesis_client.py`:
+Tento kód získá seznam dostupných hlasů, pomocí kterých můžete převést převod textu na řeč. Přidejte kód pro `voice_synthesis_client.py`:
 
 ```python
 parser = argparse.ArgumentParser(description='Cris client tool to submit voice synthesis requests.')
@@ -80,13 +80,18 @@ if args.voices:
 
 ### <a name="test-your-code"></a>Testování kódu
 
-Pojďme vyzkoušet, co jste doposud provedli. Spusťte tento příkaz, nahraďte `<your_key>` klíčem předplatného řeči a `<region>` s oblastí, ve které jste vytvořili prostředek řeči (například: `eastus` nebo `westus`). Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
+Pojďme vyzkoušet, co jste doposud provedli. V níže uvedené žádosti musíte aktualizovat několik věcí:
+
+* Nahraďte `<your_key>` klíčem předplatného služby Speech. Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
+* Položku `<region>` nahraďte oblastí, ve které byl vytvořen prostředek řeči (například `eastus` nebo `westus`). Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
+
+Spusťte tento příkaz:
 
 ```console
 python voice_synthesis_client.py --voices -key <your_key> -region <Region>
 ```
 
-Měl by se zobrazit výstup, který vypadá takto:
+Zobrazí se výstup, který vypadá nějak takto:
 
 ```console
 There are xx voices available:
@@ -95,14 +100,16 @@ Name: Microsoft Server Speech Text to Speech Voice (en-US, xxx), Description: xx
 Name: Microsoft Server Speech Text to Speech Voice (zh-CN, xxx), Description: xxx , Id: xxx, Locale: zh-CN, Gender: Female, PublicVoice: xxx, Created: 2019-08-26T04:55:39Z
 ```
 
+## <a name="prepare-input-files"></a>Příprava vstupních souborů
+
+Připravte vstupní textový soubor. Může to být prostý text nebo SSML text. Požadavky na vstupní soubor najdete v tématu [Příprava obsahu pro syntézu](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#prepare-content-for-synthesis).
+
 ## <a name="convert-text-to-speech"></a>Převod textu na řeč
 
-Dalším krokem je příprava vstupního textového souboru. Může to být prostý text nebo SSML, ale musí to být více než 10 000 znaků nebo 50 odstavců. Úplný seznam požadavků naleznete v tématu [Long audio API](../../long-audio-api.md).
-
-Po přípravě na textový soubor. Dalším krokem je přidání kódu pro syntézu řeči do projektu. Přidejte tento kód do `voice_synthesis_client.py`:
+Po přípravě vstupního textového souboru přidejte tento kód pro syntézu řeči do `voice_synthesis_client.py`:
 
 > [!NOTE]
-> Ve výchozím nastavení je zvukový výstup nastavený na RIFF-16khz-16bitový-mono-PCM. Další informace o podporovaných výstupech zvuku naleznete v tématu [Long audio API](../../long-audio-api.md#audio-output-formats).
+> ' concatenateResult ' je volitelný parametr. Pokud tento parametr není nastaven, budou zvukové výstupy vygenerovány podle odstavce. Můžete také zřetězit zvuky do 1 výstupu nastavením parametru. Ve výchozím nastavení je zvukový výstup nastavený na RIFF-16khz-16bitový-mono-PCM. Další informace o podporovaných výstupech zvuku naleznete v tématu [formáty zvukového výstupu](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats).
 
 ```python
 parser.add_argument('--submit', action="store_true", default=False, help='submit a synthesis request')
@@ -123,7 +130,7 @@ def submitSynthesis():
         files = {'script': (scriptfilename, open(args.file, 'rb'), 'text/plain')}
     response = requests.post(baseAddress+"voicesynthesis", data, headers={"Ocp-Apim-Subscription-Key":args.key}, files=files, verify=False)
     if response.status_code == 202:
-        location = response.headers['Operation-Location']
+        location = response.headers['Location']
         id = location.split("/")[-1]
         print("Submit synthesis request successful")
         return id
@@ -165,13 +172,13 @@ if args.submit:
 
 ### <a name="test-your-code"></a>Testování kódu
 
-Pojďme se pokusit vysyntetizovat text pomocí vstupního souboru jako zdroje. V níže uvedené žádosti musíte aktualizovat několik věcí:
+Pojďme vytvořit žádost o syntetizování textu pomocí vstupního souboru jako zdroje. V níže uvedené žádosti musíte aktualizovat několik věcí:
 
 * Nahraďte `<your_key>` klíčem předplatného služby Speech. Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
 * Položku `<region>` nahraďte oblastí, ve které byl vytvořen prostředek řeči (například `eastus` nebo `westus`). Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
-* Nahraďte `<input>` cestou k textovému souboru, který hledáte z převodu textu na řeč.
+* Nahraďte `<input>` cestou k textovému souboru, který jste připravili pro převod textu na řeč.
 * Nahraďte `<locale>` požadovaným národním prostředím výstupu. Další informace najdete v tématu [Podpora jazyků](../../language-support.md#neural-voices).
-* Nahraďte `<voice_guid>` požadovaným hlasem pro zvukový výstup. Použijte jeden z hlasů vrácených funkcí [získat seznam podporovaných hlasů](#get-a-list-of-supported-voices) nebo použijte seznam hlasů neuronové poskytovaných v rámci [jazykové podpory](../../language-support.md#neural-voices).
+* Nahraďte `<voice_guid>` požadovaným výstupem hlasu. Použijte jeden z hlasů vrácených funkcí [získat seznam podporovaných hlasů](#get-a-list-of-supported-voices).
 
 Převod textu na řeč pomocí tohoto příkazu:
 
@@ -180,9 +187,11 @@ python voice_synthesis_client.py --submit -key <your_key> -region <Region> -file
 ```
 
 > [!NOTE]
-> ' concatenateResult ' je volitelný parametr, pokud není tento parametr zadán, bude výstup poskytnut jako více souborů Wave, jeden pro každý řádek.
+> Pokud máte více než 1 vstupních souborů, budete muset odeslat více požadavků. Existují určitá omezení, která je potřeba znát. 
+> * Klient může pro každý účet předplatného Azure odeslat až **5** požadavků na server za sekundu. Pokud překročí omezení, klient obdrží kód chyby 429 (příliš mnoho požadavků). Snižte prosím částku žádosti za sekundu.
+> * Server může spouštět a zařadit do fronty až **120** požadavků pro každý účet předplatného Azure. Pokud se překročí omezení, server vrátí kód chyby 429 (příliš mnoho požadavků). Počkejte prosím a zabraňte odeslání nové žádosti, dokud nebudou dokončeny některé žádosti.
 
-Měl by se zobrazit výstup, který vypadá takto:
+Zobrazí se výstup, který vypadá nějak takto:
 
 ```console
 Submit synthesis request successful
@@ -200,13 +209,13 @@ Checking status
 Succeeded... Result file downloaded : xxxx.zip
 ```
 
-Zadaný výsledek obsahuje vstupní text a zvukové výstupní soubory vygenerované službou. Stáhnou se jako zip.
+Výsledek obsahuje vstupní text a zvukové výstupní soubory, které jsou vygenerovány službou. Tyto soubory můžete stáhnout do souboru ZIP.
 
 ## <a name="remove-previous-requests"></a>Odebrat předchozí požadavky
 
-U každého předplatného je stanovený limit 2 000 požadavků. V takovém případě bude nutné před vytvořením nových požadavků odebrat dříve odeslané požadavky. Pokud existující požadavky neodeberete, zobrazí se chyba, když překročíte 2 000.
+Server bude pro každý účet předplatného Azure uchovávat až **20 000** požadavků. Pokud vaše žádost překračuje toto omezení, odeberte prosím předchozí požadavky, než začnete vytvářet nové. Pokud neodeberete stávající žádosti, obdržíte oznámení o chybě.
 
-Přidejte tento kód do `voice_synthesis_client.py`:
+Přidejte kód pro `voice_synthesis_client.py`:
 
 ```python
 parser.add_argument('--syntheses', action="store_true", default=False, help='print synthesis list')
@@ -239,13 +248,18 @@ if args.delete:
 
 ### <a name="test-your-code"></a>Testování kódu
 
-Spusťte tento příkaz, nahraďte `<your_key>` klíčem předplatného řeči a `<region>` s oblastí, ve které jste vytvořili prostředek řeči (například: `eastus` nebo `westus`). Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
+Teď zkontrolujeme, jaké požadavky jste předtím odeslali. Než budete pokračovat, budete muset v této žádosti aktualizovat několik věcí:
+
+* Nahraďte `<your_key>` klíčem předplatného služby Speech. Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
+* Položku `<region>` nahraďte oblastí, ve které byl vytvořen prostředek řeči (například `eastus` nebo `westus`). Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
+
+Spusťte tento příkaz:
 
 ```console
-python voice_synthesis_client.py – syntheses -key <your_key> -region <Region>
+python voice_synthesis_client.py --syntheses -key <your_key> -region <Region>
 ```
 
-Tím se vrátí seznam synthesesů, které jste si vyžádali. Měl by se zobrazit výstup, který vypadá takto:
+Tím se vrátí seznam žádostí o shrnutí, které jste udělali. Zobrazí se výstup podobný tomuto:
 
 ```console
 There are <number> synthesis requests submitted:
@@ -254,16 +268,22 @@ ID : xxx , Name : xxx, Status : Running
 ID : xxx , Name : xxx : Succeeded
 ```
 
-Teď pomocí některých z těchto hodnot odeberete nebo odstraníte dříve odeslané požadavky. Spusťte tento příkaz, nahraďte `<your_key>` klíčem předplatného řeči a `<region>` s oblastí, ve které jste vytvořili prostředek řeči (například: `eastus` nebo `westus`). Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal). `<synthesis_id>` musí být jednou z hodnot vrácených v předchozí žádosti.
+Teď pojďme odebrat dřív odeslaný požadavek. V následujícím kódu budete muset aktualizovat několik věcí:
+
+* Nahraďte `<your_key>` klíčem předplatného služby Speech. Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
+* Položku `<region>` nahraďte oblastí, ve které byl vytvořen prostředek řeči (například `eastus` nebo `westus`). Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
+* Nahraďte `<synthesis_id>` hodnotou vrácenou v předchozí žádosti.
 
 > [!NOTE]
 > Žádosti se stavem "spuštěno"/"Wait" nelze odebrat ani odstranit.
 
+Spusťte tento příkaz:
+
 ```console
-python voice_synthesis_client.py – delete -key <your_key> -region <Region> -synthesisId <synthesis_id>
+python voice_synthesis_client.py --delete -key <your_key> -region <Region> -synthesisId <synthesis_id>
 ```
 
-Měl by se zobrazit výstup, který vypadá takto:
+Zobrazí se výstup podobný tomuto:
 
 ```console
 delete voice synthesis xxx
@@ -272,7 +292,7 @@ delete successful
 
 ## <a name="get-the-full-client"></a>Získat úplného klienta
 
-Kompletní `voice_synthesis_client.py` je k dispozici ke stažení na [GitHubu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py).
+Dokončenou `voice_synthesis_client.py` je k dispozici ke stažení na [GitHubu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py).
 
 ## <a name="next-steps"></a>Další kroky
 

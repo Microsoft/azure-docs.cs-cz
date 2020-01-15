@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: d198ee2e1fa8d3afeacda53c2ad6b91d69abca2a
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 14e33bf77144e4cd5728ec85d3012dc0ba717ece
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195764"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945659"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Nasazení a konfigurace služby Azure Firewall v hybridní síti pomocí Azure PowerShellu
 
@@ -41,7 +41,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Vytvoření partnerského vztahu mezi virtuálními sítěmi hub a paprsek
 > * Vytvoření tras
 > * Vytvoření virtuálních počítačů
-> * Otestovat bránu firewall
+> * Testování brány firewall
 
 Pokud chcete použít Azure Portal k dokončení tohoto kurzu, přečtěte si téma [kurz: nasazení a konfigurace Azure firewall v hybridní síti pomocí Azure Portal](tutorial-hybrid-portal.md).
 
@@ -53,7 +53,7 @@ Tento článek vyžaduje, abyste spustili PowerShell místně. Musíte mít nain
 
 Předpokladem správného fungování tohoto scénáře jsou tři klíčové požadavky:
 
-- Trasa definovaná uživatelem (UDR) v podsíti paprsků, která odkazuje na IP adresu Azure Firewall jako výchozí bránu. U této směrovací tabulky musí být **Zakázáno** šíření tras protokolu BGP.
+- Trasa definovaná uživatelem (UDR) v podsíti paprsků, která odkazuje na IP adresu Azure Firewall jako výchozí bránu. Šíření trasy brány virtuální sítě musí být v této směrovací tabulce **zakázané** .
 - UDR v podsíti brány centra musí ukazovat na IP adresu brány firewall jako další směrování na sítě paprsků.
 
    V Azure Firewall podsíti se nevyžadují žádné UDR, protože se učí trasy od protokolu BGP.
@@ -203,7 +203,7 @@ $AzfwPrivateIP
 
 ```
 
-### <a name="configure-network-rules"></a>Konfigurovat pravidla sítě
+### <a name="configure-network-rules"></a>Konfigurace pravidel sítě
 
 <!--- $Rule3 = New-AzFirewallNetworkRule -Name "AllowPing" -Protocol ICMP -SourceAddress $SNOnpremPrefix `
    -DestinationAddress $VNetSpokePrefix -DestinationPort *--->
@@ -355,7 +355,7 @@ Set-AzVirtualNetwork
 
 #Now create the default route
 
-#Create a table, with BGP route propagation disabled
+#Create a table, with BGP route propagation disabled. The property is now called "Virtual network gateway route propagation," but the API still refers to the parameter as "DisableBgpRoutePropagation."
 $routeTableSpokeDG = New-AzRouteTable `
   -Name 'UDR-DG' `
   -ResourceGroupName $RG1 `
@@ -452,7 +452,7 @@ New-AzVm `
     -Size "Standard_DS2"
 ```
 
-## <a name="test-the-firewall"></a>Otestovat bránu firewall
+## <a name="test-the-firewall"></a>Testování brány firewall
 
 Nejprve získejte a pak Poznamenejte si privátní IP adresu virtuálního počítače **VM-paprsek-01** .
 

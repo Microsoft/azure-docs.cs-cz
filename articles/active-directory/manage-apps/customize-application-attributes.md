@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 804eb63406b33b94e70ef56e0066fa213be04708
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 2cbe5066974734093e440e64eb0b47542e569765
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997050"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940911"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení uživatelského zřizování atributů – mapování pro SaaS aplikace v Azure Active Directory
 
@@ -71,6 +71,7 @@ Spolu s touto vlastností také mapování atributů podporuje následující at
 
 - **Zdrojový atribut** – atribut uživatele ze zdrojového systému (příklad: Azure Active Directory).
 - **Cílový atribut** – atribut uživatele v cílovém systému (příklad: ServiceNow).
+- **Výchozí hodnota, pokud je null (volitelné)** – hodnota, která se předává cílovému systému, pokud má zdrojový atribut hodnotu null. Tato hodnota se zřídí jenom při vytvoření uživatele. Při aktualizaci stávajícího uživatele nebude zajištěna výchozí hodnota, pokud je null. Pokud například chcete zřídit všechny existující uživatele v cílovém systému s určitou funkcí (Pokud má ve zdrojovém systému hodnotu null), můžete použít následující [výraz](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data): Switch (přítomen ([jobtitle]), "DefaultValue", "true", [jobtitle]). Nezapomeňte nahradit "výchozí hodnotu" s tím, co byste chtěli ve zdrojovém systému zřídit, když má hodnotu null. 
 - **Porovnává objekty pomocí tohoto atributu** – určuje, jestli se má toto mapování použít k jednoznačné identifikaci uživatelů mezi zdrojovým a cílovým systémem. Obvykle se nastavuje u atributu userPrincipalName nebo mail v Azure AD, který je obvykle namapován na pole username v cílové aplikaci.
 - **Priorita porovnání** – lze nastavit více vyhovujících atributů. Pokud existuje více, vyhodnotí se v pořadí definovaném tímto polem. Jakmile se najde shoda, nevyhodnocují se žádné další odpovídající atributy.
 - **Použít toto mapování**

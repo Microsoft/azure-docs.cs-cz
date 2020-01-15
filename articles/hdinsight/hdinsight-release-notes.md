@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 37b49b3fbe91d199b13f548e8aaf72a6a2f0f848
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f0dd7160ae41ac004564ea21300945e135d31689
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895297"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945527"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
 
@@ -34,7 +34,7 @@ Tato verze platí pro HDInsight 3,6 a 4,0. Vydání HDInsight je zpřístupněno
 ### <a name="tls-12-enforcement"></a>Vynucení protokolu TLS 1.2
 Protokol TLS (Transport Layer Security) a SSL (Secure Sockets Layer) (SSL) jsou kryptografické protokoly, které poskytují zabezpečení komunikace v počítačové síti. Přečtěte si další informace o [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0). HDInsight používá TLS 1,2 u veřejných koncových bodů HTTPs, ale TLS 1,1 se pořád podporuje kvůli zpětné kompatibilitě. 
 
-Z této verze můžou zákazníci pro všechna připojení prostřednictvím TLS 1,2 souhlasit s protokolem TLS 1,2 enformence. Nová vlastnost **minSupportedTlsVersion** se zavádí prostřednictvím šablony Azure Resource Manager pro vytvoření clusteru. Pokud vlastnost není nastavená, cluster stále podporuje 1,0, 1,1 a 1,2, stejně jako dnešní chování. Zákazníci mohou tuto vlastnost nastavit na hodnotu "1,2", což znamená, že cluster podporuje pouze TLS 1,2 a vyšší. 
+V této verzi se zákazníci můžou rozhodnout k TLS 1,2 jenom pro všechna připojení prostřednictvím koncového bodu veřejného clusteru. V rámci této podpory je zavedena nová vlastnost **minSupportedTlsVersion** , která se dá zadat při vytváření clusteru. Pokud vlastnost není nastavená, cluster stále podporuje TLS 1,0, 1,1 a 1,2, což je stejné jako dnešní chování. Zákazníci mohou tuto vlastnost nastavit na hodnotu "1,2", což znamená, že cluster podporuje pouze TLS 1,2 a vyšší. 
 
 ### <a name="bring-your-own-key-for-disk-encryption"></a>Přineste si vlastní klíč pro šifrování disků
 Všechny spravované disky v HDInsight jsou chráněné pomocí šifrování služby Azure Storage (SSE). Data na těchto discích jsou ve výchozím nastavení šifrována pomocí klíčů spravovaných Microsoftem. Od této verze můžete Bring Your Own Key (BYOK) pro šifrování disků a spravovat je pomocí Azure Key Vault. Šifrování BYOK je při vytváření clusteru jedním krokem konfigurace bez dalších poplatků. Stačí zaregistrovat HDInsight jako spravovanou identitu pomocí Azure Key Vault a přidat šifrovací klíč při vytváření clusteru. 

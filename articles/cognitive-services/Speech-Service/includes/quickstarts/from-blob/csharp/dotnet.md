@@ -1,32 +1,25 @@
 ---
-title: 'Rychlý Start: rozpoznávání řeči uložených v BLOB Storage C# , – Speech Service'
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: b8b650920c03b14c7d55aafd6ecdb43dafaafafe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.author: dapine
+ms.openlocfilehash: 1022a744564ed61a90973f7bba3eb32e9a632b46
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75466855"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942796"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, nezapomeňte:
 
 > [!div class="checklist"]
+> * [Nastavení vývojového prostředí](../../../../quickstarts/setup-platform.md?tabs=vs&pivots=programmming-language-csharp)
+> * [Vytvořit prázdný ukázkový projekt](../../../../quickstarts/create-project.md?pivots=programmming-language-csharp)
 > * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
 > * [Nahrání zdrojového souboru do objektu blob Azure](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-> * [Nastavení vývojového prostředí](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [Vytvořit prázdný ukázkový projekt](../../../../quickstarts/create-project.md?tabs=dotnet)
 
 ## <a name="open-your-project-in-visual-studio"></a>Otevřete projekt v sadě Visual Studio
 
@@ -35,7 +28,7 @@ Prvním krokem je ujistit se, že máte projekt otevřený v aplikaci Visual Stu
 1. Spusťte Visual Studio 2019.
 2. Načtěte projekt a otevřete `Program.cs`.
 
-## <a name="add-a-reference-to-newtonsoftjson"></a>Přidat odkaz na NewtonSoftJSon
+## <a name="add-a-reference-to-newtonsoftjson"></a>Přidat odkaz na Newtonsoft. JSON
 
 1. V Průzkumník řešení klikněte pravým tlačítkem myši na projekt **HelloWorld** a pak výběrem **možnosti spravovat balíčky NuGet** Zobrazte správce balíčků NuGet.
 
@@ -45,7 +38,7 @@ Prvním krokem je ujistit se, že máte projekt otevřený v aplikaci Visual Stu
 
 1. Do vyhledávacího pole zadejte *Newtonsoft. JSON* a vyberte **ENTER**.
 
-1. Ve výsledcích hledání vyberte balíček **Newtonsoft. JSON** a pak vyberte **instalovat** a nainstalujte nejnovější stabilní verzi.
+1. Ve výsledcích hledání vyberte balíček [**Newtonsoft. JSON**](https://www.nuget.org/packages/Newtonsoft.Json) a pak vyberte **instalovat** a nainstalujte nejnovější stabilní verzi.
 
 1. Přijetím všech smluv a licencí spusťte instalaci.
 
@@ -56,7 +49,9 @@ Prvním krokem je ujistit se, že máte projekt otevřený v aplikaci Visual Stu
 Pojďme přidat kód, který funguje jako kostra pro náš projekt.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=6-43,138,277)]
-(Hodnoty `YourSubscriptionKey`, `YourServiceRegion`a `YourFileUrl` budete muset nahradit vlastními hodnotami.)
+
+[!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
+
 ## <a name="json-wrappers"></a>Obálky JSON
 
 Jak REST API přijímá požadavky ve formátu JSON a také vrátí výsledky ve formátu JSON, můžeme s nimi pracovat jenom s řetězci, ale to se nedoporučuje.
