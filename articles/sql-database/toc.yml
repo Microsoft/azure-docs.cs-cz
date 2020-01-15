@@ -630,8 +630,6 @@
           href: sql-database-advisor-portal.md
         - name: Vytváření upozornění
           href: sql-database-insights-alerts-portal.md
-        - name: Řešení potíží s připojením
-          href: sql-database-troubleshoot-common-connection-issues.md
         - name: Správa prostoru souborů
           href: sql-database-file-space-management.md
         - name: Použití funkce Resource Health pro potíže s připojením
