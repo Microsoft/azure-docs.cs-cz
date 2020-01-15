@@ -57,7 +57,7 @@
     - name: Azure Containers
       href: ../container-instances/container-instances-managed-identity.md
     - name: Šablona Azure Resource Manageru
-      href: ../azure-resource-manager/resource-manager-keyvault-parameter.md
+      href: ../azure-resource-manager/templates/key-vault-parameter.md
     - name: Nastavení obměny klíčů a auditování
       href: key-vault-key-rotation-log-monitoring.md
 - name: ukázky

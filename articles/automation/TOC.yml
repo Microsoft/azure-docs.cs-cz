@@ -244,7 +244,7 @@
     - name: Koncepty
       items:
         - name: PowerShell DSC
-          href: /powershell/dsc/overview/overview
+          href: /powershell/scripting/dsc/overview/overview
     - name: Rychlé starty
       items:
         - name: začínáme
@@ -315,7 +315,7 @@
     - name: Moduly PowerShellu
       items:
         - name: Moduly
-          href: automation-integration-modules.md
+          href: shared-resources/modules.md
         - name: Použití modulů Az ve službě Azure Automation
           href: az-modules.md
         - name: Aktualizace modulů Azure PowerShellu

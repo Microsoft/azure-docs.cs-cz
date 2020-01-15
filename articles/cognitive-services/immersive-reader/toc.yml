@@ -4,31 +4,37 @@
   items:
     - name: Co je Asistivní čtečka?
       href: Overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: 'Pomocí C#'
       href: Quickstart.md
+    - name: Pomocí Node.js
+      href: quickstart-nodejs.md
     - name: Použití Swiftu (iOS)
       href: ios-quickstart.md
 - name: Kurzy
   items:
-    - name: Spuštění Asistivní čtečky (Node.js)
-      href: tutorial-nodejs.md
     - name: Spuštění Asistivní čtečky (Python)
       href: tutorial-python.md
-    - name: Obrázek do Asistivní čtečky (Swift)
-      href: tutorial-ios-picture-immersive-reader.md
 - name: Postupy
   items:
-    - name: Ověřování pomocí Azure Active Directory
-      href: azure-active-directory-authentication.md
+    - name: Vytvoření prostředku Asistivní čtečky
+      href: how-to-create-immersive-reader.md
+    - name: Nastavení zásad souborů cookie
+      href: how-to/set-cookie-policy.md
+    - name: Zobrazovaná matematika
+      href: how-to/display-math.md
+    - name: Spuštění Asistivní čtečky s obsahem HTML
+      href: how-to-launch-with-html.md
+    - name: Přizpůsobení tlačítka pro asistivní čtečku
+      href: how-to-customize-launch-button.md
+    - name: Uložení ověřovacího tokenu do mezipaměti
+      href: how-to-cache-token.md
 - name: Referenční informace
   items:
     - name: Referenční informace k sadě SDK
       href: reference.md
-    - name: Reference sady iOS SDK
-      href: ios-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

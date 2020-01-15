@@ -44,6 +44,8 @@
       href: openvpn-azure-ad-mfa.md
     - name: Konfigurace ověřování Azure AD pro VPN uživatele (Preview)
       href: virtual-wan-point-to-site-azure-ad.md
+    - name: Konfigurace víceaplikačního ověřování Azure AD pro VPN uživatele (Preview)
+      href: openvpn-azure-ad-tenant-multi-app.md
     - name: Konfigurace automatizace (partneři služby Virtual WAN)
       href: virtual-wan-configure-automation-providers.md
     - name: Konfigurace směrování

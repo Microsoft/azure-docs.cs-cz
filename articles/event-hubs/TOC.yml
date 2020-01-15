@@ -31,9 +31,9 @@
         - name: Java
           href: event-hubs-java-get-started-send.md
         - name: Python
-          href: event-hubs-python-get-started-send.md
+          href: get-started-python-send-v2.md
         - name: Node.js
-          href: event-hubs-node-get-started-send.md
+          href: get-started-node-send-v2.md
         - name: Přejít
           href: event-hubs-go-get-started-send.md
         - name: C (jenom odesílání)
@@ -49,7 +49,7 @@
         - name: Použití šablony Resource Manageru k povolení funkce Event Hubs Capture
           href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
         - name: Zachytávání dat Event Hubs pomocí Pythonu
-          href: event-hubs-capture-python.md
+          href: get-started-capture-python-v2.md
     - name: Streamování do služby Event Hubs pro Apache Kafka
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
     - name: Vytvoření vyhrazeného clusteru
@@ -114,10 +114,22 @@
           href: event-hubs-get-connection-string.md
         - name: Výměna událostí mezi aplikacemi s využitím různých protokolů
           href: event-hubs-exchange-events-different-protocols.md
-        - name: Průvodce programováním v .NET
-          href: event-hubs-programming-guide.md
-        - name: 'Odesílání, příjem a zachytávání událostí pomocí Pythonu'
-          href: event-hubs-python.md
+        - name: Průvodci programováním
+          items:
+            - name: Python
+              href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/README.md'
+            - name: JavaScript
+              href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/README.md'
+            - name: Průvodce programováním v .NET
+              href: event-hubs-programming-guide.md
+        - name: Čtení zachycených dat pomocí Pythonu (starší verze)
+          href: event-hubs-capture-python.md
+        - name: Odesílání a příjem událostí (starší verze)
+          items:
+            - name: Python (starší verze)
+              href: event-hubs-python-get-started-send.md
+            - name: Node. js (starší verze)
+              href: event-hubs-node-get-started-send.md
     - name: Zpracování dat
       items:
         - name: Zpracování dat s využitím Azure Stream Analytics
@@ -193,7 +205,15 @@
         - name: Microsoft.Azure.Management.EventHub
           href: /dotnet/api/microsoft.azure.management.eventhub
     - name: Node.js
-      href: /javascript/api/overview/azure/event-hub?view=azure-node-latest
+      items:
+        - name: Migrace z verze 2 na verzi 5
+          href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md'
+        - name: API – referenční informace
+          href: /javascript/api/overview/azure/event-hub?view=azure-node-latest
+    - name: Python
+      items:
+        - name: Migrace z verze 1 na verzi 5
+          href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md'
     - name: REST
       href: /rest/api/eventhub
     - name: Šablona Resource Manageru

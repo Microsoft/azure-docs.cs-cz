@@ -22,7 +22,7 @@
       href: release-notes-10-0-10106-0.md
     - name: Plán upgradu oblastí Gen2
       href: gen2-migration-schedule.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření a připojení
@@ -225,6 +225,8 @@
           href: sql-data-warehouse-workload-importance.md
         - name: Izolace úloh
           href: sql-data-warehouse-workload-isolation.md
+        - name: Monitorování správy úloh
+          href: sql-data-warehouse-workload-management-portal-monitor.md
         - name: Paměť a omezení souběžnosti
           href: memory-concurrency-limits.md
         - name: Třídy prostředků
@@ -273,7 +275,7 @@
           href: /azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
         - name: S využitím SQL Server Integration Services (SSIS)
           href: /sql/integration-services/load-data-to-sql-data-warehouse
-        - name: Ukázky
+        - name: ukázky
           items:
             - name: Newyorská taxislužba
               href: load-data-from-azure-blob-storage-using-polybase.md

@@ -7,7 +7,7 @@
       href: overview.md
     - name: Podpora jazyků a oblastí
       href: language-support.md
-      displayName: 'languages,locales,region,voice,gender,language code,locale,locale code'
+      displayName: 'languages,locales,region,voice,gender,language code,locale,locale code,neural voice,standard voice'
 - name: Převod řeči na text
   expanded: false
   items:
@@ -27,6 +27,8 @@
       items:
         - name: Změna zdrojového jazyka rozpoznávání řeči
           href: how-to-specify-source-language.md
+        - name: Volba režimu rozpoznávání řeči
+          href: how-to-choose-recognition-mode.md
         - name: Zlepšení přesnosti s využitím služby Custom Speech
           href: how-to-custom-speech.md
         - name: Zlepšení přesnosti s využitím seznamů frází
@@ -102,6 +104,7 @@
           href: speech-synthesis-markup.md
         - name: Vylepšení výstupu s využitím nástrojů Vlastní hlas
           href: how-to-custom-voice.md
+          displayName: custom voice
         - name: Syntéza řeči s využitím rozhraní API pro řeč dlouhého formátu
           href: long-audio-api.md
         - name: Použití syntézy řeči s kontejnery Docker
@@ -363,6 +366,7 @@
           items:
             - name: Začínáme se službou Custom Voice
               href: how-to-custom-voice.md
+              displayName: 'custom voice, neural voice'
             - name: Příprava dat
               href: how-to-custom-voice-prepare-data.md
             - name: Vytváření a využití modelů Custom Voice

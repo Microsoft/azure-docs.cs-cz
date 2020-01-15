@@ -869,6 +869,9 @@
         - name: Zjištění poplatku za jednotku žádosti
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge.md
+        - name: Škálování s využitím časovače Azure Functions
+          displayName: 'request units, RUs, RU, timer'
+          href: scale-on-schedule.md
     - name: Práce s kontejnery a položkami
       items:
         - name: Práce s daty služby Cosmos DB
