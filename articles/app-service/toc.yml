@@ -117,6 +117,8 @@
       items:
         - name: Nasazení aplikace
           items:
+            - name: Spuštění z balíčku
+              href: deploy-run-package.md
             - name: Nasazení souboru ZIP nebo WAR
               href: deploy-zip.md
             - name: Nasazení prostřednictvím FTP

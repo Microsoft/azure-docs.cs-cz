@@ -11,12 +11,12 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.date: 11/04/2019
-  ms.openlocfilehash: 291d2ca69a1f02f76430074b2a548b7d36c942be
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.openlocfilehash: e0fc6aaaedc5eff98017eb62187575ab9afbba59
+  ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75446402"
+  ms.lasthandoff: 01/14/2020
+  ms.locfileid: "75945197"
 highlightedContent:
   items:
   - title: Co jsou služby Cognitive Services?
@@ -71,7 +71,7 @@ conceptualContent:
     links:
     - url: ./immersive-reader/index.yml
       itemType: overview
-      text: Asistivní čtečka (Preview)
+      text: Asistivní čtečka
     - url: ./luis/index.yml
       itemType: overview
       text: Language Understanding (LUIS)
