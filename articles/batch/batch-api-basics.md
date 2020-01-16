@@ -3,7 +3,7 @@ title: Přehled pro vývojáře – Azure Batch | Microsoft Docs
 description: Informace o funkcích služby Batch a jejích rozhraní API z hlediska vývoje.
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-compute
 ms.date: 08/29/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 364861e57f37192a3ae454e27fedf732ee8d513e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 6ea5ce71622e98b60d68c1680382dc63c767999d
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350179"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029772"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch
 
@@ -59,7 +59,7 @@ Některé z následujících prostředků – účty, výpočetní uzly, fondy, 
 * [Fond](#pool)
 * [Úloha](#job)
   * [Plány úlohy](#scheduled-jobs)
-* [Úloha](#task)
+* [Úkol](#task)
   * [Spouštěcí úkol](#start-task)
   * [Úkol správce úloh](#job-manager-task)
   * [Úkoly přípravy a uvolnění úloh](#job-preparation-and-release-tasks)
@@ -87,7 +87,7 @@ Batch podporuje následující typy účtů Azure Storage:
 * Účty pro obecné účely verze 1 (GPv1)
 * Účty úložiště Blob (v současnosti podporuje fondy v konfiguraci virtuálního počítače)
 
-Další informace o účtech úložiště najdete v [přehledu účtu úložiště Azure](../storage/common/storage-account-overview.md).
+Další informace o účtech úložiště najdete v [přehledu účtu Azure Storage](../storage/common/storage-account-overview.md).
 
 Účet úložiště můžete ke svému účtu Batch přidružit při vytváření účtu Batch nebo později. Při výběru účtu úložiště zvažte své požadavky na náklady a výkon. Například možnosti účtu úložiště GPv2 a účtu úložiště objektů blob podporují ve srovnání s účty GPv1 vyšší [limity kapacity a škálovatelnosti](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/). (Kontaktujte podporu Azure a požádejte o zvýšení limitu úložiště.) Tyto možnosti účtu můžou zlepšit výkon řešení Batch, který obsahuje velký počet paralelních úloh, které čtou nebo zapisují do účtu úložiště.
 
@@ -143,7 +143,7 @@ Když vytváříte fond Batch, můžete zadat konfiguraci virtuálního počíta
 
     * *Řada operačního systému* také určuje, jaké verze rozhraní .NET jsou s operačním systémem nainstalovány.
     * Podobně jako u rolí pracovního procesu v rámci služby Cloud Services můžete zadat *verzi operačního systému* (další informace o rolích pracovního procesu najdete v článku [Přehled služby Cloud Services](../cloud-services/cloud-services-choose-me.md)).
-    * Stejně jako u rolí pracovního procesu se doporučuje jako `*`Verze operačního systému*zadat*, aby se uzly automaticky upgradovaly a nebyla potřeba žádná práce k ošetření nově vydaných verzí. Hlavním případem použití s výběrem konkrétní verze operačního systému scénář zajištění kompatibility aplikací, který umožní testovat zpětnou kompatibilitu, než se povolí aktualizace verze. Po ověření funkčnosti je možné aktualizovat *verzi operačního systému* pro fond a nainstalovat image nového operačního systému – jakékoli spuštěné úkoly se přeruší a zařadí do fronty.
+    * Stejně jako u rolí pracovního procesu se doporučuje jako *Verze operačního systému* zadat `*`, aby se uzly automaticky upgradovaly a nebyla potřeba žádná práce k ošetření nově vydaných verzí. Hlavním případem použití s výběrem konkrétní verze operačního systému scénář zajištění kompatibility aplikací, který umožní testovat zpětnou kompatibilitu, než se povolí aktualizace verze. Po ověření funkčnosti je možné aktualizovat *verzi operačního systému* pro fond a nainstalovat image nového operačního systému – jakékoli spuštěné úkoly se přeruší a zařadí do fronty.
 
 Když vytvoříte fond, je nutné vybrat odpovídající **nodeAgentSkuId**, v závislosti na operačním systému základní image vašeho disku VHD. Můžete získat mapování dostupných ID SKU agenta uzlu na odkazy na image operačního systému voláním operace [seznam podporovaných SKU agenta uzlu](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus) .
 
@@ -245,7 +245,7 @@ Plánování úloh mezi fondy je nezávislé. Mezi různými fondy není zaruče
 
 ### <a name="scheduled-jobs"></a>Naplánované úlohy
 
-[Plány úloh][rest_job_schedules] umožňují vytvořit opakované úlohy v rámci služby Batch. Plán úlohy určuje, kdy spustit úlohy a obsahuje specifikace pro úlohy, které mají být spuštěny. Můžete určit dobu trvání plánu – na jak dlouho a kdy bude plán platný – a jak často se během tohoto naplánovaného období mají vytvářet úlohy.
+[Plány úloh][rest_job_schedules] umožňují vytvořit opakované úlohy v rámci služby Batch. Plán úloh určuje, kdy spustit úlohy a obsahuje specifikace pro úlohy, které mají být spuštěny. Můžete určit dobu trvání plánu – na jak dlouho a kdy bude plán platný – a jak často se během tohoto naplánovaného období mají vytvářet úlohy.
 
 ## <a name="task"></a>Úkol
 
@@ -335,9 +335,9 @@ Další informace ohledně úkolů přípravy a uvolnění úloh najdete v čás
 
 Podrobné informace o spouštění úloh MPI ve službě Batch pomocí knihovny Batch .NET najdete v článku [Použití úkolů s více instancemi ke spouštění aplikací rozhraní MPI (Message Passing Interface) v Azure Batch](batch-mpi.md).
 
-### <a name="task-dependencies"></a>Závislosti úkolů
+### <a name="task-dependencies"></a>Závislosti úloh
 
-[Závislosti úkolů](batch-task-dependencies.md), jak již název napovídá, umožňují určit, jestli úkol závisí před svým spuštěním na dokončení jiných úkolů. Tato funkce poskytuje podporu pro situace, ve kterých „podřízený“ úkol spotřebovává výstup „nadřazeného“ úkolu, nebo kde nadřazený úkol provádí inicializaci, která je požadovaná podřízeným úkolem. Chcete-li tuto funkci používat, je nutné nejprve v úloze služby Batch povolit závislosti úkolů. Potom pro každý úkol, který závisí na jiném (nebo mnoha dalších), zadáte úkoly, na kterých úkol závisí.
+[Závislosti úkolů](batch-task-dependencies.md), jak již název napovídá, umožňují určit, jestli úkol závisí před svým spuštěním na dokončení jiných úkolů. Tato funkce poskytuje podporu pro situace, ve kterých „podřízený“ úkol spotřebovává výstup „nadřazeného“ úkolu, nebo kde nadřazený úkol provádí inicializaci, která je požadovaná podřízeným úkolem. Pokud chcete tuto funkci používat, je nutné nejprve v úloze služby Batch povolit závislosti úkolů. Potom pro každý úkol, který závisí na jiném (nebo mnoha dalších), zadáte úkoly, na kterých úkol závisí.
 
 Pomocí závislosti úkolů lze nakonfigurovat například následující scénáře:
 
@@ -444,7 +444,7 @@ Když automatické škálování snižuje počet výpočetních uzlů ve fondu, 
 Další informace o automatickém škálování aplikace naleznete v tématu [Automatické škálování výpočetních uzlů ve fondu Azure Batch](batch-automatic-scaling.md).
 
 > [!TIP]
-> Chcete-li maximalizovat využití výpočetních prostředků, nastavte cílový počet uzlů na konci úlohy na hodnotu nula, ale povolte dokončení spouštěných úkolů.
+> Pokud chcete maximalizovat využití výpočetních prostředků, nastavte cílový počet uzlů na konci úlohy na hodnotu nula, ale povolte dokončení spouštěných úkolů.
 >
 >
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 02/08/2019
-ms.openlocfilehash: 3c03797c97a354eb06b6c3b1d76ba5c39d512c18
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 01/14/2020
+ms.openlocfilehash: 4283e1a2c92b7fe738fb57a8103cea1deb0015a0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811209"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027713"
 ---
 # <a name="how-to-use-a-single-database-in-azure-sql-database"></a>Jak používat izolovanou databázi v Azure SQL Database
 
@@ -42,7 +42,7 @@ V této části najdete různé příručky, skripty a vysvětlení, které vám
 - [Povolením e-mailových oznámení pro automatické ladění](sql-database-automatic-tuning-email-notifications.md) získáte informace o doporučeních pro ladění.
 - [Použijte doporučení k výkonu](sql-database-advisor-portal.md) a optimalizujte databázi.
 - [Vytvořte výstrahy](sql-database-insights-alerts-portal.md) , abyste získali oznámení od Azure SQL Database.
-- [Řešení potíží s](sql-database-troubleshoot-common-connection-issues.md) připojením, pokud si všimnete nějakých problémů s připojením mezi aplikacemi a databází. [Pro problémy s připojením](sql-database-resource-health.md)můžete také použít Resource Health.
+- [Řešení potíží s](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md) připojením, pokud si všimnete nějakých problémů s připojením mezi aplikacemi a databází. [Pro problémy s připojením](sql-database-resource-health.md)můžete také použít Resource Health.
 - [Spravujte místo v souboru](sql-database-file-space-management.md) , abyste mohli monitorovat využití úložiště ve vaší databázi.
 
 ## <a name="query-distributed-data"></a>Dotazování na distribuovaná data
@@ -57,7 +57,7 @@ V této části najdete různé příručky, skripty a vysvětlení, které vám
 - [Vytvoření a Správa](elastic-jobs-tsql.md) Elastic Database úlohy pomocí jazyka Transact-SQL.
 - [Migrujte ze staré elastické úlohy](elastic-jobs-migrate.md).
 
-## <a name="database-sharding"></a>Sharding databází
+## <a name="database-sharding"></a>Horizontální dělení databází
 
 - [Upgradujte klientskou knihovnu elastické databáze](sql-database-elastic-scale-upgrade-client-library.md).
 - [Vytvoření aplikace horizontálně dělené](sql-database-elastic-scale-get-started.md)

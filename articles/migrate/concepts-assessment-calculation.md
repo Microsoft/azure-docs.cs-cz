@@ -3,12 +3,12 @@ title: Posouzení v Azure Migrate
 description: Přečtěte si o hodnoceních v Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 6950050be3c6fb812a6ade47e98f2d1ed479e61f
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: a8912263432bc0e9cd7172c4b6c9b118132863d3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720238"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029112"
 ---
 # <a name="about-assessments-in-azure-migrate"></a>O hodnoceních v Azure Migrate
 
@@ -23,7 +23,7 @@ Můžete spustit posouzení pomocí Azure Migrate: posouzení serveru nebo jiné
 
 1. [Zařízení Azure Migrate](migrate-appliance.md) shromažďuje vzorový bod v reálném čase:
 
-    - **virtuálních počítačů VMware*: u virtuálních počítačů vmware bude Azure Migrate zařízení shromažďovat ukázkový bod v reálném čase v intervalu 20 sekund.
+    - **Virtuální počítače VMware**: u virtuálních počítačů VMware bude zařízení Azure Migrate shromažďovat ukázkový bod v reálném čase v intervalu 20 sekund.
     - **Virtuální počítače Hyper-v**: pro virtuální počítače Hyper-v se v každém intervalu 30 sekund shromáždí ukázkový bod v reálném čase.
     - **Fyzické servery**: u fyzických serverů se ukázkový bod v reálném čase shromažďuje každých pět minut. 
     
@@ -58,7 +58,7 @@ Posouzení, které vytvoříte pomocí Azure Migrate posouzení serveru, jsou sn
 
 1. [Zařízení Azure Migrate](migrate-appliance.md) shromažďuje vzorový bod v reálném čase:
 
-    - **virtuálních počítačů VMware*: u virtuálních počítačů vmware bude Azure Migrate zařízení shromažďovat ukázkový bod v reálném čase v intervalu 20 sekund.
+    - **Virtuální počítače VMware**: u virtuálních počítačů VMware bude zařízení Azure Migrate shromažďovat ukázkový bod v reálném čase v intervalu 20 sekund.
     - **Virtuální počítače Hyper-v**: pro virtuální počítače Hyper-v se v každém intervalu 30 sekund shromáždí ukázkový bod v reálném čase.
     - **Fyzické servery**: u fyzických serverů se ukázkový bod v reálném čase shromažďuje každých pět minut. 
     
@@ -73,20 +73,19 @@ Posouzení, které vytvoříte pomocí Azure Migrate posouzení serveru, jsou sn
 5. Tato hodnota je vynásobena faktorem komfortu, aby získala efektivní data o využití výkonu pro jednotlivé metriky (využití procesoru, využití paměti, IOPS disku (čtení a zápis), propustnost disku (čtení a zápis) a propustnost sítě (v/v). zařízení shromažďuje.
 ## <a name="whats-in-an-assessment"></a>Co je součástí posouzení?
 
-Tady je postup, který je součástí posouzení v Azure Migrate: Server Assessment
+Tady je postup, který je součástí posouzení Azure Migrate: posouzení serveru.
 
 **Vlastnost** | **Podrobnosti**
 --- | ---
-**Cílové umístění** | Umístění, do kterého chcete migrovat.<br/><br/>Posouzení serveru aktuálně podporuje tyto cílové oblasti Azure: Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, Střed Indie, Střed USA, Čína – východ, Čína – sever, Východní Asie, Východní USA, východní USA 2, Německo – střed, Německo Severovýchod, Japonsko – východ, Japonsko – západ, Korea – jih, Jižní Korea, Střed USA – sever, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Velká Británie – západ, US Gov – Arizona, US Gov – Texas, US Gov – Virginie, středozápadní USA, západní Evropa, Západní Indie, Západní USA a západ USA 2.
-**Cílový disk úložiště: Změna velikosti** | Typ disků, které se mají použít pro úložiště v Azure. <br/><br/> Zadejte cílový disk úložiště jako spravovaný na úrovni Premium, Standard SSD spravovaná nebo standardní pevný disk.<br/><br/> 
-**Cílový disk úložiště: Změna velikosti na základě výkonu** | Zadejte typ cílového disku úložiště jako automatické, spravované na úrovni Premium, standardně spravované HDD nebo standardní SSD spravovaná.<br/><br/> **Automaticky**: doporučení na disku vychází z údajů o výkonu disků (vstupně-výstupní operace za sekundu (IOPS) a propustnost). <br/><br/>**Premium/Standard**: posouzení doporučuje SKU disku v rámci vybraného typu úložiště.<br/><br/> Pokud chcete dosáhnout smlouvy SLA pro virtuální počítače s jednou instancí 99,9%, zvažte použití služeb Premium Managed disks. Tím se zajistí, že se všechny disky v posouzení doporučují jako disky spravované na úrovni Premium.<br/><br/> Azure Migrate podporuje pro posouzení migrace jenom spravované disky.
+**Cílové umístění** | Umístění, do kterého chcete migrovat. Posouzení serveru aktuálně podporuje tyto cílové oblasti Azure:<br/><br/> Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, Střed Indie, Střed USA, Čína – východ, Čína – sever, Východní Asie, Východní USA, východní USA 2, Německo – střed, Německo – jihovýchod, Japonsko – východ, Japonsko – západ, Jižní Korea, Korea – jih, Severní Střed USA, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Velká Británie – západ, US Gov – Arizona, US Gov – Texas, US Gov – Virginie, Středozápadní USA, Západní Evropa, Západní Indie, Západní USA a západní USA 2.
+*Cílový disk úložiště (stejně jako velikost)* * | Typ disků, které se mají použít pro úložiště v Azure. <br/><br/> Zadejte cílový disk úložiště jako spravovaný na úrovni Premium, Standard SSD spravovaná nebo standardní pevný disk.
+**Cílový disk úložiště (Změna velikosti na základě výkonu)** | Zadejte typ cílového disku úložiště jako automatické, spravované na úrovni Premium, standardně spravované HDD nebo standardní SSD spravovaná.<br/><br/> **Automaticky**: doporučení na disku vychází z údajů o výkonu disků (vstupně-výstupní operace za sekundu (IOPS) a propustnost).<br/><br/>**Premium/Standard**: posouzení doporučuje SKU disku v rámci vybraného typu úložiště.<br/><br/> Pokud chcete dosáhnout smlouvy SLA pro virtuální počítače s jednou instancí 99,9%, zvažte použití služeb Premium Managed disks. Tím se zajistí, že se všechny disky v posouzení doporučují jako disky spravované na úrovni Premium.<br/><br/> Azure Migrate podporuje pro posouzení migrace jenom spravované disky.
 **Rezervované instance (RIs)** | Zadejte [rezervované instance](https://azure.microsoft.com/pricing/reserved-vm-instances/) v Azure, aby se odhady nákladů v rámci posouzení převzaly v úvahu slevy na vyhrazené platformě.<br/><br/> Služby RIs se momentálně podporují jenom pro nabídky s průběžnými platbami v Azure Migrate.
 **Kritéria změny velikosti** | Slouží k napravení velikosti virtuálního počítače v Azure.<br/><br/> Použijte změnu velikosti nebo určení velikosti na základě výkonu.
 **Historie výkonu** | Používá se při změně velikosti na základě výkonu. Zadejte dobu trvání použitou při vyhodnocení údajů o výkonu.
 **Percentilové využití** | Používá se při změně velikosti na základě výkonu. Určuje hodnotu percentilu pro vzorek výkonu, který se má použít pro správnou velikost. 
 **Řada virtuálních počítačů** | Zadejte řadu virtuálních počítačů Azure, které chcete zvážit pro správnou velikost. Pokud například nemáte produkční prostředí, které potřebuje pro virtuální počítače řady A-Series v Azure, můžete z tohoto seznamu nebo řady vyřadit řady.
-**Faktor komfortu** | Vyrovnávací paměť použitá během posouzení Použito na data o využití počítače pro virtuální počítače (CPU, paměť, disk a síť). 
-Účty IT mají problémy, jako je sezónní využití, krátká historie výkonu a pravděpodobná zvýšení využití v budoucnu.<br/><br/> Například virtuální počítač s 10 jádry s 20% využitím obvykle vede k virtuálnímu počítači se dvěma jádry. Výsledkem je faktor komfortu 2.0 x, ale výsledkem je virtuální počítač se čtyřmi jádry.
+**Faktor komfortu** | Vyrovnávací paměť použitá během posouzení Použito na data o využití počítače pro virtuální počítače (CPU, paměť, disk a síť). Účty IT mají problémy, jako je sezónní využití, krátká historie výkonu a pravděpodobná zvýšení využití v budoucnu.<br/><br/> Například virtuální počítač s 10 jádry s 20% využitím obvykle vede k virtuálnímu počítači se dvěma jádry. Výsledkem je faktor komfortu 2.0 x, ale výsledkem je virtuální počítač se čtyřmi jádry.
 **Nabídka** | Zobrazí [nabídku Azure](https://azure.microsoft.com/support/legal/offer-details/) , do které jste zaregistrovaní. Vyhodnocení serveru odhadá náklady odpovídajícím způsobem.
 **Měna** | Fakturační měna vašeho účtu.
 **Sleva (%)** | Zobrazí seznam slev specifických pro předplatné, které obdržíte nad nabídkou Azure. Výchozí nastavení je 0 %.

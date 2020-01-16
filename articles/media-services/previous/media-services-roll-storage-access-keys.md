@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga;cenkdin
-ms.openlocfilehash: 1cebe0fda7da97933fc94082a62c671535fe689b
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 2a0d1c5af572c88dc11bed950b46706f0a2f081f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015807"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981966"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>Aktualizace Media Services po postupném zavedení přístupových klíčů k úložišti 
 
 Když vytvoříte nový účet Azure Media Services (AMS), zobrazí se také výzva k výběru účtu Azure Storage, který se používá k uložení mediálního obsahu. K vašemu Media Services účtu můžete přidat více účtů úložiště. Tento článek ukazuje, jak otočit klíče úložiště. Také ukazuje, jak přidat účty úložiště k účtu média. 
 
-K provedení akcí popsaných v tomto článku byste měli používat [rozhraní Azure Resource Manager API](/rest/api/media/operations/azure-media-services-rest-api-reference) a [PowerShell](https://docs.microsoft.com/powershell/module/az.media).  Další informace najdete v tématu [Správa prostředků Azure pomocí PowerShellu a správce prostředků](../../azure-resource-manager/manage-resource-groups-powershell.md).
+K provedení akcí popsaných v tomto článku byste měli používat [rozhraní Azure Resource Manager API](/rest/api/media/operations/azure-media-services-rest-api-reference) a [PowerShell](https://docs.microsoft.com/powershell/module/az.media).  Další informace najdete v tématu [Správa prostředků Azure pomocí PowerShellu a správce prostředků](../../azure-resource-manager/management/manage-resource-groups-powershell.md).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -71,13 +71,13 @@ Následující příklad ukazuje, jak získat účet úložiště a synchronizov
  
 ## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>Postup přidání účtů úložiště do účtu AMS
 
-V následujícím článku se dozvíte, jak přidat účty úložiště do svého účtu AMS: [Připojte k účtu Media Services více účtů úložiště](meda-services-managing-multiple-storage-accounts.md).
+Následující článek ukazuje, jak přidat účty úložiště do účtu AMS: [připojení více účtů úložiště k účtu Media Services](meda-services-managing-multiple-storage-accounts.md).
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-### <a name="acknowledgments"></a>Potvrzení
+### <a name="acknowledgments"></a>Poděkování
 Chtěli bychom potvrdit následující lidi, kteří přispěli k vytváření tohoto dokumentu: Cenk Dingiloglu, Milán Gada, Seva Titov.

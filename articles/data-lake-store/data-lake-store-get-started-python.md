@@ -1,5 +1,5 @@
 ---
-title: 'Python: Operace správy účtů na Azure Data Lake Storage Gen1 | Microsoft Docs'
+title: 'Python: operace správy účtů v Azure Data Lake Storage Gen1 | Microsoft Docs'
 description: Naučte se používat sadu Python SDK pro práci s operacemi správy účtů Azure Data Lake Storage Gen1.
 services: data-lake-store
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 494959e071fb5777f9a815b5bde4bd093cf10bd6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: fad832ba7b16e8dbb37043d971368062fcbd842f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088788"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966047"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Operace správy účtů na Azure Data Lake Storage Gen1 s využitím Pythonu
 > [!div class="op_single_selector"]
@@ -35,15 +35,15 @@ Naučte se používat sadu Python SDK pro Azure Data Lake Storage Gen1 k provád
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Skupina prostředků Azure**. Pokyny najdete v tématu [Vytvoření skupiny prostředků Azure](../azure-resource-manager/manage-resource-groups-portal.md).
+* **Skupina prostředků Azure**. Pokyny najdete v tématu [Vytvoření skupiny prostředků Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
 ## <a name="install-the-modules"></a>Instalace modulů
 
 Pokud chcete pracovat s Data Lake Storage Gen1 pomocí Pythonu, musíte nainstalovat tři moduly.
 
 * Modul `azure-mgmt-resource`, který zahrnuje moduly Azure pro Active Directory atd.
-* `azure-mgmt-datalake-store` Modul, který zahrnuje operace správy účtu Azure Data Lake Storage Gen1. Další informace o tomto modulu najdete v referenčních informacích k [modulu správy Azure Data Lake Storage Gen1](/python/api/azure-mgmt-datalake-store/).
-* `azure-datalake-store` Modul, který zahrnuje operace Azure Data Lake Storage Gen1 systému souborů. Další informace o tomto modulu najdete v tématu [Reference k modulům systému souborů Azure-datalake-Store](https://azure-datalake-store.readthedocs.io/en/latest/).
+* Modul `azure-mgmt-datalake-store`, který zahrnuje operace správy účtu Azure Data Lake Storage Gen1. Další informace o tomto modulu najdete v referenčních informacích k [modulu správy Azure Data Lake Storage Gen1](/python/api/azure-mgmt-datalake-store/).
+* Modul `azure-datalake-store`, který obsahuje operace Azure Data Lake Storage Gen1 systému souborů. Další informace o tomto modulu najdete v tématu [Reference k modulům systému souborů Azure-datalake-Store](https://azure-datalake-store.readthedocs.io/en/latest/).
 
 Pomocí následujících příkazů tyto moduly nainstalujte.
 
@@ -86,7 +86,7 @@ pip install azure-datalake-store
 
 3. Uložte změny v souboru mysample.py.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Ověření
 
 V této části popíšeme různé způsoby, jak provádět ověření pomocí Azure AD. Dostupné jsou následující možnosti:
 
@@ -130,10 +130,10 @@ Následující fragment kódu nejprve vytvoří klienta Data Lake Storage Gen1 �
     adlsAcctClient.account.delete(adlsAccountName)
     
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Operace systému souborů na data Lake Storage Gen1 s využitím Pythonu](data-lake-store-data-operations-python.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Reference k jazyku Python (systém souborů) pro Azure – datalake – Store](https://azure-datalake-store.readthedocs.io/en/latest)
 * [Open Source aplikace pro velké objemy dat kompatibilní s Azure Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)

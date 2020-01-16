@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Migrace z federace na PTA pro Azure AD'
+title: 'Azure AD Connect: migrace z federace na PTA pro Azure AD'
 description: Tento článek obsahuje informace o přesunu hybridního prostředí identity z federace do předávacího ověřování.
 services: active-directory
 author: billmath
@@ -12,18 +12,19 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6646217149cec48ca5fcee59b3dd9d850965c602
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 21ceacf27f92781b40a856b0c0a4d627d41a0738
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779907"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028564"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrace z federace na předávací ověřování pro Azure Active Directory
 
 Tento článek popisuje, jak přesunout domény organizace z Active Directory Federation Services (AD FS) (AD FS) do předávacího ověřování.
 
-[Tento článek](https://aka.ms/ADFSTOPTADPDownload)si můžete stáhnout.
+> [!NOTE]
+> Změna metody ověřování vyžaduje plánování, testování a případné výpadky. [Příprava na přípravu](how-to-connect-staged-rollout.md) nabízí alternativní způsob testování a postupného migrace z federace na cloudové ověřování pomocí předávacího ověřování.
 
 ## <a name="prerequisites-for-migrating-to-pass-through-authentication"></a>Předpoklady pro migraci na předávací ověřování
 
@@ -36,13 +37,13 @@ K úspěšnému dokončení kroků, které je potřeba provést při migraci na 
 > [!IMPORTANT]
 > V případě, že převedete domény ze federované identity na spravovanou identitu, můžete si přečíst v zastaralých dokumentaci, nástrojích a blogůch, které převod uživatele vyžaduje. *Převod uživatelů* již není vyžadován. Microsoft pracuje na aktualizaci dokumentace a nástrojů k tomu, aby odrážela tuto změnu.
 
-Chcete-li aktualizovat Azure AD Connect, proveďte kroky [v Azure AD Connect: Upgradujte na nejnovější verzi](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version).
+Chcete-li aktualizovat Azure AD Connect, proveďte kroky v [Azure AD Connect: upgrade na nejnovější verzi](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version).
 
 ### <a name="plan-authentication-agent-number-and-placement"></a>Plánování a číslo a umístění agenta ověřování
 
 Předávací ověřování vyžaduje nasazení nenáročných agentů na serveru Azure AD Connect a na místním počítači, na kterém běží Windows Server. Pokud chcete snížit latenci, nainstalujte agenty co nejblíže k řadičům domény služby Active Directory.
 
-Pro většinu zákazníků stačí dva nebo tři ověřovací agenty k zajištění vysoké dostupnosti a požadované kapacity. Tenant může mít zaregistrovaný maximálně 12 agentů. První Agent je vždy nainstalován na samotném Azure AD Connect serveru. Další informace o omezeních agentů a možnostech nasazení agenta [najdete v tématu předávací ověřování Azure AD: Aktuální omezení](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-current-limitations).
+Pro většinu zákazníků stačí dva nebo tři ověřovací agenty k zajištění vysoké dostupnosti a požadované kapacity. Tenant může mít zaregistrovaný maximálně 12 agentů. První Agent je vždy nainstalován na samotném Azure AD Connect serveru. Další informace o omezeních agentů a možnostech nasazení agenta najdete v tématu [předávací ověřování Azure AD: aktuální omezení](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-current-limitations).
 
 ### <a name="plan-the-migration-method"></a>Naplánování metody migrace
 
@@ -77,8 +78,8 @@ Chcete-li pochopit, kterou metodu byste měli použít, proveďte kroky v násle
    ![Snímek obrazovky s možností zobrazení aktuální konfigurace na stránce další úlohy](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image2.png)<br />
 3. Na stránce **Kontrola řešení** přejděte na **Active Directory Federation Services (AD FS) (AD FS)** .<br />
 
-   * Pokud se v této části objeví konfigurace AD FS, můžete bezpečně předpokládat, že AD FS byla původně nakonfigurovaná pomocí Azure AD Connect. Domény můžete převést z federované identity na spravovanou identitu pomocí možnosti Azure AD Connect **změnit přihlašování uživatele** . Další informace o tomto procesu najdete v části **s možností: Konfigurace předávacího ověřování pomocí Azure AD Connect**.
-   * Pokud AD FS není uveden v aktuálním nastavení, musíte ručně převést domény ze federované identity na spravovanou identitu pomocí prostředí PowerShell. Další informace o tomto procesu naleznete v části **možnost B: Přepněte ze federace na předávací ověřování pomocí Azure AD Connect a PowerShellu**.
+   * Pokud se v této části objeví konfigurace AD FS, můžete bezpečně předpokládat, že AD FS byla původně nakonfigurovaná pomocí Azure AD Connect. Domény můžete převést z federované identity na spravovanou identitu pomocí možnosti Azure AD Connect **změnit přihlašování uživatele** . Další informace o tomto procesu najdete v části **možnost a: Konfigurace předávacího ověřování pomocí Azure AD Connect**.
+   * Pokud AD FS není uveden v aktuálním nastavení, musíte ručně převést domény ze federované identity na spravovanou identitu pomocí prostředí PowerShell. Další informace o tomto procesu najdete v části **možnost B: přepnutí z federace na předávací ověřování pomocí Azure AD Connect a PowerShellu**.
 
 ### <a name="document-current-federation-settings"></a>Dokumentovat aktuální nastavení federace
 
@@ -104,7 +105,7 @@ Další informace najdete v těchto článcích:
 > [!NOTE]
 > Pokud je **SupportsMfa** nastavené na **hodnotu true**, použijete místní řešení Multi-Factor Authentication k vložení výzvy ke čtení druhého faktoru do toku ověřování uživatele. Tato instalace už nefunguje pro scénáře ověřování Azure AD. 
 >
-> Místo toho použijte cloudovou službu Azure Multi-Factor Authentication k provedení stejné funkce. Než budete pokračovat, pečlivě vyhodnoťte požadavky služby Multi-Factor Authentication. Před převodem domén se ujistěte, že rozumíte tomu, jak používat Azure Multi-Factor Authentication, dopad na licencování a proces registrace uživatelů.
+> Místo toho použijte službu Azure Multi-Factor Authentication Cloud-based Service k provedení stejné funkce. Než budete pokračovat, pečlivě vyhodnoťte požadavky služby Multi-Factor Authentication. Před převodem domén se ujistěte, že rozumíte tomu, jak používat Azure Multi-Factor Authentication, dopad na licencování a proces registrace uživatelů.
 
 #### <a name="back-up-federation-settings"></a>Zálohování nastavení federace
 
@@ -124,12 +125,12 @@ Tato část popisuje požadavky na nasazení a podrobnosti o používání AD FS
 
 Před převodem z federované identity na spravovanou identitu si pečlivě prohlédněte, jak aktuálně používáte AD FS pro Azure AD, Office 365 a další aplikace (vztahy důvěryhodnosti předávající strany). Konkrétně Vezměte v úvahu scénáře, které jsou popsány v následující tabulce:
 
-| Pokud uživatel | Stisknutím |
+| Pokud uživatel | Pak |
 |-|-|
 | Plánujete dál používat AD FS s jinými aplikacemi (kromě Azure AD a Office 365). | Po převedení domén budete používat AD FS i Azure AD. Vezměte v úvahu činnost koncového uživatele. V některých scénářích může být potřeba, aby se uživatelé museli ověřovat dvakrát: jednou pro Azure AD (kde uživatel získá přístup SSO k ostatním aplikacím, jako je třeba Office 365), a znovu pro všechny aplikace, které jsou pořád vázané na AD FS jako vztah důvěryhodnosti předávající strany. |
-| Vaše instance AD FS je silně přizpůsobená a spoléhá na konkrétní nastavení přizpůsobení v souboru Unload. js (například pokud jste změnili přihlašovací prostředí tak, aby uživatelé používali jenom formát **sAMAccountName** pro svoje uživatelské jméno místo objektu zabezpečení uživatele). Name (UPN) nebo vaše organizace intenzivně přihlásilo prostředí. Soubor. js se nedá v Azure AD duplikovat. | Než budete pokračovat, musíte ověřit, že služba Azure AD dokáže splnit vaše aktuální požadavky na vlastní nastavení. Další informace a pokyny najdete v částech AD FS brandingu a AD FS přizpůsobení.|
+| Vaše instance AD FS je silně přizpůsobená a spoléhá na konkrétní nastavení přizpůsobení v souboru. js. js (například pokud jste změnili přihlašovací prostředí tak, aby uživatelé používali jenom formát **sAMAccountName** pro svoje uživatelské jméno místo hlavního názvu uživatele (UPN), nebo vaše organizace zcela vytvořila prostředí pro přihlašování. Soubor. js se nedá v Azure AD duplikovat. | Než budete pokračovat, musíte ověřit, že služba Azure AD dokáže splnit vaše aktuální požadavky na vlastní nastavení. Další informace a pokyny najdete v částech AD FS brandingu a AD FS přizpůsobení.|
 | K blokování starších verzí ověřovacích klientů slouží AD FS.| Zvažte nahrazení AD FS ovládacích prvků, které blokují starší verze ověřování klientů pomocí kombinace [ovládacích prvků podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) a [pravidel přístupu klienta Exchange Online](https://aka.ms/EXOCAR). |
-| Požadujete, aby uživatelé prováděli vícefaktorové ověřování proti místnímu řešení Multi-Factor Authentication serveru, když se uživatelé ověřují AD FS.| Ve spravované doméně identity nemůžete do toku ověřování vložit výzvu Multi-Factor Authentication prostřednictvím místního řešení Multi-Factor Authentication. Po převodu domény ale můžete službu Azure Multi-Factor Authentication použít pro službu Multi-Factor Authentication.<br /><br /> Pokud uživatelé aktuálně nepoužívají službu Azure Multi-Factor Authentication, je nutný krok registrace uživatele jednorázová. Musíte připravit na a sdělit plánované registrace vašim uživatelům. |
+| Požadujete, aby uživatelé prováděli vícefaktorové ověřování proti místnímu řešení Multi-Factor Authentication serveru, když se uživatelé ověřují AD FS.| Ve spravované doméně identity nemůžete do toku ověřování vložit výzvu Multi-Factor Authentication prostřednictvím místního řešení Multi-Factor Authentication. Po převodu domény ale můžete službu Azure Multi-Factor Authentication použít pro službu Multi-Factor Authentication.<br /><br /> Pokud uživatelé aktuálně nepoužívají Multi-Factor Authentication Azure, je nutný krok registrace uživatele jednorázová. Musíte připravit na a sdělit plánované registrace vašim uživatelům. |
 | V AD FS v tuto chvíli používáte k řízení přístupu k Office 365 zásady řízení přístupu (pravidla AuthZ).| Zvažte nahrazení zásad odpovídajícími [zásadami podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) Azure AD a [pravidly přístupu klienta Exchange Online](https://aka.ms/EXOCAR).|
 
 ### <a name="common-ad-fs-customizations"></a>Společná přizpůsobení AD FS
@@ -140,7 +141,7 @@ Tato část popisuje běžné AD FS přizpůsobení.
 
 AD FS vystaví deklaraci identity **InsideCorporateNetwork** , pokud se uživatel, který ověřuje, nachází ve firemní síti. Tato deklarace se pak může předat do Azure AD. Deklarace identity se používá pro obejít službu Multi-Factor Authentication na základě síťového umístění uživatele. Informace o tom, jak zjistit, jestli je tato funkce v AD FS v tuto chvíli dostupná, najdete v tématu [důvěryhodné IP adresy pro federované uživatele](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-adfs-cloud).
 
-Deklarace **InsideCorporateNetwork** není k dispozici po převedení domén na předávací ověřování. Pomocí pojmenovaných [umístění ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations) můžete tuto funkci nahradit.
+Deklarace **InsideCorporateNetwork** není k dispozici po převedení domén na předávací ověřování. Pomocí [pojmenovaných umístění ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations) můžete tuto funkci nahradit.
 
 Po nakonfigurování pojmenovaných umístění musíte aktualizovat všechny zásady podmíněného přístupu, které byly nakonfigurovány tak, aby zahrnovaly nebo vyloučily **všechna důvěryhodná umístění** nebo hodnoty **důvěryhodných IP adres MFA** tak, aby odrážely nová pojmenovaná umístění.
 
@@ -197,7 +198,7 @@ Pokud chcete naplánovat vrácení zpět, podívejte se na dokumentaci pro návr
 * Převod spravovaných domén na federované domény pomocí rutiny **Convert-MsolDomainToFederated** .
 * V případě potřeby nakonfigurujte další pravidla deklarací identity.
 
-### <a name="plan-communications"></a>Plánování komunikace
+### <a name="plan-communications"></a>Plán komunikace
 
 Důležitou součástí plánování nasazení a podpory je zajistit, že uživatelé budou proaktivní informování o nadcházejících změnách. Uživatelé by měli znát, co se může setkat a co se jim vyžaduje.
 
@@ -218,24 +219,24 @@ Naplánovali jste své řešení. Teď ji teď můžete implementovat. Implement
 * Připravuje se bezproblémové jednotné přihlašování.
 * Změna metody přihlášení na předávací ověřování a povolení bezproblémového jednotného přihlašování.
 
-### <a name="step-1-prepare-for-seamless-sso"></a>Krok 1: Příprava na bezproblémové jednotné přihlašování
+### <a name="step-1-prepare-for-seamless-sso"></a>Krok 1: Příprava na bezproblémové přihlašování
 
 Aby zařízení používalo bezproblémové jednotné přihlašování, musíte do nastavení zóny intranetu pro uživatele přidat adresu URL služby Azure AD pomocí zásad skupiny ve službě Active Directory.
 
-Ve výchozím nastavení webové prohlížeče automaticky vypočítávají správnou zónu, buď Internet, nebo intranet, z adresy URL. Například **http\/:\/contoso/** Maps do zóny intranetu a **http\/:\/intranet.contoso.com** se mapuje na zónu Internetu (protože adresa URL obsahuje tečku). Prohlížeče odesílají lístky protokolu Kerberos do koncového bodu cloudu, jako je například adresa URL služby Azure AD, jenom v případě, že explicitně přidáte adresu URL do zóny intranetu prohlížeče.
+Ve výchozím nastavení webové prohlížeče automaticky vypočítávají správnou zónu, buď Internet, nebo intranet, z adresy URL. Například **http:\/\/contoso/** Maps na intranetovou zónu a **http:\/\/intranet.contoso.com** se mapuje do zóny Internet (protože adresa URL obsahuje tečku). Prohlížeče odesílají lístky protokolu Kerberos do koncového bodu cloudu, jako je například adresa URL služby Azure AD, jenom v případě, že explicitně přidáte adresu URL do zóny intranetu prohlížeče.
 
 Dokončete kroky k [zavedení](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) požadovaných změn vašich zařízení.
 
 > [!IMPORTANT]
 > Provedení této změny nemění způsob, jakým se uživatelé přihlásí ke službě Azure AD. Je ale důležité, abyste tuto konfiguraci před pokračováním použili pro všechna vaše zařízení. Uživatelům, kteří se přihlásí v zařízeních, které tuto konfiguraci neobdrželi, je nutné zadat uživatelské jméno a heslo pro přihlášení ke službě Azure AD.
 
-### <a name="step-2-change-the-sign-in-method-to-pass-through-authentication-and-enable-seamless-sso"></a>Krok 2: Změňte metodu přihlašování na předávací ověřování a povolte bezproblémové jednotné přihlašování.
+### <a name="step-2-change-the-sign-in-method-to-pass-through-authentication-and-enable-seamless-sso"></a>Krok 2: Změna metody přihlášení na předávací ověřování a povolení bezproblémového jednotného přihlašování
 
 Máte dvě možnosti, jak změnit metodu přihlašování na předávací ověřování a povolit bezproblémové jednotné přihlašování.
 
 #### <a name="option-a-configure-pass-through-authentication-by-using-azure-ad-connect"></a>Možnost A: Konfigurace předávacího ověřování pomocí Azure AD Connect
 
-Tuto metodu použijte, pokud jste původně nakonfigurovali AD FS prostředí pomocí Azure AD Connect. Tuto metodu nemůžete použít, Pokud jste původně nenakonfigurovali AD FS prostředí pomocí Azure AD Connect.
+Tuto metodu použijte, pokud jste původně nakonfigurovali AD FS prostředí pomocí Azure AD Connect. Tuto metodu nemůžete použít, pokud *jste původně nenakonfigurovali* AD FS prostředí pomocí Azure AD Connect.
 
 > [!IMPORTANT]
 > Po dokončení následujících kroků se všechny domény převedou z federované identity na spravovanou identitu. Další informace najdete v [části plánování metody migrace](#plan-the-migration-method).
@@ -260,13 +261,13 @@ Nejprve změňte metodu přihlašování:
    ![Snímek obrazovky připraveno ke konfiguraci stránky](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image8.png)<br />
 7. Na portálu Azure AD vyberte **Azure Active Directory**a pak vyberte **Azure AD Connect**.
 8. Ověřte tato nastavení:
-   * **Federace** je nastavená na Disabled ( **zakázáno**).
+   * **Federace** je nastavená na **disabled (zakázáno**).
    * **Bezproblémové jednotné přihlašování** je nastavené na **povoleno**.
    * **Předávací ověřování** je nastavené na **povoleno**.<br />
 
    ![Snímek obrazovky, který zobrazuje nastavení v oddílu přihlášení uživatele](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image9.png)<br />
 
-Generace. Nasaďte další metody ověřování:
+Další. Nasaďte další metody ověřování:
 
 1. V Azure Portal klikněte na **Azure Active Directory** > **Azure AD Connect**a pak vyberte **předávací ověřování**.
 2. Na stránce **předávací ověřování** vyberte tlačítko **Stáhnout** .
@@ -288,9 +289,9 @@ Generace. Nasaďte další metody ověřování:
 Přejděte k [testování a dalším krokům](#testing-and-next-steps).
 
 > [!IMPORTANT]
-> Přeskočit možnost oddílu **B: Přepněte ze federace na předávací ověřování pomocí Azure AD Connect a PowerShellu**. Kroky v této části se nepoužívají, pokud jste zvolili možnost A, chcete-li změnit metodu přihlašování na předávací ověřování a povolit bezproblémové jednotné přihlašování. 
+> Přeskočte **možnost oddílu B: přepnutí z federace na předávací ověřování pomocí Azure AD Connect a PowerShellu**. Kroky v této části se nepoužívají, pokud jste zvolili možnost A, chcete-li změnit metodu přihlašování na předávací ověřování a povolit bezproblémové jednotné přihlašování. 
 
-#### <a name="option-b-switch-from-federation-to-pass-through-authentication-by-using-azure-ad-connect-and-powershell"></a>Možnost B: Přepnutí z federace na předávací ověřování pomocí Azure AD Connect a PowerShellu
+#### <a name="option-b-switch-from-federation-to-pass-through-authentication-by-using-azure-ad-connect-and-powershell"></a>Možnost B: přepnutí z federace na předávací ověřování pomocí Azure AD Connect a PowerShellu
 
 Tuto možnost použijte, pokud jste původně nenakonfigurovali federované domény pomocí Azure AD Connect.
 
@@ -311,7 +312,7 @@ Nejdřív povolte předávací ověřování:
 
 6. Na stránce **připraveno ke konfiguraci** se ujistěte, že je zaškrtnuté políčko **spustit proces synchronizace po dokončení konfigurace** . Pak vyberte **Konfigurovat**.<br />
 
-   ![Snímek obrazovky, který ukazuje stránku připravenou ke konfiguraci a tlačítko konfigurovat](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image18.png)<br />
+   ![snímek obrazovky, který ukazuje stránku připravenou ke konfiguraci, a tlačítko Konfigurovat](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image18.png)<br />
    Pokud vyberete **Konfigurovat**, dojde k následujícím krokům:
 
    1. Je nainstalován první agent předávacího ověřování.
@@ -341,8 +342,8 @@ Dále nasaďte další ověřovací agenty:
  
 4. Spusťte instalaci ověřovacího agenta. Během instalace musíte zadat přihlašovací údaje účtu globálního správce.<br />
 
-   ![Snímek obrazovky, který zobrazuje tlačítko instalovat na stránce balíčku Microsoft Azure AD připojit ověřovacího agenta](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image23.png)<br />
-   ![Snímek obrazovky zobrazující přihlašovací stránku](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image24.png)<br />
+   ![snímek obrazovky, který zobrazuje tlačítko instalovat na stránce balíčku Microsoft Azure AD Connect Authentication agent](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image23.png)<br />
+   ![snímek obrazovky, který zobrazuje přihlašovací stránku](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image24.png)<br />
 5. Po nainstalování ověřovacího agenta se můžete vrátit na stránku stav předávacího agenta pro předávání a ověřit stav dalších agentů.
 
 V tuto chvíli je federované ověřování pro vaše domény pořád aktivní a funkční. Pokud chcete v nasazení pokračovat, musíte převést každou doménu ze federované identity na spravovanou identitu, aby předávací ověřování spouštělo žádosti o ověření pro doménu.
@@ -360,7 +361,7 @@ Dokončete převod pomocí modulu Azure AD PowerShell:
  
 3. Na portálu Azure AD vyberte **Azure Active Directory** > **Azure AD Connect**.
 4. Po převedení všech federovaných domén ověřte tato nastavení:
-   * **Federace** je nastavená na Disabled ( **zakázáno**).
+   * **Federace** je nastavená na **disabled (zakázáno**).
    * **Bezproblémové jednotné přihlašování** je nastavené na **povoleno**.
    * **Předávací ověřování** je nastavené na **povoleno**.<br />
 
@@ -395,8 +396,8 @@ K otestování bezproblémového jednotného přihlašování:
 1. Přihlaste se k počítači připojenému k doméně, který je připojený k podnikové síti.
 2. V aplikaci Internet Explorer nebo Chrome použijte jednu z následujících adres URL (v doméně nahraďte "contoso"):
 
-   * https:\/\/myapps.Microsoft.com/contoso.com
-   * https:\/\/myapps.Microsoft.com/contoso.onmicrosoft.com
+   * https:\/\/myapps.microsoft.com/contoso.com
+   * https:\/\/myapps.microsoft.com/contoso.onmicrosoft.com
 
    Uživatel se krátce přesměruje na přihlašovací stránku služby Azure AD, kde se zobrazí zpráva "Probíhá pokus o přihlášení". Uživateli se nezobrazí výzva k zadání uživatelského jména nebo hesla.<br />
 
@@ -439,7 +440,7 @@ Je důležité často vymezit dešifrovací klíč protokolu Kerberos účtu po�
 
 Zahajte výměnu nebezproblémového dešifrovacího klíče Kerberos pro jednotné přihlašování na místním serveru, na kterém běží Azure AD Connect.
 
-Další informace najdete v tématu Návody převádění dešifrovacího [klíče protokolu Kerberos účtu počítače s AZUREADSSOACC?](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-faq).
+Další informace najdete v tématu [návody převádění dešifrovacího klíče protokolu Kerberos účtu počítače s AZUREADSSOACC?](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-faq).
 
 ## <a name="monitoring-and-logging"></a>Monitorování a protokolování
 
@@ -451,7 +452,7 @@ Můžete také zapnout protokolování pro řešení potíží.
 
 Další informace najdete v tématu [řešení potíží s předávacím ověřováním Azure Active Directory](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-Pass-through-authentication).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si o [Azure AD Connect konceptech návrhu](plan-connect-design-concepts.md).
 * Vyberte [správné ověřování](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).

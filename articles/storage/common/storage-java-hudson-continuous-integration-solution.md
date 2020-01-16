@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: tarcher
 ms.subservice: common
-ms.openlocfilehash: 75b0ea106be04cd77b18bfed8487edb6a7b7f65b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f8cdd7b950a11045f795ac93d4a0904f2dc526fa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839186"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970195"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Použití Azure Storage s řešením Hudson Continuous Integration
 ## <a name="overview"></a>Přehled
@@ -53,7 +53,7 @@ K použití Blob service s řešením CI v Hudson budete potřebovat následují
      
       I když by bylo typické řešení CI Hudson nastaveno tak, aby běželo jako služba, bude pro tento kurz stačit spuštění Hudson War na příkazovém řádku.
 * Účet Azure. Účet Azure si můžete zaregistrovat na <https://www.azure.com>.
-* Účet úložiště Azure. Pokud ještě nemáte účet úložiště, můžete ho vytvořit pomocí postupu v části [Vytvoření účtu úložiště](../common/storage-quickstart-create-account.md).
+* Účet úložiště Azure. Pokud ještě nemáte účet úložiště, můžete ho vytvořit pomocí postupu v části [Vytvoření účtu úložiště](../common/storage-account-create.md).
 * Řešení Hudson CI se doporučuje, ale není nutné, protože následující obsah bude používat základní příklad, který vám ukáže, jaké kroky potřebujete při použití Blob service jako úložiště pro artefakty sestavení Hudson CI.
 
 ## <a name="how-to-use-the-blob-service-with-hudson-ci"></a>Použití Blob service s Hudson CI
@@ -65,7 +65,7 @@ Pokud chcete použít Blob service s Hudson, budete muset nainstalovat modul plu
 3. Klikněte na kartu **dostupné** .
 4. Klikněte na **Další**.
 5. V části pro **nahrávání artefaktů** vyberte **Microsoft Azure Storage modul plug-in**.
-6. Klikněte na **Instalovat**.
+6. Klikněte na **Nainstalovat**.
 7. Po dokončení instalace restartujte Hudson.
 
 ## <a name="how-to-configure-the-azure-storage-plugin-to-use-your-storage-account"></a>Jak nakonfigurovat modul plug-in Azure Storage pro použití vašeho účtu úložiště
@@ -83,7 +83,7 @@ Pokud chcete použít Blob service s Hudson, budete muset nainstalovat modul plu
    
     e. Volitelné Pokud máte další účty úložiště, které chcete zpřístupnit pro Hudson CI, klikněte na **Přidat další účty úložiště**.
    
-    f. Uložte nastavení kliknutím na **Uložit** .
+    f. Klikněte na tlačítko **Uložit** uložte nastavení.
 
 ## <a name="how-to-create-a-post-build-action-that-uploads-your-build-artifacts-to-your-storage-account"></a>Jak vytvořit akci po sestavení, která odešle artefakty sestavení do vašeho účtu úložiště
 Pro účely instrukcí nejdřív budeme muset vytvořit úlohu, která vytvoří několik souborů, a pak do akce po sestavení přidat soubory k nahrání souborů do účtu úložiště.
@@ -112,11 +112,11 @@ Pro účely instrukcí nejdřív budeme muset vytvořit úlohu, která vytvoří
 9. Volitelné Klikněte na tlačítko **vyčistit kontejner před odesláním** , pokud chcete, aby kontejner vymazal obsah před odesláním artefaktů sestavení (nechte nezaškrtnuté, pokud nechcete vyčistit obsah kontejneru).
 10. **Seznam artefaktů, které se mají nahrát**, získáte zadáním **textu/*. txt**.
 11. Pro **společnou virtuální cestu pro nahrané artefakty**zadejte **$ {Build\_ID}/$ {Build\_Number}** .
-12. Uložte nastavení kliknutím na **Uložit** .
+12. Klikněte na tlačítko **Uložit** uložte nastavení.
 13. V řídicím panelu Hudson klikněte na **sestavit** a spusťte **MyJob**. Projděte si výstup konzoly pro stav. Stavové zprávy pro Azure Storage budou zahrnuty do výstupu konzoly, když akce po sestavení začne nahrávat artefakty sestavení.
 14. Po úspěšném dokončení úlohy můžete artefakty sestavení prošetřit otevřením veřejného objektu BLOB.
     
-    a. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+    a. Přihlaste se na web [Azure Portal](https://portal.azure.com).
     
     b. Klikněte na **úložiště**.
     
@@ -158,7 +158,7 @@ V následující části najdete přehled komponent Blob service.
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 
 ## <a name="next-steps"></a>Další kroky
-* [Splnění Hudson](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
+* [Meet Hudson](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
 * [Azure Storage SDK pro jazyk Java](https://github.com/azure/azure-storage-java)
 * [Referenční informace ke klientské sadě SDK služby Azure Storage](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
 * [REST API služby Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)

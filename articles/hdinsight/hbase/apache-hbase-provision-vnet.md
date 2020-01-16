@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: c128f17a3d2c4f5461a04ae375e05336cc994b4b
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: e4e15d1c6554fc567f668b2033bff5b5664db918
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552300"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972793"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Vytváření clusterů Apache HBA v HDInsight v Azure Virtual Network
 
@@ -29,7 +29,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="create-apache-hbase-cluster-into-virtual-network"></a>Vytvoření clusteru Apache HBA do virtuální sítě
 
-V této části vytvoříte cluster Apache HBA založený na systému Linux s závislým Azure Storage účtem ve službě Azure Virtual Network pomocí [šablony Azure Resource Manager](../../azure-resource-manager/resource-group-template-deploy.md). Další metody vytváření clusterů a porozumění nastavením najdete v tématu [Vytvoření clusterů HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Další informace o použití šablony k vytvoření Apache Hadoop clusterů ve službě HDInsight najdete v tématu [vytvoření Apache Hadoop clusterů ve službě HDInsight pomocí šablon Azure Resource Manager](../hdinsight-hadoop-create-linux-clusters-arm-templates.md) .
+V této části vytvoříte cluster Apache HBA založený na systému Linux s závislým Azure Storage účtem ve službě Azure Virtual Network pomocí [šablony Azure Resource Manager](../../azure-resource-manager/templates/deploy-powershell.md). Další metody vytváření clusterů a porozumění nastavením najdete v tématu [Vytvoření clusterů HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Další informace o použití šablony k vytvoření Apache Hadoop clusterů ve službě HDInsight najdete v tématu [vytvoření Apache Hadoop clusterů ve službě HDInsight pomocí šablon Azure Resource Manager](../hdinsight-hadoop-create-linux-clusters-arm-templates.md) .
 
 > [!NOTE]  
 > Některé vlastnosti jsou pevně zakódované do šablony. Příklad:

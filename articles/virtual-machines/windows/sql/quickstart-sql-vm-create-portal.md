@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bbf127f105f0ef22a23f00541396c2ac66b0e5f9
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 801a6fc0602882d1af49c06bafcfd51942e6da2e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828363"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965652"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Windows a SQL Serverem 2017 na webu Azure Portal
 
@@ -39,7 +39,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a id="select"></a> Výběr image virtuálního počítače s SQL Serverem
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí svého účtu.
+1. Přihlaste se pomocí svého účtu k webu [Azure Portal](https://portal.azure.com).
 
 1. V nabídce na levé straně Azure Portal vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte *Azure SQL* .
 1. Výběrem **+ Přidat** otevřete stránku **vybrat možnost nasazení SQL** . Další informace si můžete zobrazit tak, že na dlaždici **virtuální počítače SQL** vyberete **Zobrazit podrobnosti** .
@@ -47,7 +47,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
    ![Nové okno hledání](./media/quickstart-sql-vm-create-portal/select-sql-2017-vm-image.png)
 
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
    ![Nové okno hledání](./media/quickstart-sql-vm-create-portal/create-sql-2017-vm-image.png)
 
@@ -80,7 +80,7 @@ Na kartě **základy** zadejte následující informace:
 
 Na kartě **nastavení SQL Server** nakonfigurujte následující možnosti:
 
-1. V části **zabezpečení & sítě**vyberte možnost _veřejné (Internet_) pro **připojení SQL** a změňte port na `1401`, abyste se vyhnuli použití známého čísla portu ve veřejném scénáři. 
+1. V části **zabezpečení & sítě**vyberte možnost _veřejné (Internet_) pro **připojení SQL** a změňte port `1401` tak, aby se nepoužívaly známé číslo portu ve veřejném scénáři. 
 1. V části **ověřování SQL**vyberte **Povolit**. Jako přihlašovací údaje pro SQL je nastavené stejné uživatelské jméno a heslo, které jste nakonfigurovali pro virtuální počítač. Pro [**integraci Azure Key Vault**](virtual-machines-windows-ps-sql-keyvault.md)použijte výchozí nastavení. **Konfigurace úložiště** není k dispozici pro základní SQL Server image virtuálního počítače, ale můžete najít další informace o dostupných možnostech pro další image v [konfiguraci úložiště](virtual-machines-windows-sql-server-storage-configuration.md#new-vms).  
 
    ![Nastavení zabezpečení systému SQL Server](media/quickstart-sql-vm-create-portal/sql-server-settings.png)
@@ -88,7 +88,7 @@ Na kartě **nastavení SQL Server** nakonfigurujte následující možnosti:
 
 1. V případě potřeby změňte všechna další nastavení a potom vyberte **zkontrolovat + vytvořit**. 
 
-   ![Zkontrolovat a vytvořit](media/quickstart-sql-vm-create-portal/review-create.png)
+   ![Revize a vytvoření](media/quickstart-sql-vm-create-portal/review-create.png)
 
 
 ## <a name="create-the-sql-server-vm"></a>Vytvoření virtuálního počítače s SQL Serverem
@@ -128,12 +128,12 @@ Přístup k počítači vám umožňuje podle potřeb přímo měnit nastavení 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nepotřebujete, aby virtuální počítač SQL VM běžel nepřetržitě, můžete se vyhnout zbytečným poplatkům: když počítač nepoužíváte, zastavte ho. Můžete také trvale odstranit všechny prostředky přidružené k virtuálnímu počítači odstraněním příslušné skupiny prostředků na portálu. Tím trvale odstraníte i virtuální počítač, proto tento příkaz používejte opatrně. Další informace najdete v tématu [Správa prostředků Azure prostřednictvím portálu](../../../azure-resource-manager/manage-resource-groups-portal.md).
+Pokud nepotřebujete, aby virtuální počítač SQL VM běžel nepřetržitě, můžete se vyhnout zbytečným poplatkům: když počítač nepoužíváte, zastavte ho. Můžete také trvale odstranit všechny prostředky přidružené k virtuálnímu počítači odstraněním příslušné skupiny prostředků na portálu. Tím trvale odstraníte i virtuální počítač, proto tento příkaz používejte opatrně. Další informace najdete v tématu [Správa prostředků Azure prostřednictvím portálu](../../../azure-resource-manager/management/manage-resource-groups-portal.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste v Azure Portal vytvořili virtuální počítač s SQL Server 2017. Další informace o tom, jak na tento nový SQL Server migrovat data, najdete v následujícím článku.
+V tomto rychlém startu jste v Azure Portal vytvořili virtuální počítač s SQL Server 2017. Další informace o tom, jak na tento nový SQL Server přenést data, najdete v následujícím článku.
 
 > [!div class="nextstepaction"]
 > [Migrace databáze na virtuální počítač s SQL](virtual-machines-windows-migrate-sql.md)

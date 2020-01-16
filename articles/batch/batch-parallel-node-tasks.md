@@ -3,7 +3,7 @@ title: Spouštějte úlohy paralelně a efektivně používejte výpočetní pro
 description: Zvýšení efektivity a snížení nákladů pomocí menšího počtu výpočetních uzlů a spuštění souběžných úkolů na každém uzlu ve fondu Azure Batch
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 538a067c-1f6e-44eb-a92b-8d51c33d3e1a
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/17/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f45c35e6d9fb611ebf73c4eab8b517d8575b8e82
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2a47cbbf11117197d6d00d532fb0321d284c56b7
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094944"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026806"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Souběžné spouštění úloh pro maximalizaci využití výpočetních uzlů Batch 
 
@@ -33,17 +33,17 @@ I když některé scénáře mají za úkol vyhradit všechny prostředky uzlu n
 * **Replikace místního výpočetního clusteru**, například když nejprve přesunete výpočetní prostředí do Azure. Pokud vaše aktuální místní řešení spouští více úloh na výpočetní uzel, můžete zvýšit maximální počet úloh uzlu, aby se tato konfigurace podrobněji rozrážejí.
 
 ## <a name="example-scenario"></a>Příklad scénáře
-Jako příklad pro ilustraci výhod paralelního provádění úloh řekněme, že vaše aplikace úkolu má požadavky na procesor a paměť, což znamená, že [standardní\_uzly D1](../cloud-services/cloud-services-sizes-specs.md) jsou dostatečné. Aby bylo možné dokončit úlohu v požadovaném čase, je 1 000 potřebných uzlů.
+Jako příklad pro ilustraci výhod paralelního provádění úkolů řekněme, že vaše aplikace úkolu má požadavky na procesor a paměť, což znamená, že [standardní\_uzly D1](../cloud-services/cloud-services-sizes-specs.md) jsou dostatečné. Aby bylo možné dokončit úlohu v požadovaném čase, je 1 000 potřebných uzlů.
 
-Místo používání standardních\_uzlů D1 s 1 jádrem procesoru můžete použít [standardní\_uzly D14](../cloud-services/cloud-services-sizes-specs.md) s 16 jádry každého a povolit paralelní provádění úkolů. Proto by bylo možné použít *maximálně 16 uzlů* – místo 1 000 uzlů by se vyžadoval pouze 63. Kromě toho, pokud jsou pro každý uzel požadovány velké soubory aplikace nebo referenční data, jsou znovu vylepšena doba trvání a účinnost úlohy, protože data jsou zkopírována pouze do 63 uzlů.
+Místo používání standardních\_uzlů D1 s 1 jádrem procesoru můžete použít [standardní uzly\_D14](../cloud-services/cloud-services-sizes-specs.md) , které mají 16 jader, a povolit paralelní provádění úkolů. Proto by bylo možné použít *maximálně 16 uzlů* – místo 1 000 uzlů by se vyžadoval pouze 63. Kromě toho, pokud jsou pro každý uzel požadovány velké soubory aplikace nebo referenční data, jsou znovu vylepšena doba trvání a účinnost úlohy, protože data jsou zkopírována pouze do 63 uzlů.
 
 ## <a name="enable-parallel-task-execution"></a>Povolit spuštění paralelní úlohy
 Výpočetní uzly můžete nakonfigurovat pro provádění paralelních úkolů na úrovni fondu. Pomocí knihovny Batch .NET nastavte při vytváření fondu vlastnost [CloudPool. MaxTasksPerComputeNode][maxtasks_net] . Pokud používáte REST API dávky, nastavte v textu žádosti během vytváření fondu prvek [maxTasksPerNode][rest_addpool] .
 
-Azure Batch umožňuje nastavit úlohy na jeden uzel až (4x) na počet základních uzlů. Například pokud je fond nakonfigurovaný s uzly o velikosti "velký" (čtyři jádra), `maxTasksPerNode` může se nastavit na 16. Bez ohledu na to, kolik jader má uzel, ale nemůžete mít více než 256 úkolů na jeden uzel. Podrobnosti o počtu jader pro jednotlivé velikosti uzlů najdete v tématu [velikosti pro Cloud Services](../cloud-services/cloud-services-sizes-specs.md). Další informace o omezeních služeb najdete v tématu [kvóty a omezení pro službu Azure Batch](batch-quota-limit.md).
+Azure Batch umožňuje nastavit úlohy na jeden uzel až (4x) na počet základních uzlů. Například pokud je fond nakonfigurovaný s uzly o velikosti "velký" (čtyři jádra), pak `maxTasksPerNode` může být nastavené na 16. Bez ohledu na to, kolik jader má uzel, ale nemůžete mít více než 256 úkolů na jeden uzel. Podrobnosti o počtu jader pro jednotlivé velikosti uzlů najdete v tématu [velikosti pro Cloud Services](../cloud-services/cloud-services-sizes-specs.md). Další informace o omezeních služeb najdete v tématu [kvóty a omezení pro službu Azure Batch](batch-quota-limit.md).
 
 > [!TIP]
-> Nezapomeňte vzít v `maxTasksPerNode` úvahu hodnotu při vytváření [vzorce automatického škálování][enable_autoscaling] pro váš fond. Například vzorec, který vyhodnocuje `$RunningTasks` , může výrazně ovlivnit zvýšení počtu úkolů na uzel. Další informace najdete v tématu [Automatické škálování výpočetních uzlů ve fondu Azure Batch](batch-automatic-scaling.md) .
+> Nezapomeňte vzít v úvahu hodnotu `maxTasksPerNode` při vytváření [vzorce automatického škálování][enable_autoscaling] pro váš fond. Například vzorec, který vyhodnocuje `$RunningTasks` může být významně ovlivněn nárůstem počtu úkolů na uzel. Další informace najdete v tématu [Automatické škálování výpočetních uzlů ve fondu Azure Batch](batch-automatic-scaling.md) .
 >
 >
 
@@ -52,7 +52,7 @@ Když výpočetní uzly ve fondu můžou úlohy spouštět souběžně, je důle
 
 Pomocí vlastnosti [CloudPool. TaskSchedulingPolicy][task_schedule] můžete určit, že se mají úlohy přiřadit rovnoměrně mezi všechny uzly ve fondu ("rozprostření"). Nebo můžete určit, že k jednotlivým uzlům by se měly přiřadit tolik úkolů, než se úkoly přiřadí do jiného uzlu ve fondu ("balení").
 
-Jako příklad toho, jak je tato funkce užitečná, vezměte v úvahu fond [standardních\_D14](../cloud-services/cloud-services-sizes-specs.md) uzlů (v předchozím příkladu), který je nakonfigurovaný s hodnotou [CloudPool. MaxTasksPerComputeNode][maxtasks_net] 16. Pokud je [CloudPool. TaskSchedulingPolicy][task_schedule] nakonfigurovaný s [ComputeNodeFillType][fill_type] packem,může maximalizovat využití všech 16 jader každého uzlu a umožňuje [fondu automatického škálování](batch-automatic-scaling.md) vyřadit nepoužívané uzly z fondu (uzly bez všechny přiřazené úkoly). Tím se minimalizuje využití prostředků a šetří peníze.
+Jako příklad toho, jak je tato funkce užitečná, zvažte, že fond [standardních\_ch uzlů D14](../cloud-services/cloud-services-sizes-specs.md) (v předchozím příkladu), který je nakonfigurovaný s hodnotou [CloudPool. MaxTasksPerComputeNode][maxtasks_net] 16. Pokud je [CloudPool. TaskSchedulingPolicy][task_schedule] nakonfigurovaný s [ComputeNodeFillType][fill_type] *packem*, může maximalizovat využití všech 16 jader každého uzlu a umožňuje [fondu automatického škálování](batch-automatic-scaling.md) vyřadit nepoužívané uzly z fondu (uzly bez přiřazených úkolů). Tím se minimalizuje využití prostředků a šetří peníze.
 
 ## <a name="batch-net-example"></a>Příklad dávky .NET
 Tento fragment kódu pro [dávku .NET][api_net] API zobrazuje požadavek na vytvoření fondu, který obsahuje čtyři uzly s maximálně čtyřmi úkoly na uzel. Určuje zásadu plánování úkolů, která před přiřazením úkolů jinému uzlu ve fondu vyplní každý uzel úkoly. Další informace o přidávání fondů pomocí rozhraní API služby Batch najdete v tématu [BatchClient. PoolOperations. CreatePool][poolcreate_net].
@@ -89,7 +89,7 @@ Tento fragment kódu rozhraní [REST API dávky][api_rest] zobrazuje požadavek 
 ```
 
 > [!NOTE]
-> Vlastnost `maxTasksPerNode` element a [MaxTasksPerComputeNode][maxtasks_net] lze nastavit pouze v okamžiku vytvoření fondu. Po vytvoření fondu již nelze tyto změny změnit.
+> `maxTasksPerNode` element a vlastnost [MaxTasksPerComputeNode][maxtasks_net] lze nastavit pouze v okamžiku vytvoření fondu. Po vytvoření fondu již nelze tyto změny změnit.
 >
 >
 
@@ -123,7 +123,7 @@ Druhý běh ukázky ukazuje výrazné snížení doby trvání úlohy. Důvodem 
 >
 >
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 ### <a name="batch-explorer-heat-map"></a>Batch Explorer Heat mapa
 [Batch Explorer][batch_labs] je bezplatný a samostatný klientský nástroj s bohatými funkcemi, který vám umožní vytvářet, ladit a monitorovat Azure Batch aplikace. Batch Explorer obsahuje funkci *Heat mapy* , která poskytuje vizualizaci provádění úlohy. Když spouštíte ukázkovou aplikaci [ParallelTasks][parallel_tasks_sample] , můžete pomocí funkce heat mapa snadno vizualizovat spouštění paralelních úloh na jednotlivých uzlech.
 

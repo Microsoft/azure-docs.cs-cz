@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: michazag
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 4/29/2019
-ms.openlocfilehash: 6a95cbad161906bd12a608880ac694d6bdf1ed27
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.date: 1/14/2020
+ms.openlocfilehash: 868e9e068244af91e218d906bee115b58906152f
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383053"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027908"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark-preview"></a>Konektor Azure Průzkumník dat pro Apache Spark (Preview)
 
@@ -33,7 +33,7 @@ Konektor Azure Průzkumník dat Spark je [otevřený zdrojový projekt](https://
 * Nainstalujte knihovnu konektorů služby Azure Průzkumník dat a knihovny, které jsou uvedené v [závislosti](https://github.com/Azure/azure-kusto-spark#dependencies) , včetně následujících knihoven [Java SDK Kusto](/azure/kusto/api/java/kusto-java-client-library) :
     * [Kusto data Client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
     * [Klient ingestování Kusto](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
-* Předem připravené knihovny pro [Spark 2,4, Scala 2,11](https://github.com/Azure/azure-kusto-spark/releases)
+* Předem připravené knihovny pro [Spark 2,4, Scala 2,11](https://github.com/Azure/azure-kusto-spark/releases) a [úložiště Maven](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector)
 
 ## <a name="how-to-build-the-spark-connector"></a>Postup sestavení konektoru Spark
 
@@ -82,28 +82,21 @@ Další informace najdete v tématu [použití konektoru](https://github.com/Azu
 > [!NOTE]
 > Při provádění následujících kroků se doporučuje použít nejnovější verzi služby Azure Průzkumník dat Spark Connector:
 
-1. Nastavte následující nastavení clusteru Spark na základě Azure Databricks clusteru pomocí Spark 2,4 a Scala 2,11: 
+1. Nastavte následující nastavení clusteru Spark na základě Azure Databricks clusteru pomocí Spark 2.4.4 a Scala 2,11: 
 
     ![Nastavení clusteru datacihly](media/spark-connector/databricks-cluster.png)
-
-1. Import knihovny konektorů služby Azure Průzkumník dat:
+    
+1. Nainstalujte nejnovější knihovnu Spark-kusto-Connector z Maven:
 
     ![Importovat knihovnu Azure Průzkumník dat](media/spark-connector/db-create-library.png)
-
-1. Přidat další závislosti (není nutné při použití z Maven):
-
-    ![Přidat závislosti](media/spark-connector/db-dependencies.png)
-
-    > [!TIP]
-    > Správná verze Java Release pro každou verzi Sparku najdete [tady](https://github.com/Azure/azure-kusto-spark#dependencies).
 
 1. Ověřte, že jsou nainstalované všechny požadované knihovny:
 
     ![Ověřit nainstalované knihovny](media/spark-connector/db-libraries-view.png)
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Ověření
 
-Konektor Azure Průzkumník dat Spark umožňuje ověřování pomocí služby Azure Active Directory (Azure AD) pomocí [aplikace Azure AD](#azure-ad-application-authentication), [přístupového tokenu Azure AD](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#direct-authentication-with-access-token), [ověřování zařízení](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#device-authentication) (pro neprodukční scénáře) nebo [klíče Azure. Trezor](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#key-vault). Uživatel musí nainstalovat balíček Azure-webtrezoru a zadat přihlašovací údaje aplikace pro přístup k prostředku Key Vault.
+Konektor Azure Průzkumník dat Spark umožňuje ověřování pomocí služby Azure Active Directory (Azure AD) pomocí [aplikace Azure AD](#azure-ad-application-authentication), [přístupového tokenu Azure AD](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#direct-authentication-with-access-token), [ověřování zařízení](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#device-authentication) (pro neprodukční scénáře) nebo [Azure Key Vault](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#key-vault). Uživatel musí nainstalovat balíček Azure-webtrezoru a zadat přihlašovací údaje aplikace pro přístup k prostředku Key Vault.
 
 ### <a name="azure-ad-application-authentication"></a>Ověřování aplikací Azure AD
 
@@ -124,7 +117,7 @@ V clusteru Azure Průzkumník dat musí být udělena následující oprávněn�
  
 Další informace o rolích zabezpečení Azure Průzkumník dat najdete v tématu [autorizace na základě rolí](/azure/kusto/management/access-control/role-based-authorization). Informace o správě rolí zabezpečení najdete v tématu [Správa rolí zabezpečení](/azure/kusto/management/security-roles).
 
-## <a name="spark-sink-writing-to-azure-data-explorer"></a>Jímka Sparku: Zápis do Azure Průzkumník dat
+## <a name="spark-sink-writing-to-azure-data-explorer"></a>Jímka Sparku: zápis do Azure Průzkumník dat
 
 1. Nastavit parametry jímky:
 
@@ -144,19 +137,19 @@ Další informace o rolích zabezpečení Azure Průzkumník dat najdete v téma
 
     ```scala
     import com.microsoft.kusto.spark.datasink.KustoSinkOptions
-    val conf = Map(
-            KustoSinkOptions.KUSTO_CLUSTER -> cluster,
-            KustoSinkOptions.KUSTO_TABLE -> table,
-            KustoSinkOptions.KUSTO_DATABASE -> database,
-            KustoSinkOptions.KUSTO_AAD_CLIENT_ID -> appId,
-            KustoSinkOptions.KUSTO_AAD_CLIENT_PASSWORD -> appKey,
-            KustoSinkOptions.KUSTO_AAD_AUTHORITY_ID -> authorityId)
-    
+    import org.apache.spark.sql.{SaveMode, SparkSession}
+
     df.write
       .format("com.microsoft.kusto.spark.datasource")
-      .options(conf)
-      .save()
-      
+      .option(KustoSinkOptions.KUSTO_CLUSTER, cluster)
+      .option(KustoSinkOptions.KUSTO_DATABASE, database)
+      .option(KustoSinkOptions.KUSTO_TABLE, "Demo3_spark")
+      .option(KustoSinkOptions.KUSTO_AAD_CLIENT_ID, appId)
+      .option(KustoSinkOptions.KUSTO_AAD_CLIENT_PASSWORD, appKey)
+      .option(KustoSinkOptions.KUSTO_AAD_AUTHORITY_ID, authorityId)
+      .option(KustoSinkOptions.KUSTO_TABLE_CREATE_OPTIONS, "CreateIfNotExist")
+      .mode(SaveMode.Append)
+      .save()  
     ```
     
    Nebo použijte zjednodušenou syntaxi:
@@ -189,10 +182,9 @@ Další informace o rolích zabezpečení Azure Průzkumník dat najdete v téma
           .option(KustoSinkOptions.KUSTO_WRITE_ENABLE_ASYNC, "true") // Optional, better for streaming, harder to handle errors
           .trigger(Trigger.ProcessingTime(TimeUnit.SECONDS.toMillis(10))) // Sync this with the ingestionBatching policy of the database
           .start()
-    
     ```
 
-## <a name="spark-source-reading-from-azure-data-explorer"></a>Zdroj Spark: Čtení z Azure Průzkumník dat
+## <a name="spark-source-reading-from-azure-data-explorer"></a>Zdroj Spark: čtení z Azure Průzkumník dat
 
 1. Při čtení malých objemů dat definujte dotaz na data:
 
@@ -252,3 +244,9 @@ Další informace o rolích zabezpečení Azure Průzkumník dat najdete v téma
     
     display(dfFiltered)
     ```
+
+## <a name="next-steps"></a>Další kroky
+
+* Další informace o [konektoru Azure Průzkumník dat Spark](https://github.com/Azure/azure-kusto-spark/tree/master/docs)
+* [Ukázka kódu](https://github.com/Azure/azure-kusto-spark/tree/master/samples/src/main)
+

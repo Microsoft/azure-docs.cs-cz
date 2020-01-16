@@ -3,12 +3,12 @@ title: Programové vytváření zásad
 description: Tento článek vás provede programově vytvářením a správou zásad pro Azure Policy pomocí rozhraní příkazového řádku Azure, Azure PowerShell a REST API.
 ms.date: 01/31/2019
 ms.topic: how-to
-ms.openlocfilehash: e81f0ca43788d8f36dde0a58d2ecd4b1604fd77e
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 08ed43a464d1dd7de8220428dbc1c61ce9fc3ad6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873059"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982468"
 ---
 # <a name="programmatically-create-policies"></a>Programové vytváření zásad
 
@@ -16,7 +16,7 @@ Tento článek vás provede programově vytváření a Správa zásad. Azure Pol
 
 Informace o dodržování předpisů najdete v tématu [získávají data dodržování předpisů](get-compliance-data.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že jsou splněny následující požadavky:
 
@@ -30,7 +30,7 @@ Než začnete, ujistěte se, že jsou splněny následující požadavky:
    Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
    ```
 
-   Další informace o registraci a zobrazení poskytovatelů prostředků najdete v tématu [Poskytovatelé a typy prostředků](../../../azure-resource-manager/resource-manager-supported-services.md).
+   Další informace o registraci a zobrazení poskytovatelů prostředků najdete v tématu [Poskytovatelé a typy prostředků](../../../azure-resource-manager/management/resource-providers-and-types.md).
 
 1. Pokud jste tak dosud neučinili, nainstalujte Azure CLI. Můžete získat nejnovější verzi na [instalace Azure CLI ve Windows](/cli/azure/install-azure-cli-windows).
 

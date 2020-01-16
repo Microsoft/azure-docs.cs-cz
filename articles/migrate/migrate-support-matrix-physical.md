@@ -1,64 +1,39 @@
 ---
-title: Podpora pro posouzení fyzického serveru/migrace pomocí Azure Migrate
-description: Shrnuje podporu pro vyhodnocování a migraci fyzických serverů pomocí Azure Migrate.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: Podpora posouzení fyzického serveru pomocí Azure Migrate
+description: Přečtěte si o podpoře fyzického serveru pro posouzení pomocí Azure Migrate.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 9e749297d831aeae7d785a9a9a29bea1f8c6d5e3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2020
+ms.openlocfilehash: 32080605217cde78bd648ca6192f73d1025dea4c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454623"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028777"
 ---
-# <a name="support-matrix-for-physical-server-assessment-and-migration"></a>Matice podpory pro vyhodnocení a migraci fyzických serverů
+# <a name="support-matrix-for-physical-server-assessment"></a>Matice podpory pro posouzení fyzického serveru 
 
 [Službu Azure Migrate](migrate-overview.md) můžete použít k vyhodnocení a migraci počítačů do Microsoft Azure cloudu. Tento článek shrnuje nastavení podpory a omezení pro vyhodnocení a migraci místních fyzických serverů.
 
 
+## <a name="overview"></a>Přehled
 
-## <a name="physical-server-scenarios"></a>Scénáře fyzického serveru
+K vyhodnocení místních počítačů pro migraci do Azure pomocí tohoto článku přidáte nástroj Azure Migrate: Server Assessment Tool do projektu Azure Migrate. Nasadíte [zařízení Azure Migrate](migrate-appliance.md). Zařízení nepřetržitě zjišťuje místní počítače a odesílá data o konfiguraci a výkonu do Azure. Po zjištění počítače shromáždíte zjištěné počítače do skupin a spustíte posouzení pro skupinu.
 
-Tabulka shrnuje podporované scénáře pro fyzické servery.
-
-**Nasazení** | **Podrobnosti***
---- | ---
-**Posouzení místních fyzických serverů** | [Nastavte](tutorial-prepare-physical.md) své první posouzení.<br/><br/> [Spusťte](tutorial-assess-physical.md) posouzení.
-**Migrace fyzických serverů do Azure** | [Vyzkoušejte](tutorial-migrate-physical-virtual-machines.md) migraci do Azure.
-
-
-## <a name="azure-migrate-projects"></a>Azure Migrate projekty
+## <a name="limitations"></a>Omezení
 
 **Podpora** | **Podrobnosti**
 --- | ---
-**Oprávnění Azure** | Chcete-li vytvořit projekt Azure Migrate, potřebujete oprávnění přispěvatele nebo vlastníka v rámci předplatného.
-**Fyzické servery** | V jednom projektu posuďte až 35 000 fyzických serverů. V předplatném Azure můžete mít více projektů. Projekt může zahrnovat fyzické servery, virtuální počítače VMware a virtuální počítače Hyper-V až do limitů hodnocení.
-**Zeměpisné oblasti** | Azure Migrate projekty lze vytvořit v řadě geografických oblastí. I když můžete vytvářet projekty v konkrétních geografických oblastech, můžete vyhodnotit nebo migrovat počítače pro jiná cílová umístění. Geografie projektu se používá pouze k uložení zjištěných metadat.
+**Omezení hodnocení**| Objevte a posuďte až 35 000 fyzických serverů v jednom [projektu](migrate-support-matrix.md#azure-migrate-projects).
+**Omezení projektu** | V předplatném Azure můžete vytvořit více projektů. Projekt může zahrnovat virtuální počítače VMware, virtuální počítače Hyper-V a fyzické servery až do limitů hodnocení.
+**Zjišťování** | Zařízení Azure Migrate může zjistit až 250 fyzických serverů.
+**Posouzení** | Do jedné skupiny můžete přidat až 35 000 počítačů.<br/><br/> V jednom posouzení můžete vyhodnotit až 35 000 počítačů.
 
-  **Zeměpisné oblasti** | **Umístění úložiště metadat**
-  --- | ---
-  Azure Government | USA – Virginie
-  Asie a Tichomoří | Východní Asie nebo jihovýchodní Asie
-  Austrálie | Austrálie – východ nebo Austrálie – jihovýchod
-  Brazílie | Brazílie – jih
-  Kanada | Kanada – střed nebo Kanada – východ
-  Evropa | Severní Evropa nebo Západní Evropa
-  Francie | Francie – střed
-  Indie | Střed Indie nebo Jižní Indie
-  Japonsko |  Japonsko – východ nebo Japonsko – západ
-  Korea | Korea – střed nebo Korea – jih
-  Spojené království | Velká Británie – jih nebo Velká Británie – západ
-  Spojené státy | Střed USA nebo Západní USA 2
+[Přečtěte si další informace](concepts-assessment-calculation.md) o posouzení.
 
 
- > [!NOTE]
- > Podpora Azure Government je v tuto chvíli dostupná jenom pro [starší verze](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) Azure Migrate.
 
 
-## <a name="assessment-physical-server-requirements"></a>Posouzení – požadavky na fyzický server
+## <a name="physical-server-requirements"></a>Požadavky na fyzický server
 
 | **Podpora**                | **Podrobnosti**               
 | :-------------------       | :------------------- |
@@ -67,42 +42,14 @@ Tabulka shrnuje podporované scénáře pro fyzické servery.
 | **Operační systém** | Podporovány jsou všechny operační systémy [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) a [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) s výjimkou následujících:<br/> Windows Server 2003 <br/> SUSE Linux|
 
 
-## <a name="assessment-appliance-requirements"></a>Posouzení – požadavky na zařízení
+## <a name="azure-migrate-appliance-requirements"></a>Požadavky na zařízení Azure Migrate
 
-Pro posouzení Azure Migrate spouští odlehčené zařízení pro zjišťování fyzických serverů a posílání metadat a dat o výkonu serveru do Azure Migrate. Zařízení můžete spustit buď na fyzickém serveru, nebo na virtuálním počítači a nastavíte ho pomocí skriptu prostředí PowerShell, který stáhnete z Azure Portal. Následující tabulka shrnuje požadavky na zařízení.
+Azure Migrate používá [zařízení Azure Migrate](migrate-appliance.md) ke zjišťování a hodnocení. Zařízení pro fyzické servery může běžet na VIRTUÁLNÍm počítači nebo na fyzickém počítači. Nastavíte ji pomocí skriptu prostředí PowerShell, který stáhnete z Azure Portal.
 
-| **Podpora**                | **Podrobnosti**               
-| :-------------------       | :------------------- |
-| **Nasazení zařízení**   |  Skript instalačního programu zařízení je možné stáhnout z portálu (ve složce zip). <br/> Složku můžete rozbalit a spuštěním skriptu PowerShellu (AzureMigrateInstaller. ps1) na vyhrazeném fyzickém serveru nebo virtuálním počítači nastavit zařízení.<br/>  Počítač vybraný k instalaci zařízení musí používat Windows Server 2016.<br/> Počítač potřebuje dostatek místa k přidělení 16 GB paměti RAM, 8 vCPU, přibližně 80 GB úložného prostoru a externímu přepínači pro virtuální počítač zařízení.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a přístup k Internetu.
-| **Azure Migrate projekt**  |  Zařízení může být přidruženo k jednomu projektu.<br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> V projektu můžete vyhodnotit až 35 000 počítačů.
-| **Zjišťování**              | Jedno zařízení může zjistit až 250 serverů.
-| **Skupina posouzení**       | Do jedné skupiny můžete přidat až 35 000 počítačů.
-| **Posouzení**             | V jednom posouzení můžete vyhodnotit až 35 000 počítačů.
+- Přečtěte si informace o [požadavcích na zařízení](migrate-appliance.md#appliance---physical) pro fyzické servery.
+- Přečtěte si o [adresách URL](migrate-appliance.md#url-access) , ke kterým zařízení potřebuje mít přístup.
 
-
-## <a name="assessment-appliance-url-access"></a>Posouzení – přístup k adrese URL zařízení
-
-K vyhodnocení virtuálních počítačů Azure Migrate zařízení potřebuje připojení k Internetu.
-
-- Když zařízení nasadíte, Azure Migrate provede kontrolu připojení k adresám URL, které jsou shrnuté v následující tabulce.
-- Pokud používáte proxy server založený na adrese URL, povolte přístup k adresám URL v tabulce. tím se zajistí, že proxy přeloží všechny záznamy CNAME přijaté při vyhledávání adres URL.
-- Pokud máte zachycený proxy server, může být nutné importovat certifikát serveru z proxy server do zařízení.
-
-
-**Adresa URL** | **Podrobnosti**  
---- | ---
-*.portal.azure.com | Navigace na Azure Portal
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com  | Přihlaste se ke svému předplatnému Azure.
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Vytváření Azure Active Directorych aplikací pro komunikaci mezi zařízením a službami.
-management.azure.com | Vytváření Azure Active Directorych aplikací pro komunikaci mezi zařízením a službami.
-dc.services.visualstudio.com | Protokolování a monitorování
-*.vault.azure.net | Správa tajných kódů v Azure Key Vault při komunikaci mezi zařízením a službou.
-aka.ms/* | Povolí přístup k odkazům.
-https://download.microsoft.com/download/* | Povoluje soubory ke stažení z webu Microsoft Download.
-
-
-
-## <a name="assessment-port-requirements"></a>Posouzení – požadavky na port
+## <a name="port-access"></a>Přístup k portu
 
 Následující tabulka shrnuje požadavky na porty pro posouzení.
 
@@ -114,4 +61,4 @@ Následující tabulka shrnuje požadavky na porty pro posouzení.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Příprava na posouzení fyzického serveru](tutorial-prepare-physical.md) pro posouzení fyzického serveru a jeho migraci
+[Příprava na posouzení fyzického serveru](tutorial-prepare-physical.md).

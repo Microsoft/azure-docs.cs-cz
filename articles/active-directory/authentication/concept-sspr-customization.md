@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 039b514fe70da0e300e74bbc98a3a0f4e9ea342c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c6f7f59f7bcc93edafa3cbb47bd432b52bde985c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848591"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979463"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Přizpůsobení funkce Azure AD pro Samoobslužné resetování hesla
 
@@ -43,9 +43,9 @@ Uživatelé samoobslužného resetování hesla mají v portálu pro resetován�
 
 Kontaktní e-mail se pošle následujícím příjemcům v tomto pořadí:
 
-1. Pokud je přiřazena role **správce hesel** , budou správci s touto rolí upozorněni.
-2. Pokud nejsou přiřazeni žádní správci hesla, budou upozorněni správci s rolí **Správce uživatelů** .
-3. Pokud není přiřazená žádná z předchozích rolí, budou se informovat **globální správci** .
+1. Pokud je přiřazena role **správce helpdesku** nebo **správce hesel** , budou správci s těmito rolemi upozorněni.
+1. Pokud nejsou přiřazeni žádní správci helpdesku ani správce hesel, budou upozorněni na správce s rolí **Správce uživatelů** .
+1. Pokud není přiřazená žádná z předchozích rolí, oznámí se **globální správci** .
 
 Ve všech případech se oznamuje maximálně 100 příjemců.
 
@@ -94,7 +94,7 @@ V části **Azure Active Directory** > **vlastnosti**můžete změnit atribut n�
 * [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Registrace samoobslužného resetování hesla](../user-help/active-directory-passwords-reset-register.md)
 * [Máte dotaz k licencování?](concept-sspr-licensing.md)
-* [Jaká data používá SSPR a která data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
+* [Jaká data používá SSPR a jaká data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
 * [Které metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)
 * [Jaké jsou možnosti zásad se SSPR?](concept-sspr-policy.md)
 * [Co je zpětný zápis hesla a proč byste se o něj měli starat?](howto-sspr-writeback.md)

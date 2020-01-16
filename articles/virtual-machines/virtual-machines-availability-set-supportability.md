@@ -1,6 +1,6 @@
 ---
 title: Podpora přidávání virtuálních počítačů Azure do existující skupiny dostupnosti | Microsoft Docs
-description: Podpora přidávání virtuálních počítačů Azure do existující skupiny dostupnosti.
+description: Tento článek poskytuje matrici podpory, o které řady virtuálních počítačů můžete kombinovat ve stejné skupině dostupnosti.
 services: virtual-machines-linux
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 3954df389516aa7199022d713dc63d62dda961ae
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: cb0034f2b353284e94d6f1508541b31040a5b076
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155447"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028420"
 ---
 # <a name="supportability-of-adding-azure-vms-to-an-existing-availability-set"></a>Podpora přidávání virtuálních počítačů Azure do existující skupiny dostupnosti
 

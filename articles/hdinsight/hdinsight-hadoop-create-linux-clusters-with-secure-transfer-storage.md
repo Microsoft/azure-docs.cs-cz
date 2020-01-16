@@ -8,30 +8,30 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: 09a6b158c4390f881754c90d52a476f0bc249a5a
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: bcb0e9551f4415b2aac9eb2d641c91df9f692437
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74947635"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979126"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Vytvoření clusteru Apache Hadoop s účty úložiště zabezpečeného přenosu ve službě Azure HDInsight
 
 Funkce [Vyžadovat zabezpečený přenos](../storage/common/storage-require-secure-transfer.md) zvyšuje zabezpečení účtu služby Azure Storage tím, že vynucuje přenos všech požadavků na účet přes zabezpečené připojení. Tuto funkci a schéma wasbs podporují pouze clustery HDInsight verze 3.6 nebo novější.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete tento článek, musíte mít:
 
 * Předplatné Azure: Pokud chcete vytvořit bezplatný zkušební účet na jeden měsíc, přejděte na [Azure.Microsoft.com/Free](https://azure.microsoft.com/free).
-* Účet Azure Storage se zapnutým zabezpečeným přenosem. Pokyny najdete v tématech popisujících [vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md) a funkci [Vyžadovat zabezpečený přenos](../storage/common/storage-require-secure-transfer.md). Povolení přenosu zabezpečeného úložiště po vytvoření clusteru vyžaduje další kroky, které nejsou popsané v tomto článku.
+* Účet Azure Storage se zapnutým zabezpečeným přenosem. Pokyny najdete v tématech popisujících [vytvoření účtu úložiště](../storage/common/storage-account-create.md) a funkci [Vyžadovat zabezpečený přenos](../storage/common/storage-require-secure-transfer.md). Povolení přenosu zabezpečeného úložiště po vytvoření clusteru vyžaduje další kroky, které nejsou popsané v tomto článku.
 * Kontejner objektů BLOB v účtu úložiště
 
 ## <a name="create-cluster"></a>Vytvoření clusteru
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-V této části vytvoříte cluster Hadoop ve službě HDInsight pomocí [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-template-deploy.md). Šablona se nachází v [GitHubu](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/). V tomto článku se nevyžadují prostředí pro Správce prostředků šablon. Další metody vytváření clusterů a porozumění vlastnostem používaným v tomto článku najdete v tématu [Vytvoření clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+V této části vytvoříte cluster Hadoop ve službě HDInsight pomocí [šablony Azure Resource Manageru](../azure-resource-manager/templates/deploy-powershell.md). Šablona se nachází v [GitHubu](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/). V tomto článku se nevyžadují prostředí pro Správce prostředků šablon. Další metody vytváření clusterů a porozumění vlastnostem používaným v tomto článku najdete v tématu [Vytvoření clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
 1. Klikněte na následující obrázek pro přihlášení do Azure a otevřete šablonu Resource Manageru na webu Azure Portal.
 

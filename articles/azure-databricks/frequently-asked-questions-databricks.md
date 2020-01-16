@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: f4164966d1a9662a72d41fefcb7cfbb1b444d614
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c2cb7a90f0fe57efcd8f4d75aff3b5ee375abd07
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888988"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971498"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Nejčastější dotazy týkající se platformy Azure Databricks
 
@@ -107,7 +107,7 @@ Kód chyby Azure: MissingSubscriptionRegistration chybová zpráva Azure: předp
 1. Vyberte **předplatná**, předplatné, které používáte, a pak **poskytovatele prostředků**. 
 1. V seznamu poskytovatelů prostředků vyberte v části **Microsoft. COMPUTE**možnost **Registrovat**. Abyste mohli registrovat poskytovatele prostředků, musíte mít v předplatném roli přispěvatel nebo vlastník.
 
-Podrobnější pokyny najdete v tématu [poskytovatelé a typy prostředků](../azure-resource-manager/resource-manager-supported-services.md).
+Podrobnější pokyny najdete v tématu [poskytovatelé a typy prostředků](../azure-resource-manager/management/resource-providers-and-types.md).
 
 ### <a name="issue-azure-databricks-needs-permissions-to-access-resources-in-your-organization-that-only-an-admin-can-grant"></a>Problém: Azure Databricks potřebuje oprávnění pro přístup k prostředkům ve vaší organizaci, který může udělit jenom správce.
 

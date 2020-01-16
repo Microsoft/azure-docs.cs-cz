@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 471a7f288cec980e73ab10c8233ea38511acdd8b
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 1c6b7cfbf193f02598052b6922efec17fb16ec83
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942325"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973690"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Replikace virtuálních počítačů Azure do jiné oblasti Azure
 
@@ -62,7 +62,7 @@ Povolte replikaci. Tento postup předpokládá, že primární oblast Azure je V
      >[!NOTE]
      >Po povolení replikace nemůžete změnit typ dostupnosti – jediná instance, Skupina dostupnosti nebo zóna dostupnosti. Chcete-li změnit typ dostupnosti, je třeba zakázat a povolit replikaci.
      >
-    
+
    - **Zásady replikace**: definuje nastavení pro historii uchovávání bodů obnovení a četnost snímků konzistentních vzhledem k aplikacím. Ve výchozím nastavení Azure Site Recovery vytvoří novou zásadu replikace s výchozími nastaveními 24 hodin pro uchování bodu obnovení a 4 hodiny pro četnost snímků konzistentních vzhledem k aplikacím.
 
      ![Povolení replikace](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
@@ -74,7 +74,7 @@ Pokud přidáváte disky do virtuálního počítače Azure, pro který je povol
 -   Pokud povolíte ochranu pro přidané disky, bude upozornění po počáteční replikaci disku zmizí.
 -   Pokud se rozhodnete Nepovolit replikaci pro disk, můžete vybrat možnost Zavřít upozornění.
 
-    
+
     ![Byl přidán nový disk.](./media/azure-to-azure-how-to-enable-replication/newdisk.png)
 
 Pokud chcete povolit replikaci pro přidaný disk, udělejte toto:
@@ -88,7 +88,7 @@ Pokud chcete povolit replikaci pro přidaný disk, udělejte toto:
 Po spuštění úlohy povolit replikaci a dokončení počáteční replikace dojde k odebrání upozornění na stav replikace pro problém disku.
 
 
-  
+
 ## <a name="customize-target-resources"></a>Přizpůsobení cílových prostředků
 
 Můžete upravit výchozí nastavení cíle, které používá Site Recovery.
@@ -112,7 +112,7 @@ Můžete upravit výchozí nastavení cíle, které používá Site Recovery.
     - Ujistěte se, že neexistuje žádné zařízení brány firewall blokující interní komunikaci mezi virtuálními počítači přes port 20004.
     - Pokud chcete, aby virtuální počítače se systémem Linux byly součástí replikační skupiny, zajistěte ruční otevření odchozího provozu na portu 20004 podle pokynů pro konkrétní verzi systému Linux.
 ![Povolení replikace](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
-    
+
 5. Klikněte na **vytvořit cílový prostředek** > **Povolit replikaci**.
 6. Po povolení replikace virtuálních počítačů můžete ověřit stav stavu virtuálního počítače v části **replikované položky** .
 

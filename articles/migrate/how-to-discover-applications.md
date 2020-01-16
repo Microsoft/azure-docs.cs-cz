@@ -1,17 +1,14 @@
 ---
-title: Zjišťování aplikací, rolí a funkcí nainstalovaných na místních serverech pomocí posouzení Azure Migrate serveru
-description: Popisuje, jak zjišťovat aplikace, role a funkce na místních serverech pomocí vyhodnocení Azure Migrate serveru.
-author: snehaamicrosoft
-ms.service: azure-migrate
+title: Objevte aplikace, role a funkce na místních serverech pomocí Azure Migrate
+description: Naučte se zjišťovat aplikace, role a funkce na místních serverech pomocí vyhodnocení Azure Migrate serveru.
 ms.topic: article
 ms.date: 11/20/2019
-ms.author: snehaa
-ms.openlocfilehash: 279e326ace308b354d7bcb8366d3286980e7b8c6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: adc22925d1152639babe2377a1eae440e0ce418e
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278478"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029078"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Objevte aplikace pro počítače, role a funkce
 
@@ -30,14 +27,14 @@ Zjišťování aplikací pomocí Azure Migrate: posouzení serveru není bez age
 1. Zkontrolujte [omezení podpory](migrate-support-matrix-vmware.md#application-discovery) pro zjišťování na úrovni aplikace.
 2. Ujistěte se, že jste [vytvořili](how-to-add-tool-first-time.md) projekt Azure Migrate.
 3. Pokud jste již vytvořili projekt, ujistěte se, že jste [přidali](how-to-assess.md) Azure Migrate: nástroj Server Assessment Tool.
-4. Podívejte se na [požadavky VMware](migrate-support-matrix-vmware.md#assessment-vcenter-server-requirements) pro zjišťování a vyhodnocování virtuálních počítačů VMware pomocí zařízení Azure Migrate.
-4. Ověřte [požadavky](migrate-support-matrix-vmware.md#assessment-appliance-requirements) na nasazení zařízení Azure Migrate.
+4. Podívejte se na [požadavky VMware](migrate-support-matrix-vmware.md#vmware-requirements) pro zjišťování a vyhodnocování virtuálních počítačů VMware pomocí zařízení Azure Migrate.
+4. Ověřte [požadavky](migrate-appliance.md) na nasazení zařízení Azure Migrate.
 
 ## <a name="prepare-for-app-discovery"></a>Příprava na zjišťování aplikací
 
-1. [Příprava na nasazení zařízení](https://docs.microsoft.com/azure/migrate/tutorial-prepare-vmware) Příprava zahrnuje ověření nastavení zařízení a nastavení účtu, který bude zařízení používat pro přístup k vCenter Server.
+1. [Příprava na nasazení zařízení](tutorial-prepare-vmware.md) Příprava zahrnuje ověření nastavení zařízení a nastavení účtu, který bude zařízení používat pro přístup k vCenter Server.
 2. Ujistěte se, že máte uživatelský účet (jeden pro servery se systémem Windows a Linux) s oprávněními správce pro počítače, na kterých chcete zjistit aplikace, role a funkce.
-3. [Nasaďte zařízení VMware](how-to-set-up-appliance-vmware.md) pro spuštění zjišťování. Pokud chcete zařízení nasadit, Stáhněte a importujte šablonu vajíček do VMware a vytvořte zařízení jako virtuální počítač VMware. Zařízení nakonfigurujete a pak ho zaregistrujete Azure Migrate.
+3. [Nasaďte zařízení Azure Migrate](how-to-set-up-appliance-vmware.md) a spusťte zjišťování. Pokud chcete zařízení nasadit, Stáhněte a importujte šablonu vajíček do VMware a vytvořte zařízení jako virtuální počítač VMware. Zařízení nakonfigurujete a pak ho zaregistrujete Azure Migrate.
 2. Při nasazování zařízení můžete spustit průběžné zjišťování zadáním následujících možností:
     - Název vCenter Server, ke kterému se chcete připojit
     - Přihlašovací údaje, které jste vytvořili pro zařízení pro připojení k vCenter Server.

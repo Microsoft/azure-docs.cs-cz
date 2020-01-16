@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: fc13b0939563f93c31683b432b0410035d892de0
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 047579550172995378d92327ecf22d63712bf407
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672508"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967123"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se konfigurace a správy pro Web Apps v Azure
 
@@ -23,7 +23,7 @@ V tomto článku najdete odpovědi na nejčastější dotazy týkající se prob
 
 ## <a name="are-there-limitations-i-should-be-aware-of-if-i-want-to-move-app-service-resources"></a>Existují nějaká omezení, o kterých byste měli vědět, pokud chci přesunout App Service prostředky?
 
-Pokud plánujete přesunout App Service prostředků do nové skupiny prostředků nebo předplatného, existuje několik omezení, o kterých byste měli vědět. Další informace najdete v tématu [omezení App Service](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
+Pokud plánujete přesunout App Service prostředků do nové skupiny prostředků nebo předplatného, existuje několik omezení, o kterých byste měli vědět. Další informace najdete v tématu [omezení App Service](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md).
 
 ## <a name="how-do-i-use-a-custom-domain-name-for-my-web-app"></a>Návody použít pro moji webovou aplikaci vlastní název domény?
 
@@ -49,11 +49,11 @@ Informace o tom, jak koupit a nastavit certifikát SSL pro App Service webovou a
 
 V současné době Azure Application Insights nepodporuje operaci přesunu. Pokud původní skupina prostředků zahrnuje prostředek Application Insights, nemůžete tento prostředek přesunout. Pokud při pokusu o přesunutí aplikace App Service přidáte prostředek Application Insights, celá operace přesunu se nezdařila. Application Insights a plán App Service ale nemusí být ve stejné skupině prostředků, jako aplikace, aby aplikace správně fungovala.
 
-Další informace najdete v tématu [omezení App Service](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
+Další informace najdete v tématu [omezení App Service](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md).
 
 ## <a name="where-can-i-find-a-guidance-checklist-and-learn-more-about-resource-move-operations"></a>Kde najdu kontrolní seznam pokynů a další informace o operacích přesunutí prostředků?
 
-[App Service omezením](../azure-resource-manager/move-limitations/app-service-move-limitations.md) se dozvíte, jak přesunout prostředky do nového předplatného nebo do nové skupiny prostředků ve stejném předplatném. Můžete získat informace o kontrolním seznamu pro přesunutí prostředků, zjistit, které služby podporují operaci přesunu, a získat další informace o omezeních App Service a dalších tématech.
+[App Service omezením](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md) se dozvíte, jak přesunout prostředky do nového předplatného nebo do nové skupiny prostředků ve stejném předplatném. Můžete získat informace o kontrolním seznamu pro přesunutí prostředků, zjistit, které služby podporují operaci přesunu, a získat další informace o omezeních App Service a dalších tématech.
 
 ## <a name="how-do-i-set-the-server-time-zone-for-my-web-app"></a>Návody nastavit časové pásmo serveru pro moji webovou aplikaci?
 
@@ -63,7 +63,7 @@ Nastavení časového pásma serveru pro vaši webovou aplikaci:
 2. V části **nastavení aplikace**přidejte toto nastavení:
     * Key = WEBSITE_TIME_ZONE
     * Hodnota = *časové pásmo, které chcete*
-3. Vyberte **Save** (Uložit).
+3. Vyberte **Uložit**.
 
 Pro služby App Service, které jsou spuštěné v systému Windows, se ve sloupci **timezone (časové pásmo** ) v článku [výchozí časové pásmo](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) pro přijaté hodnoty zobrazí. Pro služby App Services spuštěné v systému Linux nastavte jako hodnotu časového pásma [název TZ databáze](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) . Tady je příklad názvu TZ databáze: America/Adak.
 

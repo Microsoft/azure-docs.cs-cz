@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/8/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f60d9714db71325bd9c67cae6e2f82d54f8e5eb3
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 1b24258efdd75977b5571506b3eabf952a4ae0a4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75753923"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027781"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -182,8 +182,6 @@ Na serveru, na kterém se zobrazuje stav "zobrazeno offline" na portálu, se pod
     ```powershell
     Reset-AzStorageSyncServerCertificate -ResourceGroupName <string> -StorageSyncServiceName <string>
     ```
-
-
 <a id="endpoint-noactivity-sync"></a>**Koncový bod serveru má stav bez aktivity a stav serveru v okně registrované servery je online.**  
 
 Stav koncového bodu serveru bez aktivity znamená, že koncový bod serveru během posledních dvou hodin neprotokoloval aktivitu synchronizace.
@@ -393,6 +391,22 @@ K této chybě dochází, protože agent Synchronizace souborů Azure nemůže z
 3. [Ujistěte se, že Azure File Sync má přístup k účtu úložiště.](#troubleshoot-rbac)
 4. [Ověřte, že jsou v účtu úložiště správně nakonfigurovaná nastavení brány firewall a virtuální sítě (pokud jsou povolená)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings).
 
+<a id="-2134351804"></a>**Synchronizace se nezdařila, protože žádost není autorizována k provedení této operace.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c86044 |
+| **HRESULT (desetinné číslo)** | -2134351804 |
+| **Řetězec chyby** | ECS_E_AZURE_AUTHORIZATION_FAILED |
+| **Požadována náprava** | Ano |
+
+K této chybě dochází, protože agent Azure File Sync nemá oprávnění pro přístup ke sdílené složce Azure. Při řešení této chyby můžete použít následující postup:
+
+1. [Ověřte, že účet úložiště existuje.](#troubleshoot-storage-account)
+2. [Ujistěte se, že sdílená složka Azure existuje.](#troubleshoot-azure-file-share)
+3. [Ověřte, že jsou v účtu úložiště správně nakonfigurovaná nastavení brány firewall a virtuální sítě (pokud jsou povolená)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings).
+4. [Ujistěte se, že Azure File Sync má přístup k účtu úložiště.](#troubleshoot-rbac)
+
 <a id="-2134364064"></a><a id="cannot-resolve-storage"></a>**Použitý název účtu úložiště nelze přeložit.**  
 
 | | |
@@ -495,7 +509,7 @@ Pokud se sdílená složka Azure odstranila, musíte vytvořit novou sdílenou s
 | **Řetězec chyby** | ECS_E_SYNC_BLOCKED_ON_SUSPENDED_SUBSCRIPTION |
 | **Požadována náprava** | Ano |
 
-K této chybě dochází v případě, že dojde k pozastavení předplatného Azure. Synchronizace se znovu povolí po obnovení předplatného Azure. Podívejte [se, proč je moje předplatné Azure zakázané a jak ho znovu aktivovat?](../../billing/billing-subscription-become-disable.md) Další informace.
+K této chybě dochází v případě, že dojde k pozastavení předplatného Azure. Synchronizace se znovu povolí po obnovení předplatného Azure. Podívejte [se, proč je moje předplatné Azure zakázané a jak ho znovu aktivovat?](../../cost-management-billing/manage/subscription-disabled.md) Další informace.
 
 <a id="-2134364052"></a>**Účet úložiště má nakonfigurovanou bránu firewall nebo virtuální sítě.**  
 

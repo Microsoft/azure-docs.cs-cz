@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
-ms.openlocfilehash: a5cfb79626370ab9f8493038ac1583993a154b59
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 21314d3c80832c14538130ce373ccf6d2dd19f18
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912022"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965932"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Zpracování chyb a výjimek v Azure Logic Apps
 
@@ -249,7 +249,7 @@ Chování akce "spustit po" můžete přizpůsobit tak, aby se akce spustila, kd
 
 ## <a name="evaluate-actions-with-scopes-and-their-results"></a>Vyhodnotit akce s obory a jejich výsledky
 
-Podobně jako u jednotlivých akcí s vlastností `runAfter` můžete seskupit akce do skupin společně v rámci [oboru](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md). Obory můžete použít, když chcete logicky seskupit akce společně, vyhodnotit agregovaný stav oboru a provádět akce na základě tohoto stavu. Po dokončení všech akcí v oboru, který je spuštěný, získá samotný rozsah svůj vlastní stav. 
+Podobně jako u jednotlivých akcí s vlastností `runAfter` můžete seskupit akce do skupin společně v rámci [oboru](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md). Obory můžete použít, když chcete logicky seskupit akce společně, vyhodnotit agregovaný stav oboru a provádět akce na základě tohoto stavu. Po dokončení všech akcí v oboru, který je spuštěný, získá samotný rozsah svůj vlastní stav.
 
 Chcete-li zjistit stav oboru, můžete použít stejná kritéria, jako je například `Succeeded`, `Failed`a tak dále, pomocí kterých můžete kontrolovat stav spuštění aplikace logiky.
 
@@ -267,7 +267,7 @@ I když je užitečné zachycení selhání z oboru, můžete také chtít, aby 
 
 Funkce [`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) poskytuje kontext o výsledcích ze všech akcí v oboru. Funkce `result()` přijímá jeden parametr, což je název oboru, a vrátí pole, které obsahuje všechny výsledky akce v rámci daného oboru. Tyto objekty akcí zahrnují stejné atributy jako objekt `actions()`, jako je čas spuštění akce, čas ukončení, stav, vstupy, ID korelace a výstupy. Chcete-li odeslat kontext pro všechny akce, které se v rámci oboru nezdařily, můžete snadno spárovat výraz `@result()` s vlastností `runAfter`.
 
-Chcete-li spustit akci pro každou akci v oboru, který má výsledek `Failed` a filtrovat pole výsledků dolů na neúspěšné akce, můžete spárovat `@result()` výraz s akcí [**filtru pole**](../connectors/connectors-native-query.md) a a [**pro každou**](../logic-apps/logic-apps-control-flow-loops.md) smyčku. Filtrované pole výsledků můžete převzít a provést akci při každém selhání pomocí smyčky `For_each`.
+Chcete-li spustit akci pro každou akci v oboru, který má výsledek `Failed` a filtrovat pole výsledků dolů na neúspěšné akce, můžete spárovat `@result()` výraz s akcí [**filtru pole**](logic-apps-perform-data-operations.md#filter-array-action) a a [**pro každou**](../logic-apps/logic-apps-control-flow-loops.md) smyčku. Filtrované pole výsledků můžete převzít a provést akci při každém selhání pomocí smyčky `For_each`.
 
 Tady je příklad následovaný detailním vysvětlením, který pošle požadavek HTTP POST s textem odpovědi pro všechny akce, které selhaly v rámci oboru "My_Scope":
 

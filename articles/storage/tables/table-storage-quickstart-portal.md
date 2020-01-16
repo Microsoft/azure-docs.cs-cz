@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/02/2019
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 4cfb44964b06c811d6d587f2a406cdcfb8048a42
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 63495206ffffc57a895a9ec1efc88410a02ea097
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793338"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979955"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>Rychlý start: Vytvoření tabulky Azure Storage na webu Azure Portal 
 
@@ -21,9 +21,9 @@ Tento rychlý start ukazuje, jak na webovém portálu Azure Portal vytvářet ta
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli absolvovat tento rychlý start, nejprve na webu [Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) vytvořte účet úložiště Azure. Nápovědu k vytvoření účtu najdete v tématu [Vytvoření účtu úložiště](../common/storage-quickstart-create-account.md).
+Abyste mohli absolvovat tento rychlý start, nejprve na webu [Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) vytvořte účet úložiště Azure. Nápovědu k vytvoření účtu najdete v tématu [Vytvoření účtu úložiště](../common/storage-account-create.md).
 
 ## <a name="add-a-table"></a>Přidání tabulky
 

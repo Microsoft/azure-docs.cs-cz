@@ -4,14 +4,14 @@ description: Začněte s aplikacemi pro Linux v Azure App Service nasazením prv
 ms.topic: quickstart
 ms.date: 10/22/2019
 ms.custom: seo-python-october2019
-experimental: false
-experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: 266f6e37584807e139e80a581d16f404c6636f6e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
-ms.translationtype: MT
+experimental: true
+experiment_id: 01a9132f-eaab-4c
+ms.openlocfilehash: 8290a4101725efbbe1e56e4a7f12a51b39a73f42
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768397"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028335"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Rychlý Start: Vytvoření aplikace v Pythonu v Azure App Service v systému Linux
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 87cdd3d18fe0e6a3655c8bbc940cdc00fa211e74
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 70523dc12f3f20362fcf4a2c3cb456a182038e8a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750590"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982249"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Vytvoření, změna nebo odstranění virtuální sítě
 
@@ -79,7 +79,7 @@ Před dokončením kroků v jakékoli části tohoto článku proveďte následu
 
      ![Přehled síťového rozhraní](./media/manage-virtual-network/vnet-overview.png)
 
-     Virtuální síť můžete přesunout do jiného předplatného nebo skupiny prostředků tak, že vyberete **změnit** vedle položky **Skupina prostředků** nebo **název předplatného**. Informace o tom, jak přesunout virtuální síť, najdete v tématu [Přesunutí prostředků do jiné skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Článek obsahuje seznam požadovaných součástí a Postup přesunutí prostředků pomocí Azure Portal, PowerShellu a rozhraní příkazového řádku Azure CLI. Všechny prostředky, které jsou připojené k virtuální síti, se musí přesouvat s virtuální sítí.
+     Virtuální síť můžete přesunout do jiného předplatného nebo skupiny prostředků tak, že vyberete **změnit** vedle položky **Skupina prostředků** nebo **název předplatného**. Informace o tom, jak přesunout virtuální síť, najdete v tématu [Přesunutí prostředků do jiné skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Článek obsahuje seznam požadovaných součástí a Postup přesunutí prostředků pomocí Azure Portal, PowerShellu a rozhraní příkazového řádku Azure CLI. Všechny prostředky, které jsou připojené k virtuální síti, se musí přesouvat s virtuální sítí.
    - **Adresní prostor**: zobrazí se adresní prostory, které jsou přiřazené k virtuální síti. Pokud chcete zjistit, jak přidat a odebrat rozsah adres do adresního prostoru, proveďte kroky v tématu [Přidání nebo odebrání rozsahu adres](#add-or-remove-an-address-range).
    - **Připojená zařízení**: zobrazí se všechny prostředky, které jsou připojené k virtuální síti. Na předchozím snímku obrazovky jsou k virtuální síti připojena tři síťová rozhraní a jeden nástroj pro vyrovnávání zatížení. Zobrazí se všechny nové prostředky, které vytvoříte a připojíte k virtuální síti. Pokud odstraníte prostředek, který byl připojen k virtuální síti, již se v seznamu nezobrazí.
    - **Podsítě**: zobrazí se seznam podsítí, které existují ve virtuální síti. Informace o tom, jak přidat a odebrat podsíť, najdete v tématu [Správa podsítí](virtual-network-manage-subnet.md).
@@ -90,8 +90,8 @@ Před dokončením kroků v jakékoli části tohoto článku proveďte následu
    - **Běžná nastavení Azure**: Další informace o běžných nastaveních Azure najdete v následujících informacích:
      - [Protokol aktivit](../azure-monitor/platform/platform-logs-overview.md)
      - [Řízení přístupu (IAM)](../role-based-access-control/overview.md)
-     - [Značky](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-     - [Počtu](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+     - [Značky](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+     - [Počtu](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Skript Automation](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
 **Příkazy**

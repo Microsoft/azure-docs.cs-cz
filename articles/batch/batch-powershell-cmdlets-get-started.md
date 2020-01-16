@@ -3,7 +3,7 @@ title: Začínáme s PowerShellem – Azure Batch | Microsoft Docs
 description: Rychlý úvod do rutin prostředí Azure PowerShell, jejichž pomocí lze spravovat prostředky služby Batch
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: powershell
 ms.workload: big-compute
 ms.date: 01/15/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 21930d5240225540159fa425d9d9fa518a1b19d5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 48b728d0e5b710f3adaa576f012bdbd19effc20a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323085"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026588"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Správa prostředků služby Batch pomocí rutin PowerShellu
 
@@ -48,9 +48,9 @@ Tento článek je založený na rutinách v AZ Batch Module 1.0.0. Moduly Azure 
 
 ## <a name="manage-batch-accounts-and-keys"></a>Správa účtů a klíčů služby Batch
 
-### <a name="create-a-batch-account"></a>Vytvoření účtu Batch
+### <a name="create-a-batch-account"></a>Vytvoření účtu služby Batch
 
-**New-AzBatchAccount** vytvoří účet Batch v zadané skupině prostředků. Pokud ještě nemáte skupinu prostředků, vytvořte ji spuštěním rutiny [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Do parametru **Location** zadejte některou oblast Azure, třeba „Střed USA“. Příklad:
+**New-AzBatchAccount** vytvoří účet Batch v zadané skupině prostředků. Pokud ještě nemáte skupinu prostředků, vytvořte ji spuštěním rutiny [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Do parametru **Location** zadejte některou oblast Azure, třeba „Střední USA“. Příklad:
 
 ```powershell
 New-AzResourceGroup –Name MyBatchResourceGroup –Location "Central US"
@@ -111,7 +111,7 @@ $context = Get-AzBatchAccountKeys -AccountName <account_name>
 > [!NOTE]
 > Ve výchozím nastavení se k ověřování používá primární klíč účtu, ale změnou hodnoty vlastnosti **KeyInUse** objektu BatchAccountContext lze klíč vybrat explicitně: `$context.KeyInUse = "Secondary"`.
 
-### <a name="azure-active-directory-authentication"></a>Ověřování pomocí Azure Active Directory
+### <a name="azure-active-directory-authentication"></a>Ověřování Azure Active Directory
 
 ```powershell
 $context = Get-AzBatchAccount -AccountName <account_name>
@@ -303,7 +303,7 @@ Get-AzBatchComputeNode -PoolId "PoolWithAppPackage" -BatchContext $context | Res
 > [!TIP]
 > Do výpočetních uzlů ve fondu můžete nasadit několik balíčků aplikací. Pokud chcete balíček aplikace *přidat*, místo abyste jím nahrazovali aktuálně nasazené balíčky, vynechte řádek `$pool.ApplicationPackageReferences.Clear()`, (viz výše).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Podrobný popis syntaxe rutin najdete v článku [Rutiny služby Azure Batch – reference](/powershell/module/az.batch).
 * Další informace o aplikacích a balíčcích aplikací ve službě Batch najdete v tématu [Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch](batch-application-packages.md).

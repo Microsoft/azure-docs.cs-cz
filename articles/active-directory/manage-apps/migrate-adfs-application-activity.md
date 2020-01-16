@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/22/2019
+ms.date: 01/14/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de64385e21604188a5c9002f2e007dad86b2674c
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 333e440fdd5f5062dda45fb12a83543c63e66c04
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420434"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978034"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Použití sestavy aktivity aplikace AD FS (Preview) k migraci aplikací do služby Azure AD
 
@@ -63,7 +63,7 @@ Sestava aktivity aplikace AD FS je k dispozici v Azure Portal v části Azure AD
 
 1. V seznamu AD FS aktivity aplikace kliknutím na stav ve sloupci **stav migrace** otevřete podrobnosti migrace. Zobrazí se souhrn konfiguračních testů, které byly úspěšné, a případné případné problémy s migrací.
 
-   ![Podrobnosti o migraci](media/migrate-adfs-application-activity/migration-details.png)
+   ![Informace o migraci](media/migrate-adfs-application-activity/migration-details.png)
 
 2. Kliknutím na zprávu otevřete další podrobnosti pravidla migrace. Úplný seznam testovaných vlastností naleznete níže v tabulce [AD FS testy konfigurace aplikací](#ad-fs-application-configuration-tests) níže.
 
@@ -90,7 +90,7 @@ V následující tabulce jsou uvedeny všechny testy konfigurace, které se prov
 |Test – ADFSRPRequestMFAFromClaimsProviders <br> Předávající strana má RequestMFAFromClaimsProviders nastavenou na hodnotu true.       | Úspěch/upozornění          | Toto nastavení v AD FS určuje chování vícefaktorového ověřování, pokud uživatel pochází z jiného zprostředkovatele deklarací identity. V Azure AD můžete povolit externí spolupráci pomocí Azure AD B2B. Pak můžete použít zásady podmíněného přístupu k ochraně přístupu hostů. Přečtěte si další informace o [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b) a [podmíněném přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).          |
 |Test – ADFSRPSignedSamlRequestsRequired <br> Předávající strana má SignedSamlRequestsRequired nastavenou na hodnotu true.       | Úspěch/selhání          | Aplikace je nakonfigurovaná v AD FS k ověření podpisu v žádosti SAML. Azure AD přijímá podepsaný požadavek SAML; neověřuje ale signaturu. Azure AD má různé metody ochrany před škodlivými voláními. Azure AD například používá adresy URL odpovědí nakonfigurovaných v aplikaci k ověření požadavku SAML. Azure AD pošle token pro odpovědi na adresy URL nakonfigurované pro aplikaci. Pokud máte scénář, kde tento výsledek blokuje migraci, [dejte nám prosím jistotu](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/13394589-saml-signature).          |
 |Test – ADFSRPTokenLifetime <br> TokenLifetimeCheckResult        | Úspěch/upozornění         | Aplikace je nakonfigurována pro vlastní životnost tokenu. Výchozí AD FS je jedna hodina. Azure AD tuto funkci podporuje pomocí podmíněného přístupu. Další informace najdete v tématu [Konfigurace správy relace ověřování pomocí podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime).          |
-|Předávající strana je nastavená na šifrování deklarací identity. Tato služba je podporovaná službou Azure AD.       | Dána          | Pomocí Azure AD můžete šifrovat token odeslaný do aplikace. Další informace najdete v tématu [Konfigurace šifrování tokenů SAML v Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/howto-saml-token-encryption).          |
+|Předávající strana je nastavená na šifrování deklarací identity. Tato služba je podporovaná službou Azure AD.       | Úspěšný          | Pomocí Azure AD můžete šifrovat token odeslaný do aplikace. Další informace najdete v tématu [Konfigurace šifrování tokenů SAML v Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/howto-saml-token-encryption).          |
 |EncryptedNameIdRequiredCheckResult      | Úspěch/selhání          | Aplikace je nakonfigurovaná k šifrování deklarace identity nameID v tokenu SAML. Pomocí Azure AD můžete zašifrovat celý token odeslaný do aplikace. Šifrování konkrétních deklarací se ještě nepodporuje. Další informace najdete v tématu [Konfigurace šifrování tokenů SAML v Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/howto-saml-token-encryption).         |
 
 ## <a name="check-the-results-of-claim-rule-tests"></a>Zkontroluje výsledky testů pravidla deklarace identity.
@@ -124,6 +124,7 @@ V následující tabulce jsou uvedeny všechny testy pravidel deklarací identit
 
 ## <a name="next-steps"></a>Další kroky
 
+- [Video: jak používat sestavu aktivity AD FS k migraci aplikace](https://www.youtube.com/watch?v=OThlTA239lU)
 - [Správa aplikací pomocí Azure Active Directory](what-is-application-management.md)
 - [Správa přístupu k aplikacím](what-is-access-management.md)
 - [Federace služby Azure AD Connect](../hybrid/how-to-connect-fed-whatis.md)

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 19f31a2fafc112f499ff87eed23843915cab32a2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 28278f76497d6e9d0fee221bb4ef32fe6d369db0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414220"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966646"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Pokyny pro zotavení po havárii pro avere vFXT pro Azure
 
@@ -60,7 +60,7 @@ V této části najdete tipy, jak dále chránit data v úložišti objektů BLO
 Mezi osvědčené postupy při ochraně dat v úložišti objektů BLOB v Azure patří:
 
 * Zkopírujte důležitá data do jiného účtu úložiště v jiné oblasti často (jak je to určeno podle plánu zotavení po havárii).
-* Řízení přístupu k datům ze všech cílových systémů, aby nedocházelo k náhodnému odstranění nebo poškození. Zvažte použití [zámků prostředků](../azure-resource-manager/resource-group-lock-resources.md) v úložišti dat.
+* Řízení přístupu k datům ze všech cílových systémů, aby nedocházelo k náhodnému odstranění nebo poškození. Zvažte použití [zámků prostředků](../azure-resource-manager/management/lock-resources.md) v úložišti dat.
 * Povolte funkci avere vFXT for Azure [Cloud Snapshot](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_snapshot_policies.html>) pro váš objekt BLOB Core filers.
 
 ### <a name="copy-avere-vfxt-core-filer-data-to-a-backup-account"></a>Kopírování avere dat vFXT Core souborového do účtu zálohy

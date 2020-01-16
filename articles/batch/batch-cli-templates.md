@@ -2,21 +2,21 @@
 title: Spouštění úloh od začátku do konce pomocí šablon-Azure Batch | Microsoft Docs
 description: Vytvořte fondy, úlohy a úkoly služby Batch pomocí souborů šablon a Azure CLI.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.workload: big-compute
 ms.date: 12/07/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 4733cf1a83bec472baae42f2ac29636bff5fc324
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2612986491268651222e51646e75cdecc95dc40c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095318"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029730"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Použití Azure Batch šablon CLI a přenosu souborů
 
@@ -143,7 +143,7 @@ Pokud se soubor šablony jmenoval jako _Pool-ffmpeg. JSON_, pak tuto šablonu vy
 az batch pool create --template pool-ffmpeg.json
 ```
 
-Rozhraní příkazového řádku vás vyzve k zadání hodnot `poolId` parametrů `nodeCount` a. Parametry můžete také dodat v souboru JSON. Příklad:
+Rozhraní příkazového řádku vás vyzve k zadání hodnot parametrů `poolId` a `nodeCount`. Parametry můžete také dodat v souboru JSON. Příklad:
 
 ```json
 {
@@ -260,7 +260,7 @@ Můžete nahrát šablonu Batch CLI do desktopové aplikace [Batch Explorer](htt
 
 Postup nahrání šablony:
 
-1. V Batch Explorer vyberte**místní šablony** **Galerie** > .
+1. V Batch Explorer vyberte **galerie** > **místní šablony**.
 
 2. Vyberte nebo přetáhněte místní fond nebo šablonu úlohy do seznamu.
 
@@ -290,7 +290,7 @@ Podpora pro přenos šablon a souborů se v tuto chvíli přidala jenom do Azure
 
 Vyzkoušejte si rozšíření Batch pro rozhraní příkazového řádku Azure CLI a sdělte nám jakékoli názory a návrhy, a to buď v komentářích k tomuto článku, nebo prostřednictvím [úložiště komunity služby Batch](https://github.com/Azure/Batch).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Podrobná dokumentace k instalaci a používání, ukázky a zdrojový kód jsou k dispozici v [úložišti GitHub Azure](https://github.com/Azure/azure-batch-cli-extensions).
 

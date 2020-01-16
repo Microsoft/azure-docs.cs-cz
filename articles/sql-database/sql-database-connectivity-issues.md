@@ -11,16 +11,16 @@ ms.topic: conceptual
 author: dalechen
 manager: dcscontentpm
 ms.author: ninarn
-ms.reviewer: carlrab
-ms.date: 11/14/2019
-ms.openlocfilehash: c25fa3f378c1e5a0f8bc26e4fb8c6f4ec752b43c
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.reviewer: carlrab, vanto
+ms.date: 01/14/2020
+ms.openlocfilehash: d2b56e259f551f7655936c975a7a864a27a1df79
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082490"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027795"
 ---
-# <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Práce s SQL Database problémy s připojením a přechodnými chybami
+# <a name="troubleshooting-transient-connection-errors-to-sql-database"></a>Řešení chyb přechodného připojení k SQL Database
 
 Tento článek popisuje, jak zabránit, řešit a řešit chyby připojení a přechody k přechodným chybám, ke kterým dojde v případě, že klientská aplikace komunikuje s Azure SQL Database. Naučte se konfigurovat logiku opakování, sestavit připojovací řetězec a upravit další nastavení připojení.
 
@@ -187,7 +187,7 @@ Obvykle je nutné zajistit, aby byl pro odchozí komunikaci v počítači, kter�
 
 Pokud je například klientský program hostovaný v počítači se systémem Windows, můžete k otevření portu 1433 použít bránu Windows Firewall na hostiteli.
 
-1. Otevřete ovládací panely.
+1. Otevřete okno Ovládací panely.
 2. Vyberte **všechny položky Ovládacích panelů** > **brány Windows Firewall** > **upřesnit nastavení** > **odchozí pravidla** > **Akce** > **nové pravidlo**.
 
 Pokud je váš klientský program hostovaný na virtuálním počítači Azure (VM), přečtěte si [porty, které přesahují 1433 pro ADO.NET 4,5 a SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
@@ -444,7 +444,6 @@ public bool IsTransient(Exception ex)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o řešení běžných potíží s připojením SQL Database najdete v tématu [řešení potíží s připojením pro Azure SQL Database](sql-database-troubleshoot-common-connection-issues.md).
 - [Knihovny připojení pro SQL Database a SQL Server](sql-database-libraries.md)
 - [Sdružování připojení SQL Server (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
 - [ *Opakovaným pokusem* je knihovna Apache 2,0 s licencí pro obecné účely, která je napsaná v Pythonu,](https://pypi.python.org/pypi/retrying) aby zjednodušila úlohu přidávání chování opakování do stejného množství.

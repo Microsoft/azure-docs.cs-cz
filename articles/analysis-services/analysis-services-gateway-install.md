@@ -4,15 +4,15 @@ description: Přečtěte si, jak nainstalovat a nakonfigurovat místní bránu d
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 01/14/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 37658ea6b94d6369d282c49f79947a1f183b61c7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 019da1810851c730ea8bfe4cf5eea0cfa900bea0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572843"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029898"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalace a konfigurace místní brány dat
 
@@ -24,14 +24,14 @@ Další informace o bráně a o tom, jak ji používá Azure Analysis Services, 
 
 **Minimální požadavky:**
 
-* Rozhraní .NET 4,5
-* 64. bitová verze systému Windows 7/Windows Server 2008 R2 (nebo novější)
+* .NET 4.5 Framework
+* 64-bitová verze systému Windows 8/Windows Server 2012 R2 (nebo novější)
 
-**Doporučil**
+**Doporučeno:**
 
-* PROCESOR s 8 jádry
-* 8 GB paměti
-* 64. bitová verze systému Windows 2012 R2 (nebo novější)
+* Procesor s 8 jádry
+* Paměť 8 GB
+* 64-bitová verze systému Windows 8/Windows Server 2012 R2 (nebo novější)
 
 **Důležité informace:**
 
@@ -75,14 +75,14 @@ Aby bylo možné vytvořit prostředek brány v Azure, musíte zaregistrovat mí
 
 1.  Vyberte možnost **zaregistrovat novou bránu na tomto počítači**.
 
-    ![Registrace](media/analysis-services-gateway-install/aas-gateway-register-new.png)
+    ![Zaregistrovat](media/analysis-services-gateway-install/aas-gateway-register-new.png)
 
 2. Zadejte název a obnovovací klíč pro bránu. Ve výchozím nastavení používá brána výchozí oblast vašeho předplatného. Pokud potřebujete vybrat jinou oblast, vyberte **změnit oblast**.
 
     > [!IMPORTANT]
     > Uložte si obnovovací klíč na bezpečné místo. Obnovovací klíč se vyžaduje v rámci převzetí, migrace nebo obnovení brány. 
 
-   ![Registrace](media/analysis-services-gateway-install/aas-gateway-register-name.png)
+   ![Zaregistrovat](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 
 
 ## <a name="create-resource"></a>Vytvoření prostředku brány Azure
@@ -107,7 +107,7 @@ Po instalaci a registraci brány musíte vytvořit prostředek brány ve svém p
 
    * **Název instalace**: Pokud vaše instalace brány ještě není vybraná, vyberte bránu, kterou jste nainstalovali v počítači a zaregistrujte se. 
 
-     Až skončíte, klikněte na **vytvořit**.
+     Jakmile budete hotovi, klikněte na tlačítko **vytvořit**.
 
 ## <a name="connect-servers"></a>Připojení serverů k prostředku brány
 
@@ -127,7 +127,7 @@ Po instalaci a registraci brány musíte vytvořit prostředek brány ve svém p
 
     ![Připojení serveru k úspěšnému dokončení prostředku brány](media/analysis-services-gateway-install/aas-gateway-connect-success.png)
 
-A to je vše. Pokud potřebujete otevřít porty nebo provést nějaké řešení potíží, zkontrolujte [místní bránu dat](analysis-services-gateway.md).
+A je to. Pokud potřebujete otevřít porty nebo provést nějaké řešení potíží, zkontrolujte [místní bránu dat](analysis-services-gateway.md).
 
 ## <a name="next-steps"></a>Další kroky
 

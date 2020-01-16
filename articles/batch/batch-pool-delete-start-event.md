@@ -2,7 +2,7 @@
 title: Událost zahájení odstranění fondu Azure Batch | Microsoft Docs
 description: Referenční informace pro událost zahájení odstranění fondu Batch
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
@@ -10,13 +10,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: lahugh
-ms.openlocfilehash: 76f3a15d88166160f28461c34ee03ff7c8880a59
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.author: jushiman
+ms.openlocfilehash: d582e2b04d203484632a1781d1819f612de41fe7
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258413"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026728"
 ---
 # <a name="pool-delete-start-event"></a>Událost zahájení odstranění fondu
 
@@ -30,6 +30,6 @@ ms.locfileid: "70258413"
 }
 ```
 
-|Prvek|type|Poznámky|
+|Element|Typ|Poznámky|
 |-------------|----------|-----------|
 |`id`|Řetězec|ID fondu|

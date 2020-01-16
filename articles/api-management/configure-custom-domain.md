@@ -10,21 +10,24 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 8fe07318d33980ad3ec9fc3d6e8749c6c9aed42e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3c2cc3c280ba0da474898bed93bb8533a42ab07f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442543"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967351"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurace názvu vlastní domény
 
-Když vytvoříte instanci služby Azure API Management, Azure mu přiřadí subdoménu azure-api.net (například `apim-service-name.azure-api.net`). Můžete ale zpřístupnit API Management koncových bodů pomocí vlastního názvu domény, například **contoso.com**. V tomto kurzu se dozvíte, jak namapovat stávající vlastní název DNS na koncové body vystavené instancí API Management.
+Když vytvoříte instanci služby Azure API Management, Azure mu přiřadí subdoménu `azure-api.net` (například `apim-service-name.azure-api.net`). Můžete ale zpřístupnit API Management koncových bodů pomocí vlastního názvu domény, například **contoso.com**. V tomto kurzu se dozvíte, jak namapovat stávající vlastní název DNS na koncové body vystavené instancí API Management.
+
+> [!IMPORTANT]
+> API Management přijímá pouze požadavky s hodnotami [hlaviček hostitele](https://tools.ietf.org/html/rfc2616#section-14.23) , které odpovídají výchozímu názvu domény nebo libovolnému z nakonfigurovaných názvů vlastních domén.
 
 > [!WARNING]
-> Zákazníci, kteří chtějí použít připnutí certifikátů ke zlepšení zabezpečení svých aplikací, musí používat vlastní název domény > a certifikát, který spravují, nikoli výchozí certifikát. Zákazníci, kteří připnout výchozí certifikát, místo toho budou > s ohledem na vlastnosti certifikátu, který neovládají, což není doporučený postup.
+> Zákazníci, kteří chtějí použít připnutí certifikátů ke zlepšení zabezpečení svých aplikací, musí používat vlastní název domény > a certifikát, který spravují, nikoli výchozí certifikát. Zákazníci, kteří připnout výchozí certifikát, budou mít zavedenou závislost na vlastnostech certifikátu, který neovládají, což není doporučený postup.
 
 ## <a name="prerequisites"></a>Požadavky
 

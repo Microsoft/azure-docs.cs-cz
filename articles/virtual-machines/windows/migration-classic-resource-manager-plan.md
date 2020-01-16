@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: bebfcedcd2944e2c6b05c3203e67df7658dd751a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d5245f73520a77648fc590520185a2cf66bffd02
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460046"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980891"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plánování migrace prostředků IaaS z modelu Classic na Azure Resource Manager
 I když Azure Resource Manager nabízí spoustu funkcí, je důležité naplánovat cestu migrace, abyste se ujistili, že jsou všechno plynulé. Doba útraty při plánování zajistí, že při provádění aktivit migrace dojde k problémům.
@@ -130,8 +130,8 @@ Následující byly problémy zjištěné v řadě větších migrací. Nejedná
   - Směrovací tabulky
 
     Aktuální kvóty Azure Resource Manager můžete kontrolovat pomocí následujících příkazů s nejnovější verzí Azure PowerShell.
-    
-     
+
+
 
     **Výpočetní** prostředky *(jádra, skupiny dostupnosti)*
 
@@ -203,9 +203,9 @@ Co je potřeba vzít v úvahu:
 Záměrné, jaké služby teď chcete v Azure Resource Manager povolit.  Spousta zákazníků pro svá prostředí Azure vyhledá méně závažná řešení:
 
 - [Access Control na základě rolí](../../role-based-access-control/overview.md).
-- [Šablony Azure Resource Manager pro snazší a lepší řízené nasazení](../../azure-resource-manager/template-deployment-overview.md).
-- [Značky](../../azure-resource-manager/resource-group-using-tags.md).
-- [Řízení aktivit](../../azure-resource-manager/resource-group-audit.md)
+- [Šablony Azure Resource Manager pro snazší a lepší řízené nasazení](../../azure-resource-manager/templates/overview.md).
+- [Značky](../../azure-resource-manager/management/tag-resources.md).
+- [Řízení aktivit](../../azure-resource-manager/management/view-activity-logs.md)
 - [Zásady Azure](../../governance/policy/overview.md)
 
 ### <a name="pitfalls-to-avoid"></a>Nástrah, abyste se vyhnuli

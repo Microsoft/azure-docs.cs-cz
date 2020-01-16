@@ -7,12 +7,12 @@ ms.date: 08/31/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 0421f49b31eba688542adc0a5b62e1cf75028836
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5e1fce0852a4e820d7ee0af626ce3fddf6773750
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74269462"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029921"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>Použití emulátoru Azurite pro místní Azure Storage vývoj a testování (Preview)
 
@@ -57,11 +57,11 @@ Podporovaná jsou následující nastavení:
 
    * **Azurite: Host objektu BLOB** – koncový bod naslouchací služby BLOB Service. Výchozí nastavení je 127.0.0.1.
    * **Azurite: port objektu BLOB** – port naslouchání BLOB Service. Výchozí port je 10000.
-   * **Azurite: Debug** – výstup protokolu ladění do kanálu Azurite. Výchozí hodnota je **false (NEPRAVDA**).
+   * **Azurite: Debug** – výstup protokolu ladění do kanálu Azurite. Výchozí hodnota je **false**.
    * **Azurite: Location** – cesta k umístění pracovního prostoru. Výchozí je Visual Studio Code pracovní složka.
    * **Azurite: Queue Host** – koncový bod naslouchací služby služba front. Výchozí nastavení je 127.0.0.1.
    * **Azurite: port fronty** – port naslouchání služba front. Výchozí port je 10001.
-   * **Azurite: bezobslužný** bezobslužný režim zakáže protokol přístupu. Výchozí hodnota je **false (NEPRAVDA**).
+   * **Azurite: bezobslužný** bezobslužný režim zakáže protokol přístupu. Výchozí hodnota je **false**.
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>Instalace a spuštění Azurite pomocí NPM
 
@@ -282,6 +282,20 @@ azurite --debug path/debug.log
 azurite -d path/debug.log
 ```
 
+### <a name="loose-mode"></a>Volný režim
+
+**Volitelné** Ve výchozím nastavení používá Azurite striktní režim pro blokování nepodporovaných hlaviček a parametrů požadavků. Zakáže striktní režim pomocí přepínače **--** dispozice.
+
+```console
+azurite --loose
+```
+
+Všimněte si kapitálového přepínače "L":
+
+```console
+azurite -L
+```
+
 ## <a name="authorization-for-tools-and-sdks"></a>Autorizace pro nástroje a sady SDK
 
 Připojte se k Azurite z Azure Storage sady SDK nebo nástrojů, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/), pomocí jakékoli strategie ověřování. Vyžaduje se ověření. Azurite podporuje autorizaci pomocí sdílených klíčů a podpisů sdíleného přístupu (SAS). Azurite také podporuje anonymní přístup k veřejným kontejnerům.
@@ -308,7 +322,34 @@ Nejjednodušší způsob, jak se připojit k Azurite z vaší aplikace, je nakon
 
 Další informace najdete v tématu [Konfigurace připojovacích řetězců Azure Storage](storage-configure-connection-string.md).
 
-### <a name="storage-explorer"></a>Storage Explorer
+### <a name="custom-storage-accounts-and-keys"></a>Vlastní účty úložiště a klíče
+
+Azurite podporuje vlastní názvy a klíče účtu úložiště nastavením proměnné prostředí `AZURITE_ACCOUNTS` v následujícím formátu: `account1:key1[:key2];account2:key1[:key2];...`.
+
+Použijte například vlastní účet úložiště, který má jeden klíč:
+
+```cmd
+set AZURITE_ACCOUNTS="account1:key1"
+```
+
+Nebo použijte více účtů úložiště se dvěma klíči:
+
+```cmd
+set AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
+```
+
+Azurite ve výchozím nastavení aktualizuje vlastní názvy účtů a klíče z proměnné prostředí. Pomocí této funkce můžete klíč účtu dynamicky otočit nebo přidat nové účty úložiště, aniž byste museli restartovat Azurite.
+
+> [!NOTE]
+> Výchozí účet úložiště `devstoreaccount1` je při nastavování vlastních účtů úložiště zakázaný.
+
+> [!NOTE]
+> Aktualizujte připojovací řetězec odpovídajícím způsobem při použití vlastních názvů účtů a klíčů.
+
+> [!NOTE]
+> Pomocí klíčového slova `export` můžete nastavit proměnné prostředí v prostředí systému Linux pomocí `set` ve Windows.
+
+### <a name="storage-explorer"></a>Průzkumník služby Storage
 
 V Průzkumník služby Azure Storage se připojte k Azurite kliknutím na ikonu **Přidat účet** a pak vyberte **připojit k místnímu emulátoru** a klikněte na **připojit**.
 

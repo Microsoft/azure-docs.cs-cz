@@ -1,17 +1,14 @@
 ---
 title: Nastavení zařízení Azure Migrate pro VMware
 description: Naučte se, jak nastavit zařízení Azure Migrate pro vyhodnocení a migraci virtuálních počítačů VMware.
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
-ms.author: raynew
-ms.openlocfilehash: adb78682e80d78aa4fa6b48507f1fcce789a3fe1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: da451149d0420bc71a355fdf4f4fb122b196d5a0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75360170"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029056"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Nastavení zařízení pro virtuální počítače VMware
 
@@ -72,7 +69,7 @@ Naimportujte stažený soubor a vytvořte virtuální počítač.
 
 ### <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
 
-Ujistěte se, že se virtuální počítač zařízení může připojit k [adresám URL Azure](migrate-support-matrix-vmware.md#assessment-url-access-requirements).
+Ujistěte se, že se virtuální počítač zařízení může připojit k [adresám URL Azure](migrate-appliance.md#url-access).
 
 
 ## <a name="configure-the-appliance"></a>Konfigurace zařízení
@@ -114,7 +111,7 @@ Aby bylo možné zjistit konfiguraci a údaje o výkonu virtuálních počítač
 
 ### <a name="specify-vcenter-server-details"></a>Zadání podrobností vCenter Serveru
 1. V části **zadat vCenter Server podrobnosti**zadejte název (FQDN) nebo IP adresu vCenter Server. Můžete ponechat výchozí port nebo zadat vlastní port, na kterém vCenter Server naslouchá.
-2. V části **uživatelské jméno** a **heslo**zadejte přihlašovací údaje účtu jen pro čtení, které zařízení použije ke zjištění virtuálních počítačů na serveru vCenter. Ujistěte se, že účet má [požadovaná oprávnění pro zjišťování](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions). Rozsah zjišťování můžete omezit tak, že omezíte přístup k účtu vCenter odpovídajícím způsobem; Další informace o zjišťování oboru [najdete tady](tutorial-assess-vmware.md#set-the-scope-of-discovery).
+2. V části **uživatelské jméno** a **heslo**zadejte přihlašovací údaje účtu jen pro čtení, které zařízení použije ke zjištění virtuálních počítačů na serveru vCenter. Rozsah zjišťování můžete omezit tak, že omezíte přístup k účtu vCenter odpovídajícím způsobem; Další informace o zjišťování oboru [najdete tady](tutorial-assess-vmware.md#set-the-scope-of-discovery).
 3. Klikněte na **ověřit připojení** a ujistěte se, že se zařízení může připojit k vCenter Server.
 
 ### <a name="specify-vm-credentials"></a>Zadat přihlašovací údaje virtuálního počítače

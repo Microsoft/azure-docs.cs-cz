@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: 14daa37a414e814ed6de036bbb625933ce2532e0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 24746b7bbbbf3985a9801139b301a829c51a14da
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888120"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030078"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Vytváření a spouštění automatizovaných pracovních postupů založených na událostech pomocí webhooků HTTP v Azure Logic Apps
 
@@ -36,7 +36,16 @@ Akce Webhooku protokolu HTTP je také založená na událostech a *přihlašuje*
 Příkladem akce Webhooku, která následuje za tímto vzorem, je například akce [**poslat e-mail se schválením**](connectors-create-api-office365-outlook.md) konektoru Office 365 Outlooku. Tento model můžete roztáhnout do libovolné služby pomocí akce Webhooku.
 
 > [!NOTE]
-> Logic Apps vynutila TLS (Transport Layer Security) 1,2 při přijetí volání zpět do triggeru nebo akce Webhooku protokolu HTTP. Pokud se zobrazí chyby handshake SSL, ujistěte se, že používáte TLS 1,2.
+> Logic Apps vynutila TLS (Transport Layer Security) 1,2 při přijetí volání zpět do triggeru nebo akce Webhooku protokolu HTTP. Pokud se zobrazí chyby handshake SSL, ujistěte se, že používáte TLS 1,2. V případě příchozích volání jsou zde podporované šifrovací sady:
+>
+> * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+> * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+> * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 Další informace najdete v těchto tématech:
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 34dd15ee638335048c983fbb752bd812291456ca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1761eebe51c5ccb4d30b93ad4122dfc185d216e
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418054"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028262"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Správa účtů Azure Automation spustit jako
 
@@ -20,19 +20,19 @@ Když vytvoříte účet Spustit jako, vytvoří se v Azure Active Directory nov
 
 Existují dva typy účtů spustit jako:
 
-* **Účet Spustit jako pro Azure** – tento účet se používá ke správě prostředků [modelu nasazení Správce prostředků](../azure-resource-manager/resource-manager-deployment-model.md) .
+* **Účet Spustit jako pro Azure** – tento účet se používá ke správě prostředků [modelu nasazení Správce prostředků](../azure-resource-manager/management/deployment-models.md) .
   * Vytvoří aplikaci Azure AD s certifikátem podepsaným svým držitelem, vytvoří účet instančního objektu pro tuto aplikaci v Azure AD a přiřadí roli přispěvatele pro tento účet v aktuálním předplatném. Toto nastavení můžete změnit na roli Vlastník nebo libovolnou jinou roli. Další informace najdete v tématu [Řízení přístupu na základě role ve službě Azure Automation](automation-role-based-access-control.md).
   * V příslušném účtu Automation vytvoří prostředek certifikátu Automation s názvem *AzureRunAsCertificate*. Prostředek certifikátu obsahuje privátní klíč certifikátu, který používá aplikace Azure AD.
   * V příslušném účtu Automation vytvoří prostředek připojení Automation s názvem *AzureRunAsConnection*. Prostředek připojení obsahuje parametry applicationId, tenantId, subscriptionId a certificate thumbprint.
 
-* **Účet Spustit jako pro Azure Classic** – tento účet se používá ke správě prostředků [modelu nasazení Classic](../azure-resource-manager/resource-manager-deployment-model.md) .
+* **Účet Spustit jako pro Azure Classic** – tento účet se používá ke správě prostředků [modelu nasazení Classic](../azure-resource-manager/management/deployment-models.md) .
   * Vytvoří certifikát pro správu v předplatném.
   * V příslušném účtu Automation vytvoří prostředek certifikátu Automation s názvem *AzureClassicRunAsCertificate*. Prostředek certifikátu obsahuje privátní klíč certifikátu, který používá certifikát pro správu.
   * V příslušném účtu Automation vytvoří prostředek připojení Automation s názvem *AzureClassicRunAsConnection*. Prostředek propojení obsahuje název a ID předplatného a název prostředku certifikátu.
   * Musí být spolusprávcem předplatného, aby bylo možné vytvořit nebo prodloužit platnost.
 
   > [!NOTE]
-  > Předplatná Azure Cloud Solution Provider (CSP) podporují jenom model Azure Resource Manager, ale služby, které nejsou Azure Resource Manager, nejsou v programu k dispozici. Pokud používáte předplatné CSP, účet Spustit jako pro Azure Classic se nevytvoří. Účet Spustit jako pro Azure se pořád vytvoří. Další informace o předplatných CSP najdete [v tématu dostupné služby v předplatných CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments).
+  > Předplatná Azure Cloud Solution Provider (CSP) podporují jenom model Azure Resource Manager, ale služby, které nejsou Azure Resource Manager, nejsou v programu k dispozici. Pokud používáte předplatné CSP, účet Spustit jako pro Azure Classic se nevytvoří. Účet Spustit jako pro Azure se pořád vytvoří. Další informace o předplatných CSP najdete [v tématu dostupné služby v předplatných CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services).
 
   > [!NOTE]
   > Instanční objekt pro účet Spustit jako nemá oprávnění ke čtení Azure Active Directory ve výchozím nastavení. Pokud chcete přidat oprávnění ke čtení nebo správě služby Azure Active Directory, musíte toto oprávnění použít u instančního objektu v části **oprávnění rozhraní API**. Další informace najdete v tématu [Přidání oprávnění pro přístup k webovým rozhraním API](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).

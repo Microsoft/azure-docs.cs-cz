@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: 87faea5385f5b0fd2c481c6aa7c45a9867b34163
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 4ef8bc029c63aaf297462a7b53f6daba1a7c850b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942184"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028421"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Řešení potíží s virtuálním počítačem Azure pomocí vnořené virtualizace v Azure
 
@@ -26,11 +26,7 @@ V tomto článku se dozvíte, jak vytvořit vnořené prostředí virtualizace v
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li připojit problémový virtuální počítač, musí záchranný virtuální počítač splňovat následující požadavky:
-
--   Záchranný virtuální počítač musí být ve stejném umístění jako virtuální počítač problému.
-
--   Záchranný virtuální počítač musí používat stejný typ účtu úložiště (Standard nebo Premium) jako virtuální počítač problému.
+K připojení tohoto virtuálního počítače musí záchranný virtuální počítač používat stejný typ účtu úložiště (Standard nebo Premium) jako virtuální počítač problému.
 
 ## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>Krok 1: vytvoření záchranného virtuálního počítače a instalace role Hyper-V
 

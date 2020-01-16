@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 35f967e946854c3ca097db379015a7ee0bbe2f3d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d888c8fd3bf7cd44c37e7225618bd197f419d275
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231692"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030121"
 ---
 # <a name="create-configurations-from-existing-servers"></a>Vytvoření konfigurací z existujících serverů
 
@@ -39,7 +39,7 @@ Nejnovější verze obsahuje několik [režimů extrakce](https://github.com/Mic
 Výsledkem použití řešení je generování [konfiguračních dat](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data) , která se mají použít s konfiguračními skripty pro SharePointDSC.
 
 Po vygenerování datových souborů je můžete použít s [konfiguračními skripty DSC](/powershell/scripting/dsc/overview/overview) k vygenerování souborů MOF a [nahrání souborů MOF do Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
-Pak můžete své servery zaregistrovat z [místního](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) prostředí nebo [v Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) a vyžádat si konfigurace.
+Pak můžete své servery zaregistrovat z [místního](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) prostředí nebo [v Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) a vyžádat si konfigurace.
 
 Pokud si chcete vyzkoušet ReverseDSC, navštivte [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/ReverseDSC/) a Stáhněte řešení nebo klikněte na web projektu a zobrazte [dokumentaci](https://github.com/Microsoft/sharepointDSC.reverse).
 

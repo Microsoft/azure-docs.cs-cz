@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: a5b12a426e52c3b80c58a30b320b2f746bbe990d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 285b3608bc57d88ca2e81ed14355923436ed9d8d
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832194"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028510"
 ---
 # <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Úvod k přírůstkové obohacení a ukládání do mezipaměti v Azure Kognitivní hledání
 
@@ -56,14 +56,16 @@ Nastavení této vlastnosti u stávajícího indexeru bude vyžadovat, abyste in
 
 I když je přírůstkové obohacení určené ke zjištění a reakci na změny bez zásahu vaší strany, existují parametry, pomocí kterých můžete přepsat výchozí chování:
 
-+ Pozastavit ukládání do mezipaměti
++ Určení priorit nových dokumentů
 + Obejít dovednosti kontroly
 + Obejít kontrolu zdroje dat
 + Vynutit vyhodnocování dovednosti
 
-### <a name="suspend-caching"></a>Pozastavit ukládání do mezipaměti
+### <a name="prioritize-new-documents"></a>Určení priorit nových dokumentů
 
-Přírůstkové obohacení můžete dočasně pozastavit nastavením vlastnosti `enableReprocessing` v mezipaměti na `false`a později pokračovat v přírůstkovém obohacení a tím, že ji nastavíte na `true`. Tento ovládací prvek je zvláště užitečný, pokud chcete určit prioritu indexování nových dokumentů s cílem zajistit konzistenci napříč corpus dokumentů.
+Nastavte vlastnost `enableReprocessing` pro řízení zpracování příchozích dokumentů, které jsou již v mezipaměti zastoupeny. Při `true` (výchozí nastavení) se při opětovném spuštění indexeru znovu zpracovávají dokumenty v mezipaměti, za předpokladu, že se aktualizace dovedností projeví i v tomto dokumentu. 
+
+Když `false`, existující dokumenty se nezpracovávají a efektivně se tak budou upřednostňovat nové a příchozí obsahy přes existující obsah. Měli byste nastavit jenom `enableReprocessing`, aby `false` na dočasné bázi. Aby se zajistila konzistence napříč corpus, `enableReprocessing` by se měla `true` většinu času a zajistit, aby všechny dokumenty, obě nové i existující, byly platné pro aktuální definici dovednosti.
 
 ### <a name="bypass-skillset-evaluation"></a>Obejít vyhodnocování dovednosti
 
@@ -93,9 +95,9 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 ### <a name="force-skillset-evaluation"></a>Vynutit vyhodnocování dovednosti
 
-Účelem mezipaměti je vyhnout se zbytečnému zpracování, ale Předpokládejme, že jste provedli změnu dovedností nebo dovednosti, které indexer nedetekuje (například změny externích součástí jako vlastní dovednosti). 
+Účelem mezipaměti je vyhnout se zbytečnému zpracování, ale Předpokládejme, že provedete změnu dovednosti, kterou indexer nedetekuje (například změna nějakého externího kódu, jako je třeba vlastní dovednost).
 
-V takovém případě můžete použít rozhraní API pro [resetování dovedností](preview-api-resetskills.md) k vynucení přepracování konkrétní dovednosti, včetně všech dovedností, které jsou závislé na výstupu této dovednosti. Toto rozhraní API přijme požadavek POST se seznamem dovedností, které by měly být neověřené a znovu spusťte. Po resetování dovedností spusťte indexer a operaci spusťte.
+V takovém případě můžete použít [dovednost obnovení](preview-api-resetskills.md) k vynucení přepracování konkrétní dovednosti, včetně všech dovedností, které jsou závislé na výstupu této dovednosti. Toto rozhraní API přijme požadavek POST se seznamem dovedností, které by měly být neověřené a označené k novému zpracování. Po resetování dovedností spusťte indexer k vyvolání kanálu.
 
 ## <a name="change-detection"></a>Zjišťování změn
 
@@ -158,7 +160,7 @@ Informace o využití a příklady najdete v v [konfiguraci ukládání do mezip
 
 ### <a name="datasources"></a>Zdroje dat
 
-+ Některé indexery načítají data prostřednictvím dotazů. U dotazů, které načítají data, [aktualizuje zdroj dat](https://docs.microsoft.com/rest/api/searchservice/update-datasource) v `ignoreResetRequirement`žádosti nový parametr, který by měl být nastaven na hodnotu `true`, pokud by vaše akce aktualizace neměla mít za následek zrušení platnosti mezipaměti.
++ Některé indexery načítají data prostřednictvím dotazů. U dotazů, které načítají data, [aktualizuje zdroj dat](https://docs.microsoft.com/rest/api/searchservice/update-data-source) v `ignoreResetRequirement`žádosti nový parametr, který by měl být nastaven na hodnotu `true`, pokud by vaše akce aktualizace neměla mít za následek zrušení platnosti mezipaměti.
 
 `ignoreResetRequirement` můžete použít zřídka, protože by mohlo vést k nezamýšlené nekonzistenci vašich dat, která se nezjistí snadno.
 

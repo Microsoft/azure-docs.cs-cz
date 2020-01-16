@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ccdd234f951327aeb5baa6aabcac4314b9de7b34
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 0b938de0fec099b3f964eae60dc94d059e05a1c6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517108"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973494"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Nasazení StorSimple Virtual Array – Příprava Azure Portal
 
@@ -37,7 +37,7 @@ K dokončení této instalace a procesu konfigurace potřebujete oprávnění sp
 
 Informace publikované v tomto článku se vztahují na nasazení virtuálních polí StorSimple v cloudu Azure Portal a Microsoft Azure Government.
 
-### <a name="get-started"></a>Začínáme
+### <a name="get-started"></a>Začít
 Pracovní postup nasazení se skládá z přípravy portálu, zřizování virtuálního pole ve virtualizovaném prostředí a dokončení instalace. Chcete-li začít s nasazením virtuálního pole StorSimple jako souborovým serverem nebo serverem iSCSI, je nutné, abyste se přečtěte na následujících seřazeních prostředků.
 
 #### <a name="deployment-articles"></a>Články o nasazení
@@ -96,7 +96,7 @@ Použijte následující podrobné pokyny k přípravě portálu pro službu Sto
 
 ## <a name="step-1-create-a-new-service"></a>Krok 1: Vytvoření nové služby
 
-Jedna instance služby StorSimple Device Manager může spravovat více virtuálních polí StorSimple. Pomocí následujících kroků vytvořte instanci služby Správce zařízení StorSimple. Pokud máte existující službu StorSimple Device Manager ke správě virtuálních polí, přeskočte tento krok a přejděte ke [kroku 2: Získejte registrační klíč](#step-2-get-the-service-registration-key)služby.
+Jedna instance služby StorSimple Device Manager může spravovat více virtuálních polí StorSimple. Pomocí následujících kroků vytvořte instanci služby Správce zařízení StorSimple. Pokud máte existující službu StorSimple Device Manager ke správě virtuálních polí, přeskočte tento krok a přejděte ke [kroku 2: získání registračního klíče služby](#step-2-get-the-service-registration-key).
 
 [!INCLUDE [storsimple-virtual-array-create-new-service](../../includes/storsimple-virtual-array-create-new-service.md)]
 
@@ -104,7 +104,7 @@ Jedna instance služby StorSimple Device Manager může spravovat více virtuál
 > Pokud jste nepovolili automatické vytvoření účtu úložiště při vytvoření služby, po úspěšném vytvoření služby bude nutné vytvořit alespoň jeden účet úložiště.
 > 
 > * Pokud jste nevytvořili účet úložiště automaticky, najdete podrobné pokyny k vytvoření účtu v tématu [Konfigurace nového účtu úložiště pro službu](#optional-step-configure-a-new-storage-account-for-the-service).
-> * Pokud jste povolili automatické vytváření účtu úložiště, pokračujte na [krok 2: Získejte registrační klíč](#step-2-get-the-service-registration-key)služby.
+> * Pokud jste automatické vytvoření účtu úložiště povolili, pokračujte na [krok 2: Získání registračního klíče služby](#step-2-get-the-service-registration-key).
 > 
 > 
 
@@ -121,7 +121,7 @@ Na webu [Azure Portal](https://portal.azure.com/) proveďte následující kroky
 > 
 > 
 
-## <a name="step-3-download-the-virtual-array-image"></a>Krok 3: Stáhnout image virtuálního pole
+## <a name="step-3-download-the-virtual-array-image"></a>Krok 3: stažení image virtuálního pole
 
 Až budete mít registrační klíč služby, budete muset stáhnout příslušnou image virtuálního pole a zřídit tak virtuální pole v hostitelském systému. Obrázky virtuálních polí jsou specifické pro operační systém a je možné je stáhnout ze stránky rychlé zprovoznění Azure Portal.
 
@@ -144,11 +144,11 @@ Na webu [Azure Portal](https://portal.azure.com/) proveďte následující kroky
    * VMDK pro VMWare ESXi 5,0, 5,5, 6,0 nebo 6,5
 5. Stáhněte soubor na místní disk, rozbalte ho a poznamenejte si umístění rozbaleného souboru.
 
-## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>Volitelný krok: Konfigurace nového účtu úložiště pro službu
+## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>Volitelný krok: konfigurace nového účtu úložiště pro službu
 
 Tento krok je nepovinný a měl by se provádět jenom v případě, že jste nepovolili automatické vytvoření účtu úložiště s vaší službou.
 
-Pokud potřebujete vytvořit účet úložiště Azure v jiné oblasti, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md) pro podrobné pokyny.
+Pokud potřebujete vytvořit účet úložiště Azure v jiné oblasti, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-account-create.md) pro podrobné pokyny.
 
 V [Azure Portal](https://ms.portal.azure.com/) na stránce služby Device Manager StorSimple proveďte následující kroky a přidejte existující účet úložiště Microsoft Azure.
 
@@ -156,16 +156,16 @@ V [Azure Portal](https://ms.portal.azure.com/) na stránce služby Device Manage
 
 1. Přejděte ke službě Device Manager, vyberte ji a dvakrát na ni klikněte. Tím se otevře okno **Přehled** .
 2. V části **Konfigurace** vyberte **přihlašovací údaje účtu úložiště** .
-3. Klikněte na **Přidat**.
+3. Klikněte na tlačítko **Add** (Přidat).
 4. V okně **Přidat účet úložiště** udělejte toto:
    
-   1. Vpředplatném vyberte **aktuální**.
+   1. V **předplatném**vyberte **aktuální**.
    
    2. Zadejte název svého účtu úložiště Azure.
    
    3. Pokud chcete vytvořit zabezpečený kanál pro síťovou komunikaci mezi zařízením StorSimple a cloudem, vyberte **Povolit** . Vyberte možnost **Zakázat** pouze v případě, že pracujete v rámci privátního cloudu.
    
-   4. Klikněte na **Přidat**. Po úspěšném vytvoření účtu úložiště se zobrazí oznámení.<br></br>
+   4. Klikněte na tlačítko **Add** (Přidat). Po úspěšném vytvoření účtu úložiště se zobrazí oznámení.<br></br>
    
       ![Přidat existující přihlašovací údaje účtu úložiště](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 

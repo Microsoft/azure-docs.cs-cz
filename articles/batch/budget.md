@@ -2,20 +2,20 @@
 title: Analýza nákladů a rozpočet – Azure Batch
 description: Přečtěte si, jak získat nákladovou analýzu a nastavit rozpočet pro úlohy Batch.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 07/19/2019
-ms.author: lahugh
-ms.openlocfilehash: 6ccf530fe2164b3d9b1936648ffe9057c334efd6
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.author: jushiman
+ms.openlocfilehash: 7707d966049e9eced1add1104441af8fee356ef0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70094210"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029569"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Analýza nákladů a rozpočty pro Azure Batch
 
@@ -23,7 +23,7 @@ Neúčtují se žádné poplatky za Azure Batch sebe, jenom základní výpočet
 
 ## <a name="batch-resources"></a>Prostředky Batch
 
-Virtuální počítače jsou nejvýznamnějším prostředkem používaným pro dávkové zpracování. Náklady na použití virtuálních počítačů pro dávku se vypočítávají na základě typu, množství a doby trvání použití. Možnosti fakturace virtuálních počítačů zahrnují průběžné [platby](https://azure.microsoft.com/offers/ms-azr-0003p/) nebo [rezervace](../billing/billing-save-compute-costs-reservations.md) (platí předem). Obě možnosti platby mají různé výhody v závislosti na výpočetním zatížení a oba platební modely budou mít na vyúčtování vliv odlišně.
+Virtuální počítače jsou nejvýznamnějším prostředkem používaným pro dávkové zpracování. Náklady na použití virtuálních počítačů pro dávku se vypočítávají na základě typu, množství a doby trvání použití. Možnosti fakturace virtuálních počítačů zahrnují průběžné [platby](https://azure.microsoft.com/offers/ms-azr-0003p/) nebo [rezervace](../cost-management-billing/reservations/save-compute-costs-reservations.md) (platí předem). Obě možnosti platby mají různé výhody v závislosti na výpočetním zatížení a oba platební modely budou mít na vyúčtování vliv odlišně.
 
 Když se aplikace nasazují na uzly služby Batch pomocí [balíčků aplikací](batch-application-packages.md), budou se vám účtovat Azure Storage prostředky, které využívají balíčky aplikací. Účtuje se vám taky úložiště všech vstupních nebo výstupních souborů, jako jsou soubory prostředků a další data protokolu. Obecně platí, že cena dat úložiště přidružených ke službě Batch je mnohem nižší než náklady na výpočetní prostředky. Každý virtuální počítač ve fondu, který se vytvořil pomocí **VirtualMachineConfiguration** , má přidružený disk s operačním systémem, který používá disky Azure spravované v Azure. Disky spravované službou Azure mají další náklady a další úrovně výkonu na disku mají i různé náklady.
 
@@ -50,15 +50,15 @@ Prostřednictvím Azure Portal můžete vytvořit rozpočty a oznámení o výda
 1. V Azure Portal v levém navigačním panelu vyberte **cost management + fakturace** .
 1. Vyberte své předplatné z oddílu **Moje předplatné** .
 1. V části **cost management** v levém navigačním panelu se podívejte na **Analýza nákladů** , která zobrazí toto zobrazení:
-1. Vyberte **Přidat filtr**. V prvním rozevíracím seznamu vyberte **prostředek** ![Select filtr prostředků ](./media/batch-budget/resource-filter.png)
+1. Vyberte **Přidat filtr**. V prvním rozevíracím seznamu vyberte **prostředek** ![vyberte filtr prostředků](./media/batch-budget/resource-filter.png)
 1. V druhém rozevíracím seznamu vyberte fond Batch. Při výběru fondu bude analýza nákladů vypadat podobně jako u následující analýzy.
-    Analýza ![Cost fondu ](./media/batch-budget/pool-cost-analysis.png)
+    ![analýza nákladů fondu](./media/batch-budget/pool-cost-analysis.png)
 
 Výsledná analýza nákladů zobrazuje náklady na fond a také prostředky, které přispívají k těmto nákladům. V tomto příkladu jsou virtuální počítače, které se používají ve fondu, nejnákladným prostředkem.
 
 Pokud chcete vytvořit rozpočet pro fond, vyberte **rozpočet: žádné**a pak vyberte **vytvořit novou rozpočtovou >** . Teď použijte okno ke konfiguraci rozpočtu specificky pro váš fond.
 
-Další informace o konfiguraci rozpočtu najdete v tématu [Vytvoření a Správa rozpočtů Azure](../cost-management/tutorial-acm-create-budgets.md).
+Další informace o konfiguraci rozpočtu najdete v tématu [Vytvoření a Správa rozpočtů Azure](../cost-management-billing/costs/tutorial-acm-create-budgets.md).
 
 > [!NOTE]
 > Azure Batch je postavená na technologii Azure Cloud Services a platformě Azure Virtual Machines. Když zvolíte **Cloud Services konfiguraci**, bude se vám účtovat na základě Cloud Services cenové struktury. Když zvolíte **konfiguraci virtuálního počítače**, bude se vám účtovat na základě Virtual Machines cenové struktury. V příkladu na této stránce se používá **Konfigurace virtuálního počítače**.
@@ -81,7 +81,7 @@ SSD úrovně Premium disky s operačním systémem jsou dražší, ale mají vy�
 
 ### <a name="reserved-virtual-machine-instances"></a>Rezervované instance virtuálních počítačů
 
-Pokud máte v úmyslu používat Batch po dlouhou dobu, můžete ušetřit náklady na virtuální počítače pomocí [Azure reservations](../billing/billing-save-compute-costs-reservations.md) pro vaše úlohy. Míra rezervace je výrazně nižší než sazba průběžných plateb. Instance virtuálních počítačů, které se používají bez rezervace, se účtují podle tarifu průběžných plateb. Pokud si zakoupíte rezervaci, použije se sleva rezervace a už se vám nebudou účtovat poplatky za průběžné platby.
+Pokud máte v úmyslu používat Batch po dlouhou dobu, můžete ušetřit náklady na virtuální počítače pomocí [Azure reservations](../cost-management-billing/reservations/save-compute-costs-reservations.md) pro vaše úlohy. Míra rezervace je výrazně nižší než sazba průběžných plateb. Instance virtuálních počítačů, které se používají bez rezervace, se účtují podle tarifu průběžných plateb. Pokud si zakoupíte rezervaci, použije se sleva rezervace a už se vám nebudou účtovat poplatky za průběžné platby.
 
 ### <a name="automatic-scaling"></a>Automatické škálování
 

@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 000271095530e269472fba4bc5f1c5563aa16ff9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 41410d4e534d0940050521ecc86e8a384566f439
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428807"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972688"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Přehled: Automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager
 
 Až budete připraveni automatizovat vytváření a nasazení aplikace logiky, můžete svou definici pracovního postupu vaší aplikace logiky rozšířit do [šablony Azure Resource Manager](../azure-resource-manager/management/overview.md). Tato šablona definuje infrastrukturu, prostředky, parametry a další informace pro zřizování a nasazení aplikace logiky. Definováním parametrů pro hodnoty, které se liší v nasazení, označované také jako *Parametrizace*, můžete opakovaně a konzistentně nasazovat aplikace logiky na základě různých potřeb nasazení.
 
-Například pokud nasadíte do prostředí pro vývoj, testování a produkci, pravděpodobně pro každé prostředí použijete různé připojovací řetězce. Můžete deklarovat parametry šablony, které přijímají různé připojovací řetězce, a pak tyto řetězce Uložit do samostatného [souboru parametrů](../azure-resource-manager/templates/parameter-files.md). Tímto způsobem můžete tyto hodnoty změnit, aniž byste museli šablonu aktualizovat a znovu nasadit. V případě scénářů, kde máte citlivé hodnoty parametrů, nebo musí být zabezpečené, jako jsou hesla a tajné kódy, můžete tyto hodnoty uložit v [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) a nechat si soubory parametrů tyto hodnoty načíst. V těchto scénářích se však znovu nasadí, aby se načetly aktuální hodnoty.
+Například pokud nasadíte do prostředí pro vývoj, testování a produkci, pravděpodobně pro každé prostředí použijete různé připojovací řetězce. Můžete deklarovat parametry šablony, které přijímají různé připojovací řetězce, a pak tyto řetězce Uložit do samostatného [souboru parametrů](../azure-resource-manager/templates/parameter-files.md). Tímto způsobem můžete tyto hodnoty změnit, aniž byste museli šablonu aktualizovat a znovu nasadit. V případě scénářů, kde máte citlivé hodnoty parametrů, nebo musí být zabezpečené, jako jsou hesla a tajné kódy, můžete tyto hodnoty uložit v [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) a nechat si soubory parametrů tyto hodnoty načíst. V těchto scénářích se však znovu nasadí, aby se načetly aktuální hodnoty.
 
 Tento přehled popisuje atributy v šabloně Správce prostředků, které obsahují definici pracovního postupu aplikace logiky. Šablona i definice pracovního postupu používají syntaxi JSON, ale některé rozdíly existují, protože definice pracovního postupu také následuje po [schématu jazyka definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md). Například výrazy šablony a výrazy definice pracovního postupu se liší v tom, jak [odkazují na parametry](#parameter-references) a hodnoty, které mohou přijmout.
 
@@ -31,8 +31,8 @@ Ukázková aplikace logiky v tomto tématu používá [aktivační proceduru Off
 Další informace o šablonách Správce prostředků najdete v těchto tématech:
 
 * [Azure Resource Manager struktura a syntaxe šablony](../azure-resource-manager/templates/template-syntax.md)
-* [Osvědčené postupy pro šablony Azure Resource Manageru](../azure-resource-manager/template-best-practices.md)
-* [Vývoj šablon Azure Resource Manageru pro konzistenci cloudu](../azure-resource-manager/templates-cloud-consistency.md)
+* [Osvědčené postupy pro šablony Azure Resource Manageru](../azure-resource-manager/templates/template-best-practices.md)
+* [Vývoj šablon Azure Resource Manageru pro konzistenci cloudu](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
 Ukázkové šablony aplikací logiky najdete v těchto příkladech:
 
@@ -149,7 +149,7 @@ Chcete-li zabezpečit parametry šablony, přečtěte si tato témata:
 
 * [Doporučení zabezpečení pro parametry šablony](../azure-resource-manager/templates/template-best-practices.md#parameters)
 * [Parametry zabezpečené šablony](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
-* [Předání hodnot zabezpečeného parametru pomocí Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+* [Předání hodnot zabezpečeného parametru pomocí Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 Jiné objekty šablon často odkazují na parametry šablony, aby mohli použít hodnoty, které předávají parametry šablony, například:
 
@@ -173,7 +173,7 @@ Tady je několik osvědčených postupů pro definování parametrů:
 
   * [Parametry zabezpečené šablony](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
-  * [Předání hodnot zabezpečeného parametru pomocí Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+  * [Předání hodnot zabezpečeného parametru pomocí Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 * Chcete-li odlišit názvy parametrů šablony z názvů parametrů definice pracovního postupu, můžete použít názvy parametrů popisné šablony, například: `TemplateFabrikamPassword`
 
@@ -188,7 +188,7 @@ Chcete-li zadat hodnoty parametrů šablony, uložte tyto hodnoty do [souboru pa
 * Název souboru šablony aplikace logiky: **<*Logic-App-Name*>. JSON**
 * Název souboru parametrů: **<*Logic-App-Name*>. Parameters. JSON**
 
-Tady je struktura v souboru parametrů, která obsahuje odkaz na Trezor klíčů pro [předání hodnoty zabezpečeného parametru s Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md):
+Tady je struktura v souboru parametrů, která obsahuje odkaz na Trezor klíčů pro [předání hodnoty zabezpečeného parametru s Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md):
 
 ```json
 {
@@ -409,7 +409,7 @@ Tato syntaxe ukazuje, kde můžete deklarovat parametry na úrovni šablony i de
 
 Pro parametr definice pracovního postupu, který zpracovává citlivé informace, hesla, přístupové klíče nebo tajné klíče za běhu, deklarujte nebo upravte parametr pro použití `securestring` nebo `secureobject` typu parametru. Na tento parametr můžete odkazovat v rámci definice pracovního postupu. Na nejvyšší úrovni šablony deklarujte parametr, který má stejný typ pro zpracování těchto informací při nasazení.
 
-Pokud chcete nastavit hodnotu parametru definice pracovního postupu, použijte objekt `parameters`, který je *mimo* vaši definici pracovního postupu, ale ještě *v* definici prostředků vaší aplikace logiky se odkazuje na parametr šablony. Nakonec, pokud chcete předat hodnotu parametru šablony při nasazení, uložte tuto hodnotu do [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) a odkazujte na tento trezor klíčů v [souboru parametrů](#template-parameter-files) , který je použit vaší šablonou při nasazení.
+Pokud chcete nastavit hodnotu parametru definice pracovního postupu, použijte objekt `parameters`, který je *mimo* vaši definici pracovního postupu, ale ještě *v* definici prostředků vaší aplikace logiky se odkazuje na parametr šablony. Nakonec, pokud chcete předat hodnotu parametru šablony při nasazení, uložte tuto hodnotu do [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) a odkazujte na tento trezor klíčů v [souboru parametrů](#template-parameter-files) , který je použit vaší šablonou při nasazení.
 
 Tato příklad šablony ukazuje, jak můžete tyto úlohy dokončit definováním zabezpečených parametrů v případě potřeby, abyste mohli ukládat jejich hodnoty do Azure Key Vault:
 
@@ -558,7 +558,7 @@ Abyste se ujistili, že návrhář aplikace logiky může správně zobrazit par
 
   * [Doporučení zabezpečení pro parametry v definicích pracovních postupů](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-workflow)
 
-  * [Předání hodnot zabezpečeného parametru pomocí Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+  * [Předání hodnot zabezpečeného parametru pomocí Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 Další informace o parametrech definice pracovního postupu najdete v tématu [parametry – jazyk definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md#parameters).
 
@@ -652,7 +652,7 @@ Definice prostředků vaší aplikace logiky funguje také s definicemi prostře
 
 * *Mimo* definici pracovního postupu, ale pořád i *v* definici prostředků vaší aplikace logiky, další objekt `parameters` nastaví hodnoty, které se mají použít za běhu pro `$connections` parametr odkazem na odpovídající parametry šablony. Tyto hodnoty pomocí výrazů šablony odkazují na prostředky, které bezpečně ukládají metadata pro připojení ve vaší aplikaci logiky.
 
-  Metadata můžou například zahrnovat připojovací řetězce a přístupové tokeny, které můžete ukládat v [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md). Chcete-li tyto hodnoty předat parametrům šablony, odkazujte na tento trezor klíčů v [souboru parametrů](#template-parameter-files) , který je použit vaší šablonou při nasazení. Další informace o rozdílech v referenčních parametrech naleznete v tématu [odkazy na parametry](#parameter-references) dále v tomto tématu.
+  Metadata můžou například zahrnovat připojovací řetězce a přístupové tokeny, které můžete ukládat v [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md). Chcete-li tyto hodnoty předat parametrům šablony, odkazujte na tento trezor klíčů v [souboru parametrů](#template-parameter-files) , který je použit vaší šablonou při nasazení. Další informace o rozdílech v referenčních parametrech naleznete v tématu [odkazy na parametry](#parameter-references) dále v tomto tématu.
 
   Když otevřete definici pracovního postupu aplikace logiky v zobrazení kód prostřednictvím Azure Portal nebo sady Visual Studio, objekt `$connections` se zobrazí mimo vaši definici pracovního postupu, ale na stejné úrovni. Toto řazení v zobrazení kódu usnadňuje odkazování těchto parametrů při ruční aktualizaci definice pracovního postupu:
 
@@ -744,7 +744,7 @@ Tento příklad ukazuje interakce mezi definicí prostředků vaší aplikace lo
 
 ### <a name="secure-connection-parameters"></a>Parametry zabezpečeného připojení
 
-Pro parametr připojení, který zpracovává citlivé informace, hesla, přístupové klíče a tajné kódy, zahrnuje definice prostředků připojení `parameterValues` objekt, který určuje tyto hodnoty ve formátu dvojice název-hodnota. Chcete-li skrýt tyto informace, můžete deklarovat nebo upravit parametry šablony pro tyto hodnoty pomocí typů parametrů `securestring` nebo `secureobject`. Tyto informace pak můžete uložit v [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md). Chcete-li tyto hodnoty předat parametrům šablony, odkazujte na tento trezor klíčů v [souboru parametrů](#template-parameter-files) , který je použit vaší šablonou při nasazení.
+Pro parametr připojení, který zpracovává citlivé informace, hesla, přístupové klíče a tajné kódy, zahrnuje definice prostředků připojení `parameterValues` objekt, který určuje tyto hodnoty ve formátu dvojice název-hodnota. Chcete-li skrýt tyto informace, můžete deklarovat nebo upravit parametry šablony pro tyto hodnoty pomocí typů parametrů `securestring` nebo `secureobject`. Tyto informace pak můžete uložit v [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md). Chcete-li tyto hodnoty předat parametrům šablony, odkazujte na tento trezor klíčů v [souboru parametrů](#template-parameter-files) , který je použit vaší šablonou při nasazení.
 
 Tady je příklad, který poskytuje název účtu a přístupový klíč pro připojení k Azure Blob Storage:
 
@@ -1011,7 +1011,7 @@ Další informace o práci s instančními objekty najdete v těchto tématech:
 
 ## <a name="references-to-parameters"></a>Odkazy na parametry
 
-Chcete-li odkazovat na parametry šablony, můžete použít výrazy šablony s [funkcemi šablony](../azure-resource-manager/resource-group-template-functions.md), které jsou vyhodnocovány při nasazení. Výrazy šablony používají hranaté závorky ( **[]** ):
+Chcete-li odkazovat na parametry šablony, můžete použít výrazy šablony s [funkcemi šablony](../azure-resource-manager/templates/template-functions.md), které jsou vyhodnocovány při nasazení. Výrazy šablony používají hranaté závorky ( **[]** ):
 
 `"<attribute-name>": "[parameters('<template-parameter-name>')]"`
 

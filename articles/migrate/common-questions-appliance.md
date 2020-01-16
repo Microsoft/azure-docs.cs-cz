@@ -3,12 +3,12 @@ title: Běžné otázky týkající se zařízení Azure Migrate
 description: Získejte odpovědi na běžné otázky týkající se zařízení Azure Migrate.
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 29cb390f509a2a4ebf44c1f9aacef99b507aebb8
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: c8bcebeee58401cb3d2b65ae82e51d31ab4dad0b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720323"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029121"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Zařízení Azure Migrate: běžné otázky
 
@@ -40,9 +40,9 @@ Když vytvoříte virtuální počítač zařízení pomocí stažené šablony,
 ## <a name="what-network-connectivity-is-needed"></a>Jaké síťové připojení je potřeba?
 
 Zkontrolujte následující:
-- Posouzení VMware zařízení: [Adresa URL](migrate-support-matrix-vmware.md#assessment-url-access-requirements) a požadavky na přístup k [portu](migrate-support-matrix-vmware.md#assessment-port-requirements) .
-- Migrace VMware bez agentů zařízení: požadavky na přístup k [adresám URL](migrate-support-matrix-vmware.md#agentless-migration-url-access-requirements) a [portům](migrate-support-matrix-vmware.md#agentless-migration-port-requirements) .
-- Posuzování zařízení technologie Hyper-V: požadavky [URL](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access) a přístup k [portu](migrate-support-matrix-hyper-v.md#assessment-port-requirements) .
+- Vyhodnocení VMware pomocí Azure Migrate zařízení: požadavky [URL](migrate-appliance.md#url-access) a přístup k [portu](migrate-support-matrix-vmware.md#port-access) .
+- Migrace bez agentů VMware pomocí zařízení Azure Migrate: [adresy URL](migrate-appliance.md#url-access) a požadavky na přístup k [portu](migrate-support-matrix-vmware-migration.md#agentless-ports) .
+- Posouzení technologie Hyper-V pomocí zařízení Azure Migrate: požadavků na [adresu URL](migrate-appliance.md#url-access) a přístup k [portu](migrate-support-matrix-hyper-v.md#port-access) .
 
 
 ## <a name="what-data-does-the-appliance-collect"></a>Jaká data shromažďuje zařízení?

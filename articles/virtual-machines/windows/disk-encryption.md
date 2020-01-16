@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 84bb33f724622ba994c81b1d09c99b6399fd36ac
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: 38459e76cc8f9df8bfb7c15750e138cfd55c453c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75913120"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028455"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Šifrování na straně serveru Azure Managed disks
 
@@ -54,29 +54,24 @@ Následující seznam vysvětluje diagram ještě více podrobností:
 
 Pokud chcete odvolat přístup k klíčům spravovaným zákazníkem, přečtěte si téma [Azure Key Vault PowerShellu](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) a [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault). Odvolání přístupu efektivně zablokuje přístup ke všem datům v účtu úložiště, protože šifrovací klíč je nepřístupný Azure Storage.
 
-### <a name="supported-scenarios-and-restrictions"></a>Podporované scénáře a omezení
+### <a name="supported-regions"></a>Podporované oblasti
 
-V současné době jsou podporovány pouze následující scénáře:
+V současné době jsou podporovány pouze následující oblasti:
 
-- Pomocí klíčů spravovaných zákazníkem vytvořte virtuální počítač (VM) z bitové kopie Azure Marketplace a Zašifrujte disk s operačním systémem pomocí šifrování na straně serveru.
-- Vytvoření vlastní image šifrované pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem.
-- Vytvořte virtuální počítač z vlastní image a Zašifrujte disk s operačním systémem pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem.
-- Vytvářejte datové disky šifrované pomocí šifrování na straně serveru a kódů spravovaných zákazníkem.
-- (Pouze CLI/PowerShell) Vytvářejte snímky šifrované pomocí šifrování na straně serveru a kódů spravovaných zákazníkem.
-- Vytvářejte sady škálování virtuálních počítačů, které se šifrují pomocí šifrování na straně serveru a kódů spravovaných zákazníkem.
-- Podporovány jsou ["měkké" a "pevné" klíče RSA](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) o velikosti 2080.
+- K dispozici jako nabídka GA v oblastech Východní USA, Západní USA 2 a Střed USA – jih.
+- Je dostupná jako veřejná verze Preview v oblastech Středozápadní USA, Východní USA 2, Kanada – střed a Severní Evropa.
 
-V současné době máme také tato omezení:
+### <a name="restrictions"></a>Omezení
 
-- K dispozici jako nabídka GA v Východní USA, Západní USA 2 a Střed USA – jih.
-- K dispozici jako veřejná verze Preview v Středozápadní USA, Východní USA 2, Kanadě Central a Severní Evropa.
+Klíče spravované zákazníkem teď mají následující omezení:
+
+- Podporovány jsou pouze ["měkké" a "pevné" klíče RSA](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) o velikosti 2080, žádné jiné klíče ani velikosti.
 - Disky vytvořené z vlastních imagí šifrovaných pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem musí být šifrované pomocí stejných klíčů spravovaných zákazníkem a musí být ve stejném předplatném.
 - Snímky vytvořené z disků šifrovaných pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem musí být šifrované pomocí stejných klíčů spravovaných zákazníkem.
 - Vlastní image šifrované pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem se nedají použít v galerii sdílených imagí.
 - Všechny prostředky, které souvisejí s vašimi klíči spravovanými zákazníky (trezory klíčů Azure, sady šifrování disků, virtuální počítače, disky a snímky), musí být ve stejném předplatném a oblasti.
 - Disky, snímky a image šifrované pomocí klíčů spravovaných zákazníkem se nedají přesunout do jiného předplatného.
 - Pokud k vytvoření sady pro šifrování disků použijete Azure Portal, nemůžete teď snímky použít.
-- Podporovány jsou pouze ["měkké" a "pevné" klíče RSA](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) o velikosti 2080, žádné jiné klíče ani velikosti.
 
 ### <a name="powershell"></a>PowerShell
 

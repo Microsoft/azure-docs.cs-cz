@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: e2b2f13c3570683b575d13b5aadb3e03ec549cab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 765b7e5bb7341974a6a16d3f1ed0bcabf415f9f3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434600"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029175"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Rychlý Start: nastavení IoT Hub Device Provisioning Service s využitím Azure Portal
 
@@ -44,7 +44,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
     * **Název:** Zadejte jedinečný název vaší nové instance služby Device Provisioning. Pokud je zadaný název platný, zobrazí se zelený symbol zaškrtnutí.
     * **Předplatné:** Vyberte předplatné, které chcete použít při vytváření této instance služby Device Provisioning.
-    * **Skupina prostředků:** Toto pole umožňuje vytvořit novou skupinu prostředků nebo zvolit existující, která má obsahovat novou instanci. Zvolte stejnou skupinu prostředků, kterou jste vytvořili výše a obsahuje IoT Hub, například **TestResources**. Když umístíte všechny související prostředky do jedné skupiny, můžete je spravovat společně. Například odstraněním skupiny prostředků se odstraní všechny prostředky, které tato skupina obsahuje. Další informace najdete v tématu [Správa skupin prostředků Azure Resource Manager](../azure-resource-manager/manage-resource-groups-portal.md).
+    * **Skupina prostředků:** Toto pole umožňuje vytvořit novou skupinu prostředků nebo zvolit existující, která má obsahovat novou instanci. Zvolte stejnou skupinu prostředků, kterou jste vytvořili výše a obsahuje IoT Hub, například **TestResources**. Když umístíte všechny související prostředky do jedné skupiny, můžete je spravovat společně. Například odstraněním skupiny prostředků se odstraní všechny prostředky, které tato skupina obsahuje. Další informace najdete v tématu [Správa skupin prostředků Azure Resource Manager](../azure-resource-manager/management/manage-resource-groups-portal.md).
     * **Umístění:** Vyberte pro zařízení nejbližší umístění.
 
       ![Zadejte základní informace o instanci služby Device Provisioning v okně portálu.](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
@@ -57,7 +57,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 V této části přidáte konfiguraci do instance služby Device Provisioning. Tato konfigurace nastaví službu IoT Hub, pro kterou jsou zařízení zřízená.
 
-1. V nabídce na levé straně Azure Portal vyberte tlačítko **všechny prostředky** . Vyberte instanci služby Device Provisioning, kterou jste vytvořili v předchozí části.  
+1. V nabídce na levé straně Azure Portal vyberte tlačítko **všechny prostředky** . Vyberte instanci služby Device Provisioning, kterou jste vytvořili v předchozí části. 
+
+    Pokud je vaše nabídka nakonfigurovaná pomocí **informačního rámečku** místo **ukotveného** režimu v nastavení portálu, kliknutím na 3 řádky v levém horním rohu otevřete nabídku portál na levé straně.  
 
 2. V nabídce služby Device Provisioning vyberte **propojená centra IoT**. Stiskněte tlačítko **+ Přidat** zobrazené v horní části. 
 

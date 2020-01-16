@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: bc8141b951dbc27972dc2efb6819a7c0137ea7fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 491ba986c6ca71be0bc5b13e2f9f0717ffec99a4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459936"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028894"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Rychlý Start: Vytvoření privátního koncového bodu pomocí Azure Portal
 
@@ -162,7 +162,7 @@ V této části vytvoříte SQL Server a přidáte do něj privátní koncový b
     | ------- | ----- |
     |**SÍTĚ**| |
     | Virtuální síť| Vyberte *MyVirtualNetwork*. |
-    | Podsíť | Vyberte *mySubnet*. |
+    | Podsíť | Vyberte *mySubnet*. |
     |**INTEGRACE PRIVÁTNÍ DNS**||
     |Integrace s privátní zónou DNS |Vyberte **Ano**. |
     |Zóna Privátní DNS |Select *(New) privatelink. Database. Windows. NET* |
@@ -199,9 +199,9 @@ Po vytvoření **myVm**se k němu připojte z Internetu následujícím způsobe
 
 ## <a name="access-the-sql-database-server-privately-from-the-vm"></a>Přístup k serveru SQL Database soukromě z virtuálního počítače
 
-1. Ve vzdálené ploše *myVM*otevřete PowerShell.
+1. Ve vzdálené ploše *myVM*otevřete PowerShell.
 
-2. Zadejte `nslookup myserver.database.windows.net`. 
+2. Zadejte `nslookup myserver.database.windows.net`. 
 
     Zobrazí se zpráva podobná této:
     ```azurepowershell
@@ -227,11 +227,11 @@ Po vytvoření **myVm**se k němu připojte z Internetu následujícím způsobe
 1. Vyberte **Connect** (Připojit).
 2. Procházet databáze z levé nabídky
 3. Volitelně Vytvoření nebo dotazování informací z MyDatabase.
-4. Zavřete připojení ke vzdálené ploše pro *myVm*. 
+4. Zavřete připojení ke vzdálené ploše pro *myVm*. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
 Až budete s použitím privátního koncového bodu, SQL serveru a virtuálního počítače, odstraňte skupinu prostředků a všechny prostředky, které obsahuje: 
-1. Do **vyhledávacího** pole v horní části portálu zadejte *myResourceGroup* a ve výsledcích hledání vyberte *myResourceGroup* . 
+1. Do **vyhledávacího** pole v horní části portálu zadejte *myResourceGroup* a ve výsledcích hledání vyberte *myResourceGroup* . 
 2. Vyberte **Odstranit skupinu prostředků**. 
 3. Zadejte myResourceGroup pro **typ název skupiny prostředků** a vyberte **Odstranit**.
 

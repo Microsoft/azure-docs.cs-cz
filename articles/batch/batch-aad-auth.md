@@ -3,7 +3,7 @@ title: Použití Azure Active Directory k ověřování řešení služby Azure 
 description: Služba Batch podporuje službu Azure AD k ověřování ze služby Batch.
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 tags: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 08/15/2019
-ms.author: lahugh
-ms.openlocfilehash: 4ec85078e6664a43dd31cd04c132d87681bda225
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: jushiman
+ms.openlocfilehash: 56fcd5a8a02e292fdf43f9d22f3987813bce0743
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095622"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029827"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch ve službě Active Directory
 
@@ -80,7 +80,7 @@ Další informace o registraci aplikace v Azure AD najdete v tématu [scénáře
 ID tenanta identifikuje tenanta Azure AD, který poskytuje služby ověřování pro vaši aplikaci. K získání ID tenanta, postupujte podle těchto kroků:
 
 1. Na webu Azure Portal vyberte služby Active Directory.
-1. Vyberte **vlastnosti**.
+1. Vyberte **Vlastnosti**.
 1. Zkopírujte hodnotu identifikátoru GUID stanovené **ID adresáře**. Tato hodnota se označuje také jako ID tenanta.
 
 ![Zkopírujte ID adresáře.](./media/batch-aad-auth/aad-directory-id.png)
@@ -119,7 +119,7 @@ Pokud chcete ověřit aplikaci, která běží bez obsluhy, použijte instančn�
 
 Když se vaše aplikace ověřuje pomocí instančního objektu, pošle ID aplikace i tajný kód do Azure AD. Budete muset vytvořit a zkopírovat tajný klíč, který chcete použít z kódu.
 
-Postupujte podle následujících kroků v Azure Portal:
+Na webu Azure Portal postupujte podle těchto pokynů:
 
 1. V levém navigačním podokně Azure Portal vyberte **všechny služby**. Vyberte **Registrace aplikací**.
 1. Vyberte svou aplikaci ze seznamu registrací aplikací.
@@ -149,7 +149,7 @@ Vaše aplikace by se teď měla zobrazit v nastavení řízení přístupu s př
 ID tenanta identifikuje tenanta Azure AD, který poskytuje služby ověřování pro vaši aplikaci. K získání ID tenanta, postupujte podle těchto kroků:
 
 1. Na webu Azure Portal vyberte služby Active Directory.
-1. Vyberte **vlastnosti**.
+1. Vyberte **Vlastnosti**.
 1. Zkopírujte hodnotu identifikátoru GUID stanovené **ID adresáře**. Tato hodnota se označuje také jako ID tenanta.
 
 ![Zkopírujte ID adresáře.](./media/batch-aad-auth/aad-directory-id.png)
@@ -166,11 +166,11 @@ Příklady kódů v této části ukazují, jak provádět ověřování pomocí
 >
 >
 
-### <a name="code-example-using-azure-ad-integrated-authentication-with-batch-net"></a>Příklad kódu: Použití integrovaného ověřování Azure AD s využitím služby Batch .NET
+### <a name="code-example-using-azure-ad-integrated-authentication-with-batch-net"></a>Příklad kódu: použití integrovaného ověřování Azure AD s využitím služby Batch .NET
 
 Pokud chcete provést ověření pomocí integrovaného ověřování ze služby Batch .NET, odkazujte na balíček [Azure Batch .NET](https://www.nuget.org/packages/Microsoft.Azure.Batch/) a na balíček [ADAL](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) .
 
-Do kódu zahrňte následující `using` příkazy:
+Do kódu zahrňte následující příkazy `using`:
 
 ```csharp
 using Microsoft.Azure.Batch;
@@ -239,11 +239,11 @@ public static async Task PerformBatchOperations()
 }
 ```
 
-### <a name="code-example-using-an-azure-ad-service-principal-with-batch-net"></a>Příklad kódu: Použití instančního objektu Azure AD se službou Batch .NET
+### <a name="code-example-using-an-azure-ad-service-principal-with-batch-net"></a>Příklad kódu: použití instančního objektu služby Azure AD se službou Batch .NET
 
 Pokud chcete provést ověření pomocí instančního objektu ze služby Batch .NET, odkazujte na balíček [Azure Batch .NET](https://www.nuget.org/packages/Azure.Batch/) a na balíček [ADAL](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) .
 
-Do kódu zahrňte následující `using` příkazy:
+Do kódu zahrňte následující příkazy `using`:
 
 ```csharp
 using Microsoft.Azure.Batch;
@@ -307,7 +307,7 @@ public static async Task PerformBatchOperations()
 }
 ```
 
-### <a name="code-example-using-an-azure-ad-service-principal-with-batch-python"></a>Příklad kódu: Použití instančního objektu Azure AD se službou Batch Python
+### <a name="code-example-using-an-azure-ad-service-principal-with-batch-python"></a>Příklad kódu: použití instančního objektu služby Azure AD se službou Batch Python
 
 Pokud chcete provést ověření pomocí instančního objektu ze služby Batch Python, nainstalujte a prokažte moduly [Azure-Batch](https://pypi.org/project/azure-batch/) a [Azure-Common](https://pypi.org/project/azure-common/) .
 
@@ -366,7 +366,7 @@ Pomocí přihlašovacích údajů instančního objektu otevřete objekt **Batch
 )
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o Azure AD najdete v dokumentaci k [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/). Podrobné příklady ukazující, jak používat ADAL jsou k dispozici v knihovně [ukázek kódu Azure](https://azure.microsoft.com/resources/samples/?service=active-directory) .
 

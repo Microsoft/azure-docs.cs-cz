@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 8/2/2019
-ms.openlocfilehash: fe300c1efc8f5802397a59296f8b127c321bd871
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: b8afdd0f2dd98260a628116fa7402e05cd39e06b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941567"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965858"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Řešení potíží s replikací v zotavení po havárii virtuálního počítače Azure
 
@@ -35,7 +35,7 @@ Pokud vyberete událost, měli byste vidět přesné informace o disku:
 
 
 ### <a name="azure-site-recovery-limits"></a>Omezení Azure Site Recovery
-Následující tabulka obsahuje omezení služby Azure Site Recovery. Tato omezení vycházejí z našich testů, ale nemůžou pokrýt všechny možné kombinace v/v aplikace. Skutečné výsledky se můžou lišit v závislosti na kombinaci vstupně-výstupních operací vaší aplikace. 
+Následující tabulka obsahuje omezení služby Azure Site Recovery. Tato omezení vycházejí z našich testů, ale nemůžou pokrýt všechny možné kombinace v/v aplikace. Skutečné výsledky se můžou lišit v závislosti na kombinaci vstupně-výstupních operací vaší aplikace.
 
 Existují dvě omezení, která je potřeba vzít v úvahu, četnost změn dat na disku a změny dat na virtuální počítač. Podívejme se například na disk Premium P20 v následující tabulce. Site Recovery může zpracovávat 5 MB/s změn na disk s maximálně pěti takovými disky na jeden virtuální počítač, a to kvůli limitu 25 MB/s celkové četnosti změn na virtuální počítač.
 
@@ -59,7 +59,7 @@ V Azure Site Recovery platí omezení četnosti změn dat v závislosti na typu 
 
 Pokud je špička z příležitostného nárůstu dat a frekvence změny dat je větší než 10 MB/s (v případě úrovně Premium) a 2 MB/s (v případě standardu) po nějakou dobu a nastane, replikace se zachytí. Pokud je ale četnost větší než podporovaný limit, zvažte jednu z těchto možností, pokud je to možné:
 
-* **Vylučte disk, který způsobuje vysokou frekvenci změn dat**: disk můžete vyloučit pomocí [PowerShellu](./azure-to-azure-exclude-disks.md). Pokud chcete vyloučit disk, musíte nejdřív zakázat replikaci. 
+* **Vylučte disk, který způsobuje vysokou frekvenci změn dat**: disk můžete vyloučit pomocí [PowerShellu](./azure-to-azure-exclude-disks.md). Pokud chcete vyloučit disk, musíte nejdřív zakázat replikaci.
 * **Změna úrovně úložného disku pro zotavení po havárii**: Tato možnost je dostupná jenom v případě, že je četnost změn dat na disku menší než 20 MB/s. Řekněme, že virtuální počítač s diskem P10 je větší než 8 MB/s, ale menší než 10 MB/s. Pokud zákazník může během ochrany použít disk P30 pro cílové úložiště, můžete problém vyřešit. Všimněte si, že toto řešení je možné jenom u počítačů, které používají prémiové Managed Disks. Postupujte podle následujících kroků:
     - Přejděte do okna disky ovlivněného replikovaného počítače a zkopírujte název disku repliky.
     - Přejít na tento spravovaný disk repliky
@@ -69,28 +69,28 @@ Pokud je špička z příležitostného nárůstu dat a frekvence změny dat je 
 ## <a name="Network-connectivity-problem"></a>Problémy s připojením k síti
 
 ### <a name="network-latency-to-a-cache-storage-account"></a>Latence sítě pro účet úložiště mezipaměti
-Site Recovery odesílá replikovaná data do účtu úložiště mezipaměti. Může se zobrazit latence sítě, pokud nahrávání dat z virtuálního počítače do účtu úložiště mezipaměti je pomalejší než 4 MB za 3 sekundy. 
+Site Recovery odesílá replikovaná data do účtu úložiště mezipaměti. Může se zobrazit latence sítě, pokud nahrávání dat z virtuálního počítače do účtu úložiště mezipaměti je pomalejší než 4 MB za 3 sekundy.
 
-Pokud chcete zjistit problém týkající se latence, pomocí [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) nahrajte data z virtuálního počítače do účtu úložiště mezipaměti. Pokud je latence vysoká, ověřte, jestli k řízení odchozího síťového provozu z virtuálních počítačů používáte síťové virtuální zařízení (síťové virtuální zařízení). Zařízení může být omezené, pokud se veškerý provoz replikace projde přes síťové virtuální zařízení. 
+Pokud chcete zjistit problém týkající se latence, pomocí [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) nahrajte data z virtuálního počítače do účtu úložiště mezipaměti. Pokud je latence vysoká, ověřte, jestli k řízení odchozího síťového provozu z virtuálních počítačů používáte síťové virtuální zařízení (síťové virtuální zařízení). Zařízení může být omezené, pokud se veškerý provoz replikace projde přes síťové virtuální zařízení.
 
 Doporučujeme vytvořit koncový bod síťové služby ve virtuální síti pro úložiště, aby provoz replikace nepřešel do síťové virtuální zařízení. Další informace najdete v tématu [Konfigurace síťového virtuálního zařízení](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration).
 
 ### <a name="network-connectivity"></a>Připojení k síti
-U replikace Site Recovery pro práci, odchozí připojení ke konkrétní adresy URL nebo IP rozsahy se vyžaduje z virtuálního počítače. Pokud je váš virtuální počítač za bránou firewall nebo používá pravidla skupiny zabezpečení sítě (NSG) k řízení odchozího připojení, můžete se setkat s jedním z těchto problémů. Pokud chcete mít jistotu, že jsou všechny adresy URL připojené, přečtěte si téma [odchozí připojení pro adresy url Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges). 
+U replikace Site Recovery pro práci, odchozí připojení ke konkrétní adresy URL nebo IP rozsahy se vyžaduje z virtuálního počítače. Pokud je váš virtuální počítač za bránou firewall nebo používá pravidla skupiny zabezpečení sítě (NSG) k řízení odchozího připojení, můžete se setkat s jedním z těchto problémů. Pokud chcete mít jistotu, že jsou všechny adresy URL připojené, přečtěte si téma [odchozí připojení pro adresy url Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges).
 
 ## <a name="error-id-153006---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>ID chyby 153006 – pro virtuální počítač není k dispozici žádný bod obnovení konzistentní vzhledem k aplikacím během posledních ' XXX ' minut
 
 Níže jsou uvedené některé z nejběžnějších problémů.
 
-#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>Příčina 1: známý problém v systému SQL Server 2008/2008 R2 
+#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>Příčina 1: známý problém v systému SQL Server 2008/2008 R2
 **Jak opravit** : došlo k známému problému s SQL serverem 2008/2008 R2. Přečtěte si prosím tento článek znalostní báze [Azure Site Recovery agent nebo jiná nekomponentová záloha služby VSS u serveru, který hostuje SQL Server 2008 R2, se nezdařil](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2) .
 
-#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>Příčina 2: Azure Site Recovery úlohy selžou na serverech hostujících jakékoli verze SQL Server instancí AUTO_CLOSE databáze 
-**Jak opravit** : Přečtěte si [článek](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) znalostní báze 
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>Příčina 2: Azure Site Recovery úlohy selžou na serverech hostujících jakékoli verze SQL Server instancí AUTO_CLOSE databáze
+**Jak opravit** : Přečtěte si [článek](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) znalostní báze
 
 
 #### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>Příčina 3: známý problém v SQL Server 2016 a 2017
-**Jak opravit** : Přečtěte si [článek](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) znalostní báze 
+**Jak opravit** : Přečtěte si [článek](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) znalostní báze
 
 #### <a name="cause-4-you-are-using-storage-spaces-direct-configuration"></a>Příčina 4: používáte konfiguraci prostorů úložiště s přímým přístupem
 **Oprava** : Azure Site Recovery nemůže vytvořit bod obnovení konzistentní vzhledem k aplikacím pro konfiguraci prostorů úložiště s přímým přístupem. Pro správné [nakonfigurování zásad replikace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication-s2d-vms) prosím přečtěte článek.
@@ -98,17 +98,17 @@ Níže jsou uvedené některé z nejběžnějších problémů.
 ### <a name="more-causes-due-to-vss-related-issues"></a>Další příčiny v důsledku potíží souvisejících se službou VSS:
 
 Pokud chcete problém vyřešit, Projděte si soubory na zdrojovém počítači, abyste získali přesný kód chyby pro selhání:
-    
+
     C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
 
 Jak najít chyby v souboru?
 Vyhledejte řetězec "vacpError" otevřením souboru vacp. log v editoru.
-        
+
     Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
 
 Ve výše uvedeném příkladu **2147754994** je kód chyby, který vám oznamuje selhání, jak je uvedeno níže.
 
-#### <a name="vss-writer-is-not-installed---error-2147221164"></a>Zapisovač VSS není nainstalovaný – chyba 2147221164 
+#### <a name="vss-writer-is-not-installed---error-2147221164"></a>Zapisovač VSS není nainstalovaný – chyba 2147221164
 
 *Jak opravit*: vygeneruje se značka konzistence aplikace Azure Site Recovery používá službu Microsoft Volume stín Copy Service (VSS). Nainstaluje poskytovatele služby VSS, aby jeho operace mohla provádět snímky konzistence aplikací. Tento zprostředkovatel služby Stínová kopie svazku je nainstalován jako služba. V případě, že není nainstalovaná služba poskytovatele VSS, vytvoření snímku konzistence aplikací se nepovede s ID chyby 0x80040154 "třída není zaregistrovaná". </br>
 Přečtěte si [článek pro řešení potíží s instalací zapisovače VSS](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) 
@@ -126,12 +126,13 @@ Přečtěte si [článek pro řešení potíží s instalací zapisovače VSS](h
 
 ####  <a name="vss-provider-not_registered---error-2147754756"></a>Zprostředkovatel služby Stínová kopie svazku NOT_REGISTERED – chyba 2147754756
 
-**Jak opravit**: vygeneruje se značka konzistence aplikace Azure Site Recovery používá službu Microsoft Volume stín Copy Service (VSS). Ověřte, jestli je nainstalovaná služba poskytovatele VSS Azure Site Recovery, nebo ne. </br>
+**Jak opravit**: vygeneruje se značka konzistence aplikace Azure Site Recovery používá službu Microsoft Volume stín Copy Service (VSS).
+Ověřte, jestli je nainstalovaná služba poskytovatele VSS Azure Site Recovery, nebo ne. </br>
 
 - Opakujte instalaci poskytovatele pomocí následujících příkazů:
 - Odinstalace stávajícího zprostředkovatele: C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\ InMageVSSProvider_Uninstall. cmd
 - Přeinstalujte: C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\ InMageVSSProvider_Install. cmd.
- 
+
 Ověřte, zda je typ spouštění služby VSS Provider nastaven na hodnotu **automaticky**.
     - Restartujte následující služby:
         - Služba Stínová kopie svazku

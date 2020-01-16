@@ -2,7 +2,7 @@
 title: Monitorování služby Batch pomocí Azure Application Insights | Microsoft Docs
 description: Naučte se, jak instrumentovat aplikaci Azure Batch .NET pomocí knihovny Azure Application Insights.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
@@ -10,13 +10,13 @@ ms.devlang: .NET
 ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
-ms.author: lahugh
-ms.openlocfilehash: 8d896785a2f000a22f68611d5b3b1162c2021236
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.author: jushiman
+ms.openlocfilehash: c69ef0bf20e2ade15d2278d0fc2fabd75f39153b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322569"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029498"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Monitorování a ladění aplikace Azure Batch .NET pomocí Application Insights
 
@@ -24,7 +24,7 @@ ms.locfileid: "68322569"
 
 Tento článek ukazuje, jak přidat a nakonfigurovat knihovnu Application Insights do řešení .NET Azure Batch a instrumentovat kód aplikace. Také ukazuje způsoby monitorování aplikace pomocí Azure Portal a vytváření vlastních řídicích panelů. V případě podpory Application Insights v jiných jazycích si prohlédněte [dokumentaci jazyky, platformy a integrace](../azure-monitor/app/platforms.md).
 
-Ukázkové C# řešení s kódem, který se doprovází do tohoto článku [](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights), je dostupné na GitHubu. Tento příklad přidá do [ukázce topnwords](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords) příkladu kód instrumentace Application Insights. Pokud s tímto příkladem nejste obeznámeni, zkuste nejprve sestavit a spustit ukázce topnwords. Pomůže vám to pochopit základní dávkový pracovní postup zpracování sady vstupních objektů BLOB paralelně na několika výpočetních uzlech. 
+Ukázkové C# řešení s kódem, který se doprovází do tohoto článku, je dostupné na [GitHubu](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights). Tento příklad přidá do [ukázce topnwords](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords) příkladu kód instrumentace Application Insights. Pokud s tímto příkladem nejste obeznámeni, zkuste nejprve sestavit a spustit ukázce topnwords. Pomůže vám to pochopit základní dávkový pracovní postup zpracování sady vstupních objektů BLOB paralelně na několika výpočetních uzlech. 
 
 > [!TIP]
 > Jako alternativu můžete nakonfigurovat řešení Batch tak, aby zobrazovalo Application Insightsá data, jako jsou čítače výkonu virtuálních počítačů v Batch Explorer. [Batch Explorer](https://github.com/Azure/BatchExplorer) je bezplatný a samostatný klientský nástroj s bohatými funkcemi, který vám umožní vytvářet, ladit a monitorovat Azure Batch aplikace. Můžete si stáhnout [instalační balíček](https://azure.github.io/BatchExplorer/) pro Mac, Linux nebo Windows. Rychlé kroky pro povolení Application Insights dat v Batch Explorer najdete v části [úložiště Batch-Insights](https://github.com/Azure/batch-insights) . 
@@ -47,7 +47,7 @@ Ukázkové C# řešení s kódem, který se doprovází do tohoto článku [](ht
 
 ## <a name="add-application-insights-to-your-project"></a>Přidejte ke svému projektu Application Insights.
 
-Pro váš projekt se vyžaduje balíček NuGet **Microsoft. ApplicationInsights. windowsserver** a jeho závislosti. Přidejte nebo obnovte do projektu aplikace. K instalaci balíčku použijte `Install-Package` příkaz nebo správce balíčků NuGet.
+Pro váš projekt se vyžaduje balíček NuGet **Microsoft. ApplicationInsights. windowsserver** a jeho závislosti. Přidejte nebo obnovte do projektu aplikace. Chcete-li nainstalovat balíček, použijte příkaz `Install-Package` nebo správce balíčků NuGet.
 
 ```powershell
 Install-Package Microsoft.ApplicationInsights.WindowsServer
@@ -56,7 +56,7 @@ Odkaz Application Insights z vaší aplikace .NET pomocí oboru názvů **Micros
 
 ## <a name="instrument-your-code"></a>Instrumentace kódu
 
-Chcete-li instrumentovat svůj kód, vaše řešení musí vytvořit Application Insights [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient). V tomto příkladu TelemetryClient načte svou konfiguraci ze souboru [ApplicationInsights. config](../azure-monitor/app/configuration-with-applicationinsights-config.md) . Nezapomeňte aktualizovat ApplicationInsights. config v následujících projektech pomocí klíče instrumentace Application Insights: Microsoft. Azure. batch. Samples. TelemetryStartTask a TopNWordsSample.
+Chcete-li instrumentovat svůj kód, vaše řešení musí vytvořit Application Insights [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient). V tomto příkladu TelemetryClient načte svou konfiguraci ze souboru [ApplicationInsights. config](../azure-monitor/app/configuration-with-applicationinsights-config.md) . Nezapomeňte aktualizovat ApplicationInsights. config v následujících projektech s vaším klíčem Application Insights instrumentace: Microsoft. Azure. batch. Samples. TelemetryStartTask a TopNWordsSample.
 
 ```xml
 <InstrumentationKey>YOUR-IKEY-GOES-HERE</InstrumentationKey>
@@ -64,9 +64,9 @@ Chcete-li instrumentovat svůj kód, vaše řešení musí vytvořit Application
 Do souboru TopNWords.cs také přidejte klíč instrumentace.
 
 Příklad v TopNWords.cs používá následující [volání instrumentace](../azure-monitor/app/api-custom-events-metrics.md) z rozhraní Application Insights API:
-* `TrackMetric()`-Sleduje, jak dlouho potřebuje výpočetní uzel stáhnout požadovaný textový soubor.
-* `TrackTrace()`– Přidá volání ladění do kódu.
-* `TrackEvent()`– Sleduje zajímavé události k zachycení.
+* `TrackMetric()`-sleduje, jak dlouho má výpočetní uzel stahovat požadovaný textový soubor.
+* `TrackTrace()` – přidá volání ladění do kódu.
+* `TrackEvent()` – sleduje zajímavé události k zachycení.
 
 Tento příklad záměrně opustí zpracování výjimek. Místo toho Application Insights automaticky hlásí neošetřené výjimky, což významně vylepšuje možnosti ladění. 
 
@@ -223,7 +223,7 @@ foreach (string aiFile in AIFilesToUpload)
 ...
 ```
 
-`FileToStage` Metoda je pomocná funkce v ukázce kódu, která umožňuje snadno nahrát soubor z místního disku do objektu blob Azure Storage. Každý soubor je později stažen do výpočetního uzlu a na něj odkazuje úkol.
+Metoda `FileToStage` je pomocná funkce v ukázce kódu, která umožňuje snadno nahrát soubor z místního disku do objektu blob Azure Storage. Každý soubor je později stažen do výpočetního uzlu a na něj odkazuje úkol.
 
 Nakonec přidejte úlohy do úlohy a zahrňte nezbytné Application Insights binární soubory.
 ```csharp
@@ -294,7 +294,7 @@ Vytvoření ukázkového grafu:
    * Nastavte **typ grafu** na **Grid**.
    * Nastavte **agregaci** na **průměr**.
    * Nastavte **Seskupit podle** na **NodeId**.
-   * V **metrikách**vyberte **vlastní** > **stahování objektů BLOB během několika sekund**.
+   * V **metrikách**vyberte **vlastní** stahování > **objektů BLOB během několika sekund**.
    * Upravte **paletu barev** zobrazení podle vašeho výběru. 
 
 ![Doba stahování objektu BLOB na uzel](./media/monitor-application-insights/blobdownloadtime.png)
@@ -341,7 +341,7 @@ pool.StartTask = new StartTask()
 Z důvodu velké škály Azure Batch aplikací běžících v produkčním prostředí můžete chtít omezit množství dat shromažďovaných Application Insightsmi za účelem správy nákladů. Pokud chcete dosáhnout některých mechanismů, přečtěte si téma [vzorkování v Application Insights](../azure-monitor/app/sampling.md) .
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o [Application Insights](../azure-monitor/app/app-insights-overview.md).
 
 * V případě podpory Application Insights v jiných jazycích si prohlédněte [dokumentaci jazyky, platformy a integrace](../azure-monitor/app/platforms.md).

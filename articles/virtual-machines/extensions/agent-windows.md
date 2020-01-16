@@ -3,7 +3,7 @@ title: Přehled agenta virtuálního počítače Azure
 description: Přehled agenta virtuálního počítače Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: axayjo
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: b003f2823ffceebecdb2af681a3bdbb4cf25704c
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 7185ac40cafce86c68efbf28c7e6a35fd4789bc3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615078"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027653"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Přehled agenta virtuálního počítače Azure
 Agent virtuálního počítače Microsoft Azure (agent virtuálního počítače) je zabezpečený a odlehčený proces, který spravuje interakci virtuálních počítačů s řadičem prostředků infrastruktury Azure. Agent virtuálního počítače má primární roli při povolování a provádění rozšíření virtuálních počítačů Azure. Rozšíření virtuálních počítačů umožňují konfiguraci po nasazení virtuálního počítače, jako je instalace a konfigurace softwaru. Rozšíření virtuálních počítačů také umožňují funkce pro obnovení, jako je resetování hesla pro správu virtuálního počítače. Bez agenta virtuálního počítače Azure nejde spustit rozšíření virtuálních počítačů.
 
-Tento článek podrobně popisuje instalaci, detekci a odebrání agenta virtuálních počítačů Azure.
+Tento článek podrobně popisuje instalaci a detekci agenta virtuálního počítače Azure.
 
 ## <a name="install-the-vm-agent"></a>Instalace agenta virtuálního počítače
 
@@ -61,8 +61,17 @@ Pokud nemáte nainstalované agenty, nemůžete použít některé služby Azure
 ### <a name="manual-installation"></a>Ruční instalace
 Agenta virtuálního počítače s Windows je možné ručně nainstalovat pomocí balíčku Instalační služby systému Windows. Ruční instalace může být nutná při vytváření vlastní image virtuálního počítače, která je nasazena do Azure. Chcete-li ručně nainstalovat agenta virtuálního počítače s Windows, [Stáhněte si instalační program agenta virtuálního počítače](https://go.microsoft.com/fwlink/?LinkID=394789). Agent virtuálního počítače je podporovaný v systému Windows Server 2008 R2 a novějším.
 
+> [Poznámka!] Možnost AllowExtensionOperations je důležité aktualizovat po ruční instalaci VMAgent na virtuální počítač, který byl nasazený z image bez povolení ProvisionVMAgent.
+
+```powershell
+$vm.OSProfile.AllowExtensionOperations = $true
+$vm | Update-AzVM
+```
+
 ### <a name="prerequisites"></a>Požadavky
-Aby bylo možné spustit agenta virtuálního počítače s Windows, musí být v rozhraní .NET Framework 4,0 alespoň Windows Server 2008 R2 (64-bitů). Podívejte [se na podporu minimálních verzí pro agenty virtuálních počítačů v Azure](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) .
+- Aby bylo možné spustit agenta virtuálního počítače s Windows, musí být v rozhraní .NET Framework 4,0 alespoň Windows Server 2008 R2 (64-bitů). Podívejte [se na podporu minimálních verzí pro agenty virtuálních počítačů v Azure](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) .
+
+- Ujistěte se, že váš virtuální počítač má přístup k IP adrese 168.63.129.16. Další informace najdete v tématu [co je IP adresa 168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16).
 
 ## <a name="detect-the-vm-agent"></a>Zjištění agenta virtuálního počítače
 

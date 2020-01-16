@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2c32f46ca85007608b5e17f2bf77b0a8f0fb8397
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: cdf616b29a93e786ef26af83b5d3b3541f94d67c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862743"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972275"
 ---
 # <a name="security-controls-for-azure-vpn-gateway"></a>Řízení zabezpečení pro Azure VPN Gateway
 
@@ -36,7 +36,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure VPN
 |---|---|--|
 | Podpora monitorování Azure (Log Analytics, App Insights atd.)| Ano | Viz [Azure monitor diagnostické protokoly/výstrahy](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md) & [Azure monitor metriky/výstrahy](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).  |
 | Protokolování a audit roviny řízení a správy| Ano | Azure Resource Manager protokolu aktivit. |
-| Protokolování a audit roviny dat | Ano | [Protokoly diagnostiky Azure monitor](../azure-resource-manager/resource-group-audit.md) pro protokolování a AUDITOVÁNÍ připojení VPN. |
+| Protokolování a audit roviny dat | Ano | [Protokoly diagnostiky Azure monitor](../azure-resource-manager/management/view-activity-logs.md) pro protokolování a AUDITOVÁNÍ připojení VPN. |
 
 ## <a name="identity"></a>Identita
 
@@ -59,7 +59,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure VPN
 
 | Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora správy konfigurace (Správa verzí konfigurace atd.)| Ano | V případě operací správy se stav konfigurace služby Azure VPN Gateway dá exportovat jako šablona Azure Resource Manager a v průběhu času se pořídí verze. | 
+| Podpora správy konfigurace (Správa verzí konfigurace atd.)| Ano | V případě operací správy se stav konfigurace služby Azure VPN Gateway dá exportovat jako šablona Azure Resource Manager a v průběhu času se pořídí verze. |
 
 ## <a name="next-steps"></a>Další kroky
 

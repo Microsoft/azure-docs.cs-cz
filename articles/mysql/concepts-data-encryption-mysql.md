@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 12e9ab9066449e8928d937d9c3f9f7f1522b6c60
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 7c54b3010b42d56ffa9b701b76c7aef51095404c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942103"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028643"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-customer-managed-key"></a>Azure Database for MySQL šifrování dat pomocí klíče spravovaného zákazníkem
 
@@ -41,7 +41,7 @@ Pro Azure Database for MySQL se šifrování dat nastavuje na úrovni serveru. P
 
 Klíč **šifrovacího klíče (KEK)** – šifrovací klíč používaný k šifrování šifrovacích klíčů dat. Použití klíčového šifrovacího klíče, který nikdy neopouští Key Vault, umožňuje šifrování a řízení šifrovacích klíčů samotných dat. Entita, která má přístup k KEK, může být jiná než entita, která vyžaduje klíč dek. Vzhledem k tomu, že KEK je vyžadován k dešifrování DEKs, je KEK v podstatě jediným bodem, pomocí kterého je DEKs možné efektivně odstranit odstraněním KEK.
 
-Šifrovací klíče dat šifrované pomocí klíčového šifrovacího klíče se ukládají samostatně a k dešifrování těchto šifrovacích klíčů může použít jenom entita s přístupem ke klíčovým šifrovacím klíčem. Další informace najdete v tématu [zabezpečení v šifrování v klidovém umístění](../security/fundamentals/encryption-atrest.md).
+Šifrovací klíče (klíč DEK) šifrované pomocí klíčového šifrovacího klíče se ukládají samostatně a k dešifrování těchto šifrovacích klíčů může použít jenom entita s přístupem k šifrovacímu klíči. Další informace najdete v tématu [zabezpečení v šifrování v klidovém umístění](../security/fundamentals/encryption-atrest.md).
 
 ## <a name="how-data-encryption-with-customer-managed-key-works"></a>Jak funguje šifrování dat pomocí klíče spravovaného zákazníkem
 
@@ -50,8 +50,8 @@ Klíč **šifrovacího klíče (KEK)** – šifrovací klíč používaný k ši
 Aby mohl server MySQL používat pro šifrování klíč DEK klíče, které jsou uložené v integrace, musí správce Key Vault k serveru přidělit tato přístupová práva pomocí jeho jedinečné identity:
 
 * **Get** – pro načtení veřejné části a vlastností klíče v Key Vault
-* **wrapKey** – aby bylo možné chránit (ŠIFROVAT) klíč DEK
-* **unwrapKey** – aby bylo možné zrušit ochranu (dešifrovat) klíč DEK
+* **wrapKey** – aby bylo možné ZAšifrovat klíč DEK
+* **unwrapKey** – aby bylo možné DEšifrovat klíč DEK
 
 Správce Key Vault taky může [Povolit protokolování událostí auditu Key Vault](../azure-monitor/insights/azure-key-vault.md), aby se mohly auditovat později.
 

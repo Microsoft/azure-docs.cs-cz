@@ -2,7 +2,7 @@
 title: Událost zahájení změny velikosti fondu Azure Batch
 description: Odkaz na událost zahájení změny velikosti fondu služby Batch Příklad ukazuje tělo události začátek změny velikosti fondu z 0 na 2 uzly s ruční změnou velikosti.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
@@ -10,13 +10,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: lahugh
-ms.openlocfilehash: 89f4b04f4ef86ffa3978cadb997d6bfb8dae31c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: jushiman
+ms.openlocfilehash: 8e2df1c2264392ab79e2dcbb7e58977f341b14d9
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449753"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026631"
 ---
 # <a name="pool-resize-start-event"></a>Událost zahájení změny velikosti fondu
 

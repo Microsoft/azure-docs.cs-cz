@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: a8a5b8df4307d9a73477944351c2889a86bdb2b4
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 562dd900bb3d64731e5467058e2718b081c675b6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75540331"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968545"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Nasazení modelu Machine Learning do Azure App Service (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -49,7 +49,7 @@ Další informace o funkcích poskytovaných nástrojem Azure App Service najdet
     > * `model` – registrovaný model, který se nasadí.
     > * `inference_config` – odvození konfigurace modelu.
     >
-    > Další informace o nastavení těchto proměnných najdete v tématu [nasazení modelů pomocí Azure Machine Learning](service/how-to-deploy-and-where.md).
+    > Další informace o nastavení těchto proměnných najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="prepare-for-deployment"></a>Příprava nasazení
 
@@ -67,11 +67,11 @@ Před nasazením musíte definovat, co je potřeba ke spuštění modelu jako we
     >
     > Další alternativou, která může fungovat pro váš scénář, je [Batch předpovědi](how-to-run-batch-predictions.md), která poskytuje přístup k úložišti dat při bodování.
 
-    Další informace o vstupních skriptech najdete v tématu [nasazení modelů pomocí Azure Machine Learning](service/how-to-deploy-and-where.md).
+    Další informace o vstupních skriptech najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 * **Závislosti**, například pomocné skripty nebo balíčky python/conda potřebné ke spuštění skriptu vstupu nebo modelu
 
-Tyto entity jsou zapouzdřeny do __Konfigurace odvození__. Konfigurace odvození odkazuje na skript vstupu a další závislosti.
+Tyto entity jsou zapouzdřeny do __Konfigurace odvození__. Odvozená konfigurace odkazuje na vstupní skript a další závislosti.
 
 > [!IMPORTANT]
 > Při vytváření odvozených konfigurací pro použití s Azure App Service je nutné použít objekt [prostředí](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) . Počítejte s tím, že pokud definujete vlastní prostředí, musíte přidat AzureML-Defaults s Version > = 1.0.45 jako závislost v PIP. Tento balíček obsahuje funkce potřebné pro hostování modelu jako webové služby. Následující příklad ukazuje vytvoření objektu prostředí a jeho použití s odvozenou konfigurací:
@@ -93,7 +93,7 @@ Tyto entity jsou zapouzdřeny do __Konfigurace odvození__. Konfigurace odvozen�
 
 Další informace o prostředích najdete v tématu [vytváření a Správa prostředí pro školení a nasazení](how-to-use-environments.md).
 
-Další informace o konfiguraci odvození najdete v tématu [nasazení modelů pomocí Azure Machine Learning](service/how-to-deploy-and-where.md).
+Další informace o konfiguraci odvození najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 > [!IMPORTANT]
 > Při nasazování do Azure App Service nemusíte vytvářet __konfiguraci nasazení__.
@@ -103,7 +103,7 @@ Další informace o konfiguraci odvození najdete v tématu [nasazení modelů p
 Chcete-li vytvořit bitovou kopii Docker, která je nasazena do Azure App Service, použijte [model. Package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-). Následující fragment kódu ukazuje, jak vytvořit novou bitovou kopii z modelu a odvozené konfigurace:
 
 > [!NOTE]
-> Fragment kódu předpokládá, že `model` obsahuje registrovaný model a že `inference_config` obsahuje konfiguraci pro odvození prostředí. Další informace najdete v tématu [nasazení modelů pomocí Azure Machine Learning](service/how-to-deploy-and-where.md).
+> Fragment kódu předpokládá, že `model` obsahuje registrovaný model a že `inference_config` obsahuje konfiguraci pro odvození prostředí. Další informace najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 ```python
 from azureml.core import Model
@@ -121,7 +121,7 @@ Při `show_output=True`se zobrazí výstup procesu Docker buildu. Po dokončení
 
 ## <a name="deploy-image-as-a-web-app"></a>Nasazení image jako webové aplikace
 
-1. K získání přihlašovacích údajů pro Azure Container Registry, které obsahují obrázek, použijte následující příkaz. Nahradí `<acrinstance>` hodnotou th e vrácenou dříve z `package.location`: 
+1. K získání přihlašovacích údajů pro Azure Container Registry, které obsahují obrázek, použijte následující příkaz. Nahradí `<acrinstance>` hodnotou th e vrácenou dříve z `package.location`:
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -168,7 +168,7 @@ Při `show_output=True`se zobrazí výstup procesu Docker buildu. Po dokončení
     Tento příkaz vrátí informace podobné následujícímu dokumentu JSON:
 
     ```json
-    { 
+    {
     "adminSiteName": null,
     "appServicePlanName": "myplanname",
     "geoRegion": "West Europe",

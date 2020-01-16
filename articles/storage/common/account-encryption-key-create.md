@@ -10,12 +10,12 @@ ms.date: 01/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 39568d65978592b360512db2e556cfa6b59760b6
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 8cf1f8ecb68e31f93c19d93d6ebc4f8ef37724e7
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921210"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028453"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Vytvoření účtu, který podporuje klíče spravované zákazníkem pro tabulky a fronty
 
@@ -149,7 +149,7 @@ Po vytvoření účtu, který spoléhá na šifrovací klíč účtu, si v jedno
 
 ## <a name="verify-the-account-encryption-key"></a>Ověření šifrovacího klíče účtu
 
-Pokud chcete ověřit, že nový účet úložiště používá šifrovací klíč účtu, zavolejte příkaz Azure CLI [AZ Storage Account](/cli/azure/storage/account#az-storage-account-show) . Tento příkaz vrátí seznam vlastností účtu úložiště a jejich hodnot. Vyhledejte vlastnost `keyType` a ověřte, zda je nastavena na hodnotu `Account`.
+Pokud chcete ověřit, že služba v účtu úložiště používá šifrovací klíč účtu, zavolejte příkaz Azure CLI [AZ Storage Account](/cli/azure/storage/account#az-storage-account-show) . Tento příkaz vrátí sadu vlastností účtu úložiště a jejich hodnoty. Vyhledejte pole `keyType` pro každou službu ve vlastnosti šifrování a ověřte, zda je nastavena na hodnotu `Account`.
 
 ```azurecli
 az storage account show /

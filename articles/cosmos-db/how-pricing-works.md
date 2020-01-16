@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 0e0adef2728ef75dc67f02fdf38b6638965df62f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7efae8fb3c00868e2740eac2d4d5bcb3c82f663a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756875"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977540"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Cenový model v Azure Cosmos DB 
 
@@ -32,9 +32,9 @@ Cenový model v Azure Cosmos DB je konzistentní napříč všemi rozhraními AP
 
 V současné době je minimální cena pro obě databáze i propustnost založená na kontejneru $24/měsíc (nejnovější informace najdete na [stránce s cenami Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) . Pokud vaše úloha používá více kontejnerů, je možné ji optimalizovat pro náklady pomocí propustnosti na úrovni databáze, protože propustnost na úrovni databáze umožňuje mít v databázi, která sdílí propustnost mezi kontejnery, libovolný počet kontejnerů. Následující tabulka shrnuje zřízenou propustnost a náklady na různé entity:
 
-|**Právnick**  | **Minimální propustnost & náklady** |**Zvýšení kapacity & náklady** |**Rozsah zřizování** |
+|**Entita**  | **Minimální propustnost & náklady** |**Zvýšení kapacity & náklady** |**Rozsah zřizování** |
 |---------|---------|---------|-------|
-|Databáze    | 400 RU/s ($ 24/měsíc)    | 100 RU/s ($ 6/měsíc)   |Propustnost je vyhrazena pro databázi a je sdílena kontejnery v rámci databáze. |
+|databáze    | 400 RU/s ($ 24/měsíc)    | 100 RU/s ($ 6/měsíc)   |Propustnost je vyhrazena pro databázi a je sdílena kontejnery v rámci databáze. |
 |Kontejner     | 400 RU/s ($ 24/měsíc)    | 100 RU/s ($ 6/měsíc)  |Propustnost je vyhrazena pro konkrétní kontejner. |
 
 Jak je znázorněno v předchozí tabulce, minimální propustnost v Azure Cosmos DB začíná za cenu za měsíc + 24 měsíčně. Pokud začnete s minimální propustností a v průběhu času bude zajištěna podpora úloh v produkčním prostředí, vaše náklady budou plynule v přírůstcích po dobu 6 za měsíc. Cenový model v Azure Cosmos DB je elastický a při horizontálním navýšení nebo snížení kapacity dojde k hladkému zvýšení nebo snížení ceny.
@@ -43,7 +43,7 @@ Jak je znázorněno v předchozí tabulce, minimální propustnost v Azure Cosmo
 
 Azure Cosmos DB nabízí zdarma několik možností pro vývojáře. K těmto možnostem patří:
 
-* **Bezplatný účet Azure**: Azure nabízí [bezplatnou úroveň](https://azure.microsoft.com/free/) , která vám poskytne $200 kredity Azure během prvních 30 dnů a omezené množství bezplatných služeb na 12 měsíců. Další informace najdete na stránce [bezplatného účtu Azure](../billing/billing-avoid-charges-free-account.md). Azure Cosmos DB je součástí bezplatného účtu Azure. Tento bezplatný účet Azure Cosmos DB konkrétně nabízí 5 GB úložiště a 400 Ruy zajištěné propustnosti po celý rok. 
+* **Bezplatný účet Azure**: Azure nabízí [bezplatnou úroveň](https://azure.microsoft.com/free/) , která vám poskytne $200 kredity Azure během prvních 30 dnů a omezené množství bezplatných služeb na 12 měsíců. Další informace najdete na stránce [bezplatného účtu Azure](../cost-management-billing/manage/avoid-charges-free-account.md). Azure Cosmos DB je součástí bezplatného účtu Azure. Tento bezplatný účet Azure Cosmos DB konkrétně nabízí 5 GB úložiště a 400 Ruy zajištěné propustnosti po celý rok. 
 
 * **Vyzkoušejte si Azure Cosmos DB zdarma**: Azure Cosmos DB nabízí časově omezené prostředí pomocí funkce vyzkoušet Azure Cosmos DB pro bezplatné účty. Můžete vytvořit účet Azure Cosmos DB, vytvořit databázi a kolekce a spustit ukázkovou aplikaci pomocí rychlých startů a kurzů. Ukázkovou aplikaci můžete spustit bez přihlášení k odběru účtu Azure nebo pomocí platební karty. [Vyzkoušejte si Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) nabízených nabídek Azure Cosmos DB po dobu jednoho měsíce, s možností obnovit účet několikrát.
 

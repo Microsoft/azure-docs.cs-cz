@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 96edbd62dcb95fa8f24ea5a8a6f0716c1fefdcd8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb1913d77616869c889c464a41e8166b3a88b03c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357562"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028867"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Připojení soukromě k účtu úložiště pomocí privátního koncového bodu Azure
 Privátní koncový bod Azure je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako jsou virtuální počítače (VM), komunikovat soukromě s prostředky privátního propojení.
@@ -127,11 +127,11 @@ V této části vytvoříte privátním koncovým bodem privátního účtu úlo
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     |Umístění|Vyberte **WestCentralUS**.|
-    |Name (Název)|Zadejte *myPrivateEndpoint*.  |
+    |Name (Název)|Zadejte *myPrivateEndpoint*.  |
     |Dílčí prostředek úložiště|Ponechte výchozí **objekt BLOB**. |
     | **SÍTĚ** |  |
-    | Virtuální síť  | Vyberte *MyVirtualNetwork* ze skupiny prostředků *myResourceGroup*. |
-    | Podsíť | Vyberte *mySubnet*. |
+    | Virtuální síť  | Vyberte *MyVirtualNetwork* ze skupiny prostředků *myResourceGroup*. |
+    | Podsíť | Vyberte *mySubnet*. |
     | **INTEGRACE PRIVÁTNÍ DNS**|  |
     | Integrace s privátní zónou DNS  | Ponechte výchozí **hodnotu Ano**. |
     | Zóna privátního DNS  | Ponechte výchozí **(New) privatelink.blob.Core.Windows.NET**. |
@@ -172,8 +172,8 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
 
 V této části se soukromě připojíte k účtu úložiště pomocí privátního koncového bodu.
 
-1. Ve vzdálené ploše *myVM*otevřete PowerShell.
-2. Zadejte `nslookup mystorageaccount.blob.core.windows.net` obdržíte zprávu podobnou této:
+1. Ve vzdálené ploše *myVM*otevřete PowerShell.
+2. Zadejte `nslookup mystorageaccount.blob.core.windows.net` obdržíte zprávu podobnou této:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -192,7 +192,7 @@ V této části se soukromě připojíte k účtu úložiště pomocí privátn�
 10. Vyberte **Connect** (Připojit).
 11. Procházení kontejnerů objektů BLOB z mystorageaccount 
 12. Volitelně Vytvořte složky nebo nahrajte soubory do *mystorageaccount*. 
-13. Zavřete připojení ke vzdálené ploše pro *myVM*. 
+13. Zavřete připojení ke vzdálené ploše pro *myVM*. 
 
 Další možnosti pro přístup k účtu úložiště:
 - Průzkumník služby Microsoft Azure Storage je samostatná bezplatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linux. Můžete nainstalovat aplikaci, která bude procházet soukromý obsah účtu úložiště. 
@@ -202,9 +202,9 @@ Další možnosti pro přístup k účtu úložiště:
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
 Až budete hotovi s použitím privátního koncového bodu, účtu úložiště a virtuálního počítače, odstraňte skupinu prostředků a všechny prostředky, které obsahuje: 
-1. Do **vyhledávacího** pole v horní části portálu zadejte *myResourceGroup* a ve výsledcích hledání vyberte *myResourceGroup* . 
+1. Do **vyhledávacího** pole v horní části portálu zadejte *myResourceGroup* a ve výsledcích hledání vyberte *myResourceGroup* . 
 2. Vyberte **Odstranit skupinu prostředků**. 
-3. Zadejte *myResourceGroup* pro **typ název skupiny prostředků** a vyberte **Odstranit**. 
+3. Zadejte *myResourceGroup* pro **typ název skupiny prostředků** a vyberte **Odstranit**. 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto rychlém startu jste vytvořili virtuální počítač ve virtuální síti a účtu úložiště a privátním koncovém bodu. Připojili jste se k jednomu virtuálnímu počítači z Internetu a zabezpečeně komunikovali s účtem úložiště pomocí privátního odkazu. Další informace o privátním koncovém bodu najdete v tématu [co je privátní koncový bod Azure](private-endpoint-overview.md).
+V tomto rychlém startu jste vytvořili virtuální počítač ve virtuální síti a účtu úložiště a privátním koncovém bodu. Připojili jste se k jednomu virtuálnímu počítači z Internetu a zabezpečeně komunikovali s účtem úložiště pomocí privátního odkazu. Další informace o privátním koncovém bodu najdete v tématu [co je privátní koncový bod Azure](private-endpoint-overview.md).

@@ -3,7 +3,7 @@ title: Azure Monitor rozšíření virtuálního počítače pro Windows
 description: Nasaďte agenta Log Analytics na virtuální počítač s Windows pomocí rozšíření virtuálního počítače.
 services: virtual-machines-windows
 documentationcenter: ''
-author: axayjo
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2019
 ms.author: akjosh
-ms.openlocfilehash: c9fd62e57d131fb21e657c53914f9cd5349107ec
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 072e30baa4ebb976a662019e5213f7eb26808a93
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073665"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969949"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Azure Monitor rozšíření virtuálního počítače pro Windows
 
@@ -41,14 +41,14 @@ Následující tabulka poskytuje mapování verze rozšíření virtuálního po
 | 10.20.18011 | 1.0.18011 | Červenec 2019 | <ul><li> Drobné opravy chyb a ustálená vylepšení </li><li> Zvýšení MaxExpressionDepth na 10000 </li></ul> |
 | 10.20.18001 | 1.0.18001 | Červen 2019 | <ul><li> Drobné opravy chyb a ustálená vylepšení </li><li> Přidání možnosti zakázat výchozí pověření při vytváření připojení k proxy (podpora pro WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH) </li></ul>|
 | 10.19.13515 | 1.0.13515 | Březen 2019 | <ul><li>Menší stabilizace oprav </li></ul> |
-| 10.19.10006 | neuvedeno | DEC 2018 | <ul><li> Menší stabilizace oprav </li></ul> | 
-| 8.0.11136 | neuvedeno | Září 2018 |  <ul><li> Přidání podpory pro zjištění změny ID prostředku při přesunu virtuálního počítače </li><li> Přidání podpory pro ID prostředku pro vytváření sestav při použití jiné než rozšíření Instalace </li></ul>| 
-| 8.0.11103 | neuvedeno |  Duben 2018 | |
+| 10.19.10006 | – | DEC 2018 | <ul><li> Menší stabilizace oprav </li></ul> | 
+| 8.0.11136 | – | Září 2018 |  <ul><li> Přidání podpory pro zjištění změny ID prostředku při přesunu virtuálního počítače </li><li> Přidání podpory pro ID prostředku pro vytváření sestav při použití jiné než rozšíření Instalace </li></ul>| 
+| 8.0.11103 | – |  Duben 2018 | |
 | 8.0.11081 | 1.0.11081 | Listopadu 2017 | | 
 | 8.0.11072 | 1.0.11072 | Září 2017 | |
 | 8.0.11049 | 1.0.11049 | Únor 2017 | |
 
-### <a name="azure-security-center"></a>Azure Security Center
+### <a name="azure-security-center"></a>Centrum zabezpečení Azure
 
 Azure Security Center automaticky zřídí agenta Log Analytics a připojí ho k výchozímu Log Analytics pracovnímu prostoru předplatného Azure. Pokud používáte Azure Security Center, nespouštějte kroky v tomto dokumentu. Tím se přepíše nakonfigurovaný pracovní prostor a přerušení připojení k Azure Security Center.
 
@@ -84,7 +84,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Log Analytics. P�
 ```
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota / příklad |
+| Name (Název) | Hodnota / příklad |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
@@ -95,6 +95,8 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Log Analytics. P�
 
 \* se ID pracovního prostoru označuje jako consumerId v rozhraní API Log Analytics.
 
+> [Poznámka!] Další vlastnosti najdete v tématu Azure [Connect Windows computes to Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows).
+
 ## <a name="template-deployment"></a>Nasazení šablon
 
 Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Schéma JSON popsané v předchozí části lze použít v šabloně Azure Resource Manager ke spuštění rozšíření agenta Log Analytics během nasazování šablony Azure Resource Manager. Ukázkovou šablonu, která obsahuje rozšíření virtuálního počítače agenta Log Analytics, najdete v [galerii Azure Rychlé zprovoznění](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
@@ -102,7 +104,7 @@ Rozšíření virtuálního počítače Azure je možné nasadit s využitím š
 >[!NOTE]
 >Šablona nepodporuje zadání více než jednoho ID pracovního prostoru a klíč pracovního prostoru, pokud chcete nakonfigurovat agenta tak, aby nahlásil do více pracovních prostorů. Chcete-li nakonfigurovat agenta tak, aby nahlásil do více pracovních prostorů, přečtěte si téma [Přidání nebo odebrání pracovního prostoru](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace).  
 
-JSON pro rozšíření virtuálního počítače se dá vnořit do prostředku virtuálního počítače nebo umístit na kořenovou nebo nejvyšší úroveň šablony Správce prostředků JSON. Umístění formátu JSON má vliv na hodnotu názvu a typu prostředku. Další informace najdete v tématu [nastavte název a typ pro podřízené prostředky](../../azure-resource-manager/child-resource-name-type.md). 
+JSON pro rozšíření virtuálního počítače se dá vnořit do prostředku virtuálního počítače nebo umístit na kořenovou nebo nejvyšší úroveň šablony Správce prostředků JSON. Umístění formátu JSON má vliv na hodnotu názvu a typu prostředku. Další informace najdete v tématu [nastavte název a typ pro podřízené prostředky](../../azure-resource-manager/templates/child-resource-name-type.md). 
 
 Následující příklad předpokládá, že rozšíření Azure Monitor je vnořeno do prostředku virtuálního počítače. Při vnoření rozšíření prostředků, ve formátu JSON je umístěn v `"resources": []` objekt virtuálního počítače.
 

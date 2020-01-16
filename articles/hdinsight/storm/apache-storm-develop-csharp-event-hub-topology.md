@@ -2,18 +2,17 @@
 title: Zpracování událostí z Event Hubs s využitím více než Azure HDInsight
 description: Naučte se zpracovávat data z Azure Event Hubs pomocí C# topologie pro zaplavení vytvořenou v aplikaci Visual Studio pomocí nástrojů HDInsight pro Visual Studio.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/27/2017
-ms.author: hrasheed
-ROBOTS: NOINDEX
-ms.openlocfilehash: 62d65a4f004494ac4ce4ecd3df0f091460028d8f
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.date: 01/14/2020
+ms.openlocfilehash: 85b7093df99127b690c51e8f2f28d18e3f5f3c95
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800059"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981642"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Zpracování událostí z Azure Event Hubs s využitím Apache Storm veC#službě HDInsight ()
 
@@ -26,19 +25,11 @@ Naučte se pracovat s Azure Event Hubs z [Apache Storm](https://storm.apache.org
 
 Kroky v tomto dokumentu používají SCP.NET, balíček NuGet, který usnadňuje vytváření C# topologií a komponent pro použití s využitím více než v HDInsight.
 
-> [!IMPORTANT]  
-> I když postup v tomto dokumentu spoléhá na vývojové prostředí systému Windows se sadou Visual Studio, zkompilovaný projekt lze odeslat do systému v clusteru HDInsight, který používá systém Linux. Pouze clustery se systémem Linux vytvořené po 28. říjnu 2016 podporují topologie SCP.NET.
-
 HDInsight 3,4 a vyšší použití mono ke spuštění C# topologií. Příklad použitý v tomto dokumentu funguje se službou HDInsight 3,6. Pokud máte v úmyslu vytvořit vlastní řešení .NET pro HDInsight, podívejte se na dokument [kompatibility mono](https://www.mono-project.com/docs/about-mono/compatibility/) , abyste mohli nekompatibilní problémy.
 
 ### <a name="cluster-versioning"></a>Správa verzí clusteru
 
 Balíček NuGet Microsoft. SCP. NET. SDK, který použijete pro váš projekt, musí odpovídat hlavní verzi systému, která je nainstalovaná v HDInsight. Verze HDInsight 3,5 a 3,6 používají přeplavi 1. x, takže musíte použít SCP.NET verze 1.0. x. x s těmito clustery.
-
-> [!IMPORTANT]  
-> Příklad v tomto dokumentu očekává cluster HDInsight 3,5 nebo 3,6.
->
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. 
 
 C#topologie musí také cílit na rozhraní .NET 4,5.
 
@@ -105,12 +96,9 @@ topologyBuilder.SetJavaBolt(
 
 Kompletní verzi projektu vytvořeného v tomto článku si můžete stáhnout z [GitHubu](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub). Přesto ale budete muset zadat nastavení konfigurace podle kroků v tomto článku.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Storm v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) **a výběr funkce** pro **typ clusteru**.
-
-    > [!WARNING]  
-    > Příklad použitý v tomto dokumentu vyžaduje více než ve službě HDInsight verze 3,5 nebo 3,6. Nefunguje se staršími verzemi HDInsight, protože se změnily změny názvu třídy. Verzi tohoto příkladu, která funguje se staršími clustery, najdete v tématu [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub/releases).
 
 * [Centrum událostí Azure](../../event-hubs/event-hubs-create.md).
 
@@ -133,12 +121,12 @@ Vytvořte adresář s názvem `eventhubspout`a uložte soubor do adresáře.
 
 Event Hubs je zdroj dat pro tento příklad. Použijte informace v části Vytvoření centra událostí tématu Začínáme [s Event Hubs](../../event-hubs/event-hubs-create.md).
 
-1. Po vytvoření centra událostí si prohlédněte nastavení **EventHub** v Azure Portal a vyberte **zásady sdíleného přístupu**. Vyberte **+ Přidat** a přidejte následující zásady:
+1. Po vytvoření centra událostí si prohlédněte nastavení **EventHub** v Azure Portal a vyberte **zásady sdíleného přístupu**. Vyberte **+ Přidat** a vytvořte následující zásady:
 
    | Name (Název) | Oprávnění |
    | --- | --- |
    | archiv |Odeslat |
-   | Modulu |Naslouchat |
+   | modulu |Naslouchat |
 
     ![Snímek obrazovky okna zásady přístupu ke sdílení](./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png)
 
@@ -150,14 +138,14 @@ Event Hubs je zdroj dat pro tento příklad. Použijte informace v části Vytvo
 
 2. Stáhněte řešení z centra pro zaplavení [– hybridní](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub).
 
-3. V projektu **EventHubWriter** otevřete soubor **App. config** . Pomocí informací z centra událostí, které jste nakonfigurovali dříve, vyplníte hodnotu pro následující klíče:
+3. Otevřete **EventHubExample. sln**. V projektu **EventHubWriter** otevřete soubor **App. config** . Pomocí informací z centra událostí, které jste nakonfigurovali dříve, vyplníte hodnotu pro následující klíče:
 
    | Klíč | Hodnota |
    | --- | --- |
    | EventHubPolicyName |zapisovač (Pokud jste pro zásadu s oprávněním *Odeslat* použili jiný název, použijte ji místo toho.) |
    | EventHubPolicyKey |Klíč pro zásady zapisovače. |
    | EventHubNamespace |Obor názvů, který obsahuje centrum událostí. |
-   | eventHubName |Název vašeho centra událostí. |
+   | EventHubName |Název vašeho centra událostí. |
    | EventHubPartitionCount |Počet oddílů v centru událostí. |
 
 4. Uložte a zavřete soubor **App. config** .
@@ -173,7 +161,7 @@ Event Hubs je zdroj dat pro tento příklad. Použijte informace v části Vytvo
    | EventHubPolicyName |Čtenář (Pokud jste pro zásadu použili jiný název, použijte místo toho oprávnění k *naslouchání* .) |
    | EventHubPolicyKey |Klíč pro zásady čtenáře |
    | EventHubNamespace |Obor názvů, který obsahuje centrum událostí. |
-   | eventHubName |Název vašeho centra událostí. |
+   | EventHubName |Název vašeho centra událostí. |
    | EventHubPartitionCount |Počet oddílů v centru událostí. |
 
 3. Uložte a zavřete soubor **App. config** .
@@ -204,9 +192,11 @@ Event Hubs je zdroj dat pro tento příklad. Použijte informace v části Vytvo
 
 9. V části **vykonavatelé** vyberte jeden z odkazů ve sloupci **port** . Zobrazí se informace zaprotokolované součástí. Protokolované informace jsou podobné následujícímu textu:
 
-        2017-03-02 14:51:29.255 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,255 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1830978598,"deviceId":"8566ccbc-034d-45db-883d-d8a31f34068e"}
-        2017-03-02 14:51:29.283 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,283 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1756413275,"deviceId":"647a5eff-823d-482f-a8b4-b95b35ae570b"}
-        2017-03-02 14:51:29.313 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,312 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1108478910,"deviceId":"206a68fa-8264-4d61-9100-bfdb68ee8f0a"}
+    ```output
+    2017-03-02 14:51:29.255 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,255 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1830978598,"deviceId":"8566ccbc-034d-45db-883d-d8a31f34068e"}
+    2017-03-02 14:51:29.283 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,283 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1756413275,"deviceId":"647a5eff-823d-482f-a8b4-b95b35ae570b"}
+    2017-03-02 14:51:29.313 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,312 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1108478910,"deviceId":"206a68fa-8264-4d61-9100-bfdb68ee8f0a"}
+    ```
 
 ## <a name="stop-the-topologies"></a>Zastavení topologií
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a4f85aeaf2fb263ba2df8f34a51f9e25c212aff
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 36dd80669c6a9495751f577748f48c02a782b920
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379316"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029857"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Postupy: plánování implementace služby Hybrid Azure Active Directory JOIN
 
@@ -43,11 +43,11 @@ K naplánování vaší hybridní implementace služby Azure AD byste se měli s
 
 |   |   |
 | --- | --- |
-| ![Kontrola][1] | Zkontrolovat podporovaná zařízení |
-| ![Kontrola][1] | Projděte si věci, které byste měli znát. |
-| ![Kontrola][1] | Kontrola řízeného ověřování pro připojení k hybridní službě Azure AD |
-| ![Kontrola][1] | Vyberte svůj scénář na základě vaší infrastruktury identity |
-| ![Kontrola][1] | Kontrola místní podpory služby AD hlavního názvu uživatele (UPN) pro připojení k hybridní službě Azure AD |
+| ![Zaškrtnout][1] | Zkontrolovat podporovaná zařízení |
+| ![Zaškrtnout][1] | Projděte si věci, které byste měli znát. |
+| ![Zaškrtnout][1] | Kontrola řízeného ověřování pro připojení k hybridní službě Azure AD |
+| ![Zaškrtnout][1] | Vyberte svůj scénář na základě vaší infrastruktury identity |
+| ![Zaškrtnout][1] | Kontrola místní podpory služby AD hlavního názvu uživatele (UPN) pro připojení k hybridní službě Azure AD |
 
 ## <a name="review-supported-devices"></a>Zkontrolovat podporovaná zařízení
 
@@ -55,9 +55,9 @@ Připojení k hybridní službě Azure AD podporuje širokou škálu zařízení
 
 ### <a name="windows-current-devices"></a>Aktuální zařízení s Windows
 
-- Windows 10
+- Windows 10
 - Windows Server 2016
-- Windows Server. 2019
+- Windows Server 2019
 
 V případě zařízení s desktopovým operačním systémem Windows je podporovaná verze uvedená v tomto článku [informace o verzi Windows 10](https://docs.microsoft.com/windows/release-information/). Osvědčeným postupem je, že Microsoft doporučuje upgradovat na nejnovější verzi Windows 10.
 
@@ -77,7 +77,7 @@ Služba připojení k hybridní službě Azure AD se v současné době nepodpor
 
 Pokud vaše prostředí používá infrastrukturu virtuálních klientských počítačů (VDI), přečtěte si téma [Identita zařízení a virtualizace plochy](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
 
-Připojení k hybridní službě Azure AD se podporuje pro čip TPM kompatibilní se standardem FIPS 2,0 a nepodporuje se pro čip TPM 1,2. Pokud vaše zařízení mají čip TPM kompatibilní se standardem FIPS 1,2, musíte je před tím, než budete pokračovat s hybridním připojením k Azure AD, zakázat. Microsoft neposkytuje žádné nástroje pro zakázání režimu FIPS pro čipy TPM, protože je závislý na výrobci čipu TPM. Požádejte o podporu svého hardwarového výrobce OEM. Od verze WIndows 10 1903 se čipy TPM 1,2 nepoužívají pro připojení k hybridní službě Azure AD a zařízení s těmito čipy tpmmi se budou považovat za neexistující TPM.
+Připojení k hybridní službě Azure AD se podporuje pro čip TPM kompatibilní se standardem FIPS 2,0 a nepodporuje se pro čip TPM 1,2. Pokud vaše zařízení mají čip TPM kompatibilní se standardem FIPS 1,2, musíte je před tím, než budete pokračovat s hybridním připojením k Azure AD, zakázat. Microsoft neposkytuje žádné nástroje pro zakázání režimu FIPS pro čipy TPM, protože je závislý na výrobci čipu TPM. Požádejte o podporu svého hardwarového výrobce OEM. Od verze Windows 10 1903 se čipy TPM 1,2 nepoužívají pro připojení k hybridní službě Azure AD a zařízení s těmito čipy tpmmi se budou považovat za neexistující TPM.
 
 Služba připojení k hybridní službě Azure AD není podporovaná pro Windows Server, na kterém běží role řadič domény (DC).
 
@@ -148,10 +148,10 @@ V následující tabulce najdete podrobné informace o podpoře místních UPN s
 
 | Typ místního hlavního názvu uživatele služby AD | Typ domény | Verze Windows 10 | Popis |
 | ----- | ----- | ----- | ----- |
-| Balíček | Federované | Z verze 1703 | Obecně dostupná |
-| Bez směrování | Federované | Z verze 1803 | Obecně dostupná |
-| Balíček | Spravovaní | Z verze 1803 | Všeobecně dostupná služba Azure AD SSPR ve Windows zamykací obrazovky není podporovaná. |
-| Bez směrování | Spravovaní | Nepodporuje se | |
+| Balíček | Federovaní | Z verze 1703 | Obecně dostupná |
+| Bez směrování | Federovaní | Z verze 1803 | Obecně dostupná |
+| Balíček | Spravované | Z verze 1803 | Všeobecně dostupná služba Azure AD SSPR ve Windows zamykací obrazovky není podporovaná. |
+| Bez směrování | Spravované | Nepodporováno | |
 
 ## <a name="next-steps"></a>Další kroky
 

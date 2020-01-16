@@ -1,18 +1,18 @@
 ---
 title: Osvědčené postupy – Azure Batch
 description: Naučte se osvědčené postupy a užitečné tipy pro vývoj řešení Azure Batch.
-author: laurenhughes
-ms.author: lahugh
+author: ju-shim
+ms.author: jushiman
 ms.date: 11/22/2019
 ms.service: batch
 ms.topic: article
 manager: gwallace
-ms.openlocfilehash: 19c5b6acaeddb915af49cf62a884da0678075f15
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 20fc7844054fc7e05f56105e69ad6bd8a4272ed8
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535662"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026156"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
@@ -67,7 +67,7 @@ Doba života fondu se může lišit v závislosti na metodě přidělování a p
 
 Selhání přidělení fondu může probíhat kdykoli během prvního přidělení nebo po pozdější změně velikosti. Důvodem může být vyčerpání dočasné kapacity v oblasti nebo selhání jiných služeb Azure, na kterých služba Batch spoléhá. Kvóta základního prostředí není zárukou, ale omezením.
 
-### <a name="unplanned-downtime"></a>Neplánované výpadky
+### <a name="unplanned-downtime"></a>Neplánovaný výpadek
 
 Fondy služby Batch můžou při výpadku událostí v Azure vyskytnout. To je důležité vzít v úvahu při plánování a vývoji vašeho scénáře nebo pracovního postupu pro dávku.
 
@@ -109,7 +109,7 @@ Existuje výchozí [kvóta pro aktivní úlohu a plán úlohy](batch-quota-limit
 - **Odešlete do kolekce velký počet úkolů.**  
     Úkoly lze odesílat na základě individuálních nebo v kolekcích. Odesílat úlohy v [kolekcích](https://docs.microsoft.com/rest/api/batchservice/task/addcollection) až 100 v době, kdy se hromadně odesílají úkoly, které snižují náklady na režii a dobu odeslání.
 
-### <a name="task-execution"></a>Provádění úlohy
+### <a name="task-execution"></a>Provedení úkolu
 
 - **Výběr maximálního počtu úkolů na uzel**  
     Batch podporuje přepočet úkolů na uzlech (spouštění více úloh, než má uzel obsahuje jádra). Je to na vás, abyste se ujistili, že se vaše úkoly vejdou do uzlů ve fondu. Můžete mít například zhoršené prostředí, pokud se pokusíte naplánovat osm úloh, které každý využívá 25% využití CPU na jeden uzel (ve fondu s `maxTasksPerNode = 8`).

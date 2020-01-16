@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: aeca4499a41adf37ba78452f1cf76047dd8c6592
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 0994ebe451bddea371f375e4d39172833df4d88a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931928"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028528"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 
@@ -246,6 +246,14 @@ V produkčním prostředí pravděpodobně pravidelně aktualizujete klíče úl
 - Při použití ověřování AAD se záznamy neúspěšných přihlášení *nezobrazí v* protokolu auditu SQL. Chcete-li zobrazit záznamy auditu neúspěšných přihlášení, je nutné navštívit [portál Azure Active Directory]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), který protokoluje podrobnosti o těchto událostech.
 
 - Auditování Azure SQL Database je optimalizováno pro zajištění dostupnosti &ho výkonu. Během velmi vysoké aktivity Azure SQL Database umožňuje operacím pokračovat a nemusí nahrávat některé auditované události.
+
+- Informace o konfiguraci neměnného auditu v účtu úložiště najdete v tématu [Povolení zápisů v zabezpečeném připojení objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage#allow-protected-append-blobs-writes). Upozorňujeme, že název kontejneru pro auditování je **sqldbauditlogs**.
+
+> [!IMPORTANT] 
+>  V současné době je k dispozici nastavení povolení chráněných objektů BLOB zápisů v závislosti na čase a viditelné pouze v následujících oblastech:
+> - Východní USA
+> - Středojižní USA
+> - Západní USA 2
 
 
 ## <a id="subheading-7"></a>Správa Azure SQL Server a auditování databáze pomocí Azure PowerShell

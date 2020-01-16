@@ -1,79 +1,81 @@
 ---
-title: Spravovat oprávnění k databázi v Průzkumníku dat Azure
-description: Tento článek popisuje řízení přístupu na základě rolí pro databáze a tabulky v Průzkumníku dat Azure.
+title: Správa oprávnění databáze v Azure Průzkumník dat
+description: Tento článek popisuje řízení přístupu na základě rolí pro databáze a tabulky v Azure Průzkumník dat.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 36e1bb77be1e825e42f0e5d25457214a8b5f882d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b4d5e56e990c0353f44209c6b19ae2d1727de27a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60758755"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030091"
 ---
-# <a name="manage-azure-data-explorer-database-permissions"></a>Spravovat oprávnění k databázi Průzkumníka dat služby Azure
+# <a name="manage-azure-data-explorer-database-permissions"></a>Správa oprávnění pro databázi Azure Průzkumník dat
 
-Průzkumník služby Azure Data vám umožňuje řídit přístup k databází a tabulek, použití *řízení přístupu na základě rolí* modelu. V rámci tohoto modelu *objekty zabezpečení* (uživatelé, skupiny a aplikace) se mapují na *role*. Objekty zabezpečení přístup k prostředkům podle rolí, které jste přiřadili.
+Azure Průzkumník dat umožňuje řídit přístup k databázím a tabulkám pomocí modelu *řízení přístupu založeného na rolích* . V tomto modelu jsou *objekty zabezpečení* (uživatelé, skupiny a aplikace) namapovány na *role*. Objekty zabezpečení mají přístup k prostředkům v závislosti na rolích, které jsou přiřazeny.
 
-Tento článek popisuje dostupné role a přiřazení objekty do těchto rolí pomocí webu Azure portal a příkazy pro správu Průzkumník dat Azure.
+Tento článek popisuje dostupné role a postup přiřazení objektů zabezpečení k těmto rolím pomocí příkazů Azure Portal a Azure Průzkumník dat Management.
 
 ## <a name="roles-and-permissions"></a>Role a oprávnění
 
-Průzkumník služby Azure Data má následující role:
+Azure Průzkumník dat má následující role:
 
 |Role                       |Oprávnění                                                                        |
 |---------------------------|-----------------------------------------------------------------------------------|
-|Správce databáze             |Můžete provádět v rámci konkrétní databáze.|
-|Uživatel databáze              |Může číst všechna data a metadata v databázi. Kromě toho může vytvořit tabulky (stát správce tabulky pro tabulku) a funkce v databázi.|
-|Databáze prohlížeče            |Může číst všechna data a metadata v databázi.|
-|Přijímač databáze          |Můžete ingestovat data do všech existujících tabulek v databázi, ale ne zadávat dotazy na data.|
-|Monitorování databáze           |Můžete spustit příkazy .show... v kontextu databáze a její podřízené entity.|
-|Správce tabulku                |Můžete provádět v rámci konkrétní tabulku. |
-|Přijímač tabulky             |Můžete ingestovat data v rámci určité tabulce, ale ne zadávat dotazy na data.|
+|Správce databáze             |Může provádět cokoli v oboru konkrétní databáze.|
+|Uživatel databáze              |Může číst všechna data a metadata v databázi. Kromě toho mohou vytvořit tabulky (stanou se správcem tabulky pro tuto tabulku) a funkce v databázi.|
+|Prohlížeč databáze            |Může číst všechna data a metadata v databázi.|
+|Ingestování databáze          |Může ingestovat data do všech existujících tabulek v databázi, ale nedotazovat data.|
+|Monitorování databáze           |Dá se spustit. show... příkazy v kontextu databáze a jejích podřízených entit.|
+|Správce tabulky                |Může provádět cokoli v oboru konkrétní tabulky. |
+|Ingestování tabulek             |Může ingestovat data v oboru konkrétní tabulky, ale nedotazovat data.|
 
-## <a name="manage-permissions-in-the-azure-portal"></a>Spravovat oprávnění na webu Azure Portal
+## <a name="manage-permissions-in-the-azure-portal"></a>Správa oprávnění v Azure Portal
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
-1. Přejděte ke svému clusteru Průzkumník dat Azure.
+1. Přejděte do clusteru Azure Průzkumník dat.
 
-1. V **přehled** části, vyberte databázi, ve které chcete spravovat oprávnění.
+1. V části **Přehled** vyberte databázi, ve které chcete spravovat oprávnění.
 
-    ![Vyberte databázi](media/manage-database-permissions/select-database.png)
+    ![Výběr databáze](media/manage-database-permissions/select-database.png)
 
-1. Vyberte **oprávnění** pak **přidat**.
+1. Vyberte **oprávnění** a pak **Přidat**.
 
-    ![Oprávnění k databázi](media/manage-database-permissions/database-permissions.png)
+    ![Databázová oprávnění](media/manage-database-permissions/database-permissions.png)
 
-1. V části **přidat databázi oprávnění**, vyberte roli, kterou chcete přiřadit objektu zabezpečení, pak **vyberte objekty zabezpečení**.
+1. V části **Přidat oprávnění databáze**vyberte roli, pro kterou chcete objekt zabezpečení přiřadit, a pak **Vyberte objekty zabezpečení**.
 
-    ![Přidejte oprávnění k databázi](media/manage-database-permissions/add-permission.png)
+    ![Přidat databázová oprávnění](media/manage-database-permissions/add-permission.png)
 
-1. Vyhledání objektu zabezpečení, vyberte ho, pak **vyberte**.
+1. Vyhledejte objekt zabezpečení, vyberte ho a pak **Vyberte**.
 
-    ![Spravovat oprávnění na webu Azure Portal](media/manage-database-permissions/new-principals.png)
+    ![Správa oprávnění v Azure Portal](media/manage-database-permissions/new-principals.png)
 
 1. Vyberte **Uložit**.
 
-    ![Spravovat oprávnění na webu Azure Portal](media/manage-database-permissions/save-permission.png)
+    ![Správa oprávnění v Azure Portal](media/manage-database-permissions/save-permission.png)
 
-## <a name="manage-permissions-with-management-commands"></a>Spravovat oprávnění s příkazy pro správu
+## <a name="manage-permissions-with-management-commands"></a>Správa oprávnění s příkazy pro správu
 
-1. Přihlaste se do [ https://dataexplorer.azure.com ](https://dataexplorer.azure.com)a přidat do clusteru, pokud již není k dispozici.
+1. Přihlaste se k [https://dataexplorer.azure.com](https://dataexplorer.azure.com)a přidejte svůj cluster, pokud ještě není dostupný.
 
-1. V levém podokně vyberte příslušné databáze.
+1. V levém podokně vyberte příslušnou databázi.
 
-1. Použití `.add` příkazu přiřaďte objekty zabezpečení k rolím: `.add database databasename rolename ('aaduser | aadgroup=user@domain.com')`. Chcete-li přidat uživatele k roli uživatele databáze, spusťte následující příkaz, kde nahradíte název databáze a uživatele.
+1. Pomocí příkazu `.add` přiřaďte k rolím objekty zabezpečení: `.add database databasename rolename ('aaduser | aadgroup=user@domain.com')`. Chcete-li přidat uživatele do role uživatele databáze, spusťte následující příkaz, který nahradí název databáze a uživatele.
 
     ```Kusto
     .add database <TestDatabase> users ('aaduser=<user@contoso.com>')
     ```
 
-    Výstup příkazu se zobrazí seznam stávajících uživatelů a rolí, které jsou přiřazení v databázi.
+    Výstup příkazu zobrazuje seznam existujících uživatelů a rolí, k nimž se přiřadí v databázi.
+    
+    Příklady týkající se Azure Active Directory a autorizačního modelu Kusto najdete v tématu [Principy a zprostředkovatelé identity](https://docs.microsoft.com/azure/kusto/management/access-control/principals-and-identity-providers) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Zápis dotazů](write-queries.md)

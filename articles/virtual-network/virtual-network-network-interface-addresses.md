@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
-ms.openlocfilehash: 1a6fb5d2b27996d67e0bf27eb57d16f4d2fb2797
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dc5b1f2f8e8b529149184ce173bcdd315311bad4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647250"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975327"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Přidání, změna nebo odebrání IP adres pro síťové rozhraní Azure
 
@@ -146,7 +146,7 @@ Existují situace, kdy je nutné ručně nastavit IP adresu síťového rozhran�
 4. Spusťte virtuální počítač
 5. [Ručně nakonfigurujte](virtual-network-multiple-ip-addresses-portal.md#os-config) sekundární IP adresy v operačním systému (a také v primární IP adrese ve Windows) tak, aby odpovídaly vašemu nastavení v Azure.
 
-Pomocí předchozích kroků zůstane privátní IP adresa přiřazená síťovému rozhraní v rámci Azure a v operačním systému virtuálního počítače stejná. Pokud chcete sledovat, které virtuální počítače v rámci vašeho předplatného jste ručně nastavili IP adresy v operačním systému pro, zvažte přidání [značky](../azure-resource-manager/resource-group-using-tags.md) Azure do virtuálních počítačů. Můžete například použít "přiřazení IP adresy: statické". Tímto způsobem můžete snadno najít virtuální počítače v rámci předplatného, které jste ručně nastavili IP adresu v rámci operačního systému.
+Pomocí předchozích kroků zůstane privátní IP adresa přiřazená síťovému rozhraní v rámci Azure a v operačním systému virtuálního počítače stejná. Pokud chcete sledovat, které virtuální počítače v rámci vašeho předplatného jste ručně nastavili IP adresy v operačním systému pro, zvažte přidání [značky](../azure-resource-manager/management/tag-resources.md) Azure do virtuálních počítačů. Můžete například použít "přiřazení IP adresy: statické". Tímto způsobem můžete snadno najít virtuální počítače v rámci předplatného, které jste ručně nastavili IP adresu v rámci operačního systému.
 
 Kromě toho, že virtuální počítač může komunikovat s jinými prostředky v rámci stejné nebo připojené virtuální sítě, privátní IP adresa taky umožňuje virtuálnímu počítači komunikovat odchozí připojení k Internetu. Odchozí připojení jsou zdrojová síťová adresa přeložená v Azure na nepředvídatelné veřejné IP adresy. Další informace o odchozím připojení k Internetu pro Azure najdete v článku věnovaném [odchozímu připojení k Internetu Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . Příchozí připojení k privátní IP adrese virtuálního počítače nemůžete z Internetu komunikovat. Pokud vaše odchozí připojení vyžadují předvídatelné veřejné IP adresy, přidružte prostředek veřejné IP adresy k síťovému rozhraní.
 

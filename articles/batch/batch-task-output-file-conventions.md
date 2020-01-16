@@ -3,7 +3,7 @@ title: Zachovat výstup úlohy a úlohy Azure Storage pomocí knihovny konvence 
 description: Naučte se, jak pomocí Azure Batch knihovny konvencí souborů pro .NET uchovat výstup úloh a úloh Batch do Azure Storage a zobrazit trvalý výstup v Azure Portal.
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
@@ -12,20 +12,20 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 11/14/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a2970c46c7cbc978bf6d7491c9258dcccc5404bd
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: cf9372cfc89aca3285128c96c1b7e6756ba42cda
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302670"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026218"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Trvalá data úloh a úloh pro Azure Storage s knihovnou konvence souborů Batch pro .NET
 
 [!INCLUDE [batch-task-output-include](../../includes/batch-task-output-include.md)]
 
-Jedním ze způsobů, jak zachovat data úloh, je použít [knihovnu Azure Batchch konvencí souborů pro .NET][nuget_package]. Knihovna konvence souborů zjednodušuje proces ukládání výstupních dat úlohy do Azure Storage a jejich načítání. Knihovnu konvence souborů lze použít v kódu úlohy i klienta &mdash; v kódu úlohy pro trvalé soubory a v kódu klienta k vypsání a načtení. Kód úlohy může také pomocí knihovny načíst výstup nadřazeného úkolu, jako je například ve scénáři [závislosti úkolů](batch-task-dependencies.md) .
+Jedním ze způsobů, jak zachovat data úloh, je použít [knihovnu Azure Batchch konvencí souborů pro .NET][nuget_package]. Knihovna konvence souborů zjednodušuje proces ukládání výstupních dat úlohy do Azure Storage a jejich načítání. Knihovnu konvence souborů lze použít v kódu úlohy i klienta &mdash; v kódu úlohy pro trvalé soubory a v klientském kódu pro vypsání a načtení. Kód úlohy může také pomocí knihovny načíst výstup nadřazeného úkolu, jako je například ve scénáři [závislosti úkolů](batch-task-dependencies.md) .
 
 Chcete-li načíst výstupní soubory pomocí knihovny konvence souborů, můžete vyhledat soubory pro danou úlohu nebo úlohu jejich výpisem podle ID a účelu. Nemusíte znát názvy ani umístění souborů. Například můžete použít knihovnu přípon souborů k vypsání všech zprostředkujících souborů pro danou úlohu nebo získat soubor ve verzi Preview pro danou úlohu.
 
@@ -74,7 +74,7 @@ Další informace o práci s kontejnery a objekty BLOB v Azure Storage najdete v
 
 Chcete-li zachovat výstup úlohy do Azure Storage, nejprve vytvořte kontejner voláním [vlastnosti cloudjob][net_cloudjob]. [PrepareOutputStorageAsync][net_prepareoutputasync]. Tato metoda rozšíření přebírá objekt [CloudStorageAccount][net_cloudstorageaccount] jako parametr. Vytvoří kontejner s názvem podle standardu souboru, aby jeho obsah byl zjistitelný Azure Portal a metody načítání popsané dále v článku.
 
-Obvykle umístíte kód k vytvoření kontejneru v klientské aplikaci &mdash; aplikace, která vytváří vaše fondy, úlohy a úkoly.
+Obvykle umístíte kód k vytvoření kontejneru v klientské aplikaci &mdash; aplikaci, která vytváří vaše fondy, úlohy a úkoly.
 
 ```csharp
 CloudJob job = batchClient.JobOperations.CreateJob(
@@ -109,7 +109,7 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskOutput, "frame_full_res.jpg
 await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg");
 ```
 
-Parametr `kind` [TaskOutputStorage](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage). Metoda [SaveAsync](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync#overloads) zařadí trvalé soubory do kategorií. Existují čtyři předdefinované typy [TaskOutputKind][net_taskoutputkind] : `TaskOutput`, `TaskPreview`, `TaskLog` a `TaskIntermediate.` můžete také definovat vlastní kategorie výstupu.
+Parametr `kind` [TaskOutputStorage](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage) Metoda [SaveAsync](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync#overloads) zařadí trvalé soubory do kategorií. Existují čtyři předdefinované typy [TaskOutputKind][net_taskoutputkind] : `TaskOutput`, `TaskPreview`, `TaskLog`a `TaskIntermediate.` můžete také definovat vlastní kategorie výstupu.
 
 Tyto typy výstupu umožňují určit, který typ výstupů se má zobrazit, když později budete dotazovat Batch na trvalé výstupy daného úkolu. Jinými slovy, při výpisu výstupů pro úlohu můžete filtrovat seznam na jednom z výstupních typů. Například "dát mi výstup *verze Preview* pro úlohu *109*." Další informace o výpisu a načítání výstupů se zobrazí v části načtení výstupu později v článku.
 
@@ -134,7 +134,7 @@ Stejně jako u výstupů úloh s typem **TaskOutputKind** můžete použít typ 
 
 ### <a name="store-task-logs"></a>Ukládat protokoly úloh
 
-Kromě trvalého uložení souboru do odolného úložiště po dokončení úlohy nebo úlohy může být nutné zachovat soubory, které se aktualizují během provádění úlohy &mdash; souborů protokolu nebo `stdout.txt` a `stderr.txt`, například. Pro účely tohoto účelu poskytuje knihovna pro Azure Batch souborů konvence [TaskOutputStorage][net_taskoutputstorage]. Metoda [SaveTrackedAsync][net_savetrackedasync] Pomocí [SaveTrackedAsync][net_savetrackedasync]můžete sledovat aktualizace souboru na uzlu (v intervalu, který zadáte) a zachovat tyto aktualizace Azure Storage.
+Kromě trvalého uložení souboru do odolného úložiště po dokončení úlohy nebo úlohy může být nutné zachovat soubory, které se aktualizují během provádění úlohy &mdash; soubory protokolu nebo `stdout.txt` a `stderr.txt`, například. Pro účely tohoto účelu poskytuje knihovna pro Azure Batch souborů konvence [TaskOutputStorage][net_taskoutputstorage]. Metoda [SaveTrackedAsync][net_savetrackedasync] Pomocí [SaveTrackedAsync][net_savetrackedasync]můžete sledovat aktualizace souboru na uzlu (v intervalu, který zadáte) a zachovat tyto aktualizace Azure Storage.
 
 V následujícím fragmentu kódu používáme [SaveTrackedAsync][net_savetrackedasync] k aktualizaci `stdout.txt` v Azure Storage každých 15 sekund během provádění úlohy:
 
@@ -161,9 +161,9 @@ using (ITrackedSaveOperation stdout =
 }
 ```
 
-Oddíl s komentářem `Code to process data and produce output file(s)` je zástupný symbol pro kód, který by úkol normálně prováděl. Například můžete mít kód, který stáhne data z Azure Storage a provede transformaci nebo výpočet. Důležitou součástí tohoto fragmentu kódu je demonstrace, jak můžete tento kód zabalit do bloku `using` a pravidelně tak aktualizovat soubor pomocí [SaveTrackedAsync][net_savetrackedasync].
+Oddíl s komentářem `Code to process data and produce output file(s)` je zástupný symbol pro kód, který by úkol normálně prováděl. Například můžete mít kód, který stáhne data z Azure Storage a provede transformaci nebo výpočet. Důležitou součástí tohoto fragmentu kódu je demonstrace, jak můžete tento kód v `using` bloku zabalit a pravidelně aktualizovat soubor pomocí [SaveTrackedAsync][net_savetrackedasync].
 
-Agent uzlu je program, který běží na všech uzlech ve fondu a poskytuje rozhraní příkazového a řídicího prostředí mezi uzlem a službou Batch. Volání `Task.Delay` je požadováno na konci tohoto bloku `using`, aby bylo zajištěno, že má agent Node čas vyprázdnit obsah standardu na soubor STDOUT. txt na uzlu. Bez této prodlevy je možné vymezit několik posledních sekund výstupu. Toto zpoždění nemusí být vyžadováno pro všechny soubory.
+Agent uzlu je program, který běží na všech uzlech ve fondu a poskytuje rozhraní příkazového a řídicího prostředí mezi uzlem a službou Batch. Na konci tohoto bloku `using` je požadováno volání `Task.Delay`, aby bylo zajištěno, že má agent uzlu čas vyprázdnit obsah standardu na soubor STDOUT. txt na uzlu. Bez této prodlevy je možné vymezit několik posledních sekund výstupu. Toto zpoždění nemusí být vyžadováno pro všechny soubory.
 
 > [!NOTE]
 > Když povolíte sledování souborů pomocí **SaveTrackedAsync**, budou trvale *připojeny* jenom ke sledovanému souboru, aby se Azure Storage. Tuto metodu použijte pouze pro sledování nerotujících souborů protokolu nebo jiných souborů, které jsou zapsány do nástroje pomocí operací Append na konec souboru.
@@ -210,7 +210,7 @@ Vzorový projekt [PersistOutputs][github_persistoutputs] je jednou z [Azure Batc
 1. Otevřete projekt v **aplikaci Visual Studio 2019**.
 2. Přidejte **přihlašovací údaje** služby Batch a účtu úložiště do **AccountSettings. Settings** v projektu Microsoft. Azure. batch. Samples. Common.
 3. **Sestavte** (ale nespouštějte) řešení. Pokud se zobrazí výzva, obnovte případné balíčky NuGet.
-4. Pomocí Azure Portal nahrajte [balíček aplikace](batch-application-packages.md) pro **PersistOutputsTask**. Do balíčku. zip zahrňte `PersistOutputsTask.exe` a jeho závislá sestavení, nastavte ID aplikace na "PersistOutputsTask" a verzi balíčku aplikace na "1,0".
+4. Pomocí Azure Portal nahrajte [balíček aplikace](batch-application-packages.md) pro **PersistOutputsTask**. Zahrňte `PersistOutputsTask.exe` a jeho závislá sestavení v balíčku. zip, nastavte ID aplikace na "PersistOutputsTask" a verzi balíčku aplikace na "1,0".
 5. **Spusťte** (spusťte) projekt **PersistOutputs** .
 6. Po zobrazení výzvy k výběru technologie trvalosti, která se má použít ke spuštění ukázky, zadejte **1** pro spuštění ukázky pomocí knihovny konvence souborů pro zachování výstupu úlohy. 
 

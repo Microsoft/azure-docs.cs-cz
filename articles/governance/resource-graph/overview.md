@@ -3,12 +3,12 @@ title: Přehled služby Azure Resource Graph
 description: Seznamte se s tím, jak služba Azure Resource Graph umožňuje složitý dotazování na prostředky ve velkém rozsahu napříč předplatnými a klienty.
 ms.date: 10/21/2019
 ms.topic: overview
-ms.openlocfilehash: 7a96faa8502fca6fc501985cd677ac28454f1ba1
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 301543075d587079af0f53b6200890a75bfbb768
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406691"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965974"
 ---
 # <a name="what-is-azure-resource-graph"></a>Co je Azure Resource Graph?
 
@@ -31,7 +31,7 @@ V této dokumentaci si podrobně projdete jednotlivé funkce.
 
 Azure Resource Manager aktuálně podporuje dotazy přes základní pole prostředků, konkrétně název prostředku, ID, typ, skupinu prostředků, předplatné a umístění. Správce prostředků také poskytuje zařízení pro volání jednotlivých poskytovatelů prostředků pro podrobné vlastnosti jednoho prostředku v daném okamžiku.
 
-S Azure Resource Graph můžete získat přístup k těmto vlastnostem, které poskytovatelé zdrojů vrátí, aniž by bylo nutné provádět individuální vyvolání u každého poskytovatele zdrojů. Seznam podporovaných typů prostředků **najdete v tabulce** nasazení v [režimu úplného nasazení](../../azure-resource-manager/complete-mode-deletion.md) v části prostředky. Další typy prostředků se nacházejí v souvisejících [tabulkách prostředků grafu](./concepts/query-language.md#resource-graph-tables). Alternativním způsobem, jak zobrazit podporované typy prostředků, je použít [prohlížeč schématu Průzkumníka Azure Resource Graph](./first-query-portal.md#schema-browser).
+S Azure Resource Graph můžete získat přístup k těmto vlastnostem, které poskytovatelé zdrojů vrátí, aniž by bylo nutné provádět individuální vyvolání u každého poskytovatele zdrojů. Seznam podporovaných typů prostředků **najdete v tabulce** nasazení v [režimu úplného nasazení](../../azure-resource-manager/templates/complete-mode-deletion.md) v části prostředky. Další typy prostředků se nacházejí v souvisejících [tabulkách prostředků grafu](./concepts/query-language.md#resource-graph-tables). Alternativním způsobem, jak zobrazit podporované typy prostředků, je použít [prohlížeč schématu Průzkumníka Azure Resource Graph](./first-query-portal.md#schema-browser).
 
 Pomocí Azure Resource graphu můžete:
 
@@ -65,7 +65,7 @@ Pokud chcete používat Resource Graph, musíte mít odpovídající oprávněn�
 Azure CLI a Azure PowerShell používají předplatná, ke kterým má uživatel přístup. Při přímém použití REST API se seznam předplatných poskytuje uživateli. Pokud má uživatel přístup k jakémukoli předplatnému v seznamu, vrátí se výsledky dotazu pro předplatná, ke kterým má uživatel přístup. Toto chování je stejné jako při volání [skupin prostředků – seznam](/rest/api/resources/resourcegroups/list) \- získat skupiny prostředků, ke kterým máte přístup, bez indikace, že výsledek může být částečný.
 Pokud v seznamu odběrů nejsou žádná předplatná, ke kterým má uživatel příslušná práva, odpověď je _403_ (zakázáno).
 
-## <a name="throttling"></a>Omezování
+## <a name="throttling"></a>Throttling
 
 V rámci bezplatné služby jsou dotazy do grafu prostředků omezené, aby poskytovaly nejlepší prostředí a dobu odezvy pro všechny zákazníky. Pokud chce vaše organizace používat Graph API prostředků pro rozsáhlé a časté dotazy, použijte na [stránce portálu pro grafy prostředků](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/ResourceGraph)možnost zpětné vazby na portálu.
 Zadejte svůj obchodní případ a v případě, že vás tým bude kontaktovat, vyberte zaškrtávací políčko Microsoft vás může poslat e-mailem o zpětné vazbě.

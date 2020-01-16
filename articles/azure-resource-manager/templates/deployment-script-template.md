@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: jgao
-ms.openlocfilehash: 4dc28b8254c312836b2767c2efef52137e101777
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 6308f7832a898d97c455dc90265adea345aeb0cc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75839436"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981210"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Použití skriptů nasazení v šablonách (Preview)
 
@@ -57,7 +57,7 @@ Výhody skriptu nasazení:
   $id = (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name idName).Id
   ```
 
-- **Azure PowerShell verze 2.7.0, 2.8.0 nebo 3.0.0**. Tyto verze nepotřebujete pro nasazování šablon. Tyto verze jsou ale nutné pro místní testování skriptů nasazení. Přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps.md). Můžete použít předem nakonfigurovanou bitovou kopii Docker.  Viz [Konfigurace vývojového prostředí](#configure-development-environment).
+- **Azure PowerShell verze 2.7.0, 2.8.0 nebo 3.0.0**. Tyto verze nepotřebujete pro nasazování šablon. Tyto verze jsou ale nutné pro místní testování skriptů nasazení. Přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Můžete použít předem nakonfigurovanou bitovou kopii Docker.  Viz [Konfigurace vývojového prostředí](#configure-development-environment).
 
 ## <a name="resource-schema"></a>Schéma prostředku
 
@@ -233,7 +233,7 @@ Pokud chcete zobrazit prostředek deploymentScripts na portálu, vyberte **Zobra
 
 ## <a name="clean-up-deployment-script-resources"></a>Vyčistit prostředky skriptu nasazení
 
-Skript nasazení vytvoří účet úložiště a instanci kontejneru, která se používá ke spouštění skriptů nasazení a ukládání ladicích informací. Tyto dva prostředky se vytvoří ve stejné skupině prostředků jako zřízené prostředky a služba skriptu bude po vypršení platnosti skriptu smazána. Můžete řídit životní cyklus těchto prostředků.  Dokud je neodstraníte, budou se vám účtovat oba prostředky. Informace o cenách najdete v článku [Container Instances](/pricing/details/container-instances/) ceny a ceny [Azure Storage](/pricing/details/storage/).
+Skript nasazení vytvoří účet úložiště a instanci kontejneru, která se používá ke spouštění skriptů nasazení a ukládání ladicích informací. Tyto dva prostředky se vytvoří ve stejné skupině prostředků jako zřízené prostředky a služba skriptu bude po vypršení platnosti skriptu smazána. Můžete řídit životní cyklus těchto prostředků.  Dokud je neodstraníte, budou se vám účtovat oba prostředky. Informace o cenách najdete v článku [Container Instances](https://azure.microsoft.com/pricing/details/container-instances/) ceny a ceny [Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
 Životní cyklus těchto prostředků je řízen následujícími vlastnostmi v šabloně:
 
