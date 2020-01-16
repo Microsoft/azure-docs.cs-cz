@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
-ms.openlocfilehash: ba49fc72fe07378d702b8c12fcdf77d5cebee9bb
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 126b488d2bb59e2904bee646301240efe6fe71a4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013113"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76037944"
 ---
 Tento dokument vás provede rozdíly mezi spravovanými a nespravovanými disky při použití šablon Azure Resource Manager k zřizování virtuálních počítačů. Příklady vám pomůžou aktualizovat existující šablony, které používají nespravované disky na spravované disky. Pro referenci používáme jako vodítko šablonu [101-VM-Simple-Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) . Můžete zobrazit šablonu pomocí [spravovaných disků](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) i předchozí verze s použitím [nespravovaných disků](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) , pokud byste je chtěli přímo porovnat.
 
@@ -94,7 +94,16 @@ V případě Azure Managed Disks se disk stane prostředkem nejvyšší úrovně
 
 ### <a name="default-managed-disk-settings"></a>Výchozí nastavení spravovaného disku
 
-Pokud chcete vytvořit virtuální počítač se spravovanými disky, nebudete už muset vytvořit prostředek účtu úložiště a tento prostředek můžete aktualizovat následujícím způsobem. Konkrétně Všimněte si, že `apiVersion` odráží `2017-03-30` a `osDisk` a `dataDisks` již neodkazují na konkrétní identifikátor URI pro virtuální pevný disk. Při nasazování bez zadání dalších vlastností disk použije typ úložiště na základě velikosti virtuálního počítače. Pokud například používáte velikost virtuálního počítače podporujícího prémii (velikosti s "s" v názvu, například Standard_D2s_v3), systém použije úložiště Premium_LRS. Pomocí nastavení SKU disku zadejte typ úložiště. Pokud není zadán žádný název, formát `<VMName>_OsDisk_1_<randomstring>` pro disk s operačním systémem a `<VMName>_disk<#>_<randomstring>` pro každý datový disk. Ve výchozím nastavení je služba Azure Disk Encryption zakázaná; ukládání do mezipaměti je pro disk s operačním systémem pro čtení a zápis a pro datové disky žádné. Můžete si všimnout, že následující příklad je stále závislá na účtu úložiště, ale je k dispozici pouze pro úložiště diagnostiky a není pro diskové úložiště potřeba.
+Pokud chcete vytvořit virtuální počítač se spravovanými disky, nebudete už muset vytvořit prostředek účtu úložiště. Odkazy na níže uvedený příklad šablony obsahuje několik rozdílů oproti předchozím příkladům unmanged disku, které byste si poznamenali:
+
+- `apiVersion` je verze, která podporuje spravované disky.
+- `osDisk` a `dataDisks` již neodkazují na konkrétní identifikátor URI pro virtuální pevný disk.
+- Při nasazování bez zadání dalších vlastností disk použije typ úložiště na základě velikosti virtuálního počítače. Pokud například používáte velikost virtuálního počítače, která podporuje Premium Storage (velikosti s "s" v názvu, například Standard_D2s_v3), budou standardně nakonfigurované prémiové disky. Tuto změnu můžete změnit pomocí nastavení skladové položky (SKU) disku pro určení typu úložiště.
+- Pokud není zadaný žádný název disku, bude mít formát `<VMName>_OsDisk_1_<randomstring>` disku s operačním systémem a `<VMName>_disk<#>_<randomstring>` pro každý datový disk.
+  - Pokud se virtuální počítač vytváří z vlastní image, výchozí nastavení pro typ účtu úložiště a název disku se načtou z vlastností disku definovaných v prostředku vlastní image. Ty mohou být přepsány zadáním hodnot pro tyto hodnoty v šabloně.
+- Ve výchozím nastavení je služba Azure Disk Encryption zakázaná.
+- Ve výchozím nastavení je ukládání do mezipaměti disku pro disk s operačním systémem nastaveno na čtení a zápis a pro datové disky není k dispozici.
+- V následujícím příkladu je stále závislá na účtu úložiště, ale je to jenom pro úložiště diagnostiky a není potřeba pro úložiště na disku.
 
 ```json
 {

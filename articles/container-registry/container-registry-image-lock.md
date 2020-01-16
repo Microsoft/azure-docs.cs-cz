@@ -3,12 +3,12 @@ title: Uzamknutí imagí
 description: Nastavte atributy pro Image kontejneru nebo úložiště, aby se nemohlo odstranit ani přepsat v registru kontejnerů Azure.
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: 8eb2a549e9d9f3a7ed4a482ac6a9ea4ba61ea4f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 93a99f65d5bb21d696ce24365e7c819d2c34a8b0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442216"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972931"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Uzamknutí image kontejneru ve službě Azure Container Registry
 
@@ -17,7 +17,7 @@ Ve službě Azure Container Registry můžete zamknout verzi Image nebo úloži�
 Tento článek vyžaduje, abyste spouštěli Azure CLI v Azure Cloud Shell nebo lokálně (doporučuje se verze 2.0.55 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
 > [!IMPORTANT]
-> Tento článek se nevztahuje na uzamykání celého registru, například pomocí **nastavení > zámky** v Azure Portal nebo `az lock` příkazů v rozhraní příkazového řádku Azure CLI. Uzamykání prostředku registru nebrání v vytváření, aktualizaci nebo odstraňování dat v úložištích. Uzamknutí registru má vliv jenom na operace správy, jako je přidání nebo odstranění replikace nebo odstranění samotného registru. Další informace o [uzamčení prostředků, aby se zabránilo neočekávaným změnám](../azure-resource-manager/resource-group-lock-resources.md).
+> Tento článek se nevztahuje na uzamykání celého registru, například pomocí **nastavení > zámky** v Azure Portal nebo `az lock` příkazů v rozhraní příkazového řádku Azure CLI. Uzamykání prostředku registru nebrání v vytváření, aktualizaci nebo odstraňování dat v úložištích. Uzamknutí registru má vliv jenom na operace správy, jako je přidání nebo odstranění replikace nebo odstranění samotného registru. Další informace o [uzamčení prostředků, aby se zabránilo neočekávaným změnám](../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="scenarios"></a>Scénáře
 

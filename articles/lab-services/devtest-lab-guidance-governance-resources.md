@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 0be2efd3783d9a0a7992819c984c993c64000ecd
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dc65d368eb4c1beb57099cb6c16fb33bbe5c1f79
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644864"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981494"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Řízení Azure DevTest Labs infrastruktury – prostředky
 Tento článek popisuje zarovnání a správu prostředků pro DevTest Labs v rámci vaší organizace. 
@@ -36,7 +36,7 @@ Předtím, než organizace začne používat Azure pro obecný vývoj aplikací,
 - Je segmentace nutná k oddělení vývoje a produkčního prostředí? 
 - Jaké ovládací prvky jsou zavedeny k dlouhodobému usnadnění správy, stability a růstu?
 
-**Prvním doporučeným postupem** je kontrola taxonomie Azure pro organizace, kde jsou pojmenovány divize mezi produkčním a vývojovým předplatným. V následujícím diagramu nabízí navržená taxonomie logické oddělení vývoje a testování a produkčních prostředí. V rámci tohoto přístupu může organizace zavést kódy fakturace a sledovat náklady spojené s jednotlivými prostředími samostatně. Další informace najdete v tématu zásady [správného řízení předplatného](/azure/architecture/cloud-adoption/appendix/azure-scaffold). Kromě toho můžete pomocí [značek Azure](../azure-resource-manager/resource-group-using-tags.md) organizovat prostředky pro účely sledování a fakturace.
+**Prvním doporučeným postupem** je kontrola taxonomie Azure pro organizace, kde jsou pojmenovány divize mezi produkčním a vývojovým předplatným. V následujícím diagramu nabízí navržená taxonomie logické oddělení vývoje a testování a produkčních prostředí. V rámci tohoto přístupu může organizace zavést kódy fakturace a sledovat náklady spojené s jednotlivými prostředími samostatně. Další informace najdete v tématu zásady [správného řízení předplatného](/azure/architecture/cloud-adoption/appendix/azure-scaffold). Kromě toho můžete pomocí [značek Azure](../azure-resource-manager/management/tag-resources.md) organizovat prostředky pro účely sledování a fakturace.
 
 **Druhým doporučeným postupem** je povolení předplatného DevTest na portálu Azure Enterprise. Umožňuje, aby organizace spouštěla klientské operační systémy, které nejsou obvykle dostupné v rámci předplatného Azure Enterprise. Pak použijte podnikový software, kde platíte jenom za výpočetní výkon a nedělejte si starosti s licencováním. Zajišťuje, aby fakturace určených služeb, včetně imagí galerie v IaaS, jako je například Microsoft SQL Server, byla založena pouze na spotřebě. Podrobnosti o předplatném Azure DevTest najdete [tady](https://azure.microsoft.com/offers/ms-azr-0148p/) pro zákazníky smlouva Enterprise (EA) a [tady](https://azure.microsoft.com/offers/ms-azr-0023p/) pro zákazníky s průběžnými platbami.
 
