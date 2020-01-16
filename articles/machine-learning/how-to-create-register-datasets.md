@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 775c6016acbcd0f87f368852a68eaea706c79898
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: d55dc2a1311d66eae01ae12a3dae798fbab20677
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945703"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045613"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Vytváření Azure Machine Learning datových sad
 
@@ -196,16 +196,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 Pokud chcete vytvořit datové sady s otevřenými datovými sadami Azure ze sady SDK, ujistěte se, že jste balíček nainstalovali pomocí `pip install azureml-opendatasets`. Jednotlivé diskrétní datové sady jsou reprezentovány vlastní třídou v sadě SDK a některé třídy jsou k dispozici jako `TabularDataset`, `FileDataset`nebo obojí. Úplný seznam tříd naleznete v [referenční dokumentaci](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py) .
 
-Většina tříd dědí z a vrací instanci `TabularDataset`. Mezi příklady těchto tříd patří `PublicHolidays`, `BostonSafety`a `UsPopulationZip`. Chcete-li vytvořit `TabularDataset` z těchto typů tříd, použijte konstruktor bez argumentů. Když zaregistrujete datovou sadu vytvořenou z otevřených datových sad, nestahují se okamžitě žádná data, ale data budou k dispozici později, až se vyžádají (například během školení) z centrálního umístění úložiště. 
-
-```python
-from azureml.opendatasets import UsPopulationZip
-
-tabular_dataset = UsPopulationZip()
-tabular_dataset = tabular_dataset.register(workspace=workspace, name="pop data", description="US population data by zip code")
-```
-
-Můžete načíst určité třídy jako `TabularDataset` nebo `FileDataset`, což vám umožní manipulovat přímo nebo stahovat soubory. Jiné třídy mohou získat datovou sadu pouze pomocí funkcí `get_tabular_dataset()` nebo `get_file_dataset()`. Následující ukázka kódu ukazuje několik příkladů těchto typů tříd:
+Můžete načíst určité třídy jako `TabularDataset` nebo `FileDataset`, což vám umožní manipulovat přímo nebo stahovat soubory. Jiné třídy mohou získat datovou sadu **pouze** pomocí jedné z `get_tabular_dataset()` nebo `get_file_dataset()` funkcí. Následující ukázka kódu ukazuje několik příkladů těchto typů tříd.
 
 ```python
 from azureml.opendatasets import MNIST
@@ -219,6 +210,8 @@ from azureml.opendatasets import Diabetes
 # Diabetes class can return ONLY return TabularDataset and must be called from the static function
 diabetes_tabular = Diabetes.get_tabular_dataset()
 ```
+
+Když zaregistrujete datovou sadu vytvořenou z otevřených datových sad, nestahují se okamžitě žádná data, ale data budou k dispozici později, až se vyžádají (například během školení) z centrálního umístění úložiště.
 
 ### <a name="use-the-ui"></a>Použití uživatelského rozhraní
 

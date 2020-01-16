@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 9fe0875f34745b0b5b8b1b7e8b352116b6cbf997
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: ff84b085b7d40bcb6c5a0aa87416e5814f67814b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941912"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979574"
 ---
 # <a name="custom-script-extension-for-windows"></a>Rozšíření vlastních skriptů pro Windows
 
@@ -189,7 +189,7 @@ Pokud chcete v cílovém virtuálním počítači/VMSS použít identitu přiřa
 
 Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Schéma JSON, které je podrobně popsáno v předchozí části, lze použít v šabloně Azure Resource Manager ke spuštění rozšíření vlastních skriptů během nasazování. Následující ukázky ukazují, jak používat rozšíření vlastních skriptů:
 
-* [Kurz: nasazení rozšíření virtuálních počítačů pomocí šablon Azure Resource Manager](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
+* [Kurz: nasazení rozšíření virtuálních počítačů pomocí šablon Azure Resource Manager](../../azure-resource-manager/templates/template-tutorial-deploy-vm-extensions.md)
 * [Nasazení dvou aplikačních vrstev ve Windows a Azure SQL DB](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)
 
 ## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell

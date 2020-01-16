@@ -15,32 +15,32 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b357def86b77d4bbb294e2253dacfbd129998ec
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b67507daf8005f3f9a299b778f1fba4ce67d46d4
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965122"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044157"
 ---
-# <a name="scenario-web-api-that-calls-web-apis"></a>Scénář: webové rozhraní API, které volá webová rozhraní API
+# <a name="scenario-a-web-api-that-calls-web-apis"></a>Scénář: webové rozhraní API, které volá webová rozhraní API.
 
-Seznamte se s tím, že potřebujete vytvořit webové rozhraní API, které volá webová rozhraní API.
+Zjistěte, co potřebujete vědět, abyste mohli vytvořit webové rozhraní API, které volá webová rozhraní API.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Tento scénář, chráněné webové rozhraní API, které volá webová rozhraní API, se staví na scénáři "chránit webové rozhraní API". Další informace o tomto základních scénářích najdete v tématu [Protected Web API – scénář](scenario-protected-web-api-overview.md) First.
+Tento scénář, ve kterém chráněné webové rozhraní API volá webová rozhraní API, se sestavuje na základě scénáře "Ochrana webového rozhraní API". Další informace o tomto základních scénářích najdete v tématu [scénář: chráněné webové rozhraní API](scenario-protected-web-api-overview.md).
 
 ## <a name="overview"></a>Přehled
 
-- Klient (webová, desktopová, mobilní nebo jednostránková aplikace) – nepředstavuje v diagramu níže volání chráněného webového rozhraní API a poskytuje token nosiče JWT ve své autorizační hlavičce protokolu HTTP.
-- Chráněné webové rozhraní API ověří token a pomocí metody MSAL `AcquireTokenOnBehalfOf` k vyžádání (z Azure AD) dalšího tokenu, aby mohl sám sebe, zavolat druhé webové rozhraní API (s názvem pro příjem webového rozhraní API) jménem uživatele.
-- Chráněné webové rozhraní API používá tento token k volání rozhraní API pro příjem dat. Může také volat `AcquireTokenSilent`později, aby požádala o tokeny pro jiná rozhraní API pro příjem dat (ale pořád ještě jménem stejného uživatele). v případě potřeby aktualizuje token `AcquireTokenSilent`.
+- Webový klient, stolní nebo mobilní aplikace nebo klient s jednou stránkou (který není reprezentován v doprovodném diagramu) volá chráněné webové rozhraní API a v jeho autorizační hlavičce "autorizace" poskytne nosný token JSON Web Token (JWT).
+- Chráněné webové rozhraní API ověří token a pomocí metody Microsoft Authentication Library (MSAL) `AcquireTokenOnBehalfOf` požádat o jiný token od Azure Active Directory (Azure AD), aby chráněné webové rozhraní API mohlo zavolat druhé webové rozhraní API nebo podřízené webové rozhraní API jménem uživatele.
+- Chráněné webové rozhraní API může také volat `AcquireTokenSilent`později, aby požádala o tokeny pro jiná rozhraní API pro příjem dat jménem stejného uživatele. v případě potřeby aktualizuje token `AcquireTokenSilent`.
 
-![Webové rozhraní API, které volá webové rozhraní API](media/scenarios/web-api.svg)
+![Diagram webového rozhraní API, které volá webové rozhraní API](media/scenarios/web-api.svg)
 
 ## <a name="specifics"></a>Specifika
 
-Součást registrace aplikace související s oprávněními rozhraní API je klasická. Konfigurace aplikace zahrnuje použití toku OAuth 2,0 za běhu za účelem výměny nosného tokenu JWT na tokenu pro rozhraní API pro příjem dat. Tento token se přidá do mezipaměti tokenů, kde je dostupný v řadičích webového rozhraní API, a může získat bez tichého volání rozhraní API pro příjem dat.
+Část registrace aplikace, která souvisí s oprávněními rozhraní API, je klasická. Konfigurace aplikace zahrnuje použití toku OAuth 2,0 za běhu za účelem výměny nosného tokenu JWT na tokenu pro rozhraní API pro příjem dat. Tento token se přidá do mezipaměti tokenů, kde je k dispozici v řadičích webového rozhraní API, a potom může získat token v tichém režimu pro volání rozhraní API pro příjem dat.
 
 ## <a name="next-steps"></a>Další kroky
 

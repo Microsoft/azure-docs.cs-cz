@@ -8,77 +8,77 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: f523d1ebf5c96596142c6897af2be5f760b3d4b9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f65220a04a709bae5a6892bfd4105195cee35741
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978947"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978420"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Nastavení nástroje Azure pro import/export
 Nástroj Microsoft Azure Import/Export je nástroj pro přípravu a opravu jednotky, který můžete použít se službou Microsoft Azure Import/Export. Nástroj můžete použít pro následující funkce:  
-  
+
 -   Před vytvořením úlohy importu můžete pomocí tohoto nástroje Kopírovat data na pevné disky, které budete dodávat do datového centra Microsoft Azure.  
-  
+
 -   Po dokončení úlohy importu můžete pomocí tohoto nástroje opravit všechny objekty blob, které byly poškozeny nebo byly v konfliktu s jinými objekty blob.  
-  
+
 -   Po přijetí jednotek z dokončené úlohy exportu můžete pomocí tohoto nástroje opravit všechny soubory, které byly na jednotkách poškozeny nebo nebyly nalezeny.  
-  
-## <a name="prerequisites"></a>Předpoklady  
+
+## <a name="prerequisites"></a>Požadavky  
 Pokud připravujete jednotky pro úlohu importu, budete muset splnit následující požadavky:  
-  
+
 -   Musíte mít aktivní předplatné Azure.  
-  
+
 -   Vaše předplatné musí obsahovat účet úložiště, který má dostatek volného místa pro uložení souborů, které chcete importovat.  
-  
+
 -   Potřebujete alespoň jeden z klíčů účtu pro účet úložiště.  
-  
+
 -   Potřebujete počítač ("kopírovací počítač") se systémem Windows 7, Windows Server 2008 R2 nebo novějším nainstalovaným operačním systémem Windows.  
-  
+
 -   Na počítači pro kopírování musí být nainstalovaný .NET Framework 4.  
-  
+
 -   Na kopírovacím počítači musí být povolený nástroj BitLocker.  
-  
+
 -   Budete potřebovat jednu nebo více jednotek, které obsahují data, která mají být importována nebo prázdná 3,5 pevné disky SATA připojené k počítači kopie.  
-  
--   Soubory, které chcete importovat, musí být přístupné z kopie počítače bez ohledu na to, jestli jsou ve sdílené síťové složce nebo na místním pevném disku. 
-  
+
+-   Soubory, které chcete importovat, musí být přístupné z kopie počítače bez ohledu na to, jestli jsou ve sdílené síťové složce nebo na místním pevném disku.
+
 Pokud se pokoušíte opravit import, který se částečně nezdařil, budete potřebovat:  
-  
+
 - Kopírování souborů protokolu  
-  
+
 - Klíč účtu úložiště  
-  
+
   Pokud se pokoušíte opravit export, který se částečně nezdařil, budete potřebovat:  
-  
+
 - Kopírování souborů protokolu  
-  
+
 - Soubory manifestu (volitelné)  
-  
+
 - Klíč účtu úložiště  
-  
+
 ## <a name="installing-the-azure-importexport-tool"></a>Instalace nástroje Azure import/export  
  Nástroj pro import/export v Azure se skládá z následujících souborů:  
-  
+
 - WAImportExport. exe  
-  
+
 - WAImportExport.exe.config  
-  
+
 - WAImportExportCore.dll  
-  
+
 - WAImportExportRepair. dll  
-  
+
 - Microsoft.WindowsAzure.Storage.dll  
-  
+
 - Hddid.dll  
-  
+
   Zkopírujte tyto soubory do pracovního adresáře, například `c:\WAImportExport`. V dalším kroku otevřete okno příkazového řádku v režimu správce a nastavte výše uvedený adresář jako aktuální adresář.  
-  
+
   Pro výstup nápovědu pro příkaz spusťte nástroj bez parametrů:  
-  
+
 ```  
 WAImportExport, a client tool for Microsoft Azure Import/Export service. Microsoft (c) 2013, 2014  
-  
+
 Copy a Directory:  
     WAImportExport.exe PrepImport  
         /j:<JournalFile> [/logdir:<LogDirectory>] [/id:<SessionId>] [/resumesession]  
@@ -87,7 +87,7 @@ Copy a Directory:
         [/bk:<BitLockerKey>] [/Disposition:<Disposition>] [/BlobType:<BlobType>]  
         [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]  
         /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory>  
-  
+
 Copy a File:  
     WAImportExport.exe PrepImport  
         /j:<JournalFile> [/logdir:<LogDirectory>] [/id:<SessionId>] [/resumesession]  
@@ -96,7 +96,7 @@ Copy a File:
         [/bk:<BitLockerKey>] [/Disposition:<Disposition>] [/BlobType:<BlobType>]  
         [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]  
         /srcfile:<SourceFilePath> /dstblob:<DestinationBlobPath>  
-  
+
 Repair a Drive:  
     WAImportExport.exe RepairImport | RepairExport  
         /r:<RepairFile> [/logdir:<LogDirectory>]  
@@ -104,15 +104,15 @@ Repair a Drive:
         /sn:<StorageAccountName> [/sk:<StorageAccountKey> | /csas:<ContainerSas>]  
         [/CopyLogFile:<DriveCopyLogFile>] [/ManifestFile:<DriveManifestFile>]  
         [/PathMapFile:<DrivePathMapFile>]  
-  
+
 Preview an Export Job:  
     WAImportExport.exe PreviewExport  
         [/logdir:<LogDirectory>]  
         /sn:<StorageAccountName> [/sk:<StorageAccountKey> | /csas:<ContainerSas>]  
         /ExportBlobListFile:<ExportBlobListFile> /DriveSize:<DriveSize>  
-  
+
 Parameters:  
-  
+
     /j:<JournalFile>  
         - Required. Path to the journal file. Each drive must have one and only one  
           journal file. The journal file corresponding to the target drive must always  
@@ -213,32 +213,32 @@ Parameters:
         - Optional. To skip write process. Used for inplace data drive preparation.
           Be sure to reserve enough space (3 GB per 7TB) for drive manifest file!
 Examples:  
-  
+
     Copy a source directory to a drive:  
     WAImportExport.exe PrepImport  
         /j:9WM35C2V.jrn /id:session#1 /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GEL  
         xmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /t:x /format /encrypt /srcdir:d:\movi  
         es\drama /dstdir:movies/drama/  
-  
+
     Copy another directory to the same drive following the above command:  
     WAImportExport.exe PrepImport  
         /j:9WM35C2V.jrn /id:session#2 /srcdir:d:\movies\action /dstdir:movies/action/  
-  
+
     Copy another file to the same drive following the above commands:  
     WAImportExport.exe PrepImport  
         /j:9WM35C2V.jrn /id:session#3 /srcfile:d:\movies\dvd.vhd /dstblob:movies/dvd.vhd /BlobType:PageBlob  
-  
+
     Preview how many 1.5 TB drives are needed for an export job:  
     WAImportExport.exe PreviewExport  
         /sn:mytestaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7K  
         ysbbeKLDksg7VoN1W/a5UuM2zNgQ== /ExportBlobListFile:C:\temp\myexportbloblist.xml  
         /DriveSize:1.5TB  
-  
+
     Repair an finished import job:  
     WAImportExport.exe RepairImport  
         /r:9WM35C2V.rep /d:X:\ /bk:442926-020713-108086-436744-137335-435358-242242-2795  
         98 /sn:mytestaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94  
-        f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\temp\9WM35C2V_error.log 
+        f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\temp\9WM35C2V_error.log
 
     Skip write process, inplace data drive preparation:
     WAImportExport.exe PrepImport
@@ -246,7 +246,7 @@ Examples:
         xmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /t:d /encrypt /srcdir:d:\movi
         es\drama /dstdir:movies/drama/ /skipwrite
 ```  
-  
+
 ## <a name="next-steps"></a>Další kroky
 
 * [Příprava pevných disků pro úlohu importu](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   

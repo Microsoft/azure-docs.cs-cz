@@ -8,12 +8,12 @@ ms.author: jehollan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: ebc1d449cdb8702a984304e92697d4b7c778daaa
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e300bf9c9aa0acf0bed6426eb73f690f9a38bd74
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792902"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980428"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Vytvoření řídicího panelu pro streamování zákaznických přehledů pomocí Azure Logic Apps a Azure Functions
 
@@ -104,7 +104,7 @@ Chcete-li zobrazit předchozí historie spuštění v aplikaci Visual Studio neb
 
 ## <a name="create-automated-deployment-templates"></a>Vytvoření šablon pro automatické nasazení
 
-Po vytvoření řešení aplikace logiky můžete aplikaci zachytit a nasadit jako [šablonu Azure Resource Manager](../azure-resource-manager/template-deployment-overview.md) do jakékoli oblasti Azure na světě. Tuto možnost můžete použít jak pro úpravu parametrů pro vytváření různých verzí aplikace a pro integraci svého řešení do Azure Pipelines. Můžete také zahrnout Azure Functions do šablony nasazení, abyste mohli spravovat celé řešení se všemi závislostmi jako s jedinou šablonou. Naučte se [automatizovat nasazení aplikace logiky](logic-apps-azure-resource-manager-templates-overview.md).
+Po vytvoření řešení aplikace logiky můžete aplikaci zachytit a nasadit jako [šablonu Azure Resource Manager](../azure-resource-manager/templates/overview.md) do jakékoli oblasti Azure na světě. Tuto možnost můžete použít jak pro úpravu parametrů pro vytváření různých verzí aplikace a pro integraci svého řešení do Azure Pipelines. Můžete také zahrnout Azure Functions do šablony nasazení, abyste mohli spravovat celé řešení se všemi závislostmi jako s jedinou šablonou. Naučte se [automatizovat nasazení aplikace logiky](logic-apps-azure-resource-manager-templates-overview.md).
 
 Ukázkovou šablonu nasazení s funkcí Azure Functions najdete v [úložišti šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic).
 

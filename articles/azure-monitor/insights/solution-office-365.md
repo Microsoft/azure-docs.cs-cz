@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
-ms.openlocfilehash: aaa083ef52dcf18fade3315f598b5f57e791cbe0
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: b026ef7dbbe850f0d2d1cb67ec8ca93b14ef879a
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932975"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044905"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -106,7 +106,7 @@ ms.locfileid: "75932975"
 > 
 > ###   <a name="q-what-will-happen-on-march-30-do-i-need-to-offboard-beforehand"></a>Otázka: co se stane 30. března? Musím odpojení předem?
 > 
-> - Nebudete moci přijímat data z řešení **Office 365** a budou odebrána ze všech pracovních prostorů, kde jsou nainstalovány. Řešení už nebude dostupné na webu Marketplace.
+> - Nebudete moct přijímat data z řešení **Office 365** . Řešení už nebude dostupné na webu Marketplace.
 > - Pro zákazníky s Sentinelem v Azure se v řešení **Office 365** pro **SecurityInsights** pro Azure sentinel bude zahrnout řešení Log Analytics pracovního prostoru.
 > - Pokud vaše řešení neodpojení ručně, data se automaticky odpojí do 30. března.
 > 

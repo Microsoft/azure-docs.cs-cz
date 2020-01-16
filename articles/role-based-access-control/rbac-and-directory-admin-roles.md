@@ -15,12 +15,12 @@ ms.date: 10/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 8dbccdfdcf2a309c8324328f46336bab74839da4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1d0966737964c44fc4a6778cdb811a4ecc732ffc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357514"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979314"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Role klasického správce předplatného, role Azure RBAC a role správce Azure AD
 
@@ -81,7 +81,7 @@ Azure RBAC je systém autorizace založený na [Azure Resource Manageru](../azur
 
 Zbývající předdefinované role umožňují správu konkrétních prostředků Azure. Role [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) například uživateli umožňuje vytvářet a spravovat virtuální počítače. Seznam všech předdefinovaných rolí najdete v tématu [předdefinované role pro prostředky Azure](built-in-roles.md).
 
-Řízení přístupu na základě role (RBAC) podporují pouze portál Azure Portal a rozhraní API Azure Resource Manageru. Uživatelé, skupiny a aplikace s přiřazenými rolemi RBAC nemohou používat [rozhraní API modelu nasazení Azure Classic](../azure-resource-manager/resource-manager-deployment-model.md).
+Řízení přístupu na základě role (RBAC) podporují pouze portál Azure Portal a rozhraní API Azure Resource Manageru. Uživatelé, skupiny a aplikace s přiřazenými rolemi RBAC nemohou používat [rozhraní API modelu nasazení Azure Classic](../azure-resource-manager/management/deployment-models.md).
 
 Na portálu Azure Portal se přiřazení rolí pomocí RBAC zobrazují v okně **Řízení přístupu (IAM)** . Toto okno se dá najít v celém portálu, jako jsou skupiny pro správu, předplatná, skupiny prostředků a různé prostředky.
 

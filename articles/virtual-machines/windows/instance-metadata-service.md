@@ -1,10 +1,10 @@
 ---
 title: Instance Metadata Service Azure
-description: Rozhraní RESTful pro získání informací o výpočetní, síťové a nadcházející události údržby virtuálního počítače s Windows.
+description: Rozhraní RESTful pro získání informací o výpočetní, síťové a nadcházející události údržby virtuálních počítačů s Windows.
 services: virtual-machines-windows
 documentationcenter: ''
 author: KumariSupriya
-manager: harijayms
+manager: paulmey
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 901e075572e0ed73dc7d0633941311c04b4f3c1c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8849029f59ee4eef3baa43a6027022598e12d102
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358356"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045883"
 ---
 # <a name="azure-instance-metadata-service"></a>Služba metadat instance Azure
 
-Azure Instance Metadata Service poskytuje informace o spuštěných instancích virtuálních počítačů, které se dají použít ke správě a konfiguraci virtuálních počítačů.
-To zahrnuje informace, jako jsou SKU, konfigurace sítě a nadcházející události údržby. Další informace o tom, jaké typy informací jsou k dispozici, najdete v tématu [rozhraní API pro metadata](#metadata-apis).
+Služba Azure Instance Metadata Service (IMDS) poskytuje informace o aktuálně spuštěných instancích virtuálních počítačů a dá se použít ke správě a konfiguraci virtuálních počítačů.
+K dispozici jsou informace o SKU, konfiguraci sítě a nadcházejících událostech údržby. Úplný seznam dat, která jsou k dispozici, najdete v tématu [rozhraní API pro metadata](#metadata-apis).
 
 Instance Metadata Service Azure je koncový bod REST dostupný všem virtuálním počítačům s IaaS vytvořeným prostřednictvím [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/).
 Koncový bod je k dispozici na dobře známé IP adrese, která není směrovatelný (`169.254.169.254`), ke které se dá získat přístup jenom z virtuálního počítače.
@@ -38,14 +38,15 @@ Služba je dostupná v všeobecně dostupných oblastech Azure. Ne všechny verz
 
 Oblasti                                        | Dostupnosti?                                 | Podporované verze
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
-[Azure (Čína)](https://www.azure.cn/)                                                     | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
-[Azure Německo](https://azure.microsoft.com/overview/clouds/germany/)                    | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
+[Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
+[Azure China 21Vianet](https://www.azure.cn/)                                            | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
+[Azure Německo](https://azure.microsoft.com/overview/clouds/germany/)                    | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
 
-Tato tabulka je aktualizována, pokud jsou k dispozici aktualizace služby a nové podporované verze.
+Tato tabulka je aktualizována, pokud jsou k dispozici aktualizace služby nebo nové podporované verze.
 
 Pokud chcete vyzkoušet Instance Metadata Service, vytvořte virtuální počítač z [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) nebo [Azure Portal](https://portal.azure.com) ve výše uvedených oblastech a použijte následující příklady.
+Další příklady dotazů na IMDS najdete v tématu [ukázky metadat instance Azure](https://github.com/microsoft/azureimds) .
 
 ## <a name="usage"></a>Využití
 
@@ -130,7 +131,7 @@ Stavový kód HTTP | Důvod
 200 OK |
 400 Chybný požadavek | Chybějící záhlaví `Metadata: true` nebo chybějící formát při dotazování na uzel typu list
 404 – Nenalezeno | Požadovaný element neexistuje.
-Metoda 405 není povolená. | Jsou podporovány pouze požadavky `GET` a `POST`
+Metoda 405 není povolená. | Podporují se jenom `GET` požadavky.
 429 příliš mnoho požadavků | Rozhraní API aktuálně podporuje maximálně 5 dotazů za sekundu.
 Chyba služby 500     | Zkusit znovu za chvíli
 
@@ -191,7 +192,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interfac
 **Požadavek**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019-03-11"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019-06-01"
 ```
 
 **Odpověď**
@@ -204,30 +205,83 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
   "compute": {
     "azEnvironment": "AzurePublicCloud",
     "customData": "",
-    "location": "westus",
-    "name": "jubilee",
-    "offer": "Windows-10",
-    "osType": "Windows",
+    "location": "centralus",
+    "name": "negasonic",
+    "offer": "lampstack",
+    "osType": "Linux",
     "placementGroupId": "",
     "plan": {
-        "name": "",
-        "product": "",
-        "publisher": ""
+        "name": "5-6",
+        "product": "lampstack",
+        "publisher": "bitnami"
     },
-    "platformFaultDomain": "1",
-    "platformUpdateDomain": "1",
+    "platformFaultDomain": "0",
+    "platformUpdateDomain": "0",
     "provider": "Microsoft.Compute",
     "publicKeys": [],
-    "publisher": "MicrosoftWindowsDesktop",
+    "publisher": "bitnami",
     "resourceGroupName": "myrg",
     "resourceId": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.Compute/virtualMachines/negasonic",
-    "sku": "rs4-pro",
+    "sku": "5-6",
+    "storageProfile": {
+        "dataDisks": [
+          {
+            "caching": "None",
+            "createOption": "Empty",
+            "diskSizeGB": "1024",
+            "image": {
+              "uri": ""
+            },
+            "lun": "0",
+            "managedDisk": {
+              "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+              "storageAccountType": "Standard_LRS"
+            },
+            "name": "exampledatadiskname",
+            "vhd": {
+              "uri": ""
+            },
+            "writeAcceleratorEnabled": "false"
+          }
+        ],
+        "imageReference": {
+          "id": "",
+          "offer": "UbuntuServer",
+          "publisher": "Canonical",
+          "sku": "16.04.0-LTS",
+          "version": "latest"
+        },
+        "osDisk": {
+          "caching": "ReadWrite",
+          "createOption": "FromImage",
+          "diskSizeGB": "30",
+          "diffDiskSettings": {
+            "option": "Local"
+          },
+          "encryptionSettings": {
+            "enabled": "false"
+          },
+          "image": {
+            "uri": ""
+          },
+          "managedDisk": {
+            "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+            "storageAccountType": "Standard_LRS"
+          },
+          "name": "exampleosdiskname",
+          "osType": "Linux",
+          "vhd": {
+            "uri": ""
+          },
+          "writeAcceleratorEnabled": "false"
+        }
+    },
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-    "tags": "Department:IT;Environment:Prod;Role:WorkerRole",
-    "version": "17134.345.59",
+    "tags": "Department:IT;Environment:Test;Role:WebRole",
+    "version": "7.1.1902271506",
     "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
     "vmScaleSetName": "",
-    "vmSize": "Standard_D1",
+    "vmSize": "Standard_A1_v2",
     "zone": "1"
   },
   "network": {
@@ -264,14 +318,14 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
 Metadata instance lze v systému Windows načíst prostřednictvím `curl` programu:
 
 ```powershell
-curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2019-03-11 | select -ExpandProperty Content
+curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2019-06-01 | select -ExpandProperty Content
 ```
 
 Nebo pomocí rutiny `Invoke-RestMethod` PowerShellu:
 
 ```powershell
 
-Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2019-03-11 -Method get
+Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2019-06-01 -Method get
 ```
 
 **Odpověď**
@@ -284,31 +338,84 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
   "compute": {
     "azEnvironment": "AzurePublicCloud",
     "customData": "",
-    "location": "westus",
-    "name": "SQLTest",
-    "offer": "SQL2016SP1-WS2016",
-    "osType": "Windows",
+    "location": "centralus",
+    "name": "negasonic",
+    "offer": "lampstack",
+    "osType": "Linux",
     "placementGroupId": "",
     "plan": {
-        "name": "",
-        "product": "",
-        "publisher": ""
+        "name": "5-6",
+        "product": "lampstack",
+        "publisher": "bitnami"
     },
     "platformFaultDomain": "0",
     "platformUpdateDomain": "0",
     "provider": "Microsoft.Compute",
     "publicKeys": [],
-    "publisher": "MicrosoftSQLServer",
+    "publisher": "bitnami",
     "resourceGroupName": "myrg",
     "resourceId": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.Compute/virtualMachines/negasonic",
-    "sku": "Enterprise",
+    "sku": "5-6",
+    "storageProfile": {
+        "dataDisks": [
+          {
+            "caching": "None",
+            "createOption": "Empty",
+            "diskSizeGB": "1024",
+            "image": {
+              "uri": ""
+            },
+            "lun": "0",
+            "managedDisk": {
+              "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+              "storageAccountType": "Standard_LRS"
+            },
+            "name": "exampledatadiskname",
+            "vhd": {
+              "uri": ""
+            },
+            "writeAcceleratorEnabled": "false"
+          }
+        ],
+        "imageReference": {
+          "id": "",
+          "offer": "UbuntuServer",
+          "publisher": "Canonical",
+          "sku": "16.04.0-LTS",
+          "version": "latest"
+        },
+        "osDisk": {
+          "caching": "ReadWrite",
+          "createOption": "FromImage",
+          "diskSizeGB": "30",
+          "diffDiskSettings": {
+            "option": "Local"
+          },
+          "encryptionSettings": {
+            "enabled": "false"
+          },
+          "image": {
+            "uri": ""
+          },
+          "managedDisk": {
+            "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+            "storageAccountType": "Standard_LRS"
+          },
+          "name": "exampleosdiskname",
+          "osType": "Linux",
+          "vhd": {
+            "uri": ""
+          },
+          "writeAcceleratorEnabled": "false"
+        }
+    },
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
     "tags": "Department:IT;Environment:Test;Role:WebRole",
-    "version": "13.0.400110",
-    "vmId": "453945c8-3923-4366-b2d3-ea4c80e9b70e",
+    "version": "7.1.1902271506",
+    "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
     "vmScaleSetName": "",
-    "vmSize": "Standard_DS2",
-    "zone": ""
+    "vmSize": "Standard_A1_v2",
+    "zone": "1"
   },
   "network": {
     "interface": [
@@ -339,7 +446,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 
 ## <a name="metadata-apis"></a>Rozhraní API pro metadata
 
-#### <a name="the-following-apis-are-available-through-the-metadata-endpoint"></a>Prostřednictvím koncového bodu metadat jsou k dispozici následující rozhraní API:
+Prostřednictvím koncového bodu metadat jsou k dispozici následující rozhraní API:
 
 Data | Popis | Představená verze
 -----|-------------|-----------------------
@@ -349,7 +456,8 @@ instance | Viz [rozhraní API instance](#instance-api) | 2017-04-02
 scheduledevents | Viz [Scheduled Events](scheduled-events.md) | 2017-08-01
 
 #### <a name="instance-api"></a>Rozhraní API instance
-##### <a name="the-following-compute-categories-are-available-through-the-instance-api"></a>V rozhraní API instance jsou k dispozici následující výpočetní kategorie:
+
+V rozhraní API instance jsou k dispozici následující výpočetní kategorie:
 
 > [!NOTE]
 > Prostřednictvím koncového bodu metadat jsou k dispozici následující kategorie prostřednictvím instance/Compute.
@@ -357,7 +465,7 @@ scheduledevents | Viz [Scheduled Events](scheduled-events.md) | 2017-08-01
 Data | Popis | Představená verze
 -----|-------------|-----------------------
 azEnvironment | Prostředí Azure, ve kterém je spuštěný virtuální počítač | 2018-10-01
-customData | Zobrazit [vlastní data](#custom-data) | 2019-02-01
+customData | Tato funkce je teď zakázaná a my tuto dokumentaci aktualizujeme, až bude dostupná. | 2019-02-01
 location | Oblast Azure, ve které je spuštěný virtuální počítač | 2017-04-02
 jméno | Název virtuálního počítače | 2017-04-02
 offer | Informace o nabídce pro image virtuálního počítače a jsou k dispozici jenom pro Image nasazené z Galerie imagí Azure | 2017-04-02
@@ -372,16 +480,17 @@ publisher | Vydavatel image virtuálního počítače | 2017-04-02
 resourceGroupName | [Skupina prostředků](../../azure-resource-manager/management/overview.md) pro virtuální počítač | 2017-08-01
 resourceId | [Plně kvalifikované](https://docs.microsoft.com/rest/api/resources/resources/getbyid) ID prostředku | 2019-03-11
 skj | Konkrétní SKU pro bitovou kopii virtuálního počítače | 2017-04-02
+storageProfile | Viz [profil úložiště](#storage-profile) | 2019-06-01
 subscriptionId | Předplatné Azure pro virtuální počítač | 2017-08-01
-značek | [Značky](../../azure-resource-manager/resource-group-using-tags.md) pro virtuální počítač  | 2017-08-01
+značek | [Značky](../../azure-resource-manager/management/tag-resources.md) pro virtuální počítač  | 2017-08-01
 tagsList | Značky formátované jako pole JSON pro snazší programovou analýzu  | 2019-06-04
 version | Verze image virtuálního počítače | 2017-04-02
 vmId | [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač | 2017-04-02
-vmScaleSetName | [Název škálovací sady virtuálního počítače](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro sadu škálování virtuálního počítače | 2017-12-01
+vmScaleSetName | [Název sady škálování virtuálního počítače](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro sadu škálování virtuálního počítače | 2017-12-01
 vmSize | [Velikost virtuálního počítače](sizes.md) | 2017-04-02
 zóna | [Zóna dostupnosti](../../availability-zones/az-overview.md) virtuálního počítače | 2017-12-01
 
-##### <a name="the-following-network-categories-are-available-through-the-instance-api"></a>V rozhraní API instance jsou k dispozici následující kategorie sítě:
+V rozhraní API instance jsou k dispozici následující kategorie sítě:
 
 > [!NOTE]
 > Prostřednictvím koncového bodu metadat jsou k dispozici následující kategorie prostřednictvím instance/sítě/rozhraní.
@@ -397,7 +506,7 @@ macAddress | Adresa MAC virtuálního počítače | 2017-04-02
 
 ## <a name="attested-data"></a>Ověřená data
 
-Metadata instance reagují na koncovém bodu http na 169.254.169.254. Součástí scénáře, který obsluhuje Instance Metadata Service, je zajištění záruky, že data přicházející z Azure pocházejí. Tyto informace podepisujeme, aby image na webu Marketplace mohly mít jistotu, že se jedná o image běžící v Azure.
+Součástí scénáře, který obsluhuje Instance Metadata Service, je poskytnout záruky, že poskytnutá data přicházejí z Azure. Tyto informace podepisujeme, aby image na webu Marketplace mohly mít jistotu, že se jedná o image běžící v Azure.
 
 ### <a name="example-attested-data"></a>Příklad ověřených dat
 
@@ -412,7 +521,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/attested/document?api-ver
 ```
 
 Verze API-Version je povinné pole. Podporované verze rozhraní API najdete v [části dostupnost služby](#service-availability) .
-Hodnota nonce je nepovinný řetězec s deseti číslicemi. Hodnota nonce může být použita ke sledování požadavku a není-li zadána, v řetězci kódovaném odpovědí je vráceno aktuální časové razítko UTC.
+Hodnota nonce je nepovinný řetězec s deseti číslicemi. Pokud není zadán, vrátí IMDS aktuální časové razítko UTC na svém místě. Z důvodu mechanismu ukládání do mezipaměti IMDS může být vrácena hodnota náhodně v mezipaměti.
 
  **Odpověď**
 
@@ -425,7 +534,7 @@ Hodnota nonce je nepovinný řetězec s deseti číslicemi. Hodnota nonce může
 }
 ```
 
-> Objekt BLOB podpisu je verze dokumentu s podpisem [PKCS7](https://aka.ms/pkcs7) . Obsahuje certifikát použitý k podepsání spolu s podrobnostmi o virtuálním počítači, jako je například vmId, nonce, subscriptionId, časové razítko pro vytvoření a vypršení platnosti dokumentu a informace o plánu k imagi. Informace o plánu se naplní jenom pro image na místě na trhu Azure. Certifikát se dá extrahovat z odpovědi a použít k ověření, že odpověď je platná a přichází z Azure.
+Objekt BLOB podpisu je verze dokumentu s podpisem [PKCS7](https://aka.ms/pkcs7) . Obsahuje certifikát použitý k podepsání spolu s podrobnostmi o virtuálním počítači, jako je například vmId, SKU, nonce, subscriptionId, časové razítko pro vytvoření a vypršení platnosti dokumentu a informace o plánu obrázku. Informace o plánu se naplní jenom pro image na místě na trhu Azure. Certifikát se dá extrahovat z odpovědi a použít k ověření, že odpověď je platná a přichází z Azure.
 
 #### <a name="retrieving-attested-metadata-in-windows-virtual-machine"></a>Načítají se ověřená metadata ve virtuálním počítači s Windows.
 
@@ -444,7 +553,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI "http://169.254.169.254/met
 ```
 
 Verze API-Version je povinné pole. Podporované verze rozhraní API najdete v části dostupnost služby.
-Hodnota nonce je nepovinný řetězec s deseti číslicemi. Hodnota nonce může být použita ke sledování požadavku a není-li zadána, v řetězci kódovaném odpovědí je vráceno aktuální časové razítko UTC.
+Hodnota nonce je nepovinný řetězec s deseti číslicemi. Pokud není zadán, vrátí IMDS aktuální časové razítko UTC na svém místě. Z důvodu mechanismu ukládání do mezipaměti IMDS může být vrácena hodnota náhodně v mezipaměti.
 
  **Odpověď**
 
@@ -457,7 +566,7 @@ Hodnota nonce je nepovinný řetězec s deseti číslicemi. Hodnota nonce může
 }
 ```
 
-> Objekt BLOB podpisu je verze dokumentu s podpisem [PKCS7](https://aka.ms/pkcs7) . Obsahuje certifikát použitý k podepsání spolu s podrobnostmi o virtuálním počítači, jako je například vmId, nonce, subscriptionId, časové razítko pro vytvoření a vypršení platnosti dokumentu a informace o plánu k imagi. Informace o plánu se naplní jenom pro image na místě na trhu Azure. Certifikát se dá extrahovat z odpovědi a použít k ověření, že odpověď je platná a přichází z Azure.
+Objekt BLOB podpisu je verze dokumentu s podpisem [PKCS7](https://aka.ms/pkcs7) . Obsahuje certifikát použitý k podepsání spolu s podrobnostmi o virtuálním počítači, jako je například vmId, SKU, nonce, subscriptionId, časové razítko pro vytvoření a vypršení platnosti dokumentu a informace o plánu obrázku. Informace o plánu se naplní jenom pro image na místě na trhu Azure. Certifikát se dá extrahovat z odpovědi a použít k ověření, že odpověď je platná a přichází z Azure.
 
 
 ## <a name="example-scenarios-for-usage"></a>Příklady scénářů použití  
@@ -503,7 +612,7 @@ Jako poskytovatel služeb můžete obdržet volání podpory, kde byste chtěli 
 **Požadavek**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2017-08-01"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01"
 ```
 
 **Odpověď**
@@ -513,19 +622,86 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 
 ```json
 {
-  "compute": {
-    "location": "CentralUS",
-    "name": "IMDSCanary",
-    "offer": "RHEL",
+    "azEnvironment": "AzurePublicCloud",
+    "customData": "",
+    "location": "centralus",
+    "name": "negasonic",
+    "offer": "lampstack",
     "osType": "Linux",
+    "placementGroupId": "",
+    "plan": {
+        "name": "5-6",
+        "product": "lampstack",
+        "publisher": "bitnami"
+    },
     "platformFaultDomain": "0",
     "platformUpdateDomain": "0",
-    "publisher": "RedHat",
-    "sku": "7.2",
-    "version": "7.2.20161026",
-    "vmId": "5c08b38e-4d57-4c23-ac45-aca61037f084",
-    "vmSize": "Standard_DS2"
-  }
+    "provider": "Microsoft.Compute",
+    "publicKeys": [],
+    "publisher": "bitnami",
+    "resourceGroupName": "myrg",
+    "resourceId": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.Compute/virtualMachines/negasonic",
+    "sku": "5-6",
+    "storageProfile": {
+        "dataDisks": [
+          {
+            "caching": "None",
+            "createOption": "Empty",
+            "diskSizeGB": "1024",
+            "image": {
+              "uri": ""
+            },
+            "lun": "0",
+            "managedDisk": {
+              "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+              "storageAccountType": "Standard_LRS"
+            },
+            "name": "exampledatadiskname",
+            "vhd": {
+              "uri": ""
+            },
+            "writeAcceleratorEnabled": "false"
+          }
+        ],
+        "imageReference": {
+          "id": "",
+          "offer": "UbuntuServer",
+          "publisher": "Canonical",
+          "sku": "16.04.0-LTS",
+          "version": "latest"
+        },
+        "osDisk": {
+          "caching": "ReadWrite",
+          "createOption": "FromImage",
+          "diskSizeGB": "30",
+          "diffDiskSettings": {
+            "option": "Local"
+          },
+          "encryptionSettings": {
+            "enabled": "false"
+          },
+          "image": {
+            "uri": ""
+          },
+          "managedDisk": {
+            "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+            "storageAccountType": "Standard_LRS"
+          },
+          "name": "exampleosdiskname",
+          "osType": "Linux",
+          "vhd": {
+            "uri": ""
+          },
+          "writeAcceleratorEnabled": "false"
+        }
+    },
+    "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+    "tags": "Department:IT;Environment:Test;Role:WebRole",
+    "version": "7.1.1902271506",
+    "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
+    "vmScaleSetName": "",
+    "vmSize": "Standard_A1_v2",
+    "zone": "1"
 }
 ```
 
@@ -549,7 +725,7 @@ Níže jsou uvedené oblasti a hodnoty prostředí Azure.
 ---------|-----------------
 [Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
-[Azure (Čína)](https://azure.microsoft.com/global-infrastructure/china)                   | AzureChinaCloud
+[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china)          | AzureChinaCloud
 [Azure Německo](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
 ### <a name="getting-the-tags-for-the-vm"></a>Získávání značek pro virtuální počítač
@@ -637,7 +813,8 @@ Verification successful
     "expiresOn":"11/28/18 06:16:17 -0000"
   },
 "vmId":"d3e0e374-fda6-4649-bbc9-7f20dc379f34",
-"subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
+"subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+"sku": "RS3-Pro"
 }
 ```
 
@@ -645,10 +822,11 @@ Data | Popis
 -----|------------
 nonce | Uživatel zadal nepovinný řetězec s požadavkem. Pokud se v požadavku nezadala hodnota nonce, vrátí se aktuální časové razítko UTC.
 plánování | [Naplánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) virtuálního počítače v tomto Azure Marketplace imagi obsahuje název, produkt a vydavatele.
-časové razítko/createdOn | Časové razítko, ve kterém byl vytvořen první podepsaný dokument
-časové razítko/expiresOn | Časové razítko, na kterém vyprší platnost podepsaného dokumentu
+časové razítko/createdOn | Časové razítko UTC, na kterém byl vytvořen první podepsaný dokument
+časové razítko/expiresOn | Časové razítko UTC, na kterém vyprší platnost podepsaného dokumentu
 vmId |  [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač
 subscriptionId | Předplatné Azure pro virtuální počítač, které jste zavedli v `2019-04-30`
+skj | Konkrétní SKU pro bitovou kopii virtuálního počítače, představená v `2019-11-01`
 
 #### <a name="verifying-the-signature"></a>Ověření podpisu
 
@@ -661,7 +839,7 @@ Jakmile získáte podpis výše, můžete ověřit, že signatura pochází od M
 ---------|-----------------
 [Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | metadata.azure.com
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us
-[Azure (Čína)](https://azure.microsoft.com/global-infrastructure/china/)                  | metadata.azure.cn
+[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | metadata.azure.cn
 [Azure Německo](https://azure.microsoft.com/overview/clouds/germany/)                    | metadata.microsoftazure.de
 
 ```bash
@@ -725,35 +903,120 @@ Network Destination        Netmask          Gateway       Interface  Metric
 route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 ```
 
-### <a name="custom-data"></a>Vlastní data
-Instance Metadata Service poskytuje virtuálnímu počítači možnost přístupu k vlastním datům. Binární data musí být menší než 64 KB a k virtuálnímu počítači se poskytuje ve formě kódované v kódování Base64.
+### <a name="storage-profile"></a>Profil úložiště
 
-Vlastní data Azure je možné do virtuálního počítače vložit přes rozhraní REST API, rutiny PowerShellu, rozhraní příkazového řádku Azure (CLI) nebo šablonu ARM.
+Instance Metadata Service může poskytnout podrobnosti o discích úložiště přidružených k virtuálnímu počítači. Tato data najdete na koncovém bodu instance/výpočty/storageProfile.
 
-Příklad rozhraní příkazového řádku Azure najdete v tématu [vlastní data a Cloud-init na Microsoft Azure](https://azure.microsoft.com/blog/custom-data-and-cloud-init-on-windows-azure/).
+Profil úložiště virtuálního počítače se dělí na tři kategorie – odkaz na image, disk s operačním systémem a datové disky.
 
-Příklad šablony ARM najdete v tématu [nasazení virtuálního počítače s CustomData](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
+Objekt odkazu na bitovou kopii obsahuje následující informace o imagi operačního systému:
 
-Vlastní data jsou k dispozici pro všechny procesy běžící na virtuálním počítači. Je doporučeno, aby zákazníci nevložili tajné informace do vlastních dat.
+Data    | Popis
+--------|-----------------
+id      | ID prostředku
+offer   | Nabídka platformy nebo Image Marketplace
+publisher | Vydavatel obrázku
+skj     | SKU image
+version | Verze image platformy nebo webu Marketplace
 
-V současné době je zaručeno, že vlastní data budou k dispozici při zavádění virtuálního počítače. Pokud se na virtuální počítač provedou aktualizace, jako je například přidání disků nebo změna velikosti virtuálního počítače, Instance Metadata Service nebude poskytovat vlastní data. Trvalé poskytování vlastních dat prostřednictvím Instance Metadata Service právě probíhá.
+Objekt disku operačního systému obsahuje následující informace o disku s operačním systémem, který používá virtuální počítač:
 
-#### <a name="retrieving-custom-data-in-virtual-machine"></a>Načítají se vlastní data na virtuálním počítači.
-Instance Metadata Service poskytuje virtuálnímu počítači vlastní data ve formě kódované v kódování Base64. Následující příklad Dekóduje řetězec kódovaný v kódování Base64.
+Data    | Popis
+--------|-----------------
+ukládání do mezipaměti | Požadavky na ukládání do mezipaměti
+createOption | Informace o tom, jak byl virtuální počítač vytvořen
+diffDiskSettings | Nastavení dočasného disku
+diskSizeGB | Velikost disku v GB
+image   | Virtuální pevný disk zdrojové image uživatele
+(     | Logické číslo jednotky disku
+managedDisk | Parametry spravovaného disku
+jméno    | Název disku
+virtuálního     | Virtuální pevný disk
+writeAcceleratorEnabled | Bez ohledu na to, jestli je na disku povolená writeAccelerator
 
-> [!NOTE]
-> Vlastní data v tomto příkladu se interpretují jako řetězec ASCII, který čte "moje vlastní data".
+Pole datových disků obsahuje seznam datových disků připojených k virtuálnímu počítači. Každý objekt datového disku obsahuje následující informace:
+
+Data    | Popis
+--------|-----------------
+ukládání do mezipaměti | Požadavky na ukládání do mezipaměti
+createOption | Informace o tom, jak byl virtuální počítač vytvořen
+diffDiskSettings | Nastavení dočasného disku
+diskSizeGB | Velikost disku v GB
+encryptionSettings | Nastavení šifrování disku
+image   | Virtuální pevný disk zdrojové image uživatele
+managedDisk | Parametry spravovaného disku
+jméno    | Název disku
+osType  | Typ operačního systému zahrnutý na disku
+virtuálního     | Virtuální pevný disk
+writeAcceleratorEnabled | Bez ohledu na to, jestli je na disku povolená writeAccelerator
+
+Následuje příklad, jak zadat dotaz na informace o úložišti virtuálního počítače.
 
 **Požadavek**
 
 ```bash
-curl -H "Metadata:true" "http://169.254.169.254/metadata/instance/compute/customData?api-version=2019-02-01&&format=text" | base64 --decode
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01"
 ```
 
 **Odpověď**
 
-```text
-My custom data.
+> [!NOTE]
+> Odpověď je řetězec JSON. Následující příklad odpovědi je poměrně vytištěn z důvodu čitelnosti.
+
+```json
+{
+    "dataDisks": [
+      {
+        "caching": "None",
+        "createOption": "Empty",
+        "diskSizeGB": "1024",
+        "image": {
+          "uri": ""
+        },
+        "lun": "0",
+        "managedDisk": {
+          "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+          "storageAccountType": "Standard_LRS"
+        },
+        "name": "exampledatadiskname",
+        "vhd": {
+          "uri": ""
+        },
+        "writeAcceleratorEnabled": "false"
+      }
+    ],
+    "imageReference": {
+      "id": "",
+      "offer": "UbuntuServer",
+      "publisher": "Canonical",
+      "sku": "16.04.0-LTS",
+      "version": "latest"
+    },
+    "osDisk": {
+      "caching": "ReadWrite",
+      "createOption": "FromImage",
+      "diskSizeGB": "30",
+      "diffDiskSettings": {
+        "option": "Local"
+      },
+      "encryptionSettings": {
+        "enabled": "false"
+      },
+      "image": {
+        "uri": ""
+      },
+      "managedDisk": {
+        "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+        "storageAccountType": "Standard_LRS"
+      },
+      "name": "exampleosdiskname",
+      "osType": "Linux",
+      "vhd": {
+        "uri": ""
+      },
+      "writeAcceleratorEnabled": "false"
+    }
+}
 ```
 
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Příklady volání služby metadat pomocí různých jazyků v rámci virtuálního počítače 
@@ -780,9 +1043,9 @@ Puppet | https://github.com/keirans/azuremetadata
 2. Proč mi nezískávám výpočetní informace pro svůj virtuální počítač?
    * V současné době Instance Metadata Service podporuje jenom instance vytvořené pomocí Azure Resource Manager. V budoucnu se může přidat podpora virtuálních počítačů cloudových služeb.
 3. Tento virtuální počítač jsem vytvořil přes Azure Resource Manager a během zálohování. Proč se mi nezobrazuje informace o metadatech COMPUTE?
-   * Pro všechny virtuální počítače vytvořené po SEP 2016 přidejte [značku](../../azure-resource-manager/resource-group-using-tags.md) , která začne zobrazovat metadata Compute. Pro starší virtuální počítače (vytvořené před SEP 2016) přidejte nebo odeberte rozšíření nebo datové disky k virtuálnímu počítači, aby se metadata aktualizovala.
+   * Pro všechny virtuální počítače vytvořené po SEP 2016 přidejte [značku](../../azure-resource-manager/management/tag-resources.md) , která začne zobrazovat metadata Compute. Pro starší virtuální počítače (vytvořené před SEP 2016) přidejte nebo odeberte rozšíření nebo datové disky k virtuálnímu počítači, aby se metadata aktualizovala.
 4. Nezobrazuje se všechna data naplněná pro novou verzi
-   * Pro všechny virtuální počítače vytvořené po SEP 2016 přidejte [značku](../../azure-resource-manager/resource-group-using-tags.md) , která začne zobrazovat metadata Compute. Pro starší virtuální počítače (vytvořené před SEP 2016) přidejte nebo odeberte rozšíření nebo datové disky k virtuálnímu počítači, aby se metadata aktualizovala.
+   * Pro všechny virtuální počítače vytvořené po SEP 2016 přidejte [značku](../../azure-resource-manager/management/tag-resources.md) , která začne zobrazovat metadata Compute. Pro starší virtuální počítače (vytvořené před SEP 2016) přidejte nebo odeberte rozšíření nebo datové disky k virtuálnímu počítači, aby se metadata aktualizovala.
 5. Proč se mi zobrazuje chyba `500 Internal Server Error`?
    * Opakujte požadavek na základě exponenciálního systému. Pokud se problém nevyřeší, obraťte se na podporu Azure.
 6. Kde můžu sdílet další otázky a komentáře?

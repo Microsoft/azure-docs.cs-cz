@@ -1,14 +1,14 @@
 ---
 title: Zobrazení aktivity poskytovatele služeb
 description: Zákazníci si můžou zobrazit protokolované aktivity a zobrazit akce provedené poskytovateli služeb prostřednictvím delegované správy prostředků Azure.
-ms.date: 12/6/2019
+ms.date: 01/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 31a9e7ff80623cc59b0a2db5951dff95d3088b05
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: de149bddb6917a63d91b1890c0430f64465cb40c
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749175"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046108"
 ---
 # <a name="view-service-provider-activity"></a>Zobrazení aktivity poskytovatele služeb
 
@@ -24,6 +24,9 @@ Zákazníci, kteří mají delegované předplatné pro správu delegovaných pr
 V protokolu aktivit uvidíte název operace a její stav spolu s datem a časem, kdy byla provedena. **Událost iniciovaná ve** sloupci zobrazuje, který uživatel provedl operaci, ať už se jedná o uživatele v tenantovi poskytovatele služeb, který působí prostřednictvím správy delegovaných prostředků Azure, nebo uživatel ve vlastním tenantovi zákazníka. Všimněte si, že se zobrazuje jméno uživatele, nikoli tenant nebo role, které uživatel přiřadil k tomuto předplatnému.
 
 Protokolovaná aktivita je v Azure Portal k dispozici po dobu posledních 90 dnů. Informace o tom, jak ukládat tato data déle než 90 dní, najdete v tématu [shromáždění a analýza protokolů aktivit Azure v Log Analytics pracovním prostoru v Azure monitor](../../azure-monitor/platform/activity-log-collect.md)
+
+> [!NOTE]
+> Uživatelé od poskytovatele služeb se zobrazí v protokolu aktivit, ale tito uživatelé a jejich přiřazení rolí se v **Access Control (IAM)** nezobrazuje ani při načítání informací o přiřazení rolí přes rozhraní API.
 
 ## <a name="set-alerts-for-critical-operations"></a>Nastavení výstrah pro kritické operace
 

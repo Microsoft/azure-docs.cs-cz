@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7bc44d8e755af3d212d616425c6a1fd925172298
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5aa9a4f0ab536c197f08cb64a5cee8280c23039f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65602936"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982060"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Vytvoření funkcí pro data v SQL Serveru pomocí jazyka SQL a Pythonu
 Tento dokument ukazuje, jak generovat funkcí pro data uložená v virtuálního počítače s SQL serverem v Azure, který pomůže algoritmy, Učte se od data efektivněji. K provedení této úlohy můžete použít SQL nebo programovací jazyk, jako je Python. Oba přístupy jsou zde popsané.
@@ -31,7 +31,7 @@ Tato úloha je nějaký krok [vědecké zpracování týmových dat (TDSP)](http
 ## <a name="prerequisites"></a>Požadavky
 Tento článek předpokládá, že máte:
 
-* Vytvoření účtu služby Azure storage. Pokud potřebujete pokyny, přečtěte si [vytvoření účtu služby Azure Storage](../../storage/common/storage-quickstart-create-account.md)
+* Vytvoření účtu služby Azure storage. Pokud potřebujete pokyny, přečtěte si [vytvoření účtu služby Azure Storage](../../storage/common/storage-account-create.md)
 * Vaše data uložená na SQL serveru. Pokud ne, najdete v článku [přesun dat do služby Azure SQL Database pro Azure Machine Learning](move-sql-azure.md) pokyny o tom, jak přesunout data.
 
 ## <a name="sql-featuregen"></a>Funkce generování pomocí jazyka SQL
@@ -68,7 +68,7 @@ Tady je stručný úvod do data o poloze zeměpisnou šířkou/délkou (zdroje z
 * Znaménko označuje Určuje, zda se sever nebo – Jih, východní nebo – západ na celém světě.
 * Nenulový stovky číslice znamená zeměpisnou délku, ne zeměpisná šířka se používá.
 * Desítkami číslic poskytuje schopen přibližně 1 000 kilometrů. Poskytuje užitečné informace o jaké kontinentu nebo se na oceánských.
-* Jednotky číslice (jednu míru decimal) poskytuje pozici 111 kilometrů (60 mílové, asi 69 mil). Znamená to, zhruba, jaké velké stavu nebo se v zemi nebo oblast.
+* Jednotky číslice (jednu míru decimal) poskytuje pozici 111 kilometrů (60 mílové, asi 69 mil). Indikuje zhruba, jaký velký stav nebo země nebo oblast tam máme.
 * Na jedno desetinné místo stojí až 11.1 km: ho odlišili pozice jedno město velké ze sousedních město velké.
 * Druhé desetinné stojí až 1.1 km: ho jeden vesnice nezávislá na další.
 * Můžete identifikovat velké zemědělská pole nebo institucionální campus které stojí za to, až 110 m: je třetí desetinné čárky.

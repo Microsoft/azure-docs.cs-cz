@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
-ms.openlocfilehash: 6cde620b4949da8a6cff4ad89a863c80f0514f1c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ade29318fdd1510d03ddd208534258a30b256e98
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792404"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979377"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Ověří XML pomocí schémat v Azure Logic Apps s Enterprise Integration Pack
 
@@ -21,7 +21,7 @@ Pokud chcete ověřit, že dokumenty používají platný kód XML a mají oček
 
 Omezení související s integračními účty a artefakty, jako jsou schémata, najdete v tématu [omezení a informace o konfiguraci pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné nemáte, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>.
 
@@ -31,7 +31,7 @@ Omezení související s integračními účty a artefakty, jako jsou schémata,
   Pokud chcete toto schéma přidat do účtu pro integraci, můžete ho propojit s účtem úložiště z účtu pro integraci. 
   Pro tuto úlohu se tady zobrazí položky, které potřebujete: 
 
-  * [Účet služby Azure Storage](../storage/common/storage-account-overview.md) , kde vytvoříte kontejner objektů BLOB pro vaše schéma. Naučte se [vytvořit účet úložiště](../storage/common/storage-quickstart-create-account.md). 
+  * [Účet služby Azure Storage](../storage/common/storage-account-overview.md) , kde vytvoříte kontejner objektů BLOB pro vaše schéma. Naučte se [vytvořit účet úložiště](../storage/common/storage-account-create.md). 
 
   * Kontejner objektů BLOB pro ukládání schématu Přečtěte si, jak [vytvořit kontejner objektů BLOB](../storage/blobs/storage-quickstart-blobs-portal.md). 
   Identifikátor URI obsahu kontejneru budete potřebovat později při přidávání schématu do účtu pro integraci.

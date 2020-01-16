@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 1df30b25d2029ba31525eaea232d258bbb134366
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/13/2020
+ms.openlocfilehash: c39f41af8ed2f1e25064324c0e1da4a6603face8
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863801"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045549"
 ---
 # <a name="create-a-new-saas-offer"></a>Vytvořit novou nabídku SaaS
 
@@ -167,7 +167,7 @@ Po dokončení těchto polí vyberte **Uložit** .
 
 ### <a name="category"></a>Kategorie
 
-Vyberte minimálně jednu (1) a maximálně tři (3) kategorie použité pro seskupení nabídek do příslušných oblastí hledání na webu Marketplace. Zavolejte prosím, jak vaše nabídka podporuje tyto kategorie v popisu nabídky. 
+Vyberte minimálně jednu (1) a maximálně tři (3) kategorie použité pro seskupení nabídek do příslušných oblastí hledání na webu Marketplace. Zavolejte, jak vaše nabídka podporuje tyto kategorie v popisu nabídky.
 
 ### <a name="industry"></a>Odvětví
 
@@ -175,7 +175,7 @@ Vyberte minimálně jednu (1) a maximálně tři (3) kategorie použité pro ses
 
 ### <a name="app-version"></a>verze aplikace
 
-Toto je volitelné pole, které se používá na webu AppSource Marketplace k identifikaci čísla verze vaší nabídky.
+Toto pole je volitelné a používá se na webu AppSource Marketplace k identifikaci čísla verze vaší nabídky.
 
 ### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Smlouva standard pro komerční tržiště Microsoftu
 
@@ -204,12 +204,12 @@ K dispozici jsou dva druhy změn pro komerční vydavatele na webu Marketplace:
 >[!NOTE]
 > Tyto dva typy změn zásobníků jsou navzájem navzájem. Zákazníci, na které cílíte vlastní změny, získají při nákupu také univerzální změnu standardní smlouvy.
 
-**Univerzální pozměňovací výrazy ke standardní smlouvě pro komerční tržiště Microsoftu**: do tohoto pole zadejte univerzální výrazy pro změnu. Pro každou nabídku můžete zadat jednu univerzální změnu. Do tohoto pole můžete zadat neomezený počet znaků. Ty se zobrazí zákazníkům v AppSource, Azure Marketplace a/nebo Azure Portal během toku zjišťování a nákupu.
+**Univerzální pozměňovací výrazy ke standardní smlouvě pro komerční tržiště Microsoftu**: do tohoto pole zadejte univerzální výrazy pro změnu. Pro každou nabídku můžete zadat jednu univerzální změnu. Do tohoto pole můžete zadat neomezený počet znaků. Tyto výrazy se zobrazí zákazníkům v AppSource, Azure Marketplace a/nebo Azure Portal během procesu zjišťování a nákupu.
 
 **Vlastní výrazy pro změny standardní smlouvy pro komerční tržiště Microsoftu**: Začněte tím, že vyberete **Přidat vlastní výrazy pro změnu**. Pro každou nabídku můžete zadat až 10 vlastních podmínek pro změnu.
 
 - **Vlastní výrazy pro změnu**: do pole vlastní výrazy pro změnu zadejte vlastní vlastní údaje. Do tohoto pole můžete zadat neomezený počet znaků. Pouze zákazníkům z ID tenanta, které zadáte pro tyto vlastní výrazy, se zobrazí vlastní výrazy změny v toku nákupu nabídky v Azure Portal.  
-- **ID klientů** (povinné): každé vlastní změně může být až 20 ID klientů. Pokud přidáte vlastní změnu, musíte zadat aspoň jedno ID tenanta. ID tenanta identifikuje zákazníka v Azure. U zákazníka můžete požádat o toto ID a získat ho tak, že přejdete na portal.azure.com > Azure Active Directory > Vlastnosti. Hodnota ID adresáře je ID tenanta (např. 50c464d3-4930-494c-963c-1e951d15360e). ID tenanta organizace zákazníka můžete také vyhledat pomocí adresy URL svého názvu domény v umístění [moje Microsoft Azure a ID tenanta Office 365?](https://www.whatismytenantid.com).
+- **ID klientů** (povinné): každé vlastní změně může být až 20 ID klientů. Pokud přidáte vlastní změnu, musíte zadat aspoň jedno ID tenanta. ID tenanta identifikuje zákazníka v Azure. U zákazníka můžete požádat o toto ID a získat ho tak, že přejdete na portal.azure.com > Azure Active Directory > Vlastnosti. Hodnota ID adresáře je ID tenanta (například 50c464d3-4930-494c-963c-1e951d15360e). ID tenanta organizace zákazníka můžete také vyhledat pomocí adresy URL svého názvu domény v umístění [moje Microsoft Azure a ID tenanta Office 365?](https://www.whatismytenantid.com).
 - **Popis** (volitelné): Volitelně můžete zadat popis ID tenanta, který vám pomůže identifikovat zákazníka, kterému cílíte na změnu.
 
 #### <a name="terms-and-conditions"></a>Podmínky a ujednání
@@ -231,7 +231,7 @@ Karta seznam nabídek zobrazuje jazyky (a trhy), kde je vaše nabídka dostupná
 
 Zadejte podrobnosti, které se mají zobrazit na webu Marketplace, včetně popisů vaší nabídky a marketingových prostředků.
 
-- **Název** (povinné): zde definovaný název se zobrazí jako název vaší nabídky na webu Marketplace, který jste zvolili. Název je předem vyplněný na základě vaší předchozí **nové položky nabídky** .  To může být ochranné známky.  Nesmí obsahovat Emoji (Pokud se nejedná o symboly ochranné známky a copyrightu) a musí být omezeny na 50 znaků.
+- **Název** (povinné): zde definovaný název se zobrazí jako název vaší nabídky na webu Marketplace, který jste zvolili. Název je předem vyplněný na základě vaší předchozí **nové položky nabídky** . Název může být ve vaší společnosti. Nemůže obsahovat Emoji (Pokud se nejedná o symboly ochranné známky a copyrightu) a musí být omezený na 50 znaků.
 - **Souhrn** (povinné): zadejte krátký popis nabídky, která se má použít ve výsledcích hledání seznamů Marketplace. Do tohoto pole lze zadat až 100 znaků textu.
 - **Popis** (povinné): zadejte popis nabídky, která se má zobrazit v seznamech Marketplace. Vezměte v úvahu zahrnutí hodnot do kategorií, klíčových výhod, jakékoli kategorie nebo přidružení oboru, možností nákupu v aplikaci, všech potřebných zveřejnění a odkazu na Další informace.
 Do tohoto pole lze zadat až 3 000 znaků textu. Další tipy najdete v článku o [zápisu skvělého popisu aplikace](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
@@ -240,7 +240,7 @@ Do tohoto pole lze zadat až 3 000 znaků textu. Další tipy najdete v článku
 
 #### <a name="description"></a>**Popis**
 
-Toto pole je povinné. Položky, které se mají zahrnout do popisu:
+Toto pole je povinné. Položky, které se mají zahrnout do **popisu**:
 
 * Jasně popište, jak se má v prvních několika větách popisu v této nabídce vyhodnotit.  
 * Mějte na paměti, že ve výsledcích vyhledávacího modulu se může zobrazit několik prvních vět.  
@@ -253,76 +253,28 @@ Základní komponenty pro vaši polohu hodnoty by měly obsahovat následující
 * Typ uživatele, který je z produktu přínosný
 * Zákaznické potřeby nebo bolesti adres produktů.
 
-Aby bylo možné podrobnější popis nabídky, můžete k formátování popisu použít značky HTML.
+Chcete-li podrobnější **Popis** nabídky, použijte Editor formátovaného textu k formátování popisu.
 
-1. Pokud chcete vytvořit odstavce, přidejte `<p>` do BEGGING textu a přidejte `</p>` na konci.
+![Použití editoru textu ve formátu RTF](./media/text-editor2.png)
 
-    **Příklad**:
+Pomocí následujících pokynů můžete použít Editor formátovaného textu:
 
-    `<p>` Toto je můj první odstavec. `</p>` <br>
-    `<p>` se jedná o můj druhý odstavec. `</p>` <br>
+- Chcete-li změnit formát obsahu, zvýrazněte text, který chcete formátovat, a vyberte styl textu, jak je znázorněno níže:
 
-    Výše uvedená by vypadala takto:
+     ![Změna formátu textu pomocí editoru formátovaného textu](./media/text-editor3.png)
 
-    <p> Toto je můj první odstavec. </p>
-    <p> Toto je můj druhý odstavec. </p>
+- Chcete-li do textu přidat seznam s odrážkami nebo číslovaného seznamu, použijte následující možnosti:
 
-1. Chcete-li přidat **seznam položek s odrážkami**, umístěte text do značky `<li>` níže. V rámci značky `<ul>` a `</ul>` můžete kopírovat a vkládat další položky s odrážkami (položky mezi `<li>` a `</li>` značky). Ujistěte se, že jste přidali `<ul></ul>`.
+     ![Přidávání seznamů pomocí editoru formátovaného textu](./media/text-editor4.png)
 
-    **Příklad**:
+- Chcete-li přidat nebo odebrat odsazení textu, použijte následující možnosti:
 
-    ```
-    <ul> 
-        <li>add text here</li>
-        <li> add text here </li>
-        <li> add text here </li>
-    </ul>
-    ```
-
-    Výše uvedená by vypadala takto:
-    <ul> 
-        <li>sem přidejte text</li>
-        <li> sem přidejte text </li>
-        <li> sem přidejte text </li>
-    </ul> 
-
-1. Do **tučného** obsahu přidejte `<b>` na začátku textu, který chcete formátovat tučně, a přidejte `</b>` na konci textu, který chcete tučně zadat.
-
-    **Příklad**: `<b>` bezplatné zkušební `</b>`
-    
-    Výše uvedená by způsobila, že se slova bezplatné zkušební verze budou zobrazovat tučně v popisu nabídky v prezentace.
-
-    **BEZPLATNÁ ZKUŠEBNÍ VERZE**
-
-1. Chcete-li přidat **zalomení řádků** mezi vaším obsahem, přidejte `<br>` před obsah, který chcete spustit na novém řádku. Pokud chcete opustit mezeru a ujistit se, že obsah začíná na novém řádku, přidejte `<br><br>` před obsah.
-
-    **Příklad**:
-
-    Toto je textový řádek. `<br>` je to textový řádek, který začne na novém řádku. `<br><br>` se jedná o řádek, který spustí dva řádky níže.
-
-    Výše uvedená by vypadala takto:
-
-    Toto je textový řádek. <br> Toto je textový řádek, který začne na novém řádku. <br><br> Jedná se o řádek, který spustí dva řádky níže.
-
-1. Chcete-li **zvětšit velikost textu**, vyberte nejprve, jak velký má být text. Použijte níže uvedené příklady. Po výběru velikosti textu přidejte odpovídající značky `<H*></H*>` na začátek a konec textu.
-
-    **Příklad**:
-
-    `<h1>`je to nadpis 1`</h1>` <br>
-    `<h2>`je to Nadpis 2`</h2>` <br>
-    `<h3>`se jedná o Nadpis 3`</h3>` <br>
-    `<h4>`se jedná o nadpis 4`</h4>` <br>
-    `<h5>`je to nadpis 5`</h5>` <br>
-    `<h6>`je to nadpis 6`</h6>` 
-
-    Výše uvedená by vypadala takto:
-
-    ![Ukázkové nadpisy](./media/heading.png)
+     ![Použití editoru formátovaného textu k odsazení](./media/text-editor5.png)
 
 #### <a name="links"></a>Odkazy
 
 - **Zásady ochrany osobních údajů** (povinné): Připojte se k zásadám ochrany osobních údajů vaší organizace. Zodpovídáte za to, že vaše aplikace vyhovuje předpisům a zákonům o ochraně osobních údajů a poskytuje platné zásady ochrany osobních údajů.
-- **Marketingové materiály programu CSP** (volitelné): je nutné zadat odkaz na marketingové materiály, pokud zvolíte možnost rozšiřování nabídky do programu [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) . CSP rozšiřuje vaši nabídku na širší škálu kvalifikovaných zákazníků tím, že umožňuje partnerům CSP, aby si mohli seskupit, uvádět na trh a prodávat vaše nabídky. Tito prodejci budou potřebovat přístup k materiálům pro účely marketingu vaší nabídky. Další informace najdete v tématu [služby pro uvedení na trh](https://partner.microsoft.com/reach-customers/gtm).
+- **Marketingové materiály programu CSP** (volitelné): zadejte odkaz na marketingové materiály, pokud se rozhodnete tuto nabídku rozšíříte do programu [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) . CSP rozšiřuje vaši nabídku na širší škálu kvalifikovaných zákazníků tím, že umožňuje partnerům CSP, aby si mohli seskupit, uvádět na trh a prodávat vaše nabídky. Tito prodejci budou potřebovat přístup k materiálům pro účely marketingu vaší nabídky. Další informace najdete v tématu [služby pro uvedení na trh](https://partner.microsoft.com/reach-customers/gtm).
 - **Užitečné odkazy** (volitelné): volitelné doplňující online dokumenty týkající se vaší aplikace nebo související služby uvedené zadáním **názvu** a **adresy URL**. Přidejte další užitečné odkazy kliknutím na **+ Přidat adresu URL**.
 
 #### <a name="contact-information"></a>Kontaktní informace
@@ -353,7 +305,7 @@ Nezapomeňte **Uložit** před přechodem k další části.
 Karta **Náhled** umožňuje definovat **skupinu omezené verze Preview** pro uvolnění vaší nabídky před publikováním vaší nabídky do širší cílové skupiny na webu Marketplace.
 
 > [!IMPORTANT]
-> Před tím, než se vaše nabídka po kontrole ve verzi Preview vrátí do veřejné skupiny Marketplace, musíte vybrat možnost **Přejít na aktivní** .
+> Po kontrole nabídky ve verzi Preview vyberte možnost **začít živě** , aby bylo možné vaši nabídku publikovat živě pro veřejnou cílovou skupinu na webu Marketplace.
 
 - **Definovat cílovou skupinu Preview: přidejte jeden e-mailový účet AAD/MSA na každý řádek a volitelně také popis.**
 
@@ -368,11 +320,11 @@ Karta **Technická konfigurace** definuje technické podrobnosti (cesta URL, Web
 
 - **Adresa URL cílové stránky** (povinné): Definujte adresu URL webu, na kterou budou zákazníci zakládat vaši nabídku na webu Marketplace. Tato adresa URL bude koncovým bodem, který obdrží token při směrování zákazníka na stránku. Tento token se dá vyměňovat pro podrobnosti zřizování pomocí řešení v rozhraních API pro plnění. Tyto podrobnosti a všechny ostatní, které shromažďujete, se dají použít jako součást interaktivní webové stránky zákazníka integrované v rámci vašeho prostředí k dokončení registrace a aktivaci jejich nákupu.
 
-- **Webhook připojení** (povinné): pro všechny asynchronní události, které Microsoft potřebuje poslat jménem zákazníka (příklad: předplatné SaaS je neplatné), vyžadujeme, abyste poskytli Webhook připojení. Pokud ještě nemáte systém Webhooku, nejjednodušší konfigurace bude mít aplikaci logiky koncového bodu HTTP, která bude naslouchat všem událostem, které se do ní odesílají, a pak je správně zpracovat (např. https:\//prod-1westus.logic.azure.com:443/work). Další informace najdete v tématu [pracovní postupy volání, triggeru nebo vnoření pracovních postupů s koncovými body HTTP v Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Webhook připojení** (povinné): pro všechny asynchronní události, které Microsoft potřebuje poslat jménem zákazníka (příklad: předplatné SaaS je neplatné), vyžadujeme, abyste poskytli Webhook připojení. Pokud ještě nemáte systém Webhooku, nejjednodušší konfigurace bude mít aplikaci logiky koncového bodu HTTP, která bude naslouchat všem událostem, které jsou do ní odesílány, a jejich správné zpracování (například https:\//prod-1westus.logic.azure.com:443/work). Další informace najdete v tématu [pracovní postupy volání, triggeru nebo vnoření pracovních postupů s koncovými body HTTP v Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
-- **ID tenanta Azure AD** (povinné): v rámci Azure Portal vyžadujeme [Vytvoření aplikace Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , abyste mohli ověřit, že připojení mezi našimi dvěma službami bude za ověřenou komunikací. [ID tenanta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)zjistíte tak, že přejdete na Azure Active Directory a vyberete **vlastnosti**a pak vyhledáte uvedené číslo **ID adresáře** (např. 50c464d3-4930-494c-963c-1e951d15360e).
+- **ID tenanta Azure AD** (povinné): v rámci Azure Portal vyžadujeme [Vytvoření aplikace Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , abyste mohli ověřit, že připojení mezi našimi dvěma službami bude za ověřenou komunikací. [ID tenanta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)zjistíte tak, že přejdete na Azure Active Directory a vyberete **vlastnosti**a pak vyhledáte uvedené číslo **ID adresáře** (například 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **ID aplikace Azure AD** (povinné): budete také potřebovat [ID aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) a ověřovací klíč. Tyto hodnoty získáte tak, že přejdete na Azure Active Directory a vyberete **Registrace aplikací**a pak vyhledáte uvedené číslo **ID aplikace** (např. 50c464d3-4930-494c-963c-1e951d15360e). Ověřovací klíč najdete tak, že přejdete na **Nastavení** a vyberete **klíče**. Budete muset zadat popis a dobu trvání a pak zadat číselnou hodnotu.
+- **ID aplikace Azure AD** (povinné): budete také potřebovat [ID aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) a ověřovací klíč. Tyto hodnoty získáte tak, že přejdete na Azure Active Directory a vyberete **Registrace aplikací**a pak vyhledáte uvedené číslo **ID aplikace** (například 50c464d3-4930-494c-963c-1e951d15360e). Ověřovací klíč najdete tak, že přejdete na **Nastavení** a vyberete **klíče**. Budete muset zadat popis a dobu trvání a pak zadat číselnou hodnotu.
 
 >[!Note]
 >ID aplikace Azure je přidruženo k vašemu ID vydavatele, takže se ujistěte, že se stejné ID aplikace používá ve všech nabídkách.
@@ -390,8 +342,8 @@ Po vytvoření se zobrazí vaše názvy plánů, ID, cenové modely, dostupnost 
 
 **Vytvořit nový plán** (minimálně jeden plán pro ty, kteří si vybrali prodej prostřednictvím Microsoftu)
 
-- **ID plánu:** Pro každý plán v této nabídce Vytvořte jedinečné ID plánu. Toto ID se bude zobrazovat zákazníkům v adrese URL produktu a šablony Azure Resource Manager (pokud jsou k dispozici). Používejte jenom malá písmena, alfanumerické znaky, pomlčky nebo podtržítka. Pro toto ID plánu je povoleno maximálně 50 znaků. Všimněte si, že po výběru možnosti vytvořit nelze ID změnit.
-- **Název plánu:** Zákazníci uvidí tento název při rozhodování, který plán vybrat v rámci vaší nabídky. Pro každý plán v této nabídce Vytvořte jedinečný název nabídky. Název plánu slouží k rozlišení softwarových plánů, které mohou být součástí stejné nabídky (např. Název nabídky: Windows Server; plány: Windows Server 2016, Windows Server 2019).
+- **ID plánu:** Pro každý plán v této nabídce Vytvořte jedinečné ID plánu. Toto ID se bude zobrazovat zákazníkům v adrese URL produktu a šablony Azure Resource Manager (pokud jsou k dispozici). Používejte jenom malá písmena, alfanumerické znaky, pomlčky nebo podtržítka. Pro toto ID plánu je povoleno maximálně 50 znaků. Po výběru možnosti vytvořit nelze ID změnit.
+- **Název plánu:** Zákazníci uvidí tento název při rozhodování, který plán vybrat v rámci vaší nabídky. Pro každý plán v této nabídce Vytvořte jedinečný název nabídky. Název plánu slouží k rozlišení softwarových plánů, které mohou být součástí stejné nabídky (například název nabídky: Windows Server; plány: Windows Server 2016, Windows Server 2019).
 
 ### <a name="plan-listing"></a>Výpis plánu
 
@@ -424,7 +376,7 @@ Možnost konfigurace bezplatné zkušební verze je k dispozici pro každý plá
 >[!Note]
 >Jakmile je vaše nabídka s podporou transakcí publikovaná s bezplatnou zkušební verzí, nedá se pro tento plán zakázat. Ujistěte se, že toto nastavení je pro první publikování správné, aby se nemuselo znovu vytvářet plán.
 
-Pokud chcete získat informace o předplatných zákazníků, které se aktuálně účastní bezplatné zkušební verze, použijte novou vlastnost `isFreeTrial`API, která bude označená jako true nebo false. Další informace najdete v tématu [rozhraní API pro SaaS získat předplatné](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) .
+Pokud chcete získat informace o předplatných zákazníků, které se aktuálně účastní bezplatné zkušební verze, použijte novou vlastnost `isFreeTrial`API, která bude označená jako true nebo false. Další informace najdete v tématu [rozhraní API pro SaaS získat předplatné](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription).
 
 >[!Note]
 >Bezplatné zkušební verze se nepodporují pro plány, které využívají službu měření na webu Marketplace.

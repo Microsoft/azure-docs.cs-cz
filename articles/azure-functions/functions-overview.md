@@ -6,12 +6,12 @@ ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
 ms.date: 10/03/2017
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 4af2afc0efad2784bbde902fd2cdf4a40beb7803
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 5488606939bafc402210ad35f3a17e71ac072010
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769077"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044530"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Seznámení s Azure Functions  
 Azure Functions je řešení umožňující snadno spouštět malé kódy (tzv. „funkce“) v cloudu. Můžete napsat přesně takový kód, jaký potřebujete pro aktuální problém, a nestarat se o infrastrukturu k jeho spuštění nebo aplikaci jako celek. Funkce můžou zvýšit produktivitu vývoje a můžete použít svůj vývojářský jazyk podle vlastního výběru, například C#Java, JavaScript, PowerShell a Python. Plaťte pouze za čas, kdy kód běží, a potřebné škálování svěřte Azure. Služba Azure Functions umožňuje v Microsoft Azure vytvářet aplikace [bez serveru](https://azure.microsoft.com/solutions/serverless/).
@@ -30,7 +30,7 @@ Toto jsou některé klíčové funkce služby Functions:
 * **Open Source** – Modul runtime Functions je typu Open Source a [je dostupný na GitHubu](https://github.com/azure/azure-webjobs-sdk-script).  
 
 ## <a name="what-can-i-do-with-functions"></a>Co můžu dělat s Functions?
-Služba Functions je vynikající řešení pro zpracování dat, integraci systémů, práci s internetem věcí (IoT) a vytváření jednoduchých rozhraní API a mikroslužeb. Zvažte Functions v případě úloh, jako je zpracování obrazu nebo objednávek a údržba souborů, a libovolných úloh, které chcete spustit podle plánu. 
+Služba Functions je vynikající řešení pro zpracování dat, integraci systémů, práci s internetem věcí (IoT) a vytváření jednoduchých rozhraní API a mikroslužeb. Vezměte v úvahu funkce pro úlohy, jako jsou webová rozhraní API, zpracování obrázků nebo objednávek, údržba souborů nebo pro všechny úlohy, které chcete spustit podle plánu. 
 
 Functions poskytuje šablony, které vám pomůžou začít s klíčovými scénáři, včetně těchto:
 

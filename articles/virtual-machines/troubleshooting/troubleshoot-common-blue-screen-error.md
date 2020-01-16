@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: 921e97fa393a3005e3ba392502d291301df3d65c
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: d9732f232c5a7ec1e551f42fe0e8187e382aec6e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058067"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981873"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Při spouštění virtuálního počítače Azure zobrazuje Windows chybou modrou obrazovku
 Tento článek popisuje chyby modré obrazovky, se kterými se můžete setkat při spuštění virtuálního počítače s Windows v Microsoft Azure. Poskytuje kroky, které vám pomůžou shromáždit data pro lístek podpory. 
 
 > [!NOTE] 
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití modelu nasazení Správce prostředků, který doporučujeme použít pro nová nasazení místo modelu nasazení Classic.
+> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití modelu nasazení Správce prostředků, který doporučujeme použít pro nová nasazení místo modelu nasazení Classic.
 
 ## <a name="symptom"></a>Příznak 
 

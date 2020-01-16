@@ -7,12 +7,12 @@ ms.reviewers: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
 tags: connectors
-ms.openlocfilehash: b3723ccc247b8a9451b9a5fdc628bff58da361a0
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 822a6d1cd812ead8e677a66a9b1e47ebdbcf8aea
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786991"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030145"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Příjem příchozích volání HTTPS a jejich reakce pomocí Azure Logic Apps
 
@@ -23,9 +23,18 @@ Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrované 
 * Přijímat a reagovat na volání HTTPS z jiné aplikace logiky.
 
 > [!NOTE]
-> Aktivační událost žádosti podporuje pro příchozí volání *pouze* zabezpečení TLS (Transport Layer Security) 1,2. Odchozí hovory pokračují v podpoře TLS 1,0, 1,1 a 1,2. Pokud se zobrazí chyby handshake SSL, ujistěte se, že používáte TLS 1,2.
+> Aktivační událost žádosti podporuje pro příchozí volání *pouze* zabezpečení TLS (Transport Layer Security) 1,2. Odchozí hovory pokračují v podpoře TLS 1,0, 1,1 a 1,2. Pokud se zobrazí chyby handshake SSL, ujistěte se, že používáte TLS 1,2. V případě příchozích volání jsou zde podporované šifrovací sady:
+>
+> * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+> * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+> * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné nemáte, můžete si [zaregistrovat bezplatný účet Azure](https://azure.microsoft.com/free/).
 

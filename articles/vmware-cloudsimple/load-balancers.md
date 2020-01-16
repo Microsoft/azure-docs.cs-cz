@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d26eb0160316737c9ad31d98c8cf23bdcad42d32
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6c98b699b1d3aba15ce69c519d35d7ce3e90d123
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206506"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045728"
 ---
 # <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>Volba řešení vyrovnávání zatížení pro privátní cloudy CloudSimple
 
@@ -37,7 +37,7 @@ Další informace o tom, jak nakonfigurovat toto řešení, najdete v Průvodci 
 
 Pokud se rozhodnete aplikaci spustit v hybridním nasazení, kde webová front-end je spuštěná ve virtuální síti Azure v rámci vašeho předplatného Azure a vrstva DB aplikace je spuštěná ve virtuálních počítačích VMware v privátním cloudu CloudSimple, můžete použít interní zatížení Azure. Vyrovnávání zatížení (L4 Load Balancer) před virtuálními počítači vrstvy databáze pro správu provozu.
 
-Další informace najdete v dokumentaci k [interním Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer) Azure.
+Další informace najdete v dokumentaci k [interním Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer) Azure.
 
 ## <a name="global-server-load-balancer"></a>Globální nástroj pro vyrovnávání zatížení serveru
 

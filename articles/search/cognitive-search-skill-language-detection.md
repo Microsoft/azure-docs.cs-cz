@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e3ec9ea9cfbae314297c5b59f6a07bcebaef6a5c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8439788c63ec1b9feaea148ab52aba498791dc12
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791963"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045017"
 ---
 #   <a name="language-detection-cognitive-skill"></a>Rozpoznávání rozpoznávání jazyka – dovednost
 
@@ -30,14 +30,14 @@ Rozpoznávání jazyka využívá knihovny pro zpracování v přirozeném jazyc
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft. dovednosti. text. LanguageDetectionSkill
+Microsoft.Skills.Text.LanguageDetectionSkill
 
 ## <a name="data-limits"></a>Omezení dat
-Maximální velikost záznamu musí být 50 000 znaků měřenou [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Pokud potřebujete data před odesláním do nástroje mínění Analyzer rozdělit, můžete použít [dovednost rozdělení textu](cognitive-search-skill-textsplit.md).
+Maximální velikost záznamu musí být 50 000 znaků měřenou [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Pokud potřebujete data před odesláním do odbornosti detekce jazyka rozdělit, můžete použít [dovednost rozdělení textu](cognitive-search-skill-textsplit.md).
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-V parametrech jsou rozlišována malá a velká písmena.
+U parametrů se rozlišují malá a velká písmena.
 
 | Vstupy     | Popis |
 |--------------------|-------------|
@@ -49,7 +49,7 @@ V parametrech jsou rozlišována malá a velká písmena.
 |--------------------|-------------|
 | languageCode | Kód jazyka ISO 6391 pro identifikovaný jazyk. Například "en". |
 | jazykový | Název jazyka Například "Angličtina". |
-| podtržítk | Hodnota v rozsahu 0 až 1. Pravděpodobnost, že je jazyk správně identifikovaný. Skóre může být menší než 1, pokud má věta smíšené jazyky.  |
+| skóre | Hodnota v rozsahu 0 až 1. Pravděpodobnost, že je jazyk správně identifikovaný. Skóre může být menší než 1, pokud má věta smíšené jazyky.  |
 
 ##  <a name="sample-definition"></a>Definice vzorku
 

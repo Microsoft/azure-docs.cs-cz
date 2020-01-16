@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a9bb324c3863a13e1f47e1b31f7656ab8c77a6f1
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 16651441919ecd5167e518f68addd8964e767001
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763143"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043531"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
 
@@ -177,7 +178,7 @@ Teď, když váš tenant může vystavovat kontrolní výrazy SAML, je nutné vy
     PublicPolicyUri="http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml">
     ```
 
-1. Přidejte následující fragment kódu XML těsně před `<RelyingParty>` element. Tento kód XML přepíše krok orchestrace číslo 7 cesty uživatele _SignUpOrSignIn_ . Pokud jste přizpůsobili cestu uživatele přidáním nebo odebráním kroků orchestrace, ujistěte se, že číslo (v `order` elementu) je zarovnáno s parametrem zadaným v cestě uživatele pro krok vystavitele tokenu.
+1. Přidejte následující fragment kódu XML těsně před `<RelyingParty>` element. Tento kód XML přepíše krok orchestrace číslo 7 cesty uživatele _SignUpOrSignIn_ . Pokud jste spustili z jiné složky v počátečním balíčku nebo jste přizpůsobili cestu uživatele přidáním nebo odebráním kroků orchestrace, ujistěte se, že je číslo (v `order` elementu) zarovnáno s parametrem zadaným v cestě uživatele pro krok vystavitele tokenu (například ve složce ostatních počátečních sad je číslo kroku 4 pro `LocalAccounts`, 6 pro `SocialAccounts` a 9 pro `SocialAndLocalAccountsWithMfa`).
 
     ```XML
     <UserJourneys>

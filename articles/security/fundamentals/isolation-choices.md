@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: c666d718586d3e5351974da287a91f6a3a8c04ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 659d00c3fc7a766d800de6f1f12f410003284360
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459155"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979275"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
 Azure umožňuje spouštět aplikace a virtuální počítače na sdílené fyzické infrastruktuře. Jednou z primárních motivů pro spouštění aplikací v cloudovém prostředí je schopnost distribuovat náklady na sdílené prostředky mezi více zákazníků. Tento postup víceklientské architektury vylepšuje efektivitu díky multiplexování prostředků mezi různými zákazníky s nízkými náklady. Bohužel taky představuje riziko sdílení fyzických serverů a dalších prostředků infrastruktury ke spouštění citlivých aplikací a virtuálních počítačů, které můžou patřit k libovolnému a potenciálně škodlivému uživateli.
@@ -190,7 +190,7 @@ Proto Azure Storage spouští na samostatném hardwaru bez připojení k síti A
 SAS znamená, že můžeme udělit omezená oprávnění klienta k objektům v našem účtu úložiště po určitou dobu a se zadanou sadou oprávnění. Tato omezená oprávnění můžeme udělit bez nutnosti sdílení přístupových klíčů k vašemu účtu.
 
 ### <a name="ip-level-storage-isolation"></a>Izolace úložiště na úrovni protokolu IP
-Můžete navázat brány firewall a definovat rozsah IP adres pro důvěryhodné klienty. S rozsahem IP adres se můžou [Azure Storage](../../storage/common/storage-security-guide.md)připojit jenom klienti, kteří mají IP adresu v rámci definovaného rozsahu.
+Můžete navázat brány firewall a definovat rozsah IP adres pro důvěryhodné klienty. S rozsahem IP adres se můžou [Azure Storage](../../storage/blobs/security-recommendations.md)připojit jenom klienti, kteří mají IP adresu v rámci definovaného rozsahu.
 
 Data úložiště IP je možné chránit před neautorizovanými uživateli prostřednictvím síťového mechanismu, který se používá k přidělení vyhrazeného nebo vyhrazeného tunelového přenosu do úložiště IP.
 
@@ -203,18 +203,18 @@ Azure nabízí pro ochranu dat následující typy šifrování:
 #### <a name="encryption-in-transit"></a>Šifrování při přenosu
 Šifrování při přenosu je mechanismus ochrany dat při přenosu mezi sítěmi. Pomocí Azure Storage můžete zabezpečit data pomocí:
 
--   [Šifrování na úrovni přenosu](../../storage/common/storage-security-guide.md), jako je například https při přenosu dat do nebo z Azure Storage.
+-   [Šifrování na úrovni přenosu](../../storage/blobs/security-recommendations.md), jako je například https při přenosu dat do nebo z Azure Storage.
 
--   [Šifrování kabelů](../../storage/common/storage-security-guide.md), jako je například šifrování SMB 3,0 pro sdílené složky Azure.
+-   [Šifrování kabelů](../../storage/blobs/security-recommendations.md), jako je například šifrování SMB 3,0 pro sdílené složky Azure.
 
--   [Šifrování na straně klienta](../../storage/common/storage-security-guide.md), aby se data zašifroval před přenosem do úložiště a dešifrují data poté, co se přenesou z úložiště.
+-   [Šifrování na straně klienta](../../storage/blobs/security-recommendations.md), aby se data zašifroval před přenosem do úložiště a dešifrují data poté, co se přenesou z úložiště.
 
 #### <a name="encryption-at-rest"></a>Šifrování v klidovém umístění
 V případě mnoha organizací je [šifrování dat v klidovém](isolation-choices.md) případě povinný krok k ochraně dat, dodržování předpisů a suverenity dat. Existují tři funkce Azure, které poskytují šifrování dat v klidovém znění:
 
--   [Šifrování služby Storage](../../storage/common/storage-security-guide.md) umožňuje požádat, aby služba úložiště při zápisu do Azure Storage automaticky zašifroval data.
+-   [Šifrování služby Storage](../../storage/blobs/security-recommendations.md) umožňuje požádat, aby služba úložiště při zápisu do Azure Storage automaticky zašifroval data.
 
--   [Šifrování na straně klienta](../../storage/common/storage-security-guide.md) také poskytuje funkci šifrování v klidovém umístění.
+-   [Šifrování na straně klienta](../../storage/blobs/security-recommendations.md) také poskytuje funkci šifrování v klidovém umístění.
 
 -   [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) slouží k šifrování disků s operačním systémem a datových disků, které používá virtuální počítač s IaaS.
 

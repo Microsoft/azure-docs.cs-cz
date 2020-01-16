@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 104fc212dc590c1366b8dd2cd276f70bdadee5db
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: b9a448ff41c66fa3a38c124f7acde062bacbe9ba
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614515"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980204"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Agregace a shromažďování událostí pomocí Azure Diagnostics Windows
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Chcete-li vytvořit cluster pomocí Správce prostředků, je nutné přidat kó
 
 Chcete-li zobrazit nastavení diagnostiky v šabloně Správce prostředků, otevřete soubor azuredeploy. JSON a vyhledejte **IaaSDiagnostics**. Pokud chcete vytvořit cluster pomocí této šablony, vyberte tlačítko **nasadit do Azure** , které je k dispozici na předchozím odkazu.
 
-Alternativně můžete stáhnout ukázku Správce prostředků, provést v ní změny a vytvořit cluster s upravenou šablonou pomocí příkazu `New-AzResourceGroupDeployment` v okně Azure PowerShell. Podívejte se na následující kód parametrů, které předáte do příkazu. Podrobné informace o tom, jak nasadit skupinu prostředků pomocí PowerShellu, najdete v článku [nasazení skupiny prostředků pomocí šablony Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md).
+Alternativně můžete stáhnout ukázku Správce prostředků, provést v ní změny a vytvořit cluster s upravenou šablonou pomocí příkazu `New-AzResourceGroupDeployment` v okně Azure PowerShell. Podívejte se na následující kód parametrů, které předáte do příkazu. Podrobné informace o tom, jak nasadit skupinu prostředků pomocí PowerShellu, najdete v článku [nasazení skupiny prostředků pomocí šablony Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md).
 
 ### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>Přidání rozšíření diagnostiky do existujícího clusteru
 Pokud máte existující cluster, který nemá nasazenou diagnostiku, můžete ho přidat nebo aktualizovat prostřednictvím šablony clusteru. Upravte Správce prostředků šablonu, která se používá k vytvoření existujícího clusteru, nebo Stáhněte šablonu z portálu, jak je popsáno výše. Upravte soubor Template. JSON prováděním následujících úloh:

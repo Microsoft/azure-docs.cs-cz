@@ -3,21 +3,21 @@ title: 'Rychlý Start: syntetizace řeči, Python-Speech Service'
 titleSuffix: Azure Cognitive Services
 description: Naučte se, jak pomocí sady Speech SDK syntetizovat řeč v Pythonu.
 services: cognitive-services
-author: yulin-li
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 09/14/2019
-ms.author: yulili
-ms.openlocfilehash: 990e795d0331df41ff098ed498508d6ecfd58f0e
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 19/14/2020
+ms.author: dapine
+ms.openlocfilehash: 7be9037ddfd19d82263b37fe0b824e3c2b3f5078
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818472"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76037806"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, nezapomeňte:
 
@@ -25,21 +25,20 @@ Než začnete, nezapomeňte:
 > * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
 > * [Nastavení vývojového prostředí](../../../../quickstarts/setup-platform.md)
 > * [Vytvořit prázdný ukázkový projekt](../../../../quickstarts/create-project.md)
-```
 
-## Support and updates
+## <a name="support-and-updates"></a>Podpora a aktualizace
 
-Updates to the Speech SDK Python package are distributed via PyPI and announced in the [Release notes](~/articles/cognitive-services/Speech-Service/releasenotes.md).
-If a new version is available, you can update to it with the command `pip install --upgrade azure-cognitiveservices-speech`.
-Check which version is currently installed by inspecting the `azure.cognitiveservices.speech.__version__` variable.
+Aktualizace balíčku Python sady Speech SDK jsou distribuovány prostřednictvím PyPI a oznámeny v [poznámkách k verzi](~/articles/cognitive-services/Speech-Service/releasenotes.md).
+Pokud je k dispozici nová verze, můžete na ni pomocí příkazu `pip install --upgrade azure-cognitiveservices-speech`aktualizovat.
+Kontrolou proměnné `azure.cognitiveservices.speech.__version__` zkontrolujte, která verze je aktuálně nainstalovaná.
 
-If you have a problem, or you're missing a feature, see [Support and help options](~/articles/cognitive-services/Speech-Service/support.md).
+Pokud máte problém nebo nemáte funkci, přečtěte si téma [Podpora a možnosti pomoci](~/articles/cognitive-services/Speech-Service/support.md).
 
-## Create a Python application that uses the Speech SDK
+## <a name="create-a-python-application-that-uses-the-speech-sdk"></a>Vytvoření aplikace v Pythonu, která používá sadu Speech SDK
 
-### Run the sample
+### <a name="run-the-sample"></a>Spuštění ukázky
 
-You can copy the [sample code](#sample-code) from this quickstart to a source file `quickstart.py` and run it in your IDE or in the console:
+[Vzorový kód](#sample-code) z tohoto rychlého startu můžete zkopírovat do zdrojového souboru `quickstart.py` a spustit ho v integrovaném vývojovém prostředí nebo v konzole:
 
 ```sh
 python quickstart.py

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: da733eef4dcfc15db10bb5bf303086ae601189ed
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 04fb34ff9c0ba9822e9760bcd3989bd0b5675506
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443192"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044738"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Kurz: Konfigurace ServiceNow pro Automatické zřizování uživatelů
 
@@ -142,6 +142,7 @@ Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto 
 * **EntryJoiningPropertyValueIsMissing:** Zkontrolujte [mapování atributů](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) k identifikaci odpovídajícího atributu. Tato hodnota musí být k dispozici u uživatele nebo skupiny, které se pokoušíte zřídit. 
 * Přečtěte si [rozhraní SERVICENOW SOAP API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) , abyste pochopili všechny požadavky nebo omezení (například formát pro určení kódu země pro uživatele).
 * Některá nasazení ServiceNow vyžadují povolení rozsahů IP adres pro službu Azure AD Provisioning. Rezervované rozsahy IP adres pro službu Azure AD Provisioning [najdete v části](https://www.microsoft.com/download/details.aspx?id=56519) "AzureActiveDirectoryDomainServices".
+* Zřizování uživatelů v cloudu pro státní správu ServiceNow se v tuto chvíli nepodporuje.
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

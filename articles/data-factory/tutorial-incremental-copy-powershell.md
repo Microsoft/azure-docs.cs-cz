@@ -11,48 +11,48 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 28a9631860691b29c1954d67e521d4ff54c901a7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1a3651f82d7818ad105c0a8a7b5fd9fcf073b4a1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439195"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982555"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Přírůstkové načtení dat z Azure SQL Database do úložiště objektů BLOB v Azure pomocí PowerShellu
 
-V tomto kurzu vytvoříte službu Azure Data Factory s kanálem, který načítá rozdílová data z tabulky v databázi Azure SQL do úložiště Azure Blob Storage. 
+V tomto kurzu vytvoříte službu Azure Data Factory s kanálem, který načítá rozdílová data z tabulky v databázi Azure SQL do úložiště Azure Blob Storage.
 
 V tomto kurzu provedete následující kroky:
 
 > [!div class="checklist"]
 > * Příprava úložiště dat pro uložení hodnoty meze
 > * Vytvoření datové továrny
-> * Vytvoření propojených služeb 
+> * Vytvoření propojených služeb
 > * Vytvoření zdroje, jímky a datových sad mezí
 > * Vytvoření kanálu
 > * Spuštění kanálu
-> * Monitorování spuštění kanálu 
+> * Monitorování spuštění kanálu
 
 ## <a name="overview"></a>Přehled
-Tady je souhrnný diagram tohoto řešení: 
+Tady je souhrnný diagram tohoto řešení:
 
 ![Přírůstkové načtení dat](media/tutorial-Incrementally-copy-powershell/incrementally-load.png)
 
-Tady jsou důležité kroky pro vytvoření tohoto řešení: 
+Tady jsou důležité kroky pro vytvoření tohoto řešení:
 
 1. **Vyberte sloupec meze**.
     Ve zdrojovém úložišti dat vyberte jeden sloupec, který je možné použít k rozlišení nových nebo aktualizovaných záznamů pro každé spuštění. Data v tomto vybraném sloupci (například čas_poslední_změny nebo ID) se při vytváření nebo aktualizaci řádků obvykle zvyšují. Maximální hodnota v tomto sloupci se používá jako horní mez.
 
 2. **Připravte úložiště dat pro uložení hodnoty meze**.   
     V tomto kurzu uložíte hodnotu meze do databáze SQL.
-    
-3. **Vytvořte kanál s následujícím pracovním postupem**: 
-    
+
+3. **Vytvořte kanál s následujícím pracovním postupem**:
+
     Kanál v tomto řešení má následující aktivity:
-  
-    * Vytvořte dvě aktivity vyhledávání. První aktivitu vyhledávání použijte k načtení poslední hodnoty meze. Druhou aktivitu vyhledávání použijte k načtení nové hodnoty meze. Tyto hodnoty meze se předají aktivitě kopírování. 
-    * Vytvořte aktivitu kopírování, která ze zdrojového úložiště dat zkopíruje řádky, které ve sloupci horní meze mají hodnotu vyšší, než je stará hodnota meze, a nižší, než je nová hodnota meze. Potom tato rozdílová data zkopíruje ze zdrojového úložiště dat do úložiště objektů blob jako nový soubor. 
-    * Vytvořte aktivitu uložené procedury StoredProcedure, která aktualizuje hodnotu meze pro příští spuštění kanálu. 
+
+    * Vytvořte dvě aktivity vyhledávání. První aktivitu vyhledávání použijte k načtení poslední hodnoty meze. Druhou aktivitu vyhledávání použijte k načtení nové hodnoty meze. Tyto hodnoty meze se předají aktivitě kopírování.
+    * Vytvořte aktivitu kopírování, která ze zdrojového úložiště dat zkopíruje řádky, které ve sloupci horní meze mají hodnotu vyšší, než je stará hodnota meze, a nižší, než je nová hodnota meze. Potom tato rozdílová data zkopíruje ze zdrojového úložiště dat do úložiště objektů blob jako nový soubor.
+    * Vytvořte aktivitu uložené procedury StoredProcedure, která aktualizuje hodnotu meze pro příští spuštění kanálu.
 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
@@ -62,14 +62,14 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * **Azure SQL Database**. Tuto databázi použijete jako zdrojové úložiště dat. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze Azure SQL](../sql-database/sql-database-get-started-portal.md), kde najdete kroky pro její vytvoření.
-* **Azure Storage** Úložiště objektů blob použijete jako úložiště dat jímky. Pokud nemáte účet úložiště, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md), kde najdete kroky pro jeho vytvoření. Vytvořte kontejner s názvem adftutorial. 
+* **Azure Storage** Úložiště objektů blob použijete jako úložiště dat jímky. Pokud nemáte účet úložiště, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-account-create.md), kde najdete kroky pro jeho vytvoření. Vytvořte kontejner s názvem adftutorial. 
 * **Azure PowerShell**. Postupujte podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-Az-ps).
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>Vytvoření tabulky zdroje dat v databázi SQL
 1. Otevřete SQL Server Management Studio. V **Průzkumníku serveru** klikněte pravým tlačítkem na databázi a zvolte **Nový dotaz**.
 
-2. Spuštěním následujícího příkazu SQL na vaší databázi SQL vytvořte tabulku s názvem `data_source_table` jako úložiště zdroje dat: 
-    
+2. Spuštěním následujícího příkazu SQL na vaší databázi SQL vytvořte tabulku s názvem `data_source_table` jako úložiště zdroje dat:
+
     ```sql
     create table data_source_table
     (
@@ -101,11 +101,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ### <a name="create-another-table-in-your-sql-database-to-store-the-high-watermark-value"></a>Vytvoření další tabulky v databázi SQL pro ukládání hodnoty horní meze
 1. Spuštěním následujícího příkazu SQL na databázi SQL vytvořte tabulku s názvem `watermarktable` pro uložení hodnoty meze:  
-    
+
     ```sql
     create table watermarktable
     (
-    
+
     TableName varchar(255),
     WatermarkValue datetime,
     );
@@ -117,11 +117,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     VALUES ('data_source_table','1/1/2010 12:00:00 AM')    
     ```
 3. Zkontrolujte data v tabulce `watermarktable`.
-    
+
     ```sql
     Select * from watermarktable
     ```
-    Výstup: 
+    Výstup:
 
     ```
     TableName  | WatermarkValue
@@ -129,7 +129,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     data_source_table | 2010-01-01 00:00:00.000
     ```
 
-### <a name="create-a-stored-procedure-in-your-sql-database"></a>Vytvoření uložené procedury v databázi SQL 
+### <a name="create-a-stored-procedure-in-your-sql-database"></a>Vytvoření uložené procedury v databázi SQL
 
 Spuštěním následujícího příkazu vytvořte v databázi SQL uloženou proceduru:
 
@@ -138,11 +138,11 @@ CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varc
 AS
 
 BEGIN
-    
+
     UPDATE watermarktable
-    SET [WatermarkValue] = @LastModifiedtime 
+    SET [WatermarkValue] = @LastModifiedtime
 WHERE [TableName] = @TableName
-    
+
 END
 ```
 
@@ -155,30 +155,30 @@ END
 
     Pokud již skupina prostředků existuje, nepřepisujte ji. Přiřaďte proměnné `$resourceGroupName` jinou hodnotu a spusťte tento příkaz znovu.
 
-2. Definujte proměnnou pro umístění datové továrny. 
+2. Definujte proměnnou pro umístění datové továrny.
 
     ```powershell
     $location = "East US"
     ```
-3. Pokud chcete vytvořit skupinu prostředků Azure, spusťte následující příkaz: 
+3. Pokud chcete vytvořit skupinu prostředků Azure, spusťte následující příkaz:
 
     ```powershell
     New-AzResourceGroup $resourceGroupName $location
-    ``` 
+    ```
     Pokud již skupina prostředků existuje, nepřepisujte ji. Přiřaďte proměnné `$resourceGroupName` jinou hodnotu a spusťte tento příkaz znovu.
 
-4. Definujte proměnnou název datové továrny. 
+4. Definujte proměnnou název datové továrny.
 
     > [!IMPORTANT]
-    >  Aktualizujte název datové továrny tak, aby byl globálně jedinečný. Například ADFTutorialFactorySP1127. 
+    >  Aktualizujte název datové továrny tak, aby byl globálně jedinečný. Například ADFTutorialFactorySP1127.
 
     ```powershell
     $dataFactoryName = "ADFIncCopyTutorialFactory";
     ```
-5. Pokud chcete vytvořit datovou továrnu, spusťte následující rutinu **set-AzDataFactoryV2** : 
-    
+5. Pokud chcete vytvořit datovou továrnu, spusťte následující rutinu **set-AzDataFactoryV2** :
+
     ```powershell       
-    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName 
+    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName
     ```
 
 Je třeba počítat s následujícím:
@@ -194,7 +194,7 @@ Je třeba počítat s následujícím:
 
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
-V datové továrně vytvoříte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V této části vytvoříte propojené služby pro účet úložiště a databázi SQL. 
+V datové továrně vytvoříte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V této části vytvoříte propojené služby pro účet úložiště a databázi SQL.
 
 ### <a name="create-a-storage-linked-service"></a>Vytvoření propojené služby Storage
 1. Ve složce C:\ADF vytvořte soubor JSON s názvem AzureStorageLinkedService.json s následujícím kódem. (Pokud ještě neexistuje, vytvořte si ADF složky.) Než soubor uložíte, nahraďte `<accountName>` a `<accountKey>` název a klíč účtu úložiště.
@@ -212,7 +212,7 @@ V datové továrně vytvoříte propojené služby, abyste svá úložiště da
     ```
 2. V PowerShellu přejděte do složky ADF.
 
-3. Spuštěním rutiny **set-AzDataFactoryV2LinkedService** vytvořte AzureStorageLinkedService propojené služby. V následujícím příkladu předáte hodnoty pro parametry *ResourceGroupName* a *DataFactoryName*: 
+3. Spuštěním rutiny **set-AzDataFactoryV2LinkedService** vytvořte AzureStorageLinkedService propojené služby. V následujícím příkladu předáte hodnoty pro parametry *ResourceGroupName* a *DataFactoryName*:
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -228,7 +228,7 @@ V datové továrně vytvoříte propojené služby, abyste svá úložiště da
     ```
 
 ### <a name="create-a-sql-database-linked-service"></a>Vytvoření propojené služby databáze SQL
-1. Ve složce C:\ADF vytvořte soubor JSON s názvem AzureSQLDatabaseLinkedService.json s následujícím kódem. (Pokud ještě neexistuje, vytvořte si ADF složky.) Než soubor uložíte, nahraďte &lt;Server&gt;, &lt;&gt;databáze, &lt;ID uživatele&gt;a &lt;hesla&gt; s názvem vašeho serveru, databáze, ID uživatele a heslem. 
+1. Ve složce C:\ADF vytvořte soubor JSON s názvem AzureSQLDatabaseLinkedService.json s následujícím kódem. (Pokud ještě neexistuje, vytvořte si ADF složky.) Než soubor uložíte, nahraďte &lt;Server&gt;, &lt;&gt;databáze, &lt;ID uživatele&gt;a &lt;hesla&gt; s názvem vašeho serveru, databáze, ID uživatele a heslem.
 
     ```json
     {
@@ -243,7 +243,7 @@ V datové továrně vytvoříte propojené služby, abyste svá úložiště da
     ```
 2. V PowerShellu přejděte do složky ADF.
 
-3. Spuštěním rutiny **set-AzDataFactoryV2LinkedService** vytvořte AzureSQLDatabaseLinkedService propojené služby. 
+3. Spuštěním rutiny **set-AzDataFactoryV2LinkedService** vytvořte AzureSQLDatabaseLinkedService propojené služby.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
@@ -260,11 +260,11 @@ V datové továrně vytvoříte propojené služby, abyste svá úložiště da
     ```
 
 ## <a name="create-datasets"></a>Vytvoření datových sad
-V tomto kroku vytvoříte datové sady, které reprezentují data zdroje a jímky. 
+V tomto kroku vytvoříte datové sady, které reprezentují data zdroje a jímky.
 
 ### <a name="create-a-source-dataset"></a>Vytvoření zdrojové datové sady
 
-1. Ve stejné složce vytvořte soubor JSON s názvem SourceDataset.json a s následujícím obsahem: 
+1. Ve stejné složce vytvořte soubor JSON s názvem SourceDataset.json a s následujícím obsahem:
 
     ```json
     {
@@ -280,18 +280,18 @@ V tomto kroku vytvoříte datové sady, které reprezentují data zdroje a jímk
             }
         }
     }
-   
+
     ```
     V tomto kurzu se používá tabulka s názvem data_source_table. Pokud používáte tabulku s jiným názvem, nahraďte ho.
 
 2. Spusťte rutinu **set-AzDataFactoryV2Dataset** , která vytvoří datovou sadu SourceDataset.
-    
+
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
     ```
 
     Tady je ukázkový výstup této rutiny:
-    
+
     ```json
     DatasetName       : SourceDataset
     ResourceGroupName : ADF
@@ -302,7 +302,7 @@ V tomto kroku vytvoříte datové sady, které reprezentují data zdroje a jímk
 
 ### <a name="create-a-sink-dataset"></a>Vytvoření datové sady jímky
 
-1. Ve stejné složce vytvořte soubor JSON s názvem SinkDataset.json a s následujícím obsahem: 
+1. Ve stejné složce vytvořte soubor JSON s názvem SinkDataset.json a s následujícím obsahem:
 
     ```json
     {
@@ -311,7 +311,7 @@ V tomto kroku vytvoříte datové sady, které reprezentují data zdroje a jímk
             "type": "AzureBlob",
             "typeProperties": {
                 "folderPath": "adftutorial/incrementalcopy",
-                "fileName": "@CONCAT('Incremental-', pipeline().RunId, '.txt')", 
+                "fileName": "@CONCAT('Incremental-', pipeline().RunId, '.txt')",
                 "format": {
                     "type": "TextFormat"
                 }
@@ -328,13 +328,13 @@ V tomto kroku vytvoříte datové sady, které reprezentují data zdroje a jímk
     > Tento fragment kódu předpokládá, že ve svém úložišti objektů blob máte kontejner objektů blob s názvem adftutorial. Pokud tento kontejner neexistuje, vytvořte ho nebo použijte název existujícího kontejneru. Výstupní složka `incrementalcopy` se v kontejneru vytvoří automaticky, pokud ještě neexistuje. V tomto kurzu se název souboru generuje dynamicky pomocí výrazu `@CONCAT('Incremental-', pipeline().RunId, '.txt')`.
 
 2. Spusťte rutinu **set-AzDataFactoryV2Dataset** , která vytvoří datovou sadu SinkDataset.
-    
+
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
     ```
 
     Tady je ukázkový výstup této rutiny:
-    
+
     ```json
     DatasetName       : SinkDataset
     ResourceGroupName : ADF
@@ -344,9 +344,9 @@ V tomto kroku vytvoříte datové sady, které reprezentují data zdroje a jímk
     ```
 
 ## <a name="create-a-dataset-for-a-watermark"></a>Vytvoření datové sady pro mez
-V tomto kroku vytvoříte datovou sadu pro uložení hodnoty horní meze. 
+V tomto kroku vytvoříte datovou sadu pro uložení hodnoty horní meze.
 
-1. Ve stejné složce vytvořte soubor JSON s názvem WatermarkDataset.json a s následujícím obsahem: 
+1. Ve stejné složce vytvořte soubor JSON s názvem WatermarkDataset.json a s následujícím obsahem:
 
     ```json
     {
@@ -364,13 +364,13 @@ V tomto kroku vytvoříte datovou sadu pro uložení hodnoty horní meze.
     }    
     ```
 2.  Spusťte rutinu **set-AzDataFactoryV2Dataset** , která vytvoří datovou sadu WatermarkDataset.
-    
+
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "WatermarkDataset" -File ".\WatermarkDataset.json"
     ```
 
     Tady je ukázkový výstup této rutiny:
-    
+
     ```json
     DatasetName       : WatermarkDataset
     ResourceGroupName : ADF
@@ -380,10 +380,10 @@ V tomto kroku vytvoříte datovou sadu pro uložení hodnoty horní meze.
     ```
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
-V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou aktivitou kopírování a jednou aktivitou uložené procedury, a to všechno zřetězené v jednom kanálu. 
+V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou aktivitou kopírování a jednou aktivitou uložené procedury, a to všechno zřetězené v jednom kanálu.
 
 
-1. Ve stejné složce vytvořte soubor JSON s názvem IncrementalCopyPipeline.json s následujícím obsahem: 
+1. Ve stejné složce vytvořte soubor JSON s názvem IncrementalCopyPipeline.json s následujícím obsahem:
 
     ```json
     {
@@ -398,7 +398,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
                         "type": "SqlSource",
                         "sqlReaderQuery": "select * from watermarktable"
                         },
-    
+
                         "dataset": {
                         "referenceName": "WatermarkDataset",
                         "type": "DatasetReference"
@@ -413,14 +413,14 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
                             "type": "SqlSource",
                             "sqlReaderQuery": "select MAX(LastModifytime) as NewWatermarkvalue from data_source_table"
                         },
-    
+
                         "dataset": {
                         "referenceName": "SourceDataset",
                         "type": "DatasetReference"
                         }
                     }
                 },
-                
+
                 {
                     "name": "IncrementalCopyActivity",
                     "type": "Copy",
@@ -447,7 +447,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
                             ]
                         }
                     ],
-    
+
                     "inputs": [
                         {
                             "referenceName": "SourceDataset",
@@ -461,24 +461,24 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
                         }
                     ]
                 },
-    
+
                 {
                     "name": "StoredProceduretoWriteWatermarkActivity",
                     "type": "SqlServerStoredProcedure",
                     "typeProperties": {
-    
+
                         "storedProcedureName": "usp_write_watermark",
                         "storedProcedureParameters": {
                             "LastModifiedtime": {"value": "@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}", "type": "datetime" },
                             "TableName":  { "value":"@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}", "type":"String"}
                         }
                     },
-    
+
                     "linkedServiceName": {
                         "referenceName": "AzureSQLDatabaseLinkedService",
                         "type": "LinkedServiceReference"
                     },
-    
+
                     "dependsOn": [
                         {
                             "activity": "IncrementalCopyActivity",
@@ -489,19 +489,19 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
                     ]
                 }
             ]
-            
+
         }
     }
     ```
-    
+
 
 2. Spuštěním rutiny **set-AzDataFactoryV2Pipeline** vytvořte IncrementalCopyPipeline kanálu.
-    
+
    ```powershell
    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
-   ``` 
+   ```
 
-   Tady je ukázkový výstup: 
+   Tady je ukázkový výstup:
 
    ```json
     PipelineName      : IncrementalCopyPipeline
@@ -510,14 +510,14 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     Activities        : {LookupOldWaterMarkActivity, LookupNewWaterMarkActivity, IncrementalCopyActivity, StoredProceduretoWriteWatermarkActivity}
     Parameters        :
    ```
- 
+
 ## <a name="run-the-pipeline"></a>Spuštění kanálu
 
 1. Spusťte IncrementalCopyPipeline kanálu pomocí rutiny **Invoke-AzDataFactoryV2Pipeline** . Zástupné znaky nahraďte vlastním názvem skupiny prostředků a názvem datové továrny.
 
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
-    ``` 
+    ```
 2. Zkontrolujte stav kanálu spuštěním rutiny **Get-AzDataFactoryV2ActivityRun** , dokud neuvidíte všechny aktivity spuštěné úspěšně. Zástupné znaky nahraďte vlastním odpovídajícím časem pro parametry *RunStartedAfter* a *RunStartedBefore*. V tomto kurzu se používá *-RunStartedAfter "2017/09/14"* a *-RunStartedBefore "2017/09/15"* .
 
     ```powershell
@@ -525,7 +525,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     ```
 
     Tady je ukázkový výstup:
- 
+
     ```json
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
@@ -540,7 +540,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     DurationInMs      : 7777
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : LookupOldWaterMarkActivity
@@ -554,7 +554,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     DurationInMs      : 25437
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : IncrementalCopyActivity
@@ -568,7 +568,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     DurationInMs      : 19769
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : StoredProceduretoWriteWatermarkActivity
@@ -595,15 +595,15 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     3,cccc,2017-09-03 02:36:00.0000000
     4,dddd,2017-09-04 03:21:00.0000000
     5,eeee,2017-09-05 08:06:00.0000000
-    ``` 
+    ```
 2. Zkontrolujte nejnovější hodnotu z `watermarktable`. Uvidíte, že hodnota meze byla aktualizována.
 
     ```sql
     Select * from watermarktable
     ```
-    
+
     Tady je ukázkový výstup:
- 
+
     TableName | WatermarkValue
     --------- | --------------
     data_source_table | 2017-09-05 8:06:00.000
@@ -615,10 +615,10 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     ```sql
     INSERT INTO data_source_table
     VALUES (6, 'newdata','9/6/2017 2:23:00 AM')
-    
+
     INSERT INTO data_source_table
     VALUES (7, 'newdata','9/7/2017 9:01:00 AM')
-    ``` 
+    ```
 
     Aktualizovaná data v databázi SQL vypadají takto:
 
@@ -645,7 +645,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     ```
 
     Tady je ukázkový výstup:
- 
+
     ```json
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
@@ -660,7 +660,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     DurationInMs      : 31758
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : LookupOldWaterMarkActivity
@@ -674,7 +674,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     DurationInMs      : 25497
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : IncrementalCopyActivity
@@ -688,7 +688,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     DurationInMs      : 20194
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : StoredProceduretoWriteWatermarkActivity
@@ -711,29 +711,26 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     ```sql
     Select * from watermarktable
     ```
-    Ukázkový výstup: 
-    
+    Ukázkový výstup:
+
     TableName | WatermarkValue
     --------- | ---------------
     data_source_table | 2017-09-07 09:01:00.000
 
-     
+
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste provedli následující kroky: 
+V tomto kurzu jste provedli následující kroky:
 
 > [!div class="checklist"]
-> * Příprava úložiště dat pro uložení hodnoty meze 
+> * Příprava úložiště dat pro uložení hodnoty meze
 > * Vytvoření datové továrny
-> * Vytvoření propojených služeb 
+> * Vytvoření propojených služeb
 > * Vytvoření zdroje, jímky a datových sad mezí
 > * Vytvoření kanálu
 > * Spuštění kanálu
-> * Monitorování spuštění kanálu 
+> * Monitorování spuštění kanálu
 
-V tomto kurzu kanál zkopíroval data z jedné tabulky v databázi SQL do úložiště objektů blob. Přejděte na následující kurz, abyste se dozvěděli o kopírování dat z více tabulek v místní databázi SQL Serveru do databáze SQL. 
+V tomto kurzu kanál zkopíroval data z jedné tabulky v databázi SQL do úložiště objektů blob. Přejděte na následující kurz, abyste se dozvěděli o kopírování dat z více tabulek v místní databázi SQL Serveru do databáze SQL.
 
 > [!div class="nextstepaction"]
 >[Přírůstkové načtení dat z více tabulek v SQL Serveru do Azure SQL Database](tutorial-incremental-copy-multiple-tables-powershell.md)
-
-
-

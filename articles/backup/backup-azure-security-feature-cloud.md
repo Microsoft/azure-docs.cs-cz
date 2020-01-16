@@ -3,12 +3,12 @@ title: Funkce zabezpečení, které vám pomůžou chránit cloudové úlohy
 description: Naučte se používat funkce zabezpečení v Azure Backup k zajištění většího zabezpečení záloh.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: e3da4778a82cd5eb50fbb82c7f9f00cf6c6f1a85
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: e4519a342e1be3244b5d4598880e9ad490f50030
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829625"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028203"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Funkce zabezpečení, které vám pomůžou chránit cloudové úlohy, které používají Azure Backup
 
@@ -251,7 +251,7 @@ Při zálohování Azure Virtual Machines máte také možnost šifrovat záloho
 
 ### <a name="backup-of-managed-disk-vm-encrypted-using-customer-managed-keys"></a>Zálohování virtuálního počítače se spravovaným diskem zašifrovaným pomocí klíčů spravovaných zákazníkem
 
-Azure Backup umožňuje zálohovat Azure Virtual Machines obsahující disky šifrované pomocí zákaznických spravovaných klíčů. Podrobnosti najdete v tématu [šifrování spravovaných disků pomocí klíčů spravovaných zákazníkem](https://docs.microsoft.com//azure/virtual-machines/windows/disk-encryption#customer-managed-keys-public-preview).
+Azure Backup umožňuje zálohovat Azure Virtual Machines obsahující disky šifrované pomocí zákaznických spravovaných klíčů. Podrobnosti najdete v tématu [šifrování spravovaných disků pomocí klíčů spravovaných zákazníkem](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys).
 
 ### <a name="backup-of-encrypted-vms"></a>Zálohování šifrovaných virtuálních počítačů
 

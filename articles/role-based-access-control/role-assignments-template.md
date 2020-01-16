@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ad6c63ee15bc97ddd0ca6432f0b0f7b25a859804
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: aeb4bfbc40196575e2cb812738a9ab5de991d2aa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462191"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981022"
 ---
 # <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>Přidání přiřazení rolí pomocí Azure RBAC a Azure Resource Manager šablon
 
@@ -361,7 +361,7 @@ Následuje příklad přiřazení role přispěvatele k novému instančnímu ob
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Rychlý start: Vytvoření a nasazení šablony Azure Resource Manageru pomocí portálu Azure Portal](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
+- [Rychlý start: Vytvoření a nasazení šablony Azure Resource Manageru pomocí portálu Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 - [Struktura a syntaxe šablon Azure Resource Manageru](../azure-resource-manager/templates/template-syntax.md)
-- [Vytvoření skupin prostředků a prostředků na úrovni předplatného](../azure-resource-manager/deploy-to-subscription.md)
+- [Vytvoření skupin prostředků a prostředků na úrovni předplatného](../azure-resource-manager/templates/deploy-to-subscription.md)
 - [Šablony Azure pro rychlý start](https://azure.microsoft.com/resources/templates/?term=rbac)

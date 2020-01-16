@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4df22108591fe3f80078bce050081c4953443847
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 9342a70e539c4a2717fe45426c26595285172681
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903001"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045772"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro konfigurace nativního ověřování certifikátů Azure P2S
 
@@ -99,9 +99,14 @@ Pomocí následujících kroků můžete nakonfigurovat nativního klienta VPN n
 4. V **Obecné** složce ze souboru **VpnSettings. XML** Zkopírujte hodnotu značky **VpnServer** . Vložte tuto hodnotu do polí **Adresa serveru** a **vzdálený identifikátor** v profilu.
 
    ![informace o serveru](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
-5. Klikněte na **nastavení ověřování** a vyberte **certifikát**. 
+5. Klikněte na **nastavení ověřování** a vyberte **certifikát**. V **Catalina**klikněte na **žádná** a pak na **certifikát** .
 
    ![nastavení ověřování](./media/point-to-site-vpn-client-configuration-azure-cert/authsettings.png)
+
+   * V případě Catalina vyberte možnost **žádná** a pak **certifikát**. **Vyberte** správný certifikát:
+   
+   ![catalina](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
+
 6. Klikněte na **Vybrat...** pro výběr klientského certifikátu, který chcete použít pro ověřování. Toto je certifikát, který jste nainstalovali v kroku 2.
 
    ![certifikát](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)

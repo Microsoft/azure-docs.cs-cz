@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: mlearned
-ms.openlocfilehash: d7b1d82f88afd8ac3d94cbdd2d117834c12d0b96
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: e01579272878a2436abca2ee50f0f6ea6cf78cbf
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867155"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045596"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Vytvoření privátního clusteru služby Azure Kubernetes (Preview)
 
@@ -131,7 +131,7 @@ Koncový bod serveru rozhraní API nemá žádnou veřejnou IP adresu. V důsled
 
 ## <a name="limitations"></a>Omezení 
 * [Omezení služby pro privátní propojení Azure][private-link-service] platí pro privátní clustery, privátní koncové body Azure a koncové body služby virtuální sítě, které se v tuto chvíli nepodporují ve stejné virtuální síti.
-* Neexistují žádné podpory virtuálních uzlů v privátním clusteru k vystavování privátních instancí infrastruktury ACI (Application orientované infrastruktura) v privátní virtuální síti Azure.
+* Neexistují žádné podpory virtuálních uzlů v privátním clusteru k vytvoření privátních instancí Cisco Application orientované infrastruktury (Cisco ACI) v privátní virtuální síti Azure.
 * Žádná podpora pro integraci Azure DevOps není integrovaná s privátními clustery.
 * Pro zákazníky, kteří potřebují povolit Azure Container Registry pro práci s privátními AKS, musí mít Container Registry virtuální síť partnerský vztah s virtuální sítí clusteru agenta.
 * Žádná aktuální podpora pro Azure Dev Spaces.

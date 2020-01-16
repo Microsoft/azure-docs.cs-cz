@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
-ms.openlocfilehash: dd1d930fa09e3e53a4ac67e513ba1bff77ee1376
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e44a27178434e7e5decbd30fda8febe0a710e7f0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75373349"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978944"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Vytvoření partnerského vztahu virtuální sítě – Správce prostředků různých předplatných
 
 V tomto kurzu se naučíte vytvořit partnerský vztah virtuální sítě mezi virtuálními sítěmi vytvořenými prostřednictvím Správce prostředků. Virtuální sítě existují v různých předplatných. Partnerský vztah dvou virtuálních sítí umožňuje prostředkům v různých virtuálních sítích vzájemně komunikovat se stejnou šířkou pásma a latencí, jako kdyby byly prostředky ve stejné virtuální síti. Přečtěte si další informace o [partnerském vztahu virtuálních sítí](virtual-network-peering-overview.md).
 
-Postup vytvoření partnerského vztahu virtuální sítě se liší v závislosti na tom, jestli jsou virtuální sítě ve stejném nebo jiném předplatném, a na [modelu nasazení Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , prostřednictvím kterého se virtuální sítě vytvářejí. Naučte se vytvořit partnerský vztah virtuálních sítí v jiných scénářích výběrem scénáře z následující tabulky:
+Postup vytvoření partnerského vztahu virtuální sítě se liší v závislosti na tom, jestli jsou virtuální sítě ve stejném nebo jiném předplatném, a na [modelu nasazení Azure](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , prostřednictvím kterého se virtuální sítě vytvářejí. Naučte se vytvořit partnerský vztah virtuálních sítí v jiných scénářích výběrem scénáře z následující tabulky:
 
 |Model nasazení Azure  | Předplatné Azure  |
 |--------- |---------|

@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 188306ca02cee05f17514826ae6d973a17e6bb97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 385806dca7dcac9fd0aac4c1bf9e1072e7fe5ecb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421863"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979477"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Povolení řešení Update Management, Change Tracking a inventáře na několika virtuálních počítačích
 
@@ -41,7 +41,7 @@ Seznam virtuálních počítačů je filtrovaný tak, aby zobrazoval pouze virtu
 
 ### <a name="resource-group-limit"></a>Omezení připojování
 
-Počet skupin prostředků, které můžete použít pro registraci, je omezen [omezeními nasazení Správce prostředků](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md). Správce prostředků nasazení, nepleťte si s nasazeními aktualizací, jsou omezeny na 5 skupin prostředků na nasazení. Aby se zajistila integrita připojování, 2 z těchto skupin prostředků je vyhrazená pro konfiguraci Log Analyticsho pracovního prostoru, účtu Automation a souvisejících prostředků. Tím se vám ponechá 3 skupiny prostředků, které se mají vybrat pro nasazení. Tento limit se vztahuje jenom na simultánní registraci, nikoli na počet skupin prostředků, které se dají spravovat pomocí řešení automatizace.
+Počet skupin prostředků, které můžete použít pro registraci, je omezen [omezeními nasazení Správce prostředků](../azure-resource-manager/templates/cross-resource-group-deployment.md). Správce prostředků nasazení, nepleťte si s nasazeními aktualizací, jsou omezeny na 5 skupin prostředků na nasazení. Aby se zajistila integrita připojování, 2 z těchto skupin prostředků je vyhrazená pro konfiguraci Log Analyticsho pracovního prostoru, účtu Automation a souvisejících prostředků. Tím se vám ponechá 3 skupiny prostředků, které se mají vybrat pro nasazení. Tento limit se vztahuje jenom na simultánní registraci, nikoli na počet skupin prostředků, které se dají spravovat pomocí řešení automatizace.
 
 Můžete taky použít Runbook pro registraci, další informace najdete v tématu [řešení aktualizací a řešení Change Tracking pro Azure Automation](automation-onboard-solutions.md).
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b5fec342cf9f228edce80e3f0e8fb5243196973d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 68afc782e13f967bc1b455434c3ae952baff81b9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924154"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980926"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Načtěte 1 TB do Azure SQL Data Warehouse za 15 minut s Data Factory
 > [!NOTE]
@@ -44,8 +44,8 @@ Tento článek poskytuje podrobné pokyny pro přesouvání dat do Azure SQL Dat
 >
 >
 
-## <a name="prerequisites"></a>Předpoklady
-* Azure Blob Storage: Tento experiment používá Azure Blob Storage (GRS) pro ukládání testovací datové sady TPC-H.  Pokud nemáte účet úložiště Azure, přečtěte si, [jak vytvořit účet úložiště](../../storage/common/storage-quickstart-create-account.md).
+## <a name="prerequisites"></a>Požadavky
+* Azure Blob Storage: Tento experiment používá Azure Blob Storage (GRS) pro ukládání testovací datové sady TPC-H.  Pokud nemáte účet úložiště Azure, přečtěte si, [jak vytvořit účet úložiště](../../storage/common/storage-account-create.md).
 * [TPC-h](http://www.tpc.org/tpch/) data: používáme TPC-H jako testovací datovou sadu.  K tomu je potřeba použít `dbgen` ze sady nástrojů TPC-H Toolkit, která vám pomůže vygenerovat datovou sadu.  Můžete buď stáhnout zdrojový kód pro `dbgen` z [nástrojů TPC](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) a zkompilovat ho sami nebo stáhnout zkompilovaný binární soubor z [GitHubu](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools).  Spusťte dbgen. exe s následujícími příkazy pro vygenerování plochého souboru 1 TB pro rozšíření `lineitem` tabulek mezi 10 soubory:
 
   * `Dbgen -s 1000 -S **1** -C 10 -T L -v`
@@ -111,7 +111,7 @@ Tento článek poskytuje podrobné pokyny pro přesouvání dat do Azure SQL Dat
   Po dokončení požadovaných součástí jsme teď připraveni ke konfiguraci aktivity kopírování pomocí Průvodce kopírováním.
 
 ## <a name="launch-copy-wizard"></a>Spuštění průvodce kopírováním
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
 2. V levém horním rohu klikněte na **vytvořit prostředek** , klikněte na **Intelligence + Analytics**a pak klikněte na **Data Factory**.
 3. V podokně **Nová datová továrna** :
 
@@ -126,7 +126,7 @@ Tento článek poskytuje podrobné pokyny pro přesouvání dat do Azure SQL Dat
    6. Klikněte na **Vytvořit**.
 4. Po vytvoření se zobrazí okno **Objekt pro vytváření dat**, jak je znázorněno na následujícím obrázku:
 
-   ![Domovská stránka datové továrny](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
+   ![Domovská stránka objektu pro vytváření dat](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
 5. Na domovské stránce objektu pro vytváření dat klikněte na dlaždici **Kopírovat data**. Spustí se **průvodce kopírováním**.
 
    > [!NOTE]

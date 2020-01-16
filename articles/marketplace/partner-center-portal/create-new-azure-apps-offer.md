@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 60a3392474d11c306d28b9d95668a1e783cdfbb0
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: eb8540ac1904b46ba428b3b1e703e59c8b18d9e8
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930714"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046044"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -48,7 +48,7 @@ Všechny aplikace Azure obsahují v kořenové složce `.zip` archivu aspoň dva
 
 * Definice uživatelského rozhraní pro prostředí pro vytváření aplikací Azure s názvem [createUiDefinition. JSON](https://docs.microsoft.com/azure/managed-applications/create-uidefinition-overview).  V uživatelském rozhraní zadáváte elementy, které uživatelům umožňují zadávat hodnoty parametrů.
 
-Všechny nové nabídky aplikací Azure musí zahrnovat [identifikátor GUID poskytovatele využívání zákaznických zákazníků Azure](??).
+Všechny nové nabídky aplikací Azure musí zahrnovat [identifikátor GUID poskytovatele využívání zákaznických zákazníků Azure](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution).
 
 ### <a name="before-you-begin"></a>Než začnete
 

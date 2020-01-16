@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cb78be4456864e28c5559febf9733d7dc9a5029f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: eab332f102b9e39981e2d8ed6e84f73fada87a1a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930192"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981666"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Blob Storage pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -173,8 +173,8 @@ Tato část popisuje výsledné chování pro různé kombinace hodnot rekurzivn
 ## <a name="walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage"></a>Návod: použití Průvodce kopírováním ke zkopírování dat do/z Blob Storage
 Pojďme se podívat, jak rychle kopírovat data do nebo z úložiště objektů BLOB v Azure. V tomto návodu jsou zdrojová i cílová úložiště dat typu: Azure Blob Storage. Kanál v tomto návodu kopíruje data ze složky do jiné složky ve stejném kontejneru objektů BLOB. Tento názorný postup je záměrně jednoduchý k zobrazení nastavení nebo vlastností při použití Blob Storage jako zdroje nebo jímky.
 
-### <a name="prerequisites"></a>Předpoklady
-1. Pokud ho ještě nemáte, vytvořte účet pro obecné účely **Azure Storage** . V tomto návodu použijete úložiště objektů BLOB jako **zdrojové** i **cílové** úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md), kde najdete kroky pro jeho vytvoření.
+### <a name="prerequisites"></a>Požadavky
+1. Pokud ho ještě nemáte, vytvořte účet pro obecné účely **Azure Storage** . V tomto návodu použijete úložiště objektů BLOB jako **zdrojové** i **cílové** úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md), kde najdete kroky pro jeho vytvoření.
 2. V účtu úložiště vytvořte kontejner objektů BLOB s názvem **adfblobconnector** .
 4. V kontejneru **adfblobconnector** vytvořte složku s názvem **input** .
 5. Vytvořte soubor s názvem **EMP. txt** s následujícím obsahem a nahrajte ho do **vstupní** složky pomocí nástrojů, jako je [Průzkumník služby Azure Storage](https://azurestorageexplorer.codeplex.com/)
@@ -197,7 +197,7 @@ Pojďme se podívat, jak rychle kopírovat data do nebo z úložiště objektů 
 
 ### <a name="copy-wizard"></a>Průvodce kopírováním
 1. Na domovské stránce Data Factory klikněte na dlaždici **Kopírovat data** , na které se spustí **Průvodce kopírování dat** na samostatné kartě.  
-    
+
     > [!NOTE]
     > Pokud zjistíte, že je webový prohlížeč zablokovaný při autorizaci..., zakažte nebo zrušte kontrolu **souborů cookie třetích stran a nastavení dat webu** (nebo) zachovejte povolení a vytvořte výjimku pro **Login.microsoftonline.com** a potom zkuste průvodce spustit znovu.
 2. Na stránce **Vlastnosti**:

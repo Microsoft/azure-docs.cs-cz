@@ -1,6 +1,6 @@
 ---
-title: Nastavení prostředí pro datové vědy v Azure – Týmová věda – zpracování dat
-description: Nastavte prostředí pro datové vědy v Azure pro použití v rámci vědeckého zpracování týmových dat.
+title: Nastavení data science prostředí v Azure – vědecké zpracování týmových dat
+description: Nastavení data science prostředí v Azure pro použití v vědecké zpracování týmových dat.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,28 +11,28 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 63a77a4f715402951ba8af70755196d52e3b742d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3e52f88136517339139bebd17dea929ac02201e3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492400"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982028"
 ---
 # <a name="set-up-data-science-environments-for-use-in-the-team-data-science-process"></a>Nastavení prostředí vědeckého zkoumání dat pro použití v rámci vědeckého zpracování týmových dat
-Vědecké zpracování týmových dat používá pro ukládání, zpracování a analýzu dat různé prostředí pro datové vědy. Zahrnují Azure Blob Storage, několik typů clusterů Azure Virtual Machine, HDInsight (Hadoop) a pracovní prostory Azure Machine Learning. Rozhodnutí o tom, které prostředí se má použít, závisí na typu a množství dat, která se mají modelovat, a na cílovém cíli pro tato data v cloudu. 
+Proces vědecké účely Team dat používá různé vědě prostředí datových pro úložiště, zpracování a analýzu dat. Patří mezi ně Azure Blob Storage, několik typů virtuálních počítačů Azure, clustery HDInsight (Hadoop) a pracovní prostory Azure Machine Learning. Rozhodnutí o prostředí, ve kterém chcete použít závisí na typu a množství dat, modelovat a cílového místa pro tato data v cloudu. 
 
-* Pokyny ohledně otázek, které je potřeba vzít v úvahu při rozhodování, najdete v tématu [plánování Azure Machine Learningho prostředí pro datové vědy](plan-your-environment.md). 
-* Katalog některých scénářů, se kterými se můžete setkat při provádění pokročilých analýz, najdete v tématu [scénáře pro vědecké zpracování týmových dat](plan-sample-scenarios.md) .
+* Pokyny na otázky, které je při tomto rozhodnutí zvažte najdete v tématu [plánování si Azure Machine Learning prostředí pro datové vědy](plan-your-environment.md). 
+* Katalog některé scénáře, se mohou vyskytnout při provádění pokročilých analýz, naleznete v tématu [scénáře pro vědecké zpracování týmových dat](plan-sample-scenarios.md)
 
-Následující články popisují, jak nastavit různá prostředí pro datové vědy, která používá proces vědeckého zpracování dat týmu.
+Následující články popisují, jak vytvořit různé prostředí pro datové vědy používat vědecké zpracování týmových dat.
 
-* [Účet úložiště Azure](../../storage/common/storage-quickstart-create-account.md)
+* [Účet Azure storage](../../storage/common/storage-account-create.md)
 * [Cluster HDInsight (Hadoop)](customize-hadoop-cluster.md)
 * [Pracovní prostor Azure Machine Learning Studio (klasický)](../studio/create-workspace.md)
 
-**Microsoft Data Science Virtual Machine (DSVM)** je také k dispozici jako image virtuálních počítačů Azure. Tento virtuální počítač je předem nainstalovaný a nakonfigurovaný pomocí několika oblíbených nástrojů, které se běžně používají pro analýzu dat a strojové učení. DSVM je k dispozici v systémech Windows i Linux. Další informace najdete v tématu [Úvod do cloudového Data Science Virtual Machine pro Linux a Windows](../data-science-virtual-machine/overview.md).
+**Microsoft Data virtuálního počítače VĚDY** jsou také dostupné jako image virtuálních počítačů (VM) Azure. Tento virtuální počítač je předem nainstalovaný a nakonfigurovaný s několika oblíbenými nástroji, které se běžně používají pro analýzu dat a strojové učení. Datové VĚDY je dostupná ve Windows a Linuxu. Další informace najdete v tématu [Úvod do cloudové virtuální počítač pro datové vědy pro Linux a Windows](../data-science-virtual-machine/overview.md).
 
-Přečtěte si, jak vytvořit:
+Zjistěte, jak vytvořit:
 
 - [DSVM s Windows](../data-science-virtual-machine/provision-vm.md)
 - [Ubuntu DSVM](../data-science-virtual-machine/dsvm-ubuntu-intro.md)

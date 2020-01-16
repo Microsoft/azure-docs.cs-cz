@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 39665e0361747e0f75fa6c92f244317b995ce6a8
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: ab8baa810c36c794bbefd264c5588f8b28cbd62a
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863372"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046202"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Plánování prostředí Azure Time Series Insights GA
 
@@ -24,7 +24,7 @@ Tento článek popisuje, jak naplánovat Azure Time Series Insights prostředí 
 
 ## <a name="video"></a>Video
 
-**Podívejte se na toto video, kde najdete další informace o uchovávání dat v Azure Time Series Insights a o tom, jak je naplánovat**:<br /><br />
+**Podívejte se na toto video, kde najdete další informace o uchovávání dat v Azure Time Series Insights a o tom, jak je naplánovat**:<br />
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
@@ -53,7 +53,7 @@ Nastavení **doby uchovávání dat** můžete změnit v prostředí Azure Time 
 Azure Time Series Insights má dva režimy:
 
 * Jeden režim optimalizuje pro nejaktuálnější data. Vynutila zásady pro **mazání starých dat** , která opustí poslední data dostupná s instancí. Tento režim je ve výchozím nastavení zapnutý. 
-* Ostatní data optimalizují, aby zůstala pod nakonfigurovanými limity uchování. **Pozastavení** příchozího přenosu dat znemožňuje, aby se nová data nezobrazovala, když se vybrala při **překročení limitu úložiště**. 
+* Ostatní data optimalizují, aby zůstala pod nakonfigurovanými limity uchování. **Pozastavení** příchozího přenosu dat znemožňuje, aby se nová data nezobrazovala, když se vybrala při **překročení limitu úložiště**.
 
 Můžete upravit dobu uchovávání a přepínání mezi oběma režimy na stránce konfigurace prostředí v Azure Portal.
 

@@ -15,12 +15,12 @@ ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 00d4487abed97084976d81ee1ec78316fc688193
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 17a1f2c245e19afbf4d8c5092a0ddf0562a7cb0e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851379"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979326"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 
@@ -3153,6 +3153,6 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Spárovat poskytovatele prostředků se službou](../azure-resource-manager/azure-services-resource-providers.md)
+- [Spárovat poskytovatele prostředků se službou](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Vlastní role pro prostředky Azure](custom-roles.md)
 - [Oprávnění ve službě Azure Security Center](../security-center/security-center-permissions.md)

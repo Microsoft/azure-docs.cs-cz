@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/27/2019
 ms.author: nitinme
-ms.openlocfilehash: dfbd11b97ee77d77599ead08ba58fe173b64f876
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 14affb2c2aa53fc7a2b1a5946e81ad124800f678
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446477"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981269"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Kurz: použití nástroje pro rozpoznávání formulářů s Azure Logic Apps k analýze faktur
 
@@ -52,7 +52,7 @@ V tomto kurzu se naučíme extrahovat informace z těchto tabulek do formátu JS
 
 Tento kontejner použijete k nahrání ukázkových dat, která jsou nutná pro výuku modelu.
 
-1. Při vytváření účtu úložiště postupujte podle pokynů v části [Vytvoření účtu Azure Storage](../../storage/common/storage-quickstart-create-account.md) . Jako název účtu úložiště použijte **formrecostorage** .
+1. Při vytváření účtu úložiště postupujte podle pokynů v části [Vytvoření účtu Azure Storage](../../storage/common/storage-account-create.md) . Jako název účtu úložiště použijte **formrecostorage** .
 1. Podle pokynů v části [vytvoření kontejneru objektů BLOB v Azure](../../storage/blobs/storage-quickstart-blobs-portal.md) vytvořte kontejner v rámci Azure Storage účtu. Jako název kontejneru použijte **formrecocontainer** . Ujistěte se, že jste nastavili úroveň veřejného přístupu na **kontejner (anonymní přístup pro čtení kontejnerů a objektů BLOB)** .
 
     > [!div class="mx-imgBorder"]

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 64a5892226b90019f175308b5984dc0a0108e226
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 22060cc6dd5eb15e81a0c397a7b0255f16780d74
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162254"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976501"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Přidání virtuálního počítače do testovacího prostředí v Azure DevTest Labs
 Pokud jste už [svůj první virtuální počítač vytvořili](tutorial-create-custom-lab.md#add-a-vm-to-the-lab), pravděpodobně jste to učinili z předem načtené [image na webu Marketplace](devtest-lab-configure-marketplace-images.md). Pokud teď chcete do testovacího prostředí přidat další virtuální počítače, můžete také zvolit *základ* , který je buď [vlastní obrázek](devtest-lab-create-template.md) , nebo [vzorec](devtest-lab-manage-formulas.md). Tento kurz vás provede použitím Azure Portal k přidání virtuálního počítače do testovacího prostředí v DevTest Labs.
@@ -27,7 +27,7 @@ Pokud jste už [svůj první virtuální počítač vytvořili](tutorial-create-
 Tento článek také ukazuje, jak spravovat artefakty pro virtuální počítač v testovacím prostředí.
 
 ## <a name="steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Postup přidání virtuálního počítače do testovacího prostředí v Azure DevTest Labs
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se na web [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Vyberte **všechny služby**a potom v části **DEVOPS** vyberte **DevTest Labs** . Pokud vyberete * (hvězdička) vedle **DevTest Labs** v části **DEVOPS** . Tato akce přidá **DevTest Labs** do levé navigační nabídky, abyste k ní mohli snadno získat přístup později. Pak můžete v levé navigační nabídce vybrat **DevTest Labs** .
 
     ![Všechny služby – výběr DevTest Labs](./media/devtest-lab-create-lab/all-services-select.png)
@@ -52,7 +52,7 @@ Tento článek také ukazuje, jak spravovat artefakty pro virtuální počítač
     2. Chcete-li změnit podsíť, vyberte možnost **změnit podsíť**.
     3. Určete, jestli je IP adresa virtuálního počítače **veřejná, soukromá nebo sdílená**.
     4. Pokud chcete virtuální počítač automaticky odstranit, zadejte **Datum a čas vypršení platnosti**.
-    5. Pokud chcete virtuální počítač vyžádat od uživatele testovacího prostředí, vyberte **Ano** , aby se tato možnost vymáhat z **tohoto počítače** mohla vydávat.
+    5. Pokud chcete virtuální počítač vyžádat od uživatele testovacího prostředí, vyberte **Ano** , **aby se tato možnost vymáhat z tohoto počítače** mohla vydávat.
     6. Zadejte počet **instancí virtuálního počítače** , které mají být k dispozici pro uživatele testovacího prostředí.
 
         ![Výběr základní image](./media/tutorial-create-custom-lab/new-vm-advanced-settings.png)
@@ -70,7 +70,7 @@ Při vytváření virtuálního počítače můžete přidat existující artefa
 
 Chcete-li zjistit, jak vytvořit artefakty, přečtěte si článek, [jak vytvářet vlastní artefakty pro použití s DevTest Labs](devtest-lab-artifact-author.md).
 
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se na web [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 1. V seznamu cvičení vyberte testovací prostředí obsahující virtuální počítač, se kterým chcete pracovat.
 1. Vyberte **moje virtuální počítače**.
@@ -107,7 +107,7 @@ Následující postup ukazuje, jak zobrazit nebo upravit parametry artefaktu:
 ## <a name="save-azure-resource-manager-template"></a>Uložit šablonu Azure Resource Manager
 Šablona Azure Resource Manager poskytuje deklarativní způsob, jak definovat opakované nasazení.
 Následující postup vysvětluje, jak uložit šablonu Azure Resource Manager pro vytvářený virtuální počítač.
-Po uložení můžete použít šablonu Azure Resource Manager k [nasazení nových virtuálních počítačů s Azure PowerShell](../azure-resource-manager/template-deployment-overview.md).
+Po uložení můžete použít šablonu Azure Resource Manager k [nasazení nových virtuálních počítačů s Azure PowerShell](../azure-resource-manager/templates/overview.md).
 
 1. V podokně **virtuální počítač** vyberte **Zobrazit Azure Resource Manager šablonu**.
 2. V podokně **zobrazit Azure Resource Manager šablonu** vyberte text šablony.

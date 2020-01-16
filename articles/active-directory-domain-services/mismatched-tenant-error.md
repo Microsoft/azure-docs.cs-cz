@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 0d96fd4c435251fb4dd604351e6efeea8bde8353
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 601574cc2a478dc53a261cfcb074e43a556dd4c0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704549"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979515"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Řešení chyb neodpovídajících adresářů pro existující Azure AD Domain Services spravované domény
 
@@ -56,7 +56,7 @@ V tomto ukázkovém scénáři nasazení je v tenantovi Azure AD ve společnosti
 Následující dvě možnosti vyřeší chybu neodpovídajícího adresáře:
 
 * Odstraňte ze stávajícího adresáře Azure AD [spravovanou doménu azure služba AD DS](delete-aadds.md) . Ve stejném adresáři Azure AD jako virtuální síť, kterou chcete použít, [vytvořte náhradní azure služba AD DS spravovanou doménu](tutorial-create-instance.md) . Až budete připraveni, připojte všechny počítače dříve připojené k odstraněné doméně k znovu vytvořené spravované doméně.
-* [Přesuňte předplatné Azure](../billing/billing-subscription-transfer.md) obsahující virtuální síť do stejného adresáře služby Azure AD, jako je spravovaná doména Azure služba AD DS.
+* [Přesuňte předplatné Azure](../cost-management-billing/manage/billing-subscription-transfer.md) obsahující virtuální síť do stejného adresáře služby Azure AD, jako je spravovaná doména Azure služba AD DS.
 
 ## <a name="next-steps"></a>Další kroky
 

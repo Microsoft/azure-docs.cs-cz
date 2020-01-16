@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: e61d0840f66dad2e1bf91512281d9171771f7ca9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1d66908d956f60ec894af50c45fd64387639addf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032909"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981281"
 ---
 # <a name="common-powershell-commands-for-creating-and-managing-azure-virtual-machines"></a>Běžné příkazy PowerShellu pro vytváření a správu Azure Virtual Machines
 
@@ -50,7 +50,7 @@ Tyto proměnné mohou být užitečné při spuštění více než jednoho z př
 | Přidat nastavení konfigurace |$vm = [set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) -VM $VM-Windows-ComputerName $MyVM-Credential $Cred-ProvisionVMAgent-EnableAutoUpdate<BR></BR><BR></BR>Do objektu konfigurace, který jste dříve vytvořili pomocí New-AzVMConfig, se přidají nastavení operačního systému včetně [přihlašovacích údajů](https://technet.microsoft.com/library/hh849815.aspx) . |
 | Přidat síťové rozhraní |$vm = [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVMNetworkInterface) -VM $VM-ID $nic. Účet<BR></BR><BR></BR>Virtuální počítač musí mít [síťové rozhraní](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) pro komunikaci ve virtuální síti. K načtení stávajícího objektu síťového rozhraní můžete také použít [příkaz Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) . |
 | Zadat image platformy |$vm = [set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage) -VM $VM-Publisher "publisher_name"-nabídky "publisher_offer"-sku "product_sku"-Version "nejnovější"<BR></BR><BR></BR>Do objektu konfigurace, který jste dříve vytvořili pomocí New-AzVMConfig, se přidají [informace o imagi](cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Objekt vrácený z tohoto příkazu se používá jenom v případě, že jste nastavili disk s operačním systémem pro použití image platformy. |
-| Vytvoření virtuálního počítače |[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) -ResourceGroupName $myResourceGroup -Location $location -VM $vm<BR></BR><BR></BR>Všechny prostředky se vytvoří ve [skupině prostředků](../../azure-resource-manager/manage-resource-groups-powershell.md). Před spuštěním tohoto příkazu spusťte rutinu New-AzVMConfig, set-AzVMOperatingSystem, set-AzVMSourceImage, Add-AzVMNetworkInterface a set-AzVMOSDisk. |
+| Vytvoření virtuálního počítače |[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) -ResourceGroupName $myResourceGroup -Location $location -VM $vm<BR></BR><BR></BR>Všechny prostředky se vytvoří ve [skupině prostředků](../../azure-resource-manager/management/manage-resource-groups-powershell.md). Před spuštěním tohoto příkazu spusťte rutinu New-AzVMConfig, set-AzVMOperatingSystem, set-AzVMSourceImage, Add-AzVMNetworkInterface a set-AzVMOSDisk. |
 | Aktualizace virtuálního počítače |[Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) -ResourceGroupName $myResourceGroup -VM $vm<BR></BR><BR></BR>Získejte aktuální konfiguraci virtuálních počítačů pomocí rutiny Get-AzVM, změňte nastavení konfigurace objektu virtuálního počítače a pak spusťte tento příkaz. |
 
 ## <a name="get-information-about-vms"></a>Získat informace o virtuálních počítačích

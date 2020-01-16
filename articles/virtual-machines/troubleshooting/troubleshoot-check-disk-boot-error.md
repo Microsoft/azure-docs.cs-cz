@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/31/2018
 ms.author: genli
-ms.openlocfilehash: 839803c8cf54a85946e7134fdb6fe6be2da3dc4c
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: ba3138076da89610bef878583e424153594c5dcc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058084"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981374"
 ---
 # <a name="windows-shows-checking-file-system-when-booting-an-azure-vm"></a>Windows při spuštění virtuálního počítače Azure zobrazuje "kontrolu systému souborů"
 
 Tento článek popisuje chybu "Kontrola systému souborů", se kterou se můžete setkat při spuštění virtuálního počítače s Windows v Microsoft Azure.
 
 > [!NOTE] 
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití modelu nasazení Správce prostředků, který doporučujeme použít pro nová nasazení místo modelu nasazení Classic.
+> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití modelu nasazení Správce prostředků, který doporučujeme použít pro nová nasazení místo modelu nasazení Classic.
 
 ## <a name="symptom"></a>Příznak 
 

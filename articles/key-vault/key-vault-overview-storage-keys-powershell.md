@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 46e6f19a071986cf12590e9bd5c420e070572a14
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 584a37ffb9727a48e2adb5e339697314cffe93f7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707104"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980847"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Správa klíčů účtu úložiště pomocí Key Vault a Azure PowerShell
 
@@ -42,19 +42,19 @@ Tenant služby Azure AD poskytuje každou registrovanou aplikaci s [instančním
 
 Key Vault je aplikace Microsoftu, která je předem registrovaná ve všech klientech Azure AD. Key Vault je zaregistrované pod stejným ID aplikace v každém cloudu Azure.
 
-| Tenantů | Cloud | ID aplikace |
+| Klienti | Cloud | ID aplikace |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Veřejné Azure | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 | Jiné  | Všechny | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li dokončit tuto příručku, je třeba nejprve provést následující akce:
 
 - [Nainstalujte modul Azure PowerShell](/powershell/azure/install-az-ps?view=azps-2.6.0).
 - [Vytvoření trezoru klíčů](quick-create-powershell.md)
-- [Vytvořte si účet Azure Storage](../storage/common/storage-quickstart-create-account.md?tabs=azure-powershell). Název účtu úložiště musí obsahovat jenom malá písmena a číslice. Název musí mít délku 3 až 24 znaků.
+- [Vytvořte si účet Azure Storage](../storage/common/storage-account-create.md?tabs=azure-powershell). Název účtu úložiště musí obsahovat jenom malá písmena a číslice. Název musí mít délku 3 až 24 znaků.
       
 
 ## <a name="manage-storage-account-keys"></a>Správa klíčů účtu úložiště
@@ -117,7 +117,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-Pokud se už Key Vault do role vašeho účtu úložiště přidalo, obdržíte, *že přiřazení role už existuje.* Chyba. Přiřazení role můžete také ověřit pomocí stránky účet úložiště "řízení přístupu (IAM)" v Azure Portal.  
+Pokud se už Key Vault do role vašeho účtu úložiště přidalo, obdržíte, *že přiřazení role už existuje.* . Přiřazení role můžete také ověřit pomocí stránky účet úložiště "řízení přístupu (IAM)" v Azure Portal.  
 
 ### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>Poskytnutí oprávnění ke spravovaným účtům úložiště vašemu uživatelskému účtu
 
@@ -185,7 +185,7 @@ Tags                :
 
 ## <a name="shared-access-signature-tokens"></a>Tokeny sdíleného přístupového podpisu
 
-Můžete také požádat Key Vault o generování tokenů sdíleného přístupového podpisu. Sdílený přístupový podpis poskytuje delegovaný přístup k prostředkům ve vašem účtu úložiště. Klientům můžete udělit přístup k prostředkům v účtu úložiště bez sdílení klíčů účtu. Sdílený přístupový podpis poskytuje zabezpečený způsob, jak sdílet prostředky úložiště bez narušení klíčů účtu.
+Můžete také požádat Key Vault o generování tokenů sdíleného přístupového podpisu. Sdílený přístupový podpis poskytuje Delegovaný přístup k prostředkům ve vašem účtu úložiště. Klientům můžete udělit přístup k prostředkům v účtu úložiště bez sdílení klíčů účtu. Sdílený přístupový podpis poskytuje zabezpečený způsob, jak sdílet prostředky úložiště bez narušení klíčů účtu.
 
 Příkazy v této části dokončí následující akce:
 
