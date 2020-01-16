@@ -3,7 +3,7 @@ title: Vytváření úloh pro přípravu úloh a dokončení úloh na výpočetn
 description: K minimalizaci přenosu dat do Azure Batch výpočetních uzlů a vyplňování úloh pro vyčištění uzlů při dokončování úloh můžete použít úkoly přípravy na úrovni úlohy.
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 63d9d4f1-8521-4bbb-b95a-c4cad73692d3
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 2dbdbc8b13a75b72ca09a319c6925d0835a52e13
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7c5c9dfcaa88b35e14cf5d56b01b4e364c856600
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095122"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027120"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Spuštění úkolů přípravy úloh a uvolnění úloh na výpočetních uzlech Batch
 
@@ -57,7 +57,7 @@ Možná budete chtít uchovat kopii souborů protokolu, které vaše úkoly gene
 > 
 > 
 
-## <a name="job-preparation-task"></a>Příprava na úlohu
+## <a name="job-preparation-task"></a>Úkol přípravy úlohy
 Před provedením úkolů úlohy Batch spustí úkol přípravy úlohy na každém výpočetním uzlu, který má naplánované spuštění úlohy. Služba Batch standardně čeká na dokončení úlohy přípravy úlohy před spuštěním úloh, které mají naplánované spuštění na uzlu. Službu však můžete nakonfigurovat tak, aby nečekala. Pokud se uzel restartuje, úloha přípravy úlohy se znovu spustí, ale toto chování můžete také zakázat.
 
 Úkol přípravy úlohy je proveden pouze v uzlech, které mají naplánované spuštění úlohy. Tím se zabrání zbytečnému provedení přípravné úlohy pro případ, že uzel není přiřazený úkol. Tato situace může nastat, pokud je počet úloh úlohy menší než počet uzlů ve fondu. Platí také v případě, že je povoleno [Souběžné provádění úloh](batch-parallel-node-tasks.md) , což ponechá některé uzly nečinné, pokud je počet úloh nižší než celkové možné souběžné úlohy. Nespuštěním úlohy přípravy úlohy na nečinných uzlech můžete strávit poplatky za přenos dat bez dalších poplatků.
@@ -67,7 +67,7 @@ Před provedením úkolů úlohy Batch spustí úkol přípravy úlohy na každ�
 > 
 > 
 
-## <a name="job-release-task"></a>Uvolnění úlohy
+## <a name="job-release-task"></a>Úkol uvolnění úlohy
 Jakmile je úloha označena jako dokončená, úkol uvolnění úlohy se spustí na každém uzlu ve fondu, který provedl alespoň jeden úkol. Úlohu označíte jako dokončenou vyvoláním žádosti o ukončení. Služba Batch pak nastaví stav úlohy na *ukončení*, ukončí všechny aktivní nebo spuštěné úlohy přidružené k úloze a spustí úlohu uvolnění úlohy. Úloha se pak přesune do *dokončeného* stavu.
 
 > [!NOTE]
@@ -80,7 +80,7 @@ Jakmile je úloha označena jako dokončená, úkol uvolnění úlohy se spustí
 ## <a name="job-prep-and-release-tasks-with-batch-net"></a>Úkoly přípravy a uvolnění úloh pomocí batch .NET
 Pokud chcete použít úkol přípravy úlohy, přiřaďte objekt [JobPreparationTask][net_job_prep] k vlastnosti [vlastnosti cloudjob. JobPreparationTask][net_job_prep_cloudjob] vaší úlohy. Podobně inicializujte [JobReleaseTask][net_job_release] a přiřaďte ji k vlastnosti [vlastnosti cloudjob. JobReleaseTask][net_job_prep_cloudjob] vaší úlohy, abyste mohli nastavit úlohu verze úlohy.
 
-V tomto fragmentu `myBatchClient` kódu je instance [BatchClient][net_batch_client]a `myPool` je existující fond v rámci účtu Batch.
+V tomto fragmentu kódu `myBatchClient` je instance [BatchClient][net_batch_client]a `myPool` je existující fond v rámci účtu Batch.
 
 ```csharp
 // Create the CloudJob for CloudPool "myPool"
@@ -181,11 +181,11 @@ Sample complete, hit ENTER to exit...
 ### <a name="inspect-job-preparation-and-release-tasks-in-the-azure-portal"></a>Kontrola úloh přípravy a vydání úloh v Azure Portal
 Když spustíte ukázkovou aplikaci, můžete použít [Azure Portal][portal] k zobrazení vlastností úlohy a jejích úkolů nebo dokonce stáhnout sdílený textový soubor, který je upraven úlohami úlohy.
 
-Níže uvedený snímek obrazovky ukazuje okno přípravné **úkoly** v Azure Portal po spuštění ukázkové aplikace. Až se vaše úkoly dokončí (ale před odstraněním úlohy a fondu), přejděte do vlastností *JobPrepReleaseSampleJob* a zobrazte jejich vlastnosti kliknutím na **Příprava úkolů** nebo na úlohy vydaných **verzí** .
+Níže uvedený snímek obrazovky ukazuje okno **přípravné úkoly** v Azure Portal po spuštění ukázkové aplikace. Až se vaše úkoly dokončí (ale před odstraněním úlohy a fondu), přejděte do vlastností *JobPrepReleaseSampleJob* a zobrazte jejich vlastnosti kliknutím na **Příprava úkolů** nebo na úlohy vydaných **verzí** .
 
 ![Vlastnosti přípravy úlohy v Azure Portal][1]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 ### <a name="application-packages"></a>Balíčky aplikací
 Kromě úlohy přípravy úlohy můžete také použít funkci [balíčky aplikací](batch-application-packages.md) služby Batch k přípravě výpočetních uzlů pro provádění úloh. Tato funkce je zvláště užitečná pro nasazení aplikací, které nevyžadují spuštění instalačního programu, aplikací, které obsahují mnoho (100) souborů, nebo aplikací, které vyžadují striktní správu verzí.
 
