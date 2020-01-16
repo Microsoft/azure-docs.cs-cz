@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 677e38f69729bba8caf1ec3f88b2e0a1a4f8c7e8
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 21b46ba0012b71ed0e09dc09d041ceb020824843
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073672"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967456"
 ---
 # <a name="azure-api-management-faqs"></a>Nejčastější dotazy k Azure API Management
 Získejte odpovědi na běžné otázky, vzory a osvědčené postupy pro Azure API Management.
@@ -73,7 +73,7 @@ Máte několik možností, pokud chcete zkopírovat instanci API Management do n
 * Vytvořte vlastní funkci zálohování a obnovení pomocí [REST API API Management](/rest/api/apimanagement/). Použijte REST API k uložení a obnovení entit z instance služby, kterou chcete.
 * Stáhněte konfiguraci služby pomocí Gitu a pak ji nahrajte do nové instance. Další informace najdete v tématu [Jak uložit a nakonfigurovat konfiguraci služby API Management pomocí Gitu](api-management-configuration-repository-git.md).
 
-### <a name="can-i-manage-my-api-management-instance-programmatically"></a>Můžu programově spravovat instanci API Management?
+### <a name="can-i-manage-my-api-management-instance-programmatically"></a>Můžu spravovat instanci služby API Management programově?
 Ano, API Management můžete spravovat programově pomocí:
 
 * [REST API API Management](/rest/api/apimanagement/).
@@ -83,14 +83,14 @@ Ano, API Management můžete spravovat programově pomocí:
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Návody přidat uživatele do skupiny Administrators?
 Zde je postup, jak můžete přidat uživatele do skupiny Administrators:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Přejít do skupiny prostředků, která obsahuje instanci API Management, kterou chcete aktualizovat.
 3. V API Management přiřaďte uživateli roli **Přispěvatel služby API Management** .
 
 Nově přidaný Přispěvatel teď může používat [rutiny](https://docs.microsoft.com/powershell/azure/overview)Azure PowerShell. Tady je postup, jak se přihlásit jako správce:
 
-1. Přihlaste se pomocí rutiny. `Connect-AzAccount`
-2. Nastavte kontext na předplatné, které má službu pomocí nástroje `Set-AzContext -SubscriptionID <subscriptionGUID>`.
+1. Přihlaste se pomocí rutiny `Connect-AzAccount`.
+2. Nastavte kontext na předplatné, které má službu, pomocí `Set-AzContext -SubscriptionID <subscriptionGUID>`.
 3. K získání adresy URL jednotného přihlašování použijte `Get-AzApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>`.
 4. Použijte adresu URL pro přístup k portálu pro správu.
 
@@ -103,7 +103,7 @@ K nastavení více prostředí, například testovací prostředí a produkční
 * Hostování různých rozhraní API na stejném tenantovi.
 * Hostovat stejná rozhraní API v různých klientech.
 
-### <a name="can-i-use-soap-with-api-management"></a>Je možné použít protokol SOAP s API Management?
+### <a name="can-i-use-soap-with-api-management"></a>Můžu se službou API Management používat protokol SOAP?
 K dispozici je teď podpora [předávacího protokolu SOAP](https://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/) . Správci mohou importovat WSDL své služby SOAP a Azure API Management vytvoří front-end SOAP. Dokumentace k portálu pro vývojáře, testovací konzola, zásady a analýzy jsou k dispozici pro služby SOAP.
 
 ### <a name="can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security"></a>Můžu nakonfigurovat autorizační Server OAuth 2,0 se zabezpečením AD FS?
@@ -119,7 +119,7 @@ Ano. Další informace najdete v tématu šablony rychlý Start pro [službu Azu
 Ano. To se dá udělat prostřednictvím PowerShellu nebo přímo odeslání do rozhraní API. Tím se zakáže ověřování řetězu certifikátů, které vám umožní používat certifikáty podepsané svým držitelem nebo soukromým podpisem při komunikaci od API Management až po služby back-endu.
 
 #### <a name="powershell-method"></a>PowerShell – metoda ####
-Použijte (pro nový back-end) nebo [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (pro stávající back-end) `-SkipCertificateChainValidation` rutiny PowerShellu a nastavte parametr `True`na. [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) 
+Použijte [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (pro nový back-end) nebo [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (pro stávající back-end) rutiny PowerShellu a nastavte parametr `-SkipCertificateChainValidation` na `True`.
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
@@ -139,13 +139,13 @@ Ano. API Management funguje se službou Azure ExpressRoute.
 
 ### <a name="why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them"></a>Proč vyžadujeme vyhrazenou podsíť ve stylu Správce prostředků virtuální sítě, když do nich API Management nasazená?
 Požadavek na vyhrazenou podsíť pro API Management pochází ze skutečnosti, který je postaven na modelu nasazení Classic (PAAS v1 Layer). I když můžeme nasadit do virtuální sítě typu Správce prostředků (v2 Layer), jsou k dispozici důsledky. Model nasazení Classic v Azure není úzce spojený s modelem Správce prostředků, takže pokud vytvoříte prostředek ve vrstvě v2, vrstva v1 o ní neví a problémy, jako je například API Management pokus o použití IP adresy, která je již přidělena síťovému rozhraní.  (postavené na v2).
-Pokud se chcete dozvědět víc o rozdílech mezi klasickými a Správce prostředků modely v Azure, přečtěte si o [rozdílech v modelech nasazení](../azure-resource-manager/resource-manager-deployment-model.md).
+Pokud se chcete dozvědět víc o rozdílech mezi klasickými a Správce prostředků modely v Azure, přečtěte si o [rozdílech v modelech nasazení](../azure-resource-manager/management/deployment-models.md).
 
 ### <a name="what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet"></a>Jaká je minimální velikost podsítě potřebnou při nasazení API Management do virtuální sítě?
 Minimální velikost podsítě potřebná k nasazení API Management je [/29](../virtual-network/virtual-networks-faq.md#configuration), což je minimální velikost podsítě, kterou Azure podporuje.
 
 ### <a name="can-i-move-an-api-management-service-from-one-subscription-to-another"></a>Můžu přesunout službu API Management z jednoho předplatného na jinou?
-Ano. Další informace najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo](../azure-resource-manager/resource-group-move-resources.md)předplatného.
+Ano. Další informace najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 ### <a name="are-there-restrictions-on-or-known-issues-with-importing-my-api"></a>Existují omezení nebo známé problémy při importu rozhraní API?
 [Známé problémy a omezení](api-management-api-import-restrictions.md) pro Open API (Swagger), formáty WSDL a WADL.

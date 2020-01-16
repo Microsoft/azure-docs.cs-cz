@@ -6,15 +6,15 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: e4265cf3f9c211a19fe05bc18cf47a273165c3c3
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: df8b65fcb4dd2b9622716052be2df59cbfa5424a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122779"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971819"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Import a export dat v Azure cache pro Redis
-Import/Export je mezipaměť Azure pro operaci správy dat Redis, která umožňuje importovat data do mezipaměti Azure pro Redis nebo exportovat data z mezipaměti Azure pro Redis tím, že importuje a exportuje snímek Azure cache for Redis Database (RDB) z mezipaměti Premium do objekt BLOB v účtu Azure Storage. 
+Import/Export je mezipaměť Azure pro operaci správy dat Redis, která umožňuje importovat data do mezipaměti Azure pro Redis nebo exportovat data z mezipaměti Azure pro Redis tím, že importuje a exportuje snímek Azure cache for Redis Database (RDB) z mezipaměti Premium do objektu BLOB v účtu Azure Storage.
 
 - **Export** – mezipaměť Azure můžete exportovat pro REDIS snímky RDB do objektu blob stránky.
 - **Import** – mezipaměť Azure pro REDIS snímky RDB můžete importovat buď z objektu blob stránky, nebo z objektu blob bloku.
@@ -41,7 +41,7 @@ Import se dá použít k převedení Redis kompatibilních souborů RDB z libovo
     ![Import dat](./media/cache-how-to-import-export-data/cache-import-data.png)
 2. Klikněte na **zvolit objekty blob** a vyberte účet úložiště, který obsahuje data, která chcete importovat.
 
-    ![Zvolit účet úložiště](./media/cache-how-to-import-export-data/cache-import-choose-storage-account.png)
+    ![Výběr účtu úložiště](./media/cache-how-to-import-export-data/cache-import-choose-storage-account.png)
 3. Klikněte na kontejner obsahující data, která chcete importovat.
 
     ![Zvolit kontejner](./media/cache-how-to-import-export-data/cache-import-choose-container.png)
@@ -57,11 +57,11 @@ Import se dá použít k převedení Redis kompatibilních souborů RDB z libovo
 
     ![Import](./media/cache-how-to-import-export-data/cache-import-blobs.png)
 
-    Průběh operace importu můžete monitorovat pomocí oznámení z Azure Portal nebo zobrazením událostí v [protokolu auditu](../azure-resource-manager/resource-group-audit.md).
+    Průběh operace importu můžete monitorovat pomocí oznámení z Azure Portal nebo zobrazením událostí v [protokolu auditu](../azure-resource-manager/management/view-activity-logs.md).
 
     ![Průběh importu](./media/cache-how-to-import-export-data/cache-import-data-import-complete.png)
 
-## <a name="export"></a>Export
+## <a name="export"></a>Exportovat
 Export umožňuje exportovat data uložená v mezipaměti Azure pro Redis do souborů RDB kompatibilních s Redis. Tuto funkci můžete použít k přesunu dat z jedné instance Azure cache pro instanci Redis do jiného nebo na jiný server Redis. Během procesu exportu se na virtuálním počítači, který hostuje instanci serveru Azure cache pro Redis, vytvoří dočasný soubor a soubor se nahraje do určeného účtu úložiště. Když se operace exportu dokončí buď se stavem úspěch, nebo neúspěchem, dočasný soubor se odstraní.
 
 1. Pokud chcete exportovat aktuální obsah mezipaměti do úložiště, přejděte do [mezipaměti](cache-configure.md#configure-azure-cache-for-redis-settings) v Azure Portal a klikněte na **exportovat data** z **nabídky prostředků**.
@@ -79,9 +79,9 @@ Export umožňuje exportovat data uložená v mezipaměti Azure pro Redis do sou
     ![Zvolit kontejner úložiště](./media/cache-how-to-import-export-data/cache-export-data-container.png)
 4. Zadejte **předponu názvu objektu BLOB** a kliknutím na **Export** spusťte proces exportu. Předpona názvu objektu BLOB se používá k vytvoření předpony názvů souborů generovaných touto operací exportu.
 
-    ![Export](./media/cache-how-to-import-export-data/cache-export-data.png)
+    ![Exportovat](./media/cache-how-to-import-export-data/cache-export-data.png)
 
-    Průběh operace exportu můžete sledovat pomocí oznámení z Azure Portal nebo zobrazením událostí v [protokolu auditu](../azure-resource-manager/resource-group-audit.md).
+    Průběh operace exportu můžete sledovat pomocí oznámení z Azure Portal nebo zobrazením událostí v [protokolu auditu](../azure-resource-manager/management/view-activity-logs.md).
 
     ![Export dat dokončen](./media/cache-how-to-import-export-data/cache-export-data-export-complete.png)
 
@@ -109,8 +109,8 @@ Ano, kromě importování dat exportovaných z mezipaměti Azure pro instance Re
 
 > [!IMPORTANT]
 > Aby bylo možné úspěšně importovat data exportovaná ze serverů Redis než Azure cache pro Redis při použití objektu blob stránky, musí být velikost objektu blob stránky zarovnána na hranici 512 bajtů. Vzorový kód pro provedení všech vyžadovaných odsazení v bajtech najdete v tématu věnovaném [nahrání objektu BLOB ukázkové stránky](https://github.com/JimRoberts-MS/SamplePageBlobUpload).
-> 
-> 
+>
+>
 
 ### <a name="what-rdb-versions-can-i-import"></a>Jaké verze RDB mohu importovat?
 

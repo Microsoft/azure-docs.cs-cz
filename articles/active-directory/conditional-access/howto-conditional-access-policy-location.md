@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf34abaf072b7b80f5831f15d86b12ad2780a920
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 42fa4dfb3e373eac4167ea1fecbd84ff3a7cca0d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424872"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977997"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Podmíněný přístup: blokovat přístup podle umístění
 
@@ -30,7 +30,7 @@ Pomocí podmínky umístění v podmíněném přístupu můžete řídit přís
 1. Zadejte název svého umístění.
 1. **Rozsahy IP** adres vyberte, pokud znáte konkrétní externě přístupné rozsahy IPv4 adres, které tvoří dané umístění nebo **země nebo oblasti**.
    1. Zadejte **rozsahy IP adres** nebo vyberte **země nebo oblasti** pro umístění, které zadáte.
-      * Pokud jste zvolili země/oblasti, můžete volitelně zahrnout neznámé oblasti.
+      * Pokud zvolíte země/oblasti, můžete volitelně zahrnout neznámé oblasti.
 1. Vyberte **Uložit**.
 
 Další informace o podmínkách umístění v podmíněném přístupu najdete v článku [co je to podmínka umístění v Azure Active Directory podmíněný přístup](location-condition.md) .
