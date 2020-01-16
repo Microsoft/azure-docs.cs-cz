@@ -4,15 +4,15 @@ description: Popisuje způsob použití Azure Analysis Services REST API k kódo
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 01/14/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7c6fba10264939335cdef26f288973f8217f340b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2281f9d493edf955881772ec174c82b527f1b6fa
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573397"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029871"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchronní aktualizace s využitím rozhraní REST API
 
@@ -30,7 +30,7 @@ Základní adresa URL má následující formát:
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-Představte si třeba model nazvaný AdventureWorks na serveru s názvem MyServer, který se nachází v oblasti Západní USA Azure. Název serveru:
+Představte si třeba model nazvaný AdventureWorks na serveru s názvem `myserver`, který se nachází v oblasti Západní USA Azure. Název serveru:
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -56,7 +56,7 @@ Můžete například použít příkaz POST v kolekci reaktuálnosti k proveden�
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Ověření
 
 Všechna volání musí být ověřena pomocí platného tokenu Azure Active Directory (OAuth 2) v autorizační hlavičce a musí splňovat následující požadavky:
 
@@ -97,9 +97,9 @@ Tělo může vypadat takto:
 
 Určení parametrů není vyžadováno. Použije se výchozí hodnota.
 
-| Název             | Typ  | Popis  |Výchozí  |
+| Name (Název)             | Typ  | Popis  |Výchozí  |
 |------------------|-------|--------------|---------|
-| `Type`           | Výčet  | Typ zpracování, které má být provedeno. Typy jsou zarovnány s TMSL typy [příkazů pro obnovení](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) : Full, clearValues, vypočítat, dataonly, Automatic a defragmentovat. Typ přidání není podporován.      |   Automatické      |
+| `Type`           | Výčet  | Typ zpracování, které má být provedeno. Typy jsou zarovnány s TMSL typy [příkazů pro obnovení](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) : Full, clearValues, vypočítat, dataonly, Automatic a defragmentovat. Typ přidání není podporován.      |   automaticky      |
 | `CommitMode`     | Výčet  | Určuje, zda budou objekty potvrzeny v dávkách nebo pouze v případě, že jsou dokončeny. Mezi režimy patří: Default, Transaction, partialBatch.  |  doručen       |
 | `MaxParallelism` | Int   | Tato hodnota určuje maximální počet vláken, ve kterých se paralelně spouští příkazy zpracování. Tato hodnota je zarovnána s vlastností MaxParallelism, kterou lze nastavit v [příkazu TMSL Sequence](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) nebo pomocí jiných metod.       | 10        |
 | `RetryCount`     | Int   | Určuje počet pokusů, kolikrát operace proběhne znovu, než dojde k selhání.      |     0    |
@@ -110,9 +110,20 @@ CommitMode se rovná partialBatch. Používá se při počátečním zatížení
 > [!NOTE]
 > V okamžiku psaní je velikost dávky hodnota MaxParallelism, ale tato hodnota se může změnit.
 
+### <a name="status-values"></a>Hodnoty stavu
+
+|Hodnota stavu  |Popis  |
+|---------|---------|
+|`notStarted`    |   Operace se ještě nespustila.      |
+|`inProgress`     |   Probíhá operace.      |
+|`timedOut`     |    Vypršel časový limit operace na základě zadaného uživatele.     |
+|`cancelled`     |   Operace byla zrušena uživatelem nebo systémem.      |
+|`failed`     |   Operace se nezdařila.      |
+|`succeeded`      |   Operace byla úspěšná.      |
+
 ## <a name="get-refreshesrefreshid"></a>ZÍSKAT/refreshes/\<refreshId >
 
-Chcete-li zjistit stav operace aktualizace, použijte příkaz GET v ID aktualizace. Tady je příklad těla odpovědi. Pokud operace probíhá, vrátí se stav při **zpracování** .
+Chcete-li zjistit stav operace aktualizace, použijte příkaz GET v ID aktualizace. Tady je příklad těla odpovědi. Pokud operace probíhá, `inProgress` se vrátí ve stavu.
 
 ```
 {
@@ -211,7 +222,7 @@ Další informace o tom, jak nastavit instanční objekt a přiřadit potřebná
 3.  Spusťte ukázku.
 
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 [Ukázky](analysis-services-samples.md)   
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   

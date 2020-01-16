@@ -5,12 +5,12 @@ author: mumian
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 999b932cc12b945c3bf6bb0a4b56c3da19bb3ca6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 895d82eb79e4674ca95b9052d2384a257b296bf5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472405"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980662"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Kurz: Používání podmínek v šablonách Azure Resource Manageru
 
@@ -155,7 +155,7 @@ New-AzResourceGroupDeployment `
 > [!NOTE]
 > Pokud má parametr **newOrExisting** hodnotu **new**, ale účet úložiště se zadaným názvem již existuje, nasazení selže.
 
-Zkuste provést jiné nasazení s **newOrExisting** nastavenou na "existující" a zadat existující účet úložiště. Pokud chcete vytvořit účet úložiště předem, přečtěte si téma [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md).
+Zkuste provést jiné nasazení s **newOrExisting** nastavenou na "existující" a zadat existující účet úložiště. Pokud chcete vytvořit účet úložiště předem, přečtěte si téma [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

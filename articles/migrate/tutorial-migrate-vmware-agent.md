@@ -1,19 +1,15 @@
 ---
 title: Migrace virtuálních počítačů VMware pomocí migrace serveru na základě agentů Azure Migrate
 description: Naučte se spouštět migraci virtuálních počítačů VMware založených na agentech pomocí Azure Migrate.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
-ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 581014b89627905e3206705dffade5ba19443b65
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: c6e0b65a586bfd629244404933836cde7287ae29
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196297"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028951"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Migrace virtuálních počítačů VMware do Azure (na základě agentů)
 
@@ -177,9 +173,9 @@ Ujistěte se, že servery a virtuální počítače VMware splňují požadavky 
 > [!NOTE]
 > Migrace na základě agenta pomocí migrace serveru Azure Migrate je založená na funkcích služby Azure Site Recovery. Některé požadavky mohou odkazovat na dokumentaci Site Recovery.
 
-1. [Ověřte](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) požadavky na servery VMware.
-2. [Ověřit](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) Požadavky na podporu virtuálních počítačů pro migraci.
-3. Ověřte nastavení virtuálního počítače. Místní virtuální počítače, které se replikují do Azure, musí splňovat [požadavky na virtuální počítače Azure](migrate-support-matrix-vmware.md#azure-vm-requirements).
+1. [Ověřte](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) požadavky na servery VMware.
+2. [Ověřit](migrate-support-matrix-vmware-migration.md#agent-based-vmware-vms) Požadavky na podporu virtuálních počítačů pro migraci.
+3. Ověřte nastavení virtuálního počítače. Místní virtuální počítače, které se replikují do Azure, musí splňovat [požadavky na virtuální počítače Azure](migrate-support-matrix-vmware-migration.md#azure-vm-requirements).
 
 
 
@@ -336,7 +332,7 @@ Teď vyberte virtuální počítače pro migraci.
     - Vyberte **Ne**, pokud nechcete využít Zvýhodněné hybridní využití Azure. Pak klikněte na tlačítko **Další**.
     - Vyberte **Ano**, pokud máte počítače s Windows Serverem s aktivním Software Assurance nebo předplatným Windows Serveru a u migrovaných počítačů chcete využít tuto výhodu. Pak klikněte na tlačítko **Další**.
 
-12. V části **Výpočetní prostředky** zkontrolujte název, velikost, typ disku s operačním systémem a skupinu dostupnosti virtuálního počítače. Virtuální počítače musí splňovat [požadavky Azure](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements).
+12. V části **Výpočetní prostředky** zkontrolujte název, velikost, typ disku s operačním systémem a skupinu dostupnosti virtuálního počítače. Virtuální počítače musí splňovat [požadavky Azure](migrate-support-matrix-vmware-migration.md#agent-based-vmware-vms).
 
     - **Velikost virtuálního počítače**: Pokud používáte doporučení pro vyhodnocení, bude rozevírací seznam velikost virtuálního počítače obsahovat doporučenou velikost. Jinak Azure Migrate vybere velikost na základě nejbližší shody v předplatném Azure. Případně můžete velikost vybrat ručně v části **Velikost virtuálního počítače Azure**. 
     - **Disk s operačním systémem**: zadejte operační systém (spouštěcí) disk pro virtuální počítač. Disk s operačním systémem je disk, který obsahuje spouštěcí zavaděč a instalační program operačního systému. 
@@ -424,7 +420,7 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
 
 ## <a name="post-migration-best-practices"></a>Osvědčené postupy po migraci
 
-- Lokálně
+- Místní prostředí
     - Přesuňte provoz aplikace do aplikace, která běží na instanci migrovaného virtuálního počítače Azure.
     - Odeberte místní virtuální počítače z místního inventáře virtuálních počítačů.
     - Odeberte místní virtuální počítače ze záloh.

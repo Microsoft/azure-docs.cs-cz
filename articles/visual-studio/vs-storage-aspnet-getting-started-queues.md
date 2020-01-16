@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/23/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5b57f171a9407acea8231d796a80c3a1cc1d9474
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f229661ca78dc75adbc0b49073dc6f0feaf2ba22
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300107"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980755"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Začínáme s Azure Queue Storage a připojenými službami sady Visual Studio (ASP.NET)
 
@@ -30,10 +30,10 @@ Azure Queue Storage poskytuje cloudové zprávy mezi součástmi aplikace. Při 
 
 V tomto kurzu se dozvíte, jak napsat kód ASP.NET pro některé běžné scénáře s využitím entit Azure Queue Storage. Mezi tyto scénáře patří běžné úkoly, jako je vytváření fronty Azure, přidávání, úpravy, čtení a odebírání zpráv fronty.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Účet služby Azure Storage](../storage/common/storage-quickstart-create-account.md)
+* [Účet služby Azure Storage](../storage/common/storage-account-create.md)
 
 [!INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
 
@@ -84,7 +84,7 @@ Následující postup ukazuje, jak vytvořit frontu:
     }
     ```
 
-1. V rámci metody **CreateQueue** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte *&lt;storage-Account-name >* na název účtu úložiště Azure, ke kterému přistupujete.)
+1. V rámci metody **CreateQueue** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte *&lt;úložiště-účet-název >* na název účtu úložiště Azure, ke kterému přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -118,7 +118,7 @@ Následující postup ukazuje, jak vytvořit frontu:
 
 1. V dialogovém okně **Přidat zobrazení** jako název zobrazení zadejte **CreateQueue** a vyberte **Přidat**.
 
-1. Otevřete `CreateQueue.cshtml` a upravte ji tak, aby vypadala jako následující fragment kódu:
+1. Otevřete `CreateQueue.cshtml`a upravte jej tak, aby vypadal jako následující fragment kódu:
 
     ```csharp
     @{
@@ -165,7 +165,7 @@ Po [vytvoření fronty](#create-a-queue)můžete do této fronty přidat zprávy
     }
     ```
  
-1. V rámci metody **AddMessage** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte *&lt;storage-Account-name >* na název účtu úložiště Azure, ke kterému přistupujete.)
+1. V rámci metody **AddMessage** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte *&lt;úložiště-účet-název >* na název účtu úložiště Azure, ke kterému přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -207,7 +207,7 @@ Po [vytvoření fronty](#create-a-queue)můžete do této fronty přidat zprávy
 
 1. V dialogovém okně **Přidat zobrazení** jako název zobrazení zadejte **AddMessage** a vyberte **Přidat**.
 
-1. Otevřete `AddMessage.cshtml` a upravte ji tak, aby vypadala jako následující fragment kódu:
+1. Otevřete `AddMessage.cshtml`a upravte jej tak, aby vypadal jako následující fragment kódu:
 
     ```csharp
     @{
@@ -254,7 +254,7 @@ Tato část ukazuje, jak prohlížet zprávy ve frontě (Přečtěte si první z
     }
     ```
  
-1. V rámci metody **PeekMessage** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte *&lt;storage-Account-name >* na název účtu úložiště Azure, ke kterému přistupujete.)
+1. V rámci metody **PeekMessage** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte *&lt;úložiště-účet-název >* na název účtu úložiště Azure, ke kterému přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -290,7 +290,7 @@ Tato část ukazuje, jak prohlížet zprávy ve frontě (Přečtěte si první z
 
 1. V dialogovém okně **Přidat zobrazení** jako název zobrazení zadejte **PeekMessage** a vyberte **Přidat**.
 
-1. Otevřete `PeekMessage.cshtml` a upravte ji tak, aby vypadala jako následující fragment kódu:
+1. Otevřete `PeekMessage.cshtml`a upravte jej tak, aby vypadal jako následující fragment kódu:
 
     ```csharp
     @{
@@ -338,7 +338,7 @@ V této části se dozvíte, jak číst a odebírat zprávy z fronty.
     }
     ```
  
-1. V rámci metody **ReadMessage** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte *&lt;storage-Account-name >* na název účtu úložiště Azure, ke kterému přistupujete.)
+1. V rámci metody **ReadMessage** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte *&lt;úložiště-účet-název >* na název účtu úložiště Azure, ke kterému přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -381,7 +381,7 @@ V této části se dozvíte, jak číst a odebírat zprávy z fronty.
 
 1. V dialogovém okně **Přidat zobrazení** jako název zobrazení zadejte **ReadMessage** a vyberte **Přidat**.
 
-1. Otevřete `ReadMessage.cshtml` a upravte ji tak, aby vypadala jako následující fragment kódu:
+1. Otevřete `ReadMessage.cshtml`a upravte jej tak, aby vypadal jako následující fragment kódu:
 
     ```csharp
     @{
@@ -429,7 +429,7 @@ Tato část ukazuje, jak získat délku fronty (počet zpráv).
     }
     ```
  
-1. V rámci metody **ReadMessage** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte *&lt;storage-Account-name >* na název účtu úložiště Azure, ke kterému přistupujete.)
+1. V rámci metody **ReadMessage** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte *&lt;úložiště-účet-název >* na název účtu úložiště Azure, ke kterému přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -471,7 +471,7 @@ Tato část ukazuje, jak získat délku fronty (počet zpráv).
 
 1. V dialogovém okně **Přidat zobrazení** jako název zobrazení zadejte **GetQueueLength** a vyberte **Přidat**.
 
-1. Otevřete `GetQueueLengthMessage.cshtml` a upravte ji tak, aby vypadala jako následující fragment kódu:
+1. Otevřete `GetQueueLengthMessage.cshtml`a upravte jej tak, aby vypadal jako následující fragment kódu:
 
     ```csharp
     @{
@@ -516,7 +516,7 @@ Tato část ukazuje, jak odstranit frontu.
     }
     ```
  
-1. V rámci metody **DeleteQueue** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte *&lt;storage-Account-name >* na název účtu úložiště Azure, ke kterému přistupujete.)
+1. V rámci metody **DeleteQueue** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte *&lt;úložiště-účet-název >* na název účtu úložiště Azure, ke kterému přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -551,7 +551,7 @@ Tato část ukazuje, jak odstranit frontu.
 
 1. V dialogovém okně **Přidat zobrazení** jako název zobrazení zadejte **DeleteQueue** a vyberte **Přidat**.
 
-1. Otevřete `DeleteQueue.cshtml` a upravte ji tak, aby vypadala jako následující fragment kódu:
+1. Otevřete `DeleteQueue.cshtml`a upravte jej tak, aby vypadal jako následující fragment kódu:
 
     ```csharp
     @{

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 794f4ad5bba46af53280d35b55b762b9eef8e1a1
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: aa2f3481b63c98ec23e1db8213939278684a4cd6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675253"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977638"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Řešení potíží s výstrahami protokolu v Azure Monitor  
 
-V tomto článku se dozvíte, jak vyřešit běžné problémy, které se mohou vyskytnout, když nastavujete výstrahy protokolu v Azure Monitor. Poskytuje také řešení pro běžné problémy s funkcemi nebo konfigurací výstrah protokolů. 
+V tomto článku se dozvíte, jak vyřešit běžné problémy, které se mohou vyskytnout, když nastavujete výstrahy protokolu v Azure Monitor. Poskytuje také řešení pro běžné problémy s funkcemi nebo konfigurací výstrah protokolů.
 
 Termín *výstrahy protokolu* popisují pravidla, která se aktivují na základě dotazu protokolu v [pracovním prostoru Azure Log Analytics](../learn/tutorial-viewdata.md) nebo v [Azure Application Insights](../../azure-monitor/app/analytics.md). Přečtěte si další informace o funkcích, terminologii a typech v [protokolových výstrahách v Azure monitor](../platform/alerts-unified-log.md).
 
@@ -26,17 +26,17 @@ Termín *výstrahy protokolu* popisují pravidla, která se aktivují na základ
 
 ## <a name="log-alert-didnt-fire"></a>Výstraha protokolu se neaktivuje.
 
-Zde jsou některé běžné důvody, proč stav pro nakonfigurované [pravidlo výstrahy protokolu v Azure monitor](../platform/alerts-log.md) není zobrazený [, když je očekáván ](../platform/alerts-managing-alert-states.md). 
+Zde jsou některé běžné důvody, proč stav pro nakonfigurované [pravidlo výstrahy protokolu v Azure monitor](../platform/alerts-log.md) není zobrazený [, když je očekáván ](../platform/alerts-managing-alert-states.md).
 
 ### <a name="data-ingestion-time-for-logs"></a>Doba přijímání dat pro protokoly
 
 Výstraha protokolu pravidelně spouští dotaz na základě [Log Analytics](../learn/tutorial-viewdata.md) nebo [Application Insights](../../azure-monitor/app/analytics.md). Vzhledem k tomu, že Azure Monitor zpracovává spoustu terabajtů dat od různých zdrojů od různých uživatelů po celém světě, je tato služba náchylná k různým časovým zpožděním. Další informace najdete v tématu [Doba přijímání dat v protokolech Azure monitor](../platform/data-ingestion-time.md).
 
-Chcete-li zmírnit prodlevy, systém počká a znovu pokusí dotaz výstrahy několikrát, pokud najde potřebná data, která se ještě ingestují. Systém má exponenciální zvýšení nastavené čekací doby. Výstraha protokolu se aktivuje až po tom, co jsou data k dispozici, takže zpoždění může být způsobeno pomalým příjmem dat protokolu. 
+Chcete-li zmírnit prodlevy, systém počká a znovu pokusí dotaz výstrahy několikrát, pokud najde potřebná data, která se ještě ingestují. Systém má exponenciální zvýšení nastavené čekací doby. Výstraha protokolu se aktivuje až po tom, co jsou data k dispozici, takže zpoždění může být způsobeno pomalým příjmem dat protokolu.
 
 ### <a name="incorrect-time-period-configured"></a>Nesprávné nakonfigurované časové období
 
-Jak je popsáno v článku [terminologie pro výstrahy protokolu](../platform/alerts-unified-log.md#log-search-alert-rule---definition-and-types), časová lhůta uvedená v konfiguraci určuje časový rozsah dotazu. Dotaz vrátí pouze záznamy, které byly vytvořeny v tomto rozsahu. 
+Jak je popsáno v článku [terminologie pro výstrahy protokolu](../platform/alerts-unified-log.md#log-search-alert-rule---definition-and-types), časová lhůta uvedená v konfiguraci určuje časový rozsah dotazu. Dotaz vrátí pouze záznamy, které byly vytvořeny v tomto rozsahu.
 
 Časové období omezuje data načtená pro dotaz protokolu, aby zabránila zneužití, a v případě, že v dotazu protokolu využije libovolný časový příkaz (například **před**). Pokud je například časové období nastavené na 60 minut a dotaz se spustí na 1:15 ODP. pro dotaz protokolu se použijí jenom záznamy vytvořené mezi 12:15 PM a 1:15 PM. Pokud dotaz protokolu používá časový příkaz jako **Poslední (1d)** , dotaz stále používá pouze data mezi 12:15 pm a 1:15 PM, protože časové období je nastaveno na tento interval.
 
@@ -52,9 +52,9 @@ Jak je popsáno v kroku 8 článku týkajícím se [Vytvoření pravidla upozorn
 
 ### <a name="metric-measurement-alert-rule-is-incorrect"></a>Pravidlo upozornění na měření metriky není správné.
 
-*Výstrahy protokolu měření metrik* jsou podtypu výstrah protokolů, které mají zvláštní možnosti a omezenou syntaxi dotazů na výstrahy. Pravidlo pro výstrahu protokolu měření metriky vyžaduje, aby výstup dotazu byl časovou řadou metrik. To znamená, že výstupem je tabulka s jedinečnými časovými obdobími, která mají stejnou velikost spolu s odpovídajícími agregovanými hodnotami. 
+*Výstrahy protokolu měření metrik* jsou podtypu výstrah protokolů, které mají zvláštní možnosti a omezenou syntaxi dotazů na výstrahy. Pravidlo pro výstrahu protokolu měření metriky vyžaduje, aby výstup dotazu byl časovou řadou metrik. To znamená, že výstupem je tabulka s jedinečnými časovými obdobími, která mají stejnou velikost spolu s odpovídajícími agregovanými hodnotami.
 
-Můžete zvolit, aby se v tabulce společně **AggregatedValuey**další proměnné. Tyto proměnné lze použít k řazení tabulky. 
+Můžete zvolit, aby se v tabulce společně **AggregatedValuey**další proměnné. Tyto proměnné lze použít k řazení tabulky.
 
 Předpokládejme například, že pravidlo pro výstrahu protokolu měření metrik bylo nakonfigurováno jako:
 
@@ -68,9 +68,9 @@ Protože příkaz obsahuje **Souhrn... a poskytuje** dvě proměnné (**časové
 
 ![Zpracování dotazu měření metrik s více hodnotami](media/alert-log-troubleshoot/LogMMQuery.png)
 
-Vzhledem k tomu, že **agregace** je definována na **$Table**, data jsou seřazená podle **$Table** sloupce (označují se červeně). Potom seskupme a vyhledáme typy **agregačních** polí. 
+Vzhledem k tomu, že **agregace** je definována na **$Table**, data jsou seřazená podle **$Table** sloupce (označují se červeně). Potom seskupme a vyhledáme typy **agregačních** polí.
 
-Například pro **$Table**se hodnoty pro **availabilityResults** považují za jeden vykreslení nebo entitu (označeno oranžovým). V tomto grafu nebo entitě vyhledává služba Alert tři po sobě jdoucí porušení (označeno zeleně). Tato porušení aktivují výstrahu pro hodnotu tabulky **availabilityResults**. 
+Například pro **$Table**se hodnoty pro **availabilityResults** považují za jeden vykreslení nebo entitu (označeno oranžovým). V tomto grafu nebo entitě vyhledává služba Alert tři po sobě jdoucí porušení (označeno zeleně). Tato porušení aktivují výstrahu pro hodnotu tabulky **availabilityResults**.
 
 Podobně platí, že pokud se tři po sobě jdoucí porušení služby stane u jakékoli jiné hodnoty **$Table**, aktivuje se pro stejné věci další upozornění. Služba Alert Service automaticky seřadí hodnoty v jednom grafu nebo entitě (v oranžově) podle času.
 
@@ -91,7 +91,7 @@ Nakonfigurované [pravidlo upozornění protokolu v Azure monitor](../platform/a
 
 Log Analytics a Application Insights podléhají zpoždění a zpracování příjmu. Když spustíte dotaz na výstrahu protokolu, možná zjistíte, že nejsou k dispozici žádná data, nebo jsou k dispozici pouze data. Další informace najdete v tématu [čas příjmu dat protokolu v Azure monitor](../platform/data-ingestion-time.md).
 
-V závislosti na tom, jak jste nakonfigurovali pravidlo výstrahy, může dojít k neúspěšnému napálení, pokud v době spuštění výstrahy nejsou v protokolech žádná data ani částečná data. V takových případech doporučujeme změnit dotaz nebo konfiguraci výstrahy. 
+V závislosti na tom, jak jste nakonfigurovali pravidlo výstrahy, může dojít k neúspěšnému napálení, pokud v době spuštění výstrahy nejsou v protokolech žádná data ani částečná data. V takových případech doporučujeme změnit dotaz nebo konfiguraci výstrahy.
 
 Pokud třeba nakonfigurujete pravidlo upozornění protokolu, které se aktivuje, když je počet výsledků dotazu analýzy menší než 5, aktivuje se výstraha, když nejsou žádná data (žádný záznam) nebo částečné výsledky (jeden záznam). Ale po zpoždění přijímání dat může stejný dotaz s úplnými daty poskytnout výsledek 10 záznamů.
 
@@ -111,7 +111,7 @@ V následujících částech jsou uvedeny některé důvody, proč Azure Monitor
 
 Pravidla upozornění protokolů vytvořená v Azure Monitor cílí na konkrétní prostředek, jako je pracovní prostor Azure Log Analytics, aplikace Azure Application Insights a prostředek Azure. Služba Výstrahy protokolu potom spustí analytický dotaz, který je k dispozici v pravidle pro zadaný cíl. Ale po vytvoření pravidla se uživatelé často dostanou k odstranění z Azure, nebo se přesunou do Azure – cíl pravidla výstrahy protokolu. Vzhledem k tomu, že cíl pravidla výstrahy již není platný, spuštění pravidla se nezdařilo.
 
-V takových případech Azure Monitor zakáže upozornění protokolu a zaručí, že nebudete fakturovat zbytečně, pokud pravidlo nemůže běžet nepřetržitě pro dobu proměnlivosti (například týden). Můžete zjistit přesný čas, kdy Azure Monitor deaktivovat výstrahu protokolu pomocí [protokolu aktivit Azure](../../azure-resource-manager/resource-group-audit.md). V protokolu aktivit Azure se přidá událost, když Azure Monitor zakáže pravidlo upozornění protokolu.
+V takových případech Azure Monitor zakáže upozornění protokolu a zaručí, že nebudete fakturovat zbytečně, pokud pravidlo nemůže běžet nepřetržitě pro dobu proměnlivosti (například týden). Můžete zjistit přesný čas, kdy Azure Monitor deaktivovat výstrahu protokolu pomocí [protokolu aktivit Azure](../../azure-resource-manager/management/view-activity-logs.md). V protokolu aktivit Azure se přidá událost, když Azure Monitor zakáže pravidlo upozornění protokolu.
 
 Následující ukázková událost v protokolu aktivit Azure je určena pro pravidlo upozornění, které bylo zakázané kvůli nepřetržité chybě.
 
@@ -187,7 +187,7 @@ Každé pravidlo upozornění protokolu vytvořené v Azure Monitor jako součá
 
 [Azure Advisor](../../advisor/advisor-overview.md) vás upozorní na toto chování. Přidalo se doporučení pro konkrétní pravidlo upozornění protokolu na Azure Advisor, v kategorii vysoké dostupnosti se středním dopadem a s popisem "opravit pravidlo upozornění protokolu pro zajištění monitorování". Pokud dotaz na výstrahu v pravidle výstrahy protokolu není opravený, když Azure Advisor zadal doporučení po dobu sedmi dnů, Azure Monitor zakáže upozornění protokolu a zajistěte, aby se vám nefakturoval zbytečně, pokud se pravidlo nemůže nepřetržitě spouštět po dobu proměnlivosti ( například týden).
 
-Můžete najít přesný čas, kdy Azure Monitor zakázat pravidlo výstrahy protokolu, a to hledáním události v [protokolu aktivit Azure](../../azure-resource-manager/resource-group-audit.md).
+Můžete najít přesný čas, kdy Azure Monitor zakázat pravidlo výstrahy protokolu, a to hledáním události v [protokolu aktivit Azure](../../azure-resource-manager/management/view-activity-logs.md).
 
 ## <a name="next-steps"></a>Další kroky
 

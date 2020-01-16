@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 23607b52f866bb7b0be760e49be7d62d1732d43c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 6bebe8ac6b9869466938600d6267fd0062c84477
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954755"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977298"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Monitorování dvířek – používání Azure Functions a SendGrid, odesílání e-mailů, když se otevřou dvířka           
 
@@ -65,7 +65,7 @@ Nyní se zobrazí formulář pro registraci SendGrid.
 
 Vyplňte formulář pro registraci:
 
-   * **Skupina prostředků**: Vytvořte skupinu prostředků pro hostování služby SendGrid nebo použijte existující. Další informace najdete v tématu [použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/manage-resource-groups-portal.md).
+   * **Skupina prostředků**: Vytvořte skupinu prostředků pro hostování služby SendGrid nebo použijte existující. Další informace najdete v tématu [použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
    * **Name**(název): název vaší služby SendGrid. Vyberte jedinečný název, který se liší od jiných služeb, které máte.
 
@@ -105,7 +105,7 @@ Zobrazí se formulář pro registraci.
 
 Vyplňte pole ve formuláři pro registraci.
 
-   * **Skupina prostředků**: Vytvořte skupinu prostředků pro hostování služby SendGrid nebo použijte existující. Další informace najdete v tématu [použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/manage-resource-groups-portal.md).
+   * **Skupina prostředků**: Vytvořte skupinu prostředků pro hostování služby SendGrid nebo použijte existující. Další informace najdete v tématu [použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
    * **Název centra IoT**: název vašeho centra IoT. Vyberte jedinečný název, který se liší od jiných služeb, které máte.
 

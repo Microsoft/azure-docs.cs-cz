@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: a76f149b8ab9ca8515a7475cd7954b6d4862a92d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: cbd452fcf4056c1bcf4d5b8d6debb9d8f4a6f11c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746874"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976106"
 ---
 # <a name="connect-data-sources"></a>Připojení zdrojů dat
 
@@ -105,7 +105,7 @@ Případně můžete agenta nasadit ručně na existující virtuální počíta
 | AzureNetworkAnalytics_CL  | [Analýza](../network-watcher/traffic-analytics.md) provozu [analytického schématu](../network-watcher/traffic-analytics.md) provozu  | | |
 | CommonSecurityLog  | [Připojit CEF](connect-common-event-format.md)  | V | |
 | OfficeActivity | [Připojení Office 365](connect-office-365.md) | V | |
-| SecurityEvents | [Připojit události zabezpečení systému Windows](connect-windows-security-events.md)  | V | Sešity nezabezpečených protokolů najdete v tématu [Nastavení sešitu nezabezpečených protokolů](https://blogs.technet.microsoft.com/jonsh/azure-sentinel-insecure-protocols-dashboard-setup/) .  |
+| SecurityEvents | [Připojit události zabezpečení systému Windows](connect-windows-security-events.md)  | V | Sešity nezabezpečených protokolů najdete v tématu [Nastavení sešitu nezabezpečených protokolů](/azure/sentinel/quickstart-get-visibility#use-built-in-workbooks) .  |
 | Syslog | [Připojit syslog](connect-syslog.md) | V | |
 | Firewall webových aplikací Microsoft (WAF) – (AzureDiagnostics) |[Připojení brány firewall webových aplikací od Microsoftu](connect-microsoft-waf.md) | V | |
 | SymantecICDx_CL | [Připojit Symantec](connect-symantec.md) | V | |

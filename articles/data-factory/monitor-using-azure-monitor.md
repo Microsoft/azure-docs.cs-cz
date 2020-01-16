@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: aaa67c5e48c6246e94410bdbf2eb8509b6810001
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 8325b4ef6b89a76eeec418386cec4922cb5916b1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645187"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979151"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Výstrahy a monitorování datových továren pomocí Azure Monitor
 
@@ -67,7 +67,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ##### <a name="headers"></a>Hlavičky
 
 * Nahraďte `{api-version}` za `2016-09-01` (Jak velká může být moje znalostní báze?).
-* Nahraďte `{resource-id}` číslem prostředku, pro který chcete upravit nastavení diagnostiky. Další informace najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/manage-resource-groups-portal.md).
+* Nahraďte `{resource-id}` číslem prostředku, pro který chcete upravit nastavení diagnostiky. Další informace najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
 * Nastavte hlavičku `Content-Type` na `application/json`.
 * Nastavte autorizační hlavičku na webový token JSON, který jste získali z Azure Active Directory (Azure AD). Další informace najdete v tématu [ověřování požadavků](../active-directory/develop/authentication-scenarios.md).
 
@@ -188,7 +188,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ##### <a name="headers"></a>Hlavičky
 
 * Nahraďte `{api-version}` za `2016-09-01` (Jak velká může být moje znalostní báze?).
-* Nahraďte `{resource-id}` číslem prostředku, pro který chcete upravit nastavení diagnostiky. Další informace najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/manage-resource-groups-portal.md).
+* Nahraďte `{resource-id}` číslem prostředku, pro který chcete upravit nastavení diagnostiky. Další informace najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
 * Nastavte hlavičku `Content-Type` na `application/json`.
 * Nastavte autorizační hlavičku na webový token JSON, který jste získali ze služby Azure AD. Další informace najdete v tématu [ověřování požadavků](../active-directory/develop/authentication-scenarios.md).
 

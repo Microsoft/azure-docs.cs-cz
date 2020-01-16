@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5f006832fd1f1386adaf89b0045272a70db2df3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9854027bbdfaf22c650ae9e2e0aa1eec457f89dd
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429955"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977944"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>Konfigurace spravovaných identit pro prostředky Azure na škálování virtuálního počítače Azure pomocí šablony
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Spravované identity pro prostředky Azure poskytují služby Azure s automaticky spravovanou identitou v Azure Active Directory. Tuto identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD, a to bez nutnosti přihlašovacích údajů ve vašem kódu. 
+Spravované identity pro prostředky Azure poskytují služby Azure s automaticky spravovanou identitou v Azure Active Directory. Tuto identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD, a to bez nutnosti přihlašovacích údajů ve vašem kódu.
 
 V tomto článku se dozvíte, jak provádět následující spravované identity pro operace prostředků Azure v sadě škálování virtuálních počítačů Azure pomocí Azure Resource Manager šablony nasazení:
 - Povolení a zakázání spravované identity přiřazené systémem v sadě škálování virtuálních počítačů Azure
@@ -54,7 +54,7 @@ Stejně jako u Azure Portal a skriptování poskytují [Azure Resource Manager](
    - Použití místního [editoru JSON (například vs Code)](../../azure-resource-manager/resource-manager-create-first-template.md)a následného nahrávání a nasazování pomocí PowerShellu nebo rozhraní příkazového řádku.
    - Použití [projektu skupiny prostředků Azure](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) sady Visual Studio k vytvoření a nasazení šablony.  
 
-Bez ohledu na zvolenou možnost je syntaxe šablony stejná při počátečním nasazení a opětovném nasazení. Povolení spravovaných identit pro prostředky Azure na novém nebo existujícím virtuálním počítači se provádí stejným způsobem. Ve výchozím nastavení Azure Resource Manager také [přírůstkovou aktualizaci](../../azure-resource-manager/deployment-modes.md) nasazení.
+Bez ohledu na zvolenou možnost je syntaxe šablony stejná při počátečním nasazení a opětovném nasazení. Povolení spravovaných identit pro prostředky Azure na novém nebo existujícím virtuálním počítači se provádí stejným způsobem. Ve výchozím nastavení Azure Resource Manager také [přírůstkovou aktualizaci](../../azure-resource-manager/templates/deployment-modes.md) nasazení.
 
 ## <a name="system-assigned-managed-identity"></a>Spravovaná identita přiřazená systémem
 
@@ -66,7 +66,7 @@ V této části povolíte nebo zakážete spravovanou identitu přiřazenou syst
 2. Pokud chcete povolit spravovanou identitu přiřazenou systémem, načtěte šablonu do editoru, vyhledejte `Microsoft.Compute/virtualMachinesScaleSets` prostředku zájmu v části Resources (prostředky) a přidejte vlastnost `identity` na stejné úrovni jako vlastnost `"type": "Microsoft.Compute/virtualMachinesScaleSets"`. Použijte následující syntaxi:
 
    ```JSON
-   "identity": { 
+   "identity": {
        "type": "SystemAssigned"
    }
    ```
@@ -106,14 +106,14 @@ V této části povolíte nebo zakážete spravovanou identitu přiřazenou syst
                                       "port": 50342
                                   }
                                 }
-                            } 
+                            }
                         ]
                     }
                 }
             }
         }
     ]
-   ``` 
+   ```
 
 ### <a name="disable-a-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Zakažte spravovanou identitu přiřazenou systémem ze sady škálování virtuálních počítačů Azure.
 
@@ -129,12 +129,12 @@ Pokud máte sadu škálování virtuálního počítače, která už nepotřebuj
 
    **Microsoft. COMPUTE/virtualMachineScaleSets API verze 2018-06-01**
 
-   Pokud je váš apiVersion `2017-12-01` a vaše sada škálování virtuálního počítače obsahuje spravované identity v systému i uživatelem, odeberte `SystemAssigned` z typu identity a zachovejte `UserAssigned` spolu s `identityIds`ovým polem uživatelem přiřazených spravovaných identit. 
-   
-    
+   Pokud je váš apiVersion `2017-12-01` a vaše sada škálování virtuálního počítače obsahuje spravované identity v systému i uživatelem, odeberte `SystemAssigned` z typu identity a zachovejte `UserAssigned` spolu s `identityIds`ovým polem uživatelem přiřazených spravovaných identit.
+
+
 
    Následující příklad ukazuje, jak odebrat spravovanou identitu přiřazenou systémem ze sady škálování virtuálních počítačů bez přiřazených uživatelem definovaných identit:
-   
+
    ```json
    {
        "name": "[variables('vmssName')]",
@@ -157,7 +157,7 @@ V této části přiřadíte uživatelem přiřazenou identitu pro sadu škálov
 ### <a name="assign-a-user-assigned-managed-identity-to-a-virtual-machine-scale-set"></a>Přiřazení spravované identity přiřazené uživateli k sadě škálování virtuálního počítače
 
 1. V rámci elementu `resources` přidejte následující položku, která uživateli přiřadí spravovanou identitu pro sadu škálování virtuálního počítače.  Nezapomeňte nahradit `<USERASSIGNEDIDENTITY>` názvem uživatelsky přiřazené spravované identity, kterou jste vytvořili.
-   
+
    **Microsoft. COMPUTE/virtualMachineScaleSets API verze 2018-06-01**
 
    Pokud je váš apiVersion `2018-06-01`, jsou spravované identity přiřazené uživatelem uloženy ve formátu `userAssignedIdentities` slovníku a hodnota `<USERASSIGNEDIDENTITYNAME>` musí být uložena v proměnné definované v části `variables` vaší šablony.
@@ -173,12 +173,12 @@ V této části přiřadíte uživatelem přiřazenou identitu pro sadu škálov
                "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]": {}
            }
        }
-    
+
    }
    ```   
 
    **Microsoft. COMPUTE/virtualMachineScaleSets API verze 2017-12-01**
-    
+
    Pokud je vaše `apiVersion` `2017-12-01` nebo starší, budou spravované identity přiřazené uživatelem uloženy v poli `identityIds` a hodnota `<USERASSIGNEDIDENTITYNAME>` musí být uložena v proměnné definované v části proměnné v šabloně.
 
    ```json
@@ -194,12 +194,12 @@ V této části přiřadíte uživatelem přiřazenou identitu pro sadu škálov
        }
 
    }
-   ``` 
+   ```
 > [!NOTE]
 > Můžete volitelně zřídit spravované identity pro rozšíření sady škálování virtuálních počítačů Azure, a to tak, že je zadáte v prvku `extensionProfile` šablony. Tento krok je nepovinný, protože můžete použít koncový bod identity Azure Instance Metadata Service (IMDS) a načíst taky tokeny.  Další informace najdete v tématu [migrace z rozšíření virtuálního počítače do Azure IMDS pro ověřování](howto-migrate-vm-extension.md).
 
 3. Po dokončení by šablona měla vypadat nějak takto:
-   
+
    **Microsoft. COMPUTE/virtualMachineScaleSets API verze 2018-06-01**   
 
    ```json
@@ -234,7 +234,7 @@ V této části přiřadíte uživatelem přiřazenou identitu pro sadu škálov
                                       "port": 50342
                                   }
                                 }
-                            } 
+                            }
                         ]
                     }
                 }
@@ -277,7 +277,7 @@ V této části přiřadíte uživatelem přiřazenou identitu pro sadu škálov
                                       "port": 50342
                                   }
                                 }
-                            } 
+                            }
                         ]
                     }
                 }
@@ -305,9 +305,9 @@ Pokud máte sadu škálování virtuálního počítače, která už nepotřebuj
         }
    }
    ```
-   
+
    **Microsoft. COMPUTE/virtualMachineScaleSets API verze 2018-06-01**
-    
+
    Pokud chcete ze sady škálování virtuálního počítače odebrat jednu spravovanou identitu přiřazenou uživatelem, odeberte ji z `userAssignedIdentities` slovníku.
 
    Pokud máte identitu přiřazenou systémem, zachovejte ji v hodnotě `type` pod hodnotou `identity`.
@@ -317,8 +317,7 @@ Pokud máte sadu škálování virtuálního počítače, která už nepotřebuj
    Pokud chcete ze sady škálování virtuálního počítače odebrat jednu spravovanou identitu přiřazenou uživatelem, odeberte ji z pole `identityIds`.
 
    Pokud máte spravovanou identitu přiřazenou systémem, zachovejte ji v hodnotě `type` pod hodnotou `identity`.
-   
+
 ## <a name="next-steps"></a>Další kroky
 
 - [Přehled spravovaných identit pro prostředky Azure](overview.md)
-

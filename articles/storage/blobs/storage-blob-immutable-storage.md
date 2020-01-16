@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: a8c19a8e88ec7fe2002a327c7e4a57874a753b9f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: b8b5de910195b14c279fe395cc35c12768536728
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921239"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981841"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Ukládání důležitých podnikových dat objektů BLOB s neměnném úložištěm
 
@@ -156,7 +156,7 @@ Operace odstranění kontejneru selže, pokud v kontejneru existuje alespoň jed
 
 **Co se stane, když se pokusím odstranit účet úložiště s kontejnerem, který má zásady uchovávání informací založené na čase nebo právní blokování?**
 
-Odstranění účtu úložiště se nepovede, pokud je aspoň jeden kontejner s právním nebo **uzamčenou** zásadou založenou na čase. Kontejner s odemknutou zásadou založenou na čase nechrání před odstraněním účtu úložiště. Předtím, než budete moci odstranit účet úložiště, je nutné odebrat všechny zákonné blokování a odstranit všechny **uzamčené** kontejnery. Informace o odstranění kontejneru najdete na předchozí otázce. Pro svůj účet úložiště můžete taky použít ochranu pomocí [Azure Resource Manager zámků](../../azure-resource-manager/resource-group-lock-resources.md).
+Odstranění účtu úložiště se nepovede, pokud je aspoň jeden kontejner s právním nebo **uzamčenou** zásadou založenou na čase. Kontejner s odemknutou zásadou založenou na čase nechrání před odstraněním účtu úložiště. Předtím, než budete moci odstranit účet úložiště, je nutné odebrat všechny zákonné blokování a odstranit všechny **uzamčené** kontejnery. Informace o odstranění kontejneru najdete na předchozí otázce. Pro svůj účet úložiště můžete taky použít ochranu pomocí [Azure Resource Manager zámků](../../azure-resource-manager/management/lock-resources.md).
 
 **Můžu přesunout data napříč různými úrovněmi objektů BLOB (horká, studená, archivní), když je objekt BLOB v neměnném stavu?**
 
@@ -179,4 +179,4 @@ Ano, pokud vaše požadavky na dodržování předpisů umožňují povolit obno
 - [Nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB](storage-blob-immutability-policies-manage.md)
 - [Nastavení pravidel pro automatické vytvoření vrstev a odstraňování dat objektů BLOB pomocí správy životního cyklu](storage-lifecycle-management-concepts.md)
 - [Obnovitelné odstranění objektů blob služby Azure Storage](../blobs/storage-blob-soft-delete.md)
-- [Chraňte předplatná, skupiny prostředků a prostředky pomocí Azure Resource Manager zámků](../../azure-resource-manager/resource-group-lock-resources.md).
+- [Chraňte předplatná, skupiny prostředků a prostředky pomocí Azure Resource Manager zámků](../../azure-resource-manager/management/lock-resources.md).

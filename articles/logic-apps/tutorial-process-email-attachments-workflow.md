@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: ef0445727c100b7262ebffc69be5e00a7956520a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f25486aba9549855939b06ea5b8dfc14db0af95
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428777"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969126"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Kurz: automatizace úloh pro zpracování e-mailů pomocí Azure Logic Apps, Azure Functions a Azure Storage
 
@@ -52,7 +52,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašo
 
 Příchozí e-maily a přílohy můžete ukládat jako objekty blob v [kontejneru úložiště Azure](../storage/common/storage-introduction.md).
 
-1. Než budete moct vytvořit kontejner úložiště, vytvořte pomocí těchto nastavení na kartě **základy** v Azure Portal [účet úložiště](../storage/common/storage-quickstart-create-account.md) :
+1. Než budete moct vytvořit kontejner úložiště, vytvořte pomocí těchto nastavení na kartě **základy** v Azure Portal [účet úložiště](../storage/common/storage-account-create.md) :
 
    | Nastavení | Hodnota | Popis |
    |---------|-------|-------------|
@@ -159,7 +159,7 @@ Teď pomocí připraveného fragmentu kódu a následujícího postupu vytvořte
 
    ![Vytvořená aplikace funkcí](./media/tutorial-process-email-attachments-workflow/function-app-created.png)
 
-   Pokud chcete vytvořit aplikaci Function App, můžete použít také [Azure CLI](../azure-functions/functions-create-first-azure-function-azure-cli.md)nebo [šablony powershellu a správce prostředků](../azure-resource-manager/resource-group-template-deploy.md).
+   Pokud chcete vytvořit aplikaci Function App, můžete použít také [Azure CLI](../azure-functions/functions-create-first-azure-function-azure-cli.md)nebo [šablony powershellu a správce prostředků](../azure-resource-manager/templates/deploy-powershell.md).
 
 1. V seznamu **aplikace Function** App rozbalte aplikaci Function App, pokud ještě není rozbalená. V části aplikace Function App vyberte Functions ( **funkce**). Na panelu nástrojů funkcí zvolte **Nová funkce**.
 
@@ -282,7 +282,7 @@ Teď přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts
       | **Interval** | 1\. místo | Počet intervalů, po které se má čekat mezi kontrolami |
       | **Frekvence** | Minuta | Jednota času pro každý interval mezi kontrolami |
       ||||
-  
+
    1. V seznamu **Přidat nový parametr** vyberte **Filtr předmětu**.
 
    1. Po zobrazení pole **Filtr předmětu** v akci zadejte předmět, jak je uvedeno zde:
@@ -377,7 +377,8 @@ Teď otestujte, jestli podmínka správně funguje:
 V dalším kroku definujte akce, které mají proběhnout ve větvi **Pokud je true**. Pokud chcete e-mail uložit spolu s přílohami, odeberte z jeho těla veškeré kódování HTML a potom v kontejneru úložiště vytvořte objekty blob pro e-maily a přílohy.
 
 > [!NOTE]
-> Ve větvi **Pokud je false**, když e-mail nemá přílohy, se od aplikace logiky nevyžadují žádné kroky. Jako bonusové cvičení můžete po dokončení tohoto kurzu přidat do větve **Pokud je false** případné akce, které byste chtěli provést.
+> Ve větvi **Pokud je false**, když e-mail nemá přílohy, se od aplikace logiky nevyžadují žádné kroky.
+> Jako bonusové cvičení můžete po dokončení tohoto kurzu přidat do větve **Pokud je false** případné akce, které byste chtěli provést.
 
 ## <a name="call-removehtmlfunction"></a>Volání funkce RemoveHTMLFunction
 
@@ -605,7 +606,9 @@ V dalším kroku přidejte akci, která zajistí, aby aplikace logiky odeslala e
    ||||
 
    > [!NOTE]
-   > Pokud vyberete pole obsahující pole hodnot, například **Obsah**, což je pole obsahující přílohy, návrhář kolem akce odkazující na toto pole automaticky přidá smyčku For each. Aplikace logiky tak může provést příslušnou akci pro každou položku pole. Pokud chcete smyčku odebrat, odeberte pole pro pole, přesuňte odkazovou akci na vnější smyčku, v záhlaví smyčky vyberte tři tečky ( **...** ) a vyberte **Odstranit**.
+   > Pokud vyberete pole obsahující pole hodnot, například **Obsah**, což je pole obsahující přílohy, návrhář kolem akce odkazující na toto pole automaticky přidá smyčku For each.
+   > Aplikace logiky tak může provést příslušnou akci pro každou položku pole.
+   > Pokud chcete smyčku odebrat, odeberte pole pro pole, přesuňte odkazovou akci na vnější smyčku, v záhlaví smyčky vyberte tři tečky ( **...** ) a vyberte **Odstranit**.
 
 1. Uložte svou aplikaci logiky.
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 4132dacbb628051e674952806cb6b606ee915525
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c6ea57ac30a1b4d228a19c3be6a794b3d2175171
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644610"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973030"
 ---
 # <a name="virtual-network-traffic-routing"></a>Směrování provozu virtuální sítě
 
@@ -69,7 +69,7 @@ Azure přidá další výchozí systémové trasy pro různé možnosti Azure. P
 * **VirtualNetworkServiceEndpoint:** Když pro určité služby povolíte koncový bod služby, Azure do směrovací tabulky přidá veřejné IP adresy těchto služeb. Koncové body služby se povolují pro jednotlivé podsítě v rámci virtuální sítě, takže se trasa přidá pouze do směrovací tabulky podsítě, pro kterou je koncový bod služby povolený. Veřejné IP adresy služeb Azure se pravidelně mění. Azure při změně adres spravuje adresy ve směrovací tabulce automaticky. Další informace o [koncových bodech služby pro virtuální síť](virtual-network-service-endpoints-overview.md) a službách, pro které můžete koncové body služby vytvořit.<br>
 
     > [!NOTE]
-    > Typy dalších segmentů směrování **Partnerský vztah virtuálních sítí** a **VirtualNetworkServiceEndpoint** se přidají pouze do směrovacích tabulek podsítí v rámci virtuálních sítí vytvořených prostřednictvím modelu nasazení Azure Resource Manager. Tyto typy dalších segmentů směrování se nepřidají do směrovacích tabulek přidružených k podsítím virtuálních sítí vytvořeným prostřednictvím modelu nasazení Classic. Další informace o [modelech nasazení](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Azure.
+    > Typy dalších segmentů směrování **Partnerský vztah virtuálních sítí** a **VirtualNetworkServiceEndpoint** se přidají pouze do směrovacích tabulek podsítí v rámci virtuálních sítí vytvořených prostřednictvím modelu nasazení Azure Resource Manager. Tyto typy dalších segmentů směrování se nepřidají do směrovacích tabulek přidružených k podsítím virtuálních sítí vytvořeným prostřednictvím modelu nasazení Classic. Další informace o [modelech nasazení](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Azure.
 
 ## <a name="custom-routes"></a>Vlastní trasy
 
@@ -101,7 +101,7 @@ V trasách definovaných uživatelem nemůžete jako typ dalšího segmentu smě
 
 ## <a name="next-hop-types-across-azure-tools"></a>Typy dalších segmentů směrování napříč nástroji Azure
 
-Zobrazené a odkazované názvy typů dalších segmentů směrování se liší na webu Azure Portal a v nástrojích příkazového řádku a v modelech nasazení Azure Resource Manager a Classic. Následující tabulka uvádí názvy používané k odkazování na jednotlivé typy dalších segmentů směrování v různých nástrojích a [modelech nasazení](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json):
+Zobrazené a odkazované názvy typů dalších segmentů směrování se liší na webu Azure Portal a v nástrojích příkazového řádku a v modelech nasazení Azure Resource Manager a Classic. Následující tabulka uvádí názvy používané k odkazování na jednotlivé typy dalších segmentů směrování v různých nástrojích a [modelech nasazení](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json):
 
 |Typ dalšího segmentu                   |Azure CLI a PowerShell (Resource Manager) |Azure Classic CLI a PowerShell (Classic)|
 |-------------                   |---------                                       |-----|

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 80e77e2caacfed7d662fdfa04aa9524bd7c2083a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 36f6152e52d6cb45d0a30b385678596331232560
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445420"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980679"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Konfigurace přístupu z virtuálních sítí (VNet)
 
@@ -52,7 +52,7 @@ Následující části popisují, jak nakonfigurovat koncový bod služby virtu�
 > K povolení koncových bodů služby virtuální sítě budete potřebovat následující oprávnění předplatného:
 >   * Předplatné s virtuální sítí: Přispěvatel sítě
 >   * Předplatné s Azure Cosmos DBm účtem: Přispěvatel účtu DocumentDB
->   * Pokud je vaše virtuální síť a účet Azure Cosmos DB v různých předplatných, ujistěte se, že předplatné, které má virtuální síť, má také zaregistrované `Microsoft.DocumentDB` poskytovatele prostředků. Pokud chcete zaregistrovat poskytovatele prostředků, přečtěte si článek [poskytovatelé a typy prostředků Azure](../azure-resource-manager/resource-manager-supported-services.md) .
+>   * Pokud je vaše virtuální síť a účet Azure Cosmos DB v různých předplatných, ujistěte se, že předplatné, které má virtuální síť, má také zaregistrované `Microsoft.DocumentDB` poskytovatele prostředků. Pokud chcete zaregistrovat poskytovatele prostředků, přečtěte si článek [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md) .
 
 Tady jsou pokyny pro registraci předplatného u poskytovatele prostředků.
 

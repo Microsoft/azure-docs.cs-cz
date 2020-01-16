@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 34bc62a9cb7e5d1358322500a8929b6f8b36d422
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4dec76140f61c433561ccfea07b833d9821acfc5
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454557"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028905"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Příprava virtuálních počítačů VMware pro posouzení a migraci do Azure
 
@@ -104,8 +104,9 @@ K přípravě na posouzení virtuálních počítačů VMware potřebujete:
 
 ### <a name="verify-vmware-settings"></a>Ověření nastavení VMware
 
-1. [Kontrolu](migrate-support-matrix-vmware.md#assessment-vcenter-server-requirements) Požadavky na server VMware pro posouzení.
-2. [Ujistěte se, že](migrate-support-matrix-vmware.md#assessment-port-requirements) porty, které potřebujete, jsou otevřené v vCenter Server.
+1. [Kontrolu](migrate-support-matrix-vmware.md#vmware-requirements) Požadavky na server VMware pro posouzení.
+2. [Ujistěte se, že](migrate-support-matrix-vmware.md#port-access) porty, které potřebujete, jsou otevřené v vCenter Server.
+3. V vCenter Server se ujistěte, že váš účet má oprávnění k vytvoření virtuálního počítače pomocí souboru sady vajíček. Zařízení Azure Migrate nasadíte jako virtuální počítač VMware pomocí souboru sady vajíček.
 
 
 ### <a name="set-up-an-account-for-assessment"></a>Nastavení účtu pro posouzení
@@ -120,15 +121,12 @@ Azure Migrate musí mít přístup k vCenter Server, aby se zjistily virtuální
 
 ### <a name="verify-appliance-settings-for-assessment"></a>Ověření nastavení zařízení pro posouzení
 
-Před nasazením zařízení ověřte požadavky na zařízení.
+Před nastavením zařízení Azure Migrate a zahájením posouzení v dalším kurzu připravte na nasazení zařízení.
 
-1. [Ověřte](migrate-support-matrix-vmware.md#assessment-appliance-requirements) požadavky a omezení zařízení.
-2. Pokud používáte proxy server brány firewall založený na adrese URL, [Zkontrolujte](migrate-support-matrix-vmware.md#assessment-url-access-requirements) adresy URL Azure, ke kterým bude zařízení potřebovat přístup. Ujistěte se, že proxy překládá všechny záznamy CNAME přijaté při vyhledávání adres URL.
-3. Zkontrolujte [údaje o výkonu](migrate-appliance.md#collected-performance-data-vmware) a [metadata](migrate-appliance.md#collected-metadata-vmware) , které zařízení shromažďuje během zjišťování a posouzení.
-4. [Poznamenejte](migrate-support-matrix-vmware.md#assessment-port-requirements) si porty, ke kterým se zařízení přistupovalo.
-5. V vCenter Server se ujistěte, že váš účet má oprávnění k vytvoření virtuálního počítače pomocí souboru sady vajíček. Zařízení Azure Migrate nasadíte jako virtuální počítač VMware pomocí souboru sady vajíček.
-
-Pokud používáte proxy server brány firewall založený na adrese URL, povolte přístup k požadovaným [adresám URL Azure](migrate-support-matrix-vmware.md#assessment-url-access-requirements).
+1. [Ověřte](migrate-appliance.md#appliance---vmware) požadavky na zařízení pro virtuální počítače VMware.
+2. [Zkontrolujte](migrate-appliance.md#url-access) adresy URL Azure, ke kterým bude zařízení potřebovat přístup. Pokud používáte bránu firewall nebo proxy založenou na adrese URL, ujistěte se, že umožňuje přístup k požadovaným adresám URL.
+3. [Zkontrolujte](migrate-appliance.md#collected-data---vmware) , že zařízení bude během zjišťování a hodnocení shromažďováno.
+4. [Poznamenejte si](migrate-support-matrix-vmware.md#port-access) požadavky na přístup k portu pro dané zařízení.
 
 
 
@@ -137,23 +135,22 @@ Pokud používáte proxy server brány firewall založený na adrese URL, povolt
 
 Projděte si požadavky na migraci virtuálních počítačů VMware bez agenta.
 
-1. [Kontrola](migrate-support-matrix-vmware.md#agentless-migration-vmware-server-requirements) Požadavky na server VMware.
-2. Nastavte účet s [požadovanými oprávněními](migrate-support-matrix-vmware.md#agentless-migration-vcenter-server-permissions), aby Azure Migrate mohl získat přístup k vCenter Server migrace bez agenta pomocí migrace Azure Migrate serveru.
-3. [Přečtěte](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements) si požadavky na virtuální počítače VMware, které chcete migrovat do Azure pomocí migrace bez agentů.
-4. [Přečtěte](migrate-support-matrix-vmware.md#agentless-migration-appliance-requirements) si požadavky na používání zařízení Azure Migrate pro migraci bez agentů.
-5. Poznamenejte si [přístup k adresám URL](migrate-support-matrix-vmware.md#agentless-migration-url-access-requirements) a [portům](migrate-support-matrix-vmware.md#agentless-migration-port-requirements) , které Azure Migrate zařízení potřebuje k migraci bez agentů.
+1. [Kontrola](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) Požadavky na server VMware a [oprávnění](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) , která Azure Migrate potřebují pro přístup k vCenter Server k migraci bez agenta pomocí migrace Azure Migrate serveru.
+2. [Přečtěte](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms) si požadavky na virtuální počítače VMware, které chcete migrovat do Azure pomocí migrace bez agentů.
+4. [Přečtěte](migrate-support-matrix-vmware-migration.md#agentless-azure-migrate-appliance) si požadavky na používání zařízení Azure Migrate pro migraci bez agentů.
+5. Poznamenejte si [přístup k adresám URL](migrate-appliance.md#url-access) a [portům](migrate-support-matrix-vmware-migration.md#agentless-ports) potřebným k migraci bez agenta.
 
 
 ## <a name="prepare-for-agent-based-vmware-migration"></a>Příprava na migraci VMware založenou na agentech
 
 Projděte si požadavky na migraci virtuálních počítačů VMware [založených na agentech](server-migrate-overview.md) .
 
-1. [Kontrola](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) Požadavky na server VMware.
-2. Nastavte účet s [požadovanými oprávněními](migrate-support-matrix-vmware.md#agent-based-migration-vcenter-server-permissions). Takže Azure Migrate získat přístup k vCenter Server pro migraci na základě agenta pomocí migrace Azure Migrate serveru.
-3. [Přečtěte](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) si požadavky na virtuální počítače VMware, které chcete migrovat do Azure pomocí migrace založené na agentech, včetně instalace služby mobility na každý virtuální počítač, který chcete migrovat.
-4. [Přístup k adrese URL](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements):
-5. Zkontrolujte [přístup k portu](migrate-support-matrix-vmware.md#agent-based-migration-port-requirements) , který Azure Migrate součásti potřebují pro přístup založený na agentovi.
-
+1. [Kontrola](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) Požadavky na server VMware a oprávnění Azure Migrate musí mít přístup k vCenter Server pro migraci na základě agentů pomocí Azure Migrate migrace serveru.
+2. [Přečtěte](migrate-support-matrix-vmware-migration.md#agent-based-vmware-vms) si požadavky na virtuální počítače VMware, které chcete migrovat do Azure pomocí migrace založené na agentech, včetně instalace služby mobility na každý virtuální počítač, který chcete migrovat.
+3. Migrace založené na agentech používá zařízení replikace:
+    - [Projděte si](migrate-replication-appliance.md#appliance-requirements) požadavky na nasazení pro zařízení replikace a [Možnosti](migrate-replication-appliance.md#mysql-installation) pro instalaci MySQL na zařízení.
+    - Zkontrolujte [adresu URL](migrate-replication-appliance.md#url-access) a požadavky na přístup k [portu](migrate-replication-appliance.md#port-access) pro zařízení replikace.
+    
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste:

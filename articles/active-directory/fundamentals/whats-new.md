@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d55cb4667c846b179caef6c2819a08f4e9fe2ae
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 23e48787162bccbf45e420f2deb002879c72fa09
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422740"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978884"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového ve službě Azure Active Directory?
 
@@ -768,7 +768,7 @@ K dispozici jsou nové aktualizace modulů PowerShellu pro AzureAD a AzureAD ve 
 
 Provedli jsme některá vylepšení uživatelského rozhraní pro tvůrce pravidel dynamické skupiny, který je k dispozici v Azure Portal, abyste mohli snadněji nastavit nové pravidlo nebo změnit stávající pravidla. Toto vylepšení návrhu umožňuje vytvořit pravidla s až pěti výrazy, nikoli jenom s jedním. Aktualizovali jsme také seznam vlastností zařízení, aby se odebraly zastaralé vlastnosti zařízení.
 
-Další informace najdete v tématu [Správa pravidel dynamického členství](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-update-rule).
+Další informace najdete v tématu [Správa pravidel dynamického členství](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership).
 
 ---
 

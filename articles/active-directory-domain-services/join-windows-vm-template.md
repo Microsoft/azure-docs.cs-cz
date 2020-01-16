@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 3e1a754d39025136866712cb57026e827c986f6a
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: c9f5bcd9921b0324eb194eefd2066f6c0eaa4706
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705004"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975208"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Připojení virtuálního počítače s Windows serverem k Azure Active Directory Domain Services spravované doméně pomocí šablony Správce prostředků
 
@@ -24,7 +24,7 @@ K automatizaci nasazení a konfigurace virtuálních počítačů Azure můžete
 
 V tomto článku se dozvíte, jak vytvořit virtuální počítač s Windows serverem a připojit ho k spravované doméně Azure služba AD DS pomocí šablon Správce prostředků. Naučíte se také, jak připojit stávající virtuální počítač s Windows serverem k doméně Azure služba AD DS.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -143,6 +143,6 @@ V tomto článku jste použili Azure Portal ke konfiguraci a nasazení prostřed
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
-[template-overview]: ../azure-resource-manager/template-deployment-overview.md
-[deploy-powershell]: ../azure-resource-manager/resource-group-template-deploy.md
-[deploy-cli]: ../azure-resource-manager/resource-group-template-deploy-cli.md
+[template-overview]: ../azure-resource-manager/templates/overview.md
+[deploy-powershell]: ../azure-resource-manager/templates/deploy-powershell.md
+[deploy-cli]: ../azure-resource-manager/templates/deploy-cli.md

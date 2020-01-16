@@ -2,18 +2,20 @@
 title: Scénáře a návrh aplikací
 description: Přehled kategorií cloudových aplikací v Service Fabric. Popisuje návrh aplikace, který používá stavové a bezstavové služby.
 ms.topic: conceptual
-ms.date: 4/24/2019
-ms.openlocfilehash: bdbbf81186463e1f645738b370662de9c13f5c17
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2020
+ms.custom: sfrev
+ms.openlocfilehash: 0aeb8ab2923915befdd11f96025687be3b3c4ff9
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464904"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024734"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric scénáře aplikací
-Azure Service Fabric nabízí spolehlivou a flexibilní platformu, kde můžete psát a spouštět mnoho typů obchodních aplikací a služeb. Tyto aplikace a mikroslužby můžou být bezstavové nebo stavové a jsou mezi virtuálními počítači vyrovnávány prostředky, aby se maximalizovala efektivita. 
 
-Jedinečná architektura Service Fabric umožňuje provádět analýzu dat v reálném čase, výpočet v paměti, paralelní transakce a zpracování událostí ve vašich aplikacích. V závislosti na změně požadavků na prostředky můžete své aplikace snadno škálovat směrem nahoru nebo dolů (ve skutečnosti nebo z výstupů).
+Azure Service Fabric nabízí spolehlivou a flexibilní platformu, kde můžete psát a spouštět mnoho typů obchodních aplikací a služeb. Tyto aplikace a mikroslužby můžou být bezstavové nebo stavové a jsou mezi virtuálními počítači vyrovnávány prostředky, aby se maximalizovala efektivita.
+
+Jedinečná architektura Service Fabric umožňuje provádět analýzu dat v reálném čase, výpočet v paměti, paralelní transakce a zpracování událostí ve vašich aplikacích. V závislosti na změnách požadavků na prostředky můžete své aplikace snadno škálovat do systému nebo.
 
 Pokyny k návrhu při sestavování aplikací, čtení [architektury mikroslužeb v Azure Service Fabric](https://docs.microsoft.com/azure/architecture/reference-architectures/microservices/service-fabric) a [osvědčených postupech pro návrh aplikace pomocí Service Fabric](service-fabric-best-practices-applications.md).
 
@@ -33,8 +35,8 @@ Zvažte použití platformy Service Fabric pro následující typy aplikací:
 
 * **Výpočet dat**: Service Fabric umožňuje sestavovat stavové aplikace, které jsou náročné na výpočetní data. Service Fabric umožňuje společné umístění zpracování (výpočtu) a dat v aplikacích. 
 
-   Když vaše aplikace obvykle vyžaduje přístup k datům, latence sítě přidružená k externí mezipaměti dat nebo vrstvě úložiště omezuje dobu výpočtu. Stavové Service Fabric služby eliminují tuto latenci a povolují více optimalizovaných čtení a zápisů. 
-   
+   Když vaše aplikace obvykle vyžaduje přístup k datům, latence sítě přidružená k externí mezipaměti dat nebo vrstvě úložiště omezuje dobu výpočtu. Stavové Service Fabric služby eliminují tuto latenci a povolují více optimalizovaných čtení a zápisů.
+
    Představte si například aplikaci, která provádí výběr doporučení téměř v reálném čase pro zákazníky s požadavkem na dobu odezvy menší než 100 milisekund. Vlastnosti latence a výkonu služby Service Fabric Services poskytují uživateli odpovídající možnosti, které jsou porovnány s modelem implementace Standard, který potřebuje načíst potřebná data ze vzdáleného úložiště. Systém je rychlejší, protože výpočet výběru doporučení se nachází společně s daty a pravidly.
 
     Zákazníci, kteří vytvořili výpočetní služby, zahrnují [odpověď Solidsoft](https://customers.microsoft.com/story/solidsoft-reply-platform-powers-e-verification-of-pharmaceuticals) a [Infosupport](https://customers.microsoft.com/story/service-fabric-customer-profile-info-support-and-fudura).
@@ -44,16 +46,18 @@ Zvažte použití platformy Service Fabric pro následující typy aplikací:
 * **Škálovatelné služby**: jednotlivé služby je možné rozdělit do oddílů a umožnit tak škálování stavu napříč clusterem. Jednotlivé služby je také možné vytvořit a odebrat. Můžete škálovat služby z několika instancí na několika uzlech na tisíce instancí na mnoha uzlech a pak je znovu škálovat podle potřeby. Pomocí Service Fabric můžete tyto služby vytvářet a spravovat jejich kompletní životní cykly.
 
 ## <a name="application-design-case-studies"></a>Případové studie pro návrh aplikace
-Případové studie, které ukazují, jak Service Fabric slouží k návrhu aplikací, jsou publikovány v [zákaznických scénářích](https://customers.microsoft.com/search?sq=%22Azure%20Service%20Fabric%22&ff=&p=0&so=story_publish_date%20desc/) a [mikroslužbách](https://azure.microsoft.com/solutions/microservice-applications/) na webech Azure.
+
+Případové studie, které ukazují, jak Service Fabric slouží k návrhu aplikací, jsou publikovány v [zákaznických scénářích](https://customers.microsoft.com/search?sq=%22Azure%20Service%20Fabric%22&ff=&p=2&so=story_publish_date%20desc) a [mikroslužbách](https://azure.microsoft.com/solutions/microservice-applications/) na webech Azure.
 
 ## <a name="designing-applications-composed-of-stateless-and-stateful-microservices"></a>Navrhování aplikací složených z bezstavových a stavových mikroslužeb
-Příkladem stavové služby je sestavování aplikací pomocí rolí pracovního procesu Azure Cloud Services. Naproti tomu stavové mikroslužby udržují svůj autoritativní stav mimo požadavek a odpověď. Tato funkce poskytuje vysokou dostupnost a konzistenci stavu prostřednictvím jednoduchých rozhraní API, která poskytují transakční záruky zálohované replikací. 
+
+Příkladem stavové služby je sestavování aplikací pomocí rolí pracovního procesu Azure Cloud Services. Naproti tomu stavové mikroslužby udržují svůj autoritativní stav mimo požadavek a odpověď. Tato funkce poskytuje vysokou dostupnost a konzistenci stavu prostřednictvím jednoduchých rozhraní API, která poskytují transakční záruky zálohované replikací.
 
 Stavové služby v Service Fabric přinesou vysokou dostupnost pro všechny typy aplikací, nikoli jenom databáze a další úložiště dat. Jedná se o přirozený pokrok. Aplikace se už přesunuly z použití čistě relačních databází pro zajištění vysoké dostupnosti pro databáze NoSQL. Samotné aplikace teď můžou mít svůj "horkou" stav a data spravovaná v nich, aby se daly zvýšit výkon, aniž by došlo ke ztrátě spolehlivosti, konzistence nebo dostupnosti.
 
 Při sestavování aplikací, které se skládají z mikroslužeb, obvykle máte k dispozici kombinaci bezstavových webových aplikací (například ASP.NET a Node. js), která zavolá bezstavové a stavové služby firmy střední úrovně. Aplikace a služby jsou nasazené ve stejném Service Fabric clusteru prostřednictvím příkazů Service Fabric nasazení. Každá z těchto služeb je nezávislá na použití škálování, spolehlivosti a využití prostředků. Tato nezávislost vylepšuje flexibilitu a flexibilitu při vývoji a správě životního cyklu.
 
-Stavové mikroslužby zjednodušují návrhy aplikací, protože odstraňují nutnost dalších front a mezipamětí, které byly tradičně nutné pro řešení požadavků na dostupnost a latenci čistě bezstavových aplikací. Vzhledem k tomu, že stavová služba má vysokou dostupnost a nízkou latenci, je pro správu ve vaší aplikaci méně podrobností. 
+Stavové mikroslužby zjednodušují návrhy aplikací, protože odstraňují nutnost dalších front a mezipamětí, které byly tradičně nutné pro řešení požadavků na dostupnost a latenci čistě bezstavových aplikací. Vzhledem k tomu, že stavová služba má vysokou dostupnost a nízkou latenci, je pro správu ve vaší aplikaci méně podrobností.
 
 Následující diagramy znázorňují rozdíly mezi návrhem aplikace, která je Bezstavová a ta je stavová. Díky využití [Reliable Services](service-fabric-reliable-services-introduction.md) a [Reliable Actors](service-fabric-reliable-actors-introduction.md) programovacích modelů omezuje stavové služby složitost aplikace při dosahování vysoké propustnosti a nízké latence.
 
@@ -63,18 +67,16 @@ Tady je ukázková aplikace, která používá stavové služby: ![aplikace pou�
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [vzorcích a scénářích](service-fabric-patterns-and-scenarios.md).
-
 * Začněte vytvářet bezstavové a stavové služby pomocí Service Fabric [Reliable Services](service-fabric-reliable-services-quick-start.md) a [Reliable Actors](service-fabric-reliable-actors-get-started.md) programovacích modelů.
 * Pokyny k [vytváření mikroslužeb v Azure](https://docs.microsoft.com/azure/architecture/microservices/)najdete na cetrum architektury Azure.
 * Přejít na [Azure Service Fabric a osvědčené postupy](service-fabric-best-practices-overview.md) pro vytváření aplikací pro návrh aplikace.
 
-* Další informace najdete také v těchto tématech:
-  * [Informace o mikroslužbách](service-fabric-overview-microservices.md)
+* Viz také:
+  * [Porozumění mikroslužbám](service-fabric-overview-microservices.md)
   * [Definování a Správa stavu služby](service-fabric-concepts-state.md)
-  * [Dostupnost služeb Service Fabric Services](service-fabric-availability-services.md)
-  * [Škálování služby Service Fabric Services](service-fabric-concepts-scalability.md)
-  * [Service Fabric služby oddílů](service-fabric-concepts-partitioning.md)
+  * [Dostupnost služeb](service-fabric-availability-services.md)
+  * [Škálování služeb](service-fabric-concepts-scalability.md)
+  * [Rozdělení služeb](service-fabric-concepts-partitioning.md)
 
 [Image1]: media/service-fabric-application-scenarios/AppwithStatelessServices.png
 [Image2]: media/service-fabric-application-scenarios/AppwithStatefulServices.png

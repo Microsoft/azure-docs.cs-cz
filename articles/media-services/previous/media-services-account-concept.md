@@ -1,6 +1,6 @@
 ---
-title: Správa účtů služby Azure Media Services v2 | Dokumentace Microsoftu
-description: Pokud chcete začít, správa, šifrování, kódování, analýza a streamování médií obsahu v Azure, budete muset vytvořit účet Media Services. Tento článek vysvětluje, jak chcete spravovat účty pro Azure Media Services v2.
+title: Spravovat účty Azure Media Services V2 | Microsoft Docs
+description: Pokud chcete začít spravovat, šifrovat, kódovat, analyzovat a streamovat mediální obsah v Azure, musíte vytvořit účet Media Services. Tento článek vysvětluje, jak spravovat účty Azure Media Services V2.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,36 +11,36 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: b4c19b1f502d079d7dfcc1edef4674d21f78ac3a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 09a5f004570430fafe5c86f4f8ae048f2d1fe4c4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67622040"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981943"
 ---
-# <a name="manage-azure-media-services-v2-accounts"></a>Správa účtů služby Azure Media Services v2
+# <a name="manage-azure-media-services-v2-accounts"></a>Správa účtů Azure Media Services V2
 
-Pokud chcete začít, správa, šifrování, kódování, analýza a streamování médií obsahu v Azure, budete muset vytvořit účet Media Services. Při vytváření účtu Media Services je nutné zadat název prostředku účtu Azure Storage. Zadaný účet úložiště se připojí k vašemu účtu Media Services. Účet Media Services a všechny přidružené účty úložiště musí být ve stejném předplatném Azure.  
+Pokud chcete začít spravovat, šifrovat, kódovat, analyzovat a streamovat mediální obsah v Azure, musíte vytvořit účet Media Services. Při vytváření účtu Media Services je nutné zadat název prostředku účtu Azure Storage. Zadaný účet úložiště se připojí k vašemu účtu Media Services. Účet Media Services a všechny přidružené účty úložiště musí být ve stejném předplatném Azure.  
 
-## <a name="moving-a-media-services-account-between-subscriptions"></a>Přesunutí účtu Azure Media Services mezi předplatnými 
+## <a name="moving-a-media-services-account-between-subscriptions"></a>Přesunutí účtu Media Services mezi předplatnými 
 
-Pokud potřebujete přesunout do nového předplatného účtu Azure Media Services, musíte nejprve přesunout celou skupinu prostředků obsahující účet Media Services do nového předplatného. Je nutné přesunout všechny připojené zdroje: Účty Azure Storage, profilů CDN, atd. Další informace najdete v tématu, které se zabývá [přesunutím prostředků do nové skupiny prostředků nebo předplatného](../../azure-resource-manager/resource-group-move-resources.md). Stejně jako všechny prostředky v Azure, přesune se skupina prostředků může trvat nějakou dobu.
+Pokud potřebujete přesunout Media Services účet k novému předplatnému, musíte nejdřív přesunout celou skupinu prostředků, která obsahuje Media Services účet k novému předplatnému. Je nutné přesunout všechny připojené prostředky: účty Azure Storage, profily Azure CDN atd. Další informace najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../../azure-resource-manager/management/move-resource-group-and-subscription.md). Stejně jako u všech prostředků v Azure může dokončení přesunutí skupiny prostředků nějakou dobu trvat.
 
-Služba Media Services v2 nepodporuje víceklientského modelu. Pokud potřebujete přesunout účtu Azure Media Services do předplatného do nového tenanta, vytvořte novou aplikaci Azure Active Directory (Azure AD) do nového tenanta. Přesuňte váš účet pro toto předplatné nového tenanta. Po dokončení přesunu tenanta, můžete začít používat aplikaci Azure AD z nového tenanta pro přístup k účtu Media Services pomocí rozhraní API v2. 
+Media Services V2 nepodporuje model víceklientské architektury. Pokud potřebujete přesunout účet Media Services k předplatnému v novém tenantovi, vytvořte v novém tenantovi novou aplikaci Azure Active Directory (Azure AD). Pak přesuňte účet k předplatnému v novém tenantovi. Po dokončení přesunu tenanta můžete začít používat aplikaci Azure AD z nového tenanta pro přístup k účtu Media Services pomocí rozhraní API v2. 
 
 > [!IMPORTANT]
-> Budete potřebovat resetovat [ověřování Azure AD](media-services-portal-get-started-with-aad.md) údaje pro přístup k rozhraní API služby Media Services v2.  
+> Pro přístup k Media Services rozhraní API v2 je potřeba resetovat informace o [ověřování Azure AD](media-services-portal-get-started-with-aad.md) .  
 ### <a name="considerations"></a>Požadavky
 
-* Vytvoření zálohy všech dat ve vašem účtu před migrací do jiného předplatného.
-* Budete muset zastavit všechny koncové body streamování a živé streamování prostředků. Vaši uživatelé nebudou mít přístup k vašemu obsahu po dobu trvání přechodu skupiny prostředků. 
+* Před migrací na jiné předplatné vytvořte zálohy všech dat ve vašem účtu.
+* Musíte zastavit všechny koncové body streamování a prostředky živého streamování. Uživatelé nebudou mít přístup k vašemu obsahu po dobu trvání přesunutí skupiny prostředků. 
 
 > [!IMPORTANT]
-> Koncový bod streamování nespustí, dokud se přesun dokončí úspěšně.
+> Nespouštějte koncový bod streamování, dokud se přesun úspěšně nedokončí.
 
 ### <a name="troubleshoot"></a>Řešení potíží 
 
-Pokud přidružené účtu Azure Storage nebo účtu Azure Media Services "odpojují" po přesunutí skupin prostředků, zkuste otočení klíčů účtu úložiště. Pokud otočení klíčů účtu úložiště neodstraní "odpojené" stav účtu Media Services, založte novou žádost o podporu z "Podpora a řešení potíží" nabídky v účtu Media Services.  
+Pokud se účet Media Services nebo přidružený Azure Storage účet stane "Odpojeno" po přesunutí skupiny prostředků, zkuste klíče účtu úložiště otočit. Pokud se při střídání klíčů účtu úložiště nevyřeší stav "Odpojeno" účtu Media Services, založte novou žádost o podporu z nabídky podpora a řešení potíží v účtu Media Services.  
  
 ## <a name="next-steps"></a>Další kroky
 

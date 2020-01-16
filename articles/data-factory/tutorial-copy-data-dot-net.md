@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 7f3fdf1b723158db873bc2635de34d878c464201
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 93c4f71c762cff3e3f5a01f0e2595f3498f9d38d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439442"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977313"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopírování dat z objektu blob Azure do Azure SQL Database pomocí Azure Data Factory
 
@@ -38,7 +38,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure]
 
 ## <a name="prerequisites"></a>Požadavky
 
-* *Účet služby Azure Storage*. Úložiště objektů blob použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si téma [Vytvoření účtu úložiště pro obecné účely](../storage/common/storage-quickstart-create-account.md).
+* *Účet služby Azure Storage*. Úložiště objektů blob použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si téma [Vytvoření účtu úložiště pro obecné účely](../storage/common/storage-account-create.md).
 * *Azure SQL Database*. Tuto databázi použijete jako úložiště dat *jímky*. Pokud nemáte Azure SQL Database, přečtěte si téma [Vytvoření databáze SQL Azure](../sql-database/sql-database-single-database-get-started.md).
 * Sadu *Visual Studio*. Návod v tomto článku používá Visual Studio 2019.
 * *[Sada Azure SDK pro .NET](/dotnet/azure/dotnet-tools)*
@@ -84,7 +84,7 @@ Dále vytvořte tabulku jímky SQL:
     1. Pro správu SQL serveru přejdete na [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **SQL servery**.
 
     2. Vyberte svůj server.
-    
+
     3. V záhlaví **zabezpečení** nabídky serveru SQL vyberte možnost **brány firewall a virtuální sítě**.
 
     4. Na stránce **Brána firewall a virtuální sítě** v části **Povolení přístupu ke službám a prostředkům Azure pro přístup k tomuto serveru**vyberte **zapnuto**.
@@ -154,7 +154,7 @@ Pomocí těchto kroků vytvořte klienta datové továrny.
     string inputBlobName = "inputEmp.txt";
 
     // Specify the sink Azure SQL Database information
-    string azureSqlConnString = 
+    string azureSqlConnString =
         "Server=tcp:<your server name>.database.windows.net,1433;" +
         "Database=<your database name>;" +
         "User ID=<your username>@<your server name>;" +
@@ -265,7 +265,7 @@ Console.WriteLine(
 
 ## <a name="create-datasets"></a>Vytvoření datových sad
 
-V této části vytvoříte dvě datové sady: jeden pro zdroj, druhý pro jímku. 
+V této části vytvoříte dvě datové sady: jeden pro zdroj, druhý pro jímku.
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>Vytvoření datové sady pro zdrojový objekt blob Azure
 
@@ -283,8 +283,8 @@ Console.WriteLine("Creating dataset " + blobDatasetName + "...");
 DatasetResource blobDataset = new DatasetResource(
     new AzureBlobDataset
     {
-        LinkedServiceName = new LinkedServiceReference { 
-            ReferenceName = storageLinkedServiceName 
+        LinkedServiceName = new LinkedServiceReference {
+            ReferenceName = storageLinkedServiceName
         },
         FolderPath = inputBlobPath,
         FileName = inputBlobName,
@@ -309,7 +309,7 @@ Console.WriteLine(
 
 Do metody `Main` přidejte následující kód, který vytvoří *datovou sadu Azure SQL Database*. Informace o podporovaných vlastnostech a podrobnostech najdete v tématu [Azure SQL Database vlastnosti datové sady](connector-azure-sql-database.md#dataset-properties).
 
-Definujete datovou sadu, která představuje data jímky ve službě Azure SQL Database. Tato datová sada odkazuje na propojenou službu Azure SQL Database, kterou jste vytvořili v předchozím kroku. Určuje také tabulku SQL, který obsahuje zkopírovaná data. 
+Definujete datovou sadu, která představuje data jímky ve službě Azure SQL Database. Tato datová sada odkazuje na propojenou službu Azure SQL Database, kterou jste vytvořili v předchozím kroku. Určuje také tabulku SQL, který obsahuje zkopírovaná data.
 
 ```csharp
 // Create an Azure SQL Database dataset
@@ -416,14 +416,14 @@ Nyní vložte kód pro kontrolu stavu běhu kanálu a Získejte podrobné inform
     ActivityRunsQueryResponse queryResponse = client.ActivityRuns.QueryByPipelineRun(
         resourceGroup, dataFactoryName, runResponse.RunId, filterParams
     );
- 
+
     if (pipelineRun.Status == "Succeeded")
     {
         Console.WriteLine(queryResponse.Value.First().Output);
     }
     else
         Console.WriteLine(queryResponse.Value.First().Error);
-    
+
     Console.WriteLine("\nPress any key to exit...");
     Console.ReadKey();
     ```
@@ -564,7 +564,7 @@ Press any key to exit...
 
 ## <a name="next-steps"></a>Další kroky
 
-Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob Azure. Naučili jste se tyto postupy: 
+Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob Azure. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 > * Vytvoření datové továrny
@@ -574,7 +574,7 @@ Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístěn
 > * Zahajte spuštění kanálu.
 > * Monitorování spuštění aktivit a kanálu
 
-Pokud se chcete dozvědět víc o kopírování dat z místního prostředí do cloudu, přejděte k následujícímu kurzu: 
+Pokud se chcete dozvědět víc o kopírování dat z místního prostředí do cloudu, přejděte k následujícímu kurzu:
 
 > [!div class="nextstepaction"]
 >[Kopírování dat z místního prostředí do cloudu](tutorial-hybrid-copy-powershell.md)

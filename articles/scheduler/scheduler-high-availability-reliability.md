@@ -9,19 +9,19 @@ ms.reviewer: klam
 ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
 ms.topic: article
 ms.date: 08/16/2016
-ms.openlocfilehash: 3cc15d173ad735d77505f636bd230e0876371271
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 6a729df7eb08f8dacff4b0d35d011854208510ff
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300935"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979289"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Vysoká dostupnost a spolehlivost pro Azure Scheduler
 
 > [!IMPORTANT]
 > [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje [vyřazení](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)Azure Scheduleru. Pokud chcete pokračovat v práci s úlohami, které jste nastavili v plánovači, [migrujte prosím na Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) co nejdříve. 
 
-Azure Scheduler nabízí [vysokou dostupnost](https://docs.microsoft.com/azure/architecture/guide/pillars#availability) a spolehlivost pro vaše úlohy. Další informace najdete v tématu [SLA pro Scheduler](https://azure.microsoft.com/support/legal/sla/scheduler).
+Azure Scheduler nabízí [vysokou dostupnost](https://docs.microsoft.com/azure/architecture/framework/#resiliency) a spolehlivost pro vaše úlohy. Další informace najdete v tématu [SLA pro Scheduler](https://azure.microsoft.com/support/legal/sla/scheduler).
 
 ## <a name="high-availability"></a>Vysoká dostupnost
 
@@ -29,7 +29,7 @@ Služba Azure Scheduler je [vysoce dostupná] a používá replikaci geograficky
 
 ### <a name="geo-redundant-service-deployment"></a>Geograficky redundantní nasazení služby
 
-Služba Azure Scheduler je k dispozici v Azure Portal napříč všemi geografickými oblastmi, které [Azure ještě dnes podporuje](https://azure.microsoft.com/global-infrastructure/regions/#services). Takže pokud se datacentrum Azure v hostované oblasti nebude k dispozici, můžete i nadále používat Azure Scheduler, protože možnosti převzetí služeb při selhání služby zpřístupňují Plánovač z jiného datového centra.
+Služba Azure Scheduler je k dispozici v Azure Portal napříč [všemi geografickými oblastmi, které Azure ještě dnes podporuje](https://azure.microsoft.com/global-infrastructure/regions/#services). Takže pokud se datacentrum Azure v hostované oblasti nebude k dispozici, můžete i nadále používat Azure Scheduler, protože možnosti převzetí služeb při selhání služby zpřístupňují Plánovač z jiného datového centra.
 
 ### <a name="geo-regional-job-replication"></a>Replikace geograficky regionálních úloh
 
@@ -70,7 +70,7 @@ Typ akce alternativní akce se může lišit od původní akce. I když původn�
 
 Další informace o nastavení alternativního koncového bodu najdete v tématu [errorAction](scheduler-concepts-terms.md#error-action).
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Co je Azure Scheduler?](scheduler-intro.md)
 * [Koncepty, terminologie a hierarchie entit](scheduler-concepts-terms.md)

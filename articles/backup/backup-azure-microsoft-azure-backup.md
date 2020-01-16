@@ -3,12 +3,12 @@ title: Použití Azure Backup Server k zálohování úloh
 description: V tomto článku se dozvíte, jak připravit prostředí pro ochranu a zálohování úloh pomocí Microsoft Azure Backup serveru (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 7379992eeb441372a9140621f9d90b337ad0d2e2
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: db2bac3464939edc5dec2ee2947faf7a05ad6812
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172994"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979859"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
 
@@ -31,7 +31,7 @@ Tento článek vysvětluje, jak připravit prostředí pro zálohování úloh p
 MABS nasazené na virtuálním počítači Azure může zálohovat virtuální počítače v Azure, ale měly by být ve stejné doméně, aby se povolila operace zálohování. Proces pro zálohování virtuálního počítače Azure zůstává stejný jako zálohování virtuálních počítačů místně, ale nasazení MABS v Azure má určitá omezení. Další informace o omezeních najdete v tématu [DPM jako virtuální počítač Azure](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites) .
 
 > [!NOTE]
-> Azure má dva modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje informace a postupy pro obnovení virtuálních počítačů nasazených pomocí modelu Správce prostředků.
+> Azure má dva modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../azure-resource-manager/management/deployment-models.md). Tento článek popisuje informace a postupy pro obnovení virtuálních počítačů nasazených pomocí modelu Správce prostředků.
 >
 >
 
@@ -90,13 +90,13 @@ Chcete-li upravit nastavení replikace úložiště:
 
 ### <a name="downloading-the-software-package"></a>Stažení softwarového balíčku
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. Pokud už máte otevřený trezor Recovery Services, pokračujte krokem 3. Pokud nemáte otevřený trezor Recovery Services, ale nachází se v Azure Portal, v hlavní nabídce klikněte na tlačítko **Procházet**.
 
-   * V seznamu prostředků zadejte **Služby zotavení**.
-   * Během zadávání se seznam bude filtrovat podle zadávaného textu. Až uvidíte **Trezory Služeb zotavení**, klikněte na ně.
+   * V seznamu prostředků zadejte **Recovery Services**.
+   * Během zadávání se seznam bude filtrovat podle zadávaného textu. Až uvidíte **Trezory Recovery Services**, klikněte na ně.
 
-     ![Vytvoření trezoru Služeb zotavení – krok 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
+     ![Vytvoření trezoru Recovery Services – krok 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
      Objeví se seznam trezorů Služeb zotavení.
    * Ze seznamu trezorů Služeb zotavení vyberte trezor.
@@ -215,7 +215,7 @@ Po dokončení procesu extrakce zaškrtněte políčko pro spuštění programu 
     ![Azure Backup Server PreReq2](./media/backup-azure-microsoft-azure-backup/mars/04.png)
 9. Po úspěšném dokončení registrace Microsoft Azure Backup serveru přejde průvodce celkovým nastavením na instalaci a konfiguraci SQL Server a Azure Backup Server komponenty. Po dokončení instalace součásti SQL Server se nainstalují Azure Backup Server součásti.
 
-    ![Server Azure Backup](./media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
+    ![Azure Backup Server](./media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
 
 Po dokončení instalace se vytvoří taky ikony na ploše produktu. Stačí dvakrát kliknout na ikonu a spustit produkt.
 
@@ -262,7 +262,7 @@ Tady je postup, pokud potřebujete přesunout MABS na nový server a zachovat ú
 2. Vypněte původní server Azure Backup nebo ho odpojte od tohoto drátu.
 3. Resetujte účet počítače ve službě Active Directory.
 4. Nainstalujte Server 2016 na nový počítač a pojmenujte ho na stejný název počítače jako na původním serveru Azure Backup.
-5. Připojit k doméně
+5. Join the Domain
 6. Nainstalovat Azure Backup Server V3 nebo novější (přesunout disky fondu úložiště MABS z původního serveru a importovat)
 7. Obnovte DPMDB provedených v kroku 1.
 8. Připojte úložiště k novému serveru z původního záložního serveru.
@@ -283,7 +283,7 @@ Kromě toho musí být předplatné Azure v dobrém stavu. Pokud chcete zjistit 
 
 Jakmile budete znát stav připojení Azure a předplatného Azure, můžete pomocí následující tabulky zjistit dopad na nabízené funkce zálohování a obnovení.
 
-| Stav připojení | předplatné Azure | Zálohování do Azure | Zálohovat na disk | Obnovení z Azure | Obnovení z disku |
+| Stav připojení | Předplatné Azure | Zálohování do Azure | Zálohovat na disk | Obnovení z Azure | Obnovení z disku |
 | --- | --- | --- | --- | --- | --- |
 | Připojeno |Aktivní |Povoleno |Povoleno |Povoleno |Povoleno |
 | Připojeno |Platnost vypršela |Zastaveno |Zastaveno |Povoleno |Povoleno |
@@ -300,7 +300,7 @@ Pokud máte bránu firewall nebo proxy server, který brání přístupu k Azure
 * \*.Microsoft.com
 * \*.WindowsAzure.com
 * \*.microsoftonline.com
-* \*. windows.net
+* \*.windows.net
 
 Po obnovení připojení k Azure na Azure Backup Server počítač se operace, které jde provést, stanoví ve stavu předplatného Azure. Výše uvedená tabulka obsahuje podrobnosti o operacích, které jsou povolené, když je počítač připojený.
 
@@ -339,7 +339,7 @@ K upgradu MABS použijte následující postup:
 
 3. Aktualizujte agenty ochrany na chráněných serverech.
 4. Zálohování by mělo pokračovat bez nutnosti restartovat provozní servery.
-5. Teď můžete začít chránit svoje data. Pokud provádíte upgrade na Moderní úložiště zálohování a zároveň chráníte, můžete také vybrat svazky, ve kterých chcete ukládat zálohy, a v části zřízené místo ověřit. [Další informace](backup-mabs-add-storage.md)
+5. Teď můžete začít chránit svoje data. Pokud provádíte upgrade na Moderní úložiště zálohování a zároveň chráníte, můžete také vybrat svazky, ve kterých chcete ukládat zálohy, a v části zřízené místo ověřit. [Další informace](backup-mabs-add-storage.md).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

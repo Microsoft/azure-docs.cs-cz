@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4da78fbb15aea2bd0f54ffec1b0851466c799584
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 182bf02bfaad598a447304cc9f2ed42f6221176d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888579"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971967"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Storage
 
@@ -40,7 +40,18 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="create-account"></a>Vytvoření účtu
+
+
+## <a name="enable"></a>Povolení
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
+
+## <a name="grant-access"></a>Udělení přístupu
+
+
+### <a name="create-storage-account"></a>Vytvoření účtu úložiště
 
 V této části vytvoříte účet úložiště.
 
@@ -53,7 +64,7 @@ V této části vytvoříte účet úložiště.
 
     ![Vytvoření nového účtu úložiště](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
-## <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>Vytvoření kontejneru objektů blob a nahrání souboru do účtu úložiště
+### <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>Vytvoření kontejneru objektů blob a nahrání souboru do účtu úložiště
 
 Soubory vyžadují úložiště objektů blob. Proto potřebujete vytvořit kontejner objektů blob, do kterého soubor uložíte. Potom soubor nahrajete do kontejneru objektů blob v novém účtu úložiště.
 
@@ -69,7 +80,7 @@ Soubory vyžadují úložiště objektů blob. Proto potřebujete vytvořit kont
 7. V podokně **Nahrát objekt blob** v části **Soubory** klikněte na ikonu složky a přejděte k souboru **hello world.txt** na místním počítači, vyberte ho a klikněte na **Nahrát**.
     ![Nahrání textového souboru](./media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
-## <a name="grant-access"></a>Udělení přístupu
+### <a name="grant-access"></a>Udělení přístupu
 
 V této části se dozvíte, jak udělit VIRTUÁLNÍmu počítači přístup k kontejneru Azure Storage. Spravovanou identitu přiřazenou systémem na virtuálním počítači můžete použít k načtení dat, která jsou v úložišti Azure Storage Blob.
 
@@ -83,7 +94,7 @@ V této části se dozvíte, jak udělit VIRTUÁLNÍmu počítači přístup k k
 
     ![Přiřazení oprávnění](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
 
-## <a name="get-an-access-token"></a>Získání přístupového tokenu 
+## <a name="access-data"></a>Přístup k datům 
 
 Azure Storage nativně podporuje ověřování Azure AD, takže může přímo přijímat přístupové tokeny získané pomocí spravované identity. Je to součást integrace Azure Storage do Azure AD, ale nejde o poskytnutí přihlašovacích údajů v připojovacím řetězci.
 
@@ -160,6 +171,13 @@ namespace StorageOAuthToken
 Odpověď bude obsahovat obsah souboru:
 
 `Hello world! :)`
+
+
+## <a name="disable"></a>Zákaz
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

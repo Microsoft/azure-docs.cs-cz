@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
-ms.openlocfilehash: be563e39ed1bfa405830999a96d8630b6f8254bb
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 636973110e11770e33c635e312c86b25110705da
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057971"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981350"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Vzdálená plocha se na virtuálním počítači Azure často odpojí.
 
 Tento článek vysvětluje, jak řešit často nepřipojená připojení k virtuálnímu počítači Azure pomocí protokol RDP (Remote Desktop Protocol) RDP).
 
 > [!NOTE] 
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití modelu nasazení Správce prostředků. Tento model doporučujeme použít pro nová nasazení namísto použití modelu nasazení Classic.
+> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití modelu nasazení Správce prostředků. Tento model doporučujeme použít pro nová nasazení namísto použití modelu nasazení Classic.
 
 ## <a name="symptom"></a>Příznak
 
@@ -93,8 +93,8 @@ Pokud chcete tento problém vyřešit, použijte řízení sériového portu neb
 2. Po disk s operačním systémem je připojen k virtuální počítač pro obnovení, ujistěte se, že disk je označený jako **Online** v konzole Správa disků. Poznamenejte si písmeno jednotky, která je přiřazena připojeném disku s operačním systémem.
 3. Na disku s operačním systémem, který jste připojili, přejděte do složky **\Windows\System32\Config** . Zkopírujte všechny soubory v této složce jako zálohu pro případ, že je vyžadováno vrácení zpět.
 4. Spusťte Editor registru (Regedit. exe).
-5. Vyberte klíč **HKEY_LOCAL_MACHINE** . V nabídce vyberte**podregistr Loading** **File** > :
-6. Přejděte do složky **\windows\system32\config\SYSTEM** na disku s operačním systémem, který jste připojili. Jako název podregistru zadejte **BROKENSYSTEM**. Nový podregistr registru se zobrazí pod klíčem **HKEY_LOCAL_MACHINE** . Pak v klíči **HKEY_LOCAL_MACHINE** načtěte podregistr software **\windows\system32\config\SOFTWARE** . Jako název softwaru pro podregistr zadejte **BROKENSOFTWARE**. 
+5. Vyberte **HKEY_LOCAL_MACHINE** klíč. V nabídce vyberte **soubor** > **Načíst podregistr**:
+6. Přejděte do složky **\windows\system32\config\SYSTEM** na disku s operačním systémem, který jste připojili. Jako název podregistru zadejte **BROKENSYSTEM**. Nový podregistr registru se zobrazí pod klíčem **HKEY_LOCAL_MACHINE** . Pak načtěte podregistr software **\windows\system32\config\SOFTWARE** pod klíčem **HKEY_LOCAL_MACHINE** . Jako název softwaru pro podregistr zadejte **BROKENSOFTWARE**. 
 7. Otevřete okno příkazového řádku se zvýšenými oprávněními (**Spustit jako správce**) a ve zbývajících krocích spusťte příkazy pro resetování konfigurací RDP. 
 8. Snižte úroveň zabezpečení RDP na 0, aby komunikace mezi serverem a klientem používala nativní šifrování RDP:
 
@@ -151,7 +151,7 @@ Pokud chcete tento problém vyřešit, použijte řízení sériového portu neb
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxConnectionTime' /t REG_DWORD /d 0 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxConnectionTime' /t REG_DWORD /d 0 /f
-16. Nastavte řízení času nečinnosti relace protokolu RDP:     REG přidat "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp"/v "fInheritMaxIdleTime"/t REG_DWORD/d 1/f 
+16. Nastavte řízení času nečinnosti relace RDP: REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp"/v "fInheritMaxIdleTime"/t REG_DWORD/d 1/f 
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v ' MaxIdleTime' /t REG_DWORD /d 0 /f
 
@@ -166,7 +166,7 @@ Pokud chcete tento problém vyřešit, použijte řízení sériového portu neb
 18. Restartujte virtuální počítač a zkuste se k němu připojit pomocí protokolu RDP.
 
 ## <a name="need-help"></a>Potřebujete pomoct? 
-Kontaktujte podporu. Pokud stále potřebujete pomoc, obraťte se na [podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , abyste mohli rychle vyřešit problém.
+Obraťte se na podporu. Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a ta vám pomůže váš problém rychle vyřešit.
 
 
 

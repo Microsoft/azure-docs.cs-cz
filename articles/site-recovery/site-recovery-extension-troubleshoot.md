@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.openlocfilehash: 7f9ae32b95d629ef79f085ed590d9057b0414911
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: a9d28a12f5f1fa32d2bc3bcf590134930503f2ac
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941541"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970386"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Řešení potíží s rozšířením virtuálních počítačů Azure
 
@@ -105,8 +105,6 @@ Postup při odinstalaci rozšíření:
 4. Vyberte **rozšíření Site Recovery**.
 5. Vyberte **Odinstalovat**.
 
-Pokud se u virtuálního počítače se systémem Linux v Azure Portal nezobrazuje rozšíření VMSnapshot, [aktualizujte agenta Azure Linux](../virtual-machines/linux/update-agent.md)a pak spusťte ochranu. 
+Pokud se u virtuálního počítače se systémem Linux v Azure Portal nezobrazuje rozšíření VMSnapshot, [aktualizujte agenta Azure Linux](../virtual-machines/linux/update-agent.md)a pak spusťte ochranu.
 
 Dokončením těchto kroků dojde k přeinstalování rozšíření během ochrany.
-
-

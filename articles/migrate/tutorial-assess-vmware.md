@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 31af4ad9c6985202555dbcbe86c52e45d5c4154a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 58e6e7b3cdf749909165d7ff071a2f3885d7e8b9
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453283"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028742"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Posouzení virtuálních počítačů VMware pomocí posouzení serveru Azure Migrate
 
@@ -41,11 +41,11 @@ Tady je seznam toho, co byste měli udělat v prvním kurzu:
 
 - [Nastavte oprávnění Azure](tutorial-prepare-vmware.md#prepare-azure) pro Azure Migrate.
 - [Příprava VMware](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment) na posouzení:
-   - Ověřte nastavení VMware.
-   - Nastavte oprávnění k vytvoření virtuálního počítače VMware pomocí šablony vajíček.
-   - Nastavte účet pro zjišťování virtuálních počítačů. 
-   - Požadované porty zpřístupníte.
-   - Uvědomte si adresy URL potřebné pro přístup k Azure.
+   - [Ověřit](migrate-support-matrix-vmware.md#vmware-requirements) Nastavení VMware.
+   - Nastavte oprávnění ve VMware a vytvořte virtuální počítač VMware se šablonou vajíček.
+   - Nastavte [účet pro zjišťování virtuálních počítačů](migrate-support-matrix-vmware.md#vmware-requirements). 
+   - [Požadované porty](migrate-support-matrix-vmware.md#port-access) zpřístupníte.
+   - Uvědomte si [adresy URL potřebné](migrate-replication-appliance.md#url-access) pro přístup k Azure.
 
 ## <a name="set-up-an-azure-migrate-project"></a>Nastavení Azure Migrateho projektu
 
@@ -130,7 +130,7 @@ Naimportujte stažený soubor a vytvořte virtuální počítač:
 
 ### <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
 
-Ujistěte se, že se virtuální počítač zařízení může připojit k [adresám URL Azure](migrate-support-matrix-vmware.md#assessment-url-access-requirements).
+Ujistěte se, že se virtuální počítač zařízení může připojit k [adresám URL Azure](migrate-appliance.md#url-access).
 
 ### <a name="configure-the-appliance"></a>Konfigurace zařízení
 
@@ -172,7 +172,7 @@ Aby bylo možné zjistit konfiguraci a údaje o výkonu virtuálních počítač
 1. V části **zadat vCenter Server podrobnosti**zadejte název (FQDN) nebo IP adresu instance vCenter Server. Můžete ponechat výchozí port nebo zadat vlastní port, na kterém vCenter Server naslouchá.
 1. Do pole **uživatelské jméno** a **heslo**zadejte přihlašovací údaje účtu vCenter Server, které zařízení použije ke zjištění virtuálních počítačů v instanci vCenter Server. 
 
-   Ujistěte se, že účet má [požadovaná oprávnění pro zjišťování](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions). [Rozsah zjišťování](tutorial-assess-vmware.md#set-the-scope-of-discovery) můžete omezit omezením přístupu k účtu vCenter.
+   Ujistěte se, že účet má [požadovaná oprávnění pro zjišťování](migrate-support-matrix-vmware.md#vmware-requirements). [Rozsah zjišťování](tutorial-assess-vmware.md#set-the-scope-of-discovery) můžete omezit omezením přístupu k účtu vCenter.
 1. Vyberte **ověřit připojení** a ujistěte se, že se zařízení může připojit k vCenter Server.
 
 ### <a name="specify-vm-credentials"></a>Zadat přihlašovací údaje virtuálního počítače

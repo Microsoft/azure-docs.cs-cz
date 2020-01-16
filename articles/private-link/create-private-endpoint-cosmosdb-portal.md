@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 13b0f7bd37956b51c6dce780d0709abfb3546336
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 23e04bf651c199364f23bf36f327de94c709d643
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430303"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028590"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Připojení soukromě k účtu Azure Cosmos pomocí privátního odkazu Azure
 
@@ -141,7 +141,7 @@ V této části se připojíte soukromě k účtu Azure Cosmos pomocí privátn�
    10.1.255.14 mycosmosaccount-eastus.documents.azure.com
 
 
-1. Ve vzdálené ploše *myVM*nainstalujte [Průzkumník služby Microsoft Azure Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows).
+1. Ve vzdálené ploše *myVM*nainstalujte [Průzkumník služby Microsoft Azure Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows).
 
 1. Kliknutím pravým tlačítkem myši vyberte **Cosmos DB účty (Preview)** .
 
@@ -159,22 +159,22 @@ V této části se připojíte soukromě k účtu Azure Cosmos pomocí privátn�
 
 1. (Volitelně) přidejte nové položky do *mycosmosaccount*.
 
-1. Zavřete připojení ke vzdálené ploše pro *myVM*.
+1. Zavřete připojení ke vzdálené ploše pro *myVM*.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Až budete hotovi s použitím privátního koncového bodu, účtu Azure Cosmos a virtuálního počítače, odstraňte skupinu prostředků a všechny prostředky, které obsahuje: 
 
-1. Do **vyhledávacího** pole v horní části portálu zadejte *myResourceGroup* a ve výsledcích hledání vyberte *myResourceGroup* .
+1. Do **vyhledávacího** pole v horní části portálu zadejte *myResourceGroup* a ve výsledcích hledání vyberte *myResourceGroup* .
 
 1. Vyberte **Odstranit skupinu prostředků**.
 
-1. Zadejte *myResourceGroup* pro **typ název skupiny prostředků** a vyberte **Odstranit**.
+1. Zadejte *myResourceGroup* pro **typ název skupiny prostředků** a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste vytvořili virtuální počítač ve virtuální síti, účtu Azure Cosmos a privátním koncovém bodu. Připojili jste se k virtuálnímu počítači z Internetu a bezpečně komunikovali s účtem Azure Cosmos pomocí privátního odkazu.
 
-* Další informace o privátním koncovém bodu najdete v tématu [co je privátní koncový bod Azure](private-endpoint-overview.md).
+* Další informace o privátním koncovém bodu najdete v tématu [co je privátní koncový bod Azure](private-endpoint-overview.md).
 
 * Pokud chcete získat další informace o omezení privátního koncového bodu při použití s Azure Cosmos DB, přečtěte si článek [privátní odkaz na Azure s článkem Azure Cosmos DB](../cosmos-db/how-to-configure-private-endpoints.md) .

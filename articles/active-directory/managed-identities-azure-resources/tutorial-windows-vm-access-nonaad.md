@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/10/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08a5c2c101b934f07ab85082e726cb8e1341e5d0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: cd9f85e3bfd11ee655ce581c60a5b65e13f4497b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888726"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971827"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Key Vaultu 
 
@@ -38,6 +38,13 @@ Získáte informace o těchto tématech:
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+
+## <a name="enable"></a>Povolení
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
 
 ## <a name="grant-access"></a>Udělení přístupu  
  
@@ -66,7 +73,7 @@ Potom přidejte do trezoru klíčů tajný kód, abyste ho mohli později načí
 5. Nechte datum aktivace i datum konce platnosti nevyplněné a **Povoleno** nechte nastavené na **Ano**. 
 6. Kliknutím na **Vytvořit** vytvořte tajný kód. 
  
-## <a name="get-an-access-token"></a>Získání přístupového tokenu  
+## <a name="access-data"></a>Přístup k datům  
 
 V této části se dozvíte, jak získat přístupový token pomocí identity virtuálního počítače a jak ho použít k načtení tajného kódu z Key Vault. Pokud nemáte nainstalovaný PowerShell 4.3.1 nebo novější, budete si muset [stáhnout a nainstalovat nejnovější verzi](https://docs.microsoft.com/powershell/azure/overview).
 
@@ -108,6 +115,13 @@ Nejdřív použijeme spravovanou identitu přiřazenou systémem virtuálního p
     ```
     
 Jakmile ze služby Key Vault načtete tajný kód, můžete ho použít při přihlášení ke službě, která vyžaduje jméno a heslo. 
+
+
+## <a name="disable"></a>Zákaz
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

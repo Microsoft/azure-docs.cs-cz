@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 40aa35e9f9d40a8a021797a0a2a4af9216d90618
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 92d7522c8382ded182c5f482df3f3d917b4b3a14
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898167"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982384"
 ---
 # <a name="private-link-for-azure-database-for-mariadb-preview"></a>Privátní odkaz pro Azure Database for MariaDB (Preview)
 
@@ -28,7 +28,7 @@ Data ex filtrátu v Azure Database for MariaDB je, že ověřený uživatel, jak
 
 Vezměte v úvahu scénář s uživatelem, který spouští MariaDB Workbench uvnitř virtuálního počítače Azure, který se připojuje k instanci Azure Database for MariaDB. Tato instance MariaDB je v datovém centru Západní USA. Následující příklad ukazuje, jak omezit přístup k veřejným koncovým bodům na Azure Database for MariaDB pomocí řízení přístupu k síti.
 
-* Nastavením povolit službám Azure na OFF zakažte veškerý provoz služeb Azure pro Azure Database for MariaDB prostřednictvím veřejného koncového bodu. Zajistěte, aby žádné IP adresy nebo rozsahy neumožňovaly přístup k serveru prostřednictvím [pravidel brány firewall](https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules) nebo [koncových bodů služby virtuální sítě](https://docs.microsoft.com/azure/mariadb/concepts-data-access-and-security-vnet).
+* Nastavením povolit službám Azure na OFF zakažte veškerý provoz služeb Azure pro Azure Database for MariaDB prostřednictvím veřejného koncového bodu. Zajistěte, aby žádné IP adresy nebo rozsahy neumožňovaly přístup k serveru prostřednictvím [pravidel brány firewall](https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules) nebo [koncových bodů služby virtuální sítě](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet).
 
 * Povolte provoz do Azure Database for MariaDB jenom pomocí privátní IP adresy virtuálního počítače. Další informace najdete v článcích o [pravidlech brány firewall pro virtuální](howto-manage-vnet-portal.md)počítače a [služby](concepts-data-access-security-vnet.md) .
 

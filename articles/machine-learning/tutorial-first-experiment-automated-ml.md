@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: c13b2a24147c542e36b78e8ae17af8e85414cd74
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 93cbf8e9e60ef48e1ff3516dd4e9e123f70e0f42
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533458"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982437"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Kurz: vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -138,9 +138,9 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
         Ověřování | Vyberte typ křížového ověření a počet testů.|Typ ověřování:<br>křížové ověření &nbsp;k-skládání&nbsp; <br> <br> Počet ověření: 2
         Souběžnost| Maximální počet provedených paralelních iterací a jader používaných na iteraci| Maximální&nbsp;souběžných&nbsp;ch iterací: 5<br> Maximální počet&nbsp;jader&nbsp;na iteraci&nbsp;: žádné
         
-        Vyberte **OK**.
+        Vyberte **Uložit**.
 
-1. Vyberte **vytvořit** a spusťte experiment. Po zahájení přípravy experimentu se otevře obrazovka s **podrobnostmi o spuštění** se **stavem spuštění** .
+1. Vyberte **Dokončit** pro spuštění experimentu. Po zahájení přípravy experimentu se otevře obrazovka s **podrobnostmi o spuštění** se **stavem spuštění** .
 
 >[!IMPORTANT]
 > Příprava na Příprava spuštění experimentu trvá **10-15 minut** .
@@ -155,7 +155,7 @@ Přejděte na kartu **modely** a podívejte se na testované algoritmy (modely).
 
 Až budete čekat na dokončení všech modelů experimentů, vyberte **název algoritmu** dokončeného modelu a prozkoumejte jeho podrobnosti o výkonu. 
 
-Následující navigace prochází pomocí karet **Podrobnosti modelu** a **vizualizace** a zobrazí vlastnosti vybraného modelu, metriky a grafy výkonu. 
+Následující navigace prochází pomocí karet **Podrobnosti modelu** a **vizualizace** k zobrazení vlastností vybraného modelu, metrik a grafů výkonu. 
 
 ![Podrobnosti spuštění iterace](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
 

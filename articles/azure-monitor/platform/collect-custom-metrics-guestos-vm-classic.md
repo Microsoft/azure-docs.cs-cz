@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: af99bd8ea619d17bdc40ea025f0bfcb1c095db52
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: d911a6b65ba0d63bca09437f6451019addcbc0b3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286144"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977625"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Odeslání metriky hostovaného operačního systému do databáze Azure Monitor metriky pro virtuální počítač s Windows (Classic)
 
@@ -29,7 +29,7 @@ Proces, který je popsaný v tomto článku, funguje jenom na klasických virtu�
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Musíte být [správcem služeb nebo spolusprávcem](../../billing/billing-add-change-azure-subscription-administrator.md) svého předplatného Azure. 
+- Musíte být [správcem služeb nebo spolusprávcem](../../cost-management-billing/manage/add-change-subscription-administrator.md) svého předplatného Azure. 
 
 - Vaše předplatné musí být zaregistrované ve službě [Microsoft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 
@@ -60,7 +60,7 @@ Udělte této aplikaci oprávnění vydavatele metrik monitorování pro prostř
 
 ## <a name="author-diagnostics-extension-configuration"></a>Vytvořit konfiguraci rozšíření diagnostiky
 
-1. Připravte konfigurační soubor s diagnostickým rozšířením. Tento soubor určuje, které protokoly a čítače výkonu má diagnostické rozšíření shromažďovat pro váš klasický virtuální počítač. Následuje příklad:
+1. Připravte konfigurační soubor s diagnostickým rozšířením. Tento soubor určuje, které protokoly a čítače výkonu má diagnostické rozšíření shromažďovat pro váš klasický virtuální počítač. Tady je příklad:
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>

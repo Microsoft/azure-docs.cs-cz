@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/09/2018
+ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 815e1a811d16e4c630e455e9c684c2b6b094a5d5
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: b11df2e1a6140d251801a3243f3eaa9458b77d29
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183411"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971922"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Kurz: Použití spravované identity přiřazené systémem na virtuální počítači s Linuxem pro přístup k Azure Storage 
 
@@ -29,7 +29,7 @@ ms.locfileid: "74183411"
 V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systémem na virtuálním počítači s Linuxem získat přístup ke službě Azure Storage. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * vytvořit účet úložiště
+> * Vytvoření účtu úložiště
 > * Vytvoření kontejneru objektů blob v účtu úložiště
 > * Udělení přístupu spravované identitě virtuálního počítače s Linuxem ke kontejneru Azure Storage
 > * Získání přístupového tokenu a jeho použití k volání Azure Storage
@@ -46,7 +46,7 @@ Ukázkové skripty rozhraní příkazového řádku v tomto kurzu můžete spust
 - Použijte [Azure Cloud Shell](~/articles/cloud-shell/overview.md) buď přímo z webu Azure Portal, nebo přes tlačítko **Vyzkoušet** umístěné v pravém horním rohu každého bloku kódu.
 - Pokud upřednostňujete práci v místní konzole rozhraní příkazového řádku, [nainstalujte nejnovější verzi CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 nebo novější).
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště 
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště 
 
 V této části vytvoříte účet úložiště. 
 
@@ -110,7 +110,7 @@ K dokončení následujícího postupu musíte použít dříve vytvořený virt
    curl https://<STORAGE ACCOUNT>.blob.core.windows.net/<CONTAINER NAME>/<FILE NAME> -H "x-ms-version: 2017-11-09" -H "Authorization: Bearer <ACCESS TOKEN>"
    ```
 
-   V odpovědi je obsah souboru:
+   Odpověď bude obsahovat obsah souboru:
 
    ```bash
    Hello world! :)

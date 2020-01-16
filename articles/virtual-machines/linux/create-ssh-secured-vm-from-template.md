@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e32e9f17b5c48e18453724eb683ba2e86dd0cdb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cf440542e8b16231514447ddcddca081b4b89368
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036488"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979054"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Postup vytvoření virtuálního počítače se systémem Linux pomocí šablon Azure Resource Manager
 
@@ -29,7 +29,7 @@ Naučte se vytvořit virtuální počítač se systémem Linux pomocí šablony 
 
 ## <a name="templates-overview"></a>Přehled šablon
 
-Šablony Azure Resource Manager jsou soubory JSON, které definují infrastrukturu a konfiguraci řešení Azure. Pomocí šablony můžete řešení opakovaně nasadit v průběhu životního cyklu a mít přitom jistotu, že se prostředky nasadí konzistentně. Další informace o formátu šablony a způsobu jejich sestavení najdete v tématu [rychlý Start: vytvoření a nasazení Azure Resource Manager šablon pomocí Azure Portal](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md). Syntaxi JSON pro typy prostředků najdete v tématu [Definování prostředků v šablonách Azure Resource Manageru](/azure/templates/microsoft.compute/allversions).
+Šablony Azure Resource Manager jsou soubory JSON, které definují infrastrukturu a konfiguraci řešení Azure. Pomocí šablony můžete řešení opakovaně nasadit v průběhu životního cyklu a mít přitom jistotu, že se prostředky nasadí konzistentně. Další informace o formátu šablony a způsobu jejich sestavení najdete v tématu [rychlý Start: vytvoření a nasazení Azure Resource Manager šablon pomocí Azure Portal](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md). Syntaxi JSON pro typy prostředků najdete v tématu [Definování prostředků v šablonách Azure Resource Manageru](/azure/templates/microsoft.compute/allversions).
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
@@ -64,7 +64,7 @@ Poslední příkaz Azure CLI zobrazuje veřejnou IP adresu nově vytvořeného v
 
 V předchozím příkladu jste zadali šablonu uloženou v GitHubu. Můžete si také stáhnout nebo vytvořit šablonu a zadat místní cestu s parametrem `--template-file`.
 
-Tady je několik dalších prostředků:
+Tady je několik dalších zdrojů:
 
 - Další informace o vývoji šablon Správce prostředků najdete v [dokumentaci k Azure Resource Manager](/azure/azure-resource-manager/).
 - Schémata virtuálních počítačů Azure najdete v tématu Referenční informace k [šablonám Azure](/azure/templates/microsoft.compute/allversions).

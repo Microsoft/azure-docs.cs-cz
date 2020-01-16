@@ -2,23 +2,23 @@
 title: Paralelní simulace jazyka R ve službě Azure Batch
 description: Kurz – podrobné pokyny ke spuštění finanční simulace Monte Carlo ve službě Azure Batch pomocí balíku R doAzureParallel
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 7fad37af268d3dcd3d4d974d8e839ac47f171b50
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a5422b3b3dfee548e24e989654f8cc219700e712
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321909"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029206"
 ---
-# <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Kurz: Spusťte paralelní simulaci R s Azure Batch 
+# <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Kurz: Spuštění paralelní simulace jazyka R ve službě Azure Batch 
 
 Spouštějte paralelní úlohy v jazyce R ve velkém měřítku pomocí [doAzureParallel](https://www.github.com/Azure/doAzureParallel), nenáročného balíčku v jazyce R, který umožňuje použití služby Azure Batch přímo z relace jazyka R. Balíček doAzureParallel je nástavbou oblíbených balíčků R [foreach](https://cran.r-project.org/web/packages/foreach/index.html). Balíček doAzureParallel přenáší každou iteraci do smyčky foreach a odesílá ji jako úlohu služby Azure Batch.
 
@@ -256,8 +256,8 @@ Měli byste zjistit, že spuštění simulace ve fondu služby Batch vám oproti
 stopCluster(cluster)
 ```
 
-## <a name="next-steps"></a>Další postup
-V tomto kurzu jste se naučili tyto postupy:
+## <a name="next-steps"></a>Další kroky
+V tomto kurzu jste se naučili těmto úkonům:
 
 > [!div class="checklist"]
 > Instalace balíčku doAzureParallel a jeho konfigurace pro přístup k účtům Batch a úložiště

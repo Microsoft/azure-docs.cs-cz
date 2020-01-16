@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: e0ff9bc66c7d185f8fe07b4b4574833fcd7e2604
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4eb203915c8fedbef6af0e5a3bc14eff1835a92b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582081"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982164"
 ---
 # <a name="use-multiple-caches-for-regional-failover-recovery"></a>Použití více mezipamětí pro místní obnovení převzetí služeb při selhání
 
@@ -37,7 +37,7 @@ Pokud chcete nastavit mezipaměť, která je připravená na možné převzetí 
    1. Příkaz Mount pro použití klienty mezipaměti
 
    > [!NOTE]
-   > Mezipaměť prostředí Azure HPC se dá vytvořit programově, a to prostřednictvím [šablony Azure Resource Manager](../azure-resource-manager/template-deployment-overview.md) nebo přímým přístupem k jejímu rozhraní API. Podrobnosti získáte od týmu Azure HPC cache.
+   > Mezipaměť prostředí Azure HPC se dá vytvořit programově, a to prostřednictvím [šablony Azure Resource Manager](../azure-resource-manager/templates/overview.md) nebo přímým přístupem k jejímu rozhraní API. Podrobnosti získáte od týmu Azure HPC cache.
 
 ## <a name="failover-example"></a>Příklad převzetí služeb při selhání
 

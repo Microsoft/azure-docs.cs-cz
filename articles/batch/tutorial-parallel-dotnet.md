@@ -2,23 +2,23 @@
 title: Spuštění paralelní úlohy – Azure Batch .NET
 description: Kurz – Paralelní překódování multimediálních souborů pomocí aplikace ffmpeg ve službě Azure Batch s využitím klientské knihovny Batch .NET
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/21/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 103d09da3fedf9c31d4e5255456e63cab34bc0ee
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 6f12f54e510cb07fcf522d2fd5e2e83fce4dfa96
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258584"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029259"
 ---
-# <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Kurz: Spuštění paralelní úlohy s Azure Batch pomocí rozhraní .NET API
+# <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Kurz: Spuštění paralelní úlohy pomocí služby Azure Batch s využitím rozhraní .NET API
 
 Azure Batch umožňuje efektivně spouštět v Azure rozsáhlé paralelní dávkové úlohy a úlohy vysokovýkonného výpočetního prostředí (HPC). Tento kurz vás provede příkladem spuštění paralelní úlohy pomocí služby Batch v jazyce C#. Seznámíte se s běžným pracovním postupem aplikace Batch a způsobem práce s prostředky služby Batch a Storage prostřednictvím kódu programu. Získáte informace o těchto tématech:
 
@@ -175,8 +175,8 @@ Pak se do vstupního kontejneru nahrají soubory z místní složky `InputFiles`
 
 Na nahrávání souborů se podílejí dvě metody v souboru `Program.cs`:
 
-* `UploadFilesToContainerAsync`: Vrátí kolekci objektů ResourceFile a interní volání `UploadResourceFileToContainerAsync` pro nahrání každého souboru, který je předán `inputFilePaths` v parametru.
-* `UploadResourceFileToContainerAsync`: Nahraje každý soubor jako objekt blob do vstupního kontejneru. Po nahrání souboru získá sdílený přístupový podpis (SAS) objektu blob a vrátí objekt ResourceFile, který ho zastupuje.
+* `UploadFilesToContainerAsync`: Vrací kolekci objektů ResourceFile a interně volá metodu `UploadResourceFileToContainerAsync`, která nahraje všechny soubory předané v parametru `inputFilePaths`.
+* `UploadResourceFileToContainerAsync`: Nahraje jednotlivé soubory jako objekty blob do vstupního kontejneru. Po nahrání souboru získá sdílený přístupový podpis (SAS) objektu blob a vrátí objekt ResourceFile, který ho zastupuje.
 
 ```csharp
 string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
@@ -230,7 +230,7 @@ pool.ApplicationPackageReferences = new List<ApplicationPackageReference>
 await pool.CommitAsync();  
 ```
 
-### <a name="create-a-job"></a>Vytvoří úlohu
+### <a name="create-a-job"></a>Vytvoření úlohy
 
 Úloha služby Batch určí fond, ve kterém se budou spouštět úkoly, a volitelná nastavení, jako je priorita a plán práce. Ukázka vytvoří úlohu zavoláním metody `CreateJobAsync`. Tato definovaná metoda vytvoří úlohu ve vašem fondu pomocí metody [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob).
 
@@ -248,7 +248,7 @@ await job.CommitAsync();
 
 Ukázka vytvoří v úloze úkoly zavoláním metody `AddTasksAsync`, která vytvoří seznam objektů [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask). Každý objekt `CloudTask` pomocí vlastnosti [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) spouští aplikaci ffmpeg, která zpracuje vstupní objekt `ResourceFile`. Aplikace ffmpeg se na každý uzel nainstalovala dříve při vytváření fondu. Tady příkazový řádek spouští aplikaci ffmpeg kvůli převodu jednotlivých vstupních souborů MP4 (video) na soubory MP3 (zvuk).
 
-Ukázka po spuštění příkazového řádku vytvoří pro soubor MP3 objekt [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile). Výstupní soubory všech úkolů (v tomto případě jednoho) se pomocí vlastnosti [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) nahrají do kontejneru v propojeném účtu úložiště. Dříve v ukázce kódu se získala adresa URL sdíleného přístupového`outputContainerSasUrl`podpisu (), která poskytuje přístup pro zápis do výstupního kontejneru. Poznamenejte si podmínky nastavené `outputFile` u objektu. Výstupní soubor z úlohy se do kontejneru nahraje až po úspěšném dokončení úlohy (`OutputFileUploadCondition.TaskSuccess`). Další podrobnosti o implementaci najdete v ukázce úplného [kódu](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) na GitHubu.
+Ukázka po spuštění příkazového řádku vytvoří pro soubor MP3 objekt [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile). Výstupní soubory všech úkolů (v tomto případě jednoho) se pomocí vlastnosti [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) nahrají do kontejneru v propojeném účtu úložiště. Dříve v ukázce kódu se získala adresa URL sdíleného přístupového podpisu (`outputContainerSasUrl`), která poskytuje přístup pro zápis do výstupního kontejneru. Poznamenejte si podmínky nastavené u objektu `outputFile`. Výstupní soubor z úlohy se do kontejneru nahraje až po úspěšném dokončení úlohy (`OutputFileUploadCondition.TaskSuccess`). Další podrobnosti o implementaci najdete v ukázce úplného [kódu](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) na GitHubu.
 
 Potom ukázka přidá úkoly do úlohy pomocí metody [AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync) a ta je zařadí do fronty ke spuštění ve výpočetních uzlech.
 
@@ -318,9 +318,9 @@ Aplikace po spuštění úkolů automaticky odstraní kontejner vstupního úlo�
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, účet Batch a účet úložiště. Na webu Azure Portal to provedete tak, že vyberete skupinu prostředků účtu Batch a kliknete na **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili tyto postupy:
+V tomto kurzu jste se naučili těmto úkonům:
 
 > [!div class="checklist"]
 > * Přidání balíčku aplikace do účtu Batch

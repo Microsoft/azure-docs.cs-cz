@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/07/2018
-ms.openlocfilehash: f68838e271e51c37985f55b40b140e279c1df2a4
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 337b340df10eb406fef3148b1d8bfde66b3b8ff6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862539"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979834"
 ---
 # <a name="azure-management---monitoring"></a>Správa Azure – monitorování
 
@@ -36,7 +36,7 @@ Monitorování je shromažďování a analýza dat s cílem určit výkon, stav 
 Konfigurace označuje počáteční nasazení a konfiguraci aplikací a prostředků a jejich průběžnou údržbu pomocí oprav a aktualizací.  Automatizace těchto úloh pomocí skriptů a zásad umožňuje eliminovat redundance, minimalizovat čas a úsilí a zvýšit přesnost a efektivitu.  [Azure Automation](../automation/automation-intro.md) poskytuje převážnou část služeb pro automatizaci úloh konfigurace.  Kromě runbooků pro automatizaci procesů poskytuje správu aktualizací a konfigurací, která pomáhá při správě konfigurací prostřednictvím zásad a při identifikaci a nasazování aktualizací.
 
 ## <a name="govern"></a>Řízení
-Zásady správného řízení poskytují mechanismy a postupy pro zajištění kontroly nad vašimi aplikacemi a prostředky v Azure.  Zahrnují plánování iniciativ a nastavení strategických priorit.  Zásady správného řízení v Azure jsou primárně implementované pomocí dvou služeb.  [Azure Policy](../governance/policy/overview.md) pomáhá vytvářet, přiřazovat a spravovat definice zásad, které u vašich prostředků vynucují různá pravidla a akce, aby tyto prostředky i nadále odpovídaly vašim firemním standardům a smlouvám o úrovni služeb. [Azure cost management](../cost-management/overview-cost-mgt.md) vám umožňuje sledovat využití cloudu a výdaje za prostředky Azure a další poskytovatele cloudu, včetně AWS a Google.
+Zásady správného řízení poskytují mechanismy a postupy pro zajištění kontroly nad vašimi aplikacemi a prostředky v Azure.  Zahrnují plánování iniciativ a nastavení strategických priorit.  Zásady správného řízení v Azure jsou primárně implementované pomocí dvou služeb.  [Azure Policy](../governance/policy/overview.md) pomáhá vytvářet, přiřazovat a spravovat definice zásad, které u vašich prostředků vynucují různá pravidla a akce, aby tyto prostředky i nadále odpovídaly vašim firemním standardům a smlouvám o úrovni služeb. [Azure cost management](../cost-management-billing/cost-management-billing-overview.md) vám umožňuje sledovat využití cloudu a výdaje za prostředky Azure a další poskytovatele cloudu, včetně AWS a Google.
 
 ## <a name="secure"></a>Zabezpečení
 Správa zabezpečení vašich aplikací, prostředků a dat zahrnuje kombinaci vyhodnocování hrozeb, shromažďování a analýzy dat zabezpečení a zajištění, že vaše aplikace a prostředky jsou navržené a nakonfigurované zabezpečeným způsobem.  Monitorování zabezpečení a analýzu hrozeb zajišťuje služba [Azure Security Center](../security-center/security-center-intro.md), která poskytuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudovými úlohami.  Měli byste si také projít [úvod do zabezpečení Azure](../security/fundamentals/overview.md), kde najdete kompletní informace o zabezpečení v Azure a pokyny pro zabezpečenou konfiguraci prostředků Azure.

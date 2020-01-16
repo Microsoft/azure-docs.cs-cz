@@ -10,12 +10,12 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: f8e745b214ced865ac41d72bdfd5e44ca36b803a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b80c29788bd2f8d5172795aa2c92a80e460ff81f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460469"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978531"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Použití Azure CLI s Azure Storage
 
@@ -23,7 +23,7 @@ Rozhraní Azure CLI Open Source nabízí sadu příkazů pro práci s platformou
 
 V této příručce se dozvíte, jak pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) spustit několik úloh pracujících s prostředky ve vašem účtu Azure Storage. Před použitím této příručky doporučujeme stáhnout a nainstalovat nebo upgradovat na nejnovější verzi rozhraní příkazového řádku.
 
-V příkladech v průvodci se předpokládá použití prostředí bash v Ubuntu, ale další platformy by se měly provádět podobně. 
+V příkladech v průvodci se předpokládá použití prostředí bash v Ubuntu, ale další platformy by se měly provádět podobně.
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -34,7 +34,7 @@ V tomto průvodci se předpokládá, že rozumíte základním konceptům Azure 
 
 ### <a name="accounts"></a>Účty
 * **Účet Azure**: Pokud ještě nemáte předplatné Azure, [Vytvořte si bezplatný účet Azure](https://azure.microsoft.com/free/).
-* **Účet Storage**: Viz část [Vytvoření účtu úložiště](storage-quickstart-create-account.md) v článku [Informace o účtech Azure Storage](storage-create-storage-account.md).
+* **Účet Storage**: Viz část [Vytvoření účtu úložiště](storage-account-create.md) v článku [Informace o účtech Azure Storage](storage-account-overview.md).
 
 ### <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
 
@@ -335,7 +335,7 @@ Typ obsahu, který se označuje také jako typ MIME, identifikuje formát dat v 
 
 ```azurecli
 az storage blob update
-    --container-name <container_name> 
+    --container-name <container_name>
     --name <blob_name>
     --content-type <content_type>
 ```
@@ -390,7 +390,7 @@ az storage file list --share-name myshare --path myDir/mySubDir/MySubDir2 --outp
 
 ### <a name="copy-files"></a>Kopírování souborů      
 Můžete zkopírovat soubor do jiného souboru, soubor do objektu BLOB nebo objekt blob do souboru. Například pro zkopírování souboru do adresáře v jiné sdílené složce:        
-        
+
 ```azurecli
 az storage file copy start \
 --source-share share1 --source-path dir1/file.txt \
@@ -524,7 +524,7 @@ az storage file download --path IMG_0966.JPG --share-name sharesnapshotdefs --sn
 Snímek sdílené složky můžete odstranit pomocí příkazu `az storage share delete` zadáním `--snapshot` parametru s časovým razítkem snímku sdílené složky:
 
 ```cli
-az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z' 
+az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z'
 ```
 
 Vzorový výstup
@@ -535,7 +535,7 @@ Vzorový výstup
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Tady jsou některé další zdroje informací, které vám pomohou se dozvědět víc o práci s Azure CLI. 
+Tady jsou některé další zdroje informací, které vám pomohou se dozvědět víc o práci s Azure CLI.
 
 * [Začínáme s Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 * [Přehled příkazů Azure CLI](/cli/azure)

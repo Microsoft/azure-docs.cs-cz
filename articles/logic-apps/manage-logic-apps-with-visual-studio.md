@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/29/2019
-ms.openlocfilehash: ed48082c52a5b4f79fd2030303dbe2bb7bedafe6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6319d2d72df69cc9633bd2b2ff8e777c2a48966a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456598"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982538"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Správa aplikací logiky pomocí sady Visual Studio
 
@@ -90,13 +90,13 @@ V aplikaci Visual Studio můžete otevřít aplikace logiky, které byly dříve
 
    ![Otevřít nasazenou aplikaci logiky z Azure Portal](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
 
-   Jakmile se aplikace logiky otevře v Návrháři Logic Apps, můžete v dolní části návrháře vybrat **zobrazení kódu** , abyste mohli zkontrolovat základní strukturu definice aplikace logiky. Pokud chcete vytvořit šablonu nasazení pro aplikaci logiky, přečtěte si, [Jak stáhnout šablonu Azure Resource Manager](#download-logic-app) pro tuto aplikaci logiky. Přečtěte si další informace o [Správce prostředků šablonách](../azure-resource-manager/template-deployment-overview.md).
+   Jakmile se aplikace logiky otevře v Návrháři Logic Apps, můžete v dolní části návrháře vybrat **zobrazení kódu** , abyste mohli zkontrolovat základní strukturu definice aplikace logiky. Pokud chcete vytvořit šablonu nasazení pro aplikaci logiky, přečtěte si, [Jak stáhnout šablonu Azure Resource Manager](#download-logic-app) pro tuto aplikaci logiky. Přečtěte si další informace o [Správce prostředků šablonách](../azure-resource-manager/templates/overview.md).
 
 <a name="download-logic-app"></a>
 
 ## <a name="download-from-azure"></a>Stáhnout z Azure
 
-Můžete si stáhnout Logic Apps z [Azure Portal](https://portal.azure.com) a uložit je jako šablonu [Azure Resource Manager](../azure-resource-manager/management/overview.md) . Pak můžete místně upravit šablony pomocí sady Visual Studio a přizpůsobit Logic Apps pro různá prostředí nasazení.  Automatické stahování aplikací logiky *parameterizes* jejich definice v [šablonách správce prostředků](../azure-resource-manager/template-deployment-overview.md), které také používají JavaScript Object Notation (JSON).
+Můžete si stáhnout Logic Apps z [Azure Portal](https://portal.azure.com) a uložit je jako šablonu [Azure Resource Manager](../azure-resource-manager/management/overview.md) . Pak můžete místně upravit šablony pomocí sady Visual Studio a přizpůsobit Logic Apps pro různá prostředí nasazení.  Automatické stahování aplikací logiky *parameterizes* jejich definice v [šablonách správce prostředků](../azure-resource-manager/templates/overview.md), které také používají JavaScript Object Notation (JSON).
 
 1. V aplikaci Visual Studio otevřete Průzkumníka cloudu. Najděte a vyberte aplikaci logiky, kterou chcete stáhnout z Azure.
 
@@ -113,13 +113,13 @@ Můžete si stáhnout Logic Apps z [Azure Portal](https://portal.azure.com) a ul
 
 1. Po zobrazení výzvy k zadání umístění přejděte do tohoto umístění a uložte šablonu Správce prostředků pro definici aplikace logiky ve formátu JSON (. JSON).
 
-   Definice aplikace logiky se zobrazí v podčásti `resources` v šabloně Správce prostředků. Nyní můžete upravit definici aplikace logiky a šablonu Správce prostředků pomocí sady Visual Studio. Šablonu můžete přidat také jako [projekt skupiny prostředků Azure](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) do řešení sady Visual Studio. Přečtěte si o [projektech skupin prostředků Azure pro Logic Apps v aplikaci Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+   Definice aplikace logiky se zobrazí v podčásti `resources` v šabloně Správce prostředků. Nyní můžete upravit definici aplikace logiky a šablonu Správce prostředků pomocí sady Visual Studio. Šablonu můžete přidat také jako [projekt skupiny prostředků Azure](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) do řešení sady Visual Studio. Přečtěte si o [projektech skupin prostředků Azure pro Logic Apps v aplikaci Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
 <a name="link-integration-account"></a>
 
 ## <a name="link-to-integration-account"></a>Odkaz na účet pro integraci
 
-Pokud chcete vytvářet aplikace logiky pro podnikové integrace B2B (Business-to-Business), můžete aplikaci logiky propojit s dříve vytvořeným [integračním účtem](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , který existuje ve stejné oblasti jako aplikace logiky. Účet pro integraci obsahuje artefakty B2B, jako jsou obchodní partneři, smlouvy, schémata a mapy, a umožňuje aplikaci logiky používat konektory B2B k ověřování XML a kódování a dekódování plochého souboru. I když [Tento odkaz můžete vytvořit pomocí Azure Portal](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account), můžete také použít Visual Studio po splnění [požadavků](#requirements)a vaše aplikace logiky existuje jako soubor JSON (. JSON) v [projektu skupiny prostředků Azure](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md). Přečtěte si o [projektech skupin prostředků Azure pro Logic Apps v aplikaci Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#create-resource-group-project).
+Pokud chcete vytvářet aplikace logiky pro podnikové integrace B2B (Business-to-Business), můžete aplikaci logiky propojit s dříve vytvořeným [integračním účtem](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , který existuje ve stejné oblasti jako aplikace logiky. Účet pro integraci obsahuje artefakty B2B, jako jsou obchodní partneři, smlouvy, schémata a mapy, a umožňuje aplikaci logiky používat konektory B2B k ověřování XML a kódování a dekódování plochého souboru. I když [Tento odkaz můžete vytvořit pomocí Azure Portal](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account), můžete také použít Visual Studio po splnění [požadavků](#requirements)a vaše aplikace logiky existuje jako soubor JSON (. JSON) v [projektu skupiny prostředků Azure](../azure-resource-manager/templates/create-visual-studio-deployment-project.md). Přečtěte si o [projektech skupin prostředků Azure pro Logic Apps v aplikaci Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#create-resource-group-project).
 
 1. V aplikaci Visual Studio otevřete projekt skupiny prostředků Azure, který obsahuje vaši aplikaci logiky.
 
@@ -149,7 +149,7 @@ Když nastavíte vlastnost **integrační účet** v sadě Visual Studio a ulož
 
 ## <a name="change-deployment-location"></a>Změnit umístění nasazení
 
-Pokud v sadě Visual Studio existuje vaše aplikace logiky jako soubor JSON (. JSON) v rámci [projektu skupiny prostředků Azure](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) , který používáte k automatizaci nasazení, je tato aplikace logiky nastavená na typ umístění a konkrétní umístění. Toto umístění je buď oblast Azure, nebo existující [prostředí služby Integration Service (ISE)](connect-virtual-network-vnet-isolated-environment.md).
+Pokud v sadě Visual Studio existuje vaše aplikace logiky jako soubor JSON (. JSON) v rámci [projektu skupiny prostředků Azure](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) , který používáte k automatizaci nasazení, je tato aplikace logiky nastavená na typ umístění a konkrétní umístění. Toto umístění je buď oblast Azure, nebo existující [prostředí služby Integration Service (ISE)](connect-virtual-network-vnet-isolated-environment.md).
 
 Chcete-li změnit typ nebo umístění vaší aplikace logiky, je nutné otevřít soubor definice pracovního postupu aplikace logiky (. JSON) z Průzkumník řešení pomocí návrháře aplikace logiky. Tyto vlastnosti nemůžete změnit pomocí Průzkumníka cloudu.
 

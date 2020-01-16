@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
-ms.openlocfilehash: 73c4c8839bd1d9e37f3dc4f0802ad5a648b1026b
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 506c518e8bdd889c585feb92f2a6baee8ba0147c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793044"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979085"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Nasazení šablon Azure Resource Manager pro Azure Logic Apps
 
@@ -21,7 +21,7 @@ Po vytvoření šablony Azure Resource Manager pro aplikaci logiky můžete šab
 * [Visual Studio](#visual-studio)
 * [Azure PowerShell](#powershell)
 * [Azure CLI](#cli)
-* [Azure Resource Manager REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+* [Azure Resource Manager REST API](../azure-resource-manager/templates/deploy-rest.md)
 * [Azure Pipelines Azure DevOps](#azure-pipelines)
 
 <a name="portal"></a>
@@ -44,7 +44,7 @@ Například po přihlášení k Azure Portal budete vyzváni k zadání následu
 Další informace najdete v těchto tématech:
 
 * [Přehled: Automatizace nasazení pro Logic Apps pomocí šablon Azure Resource Manager](logic-apps-azure-resource-manager-templates-overview.md)
-* [Nasazení prostředků pomocí šablon Azure Resource Manager a Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
+* [Nasazení prostředků pomocí šablon Azure Resource Manager a Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 
 <a name="visual-studio"></a>
 
@@ -79,7 +79,7 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 
 Další informace najdete v těchto tématech:
 
-* [Nasazení prostředků pomocí šablon Resource Manageru a rozhraní příkazového řádku Azure](../azure-resource-manager/resource-group-template-deploy-cli.md) 
+* [Nasazení prostředků pomocí šablon Resource Manageru a rozhraní příkazového řádku Azure](../azure-resource-manager/templates/deploy-cli.md) 
 * [`az group deployment create`](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)
 
 <a name="azure-pipelines"></a>
@@ -90,8 +90,8 @@ Pokud chcete nasadit šablony aplikací logiky a spravovat prostředí, týmy b�
 
 Další informace o průběžné integraci a průběžném nasazování (CI/CD) pro šablony Azure Resource Manager s Azure Pipelines najdete v těchto tématech a ukázkách:
 
-* [Integrace šablon Správce prostředků s Azure Pipelines](../azure-resource-manager/vs-resource-groups-project-devops-pipelines.md)
-* [Kurz: průběžná integrace pro šablony Azure Resource Manager s Azure Pipelines](../azure-resource-manager/resource-manager-tutorial-use-azure-pipelines.md)
+* [Integrace šablon Správce prostředků s Azure Pipelines](../azure-resource-manager/templates/add-template-to-azure-pipelines.md)
+* [Kurz: průběžná integrace pro šablony Azure Resource Manager s Azure Pipelines](../azure-resource-manager/templates/template-tutorial-use-azure-pipelines.md)
 * [Ukázka: připojení k Azure Service Bus frontám z Azure Logic Apps a nasazení pomocí Azure Pipelines ve službě Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Ukázka: připojení k Azure Storage účtům z Azure Logic Apps a nasazení pomocí Azure Pipelines ve službě Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Ukázka: nastavení akce aplikace funkcí pro Azure Logic Apps a nasazení pomocí Azure Pipelines ve službě Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
@@ -111,7 +111,7 @@ Tady jsou obecné kroky vysoké úrovně pro použití Azure Pipelines:
 
 1. Přidejte odkazy na šablonu aplikace logiky a soubory parametrů šablony.
 
-1. Pokračujte v postupu sestavení kroků v procesu vydávání verzí pro jakékoli jiné prostředí, automatizovaný test nebo schvalovatele podle potřeby.
+1. Pokračujte v sestavení kroky v procesu vydávání verzí u jiných prostředí, automatizovaných testů nebo schvalovatelů podle potřeby.
 
 <a name="authorize-oauth-connections"></a>
 

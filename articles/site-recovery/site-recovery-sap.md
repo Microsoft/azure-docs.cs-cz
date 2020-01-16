@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: eeb85e97d653b0faac171e2986cb933fc41e6606
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 0cef6332a169b71d7812efdc41247443fbc194f2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940670"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982367"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Nastavení zotavení po havárii pro nasazení aplikace NetWeaver SAP ve více vrstvách
 
@@ -68,13 +68,13 @@ Ke správě skupin přihlášení pro ABAP aplikační servery, je použít SMLG
 #### <a name="vms-running-sap-central-services-cluster"></a>Virtuální počítače se spuštěným clusterem SAP Central Services
 Tato referenční architektura centrální služby běží na virtuálních počítačích v aplikační vrstvě. Centrální služby je možné jediný bod selhání (SPOF) při nasazení na jeden virtuální počítač – typické nasazení při vysoké dostupnosti není povinné.<br>
 
-K implementaci řešení vysoké dostupnosti lze použít buď cluster sdíleného disku, nebo cluster sdílené složky. Pokud chcete nakonfigurovat virtuální počítače pro cluster sdíleného disku, použijte cluster Windows serveru s podporou převzetí služeb při selhání. Disk s kopií cloudu se doporučuje jako určující disk kvora. 
+K implementaci řešení vysoké dostupnosti lze použít buď cluster sdíleného disku, nebo cluster sdílené složky. Pokud chcete nakonfigurovat virtuální počítače pro cluster sdíleného disku, použijte cluster Windows serveru s podporou převzetí služeb při selhání. Disk s kopií cloudu se doporučuje jako určující disk kvora.
  > [!NOTE]
  > Site Recovery nereplikuje sdílené složky v cloudu. proto se doporučuje nasadit v oblasti zotavení po havárii cloudovou kopii clusteru.
 
-Pro podporu prostředí clusteru převzetí služeb při selhání [SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) provádí funkci clusteru sdíleného svazku to replikací nezávislých disků, které jsou ve vlastnictví uzlů clusteru. Azure nativně nepodporuje sdílené disky a proto vyžaduje řešení poskytovaných SIOS. 
+Pro podporu prostředí clusteru převzetí služeb při selhání [SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) provádí funkci clusteru sdíleného svazku to replikací nezávislých disků, které jsou ve vlastnictví uzlů clusteru. Azure nativně nepodporuje sdílené disky a proto vyžaduje řešení poskytovaných SIOS.
 
-Dalším způsobem, jak zvládnout clustering, je implementovat cluster sdílené složky. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) naposledy upravovaných model nasazení centrální služby pro přístup k /sapmnt globální adresáře prostřednictvím cesty UNC. Přesto se však doporučuje zajistit vysokou dostupnost sdílení/sapmnt UNC. To se dá udělat na instanci centrální služby pomocí clusteru s podporou převzetí služeb při selhání Windows serveru se souborovým serverem se škálováním na více systémů (SOFS) a funkcí Prostory úložiště s přímým přístupem (S2D) ve Windows serveru 2016. 
+Dalším způsobem, jak zvládnout clustering, je implementovat cluster sdílené složky. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) naposledy upravovaných model nasazení centrální služby pro přístup k /sapmnt globální adresáře prostřednictvím cesty UNC. Přesto se však doporučuje zajistit vysokou dostupnost sdílení/sapmnt UNC. To se dá udělat na instanci centrální služby pomocí clusteru s podporou převzetí služeb při selhání Windows serveru se souborovým serverem se škálováním na více systémů (SOFS) a funkcí Prostory úložiště s přímým přístupem (S2D) ve Windows serveru 2016.
  > [!NOTE]
  > V současné době Site Recovery podporovat jenom replikaci bodů s konzistentním selháním pro virtuální počítače s využitím prostorů úložiště s přímým přístupem a pasivního uzlu s datakeep
 
@@ -84,14 +84,14 @@ Dalším způsobem, jak zvládnout clustering, je implementovat cluster sdílen�
 Site Recovery můžete použít k orchestraci převzetí služeb při selhání celého nasazení SAP napříč oblastmi Azure.
 Níže jsou uvedené kroky pro nastavení zotavení po havárii. 
 
-1. Replikace virtuálních počítačů 
+1. Replikace virtuálních počítačů
 2. Návrh sítě pro obnovení
 3.  Replikace řadiče domény
-4.  Replikovat základní vrstvu dat 
-5.  Provedení testovacího převzetí služeb při selhání 
-6.  Provedení převzetí služeb při selhání 
+4.  Replikovat základní vrstvu dat
+5.  Provedení testovacího převzetí služeb při selhání
+6.  Provedení převzetí služeb při selhání
 
-Níže je uvedené doporučení pro zotavení po havárii jednotlivých vrstev používaných v tomto příkladu. 
+Níže je uvedené doporučení pro zotavení po havárii jednotlivých vrstev používaných v tomto příkladu.
 
  **Úrovně SAP** | **Doporučení**
  --- | ---

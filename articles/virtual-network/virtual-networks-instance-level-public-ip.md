@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: genli
-ms.openlocfilehash: d92832d1eee995e8883dc6c8ed0f58c9755e40f8
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 74d10c8fbe2f82d6148f5e13cb57c46dd645f76f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058409"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979543"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Přehled veřejné IP adresy na úrovni instance (Classic)
 Veřejná IP adresa na úrovni instance (ILPIP) je veřejná IP adresa, kterou můžete přímo přiřadit k virtuálnímu počítači nebo instanci role Cloud Services, nikoli ke cloudové službě, ve které se nachází váš virtuální počítač nebo instance role. ILPIP nebere místo virtuální IP adresy (VIP), která je přiřazená k vaší cloudové službě. Místo toho je to další IP adresa, kterou můžete použít k přímému připojení k VIRTUÁLNÍmu počítači nebo instanci role.
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi:  [Správce prostředků a klasický](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje vytvářet virtuální počítače prostřednictvím Správce prostředků. Ujistěte se, že rozumíte tomu, jak [IP adresy](virtual-network-ip-addresses-overview-classic.md) fungují v Azure.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje vytvářet virtuální počítače prostřednictvím Správce prostředků. Ujistěte se, že rozumíte tomu, jak [IP adresy](virtual-network-ip-addresses-overview-classic.md) fungují v Azure.
 
 ![Rozdíl mezi ILPIP a VIP](./media/virtual-networks-instance-level-public-ip/Figure1.png)
 
-Jak je znázorněno na obrázku 1, ke cloudové službě se dostanete pomocí virtuální IP adresy, zatímco k jednotlivým virtuálním počítačům&lt;se běžně&gt;používá virtuální IP adresa: číslo portu. Přiřazením ILPIP ke konkrétnímu virtuálnímu počítači se k tomuto virtuálnímu počítači dá získat přímý pøístup pomocí této IP adresy.
+Jak je znázorněno na obrázku 1, ke cloudové službě se dostanete pomocí virtuální IP adresy, zatímco k jednotlivým virtuálním počítačům se běžně používá virtuální IP adresa:&lt;číslo portu&gt;. Přiřazením ILPIP ke konkrétnímu virtuálnímu počítači se k tomuto virtuálnímu počítači dá získat přímý pøístup pomocí této IP adresy.
 
-Když v Azure vytvoříte cloudovou službu, vytvoří se automaticky odpovídající záznamy DNS A, které umožní přístup ke službě prostřednictvím plně kvalifikovaného názvu domény (FQDN) místo použití skutečné virtuální IP adresy. Ke stejnému procesu dochází pro ILPIP, což umožňuje přístup k virtuálnímu počítači nebo instanci role podle plně kvalifikovaného názvu domény namísto ILPIP. Pokud například vytvoříte cloudovou službu s názvem *contosoadservice*a nakonfigurujete webovou roli s názvem *contosoweb* se dvěma instancemi a v souboru. cscfg `domainNameLabel` je nastavená na *WebPublicIP*, Azure zaregistruje následující záznamy pro instance
+Když v Azure vytvoříte cloudovou službu, vytvoří se automaticky odpovídající záznamy DNS A, které umožní přístup ke službě prostřednictvím plně kvalifikovaného názvu domény (FQDN) místo použití skutečné virtuální IP adresy. Ke stejnému procesu dochází pro ILPIP, což umožňuje přístup k virtuálnímu počítači nebo instanci role podle plně kvalifikovaného názvu domény namísto ILPIP. Pokud například vytvoříte cloudovou službu s názvem *contosoadservice*a nakonfigurujete webovou roli s názvem *contosoweb* se dvěma instancemi a v souboru. cscfg `domainNameLabel` je nastavená na *WebPublicIP*, Azure zaregistruje následující záznamy pro tyto instance:
 
 
 * WebPublicIP.0.contosoadservice.cloudapp.net
 * WebPublicIP.1.contosoadservice.cloudapp.net
-* ...
+* Tlačítka ...
 
 
 > [!NOTE]
@@ -45,7 +45,7 @@ Když v Azure vytvoříte cloudovou službu, vytvoří se automaticky odpovídaj
 > 
 
 ## <a name="why-would-i-request-an-ilpip"></a>Proč bych chtěl požádat o ILPIP?
-Pokud se chcete připojit ke svému virtuálnímu počítači nebo instanci role prostřednictvím IP adresy přiřazené přímo k této adrese, místo použití cloudové služby VIP:&lt;číslo&gt;portu, požádejte o ILPIP pro váš virtuální počítač nebo instanci role.
+Pokud se chcete připojit k VIRTUÁLNÍmu počítači nebo instanci role prostřednictvím IP adresy přiřazené přímo k této službě, místo použití cloudové služby VIP:&lt;číslo portu&gt;, požádejte o ILPIP pro váš virtuální počítač nebo instanci role.
 
 * **Aktivní FTP** – přiřazením ILPIP k virtuálnímu počítači může přijímat přenosy z libovolného portu. Koncové body nejsou pro příjem provozu virtuálního počítače vyžadovány.  Podrobnosti o protokolu FTP najdete v tématu [Přehled protokolu FTP](https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) .
 * **Odchozí IP adresa** – odchozí přenosy pocházející z virtuálního počítače se MAPUJÍ na ILPIP jako zdroj a ILPIP jedinečně IDENTIFIKUJE virtuální počítač externím entitám.
@@ -140,7 +140,7 @@ Get-AzureVM -ServiceName FTPService -Name FTPInstance | Set-AzurePublicIP -Publi
 Chcete-li přidat ILPIP do instance role Cloud Services, proveďte následující kroky:
 
 1. Stáhněte soubor. cscfg pro cloudovou službu provedením kroků v článku [Postup konfigurace Cloud Services](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) .
-2. Aktualizujte soubor. cscfg přidáním `InstanceAddress` elementu. Následující příklad přidá ILPIP s názvem *MyPublicIP* do instance role s názvem *WebRole1*: 
+2. Aktualizujte soubor. cscfg přidáním prvku `InstanceAddress`. Následující příklad přidá ILPIP s názvem *MyPublicIP* do instance role s názvem *WebRole1*: 
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -176,7 +176,7 @@ $roles[0].PublicIPAddress
 $roles[1].PublicIPAddress
 ```
 
-Můžete se také použít `nslookup` k dotazování na záznam A v dílčí doméně:
+Můžete také použít `nslookup` k dotazování na záznam A v dílčí doméně:
 
 ```batch
 nslookup WebPublicIP.0.<Cloud Service Name>.cloudapp.net

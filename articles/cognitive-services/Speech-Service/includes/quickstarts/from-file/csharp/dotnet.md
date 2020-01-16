@@ -2,19 +2,19 @@
 title: 'Rychlý Start: rozpoznávání řeči ze zvukového souboru C# , (.NET) – služba Speech'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
-ms.author: erhopf
-ms.openlocfilehash: 2818ba3319509327d1b2f7dd65841a3ed4fd9cdc
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.date: 01/14/2020
+ms.author: dapine
+ms.openlocfilehash: 0e5bbafee04a909be53c2143c72aba6f5a4e05f9
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75927936"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76037843"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -23,7 +23,7 @@ Než začnete, nezapomeňte:
 > [!div class="checklist"]
 > * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
 > * [Nastavení vývojového prostředí](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [Vytvořit prázdný ukázkový projekt](../../../../quickstarts/create-project.md?tabs=dotnet)
+> * [Vytvořit prázdný ukázkový projekt](../../../../quickstarts/create-project.md?tabs=vs)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
@@ -33,33 +33,37 @@ Prvním krokem je ujistit se, že máte projekt otevřený v aplikaci Visual Stu
 
 1. Spusťte Visual Studio 2019.
 2. Načtěte projekt a otevřete `Program.cs`.
+3. Stáhněte si soubor <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/whatstheweatherlike.wav" download="whatstheweatherlike" target="_blank">whatstheweatherlike. <span class="docon docon-download x-hidden-focus"></span> WAV</a> a přidejte ho do projektu.
+    - Uložte soubor *whatstheweatherlike. wav* vedle souboru `Program.cs`.
+    - V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte **Přidat > existující položku**.
+    - Vyberte soubor *whatstheweatherlike. wav* a pak vyberte tlačítko **Přidat** .
+    - Klikněte pravým tlačítkem na nově přidaný soubor a vyberte **vlastnosti**.
+    - Změňte **složku kopírovat na výstupní adresář** na **Kopírovat vždy**.
 
 ## <a name="start-with-some-boilerplate-code"></a>Začínáme s některým často používaným kódem
 
 Pojďme přidat kód, který funguje jako kostra pro náš projekt. Nezapomeňte, že jste vytvořili asynchronní metodu nazvanou `RecognizeSpeechAsync()`.
 
-````C#
-
+```csharp
 using System;
 using System.Threading.Tasks;
 using Microsoft.CognitiveServices.Speech;
 
-namespace helloworld
+namespace HelloWorld
 {
     class Program
     {
-        public static async Task RecognizeSpeechAsync()
+        static async Task Main()
         {
+            await RecognizeSpeechAsync();
         }
 
-        static void Main()
+        static async Task RecognizeSpeechAsync()
         {
-            RecognizeSpeechAsync().Wait();
         }
     }
 }
-
-````
+```
 
 ## <a name="create-a-speech-configuration"></a>Vytvoření konfigurace řeči
 
@@ -69,73 +73,75 @@ Než budete moct inicializovat objekt `SpeechRecognizer`, musíte vytvořit konf
 > Tato ukázka používá metodu `FromSubscription()` k sestavení `SpeechConfig`. Úplný seznam dostupných metod naleznete v tématu [Třída SpeechConfig](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
 > Sada Speech SDK bude standardně rozpoznána pomocí en-US pro daný jazyk. informace o výběru zdrojového jazyka najdete v tématu [určení zdrojového jazyka pro převod řeči na text](../../../../how-to-specify-source-language.md) .
 
-````C#
+```csharp
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
-````
+```
 
 ## <a name="create-an-audio-configuration"></a>Vytvoření konfigurace zvuku
 
-Nyní je třeba vytvořit objekt ````AudioConfig````, který odkazuje na váš zvukový soubor. Tento objekt je vytvořen v rámci příkazu Using, aby bylo zajištěno správné vydání nespravovaných prostředků. Vložte tento kód do metody `RecognizeSpeechAsync()` hned pod konfigurací řeči.
+Nyní je třeba vytvořit objekt `AudioConfig`, který odkazuje na váš zvukový soubor. Tento objekt je vytvořen v rámci příkazu Using, aby bylo zajištěno správné vydání nespravovaných prostředků. Vložte tento kód do metody `RecognizeSpeechAsync()` hned pod konfigurací řeči.
 
-````C#
-using (var audioInput = AudioConfig.FromWavFileInput(@"whatstheweatherlike.wav"))
+```csharp
+using (var audioInput = AudioConfig.FromWavFileInput("whatstheweatherlike.wav"))
 {
 }
-````
+```
 
 ## <a name="initialize-a-speechrecognizer"></a>Inicializovat SpeechRecognizer
 
-Nyní vytvoříme objekt `SpeechRecognizer` pomocí dříve vytvořených objektů `SpeechConfig` a `AudioConfig`. Tento objekt je vytvořen také v rámci příkazu Using, aby bylo zajištěno správné vydání nespravovaných prostředků. Vložte tento kód do metody `RecognizeSpeechAsync()` uvnitř příkazu Using, který zabalí váš objekt ````AudioConfig````.
+Nyní vytvoříme objekt `SpeechRecognizer` pomocí dříve vytvořených objektů `SpeechConfig` a `AudioConfig`. Tento objekt je vytvořen také v rámci příkazu Using, aby bylo zajištěno správné vydání nespravovaných prostředků. Vložte tento kód do metody `RecognizeSpeechAsync()` uvnitř příkazu Using, který zabalí váš objekt ```AudioConfig```.
 
-````C#
+```csharp
 using (var recognizer = new SpeechRecognizer(config, audioInput))
 {
 }
-````
+```
 
 ## <a name="recognize-a-phrase"></a>Rozpoznání fráze
 
 Z objektu `SpeechRecognizer` zavoláte metodu `RecognizeOnceAsync()`. Tato metoda umožňuje službě rozpoznávání řeči zjistit, že posíláte jednoduchou frázi pro rozpoznávání, a že po identifikaci fráze zastavit rozpoznávání řeči.
 
 V příkazu Using přidejte tento kód:
-````C#
+
+```csharp
 Console.WriteLine("Recognizing first result...");
 var result = await recognizer.RecognizeOnceAsync();
-````
+```
 
 ## <a name="display-the-recognition-results-or-errors"></a>Zobrazit výsledky rozpoznávání (nebo chyby)
 
 Když Služba rozpoznávání řeči vrátí výsledek rozpoznávání, budete s ním chtít něco dělat. My to Zjednodušme a vytiskneme výsledek do konzoly.
 
 V příkazu Using níže `RecognizeOnceAsync()`přidejte tento kód:
-````C#
-if (result.Reason == ResultReason.RecognizedSpeech)
-{
-    Console.WriteLine($"We recognized: {result.Text}");
-}
-else if (result.Reason == ResultReason.NoMatch)
-{
-    Console.WriteLine($"NOMATCH: Speech could not be recognized.");
-}
-else if (result.Reason == ResultReason.Canceled)
-{
-    var cancellation = CancellationDetails.FromResult(result);
-    Console.WriteLine($"CANCELED: Reason={cancellation.Reason}");
 
-    if (cancellation.Reason == CancellationReason.Error)
-    {
-        Console.WriteLine($"CANCELED: ErrorCode={cancellation.ErrorCode}");
-        Console.WriteLine($"CANCELED: ErrorDetails={cancellation.ErrorDetails}");
-        Console.WriteLine($"CANCELED: Did you update the subscription info?");
-    }
+```csharp
+switch (result.Reason)
+{
+    case ResultReason.RecognizedSpeech:
+        Console.WriteLine($"We recognized: {result.Text}");
+        break;
+    case ResultReason.NoMatch:
+        Console.WriteLine($"NOMATCH: Speech could not be recognized.");
+        break;
+    case ResultReason.Canceled:
+        var cancellation = CancellationDetails.FromResult(result);
+        Console.WriteLine($"CANCELED: Reason={cancellation.Reason}");
+
+        if (cancellation.Reason == CancellationReason.Error)
+        {
+            Console.WriteLine($"CANCELED: ErrorCode={cancellation.ErrorCode}");
+            Console.WriteLine($"CANCELED: ErrorDetails={cancellation.ErrorDetails}");
+            Console.WriteLine($"CANCELED: Did you update the subscription info?");
+        }
+        break;
 }
-````
+```
 
 ## <a name="check-your-code"></a>Kontrolovat kód
 
 V tomto okamžiku váš kód by měl vypadat takto:
 
-````C#
+```csharp
 //
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE.md file in the project root for full license information.
@@ -145,62 +151,60 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.CognitiveServices.Speech;
 
-namespace helloworld
+namespace HelloWorld
 {
     class Program
     {
-        public static async Task RecognizeSpeechAsync()
+        static async Task Main()
+        {
+            await RecognizeSpeechAsync();
+        }
+
+        static async Task RecognizeSpeechAsync()
         {
             var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 
-            using (var audioInput = AudioConfig.FromWavFileInput(@"whatstheweatherlike.wav"))
+            using (var audioInput = AudioConfig.FromWavFileInput("whatstheweatherlike.wav"))
+            using (var recognizer = new SpeechRecognizer(config, audioInput))
             {
-                using (var recognizer = new SpeechRecognizer(config, audioInput))
-                {
-                    Console.WriteLine("Recognizing first result...");
-                    var result = await recognizer.RecognizeOnceAsync();
+                Console.WriteLine("Recognizing first result...");
+                var result = await recognizer.RecognizeOnceAsync();
 
-                    if (result.Reason == ResultReason.RecognizedSpeech)
-                    {
+                switch (result.Reason)
+                {
+                    case ResultReason.RecognizedSpeech:
                         Console.WriteLine($"We recognized: {result.Text}");
-                    }
-                    else if (result.Reason == ResultReason.NoMatch)
-                    {
+                        break;
+                    case ResultReason.NoMatch:
                         Console.WriteLine($"NOMATCH: Speech could not be recognized.");
-                    }
-                    else if (result.Reason == ResultReason.Canceled)
-                    {
+                        break;
+                    case ResultReason.Canceled:
                         var cancellation = CancellationDetails.FromResult(result);
                         Console.WriteLine($"CANCELED: Reason={cancellation.Reason}");
-
+                
                         if (cancellation.Reason == CancellationReason.Error)
                         {
                             Console.WriteLine($"CANCELED: ErrorCode={cancellation.ErrorCode}");
                             Console.WriteLine($"CANCELED: ErrorDetails={cancellation.ErrorDetails}");
                             Console.WriteLine($"CANCELED: Did you update the subscription info?");
                         }
-                    }
+                        break;
                 }
             }
         }
-
-        static void Main()
-        {
-            RecognizeSpeechAsync().Wait();
-        }
     }
 }
-````
+```
 
 ## <a name="build-and-run-your-app"></a>Sestavení a spuštění aplikace
 
 Nyní jste připraveni sestavit aplikaci a otestovat rozpoznávání řeči pomocí služby Speech.
 
-1. **Zkompilujte kód** -z panelu nabídek v aplikaci Visual Studio, vyberte **sestavení** **řešení**Build > .
-2. **Spusťte aplikaci** – z panelu nabídek zvolte možnost **ladění** > **Spustit ladění** nebo stiskněte klávesu **F5**.
-3. **Spustit rozpoznávání** – váš zvukový soubor se pošle službě Speech, přepisu jako text a vykresluje se v konzole.
+1. Zkompilujte kód: z panelu nabídek aplikace *Visual Studio*vyberte **sestavení** **řešení**Build > .
+2. Spusťte aplikaci: z panelu nabídek zvolte **ladění** > **Spustit ladění** nebo stiskněte klávesu **F5**.
+3. Spustit rozpoznávání: váš zvukový soubor se pošle službě Speech, přepisu jako text a vykresluje se v konzole.
 
-   ```text
+   ```console
    Recognizing first result...
    We recognized: What's the weather like?
    ```

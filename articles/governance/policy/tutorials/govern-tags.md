@@ -3,16 +3,16 @@ title: 'Kurz: Správa zásad správného řízení značek'
 description: V tomto kurzu použijete efekt změny Azure Policy k vytvoření a vykonání modelu zásad správného řízení pro nové a stávající prostředky.
 ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: e3d6e279b293ea8063c690f9fb69a6f183b2838d
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 5e9cb9a4acb930c117374281a3debaeecce47110
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482252"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965985"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Kurz: Správa řízení značek pomocí Azure Policy
 
-[Značky](../../../azure-resource-manager/resource-group-using-tags.md) jsou důležitou součástí uspořádání prostředků Azure do taxonomie. Při dodržování [osvědčených postupů pro správu značek](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)může být značkami základem pro použití obchodních zásad s Azure Policy nebo [sledováním nákladů pomocí cost management](../../../cost-management/cost-mgt-best-practices.md#organize-and-tag-your-resources).
+[Značky](../../../azure-resource-manager/management/tag-resources.md) jsou důležitou součástí uspořádání prostředků Azure do taxonomie. Při dodržování [osvědčených postupů pro správu značek](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)může být značkami základem pro použití obchodních zásad s Azure Policy nebo [sledováním nákladů pomocí cost management](../../../cost-management-billing/costs/cost-mgt-best-practices.md#organize-and-tag-your-resources).
 Bez ohledu na to, jak nebo proč používáte značky, je důležité, abyste tyto značky mohli rychle přidávat, měnit a odebírat ve svých prostředcích Azure.
 
 Efekt [změny](../concepts/effects.md#modify) Azure Policy je navržený tak, aby se v rámci zásad správného řízení značek bez ohledu na to, ve které fázi zásad správného řízení prostředků nejednalo. **Upravit** pomáhá v těchto případech:
@@ -198,7 +198,7 @@ Podobně jako zásady [deployIfNotExists](../concepts/effects.md#deployifnotexis
 
 Pokud to uděláte práci s prostředky z tohoto kurzu, pomocí následujícího postupu odstraňte všechna přiřazení a definice vytvořili výše:
 
-1. Vyberte **definice** (nebo **přiřazení** , pokud se pokoušíte odstranit přiřazení) v části **vytváření obsahu** v levé části stránky Azure Policy.
+1. Vyberte **definice** (nebo **přiřazení** Pokud se pokoušíte odstranit přiřazení) v části **Authoring** v levé části na stránku služby Azure Policy.
 
 1. Vyhledejte novou definici iniciativy nebo zásady (nebo přiřazení), kterou chcete odebrat.
 

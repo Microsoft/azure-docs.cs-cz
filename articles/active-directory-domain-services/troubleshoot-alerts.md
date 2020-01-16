@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 459aeaefc07e3f55b0829f0ad378992104982941
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 26ae70f9283ac7be847a59753130dd8ba8c11c18
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703944"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979906"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Známé problémy: běžné výstrahy a řešení v Azure Active Directory Domain Services
 
@@ -92,7 +92,7 @@ Stav spravované domény Azure služba AD DS se automaticky aktualizuje během d
 
 Azure služba AD DS vyžaduje aktivní předplatné a nedá se přesunout do jiného předplatného. Pokud se odstraní předplatné Azure, ke kterému byla přiřazena Doménová služba Azure služba AD DS, musíte znovu vytvořit předplatné Azure a spravovanou doménu Azure služba AD DS.
 
-1. [Vytvořte si předplatné Azure](../billing/billing-create-subscription.md).
+1. [Vytvořte si předplatné Azure](../cost-management-billing/manage/create-subscription.md).
 1. Odstraňte ze stávajícího adresáře Azure AD [spravovanou doménu azure služba AD DS](delete-aadds.md) .
 1. [Vytvořte náhradu spravované domény Azure služba AD DS](tutorial-create-instance.md).
 

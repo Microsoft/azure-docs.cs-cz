@@ -13,12 +13,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: bfe786405ad32f68af33fcea1131fe856c9f38d2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fbfd3e2577655e8cfccd84fffe2971ff509bd2f4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440039"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977458"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Rychlý Start: vytvoření datové továrny Azure a kanálu pomocí REST API
 
@@ -37,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * **Předplatné Azure**. Pokud předplatné nemáte, můžete si vytvořit [bezplatný zkušební](https://azure.microsoft.com/pricing/free-trial/) účet.
-* **Účet služby Azure Storage**. Úložiště objektů blob použijete jako úložiště dat pro **zdroj** a **jímku**. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md), kde najdete kroky pro jeho vytvoření.
+* **Účet služby Azure Storage**. Úložiště objektů blob použijete jako úložiště dat pro **zdroj** a **jímku**. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-account-create.md), kde najdete kroky pro jeho vytvoření.
 * Vytvořte **kontejner objektů blob** ve službě Blob Storage, v tomto kontejneru vytvořte vstupní **složku** a uložte do ní nějaké soubory. Nástroje, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/), můžete použít k připojení k úložišti objektů blob v Azure, k vytvoření kontejneru objektů blob, nahrání vstupního souboru a ověření výstupního souboru.
 * Nainstalujte **Azure PowerShell**. Postupujte podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps). Tento rychlý start využívá PowerShell k vyvolání volání rozhraní REST API.
 * **V Azure Active Directory** vytvořte aplikaci s využitím [těchto pokynů](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Poznamenejte si následující hodnoty, které použijete v pozdějších krocích: **ID aplikace**, **clientSecrets**a **ID tenanta**. Přiřaďte aplikaci roli **Přispěvatel**.
@@ -47,7 +47,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 1. Spusťte **PowerShell**. Nechte prostředí Azure PowerShell otevřené až do konce tohoto kurzu Rychlý start. Pokud ho zavřete a znovu otevřete, bude potřeba tyto příkazy spustit znovu.
 
     Spusťte následující příkaz a zadejte uživatelské jméno a heslo, které používáte k přihlášení na web Azure Portal:
-    
+
     ```powershell
     Connect-AzAccount
     ```
@@ -430,7 +430,7 @@ Tady je ukázkový výstup:
         "runGroupId":"04a2bb9a-71ea-4c31-b46e-75276b61bafc",
         "pipelineName":"Adfv2QuickStartPipeline",
         "parameters":{  
-    
+
         },
         "invokedBy":{  
             "id":"2bb3938176ee43439752475aa12b2251",
@@ -444,15 +444,15 @@ Tady je ukázkový výstup:
         "message":"",
         "lastUpdated":"2019-09-03T07:22:57.8862692Z",
         "annotations":[  
-    
+
         ],
         "runDimension":{  
-    
+
         },
         "isLatest":true
     }
     ```
-    
+
 2. Spusťte následující skript, který načte podrobnosti o spuštění aktivity kopírování, například velikost načtených/zapsaných dat.
 
     ```powershell

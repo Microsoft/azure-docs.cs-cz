@@ -1,18 +1,14 @@
 ---
 title: Posouzení fyzických serverů pro migraci do Azure pomocí posouzení serveru Azure Migrate
 description: Popisuje postup vyhodnocení místních fyzických serverů pro migraci do Azure pomocí Azure Migrate posouzení serveru.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/18/2019
-ms.author: raynew
-ms.openlocfilehash: 56b7cc6e95cb85b5508199287cc77aedeebc8b81
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 10cd13831fe6cb6b843f0a79a5d5ba56814bcde0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280554"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028989"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Vyhodnotit fyzické servery pomocí Azure Migrate: posouzení serveru
 
@@ -141,7 +137,7 @@ V případě jakýchkoli problémů získáte přístup k protokolům skriptu na
 
 ### <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
 
-Ujistěte se, že se zařízení může připojit k [adresám URL Azure](migrate-support-matrix-physical.md#assessment-appliance-url-access).
+Ujistěte se, že se zařízení může připojit k [adresám URL Azure](migrate-appliance.md#url-access).
 
 
 ### <a name="configure-the-appliance"></a>Konfigurace zařízení

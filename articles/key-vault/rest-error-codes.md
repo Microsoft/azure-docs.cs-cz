@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: 1af7241094e8062185c9c000e4df08d6b59644c3
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 9ea77a6822a851951ea7363b9cf496fa0df534ed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75692820"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982098"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Kódy chyb Azure Key Vault REST API
  
@@ -54,7 +54,7 @@ Hlavička "Authorization" je přístupový token, který je vyžadován při ka�
 
 ### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>Token nemá přidružený správný prostředek. 
 
-Při vyžádání přístupového tokenu z koncového bodu Azure OAUTH je parametr s názvem "prostředek" povinný. Hodnota je důležitá pro poskytovatele tokenů, protože je v oboru pro zamýšlené použití. Prostředek pro*všechny* tokeny pro přístup k Key Vault je <https://vault.keyvault.net> (bez koncového lomítka).
+Při vyžádání přístupového tokenu z koncového bodu Azure OAUTH je parametr s názvem "prostředek" povinný. Hodnota je důležitá pro poskytovatele tokenů, protože je v oboru pro zamýšlené použití. Prostředek pro*všechny* tokeny pro přístup k Key Vault je <https:\//vault.keyvault.net> (bez koncového lomítka).
 
 ### <a name="the-token-is-expired"></a>Platnost tokenu vypršela.
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 039a19f38da4e651ee35fe60ba2b95a40cf890b0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: be797f76988c924503e11b6f66cce899b515e3a2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931910"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982200"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Přesun dat mezi místními zdroji a cloudem pomocí Správa dat brány
 > [!NOTE]
@@ -29,15 +29,15 @@ Tento článek obsahuje přehled integrace dat mezi místními úložišti dat a
 Aby bylo možné přesouvat data do a z místního úložiště dat, je nutné na místní počítač nainstalovat bránu Správa dat. Bránu můžete nainstalovat na stejný počítač jako úložiště dat nebo na jiný počítač, pokud se brána může připojit k úložišti dat.
 
 > [!IMPORTANT]
-> Podrobnosti o Správa dat bráně najdete v článku o [Správa dat brány](data-factory-data-management-gateway.md) . 
+> Podrobnosti o Správa dat bráně najdete v článku o [Správa dat brány](data-factory-data-management-gateway.md) .
 
 Následující návod ukazuje, jak vytvořit datovou továrnu s kanálem, který přesouvá data z místní databáze **SQL Server** do úložiště objektů BLOB v Azure. Jako součást návodu nainstalujete a nakonfigurujete ve svém počítači Bránu správy dat.
 
 ## <a name="walkthrough-copy-on-premises-data-to-cloud"></a>Návod: kopírování místních dat do cloudu
-V tomto návodu provedete následující kroky: 
+V tomto návodu provedete následující kroky:
 
 1. Vytvoření datové továrny
-2. Vytvořte bránu pro správu dat. 
+2. Vytvořte bránu pro správu dat.
 3. Vytvořte propojené služby pro úložiště dat pro zdroj a jímku.
 4. Vytvořte datové sady, které reprezentují vstupní a výstupní data.
 5. Vytvoření kanálu s aktivitou kopírování pro přesun dat
@@ -46,13 +46,13 @@ V tomto návodu provedete následující kroky:
 Před zahájením tohoto Názorného postupu musíte mít následující požadavky:
 
 * **Předplatné Azure**.  Pokud nemáte předplatné, můžete si během několika minut bezplatně vytvořit zkušební účet. Podrobnosti najdete v článku [bezplatná zkušební verze](https://azure.microsoft.com/pricing/free-trial/) .
-* **Účet Azure Storage**. V tomto kurzu použijete úložiště objektů BLOB jako **cílové úložiště nebo** úložiště dat jímky. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md), kde najdete kroky pro jeho vytvoření.
-* **SQL Server**. V tomto kurzu použijete místní databázi SQL Serveru jako **zdrojové** úložiště dat. 
+* **Účet Azure Storage**. V tomto kurzu použijete úložiště objektů BLOB jako **cílové úložiště nebo** úložiště dat jímky. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md), kde najdete kroky pro jeho vytvoření.
+* **SQL Server**. V tomto kurzu použijete místní databázi SQL Serveru jako **zdrojové** úložiště dat.
 
 ## <a name="create-data-factory"></a>Vytvoření objektu pro vytváření dat
 V tomto kroku použijete Azure Portal k vytvoření instance Azure Data Factory s názvem **ADFTutorialOnPremDF**.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
 2. Klikněte na **vytvořit prostředek**, klikněte na **Intelligence + Analytics**a pak klikněte na **Data Factory**.
 
    ![Nový -> Datová továrna](./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png)  

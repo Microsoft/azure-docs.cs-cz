@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f40b479b66f2fa9a60e084fc0e29f40cef052e99
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 479f9abc667e20a136da5f6231e78a1e4052f087
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162523"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965671"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Použití Azure Premium Storage s SQL Serverem na virtuálních počítačích
 
@@ -29,7 +29,7 @@ ms.locfileid: "73162523"
 [Azure Premium SSD](../disks-types.md) je novou generací úložiště, která poskytuje nízkou latenci a vysokou propustnost v/v. Funguje nejlépe pro úlohy náročné na vstupně-výstupní operace, například SQL Server v [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)IaaS.
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
 
 Tento článek popisuje plánování a pokyny k migraci virtuálního počítače se spuštěným SQL Server pro použití Premium Storage. To zahrnuje postupy infrastruktury Azure (sítě, úložiště) a hostovaného virtuálního počítače s Windows. V příkladu v [příloze](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) se zobrazuje kompletní ucelená migrace, jak přesunout větší virtuální počítače, aby bylo možné využít vylepšené místní úložiště SSD pomocí PowerShellu.
 
@@ -456,7 +456,7 @@ Měli byste zřídit čas, ve kterém můžete na nově přidaných uzlech prov�
 > [!NOTE]
 > Před spuštěním ověřování byste měli zastavit všechny instance SQL Server, kde se používají fondy úložiště.
 >
-> ##### <a name="high-level-steps"></a>Kroky vysoké úrovně
+> ##### <a name="high-level-steps"></a>Základní kroky
 >
 
 1. V nové cloudové službě vytvořte dva nové servery SQL s připojenými Premium Storage.
@@ -552,7 +552,7 @@ Jednou z strategií pro minimální prostoje je převzít existující sekundár
   * Spusťte migraci mimo plánovanou údržbu Azure.
   * Ujistěte se, že jste správně nakonfigurovali kvorum clusteru.  
 
-##### <a name="high-level-steps"></a>Kroky vysoké úrovně
+##### <a name="high-level-steps"></a>Základní kroky
 
 Tento dokument neukazuje kompletní příklad úplného ukončení, ale v [dodatku](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) najdete podrobnosti, které je možné využít k tomu.
 
@@ -602,7 +602,7 @@ Vezměte v úvahu následující příklad hybridní konfigurace Always On:
 
 V tomto scénáři se předpokládá, že jste si nastavili instalaci a víte, jak je úložiště namapované, aby bylo možné provádět změny nastavení optimální mezipaměti disku.
 
-##### <a name="high-level-steps"></a>Kroky vysoké úrovně
+##### <a name="high-level-steps"></a>Základní kroky
 
 ![Multisite2][10]
 
@@ -623,7 +623,7 @@ Zbývající část tohoto článku poskytuje podrobný příklad převodu clust
 
 ### <a name="environment"></a>Prostředí
 
-* Windows 2k12/SQL 2k12
+* Windows 2k12 / SQL 2k12
 * 1 soubory databáze v aktualizaci SP
 * 2 × fondy úložiště na jeden uzel
 
@@ -1248,7 +1248,7 @@ Informace o přidání do IP adresy najdete v dodatku, krok 14.
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Premium Storage Azure](../disks-types.md)
+* [Azure Premium Storage](../disks-types.md)
 * [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)
 * [SQL Server v Azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 

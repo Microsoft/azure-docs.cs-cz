@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: e9a0a8c8709e41bb7778878f76024263cdc32481
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 6a134d2bdfe7f370503b80703933ff646970d976
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896092"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981109"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Kódování videa a zvuku pomocí Media Services
 
-Termín kódování v Media Services se vztahuje na proces převodu souborů obsahujících digitální video nebo zvuk z jednoho standardního formátu na jiný, s účelem (a) zmenšování velikosti souborů a/nebo (b), která vytváří formát kompatibilní s Široká škála zařízení a aplikací Tento proces je také označován jako komprese videa nebo překódování. Další diskuzi o konceptech najdete v tématu [komprese dat](https://en.wikipedia.org/wiki/Data_compression) a [co je kódování a překódování](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) .
+Termín kódování v Media Services se vztahuje na proces převodu souborů obsahujících digitální video nebo zvuk z jednoho standardního formátu na jiný, s účelem (a) zmenšování velikosti souborů a/nebo (b), která vytváří formát kompatibilní s širokou škálou zařízení a aplikací. Tento proces je také označován jako komprese videa nebo překódování. Další diskuzi o konceptech najdete v tématu [komprese dat](https://en.wikipedia.org/wiki/Data_compression) a [co je kódování a překódování](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) .
 
 Videa se většinou doručují do zařízení a aplikací pomocí [postupného stahování](https://en.wikipedia.org/wiki/Progressive_download) nebo [streamování s adaptivní přenosovou rychlostí](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming).
 
@@ -95,7 +95,7 @@ Tyto předvolby se aktuálně podporují:
 
 - **EncoderNamedPreset. AACGoodQualityAudio**: vytvoří jeden soubor MP4 obsahující pouze stereofonní zvuk kódovaný v 192 KB/s.
 - **EncoderNamedPreset. AdaptiveStreaming** (doporučeno): Další informace najdete v tématu [Automatické generování žebříku přenosové rychlosti](autogen-bitrate-ladder.md).
-- **EncoderNamedPreset. ContentAwareEncodingExperimental**: zpřístupňuje experimentální přednastavení pro kódování zohledňující obsah. Vzhledem k jakémukoli vstupnímu obsahu se služba pokusí automaticky určit optimální počet vrstev a odpovídající rychlost a nastavení rozlišení pro doručování pomocí adaptivního streamování. Základní algoritmy se budou dál vyvíjet v průběhu času. Výstup bude obsahovat soubory MP4 se zakládaným videem a zvukem. Další informace najdete v tématu [experimentální přednastavení pro kódování zohledňující obsah](cae-experimental.md).
+- **EncoderNamedPreset. ContentAwareEncodingExperimental**: zpřístupňuje experimentální přednastavení pro kódování zohledňující obsah. Vzhledem k jakémukoli vstupnímu obsahu se služba pokusí automaticky určit optimální počet vrstev a odpovídající rychlost a nastavení rozlišení pro doručování pomocí adaptivního streamování. Základní algoritmy se budou dál vyvíjet v průběhu času. Výstup bude obsahovat soubory MP4 se zakládaným videem a zvukem. Další informace najdete v tématu [experimentální přednastavení pro kódování zohledňující obsah](content-aware-encoding.md).
 - **EncoderNamedPreset. H264MultipleBitrate1080p**: vytvoří sadu osmi souborů MP4 zarovnaných na skupinu GOP, od 6000 do 400 KB/s a stereofonního zvuku AAC. Rozlišení začíná 1080p a platí až 360 p.
 - **EncoderNamedPreset. H264MultipleBitrate720p**: vytvoří sadu šesti souborů MP4 zarovnaných na skupinu GOP, od 3400 do 400 KB/s a stereofonního zvuku AAC. Rozlišení začíná 720p a platí až 360 p.
 - **EncoderNamedPreset. H264MultipleBitrateSD**: vytvoří sadu pěti souborů MP4 zarovnaných na skupinu GOP, od 1600 do 400 KB/s a stereofonního zvuku AAC. Rozlišení začíná 480p a platí až 360 p.

@@ -9,19 +9,19 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 86f042a451583759aa15e886b3261700335a5285
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 87b05256103790c706f3ba0df7ea72c169b79f16
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748544"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979818"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archivace metrik Azure a dat protokolů s použitím Azure Storage
 
-Různé vrstvy vašeho prostředí Azure generují data protokolů a metrik, která je možné archivovat do účtu Azure Storage. Můžete to provádět za účelem zachování historie dat monitorování v průběhu času v nenákladném a neprohledávatelném úložišti po uplynutí doby uchovávání těchto dat. 
+Různé vrstvy vašeho prostředí Azure generují data protokolů a metrik, která je možné archivovat do účtu Azure Storage. Můžete to provádět za účelem zachování historie dat monitorování v průběhu času v nenákladném a neprohledávatelném úložišti po uplynutí doby uchovávání těchto dat.
 
-- Metriky platformy Azure Monitor se uchovávají po dobu 93 dnů. 
-- Protokoly diagnostiky prostředků se zobrazí jen při směrování do služby Log Analytics, kde mají konfigurovatelnou dobu uchování minimálně po 30 dnů. 
+- Metriky platformy Azure Monitor se uchovávají po dobu 93 dnů.
+- Protokoly diagnostiky prostředků se zobrazí jen při směrování do služby Log Analytics, kde mají konfigurovatelnou dobu uchování minimálně po 30 dnů.
 - Položky protokolu aktivit se uchovávají po dobu 90 dnů.  
 
 Tento kurz prochází proces konfigurace prostředí Azure pro archivaci dat do účtu úložiště.
@@ -42,7 +42,7 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
-Nejprve je potřeba nastavit účet úložiště, do kterého se data monitorování budou archivovat. Provedete to [podle těchto kroků](../../storage/common/storage-quickstart-create-account.md).
+Nejprve je potřeba nastavit účet úložiště, do kterého se data monitorování budou archivovat. Provedete to [podle těchto kroků](../../storage/common/storage-account-create.md).
 
 ## <a name="route-subscription-logs-to-the-storage-account"></a>Směrování protokolů předplatného do účtu úložiště
 
@@ -144,9 +144,9 @@ Data monitorování z vašich virtuálních počítačů se teď přenášejí d
 ## <a name="view-the-monitoring-data-in-the-storage-account"></a>Zobrazení dat monitorování v účtu úložiště
 
 > [!WARNING]
-> 1\. listopadu 2018 se formát dat protokolů v účtu úložiště změní na řádky JSON. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md). 
+> 1\. listopadu 2018 se formát dat protokolů v účtu úložiště změní na řádky JSON. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md).
 >
-> 
+>
 
 Pokud jste postupovali podle předchozích kroků, data se začala přenášet do vašeho účtu úložiště.
 
@@ -199,4 +199,3 @@ Pokud chcete svá data využívat ještě lépe a získávat z nich další pře
 
 > [!div class="nextstepaction"]
 > [Začínáme se službou Log Analytics](../../azure-monitor/log-query/log-query-overview.md)
-

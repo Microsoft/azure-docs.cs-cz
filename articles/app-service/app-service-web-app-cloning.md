@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: ccff07009d2f46f6d91b8e3c57158aa6ede3607e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 332f7a562fc8c1d7b2bbebb0e596a068797c2ce3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671430"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967212"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Azure App Service klonování aplikace pomocí PowerShellu
 
@@ -129,5 +129,5 @@ Tady jsou známá omezení klonování aplikací:
 * [Zálohování aplikace v Azure App Service](manage-backup.md)
 * [Podpora Azure Resource Manager pro Azure Traffic Manager Preview](../traffic-manager/traffic-manager-powershell-arm.md)
 * [Úvod do prostředí App Service](environment/intro.md)
-* [Použití Azure PowerShellu s Azure Resource Managerem](../azure-resource-manager/manage-resources-powershell.md)
+* [Použití Azure PowerShellu s Azure Resource Managerem](../azure-resource-manager/management/manage-resources-powershell.md)
 

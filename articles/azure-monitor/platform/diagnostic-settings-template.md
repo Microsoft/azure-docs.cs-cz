@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: b549cc0e890a122a04984baa2348831fc51abe08
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 2a171ae89e8314684eddf29f78b9b09bc52f9c9b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530999"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977557"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Vytvoření nastavení diagnostiky v Azure pomocí šablony Správce prostředků
-[Nastavení diagnostiky](diagnostic-settings.md) v Azure monitor určují, kam se mají posílat [protokoly platforem](platform-logs-overview.md) , které shromažďují prostředky Azure, a platforma Azure, na které jsou závislé. V tomto článku najdete podrobné informace a příklady použití [šablony Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) k vytvoření a konfiguraci nastavení diagnostiky pro shromažďování protokolů platforem do různých umístění. 
+[Nastavení diagnostiky](diagnostic-settings.md) v Azure monitor určují, kam se mají posílat [protokoly platforem](platform-logs-overview.md) , které shromažďují prostředky Azure, a platforma Azure, na které jsou závislé. V tomto článku najdete podrobné informace a příklady použití [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) k vytvoření a konfiguraci nastavení diagnostiky pro shromažďování protokolů platforem do různých umístění.
 
 > [!NOTE]
 > Vzhledem k tomu, že nemůžete [vytvořit nastavení diagnostiky](diagnostic-settings.md) pro protokol aktivit Azure pomocí PowerShellu nebo rozhraní příkazového řádku, jako je nastavení diagnostiky pro jiné prostředky Azure, vytvořte šablonu správce prostředků pro protokol aktivit pomocí informací v tomto článku a nasaďte tuto šablonu pomocí PowerShellu nebo rozhraní příkazového řádku.
 
 ## <a name="deployment-methods"></a>Metody nasazení
-Šablony Správce prostředků můžete nasadit pomocí libovolné platné metody, včetně PowerShellu a rozhraní příkazového řádku. Nastavení diagnostiky pro protokol aktivit musí být nasazeno do předplatného pomocí `az deployment create` pro rozhraní příkazového řádku nebo `New-AzDeployment` pro prostředí PowerShell. Nastavení diagnostiky pro protokoly prostředků se musí nasadit do skupiny prostředků pomocí `az group deployment create` pro rozhraní příkazového řádku nebo `New-AzResourceGroupDeployment` pro PowerShell. 
+Šablony Správce prostředků můžete nasadit pomocí libovolné platné metody, včetně PowerShellu a rozhraní příkazového řádku. Nastavení diagnostiky pro protokol aktivit musí být nasazeno do předplatného pomocí `az deployment create` pro rozhraní příkazového řádku nebo `New-AzDeployment` pro prostředí PowerShell. Nastavení diagnostiky pro protokoly prostředků se musí nasadit do skupiny prostředků pomocí `az group deployment create` pro rozhraní příkazového řádku nebo `New-AzResourceGroupDeployment` pro PowerShell.
 
-Podrobnosti najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md) a [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md) . 
+Podrobnosti najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md) a [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/templates/deploy-cli.md) . 
 
 
 
@@ -33,7 +33,7 @@ Podrobnosti najdete v tématu [nasazení prostředků pomocí šablon Správce p
 ## <a name="resource-logs"></a>Protokoly prostředků
 V případě protokolů prostředků přidejte do šablony prostředek typu `<resource namespace>/providers/diagnosticSettings`. Oddíl Properties (vlastnosti) se řídí formátem popsaným v tématu [nastavení diagnostiky – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Zadejte `category` v části `logs` pro každou z kategorií platných pro prostředek, který chcete shromáždit. Pokud [prostředek podporuje metriky](metrics-supported.md), přidejte vlastnost `metrics` ke shromáždění metrik prostředků do stejných cílů.
 
-Následuje šablona, která shromažďuje kategorii protokolu prostředků pro určitý prostředek do Log Analyticsho pracovního prostoru, účtu úložiště a centra událostí. 
+Následuje šablona, která shromažďuje kategorii protokolu prostředků pro určitý prostředek do Log Analyticsho pracovního prostoru, účtu úložiště a centra událostí.
 
 ```json
 "resources": [
@@ -50,7 +50,7 @@ Následuje šablona, která shromažďuje kategorii protokolu prostředků pro u
       "eventHubAuthorizationRuleId": "[parameters('eventHubAuthorizationRuleId')]",
       "eventHubName": "[parameters('eventHubName')]",
       "workspaceId": "[parameters('workspaceId')]",
-      "logs": [ 
+      "logs": [
         {
           "category": "<category name>",
           "enabled": true

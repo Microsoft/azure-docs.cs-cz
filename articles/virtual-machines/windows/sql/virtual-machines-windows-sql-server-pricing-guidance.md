@@ -15,12 +15,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 076d6fc387aaee85a1cd407fa48e7347ff185ef4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b7a8f7136d0899ab3afe04bce2d25bc2e7f8d3e2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038865"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981714"
 ---
 # <a name="pricing-guidance-for-azure-sql-server-vms"></a>Doprovodné materiály k cenám pro virtuální počítače Azure SQL Server
 
@@ -57,7 +57,7 @@ Pokud máte neodlehčené provozní úlohy, použijte jednu z následujících e
 | SQL Server Edition | Úloha |
 |-----|-----|
 | Web | Malé weby |
-| Standard | Malá a středně velká zatížení |
+| Úroveň Standard | Malá a středně velká zatížení |
 | Enterprise | Velké nebo důležité úlohy|
 
 Máte dvě možnosti, jak platíte za SQL Server licencování pro tyto edice: *Plaťte za použití* nebo *využijte vlastní licenci (BYOL)* .
@@ -139,10 +139,10 @@ Náklady na licencování SQL Server přímo souvisí s počtem vCPU. Vyberte ve
 
 Existují nové velikosti počítačů, které dobře fungují s určitými typy SQL Server úloh. Tyto počítače mají na paměti udržování vysoké úrovně paměti, úložiště a vstupně-výstupních propustností, ale mají nižší virtualizovaný počet jader. Zvažte například následující příklad:
 
-| Velikost virtuálního počítače | vCPU | Memory (Paměť) | Maximální počet disků | Maximální propustnost vstupně-výstupních operací | Náklady na licencování SQL | Celkové náklady (COMPUTE a licencování) |
+| Velikost virtuálního počítače | vCPU | Paměť | Maximální počet disků | Maximální propustnost vstupně-výstupních operací | Náklady na licencování SQL | Celkové náklady (COMPUTE a licencování) |
 |---|---|---|---|---|---|---|
-| **Standard_DS14v2** | 16 | 112 GB | 32 | 51 200 IOPS nebo 768 MB/s | | |
-| **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51 200 IOPS nebo 768 MB/s | 75% nižší | 57% nižší |
+| **Standard_DS14v2** | 16 | 112 GB | 32 | 51 200 vstupně-výstupních operací nebo 768 MB/s | | |
+| **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51 200 vstupně-výstupních operací nebo 768 MB/s | O 75 % nižší | O 57 % nižší |
 
 > [!IMPORTANT]
 > Toto je příklad v daném časovém okamžiku. Nejnovější specifikace najdete v článcích o velikostech počítačů a na stránce s cenami Azure pro [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) a [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
@@ -166,7 +166,7 @@ Pro jiné pracovní postupy zvažte automatické vypínání a restartování vi
 
 ## <a name="next-steps"></a>Další kroky
 
-Obecné doprovodné materiály pro Azure najdete v tématu [Ochrana před neočekávanými náklady pomocí fakturace a správy nákladů Azure](../../../billing/billing-getting-started.md). Nejnovější ceny Virtual Machines včetně SQL Server najdete na stránce s cenami virtuálních počítačů Azure pro virtuální počítače s [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) a [virtuální počítače](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)se systémem Linux.
+Obecné doprovodné materiály pro Azure najdete v tématu [Ochrana před neočekávanými náklady pomocí fakturace a správy nákladů Azure](../../../cost-management-billing/manage/getting-started.md). Nejnovější ceny Virtual Machines včetně SQL Server najdete na stránce s cenami virtuálních počítačů Azure pro virtuální počítače s [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) a [virtuální počítače](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)se systémem Linux.
 
 Přehled SQL Server běžících na Azure Virtual Machines najdete v následujících článcích:
 

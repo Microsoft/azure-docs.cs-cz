@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: da40b635b0fc094275d8d46b8c5ad6d3d90bea24
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 43ff230d4769a23c9007b3da29858d2105366f9f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101815"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978103"
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Automatizované zálohování pro SQL Server v Azure Virtual Machines (Classic)
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "70101815"
 Automatizované zálohování automaticky konfiguruje [spravovanou zálohu na Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) pro všechny stávající a nové databáze na virtuálním počítači Azure s SQL Server 2014 Standard nebo Enterprise. To vám umožní nakonfigurovat pravidelné zálohy databází, které využívají trvalé úložiště objektů BLOB v Azure. Automatizované zálohování závisí na [rozšíření agenta SQL Server IaaS](../classic/sql-server-agent-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Pokud si chcete zobrazit Správce prostředků verzi tohoto článku, přečtěte si téma [automatizované zálohování pro SQL Server v Azure Virtual Machines správce prostředků](../sql/virtual-machines-windows-sql-automated-backup.md).
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Pokud si chcete zobrazit Správce prostředků verzi tohoto článku, přečtěte si téma [automatizované zálohování pro SQL Server v Azure Virtual Machines správce prostředků](../sql/virtual-machines-windows-sql-automated-backup.md).
 
 ## <a name="prerequisites"></a>Požadavky
 Pokud chcete používat automatizované zálohování, vezměte v úvahu následující požadavky:
@@ -106,10 +106,10 @@ Pokud chcete zakázat automatické zálohování, spusťte stejný skript bez pa
 > 
 > 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Automatizované zálohování konfiguruje spravovanou zálohu na virtuálních počítačích Azure. Proto je důležité [si projít dokumentaci pro spravovanou zálohu](https://msdn.microsoft.com/library/dn449496.aspx) , abyste porozuměli chování a důsledky.
 
-Další pokyny k zálohování a obnovení pro SQL Server na virtuálních počítačích Azure najdete v následujícím tématu: [Zálohování a obnovení pro SQL Server v Azure Virtual Machines](../sql/virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+Další pokyny k zálohování a obnovení pro SQL Server na virtuálních počítačích Azure najdete v následujícím tématu: [zálohování a obnovení pro SQL Server ve službě azure Virtual Machines](../sql/virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
 
 Informace o dalších dostupných úlohách automatizace najdete v tématu [SQL Server rozšíření agenta IaaS](../classic/sql-server-agent-extension.md).
 

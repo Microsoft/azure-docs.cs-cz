@@ -3,12 +3,12 @@ title: Monitorování nasazeného clusteru AKS (Azure Kubernetes Service) | Micr
 description: Naučte se, jak povolit monitorování clusteru Azure Kubernetes Service (AKS) s Azure Monitor pro kontejnery, které jsou už ve vašem předplatném nasazené.
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: eced371f7d44b486d671c2c22ca9fbb4c0b65fbb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 57d492778828254da7a6899641ab9dbd19a40154
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405490"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977794"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Povolení monitorování clusteru Azure Kubernetes Service (AKS) již nasazeného
 
@@ -18,12 +18,12 @@ Můžete povolit monitorování clusteru AKS, který je už nasazený, pomocí j
 
 * Azure CLI
 * Terraform
-* [Z Azure monitor](#enable-from-azure-monitor-in-the-portal) nebo [přímo z clusteru AKS](#enable-directly-from-aks-cluster-in-the-portal) v Azure Portal 
-* Pomocí [zadané šablony Azure Resource Manager](#enable-using-an-azure-resource-manager-template) pomocí rutiny Azure PowerShell `New-AzResourceGroupDeployment` nebo pomocí Azure CLI. 
+* [Z Azure monitor](#enable-from-azure-monitor-in-the-portal) nebo [přímo z clusteru AKS](#enable-directly-from-aks-cluster-in-the-portal) v Azure Portal
+* Pomocí [zadané šablony Azure Resource Manager](#enable-using-an-azure-resource-manager-template) pomocí rutiny Azure PowerShell `New-AzResourceGroupDeployment` nebo pomocí Azure CLI.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com). 
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="enable-using-azure-cli"></a>Povolení s využitím rozhraní příkazového řádku Azure
 
@@ -65,14 +65,14 @@ Pokud místo toho budete chtít provést integraci s existujícím pracovním pr
     az account set -s <subscriptionId of the workspace>
     ```
 
-3. Následující příklad zobrazí seznam pracovních prostorů v předplatných ve výchozím formátu JSON. 
+3. Následující příklad zobrazí seznam pracovních prostorů v předplatných ve výchozím formátu JSON.
 
     ```
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
     Ve výstupu vyhledejte název pracovního prostoru a zkopírujte úplné ID prostředku, které Log Analytics pracovní prostor pod **ID**pole.
- 
+
 4. Spusťte následující příkaz pro povolení doplňku monitorování a nahraďte hodnotu parametru `--workspace-resource-id`. Řetězcová hodnota musí být v uvozovkách:
 
     ```azurecli
@@ -100,11 +100,11 @@ Pokud místo toho budete chtít provést integraci s existujícím pracovním pr
 
 2. Přidat [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) následující kroky v dokumentaci k Terraformu.
 
-## <a name="enable-from-azure-monitor-in-the-portal"></a>Povolení z Azure Monitor na portálu 
+## <a name="enable-from-azure-monitor-in-the-portal"></a>Povolení z Azure Monitor na portálu
 
 Chcete-li povolit monitorování clusteru AKS na portálu Azure portal ze služby Azure Monitor, postupujte takto:
 
-1. Na webu Azure Portal, vyberte **monitorování**. 
+1. Na webu Azure Portal, vyberte **monitorování**.
 
 2. Vyberte **kontejnery** ze seznamu.
 
@@ -113,22 +113,22 @@ Chcete-li povolit monitorování clusteru AKS na portálu Azure portal ze služb
 4. Ze seznamu nesledovaných clustery, najít kontejner v seznamu a klikněte na tlačítko **povolit**.   
 
 5. Na **připojení ke službě Azure Monitor pro kontejnery** stránky, pokud máte existující Log Analytics pracovní prostor ve stejném předplatném jako cluster, vyberte z rozevíracího seznamu.  
-    V seznamu vybrána hodnota výchozího pracovního prostoru a umístění, ke kterému kontejneru AKS nasazuje v rámci předplatného. 
+    V seznamu vybrána hodnota výchozího pracovního prostoru a umístění, ke kterému kontejneru AKS nasazuje v rámci předplatného.
 
     ![Povolit monitorování insights kontejneru AKS](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >Pokud chcete vytvořit nový pracovní prostor Log Analytics pro ukládání dat monitorování z clusteru, postupujte podle pokynů v [vytvořit pracovní prostor Log Analytics](../../azure-monitor/learn/quick-create-workspace.md). Je potřeba vytvořit pracovní prostor v rámci stejného předplatného, který se nasazuje kontejneru AKS. 
- 
-Po povolení sledování, může trvat přibližně 15 minut, než se zobrazí stav metriky pro cluster. 
+    >Pokud chcete vytvořit nový pracovní prostor Log Analytics pro ukládání dat monitorování z clusteru, postupujte podle pokynů v [vytvořit pracovní prostor Log Analytics](../../azure-monitor/learn/quick-create-workspace.md). Je potřeba vytvořit pracovní prostor v rámci stejného předplatného, který se nasazuje kontejneru AKS.
+
+Po povolení sledování, může trvat přibližně 15 minut, než se zobrazí stav metriky pro cluster.
 
 ## <a name="enable-directly-from-aks-cluster-in-the-portal"></a>Povolení přímo z clusteru AKS na portálu
 
 Pokud chcete monitorování povolit přímo z jednoho z clusterů AKS v Azure Portal, udělejte toto:
 
-1. Na webu Azure Portal vyberte **Všechny služby**. 
+1. Na webu Azure Portal vyberte **Všechny služby**.
 
-2. V seznamu prostředků, začněte psát **kontejnery**.  Seznam se průběžně filtruje podle vašeho zadání. 
+2. V seznamu prostředků, začněte psát **kontejnery**.  Seznam se průběžně filtruje podle vašeho zadání.
 
 3. Vyberte **služby Kubernetes**.  
 
@@ -139,20 +139,20 @@ Pokud chcete monitorování povolit přímo z jednoho z clusterů AKS v Azure Po
 5. Na stránce Přehled kontejnerů, vyberte **monitorování kontejnerů**.  
 
 6. Na **připojení ke službě Azure Monitor pro kontejnery** stránky, pokud máte existující Log Analytics vyberte pracovní prostor ve stejném předplatném jako cluster, v rozevíracím seznamu.  
-    V seznamu vybrána hodnota výchozího pracovního prostoru a umístění, ke kterému kontejneru AKS nasazuje v rámci předplatného. 
+    V seznamu vybrána hodnota výchozího pracovního prostoru a umístění, ke kterému kontejneru AKS nasazuje v rámci předplatného.
 
     ![Povolit monitorování stavu kontejneru AKS](./media/container-insights-onboard/kubernetes-onboard-brownfield-02.png)
 
     >[!NOTE]
-    >Pokud chcete vytvořit nový pracovní prostor Log Analytics pro ukládání dat monitorování z clusteru, postupujte podle pokynů v [vytvořit pracovní prostor Log Analytics](../../azure-monitor/learn/quick-create-workspace.md). Je potřeba vytvořit pracovní prostor v rámci stejného předplatného, který se nasazuje kontejneru AKS. 
- 
-Po povolení sledování, může trvat přibližně 15 minut, než lze zobrazit provozní data pro cluster. 
+    >Pokud chcete vytvořit nový pracovní prostor Log Analytics pro ukládání dat monitorování z clusteru, postupujte podle pokynů v [vytvořit pracovní prostor Log Analytics](../../azure-monitor/learn/quick-create-workspace.md). Je potřeba vytvořit pracovní prostor v rámci stejného předplatného, který se nasazuje kontejneru AKS.
+
+Po povolení sledování, může trvat přibližně 15 minut, než lze zobrazit provozní data pro cluster.
 
 ## <a name="enable-using-an-azure-resource-manager-template"></a>Povolení použití šablony Azure Resource Manager
 
 Tato metoda obsahuje dvě šablony JSON. Jedna šablona určuje konfiguraci povolení monitorování a druhý obsahuje hodnoty parametrů, které nakonfigurujete, zadejte následující informace:
 
-* ID prostředku kontejneru AKS 
+* ID prostředku kontejneru AKS
 * Skupina prostředků, která je nasazená clusteru.
 
 >[!NOTE]
@@ -163,11 +163,11 @@ Aby bylo možné povolit monitorování pomocí Azure PowerShell nebo rozhraní 
 
 Pokud nejste obeznámeni s konceptem nasazení prostředků pomocí šablony, naleznete v tématu:
 
-* [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/resource-group-template-deploy.md)
+* [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/templates/deploy-powershell.md)
 
-* [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.59 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku Azure, najdete v článku [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.59 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku Azure, najdete v článku [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="create-and-execute-a-template"></a>Vytvoření a provedení šablony
 
@@ -256,20 +256,20 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
     }
     ```
 
-4. Upravte hodnoty pro **aksResourceId** a **aksResourceLocation** pomocí hodnot na stránce s **přehledem AKS** pro cluster AKS. Hodnota pro **workspaceResourceId** je úplné ID prostředku pracovního prostoru Log Analytics, která zahrnuje název pracovního prostoru. 
+4. Upravte hodnoty pro **aksResourceId** a **aksResourceLocation** pomocí hodnot na stránce s **přehledem AKS** pro cluster AKS. Hodnota pro **workspaceResourceId** je úplné ID prostředku pracovního prostoru Log Analytics, která zahrnuje název pracovního prostoru.
 
     Upravte hodnoty pro **aksResourceTagValues** tak, aby odpovídaly existujícím hodnotám značek zadaným pro cluster AKS.
 
 5. Uložte soubor jako **existingClusterParam.json** do místní složky.
 
-6. Jste připraveni k nasazení této šablony. 
+6. Jste připraveni k nasazení této šablony.
 
    * K nasazení pomocí Azure PowerShell použijte ve složce obsahující šablonu tyto příkazy:
 
        ```powershell
        New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceGroupName> -TemplateFile .\existingClusterOnboarding.json -TemplateParameterFile .\existingClusterParam.json
        ```
-       
+
        Změna konfigurace může trvat několik minut. Když se dokončí, zobrazí se zpráva, která je podobný následujícímu a zahrnuje výsledek:
 
        ```powershell
@@ -277,7 +277,7 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
        ```
 
    * Pokud ho chcete nasadit pomocí Azure CLI, spusťte následující příkazy:
-    
+
        ```azurecli
        az login
        az account set --subscription "Subscription Name"
@@ -289,8 +289,8 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
        ```azurecli
        provisioningState       : Succeeded
        ```
-     
-       Po povolení sledování, může trvat přibližně 15 minut, než se zobrazí stav metriky pro cluster. 
+
+       Po povolení sledování, může trvat přibližně 15 minut, než se zobrazí stav metriky pro cluster.
 
 ## <a name="verify-agent-and-solution-deployment"></a>Ověření nasazení agenta a řešení
 
@@ -298,7 +298,7 @@ Verze agenta *06072018* nebo později, můžete ověřit, že agent a řešení 
 
 ### <a name="agent-version-06072018-or-later"></a>Verze agenta 06072018 nebo novější
 
-Spusťte následující příkaz k ověření, že je agent úspěšně nasazen. 
+Spusťte následující příkaz k ověření, že je agent úspěšně nasazen.
 
 ```
 kubectl get ds omsagent --namespace=kube-system
@@ -307,7 +307,7 @@ kubectl get ds omsagent --namespace=kube-system
 Výstup by měl vypadat podobně jako následující text, který označuje, že byla správně nasazena:
 
 ```
-User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
+User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
@@ -321,7 +321,7 @@ kubectl get deployment omsagent-rs -n=kube-system
 Výstup by měl vypadat podobně jako následující text, který označuje, že byla správně nasazena:
 
 ```
-User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system 
+User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system
 NAME       DESIRED   CURRENT   UP-TO-DATE   AVAILABLE    AGE
 omsagent   1         1         1            1            3h
 ```
@@ -337,7 +337,7 @@ kubectl get ds omsagent --namespace=kube-system
 Výstup by měl vypadat podobně jako následující text, který označuje, že byla správně nasazena:  
 
 ```
-User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
+User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
@@ -368,5 +368,3 @@ Po několika minutách se příkaz dokončí a vrátí hodnotu ve formátu JSON 
 * Pokud dochází k problémům při pokusu o připojení řešení, přečtěte si [Průvodce odstraňováním potíží](container-insights-troubleshoot.md)
 
 * Díky monitorování s povoleným shromažďováním informací o stavu a využití prostředků v clusteru AKS a úlohách, které se na nich běží, se naučíte, [Jak používat](container-insights-analyze.md) Azure monitor pro kontejnery.
-
-

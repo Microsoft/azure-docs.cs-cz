@@ -8,28 +8,28 @@ ms.topic: include
 ms.date: 02/19/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 97387e24d5b55c1438a69da1a1fd0a9bc1720e47
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4860532e59227618ce819772887556719ecb53fc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175166"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020922"
 ---
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**.
 
-1. V **publikovat** dialogového okna, vyberte **Microsoft Azure App Service**, zvolte **vytvořit nový**a pak vyberte **publikovat**.
+1. V dialogovém okně **publikovat** vyberte možnost **Microsoft Azure App Service**, zvolte **vytvořit novou**a pak vyberte **publikovat**.
 
-   ![Cíl publikování výběru](./media/webjobs-publish-netcore/pick-publish-target.png)
+   ![Vybrat cíl publikování](./media/webjobs-publish-netcore/pick-publish-target.png)
 
-1. V **vytvořit službu App Service** dialogové okno, použijte nastavení hostování podle uvedené v tabulce pod obrázkem:
+1. V dialogovém okně **vytvořit App Service** použijte nastavení hostování, jak je uvedeno v tabulce pod obrázkem:
 
-    ![Dialogové okno Vytvořit službu App Service](./media/webjobs-publish-netcore/app-service-dialog.png)
+    ![Dialogové okno Vytvoření služby App Service](./media/webjobs-publish-netcore/app-service-dialog.png)
 
     | Nastavení      | Navrhovaná hodnota  | Popis                                |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Název aplikace** | Globálně jedinečný název | Název jednoznačně identifikující novou aplikaci funkcí. |
-    | **Předplatné** | Vaše předplatné | Předplatné Azure, které se má použít. |
-    | **[Skupina prostředků](../articles/azure-resource-manager/resource-group-overview.md)** | myResourceGroup |  Název skupiny prostředků, ve které chcete vytvořit aplikaci funkcí. Pokud chcete vytvořit novou skupinu prostředků, zvolte **Nová**.|
-    | **[Plán hostování](../articles/app-service/overview-hosting-plans.md)** | Plán služby App Service | [Plán služby App Service](../articles/app-service/overview-hosting-plans.md) určuje umístění, velikost a funkce farmy webových serverů, která je hostitelem vaší aplikace. Při hostování více aplikací můžete ušetřit peníze, pokud nakonfigurujete webové aplikace tak, aby sdílely jeden plán služby App Service. Plány služby App Service definují oblasti, velikosti instance, počet škálování a SKU (Free, Shared, Basic, Standard nebo Premium). Zvolte **nový** vytvořit nový plán služby App Service. |
+    | **Předplatné** | Zvolte vaše předplatné. | Předplatné Azure, které se má použít. |
+    | **[Skupina prostředků](../articles/azure-resource-manager/management/overview.md)** | myResourceGroup |  Název skupiny prostředků, ve které chcete vytvořit aplikaci funkcí. Pokud chcete vytvořit novou skupinu prostředků, zvolte **Nová**.|
+    | **[Plán hostování](../articles/app-service/overview-hosting-plans.md)** | Plán služby App Service | [Plán služby App Service](../articles/app-service/overview-hosting-plans.md) určuje umístění, velikost a funkce farmy webových serverů, která je hostitelem vaší aplikace. Při hostování více aplikací můžete ušetřit peníze, pokud nakonfigurujete webové aplikace tak, aby sdílely jeden plán služby App Service. Plány App Service definují oblast, velikost instance, počet škálování a SKU (Free, Shared, Basic, Standard nebo Premium). Pokud chcete vytvořit nový plán App Service, vyberte **Nový** . |
 
-1. Klikněte na tlačítko **vytvořit** vytvořit ve webové úloze a související prostředky v Azure s těmito nastaveními a nasadí kód projektu.
+1. Kliknutím na **vytvořit** vytvoříte webovou úlohu a související prostředky v Azure pomocí těchto nastavení a nasadíte kód projektu.

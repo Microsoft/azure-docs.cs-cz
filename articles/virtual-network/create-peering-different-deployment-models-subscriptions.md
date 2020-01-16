@@ -13,18 +13,18 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: kumud
 ms.reviewer: anavin
-ms.openlocfilehash: fa647da6764ca61679aade2acc2849b474912278
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 6d45e3d911b8070529c43d9069a3d0d2fa5d3e69
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871990"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978999"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Vytvoření partnerského vztahu virtuálních sítí – různé modely nasazení a odběry
 
 V tomto kurzu se naučíte vytvořit partnerský vztah virtuální sítě mezi virtuálními sítěmi vytvořenými prostřednictvím různých modelů nasazení. Virtuální sítě existují v různých předplatných. Partnerský vztah dvou virtuálních sítí umožňuje prostředkům v různých virtuálních sítích vzájemně komunikovat se stejnou šířkou pásma a latencí, jako kdyby byly prostředky ve stejné virtuální síti. Přečtěte si další informace o [partnerském vztahu virtuálních sítí](virtual-network-peering-overview.md).
 
-Postup vytvoření partnerského vztahu virtuální sítě se liší v závislosti na tom, jestli jsou virtuální sítě ve stejném nebo jiném předplatném, a na [modelu nasazení Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , prostřednictvím kterého se virtuální sítě vytvářejí. Přečtěte si, jak vytvořit partnerský vztah virtuální sítě v jiných scénářích kliknutím na scénář z následující tabulky:
+Postup vytvoření partnerského vztahu virtuální sítě se liší v závislosti na tom, jestli jsou virtuální sítě ve stejném nebo jiném předplatném, a na [modelu nasazení Azure](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , prostřednictvím kterého se virtuální sítě vytvářejí. Přečtěte si, jak vytvořit partnerský vztah virtuální sítě v jiných scénářích kliknutím na scénář z následující tabulky:
 
 |Model nasazení Azure  | Předplatné Azure  |
 |--------- |---------|
@@ -49,15 +49,15 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
     - **Adresní prostor**: *10.0.0.0/16*
     - **Název podsítě**: *výchozí*
     - **Rozsah adres podsítě**: *10.0.0.0/24*
-    - **Předplatné**: Vyberte předplatné A.
-    - **Skupina prostředků**: Vyberte **vytvořit nové** a zadejte *myResourceGroupA* .
-    - **Umístění**: *Východní USA*
+    - **Předplatné**: vyberte předplatné A.
+    - **Skupina prostředků**: vyberte **vytvořit novou** a zadejte *myResourceGroupA* .
+    - **Umístění**: *východní USA*
 4. Do pole **Hledat prostředky** v horní části portálu zadejte *myVnetA*. Po zobrazení ve výsledcích hledání klikněte na **myVnetA** . Zobrazí se okno pro virtuální síť **myVnetA** .
 5. V zobrazeném okně **myVnetA** klikněte na **řízení přístupu (IAM)** ze svislého seznamu možností na levé straně okna.
 6. V okně **myVnetA – řízení přístupu (IAM)** , které se zobrazí, klikněte na **+ Přidat přiřazení role**.
 7. V okně **Přidat přiřazení role** , které se zobrazí, vyberte v poli **role** možnost **Přispěvatel sítě** .
 8. V poli **Vybrat** vyberte UserB nebo zadejte e-mailovou adresu UserB, kterou chcete vyhledat. Seznam zobrazených uživatelů je ze stejného klienta Azure Active Directory jako virtuální síť, pro kterou nastavujete partnerský vztah. Po zobrazení v seznamu klikněte na UserB.
-9. Klikněte na **Uložit**.
+9. Klikněte na možnost **Uložit**.
 10. Odhlaste se z portálu jako UserA a pak se přihlaste jako UserB.
 11. Klikněte na **+ Nový**, do pole **Hledat na Marketplace** zadejte *virtuální síť* a potom ve výsledcích hledání klikněte na **virtuální síť** .
 12. V zobrazeném okně **Virtual Network** v poli **Vybrat model nasazení** vyberte **Classic** a pak klikněte na **vytvořit**.
@@ -67,12 +67,12 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
     - **Adresní prostor**: *10.1.0.0/16*
     - **Název podsítě**: *výchozí*
     - **Rozsah adres podsítě**: *10.1.0.0/24*
-    - **Předplatné**: Vyberte předplatné B.
-    - **Skupina prostředků**: Vyberte **vytvořit nové** a zadejte *myResourceGroupB* .
-    - **Umístění**: *Východní USA*
+    - **Předplatné**: vyberte předplatné B.
+    - **Skupina prostředků**: vyberte **vytvořit novou** a zadejte *myResourceGroupB* .
+    - **Umístění**: *východní USA*
 
 14. Do pole **Hledat prostředky** v horní části portálu zadejte *myVnetB*. Po zobrazení ve výsledcích hledání klikněte na **myVnetB** . Zobrazí se okno pro virtuální síť **myVnetB** .
-15. V zobrazeném okně **myVnetB** klikněte na **vlastnosti** ze svislého seznamu možností na levé straně okna. Zkopírujte **ID prostředku**, které se používá v pozdějším kroku. ID prostředku je podobné jako v následujícím příkladu:`/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`
+15. V zobrazeném okně **myVnetB** klikněte na **vlastnosti** ze svislého seznamu možností na levé straně okna. Zkopírujte **ID prostředku**, které se používá v pozdějším kroku. ID prostředku je podobné jako v následujícím příkladu: `/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`
 16. Proveďte kroky 5-9 pro myVnetB, a to zadáním **Usera** v kroku 8.
 17. Odhlaste se z portálu jako UserB a přihlaste se jako UserA.
 18. Do pole **Hledat prostředky** v horní části portálu zadejte *myVnetA*. Po zobrazení ve výsledcích hledání klikněte na **myVnetA** . Zobrazí se okno pro virtuální síť **myVnet** .
@@ -81,8 +81,8 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
 21. V okně **myVnetA – partnerské vztahy** , které se zobrazily, klikněte na **+ Přidat** .
 22. V zobrazeném okně **Přidat partnerský vztah** zadejte nebo vyberte následující možnosti a pak klikněte na **OK**:
      - **Název**: *myVnetAToMyVnetB*
-     - **Model nasazení virtuální sítě**:  Vyberte **Classic**.
-     - **Znám moje ID prostředku**: Zaškrtněte toto políčko.
+     - **Model nasazení virtuální sítě**: vyberte **klasický**.
+     - **Znám moje ID prostředku**: zaškrtněte toto políčko.
      - **ID prostředku**: Zadejte ID prostředku myVnetB z kroku 15.
      - **Povolení přístupu k virtuální síti:** Ujistěte se, že je vybraná možnost **povoleno** .
     V tomto kurzu se žádná další nastavení nepoužívají. Pokud se chcete dozvědět o všech nastaveních partnerských vztahů, přečtěte si téma [Správa partnerských vztahů virtuálních sítí](virtual-network-manage-peering.md#create-a-peering).
@@ -90,22 +90,22 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
 
     Všechny prostředky Azure, které vytvoříte v obou virtuálních sítích, teď můžou vzájemně komunikovat prostřednictvím jejich IP adres. Pokud pro virtuální sítě používáte výchozí překlad názvů Azure, prostředky ve virtuálních sítích nebudou schopné překládat názvy mezi virtuálními sítěmi. Pokud chcete přeložit názvy mezi virtuálními sítěmi v partnerském vztahu, musíte vytvořit vlastní server DNS. Přečtěte si, jak nastavit [překlad názvů pomocí vlastního serveru DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 
-24. **Volitelné**: I když se v tomto kurzu nezabývá vytvářením virtuálních počítačů, můžete vytvořit virtuální počítač v každé virtuální síti a připojit se z jednoho virtuálního počítače k druhému a ověřit připojení.
-25. **Volitelné**: Pokud chcete odstranit prostředky, které vytvoříte v tomto kurzu, postupujte podle kroků v části [odstranění prostředků](#delete-portal) v tomto článku.
+24. **Volitelné**: i když se v tomto kurzu nezabývá vytvářením virtuálních počítačů, můžete vytvořit virtuální počítač v každé virtuální síti a připojit se z jednoho virtuálního počítače k druhému a ověřit připojení.
+25. **Volitelné**: Chcete-li odstranit prostředky, které vytvoříte v tomto kurzu, proveďte kroky v části [odstranění prostředků](#delete-portal) v tomto článku.
 
 ## <a name="cli"></a>Vytvoření partnerského vztahu – Azure CLI
 
-V tomto kurzu se pro každé předplatné používá jiný účet. Pokud používáte účet, který má oprávnění k oběma předplatným, můžete použít stejný účet pro všechny kroky, přeskočit kroky pro odhlášení z Azure a odebrat řádky skriptu, které vytvářejí přiřazení role uživatele. UserA@azure.com Nahraďte UserB@azure.com a ve všech následujících skriptech s uživatelskými jmény, která používáte pro Usera a UserB. Pomocí klasického rozhraní příkazového řádku Azure a rozhraní příkazového řádku Azure CLI proveďte následující kroky. Kroky z Azure Cloud Shell můžete dokončit tak, že jednoduše vyberete tlačítko **vyzkoušet** v některém z následujících kroků nebo nainstalujete rozhraní příkazového [řádku Classic](/cli/azure/install-classic-cli) a [CLI](/cli/azure/install-azure-cli) a spustíte příkazy na místním počítači.
+V tomto kurzu se pro každé předplatné používá jiný účet. Pokud používáte účet, který má oprávnění k oběma předplatným, můžete použít stejný účet pro všechny kroky, přeskočit kroky pro odhlášení z Azure a odebrat řádky skriptu, které vytvářejí přiřazení role uživatele. V následujících skriptech nahraďte UserA@azure.com a UserB@azure.com uživatelskými jmény, které používáte pro UserA a UserB. Pomocí klasického rozhraní příkazového řádku Azure a rozhraní příkazového řádku Azure CLI proveďte následující kroky. Kroky z Azure Cloud Shell můžete dokončit tak, že jednoduše vyberete tlačítko **vyzkoušet** v některém z následujících kroků nebo nainstalujete rozhraní příkazového [řádku Classic](/cli/azure/install-classic-cli) a [CLI](/cli/azure/install-azure-cli) a spustíte příkazy na místním počítači.
 
-1. Pokud používáte Cloud Shell, přeskočte na krok 2, protože Cloud Shell vás automaticky přihlásí k Azure. Otevřete relaci příkazu a přihlaste se k Azure pomocí `azure login` příkazu.
-2. Spusťte klasický `azure config mode asm` příkaz CLI v režimu správy služby zadáním příkazu.
+1. Pokud používáte Cloud Shell, přeskočte na krok 2, protože Cloud Shell vás automaticky přihlásí k Azure. Otevřete relaci příkazu a přihlaste se k Azure pomocí příkazu `azure login`.
+2. Spusťte klasické rozhraní příkazového řádku v režimu správy služby zadáním příkazu `azure config mode asm`.
 3. Chcete-li vytvořit virtuální síť (Classic), zadejte následující klasický příkaz rozhraní příkazového řádku:
 
     ```azurecli
     azure network vnet create --vnet myVnetB --address-space 10.1.0.0 --cidr 16 --location "East US"
     ```
 4. Zbývající kroky musí být dokončeny pomocí prostředí bash s rozhraním příkazového řádku Azure CLI (ne klasické rozhraní příkazového řádku).
-5. Zkopírujte následující skript do textového editoru na svém počítači. Nahraďte `<SubscriptionB-Id>` ID vašeho předplatného. Pokud své ID předplatného neznáte, `az account show` zadejte příkaz. Hodnota pro **ID** ve výstupu je vaše ID vašeho předplatného. Zkopírujte upravený skript, vložte ho do relace CLI a pak stiskněte klávesu `Enter`.
+5. Zkopírujte následující skript do textového editoru na svém počítači. Nahraďte `<SubscriptionB-Id>` číslem svého předplatného. Pokud své ID předplatného neznáte, zadejte příkaz `az account show`. Hodnota **ID** ve výstupu je vaše ID vašeho předplatného. zkopírujte upravený skript, vložte ho do relace CLI a potom stiskněte `Enter`.
 
     ```azurecli-interactive
     az role assignment create \
@@ -116,7 +116,7 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
 
     Při vytváření virtuální sítě (Classic) v kroku 4 vytvořila Azure virtuální síť ve skupině prostředků *výchozí-síť* .
 6. Protokoluje se UserB z Azure a přihlaste se jako UserA v rozhraní příkazového řádku.
-7. Vytvořte skupinu prostředků a virtuální síť (Správce prostředků). Zkopírujte následující skript, vložte ho do relace CLI a pak stiskněte klávesu `Enter`.
+7. Vytvořte skupinu prostředků a virtuální síť (Správce prostředků). Zkopírujte následující skript, vložte ho do relace CLI a potom stiskněte `Enter`.
 
     ```azurecli-interactive
     #!/bin/bash
@@ -150,7 +150,7 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
       --scope $vNetAId
     ```
 
-8. Vytvořte partnerský vztah virtuální sítě mezi dvěma virtuálními sítěmi vytvořenými prostřednictvím různých modelů nasazení. Zkopírujte následující skript do textového editoru na svém počítači. Nahraďte `<SubscriptionB-id>` ID vašeho předplatného. Pokud své ID předplatného neznáte, `az account show` zadejte příkaz. Hodnota pro **ID** ve výstupu je vaše ID vašeho předplatného. Azure vytvořil virtuální síť (Classic), kterou jste vytvořili v kroku 4, ve skupině prostředků s názvem *Default-Networking*. Vložte upravený skript do relace rozhraní příkazového řádku a potom `Enter`stiskněte klávesu.
+8. Vytvořte partnerský vztah virtuální sítě mezi dvěma virtuálními sítěmi vytvořenými prostřednictvím různých modelů nasazení. Zkopírujte následující skript do textového editoru na svém počítači. Nahraďte `<SubscriptionB-id>` číslem svého předplatného. Pokud své ID předplatného neznáte, zadejte příkaz `az account show`. Hodnota **ID** ve výstupu je vaše ID vašeho předplatného. Azure vytvořil virtuální síť (Classic), kterou jste vytvořili v kroku 4, ve skupině prostředků s názvem *výchozí-síť*. Vložte upravený skript do relace CLI a potom stiskněte `Enter`.
 
     ```azurecli-interactive
     # Peer VNet1 to VNet2.
@@ -174,16 +174,16 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
 
     Všechny prostředky Azure, které vytvoříte v obou virtuálních sítích, teď můžou vzájemně komunikovat prostřednictvím jejich IP adres. Pokud pro virtuální sítě používáte výchozí překlad názvů Azure, prostředky ve virtuálních sítích nebudou schopné překládat názvy mezi virtuálními sítěmi. Pokud chcete přeložit názvy mezi virtuálními sítěmi v partnerském vztahu, musíte vytvořit vlastní server DNS. Přečtěte si, jak nastavit [překlad názvů pomocí vlastního serveru DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 
-10. **Volitelné**: I když se v tomto kurzu nezabývá vytvářením virtuálních počítačů, můžete vytvořit virtuální počítač v každé virtuální síti a připojit se z jednoho virtuálního počítače k druhému a ověřit připojení.
-11. **Volitelné**: Pokud chcete odstranit prostředky, které vytvoříte v tomto kurzu, proveďte kroky v části [odstranění prostředků](#delete-cli) v tomto článku.
+10. **Volitelné**: i když se v tomto kurzu nezabývá vytvářením virtuálních počítačů, můžete vytvořit virtuální počítač v každé virtuální síti a připojit se z jednoho virtuálního počítače k druhému a ověřit připojení.
+11. **Volitelné**: Chcete-li odstranit prostředky, které vytvoříte v tomto kurzu, proveďte kroky v části [odstranění prostředků](#delete-cli) v tomto článku.
 
 ## <a name="powershell"></a>Vytvoření partnerského vztahu – PowerShell
 
-V tomto kurzu se pro každé předplatné používá jiný účet. Pokud používáte účet, který má oprávnění k oběma předplatným, můžete použít stejný účet pro všechny kroky, přeskočit kroky pro odhlášení z Azure a odebrat řádky skriptu, které vytvářejí přiřazení role uživatele. UserA@azure.com Nahraďte UserB@azure.com a ve všech následujících skriptech s uživatelskými jmény, která používáte pro Usera a UserB. 
+V tomto kurzu se pro každé předplatné používá jiný účet. Pokud používáte účet, který má oprávnění k oběma předplatným, můžete použít stejný účet pro všechny kroky, přeskočit kroky pro odhlášení z Azure a odebrat řádky skriptu, které vytvářejí přiřazení role uživatele. V následujících skriptech nahraďte UserA@azure.com a UserB@azure.com uživatelskými jmény, které používáte pro UserA a UserB. 
 
 1. Nainstalujte nejnovější verzi prostředí PowerShell [Azure](https://www.powershellgallery.com/packages/Azure) a [AZ](https://www.powershellgallery.com/packages/Az) Modules. Pokud s Azure PowerShellem začínáte, podívejte se na [Přehled Azure PowerShellu](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. Spusťte relaci PowerShellu.
-3. V PowerShellu se přihlaste k předplatnému UserB jako UserB `Add-AzureAccount` zadáním příkazu. Účet, se kterým se přihlašujete, musí mít potřebná oprávnění k vytvoření partnerského vztahu virtuální sítě. Seznam oprávnění najdete v tématu [oprávnění partnerského vztahu virtuálních sítí](virtual-network-manage-peering.md#permissions).
+3. V PowerShellu se přihlaste k předplatnému UserB jako UserB zadáním příkazu `Add-AzureAccount`. Účet, se kterým se přihlašujete, musí mít potřebná oprávnění k vytvoření partnerského vztahu virtuální sítě. Seznam oprávnění najdete v tématu [oprávnění partnerského vztahu virtuálních sítí](virtual-network-manage-peering.md#permissions).
 4. Pokud chcete vytvořit virtuální síť (Classic) pomocí PowerShellu, musíte vytvořit novou nebo upravit existující soubor konfigurace sítě. Naučte se [exportovat, aktualizovat a importovat síťové konfigurační soubory](virtual-networks-using-network-configuration-file.md). Soubor by měl obsahovat následující element **VirtualNetworkSite** pro virtuální síť, která se používá v tomto kurzu:
 
     ```xml
@@ -202,8 +202,8 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
     > [!WARNING]
     > Import změněného konfiguračního souboru sítě může způsobit změny ve stávajících virtuálních sítích (Classic) v rámci vašeho předplatného. Ujistěte se, že jste přidali jenom předchozí virtuální síť a že v rámci předplatného neměníte ani neodebíráte žádné existující virtuální sítě. 
 
-5. Přihlaste se k předplatnému UserB jako UserB, abyste mohli použít `Connect-AzAccount` příkazy správce prostředků zadáním příkazu.
-6. Přiřaďte Usera oprávnění k virtuální síti B. Zkopírujte následující skript do textového editoru na svém počítači a nahraďte `<SubscriptionB-id>` ID předplatného b. Pokud neznáte ID předplatného, zadejte `Get-AzSubscription` příkaz, který chcete zobrazit. Hodnota **ID** ve vráceném výstupu je vaše ID vašeho předplatného. Azure vytvořil virtuální síť (Classic), kterou jste vytvořili v kroku 4, ve skupině prostředků s názvem *Default-Networking*. Skript spustíte tak, že zkopírujete upravený skript, vložíte ho do PowerShellu a pak stisknete `Enter`.
+5. Přihlaste se k předplatnému UserB jako UserB, abyste mohli použít příkazy Správce prostředků zadáním příkazu `Connect-AzAccount`.
+6. Přiřaďte UserA oprávnění k virtuální síti B. Zkopírujte následující skript do textového editoru na počítači a nahraďte `<SubscriptionB-id>` číslem ID předplatného B. Pokud neznáte ID předplatného, zadejte příkaz `Get-AzSubscription`, který chcete zobrazit. Hodnota **ID** ve vráceném výstupu je vaše ID vašeho předplatného. Azure vytvořil virtuální síť (Classic), kterou jste vytvořili v kroku 4, ve skupině prostředků s názvem *Default-Networking*. Skript spustíte tak, že zkopírujete upravený skript, vložíte ho do PowerShellu a potom stisknete `Enter`.
     
     ```powershell 
     New-AzRoleAssignment `
@@ -212,7 +212,7 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
       -Scope /subscriptions/<SubscriptionB-id>/resourceGroups/Default-Networking/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB
     ```
 
-7. Přihlaste se z Azure jako UserB a přihlaste se k předplatnému Usera `Connect-AzAccount` jako Usera zadáním příkazu. Účet, se kterým se přihlašujete, musí mít potřebná oprávnění k vytvoření partnerského vztahu virtuální sítě. Seznam oprávnění najdete v tématu [oprávnění partnerského vztahu virtuálních sítí](virtual-network-manage-peering.md#permissions).
+7. Přihlaste se z Azure jako UserB a přihlaste se k předplatnému UserA jako UserA zadáním příkazu `Connect-AzAccount`. Účet, se kterým se přihlašujete, musí mít potřebná oprávnění k vytvoření partnerského vztahu virtuální sítě. Seznam oprávnění najdete v tématu [oprávnění partnerského vztahu virtuálních sítí](virtual-network-manage-peering.md#permissions).
 8. Vytvořte virtuální síť (Správce prostředků) tak, že zkopírujete následující skript, vložíte ho do PowerShellu a potom stisknete `Enter`:
 
     ```powershell
@@ -233,7 +233,7 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
       -Location $location
     ```
 
-9. Přiřaďte oprávnění UserB k myVnetA. Zkopírujte následující skript do textového editoru na počítači a nahraďte `<SubscriptionA-Id>` ID předplatného a. Pokud neznáte ID předplatného, zadejte `Get-AzSubscription` příkaz, který chcete zobrazit. Hodnota **ID** ve vráceném výstupu je vaše ID vašeho předplatného. Vložte upravenou verzi skriptu do PowerShellu a potom ho spusťte stisknutím `Enter` klávesy.
+9. Přiřaďte oprávnění UserB k myVnetA. Zkopírujte následující skript do textového editoru na počítači a nahraďte `<SubscriptionA-Id>` číslem ID předplatného a. Pokud neznáte ID předplatného, zadejte příkaz `Get-AzSubscription`, který chcete zobrazit. Hodnota **ID** ve vráceném výstupu je vaše ID vašeho předplatného. Vložte upravenou verzi skriptu do PowerShellu a potom ho spusťte stisknutím `Enter`.
 
     ```powershell
     New-AzRoleAssignment `
@@ -242,7 +242,7 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
       -Scope /subscriptions/<SubscriptionA-Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/VirtualNetworks/myVnetA
     ```
 
-10. Zkopírujte následující skript do textového editoru na svém počítači a nahraďte `<SubscriptionB-id>` ID předplatného B. Aby se myVnetA na myVNetB, zkopírujte upravený skript, vložte ho do PowerShellu a pak stiskněte `Enter`.
+10. Zkopírujte následující skript do textového editoru na počítači a nahraďte `<SubscriptionB-id>` číslem ID předplatného B. Aby se myVnetA na myVNetB, zkopírujte upravený skript, vložte ho do PowerShellu a pak stiskněte `Enter`.
 
     ```powershell
     Add-AzVirtualNetworkPeering `
@@ -264,8 +264,8 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
 
     Všechny prostředky Azure, které vytvoříte v obou virtuálních sítích, teď můžou vzájemně komunikovat prostřednictvím jejich IP adres. Pokud pro virtuální sítě používáte výchozí překlad názvů Azure, prostředky ve virtuálních sítích nebudou schopné překládat názvy mezi virtuálními sítěmi. Pokud chcete přeložit názvy mezi virtuálními sítěmi v partnerském vztahu, musíte vytvořit vlastní server DNS. Přečtěte si, jak nastavit [překlad názvů pomocí vlastního serveru DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 
-12. **Volitelné**: I když se v tomto kurzu nezabývá vytvářením virtuálních počítačů, můžete vytvořit virtuální počítač v každé virtuální síti a připojit se z jednoho virtuálního počítače k druhému a ověřit připojení.
-13. **Volitelné**: Pokud chcete odstranit prostředky, které vytvoříte v tomto kurzu, proveďte kroky v části [odstranění prostředků](#delete-powershell) v tomto článku.
+12. **Volitelné**: i když se v tomto kurzu nezabývá vytvářením virtuálních počítačů, můžete vytvořit virtuální počítač v každé virtuální síti a připojit se z jednoho virtuálního počítače k druhému a ověřit připojení.
+13. **Volitelné**: Chcete-li odstranit prostředky, které vytvoříte v tomto kurzu, proveďte kroky v části [odstranění prostředků](#delete-powershell) v tomto článku.
 
 ## <a name="delete"></a>Odstranit prostředky
 Po dokončení tohoto kurzu možná budete chtít odstranit prostředky, které jste v tomto kurzu vytvořili, takže se vám neúčtují poplatky za využití. Odstraněním skupiny prostředků se odstraní také všechny prostředky, které jsou ve skupině prostředků.
@@ -321,7 +321,7 @@ Po dokončení tohoto kurzu možná budete chtít odstranit prostředky, které 
    > [!WARNING]
    > Import změněného konfiguračního souboru sítě může způsobit změny ve stávajících virtuálních sítích (Classic) v rámci vašeho předplatného. Ujistěte se, že jste odebrali jenom předchozí virtuální síť a že neměníte ani neodebíráte žádné jiné existující virtuální sítě z vašeho předplatného. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Před vytvořením partnerského vztahu virtuálních sítí pro produkční použití důkladně se seznamte s důležitými [omezeními a chováním partnerských vztahů virtuálních sítí](virtual-network-manage-peering.md#requirements-and-constraints) .
 - Přečtěte si o [nastaveních partnerského vztahu virtuálních sítí](virtual-network-manage-peering.md#create-a-peering).

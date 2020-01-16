@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c08dc5091e7ab0eec5d4e6dd455e6adb3caa35f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5465c177cf174ebf8d6b7d4f43c5387bce3adb70
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402046"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969701"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Návrh a sestavení řešení pro správu v Azure (Preview)
 > [!NOTE]
@@ -23,7 +23,7 @@ ms.locfileid: "75402046"
 
 ## <a name="what-is-a-management-solution"></a>Co je řešení pro správu?
 
-Řešení pro správu obsahují prostředky Azure, které vzájemně spolupracují za účelem dosažení konkrétního scénáře správy.  Jsou implementovány jako [šablony správy prostředků](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) , které obsahují podrobné informace o instalaci a konfiguraci obsažených prostředků při instalaci řešení.
+Řešení pro správu obsahují prostředky Azure, které vzájemně spolupracují za účelem dosažení konkrétního scénáře správy.  Jsou implementovány jako [šablony správy prostředků](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) , které obsahují podrobné informace o instalaci a konfiguraci obsažených prostředků při instalaci řešení.
 
 Základní strategií je spustit řešení pro správu tím, že se v prostředí Azure sestaví jednotlivé komponenty.  Jakmile funkce fungují správně, můžete je začít zabalit do [souboru řešení pro správu]( solutions-solution-file.md). 
 
@@ -64,7 +64,7 @@ Jakmile nakonfigurujete a otestujete komponenty, které budou součástí vašeh
 
 
 ## <a name="test-your-solution"></a>Testování řešení
-Během vývoje řešení je budete muset nainstalovat a otestovat v pracovním prostoru.  Můžete to provést pomocí kterékoli z dostupných metod pro [otestování a instalaci šablon Správce prostředků](../../azure-resource-manager/resource-group-template-deploy.md).
+Během vývoje řešení je budete muset nainstalovat a otestovat v pracovním prostoru.  Můžete to provést pomocí kterékoli z dostupných metod pro [otestování a instalaci šablon Správce prostředků](../../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="publish-your-solution"></a>Publikování řešení
 Jakmile dokončíte a otestujete své řešení, můžete je zpřístupnit zákazníkům prostřednictvím následujících zdrojů.

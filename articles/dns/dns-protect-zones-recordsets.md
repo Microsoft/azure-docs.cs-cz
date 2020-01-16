@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 12/4/2018
 ms.author: allensu
-ms.openlocfilehash: b84ba055dd8214ae18e76004671e3922e6f3b878
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c87f9d51c69c4f4d330862e83e5cc8e8e849a988
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211449"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969025"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>Jak chránit záznamy a zóny DNS
 
@@ -20,9 +20,9 @@ ms.locfileid: "74211449"
 
 Zóny a záznamy DNS jsou důležité prostředky. Odstranění zóny DNS nebo dokonce pouhého jednoho záznamu DNS může způsobit výpadek služby.  Proto je důležité, aby byly kritické zóny DNS a záznamy chráněny před neoprávněnými nebo neúmyslnými změnami.
 
-Tento článek vysvětluje, jak Azure DNS umožňuje chránit zóny DNS a záznamy s těmito změnami.  K dispozici jsou dvě výkonné funkce zabezpečení, které poskytuje Azure Resource Manager: [řízení přístupu na základě role](../role-based-access-control/overview.md) a [zámky prostředků](../azure-resource-manager/resource-group-lock-resources.md).
+Tento článek vysvětluje, jak Azure DNS umožňuje chránit zóny DNS a záznamy s těmito změnami.  K dispozici jsou dvě výkonné funkce zabezpečení, které poskytuje Azure Resource Manager: [řízení přístupu na základě role](../role-based-access-control/overview.md) a [zámky prostředků](../azure-resource-manager/management/lock-resources.md).
 
-## <a name="role-based-access-control"></a>Řízení přístupu na základě role
+## <a name="role-based-access-control"></a>Řízení přístupu založené na rolích
 
 Správa na Access Control základě rolí v Azure (RBAC) umožňuje jemně odstupňovanou správu přístupu pro uživatele, skupiny a prostředky Azure. Pomocí RBAC můžete přesně udělit množství přístupu, který uživatelé potřebují k provádění svých úloh. Další informace o tom, jak RBAC pomáhá spravovat přístup, najdete v tématu [co je Access Control na základě rolí](../role-based-access-control/overview.md).
 
@@ -158,7 +158,7 @@ Další informace o tom, jak vytvářet, spravovat a přiřazovat vlastní role,
 
 ## <a name="resource-locks"></a>Zámky prostředků
 
-Kromě RBAC Azure Resource Manager podporuje jiný typ řízení zabezpečení, konkrétně možnost Uzamknout prostředky. Kde pravidla RBAC umožňují řídit akce konkrétních uživatelů a skupin, jsou na prostředku aplikovány zámky prostředků a jsou platné pro všechny uživatele a role. Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](../azure-resource-manager/resource-group-lock-resources.md).
+Kromě RBAC Azure Resource Manager podporuje jiný typ řízení zabezpečení, konkrétně možnost Uzamknout prostředky. Kde pravidla RBAC umožňují řídit akce konkrétních uživatelů a skupin, jsou na prostředku aplikovány zámky prostředků a jsou platné pro všechny uživatele a role. Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](../azure-resource-manager/management/lock-resources.md).
 
 Existují dva typy uzamčení prostředků: **CanNotDelete** a **ReadOnly**. Tato nastavení se dají použít buď na zónu DNS, nebo na jednotlivé sady záznamů.  Následující části popisují několik běžných scénářů a jejich podporu pomocí zámků prostředků.
 
@@ -217,4 +217,4 @@ Současně je možné použít oba přístupy – zámky prostředků i vlastní
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o práci s RBAC najdete v tématu [Začínáme se správou přístupu v Azure Portal](../role-based-access-control/overview.md).
-* Další informace o práci s zámky prostředků najdete v tématu [uzamčení prostředků pomocí Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md).
+* Další informace o práci s zámky prostředků najdete v tématu [uzamčení prostředků pomocí Azure Resource Manager](../azure-resource-manager/management/lock-resources.md).

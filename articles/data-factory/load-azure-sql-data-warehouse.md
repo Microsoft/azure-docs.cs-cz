@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/22/2018
-ms.openlocfilehash: 05e87258576bceee2e1bbba7ec5ef6ea5ead4924
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7815a99d4521e6797b4095a38fcfce50ac29a2b8
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440258"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981199"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Načtení dat do Azure SQL Data Warehouse pomocí Azure Data Factory
 
@@ -40,19 +40,19 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 
 * Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * Azure SQL Data Warehouse: datový sklad obsahuje data, která se kopírují z databáze SQL. Pokud nemáte Azure SQL Data Warehouse, přečtěte si pokyny v tématu [vytvoření SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md).
-* Azure SQL Database: v tomto kurzu se kopírují data z Azure SQL Database s ukázkovými daty Adventure Works LT. SQL Database můžete vytvořit podle pokynů v tématu [Vytvoření databáze SQL Azure](../sql-database/sql-database-get-started-portal.md). 
-* Účet úložiště Azure: Azure Storage se používá jako _pracovní_ objekt BLOB v operaci hromadného kopírování. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
+* Azure SQL Database: v tomto kurzu se kopírují data z Azure SQL Database s ukázkovými daty Adventure Works LT. SQL Database můžete vytvořit podle pokynů v tématu [Vytvoření databáze SQL Azure](../sql-database/sql-database-get-started-portal.md).
+* Účet úložiště Azure: Azure Storage se používá jako _pracovní_ objekt BLOB v operaci hromadného kopírování. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce vlevo vyberte **vytvořit prostředek** > **data a analýzy** > **Data Factory**: 
-   
+1. V nabídce vlevo vyberte **vytvořit prostředek** > **data a analýzy** > **Data Factory**:
+
    ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
 2. Na stránce **Nová datová továrna** zadejte hodnoty pro pole, která jsou zobrazena na následujícím obrázku:
-      
+
    ![Stránka Nová datová továrna](./media/load-azure-sql-data-warehouse/new-azure-data-factory.png)
- 
+
     * **Název**: zadejte globálně jedinečný název pro objekt pro vytváření dat Azure. Pokud se zobrazí chyba "název objektu pro vytváření dat \"LoadSQLDWDemo\" není k dispozici," zadejte jiný název pro objekt pro vytváření dat. Můžete například použít název _**Your**_ **ADFTutorialDataFactory**. Zkuste vytvořit datovou továrnu znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
     * **Předplatné**: vyberte předplatné Azure, ve kterém chcete vytvořit datovou továrnu. 
     * **Skupina prostředků**: v rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte možnost **vytvořit novou** a zadejte název skupiny prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
@@ -61,7 +61,7 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 
 3. Vyberte **Vytvořit**.
 4. Až se vytváření dokončí, přejdete do vaší datové továrny. Zobrazí se Domovská stránka **Data Factory** , jak je znázorněno na následujícím obrázku:
-   
+
    ![Domovská stránka objektu pro vytváření dat](./media/load-azure-sql-data-warehouse/data-factory-home-page.png)
 
    Výběrem dlaždice **Author & Monitor** (Vytvořit a monitorovat) otevřete na samostatné kartě aplikaci pro integraci dat.
@@ -86,14 +86,14 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
     ![Výběr Azure SQL DB](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
 
     c. Na stránce **Nová propojená služba** vyberte v rozevíracím seznamu název serveru a název databáze a zadejte uživatelské jméno a heslo. Kliknutím na **Test připojení** ověřte nastavení a pak vyberte **Dokončit**.
-   
+
     ![Konfigurace Azure SQL DB](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
 
     d. Vyberte nově vytvořenou propojenou službu jako zdroj a pak klikněte na **Next** (Další).
 
     ![Výběr zdrojové propojené služby](./media/load-azure-sql-data-warehouse/select-source-linked-service.png)
 
-1. V tabulce **Vybrat tabulky, ze kterých se mají kopírovat data, nebo použijte vlastní dotaz** , zadejte **tabulky SalesLT** k filtrování tabulek. Zvolte pole **(Vybrat vše)** , chcete-li použít všechny tabulky pro kopii, a poté vyberte možnost **Další**: 
+1. V tabulce **Vybrat tabulky, ze kterých se mají kopírovat data, nebo použijte vlastní dotaz** , zadejte **tabulky SalesLT** k filtrování tabulek. Zvolte pole **(Vybrat vše)** , chcete-li použít všechny tabulky pro kopii, a poté vyberte možnost **Další**:
 
     ![Vybrat zdrojové tabulky](./media/load-azure-sql-data-warehouse/select-source-tables.png)
 
@@ -108,14 +108,14 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
     ![Výběr Azure SQL DW](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
     c. Na stránce **Nová propojená služba** vyberte v rozevíracím seznamu název serveru a název databáze a zadejte uživatelské jméno a heslo. Kliknutím na **Test připojení** ověřte nastavení a pak vyberte **Dokončit**.
-   
+
     ![Konfigurace Azure SQL DW](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
 
     d. Vyberte nově vytvořenou propojenou službu jako jímku a klikněte na **Next** (Další).
 
     ![Výběr propojené služby jímky](./media/load-azure-sql-data-warehouse/select-sink-linked-service.png)
 
-1. Na stránce **mapování tabulek** zkontrolujte obsah a vyberte **Další**. Zobrazí se mapování inteligentní tabulky. Zdrojové tabulky jsou namapovány na cílové tabulky založené na názvech tabulek. Pokud zdrojová tabulka v cíli neexistuje, Azure Data Factory ve výchozím nastavení vytvoří cílovou tabulku se stejným názvem. Zdrojovou tabulku můžete také namapovat na existující cílovou tabulku. 
+1. Na stránce **mapování tabulek** zkontrolujte obsah a vyberte **Další**. Zobrazí se mapování inteligentní tabulky. Zdrojové tabulky jsou namapovány na cílové tabulky založené na názvech tabulek. Pokud zdrojová tabulka v cíli neexistuje, Azure Data Factory ve výchozím nastavení vytvoří cílovou tabulku se stejným názvem. Zdrojovou tabulku můžete také namapovat na existující cílovou tabulku.
 
    > [!NOTE]
    > Automatické vytvoření tabulky pro SQL Data Warehouse jímka se vztahuje, pokud je zdroj SQL Server nebo Azure SQL Database. Pokud kopírujete data z jiného zdrojového úložiště dat, budete muset před spuštěním kopie dat předem vytvořit schéma v Azure SQL Data Warehouse jímky.
@@ -128,12 +128,12 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 
 1. Na stránce **Nastavení** proveďte následující kroky:
 
-    a. V části **pracovní nastavení** klikněte na **+ Nová** a nové pracovní úložiště. Úložiště se používá pro přípravu dat, než se načte do SQL Data Warehouse pomocí základu. Po dokončení kopírování se automaticky vyčistí dočasná data v Azure Storage. 
+    a. V části **pracovní nastavení** klikněte na **+ Nová** a nové pracovní úložiště. Úložiště se používá pro přípravu dat, než se načte do SQL Data Warehouse pomocí základu. Po dokončení kopírování se automaticky vyčistí dočasná data v Azure Storage.
 
     ![Konfigurace přípravy](./media/load-azure-sql-data-warehouse/configure-staging.png)
 
     b. Na stránce **Nová propojená služba** vyberte svůj účet úložiště a pak vyberte **Dokončit**.
-   
+
     ![Konfigurace Azure Storage](./media/load-azure-sql-data-warehouse/configure-blob-storage.png)
 
     c. V části **Upřesnit nastavení** zrušte výběr možnosti **použít výchozí typ** a pak vyberte **Další**.
@@ -146,10 +146,10 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 1. Na **stránce nasazení**vyberte **monitorovat** a Sledujte kanál (úkol):
 
     ![Stránka Nasazení](./media/load-azure-sql-data-warehouse/deployment-page.png)
-1. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**. Sloupec **Actions (akce** ) obsahuje odkazy na zobrazení podrobností o spuštění aktivit a opětovné spuštění kanálu: 
+1. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**. Sloupec **Actions (akce** ) obsahuje odkazy na zobrazení podrobností o spuštění aktivit a opětovné spuštění kanálu:
 
     ![Monitorování spuštění kanálu](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)
-1. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce** . Pokud chcete přejít zpátky k zobrazení spuštění kanálu, vyberte odkaz **kanály** v horní části. Seznam můžete aktualizovat výběrem možnosti **Aktualizovat**. 
+1. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce** . Pokud chcete přejít zpátky k zobrazení spuštění kanálu, vyberte odkaz **kanály** v horní části. Seznam můžete aktualizovat výběrem možnosti **Aktualizovat**.
 
     ![Monitorování spuštění aktivit](./media/load-azure-sql-data-warehouse/activity-monitoring.png)
 
@@ -159,7 +159,7 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 
 ## <a name="next-steps"></a>Další kroky
 
-V následujícím článku se dozvíte o podpoře Azure SQL Data Warehouse: 
+V následujícím článku se dozvíte o podpoře Azure SQL Data Warehouse:
 
 > [!div class="nextstepaction"]
 >[Konektor Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md)

@@ -1,28 +1,24 @@
 ---
-title: Architektura zařízení Azure Migrate replikace
-description: V této části najdete přehled zařízení replikace Azure Migrate pro migraci na základě agenta.
-author: rayne-wiselman
-ms.service: azure-migrate
+title: Zařízení pro replikaci Azure Migrate
+description: Přečtěte si o zařízení replikace Azure Migrate pro migraci VMWare založenou na agentech.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: ba14767bde5d6cdca3a82dbe4e8a115ec25cc911
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 01/08/2020
+ms.openlocfilehash: 574877c6a0a5ade068cff08041b29d2465430ed1
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186562"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029036"
 ---
 # <a name="replication-appliance"></a>Replikační zařízení
 
-Tento článek popisuje zařízení replikace, které používá Azure Migrate: posouzení serveru při migraci virtuálních počítačů VMware, fyzických počítačů a privátních a veřejných cloudových virtuálních počítačů do Azure pomocí migrace založené na agentovi. 
-
-Nástroj je k dispozici v centru [Azure Migrate](migrate-overview.md) . Centrum poskytuje nativní nástroje pro posuzování a migraci a také nástroje z jiných služeb Azure a od výrobců nezávislých výrobců softwaru (ISV).
+Tento článek popisuje zařízení replikace používané službou [Azure Migrate: Nástroj pro migraci serveru](migrate-services-overview.md#azure-migrate-server-migration-tool) při migraci virtuálních počítačů VMware, fyzických počítačů a privátních a veřejných cloudových virtuálních počítačů do Azure pomocí migrace založené na agentech. 
 
 
-## <a name="appliance-overview"></a>Přehled zařízení
+## <a name="overview"></a>Přehled
 
-Zařízení replikace se nasadí jako jeden místní počítač, a to buď jako virtuální počítač VMware, nebo jako fyzický server. Spustí se:
+Zařízení replikace se nasadí při nastavení migrace na základě agenta virtuálních počítačů VMware nebo fyzických serverů. Je nasazená jako jeden místní počítač, a to buď jako virtuální počítač VMware, nebo jako fyzický server. Spustí se:
+
 - **Zařízení replikace**: zařízení replikace koordinuje komunikaci a spravuje replikaci dat pro místní virtuální počítače VMware a fyzické servery, které se replikují do Azure.
 - **Procesový Server**: procesový Server, který je ve výchozím nastavení nainstalován na zařízení replikace a provádí následující akce:
     - **Brána replikace**: funguje jako brána replikace. Přijímá data replikace z počítačů, které jsou povoleny pro replikaci. Optimalizuje replikační data pomocí ukládání do mezipaměti, komprese a šifrování a odesílá je do Azure.
@@ -30,19 +26,77 @@ Zařízení replikace se nasadí jako jeden místní počítač, a to buď jako 
 
 ## <a name="appliance-deployment"></a>Nasazení zařízení
 
-**Nasadit jako** | **Používá se pro** | **Podrobnosti**
---- | --- |  ---
-Virtuální počítač VMware | Obvykle se používá při migraci virtuálních počítačů VMware pomocí nástroje Azure Migrate Migration Tool s migrací založenou na agentech. | Šablonu pro sadu vajíček si stáhnete z centra Azure Migrate a naimportujete ji do vCenter Server a vytvoříte virtuální počítač zařízení.
-Fyzický počítač | Používá se při migraci místních fyzických serverů, pokud nemáte infrastrukturu VMware, nebo pokud nemůžete vytvořit virtuální počítač VMware pomocí šablony vajíček. | Instalační program softwaru si můžete stáhnout z centra Azure Migrate a spustit ho k nastavení počítače zařízení.
+**Používá pro** | **Podrobnosti**
+--- |  ---
+Migrace založená na agentech virtuálních počítačů VMware | Šablonu pro sadu vajíček si stáhnete z centra Azure Migrate a naimportujete ji do vCenter Server a vytvoříte virtuální počítač zařízení.
+Migrace založená na agentech fyzického počítače | Pokud nemáte infrastrukturu VMware nebo pokud nemůžete vytvořit virtuální počítač VMware pomocí šablony vajíček, Stáhněte si instalační program softwaru z centra Azure Migrate a spusťte ho, abyste nastavili počítač zařízení.
 
-## <a name="appliance-deployment-requirements"></a>Požadavky na nasazení zařízení
+## <a name="appliance-requirements"></a>Požadavky na zařízení
 
-[Zkontrolujte](migrate-support-matrix-vmware.md#agent-based-migration-replication-appliance-requirements) požadavky na nasazení.
+Při nastavování zařízení replikace pomocí šablony vajíček, která je k dispozici v centru Azure Migrate, zařízení spustí systém Windows Server 2016 a splňuje požadavky na podporu. Pokud se zařízení replikace nastavuje ručně na fyzickém serveru, ujistěte se, že splňuje požadavky.
 
+**Komponenta** | **Požadavek**
+--- | ---
+ | **Zařízení virtuálního počítače VMware**
+PowerCLI | Pokud je na virtuálním počítači VMware spuštěno zařízení replikace, měla by být nainstalovaná [verze PowerCLI 6,0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) .
+Typ síťové karty | VMXNET3 (Pokud je zařízení virtuálním počítačem VMware)
+ | **Nastavení hardwaru**
+Procesorová jádra | 8
+Paměť RAM | 16 GB
+Počet disků | Tři: disk s operačním systémem, disk mezipaměti procesového serveru a jednotka pro uchovávání.
+Volné místo na disku (mezipaměť) | 600 GB
+Volné místo na disku (disk pro uchovávání) | 600 GB
+**Nastavení softwaru** |
+Operační systém | Windows Server 2016 nebo Windows Server 2012 R2
+Licence | Zařízení obsahuje zkušební licenci Windows Server 2016, která je platná po dobu 180 dnů.<br/><br/> Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
+Národní prostředí operačního systému | Angličtina (en-us)
+TLS | Je třeba povolit protokol TLS 1,2.
+.NET Framework | Na počítači by se měla nainstalovat .NET Framework 4,6 nebo novější (se zapnutým silným kryptografií.
+MySQL | Na zařízení by měl být nainstalován MySQL.<br/> Je potřeba nainstalovat MySQL. Instalaci můžete provést ručně, nebo ji Site Recovery můžete nainstalovat během nasazování zařízení.
+Jiné aplikace | Na zařízení replikace nespouštějte jiné aplikace.
+Role Windows Serveru | Nepovolujte tyto role: <br> – Active Directory Domain Services <br>– Internet Information Service <br> – Hyper-V
+Zásady skupiny | Nepovolujte tyto zásady skupiny: <br> – Zabraňte přístupu k příkazovému řádku. <br> – Zabraňte přístup k nástrojům pro úpravu registru. <br> – Logika vztahu důvěryhodnosti pro přílohy souborů. <br> -Zapnout provádění skriptu. <br> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+IIS | -Žádný předdefinovaný výchozí web <br> -Žádný existující web nebo aplikace nenaslouchá na portu 443. <br>-Povolit [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Povolit nastavení [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)
+**Nastavení sítě** |
+Typ IP adresy | Statický
+Porty | 443 (orchestrace řídicího kanálu)<br>9443 (přenos dat)
+Typ síťové karty | VMXNET3
 
+## <a name="mysql-installation"></a>Instalace MySQL 
 
-## <a name="appliance-license"></a>Licence na zařízení
-Zařízení obsahuje zkušební licenci Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
+V počítači se zařízením replikace musí být nainstalován MySQL. Dá se nainstalovat pomocí jedné z těchto metod.
+
+**Metoda** | **Podrobnosti**
+--- | ---
+Stáhnout a nainstalovat ručně | Stáhněte si aplikaci MySQL & umístěte ji do složky C:\Temp\ASRSetup a pak ji nainstalujte ručně.<br/> Když nastavíte zařízení MySQL, bude se zobrazovat jako již nainstalované.
+Bez online stažení | Umístěte aplikaci instalačního programu MySQL do složky C:\Temp\ASRSetup. Když nainstalujete zařízení a kliknete na stažení a instalaci MySQL, instalační program použije instalační program, který jste přidali.
+Stažení a instalace v Azure Migrate | Po instalaci zařízení a zobrazení výzvy k MySQL vyberte **Stáhnout a nainstalovat**.
+
+## <a name="url-access"></a>Přístup URL
+
+Zařízení replikace potřebuje k těmto adresám URL přístup.
+
+**Adresa URL** | **Podrobnosti**
+--- | ---
+\*.backup.windowsazure.com | Slouží k přenosu replikovaných dat a jejich koordinaci.
+\*.store.core.windows.net | Slouží k přenosu replikovaných dat a jejich koordinaci.
+\*.blob.core.windows.net | Používá se pro přístup k účtu úložiště, který ukládá replikovaná data.
+\*.hypervrecoverymanager.windowsazure.com | Slouží k operacím správy replikace a jejich koordinaci.
+https:\//management.azure.com | Slouží k operacím správy replikace a jejich koordinaci.
+*.services.visualstudio.com | Používá se pro účely telemetrie (je volitelné).
+time.nist.gov | Používá se ke kontrole synchronizace mezi systémovým a globálním časem.
+time.windows.com | Používá se ke kontrole synchronizace mezi systémovým a globálním časem.
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | Instalační program OVF potřebuje přístup k těmto adresám URL. Používají se k řízení přístupu a správě identit pomocí Azure Active Directory
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | Dokončení stažení MySQL
+
+## <a name="port-access"></a>Přístup k portu
+
+**zařízení** | **připojení**
+--- | ---
+Virtuální počítače | Služba mobility spuštěná na virtuálních počítačích komunikuje s místním zařízením replikace (konfiguračním serverem) na portu HTTPS 443 příchozím pro správu replikací.<br/><br/> Virtuální počítače odesílají data replikace na procesový Server (spuštěný na počítači konfiguračního serveru) na portu HTTPS 9443 příchozí. Tento port lze změnit.
+Replikační zařízení | Zařízení replikace orchestruje replikaci pomocí Azure přes odchozí port HTTPS 443.
+Procesový Server | Procesový server přijímá data replikace, optimalizuje je a šifruje je a odesílá je do Azure Storage přes odchozí port 443.<br/> Ve výchozím nastavení běží na zařízení replikace procesový Server.
+
 
 ## <a name="replication-process"></a>Proces replikace
 
@@ -68,6 +122,5 @@ Zařízení se upgraduje ručně z centra Azure Migrate. Doporučujeme vždy spu
  
 ## <a name="next-steps"></a>Další kroky
 
-[Přečtěte si, jak](tutorial-assess-vmware.md#set-up-the-appliance-vm) nastavit zařízení pro VMware.
-[Přečtěte si, jak](tutorial-assess-hyper-v.md#set-up-the-appliance-vm) nastavit zařízení pro Hyper-V.
-
+- [Naučte](tutorial-migrate-vmware-agent.md#set-up-the-replication-appliance) se, jak nastavit zařízení replikace pro migraci virtuálních počítačů VMware na základě agentů.
+- [Přečtěte si, jak](tutorial-migrate-physical-virtual-machines.md#set-up-the-replication-appliance) nastavit zařízení replikace pro fyzické servery.

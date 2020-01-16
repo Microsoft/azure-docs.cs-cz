@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12391df7e3b8540b775d8c56b5d5c4e648722faf
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c5f36e82c2ff95800a058f56f9cc6b80ddf02dbf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889605"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967713"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD
 
@@ -362,7 +362,7 @@ Pro zlepšení plánu vám Microsoft doporučuje pravidelně ověřovat, jestli 
 
 ### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>Další kroky pro organizace, které spravují přístup k Azure 
 
-Určete, jestli potřebujete [přenášet vlastnictví předplatného Azure na jiný účet](../../billing/billing-subscription-transfer.md).
+Určete, jestli potřebujete [přenášet vlastnictví předplatného Azure na jiný účet](../../cost-management-billing/manage/billing-subscription-transfer.md).
 ‎
 
 ## <a name="break-glass-what-to-do-in-an-emergency"></a>"Break sklo": co dělat v nouzi

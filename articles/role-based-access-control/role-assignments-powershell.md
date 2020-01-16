@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9c16ec978a0689059c60903182337936960c7a4b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 0ee996e39950d38b10f8df78fe47f7087c4a2ed1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707851"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981063"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-powershell"></a>Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure PowerShell
 
@@ -27,7 +27,7 @@ ms.locfileid: "74707851"
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující:
 
@@ -65,7 +65,7 @@ Get-AzADServicePrincipal -SearchString <service_name_in_quotes>
 (Get-AzADServicePrincipal -DisplayName <service_name_in_quotes>).id
 ```
 
-## <a name="add-a-role-assignment"></a>Přidání přiřazení role
+## <a name="add-a-role-assignment"></a>Přidat přiřazení role
 
 Pokud chcete udělit přístup, přidejte přiřazení role ve RBAC.
 
@@ -232,4 +232,4 @@ Pokud se zobrazí chybová zpráva: "zadané informace nejsou mapovány na při�
 - [Seznam přiřazení rolí pomocí Azure RBAC a Azure PowerShell](role-assignments-list-powershell.md)
 - [Kurz: udělení přístupu skupině k prostředkům Azure pomocí RBAC a Azure PowerShell](tutorial-role-assignments-group-powershell.md)
 - [Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure PowerShell](tutorial-custom-role-powershell.md)
-- [Správa prostředků pomocí Azure PowerShell](../azure-resource-manager/manage-resources-powershell.md)
+- [Správa prostředků pomocí Azure PowerShell](../azure-resource-manager/management/manage-resources-powershell.md)

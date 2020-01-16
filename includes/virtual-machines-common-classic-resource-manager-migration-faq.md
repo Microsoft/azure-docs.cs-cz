@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: kasing
 ms.custom: include file
-ms.openlocfilehash: c8629975d375dda32fdd9aee42b4ae09069a2049
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: a7a3c6edbbeca96a90f8003fda1b92fc8bf99fec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005422"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020877"
 ---
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Má tento plán migrace vliv na některé stávající služby nebo aplikace spuštěné na virtuálních počítačích Azure? 
 
@@ -21,7 +21,7 @@ Ne. Virtuální počítače (Classic) jsou plně podporované a obecně dostupn�
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>Co se stane s virtuálními počítači, pokud se je nechystám migrovat v blízké budoucnosti? 
 
-Stávající rozhraní API ani model prostředků Classic nepřestáváme podporovat. Vzhledem k pokročilým funkcím dostupným v modelu nasazení Resource Manager chceme migraci usnadnit. Důrazně doporučujeme, abyste si prošli [některá ze zlepšení](../articles/azure-resource-manager/resource-manager-deployment-model.md), která jsou součástí infrastruktury jako služby (IaaS) v modelu Resource Manager.
+Stávající rozhraní API ani model prostředků Classic nepřestáváme podporovat. Vzhledem k pokročilým funkcím dostupným v modelu nasazení Resource Manager chceme migraci usnadnit. Důrazně doporučujeme, abyste si prošli [některá ze zlepšení](../articles/azure-resource-manager/management/deployment-models.md), která jsou součástí infrastruktury jako služby (IaaS) v modelu Resource Manager.
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>Co tento plán migrace znamená pro stávající nástroje? 
 
@@ -52,7 +52,7 @@ Během migrace se prostředky transformují z modelu Classic na Resource Manager
 <a name="vault">Když</a> přesunete virtuální počítač z klasického do režimu správce prostředků, zálohy provedené před migrací se nebudou migrovat na nově migrovaný správce prostředků virtuální počítač. Pokud ale chcete zachovat zálohy klasických virtuálních počítačů, postupujte před migrací pomocí těchto kroků. 
 
 1. V trezoru Recovery Services otevřete kartu **chráněné položky** a vyberte virtuální počítač. 
-2. Klikněte na Zastavit ochranu. Políčko *Delete associated backup data* (Odstranit přidružená data záloh) ponechte **nezaškrtnuté**.
+2. Klikněte na možnost Zastavit ochranu. Políčko *Delete associated backup data* (Odstranit přidružená data záloh) ponechte **nezaškrtnuté**.
 
 > [!NOTE]
 > Náklady na instanci zálohy se vám budou účtovat, dokud si zachováte data. Záložní kopie se vyřadí jako rozsah pro uchování dat. Poslední záložní kopie je ale vždycky zachovaná, dokud data zálohy explicitně neodstraníte. Po překročení rozsahu uchování doporučujeme, abyste zkontrolovali rozsah uchování virtuálního počítače a aktivovali v chráněné položce v trezoru možnost odstranit data zálohy. 

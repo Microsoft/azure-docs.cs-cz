@@ -1,19 +1,15 @@
 ---
 title: Příprava počítačů na migraci pomocí Azure Migrate
 description: Přečtěte si, jak připravit místní počítače na migraci pomocí Azure Migrate.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 12/10/2019
-ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6f5535a57fae847c8a376b8b39e43955675da739
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c3c10321e8d49ac6ecfe80024d23f24711298651
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974780"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028751"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Příprava místních počítačů na migraci do Azure
 
@@ -44,9 +40,9 @@ V tomto článku:
 
 ## <a name="check-whats-supported"></a>Zjistit, co je podporováno
 
-- Pro virtuální počítače VMware Azure Migrate migrace serveru podporuje [migraci bez agentů nebo na základě agenta](server-migrate-overview.md). Ověřte požadavky na virtuální počítače VMware a podporu pro migrace bez [agentů](migrate-support-matrix-vmware.md#migration---limitations) a [na základě agentů](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) .
-- Ověřte [požadavky na migraci a podporu](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) pro virtuální počítače Hyper-V.
-- Ověřte [požadavky na migraci a podporu](migrate-support-matrix-physical.md) místních fyzických počítačů nebo jiných virtualizovaných serverů. 
+- Pro virtuální počítače VMware Azure Migrate migrace serveru podporuje [migraci bez agentů nebo na základě agenta](server-migrate-overview.md). Ověřte [požadavky a podporu migrace](migrate-support-matrix-vmware-migration.md)virtuálních počítačů VMware.
+- Ověřte [požadavky na migraci a podporu](migrate-support-matrix-hyper-v-migration.md) pro Hyper-V.
+- Ověřte [požadavky na migraci a podporu](migrate-support-matrix-physical-migration.md) místních fyzických počítačů nebo jiných virtualizovaných serverů. 
 
 
 
@@ -55,10 +51,11 @@ V tomto článku:
 
 Počítače můžou během migrace potřebovat přístup k Internetu.
 
-- Zkontrolujte adresy URL, které musí virtuální počítače VMware používat při migraci bez [agentů](migrate-support-matrix-vmware.md#agentless-migration-url-access-requirements) nebo [na základě agentů](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements) .
-- Zkontrolujte adresy URL, které hostitelé Hyper-V potřebují k přístupu během migrace. Virtuální počítače Hyper-V nepotřebují přístup k Internetu.
-- [Zkontrolujte adresy URL](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements) , které fyzické počítače nebo jiné virtualizované servery potřebují k přístupu během migrace.
-- V rámci migrace na základě agenta virtuálních počítačů VMware nebo fyzických serverů potřebuje služba mobility běžící na počítačích přístup k součástem Azure Migrate. V případě správy replikací služba spuštěná v počítači komunikuje s místním Azure Migratem zařízením replikace na portu HTTPS 443 příchozí. Počítače odesílají replikační data na Azure Migrate procesový Server na portu HTTPS 9443 příchozí. Tento port lze změnit.
+- [Zkontrolujte adresy URL](migrate-appliance.md#url-access) , které zařízení Azure Migrate potřebuje k přístupu během migrace bez agenta. [Zkontrolujte požadavky na přístup k portu](migrate-support-matrix-vmware-migration.md#agentless-ports) .
+- Zkontrolujte [adresy URL](migrate-replication-appliance.md#url-access) a [porty] (migrace-replikace-zařízení. MD # port-Access), které zařízení replikace používá během migrace založené na AGENTOVI virtuálního počítače VMware. 
+- [Kontrola](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) Adresy URL a porty, které hostitelé Hyper-V potřebují k přístupu během migrace. 
+- Zkontrolujte [adresy URL](migrate-replication-appliance.md#url-access) a [porty] (migrace-replikace-zařízení. MD # port-Access), které zařízení replikace používá během migrace fyzického serveru.
+
 
 
 ## <a name="verify-required-changes-before-migration"></a>Před migrací ověřit požadované změny
@@ -105,7 +102,7 @@ Například pokud vaše místní instalace používá datový disk, který je p�
 
 ## <a name="check-azure-vm-requirements"></a>Ověřit požadavky na virtuální počítače Azure
 
-Místní počítače, které se replikují do Azure, musí splňovat požadavky na virtuální počítače Azure pro operační systém a architekturu, disky, nastavení sítě a pojmenovávání virtuálních počítačů. Před migrací ověřte požadavky na [virtuální počítače nebo fyzické servery VMware](migrate-support-matrix-vmware.md#azure-vm-requirements)a [virtuální počítače Hyper-V](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) .
+Místní počítače, které se replikují do Azure, musí splňovat požadavky na virtuální počítače Azure pro operační systém a architekturu, disky, nastavení sítě a pojmenovávání virtuálních počítačů. Před migrací ověřte požadavky na [virtuální počítače nebo fyzické servery VMware](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)a [virtuální počítače Hyper-V](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements) .
 
 
 ## <a name="prepare-to-connect-after-migration"></a>Příprava na připojení po migraci

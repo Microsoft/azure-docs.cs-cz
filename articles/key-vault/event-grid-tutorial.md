@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b30e260b2eeb0d8af0c347996cdb51685dedd046
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 77bc092c7d44e559562699d9177c2bd168f7dea0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133337"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981597"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>Příjem a reakce na oznámení trezoru klíčů pomocí Azure Event Grid (Preview)
 
@@ -184,7 +184,7 @@ Ověřte, že je vaše předplatné Event Grid správně nakonfigurované. Tento
 
 ### <a name="you-cant-create-an-event-subscription"></a>Nemůžete vytvořit odběr událostí.
 
-Znovu zaregistrujte Event Grid a poskytovatele trezoru klíčů ve svých poskytovatelích prostředků předplatného Azure. Podívejte [se na téma poskytovatelé a typy prostředků Azure](../azure-resource-manager/resource-manager-supported-services.md).
+Znovu zaregistrujte Event Grid a poskytovatele trezoru klíčů ve svých poskytovatelích prostředků předplatného Azure. Podívejte [se na téma poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md).
 
 ## <a name="next-steps"></a>Další kroky
 

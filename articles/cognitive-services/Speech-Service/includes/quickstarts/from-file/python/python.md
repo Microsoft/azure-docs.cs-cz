@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
+ms.date: 01/14/2020
 ms.author: chlandsi
-ms.openlocfilehash: 541fa3984eb5680a93be7ddef8f56f37922586e5
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 587a0e83eb6b8c96b44589f7f5701526c23e2aae
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75928188"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76038033"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -53,8 +53,7 @@ Nebo si můžete tento kurz rychlý Start stáhnout jako [Jupyter](https://jupyt
 > [!NOTE]
 > Sada Speech SDK bude standardně rozpoznána pomocí en-US pro daný jazyk. informace o výběru zdrojového jazyka najdete v tématu [určení zdrojového jazyka pro převod řeči na text](../../../../how-to-specify-source-language.md) .
 
-````Python
-
+```python
 import azure.cognitiveservices.speech as speechsdk
 
 # Creates an instance of a speech config with specified subscription key and service region.
@@ -71,7 +70,6 @@ audio_input = speechsdk.AudioConfig(filename=audio_filename)
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_input)
 
 print("Recognizing first result...")
-
 
 # Starts speech recognition, and returns after a single utterance is recognized. The end of a
 # single utterance is determined by listening for silence at the end or until a maximum of 15
@@ -91,8 +89,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
     print("Speech Recognition canceled: {}".format(cancellation_details.reason))
     if cancellation_details.reason == speechsdk.CancellationReason.Error:
         print("Error details: {}".format(cancellation_details.error_details))
-
-````
+```
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Instalace a použití sady Speech SDK s Visual Studio Code
 
@@ -114,14 +111,14 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 1. Zkopírujte, vložte a uložte [kód Pythonu](#sample-code) do nově vytvořeného souboru.
 1. Vložte informace o předplatném služby Speech.
 1. Pokud je tato možnost vybrána, na levé straně stavového řádku v dolní části okna se zobrazí interpret Pythonu.
-   V opačném případě uveďte seznam dostupných překladačů Pythonu. Otevřete paletu příkazů (CTRL + SHIFT + P) a zadejte **Python: vyberte Interpret**. Vyberte vhodný.
+   V opačném případě uveďte seznam dostupných překladačů Pythonu. Otevřete paletu příkazů <kbd>CTRL + SHIFT + P</kbd> a zadejte **Python: vyberte Interpret**. Vyberte vhodný.
 1. Balíček python sady Speech SDK můžete nainstalovat v rámci Visual Studio Code. Pokud není ještě nainstalována pro překladač Pythonu, který jste vybrali.
-   Chcete-li nainstalovat balíček sady Speech SDK, otevřete terminál. Znovu vyvolejte paletu příkazů (CTRL + SHIFT + P) a zadejte **terminál: vytvořit nový integrovaný terminál**.
+   Chcete-li nainstalovat balíček sady Speech SDK, otevřete terminál. Spusťte znovu paletu příkazů <kbd>CTRL + SHIFT + P</kbd> a zadejte **terminál: vytvořit nový integrovaný terminál**.
    V terminálu, který se otevře, zadejte příkaz `python -m pip install azure-cognitiveservices-speech` nebo příslušný příkaz pro váš systém.
 1. Chcete-li spustit vzorový kód, klikněte pravým tlačítkem někam do editoru. Vyberte možnost **Spustit soubor Pythonu v terminálu**.
    V okně konzoly bude rozpoznáno a zaznamenáno prvních 15 sekund vstupu řeči ze zvukového souboru.
 
-   ```text
+   ```console
    Recognizing first result...
    We recognized: What's the weather like?
    ```

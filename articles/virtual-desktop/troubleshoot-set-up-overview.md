@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/06/2019
 ms.author: helohr
-ms.openlocfilehash: 817cd09797ad861521a462da9c5d0850c65bf562
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ce1af278d67f96873ed611db8dc05938205638dc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459573"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980245"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>Přehled řešení potíží, zpětná vazba a podpora
 
@@ -27,7 +27,7 @@ Navštivte [technickou komunitu pro virtuální počítače s Windows](https://t
 Pomocí následující tabulky můžete identifikovat a vyřešit problémy, se kterými se můžete setkat při nastavování prostředí klienta pomocí klienta vzdálené plochy. Po nastavení vašeho tenanta můžete využít naši novou [službu diagnostiky](https://docs.microsoft.com/azure/virtual-desktop/diagnostics-role-service) k identifikaci problémů pro běžné scénáře.
 
 >[!NOTE]
-> Máme Fórum odborné komunity, které můžete navštívit a diskutovat o problémech s produktovým týmem a aktivními členy komunity. Navštivte [technickou komunitu virtuálních počítačů s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) a 
+> Máme Fórum odborné komunity, které můžete navštívit a diskutovat o problémech s produktovým týmem a aktivními členy komunity. Navštivte [technickou komunitu virtuálních počítačů s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) a
 
 | **Problém**                                                            | **Navrhované řešení**  |
 |----------------------------------------------------------------------|-------------------------------------------------|
@@ -54,6 +54,6 @@ Pomocí následující tabulky můžete identifikovat a vyřešit problémy, se 
 - Řešení potíží s klienty vzdálené plochy najdete v tématu [řešení potíží s klientem vzdálené plochy](troubleshoot-client.md) .
 - Pokud chcete řešit problémy při používání PowerShellu s virtuálním počítačem s Windows, přečtěte si téma [virtuální plocha Windows PowerShell](troubleshoot-powershell.md).
 - Další informace o této službě najdete v tématu [prostředí virtuálních počítačů s Windows](environment-setup.md).
-- Kurz řešení potíží najdete v tématu [kurz: řešení potíží s nasazením správce prostředků šablon](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md).
-- Další informace o akcích auditování najdete v tématu věnovaném [operacím auditu správce prostředků](../azure-resource-manager/resource-group-audit.md).
-- Další informace o akcích k určení chyb během nasazení najdete v tématu [Zobrazení operací nasazení](../azure-resource-manager/resource-manager-deployment-operations.md).
+- Kurz řešení potíží najdete v tématu [kurz: řešení potíží s nasazením správce prostředků šablon](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).
+- Další informace o akcích auditování najdete v tématu věnovaném [operacím auditu správce prostředků](../azure-resource-manager/management/view-activity-logs.md).
+- Další informace o akcích k určení chyb během nasazení najdete v tématu [Zobrazení operací nasazení](../azure-resource-manager/templates/deployment-history.md).

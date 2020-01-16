@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 85eeaaa052604c3198ca2ab8988f9e7a77e2a63d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3680473209b3d65d616879dfbb9080dfbb9c80f4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430650"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967399"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Jak zabezpečit rozhraní API pomocí ověřování klientského certifikátu v API Management
 
@@ -27,7 +27,12 @@ API Management poskytuje možnost zabezpečení přístupu k rozhraním API (nap
 Informace o zabezpečení přístupu k back-endové službě rozhraní API pomocí klientských certifikátů (tj. API Management do back-endu) najdete v tématu [zabezpečení back-endové služby pomocí ověřování klientských certifikátů](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates) .
 
 > [!IMPORTANT]
-> Pokud chcete přijímat a ověřovat klientské certifikáty ve vrstvě spotřeby, musíte nejdřív zapnout nastavení požadovat certifikát klienta v okně vlastní domény, jak je znázorněno níže.
+> Pokud chcete přijímat a ověřovat klientské certifikáty přes HTTP/2 na úrovních pro vývojáře, Basic, Standard nebo Premium, musíte v okně vlastní domény zapnout nastavení vyjednávat klientský certifikát, jak je znázorněno níže.
+
+![Vyjednat klientský certifikát](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
+
+> [!IMPORTANT]
+> Pokud chcete přijímat a ověřovat klientské certifikáty ve vrstvě spotřeby, musíte zapnout nastavení "požadovat certifikát klienta" v okně vlastní domény, jak je znázorněno níže.
 
 ![Požádat o klientský certifikát](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 

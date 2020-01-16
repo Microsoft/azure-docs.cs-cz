@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: e9ed99e617b09b18dcacdb82a956f3dde2ddecee
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 4e05de1fc1bfb880767d113e88d5c49082fc146c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898050"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976083"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-portal"></a>Vytvoření a správa privátního odkazu pro Azure Database for MariaDB (ve verzi Preview) pomocí portálu
 
@@ -211,7 +211,7 @@ Po vytvoření **myVm**se k němu připojte z Internetu následujícím způsobe
     Name:    mydemoMariaDBserver.mariadb.privatelink.database.azure.com
     Address:  10.1.3.4
 
-3. Test the private link connection for the MariaDB server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/wb-installing-windows.html) to do the operation.
+3. Test the private link connection for the MariaDB server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
 
 
 4. In **New connection**, enter or select this information:

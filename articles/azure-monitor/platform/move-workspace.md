@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: f6e1af2fdf43eb4351e996297f7dba775b7ffcef
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4baa65ca5dda6b266cd6c739225ebd01d011268c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278790"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980086"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Přesunutí pracovního prostoru Log Analytics do jiného předplatného nebo skupiny prostředků
 
-V tomto článku se seznámíte s postupem přesunutí Log Analyticsho pracovního prostoru do jiné skupiny prostředků nebo předplatného ve stejné oblasti. Další informace o přesunu prostředků Azure můžete získat prostřednictvím Azure Portal, PowerShellu, rozhraní příkazového řádku Azure nebo REST API. Při [přesunu prostředků do nové skupiny prostředků nebo předplatného](../../azure-resource-manager/resource-group-move-resources.md). 
+V tomto článku se seznámíte s postupem přesunutí Log Analyticsho pracovního prostoru do jiné skupiny prostředků nebo předplatného ve stejné oblasti. Další informace o přesunu prostředků Azure můžete získat prostřednictvím Azure Portal, PowerShellu, rozhraní příkazového řádku Azure nebo REST API. Při [přesunu prostředků do nové skupiny prostředků nebo předplatného](../../azure-resource-manager/management/move-resource-group-and-subscription.md). 
 
 > [!IMPORTANT]
 > Pracovní prostor nemůžete přesunout do jiné oblasti.
@@ -34,7 +34,7 @@ Spravovaná řešení, která jsou nainstalovaná v pracovním prostoru, se pře
 
 Řešení, která je potřeba odebrat, než budete moct zrušit propojení svého účtu Automation:
 
-- Update Management
+- Správa aktualizací
 - Sledování změn
 - Spuštění/zastavení virtuálních počítačů mimo špičku
 
@@ -82,7 +82,7 @@ Pomocí následujícího postupu odpojte účet Automation z pracovního prostor
 
 ## <a name="move-your-workspace"></a>Přesunout pracovní prostor
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 Pomocí následujícího postupu můžete přesunout svůj pracovní prostor pomocí Azure Portal:
 
 1. Otevřete nabídku **pracovní prostory Log Analytics** a pak vyberte svůj pracovní prostor.
@@ -107,4 +107,4 @@ Move-AzResource -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000
 
 
 ## <a name="next-steps"></a>Další kroky
-- Seznam prostředků, které podporují přesun, najdete v tématu [Podpora operací přesunutí pro prostředky](../../azure-resource-manager/move-support-resources.md).
+- Seznam prostředků, které podporují přesun, najdete v tématu [Podpora operací přesunutí pro prostředky](../../azure-resource-manager/management/move-support-resources.md).

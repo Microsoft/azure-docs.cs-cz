@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: d31b046bf02893affff84069ee92b3bd7735b904
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 072e62d89e8febc4837c10874398daea3b8114ed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243224"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974870"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Řešení potíží s grafy metrik
 
@@ -29,7 +29,7 @@ Po kliknutí na tlačítko **Vybrat prostředek** se v dialogovém okně pro vý
 
 1. Ujistěte se, že jste vybrali správnou skupinu prostředků.
     > [!WARNING]
-    > Kvůli zajištění nejlepšího výkonu po prvním otevření Průzkumníku metrik rozevírací nabídka **Skupina prostředků** neobsahuje žádné předem vybrané skupiny prostředků. Musíte vybrat alespoň jednu skupinu a teprve pak se zobrazí prostředky.
+    > Nejlepšího výkonu dosáhnete, když při prvním otevření Průzkumníka metrik v rozevíracím seznamu **Skupina prostředků** nejsou žádné předem vybrané skupiny prostředků. Musíte vybrat alespoň jednu skupinu a teprve pak se zobrazí prostředky.
 
 ## <a name="chart-shows-no-data"></a>Graf nezobrazuje žádná data
 
@@ -37,7 +37,7 @@ V některých případech se může stát, že grafy po výběru správných pro
 
 ### <a name="microsoftinsights-resource-provider-isnt-registered-for-your-subscription"></a>Poskytovatel prostředků Microsoft. Insights není pro vaše předplatné registrovaný.
 
-Abyste mohli procházet metriky, ve vašem předplatném musí být zaregistrovaný poskytovatel prostředků *Microsoft.Insights*. Většinou se registruje automaticky (tj. po nakonfigurování pravidla upozornění, přizpůsobení nastavení diagnostiky pro jakýkoli prostředek nebo nakonfigurování pravidla automatického škálování). Pokud poskytovatel prostředků Microsoft. Insights není zaregistrovaný, musíte ho ručně zaregistrovat pomocí následujících kroků popsaných v tématu [poskytovatelé a typy prostředků Azure](../../azure-resource-manager/resource-manager-supported-services.md).
+Abyste mohli procházet metriky, ve vašem předplatném musí být zaregistrovaný poskytovatel prostředků *Microsoft.Insights*. Většinou se registruje automaticky (tj. po nakonfigurování pravidla upozornění, přizpůsobení nastavení diagnostiky pro jakýkoli prostředek nebo nakonfigurování pravidla automatického škálování). Pokud poskytovatel prostředků Microsoft. Insights není zaregistrovaný, musíte ho ručně zaregistrovat pomocí následujících kroků popsaných v tématu [poskytovatelé a typy prostředků Azure](../../azure-resource-manager/management/resource-providers-and-types.md).
 
 **Řešení:** Otevřete **předplatné**, kartu **poskytovatelé prostředků** a ověřte, jestli je pro vaše předplatné zaregistrované *Microsoft. Insights* .
 
@@ -105,7 +105,7 @@ Metriky hostovaného operačního systému se ve výchozím nastavení ukládaj�
 
 1. Ověřte, že je povolené [rozšíření Azure Diagnostics](diagnostics-extension-overview.md) a že je nakonfigurované pro shromažďování metrik.
     > [!WARNING]
-    > K odesílání metrik [hostovaného operačního systému](agents-overview.md#log-analytics-agent) do účtu úložiště není možné použít **agenta Log Analytics** (označuje se také jako Microsoft Monitoring Agent nebo MMA).
+    > K odesílání metrik **hostovaného operačního systému** do účtu úložiště není možné použít [agenta Log Analytics](agents-overview.md#log-analytics-agent) (označuje se také jako Microsoft Monitoring Agent nebo MMA).
 
 1. Ujistěte se, že je [pro vaše předplatné zaregistrovaný](metrics-troubleshoot.md#microsoftinsights-resource-provider-isnt-registered-for-your-subscription)poskytovatel prostředků **Microsoft. Insights** .
 

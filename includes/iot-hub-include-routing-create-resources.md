@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: c97c8231265cf87f52333a56d21d6fb13180c554
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 5680bd1c3fadab8edcde1634c708ca8683c0e99c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808837"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020874"
 ---
 ## <a name="create-base-resources"></a>Vytvoření základních prostředků
 
@@ -23,7 +23,7 @@ Použijte pro všechny prostředky stejnou skupinu a umístění. Pak na konci m
 
 Níže je uveden seznam kroků, které je třeba provést v následujících částech: 
 
-1. Vytvořte [skupinu prostředků](../articles/azure-resource-manager/resource-group-overview.md).
+1. Vytvořte [skupinu prostředků](../articles/azure-resource-manager/management/overview.md).
 
 2. Vytvořte centrum IoT ve vrstvě S1. Přidejte do centra IoT skupinu uživatelů. Skupinu uživatelů používá služba Azure Stream Analytics při získávání dat.
 

@@ -3,12 +3,12 @@ title: Funkce šablon – prostředky
 description: Popisuje funkce pro použití v šabloně Azure Resource Manageru k načtení hodnoty o prostředcích.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 2dd55be9f9daa25662903fbb1bd0c2c6666974b3
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 85e421d4d4e53d275613ff8848abd405fdf175c2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708561"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979447"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Prostředek funkce pro šablony Azure Resource Manageru
 
@@ -233,7 +233,7 @@ Možná použití seznamu * jsou uvedena v následující tabulce.
 | Microsoft. Web/apimanagementaccounts/API/Connections | listsecrets |
 | microsoft.web/sites/backups | [list](/rest/api/appservice/webapps/listbackups) |
 | Microsoft.Web/sites/config | [list](/rest/api/appservice/webapps/listconfigurations) |
-| microsoft.web/sites/functions | [klíče listkey]()
+| microsoft.web/sites/functions | [klíče listkey](/rest/api/appservice/webapps/listfunctionkeys)
 | microsoft.web/sites/functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecrets) |
 | microsoft.web/sites/hybridconnectionnamespaces/relays | [klíče listkey](/rest/api/appservice/appserviceplans/listhybridconnectionkeys) |
 | microsoft.web/sites | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |

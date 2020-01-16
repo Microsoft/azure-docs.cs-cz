@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: dd429c7e8478bb0576605bcffe3c72bde35ae41e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b0b48fea308b385fd8c66bf87d708b1c51f7f495
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437257"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977356"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Kurz: proces Apache Kafka pro události Event Hubs pomocí Stream Analytics 
 Tento článek popisuje, jak Streamovat data do služby Event Hubs povolené Kafka a zpracovat je s Azure Stream Analytics. Provede vás provede následujícími kroky: 
@@ -38,7 +38,7 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 * [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks).
 * [Stáhněte](https://maven.apache.org/download.cgi) a [nainstalujte](https://maven.apache.org/install.html) binární archiv Maven.
 * [Git](https://www.git-scm.com/)
-* **Účtu služby Azure Storage**. Pokud ho nemáte, [vytvořit](../storage/common/storage-quickstart-create-account.md) než budete pokračovat. Úlohy Stream Analytics v tomto názorném postupu se uloží výstupní data ve službě Azure blob storage. 
+* **Účtu služby Azure Storage**. Pokud ho nemáte, [vytvořit](../storage/common/storage-account-create.md) než budete pokračovat. Úlohy Stream Analytics v tomto názorném postupu se uloží výstupní data ve službě Azure blob storage. 
 
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs s podporou Kafka
@@ -114,7 +114,7 @@ Teď můžete ze svých aplikací používajících protokol Kafka streamovat ud
     ![Centrum událostí – zprávy](./media/event-hubs-kafka-stream-analytics/confirm-event-hub-messages.png)
 
 ## <a name="process-event-data-using-a-stream-analytics-job"></a>Zpracování dat o událostech prostřednictvím úlohu Stream Analytics
-V této části vytvoříte úlohu Azure Stream Analytics. Kafka klient odesílá události do centra událostí. Vytvoření úlohy Stream Analytics, která přijímá data událostí jako vstup a výstup do služby Azure blob storage. Pokud nemáte **účtu služby Azure Storage**, [vytvořit](../storage/common/storage-quickstart-create-account.md).
+V této části vytvoříte úlohu Azure Stream Analytics. Kafka klient odesílá události do centra událostí. Vytvoření úlohy Stream Analytics, která přijímá data událostí jako vstup a výstup do služby Azure blob storage. Pokud nemáte **účtu služby Azure Storage**, [vytvořit](../storage/common/storage-account-create.md).
 
 Dotaz v úloze Stream Analytics data prochází bez provádění jakékoli analýz. Můžete vytvořit dotaz, který transformuje vstupní data a generuje výstupní data v jiném formátu, nebo s získáte přehledy.  
 

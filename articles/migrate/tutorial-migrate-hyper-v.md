@@ -4,12 +4,12 @@ description: Přečtěte si, jak migrovat místní virtuální počítače Hyper
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: MVC
-ms.openlocfilehash: edbd52924a77c961cb923f48bba76a21b56489ff
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: b9c0de866a61ee2646d987c4fb98cb24a218417b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720221"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028970"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrace virtuálních počítačů s Hyper-V do Azure 
 
@@ -122,7 +122,7 @@ Nainstalujte stažený instalační soubor (AzureSiteRecoveryProvider. exe) na v
     - Zadejte název proxy serveru **http://ip-address** nebo **http://FQDN** . Proxy servery HTTPS nejsou podporované.
    
 
-6. Ujistěte se, že zprostředkovatel má přístup k [požadovaným adresám URL](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-url-access).
+6. Ujistěte se, že zprostředkovatel má přístup k [požadovaným adresám URL](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts).
 7. V části **registrace**po registraci hostitele klikněte na **Dokončit**.
 
 ## <a name="replicate-hyper-v-vms"></a>Replikace virtuálních počítačů Hyper-V
@@ -155,7 +155,7 @@ Po dokončení zjišťování můžete zahájit replikaci virtuálních počíta
 
     ![Nastavení cíle](./media/tutorial-migrate-hyper-v/target-settings.png)
 
-10. V části **Výpočetní prostředky** zkontrolujte název, velikost, typ disku s operačním systémem a skupinu dostupnosti virtuálního počítače. Virtuální počítače musí splňovat [požadavky Azure](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements).
+10. V části **Výpočetní prostředky** zkontrolujte název, velikost, typ disku s operačním systémem a skupinu dostupnosti virtuálního počítače. Virtuální počítače musí splňovat [požadavky Azure](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements).
 
     - **Velikost virtuálního počítače**: Pokud používáte doporučení pro vyhodnocení, bude rozevírací seznam velikost virtuálního počítače obsahovat doporučenou velikost. Jinak Azure Migrate vybere velikost na základě nejbližší shody v předplatném Azure. Případně můžete velikost vybrat ručně v části **Velikost virtuálního počítače Azure**. 
     - **Disk s operačním systémem**: zadejte operační systém (spouštěcí) disk pro virtuální počítač. Disk s operačním systémem je disk, který obsahuje spouštěcí zavaděč a instalační program operačního systému. 

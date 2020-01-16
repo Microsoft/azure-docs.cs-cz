@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 12/30/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 823a25f388860fa55962a717b9dfed22f5d9c103
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 0d39c83646357cf9426239d28e445c4791ddceb0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770508"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981692"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Nasazení na Azure Container Instances z Azure Container Registry
 
@@ -136,7 +136,7 @@ Vlastnosti služby Azure Container Registry můžete zadat v šabloně Azure Res
 
 Kompletní nastavení skupiny kontejnerů najdete v [referenčních informacích k šabloně správce prostředků](/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups).    
 
-Podrobnosti o odkazování Azure Key Vault tajných kódů v šabloně Správce prostředků najdete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+Podrobnosti o odkazování Azure Key Vault tajných kódů v šabloně Správce prostředků najdete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](../azure-resource-manager/templates/key-vault-parameter.md).
 
 ## <a name="deploy-with-azure-portal"></a>Nasazení pomocí Azure Portal
 

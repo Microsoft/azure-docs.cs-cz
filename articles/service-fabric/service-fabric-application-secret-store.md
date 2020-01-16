@@ -1,20 +1,20 @@
 ---
-title: Service Fabric úložiště tajných kódů
-description: Tento článek popisuje, jak používat Service Fabricho úložiště tajných klíčů.
+title: Úložiště centrálních tajných kódů Azure Service Fabric
+description: Tento článek popisuje, jak používat úložiště centrálních tajných kódů v Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: 16608d9eaf12fc9abc535ef316d7b5e8b74a8b37
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bc6ea6260bf50d5b4f8e294e0a3827426f90bee3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457503"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980945"
 ---
-#  <a name="service-fabric-secrets-store"></a>Service Fabric úložiště tajných kódů
-Tento článek popisuje, jak vytvářet a používat tajné klíče v aplikacích Service Fabric s využitím Service Fabricho úložiště tajných klíčů (CSS). CSS je místní mezipaměť úložiště v tajných klíčích, která slouží k uchovávání citlivých dat, jako je například heslo, tokeny a klíče šifrované v paměti.
+# <a name="central-secrets-store-in-azure-service-fabric"></a>Úložiště centrálních tajných kódů v Azure Service Fabric 
+Tento článek popisuje, jak v Azure Service Fabric použít centrální úložiště tajných kódů (CSS) k vytváření tajných kódů v Service Fabricch aplikacích. CSS je místní mezipaměť úložiště tajných klíčů, která uchovává citlivá data, například heslo, tokeny a klíče, zašifrované v paměti.
 
-## <a name="enabling-secrets-store"></a>Povoluje se úložiště tajných klíčů.
- Pokud chcete povolit CSS, přidejte níže do konfigurace clusteru v části `fabricSettings`. Doporučuje se použít certifikát jiný než certifikát clusteru pro šablony stylů CSS. Ujistěte se, že je šifrovací certifikát nainstalovaný na všech uzlech a `NetworkService` má oprávnění ke čtení pro privátní klíč certifikátu.
+## <a name="enable-central-secrets-store"></a>Povolit úložiště centrálních tajných kódů
+Přidejte následující skript do konfigurace clusteru v části `fabricSettings` pro povolení šablon stylů CSS. Pro šablony stylů CSS doporučujeme použít jiný certifikát než certifikát clusteru. Ujistěte se, že je šifrovací certifikát nainstalovaný na všech uzlech a že `NetworkService` má oprávnění ke čtení pro privátní klíč certifikátu.
   ```json
     "fabricSettings": 
     [
@@ -46,10 +46,14 @@ Tento článek popisuje, jak vytvářet a používat tajné klíče v aplikacíc
         ...
      ]
 ```
-## <a name="declare-secret-resource"></a>Deklarovat prostředek tajného kódu
-Tajný prostředek můžete vytvořit buď pomocí šablony Správce prostředků, nebo pomocí REST API.
+## <a name="declare-a-secret-resource"></a>Deklarace tajného prostředku
+Tajný prostředek můžete vytvořit buď pomocí šablony Azure Resource Manager, nebo REST API.
 
-* Použití šablony Resource Manageru
+### <a name="use-resource-manager"></a>Použít Správce prostředků
+
+Pomocí následující šablony použijte Správce prostředků k vytvoření tajného prostředku. Šablona vytvoří prostředek `supersecret` tajný klíč, ale zatím není nastavená žádná hodnota pro tajný prostředek.
+
+
 ```json
    "resources": [
       {
@@ -66,20 +70,20 @@ Tajný prostředek můžete vytvořit buď pomocí šablony Správce prostředk�
         }
       ]
 ```
-Výše uvedená šablona vytvoří `supersecret` prostředek tajného kódu, ale zatím není nastavená žádná hodnota pro tajný prostředek.
 
-* S využitím REST API
+### <a name="use-the-rest-api"></a>Použití rozhraní REST API
 
-Pokud chcete vytvořit prostředek tajného kódu, `supersecret` vytvořit žádost o vložení do `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`. K vytvoření tajného klíče potřebujete certifikát clusteru nebo klientský certifikát správce.
+Chcete-li vytvořit prostředek `supersecret` tajný klíč pomocí REST API, vytvořte do `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`požadavek PUT. K vytvoření tajného prostředku potřebujete certifikát clusteru nebo klientský certifikát správce.
 
 ```powershell
 Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview -Method PUT -CertificateThumbprint <CertThumbprint>
 ```
 
-## <a name="set-secret-value"></a>Nastavit tajnou hodnotu
-* Použití šablony Resource Manageru
+## <a name="set-the-secret-value"></a>Nastavte tajnou hodnotu.
 
-Níže uvedená šablona Správce prostředků vytvoří a nastaví hodnotu pro tajný `supersecret` s verzí `ver1`.
+### <a name="use-the-resource-manager-template"></a>Použití šablony Správce prostředků
+
+Pomocí následující šablony Správce prostředků vytvořte a nastavte tajnou hodnotu. Tato šablona nastavuje tajnou hodnotu pro prostředek `supersecret` tajného klíče jako `ver1`verze.
 ```json
   {
   "parameters": {
@@ -117,67 +121,68 @@ Níže uvedená šablona Správce prostředků vytvoří a nastaví hodnotu pro 
     }
   ],
   ```
-* S využitím REST API
+### <a name="use-the-rest-api"></a>Použití rozhraní REST API
 
+Pomocí následujícího REST API skriptu nastavte tajnou hodnotu.
 ```powershell
 $Params = @{"properties": {"value": "mysecretpassword"}}
 Invoke-WebRequest -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret/values/ver1?api-version=6.4-preview -Method PUT -Body $Params -CertificateThumbprint <ClusterCertThumbprint>
 ```
-## <a name="using-the-secret-in-your-application"></a>Použití tajného klíče v aplikaci
+## <a name="use-the-secret-in-your-application"></a>Použití tajného klíče v aplikaci
 
-1.  Do souboru Settings. xml přidejte část s následujícím obsahem. Všimněte si, že hodnota je ve formátu {`secretname:version`}.
+Při použití tajného klíče ve vaší aplikaci Service Fabric postupujte podle těchto kroků.
 
-```xml
-  <Section Name="testsecrets">
-   <Parameter Name="TopSecret" Type="SecretsStoreRef" Value="supersecret:ver1"/
-  </Section>
-```
-2. Teď importujte oddíl v souboru souboru ApplicationManifest. XML.
-```xml
-  <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
-    <Policies>
-      <ConfigPackagePolicies CodePackageRef="Code">
-        <ConfigPackage Name="Config" SectionName="testsecrets" EnvironmentVariableName="SecretPath" />
-        </ConfigPackagePolicies>
-    </Policies>
-  </ServiceManifestImport>
-```
+1. Přidejte do souboru **Settings. XML** část s následujícím fragmentem kódu. Všimněte si, že hodnota je ve formátu {`secretname:version`}.
 
-Proměnná prostředí SecretPath odkazuje na adresář, ve kterém jsou uložené všechny tajné kódy. Každý parametr uvedený v části `testsecrets` se uloží do samostatného souboru. Aplikace teď může používat tajný klíč, jak je znázorněno níže.
-```C#
-secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
-```
-3. Připojení tajných kódů ke kontejneru
+   ```xml
+     <Section Name="testsecrets">
+      <Parameter Name="TopSecret" Type="SecretsStoreRef" Value="supersecret:ver1"/
+     </Section>
+   ```
 
-Pouze změna nutná k zpřístupnění tajných kódů uvnitř kontejneru je zadání přípojný bod v `<ConfigPackage>`.
-Tady je upravený souboru ApplicationManifest. XML.  
+1. Importujte oddíl v **souboru souboru ApplicationManifest. XML**.
+   ```xml
+     <ServiceManifestImport>
+       <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
+       <ConfigOverrides />
+       <Policies>
+         <ConfigPackagePolicies CodePackageRef="Code">
+           <ConfigPackage Name="Config" SectionName="testsecrets" EnvironmentVariableName="SecretPath" />
+           </ConfigPackagePolicies>
+       </Policies>
+     </ServiceManifestImport>
+   ```
 
-```xml
-<ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
-    <Policies>
-      <ConfigPackagePolicies CodePackageRef="Code">
-        <ConfigPackage Name="Config" SectionName="testsecrets" MountPoint="C:\secrets" EnvironmentVariableName="SecretPath" />
-        <!-- Linux Container
-         <ConfigPackage Name="Config" SectionName="testsecrets" MountPoint="/mnt/secrets" EnvironmentVariableName="SecretPath" />
-        -->
-      </ConfigPackagePolicies>
-    </Policies>
-  </ServiceManifestImport>
-```
-Tajné kódy budou k dispozici pod přípojným bodem ve vašem kontejneru.
+   Proměnná prostředí `SecretPath` bude odkazovat na adresář, ve kterém jsou uloženy všechny tajné kódy. Každý parametr uvedený v části `testsecrets` je uložen v samostatném souboru. Aplikace teď může tajný klíč použít následujícím způsobem:
+   ```C#
+   secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
+   ```
+1. Připojte tajné klíče ke kontejneru. Jediná změna nutná k zpřístupnění tajných kódů uvnitř kontejneru je `specify` přípojný bod v `<ConfigPackage>`.
+Následující fragment kódu je upravený **souboru ApplicationManifest. XML**.  
 
-4. Vazba tajného kódu na proměnnou prostředí 
+   ```xml
+   <ServiceManifestImport>
+       <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
+       <ConfigOverrides />
+       <Policies>
+         <ConfigPackagePolicies CodePackageRef="Code">
+           <ConfigPackage Name="Config" SectionName="testsecrets" MountPoint="C:\secrets" EnvironmentVariableName="SecretPath" />
+           <!-- Linux Container
+            <ConfigPackage Name="Config" SectionName="testsecrets" MountPoint="/mnt/secrets" EnvironmentVariableName="SecretPath" />
+           -->
+         </ConfigPackagePolicies>
+       </Policies>
+     </ServiceManifestImport>
+   ```
+   Tajné kódy jsou k dispozici pod přípojným bodem v kontejneru.
 
-Můžete vytvořit vazby tajného kódu k proměnné prostředí procesu zadáním Type = ' SecretsStoreRef '. Tady je příklad, jak vytvořit `supersecret` `ver1` verze na proměnnou prostředí `MySuperSecret` v souboru ServiceManifest. XML.
+1. Můžete vytvořit vazby tajného kódu k proměnné prostředí procesu zadáním `Type='SecretsStoreRef`. Následující fragment kódu je příklad, jak vytvořit navázání `supersecret` verze `ver1` na proměnnou prostředí `MySuperSecret` v **souboru ServiceManifest. XML**.
 
-```xml
-<EnvironmentVariables>
-  <EnvironmentVariable Name="MySuperSecret" Type="SecretsStoreRef" Value="supersecret:ver1"/>
-</EnvironmentVariables>
-```
+   ```xml
+   <EnvironmentVariables>
+     <EnvironmentVariable Name="MySuperSecret" Type="SecretsStoreRef" Value="supersecret:ver1"/>
+   </EnvironmentVariables>
+   ```
+
 ## <a name="next-steps"></a>Další kroky
-Další informace o [zabezpečení aplikací a služeb](service-fabric-application-and-service-security.md)
+Přečtěte si další informace o [zabezpečení aplikací a služeb](service-fabric-application-and-service-security.md).

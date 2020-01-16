@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 09/11/2018
-ms.openlocfilehash: 537f57249065a6b47c2ce4d679205ac21a75fe4c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6335fce717772e268f711c2e6e5050fa8c17d573
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439414"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977334"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopírování dat z úložiště objektů blob v Azure do databáze SQL pomocí nástroje pro kopírování dat
 
@@ -39,7 +39,7 @@ V tomto kurzu budete provádět následující kroky:
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* **Účet úložiště Azure:** Jako _zdrojové_ úložiště dat použijte úložiště objektů blob. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
+* **Účet úložiště Azure:** Jako _zdrojové_ úložiště dat použijte úložiště objektů blob. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
 * **Azure SQL Database:** Jako úložiště dat _jímky_ použijte databázi SQL. Pokud databázi SQL nemáte, přečtěte si pokyny v tématu [Vytvoření databáze SQL](../sql-database/sql-database-get-started-portal.md).
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Vytvoření objektu blob a tabulky SQL
@@ -78,18 +78,18 @@ Provedením těchto kroků si připravte úložiště objektů blob a databázi 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. V nabídce vlevo vyberte **vytvořit prostředek** > **Analytics** > **Data Factory**:
-    
+
     ![Vytvoření nové datové továrny](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Do pole **Název** na stránce **Nová datová továrna** zadejte **ADFTutorialDataFactory**.
 
     Název datové továrny musí být _globálně jedinečný_. Možná se zobrazí následující chybová zpráva:
-    
+
     ![Nová datová továrna – chybová zpráva](./media/doc-common-process/name-not-available-error.png)
 
     Pokud se zobrazí chybová zpráva týkající se hodnoty názvu, zadejte jiný název datové továrny. Použijte například název _**vaše_jméno**_ **ADFTutorialDataFactory**. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
 1. Vyberte **předplatné** Azure, v rámci kterého se má nová datová továrna vytvořit.
 1. U položky **Skupina prostředků** proveďte jeden z následujících kroků:
-    
+
     a. Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
 
     b. Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.
@@ -101,7 +101,7 @@ Provedením těchto kroků si připravte úložiště objektů blob a databázi 
 1. Vyberte **Vytvořit**.
 
 1. Po vytvoření se zobrazí domovská stránka **Datová továrna**.
-    
+
     ![Domovská stránka objektu pro vytváření dat](./media/doc-common-process/data-factory-home-page.png)
 1. Pokud chcete na samostatné kartě otevřít uživatelské rozhraní služby Azure Data Factory, vyberte dlaždici **Vytvořit a monitorovat**.
 
@@ -125,7 +125,7 @@ Provedením těchto kroků si připravte úložiště objektů blob a databázi 
     ![Výběr zdrojové propojené služby](./media/tutorial-copy-data-tool/select-source-linked-service.png)
 
 1. Na stránce **Choose the input file or folder** (Zvolit vstupní soubor nebo složku) proveďte následující kroky:
-    
+
     a. Klikněte na **Browse** (Procházet), přejděte do složky **adfv2tutorial/input**, vyberte soubor **inputEmp.txt** a pak klikněte na **Choose** (Zvolit).
 
     b. Kliknutím na **Next** (Další) přejděte k dalšímu kroku.

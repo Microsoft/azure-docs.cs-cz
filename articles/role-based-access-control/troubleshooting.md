@@ -15,12 +15,12 @@ ms.date: 11/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 5429ebb611f852f7672d89de190ddd68dbcb01cf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 67d624bb81105b8219030c57460b6d7bf7458671
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707785"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980993"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Řešení potíží s RBAC pro prostředky Azure
 
@@ -41,13 +41,13 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se řízení p�
 
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>Obnovení RBAC při přesouvání předplatných mezi tenanty
 
-- Pokud potřebujete postup, jak přenést předplatné do jiného tenanta Azure AD, přečtěte si téma [přenos vlastnictví předplatného Azure na jiný účet](../billing/billing-subscription-transfer.md).
+- Pokud potřebujete postup, jak přenést předplatné do jiného tenanta Azure AD, přečtěte si téma [přenos vlastnictví předplatného Azure na jiný účet](../cost-management-billing/manage/billing-subscription-transfer.md).
 - Když převedete předplatné do jiného tenanta Azure AD, všechna přiřazení rolí se odstraní ze zdrojového tenanta Azure AD a nedojde k jejich migraci do cílového tenanta Azure AD. Přiřazení rolí je potřeba v cílovém tenantovi znovu vytvořit. Je také nutné ručně znovu vytvořit spravované identity pro prostředky Azure. Další informace najdete v tématu [Nejčastější dotazy a známé problémy se spravovanými identitami](../active-directory/managed-identities-azure-resources/known-issues.md).
 - Pokud jste globálním správcem služby Azure AD a nemáte přístup k předplatnému po jeho přesunutí mezi klienty, použijte přepínač **Správa přístupu pro prostředky Azure** , abyste dočasně nastavili přístup [k](elevate-access-global-admin.md) předplatnému, abyste získali přístup k předplatnému.
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>Problémy se správci služeb nebo spolusprávci
 
-- Pokud máte problémy se správcem a spolusprávci služeb, přečtěte si téma [Přidání nebo změna správců předplatného Azure](../billing/billing-add-change-azure-subscription-administrator.md) a [role správce pro klasický odběr, role Azure RBAC a role správce Azure AD](rbac-and-directory-admin-roles.md).
+- Pokud máte problémy se správcem a spolusprávci služeb, přečtěte si téma [Přidání nebo změna správců předplatného Azure](../cost-management-billing/manage/add-change-subscription-administrator.md) a [role správce pro klasický odběr, role Azure RBAC a role správce Azure AD](rbac-and-directory-admin-roles.md).
 
 ## <a name="access-denied-or-permission-errors"></a>Odepřený přístup nebo chyby oprávnění
 
@@ -56,7 +56,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se řízení p�
 
 ## <a name="role-assignments-with-unknown-security-principal"></a>Přiřazení rolí s neznámým objektem zabezpečení
 
-Pokud přiřadíte roli objektu zabezpečení (uživatele, skupiny, instančnímu objektu nebo spravované identitě) a později odstraníte tento objekt zabezpečení bez odebrání přiřazení role, bude typ objektu zabezpečení pro přiřazení role uveden jako **Neznámý**. Následující snímek obrazovky ukazuje příklad v Azure Portal. Hlavní název zabezpečení je uvedený jako **identita se odstranila** a **Identita už neexistuje**. 
+Pokud přiřadíte roli objektu zabezpečení (uživatele, skupiny, instančnímu objektu nebo spravované identitě) a později odstraníte tento objekt zabezpečení bez odebrání přiřazení role, bude typ objektu zabezpečení pro přiřazení role uveden jako **Neznámý**. Následující snímek obrazovky ukazuje příklad na webu Azure Portal. Hlavní název zabezpečení je uvedený jako **identita se odstranila** a **Identita už neexistuje**. 
 
 ![Skupina prostředků webové aplikace](./media/troubleshooting/unknown-security-principal.png)
 
@@ -150,7 +150,7 @@ Tyto položky vyžadují přístup pro **zápis** do celé **skupiny prostředk�
 
 * Certifikáty a vazby SSL (certifikáty SSL se dají sdílet mezi lokalitami ve stejné skupině prostředků a geografickým umístěním)  
 * Pravidla upozornění  
-* Nastavení automatického škálování  
+* nastavení automatického škálování  
 * Součásti Application Insights  
 * Webové testy  
 

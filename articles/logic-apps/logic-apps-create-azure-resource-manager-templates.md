@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: d45cf8d951eb542e248a3ff4fe714b4d2af90cc7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1fdee9a5d90fc065e198d880f9d0dea10804b881
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428731"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972633"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Vytvoření šablon Azure Resource Manager pro automatizaci nasazení pro Azure Logic Apps
 
@@ -26,7 +26,7 @@ Další informace o Azure Resource Manager šablonách najdete v těchto témate
 
 * [Azure Resource Manager struktura a syntaxe šablony](../azure-resource-manager/templates/template-syntax.md)
 * [Vytváření šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md)
-* [Vývoj šablon Azure Resource Manageru pro konzistenci cloudu](../azure-resource-manager/templates-cloud-consistency.md)
+* [Vývoj šablon Azure Resource Manageru pro konzistenci cloudu](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
 <a name="visual-studio"></a>
 

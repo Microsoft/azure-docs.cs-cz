@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 08/29/2019
-ms.openlocfilehash: 52a3665da99ca9885c57db1a2779dc6ce4dbec21
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0713e1ed98cc87b95cad1f84672148cd062e0b58
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821180"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979992"
 ---
 # <a name="save-costs-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Úspora nákladů za SQL Database výpočetních prostředků s využitím Azure SQL Database rezervované kapacity
 
@@ -25,13 +25,13 @@ ms.locfileid: "73821180"
 
 Nemusíte přiřazovat rezervaci konkrétním SQL Database instancí (izolované databáze, elastické fondy nebo spravované instance). Tato výhoda automaticky získá odpovídající instance SQL Database, které jsou již spuštěny nebo nově nasazeny. Když zakoupíte rezervaci, zavedete se k využití výpočetních nákladů po dobu jednoho nebo tří let. Jakmile si koupíte rezervaci SQL Database, poplatky za výpočetní prostředky, které se shodují s atributy rezervace, už nebudou účtovány podle tarifů průběžných plateb. Rezervace nepokrývá software, sítě ani poplatky za úložiště spojené s instancí SQL Database. Na konci rezervovaného období vyprší platnost fakturačního přínosu a databáze SQL se účtují podle ceny za průběžné platby. Rezervace se neobnoví automaticky. Informace o cenách najdete v [nabídce SQL Database rezervované kapacity](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 
-V [Azure Portal](https://portal.azure.com)si můžete koupit Azure SQL Database rezervovanou kapacitu. Za rezervaci se platí [předem nebo prostřednictvím měsíčních plateb](../billing/billing-monthly-payments-reservations.md). Zakoupení SQL Database rezervované kapacity:
+V [Azure Portal](https://portal.azure.com)si můžete koupit Azure SQL Database rezervovanou kapacitu. Za rezervaci se platí [předem nebo prostřednictvím měsíčních plateb](../cost-management-billing/reservations/monthly-payments-reservations.md). Zakoupení SQL Database rezervované kapacity:
 
 - Musíte být v roli vlastníka alespoň u jednoho podnikového nebo individuálního předplatného s tarify průběžných plateb.
-- U předplatných se smlouvou Enterprise musí být na webu **EA Portal** povolená možnost [Přidat rezervované instance](https://ea.azure.com). Nebo, pokud je toto nastavení zakázané, musíte být správce EA v předplatném.
+- U předplatných se smlouvou Enterprise musí být na webu [EA Portal](https://ea.azure.com) povolená možnost **Přidat rezervované instance**. Nebo, pokud je toto nastavení zakázané, musíte být správce EA v předplatném.
 - V případě programu Cloud Solution Provider (CSP) mohou SQL Database rezervované kapacity koupit pouze agenti správce nebo prodejní agenti.
 
-Podrobnosti o tom, jak se zákazníkům z podnikových zákazníků a průběžné platby účtují poplatky za nákupy rezervací, najdete v tématu [vysvětlení využití rezervace Azure pro vaši podnikovou registraci](../billing/billing-understand-reserved-instance-usage-ea.md) a [pochopení využití rezervace Azure pro vaše průběžné platby. předplatné](../billing/billing-understand-reserved-instance-usage.md).
+Podrobnosti o tom, jak se zákazníkům z podnikových zákazníků a průběžné platby účtují poplatky za nákupy rezervací, najdete v tématu [vysvětlení využití rezervace Azure pro vaši podnikovou registraci](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) a [pochopení využití rezervace Azure pro vaše předplatné](../cost-management-billing/reservations/understand-reserved-instance-usage.md)s průběžnými platbami.
 
 ## <a name="determine-the-right-sql-size-before-purchase"></a>Před nákupem určit správnou velikost SQL
 
@@ -41,7 +41,7 @@ Předpokládejme například, že máte spuštěný jeden z obecných účelů, 
 
 ## <a name="buy-sql-database-reserved-capacity"></a>Koupit SQL Database rezervovanou kapacitu
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Vyberte **Všechny služby** > **Rezervace**.
 3. Vyberte **Přidat** a potom v podokně rezervace nákupních oblastí vyberte **SQL Database** , abyste si nakoupili novou rezervaci pro SQL Database.
 4. Vyplňte požadovaná pole. Stávající nebo nové izolované databáze, elastické fondy nebo spravované instance, které odpovídají atributům, které vyberete, mají nárok na získání rezervované slevy kapacity. Skutečný počet instancí SQL Database, které získají slevu, závisí na zvoleném rozsahu a množství.
@@ -56,7 +56,7 @@ V následující tabulce jsou popsána povinná pole.
 |Region (Oblast)      |Oblast Azure, která je pokrytá rezervací rezervované kapacity SQL Database.|
 |Typ nasazení|Typ prostředku SQL, pro který chcete zakoupit rezervaci.|
 |Úroveň výkonu|Úroveň služby pro instance SQL Database.
-|Označení        |Jeden rok nebo tři roky.|
+|Doba účinnosti        |Jeden rok nebo tři roky.|
 |Množství    |Množství výpočetních prostředků, které se zakoupí v rámci rezervace rezervované kapacity SQL Database. Množství je počet virtuální jádra ve vybrané oblasti Azure a úroveň výkonu, které jsou rezervované, a obdrží fakturační slevu. Pokud například používáte nebo plánujete spouštět instance SQL Database s celkovou výpočetní kapacitou Gen5 16 virtuální jádra v oblasti Východní USA, pak zadáte množství na 16, aby se pro všechny instance maximalizovala výhoda. |
 
 1. Přečtěte si náklady na rezervaci rezervované kapacity SQL Database v části **náklady** .
@@ -65,7 +65,7 @@ V následující tabulce jsou popsána povinná pole.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Zrušení, výměna nebo refundace rezervací
 
-Rezervace je možné s určitými omezeními zrušit, vyměnit nebo refundovat. Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+Rezervace je možné s určitými omezeními zrušit, vyměnit nebo refundovat. Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="vcore-size-flexibility"></a>flexibilita velikosti vCore
 
@@ -75,7 +75,7 @@ flexibilita velikosti vCore vám pomůže škálovat směrem nahoru nebo dolů v
 
 Nemůžete rezervovat databáze SQL založené na DTU (Basic, Standard nebo Premium).
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
@@ -83,13 +83,13 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 
 Sleva rezervovaného vCore se automaticky aplikuje na počet instancí SQL Database, které odpovídají SQL Database rezervovaných rezervací kapacity a atributů. Rozsah rezervované rezervace kapacity SQL Database můžete aktualizovat prostřednictvím [Azure Portal](https://portal.azure.com), PowerShellu, CLI nebo přes rozhraní API.
 
-Informace o tom, jak spravovat rezervaci rezervované kapacity SQL Database, najdete v tématu [správa SQL Database rezervované kapacity](../billing/billing-manage-reserved-vm-instance.md).
+Informace o tom, jak spravovat rezervaci rezervované kapacity SQL Database, najdete v tématu [správa SQL Database rezervované kapacity](../cost-management-billing/reservations/manage-reserved-vm-instance.md).
 
 Další informace o rezervacích Azure najdete v následujících článcích:
 
-- [Co jsou rezervace Azure?](../billing/billing-save-compute-costs-reservations.md)
-- [Správa rezervací Azure](../billing/billing-manage-reserved-vm-instance.md)
-- [Vysvětlení slev za rezervace Azure](../billing/billing-understand-reservation-charges.md)
-- [Vysvětlení využití rezervací u předplatného s průběžnými platbami](../billing/billing-understand-reserved-instance-usage.md)
-- [Vysvětlení využití rezervací u smlouvy Enterprise](../billing/billing-understand-reserved-instance-usage-ea.md)
+- [Co jsou rezervace Azure?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Správa rezervací Azure](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+- [Vysvětlení slev za rezervace Azure](../cost-management-billing/reservations/understand-reservation-charges.md)
+- [Vysvětlení využití rezervací u předplatného s průběžnými platbami](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
+- [Vysvětlení využití rezervací u smlouvy Enterprise](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
 - [Rezervace Azure v programu Partner Center Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)

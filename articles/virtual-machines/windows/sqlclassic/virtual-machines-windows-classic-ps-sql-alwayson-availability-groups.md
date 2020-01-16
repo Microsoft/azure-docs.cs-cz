@@ -14,23 +14,23 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: 89f731062ce46969c73f745d62b289b3b3483d8c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ba6f1300353247ef2de99b2bd903bc82665d9a52
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100358"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978142"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>Konfigurace skupiny dostupnosti Always On na virtuálním počítači Azure pomocí PowerShellu
 > [!div class="op_single_selector"]
-> * [Standardním UI](../classic/portal-sql-alwayson-availability-groups.md)
-> * [Standardním PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
+> * [Klasický: uživatelské rozhraní](../classic/portal-sql-alwayson-availability-groups.md)
+> * [Klasický: PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
 Než začnete, zvažte, že teď můžete tuto úlohu dokončit v modelu Azure Resource Manager. Pro nová nasazení doporučujeme model Azure Resource Manager. Viz [SQL Server skupiny dostupnosti Always On na virtuálních počítačích Azure](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md).
 
 > [!IMPORTANT]
-> Doporučujeme, aby většina nových nasazení používala model Správce prostředků. Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje použití klasického modelu nasazení.
+> Doporučujeme, aby většina nových nasazení používala model Správce prostředků. Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../../azure-resource-manager/management/deployment-models.md). Tento článek se věnuje použití klasického modelu nasazení.
 
 Virtuální počítače Azure můžou správcům databází pomáhat snížit náklady na SQL Server systém s vysokou dostupností. V tomto kurzu se dozvíte, jak implementovat skupinu dostupnosti pomocí SQL Server v rámci prostředí Azure vždy na konci. Na konci tohoto kurzu se SQL Server řešení Always On v Azure skládá z následujících prvků:
 
@@ -45,7 +45,7 @@ Tento scénář je vhodný pro zjednodušení v Azure, ne pro své nákladové e
 V tomto kurzu se dozvíte, jaké kroky potřebujete k nastavení výše uvedeného řešení, aniž byste museli vykazovat podrobnosti o jednotlivých krocích. Proto namísto poskytování kroků konfigurace grafického uživatelského rozhraní pomocí skriptování PowerShellu rychle provedete jednotlivé kroky. V tomto kurzu se předpokládá následující:
 
 * Už máte účet Azure s předplatným virtuálního počítače.
-* Nainstalovali jste rutiny [Azure PowerShell](/powershell/azure/overview).
+* Nainstalovali jste [rutiny Azure PowerShell](/powershell/azure/overview).
 * Už máte plnou znalostí skupin dostupnosti Always On pro místní řešení. Další informace najdete v tématu [skupiny dostupnosti Always On (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx).
 
 ## <a name="connect-to-your-azure-subscription-and-create-the-virtual-network"></a>Připojte se k předplatnému Azure a vytvořte virtuální síť.
@@ -158,7 +158,7 @@ V tomto kurzu se dozvíte, jaké kroky potřebujete k nastavení výše uvedené
    * **Add-AzureDataDisk** přidá datový disk, který budete používat k ukládání dat služby Active Directory, s možností ukládání do mezipaměti nastavenou na žádné.
    * **New-AzureVM** vytvoří novou cloudovou službu a vytvoří nový virtuální počítač Azure v nové cloudové službě.
 
-7. Počkejte na úplné zřízení nového virtuálního počítače a Stáhněte soubor vzdálené plochy do pracovního adresáře. Vzhledem k tomu, že nový virtuální počítač Azure trvá zřízení delší dobu `while` , bude smyčka pokračovat v dotazování nového virtuálního počítače, dokud nebude připraven k použití.
+7. Počkejte na úplné zřízení nového virtuálního počítače a Stáhněte soubor vzdálené plochy do pracovního adresáře. Vzhledem k tomu, že nový virtuální počítač Azure trvá zřízení delší dobu, `while` cyklus bude pokračovat v dotazování nového virtuálního počítače, dokud nebude připravený k použití.
 
         $VMStatus = Get-AzureVM -ServiceName $dcServiceName -Name $dcServerName
 
@@ -238,7 +238,7 @@ Server řadiče domény se teď úspěšně zřídil. Dále nakonfigurujete dom�
         $acl.AddAccessRule($ace1)
         Set-Acl -Path "DC=corp,DC=contoso,DC=com" -AclObject $acl
 
-    Výše uvedený identifikátor GUID je identifikátor GUID typu objektu počítače. Účet **CORP\Install** potřebuje oprávnění **číst všechny vlastnosti** a **vytvořit objekty počítače** k vytvoření aktivních přímých objektů pro cluster s podporou převzetí služeb při selhání. Oprávnění **číst všechny vlastnosti** již ve výchozím nastavení CORP\Install, takže je nemusíte explicitně udělovat. Další informace o oprávněních potřebných k vytvoření clusteru s podporou převzetí služeb při [selhání najdete v tématu Podrobný průvodce clusterem s podporou převzetí služeb při selhání: Konfigurace účtů ve službě Active](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx)Directory.
+    Výše uvedený identifikátor GUID je identifikátor GUID typu objektu počítače. Účet **CORP\Install** potřebuje oprávnění **číst všechny vlastnosti** a **vytvořit objekty počítače** k vytvoření aktivních přímých objektů pro cluster s podporou převzetí služeb při selhání. Oprávnění **číst všechny vlastnosti** již ve výchozím nastavení CORP\Install, takže je nemusíte explicitně udělovat. Další informace o oprávněních potřebných k vytvoření clusteru s podporou převzetí služeb při selhání najdete v tématu [podrobný průvodce clusterem s podporou převzetí služeb při selhání: Konfigurace účtů ve službě Active Directory](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx).
 
     Teď, když jste dokončili konfiguraci služby Active Directory a uživatelských objektů, vytvoříte dva SQL Server virtuální počítače a připojíte je k této doméně.
 
@@ -354,7 +354,7 @@ Server řadiče domény se teď úspěšně zřídil. Dále nakonfigurujete dom�
    * **Set-AzureSubnet** umístí virtuální počítač do back-Subnet.
    * **Add-AzureEndpoint** přidá koncové body přístupu, aby klientské aplikace mohly přistupovat k těmto instancím služby SQL Server Services na internetu. K ContosoSQL1 a ContosoSQL2 jsou přidány různé porty.
    * **New-AzureVM** vytvoří nový virtuální počítač SQL Server ve stejné cloudové službě jako ContosoQuorum. Virtuální počítače musíte umístit do stejné cloudové služby, pokud chcete, aby byly ve stejné skupině dostupnosti.
-4. Počkejte, až se všechny virtuální počítače úplně zřídí, a pro každý z nich Stáhněte svůj soubor vzdálené plochy do pracovního adresáře. Cyklická `for` smyčka prochází třemi novými virtuálními počítači a provádí příkazy uvnitř složených závorek nejvyšší úrovně pro každé z nich.
+4. Počkejte, až se všechny virtuální počítače úplně zřídí, a pro každý z nich Stáhněte svůj soubor vzdálené plochy do pracovního adresáře. Cyklická smyčka `for` projde třemi novými virtuálními počítači a spustí příkazy uvnitř složených závorek nejvyšší úrovně pro každé z nich.
 
         Foreach ($VM in $VMs = Get-AzureVM -ServiceName $sqlServiceName)
         {
@@ -379,15 +379,15 @@ Server řadiče domény se teď úspěšně zřídil. Dále nakonfigurujete dom�
 ## <a name="initialize-the-failover-cluster-vms"></a>Inicializace virtuálních počítačů clusteru s podporou převzetí služeb při selhání
 V této části je potřeba upravit tři servery, které budete používat v clusteru s podporou převzetí služeb při selhání a instalaci SQL Server. Zejména:
 
-* Všechny servery: Je potřeba nainstalovat funkci **clusteringu s podporou převzetí služeb při selhání** .
-* Všechny servery: Musíte přidat **CORP\Install** jako **správce**počítače.
-* Jenom ContosoSQL1 a ContosoSQL2: Do výchozí databáze je třeba přidat **CORP\Install** jako roli **sysadmin** .
-* Jenom ContosoSQL1 a ContosoSQL2: Je potřeba přidat **NT AUTHORITY\SYSTEM** jako přihlašování s následujícími oprávněními:
+* Všechny servery: je potřeba nainstalovat funkci **clusteringu s podporou převzetí služeb při selhání** .
+* Všechny servery: musíte přidat **CORP\Install** jako **správce**počítače.
+* Pouze ContosoSQL1 a ContosoSQL2: je třeba přidat **CORP\Install** jako roli **sysadmin** do výchozí databáze.
+* Jenom ContosoSQL1 a ContosoSQL2: musíte přidat **NT AUTHORITY\SYSTEM** jako přihlašování s následujícími oprávněními:
 
   * Změna jakékoli skupiny dostupnosti
   * Připojit SQL
   * Zobrazit stav serveru
-* Jenom ContosoSQL1 a ContosoSQL2: Protokol **TCP** je už na SQL SERVERm virtuálním počítači povolený. Pořád ale musíte otevřít bránu firewall pro vzdálený přístup k SQL Server.
+* Pouze ContosoSQL1 a ContosoSQL2: protokol **TCP** je již na SQL SERVERm virtuálním počítači povolen. Pořád ale musíte otevřít bránu firewall pro vzdálený přístup k SQL Server.
 
 Teď jste připraveni začít. Od **ContosoQuorum**použijte následující postup:
 

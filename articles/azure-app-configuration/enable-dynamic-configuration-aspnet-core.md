@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 608368daa17246f2512d243b2656dd7702d84f50
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c08b42d8217bf16dfcd8af17fa3c4627b95ffc3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433708"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028224"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Kurz: použití dynamické konfigurace v aplikaci ASP.NET Core
 
@@ -53,10 +53,12 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
 1. Přidejte odkaz na `Microsoft.Azure.AppConfiguration.AspNetCore` balíček NuGet spuštěním následujícího příkazu:
 
     ```CLI
-        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-010060003-1250
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-010560002-1165
     ```
 
 1. Otevřete *program.cs*a aktualizujte metodu `CreateWebHostBuilder` pro přidání metody `config.AddAzureAppConfiguration()`.
+
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -79,6 +81,30 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
             .UseStartup<Startup>();
     ```
 
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var settings = config.Build();
+                    config.AddAzureAppConfiguration(options =>
+                    {   
+                        options.Connect(settings["ConnectionStrings:AppConfig"])
+                            .ConfigureRefresh(refresh =>
+                                {
+                                    refresh.Register("TestApp:Settings:BackgroundColor")
+                                            .Register("TestApp:Settings:FontColor")
+                                            .Register("TestApp:Settings:Message");
+                                });
+                    });
+                })
+            .UseStartup<Startup>());
+    ```
+    ---
+
     Metoda `ConfigureRefresh` slouží k určení nastavení použitých k aktualizaci konfiguračních dat pomocí úložiště konfigurace aplikace při aktivaci operace aktualizace. Aby bylo možné spustit operaci aktualizace, je nutné nakonfigurovat middleware aktualizace, aby aplikace aktualizovala konfigurační data, když dojde k jakékoli změně.
 
 2. Přidejte soubor *Settings.cs* , který definuje a implementuje novou třídu `Settings`.
@@ -96,12 +122,38 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
     }
     ```
 
-3. Otevřete *Startup.cs*a aktualizujte metodu `ConfigureServices`, abyste navázali konfigurační data na třídu `Settings`.
+3. Otevřete *Startup.cs*a pomocí `IServiceCollection.Configure<T>` v metodě `ConfigureServices` navažte konfigurační data ke třídě `Settings`.
+
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
         services.Configure<Settings>(Configuration.GetSection("TestApp:Settings"));
+        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+    }
+    ```
+
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.Configure<Settings>(Configuration.GetSection("TestApp:Settings"));
+        services.AddControllersWithViews();
+    }
+    ```
+    ---
+
+4. Aktualizujte metodu `Configure` přidáním middlewaru `UseAzureAppConfiguration`, který umožní aktualizaci nastavení konfigurace zaregistrovaných pro aktualizaci, dokud bude ASP.NET Core webová aplikace nadále přijímat požadavky.
+
+
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+
+    ```csharp
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        app.UseAzureAppConfiguration();
 
         services.Configure<CookiePolicyOptions>(options =>
         {
@@ -109,19 +161,46 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
             options.MinimumSameSitePolicy = SameSiteMode.None;
         });
 
-        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-    }
-    ```
-
-4. Aktualizujte metodu `Configure`, aby se přidal middleware, aby bylo možné aktualizovat konfigurační nastavení zaregistrovaná pro aktualizaci, dokud bude webová aplikace ASP.NET Core nadále přijímat požadavky.
-
-    ```csharp
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-    {
-        app.UseAzureAppConfiguration();
         app.UseMvc();
     }
     ```
+
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+
+    ```csharp
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
+
+            // Add the following line:
+            app.UseAzureAppConfiguration();
+
+            app.UseHttpsRedirection();
+            
+            app.UseStaticFiles();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+    }
+    ```
+    ---
     
     Middleware používá konfiguraci aktualizace zadanou v metodě `AddAzureAppConfiguration` v `Program.cs` k aktivaci aktualizace pro každý požadavek přijatý webovou aplikací ASP.NET Core. Pro každý požadavek se aktivuje operace aktualizace a Klientská knihovna zkontroluje, jestli vypršela platnost hodnoty v mezipaměti pro zaregistrovaná nastavení konfigurace. U hodnot uložených v mezipaměti, jejichž platnost vypršela, se hodnoty pro nastavení aktualizují pomocí úložiště konfigurace aplikace a zbývající hodnoty zůstanou beze změny.
     
@@ -137,6 +216,8 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
     ```
 
 2. Aktualizujte třídu `HomeController` tak, aby přijímala `Settings` prostřednictvím injektáže závislosti, a využijte její hodnoty.
+
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public class HomeController : Controller
@@ -158,6 +239,37 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
         }
     }
     ```
+
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+
+    ```csharp
+    public class HomeController : Controller
+    {
+        private readonly Settings _settings;
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(ILogger<HomeController> logger, IOptionsSnapshot<Settings> settings)
+        {
+            _logger = logger;
+            _settings = settings.Value;
+        }
+
+        public IActionResult Index()
+        {
+            ViewData["BackgroundColor"] = _settings.BackgroundColor;
+            ViewData["FontSize"] = _settings.FontSize;
+            ViewData["FontColor"] = _settings.FontColor;
+            ViewData["Message"] = _settings.Message;
+
+            return View();
+        }
+
+        // ...
+    }
+    ```
+    ---
+
+
 
 3. Otevřete *index. cshtml* v zobrazeních > domovském adresáři a nahraďte jeho obsah následujícím skriptem:
 

@@ -4,14 +4,14 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11/21/2019
-ms.openlocfilehash: 9bed0a47c6c13b3c209f593509b71aa697c6eb4a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 119ef52bd801f66cd25a844d3a87b1906881c484
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75901979"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021112"
 ---
-Po potvrzení služby na rezervované instance virtuálního počítače Azure můžete ušetřit peníze. Sleva rezervace se automaticky použije na počet spuštěných virtuálních počítačů, které odpovídají oboru a atributům rezervace. K získání slevy není nutné přiřadit rezervaci k virtuálnímu počítači. Zakoupení rezervované instance pokrývá jenom výpočetní část využití virtuálního počítače. V případě virtuálních počítačů s Windows je měřič využití rozdělen do dvou samostatných měřičů. K dispozici je výpočetní měřič, který je stejný jako měřič pro Linux, a měřič IP adres systému Windows. Poplatky, které se zobrazí při nákupu, budou platit jenom za výpočetní náklady. Poplatky nezahrnují náklady na software systému Windows. Další informace o nákladech na software najdete v části [náklady na software nejsou součástí Azure Reserved VM Instances](../articles/billing/billing-reserved-instance-windows-software-costs.md).
+Po potvrzení služby na rezervované instance virtuálního počítače Azure můžete ušetřit peníze. Sleva rezervace se automaticky použije na počet spuštěných virtuálních počítačů, které odpovídají oboru a atributům rezervace. K získání slevy není nutné přiřadit rezervaci k virtuálnímu počítači. Zakoupení rezervované instance pokrývá jenom výpočetní část využití virtuálního počítače. V případě virtuálních počítačů s Windows je měřič využití rozdělen do dvou samostatných měřičů. K dispozici je výpočetní měřič, který je stejný jako měřič pro Linux, a měřič IP adres systému Windows. Poplatky, které se zobrazí při nákupu, budou platit jenom za výpočetní náklady. Poplatky nezahrnují náklady na software systému Windows. Další informace o nákladech na software najdete v části [náklady na software nejsou součástí Azure Reserved VM Instances](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md).
 
 ## <a name="determine-the-right-vm-size-before-you-buy"></a>Určení správné velikosti virtuálních počítačů před nákupem
 
@@ -78,7 +78,7 @@ Rezervované instance virtuálních počítačů jsou k dispozici pro většinu 
 
 ## <a name="buy-a-reserved-vm-instance"></a>Zakoupení rezervované instance virtuálního počítače
 
-Rezervovanou instanci virtuálního počítače můžete koupit v [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D). Za rezervaci se platí [předem nebo prostřednictvím měsíčních plateb](../articles/billing/billing-monthly-payments-reservations.md).
+Rezervovanou instanci virtuálního počítače můžete koupit v [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D). Za rezervaci se platí [předem nebo prostřednictvím měsíčních plateb](../articles/cost-management-billing/reservations/monthly-payments-reservations.md).
 Tyto požadavky se vztahují k zakoupení rezervované instance virtuálního počítače:
 
 - Musíte být v roli vlastníka alespoň pro jedno předplatné EA nebo předplatné s tarifem průběžných plateb.
@@ -111,7 +111,7 @@ Pokud máte smlouvu EA, můžete k rychlému přidání dalších instancí pou�
 
 V datech o využití se pro využití, které získá slevu za rezervaci, zobrazuje platná nulová cena. Můžete zjistit, která instance virtuálního počítače obdržela slevu za rezervaci pro každou rezervaci.
 
-Další informace o tom, jak se v datech využití zobrazují slevy, najdete v tématu [vysvětlení využívání rezervací Azure pro vaši podnikovou registraci](../articles/billing/billing-understand-reserved-instance-usage-ea.md) , pokud jste zákazníkem EA. Pokud máte individuální předplatné, přečtěte si téma [vysvětlení využití rezervace Azure pro předplatné](../articles/billing/billing-understand-reserved-instance-usage.md)s průběžnými platbami.
+Další informace o tom, jak se v datech využití zobrazují slevy, najdete v tématu [vysvětlení využívání rezervací Azure pro vaši podnikovou registraci](../articles/cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) , pokud jste zákazníkem EA. Pokud máte individuální předplatné, přečtěte si téma [vysvětlení využití rezervace Azure pro předplatné](../articles/cost-management-billing/reservations/understand-reserved-instance-usage.md)s průběžnými platbami.
 
 ## <a name="change-a-reservation-after-purchase"></a>Změna rezervace po nákupu
 
@@ -134,7 +134,7 @@ Můžete ale *vyměnit* rezervaci, pokud chcete provést změny.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Zrušení, výměna nebo refundace rezervací
 
-Rezervace je možné s určitými omezeními zrušit, vyměnit nebo refundovat. Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+Rezervace je možné s určitými omezeními zrušit, vyměnit nebo refundovat. Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](../articles/cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
 
@@ -142,12 +142,12 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o tom, jak spravovat rezervace, najdete v tématu [Správa rezervací Azure](../articles/billing/billing-manage-reserved-vm-instance.md).
+- Informace o tom, jak spravovat rezervace, najdete v tématu [Správa rezervací Azure](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md).
 - Další informace o rezervacích Azure najdete v následujících článcích:
-    - [Co jsou rezervace Azure?](../articles/billing/billing-save-compute-costs-reservations.md)
-    - [Správa rezervací v Azure](../articles/billing/billing-manage-reserved-vm-instance.md)
-    - [Vysvětlení způsobu uplatnění slevy za rezervaci](../articles/billing/billing-understand-vm-reservation-charges.md)
-    - [Vysvětlení využití rezervací u předplatného s průběžnými platbami](../articles/billing/billing-understand-reserved-instance-usage.md)
-    - [Vysvětlení využití rezervací u smlouvy Enterprise](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
-    - [Náklady na software pro Windows nezahrnuté v rezervacích](../articles/billing/billing-reserved-instance-windows-software-costs.md)
+    - [Co jsou rezervace Azure?](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
+    - [Správa rezervací v Azure](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md)
+    - [Vysvětlení způsobu uplatnění slevy za rezervaci](../articles/cost-management-billing/manage/understand-vm-reservation-charges.md)
+    - [Vysvětlení využití rezervací u předplatného s průběžnými platbami](../articles/cost-management-billing/reservations/understand-reserved-instance-usage.md)
+    - [Vysvětlení využití rezervací u smlouvy Enterprise](../articles/cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+    - [Náklady na software pro Windows nezahrnuté v rezervacích](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md)
     - [Rezervace Azure v programu Partner Center Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)

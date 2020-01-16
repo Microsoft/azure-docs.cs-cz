@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 363549662a17a87513c8426347909142ee405cae
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: f81f47349610cd72489df305ccf544c8346cb9b3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196399"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028665"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Příprava na posouzení a migraci fyzických serverů do Azure
 
@@ -95,18 +95,18 @@ K přípravě na fyzické posouzení serveru musíte ověřit nastavení fyzick�
 
 ### <a name="verify-physical-server-settings"></a>Ověřit nastavení fyzického serveru
 
-1. Ověřte [požadavky na fyzický server](migrate-support-matrix-physical.md#assessment-physical-server-requirements) pro vyhodnocování serveru.
-2. Ujistěte se, že jsou na fyzických serverech otevřené [požadované porty](migrate-support-matrix-physical.md#assessment-port-requirements) .
+1. Ověřte [požadavky na fyzický server](migrate-support-matrix-physical.md#physical-server-requirements) pro vyhodnocování serveru.
+2. Ujistěte se, že jsou na fyzických serverech otevřené [požadované porty](migrate-support-matrix-physical.md#port-access) .
 
 
 ### <a name="verify-appliance-settings"></a>Ověření nastavení zařízení
 
 Před nastavením zařízení Azure Migrate a zahájením posouzení v dalším kurzu připravte na nasazení zařízení.
 
-1. [Ověřte](migrate-support-matrix-physical.md#assessment-appliance-requirements) požadavky na zařízení.
-2. [Zkontrolujte](migrate-support-matrix-physical.md#assessment-appliance-url-access) adresy URL Azure, ke kterým bude zařízení potřebovat přístup.
-3. Zkontrolujte data, která bude zařízení shromažďovat během zjišťování a posouzení.
-4. [Poznamenejte si](migrate-support-matrix-physical.md#assessment-port-requirements) požadavky na přístup k portu pro dané zařízení.
+1. [Ověřte](migrate-appliance.md#appliance---physical) požadavky na zařízení pro fyzické servery.
+2. [Zkontrolujte](migrate-appliance.md#url-access) adresy URL Azure, ke kterým bude zařízení potřebovat přístup.
+3. [Zkontrolujte](migrate-appliance.md#collected-data---vmware) , že zařízení bude během zjišťování a hodnocení shromažďováno.
+4. [Poznamenejte si](migrate-support-matrix-physical.md#port-access) požadavky na přístup k portu fyzický server posouzení.
 
 
 ### <a name="set-up-an-account-for-physical-server-discovery"></a>Nastavení účtu pro zjišťování fyzického serveru
@@ -115,6 +115,15 @@ Azure Migrate potřebuje oprávnění ke zjišťování místních serverů.
 
 - **Windows:** Nastavte místní uživatelský účet na všech serverech Windows, které chcete zahrnout do zjišťování. Uživatelský účet musí být přidán do následujících skupin: – Uživatelé vzdálené správy – Performance Monitor Users-Performance Log Users
 - **Linux:** Na serverech se systémem Linux, které chcete zjistit, potřebujete kořenový účet.
+
+## <a name="prepare-for-physical-server-migration"></a>Příprava na migraci fyzického serveru
+
+Projděte si požadavky na migraci fyzických serverů.
+
+- [Zkontrolujte](migrate-support-matrix-physical-migration.md#physical-server-requirements) požadavky na fyzický server pro migraci.
+- Azure Migrate: Migrace serveru používá replikační Server pro migraci fyzického serveru:
+    - [Projděte si](migrate-replication-appliance.md#appliance-requirements) požadavky na nasazení pro zařízení replikace a [Možnosti](migrate-replication-appliance.md#mysql-installation) pro instalaci MySQL na zařízení.
+    - Zkontrolujte požadavky na přístup k [adrese URL](migrate-replication-appliance.md#url-access) a [port] (migrace-replikace-zařízení. MD # port-přístup) pro zařízení replikace.
 
 
 ## <a name="next-steps"></a>Další kroky

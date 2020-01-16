@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/07/2017
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 91e95dcf7cfc46073e2fd752a0e7e5ae6fce4ee8
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: ff221a32ff6c995d019b13f20ca2c3f9e2027f63
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300078"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980738"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Začínáme s Azure Blob Storage a připojenými službami sady Visual Studio (ASP.NET Core)
 
@@ -44,7 +44,7 @@ Tato část vás provede nastavením vývojového prostředí. To zahrnuje vytvo
 
 ### <a name="create-an-aspnet-mvc-app-project"></a>Vytvoření projektu aplikace ASP.NET MVC
 
-1. Otevřít Visual Studio.
+1. Otevřete sadu Visual Studio.
 
 1. V hlavní nabídce vyberte **soubor** > **Nový** > **projekt**.
 
@@ -69,7 +69,7 @@ Tato část vás provede nastavením vývojového prostředí. To zahrnuje vytvo
 1. V dialogovém okně **Azure Storage** vyberte účet služby Azure Storage, který se má použít pro tento kurz. Pokud chcete vytvořit nový účet úložiště Azure, vyberte **vytvořit nový účet úložiště**a vyplňte formulář. Po výběru některého z existujících účtů úložiště nebo vytvoření nového vyberte **Přidat**. Sada Visual Studio nainstaluje balíček NuGet pro Azure Storage a připojovací řetězec úložiště do souboru **appSettings. JSON**.
 
 > [!TIP]
-> Informace o tom, jak vytvořit účet úložiště pomocí [Azure Portal](https://portal.azure.com), najdete v tématu [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
+> Informace o tom, jak vytvořit účet úložiště pomocí [Azure Portal](https://portal.azure.com), najdete v tématu [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
 >
 > Účet úložiště můžete vytvořit také pomocí [Azure PowerShell](../storage/common/storage-powershell-guide-full.md), rozhraní příkazového [řádku Azure](../storage/common/storage-azure-cli.md)nebo [Azure Cloud Shell](../cloud-shell/overview.md).
 
