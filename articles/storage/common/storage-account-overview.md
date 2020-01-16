@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 30f39fc72d6a96b83f57d6553db3f348c8486ee5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8f912635fc0fb14fc54426a108af5f67d26213f4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460610"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975693"
 ---
 # <a name="storage-account-overview"></a>Přehled účtu úložiště
 
 Účet úložiště Azure obsahuje všechny vaše Azure Storage datové objekty: objekty blob, soubory, fronty, tabulky a disky. Účet úložiště poskytuje jedinečný obor názvů pro data Azure Storage, která jsou přístupná odkudkoli na světě přes protokol HTTP nebo HTTPS. Data v účtu úložiště Azure jsou trvalá a vysoce dostupná, zabezpečená a rozsáhlá.
 
-Informace o tom, jak vytvořit účet úložiště Azure, najdete v tématu [Vytvoření účtu úložiště](storage-quickstart-create-account.md).
+Informace o tom, jak vytvořit účet úložiště Azure, najdete v tématu [Vytvoření účtu úložiště](storage-account-create.md).
 
 ## <a name="types-of-storage-accounts"></a>Typy účtů úložiště
 
@@ -72,7 +72,7 @@ V porovnání s účty pro obecné účely v2 a BlobStorage účty BlockBlobStor
 
 ### <a name="filestorage-accounts"></a>Účty úložiště
 
-Účet úložiště souborů je specializovaný účet úložiště, který slouží k ukládání a vytváření sdílených složek Premium. Tento druh účtu úložiště podporuje soubory, ale ne objekty blob bloku, doplňovací objekty blob, objekty blob stránky, tabulky nebo fronty. 
+Účet úložiště souborů je specializovaný účet úložiště, který slouží k ukládání a vytváření sdílených složek Premium. Tento druh účtu úložiště podporuje soubory, ale ne objekty blob bloku, doplňovací objekty blob, objekty blob stránky, tabulky nebo fronty.
 
 Účty úložiště obsahují jedinečné vyhrazené charakteristiky výkonu, jako je třeba shlukování IOPS. Další informace o těchto vlastnostech najdete v části [výkonnostní vrstvy sdílení souborů](../files/storage-files-planning.md#file-share-performance-tiers) v příručce pro plánování souborů.
 
@@ -81,7 +81,7 @@ V porovnání s účty pro obecné účely v2 a BlobStorage účty BlockBlobStor
 Při pojmenování účtu úložiště mějte na paměti tato pravidla:
 
 - Názvy účtů úložiště musí mít od 3 do 24 znaků a můžou obsahovat jenom číslice a malá písmena.
-- Váš název účtu úložiště musí být jedinečný v rámci Azure. Žádné dva účty úložiště nemohou mít stejný název.
+- Váš název účtu úložiště musí být jedinečný v rámci Azure. Žádné dva účty úložiště nemůžou mít stejný název.
 
 ## <a name="performance-tiers"></a>Úrovně výkonu
 
@@ -150,15 +150,15 @@ Přístup k datům ve vašem účtu úložiště můžete udělit pomocí někte
 - **Sdílený přístupový podpis:** Pokud nepoužíváte autorizaci Azure AD, můžete pomocí sdíleného přístupového podpisu delegovat přístup k prostředkům v účtu úložiště. Sdílený přístupový podpis je token, který zapouzdřuje všechny informace potřebné k autorizaci žádosti o Azure Storage na adrese URL. Můžete zadat prostředek úložiště, udělená oprávnění a interval, ve kterém jsou oprávnění platná, jako součást sdíleného přístupového podpisu. Další informace najdete v tématu [použití sdílených přístupových podpisů (SAS)](storage-sas-overview.md).
 
 > [!NOTE]
-> Ověřování uživatelů nebo aplikací pomocí přihlašovacích údajů Azure AD zajišťuje zabezpečení a jednoduchost použití prostřednictvím jiných způsobů autorizace. I když můžete nadále používat autorizaci pomocí sdíleného klíče u svých aplikací, použití Azure AD obchází nutnost uložení přístupového klíče účtu k vašemu kódu. Můžete taky dál používat sdílené přístupové podpisy (SAS) pro udělení jemně odstupňovaného přístupu k prostředkům ve vašem účtu úložiště, ale Azure AD nabízí podobné možnosti, aniž by bylo potřeba spravovat tokeny SAS nebo se starat o odvolání napadeného SAS. 
+> Ověřování uživatelů nebo aplikací pomocí přihlašovacích údajů Azure AD zajišťuje zabezpečení a jednoduchost použití prostřednictvím jiných způsobů autorizace. I když můžete nadále používat autorizaci pomocí sdíleného klíče u svých aplikací, použití Azure AD obchází nutnost uložení přístupového klíče účtu k vašemu kódu. Můžete taky dál používat sdílené přístupové podpisy (SAS) pro udělení jemně odstupňovaného přístupu k prostředkům ve vašem účtu úložiště, ale Azure AD nabízí podobné možnosti, aniž by bylo potřeba spravovat tokeny SAS nebo se starat o odvolání napadeného SAS.
 >
 > Microsoft doporučuje použít autorizaci Azure AD pro Azure Storage objekty BLOB a aplikace fronty, pokud je to možné.
 
 ## <a name="copying-data-into-a-storage-account"></a>Kopírování dat do účtu úložiště
 
-Microsoft poskytuje nástroje a knihovny pro import dat z místních úložných zařízení nebo poskytovatelů cloudového úložiště třetích stran. Které řešení použijete, záleží na množství převáděných dat. 
+Microsoft poskytuje nástroje a knihovny pro import dat z místních úložných zařízení nebo poskytovatelů cloudového úložiště třetích stran. Které řešení použijete, záleží na množství převáděných dat.
 
-Při upgradu na účet pro obecné účely v2 z obecného účtu úložiště v1 nebo BLOB se data automaticky migrují. Microsoft doporučuje tuto stáži k upgradu vašeho účtu. Pokud se ale rozhodnete přesunout data z účtu pro obecné účely V1 do účtu úložiště BLOB, budete data migrovat ručně pomocí nástrojů a knihoven popsaných níže. 
+Při upgradu na účet pro obecné účely v2 z obecného účtu úložiště v1 nebo BLOB se data automaticky migrují. Microsoft doporučuje tuto stáži k upgradu vašeho účtu. Pokud se ale rozhodnete přesunout data z účtu pro obecné účely V1 do účtu úložiště BLOB, budete data migrovat ručně pomocí nástrojů a knihoven popsaných níže.
 
 ### <a name="azcopy"></a>AzCopy
 
@@ -183,5 +183,5 @@ Další informace o REST API Azure Storage najdete v tématu informace o [REST A
 
 ## <a name="next-steps"></a>Další kroky
 
-- [vytvořit účet úložiště](storage-quickstart-create-account.md)
+- [vytvořit účet úložiště](storage-account-create.md)
 - [Vytvoření účtu úložiště objektů blob bloku](../blobs/storage-blob-create-account-block-blob.md)

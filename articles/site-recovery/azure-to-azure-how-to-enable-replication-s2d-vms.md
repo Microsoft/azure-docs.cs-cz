@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 465c0ddd91e81bb597a996637fdc2147e90464de
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 9f394fa8d618c97d74a47ff6e42a002f177cf7d9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942220"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973652"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Replikace virtuálních počítačů Azure s Prostory úložiště s přímým přístupem do jiné oblasti
 
@@ -30,7 +30,7 @@ Pod diagramem je znázorněn cluster s podporou převzetí služeb při selhán�
 
 ![storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacedirect.png)
 
- 
+
 - Dva virtuální počítače Azure v clusteru s podporou převzetí služeb při selhání systému Windows a každý virtuální počítač mají dva nebo více datových disků.
 - S2D synchronizuje data na datovém disku a prezentuje synchronizované úložiště jako fond úložiště.
 - Fond úložiště prezentuje jako sdílený svazek clusteru (CSV) do clusteru s podporou převzetí služeb při selhání.
@@ -51,7 +51,7 @@ Pod diagramem je znázorněn cluster s podporou převzetí služeb při selhán�
 
    ![Ochrana storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
 
-2. Přejděte na replikované položky a uvidíte stav virtuálního počítače. 
+2. Přejděte na replikované položky a uvidíte stav virtuálního počítače.
 3. Virtuální počítače jsou chráněné a zobrazují se taky jako součást skupiny konzistence pro víc virtuálních počítačů.
 
    ![Ochrana storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)

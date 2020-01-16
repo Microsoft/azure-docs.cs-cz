@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 02655a3697139ae3a9c4c36b423b874b6e5d34f9
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 6bba4414390efa6e07be6c253fe55f1638d414dc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541865"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974094"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co je instance služby COMPUTE Azure Machine Learning?
 
@@ -54,7 +54,7 @@ Tyto nástroje a prostředí se nainstalují do výpočetní instance:
 |Knihovna Intel MPI||
 |Azure CLI ||
 |Ukázky Azure Machine Learning ||
-|Azure Machine Learning modul EDAT ||            
+|Azure Machine Learning modul EDAT ||
 |Docker||
 |nginx||
 |NCCL 2,0 ||
@@ -76,11 +76,26 @@ Tyto nástroje a prostředí se nainstalují do výpočetní instance:
 |Další balíčky PyPI|`jupytext`</br>`jupyterlab-git`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Balíčky conda|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Balíčky pro hloubkové učení|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
-|Balíčky ONNX|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|                           
+|Balíčky ONNX|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|
 |Ukázky Azure Machine Learning Python & R SDK||
+
+Balíčky Pythonu jsou nainstalované v prostředí **python 3,6-AzureML** .  
 
 Výpočetní instance se obvykle používají jako vývojová prostředí.  Můžou se také používat jako výpočetní cíl pro školení a Inferencing pro vývoj a testování.  Pro velké úlohy je [Azure Machine Learning výpočetní cluster](how-to-set-up-training-targets.md#amlcompute) s možnostmi škálování s více uzly lepší volbou cíle pro výpočty.
 
+### <a name="installing-packages"></a>Instalace balíčků
+
+Balíčky můžete nainstalovat přímo do poznámkového bloku Jupyter nebo RStudio:
+
+* RStudio použijte kartu **balíčky** v pravém dolním rohu nebo kartu **Konzola** v levém horním rohu.  
+* Python: přidejte instalační kód a spusťte ho v buňce Jupyter poznámkového bloku.
+
+Případně můžete k oknu terminálu přistupovat některým z těchto způsobů:
+
+* RStudio: v levém horním rohu vyberte kartu **terminálu** .
+* Jupyter Lab: v **druhém** záhlaví karty spouštěče vyberte dlaždici **terminálu** .
+* Jupyter: v pravém horním rohu na kartě soubory vyberte **nový > terminálu** .
+* SSH k počítači  Pak nainstalujte balíčky Pythonu do prostředí **Python 3,6-AzureML** .  Nainstalujte balíčky R do prostředí jazyka **r** .
 
 ## <a name="accessing-files"></a>Přístup k souborům
 

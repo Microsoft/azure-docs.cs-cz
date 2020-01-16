@@ -3,12 +3,12 @@ title: Vysvětlení fungování efektů
 description: Definice Azure Policy mají různé efekty, které určují, jak je dodržování předpisů spravované a nahlášené.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: fec2f966260d997b45be50554e0f41d5fd0491aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2b588cfb7c13a63e3fa5d3a65d9ccb24a2e854fd
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436368"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972815"
 ---
 # <a name="understand-azure-policy-effects"></a>Principy Azure Policy efekty
 
@@ -24,7 +24,7 @@ V definici zásad se v současné době podporují tyto efekty:
 - [Disabled](#disabled) (Zakázáno)
 - [EnforceOPAConstraint](#enforceopaconstraint) (Preview)
 - [EnforceRegoPolicy](#enforceregopolicy) (Preview)
-- [Modify](#modify)
+- [Úprava](#modify)
 
 ## <a name="order-of-evaluation"></a>Pořadí vyhodnocení
 
@@ -367,7 +367,7 @@ Vlastnost **Details** efektu DeployIfNotExists má všechny podvlastnosti definu
   - Tato vlastnost musí obsahovat pole řetězců, které odpovídají ID role řízení přístupu na základě role přístupné předplatné. Další informace najdete v tématu [nápravy - nakonfigurovat definici zásady](../how-to/remediate-resources.md#configure-policy-definition).
 - **DeploymentScope** (volitelné)
   - Povolené hodnoty jsou _předplatné_ a _ResourceGroup_.
-  - Nastaví typ nasazení, které se má aktivovat. _Předplatné_ indikuje [nasazení na úrovni předplatného](../../../azure-resource-manager/deploy-to-subscription.md), skupina _Resource_ označuje nasazení do skupiny prostředků.
+  - Nastaví typ nasazení, které se má aktivovat. _Předplatné_ indikuje [nasazení na úrovni předplatného](../../../azure-resource-manager/templates/deploy-to-subscription.md), skupina _Resource_ označuje nasazení do skupiny prostředků.
   - Při použití nasazení na úrovni předplatného musí být v _nasazení_ zadaná vlastnost _umístění_ .
   - Výchozí hodnota je _ResourceGroup_.
 - **Nasazení** [povinné]

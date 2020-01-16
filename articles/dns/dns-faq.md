@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: allensu
-ms.openlocfilehash: c194d47842c927d3f8049a424dc08a34424a8a31
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 743715da51f2e8c77b81faba1bd8d6979e4f2aab
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212035"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974547"
 ---
 # <a name="azure-dns-faq"></a>Nejčastější dotazy k Azure DNS
 
@@ -42,7 +42,7 @@ Další informace najdete na stránce věnované [smlouvě SLA Azure DNS](https:
 
 Doména je jedinečný název v systému DNS (Domain Name System). Příklad: contoso.com.
 
-K hostování záznamů DNS pro konkrétní doménu se používá zóna DNS. Například doména contoso.com může obsahovat několik záznamů DNS. Tyto záznamy můžou zahrnovat mail.contoso.com pro poštovní server a webové\.contoso.com pro web. Tyto záznamy jsou hostované v zóně DNS contoso.com.
+Zóna DNS se používá k hostování záznamů DNS pro konkrétní doménu. Například doména contoso.com může obsahovat několik záznamů DNS. Tyto záznamy můžou zahrnovat mail.contoso.com pro poštovní server a webové\.contoso.com pro web. Tyto záznamy jsou hostované v zóně DNS contoso.com.
 
 Název domény je *jenom název*. Zóna DNS je datový prostředek, který obsahuje záznamy DNS pro název domény. Azure DNS můžete použít k hostování zóny DNS a správě záznamů DNS pro doménu v Azure. Poskytuje taky názvové servery DNS pro zodpovězení dotazů DNS z Internetu.
 
@@ -167,7 +167,7 @@ Ano. Zóny DNS se dají přesouvat mezi skupinami prostředků nebo mezi předpl
 
 Při přesunu zóny DNS nebude mít žádný vliv na dotazy DNS. Názvové servery přiřazené k zóně zůstávají stejné. Dotazy DNS se zpracovávají jako normální v celém rozsahu.
 
-Další informace a pokyny, jak přesunout zóny DNS, najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md).
+Další informace a pokyny, jak přesunout zóny DNS, najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 ### <a name="how-long-does-it-take-for-dns-changes-to-take-effect"></a>Jak dlouho trvá, než se změny DNS projeví?
 

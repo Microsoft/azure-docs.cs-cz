@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 19614570369e3814658f9ca6e50635507f094712
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 35236a95e691d6f7d0444a038e62116a684965a7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977314"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978449"
 ---
-# <a name="using-the-azure-importexport-tool"></a>Použití nástroje Azure pro import/export 
+# <a name="using-the-azure-importexport-tool"></a>Použití nástroje Azure pro import/export
 
 Nástroj pro import/export pro Azure (WAImportExport. exe) se používá k vytváření a správě úloh pro službu Azure import/export, která umožňuje přenášet velké objemy dat do nebo z Azure Blob Storage.
 
@@ -25,10 +25,10 @@ Následující články ukazují, jak:
 
 - Nainstalujte a nastavte nástroj Azure pro import/export.
 - Příprava pevných disků pro úlohu, při které importujete data z jednotek do Azure Blob Storage.
-- Zkontrolujte stav úlohy pomocí kopírování souborů protokolu. 
-- Opravte úlohu importu. 
-- Opravte úlohu exportu. 
-- Řešení potíží s nástrojem pro import/export Azure 
+- Zkontrolujte stav úlohy pomocí kopírování souborů protokolu.
+- Opravte úlohu importu.
+- Opravte úlohu exportu.
+- Řešení potíží s nástrojem pro import/export Azure
 
 ## <a name="next-steps"></a>Další kroky
 

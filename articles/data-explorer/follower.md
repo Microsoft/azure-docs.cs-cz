@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 495f53bc97835c4940f7b36d23349b768a7a637f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b4e09bf84d78c88d3625b0f6b478746db09cc2d8
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440967"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030058"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>K připojení databází v Azure Průzkumník dat použít databázi sledování
 
@@ -127,7 +127,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 ### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Připojení databáze pomocí šablony Azure Resource Manager
 
-V této části se dozvíte, jak připojit databázi pomocí [Azure Resource Manager šablony](../azure-resource-manager/management/overview.md). 
+V této části se dozvíte, jak vytvořit cluster následného a připojit k němu databázi pomocí [Azure Resource Manager šablony](../azure-resource-manager/management/overview.md). Pokud cluster již máte, odeberte prostředek `Microsoft.Kusto/clusters` ze seznamu prostředků níže.
 
 ```json
 {
@@ -159,7 +159,7 @@ V této části se dozvíte, jak připojit databázi pomocí [Azure Resource Man
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Name of the leader cluster to create."
+                "description": "The resource ID of the leader cluster."
             }
         },
         "defaultPrincipalsModificationKind": {
@@ -217,7 +217,7 @@ V této části se dozvíte, jak připojit databázi pomocí [Azure Resource Man
 
 |**Nastavení**  |**Popis**  |
 |---------|---------|
-|Název clusteru sledování     |  Název clusteru následných       |
+|Název clusteru sledování     |  Název clusteru následného. Pokud název clusteru existuje, odeberte prostředek `Microsoft.Kusto/clusters` ze seznamu prostředků v šabloně ARM. V opačném případě se vytvoří nový cluster.     |
 |Název připojených konfigurací databáze    |    Název objektu připojené konfigurace databáze. Název musí být na úrovni clusteru jedinečný.     |
 |Název databáze     |      Název databáze, která se má dodržovat Pokud chcete sledovat všechny databáze vedoucího vedoucího, použijte znak *.   |
 |ID prostředku clusteru vedoucího procesu    |   ID prostředku vedoucího clusteru      |

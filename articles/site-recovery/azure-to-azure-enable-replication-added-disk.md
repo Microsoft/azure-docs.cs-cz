@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2019
-ms.openlocfilehash: fd020755ec579b2553bca42db5d050bd442bf6fc
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 6cbbe63d7968816de78256f5a8408517bb8da278
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942305"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973798"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Povolení replikace pro disk přidaný do virtuálního počítače Azure
 
@@ -31,9 +31,9 @@ Když přidáte nový disk do virtuálního počítače Azure, který se repliku
 
 ## <a name="before-you-start"></a>Než začnete
 
-V tomto článku se předpokládá, že jste už nastavili zotavení po havárii pro virtuální počítač, do kterého disk přidáváte. Pokud jste to neudělali, postupujte podle [kurzu Azure to Azure pro zotavení po havárii](azure-to-azure-tutorial-enable-replication.md). 
+V tomto článku se předpokládá, že jste už nastavili zotavení po havárii pro virtuální počítač, do kterého disk přidáváte. Pokud jste to neudělali, postupujte podle [kurzu Azure to Azure pro zotavení po havárii](azure-to-azure-tutorial-enable-replication.md).
 
-## <a name="enable-replication-for-an-added-disk"></a>Povolení replikace pro přidaný disk 
+## <a name="enable-replication-for-an-added-disk"></a>Povolení replikace pro přidaný disk
 
 Pokud chcete povolit replikaci pro přidaný disk, udělejte toto:
 

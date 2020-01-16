@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 441c45d0f77ab825c35e24056b09d0d33b675eea
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 4ceefcbbbb53e3ae13f8ced930ae8417fb00965f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75496395"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974409"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Migrace místních Apache Hadoop clusterů do Azure HDInsight – osvědčené postupy zabezpečení a DevOps
 
@@ -86,7 +86,7 @@ Další informace najdete v těchto článcích:
 - [Přehled služby Azure Virtual Networks](../../virtual-network/virtual-networks-overview.md)
 - [Přehled skupin zabezpečení sítě Azure](../../virtual-network/security-overview.md)
 - [Partnerský vztah Azure Virtual Network](../../virtual-network/virtual-network-peering-overview.md)
-- [Příručka zabezpečení Azure Storage](../../storage/common/storage-security-guide.md)
+- [Příručka zabezpečení Azure Storage](../../storage/blobs/security-recommendations.md)
 - [Šifrování služby Azure Storage v klidovém provozu](../../storage/common/storage-service-encryption.md)
 
 ## <a name="use-monitoring--alerting"></a>Použití monitorování & upozorňování

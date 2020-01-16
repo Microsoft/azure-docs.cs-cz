@@ -10,14 +10,14 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 2239387ffff4c30e1183721a528e666199316bed
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 5164bf55ef8233cf34a470524da3bc852678d79a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695091"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979165"
 ---
-# <a name="patternany-entity"></a>Vzor. kterákoli entita 
+# <a name="patternany-entity"></a>Entita Pattern.any
 
 Pattern. any je zástupný symbol s proměnlivou délkou, který se používá jenom v šabloně vzoru utterance k označení, kde začíná a končí entita.  
 
@@ -25,13 +25,13 @@ Vzor. všechny entity musí být označeny v příkladech šablony [vzoru](luis-
 
 **Entita je vhodná v případě, že:**
 
-* Koncová entita může být zaměněna se zbývajícím textem utterance. 
+* Koncová entita může být zaměněna se zbývajícím textem utterance.
 
-## <a name="usage"></a>Použití
+## <a name="usage"></a>Využití
 
-Pro klientskou aplikaci, která vyhledává knihy na základě názvu, vzoru. vše extrahuje úplný název. Šablona utterance pomocí vzoru. pro toto hledání v této knize je `Was {BookTitle} written by an American this year[?]`. 
+Pro klientskou aplikaci, která vyhledává knihy na základě názvu, vzoru. vše extrahuje úplný název. Šablona utterance pomocí vzoru. pro toto hledání v této knize je `Was {BookTitle} written by an American this year[?]`.
 
-V následující tabulce má každý řádek dvě verze utterance. Horní utterance je to, jak LUIS zpočátku vidí utterance. Není jasné, kde začíná a končí nadpis knihy. Dolní utterance používá vzor. kterákoli entita označuje začátek a konec entity. 
+V následující tabulce má každý řádek dvě verze utterance. Horní utterance je to, jak LUIS zpočátku vidí utterance. Není jasné, kde začíná a končí nadpis knihy. Dolní utterance používá vzor. kterákoli entita označuje začátek a konec entity.
 
 |Utterance s entitou tučně|
 |--|
@@ -43,9 +43,9 @@ V následující tabulce má každý řádek dvě verze utterance. Horní uttera
 
 
 
-## <a name="example-json"></a>Ukázkový kód JSON
+## <a name="example-json"></a>Ukázkový soubor JSON
 
-Vezměte v úvahu následující dotaz:
+Zamyslete se nad následujícím dotazem:
 
 `where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
 
@@ -69,7 +69,7 @@ S názvem vloženého formuláře, který se má extrahovat jako vzor. any:
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
-Toto je JSON, pokud je v řetězci dotazu nastavená hodnota `verbose=false`:
+Toto je JSON, pokud je v řetězci dotazu nastavená `verbose=false`:
 
 ```json
 "entities": {
@@ -79,7 +79,7 @@ Toto je JSON, pokud je v řetězci dotazu nastavená hodnota `verbose=false`:
 }
 ```
 
-Toto je JSON, pokud je v řetězci dotazu nastavená hodnota `verbose=true`:
+Toto je JSON, pokud je v řetězci dotazu nastavená `verbose=true`:
 
 ```json
 "entities": {
@@ -104,8 +104,8 @@ Toto je JSON, pokud je v řetězci dotazu nastavená hodnota `verbose=true`:
 }
 ```
 
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto [kurzu](luis-tutorial-pattern-any.md)použijte **vzor. libovolnou** entitu pro extrahování dat z projevy, kde jsou projevy ve správném formátu a kde se konce dat můžou snadno zaměňovat se zbývajícími slovy utterance.
+V tomto [kurzu](luis-tutorial-pattern.md)použijte **vzor. libovolnou** entitu pro extrahování dat z projevy, kde jsou projevy ve správném formátu a kde se konce dat můžou snadno zaměňovat se zbývajícími slovy utterance.

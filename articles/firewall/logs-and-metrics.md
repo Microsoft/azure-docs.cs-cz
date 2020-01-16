@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: f233b1a60202b440abf34edd1c56eebaecba18e2
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 1267b3295762f6eb6af92b1cec909bae768886c1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167002"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974506"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Metriky a protokoly Azure Firewallu
 
@@ -20,7 +20,7 @@ Bránu Azure Firewall můžete monitorovat pomocí protokolů brány firewall. K
 
 Některé z těchto protokolů jsou přístupné z webu Azure Portal. Protokoly je možné odeslat do [Azure monitor protokolů](../azure-monitor/insights/azure-networking-analytics.md), úložiště a Event Hubs a analyzovat v protokolech Azure monitor nebo pomocí různých nástrojů, jako je Excel a Power BI.
 
-Metriky jsou odlehčené a můžou podporovat scénáře téměř v reálném čase, které jsou užitečné při upozorňování a rychlé detekci problémů. 
+Metriky jsou odlehčené a můžou podporovat scénáře téměř v reálném čase, které jsou užitečné při upozorňování a rychlé detekci problémů.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 
@@ -33,7 +33,7 @@ Metriky jsou odlehčené a můžou podporovat scénáře téměř v reálném č
    ```
    Category: application rule logs.
    Time: log timestamp.
-   Properties: currently contains the full message. 
+   Properties: currently contains the full message.
    note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
    ```
 
@@ -56,7 +56,7 @@ Metriky jsou odlehčené a můžou podporovat scénáře téměř v reálném č
    ```
    Category: network rule logs.
    Time: log timestamp.
-   Properties: currently contains the full message. 
+   Properties: currently contains the full message.
    note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
    ```
 
@@ -83,7 +83,7 @@ Protokoly můžete ukládat třemi způsoby:
 
    Položky protokolu aktivit se ve výchozím nastavení shromažďují a můžete si je zobrazit na webu Azure Portal.
 
-   K zobrazení všech operací odeslaných do vašeho předplatného Azure můžete použít [protokoly aktivit Azure](../azure-resource-manager/resource-group-audit.md) (dřív označované jako operační protokoly a protokoly auditu).
+   K zobrazení všech operací odeslaných do vašeho předplatného Azure můžete použít [protokoly aktivit Azure](../azure-resource-manager/management/view-activity-logs.md) (dřív označované jako operační protokoly a protokoly auditu).
 
 ## <a name="metrics"></a>Metriky
 

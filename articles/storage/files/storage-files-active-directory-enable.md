@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fd42a6ffa6ea46d49df673cde617c70ce7425d91
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 489cb9e652d571b5322a1bd92663ca089e28b8cd
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460378"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980779"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-over-smb-for-azure-files"></a>Povolení Azure Active Directory Domain Services ověřování pomocí protokolu SMB pro soubory Azure
 
@@ -26,7 +26,7 @@ Přehled ověřování Azure AD pomocí protokolu SMB pro soubory Azure najdete 
 
 Než povolíte službu Azure služba AD DS Authentication přes SMB pro soubory Azure, ověřte, že jsou správně nakonfigurovaná vaše prostředí Azure AD a Azure Storage. Doporučujeme projít si [požadavky](#prerequisites) a ujistit se, že jste dokončili všechny požadované kroky.
 
-V dalším kroku udělte přístup k prostředkům Azure Files pomocí přihlašovacích údajů Azure AD pomocí následujících kroků: 
+V dalším kroku udělte přístup k prostředkům Azure Files pomocí přihlašovacích údajů Azure AD pomocí následujících kroků:
 
 1. Povolte Azure služba AD DS ověřování přes SMB pro váš účet úložiště pro registraci účtu úložiště s přidruženým nasazením Azure služba AD DS.
 2. Přiřazení oprávnění k přístupu ke sdílené složce identitě služby Azure AD (uživatel, skupina nebo instanční objekt).
@@ -62,7 +62,7 @@ Než povolíte službu Azure AD přes SMB pro soubory Azure, ujistěte se, že j
 
 4.  **Vyberte nebo vytvořte sdílenou složku Azure.**
 
-    Vyberte novou nebo existující sdílenou složku, která je přidružená ke stejnému předplatnému jako tenant služby Azure AD. Informace o vytvoření nové sdílené složky najdete v tématu [Vytvoření sdílené složky ve službě soubory Azure](storage-how-to-create-file-share.md). 
+    Vyberte novou nebo existující sdílenou složku, která je přidružená ke stejnému předplatnému jako tenant služby Azure AD. Informace o vytvoření nové sdílené složky najdete v tématu [Vytvoření sdílené složky ve službě soubory Azure](storage-how-to-create-file-share.md).
     Pro zajištění optimálního výkonu doporučujeme, aby byla sdílená složka ve stejné oblasti jako virtuální počítač, ze kterého plánujete přístup ke sdílené složce.
 
 5.  **Pomocí klíče účtu úložiště ověřte připojení ke službě soubory Azure pomocí připojení sdílených složek Azure.**
@@ -79,14 +79,14 @@ Mějte na paměti, že můžete povolit ověřování Azure služba AD DS přes 
 
 Pokud chcete povolit ověřování pomocí služby Azure služba AD DS přes protokol SMB s [Azure Portal](https://portal.azure.com), postupujte podle následujících kroků:
 
-1. V Azure Portal navštivte svůj existující účet úložiště nebo [vytvořte účet úložiště](../common/storage-quickstart-create-account.md).
+1. V Azure Portal navštivte svůj existující účet úložiště nebo [vytvořte účet úložiště](../common/storage-account-create.md).
 2. V části **Nastavení** vyberte **Konfigurace**.
 3. V rozevíracím seznamu **adresářová služba založená na identitě pro Azure File Authentication** vyberte **Azure Active Directory Domain Services (Azure služba AD DS)** .
 
 Následující obrázek ukazuje, jak povolit Azure služba AD DS ověřování pomocí protokolu SMB pro váš účet úložiště.
 
 ![Povolit ověřování Azure AD přes SMB v Azure Portal](media/storage-files-active-directory-enable/portal-enable-active-directory-over-smb.png)
-  
+
 ### <a name="powershell"></a>PowerShell  
 
 Pokud chcete povolit ověřování Azure služba AD DS přes protokol SMB s Azure PowerShell, nainstalujte nejnovější modul AZ Module (2,4 nebo novější) nebo modul AZ. Storage (1,5 nebo novější). Další informace o instalaci PowerShellu najdete v tématu [instalace Azure PowerShell ve Windows pomocí PowerShellGet](https://docs.microsoft.com/powershell/azure/install-Az-ps).
@@ -172,8 +172,8 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 ```
 
 #### <a name="cli"></a>Rozhraní příkazového řádku
-  
-Následující příkaz CLI 2,0 ukazuje, jak přiřadit roli RBAC k identitě Azure AD na základě přihlašovacího jména. Další informace o přiřazování rolí RBAC pomocí rozhraní příkazového řádku Azure najdete v tématu [Správa přístupu pomocí RBAC a Azure CLI](../../role-based-access-control/role-assignments-cli.md). 
+
+Následující příkaz CLI 2,0 ukazuje, jak přiřadit roli RBAC k identitě Azure AD na základě přihlašovacího jména. Další informace o přiřazování rolí RBAC pomocí rozhraní příkazového řádku Azure najdete v tématu [Správa přístupu pomocí RBAC a Azure CLI](../../role-based-access-control/role-assignments-cli.md).
 
 Před spuštěním následujícího ukázkového skriptu Nezapomeňte nahradit hodnoty zástupných symbolů, včetně závorek, vlastními hodnotami.
 
@@ -182,10 +182,10 @@ Před spuštěním následujícího ukázkového skriptu Nezapomeňte nahradit h
 az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshares/<share-name>"
 ```
 
-## <a name="configure-ntfs-permissions-over-smb"></a>Konfigurace oprávnění NTFS přes protokol SMB 
+## <a name="configure-ntfs-permissions-over-smb"></a>Konfigurace oprávnění NTFS přes protokol SMB
 Po přiřazení oprávnění na úrovni sdílení s RBAC musíte přiřadit správná oprávnění NTFS na úrovni kořenového adresáře, adresáře nebo souboru. Oprávnění na úrovni sdílené složky si můžete představit jako gatekeeper vysoké úrovně, které určuje, jestli uživatel může ke sdílené složce přistupovat. Vzhledem k tomu, že oprávnění NTFS fungují na podrobnější úrovni, aby bylo možné určit, které operace může uživatel provádět na úrovni adresáře nebo souboru.
 
-Soubory Azure podporují úplnou sadu základních a rozšířených oprávnění systému souborů NTFS. Oprávnění NTFS můžete zobrazit a nakonfigurovat u adresářů a souborů ve sdílené složce Azure připojením sdílené složky a pak pomocí Průzkumníka souborů Windows nebo spuštěním příkazu Windows [Icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) nebo [set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) . 
+Soubory Azure podporují úplnou sadu základních a rozšířených oprávnění systému souborů NTFS. Oprávnění NTFS můžete zobrazit a nakonfigurovat u adresářů a souborů ve sdílené složce Azure připojením sdílené složky a pak pomocí Průzkumníka souborů Windows nebo spuštěním příkazu Windows [Icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) nebo [set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) .
 
 Pokud chcete nakonfigurovat systém souborů NTFS pomocí uživatelských oprávnění, musíte sdílenou složku připojit pomocí klíče účtu úložiště na VIRTUÁLNÍm počítači připojeném k doméně. Podle pokynů v následující části připojte sdílenou složku Azure z příkazového řádku a patřičně nakonfigurujte oprávnění NTFS.
 
@@ -229,7 +229,7 @@ Další informace o tom, jak pomocí icacls nastavit oprávnění NTFS a v různ
 
 ## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>Připojení sdílené složky z virtuálního počítače připojeného k doméně
 
-Následující proces ověří, že vaše přihlašovací údaje služby Azure AD byly správně nastaveny a že máte přístup ke sdílené složce Azure z virtuálního počítače připojeného k doméně: 
+Následující proces ověří, že vaše přihlašovací údaje služby Azure AD byly správně nastaveny a že máte přístup ke sdílené složce Azure z virtuálního počítače připojeného k doméně:
 
 Přihlaste se k virtuálnímu počítači pomocí identity Azure AD, ke které jste udělili oprávnění, jak je znázorněno na následujícím obrázku.
 

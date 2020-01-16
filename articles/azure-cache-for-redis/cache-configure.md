@@ -6,20 +6,20 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 62e0c9bbf8b1c7cef9b1cc239810cb554b5ffa45
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c4d5716c8a31ceccbe23c1f77ad3b88030ff3065
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433539"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972131"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak nakonfigurovat Azure cache pro Redis
 Toto téma popisuje konfigurace dostupné pro instance Redis v mezipaměti Azure. Toto téma také popisuje výchozí konfiguraci serveru Redis pro Azure cache pro instance Redis.
 
 > [!NOTE]
 > Další informace o konfiguraci a používání funkce Premium cache najdete v tématech konfigurace [trvalosti](cache-how-to-premium-persistence.md), [Konfigurace clusteringu](cache-how-to-premium-clustering.md)a [Postup konfigurace podpory Virtual Network](cache-how-to-premium-vnet.md).
-> 
-> 
+>
+>
 
 ## <a name="configure-azure-cache-for-redis-settings"></a>Konfigurace mezipaměti Azure pro nastavení Redis
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
@@ -68,7 +68,7 @@ Pomocí **nabídky prostředků**můžete zobrazit a nakonfigurovat následujíc
 
 ### <a name="activity-log"></a>Protokol aktivit
 
-Kliknutím na **Protokol aktivit** zobrazíte akce provedené v mezipaměti. Pomocí filtrování můžete také rozšířit toto zobrazení tak, aby zahrnovalo další prostředky. Další informace o práci s protokoly auditu najdete v tématu [operace auditu s správce prostředků](../azure-resource-manager/resource-group-audit.md). Další informace o monitorování mezipaměti Azure pro události Redis najdete v tématu věnovaném [operacím a výstrahám](cache-how-to-monitor.md#operations-and-alerts).
+Kliknutím na **Protokol aktivit** zobrazíte akce provedené v mezipaměti. Pomocí filtrování můžete také rozšířit toto zobrazení tak, aby zahrnovalo další prostředky. Další informace o práci s protokoly auditu najdete v tématu [operace auditu s správce prostředků](../azure-resource-manager/management/view-activity-logs.md). Další informace o monitorování mezipaměti Azure pro události Redis najdete v tématu věnovaném [operacím a výstrahám](cache-how-to-monitor.md#operations-and-alerts).
 
 ### <a name="access-control-iam"></a>Řízení přístupu (IAM)
 
@@ -76,7 +76,7 @@ Kliknutím na **Protokol aktivit** zobrazíte akce provedené v mezipaměti. Pom
 
 ### <a name="tags"></a>Značky
 
-Oddíl **značky** vám pomůže organizovat prostředky. Další informace najdete v článku [Použití značek k uspořádání prostředků Azure](../azure-resource-manager/resource-group-using-tags.md).
+Oddíl **značky** vám pomůže organizovat prostředky. Další informace najdete v článku [Použití značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md).
 
 
 ### <a name="diagnose-and-solve-problems"></a>Diagnostika a řešení problémů
@@ -149,8 +149,8 @@ Jedna věc, kterou je potřeba vzít v úvahu při výběru nové hodnoty rezerv
 
 > [!IMPORTANT]
 > Nastavení rezervovaná v **maxmemory** a **maxfragmentationmemory** jsou dostupná jenom pro mezipaměti úrovně Standard a Premium.
-> 
-> 
+>
+>
 
 #### <a name="keyspace-notifications-advanced-settings"></a>Oznámení o prostoru na místě (rozšířené nastavení)
 V okně **Upřesnit nastavení** jsou nakonfigurovaná oznámení o prostoru Redis. Upozornění na místo na disku umožňují klientům přijímat oznámení, když dojde k určitým událostem.
@@ -159,15 +159,15 @@ V okně **Upřesnit nastavení** jsou nakonfigurovaná oznámení o prostoru Red
 
 > [!IMPORTANT]
 > Oznámení o prostoru na místě a nastavení upozornění na místo pro přístup k **událostem** jsou dostupná jenom pro mezipaměti Standard a Premium.
-> 
-> 
+>
+>
 
 Další informace najdete v tématu [oznámení o prostorech Redis](https://redis.io/topics/notifications). Vzorový kód najdete v souboru [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) v ukázce [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) .
 
 
 <a name="recommendations"></a>
 ## <a name="azure-cache-for-redis-advisor"></a>Mezipaměť Azure pro poradce Redis
-Okno **Poradce Azure cache pro Redis** zobrazí doporučení pro vaši mezipaměť. Při normálních operacích se nezobrazují žádná doporučení. 
+Okno **Poradce Azure cache pro Redis** zobrazí doporučení pro vaši mezipaměť. Při normálních operacích se nezobrazují žádná doporučení.
 
 ![Doporučení](./media/cache-configure/redis-cache-no-recommendations.png)
 
@@ -205,8 +205,8 @@ Pokud chcete změnit velikost clusteru pro spuštěnou mezipaměť Premium s pov
 
 > [!NOTE]
 > Mějte na paměti, že zatímco Azure cache pro Redis úrovně Premium byl vydaný pro obecnou dostupnost, funkce velikosti clusterů Redis je v současnosti ve verzi Preview.
-> 
-> 
+>
+>
 
 ![Velikost clusteru Redis](./media/cache-configure/redis-cache-redis-cluster-size.png)
 
@@ -214,8 +214,8 @@ Chcete-li změnit velikost clusteru, použijte posuvník nebo zadejte číslo v 
 
 > [!IMPORTANT]
 > Clustering Redis je k dispozici jenom pro mezipaměti úrovně Premium. Další informace najdete v tématu [Konfigurace clusteringu pro službu Azure cache v úrovni Premium pro Redis](cache-how-to-premium-clustering.md).
-> 
-> 
+>
+>
 
 
 ### <a name="redis-data-persistence"></a>Trvalost dat Redis
@@ -226,16 +226,16 @@ Další informace najdete v tématu [Konfigurace trvalosti pro službu Azure cac
 
 > [!IMPORTANT]
 > Trvalost dat Redis je k dispozici pouze pro mezipaměti úrovně Premium.
-> 
-> 
+>
+>
 
 ### <a name="schedule-updates"></a>Aktualizace plánu
-V okně **naplánovat aktualizace** můžete určit časové období údržby pro aktualizace serveru Redis pro mezipaměť. 
+V okně **naplánovat aktualizace** můžete určit časové období údržby pro aktualizace serveru Redis pro mezipaměť.
 
 > [!IMPORTANT]
 > Časové období údržby se vztahuje jenom na aktualizace serveru Redis a ne na aktualizace nebo aktualizace Azure v operačním systému virtuálních počítačů, které hostují mezipaměť.
-> 
-> 
+>
+>
 
 ![Aktualizace plánu](./media/cache-configure/redis-schedule-updates.png)
 
@@ -243,8 +243,8 @@ Chcete-li určit časový interval pro správu a údržbu, zaškrtněte požadov
 
 > [!IMPORTANT]
 > Funkce **Plán aktualizací** je dostupná jenom pro mezipaměti úrovně Premium. Další informace a pokyny najdete v tématu [Správa Azure cache pro Redis – plánování aktualizací](cache-administration.md#schedule-updates).
-> 
-> 
+>
+>
 
 ### <a name="geo-replication"></a>Geografická replikace
 
@@ -252,16 +252,16 @@ Okno **geografické replikace** poskytuje mechanismus pro propojení dvě mezipa
 
 > [!IMPORTANT]
 > **Geografická replikace** je dostupná jenom pro mezipaměti úrovně Premium. Další informace a pokyny najdete v tématu [jak nakonfigurovat geografickou replikaci pro Azure cache pro Redis](cache-how-to-geo-replication.md).
-> 
-> 
+>
+>
 
 ### <a name="virtual-network"></a>Virtual Network
 Část **Virtual Network** vám umožní nakonfigurovat nastavení virtuální sítě pro mezipaměť. Informace o vytvoření mezipaměti Premium s podporou virtuální sítě a aktualizaci nastavení najdete v článku [jak nakonfigurovat Virtual Network podporu pro službu Azure cache Premium pro Redis](cache-how-to-premium-vnet.md).
 
 > [!IMPORTANT]
-> Nastavení virtuální sítě je dostupné jenom pro mezipaměti úrovně Premium, které byly nakonfigurované s podporou virtuální sítě během vytváření mezipaměti. 
-> 
-> 
+> Nastavení virtuální sítě je dostupné jenom pro mezipaměti úrovně Premium, které byly nakonfigurované s podporou virtuální sítě během vytváření mezipaměti.
+>
+>
 
 ### <a name="firewall"></a>Brána firewall
 
@@ -275,8 +275,8 @@ Můžete zadat pravidla brány firewall s rozsahem počátečních a koncových 
 
 > [!IMPORTANT]
 > Připojení z mezipaměti Azure pro systémy monitorování Redis jsou vždycky povolená, i když jsou nakonfigurovaná pravidla brány firewall.
-> 
-> 
+>
+>
 
 ### <a name="properties"></a>Vlastnosti
 Kliknutím na **vlastnosti** zobrazíte informace o mezipaměti, včetně koncového bodu mezipaměti a portů.
@@ -284,14 +284,14 @@ Kliknutím na **vlastnosti** zobrazíte informace o mezipaměti, včetně koncov
 ![Azure cache pro vlastnosti Redis](./media/cache-configure/redis-cache-properties.png)
 
 ### <a name="locks"></a>Zámky
-Část **zámky** umožňuje uzamknout předplatné, skupinu prostředků nebo prostředek a zabránit tak ostatním uživatelům ve vaší organizaci v neúmyslném odstranění nebo úpravě důležitých prostředků. Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](../azure-resource-manager/resource-group-lock-resources.md).
+Část **zámky** umožňuje uzamknout předplatné, skupinu prostředků nebo prostředek a zabránit tak ostatním uživatelům ve vaší organizaci v neúmyslném odstranění nebo úpravě důležitých prostředků. Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](../azure-resource-manager/management/lock-resources.md).
 
 ### <a name="automation-script"></a>Automatizační skript
 
-Klikněte na **skript Automation** a sestavte a exportujte šablonu nasazených prostředků pro budoucí nasazení. Další informace o práci se šablonami najdete v tématu [nasazení prostředků pomocí šablon Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md).
+Klikněte na **skript Automation** a sestavte a exportujte šablonu nasazených prostředků pro budoucí nasazení. Další informace o práci se šablonami najdete v tématu [nasazení prostředků pomocí šablon Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="administration-settings"></a>Nastavení správy
-Nastavení v části **Správa** umožňují provádět následující úlohy správy pro mezipaměť. 
+Nastavení v části **Správa** umožňují provádět následující úlohy správy pro mezipaměť.
 
 ![Správa](./media/cache-configure/redis-cache-administration.png)
 
@@ -309,8 +309,8 @@ Export umožňuje exportovat data uložená v mezipaměti Azure pro Redis do sou
 
 > [!IMPORTANT]
 > Import/Export je k dispozici jenom pro mezipaměti úrovně Premium. Další informace a pokyny najdete v tématu [Import a export dat v Azure cache pro Redis](cache-how-to-import-export-data.md).
-> 
-> 
+>
+>
 
 ### <a name="reboot"></a>Restartování
 Okno **restartování** vám umožní restartovat uzly mezipaměti. Tato schopnost restartování umožňuje testovat aplikaci, aby byla odolná proti chybám, pokud dojde k selhání uzlu mezipaměti.
@@ -325,13 +325,14 @@ Chcete-li restartovat jeden nebo více uzlů mezipaměti, vyberte požadované u
 
 > [!IMPORTANT]
 > Pro všechny cenové úrovně je teď k dispozici restart. Další informace a pokyny najdete v tématu [Správa Azure cache pro Redis – restart](cache-administration.md#reboot).
-> 
-> 
+>
+>
 
 
 ## <a name="monitoring"></a>Sledování
 
-Část **monitorování** vám umožní nakonfigurovat diagnostiku a monitorování pro mezipaměť Azure pro Redis. Další informace o službě Azure cache pro monitorování a diagnostiku Redis najdete v tématu [monitorování mezipaměti Azure pro Redis](cache-how-to-monitor.md).
+Část **monitorování** vám umožní nakonfigurovat diagnostiku a monitorování pro mezipaměť Azure pro Redis.
+Další informace o službě Azure cache pro monitorování a diagnostiku Redis najdete v tématu [monitorování mezipaměti Azure pro Redis](cache-how-to-monitor.md).
 
 ![Diagnostika](./media/cache-configure/redis-cache-diagnostics.png)
 
@@ -368,8 +369,8 @@ Nastavení v části **Podpora a řešení potíží** poskytují možnosti pro 
 
 > [!NOTE]
 > Služba Resource Health v tuto chvíli nemůže nahlásit stav mezipaměti Azure pro instance Redis hostované ve virtuální síti. Další informace najdete v tématu [práce s funkcemi mezipaměti při hostování mezipaměti ve virtuální síti?](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
-> 
-> 
+>
+>
 
 ### <a name="new-support-request"></a>Nová žádost o podporu
 Kliknutím na **Nová žádost o podporu** otevřete žádost o podporu pro vaši mezipaměť.
@@ -383,12 +384,12 @@ Nová mezipaměť Azure pro instance Redis je nakonfigurovaná s následujícím
 
 > [!NOTE]
 > Nastavení v této části nelze změnit pomocí metody `StackExchange.Redis.IServer.ConfigSet`. Pokud je tato metoda volána jedním z příkazů v této části, je vyvolána výjimka, která je podobná následujícímu příkladu:  
-> 
+>
 > `StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
-> 
+>
 > Všechny hodnoty, které lze konfigurovat, jako je například **Max-Memory-Policy**, lze konfigurovat prostřednictvím nástrojů pro správu Azure Portal nebo příkazového řádku, jako je Azure CLI nebo PowerShell.
-> 
-> 
+>
+>
 
 | Nastavení | Výchozí hodnota | Popis |
 | --- | --- | --- |
@@ -422,8 +423,8 @@ Další informace o databázích najdete v tématu [co jsou databáze Redis?](ca
 
 > [!NOTE]
 > Nastavení `databases` se dá nakonfigurovat jenom během vytváření mezipaměti a jenom pomocí PowerShellu, CLI nebo jiných klientů pro správu. Příklad konfigurace `databases` během vytváření mezipaměti pomocí prostředí PowerShell najdete v části [New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases).
-> 
-> 
+>
+>
 
 <a name="maxclients"></a>
 <sup>2</sup>`maxclients` se liší pro každou cenovou úroveň Azure cache pro Redis.
@@ -444,15 +445,15 @@ Další informace o databázích najdete v tématu [co jsou databáze Redis?](ca
 
 > [!NOTE]
 > I když každá velikost mezipaměti umožňuje *až* určitý počet připojení, každé připojení k Redis má spojenou režii. Příkladem takové režie by bylo využití CPU a paměti v důsledku šifrování TLS/SSL. Maximální limit připojení pro danou velikost mezipaměti předpokládá lehce načtenou mezipaměť. Pokud načtení z režie připojení *plus* zatížení z operací klienta překročí kapacitu systému, může mezipaměť zaznamenat problémy s kapacitou i v případě, že jste nepřekročili limit připojení pro aktuální velikost mezipaměti.
-> 
-> 
+>
+>
 
 
 
 ## <a name="redis-commands-not-supported-in-azure-cache-for-redis"></a>Příkazy Redis nejsou podporované v mezipaměti Azure pro Redis.
 > [!IMPORTANT]
 > Vzhledem k tomu, že konfigurace a Správa mezipaměti Azure pro instance Redis spravuje společnost Microsoft, jsou tyto příkazy zakázané. Pokud se pokusíte je vyvolat, zobrazí se chybová zpráva podobná `"(error) ERR unknown command"`.
-> 
+>
 > * BGREWRITEAOF
 > * BGSAVE
 > * Konfigurace
@@ -462,8 +463,8 @@ Další informace o databázích najdete v tématu [co jsou databáze Redis?](ca
 > * VYPNUTÍ
 > * SLAVEOF
 > * Příkazy zápisu cluster-cluster jsou zakázané, ale jsou povolené příkazy clusteru jen pro čtení.
-> 
-> 
+>
+>
 
 Další informace o příkazech Redis naleznete v tématu [https://redis.io/commands](https://redis.io/commands).
 
@@ -473,8 +474,8 @@ Pomocí **konzoly Redis**, která je k dispozici v Azure Portal pro všechny úr
 > [!IMPORTANT]
 > - Konzola Redis nefunguje s [virtuální](cache-how-to-premium-vnet.md)sítí. Když je mezipaměť součástí virtuální sítě, budou mít přístup k mezipaměti jenom klienti ve virtuální síti. Vzhledem k tomu, že se konzola Redis spouští v místním prohlížeči, který je mimo virtuální síť, nemůže se připojit ke svojí mezipaměti.
 > - V mezipaměti Azure pro Redis nejsou podporované všechny příkazy Redis. Seznam příkazů Redis, které jsou pro Azure cache pro Redis zakázané, najdete v části předchozí [příkazy Redis, které se v Azure cache pro Redis nepodporují](#redis-commands-not-supported-in-azure-cache-for-redis) . Další informace o příkazech Redis naleznete v tématu [https://redis.io/commands](https://redis.io/commands).
-> 
-> 
+>
+>
 
 Přístup ke konzole Redis získáte tak, že kliknete na **Konzola** v okně **Azure cache pro Redis** .
 
@@ -506,8 +507,7 @@ Mezipaměť můžete přesunout do nového předplatného kliknutím na **přesu
 
 ![Přesunout Azure cache pro Redis](./media/cache-configure/redis-cache-move.png)
 
-Informace o přesunu prostředků z jedné skupiny prostředků do jiné a z jednoho předplatného na jiný najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md).
+Informace o přesunu prostředků z jedné skupiny prostředků do jiné a z jednoho předplatného na jiný najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o práci s Redis příkazy najdete v tématu [Jak můžu spustit příkazy Redis?](cache-faq.md#how-can-i-run-redis-commands)
-

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 148d0c203248e4dcde5baaadc596d56e8b8ea17a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 533c91bdc02425cabf5eeae93f37811144b32149
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669384"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976331"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Vědecké zpracování týmových dat v akci: použití serveru SQL Server
 V tomto kurzu vás provede procesem sestavování a nasazování modelu strojového učení pomocí SQL serveru a veřejně dostupné datové sady – [cesty taxíkem NYC](https://www.andresmh.com/nyctaxitrips/) datové sady. Postup následující pracovní postup standardních datových věd: ingestování a zkoumání dat, navrhování funkcí usnadnění vzdělávání, pak sestavit a nasadit model.
@@ -66,7 +66,7 @@ V tomto kurzu si předvedeme paralelní hromadný import dat do SQL serveru, zko
 
 Nastavení prostředí Azure pro datové vědy:
 
-1. [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md)
+1. [vytvořit účet úložiště](../../storage/common/storage-account-create.md)
 2. [Vytvoření pracovního prostoru Azure Machine Learning](../studio/create-workspace.md)
 3. [Zřízení virtuálního počítače pro datové vědy](../data-science-virtual-machine/setup-sql-server-virtual-machine.md), která poskytuje systému SQL Server a serveru IPython Notebook.
    
@@ -376,7 +376,7 @@ Podobně lze kontrolujeme vztah mezi **míra\_kód** a **o jízdách\_vzdálenos
 ![Vykreslení #8][8]
 
 ### <a name="sub-sampling-the-data-in-sql"></a>Vzorkování dat v SQL
-Při přípravě dat pro sestavování modelu v [Azure Machine Learning Studio](https://studio.azureml.net)se můžete rozhodnout, že se má **dotaz SQL použít přímo v modulu import dat** nebo zachovat provedená inženýrská a ukázková data v nové tabulce, kterou můžete použít v [importu. Data][import-data] Module s jednoduchým **výběrem * z <\_nová tabulka\_\_název >** .
+Při přípravě dat pro sestavování modelu v [Azure Machine Learning Studio](https://studio.azureml.net)se můžete rozhodnout, že se má **dotaz SQL použít přímo v modulu import dat** nebo zachovat provedená inženýrská a ukázková data v nové tabulce, kterou můžete použít v modulu [Import dat][import-data] s jednoduchým **příkazem SELECT * z <\_nové\_\_název >** .
 
 V této části vytvoříme novou tabulku pro ukládání dat vzorky a analýzou. Příklad přímý dotaz SQL pro vytváření modelů najdete v [zkoumání dat a technické funkce v systému SQL Server](#dbexplore) oddílu.
 

@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 12/03/2019
+ms.date: 01/14/2020
 ms.author: juliako
-ms.openlocfilehash: beb44c469aa8a03430cd5cb5a162966855aad448
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: c4c39dc53e492fd295cf30a7b7d75c933ebc912f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815398"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972630"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
@@ -40,6 +40,7 @@ Po nahrání videa Video Indexer případně zakódovat video (popsané v člán
 - Adresa URL poskytnutá parametrem `videoURL` musí být zakódována.
 - Indexace Media Services prostředků má stejné omezení jako indexování z adresy URL.
 - Video Indexer má pro jeden soubor maximální dobu trvání 4 hodiny.
+- Můžete nahrávat až 60 filmů za minutu.
 
 > [!Tip]
 > Doporučujeme používat rozhraní .NET Framework verze 4.6.2 nebo novější, protože starší rozhraní .NET Framework nemají ve výchozím nastavení protokol TLS 1.2.
@@ -313,7 +314,7 @@ Operace Upload může vrátit kódy stavu uvedené v následující tabulce.
 
 |Kód stavu|ErrorType (v textu odpovědi)|Popis|
 |---|---|---|
-|400|VIDEO_ALREADY_IN_PROGRESS|V daném účtu už probíhá zpracování stejného videa.|
+|409|VIDEO_INDEXING_IN_PROGRESS|V daném účtu už probíhá zpracování stejného videa.|
 |400|VIDEO_ALREADY_FAILED|V daném účtu se méně než před 2 hodinami nepodařilo zpracovat stejné video. Klienti rozhraní API by měli před dalším nahráním videa vyčkat minimálně 2 hodiny.|
 
 ## <a name="next-steps"></a>Další kroky

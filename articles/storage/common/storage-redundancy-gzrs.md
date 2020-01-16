@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e1789122079d5cbc6f5914a6fd6a69a38df04e45
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2591f1846574994b878814f3b08df1de2a6e9fc1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748255"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973367"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Vytváření vysoce dostupných Azure Storage aplikací s geograficky redundantním úložištěm (GZRS) (Preview)
 
@@ -51,7 +51,7 @@ Když se data zapisují do účtu úložiště s povoleným GZRS nebo RA-GZRS, b
 > [!IMPORTANT]
 > Asynchronní replikace zahrnuje zpoždění mezi časem zápisu dat do primární oblasti a při replikaci do sekundární oblasti. V případě regionálních havárií může dojít ke ztrátě změn, které ještě nebyly replikovány do sekundární oblasti, pokud tato data nebude možné obnovit z primární oblasti.
 
-Při vytváření účtu úložiště určíte, jak budou data v tomto účtu replikována, a také určíte primární oblast pro tento účet. Spárovaná sekundární oblast pro geograficky replikovaný účet je určena v závislosti na primární oblasti a nelze ji změnit. Aktuální informace o oblastech podporovaných v Azure najdete v tématu [provozní kontinuita a zotavení po havárii (BCDR): spárované oblasti Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Informace o vytvoření účtu úložiště pomocí GZRS nebo RA-GZRS najdete v tématu [Vytvoření účtu úložiště](storage-quickstart-create-account.md).
+Při vytváření účtu úložiště určíte, jak budou data v tomto účtu replikována, a také určíte primární oblast pro tento účet. Spárovaná sekundární oblast pro geograficky replikovaný účet je určena v závislosti na primární oblasti a nelze ji změnit. Aktuální informace o oblastech podporovaných v Azure najdete v tématu [provozní kontinuita a zotavení po havárii (BCDR): spárované oblasti Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Informace o vytvoření účtu úložiště pomocí GZRS nebo RA-GZRS najdete v tématu [Vytvoření účtu úložiště](storage-account-create.md).
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>Použití RA-GZRS pro vysokou dostupnost
 

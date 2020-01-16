@@ -3,12 +3,12 @@ title: Konfigurace sestav Power BI
 description: Nakonfigurujte sestavy Power BI pro Azure Backup pomocí trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 9b6ef62a924761642ef3217ff8af64ac6847c766
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4f8a2dd927f996ea09e40c7db2e43b46c17f6258
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450111"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978369"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 
@@ -30,7 +30,7 @@ Pokud se chcete tomuto problému vyhnout, Stáhněte si prosím nejnovější ap
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Vytvořte [účet úložiště Azure](../storage/common/storage-quickstart-create-account.md) pro konfiguraci pro sestavy. Tento účet úložiště se používá k ukládání dat souvisejících se sestavami.
+- Vytvořte [účet úložiště Azure](../storage/common/storage-account-create.md) pro konfiguraci pro sestavy. Tento účet úložiště se používá k ukládání dat souvisejících se sestavami.
 - [Vytvořte účet Power BI](https://powerbi.microsoft.com/landing/signin/) pro zobrazení, přizpůsobení a vytváření vlastních sestav pomocí portálu Power BI.
 - Zaregistrujte poskytovatele prostředků **Microsoft. Insights**, pokud už není zaregistrovaný. Použijte odběry pro účet úložiště a Recovery Services trezor, aby data vytváření sestav mohla být v účtu úložiště. Tento krok provedete tak, že přejdete na Azure Portal, vyberete **odběr** > **poskytovatelé prostředků**a zkontrolujete tohoto poskytovatele a zaregistrujete ho.
 

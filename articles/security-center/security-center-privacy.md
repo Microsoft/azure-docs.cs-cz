@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 45b7b419277d338d70cf285838103f97d4eb5c3a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 6edea1d0de53e2dc9f764de26209dc1f3110556e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749664"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978605"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Správa uživatelských dat v Azure Security Center
 Tento článek poskytuje informace o tom, jak můžete spravovat data uživatelů v Azure Security Center. Správa uživatelských dat zahrnuje možnost přístupu, odstranění a exportu dat.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
-Uživatel Security Center přiřazený k roli Čtenář, vlastník, přispěvatel nebo účet má přístup k zákaznickým datům v nástroji. Další informace o roli správce účtu najdete v tématu [předdefinované role pro řízení přístupu na základě role v Azure](../role-based-access-control/built-in-roles.md) , kde se dozvíte víc o rolích čtenářů, vlastníků a přispěvatelů. Viz [Správce předplatného Azure](../billing/billing-add-change-azure-subscription-administrator.md).
+Uživatel Security Center přiřazený k roli Čtenář, vlastník, přispěvatel nebo účet má přístup k zákaznickým datům v nástroji. Další informace o roli správce účtu najdete v tématu [předdefinované role pro řízení přístupu na základě role v Azure](../role-based-access-control/built-in-roles.md) , kde se dozvíte víc o rolích čtenářů, vlastníků a přispěvatelů. Viz [Správce předplatného Azure](../cost-management-billing/manage/add-change-subscription-administrator.md).
 
 ## <a name="searching-for-and-identifying-personal-data"></a>Vyhledávání a identifikace osobních údajů
 Uživatel Security Center může pomocí Azure Portal zobrazit jejich osobní údaje. Security Center ukládá pouze podrobnosti o kontaktech zabezpečení, jako jsou e-mailové adresy a telefonní čísla. Další informace najdete v tématu [zadání podrobností o kontaktu zabezpečení v Azure Security Center](security-center-provide-security-contact-details.md).

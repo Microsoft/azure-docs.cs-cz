@@ -2,17 +2,17 @@
 title: Šifrování na straně serveru Azure Managed Disks – Azure CLI
 description: Azure Storage chrání vaše data tím, že je před tím, než je zachová v clusterech úložiště, v klidovém prostředí. Pro šifrování svých spravovaných disků můžete spoléhat na klíče spravované Microsoftem, případně můžete pomocí klíčů spravovaných zákazníkem spravovat šifrování pomocí vlastních klíčů.
 author: roygara
-ms.date: 01/10/2020
+ms.date: 01/13/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 61e45a5d13da7af42bbed273e5b39ce2af15d1ca
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: d8729e447aabfcb1c378919501ee48124e7ae27b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912751"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027817"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Šifrování na straně serveru Azure Managed disks
 
@@ -54,21 +54,18 @@ Následující seznam vysvětluje diagram ještě více podrobností:
 
 Pokud chcete odvolat přístup k klíčům spravovaným zákazníkem, přečtěte si téma [Azure Key Vault PowerShellu](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) a [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault). Odvolání přístupu efektivně zablokuje přístup ke všem datům v účtu úložiště, protože šifrovací klíč je nepřístupný Azure Storage.
 
-### <a name="supported-scenarios-and-restrictions"></a>Podporované scénáře a omezení
+### <a name="supported-regions"></a>Podporované oblasti
 
-V současné době jsou podporovány pouze následující scénáře:
+V současné době jsou podporovány pouze následující oblasti:
 
-- Pomocí klíčů spravovaných zákazníkem vytvořte virtuální počítač (VM) z bitové kopie Azure Marketplace a Zašifrujte disk s operačním systémem pomocí šifrování na straně serveru.
-- Vytvoření vlastní image šifrované pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem.
-- Vytvořte virtuální počítač z vlastní image a Zašifrujte disk s operačním systémem pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem.
-- Vytvářejte datové disky šifrované pomocí šifrování na straně serveru a kódů spravovaných zákazníkem.
-- (Pouze CLI/PowerShell) Vytvářejte snímky šifrované pomocí šifrování na straně serveru a kódů spravovaných zákazníkem.
-- Vytvářejte sady škálování virtuálních počítačů, které se šifrují pomocí šifrování na straně serveru a kódů spravovaných zákazníkem.
+- K dispozici jako nabídka GA v oblastech Východní USA, Západní USA 2 a Střed USA – jih.
+- Je dostupná jako veřejná verze Preview v oblastech Středozápadní USA, Východní USA 2, Kanada – střed a Severní Evropa.
 
-V současné době máme také tato omezení:
+### <a name="restrictions"></a>Omezení
 
-- K dispozici jako nabídka GA v Východní USA, Západní USA 2 a Střed USA – jih.
-- K dispozici jako veřejná verze Preview v Středozápadní USA, Východní USA 2, Kanadě Central a Severní Evropa.
+Klíče spravované zákazníkem teď mají následující omezení:
+
+- Podporovány jsou pouze ["měkké" a "pevné" klíče RSA](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) o velikosti 2080, žádné jiné klíče ani velikosti.
 - Disky vytvořené z vlastních imagí šifrovaných pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem musí být šifrované pomocí stejných klíčů spravovaných zákazníkem a musí být ve stejném předplatném.
 - Snímky vytvořené z disků šifrovaných pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem musí být šifrované pomocí stejných klíčů spravovaných zákazníkem.
 - Vlastní image šifrované pomocí šifrování na straně serveru a klíčů spravovaných zákazníkem se nedají použít v galerii sdílených imagí.

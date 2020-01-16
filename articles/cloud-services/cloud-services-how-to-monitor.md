@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
-ms.openlocfilehash: 096077550a426d7eb77ed0d71e720149dd103a55
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75386064"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972947"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Seznámení s monitorováním cloudové služby
 
@@ -52,7 +52,7 @@ Při vytvoření každé role Visual Studio přidá k němu rozšíření Azure 
 
 ## <a name="setup-diagnostics-extension"></a>Rozšíření Instalace diagnostiky
 
-Za prvé, pokud nemáte účet **klasického** úložiště, [vytvořte ho](../storage/common/storage-quickstart-create-account.md). Ujistěte se, že je účet úložiště vytvořený s uvedeným **modelem nasazení Classic** .
+Za prvé, pokud nemáte účet **klasického** úložiště, [vytvořte ho](../storage/common/storage-account-create.md). Ujistěte se, že je účet úložiště vytvořený s uvedeným **modelem nasazení Classic** .
 
 Potom přejděte do prostředku **účtu úložiště (Classic)** . Vyberte **nastavení** > **přístupové klíče** a zkopírujte hodnotu **primárního připojovacího řetězce** . Tuto hodnotu budete potřebovat pro cloudovou službu. 
 

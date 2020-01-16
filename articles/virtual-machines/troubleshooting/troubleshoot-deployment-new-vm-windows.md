@@ -15,12 +15,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6dbe4c1533aecfab4a62ce3ad90b694c0c00f4b6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0bc363b87a9f5b2f013c0bae75a07d79a3a7a830
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103483"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981391"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Řešení potíží s nasazením při vytváření nového virtuálního počítače s Windows v Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -35,7 +35,7 @@ Další problémy s nasazením virtuálních počítačů a dotazy najdete v té
 ## <a name="collect-activity-logs"></a>Shromažďování protokolů aktivit
 Pokud chcete začít řešit potíže, Shromážděte protokoly aktivit a Identifikujte chybu spojenou s problémem. Následující odkazy obsahují podrobné informace o tom, jak postupovat.
 
-[Zobrazení operací nasazení](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[Zobrazení operací nasazení](../../azure-resource-manager/templates/deployment-history.md)
 
 [Zobrazení protokolů aktivit pro správu prostředků Azure](../../resource-group-audit.md)
 
@@ -43,7 +43,7 @@ Pokud chcete začít řešit potíže, Shromážděte protokoly aktivit a Identi
 
 [!INCLUDE [virtual-machines-windows-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-windows-troubleshoot-deployment-new-vm-table.md)]
 
-**POŽADOVANÉ** Pokud je operační systém Windows zobecněný a nahraje se nebo zachycuje s zobecněným nastavením, neobjeví se žádné chyby. Podobně platí, že pokud je operační systém Windows specializovaný a je nahrán a/nebo zachycen se specializovaným nastavením, pak nedojde k žádným chybám.
+**A:** Pokud je operační systém Windows zobecněný a nahraje se nebo zachycuje s zobecněným nastavením, neobjeví se žádné chyby. Podobně platí, že pokud je operační systém Windows specializovaný a je nahrán a/nebo zachycen se specializovaným nastavením, pak nedojde k žádným chybám.
 
 **Chyby nahrávání:**
 
@@ -65,7 +65,7 @@ Chcete-li tyto chyby vyřešit, použijte [příkaz Add-AzVhd k nahrání původ
 
 Chcete-li tyto chyby vyřešit, odstraňte aktuální bitovou kopii z portálu a znovu [ji Zachyťte z aktuálních virtuálních pevných disků](../windows/create-vm-specialized.md) se stejným nastavením jako u operačního systému (generalizovaná/specializovaná).
 
-## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>Problém: Vlastní/Galerie/image Marketplace; selhání přidělení
+## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>Problém: vlastní/Galerie/image Marketplace; selhání přidělení
 K této chybě dochází v situacích, kdy je nový požadavek na virtuální počítač připnutý ke clusteru, který buď nepodporuje požadovanou velikost virtuálního počítače, nebo nemá k dispozici volné místo pro vyžádání žádosti.
 
 **Příčina 1:** Cluster nepodporuje požadovanou velikost virtuálního počítače.
@@ -75,7 +75,7 @@ K této chybě dochází v situacích, kdy je nový požadavek na virtuální po
 * Opakujte požadavek s menší velikostí virtuálního počítače.
 * Pokud velikost požadovaného virtuálního počítače nejde změnit:
   * Zastavte všechny virtuální počítače ve skupině dostupnosti.
-    Klikněte na **prostředky skupiny** > prostředků**prostředky** > .vaše > *Skupina* *dostupnosti*Virtual Machinesváš > virtuálnípočítač. > Zastavte.  > 
+    Klikněte na **skupiny prostředků** > *vaší skupiny prostředků* > **prostředky** > *vaší skupině dostupnosti* > **Virtual Machines** > **zastavte** *virtuální počítač* > .
   * Po zastavení všech virtuálních počítačů Vytvořte nový virtuální počítač v požadované velikosti.
   * Nejprve spusťte nový virtuální počítač a potom vyberte všechny zastavené virtuální počítače a klikněte na tlačítko **Spustit**.
 
@@ -88,7 +88,7 @@ K této chybě dochází v situacích, kdy je nový požadavek na virtuální po
   * Vytvořte nový virtuální počítač v jiné skupině dostupnosti (ve stejné oblasti).
   * Přidejte nový virtuální počítač do stejné virtuální sítě.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Pokud narazíte na problémy při spuštění zastaveného virtuálního počítače s Windows nebo změníte velikost existujícího virtuálního počítače s Windows v Azure, přečtěte si téma [řešení potíží s nasazením správce prostředků potíží s restartováním nebo změnou velikosti stávajícího virtuálního počítače s Windows v Azure](restart-resize-error-troubleshooting.md).
 
 

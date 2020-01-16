@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: e7a5f9ba865ab555bde3125f40ee8675709bef40
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7ca98723511cc7297b462747d4e1e12ca9bd38c2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932707"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979015"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-azure-powershell"></a>Preview: řízení aktualizací pomocí řízení údržby a Azure PowerShell
 
@@ -36,7 +36,7 @@ Pomocí řízení údržby můžete:
 ## <a name="limitations"></a>Omezení
 
 - Virtuální počítače musí být na [vyhrazeném hostiteli](./linux/dedicated-hosts.md)nebo být vytvořené pomocí [izolované velikosti virtuálního počítače](./linux/isolation.md).
-- Po 35 dnech se aktualizace automaticky použije a omezení dostupnosti se nerespektují.
+- Po 35 dnech se automaticky použije aktualizace.
 - Uživatel musí mít přístup **vlastníka prostředku** .
 
 
@@ -109,7 +109,7 @@ New-AzConfigurationAssignment `
    -MaintenanceConfigurationId $config.Id
 ```
 
-### <a name="dedicate-host"></a>Vyhradit hostitele
+### <a name="dedicated-host"></a>Vyhrazený hostitel
 
 Chcete-li použít konfiguraci pro vyhrazeného hostitele, je také nutné zahrnout `-ResourceType hosts`, `-ResourceParentName` s názvem skupiny hostitelů a `-ResourceParentType hostGroups`. 
 
@@ -129,7 +129,9 @@ New-AzConfigurationAssignment `
 
 ## <a name="check-for-pending-updates"></a>Vyhledat nedokončené aktualizace
 
-Pokud chcete zjistit, jestli čekají na aktualizace, použijte [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) . Pomocí `-subscription` určete předplatné Azure pro virtuální počítač, pokud se liší od přihlášení, které jste přihlásili. 
+Pokud chcete zjistit, jestli čekají na aktualizace, použijte [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) . Pomocí `-subscription` určete předplatné Azure pro virtuální počítač, pokud se liší od přihlášení, které jste přihlásili.
+
+Pokud nejsou k dispozici žádné aktualizace, příkaz vrátí chybovou zprávu: `Resource not found...StatusCode: 404`.
 
 ### <a name="isolated-vm"></a>Izolovaný virtuální počítač
 
@@ -185,6 +187,39 @@ New-AzApplyUpdate `
    -ResourceParentName myHostGroup `
    -ResourceParentType hostGroups `
    -ProviderName Microsoft.Compute
+```
+
+## <a name="check-update-status"></a>Kontrolovat stav aktualizace
+Ke kontrole stavu aktualizace použijte [příkaz Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) . Níže uvedené příkazy zobrazují stav nejnovější aktualizace pomocí `default` pro parametr `-ApplyUpdateName`. Můžete nahradit název aktualizace (vrácenou příkazem [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) ) a získat tak stav konkrétní aktualizace.
+
+Pokud nejsou k dispozici žádné aktualizace k zobrazení, příkaz vrátí chybovou zprávu: `Resource not found...StatusCode: 404`.
+
+### <a name="isolated-vm"></a>Izolovaný virtuální počítač
+
+Vyhledat aktualizace konkrétního virtuálního počítače.
+
+```azurepowershell-interactive
+Get-AzApplyUpdate `
+   -ResourceGroupName myResourceGroup `
+   -ResourceName myVM `
+   -ResourceType VirtualMachines `
+   -ProviderName Microsoft.Compute `
+   -ApplyUpdateName default
+```
+
+### <a name="dedicated-host"></a>Vyhrazený hostitel
+
+Vyhledat aktualizace vyhrazeného hostitele.
+
+```azurepowershell-interactive
+Get-AzApplyUpdate `
+   -ResourceGroupName myResourceGroup `
+   -ResourceName myHost `
+   -ResourceType hosts `
+   -ResourceParentName myHostGroup `
+   -ResourceParentType hostGroups `
+   -ProviderName Microsoft.Compute `
+   -ApplyUpdateName default
 ```
 
 ## <a name="remove-a-maintenance-configuration"></a>Odebrat konfiguraci údržby

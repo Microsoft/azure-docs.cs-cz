@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 10/29/2019
-ms.openlocfilehash: 6c174faaad5d7d33a837d6399be27444ab0556c6
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: a3122a3ae1687369b87d193efc693b3b7c659aac
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771968"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974136"
 ---
 # <a name="how-azure-machine-learning-differs-from-machine-learning-studio-classic"></a>Způsob, jakým se Azure Machine Learning liší od Machine Learning Studio (klasické)
 
@@ -29,7 +29,7 @@ Mezitím [Azure Machine Learning](overview-what-is-azure-ml.md) poskytuje jak we
 Azure Machine Learning Designer nabízí podobné prostředí pro přetahování do studia (Classic). Na rozdíl od proprietární výpočetní platformy studia (Classic) ale Návrhář používá vaše vlastní výpočetní prostředky, je škálovatelný a plně integrovaný do Azure Machine Learning.  
 
 > [!TIP]
-> Zákazníci, kteří aktuálně používají nebo vyhodnocují Machine Learning Studio (Classic), jsou doporučováni k vyzkoušení [Azure Machine Learningho návrháře](https://docs.microsoft.com/azure/machine-learning/ui-concept-visual-interface) (Preview), který __poskytuje moduly pro přetahování a škálovatelnost__ , správu verzí a zabezpečení podniku.
+> Zákazníci, kteří aktuálně používají nebo vyhodnocují Machine Learning Studio (Classic), jsou doporučováni k vyzkoušení [Azure Machine Learningho návrháře](https://docs.microsoft.com/azure/machine-learning/concept-designer) (Preview), který __poskytuje moduly pro přetahování a škálovatelnost__ , správu verzí a zabezpečení podniku.
 
 ## <a name="comparison-azure-machine-learning-vs-machine-learning-studio-classic"></a>Porovnání: Azure Machine Learning vs. Machine Learning Studio (Classic)
 

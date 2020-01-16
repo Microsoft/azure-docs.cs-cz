@@ -3,12 +3,12 @@ title: Přehled správy Azure – zásady správného řízení Azure
 description: Přehled oblastí správy pro aplikace Azure a prostředky s odkazy na obsah na nástroje pro správu Azure.
 ms.date: 12/06/2018
 ms.topic: overview
-ms.openlocfilehash: f91e439a5fb7c330fb29d300e83779083641875b
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 644f4fc3a04f86426c2eb04b02c29882fa39fb88
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132844"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980903"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Přehled služeb správy v Azure
 
@@ -36,7 +36,7 @@ Automatizace těchto úloh umožňuje eliminovat redundance, minimalizovat čas 
 ## <a name="govern"></a>Řízení
 
 Zásady správného řízení poskytují mechanismy a postupy pro zajištění kontroly nad vašimi aplikacemi a prostředky v Azure. Zahrnují plánování iniciativ a nastavení strategických priorit.
-Zásady správného řízení v Azure jsou primárně implementované pomocí dvou služeb. [Služba Azure Policy](./policy/overview.md) umožňuje vytvářet, přiřazovat a spravovat definice zásad a vynucovat pravidla pro vaše prostředky. Tato funkce zajišťuje těchto prostředků v souladu s firemními standardy. [Azure cost management](../cost-management/overview-cost-mgt.md) vám umožňuje sledovat využití cloudu a výdaje za prostředky Azure a další cloudové poskytovatele.
+Zásady správného řízení v Azure jsou primárně implementované pomocí dvou služeb. [Služba Azure Policy](./policy/overview.md) umožňuje vytvářet, přiřazovat a spravovat definice zásad a vynucovat pravidla pro vaše prostředky. Tato funkce zajišťuje těchto prostředků v souladu s firemními standardy. [Azure cost management](../cost-management-billing/cost-management-billing-overview.md) vám umožňuje sledovat využití cloudu a výdaje za prostředky Azure a další cloudové poskytovatele.
 
 ## <a name="secure"></a>Zabezpečení
 

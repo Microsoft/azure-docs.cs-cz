@@ -7,22 +7,22 @@ ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/12/2019
-ms.openlocfilehash: 0fda04bbfa632f429539ddc0ad90941cb645226b
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: a483f143b70a4969114c078b3b0a6f960c4b6b41
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934637"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976075"
 ---
-# <a name="commercial-marketplace-billing"></a>Fakturace komerčního webu Marketplace 
+# <a name="commercial-marketplace-billing"></a>Fakturace komerčního webu Marketplace
 
 Tento článek popisuje témata týkající se obchodu na komerčním webu Marketplace:
 
-- [Možnosti publikování na Marketplace](#marketplace-publishing-options) 
+- [Možnosti publikování na Marketplace](#marketplace-publishing-options)
 - [Základní přehled jazyka Transact](#transact-general-overview)
 - [Modely fakturace v jazyce Transact](#transact-billing-models)
 
-## <a name="marketplace-publishing-options"></a>Možnosti publikování na Marketplace 
+## <a name="marketplace-publishing-options"></a>Možnosti publikování na Marketplace
 
 Obchodní Marketplace nabízí několik možností publikování pro vydavatele.
 
@@ -36,9 +36,9 @@ Kromě možností pro publikování seznamu a zkušební verze je možnost publi
 
 ## <a name="transact-general-overview"></a>Základní přehled jazyka Transact
 
-Při použití možnosti publikování v jazyce Transact společnost Microsoft umožňuje prodej softwaru třetích stran a nasazení některých typů nabídek do předplatného Azure zákazníka. Vydavatel musí zvážit fakturaci poplatků za infrastrukturu a vlastní licenční poplatky za software vydavatele při výběru modelu fakturace a typu nabídky. 
+Při použití možnosti publikování v jazyce Transact společnost Microsoft umožňuje prodej softwaru třetích stran a nasazení některých typů nabídek do předplatného Azure zákazníka. Vydavatel musí zvážit fakturaci poplatků za infrastrukturu a vlastní licenční poplatky za software vydavatele při výběru modelu fakturace a typu nabídky.
 
-Možnost publikování v režimu Transact se teď podporuje pro následující typy nabídek: virtuální počítače, aplikace Azure a SaaS aplikace. 
+Možnost publikování v režimu Transact se teď podporuje pro následující typy nabídek: virtuální počítače, aplikace Azure a SaaS aplikace.
 
 ![Transact in Azure Marketplace](./media/transact-amp.png)
 
@@ -80,60 +80,60 @@ V případě scénářů publikování v jazyce Transact může vydavatel licenc
 
 Kromě používání typů nabídek a modelů fakturace k monetizovatí nabídky můžou vydavatelé využít soukromou nabídku, která se dokončí s vyjednáním a s konkrétními cenami nebo vlastními konfiguracemi. Soukromé nabídky jsou podporovány všemi 3 možnostmi publikování v transakcích.
 
-This option allows higher or lower pricing than the publicly available offering. Private offers can be used to discount or add a premium for an offer. Private offers can be made available to one or more customers by white listing their Azure subscription at the offer level.
+Tato možnost umožňuje vyšší nebo nižší ceny než veřejně dostupná nabídka. Soukromé nabídky lze použít pro zlevnění nebo přidání prémie do nabídky. Soukromé nabídky je možné zpřístupnit jednomu nebo více zákazníkům na základě bílého seznamu předplatného Azure na úrovni nabídky.
 
 ### <a name="examples"></a>Příklady
 
 #### <a name="pay-as-you-go"></a>Plaťte jenom za to, co využijete
 
-* If you enable the Pay-As-You-Go option, then you have the following cost structure.
+* Pokud povolíte možnost platby s průběžnými platbami, budete mít následující nákladovou strukturu.
 
-|Your license cost  | $1.00 per hour  |
+|Náklady na licenci  | $1,00 za hodinu  |
 |---------|---------|
-|Azure usage cost (D1/1-Core)    |   $0.14 per hour     |
-|*Customer is billed by Microsoft*    |  *$1.14 per hour*       |
+|Náklady na využití Azure (D1/1 – jádro)    |   $0,14 za hodinu     |
+|*Zákazník se účtuje Microsoftem.*    |  *$1,14 za hodinu*       |
 
-* In this scenario, Microsoft bills $1.14 per hour for use of your published VM image.
+* V tomto scénáři vám Microsoft účtuje $1,14 za hodinu pro použití publikované image virtuálního počítače.
 
-|Microsoft bills  | $1.14 per hour  |
+|Účty Microsoft  | $1,14 za hodinu  |
 |---------|---------|
-|Microsoft pays you 80% of your license cost|   $0.80 per hour     |
-|Microsoft keeps 20% of your license cost  |  $0.20 per hour       |
-|Microsoft keeps 100% of the Azure usage cost | $0.14 per hour |
+|Společnost Microsoft vám zaplatí 80% vašich licenčních nákladů.|   $0,80 za hodinu     |
+|Společnost Microsoft udržuje 20% vašich licenčních nákladů.  |  $0,20 za hodinu       |
+|Microsoft udržuje 100% nákladů na využití Azure. | $0,14 za hodinu |
 
-### <a name="bring-your-own-license-byol"></a>Bring Your Own License (BYOL)
+### <a name="bring-your-own-license-byol"></a>Přineste si vlastní licenci (BYOL)
 
-* If you enable the BYOL option, then you have the following cost structure.
+* Pokud povolíte možnost BYOL, budete mít následující nákladovou strukturu.
 
-|Your license cost  | License fee negotiated and billed by you  |
+|Náklady na licenci  | Licenční poplatek se vyjednává a účtuje vám  |
 |---------|---------|
-|Azure usage cost (D1/1-Core)    |   $0.14 per hour     |
-|*Customer is billed by Microsoft*    |  *$0.14 per hour*       |
+|Náklady na využití Azure (D1/1 – jádro)    |   $0,14 za hodinu     |
+|*Zákazník se účtuje Microsoftem.*    |  *$0,14 za hodinu*       |
 
-* In this scenario, Microsoft bills $0.14 per hour for use of your published VM image.
+* V tomto scénáři vám Microsoft účtuje $0,14 za hodinu pro použití publikované image virtuálního počítače.
 
-|Microsoft bills  | $0.14 per hour  |
+|Účty Microsoft  | $0,14 za hodinu  |
 |---------|---------|
-|Microsoft keeps the Azure usage cost    |   $0.14 per hour     |
-|Microsoft keeps 0% of your license cost   |  $0.00 per hour       |
+|Microsoft udržuje náklady na využití Azure    |   $0,14 za hodinu     |
+|Společnost Microsoft udržuje 0% vašich licenčních nákladů.   |  $0,00 za hodinu       |
 
-### <a name="saas-app-subscription"></a>SaaS App subscription
+### <a name="saas-app-subscription"></a>Předplatné aplikace SaaS
 
-This option must be configured to sell through Microsoft and can be priced at a flat rate or per user on a monthly or annual basis.
+Tato možnost musí být nakonfigurovaná tak, aby se dala prodávat přes Microsoft, a může se vám účtovat paušálně nebo měsíčně na jednotlivých uživatelích.
 
-•   If you enable the Sell through Microsoft option for a SaaS offer, then you have the following cost structure.
+• Pokud pro nabídku SaaS povolíte možnost prodávat prostřednictvím Microsoftu, pak máte následující nákladovou strukturu.
 
-|Your license cost       | $100.00 per month  |
+|Náklady na licenci       | $100,00 za měsíc  |
 |--------------|---------|
-|Azure usage cost (D1/1-Core)    | Billed directly to the publisher, not the customer |
-|*Customer is billed by Microsoft*    |  *$100.00 per month (note: publisher must account for any incurred or pass-through infrastructure costs in the license fee)*  |
+|Náklady na využití Azure (D1/1 – jádro)    | Účtuje se přímo vydavateli, nikoli zákazník. |
+|*Zákazník se účtuje Microsoftem.*    |  *$100,00 za měsíc (Poznámka: Vydavatel musí v licenčním poplatku brát v úvahu náklady na infrastrukturu, které vznikly nebo předávaly)*  |
 
-* In this scenario, Microsoft bills $100.00 for your software license and pays out $80.00 to the publisher.
-* Partners who have qualified for the Reduced Marketplace Service Fee will see a reduced transaction fee on the SaaS offers from May 2019 until June 2020. In this scenario, Microsoft bills $100.00 for your software license and pays out $90.00 to the publisher.
+* V tomto scénáři Microsoft účtuje $100,00 pro vaši softwarovou licenci a vyplatí $80,00 vydavateli.
+* Partneři, kteří mají nárok na snížený poplatek za službu Marketplace, uvidí za snížený poplatek za transakce SaaS z května 2019 do června 2020. V tomto scénáři Microsoft účtuje $100,00 pro vaši softwarovou licenci a vyplatí $90,00 vydavateli.
 
-|Microsoft bills  | $100.00 per month  |
+|Účty Microsoft  | $100,00 za měsíc  |
 |---------|---------|
-|Microsoft pays you 80% of your license cost <br> \* Microsoft pays you 90% of your license cost for any qualified SaaS apps   |   $80.00 per month <br> \* $90.00 per month    |
-|Microsoft keeps 20% of your license cost <br> \* Microsoft keeps 10% of your license cost for any qualified SaaS apps.  |  $20.00 per month <br> \* $10.00     |
+|Společnost Microsoft vám zaplatí 80% vašich licenčních nákladů. <br> \* Microsoft vám pro všechny kvalifikované aplikace SaaS zaplatí 90% nákladů na licenci.   |   $80,00 za měsíc <br> \* $90,00 za měsíc    |
+|Společnost Microsoft udržuje 20% vašich licenčních nákladů. <br> \* Microsoftu udržuje 10% nákladů na licenci pro všechny kvalifikované aplikace SaaS.  |  $20,00 za měsíc <br> \* $10,00     |
 
-**Reduced Marketplace Service Fee:** For certain SaaS Products that you publish on our Commercial Marketplace, Microsoft will reduce its Marketplace Service Fee from 20% (as described in the Microsoft Publisher Agreement) to 10%.  In order for your Product to qualify, at least one of your products must be designated by Microsoft as either IP co-sell ready or IP co-sell prioritized. To receive this reduced Marketplace Service Fee for the month, eligibility must be met at least five (5) business days before the end of the previous calendar month. Reduced Marketplace Service fee will not apply to VMs, Managed Apps or any other products made available through our Commercial Marketplace.  This Reduced Marketplace Service Fee will be available to qualified offers, with license charges collected by Microsoft between May 1, 2019 and June 30, 2020.  After that time, the Marketplace Service Fee will return to its normal amount.
+**Nižší poplatek za službu Marketplace:** U některých produktů SaaS, které publikujete na našem komerčním webu Marketplace, Microsoft sníží poplatek za službu Marketplace z 20% (jak je popsáno v tématu smlouva Microsoft Publisher Agreement) na 10%.  Aby produkt mohl být kvalifikován, musí být alespoň jeden z vašich produktů označený Microsoftem jako předprodejný nebo přizpůsobený protokol IP. Pro obdržení tohoto omezeného poplatku za služby Marketplace na tento měsíc musí být nárok splněn nejméně pět (5) pracovních dnů před koncem předchozího kalendářního měsíce. Nižší poplatek za službu Marketplace se nebude vztahovat na virtuální počítače, spravované aplikace ani žádné jiné produkty, které jsou dostupné prostřednictvím našeho komerčního tržiště.  Tento snížený poplatek za službu Marketplace bude dostupný pro kvalifikované nabídky s licenčními poplatky shromážděnými společností Microsoft mezi 1. května 2019 a 30. června 2020.  Po uplynutí této doby se poplatek za službu Marketplace vrátí do normálního množství.

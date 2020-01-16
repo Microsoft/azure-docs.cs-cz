@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61a2afad33aea7fa2a21135dca0995ad862a2258
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1528bffc613d2e8ab2c0150095d90791b649198a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848659"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979485"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Jak získat Azure Multi-Factor Authentication
 
@@ -30,9 +30,9 @@ V případě ochrany vašich účtů by dvoustupňové ověřování mělo být 
 
 V následující tabulce jsou popsány rozdíly mezi verzemi ověřování Multi-Factor Authentication:
 
-| Version | Popis |
+| Verze | Popis |
 | --- | --- |
-| Možnost Free | Zákazníci, kteří využívají Bezplatné výhody Azure AD, můžou použít [výchozí nastavení zabezpečení](../conditional-access/concept-conditional-access-security-defaults.md) a povolit službu Multi-Factor Authentication ve svém prostředí. |
+| Možnost Free | Zákazníci, kteří využívají Bezplatné výhody Azure AD, můžou použít [výchozí nastavení zabezpečení](../fundamentals/concept-fundamentals-security-defaults.md) a povolit službu Multi-Factor Authentication ve svém prostředí. |
 | Multi-Factor Authentication for Office 365 | Tato verze je spravovaná na portálu Office 365 nebo Microsoft 365. Správci mohou [zabezpečit prostředky sady Office 365 pomocí dvoustupňového ověřování](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). Tato verze je součástí předplatného sady Office 365. |
 | Multi-Factor Authentication pro správce Azure AD | Uživatelé, kteří mají přiřazenou roli globálního správce služby Azure AD v klientech Azure AD, můžou povolit dvoustupňové ověřování bez dalších nákladů. |
 | Azure Multi-Factor Authentication | Azure Multi-Factor Authentication, který se často označuje jako "plná" verze, nabízí bohatou sadu funkcí. Poskytuje další možnosti konfigurace prostřednictvím [Azure Portal](https://portal.azure.com), pokročilých sestav a podpory pro řadu místních a cloudových aplikací. Azure Multi-Factor Authentication je funkce [Azure Active Directory Premium](https://www.microsoft.com/cloud-platform/azure-active-directory-features) a [Microsoft 365 Business](https://www.microsoft.com/microsoft-365/business). |
@@ -48,7 +48,7 @@ Následující tabulka obsahuje seznam funkcí, které jsou k dispozici v různ�
 > Tato srovnávací tabulka popisuje funkce, které jsou součástí každé verze Multi-Factor Authentication. Pokud máte úplnou službu Azure Multi-Factor Authentication, některé funkce nemusí být k dispozici v závislosti na tom, jestli používáte [vícefaktorové ověřování v cloudu nebo v místním ověřování](concept-mfa-whichversion.md).
 >
 
-| Funkce | Multi-Factor Authentication for Office 365 | Multi-Factor Authentication pro správce Azure AD | Azure Multi-Factor Authentication | Výchozí nastavení zabezpečení | 
+| Funkce | Multi-Factor Authentication for Office 365 | Multi-Factor Authentication pro správce Azure AD | Azure Multi-Factor Authentication | Výchozí nastavení zabezpečení |
 | --- |:---:|:---:|:---:|:---:|
 | Ochrana účtů správce Azure AD pomocí MFA |● |● (Jenom účty globálního správce Azure AD) |● |● |
 | Mobilní aplikace jako druhý faktor |● |● |● |● |

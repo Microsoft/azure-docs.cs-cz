@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/11/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 0d12f50b059bf74cc1bbc55913d4ce49b77f81fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 203bff23b2ae1a5e5e19b4abc323c3ffeb31f367
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75486713"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975917"
 ---
 # <a name="create-an-azure-storage-account"></a>Vytvoření účtu služby Azure Storage
 
@@ -260,7 +260,7 @@ az storage account delete --name storageAccountName --resource-group resourceGro
 
 ---
 
-Alternativně můžete odstranit skupinu prostředků, která odstraní účet úložiště a všechny další prostředky v dané skupině prostředků. Další informace o odstranění skupiny prostředků najdete v tématu [odstranění prostředků a skupiny prostředků](../../azure-resource-manager/resource-group-delete.md).
+Alternativně můžete odstranit skupinu prostředků, která odstraní účet úložiště a všechny další prostředky v dané skupině prostředků. Další informace o odstranění skupiny prostředků najdete v tématu [odstranění prostředků a skupiny prostředků](../../azure-resource-manager/management/delete-resource-group.md).
 
 > [!WARNING]
 > Odstraněný účet úložiště není možné obnovit ani není možné načíst žádný obsah, který byl součástí účtu před jeho odstraněním. Nezapomeňte si před odstraněním účtu zazálohovat všechno, co chcete uložit. To platí také pro všechny prostředky v rámci účtu – po odstranění jsou objekt blob, tabulka, fronta nebo soubor odstraněny trvale.

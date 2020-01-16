@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/10/2020
+ms.date: 01/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a799339f2780c2bc372c39120a6e20b34d907326
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: 662b2792a2e09603425b1988138326799334f323
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912760"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973393"
 ---
 ### <a name="portal"></a>Portál
 
@@ -88,3 +88,27 @@ Proces nasazení virtuálního počítače se podobá standardnímu procesu nasa
 1. Vyberte zbývající výběr.
 
     ![SSE-Create-VM-Select-CMK-Encryption-set. png](media/virtual-machines-disk-encryption-portal/sse-create-vm-select-cmk-encryption-set.png)
+
+#### <a name="enable-on-an-existing-disk"></a>Povolit na stávajícím disku
+
+Chcete-li spravovat a konfigurovat šifrování disku na stávajících discích, je nutné použít následující odkaz: https://aka.ms/diskencryptionsets. Povolení klíčů spravovaných zákazníkem na existujících discích ještě není v globálním Azure Portal k dispozici.
+
+> [!CAUTION]
+> Povolení šifrování disku na všech discích připojených k VIRTUÁLNÍm počítačům bude vyžadovat, abyste virtuální počítač zastavili.
+
+1. Přejděte k virtuálnímu počítači, který je ve stejné oblasti jako jedna ze sad pro šifrování disků.
+1. Otevřete virtuální počítač a vyberte **zastavit**.
+
+    ![sse-stop-VM-to-encrypt-disk. png](media/virtual-machines-disk-encryption-portal/sse-stop-VM-to-encrypt-disk.png)
+
+1. Po ukončení činnosti virtuálního počítače vyberte **disky** a pak vyberte disk, který chcete zašifrovat.
+
+    ![SSE-existing-disk-SELECT. png](media/virtual-machines-disk-encryption-portal/sse-existing-disk-select.png)
+
+1. Vyberte **šifrování** a vyberte možnost **šifrování v klidovém kódu pomocí klíče spravovaného zákazníkem** a potom v rozevíracím seznamu vyberte svou sadu Disk Encryption.
+1. Vyberte **Uložit**.
+
+    ![SSE-Encrypt-existing-disk-Customer-Managed-Key. png](media/virtual-machines-disk-encryption-portal/sse-encrypt-existing-disk-customer-managed-key.png)
+
+1. Tento postup opakujte pro všechny ostatní disky připojené k virtuálnímu počítači, který chcete zašifrovat.
+1. Pokud disky dokončí přepínání na klíče spravované zákazníkem a žádné další připojené disky nechcete zašifrovat, můžete svůj virtuální počítač spustit.

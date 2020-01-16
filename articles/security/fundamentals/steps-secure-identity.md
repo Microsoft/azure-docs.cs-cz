@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: d62704feaaa46f6780c302f5564b112dd1badbc1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b416b38cfac48260f3375696caa2ecabcb4d57a9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353235"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973912"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pět kroků pro zabezpečení infrastruktury identity
 
@@ -47,11 +47,11 @@ Doporučení v tomto dokumentu jsou zarovnaná se [známkou pro identitu identit
 
 Před zahájením tohoto kontrolního seznamu se ujistěte, že při čtení tohoto kontrolního seznamu nedošlo k ohrožení zabezpečení. Nejdřív musíte chránit privilegované účty.
 
-Útočníci, kteří získají kontrolu nad privilegovanými účty, můžou dělat obrovský škodu, takže je důležité tyto účty nejdřív chránit. Povolte a vyžadovat [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (MFA) pro všechny správce ve vaší organizaci pomocí [výchozích hodnot zabezpečení Azure AD](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md) nebo [podmíněného přístupu](../../active-directory/conditional-access/plan-conditional-access.md). Pokud jste neimplementovali MFA, udělejte to teď! Je to důležité.
+Útočníci, kteří získají kontrolu nad privilegovanými účty, můžou dělat obrovský škodu, takže je důležité tyto účty nejdřív chránit. Povolte a vyžadovat [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (MFA) pro všechny správce ve vaší organizaci pomocí [výchozích hodnot zabezpečení Azure AD](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md) nebo [podmíněného přístupu](../../active-directory/conditional-access/plan-conditional-access.md). Pokud jste neimplementovali MFA, udělejte to teď! Je to důležité.
 
 Vše nastavené? Pojďme začít v kontrolním seznamu.
 
-## <a name="step-1---strengthen-your-credentials"></a>Krok 1 – posílení přihlašovacích údajů 
+## <a name="step-1---strengthen-your-credentials"></a>Krok 1 – posílení přihlašovacích údajů
 
 Většina porušení podnikového zabezpečení pocházela z některého z několik metod, jako je například postřik hesla, porušení narušení nebo útok phishing. Přečtěte si další informace o těchto útocích v tomto videu (45 min):
 > [!VIDEO https://www.youtube.com/embed/uy0j1_t5Hd4]
@@ -60,7 +60,7 @@ Většina porušení podnikového zabezpečení pocházela z některého z něko
 
 Vzhledem k tomu, že se četnost vyladěného, podvodného, odcizeného malwaru nebo opětovného použití znovu využije, je důležité, abyste heslo zálohovali pomocí nějaké formy silných přihlašovacích údajů – další informace o [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md).
 
-Pokud chcete snadno povolit základní úroveň zabezpečení identity, můžete použít povolení jedním kliknutím s [výchozími nastaveními zabezpečení Azure AD](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md). Výchozí nastavení zabezpečení vynutilo Azure MFA pro všechny uživatele v tenantovi a blokují přihlášení ze starších protokolů v celém tenantovi.
+Pokud chcete snadno povolit základní úroveň zabezpečení identity, můžete použít povolení jedním kliknutím s [výchozími nastaveními zabezpečení Azure AD](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md). Výchozí nastavení zabezpečení vynutilo Azure MFA pro všechny uživatele v tenantovi a blokují přihlášení ze starších protokolů v celém tenantovi.
 
 ### <a name="start-banning-commonly-attacked-passwords-and-turn-off-traditional-complexity-and-expiration-rules"></a>Spustit zaměnit často hesla pro útoky a vypnout tradiční složitost a pravidla vypršení platnosti.
 
@@ -86,7 +86,7 @@ Pokud vaše organizace používá řešení hybridní identity s předávacím o
 Přečtěte si další informace o tom, jak funguje [synchronizace hodnot hash hesel](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) .
 
 > [!NOTE]
-> Pokud povolíte synchronizaci hodnot hash hesel a používáte službu Azure AD Domain Services, hodnoty hash protokolu Kerberos (AES 256) a volitelně NTLM (RC4, No Salt) se taky zašifrují a synchronizují do Azure AD. 
+> Pokud povolíte synchronizaci hodnot hash hesel a používáte službu Azure AD Domain Services, hodnoty hash protokolu Kerberos (AES 256) a volitelně NTLM (RC4, No Salt) se taky zašifrují a synchronizují do Azure AD.
 
 ### <a name="implement-ad-fs-extranet-smart-lockout"></a>Implementovat inteligentní uzamčení AD FS extranetu
 
@@ -106,7 +106,7 @@ Aplikace, které používají své vlastní starší metody k ověřování pomo
 
 1. Zablokovat [starší ověřování, pokud používáte AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12).
 2. Nastavte [SharePoint Online a Exchange Online pro použití moderního ověřování](../../active-directory/conditional-access/conditional-access-for-exo-and-spo.md).
-3. Pokud máte Azure AD Premium, pomocí [zásad podmíněného přístupu](../../active-directory/conditional-access/conditions.md) zablokujte starší verze ověřování, jinak použijte [výchozí nastavení zabezpečení Azure AD](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md).
+3. Pokud máte Azure AD Premium, pomocí [zásad podmíněného přístupu](../../active-directory/conditional-access/conditions.md) zablokujte starší verze ověřování, jinak použijte [výchozí nastavení zabezpečení Azure AD](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md).
 
 ### <a name="block-invalid-authentication-entry-points"></a>Blokovat neplatné vstupní body ověřování
 
@@ -123,7 +123,7 @@ Ujistěte se, že uživatelé můžou požádat o schválení správcem pro nov�
 
 ### <a name="implement-azure-ad-privileged-identity-management"></a>Implementovat Azure AD Privileged Identity Management
 
-Dalším dopadem "předpokládat porušení" je nutnost minimalizovat pravděpodobnost, že ohrožený účet může pracovat s privilegovaný rolí. 
+Dalším dopadem "předpokládat porušení" je nutnost minimalizovat pravděpodobnost, že ohrožený účet může pracovat s privilegovaný rolí.
 
 [Azure AD Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md) pomáhá minimalizovat oprávnění účtu tím, že vám pomůže:
 
@@ -172,13 +172,13 @@ Služba Microsoft Azure Services a funkce poskytují konfigurovatelné možnosti
 
 Azure AD Identity Protection poskytuje dvě důležité sestavy, které byste měli monitorovat denně:
 1. V sestavách rizikové přihlašování se budou provádět aktivity přihlašování uživatelů, které byste měli prozkoumat, ale oprávněný vlastník neudělal přihlášení.
-2. Rizikové sestavy uživatelů budou Surface uživatelských účtů, které mohly být ohroženy, například zjištěná zjištěná pověření nebo uživatel přihlášený z různých míst, což způsobuje nemožnou cestu k akci. 
+2. Rizikové sestavy uživatelů budou Surface uživatelských účtů, které mohly být ohroženy, například zjištěná zjištěná pověření nebo uživatel přihlášený z různých míst, což způsobuje nemožnou cestu k akci.
 
 ![Uživatelé označení příznakem rizika](./media/steps-secure-identity/azure-ad-sec-steps3.png)
 
 ### <a name="audit-apps-and-consented-permissions"></a>Auditovat aplikace a souhlasná oprávnění
 
-Uživatelé mohou být vyzrazeni na napadený web nebo aplikace, které získají přístup k informacím o profilu a uživatelským datům, jako je například jejich e-mailová adresa. Škodlivý objekt actor může použít odsouhlasená oprávnění, která obdržela k šifrování obsahu poštovní schránky a vyžádání Ransom k opětovnému získání dat poštovní schránky. [Správci by měli kontrolovat a auditovat](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) oprávnění udělená uživateli nebo zakázat uživatelům udělit souhlas ve výchozím nastavení. 
+Uživatelé mohou být vyzrazeni na napadený web nebo aplikace, které získají přístup k informacím o profilu a uživatelským datům, jako je například jejich e-mailová adresa. Škodlivý objekt actor může použít odsouhlasená oprávnění, která obdržela k šifrování obsahu poštovní schránky a vyžádání Ransom k opětovnému získání dat poštovní schránky. [Správci by měli kontrolovat a auditovat](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) oprávnění udělená uživateli nebo zakázat uživatelům udělit souhlas ve výchozím nastavení.
 
 Kromě auditování oprávnění udělených uživateli může pomáhat při pokusu o [nalezení rizikových nebo nežádoucích aplikací OAuth](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth), což je funkce dostupná pro prostředí Premium.
 

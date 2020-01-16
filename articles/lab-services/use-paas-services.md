@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
-ms.openlocfilehash: a80a54f3dc760d80f713db9857cbef0c580e66d6
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 088913959b5850e87dc3a6a39d2907d30b7e5ade
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621374"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976251"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Používejte služby PaaS (Platform as a Service) v Azure DevTest Labs
 PaaS se v DevTest Labs podporuje přes funkci prostředí. Prostředí v DevTest Labs jsou podporovaná předem nakonfigurovanými šablonami Azure Resource Manager v úložišti Git. Prostředí můžou obsahovat prostředky PaaS i IaaS. Umožňují vytvářet komplexní systémy, které mohou zahrnovat prostředky Azure, jako jsou virtuální počítače, databáze, virtuální sítě a webové aplikace, které jsou přizpůsobené pro práci dohromady. Tyto šablony umožňují konzistentní nasazení a vylepšenou správu prostředí pomocí správy zdrojového kódu. 
@@ -39,7 +39,7 @@ Ve velkých organizacích vývojové týmy obvykle poskytují prostředí, jako 
 
 ## <a name="customizations"></a>Přizpůsobení
 
-#### <a name="sandbox"></a>Úložišti 
+#### <a name="sandbox"></a>Sandbox 
 Vlastník testovacího prostředí může přizpůsobit testovací prostředí, aby se změnila role uživatele ze **čtenáře** na **přispěvatele** v rámci skupiny prostředků. Tato funkce je na stránce **Nastavení testovacího prostředí** v části **Konfigurace a zásady** testovacího prostředí. Tato změna role umožňuje uživateli přidávat nebo odebírat prostředky v tomto prostředí. Pokud chcete přístup omezit, použijte zásady Azure. Tato funkce umožňuje přizpůsobit prostředky nebo konfiguraci bez přístupu na úrovni předplatného.
 
 #### <a name="custom-tokens"></a>Vlastní tokeny
@@ -53,7 +53,7 @@ K dispozici jsou některé vlastní informace o testovacím prostředí, které 
 Článek [připojení prostředí k virtuální síti testovacího prostředí](connect-environment-lab-virtual-network.md) popisuje, jak upravit šablonu správce prostředků tak, aby používala `$(LabSubnetId)` token. Po vytvoření prostředí se `$(LabSubnetId)` token nahradí první značkou podsítě, kde možnost **použití v možnosti vytváření virtuálních počítačů** je nastavená na **hodnotu true**. Umožňuje našemu prostředí používat dříve vytvořené sítě. Pokud chcete použít stejné šablony Správce prostředků v prostředích v testu jako pracovní a produkční, použijte `$(LabSubnetId)` jako výchozí hodnotu v parametru Správce prostředků šablony. 
 
 #### <a name="environment-storage-account"></a>Účet úložiště prostředí
-DevTest Labs podporuje použití [vnořených správce prostředků šablon](../azure-resource-manager/resource-group-linked-templates.md). Článek [[nasazení vnořených Azure Resource Manager šablon pro testovací prostředí](deploy-nested-template-environments.md) vysvětluje, jak pomocí `_artifactsLocation` a `_artifactsLocationSasToken` tokeny vytvořit identifikátor URI pro šablonu správce prostředků ve stejné složce jako nebo ve vnořené složce hlavní šablony. Další informace o těchto dvou tokenech najdete v části **artefakty nasazení** v tématu [Azure Resource Manager – Průvodce osvědčenými postupy](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md).
+DevTest Labs podporuje použití [vnořených správce prostředků šablon](../azure-resource-manager/templates/linked-templates.md). Článek [[nasazení vnořených Azure Resource Manager šablon pro testovací prostředí](deploy-nested-template-environments.md) vysvětluje, jak pomocí `_artifactsLocation` a `_artifactsLocationSasToken` tokeny vytvořit identifikátor URI pro šablonu správce prostředků ve stejné složce jako nebo ve vnořené složce hlavní šablony. Další informace o těchto dvou tokenech najdete v části **artefakty nasazení** v tématu [Azure Resource Manager – Průvodce osvědčenými postupy](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md).
 
 ## <a name="user-experience"></a>Činnost koncového uživatele
 
@@ -71,7 +71,7 @@ Funkce sledování nákladů zahrnuje prostředky Azure v různých prostředíc
 ### <a name="security"></a>Zabezpečení
 Správně nakonfigurované předplatné Azure s DevTest Labs může [omezit přístup k prostředkům Azure jenom prostřednictvím testovacího prostředí](devtest-lab-add-devtest-user.md). V prostředích může vlastník testovacího prostředí povolit uživatelům přístup k prostředkům PaaS se schválenými konfiguracemi bez povolení přístupu k jiným prostředkům Azure. V situaci, kdy uživatelé testovacího prostředí přizpůsobují prostředí, může vlastník testovacího prostředí dovolit přístup přispěvatele. Přístup přispěvatele umožňuje uživateli testovacího prostředí přidat nebo odebrat prostředek Azure jenom v rámci spravované skupiny prostředků. Umožňuje snazší sledování a správu a umožňuje přístup k předplatnému přispěvateli uživatelů.
 
-### <a name="automation"></a>Automatizace
+### <a name="automation"></a>Automation
 Automatizace je klíčovou komponentou pro velký rozsah, efektivní ekosystém. Automatizace je nutná pro zpracování správy nebo sledování více prostředí napříč předplatnými a Labs.
 
 ### <a name="cicd-pipeline"></a>Kanál CI/CD

@@ -3,7 +3,7 @@ title: Vysoká dostupnost a zotavení po havárii – Azure Batch | Microsoft Do
 description: Naučte se navrhovat aplikace Batch pro regionální výpadky.
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -12,13 +12,13 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: lahugh
-ms.openlocfilehash: 11446f5f23d470234b5dba641dc16e0bf71d9b72
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: jushiman
+ms.openlocfilehash: f30d2d8e7d08277a5782c3fc39c10fcdff9463f2
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094030"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029552"
 ---
 # <a name="design-your-application-for-high-availability"></a>Návrh aplikace pro zajištění vysoké dostupnosti
 

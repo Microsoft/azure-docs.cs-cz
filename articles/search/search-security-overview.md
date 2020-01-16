@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c1a800ceb12c2e7ad69329d0391478a8e2ae268b
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 44d5edd7b5808b6c212a832dd95de7a9cb4b7c08
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945693"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978585"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Zabezpečení a ochrana dat v Azure Kognitivní hledání
 
@@ -49,7 +49,7 @@ Dodržování standardů se vztahuje na všeobecně dostupné funkce. Funkce ve 
 
 K dispozici je několik mechanismů zabezpečení, které jsou k dispozici v rámci Azure, a tak automaticky dostupné pro prostředky Azure Kognitivní hledání, které vytvoříte.
 
-+ [Uzamkne na úrovni předplatného nebo prostředku, aby se zabránilo odstranění.](../azure-resource-manager/resource-group-lock-resources.md)
++ [Uzamkne na úrovni předplatného nebo prostředku, aby se zabránilo odstranění.](../azure-resource-manager/management/lock-resources.md)
 + [Access Control na základě rolí (RBAC) pro řízení přístupu k informacím a operacím správy](../role-based-access-control/overview.md)
 
 Všechny služby Azure podporují řízení přístupu na základě rolí (RBAC) pro jednotné nastavení úrovní přístupu napříč všemi službami. Například zobrazení citlivých dat, jako je klíč správce, je omezeno na role vlastníka a přispěvatele, zatímco zobrazení stavu služby je k dispozici pro členy jakékoli role. RBAC poskytuje role vlastníka, přispěvatele a čtenáře. Ve výchozím nastavení jsou všichni správci služby členy role vlastníka.

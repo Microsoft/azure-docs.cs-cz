@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 737cd9d306f01fa77dafa3d1a9a71495ff0a572e
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 0e4b2cd208e11f7696e016d3fa4353b38f3060d8
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940768"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977525"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Průběžná integrace a doručování v Azure Data Factory
 
@@ -145,7 +145,7 @@ Pokud máte tajné kódy, které byste měli předat do šablony Azure Resource 
 
 Existují dva způsoby, jak pokládat s tajnými kódy:
 
--  Přidejte tajné klíče do souboru Parameters. Další informace najdete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+1.  Přidejte tajné klíče do souboru Parameters. Další informace najdete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](../azure-resource-manager/templates/key-vault-parameter.md).
 
     Vytvořte kopii souboru parametrů, který se nahraje do větve publikování. Pomocí tohoto formátu nastavte hodnoty parametrů, které chcete získat z Key Vault:
 

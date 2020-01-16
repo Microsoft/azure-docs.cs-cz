@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2019
-ms.openlocfilehash: 5f37971e9680468c29efd5733517cb900852431f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4fc5afe3bbb4b2ccf2329432347b23fe9a69c5ea
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400757"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977673"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>Povolit Azure Monitor pro virtuální počítače (Preview) pomocí šablon Azure PowerShell nebo Správce prostředků
 
@@ -20,7 +20,7 @@ ms.locfileid: "75400757"
 
 Tento článek vysvětluje, jak povolit Azure Monitor pro virtuální počítače (Preview) pro virtuální počítače Azure nebo sady škálování virtuálních počítačů pomocí šablon Azure PowerShell nebo Azure Resource Manager. Na konci tohoto procesu budete úspěšně započati monitorování všech virtuálních počítačů a zjistili jste, jestli u nich dochází k problémům s výkonem nebo dostupností.
 
-## <a name="set-up-a-log-analytics-workspace"></a>Nastavte pracovní prostor Log Analytics 
+## <a name="set-up-a-log-analytics-workspace"></a>Nastavte pracovní prostor Log Analytics
 
 Pokud nemáte pracovní prostor Log Analytics, budete ho muset vytvořit. Než budete pokračovat postupem konfigurace, přečtěte si metody, které jsou navržené v části [požadavky](vminsights-enable-overview.md#log-analytics) . Pak můžete dokončit nasazení Azure Monitor pro virtuální počítače pomocí metody Azure Resource Manager šablony.
 
@@ -35,8 +35,8 @@ Pokud pracovní prostor Log Analytics, který je odkazován řešení ještě ne
 Tato metoda zahrnuje šablony JSON, který určuje konfiguraci pro povolení součásti řešení ve vašem pracovním prostoru Log Analytics.
 
 Pokud nevíte, jak nasadit prostředky pomocí šablony, přečtěte si téma:
-* [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/templates/deploy-powershell.md)
+* [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
 Pokud chcete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.27 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud chcete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -91,7 +91,7 @@ Pokud chcete používat rozhraní příkazového řádku Azure, musíte nejdří
 1. Zachyťte hodnoty pro pole *pracovní prostor*, *ResourceGroupName*a *WorkspaceLocation*. Hodnota pro název *pracovního prostoru* je název vašeho pracovního prostoru Log Analytics. Hodnota pro *WorkspaceLocation* je pracovní prostor je definována v oblasti.
 
 1. Jste připraveni k nasazení této šablony.
- 
+
     * Do složky obsahující šablonu použijte následující příkazy Powershellu:
 
         ```powershell
@@ -105,7 +105,7 @@ Pokud chcete používat rozhraní příkazového řádku Azure, musíte nejdří
         ```
 
     * Chcete-li pomocí Azure CLI, spusťte následující příkaz:
-    
+
         ```azurecli
         az login
         az account set --subscription "Subscription Name"
@@ -126,14 +126,14 @@ Vytvořili jsme příklady Azure Resource Manager šablon pro připojování vir
 >Šablona musí být nasazená ve stejné skupině prostředků jako prostředek, který se má uvést na desce.
 
 Pokud nevíte, jak nasadit prostředky pomocí šablony, přečtěte si téma:
-* [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/templates/deploy-powershell.md)
+* [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
 Pokud chcete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.27 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud chcete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="download-templates"></a>Stažení šablon
 
-Šablony Azure Resource Manager jsou k dispozici v souboru archivu (. zip), který si můžete [Stáhnout](https://aka.ms/VmInsightsARMTemplates) z našeho úložiště GitHub. Obsah souboru zahrnuje složky, které reprezentují jednotlivé scénáře nasazení, pomocí šablony a souboru parametrů. Než je spustíte, upravte soubor parametrů a zadejte požadované hodnoty. Neupravujte soubor šablony, pokud ho nepotřebujete přizpůsobit, aby podporoval vaše konkrétní požadavky. Po úpravě souboru parametrů ho můžete nasadit pomocí následujících metod popsaných dále v tomto článku. 
+Šablony Azure Resource Manager jsou k dispozici v souboru archivu (. zip), který si můžete [Stáhnout](https://aka.ms/VmInsightsARMTemplates) z našeho úložiště GitHub. Obsah souboru zahrnuje složky, které reprezentují jednotlivé scénáře nasazení, pomocí šablony a souboru parametrů. Než je spustíte, upravte soubor parametrů a zadejte požadované hodnoty. Neupravujte soubor šablony, pokud ho nepotřebujete přizpůsobit, aby podporoval vaše konkrétní požadavky. Po úpravě souboru parametrů ho můžete nasadit pomocí následujících metod popsaných dále v tomto článku.
 
 Soubor ke stažení obsahuje následující šablony pro různé scénáře:
 
@@ -180,7 +180,7 @@ provisioningState       : Succeeded
 Pokud chcete povolit Azure Monitor pro virtuální počítače pro víc virtuálních počítačů nebo Virtual Machine Scale Sets, použijte skript PowerShellu [install-VMInsights. ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0). Je k dispozici z Galerie Azure PowerShell. Tento skript prochází:
 
 - Všechny virtuální počítače a sady škálování virtuálních počítačů ve vašem předplatném.
-- Rozsah skupiny prostředků, který je *určený skupinou zdrojů.* 
+- Rozsah skupiny prostředků, který je *určený skupinou zdrojů.*
 - Jeden virtuální počítač nebo sada škálování virtuálního počítače určené *názvem*.
 
 Pro každý virtuální počítač nebo virtuální počítač ve škálovací sadě skript ověří, zda je rozšíření virtuálního počítače již nainstalován. Pokud je rozšíření virtuálního počítače nainstalované, skript se ho pokusí znovu nainstalovat. Pokud rozšíření virtuálního počítače není nainstalované, skript nainstaluje rozšíření virtuálního počítače agenta Log Analytics a závislostí.
@@ -341,7 +341,7 @@ Failed: (0)
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když je monitorování povolené pro vaše virtuální počítače, jsou tyto informace k dispozici pro analýzu pomocí Azure Monitor pro virtuální počítače.
- 
-- Chcete-li zobrazit závislosti zjištěných aplikací, najdete v článku [zobrazení monitorování Azure pro virtuální počítače mapu](vminsights-maps.md). 
 
-- Pokud chcete zjistit kritické body a celkové využití výkonu vašeho virtuálního počítače, přečtěte si téma [zobrazení výkonu virtuálních počítačů Azure](vminsights-performance.md). 
+- Chcete-li zobrazit závislosti zjištěných aplikací, najdete v článku [zobrazení monitorování Azure pro virtuální počítače mapu](vminsights-maps.md).
+
+- Pokud chcete zjistit kritické body a celkové využití výkonu vašeho virtuálního počítače, přečtěte si téma [zobrazení výkonu virtuálních počítačů Azure](vminsights-performance.md).

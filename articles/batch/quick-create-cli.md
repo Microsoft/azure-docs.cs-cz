@@ -2,22 +2,22 @@
 title: Rychlý start Azure – spuštění úlohy služby Batch – rozhraní příkazového řádku
 description: Můžete se rychle naučit, jak pomocí Azure CLI spustit úlohu služby Batch.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 72c3244fbd9c8d547e35c31f0cd6e659e367e21a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 900bafd5b27fcb5021e9dae2a6bbc13d4e233a45
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322494"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029477"
 ---
-# <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí Azure CLI
+# <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí rozhraní příkazového řádku Azure
 
 Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Tento rychlý start ukazuje, jak pomocí Azure CLI vytvořit účet Batch, *fond* výpočetních uzlů (virtuálních počítačů) a *úlohu*, která bude ve fondu spouštět *úkoly*. Každý ukázkový úkol spustí základní příkaz na jednom z uzlů fondu. Po dokončení tohoto rychlého startu budete rozumět klíčovým konceptům služby Batch a budete moct službu Batch vyzkoušet ve větším měřítku s úlohami, které víc odpovídají realitě.
 
@@ -39,7 +39,7 @@ az group create \
     --location eastus2
 ```
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Účet Batch můžete propojit s účtem Azure Storage. I když to k tomuto rychlému startu není nutné, účet úložiště je užitečný při nasazování aplikací a ukládání vstupních a výstupních dat ve většině reálných způsobů využití. Ve vaší skupině prostředků vytvořte účet úložiště pomocí příkazu [az storage account create](/cli/azure/storage/account#az-storage-account-create).
 
@@ -51,11 +51,11 @@ az storage account create \
     --sku Standard_LRS
 ```
 
-## <a name="create-a-batch-account"></a>Vytvoření účtu Batch
+## <a name="create-a-batch-account"></a>Vytvoření účtu služby Batch
 
 K vytvoření účtu Batch použijte příkaz [az batch account create](/cli/azure/batch/account#az-batch-account-create). Účet potřebujete pro vytvoření výpočetních prostředků (fondy výpočetních uzlů) a úloh služby Batch.
 
-Následující příkaz vytvoří účet služby Batch s názvem *mybatchaccount* v *myResourceGroup* a propojí účet úložiště, který jste vytvořili.  
+Následující příkaz vytvoří účet Batch s názvem *mybatchaccount* ve skupině prostředků *myResourceGroup* a propojí ho s účtem úložiště, který jste vytvořili.  
 
 ```azurecli-interactive 
 az batch account create \
@@ -74,7 +74,7 @@ az batch account login \
     --shared-key-auth
 ```
 
-## <a name="create-a-pool-of-compute-nodes"></a>Vytvoření fondu výpočetních uzlů
+## <a name="create-a-pool-of-compute-nodes"></a>Vytvořte fond výpočetních uzlů.
 
 Teď, když máte účet služby Batch, vytvořte ukázkový fond linuxových výpočetních uzlů pomocí příkazu [az batch pool create](/cli/azure/batch/pool#az-batch-pool-create). Následující příkaz vytvoří fond nazvaný *mypool* se 2 uzly velikosti *Standard_A1_v2*, na kterých běží Ubuntu 16.04 LTS. Navržená velikost uzlu nabízí pro tento rychlý příklad dobrou rovnováhu mezi výkonem a náklady.
  
@@ -204,7 +204,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, účtu 
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili účet Batch, fond služby Batch a úlohu služby Batch. Úloha spustila ukázkové úkoly a prohlédli jste si výstup vytvořený v jednom z uzlů. Teď chápete klíčové koncepty služby Batch a můžete službu Batch vyzkoušet ve větším měřítku s úlohami, které víc odpovídají realitě. Další informace o službě Azure Batch najdete v dalších kurzech o službě Azure Batch. 
 

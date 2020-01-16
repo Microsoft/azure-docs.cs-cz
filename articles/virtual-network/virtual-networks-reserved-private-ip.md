@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c37c49d8f7e09334014af290bf3a8c8e6d35f04b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: a13a0a54e9ded48cc5848843f4c329b2dea90f65
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058355"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975219"
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>Jak nastavit statickou interní privátní IP adresu pomocí PowerShellu (Classic)
 Ve většině případů nebudete muset pro svůj virtuální počítač zadávat statickou interní IP adresu. Virtuální počítače ve virtuální síti automaticky obdrží interní IP adresu z rozsahu, který zadáte. V některých případech ale určením statické IP adresy pro konkrétní virtuální počítač dává smysl. Například pokud váš virtuální počítač bude používat DNS nebo se bude jednat o řadič domény. Statická interní IP adresa zůstává s virtuálním počítačem i přes stav zastavení nebo zrušení zřízení. 
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi:  [Správce prostředků a klasický](../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby většina nových nasazení používala [model nasazení Správce prostředků](virtual-networks-static-private-ip-arm-ps.md).
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../azure-resource-manager/management/deployment-models.md). Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby většina nových nasazení používala [model nasazení Správce prostředků](virtual-networks-static-private-ip-arm-ps.md).
 > 
 > 
 > ## <a name="install-the-azure-powershell-service-management-module"></a>Instalace modulu Azure PowerShell Service Management
 
-Před spuštěním následujících příkazů se ujistěte, že [je v počítači nainstalován modul](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0
-) správy služby Azure PowerShell. Historii verzí modulu správy služeb Azure PowerShell najdete [v tématu modul Azure v Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Azure/5.3.0).
+Před spuštěním následujících příkazů se ujistěte, že je v počítači nainstalován [modul správy služby Azure PowerShell](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0
+) . Historii verzí modulu správy služeb Azure PowerShell najdete [v tématu modul Azure v Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Azure/5.3.0).
 
 ## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>Jak ověřit, zda je k dispozici konkrétní IP adresa
 Pokud chcete ověřit, jestli je IP adresa *10.0.0.7* dostupná ve virtuální síti s názvem *TestVnet*, spusťte následující příkaz PowerShellu a ověřte, jestli je hodnota *dostupná*.
@@ -51,7 +51,7 @@ Pokud chcete ověřit, jestli je IP adresa *10.0.0.7* dostupná ve virtuální s
 > 
 
 ## <a name="how-to-specify-a-static-internal-ip-when-creating-a-vm"></a>Jak zadat statickou interní IP adresu při vytváření virtuálního počítače
-Skript PowerShellu níže vytvoří novou cloudovou službu s názvem *TestService*, potom načte image z Azure a pak vytvoří virtuální počítač s názvem *TestVM* v nové cloudové službě pomocí načtené image, nastaví virtuální počítač jako v podsíti s názvem *podsíť-1*, a nastaví *10.0.0.7* jako statickou interní IP adresu pro virtuální počítač:
+Skript PowerShellu níže vytvoří novou cloudovou službu s názvem *TestService*, potom načte image z Azure a pak vytvoří virtuální počítač s názvem *TestVM* v nové cloudové službě pomocí načtené image, nastaví virtuální počítač jako v podsíti s názvem *podsíť-1*a nastaví *10.0.0.7* jako statickou interní IP adresu pro virtuální počítač:
 
     New-AzureService -ServiceName TestService -Location "Central US"
     $image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
@@ -107,7 +107,7 @@ Pokud chcete přidat statickou interní IP adresu k virtuálnímu počítači vy
     | Set-AzureStaticVNetIP -IPAddress 10.10.0.7 `
     | Update-AzureVM
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Vyhrazená IP adresa](virtual-networks-reserved-public-ip.md)
 
 [Veřejná IP adresa na úrovni instance (ILPIP)](virtual-networks-instance-level-public-ip.md)
