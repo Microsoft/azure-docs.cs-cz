@@ -10,26 +10,26 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 13e9abb2a7b79ad9355261832145766e424c3df6
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b49b3187f9178012131d793a7762ae470b0ea540
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895162"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965720"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>Volání REST API operací s autorizací sdíleného klíče
 
 V tomto článku se dozvíte, jak volat Azure Storage rozhraní REST API, včetně toho, jak vytvořit autorizační hlavičku. Je napsaný z pohledu vývojáře, který neví nic o REST a neobsahuje žádné informace o tom, jak provést volání REST. Až se dozvíte, jak zavolat operaci REST, můžete tyto znalosti využít k používání dalších Azure Storagech operací REST.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Ukázková aplikace obsahuje seznam kontejnerů objektů BLOB pro účet úložiště. K tomu, abyste si vyzkoušeli kód v tomto článku, potřebujete následující položky: 
+Ukázková aplikace obsahuje seznam kontejnerů objektů BLOB pro účet úložiště. K tomu, abyste si vyzkoušeli kód v tomto článku, potřebujete následující položky:
 
 - Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) s úlohou **vývoj pro Azure** .
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-- Účet úložiště pro obecné účely. Pokud ještě nemáte účet úložiště, přečtěte si téma [Vytvoření účtu úložiště](storage-quickstart-create-account.md).
+- Účet úložiště pro obecné účely. Pokud ještě nemáte účet úložiště, přečtěte si téma [Vytvoření účtu úložiště](storage-account-create.md).
 
 - V příkladu v tomto článku se dozvíte, jak vytvořit seznam kontejnerů v účtu úložiště. Pokud chcete zobrazit výstup, přidejte do úložiště objektů BLOB v účtu úložiště nějaké kontejnery, než začnete.
 
@@ -43,7 +43,7 @@ Pomocí [gitu](https://git-scm.com/) stáhněte kopii aplikace do svého vývojo
 git clone https://github.com/Azure-Samples/storage-dotnet-rest-api-with-auth.git
 ```
 
-Tento příkaz naklonuje úložiště do vaší místní složky gitu. Chcete-li otevřít řešení sady Visual Studio, vyhledejte složku Storage-dotnet-REST-API-with-auth, otevřete ji a dvakrát klikněte na StorageRestApiAuth. sln. 
+Tento příkaz naklonuje úložiště do vaší místní složky gitu. Chcete-li otevřít řešení sady Visual Studio, vyhledejte složku Storage-dotnet-REST-API-with-auth, otevřete ji a dvakrát klikněte na StorageRestApiAuth. sln.
 
 ## <a name="about-rest"></a>O REST
 
@@ -93,16 +93,16 @@ V případě zabezpečení při provozu v produkčním prostředí vždy použij
 
 V našem ukázkovém projektu je kód pro vytvoření autorizační hlavičky v samostatné třídě. Nápad je, že můžete použít celou třídu a přidat ji do vlastního řešení a použít ji "tak, jak je". Kód autorizační hlavičky funguje pro většinu REST API volání Azure Storage.
 
-Chcete-li vytvořit požadavek, který je objektem zprávy HttpRequestMessage, v Program.cs použijte ListContainersAsyncREST. Postup pro sestavování žádosti: 
+Chcete-li vytvořit požadavek, který je objektem zprávy HttpRequestMessage, v Program.cs použijte ListContainersAsyncREST. Postup pro sestavování žádosti:
 
-- Vytvořte identifikátor URI, který se má použít pro volání služby. 
+- Vytvořte identifikátor URI, který se má použít pro volání služby.
 - Vytvořte objekt zprávy HttpRequestMessage a nastavte datovou část. Datová část má pro ListContainersAsyncREST hodnotu null, protože neprovádíme žádnou možnost.
 - Přidejte hlavičky žádosti pro x-MS-Date a x-MS-Version.
 - Získejte autorizační hlavičku a přidejte ji.
 
-Některé základní informace, které potřebujete: 
+Některé základní informace, které potřebujete:
 
-- Pro ListContainers je **metoda** `GET`. Tato hodnota je nastavena při vytváření instance žádosti. 
+- Pro ListContainers je **metoda** `GET`. Tato hodnota je nastavena při vytváření instance žádosti.
 - **Prostředek** je DOTAZOVACÍ část identifikátoru URI, která určuje, které rozhraní API se zavolá, takže hodnota `/?comp=list`. Jak bylo uvedeno výše, prostředek se nachází na stránce Referenční dokumentace, která zobrazuje informace o [rozhraní ListContainers API](/rest/api/storageservices/List-Containers2).
 - Identifikátor URI je vytvořený vytvořením koncového bodu Blob service pro tento účet úložiště a zřetězením prostředku. Hodnota pro **identifikátor URI žádosti** končí `http://contosorest.blob.core.windows.net/?comp=list`.
 - V případě ListContainers má **částmi** hodnotu null a nejsou k dispozici žádné další **hlavičky**.
@@ -160,7 +160,7 @@ Teď, když jste sestavili žádost, můžete zavolat metodu SendAsync a odeslat
     using (HttpResponseMessage httpResponseMessage =
       await new HttpClient().SendAsync(httpRequestMessage, cancellationToken))
     {
-        // If successful (status code = 200), 
+        // If successful (status code = 200),
         //   parse the XML response for the container names.
         if (httpResponseMessage.StatusCode == HttpStatusCode.OK)
         {
@@ -209,7 +209,7 @@ Content-Length: 1511
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>
-<EnumerationResults 
+<EnumerationResults
   ServiceEndpoint="http://contosorest.blob.core.windows.net/">
   <Containers>
     <Container>
@@ -308,7 +308,7 @@ Pojďme začít s těmito dvěma kanonickými poli, protože jsou nutné k vytvo
 
 ### <a name="canonicalized-headers"></a>Kanonické hlavičky
 
-Chcete-li vytvořit tuto hodnotu, načtěte hlavičky, které začínají řetězcem "x-MS-" a seřaďte je, a pak je naformátujte do řetězce `[key:value\n]` instance, zřetězené do jednoho řetězce. V tomto příkladu budou kanonické hlavičky vypadat takto: 
+Chcete-li vytvořit tuto hodnotu, načtěte hlavičky, které začínají řetězcem "x-MS-" a seřaďte je, a pak je naformátujte do řetězce `[key:value\n]` instance, zřetězené do jednoho řetězce. V tomto příkladu budou kanonické hlavičky vypadat takto:
 
 ```
 x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
@@ -316,7 +316,7 @@ x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
 
 Zde je kód, který slouží k vytvoření tohoto výstupu:
 
-```csharp 
+```csharp
 private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMessage)
 {
     var headers = from kvp in httpRequestMessage.Headers
@@ -444,7 +444,7 @@ https://myaccount.blob.core.windows.net/container-1?restype=container&comp=list
 V ListContainersAsyncREST změňte kód, který nastaví identifikátor URI na rozhraní API pro ListBlobs. Název kontejneru je **kontejner-1**.
 
 ```csharp
-String uri = 
+String uri =
     string.Format("http://{0}.blob.core.windows.net/container-1?restype=container&comp=list",
       storageAccountName);
 
@@ -516,7 +516,7 @@ Date: Fri, 17 Nov 2017 05:20:21 GMT
 Content-Length: 1135
 ```
 
-**Tělo odpovědi (XML):** Tato odpověď XML zobrazuje seznam objektů BLOB a jejich vlastností. 
+**Tělo odpovědi (XML):** Tato odpověď XML zobrazuje seznam objektů BLOB a jejich vlastností.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

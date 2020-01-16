@@ -1,0 +1,149 @@
+- name: Dokumentace k fakturačním účtům a předplatným
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je Cost Management a fakturace?
+      href: ../cost-management-billing-overview.md
+- name: Návody
+  expanded: true
+  items:
+    - name: Bezplatný účet
+      items:
+        - name: Vytvoření bezplatných služeb
+          href: create-free-services.md
+        - name: Jak se vyhnout poplatkům
+          href: avoid-charges-free-account.md
+        - name: Kontrola využití
+          href: check-free-service-usage.md
+        - name: Upgrade bezplatného účtu
+          href: upgrade-azure-subscription.md
+    - name: Správa účtů
+      items:
+        - name: Úlohy správce účtu
+          href: account-admin-tasks.md
+        - name: Upgrade účtu Azure
+          href: upgrade-azure-subscription.md
+        - name: Úprava profilu
+          href: change-azure-account-profile.md
+        - name: Řešení zůstatku po splatnosti
+          href: resolve-past-due-balance.md
+        - name: Udělení přístupu k fakturaci
+          href: manage-billing-access.md
+        - name: Role smlouvy se zákazníkem Microsoftu v Azure
+          href: understand-mca-roles.md
+        - name: Propojení ID partnera
+          href: link-partner-id.md
+    - name: Správa účtů
+      items:
+        - name: Zobrazení fakturačních účtů
+          href: view-all-accounts.md
+        - name: Organizace nákladů pomocí oddílů faktury
+          href: mca-section-invoice.md
+        - name: Nastavení fakturačního účtu pro Smlouvu se zákazníkem Microsoftu
+          href: mca-setup-account.md
+        - name: Registrace s použitím účtu Office 365
+          href: office-365-account-for-azure-subscription.md
+        - name: Registrace Office 365 pomocí účtu Azure
+          href: azure-account-for-office-365-subscription.md
+        - name: Platba s využitím silného ověřování zákazníků
+          href: open-banking-strong-customer-authentication.md
+    - name: Správa předplatných
+      items:
+        - name: Stavy předplatných
+          href: subscription-states.md
+        - name: Opětovná aktivace předplatného
+          href: subscription-disabled.md
+        - name: Opětovná aktivace předplatného Azure pro studenty
+          href: azurestudents-subscription-disabled.md
+        - name: Převod vlastnictví
+          href: billing-subscription-transfer.md
+        - name: Vyžádání vlastnictví Smlouvy se zákazníkem Microsoftu
+          href: mca-request-billing-ownership.md
+        - name: Vyžádání vlastnictví Smlouvy s partnerem Microsoftu
+          href: mpa-request-ownership.md
+    - name: Správa předplatných
+      items:
+        - name: Zrušení předplatného
+          href: cancel-azure-subscription.md
+        - name: Změna platební karty
+          href: change-credit-card.md
+        - name: Změna správce
+          href: add-change-subscription-administrator.md
+        - name: Přepnutí nabídky předplatného
+          href: switch-azure-offer.md
+        - name: Platba na základě faktury
+          href: pay-by-invoice.md
+        - name: Vytvoření dalších předplatných
+          href: create-subscription.md
+        - name: Export informací o předplatném
+          href: export-subscriptions.md
+    - name: Správa předplatných smlouvy Enterprise
+      items:
+        - name: Začínáme na portálu Azure EA
+          href: ea-portal-get-started.md
+        - name: Vysvětlení informací na faktuře za EA
+          href: ../understand/review-enterprise-agreement-bill.md
+        - name: Role EA v Azure
+          href: understand-ea-roles.md
+        - name: Správa portálu Azure EA
+          href: ea-portal-administration.md
+        - name: Úlohy EA ve smlouvě se zákazníkem Microsoftu
+          href: mca-enterprise-operations.md
+        - name: Smlouvy k Azure EA a jejich změny
+          href: ea-portal-agreements.md
+        - name: Faktury za smlouvy Enterprise
+          href: ea-portal-enrollment-invoices.md
+        - name: Rozhraní Azure Enterprise REST API
+          href: ea-portal-rest-apis.md
+        - name: Rezervované instance virtuálních počítačů Azure EA
+          href: ea-portal-vm-reservations.md
+        - name: Řešení potíží s přístupem k portálu Azure EA
+          href: ea-portal-troubleshoot.md
+        - name: Úlohy EA ve smlouvě se zákazníkem Microsoftu
+          href: mca-enterprise-operations.md
+- name: Řešení potíží
+  items:
+    - name: Nenalezena žádná předplatná
+      href: no-subscriptions-found.md
+    - name: Problémy s platbou
+      href: billing-troubleshoot-azure-payment-issues.md
+    - name: Odmítnutá karta
+      href: troubleshoot-declined-card.md
+    - name: Problémy s registrací
+      href: troubleshoot-azure-sign-up.md
+    - name: Problémy s přihlašováním k předplatnému
+      href: troubleshoot-sign-in-issue.md
+    - name: Zákaz zobrazení firemních nákladů
+      href: enterprise-mgmt-grp-troubleshoot-cost-view.md
+    - name: Kontaktování podpory
+      href: ../../azure-portal/supportability/how-to-create-azure-support-request.md
+- name: ukázky
+  items:
+    - name: Vzorový kód pro rozhraní API pro faktury
+      href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
+    - name: Vzorový kód pro rozhraní API služby Usage
+      href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
+    - name: Vzorový kód pro rozhraní API služby RateCard
+      href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
+- name: Referenční informace
+  items:
+    - name: Scénáře automatizace služby Billing
+      href: cost-management-automation-scenarios.md
+    - name: Správa nákladů s využitím služby Azure Budgets
+      href: cost-management-budget-scenario.md
+    - name: Přehled rozhraní API služby Azure Billing
+      href: usage-rate-card-overview.md
+    - name: Rozhraní REST API služby Azure Billing
+      href: 'https://docs.microsoft.com/rest/api/billing'
+    - name: Přehled rozhraní API služby Azure Consumption
+      href: consumption-api-overview.md
+    - name: Rozhraní REST API služby Azure Consumption
+      href: 'https://docs.microsoft.com/rest/api/consumption'
+    - name: Rozhraní REST API služby RateCard
+      href: 'https://msdn.microsoft.com/library/azure/mt219005.aspx'
+    - name: Rozhraní REST API služby Usage
+      href: 'https://msdn.microsoft.com/library/azure/mt219003.aspx'
+    - name: Přehled služby Enterprise Reporting
+      href: enterprise-api.md
+    - name: Rozhraní REST API služby Enterprise Reporting
+      href: 'https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary'

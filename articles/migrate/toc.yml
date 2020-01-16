@@ -54,22 +54,28 @@
   items:
     - name: Matice podpory
       items:
-        - name: Matice podpory pro Azure Migrate
+        - name: Obecná podpora
           href: migrate-support-matrix.md
-        - name: Matice podpory pro vyhodnocení a migraci VMware
+        - name: Podpora posouzení pro VMware
           href: migrate-support-matrix-vmware.md
-        - name: Matice podpory pro vyhodnocení a migraci Hyper-V
+        - name: Podpora migrace pro VMware
+          href: migrate-support-matrix-vmware-migration.md
+        - name: Podpora posouzení pro Hyper-V
           href: migrate-support-matrix-hyper-v.md
-        - name: Matice podpory pro vyhodnocení a migraci fyzických serverů
+        - name: Podpora migrace pro Hyper-V
+          href: migrate-support-matrix-hyper-v-migration.md
+        - name: Podpora posouzení pro fyzický server
           href: migrate-support-matrix-physical.md
-        - name: Matice podpory pro zařízení Azure Migrate
+        - name: Podpora migrace pro fyzický server
+          href: migrate-support-matrix-physical-migration.md
+        - name: Požadavky zařízení Azure Migrate
           href: migrate-appliance.md
+        - name: Požadavky zařízení replikace
+          href: migrate-replication-appliance.md
     - name: Architektura migrace Hyper-V
       href: hyper-v-migration-architecture.md
     - name: Architektura migrace založené na agentech
       href: agent-based-migration-architecture.md
-    - name: Zařízení pro replikaci Azure Migrate
-      href: migrate-replication-appliance.md
     - name: Osvědčené postupy pro vyhodnocení
       href: best-practices-assessment.md
     - name: Přehled hodnocení
@@ -112,16 +118,16 @@
       href: prepare-for-migration.md
     - name: Odstranění projektu Azure Migrate
       href: how-to-delete-project.md
-- name: Vyhodnocení a migrace ve velkém měřítku
-  items:
-    - name: Přístup k velkému počtu virtuálních počítačů VMware
-      href: scale-vmware-assessment.md
-    - name: Přístup k velkému počtu virtuálních počítačů Hyper-V
-      href: scale-hyper-v-assessment.md
-    - name: Automatizace migrace velkého počtu virtuálních počítačů
-      href: how-to-migrate-at-scale.md
-    - name: Příklady migrace (série Contoso)
-      href: contoso-migration-overview.md
+    - name: Vyhodnocení a migrace ve velkém měřítku
+      items:
+        - name: Přístup k velkému počtu virtuálních počítačů VMware
+          href: scale-vmware-assessment.md
+        - name: Přístup k velkému počtu virtuálních počítačů Hyper-V
+          href: scale-hyper-v-assessment.md
+        - name: Automatizace migrace velkého počtu virtuálních počítačů
+          href: how-to-migrate-at-scale.md
+        - name: Příklady migrace (série Contoso)
+          href: contoso-migration-overview.md
 - name: Řešení potíží
   items:
     - name: Řešení problémů s Azure Migrate

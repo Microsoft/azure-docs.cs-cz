@@ -1,0 +1,84 @@
+### YamlMime:Landing
+title: Správa využití a nákladů na Azure
+summary: Azure Cost Management je řešení pro správu nákladů, které pomáhá monitorovat a kontrolovat útratu za Azure a optimalizovat využití prostředků. Prostřednictvím našich rychlých zprovoznění a kurzů se naučíte analyzovat náklady, vytvářet a spravovat rozpočty, exportovat data, kontrolovat doporučení a reagovat na ně.
+metadata:
+  title: Cost Management a fakturace
+  description: Azure Cost Management je řešení pro správu nákladů, které pomáhá monitorovat a kontrolovat útratu za Azure a optimalizovat využití prostředků. Prostřednictvím našich rychlých zprovoznění a kurzů se naučíte analyzovat náklady, vytvářet a spravovat rozpočty, exportovat data, kontrolovat doporučení a reagovat na ně.
+  ms.service: cost-management-billing
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.manager: dougeby
+  ms.date: 12/18/2019
+  ms.openlocfilehash: 33821c027d242da1a9361a796280213b5265dcde
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75983218"
+landingContent:
+- title: Další informace o Cost Managementu
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Cost Management a fakturace?
+      url: ../cost-management-billing-overview.md
+  - linkListType: concept
+    links:
+    - text: Osvědčené postupy ve službě Azure Cost Management
+      url: cost-mgt-best-practices.md
+    - text: Vysvětlení dat služby Cost Management
+      url: understand-cost-mgt-data.md
+    - text: Vysvětlení a práce s rozsahy
+      url: understand-work-scopes.md
+- title: Analýza a správa nákladů na Azure
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Začínáme s analýzou nákladů
+      url: quick-acm-cost-analysis.md
+  - linkListType: tutorial
+    links:
+    - text: Vytváření a správa rozpočtů
+      url: tutorial-acm-create-budgets.md
+    - text: Export dat o nákladech a využití
+      url: tutorial-export-acm-data.md
+    - text: Využití doporučení
+      url: tutorial-acm-opt-recommendations.md
+  - linkListType: how-to-guide
+    links:
+    - text: Přiřazení přístupu k datům
+      url: assign-access-acm-data.md
+    - text: Použití analýzy nákladů pro běžné úlohy
+      url: cost-analysis-common-uses.md
+    - text: Použití upozornění na náklady
+      url: cost-mgt-alerts-monitor-usage-spending.md
+    - text: Cost Management pro partnery
+      url: get-started-partners.md
+    - text: Propojení s Power BI Desktopem
+      url: /power-bi/desktop-connect-azure-cost-management
+- title: Analýza a správa nákladů na AWS
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Nastavení a konfigurace integrace AWS
+      url: aws-integration-set-up-configure.md
+    - text: Správa nákladů a využití AWS
+      url: aws-integration-manage.md
+- title: Rozhraní API Cost Managementu
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Migrace z rozhraní API EA na MCA
+      url: migrate-cost-management-api.md
+  - linkListType: reference
+    links:
+    - text: Rozhraní REST API služby Azure Cost Management
+      url: https://docs.microsoft.com/rest/api/cost-management
+    - text: Rozhraní REST API služby Azure Consumption
+      url: https://docs.microsoft.com/rest/api/consumption
+    - text: Šablona Resource Manageru
+      url: /azure/templates/microsoft.consumption/budgets
+    - text: Ukázky rozhraní REST API služby Cost Management
+      url: https://github.com/Azure-Samples/Cost-Management-Samples

@@ -12,18 +12,19 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9603cdf11373891aaa3541330cb7f65c09352496
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b621c9cbc35d0e9956f6648d870102affd84c24f
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818894"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028393"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrace z federace na synchronizaci hodnot hash hesel pro Azure Active Directory
 
 Tento článek popisuje, jak přesunout domény organizace z Active Directory Federation Services (AD FS) (AD FS) na synchronizaci hodnot hash hesel.
 
-[Tento článek](https://aka.ms/ADFSTOPHSDPDownload)si můžete stáhnout.
+> [!NOTE]
+> Změna metody ověřování vyžaduje plánování, testování a případné výpadky. [Připravené zavedení](how-to-connect-staged-rollout.md) nabízí alternativní způsob testování a postupného migrace z federace na cloudové ověřování pomocí synchronizace hodnot hash hesel.
 
 ## <a name="prerequisites-for-migrating-to-password-hash-synchronization"></a>Předpoklady pro migraci na synchronizaci hodnot hash hesel
 
@@ -135,10 +136,10 @@ Tato část popisuje požadavky na nasazení a podrobnosti o používání AD FS
 
 Před převodem z federované identity na spravovanou identitu si pečlivě prohlédněte, jak aktuálně používáte AD FS pro Azure AD, Office 365 a další aplikace (vztahy důvěryhodnosti předávající strany). Konkrétně Vezměte v úvahu scénáře, které jsou popsány v následující tabulce:
 
-| Pokud uživatel | Stisknutím |
+| Pokud uživatel | Pak |
 |-|-|
 | Plánujete dál používat AD FS s jinými aplikacemi (kromě Azure AD a Office 365). | Po převedení domén budete používat AD FS i Azure AD. Vezměte v úvahu činnost koncového uživatele. V některých scénářích může být potřeba, aby se uživatelé museli ověřovat dvakrát: jednou pro Azure AD (kde uživatel získá přístup SSO k ostatním aplikacím, jako je třeba Office 365), a znovu pro všechny aplikace, které jsou pořád vázané na AD FS jako vztah důvěryhodnosti předávající strany. |
-| Vaše instance AD FS je silně přizpůsobená a spoléhá na konkrétní nastavení přizpůsobení v souboru Unload. js (například pokud jste změnili přihlašovací prostředí tak, aby uživatelé používali jenom formát **sAMAccountName** pro svoje uživatelské jméno místo objektu zabezpečení uživatele). Name (UPN) nebo vaše organizace intenzivně přihlásilo prostředí. Soubor. js se nedá v Azure AD duplikovat. | Než budete pokračovat, musíte ověřit, že služba Azure AD dokáže splnit vaše aktuální požadavky na vlastní nastavení. Další informace a pokyny najdete v částech AD FS brandingu a AD FS přizpůsobení.|
+| Vaše instance AD FS je silně přizpůsobená a spoléhá na konkrétní nastavení přizpůsobení v souboru. js. js (například pokud jste změnili přihlašovací prostředí tak, aby uživatelé používali jenom formát **sAMAccountName** pro svoje uživatelské jméno místo hlavního názvu uživatele (UPN), nebo vaše organizace zcela vytvořila prostředí pro přihlašování. Soubor. js se nedá v Azure AD duplikovat. | Než budete pokračovat, musíte ověřit, že služba Azure AD dokáže splnit vaše aktuální požadavky na vlastní nastavení. Další informace a pokyny najdete v částech AD FS brandingu a AD FS přizpůsobení.|
 | K blokování starších verzí ověřovacích klientů slouží AD FS.| Zvažte nahrazení AD FS ovládacích prvků, které blokují starší verze ověřování klientů pomocí kombinace [ovládacích prvků podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) a [pravidel přístupu klienta Exchange Online](https://aka.ms/EXOCAR). |
 | Požadujete, aby uživatelé prováděli vícefaktorové ověřování proti místnímu řešení Multi-Factor Authentication serveru, když se uživatelé ověřují AD FS.| Ve spravované doméně identity nemůžete do toku ověřování vložit výzvu Multi-Factor Authentication prostřednictvím místního řešení Multi-Factor Authentication. Po převodu domény ale můžete službu Azure Multi-Factor Authentication použít pro službu Multi-Factor Authentication.<br /><br /> Pokud uživatelé aktuálně nepoužívají Multi-Factor Authentication Azure, je nutný krok registrace uživatele jednorázová. Musíte připravit na a sdělit plánované registrace vašim uživatelům. |
 | V AD FS v tuto chvíli používáte k řízení přístupu k Office 365 zásady řízení přístupu (pravidla AuthZ).| Zvažte nahrazení zásad odpovídajícími [zásadami podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) Azure AD a [pravidly přístupu klienta Exchange Online](https://aka.ms/EXOCAR).|
@@ -202,7 +203,7 @@ Pokud chcete naplánovat vrácení zpět, podívejte se na dokumentaci pro návr
 * Převod spravovaných domén na federované domény pomocí rutiny **Convert-MsolDomainToFederated** .
 * V případě potřeby nakonfigurujte další pravidla deklarací identity.
 
-### <a name="plan-communications"></a>Plánování komunikace
+### <a name="plan-communications"></a>Plán komunikace
 
 Důležitou součástí plánování nasazení a podpory je zajistit, že uživatelé budou proaktivní informování o nadcházejících změnách. Uživatelé by měli znát, co se může setkat a co se jim vyžaduje. 
 
@@ -437,7 +438,7 @@ Po ověření, že všichni uživatelé a klienti se úspěšně ověřují pře
 
 Pokud nepoužíváte AD FS pro jiné účely (tj. pro jiné vztahy důvěryhodnosti předávající strany), je v tuto chvíli bezpečné vyřazení z provozu AD FS.
 
-### <a name="rollback"></a>Návrat
+### <a name="rollback"></a>Vrácení zpět
 
 Pokud zjistíte hlavní problém a nemůžete ho rychle vyřešit, můžete se rozhodnout vrátit řešení do federace.
 

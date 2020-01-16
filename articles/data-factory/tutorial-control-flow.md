@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 31ae3483ca7cefbb65726f976244d582f1587aaf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7ba921656d0dad059b1d15f443bcefeff03ade50
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439455"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977386"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
 
@@ -44,7 +44,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Účet Azure Storage. Úložiště objektů BLOB použijete jako zdrojové úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
+* Účet Azure Storage. Úložiště objektů BLOB použijete jako zdrojové úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
 * Průzkumník služby Azure Storage. Pokud chcete tento nástroj nainstalovat, přečtěte si téma [Průzkumník služby Azure Storage](https://storageexplorer.com/).
 * Azure SQL Database. Tuto databázi použijete jako úložiště dat jímky. Pokud nemáte Azure SQL Database, přečtěte si téma [Vytvoření databáze SQL Azure](../sql-database/sql-database-get-started-portal.md).
 * Visual Studio. Tento článek používá Visual Studio 2019.
@@ -117,7 +117,7 @@ Vytvořit konzolovou aplikaci C# .NET:
    // Specify the source Azure Blob information
    static string storageAccount = "<Azure Storage account name>";
    static string storageKey = "<Azure Storage account key>";
-   // confirm that you have the input.txt file placed in th input folder of the adfv2branch container. 
+   // confirm that you have the input.txt file placed in th input folder of the adfv2branch container.
    static string inputBlobPath = "adfv2branch/input";
    static string inputBlobName = "input.txt";
    static string outputBlobPath = "adfv2branch/output";
@@ -218,7 +218,7 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 {
     Console.WriteLine("Creating dataset " + blobSourceDatasetName + "...");
     AzureBlobDataset blobDataset = new AzureBlobDataset
-    { 
+    {
         FolderPath = new Expression { Value = "@pipeline().parameters.sourceBlobContainer" },
         FileName = inputBlobName,
         LinkedServiceName = new LinkedServiceReference
@@ -510,7 +510,7 @@ Dictionary<string, object> arguments = new Dictionary<string, object>
     { "sinkBlobContainer", outputBlobPath },
     { "receiver", emailReceiver }
 };
- 
+
 CreateRunResponse runResponse = client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, pipelineName, arguments).Result.Body;
 Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 ```
@@ -577,8 +577,8 @@ Sestavte a spusťte program pro aktivaci spuštění kanálu!
     Console.WriteLine("Checking copy activity run details...");
 
     List<ActivityRun> activityRuns = client.ActivityRuns.ListByPipelineRun(
-    resourceGroup, dataFactoryName, runResponse.RunId, DateTime.UtcNow.AddMinutes(-10), DateTime.UtcNow.AddMinutes(10)).ToList(); 
- 
+    resourceGroup, dataFactoryName, runResponse.RunId, DateTime.UtcNow.AddMinutes(-10), DateTime.UtcNow.AddMinutes(10)).ToList();
+
     if (pipelineRun.Status == "Succeeded")
     {
         Console.WriteLine(activityRuns.First().Output);

@@ -1,0 +1,76 @@
+- name: Dokumentace k rezervacím Azure
+  href: index.yml
+  items:
+    - name: Přehled
+      expanded: true
+      items:
+        - name: Co jsou rezervace Azure?
+          href: save-compute-costs-reservations.md
+    - name: Návody
+      items:
+        - name: Nákup rezervace SQL Data Warehouse
+          href: prepay-sql-data-warehouse-charges.md
+        - name: Nákup rezervace virtuálního počítače
+          href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: Nákup rezervace Azure Storage
+          href: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: Nákup rezervace Cosmos DB
+          href: ../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: Nákup rezervace SQL Database
+          href: ../../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: Nákup rezervace Azure Data Exploreru
+          href: ../../data-explorer/pricing-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: Nákup rezervace Azure Databricks
+          href: prepay-databricks-reserved-capacity.md
+        - name: Nákup rezervace App Service
+          href: prepay-app-service-isolated-stamp.md
+        - name: Nákup rezervací softwarového plánu Azure
+          href: ../../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json
+        - name: Nákup rezervace s měsíčními platbami
+          href: monthly-payments-reservations.md
+        - name: Obnovení rezervací
+          href: reservation-renew.md
+        - name: Výměna a refundace rezervací
+          href: exchange-and-refund-azure-reservations.md
+        - name: Správa rezervací
+          href: manage-reserved-vm-instance.md
+        - name: Zobrazení rezervací
+          href: view-reservations.md
+    - name: Koncepty
+      items:
+        - name: Slevy na rezervovanou instanci virtuálního počítače
+          href: ../manage/understand-vm-reservation-charges.md
+        - name: Slevy na rezervovanou kapacitu Azure Storage
+          href: understand-storage-charges.md
+        - name: Slevy na rezervovanou kapacitu Cosmos DB
+          href: understand-cosmosdb-reservation-charges.md
+        - name: Slevy na rezervovanou kapacitu SQL Database
+          href: understand-reservation-charges.md
+        - name: Slevy na SQL Data Warehouse
+          href: reservation-discount-azure-sql-dw.md
+        - name: Slevy na Azure Data Explorer
+          href: understand-azure-data-explorer-reservation-charges.md
+        - name: Slevy na Azure Databricks
+          href: reservation-discount-databricks.md
+        - name: Slevy na Azure Database for MySQL
+          href: understand-reservation-charges-mysql.md
+        - name: Slevy na Azure Database for PostgreSQL
+          href: understand-reservation-charges-postgresql.md
+        - name: Slevy na Red Hat Linux Enterprise
+          href: understand-rhel-reservation-charges.md
+        - name: Slevy na Azure Database for MariaDB
+          href: understand-reservation-charges-mariadb.md
+        - name: Slevy na App Service
+          href: reservation-discount-app-service-isolated-stamp.md
+        - name: Slevy na softwarové plány Azure
+          href: understand-suse-reservation-charges.md
+        - name: Náklady na Windows a SQL nejsou součástí
+          href: reserved-instance-windows-software-costs.md
+        - name: Data o využití pro jednotlivá předplatná
+          href: understand-reserved-instance-usage.md
+        - name: Data o využití pro podnikové zákazníky
+          href: understand-reserved-instance-usage-ea.md
+    - name: Referenční informace
+      items:
+        - name: Rozhraní API pro rezervace Azure
+          href: reservation-apis.md

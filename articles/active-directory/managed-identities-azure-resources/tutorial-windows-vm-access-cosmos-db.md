@@ -5,22 +5,22 @@ services: active-directory
 documentationcenter: ''
 author: MarkusVi
 manager: daveba
-editor: daveba
+editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9b744ed40e2b8c360117f638bab6d10e9ae2975
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f99859fb695281324148683fac24c9e7b8463ef5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888475"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977899"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Cosmos DB
 
@@ -40,7 +40,17 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 
 - Nainstalovat nejnovější verzi [Azure PowerShell](/powershell/azure/install-az-ps)
 
-## <a name="create-a-cosmos-db-account"></a>Vytvoření účtu služby Cosmos DB 
+
+## <a name="enable"></a>Povolení
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
+
+## <a name="grant-access"></a>Udělení přístupu
+
+
+### <a name="create-a-cosmos-db-account"></a>Vytvoření účtu služby Cosmos DB 
 
 Pokud ho ještě nemáte, vytvořte si účet služby Cosmos DB. Tento krok můžete přeskočit a můžete použít stávající účet služby Cosmos DB. 
 
@@ -51,7 +61,7 @@ Pokud ho ještě nemáte, vytvořte si účet služby Cosmos DB. Tento krok mů�
 5. Ověřte, že pole **Předplatné** a **Skupina prostředků** se shodují s údaji zadanými při vytvoření virtuálního počítače v předchozím kroku.  Vyberte **Umístění**, ve kterém je Cosmos DB k dispozici.
 6. Klikněte na **Vytvořit**.
 
-## <a name="create-a-collection"></a>Vytvoření kolekce 
+### <a name="create-a-collection"></a>Vytvoření kolekce 
 
 Potom přidejte shromažďování dat v účtu služby Cosmos DB, kterého se můžete v dalších krocích dotazovat.
 
@@ -59,7 +69,8 @@ Potom přidejte shromažďování dat v účtu služby Cosmos DB, kterého se m�
 2. Na kartě **Přehled** klikněte na tlačítko **pro přidání kolekce** a vysune se panel Přidat kolekci.
 3. Pro kolekci zadejte ID databáze, ID kolekce, vyberte kapacitu úložiště, zadejte klíč oddílu, zadejte hodnotu propustnosti a potom klikněte na **OK**.  Pro účely tohoto kurzu stačí, když jako ID databáze a ID kolekce použijete „Test“, vyberete pevnou kapacitu úložiště a nejnižší propustnost (400 RU/s).  
 
-## <a name="grant-access"></a>Udělení přístupu
+
+### <a name="grant-access-to-the-cosmos-db-account-access-keys"></a>Udělení přístupu k klíčům pro přístup k účtu Cosmos DB
 
 V této části se dozvíte, jak udělit přístup spravované identitě přiřazený systémem Windows VM k přístupovým klíčům Cosmos DB účtu. Cosmos DB nativně nepodporuje ověřování Azure AD. Spravovanou identitu přiřazenou systémem ale můžete použít k načtení přístupového klíče ke Cosmos DB z Resource Manageru a tento klíč použít pro přístup ke Cosmos DB. V tomto kroku udělíte spravované identitě přiřazené systémem na virtuálním počítači s Windows přístup ke klíčům k účtu Cosmos DB.
 
@@ -69,11 +80,15 @@ Pokud chcete spravované identitě přiřazené systémem na počítači s Windo
 $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
 New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Reader Role" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>"
 ```
-## <a name="get-an-access-token"></a>Získání přístupového tokenu
+## <a name="access-data"></a>Přístup k datům
 
-V této části se dozvíte, jak získat přístupový token pomocí spravované identity přiřazené systémem Windows VM k volání Azure Resource Manager. Ve zbývající části kurzu použijeme k práci dříve vytvořený virtuální počítač. 
+V této části se dozvíte, jak volat Azure Resource Manager pomocí přístupového tokenu pro spravovanou identitu přiřazenou systémem Windows VM. Ve zbývající části kurzu použijeme k práci dříve vytvořený virtuální počítač. 
 
-Na virtuální počítač s Windows budete muset nainstalovat nejnovější verzi rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) .
+Na virtuální počítač s Windows musíte nainstalovat nejnovější verzi rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) .
+
+
+
+### <a name="get-an-access-token"></a>Získání přístupového tokenu
 
 1. Na webu Azure Portal přejděte na **Virtuální počítače**, přejděte ke svému virtuálnímu počítači s Windows a potom nahoře na stránce **Přehled** klikněte na **Připojit**. 
 2. Zadejte své **Uživatelské jméno** a **Heslo**, které jste přidali při vytváření virtuálního počítače s Windows. 
@@ -98,7 +113,7 @@ Na virtuální počítač s Windows budete muset nainstalovat nejnovější verz
    $ArmToken = $content.access_token
    ```
 
-## <a name="get-access-keys"></a>Získání přístupových klíčů 
+### <a name="get-access-keys"></a>Získání přístupových klíčů 
 
 V této části se dozvíte, jak získat přístupové klíče z Azure Resource Manager, aby bylo možné Cosmos DB volání. Teď použijte PowerShell k volání Resource Manageru. Použijte přístupový token, který jste načetli v předchozí části, a načtěte přístupový klíč k účtu služby Cosmos DB. Jakmile budeme mít přístupový klíč, můžeme zadat dotaz na službu Cosmos DB. Nezapomeňte nahradit hodnoty parametrů `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` a `<COSMOS DB ACCOUNT NAME>` vlastními hodnotami. Hodnotu `<ACCESS TOKEN>` nahraďte dříve získaným přístupovým tokenem.  Pokud chcete načíst klíče pro čtení/zápis, použijte typ operace klíče `listKeys`.  Pokud chcete načíst klíče jen pro čtení, použijte typ operace klíče `readonlykeys`:
 
@@ -177,9 +192,16 @@ Tento příkaz rozhraní příkazového řádku vrátí podrobnosti o kolekci:
 }
 ```
 
+
+## <a name="disable"></a>Zákaz
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
+
+
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak použít identitu přiřazenou systémem na virtuálním počítači s Windows pro přístup ke Cosmos DB.  Další informace o službě Cosmos DB najdete v:
+V tomto kurzu jste zjistili, jak použít identitu přiřazenou systémem na virtuálním počítači s Windows pro přístup ke Cosmos DB.  Další informace o službě Cosmos DB najdete tady:
 
 > [!div class="nextstepaction"]
 >[Přehledu databáze Azure Cosmos DB](/azure/cosmos-db/introduction)

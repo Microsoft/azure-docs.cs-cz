@@ -2,18 +2,18 @@
 title: Použití Galerie sdílených imagí k vytvoření vlastního fondu – Azure Batch | Microsoft Docs
 description: Vytvořte fond služby Batch pomocí Galerie sdílených imagí a zřiďte vlastní image pro výpočetní uzly, které obsahují software a data, která pro vaši aplikaci potřebujete. Vlastní image představují účinný způsob konfigurace výpočetních uzlů pro spouštění úloh služby Batch.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 08/28/2019
-ms.author: lahugh
-ms.openlocfilehash: fa232fb48e80e3ae3751920e4215c4b4d3ded19a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.author: jushiman
+ms.openlocfilehash: a933d0656bb4c22e848a663757f4e5e3fa276c61
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827921"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029649"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Vytvoření vlastního fondu pomocí Galerie sdílených imagí
 
@@ -37,7 +37,7 @@ Použití sdílené bitové kopie nakonfigurované pro váš scénář může m�
 * **Lepší výkon než vlastní image.** Při použití sdílených imagí je čas potřebný k dosažení stabilního stavu až o 25% rychlejší a latence nečinnosti virtuálního počítače je kratší než 30%.
 * **Správa verzí obrázků a seskupování pro snadnější správu.** Definice seskupení imagí obsahuje informace o tom, proč se image vytvořila, v jakém operačním systému je, a informace o použití image. Seskupení imagí umožňuje snazší správu imagí. Další informace najdete v tématu [definice imagí](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Účet Azure Batch.** Pokud chcete vytvořit účet Batch, přečtěte si rychlý Start Batch pomocí [Azure Portal](quick-create-portal.md) nebo [Azure CLI](quick-create-cli.md).
 
@@ -61,9 +61,9 @@ Abyste mohli škálovat fondy dávek spolehlivě s použitím vlastní image, do
 Pokud vytváříte nový virtuální počítač pro bitovou kopii, použijte jako základní image pro spravovanou bitovou kopii Azure Marketplace image, kterou služba Batch podporuje. Jako základní image se dají použít jenom image ze strany First stran. Úplný seznam Azure Marketplacech odkazů na Image podporovaných v Azure Batch najdete v tématu operace [výpisu SKU agenta uzlu](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) .
 
 > [!NOTE]
-> Nemůžete použít image třetí strany, která má další licenci a jako základní image. Informace o těchto obrázcích na webu Marketplace najdete v tématu pokyny pro virtuální počítače se systémem [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) nebo [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) .
+> Nemůžete použít image třetí strany, která má další licenci a jako základní image. Informace o těchto obrázcích na webu Marketplace najdete v tématu pokyny [pro](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
+) virtuální počítače [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
+) se systémem Linux nebo.
 
 * Ujistěte se, že je virtuální počítač vytvořený pomocí spravovaného disku. Toto je výchozí nastavení úložiště při vytváření virtuálního počítače.
 * Do virtuálního počítače neinstalujte rozšíření Azure, jako je například rozšíření vlastních skriptů. Pokud image obsahuje předem nainstalovanou příponu, může Azure narazit na problémy při nasazování fondu služby Batch.
@@ -85,7 +85,7 @@ Po úspěšném vytvoření spravované image musíte vytvořit sdílenou galeri
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Vytvoření fondu ze sdílené Image pomocí Azure CLI
 
-Pokud chcete vytvořit fond ze sdílené Image pomocí Azure CLI, použijte příkaz `az batch pool create`. V poli `--image` zadejte ID sdílené bitové kopie. Zajistěte, aby typ OS a SKU odpovídaly verzím určeným parametrem `--node-agent-sku-id`.
+Pokud chcete vytvořit fond ze sdílené Image pomocí Azure CLI, použijte příkaz `az batch pool create`. V poli `--image` zadejte ID sdílené bitové kopie. Zajistěte, aby typ operačního systému a SKU odpovídaly verzím zadaným pomocí `--node-agent-sku-id`
 
 ```azurecli
 az batch pool create \
@@ -133,7 +133,7 @@ private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfi
 
 Pomocí následujících kroků můžete vytvořit fond ze sdílené image v Azure Portal.
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Otevřete [portál Azure](https://portal.azure.com).
 1. Přejít na **účty Batch** a vyberte svůj účet.
 1. Vyberte **fondy** a potom **Přidat** a vytvořte nový fond.
 1. V části **typ obrázku** vyberte **sdílená Galerie imagí**.
@@ -148,7 +148,7 @@ Pokud máte v úmyslu vytvořit fond se stovkami nebo tisíci virtuálních poč
 
 * **Čísla repliky Galerie sdílených imagí**  Pro každý fond s až 600 instancemi doporučujeme, abyste zachovali aspoň jednu repliku. Pokud například vytváříte fond s 3000 virtuálními počítači, měli byste zachovat alespoň 5 replik vaší image. Vždycky Doporučujeme zachovat více replik než minimální požadavky pro lepší výkon.
 
-* **Změnit časový limit.** Pokud fond obsahuje pevný počet uzlů (Pokud se nejedná o automatické škálování), zvyšte hodnotu vlastnosti `resizeTimeout` fondu v závislosti na velikosti fondu. U každého virtuálního počítače 1000 je doporučený časový limit pro změnu velikosti alespoň 15 minut. Například doporučený časový limit pro změnu velikosti pro fond s 2000 virtuálními počítači je nejméně 30 minut.
+* **Změnit časový limit.** Pokud fond obsahuje pevný počet uzlů (Pokud se nejedná o automatické škálování), zvětšete vlastnost `resizeTimeout` fondu v závislosti na velikosti fondu. U každého virtuálního počítače 1000 je doporučený časový limit pro změnu velikosti alespoň 15 minut. Například doporučený časový limit pro změnu velikosti pro fond s 2000 virtuálními počítači je nejméně 30 minut.
 
 ## <a name="next-steps"></a>Další kroky
 

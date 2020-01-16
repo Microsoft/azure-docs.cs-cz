@@ -6,7 +6,7 @@
       href: cdn-overview.md
     - name: Porovnání funkcí produktů
       href: cdn-features.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Vytvoření koncového bodu a profilu
       href: cdn-create-new-endpoint.md
@@ -28,7 +28,7 @@
       href: cdn-caching-rules-tutorial.md
     - name: Vynucení HTTPS s využitím stroje pravidel Standard
       href: cdn-standard-rules-engine.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?service=cdn'
@@ -40,7 +40,7 @@
       href: cdn-china-delivery.md
     - name: Podpora HTTP/2
       href: cdn-http2.md
-    - name: Načtení seznamu Verizon POP
+    - name: Načtení IP adres POP
       href: cdn-pop-list-api.md
     - name: Migrace z verze Standard Verizon na Premium Verizon
       href: cdn-migrate.md

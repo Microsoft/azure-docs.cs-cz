@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý Start: odeslání událostí služby Blob Storage do webového koncového bodu – portál'
-description: 'Rychlý Start: pomocí Azure Event Grid a Azure Portal vytvořte účet úložiště objektů BLOB a přihlaste se k odběru jeho událostí. Odešle události do Webhooku.'
+description: 'Rychlý Start: pomocí Azure Event Grid a Azure Portal vytvořte účet úložiště objektů BLOB a přihlaste se k odběru jeho událostí. Události odesíláte na Webhooku.'
 services: event-grid
 keywords: ''
 author: spelluru
@@ -9,14 +9,14 @@ ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 9ecffc25461a909d47329d536d1c19724b3c22ac
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 1aa8c9ff26b85f5af8095ad1cff062b224abff83
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718068"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982180"
 ---
-# <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Rychlý Start: směrování událostí služby Blob Storage do webového koncového bodu pomocí Azure Portal
+# <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Rychlý start: Události úložiště Blob trasy webový koncový bod pomocí webu Azure portal
 
 Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku pomocí webu Azure Portal vytvoříte účet úložiště objektů blob, přihlásíte se k odběru událostí tohoto úložiště objektů blob a aktivujete událost pro zobrazení výsledku. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. Pro zjednodušení tohoto článku však budete události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
@@ -26,7 +26,7 @@ Až budete hotovi, uvidíte, že se data události odeslala do webové aplikace.
 
 ![Zobrazení výsledků](./media/blob-event-quickstart-portal/view-results.png)
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
@@ -38,7 +38,7 @@ Až budete hotovi, uvidíte, že se data události odeslala do webové aplikace.
 
    ![Výběr úložiště](./media/blob-event-quickstart-portal/create-storage.png)
 
-1. Pokud se chcete přihlásit k odběru událostí, vytvořte si účet úložiště pro obecné účely verze 2 nebo účet úložiště objektů blob. Další informace najdete v článku o [vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
+1. Pokud se chcete přihlásit k odběru událostí, vytvořte si účet úložiště pro obecné účely verze 2 nebo účet úložiště objektů blob. Další informace najdete v článku o [vytvoření účtu úložiště](../storage/common/storage-account-create.md).
 
    ![Počáteční kroky](./media/blob-event-quickstart-portal/provide-blob-values.png)
 

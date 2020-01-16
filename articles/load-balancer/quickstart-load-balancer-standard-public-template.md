@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 09/20/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 884ba1106e7b68fefaf91ee4e25cacd05bf96fc0
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 28c4ca59b20fcdd8ab0249392dc0f13cbabf1a97
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048751"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970640"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Rychlý Start: vytvoření standardního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí šablony Azure Resource Manager
 
 Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti a škálování tím, že rozprostírá příchozí požadavky na více virtuálních počítačů. V tomto rychlém startu se dozvíte, jak nasadit šablonu Azure Resource Manager, která pro vyrovnávání zatížení virtuálních počítačů vytvoří standardní nástroj pro vyrovnávání zatížení. Použití šablony Správce prostředků přijímá méně kroků v porovnání s jinými metodami nasazení.
 
-[Šablona správce prostředků](../azure-resource-manager/template-deployment-overview.md) je soubor JavaScript Object Notation (JSON), který definuje infrastrukturu a konfiguraci projektu. Šablona používá deklarativní syntaxi, která umožňuje určit, co máte v úmyslu nasadit bez nutnosti napsat sekvenci programovacích příkazů k jeho vytvoření. Pokud chcete získat další informace o vývoji šablon Správce prostředků, přečtěte si téma [dokumentace správce prostředků](/azure/azure-resource-manager/) a [odkaz na šablonu](/azure/templates/microsoft.network/loadbalancers).
+[Šablona správce prostředků](../azure-resource-manager/templates/overview.md) je soubor JavaScript Object Notation (JSON), který definuje infrastrukturu a konfiguraci projektu. Šablona používá deklarativní syntaxi, která umožňuje určit, co máte v úmyslu nasadit bez nutnosti napsat sekvenci programovacích příkazů k jeho vytvoření. Pokud chcete získat další informace o vývoji šablon Správce prostředků, přečtěte si téma [dokumentace správce prostředků](/azure/azure-resource-manager/) a [odkaz na šablonu](/azure/templates/microsoft.network/loadbalancers).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -84,11 +84,11 @@ Nasazení šablony trvá přibližně 10 minut. Výstup je po dokončení podobn
 
 ![Výstup nasazení PowerShellu pro Azure Standard Load Balancer Správce prostředků](./media/quickstart-load-balancer-standard-public-template/azure-standard-load-balancer-resource-manager-template-powershell-output.png)
 
-Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete použít také Azure Portal, Azure CLI a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../azure-resource-manager/resource-group-template-deploy-portal.md).
+Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete použít také Azure Portal, Azure CLI a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../azure-resource-manager/templates/deploy-portal.md).
 
 ## <a name="test-the-load-balancer"></a>Test nástroje pro vyrovnávání zatížení
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně vyberte **skupiny prostředků** .
 

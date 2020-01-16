@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: d765422957392a5cdb170208b809c24bf5aec2a3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 31a6c53ec269c512ad641fcdc10469ccf16a1fe9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932197"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979749"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Standardní vlastnosti v protokolech Azure Monitor
 Data v Azure Monitor protokoly se [ukládají jako sada záznamů v pracovním prostoru Log Analytics nebo v Application Insights aplikaci](../log-query/logs-structure.md), z nichž každý má konkrétní datový typ, který má jedinečnou sadu vlastností. Mnoho datových typů bude mít standardní vlastnosti, které jsou společné napříč různými typy. Tento článek popisuje tyto vlastnosti a poskytuje příklady, jak je můžete používat v dotazech.
@@ -79,7 +79,7 @@ Vlastnost **\_ItemId** obsahuje jedinečný identifikátor záznamu.
 ## <a name="_resourceid"></a>\_ResourceId
 Vlastnost **\_ResourceID** obsahuje jedinečný identifikátor pro prostředek, ke kterému je záznam přidružen. Získáte tak standardní vlastnost, která se má použít k určení oboru dotazu jenom na záznamy z konkrétního prostředku, nebo pro spojování souvisejících dat napříč více tabulkami.
 
-U prostředků Azure je hodnotou **_ResourceId** [Adresa URL pro ID prostředku Azure](../../azure-resource-manager/resource-group-template-functions-resource.md). Tato vlastnost je aktuálně omezená na prostředky Azure, ale bude rozšířena na prostředky mimo Azure, jako jsou například místní počítače.
+U prostředků Azure je hodnotou **_ResourceId** [Adresa URL ID prostředku Azure](../../azure-resource-manager/templates/template-functions-resource.md). Tato vlastnost je aktuálně omezená na prostředky Azure, ale bude rozšířena na prostředky mimo Azure, jako jsou například místní počítače.
 
 > [!NOTE]
 > Některé typy dat už obsahují pole, která obsahují ID prostředku Azure nebo alespoň části, jako je ID předplatného. I když jsou tato pole zachovaná kvůli zpětné kompatibilitě, doporučuje se použít _ResourceId k provedení vzájemné korelace, protože bude lépe konzistentní.
@@ -120,7 +120,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last 
 ```
 
-Tyto dotazy `union withsource = tt *` můžete obsloužit zřídka, protože vyhledávání napříč datovými typy je náročné na spouštění.
+Tyto `union withsource = tt *` dotazy můžete použít zřídka, protože kontroly napříč datovými typy jsou náročné na spouštění.
 
 ## <a name="_isbillable"></a>\_Fakturovatelné
 Vlastnost **\_Disfakturovatelné** určuje, zda jsou příjemovaná data fakturovatelná. Data s **\_** , která se rovnají hodnotě _false_ , se shromažďují zdarma a neúčtují se za váš účet Azure.

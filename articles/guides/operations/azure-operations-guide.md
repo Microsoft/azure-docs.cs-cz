@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 9b23e3b69b4970e765ea1cd5af690cf074bad774
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: e6ef4cc825d40615fa8a6aee7dff8d4542407974
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693452"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970849"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Začínáme s operátory IT Azure
 
@@ -48,7 +48,7 @@ Další informace o dostupných oblastech Azure najdete v tématu [oblasti Azure
 ### <a name="cloud-computing-model"></a>Model cloud computingu
 
 Azure používá model cloud computingu založený na kategoriích služby poskytovaných zákazníkům. Mezi tyto tři kategorie služeb patří infrastruktura jako služba (IaaS), platforma jako služba (PaaS) a software jako služba (SaaS). Dodavatelé sdílejí určitou nebo veškerou odpovědnost za komponenty v zásobníku computingu v každé z těchto kategorií. Pojďme se podívat na všechny kategorie pro cloud computing.
-![Cloud výpočetního porovnání zásobníku ](./media/cloud-computing-comparison.png)
+![porovnání zásobníku Cloud Computing](./media/cloud-computing-comparison.png)
 
 #### <a name="iaas-infrastructure-as-a-service"></a>IaaS: infrastruktura jako služba
 
@@ -94,7 +94,7 @@ Služby pro ukládání a správu dat:
 
 - Azure Storage (zahrnuje služby Azure Blob, Queue, Table a File)
 
-- Azure SQL Database
+- Databáze SQL Azure
 
 - Azure Cosmos DB
 
@@ -128,7 +128,7 @@ Služby pro sítě v rámci Azure i mezi Azure a místními datacentry:
 
 - Azure Traffic Manager
 
-- Content Delivery Network Azure
+- Azure Content Delivery Network
 
 Podrobnou dokumentaci ke službám Azure najdete v [dokumentaci ke službě Azure](https://docs.microsoft.com/azure).
 
@@ -178,7 +178,7 @@ Správci mají přístup k Azure PowerShell a Azure CLI prostřednictvím prost�
 
 ## <a name="azure-subscriptions"></a>Předplatná Azure
 
-Předplatné je logické seskupení služeb Azure, které jsou propojené s účtem Azure. Jeden účet Azure může obsahovat několik předplatných. Fakturace služeb Azure se provádí na základě jednotlivých předplatných. Předplatná Azure mají správce účtu, který má plnou kontrolu nad předplatným, a správce služeb, který má kontrolu nad všemi službami v rámci předplatného. Informace o klasických správcích předplatných najdete v tématu [Přidání nebo změna správců předplatného Azure](../../billing/billing-add-change-azure-subscription-administrator.md). Kromě správců může být jednotlivým účtům přiděleno podrobné řízení prostředků Azure pomocí [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md).
+Předplatné je logické seskupení služeb Azure, které jsou propojené s účtem Azure. Jeden účet Azure může obsahovat několik předplatných. Fakturace služeb Azure se provádí na základě jednotlivých předplatných. Předplatná Azure mají správce účtu, který má plnou kontrolu nad předplatným, a správce služeb, který má kontrolu nad všemi službami v rámci předplatného. Informace o klasických správcích předplatných najdete v tématu [Přidání nebo změna správců předplatného Azure](../../cost-management-billing/manage/add-change-subscription-administrator.md). Kromě správců může být jednotlivým účtům přiděleno podrobné řízení prostředků Azure pomocí [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="select-and-enable-an-azure-subscription"></a>Výběr a povolení předplatného Azure
 
@@ -206,7 +206,7 @@ Další informace najdete v tématu [Správa přístupu pomocí RBAC a webu Azur
 
 Důležitou součástí používání Azure je možnost zobrazit informace o fakturaci. Azure Portal poskytuje podrobný přehled o fakturačních informacích Azure.
 
-Další informace najdete v tématu [stažení fakturačních faktur Azure a dat o denním využití](../../billing/billing-download-azure-invoice-daily-usage-date.md).
+Další informace najdete v tématu [stažení fakturačních faktur Azure a dat o denním využití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
 
 ### <a name="get-billing-information-from-billing-apis"></a>Získat fakturační informace z rozhraní API pro fakturaci
 
@@ -216,7 +216,7 @@ Kromě zobrazení fakturace na portálu můžete získat přístup k fakturačn�
 
 - K vypsání všech dostupných prostředků spolu s informacemi o metadatech a cenách jednotlivých prostředků můžete použít rozhraní API služby Azure Rate Card.
 
-Další informace najdete v článku [Získání přehledu o spotřebě prostředků Microsoft Azure](../../billing/billing-usage-rate-card-overview.md).
+Další informace najdete v článku [Získání přehledu o spotřebě prostředků Microsoft Azure](../../cost-management-billing/manage/usage-rate-card-overview.md).
 
 ### <a name="forecast-cost-with-the-pricing-calculator"></a>Náklady na prognózu pomocí cenové kalkulačky
 
@@ -328,19 +328,19 @@ Virtuální počítače Azure můžete nasadit pomocí Azure Portal pomocí auto
 
 Nasazení virtuálního počítače pomocí Azure Portal vyžaduje jenom aktivní předplatné Azure a přístup k webovému prohlížeči. Můžete vybrat spoustu různých imagí operačního systému s různými konfiguracemi. Všechny požadavky na úložiště a síť jsou nakonfigurované během nasazování. Další informace najdete v části "Vytvoření virtuálního počítače v Azure Portal pro [systémy Windows](../../virtual-machines/windows/quick-create-portal.md) a [Linux](../../virtual-machines/linux/quick-create-portal.md).
 
-Kromě nasazení virtuálního počítače z Azure Portal můžete nasadit Azure Resource Manager šablonu z portálu. Tím se nasadí a nakonfigurují všechny prostředky, jak jsou definované v šabloně. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
+Kromě nasazení virtuálního počítače z Azure Portal můžete nasadit Azure Resource Manager šablonu z portálu. Tím se nasadí a nakonfigurují všechny prostředky, jak jsou definované v šabloně. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure Portal](../../azure-resource-manager/templates/deploy-portal.md).
 
 #### <a name="powershell"></a>PowerShell
 
 Nasazení virtuálního počítače Azure pomocí prostředí PowerShell umožňuje kompletní automatizaci nasazení všech souvisejících prostředků virtuálních počítačů, včetně úložiště a sítě. Další informace najdete v tématu [Vytvoření virtuálního počítače s Windows pomocí Správce prostředků a PowerShellu](../../virtual-machines/windows/quick-create-powershell.md).
 
-Kromě nasazení výpočetních prostředků Azure můžete použít modul Azure PowerShell k nasazení Azure Resource Manager šablony. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md).
+Kromě nasazení výpočetních prostředků Azure můžete použít modul Azure PowerShell k nasazení Azure Resource Manager šablony. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md).
 
 #### <a name="command-line-interface-cli"></a>Rozhraní příkazového řádku (CLI)
 
 Stejně jako modul PowerShellu nabízí rozhraní příkazového řádku Azure automatizaci nasazení a dá se použít v systémech Windows, OS X a Linux. Když použijete příkaz pro **rychlé vytvoření virtuálního počítače** Azure CLI, nasadí se všechny související prostředky virtuálního počítače (včetně úložiště a sítě) a samotného virtuálního počítače. Další informace najdete v tématu [Vytvoření virtuálního počítače se systémem Linux v Azure pomocí rozhraní](../../virtual-machines/linux/quick-create-cli.md)příkazového řádku.
 
-Podobně můžete pomocí rozhraní příkazového řádku Azure nasadit šablonu Azure Resource Manager. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md).
+Podobně můžete pomocí rozhraní příkazového řádku Azure nasadit šablonu Azure Resource Manager. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/templates/deploy-cli.md).
 
 ### <a name="access-and-security-for-virtual-machines"></a>Přístup a zabezpečení pro virtuální počítače
 
@@ -370,13 +370,13 @@ Každý typ úložiště má jiný případ použití.
 
 *Objekt BLOB* Word je zkratka pro *binární rozsáhlý objekt*. Objekty blob jsou nestrukturované soubory, jako jsou ty, které ukládáte ve vašem počítači. Do Blob storage se dá ukládat jakýkoli druh textu nebo binárních dat, jako je dokument, soubor médií nebo instalátor aplikace. Blob storage se také nazývá úložiště objektů. Úložiště objektů BLOB v Azure taky obsahuje datové disky Azure Virtual Machines.
 
-Azure Storage podporuje tři druhy objektů BLOB:
+Azure Storage podporuje tři druhy objektů blob:
 
-- **Objekty blob bloku** se používají pro uchovávání běžných souborů o velikosti až 195 GB (4 MB × 50 000 bloků). Primárním případem použití objektů blob bloku je úložiště souborů, které jsou čteny od začátku do konce, například mediální soubory nebo soubory obrázků pro weby. Jsou pojmenované objekty blob bloku, protože soubory větší než 64 MB se musí nahrát jako malé bloky. Tyto bloky se pak konsolidují (nebo potvrdí) do konečného objektu BLOB.
+- **Objekty blob bloku** se používají pro uchovávání běžných souborů o velikosti až 195 GB (4 MB × 50 000 bloků). Objekty blob bloku se primárně používají pro úložiště souborů, které se čtou od začátku do konce, jako jsou například mediální soubory nebo soubory obrázků pro weby. Jsou pojmenované objekty blob bloku, protože soubory větší než 64 MB se musí nahrát jako malé bloky. Tyto bloky se pak konsolidují (nebo potvrdí) do konečného objektu BLOB.
 
-- **Objekty blob stránky** se používají k ukládání souborů s náhodným přístupem o velikosti až 1 TB. Objekty blob stránky se používají hlavně jako záložní úložiště pro virtuální pevné disky, které poskytují trvalé disky pro Azure Virtual Machines, výpočetní služby IaaS v Azure. Jsou pojmenované objekty blob stránky, protože poskytují náhodný přístup pro čtení a zápis až na 512 bajtů stránek.
+- **Objekty blob stránky** se používají k ukládání souborů s náhodným přístupem o velikosti až 1 TB. Objekty blob stránky se používají hlavně jako záložní úložiště pro virtuální pevné disky, které poskytují trvalé disky pro Azure Virtual Machines, výpočetní služby IaaS v Azure. Označují se jako objekty blob stránky, protože poskytují náhodný přístup pro čtení/zápis k 512bajtovým stránkám.
 
-- **Doplňovací objekty blob** se skládají z bloků, jako jsou objekty blob bloku, ale jsou optimalizované pro operace připojení. Tyto informace se často používají k protokolování informací z jednoho nebo více zdrojů do stejného objektu BLOB. Můžete například zapsat všechna trasování protokolování do stejného doplňovací objektu BLOB pro aplikaci, která běží na více virtuálních počítačích. Jeden doplňovací objekt BLOB může mít až 195 GB.
+- **Doplňovací objekty blob** se skládají z bloků, jako jsou objekty blob bloku, ale jsou optimalizované pro operace připojení. Tyto informace se často používají k protokolování informací z jednoho nebo více zdrojů do stejného objektu BLOB. Můžete například zapsat všechna trasování protokolování do stejného doplňovací objektu BLOB pro aplikaci, která běží na více virtuálních počítačích. Jeden doplňovací objekt blob může mít až 195 GB.
 
 Další informace najdete v tématu Začínáme [s úložištěm objektů BLOB v Azure pomocí .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md).
 
@@ -390,7 +390,7 @@ Další informace najdete v tématu Začínáme [se službou Azure File Storage 
 
 #### <a name="table-storage"></a>Úložiště tabulek
 
-Azure Table Storage je služba, která ukládá strukturovaná data typu NoSQL v cloudu. Table Storage je úložiště klíčů/atributů s návrhem bez schématu. Vzhledem k tomu, že je tabulka úložiště bez schématu, je snadné přizpůsobit data, jak se vyvíjí vaše aplikace. Přístup k datům je rychlý a cenově výhodný pro všechny typy aplikací. Využívání úložiště Table Storage obvykle znamená výrazně nižší náklady než tradiční SQL pro podobné objemy dat.
+Azure Table Storage je služba, která ukládá strukturovaná data typu NoSQL v cloudu. Table Storage je úložiště klíčů/atributů s návrhem bez schématu. Vzhledem k tomu, že je tabulka úložiště bez schématu, je snadné přizpůsobit data, jak se vyvíjí vaše aplikace. Přístup k datům je rychlý a nákladově efektivní pro všechny typy aplikací. Využívání úložiště Table Storage obvykle znamená výrazně nižší náklady než tradiční SQL pro podobné objemy dat.
 
 Úložiště Table Storage můžete používat k ukládání flexibilních datových sad, například uživatelských dat pro webové aplikace, adresářů, informací o zařízení a dalších typů metadat, které vaše služba vyžaduje. V tabulce můžete uložit libovolný počet entit. Účet úložiště může obsahovat libovolný počet tabulek až do limitu kapacity účtu úložiště.
 
@@ -408,15 +408,15 @@ K dispozici je několik možností nasazení účtu úložiště.
 
 #### <a name="portal"></a>Portál
 
-Nasazení účtu úložiště pomocí Azure Portal vyžaduje jenom aktivní předplatné Azure a přístup k webovému prohlížeči. Nový účet úložiště můžete nasadit do nové nebo existující skupiny prostředků. Po vytvoření účtu úložiště můžete vytvořit kontejner objektů BLOB nebo sdílení souborů pomocí portálu. Entity úložiště tabulky a fronty můžete vytvářet programově. Další informace najdete v článku o [vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md).
+Nasazení účtu úložiště pomocí Azure Portal vyžaduje jenom aktivní předplatné Azure a přístup k webovému prohlížeči. Nový účet úložiště můžete nasadit do nové nebo existující skupiny prostředků. Po vytvoření účtu úložiště můžete vytvořit kontejner objektů BLOB nebo sdílení souborů pomocí portálu. Entity úložiště tabulky a fronty můžete vytvářet programově. Další informace najdete v článku o [vytvoření účtu úložiště](../../storage/common/storage-account-create.md).
 
-Kromě nasazení účtu úložiště z Azure Portal můžete nasadit Azure Resource Manager šablonu z portálu. Tím se nasadí a nakonfigurují všechny prostředky, jak jsou definované v šabloně, včetně všech účtů úložiště. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
+Kromě nasazení účtu úložiště z Azure Portal můžete nasadit Azure Resource Manager šablonu z portálu. Tím se nasadí a nakonfigurují všechny prostředky, jak jsou definované v šabloně, včetně všech účtů úložiště. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure Portal](../../azure-resource-manager/templates/deploy-portal.md).
 
 #### <a name="powershell"></a>PowerShell
 
 Nasazení účtu Azure Storage pomocí prostředí PowerShell umožňuje kompletní automatizaci nasazení účtu úložiště. Další informace najdete v tématu [použití Azure PowerShell s Azure Storage](../../storage/common/storage-powershell-guide-full.md).
 
-Kromě nasazení prostředků Azure můžete použít modul Azure PowerShell k nasazení Azure Resource Manager šablony. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md).
+Kromě nasazení prostředků Azure můžete použít modul Azure PowerShell k nasazení Azure Resource Manager šablony. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md).
 
 #### <a name="command-line-interface-cli"></a>Rozhraní příkazového řádku (CLI)
 
@@ -474,7 +474,7 @@ Existuje několik možností, jak nasadit virtuální síť.
 - Šablony Azure Resource Manager
 
 > **Kdy použít**: kdykoli pracujete s virtuálními počítači v Azure, budete pracovat s virtuálními sítěmi. To umožňuje segmentovat vaše virtuální počítače do veřejných nebo privátních podsítí podobných v místních datových centrech.
-> 
+>
 > **Začínáme**: nasazení virtuální sítě azure pomocí Azure Portal vyžaduje jenom aktivní předplatné Azure a přístup k webovému prohlížeči. Novou virtuální síť můžete nasadit do nové nebo existující skupiny prostředků. Když vytváříte nový virtuální počítač z portálu, můžete vybrat existující virtuální síť nebo vytvořit novou. Začněte a [vytvořte virtuální síť pomocí Azure Portal](../../virtual-network/quick-create-portal.md).
 
 ### <a name="access-and-security-for-virtual-networks"></a>Přístup a zabezpečení pro virtuální sítě

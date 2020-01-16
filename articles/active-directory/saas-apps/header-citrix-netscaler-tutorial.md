@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s Citrix NetScaler (ověřování na základě hlaviček) | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Citrix NetScaler.
+title: 'Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí Citrix NetScaler (ověřování na základě hlaviček) | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování (SSO) mezi Azure Active Directory a Citrix NetScaler pomocí ověřování založeného na hlavičkách.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9c442ca731ecb10f977c19b86cb32caded36659
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 87f1c884edf6841b65495cd31ed4c7d6e63aedd9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472160"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977937"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-citrix-netscaler-header-based-authentication"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Citrix NetScaler (ověřování na základě hlaviček)
+# <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-header-based-authentication"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí Citrix NetScaler (ověřování na základě hlaviček)
 
 V tomto kurzu se dozvíte, jak integrovat Citrix NetScaler s Azure Active Directory (Azure AD). Když integrujete Citrix NetScaler s Azure AD, můžete:
 
@@ -31,7 +31,7 @@ V tomto kurzu se dozvíte, jak integrovat Citrix NetScaler s Azure Active Direct
 * Umožněte uživatelům, aby se automaticky přihlásili k Citrix NetScaler pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,28 +42,31 @@ Chcete-li začít, potřebujete následující položky:
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. Tento kurz zahrnuje tyto scénáře:
 
-* Citrix NetScaler podporuje jednotné přihlašování iniciované v **SP**
+* **SP-iniciované** Jednotné přihlašování pro Citrix NetScaler
 
-* Citrix NetScaler podporuje zřizování uživatelů **jenom v čase**
+* Zřizování uživatelů **jen v čase** pro Citrix NetScaler
 
-- [Konfigurace jednotného přihlašování Citrix NetScaler při ověřování na základě hlaviček](#configure-citrix-netscaler-single-sign-on-for-header-based-authentication)
+* [Ověřování na základě hlaviček pro Citrix NetScaler](#publish-the-web-server)
 
-- [Konfigurace jednotného přihlašování Citrix NetScaler pro ověřování založené na protokolu Kerberos](citrix-netscaler-tutorial.md)
+* [Ověřování založené na protokolu Kerberos pro Citrix NetScaler](citrix-netscaler-tutorial.md#publish-the-web-server)
 
+## <a name="add-citrix-netscaler-from-the-gallery"></a>Přidání Citrix NetScaler z Galerie
 
-## <a name="adding-citrix-netscaler-from-the-gallery"></a>Přidání Citrix NetScaler z Galerie
-
-Pokud chcete nakonfigurovat integraci Citrix NetScaler do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat Citrix NetScaler z galerie.
+Pokud chcete integrovat Citrix NetScaler s Azure AD, nejdřív přidejte Citrix NetScaler do seznamu spravovaných aplikací SaaS z Galerie:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
-1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **Citrix NetScaler** .
-1. Z panelu výsledků vyberte **Citrix NetScaler** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
+1. V nabídce vlevo vyberte **Azure Active Directory**.
+
+1. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **Citrix NetScaler** .
+
+1. Ve výsledcích vyberte **Citrix NetScaler**a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-citrix-netscaler"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Citrix NetScaler
 
@@ -71,69 +74,73 @@ Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Citrix Ne
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Citrix NetScaler, dokončete následující stavební bloky:
 
-1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
-    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-1. **[Nakonfigurujte Citrix NETSCALER SSO](#configure-citrix-netscaler-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    1. **[Vytvořte si uživatele Citrix NetScaler Test User](#create-citrix-netscaler-test-user)** – můžete mít protějšek B. Simon v Citrix NetScaler, která je propojená s reprezentací uživatele v Azure AD.
-1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
+1. [NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso) – umožníte uživatelům používat tuto funkci.
+
+    1. [Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user) – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+
+    1. [Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user) – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+
+1. [Nakonfigurujte Citrix NETSCALER SSO](#configure-citrix-netscaler-sso) – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+
+    * [Vytvořte testovacího uživatele Citrix NetScaler](#create-a-citrix-netscaler-test-user) , abyste měli protějšek B. Simon v Citrix NetScaler, která je propojená se zastoupením uživatele v Azure AD.
+
+1. [Test SSO](#test-sso) – ověřte, zda konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
+Pokud chcete povolit jednotné přihlašování Azure AD pomocí Azure Portal, proveďte tyto kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Citrix NetScaler** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. V [Azure Portal](https://portal.azure.com/)v podokně integrace aplikací **Citrix NetScaler** v části **Spravovat**vyberte **jednotné přihlašování**.
+
+1. V podokně **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+
+1. V podokně **nastavit jednotné přihlašování pomocí SAML** vyberte pro **základní konfiguraci SAML** ikonu pro **úpravu** pera pro úpravu nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
+1. V části **základní konfigurace SAML** nakonfigurujte aplikaci v režimu **iniciované IDP** :
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<<Your FQDN>>`
+    1. Do textového pole **identifikátor** zadejte adresu URL, která má následující vzor: `https://<Your FQDN>`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<<Your FQDN>>/CitrixAuthService/AuthService.asmx`
+    1. Do textového pole **Adresa URL odpovědi** zadejte adresu URL, která má následující vzor: `https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
 
-1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
+1. Chcete-li nakonfigurovat aplikaci v režimu **iniciované SP** , vyberte možnost **nastavit další adresy URL** a proveďte následující krok:
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<<Your FQDN>>/CitrixAuthService/AuthService.asmx`
-
-    > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klientů Citrix NetScaler](https://www.citrix.com/contact/technical-support.html) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    * Do textového pole **přihlašovací adresa URL** zadejte adresu URL, která má následující vzor: `https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
 
     > [!NOTE]
-    > Aby bylo možné získat jednotné přihlašování, měly by být tyto adresy URL přístupné z veřejných webů. Abyste mohli token publikovat na nakonfigurované adrese URL služby ACS, musíte povolit bránu firewall nebo jiná nastavení zabezpečení na straně NetScaler a enble službu Azure AD.
+    > * Adresy URL použité v této části nejsou reálné hodnoty. Aktualizujte tyto hodnoty skutečnými hodnotami pro identifikátor, adresu URL odpovědi a přihlašovací adresu URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory pro klienta Citrix NetScaler](https://www.citrix.com/contact/technical-support.html) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > * Aby bylo možné nastavit jednotné přihlašování, adresy URL musí být přístupné z veřejných webů. Abyste mohli token publikovat na konfigurované adrese URL, musíte povolit bránu firewall nebo jiné nastavení zabezpečení na straně Citrix NetScaler a enble službu Azure AD.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **adresu URL federačních metadat aplikace**, zkopírujte adresu URL a uložte ji do poznámkového bloku.
+1. V podokně **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** pro **adresu URL FEDERAČNÍCH metadat aplikace**zkopírujte adresu URL a uložte ji v programu Poznámkový blok.
 
     ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-1. Aplikace Citrix NetScaler očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Klikněte na ikonu **Upravit** a změňte mapování atributů.
+1. Aplikace Citrix NetScaler očekává, že kontrolní výrazy SAML mají být v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Vyberte ikonu **Upravit** a změňte mapování atributů.
 
-    ![image](common/edit-attribute.png)
+    ![Upravit mapování atributů SAML](common/edit-attribute.png)
 
-1. Kromě toho aplikace Citrix NetScaler očekává, že se v odpovědi SAML vrátí zpátky několik atributů. V části deklarace identity uživatelů v dialogovém okně atributy uživatele proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
+1. Aplikace Citrix NetScaler také očekává několik dalších atributů, které se mají zpětně předat v odpovědi SAML. V dialogovém okně **atributy uživatele** v části **deklarace identity uživatelů**proveďte následující kroky a přidejte tak atributy tokenu SAML, jak je znázorněno v tabulce:
 
     | Name (Název) | Zdrojový atribut|
     | ---------------| --------------- |
     | mySecretID  | user.userprincipalname |
     
-    1. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
+    1. Výběrem možnosti **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
-    1. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
+    1. Do textového pole **název** zadejte název atributu, který je zobrazen pro daný řádek.
 
     1. Ponechte **obor názvů** prázdný.
 
-    1. Jako **atribut**vyberte zdroj.
+    1. Jako **atribut**vyberte **zdroj**.
 
-    1. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
+    1. V seznamu **zdrojový atribut** zadejte hodnotu atributu, která se zobrazí pro daný řádek.
 
-    1. Klikněte na tlačítko **Ok**
+    1. Vyberte **OK**.
 
-    1. Klikněte na možnost **Uložit**.
+    1. Vyberte **Save** (Uložit).
 
-
-1. V části **Nastavení Citrix NetScaler** zkopírujte příslušné adresy URL na základě vašeho požadavku.
+1. V části **Nastavení Citrix NetScaler** zkopírujte příslušné adresy URL podle vašich požadavků.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
@@ -141,276 +148,310 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
-1. Ve vlastnostech **uživatele** proveďte následující kroky:
-   1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
-   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+1. V nabídce vlevo v Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+
+1. V horní části podokna vyberte **Nový uživatel** .
+
+1. V nastavení vlastnosti **uživatele** proveďte tyto kroky:
+
+   1. Jako **název**zadejte `B.Simon`.  
+
+   1. Jako **uživatelské jméno**zadejte _username@companydomain.extension_ . Například, `B.Simon@contoso.com`.
+
+   1. Zaškrtněte políčko **Zobrazit heslo** a potom zapište nebo zkopírujte hodnotu zobrazenou v **hesle**.
+
+   1. Vyberte **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k Citrix NetScaler.
+V této části povolíte uživateli B. Simon používat jednotné přihlašování Azure tím, že udělíte přístup k uživatelům Citrix NetScaler.
 
 1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+
 1. V seznamu aplikace vyberte **Citrix NetScaler**.
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+
+1. V přehledu aplikace v části **Spravovat**vyberte **Uživatelé a skupiny**.
 
    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte možnost **Přidat uživatele**. Pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu **Uživatelé** možnost **B. Simon** . Zvolte **Vybrat**.
+
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak zvolte **Vybrat**.
+
+1. V dialogovém okně **Přidat přiřazení** vyberte **přiřadit**.
 
 ## <a name="configure-citrix-netscaler-sso"></a>Konfigurace Citrix NetScaler SSO
 
-- [Konfigurace jednotného přihlašování Citrix NetScaler při ověřování na základě hlaviček](#configure-citrix-netscaler-single-sign-on-for-header-based-authentication)
+Vyberte odkaz pro kroky pro druh ověřování, které chcete konfigurovat:
 
-- [Konfigurace jednotného přihlašování Citrix NetScaler pro ověřování založené na protokolu Kerberos](citrix-netscaler-tutorial.md)
+- [Konfigurace jednotného přihlašování pro Citrix NetScaler pro ověřování na základě hlaviček](#publish-the-web-server)
 
-### <a name="publishing-web-server"></a>Publikování webového serveru 
+- [Konfigurace služby Citrix NetScaler SSO pro ověřování pomocí protokolu Kerberos](citrix-netscaler-tutorial.md#publish-the-web-server)
 
-1. Vytvořte **virtuální server**.
+### <a name="publish-the-web-server"></a>Publikování webového serveru 
 
-    a. Přejít na **správu provozu > služby Vyrovnávání zatížení > Services**.
+Vytvoření virtuálního serveru:
+
+1. Vyberte služby **správy provozu** > služby **Vyrovnávání zatížení** > **Services**.
     
-    b. Klikněte na tlačítko **Add** (Přidat).
+1. Vyberte **Přidat**.
 
-    ![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/web01.png)
+    ![Konfigurace Citrix NetScaler – podokno služby](./media/header-citrix-netscaler-tutorial/web01.png)
 
-    c. Zadejte podrobnosti webového serveru, na kterém běží aplikace níže:
-    * **Název služby**
-    * **Server IP/existující server**
-    * **Protokol**
-    * **Port**
+1. Nastavte následující hodnoty webového serveru, na kterém běží aplikace:
 
-     ![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/web01.png)
+   * **Název služby**
+   * **Server IP/existující server**
+   * **Protokol**
+   * **Port**
 
-### <a name="configuring-load-balancer"></a>Konfigurace Load Balancer
+     ![Podokno konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/web01.png)
 
-1. Pokud chcete nakonfigurovat Load Balancer, proveďte následující kroky:
+### <a name="configure-the-load-balancer"></a>Konfigurace nástroje pro vyrovnávání zatížení
 
-    ![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/load01.png)
+Konfigurace nástroje pro vyrovnávání zatížení:
 
-    a. Přejít na **správu provozu > vyrovnávání zatížení > virtuálních serverech**.
+1. Přejít na **správu provozu** > **Vyrovnávání zatížení** > **virtuálních serverech**.
 
-    b. Klikněte na tlačítko **Add** (Přidat).
+1. Vyberte **Přidat**.
 
-    c. Zadejte následující podrobnosti:
+1. Nastavte následující hodnoty, jak je popsáno na následujícím snímku obrazovky:
 
     * **Název**
     * **Protokol**
     * **IP adresa**
     * **Port**
-    * Klikněte na **OK** .
 
-### <a name="bind-virtual-server"></a>Virtuální server BIND
+1. Vyberte **OK**.
 
-Připojte Load Balancer k virtuálnímu serveru, který jste vytvořili dříve.
+    ![Konfigurace Citrix NetScaler – podokno nastavení Basic](./media/header-citrix-netscaler-tutorial/load01.png)
 
-![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/bind01.png)
+### <a name="bind-the-virtual-server"></a>Vytvoření vazby virtuálního serveru
 
-![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/bind02.png)
+Vytvoření vazby nástroje pro vyrovnávání zatížení s virtuálním serverem:
 
-### <a name="bind-certificate"></a>Certifikát vazby
+1. V podokně **služby a skupiny služeb** vyberte možnost **žádná vazba služby Virtual Server vyrovnávání zatížení**.
 
-Vzhledem k tomu, že budeme tuto službu publikovat jako SSL, propojíme certifikát serveru a pak otestujete svoji aplikaci.
+   ![Konfigurace Citrix NetScaler – podokno vazby služby virtuálního serveru pro vyrovnávání zatížení](./media/header-citrix-netscaler-tutorial/bind01.png)
 
-![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/bind03.png)
+1. Ověřte nastavení, jak je znázorněno na následujícím snímku obrazovky, a pak vyberte **Zavřít**.
 
-![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/bind04.png)
+   ![Konfigurace Citrix NetScaler – ověření vazby služeb virtuálního serveru](./media/header-citrix-netscaler-tutorial/bind02.png)
+
+### <a name="bind-the-certificate"></a>Vytvoření vazby certifikátu
+
+Pokud chcete tuto službu publikovat jako SSL, navažte certifikát serveru a pak otestujte svoji aplikaci:
+
+1. V části **certifikát**vyberte možnost **žádný certifikát serveru**.
+
+   ![Konfigurace Citrix NetScaler – podokno certifikát serveru](./media/header-citrix-netscaler-tutorial/bind03.png)
+
+1. Ověřte nastavení, jak je znázorněno na následujícím snímku obrazovky, a pak vyberte **Zavřít**.
+
+   ![Konfigurace Citrix NetScaler – ověření certifikátu](./media/header-citrix-netscaler-tutorial/bind04.png)
 
 ## <a name="citrix-adc-saml-profile"></a>Profil SAML pro Citrix ADC
 
-### <a name="create-authentication-policy"></a>Vytvoření zásad ověřování
+Pokud chcete nakonfigurovat profil SAML ADC pro Citrix ADC, proveďte následující části:
 
-1. Přejít na **Security > AAA – data aplikací > zásady > ověřování > zásady ověřování**.
+### <a name="create-an-authentication-policy"></a>Vytvoření zásad ověřování
 
-2. Klikněte na tlačítko **Přidat** a zadejte podrobnosti.
+Postup vytvoření zásad ověřování:
 
-    ![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/policy01.png)
+1. Přejít na **Security** > **AAA – data aplikací** > **zásady** > **ověřování** > **zásady ověřování**.
 
-    a. Název **zásad ověřování**.
+1. Vyberte **Přidat**.
 
-    b. Výraz: **true**.
+1. V podokně **vytvořit zásadu ověřování** zadejte nebo vyberte následující hodnoty:
 
-    c. Typ akce **SAML**.
-
-    d. Akce = klikněte na **Přidat** (postupujte podle pokynů Průvodce vytvořením serveru SAML pro ověřování).
+    * **Název**: zadejte název pro zásady ověřování.
+    * **Akce**: zadejte **SAML**a pak vyberte **Přidat**.
+    * **Výraz**: zadejte **hodnotu true**.     
     
-    e. V **zásadách ověřování**klikněte na vytvořit.
+    ![Konfigurace Citrix NetScaler – vytvoření podokna zásad ověřování](./media/header-citrix-netscaler-tutorial/policy01.png)
 
-### <a name="create-authentication-saml-server"></a>Vytvoření ověřování serveru SAML
+1. Vyberte **Create** (Vytvořit).
 
-1. Proveďte následující kroky:
+### <a name="create-an-authentication-saml-server"></a>Vytvoření ověřování serveru SAML
 
-    ![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/server01.png)
+Pokud chcete vytvořit server SAML ověřování, klikněte na podokno **vytvořit ověření serveru SAML** a pak proveďte následující kroky:
 
-    a. Zadejte **název**.
+1. Do pole **název**zadejte název pro ověřování serveru SAML.
 
-    b. Importujte metadata (zadejte adresu URL federačních metadat z uživatelského rozhraní SAML Azure, které jste zkopírovali výše).
+1. V části **exportovat metadata SAML**:
+
+   1. Zaškrtněte políčko **importovat metadata** .
+
+   1. Zadejte adresu URL federačních metadat z uživatelského rozhraní služby Azure SAML, které jste zkopírovali dříve.
     
-    c. Zadejte **název vystavitele**.
+1. Jako **název vystavitele**zadejte příslušnou adresu URL.
 
-    d. Klikněte na **vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
-### <a name="create-authentication-virtual-server"></a>Vytvořit ověřovací virtuální server
+![Konfigurace Citrix NetScaler – vytvoření ověřování v podokně serveru SAML](./media/header-citrix-netscaler-tutorial/server01.png)
 
-1.  Přejít na **zabezpečení > AAA – přenos aplikací > > virtuálních serverech ověřování**.
+### <a name="create-an-authentication-virtual-server"></a>Vytvoření virtuálního serveru pro ověřování
 
-2.  Klikněte na **Přidat** a proveďte následující kroky:
+Vytvoření virtuálního serveru pro ověřování:
 
-    ![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/server02.png)
+1.  Přejít na **zabezpečení** > **AAA – přenosy aplikací** > **zásady** > **ověřování** > **virtuálních serverech ověřování**.
 
-    a.  Zadejte **název**.
+1.  Vyberte **Přidat**a pak proveďte následující kroky:
 
-    b.  Vyberte možnost **bez možnosti řešení**.
+    1. Do pole **název**zadejte název virtuálního serveru pro ověřování.
 
-    c.  Protokol **SSL**.
+    1. Zaškrtněte políčko **bez adres** .
 
-    d.  Klikněte na **OK**.
+    1. V případě **protokolu**vyberte možnost **SSL**.
 
-    e.  Klikněte na **Pokračovat**.
+    1. Vyberte **OK**.
 
+    ![Konfigurace Citrix NetScaler – podokno virtuálního serveru ověřování](./media/header-citrix-netscaler-tutorial/server02.png)
+    
 ### <a name="configure-the-authentication-virtual-server-to-use-azure-ad"></a>Konfigurace virtuálního serveru pro ověřování pro použití Azure AD
 
-Budete muset upravit 2 oddíly virtuálního serveru pro ověřování.
+Úprava dvou částí pro ověřovací virtuální server:
 
-1.  **Rozšířené zásady ověřování**
+1.  V podokně **Upřesnit zásady ověřování** vyberte možnost **bez zásad ověřování**.
 
-    ![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/virtual01.png)
+    ![Konfigurace Citrix NetScaler – podokno pokročilé zásady ověřování](./media/header-citrix-netscaler-tutorial/virtual01.png)
 
-    a. Vyberte **zásady ověřování** , které jste vytvořili dříve.
+1. V podokně **vazba zásad** vyberte zásadu ověřování a pak vyberte **svázat**.
 
-    b. Klikněte na **BIND**.
+    ![Konfigurace Citrix NetScaler – podokno vazby zásad](./media/header-citrix-netscaler-tutorial/virtual02.png)
 
-      ![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/virtual02.png)
+1. V podokně **virtuální servery založené na formulářích** vyberte možnost **žádný virtuální server vyrovnávání zatížení**.
 
-2. **Virtuální servery založené na formulářích**
+    ![Konfigurace Citrix NetScaler – podokno virtuální servery založené na formulářích](./media/header-citrix-netscaler-tutorial/virtual03.png)
 
-    ![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/virtual03.png)
+1. Jako plně kvalifikovaný název domény pro **ověřování**zadejte plně kvalifikovaný název domény (FQDN) (povinné).
 
-    a.  Od svého vykonání uživatelského rozhraní bude nutné zadat **plně kvalifikovaný název domény** .
+1. Vyberte virtuální server vyrovnávání zatížení, který chcete chránit pomocí ověřování Azure AD.
 
-    b.  Vyberte **virtuální Server Load Balancer** , který chcete chránit pomocí ověřování Azure AD.
+1. Vyberte **BIND**.
 
-    c.  Klikněte na **BIND**.
+    ![Konfigurace Citrix NetScaler – podokno vazby virtuálního serveru pro vyrovnávání zatížení](./media/header-citrix-netscaler-tutorial/virtual04.png)
 
-    ![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/virtual04.png)
+    > [!NOTE]
+    > Ujistěte se, že jste v podokně **Konfigurace ověřovacího virtuálního serveru** vybrali **Hotovo** .
 
-    >[!NOTE]
-    >Ujistěte se také, že jste na stránce konfigurace virtuálního serveru pro ověřování **provedli práci** .
+1. Chcete-li ověřit změny, v prohlížeči přejdete na adresu URL aplikace. Měli byste vidět přihlašovací stránku tenanta místo neověřeného přístupu, který byste viděli předtím.
 
-3. Ověřte změny. Přejděte na adresu URL aplikace. Měla by se zobrazit stránka pro přihlášení tenanta namísto neověřeného přístupu.
+    ![Konfigurace Citrix NetScaler – přihlašovací stránka ve webovém prohlížeči](./media/header-citrix-netscaler-tutorial/virtual05.png)
 
-    ![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/virtual05.png)
+## <a name="configure-citrix-netscaler-sso-for-header-based-authentication"></a>Konfigurace jednotného přihlašování pro Citrix NetScaler pro ověřování na základě hlaviček
 
-## <a name="configure-citrix-netscaler-single-sign-on-for-header-based-authentication"></a>Konfigurace jednotného přihlašování Citrix NetScaler při ověřování na základě hlaviček
+### <a name="configure-citrix-adc"></a>Konfigurace Citrix ADC
 
-### <a name="citrix-adc-configuration"></a>Konfigurace pro Citrix ADC
+Pokud chcete nakonfigurovat Citrix ADC pro ověřování založené na hlavičkách, vyplňte následující oddíly.
 
-### <a name="create-an-rewrite-action"></a>Vytvoření akce opětovného zápisu
+#### <a name="create-a-rewrite-action"></a>Vytvoření akce opětovného zápisu
 
-1. Přejít na **AppExpert > přepište > akce přepisu**.
+1. Přejít na **AppExpert** > **přepište** > **Akce přepisu**.
  
-    ![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/header01.png)
+    ![Konfigurace Citrix NetScaler – podokno akcí přepisu](./media/header-citrix-netscaler-tutorial/header01.png)
 
-2.  Klikněte na tlačítko **Add** (Přidat).
+1.  Vyberte **Přidat**a pak proveďte následující kroky:
 
-    a.  Zadejte **název**.
+    1. Do pole **název**zadejte název pro akci přepsání.
 
-    b.  Type = **INSERT_HTTP_HEADER**.
+    1. Jako **typ**zadejte **INSERT_HTTP_HEADER**.
 
-    c.  V tomto příkladu zadejte **název hlavičky** (SecretID).
+    1. Do **záhlaví název**zadejte název hlavičky (v tomto příkladu používáme _SecretID_).
 
-    d.  Zadejte výraz **AAA. Uživatelský. ATRIBUT (`mySecretID`)** , kde **MySecretID** je deklarace identity SAML služby Azure AD odeslané na Citrix ADC.
+    1. Jako **výraz**zadejte **AAA. Uživatelský. ATRIBUT ("mySecretID")** , kde **mySecretID** je deklarace identity SAML služby Azure AD, která byla odeslána na Citrix ADC.
 
-    e.  Klikněte na **Vytvořit**.
+    1. Vyberte **Create** (Vytvořit).
 
-    ![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/header02.png)
+    ![Konfigurace Citrix NetScaler – vytvoření podokna akcí přepisování](./media/header-citrix-netscaler-tutorial/header02.png)
  
-### <a name="create-a-rewrite-policy"></a>Vytvořte zásadu přepsání.
+#### <a name="create-a-rewrite-policy"></a>Vytvoření zásady přepisování
 
-1.  Přejít na **AppExpert > přepsat > zásady přepisování**.
+1.  Přejít na **AppExpert** > **přepsat** > **zásady přepisování**.
  
-    ![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/header03.png)
+    ![Konfigurace Citrix NetScaler – podokno zásady přepisování](./media/header-citrix-netscaler-tutorial/header03.png)
 
-2.  Klikněte na tlačítko **Add** (Přidat).
+1.  Vyberte **Přidat**a pak proveďte následující kroky:
 
-    ![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/header04.png)
+    1. Do pole **název**zadejte název zásady přepsání.
 
-    a.  Zadejte **název**.
+    1. V části **Akce**vyberte akci přepisu, kterou jste vytvořili v předchozí části.
 
-    b.  Vyberte dříve vytvořenou **akci** .
+    1. Jako **výraz**zadejte **hodnotu true**.
 
-    r. Výraz zadejte **hodnotu true**.
+    1. Vyberte **Create** (Vytvořit).
 
-    d.  Klikněte na **vytvořit**.
+    ![Konfigurace Citrix NetScaler – vytvořit podokno zásad přepisování](./media/header-citrix-netscaler-tutorial/header04.png)
 
-### <a name="bind-rewrite-policy-to-virtual-servers"></a>Vytvoření vazby zásad přepisu na virtuální servery
+### <a name="bind-a-rewrite-policy-to-a-virtual-server"></a>Vázání zásady přepisování na virtuální server
 
-1. Vytvoření vazby zásad přepisování na konkrétní virtuální server pomocí grafického uživatelského rozhraní.
+Vytvoření vazby zásad přepisování na virtuální server pomocí grafického uživatelského rozhraní:
 
-2. Přejděte do **správy provozu > vyrovnávání zatížení > virtuálních serverech**.
+1. Přejít na **správu provozu** > **Vyrovnávání zatížení** > **virtuálních serverech**.
 
-3. V podokně podrobností v seznamu virtuálních serverů vyberte **virtuální server** , na který chcete vytvořit zásadu přepisování, a pak klikněte na **otevřít**.
+1. V seznamu virtuálních serverů vyberte virtuální server, na který chcete vytvořit zásadu přepisování, a pak vyberte **otevřít**.
 
-4. V dialogovém okně konfigurace virtuálního serveru (vyrovnávání zatížení) vyberte kartu **zásady** . Všechny zásady nakonfigurované v NetScaler se zobrazí v seznamu.
+1. V podokně **virtuální server vyrovnávání zatížení** v části **Upřesnit nastavení**vyberte **zásady**. V seznamu se zobrazí všechny zásady, které jsou nakonfigurované pro vaši instanci NetScaler.
  
-    ![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/header05.png)
+    ![Konfigurace Citrix NetScaler – podokno virtuálního serveru pro vyrovnávání zatížení](./media/header-citrix-netscaler-tutorial/header05.png)
 
-    ![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/header06.png)
+    ![Konfigurace Citrix NetScaler – podokno virtuálního serveru pro vyrovnávání zatížení](./media/header-citrix-netscaler-tutorial/header06.png)
 
-5.  **Zaškrtněte políčko vedle názvu** zásady, kterou chcete vytvořit pomocí tohoto virtuálního serveru.
-
-    ![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/header07.png)
-
-    ![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/header08.png)
+1.  Zaškrtněte políčko vedle názvu zásady, kterou chcete vytvořit pomocí tohoto virtuálního serveru.
  
-6.  Klikněte na **OK**. Na stavovém řádku se zobrazí zpráva s oznámením, že zásada byla úspěšně nakonfigurována.
+    ![Konfigurace Citrix NetScaler – podokno vazby zásad provozu virtuálního serveru pro vyrovnávání zatížení](./media/header-citrix-netscaler-tutorial/header08.png)
 
-### <a name="modify-saml-server-to-extract-attributes-from-claim"></a>Upravit server SAML pro extrakci atributů z deklarace identity
+1. V dialogovém okně **zvolit typ** :
 
-1.  Přejít na **zabezpečení > AAA – aplikační přenosy > zásady > ověřování > pokročilé zásady > akce > servery**.
+    1. V **Možnosti zvolit zásadu**vyberte **provoz**.
 
-2.  Vyberte příslušný **Server SAML pro ověřování** pro aplikaci.
+    1. Jako **Typ výběru**vyberte **požadavek**.
+
+    ![Konfigurace Citrix NetScaler – dialogové okno zásady](./media/header-citrix-netscaler-tutorial/header07.png)
+
+1.  Vyberte **OK**. Zpráva ve stavovém řádku označuje, že zásada byla úspěšně nakonfigurována.
+
+### <a name="modify-the-saml-server-to-extract-attributes-from-a-claim"></a>Úprava serveru SAML pro extrakci atributů z deklarace
+
+1.  Přejít na **zabezpečení** > **AAA – aplikační přenosy** > **zásady** > **ověřování** > **pokročilé zásady** > **Akce** > **servery**.
+
+1.  Vyberte příslušný server SAML pro ověřování pro aplikaci.
  
-    ![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/header09.png)
+    ![Konfigurace Citrix NetScaler – konfigurace ověřování – podokno serveru SAML](./media/header-citrix-netscaler-tutorial/header09.png)
 
-3. V části atribut zadejte atributy SAML, které chcete extrahovat pomocí ",". V případě zadejte atribut s názvem **mySecretID**.
+1. V části **atributy** bolesti zadejte atributy SAML, které chcete extrahovat, a oddělte je čárkami. V našem příkladu zadáme atribut `mySecretID`.
  
-    ![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/header10.png)
+    ![Konfigurace Citrix NetScaler – podokno atributů](./media/header-citrix-netscaler-tutorial/header10.png)
 
-4. Ověřte přístup k aplikacím.
+1. Pokud chcete ověřit přístup, v adrese URL v prohlížeči vyhledejte atribut SAML v části **kolekce Headers**.
 
-    ![Konfigurace Citrix NetScaler](./media/header-citrix-netscaler-tutorial/header11.png)
+    ![Konfigurace Citrix NetScaler – kolekce hlaviček na adrese URL](./media/header-citrix-netscaler-tutorial/header11.png)
 
-### <a name="create-citrix-netscaler-test-user"></a>Vytvoření testovacího uživatele Citrix NetScaler
+### <a name="create-a-citrix-netscaler-test-user"></a>Vytvoření testovacího uživatele Citrix NetScaler
 
-V této části se v Citrix NetScaler vytvoří uživatel nazvaný B. Simon. Citrix NetScaler podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v Citrix NetScaler neexistuje, vytvoří se po ověření nový.
+V této části se v Citrix NetScaler vytvoří uživatel nazvaný B. Simon. Citrix NetScaler podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části nemusíte nic dělat. Pokud uživatel ještě v Citrix NetScaler neexistuje, vytvoří se po ověření nový.
 
 > [!NOTE]
-> Pokud potřebujete ručně vytvořit uživatele, musíte se obrátit na [tým podpory klienta Citrix NetScaler](https://www.citrix.com/contact/technical-support.html).
+> Pokud potřebujete ručně vytvořit uživatele, obraťte se na [tým podpory pro klienta Citrix NetScaler](https://www.citrix.com/contact/technical-support.html).
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci služby Azure AD SSO pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Citrix NetScaler na přístupovém panelu byste měli být automaticky přihlášení k Citrix NetScaler, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když vyberete dlaždici Citrix NetScaler na přístupovém panelu, měli byste se automaticky přihlásit k NetScaler Citrix, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Vyzkoušejte Citrix NetScaler s Azure AD](https://aad.portal.azure.com/)
 
-- [Konfigurace jednotného přihlašování Citrix NetScaler pro ověřování založené na protokolu Kerberos](citrix-netscaler-tutorial.md)
+- [Konfigurace jednotného přihlašování Citrix NetScaler pro ověřování pomocí protokolu Kerberos](citrix-netscaler-tutorial.md)

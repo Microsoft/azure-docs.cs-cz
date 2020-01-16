@@ -29,6 +29,8 @@
   items:
     - name: Vytvoření spravované domény pomocí Azure PowerShellu
       href: powershell-create-instance.md
+    - name: Vytvoření spravované domény pomocí šablony
+      href: template-create-instance.md
 - name: Koncepty
   items:
     - name: Základy správy

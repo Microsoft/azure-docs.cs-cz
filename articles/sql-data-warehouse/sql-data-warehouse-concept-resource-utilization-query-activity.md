@@ -7,16 +7,16 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 08/09/2019
+ms.date: 01/14/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1a210e2622212ed59dfa12f9f9a108c6ffe08714
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 366d170a4caf9ee7428b68d71f910c65356038ff
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692892"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024539"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Monitorování využití prostředků a aktivity dotazů v Azure SQL Data Warehouse
 Azure SQL Data Warehouse poskytuje bohatě monitorovanou možnost monitorování v rámci Azure Portal, která umožňuje obcházet vaše úlohy datového skladu na Surface. Azure Portal je doporučeným nástrojem při monitorování datového skladu, protože poskytuje konfigurovatelné doby uchovávání, výstrahy, doporučení a přizpůsobitelné grafy a řídicí panely pro metriky a protokoly. Portál také umožňuje integraci s dalšími službami monitorování Azure, jako je Operations Management Suite (OMS) a Azure Monitor (protokoly), a poskytuje tak prostředí pro monitorování holistický jenom pro datový sklad, ale také pro celou službu Azure Analytics. platforma pro integrovanou monitorovací prostředí. Tato dokumentace popisuje, jaké možnosti monitorování jsou k dispozici pro optimalizaci a správu vaší analytické platformy pomocí SQL Data Warehouse. 
@@ -27,23 +27,25 @@ V Azure Portal pro SQL Data Warehouse jsou k dispozici následující metriky. T
 
 | Název metriky             | Popis                                                  | Typ agregace |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
-| Procento CPU          | Využití CPU ve všech uzlech pro datový sklad      | Maximum          |
-| Procento datových V/V      | Využití v/v na všech uzlech pro datový sklad       | Maximum          |
-| Procento paměti       | Využití paměti (SQL Server) ve všech uzlech pro datový sklad | Maximum          |
-| Úspěšná připojení  | Počet úspěšných připojení k datům                 | Celkem            |
-| Neúspěšná připojení      | Počet neúspěšných připojení k datovému skladu           | Celkem            |
-| Blokováno bránou firewall     | Počet přihlášení k datovému skladu, který byl zablokován     | Celkem            |
-| DWU limit               | Cíl na úrovni služby datového skladu                | Maximum          |
-| Procento DWU          | Maximální procento CPU a procento v/v dat        | Maximum          |
-| DWU použito                | DWU limit * DWU procento                                   | Maximum          |
-| Procento přístupů do mezipaměti    | (Neúspěšné přístupy do mezipaměti a Neúspěšné přístupy do mezipaměti) * 100 kde jsou přístupy do mezipaměti součtem všech segmentů columnstore v místní mezipaměti SSD a neúspěšných přístupů do mezipaměti jsou segmenty columnstore v místní mezipaměti SSD vyčtené ve všech uzlech. | Maximum          |
-| Procento využité mezipaměti   | (využitá mezipaměť/kapacita mezipaměti) * 100, kde použitá mezipaměť je součet všech bajtů v místní mezipaměti SSD napříč všemi uzly a kapacita mezipaměti je součet kapacity úložiště místní mezipaměti SSD napříč všemi uzly. | Maximum          |
-| Místní procento databáze tempdb | Místní využití databáze tempdb napříč všemi výpočetními uzly – hodnoty se generují každých pět minut. | Maximum          |
+| Procento CPU          | Využití CPU ve všech uzlech pro datový sklad      | AVG, min, Max    |
+| Procento datových V/V      | Využití v/v na všech uzlech pro datový sklad       | AVG, min, Max    |
+| Procento paměti       | Využití paměti (SQL Server) ve všech uzlech pro datový sklad | AVG, min, Max   |
+| Aktivní dotazy          | Počet aktivních dotazů zpracovávaných v systému             | Součet              |
+| Dotazy ve frontě          | Počet dotazů ve frontě čekajících na zahájení provádění          | Součet              |
+| Úspěšná připojení  | Počet úspěšných připojení k datům                 | Sum, Count       |
+| Neúspěšná připojení      | Počet neúspěšných připojení k datovému skladu           | Sum, Count       |
+| Blokováno bránou firewall     | Počet přihlášení k datovému skladu, který byl zablokován     | Sum, Count       |
+| DWU limit               | Cíl na úrovni služby datového skladu                | AVG, min, Max    |
+| Procento DWU          | Maximální procento CPU a procento v/v dat        | AVG, min, Max    |
+| DWU použito                | DWU limit * DWU procento                                   | AVG, min, Max    |
+| Procento přístupů do mezipaměti    | (Neúspěšné přístupy do mezipaměti a Neúspěšné přístupy do mezipaměti) * 100 kde jsou přístupy do mezipaměti součtem všech segmentů columnstore v místní mezipaměti SSD a neúspěšných přístupů do mezipaměti jsou segmenty columnstore v místní mezipaměti SSD vyčtené ve všech uzlech. | AVG, min, Max    |
+| Procento využité mezipaměti   | (využitá mezipaměť/kapacita mezipaměti) * 100, kde použitá mezipaměť je součet všech bajtů v místní mezipaměti SSD napříč všemi uzly a kapacita mezipaměti je součet kapacity úložiště místní mezipaměti SSD napříč všemi uzly. | AVG, min, Max    |
+| Místní procento databáze tempdb | Místní využití databáze tempdb napříč všemi výpočetními uzly – hodnoty se generují každých pět minut. | AVG, min, Max    |
 
-> Co je potřeba vzít v úvahu při prohlížení metrik a nastavení výstrah:
->
-> - Neúspěšná a úspěšná připojení se nahlásí pro konkrétní datový sklad – ne pro logický Server.
-> - Procento paměti odráží využití i v případě, že je datový sklad v nečinném stavu. neodráží spotřebu paměti aktivní úlohy. Tuto metriku můžete použít a sledovat společně s ostatními (tempdb, Gen2 cache) a vytvořit si holistický rozhodnutí o tom, jestli škálování pro další kapacitu mezipaměti zvýší výkon úlohy, aby splňovala vaše požadavky.
+Co je potřeba vzít v úvahu při prohlížení metrik a nastavení výstrah:
+
+- Neúspěšná a úspěšná připojení se nahlásí pro konkrétní datový sklad – ne pro logický Server.
+- Procento paměti odráží využití i v případě, že je datový sklad v nečinném stavu. neodráží spotřebu paměti aktivní úlohy. Tuto metriku můžete použít a sledovat společně s ostatními (tempdb, Gen2 cache) a vytvořit si holistický rozhodnutí o tom, jestli škálování pro další kapacitu mezipaměti zvýší výkon úlohy, aby splňovala vaše požadavky.
 
 
 ## <a name="query-activity"></a>Aktivita dotazu

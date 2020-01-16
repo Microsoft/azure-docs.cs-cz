@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: b3162486740ca8cadbe8610c0ddfe5053955bb59
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 37f408ba633abdd95824b2e94253251eacf1f7f4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75897894"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980833"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-cli"></a>Vytvoření a správa privátního odkazu pro Azure Database for MySQL (ve verzi Preview) pomocí rozhraní příkazového řádku
 
@@ -156,7 +156,7 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
     Name:    mydemomysqlserver.mysql.privatelink.database.azure.com
     Address:  10.1.3.4
 
-3. Test the private link connection for the MySQL server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/wb-installing-windows.html) to do the operation.
+3. Test the private link connection for the MySQL server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
 
 
 4. In **New connection**, enter or select this information:

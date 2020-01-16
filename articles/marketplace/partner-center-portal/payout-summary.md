@@ -7,12 +7,12 @@ ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 38717ae103ac72d35042ced9bf662d295ed8a29b
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 997014263f0d12e7cc16a761152870c2ee63d6ec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931808"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979703"
 ---
 # <a name="payout-reporting"></a>Vytváření sestav o výběrech
 
@@ -52,7 +52,7 @@ Pokud prodáváte nabídky v Azure Marketplace, zobrazí se také informace o ú
 | Transakce není připravená na výběr. | Probíhá fakturace | Další odhadovaná platba: stav vyvýběru je v nezpracovaném stavu.  |
 | Stav výběr |  | Nezpracované <br> Zisk má nárok na platbu. Zůstane v tomto stavu pro období chlazení, jak je definováno v Průvodci programu pro program k Pobídkě. <br> <br> Nadcházející <br> Platební objednávka – vygenerované interní recenze, které čekají na vyřízení, než se zpracuje platba <br> <br> Odesláno: <br> Platba byla odeslána do vaší banky. |
 
-## <a name="customer-types"></a>Typy zákazníků 
+## <a name="customer-types"></a>Typy zákazníků
 
 ### <a name="enterprise-agreement"></a>Smlouva Enterprise
 
@@ -66,7 +66,7 @@ Zákazníci můžou také platit pomocí platební karty a faktury za měsíc. V
 
 Například pokud zákazník nakupuje pomocí platební karty.
 
-## <a name="corelation-between-payout-and-usage"></a>Vztah mezi výběrem a využitím 
+## <a name="corelation-between-payout-and-usage"></a>Vztah mezi výběrem a využitím
 
 |Popis    |    Datum  | Objednávky/použití  | Výplata |
 |----------|----------|-----------|-------------|
@@ -97,33 +97,33 @@ Například pokud zákazník nakupuje pomocí platební karty.
 
 ## <a name="transaction-history-download-export"></a>Export stažení Historie transakcí
 
-Tato možnost nabízí stažení každé položky řádku k přijetí, kterou vidíte na stránce Historie transakcí, typu, datu, přidruženém množství transakce, zákazníkovi, produktu a dalších transakčních detailech vztahujících se k programu pobídek. 
+Tato možnost nabízí stažení každé položky řádku k přijetí, kterou vidíte na stránce Historie transakcí, typu, datu, přidruženém množství transakce, zákazníkovi, produktu a dalších transakčních detailech vztahujících se k programu pobídek.
 
-| Název sloupce     | Popis    | 
+| Název sloupce     | Popis    |
 |-------------|-------------------------------|
 | earningId                      | Jedinečný identifikátor pro každý z nich                                                                                                       |
-| participantId                  | Primární identita partnera v rámci programu                                                                            | 
-| participantIdType              | Převážně ID programu pro pobídkové programy a prodejce, pokud je to pro aplikace ze Storu a Azure Marketplace                                          | 
-| účastník                | Název partnerského partnera                                                                                                              | 
+| participantId                  | Primární identita partnera v rámci programu                                                                            |
+| participantIdType              | Převážně ID programu pro pobídkové programy a prodejce, pokud je to pro aplikace ze Storu a Azure Marketplace                                          |
+| účastník                | Název partnerského partnera                                                                                                              |
 | partnerCountryCode             | Umístění/země pro partnerský partner                                                                                                  |
-| programName                    | Motivace/uložení názvu programu                                                                                                             | 
-| transactionId                  | Jedinečný identifikátor pro transakci                                                                                                    | 
-| transactionCurrency            | Měna, ve které došlo k původní transakci zákazníka (nejedná se o měnu partnerského umístění)                                     | 
-| transactionDate                | Datum transakce Užitečné pro programy, kde mnoho transakcí přispívá k jednomu z nich                                           | 
-| transactionExchangeRate        | Směnný kurz použitý k zobrazení odpovídající částky transakce v USD                                                                 | 
-| transactionAmount              | Částka transakce v původní měně transakce na základě toho, které z nich se vygenerovaly                                              | 
-| transactionAmountUSD           | Částka transakce v USD                                                                                                                | 
-| páka                          | Označuje obchodní pravidlo pro vyloučení.                                                                                                  | 
-| earningRate                    | Míra motivace uplatňovaná na částku transakce pro vygenerování výnosu                                                                      | 
-| množství                       | Liší se v závislosti na programu. Indikuje fakturované množství transakčních programů.                                                            | 
+| programName                    | Motivace/uložení názvu programu                                                                                                             |
+| transactionId                  | Jedinečný identifikátor pro transakci                                                                                                    |
+| transactionCurrency            | Měna, ve které došlo k původní transakci zákazníka (nejedná se o měnu partnerského umístění)                                     |
+| transactionDate                | Datum transakce Užitečné pro programy, kde mnoho transakcí přispívá k jednomu z nich                                           |
+| transactionExchangeRate        | Směnný kurz použitý k zobrazení odpovídající částky transakce v USD                                                                 |
+| transactionAmount              | Částka transakce v původní měně transakce na základě toho, které z nich se vygenerovaly                                              |
+| transactionAmountUSD           | Částka transakce v USD                                                                                                                |
+| páka                          | Označuje obchodní pravidlo pro vyloučení.                                                                                                  |
+| earningRate                    | Míra motivace uplatňovaná na částku transakce pro vygenerování výnosu                                                                      |
+| množství                       | Liší se v závislosti na programu. Indikuje fakturované množství transakčních programů.                                                            |
 | quantityType                   | Indikuje typ množství, například fakturované množství, MAU.                                                                                     |
-| earningType                    | Uvádí, zda se jedná o poplatek, slevu, Coop, prodej atd.                                                                                          | 
+| earningType                    | Uvádí, zda se jedná o poplatek, slevu, Coop, prodej atd.                                                                                          |
 | earningAmount                  | Peněžní částka v původní transakční měně                                                                                      |
 | earningAmountUSD               | Množství využité v USD                                                                                                                    |
 | earningDate                    | Datum přijetí                                                                                                                      |
 | calculationDate                | Datum výpočtu v systému                                                                                            |
 | earningExchangeRate            | Směnný kurz použitý k zobrazení odpovídajících částek v USD                                                                                  |
-| exchangeRateDate               | Datum směnného kurzu použité k výpočtu EarningAmount USD                                                                                   | 
+| exchangeRateDate               | Datum směnného kurzu použité k výpočtu EarningAmount USD                                                                                   |
 | paymentAmountWOTax             | Celková částka (bez daně) v platbě k měně pro jenom odeslané platby                                                                 |
 | paymentCurrency                | Platíte do měny zvolené partnerem v platebním profilu. Zobrazuje se jenom pro odeslané platby.                                                   |
 | paymentExchangeRate            | Směnný kurz používaný k výpočtu paymentAmountWOTax v měně platby pomocí ExchangeRateDate                                            |
@@ -162,7 +162,7 @@ Tato možnost nabízí stažení každé položky řádku k přijetí, kterou vi
 | taxZipCode       | Prodáno do PSČ zákazníka                                                                                                                  |
 | LicensingProgramName       |                                                                                                                   |
 | Kód programu       | Řetězec, který se má mapovat s názvem programu                                                                                                                   |
-| earningAmountInLastPaymentCurrency       | Peněžní částka v poslední platební měně (pole bude prázdné, pokud se nezaplatily žádné předchozí platby)                                                                                                                   |
+| EarningAmountInLastPaymentCurrency       | Peněžní částka v poslední platební měně (pole bude prázdné, pokud se nezaplatily žádné předchozí platby)                                                                                                                   |
 | lastPaymentCurrency       | Poslední platební měna (pole bude prázdné, pokud se nevyplatila žádná předchozí platba)                                                                                                                   |
 | AssetId       | Jedinečný identifikátor objednávek zákazníků pro vaši službu Marketplace  Představuje položky transakčního nákupu v řádku. Může existovat více prostředků.                                                                                                                   |
 | OrderId       | má vztah k faktuře zákazníka.                                                                                                                   |

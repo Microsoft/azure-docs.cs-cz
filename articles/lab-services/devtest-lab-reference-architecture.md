@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 059fd1eb5df09cd0f24763f18cbb02b34017793c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f079071a88d034dfd279da8656da517b934275a3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647896"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982103"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Referenční architektura Azure DevTest Labs pro podniky
 Tento článek popisuje referenční architekturu, která vám může pomáhat s nasazením řešení na základě Azure DevTest Labs v podniku. Zahrnuje následující:
@@ -56,7 +56,7 @@ I když DevTest Labs nemá předdefinované kvóty nebo limity, další prostře
 - **Prostředky na skupinu prostředků na typ prostředku**: výchozí limit pro [prostředky na skupinu prostředků na typ prostředku je 800](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits).  Když použijete *všechny virtuální počítače ve stejné konfiguraci skupiny prostředků* , uživatelé budou mít tento limit předplatného mnohem dřív, zejména v případě, že virtuální počítače mají mnoho dalších disků.
 - **Účty úložiště**: testovací prostředí v DevTest Labs se dodává s účtem úložiště. Kvóta Azure pro [počet účtů úložiště podle oblasti v rámci předplatného je 250](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). Maximální počet DevTest Labs ve stejné oblasti je také 250.
 - **Přiřazení rolí**: přiřazení role je způsob, jakým udělíte uživateli nebo hlavní přístup k prostředku (vlastník, prostředek, úroveň oprávnění). V Azure existuje [omezení 2 000 přiřazení rolí na předplatné](../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits). Ve výchozím nastavení vytvoří služba DevTest Labs skupinu prostředků pro každý virtuální počítač. Vlastníkovi je uděleno oprávnění *vlastníka* pro virtuální počítač DevTest Labs a oprávnění *Čtenář* pro skupinu prostředků. Každý nově vytvořený virtuální počítač navíc používá přiřazení dvou rolí k přiřazením, která se používají, když uživatelům udělíte oprávnění k testovacímu prostředí.
-- **Čtení a zápisy rozhraní API**: Existují různé způsoby, jak automatizovat Azure a DevTest Labs, včetně rozhraní REST API, PowerShellu, Azure CLI a sady Azure SDK. Prostřednictvím automatizace můžete získat další omezení požadavků rozhraní API: každé předplatné umožňuje až [12 000 požadavků na čtení a 1 200 požadavků na zápis za hodinu](../azure-resource-manager/resource-manager-request-limits.md). Při automatizaci DevTest Labs si pamatujte na toto omezení.
+- **Čtení a zápisy rozhraní API**: Existují různé způsoby, jak automatizovat Azure a DevTest Labs, včetně rozhraní REST API, PowerShellu, Azure CLI a sady Azure SDK. Prostřednictvím automatizace můžete získat další omezení požadavků rozhraní API: každé předplatné umožňuje až [12 000 požadavků na čtení a 1 200 požadavků na zápis za hodinu](../azure-resource-manager/management/request-limits-and-throttling.md). Při automatizaci DevTest Labs si pamatujte na toto omezení.
 
 ## <a name="manageability-considerations"></a>Aspekty správy
 DevTest Labs má skvělé administrativní uživatelské rozhraní pro práci s jedním testovacím prostředím. Ale v podniku máte pravděpodobně několik předplatných Azure a mnoho laboratoří. Provádění změn konzistentně pro všechny vaše cvičení vyžaduje skriptování/automatizaci. Tady jsou některé příklady a osvědčené postupy správy pro nasazení DevTest Labs:

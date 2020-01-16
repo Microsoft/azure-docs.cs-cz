@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 1/13/2020
+ms.date: 1/14/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 9f8ed6be825470504b5e7b45a15c4faa9cf5ccfc
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: bfa5d240ba4905f79274941568933daf1425bf8b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932886"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969419"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
 
@@ -29,7 +29,7 @@ Základní postup je následující:
 1. Použijte jednu z níže uvedených šablon jako soubor JSON, který popisuje, jak vytvořit výstrahu.
 2. Upravte a použijte odpovídající soubor parametrů jako JSON pro přizpůsobení výstrahy.
 3. Parametr `metricName` najdete v tématu dostupné metriky v [Azure monitor podporovaných metrikách](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported).
-4. Nasaďte šablonu pomocí [libovolné metody nasazení](../../azure-resource-manager/resource-group-template-deploy.md).
+4. Nasaďte šablonu pomocí [libovolné metody nasazení](../../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Šablona pro jednoduchou výstrahu metriky se statickou prahovou hodnotou
 
@@ -378,6 +378,13 @@ Následující kód JSON uložte jako simpledynamicmetricalert. JSON pro účely
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
+    "ignoreDataBefore": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format, e.g. '2019-12-31T22:00:00Z')."
+            }
+        },
         "timeAggregation": {
             "type": "string",
             "defaultValue": "Average",
@@ -455,6 +462,7 @@ Následující kód JSON uložte jako simpledynamicmetricalert. JSON pro účely
                                 "numberOfEvaluationPeriods": "[parameters('numberOfEvaluationPeriods')]",
                                 "minFailingPeriodsToAlert": "[parameters('minFailingPeriodsToAlert')]"
                             },
+                "ignoreDataBefore": "[parameters('ignoreDataBefore')]",
                             "timeAggregation": "[parameters('timeAggregation')]"
                         }
                     ]
@@ -511,6 +519,9 @@ Níže uvedený formát JSON uložte jako simpledynamicmetricalert. Parameters. 
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
+    "ignoreDataBefore": {
+            "value": ""
+        },
         "timeAggregation": {
             "value": "Average"
         },
@@ -559,7 +570,7 @@ Při použití dimenzí v pravidle výstrahy obsahujícím více kritérií Pama
 - V rámci každého kritéria můžete vybrat jenom jednu hodnotu na dimenzi.
 - Jako hodnotu dimenze nelze použít "\*".
 - Pokud metriky, které jsou konfigurovány v různých kriteriích, podporují stejnou dimenzi, pak musí být nakonfigurovaná hodnota dimenze explicitně nastavena stejným způsobem pro všechny tyto metriky (v příslušných kritériích).
-    - V následujícím příkladu, protože **transakce** i metriky **SuccessE2ELatency** mají dimenzi **název rozhraní API** a *criterion1* Určuje hodnotu *"getblob"* pro dimenzi **názvu rozhraní API** , pak *criterion2* musí také nastavit hodnotu *getblob* pro dimenzi **názvu rozhraní API** .
+    - V následujícím příkladu, protože **transakce** i metriky **SuccessE2ELatency** mají dimenzi **ApiName** a *Criterion1* Určuje hodnotu *getblob* pro dimenzi **ApiName** , pak *criterion2* musí také nastavit hodnotu *getblob* pro dimenzi **ApiName** .
 
 
 Následující kód JSON uložte jako advancedstaticmetricalert. JSON pro účely tohoto Názorného postupu.

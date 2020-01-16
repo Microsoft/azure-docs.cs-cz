@@ -5,22 +5,22 @@ services: active-directory
 documentationcenter: ''
 author: MarkusVi
 manager: daveba
-editor: daveba
+editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee331435cbc7d0cb580b3ad5865030aba6d372ea
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: ec9956f0c5d834633646938da19f03e5467a9f6d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888460"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977836"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Kurz: použití spravované identity přiřazené uživatelem na virtuálním počítači s Windows pro přístup k Azure Resource Manager
 
@@ -54,7 +54,16 @@ Získáte informace o těchto tématech:
 - Spuštěním rutiny `Install-Module -Name PowerShellGet -AllowPrerelease` získejte předběžnou verzi modulu `PowerShellGet` (po spuštění tohoto příkazu možná budete muset pomocí příkazu `Exit` ukončit aktuální relaci PowerShellu, aby se modul `Az.ManagedServiceIdentity` nainstaloval).
 - Spuštěním rutiny `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` nainstalujte předběžnou verzi modulu `Az.ManagedServiceIdentity`, který umožňuje provádět operace s identitou přiřazenou uživatelem v tomto článku.
 
-## <a name="create-identity"></a>Vytvořit identitu
+
+## <a name="enable"></a>Povolení
+
+V případě scénáře, který je založen na identitě přiřazené uživatelem, je třeba provést následující kroky:
+
+- Vytvoření identity
+ 
+- Přiřaďte nově vytvořenou identitu.
+
+### <a name="create-identity"></a>Vytvořit identitu
 
 V této části se dozvíte, jak vytvořit uživatelem přiřazenou identitu. Identita přiřazená uživatelem se vytváří jako samostatný prostředek Azure. Pomocí [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity)vytvoří Azure v TENANTOVI Azure AD identitu, kterou je možné přiřadit k jedné nebo více instancím služby Azure.
 
@@ -80,7 +89,7 @@ Type: Microsoft.ManagedIdentity/userAssignedIdentities
 }
 ```
 
-## <a name="assign-identity"></a>Přiřadit identitu
+### <a name="assign-identity"></a>Přiřadit identitu
 
 V této části se dozvíte, jak přiřadit uživatelem přiřazenou identitu k virtuálnímu počítači s Windows. Klienti můžou identitu přiřazenou uživatelem používat pro několik prostředků Azure. Pomocí následujících příkazů přiřaďte identitu přiřazenou uživatelem k jednomu virtuálnímu počítači. Jako hodnotu parametru `-IdentityID` použijte vlastnost `Id` vrácenou v předchozím kroku.
 
@@ -114,7 +123,9 @@ ObjectType: ServicePrincipal
 CanDelegate: False
 ```
 
-## <a name="get-an-access-token"></a>Získání přístupového tokenu 
+## <a name="access-data"></a>Přístup k datům
+
+### <a name="get-an-access-token"></a>Získání přístupového tokenu 
 
 Ve zbývající části kurzu použijete k práci dříve vytvořený virtuální počítač.
 
@@ -134,7 +145,7 @@ Ve zbývající části kurzu použijete k práci dříve vytvořený virtuáln�
     $ArmToken = $content.access_token
     ```
 
-## <a name="read-properties"></a>Číst vlastnosti
+### <a name="read-properties"></a>Číst vlastnosti
 
 Použijte přístupový token načtený v předchozím kroku k přístupu k Azure Resource Manageru a čtení vlastností skupiny prostředků, ke které jste identitě spravované uživatelem udělili přístup. Místo `<SUBSCRIPTION ID>` použijte ID předplatného pro vaše prostředí.
 

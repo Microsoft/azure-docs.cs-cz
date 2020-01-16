@@ -4,12 +4,12 @@ description: Přečtěte si, jak připravit na posouzení/migraci virtuálních 
 ms.topic: tutorial
 ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: a76c249f3d179a34fbb14e6c8bfb3666816fa160
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 6140d9689dafe8a97ae77346ea2212846e964cdc
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720204"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028917"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Příprava na posouzení a migraci virtuálních počítačů Hyper-V do Azure
 
@@ -91,9 +91,9 @@ Tenant/globální správce může přiřadit roli vývojář aplikace k účtu. 
 
 ## <a name="prepare-hyper-v-for-assessment"></a>Příprava technologie Hyper-V pro posouzení
 
-Hyper-V pro vyhodnocení virtuálních počítačů můžete připravit ručně nebo pomocí konfiguračního skriptu. Tady je seznam toho, co je potřeba připravit:
+Hyper-V pro vyhodnocení virtuálních počítačů můžete připravit ručně nebo pomocí konfiguračního skriptu. Tady je postup, který je potřeba připravit, a to buď pomocí skriptu, nebo [ručně](#prepare-hyper-v-manually).
 
-- Ověřte nastavení hostitele Hyper-V a ujistěte se, že jsou na hostitelích Hyper-V otevřené požadované porty.
+- [Ověřit](migrate-support-matrix-hyper-v.md#hyper-v-host-requirements) Nastavení hostitele technologie Hyper-V a ujistěte se, že [požadované porty](migrate-support-matrix-hyper-v.md#port-access) jsou otevřeny na hostitelích Hyper-v.
 - Nastavte pro každého hostitele vzdálenou komunikaci PowerShellu, aby zařízení Azure Migrate mohlo na hostiteli spouštět příkazy PowerShellu přes připojení WinRM.
 - Pověření delegáta, pokud se disky virtuálních počítačů nacházejí ve vzdálených sdílených složkách protokolu SMB.
 - Nastavte účet, který bude zařízení používat ke zjištění virtuálních počítačů na hostitelích Hyper-V.
@@ -171,8 +171,8 @@ Azure Migrate potřebuje oprávnění ke zjišťování místních virtuálních
 
 ### <a name="verify-hyper-v-host-settings"></a>Ověřit nastavení hostitele Hyper-V
 
-1. Ověřte [požadavky na hostitele Hyper-V](migrate-support-matrix-hyper-v.md#assessment-hyper-v-host-requirements) pro vyhodnocování serveru.
-2. Ujistěte se, že jsou na hostitelích Hyper-V otevřené [požadované porty](migrate-support-matrix-hyper-v.md#assessment-port-requirements) .
+1. Ověřte [požadavky na hostitele Hyper-V](migrate-support-matrix-hyper-v.md#hyper-v-host-requirements) pro vyhodnocování serveru.
+2. Ujistěte se, že jsou na hostitelích Hyper-V otevřené [požadované porty](migrate-support-matrix-hyper-v.md#port-access) .
 
 ### <a name="enable-powershell-remoting-on-hosts"></a>Povolit vzdálenou komunikaci PowerShellu na hostitelích
 
@@ -214,17 +214,17 @@ Když zařízení nastavíte, dokončíte nastavení CredSSP [jeho povolením na
 
 Před nastavením zařízení Azure Migrate a zahájením posouzení v dalším kurzu připravte na nasazení zařízení.
 
-1. [Ověřte](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements) požadavky na zařízení.
-2. [Zkontrolujte](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access) adresy URL Azure, ke kterým bude zařízení potřebovat přístup.
+1. [Ověřte](migrate-appliance.md#appliance---hyper-v) požadavky na zařízení.
+2. [Zkontrolujte](migrate-appliance.md#url-access) adresy URL Azure, ke kterým bude zařízení potřebovat přístup.
 3. Zkontrolujte data, která bude zařízení shromažďovat během zjišťování a posouzení.
-4. [Poznamenejte si](migrate-support-matrix-hyper-v.md#assessment-port-requirements) požadavky na přístup k portu pro dané zařízení.
+4. [Poznamenejte si](migrate-appliance.md#collected-data---hyper-v) požadavky na přístup k portu pro dané zařízení.
 
 
 ## <a name="prepare-for-hyper-v-migration"></a>Příprava na migraci technologie Hyper-V
 
-1. [Kontrola](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-requirements) Požadavky na hostitele Hyper-V pro migraci.
-2. [Projděte si](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) požadavky na virtuální počítače Hyper-V, které chcete migrovat do Azure.
-3. [Poznamenejte](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-url-access) si adresy URL Azure, ke kterým hostitelé a clustery Hyper-V potřebují přístup pro migraci virtuálních počítačů.
+1. [Kontrola](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) Požadavky na hostitele Hyper-V pro migraci a adresy URL Azure, ke kterým hostitelé a clustery Hyper-V potřebují přístup pro migraci virtuálních počítačů.
+2. [Projděte si](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) požadavky na virtuální počítače Hyper-V, které chcete migrovat do Azure.
+
 
 ## <a name="next-steps"></a>Další kroky
 

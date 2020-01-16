@@ -15,24 +15,24 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1ba0c2bd81f32c0aec242dbfb32b2d7f4064ddbe
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 3c7b7dac649548b8b21cc13761009c11609c8904
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707831"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981035"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-rest-api"></a>Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a REST API
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] tomto článku se dozvíte, jak přiřadit role pomocí REST API.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující:
 
 - oprávnění `Microsoft.Authorization/roleAssignments/write` a `Microsoft.Authorization/roleAssignments/delete`, jako je například správce nebo [vlastník](built-in-roles.md#owner) [přístupu uživatele](built-in-roles.md#user-access-administrator)
 
-## <a name="add-a-role-assignment"></a>Přidání přiřazení role
+## <a name="add-a-role-assignment"></a>Přidat přiřazení role
 
 Pokud chcete udělit přístup, přidejte přiřazení role ve RBAC. K přidání přiřazení role použijte [přiřazení rolí – vytvořit](/rest/api/authorization/roleassignments/create) REST API a zadejte objekt zabezpečení, definici role a obor. Chcete-li volat toto rozhraní API, je nutné mít přístup k operaci `Microsoft.Authorization/roleAssignments/write`. Z předdefinovaných rolí má přístup k této operaci udělen pouze [vlastník](built-in-roles.md#owner) a [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator) .
 
@@ -105,6 +105,6 @@ V RBAC se přístup odebírá odebrání přiřazení role. K odebrání přiřa
 ## <a name="next-steps"></a>Další kroky
 
 - [Seznam přiřazení rolí pomocí Azure RBAC a REST API](role-assignments-list-rest.md)
-- [Nasazení prostředků pomocí šablon Resource Manageru a jeho rozhraní REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+- [Nasazení prostředků pomocí šablon Resource Manageru a jeho rozhraní REST API](../azure-resource-manager/templates/deploy-rest.md)
 - [Reference k rozhraní Azure REST API](/rest/api/azure/)
 - [Vytváření vlastních rolí pro prostředky Azure pomocí REST API](custom-roles-rest.md)

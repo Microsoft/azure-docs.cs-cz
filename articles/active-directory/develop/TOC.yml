@@ -82,6 +82,8 @@
               href: tutorial-v2-windows-uwp.md
             - name: Windows Desktop .NET
               href: tutorial-v2-windows-desktop.md
+            - name: Použití režimu sdíleného zařízení v aplikaci pro Android
+              href: tutorial-v2-shared-device-mode.md
         - name: Aplikace démonů
           items:
             - name: Webová aplikace démona ASP.NET
@@ -208,6 +210,8 @@
                   href: scenario-mobile-app-configuration.md
                 - name: Konfigurace specifická pro mobilní platformy
                   items:
+                    - name: Režim sdíleného zařízení pro zařízení s Androidem
+                      href: shared-device-mode.md
                     - name: Xamarin Android
                       href: msal-net-xamarin-android-considerations.md
                     - name: Systémový prohlížeč v Androidu

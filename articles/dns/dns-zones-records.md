@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: allensu
-ms.openlocfilehash: e80de4a3102f9fec8ad06c0facd110b51558d338
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 37e5f5ed1d877900d8ef967f83de95f056fcca0c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211007"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980535"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Přehled zón a záznamů DNS
 
@@ -115,7 +115,7 @@ Vícenásobné řetězce v záznamu DNS by neměly být zaměňovány pomocí v�
 
 ### <a name="tags"></a>Značky
 
-Značky jsou seznam párů název-hodnota a používají Azure Resource Manager k označení prostředků.  Azure Resource Manager používá značky k povolení filtrovaných zobrazení vaší faktury za Azure a také umožňuje nastavit zásady, které vyžadují značky. Další informace o značkách najdete v tématu [Použití značek k uspořádání prostředků Azure](../azure-resource-manager/resource-group-using-tags.md).
+Značky jsou seznam párů název-hodnota a používají Azure Resource Manager k označení prostředků.  Azure Resource Manager používá značky k povolení filtrovaných zobrazení vaší faktury za Azure a také umožňuje nastavit zásady, které vyžadují značky. Další informace o značkách najdete v článku o [použití značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md).
 
 Azure DNS podporuje použití značek Azure Resource Manager v prostředcích zóny DNS.  Nepodporuje značky pro sady záznamů DNS, i když jako alternativní metadata se v sadách záznamů DNS podporují, jak je vysvětleno níže.
 
@@ -135,7 +135,7 @@ Na úrovni Azure DNS REST API jsou značky ETag zadány pomocí hlaviček protok
 
 | Hlavička | Chování |
 | --- | --- |
-| Žádný |Úspěšné vložení (žádné kontroly ETag) |
+| Žádné |Úspěšné vložení (žádné kontroly ETag) |
 | If-Match \<ETag > |Pokaždé, když existuje prostředek a shody ETag, se vloží jenom úspěšně. |
 | If-Match * |Podávat jenom úspěšné, pokud prostředek existuje |
 | If-None-Match * |Pokud prostředek neexistuje, operace PUT se zdaří. |

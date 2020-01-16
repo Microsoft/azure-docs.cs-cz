@@ -1,0 +1,90 @@
+### YamlMime:Landing
+title: Správa účtů a předplatných s využitím fakturace Azure
+summary: Seznamte se s principy fakturace Azure a naučte se spravovat vaše účty a předplatná.
+metadata:
+  title: Správa účtů a předplatných s využitím fakturace Azure
+  description: Seznamte se s principy fakturace Azure a naučte se spravovat vaše účty a předplatná.
+  ms.service: cost-management-billing
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.manager: dougeby
+  ms.date: 12/18/2019
+  ms.openlocfilehash: 61158d44399891f0f6293f53a11f227506fbddbe
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75983320"
+landingContent:
+- title: Správa účtů
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Role Smlouvy se zákazníkem Microsoftu v Azure
+      url: understand-mca-roles.md
+  - linkListType: how-to-guide
+    links:
+    - text: Úprava profilu
+      url: change-azure-account-profile.md
+    - text: Řešení zůstatku po splatnosti
+      url: resolve-past-due-balance.md
+    - text: Udělení přístupu k fakturaci
+      url: manage-billing-access.md
+    - text: Zobrazení fakturačních účtů
+      url: view-all-accounts.md
+    - text: Organizace nákladů pomocí oddílů faktury
+      url: mca-section-invoice.md
+- title: Správa předplatných
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Opětovná aktivace předplatného
+      url: subscription-disabled.md
+    - text: Převod vlastnictví jednotlivého předplatného
+      url: billing-subscription-transfer.md
+    - text: Převod vlastnictví pro Smlouvu se zákazníkem Microsoftu
+      url: mca-request-billing-ownership.md
+    - text: Převod vlastnictví pro Smlouvu s partnerem Microsoftu
+      url: mpa-request-ownership.md
+    - text: Zrušení předplatného
+      url: cancel-azure-subscription.md
+    - text: Změna platební karty
+      url: change-credit-card.md
+    - text: Změna správce
+      url: add-change-subscription-administrator.md
+    - text: Platba na základě faktury
+      url: pay-by-invoice.md
+    - text: Vytvoření dalšího předplatného
+      url: create-subscription.md
+- title: Správa bezplatného účtu
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření bezplatných služeb
+      url: create-free-services.md
+    - text: Jak se vyhnout poplatkům
+      url: avoid-charges-free-account.md
+    - text: Kontrola využití
+      url: check-free-service-usage.md
+    - text: Upgrade účtu
+      url: upgrade-azure-subscription.md
+- title: Správa smlouvy Enterprise
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Role EA v Azure
+      url: understand-ea-roles.md
+  - linkListType: how-to-guide
+    links:
+    - text: Začínáme na portálu Azure EA
+      url: ea-portal-get-started.md
+    - text: Správa portálu Azure EA
+      url: ea-portal-administration.md
+    - text: Řešení potíží s přístupem k portálu Azure EA
+      url: ea-portal-troubleshoot.md
+  - linkListType: reference
+    links:
+    - text: Rozhraní Azure Enterprise REST API
+      url: ea-portal-rest-apis.md

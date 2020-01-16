@@ -54,8 +54,12 @@
                   href: supportability/classic-deployment-model-quota-increase-requests.md
             - name: Zvýšení limitů sítě
               href: supportability/networking-quota-requests.md
+    - name: Řešení potíží s portálem Azure
+      items:
         - name: Řešení potíží s oblastí nebo předplatným skladové položky
           href: supportability/sku-series-unavailable.md
+        - name: Zachycení trasování prohlížeče pro řešení potíží
+          href: capture-browser-trace.md
 - name: Referenční informace
   items:
     - name: Klávesové zkratky
