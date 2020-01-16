@@ -17,6 +17,8 @@
   items:
     - name: Spuštění Asistivní čtečky (Python)
       href: tutorial-python.md
+    - name: Použití několika prostředků Asistivní čtečky
+      href: tutorial-multiple-resources.md
 - name: Postupy
   items:
     - name: Vytvoření prostředku Asistivní čtečky

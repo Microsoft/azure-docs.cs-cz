@@ -310,15 +310,9 @@
         - name: Využívání v reálném čase
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
-        - name: Spuštění dávkových predikcí
-          displayName: score scoring batch consume pipeline parallelrunstep inference
-          href: how-to-run-batch-predictions.md
         - name: Dávkové predikce designeru
           displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
           href: how-to-run-batch-predictions-designer.md
-        - name: Ladění a řešení potíží s dávkovými predikcemi
-          displayName: debug_batch consume pipeline parallelrunstep inference
-          href: how-to-debug-batch-predictions.md
     - name: Monitorování modelů
       items:
         - name: Shromažďování a vyhodnocování dat modelů
@@ -343,6 +337,12 @@
         - name: 'Designer: Přeučení pomocí publikovaných kanálů'
           displayName: 'retrain, designer, published pipeline'
           href: how-to-retrain-designer.md
+        - name: Použití kroku paralelního spuštění
+          displayName: score scoring batch consume pipeline parallelrunstep inference
+          href: how-to-use-parallel-run-step.md
+        - name: Ladění a řešení potíží s krokem paralelního spuštění
+          displayName: debug_batch consume pipeline parallelrunstep inference
+          href: how-to-debug-parallel-run-step.md
     - name: Správa kvót prostředků
       displayName: limits
       href: how-to-manage-quotas.md

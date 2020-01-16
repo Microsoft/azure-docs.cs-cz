@@ -50,6 +50,8 @@
       href: powershell-samples.md
 - name: Koncepty
   items:
+    - name: Komponenty a omezení
+      href: concepts-limitations.md
     - name: Monitorování stavu
       items:
         - name: Sondy stavu
