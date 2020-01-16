@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 866a7fdabaf51738333d8583bea5d0fa9fabf6f2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c570f988dea894b8106405f4e427edb386a3e74a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139861"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969291"
 ---
 # <a name="use-case---customer-profiling"></a>Příklad použití – profilace zákazníka
 Azure Data Factory je jedna z mnoha služeb, které se používají k implementaci Cortana Intelligence Suite akcelerátorů řešení.  Další informace o Cortana Intelligence najdete v [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics). V tomto dokumentu popisujeme jednoduchý případ použití, který vám pomůžeme začít s porozuměním, jak Azure Data Factory řešit běžné problémy s analýzou.
@@ -29,7 +29,7 @@ Cílem společnosti Contoso je identifikovat příležitosti pro prodej/prodej v
 V tomto řešení contoso chce vyhodnotit efektivitu marketingové kampaně, kterou nedávno spustili. Začali jsme s nezpracovanými herními protokoly, zpracovávat je a rozšiřovat je pomocí dat geografického umístění, spojit je s reklamními referenčními daty a nakonec je zkopírovat do Azure SQL Database a analyzovat dopad kampaně.
 
 ## <a name="deploy-solution"></a>Nasadit řešení
-K tomuto jednoduchému případu použití stačí získat přístup a vyzkoušet si tento jednoduchý případ použití je [předplatné Azure](https://azure.microsoft.com/pricing/free-trial/), [účet úložiště azure BLOB](../../storage/common/storage-quickstart-create-account.md)a [Azure SQL Database](../../sql-database/sql-database-get-started.md). Kanál profilace zákazníka nasadíte z dlaždice **ukázek kanálů** na domovské stránce vaší datové továrny.
+K tomuto jednoduchému případu použití stačí získat přístup a vyzkoušet si tento jednoduchý případ použití je [předplatné Azure](https://azure.microsoft.com/pricing/free-trial/), [účet úložiště azure BLOB](../../storage/common/storage-account-create.md)a [Azure SQL Database](../../sql-database/sql-database-get-started.md). Kanál profilace zákazníka nasadíte z dlaždice **ukázek kanálů** na domovské stránce vaší datové továrny.
 
 1. Vytvořte datovou továrnu nebo otevřete existující datovou továrnu. Postup vytvoření datové továrny najdete v tématu [kopírování dat z BLOB Storage. SQL Database pomocí Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 2. V okně **objekt** pro vytváření dat pro objekt pro vytváření dat klikněte na dlaždici **ukázkové kanály** .

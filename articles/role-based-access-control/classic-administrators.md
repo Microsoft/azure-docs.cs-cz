@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/26/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 340717242d642475217bbe87fd96be66ec9b2e2d
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 40bda408731e90ab4c0c987b981a1c7f16b0de5d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554226"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979338"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Správci předplatného Azure Classic
 
-Microsoft doporučuje spravovat přístup k prostředkům Azure pomocí řízení přístupu na základě role (RBAC). Pokud však stále používáte model nasazení Classic, budete muset použít klasickou roli Správce předplatného: Správce služby a spolusprávce. Další informace najdete v tématu [Azure Resource Manager vs. Classic Deployment](../azure-resource-manager/resource-manager-deployment-model.md).
+Microsoft doporučuje spravovat přístup k prostředkům Azure pomocí řízení přístupu na základě role (RBAC). Pokud však stále používáte model nasazení Classic, budete muset použít klasickou roli Správce předplatného: Správce služby a spolusprávce. Další informace najdete v tématu [Azure Resource Manager vs. Classic Deployment](../azure-resource-manager/management/deployment-models.md).
 
 Tento článek popisuje, jak přidat nebo změnit role spolusprávce a správců služeb a jak zobrazit správce účtu.
 
@@ -62,7 +62,7 @@ Další informace o tom, jak přidat uživatele typu Host do adresáře, najdete
 
 ### <a name="differences-for-guest-users"></a>Rozdíly pro uživatele typu Host
 
-Uživatelům typu Host, kterým byla přiřazena role spolusprávce, se může u role spolusprávce zobrazit několik rozdílů ve srovnání s členskými uživateli. Vezměte v úvahu následující scénář:
+Uživatelům typu Host, kterým byla přiřazena role spolusprávce, se může u role spolusprávce zobrazit několik rozdílů ve srovnání s členskými uživateli. Uvažte následující příklady:
 
 - Uživatel A s účtem Azure AD (pracovní nebo školní účet) je správce služby pro předplatné Azure.
 - Uživatel B účet Microsoft.
@@ -152,7 +152,7 @@ Další informace o účtech Microsoft a účtech Azure AD najdete v tématu [co
 
 ## <a name="view-the-account-administrator"></a>Zobrazit správce účtu
 
-Správce účtu je uživatel, který původně zaregistroval předplatné Azure, a zodpovídá za vlastníka fakturace daného předplatného. Postup změny správce účtu u předplatného najdete v tématu [přenos vlastnictví předplatného Azure na jiný účet](../billing/billing-subscription-transfer.md).
+Správce účtu je uživatel, který původně zaregistroval předplatné Azure, a zodpovídá za vlastníka fakturace daného předplatného. Postup změny správce účtu u předplatného najdete v tématu [přenos vlastnictví předplatného Azure na jiný účet](../cost-management-billing/manage/billing-subscription-transfer.md).
 
 Pomocí těchto kroků zobrazíte správce účtu.
 
@@ -170,4 +170,4 @@ Pomocí těchto kroků zobrazíte správce účtu.
 
 * [Vysvětlení různých rolí v Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure Portal](../role-based-access-control/role-assignments-portal.md)
-* [Přidávání a změna správců předplatného Azure](../billing/billing-add-change-azure-subscription-administrator.md)
+* [Přidávání a změna správců předplatného Azure](../cost-management-billing/manage/add-change-subscription-administrator.md)

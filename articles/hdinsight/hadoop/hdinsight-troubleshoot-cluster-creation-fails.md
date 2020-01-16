@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/26/2019
-ms.openlocfilehash: 607eacc531166d9d770f31cc64825e8ffea9ca76
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ea60faf5b5689fa674095201d3db18422d3e0f1b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810675"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980504"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Řešení chyb při vytváření clusteru s Azure HDInsight
 
@@ -29,7 +29,7 @@ Následující problémy jsou nejběžnější hlavní příčiny selhání při
 
 ## <a name="permissions-issues"></a>Problémy s oprávněními
 
-Pokud používáte Azure Data Lake Storage Gen2 a dostanete chybu ```AmbariClusterCreationFailedErrorCode```, ```Internal server error occurred while processing the request. Please retry the request or contact support.```otevřete Azure Portal, přejdete do svého účtu úložiště a v části Access Control (IAM) Zkontrolujte, že je **Přispěvatel dat objektu BLOB úložiště** nebo **objekt BLOB úložiště. Role vlastníka dat** má přiřazený přístup k **spravované identitě přiřazené uživateli** pro toto předplatné. Podrobné pokyny najdete v tématu [Nastavení oprávnění pro spravovanou identitu v účtu Data Lake Storage Gen2](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account).
+Pokud používáte Azure Data Lake Storage Gen2 a dostanete chybu ```AmbariClusterCreationFailedErrorCode```, ```Internal server error occurred while processing the request. Please retry the request or contact support.```otevřete Azure Portal, přejděte do účtu úložiště a v části Access Control (IAM) Zkontrolujte, že **Přispěvatel dat objektu BLOB úložiště** nebo role **vlastníka dat objektu BLOB úložiště** přiřadil přístup k spravované identitě v rámci daného předplatného **přiřazenému uživateli** . Podrobné pokyny najdete v tématu [Nastavení oprávnění pro spravovanou identitu v účtu Data Lake Storage Gen2](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account).
 
 Pokud používáte Azure Data Lake Storage Gen1, přečtěte si [tady](../hdinsight-hadoop-use-data-lake-store.md)pokyny k instalaci a konfiguraci. Data Lake Storage Gen1 se u clusterů HBA nepodporuje a v HDInsight verze 4,0 se nepodporuje.
 
@@ -51,7 +51,7 @@ Brány firewall ve vaší virtuální síti nebo účtu úložiště můžou ode
 
 Povolte provoz z IP adres v následující tabulce.
 
-| Zdrojová IP adresa | Cíl | Direction |
+| Zdrojová IP adresa | Cíl | Směr |
 |---|---|---|
 | 168.61.49.99 | *: 443 | Příchozí |
 | 23.99.5.239 | *: 443 | Příchozí |
@@ -64,7 +64,7 @@ Pokud používáte Express Route nebo vlastní server DNS, přečtěte si téma 
 
 ## <a name="resources-locks"></a>Zámky prostředků  
 
-Zajistěte, aby [ve vaší virtuální síti a skupině prostředků nejsou žádné zámky](../../azure-resource-manager/resource-group-lock-resources.md).  
+Zajistěte, aby [ve vaší virtuální síti a skupině prostředků nejsou žádné zámky](../../azure-resource-manager/management/lock-resources.md).  
 
 ## <a name="unsupported-component-versions"></a>Nepodporované verze součástí
 
@@ -80,9 +80,9 @@ Pro vytvoření clusteru se taky použijí další omezení pojmenování. Dalš
 
 Ověřte [stav Azure](https://status.azure.com/status) pro případné potenciální výpadky nebo problémy se službami.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Rozšíření Azure HDInsight pomocí virtuální síť Azure](../hdinsight-plan-virtual-network-deployment.md)
+* [Rozšíření služby Azure HDInsight pomocí služby Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md)
 * [Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 * [Použití úložiště Azure s clustery Azure HDInsight](../hdinsight-hadoop-use-blob-storage.md)
 * [Nastavení clusterů ve službě HDInsight se softwarem Apache Hadoop, Apache Spark, Apache Kafka a dalšími](../hdinsight-hadoop-provision-linux-clusters.md)

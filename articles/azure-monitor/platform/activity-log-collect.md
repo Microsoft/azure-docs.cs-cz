@@ -7,17 +7,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: f4612232acfe6099c56d365e482cbc82c8436dee
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2bf2f012e553e08a1eb829f93d9af0f0e74f638b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745626"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977663"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Shromažďování a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor
 
 > [!WARNING]
-> Nyní můžete protokol aktivit shromažďovat do Log Analytics pracovního prostoru pomocí nastavení diagnostiky podobného způsobu, jakým shromažďujete protokoly prostředků. Přečtěte si téma [shromáždění a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics v Azure monitor](diagnostic-settings-subscription.md).
+> Nyní můžete protokol aktivit shromažďovat do Log Analytics pracovního prostoru pomocí nastavení diagnostiky podobného způsobu, jakým shromažďujete protokoly prostředků. Přečtěte si téma [shromáždění a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics v Azure monitor](diagnostic-settings-legacy.md).
 
 [Protokol aktivit Azure](platform-logs-overview.md) poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo ve vašem předplatném Azure. Tento článek popisuje, jak shromažďovat protokol aktivit do pracovního prostoru Log Analytics a jak používat [řešení Activity Log Analytics monitoring](../insights/solutions.md), které poskytuje dotazy a zobrazení protokolů pro analýzu těchto dat. 
 
@@ -32,7 +32,7 @@ Připojení protokolu aktivit k pracovnímu prostoru Log Analytics přináší n
 Jeden pracovní prostor může být připojen k protokolu aktivit pro více předplatných ve stejném tenantovi Azure. Informace o shromažďování v rámci více tenantů najdete v tématu [shromáždění protokolů aktivit Azure do Log Analytics pracovního prostoru napříč předplatnými v různých klientech Azure Active Directory](activity-log-collect-tenants.md).
 
 > [!IMPORTANT]
-> Pokud nejsou poskytovatelé prostředků Microsoft. OperationalInsights a Microsoft. OperationsManagement u vašeho předplatného zaregistrovaní, může se zobrazit chyba s následujícím postupem. Pokud chcete zaregistrovat tyto poskytovatele, přečtěte si téma [poskytovatelé a typy prostředků Azure](../../azure-resource-manager/resource-manager-supported-services.md) .
+> Pokud nejsou poskytovatelé prostředků Microsoft. OperationalInsights a Microsoft. OperationsManagement u vašeho předplatného zaregistrovaní, může se zobrazit chyba s následujícím postupem. Pokud chcete zaregistrovat tyto poskytovatele, přečtěte si téma [poskytovatelé a typy prostředků Azure](../../azure-resource-manager/management/resource-providers-and-types.md) .
 
 K připojení protokolu aktivit k pracovnímu prostoru Log Analytics použijte následující postup:
 

@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/13/2020
+ms.date: 01/14/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f3baaab59031c4cfad036a7181318502d1969715
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: fd9bd846beba718cb305907d4d0c5a613d2ef816
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942422"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029943"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring-preview"></a>Azure synapse Analytics – úlohy monitorování Portál pro správu (Preview)
 Tento článek vysvětluje, jak monitorovat využití prostředků [skupiny úloh](sql-data-warehouse-workload-isolation.md#workload-groups) a aktivity dotazů. Podrobnosti o tom, jak nakonfigurovat Azure Průzkumník metrik, najdete v článku [Začínáme s azure Průzkumník metrik](../azure-monitor/platform/metrics-getting-started.md) .  Podrobnosti o tom, jak monitorovat spotřebu systémových prostředků, najdete v části věnované [využití prostředků](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization) v dokumentaci Azure SQL Data Warehouse monitoring.
@@ -49,8 +49,11 @@ CREATE WORKLOAD CLASSIFIER wcCEOPriority
 WITH ( WORKLOAD_GROUP = 'wgPriority'
       ,MEMBERNAME = 'TheCEO');
 ```
-Níže je nakonfigurované následující graf: metrika 1: *efektivní minimální procento prostředků* (prům. agregace, `blue line`) metrika 2: *přidělení skupiny úloh podle systémových procent* (průměrnou agregaci, `purple line`) filtr: [skupina úloh] = `wgPriority`
-![underutilized-WG. png](media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png) graf ukazuje, že se v průměru používá pouze 10%.  V takovém případě by hodnota parametru `MIN_PERCENTAGE_RESOURCE` mohla být snížena na 10 nebo 15 a umožněna jiným úlohám v systému využívat prostředky.
+Následující graf je nakonfigurován následujícím způsobem:<br>
+Metrika 1: *efektivní minimální procento prostředků* (průměrná agregace, `blue line`)<br>
+Metrika 2: *přidělení skupiny úloh podle systému v procentech* (prům. agregace, `purple line`)<br>
+Filter: [skupina úloh] = `wgPriority`<br>
+![underutilized-WG. png](media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png) graf ukazuje, že s 25% izolací úloh se v průměru používá jenom 10%.  V takovém případě by hodnota parametru `MIN_PERCENTAGE_RESOURCE` mohla být snížena na 10 nebo 15 a umožněna jiným úlohám v systému využívat prostředky.
 
 ### <a name="workload-group-bottleneck"></a>Kritické místo skupiny úloh
 Vezměte v úvahu následující skupinu úloh a konfiguraci klasifikátoru, kde je vytvořena skupina úloh s názvem `wgDataAnalyst` a k ní je namapována `membername` *Dataanalyzujes* pomocí `wcDataAnalyst` třídění úloh.  Skupina úloh `wgDataAnalyst` má nakonfigurované 6% izolací úloh (`MIN_PERCENTAGE_RESOURCE` = 6) a omezení prostředků na 9% (`CAP_PERCENTAGE_RESOURCE` = 9).  Každý dotaz odeslaný *Dataanalýzou* je dán 3% systémových prostředků (`REQUEST_MIN_RESOURCE_GRANT_PERCENT` = 3).
@@ -65,8 +68,12 @@ CREATE WORKLOAD CLASSIFIER wcDataAnalyst
 WITH ( WORKLOAD_GROUP = 'wgDataAnalyst'
       ,MEMBERNAME = 'DataAnalyst');
 ```
-Níže je nakonfigurované následující graf: metrika 1: *efektivní procento prostředků* (průměrná agregace, `blue line`) metrika 2: *přidělení skupiny úloh podle maximálního počtu prostředků* (průměrnou agregaci, `purple line`) metrika 3: *Skupina úloh ve frontě* (Sum agregace, `turquoise line`) filtr: [skupina úloh] = `wgDataAnalyst`
-![WG-krku-](media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png) v grafu vidíte, že s 9% uzávěrem prostředků je skupina úloh 90% + využitá (od *přidělení skupiny úloh max. Metrika procento prostředku*).  Existuje stálá fronta dotazů, jak je znázorněno v *metriku dotazů ve skupině úloh ve frontě*.  V takovém případě zvýšení `CAP_PERCENTAGE_RESOURCE` na hodnotu vyšší než 9% umožní spuštění více dotazů současně.  Zvýšení `CAP_PERCENTAGE_RESOURCE` předpokládá, že je k dispozici dostatek prostředků a nejsou izolované jinými skupinami úloh.  Ověřte zvýšení limitu tím, že zkontrolujete *metriku procentuální hodnoty efektivního limitu prostředků*.  Pokud je žádoucí větší propustnost, zvažte také zvýšení `REQUEST_MIN_RESOURCE_GRANT_PERCENT` na hodnotu větší než 3.  Zvýšení `REQUEST_MIN_RESOURCE_GRANT_PERCENT` může umožňovat rychlejší spouštění dotazů.
+Následující graf je nakonfigurován následujícím způsobem:<br>
+Metrika 1: *procentuální hodnota prostředku Cap* (průměrná agregace, `blue line`)<br>
+Metrika 2: *přidělení skupiny úloh podle maximálního počtu prostředků* (průměr agregace, `purple line`)<br>
+Metrika 3: *Skupina úloh – dotazy ve frontě* (agregace Sum, `turquoise line`)<br>
+Filter: [skupina úloh] = `wgDataAnalyst`<br>
+![](media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png) WG na lahvích se v grafu zobrazuje, že s 9% Cap k prostředkům je skupina úlohy 90% + využitá (od *přidělení skupiny úloh podle maximálního počtu prostředků v procentech*).  Existuje stálá fronta dotazů, jak je znázorněno v *metriku dotazů ve skupině úloh ve frontě*.  V takovém případě zvýšení `CAP_PERCENTAGE_RESOURCE` na hodnotu vyšší než 9% umožní spuštění více dotazů současně.  Zvýšení `CAP_PERCENTAGE_RESOURCE` předpokládá, že je k dispozici dostatek prostředků a nejsou izolované jinými skupinami úloh.  Ověřte zvýšení limitu tím, že zkontrolujete *metriku procentuální hodnoty efektivního limitu prostředků*.  Pokud je žádoucí větší propustnost, zvažte také zvýšení `REQUEST_MIN_RESOURCE_GRANT_PERCENT` na hodnotu větší než 3.  Zvýšení `REQUEST_MIN_RESOURCE_GRANT_PERCENT` může umožňovat rychlejší spouštění dotazů.
 
 ## <a name="next-steps"></a>Další kroky
 [Rychlý Start: Konfigurace izolace úloh pomocí T-SQL](quickstart-configure-workload-isolation-tsql.md)<br>

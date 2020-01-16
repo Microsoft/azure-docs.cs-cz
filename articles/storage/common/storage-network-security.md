@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: b9a5e388ce6749023cff223de2376d1360ca7574
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 5e4a8afdb9bea4f528e57c914149f611b0578c63
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895684"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973474"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace virtuálních sítí a bran firewall Azure Storage
 
@@ -224,7 +224,7 @@ Můžete spravovat pravidla virtuální sítě pro účty úložiště pomocí w
 
     > [!TIP]
     > Pokud chcete přidat pravidlo pro podsíť ve virtuální síti, která patří do jiného tenanta Azure AD, použijte plně kvalifikované ID podsítě ve formátu "/Subscriptions/\<Subscription-ID\>/resourceGroups/\<\>/providers/Microsoft.Network/virtualNetworks/\<vNet-Name\>/subnets/\<podsíť-název\>".
-    > 
+    >
     > Pomocí parametru **Subscription** můžete načíst ID podsítě pro virtuální síť patřící jinému Tenantovi služby Azure AD.
 
 1. Odeberte pravidlo pro sítě pro virtuální síť a podsíť.
@@ -391,7 +391,7 @@ Nastavení **Povolit důvěryhodné služby společnosti Microsoft...** umožňu
 | Úlohy Azure Container Registry | Microsoft.ContainerRegistry/registries | ACR úlohy mají přístup k účtům úložiště při vytváření imagí kontejneru. |
 | Azure Data Factory             | Microsoft. DataFactory/továrny        | Umožňuje přístup k účtům úložiště pomocí modulu runtime ADF. |
 | Azure Logic Apps               | Microsoft.Logic/workflows              | Povoluje Logic Apps přístup k účtům úložiště. [Další informace](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity). |
-| Azure Machine Learning | Microsoft.MachineLearningServices      | Autorizované pracovní prostory Azure Machine Learning zapisují výstup, modely a protokoly do úložiště objektů BLOB experiment. [Další informace](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
+| Azure Machine Learning | Microsoft.MachineLearningServices      | Autorizované pracovní prostory Azure Machine Learning zapisují výstup, modely a protokoly do úložiště objektů BLOB experiment. [Další informace](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). |
 | Azure SQL Data Warehouse       | Microsoft.Sql                          | Umožňuje importovat a exportovat data z konkrétních instancí SQL Database pomocí základu. [Další informace](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
 | Azure Stream Analytics         | Microsoft.StreamAnalytics             | Umožňuje zapsat data z úlohy streamování do úložiště objektů BLOB. Tato funkce je aktuálně ve verzi Preview. [Další informace](/azure/stream-analytics/blob-output-managed-identity). |
 | Azure Synapse Analytics        | Microsoft. synapse/pracovní prostory          | Umožňuje přístup k datům v Azure Storage z synapse Analytics. |
@@ -471,4 +471,4 @@ Můžete spravovat pravidla výjimky sítě prostřednictvím webu Azure portal,
 
 Další informace o koncových bodech služeb Azure Network v [koncové body služby](/azure/virtual-network/virtual-network-service-endpoints-overview).
 
-Dostaňte hlouběji do zabezpečení služby Azure Storage v [Průvodci zabezpečením Azure Storage](storage-security-guide.md).
+Dostaňte hlouběji do zabezpečení služby Azure Storage v [Průvodci zabezpečením Azure Storage](../blobs/security-recommendations.md).

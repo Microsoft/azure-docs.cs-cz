@@ -10,18 +10,18 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/17/2019
 ms.author: jgao
-ms.openlocfilehash: d3c1070577ee57f18018e9b74be5e29998cc3e64
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0462039efa02998b41560d6c308653809875ab1c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453667"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982133"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Rychlý Start: nastavení a načtení tajného klíče z Azure Key Vault pomocí šablony Správce prostředků
 
 [Azure Key Vault](./key-vault-overview.md) je cloudová služba, která poskytuje zabezpečené úložiště tajných kódů, jako jsou klíče, hesla, certifikáty a další tajné kódy. Tento rychlý Start se zaměřuje na proces nasazení šablony Správce prostředků pro vytvoření trezoru klíčů a tajného klíče.
 
-[Šablona správce prostředků](../azure-resource-manager/template-deployment-overview.md) je soubor JavaScript Object Notation (JSON), který definuje infrastrukturu a konfiguraci projektu. Šablona používá deklarativní syntaxi, která umožňuje určit, co máte v úmyslu nasadit bez nutnosti napsat sekvenci programovacích příkazů k jeho vytvoření. Pokud chcete získat další informace o vývoji šablon Správce prostředků, přečtěte si téma [dokumentace správce prostředků](/azure/azure-resource-manager/) a [odkaz na šablonu](/azure/templates/microsoft.keyvault/allversions).
+[Šablona správce prostředků](../azure-resource-manager/templates/overview.md) je soubor JavaScript Object Notation (JSON), který definuje infrastrukturu a konfiguraci projektu. Šablona používá deklarativní syntaxi, která umožňuje určit, co máte v úmyslu nasadit bez nutnosti napsat sekvenci programovacích příkazů k jeho vytvoření. Pokud chcete získat další informace o vývoji šablon Správce prostředků, přečtěte si téma [dokumentace správce prostředků](/azure/azure-resource-manager/) a [odkaz na šablonu](/azure/templates/microsoft.keyvault/allversions).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -88,7 +88,7 @@ Další ukázky šablon Azure Key Vault najdete [tady](https://azure.microsoft.c
 
     ![Správce prostředků šablona, integrace Key Vault, nasazení oznámení portálu](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
 
-Azure Portal slouží k nasazení šablony. Kromě Azure Portal můžete použít také Azure PowerShell, Azure CLI a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../azure-resource-manager/resource-group-template-deploy.md).
+Azure Portal slouží k nasazení šablony. Kromě Azure Portal můžete použít také Azure PowerShell, Azure CLI a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 

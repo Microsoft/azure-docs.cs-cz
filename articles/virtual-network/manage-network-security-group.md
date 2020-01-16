@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: kumud
-ms.openlocfilehash: d6c948c7fdfe2c5dc89c3e284ada33c2f7b542db
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: fa933b820d8677e4d080b54ce5e6a5d506ea38fc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750669"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978934"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Vytvoření, změna nebo odstranění skupiny zabezpečení sítě
 
@@ -69,8 +69,8 @@ Do vyhledávacího pole v horní části portálu zadejte *skupiny zabezpečení
 3. Další informace o běžných nastaveních Azure uvedených v následujících článcích:
     *   [Protokol aktivit](../azure-monitor/platform/platform-logs-overview.md)
     *   [Řízení přístupu (IAM)](../role-based-access-control/overview.md)
-    *   [Značky](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-    *   [Počtu](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+    *   [Značky](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+    *   [Počtu](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Skript Automation](../azure-resource-manager/templates/export-template-portal.md)
 
 **Příkazy**

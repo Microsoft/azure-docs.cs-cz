@@ -3,12 +3,12 @@ title: Odstraňování běžných chyb
 description: Naučte se řešit problémy při vytváření, přiřazování a odebírání podrobných plánů, jako jsou porušení zásad a funkce parametrů podrobného plánu.
 ms.date: 11/22/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 4e7ea1760e000a167c4329d6f12f3acc18d18f7c
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 5b8a20b0757934bbd356ab037a22521a248a7eb2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406614"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982479"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Řešení chyb pomocí Azure modrotisky
 
@@ -18,7 +18,7 @@ Při vytváření nebo přiřazování podrobných plánů můžete spustit chyb
 
 Mnohé chyby budou výsledkem přiřazení podrobného plánu k oboru. Pokud přiřazení neproběhne úspěšně, podrobný plán poskytuje podrobnosti o neúspěšném nasazení. Tyto informace označují problém tak, aby se mohl opravit a další nasazení bude úspěšné.
 
-1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
 
 1. Na stránce vlevo vyberte **přiřazené plány** a pomocí vyhledávacího pole vyfiltrujte přiřazení podrobného plánu, abyste našli neúspěšné přiřazení. Můžete také seřadit tabulku přiřazení podle sloupce **stav zřizování** a zobrazit tak všechna neúspěšná přiřazení seskupená dohromady.
 
@@ -43,7 +43,7 @@ Zásada může být v konfliktu s nasazením z několika důvodů:
 - Vytvářený prostředek je omezený zásadami (obvykle se jedná o omezení umístění SKU nebo místa).
 - Nasazení je nastavené pole, která jsou nakonfigurovaná pomocí zásad (společné pomocí značek).
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 Změňte podrobný plán tak, aby nedošlo ke konfliktu se zásadami v podrobnostech o chybě. Pokud tuto změnu nemůžete udělat, je alternativním parametrem, že se změní rozsah přiřazení zásady, takže podrobný plán už není v konfliktu se zásadami.
 
@@ -57,9 +57,9 @@ Parametry podrobného plánu, které jsou funkce, jsou zpracovány před předá
 
 Předáním parametru podrobného plánu, který používá funkci, jako je například `[resourceGroup().tags.myTag]`, do výsledku artefaktu dojde ke zpracování výsledku funkce, která je nastavena na artefaktu namísto dynamické funkce.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
-Chcete-li funkci předat jako parametr, zařídí celý řetězec `[` tak, aby parametr podrobného plánu vypadal jako `[[resourceGroup().tags.myTag]`. Řídicí znak způsobí, že při zpracování podrobného plánu bude v sestavách zpracována hodnota jako řetězec. Modrotisky pak umístí funkci na artefakt, což umožňuje, aby byl dynamický, jak bylo očekáváno. Další informace najdete v tématu [syntaxe a výrazy v šablonách Azure Resource Manager](../../../azure-resource-manager/template-expressions.md).
+Chcete-li funkci předat jako parametr, zařídí celý řetězec `[` tak, aby parametr podrobného plánu vypadal jako `[[resourceGroup().tags.myTag]`. Řídicí znak způsobí, že při zpracování podrobného plánu bude v sestavách zpracována hodnota jako řetězec. Modrotisky pak umístí funkci na artefakt, což umožňuje, aby byl dynamický, jak bylo očekáváno. Další informace najdete v tématu [syntaxe a výrazy v šablonách Azure Resource Manager](../../../azure-resource-manager/templates/template-expressions.md).
 
 ## <a name="next-steps"></a>Další kroky
 

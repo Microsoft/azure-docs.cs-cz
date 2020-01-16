@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57d313e7620361f976cc1670c2370e5f19bdb99a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f003daea188c6f556d0981c83c98f3328362f864
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768125"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975114"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu JavaScript
 
@@ -61,7 +61,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurace aplikace v Azure Portal
-> Aby ukázka kódu pro tento rychlý Start fungovala, je nutné přidat identifikátor URI přesměrování jako `http://localhost:30662/` a povolit **implicitní udělení**.
+> Aby ukázka kódu pro tento rychlý Start fungovala, je nutné přidat `redirectUri` jako `http://localhost:30662/` a povolit **implicitní udělení**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Provést tyto změny pro mě]()
 >
@@ -167,7 +167,7 @@ var msalConfig = {
     auth: {
         clientId: "Enter_the_Application_Id_here",
         authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here",
-        redirectURI: "http://localhost:30662/"
+        redirectUri: "http://localhost:30662/"
     },
     cache: {
         cacheLocation: "localStorage",
@@ -182,7 +182,7 @@ var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 > |---------|---------|
 > |`clientId`     | ID aplikace, která je zaregistrována v Azure Portal.|
 > |`authority`    | Volitelné Adresa URL autority, která podporuje typy účtů, jak je popsáno výše v části konfigurace. Výchozí autorita je `https://login.microsoftonline.com/common`. |
-> |`redirectURI`     | Registrační identifikátor URI pro odpověď nebo přesměrování aplikace byl nakonfigurován. V tomto případě `http://localhost:30662/`. |
+> |`redirectUri`     | Nakonfigurovaná odpověď/redirectUri registrace aplikace V tomto případě `http://localhost:30662/`. |
 > |`cacheLocation`  | Volitelné Nastaví úložiště prohlížeče pro stav ověřování. Výchozí hodnota je sessionStorage.   |
 > |`storeAuthStateInCookie`  | Volitelné Knihovna, ve které je uložen stav žádosti o ověření, který je požadován pro ověření toků ověřování v souborech cookie prohlížeče. Tento soubor cookie je nastaven pro prohlížeče IE a Edge, aby se zmírnily určité [známé problémy](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues). |
 

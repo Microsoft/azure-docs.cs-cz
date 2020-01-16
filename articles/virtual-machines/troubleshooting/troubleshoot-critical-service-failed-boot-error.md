@@ -12,25 +12,25 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: f038e56fe4b1e6ad2737217674706eef77a39fd6
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 590505d954d52ebec9f8a5c344d6e750f11ef677
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058061"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981369"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Při spuštění virtuálního počítače Azure se v systému Windows zobrazí modrá obrazovka "KRITICKá služba neúspěšná"
 Tento článek popisuje chybu "KRITICKá služba neúspěšná", která se může vyskytnout při spuštění virtuálního počítače s Windows v Microsoft Azure. Poskytuje kroky pro řešení potíží, které vám pomůžou tyto problémy vyřešit. 
 
 > [!NOTE] 
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití modelu nasazení Správce prostředků, který doporučujeme použít pro nová nasazení místo modelu nasazení Classic.
+> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití modelu nasazení Správce prostředků, který doporučujeme použít pro nová nasazení místo modelu nasazení Classic.
 
 ## <a name="symptom"></a>Příznak 
 
 Virtuální počítač s Windows se nespustí. Když zkontrolujete spouštěcí snímky obrazovky v [diagnostice spouštění](./boot-diagnostics.md), zobrazí se na modré obrazovce jedna z následujících chybových zpráv:
 
-- "Váš počítač byl příčinou problému a je nutné ho restartovat. Můžete restartovat. Další informace o tomto problému a možných opravách najdete na https://windows.com/stopcode webu. Pokud zavoláte osobu podpory, poskytněte jim tyto informace: Stop kód: KRITICKÁ SLUŽBA NEBYLA ÚSPĚŠNÁ. " 
-- "Váš počítač byl příčinou problému a je nutné ho restartovat. Jenom shromažďujeme nějaké informace o chybách a pak za vás budeme restartovat. Pokud se chcete dozvědět víc, můžete pro tuto chybu vyhledat online později: CRITICAL_SERVICE_FAILED"
+- "Váš počítač byl příčinou problému a je nutné ho restartovat. Můžete restartovat. Další informace o tomto problému a možných opravách najdete v https://windows.com/stopcode. Pokud zavoláte osobu podpory, poskytněte jim tyto informace: Stop kód: KRITICKá služba se nezdařila. " 
+- "Váš počítač byl příčinou problému a je nutné ho restartovat. Jenom shromažďujeme nějaké informace o chybách a pak za vás budeme restartovat. Pokud se chcete dozvědět víc, můžete k této chybě vyhledat online později: CRITICAL_SERVICE_FAILED "
 
 ## <a name="cause"></a>Příčina
 
@@ -103,16 +103,16 @@ Pokud chcete povolit protokoly výpisu paměti a sériovou konzolu, spusťte ná
         bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
 8.  Restartujte virtuální počítač. 
 
-### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>Volitelné: Analyzovat protokoly výpisu paměti v režimu zotavení po havárii
+### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>Volitelné: Analýza protokolů výpisu paměti v režimu zotavení po havárii
 
 Pokud chcete protokoly výpisu paměti analyzovat sami, postupujte takto:
 
 1. Disk s operačním systémem připojte k virtuálnímu počítači pro obnovení.
 2. Na disku s operačním systémem, který jste připojili, přejděte na **\Windows\System32\Config**. Zkopírujte všechny soubory jako zálohu pro případ, že je vyžadováno vrácení zpět.
 3. Spusťte **Editor registru** (Regedit. exe).
-4. Vyberte klíč **HKEY_LOCAL_MACHINE** . V nabídce vyberte položku**podregistr Load** **File** > .
+4. Vyberte **HKEY_LOCAL_MACHINE** klíč. V nabídce vyberte **soubor** > **Načíst podregistr**.
 5. Přejděte do složky **\windows\system32\config\SYSTEM** na disku s operačním systémem, který jste připojili. Jako název podregistru zadejte **BROKENSYSTEM**. Nový podregistr registru se zobrazí pod klíčem **HKEY_LOCAL_MACHINE** .
-6. Přejděte na **HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Control\CrashControl** a proveďte následující změny:
+6. Vyhledejte **HKEY_LOCAL_MACHINE \brokensystem\controlset00x\control\crashcontrol** a proveďte následující změny:
 
     AutoRestart = 0
 
@@ -137,7 +137,7 @@ Pokud chcete protokoly výpisu paměti analyzovat sami, postupujte takto:
 9. [Odpojte disk s operačním systémem a pak znovu připojte disk s operačním systémem k ovlivněnému virtuálnímu počítači](troubleshoot-recovery-disks-portal-windows.md).
 10. Spusťte virtuální počítač a zjistěte, jestli zobrazuje analýzu výpisu paměti. Vyhledejte soubor, který se nepodařilo načíst. Tento soubor je potřeba nahradit souborem z pracovního virtuálního počítače. 
 
-    Následuje ukázka analýzy výpisu paměti. Můžete vidět, že **Chyba** je v systému: crypt. sys: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt. sys ".
+    Následuje ukázka analýzy výpisu paměti. Můžete vidět, že **Chyba** je na autocrypt. sys: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt. sys".
 
     ```
     kd> !analyze -v 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: f5e0344cb1da86661ae87b5e45bd93dd181e7bb0
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 7c80ba6b15cec08da9bcefea243493a824ef66bd
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659555"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978762"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure Glosář: slovník cloudové terminologie na platformě Azure
 
@@ -31,7 +31,7 @@ Glosář Microsoft Azure je krátký slovník cloudové terminologie pro platfor
 
 ## <a name="account"></a>account
 Účet, který se používá pro přístup k předplatnému Azure a jeho správu. Často se označuje jako účet Azure, přestože účet může být některý z těchto: stávající pracovní, školní nebo osobní účet Microsoft nebo uživatelské jméno a heslo pro Office 365. Můžete také vytvořit účet pro správu předplatného Azure při registraci [bezplatné zkušební verze](https://azure.microsoft.com).  
-Přečtěte si téma [registrace předplatného Azure s účtem Office 365](billing/billing-use-existing-office-365-account-azure-subscription.md) a [účty, které můžete použít k přihlášení](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+Přečtěte si téma [registrace předplatného Azure s účtem Office 365](cost-management-billing/manage/office-365-account-for-azure-subscription.md) a [účty, které můžete použít k přihlášení](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a name="api-app"></a>Aplikace API
 Jiný název [aplikace App Service](#app-service-app).
@@ -96,11 +96,11 @@ Zobrazit [oblasti Azure](best-practices-availability-paired-regions.md)
 
 ## <a name="resource"></a>resource
 Položka, která je součástí vašeho řešení Azure. Každá služba Azure umožňuje nasadit různé typy prostředků, jako jsou databáze nebo virtuální počítače.   
-Další informace najdete v tématu [Azure Resource Manager Overview](azure-resource-manager/resource-group-overview.md) .
+Další informace najdete v tématu [Azure Resource Manager Overview](azure-resource-manager/management/overview.md) .
 
 ## <a name="resource-group"></a>skupina prostředků
 Kontejner v Správce prostředků, který obsahuje související prostředky pro aplikaci. Skupina prostředků může zahrnovat všechny prostředky pro aplikaci nebo pouze prostředky, které jsou logicky seskupeny dohromady. To, jakým způsobem se prostředky přidělí do skupin prostředků, můžete rozhodnout na základě toho, co je pro vaši organizaci nejvhodnější.  
-Další informace najdete v tématu [Azure Resource Manager Overview](azure-resource-manager/resource-group-overview.md) .
+Další informace najdete v tématu [Azure Resource Manager Overview](azure-resource-manager/management/overview.md) .
 
 ## <a name="arm-template"></a>Šablona Resource Manageru
 Soubor JSON, který deklarativně definuje jeden nebo víc prostředků Azure a definuje závislosti mezi nasazenými prostředky. Šablony lze použít k nasazení prostředků konzistentně a opakovaně.  
@@ -108,7 +108,7 @@ Další informace najdete v tématu [vytváření Azure Resource Manager šablon
 
 ## <a name="resource-provider"></a>poskytovatel prostředků
 Služba poskytující prostředky, které můžete nasadit a spravovat prostřednictvím Správce prostředků. Každý poskytovatel prostředků nabízí operace pro práci s nasazenými prostředky. Poskytovatelé prostředků jsou k dispozici prostřednictvím Azure Portal, Azure PowerShell a několika programovacích sad SDK.  
-Další informace najdete v tématu [Azure Resource Manager Overview](azure-resource-manager/resource-group-overview.md) .
+Další informace najdete v tématu [Azure Resource Manager Overview](azure-resource-manager/management/overview.md) .
 
 ## <a name="role"></a>roles
 Způsob řízení přístupu, který lze přiřadit uživatelům, skupinám a službám. Role můžou provádět akce, jako je vytváření, Správa a čtení prostředků Azure.  

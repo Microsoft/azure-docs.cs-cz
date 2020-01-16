@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
-ms.openlocfilehash: 335b956701a87b6a0e5984ae50507a91d212ab67
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e47c7d7c4e982604814b227544a98bb301a20105
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646740"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980105"
 ---
 # <a name="virtual-network-peering"></a>Partnerský vztah virtuální sítě
 
@@ -34,7 +34,7 @@ Mezi výhody partnerských vztahů virtuálních sítí (místních i globální
 * Schopnost prostředků v jedné virtuální síti komunikovat s prostředky v jiné virtuální síti.
 * Možnost přenášet data mezi virtuálními sítěmi v rámci předplatných Azure, Azure Active Directory klienty, modely nasazení a oblastmi Azure.
 * Možnost vytvoření partnerského vztahu virtuálních sítí vytvořených prostřednictvím Azure Resource Manager.
-* Možnost navázání partnerského vztahu mezi virtuálními sítěmi vytvořenými prostřednictvím Správce prostředků, která je vytvořená prostřednictvím modelu nasazení Classic. Další informace o modelech nasazení Azure najdete v článku [Vysvětlení modelů nasazení Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+* Možnost navázání partnerského vztahu mezi virtuálními sítěmi vytvořenými prostřednictvím Správce prostředků, která je vytvořená prostřednictvím modelu nasazení Classic. Další informace o modelech nasazení Azure najdete v článku [Vysvětlení modelů nasazení Azure](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 * Žádný výpadek prostředků ve virtuálních sítích při vytváření partnerského vztahu ani po jeho vytvoření.
 
 Provoz mezi partnerskými virtuálními sítěmi je privátní. Provoz mezi virtuálními sítěmi probíhá na páteřní síti Microsoftu. Komunikace mezi partnerskými virtuálními sítěmi nevyžaduje veřejný internet, brány ani šifrování.

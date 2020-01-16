@@ -1,17 +1,14 @@
 ---
 title: Výběr možnosti migrace VMware pomocí migrace serveru Azure Migrate | Microsoft Docs
 description: Poskytuje přehled možností migrace virtuálních počítačů VMware do Azure pomocí migrace Azure Migrate serveru.
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: raynew
-ms.openlocfilehash: 68026af5b96728ea66fd9e584e67e5e596e690fb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 52e7103ea3ebcd83369a866cc3f75b0bf0e889a2
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974661"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028713"
 ---
 # <a name="select-a-vmware-migration-option"></a>Vybrat možnost migrace VMware
 
@@ -25,7 +22,7 @@ Virtuální počítače VMware můžete migrovat do Azure pomocí nástroje pro 
 
 ## <a name="compare-migration-methods"></a>Porovnání metod migrace
 
-Tato vybraná porovnání vám pomůžou rozhodnout, kterou metodu použít. Můžete si také projít úplné požadavky na podporu pro migraci bez [agentů](migrate-support-matrix-vmware.md#agentless-migration-vmware-server-requirements) a [na základě agentů](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) .
+Tato vybraná porovnání vám pomůžou rozhodnout, kterou metodu použít. Můžete si také projít úplné požadavky na podporu pro migraci bez [agentů](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) a [na základě agentů](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) .
 
 **Nastavení** | **Bez agenta** | **Založené na agentovi**
 --- | --- | ---

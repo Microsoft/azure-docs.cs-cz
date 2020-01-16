@@ -8,26 +8,26 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 517b9768c1df928012c34a4dcdd2dfa6b0c94d0c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d583f47a9c83abb1119262a2a6b70292cfa4ab69
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401583"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977695"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Vytvoření souboru řešení pro správu v Azure (Preview)
 > [!NOTE]
 > Toto je předběžná dokumentace k vytváření řešení pro správu v Azure, která jsou momentálně ve verzi Preview. Jakékoli schéma popsané níže se může změnit.  
 
-Řešení pro správu v Azure se implementují jako [šablony Správce prostředků](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).  Hlavním úkolem při učení, jak vytvářet řešení pro správu, je učení, jak vytvořit [šablonu](../../azure-resource-manager/templates/template-syntax.md).  Tento článek poskytuje jedinečné podrobnosti o šablonách používaných pro řešení a konfiguraci typických prostředků řešení.
+Řešení pro správu v Azure se implementují jako [šablony Správce prostředků](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).  Hlavním úkolem při učení, jak vytvářet řešení pro správu, je učení, jak vytvořit [šablonu](../../azure-resource-manager/templates/template-syntax.md).  Tento článek poskytuje jedinečné podrobnosti o šablonách používaných pro řešení a konfiguraci typických prostředků řešení.
 
 
 ## <a name="tools"></a>nástroje
 
 Můžete použít libovolný textový editor pro práci se soubory řešení, ale doporučujeme využívat funkce poskytované v aplikaci Visual Studio nebo Visual Studio Code, jak je popsáno v následujících článcích.
 
-- [Vytvoření a nasazení skupin prostředků Azure pomocí sady Visual Studio](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
-- [Práce se šablonami Azure Resource Manager v Visual Studio Code](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
+- [Vytvoření a nasazení skupin prostředků Azure pomocí sady Visual Studio](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md)
+- [Práce se šablonami Azure Resource Manager v Visual Studio Code](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 
 
 
@@ -159,7 +159,7 @@ V takovém případě odkazujete na proměnné hodnoty prostřednictvím řešen
 
 
 ### <a name="dependencies"></a>Závislosti
-Element **dependsOn** Určuje [závislost](../../azure-resource-manager/resource-group-define-dependencies.md) na jiném prostředku.  Po instalaci řešení není prostředek vytvořen, dokud nebudou vytvořeny všechny jeho závislosti.  Řešení může například [Spustit sadu Runbook](solutions-resources-automation.md#runbooks) při instalaci pomocí [prostředku úlohy](solutions-resources-automation.md#automation-jobs).  Prostředek úlohy by byl závislý na prostředku Runbooku, aby se zajistilo, že se Runbook vytvoří před vytvořením úlohy.
+Element **dependsOn** Určuje [závislost](../../azure-resource-manager/templates/define-resource-dependency.md) na jiném prostředku.  Po instalaci řešení není prostředek vytvořen, dokud nebudou vytvořeny všechny jeho závislosti.  Řešení může například [Spustit sadu Runbook](solutions-resources-automation.md#runbooks) při instalaci pomocí [prostředku úlohy](solutions-resources-automation.md#automation-jobs).  Prostředek úlohy by byl závislý na prostředku Runbooku, aby se zajistilo, že se Runbook vytvoří před vytvořením úlohy.
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Pracovní prostor log Analytics a účet služby Automation
 Řešení pro správu vyžadují, aby [Log Analytics pracovní prostor](../../azure-monitor/platform/manage-access.md) obsahovat zobrazení a [účet Automation](../../automation/automation-security-overview.md#automation-account-overview) , které obsahují Runbooky a související prostředky.  Tyto musí být k dispozici před vytvořením prostředků v řešení a neměly by být definovány v samotném řešení.  Uživatel zadá [pracovní prostor a účet](solutions.md#log-analytics-workspace-and-automation-account) při nasazení vašeho řešení, ale jako autor byste měli zvážit následující body.
@@ -200,7 +200,7 @@ Každé řešení vyžaduje záznam prostředku v elementu **Resources** , kter�
 
 
 ### <a name="dependencies"></a>Závislosti
-Prostředek řešení musí mít [závislost](../../azure-resource-manager/resource-group-define-dependencies.md) na všech ostatních zdrojích v řešení, protože musí existovat, aby bylo možné řešení vytvořit.  To provedete tak, že přidáte položku pro každý prostředek v elementu **dependsOn** .
+Prostředek řešení musí mít [závislost](../../azure-resource-manager/templates/define-resource-dependency.md) na všech ostatních zdrojích v řešení, protože musí existovat, aby bylo možné řešení vytvořit.  To provedete tak, že přidáte položku pro každý prostředek v elementu **dependsOn** .
 
 ### <a name="properties"></a>Vlastnosti
 Prostředek řešení obsahuje vlastnosti v následující tabulce.  To zahrnuje prostředky odkazované a obsažené v řešení, které definují, jak je prostředek spravován po instalaci řešení.  Každý prostředek v řešení by měl být uveden buď v **referencedResources** , nebo v vlastnosti **containedResources** .

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a491f923d7755513d84adfe765d595a3a7a80715
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 979652a467ea91c05884d2f7a24781f82035e505
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60399334"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982045"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Vytvoření funkcí pro data v clusteru Hadoop pomocí dotazů Hive
 Tento dokument ukazuje, jak vytvoření funkcí pro data uložená v clusteru Azure HDInsight Hadoop pomocí dotazů Hive. Tyto dotazy Hive pomocí vložených Hive User-Defined funkcí (UDF), skriptů, pro které jsou k dispozici.
@@ -30,7 +30,7 @@ Tato úloha je nějaký krok [vědecké zpracování týmových dat (TDSP)](http
 ## <a name="prerequisites"></a>Požadavky
 Tento článek předpokládá, že máte:
 
-* Vytvoření účtu služby Azure storage. Pokud potřebujete pokyny, přečtěte si [vytvoření účtu služby Azure Storage](../../storage/common/storage-quickstart-create-account.md)
+* Vytvoření účtu služby Azure storage. Pokud potřebujete pokyny, přečtěte si [vytvoření účtu služby Azure Storage](../../storage/common/storage-account-create.md)
 * Zřídit vlastní cluster Hadoop ve službě HDInsight.  Pokud potřebujete získat pokyny, přečtěte si téma [přizpůsobení clusterů Azure HDInsight pro pokročilé analýzy Hadoop](customize-hadoop-cluster.md).
 * Data se odeslal do tabulek Hive v clusterech Azure HDInsight Hadoop. Pokud ne, postupujte podle [vytvoření a načtení dat do tabulek Hive](move-hive-tables.md) nejdřív odesílat data do tabulek Hive.
 * Povolit vzdálený přístup ke clusteru. Pokud potřebujete získat pokyny, přečtěte si téma [přístup k hlavní uzel z clusteru Hadoop](customize-hadoop-cluster.md).
@@ -89,14 +89,14 @@ Hive se dodává se sadou funkcí UDF pro zpracování pole data a času. V Hive
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-Tento dotaz Hive předpokládá, že  *\<pole Datum a čas >* je ve výchozím formátu data a času.
+Tento dotaz na podregistr předpokládá, že *\<pole datetime >* je ve výchozím formátu data a času.
 
 Pokud není pole Datum a čas ve formátu výchozí, musíte nejprve převést pole data a času Unix časové razítko a potom převést na řetězec data a času, který je ve výchozím formátu Unix časové razítko. Když je datum a čas ve výchozím formátu, můžou uživatelé používat vložené datum a čas k extrakci funkce UDF.
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-V tomto dotazu Pokud  *\<pole Datum a čas >* ve tvaru jako *03/26/2015 12:04:39*,  *\<vzor pole Datum a čas > "* by měl být `'MM/dd/yyyy HH:mm:ss'`. K otestování, můžou uživatelé spouštět.
+Pokud v tomto dotazu má *pole\<datetime >* vzor, jako je *03/26/2015 12:04:39*, *\<ho vzorce pole datetime >* by měla být `'MM/dd/yyyy HH:mm:ss'`. K otestování, můžou uživatelé spouštět.
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;
@@ -130,16 +130,16 @@ Pole, které se používají v tomto dotazu jsou souřadnice GPS sbírat míčky
         and dropoff_latitude between 30 and 90
         limit 10;
 
-Matematické rovnice, které vypočítá vzdálenost mezi dvěma souřadnice GPS můžete najít na <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Přesouvatelných typ skripty</a> lokality autorem Peter Lapisu. V tomto jazyce Javascript, funkce `toRad()` je právě *lat_or_lon*pí/180, který převádí stupně na radiány. Tady *lat_or_lon* je zeměpisné šířky a délky. Protože Hive neposkytuje funkce `atan2`, ale poskytuje funkci `atan`, `atan2` funkce je implementovaná pomocí `atan` funkce ve výše uvedeném dotazu Hive pomocí definice součástí <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a>.
+Matematické rovnice, které vypočítá vzdálenost mezi dvěma souřadnice GPS můžete najít na <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Přesouvatelných typ skripty</a> lokality autorem Peter Lapisu. V tomto JavaScriptu je `toRad()` funkce pouze *lat_or_lon*PI/180, která převede stupně na radiány. Tady *lat_or_lon* je zeměpisné šířky a délky. Protože Hive neposkytuje funkce `atan2`, ale poskytuje funkci `atan`, `atan2` funkce je implementovaná pomocí `atan` funkce ve výše uvedeném dotazu Hive pomocí definice součástí <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a>.
 
 ![Vytvoření pracovního prostoru](./media/create-features-hive/atan2new.png)
 
 Úplný seznam Hive UDF embedded najdete v **předdefinované funkce** části na <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive wiki</a>).  
 
-## <a name="tuning"></a> Pokročilá témata: Optimalizace parametrů Hive ke zlepšení rychlosti dotazu
+## <a name="tuning"></a> Pokročilá témata: parametry ladění Hive ke zlepšení rychlosti dotazu
 Výchozí nastavení parametrů clusteru Hive nemusí být vhodný pro dotazy Hive a data, která jsou zpracování dotazů. Tato část popisuje některé parametry, které můžou uživatelé naladit ke zlepšení výkonu dotazů Hive. Uživatelé musí přidat parametr dotazy před dotazy zpracování dat ladění.
 
-1. **Místo v haldě Java**: Pro dotazy týkající se připojení k velké datové sady nebo zpracování dlouhé záznamy **nemá dostatek místa v haldě** je jedním z běžných chyb. Tato chyba se lze vyvarovat nastavením parametrů *mapreduce.map.java.opts* a *mapreduce.task.io.sort.mb* na požadované hodnoty. Zde naleznete příklad:
+1. **Místo v haldě Java**: pro dotazy týkající se připojení k velké datové sady nebo zpracování dlouhé záznamy **nemá dostatek místa v haldě** je jedním z běžných chyb. Tato chyba se lze vyvarovat nastavením parametrů *mapreduce.map.java.opts* a *mapreduce.task.io.sort.mb* na požadované hodnoty. Zde naleznete příklad:
    
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
@@ -151,11 +151,11 @@ Výchozí nastavení parametrů clusteru Hive nemusí být vhodný pro dotazy Hi
 
         set dfs.block.size=128m;
 
-2. **Optimalizace operace spojení v podregistru**: Během operace spojení v rámci mapování/zmenšování obvykle můžou probíhat ve fázi snížit, v některých případech enormní nárůst lze dosáhnout plánování spojení ve fázi mapy (také nazývané "mapjoins"). Chcete-li přímo Hive k tomu, kdykoli je to možné, nastavte:
+2. **Optimalizace operace spojení v podregistru**: během operace spojení v rámci mapování/zmenšování obvykle můžou probíhat ve fázi snížit, v některých případech enormní nárůst se dá dosáhnout plánování spojení ve fázi mapy (také nazývané "mapjoins"). Chcete-li přímo Hive k tomu, kdykoli je to možné, nastavte:
    
        set hive.auto.convert.join=true;
 
-3. **Určení počtu mapovačů Hive k**: Přestože Hadoop umožňuje uživateli nastavit počet reduktorů, počet mapovačů je obvykle nesmí být nastavený uživatelem. Trik, který umožňuje určitý stupeň ovládací prvek na toto číslo je zvolit Hadoop proměnné *mapred.min.split.size* a *mapred.max.split.size* jako velikost každé mapování úkolu se určuje podle:
+3. **Určení počtu mapovačů Hive k**: Přestože Hadoop umožňuje uživateli nastavit počet reduktorů, počet mapovačů obvykle nesmí být nastavený uživatelem. Trik, který umožňuje určitý stupeň ovládací prvek na toto číslo je zvolit Hadoop proměnné *mapred.min.split.size* a *mapred.max.split.size* jako velikost každé mapování úkolu se určuje podle:
    
         num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))
    

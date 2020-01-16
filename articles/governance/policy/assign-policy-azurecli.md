@@ -3,12 +3,12 @@ title: 'Rychlý Start: nové přiřazení zásad pomocí Azure CLI'
 description: V tomto rychlém startu pomocí Azure CLI vytvoříte přiřazení Azure Policy k identifikaci prostředků, které nedodržují předpisy.
 ms.date: 01/11/2020
 ms.topic: quickstart
-ms.openlocfilehash: 2bc5c77ac5c2ac0a1f4c80d9b770d9e95d7864cf
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 7f76191d97a936c745fc2b13b54011e787e0b5e6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903519"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978327"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí Azure CLI
 
@@ -31,7 +31,7 @@ Azure CLI slouží k vytváření a správě prostředků Azure z příkazového
   az provider register --namespace 'Microsoft.PolicyInsights'
   ```
 
-  Další informace o registraci a zobrazení poskytovatelů prostředků najdete v tématu [Poskytovatelé a typy prostředků](../../azure-resource-manager/resource-manager-supported-services.md).
+  Další informace o registraci a zobrazení poskytovatelů prostředků najdete v tématu [Poskytovatelé a typy prostředků](../../azure-resource-manager/management/resource-providers-and-types.md).
 
 - Pokud jste to ještě neudělali, nainstalujte si nástroj [ARMClient](https://github.com/projectkudu/ARMClient). Jedná se o nástroj, který posílá žádosti HTTPS do rozhraní API založených na Azure Resource Manageru.
 

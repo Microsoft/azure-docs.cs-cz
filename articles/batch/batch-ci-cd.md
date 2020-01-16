@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.service: batch
-ms.openlocfilehash: 7f471032d69213fc11ff748e3fa9093991ee23d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 03e383e43cbe90ae2f59766a235f167cff623b6a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449805"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982698"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Použití Azure Pipelines k sestavení a nasazení řešení HPC
 
@@ -192,7 +192,7 @@ Další šablona ukazuje příklad vytvoření fondu Azure Batch (back-end poč�
 
 Nakonec máme šablonu, která funguje podobně jako Orchestrator. Tato šablona zodpovídá za nasazení šablon schopností.
 
-Další informace o [Vytváření propojených Azure Resource Manager šablon](../azure-resource-manager/resource-manager-tutorial-create-linked-templates.md) najdete v samostatném článku.
+Další informace o [Vytváření propojených Azure Resource Manager šablon](../azure-resource-manager/templates/template-tutorial-create-linked-templates.md) najdete v samostatném článku.
 
 ```json
 {
@@ -368,7 +368,7 @@ Azure Pipelines také použít k nasazení aplikace a základní infrastruktury.
 
 ### <a name="deploying-your-application-and-underlying-infrastructure"></a>Nasazení aplikace a základní infrastruktury
 
-K nasazení infrastruktury se zapojí řada kroků. Vzhledem k použití [propojených šablon](../azure-resource-manager/resource-group-linked-templates.md)bude nutné, aby tyto šablony byly dostupné z veřejného koncového bodu (http nebo https). Může to být úložiště na GitHubu, nebo účet Azure Blob Storage nebo jiné umístění úložiště. Nahrané artefakty šablony mohou zůstat v bezpečí, protože mohou být uchovávány v privátním režimu, ale přístupné pomocí nějaké formy tokenu sdíleného přístupového podpisu (SAS). Následující příklad ukazuje, jak nasadit infrastrukturu se šablonami z Azure Storageého objektu BLOB.
+K nasazení infrastruktury se zapojí řada kroků. Vzhledem k použití [propojených šablon](../azure-resource-manager/templates/linked-templates.md)bude nutné, aby tyto šablony byly dostupné z veřejného koncového bodu (http nebo https). Může to být úložiště na GitHubu, nebo účet Azure Blob Storage nebo jiné umístění úložiště. Nahrané artefakty šablony mohou zůstat v bezpečí, protože mohou být uchovávány v privátním režimu, ale přístupné pomocí nějaké formy tokenu sdíleného přístupového podpisu (SAS). Následující příklad ukazuje, jak nasadit infrastrukturu se šablonami z Azure Storageého objektu BLOB.
 
 1. Vytvořte **novou definici vydané verze**a vyberte prázdnou definici. Pak bude potřeba nově vytvořené prostředí přejmenovat na něco důležitého pro náš kanál.
 

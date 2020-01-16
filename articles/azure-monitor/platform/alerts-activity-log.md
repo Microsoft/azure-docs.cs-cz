@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 06/25/2019
-ms.openlocfilehash: 54122d784467bc090d82f4126e03ab688883ea7d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4835f1034149a015963569a0b1fc5f9195e3cfca
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364794"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969523"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Vytváření, zobrazování a správa výstrah protokolu aktivit pomocí Azure Monitor  
 
@@ -197,7 +197,7 @@ Chcete-li vytvořit upozornění protokolu aktivit pomocí šablony Azure Resour
   ]
 }
 ```
-Předchozí vzorový JSON se dá uložit jako například sampleActivityLogAlert. JSON pro účely tohoto Názorného postupu a dá se nasadit pomocí [Azure Resource Manager v Azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
+Předchozí vzorový JSON se dá uložit jako například sampleActivityLogAlert. JSON pro účely tohoto Názorného postupu a dá se nasadit pomocí [Azure Resource Manager v Azure Portal](../../azure-resource-manager/templates/deploy-portal.md).
 
 > [!NOTE]
 > Může trvat až 5 minut, než se nové pravidlo upozornění protokolu aktivit aktivuje.

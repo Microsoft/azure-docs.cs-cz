@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 12/16/2019
-ms.openlocfilehash: fe38e74d30f7eb4f0c025f14268f7d6ac7b7d88a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8d34a0905973a8080ee53eeac878432db0c51128
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428679"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979072"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a informace o konfiguraci Azure Logic Apps
 
@@ -62,13 +62,13 @@ Pokud chcete změnit výchozí limit doby trvání běhu a uchování úložišt
 
 1. Přejděte na [portál Azure](https://portal.azure.com). V poli hledání na portálu vyhledejte a vyberte **Aplikace logiky**.
 
-1. V návrháři aplikace logiky vyberte a otevřete svoji aplikaci logiky. 
+1. V návrháři aplikace logiky vyberte a otevřete svoji aplikaci logiky.
 
 1. V nabídce aplikace logiky vyberte **Nastavení pracovního postupu**.
 
 1. V části **Možnosti modulu runtime**v seznamu **uchování historie spuštění ve dnech** vyberte možnost **vlastní**.
 
-1. Zadejte nebo přetáhněte posuvník po požadovaný počet dní. 
+1. Zadejte nebo přetáhněte posuvník po požadovaný počet dní.
 
    > [!NOTE]
    > Pro Logic Apps ve více tenantů Azure je výchozí limit 90 dne stejný jako maximální limit. Tuto hodnotu lze snížit pouze.
@@ -84,7 +84,7 @@ Tady jsou omezení pro jeden běh aplikace logiky:
 | ---- | ----- | ----- |
 | Souběžnost triggeru | * Neomezeno, pokud je řízení souběžnosti vypnuto <p><p>* 25 je výchozím limitem při zapnutí řízení souběžnosti, které nelze vrátit zpět po zapnutí ovládacího prvku. Výchozí hodnotu můžete změnit na hodnotu v rozmezí 1 až 50 (včetně). | Toto omezení popisuje nejvyšší počet instancí aplikace logiky, které mohou běžet současně, nebo paralelně. <p><p>**Poznámka**: při zapnuté souběžnosti se limit SplitOn snižuje na 100 položek pro [oddávkování polí](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Pokud chcete změnit výchozí limit na hodnotu v rozmezí 1 až 50 (včetně), přečtěte si téma [Změna limitu souběžnosti triggeru](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) nebo [instancí triggerů postupně](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | Maximální počet čekajících spuštění | Když je řízení souběžnosti zapnuto, minimální počet čekajících spuštění je 10 plus počet souběžných spuštění (aktivační souběžnost). Maximální počet můžete změnit až na 100 včetně. | Toto omezení popisuje nejvyšší počet instancí aplikace logiky, které mohou čekat na spuštění, když aplikace logiky již používá maximální počet souběžných instancí. <p><p>Pokud chcete změnit výchozí limit, přečtěte si téma [Změna limitu čekání na spuštění](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
-| Položky pole foreach | 100 000 | Toto omezení popisuje nejvyšší počet položek pole, které může smyčka for each zpracovat. <p><p>Chcete-li filtrovat větší pole, můžete použít [akci dotazu](../connectors/connectors-native-query.md). |
+| Položky pole foreach | 100 000 | Toto omezení popisuje nejvyšší počet položek pole, které může smyčka for each zpracovat. <p><p>Chcete-li filtrovat větší pole, můžete použít [akci dotazu](logic-apps-perform-data-operations.md#filter-array-action). |
 | Souběžnost foreach | 20 je výchozím limitem při vypnutém řízení souběžnosti. Výchozí hodnotu můžete změnit na hodnotu v rozmezí 1 až 50 (včetně). | Toto omezení je nejvyšší počet iterací smyčky for each, které lze spustit současně nebo paralelně. <p><p>Chcete-li změnit výchozí limit na hodnotu mezi 1 a 50, přečtěte si téma [Změna "pro každé" omezení souběžnosti](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) nebo [spuštění každé smyčky "pro každou" cyklicky](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
 | Položky SplitOn | * 100 000 bez spouštěcí souběžnosti <p><p>* 100 s souběžnou aktivací | U triggerů, které vracejí pole, můžete zadat výraz, který používá vlastnost SplitOn, která [rozdělí nebo oddělí dávky polí pole do více instancí pracovního postupu](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) pro zpracování namísto použití smyčky "foreach". Tento výraz odkazuje na pole, které se má použít pro vytvoření a spuštění instance pracovního postupu pro každou položku pole. <p><p>**Poznámka**: když je souběžnost zapnutá, limit SplitOn se sníží na 100 položek. |
 | Do iterací | 5 000 | |
@@ -122,7 +122,8 @@ Tady jsou limity propustnosti pro SKU úrovně Premium:
 Chcete-li přejít nad tato omezení v normálním zpracování nebo spustit testování zatížení, které by mohlo jít nad tato omezení, [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) , kde vám pomohou vaše požadavky.
 
 > [!NOTE]
-> [SKU vývojáře](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) nemá žádná publikovaná omezení, protože tato SKU nemá žádnou smlouvu o úrovni služeb (SLA) ani možnosti škálování. Tuto SKU použijte pouze pro experimentování, vývoj a testování, nikoli pro produkční nebo výkonnostní testování.
+> [SKU vývojáře](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) nemá žádná publikovaná omezení, protože tato SKU nemá žádnou smlouvu o úrovni služeb (SLA) ani možnosti škálování.
+> Tuto SKU použijte pouze pro experimentování, vývoj a testování, nikoli pro produkční nebo výkonnostní testování.
 
 <a name="gateway-limits"></a>
 
@@ -209,7 +210,8 @@ Další náklady se vztahují na účty pro integraci, které přidáte nad rám
 
 ### <a name="artifact-limits-per-integration-account"></a>Omezení počtu artefaktů na účet pro integraci
 
-Tady jsou limity pro počet artefaktů pro každou vrstvu integračního účtu. Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps/). Informace o cenách a fakturační práci pro účty pro integraci najdete v [Logic Apps cenového modelu](../logic-apps/logic-apps-pricing.md#integration-accounts).
+Tady jsou limity pro počet artefaktů pro každou vrstvu integračního účtu.
+Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps/). Informace o cenách a fakturační práci pro účty pro integraci najdete v [Logic Apps cenového modelu](../logic-apps/logic-apps-pricing.md#integration-accounts).
 
 > [!NOTE]
 > Úroveň Free se používá jenom pro scénáře průzkumného prostředí, nikoli pro produkční scénáře. Tato úroveň omezuje propustnost a využití a nemá smlouvu o úrovni služeb (SLA).
@@ -261,9 +263,12 @@ Tady jsou omezení velikosti zpráv, která se vztahují na protokoly B2B:
 
 ## <a name="disabling-or-deleting-logic-apps"></a>Zakázání nebo odstranění Logic Apps
 
-Když aplikaci logiky zakážete, nevytvoří se žádná nová spuštění. Všechny probíhající a nedokončené běhy pokračují, dokud se nedokončí, což může chvíli trvat.
+Když aplikaci logiky zakážete, nevytvoří se žádná nová spuštění.
+Všechny probíhající a nedokončené běhy pokračují, dokud se nedokončí, což může chvíli trvat.
 
-Pokud odstraníte aplikaci logiky, nebudou se vytvářet žádné nové instance spuštění. Všechna probíhající a čekající spuštění se zruší. Pokud máte tisíce spuštění, jejich zrušení může trvat značnou dobu.
+Pokud odstraníte aplikaci logiky, nebudou se vytvářet žádné nové instance spuštění.
+Všechna probíhající a čekající spuštění se zruší.
+Pokud máte tisíce spuštění, jejich zrušení může trvat značnou dobu.
 
 <a name="configuration"></a>
 
@@ -276,7 +281,7 @@ IP adresy, které Azure Logic Apps používá pro příchozí a odchozí volán�
 
 * Pro podporu volání, která vaše aplikace logiky přímo provádí pomocí [http](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)a dalších požadavků HTTP, nastavte bránu firewall pomocí *všech* [příchozích](#inbound) *a* [odchozích](#outbound) IP adres, které služba Logic Apps používá, na základě oblastí, ve kterých existují vaše aplikace logiky. Tyto adresy se zobrazí pod položkami **příchozí** a **odchozí** v této části a jsou seřazené podle oblasti.
 
-* Aby bylo možné podporovat volání, která vytváří [konektory spravované Microsoftem](../connectors/apis-list.md) , nastavte bránu firewall se *všemi* [odchozími](#outbound) IP adresami používanými těmito konektory na základě oblastí, ve kterých existují vaše aplikace logiky. Tyto adresy se zobrazí pod **výstupní** hlavičkou v této části a jsou seřazené podle oblasti. 
+* Aby bylo možné podporovat volání, která vytváří [konektory spravované Microsoftem](../connectors/apis-list.md) , nastavte bránu firewall se *všemi* [odchozími](#outbound) IP adresami používanými těmito konektory na základě oblastí, ve kterých existují vaše aplikace logiky. Tyto adresy se zobrazí pod **výstupní** hlavičkou v této části a jsou seřazené podle oblasti.
 
 * Pokud chcete povolit komunikaci pro Logic Apps, které běží v prostředí ISE (Integration Service Environment), ujistěte se, že jste [tyto porty otevřeli](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise).
 

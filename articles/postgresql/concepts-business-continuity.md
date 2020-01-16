@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 13fbab52c16fcde72da8073b429fe6fb4665c21b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: afa03399933bdc8bd8ff869125955cfd9e0abecb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74763874"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981920"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Přehled provozní kontinuity pomocí Azure Database for PostgreSQL-Single server
 
@@ -23,13 +23,13 @@ Azure Database for PostgreSQL poskytuje funkce pro provozní kontinuitu, které 
 
 Následující tabulka porovnává ERT a RPO pro dostupné funkce:
 
-| **Podporu** | **Basic** | **Pro obecné účely** | **Optimalizované z hlediska paměti** |
+| **Funkce** | **Basic** | **Pro obecné účely** | **Optimalizované z hlediska paměti** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Obnovení k určitému bodu v čase ze zálohy | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování |
 | Geografické obnovení ze geograficky replikovaných záloh | Nepodporováno | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |
 
 > [!IMPORTANT]
-> Odstraněné servery **nelze** obnovit. Pokud server odstraníte, odstraní se i všechny databáze patřící do serveru a nebude možné je obnovit. Pomocí [zámku prostředků Azure](../azure-resource-manager/resource-group-lock-resources.md) můžete zabránit nechtěnému odstranění serveru.
+> Odstraněné servery **nelze** obnovit. Pokud server odstraníte, odstraní se i všechny databáze patřící do serveru a nebude možné je obnovit. Pomocí [zámku prostředků Azure](../azure-resource-manager/management/lock-resources.md) můžete zabránit nechtěnému odstranění serveru.
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>Obnovení serveru po chybě uživatele nebo aplikace
 

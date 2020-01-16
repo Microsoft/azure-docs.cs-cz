@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: cjiang
-ms.openlocfilehash: f02e1f73460140c9fe9f2cf6d7ffda26533d570d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 98c3a6b14230e30ccbb103be741595696a20c236
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090021"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981408"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Řešení potíží s nasazením Správce prostředků při vytváření nového virtuálního počítače se systémem Linux v Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -34,7 +34,7 @@ Další dotazy a potíže s nasazením virtuálního počítače najdete v téma
 ## <a name="collect-activity-logs"></a>Shromažďování protokolů aktivit
 Pokud chcete začít řešit potíže, Shromážděte protokoly aktivit a Identifikujte chybu spojenou s problémem. Následující odkazy obsahují podrobné informace o tom, jak postupovat.
 
-[Zobrazení operací nasazení](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[Zobrazení operací nasazení](../../azure-resource-manager/templates/deployment-history.md)
 
 [Zobrazení protokolů aktivit pro správu prostředků Azure](../../resource-group-audit.md)
 
@@ -42,7 +42,7 @@ Pokud chcete začít řešit potíže, Shromážděte protokoly aktivit a Identi
 
 [!INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
 
-**POŽADOVANÉ** Pokud je operační systém systému Linux zobecněn a je nahrán a/nebo zachycen s zobecněným nastavením, pak nedojde k žádným chybám. Podobně platí, že pokud je operační systém Linux specializovaný a je nahrán a/nebo zachycen se specializovaným nastavením, pak nedojde k žádným chybám.
+**A:** Pokud je operační systém systému Linux zobecněn a je nahrán a/nebo zachycen s zobecněným nastavením, pak nedojde k žádným chybám. Podobně platí, že pokud je operační systém Linux specializovaný a je nahrán a/nebo zachycen se specializovaným nastavením, pak nedojde k žádným chybám.
 
 **Chyby nahrávání:**
 
@@ -64,7 +64,7 @@ Chcete-li tyto chyby vyřešit, nahrajte původní virtuální pevný disk, kter
 
 Chcete-li tyto chyby vyřešit, odstraňte aktuální bitovou kopii z portálu a znovu [ji Zachyťte z aktuálních virtuálních pevných disků](../linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) se stejným nastavením jako u operačního systému (generalizovaná/specializovaná).
 
-## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Problém: Vlastní/Galerie/image Marketplace; selhání přidělení
+## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Problém: vlastní/Galerie/image Marketplace; selhání přidělení
 K této chybě dochází v situacích, kdy je nový požadavek na virtuální počítač připnutý ke clusteru, který buď nepodporuje požadovanou velikost virtuálního počítače, nebo nemá k dispozici volné místo pro vyžádání žádosti.
 
 **Příčina 1:** Cluster nepodporuje požadovanou velikost virtuálního počítače.
@@ -74,7 +74,7 @@ K této chybě dochází v situacích, kdy je nový požadavek na virtuální po
 * Opakujte požadavek s menší velikostí virtuálního počítače.
 * Pokud velikost požadovaného virtuálního počítače nejde změnit:
   * Zastavte všechny virtuální počítače ve skupině dostupnosti.
-    Klikněte na **prostředky skupiny** > prostředků**prostředky** > .vaše > *Skupina* *dostupnosti*Virtual Machinesváš > virtuálnípočítač. > Zastavte.  > 
+    Klikněte na **skupiny prostředků** > *vaší skupiny prostředků* > **prostředky** > *vaší skupině dostupnosti* > **Virtual Machines** > **zastavte** *virtuální počítač* > .
   * Po zastavení všech virtuálních počítačů Vytvořte nový virtuální počítač v požadované velikosti.
   * Nejprve spusťte nový virtuální počítač a potom vyberte všechny zastavené virtuální počítače a klikněte na tlačítko **Spustit**.
 

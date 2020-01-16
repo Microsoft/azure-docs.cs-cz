@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b6d9a394971e59abaeb48e058b05cd52da69626
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 84296631e35de759fbb971f5de2d918afa5d17f0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529724"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967575"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -425,12 +425,6 @@ Uživatelé s touto rolí mají globální oprávnění v rámci Microsoft Skype
 > [!NOTE]
 > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell je tato role označená jako "Správce služby Lync". Ve [Azure Portal](https://portal.azure.com/)je to správce Skypu pro firmy.
 
-### <a name="teams-administratorteams-service-administrator-permissions"></a>[Správce týmů](#teams-service-administrator-permissions)
-
-Uživatelé v této roli můžou spravovat všechny aspekty úloh Microsoft Teams prostřednictvím Microsoft Teams & centra pro správu Skypu pro firmy a příslušné moduly PowerShellu. Mezi další oblasti patří i všechny nástroje pro správu, které se týkají telefonního subsystému, zasílání zpráv, schůzek a týmů. Tato role navíc uděluje možnost vytvářet a spravovat všechny skupiny Office 365, spravovat lístky podpory a monitorovat stav služby.
-> [!NOTE]
-> V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell je tato role označená jako "Správce služby týmu". Je to "správce týmů" v [Azure Portal](https://portal.azure.com).
-
 ### <a name="teams-communications-administratorteams-communications-administrator-permissions"></a>[Správce komunikace týmů](#teams-communications-administrator-permissions)
 
 Uživatelé v této roli můžou spravovat aspekty úloh Microsoft Teams souvisejících se službou Voice & telefonního subsystému. To zahrnuje nástroje pro správu přiřazení telefonního čísla, zásady hlasu a schůzky a úplný přístup ke sadě nástrojů pro analýzu volání.
@@ -442,6 +436,10 @@ Uživatelé v této roli můžou řešit problémy s komunikací v rámci Micros
 ### <a name="teams-communications-support-specialistteams-communications-support-specialist-permissions"></a>[Týmy Communications support specialisty](#teams-communications-support-specialist-permissions)
 
 Uživatelé v této roli můžou řešit problémy s komunikací v rámci Microsoft Teams & Skype pro firmy pomocí nástrojů pro řešení potíží s uživatelem v Microsoft Teams & v centru pro správu Skypu pro firmy. Uživatelé v této roli můžou zobrazit jenom podrobnosti o uživateli ve volání pro konkrétního uživatele, který si vyhledali. Tato role nemá přístup k zobrazení, vytvoření nebo správě lístků podpory.
+
+### <a name="teams-service-administratorteams-service-administrator-permissions"></a>[Správce služby Teams](#teams-service-administrator-permissions)
+
+Uživatelé v této roli můžou spravovat všechny aspekty úloh Microsoft Teams prostřednictvím Microsoft Teams & centra pro správu Skypu pro firmy a příslušné moduly PowerShellu. Mezi další oblasti patří i všechny nástroje pro správu, které se týkají telefonního subsystému, zasílání zpráv, schůzek a týmů. Tato role navíc uděluje možnost vytvářet a spravovat všechny skupiny Office 365, spravovat lístky podpory a monitorovat stav služby.
 
 ### <a name="user-administratoruser-administrator-permissions"></a>[Správce uživatelů](#user-administrator-permissions)
 

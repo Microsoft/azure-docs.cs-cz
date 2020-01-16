@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 4e95cc6a724c17402ed1ed0cda83377492787a3a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: afd6ded6dc027e118694078f8b8eeadfe8dd80e4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644915"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981479"
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
 Získejte odpovědi na některé z nejběžnějších otázek o Azure DevTest Labs.
@@ -46,13 +46,13 @@ Váš popisovač Twitteru: [@azlabservices](https://twitter.com/azlabservices)
 ### <a name="what-if-my-question-isnt-answered-here"></a>Co když tady není odpověď na moji otázku?
 Pokud tady uvedený dotaz není, sdělte nám, abychom vám pomohli najít odpověď.
 
-- Na konci těchto nejčastějších dotazů si vystavte otázku. 
+- Na konci těchto nejčastějších dotazů si vystavte otázku.
 - Pokud chcete oslovit širší cílovou skupinu, odešlete na [Azure DevTest Labs Fórum MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs)otázku. Zapojte se do týmu Azure DevTest Labs a dalších členů komunity.
 - V případě žádostí o funkce odešlete žádosti a nápady [Azure DevTest Labs uživatelského hlasu](https://feedback.azure.com/forums/320373-azure-devtest-labs).
 
 ### <a name="what-is-a-microsoft-account"></a>Co je účet Microsoft?
 Účet Microsoft je účet, který použijete pro téměř všechno, co děláte se zařízeními a službami Microsoftu. Jedná se o e-mailovou adresu a heslo, které používáte k přihlášení ke službám Skype, Outlook.com, OneDrive, Windows Phone, Azure a Xbox Live. Jeden účet znamená, že vaše soubory, fotky, kontakty a nastavení vás můžou sledovat na jakémkoli zařízení.
- 
+
 > [!NOTE]
 > Účet Microsoft, který se používá pro volání Windows Live ID.
 
@@ -145,18 +145,18 @@ V konečném případě je třeba v rámci organizace použít stejný typ omeze
 ## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
 
 ### <a name="how-do-i-create-a-lab-from-a-resource-manager-template"></a>Návody vytvořit testovací prostředí ze šablony Správce prostředků?
-Nabízíme [úložiště GitHubu šablon testovacího Azure Resource Manager prostředí](https://azure.microsoft.com/resources/templates/101-dtl-create-lab) , které můžete nasadit tak, jak jsou, nebo upravit a vytvořit vlastní šablony pro cvičení. Každá šablona obsahuje odkaz na nasazení testovacího prostředí, protože je ve vašem vlastním předplatném Azure. Nebo můžete šablonu přizpůsobit a [nasadit pomocí PowerShellu nebo Azure CLI](../azure-resource-manager/resource-group-template-deploy.md).
+Nabízíme [úložiště GitHubu šablon testovacího Azure Resource Manager prostředí](https://azure.microsoft.com/resources/templates/101-dtl-create-lab) , které můžete nasadit tak, jak jsou, nebo upravit a vytvořit vlastní šablony pro cvičení. Každá šablona obsahuje odkaz na nasazení testovacího prostředí, protože je ve vašem vlastním předplatném Azure. Nebo můžete šablonu přizpůsobit a [nasadit pomocí PowerShellu nebo Azure CLI](../azure-resource-manager/templates/deploy-powershell.md).
 
 
-### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>Můžu se všechny virtuální počítače vytvořit ve společné skupině prostředků, takže každý počítač má vlastní skupinu prostředků? 
-Ano, jako vlastník testovacího prostředí můžete buď nechat testovací prostředí zpracovat přidělení skupiny prostředků, nebo nechat všechny virtuální počítače vytvořené v rámci společné skupiny prostředků, kterou zadáte. 
+### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>Můžu se všechny virtuální počítače vytvořit ve společné skupině prostředků, takže každý počítač má vlastní skupinu prostředků?
+Ano, jako vlastník testovacího prostředí můžete buď nechat testovací prostředí zpracovat přidělení skupiny prostředků, nebo nechat všechny virtuální počítače vytvořené v rámci společné skupiny prostředků, kterou zadáte.
 
 Scénář samostatné skupiny prostředků:
 -   DevTest Labs vytvoří novou skupinu prostředků pro každý virtuální počítač s veřejnými a soukromými IP adresami, který jste vytočíi.
 -   DevTest Labs vytvoří skupinu prostředků pro sdílené IP počítače, které patří do stejné velikosti.
 
 Scénář běžných skupin prostředků:
--   Všechny virtuální počítače se nastavují do společné skupiny prostředků, kterou zadáte. Přečtěte si další informace [o přidělování skupin prostředků pro testovací prostředí](https://aka.ms/RGControl). 
+-   Všechny virtuální počítače se nastavují do společné skupiny prostředků, kterou zadáte. Přečtěte si další informace [o přidělování skupin prostředků pro testovací prostředí](https://aka.ms/RGControl).
 
 ### <a name="how-do-i-maintain-a-naming-convention-across-my-devtest-labs-environment"></a>Návody udržovat zásady vytváření názvů napříč prostředím DevTest Labs?
 Je možné, že budete chtít stávající podnikové zásady vytváření názvů v rámci Azure zvýšit a zajistit jejich konzistenci v prostředí DevTest Labs. Při nasazování DevTest Labs doporučujeme, abyste měli konkrétní počáteční zásady. Tyto zásady nasadíte pomocí centrálního skriptu a šablon JSON pro vymáhání konzistence. Zásady pojmenování se dají implementovat prostřednictvím zásad Azure použitých na úrovni předplatného. Ukázky JSON pro Azure Policy najdete v tématu [Azure Policy Samples](../governance/policy/samples/index.md).
@@ -196,7 +196,7 @@ Při vytváření virtuálního počítače v DevTest Labs máte oprávnění pr
 Existují dvě možnosti pro současné vytvoření více virtuálních počítačů ze stejné šablony:
 
 - Můžete použít [rozšíření úlohy Azure DevOps](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks).
-- Když vytváříte virtuální počítač, můžete [vygenerovat šablonu správce prostředků](devtest-lab-add-vm.md#save-azure-resource-manager-template) a [nasadit šablonu správce prostředků z Windows PowerShellu](../azure-resource-manager/resource-group-template-deploy.md).
+- Když vytváříte virtuální počítač, můžete [vygenerovat šablonu správce prostředků](devtest-lab-add-vm.md#save-azure-resource-manager-template) a [nasadit šablonu správce prostředků z Windows PowerShellu](../azure-resource-manager/templates/deploy-powershell.md).
 - Můžete také zadat více než jednu instanci počítače, který se má vytvořit během vytváření virtuálního počítače. Další informace o vytváření více instancí virtuálních počítačů najdete v dokumentu o [Vytvoření virtuálního počítače testovacího prostředí](devtest-lab-add-vm.md).
 
 ### <a name="how-do-i-move-my-existing-azure-vms-into-my-devtest-labs-lab"></a>Návody přesunout stávající virtuální počítače Azure do testovacího prostředí DevTest Labs?
@@ -252,7 +252,7 @@ foreach($labVM in $labVMs)
 }
 ```
 
-## <a name="environments"></a>Prostředí 
+## <a name="environments"></a>Prostředí
 
 ### <a name="how-can-i-use-resource-manager-templates-in-my-devtest-labs-environment"></a>Jak můžu použít šablony Správce prostředků v prostředí DevTest Labs?
 Šablony Správce prostředků můžete nasadit do prostředí DevTest Labs pomocí kroků uvedených v tématu [funkce prostředí v článku DevTest Labs](devtest-lab-test-env.md) . V podstatě zkontrolujete šablony Správce prostředků do úložiště Git (buď Azure Repos nebo GitHub), a přidejte do testovacího prostředí [privátní úložiště pro vaše šablony](devtest-lab-test-env.md) . Tento scénář nemusí být užitečný, pokud používáte DevTest Labs k hostování vývojových počítačů, ale může být užitečný, pokud vytváříte pracovní prostředí, které je reprezentativní pro produkci.
@@ -264,7 +264,7 @@ Také je potřeba poznamenat, že počet virtuálních počítačů na testovac�
 ### <a name="how-can-i-set-up-an-easily-repeatable-process-to-bring-my-custom-organizational-images-into-a-devtest-labs-environment"></a>Jak můžu snadno opakovat a přenést vlastní organizační image do prostředí DevTest Labs?
 Podívejte se [na toto video ve vzoru pro vytváření imagí](https://sec.ch9.ms/ch9/8e8a/9ea0b8d4-b803-4f23-bca4-4808d9368e8a/dtlimagefactory_mid.mp4). Tento scénář je pokročilý scénář a poskytují se jenom ukázkové skripty. Pokud se vyžadují nějaké změny, budete muset spravovat a udržovat skripty používané ve vašem prostředí.
 
-Podrobné informace o vytvoření objektu pro vytváření imagí najdete [v tématu Vytvoření vlastní továrny imagí v Azure DevTest Labs](image-factory-create.md). 
+Podrobné informace o vytvoření objektu pro vytváření imagí najdete [v tématu Vytvoření vlastní továrny imagí v Azure DevTest Labs](image-factory-create.md).
 
 ### <a name="what-is-the-difference-between-a-custom-image-and-a-formula"></a>Jaký je rozdíl mezi vlastní obrázkou a vzorcem?
 Vlastní image je spravovaná bitová kopie. Vzorec je obrázek, který můžete konfigurovat s dalšími nastaveními a pak ho uložit a znovu vytvořit. Vlastní image může být vhodnější, pokud chcete rychle vytvořit několik prostředí pomocí stejné základní, neproměnlivé image. Vzorec může být lepší, pokud chcete znovu vytvořit konfiguraci virtuálního počítače s využitím nejnovějších bitů, jako součást virtuální sítě nebo podsítě, nebo jako virtuální počítač určité velikosti. Podrobnější vysvětlení najdete v tématu [porovnání vlastních imagí a vzorců v DevTest Labs](devtest-lab-comparing-vm-base-image-types.md).
@@ -343,19 +343,19 @@ Následující blogové příspěvky obsahují doprovodné materiály a informac
 - [Nasazení nového virtuálního počítače v existujícím testovacím prostředí DevTest Labs z Azure DevOps Services](https://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
 - [Používání služby Azure DevOps Services Release Management pro kontinuální nasazování do DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
-Pro jiné průběžné integrace (CI)/continuous delivery (CD) sady nástrojů můžete dosáhnout stejných scénářů nasazením [Azure Resource Manager šablon](https://azure.microsoft.com/resources/templates/) pomocí [rutin Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md) a sady [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). Pro integraci s sada nástrojů můžete také použít [rozhraní REST API pro DevTest Labs](https://aka.ms/dtlrestapis) .
+Pro jiné průběžné integrace (CI)/continuous delivery (CD) sady nástrojů můžete dosáhnout stejných scénářů nasazením [Azure Resource Manager šablon](https://azure.microsoft.com/resources/templates/) pomocí [rutin Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) a sady [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). Pro integraci s sada nástrojů můžete také použít [rozhraní REST API pro DevTest Labs](https://aka.ms/dtlrestapis) .
 
 ## <a name="networking"></a>Sítě
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>Kdy je vhodné vytvořit novou virtuální síť pro prostředí DevTest Labs a použít stávající virtuální síť?
-Pokud vaše virtuální počítače potřebují pracovat se stávající infrastrukturou, zvažte použití existující virtuální sítě v prostředí DevTest Labs. Pokud používáte ExpressRoute, možná budete chtít minimalizovat množství virtuální sítě/podsítí, abyste nefragmentoval adresní prostor IP adres, který se přiřadí k použití v předplatných. 
+Pokud vaše virtuální počítače potřebují pracovat se stávající infrastrukturou, zvažte použití existující virtuální sítě v prostředí DevTest Labs. Pokud používáte ExpressRoute, možná budete chtít minimalizovat množství virtuální sítě/podsítí, abyste nefragmentoval adresní prostor IP adres, který se přiřadí k použití v předplatných.
 
-Zvažte také použití vzoru partnerského vztahu virtuálních sítí ([hvězdicové model](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)). Tento přístup umožňuje komunikaci mezi virtuálními sítěmi a podsítí v rámci předplatných. V opačném případě by každé prostředí DevTest Labs mohlo mít vlastní virtuální síť. 
+Zvažte také použití vzoru partnerského vztahu virtuálních sítí ([hvězdicové model](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)). Tento přístup umožňuje komunikaci mezi virtuálními sítěmi a podsítí v rámci předplatných. V opačném případě by každé prostředí DevTest Labs mohlo mít vlastní virtuální síť.
 
 Existují [omezení](../azure-resource-manager/management/azure-subscription-service-limits.md) počtu virtuálních sítí na jedno předplatné. Výchozí hodnota je 50, i když tento limit lze vystoupl na 100.
 
 ### <a name="when-should-i-use-a-shared-ip-vs-public-ip-vs-private-ip"></a>Kdy mám použít sdílenou IP adresu a veřejnou IP adresu a soukromou IP adresu?
- 
+
 Pokud používáte síť Site-to-Site VPN nebo Express Route, zvažte použití privátních IP adres, aby vaše počítače byly přístupné prostřednictvím interní sítě a nepřístupné přes veřejný Internet.
 
 > [!NOTE]
@@ -383,15 +383,15 @@ Jednou z možností je, že název virtuální sítě obsahuje tečky. Pokud ano
 ### <a name="why-do-i-get-a-parent-resource-not-found-error-when-i-provision-a-vm-from-powershell"></a>Proč se při zřizování virtuálního počítače z PowerShellu zobrazí chyba "nadřazený prostředek nebyl nalezen"?
 Pokud je jeden prostředek nadřazený jinému prostředku, musí před vytvořením podřízeného prostředku existovat nadřazený prostředek. Pokud nadřazený prostředek neexistuje, zobrazí se zpráva **ParentResourceNotFound** . Pokud nezadáte závislost na nadřazeném prostředku, může se podřízený prostředek nasadit před nadřazeným objektem.
 
-Virtuální počítače jsou podřízené prostředky v rámci testovacího prostředí ve skupině prostředků. Když použijete šablony Správce prostředků k nasazení virtuálních počítačů pomocí prostředí PowerShell, název skupiny prostředků zadaný ve skriptu PowerShellu by měl být název skupiny prostředků testovacího prostředí. Další informace najdete v tématu [řešení běžných chyb při nasazení Azure](../azure-resource-manager/resource-manager-common-deployment-errors.md).
+Virtuální počítače jsou podřízené prostředky v rámci testovacího prostředí ve skupině prostředků. Když použijete šablony Správce prostředků k nasazení virtuálních počítačů pomocí prostředí PowerShell, název skupiny prostředků zadaný ve skriptu PowerShellu by měl být název skupiny prostředků testovacího prostředí. Další informace najdete v tématu [řešení běžných chyb při nasazení Azure](../azure-resource-manager/templates/common-deployment-errors.md).
 
 ### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>Kde najdu Další informace o chybě, pokud se nasazení virtuálního počítače nepodaří?
 Chyby nasazení virtuálních počítačů jsou zachyceny v protokolech aktivit. Protokoly aktivit virtuálních počítačů v testovacím prostředí najdete v části **protokoly auditu** nebo **Diagnostika virtuálního počítače** v nabídce prostředků na stránce virtuálního počítače testovacího prostředí (stránka se zobrazí po výběru virtuálního počítače ze seznamu Moje virtuální počítače).
 
-V některých případech dojde k chybě nasazení před zahájením nasazení virtuálního počítače. Příkladem je překročení limitu předplatného pro prostředek, který byl vytvořen s virtuálním počítačem. V tomto případě jsou podrobnosti o chybě zachyceny v protokolech aktivit na úrovni testovacího prostředí. Protokoly aktivit se nacházejí v dolní části nastavení **Konfigurace a zásady** . Další informace o používání protokolů aktivit v Azure najdete v tématu [zobrazení protokolů aktivit pro audit akcí u prostředků](../azure-resource-manager/resource-group-audit.md).
+V některých případech dojde k chybě nasazení před zahájením nasazení virtuálního počítače. Příkladem je překročení limitu předplatného pro prostředek, který byl vytvořen s virtuálním počítačem. V tomto případě jsou podrobnosti o chybě zachyceny v protokolech aktivit na úrovni testovacího prostředí. Protokoly aktivit se nacházejí v dolní části nastavení **Konfigurace a zásady** . Další informace o používání protokolů aktivit v Azure najdete v tématu [zobrazení protokolů aktivit pro audit akcí u prostředků](../azure-resource-manager/management/view-activity-logs.md).
 
 ### <a name="why-do-i-get-location-is-not-available-for-resource-type-error-when-trying-to-create-a-lab"></a>Proč se při pokusu o vytvoření testovacího prostředí zobrazí chyba "umístění není k dispozici pro typ prostředku"?
-Při pokusu o vytvoření testovacího prostředí se může zobrazit chybová zpráva podobná následující: 
+Při pokusu o vytvoření testovacího prostředí se může zobrazit chybová zpráva podobná následující:
 
 ```
 The provided location 'australiacentral' is not available for resource type 'Microsoft.KeyVault/vaults'. List of available regions for the resource type is 'northcentralus,eastus,northeurope,westeurope,eastasia,southeastasia,eastus2,centralus,southcentralus,westus,japaneast,japanwest,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia,canadacentral,canadaeast,uksouth,ukwest,westcentralus,westus2,koreacentral,koreasouth,francecentral,southafricanorth
@@ -400,9 +400,7 @@ The provided location 'australiacentral' is not available for resource type 'Mic
 Tuto chybu můžete vyřešit provedením jednoho z následujících kroků:
 
 #### <a name="option-1"></a>Možnost 1
-Ověřte dostupnost typu prostředku v oblastech Azure na stránce [produkty k dispozici podle oblasti](https://azure.microsoft.com/global-infrastructure/services/) . Pokud typ prostředku není v určité oblasti dostupný, DevTest Labs nepodporuje vytvoření testovacího prostředí v této oblasti. Při vytváření testovacího prostředí vyberte jinou oblast. 
+Ověřte dostupnost typu prostředku v oblastech Azure na stránce [produkty k dispozici podle oblasti](https://azure.microsoft.com/global-infrastructure/services/) . Pokud typ prostředku není v určité oblasti dostupný, DevTest Labs nepodporuje vytvoření testovacího prostředí v této oblasti. Při vytváření testovacího prostředí vyberte jinou oblast.
 
 #### <a name="option-2"></a>Možnost 2
-Pokud je ve vaší oblasti dostupný typ prostředku, ověřte, jestli je ve vašem předplatném zaregistrovaný. Lze ji provést na úrovni vlastníka předplatného, jak je uvedeno v [tomto článku](../azure-resource-manager/resource-manager-supported-services.md). 
-
-
+Pokud je ve vaší oblasti dostupný typ prostředku, ověřte, jestli je ve vašem předplatném zaregistrovaný. Lze ji provést na úrovni vlastníka předplatného, jak je uvedeno v [tomto článku](../azure-resource-manager/management/resource-providers-and-types.md).

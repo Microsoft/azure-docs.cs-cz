@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd05f9f7db0db22759c5e19dbfb59cc377e63f4d
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: a6532558107463311c4225b9855bc4cd3f19eed9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155468"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965612"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Řešení potíží s nasazením s restartováním nebo změnou velikosti stávajícího virtuálního počítače s Windows v Azure
 Při pokusu o spuštění zastaveného virtuálního počítače Azure nebo změně velikosti stávajícího virtuálního počítače Azure se běžně narazí na chybu přidělení. K této chybě dojde, když v clusteru nebo oblasti nejsou k dispozici prostředky nebo pokud není podporována požadovaná velikost virtuálního počítače.
@@ -28,7 +28,7 @@ Při pokusu o spuštění zastaveného virtuálního počítače Azure nebo změ
 ## <a name="collect-activity-logs"></a>Shromažďování protokolů aktivit
 Pokud chcete začít řešit potíže, Shromážděte protokoly aktivit a Identifikujte chybu spojenou s problémem. Následující odkazy obsahují podrobné informace o procesu:
 
-[Zobrazení operací nasazení](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[Zobrazení operací nasazení](../../azure-resource-manager/templates/deployment-history.md)
 
 [Zobrazení protokolů aktivit pro správu prostředků Azure](../../resource-group-audit.md)
 
@@ -38,26 +38,26 @@ Pokusíte se spustit zastavený virtuální počítač, ale získáte selhání 
 ### <a name="cause"></a>Příčina
 Žádost o spuštění zastaveného virtuálního počítače se musí provést v původním clusteru, který hostuje cloudovou službu. Cluster ale nemá k dispozici volné místo ke splnění požadavku.
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 * Zastavte všechny virtuální počítače ve skupině dostupnosti a pak restartujte všechny virtuální počítače.
   
-  1. Klikněte na **prostředky skupiny** > prostředků**prostředky** > .vaše > *Skupina* *dostupnosti*Virtual Machinesváš > virtuálnípočítač. >  **Zastavte**.  > 
+  1. Klikněte na **skupiny prostředků** > *vaší skupiny prostředků* > **prostředky** > *vaší skupině dostupnosti* > **Virtual Machines** > **zastavte** *virtuální počítač* > .
   2. Po zastavení všech virtuálních počítačů vyberte všechny zastavené virtuální počítače a klikněte na spustit.
 * Opakujte požadavek na restartování později.
 
-## <a name="issue-error-when-resizing-an-existing-vm"></a>Problém: Při změně velikosti existujícího virtuálního počítače došlo k chybě.
+## <a name="issue-error-when-resizing-an-existing-vm"></a>Problém: Chyba při změně velikosti existujícího virtuálního počítače
 Pokusíte se změnit velikost existujícího virtuálního počítače, ale získáte selhání přidělení.
 
 ### <a name="cause"></a>Příčina
 Žádost o změnu velikosti virtuálního počítače se musí provést v původním clusteru, který hostuje cloudovou službu. Cluster ale nepodporuje požadovanou velikost virtuálního počítače.
 
-### <a name="resolution"></a>Řešení
+### <a name="resolution"></a>Rozlišení
 * Opakujte požadavek s menší velikostí virtuálního počítače.
 * Pokud velikost požadovaného virtuálního počítače nejde změnit:
   
   1. Zastavte všechny virtuální počítače ve skupině dostupnosti.
      
-     * Klikněte na **prostředky skupiny** > prostředků**prostředky** > .vaše > *Skupina* *dostupnosti*Virtual Machinesváš > virtuálnípočítač. >  **Zastavte**.  > 
+     * Klikněte na **skupiny prostředků** > *vaší skupiny prostředků* > **prostředky** > *vaší skupině dostupnosti* > **Virtual Machines** > **zastavte** *virtuální počítač* > .
   2. Až se všechny virtuální počítače zastaví, změňte velikost požadovaného virtuálního počítače na větší velikost.
   3. Vyberte virtuální počítač se změněnou velikostí a klikněte na **Spustit**a potom spusťte všechny zastavené virtuální počítače.
 

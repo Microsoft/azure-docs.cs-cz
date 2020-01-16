@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: ad42d7c2257519c2622ba17f74f97b9521233850
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4445f6e9b72380b66f3282d50871b4283f7fc7fa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75366426"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966747"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Příklad použití: průběžné nasazování do Virtual Machines pomocí konfigurace stavu služby Automation a čokolády
 
@@ -40,7 +40,7 @@ Konfigurace stavu Azure Automation rozšiřuje tuto možnost automatizace tak, a
 Prostředek DSC je modul kódu, který má konkrétní možnosti, jako je Správa sítě, Active Directory nebo SQL Server. Čokoládový prostředek DSC ví, jak získat přístup k serveru NuGet (mimo jiné), stahovat balíčky, instalovat balíčky a tak dále. V [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title)existuje mnoho dalších prostředků DSC.
 Tyto moduly se nainstalují do konfigurace stavu Azure Automation vyžádaného serveru (vámi), takže je můžou použít vaše konfigurace.
 
-Šablony Správce prostředků poskytují deklarativní způsob generování infrastruktury – například sítě, podsítě, zabezpečení sítě a směrování, nástroje pro vyrovnávání zatížení, síťové karty, virtuální počítače atd. Zde je [článek](../azure-resource-manager/resource-manager-deployment-model.md) , který porovnává model nasazení Správce prostředků (deklarativní) s modelem nasazení Azure Service Management (ASM nebo Classic) (imperativně) a popisuje základní poskytovatele prostředků, výpočetní výkon, úložiště a síť.
+Šablony Správce prostředků poskytují deklarativní způsob generování infrastruktury – například sítě, podsítě, zabezpečení sítě a směrování, nástroje pro vyrovnávání zatížení, síťové karty, virtuální počítače atd. Zde je [článek](../azure-resource-manager/management/deployment-models.md) , který porovnává model nasazení Správce prostředků (deklarativní) s modelem nasazení Azure Service Management (ASM nebo Classic) (imperativně) a popisuje základní poskytovatele prostředků, výpočetní výkon, úložiště a síť.
 
 Jednou z klíčových funkcí šablony Správce prostředků je její schopnost nainstalovat rozšíření virtuálního počítače do virtuálního počítače, protože je zřízené. Rozšíření virtuálních počítačů má konkrétní možnosti, jako je například spuštění vlastního skriptu, instalace antivirového softwaru nebo spuštění konfiguračního skriptu DSC. Existuje mnoho dalších typů rozšíření virtuálních počítačů.
 

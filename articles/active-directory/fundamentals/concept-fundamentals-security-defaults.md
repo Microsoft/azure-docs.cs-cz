@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 01/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83a839d75757bcee14d7f696d2d11d1d7d8fa4cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 589d8219681304242585c9fed33a4e3d364909ec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422844"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978893"
 ---
 # <a name="what-are-security-defaults"></a>Co jsou výchozí nastavení zabezpečení?
 
@@ -28,7 +28,10 @@ Microsoft zpřístupňuje výchozí nastavení zabezpečení všem uživatelům.
 
 ![Snímek obrazovky Azure Portal s přepínačem pro povolení výchozích hodnot zabezpečení](./media/concept-fundamentals-security-defaults/security-defaults-azure-ad-portal.png)
  
-Ve vašem tenantovi budou zapnuté následující konfigurace zabezpečení. 
+> [!TIP]
+> Pokud se tenant vytvořil v nebo po 22. října 2019, je možné, že máte nové zabezpečené chování ve výchozím nastavení a ve vašem tenantovi už jsou povolené výchozí hodnoty zabezpečení. V zájmu ochrany všech našich uživatelů se ve všech nově vytvořených tenantůch zavádějí výchozí hodnoty zabezpečení.
+
+Další podrobnosti o tom, proč jsou k dispozici výchozí hodnoty zabezpečení, najdete v blogovém příspěvku Alex Weinert, [představení výchozích hodnot zabezpečení](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/introducing-security-defaults/ba-p/1061414).
 
 ## <a name="unified-multi-factor-authentication-registration"></a>Registrace sjednocené Multi-Factor Authentication
 

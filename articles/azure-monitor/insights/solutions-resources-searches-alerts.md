@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 488130fbd2939fa4d98e379126ba3353a417fd72
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5ff9c45ffb636f53951a763f617c25a2e8c09088
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401768"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977720"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Přidání Log Analytics uložených hledání a upozornění do řešení pro správu (Preview)
 
@@ -23,7 +23,7 @@ ms.locfileid: "75401768"
 > [!NOTE]
 > Toto je předběžná dokumentace k vytváření řešení pro správu, která jsou momentálně ve verzi Preview. Jakékoli schéma popsané níže se může změnit.
 
-[Řešení pro správu](solutions.md) obvykle zahrnují [uložená hledání](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics k analýze dat shromažďovaných řešením. Můžou také definovat [výstrahy](../../azure-monitor/platform/alerts-overview.md) upozorňující uživatele nebo automaticky provádět akce v reakci na kritický problém. Tento článek popisuje, jak definovat Log Analytics uložených hledání a upozornění v [šabloně správy prostředků](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) , aby je bylo možné zahrnout do [řešení pro správu](solutions-creating.md).
+[Řešení pro správu](solutions.md) obvykle zahrnují [uložená hledání](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics k analýze dat shromažďovaných řešením. Můžou také definovat [výstrahy](../../azure-monitor/platform/alerts-overview.md) upozorňující uživatele nebo automaticky provádět akce v reakci na kritický problém. Tento článek popisuje, jak definovat Log Analytics uložených hledání a upozornění v [šabloně správy prostředků](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) , aby je bylo možné zahrnout do [řešení pro správu](solutions-creating.md).
 
 > [!NOTE]
 > V ukázkách v tomto článku se používají parametry a proměnné, které jsou buď vyžadované, nebo běžné pro řešení pro správu, popsaná v článku [Návrh a sestavení řešení pro správu v Azure](solutions-creating.md) .

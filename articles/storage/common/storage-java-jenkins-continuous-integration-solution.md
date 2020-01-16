@@ -9,12 +9,12 @@ ms.service: storage
 custom: jenkins
 ms.date: 08/13/2019
 ms.subservice: common
-ms.openlocfilehash: 72756bd3eb12ca80f419a0d53db76e6637d884fc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0e426dcead5d1f315717fbc19cf7f7bdac62d563
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839132"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970171"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Použití Azure Storage s řešením Jenkinse Continuous Integration
 
@@ -49,7 +49,7 @@ Výhody použití Blob service k hostování artefaktů sestavení agilního vý
      
       I když by bylo typické řešení CI Jenkinse nastaveno tak, aby běželo jako služba, bude pro tento kurz stačit spuštění Jenkinse War na příkazovém řádku.
 * Účet Azure. Účet Azure si můžete zaregistrovat na <https://www.azure.com>.
-* Účet úložiště Azure. Pokud ještě nemáte účet úložiště, můžete ho vytvořit pomocí postupu v části [Vytvoření účtu úložiště](../common/storage-quickstart-create-account.md).
+* Účet úložiště Azure. Pokud ještě nemáte účet úložiště, můžete ho vytvořit pomocí postupu v části [Vytvoření účtu úložiště](../common/storage-account-create.md).
 * Řešení Jenkinse CI se doporučuje, ale není nutné, protože následující obsah bude používat základní příklad, který vám ukáže, jaké kroky potřebujete při použití Blob service jako úložiště pro artefakty sestavení Jenkinse CI.
 
 ## <a name="how-to-use-the-blob-service-with-jenkins-ci"></a>Použití Blob service s Jenkinse CI
@@ -104,7 +104,7 @@ Pro instruktážní účely musíte nejprve vytvořit úlohu, která vytvoří n
 12. Vyberte **Uložit** a uložte nastavení.
 13. V řídicím panelu Jenkinse vyberte **vytvořit** a spusťte **MyJob**. Projděte si výstup konzoly pro stav. Stavové zprávy pro Azure Storage budou zahrnuty do výstupu konzoly, když akce po sestavení začne nahrávat artefakty sestavení.
 14. Po úspěšném dokončení úlohy můžete artefakty sestavení prošetřit otevřením veřejného objektu BLOB.
-    1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+    1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
     2. Vyberte **Úložiště**.
     3. Vyberte název účtu úložiště, který jste použili pro Jenkinse.
     4. Vyberte **kontejnery**.

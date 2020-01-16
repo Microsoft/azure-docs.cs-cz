@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: c357e460e49ffee669f3978be7678353acfcd249
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f8400cbefc514fa01dedb1434a60989b1df0528d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459426"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980216"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfigurace virtuálního počítače hostitele relace
 
@@ -209,11 +209,11 @@ Projděte si níže uvedené položky registru a potvrďte, že jejich hodnoty s
 
 1. Pomocí protokol RDP (Remote Desktop Protocol) (RDP) se přímo do virtuálního počítače hostitele relace dostanou jako místní správce.
 2. Pokud jste to ještě neudělali, Stáhněte a importujte [modul PowerShellu virtuálního počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , který chcete použít v relaci PowerShellu, a pak spusťte tuto rutinu, abyste se mohli přihlásit ke svému účtu:
-    
+
     ```powershell
     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
     ```
-    
+
 3. Nainstalujte souběžný zásobník pomocí části [Vytvoření fondu hostitelů pomocí prostředí PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
 
 ## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>Jak opravit souběžný zásobník virtuálních počítačů s Windows, který nefunguje správně
@@ -322,7 +322,7 @@ Pokud chcete zjistit, jakou verzi Windows 10 Enterprise máte víc relací:
 2. Do panelu hledání vedle nabídky Start zadejte "o aplikaci".
 3. Vyberte **informace o vašem počítači**.
 4. Podívejte se na číslo vedle možnosti verze. Číslo by mělo být buď "1809" nebo "1903", jak je znázorněno na následujícím obrázku.
-   
+
     ![Snímek obrazovky okna specifikace systému Windows. Číslo verze je zvýrazněné modře.](media/windows-specifications.png)
 
 Teď, když znáte číslo verze, přejděte k příslušné části.
@@ -344,6 +344,6 @@ Znovu nasaďte hostitelský operační systém pomocí nejnovější verze image
 - Řešení potíží s klienty vzdálené plochy najdete v tématu [řešení potíží s klientem vzdálené plochy](troubleshoot-client.md) .
 - Pokud chcete řešit problémy při používání PowerShellu s virtuálním počítačem s Windows, přečtěte si téma [virtuální plocha Windows PowerShell](troubleshoot-powershell.md).
 - Další informace o této službě najdete v tématu [prostředí virtuálních počítačů s Windows](environment-setup.md).
-- Kurz řešení potíží najdete v tématu [kurz: řešení potíží s nasazením správce prostředků šablon](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md).
-- Další informace o akcích auditování najdete v tématu věnovaném [operacím auditu správce prostředků](../azure-resource-manager/resource-group-audit.md).
-- Další informace o akcích k určení chyb během nasazení najdete v tématu [Zobrazení operací nasazení](../azure-resource-manager/resource-manager-deployment-operations.md).
+- Kurz řešení potíží najdete v tématu [kurz: řešení potíží s nasazením správce prostředků šablon](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).
+- Další informace o akcích auditování najdete v tématu věnovaném [operacím auditu správce prostředků](../azure-resource-manager/management/view-activity-logs.md).
+- Další informace o akcích k určení chyb během nasazení najdete v tématu [Zobrazení operací nasazení](../azure-resource-manager/templates/deployment-history.md).

@@ -3,12 +3,12 @@ title: Azure Monitor pro kontejnery často kladené dotazy | Microsoft Docs
 description: Azure Monitor for Containers je řešení, které monitoruje stav clusterů AKS a Container Instances v Azure. Tento článek obsahuje odpovědi na běžné dotazy.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 0984de51221c506bb1824e4dcfd93eef56453a4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b0d2be8b573dbbf047f4a27ae9ac9f611b76dc51
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405071"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977762"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Azure Monitor pro kontejnery často kladené dotazy
 
@@ -73,7 +73,7 @@ Tabulka ContainerInventory obsahuje informace o zastavených a spuštěných kon
  
 ## <a name="how-do-i-resolve-missing-subscription-registration-error"></a>Návody vyřešit chybu *registrace chybějícího předplatného* ?
 
-Pokud se zobrazí chyba **chybějící registrace odběru pro Microsoft. OperationsManagement**, můžete ji vyřešit registrací poskytovatele prostředků **Microsoft. OperationsManagement** v předplatném, ve kterém je tento pracovní prostor definovaný. Dokumentaci k tomu, jak to udělat, najdete [tady](../../azure-resource-manager/resource-manager-register-provider-errors.md).
+Pokud se zobrazí chyba **chybějící registrace odběru pro Microsoft. OperationsManagement**, můžete ji vyřešit registrací poskytovatele prostředků **Microsoft. OperationsManagement** v předplatném, ve kterém je tento pracovní prostor definovaný. Dokumentaci k tomu, jak to udělat, najdete [tady](../../azure-resource-manager/templates/error-register-resource-provider.md).
 
 ## <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>Podporuje AKS clustery s podporou RBAC?
 

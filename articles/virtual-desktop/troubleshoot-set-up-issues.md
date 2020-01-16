@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
-ms.openlocfilehash: b2209e2ada2d825714d08b6ac3237583df28272a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 12b5b6ce84ad36d14a393b54745e530779d4ca95
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749358"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965728"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Vytvoření tenanta a fondu hostitelů
 
@@ -125,7 +125,7 @@ Při řešení neúspěšného nasazení Azure Resource Manager šablon a prost�
 Příklad nezpracované chyby:
 
 ```Error
- {"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. 
+ {"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details.
  Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"Conflict","message":"{\r\n \"status\": \"Failed\",\r\n \"error\":
  {\r\n \"code\": \"ResourceDeploymentFailure\",\r\n \"message\": \"The resource operation completed with terminal provisioning state 'Failed'.
  \",\r\n \"details\": [\r\n {\r\n \"code\": \"VMExtensionProvisioningError\",\r\n \"message\": \"VM has reported a failure when processing
@@ -201,11 +201,11 @@ Příklad nezpracované chyby:
  "duration": "PT7M56.8150879S", "trackingId": "43c4f71f-557c-4abd-80c3-01f545375455", "statusCode": "Conflict",
  "statusMessage": { "status": "Failed", "error": { "code": "ResourceDeploymentFailure", "message":
  "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code":
- "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'. 
- Error message: \"DSC Configuration 'SessionHost' completed with error(s). Following are the first few: 
- PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message: 
- One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] } }, "targetResource": 
- { "id": "/subscriptions/EXAMPLE/resourceGroups/demoHostD/providers/Microsoft. 
+ "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'.
+ Error message: \"DSC Configuration 'SessionHost' completed with error(s). Following are the first few:
+ PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message:
+ One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] } }, "targetResource":
+ { "id": "/subscriptions/EXAMPLE/resourceGroups/demoHostD/providers/Microsoft.
  Compute/virtualMachines/desktop-1/extensions/dscextension",
  "resourceType": "Microsoft.Compute/virtualMachines/extensions", "resourceName": "desktop-1/dscextension" } }}
 ```
@@ -223,7 +223,7 @@ Příklad nezpracované chyby:
 ```Error
 {
     "code": "DeploymentFailed",
-   "message": "At least one resource deployment operation failed. Please list 
+   "message": "At least one resource deployment operation failed. Please list
  deployment operations for details. 4 Please see https://aka.ms/arm-debug for usage details.",
  "details": [
          { "code": "Conflict",  
@@ -324,13 +324,13 @@ the VM.\\\"
 Příklad nezpracované chyby:
 
 ```Error
-"response": { "content": { "startTime": "2019-04-01T17:45:33.3454563+00:00", "endTime": "2019-04-01T17:48:52.4392099+00:00", 
-"status": "Failed", "error": { "code": "VMExtensionProvisioningError", "message": "VM has reported a failure when processing 
-extension 'dscextension'. Error message: \"DSC Configuration 'FirstSessionHost' completed with error(s). 
+"response": { "content": { "startTime": "2019-04-01T17:45:33.3454563+00:00", "endTime": "2019-04-01T17:48:52.4392099+00:00",
+"status": "Failed", "error": { "code": "VMExtensionProvisioningError", "message": "VM has reported a failure when processing
+extension 'dscextension'. Error message: \"DSC Configuration 'FirstSessionHost' completed with error(s).
 Following are the first few: PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource
  functionality with error message: User is not authorized to query the management service.
 \nActivityId: 1b4f2b37-59e9-411e-9d95-4f7ccd481233\nPowershell commands to diagnose the failure:
-\nGet-RdsDiagnosticActivities -ActivityId 1b4f2b37-59e9-411e-9d95-4f7ccd481233\n 
+\nGet-RdsDiagnosticActivities -ActivityId 1b4f2b37-59e9-411e-9d95-4f7ccd481233\n
 The SendConfigurationApply function did not succeed.\"." }, "name": "2c3272ec-d25b-47e5-8d70-a7493e9dc473" } } }}
 ```
 
@@ -379,6 +379,6 @@ Pokud používáte šablonu Azure Resource Manager GitHubu, zadejte hodnoty pro 
 - Řešení potíží s klienty vzdálené plochy najdete v tématu [řešení potíží s klientem vzdálené plochy](troubleshoot-client.md) .
 - Pokud chcete řešit problémy při používání PowerShellu s virtuálním počítačem s Windows, přečtěte si téma [virtuální plocha Windows PowerShell](troubleshoot-powershell.md).
 - Další informace o této službě najdete v tématu [prostředí virtuálních počítačů s Windows](environment-setup.md).
-- Kurz řešení potíží najdete v tématu [kurz: řešení potíží s nasazením správce prostředků šablon](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md).
-- Další informace o akcích auditování najdete v tématu věnovaném [operacím auditu správce prostředků](../azure-resource-manager/resource-group-audit.md).
-- Další informace o akcích k určení chyb během nasazení najdete v tématu [Zobrazení operací nasazení](../azure-resource-manager/resource-manager-deployment-operations.md).
+- Kurz řešení potíží najdete v tématu [kurz: řešení potíží s nasazením správce prostředků šablon](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).
+- Další informace o akcích auditování najdete v tématu věnovaném [operacím auditu správce prostředků](../azure-resource-manager/management/view-activity-logs.md).
+- Další informace o akcích k určení chyb během nasazení najdete v tématu [Zobrazení operací nasazení](../azure-resource-manager/templates/deployment-history.md).

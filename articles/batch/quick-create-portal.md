@@ -2,21 +2,21 @@
 title: Rychlý start Azure – spuštění úlohy služby Batch – portál
 description: Můžete se rychle naučit, jak na webu Azure Portal spustit úlohu služby Batch.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 92f8499a10c07e7d5ea74e49c374cef192b8a47f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 294d1658559dd426245cf66a47a8791f8b370533
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094123"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029414"
 ---
-# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rychlý start: Spuštění první úlohy služby Batch v Azure Portal
+# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rychlý start: Spuštění první úlohy služby Batch na webu Azure Portal
 
 Tento rychlý start ukazuje, jak na webu Azure Portal vytvořit účet Batch, *fond* výpočetních uzlů (virtuálních počítačů) a *úlohu*, která bude ve fondu spouštět základní *úkoly*. Po dokončení tohoto rychlého startu budete rozumět klíčovým konceptům služby Batch a budete moct službu Batch vyzkoušet ve větším měřítku s úlohami, které víc odpovídají realitě.
 
@@ -26,7 +26,7 @@ Tento rychlý start ukazuje, jak na webu Azure Portal vytvořit účet Batch, *f
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
-## <a name="create-a-batch-account"></a>Vytvoření účtu Batch
+## <a name="create-a-batch-account"></a>Vytvoření účtu služby Batch
 
 Pomocí těchto kroků si vytvořte ukázkový účet Batch pro účely testování. Účet Batch budete potřebovat k vytváření fondů a úloh. Jak vidíte, účet Batch můžete propojit s účtem Azure Storage. I když to k tomuto rychlému startu není nutné, účet úložiště je užitečný při nasazování aplikací a ukládání vstupních a výstupních dat ve většině reálných způsobů využití.
 
@@ -41,11 +41,11 @@ Pomocí těchto kroků si vytvořte ukázkový účet Batch pro účely testová
 
 4. U ostatních nastavení ponechte výchozí hodnoty a výběrem možnosti **Vytvořit** vytvořte účet.
 
-   ![Vytvoření účtu Batch][account_portal]  
+   ![Vytvoření účtu služby Batch][account_portal]  
 
 Po zobrazení zprávy **Nasazení bylo úspěšné** přejděte na portálu do účtu Batch.
 
-## <a name="create-a-pool-of-compute-nodes"></a>Vytvoření fondu výpočetních uzlů
+## <a name="create-a-pool-of-compute-nodes"></a>Vytvořte fond výpočetních uzlů.
 
 Teď máte účet Batch a můžete pro testovací účely vytvořit ukázkový fond výpočetních uzlů s Windows. V tomto rychlém příkladu fond obsahuje 2 uzly se spuštěnou imagí systému Windows Server 2012 R2 z Azure Marketplace.
 
@@ -56,7 +56,7 @@ Teď máte účet Batch a můžete pro testovací účely vytvořit ukázkový f
 
 3. V části **Operační systém** vyberte následující nastavení (můžete prozkoumat i jiné možnosti).
   
-   |Nastavení  |Value  |
+   |Nastavení  |Hodnota  |
    |---------|---------|
    |**Typ image**|Marketplace (Linux/Windows)|
    |**Publisher**     |MicrosoftWindowsServer|
@@ -67,7 +67,7 @@ Teď máte účet Batch a můžete pro testovací účely vytvořit ukázkový f
 
 4. Posuňte se dolů a zadejte nastavení **Velikost uzlu** a **Škálování**. Navržená velikost uzlu nabízí pro tento rychlý příklad dobrou rovnováhu mezi výkonem a náklady.
   
-   |Nastavení  |Value  |
+   |Nastavení  |Hodnota  |
    |---------|---------|
    |**Cenová úroveň uzlu**     |Standard_A1|
    |**Cílové vyhrazené uzly**     |2|
@@ -82,7 +82,7 @@ Služba Batch vytvoří fond okamžitě, ale přidělení a spuštění uzlů ú
 
 Po několika minutách se stav fondu změní na hodnotu **Stabilní** a uzly se spustí. Vyberte **Uzly** a zkontrolujte stav uzlů. Když má některý uzel stav **Nečinný**, znamená to, že je připravený spouštět úkoly. 
 
-## <a name="create-a-job"></a>Vytvoří úlohu
+## <a name="create-a-job"></a>Vytvoření úlohy
 
 Teď máte vytvořený fond a můžete vytvořit úlohu, která se v něm bude spouštět. Úloha služby Batch je logická skupina jednoho nebo víc úkolů. Úloha zahrnuje nastavení společná všem úkolům, jako je priorita a fond, ve kterém se mají úkoly spouštět. Na začátku úloha neobsahuje žádné úkoly. 
 
@@ -90,7 +90,7 @@ Teď máte vytvořený fond a můžete vytvořit úlohu, která se v něm bude s
 
 2. Jako **ID úlohy** zadejte *myjob*. U položky **Fond** vyberte *mypool*. U ostatních nastavení ponechte výchozí hodnoty a vyberte **OK**.
 
-   ![Vytvoří úlohu][job_create]
+   ![Vytvoření úlohy][job_create]
 
 Po vytvoření úlohy se otevře stránka **Úkoly**.
 
@@ -110,7 +110,7 @@ Vytvoření prvního úkolu:
 
    ![Vytvoření úkolu][task_create]
 
-Služba Batch úkol po vytvoření zařadí do fronty pro spuštění ve fondu. Jakmile bude dostupný uzel, který ho bude moct spustit, úkol se spustí.
+Po vytvoření služba Batch zařadí úkol do fronty pro spuštění ve fondu. Jakmile bude dostupný uzel, který ho bude moct spustit, úkol se spustí.
 
 Pokud chcete vytvořit druhý úkol, vraťte se ke kroku 1. Zadejte jiné **ID úkolu**, ale na příkazový řádek zadejte totéž. Pokud je první úkol pořád spuštěný, služba Batch spustí druhý úkol ve druhém uzlu ve fondu.
 

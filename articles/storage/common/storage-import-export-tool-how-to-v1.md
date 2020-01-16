@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 1/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 4cd5fde2f47cca1b03efbc217d7764ac429d15fb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: aaceee65ae91a22dc658d185a874e2040b1e0f04
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973930"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975669"
 ---
 # <a name="using-the-azure-importexport-tool-classic-deployment-model"></a>Použití nástroje Azure import/export (model nasazení Classic)
 
@@ -25,10 +25,10 @@ Následující články ukazují, jak:
 
 - Nainstalujte a nastavte nástroj pro import/export.
 - Příprava pevných disků pro úlohu, při které importujete data z jednotek do Azure Blob Storage.
-- Zkontrolujte stav úlohy pomocí kopírování souborů protokolu. 
-- Opravte úlohu importu. 
-- Opravte úlohu exportu. 
-- Řešení potíží s nástrojem pro import/export Azure pro případ, že během procesu došlo k potížím. 
+- Zkontrolujte stav úlohy pomocí kopírování souborů protokolu.
+- Opravte úlohu importu.
+- Opravte úlohu exportu.
+- Řešení potíží s nástrojem pro import/export Azure pro případ, že během procesu došlo k potížím.
 
 ## <a name="next-steps"></a>Další kroky
 

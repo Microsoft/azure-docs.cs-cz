@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 0e9b382b27d0bd1e4fd3a553ca468dd562eca368
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 753977ed0516e934f661d81904b60ff9935aa423
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792907"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981179"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpečený přístup a data v Azure Logic Apps
 
@@ -174,7 +174,7 @@ Můžete povolit pouze konkrétní uživatele nebo skupiny, aby mohli spouštět
 
 * [Operátor aplikace logiky](../role-based-access-control/built-in-roles.md#logic-app-operator): umožňuje číst, povolit a zakázat Logic Apps, ale nemůžete je upravovat ani aktualizovat.
 
-Pokud chcete ostatním uživatelům zabránit ve změně nebo odstranění vaší aplikace logiky, můžete použít [Azure Resource Lock](../azure-resource-manager/resource-group-lock-resources.md). Tato možnost zabraňuje ostatním změnám a odstraňování produkčních prostředků.
+Pokud chcete ostatním uživatelům zabránit ve změně nebo odstranění vaší aplikace logiky, můžete použít [Azure Resource Lock](../azure-resource-manager/management/lock-resources.md). Tato možnost zabraňuje ostatním změnám a odstraňování produkčních prostředků.
 
 <a name="secure-run-history"></a>
 
@@ -356,7 +356,7 @@ Tady je několik [důležitých informací, které](#obfuscation-considerations)
 
 ## <a name="access-to-parameter-inputs"></a>Přístup ke vstupům parametrů
 
-Pokud nasazujete v různých prostředích, zvažte Parametrizace hodnot v definici pracovního postupu, které se liší v závislosti na těchto prostředích. Tímto způsobem se můžete vyhnout pevně zakódovaným datům pomocí [šablony Azure Resource Manager](../azure-resource-manager/template-deployment-overview.md) k nasazení aplikace logiky, ochraně citlivých dat definováním zabezpečených parametrů a předání těchto dat jako samostatných vstupů prostřednictvím [parametrů šablony](../azure-resource-manager/template-parameters.md) pomocí [souboru parametrů](../azure-resource-manager/resource-manager-parameter-files.md).
+Pokud nasazujete v různých prostředích, zvažte Parametrizace hodnot v definici pracovního postupu, které se liší v závislosti na těchto prostředích. Tímto způsobem se můžete vyhnout pevně zakódovaným datům pomocí [šablony Azure Resource Manager](../azure-resource-manager/templates/overview.md) k nasazení aplikace logiky, ochraně citlivých dat definováním zabezpečených parametrů a předání těchto dat jako samostatných vstupů prostřednictvím [parametrů šablony](../azure-resource-manager/templates/template-parameters.md) pomocí [souboru parametrů](../azure-resource-manager/templates/parameter-files.md).
 
 Pokud například ověříte akce HTTP pomocí [Azure Active Directory OAuth](#azure-active-directory-oauth-authentication), můžete definovat a zabezpečit parametry, které přijímají ID klienta a tajný klíč klienta, které se používají pro ověřování. K definování těchto parametrů v aplikaci logiky použijte `parameters` v definici pracovního postupu vaší aplikace logiky a šablonu Správce prostředků pro nasazení. Chcete-li skrýt hodnoty parametrů, které nechcete zobrazit při úpravách aplikace logiky nebo zobrazení historie spuštění, definujte parametry pomocí `securestring` nebo `secureobject` typ a podle potřeby kódování použijte. Parametry, které mají tento typ, nejsou vráceny s definicí prostředků a nejsou přístupné při zobrazení prostředku po nasazení. Pro přístup k těmto hodnotám parametrů za běhu použijte výraz `@parameters('<parameter-name>')` uvnitř definice pracovního postupu. Tento výraz je vyhodnocen pouze za běhu a je popsán [jazykem definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md).
 
@@ -368,11 +368,11 @@ Další informace najdete v těchto oddílech v tomto tématu:
 * [Zabezpečené parametry v definicích pracovních postupů](#secure-parameters-workflow)
 * [Skrýt data z historie spouštění pomocí zmatenosti](#obfuscate)
 
-Pokud [automatizujete nasazení pro Logic Apps pomocí Správce prostředků šablon](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), můžete definovat zabezpečené [parametry šablony](../azure-resource-manager/template-parameters.md), které jsou vyhodnocovány při nasazení pomocí `securestring` a `secureobject` typů. Pro definování parametrů šablony použijte `parameters` sekci nejvyšší úrovně šablony, která je oddělená a odlišná od `parameters` oddílu definice pracovního postupu. Chcete-li zadat hodnoty parametrů šablony, použijte samostatný [soubor parametrů](../azure-resource-manager/resource-manager-parameter-files.md).
+Pokud [automatizujete nasazení pro Logic Apps pomocí Správce prostředků šablon](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), můžete definovat zabezpečené [parametry šablony](../azure-resource-manager/templates/template-parameters.md), které jsou vyhodnocovány při nasazení pomocí `securestring` a `secureobject` typů. Pro definování parametrů šablony použijte `parameters` sekci nejvyšší úrovně šablony, která je oddělená a odlišná od `parameters` oddílu definice pracovního postupu. Chcete-li zadat hodnoty parametrů šablony, použijte samostatný [soubor parametrů](../azure-resource-manager/templates/parameter-files.md).
 
 Pokud například používáte tajné kódy, můžete definovat a používat zabezpečené parametry šablony, které tyto tajné kódy načítají z [Azure Key Vault](../key-vault/key-vault-overview.md) při nasazení. Pak můžete odkazovat na Trezor klíčů a tajný kód v souboru parametrů. Další informace najdete v těchto tématech:
 
-* [Předejte citlivé hodnoty při nasazení pomocí Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+* [Předejte citlivé hodnoty při nasazení pomocí Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 * [Parametry zabezpečení v šablonách Azure Resource Manager](#secure-parameters-deployment-template) dále v tomto tématu.
 
 <a name="secure-parameters-workflow"></a>
@@ -425,11 +425,11 @@ Pokud chcete chránit citlivé informace v definici pracovního postupu vaší a
 
 ### <a name="secure-parameters-in-azure-resource-manager-templates"></a>Zabezpečené parametry v šablonách Azure Resource Manager
 
-[Šablona správce prostředků](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) pro aplikaci logiky má několik oddílů `parameters`. K ochraně hesel, klíčů, tajných kódů a dalších citlivých informací můžete definovat zabezpečené parametry na úrovni šablony a definice pracovního postupu pomocí typu `securestring` nebo `secureobject`. Tyto hodnoty pak můžete uložit v [Azure Key Vault](../key-vault/key-vault-overview.md) a použít [soubor parametrů](../azure-resource-manager/resource-manager-parameter-files.md) k odkazování na Trezor klíčů a tajný kód. Vaše šablona pak tyto informace načte při nasazení. Další informace najdete v tématu [předání citlivých hodnot při nasazení pomocí Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+[Šablona správce prostředků](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) pro aplikaci logiky má několik oddílů `parameters`. K ochraně hesel, klíčů, tajných kódů a dalších citlivých informací můžete definovat zabezpečené parametry na úrovni šablony a definice pracovního postupu pomocí typu `securestring` nebo `secureobject`. Tyto hodnoty pak můžete uložit v [Azure Key Vault](../key-vault/key-vault-overview.md) a použít [soubor parametrů](../azure-resource-manager/templates/parameter-files.md) k odkazování na Trezor klíčů a tajný kód. Vaše šablona pak tyto informace načte při nasazení. Další informace najdete v tématu [předání citlivých hodnot při nasazení pomocí Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md).
 
 Zde jsou další informace o těchto `parameters` oddílech:
 
-* V nejvyšší úrovni šablony `parameters` oddíl definuje parametry pro hodnoty, které šablona používá při *nasazení*. Například tyto hodnoty mohou zahrnovat připojovací řetězce pro konkrétní prostředí nasazení. Tyto hodnoty pak můžete uložit do samostatného [souboru parametrů](../azure-resource-manager/resource-manager-parameter-files.md), což usnadňuje změnu těchto hodnot.
+* V nejvyšší úrovni šablony `parameters` oddíl definuje parametry pro hodnoty, které šablona používá při *nasazení*. Například tyto hodnoty mohou zahrnovat připojovací řetězce pro konkrétní prostředí nasazení. Tyto hodnoty pak můžete uložit do samostatného [souboru parametrů](../azure-resource-manager/templates/parameter-files.md), což usnadňuje změnu těchto hodnot.
 
 * V definici prostředků vaší aplikace logiky, ale mimo definici pracovního postupu, určuje `parameters` oddíl hodnoty pro parametry definice pracovního postupu. V této části můžete přiřadit tyto hodnoty pomocí výrazů šablony, které odkazují na parametry šablony. Tyto výrazy jsou vyhodnocovány při nasazení.
 
@@ -604,7 +604,7 @@ Tady je několik způsobů, jak můžete zabezpečit koncové body, které přij
 
 Koncové body HTTP a HTTPS podporují různé druhy ověřování. V závislosti na triggeru nebo akci, kterou použijete k provedení odchozích volání nebo požadavků, které přistupují k těmto koncovým bodům, můžete vybrat z různých rozsahů typů ověřování. Aby bylo zajištěno, že budete chránit jakékoli citlivé informace, které vaše aplikace logiky zpracovává, používejte v případě potřeby zabezpečené parametry a zakódovat data. Další informace o použití a zabezpečení parametrů naleznete v tématu [přístup ke vstupům parametrů](#secure-action-parameters).
 
-| Typ ověřování | Podporováno nástrojem |
+| Typ ověřování | Podporováno rozhraním |
 |---------------------|--------------|
 | [Basic](#basic-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, Webhook HTTP |
 | [Certifikát klienta](#client-certificate-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, Webhook HTTP |
@@ -655,7 +655,7 @@ Pokud je k dispozici možnost [certifikát klienta](../active-directory/authenti
 
 | Property – vlastnost (Designer) | Property (JSON) | Požaduje se | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
-| **Ověřování** | `type` | Ano | **Certifikát klienta** <br>nebo <br>`ClientCertificate` | Typ ověřování, který se má použít pro SSL (Secure Sockets Layer) (SSL) klientské certifikáty. I když jsou certifikáty podepsané svým držitelem podporovány, certifikáty podepsané svým držitelem pro SSL nejsou podporovány. |
+| **Ověřování** | `type` | Ano | **Certifikát klienta** <br>– nebo – <br>`ClientCertificate` | Typ ověřování, který se má použít pro SSL (Secure Sockets Layer) (SSL) klientské certifikáty. I když jsou certifikáty podepsané svým držitelem podporovány, certifikáty podepsané svým držitelem pro SSL nejsou podporovány. |
 | **PFX** | `pfx` | Ano | <*kódovaný soubor-PFX-Content-content*> | Obsah kódovaný v kódování Base64 ze souboru PFX (Personal Information Exchange) <p><p>Chcete-li převést soubor PFX na formát s kódováním base64, můžete použít PowerShell pomocí následujících kroků: <p>1. Uložte obsah certifikátu do proměnné: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. pomocí funkce `ToBase64String()` převeďte obsah certifikátu a uložte ho do textového souboru: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **Heslo** | `password`| Viz popis | <*hesla-pro-soubor pfx*> | Heslo pro přístup k souboru PFX. <p><p>**Poznámka**: Tato hodnota vlastnosti je povinná při práci v návrháři aplikace logiky a při práci v zobrazení *kódu se nevyžaduje* . |
 |||||
@@ -694,15 +694,15 @@ Pokud je k dispozici možnost [Active Directory OAuth](../active-directory/devel
 
 | Property – vlastnost (Designer) | Property (JSON) | Požaduje se | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
-| **Ověřování** | `type` | Ano | **Protokol OAuth pro Active Directory** <br>nebo <br>`ActiveDirectoryOAuth` | Typ ověřování, který se má použít. Logic Apps v současnosti následuje [protokol OAuth 2,0](../active-directory/develop/v2-overview.md). |
+| **Ověřování** | `type` | Ano | **Protokol OAuth pro Active Directory** <br>– nebo – <br>`ActiveDirectoryOAuth` | Typ ověřování, který se má použít. Logic Apps v současnosti následuje [protokol OAuth 2,0](../active-directory/develop/v2-overview.md). |
 | **Tenant** | `tenant` | Ano | <*tenant-ID*> | ID tenanta pro tenanta Azure AD |
-| **Osoby** | `audience` | Ano | <*prostředku k autorizaci*> | Prostředek, který chcete použít pro autorizaci, například `https://management.core.windows.net/` |
-| **ID klienta** | `clientId` | Ano | <*Client-ID*> | ID klienta pro aplikaci požadující autorizaci |
-| **Typ přihlašovacích údajů** | `credentialType` | Ano | Certifikát <br>nebo <br>Tajný kód | Typ přihlašovacích údajů, který klient používá k vyžádání autorizace. Tato vlastnost a hodnota se nezobrazí v základní definici vaší aplikace logiky, ale určuje vlastnosti, které se zobrazí pro vybraný typ přihlašovacích údajů. |
+| **Osoby** | `audience` | Ano | <*resource-to-authorize*> | Prostředek, který chcete použít pro autorizaci, například `https://management.core.windows.net/` |
+| **ID klienta** | `clientId` | Ano | <*client-ID*> | ID klienta pro aplikaci požadující autorizaci |
+| **Typ přihlašovacích údajů** | `credentialType` | Ano | Certifikát <br>– nebo – <br>Tajný kód | Typ přihlašovacích údajů, který klient používá k vyžádání autorizace. Tato vlastnost a hodnota se nezobrazí v základní definici vaší aplikace logiky, ale určuje vlastnosti, které se zobrazí pro vybraný typ přihlašovacích údajů. |
 | **Tajný kód** | `secret` | Ano, ale jenom pro typ přihlašovacích údajů tajného klíče | <> *tajného klienta* | Tajný klíč klienta pro vyžádání autorizace |
 | **PFX** | `pfx` | Ano, ale pouze pro typ přihlašovacích údajů certifikát | <*kódovaný soubor-PFX-Content-content*> | Obsah kódovaný v kódování Base64 ze souboru PFX (Personal Information Exchange) |
 | **Heslo** | `password` | Ano, ale pouze pro typ přihlašovacích údajů certifikát | <*hesla-pro-soubor pfx*> | Heslo pro přístup k souboru PFX |
-| **Dohled** | `authority` | Ne | <*Adresa URL –> vystavitele tokenu* | Adresa URL pro autoritu, která poskytuje ověřovací token. Ve výchozím nastavení je tato hodnota `https://login.windows.net`. <p>**Poznámka**: Chcete-li tuto vlastnost zviditelnit v návrháři, otevřete u triggeru nebo akce seznam **Přidat nový parametr** a vyberte možnost **autorita**. |
+| **Dohled** | `authority` | Ne | <*URL-for-authority-token-issuer*> | Adresa URL pro autoritu, která poskytuje ověřovací token. Ve výchozím nastavení je tato hodnota `https://login.windows.net`. <p>**Poznámka**: Chcete-li tuto vlastnost zviditelnit v návrháři, otevřete u triggeru nebo akce seznam **Přidat nový parametr** a vyberte možnost **autorita**. |
 |||||
 
 Když použijete [zabezpečené parametry](#secure-action-parameters) k obsluze a ochraně citlivých informací, například v [šabloně Azure Resource Manager pro automatizaci nasazení](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), můžete použít výrazy pro přístup k těmto hodnotám parametrů za běhu. Tato ukázka definice akce HTTP určuje `type` ověřování jako `ActiveDirectoryOAuth`, typ přihlašovacích údajů jako `Secret`a pomocí [funkce Parameters ()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) Získá hodnoty parametrů:
@@ -748,7 +748,7 @@ V aktivační události nebo akci, která podporuje nezpracované ověřování,
 
 | Property – vlastnost (Designer) | Property (JSON) | Požaduje se | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
-| **Ověřování** | `type` | Ano | Získání | Typ ověřování, který se má použít |
+| **Ověřování** | `type` | Ano | Nezpracováno | Typ ověřování, který se má použít |
 | **Hodnota** | `value` | Ano | *autorizace <– hodnota hlavičky*> | Hodnota hlavičky autorizace, která se má použít pro ověřování |
 ||||||
 
@@ -783,7 +783,7 @@ Pokud je k dispozici možnost [spravovaná identita](../active-directory/managed
 
    | Property – vlastnost (Designer) | Property (JSON) | Požaduje se | Hodnota | Popis |
    |---------------------|-----------------|----------|-------|-------------|
-   | **Ověřování** | `type` | Ano | **Spravovaná identita** <br>nebo <br>`ManagedServiceIdentity` | Typ ověřování, který se má použít |
+   | **Ověřování** | `type` | Ano | **Spravovaná identita** <br>– nebo – <br>`ManagedServiceIdentity` | Typ ověřování, který se má použít |
    | **Osoby** | `audience` | Ano | <*target-Resource-ID*> | ID prostředku pro cílový prostředek, ke kterému chcete získat přístup. <p>`https://storage.azure.com/` například zpřístupňuje přístupové tokeny pro ověřování platné pro všechny účty úložiště. Můžete ale taky zadat adresu URL kořenové služby, například `https://fabrikamstorageaccount.blob.core.windows.net` pro konkrétní účet úložiště. <p>**Poznámka**: Tato vlastnost může být v některých triggerech nebo akcích skrytá. Chcete-li tuto vlastnost zviditelnit, otevřete v aktivační události nebo akci seznam **Přidat nový parametr** a vyberte možnost **cílová skupina**. <p><p>**Důležité**: Ujistěte se, že toto ID cílového prostředku přesně odpovídá hodnotě, kterou očekává služba Azure AD, včetně všech požadovaných koncových lomítek. ID prostředku `https://storage.azure.com/` pro všechny účty Azure Blob Storage vyžaduje koncové lomítko. ID prostředku pro konkrétní účet úložiště ale nevyžaduje koncové lomítko. Tato ID prostředků najdete v tématu [služby Azure, které podporují Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). |
    |||||
 

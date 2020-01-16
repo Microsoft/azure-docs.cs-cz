@@ -13,26 +13,26 @@ ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ec391db0e18128ad85d3bacb79fa51770aa70ea1
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c49df689ae859c93046c19af043aa2001dbb5481
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298891"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979626"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Začínáme s Azure Table Storage a připojenými službami sady Visual Studio (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>Přehled
 
-Azure Table Storage umožňuje ukládat velké objemy strukturovaných dat. Tato služba je úložiště dat typu NoSQL, která přijímá ověřených volání z uvnitř i mimo Azure cloud. Jsou ideální pro ukládání strukturovaných, nerelačních dat tabulky Azure.
+Azure Table Storage umožňuje ukládat velké objemy strukturovaných dat. Tato služba je úložiště dat typu NoSQL, která přijímá ověřených volání z uvnitř i mimo Azure cloud. Tabulky Azure jsou ideální pro ukládání strukturovaných, nerelačních dat.
 
 V tomto kurzu se dozvíte, jak napsat kód ASP.NET pro některé běžné scénáře s využitím entit služby Azure Table Storage. Mezi tyto scénáře patří vytvoření tabulky a přidání, dotazování a odstranění entit tabulky. 
 
 ## <a name="prerequisites"></a>Požadavky
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Účet služby Azure Storage](../storage/common/storage-quickstart-create-account.md)
+* [Účet služby Azure Storage](../storage/common/storage-account-create.md)
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 

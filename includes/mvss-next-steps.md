@@ -4,21 +4,21 @@ ms.service: virtual-machine-scale-sets
 ms.topic: include
 ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: c41beda6c9d6bb4b63a45944126421dd22799904
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 633f7f9231e08acdb0e08ee97067d2a469bbdb45
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175032"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980176"
 ---
-Můžete nasadit předchozí šablonu postupem podle [dokumentace k Azure Resource Manageru](../articles/azure-resource-manager/resource-group-template-deploy.md).
+Můžete nasadit předchozí šablonu postupem podle [dokumentace k Azure Resource Manageru](../articles/azure-resource-manager/templates/deploy-powershell.md).
 
-Můžete začít v této sérii kurzů od [základní škálovací sady článku s šablonou](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md).
+Tuto řadu kurzů můžete spustit v [článku základní šablona sady škálování](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md).
 
-Uvidíte jak změnit [šablonu základní škálovací sady](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) k [nasazení škálovací sady do existující virtuální sítě](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md).
+Můžete si prohlédnout, jak upravit [šablonu základní sady škálování](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) a [nasadit sadu škálování do existující virtuální sítě](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md).
 
-Uvidíte jak změnit [šablonu základní škálovací sady](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) k [nasazení škálovací sady s použitím vlastní image](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-custom-image.md).
+Můžete si prohlédnout, jak upravit [šablonu základní sady škálování](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) a [nasadit sadu škálování s vlastní imagí](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-custom-image.md).
 
-Uvidíte jak změnit [šablonu základní škálovací sady](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) k [nasazení škálovací sady s automatickým Škálováním hosta s Linuxem](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md).
+Můžete si prohlédnout, jak upravit [šablonu základní sady škálování](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) a [nasadit sadu škálování pro Linux pomocí automatického škálování založeného na hostu](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md).
 
-Další informace o škálovacích sadách najdete [škálovací sady stránka s přehledem](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md).
+Další informace o sadách škálování najdete na [stránce s přehledem sady škálování](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md).

@@ -9,12 +9,12 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 12/17/2019
-ms.openlocfilehash: df2e73138cec6c684d612543280871eb2d49b207
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 659c205bd12d7ca27bfc28e3ab6e62f58d9743ac
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456354"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978658"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Reference k modulu & algoritmu pro návrháře Azure Machine Learning
 
@@ -50,4 +50,4 @@ Moduly jsou uspořádány podle funkcí:
 
 ## <a name="error-messages"></a>Chybové zprávy
 
-Seznamte se s [chybovými zprávami a kódy výjimek](machine-learning-module-error-codes.md) , se kterými se můžete setkat pomocí modulů v Návrháři Azure Machine Learning.
+Seznamte se s [chybovými zprávami a kódy výjimek](designer-error-codes.md) , se kterými se můžete setkat pomocí modulů v Návrháři Azure Machine Learning.

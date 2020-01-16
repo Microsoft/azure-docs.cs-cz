@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 2260dddd74d7ed64eb19158a5360ed2e4c09b4a9
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: e299821b54692327cbb7d497af0295e3b93658cf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688349"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966980"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Řešení potíží s certifikátem domény a SSL v Azure App Service
 
 V tomto článku jsou uvedené běžné problémy, se kterými se můžete setkat při konfiguraci domény nebo certifikátu SSL pro webové aplikace v Azure App Service. Popisuje také možné příčiny a řešení těchto problémů.
 
-Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete se obrátit na odborníky na Azure na [fórech MSDN a Stack Overflow](https://azure.microsoft.com/support/forums/). Případně můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete se obrátit na odborníky na Azure na [fórech MSDN a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -110,7 +110,7 @@ V vlastní doméně, kterou jste nakonfigurovali, chybí záznam CNAME nebo záz
 
 **Řešení 1. příčiny**
 
-- Pokud jste přidali záznam A, ujistěte se, že je přidán také záznam TXT. Další informace najdete v tématu [Vytvoření záznamu A](./app-service-web-tutorial-custom-domain.md#create-the-a-record).
+- Pokud jste přidali záznam A, ujistěte se, že je přidán také záznam TXT. Další informace najdete v tématu [vytvořte záznam a](./app-service-web-tutorial-custom-domain.md#create-the-a-record).
 - Pokud pro vaši aplikaci nemusíte používat kořenovou doménu, doporučujeme místo záznamu A použít záznam CNAME.
 - Nepoužívejte záznam CNAME a záznam a pro stejnou doménu. Tento problém může způsobit konflikt a zabránit tomu, aby se doména vyřešila. 
 
@@ -318,6 +318,6 @@ Svoji doménu můžete spravovat i v případě, že nemáte App Service webovou
 
 **Můžu přesunout webovou aplikaci s vlastní doménou do jiného předplatného nebo z App Service Environment V1 na v2?**
 
-Ano, můžete přesunout webovou aplikaci napříč předplatnými. Postupujte podle pokynů v tématu [Postup přesunutí prostředků v Azure](../azure-resource-manager/resource-group-move-resources.md). Při přesunu webové aplikace existuje několik omezení. Další informace najdete v tématu [omezení pro přesunutí prostředků App Service](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
+Ano, můžete přesunout webovou aplikaci napříč předplatnými. Postupujte podle pokynů v tématu [Postup přesunutí prostředků v Azure](../azure-resource-manager/management/move-resource-group-and-subscription.md). Při přesunu webové aplikace existuje několik omezení. Další informace najdete v tématu [omezení pro přesunutí prostředků App Service](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md).
 
 Po přesunutí webové aplikace by vazby názvu hostitele domén v rámci nastavení vlastní domény měly zůstat stejné. Pro konfiguraci vazeb názvů hostitelů nejsou nutné žádné další kroky.

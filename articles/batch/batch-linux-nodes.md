@@ -3,7 +3,7 @@ title: Provozovat Linux na výpočetních uzlech virtuálních počítačů – 
 description: Naučte se zpracovávat paralelní výpočetní úlohy na fondech virtuálních počítačů se systémem Linux v Azure Batch.
 services: batch
 documentationcenter: python
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: na
 ms.date: 06/01/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18df43ebf3a20547917ddd372d922741b4cee849
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 27273fecc9d117079cfda58d537cf7342d3c5dc4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350109"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027075"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Zřizování výpočetních uzlů pro Linux ve fondech Batch
 
@@ -31,7 +31,7 @@ K provozování paralelních výpočetních úloh na virtuálních počítačíc
 >
 
 ## <a name="virtual-machine-configuration"></a>Konfigurace virtuálního počítače
-Při vytváření fondu výpočetních uzlů ve službě Batch máte dvě možnosti, ze kterých můžete vybrat velikost uzlu a operační systém: Konfigurace Cloud Services a konfigurace virtuálního počítače.
+Při vytváření fondu výpočetních uzlů ve službě Batch máte dvě možnosti, ze kterých můžete vybrat velikost uzlu a operační systém: Cloud Services konfigurace a konfigurace virtuálního počítače.
 
 **Konfigurace služby Cloud Services** poskytuje *pouze* výpočetní uzly Windows. Dostupné velikosti výpočetních uzlů jsou uvedené v seznamu [velikosti pro Cloud Services](../cloud-services/cloud-services-sizes-specs.md)a dostupné operační systémy jsou uvedené v části [vydání hostovaného operačního systému Azure a v matici kompatibility SDK](../cloud-services/cloud-services-guestos-update-matrix.md). Když vytvoříte fond, který obsahuje uzly Azure Cloud Services, zadáte velikost uzlu a řadu operačních systémů, které jsou popsány v předchozích uvedených článcích. Pro fondy výpočetních uzlů Windows se Cloud Services nejčastěji používá.
 
@@ -47,11 +47,11 @@ Když nakonfigurujete odkaz na image virtuálního počítače, zadáte vlastnos
 | --- | --- |
 | Vydavatel |Canonical |
 | Nabídka |UbuntuServer |
-| SKU |14.04.4-LTS |
-| Version |latest |
+| Skladová položka |14.04.4-LTS |
+| Verze |latest |
 
 > [!TIP]
-> Další informace o těchto vlastnostech a způsobu vypsání imagí na Marketplace najdete v tématu [navigace a výběr imagí virtuálních počítačů se systémem Linux v Azure pomocí](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)rozhraní příkazového řádku nebo PowerShellu. Všimněte si, že ne všechny image Marketplace jsou aktuálně kompatibilní se službou Batch. Další informace najdete v tématu [SKU agenta uzlu](#node-agent-sku).
+> Další informace o těchto vlastnostech a způsobu vypsání imagí na Marketplace najdete v tématu [navigace a výběr imagí virtuálních počítačů se systémem Linux v Azure pomocí rozhraní příkazového řádku nebo PowerShellu](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Všimněte si, že ne všechny image Marketplace jsou aktuálně kompatibilní se službou Batch. Další informace najdete v tématu [SKU agenta uzlu](#node-agent-sku).
 >
 >
 
@@ -70,7 +70,7 @@ Agent uzlu služby Batch je program, který běží na všech uzlech ve fondu a 
 ## <a name="create-a-linux-pool-batch-python"></a>Vytvoření fondu pro Linux: Batch Python
 Následující fragment kódu ukazuje příklad použití [klientské knihovny Microsoft Azure Batch pro Python][py_batch_package] k vytvoření fondu výpočetních uzlů Ubuntu serveru. Referenční dokumentaci pro modul Batch v Pythonu najdete v tématu o tom, jak přečíst [balíček v balíčku Azure. Batch][py_batch_docs] .
 
-Tento fragment kódu vytvoří explicitně [element imagereference][py_imagereference] a určí každou jeho vlastnost (Publisher, nabídka, SKU, verze). V produkčním kódu však doporučujeme použít metodu [list_node_agent_skus][py_list_skus] k určení a výběru z dostupné kombinace obrázků a agentů SKU agenta uzlu za běhu.
+Tento fragment kódu vytvoří explicitně [element imagereference][py_imagereference] a určí každou jeho vlastnost (Publisher, nabídka, SKU, verze). V produkčním kódu však doporučujeme, abyste pomocí metody [list_node_agent_skus][py_list_skus] určili a vybrali z dostupné kombinace obrázků a identifikátorů SKU agenta uzlu za běhu.
 
 ```python
 # Import the required modules from the
@@ -126,7 +126,7 @@ new_pool.virtual_machine_configuration = vmc
 client.pool.add(new_pool)
 ```
 
-Jak už bylo zmíněno dříve, doporučujeme namísto explicitního vytváření [element imagereference][py_imagereference] použít metodu [list_node_agent_skus][py_list_skus] k dynamickému výběru z aktuálně podporovaných kombinací imagí agent/Marketplace. Následující fragment kódu Python ukazuje, jak použít tuto metodu.
+Jak už bylo zmíněno dříve, doporučujeme, abyste místo toho, abyste [element imagereference][py_imagereference] vytvořili explicitně, používali metodu [list_node_agent_skus][py_list_skus] k dynamickému výběru z aktuálně podporovaných kombinací imagí agent/Marketplace. Následující fragment kódu Python ukazuje, jak použít tuto metodu.
 
 ```python
 # Get the list of node agents from the Batch service
@@ -217,8 +217,8 @@ Následující tabulka obsahuje seznam imagí virtuálních počítačů Marketp
 
 | **Publisher** | **Nabídka** | **SKU image** | **Verze** | **ID SKU agenta uzlu** |
 | ------------- | --------- | ------------- | ----------- | --------------------- |
-| dávka | rendering-centos73 | vykreslování | latest | batch.node.centos 7 |
-| dávka | rendering-windows2016 | vykreslování | latest | Batch. Node. Windows amd64 |
+| batch | rendering-centos73 | vykreslení | latest | batch.node.centos 7 |
+| batch | rendering-windows2016 | vykreslení | latest | Batch. Node. Windows amd64 |
 | Canonical | UbuntuServer | 16.04-LTS | latest | batch.node.ubuntu 16.04 |
 | Canonical | UbuntuServer | 14.04.5-LTS | latest | batch.node.ubuntu 14.04 |
 | credativ | Debian | 9 | latest | Batch. Node. debian 9 |

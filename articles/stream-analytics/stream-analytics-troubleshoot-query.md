@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 22e542715afa8c87ffb742bec6c22f758cd16587
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5534a46ba99d1536d331b5852ef47588f03d73a4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354264"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980278"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Řešení potíží s Azure Stream Analytics dotazy
 
 Tento článek popisuje běžné problémy při vývoji Stream Analytics dotazů a jejich řešení.
 
-## <a name="query-is-not-producing-expected-output"></a>Dotaz nevyrábí očekávaný výstup. 
+## <a name="query-is-not-producing-expected-output"></a>Dotaz nevyrábí očekávaný výstup.
 1.  Kontrola chyb pomocí místního testování:
     - Na kartě **dotaz** vyberte **test**. K [otestování dotazu](stream-analytics-test-query.md)použijte stažená ukázková data. Prověřte případné chyby a pokuste se je opravit.   
     - Dotaz můžete také [testovat přímo na živém vstupu](stream-analytics-live-data-local-testing.md) pomocí Stream Analyticsch nástrojů pro Visual Studio.
@@ -32,10 +32,10 @@ Tento článek popisuje běžné problémy při vývoji Stream Analytics dotazů
     - Při použití funkcí okna počkejte na celou dobu trvání okna, aby se zobrazil výstup dotazu.
     - Časové razítko pro události předchází času zahájení úlohy a proto se události vynechává.
 
-4.  Zajistěte, aby byly zásady řazení událostí nakonfigurované podle očekávání. Přejít do **Nastavení** a vybrat [**řazení událostí**](stream-analytics-out-of-order-and-late-events.md). Zásada *se nepoužije,* když použijete tlačítko **test** k otestování dotazu. Výsledkem je jeden rozdíl mezi testováním v prohlížeči a spuštění úlohy v produkčním prostředí. 
+4.  Zajistěte, aby byly zásady řazení událostí nakonfigurované podle očekávání. Přejít do **Nastavení** a vybrat [**řazení událostí**](stream-analytics-out-of-order-and-late-events.md). Zásada *se nepoužije,* když použijete tlačítko **test** k otestování dotazu. Výsledkem je jeden rozdíl mezi testováním v prohlížeči a spuštění úlohy v produkčním prostředí.
 
 5. Ladit pomocí protokolů auditu a diagnostiky:
-    - K identifikaci a ladění chyb použijte [protokoly auditu](../azure-resource-manager/resource-group-audit.md)a filtr.
+    - K identifikaci a ladění chyb použijte [protokoly auditu](../azure-resource-manager/management/view-activity-logs.md)a filtr.
     - K identifikaci a ladění chyb použijte [protokoly diagnostiky úlohy](stream-analytics-job-diagnostic-logs.md) .
 
 ## <a name="job-is-consuming-too-many-streaming-units"></a>Úloha spotřebovává příliš mnoho jednotek streamování.
@@ -52,7 +52,7 @@ Následující příklad dotazu v úloze Azure Stream Analytics má jeden vstup 
 Všimněte si, že úloha je spuštěná, ale ve výstupu nejsou vytvářeny žádné události. Na dlaždici **monitorování** můžete vidět, že vstup vyrábí data, ale nevíte, který krok **spojení** způsobil, že všechny události mají být vyřazeny.
 
 ![Dlaždice monitorování Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
- 
+
 V této situaci můžete přidat několik příkazů SELECT INTO do log (protokol). výsledky mezilehlého spojení a data, která jsou čtena ze vstupu.
 
 V tomto příkladu jsme přidali dva nové "dočasné výstupy". Může to být jakákoli jímka, kterou si přejete. Tady používáme Azure Storage jako příklad:

@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/08/2018
 ms.author: genli
-ms.openlocfilehash: d1cb34f1666db0e213a41fa8d2e684ba148b7e61
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7756d4c808e104b0de14e1cea4af5e843cff755c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088444"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981766"
 ---
 #  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>Z důvodu statické IP adresy nelze ke vzdálené ploše na virtuálních počítačích Azure
 
 Tento článek popisuje problém, který se po dokončení konfigurace statická IP adresa ve virtuálním počítači nejde vzdálené plochy Azure Windows Virtual Machines (VM).
 
 > [!NOTE]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
+> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/management/deployment-models.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
 
 ## <a name="symptoms"></a>Příznaky
 

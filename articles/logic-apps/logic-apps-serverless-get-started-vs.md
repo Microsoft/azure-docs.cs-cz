@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: a3fcff9f895fba3574bbce976087295018ab51c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2e27958dd9379a26ca7e7f4d7e427e5afa216e29
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428750"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981151"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Sestavte svou první aplikaci bez serveru pomocí Azure Logic Apps a Azure Functions v aplikaci Visual Studio
 
@@ -56,7 +56,7 @@ Chcete-li vytvořit aplikaci bez serveru v aplikaci Visual Studio, budete potře
 
 ## <a name="create-a-resource-group-project"></a>Vytvoření projektu skupiny prostředků
 
-Začněte tím, že vytvoříte [projekt skupiny prostředků Azure](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) pro vaši aplikaci bez serveru. V Azure vytvoříte prostředky v rámci *skupiny prostředků*, což je logická kolekce, kterou používáte k organizování, správě a nasazování prostředků celé aplikace jako jediného assetu. V případě aplikace bez serveru v Azure zahrnuje vaše skupina prostředků prostředky pro Azure Logic Apps i Azure Functions. Další informace o [skupinách prostředků a prostředcích Azure](../azure-resource-manager/management/overview.md).
+Začněte tím, že vytvoříte [projekt skupiny prostředků Azure](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) pro vaši aplikaci bez serveru. V Azure vytvoříte prostředky v rámci *skupiny prostředků*, což je logická kolekce, kterou používáte k organizování, správě a nasazování prostředků celé aplikace jako jediného assetu. V případě aplikace bez serveru v Azure zahrnuje vaše skupina prostředků prostředky pro Azure Logic Apps i Azure Functions. Další informace o [skupinách prostředků a prostředcích Azure](../azure-resource-manager/management/overview.md).
 
 1. Spusťte Visual Studio a přihlaste se pomocí svého účtu Azure.
 

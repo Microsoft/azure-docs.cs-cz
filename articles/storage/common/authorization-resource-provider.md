@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d632de0a6274ebb2ede950ca610dfd5e94310d28
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: f5d42a6a0567d3949bc4b0fb1947450a9c957f18
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613869"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972346"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Použití poskytovatele prostředků Azure Storage k přístupu k prostředkům správy
 
@@ -72,7 +72,7 @@ Příklady kódu, které ukazují, jak autorizovat a volat operace správy z kni
 
 Modely Resource Manager a Classic představují dva různé způsoby nasazení a správy vašich řešení Azure. Microsoft doporučuje při vytváření nového účtu úložiště použít model nasazení Azure Resource Manager. Pokud je to možné, Microsoft také doporučuje znovu vytvořit existující účty klasického úložiště s modelem Správce prostředků. I když můžete vytvořit účet úložiště pomocí modelu nasazení Classic, klasický model je méně flexibilní a nakonec bude zastaralý.
 
-Další informace o modelech nasazení Azure najdete v tématu [Správce prostředků a klasické nasazení](../../azure-resource-manager/resource-manager-deployment-model.md).
+Další informace o modelech nasazení Azure najdete v tématu [Správce prostředků a klasické nasazení](../../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="next-steps"></a>Další kroky
 

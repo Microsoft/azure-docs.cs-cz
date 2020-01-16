@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 6521c139463bb0de1e24783bbbdd6a2d3996be6f
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ffe68352fed0b9c0df0cdfb971c085d1bb7f18c4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430102"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978062"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Konektor SAP LaMa pro Azure
 
@@ -47,11 +47,11 @@ V této příručce se dozvíte, jak nastavit konektor Azure pro SAP LaMa, vytvo
 > [!NOTE]
 > Konektor je k dispozici pouze v edici SAP LaMa Enterprise.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Materiály
 
 Následující poznámky SAP souvisejí s tématem SAP LaMa v Azure:
 
-| Číslo poznámky | Název |
+| Číslo poznámky | Nadpis |
 | --- | --- |
 | [2343511] |Konektor Microsoft Azure pro správu SAP na šířku (LaMa) |
 | [2350235] |SAP na šířku – Správa 3,0 – Enterprise Edition |
@@ -69,18 +69,25 @@ Také si přečtěte [portál pro podporu SAP pro SAP Lama](https://help.sap.com
 * Pokud se přihlásíte ke spravovaným hostitelům, nezapomeňte zabránit odpojení systémů souborů.  
   Pokud se přihlásíte k virtuálním počítačům se systémem Linux a změníte pracovní adresář na adresář v přípojném bodu, například/usr/sap/AH1/ASCS00/exe, svazek nelze odpojit a operace přemístění nebo odpříprava se nezdařila.
 
+* Nezapomeňte zakázat CLOUD_NETCONFIG_MANAGE na virtuálních počítačích s SUSE SLES Linux. Další podrobnosti najdete v článku [SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633).
+
 ## <a name="set-up-azure-connector-for-sap-lama"></a>Nastavení konektoru Azure pro SAP LaMa
 
-Konektor Azure se dodává jako SAP LaMa 3,0 SP05. Doporučujeme vždycky nainstalovat nejnovější balíček pro podporu a opravu pro SAP LaMa 3,0. Konektor Azure používá instanční objekt k autorizaci proti Microsoft Azure. Pomocí těchto kroků můžete vytvořit instanční objekt pro SAP na šířku Management (LaMa).
+Konektor Azure se dodává jako SAP LaMa 3,0 SP05. Doporučujeme vždycky nainstalovat nejnovější balíček pro podporu a opravu pro SAP LaMa 3,0.
+
+Konektor Azure používá rozhraní Azure Resource Manager API ke správě prostředků Azure. SAP LaMa může k ověřování pomocí tohoto rozhraní API použít instanční objekt nebo spravovanou identitu. Pokud vaše SAP LaMa běží na VIRTUÁLNÍm počítači Azure, doporučujeme použít spravovanou identitu, jak je popsáno v kapitole [použití spravované identity pro získání přístupu k rozhraní API Azure](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d). Pokud chcete použít instanční objekt, postupujte podle kroků v části [použití instančního objektu k získání přístupu k rozhraní API Azure](lama-installation.md#913c222a-3754-487f-9c89-983c82da641e).
+
+### <a name="913c222a-3754-487f-9c89-983c82da641e"></a>Použití instančního objektu k získání přístupu k rozhraní API Azure
+
+Služba Azure Connector může k autorizaci na Microsoft Azure použít instanční objekt. Pomocí těchto kroků můžete vytvořit instanční objekt pro SAP na šířku Management (LaMa).
 
 1. Přejděte na https://portal.azure.com.
 1. Otevře se okno Azure Active Directory
 1. Klikněte na Registrace aplikací
-1. Klikněte na Přidat.
-1. Zadejte název, vyberte typ aplikace webová aplikace/rozhraní API, zadejte adresu URL pro přihlášení (například http:\//localhost) a klikněte na vytvořit.
-1. Adresa URL přihlašování se nepoužívá a může být jakákoliv platná adresa URL
-1. Vyberte novou aplikaci a na kartě nastavení klikněte na klíče.
-1. Zadejte popis nového klíče, vyberte možnost nikdy nevyprší a klikněte na Uložit.
+1. Klikněte na nová registrace.
+1. Zadejte název a klikněte na zaregistrovat.
+1. Vyberte novou aplikaci a klikněte na certifikáty & tajné klíče na kartě nastavení.
+1. Vytvořte nový tajný klíč klienta, zadejte popis nového klíče, vyberte, kdy se má tajný klíč exire, a klikněte na Uložit.
 1. Poznamenejte si hodnotu. Používá se jako heslo instančního objektu.
 1. Poznamenejte si ID aplikace. Používá se jako uživatelské jméno objektu služby.
 
@@ -93,20 +100,43 @@ Instanční objekt služby nemá oprávnění pro přístup k prostředkům Azur
 1. Klikněte na přidat přiřazení role.
 1. Vybrat přispěvatele rolí
 1. Zadejte název aplikace, kterou jste vytvořili výše
-1. Kliknutí na Uložit
+1. Klikněte na Uložit.
 1. Opakujte krok 3 až 8 pro všechny skupiny prostředků, které chcete používat v SAP LaMa
+
+### <a name="af65832e-6469-4d69-9db5-0ed09eac126d"></a>Použití spravované identity k získání přístupu k rozhraní API Azure
+
+Aby bylo možné používat spravovanou identitu, vaše instance SAP LaMa musí běžet na virtuálním počítači Azure, který má identitu přiřazenou systémem nebo uživatelem. Další informace o spravovaných identitách najdete v článku [co jsou spravované identity pro prostředky Azure?](../../../active-directory/managed-identities-azure-resources/overview.md) a [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí Azure Portal](../../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md).
+
+Spravovaná identita nemá ve výchozím nastavení oprávnění pro přístup k prostředkům Azure. Musíte mu udělit oprávnění k přístupu.
+
+1. Přejděte na https://portal.azure.com.
+1. Otevřete okno skupiny prostředků.
+1. Vyberte skupinu prostředků, kterou chcete použít.
+1. Klikněte na řízení přístupu (IAM)
+1. Klikněte na Přidat > přidat přiřazení role.
+1. Vybrat přispěvatele rolí
+1. Vyberte virtuální počítač pro přiřazení přístupu k
+1. Vyberte virtuální počítač, na kterém je spuštěná instance SAP LaMa.
+1. Klikněte na Uložit.
+1. Opakujte kroky u všech skupin prostředků, které chcete používat v SAP LaMa
+
+V konfiguraci konektoru Azure LaMa pro SAP vyberte použít spravovanou identitu a povolte tak použití spravované identity. Pokud chcete použít identitu přiřazenou systémem, ujistěte se, že pole uživatelské jméno zůstane prázdné. Pokud chcete použít identitu přiřazenou uživatelem, zadejte ID identity přiřazené uživateli do pole uživatelské jméno.
+
+### <a name="create-a-new-connector-in-sap-lama"></a>Vytvoření nového konektoru v SAP LaMa
 
 Otevřete web SAP LaMa a přejděte na infrastruktura. Přejděte na kartu cloudové správce a klikněte na Přidat. Vyberte Microsoft Azure Adaptér cloudu a klikněte na další. Zadejte následující informace:
 
 * Popisek: vyberte název instance konektoru.
-* Uživatelské jméno: ID aplikace instančního objektu
-* Heslo: klíč nebo heslo instančního objektu
+* Uživatelské jméno: ID nebo ID aplikace instančního objektu, který je přiřazený identitě uživatele virtuálního počítače. Další informace najdete v tématu [použití identity přiřazené systémem nebo uživatelem].
+* Heslo: klíč nebo heslo instančního objektu služby. Toto pole můžete nechat prázdné, pokud použijete identitu přiřazenou systémem nebo uživatelem.
 * Adresa URL: zachovat výchozí https://management.azure.com/
 * Interval monitorování (sekundy): mělo by být aspoň 300.
+* Použití spravované identity: SAP LaMa může k ověřování pomocí rozhraní API Azure použít identitu přiřazenou systémem nebo uživatelem. V této příručce najdete v části [použití spravované identity k získání přístupu k rozhraní Azure API](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d) .
 * ID předplatného: ID předplatného Azure
 * ID tenanta Azure Active Directory: ID tenanta služby Active Directory
 * Hostitel proxy serveru: název hostitele proxy serveru, pokud SAP LaMa potřebuje proxy server pro připojení k Internetu.
 * Port proxy serveru: port TCP serveru proxy
+* Změnit typ úložiště na Uložit náklady: Toto nastavení povolte, pokud má adaptér Azure změnit typ úložiště Managed Disks tak, aby ušetřil náklady, když se disky nepoužívají. U datových disků, na které se odkazuje v konfiguraci instance SAP, adaptér při přípravě instance změní typ disku na standardní úložiště během přípravy instance a zpátky na původní typ úložiště. Pokud zastavíte virtuální počítač v SAP LaMa, adaptér změní typ úložiště všech připojených disků včetně disku s operačním systémem na úložiště Standard. Pokud spustíte virtuální počítač v SAP LaMa, adaptér změní typ úložiště zpátky na původní typ úložiště.
 
 Kliknutím na test konfigurace Ověřte zadání. Měli byste vidět
 
@@ -264,7 +294,7 @@ ANF poskytuje systém souborů NFS pro Azure. V kontextu SAP LaMa to zjednodušu
 
 Austrálie – východ, Střed USA, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, Západní Evropa a Západní USA 2.
 
-#### <a name="network-requirements"></a>Požadavky na síť
+#### <a name="network-requirements"></a>Požadavky sítě
 
 ANF vyžaduje delegovanou podsíť, která musí být součástí stejné virtuální sítě jako servery SAP. Tady je příklad pro takovou konfiguraci.
 Tato obrazovka ukazuje vytvoření virtuální sítě a první podsítě:
@@ -408,7 +438,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-as
 
 Spusťte SWPM a pro *název hostitele instance ASCS*použijte *AS1-ASCS* .
 
-#### <a name="install-sql-server"></a>Nainstalovat SQL Server
+#### <a name="install-sql-server"></a>Instalace SQL Serveru
 
 Musíte přidat IP adresu virtuálního hostitele databáze do síťového rozhraní. Doporučeným způsobem je použít sapacext. Pokud IP adresu připojíte pomocí sapacext, nezapomeňte po restartování připojit IP adresu znovu.
 

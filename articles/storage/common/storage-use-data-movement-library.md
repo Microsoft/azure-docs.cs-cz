@@ -10,14 +10,14 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 22dae518a45d5c4af20044d5f3eb88e764e92c8b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5fe1e45f2ff80c1a212009291ab880a57f347fdf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895119"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978392"
 ---
-# <a name="transfer-data-with-the-data-movement-library"></a>Přenos dat pomocí knihovny pro přesun dat
+# <a name="transfer-data-with-the-data-movement-library"></a>Přenos dat s využitím knihovny pro přesun dat
 
 Knihovna pro přesun dat Azure Storage je open source knihovna pro různé platformy, která je určená pro vysoce výkonné nahrávání, stahování a kopírování objektů BLOB a souborů. Tato knihovna je základní rámec přesunu dat, který je [AzCopy](../storage-use-azcopy.md). Knihovna pro přesun dat poskytuje pohodlný způsob, který není dostupný v klientské knihovně Azure Storage pro .NET. Tyto metody poskytují možnost nastavit počet paralelních operací, sledovat průběh přenosu, snadno obnovit zrušený přenos a mnohem víc.
 
@@ -32,10 +32,10 @@ Tento dokument ukazuje, jak vytvořit konzolovou aplikaci .NET Core, která bě�
 - Kopírování souboru z adresy URL do Blob Storage.
 - Kopírovat z Blob Storage do Blob Storage
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Visual Studio Code](https://code.visualstudio.com/)
-- [Účet úložiště Azure](storage-quickstart-create-account.md)
+- [Účet úložiště Azure](storage-account-create.md)
 
 ## <a name="setup"></a>Nastavení
 

@@ -10,12 +10,12 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 00d84a7f3b4a15c9278caac8c2715380dd330482
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d143992317c77c6fc3137527bea485a98c046daa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930494"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969229"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Role a oprávnění pro Azure Data Factory
 
@@ -29,7 +29,7 @@ Při vytváření a správě podřízených prostředků pro službu Data Factor
 - Pokud chcete vytvářet a spravovat podřízené prostředky na webu Azure Portal, je potřeba, abyste patřili do role **Přispěvatel Data Factory** na úrovni skupiny prostředků nebo vyšší.
 - Pro vytváření a správu podřízených prostředků pomocí PowerShellu nebo sady SDK na úrovni prostředku nebo vyšší je dostatečná role **Přispěvatel**.
 
-Ukázku pokynů pro přidání uživatele do role najdete v článku věnovaném [přidávání rolí](../billing/billing-add-change-azure-subscription-administrator.md).
+Ukázku pokynů pro přidání uživatele do role najdete v článku věnovaném [přidávání rolí](../cost-management-billing/manage/add-change-subscription-administrator.md).
 
 ## <a name="set-up-permissions"></a>Nastavení oprávnění
 
@@ -56,7 +56,7 @@ Oprávnění pro Azure Repos a GitHub jsou nezávislá na oprávněních Data Fa
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Vlastní scénáře a vlastní role
 
-Někdy může být nutné udělit různým uživatelům služby Data Factory různé úrovně přístupu. Například:
+Někdy může být nutné udělit různým uživatelům služby Data Factory různé úrovně přístupu. Příklad:
 - Možná budete potřebovat skupinu, kde uživatelé mají oprávnění pouze pro konkrétní objekt pro vytváření dat.
 - Nebo možná budete potřebovat skupinu, kde uživatelé můžou monitorovat jenom objekt pro vytváření dat (nebo továrny), ale nemůžou ho upravovat.
 

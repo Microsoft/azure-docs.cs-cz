@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/27/2018
 ms.author: johnkem
 ms.subservice: metrics
-ms.openlocfilehash: dd02fe17d5225a63f352069b3c6c5a47b7cbcb73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c1cdf912f9a1e4e8ae92baa4381e9705702136f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397280"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977589"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Vytvoření klasických upozornění na metriku pomocí šablony Resource Manageru
 V tomto článku se dozvíte, jak můžete pomocí [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) nakonfigurovat upozornění metrik Azure. To vám umožní automaticky nastavit výstrahy na svých prostředcích při jejich vytvoření, aby se zajistilo správné monitorování všech prostředků.
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak můžete pomocí [šablony Azure Resource Mana
 Základní postup je následující:
 
 1. Vytvořte šablonu jako soubor JSON, který popisuje, jak vytvořit výstrahu.
-2. [Nasaďte šablonu pomocí libovolné metody nasazení](../../azure-resource-manager/resource-group-template-deploy.md).
+2. [Nasaďte šablonu pomocí libovolné metody nasazení](../../azure-resource-manager/templates/deploy-powershell.md).
 
 Níže popisujeme, jak vytvořit šablonu Správce prostředků jako první pro výstrahu, a to pro výstrahu při vytváření jiného prostředku.
 

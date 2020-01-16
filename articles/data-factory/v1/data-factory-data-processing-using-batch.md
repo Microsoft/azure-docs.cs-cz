@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 699aab617e56ab87eb0bd6d6c4ceabf9aac4c4fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: afc7a7406831568304c2ebd8d9a6c72b497e04e4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438892"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972885"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Zpracování rozsáhlých datových sad pomocí Data Factory a dávky
 > [!NOTE]
@@ -91,7 +91,7 @@ Ukázkové řešení je záměrně jednoduché. Je navržený tak, aby vám uká
 Pokud nemáte předplatné Azure, můžete rychle vytvořit bezplatný zkušební účet. Další informace najdete v článku [bezplatná zkušební verze](https://azure.microsoft.com/pricing/free-trial/).
 
 #### <a name="azure-storage-account"></a>Účet služby Azure Storage
-K ukládání dat v tomto kurzu použijete účet úložiště. Pokud nemáte účet úložiště, přečtěte si téma [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md). Ukázkové řešení využívá úložiště objektů BLOB.
+K ukládání dat v tomto kurzu použijete účet úložiště. Pokud nemáte účet úložiště, přečtěte si téma [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md). Ukázkové řešení využívá úložiště objektů BLOB.
 
 #### <a name="azure-batch-account"></a>Účet Azure Batch
 Vytvořte účet Batch pomocí [Azure Portal](https://portal.azure.com/). Další informace najdete v tématu [Vytvoření a Správa účtu Batch](../../batch/batch-account-create-portal.md). Poznamenejte si název účtu Batch a klíč účtu. K vytvoření účtu Batch taky můžete použít rutinu [New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) . Pokyny k použití této rutiny najdete v tématu [Začínáme s rutinami PowerShellu pro Batch](../../batch/batch-powershell-cmdlets-get-started.md).
@@ -211,10 +211,10 @@ Tato metoda má několik klíčových součástí, které je třeba pochopit:
     using System.Globalization;
     using System.Diagnostics;
     using System.Linq;
-    
+
     using Microsoft.Azure.Management.DataFactories.Models;
     using Microsoft.Azure.Management.DataFactories.Runtime;
-    
+
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
@@ -241,15 +241,15 @@ Tato metoda má několik klíčových součástí, které je třeba pochopit:
        Activity activity,
        IActivityLogger logger)
     {
-    
+
        // Declare types for the input and output data stores.
        AzureStorageLinkedService inputLinkedService;
-    
+
        Dataset inputDataset = datasets.Single(dataset => dataset.Name == activity.Inputs.Single().Name);
-    
+
        foreach (LinkedService ls in linkedServices)
            logger.Write("linkedService.Name {0}", ls.Name);
-    
+
        // Use the First method instead of Single because we are using the same
        // Azure Storage linked service for input and output.
        inputLinkedService = linkedServices.First(
@@ -257,15 +257,15 @@ Tato metoda má několik klíčových součástí, které je třeba pochopit:
            linkedService.Name ==
            inputDataset.Properties.LinkedServiceName).Properties.TypeProperties
            as AzureStorageLinkedService;
-    
+
        string connectionString = inputLinkedService.ConnectionString; // To create an input storage client.
        string folderPath = GetFolderPath(inputDataset);
        string output = string.Empty; // for use later.
-    
+
        // Create the storage client for input. Pass the connection string.
        CloudStorageAccount inputStorageAccount = CloudStorageAccount.Parse(connectionString);
        CloudBlobClient inputClient = inputStorageAccount.CreateCloudBlobClient();
-    
+
        // Initialize the continuation token before using it in the do-while loop.
        BlobContinuationToken continuationToken = null;
        do
@@ -277,34 +277,34 @@ Tato metoda má několik klíčových součástí, které je třeba pochopit:
                                     continuationToken,
                                     null,
                                     null);
-    
+
            // The Calculate method returns the number of occurrences of
            // the search term "Microsoft" in each blob associated
            // with the data slice.
            //
            // The definition of the method is shown in the next step.
            output = Calculate(blobList, logger, folderPath, ref continuationToken, "Microsoft");
-    
+
        } while (continuationToken != null);
-    
+
        // Get the output dataset by using the name of the dataset matched to a name in the Activity output collection.
        Dataset outputDataset = datasets.Single(dataset => dataset.Name == activity.Outputs.Single().Name);
-    
+
        folderPath = GetFolderPath(outputDataset);
-    
+
        logger.Write("Writing blob to the folder: {0}", folderPath);
-    
+
        // Create a storage object for the output blob.
        CloudStorageAccount outputStorageAccount = CloudStorageAccount.Parse(connectionString);
        // Write the name of the file.
        Uri outputBlobUri = new Uri(outputStorageAccount.BlobEndpoint, folderPath + "/" + GetFileName(outputDataset));
-    
+
        logger.Write("output blob URI: {0}", outputBlobUri.ToString());
        // Create a blob and upload the output text.
        CloudBlockBlob outputBlob = new CloudBlockBlob(outputBlobUri, outputStorageAccount.Credentials);
        logger.Write("Writing {0} to the output blob", output);
        outputBlob.UploadText(output);
-    
+
        // The dictionary can be used to chain custom activities together in the future.
        // This feature is not implemented yet, so just return an empty dictionary.
        return new Dictionary<string, string>();
@@ -322,41 +322,41 @@ Tato metoda má několik klíčových součástí, které je třeba pochopit:
        {
            return null;
        }
-    
+
        AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
        if (blobDataset == null)
        {
            return null;
        }
-    
+
        return blobDataset.FolderPath;
     }
-    
+
     /// <summary>
     /// Gets the fileName value from the input/output dataset.
     /// </summary>
-    
+
     private static string GetFileName(Dataset dataArtifact)
     {
        if (dataArtifact == null || dataArtifact.Properties == null)
        {
            return null;
        }
-    
+
        AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
        if (blobDataset == null)
        {
            return null;
        }
-    
+
        return blobDataset.FileName;
     }
-    
+
     /// <summary>
     /// Iterates through each blob (file) in the folder, counts the number of instances of the search term in the file,
     /// and prepares the output text that is written to the output blob.
     /// </summary>
-    
+
     public static string Calculate(BlobResultSegment Bresult, IActivityLogger logger, string folderPath, ref BlobContinuationToken token, string searchTerm)
     {
        string output = string.Empty;
@@ -416,7 +416,7 @@ V této části najdete další podrobnosti o kódu v metodě Execute.
     {
     // Get the list of input blobs from the input storage client object.
     BlobResultSegment blobList = inputClient.ListBlobsSegmented(folderPath,
-    
+
                          true,
                                    BlobListingDetails.Metadata,
                                    null,
@@ -424,9 +424,9 @@ V této části najdete další podrobnosti o kódu v metodě Execute.
                                    null,
                                    null);
     // Return a string derived from parsing each blob.
-    
+
      output = Calculate(blobList, logger, folderPath, ref continuationToken, "Microsoft");
-    
+
     } while (continuationToken != null);
 
     ```
@@ -454,14 +454,14 @@ V této části najdete další podrobnosti o kódu v metodě Execute.
 
     ```csharp
     AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
-    
+
     return blobDataset.FolderPath;
     ```
 1. Kód volá metodu **Getfiletable** , aby získal název souboru (název objektu BLOB). Kód je podobný předchozímu kódu, který byl použit k získání cesty ke složce.
 
     ```csharp
     AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
-    
+
     return blobDataset.FileName;
     ```
 1. Název souboru je napsán vytvořením objektu identifikátoru URI. Konstruktor identifikátoru URI používá vlastnost **BlobEndpoint** k vrácení názvu kontejneru. K vytvoření výstupního identifikátoru URI objektu BLOB se přidá cesta ke složce a název souboru.  
@@ -590,7 +590,7 @@ V tomto kroku vytvoříte propojenou službu pro účet Batch, který se použí
       > Služba Data Factory nepodporuje možnost na vyžádání pro službu Batch, protože pro službu HDInsight. V datové továrně můžete použít jenom vlastní fond služby Batch.
       >
       >
-   
+
    e. Pro vlastnost **linkedServiceName** zadejte **StorageLinkedService** . Tuto propojenou službu jste vytvořili v předchozím kroku. Toto úložiště se používá jako pracovní oblast pro soubory a protokoly.
 
 1. Vyberte **Nasadit** na panelu příkazů a nasaďte propojenou službu.
@@ -900,11 +900,11 @@ Ladění se skládá z několika základních technik.
 
     ```
     Trace\_T\_D\_12/6/2015 1:43:35 AM\_T\_D\_\_T\_D\_Verbose\_T\_D\_0\_T\_D\_Loading assembly file MyDotNetActivity...
-    
+
     Trace\_T\_D\_12/6/2015 1:43:35 AM\_T\_D\_\_T\_D\_Verbose\_T\_D\_0\_T\_D\_Creating an instance of MyDotNetActivityNS.MyDotNetActivity from assembly file MyDotNetActivity...
-    
+
     Trace\_T\_D\_12/6/2015 1:43:35 AM\_T\_D\_\_T\_D\_Verbose\_T\_D\_0\_T\_D\_Executing Module
-    
+
     Trace\_T\_D\_12/6/2015 1:43:38 AM\_T\_D\_\_T\_D\_Information\_T\_D\_0\_T\_D\_Activity e3817da0-d843-4c5c-85c6-40ba7424dce2 finished successfully
     ```
 1. Zahrňte soubor **PDB** do souboru zip, aby podrobnosti o chybě obsahovaly informace, jako je například zásobník volání, když dojde k chybě.
@@ -936,13 +936,13 @@ Pokud chcete získat další informace o funkcích Data Factory a Batch, můžet
 
 1. Vytvoří fond s vyšším nebo nižším **maximálním počtu úloh na virtuální počítač**. Pokud chcete použít nový fond, který jste vytvořili, aktualizujte propojenou službu Batch v řešení Data Factory. Další informace o nastavení **maximálního počtu úkolů na virtuální počítač** najdete v části Krok 4: vytvoření a spuštění kanálu s vlastní aktivitou.
 
-1. Vytvořte fond Batch pomocí funkce **automatického škálování** . Automatické škálování výpočetních uzlů ve fondu služby Batch je dynamické seřízení výkonu zpracování, které vaše aplikace používá. 
+1. Vytvořte fond Batch pomocí funkce **automatického škálování** . Automatické škálování výpočetních uzlů ve fondu služby Batch je dynamické seřízení výkonu zpracování, které vaše aplikace používá.
 
     Vzorový vzorec tady dosáhne následujícího chování. Při počátečním vytvoření fondu se spustí jeden virtuální počítač. Metrika $PendingTasks definuje počet úloh ve stavu spuštěno a aktivní (ve frontě). Vzorec nalezne průměrný počet nedokončených úloh za posledních 180 sekund a nastaví TargetDedicated odpovídajícím způsobem. Zajišťuje, že TargetDedicated nikdy nepřekračuje 25 virtuálních počítačů. Při odeslání nových úloh se fond automaticky zvětšuje. Po dokončení úloh se virtuální počítače uvolní jednou a automatické škálování tyto virtuální počítače zmenší. StartingNumberOfVMs a maxNumberofVMs můžete upravit podle svých potřeb.
- 
+
     Vzorec automatického škálování:
 
-    ``` 
+    ```
     startingNumberOfVMs = 1;
     maxNumberofVMs = 25;
     pendingTaskSamplePercent = $PendingTasks.GetSamplePercent(180 * TimeInterval_Second);

@@ -3,15 +3,15 @@ title: Podpora značek pro prostředky
 description: Zobrazuje, které typy prostředků Azure podporují značky. Poskytuje podrobnosti pro všechny služby Azure.
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 493313cbb0b43b04d3c4dde82b5ca95dd7e9ac4e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4eb163376f1a0b8d8194defed4445578975976f2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479771"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982206"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
-Tento článek popisuje, zda typ prostředku podporuje [značky](tag-resources.md). Sloupec s popisem **podporuje značky** označuje, zda typ prostředku má vlastnost pro značku. Sloupec s označením **značka v sestavě náklady** označuje, zda tento typ prostředku předá značku k sestavě nákladů. Náklady můžete zobrazit podle značek v [cost management analýza nákladů](../../cost-management/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) a [fakturace Azure a data o denním využití](../../billing/billing-download-azure-invoice-daily-usage-date.md).
+Tento článek popisuje, zda typ prostředku podporuje [značky](tag-resources.md). Sloupec s popisem **podporuje značky** označuje, zda typ prostředku má vlastnost pro značku. Sloupec s označením **značka v sestavě náklady** označuje, zda tento typ prostředku předá značku k sestavě nákladů. Náklady můžete zobrazit podle značek v [cost management analýza nákladů](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) a [fakturace Azure a data o denním využití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
 
 Pokud chcete získat stejná data jako soubor hodnot oddělených čárkami, Stáhněte si [tag-support. csv](https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv).
 

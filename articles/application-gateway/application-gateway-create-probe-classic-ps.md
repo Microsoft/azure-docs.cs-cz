@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 5f05c6d82a00e78a4237019128db541eb63f20ba
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e01a1cad98ded9d7ce8683b6adf38b5d53959774
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012237"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966800"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Vytvoření vlastní sondy pro Azure Application Gateway (Classic) pomocí prostředí PowerShell
 
@@ -24,15 +24,15 @@ ms.locfileid: "74012237"
 V tomto článku přidáte vlastní test paměti do existující aplikační brány pomocí PowerShellu. Vlastní sondy jsou užitečné pro aplikace, které mají konkrétní stránku kontroly stavu nebo pro aplikace, které neposkytují úspěšnou odpověď na výchozí webovou aplikaci.
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Zjistěte, jak [provést tento postup pomocí modelu Resource Manageru](application-gateway-create-probe-ps.md).
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Zjistěte, jak [provést tento postup pomocí modelu Resource Manageru](application-gateway-create-probe-ps.md).
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření Application Gateway
 
 Pro vytvoření nové aplikační brány:
 
-1. Vytvoření prostředku služby Application Gateway
+1. Vytvořte prostředek aplikační brány.
 2. Vytvořte konfigurační soubor XML nebo objekt konfigurace.
 3. Potvrďte konfiguraci nově vytvořeného prostředku aplikační brány.
 
@@ -146,7 +146,7 @@ Konfigurační parametry jsou:
 | **Protokol** | Použitý protokol (možné hodnoty jsou HTTP nebo HTTPS).|
 | **Hostitel** a **cesta** | Dokončete cestu adresy URL vyvolanou aplikační bránou a určete stav instance. Například pokud máte webovou stránku http:\//contoso.com/, pak se vlastní test paměti dá nakonfigurovat na http:\//contoso.com/path/custompath.htm, aby testy testů měly úspěšnou odpověď HTTP.|
 | **Interval** | Nakonfiguruje kontrolu intervalu sondy v sekundách.|
-| **Prodlev** | Definuje časový limit testu pro kontrolu odezvy protokolu HTTP.|
+| **Timeout** (Časový limit) | Definuje časový limit testu pro kontrolu odezvy protokolu HTTP.|
 | **UnhealthyThreshold** | Počet neúspěšných odpovědí HTTP nutných k označení back-endové instance jako *chybného*.|
 
 Na název sondy se odkazuje v konfiguraci \<BackendHttpSettings\>, která přiřadí, který fond back-end používá vlastní nastavení sondy.

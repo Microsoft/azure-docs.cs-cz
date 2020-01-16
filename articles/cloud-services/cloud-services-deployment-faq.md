@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f935e8fc1e5d6d64bffaeb582e8b248317f49687
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660592"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980632"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s nasazením pro Azure Cloud Services: nejčastější dotazy
 
@@ -56,7 +56,7 @@ Nasazení cloudové služby může selhat, pokud prostředky, které se musí p�
 
 Můžete také sledovat aktuální využití/kvótu pro vaše předplatné na portálu: Azure Portal = > předplatné = > \<odpovídající předplatné > = > využití + kvóta.
 
-Informace související s využitím prostředků/spotřebou se dají získat taky prostřednictvím rozhraní API pro fakturaci Azure. Viz [rozhraní API využití prostředků Azure (Preview)](../billing/billing-usage-rate-card-overview.md#azure-resource-usage-api-preview).
+Informace související s využitím prostředků/spotřebou se dají získat taky prostřednictvím rozhraní API pro fakturaci Azure. Viz [rozhraní API využití prostředků Azure (Preview)](../cost-management-billing/manage/usage-rate-card-overview.md#azure-resource-usage-api-preview).
 
 ## <a name="how-can-i-change-the-size-of-a-deployed-cloud-service-vm-without-redeploying-it"></a>Jak můžu změnit velikost nasazeného virtuálního počítače cloudové služby bez opětovného nasazení?
 Velikost virtuálního počítače nasazené cloudové služby nemůžete změnit bez opětovného nasazení. Velikost virtuálního počítače je integrována do lokality CSDEF, kterou lze aktualizovat pouze pomocí opětovného nasazení.
@@ -66,17 +66,17 @@ Další informace najdete v tématu [Postup aktualizace cloudové služby](cloud
 ## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Proč nemůžu při použití účtu úložiště Azure Resource Manager nasadit Cloud Services prostřednictvím rozhraní API pro správu služeb nebo PowerShellu? 
 
 Vzhledem k tomu, že cloudová služba je klasický prostředek, který není přímo kompatibilní s modelem Azure Resource Manager, nemůžete ho přidružit k účtům úložiště Azure Resource Manager. Tady je několik možností: 
- 
+
 - Nasazení prostřednictvím REST API.
 
     Při nasazení prostřednictvím REST API Service Management můžete obejít omezení zadáním adresy URL SAS pro úložiště objektů blob, který bude fungovat s klasickým i Azure Resource Manager účtem úložiště. Přečtěte [si další informace o vlastnosti '](/previous-versions/azure/reference/ee460813(v=azure.100))PackageUrl '.
-  
+
 - Nasazení prostřednictvím [Azure Portal](https://portal.azure.com).
 
     To bude fungovat z [Azure Portal](https://portal.azure.com) jako volání prostřednictvím proxy nebo překrytí, které umožňuje komunikaci mezi Azure Resource Manager a klasickými prostředky. 
- 
-## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Proč Azure Portal vyžaduje, aby měl účet úložiště pro nasazení? 
 
-Na klasickém portálu se balíček nahrál přímo do vrstvy rozhraní API pro správu a pak vrstva rozhraní API dočasně vloží balíček do interního účtu úložiště.  Tento proces způsobuje problémy s výkonem a škálovatelností, protože vrstva rozhraní API nebyla navržena jako služba pro nahrání souborů.  V Azure Portal (Správce prostředků modelu nasazení) jsme převedli dočasný krok prvního nahrání do vrstvy API, což vede k rychlejšímu a spolehlivější nasazení. 
+## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Proč Azure Portal vyžaduje, aby měl účet úložiště pro nasazení?
 
-Stejně jako u nákladů je velmi malé a stejný účet úložiště můžete použít ve všech nasazeních. Pomocí [kalkulačky nákladů na úložiště](https://azure.microsoft.com/pricing/calculator/#storage1) můžete určit náklady na nahrání balíčku služby (CSPKG), stáhnout CSPKG a pak odstranit CSPKG. 
+Na klasickém portálu se balíček nahrál přímo do vrstvy rozhraní API pro správu a pak vrstva rozhraní API dočasně vloží balíček do interního účtu úložiště.  Tento proces způsobuje problémy s výkonem a škálovatelností, protože vrstva rozhraní API nebyla navržena jako služba pro nahrání souborů.  V Azure Portal (Správce prostředků modelu nasazení) jsme převedli dočasný krok prvního nahrání do vrstvy API, což vede k rychlejšímu a spolehlivější nasazení.
+
+Stejně jako u nákladů je velmi malé a stejný účet úložiště můžete použít ve všech nasazeních. Pomocí [kalkulačky nákladů na úložiště](https://azure.microsoft.com/pricing/calculator/#storage1) můžete určit náklady na nahrání balíčku služby (CSPKG), stáhnout CSPKG a pak odstranit CSPKG.

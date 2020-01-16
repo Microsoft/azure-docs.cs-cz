@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 1a69741ba3ced91b6b0d1fc4bcd4aea887452151
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 20c231e4f3052797eac79a3c97a3d8148690b8c5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792179"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965434"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurace SQL Server instance clusteru s podporou převzetí služeb při selhání na virtuálních počítačích Azure
 
@@ -78,7 +78,7 @@ Jedním z věcí, o které je potřeba vědět, je to, že na clusteru s podporo
 Měli byste mít také obecné porozumění těmto technologiím:
 
 - [Řešení konvergovaná pomocí technologie Hyper-v Prostory úložiště s přímým přístupem v systému Windows Server 2016](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [Skupiny prostředků Azure](../../../azure-resource-manager/manage-resource-groups-portal.md)
+- [Skupiny prostředků Azure](../../../azure-resource-manager/management/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
 > V současné době se SQL Server instance clusterů s podporou převzetí služeb při selhání na virtuálních počítačích Azure podporují jenom s [režimem zjednodušené správy](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md). Pokud chcete přejít z režimu úplného rozšíření na odlehčený, odstraňte prostředek **virtuálního počítače SQL** pro odpovídající virtuální počítače a pak je zaregistrujte u poskytovatele prostředků virtuálního počítače SQL ve zjednodušeném režimu. Při odstraňování prostředku **virtuálního počítače SQL** pomocí Azure Portal **zrušte zaškrtnutí políčka u správného virtuálního počítače**. Úplné rozšíření podporuje funkce, jako je automatické zálohování, opravy a Správa portálu. Po přeinstalaci agenta v režimu zjednodušené správy nebudou tyto funkce fungovat pro virtuální počítače SQL.
@@ -110,7 +110,7 @@ V rámci těchto požadavků můžete začít vytvářet cluster s podporou pře
 
    1. V Azure Portal vyberte **vytvořit prostředek** a otevřete Azure Marketplace. Vyhledejte **skupinu dostupnosti**.
    1. Vyberte **skupinu dostupnosti**.
-   1. Vyberte **Create** (Vytvořit).
+   1. Vyberte **Vytvořit**.
    1. V části **vytvořit skupinu dostupnosti**zadejte tyto hodnoty:
       - **Name (název**): název skupiny dostupnosti.
       - **Předplatné**: vaše předplatné Azure.
@@ -166,7 +166,7 @@ V rámci těchto požadavků můžete začít vytvářet cluster s podporou pře
    1. Vyberte výchozí instanci.
    1. Odeberte všechny funkce ve **službě databázového stroje**. Neodstraňujte **sdílené funkce**. Uvidíte něco podobného jako na následujícím snímku obrazovky:
 
-      ![Výběr funkcí](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
+      ![Vybrat funkce](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
 
    1. Vyberte **Další**a pak vyberte **Odebrat**.
 
@@ -236,14 +236,14 @@ Pokud chcete cluster ověřit pomocí uživatelského rozhraní, proveďte násl
 
 1. V části **Správce serveru**vyberte **nástroje**a pak vyberte **Správce clusteru s podporou převzetí služeb při selhání**.
 1. V části **Správce clusteru s podporou převzetí služeb při selhání**vyberte **Akce**a pak vyberte **ověřit konfiguraci**.
-1. Vyberte **Další**.
+1. Vyberte **Next** (Další).
 1. V části **Vybrat servery nebo cluster**zadejte názvy obou virtuálních počítačů.
-1. V části **Možnosti testování**vyberte **Spustit pouze vybrané testy**. Vyberte **Další**.
+1. V části **Možnosti testování**vyberte **Spustit pouze vybrané testy**. Vyberte **Next** (Další).
 1. V části **Výběr testu**vyberte všechny testy s výjimkou **úložiště**, jak je znázorněno zde:
 
    ![Výběr testů pro ověření clusteru](./media/virtual-machines-windows-portal-sql-create-failover-cluster/10-validate-cluster-test.png)
 
-1. Vyberte **Další**.
+1. Vyberte **Next** (Další).
 1. V části **potvrzení**vyberte **Další**.
 
 Průvodce ověřením konfigurace spustí ověřovací testy.
@@ -318,7 +318,7 @@ Disky pro Prostory úložiště s přímým přístupem musí být prázdné. Ne
 
    Tento snímek obrazovky ukazuje sdílený svazek clusteru s Prostory úložiště s přímým přístupem:
 
-   ![sdílený svazek clusteru](./media/virtual-machines-windows-portal-sql-create-failover-cluster/15-cluster-shared-volume.png)
+   ![Sdílený svazek clusteru](./media/virtual-machines-windows-portal-sql-create-failover-cluster/15-cluster-shared-volume.png)
 
 ## <a name="step-3-test-failover-cluster-failover"></a>Krok 3: testování převzetí služeb při selhání clusteru se selháním
 
@@ -367,7 +367,7 @@ Vytvoření nástroje pro vyrovnávání zatížení:
 
 1. Vyberte **Přidat**. Vyhledejte **Load Balancer**Azure Marketplace. Vyberte **Load Balancer**.
 
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 1. Nakonfigurujte Nástroj pro vyrovnávání zatížení pomocí:
 
@@ -397,7 +397,7 @@ Vytvoření nástroje pro vyrovnávání zatížení:
 
 1. Výběrem **OK** vytvořte fond back-end.
 
-### <a name="configure-a-load-balancer-health-probe"></a>Konfigurace sondy stavu nástroje pro vyrovnávání zatížení
+### <a name="configure-a-load-balancer-health-probe"></a>Nakonfigurovat sondu stavu nástroje pro vyrovnávání zatížení
 
 1. V okně nástroje pro vyrovnávání zatížení vyberte **sondy stavu**.
 
@@ -471,7 +471,7 @@ Po nastavení sondy clusteru můžete zobrazit všechny parametry clusteru v pro
 
 ## <a name="step-7-test-fci-failover"></a>Krok 7: testování převzetí služeb při selhání FCI
 
-Testovací převzetí služeb při selhání pro FCI k ověření funkčnosti clusteru. Proveďte následující kroky:
+Testovací převzetí služeb při selhání pro FCI k ověření funkčnosti clusteru. Postupujte následovně:
 
 1. Připojte se k jednomu z SQL Server uzlů clusteru FCI pomocí protokolu RDP.
 

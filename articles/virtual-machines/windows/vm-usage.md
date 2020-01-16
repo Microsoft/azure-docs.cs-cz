@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: d574c5eef15c21d3d490bcfe682b87bae2856f1d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2aa175d97787d82aae062a95ed519f35ff65816b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353724"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982264"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Principy využití virtuálních počítačů Azure
-Analýzou dat o využití Azure je možné získat výkonné přehledy o spotřebě – přehledy, které umožňují lepší správu nákladů a přidělování v celé organizaci. Tento dokument poskytuje podrobné podrobně k podrobnostem o spotřebě Azure Compute. Další informace o obecném využití Azure najdete v podrobnostech k [porozumění vaší faktuře](../../billing/billing-understand-your-bill.md).
+Analýzou dat o využití Azure je možné získat výkonné přehledy o spotřebě – přehledy, které umožňují lepší správu nákladů a přidělování v celé organizaci. Tento dokument poskytuje podrobné podrobně k podrobnostem o spotřebě Azure Compute. Další informace o obecném využití Azure najdete v podrobnostech k [porozumění vaší faktuře](../../cost-management-billing/understand/review-individual-bill.md).
 
 ## <a name="download-your-usage-details"></a>Stažení podrobností o použití
-Začněte [stažením podrobností o použití](../../billing/billing-download-azure-invoice-daily-usage-date.md). Následující tabulka poskytuje definice a příklady hodnot použití Virtual Machines nasazených prostřednictvím Azure Resource Manager. Tento dokument neobsahuje podrobné informace o virtuálních počítačích nasazených prostřednictvím našeho klasického modelu.
+Začněte [stažením podrobností o použití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Následující tabulka poskytuje definice a příklady hodnot použití Virtual Machines nasazených prostřednictvím Azure Resource Manager. Tento dokument neobsahuje podrobné informace o virtuálních počítačích nasazených prostřednictvím našeho klasického modelu.
 
 
 | Fields (Pole)             | Význam                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Příklady hodnot                                                                                                                                                                                                                                                                                                                                                   |
@@ -132,7 +132,7 @@ ComputeHR představuje výpočetní hodinu, která představuje událost využit
 ### <a name="how-do-i-know-if-i-am-charged-for-premium-software"></a>Návody vědět, jestli se mi účtuje software Premium?
 Při prozkoumávání, které image virtuálních počítačů nejlépe vyhovuje vašim potřebám, se ujistěte, že [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute). Obrázek má sazbu plánu softwaru. Pokud pro tuto sazbu vidíte "Free", pro software se neúčtují žádné další náklady. 
 ### <a name="what-is-the-difference-between-microsoftclassiccompute-and-microsoftcompute-in-the-consumed-service"></a>Jaký je rozdíl mezi Microsoft. ClassicCompute a Microsoft. COMPUTE v spotřebované službě?
-Microsoft. ClassicCompute představuje klasické prostředky nasazené prostřednictvím Azure Service Manager. Pokud nasazujete prostřednictvím Správce prostředků, pak se do využívané služby vyplní Microsoft. Compute. Přečtěte si další informace o [modelech nasazení Azure](../../azure-resource-manager/resource-manager-deployment-model.md).
+Microsoft. ClassicCompute představuje klasické prostředky nasazené prostřednictvím Azure Service Manager. Pokud nasazujete prostřednictvím Správce prostředků, pak se do využívané služby vyplní Microsoft. Compute. Přečtěte si další informace o [modelech nasazení Azure](../../azure-resource-manager/management/deployment-models.md).
 ### <a name="why-is-the-instanceid-field-blank-for-my-virtual-machine-usage"></a>Proč je pole InstanceID prázdné pro využití svého virtuálního počítače?
 Při nasazení prostřednictvím modelu nasazení Classic není řetězec InstanceID k dispozici.
 ### <a name="why-are-the-tags-for-my-vms-not-flowing-to-the-usage-details"></a>Proč značky pro moje virtuální počítače nejsou v toku k podrobnostem o využití?
@@ -143,5 +143,5 @@ V klasickém modelu se fakturace za prostředky agreguje na úrovni cloudové sl
 Virtuální počítače podporující Prémiové úložiště se účtují stejnou sazbou jako virtuální počítače podporující úložiště bez Premium. Liší se jenom náklady na úložiště. Další informace najdete na [stránce s cenami za úložiště](https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/) .
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o vašich podrobnostech o využití najdete v tématu [vysvětlení faktury za Microsoft Azure.](../../billing/billing-understand-your-bill.md)
+Další informace o vašich podrobnostech o využití najdete v tématu [vysvětlení faktury za Microsoft Azure.](../../cost-management-billing/understand/review-individual-bill.md)
 

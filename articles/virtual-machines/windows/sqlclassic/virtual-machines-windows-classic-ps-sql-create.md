@@ -15,19 +15,19 @@ ms.date: 08/07/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8757b634b76867a2d5ccce3dcfdc9d66ef25c25e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 24d8a0b88da44c53cb176244cd5fe7377514abda
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032738"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978117"
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>Zřízení virtuálního počítače s SQL Server pomocí Azure PowerShell (Classic)
 
 Tento článek popisuje kroky, jak vytvořit virtuální počítač s SQL Server v Azure pomocí rutin PowerShellu.
 
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
 
 Správce prostředků verzi tohoto tématu najdete v tématu [zřízení virtuálního počítače s SQL Server pomocí Azure PowerShell správce prostředků](../sql/virtual-machines-windows-ps-sql-create.md).
 
@@ -140,7 +140,7 @@ Nakonec vytvořte virtuální počítač pomocí prostředí PowerShell:
 > [!NOTE]
 > Další vysvětlení a možnosti konfigurace naleznete v části **sestavení sady příkazů** v tématu [použití Azure PowerShell k vytvoření a předkonfigurování Virtual Machines se systémem Windows](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-## <a name="example-powershell-script"></a>Ukázkový skript prostředí PowerShell
+## <a name="example-powershell-script"></a>Ukázkový skript PowerShell
 
 Následující skript poskytuje příklad kompletního skriptu, který na virtuálním počítači s **Windows serverem 2012 R2 vytvoří SQL Server 2016 RTM Enterprise** . Použijete-li tento skript, je nutné přizpůsobit počáteční proměnné na základě předchozích kroků v tomto tématu.
 

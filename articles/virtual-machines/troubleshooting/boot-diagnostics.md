@@ -10,22 +10,22 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: d34182e09bf453dbec1e9592f131cb9b3b78a086
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 0506527808892bf1ee531d892e2773d095e18560
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086476"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965626"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Řešení potíží s virtuálními počítači v Azure pomocí diagnostiky spouštění
 
-Může existovat mnoho důvodů, proč virtuální počítač přejde do stavu bez spouštění. Pokud chcete řešit problémy s virtuálními počítači vytvořenými pomocí modelu nasazení Správce prostředků, můžete použít následující funkce ladění: Podpora výstupu konzoly a snímku obrazovky pro virtuální počítače Azure. 
+Může existovat mnoho důvodů, proč virtuální počítač přejde do stavu bez spouštění. Pokud chcete řešit problémy s virtuálními počítači vytvořenými pomocí modelu nasazení Správce prostředků, můžete použít následující funkce ladění: výstup konzoly a podpora snímků obrazovky pro virtuální počítače Azure. 
 
 Pro virtuální počítače se systémem Linux můžete zobrazit výstup protokolu konzoly z portálu. Pro virtuální počítače s Windows i Linuxem vám Azure umožní zobrazit snímek obrazovky virtuálního počítače z hypervisoru. Obě funkce jsou podporované pro virtuální počítače Azure ve všech oblastech. Mějte na paměti, že může trvat až 10 minut, než se snímky obrazovky a výstup zobrazí v účtu úložiště.
 
 Můžete vybrat možnost **Diagnostika spouštění** a zobrazit protokol a snímek obrazovky.
 
-![Resource Manager](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
+![Správce prostředků](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
 
 ## <a name="common-boot-errors"></a>Běžné chyby spuštění
 
@@ -49,7 +49,7 @@ Následující postup se používá pro virtuální počítač vytvořený pomoc
 
 Na kartě **Správa** v části **monitorování** se ujistěte, že je zapnutá **Diagnostika spouštění** . V rozevíracím seznamu **účet úložiště diagnostiky** vyberte účet úložiště, do kterého se mají umístit diagnostické soubory.
  
-![Vytvořit virtuální počítač](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
+![Vytvoření virtuálního počítače](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
 
 > [!NOTE]
 > Funkce diagnostiky spouštění nepodporuje účet Premium Storage. Pokud pro diagnostiku spouštění použijete účet Premium Storage, může se při spuštění virtuálního počítače zobrazit chyba StorageAccountTypeNotSupported.
@@ -79,7 +79,7 @@ Diagnostický profil umožňuje vybrat účet úložiště pro ukládání proto
 }
 ```
 
-Další informace o nasazení prostředků pomocí šablon najdete v tématu [rychlý Start: Vytváření a nasazování šablon Azure Resource Manager pomocí Azure Portal](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).
+Další informace o nasazení prostředků pomocí šablon najdete v tématu [rychlý Start: vytvoření a nasazení Azure Resource Manager šablon pomocí Azure Portal](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
 ## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>Povolit diagnostiku spouštění na stávajícím virtuálním počítači 
 
@@ -96,5 +96,5 @@ Aby se změna projevila, musíte restartovat virtuální počítač.
 
 ### <a name="enable-boot-diagnostics-using-the-azure-cli"></a>Povolení diagnostiky spouštění pomocí Azure CLI
 
-Rozhraní příkazového řádku Azure můžete použít k povolení diagnostiky spouštění na stávajícím virtuálním počítači Azure. Další informace najdete v tématu [AZ VM Boot-Diagnostics.](
-https://docs.microsoft.com/cli/azure/vm/boot-diagnostics?view=azure-cli-latest)
+Rozhraní příkazového řádku Azure můžete použít k povolení diagnostiky spouštění na stávajícím virtuálním počítači Azure. Další informace najdete v tématu [AZ VM Boot-Diagnostics](
+https://docs.microsoft.com/cli/azure/vm/boot-diagnostics?view=azure-cli-latest).

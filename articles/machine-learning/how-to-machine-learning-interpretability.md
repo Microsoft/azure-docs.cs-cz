@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 7101cef6acd7c7b321fbd31c614063a1fa8fe17a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 339ab811969a3de6ce87d529e1bf77f325be4071
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771866"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968492"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>Interpretace modelu v Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -77,7 +77,7 @@ Tento balíček používá techniky interpretace vyvinuté v části [Interpret 
 * **Napodobení**přístupnosti: napodobování Vysvětlete na základě nápadu při výuce [globálních náhradních modelů](https://christophm.github.io/interpretable-ml-book/global.html) , které napodobují Blackbox modely. Globální náhradní model je vnitřně interpretně interpretováný model, který je vyškolen na to, aby co nejpřesněji předpovědi model černého pole. Odborník na data může interpretovat náhradní model, aby vykreslil závěry o modelu černého pole. Jako svůj náhradní model můžete použít jeden z následujících způsobů, které lze interpretovat: LightGBM (LGBMExplainableModel), lineární regrese (LinearExplainableModel), stochastického Gradientový model klesání na základě standardu (SGDExplainableModel) a rozhodovací strom ( DecisionTreeExplainableModel).
 
 
-* **Vysvětlení důležitosti funkce permutace**: význam funkce permutace je technika, která se používá k vysvětlení modelů klasifikace a regrese, které jsou nechte inspirovat pomocí [náhodných doménových struktur Breiman](https://www.stat.berkeley.edu/%7Ebreiman/randomforest2001.pdf) (viz oddíl 10). Na nejvyšší úrovni je způsob, jakým funguje, náhodným pohybem dat pro celou datovou sadu a výpočtem množství metriky výkonu pro důležité změny. Čím větší je tato změna, tím důležitější je funkce.
+* **Vysvětlení důležitosti funkce permutace**: význam funkce permutace je technika, která se používá k vysvětlení modelů klasifikace a regrese, které jsou nechte inspirovat pomocí [náhodných doménových struktur Breiman](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (viz oddíl 10). Na nejvyšší úrovni je způsob, jakým funguje, náhodným pohybem dat pro celou datovou sadu a výpočtem množství metriky výkonu pro důležité změny. Čím větší je tato změna, tím důležitější je funkce.
 
 * Nástroj na bázi **vápna** (`contrib`): založený na [vápně](https://github.com/marcotcr/lime), vysvětlecí se vápna používá špičkové místní interpretace modelu nezávislá (vápno) k vytvoření místních náhradních modelů. Na rozdíl od globálních náhradních modelů se VÁPNo zaměřuje na školení místních náhradních modelů pro vysvětlení jednotlivých předpovědi.
 * Seznámení s **textem Han** (`contrib`): Nástroj pro vysvětlení textu Han používá hierarchickou síť k získání vysvětlení modelu z textových dat pro daný textový model černého rámečku. Navlakuje na základě předpokládaných výstupů v daném modelu černého rámečku. Po globálním školení v Corpus textu se přidá krok s přípravou pro konkrétní dokument, aby se zlepšila přesnost vysvětlení. HAN používá obousměrný RNN se dvěma úrovněmi pozornosti, pro větu a wordovou pozornost. Jakmile je DNN vyškolený pro model černého pole a vyladěný podle konkrétního dokumentu, uživatel může z vrstev pozornosti extrahovat slova důležitost. HAN se zobrazuje jako přesnější než VÁPNo nebo SHAP pro textová data, ale dražší z hlediska doby školení. Byla provedena vylepšení, která umožňují uživateli inicializovat síť pomocí vkládání slov šetrnější, aby se snížil čas školení. Dobu školení můžete významně zlepšit spuštěním HAN na vzdáleném virtuálním počítači s grafickým procesorem Azure. Implementace HAN je popsána v části [hierarchické pozornosti sítě pro klasifikaci dokumentu (Yang et al., 2016)](https://www.researchgate.net/publication/305334401_Hierarchical_Attention_Networks_for_Document_Classification).

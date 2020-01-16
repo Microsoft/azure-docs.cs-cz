@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d2dce6875ec39810a81bb5ae454d953a7b7ab0a9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ca13d5e8369d007188a17352913519172ed8744e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032721"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978179"
 ---
 # <a name="configure-an-external-listener-for-availability-groups-on-azure-sql-server-vms"></a>Konfigurace externího naslouchacího procesu pro skupiny dostupnosti na virtuálních počítačích Azure SQL Server
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "74032721"
 V tomto tématu se dozvíte, jak nakonfigurovat naslouchací proces pro skupinu dostupnosti Always On, která je externě přístupná na internetu. To je umožněno přiřazením **veřejné virtuální IP adresy (VIP)** cloudové služby k naslouchacímu procesu.
 
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
 
 Vaše skupina dostupnosti může obsahovat jenom repliky, které jsou jenom místní, jenom Azure, nebo v místním prostředí i v Azure pro hybridní konfigurace. Repliky Azure se můžou nacházet ve stejné oblasti nebo v několika oblastech pomocí více virtuálních sítí (virtuální sítě). Následující postup předpokládá, že jste už [nakonfigurovali skupinu dostupnosti](../classic/portal-sql-alwayson-availability-groups.md) , ale nenakonfigurovali jste naslouchací proces.
 

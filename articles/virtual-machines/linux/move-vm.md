@@ -15,22 +15,22 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 8fc04b4689ea8707ac2c605e3e4242a117773151
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2ba8a8cdc324f46e25f9665cfce0aa07fc948e88
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035633"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979026"
 ---
 # <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Přesunutí virtuálního počítače se systémem Linux do jiného předplatného nebo skupiny prostředků
 Tento článek vás seznámí s postupem přesunutí virtuálního počítače se systémem Linux mezi skupinami prostředků nebo odběry. Přesunutí virtuálního počítače mezi předplatnými může být užitečné, pokud jste vytvořili virtuální počítač v osobním předplatném a teď ho chcete přesunout do předplatného vaší společnosti.
 
 > [!IMPORTANT]
->V tuto chvíli nejde přesunout službu Azure Managed Disks. 
+>V tuto chvíli nejde přesunout službu Azure Managed Disks.
 >
->V rámci přesunutí se vytvoří nová ID prostředků. Po přesunutí virtuálního počítače budete muset aktualizovat nástroje a skripty, aby používaly nová ID prostředků. 
-> 
-> 
+>V rámci přesunutí se vytvoří nová ID prostředků. Po přesunutí virtuálního počítače budete muset aktualizovat nástroje a skripty, aby používaly nová ID prostředků.
+>
+>
 
 ## <a name="use-the-azure-cli-to-move-a-vm"></a>Přesunutí virtuálního počítače pomocí rozhraní příkazového řádku Azure
 
@@ -72,5 +72,4 @@ Po zobrazení výzvy k potvrzení, že chcete přesunout zadané prostředky, po
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-common-move-vm.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Mezi skupinami prostředků a předplatnými můžete přesunout mnoho různých typů prostředků. Další informace najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../../resource-group-move-resources.md).    
-
+Mezi skupinami prostředků a předplatnými můžete přesunout mnoho různých typů prostředků. Další informace najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../../azure-resource-manager/management/move-resource-group-and-subscription.md).    

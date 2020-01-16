@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: abb8b6bed6766ff0ea85eab1434014a057af4ca3
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 66c100ecd40e9f0899f7686397339ab849315c3e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68843171"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021056"
 ---
 ## <a name="publish-the-project-to-azure"></a>Publikování projektu do Azure
 
@@ -29,7 +29,7 @@ V této části se předpokládá, že vytváříte novou aplikaci Function App 
 
 1. V Visual Studio Code stisknutím klávesy F1 otevřete paletu příkazů. V paletě příkazů vyhledejte a vyberte `Azure Functions: Deploy to function app...`.
 
-1. Pokud není přihlášený, zobrazí se výzva, abyste se přihlásili **k Azure**. Můžete si také **vytvořit bezplatný účet Azure**. Po úspěšném přihlášení z prohlížeče se vraťte na Visual Studio Code. 
+1. Pokud není přihlášený, zobrazí se výzva, abyste se **přihlásili k Azure**. Můžete si také **vytvořit bezplatný účet Azure**. Po úspěšném přihlášení z prohlížeče se vraťte na Visual Studio Code. 
 
 1. Pokud máte více předplatných, **Vyberte předplatné** pro aplikaci Function App a pak zvolte **+ vytvořit novou Function App v Azure**.
 
@@ -37,13 +37,13 @@ V této části se předpokládá, že vytváříte novou aplikaci Function App 
 
     Po stisknutí klávesy ENTER se ve vašem předplatném vytvoří následující prostředky Azure:
 
-    * **[Skupina prostředků](../articles/azure-resource-manager/resource-group-overview.md)** : Obsahuje všechny vytvořené prostředky Azure. Název je založen na názvu vaší aplikace Function App.
-    * **[Účet úložiště](../articles/storage/common/storage-quickstart-create-account.md)** : Účet úložiště úrovně Standard se vytvoří s jedinečným názvem, který je založený na názvu vaší aplikace Function App.
-    * **[Plán hostování](../articles/azure-functions/functions-scale.md)** : Plán spotřeby se vytvoří v oblasti Západní USA pro hostování aplikace Function bez serveru.
-    * **Aplikace Function App**: Projekt se nasadí do a spustí se v této nové aplikaci Function App.
+    * **[Skupina prostředků](../articles/azure-resource-manager/management/overview.md)** : obsahuje všechny vytvořené prostředky Azure. Název je založen na názvu vaší aplikace Function App.
+    * **[Účet úložiště](../articles/storage/common/storage-account-create.md)** : účet úložiště úrovně Standard se vytvoří s jedinečným názvem, který je založený na názvu vaší aplikace Function App.
+    * **[Plán hostování](../articles/azure-functions/functions-scale.md)** : v oblasti západní USA se vytvoří plán spotřeby pro hostování aplikace Function bez serveru.
+    * **Aplikace Function App**: projekt se nasadí do této nové aplikace Function App a spustí se.
 
     Po vytvoření aplikace funkcí a použití balíčku nasazení se zobrazí oznámení. Pokud chcete zobrazit výsledky vytvoření a nasazení, včetně prostředků Azure, které jste vytvořili, vyberte **Zobrazit výstup** v tomto oznámení.
 
-1. Zpět v **Azure: Oblast** funkce, rozbalte novou aplikaci Function App v rámci vašeho předplatného. Rozbalte **funkce**, klikněte pravým tlačítkem na **HttpTrigger**a pak zvolte **Kopírovat adresu URL funkce**.
+1. Zpátky v oblasti **Azure: Functions** rozbalte novou aplikaci Function App v rámci vašeho předplatného. Rozbalte **funkce**, klikněte pravým tlačítkem na **HttpTrigger**a pak zvolte **Kopírovat adresu URL funkce**.
 
     ![Zkopírujte adresu URL funkce pro nový Trigger HTTP.](./media/functions-publish-project-vscode/function-copy-endpoint-url.png)

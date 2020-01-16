@@ -3,7 +3,7 @@ title: Použití závislostí úkolů ke spouštění úloh na základě dokonč
 description: Vytvořte úkoly, které závisí na dokončení dalších úloh pro zpracování MapReduce stylu a podobných úloh velkých objemů dat v Azure Batch.
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: b8d12db5-ca30-4c7d-993a-a05af9257210
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2a1378a5c00acbbce5e7ec73a75902ec55140575
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 875e0314c41a6bb277769361b6faa0345312db2b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094623"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026232"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Vytváření závislostí úloh pro spouštění úloh, které jsou závislé na jiných úkolech
 
@@ -67,25 +67,25 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 Tento fragment kódu vytvoří závislý úkol s ID úlohy "květiny". Úloha "květiny" závisí na úkolech "deště" a "Sun". Úloha "květiny" bude naplánována na výpočetní uzel až po úspěšném dokončení úloh "deště" a "Sun".
 
 > [!NOTE]
-> Ve výchozím nastavení se úkol považuje za úspěšně dokončený, když je ve stavu **dokončeno** a jeho **ukončovací kód** je `0`. V dávce .NET to znamená [CloudTask][net_cloudtask]. [][net_taskstate] Hodnota`Completed` vlastnosti State a CloudTask [TaskExecutionInformation][net_taskexecutioninformation].[ ][net_exitcode]Hodnota vlastnosti ExitCode je `0`. Informace o tom, jak to změnit, najdete v části [Akce závislosti](#dependency-actions) .
+> Ve výchozím nastavení se úkol považuje za úspěšně dokončený, když je ve stavu **dokončeno** a jeho **ukončovací kód** je `0`. V dávce .NET to znamená [CloudTask][net_cloudtask]. Hodnota vlastnosti [State][net_taskstate] `Completed` a [TaskExecutionInformation][net_taskexecutioninformation]CloudTask. Hodnota vlastnosti [ExitCode][net_exitcode] je `0`. Informace o tom, jak to změnit, najdete v části [Akce závislosti](#dependency-actions) .
 > 
 > 
 
 ## <a name="dependency-scenarios"></a>Scénáře závislosti
 Existují tři základní scénáře závislosti úloh, které můžete použít v Azure Batch: 1:1, 1:1 a rozsah ID úlohy. Je možné je kombinovat tak, aby poskytovaly čtvrtý scénář, mnoho až mnoho.
 
-| Případě&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Příklad |  |
+| Scénář&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Příklad: |  |
 |:---:| --- | --- |
 |  [Jeden k jednomu](#one-to-one) |*úkolb* závisí na *úloze* <p/> *úkolb* nebude naplánováno na spuštění, dokud se *úloha* ' úspěšně nedokončila. |![Diagram: závislost mezi jednotlivými úkoly][1] |
 |  [1: n](#one-to-many) |*ÚkolC* závisí na *úkoluA* a *úkoluB* <p/> *úkolc* nebude naplánováno na spuštění, dokud se úspěšně nedokončí *úlohy Task* a *úkolb* . |![Diagram: závislost úlohy 1: n][2] |
-|  [Rozsah ID úlohy](#task-id-range) |*úkoly* jsou závislé na rozsahu úkolů. <p/> *úlohy* nebudou naplánovány na provádění, dokud nebudou úspěšně dokončeny úlohy s ID *1* až *10* . |![Znázorňuje Závislost rozsahu ID úlohy][3] |
+|  [Rozsah ID úlohy](#task-id-range) |*úkoly* jsou závislé na rozsahu úkolů. <p/> *úlohy* nebudou naplánovány na provádění, dokud nebudou úspěšně dokončeny úlohy s ID *1* až *10* . |![Diagram: závislost rozsahu ID úkolu][3] |
 
 > [!TIP]
 > Můžete vytvořit relace **m:n** , například kde úkoly C, D, E a F jsou závislé na úkolech a a B. To je užitečné, například v paralelních scénářích předběžného zpracování, kde se vaše podřízené úlohy liší v závislosti na výstupu více nadřazených úloh.
 > 
 > V příkladech v této části se závislá úloha spustí až po úspěšném dokončení nadřazených úloh. Toto chování je výchozím chováním závislé úlohy. Závislý úkol můžete spustit po chybě nadřazené úlohy zadáním akce závislosti pro přepsání výchozího chování. Podrobnosti najdete v části [Akce závislosti](#dependency-actions) .
 
-### <a name="one-to-one"></a>Jeden k jednomu
+### <a name="one-to-one"></a>Relace jednoho k jednomu jinému
 V relaci 1:1 závisí úkol na úspěšném dokončení jedné nadřazené úlohy. Pokud chcete vytvořit závislost, poskytněte [TaskDependencies][net_taskdependencies]jedno ID úlohy. [OnId][net_onid] statická metoda, když naplníte vlastnost [DependsOn][net_dependson] třídy [CloudTask][net_cloudtask].
 
 ```csharp
@@ -120,9 +120,9 @@ V závislosti na rozsahu nadřazených úkolů závisí úkol na dokončení úl
 Chcete-li vytvořit závislost, zadejte ID první a poslední úlohy v rozsahu pro [TaskDependencies][net_taskdependencies]. [OnIdRange][net_onidrange] statická metoda, když naplníte vlastnost [DependsOn][net_dependson] třídy [CloudTask][net_cloudtask].
 
 > [!IMPORTANT]
-> Pokud pro závislosti použijete rozsah ID úkolu, budou rozsahem vybrány pouze úlohy s ID reprezentujícími celočíselné hodnoty. Rozsah `1..10` pak bude vybírat `3` úlohy, ale ne `5flamingoes`. `7` 
+> Pokud pro závislosti použijete rozsah ID úkolu, budou rozsahem vybrány pouze úlohy s ID reprezentujícími celočíselné hodnoty. Rozsah `1..10` pak vybere úlohy `3` a `7`, ale ne `5flamingoes`. 
 > 
-> Úvodní nuly `4`nejsou významné při vyhodnocování závislostí rozsahu, takže úkoly s identifikátory `04` řetězců a `004` budou všechny *v* rozsahu a všechny budou považovány za úlohu `4`, takže první z nich k dokončení bude vyhovovat závislosti.
+> Úvodní nuly nejsou významné při vyhodnocování závislostí rozsahu, takže úkoly s identifikátory řetězců `4`, `04` a `004` budou všechny *v* rozsahu a všechny budou považovány za `4`úloh, takže první z nich bude vyhovovat této závislosti.
 > 
 > Každý úkol v rozsahu musí splňovat závislosti, a to buď pomocí úspěšného dokončení, nebo dokončením selhání namapovaného na akci závislosti nastavenou na hodnotu **vyhovující**. Podrobnosti najdete v části [Akce závislosti](#dependency-actions) .
 >
@@ -210,11 +210,11 @@ Vzorový projekt [TaskDependencies][github_taskdependencies] je jednou z [Azure 
 - Jak spouštět tyto úlohy ve fondu výpočetních uzlů.
 
 ## <a name="next-steps"></a>Další kroky
-### <a name="application-deployment"></a>Nasazení aplikace
+### <a name="application-deployment"></a>Nasazení aplikací
 Funkce [balíčků aplikací](batch-application-packages.md) služby Batch poskytuje snadný způsob nasazení a verze aplikací, které vaše úkoly spouštějí na výpočetních uzlech.
 
 ### <a name="installing-applications-and-staging-data"></a>Instalace aplikací a pracovních dat
-Přehled metod pro přípravu vašich uzlů ke spouštění úkolů najdete v tématu [instalace aplikací a][forum_post] přípravných dat na výpočetních uzlech služby Batch na Azure Batch fóru. V rámci jednoho z Azure Batch členů týmu je tento příspěvek dobrým aspektem různých způsobů kopírování aplikací, vstupních dat úkolů a dalších souborů do výpočetních uzlů.
+Přehled metod pro přípravu vašich uzlů ke spouštění úkolů najdete v tématu [instalace aplikací a přípravných dat na výpočetních uzlech služby Batch][forum_post] na Azure Batch fóru. V rámci jednoho z Azure Batch členů týmu je tento příspěvek dobrým aspektem různých způsobů kopírování aplikací, vstupních dat úkolů a dalších souborů do výpočetních uzlů.
 
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
 [github_taskdependencies]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies

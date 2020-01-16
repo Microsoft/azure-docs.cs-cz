@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 6eeabb279f5bd5165ebb249651b8bc926deb92a6
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: a385d3ed7ef46389f96de72c98ffc29cebf60ec4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530914"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978846"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Správa mezipaměti Azure pro Redis s využitím Azure PowerShell
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ V tomto tématu se dozvíte, jak provádět běžné úlohy, jako je vytvářen�
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-Další informace o modelu nasazení Classic najdete v tématu [Azure Resource Manager vs. Classic Deployment: Principy modelů nasazení a stavu vašich prostředků](../azure-resource-manager/resource-manager-deployment-model.md).
+Další informace o modelu nasazení Classic najdete v tématu [Azure Resource Manager vs. Classic Deployment: Principy modelů nasazení a stavu vašich prostředků](../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="prerequisites"></a>Požadavky
 Pokud jste již nainstalovali Azure PowerShell, je nutné, abyste měli Azure PowerShell verze 1.0.0 nebo novější. Verzi Azure PowerShell, kterou jste nainstalovali s tímto příkazem, můžete zjistit na příkazovém řádku Azure PowerShell.
@@ -776,7 +776,7 @@ Další informace o používání prostředí Windows PowerShell s Azure najdete
 
 * [Dokumentace k rutinám Azure cache for Redis na webu MSDN](https://docs.microsoft.com/powershell/module/az.rediscache)
 * [Rutiny Azure Resource Manager](https://go.microsoft.com/fwlink/?LinkID=394765): Naučte se používat rutiny v modulu Azure Resource Manager.
-* [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-template-deploy-portal.md): Naučte se vytvářet a spravovat skupiny prostředků v Azure Portal.
+* [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/templates/deploy-portal.md): Naučte se vytvářet a spravovat skupiny prostředků v Azure Portal.
 * [Blog o Azure](https://azure.microsoft.com/blog/): Seznamte se s novými funkcemi v Azure.
 * [Blog k Windows PowerShellu](https://blogs.msdn.com/powershell): Přečtěte si o nových funkcích Windows PowerShellu.
 * ["Hey, Scripting Guy!" Blog](https://blogs.technet.com/b/heyscriptingguy/): Získejte z komunity Windows PowerShellu reálné tipy a triky.

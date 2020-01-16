@@ -11,16 +11,16 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: d4c9b926afe93f52946c5f1adf40835f72812f2a
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: ba591872f4f8af93e5f7e13e0fb69d0679fd1a0c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995818"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965750"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Odebrání ochrany transparentní šifrování dat (TDE) pomocí prostředí PowerShell
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít předplatné Azure a mít oprávnění správce k tomuto předplatnému.
 - Musíte mít nainstalovanou a spuštěnou Azure PowerShell.
@@ -53,10 +53,10 @@ Následující kroky popisují, jak kontrolovat kryptografické otisky ochrany T
 Kryptografický otisk aktuálního TDE ochrany databáze a ID databáze lze najít spuštěním:
 
 ```sql
-SELECT [database_id], 
-       [encryption_state], 
-       [encryptor_type], /*asymmetric key means AKV, certificate means service-managed keys*/ 
-       [encryptor_thumbprint], 
+SELECT [database_id],
+       [encryption_state],
+       [encryptor_type], /*asymmetric key means AKV, certificate means service-managed keys*/
+       [encryptor_thumbprint],
  FROM [sys].[dm_database_encryption_keys]
 ```
 

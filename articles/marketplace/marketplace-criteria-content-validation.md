@@ -9,18 +9,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/31/2019
 ms.author: evansma
-ms.openlocfilehash: f4cd5083d694cb7c463596b7b45c384e0dc8b28d
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 8c0af3f059d1beb0e1d07d3494b31c674f15438d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779735"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980878"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Pokyny pro výpis Azure Marketplace
 
 Tento dokument obsahuje pokyny pro požadavky, jakož i kontrolní seznam pro nové nabídky a služby uvedené Azure Marketplace.
 
-Všechny nabídky musí splňovat [všechny požadavky na výpisy](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#all-listing-requirements) uvedené níže. Pro konkrétní typy seznamů jsou k dispozici další požadavky a kontrolní seznamy, včetně: nabídky s připojenými [zkušebními](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#trial-offer-requirements)verzemi, [SaaS aplikacemi](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#saas-apps-requirements), [kontejnery](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#container-offer-requirements)a [konzultačními nabídkami](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#consulting-offer-requirements).
+Všechny nabídky musí splňovat [všechny požadavky na výpisy](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#all-listing-requirements) uvedené níže. Pro konkrétní typy seznamů jsou k dispozici další požadavky a kontrolní seznamy, včetně: nabídky s připojenými [zkušebními](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#trial-offer-requirements)verzemi, [SaaS aplikacemi](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#saas-app-requirements), [kontejnery](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#container-offer-requirements)a [konzultačními nabídkami](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#consulting-offer-requirements).
 
 
 ## <a name="all-listing-requirements"></a>Všechny požadavky na výpisy

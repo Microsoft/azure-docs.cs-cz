@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: bc637976632551eb1afce1894714fc96baabfe03
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3849106fbc488f456a4d267d0ccef76647c1939f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894234"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981317"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Nelze provést vzdálené plochy k virtuálnímu počítači, protože síťové rozhraní je zakázaná.
 
 Tento článek vysvětluje, jak vyřešit problém, ve kterém nemůžete provádět připojení ke vzdálené ploše do Azure Windows Virtual Machines (VM) je zakázána. síťové rozhraní.
 
 > [!NOTE]
-> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
+> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/management/deployment-models.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
 
 ## <a name="symptoms"></a>Příznaky
 

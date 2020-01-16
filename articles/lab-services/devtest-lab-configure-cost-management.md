@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 9180c29b807ef26c6426aab75fe74870fef9669a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 247327d001342fd0e2943ae7cf010e648761cdaa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318167"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976346"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Sledovat náklady spojené s testovacím prostředím v Azure DevTest Labs
 Tento článek poskytuje informace o tom, jak sledovat náklady na testovací prostředí. Ukáže vám, jak zobrazit odhadované Trent nákladů pro aktuální kalendářní měsíc pro testovací prostředí. Článek také ukazuje, jak zobrazit měsíční náklady na prostředek v testovacím prostředí.
@@ -29,7 +29,7 @@ V této části se dozvíte, jak pomocí grafu **trendu předpokládaných nákl
 
 Chcete-li zobrazit graf trendu odhadovaných nákladů měsíčně, postupujte podle následujících kroků: 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte testovací prostředí.  
 4. V nabídce vlevo vyberte **Konfigurace a zásady** .  
@@ -37,7 +37,7 @@ Chcete-li zobrazit graf trendu odhadovaných nákladů měsíčně, postupujte p
    
     ![Nákladový graf](./media/devtest-lab-configure-cost-management/graph.png)
 
-    Odhadovaná hodnota **nákladů** je aktuální odhadované náklady v kalendářním měsíci. Předpokládané **náklady** jsou odhadované náklady na celý aktuální kalendářní měsíc, vypočítané pomocí nákladů testovacího prostředí za předchozích pět dnů.
+    **Odhadovaná hodnota nákladů** je aktuální odhadované náklady v kalendářním měsíci. Předpokládané **náklady** jsou odhadované náklady na celý aktuální kalendářní měsíc, vypočítané pomocí nákladů testovacího prostředí za předchozích pět dnů.
 
     Náklady se zaokrouhlují na nejbližší celé číslo. Příklad: 
 
@@ -47,9 +47,9 @@ Chcete-li zobrazit graf trendu odhadovaných nákladů měsíčně, postupujte p
 
      Jak je uvedeno výše v grafu, ceny, které se ve výchozím nastavení zobrazí v grafu, jsou *Odhadované* náklady s využitím sazeb za průběžné [platby](https://azure.microsoft.com/offers/ms-azr-0003p/) . Můžete také nastavit vlastní cíle útraty, které se zobrazí v grafech, a to tak, že [se budou řídit náklady na testovací prostředí.](#managing-cost-targets-for-your-lab)
 
-     Kalkulace nákladů nezahrnuje následující náklady:
+     Kalkulace nákladů *nezahrnuje následující* náklady:
 
-   * Předplatná CSP a DreamSpark se v tuto chvíli nepodporují, protože Azure DevTest Labs používá [rozhraní API pro fakturaci Azure](../billing/billing-usage-rate-card-overview.md) k výpočtu nákladů testovacího prostředí, které nepodporují předplatné CSP nebo DreamSpark.
+   * Předplatná CSP a DreamSpark se v tuto chvíli nepodporují, protože Azure DevTest Labs používá [rozhraní API pro fakturaci Azure](../cost-management-billing/manage/usage-rate-card-overview.md) k výpočtu nákladů testovacího prostředí, které nepodporují předplatné CSP nebo DreamSpark.
    * Sazby vaší nabídky. V současné době nemůžete použít sazby nabídek (zobrazené v rámci vašeho předplatného), které jste vyjednali s partnery Microsoftu nebo Microsoftu. Používají se jenom tarify průběžných plateb.
    * Vaše daně
    * Vaše slevy
@@ -70,14 +70,14 @@ DevTest Labs vám umožní lépe spravovat náklady v testovacím prostředí t�
       - **Opraveno**: cíle nákladů jsou sledovány pro rozsah dat, který zadáte v počátečním a koncovém datu. Obvykle tyto hodnoty reprezentují, jak dlouho je naplánováno spuštění projektu.
    - Zadejte **cílové náklady**. Například kolik plánujete v tomto testovacím prostředí strávit v časovém období, které jste definovali.
    - Tuto možnost vyberte, pokud chcete povolit nebo zakázat všechny hlášené prahové hodnoty – v přírůstcích po 25% až do 125% zadaných **cílových nákladů**.
-      - **Oznamovat**: Pokud je tato prahová hodnota splněná, zobrazí se vám adresa URL Webhooku, kterou zadáte.
-      - **Zobrazit v grafu**: Po splnění této prahové hodnoty se výsledky vykreslí na graf trendu nákladů, který můžete zobrazit, jak je popsáno v tématu zobrazení měsíčního trendu odhadovaných nákladů.
-   - Pokud se rozhodnete  , že při splnění prahové hodnoty budete upozorněni, musíte zadat adresu URL Webhooku. V oblasti integrace nákladů vyberte **kliknutím sem přidejte integraci**. V podokně Konfigurace oznámení zadejte **adresu URL** Webhooku a pak vyberte **OK**.
+      - **Oznámení**: Pokud je tato prahová hodnota splněná, zobrazí se oznámení adresa URL Webhooku, kterou zadáte.
+      - **Vykreslení v grafu**: když je tato prahová hodnota splněná, výsledky se vykreslují v grafu trendů nákladů, který můžete zobrazit, jak je popsáno v tématu zobrazení měsíčního trendu odhadovaných nákladů.
+   - Pokud se rozhodnete, že při splnění prahové hodnoty budete **upozorněni** , musíte zadat adresu URL Webhooku. V oblasti integrace nákladů vyberte **kliknutím sem přidejte integraci**. V podokně Konfigurace oznámení zadejte **adresu URL Webhooku** a pak vyberte **OK**.
 
        ![Konfigurovat podokno oznámení](./media/devtest-lab-configure-cost-management/configure-notification.png)
 
      - Pokud zadáte **Notify**, musíte zadat adresu URL Webhooku.
-     - Podobně platí, že pokud definujete adresu URL Webhooku, musíte nastavit **oznámení** v podokně prahová hodnota nákladů.
+     - Podobně platí, že pokud definujete adresu URL Webhooku, musíte nastavit oznámení **v podokně** prahová hodnota nákladů.
      - Webhook je nutné vytvořit před jeho zadáním sem.  
 
        Další informace o webhookech najdete v tématu [Vytvoření Webhooku nebo rozhraní API Azure Function](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
@@ -85,7 +85,7 @@ DevTest Labs vám umožní lépe spravovat náklady v testovacím prostředí t�
 ## <a name="view-cost-by-resource"></a>Zobrazit náklady podle prostředku 
 Funkce trendu měsíčních nákladů v cvičení vám umožní zjistit, kolik jste strávili v aktuálním kalendářním měsíci. Zobrazuje také projekci útraty až do konce měsíce na základě vašich útraty za posledních sedm dní. Abychom vám pomohli pochopit, proč útraty v testovacím prostředí jsou na začátku prahové hodnoty, můžete použít funkci **náklady podle prostředků** , která zobrazuje měsíční náklady na **prostředek** v tabulce.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte požadované testovací prostředí.  
 4. V nabídce vlevo vyberte **Konfigurace a zásady** .
@@ -95,9 +95,9 @@ Funkce trendu měsíčních nákladů v cvičení vám umožní zjistit, kolik j
 
 Tato funkce vám pomůže snadno identifikovat prostředky, které jsou nejdůležitější, takže můžete provádět akce, které snižují náklady na testovací prostředí. Například náklady na virtuální počítač jsou založené na velikosti virtuálního počítače. Čím větší je velikost virtuálního počítače, tím více jsou náklady. Můžete snadno najít velikost virtuálního počítače a vlastníka, abyste se mohli spojit s vlastníkem virtuálního počítače, abyste zjistili, proč je taková velikost virtuálního počítače potřebná a jestli existuje možnost snížit velikost.
 
-[Zásady automatického](devtest-lab-set-lab-policy.md?#set-auto-shutdown-policy) vypínání vám pomáhají snížit náklady vypínáním testovacích virtuálních počítačů v určitou dobu dne. Uživatel testovacího prostředí se ale může odhlásit ze zásad vypnutí, což zvyšuje náklady na provoz virtuálního počítače. Můžete vybrat virtuální počítač v tabulce, abyste zjistili, jestli se mu zásady automatického vypínání nerozhodly. V takovém případě se můžete spojit s vlastníkem virtuálního počítače, abyste zjistili, proč se na virtuální počítač nerozhodla zásada.
+[Zásady automatického vypínání](devtest-lab-set-lab-policy.md?#set-auto-shutdown-policy) vám pomáhají snížit náklady vypínáním testovacích virtuálních počítačů v určitou dobu dne. Uživatel testovacího prostředí se ale může odhlásit ze zásad vypnutí, což zvyšuje náklady na provoz virtuálního počítače. Můžete vybrat virtuální počítač v tabulce, abyste zjistili, jestli se mu zásady automatického vypínání nerozhodly. V takovém případě se můžete spojit s vlastníkem virtuálního počítače, abyste zjistili, proč se na virtuální počítač nerozhodla zásada.
  
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Tady je několik věcí, které je potřeba vyzkoušet:
 
 * [Definovat zásady testovacího prostředí](devtest-lab-set-lab-policy.md) – Naučte se, jak nastavit různé zásady, pomocí kterých můžete řídit, jak se vaše testovací prostředí a jeho virtuální počítače používají. 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: e3d8ada67b0a592df9c2dba145626836f27da631
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 52fb7c770e9f9e2570cad92a8c0dd9bc4374e708
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459368"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980192"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Seznamte se se šablonami sady škálování virtuálních počítačů
 [Šablony Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process) nabízí skvělou možnost pro nasazení skupin souvisejících prostředků. V této sérii kurzů se dozvíte, jak vytvořit šablonu základní sady škálování a jak tuto šablonu upravit tak, aby vyhovovala různým scénářům. Všechny příklady pocházejí z tohoto [úložiště GitHubu](https://github.com/gatneil/mvss).
@@ -75,7 +75,7 @@ Všechny prostředky vyžadují `type`vlastnosti, `name`, `apiVersion`a `locatio
 ```
 
 ## <a name="specify-location"></a>Zadat umístění
-Pokud chcete zadat umístění pro virtuální síť, použijte [funkci správce prostředků šablony](../azure-resource-manager/resource-group-template-functions.md). Tato funkce musí být uzavřena do uvozovek a hranatých závorek takto: `"[<template-function>]"`. V takovém případě použijte funkci `resourceGroup`. Trvá to bez argumentů a vrátí objekt JSON s metadaty týkající se skupiny prostředků, do které se nasazení nasazuje. Skupina prostředků je nastavená uživatelem v době nasazení. Tato hodnota je pak indexována do tohoto objektu JSON s `.location`, aby získala umístění z objektu JSON.
+Pokud chcete zadat umístění pro virtuální síť, použijte [funkci správce prostředků šablony](../azure-resource-manager/templates/template-functions.md). Tato funkce musí být uzavřena do uvozovek a hranatých závorek takto: `"[<template-function>]"`. V takovém případě použijte funkci `resourceGroup`. Trvá to bez argumentů a vrátí objekt JSON s metadaty týkající se skupiny prostředků, do které se nasazení nasazuje. Skupina prostředků je nastavená uživatelem v době nasazení. Tato hodnota je pak indexována do tohoto objektu JSON s `.location`, aby získala umístění z objektu JSON.
 
 ```json
        "location": "[resourceGroup().location]",
