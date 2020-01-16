@@ -1,18 +1,15 @@
 ---
 title: Migrace Azure Migrate migrace serveru bez agentů pro virtuální počítače VMware
 description: Naučte se spouštět migraci virtuálních počítačů VMware bez agenta pomocí Azure Migrate.
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
-ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2b4aad83abc92170df5a7e7cfa7f7751b49b3424
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: fa77b9d730c28c21569064d05ca3a600dfb71071
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196404"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028697"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrace virtuálních počítačů VMware do Azure (bez agenta)
 
@@ -92,7 +89,7 @@ Pokud chcete zařízení nastavit, postupujte podle pokynů v [tomto článku](h
 
 Azure Migrate vyžaduje změny virtuálních počítačů, aby bylo zajištěno, že virtuální počítače lze migrovat do Azure.
 
-- Pro některé operační systémy Azure Migrate provede tyto změny automaticky. [Další informace](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements)
+- Pro některé operační systémy Azure Migrate provede tyto změny automaticky. [Další informace](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms)
 - Pokud migrujete virtuální počítač, který nemá některý z těchto operačních systémů, připravte si virtuální počítač podle pokynů.
 - Před zahájením migrace je důležité tyto změny provést. Pokud před provedením změny migrujete virtuální počítač, nemusí se virtuální počítač spustit v Azure.
 - Změny konfigurace, které provedete na místních virtuálních počítačích, se po povolení replikace pro virtuální počítač replikují do Azure. Aby se zajistilo, že se změny replikují, ujistěte se, že bod obnovení, na který migrujete, je pozdější než čas, kdy se změny konfigurace provedly v místním prostředí.
@@ -100,7 +97,7 @@ Azure Migrate vyžaduje změny virtuálních počítačů, aby bylo zajištěno,
 
 ### <a name="prepare-windows-server-vms"></a>Příprava virtuálních počítačů s Windows serverem
 
-**Akce** | **Podrobnosti** | **Pokynů**
+**Akce** | **Podrobnosti** | **Pokyny**
 --- | --- | ---
 Zajistěte, aby svazky Windows na virtuálním počítači Azure používaly stejná přiřazení písmen jednotek jako místní virtuální počítač. | Nakonfigurujte zásady sítě SAN jako online vše. | 1. Přihlaste se k virtuálnímu počítači pomocí účtu správce a otevřete příkazové okno.<br/> 2. zadáním příkazu **DiskPart** spustíte nástroj Diskpart.<br/> 3. zadejte **zásady sítě San = OnlineAll**<br/> 4. Zadejte příkaz exit pro opuštění programu DiskPart a zavřete příkazový řádek.
 Povolení konzole sériového přístupu Azure pro virtuální počítač Azure | To pomáhá při řešení potíží. Nemusíte restartovat virtuální počítač. Virtuální počítač Azure se spustí s použitím bitové kopie disku a je stejný jako restart nového virtuálního počítače. | Pokud chcete povolit, postupujte podle [těchto pokynů](https://docs.microsoft.com/azure/virtual-machines/windows/serial-console) .
@@ -161,7 +158,7 @@ Po dokončení zjišťování můžete zahájit replikaci virtuálních počíta
 
     ![Nastavení cíle](./media/tutorial-migrate-vmware/target-settings.png)
 
-8. V části **Výpočetní prostředky** zkontrolujte název, velikost, typ disku s operačním systémem a skupinu dostupnosti virtuálního počítače. Virtuální počítače musí splňovat [požadavky Azure](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements).
+8. V části **Výpočetní prostředky** zkontrolujte název, velikost, typ disku s operačním systémem a skupinu dostupnosti virtuálního počítače. Virtuální počítače musí splňovat [požadavky Azure](migrate-support-matrix-vmware-migration.md#azure-vm-requirements).
 
     - **Velikost virtuálního počítače**: Pokud používáte doporučení pro vyhodnocení, bude rozevírací seznam velikost virtuálního počítače obsahovat doporučenou velikost. Jinak Azure Migrate vybere velikost na základě nejbližší shody v předplatném Azure. Případně můžete velikost vybrat ručně v části **Velikost virtuálního počítače Azure**. 
     - **Disk s operačním systémem**: zadejte operační systém (spouštěcí) disk pro virtuální počítač. Disk s operačním systémem je disk, který obsahuje spouštěcí zavaděč a instalační program operačního systému. 

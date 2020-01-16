@@ -10,12 +10,12 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: c309a7cb18086526b23c875b41d9d4f4db4bc213
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: be2bda4e1bfd6a679076f79969e4829aa1a847c9
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70231380"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895966"
 ---
 ::: zone target="docs"
 
@@ -46,7 +46,7 @@ V tomto kurzu se naučíte:
 Než začnete, ujistěte se, že:
 - Dokončili jste [Kurz: Instalace a konfigurace Azure Data Box Disku](data-box-disk-deploy-set-up.md).
 - Vaše disky jsou odemknuté a připojené ke klientskému počítači.
-- Klientský počítač, který se používá ke kopírování dat na disky, musí používat [podporovaný operační systém](data-box-disk-system-requirements.md##supported-operating-systems-for-clients).
+- Klientský počítač, který se používá ke kopírování dat na disky, musí používat [podporovaný operační systém](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
 - Ujistěte se, že zamýšlený typ úložiště pro vaše data odpovídá [podporovaným typům úložiště](data-box-disk-system-requirements.md#supported-storage-types-for-upload).
 - Projděte si [omezení spravovaných disků v omezeních velikosti objektů Azure](data-box-disk-limits.md#azure-object-size-limits).
 

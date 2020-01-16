@@ -15,14 +15,17 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c84bc3633ccd25fd2206c9e6912a6b8c8d46a5f4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2ccddfa9834b51885d827601d348e34698928930
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974185"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981250"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Kurz: Zabezpečení webového serveru na virtuálním počítači s Windows v Azure pomocí certifikátů SSL uložených ve službě Key Vault
+
+> [!NOTE]
+> V současné době tento dokument funguje pouze pro generalizované obrázky. Při pokusu o použití specializovaného disku v tomto kurzu dojde k chybě. 
 
 K zabezpečení webových serverů můžete použít certifikáty SSL (Secure Sockets Layer), které šifrují webový provoz. Tyto certifikáty SSL můžete ukládat do služby Azure Key Vault a umožnit zabezpečená nasazování certifikátů do virtuálních počítačů s Windows v Azure. Co se v tomto kurzu naučíte:
 
@@ -37,7 +40,7 @@ K zabezpečení webových serverů můžete použít certifikáty SSL (Secure So
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložit je do Cloud Shellu a potom je spusťte stisknutím klávesy Enter.
 
 
 ## <a name="overview"></a>Přehled

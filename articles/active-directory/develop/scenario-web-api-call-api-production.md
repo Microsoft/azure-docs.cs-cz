@@ -15,23 +15,23 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d59a5b2a74c10e36103713725113cbe8c9cc412
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1426ad250e18d0132e116162a374120dda2e1200
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965165"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044135"
 ---
-# <a name="web-api-that-calls-web-apis---move-to-production"></a>Webové rozhraní API, které volá webová rozhraní API – přesun do produkčního prostředí
+# <a name="a-web-api-that-calls-web-apis-move-to-production"></a>Webové rozhraní API, které volá webová rozhraní API: Přesun do produkčního prostředí
 
-Jakmile získáte token pro volání webových rozhraní API, můžete aplikaci přesunout do produkčního prostředí.
+Po získání tokenu pro volání webových rozhraní API můžete aplikaci přesunout do produkčního prostředí.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="learn-more"></a>Další informace
 
-Teď, když znáte základy volání webových rozhraní API z vlastního webového rozhraní API, může vás zajímat tento kurz, který popisuje kód, který se používá k vytvoření chráněného webového rozhraní API, které volá webová rozhraní API.
+Teď, když znáte základy volání webových rozhraní API z vlastního webového rozhraní API, může vás zajímat následující kurz, který popisuje kód, který se používá k vytvoření chráněného webového rozhraní API, které volá webová rozhraní API.
 
 | Ukázka | Platforma | Popis |
 |--------|----------|-------------|
-| [active-directory-aspnetcore-webapi-tutorial-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) | Webové rozhraní API ASP.NET Core 2,2, Desktop (WPF) | Rozhraní Web API ASP.NET Core 2,2 volá Microsoft Graph, která se volá z aplikace WPF pomocí platformy Microsoft identity (v 2.0). |
+| [active-directory-aspnetcore-webapi-tutorial-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) | Webové rozhraní API ASP.NET Core 2,2, Desktop (WPF) | Rozhraní Web API ASP.NET Core 2,2 volá Microsoft Graph, které voláte z aplikace WPF pomocí platformy Microsoft identity (v 2.0). |

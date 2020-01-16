@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 62faf33dc8b3690036407972e12633e741a85d78
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 880a85676ff7a0364431b33b90093298b12bffed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176750"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980459"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Správa klíčů účtu úložiště pomocí Key Vault a Azure CLI
 
@@ -41,11 +41,11 @@ Tenant služby Azure AD poskytuje každou registrovanou aplikaci s [instančním
 
 Key Vault je aplikace Microsoftu, která je předem registrovaná ve všech klientech Azure AD. Key Vault je zaregistrované pod stejným ID aplikace v každém cloudu Azure.
 
-| Tenantů | Cloud | ID aplikace |
+| Klienti | Cloud | ID aplikace |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Veřejné Azure | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Ostatní  | Jakýkoli | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Jiné  | Všechny | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -53,7 +53,7 @@ Chcete-li dokončit tuto příručku, je třeba nejprve provést následující 
 
 - [Nainstalujte rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 - [Vytvoření trezoru klíčů](quick-create-cli.md)
-- [Vytvořte si účet Azure Storage](../storage/common/storage-quickstart-create-account.md?tabs=azure-cli). Název účtu úložiště musí obsahovat jenom malá písmena a číslice. Název musí mít délku 3 až 24 znaků.
+- [Vytvořte si účet Azure Storage](../storage/common/storage-account-create.md?tabs=azure-cli). Název účtu úložiště musí obsahovat jenom malá písmena a číslice. Název musí mít délku 3 až 24 znaků.
       
 ## <a name="manage-storage-account-keys"></a>Správa klíčů účtu úložiště
 

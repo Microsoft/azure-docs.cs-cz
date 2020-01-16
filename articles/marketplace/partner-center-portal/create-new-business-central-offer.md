@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: b3d66cab8cf43d862bbf17d5783f0469e3e1a5f8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 01/13/2020
+ms.openlocfilehash: 22a5b86c8b3df4da5fe338a8ba1230d0247a5826
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825653"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046002"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Vytvoření nové nabídky Business Central v Dynamics 365
 
@@ -151,8 +151,26 @@ Pár tipů pro psaní popisu:
   - Potřeby zákazníků nebo bolesti, že adresy produktů
 - Mějte na paměti, že ve výsledcích vyhledávacího modulu se může zobrazit několik prvních vět.  
 - Nespoléhá se na funkce a funkce k prodeji vašeho produktu. Místo toho se zaměřte na hodnotu, kterou doručujete.  
-- Používejte co nejvíc slovníků specifických pro konkrétní obor nebo využití s výhodami. 
+- Používejte co nejvíc slovníků specifických pro konkrétní obor nebo využití s výhodami.
 - Zvažte použití značek HTML pro formátování popisu a lepší poutavost.
+
+Chcete-li podrobnější popis nabídky, použijte Editor formátovaného textu k formátování popisu.
+
+![Použití editoru textu ve formátu RTF](./media/text-editor2.png)
+
+Pomocí následujících pokynů můžete použít Editor formátovaného textu:
+
+- Chcete-li změnit formát obsahu, zvýrazněte text, který chcete formátovat, a vyberte styl textu, jak je znázorněno níže:
+
+     ![Změna formátu textu pomocí editoru formátovaného textu](./media/text-editor3.png)
+
+- Chcete-li do textu přidat seznam s odrážkami nebo číslovaného seznamu, použijte následující možnosti:
+
+     ![Přidávání seznamů pomocí editoru formátovaného textu](./media/text-editor4.png)
+
+- Chcete-li přidat nebo odebrat odsazení textu, použijte následující možnosti:
+
+     ![Použití editoru formátovaného textu k odsazení](./media/text-editor5.png)
 
 ### <a name="search-keywords"></a>Hledat klíčová slova
 
@@ -283,13 +301,13 @@ K dispozici jsou následující typy testovacích jednotek, z nichž každá má
 
 - **Instance**: Vyberte typ (horká nebo studená) a počet dostupných instancí, které se vynásobí počtem oblastí, ve kterých je vaše nabídka dostupná.
 
-**Hot**: Tento typ instance je nasazený a očekává se přístup na vybranou oblast. Zákazníci můžou okamžitě přistupovat k *horkým* instancím testovacích jednotek, ale nemusíte čekat na nasazení. Kompromisem je, že tyto instance jsou vždycky spuštěné v předplatném Azure, takže budou mít větší náklady na dobu provozu. Důrazně doporučujeme mít aspoň jednu *aktivní* instanci, protože většina zákazníků nechce čekat na plná nasazení, takže když není k dispozici žádná *Hot* instance, výsledkem je vypnutí v zákaznickém využívání.
+**Hot**: Tento typ instance je nasazený a očekává se přístup na vybranou oblast. Zákazníci můžou okamžitě přistupovat k *horkým* instancím testovacích jednotek, ale nemusíte čekat na nasazení. Výměnou za to je, že tyto instance nepřetržitý provoz na vaše předplatné Azure, takže bude mít za následek větší dostupnost nákladů. Důrazně doporučujeme mít aspoň jednu *aktivní* instanci, protože většina zákazníků nechce čekat na plná nasazení, takže když není k dispozici žádná *Hot* instance, výsledkem je vypnutí v zákaznickém využívání.
 
 **Studená**: Tento typ instance představuje celkový počet instancí, které mohou být nasazeny v jednotlivých oblastech. Studené instance vyžadují pro nasazení celé testovací jednotky Správce prostředků šablonu, když zákazník požádá o testovací verzi, takže *studené* instance budou mnohem pomalejší, než se dosadí *za horké* instance. Kompromisy je, že je nutné platit jenom za dobu trvání testovacích jednotek *, ale v* předplatném Azure není vždycky spuštěná jako s *horkou* instancí.
 
 - **Šablona testovacích jednotek Azure Resource Manager**: Nahrajte soubor. zip obsahující šablonu Azure Resource Manager.  Další informace o vytvoření šablony Azure Resource Manager v článku rychlý Start [vytváření a nasazování Azure Resource Manager šablon pomocí Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
-- **Doba trvání testovacích jednotek** (povinné): zadejte dobu, po kterou bude testovací jednotka aktivní, v počtu hodin. Testovací jednotka se po skončení tohoto časového období ukončí automaticky. Tato doba může být nastavena pouze na celé číslo hodiny (například "2" hodiny, "1,5" není platný).
+- **Doba trvání testovacích jednotek** (povinné): zadejte dobu, po kterou bude testovací jednotka aktivní, v počtu hodin. Po skončení tohoto období se automaticky ukončí na testovací verzi. Tato doba může být nastavena pouze na celé číslo hodiny (například "2" hodiny, "1,5" není platný).
 
 ### <a name="technical-configuration-for-dynamics-365-test-drive"></a>Technická konfigurace pro testovací jednotku Dynamics 365
 
@@ -351,7 +369,7 @@ Možnost **výpisu na webu Marketplace** , která se nachází na kartě **testo
 
 - **User Manual** (povinné): podrobný návod k vašemu prostředí Test Drive. Ruční příručka uživatele by měla pokrývat přesně to, co chcete zákazníkovi získat ze zkušební jednotky a sloužit jako odkaz na případné dotazy, které mohou mít. Soubor musí být ve formátu PDF a po nahrání má název (maximálně 255 znaků).
 
-- **Videa: přidat videa** (volitelné): videa se dají nahrát na YouTube nebo Vimeo a tady se odkazuje pomocí odkazu a miniatury (533 x 324 pixelů), aby si zákazník mohli zobrazit návod k informacím, který jim pomůže lépe porozumět testovacím jednotkám, včetně Jak úspěšně používat funkce vaší nabídky a porozumět scénářům, které zvýrazní jejich výhody.
+- **Videa: Přidání videí** (volitelné): videa je možné nahrát na YouTube nebo Vimeo a tady je odkazováno s odkazem a obrázkem miniatury (533 x 324 pixelů), aby zákazník mohl zobrazit návod k informacím, který jim pomůže lépe pochopit testovací verzi, včetně toho, jak úspěšně používat funkce vaší nabídky a pochopit scénáře, které zvýrazní jejich výhody.
   - **Název** (povinné)
   - **Adresa URL (jenom YouTube nebo Vimeo)** (povinné)
   - **Miniatura (533 x 324 px)** : soubor obrázku musí být ve formátu PNG.
@@ -370,7 +388,7 @@ Pokud vaše nabídka vyžaduje edici Premium z Microsoft Dynamics 365 Business C
 
 ### <a name="key-usage-scenario"></a>Scénář použití klíče
 
-Je potřeba, abyste odesílat soubor s `.pdf`, který uvádí klíčové scénáře použití vaší nabídky, které jsou uvedené v dokumentu (formát PDF). Všechny uvedené scénáře mohou být ověřeny týmem ověřování, než schválíme vaši nabídku na webu Marketplace.
+Je potřeba nahrát soubor `.pdf`, ve kterém jsou uvedené klíčové scénáře použití vaší nabídky v dokumentu (formát PDF). Všechny uvedené scénáře mohou být ověřeny týmem ověřování, než schválíme vaši nabídku na webu Marketplace.
 
 ### <a name="app-tests-automation"></a>Automatizace testů aplikací
 
@@ -397,4 +415,4 @@ Pokud tuto nabídku publikujete poprvé, můžete:
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Aktualizace stávající nabídky na komerčním webu Marketplace](./update-existing-offer.md)
+- [Aktualizace stávající nabídky na komerčním marketplace](./update-existing-offer.md)

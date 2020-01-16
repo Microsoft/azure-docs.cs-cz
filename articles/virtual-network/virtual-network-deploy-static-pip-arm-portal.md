@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: 891b21aa1c832214fad12759643dc72a632e1cd7
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 66050c16f40e0a06117327ef53e3aae87d03c5db
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647794"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043537"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Vytvoření virtuálního počítače se statickou veřejnou IP adresou pomocí Azure Portal
 
@@ -51,7 +51,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
    ![Vybrat statickou](./media/virtual-network-deploy-static-pip-arm-portal/select-static.png)
 
-   Pokud veřejná IP adresa musí být standardní SKU, vyberte v části **SKU**možnost **Standard** . Přečtěte si další informace o [SKU veřejných IP adres](virtual-network-ip-addresses-overview-arm.md#sku). Pokud bude virtuální počítač přidán do fondu back-end veřejné Azure Load Balancer, musí SKU veřejné IP adresy virtuálního počítače odpovídat SKU veřejné IP adresy nástroje pro vyrovnávání zatížení. Podrobnosti najdete v tématu [Azure Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#skus).
+   Pokud veřejná IP adresa musí být standardní SKU, vyberte v části **SKU**možnost **Standard** . Přečtěte si další informace o [SKU veřejných IP adres](virtual-network-ip-addresses-overview-arm.md#sku). Pokud bude virtuální počítač přidán do fondu back-end veřejné Azure Load Balancer, musí SKU veřejné IP adresy virtuálního počítače odpovídat SKU veřejné IP adresy nástroje pro vyrovnávání zatížení. Podrobnosti najdete v tématu [Azure Load Balancer](../load-balancer/concepts-limitations.md#skus).
 
 6. Vyberte port nebo žádné porty v části **Vybrat veřejné příchozí porty**. Je vybrán portál 3389, který umožňuje vzdálený přístup k virtuálnímu počítači s Windows serverem z Internetu. Pro produkční úlohy se nedoporučuje otevřít port 3389 z Internetu.
 

@@ -1,18 +1,18 @@
 ---
-title: Azure Application Insights pro webové aplikace JavaScript | Dokumentace Microsoftu
-description: Načtení zobrazení stránek a počty relací, data webového klienta a sledování vzorů využití. Zjištění výjimek a problémů s výkonem na webových stránkách v jazyce JavaScript.
+title: Azure Application Insights pro webové aplikace v JavaScriptu
+description: Získejte zobrazení stránky a počty relací, data webového klienta, jednostránkové aplikace (SPA) a sledujte vzorce používání. Zjištění výjimek a problémů s výkonem na webových stránkách v jazyce JavaScript.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 6bb61f419f4c6d277a9b1c666db92595642cb0e6
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 38f9872fb73f2c680264c2c0b84445db858cf203
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706602"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045833"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -76,7 +76,7 @@ Ve výchozím nastavení Application Insights JavaScript SDK automaticky shromá
     - Kontext korelace (pokud existuje), kde je učiněn požadavek
 - **Informace o uživateli** (například umístění, síť, IP adresa)
 - **Informace o zařízení** (například prohlížeč, operační systém, verze, jazyk, řešení, model)
-- **Informace o relaci**
+- **informace o relaci**,
 
 ### <a name="telemetry-initializers"></a>Inicializátory telemetrie
 Inicializátory telemetrie slouží k úpravě obsahu shromážděné telemetrie před jejich odesláním z prohlížeče uživatele. Můžete je také použít k zabránění odeslání určité telemetrie, a to vrácením `false`. Do instance Application Insights lze přidat více inicializátorů telemetrie a jsou spouštěny v pořadí jejich přidávání.
@@ -99,8 +99,8 @@ Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na ho
 
 | Name (Název) | Výchozí | Popis |
 |------|---------|-------------|
-| instrumentationKey | platnost | **Požadovanou**<br>Klíč instrumentace, který jste získali z Azure Portal. |
-| ID | platnost | Volitelné ID účtu, pokud vaše aplikace seskupí uživatele na účty. Žádné mezery, čárky, středníky, rovny nebo svislé čáry |
+| InstrumentationKey | null | **Vyžaduje**<br>Klíč instrumentace, který jste získali z Azure Portal. |
+| accountId | null | Volitelné ID účtu, pokud vaše aplikace seskupí uživatele na účty. Žádné mezery, čárky, středníky, rovny nebo svislé čáry |
 | sessionRenewalMs | 1800000 | Pokud je uživatel neaktivní po dobu v milisekundách, dojde k zaznamenání relace. Výchozí hodnota je 30 minut. |
 | sessionExpirationMs | 86400000 | Relace je zaznamenána v případě, že v milisekundách pokračuje po dobu. Výchozí hodnota je 24 hodin. |
 | maxBatchSizeInBytes | 10000 | Maximální velikost dávky telemetrie Pokud dávka tento limit překročí, pošle se hned a spustí se nová dávka. |
@@ -124,14 +124,14 @@ Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na ho
 | disableFlushOnBeforeUnload | false | Výchozí hodnota je false. Je-li nastavena hodnota true, metoda flush nebude volána při triggerech události onBeforeUnload |
 | enableSessionStorageBuffer | true | Výchozí hodnota je true. Pokud je nastaveno na true, uloží se do úložiště relace vyrovnávací paměť s veškerou neodeslanou telemetrie. Vyrovnávací paměť se při načtení stránky obnoví. |
 | isCookieUseDisabled | false | Výchozí hodnota je false. Pokud má hodnotu true, SDK nebude ukládat ani číst žádná data z souborů cookie.|
-| cookieDomain | platnost | Vlastní doména souborů cookie. To je užitečné, pokud chcete sdílet Application Insights soubory cookie mezi subdoménami. |
+| cookieDomain | null | Vlastní doména souborů cookie. To je užitečné, pokud chcete sdílet Application Insights soubory cookie mezi subdoménami. |
 | isRetryDisabled | false | Výchozí hodnota je false. Pokud je hodnota false, zkuste to znovu v 206 (částečný úspěch), 408 (timeout), 429 (příliš mnoho požadavků), 500 (interní chyba serveru), 503 (služba není dostupná) a 0 (offline, jenom pokud se zjistilo). |
 | isStorageUseDisabled | false | Pokud má hodnotu true, SDK nebude ukládat ani číst žádná data z místního úložiště a úložiště relací. Výchozí hodnota je false. |
 | isBeaconApiDisabled | true | Pokud má hodnotu false, SDK pošle veškerou telemetrii pomocí [rozhraní Beacon API](https://www.w3.org/TR/beacon) . |
 | onunloadDisableBeacon | false | Výchozí hodnota je false. Když se karta zavře, SDK pošle veškerou zbývající telemetrii pomocí [rozhraní API pro maják](https://www.w3.org/TR/beacon) . |
-| sdkExtension | platnost | Nastaví název rozšíření sady SDK. Jsou povoleny pouze abecední znaky. Název rozšíření se přidá jako předpona do značky AI. Internal. sdkVersion (například ' ext_javascript: 2.0.0 '). Výchozí hodnota je null. |
+| sdkExtension | null | Nastaví název rozšíření sady SDK. Jsou povoleny pouze abecední znaky. Název rozšíření se přidá jako předpona do značky AI. Internal. sdkVersion (například ' ext_javascript: 2.0.0 '). Výchozí hodnota je null. |
 | isBrowserLinkTrackingEnabled | false | Výchozí hodnota je false. Pokud má hodnotu true, SDK bude sledovat všechny požadavky na [propojení prohlížeče](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink) . |
-| appId | platnost | AppId se používá pro korelaci mezi závislostmi AJAX, které probíhají na straně klienta s požadavky na straně serveru. Pokud je zapnuté rozhraní API pro signalizaci, nedá se použít automaticky, ale v konfiguraci je možné ho nastavit ručně. Výchozí hodnota je null. |
+| appId | null | AppId se používá pro korelaci mezi závislostmi AJAX, které probíhají na straně klienta s požadavky na straně serveru. Pokud je zapnuté rozhraní API pro signalizaci, nedá se použít automaticky, ale v konfiguraci je možné ho nastavit ručně. Výchozí hodnota je null. |
 | enableCorsCorrelation | false | V případě hodnoty true SDK přidá dvě hlavičky (' Request-ID ' a ' Request-Context ') do všech požadavků CORS ke sladění odchozích závislostí AJAX s odpovídajícími požadavky na straně serveru. Výchozí hodnota je false. |
 | namePrefix | nedefinované | Volitelná hodnota, která bude použita jako přípona názvu pro localStorage a název souboru cookie.
 | enableAutoRouteTracking | false | Automatické sledování změn směrování v aplikacích s jednou stránkou (SPA). Pokud má hodnotu true, každá změna trasy pošle nové PageView Application Insights. Změny trasy hash (`example.com/foo#bar`) se zaznamenávají také jako nová zobrazení stránky.
@@ -149,7 +149,7 @@ V současné době nabízíme samostatný [modul plug-in pro reakce](#react-exte
 
 | Rozšíření |
 |---------------|
-| [Reaguje](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
+| [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
 | [Reagovat nativní](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
 
 ## <a name="explore-browserclient-side-data"></a>Prozkoumat data v prohlížeči nebo na straně klienta
@@ -172,7 +172,7 @@ Vyberte **prohlížeč** a pak zvolte **selhání** nebo **výkon**.
 
 ![](./media/javascript/performance-dependencies.png)
 
-### <a name="analytics"></a>Analýzy 
+### <a name="analytics"></a>Analýza 
 
 Chcete-li zadat dotaz na telemetrii shromážděnou sadou JavaScript SDK, vyberte tlačítko **Zobrazit v protokolech (Analytics)** . Přidáním `where`ho příkazu `client_Type == "Browser"`zobrazíte pouze data z sady JavaScript SDK a všechny telemetrie na straně serveru shromážděné jinými sadami SDK budou vyloučeny.
  
@@ -242,12 +242,12 @@ V pouhých 25 KB komprimovaný jako gzip a při inicializaci jenom ~ 15 MS, Appl
 
 I když se skript stahuje ze sítě CDN, veškeré sledování vaší stránky je ve frontě. Po dokončení asynchronní inicializace staženého skriptu budou sledovány všechny události, které byly zařazeny do fronty. V důsledku toho nedojde ke ztrátě žádné telemetrie během celého životního cyklu stránky. Tento proces instalace poskytuje stránku se systémovou analýzou, která je pro vaše uživatele neviditelná.
 
-> Shrnut
+> Souhrn:
 > - **25 KB** komprimovaný jako gzip
 > - Celkový čas inicializace na **15 MS**
 > - V průběhu životního cyklu stránky nebylo vynecháno **žádné** sledování.
 
-## <a name="browser-support"></a>Podpora prohlížeče
+## <a name="browser-support"></a>Podpora prohlížečů
 
 ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |

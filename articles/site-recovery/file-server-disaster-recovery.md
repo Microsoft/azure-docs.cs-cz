@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 780db0cc5a99adfd2e7f8cd5be20a191bba009e8
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: c9f10815f2fbc8a17b8b712b6e5f8391fc7d541e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708124"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980285"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Ochrana souborového serveru pomocí Azure Site Recovery 
 
@@ -37,15 +37,15 @@ V předchozím diagramu se na replikaci souborů napříč skupinou replikace ak
 
 ## <a name="disaster-recovery-recommendations-for-file-servers"></a>Doporučení k zotavení po havárii pro souborové servery
 
-* **Replikace souborového serveru pomocí Site Recovery**: Souborové servery je možné replikovat do Azure pomocí Site Recovery. V případě nedostupnosti jednoho nebo několika místních souborových serverů je možné aktivovat virtuální počítače pro obnovení v Azure. Tyto virtuální počítače pak můžou obsluhovat požadavky klientů v místním prostředí za předpokladu, že existuje připojení VPN typu Site-to-Site a v Azure je nakonfigurovaná služba Active Directory. Tuto metodu můžete využít v případě prostředí s nakonfigurovanou replikací systému souborů DFS nebo jednoduchého prostředí souborového serveru bez replikace systému souborů DFS. 
+* **Replikace souborového serveru pomocí Site Recovery:** Souborové servery je možné replikovat do Azure pomocí Site Recovery. V případě nedostupnosti jednoho nebo několika místních souborových serverů je možné aktivovat virtuální počítače pro obnovení v Azure. Tyto virtuální počítače pak můžou obsluhovat požadavky klientů v místním prostředí za předpokladu, že existuje připojení VPN typu Site-to-Site a v Azure je nakonfigurovaná služba Active Directory. Tuto metodu můžete využít v případě prostředí s nakonfigurovanou replikací systému souborů DFS nebo jednoduchého prostředí souborového serveru bez replikace systému souborů DFS. 
 
-* **Rozšiřování služby DFSR na virtuální počítač Azure IaaS**: V clusterovém souborovém serveru se systémem, který implementuje službu DFSR, můžete místní službu DFSR v Azure zvětšit. Roli souborového serveru pak může zastávat virtuální počítač Azure. 
+* **Rozšíření replikace systému souborů DFS na virtuální počítač Azure IaaS:** V clusterovaném prostředí souborového serveru s implementovanou replikací systému souborů DFS můžete rozšířit místní replikaci systému souborů DFS do Azure. Roli souborového serveru pak může zastávat virtuální počítač Azure. 
 
     * Jakmile se vyřeší závislosti v podobě připojení VPN typu Site-to-Site a služby Active Directory a povolí se replikace systému souborů DFS, v případě nedostupnosti jednoho nebo několika místních souborových serverů se klienti budou moct připojit k virtuálnímu počítači Azure, který jejich požadavky zpracuje.
 
     * Tento přístup můžete využít v případě, že vaše virtuální počítače obsahují konfigurace, které Site Recovery nepodporuje. Příkladem je sdílený disk clusteru, který se občas běžně používá v prostředích souborových serverů. Replikace systému souborů DFS funguje dobře také v prostředích s nízkou šířkou pásma se středním podílem výpovědí. Je potřeba zvážit dodatečné náklady na neustálý provoz virtuálního počítače Azure. 
 
-* **K replikaci souborů použijte Azure File Sync**: Pokud máte v úmyslu používat Cloud nebo už používáte virtuální počítač Azure, můžete použít Azure File Sync. Synchronizace souborů Azure nabízí synchronizaci plně spravovaných sdílených složek v cloudu, které jsou přístupné přes standardní protokol [Server Message Block](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (SMB). Sdílené složky Azure je pak možné připojit současně do cloudových i místních nasazení systémů Windows, Linux a macOS. 
+* **K replikaci souborů použijte Azure File Sync**: Pokud plánujete použít Cloud nebo už používáte virtuální počítač Azure, můžete použít Azure File Sync. Azure File Sync nabízí synchronizaci plně spravovaných sdílených složek v cloudu, které jsou přístupné přes standardní protokol SMB ( [Server Message Block](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) ). Sdílené složky Azure je pak možné připojit současně do cloudových i místních nasazení systémů Windows, Linux a macOS. 
 
 Následující diagram vám pomůže určit, jakou strategii použít pro vaše prostředí souborového serveru.
 
@@ -64,7 +64,7 @@ Následující diagram vám pomůže určit, jakou strategii použít pro vaše 
 ### <a name="site-recovery-support"></a>Podpora Site Recovery
 Vzhledem k tomu, že je replikace Site Recovery nezávislá na aplikaci, očekává se, že tato doporučení budou platit v následujících scénářích.
 
-| Source    |Do sekundární lokality    |Do Azure
+| Zdroj    |Do sekundární lokality    |Do Azure
 |---------|---------|---------|
 |Azure| -|Ano|
 |Hyper-V|   Ano |Ano
@@ -77,9 +77,9 @@ Vzhledem k tomu, že je replikace Site Recovery nezávislá na aplikaci, očeká
 
 
 
-**Připojení Site-to-site**: Aby bylo možné komunikovat mezi servery, musí být navázáno přímé připojení mezi místní lokalitou a sítí Azure. Použijte zabezpečené připojení VPN typu Site-to-Site k virtuální síti Azure, která slouží jako lokalita pro zotavení po havárii. Další informace najdete v tématu [Navázání připojení VPN typu Site-to-Site mezi místní lokalitou a virtuální sítí Azure](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal).
+**Připojení typu Site-to-Site:** Je potřeba navázat přímé připojení mezi místní lokalitou a sítí Azure, aby byla možná komunikace mezi servery. Použijte zabezpečené připojení VPN typu Site-to-Site k virtuální síti Azure, která slouží jako lokalita pro zotavení po havárii. Další informace najdete v tématu [Navázání připojení VPN typu Site-to-Site mezi místní lokalitou a virtuální sítí Azure](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal).
 
-**Služba Active Directory**: DFSR závisí na službě Active Directory. To znamená, že se doménová struktura Active Directory s místními řadiči domény rozšíří do lokality pro zotavení po havárii v Azure. Pokud je potřeba udělit přístup nebo ověřit přístup uživatelů, musíte tyto kroky provést i v případě, že nevyužíváte replikaci systému souborů DFS. Další informace najdete v tématu [Rozšíření místní služby Active Directory do Azure](https://docs.microsoft.com/azure/site-recovery/site-recovery-active-directory).
+**Active Directory:** Replikace systému souborů DFS závisí na službě Active Directory. To znamená, že se doménová struktura Active Directory s místními řadiči domény rozšíří do lokality pro zotavení po havárii v Azure. Pokud je potřeba udělit přístup nebo ověřit přístup uživatelů, musíte tyto kroky provést i v případě, že nevyužíváte replikaci systému souborů DFS. Další informace najdete v tématu [Rozšíření místní služby Active Directory do Azure](https://docs.microsoft.com/azure/site-recovery/site-recovery-active-directory).
 
 ## <a name="disaster-recovery-recommendation-for-azure-iaas-virtual-machines"></a>Doporučení k zotavení po havárii pro virtuální počítače Azure IaaS
 
@@ -132,7 +132,7 @@ Následující kroky popisují replikaci virtuálního počítače VMware. Pokyn
 2. Rozšiřte místní službu Active Directory.
 3. Ve virtuální síti Azure [vytvořte a zřiďte virtuální počítač souborového serveru](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json).
 Ujistěte se, že se virtuální počítač přidá do stejné virtuální sítě Azure, která má křížové připojení s místním prostředím. 
-4. Na Windows Serveru nainstalujte a nakonfigurujte [replikaci systému souborů DFS](https://blogs.technet.microsoft.com/b/filecab/archive/2013/08/21/dfs-replication-initial-sync-in-windows-server-2012-r2-attack-of-the-clones.aspx).
+4. Na Windows Serveru nainstalujte a nakonfigurujte [replikaci systému souborů DFS](https://techcommunity.microsoft.com/t5/storage-at-microsoft/dfs-replication-initial-sync-in-windows-server-2012-r2-attack-of/ba-p/424877).
 5. [Implementujte obor názvů DFS](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/deploying-dfs-namespaces).
 6. Díky implementaci oboru názvů DFS je možné provést převzetí služeb při selhání sdílených složek z produkčních lokalit do lokalit pro zotavení po havárii prostřednictvím aktualizace cílů složek v oboru názvů DFS. Po replikaci těchto změn oboru názvů DFS přes Active Directory se uživatelé transparentně připojí k odpovídajícím cílům složek.
 

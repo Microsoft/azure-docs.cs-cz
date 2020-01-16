@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: bb60d22c62096725e29b9351bf304504861d9bf1
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 1e6a21e8bf9c284c83af09885aa66b612b52ad7c
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902518"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044709"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Plánování virtuální sítě pro Azure HDInsight
 
@@ -251,7 +251,7 @@ Další informace o pravidlech brány firewall pro virtuální zařízení najde
 
 ## <a name="load-balancing"></a>Vyrovnávání zatížení
 
-Při vytváření clusteru HDInsight se vytvoří taky Nástroj pro vyrovnávání zatížení. Typ tohoto nástroje pro vyrovnávání zatížení se nachází na [základní úrovni SKU](../load-balancer/load-balancer-overview.md#skus) , která má určitá omezení. Jedním z těchto omezení je, že pokud máte dvě virtuální sítě v různých oblastech, nemůžete se připojit k základním nástrojům pro vyrovnávání zatížení. Další informace najdete v tématu [Nejčastější dotazy k virtuálním sítím VNet: omezení globálního partnerského vztahu virtuálních sítí](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
+Při vytváření clusteru HDInsight se vytvoří taky Nástroj pro vyrovnávání zatížení. Typ tohoto nástroje pro vyrovnávání zatížení se nachází na [základní úrovni SKU](../load-balancer/concepts-limitations.md#skus) , která má určitá omezení. Jedním z těchto omezení je, že pokud máte dvě virtuální sítě v různých oblastech, nemůžete se připojit k základním nástrojům pro vyrovnávání zatížení. Další informace najdete v tématu [Nejčastější dotazy k virtuálním sítím VNet: omezení globálního partnerského vztahu virtuálních sítí](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
 
 ## <a name="transport-layer-security"></a>Zabezpečení transportní vrstvy (TLS)
 

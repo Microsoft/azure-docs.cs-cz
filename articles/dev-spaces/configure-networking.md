@@ -5,12 +5,12 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 description: Popisuje požadavky na síť pro provozování Azure Dev Spaces ve službě Azure Kubernetes.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, CNI, kubenet, SDN, Network
-ms.openlocfilehash: 51604e2862a4d2ff575906fa2ba480ddd10504ed
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 9e32e3b65451dceefaeeaf7faed7c8337797e0b8
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75897920"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044993"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Konfigurace sítě pro Azure Dev Spaces v různých topologiích sítě
 
@@ -18,7 +18,7 @@ Azure Dev Spaces běží na clusterech AKS (Azure Kubernetes Service) s výchoz�
 
 ![Konfigurace virtuální sítě](media/configure-networking/virtual-network-clusters.svg)
 
-## <a name="aks-clusters-with-different-virtual-network-or-subnet-configurations"></a>Clustery AKS s různými konfiguracemi virtuálních sítí nebo podsítí
+## <a name="virtual-network-or-subnet-configurations"></a>Konfigurace virtuálních sítí nebo podsítí
 
 Cluster AKS může mít jinou konfiguraci virtuální sítě nebo podsítě pro omezení příchozího nebo odchozího provozu clusteru AKS. Cluster může být například za bránou firewall, například Azure Firewall, nebo můžete použít skupiny zabezpečení sítě nebo vlastní role pro omezení síťového provozu.
 
@@ -53,19 +53,19 @@ Azure Dev Spaces vám umožní komunikovat přímo s podmnožinou v prostoru pro
 
 Azure Dev Spaces poskytuje směrování mezi lusky napříč obory názvů. Například obory názvů s povoleným Azure Dev Spaces mohou mít vztah nadřazenosti/podřízenosti, který umožňuje směrování síťového provozu mezi lusky napříč nadřazenými a podřízenými obory názvů. Aby tato funkce fungovala, přidejte zásadu sítě, která umožňuje provoz mezi obory názvů, do kterých se směruje síťový provoz, jako jsou například obory názvů nadřazených a podřízených objektů. Pokud je adaptér příchozího přenosu nasazený do oboru názvů *azds* , musí kontroler příchozích dat komunikovat s lusky, které jsou instrumentované v prostoru pro vývoj v Azure, v jiném oboru názvů. Aby kontroler příchozího provozu fungoval správně, musí být síťový provoz povolený z oboru názvů *azds* do oboru názvů, ve kterém se instrumentované lusky spouštějí.
 
-## <a name="using-azure-container-networking-with-azure-dev-spaces"></a>Použití služby Azure Container Networking s Azure Dev Spaces
+## <a name="using-azure-cni"></a>Používání Azure CNI
 
 Ve výchozím nastavení jsou clustery AKS nakonfigurované tak, aby používaly [kubenet][aks-kubenet] pro sítě, které fungují s Azure dev Spaces. Cluster AKS můžete také nakonfigurovat tak, aby používal [rozhraní CNI (Azure Container Networking Interface)][aks-cni]. Pokud chcete použít Azure Dev Spaces s Azure CNI v clusteru AKS, umožněte virtuální síti a adresní prostorům adresní prostory až 10 privátních IP adres pro lusky nasazené pomocí Azure Dev Spaces. Další podrobnosti o povolení privátních IP adres najdete v [dokumentaci k AKS Azure CNI][aks-cni-ip-planning].
 
-## <a name="using-api-server-authorized-ip-ranges-with-azure-dev-spaces"></a>Použití rozsahů IP adres autorizovaných serverem API s Azure Dev Spaces
+## <a name="using-api-server-authorized-ip-ranges"></a>Použití rozsahů povolených IP adres serveru API
 
 Clustery AKS umožňují nakonfigurovat další zabezpečení, které omezuje, která IP adresa může komunikovat s clustery, například pomocí vlastních virtuálních sítí nebo [zabezpečení přístupu k serveru rozhraní API pomocí autorizovaných rozsahů IP][aks-ip-auth-ranges]adres. Pokud chcete použít Azure Dev Spaces při použití tohoto dalšího zabezpečení při [vytváření][aks-ip-auth-range-create] clusteru, musíte [v závislosti na vaší oblasti zapnout další rozsah][dev-spaces-ip-auth-range-regions]. Můžete také [aktualizovat][aks-ip-auth-range-update] existující cluster, aby bylo možné tyto další rozsahy. Pro připojení k vašemu serveru API musíte taky u všech vývojových počítačů, které se připojují ke clusteru AKS, použít IP adresu pro účely ladění.
 
-## <a name="using-aks-private-clusters-with-azure-dev-spaces"></a>Použití privátních clusterů AKS s Azure Dev Spaces
+## <a name="using-aks-private-clusters"></a>Používání privátních clusterů AKS
 
 V tuto chvíli se Azure Dev Spaces [privátním clusterům AKS][aks-private-clusters]nepodporuje.
 
-## <a name="azure-dev-spaces-client-requirements"></a>Azure Dev Spaces požadavky klienta
+## <a name="client-requirements"></a>Požadavky na klienty
 
 Azure Dev Spaces používá klientské nástroje, jako je rozšíření CLI Azure Dev Spaces, Visual Studio Code rozšíření a rozšíření sady Visual Studio, ke komunikaci s clusterem AKS pro ladění. Chcete\*-li použít Azure Dev Spaces nástrojů na straně klienta, povolte provoz z vývojových počítačů do domény *azds.IO.* . Přesný plně kvalifikovaný název domény najdete v tématu *dataplaneFqdn* v `USERPROFILE\.azds\settings.json`. Pokud používáte [rozsahy IP adres autorizovaných serverem API][auth-range-section], musíte taky povolit IP adresu všech vývojových počítačů, které se připojují ke clusteru AKS, aby se mohly připojit k vašemu serveru API.
 
@@ -85,7 +85,7 @@ Přečtěte si, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace n
 [aks-ip-auth-range-update]: ../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges
 [aks-network-policies]: ../aks/use-network-policies.md
 [aks-private-clusters]: ../aks/private-clusters.md
-[auth-range-section]: #using-api-server-authorized-ip-ranges-with-azure-dev-spaces
+[auth-range-section]: #using-api-server-authorized-ip-ranges
 [dev-spaces-ip-auth-range-regions]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [traefik-ingress]: how-to/ingress-https-traefik.md
 [nginx-ingress]: how-to/ingress-https-nginx.md

@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: conceptual
 description: Vyhledejte odpovědi na některé běžné otázky týkající se Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: c904ae5809a36859ba6428bf026c9016a1a8f747
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: d5ab56edfe4799d51fb7f08642aad9e2ee01db05
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867176"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044964"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Nejčastější dotazy týkající se Azure Dev Spaces
 
@@ -34,7 +34,7 @@ Ano, můžete nakonfigurovat příchozí příchozí přenosy pomocí protokolu 
 
 ## <a name="can-i-use-azure-dev-spaces-on-a-cluster-that-uses-cni-rather-than-kubenet"></a>Můžu použít Azure Dev Spaces na clusteru, který používá CNI místo kubenet? 
 
-Ano, Azure Dev Spaces můžete použít v clusteru AKS, který používá CNI pro práci v síti. Můžete například použít Azure Dev Spaces v clusteru AKS s [existujícími kontejnery Windows][windows-containers], které používají CNI pro práci v síti. Další informace o používání CNI pro sítě s Azure Dev Spaces [najdete tady](configure-networking.md#using-azure-container-networking-with-azure-dev-spaces).
+Ano, Azure Dev Spaces můžete použít v clusteru AKS, který používá CNI pro práci v síti. Můžete například použít Azure Dev Spaces v clusteru AKS s [existujícími kontejnery Windows][windows-containers], které používají CNI pro práci v síti. Další informace o používání CNI pro sítě s Azure Dev Spaces [najdete tady](configure-networking.md#using-azure-cni).
 
 ## <a name="can-i-use-azure-dev-spaces-with-windows-containers"></a>Můžu Azure Dev Spaces použít s kontejnery Windows?
 
@@ -42,7 +42,7 @@ V současné době je Azure Dev Spaces určena ke spouštění pouze v systémec
 
 ## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>Můžu použít Azure Dev Spaces u clusterů AKS s povoleným rozsahem IP adres serveru API?
 
-Ano, můžete použít Azure Dev Spaces u clusterů AKS s povolenými [rozsahy IP adres serveru API][aks-auth-range] . Další informace o používání clusterů AKS s povolenými rozsahy IP adres serveru API s povoleným Azure Dev Spaces je k dispozici [zde](configure-networking.md#using-api-server-authorized-ip-ranges-with-azure-dev-spaces).
+Ano, můžete použít Azure Dev Spaces u clusterů AKS s povolenými [rozsahy IP adres serveru API][aks-auth-range] . Další informace o používání clusterů AKS s povolenými rozsahy IP adres serveru API s povoleným Azure Dev Spaces je k dispozici [zde](configure-networking.md#using-api-server-authorized-ip-ranges).
 
 ### <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>Můžu použít Azure Dev Spaces u clusterů AKS s omezeným provozem odchozích dat pro uzly clusteru?
 

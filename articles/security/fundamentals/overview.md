@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 8301dc779799ff67a348403e661fc7e66b9e721f
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: a1dbabafe32e013d526ed88a83e446ee765cdb7b
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750124"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045867"
 ---
 # <a name="introduction-to-azure-security"></a>Seznámení se zabezpečením Azure
 ## <a name="overview"></a>Přehled
@@ -69,7 +69,7 @@ V této části najdete další informace týkající se klíčových funkcí v 
 Kromě toho můžete nakonfigurovat Security & Compliance a [automaticky provádět konkrétní akce](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/) při zjištění konkrétní události.
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
-[Azure Resource Manager](../../azure-resource-manager/resource-manager-deployment-model.md) vám umožní pracovat s prostředky ve vašem řešení jako se skupinou. Všechny prostředky pro vaše řešení můžete nasadit, aktualizovat nebo odstranit v rámci jediné koordinované operace. Pro nasazení použijete [šablonu Azure Resource Manager](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) a tato šablona může fungovat v různých prostředích, jako je testování, příprava a produkce. Resource Manager poskytuje funkce zabezpečení, auditování a označování, které vám po nasazení pomohou prostředky spravovat.
+[Azure Resource Manager](../../azure-resource-manager/management/deployment-models.md) vám umožní pracovat s prostředky ve vašem řešení jako se skupinou. Všechny prostředky pro vaše řešení můžete nasadit, aktualizovat nebo odstranit v rámci jediné koordinované operace. Pro nasazení použijete [šablonu Azure Resource Manager](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) a tato šablona může fungovat v různých prostředích, jako je testování, příprava a produkce. Resource Manager poskytuje funkce zabezpečení, auditování a označování, které vám po nasazení pomohou prostředky spravovat.
 
 Azure Resource Manager nasazení na základě šablon pomáhá vylepšit zabezpečení řešení nasazených v Azure, protože standardní nastavení řízení zabezpečení a je možné je integrovat do standardizovaných nasazení založených na šablonách. Tím se snižuje riziko chyb konfigurace zabezpečení, které mohou probíhat během ručních nasazení.
 
@@ -142,16 +142,16 @@ V konzoli Application Diagnostics lze zobrazit události seskupené následují
 V části najdete další informace týkající se klíčových funkcí zabezpečení Azure Storage a souhrnné informace o těchto funkcích.
 
 ### <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
-Svůj účet úložiště můžete zabezpečit pomocí Access Control na základě rolí (RBAC). Omezení přístupu na základě [potřebných znalostí](https://en.wikipedia.org/wiki/Need_to_know) a [minimálních](https://en.wikipedia.org/wiki/Principle_of_least_privilege) principů zabezpečení oprávnění je nezbytné pro organizace, které chtějí vynutilit zásady zabezpečení pro přístup k datům. Tato přístupová práva jsou udělována přiřazením příslušné role RBAC do skupin a aplikací v určitém rozsahu. K přiřazení oprávnění uživatelům můžete použít [předdefinované role RBAC](../../role-based-access-control/built-in-roles.md), jako je Přispěvatel účtu úložiště. Přístup k klíčům úložiště pro účet úložiště pomocí modelu [Azure Resource Manager](../../storage/common/storage-security-guide.md) můžete ovládat pomocí Access Control na základě rolí (RBAC).
+Svůj účet úložiště můžete zabezpečit pomocí Access Control na základě rolí (RBAC). Omezení přístupu na základě [potřebných znalostí](https://en.wikipedia.org/wiki/Need_to_know) a [minimálních](https://en.wikipedia.org/wiki/Principle_of_least_privilege) principů zabezpečení oprávnění je nezbytné pro organizace, které chtějí vynutilit zásady zabezpečení pro přístup k datům. Tato přístupová práva jsou udělována přiřazením příslušné role RBAC do skupin a aplikací v určitém rozsahu. K přiřazení oprávnění uživatelům můžete použít [předdefinované role RBAC](../../role-based-access-control/built-in-roles.md), jako je Přispěvatel účtu úložiště. Přístup k klíčům úložiště pro účet úložiště pomocí modelu [Azure Resource Manager](../../storage/blobs/security-recommendations.md) můžete ovládat pomocí Access Control na základě rolí (RBAC).
 
 ### <a name="shared-access-signature"></a>Sdílený přístupový podpis
 [Sdílený přístupový podpis (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) poskytuje delegovaný přístup k prostředkům ve vašem účtu úložiště. SAS znamená, že můžete klientovi udělit omezená oprávnění k objektům ve vašem účtu úložiště po určitou dobu a se zadanou sadou oprávnění. Tato omezená oprávnění můžete udělit bez nutnosti sdílení přístupových klíčů k účtu.
 
 ### <a name="encryption-in-transit"></a>Šifrování při přenosu
 Šifrování při přenosu je mechanismus ochrany dat při přenosu mezi sítěmi. Pomocí Azure Storage můžete zabezpečit data pomocí:
--   [Šifrování na úrovni přenosu](../../storage/common/storage-security-guide.md), jako je například https při přenosu dat do nebo z Azure Storage.
+-   [Šifrování na úrovni přenosu](../../storage/blobs/security-recommendations.md), jako je například https při přenosu dat do nebo z Azure Storage.
 
--   [Šifrování kabelů](../../storage/common/storage-security-guide.md), jako je například [šifrování SMB 3,0](../../storage/common/storage-security-guide.md) pro [sdílené složky Azure](../../storage/files/storage-dotnet-how-to-use-files.md).
+-   [Šifrování kabelů](../../storage/blobs/security-recommendations.md), jako je například [šifrování SMB 3,0](../../storage/blobs/security-recommendations.md) pro [sdílené složky Azure](../../storage/files/storage-dotnet-how-to-use-files.md).
 
 -   Šifrování na straně klienta, aby se data zašifroval před přenosem do úložiště a dešifrují data poté, co se přenesou z úložiště.
 
@@ -266,9 +266,9 @@ Traffic Manager poskytuje řadu metod směrování provozu, které vyhovují rů
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) zajišťuje vysokou dostupnost a výkon sítě pro vaše aplikace. Jedná se o nástroj pro vyrovnávání zatížení vrstvy 4 (TCP, UDP), který distribuuje příchozí provoz mezi zdravými instancemi služeb definovaných v sadě s vyrovnáváním zatížení. Azure Load Balancer lze nakonfigurovat na:
 
--   Vyrovnávání zatížení příchozího internetového provozu do virtuálních počítačů. Tato konfigurace se označuje jako [internetové vyrovnávání zatížení](../../load-balancer/load-balancer-overview.md#publicloadbalancer).
+-   Vyrovnávání zatížení příchozího internetového provozu do virtuálních počítačů. Tato konfigurace se označuje jako [internetové vyrovnávání zatížení](../../load-balancer/concepts-limitations.md#publicloadbalancer).
 
--   Vyrovnávání zatížení mezi virtuálními počítači ve virtuální síti, mezi virtuálními počítači v cloudových službách nebo mezi místními počítači a virtuálními počítači ve virtuální síti mezi pracovišti. Tato konfigurace se označuje jako [interní vyrovnávání zatížení](../../load-balancer/load-balancer-overview.md#internalloadbalancer).
+-   Vyrovnávání zatížení mezi virtuálními počítači ve virtuální síti, mezi virtuálními počítači v cloudových službách nebo mezi místními počítači a virtuálními počítači ve virtuální síti mezi pracovišti. Tato konfigurace se označuje jako [interní vyrovnávání zatížení](../../load-balancer/concepts-limitations.md#internalloadbalancer).
 
 - Přeposlání externího provozu na konkrétní virtuální počítač
 

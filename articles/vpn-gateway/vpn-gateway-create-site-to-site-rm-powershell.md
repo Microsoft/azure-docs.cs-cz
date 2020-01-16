@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 85ea3855b13350901d85701e9bca8d87ff6632c3
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: d1693a6165aa31b221b6901e2e1c8b2955a3dfb3
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778783"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045697"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Vytvoření virtuální sítě pomocí připojení VPN Site-to-Site s použitím prostředí PowerShell
 
@@ -33,23 +33,15 @@ Připojení brány VPN typu Site-to-Site slouží k připojení místní sítě 
 
 ## <a name="before"></a>Než začnete
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
 * Ujistěte se, že máte kompatibilní zařízení VPN a někoho, kdo jej umí nakonfigurovat. Další informace o kompatibilních zařízeních VPN a konfiguraci zařízení najdete v tématu [Informace o zařízeních VPN](vpn-gateway-about-vpn-devices.md).
 * Ověřte, že máte veřejnou IPv4 adresu pro vaše zařízení VPN.
 * Pokud neznáte rozsahy IP adres v konfiguraci vaší místní sítě, budete se muset spojit s někým, kdo vám s tím pomůže. Při vytváření této konfigurace musíte zadat předpony rozsahu IP adres, které bude Azure směrovat do vašeho místního umístění. Žádná z podsítí vaší místní sítě se nesmí překrývat s podsítěmi virtuální sítě, ke kterým se chcete připojit.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+### <a name="azure-powershell"></a>Azure PowerShell
 
-### <a name="running-powershell-locally"></a>Místní použití PowerShellu
-
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, nainstalujte nejnovější verzi rutin PowerShellu pro Azure Resource Manager. Rutiny PowerShellu se často aktualizují a obvykle bude třeba rutiny PowerShellu aktualizovat, abyste získali nejnovější funkce. Pokud rutiny PowerShellu neaktualizujete, zadané hodnoty nemusí fungovat. 
-
-Pokud chcete zjistit verzi, kterou používáte, spusťte rutinu Get-Module-ListAvailable AZ. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
-Pokud používáte prostředí PowerShell místně, je také potřeba spustit příkaz Connect-AzAccount a vytvořit připojení k Azure.
-
+[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ### <a name="example"></a>Příklady hodnot
 
@@ -257,6 +249,15 @@ Pokud se změní předpony IP adres, které chcete směrovat do vašeho místní
 ## <a name="modifygwipaddress"></a>Změna IP adresy místní síťové brány
 
 [!INCLUDE [Modify gateway IP address](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
+
+## <a name="deleteconnection"></a>Odstranění připojení brány
+
+Pokud neznáte název připojení, můžete ho najít pomocí rutiny Get-AzVirtualNetworkGatewayConnection.
+
+```azurepowershell-interactive
+Remove-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 `
+-ResourceGroupName TestRG1
+```
 
 ## <a name="next-steps"></a>Další kroky
 

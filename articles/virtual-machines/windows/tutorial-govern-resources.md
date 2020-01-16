@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 6a4c02883c80b2ad7e5283c6ac33a4604ee35c75
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: fd7e7f14d076a6a9652e902c4dc0ec41665735ee
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751373"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981748"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Kurz: informace o správě virtuálních počítačů s Windows pomocí Azure PowerShell
 
@@ -138,7 +138,7 @@ Po dokončení nasazování můžete použít další nastavení pro správu ře
 
 ## <a name="lock-resources"></a>Uzamčení prostředků
 
-[Zámky prostředků](../../azure-resource-manager/resource-group-lock-resources.md) zabraňují tomu, aby uživatelé ve vaší organizaci neúmyslně odstranili nebo změnili důležité prostředky. Na rozdíl od řízení přístupu na základě role používají zámky prostředků omezení pro všechny uživatele a role. Zámek můžete nastavit na úroveň *CanNotDelete* nebo *ReadOnly*.
+[Zámky prostředků](../../azure-resource-manager/management/lock-resources.md) zabraňují tomu, aby uživatelé ve vaší organizaci neúmyslně odstranili nebo změnili důležité prostředky. Na rozdíl od řízení přístupu na základě role používají zámky prostředků omezení pro všechny uživatele a role. Zámek můžete nastavit na úroveň *CanNotDelete* nebo *ReadOnly*.
 
 Chcete-li zamknout virtuální počítač a skupinu zabezpečení sítě, použijte příkaz [New-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock) :
 
@@ -168,7 +168,7 @@ Zobrazí se chyba s oznámením, že operaci odstranění nelze kvůli zámku do
 
 ## <a name="tag-resources"></a>Označení prostředků
 
-K logickému uspořádání prostředků Azure podle kategorií slouží [značky](../../azure-resource-manager/resource-group-using-tags.md). Každá značka se skládá z názvu a hodnoty. Můžete například použít název Prostředí a hodnotu Produkční na všechny prostředky v produkčním prostředí.
+K logickému uspořádání prostředků Azure podle kategorií slouží [značky](../../azure-resource-manager/management/tag-resources.md). Každá značka se skládá z názvu a hodnoty. Můžete například použít název Prostředí a hodnotu Produkční na všechny prostředky v produkčním prostředí.
 
 [!INCLUDE [Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
 

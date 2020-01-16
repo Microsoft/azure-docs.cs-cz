@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: e4146155915979e51a6e3a989ab57316ca643018
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 43c9ba4ff21f32ca321a62c7f11430d82dfc4ec0
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658015"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045169"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitor
 
@@ -43,6 +43,8 @@ Výchozí ceny pro Log Analytics jsou Model průběžných **plateb** na základ
   
 Kromě modelu průběžných plateb Log Analytics má vrstvy **rezervace kapacity** , které vám umožní ve srovnání s průběžnými platbami ušetřit až 25%. Cena za rezervaci kapacity vám umožní koupit rezervaci od 100 GB za den. Veškeré využití nad úrovní rezervace se bude účtovat podle tarifu průběžných plateb. Úrovně rezervace kapacity mají 31 dnů v období závazku. Během období závazku můžete přejít na úroveň rezervace kapacity vyšší úrovně (čímž se restartuje 31. období závazku), ale nemůžete přejít zpět na průběžné platby nebo na nižší úroveň rezervace kapacity až po období závazku. píše. 
 [Přečtěte si další informace](https://azure.microsoft.com/pricing/details/monitor/) o cenách Log Analytics s průběžnými platbami a rezervací kapacity. 
+
+Ve všech cenových úrovních se objem dat počítá z řetězcové reprezentace dat, která je připravená k uložení. Výpočet velikosti události nezahrnuje několik [vlastností společných pro všechny datové typy](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties) , včetně `_ResourceId`, `_ItemId`, `_IsBillable` a `_BilledSize`.
 
 Všimněte si také, že některá řešení, například [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/) a [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/), mají svůj vlastní cenový model. 
 
@@ -164,6 +166,9 @@ Po dosažení denního limitu pro zbytek dne zastaví kolekci fakturovatelné da
 
 > [!NOTE]
 > Denní limit nezastaví shromažďování dat z Azure Security Center, s výjimkou pracovních prostorů, ve kterých Azure Security Center byl nainstalován před 19. června 2017. 
+
+> [!NOTE]
+> Latence vyplývající z použití denního limitu může znamenat, že se limit nepoužije přesně na určenou denní úroveň Cap. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Identifikujte jaké denního limitu pro definování dat
 

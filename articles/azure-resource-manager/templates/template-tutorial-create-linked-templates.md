@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/03/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 903193b48f41b2ba25bc35ac245e5afb482e61d2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a77f32620d4e3a694806cdf6c247928fa3c7ede4
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472776"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045292"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Kurz: Vytvoření propojených šablon Azure Resource Manageru
 
@@ -142,9 +142,9 @@ Propojená šablona vytvoří účet úložiště. Odkazovaná šablona se dá p
           "resources": [
             {
               "type": "Microsoft.Storage/storageAccounts",
+              "apiVersion": "2018-11-01",
               "name": "[parameters('storageAccountName')]",
               "location": "[parameters('location')]",
-              "apiVersion": "2018-11-01",
               "sku": {
                 "name": "Standard_LRS"
               },

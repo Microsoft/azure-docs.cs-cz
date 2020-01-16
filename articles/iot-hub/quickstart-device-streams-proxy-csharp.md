@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: d131e0112070dcc60e601b2859e8c9df8d40764a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: b48c43f90be3f43b05dcb4028c774836ffd196b7
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084352"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045975"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Rychlý Start: povolení SSH a RDP přes datový proud IoT Hub zařízení pomocí C# proxy aplikace (Preview)
 
@@ -76,7 +76,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 * Platný uživatelský účet a přihlašovací údaje v zařízení (Windows nebo Linux) používané k ověření uživatele.
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
 
 [!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
 
@@ -152,7 +152,7 @@ dotnet run {DeviceConnectionString} localhost 22
 
 ### <a name="run-the-service-local-proxy-application"></a>Spuštění aplikace místní proxy serveru služby
 
-V jiném místním okně terminálu přejděte na `device-streams-proxy/service` ve složce projektu Get. Mějte na ruce následující informace:
+V jiném místním okně terminálu přejděte na `iot-hub/quickstarts/device-streams-proxy/service` ve složce projektu Get. Mějte na ruce následující informace:
 
 | Název parametru | Hodnota parametru |
 |----------------|-----------------|

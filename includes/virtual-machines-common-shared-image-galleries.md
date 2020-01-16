@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 5618757f4bf5eaf1afc5ef0ce1735eb4ae94e1d2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: ef0eed330dd7a5b338cdbf36a159d1f046d3939d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75663078"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021096"
 ---
 Galerie sdílených imagí je služba, která pomáhá sestavovat strukturu a organizaci kolem spravovaných imagí. Galerie sdílených imagí poskytují:
 
@@ -65,7 +65,7 @@ Níže jsou uvedené další parametry, které je možné nastavit v definici im
 * Smlouva EULA – dá se použít k odkazování na licenční smlouvu s koncovým uživatelem, která je specifická pro definici image.
 * Prohlášení o ochraně osobních údajů a poznámky k verzi – můžete ukládat poznámky k verzi a prohlášení o ochraně osobních údajů ve službě Azure Storage a zadat identifikátor URI pro přístup k nim jako součást definice image.
 * Datum ukončení životnosti – připojte k definici obrázku datum ukončení životnosti, aby bylo možné pomocí automatizace odstranit staré definice imagí.
-* Značka – při vytváření definice obrázku můžete přidat značky. Další informace o značkách najdete v tématu [použití značek k uspořádání prostředků](../articles/azure-resource-manager/resource-group-using-tags.md) .
+* Značka – při vytváření definice obrázku můžete přidat značky. Další informace o značkách najdete v tématu [použití značek k uspořádání prostředků](../articles/azure-resource-manager/management/tag-resources.md) .
 * Minimální a maximální doporučení pro vCPU a paměť – Pokud má vaše image doporučení vCPU a paměti, můžete tyto informace připojit k definici image.
 * Nepovolené typy disků – můžete zadat informace o požadavcích na úložiště pro váš virtuální počítač. Pokud například bitová kopie není vhodná pro disky se standardním pevným diskem, přidáte je do seznamu zakázat.
 

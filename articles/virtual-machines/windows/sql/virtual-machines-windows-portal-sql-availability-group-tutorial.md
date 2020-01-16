@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 5c4eb5241cc5e50c11c05cac6909e37557ba106d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ed5fc923c82fb0d0e4004e18159d943564c6f55e
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037516"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045819"
 ---
 # <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>Kurz: Konfigurace skupiny dostupnosti na Azure SQL Server VM ručně
 
@@ -150,7 +150,7 @@ V tomto příkladu používá cluster Windows ke sdílení souborů sdílenou sl
 
    ![Nová sdílená složka](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/50-filesharepermissions.png)
 
-1. Klikněte na tlačítko **OK**.
+1. Klikněte na **OK**.
 
 1. V **oprávněních ke sdílené složce**klikněte na **Dokončit**. Znovu klikněte na tlačítko **Dokončit** .  
 
@@ -252,7 +252,7 @@ Repeat these steps on the second SQL Server.
 
    ![Nová sdílená složka](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/68-backupsharepermission.png)
 
-1. Klikněte na tlačítko **OK**.
+1. Klikněte na **OK**.
 
 1. V **oprávněních ke sdílené složce**klikněte na **Dokončit**. Znovu klikněte na tlačítko **Dokončit** .  
 
@@ -318,7 +318,7 @@ Nyní jste připraveni ke konfiguraci skupiny dostupnosti pomocí následující
 10. Na stránce **Souhrn** klikněte na **Dokončit**a potom počkejte, než průvodce nakonfiguruje novou skupinu dostupnosti. Na stránce **průběh** můžete kliknutím na **Další podrobnosti** zobrazit podrobný průběh. Po dokončení průvodce Zkontrolujte stránku **výsledků** a ověřte, jestli je skupina dostupnosti úspěšně vytvořená.
 
      ![Průvodce novým AG, výsledky](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/74-results.png)
-11. Kliknutím na **Zavřít** průvodce ukončíte.
+11. Průvodce ukončíte kliknutím na **Zavřít** .
 
 ### <a name="check-the-availability-group"></a>Ověřit skupinu dostupnosti
 
@@ -348,7 +348,7 @@ V tomto okamžiku máte skupinu dostupnosti s replikami na dvou instancích SQL 
 
 Na virtuálních počítačích Azure vyžaduje Skupina dostupnosti SQL Server službu pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení uchovává IP adresy pro naslouchací procesy skupiny dostupnosti a cluster s podporou převzetí služeb při selhání systému Windows Server. Tato část shrnuje, jak vytvořit nástroj pro vyrovnávání zatížení v Azure Portal.
 
-Azure Load Balancer může být buď Standard Load Balancer, nebo základní Load Balancer. Standard Load Balancer má více funkcí než základní Load Balancer. V případě skupiny dostupnosti se Standard Load Balancer vyžaduje, pokud použijete zónu dostupnosti (místo skupiny dostupnosti). Podrobnosti o rozdílu mezi typy nástroje pro vyrovnávání zatížení naleznete v tématu [Load Balancer porovnání skladové](../../../load-balancer/load-balancer-overview.md#skus)položky.
+Azure Load Balancer může být buď Standard Load Balancer, nebo základní Load Balancer. Standard Load Balancer má více funkcí než základní Load Balancer. V případě skupiny dostupnosti se Standard Load Balancer vyžaduje, pokud použijete zónu dostupnosti (místo skupiny dostupnosti). Podrobnosti o rozdílu mezi typy nástroje pro vyrovnávání zatížení naleznete v tématu [Load Balancer porovnání skladové](../../../load-balancer/concepts-limitations.md#skus)položky.
 
 1. V Azure Portal přejděte do skupiny prostředků, kde jsou vaše servery SQL, a klikněte na **+ Přidat**.
 1. Vyhledejte **Load Balancer**. Vyberte nástroj pro vyrovnávání zatížení publikovaný Microsoftem.
@@ -364,7 +364,7 @@ Azure Load Balancer může být buď Standard Load Balancer, nebo základní Loa
    | **Typ** |Interní |
    | **Virtuální síť** |Použijte název virtuální sítě Azure. |
    | **Podsíť** |Použijte název podsítě, ve které se nachází virtuální počítač.  |
-   | **Přiřazení IP adresy** |Statická |
+   | **Přiřazení IP adresy** |Statický |
    | **IP adresa** |Použijte dostupnou adresu z podsítě. Tuto adresu použijte pro naslouchací proces skupiny dostupnosti. Všimněte si, že se liší od IP adresy vašeho clusteru.  |
    | **Předplatné** |Použijte stejné předplatné jako virtuální počítač. |
    | **Umístění** |Použijte stejné umístění jako virtuální počítač. |
@@ -402,13 +402,13 @@ Pokud chcete nakonfigurovat nástroj pro vyrovnávání zatížení, musíte vyt
 
 1. Nastavte sondu stavu naslouchacího procesu následujícím způsobem:
 
-   | Nastavení | Popis | Příklad
+   | Nastavení | Popis | Příklad:
    | --- | --- |---
    | **Název** | Text | SQLAlwaysOnEndPointProbe |
    | **Protokol** | Zvolit TCP | TCP |
    | **Port** | Libovolný nepoužitý port | 59999 |
    | **Interval**  | Doba mezi pokusy o sondu v sekundách |5 |
-   | **Prahová hodnota špatného stavu** | Počet po sobě jdoucích selhání testu, které se musí vyskytnout, když se virtuální počítač považuje za poškozený  | 2 |
+   | **Prahová hodnota pro poškozený stav** | Počet po sobě jdoucích selhání testu, které se musí vyskytnout, když se virtuální počítač považuje za poškozený  | 2 |
 
 1. Kliknutím na **OK** nastavte sondu stavu.
 
@@ -418,7 +418,7 @@ Pokud chcete nakonfigurovat nástroj pro vyrovnávání zatížení, musíte vyt
 
 1. Nastavte pravidla vyrovnávání zatížení naslouchacího procesu následujícím způsobem.
 
-   | Nastavení | Popis | Příklad
+   | Nastavení | Popis | Příklad:
    | --- | --- |---
    | **Název** | Text | SQLAlwaysOnEndPointListener |
    | **IP adresa front-endu** | Zvolit adresu |Použijte adresu, kterou jste vytvořili při vytváření nástroje pro vyrovnávání zatížení. |
@@ -445,13 +445,13 @@ IP adresa služby WSFC také musí být v nástroji pro vyrovnávání zatížen
 
 1. Následujícím způsobem nastavte test stavu hlavní IP adresy clusteru služby WSFC:
 
-   | Nastavení | Popis | Příklad
+   | Nastavení | Popis | Příklad:
    | --- | --- |---
    | **Název** | Text | WSFCEndPointProbe |
    | **Protokol** | Zvolit TCP | TCP |
    | **Port** | Libovolný nepoužitý port | 58888 |
    | **Interval**  | Doba mezi pokusy o sondu v sekundách |5 |
-   | **Prahová hodnota špatného stavu** | Počet po sobě jdoucích selhání testu, které se musí vyskytnout, když se virtuální počítač považuje za poškozený  | 2 |
+   | **Prahová hodnota pro poškozený stav** | Počet po sobě jdoucích selhání testu, které se musí vyskytnout, když se virtuální počítač považuje za poškozený  | 2 |
 
 1. Kliknutím na **OK** nastavte sondu stavu.
 
@@ -459,7 +459,7 @@ IP adresa služby WSFC také musí být v nástroji pro vyrovnávání zatížen
 
 1. Následujícím způsobem nastavte pravidla vyrovnávání zatížení základních IP adres clusteru.
 
-   | Nastavení | Popis | Příklad
+   | Nastavení | Popis | Příklad:
    | --- | --- |---
    | **Název** | Text | WSFCEndPoint |
    | **IP adresa front-endu** | Zvolit adresu |Použijte adresu, kterou jste vytvořili při konfiguraci IP adresy služby WSFC. To se liší od IP adresy naslouchacího procesu. |

@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: 226151d81319dc4e6f132e76ce2d310f88a484e8
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: e8e4bed052ec5b70c441a3ae76f3409c307299e5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087024"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981438"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Spuštění virtuálního počítače Azure je zablokované na Windows Update.
 
 Tento článek pomáhá vyřešit problém, když se váš virtuální počítač zablokuje ve fázi web Windows Update během spouštění. 
 
 > [!NOTE] 
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití modelu nasazení Správce prostředků. Tento model doporučujeme použít pro nová nasazení namísto použití modelu nasazení Classic.
+> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití modelu nasazení Správce prostředků. Tento model doporučujeme použít pro nová nasazení namísto použití modelu nasazení Classic.
 
 ## <a name="symptom"></a>Příznak
 
@@ -55,7 +55,7 @@ V závislosti na počtu aktualizací, které jsou instalovány nebo vraceny zpě
     Pokud je například připojený disk s operačním systémem jednotka F, spusťte následující příkaz:
 
         dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
-5. Otevřete soubor C:\temp\Patch_level.txt a pak ho z dolní části si přečtěte. Vyhledejte aktualizaci, která čeká na **instalaci** nebo **čeká na odinstalaci** .  Následuje ukázka stavu aktualizace:
+5. Otevřete soubor složce c:\Temp\ Patch_level. txt a pak ho z dolní části si přečtěte. Vyhledejte aktualizaci, která čeká na **instalaci** nebo **čeká na odinstalaci** .  Následuje ukázka stavu aktualizace:
 
      ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5

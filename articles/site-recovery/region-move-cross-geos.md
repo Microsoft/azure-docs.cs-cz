@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 2a749e9345fec0e91751641cd15805d7f7d62d95
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: a48edda31f19ef4ce1ba23664eef1f51ba9cf8d1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961418"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970504"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Přesun virtuálních počítačů Azure mezi Azure Government a veřejnými regiony 
 
@@ -65,7 +65,7 @@ Nastavte cílovou [síť Azure](../virtual-network/quick-create-portal.md).
 
 ### <a name="set-up-an-azure-storage-account"></a>Nastavení účtu úložiště Azure
 
-Nastavte [účet úložiště Azure](../storage/common/storage-quickstart-create-account.md).
+Nastavte [účet úložiště Azure](../storage/common/storage-account-create.md).
 
 - Site Recovery replikuje místní počítače do služby Azure Storage. Virtuální počítače Azure se vytvoří z úložiště po převzetí služeb při selhání.
 - Účet úložiště musí být ve stejné oblasti jako trezor služby Recovery Services.
@@ -107,7 +107,7 @@ Na každém serveru, který chcete replikovat, musí být nainstalovaná služba
 ## <a name="copy-data-to-the-target-region"></a>Kopírovat data do cílové oblasti
 Následující kroky vám pomohou použít Azure Site Recovery ke kopírování dat do cílové oblasti.
 
-### <a name="create-the-vault-in-any-region-except-the-source-region"></a>V libovolné oblasti (s výjimkou zdrojové oblasti) vytvořte trezor.
+### <a name="create-the-vault-in-any-region-except-the-source-region"></a>Vytvořte trezor v libovolné oblasti, s výjimkou zdrojové oblasti.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) > **Recovery Services**.
 2. Klikněte na **vytvořit prostředek** > **nástroje pro správu** > **zálohování a Site Recovery**.
@@ -163,7 +163,7 @@ Vyberte a zkontrolujte cílové prostředky.
 2. Zadejte cílový model nasazení.
 3. Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a účet úložiště Azure.
 
-   ![Cíl](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![Výběr cílového umístění](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ### <a name="create-a-replication-policy"></a>Vytvoření zásady replikace
@@ -197,7 +197,7 @@ Tato zásada se automaticky přidruží ke konfiguračnímu serveru. Ve výchoz�
    > [!WARNING]
    > Musíte zadat IP adresu virtuálního počítače Azure, který máte v úmyslu přesunout.
 
-10. V okně **vlastnosti** > **Konfigurovat vlastnosti**vyberte účet, který bude procesový Server používat k automatické instalaci služby mobility na počítači.
+10. V části **Vlastnosti** > **Konfigurace vlastností** vyberte účet, který použije procesový server při automatické instalaci služby mobility na virtuálním počítači.
 11. V části **Nastavení replikace** > **Konfigurace nastavení replikace** zkontrolujte, jestli je vybraná správná zásada replikace. 
 12. Klikněte na **Povolit replikaci**. Průběh úlohy **Povolení ochrany** můžete sledovat tady: **Nastavení** > **Úlohy** > **Úlohy Site Recovery**. Po spuštění úlohy **Dokončit ochranu** je počítač připravený k převzetí služeb při selhání.
 
@@ -210,9 +210,9 @@ Chcete-li monitorovat servery, které přidáte, můžete kontrolovat čas posle
 1. Přejděte do trezoru, v **nastavení** > **replikované položky**klikněte na virtuální počítač, který chcete přesunout do cílové oblasti, klikněte na tlačítko **+ testovat převzetí služeb při selhání** .
 2. V části **Testovací převzetí služeb při selhání** vyberte bod obnovení, který se má pro převzetí služeb při selhání použít:
 
-   - **Nejnovější zpracovaný:** Vrátí virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Zobrazí se časové razítko. S touto možností se neztrácí žádný čas zpracováním dat, takže poskytuje nízkou plánovanou dobu obnovení (RTO).
-   - **Nejnovější konzistentní vzhledem k aplikacím:** Tato možnost vrátí všechny virtuální počítače k nejnovějšímu bodu obnovení konzistentnímu vzhledem k aplikacím. Zobrazí se časové razítko.
-   - **Vlastní:** Vyberete si libovolný bod obnovení.
+   - **Nejnovější zpracovaný:** Vrátí virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Časové razítko je vidět. S touto možností se neztrácí žádný čas zpracováním dat, takže poskytuje nízkou plánovanou dobu obnovení (RTO).
+   - **Nejnovější konzistentní vzhledem k aplikacím**: Tato možnost vrátí všechny virtuální počítače k nejnovějšímu konzistentnímu bodu obnovení vzhledem k aplikacím. Časové razítko je vidět.
+   - **Vlastní**: Vyberete si libovolný bod obnovení.
 
 3. Vyberte cílovou virtuální síť Azure, do které chcete virtuální počítače Azure přesunout a otestovat konfiguraci. 
 
@@ -220,7 +220,7 @@ Chcete-li monitorovat servery, které přidáte, můžete kontrolovat čas posle
    > Pro testovací převzetí služeb při selhání doporučujeme použít samostatnou síť virtuálních počítačů Azure, nikoli produkční síť, do které chcete virtuální počítače přesunout, když jste povolili replikaci.
 
 4. Chcete-li zahájit testování přesunu, klikněte na tlačítko **OK**. Pokud chcete sledovat průběh, kliknutím na virtuální počítač otevřete jeho vlastnosti. Případně můžete kliknout na úlohu **Testovací převzetí služeb při selhání** v části název_trezoru > **Nastavení** > **Úlohy** > **Úlohy Site Recovery**.
-5. Po dokončení převzetí služeb při selhání se replika virtuálního počítače Azure zobrazí na webu Azure Portal v části **Virtuální počítače**. Ujistěte se, že je virtuální počítač spuštěný, má odpovídající velikost a je připojený k odpovídající síti.
+5. Po dokončení převzetí služeb při selhání se na portálu Azure Portal v části **Virtuální počítače** objeví replika virtuálního počítače Azure. Ujistěte se, že je virtuální počítač spuštěný, má odpovídající velikost a je připojený k odpovídající síti.
 6. Pokud chcete odstranit virtuální počítač vytvořený jako součást testování přesunu, klikněte na tlačítko **vyčistit testovací převzetí služeb při selhání** u replikované položky. V části **poznámky**si zaznamenejte a uložte všechny poznámky spojené s testem.
 
 ## <a name="perform-the-move-to-the-target-region-and-confirm"></a>Proveďte přesun do cílové oblasti a potvrďte.

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: f08915c07db6759a03fc9bd0695523dead6dcb7f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d7feb0f7c32ab544df2b9de08daaf8cd007318b5
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784835"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045306"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Nejčastější dotazy Traffic Manager
 
@@ -29,7 +29,7 @@ Jak je vysvětleno, [jak Traffic Manager funguje](../traffic-manager/traffic-man
 Proto Traffic Manager neposkytuje koncový bod nebo IP adresu, ke kterým se klienti připojují. Pokud chcete pro vaši službu statickou IP adresu, musí být nakonfigurovaná ve službě, ne v Traffic Manager.
 
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Jaké typy přenosů se dají směrovat pomocí Traffic Manager?
-Jak je vysvětleno, [jak Traffic Manager funguje](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager koncový bod může být libovolná internetová služba hostovaná v nebo mimo Azure. Proto Traffic Manager můžou směrovat provoz, který pochází z veřejného Internetu, do sady koncových bodů, které jsou taky na internetu. Pokud máte koncové body, které jsou uvnitř privátní sítě (například interní verze [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer)), nebo pokud chcete, aby uživatelé prováděli žádosti DNS z těchto interních sítí, nebudete moci použít Traffic Manager ke směrování tohoto provozu.
+Jak je vysvětleno, [jak Traffic Manager funguje](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager koncový bod může být libovolná internetová služba hostovaná v nebo mimo Azure. Proto Traffic Manager můžou směrovat provoz, který pochází z veřejného Internetu, do sady koncových bodů, které jsou taky na internetu. Pokud máte koncové body, které jsou uvnitř privátní sítě (například interní verze [Azure Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer)), nebo pokud chcete, aby uživatelé prováděli žádosti DNS z těchto interních sítí, nebudete moci použít Traffic Manager ke směrování tohoto provozu.
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>Podporuje Traffic Manager "rychlé" relace?
 
@@ -384,13 +384,13 @@ Pro profily s jinou metodou směrování než s více hodnotami:
 
 |Příchozí žádost o dotaz|    Typ koncového bodu|  Poskytnutá odpověď|
 |--|--|--|
-|JAKÝMIKOLI |  A/AAAA/CNAME |  Cílový koncový bod| 
+|JAKÝMIKOLI |  A / AAAA / CNAME |  Cílový koncový bod| 
 |A |    A/CNAME | Cílový koncový bod|
 |A |    AAAA |  DATA |
-|AAAA | AAAA/CNAME |  Cílový koncový bod|
+|AAAA | AAAA / CNAME |  Cílový koncový bod|
 |AAAA | A | DATA |
 |CNAME |    CNAME | Cílový koncový bod|
-|CNAME  |A/AAAA | DATA |
+|CNAME  |A / AAAA | DATA |
 |
 
 Pro profily s metodou směrování nastavenou na hodnotu vícehodnotové:
@@ -406,7 +406,7 @@ Pro profily s metodou směrování nastavenou na hodnotu vícehodnotové:
 
 Ano, můžete s výjimkou, že profil s hodnotou typu vícehodnotové nemůže být nadřazeným profilem ve vnořené sadě profilů.
 
-### <a name="i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Ukončil (a) jsem koncový bod webové aplikace v profilu Traffic Manager, ale nepřijímám žádný provoz ani po jeho restartování. Jak mohu tuto situaci opravit?
+### <a name="i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Ukončil (a) jsem koncový bod webové aplikace v profilu Traffic Manager, ale nepřijímám žádný provoz ani po jeho restartování. Jak to mohu napravit?
 
 Když je koncový bod webové aplikace Azure zastavený, Traffic Manager zastaví kontrolu jeho stavu a restartuje kontroly stavu až po zjištění, že byl koncový bod restartován. Chcete-li zabránit této prodlevě, zakažte a znovu povolte tento koncový bod v profilu Traffic Manager po restartování koncového bodu.
 
@@ -499,7 +499,7 @@ Následující tabulka popisuje chování Traffic Managerch kontrol stavu pro vn
 
 | Stav monitoru pro podřízený profil | Stav monitorování nadřazeného koncového bodu | Poznámky |
 | --- | --- | --- |
-| Zabezpečen. Podřízený profil byl zakázán. |Zastaveno |Stav nadřazeného koncového bodu je zastaven, není zakázán. Zakázaný stav je rezervovaný pro indikaci, že jste v nadřazeném profilu zakázali koncový bod. |
+| Disabled. Podřízený profil byl zakázán. |Zastaveno |Stav nadřazeného koncového bodu je zastaven, není zakázán. Zakázaný stav je rezervovaný pro indikaci, že jste v nadřazeném profilu zakázali koncový bod. |
 | Degradovaný. Nejméně jeden koncový bod podřízeného profilu je v neomezeném stavu. |Online: počet online koncových bodů v podřízeném profilu je aspoň hodnota MinChildEndpoints.<BR>CheckingEndpoint: počet koncových bodů online plus CheckingEndpoint v podřízeném profilu je alespoň hodnota MinChildEndpoints.<BR>Snížený výkon: jinak. |Provoz se směruje na koncový bod stavového CheckingEndpoint. Pokud je nastavení MinChildEndpoints příliš vysoké, koncový bod je vždy snížený. |
 | Online. Nejméně jeden koncový bod podřízeného profilu je online stav. V neomezeném stavu není žádný koncový bod. |Viz výše. | |
 | CheckingEndpoints. Aspoň jeden podřízený koncový bod profilu je "CheckingEndpoint". Žádné koncové body nejsou online nebo jsou degradovány. |Stejné jako výše. | |

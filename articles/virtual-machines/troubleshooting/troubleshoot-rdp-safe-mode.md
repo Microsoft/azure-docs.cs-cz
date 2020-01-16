@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 38b0266565969d06f3f1128ce5a92c5268c7c7d2
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 14cd43f7bd7965b755eca14e5914c64e2ec8e044
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088563"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981292"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>Nelze provést připojení RDP k virtuálnímu počítači, protože virtuální počítač se spustí v nouzovém režimu
 
 Tento článek popisuje, jak vyřešit problém, ve kterém nemůže připojit k Azure Windows Virtual Machines (VM), protože virtuální počítač je nakonfigurovaný na spuštění v nouzovém režimu.
 
 > [!NOTE]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
+> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/management/deployment-models.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
 
 ## <a name="symptoms"></a>Příznaky
 
@@ -55,7 +55,7 @@ Pokud chcete tento problém vyřešit, pomocí sériového portu ovládací prve
 
     **Bezpečného** příznak může zobrazit následující hodnoty:
    - Minimální
-   - Síť
+   - Network (Síť)
 
      V některém z těchto dvou režimech nebude spuštěno protokolu RDP. Proto oprava zůstává stejná.
 

@@ -2,22 +2,22 @@
 title: Spuštění paralelní úlohy – Azure Batch Python
 description: Kurz – Zpracování multimediálních souborů pomocí aplikace ffmpeg ve službě Azure Batch s využitím klientské knihovny Batch Python
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: d06cf74b2a29af3fea2c24facac2899d09a0a84f
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: bc73c3c40754d1c3eeb6c86f6c9578047a22d73e
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090789"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029247"
 ---
-# <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Kurz: Spuštění paralelní úlohy pomocí Azure Batch s využitím rozhraní Python API
+# <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Kurz: Spuštění paralelní úlohy pomocí služby Azure Batch s využitím rozhraní Python API
 
 Azure Batch umožňuje efektivně spouštět v Azure rozsáhlé paralelní dávkové úlohy a úlohy vysokovýkonného výpočetního prostředí (HPC). Tento kurz vás provede příkladem spuštění paralelní úlohy pomocí služby Batch v Pythonu. Seznámíte se s běžným pracovním postupem aplikace Batch a způsobem práce s prostředky služby Batch a Storage prostřednictvím kódu programu. Získáte informace o těchto tématech:
 
@@ -76,7 +76,7 @@ _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
 
-### <a name="run-the-app"></a>Spuštění aplikace
+### <a name="run-the-app"></a>Spusťte aplikaci
 
 Spuštění skriptu:
 
@@ -199,7 +199,7 @@ new_pool = batch.models.PoolAddParameter(
 batch_service_client.pool.add(new_pool)
 ```
 
-### <a name="create-a-job"></a>Vytvoří úlohu
+### <a name="create-a-job"></a>Vytvoření úlohy
 
 Úloha služby Batch určí fond, ve kterém se budou spouštět úkoly, a volitelná nastavení, jako je priorita a plán práce. Ukázka vytvoří úlohu zavoláním metody `create_job`. Tato definovaná funkce používá třídu [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter) k vytvoření úlohy ve vašem fondu. Metoda [job.add](/python/api/azure-batch/azure.batch.operations.joboperations) odešle fond do služby Batch. Na začátku úloha neobsahuje žádné úkoly.
 
@@ -267,13 +267,13 @@ while datetime.datetime.now() < timeout_expiration:
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Aplikace po spuštění úkolů automaticky odstraní kontejner vstupního úložiště, který vytvořila, a dá vám možnost odstranit fond a úlohu služby Batch. Třídy [JobOperations](/python/api/azure-batch/azure.batch.operations.joboperations) a [PoolOperations](/python/api/azure-batch/azure.batch.operations.pooloperations) v BatchClient obsahují metody pro odstranění, které se zavolají, pokud potvrdíte odstranění. I když se vám neúčtují poplatky za úlohy a úlohy samotné, účtují se vám poplatky za výpočetní uzly. Proto doporučujeme, abyste fondy přidělovali, jen když je to potřeba. Při odstranění fondu se odstraní veškeré výstupy úkolů v uzlech. Vstupní a výstupní soubory však zůstanou v účtu úložiště.
+Aplikace po spuštění úkolů automaticky odstraní kontejner vstupního úložiště, který vytvořila, a dá vám možnost odstranit fond a úlohu služby Batch. Třídy [JobOperations](/python/api/azure-batch/azure.batch.operations.joboperations) a [PoolOperations](/python/api/azure-batch/azure.batch.operations.pooloperations) v BatchClient obsahují metody pro odstranění, které se zavolají, pokud potvrdíte odstranění. I když se vám neúčtují poplatky za úlohy a úkoly jako takové, účtují se vám poplatky za výpočetní uzly. Proto doporučujeme, abyste fondy přidělovali, jen když je to potřeba. Při odstranění fondu se odstraní veškeré výstupy úkolů v uzlech. Vstupní a výstupní soubory však zůstanou v účtu úložiště.
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, účet Batch a účet úložiště. Na webu Azure Portal to provedete tak, že vyberete skupinu prostředků účtu Batch a kliknete na **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili tyto postupy:
+V tomto kurzu jste se naučili těmto úkonům:
 
 > [!div class="checklist"]
 > * Ověření pomocí účtů Batch a Storage

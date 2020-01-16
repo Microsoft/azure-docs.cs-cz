@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/16/2019
 ms.author: evansma
-ms.openlocfilehash: 22d1f2d39a1ef3825d7d6c7eb0724e108b9b78e6
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 6f09df7c4ccdfa8a339b9d7f2655128c7ead5184
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933768"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978648"
 ---
 # <a name="publish-an-integrated-solution"></a>Publikování integrovaného řešení
 
@@ -28,13 +28,13 @@ Přehled programu integrovaných řešení najdete v [tomto videu](https://aka.m
 * Zákazníci můžou najít zabalená řešení, která řeší problémy komplexního podnikání prostřednictvím webu Marketplace. Získávají urychlenou hodnotu, protože je technologie integrovaná předem. Zákazníci se nemuseli zapojit samostatně s více aplikacemi nasazenými způsobem.
 * IP je zabalená společně s dalšími řešeními a službami, které zvyšují hodnotu technologie, která je poskytována odbornými partnery pro odborníky na služby.
 * Partneři služeb vytvářejí předdefinovaná a integrovaná řešení s využitím špičkové technologie pro škálování, pozemky a rozšiřování v dalších zákaznických účtech.
-* Společnost Microsoft může využít tato předintegrovaná řešení zarovnaná v oboru pro snazší spolupráci se zákazníky. Ceny a výrazy jsou seřazené předem. 
+* Společnost Microsoft může využít tato předintegrovaná řešení zarovnaná v oboru pro snazší spolupráci se zákazníky. Ceny a výrazy jsou seřazené předem.
 
 ## <a name="eligibility-criteria"></a>Kritéria způsobilosti
 
 * Zúčastnění partneři musí mít ID MPN.
 * Poskytovatelé zúčastněných služeb by měli být připravení do společného prodeje.
-* Zúčastnění dodavatelé softwaru by měli být připravení na prodej IP. 
+* Zúčastnění dodavatelé softwaru by měli být připravení na prodej IP.
 * Aspoň jeden zúčastněný partner musí mít zlatou kompetenci v jedné z těchto oblastí:
 
     * Vývoj aplikací
@@ -53,13 +53,13 @@ Přehled programu integrovaných řešení najdete v [tomto videu](https://aka.m
 
 ## <a name="submit-a-nomination"></a>Odeslat jmenování
 
-Partneři, kteří chtějí účast v programu, by měli identifikovat jiné partnery, se kterými chtějí pracovat. Měly by vyplnit [formulář pro pojmenování integrovaných řešení](https://aka.ms/AA5qicu). Tým programu integrovaných řešení kontroluje jeho jmenování a následuje během 10 pracovních dnů. Tým poskytuje schválení a další kroky. 
+Partneři, kteří chtějí účast v programu, by měli identifikovat jiné partnery, se kterými chtějí pracovat. Měly by vyplnit [formulář pro pojmenování integrovaných řešení](https://aka.ms/AA5qicu). Tým programu integrovaných řešení kontroluje jeho jmenování a následuje během 10 pracovních dnů. Tým poskytuje schválení a další kroky.
 
-## <a name="develop-an-integrated-solution"></a>Vývoj integrovaného řešení 
+## <a name="develop-an-integrated-solution"></a>Vývoj integrovaného řešení
 
-Po schválení vašeho jmenování použijte prostředky propojeného programu k vývoji integrovaného řešení. Postupujte následovně: 
+Po schválení vašeho jmenování použijte prostředky propojeného programu k vývoji integrovaného řešení. Postupujte následovně:
 
-1. Dokončete klíčové obchodní a technické diskuze ve formátu dílny, abyste mohli definovat řešení a integrační přístup. 
+1. Dokončete klíčové obchodní a technické diskuze ve formátu dílny, abyste mohli definovat řešení a integrační přístup.
 
     Vaše diskuze o řešení by měla zahrnovat tyto body:
     * Rozsah
@@ -73,7 +73,7 @@ Po schválení vašeho jmenování použijte prostředky propojeného programu k
     * Prodejní proces
     * Aktivity
 
-    Vaše diskuze o přístupu k integraci by měla zahrnovat tyto body: 
+    Vaše diskuze o přístupu k integraci by měla zahrnovat tyto body:
     * Body integrace
     * Architektura řešení
     * Ověření
@@ -101,15 +101,15 @@ Po schválení vašeho jmenování použijte prostředky propojeného programu k
     * Seznam popisů integrovaného řešení. Dodržujte [Doporučené postupy pro výpis nabídky](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices).
     * Rozteč na jedné stránce pro zákazníky. Použijte [šablonu s jedním stránkováním](https://aka.ms/AA5s08a).
     * Prezentace zákazníka. Použijte [šablonu prezentace](https://aka.ms/AA5s7ql).
-    * Logo pro kombinované řešení 
+    * Logo pro kombinované řešení
 
-## <a name="publish-your-integrated-solution"></a>Publikování integrovaného řešení 
+## <a name="publish-your-integrated-solution"></a>Publikování integrovaného řešení
 
 Až dokončíte technickou integraci a marketingovou dokumentaci, přečtěte si příručku pro vydavatele pro [konzultační služby Microsoft AppSource a Azure Marketplace](https://docs.microsoft.com/azure/marketplace/consulting-services). Pomocí tohoto prostředku určete, zda bude řešení Publikováno v Microsoft AppSource nebo Azure Marketplace. Použijte také průvodce pro přípravu vašich artefaktů publikování a dokončení procesu publikování.
 
 I když pro konzultační nabídky služeb je k dispozici pět typů služeb, integrované řešení musí být buď důkaz konceptu, nebo plná implementace.
 
-## <a name="go-to-market-with-your-integrated-solution"></a>Přejít na trh s integrovaným řešením 
+## <a name="go-to-market-with-your-integrated-solution"></a>Přejít na trh s integrovaným řešením
 
 Když je vaše řešení živé v Microsoft AppSource nebo Azure Marketplace, budete chtít řídit povědomí a požadavky prostřednictvím marketingových aktivit. Zkontrolujte aktivity uvedené v [plánu projektu a časové ose](https://aka.ms/AA5qiuc). Tento prostředek zahrnuje aktivity, které partneři můžou řídit v rámci svých týmů, a druhý. Pak získáte přístup k [výhodám uvedení na trh](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits) pro partnery, kteří publikují na webu Marketplace. Všechny nabídky integrovaného řešení jsou způsobilé pro výhody na úrovni zkušební verze.
 

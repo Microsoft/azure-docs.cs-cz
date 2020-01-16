@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: kumud
-ms.openlocfilehash: c57a1f7a676e5766dc7c022ae44e08750cccaf8b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: fe8ea4dfb4de45a1e09648ac51fe8d74f93a6b9e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750600"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979606"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Vytvoření, změna nebo odstranění směrovací tabulky
 
@@ -66,8 +66,8 @@ Do vyhledávacího pole v horní části portálu zadejte do vyhledávacího pol
 
     * [Protokol aktivit](../azure-monitor/platform/platform-logs-overview.md)<br>
     * [Řízení přístupu (IAM)](../role-based-access-control/overview.md)<br>
-    * [Značky](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br>
-    * [Počtu](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br>
+    * [Značky](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br>
+    * [Počtu](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br>
     * [Skript Automation](../azure-resource-manager/templates/export-template-portal.md)
 
 ### <a name="view-details-of-route-table---commands"></a>Zobrazení podrobností směrovací tabulky – příkazy

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: d39fd95f8704650db16c1dc1553efaba2f727052
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 496b890cc49b6b6b9f15213a48472447f801b1c9
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889431"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045116"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Podpora platforem sady SDK pro zařízení Azure IoT
 
@@ -44,31 +44,32 @@ Pro každou z uvedených sad SDK Microsoft:
 
 [Sada SDK pro zařízení Azure IoT Hub C](https://github.com/Azure/azure-iot-sdk-c) je testována pomocí nástroje a podporuje následující konfigurace.
 
-| Operační systém                  | Knihovna TLS                  | Další požadavky                                                                     |
+| OS                  | Knihovna TLS                  | Další požadavky                                                                     |
 |---------------------|------------------------------|---------------------------------------------------------------------------------------------|
 | Linux               | OpenSSL, WolfSSL nebo BearSSL | Berkeley Sockets</br></br>Rozhraní standardu POSIX (Portable Operating System Interface)                       |
-| iOS 12,2            | OpenSSL nebo nativní OSX        | XCode emulované ve OSX 10.13.4                                                               |
+| iOS 12,2            | OpenSSL                      | XCode emulované ve OSX 10.13.4                                                               |
 | Řada Windows 10   | SChannel                     |                                                                                             |
 | Mbed OS 5,4         | Mbed TLS 2                   | [MXChip IoT dev Kit](https://microsoft.github.io/azure-iot-developer-kit/)                  |
 | Operační systém Azure Sphere     | WolfSSL                      | [Azure Sphere MT3620](https://azure.microsoft.com/services/azure-sphere/get-started/) |
+| Arduino             | BearSSL                      | [ESP32 nebo ESP8266](https://github.com/Azure/azure-iot-arduino#simple-sample-instructions) 
 
 ### <a name="python-sdk"></a>Python SDK
 
 [Sada SDK pro zařízení služby Azure IoT Hub Python](https://github.com/Azure/azure-iot-sdk-python) je testována s nástrojem a podporuje následující konfigurace.
 
-| Operační systém                  | Přepínač                          |
+| OS                  | Přepínač                          |
 |---------------------|-----------------------------------|
-| Linux               | Python 2,7 *, 3,4*, 3,5 *, 3,6, 3,7 |
-| MacOS High Sierra   | Python 2,7 *, 3,4*, 3,5 *, 3,6, 3,7 |
-| Řada Windows 10   | Python 2,7 *, 3,4*, 3,5 *, 3,6, 3,7 |
+| Linux               | Python 2,7. *, 3,5 nebo novější |
+| MacOS High Sierra   | Python 2,7. *, 3,5 nebo novější |
+| Řada Windows 10   | Python 2,7. *, 3,5 nebo novější |
 
-\* Jenom Python verze 3.5.3 nebo novější podporuje asynchronní rozhraní API, doporučujeme používat 3,7 nebo novější.
+Jenom Python verze 3.5.3 nebo novější podporuje asynchronní rozhraní API, doporučujeme použít verzi 3,7 nebo novější.
 
 ### <a name="net-sdk"></a>.NET SDK
 
 [Sada SDK pro zařízení AzureC#IoT Hub .NET ()](https://github.com/Azure/azure-iot-sdk-csharp) je testována pomocí a podporuje následující konfigurace.
 
-| Operační systém                                   | Standard                                                   |
+| OS                                   | Úroveň Standard                                                   |
 |--------------------------------------|------------------------------------------------------------|
 | Linux                                | .NET Core 2.1                                              |
 | SKU Windows 10 Desktop a Server   | .NET Core 2,1, .NET Framework 4.5.1 nebo .NET Framework 4,7 |
@@ -79,7 +80,7 @@ Sadu .NET SDK je také možné použít s Windows IoT Core s [agentem zařízen�
 
 [Sada SDK pro zařízení Node. js v Azure IoT Hub](https://github.com/Azure/azure-iot-sdk-node) se testuje pomocí a podporuje následující konfigurace.
 
-| Operační systém                  | Verze uzlu    |
+| OS                  | Verze uzlu    |
 |---------------------|-----------------|
 | Linux               | LTS a aktuální |
 | Řada Windows 10   | LTS a aktuální |
@@ -88,9 +89,9 @@ Sadu .NET SDK je také možné použít s Windows IoT Core s [agentem zařízen�
 
 [Sada SDK pro zařízení s Azure IoT Hub Java](https://github.com/Azure/azure-iot-sdk-java) je testována s nástrojem a podporuje následující konfigurace.
 
-| Operační systém                     | Verze Java |
+| OS                     | Verze Javy |
 |------------------------|--------------|
-| Rozhraní Android API 28         | Java 8       |
+| Android API 28         | Java 8       |
 | Linux x64             | Java 8       |
 | Řada Windows 10 řady x64  | Java 8       |
 
@@ -100,8 +101,8 @@ Microsoft spolupracuje s různými partnery na poskytování vývojových sad pr
 
 | Partner             | Zařízení                            | Odkaz                     | Podpora |
 |---------------------|------------------------------------|--------------------------|---------|
-| Espressif           | ESP32 <br/> ESP8266                              | [ESP – Azure](https://github.com/espressif/esp-azure)                | [GitHub](https://github.com/espressif/esp-azure)  
-| ASUS            | Modem Qualcomm MDM9206 LTE IoT     | [Qualcomm LTE pro sadu IoT SDK](https://developer.qualcomm.com/software/lte-iot-sdk) | [Fórum](https://developer.qualcomm.com/forums/software/lte-iot-sdk)   |
+| Espressif           | ESP32 <br/> ESP8266                              | [Esp-azure](https://github.com/espressif/esp-azure)                | [GitHub](https://github.com/espressif/esp-azure)  
+| Qualcomm            | Modem Qualcomm MDM9206 LTE IoT     | [Qualcomm LTE pro sadu IoT SDK](https://developer.qualcomm.com/software/lte-iot-sdk) | [Fórum](https://developer.qualcomm.com/forums/software/lte-iot-sdk)   |
 | Svatý mikroelektronické | Řada STM32L4 <br/> Řada STM32F4 <br/>  Řada STM32F7 <br/>  STM32L4 Discovery kit pro uzel IoT    | [X-DATOVÁ KRYCHLE – AZURE](https://www.st.com/en/embedded-software/x-cube-azure.html) <br/>  <br/> [P-NUCLEO – AZURE](https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/communication-and-connectivity-solution-eval-boards/p-nucleo-azure1.html) <br/> [FP-CLD – AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32-ode-function-pack-sw/fp-cld-azure1.html)            | [Podpora](https://www.st.com/content/st_com/en/support/support-home.html)
 | Texas Instruments   | Hlavní panel CC3220SF </br> Hlavní panel CC3220S </br> Hlavní panel CC3235SF </br> Hlavní panel CC3235S </br> Hlavní panel MSP432E4 | [Modul plug-in Azure IoT pro SimpleLink](https://github.com/TexasInstruments/azure-iot-pal-simplelink) | [Fórum TI E2E](https://e2e.ti.com) <br/> [Fórum TI E2E pro CC3220](https://e2e.ti.com/support/wireless_connectivity/simplelink_wifi_cc31xx_cc32xx/) <br/> [Fórum TI E2E pro MSP432E4](https://e2e.ti.com/support/microcontrollers/msp430/) |
 
@@ -115,7 +116,7 @@ Microsoft spolupracuje s řadou partnerů, aby mohli průběžně rozšiřovat A
 
 * Pokud chcete procházet zařízení s certifikací Azure IoT Certified, přečtěte si téma [Microsoft Azure Certified for IoT katalogu zařízení](https://catalog.azureiotsolutions.com/).
 
-* Další informace o důvěryhodných partnerech Microsoftu nebo o tom, jak se stát důvěryhodným partnerem Microsoftu, najdete v tématu [Microsoft Azure certifikovaných Internet věcí důvěryhodných partnerů](https://azure.microsoft.com/marketplace/certified-iot-partners/).
+* Další informace o ekosystému Azure Certified for IoT najdete v tématu [připojení k ekosystému Certified for IoT](https://catalog.azureiotsolutions.com/register).
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>Připojení k IoT Hub bez sady SDK
 
@@ -125,7 +126,7 @@ Pokud nemůžete použít jednu ze sad SDK pro IoT Hub zařízení, můžete se 
 
 Pokud při používání sad SDK pro zařízení Azure IoT dochází k problémům, existuje několik způsobů, jak hledat podporu. Můžete vyzkoušet jeden z následujících kanálů:
 
-**Hlášení chyb** – chyby v sadách SDK zařízení je možné ohlásit na stránce problémy v příslušném projektu GitHubu. Opravy se rychle dostanou z projektu na aktualizace produktů.
+**Hlášení chyb** – chyby v sadách SDK zařízení je možné ohlásit na stránce problémy v příslušném projektu GitHubu. Opravy rychle dostanou z projektu v k aktualizace produktu.
 
 * [Problémy s SDK pro Azure IoT Hub C](https://github.com/Azure/azure-iot-sdk-c/issues)
 

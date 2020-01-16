@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: cbrooks
-ms.openlocfilehash: c8e1d5c1c11c4fdf902c7be7bc03be298e93a8b9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 9cbdc5231fdc9f836f300b1a3a81a237a9efc123
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721130"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968200"
 ---
-# <a name="tutorial-work-with-azure-storage-queues"></a>Kurz: Práce s frontami Azure Storage
+# <a name="tutorial-work-with-azure-storage-queues"></a>Kurz: práce s frontami úložiště Azure
 
 Služba Azure Queue Storage implementuje cloudové fronty a umožňuje komunikaci mezi komponentami distribuované aplikace. Každá fronta uchovává seznam zpráv, které může přidat komponenta odesílatel a kterou zpracovávají komponenty přijímače. Ve frontě se aplikace může škálovat okamžitě, aby splňovala požadavky. Tento článek popisuje základní kroky pro práci s frontou služby Azure Storage.
 
@@ -35,19 +35,19 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Získejte bezplatnou kopii Visual Studio Codeového editoru pro různé [](https://code.visualstudio.com/download) platformy.
+- Získejte bezplatnou kopii [Visual Studio Codeového](https://code.visualstudio.com/download) editoru pro různé platformy.
 - Stáhněte a nainstalujte [.NET Core SDK](https://dotnet.microsoft.com/download).
 - Pokud nemáte aktuální předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
 
-Nejdřív vytvořte účet úložiště Azure. Podrobný průvodce vytvořením účtu úložiště najdete v rychlém startu [Vytvoření účtu úložiště](../common/storage-quickstart-create-account.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json) .
+Nejdřív vytvořte účet úložiště Azure. Podrobný průvodce vytvořením účtu úložiště najdete v rychlém startu [Vytvoření účtu úložiště](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json) .
 
 ## <a name="create-the-app"></a>Vytvoření aplikace
 
 Vytvořte aplikaci .NET Core s názvem **QueueApp**. Pro zjednodušení bude tato aplikace odesílat i přijímat zprávy přes frontu.
 
-1. V okně konzoly (například cmd, PowerShell nebo Azure CLI) pomocí `dotnet new` příkazu vytvořte novou konzolovou aplikaci s názvem **QueueApp**. Tento příkaz vytvoří jednoduchý projekt "Hello World" C# s jedním zdrojovým souborem: **Program.cs**.
+1. V okně konzoly (například CMD, PowerShell nebo Azure CLI) pomocí příkazu `dotnet new` vytvořte novou konzolovou aplikaci s názvem **QueueApp**. Tento příkaz vytvoří jednoduchý projekt "Hello World" C# s jedním zdrojovým souborem: **program.cs**.
 
    ```console
    dotnet new console -n QueueApp
@@ -99,7 +99,7 @@ Vzhledem k tomu, že aplikace používá cloudové prostředky, kód se spoušt�
 
 1. Z příkazového řádku v adresáři projektu zadejte `code .` pro otevření Visual Studio Code v aktuálním adresáři. Nechte okno příkazového řádku otevřené. Pro pozdější spuštění bude k dispozici více příkazů. Pokud se zobrazí výzva k přidání C# assetů potřebných pro sestavení a ladění, klikněte na tlačítko **Ano** .
 
-2. V editoru otevřete soubor **QueueApp. csproj** .
+2. Otevřete v editoru soubor **QueueApp.csproj**.
 
 3. Přidejte `<LangVersion>7.1</LangVersion>` do první skupiny **vlastností** v souboru sestavení. Ujistěte se, že jste přidali značku **langversion –** jenom v případě, že váš klíč **targetFramework** se může lišit v závislosti na tom, jakou verzi rozhraní .NET máte nainstalovanou.
 
@@ -124,18 +124,18 @@ Vzhledem k tomu, že aplikace používá cloudové prostředky, kód se spoušt�
    static async Task Main(string[] args)
    ```
 
-6. Uložte soubor **program.cs** .
+6. Uložte soubor **Program.cs**.
 
 ## <a name="create-a-queue"></a>Vytvoření fronty
 
-1. Pomocí `dotnet add package` příkazu nainstalujte do projektu balíčky **Microsoft. Azure. Storage. Common** a **Microsoft. Azure. Storage. Queue** . Spusťte následující příkazy dotnet ze složky projektu v okně konzoly.
+1. Pomocí příkazu `dotnet add package` nainstalujte do projektu balíčky **Microsoft. Azure. Storage. Common** a **Microsoft. Azure. Storage. Queue** . Spusťte následující příkazy dotnet ze složky projektu v okně konzoly.
 
    ```console
    dotnet add package Microsoft.Azure.Storage.Common
    dotnet add package Microsoft.Azure.Storage.Queue
    ```
 
-2. V horní části souboru **program.cs** přidejte následující obory názvů ihned po `using System;` příkazu. Tato aplikace používá typy z těchto oborů názvů pro připojení k Azure Storage a práci s frontami.
+2. V horní části souboru **program.cs** přidejte následující obory názvů hned za příkaz `using System;`. Tato aplikace používá typy z těchto oborů názvů pro připojení k Azure Storage a práci s frontami.
 
    ```csharp
    using System.Threading.Tasks;
@@ -143,7 +143,7 @@ Vzhledem k tomu, že aplikace používá cloudové prostředky, kód se spoušt�
    using Microsoft.Azure.Storage.Queue;
    ```
 
-3. Uložte soubor **program.cs** .
+3. Uložte soubor **Program.cs**.
 
 ### <a name="get-your-connection-string"></a>Získání připojovacího řetězce
 
@@ -171,7 +171,7 @@ Přidejte připojovací řetězec do aplikace, aby mohl získat přístup k úč
 
 1. Přepněte zpátky na Visual Studio Code.
 
-2. Do třídy **program** přidejte `private const string connectionString =` člena pro uložení připojovacího řetězce.
+2. Do třídy **program** přidejte člena `private const string connectionString =` pro uložení připojovacího řetězce.
 
 3. Za znaménko rovná se vložte hodnota řetězce, kterou jste zkopírovali dříve v Azure Portal. Hodnota **ConnectionString** bude pro váš účet jedinečná.
 
@@ -229,7 +229,7 @@ Vytvořte novou metodu pro odeslání zprávy do fronty. Přidejte následujíc�
 
 Zpráva musí být ve formátu, který může být součástí požadavku XML s kódováním UTF-8 a může mít velikost až 64 KB. Pokud zpráva obsahuje binární data, doporučujeme, abyste zprávu zakódovat ve formátu base64.
 
-Ve výchozím nastavení je maximální hodnota TTL (Time-to-Live) pro zprávu nastavená na 7 dní. Můžete zadat libovolné kladné číslo pro hodnotu TTL (Time to Live). Chcete-li přidat zprávu, jejíž platnost nevyprší, `Timespan.FromSeconds(-1)` použijte ve volání **AddMessageAsync**.
+Ve výchozím nastavení je maximální hodnota TTL (Time-to-Live) pro zprávu nastavená na 7 dní. Můžete zadat libovolné kladné číslo pro hodnotu TTL (Time to Live). Chcete-li přidat zprávu, jejíž platnost nevyprší, použijte `Timespan.FromSeconds(-1)` ve volání **AddMessageAsync**.
 
 ```csharp
 await theQueue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
@@ -264,7 +264,7 @@ Vytvořte novou metodu s názvem **ReceiveMessageAsync**. Tato metoda přijímá
 
 ## <a name="delete-an-empty-queue"></a>Odstraní prázdnou frontu.
 
-Je to osvědčený postup na konci projektu k určení, zda stále potřebujete prostředky, které jste vytvořili. Prostředky, které se na něm zbývá, můžou mít náklady na peníze. Pokud fronta existuje, ale je prázdná, požádejte uživatele, jestli ho chce odstranit.
+Je to osvědčený postup na konci projektu k určení, zda stále potřebujete prostředky, které jste vytvořili. Prostředky, které necháte běžet, vás můžou stát peníze. Pokud fronta existuje, ale je prázdná, požádejte uživatele, jestli ho chce odstranit.
 
 1. Rozbalte metodu **ReceiveMessageAsync** pro zahrnutí výzvy k odstranění prázdné fronty.
 
@@ -452,7 +452,7 @@ Zde je kompletní výpis kódu pro tento projekt.
    dotnet run First queue message
    ```
 
-Měl by se zobrazit tento výstup:
+Měli byste vidět tento výstup:
 
    ```output
    C:\Tutorials\QueueApp>dotnet run First queue message

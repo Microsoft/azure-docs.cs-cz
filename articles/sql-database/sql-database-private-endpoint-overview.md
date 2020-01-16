@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
-ms.openlocfilehash: fcb89cbcadb5e101ab2b4bfd18d0b7b91c63c92a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6cc8282a5c56f8f45e8d9e5ee452089a74f0d4ed
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821293"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045639"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Privátní odkaz pro Azure SQL Database a datový sklad (Preview)
 
@@ -57,7 +57,7 @@ Soukromé koncové body lze vytvořit pomocí portálu, PowerShellu nebo rozhran
 ### <a name="approval-process"></a>Proces schválení
 Po vytvoření privátního koncového bodu (PE) správcem sítě může správce SQL spravovat připojení privátního koncového bodu (PEC) k SQL Database.
 
-1. V Azure Portal přejděte na prostředek SQL serveru.
+1. V Azure Portal přejděte na prostředek SQL serveru, jak je znázorněno na snímku obrazovky níže.
 
     - (1) v levém podokně vyberte připojení privátního koncového bodu.
     - (2) zobrazuje seznam všech připojení privátního koncového bodu (PECs).
@@ -146,8 +146,10 @@ Výsledkem je, že jedna IP adresa je nahoru. který odpovídá IP adrese privá
 
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>Ověření připojení pomocí SQL Server Management Studio (SSMS)
+> [!NOTE]
+>Pro klienty použijte **plně kvalifikovaný název domény (FQDN)** serveru v připojovacích řetězcích. Jakékoli pokusy o přihlášení provedené přímo na IP adresu se návrhem nezdařily.
 
-Posledním krokem je použití [SSMS k připojení k SQL Database](sql-database-connect-query-ssms.md). Po připojení k SQL Database pomocí SSMS ověřte, že se připojujete z privátní IP adresy virtuálního počítače Azure spuštěním následujícího dotazu:
+Pokud se [chcete k SQL Database připojit pomocí SSMS](sql-database-connect-query-ssms.md), postupujte podle těchto kroků. Po připojení k SQL Database pomocí SSMS ověřte, že se připojujete z privátní IP adresy virtuálního počítače Azure spuštěním následujícího dotazu:
 
 ````
 select client_net_address from sys.dm_exec_connections 

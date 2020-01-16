@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: metan
-ms.openlocfilehash: defa49bd5ca6be6862412e3caf40295ef1d639cf
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 48e74f7dd6fa6f2c7fafe10797a301b3d4cc7f1d
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945302"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045237"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Kurz: Vytvoření aplikace pro iOS, která spustí moderní čtečku s obsahem z fotky (SWIFT)
 
@@ -73,19 +73,13 @@ Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the reso
 
 V hlavní složce projektu, která obsahuje soubor soubor viewcontroller. SWIFT, vytvořte soubor třídy SWIFT s názvem konstanty. SWIFT. Nahraďte třídu následujícím kódem a přidejte do svých hodnot, kde je to možné. Uložte tento soubor jako místní soubor, který existuje pouze v počítači, a ujistěte se, že tento soubor nechcete potvrdit do správy zdrojových kódů, protože obsahuje tajné kódy, které by neměly být zveřejněny. Doporučuje se, abyste v aplikaci nezachovali tajné klíče. Místo toho doporučujeme použít back-end službu k získání tokenu, kde tajné klíče lze uchovávat mimo aplikaci a z zařízení. Koncový bod rozhraní API back-endu by měl být zabezpečený za nějakým druhem ověřování (například [OAuth](https://oauth.net/2/)), aby se zabránilo neoprávněným uživatelům v získání tokenů k použití proti službě s moderní čtečkou a fakturaci. Tato práce překračuje rámec tohoto kurzu.
 
-[!code-swift[Constants](~/ImmersiveReaderSdk/iOS/samples/picture-to-immersive-reader-swift/picture-to-immersive-reader-swift/Constants.swift)]
-
 ## <a name="set-up-the-app-to-run-without-a-storyboard"></a>Nastavení spuštění aplikace bez scénáře
 
 Otevřete AppDelegate. SWIFT a nahraďte soubor následujícím kódem.
 
-[!code-swift[AppDelegate](~/ImmersiveReaderSdk/iOS/samples/picture-to-immersive-reader-swift/picture-to-immersive-reader-swift/AppDelegate.swift)]
-
 ## <a name="add-functionality-for-taking-and-uploading-photos"></a>Přidání funkce pro pořízení a nahrávání fotek
 
 Přejmenujte soubor viewcontroller. SWIFT na PictureLaunchViewController. SWIFT a nahraďte soubor následujícím kódem.
-
-[!code-swift[PictureLaunchViewController](~/ImmersiveReaderSdk/iOS/samples/picture-to-immersive-reader-swift/picture-to-immersive-reader-swift/PictureLaunchViewController.swift)]
 
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 

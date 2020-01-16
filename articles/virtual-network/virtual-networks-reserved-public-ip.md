@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: genli
-ms.openlocfilehash: c1de86c1d12109853bb5d6d1aac4143caab9199f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5bcbb8c6845928cf21b5b6a1c04f609305bd7983
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638217"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979528"
 ---
 # <a name="reserved-ip-addresses-classic-deployment"></a>Adresy Vyhrazená IP adresa (nasazení Classic)
 
@@ -28,7 +28,7 @@ ms.locfileid: "75638217"
 Pokud chcete zabránit změnám IP adres, můžete si vyhradit IP adresu. Rezervované IP adresy se dají použít jenom jako VIP, což zajistí, že IP adresa pro cloudovou službu zůstane stejná i po vypnutí nebo zastavení prostředků (přidělení zrušeno). Kromě toho můžete převést existující dynamické IP adresy používané jako VIP na vyhrazenou IP adresu.
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Přečtěte si, jak vyhradit statickou veřejnou IP adresu pomocí [modelu nasazení Správce prostředků](virtual-network-ip-addresses-overview-arm.md).
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../azure-resource-manager/management/deployment-models.md). Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Přečtěte si, jak vyhradit statickou veřejnou IP adresu pomocí [modelu nasazení Správce prostředků](virtual-network-ip-addresses-overview-arm.md).
 
 Další informace o IP adresách v Azure najdete v článku [IP adresy](virtual-network-ip-addresses-overview-classic.md) .
 

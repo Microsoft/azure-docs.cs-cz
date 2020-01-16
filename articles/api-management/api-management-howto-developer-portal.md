@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: a06184cb45280d323a050085e94945a730d6c72c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 81daada7a62da86772d4657a1a8aaff91f27b673
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442590"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045575"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Přehled portálu pro vývojáře Azure API Management
 
@@ -39,7 +39,7 @@ Tento článek popisuje rozdíly mezi místně hostovanými a spravovanými verz
 Portál pro vývojáře můžete vytvořit dvěma způsoby:
 
 - **Spravovaná verze** – úpravou a přizpůsobením portálu, který je součástí vaší instance API Management a je přístupný prostřednictvím `<your-api-management-instance-name>.developer.azure-api.net`adresy URL. Informace o přístupu a přizpůsobení spravovaného portálu najdete v [tomto článku v dokumentaci](api-management-howto-developer-portal-customize.md) .
-- **Samoobslužná verze** – nasazením a vlastním hostováním portálu mimo instanci API Management. Tento přístup umožňuje upravit základ kódu na portálu a zvětšit poskytované základní funkce. Také je potřeba upgradovat portál na nejnovější verzi sami. Podrobnosti a pokyny najdete v [úložišti GitHub se zdrojovým kódem portálu][1]. [Kurz pro spravovanou verzi](api-management-howto-developer-portal-customize.md) se provede pomocí panelu pro správu portálu, který je taky vybraný v samoobslužné verzi.
+- **Samoobslužná verze** – nasazením a vlastním hostováním portálu mimo instanci API Management. Tento přístup umožňuje upravit základ kódu na portálu a zvětšit poskytované základní funkce. Také je potřeba upgradovat portál na nejnovější verzi sami. Podrobnosti a pokyny najdete v [úložišti GitHub se zdrojovým kódem portálu][1] a v [kurzu implementace widgetu][4]. [Kurz pro spravovanou verzi](api-management-howto-developer-portal-customize.md) se provede pomocí panelu pro správu portálu, který je taky vybraný v samoobslužné verzi.
 
 ## <a name="portal-architectural-concepts"></a>Koncepce architektury portálu
 
@@ -101,6 +101,10 @@ Ověřování pomocí OAuth v interaktivní konzole pro vývojáře ještě nen�
 Starý portál pro vývojáře a vydavatele teď představují *starší* funkce – budou dostávat jenom aktualizace zabezpečení. Nové funkce se budou implementovat jenom na nový vývojářský portál.
 
 Vyřazení starší verze portálů bude oznámeno samostatně. Pokud máte dotazy, obavy nebo komentáře, vyvolejte je [ve vyhrazeném problému GitHubu](https://github.com/Azure/api-management-developer-portal/issues/121).
+
+### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>Funkce, které potřebuji, se na portálu nepodporují.
+
+Využijte vlastní hostovanou verzi a [implementujte vlastní widget][4].
 
 ### <a name="how-can-i-automate-portal-deployments"></a>Jak můžu automatizovat nasazení portálu?
 
@@ -216,6 +220,7 @@ Další informace o novém portálu pro vývojáře:
 
 - [Přístup k portálu spravovaného vývojáře a jeho přizpůsobení](api-management-howto-developer-portal-customize.md)
 - [Nastavení samoobslužné verze portálu][2]
+- [Implementace vlastního widgetu][4]
 
 Procházet Další prostředky:
 
@@ -225,3 +230,4 @@ Procházet Další prostředky:
 [1]: https://aka.ms/apimdevportal
 [2]: https://github.com/Azure/api-management-developer-portal/wiki
 [3]: https://github.com/Azure/api-management-developer-portal/projects
+[4]: https://aka.ms/apimdevportal/extend

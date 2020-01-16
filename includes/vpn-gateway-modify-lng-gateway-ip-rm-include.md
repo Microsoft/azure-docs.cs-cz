@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/14/2019
+ms.date: 01/15/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6505b12b35ee436930ba6571c27db30c12030041
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 6a90b23c10e08e8b14a18f9619cff5aaeb003cab
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174841"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045701"
 ---
 ### <a name="gwipnoconnection"></a>Úprava IP adresy brány místní sítě (GatewayIpAddress) – žádné připojení brány
 
@@ -32,7 +32,7 @@ New-AzLocalNetworkGateway -Name Site1 `
 Pokud zařízení VPN, ke kterému se chcete připojit, změnilo svou veřejnou IP adresu, musíte upravit bránu místní sítě, aby odrážela tuto změnu. Pokud už nějaké připojení brány existuje, musíte ho nejdřív odebrat. Po odebrání připojení můžete upravit IP adresu brány a vytvořit nové připojení. Můžete také zároveň upravit předpony adresy. Způsobí to určitý výpadek připojení VPN. Při upravování IP adresy brány není potřeba odstraňovat bránu VPN. Stačí jenom odebrat připojení.
  
 
-1. Odeberte připojení. Jméno vašeho připojení můžete najít pomocí rutiny "Get-AzVirtualNetworkGatewayConnection".
+1. Odeberte připojení. Název připojení můžete najít pomocí rutiny Get-AzVirtualNetworkGatewayConnection.
 
    ```azurepowershell-interactive
    Remove-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 `
@@ -45,7 +45,7 @@ Pokud zařízení VPN, ke kterému se chcete připojit, změnilo svou veřejnou 
    -Location "East US" -AddressPrefix @('10.101.0.0/24','10.101.1.0/24') `
    -GatewayIpAddress "104.40.81.124" -ResourceGroupName TestRG1
    ```
-3. Vytvořte připojení. V tomto příkladu konfigurujeme typ připojení IPsec. Až budete připojení znovu vytvářet, použijte typ připojení stanovený pro vaši konfiguraci. Informace o dalších typech připojení najdete na stránce [Rutina prostředí PowerShell](https://msdn.microsoft.com/library/mt603611.aspx).  Pokud chcete získat název brány VirtualNetworkGateway, můžete spustit rutinu "Get-AzVirtualNetworkGateway".
+3. Vytvořte připojení. V tomto příkladu konfigurujeme typ připojení IPsec. Až budete připojení znovu vytvářet, použijte typ připojení stanovený pro vaši konfiguraci. Informace o dalších typech připojení najdete na stránce [Rutina prostředí PowerShell](https://msdn.microsoft.com/library/mt603611.aspx).  Pokud chcete získat název VirtualNetworkGateway, můžete spustit rutinu Get-AzVirtualNetworkGateway.
    
     Nastavte proměnné.
 

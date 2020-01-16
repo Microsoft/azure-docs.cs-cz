@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
-ms.openlocfilehash: 71f768506d7cec575c6bd765447397d8d0406859
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0314dceb23f02b723854dfc406e9440bbc14ccf6
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445943"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044285"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Vytváření, sledování a Správa souborů FTP pomocí Azure Logic Apps
 
@@ -25,7 +25,7 @@ Pomocí Azure Logic Apps a konektoru FTP můžete vytvářet automatizované úl
 
 Můžete použít triggery, které získávají odpovědi z vašeho serveru FTP a zpřístupnit výstup ostatním akcím. Pro správu souborů na serveru FTP můžete ve svých aplikacích logiky použít akce spuštění. Můžete také použít jiné akce výstup z akcí FTP. Pokud například pravidelně získáváte soubory ze serveru FTP, můžete odesílat e-maily o těchto souborech a jejich obsahu pomocí konektoru Office 365 Outlook Connector nebo konektoru Outlook.com. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md).
 
-## <a name="limits"></a>Omezení
+## <a name="limitations"></a>Omezení
 
 * Konektor FTP podporuje pouze explicitní FTP přes protokol SSL (FTPS) a není kompatibilní s implicitním FTPS.
 
@@ -36,6 +36,8 @@ Můžete použít triggery, které získávají odpovědi z vašeho serveru FTP 
   * Použijte Trigger FTP, který vrátí vlastnosti souboru, například **při přidání nebo úpravě souboru (pouze vlastnosti)** .
 
   * Postupujte podle triggeru s akcí **získat obsah souboru** FTP, který načte kompletní soubor a implicitně použije bloky dat.
+
+* Pokud máte místní server FTP, zvažte vytvoření [prostředí Integration Service (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) nebo pomocí [Azure App Service hybridních připojení](../app-service/app-service-hybrid-connections.md), které vám umožní přístup k místním zdrojům dat bez použití místní brány dat.
 
 ## <a name="how-ftp-triggers-work"></a>Jak fungují triggery FTP
 

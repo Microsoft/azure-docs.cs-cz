@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: c01e5c508644214c078dfc42ae8c77964933a277
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 7c4d6a01ccaeffb4042753dc0a904d970631383f
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895997"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045216"
 ---
 # <a name="vcore-model-overview"></a>Přehled modelů virtuálních jader
 
@@ -142,6 +142,16 @@ Na kartě **základy** vyberte odkaz **Konfigurovat databázi** v části **COMP
   
 **Změna hardwarového generování existující spravované instance**
 
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+
+Na stránce spravovaná instance vyberte odkaz **cenová úroveň** umístěný v části nastavení.
+
+![Změna hardwaru spravované instance](media/sql-database-service-tiers-vcore/change-managed-instance-hardware.png)
+
+Na stránce **cenová úroveň** budete moci změnit generování hardwaru, jak je popsáno v předchozích krocích.
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
 Použijte následující skript PowerShellu:
 
 ```powershell-interactive
@@ -178,6 +188,8 @@ Set-AzResource -Properties $properties -ResourceName $instanceName -ResourceType
 
 Ujistěte se, že jste zadali své ID předplatného, název a skupinu prostředků spravované instance.
 
+---
+
 ### <a name="hardware-availability"></a>Dostupnost hardwaru
 
 #### <a name="gen4gen5-1"></a>COMPUTE GEN4 –/Gen5
@@ -213,9 +225,9 @@ Na stránce **základy** zadejte následující:
 
 Na stránce **Podrobnosti** zadejte následující:
 
-5. V části **Podrobnosti o problému** vyberte odkaz **poskytnout podrobnosti** . 
-6. U **SQL Database typ kvóty** vyberte **M-Series**.
-7. V poli **oblast**vyberte oblast, do které chcete povolit řadu M-Series.
+1. V části **Podrobnosti o problému** vyberte odkaz **poskytnout podrobnosti** . 
+2. U **SQL Database typ kvóty** vyberte **M-Series**.
+3. V poli **oblast**vyberte oblast, do které chcete povolit řadu M-Series.
     V oblastech, kde je dostupná řada M-Series, najdete informace v tématu [dostupnost řady m-Series](#m-series).
 
 Schválené žádosti o podporu jsou obvykle splněné do 5 pracovních dnů.

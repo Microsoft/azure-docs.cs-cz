@@ -7,19 +7,19 @@ ms.date: 11/19/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 089cda74740d3934c76a3b0ca8803a30654feccf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c8473bff3b6e7d2079bb202befc23e1ada3791eb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465115"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970252"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V12 pro JavaScript
 
 Začněte s klientskou knihovnou V12 Azure Blob Storage pro JavaScript. Azure Blob Storage je řešení úložiště objektů Microsoftu pro cloud. Postupujte podle kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy. Úložiště objektů blob je optimalizované pro ukládání velkých objemů nestrukturovaných dat.
 
 > [!NOTE]
-> Informace o tom, jak začít s předchozí verzí sady SDK, najdete v tématu [rychlý Start: Klientská knihovna pro Azure Blob Storage pro JavaScript](storage-quickstart-blobs-nodejs-v10.md).
+> Informace o tom, jak začít s předchozí verzí sady SDK, najdete v tématu [rychlý Start: Klientská knihovna pro Azure Blob Storage pro JavaScript](storage-quickstart-blobs-nodejs-legacy.md).
 
 Použijte klientskou knihovnu služby Azure Blob Storage V12 pro JavaScript:
 

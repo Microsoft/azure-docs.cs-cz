@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: 421fe373c93159b81a7dd962920eb17845895925
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 4b8f91d7d9fc414ed0ae6387c25f71b1601e0b6c
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647811"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043406"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-cli"></a>Vytvoření virtuálního počítače se statickou veřejnou IP adresou pomocí Azure CLI
 
@@ -50,7 +50,7 @@ Následující kroky můžete provést z místního počítače nebo pomocí Azu
      --public-ip-address-allocation static
    ```
 
-   Pokud veřejná IP adresa musí být standardní SKU, přidejte `--public-ip-sku Standard` k předchozímu příkazu. Přečtěte si další informace o [SKU veřejných IP adres](virtual-network-ip-addresses-overview-arm.md#sku). Pokud bude virtuální počítač přidán do fondu back-end veřejné Azure Load Balancer, musí SKU veřejné IP adresy virtuálního počítače odpovídat SKU veřejné IP adresy nástroje pro vyrovnávání zatížení. Podrobnosti najdete v tématu [Azure Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#skus).
+   Pokud veřejná IP adresa musí být standardní SKU, přidejte `--public-ip-sku Standard` k předchozímu příkazu. Přečtěte si další informace o [SKU veřejných IP adres](virtual-network-ip-addresses-overview-arm.md#sku). Pokud bude virtuální počítač přidán do fondu back-end veřejné Azure Load Balancer, musí SKU veřejné IP adresy virtuálního počítače odpovídat SKU veřejné IP adresy nástroje pro vyrovnávání zatížení. Podrobnosti najdete v tématu [Azure Load Balancer](../load-balancer/concepts-limitations.md#skus).
 
 4. Zobrazte přiřazenou veřejnou IP adresu a potvrďte, že byla vytvořená jako statická, základní adresa SKU, pomocí [AZ Network Public-IP show](/cli/azure/network/public-ip#az-network-public-ip-show):
 

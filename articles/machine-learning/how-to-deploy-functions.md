@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 11/22/2019
-ms.openlocfilehash: 77e23467551df8d72fd999049c490600eff11825
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 00a62e970e27d689eb639a62938376f73410c270
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763628"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024910"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Nasazení modelu Machine Learning do Azure Functions (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -156,27 +156,35 @@ Při `show_output=True`se zobrazí výstup procesu Docker buildu. Po dokončení
     > [!IMPORTANT]
     > Image vytvořené Azure Machine Learning používají Linux, takže musíte použít parametr `--is-linux`.
 
-1. K vytvoření aplikace Function App použijte následující příkaz. Nahraďte `<app-name>` názvem, který chcete použít. Nahraďte `<acrinstance>` a `<imagename>` hodnotami vrácenými `package.location` dříve:
-
-    ```azurecli-interactive
-    az storage account create --name 
-    az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename>
-    ```
-
-    > [!IMPORTANT]
-    > V tuto chvíli se vytvořila aplikace Function App. Vzhledem k tomu, že jste nezadali připojovací řetězec pro Trigger objektu BLOB nebo přihlašovací údaje k Azure Container Registry, který obsahuje obrázek, aplikace Function app není aktivní. V dalších krocích zadejte připojovací řetězec a ověřovací informace pro registr kontejneru. 
-
-1. Vytvořte účet úložiště, který se použije jako Trigger, a získejte připojovací řetězec.
+1. Vytvořte účet úložiště, který se použije pro úložiště webové úlohy, a získejte připojovací řetězec. Nahraďte `<webjobStorage>` názvem, který chcete použít.
 
     ```azurecli-interactive
     az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
     ```azurecli-interactive
-    az storage account show-connection-string --resource-group myresourcegroup --name triggerStorage --query connectionString --output tsv
+    az storage account show-connection-string --resource-group myresourcegroup --name <webJobStorage> --query connectionString --output tsv
+    ```
+
+1. K vytvoření aplikace Function App použijte následující příkaz. Nahraďte `<app-name>` názvem, který chcete použít. Nahraďte `<acrinstance>` a `<imagename>` hodnotami vrácenými `package.location` dříve. Nahraďte položku Replace `<webjobStorage>` názvem účtu úložiště z předchozího kroku:
+
+    ```azurecli-interactive
+    az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename> --storage-account <webjobStorage>
+    ```
+
+    > [!IMPORTANT]
+    > V tuto chvíli se vytvořila aplikace Function App. Vzhledem k tomu, že jste nezadali připojovací řetězec pro Trigger objektu BLOB nebo přihlašovací údaje k Azure Container Registry, který obsahuje obrázek, aplikace Function app není aktivní. V dalších krocích zadejte připojovací řetězec a ověřovací informace pro registr kontejneru. 
+
+1. Vytvořte účet úložiště, který se použije pro úložiště triggeru objektu blob, a získejte připojovací řetězec. Nahraďte `<triggerStorage>` názvem, který chcete použít.
+
+    ```azurecli-interactive
+    az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
+    ```
+    ```azurecli-interactive
+    az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv
     ```
     Záznam tohoto připojovacího řetězce pro poskytnutí aplikace Function App. Později ji použijeme, až se požádáme o `<triggerConnectionString>`
 
-1. Vytvořte kontejnery pro vstup a výstup v účtu úložiště. 
+1. Vytvořte kontejnery pro vstup a výstup v účtu úložiště. Nahraďte `<triggerConnectionString>` připojovacím řetězcem, který se vrátil dříve:
 
     ```azurecli-interactive
     az storage container create -n input --connection-string <triggerConnectionString>
@@ -185,12 +193,17 @@ Při `show_output=True`se zobrazí výstup procesu Docker buildu. Po dokončení
     az storage container create -n output --connection-string <triggerConnectionString>
     ```
 
-1. Značku přidruženou k vytvořenému kontejneru budete muset načíst pomocí následujícího příkazu:
+1. K přidružení připojovacího řetězce triggeru k aplikaci Function App použijte následující příkaz. Nahraďte `<app-name>` názvem aplikace Function App. Nahraďte `<triggerConnectionString>` připojovacím řetězcem, který se vrátil dříve:
+
+    ```azurecli-interactive
+    az functionapp config appsettings set --name <app-name> --resource-group myresourcegroup --settings "TriggerConnectionString=<triggerConnectionString>"
+    ```
+1. Pomocí následujícího příkazu bude nutné načíst značku přidruženou k vytvořenému kontejneru. Nahraďte `<username>` uživatelským jménem vráceným dříve z registru kontejneru:
 
     ```azurecli-interactive
     az acr repository show-tags --repository package --name <username> --output tsv
     ```
-    Nejnovější zobrazená značka bude `imagetag` níže.
+    Uloží vrácenou hodnotu, která bude použita jako `imagetag` v dalším kroku.
 
 1. K poskytnutí aplikace Function App s přihlašovacími údaji potřebnými pro přístup k registru kontejneru použijte následující příkaz. Nahraďte `<app-name>` názvem, který chcete použít. Nahraďte `<acrinstance>` a `<imagetag>` hodnotami z volání AZ CLI v předchozím kroku. Nahraďte `<username>` a `<password>` informace o přihlášení ACR, které byly načteny dříve:
 

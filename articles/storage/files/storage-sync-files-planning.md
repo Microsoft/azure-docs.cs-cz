@@ -4,15 +4,15 @@ description: Zjistěte, co je potřeba vzít v úvahu při plánování nasazen�
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c81f06d924a0ba871115e0ae0164d61449855263
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: d2dbe29c5a348363172f57da86483ccf3fd787f0
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665267"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046098"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -347,13 +347,13 @@ V následující tabulce jsme poskytovali jak velikost oboru názvů, tak i pře
 | Velikost oboru názvů – soubory & adresářů (miliony)  | Typická kapacita (TiB)  | Jádra procesoru  | Doporučená paměť (GiB) |
 |---------|---------|---------|---------|
 | 3        | 1.4     | 2        | 8 (počáteční synchronizace)/2 (Typická četnost změn)      |
-| 5        | 2.3     | 2        | 16 (počáteční synchronizace)/4 (Typická četnost změn)    |
-| 10       | 4.7     | 4        | 32 (počáteční synchronizace)/8 (Typická četnost změn)   |
-| 30       | 14,0    | 8        | 48 (počáteční synchronizace)/16 (Typická četnost změn)   |
-| 50       | 23,3    | 16       | 64 (počáteční synchronizace)/32 (Typická četnost změn)  |
-| 100 *     | 46,6    | 32       | 128 (počáteční synchronizace)/32 (Typická četnost změn)  |
+| 5        | 2.4     | 2        | 16 (počáteční synchronizace)/4 (Typická četnost změn)    |
+| 10       | 4.8     | 4        | 32 (počáteční synchronizace)/8 (Typická četnost změn)   |
+| 30       | 14,3    | 8        | 48 (počáteční synchronizace)/16 (Typická četnost změn)   |
+| 50       | 23,8    | 16       | 64 (počáteční synchronizace)/32 (Typická četnost změn)  |
+| 100 *     | 47,7   | 32       | 128 (počáteční synchronizace)/32 (Typická četnost změn)  |
 
-\*více než 100 000 000 souborů & adresářů se v tuto chvíli nepodporuje. Toto je měkký limit.
+\*více než 100 000 000 souborů & adresářů nebyl testován. Toto je měkký limit.
 
 > [!TIP]
 > Počáteční synchronizace oboru názvů je náročná operace a doporučujeme přidělit více paměti, dokud nebude dokončena počáteční synchronizace. To se nevyžaduje, ale může urychlit počáteční synchronizaci. 

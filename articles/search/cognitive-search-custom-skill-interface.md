@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e0b54ca89511063e1a76753793846deaf8e8b9b4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c8f6e36997939be90d74eabad9a4145d2e503521
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466787"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045040"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Postup přidání vlastní dovednosti do kanálu rozšíření Azure Kognitivní hledání
 
@@ -122,7 +122,7 @@ Jak je znázorněno v předchozím příkladu, můžete vracet chybové a varovn
 
 ## <a name="consuming-custom-skills-from-skillset"></a>Využívání vlastních dovedností z dovednosti
 
-Když vytvoříte obohacení webového rozhraní API, můžete v rámci žádosti popsat hlavičky a parametry protokolu HTTP. Následující fragment kódu ukazuje, jak mohou být parametry požadavků a záhlaví HTTP popsány v rámci definice dovednosti.
+Když vytvoříte obohacení webového rozhraní API, můžete v rámci žádosti popsat hlavičky a parametry protokolu HTTP. Následující fragment kódu ukazuje, jak mohou být parametry požadavků a *volitelné* hlavičky protokolu HTTP popsány v rámci definice dovednosti. Hlavičky HTTP nejsou požadavkem, ale umožňují přidat do své dovednosti další možnosti konfigurace a nastavit je z definice dovednosti.
 
 ```json
 {

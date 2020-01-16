@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 46b0ddeeb70e263723b657ef3150dc5548fcc742
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 82f9c5a67cb056752cf8310be3b7c9f0bd2501e9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073876"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979654"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Rozšíření virtuálního počítače závislosti Azure Monitor pro Linux
 
@@ -73,7 +73,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta závislostí virt
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad |
+| Name (Název) | Hodnota/příklad |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | publisher | Microsoft.Azure.Monitoring.DependencyAgent |
@@ -84,7 +84,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta závislostí virt
 
 Rozšíření virtuálních počítačů Azure můžete nasadit pomocí šablon Azure Resource Manager. Pomocí schématu JSON popsaného v předchozí části šablony Azure Resource Manager můžete během nasazování Azure Resource Manager šablony spustit rozšíření agenta závislostí virtuálních počítačů Azure.
 
-JSON pro rozšíření virtuálního počítače může být vnořený do prostředku virtuálního počítače. Nebo ho můžete umístit na kořenovou nebo nejvyšší úroveň šablony Správce prostředků JSON. Umístění formátu JSON má vliv na hodnotu názvu a typu prostředku. Další informace najdete v tématu [nastavte název a typ pro podřízené prostředky](../../azure-resource-manager/child-resource-name-type.md).
+JSON pro rozšíření virtuálního počítače může být vnořený do prostředku virtuálního počítače. Nebo ho můžete umístit na kořenovou nebo nejvyšší úroveň šablony Správce prostředků JSON. Umístění formátu JSON má vliv na hodnotu názvu a typu prostředku. Další informace najdete v tématu [nastavte název a typ pro podřízené prostředky](../../azure-resource-manager/templates/child-resource-name-type.md).
 
 Následující příklad předpokládá, že rozšíření agenta závislosti je vnořené uvnitř prostředku virtuálního počítače. Při vnořování prostředku rozšíření je kód JSON umístěn do objektu `"resources": []` virtuálního počítače.
 

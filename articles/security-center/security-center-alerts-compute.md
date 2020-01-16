@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: f2fda893ad84aaf9d11d26d761f5395c7f5650d2
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: a85ec565077ac229cd24bb7b9cf753015aa56ebf
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666368"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024853"
 ---
 # <a name="threat-detection-for-cloud-native-computing-in-azure-security-center"></a>Detekce hrozeb pro nativní výpočetní prostředí cloudu v Azure Security Center
 
@@ -36,7 +36,7 @@ Security Center používá škálování cloudu k identifikaci útoků cílící
 
 Díky viditelnosti, kterou Azure nabízí jako poskytovatel cloudu, Security Center analyzuje App Service interní protokoly k identifikaci metodologie útoku na více cílů. Například metodologie zahrnuje rozšířenou kontrolu a distribuované útoky. Tento typ útoku obvykle pochází z malé podmnožiny IP adres a ukazuje vzory procházení k podobným koncovým bodům na více hostitelích. Útoky hledají zranitelnou stránku nebo modul plug-in a nelze je identifikovat z hlediska jednoho hostitele.
 
-Security Center má také přístup k podkladovým izolovaným prostorům a virtuálním počítačům. Společně s pamětí forenzní může infrastruktura sdělit příběh z nového útoku, který je v nevolném případě napadený v zákaznických počítačích. Proto i v případě, že je Security Center nasazena po zneužití webové aplikace, může být schopna detekovat průběžné útoky.
+Pokud používáte plán App Service založený na Windows, Security Center má také přístup k podkladovým izolovaným prostorům a virtuálním počítačům. Spolu s výše uvedenými daty protokolu může infrastruktura sdělit příběh z nového útoku, který je v případě ohrožení bezpečnosti v zákaznických počítačích v nestejné přírodě. Proto i v případě, že je Security Center nasazena po zneužití webové aplikace, může být schopna detekovat průběžné útoky.
 
 Seznam výstrah Azure App Service najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-azureappserv).
 
@@ -64,3 +64,7 @@ Zjišťují se hrozby na různých úrovních:
     Seznam výstrah na úrovni clusteru AKS najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-akscluster).
 
 Náš globální tým výzkumných pracovníků pro zabezpečení nepřetržitě monitoruje i na šířku hrozby. Přidávají výstrahy a chyby specifické pro kontejner při jejich zjištění.
+
+## <a name="next-steps"></a>Další kroky
+
+* Další informace o plánech App Service najdete v tématu [plány App Service](https://azure.microsoft.com/pricing/details/app-service/plans/).

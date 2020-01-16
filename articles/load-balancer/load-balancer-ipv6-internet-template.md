@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: f92011a6955398ef85e44fae1ce8f782cc9cc12c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: eb9703a1944a650f41d76c05d79764f8bdf8cd52
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076008"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045446"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Nasazení řešení internetového vyrovnávání zatížení s protokolem IPv6 pomocí šablony
 
@@ -29,8 +29,8 @@ ms.locfileid: "74076008"
 > * [Šablona](load-balancer-ipv6-internet-template.md)
 
 
->[! Poznámka: Změna v osvědčených postupech pro protokol IPv6] Tento článek popisuje úvodní funkci IPv6, která umožňuje základním nástrojům pro vyrovnávání zatížení poskytovat připojení protokolem IPv4 i IPv6.  K dispozici jsou teď komplexnější možnosti připojení pomocí protokolu IPv6 [pro Azure virtuální sítě](../virtual-network/ipv6-overview.md) , které integrují připojení IPv6 k vašim virtuálním sítím a obsahuje klíčové funkce, jako jsou pravidla skupiny zabezpečení sítě IPv6, uživatelem definované směrování IPv6, protokol IPv6 Basic a standardní vyrovnávání zatížení a další.  Protokol IPv6 pro Azure virtuální sítě je doporučeným osvědčeným postupem pro aplikace IPv6 v Azure. 
->Viz [protokol IPv6 pro nasazení šablony virtuální sítě Azure](../virtual-network/ipv6-configure-standard-load-balancer-template-json.md) .
+>[!NOTE] 
+>Tento článek popisuje úvodní funkci IPv6, která umožňuje základním nástrojům pro vyrovnávání zatížení poskytovat připojení protokolem IPv4 i IPv6. K dispozici je teď komplexní připojení pomocí protokolu [IPv6 pro Azure virtuální sítě](../virtual-network/ipv6-overview.md) , které integruje připojení IPv6 k vašim virtuálním sítím a obsahuje klíčové funkce, jako jsou pravidla skupiny zabezpečení sítě IPv6, uživatelem definované směrování IPv6, protokol IPv6 Basic a standardní vyrovnávání zatížení a další.  Protokol IPv6 pro Azure virtuální sítě je doporučený standard pro aplikace IPv6 v Azure. Viz [protokol IPv6 pro nasazení PowerShellu pro virtuální síť Azure](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)  
 
 Azure Load Balancer je nástroj pro vyrovnávání zatížení úrovně 4 (TCP, UDP). Nástroj pro vyrovnávání zatížení poskytuje vysokou dostupnost díky distribuci příchozích přenosů mezi instance služeb, které jsou v pořádku, v cloudových službách nebo virtuálních počítačích v sadě nástroje pro vyrovnávání zatížení. Azure Load Balancer můžete také tyto služby prezentovat na více portech, více IP adresách nebo obojím.
 

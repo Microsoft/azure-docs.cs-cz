@@ -1,18 +1,14 @@
 ---
 title: Co je nového v Azure Site Recovery
 description: Obsahuje souhrn nových funkcí a nejnovější aktualizace služby Azure Site Recovery.
-services: site-recovery
-author: rayne-wiselman
-ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: aa98509ba71ec0797d4b59be9e4df1dea064c933
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/07/2020
+ms.openlocfilehash: 4a9feff3b0bc98b5d9853268d033e60de55ea5ea
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351464"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024824"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co je nového ve službě Site Recovery
 
@@ -28,14 +24,26 @@ Pro Site Recovery komponenty podporujeme N-4 verze, kde N je nejnovější vydan
 
 **Aktualizace** |  **Sjednocené nastavení** | **Vajíčka konfiguračního serveru** | **Agent služby mobility** | **Poskytovatel Site Recovery** | **Agent Recovery Services**
 --- | --- | --- | --- | --- | ---
+[Kumulativní aktualizace 43](https://support.microsoft.com/help/4531426/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
 [Kumulativní aktualizace 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
 [Kumulativní aktualizace 41](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
 [Kumulativní aktualizace 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [Kumulativní aktualizace 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
-[Kumulativní aktualizace 38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
+
         
 
 [Přečtěte si další informace](service-updates-how-to.md) o instalaci a podpoře aktualizací.
+
+## <a name="updates-january-2020"></a>Aktualizace (leden 2020)
+
+### <a name="update-rollup-43"></a>Kumulativní aktualizace 43
+
+[Kumulativní aktualizace 43](https://support.microsoft.com/help/4537047/update-rollup-43-for-azure-site-recovery) poskytuje následující aktualizace.
+
+**Aktualizace** | **Podrobnosti**
+--- | ---
+**Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu)
+**Opravy a vylepšení problémů** | Řada oprav a vylepšení (jak je popsáno v souhrnu)
 
 
 ## <a name="updates-november-2019"></a>Aktualizace (listopad 2019)

@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: b67c77f25b14263abe7207359c00660df635df13
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 49fbdf4a4090350cc0a6a5a1b938621b3cb08632
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863787"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045089"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Konfigurace připojení VPN typu Point-to-site k virtuální síti s použitím nativního ověřování certifikátů Azure: PowerShell
 
@@ -32,13 +32,15 @@ Nativní připojení Azure typu Point-to-Site k ověřování certifikátů pou�
 
 ## <a name="before-you-begin"></a>Než začnete
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial).
+
+### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-Většina kroků v tomto článku může Cloud Shell použít. Chcete-li však odeslat veřejný klíč kořenového certifikátu, je nutné buď použít PowerShell místně, nebo Azure Portal.
+>[!NOTE]
+> Většina kroků v tomto článku může Azure Cloud Shell použít. Chcete-li však odeslat veřejný klíč kořenového certifikátu, je nutné buď použít PowerShell místně, nebo Azure Portal.
+>
 
 ### <a name="example"></a>Příklady hodnot
 
@@ -170,7 +172,9 @@ Pokud používáte certifikáty podepsané svým držitelem, musí se vytvořit 
 
 Ověřte, že se dokončilo vytváření brány VPN. Po dokončení můžete nahrát soubor .cer (obsahující informace o veřejném klíči) důvěryhodného kořenového certifikátu do Azure. Jakmile je soubor .cer nahraný, Azure ho může použít k ověřování klientů s nainstalovaným klientským certifikátem vygenerovaným z důvěryhodného kořenového certifikátu. Později můžete podle potřeby nahrát další soubory s důvěryhodnými kořenovými certifikáty – celkem až 20.
 
-Tyto informace nemůžete nahrát pomocí Azure Cloud Shell. V počítači můžete buď místně použít PowerShell, [Azure Portal kroky](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile).
+>[!NOTE]
+> Soubor. cer nelze nahrát pomocí Azure Cloud Shell. Můžete buď použít PowerShell místně na vašem počítači, nebo můžete použít [Azure Portal kroky](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile).
+>
 
 1. Deklarujte proměnnou pro název certifikátu a nahraďte hodnotu vlastní hodnotou.
 
@@ -185,7 +189,7 @@ Tyto informace nemůžete nahrát pomocí Azure Cloud Shell. V počítači můž
    $CertBase64 = [system.convert]::ToBase64String($cert.RawData)
    $p2srootcert = New-AzVpnClientRootCertificate -Name $P2SRootCertName -PublicCertData $CertBase64
    ```
-3. Nahrajte informace o veřejném klíči do Azure. Po nahrání informací o certifikátu považuje Azure za důvěryhodného kořenového certifikátu.
+3. Nahrajte informace o veřejném klíči do Azure. Po nahrání informací o certifikátu považuje Azure za důvěryhodného kořenového certifikátu. Při nahrávání se ujistěte, že na počítači běží místně PowerShell, nebo místo toho můžete použít [Azure Portal kroky](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile). Pomocí Azure Cloud Shell nemůžete nahrávat.
 
    ```azurepowershell
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG" -PublicCertData $CertBase64
