@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: e37b6b800cbe0b4272df227e1411257b33a3e0cb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 37fee7f96a27942a1295cb8c2315fedffc5bdefe
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420808"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030171"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Řešení Start/Stop VMs during off-hours v Azure Automation
 
@@ -33,7 +33,7 @@ Toto jsou omezení s aktuálním řešením:
 > [!NOTE]
 > Pokud používáte řešení pro klasické virtuální počítače, všechny vaše virtuální počítače se zpracují postupně na každou cloudovou službu. Virtuální počítače jsou pořád zpracovávány paralelně napříč různými Cloud Services. Pokud máte více než 20 virtuálních počítačů na cloudovou službu, doporučujeme vytvořit více plánů s nadřazenou sadou Runbook **ScheduledStartStop_Parent** a zadat 20 virtuálních počítačů na plán. Ve vlastnostech plánu zadejte jako čárkami oddělený seznam názvy virtuálních počítačů v parametru **VMList** . V opačném případě, pokud je úloha automatizace pro toto řešení spuštěná déle než tři hodiny, dočasně se uvolní nebo zastaví na základě [spravedlivého](automation-runbook-execution.md#fair-share) limitu sdílení.
 >
-> Předplatná Azure Cloud Solution Provider (CSP) podporují jenom model Azure Resource Manager, ale služby, které nejsou Azure Resource Manager, nejsou v programu k dispozici. Když je spuštěno řešení spustit/zastavit, může docházet k chybám, protože jsou rutiny pro správu klasických prostředků. Další informace o CSP najdete v tématu [dostupné služby v předplatných CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments). Pokud používáte předplatné CSP, měli byste po nasazení upravit [**External_EnableClassicVMs**](#variables) proměnnou na **false** .
+> Předplatná Azure Cloud Solution Provider (CSP) podporují jenom model Azure Resource Manager, ale služby, které nejsou Azure Resource Manager, nejsou v programu k dispozici. Když je spuštěno řešení spustit/zastavit, může docházet k chybám, protože jsou rutiny pro správu klasických prostředků. Další informace o CSP najdete v tématu [dostupné služby v předplatných CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services). Pokud používáte předplatné CSP, měli byste po nasazení upravit [**External_EnableClassicVMs**](#variables) proměnnou na **false** .
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

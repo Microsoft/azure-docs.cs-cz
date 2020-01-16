@@ -10,12 +10,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0678d437a5c24b8193e7440a62445fb30ec97759
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 820e7187332b02993d3d8bcba9c01958cfbdd61d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460502"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965822"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory
 
@@ -83,7 +83,7 @@ Azure Portal určuje, které schéma autorizace se používá, když přejdete d
 
 ### <a name="data-access-from-powershell-or-azure-cli"></a>Přístup k datům z PowerShellu nebo Azure CLI
 
-Azure CLI a PowerShell podporují přihlašování pomocí přihlašovacích údajů Azure AD. Po přihlášení se relace spustí pod těmito přihlašovacími údaji. Další informace najdete v tématu [spuštění příkazů Azure CLI nebo PowerShellu s přihlašovacími údaji Azure AD pro přístup k datům BLOB nebo Queue](storage-auth-aad-script.md).
+Azure CLI a PowerShell podporují přihlašování pomocí přihlašovacích údajů Azure AD. Po přihlášení se relace spustí pod těmito přihlašovacími údaji. Další informace najdete v tématu [spuštění příkazů Azure CLI nebo PowerShellu s přihlašovacími údaji Azure AD pro přístup k datům BLOB nebo Queue](authorize-active-directory-powershell.md).
 
 ## <a name="next-steps"></a>Další kroky
 

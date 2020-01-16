@@ -2,20 +2,20 @@
 title: Úlohy kontejneru – Azure Batch | Microsoft Docs
 description: Naučte se spouštět aplikace z imagí kontejnerů na Azure Batch.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.workload: na
 ms.date: 08/09/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: c9e24924472e0bb8dbd0e529b739263469b631fb
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 097ab13ad64477274e756d8e8e93e3614dd1a4e8
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090750"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029723"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Spustit aplikace kontejneru v Azure Batch
 
@@ -29,16 +29,16 @@ Pomocí kontejnerů můžete snadno spouštět úlohy služby Batch bez nutnosti
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Verze sady SDK**: Sady SDK pro Batch podporují image kontejnerů v následujících verzích:
+* **Verze sady SDK**: sady SDK pro Batch podporují image kontejnerů v následujících verzích:
     * Batch REST API verze 2017 -09-01.6.0
     * Batch .NET SDK 8.0.0 verze
     * Sada Batch Python SDK verze 4,0
     * Batch Java SDK verze 3,0
     * Batch Node. js SDK verze 3,0
 
-* **Účty**: Ve vašem předplatném Azure budete muset vytvořit účet Batch a volitelně účet Azure Storage.
+* **Účty**: v předplatném Azure budete muset vytvořit účet Batch a volitelně účet Azure Storage.
 
-* **Podporovaná image virtuálního počítače**: Kontejnery se podporují jenom ve fondech vytvořených s konfigurací virtuálního počítače, a to z imagí podrobně popsaných v následující části: "podporované image virtuálních počítačů". Pokud zadáte vlastní image, přečtěte si téma informace v následující části a požadavky na [použití spravované vlastní image k vytvoření fondu virtuálních počítačů](batch-custom-images.md). 
+* **Podporovaná image virtuálního počítače**: kontejnery se podporují jenom ve fondech vytvořených s konfigurací virtuálního počítače, a to z imagí popsaných v následující části (podporované image virtuálních počítačů). Pokud zadáte vlastní image, přečtěte si téma informace v následující části a požadavky na [použití spravované vlastní image k vytvoření fondu virtuálních počítačů](batch-custom-images.md). 
 
 ### <a name="limitations"></a>Omezení
 
@@ -52,7 +52,7 @@ K vytvoření fondu výpočetních uzlů virtuálních počítačů pro úlohy k
 
 ### <a name="windows-images"></a>Bitové kopie systému Windows
 
-V případě úloh kontejnerů Windows služba Batch v současné době podporuje **Windows Server 2016 Datacenter s** imagemi kontejnerů v Azure Marketplace. Ve Windows se podporují jenom image kontejneru Docker.
+V případě úloh kontejnerů Windows služba Batch v současné době podporuje **Windows Server 2016 Datacenter s imagemi kontejnerů** v Azure Marketplace. Ve Windows se podporují jenom image kontejneru Docker.
 
 Můžete také vytvořit vlastní image z virtuálních počítačů, na kterých běží Docker ve Windows.
 
@@ -78,7 +78,7 @@ Tyto image se podporují jenom pro použití v fondech Azure Batch. Funkce:
 
 Můžete také vytvořit vlastní image z virtuálních počítačů, na kterých běží Docker, na jednom ze distribucí systému Linux, které jsou kompatibilní se službou Batch. Pokud se rozhodnete zadat vlastní image Linux, přečtěte si pokyny v části [použití spravované vlastní image k vytvoření fondu virtuálních počítačů](batch-custom-images.md).
 
-Pro podporu Docker na vlastní image nainstalujte Docker [Community Edition (CE)](https://www.docker.com/community-edition) nebo Docker [Enterprise Edition (EE)](https://www.docker.com/enterprise-edition).
+Pro podporu Docker na vlastní image nainstalujte [Docker Community Edition (CE)](https://www.docker.com/community-edition) nebo [Docker Enterprise Edition (EE)](https://www.docker.com/enterprise-edition).
 
 Další pokyny pro použití vlastní image Linux:
 
@@ -98,7 +98,7 @@ Výhodou předběžného načítání imagí kontejneru je to, že když úlohy 
 
 ### <a name="pool-without-prefetched-container-images"></a>Fond bez přednačtených imagí kontejneru
 
-Pokud chcete nakonfigurovat fond s podporou kontejneru bez předem načtených imagí kontejnerů, `ContainerConfiguration` definujte `VirtualMachineConfiguration` a objekty, jak je znázorněno v následujícím příkladu Pythonu. V tomto příkladu se na webu Marketplace používá Ubuntu Server pro Azure Batch image fondů kontejnerů.
+Pokud chcete nakonfigurovat fond s podporou kontejneru bez předem načtených imagí kontejneru, definujte `ContainerConfiguration` a `VirtualMachineConfiguration` objekty, jak je znázorněno v následujícím příkladu Pythonu. V tomto příkladu se na webu Marketplace používá Ubuntu Server pro Azure Batch image fondů kontejnerů.
 
 
 ```python
@@ -128,7 +128,7 @@ new_pool = batch.models.PoolAddParameter(
 
 ### <a name="prefetch-images-for-container-configuration"></a>Předběžné načtení imagí pro konfiguraci kontejneru
 
-K předběžnému načtení imagí kontejneru do fondu přidejte seznam imagí kontejneru (`container_image_names`v Pythonu) `ContainerConfiguration`do. 
+K předběžnému načtení imagí kontejneru do fondu přidejte do `ContainerConfiguration`seznam imagí kontejneru (`container_image_names`v Pythonu). 
 
 Následující základní příklad Pythonu ukazuje, jak předběžně vytvořit standardní image kontejneru Ubuntu z [Docker Hub](https://hub.docker.com).
 
@@ -193,7 +193,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 ### <a name="prefetch-images-from-a-private-container-registry"></a>Předběžné načtení imagí z privátního registru kontejnerů
 
-Můžete také vymezit vynechání imagí kontejneru ověřováním na privátním serveru registru kontejneru. V následujícím příkladu `ContainerConfiguration` objekty a `VirtualMachineConfiguration` vyplní privátní TensorFlow image z privátního služby Azure Container Registry. Odkaz na obrázek je stejný jako v předchozím příkladu.
+Můžete také vymezit vynechání imagí kontejneru ověřováním na privátním serveru registru kontejneru. V následujícím příkladu objekty `ContainerConfiguration` a `VirtualMachineConfiguration` vyplňují privátní image TensorFlow z privátního služby Azure Container Registry. Odkaz na obrázek je stejný jako v předchozím příkladu.
 
 ```csharp
 // Specify a container registry
@@ -227,13 +227,13 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 Chcete-li spustit úlohu kontejneru ve fondu s podporou kontejneru, zadejte nastavení specifické pro kontejner. Nastavení zahrnují obrázek, který se má použít, registru a možnosti spuštění kontejnerů.
 
-* `ContainerSettings` Použijte vlastnost tříd úloh ke konfiguraci nastavení specifických pro kontejner. Tato nastavení jsou definována třídou [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) . Všimněte si, `--rm` že možnost kontejneru nevyžaduje další `--runtime` možnost, protože se stará o dávku. 
+* Pro konfiguraci nastavení specifického pro kontejner použijte vlastnost `ContainerSettings` tříd úloh. Tato nastavení jsou definována třídou [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) . Všimněte si, že možnost kontejneru `--rm` nevyžaduje další možnost `--runtime`, protože se postará o dávku. 
 
 * Pokud spouštíte úlohy na obrázcích kontejneru, úloha [cloudu](/dotnet/api/microsoft.azure.batch.cloudtask) a [úkol správce úloh](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) vyžadují nastavení kontejneru. Úkol [Spustit úkol](/dotnet/api/microsoft.azure.batch.starttask), [úkol přípravy úlohy](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)a [úkol uvolnění úlohy](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) však nevyžadují nastavení kontejneru (to znamená, že mohou být spuštěny v kontextu kontejneru nebo přímo na uzlu).
 
 ### <a name="container-task-command-line"></a>Příkazový řádek úlohy kontejneru
 
-Když spustíte úlohu kontejneru, Batch automaticky použije příkaz Docker [Create](https://docs.docker.com/engine/reference/commandline/create/) k vytvoření kontejneru pomocí Image zadané v úloze. Batch potom řídí provádění úloh v kontejneru. 
+Když spustíte úlohu kontejneru, Batch automaticky použije příkaz [Docker Create](https://docs.docker.com/engine/reference/commandline/create/) k vytvoření kontejneru pomocí Image zadané v úloze. Batch potom řídí provádění úloh v kontejneru. 
 
 Stejně jako u úloh služby Batch bez kontejnerů můžete nastavit příkazový řádek pro úlohu kontejneru. Vzhledem k tomu, že dávka automaticky vytvoří kontejner, příkazový řádek pouze určuje příkaz nebo příkazy, které budou spuštěny v kontejneru.
 
@@ -241,19 +241,19 @@ Pokud je image kontejneru pro úlohu Batch nakonfigurovaná pomocí skriptu [ENT
 
 * Chcete-li použít výchozí vstupní bod pro Image kontejneru, nastavte příkazový řádek úlohy na prázdný řetězec `""`.
 
-* Chcete-li přepsat výchozí vstupní bod, nebo pokud bitová kopie neobsahuje vstupní bod, nastavte příkazový řádek vhodný pro kontejner, `/app/myapp` například nebo. `/bin/sh -c python myscript.py`
+* Chcete-li přepsat výchozí vstupní bod, nebo pokud bitová kopie neobsahuje vstupní bod, nastavte příkazový řádek vhodný pro kontejner, například `/app/myapp` nebo `/bin/sh -c python myscript.py`.
 
-Volitelné [ContainerRunOptions](/dotnet/api/microsoft.azure.batch.taskcontainersettings.containerrunoptions) jsou další argumenty, které poskytnete `docker create` příkazu, který dávka používá k vytvoření a spuštění kontejneru. Chcete-li například nastavit pracovní adresář pro kontejner, nastavte `--workdir <directory>` možnost. Další možnosti najdete v tématu o [Vytvoření Docker](https://docs.docker.com/engine/reference/commandline/create/) reference.
+Volitelné [ContainerRunOptions](/dotnet/api/microsoft.azure.batch.taskcontainersettings.containerrunoptions) jsou další argumenty, které zadáte do příkazu `docker create`, který dávka používá k vytvoření a spuštění kontejneru. Chcete-li například nastavit pracovní adresář pro kontejner, nastavte možnost `--workdir <directory>`. Další možnosti najdete v tématu o [Vytvoření Docker](https://docs.docker.com/engine/reference/commandline/create/) reference.
 
 ### <a name="container-task-working-directory"></a>Pracovní adresář úkolu kontejneru
 
-Úloha služby Batch se spustí v pracovním adresáři v kontejneru, který je velmi podobný jako adresářová dávka pro běžný (nekontejnerový) úkol. Všimněte si, že tento pracovní adresář je jiný než [WORKDIR](https://docs.docker.com/engine/reference/builder/#workdir) , pokud je nakonfigurovaný v imagi, nebo výchozí pracovní adresář kontejneru`C:\` (v kontejneru Windows nebo `/` v kontejneru Linux). 
+Úloha služby Batch se spustí v pracovním adresáři v kontejneru, který je velmi podobný jako adresářová dávka pro běžný (nekontejnerový) úkol. Všimněte si, že tento pracovní adresář je jiný než [WORKDIR](https://docs.docker.com/engine/reference/builder/#workdir) , pokud je nakonfigurovaný v imagi, nebo výchozí pracovní adresář kontejneru (`C:\` v kontejneru Windows nebo `/` na kontejneru Linux). 
 
 Pro úlohu kontejneru Batch:
 
-* Všechny adresáře rekurzivně pod `AZ_BATCH_NODE_ROOT_DIR` uzlem hostitele (kořen adresářů Azure Batch) jsou namapovány do kontejneru.
+* Všechny adresáře rekurzivně pod `AZ_BATCH_NODE_ROOT_DIR` v uzlu hostitele (kořen Azure Batch adresářů) se mapují do kontejneru.
 * Všechny proměnné prostředí úlohy jsou namapované na kontejner.
-* Pracovní adresář `AZ_BATCH_TASK_WORKING_DIR` úkolu na uzlu je nastaven jako stejný jako pro běžný úkol a namapován do kontejneru. 
+* Úloha pracovního adresáře `AZ_BATCH_TASK_WORKING_DIR` v uzlu je nastavena stejně jako pro běžný úkol a mapována do kontejneru. 
 
 Tato mapování umožňují pracovat s úlohami kontejneru podobným způsobem jako úlohy bez kontejneru. Například nainstalujte aplikace pomocí balíčků aplikace, získejte přístup k souborům prostředků z Azure Storage, použijte nastavení prostředí úloh a zachovejte výstupní soubory úlohy po zastavení kontejneru.
 
@@ -265,11 +265,11 @@ V případě potřeby upravte nastavení úlohy kontejneru na základě bitové 
 
 * Zadejte absolutní cestu na příkazovém řádku úlohy. Pokud se pro příkazový řádek úlohy používá výchozí vstupní bod obrázku, ujistěte se, že je nastavená absolutní cesta.
 
-* V možnostech spuštění kontejneru úlohy změňte pracovní adresář tak, aby odpovídal WORKDIR v imagi. Například nastavte `--workdir /app`.
+* V možnostech spuštění kontejneru úlohy změňte pracovní adresář tak, aby odpovídal WORKDIR v imagi. Nastavte například `--workdir /app`.
 
 ## <a name="container-task-examples"></a>Příklady úloh kontejneru
 
-Následující fragment kódu Pythonu ukazuje základní příkazový řádek, který je spuštěný v kontejneru vytvořeném z fiktivní image z Docker Hub. V `--rm` tomto případě možnost kontejneru odstraní kontejner po dokončení úkolu `--workdir` a možnost nastaví pracovní adresář. Příkazový řádek přepíše vstupní bod kontejneru jednoduchým příkazem prostředí, který zapíše malý soubor do pracovního adresáře úkolů na hostiteli. 
+Následující fragment kódu Pythonu ukazuje základní příkazový řádek, který je spuštěný v kontejneru vytvořeném z fiktivní image z Docker Hub. Zde, možnost kontejneru `--rm` odstraní kontejner po dokončení úkolu a možnost `--workdir` nastaví pracovní adresář. Příkazový řádek přepíše vstupní bod kontejneru jednoduchým příkazem prostředí, který zapíše malý soubor do pracovního adresáře úkolů na hostiteli. 
 
 ```python
 task_id = 'sampletask'
@@ -304,9 +304,9 @@ CloudTask containerTask = new CloudTask (
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podívejte se také na sadu [Batch pro dávkové](https://github.com/Azure/batch-shipyard) zpracování, která umožňuje snadné nasazení kontejnerových úloh v Azure Batch prostřednictvím receptů v [loděnicích](https://github.com/Azure/batch-shipyard/tree/master/recipes).
+* Podívejte se také na sadu [Batch pro dávkové](https://github.com/Azure/batch-shipyard) zpracování, která umožňuje snadné nasazení kontejnerových úloh v Azure Batch prostřednictvím [receptů v loděnicích](https://github.com/Azure/batch-shipyard/tree/master/recipes).
 
-* Další informace o instalaci a použití nástroje Docker CE v systému Linux najdete v [](https://docs.docker.com/engine/installation/) dokumentaci k Docker.
+* Další informace o instalaci a použití nástroje Docker CE v systému Linux najdete v dokumentaci k [Docker](https://docs.docker.com/engine/installation/) .
 
 * Další informace o používání vlastních imagí najdete v tématu [použití spravované vlastní image k vytvoření fondu virtuálních počítačů](batch-custom-images.md).
 

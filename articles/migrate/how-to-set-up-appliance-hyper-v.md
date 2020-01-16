@@ -1,17 +1,14 @@
 ---
 title: Nastavení zařízení Azure Migrate pro Hyper-V
 description: Naučte se, jak nastavit zařízení Azure Migrate pro vyhodnocení a migraci virtuálních počítačů Hyper-V.
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: a94d11d48728b03dd978af85db4b6c2af4887938
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0704adda314b94736b01fe114c3643ef8bd83753
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534491"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029084"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Nastavení zařízení pro virtuální počítače Hyper-V
 
@@ -65,7 +62,7 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 Naimportujte stažený soubor a vytvořte virtuální počítač.
 
 1. Extrahujte soubor VHD s příponou ZIP do složky na hostiteli Hyper-V, která bude hostovat virtuální počítač zařízení. Jsou extrahovány tři složky.
-2. Otevřete Správce technologie Hyper-V. V nabídce **Akce**klikněte na **importovat virtuální počítač**.
+2. Spusťte Správce technologie Hyper-V. V nabídce **Akce**klikněte na **importovat virtuální počítač**.
 
     ![Nasazení VHD](./media/how-to-set-up-appliance-hyper-v/deploy-vhd.png)
 
@@ -82,7 +79,7 @@ Naimportujte stažený soubor a vytvořte virtuální počítač.
 
 ### <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
 
-Ujistěte se, že se virtuální počítač zařízení může připojit k [adresám URL Azure](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access).
+Ujistěte se, že se virtuální počítač zařízení může připojit k [adresám URL Azure](migrate-appliance.md#url-access).
 
 ## <a name="configure-the-appliance"></a>Konfigurace zařízení
 
