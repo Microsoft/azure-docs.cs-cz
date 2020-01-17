@@ -1,21 +1,21 @@
 ---
-title: Dokumenty White Paper a případové studie – avere vFTX pro Azure
+title: Dokumenty White Paper a případové studie – avere vFXT pro Azure
 description: Odkazy na dokumenty ke stažení, případové studie a další články, které ilustrují avere vFXT pro Azure a jak se dají použít.
 ms.service: avere-vfxt
 author: ekpgh
 ms.author: rohogue
 ms.topic: conceptual
-ms.date: 02/13/2019
-ms.openlocfilehash: a85b939eb222fa459d33ba4eb79b4937baf9056f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/06/2020
+ms.openlocfilehash: 66df6a2018960d83c4aaa9129dad067732a8b3cf
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414281"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152965"
 ---
-# <a name="azure-vftx-for-azure-whitepapers-and-other-resources"></a>Azure vFTX pro dokumenty White Paper a další materiály pro Azure
+# <a name="azure-vfxt-for-azure-whitepapers-and-other-resources"></a>Azure vFXT pro dokumenty White Paper a další materiály pro Azure
 
-Prostředky v této tabulce obsahují případové studie, technické dokumenty, infografika a další články, které vám pomůžou pochopit, jak avere vFXT pro Azure zapadá do vašeho pracovního postupu.
+V tomto článku jsou uvedené případové studie, technické dokumenty, infografika a další materiály, které vám pomůžou pochopit, jak avere vFXT pro Azure zapadá do vašeho pracovního postupu.
 
 ## <a name="deploy-agisoft-photoscan-on-azure"></a>Nasazení Agisoftého fotokontroly v Azure
 
@@ -34,12 +34,6 @@ Tato dvě stránka obsahuje základní informace a diagramy, které vysvětlují
 **Odkaz:** [infografika: vytvoření hybridního cloudu pro souborové úlohy](https://azure.microsoft.com/resources/building-a-hybrid-cloud-for-file-based-hpc-workloads/)
 
 Tento obrázek ukazuje komponenty a rozložení pro použití avere vFXT pro Azure k přidání cloudové infrastruktury do stávajícího systému. Avere vFXT pro Azure použijte k rozšíření výpočetní kapacity se stávající místní infrastrukturou nebo k dočasnému nebo trvalému přesunu dat a výpočtů do cloudu.
-
-## <a name="cloud-bursting"></a>Shlukování cloudu
-
-**Odkaz:** [shlukování cloudu pro vysoký výkon, škálovatelný server NAS](https://microsoft.sharepoint.com/sites/Infopedia_G01KC/KCDOCs2/Avere%20customer%20resources/Solution%20Brief%20Cloud%20Bursting.pdf)
-
- V tomto řešení shlukování cloudu se dozvíte, jak můžete pomocí avere vFXT pro Azure rychle vytvářet data pro cloudové výpočetní prostředky.
 
 ## <a name="next-steps"></a>Další kroky
 

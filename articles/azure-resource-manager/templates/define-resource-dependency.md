@@ -3,12 +3,12 @@ title: Nastavení pořadí nasazení pro prostředky
 description: V této části najdete popis postupu při nastavování jednoho prostředku v závislosti na jiném prostředku během nasazování, aby bylo zajištěno nasazení prostředků ve správném pořadí.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: bdd988670b5fa6a0e602b50d9c25dd6dad6b3b84
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 44cf793859d2817695a58bd1159e2f4465c1f9c2
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75485088"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121960"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Definování pořadí nasazení prostředků v šablonách Azure Resource Manager
 
@@ -25,9 +25,9 @@ Následující příklad ukazuje sadu škálování virtuálního počítače, k
 ```json
 {
   "type": "Microsoft.Compute/virtualMachineScaleSets",
+  "apiVersion": "2016-03-30",
   "name": "[variables('namingInfix')]",
   "location": "[variables('location')]",
-  "apiVersion": "2016-03-30",
   "tags": {
     "displayName": "VMScaleSet"
   },
@@ -65,12 +65,12 @@ Následující příklad ukazuje SQL Server a SQL Database. Všimněte si, že e
 "resources": [
   {
     "name": "[variables('sqlserverName')]",
+    "apiVersion": "2014-04-01-preview",
     "type": "Microsoft.Sql/servers",
     "location": "[resourceGroup().location]",
     "tags": {
       "displayName": "SqlServer"
     },
-    "apiVersion": "2014-04-01-preview",
     "properties": {
       "administratorLogin": "[parameters('administratorLogin')]",
       "administratorLoginPassword": "[parameters('administratorLoginPassword')]"
@@ -78,15 +78,15 @@ Následující příklad ukazuje SQL Server a SQL Database. Všimněte si, že e
     "resources": [
       {
         "name": "[parameters('databaseName')]",
+        "apiVersion": "2014-04-01-preview",
         "type": "databases",
         "location": "[resourceGroup().location]",
-        "tags": {
-          "displayName": "Database"
-        },
-        "apiVersion": "2014-04-01-preview",
         "dependsOn": [
           "[variables('sqlserverName')]"
         ],
+        "tags": {
+          "displayName": "Database"
+        },
         "properties": {
           "edition": "[parameters('edition')]",
           "collation": "[parameters('collation')]",
@@ -120,15 +120,15 @@ V následujícím příkladu je koncový bod CDN explicitně závislý na profil
 ```json
 {
     "name": "[variables('endpointName')]",
+    "apiVersion": "2016-04-02",
     "type": "endpoints",
     "location": "[resourceGroup().location]",
-    "apiVersion": "2016-04-02",
     "dependsOn": [
-            "[variables('profileName')]"
+      "[variables('profileName')]"
     ],
     "properties": {
-        "originHostHeader": "[reference(variables('webAppName')).hostNames[0]]",
-        ...
+      "originHostHeader": "[reference(variables('webAppName')).hostNames[0]]",
+      ...
     }
 ```
 
@@ -152,6 +152,6 @@ Informace o vyhodnocení pořadí nasazení a řešení chyb závislostí najdet
 * Kurz najdete v tématu [kurz: vytváření Azure Resource Manager šablon se závislými prostředky](template-tutorial-create-templates-with-dependent-resources.md).
 * Doporučení pro nastavení závislostí najdete v tématu [osvědčené postupy pro šablonu Azure Resource Manager](template-best-practices.md).
 * Další informace o závislostech při řešení potíží při nasazení najdete v tématu [řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager](common-deployment-errors.md).
-* Další informace o vytváření šablon Azure Resource Manager najdete v tématu [vytváření šablon](template-syntax.md). 
+* Další informace o vytváření šablon Azure Resource Manager najdete v tématu [vytváření šablon](template-syntax.md).
 * Seznam dostupných funkcí v šabloně najdete v tématu [funkce šablon](template-functions.md).
 

@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: jgao
-ms.openlocfilehash: 6308f7832a898d97c455dc90265adea345aeb0cc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5475f49acfdcd74a792a9a0f2f16cf1ea3272232
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981210"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121892"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Použití skriptů nasazení v šablonách (Preview)
 
@@ -69,13 +69,13 @@ Následující kód JSON je příklad.  Nejnovější schéma šablony najdete [
   "apiVersion": "2019-10-01-preview",
   "name": "myDeploymentScript",
   "location": "[resourceGroup().location]",
+  "kind": "AzurePowerShell",
   "identity": {
     "type": "userAssigned",
     "userAssignedIdentities": {
       "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myID": {}
     }
   },
-  "kind": "AzurePowerShell",
   "properties": {
     "forceUpdateTag": 1,
     "azPowerShellVersion": "2.8",
@@ -144,7 +144,7 @@ Výstup bude vypadat následovně:
 
 ## <a name="use-external-scripts"></a>Použití externích skriptů
 
-Kromě vložených skriptů můžete použít také externí soubory skriptu. V současné době jsou podporovány pouze skripty prostředí PowerShell s příponou souboru **ps1** . Chcete-li použít externí soubory skriptu, nahraďte `scriptContent` `primaryScriptUri`. Příklad:
+Kromě vložených skriptů můžete použít také externí soubory skriptu. V současné době jsou podporovány pouze skripty prostředí PowerShell s příponou souboru **ps1** . Chcete-li použít externí soubory skriptu, nahraďte `scriptContent` `primaryScriptUri`. Například:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",

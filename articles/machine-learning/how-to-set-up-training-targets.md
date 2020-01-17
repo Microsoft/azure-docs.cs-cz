@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 01/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 730436c7437d2ed77f9066f486d9716ec6d5681f
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: c7fd70ca32054b3b25e717c8c7169cf2d30ef9be
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771832"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156348"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Nastavení a použití výpočetních cílů pro školení modelů 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -54,7 +54,7 @@ Přečtěte si další informace o [odesílání experimentů](#submit) na konci
 
 ## <a name="whats-an-estimator"></a>Co je Estimator?
 
-Pro usnadnění školení modelů pomocí oblíbených rozhraní Azure Machine Learning Python SDK nabízí alternativní abstrakci vyšší úrovně, třídu Estimator.  Tato třída umožňuje snadno vytvořit konfigurace spuštění. Můžete vytvořit a použít obecné [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) k odesílání školicích skriptů, které používají všechny vámi zvolené vzdělávací architektury (například scikit-učení). Doporučujeme používat Estimator pro školení, protože automaticky contructs vložené objekty, jako je prostředí nebo RunConfiguration objekty. Pokud chcete mít větší kontrolu nad tím, jak se tyto objekty vytvářejí, a specfify, jaké balíčky nainstalovat pro experiement spuštění, postupujte podle [těchto kroků](#amlcompute) a odešlete své školicí experimenty pomocí objektu RunConfiguration v Azure Machine Learning výpočetním prostředí.
+Pro usnadnění školení modelů pomocí oblíbených rozhraní Azure Machine Learning Python SDK nabízí alternativní abstrakci vyšší úrovně, třídu Estimator.  Tato třída umožňuje snadno vytvořit konfigurace spuštění. Můžete vytvořit a použít obecné [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) k odesílání školicích skriptů, které používají všechny vámi zvolené vzdělávací architektury (například scikit-učení). Doporučujeme používat Estimator pro školení, protože automaticky sestaví vložené objekty, jako je prostředí nebo RunConfiguration objekty. Pokud chcete mít větší kontrolu nad tím, jak jsou tyto objekty vytvořeny, a určete, jaké balíčky chcete nainstalovat pro váš experiment, postupujte podle [těchto kroků](#amlcompute) a odešlete své školicí experimenty pomocí objektu RunConfiguration ve výpočetním prostředí Azure Machine Learning.
 
 Pro úlohy PyTorch, TensorFlow a řetězení Azure Machine Learning poskytuje také příslušné [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)a [Chain](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) odhady pro zjednodušení používání těchto rozhraní.
 
@@ -312,7 +312,7 @@ Podle předchozích kroků zobrazte seznam cílů výpočtů. Pak pomocí těcht
 
 1. Vyplňte formulář. Zadejte hodnoty požadovaných vlastností, zejména **rodinu virtuálních počítačů**, a **maximální počet uzlů** , které se mají použít ke spuštění výpočtů.  
 
-1. Vyberte __Vytvořit__.
+1. Vyberte __Create__ (Vytvořit).
 
 
 1. Stav operace vytvoření si zobrazíte tak, že v seznamu vyberete cíl služby Compute:
@@ -364,7 +364,7 @@ Další informace najdete v tématu [Správa prostředků](reference-azure-machi
 
 ## <a name="set-up-with-vs-code"></a>Nastavení pomocí VS Code
 
-K pracovním prostorům, které jsou přidruženy k pracovnímu prostoru pomocí [rozšíření vs Code](how-to-vscode-tools.md#create-and-manage-compute-targets) pro Azure Machine Learning, můžete přistupovat, vytvářet a spravovat výpočetní cíle.
+K pracovním prostorům, které jsou přidruženy k pracovnímu prostoru pomocí [rozšíření vs Code](tutorial-train-deploy-image-classification-model-vscode.md#configure-compute-targets) pro Azure Machine Learning, můžete přistupovat, vytvářet a spravovat výpočetní cíle.
 
 ## <a id="submit"></a>Odeslání školicích běhů pomocí sady Azure Machine Learning SDK
 
@@ -414,7 +414,7 @@ Nebo můžete:
 
 * Odešlete experiment s objektem `Estimator`, jak je znázorněno v [modelech vlak ml pomocí odhady](how-to-train-ml-models.md).
 * Odešlete HyperDrive spuštění pro [ladění pomocí parametrů](how-to-tune-hyperparameters.md).
-* Odešlete experiment prostřednictvím [rozšíření vs Code](how-to-vscode-tools.md#train-and-tune-models).
+* Odešlete experiment prostřednictvím [rozšíření vs Code](tutorial-train-deploy-image-classification-model-vscode.md#train-the-model).
 
 Další informace najdete v dokumentaci k [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) a [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) .
 

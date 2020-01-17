@@ -1,6 +1,6 @@
 ---
-title: Odložení zpráv Azure Service Bus | Dokumentace Microsoftu
-description: Odložit doručování zpráv služby Service Bus
+title: Azure Service Bus odložení zprávy | Microsoft Docs
+description: Odložit doručování Service Busch zpráv
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -13,37 +13,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 11ea10f1deba5a21b98dea875a1b7dc94998aa00
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fc7e40661ae345412eb0336322599616dc89d6c4
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60402729"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122181"
 ---
 # <a name="message-deferral"></a>Odložení zpráv
 
-Když klient fronty nebo odběru obdrží zprávu, že je připraven ke zpracování, ale pro zpracování není aktuálně možné kvůli zvláštní okolnosti uvnitř aplikace, má povolenou možnost "odložit" načtení zprávy, která se později. Zpráva zůstane ve frontě nebo odběru, ale odloží se bokem.
+Když klient fronty nebo předplatného obdrží zprávu, že je ochotna zpracovat, ale pro které není aktuálně možné zpracování v důsledku zvláštních okolností uvnitř aplikace, má možnost odvodit načtení zprávy do pozdějšího bodu. Zpráva zůstane ve frontě nebo odběru, ale odloží se bokem.
 
-Odložení je funkce vytvořený specificky pro zpracování scénářů pracovního postupu. Pracovní postup rámce může vyžadovat určité operace zpracovat v určitém pořadí a může být nutné odložit zpracování některých přijaté zprávy, dokud se nedokončí předepsané předchozí práce, která je informován o další zprávy.
+Odložení je funkce specificky vytvořená pro scénáře zpracování pracovního postupu. Prostředí pracovních postupů mohou vyžadovat zpracování určitých operací v určitém pořadí a může trvat odložení zpracování některých přijatých zpráv až do dokončení předepsané předchozí práce, která je informována jinými zprávami.
 
-Jednoduchý příklad příkladů je pořadí zpracování pořadí, ve kterém oznámení platby od poskytovatele externí platby se zobrazí v systému dřív, než se rozšíří odpovídající objednávka ze storu na systém pro plnění. V takovém případě splnění systému může odložit zpracování platby oznámení, dokud nedojde k objednávku, pomocí kterého se má přidružit. Ve scénářích potkávací, kde zprávy z různých zdrojů jednotka vpřed pracovního postupu, pořadí zpracování v reálném čase ve skutečnosti může být správná, ale může do zpráv odráží výsledky mimo pořadí.
+Jednoduchým ilustrativním příkladem je pořadí zpracování objednávky, ve kterém se v systému zobrazí oznámení o platbě od externího zprostředkovatele plateb, než se z obchodu dokončí výšení odpovídajícího nákupního Objednávky do systému plnění. V takovém případě může systém plnění odložit zpracování oznámení o platbě, dokud není objednávka, ke které se má přidružit. Ve scénářích Rendezvous, kde zprávy z různých zdrojů doplňují pracovní postup, může být v reálném čase pořadí spouštění skutečně správné, ale zprávy odrážející výsledky mohou být doručeny mimo pořadí.
 
-Nakonec odložení pomáhá při změny pořadí v pořadí doručení zprávy do pořadí, ve kterém může být zpracovány, a bezpečně ponechání těchto zpráv do úložiště zpráv, pro které zpracování musí být odložen.
+Časově rozlišené prostředky v konečném uspořádání zpráv z pořadí doručení do pořadí, ve kterém je lze zpracovat, ale tyto zprávy bez obav ponechají v úložišti zpráv, pro které je nutné zpracování odložit.
 
-## <a name="message-deferral-apis"></a>Odložení zpráv rozhraní API
+## <a name="message-deferral-apis"></a>Rozhraní API pro odložení zpráv
 
-Rozhraní API je [BrokeredMessage.Defer](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.defer?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_Defer) nebo [BrokeredMessage.DeferAsync](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deferasync?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeferAsync) klienta rozhraní .NET Framework [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) v klientovi .NET Standard a **mesageReceiver.defer** nebo **messageReceiver.deferSync** v klientskou sadou Java. 
+Rozhraní API je [BrokeredMessage. odklad](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.defer?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_Defer) nebo [BrokeredMessage. DeferAsync](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deferasync?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeferAsync) v klientovi .NET Framework, [MessageReceiver. DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) v klientovi .NET Standard a [IMessageReceiver. pozdržet](/java/api/com.microsoft.azure.servicebus.imessagereceiver.defer?view=azure-java-stable) nebo [IMessageReceiver. DeferAsync](/java/api/com.microsoft.azure.servicebus.imessagereceiver.deferasync?view=azure-java-stable) v klientovi Java. 
 
-Odložené zprávy zůstávají ve frontě hlavní spolu s všechny ostatní aktivní zprávy (na rozdíl od nedoručených zpráv, kteří žijí v dílčí), ale může být již přijatých pomocí běžných příjmu/ReceiveAsync funkcí. Odložené zprávy můžete zjistit pomocí [procházení zpráv](message-browsing.md) Pokud aplikace ztratí sledování z nich.
+Odložené zprávy zůstávají v hlavní frontě společně se všemi ostatními aktivními zprávami (na rozdíl od zpráv s nedoručenými zprávami, které jsou v podfrontě uložené), ale už se nedají přijímat pomocí běžných funkcí Receive/metody ReceiveAsync. Odložené zprávy lze zjistit pomocí [procházení zpráv](message-browsing.md) , pokud aplikace ztratí jejich sledování.
 
-Načíst odloženou zprávu, jeho vlastníka odpovídá zprávě o zapamatování [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) jako jeho odloží. Všechny příjemce, který zná pořadové číslo odloženou zprávu můžete později zpráva explicitně s `Receive(sequenceNumber)`. Pro fronty, můžete použít [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient), použijte odběry témat [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient).
+Chcete-li načíst odloženou zprávu, její vlastník je zodpovědný za zapamatování [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) při jejich odložení. Každý příjemce, který zná pořadové číslo odložené zprávy, může později obdržet zprávu explicitně pomocí `Receive(sequenceNumber)`. Pro fronty můžete použít [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient)a předplatná tématu používají [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient).
 
-Pokud zprávu nelze zpracovat, protože konkrétního prostředku pro zpracování této zprávy je dočasně nedostupná, ale neměli summarily pozastavit zpracování zpráv, je způsob, jak vložit této zprávy na straně pro několik minut, než pamatovat  **SequenceNumber** v [naplánovanou zprávu](message-sequencing.md) účtován za pár minut a znovu načíst odloženou zprávu dorazí naplánovanou zprávu. Pokud obslužná rutina zprávy závisí na databázi pro všechny operace a databáze je dočasně nedostupná, ji by měl nepoužívat odložení, ale spíše pozastavit příjem zpráv s úplně, dokud nebude databáze opět k dispozici.
+Pokud zprávu nelze zpracovat, protože konkrétní prostředek pro zpracování této zprávy je dočasně nedostupný, ale zpracování zprávy by se po několik minut pozastavilo, zapamatujte si **SequenceNumber** v [naplánované zprávě](message-sequencing.md) , aby se publikovala během několika minut, a znovu načíst odloženou zprávu při doručení naplánované zprávy. Pokud obslužná rutina zprávy závisí na databázi pro všechny operace a tato databáze je dočasně nedostupná, neměli byste používat odložení, ale místo toho bude možné zprávy přijímat úplně, dokud nebude znovu dostupná databáze.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o zasílání zpráv Service Bus, najdete v následujících tématech:
+Další informace o Service Bus zasílání zpráv najdete v následujících tématech:
 
 * [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)

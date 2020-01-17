@@ -10,17 +10,65 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 01/08/2020
+ms.date: 01/15/2020
 ms.author: raiye
-ms.openlocfilehash: 97f4283e02dd3b67df5381f78e87c3ee5b23b74e
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 85029b5f819a59ffc4934d245778044a94a18d5e
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779582"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122130"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační systém Azure
 V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Security Response Center (MSRC) použité v hostovaném operačním systému Azure. V tomto článku zjistíte, jestli se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace vždy předávají pro konkrétní [rodinu][family-explain] , ve které byly zavedeny.
+
+## <a name="january-2020-guest-os"></a>Leden 2020 hostovaný operační systém
+
+>[!NOTE]
+>Hostovaný operační systém v lednu se v tuto chvíli zavádí na virtuální počítače cloudové služby, které jsou nakonfigurované pro automatické aktualizace. Po dokončení zavedení bude tato verze zpřístupněna k ruční aktualizaci prostřednictvím Azure Portal a konfiguračních souborů. Následující opravy jsou součástí hostovaného operačního systému v lednu. Tento seznam se může změnit.
+
+| Kategorie produktů | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| --- | --- | --- | --- | --- |
+|  Rel. 20-01  |  [4532960]  |  Zabezpečení Windows  | 2,94 | 14. ledna 2020 |
+|  Rel. 20-01  |  [4534251]  |  Internet Explorer  | 2,94 | 14. ledna 2020 |
+|  Rel. 20-01  |  [4534314]  |  Zabezpečení Windows  | 2,94 | 14. ledna 2020 |
+|  Rel. 20-01  |  [4532958]  |  Zabezpečení Windows  | 3,81 | 14. ledna 2020 |
+|  Rel. 20-01  |  [4532963]  |  Zabezpečení Windows  | 3,81 | 14. ledna 2020 |
+|  Rel. 20-01  |  [4534251]  |  Internet Explorer  | 3,81 | 14. ledna 2020 |
+|  Rel. 20-01  |  [4534288]  |  Zabezpečení Windows  | 3,81 | 14. ledna 2020 |
+|  Rel. 20-01  |  [4532961]  |  Zabezpečení Windows  | 4,74 | 14. ledna 2020 |
+|  Rel. 20-01  |  [4532962]  |  Zabezpečení Windows  | 4,74 | 14. ledna 2020 |
+|  Rel. 20-01  |  [4534251]  |  Internet Explorer  | 4,74 | 14. ledna 2020 |
+|  Rel. 20-01  |  [4534309]  |  Zabezpečení Windows  | 4,74 | 14. ledna 2020 |
+|  Rel. 20-01  |  [4494175]  |  Vyžádal povolení mikrokódu V3  | 5,39 | 29. srpna 2019 |
+|  Rel. 20-01  |  [4534271]  |  LCU  | 5,39 | 14. ledna 2020 |
+|  Rel. 20-01  |  [4494174]  |  Vyžádal povolení mikrokódu v4  | 6,15 | 29. srpna 2019 |
+|  Rel. 20-01  |  [4532947]  |  Zabezpečení Windows  | 6,15 | 14. ledna 2020 |
+|  Rel. 20-01  |  [4534273]  |  LCU  | 6,15 | 14. ledna 2020 |
+|  Rel. 20-01  |  [4530734]  |  Bez zabezpečení  | 2,94 | Od 10. prosince 2019 |
+|  Rel. 20-01  |  [4530691]  |  Bez zabezpečení   | 3,81 | Od 10. prosince 2019 |
+|  Rel. 20-01  |  [4530702]  |  Bez zabezpečení  | 4,74 | Od 10. prosince 2019 |
+
+[4532960]: https://support.microsoft.com/kb/4532960
+[4534251]: https://support.microsoft.com/kb/4534251
+[4534314]: https://support.microsoft.com/kb/4534314
+[4532958]: https://support.microsoft.com/kb/4532958
+[4532963]: https://support.microsoft.com/kb/4532963
+[4534251]: https://support.microsoft.com/kb/4534251
+[4534288]: https://support.microsoft.com/kb/4534288
+[4532961]: https://support.microsoft.com/kb/4532961
+[4532962]: https://support.microsoft.com/kb/4532962
+[4534251]: https://support.microsoft.com/kb/4534251
+[4534309]: https://support.microsoft.com/kb/4534309
+[4494175]: https://support.microsoft.com/kb/4494175
+[4534271]: https://support.microsoft.com/kb/4534271
+[4494174]: https://support.microsoft.com/kb/4494174
+[4532947]: https://support.microsoft.com/kb/4532947
+[4534273]: https://support.microsoft.com/kb/4534273
+[4530734]: https://support.microsoft.com/kb/4530734
+[4530691]: https://support.microsoft.com/kb/4530691
+[4530702]: https://support.microsoft.com/kb/4530702
+
 
 ## <a name="december-2019-guest-os"></a>Operační systém hosta 2019. prosince
 

@@ -12,24 +12,27 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37994125f7f1a7119a8878c7edec401328fd75ca
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9cd2d712dfcc6d3f01cbdb1f4886dd64a6d299d4
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233216"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156212"
 ---
-# <a name="manage-devices-connected-to-your-work-or-school-account-from-the-devices-page"></a>Správa zařízení připojených k pracovnímu nebo školnímu účtu ze stránky zařízení
+# <a name="manage-your-connected-devices-from-the-devices-page"></a>Správa připojených zařízení ze stránky zařízení
 
-Na stránce **zařízení** na portálu **můj účet** můžete:
+Stránka **zařízení** na portálu **můj účet** vám pomůže se správou zařízení připojených k pracovnímu nebo školnímu účtu. Na stránce **zařízení** můžete:
 
 - Zobrazit zařízení připojená k pracovnímu nebo školnímu účtu.
 
 - Zakažte všechna zařízení, která už nevlastníte, ztratila nebo která byla odcizena.
 
+>[!Important]
+>Tento článek je určený pro uživatele, kteří se pokoušejí aktualizovat informace o zařízení připojených k pracovnímu nebo školnímu účtu. Pokud jste správcem a hledáte informace o správě zařízení pro vaše zaměstnance a další použití, přečtěte si [dokumentaci identity zařízení](https://docs.microsoft.com/azure/active-directory/devices/index).
+
 ## <a name="view-your-connected-devices"></a>Zobrazit připojená zařízení
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak přejít na stránku https://myprofile.microsoft.com/.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak navštivte stránku **můj účet** (https://myprofile.microsoft.com/).
 
 2. V levém navigačním podokně vyberte **zařízení** nebo vyberte odkaz **spravovat zařízení** z bloku **zařízení** .
 
@@ -73,3 +76,13 @@ Po zobrazení připojených zařízení můžete:
 - Zobrazit [přihlašovací aktivitu](my-account-portal-sign-ins-page.md)
 
 - Podívejte se, jak vaše organizace [používá data týkající se ochrany osobních údajů](my-account-portal-privacy-page.md).
+
+## <a name="related-office-content"></a>Související obsah Office
+
+- [Přihlaste se, abyste mohli spravovat produkt Office.](https://support.office.com/article/sign-in-to-manage-your-office-product-959ac957-8d37-4ae4-b1b6-d6e4874e013f)
+
+- [Přejít na stránku **můj účet** Office](https://portal.office.com/account/#home)
+
+- [Přejít na stránku **Moje instalace** Office](https://portal.office.com/account/#installs)
+
+- [Přejít na stránku **předplatná** Office](https://portal.office.com/account/#subscriptions)

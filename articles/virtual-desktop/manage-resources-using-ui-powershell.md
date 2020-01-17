@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: 5049c32e06967cc123a24f07f601c1698bea3351
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: d7304c1267c4a4f5548bb57ffb3e6016fac21d99
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896425"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122504"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>Nasazení nástroje pro správu pomocí PowerShellu
 
@@ -135,7 +135,7 @@ Ověření konfigurace aplikace Azure AD a poskytnutí souhlasu:
    
    [![ověřovací stránku se zadaným identifikátorem URI pro přesměrování](media/management-ui-redirect-uri-inline.png)](media/management-ui-redirect-uri-expanded.png#lightbox)
 
-5. Na levém panelu vyberte **oprávnění rozhraní API** a potvrďte, že se přidaná oprávnění přidala. Pokud jste globální správce, klikněte na tlačítko správce **souhlasu uživatele `tenantname`** a podle pokynů v dialogovém okně poskytněte souhlas správce pro vaši organizaci.
+5. Na levém panelu vyberte **oprávnění rozhraní API** a potvrďte, že se přidaná oprávnění přidala. Pokud jste globální správce, vyberte tlačítko **udělit souhlas správce pro `tenantname`** a podle pokynů v dialogovém okně poskytněte souhlas správce pro vaši organizaci.
     
     [![stránku oprávnění rozhraní API](media/management-ui-permissions-inline.png)](media/management-ui-permissions-expanded.png#lightbox)
 

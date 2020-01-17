@@ -10,58 +10,64 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/11/2018
+ms.date: 01/15/2020
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6dddd13f31366e5a99d6c68ab82b048de4064b2
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: ada3e9ae115f1e9cec03cd940b6bfdbe32897122
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75681357"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156297"
 ---
 # <a name="register-your-verification-method-info-to-reset-your-own-password"></a>Registrace informací o metodě ověřování pro resetování vlastního hesla
 
-> [!IMPORTANT]
-> Jste tady, protože se nemůžete přihlásit? Pokud ano, přečtěte si téma [resetování svého pracovního nebo školního hesla](active-directory-passwords-update-your-own-password.md).
+Pokud jste zapomněli své pracovní nebo školní heslo, nikdy nebudete mít heslo z vaší organizace nebo jste jeho uzamčením nedostali svůj účet, můžete k resetování svého pracovního nebo školního hesla použít své bezpečnostní údaje a mobilní zařízení.
 
-Jako koncový uživatel můžete resetovat heslo nebo odemknout účet, pokud použijete službu Azure Active Directory (Azure AD) Samoobslužné resetování hesla (SSPR). Předtím, než budete moci tuto funkci používat, je nutné zaregistrovat metody ověřování nebo potvrdit předdefinované metody ověřování, které správce naplní.
+Správce musí tuto funkci zapnout, aby bylo možné zaregistrovat vaše informace a resetovat vlastní heslo. Pokud nevidíte možnost **zapomenuté heslo** , znamená to, že správce tuto funkci pro vaši organizaci nezapnul. Pokud se domníváte, že to není správné, obraťte se na helpdesk, kde najdete pomoc.
 
-## <a name="register-or-confirm-authentication-data-with-sspr"></a>Registrace nebo potvrzení ověřovacích dat pro samoobslužné resetování hesla
+>[!Important]
+>Tento článek je určený pro uživatele, kteří se pokoušejí použít k registraci samoobslužného resetování hesla. To znamená, že budete moct resetovat svoje vlastní pracovní nebo školní heslo (například alain@contoso.com), aniž byste museli pomáhat správce. Pokud jste správcem a hledáte informace o tom, jak zapnout Samoobslužné resetování hesla pro vaše zaměstnance nebo jiné uživatele, přečtěte si téma [nasazení samoobslužného resetování hesla Azure AD a dalších článků](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment).
 
-1. Na zařízení otevřete webový prohlížeč a pak na [registrační stránku pro resetování hesla](https://account.activedirectory.windowsazure.com/PasswordReset/Register.aspx?regref=ssprsetup).
-2. Zadejte své uživatelské jméno a heslo, které zadal správce.
-3. V závislosti na tom, jak vaši pracovníci IT nakonfigurovali nějaké věci, můžete nakonfigurovat a ověřit jednu z následujících možností. Pokud váš správce má vaše oprávnění k používání vašich informací, může pro vás naplnit některé informace.
-    * **Telefon do kanceláře**: tuto možnost může nastavit jenom správce.
-    * **Telefon pro ověření**: tuto možnost nastavte na jiné telefonní číslo, ke kterému máte přístup. Příkladem je mobilní telefon, který může přijímat text nebo volání.
-    * **E-mail pro ověřování**: tuto možnost nastavte na alternativní e-mailovou adresu, ke které máte přístup bez použití hesla, které chcete resetovat.
-    * **Bezpečnostní otázky**: váš správce schválil tento seznam dotazů, na které vám odpoví. Stejnou otázku ani odpověď nemůžete použít více než jednou.
-4. Poskytněte a ověřte informace vyžadované správcem. Pokud je k dispozici více než jedna možnost, doporučujeme, abyste zaregistrovali více metod. Díky tomu budete mít flexibilitu, když jedna z metod není k dispozici. Příkladem je, že jste na cestách a nemůžete získat přístup k telefonu do kanceláře.
+## <a name="set-up-your-password-reset-verification-method"></a>Nastavení metody ověřování pro resetování hesla
 
-    ![Zaregistrujte metody ověřování a vyberte Dokončit.][Register]
+1. Na zařízení otevřete webový prohlížeč a potom na [stránce informace o zabezpečení](https://account.activedirectory.windowsazure.com/PasswordReset/Register.aspx?regref=ssprsetup).
 
-5. Vyberte **Dokončit**. SSPR teď můžete v budoucnu používat v případě potřeby.
+2. V závislosti na tom, jak váš správce nastavil vaši organizaci, budete mít k dispozici jednu nebo více následujících možností, které můžete nastavit jako metodu ověření zabezpečení. Pokud je k dispozici více možností, důrazně doporučujeme použít více než jeden jako metodu ověření zabezpečení, v případě, že jedna z vašich metod nebude k dispozici.
 
-Pokud zadáte data pro **telefon pro ověření** nebo **ověřovací e-mail**, nebude se zobrazovat v globálním adresáři. Tyto údaje se zobrazí jen vám a vašim správcům. Odpovědi na vaše bezpečnostní otázky uvidíte jenom vy.
+    - **Ověřovací aplikace** Vyberte, aby jako metoda ověření zabezpečení používala aplikaci Microsoft Authenticator nebo jinou ověřovací aplikaci. Další informace o nastavení aplikace najdete v tématu [nastavení aplikace Microsoft Authenticator jako metody ověřování](security-info-setup-auth-app.md).
 
-Vaši správci můžou po určitou dobu vyžadovat, abyste ověřili své ověřovací metody, abyste měli jistotu, že máte i nadále zaregistrované příslušné metody.
+    - **Textové zprávy.** Vyberte, chcete-li odesílat textové zprávy do mobilního zařízení. Další informace o nastavení zasílání zpráv pro text najdete v tématu [Nastavení způsobu ověřování textovým zasíláním zpráv](security-info-setup-text-msg.md).
+
+    - **Telefonní hovory.** Vyberte, pokud chcete získat telefonní hovor na vaše registrované telefonní číslo. Další informace o nastavení telefonních hovorů najdete v tématu [Nastavení telefonního čísla jako metody ověřování](security-info-setup-phone-number.md).
+
+    - **Bezpečnostní klíč** Vyberte, že chcete použít bezpečnostní klíč kompatibilní se společností Microsoft. Další informace najdete v tématu [nastavení bezpečnostního klíče jako metody ověřování](security-info-setup-security-key.md).
+
+    - **E-mailová adresa** Použijte alternativní e-mailovou adresu, kterou můžete použít, aniž byste museli zapomenuté nebo chybějící heslo. To funguje jenom pro resetování hesla, ne jako metodu ověření zabezpečení. Další informace o nastavení e-mailové adresy najdete v tématu [Nastavení e-mailové adresy jako metody ověřování](security-info-setup-email.md).
+
+    - **Bezpečnostní otázky.** Vyberte možnost nastavit a odpovědět předem definované bezpečnostní otázky nastavené vaším správcem. To funguje jenom pro resetování hesla, ne jako metodu ověření zabezpečení. Další informace o bezpečnostních otázkách najdete v tématu [Nastavení bezpečnostních otázek jako metody ověřování](security-info-setup-questions.md).
+
+3. Po výběru a nastavení vašich metod zvolte **Dokončit** a proces dokončete.
+
+    > [!Note]
+    > Informace přidané pro telefonní číslo nebo e-mailovou adresu se nesdílí s globálním adresářem vaší organizace. Pouze lidé, kteří vidí tyto informace, jsou vy a váš správce. Odpovědi na vaše bezpečnostní otázky uvidíte jenom vy.
 
 ## <a name="common-problems-and-their-solutions"></a>Běžné problémy a jejich řešení
 
  Tady jsou některé běžné chybové případy a jejich řešení:
 
-| Případ chyby| Jakou chybu vidíte?| Řešení |
+| Chybová zpráva |  Možné řešení |
 | --- | --- | --- |
-| Po zadání ID uživatele se zobrazí stránka "kontaktujte správce" | Kontaktujte správce. <br> <br> Zjistili jsme, že heslo ke svému uživatelskému účtu nespravuje Microsoft. V důsledku toho nemůžeme automaticky resetovat vaše heslo. <br> <br> Další pomoc vám poskytne váš personál oddělení IT. | Tato zpráva se zobrazuje, protože pracovníci IT spravují vaše heslo v místním prostředí a neumožňují resetovat heslo z důvodu **nedostatku přístupu k vašemu účtu** . <br> <br> Pokud si chcete resetovat heslo, obraťte se přímo na pracovníky IT a požádejte ho o nápovědu. Dejte jim jistotu, že chcete resetovat heslo, aby mohli tuto funkci povolit za vás.|
-| Po zadání ID uživatele se zobrazí chyba, že účet není povolen pro resetování hesla. | Váš účet není pro resetování hesla povolený. <br> <br> Je nám líto, ale vaši zaměstnanci IT nevytvořili účet pro použití s touto službou. <br> <br> Pokud byste chtěli, můžeme kontaktovat správce ve vaší organizaci, aby vám heslo resetoval. | Tato zpráva se zobrazuje, protože vaši pracovníci IT nepovolili resetování hesla ve vaší organizaci z důvodu **nedostatku přístupu k vašemu účtu** nebo nemáte licenci k použití této funkce. <br> <br> Pokud chcete resetovat heslo, vyberte odkaz **kontaktujte správce** . E-mail se pošle pracovníkům IT vaší společnosti. E-mail jim umožní sdělit, že chcete resetovat heslo, aby tato funkce mohla mít za vás. |
-| Po zadání ID uživatele se zobrazí chyba, že se vám nepovedlo ověřit váš účet. | Nepovedlo se nám ověřit váš účet. <br> <br> Pokud byste chtěli, můžeme kontaktovat správce ve vaší organizaci, aby vám heslo resetoval. | Tato zpráva se zobrazuje, protože jste povolili resetování hesla, ale nezaregistrovali jste ji k používání služby. Pokud se chcete zaregistrovat k resetování hesla, přejděte po opětovném získání přístupu k účtu na [registrační stránku pro resetování hesla](https://aka.ms/ssprsetup) . <br> <br> Pokud chcete resetovat heslo, vyberte odkaz **kontaktujte správce** a odešlete e-mail pracovníkům IT vaší společnosti. |
+| Kontaktujte správce.<br>Zjistili jsme, že heslo ke svému uživatelskému účtu nespravuje Microsoft. V důsledku toho nemůžeme automaticky resetovat vaše heslo.<br>Další pomoc vám poskytne váš personál oddělení IT.| Pokud se tato chybová zpráva zobrazí po zadání ID uživatele, znamená to, že vaše organizace interně spravuje vaše heslo a nechce, abyste heslo obnovili z připojení k **vašemu účtu** . Pokud chcete v této situaci resetovat heslo, musíte se obrátit na helpdesk nebo správce vaší organizace, který vám pomůže. |
+| Váš účet není pro resetování hesla povolený.<br>Je nám líto, ale vaši zaměstnanci IT nevytvořili účet pro použití s touto službou.<br>Pokud byste chtěli, můžeme kontaktovat správce ve vaší organizaci, aby vám heslo resetoval. | Pokud se tato chybová zpráva zobrazí po zadání ID uživatele, znamená to, že vaše organizace nemá zapnutou funkci resetování hesla, nebo ji nemůžete používat. Pokud chcete v této situaci resetovat heslo, musíte vybrat odkaz **kontaktujte správce** . Po kliknutí na odkaz se na helpdesk nebo správce vaší organizace pošle e-mail s oznámením, že si chcete resetovat heslo. |
+| Nepovedlo se nám ověřit váš účet.<br>Pokud byste chtěli, můžeme kontaktovat správce ve vaší organizaci, aby vám heslo resetoval. | Pokud se tato chybová zpráva zobrazí po zadání ID uživatele, znamená to, že vaše organizace zapnula resetování hesla a že ji můžete použít, ale nezaregistrovali jste ji pro službu. V takovém případě musíte požádat o resetování hesla oddělení technické podpory nebo správce vaší organizace. Informace o tom, jak se zaregistrovat pro resetování hesla po návratu do zařízení, najdete v části v tomto článku postup. |
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Změna hesla pomocí samoobslužného resetování hesla](active-directory-passwords-update-your-own-password.md)
-* [Registrační stránka pro resetování hesla](https://aka.ms/ssprsetup)
-* [Portál pro resetování hesla](https://passwordreset.microsoftonline.com/)
-* [Když se nemůžete přihlásit k účet Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)
+- [Změna hesla pomocí samoobslužného resetování hesla](active-directory-passwords-update-your-own-password.md)
 
-[Register]: ./media/active-directory-passwords-reset-register/register-2-methods.png "Registrační stránka pro resetování hesla zobrazující registrované metody a tlačítko Dokončit"
+- [Stránka informace o zabezpečení](https://mysignins.microsoft.com/security-info)
 
+- [Portál pro resetování hesla](https://passwordreset.microsoftonline.com/)
+
+- [Když se nemůžete přihlásit k účet Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)

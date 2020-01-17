@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ce2394805bfc302179da807c798445c30ce9daff
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: ef1266b783034cf18dc2b3ea4be5ebc01bc12c70
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619544"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121858"
 ---
 # <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-cloudsimple-private-cloud"></a>Nastavení aplikací a úloh DNS a DHCP v privátním cloudu CloudSimple
 
@@ -27,7 +27,7 @@ Aplikace a úlohy běžící v prostředí privátního cloudu vyžadují překl
 
 ## <a name="linux-based-dns-server-setup"></a>Instalace serveru DNS se systémem Linux
 
-Linux nabízí různé balíčky pro nastavení serverů DNS.  Tady je [Příklad nastavení z DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-centos-7) s pokyny pro nastavení Open-Source serveru DNS BIND.
+Linux nabízí různé balíčky pro nastavení serverů DNS.  Tady je [Příklad nastavení z DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-18-04) s pokyny pro nastavení Open-Source serveru DNS BIND.
 
 ## <a name="windows-based-setup"></a>Instalace založená na systému Windows
 

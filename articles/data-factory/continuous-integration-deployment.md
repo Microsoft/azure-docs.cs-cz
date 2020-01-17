@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 0e4b2cd208e11f7696e016d3fa4353b38f3060d8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: fb049b5af5c700cdb72f0319019cfd6eee952d9f
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977525"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156960"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Průběžná integrace a doručování v Azure Data Factory
 
@@ -330,7 +330,7 @@ Pokud jste v režimu GIT, můžete přepsat výchozí vlastnosti v šabloně Spr
 * Používáte automatizované CI/CD a chcete změnit některé vlastnosti během nasazení Správce prostředků, ale vlastnosti nejsou ve výchozím nastavení parametrizované.
 * Vaše továrna je tak velká, že výchozí šablona Správce prostředků je neplatná, protože má více než maximální povolený počet parametrů (256).
 
-V rámci těchto podmínek můžete přepsat výchozí šablonu Parametrizace vytvořením souboru s názvem ARM-Template-Parameters-definition. JSON v kořenové složce úložiště. Je nutné použít tento přesný název souboru. Data Factory přečte tento soubor z jakékoli větve, na které jste právě na portálu Azure Data Factory, a ne jenom z větve pro spolupráci. Můžete vytvořit nebo upravit soubor z privátní větve, kde můžete testovat své změny výběrem možnosti **Exportovat šablonu ARM** v uživatelském rozhraní. Pak můžete soubor sloučit do větve pro spolupráci. Pokud se nenajde žádný soubor, použije se výchozí šablona.
+Pokud za těchto podmínek chcete přepsat výchozí šablonu Parametrizace, vytvořte soubor s názvem ARM-Template-Parameters-definition. JSON ve složce zadané jako kořenová složka pro integraci Git služby Data Factory. Je nutné použít tento přesný název souboru. Data Factory přečte tento soubor z jakékoli větve, na které jste právě na portálu Azure Data Factory, a ne jenom z větve pro spolupráci. Můžete vytvořit nebo upravit soubor z privátní větve, kde můžete testovat své změny výběrem možnosti **Exportovat šablonu ARM** v uživatelském rozhraní. Pak můžete soubor sloučit do větve pro spolupráci. Pokud se nenajde žádný soubor, použije se výchozí šablona.
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>Syntaxe souboru vlastních parametrů
 

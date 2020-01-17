@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: e030b1954d5546e6bad4eabfdb3e456b0c07e8eb
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: d936f9f30f79b3be6035d668211a15533cb3fa85
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028862"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76157215"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Výstrahy zabezpečení – referenční příručka
 
@@ -52,13 +52,13 @@ Typy výstrah obsažených v této tabulce:
 |**Bylo zjištěno přihlášení ze škodlivé IP adresy. [zobrazeno vícekrát]**|Došlo k úspěšnému vzdálenému ověření účtu IUSR_10001 a procesu advapi, ale IP adresa [IP adresa] byla dřív hlášena jako škodlivá nebo velmi neobvyklá. Pravděpodobně došlo k úspěšnému útoku. Soubory s příponou. scr jsou soubory spořiče obrazovky a obvykle se nacházejí a provádějí z adresáře systému Windows.|-|
 |**Přidání účtu hosta do místní skupiny Administrators**|Analýza dat hostitele zjistila Přidání předdefinovaného účtu Guest do místní skupiny Administrators na hostiteli% {ohroženého hostitele}, což je silně spojené s aktivitou útočníka.|-|
 |**Protokol událostí byl vymazán.**|Protokoly počítače označují podezřelou operaci mazání protokolu událostí uživatelem:% {uživatelské jméno} v počítači:% {CompromisedEntity}. Protokol% {log Channel} byl vymazán.|-|
-|**Zjistily se akce, které zakazují a odstraňují soubory protokolu IIS.**|Analýza dat hostitele zjistila akce, které zobrazují zakázané nebo odstraněné soubory protokolu IIS.|-|
+|**Zjištěné akce, jejichž součástí je zakázání a odstranění souborů protokolu IIS**|Analýza dat hostitele zjistila akce, které zobrazují zakázané nebo odstraněné soubory protokolu IIS.|-|
 |**V příkazovém řádku se zjistila neobvyklé kombinace velkých a malých písmen.**|Analýza dat hostitele na% {napadený hostitel} zjistila příkazový řádek s neobvyklé směsí velkých a malých písmen. Tento druh vzoru, i když je potenciálně neškodný, je také typický pro útočníky, kteří se pokoušejí při provádění úloh správy na napadeném hostiteli skrývat z pravidel založených na velikosti písmen nebo hash.|-|
 |**Zjistila se změna klíče registru, který se dá zneužít k obejití nástroje řízení uživatelských účtů.**|Analýza dat hostitele na% {napadený hostitel} zjistila, že se změnil klíč registru, který by mohl zneužít obejít řízení uživatelských účtů (řízení uživatelských účtů). Tento druh konfigurace, ale možná neškodný, je při pokusu o přechod z neprivilegovaného (standardního uživatele) na privilegovaný počítač (například správce) k privilegovanému hostiteli taky typický.|-|
 |**Bylo zjištěno dekódování spustitelného souboru pomocí integrovaného nástroje Certutil. exe.**|Analýza dat hostitele na% {napadený hostitel} zjistila, že nástroj certutil. exe, vestavěný správce, se použil k dekódování spustitelného souboru namísto jeho běžného účelu, který se týká manipulace s certifikáty a daty certifikátu. O útočnících je známo, že zneužívají funkce legitimních nástrojů pro správce k provádění škodlivých akcí, například pomocí nástroje, jako je certutil.exe, dekódují škodlivý spustitelný soubor, který se následně spustí.|-|
 |**Bylo zjištěno povolení klíče registru WDigest UseLogonCredential.**|Analýza dat hostitele zjistila změnu v klíči registru HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest\ "UseLogonCredential". Konkrétně je tento klíč aktualizovaný, aby bylo možné ukládat přihlašovací údaje do paměti LSA jako nešifrovaný text. Po povolení by útočník mohl vypsat nešifrované heslo k heslům z paměti LSA pomocí nástrojů pro získávání přihlašovacích údajů, jako je Mimikatz.|-|
 |**V datech příkazového řádku se zjistil kódovaný spustitelný soubor.**|Analýza dat hostitele na% {ohroženém hostiteli} zjistila spustitelný soubor s kódováním Base-64. Dříve byla přidružena k útočníkům, kteří se snaží průběžně sestavovat spustitelné soubory prostřednictvím posloupnosti příkazů, a pokusit se vyhnout se systémům zjišťování neoprávněných vniknutí tím, že by výstraha nemohla aktivovat žádný jednotlivý příkaz. Může se jednat o legitimní aktivitu nebo označení ohroženého hostitele.|-|
-|**Byl zjištěn nejasný příkazový řádek.**|Útočníci používají stále složité techniky zmatení, které umožňují obejít detekce, které se spouštějí s podkladovým datům. Analýza dat hostitele na hostiteli% {ohroženého hostitele} zjistila podezřelé indikátory zmatení na příkazovém řádku.|-|
+|**Byl zjištěn zakódováný příkazový řádek.**|Útočníci používají stále složité techniky zmatení, které umožňují obejít detekce, které se spouštějí s podkladovým datům. Analýza dat hostitele na hostiteli% {ohroženého hostitele} zjistila podezřelé indikátory zmatení na příkazovém řádku.|-|
 |**Zjištěné indikátory ransomwarem Petya**|Analýza dat hostitele na% {ohroženém hostiteli} zjistila indikátory přidružené k Petya ransomwarem. Další informace najdete v části https://blogs.technet.microsoft.com/mmpc/2017/06/27/new-ransomware-old-techniques-petya-adds-worm-capabilities/. Zkontrolujte příkazový řádek přidružený k této výstraze a přeupozorněte tuto výstrahu na svůj bezpečnostní tým.|-|
 |**Zjistilo se možné provedení spustitelného souboru keygen.**|Analýza dat hostitele na% {ohroženém hostiteli} zjistila spuštění procesu, jehož název je indikativní pro nástroj keygen. Tyto nástroje se obvykle používají k předvedení mechanismů licencování softwaru, ale jejich stažení je často součástí jiného škodlivého softwaru. Pro skupinu aktivit se zjistilo, že tato Keygens využívá k tomu, aby nepozorovaně přístup k dvířkům pro hostitele, které ohrožují.|-|
 |**Zjistilo se možné provedení malwaru kapátka.**|Analýza dat hostitele na% {napadený hostitel} zjistila název souboru, který se dřív přidružil k jedné z skupin aktivit. metoda instalace malwaru na hostitele oběti.|-|

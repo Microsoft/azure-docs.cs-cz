@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 01/16/2020
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d6fe6744c2af22f8891d2f3b3a6eb30ec9d3904
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: dc68b34ce10957d8c025d4767cc4f8d04c6a72c3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045280"
+ms.locfileid: "76155855"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Nejčastější dotazy k aplikaci Microsoft Authenticator
 
@@ -52,6 +52,7 @@ Aplikace Microsoft Authenticator nahradila Azure Authenticator aplikaci a při p
 | Co je funkce zámku aplikace a jak to usnadňuje lepší zabezpečení? | Chcete-li zachovat jednorázová hesla, informace o aplikaci a nastavení aplikace, můžete zapnout funkci zámku aplikace v aplikaci Microsoft Authenticator. Zapnutí zámku aplikace z obrazovky **Nastavení** aplikace Microsoft Authenticator znamená, že budete požádáni o ověření pomocí PIN kódu nebo biometriky pokaždé, když otevřete Microsoft Authenticator aplikaci. Tato funkce nabízí dodatečnou ochranu, způsob, jakým schválíte vaše oznámení v aplikaci Microsoft Authenticator se nezmění.<br><br>**Poznámka**<br>Vzhledem k tomu, že k registraci zařízení může docházet v jiných umístěních mimo aplikaci Microsoft Authenticator, jako je například v aplikaci Portál společnosti nebo v nastavení účtu Android, není zaručeno, že zámek aplikace zabrání uživateli v přístupu k Microsoftu. Ověřovací aplikace |
 | Proč se mi zobrazují oznámení o aktivitě svého účtu? | Abychom vám pomohli lépe informovat o tom, co se stane se svými osobními účet Microsoft, posíláme oznámení o aktivitě do vaší Microsoft Authenticator aplikace. Tato oznámení se zobrazují hned po změnách a pomáhají zajistit lepší zabezpečení. Tato oznámení jsme poslali prostřednictvím e-mailu a SMS a teď je rozšířili tak, aby se zahrnula do aplikace. Další informace o těchto oznámeních o aktivitách najdete v tématu [co se stane, když máte k vašemu účtu neobvyklé přihlášení](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in). Pokud chcete změnit, kam dostávat oznámení, přihlaste se k webu, [kde vám můžeme kontaktovat stránku výstrahy](https://account.live.com/SecurityNotifications/Update) účtu, který není kritický. |
 | Když se přihlašujete k pracovnímu nebo školnímu účtu pomocí výchozí poštovní aplikace, která se dodává se systémem iOS, zobrazí se mi výzva Microsoft Authenticator aplikace pro informace o ověření zabezpečení. Po zadání těchto informací a návratu do e-mailové aplikace se zobrazí chyba. Co mám udělat? | K tomuto problému dochází, protože vaše přihlášení a poštovní aplikace se vyskytují ve dvou různých aplikacích, což způsobí, že počáteční proces přihlašování na pozadí přestane fungovat a selže. Pokud se chcete pokusit tuto chybu opravit, doporučujeme při přihlášení k aplikaci pošty vybrat ikonu **Safari** na pravé dolní straně obrazovky. Přesunutím na Safari dojde k tomu, že se celý proces přihlašování stane v jedné aplikaci, takže se můžete úspěšně přihlásit k aplikaci. |
+| Moje kódy JEDNORÁZOVého hesla nefungují. Co mám dělat? | Ujistěte se, že datum a čas v zařízení jsou správné a automaticky se synchronizují. Pokud je datum a čas chybné nebo není synchronizován, kód nebude fungovat. |
 
 ## <a name="next-steps"></a>Další kroky
 

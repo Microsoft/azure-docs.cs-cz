@@ -4,22 +4,22 @@ description: Předpoklady pro avere vFXT pro Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 0dafef7cf262153ccdb3b490aa0c7bd039b4a89b
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 7f89ea553bc7198c1faee5ba3549f88da5ec2b2c
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889175"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152982"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Příprava k vytvoření Avere vFXT
 
-Tento článek popisuje nezbytné úlohy pro vytvoření clusteru avere vFXT.
+Tento článek vysvětluje úlohy požadovaných součástí pro vytvoření clusteru avere vFXT.
 
 ## <a name="create-a-new-subscription"></a>Vytvoření nového předplatného
 
-Začněte vytvořením nového předplatného Azure. Použijte samostatné předplatné pro každý projekt avere vFXT, abyste mohli snadno sledovat všechny projektové prostředky a výdaje, chránit ostatní projekty před zřizováním a zjednodušit vyčištění.
+Začněte vytvořením nového předplatného Azure. Použijte samostatné předplatné pro každý projekt avere vFXT pro zjednodušení sledování a vyčištění výdajů a zajistěte, aby při zřizování pracovního postupu clusteru neovlivnily jiné projekty kvóty nebo omezování prostředků.
 
 Pokud chcete vytvořit nové předplatné Azure v Azure Portal:
 
@@ -30,37 +30,41 @@ Pokud chcete vytvořit nové předplatné Azure v Azure Portal:
 
 ## <a name="configure-subscription-owner-permissions"></a>Konfigurace oprávnění vlastníka předplatného
 
-Uživatel s oprávněním vlastníka pro předplatné by měl vytvořit cluster vFXT. Oprávnění vlastníka předplatného jsou nutná k přijetí licenčních podmínek služby a provádění dalších akcí.
+Uživatel s oprávněním vlastníka pro předplatné by měl vytvořit cluster vFXT. Vytvoření clusteru vyžaduje, aby vlastník přijal licenční podmínky služby a schvaloval změny prostředků sítě a úložiště.
 
-K dispozici je několik scénářů s alternativním řešením, které umožňují nevlastnictví vytvořit avere vFTX pro cluster Azure. Tyto scénáře zahrnují omezení prostředků a přiřazování dalších rolí tvůrci. V obou těchto případech musí vlastník předplatného také [přijmout licenční podmínky pro avere vFXT](#accept-software-terms) před časem.
+K dispozici je několik alternativních řešení, která umožňují vytvořit avere vFXT pro cluster Azure pomocí nevlastnictví. Tyto scénáře zahrnují omezení prostředků a přiřazování dalších rolí řízení přístupu na základě role (RBAC) tvůrci. Ve všech těchto případech by měl vlastník předplatného také [přijmout podmínky avere vFXT software](#accept-software-terms) před časem.
 
 | Scénář | Omezení | Přístup k rolím vyžadovaným k vytvoření clusteru avere vFXT |
 |----------|--------|-------|
-| Správce skupiny prostředků | Virtuální síť, řadič clusteru a uzly clusteru se musí vytvořit v rámci skupiny prostředků. | Role [Správce přístupu uživatelů](../role-based-access-control/built-in-roles.md#user-access-administrator) a [přispěvatelů](../role-based-access-control/built-in-roles.md#contributor) v oboru pro cílovou skupinu prostředků |
-| Externí virtuální síť | Řadič clusteru a uzly clusteru se vytvoří v rámci skupiny prostředků, ale použije se existující virtuální síť v jiné skupině prostředků. | (1) role [Správce přístupu uživatele](../role-based-access-control/built-in-roles.md#user-access-administrator) a [přispěvatelé](../role-based-access-control/built-in-roles.md#contributor) jsou v oboru pro skupinu prostředků vFXT. a (2) [Přispěvatel virtuálních počítačů](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), [správce uživatelských přístupů](../role-based-access-control/built-in-roles.md#user-access-administrator)a role [přispěvatele avere](../role-based-access-control/built-in-roles.md#avere-contributor) v oboru pro skupinu prostředků virtuální sítě. |
-
-Alternativou je vytvoření vlastní role řízení přístupu na základě role (RBAC) předem a přiřazení oprávnění uživateli, jak je vysvětleno v [tomto článku](avere-vfxt-non-owner.md). Tato metoda poskytuje pro tyto uživatele významná oprávnění.
+| Správce skupiny prostředků vytvoří vFXT. | V rámci skupiny prostředků musí být vytvořená virtuální síť, řadič clusteru a uzly clusteru. | Role [Správce přístupu uživatelů](../role-based-access-control/built-in-roles.md#user-access-administrator) a [přispěvatelů](../role-based-access-control/built-in-roles.md#contributor) jsou vymezeny na cílovou skupinu prostředků. |
+| Použít existující externí virtuální síť | Řadič clusteru a uzly clusteru se vytvářejí v rámci skupiny prostředků vFXT, ale používají existující virtuální síť v jiné skupině prostředků. | (1) role [Správce přístupu uživatele](../role-based-access-control/built-in-roles.md#user-access-administrator) a [přispěvatelé](../role-based-access-control/built-in-roles.md#contributor) jsou v oboru pro skupinu prostředků vFXT. a (2) [Přispěvatel virtuálních počítačů](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), [správce uživatelských přístupů](../role-based-access-control/built-in-roles.md#user-access-administrator)a role [přispěvatele avere](../role-based-access-control/built-in-roles.md#avere-contributor) v oboru pro skupinu prostředků virtuální sítě. |
+| Vlastní role pro tvůrci clusteru | Neexistují žádná omezení umístění prostředků. Tato metoda poskytuje nevlastníky významná oprávnění. | Vlastník předplatného vytvoří vlastní roli RBAC, jak je vysvětleno v [tomto článku](avere-vfxt-non-owner.md). |
 
 ## <a name="quota-for-the-vfxt-cluster"></a>Kvóta pro cluster vFXT
 
-Musíte mít dostatečnou kvótu pro následující součásti Azure. V případě potřeby [vyžádejte zvýšení kvóty](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
+Ověřte, zda máte dostatečnou kvótu pro následující součásti Azure. V případě potřeby [vyžádejte zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
 > [!NOTE]
-> Zde uvedené virtuální počítače a komponenty SSD jsou pro samotný cluster vFXT. Pro virtuální počítače a jednotky SSD, které máte v úmyslu použít pro výpočetní farmu, budete potřebovat dodatečnou kvótu.  Ujistěte se, že je povolená kvóta pro oblast, ve které chcete pracovní postup spustit.
+> Zde uvedené virtuální počítače a komponenty SSD jsou pro samotný cluster vFXT. Pamatujte, že budete potřebovat kvótu pro virtuální počítače a SSD, které použijete pro výpočetní farmu.
+>
+> Ujistěte se, že je povolená kvóta pro oblast, ve které chcete pracovní postup spustit.
 
 |Komponenta Azure|Kvóta|
 |----------|-----------|
-|Virtuální počítače|3 nebo více E32s_v3|
+|Virtuální počítače|3 nebo více E32s_v3 (jeden na uzel clusteru) |
 |Úložiště SSD úrovně Premium|200 GB místa na operační systém a 1 až 4 TB místa v mezipaměti na uzel |
 |Účet úložiště (volitelné) |v2|
 |Back-endové úložiště dat (volitelné) |Jeden nový LRS kontejner objektů BLOB |
+<!-- this table also appears in the overview - update it there if updating here -->
 
 ## <a name="accept-software-terms"></a>Přijmout softwarové podmínky
 
-> [!NOTE]
-> Tento krok není nutný, pokud vlastník předplatného vytvoří cluster avere vFXT.
+> [!TIP]
+> Tento krok přeskočte, pokud vlastník předplatného vytvoří cluster avere vFXT.
 
-Během vytváření clusteru musíte přijmout podmínky služby pro software avere vFXT. Pokud nejste vlastníkem předplatného, měli by mít vlastník předplatného podmínky k přijetí podmínek předem. Tento krok je potřeba provést jenom jednou pro každé předplatné.
+Během vytváření clusteru musíte přijmout podmínky služby pro software avere vFXT. Pokud nejste vlastníkem předplatného, měli by mít vlastník předplatného podmínky k přijetí podmínek předem.
+
+Tento krok je potřeba provést jenom jednou pro každé předplatné.
 
 Chcete-li přijmout podmínky pro software předem:
 
@@ -68,7 +72,7 @@ Chcete-li přijmout podmínky pro software předem:
 
    ```azurecli
     az login
-    az account set --subscription abc123de-f456-abc7-89de-f01234567890
+    az account set --subscription <subscription ID>
    ```
 
 1. Vydejte tento příkaz, aby přijímal podmínky služby a povolil programový přístup k imagi softwaru avere vFXT for Azure:
@@ -81,14 +85,12 @@ Chcete-li přijmout podmínky pro software předem:
 
 [Koncový bod služby](../virtual-network/virtual-network-service-endpoints-overview.md) udržuje místní provoz Azure Blob namísto směrování mimo virtuální síť. Doporučuje se pro všechny avere vFXT pro clustery Azure, které využívají Azure Blob pro úložiště dat back-endu.
 
-Pokud poskytujete existující virtuální síť a vytvoříte nový kontejner Azure Blob pro úložiště back-endu v rámci vytváření clusteru, musíte mít v síti koncový bod služby pro úložiště Microsoft. Tento koncový bod musí existovat před vytvořením clusteru, nebo se vytvoření nezdaří.
-
-Koncový bod služby úložiště se doporučuje pro všechny avere vFXT pro clustery Azure, které používají úložiště objektů BLOB v Azure, a to i v případě, že úložiště přidáte později.
+Pokud při vytváření clusteru vytvoříte novou virtuální síť, koncový bod se vytvoří automaticky. Pokud zadáte existující virtuální síť, musí mít koncový bod služby Microsoft Storage, pokud chcete během vytváření clusteru vytvořit nový kontejner úložiště objektů BLOB.<!-- if there is no endpoint in that situation, the cluster creation will fail -->
 
 > [!TIP]
 >
 >* Pokud vytváříte novou virtuální síť jako součást vytváření clusteru, tento krok přeskočte.
->* Tento krok je nepovinný, pokud při vytváření clusteru nevytváříte úložiště objektů BLOB. V takovém případě můžete koncový bod služby vytvořit později, pokud se rozhodnete použít Azure Blob.
+>* Koncový bod je nepovinný, pokud při vytváření clusteru nevytváříte úložiště objektů BLOB. V takovém případě můžete koncový bod služby vytvořit později, pokud se rozhodnete použít Azure Blob.
 
 Vytvořte koncový bod služby úložiště z Azure Portal.
 
@@ -104,4 +106,4 @@ Vytvořte koncový bod služby úložiště z Azure Portal.
 
 ## <a name="next-step-create-the-vfxt-cluster"></a>Další krok: Vytvoření clusteru vFXT
 
-Po dokončení těchto požadavků můžete přejít k vytvoření samotného clusteru. Pokyny najdete [v tématu Nasazení clusteru vFXT](avere-vfxt-deploy.md) .
+Po dokončení těchto požadavků můžete cluster vytvořit. Pokyny najdete [v tématu Nasazení clusteru vFXT](avere-vfxt-deploy.md) .

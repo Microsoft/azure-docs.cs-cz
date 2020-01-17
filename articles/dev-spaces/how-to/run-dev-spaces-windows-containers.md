@@ -1,20 +1,20 @@
 ---
 title: Interakce s kontejnery Windows
 services: azure-dev-spaces
-ms.date: 07/25/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
 description: Naučte se spouštět Azure Dev Spaces v existujícím clusteru s kontejnery Windows.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, kontejnery Windows
-ms.openlocfilehash: 855b877653d4cf60c8165af3094fe0e68ca5e6dd
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 886f71dcaaca6a636b385ef6b101f0a893ff7035
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867291"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156994"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Interakce s kontejnery Windows pomocí Azure Dev Spaces
 
-Azure Dev Spaces můžete povolit pro nové i existující obory názvů Kubernetes. Azure Dev Spaces spustí služby a instrumentují služby, které běží na kontejnerech Linux. Tyto služby mohou také interagovat s aplikacemi, které běží na kontejnerech Windows ve stejném oboru názvů. V tomto článku se dozvíte, jak používat vývojové prostory ke spouštění služeb v oboru názvů s existujícími kontejnery Windows.
+Azure Dev Spaces můžete povolit pro nové i existující obory názvů Kubernetes. Azure Dev Spaces spustí služby a instrumentují služby, které běží na kontejnerech Linux. Tyto služby mohou také interagovat s aplikacemi, které běží na kontejnerech Windows ve stejném oboru názvů. V tomto článku se dozvíte, jak používat vývojové prostory ke spouštění služeb v oboru názvů s existujícími kontejnery Windows. V tuto chvíli nemůžete ladit nebo připojovat kontejnery Windows pomocí Azure Dev Spaces.
 
 ## <a name="set-up-your-cluster"></a>Nastavení clusteru
 
@@ -36,8 +36,9 @@ Následující příklad výstupu ukazuje cluster s uzlem Windows i Linux. Než 
 
 ```console
 NAME                                STATUS   ROLES   AGE    VERSION
-aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
-aksnpwin987654                      Ready    agent   108s   v1.14.1
+aks-nodepool1-12345678-vmss000000   Ready    agent   13m    v1.14.8
+aks-nodepool1-12345678-vmss000001   Ready    agent   13m    v1.14.8
+aksnpwin000000                      Ready    agent   108s   v1.14.8
 ```
 
 Použijte k uzlům Windows [chuti][using-taints] . Chuti v uzlech Windows brání vývojovým prostorům v Naplánování spuštění kontejnerů Linux na uzlech systému Windows. Následující příkaz příkazu příklad aplikuje na *aksnpwin987654* uzel Windows z předchozího příkladu hodnotu chuti.
@@ -60,20 +61,12 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/existingWindowsBackend/mywebapi-windows
 ```
 
-Ukázková aplikace používá [Helm 2][helm-installed] ke spuštění služby Windows v clusteru. Nainstalujte do clusteru Helm a udělte mu správná oprávnění:
-
-```console
-helm init --wait
-kubectl create serviceaccount --namespace kube-system tiller
-kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
-kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
-``` 
-
-Přejděte do adresáře `charts` a spusťte službu systému Windows:
+Ukázková aplikace používá [Helm][helm-installed] ke spuštění služby systému Windows ve vašem clusteru. Přejděte do adresáře `charts` a pomocí Helm spusťte službu systému Windows:
 
 ```console
 cd charts/
-helm install . --namespace dev
+kubectl create ns dev
+helm install windows-service . --namespace dev
 ```
 
 Výše uvedený příkaz používá Helm ke spuštění služby Windows v oboru názvů pro *vývoj* . Pokud nemáte obor názvů s názvem *dev*, vytvoří se.
@@ -122,16 +115,15 @@ spec:
 Použijte `helm list` k vypsání nasazení pro vaši službu systému Windows:
 
 ```cmd
-$ helm list
-NAME            REVISION    UPDATED                     STATUS      CHART           APP VERSION NAMESPACE
-gilded-jackal   1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
+$ helm list --namespace dev
+NAME              REVISION  UPDATED                     STATUS      CHART           APP VERSION NAMESPACE
+windows-service 1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
 ```
 
-V tomto příkladu je název vašeho nasazení *Gilded-Jackal*. Aktualizujte službu Windows pomocí nové konfigurace pomocí `helm upgrade`:
+V tomto příkladu je název vašeho nasazení *služba Windows-Service*. Aktualizujte službu Windows pomocí nové konfigurace pomocí `helm upgrade`:
 
 ```cmd
-$ helm upgrade gilded-jackal . --namespace dev
-Release "gilded-jackal" has been upgraded.
+helm upgrade windows-service . --namespace dev
 ```
 
 Vzhledem k tomu, že jste `deployment.yaml`aktualizovali, nebudete chtít vyvíjet služby.
@@ -182,7 +174,7 @@ Přečtěte si, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace n
 
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
+[helm-installed]: https://helm.sh/docs/intro/install/
 [sample-application]: https://github.com/Azure/dev-spaces/tree/master/samples/existingWindowsBackend
 [sample-application-toleration-example]: https://github.com/Azure/dev-spaces/blob/master/samples/existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml#L24-L27
 [team-development-qs]: ../quickstart-team-development.md

@@ -3,12 +3,12 @@ title: Umístění prostředku šablony
 description: Popisuje, jak nastavit umístění prostředků v šabloně Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: f8b4897bfa4e618059998650ae411ebb0fb59921
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 24d278df8f71fecfaec4f0fa3a84172bf1db942b
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484308"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122402"
 ---
 # <a name="set-resource-location-in-resource-manager-template"></a>Nastavení umístění prostředku v šabloně Správce prostředků
 
@@ -74,9 +74,9 @@ Následující příklad ukazuje účet úložiště, který je nasazený do um�
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2018-07-01",
       "name": "[variables('storageAccountName')]",
       "location": "[parameters('location')]",
-      "apiVersion": "2018-07-01",
       "sku": {
         "name": "[parameters('storageAccountType')]"
       },

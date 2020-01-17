@@ -3,14 +3,14 @@ title: Spuštění Azure Automation Runbooku pomocí Webhooku
 description: Webhook, který umožňuje klientovi spustit Runbook v Azure Automation z volání HTTP.  Tento článek popisuje, jak vytvořit Webhook a jak ho zavolat, aby se spustil Runbook.
 services: automation
 ms.subservice: process-automation
-ms.date: 03/19/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: fbf3a48d1e7cb3dd80b6c418d7c916184756b6fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f86193e818a91132f9bbca447acadd7e81747522
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418976"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155821"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Spuštění Azure Automation Runbooku pomocí Webhooku
 
@@ -126,7 +126,7 @@ Klient nemůže určit, kdy má být úloha sady Runbook dokončena nebo její s
 
 ## <a name="renew-webhook"></a>Obnovení Webhooku
 
-Při vytvoření Webhooku má doba platnosti jeden rok. Po uplynutí této doby bude Webhook automaticky vypršet. Po vypršení platnosti Webhooku se nedá znovu aktivovat. musí se odebrat a znovu vytvořit. Pokud Webhook nedorazil na svůj čas vypršení platnosti, dá se rozšířit.
+Při vytvoření Webhooku má doba platnosti deset let. Po uplynutí tohoto časového období vyprší platnost Webhooku automaticky. Po vypršení platnosti Webhooku se nedá znovu aktivovat. musí se odebrat a znovu vytvořit. Pokud Webhook nedorazil na svůj čas vypršení platnosti, dá se rozšířit.
 
 Chcete-li Webhook zvětšit, přejděte na sadu Runbook, která obsahuje Webhook. V části **prostředky**vyberte **Webhooky** . Klikněte na Webhook, který chcete zvětšit. Tato akce otevře stránku **Webhooku** .  Vyberte nové datum a čas vypršení platnosti a klikněte na **Uložit**.
 

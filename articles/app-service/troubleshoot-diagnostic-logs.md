@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 54435dd21fccdd43f17d13674b324b989a00f7a1
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 777fa7caa80371592f93ee6f7458a7669fe6698f
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684257"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121354"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky pro aplikace v Azure App Service
 ## <a name="overview"></a>Přehled
@@ -27,7 +27,7 @@ Tento článek používá [Azure Portal](https://portal.azure.com) a Azure CLI p
 |-|-|-|-|
 | Protokolování aplikací | Windows, Linux | App Service objekty blob systému souborů nebo Azure Storage | Protokoluje zprávy vygenerované kódem vaší aplikace. Zprávy mohou být generovány webovým rozhraním, které si zvolíte, nebo z kódu vaší aplikace přímo pomocí standardního vzoru protokolování vašeho jazyka. Každé zprávě je přiřazena jedna z následujících kategorií: **kritická**, **Chyba**, **Upozornění**, **informace**, **ladění**a **trasování**. Pokud povolíte protokolování aplikací, můžete vybrat, jak chcete, aby protokolování bylo, nastavením úrovně závažnosti.|
 | Protokolování webového serveru| Windows | App Service nebo objekty blob Azure Storage systému souborů| Nezpracovaná data požadavku HTTP ve [formátu W3C Extended](/windows/desktop/Http/w3c-logging). Každá zpráva protokolu obsahuje data, jako je například metoda HTTP, identifikátor URI prostředku, IP adresa klienta, port klienta, uživatelský agent, kód odpovědi atd. |
-| Podrobné protokolování chyb | Windows | App Service systému souborů | Kopie chybových stránek *. htm* , které byly odeslány do prohlížeče klienta. Z bezpečnostních důvodů by podrobné chybové stránky neměly být odesílány klientům v produkčním prostředí, ale App Service mohou tuto chybovou stránku uložit pokaždé, když dojde k chybě aplikace, která má kód HTTP 400 nebo vyšší. Stránka může obsahovat informace, které vám pomohou určit, proč Server vrací kód chyby. |
+| Podrobné chybové zprávy| Windows | App Service systému souborů | Kopie chybových stránek *. htm* , které byly odeslány do prohlížeče klienta. Z bezpečnostních důvodů by podrobné chybové stránky neměly být odesílány klientům v produkčním prostředí, ale App Service mohou tuto chybovou stránku uložit pokaždé, když dojde k chybě aplikace, která má kód HTTP 400 nebo vyšší. Stránka může obsahovat informace, které vám pomohou určit, proč Server vrací kód chyby. |
 | Trasování chybných požadavků | Windows | App Service systému souborů | Podrobné informace o trasování o neúspěšných žádostech, včetně trasování komponent služby IIS použitých ke zpracování žádosti a času provedeného v každé součásti. To je užitečné, pokud chcete zlepšit výkon webu nebo izolovat konkrétní chybu protokolu HTTP. Jedna složka je vygenerována pro každou neúspěšnou žádost, která obsahuje soubor protokolu XML, a šablonu stylů XSL pro zobrazení souboru protokolu s. |
 | Protokolování nasazení | Windows, Linux | App Service systému souborů | Protokoluje se při publikování obsahu do aplikace. Protokolování nasazení probíhá automaticky a není k dispozici žádné konfigurovatelné nastavení pro protokolování nasazení. Pomůže vám určit, proč nasazení selhalo. Pokud například použijete [vlastní skript nasazení](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script), můžete pomocí protokolování nasazení zjistit, proč se skript nedaří. |
 
@@ -62,8 +62,8 @@ Vyberte **úroveň**nebo úroveň podrobností, které se mají protokolovat. V 
 |**Disabled** (Zakázáno) | Žádné |
 |**Chyba** | Chyba, kritická |
 |**Upozornění** | Upozornění, chyba, kritická|
-|**Informace** | Informace, varování, chyba, kritické|
-|**Podrobné** | Trasování, ladění, informace, varování, chyba, kritická (všechny kategorie) |
+|**Informace o** | Informace, varování, chyba, kritické|
+|**Verbose** | Trasování, ladění, informace, varování, chyba, kritická (všechny kategorie) |
 
 Po dokončení vyberte **Uložit**.
 

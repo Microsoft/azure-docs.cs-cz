@@ -3,12 +3,12 @@ title: Režimy nasazení
 description: Popisuje, jak určit, jestli se má použít kompletní nebo přírůstkový režim nasazení s Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 12/23/2019
-ms.openlocfilehash: f5a6f6416240ce512167e779c086d2665771c3f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dc5446c56c92b61016563995ebc4c884d48e2419
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484750"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152387"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Režimy nasazení Azure Resource Manager
 
@@ -26,16 +26,16 @@ Použití kompletního režimu s [kopírováním smyček](create-multiple-instan
 
 Pokud nasadíte do [více než jedné skupiny prostředků v šabloně](cross-resource-group-deployment.md), prostředky ve skupině prostředků zadané v rámci operace nasazení mají nárok na odstranění. Prostředky v sekundárních skupinách prostředků se neodstraňují.
 
-Existují určité rozdíly ve způsobu, jakým typy prostředků zpracovávají kompletní odstranění režimu. Nadřazené prostředky se odstraní automaticky, když nejsou v šabloně, která je nasazena v úplném režimu. Některé podřízené prostředky nejsou automaticky odstraněny, pokud nejsou v šabloně. Tyto podřízené prostředky se ale odstraní, pokud se odstraní nadřazený prostředek. 
+Existují určité rozdíly ve způsobu, jakým typy prostředků zpracovávají kompletní odstranění režimu. Nadřazené prostředky se odstraní automaticky, když nejsou v šabloně, která je nasazena v úplném režimu. Některé podřízené prostředky nejsou automaticky odstraněny, pokud nejsou v šabloně. Tyto podřízené prostředky se ale odstraní, pokud se odstraní nadřazený prostředek.
 
-Například pokud vaše skupina prostředků obsahuje zónu DNS (typ prostředku Microsoft. Network/dnsZones) a záznam CNAME (typ prostředku Microsoft. Network/dnsZones/CNAME), zóna DNS je nadřazeným prostředkem pro záznam CNAME. Pokud nasadíte nástroj s úplným režimem a nezadáte do šablony zónu DNS, odstraní se zóna DNS a záznam CNAME. Pokud zahrnete zónu DNS do šablony, ale nezahrnete záznam CNAME, záznam CNAME se neodstraní. 
+Například pokud vaše skupina prostředků obsahuje zónu DNS (typ prostředku Microsoft. Network/dnsZones) a záznam CNAME (typ prostředku Microsoft. Network/dnsZones/CNAME), zóna DNS je nadřazeným prostředkem pro záznam CNAME. Pokud nasadíte nástroj s úplným režimem a nezadáte do šablony zónu DNS, odstraní se zóna DNS a záznam CNAME. Pokud zahrnete zónu DNS do šablony, ale nezahrnete záznam CNAME, záznam CNAME se neodstraní.
 
 Seznam způsobu, jakým se zpracovávají typy prostředků, najdete v tématu [odstranění prostředků Azure pro nasazení v režimu úplného režimu](complete-mode-deletion.md).
 
 Pokud je skupina prostředků [zamčená](../management/lock-resources.md), režim úplného režimu neodstraní prostředky.
 
 > [!NOTE]
-> Pouze šablony na kořenové úrovni podporují režim úplného nasazení. U [propojených nebo vnořených šablon](linked-templates.md)je nutné použít přírůstkový režim. 
+> Pouze šablony na kořenové úrovni podporují režim úplného nasazení. U [propojených nebo vnořených šablon](linked-templates.md)je nutné použít přírůstkový režim.
 >
 > [Nasazení na úrovni předplatného](deploy-to-subscription.md) nepodporují režim úplného přístupu.
 >
@@ -105,9 +105,9 @@ Následující příklad ukazuje propojenou šablonu nastavenou na režim přír
 ```json
 "resources": [
   {
+      "type": "Microsoft.Resources/deployments",
       "apiVersion": "2017-05-10",
       "name": "linkedTemplate",
-      "type": "Microsoft.Resources/deployments",
       "properties": {
           "mode": "Incremental",
           <nested-template-or-external-template>

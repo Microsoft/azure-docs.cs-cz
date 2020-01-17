@@ -1,7 +1,7 @@
 ---
 title: Referenční dokumentace sady pro moderní čtečku
 titleSuffix: Azure Cognitive Services
-description: Moderní čtečka SDK je knihovna JavaScriptu, která umožňuje integrovat moderní čtečku do vaší webové aplikace.
+description: Sada moderní čtečka SDK obsahuje knihovnu JavaScriptu, která umožňuje integrovat moderní čtečku do vaší aplikace.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 47d10f75775c49fda0effe10c32e219b3682866d
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: b20a3e6dd3b32b183bbf34dbefd76f0e4cd56b99
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945285"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156399"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Referenční příručka k sadě pro moderní čtečku SDK
 
-Moderní čtečka SDK je knihovna JavaScriptu, která umožňuje integrovat moderní čtečku do vaší webové aplikace.
+Sada moderní čtečka SDK obsahuje knihovnu JavaScriptu, která umožňuje integrovat moderní čtečku do vaší aplikace.
 
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 
 Sada SDK zpřístupňuje funkce:
 
@@ -36,7 +36,7 @@ Sada SDK zpřístupňuje funkce:
 Spustí moderní čtečku v rámci `iframe` ve vaší webové aplikaci.
 
 ```typescript
-launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<HTMLDivElement>;
+launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<LaunchResponse>;
 ```
 
 ### <a name="parameters"></a>Parametry
@@ -50,7 +50,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="returns"></a>Vrací
 
-Vrátí `Promise<HTMLDivElement>`, který se vyřeší, když se nahraje moderní čtečka. `Promise` se přeloží na `div` element, jehož jediným podřízeným prvkem je prvek `iframe`, který obsahuje stránku s atraktivním čtečkou.
+Vrátí `Promise<LaunchResponse>`, který se vyřeší, když se nahraje moderní čtečka. `Promise` se přeloží na objekt [`LaunchResponse`](#launchresponse) .
 
 ### <a name="exceptions"></a>Výjimky
 
@@ -109,6 +109,17 @@ Jeden blok dat, který se předává do obsahu moderního čtecího zařízení.
 }
 ```
 
+### <a name="launchresponse"></a>LaunchResponse
+
+Obsahuje odpověď ze volání `ImmersiveReader.launchAsync`.
+
+```typescript
+{
+    container: HTMLDivElement;    // HTML element which contains the Immersive Reader iframe
+    sessionId: string;            // Globally unique identifier for this session, used for debugging
+}
+```
+
 ### <a name="cookiepolicy-enum"></a>Výčet CookiePolicy
 
 Výčet, který slouží k nastavení zásad pro použití souboru cookie pro moderní čtečku. Viz [Možnosti](#options).
@@ -127,6 +138,7 @@ enum CookiePolicy { Disable, Enable }
 | application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Dokument formátu Microsoft Word. docx.
 
 ### <a name="html-support"></a>Podpora HTML
+
 | HTML | Podporovaný obsah |
 | --------- | ----------- |
 | Styly písma | Tučné, kurzíva, podtržení, kód, přeškrtnutí, horní index, dolní index |
@@ -186,7 +198,7 @@ Obsahuje informace o chybě.
 
 ## <a name="launching-the-immersive-reader"></a>Spuštění moderního čtecího zařízení
 
-Sada SDK poskytuje výchozí styl pro tlačítko pro spuštění moderního čtecího zařízení. Pro povolení tohoto stylu použijte atribut třídy `immersive-reader-button`.
+Sada SDK poskytuje výchozí styl pro tlačítko pro spuštění moderního čtecího zařízení. Pro povolení tohoto stylu použijte atribut třídy `immersive-reader-button`. Další podrobnosti najdete v [tomto článku](./how-to-customize-launch-button.md) .
 
 ```html
 <div class='immersive-reader-button'></div>

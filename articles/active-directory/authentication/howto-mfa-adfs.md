@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1cc696e6351281ec9bd84cc6611d81d9148cda1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 00200436784eca970f736c4a7f2afebd652c9577
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848421"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155209"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Zabezpečení cloudových prostředků s Azure Multi-Factor Authentication a AD FS
 
@@ -44,7 +44,7 @@ K zabezpečení cloudových prostředků nastavte pravidlo deklarace identity ta
 7. Jako typ příchozí deklarace identity vyberte **Odkazy na metody ověřování**.
 8. Vyberte **Předávat všechny hodnoty deklarací identity**.
     ![Průvodce přidáním pravidla deklarace identity transformace](./media/howto-mfa-adfs/configurewizard.png)
-9. Klikněte na **Finish** (Dokončit). Uzavřete konzolu pro správu služby AD FS.
+9. Klikněte na **Dokončit**. Uzavřete konzolu pro správu služby AD FS.
 
 ## <a name="trusted-ips-for-federated-users"></a>Důvěryhodné IP adresy pro federované uživatele
 
@@ -67,7 +67,7 @@ První věc, kterou je potřeba udělat, je konfigurace deklarací identity slu�
 6. Do pole vedle názvu pravidla deklarace identity zadejte název pravidla. Příklad: InsideCorpNet.
 7. V rozevíracím seznamu vedle Typ příchozí deklarace vyberte **Uvnitř podnikové sítě**.
    ![přidávání do deklarace identity podnikové sítě](./media/howto-mfa-adfs/trustedip4.png)
-8. Klikněte na **Finish** (Dokončit).
+8. Klikněte na **Dokončit**.
 9. V pravidlech transformace vystavení klikněte na **Přidat pravidlo**.
 10. V Průvodci přidáním pravidla – deklarace identity transformace vyberte **Odesílat deklarace pomocí vlastního pravidla** v rozevíracím seznamu a klikněte na **Další**.
 11. Do pole pod Název pravidla deklarace napište *Nechat uživatele přihlášené*.
@@ -76,8 +76,8 @@ První věc, kterou je potřeba udělat, je konfigurace deklarací identity slu�
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
     ![Vytvořit vlastní deklaraci identity, aby se uživatelé mohli přihlásili](./media/howto-mfa-adfs/trustedip5.png)
-13. Klikněte na **Finish** (Dokončit).
-14. Klikněte na **Použít**.
+13. Klikněte na **Dokončit**.
+14. Klikněte na tlačítko **Použít**.
 15. Klikněte na tlačítko **OK**.
 16. Zavřete správu služby AD FS.
 
@@ -85,8 +85,8 @@ První věc, kterou je potřeba udělat, je konfigurace deklarací identity slu�
 
 Teď, když máme vytvořené deklarace identity, můžeme nakonfigurovat důvěryhodné IP adresy.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-2. Vyberte **Azure Active Directory** > **podmíněný přístup** > **pojmenované umístění**.
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
+2. Vyberte **Azure Active Directory** > **Security** > **podmíněný přístup** > **pojmenované umístění**.
 3. V okně **podmíněný přístup – pojmenovaná umístění** vyberte **Konfigurovat důvěryhodné IP adresy MFA** .
 
    ![Podmíněný přístup služby Azure AD konfigurace důvěryhodných IP adres MFA](./media/howto-mfa-adfs/trustedip6.png)

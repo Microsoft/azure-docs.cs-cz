@@ -5,18 +5,18 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 11/12/2019
+ms.date: 1/14/2020
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 468a61c83948033905b3727add528520611b8bd4
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 6d51213402f852daee8fe4a6b5dbbd473afda659
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092242"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122453"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Poznámky k verzi Azure SQL Data Warehouse
 
@@ -31,6 +31,13 @@ Ukázkový výstup:
 ![Verze SQL Data Warehouse](./media/release-notes/t47-1-version.png)
 
 Použijte identifikovanou verzi a potvrďte, která verze se použila pro Azure SQL DW.
+
+## <a name="january-2020"></a>Leden 2020
+
+| Vylepšení služby | Podrobnosti |
+| --- | --- |
+|**Metriky Portál pro správu úloh (Preview)**|S vydáním [izolace úloh](/azure/sql-data-warehouse/sql-data-warehouse-workload-isolation) ve verzi Preview tohoto dne v říjnu můžou uživatelé vytvářet vlastní [skupiny úloh](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) , které budou efektivně spravovat systémové prostředky a zajistit, aby se zajistila možnost Business SLA.  V rámci celkových vylepšení [správy úloh](/azure/sql-data-warehouse/sql-data-warehouse-workload-management) pro Azure synapse Analytics jsou nyní k dispozici nové [metriky monitorování správy úloh](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor) .</br> </br> Monitorování vašich úloh teď má větší přehledy s následujícími metrikami: </br> – Procentuální hodnota efektivního prostředku  </br> -Efektivní minimální procento prostředků </br> – Aktivní dotazy skupiny úloh </br> -Přidělení skupiny úloh podle maximálního procenta prostředků </br> – Přidělení skupin úloh podle systémových procent </br> – Časový limit dotazu skupiny úloh </br> – Dotazování skupin úloh ve frontě </br></br> Pomocí těchto metrik určete [kritické body skupiny úloh](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#workload-group-bottleneck) nebo skupiny úloh, které jsou nakonfigurované s [nevyužitou izolací úloh](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#underutilized-workload-isolation).  Tyto metriky se dají použít na webu Azure Portal, který umožňuje rozdělení podle skupiny úloh.  Pomocí filtrování a připnutí oblíbených grafů na řídicí panel získáte rychlý přístup k přehledům.|
+|**Metriky monitorování portálu**| Na portál byly přidány následující metriky pro monitorování celkové aktivity dotazu: </br> – Aktivní dotazy </br> – Dotazy ve frontě </br> </br>Tyto metriky jsou popsané spolu se stávajícími metrikami v [dokumentaci sledování využití prostředků a aktivity dotazů](/azure/sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity).|
 
 ## <a name="october-2019"></a>Říjen 2019
 
@@ -61,9 +68,9 @@ Použijte identifikovanou verzi a potvrďte, která verze se použila pro Azure 
 
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
-|**Materializované zobrazení (Preview)**|Materializované zobrazení uchovává data vrácená z dotazu na definici zobrazení a automaticky je aktualizuje jako změny dat v podkladových tabulkách. Zlepšuje výkon složitých dotazů (obvykle dotazy s spojeními a agregacemi) a nabízí jednoduché operace údržby. Další informace naleznete v tématu: </br> - [vytvořit materializovaná zobrazení jako Select &#40;Transact-SQL&#41; ](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)</br> - [změnit materializované zobrazení &#40;Transact-SQL&#41; ](/sql/t-sql/statements/alter-materialized-view-transact-sql?view=azure-sqldw-latest) </br> - [příkazy t-SQL podporované v Azure SQL Data Warehouse](/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements)|
+|**Materializované zobrazení (Preview)**|Materializované zobrazení uchovává data vrácená z dotazu na definici zobrazení a automaticky je aktualizuje jako změny dat v podkladových tabulkách. Zlepšuje výkon složitých dotazů (obvykle dotazy s spojeními a agregacemi) a nabízí jednoduché operace údržby. Další informace: </br> - [vytvořit materializovaná zobrazení jako Select &#40;Transact-SQL&#41; ](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)</br> - [změnit materializované zobrazení &#40;Transact-SQL&#41; ](/sql/t-sql/statements/alter-materialized-view-transact-sql?view=azure-sqldw-latest) </br> - [příkazy t-SQL podporované v Azure SQL Data Warehouse](/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements)|
 |**Dodatečná podpora T-SQL**|Oblast jazyka T-SQL pro SQL Data Warehouse se rozšířila tak, aby zahrnovala podporu pro: </br> - [v časovém pásmu (Transact-SQL)](/sql/t-sql/queries/at-time-zone-transact-sql?view=azure-sqldw-latest)</br> - [STRING_AGG (Transact-SQL)](/sql/t-sql/functions/string-agg-transact-sql?view=azure-sqldw-latest)|
-|**Ukládání sady výsledků do mezipaměti (Preview)**|Přidaly se příkazy DBCC pro správu dřív oznámené mezipaměti sady výsledků. Další informace naleznete v tématu: </br> - [DBCC DROPRESULTSETCACHE &#40;Transact-SQL&#41; ](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest)  </br> - [DBCC SHOWRESULTCACHESPACEUSED &#40;Transact-SQL&#41; ](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?view=azure-sqldw-latest) </br></br> V [tabulce sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) se také zobrazí nový sloupec result_set_cache, který ukazuje, kdy spuštěný dotaz použil mezipaměť sady výsledků.|
+|**Ukládání sady výsledků do mezipaměti (Preview)**|Přidaly se příkazy DBCC pro správu dřív oznámené mezipaměti sady výsledků. Další informace: </br> - [DBCC DROPRESULTSETCACHE &#40;Transact-SQL&#41; ](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest)  </br> - [DBCC SHOWRESULTCACHESPACEUSED &#40;Transact-SQL&#41; ](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?view=azure-sqldw-latest) </br></br> V [tabulce sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) se také zobrazí nový sloupec result_set_cache, který ukazuje, kdy spuštěný dotaz použil mezipaměť sady výsledků.|
 |**Seřazený clusterovaný index columnstore (Preview)**|Nový sloupec, column_store_order_ordinal přidaný do [Sys. index_columns](/sql/relational-databases/system-catalog-views/sys-index-columns-transact-sql?view=azure-sqldw-latest) k identifikaci pořadí sloupců v seřazeném clusterovaných indexech columnstore.|
 
 ## <a name="may-2019"></a>Květen 2019
@@ -74,7 +81,7 @@ Použijte identifikovanou verzi a potvrďte, která verze se použila pro Azure 
 |**Dostupnost úlohy je teď všeobecně dostupná**|Klasifikace správy a důležitost úloh poskytují možnost ovlivnit pořadí spouštění dotazů. Další informace o důležitosti úloh najdete v článcích přehled [klasifikace](sql-data-warehouse-workload-classification.md) a [důležitost](sql-data-warehouse-workload-importance.md) v dokumentaci. Přečtěte si také dokument s [klasifikátorem pro vytváření úloh](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) .<br/><br/>Podívejte se na téma důležitost úloh v akci v následujících videích:<br/> [koncepty správy úloh](https://www.youtube.com/embed/QcCRBAhoXpM) -<br/> [scénáře správy úloh](https://www.youtube.com/embed/_2rLMljOjw8) -|
 |**Dodatečná podpora T-SQL**|Oblast jazyka T-SQL pro SQL Data Warehouse se rozšířila tak, aby zahrnovala podporu pro: </br> - [střih](/sql/t-sql/functions/trim-transact-sql?view=azure-sqldw-latest)|
 |**Funkce JSON**|Obchodní analytiké teď můžou používat známý jazyk T-SQL k dotazování a manipulaci s dokumenty, které se naformátují jako data JSON pomocí následujících nových funkcí JSON v Azure Data Warehouse:</br> - - [JSON](/sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest)</br> - [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_MODIFY](/sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest)</br> - [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest)|
-|**Ukládání sady výsledků do mezipaměti (Preview)**|Ukládání výsledků do mezipaměti umožňuje okamžitou dobu odezvy dotazů při omezení obchodních analytiků a vytváření sestav uživatelů. Další informace naleznete v tématu:</br> - [ALTER DATABASE (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)</br> - [Možnosti ALTER DATABASE set (Transact SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)</br> [mezipaměť sady výsledků - sady výsledků dotazu (Transact-SQL)](/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)</br> [příkaz - set (Transact-SQL)](/sql/t-sql/statements/set-statements-transact-sql)</br> - [sys.databases (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?view=azure-sqldw-latest)|
+|**Ukládání sady výsledků do mezipaměti (Preview)**|Ukládání výsledků do mezipaměti umožňuje okamžitou dobu odezvy dotazů při omezení obchodních analytiků a vytváření sestav uživatelů. Další informace:</br> - [ALTER DATABASE (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)</br> - [Možnosti ALTER DATABASE set (Transact SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)</br> [mezipaměť sady výsledků - sady výsledků dotazu (Transact-SQL)](/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)</br> [příkaz - set (Transact-SQL)](/sql/t-sql/statements/set-statements-transact-sql)</br> - [sys.databases (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?view=azure-sqldw-latest)|
 |**Seřazený clusterovaný index columnstore (Preview)**|Columnstore je zcela zásadní pro ukládání a efektivní dotazování velkých objemů dat. U každé tabulky rozdělí příchozí data do skupin řádků a pro každý sloupec skupiny řádků se vytvoří segment na disku.  Uspořádané clusterované indexy columnstore dále optimalizují spouštění dotazů tím, že umožňují efektivní odstraňování segmentů.   Další informace najdete v tématech:</br> -  [Create Table (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest)</br> -  [vytvořit index COLUMNSTORE (Transact-SQL)](/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest).|
 
 ## <a name="march-2019"></a>Březen 2019

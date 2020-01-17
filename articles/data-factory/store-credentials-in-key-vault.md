@@ -8,14 +8,14 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 01/16/2020
 ms.author: jingwang
-ms.openlocfilehash: 32c4b9b8e6268aa648e3414b337e8b2b908589e8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1418205843fefc76db4e73832736b308d0cc79a3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928718"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122606"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Ukládat přihlašovací údaje v Azure Key Vault
 
@@ -23,7 +23,7 @@ Přihlašovací údaje pro úložiště dat a výpočetní služby můžete ukl�
 
 V současné době všechny typy aktivit kromě vlastní aktivity podporují tuto funkci. Pro konfiguraci konektoru se konkrétně podívejte na podrobnosti v části Vlastnosti propojené služby v [jednotlivých tématech](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tato funkce závisí na spravované identitě objektu pro vytváření dat. Naučte se, jak to funguje ze [spravované identity pro datovou továrnu](data-factory-service-identity.md) , a ujistěte se, že je k datové továrně přidružená jedna.
 
@@ -31,8 +31,8 @@ Tato funkce závisí na spravované identitě objektu pro vytváření dat. Nau�
 
 Pokud chcete odkazovat na přihlašovací údaje uložené v Azure Key Vault, musíte:
 
-1. **Načtěte spravovanou identitu Data Factory** zkopírováním hodnoty "ID aplikace spravované identity", které se vygenerovalo společně s vaší továrnou. Pokud používáte uživatelské rozhraní pro vytváření ADF, zobrazí se ID aplikace spravované identity v okně pro vytvoření propojené služby Azure Key Vault. můžete ho také načíst z Azure Portal, přečtěte si téma [načtení spravované identity Data Factory](data-factory-service-identity.md#retrieve-managed-identity).
-2. **Udělte spravované identitě přístup k vašemu Azure Key Vault.** V trezoru klíčů – zásady > přístupu – > Přidat nové > Vyhledat toto ID aplikace spravované identity, aby bylo uděleno oprávnění **Get** v rozevíracím seznamu oprávnění pro přístup v tajnosti. Umožňuje této určené továrně přístup k tajným klíčům v trezoru klíčů.
+1. **Načtěte spravovanou identitu Data Factory** zkopírováním hodnoty "ID objektu spravované identity" generovaného společně s vaší továrnou. Pokud použijete uživatelské rozhraní pro vytváření ADF, zobrazí se ID objektu spravované identity v okně pro vytvoření propojené služby Azure Key Vault. můžete ho také načíst z Azure Portal, přečtěte si téma [načtení spravované identity Data Factory](data-factory-service-identity.md#retrieve-managed-identity).
+2. **Udělte spravované identitě přístup k vašemu Azure Key Vault.** V trezoru klíčů – > zásady přístupu – > Přidat nové > můžete tuto spravovanou identitu použít k udělení oprávnění **Get** v rozevíracím seznamu oprávnění pro přístup k tajným klíčovým slovům. Umožňuje této určené továrně přístup k tajným klíčům v trezoru klíčů.
 3. **Vytvořte propojenou službu ukazující na Azure Key Vault.** Přečtěte si téma [Azure Key Vault propojená služba](#azure-key-vault-linked-service).
 4. **Vytvořte propojenou službu úložiště dat, ve které se odkazuje na odpovídající tajný kód uložený v trezoru klíčů.** Přečtěte si [odkaz na tajný kód uložený v trezoru klíčů](#reference-secret-stored-in-key-vault).
 
@@ -76,7 +76,7 @@ Následující vlastnosti jsou podporované při konfiguraci pole v propojené s
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type pole musí být nastavená na: **AzureKeyVaultSecret**. | Ano |
-| secretName | Název tajného klíče v Azure Key Vault. | Ano |
+| SecretName | Název tajného klíče v Azure Key Vault. | Ano |
 | secretVersion | Verze tajného kódu v Azure Key Vault.<br/>Pokud tento parametr nezadáte, vždy používá nejnovější verzi tajného kódu.<br/>Je-li tento parametr zadán, bude se podávat do dané verze.| Ne |
 | store | Odkazuje na Azure Key Vault propojená služba, kterou použijete k uložení přihlašovacích údajů. | Ano |
 

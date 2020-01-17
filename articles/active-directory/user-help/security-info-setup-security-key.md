@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d02ca3a8b5b617edb8ee00ae7d15ea7e94cae80
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 03855b7596f45fcdde0bebe018d2157ad33a617b
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278947"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156076"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Nastavte bezpečnostní klíč jako metodu ověřování.
 
@@ -25,8 +25,21 @@ Klíče zabezpečení můžete použít jako metodu přihlašování s neplatný
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-key.md)]
 
->[!Important]
->Tento obsah je určený pro uživatele. Pokud jste správce, najdete další informace o nastavení a správě vašeho prostředí Azure Active Directory (Azure AD) v [dokumentaci k Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
+>[!Note]
+> Pokud nevidíte možnost bezpečnostní klíč, je možné, že vaše organizace neumožňuje použít tuto možnost k ověření. V takovém případě budete muset zvolit jinou metodu nebo požádat o další pomoc oddělení technické podpory vaší organizace.
+
+## <a name="security-verification-versus-password-reset-authentication"></a>Ověření zabezpečení oproti ověřování hesla pro resetování hesla
+
+Metody bezpečnostních údajů se používají pro ověřování dvou faktorů zabezpečení i pro resetování hesla. Nicméně ne všechny metody lze použít pro obojí.
+
+| Metoda | Použití |
+| ------ | -------- |
+| Ověřovací aplikace | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Textové zprávy | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Telefonní hovory | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Bezpečnostní klíč | Dvojúrovňové ověřování a ověřování nového hesla. |
+| E-mailový účet | Jenom ověřování heslem. Budete muset zvolit jinou metodu pro dvojúrovňové ověřování. |
+| Bezpečnostní otázky | Jenom ověřování heslem. Budete muset zvolit jinou metodu pro dvojúrovňové ověřování. |
 
 ## <a name="what-is-a-security-key"></a>Co je bezpečnostní klíč?
 

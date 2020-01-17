@@ -3,12 +3,12 @@ title: Nasazení prostředků do předplatného
 description: Popisuje postup vytvoření skupiny prostředků v Azure Resource Manager šabloně. Také ukazuje, jak nasadit prostředky v oboru předplatného Azure.
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: d41eb9970ea3578b4d50923758907b03cd081875
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: aed22cab9281f272421a574efebcf346139348d5
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484945"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121875"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Vytvoření skupin prostředků a prostředků na úrovni předplatného
 
@@ -97,62 +97,62 @@ Následující šablona vytvoří prázdnou skupinu prostředků.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.1",
-    "parameters": {
-        "rgName": {
-            "type": "string"
-        },
-        "rgLocation": {
-            "type": "string"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.1",
+  "parameters": {
+    "rgName": {
+      "type": "string"
     },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Resources/resourceGroups",
-            "apiVersion": "2018-05-01",
-            "location": "[parameters('rgLocation')]",
-            "name": "[parameters('rgName')]",
-            "properties": {}
-        }
-    ],
-    "outputs": {}
+    "rgLocation": {
+      "type": "string"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Resources/resourceGroups",
+      "apiVersion": "2018-05-01",
+      "name": "[parameters('rgName')]",
+      "location": "[parameters('rgLocation')]",
+      "properties": {}
+    }
+  ],
+  "outputs": {}
 }
 ```
 
-Pomocí [elementu Copy](create-multiple-instances.md) se skupinami prostředků vytvořte více než jednu skupinu prostředků. 
+Pomocí [elementu Copy](create-multiple-instances.md) se skupinami prostředků vytvořte více než jednu skupinu prostředků.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.1",
-    "parameters": {
-        "rgNamePrefix": {
-            "type": "string"
-        },
-        "rgLocation": {
-            "type": "string"
-        },
-        "instanceCount": {
-            "type": "int"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.1",
+  "parameters": {
+    "rgNamePrefix": {
+      "type": "string"
     },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Resources/resourceGroups",
-            "apiVersion": "2018-05-01",
-            "location": "[parameters('rgLocation')]",
-            "name": "[concat(parameters('rgNamePrefix'), copyIndex())]",
-            "copy": {
-                "name": "rgCopy",
-                "count": "[parameters('instanceCount')]"
-            },
-            "properties": {}
-        }
-    ],
-    "outputs": {}
+    "rgLocation": {
+      "type": "string"
+    },
+    "instanceCount": {
+      "type": "int"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Resources/resourceGroups",
+      "apiVersion": "2018-05-01",
+      "location": "[parameters('rgLocation')]",
+      "name": "[concat(parameters('rgNamePrefix'), copyIndex())]",
+      "copy": {
+        "name": "rgCopy",
+        "count": "[parameters('instanceCount')]"
+      },
+      "properties": {}
+    }
+  ],
+  "outputs": {}
 }
 ```
 
@@ -166,64 +166,64 @@ Následující příklad vytvoří skupinu prostředků a nasadí účet úloži
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.1",
-    "parameters": {
-        "rgName": {
-            "type": "string"
-        },
-        "rgLocation": {
-            "type": "string"
-        },
-        "storagePrefix": {
-            "type": "string",
-            "maxLength": 11
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.1",
+  "parameters": {
+    "rgName": {
+      "type": "string"
     },
-    "variables": {
-        "storageName": "[concat(parameters('storagePrefix'), uniqueString(subscription().id, parameters('rgName')))]"
+    "rgLocation": {
+      "type": "string"
     },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/resourceGroups",
-            "apiVersion": "2018-05-01",
-            "location": "[parameters('rgLocation')]",
-            "name": "[parameters('rgName')]",
-            "properties": {}
-        },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2018-05-01",
-            "name": "storageDeployment",
-            "resourceGroup": "[parameters('rgName')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Resources/resourceGroups/', parameters('rgName'))]"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "parameters": {},
-                    "variables": {},
-                    "resources": [
-                        {
-                            "type": "Microsoft.Storage/storageAccounts",
-                            "apiVersion": "2017-10-01",
-                            "name": "[variables('storageName')]",
-                            "location": "[parameters('rgLocation')]",
-                            "kind": "StorageV2",
-                            "sku": {
-                                "name": "Standard_LRS"
-                            }
-                        }
-                    ],
-                    "outputs": {}
-                }
+    "storagePrefix": {
+      "type": "string",
+      "maxLength": 11
+    }
+  },
+  "variables": {
+    "storageName": "[concat(parameters('storagePrefix'), uniqueString(subscription().id, parameters('rgName')))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/resourceGroups",
+      "apiVersion": "2018-05-01",
+      "location": "[parameters('rgLocation')]",
+      "name": "[parameters('rgName')]",
+      "properties": {}
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-05-01",
+      "name": "storageDeployment",
+      "resourceGroup": "[parameters('rgName')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/resourceGroups/', parameters('rgName'))]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {},
+          "variables": {},
+          "resources": [
+            {
+              "type": "Microsoft.Storage/storageAccounts",
+              "apiVersion": "2017-10-01",
+              "name": "[variables('storageName')]",
+              "location": "[parameters('rgLocation')]",
+              "sku": {
+                "name": "Standard_LRS"
+              }
+              "kind": "StorageV2",
             }
+          ],
+          "outputs": {}
         }
-    ],
-    "outputs": {}
+      }
+    }
+  ],
+  "outputs": {}
 }
 ```
 
@@ -235,33 +235,33 @@ Následující příklad přiřadí existující definici zásady k předplatné
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "policyDefinitionID": {
-            "type": "string"
-        },
-        "policyName": {
-            "type": "string"
-        },
-        "policyParameters": {
-            "type": "object",
-            "defaultValue": {}
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "policyDefinitionID": {
+      "type": "string"
     },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Authorization/policyAssignments",
-            "name": "[parameters('policyName')]",
-            "apiVersion": "2018-03-01",
-            "properties": {
-                "scope": "[subscription().id]",
-                "policyDefinitionId": "[parameters('policyDefinitionID')]",
-                "parameters": "[parameters('policyParameters')]"
-            }
-        }
-    ]
+    "policyName": {
+      "type": "string"
+    },
+    "policyParameters": {
+      "type": "object",
+      "defaultValue": {}
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyAssignments",
+      "apiVersion": "2018-03-01",
+      "name": "[parameters('policyName')]",
+      "properties": {
+        "scope": "[subscription().id]",
+        "policyDefinitionId": "[parameters('policyDefinitionID')]",
+        "parameters": "[parameters('policyParameters')]"
+      }
+    }
+  ]
 }
 ```
 
@@ -301,42 +301,42 @@ Můžete [definovat](../../governance/policy/concepts/definition-structure.md) a
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {},
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Authorization/policyDefinitions",
-            "name": "locationpolicy",
-            "apiVersion": "2018-05-01",
-            "properties": {
-                "policyType": "Custom",
-                "parameters": {},
-                "policyRule": {
-                    "if": {
-                        "field": "location",
-                        "equals": "northeurope"
-                    },
-                    "then": {
-                        "effect": "deny"
-                    }
-                }
-            }
-        },
-        {
-            "type": "Microsoft.Authorization/policyAssignments",
-            "name": "location-lock",
-            "apiVersion": "2018-05-01",
-            "dependsOn": [
-                "locationpolicy"
-            ],
-            "properties": {
-                "scope": "[subscription().id]",
-                "policyDefinitionId": "[resourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
-            }
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyDefinitions",
+      "apiVersion": "2018-05-01",
+      "name": "locationpolicy",
+      "properties": {
+        "policyType": "Custom",
+        "parameters": {},
+        "policyRule": {
+          "if": {
+            "field": "location",
+            "equals": "northeurope"
+          },
+          "then": {
+            "effect": "deny"
+          }
         }
-    ]
+      }
+    },
+    {
+      "type": "Microsoft.Authorization/policyAssignments",
+      "apiVersion": "2018-05-01",
+      "name": "location-lock",
+      "dependsOn": [
+        "locationpolicy"
+      ],
+      "properties": {
+        "scope": "[subscription().id]",
+        "policyDefinitionId": "[resourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
+      }
+    }
+  ]
 }
 ```
 
@@ -363,5 +363,5 @@ New-AzDeployment `
 * Další informace o přiřazování rolí najdete v tématu [Správa přístupu k prostředkům Azure pomocí šablon RBAC a Azure Resource Manager](../../role-based-access-control/role-assignments-template.md).
 * Příklad nasazení nastavení pracovního prostoru pro Azure Security Center najdete v tématu [deployASCwithWorkspaceSettings. JSON](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
 * Ukázkové šablony najdete na [GitHubu](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments).
-* Další informace o vytváření šablon Azure Resource Manager najdete v tématu [vytváření šablon](template-syntax.md). 
+* Další informace o vytváření šablon Azure Resource Manager najdete v tématu [vytváření šablon](template-syntax.md).
 * Seznam dostupných funkcí v šabloně najdete v tématu [funkce šablon](template-functions.md).

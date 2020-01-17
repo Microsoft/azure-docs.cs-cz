@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 659d00c3fc7a766d800de6f1f12f410003284360
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8fab85b6f1d876cc65ceb44acd60b53c379e59e8
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979275"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121943"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
 Azure umožňuje spouštět aplikace a virtuální počítače na sdílené fyzické infrastruktuře. Jednou z primárních motivů pro spouštění aplikací v cloudovém prostředí je schopnost distribuovat náklady na sdílené prostředky mezi více zákazníků. Tento postup víceklientské architektury vylepšuje efektivitu díky multiplexování prostředků mezi různými zákazníky s nízkými náklady. Bohužel taky představuje riziko sdílení fyzických serverů a dalších prostředků infrastruktury ke spouštění citlivých aplikací a virtuálních počítačů, které můžou patřit k libovolnému a potenciálně škodlivému uživateli.
@@ -179,7 +179,7 @@ Komunikace je povolená z sítě VLAN FC k hlavní síti VLAN, ale nedá se inic
 ### <a name="logical-isolation-between-compute-and-storage"></a>Logická izolace mezi výpočetními a úložnými službami
 V rámci svého základního návrhu Microsoft Azure odděluje výpočetní modul založený na virtuálních počítačích ze služby Storage. Toto oddělení umožňuje nezávisle škálovat výpočetní a úložné úložiště, což usnadňuje zajištění víceklientské architektury a izolace.
 
-Proto Azure Storage spouští na samostatném hardwaru bez připojení k síti Azure COMPUTE s výjimkou logických. [To](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf) znamená, že při vytvoření virtuálního disku není místo na disku přiděleno pro celou kapacitu. Místo toho se vytvoří tabulka, která mapuje adresy na virtuálním disku na oblasti na fyzickém disku a tato tabulka je zpočátku prázdná. **Když zákazník poprvé zapíše data na virtuálním disku, přidělí se místo na fyzickém disku a v tabulce se umístí ukazatel na něj.**
+Proto Azure Storage spouští na samostatném hardwaru bez připojení k síti Azure COMPUTE s výjimkou logických. To znamená, že při vytvoření virtuálního disku není místo na disku přiděleno pro celou kapacitu. Místo toho se vytvoří tabulka, která mapuje adresy na virtuálním disku na oblasti na fyzickém disku a tato tabulka je zpočátku prázdná. **Když zákazník poprvé zapíše data na virtuálním disku, přidělí se místo na fyzickém disku a v tabulce se umístí ukazatel na něj.**
 ### <a name="isolation-using-storage-access-control"></a>Izolace pomocí řízení přístupu k úložišti
 **Access Control v Azure Storage** má jednoduchý model řízení přístupu. Každé předplatné Azure může vytvořit jeden nebo více účtů úložiště. Každý účet úložiště má jeden tajný klíč, který se používá k řízení přístupu ke všem datům v daném účtu úložiště.
 
@@ -320,14 +320,6 @@ Nasazení Azure má několik vrstev izolace sítě. Následující diagram znáz
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Možnosti izolace sítě pro počítače ve virtuálních sítích Windows Azure](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)
+- Seznamte [se s možnostmi izolace sítě pro počítače ve virtuálních sítích Windows Azure](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/). To zahrnuje Klasický scénář front-endu a back-endu, ve kterém můžou počítače v určité back-mailové síti nebo v podsítích umožňovat konkrétním koncovým bodů připojení jenom určitých klientů nebo jiných počítačů na základě seznamu povolených IP adres.
 
-To zahrnuje Klasický scénář front-endu a back-endu, ve kterém můžou počítače v určité back-mailové síti nebo v podsítích umožňovat konkrétním koncovým bodů připojení jenom určitých klientů nebo jiných počítačů na základě seznamu povolených IP adres.
-
-- [Izolace výpočtů](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
-
-Microsoft Azure poskytuje různé cloudové výpočetní služby, které zahrnují rozsáhlou škálu výpočetních instancí & služeb, které se můžou automaticky škálovat a snížit tak, aby vyhovovaly potřebám vaší aplikace nebo podniku.
-
-- [Izolace úložiště](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
-
-Microsoft Azure odděluje výpočet založený na virtuálním počítači od zákazníka od úložiště. Toto oddělení umožňuje nezávisle škálovat výpočetní a úložné úložiště, což usnadňuje zajištění víceklientské architektury a izolace. Proto Azure Storage spouští na samostatném hardwaru bez připojení k síti Azure COMPUTE s výjimkou logických. Všechny požadavky běží přes HTTP nebo HTTPS na základě výběru zákazníka.
+- Přečtěte si informace o [izolaci virtuálních počítačů v Azure](../../virtual-machines/windows/isolation.md). Azure COMPUTE nabízí velikosti virtuálních počítačů, které jsou izolované na konkrétní typ hardwaru a vyhrazené pro jednoho zákazníka.

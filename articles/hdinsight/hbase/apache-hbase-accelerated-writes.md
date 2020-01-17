@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: bcc9736280b144a77bca57b4f4df1303f4b54796
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: ebcc91bb374183a3f2fe000f37c66230459befa3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179085"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156926"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Urychlené zápisy Azure HDInsight pro Apache HBA
 
@@ -37,11 +37,11 @@ Funkce akcelerované zápisy řeší potíže s vyšší latencí zápisu způso
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>Jak povolit urychlené zápisy pro adaptéry HBA v HDInsight
 
-Pokud chcete vytvořit nový cluster HBA s funkcí akcelerované zápisy, postupujte podle kroků v části [Nastavení clusterů v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) , dokud nedosáhnete **kroku 3, úložiště**. V části **Nastavení metastore**klikněte na zaškrtávací políčko vedle možnosti **Povolit urychlené zápisy (Preview)** . Pak pokračujte zbývajícími kroky pro vytvoření clusteru.
+Pokud chcete vytvořit nový cluster HBA s funkcí akcelerované zápisy, postupujte podle kroků v části [Nastavení clusterů v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) , dokud nedosáhnete **kroku 3, úložiště**. V části **Nastavení metastore**klikněte na zaškrtávací políčko vedle možnosti **Povolit urychlené zápisy**. Pak pokračujte zbývajícími kroky pro vytvoření clusteru.
 
 ![Povolit možnost urychleného zápisu pro HDInsight Apache HBA](./media/apache-hbase-accelerated-writes/accelerated-writes-cluster-creation.png)
 
-## <a name="other-considerations"></a>Další důležité informace
+## <a name="other-considerations"></a>Další aspekty
 
 Aby se zajistila odolnost dat, vytvořte cluster s minimálně třemi pracovními uzly. Po vytvoření se cluster nedá škálovat dolů na míň než tři pracovní uzly.
 

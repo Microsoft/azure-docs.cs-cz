@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0738e56cf6760a356b6e2b6db76f2dc3f6f157ee
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 74d209adf745d1a3c319ef6567b2a7818a5fd514
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763160"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152252"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Řešení běžných chyb a upozornění v indexeru v Azure Kognitivní hledání
 
@@ -171,6 +171,18 @@ Ve všech těchto případech odkazujete na [podporované typy dat](https://docs
 ## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>Chyba: nepovedlo se zpracovat dokument v rámci maximální doby běhu indexeru.
 
 K této chybě dochází, pokud indexer nemůže dokončit zpracování jednoho dokumentu ze zdroje dat v rámci povolené doby provádění. [Maximální doba](search-limits-quotas-capacity.md#indexer-limits) běhu je kratší, když se dovednosti používají. Pokud k této chybě dojde, pokud máte maxFailedItems nastavenou na jinou hodnotu než 0, indexer ho při budoucích spuštěních obejít, takže indexování může probíhat. Pokud si nemůžete dovolit přeskočit libovolný dokument, nebo pokud se tato chyba zobrazuje konzistentně, zvažte možnost rozdělit dokumenty na menší dokumenty, aby bylo možné provést částečný průběh v rámci jednoho spuštění indexeru.
+
+<a name="could-not-project-document"/>
+
+## <a name="error-could-not-project-document"></a>Chyba: dokument nelze zamítnout
+
+K této chybě dochází, když se indexer pokouší o [projektování dat do znalostní databáze](knowledge-store-projection-overview.md) a při pokusu o provedení došlo k chybě.  Tato chyba může být konzistentní a fixablea nebo se může jednat o přechodné selhání s výstupní jímkou projekce, kterou možná budete muset počkat, a zkuste to znovu, aby se dalo vyřešit.  Tady je sada známých stavů selhání a možná řešení.
+
+| Důvod | Podrobnosti/příklad | Rozlišení |
+| --- | --- | --- |
+| Nepovedlo se aktualizovat `'blobUri'` objektů BLOB projekce v kontejneru `'containerName'` |Zadaný kontejner neexistuje. | Indexer zkontroluje, jestli se zadaný kontejner dřív vytvořil, a v případě potřeby ho vytvoří, ale tuto kontrolu provede jenom jednou pro spuštění indexeru. Tato chyba znamená, že něco odstranilo kontejner po tomto kroku.  Tuto chybu můžete vyřešit tímto způsobem: ponechte si informace o svém účtu úložiště, počkejte, až se indexer dokončí, a pak znovu spusťte indexer. |
+| Nepovedlo se aktualizovat `'blobUri'` objektů BLOB projekce v kontejneru `'containerName'` |Nelze zapsat data do přenosového připojení: vzdálený hostitel nuceně zavřel existující připojení. | Očekává se, že se jedná o přechodné selhání s Azure Storage, takže by se mělo vyřešit tak, že znovu spustíte indexer. Pokud se tato chyba vyskytne konzistentně, uložte prosím [lístek podpory](https://ms.portal.azure.com/#create/Microsoft.Support) , aby ho bylo možné dále prozkoumat.  |
+| Řádek `'projectionRow'` v tabulce nelze aktualizovat `'tableName'` | Server je zaneprázdněný. | Očekává se, že se jedná o přechodné selhání s Azure Storage, takže by se mělo vyřešit tak, že znovu spustíte indexer. Pokud se tato chyba vyskytne konzistentně, uložte prosím [lístek podpory](https://ms.portal.azure.com/#create/Microsoft.Support) , aby ho bylo možné dále prozkoumat.  |
 
 <a name="could-not-execute-skill-because-a-skill-input-was-invalid"/>
 

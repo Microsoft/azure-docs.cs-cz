@@ -12,20 +12,34 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dafa78e6f46a3d2d6b7a9c505defaeae21875946
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 82bbdd7f209b2ce22225628416a07524c62f1484
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279022"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156161"
 ---
 # <a name="set-up-an-email-address-as-your-verification-method"></a>Nastavení e-mailové adresy jako metody ověřování
 
 Pomocí těchto kroků můžete přidat metodu resetování hesla. Po prvním nastavení se můžete vrátit na stránku **bezpečnostní údaje** a přidat, aktualizovat nebo odstranit informace o zabezpečení.
 
-Po nastavení metody resetování hesla musíte také nastavit metodu dvou metod ověřování pomocí [ověřovací aplikace](security-info-setup-auth-app.md), [zasílání zpráv SMS](security-info-setup-text-msg.md)nebo [telefonního hovoru](security-info-setup-phone-number.md).
-
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+
+>[!Note]
+>Pokud nevidíte možnost e-mailu, je možné, že vaše organizace neumožňuje použít tuto možnost pro metodu resetování hesla. V takovém případě budete muset zvolit jinou metodu, nebo se obraťte na helpdesk vaší organizace, kde najdete další nápovědu.
+
+## <a name="security-vs-password-reset-verification"></a>Ověření zabezpečení a resetování hesla
+
+Metody bezpečnostních údajů se používají pro ověřování dvou faktorů zabezpečení i pro resetování hesla. Nicméně ne všechny metody lze použít pro obojí.
+
+| Metoda | Použití |
+| ------ | -------- |
+| Ověřovací aplikace | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Textové zprávy | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Telefonní hovory | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Bezpečnostní klíč | Dvojúrovňové ověřování a ověřování nového hesla. |
+| E-mailový účet | Jenom ověřování heslem. Budete muset zvolit jinou metodu pro dvojúrovňové ověřování. |
+| Bezpečnostní otázky | Jenom ověřování heslem. Budete muset zvolit jinou metodu pro dvojúrovňové ověřování. |
 
 ## <a name="set-up-your-email-address-from-the-security-info-page"></a>Nastavení e-mailové adresy na stránce bezpečnostní údaje
 

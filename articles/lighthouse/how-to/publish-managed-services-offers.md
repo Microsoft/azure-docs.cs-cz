@@ -1,14 +1,14 @@
 ---
 title: Publikování nabídky spravovaných služeb pro Azure Marketplace
 description: Naučte se publikovat nabídku spravované služby, která zákazníkům zařadí správu delegovaných prostředků Azure.
-ms.date: 01/09/2020
+ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6a1720a3bcfd0b08f8d9c8147b5e47ed42af6fda
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 841cb52791709be5649d66b72f5c18ef35b740ef
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834094"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155243"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Publikování nabídky spravovaných služeb pro Azure Marketplace
 
@@ -86,6 +86,8 @@ Pro každou **autorizaci**musíte zadat následující. Pak můžete vybrat **no
 - **ID objektu Azure AD**: identifikátor Azure AD uživatele, skupiny uživatelů nebo aplikace, kterým budou udělena určitá oprávnění (jak je popsáno v definici role) s prostředky vašich zákazníků.
 - **Zobrazovaný název objektu Azure AD**: popisný název, který zákazníkovi pomůže pochopit účel této autorizace. Zákazník uvidí tento název při delegování prostředků.
 - **Definice role**: v seznamu vyberte jednu z dostupných předdefinovaných rolí Azure AD. Tato role určuje oprávnění, která bude mít uživatel v poli **ID objektu Azure AD** v materiálech vašich zákazníků. Popisy těchto rolí najdete v tématu [předdefinované role](../../role-based-access-control/built-in-roles.md) a [Podpora rolí pro správu delegovaných prostředků Azure](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management).
+  > [!NOTE]
+  > V případě, že jsou příslušné nové předdefinované role přidány do Azure, budou k dispozici zde, i když může dojít ke zpoždění před jejich zobrazením.
 - **Přiřaditelné role**: to se vyžaduje jenom v případě, že jste pro tuto autorizaci vybrali správce přístupu uživatele v **definici role** . Pokud ano, musíte sem přidat jednu nebo více rolí, které lze přiřadit. Uživatel v poli **ID objektu Azure AD** bude moct přiřadit tyto **role** ke [spravovaným identitám](../../active-directory/managed-identities-azure-resources/overview.md), které se vyžadují k [nasazení zásad, které se dají opravit](deploy-policy-remediation.md). Pro tohoto uživatele se nepoužijí žádná jiná oprávnění, která se běžně nevztahují k roli správce přístupu uživatele. Pokud tady nevyberete jednu nebo víc rolí, odeslání se nepředá. (Pokud jste nevybrali správce přístupu uživatele pro definici role tohoto uživatele, toto pole nemá žádný vliv.)
 
 > [!TIP]

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6001dc47d19665184bf44114ab36744f0287264
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 53428039055005693f30f63a709105b77fe65f8f
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608750"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155226"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Začínáme s Azure Multi-Factor Authentication Serverem
 
@@ -96,8 +96,8 @@ Pokud nepoužíváte funkci Potvrzení události a vaši uživatelé nepoužíva
 Postupujte podle těchto kroků a stáhněte Azure Multi-Factor Authentication Server z webu Azure Portal:
 
 1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
-2. Vyhledejte a vyberte *Azure Active Directory*. Vyberte **MFA Server**.
-3. Vyberte **Nastavení serveru**.
+2. Vyhledejte a vyberte *Azure Active Directory*. Vyberte **zabezpečení** > **MFA**.
+3. V části **správce MFA serveru**vyberte **nastavení serveru**.
 4. Vyberte **Stáhnout** a podle pokynů na stránce pro stažení uložte instalační program. 
 
    ![Stažení MFA serveru z Azure Portal](./media/howto-mfaserver-deploy/downloadportal.png)

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e3c237f47e889b6af1b49254af9039dc8789006
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 223dc6c340beb1b584ffbf90adc12667ed2feb23
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279067"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156178"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Nastavení aplikace Microsoft Authenticator jako metody ověřování
 
@@ -28,7 +28,20 @@ Pokud se zobrazí výzva k nastavení hned po přihlášení k pracovnímu nebo 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Note]
->Pokud nevidíte možnost aplikace ověřovatele, je možné, že vaše organizace neumožňuje používat ověřovací aplikaci k ověření. V takovém případě budete muset zvolit jinou metodu, nebo požádejte správce o další nápovědu.
+> Pokud nevidíte možnost aplikace ověřovatele, je možné, že vaše organizace neumožňuje použít tuto možnost k ověření. V takovém případě budete muset zvolit jinou metodu nebo požádat o další pomoc oddělení technické podpory vaší organizace.
+
+## <a name="security-vs-password-reset-verification"></a>Ověření zabezpečení a resetování hesla
+
+Metody bezpečnostních údajů se používají pro ověřování dvou faktorů zabezpečení i pro resetování hesla. Nicméně ne všechny metody lze použít pro obojí.
+
+| Metoda | Použití |
+| ------ | -------- |
+| Ověřovací aplikace | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Textové zprávy | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Telefonní hovory | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Bezpečnostní klíč | Dvojúrovňové ověřování a ověřování nového hesla. |
+| E-mailový účet | Jenom ověřování heslem. Budete muset zvolit jinou metodu pro dvojúrovňové ověřování. |
+| Bezpečnostní otázky | Jenom ověřování heslem. Budete muset zvolit jinou metodu pro dvojúrovňové ověřování. |
 
 ## <a name="set-up-the-microsoft-authenticator-app-from-the-security-info-page"></a>Nastavení aplikace Microsoft Authenticator ze stránky bezpečnostní údaje
 

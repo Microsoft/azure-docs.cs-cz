@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: mimckitt
-ms.openlocfilehash: d98efd46e3c2fbc11be2cde6a0c4f2b37acc8d7c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: ffa99c6ba0157eca133dc36ecbbb159b076b8bc0
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934001"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155549"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informace pro neschválené distribuce
 
@@ -43,7 +43,7 @@ Tento článek se zaměřuje na obecné pokyny pro provozování distribuce syst
 
 ## <a name="general-linux-installation-notes"></a>Obecné poznámky k instalaci pro Linux
 * Formát virtuálního pevného disku Hyper-V (VHDX) se v Azure nepodporuje, jenom *pevný virtuální*pevný disk.  Disk můžete převést na formát VHD pomocí Správce technologie Hyper-V nebo rutiny [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) . Pokud používáte VirtualBox, při vytváření disku vyberte **pevnou velikost** , nikoli výchozí (dynamicky přidělené).
-* Azure podporuje jenom virtuální počítače generace 1. Virtuální počítač 1. generace můžete převést z VHDX na formát souboru VHD a dynamicky se zvětšovat na disk s pevnou velikostí. Nemůžete změnit generaci virtuálního počítače. Další informace najdete v tématu [Vytvoření virtuálního počítače generace 1 nebo 2 v Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) .
+* Azure podporuje virtuální počítače Gen1 (Boot Boot) & Gen2 (UEFI Boot).
 * Maximální velikost povolená pro virtuální pevný disk je 1 023 GB.
 * Při instalaci systému Linux doporučujeme místo Správce logických svazků (LVM) používat standardní oddíly, což je výchozí nastavení pro mnoho instalací. Použití standardních oddílů zabrání v konfliktu LVM názvů s klonovanými virtuálními počítači, zejména pokud je disk s operačním systémem někdy připojený k jinému stejnému virtuálnímu počítači pro řešení potíží. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) se můžou používat na datových discích.
 * Podpora jádra pro připojení systémů souborů UDF je nezbytná. Při prvním spuštění v Azure se konfigurace zřizování předává virtuálnímu počítači se systémem Linux pomocí média ve formátu UDF, které je připojené k hostu. Agent Azure Linux musí připojit systém souborů UDF a načíst jeho konfiguraci a zřídit virtuální počítač.

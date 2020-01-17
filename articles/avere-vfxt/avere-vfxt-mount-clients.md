@@ -4,14 +4,14 @@ description: Jak připojit klienty pomocí avere vFXT pro Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: 39c4d6a77121e0b52a1da827ebb9e1976f609b30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b8486b5a33226b1faa5e3874144129dbe7a1a2f2
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415287"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153407"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>Připojení clusteru Avere vFXT
 
@@ -47,7 +47,7 @@ function mount_round_robin() {
 
     # no need to write again if it is already there
     if ! grep --quiet "${DEFAULT_MOUNT_POINT}" /etc/fstab; then
-        echo "${ROUND_ROBIN_IP}:${NFS_PATH}    ${DEFAULT_MOUNT_POINT}    nfs hard,nointr,proto=tcp,mountproto=tcp,retry=30 0 0" >> /etc/fstab
+        echo "${ROUND_ROBIN_IP}:${NFS_PATH}    ${DEFAULT_MOUNT_POINT}    nfs hard,proto=tcp,mountproto=tcp,retry=30 0 0" >> /etc/fstab
         mkdir -p "${DEFAULT_MOUNT_POINT}"
         chown nfsnobody:nfsnobody "${DEFAULT_MOUNT_POINT}"
     fi
@@ -62,27 +62,27 @@ Výše uvedená funkce je součástí příkladu dávky, který je k dispozici n
 ## <a name="create-the-mount-command"></a>Vytvoření příkazu Mount
 
 > [!NOTE]
-> Pokud jste při vytváření clusteru avere vFXT nevytvořili nový kontejner objektů blob, postupujte podle kroků v části [Konfigurace úložiště](avere-vfxt-add-storage.md) předtím, než se pokusíte připojit klienty.
+> Pokud jste při vytváření clusteru avere vFXT nevytvořili nový kontejner objektů blob, přidejte systémy úložiště, jak je popsáno v tématu [Konfigurace úložiště](avere-vfxt-add-storage.md) před pokusem o připojení klientů.
 
 Z klienta příkaz ``mount`` mapuje virtuální server (VServer) v clusteru vFXT na cestu v místním systému souborů. Formát je ``mount <vFXT path> <local path> {options}``
 
-Příkaz Mount obsahuje tři prvky:
+Příkaz Mount má tři prvky:
 
-* vFXT cesta – (kombinace IP adresy a cesty spojení s oborem názvů popsaná níže)
+* vFXT cesta – kombinace IP adresy a cesty pro spojení oboru názvů na clusteru 9described níže)
 * místní cesta – cesta na klientovi
-* parametry příkazu připojení – (uvedené v [příkazech připojit argumenty příkazu](#mount-command-arguments))
+* možnosti příkazu připojit – uvedené v [argumentech příkazu Mount](#mount-command-arguments)
 
 ### <a name="junction-and-ip"></a>Spojení a IP adresa
 
 Cesta VServer je kombinací své *IP adresy* a cesty k *oboru názvů*. Spojení oboru názvů je virtuální cesta, která byla definována při přidání systému úložiště.
 
-Pokud byl cluster vytvořen s úložištěm objektů blob, cesta k oboru názvů je `/msazure`
+Pokud byl cluster vytvořen s úložištěm objektů blob, cesta oboru názvů k tomuto kontejneru je `/msazure`
 
 Příklad: ``mount 10.0.0.12:/msazure /mnt/vfxt``
 
-Pokud jste po vytvoření clusteru přidali úložiště, cesta spojení oboru názvů odpovídá hodnotě, kterou jste nastavili v **cestě oboru názvů** při vytváření spojení. Pokud jste například jako cestu k oboru názvů použili ``/avere/files``, klienti by připojení *IP_address*:/avere/Files do svého místního přípojného bodu.
+Pokud jste po vytvoření clusteru přidali úložiště, bude cesta pro spojení oboru názvů nastavena jako hodnota v **cestě oboru názvů** při vytváření spojení. Pokud jste například jako cestu k oboru názvů použili ``/avere/files``, klienti by připojení *IP_address*:/avere/Files do svého místního přípojného bodu.
 
-![Dialogové okno Přidat nový spojovací bod s/avere/Files v poli cesta oboru názvů](media/avere-vfxt-create-junction-example.png)
+![Dialogové okno Přidat nový spojovací bod s/avere/Files v poli cesta oboru názvů](media/avere-vfxt-create-junction-example.png) <!-- to do - change example and screenshot to vfxt/files instead of avere -->
 
 IP adresa je jedna z klientských IP adres definovaných pro VServer. Rozsah IP adres klientů můžete najít na dvou místech v ovládacím panelu avere:
 
@@ -100,7 +100,7 @@ Kromě cest uveďte [argumenty příkazu Mount](#mount-command-arguments) popsan
 
 Chcete-li zajistit bezproblémové připojení klienta, předejte tato nastavení a argumenty do příkazu mount:
 
-``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
+``mount -o hard,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
 | Požadovaná nastavení | |
 --- | ---
@@ -109,14 +109,10 @@ Chcete-li zajistit bezproblémové připojení klienta, předejte tato nastaven�
 ``mountproto=netid`` | Tato možnost podporuje odpovídající zpracování chyb sítě pro operace připojení.
 ``retry=n`` | Nastavte ``retry=30``, aby nedocházelo k přechodným chybám připojení. (V připojeních na popředí se doporučuje jiná hodnota.)
 
-| Preferované nastavení  | |
---- | ---
-``nointr``            | Možnost "nointr" je upřednostňována pro klienty se staršími jádry (před dubna 2008), které podporují tuto možnost. Všimněte si, že výchozí možností je "intr".
-
 ## <a name="next-steps"></a>Další kroky
 
-Po připojení klientů je můžete použít k naplnění úložiště dat back-endu (Core souborového). Další informace o dalších úlohách nastavení najdete v těchto dokumentech:
+Po připojení klientů je můžete použít ke zkopírování dat do nového kontejneru úložiště objektů BLOB v clusteru. Pokud nepotřebujete naplnit nové úložiště, přečtěte si další odkazy, kde najdete další informace o dalších úlohách nastavení:
 
-* [Přesuňte data do clusteru Core souborového](avere-vfxt-data-ingest.md) – jak používat víc klientů a vláken k efektivnímu nahrávání vašich dat.
+* [Přesuňte data do cluster Core souborového](avere-vfxt-data-ingest.md) – jak používat víc klientů a vláken k efektivnímu nahrávání vašich dat do nového základního souborového
 * [Přizpůsobení ladění clusteru](avere-vfxt-tuning.md) – přizpůsobení nastavení clusteru podle vašich úloh
 * [Správa clusteru](avere-vfxt-manage-cluster.md) – jak spustit nebo zastavit cluster a spravovat uzly

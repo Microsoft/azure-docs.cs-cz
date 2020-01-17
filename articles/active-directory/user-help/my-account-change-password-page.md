@@ -12,25 +12,23 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 510f1ca441ef9645cff7f577bbad39991cebc285
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3981c152ba836a01daca16cd486623a9a26d86f2
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231875"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156229"
 ---
-# <a name="change-your-work-or-school-account-password-from-the-my-account-portal"></a>Změna hesla k pracovnímu nebo školnímu účtu na portálu Můj účet
+# <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Změna hesla k pracovnímu nebo školnímu účtu na stránce změnit heslo
 
-Na stránce **změnit heslo** na portálu **můj účet** můžete aktualizovat heslo pracovního nebo školního účtu. To bude fungovat jenom v případě, že znáte vaše stávající heslo, a pokud se vám nezamkne váš účet.
+Stránka pro **změnu hesla** na portálu **můj účet** vám pomůže aktualizovat existující heslo pro svůj pracovní nebo školní účet za předpokladu, že si zapamatujete heslo a nejste ve svém účtu uzamčeni. Pokud si nepamatujete své heslo, pokud jste se odhlásili z účtu nebo pokud jste nikdy nezapomněli heslo z vaší organizace, můžete svoje heslo resetovat pomocí svých bezpečnostních údajů a mobilního zařízení.
 
-Pokud si nepamatujete heslo, pokud jste se odhlásili z účtu, nebo pokud jste nikdy nezapomněli heslo od týmu podpory společnosti, můžete svoje heslo resetovat pomocí svých bezpečnostních údajů a mobilního zařízení. Další informace najdete v tématu [resetování svého pracovního nebo školního hesla](https://docs.microsoft.com/azure/active-directory/user-help/user-help-reset-password).
+>[!Important]
+>Tento článek je určený pro uživatele, kteří se pokoušejí aktualizovat známé heslo pro stávající pracovní nebo školní účet. Pokud jste uživatelem, který se pokoušíte získat do osobního účtu, jako je například Xbox, Hotmail nebo Outlook.com, vyzkoušejte návrhy v části když se [nemůžete přihlásit k vašemu účet Microsoftmu](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) článku. Pokud jste správcem a chcete získat další informace o tom, jak otestovat Samoobslužné resetování hesla pro vaše zaměstnance nebo jiné uživatele, přečtěte si téma [Samoobslužné resetování hesla](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr).
 
->[!Note]
->Pokud se pokoušíte vrátit se k osobnímu účtu, třeba ke konzole Xbox, hotmail.com nebo outlook.com, zkuste návrhy v části [když se nemůžete přihlásit k vašemu účet Microsoftmu](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) článku.
+## <a name="update-a-password-from-the-change-password-page"></a>Aktualizace hesla na stránce změnit heslo
 
-## <a name="to-change-your-password-from-the-my-account-portal"></a>Změna hesla z portálu Můj účet
-
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu pomocí stávajícího hesla a pak na stránce https://myprofile.microsoft.com/.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu pomocí stávajícího hesla a pak na stránce **můj účet** (https://myprofile.microsoft.com/).
 
 2. V levém navigačním podokně vyberte **heslo** , nebo vyberte odkaz **změnit heslo** z bloku **hesla** .
 
@@ -40,7 +38,7 @@ Pokud si nepamatujete heslo, pokud jste se odhlásili z účtu, nebo pokud jste 
 
     ![Stránka pro změnu hesla, zobrazení polí hesla](media/my-account-portal/my-account-portal-change-password-page.png)
 
-4. Vyberte **Odeslat**.
+4. Vyberte **odeslat**.
 
     Vaše heslo se změní a budete vyzváni k opětovnému přihlášení ke svému pracovnímu nebo školnímu účtu.
 

@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: evansma
-ms.openlocfilehash: b8c1034b047e0c72db41bbbbff06feb0bdf06517
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 21bbd34520283620626aff27439e89058a534f4e
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933926"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121807"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Výhody vašeho komerčního tržiště
 
@@ -86,7 +86,7 @@ Kromě výhod nevýhod je, že partneři podnikových aplikací s nabídkami Dyn
 
 ### <a name="publisher-agreement"></a>Smlouva vydavatele
 
-Všechny aktivity popsané na této stránce jsou pokryté [smlouvou vydavatele na webu Marketplace](https://docs.microsoft.com/legal/marketplace/terms) a jsou v souladu s doplňkem programu komerčních výhod.
+Všechny aktivity popsané na této stránce jsou pokryté [smlouvou vydavatele na webu Marketplace](https://go.microsoft.com/fwlink/?LinkID=699560) a jsou v souladu s doplňkem programu komerčních výhod.
 
 ### <a name="cancellation-policy"></a>Zásady zrušení
 

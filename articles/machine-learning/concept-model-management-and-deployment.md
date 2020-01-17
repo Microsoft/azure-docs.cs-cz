@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9cde171f1c031b4b02a71fe0dac1a689e3ec0722
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f6819ddce777a5740ef1f5f9ab887a0646c4e464
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772580"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122334"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Správa modelů, nasazení a monitorování pomocí Azure Machine Learning
 
@@ -48,7 +48,7 @@ Registrace modelu umožňuje ukládat a modelovat modely v cloudu Azure ve vaše
 > [!TIP]
 > Registrovaný model je logický kontejner pro jeden nebo více souborů, které tvoří model. Například pokud máte model, který je uložený v několika souborech, můžete je zaregistrovat jako jeden model v pracovním prostoru Azure Machine Learning. Po registraci můžete zaregistrovaný model stáhnout nebo nasadit a získat všechny soubory, které byly zaregistrovány.
 
-Registrované modely se identifikují podle názvu a verze. Pokaždé, když zaregistrujete model se stejným názvem jako existující registr zvýší verzi. Během registrace lze zadat další značky metadat. Tyto značky se pak použijí při hledání modelu. Azure Machine Learning podporuje libovolný model, který lze načíst pomocí Pythonu 3.5.2 nebo vyššího.
+Registrované modely se identifikují prostřednictvím názvu a verze. Vždy, když zaregistrujete model se stejným názvem, který již používá existující model, v registru se zvýší jeho verze. Během registrace lze zadat další značky metadat. Tyto značky se pak použijí při hledání modelu. Azure Machine Learning podporuje libovolný model, který lze načíst pomocí Pythonu 3.5.2 nebo vyššího.
 
 > [!TIP]
 > Můžete také registrovat modely školení mimo Azure Machine Learning.
@@ -90,7 +90,7 @@ Také zadáte konfiguraci cílové platformy nasazení. Například typ rodiny v
 Při vytvoření bitové kopie jsou přidány také součásti požadované Azure Machine Learning. Například prostředky potřebné ke spuštění webové služby a interakci s IoT Edge.
 
 #### <a name="batch-scoring"></a>Dávkové vyhodnocování
-Dávkové vyhodnocování je podporováno prostřednictvím kanálů ML. Další informace najdete v tématu [Dávková předpovědi pro velké](how-to-run-batch-predictions.md)objemy dat.
+Dávkové vyhodnocování je podporováno prostřednictvím kanálů ML. Další informace najdete v tématu [Dávková předpovědi pro velké](how-to-use-parallel-run-step.md)objemy dat.
 
 #### <a name="real-time-web-services"></a>Webové služby v reálném čase
 

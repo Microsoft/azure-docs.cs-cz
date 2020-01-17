@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 12/17/2019
+ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 48ecaea82e8874ff521abafaa075b41367f8fbf1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 1560b5d60ae3c6de3ecb6d50859e24ebb7bc2d28
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75753999"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156909"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Nasazení modelů pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ Další informace o konceptech, které jsou součástí pracovního postupu nasa
 
 - Model. Pokud nemáte školený model, můžete použít soubory modelů a závislostí, které jsou k dispozici v [tomto kurzu](https://aka.ms/azml-deploy-cloud).
 
-- [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md), [sadu Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)nebo [rozšíření Azure Machine Learning Visual Studio Code](how-to-vscode-tools.md).
+- [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md), [sadu Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)nebo [rozšíření Azure Machine Learning Visual Studio Code](tutorial-setup-vscode-extension.md).
 
 ## <a name="connect-to-your-workspace"></a>Připojení k pracovnímu prostoru
 
@@ -59,7 +59,7 @@ Následující kód ukazuje, jak se připojit k pracovnímu prostoru Azure Machi
 
 + **Použití VS Code**
 
-   Když použijete VS Code, vybíráte pracovní prostor pomocí grafického rozhraní. Další informace najdete v tématu [nasazení a Správa modelů](how-to-vscode-tools.md#deploy-and-manage-models) v dokumentaci k rozšíření vs Code.
+   Když použijete VS Code, vybíráte pracovní prostor pomocí grafického rozhraní. Další informace najdete v tématu [nasazení a Správa modelů](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model) v dokumentaci k rozšíření vs Code.
 
 ## <a id="registermodel"></a>Registrace modelu
 
@@ -115,7 +115,7 @@ Fragmenty kódu v této části ukazují, jak registrovat model z školicího b�
 
 + **Použití VS Code**
 
-  Pomocí rozšíření [vs Code](how-to-vscode-tools.md#deploy-and-manage-models) Zaregistrujte modely pomocí libovolných souborů modelů nebo složek.
+  Pomocí rozšíření [vs Code](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model) Zaregistrujte modely pomocí libovolných souborů modelů nebo složek.
 
 ### <a name="register-a-model-from-a-local-file"></a>Registrace modelu z místního souboru
 
@@ -185,7 +185,7 @@ K nasazení modelu budete potřebovat tyto položky:
     >
     > * Sada Azure Machine Learning SDK neposkytuje způsob, jak webové služby nebo IoT Edge nasazení získat přístup k úložišti dat nebo datovým sadám. Pokud váš nasazený model potřebuje přístup k datům uloženým mimo nasazení, jako jsou data v účtu úložiště Azure, musíte vytvořit vlastní řešení kódu pomocí příslušné sady SDK. Například [sada SDK Azure Storage pro Python](https://github.com/Azure/azure-storage-python).
     >
-    >   Alternativou, která může být pro váš scénář fungovat, je [předpověď dávky](how-to-run-batch-predictions.md), která poskytuje přístup k úložištím dat během bodování.
+    >   Alternativou, která může být pro váš scénář fungovat, je [předpověď dávky](how-to-use-parallel-run-step.md), která poskytuje přístup k úložištím dat během bodování.
 
 * **Závislosti**, jako jsou například pomocné skripty nebo balíčky Python/Conda vyžadované ke spuštění vstupního skriptu nebo modelu.
 
@@ -971,7 +971,7 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-Po vytvoření balíčku můžete použít `package.pull()` k vyžádání image do místního prostředí Docker. Výstup tohoto příkazu zobrazí název obrázku. Příklad: 
+Po vytvoření balíčku můžete použít `package.pull()` k vyžádání image do místního prostředí Docker. Výstup tohoto příkazu zobrazí název obrázku. Například: 
 
 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 

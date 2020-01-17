@@ -12,29 +12,30 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0b8a5a8ac4132c998567f956f3171db06a9ca53
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1ab01f5427401bd129fa84f9a5dd1a4d3f8dc77d
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231847"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156195"
 ---
-# <a name="manage-organizations-connected-to-your-work-or-school-account-from-the-organizations-page"></a>Správa organizací připojených k pracovnímu nebo školnímu účtu na stránce organizace
+# <a name="manage-your-connected-organizations-from-the-organizations-page"></a>Spravujte své připojené organizace ze stránky organizace.
 
-Své organizace můžete spravovat na stránce **organizace** na portálu **můj účet** .
-
-Na stránce **organizace** se zobrazují dva typy organizací:
+Stránka **organizace** na portálu **můj účet** vám pomůže spravovat organizace (obvykle název vaší organizace) připojené k vašemu pracovnímu nebo školnímu účtu. Na stránce **organizace** se zobrazují dva typy organizací:
 
 - **Domovská organizace.** Vaše domovská organizace je organizace, která vlastní pracovní nebo školní účet. Nemůžete opustit svou domovskou organizaci.
-
-- **Jiné organizace.** Ostatní organizace jsou libovolná skupina, ke které jste se předtím přihlásili pomocí svého pracovního nebo školního účtu. Kterékoli z těchto organizací můžete kdykoli opustit.
 
     >[!NOTE]
     > Pokud nemáte přiřazenou domovskou organizaci, zobrazí se jenom jeden nadpis, který uvádí organizace se seznamem vašich přidružených organizací.
 
+- **Jiné organizace.** Ostatní organizace jsou libovolná skupina, ke které jste se předtím přihlásili pomocí svého pracovního nebo školního účtu. Kterékoli z těchto organizací můžete kdykoli opustit.
+
+>[!Important]
+>Tento článek je určený pro uživatele, kteří se pokoušejí aktualizovat informace o organizaci připojené k pracovnímu nebo školnímu účtu. Pokud jste správcem a hledáte informace o správě skupin a uživatelů pro vaše zaměstnance a další použití, přečtěte si [dokumentaci ke správě uživatelů v podniku](https://docs.microsoft.com/azure/active-directory/users-groups-roles/index).
+
 ## <a name="view-your-organizations"></a>Zobrazit vaše organizace
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak přejít na stránku https://myprofile.microsoft.com/.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak navštivte stránku **můj účet** (https://myprofile.microsoft.com/).
 
 2. V levém navigačním podokně vyberte **organizace** nebo vyberte odkaz pro **správu organizací** z bloku **organizace** .
 
@@ -53,7 +54,7 @@ Můžete opustit jakoukoli organizaci, která není vaší domovskou organizací
 >[!Important]
 >Pokud necháte organizaci omylem, neexistuje žádný způsob, jak ji vrátit. Musíte počkat, až správce této organizace bude pozvánku znovu pozvat.
 
-1. Vyberte **opustit organizaci** vedle organizace, kterou chcete opustit, a pak výběrem **ponechat** potvrďte, že chcete odejít.
+- Vyberte **opustit organizaci** vedle organizace, kterou chcete opustit, a pak výběrem **ponechat** potvrďte, že chcete odejít.
 
     ![Stránka organizace se zvýrazněným odkazem na organizaci](media/my-account-portal/my-account-portal-organizations-leave.png)
 

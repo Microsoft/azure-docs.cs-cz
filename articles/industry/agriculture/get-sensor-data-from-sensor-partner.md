@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: d9e20c8e5859efc8f1f8a5214e6837ad46d2980d
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 7c40cfc8fbc6a9957281be842f6714fa9289a3c8
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777780"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122215"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Získat data ze senzorů od partnerů snímačů
 
@@ -46,7 +46,7 @@ Případně můžete přihlašovací údaje vygenerovat spuštěním tohoto skri
 
 3. Klikněte na registrace aplikace, která se vytvořila jako součást nasazení FarmBeats. Bude mít stejný název jako FarmBeats DataHub.
 
-4. Klikněte na "vystavení rozhraní API" – > klikněte na Přidat klientskou aplikaci a zadejte **04b07795-8ddb-461a-bbee-02f9e1bf7b46** a zaškrtněte možnost autorizovat rozsah. Tím se zajistí přístup k Azure CLI (Cloud Shell), aby se prováděly níže uvedené kroky.
+4. Klikněte na "vystavení rozhraní API" – > klikněte na Přidat klientskou aplikaci a zadejte **04b07795-8ddb-461a-bbee-02f9e1bf7b46** a zaškrtněte možnost autorizovat rozsah. Tím se zajistí přístup k rozhraní příkazového řádku Azure CLI (Cloud Shell), aby se prováděly níže uvedené kroky.
 
 5. Otevřete Cloud Shell. Tato možnost je k dispozici na panelu nástrojů v pravém horním rohu Azure Portal.
 

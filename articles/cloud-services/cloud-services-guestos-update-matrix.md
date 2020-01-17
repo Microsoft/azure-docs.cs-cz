@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/8/2020
+ms.date: 1/15/2020
 ms.author: raiye
-ms.openlocfilehash: dd148a4dd454e2ebebcb6b9befc576570ecb0352
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 1139e2b26cdc1dee524b1d3b6a942c735c43aec7
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778205"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122241"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Verze hostovaného operačního systému Azure a tabulka kompatibility SDK
 Poskytuje aktuální informace o nejnovějších vydáních hostovaného operačního systému Azure pro Cloud Services. Tyto informace vám pomohou naplánovat cestu upgradu před zakázáním hostovaného operačního systému. Pokud vaše role nakonfigurujete tak, aby používaly *Automatické* aktualizace HOSTOVANÉHO operačního systému, jak je popsáno v tématu [aktualizace nastavení operačního systému hosta v Azure][Azure Guest OS Update Settings], není důležité tuto stránku číst.
@@ -214,9 +214,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
-| WA-HOST-OS-2.94 _201912-01 | 8\. ledna 2020 | Post 2,95 |  
-| WA-HOST-OS-2.93 _201911-01 | 5\. prosince 2019 | Post 2,94 |  
-|~ WA-HOST-OS-2.91 _201910-01 ~| 1\. listopadu 2019 | 8\. ledna 2020 |  
+| WA-HOST-OS-2.93 _201912-01 | 8\. ledna 2020 | Post 2,95 |  
+| WA-HOST-OS-2.92 _201911-01 | 5\. prosince 2019 | Post 2,94 |  
+|~~WA-HOST-OS-2.91 _201910-01~~| 1\. listopadu 2019 | 8\. ledna 2020 |  
 |~~WA-HOST-OS-2.90 _201909-01~~| 7\. října 2019 | 5\. prosince 2019 |  
 |~~WA-HOST-OS-2.89 _201908-01~~| 4\. srpna 2019 | 1\. listopadu 2019 |  
 |~~WA-HOST-OS-2,88 _201907-01~~| 26. července 2019 | 7\. října 2019 |

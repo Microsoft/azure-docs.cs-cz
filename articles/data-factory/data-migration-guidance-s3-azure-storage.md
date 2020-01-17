@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 30990c3d1e3f885e8984227425d3e8e5c44b9286
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6f2db91a35573bc2cbdd0df2cb1ac09914cc956b
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927479"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122640"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Migrace dat ze služby Amazon S3 do Azure Storage pomocí Azure Data Factory 
 
@@ -47,7 +47,7 @@ Obrázek výše znázorňuje, jak můžete dosáhnout velkých rychlostí přesu
 
 V rámci jednoho spuštění aktivity kopírování má ADF vestavěný mechanismus opakování, aby mohl zpracovávat určitou úroveň přechodných chyb v úložištích dat nebo v podkladové síti. 
 
-Při provádění binárního kopírování ze S3 do objektů BLOB a ze S3 do ADLS Gen2, ADF automaticky provede vytváření kontrolních bodů.  Pokud při následném pokusu o spuštění aktivity kopírování došlo k chybě nebo vypršel časový limit, při následném opakování (je třeba opakovat počet > 1), kopie pokračuje od posledního bodu selhání místo od začátku. 
+Při provádění binárního kopírování ze S3 do objektů BLOB a ze S3 do ADLS Gen2, ADF automaticky provede vytváření kontrolních bodů.  Pokud se spuštění aktivity kopírování nezdařilo nebo vypršel časový limit, při následném pokusu se kopírování obnoví z posledního bodu selhání místo od začátku. 
 
 ## <a name="network-security"></a>Zabezpečení sítě 
 
@@ -86,7 +86,7 @@ Migrovat data prostřednictvím privátního propojení:
 
 ### <a name="initial-snapshot-data-migration"></a>Migrace dat počátečního snímku 
 
-Datový oddíl se doporučuje hlavně při migraci více než 10 TB dat.  Pokud chcete rozdělit data na oddíly, pomocí nastavení "prefix" vyfiltrujte složky a soubory v Amazon S3 podle názvu a potom jednotlivé úlohy kopírování ADF mohou kopírovat jeden oddíl současně.  Pro zajištění lepší propustnosti můžete souběžně spustit více úloh kopírování přes ADF. 
+Datový oddíl se doporučuje hlavně při migraci více než 100 TB dat.  Pokud chcete rozdělit data na oddíly, pomocí nastavení "prefix" vyfiltrujte složky a soubory v Amazon S3 podle názvu a potom jednotlivé úlohy kopírování ADF mohou kopírovat jeden oddíl současně.  Pro zajištění lepší propustnosti můžete souběžně spustit více úloh kopírování přes ADF. 
 
 Pokud některá z úloh kopírování selže kvůli přechodnému problému se sítí nebo úložištěm dat, můžete znovu znovu načíst tento konkrétní oddíl z AWS S3.  Všechny ostatní úlohy kopírování načítající jiné oddíly nebudou mít vliv na. 
 

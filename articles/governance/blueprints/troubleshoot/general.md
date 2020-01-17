@@ -1,18 +1,18 @@
 ---
 title: Odstraňování běžných chyb
 description: Naučte se řešit problémy při vytváření, přiřazování a odebírání podrobných plánů, jako jsou porušení zásad a funkce parametrů podrobného plánu.
-ms.date: 11/22/2019
+ms.date: 01/15/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 5b8a20b0757934bbd356ab037a22521a248a7eb2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7306e344a479008a87164a954c4444d375950b0b
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982479"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76157079"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Řešení chyb pomocí Azure modrotisky
 
-Při vytváření nebo přiřazování podrobných plánů můžete spustit chybu. Tento článek popisuje různé chyby, ke kterým může dojít, a jejich řešení.
+Při vytváření, přiřazování nebo odebírání podrobných plánů můžete spustit chybu. Tento článek popisuje různé chyby, ke kterým může dojít, a jejich řešení.
 
 ## <a name="finding-error-details"></a>Hledání podrobností o chybě
 
@@ -60,6 +60,22 @@ Předáním parametru podrobného plánu, který používá funkci, jako je nap�
 #### <a name="resolution"></a>Rozlišení
 
 Chcete-li funkci předat jako parametr, zařídí celý řetězec `[` tak, aby parametr podrobného plánu vypadal jako `[[resourceGroup().tags.myTag]`. Řídicí znak způsobí, že při zpracování podrobného plánu bude v sestavách zpracována hodnota jako řetězec. Modrotisky pak umístí funkci na artefakt, což umožňuje, aby byl dynamický, jak bylo očekáváno. Další informace najdete v tématu [syntaxe a výrazy v šablonách Azure Resource Manager](../../../azure-resource-manager/templates/template-expressions.md).
+
+## <a name="delete-errors"></a>Odstranit chyby
+
+### <a name="assign-delete-timeout"></a>Scénář: časový limit pro odstranění přiřazení
+
+#### <a name="issue"></a>Problém
+
+Odstranění přiřazení podrobného plánu se nedokončilo.
+
+#### <a name="cause"></a>Příčina
+
+Přiřazení podrobného plánu se může při odstranění zablokovat v neterminálovém stavu. Tento stav je způsobený tím, že prostředky vytvořené přiřazením podrobného plánu ještě čekají na odstranění, nebo nevrátí stavový kód do Azure modrotisky.
+
+#### <a name="resolution"></a>Rozlišení
+
+Přiřazení podrobného plánu v neterminálovém stavu se po uplynutí _6 hodin_ automaticky označí jako **neúspěšná** . Jakmile časový limit upraví stav přiřazení podrobného plánu, můžete odstranění zkusit znovu.
 
 ## <a name="next-steps"></a>Další kroky
 

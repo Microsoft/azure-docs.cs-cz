@@ -8,14 +8,14 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 01/16/2020
 ms.author: jingwang
-ms.openlocfilehash: ede1e56384c75c64765962b7db196973a30c605b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 45699680ad2003c034bce588857f8b102a0b6d26
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928449"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121773"
 ---
 # <a name="managed-identity-for-data-factory"></a>Spravovaná identita pro Data Factory
 
@@ -155,17 +155,19 @@ Spravovanou identitu můžete načíst z Azure Portal nebo programově. V násle
 
 ### <a name="retrieve-managed-identity-using-azure-portal"></a>Načtení spravované identity pomocí Azure Portal
 
-Informace o spravované identitě můžete najít z Azure Portal-> vašich datových továrn – vlastnosti >:
+Informace o spravované identitě najdete v Azure Portal > vašich vlastností Data Factory – >.
 
 - ID spravovaného objektu identity
 - Tenant spravované identity
-- **ID aplikace spravované Identity** > tuto hodnotu zkopírovat
+- ID aplikace spravované identity
 
-![Načtení spravované identity](media/data-factory-service-identity/retrieve-service-identity-portal.png)
+Informace o spravované identitě se také zobrazí při vytváření propojené služby, která podporuje spravované ověřování identity, jako je Azure Blob, Azure Data Lake Storage, Azure Key Vault atd.
+
+Při udělování oprávnění použijte ID objektu nebo název datové továrny (jako název spravované identity) k vyhledání této identity.
 
 ### <a name="retrieve-managed-identity-using-powershell"></a>Načtení spravované identity pomocí PowerShellu
 
-ID objektu spravované identity a ID tenanta se vrátí, když získáte konkrétní objekt pro vytváření dat následujícím způsobem:
+ID objektu spravované identity a ID tenanta se vrátí, když získáte konkrétní objekt pro vytváření dat následujícím způsobem. Pomocí **PrincipalId** udělte přístup:
 
 ```powershell
 PS C:\WINDOWS\system32> (Get-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
@@ -175,7 +177,7 @@ PrincipalId                          TenantId
 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc 72f988bf-XXXX-XXXX-XXXX-2d7cd011db47
 ```
 
-Zkopírujte ID objektu zabezpečení a potom spusťte příkaz Azure Active Directory s ID objektu zabezpečení jako parametr, který získá identifikátor **ApplicationId**, který použijete pro udělení přístupu:
+ID aplikace můžete získat zkopírováním výše uvedeného ID objektu zabezpečení a následným Azure Active Directory spuštěním příkazu s ID objektu zabezpečení jako parametrem.
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzADServicePrincipal -ObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc

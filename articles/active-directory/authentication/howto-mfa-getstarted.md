@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccffe8d104792d9723c1541466067de3ea2c2e66
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b6da67589b15b4ab043510c0375c26c12f645adb
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848387"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155142"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Plánování cloudového nasazení Azure Multi-Factor Authentication
 
@@ -24,7 +24,7 @@ Uživatelé se připojují k prostředkům organizace ve stále složitějších
 
 [Azure Multi-Factor Authentication (MFA)](concept-mfa-howitworks.md) pomáhá chránit přístup k datům a aplikacím. Poskytuje další úroveň zabezpečení s použitím druhé formy ověřování. Organizace můžou pomocí [podmíněného přístupu](../conditional-access/overview.md) zajistit, aby řešení vyhovovalo konkrétním potřebám.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s nasazením Azure Multi-Factor Authentication, jsou k dispozici nezbytné položky, které byste měli vzít v úvahu.
 
@@ -85,18 +85,18 @@ Doporučujeme, aby organizace používaly podmíněný přístup k definování 
 ### <a name="configuring-a-named-location"></a>Konfigurace pojmenovaného umístění
 
 1. Otevřít **Azure Active Directory** v Azure Portal
-2. Klikněte na **podmíněný přístup** .
-3. Klikněte na **pojmenovaná umístění** .
-4. Klikněte na **nové umístění** .
+2. Vybrat **zabezpečení**
+3. V části **Spravovat**vyberte **pojmenovaná umístění** .
+4. Vybrat **nové umístění**
 5. Do pole **název** zadejte smysluplný název.
-6. Vyberte, jestli definujete umístění pomocí rozsahů IP adres nebo zemí nebo oblastí.
-   1. Pokud používáte rozsahy IP adres
-      1. Rozhodněte, jestli chcete umístění označit jako důvěryhodné. Přihlášení z důvěryhodného umístění snižuje riziko při přihlášení uživatele. Tuto složku označte jako důvěryhodnou jenom v případě, že víte, že zadané rozsahy IP adres jsou ve vaší organizaci zřízené a důvěryhodné.
+6. Vyberte, jestli definujete umístění pomocí *rozsahů IP adres* nebo *zemí nebo oblastí* .
+   1. Pokud používáte *rozsahy IP adres*
+      1. Rozhodněte, jestli se má *Označit jako důvěryhodné umístění*. Přihlášení z důvěryhodného umístění snižuje riziko při přihlášení uživatele. Tuto složku označte jako důvěryhodnou jenom v případě, že víte, že zadané rozsahy IP adres jsou ve vaší organizaci zřízené a důvěryhodné.
       2. Zadejte rozsahy IP adres.
-   2. Pokud používáte země nebo oblasti
+   2. Pokud používáte *země nebo oblasti*
       1. Rozbalte rozevírací nabídku a vyberte země nebo oblasti, které chcete definovat pro toto pojmenované umístění.
-      2. Rozhodněte, jestli se mají zahrnout neznámé oblasti. Neznámé oblasti jsou IP adresy, které nejdou namapovat na zemi nebo oblast.
-7. Klikněte na **Vytvořit**
+      2. Rozhodněte, jestli se mají *Zahrnout neznámé oblasti*. Neznámé oblasti jsou IP adresy, které nejdou namapovat na zemi nebo oblast.
+7. Vyberte **Vytvořit**.
 
 ## <a name="plan-authentication-methods"></a>Plánování metod ověřování
 
@@ -221,7 +221,7 @@ Je důležité, abyste zabránili neúmyslnému uzamčení vašeho tenanta Azure
 ### <a name="create-conditional-access-policy"></a>Vytvořit zásady podmíněného přístupu
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu globálního správce.
-1. Přejděte na **Azure Active Directory**, **podmíněný přístup**.
+1. Přejděte na **Azure Active Directory** > **zabezpečení** > **podmíněný přístup**.
 1. Vyberte **nové zásady**.
    ![vytvořit zásadu podmíněného přístupu, která povolí MFA pro Azure Portal uživatele v pilotní skupině](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. Zadejte smysluplný název pro zásady.

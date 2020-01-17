@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 7065d5e9cae9e0a06eab82bd982693a1ad1d8fba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c69c90410aab7fa37ab87e82314c53e4459ca25
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483775"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155651"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Vývoj šablon Azure Resource Manageru pro zajištění konzistence cloudu
 
@@ -22,7 +22,7 @@ Klíčovou výhodou Azure je konzistence. Investic do vývoje pro jedno umístě
 Microsoft nabízí inteligentní a připravená pro podnikové cloudové služby v mnoha umístěních, včetně:
 
 * Globální platformu Azure podporuje rozšiřující se síť Datacenter spravovaných společností Microsoft v oblastech po celém světě.
-* Izolované suverénních cloudech, jako je Azure Germany, Azure Government a Azure China (systém Azure provozovaný společností 21Vianet). Suverénní cloudy poskytnout konzistentní platformu s většinou stejné skvělé funkce, které mají přístup ke globální zákazníky Azure.
+* Izolované svrchované cloudy, jako je Azure Německo, Azure Government a Azure Čína 21Vianet. Suverénní cloudy poskytnout konzistentní platformu s většinou stejné skvělé funkce, které mají přístup ke globální zákazníky Azure.
 * Azure Stack, hybridní Cloudová platforma, která vám umožní poskytovat služby Azure z datového centra vaší organizace. Podniky mohou nastavení služby Azure Stack v jejich vlastních datových center nebo využívání služeb Azure od poskytovatelů služeb s Azure Stack v jejich zařízeních (někdy označované jako hostované oblasti).
 
 V jádru všechny tyto cloudy Azure Resource Manager poskytuje rozhraní API, které umožňuje širokou škálu uživatelská rozhraní ke komunikaci s platformou Azure. Toto rozhraní API poskytuje výkonné funkce infrastruktury jako kódu. Libovolný typ prostředku, který je k dispozici na cloudovou platformu Azure je možné nasadit a nakonfigurovat pomocí Azure Resource Manageru. S jedinou šablonou můžete nasadit a nakonfigurovat kompletní aplikace k provozní koncového stavu.
@@ -47,9 +47,9 @@ Zbývající část tato příručka popisuje oblasti, které je třeba zvážit
 
 Základní syntaxe šablony Resource Manageru je JSON. Šablony používat nadstavbu JSON rozšíření syntaxe s výrazy a funkce. Procesor jazyka šablony je často aktualizována o podporu funkcí další šablony. Podrobné vysvětlení funkcí k dispozici šablony najdete v tématu [funkce šablon Azure Resource Manageru](template-functions.md).
 
-Nové funkce šablony, které přináší do Azure Resource Manageru nejsou okamžitě dostupné v suverénních cloudech nebo Azure Stack. Pokud chcete nasadit šablonu úspěšně, musí být všechny funkce odkazované v šabloně dostupné na cílový cloud. 
+Nové funkce šablony, které přináší do Azure Resource Manageru nejsou okamžitě dostupné v suverénních cloudech nebo Azure Stack. Pokud chcete nasadit šablonu úspěšně, musí být všechny funkce odkazované v šabloně dostupné na cílový cloud.
 
-Možnosti služby Azure Resource Manageru vždy představíme na global Azure nejprve. Chcete-li ověřit, zda nově zavedená šablony funkce jsou také k dispozici ve službě Azure Stack můžete použít následující příkaz powershellu: 
+Možnosti služby Azure Resource Manageru vždy představíme na global Azure nejprve. Chcete-li ověřit, zda nově zavedená šablony funkce jsou také k dispozici ve službě Azure Stack můžete použít následující příkaz powershellu:
 
 1. Ujistěte se, klon úložiště GitHub: [ https://github.com/marcvaneijk/arm-template-functions ](https://github.com/marcvaneijk/arm-template-functions).
 
@@ -69,7 +69,7 @@ Skript nasadí více, minimalizaci šablon, každá obsahuje pouze jedinečné �
 
 ## <a name="working-with-linked-artifacts"></a>Práce s propojených artefaktů
 
-Šablony mohou obsahovat odkazy na propojených artefaktů a obsahovat nasazení prostředku, který odkazuje na jinou šablonu. Propojené šablony (také označované jako vnořené šablony) se načítají pomocí Správce prostředků v době běhu. Šablony mohou také obsahovat odkazy na artefakty pro rozšíření virtuálních počítačů (VM). Tyto artefakty jsou načítána pro rozšíření virtuálních počítačů běžících v rámci virtuálních počítačů pro konfiguraci rozšíření virtuálního počítače během nasazování šablony. 
+Šablony mohou obsahovat odkazy na propojených artefaktů a obsahovat nasazení prostředku, který odkazuje na jinou šablonu. Propojené šablony (také označované jako vnořené šablony) se načítají pomocí Správce prostředků v době běhu. Šablony mohou také obsahovat odkazy na artefakty pro rozšíření virtuálních počítačů (VM). Tyto artefakty jsou načítána pro rozšíření virtuálních počítačů běžících v rámci virtuálních počítačů pro konfiguraci rozšíření virtuálního počítače během nasazování šablony.
 
 Následující části popisují důležité informace týkající se cloudu konzistenci při vývoji šablon, které obsahují artefakty, které jsou mimo hlavní nasazení šablony.
 
@@ -82,9 +82,9 @@ Následující kód ukazuje, jak templateLink parametr odkazuje na vnořené ša
 ```json
 "resources": [
   {
+     "type": "Microsoft.Resources/deployments",
      "apiVersion": "2017-05-10",
      "name": "linkedTemplate",
-     "type": "Microsoft.Resources/deployments",
      "properties": {
        "mode": "incremental",
        "templateLink": {
@@ -100,9 +100,9 @@ Azure Resource Manager vyhodnotí jako hlavní šablony za běhu a načte a vyho
 
 ### <a name="make-linked-templates-accessible-across-clouds"></a>Zpřístupněte propojenými šablonami napříč cloudy
 
-Vezměte v úvahu kde a jak ukládat všechny propojené šablony, můžete použít. Za běhu, načte Azure Resource Manageru a proto vyžaduje přímý přístup k – případný připojený šablony. Běžnou praxí je použití Githubu pro ukládání vnořených šablon. Úložiště GitHub může obsahovat soubory, které jsou přístupné veřejně prostřednictvím adresy URL. Přestože tento postup funguje dobře pro veřejný cloud a suverénních cloudech, může být umístěn v podnikové síti, nebo ve vzdáleném odpojeném umístění, bez jakékoli odchozí internetový přístup prostředí Azure Stack. V těchto případech by selhat Azure Resource Manageru pro načtení vnořené šablony. 
+Vezměte v úvahu kde a jak ukládat všechny propojené šablony, můžete použít. Za běhu, načte Azure Resource Manageru a proto vyžaduje přímý přístup k – případný připojený šablony. Běžnou praxí je použití Githubu pro ukládání vnořených šablon. Úložiště GitHub může obsahovat soubory, které jsou přístupné veřejně prostřednictvím adresy URL. Přestože tento postup funguje dobře pro veřejný cloud a suverénních cloudech, může být umístěn v podnikové síti, nebo ve vzdáleném odpojeném umístění, bez jakékoli odchozí internetový přístup prostředí Azure Stack. V těchto případech by selhat Azure Resource Manageru pro načtení vnořené šablony.
 
-Doporučeno pro nasazení cloudu je pro uložení do umístění, které je přístupné pro cílový cloud propojenými šablonami. V ideálním případě jsou všechny artefakty nasazení udržuje v a nasazení z kanálu průběžné integrace a vývoj (CI/CD). Alternativně můžete uložit vnořené šablony v kontejneru úložiště objektů blob, ze kterého můžete Azure Resource Manageru je načíst. 
+Doporučeno pro nasazení cloudu je pro uložení do umístění, které je přístupné pro cílový cloud propojenými šablonami. V ideálním případě jsou všechny artefakty nasazení udržuje v a nasazení z kanálu průběžné integrace a vývoj (CI/CD). Alternativně můžete uložit vnořené šablony v kontejneru úložiště objektů blob, ze kterého můžete Azure Resource Manageru je načíst.
 
 Protože úložiště objektů blob v každém z nich používá koncový bod různých plně kvalifikovaný název domény (FQDN), nakonfigurujte šablonu s umístěním propojenými šablonami se dvěma parametry. Parametry můžete při nasazení přijímají vstup uživatele. Šablony jsou obvykle vytvořené a sdílí více uživatelů, takže osvědčeným postupem je použít standardní název pro tyto parametry. Zásady vytváření názvů pomohou vytvořit více opakovaně použitelné šablony napříč oblastmi, cloudů a autoři.
 
@@ -132,9 +132,9 @@ V šabloně, odkazy jsou generovány kombinací základního identifikátoru URI
 ```json
 "resources": [
   {
-    "name": "shared",
     "type": "Microsoft.Resources/deployments",
     "apiVersion": "2015-01-01",
+    "name": "shared",
     "properties": {
       "mode": "Incremental",
       "templateLink": {
@@ -150,7 +150,7 @@ Pomocí tohoto přístupu, výchozí hodnota `_artifactsLocation` parametr se po
 
 ### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>_ArtifactsLocation nahrazujícím hardcoding odkazy
 
-Kromě se používají pro vnořené šablony, adresy URL v `_artifactsLocation` parametr se používá jako základ pro všechna související artefakty šablonu nasazení. Některá rozšíření virtuálního počítače zahrnout odkaz na skript uložené mimo šablonu. Pro tato rozšíření by měl pevně odkazy. Rozšíření vlastních skriptů a prostředí PowerShell DSC může například odkazu na externí skript na Githubu, jak je znázorněno: 
+Kromě se používají pro vnořené šablony, adresy URL v `_artifactsLocation` parametr se používá jako základ pro všechna související artefakty šablonu nasazení. Některá rozšíření virtuálního počítače zahrnout odkaz na skript uložené mimo šablonu. Pro tato rozšíření by měl pevně odkazy. Rozšíření vlastních skriptů a prostředí PowerShell DSC může například odkazu na externí skript na Githubu, jak je znázorněno:
 
 ```json
 "properties": {
@@ -215,7 +215,7 @@ Znalost, oblastí Azure a cloudy mohou lišit v jejich dostupných služeb, mů�
 
 Šablona nasadí a nakonfiguruje prostředky. Typ prostředku je poskytované poskytovatelem prostředků. Poskytovateli prostředků compute (Microsoft.Compute), například obsahuje více typů prostředků, jako je například virtuálních počítačů a availabilitySets. Každý poskytovatel prostředků nabízí rozhraní API do Azure Resource Manageru určené kontrakt běžné umožňuje konzistentní vzhledem k aplikacím, jednotné prostředí pro vytváření obsahu napříč všechny poskytovatele prostředků. Poskytovatele prostředků, která je dostupná v globální Azure, ale nemusí být dostupné v suverénních cloudů nebo určitá oblast Azure Stack.
 
-![Poskytovatelé prostředků](./media/templates-cloud-consistency/resource-providers.png) 
+![Poskytovatelé prostředků](./media/templates-cloud-consistency/resource-providers.png)
 
 Pokud chcete ověřit poskytovatelé prostředků, které jsou k dispozici v dané cloudové, spusťte následující skript v rozhraní příkazového řádku Azure ([rozhraní příkazového řádku](/cli/azure/install-azure-cli)):
 
@@ -253,7 +253,7 @@ Get-AzureRmResourceProvider | select-object ProviderNamespace -ExpandProperty Re
 
 I když můžete pevně nastavit názvy oblastí při zadání vlastnosti prostředku v šabloně, tento přístup nezaručuje, že šablona je možné nasadit do jiných prostředí Azure Stack, protože název oblasti se pravděpodobně neexistuje existuje.
 
-Tak, aby vyhovovaly různých oblastech, přidejte umístění služby vstupní parametr šablony s výchozí hodnotou. Pokud není zadána žádná hodnota během nasazení bude použita výchozí hodnota. 
+Tak, aby vyhovovaly různých oblastech, přidejte umístění služby vstupní parametr šablony s výchozí hodnotou. Pokud není zadána žádná hodnota během nasazení bude použita výchozí hodnota.
 
 Funkce šablony `[resourceGroup()]` vrátí objekt, který obsahuje následující dvojice klíč/hodnota:
 
@@ -284,9 +284,9 @@ Pomocí odkazu na klíč umístění objektu v defaultValue vstupní parametr, A
 },
 "resources": [
   {
-    "name": "storageaccount1",
     "type": "Microsoft.Storage/storageAccounts",
     "apiVersion": "2015-06-15",
+    "name": "storageaccount1",
     "location": "[parameters('location')]",
     ...
 ```
@@ -301,40 +301,40 @@ Z tohoto důvodu Resource Manageru představil nový koncept profily rozhraní A
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "type": "string",
-            "metadata": {
-                "description": "Location the resources will be deployed to."
-            },
-            "defaultValue": "[resourceGroup().location]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "metadata": {
+          "description": "Location the resources will be deployed to."
+      },
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2016-01-01",
+      "name": "mystorageaccount",
+      "location": "[parameters('location')]",
+      "properties": {
+        "accountType": "Standard_LRS"
+      }
     },
-    "variables": {},
-    "resources": [
-        {
-            "name": "mystorageaccount",
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2016-01-01",
-            "location": "[parameters('location')]",
-            "properties": {
-                "accountType": "Standard_LRS"
-            }
-        },
-        {
-            "name": "myavailabilityset",
-            "type": "Microsoft.Compute/availabilitySets",
-            "apiVersion": "2016-03-30",
-            "location": "[parameters('location')]",
-            "properties": {
-                "platformFaultDomainCount": 2,
-                "platformUpdateDomainCount": 2
-            }
-        }
-    ],
-    "outputs": {}
+    {
+      "type": "Microsoft.Compute/availabilitySets",
+      "apiVersion": "2016-03-30",
+      "name": "myavailabilityset",
+      "location": "[parameters('location')]",
+      "properties": {
+        "platformFaultDomainCount": 2,
+        "platformUpdateDomainCount": 2
+      }
+    }
+  ],
+  "outputs": {}
 }
 ```
 
@@ -357,16 +357,16 @@ Verze rozhraní API profilu funguje jako alias pro jednu verzi rozhraní API na 
     "variables": {},
     "resources": [
         {
-            "name": "mystorageaccount",
             "type": "Microsoft.Storage/storageAccounts",
+            "name": "mystorageaccount",
             "location": "[parameters('location')]",
             "properties": {
                 "accountType": "Standard_LRS"
             }
         },
         {
-            "name": "myavailabilityset",
             "type": "Microsoft.Compute/availabilitySets",
+            "name": "myavailabilityset",
             "location": "[parameters('location')]",
             "properties": {
                 "platformFaultDomainCount": 2,
@@ -399,17 +399,17 @@ Profil rozhraní API není požadovaný element v šabloně. I když přidáte e
     "variables": {},
     "resources": [
         {
-            "name": "mystorageaccount",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2016-01-01",
+            "name": "mystorageaccount",
             "location": "[parameters('location')]",
             "properties": {
                 "accountType": "Standard_LRS"
             }
         },
         {
-            "name": "myavailabilityset",
             "type": "Microsoft.Compute/availabilitySets",
+            "name": "myavailabilityset",
             "location": "[parameters('location')]",
             "properties": {
                 "platformFaultDomainCount": 2,
@@ -423,7 +423,7 @@ Profil rozhraní API není požadovaný element v šabloně. I když přidáte e
 
 ## <a name="check-endpoint-references"></a>Kontrola odkazů na koncový bod:
 
-Prostředky mohou mít odkazy na další služby na platformě. Veřejnou IP adresu můžete například mít veřejný název DNS přiřadit k ní. Veřejný cloud, suverénních cloudech a řešení pro Azure Stack mají své vlastní obory názvů odlišné koncový bod. Ve většině případů prostředku vyžaduje pouze předpony jako vstup v šabloně. Azure Resource Manageru za běhu, přidá hodnotu koncového bodu na ni. Některé hodnoty koncového bodu je potřeba explicitně zadat v šabloně. 
+Prostředky mohou mít odkazy na další služby na platformě. Veřejnou IP adresu můžete například mít veřejný název DNS přiřadit k ní. Veřejný cloud, suverénních cloudech a řešení pro Azure Stack mají své vlastní obory názvů odlišné koncový bod. Ve většině případů prostředku vyžaduje pouze předpony jako vstup v šabloně. Azure Resource Manageru za běhu, přidá hodnotu koncového bodu na ni. Některé hodnoty koncového bodu je potřeba explicitně zadat v šabloně.
 
 > [!NOTE]
 > K vývoji šablony pro cloud konzistence, není pevně koncový bod obory názvů.
@@ -444,7 +444,7 @@ Koncový bod obory názvů lze také ve výstupu šablony jako informace pro už
 Obecně se vyhýbejte koncové body pevně zakódované v šabloně. Osvědčeným postupem je použití funkce šablon odkaz k načtení dynamicky koncových bodů. Pro příklad, koncový bod nejčastěji pevně zakódované je obor názvů koncový bod pro účty úložiště. Každý účet úložiště má jedinečný název FQDN, která je vytvořena zřetězením názvu účtu úložiště, s oborem názvů koncový bod. Účet úložiště objektů blob s názvem mystorageaccount1 výsledky v různých plně kvalifikovaných názvů domén v závislosti na cloudu:
 
 * **mystorageaccount1.BLOB.Core.Windows.NET** při vytváření na globální cloud Azure.
-* **mystorageaccount1.BLOB.Core.chinacloudapi.CN** při v cloud Azure China.
+* **mystorageaccount1.blob.Core.chinacloudapi.cn** , když se vytvoří v cloudu Azure Čína 21Vianet.
 
 Následující funkce šablony odkaz načte obor názvů koncového bodu z poskytovatele prostředků úložiště:
 
@@ -456,7 +456,7 @@ Tak, že nahradíte hodnotu pevně zakódované koncový bod účtu úložiště
 
 ### <a name="refer-to-existing-resources-by-unique-id"></a>Odkazovat na existující prostředky podle jedinečné ID.
 
-Můžete také odkazovat na existující prostředek z stejného nebo jiného prostředku, skupiny a v rámci stejného předplatného nebo jiné předplatné, ve stejném tenantovi ve stejném cloudu. Pokud chcete načíst vlastnosti prostředku, musíte použít jedinečný identifikátor pro vlastní prostředek. `resourceId` Funkce šablony načte jedinečné ID prostředku, jako je SQL Server jako ukazuje následující kód: 
+Můžete také odkazovat na existující prostředek z stejného nebo jiného prostředku, skupiny a v rámci stejného předplatného nebo jiné předplatné, ve stejném tenantovi ve stejném cloudu. Pokud chcete načíst vlastnosti prostředku, musíte použít jedinečný identifikátor pro vlastní prostředek. `resourceId` Funkce šablony načte jedinečné ID prostředku, jako je SQL Server jako ukazuje následující kód:
 
 ```json
 "outputs": {
@@ -487,7 +487,7 @@ K načtení seznamu dostupných imagí virtuálních počítačů v umístění,
 az vm image list -all
 ```
 
-Můžete načíst stejného seznamu pomocí rutiny prostředí Azure PowerShell [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a zadejte umístění, které chcete, aby se `-Location` parametru. Příklad:
+Můžete načíst stejného seznamu pomocí rutiny prostředí Azure PowerShell [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a zadejte umístění, které chcete, aby se `-Location` parametru. Například:
 
 ```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage
@@ -590,7 +590,7 @@ Chcete-li načíst seznam rozšíření virtuálních počítačů, které jsou 
 az vm extension image list --location myLocation
 ```
 
-Můžete taky spustit rutinu prostředí Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) rutiny a použít `-Location` k určení umístění image virtuálního počítače. Příklad:
+Můžete taky spustit rutinu prostředí Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) rutiny a použít `-Location` k určení umístění image virtuálního počítače. Například:
 
 ```azurepowershell-interactive
 Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageType | Get-AzureRmVMExtensionImage | Select Type, Version
@@ -602,8 +602,8 @@ Vzhledem k tomu, že rozšíření virtuálních počítačů jsou prostředky R
 
 ```json
 {
-    "apiVersion": "2015-06-15",
     "type": "Microsoft.Compute/virtualMachines/extensions",
+    "apiVersion": "2015-06-15",
     "name": "myExtension",
     "location": "[parameters('location')]",
     ...
@@ -627,9 +627,9 @@ Každé konkrétní rozšíření je také systémovou správou verzí. Tato ver
 
 ```json
 {
-    "name": "MyCustomScriptExtension",
     "type": "extensions",
     "apiVersion": "2016-03-30",
+    "name": "MyCustomScriptExtension",
     "location": "[parameters('location')]",
     "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/myVM', copyindex())]"
@@ -638,7 +638,7 @@ Každé konkrétní rozšíření je také systémovou správou verzí. Tato ver
         "publisher": "Microsoft.Compute",
         "type": "CustomScriptExtension",
         "typeHandlerVersion": "1.7",
-        ...   
+        ...
 ```
 
 Chcete-li načíst seznam dostupných verzí pro konkrétní rozšíření virtuálního počítače, použijte [Get-AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) rutiny. Následující příklad načte dostupných verzí pro rozšíření PowerShell DSC (Desired State Configuration) virtuálního počítače z **myLocation**:
@@ -655,12 +655,12 @@ Je obtížné udržovat přehled o všech souvisejících nastavení, možnosti 
 
 Na následujícím obrázku je typickým příkladem proces vývoje pro tým pomocí integrovaného vývojového prostředí (IDE). V různých fázích na časové ose jsou spouštěny v různých testovacích typy. Zde dva vývojáři už pracují ve stejném řešení, ale tento scénář se vztahuje stejnou měrou na jednoho vývojáře nebo velkém týmu. Každý vývojář obvykle vytvoří místní kopii centrálním úložišti, povolení jednotlivá pracovat na místní kopie bez dopadu na ostatní, kdo může pracovat na stejné soubory.
 
-![Pracovní postupy](./media/templates-cloud-consistency/workflow.png) 
+![Pracovní postupy](./media/templates-cloud-consistency/workflow.png)
 
 Vezměte v úvahu následující tipy pro automatizaci a testování:
 
 * Ujistěte se, použijte testovacích nástrojů. Například Visual Studio Code a Visual Studio zahrnují technologie IntelliSense a dalších funkcí, které vám pomůžou ověřit své šablony.
-* Ke zlepšení kvality kódu během vývoje na místní sběrnici IDE, proveďte analýzu statického kódu pomocí testů jednotek a integrační testy. 
+* Ke zlepšení kvality kódu během vývoje na místní sběrnici IDE, proveďte analýzu statického kódu pomocí testů jednotek a integrační testy.
 * Pro ještě lepší možnosti během počáteční vývoje, testování částí a integrační testy by měl pouze zobrazit upozornění, pokud je nalezen problém a pokračujte s testy. Díky tomu můžete identifikovat problémy řešit a stanovení priorit pořadí změny, které jsou také označovány jako nasazení řízený testováním (TDD).
 * Mějte na paměti, že některé testy lze provést bez připojení k Azure Resource Manageru. Jiné, jako je testování nasazení šablony vyžadují Resource Manageru k provedení určité akce, které nelze provést v režimu offline.
 * Testování nasazení šablony pro ověření rozhraní API není roven skutečné nasazení. Navíc i v případě nasazení šablony z místního souboru, všechny odkazy na vnořené šablony v šabloně se načítají pomocí Správce prostředků přímo a artefakty odkazuje rozšíření virtuálních počítačů jsou načítána pro agenta virtuálního počítače spuštěné v nasazeném virtuálním počítači.

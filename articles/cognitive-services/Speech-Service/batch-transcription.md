@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 6b23ae21366699162b900ae420afae640aa20613
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 4c2985f35621ff3120217cbe38705ad2c228d6f7
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921478"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122096"
 ---
 # <a name="how-to-use-batch-transcription"></a>Použití dávkového přepisu
 
@@ -88,18 +88,13 @@ Parametry konfigurace jsou zadány jako JSON:
 K nakonfigurování přepisu použijte tyto volitelné vlastnosti:
 
 | Parametr | Popis |
-|-----------|------------|
-|`ProfanityFilterMode`|Určuje způsob zpracování vulgárních výrazů ve výsledcích rozpoznávání.
-||**`Masked`** – výchozí. Nahradí vulgární znaky hvězdičkami.<br>`None` – zakáže filtrování vulgárních výrazů.<br>`Removed` – odstraní z výsledku všechny vulgární výrazy.<br>`Tags` – přidá značky vulgárních výrazů.
-|`PunctuationMode`|Určuje, že se má ve výsledcích rozpoznávání zpracovat interpunkce.
-||`Automatic` – služba vloží interpunkci.<br>`Dictated` – diktování (mluvené) interpunkce<br>**`DictatedAndAutomatic`** – výchozí. Diktování a Automatická interpunkce<br>`None` – zakáže interpunkci.
-|`AddWordLevelTimestamps`|Určuje, zda mají být do výstupu přidány časová razítka na úrovni aplikace Word.
-||`True` – povolí časová razítka na úrovni slov<br>**`False`** – výchozí. Zakázat časová razítka na úrovni aplikace Word
-|`AddSentiment`|Určuje, zda je do utterance přidána analýza mínění
-||`True` – povolí mínění na utterance<br>**`False`** – výchozí. Zakázat mínění
-|`AddDiarization`|Určuje, zda je provedena analýza diarization. Pokud `true`, očekává se, že vstup bude zvuk mono kanálu, který obsahuje maximálně dva hlasy. `AddWordLevelTimestamps` musí být nastavené na `true`
-||`True` – povolí diarization<br>**`False`** – výchozí. Zakázat diarization
-|`TranscriptionResultsContainerUrl`|Volitelný token SAS pro zapisovatelný kontejner v Azure. Výsledek bude uložen v tomto kontejneru
+|-----------|-------------|
+| `ProfanityFilterMode` | Určuje způsob zpracování vulgárních výrazů v výsledky rozpoznávání. Platné hodnoty jsou `None` který zakáže filtrování vulgárních výrazů `Masked` hvězdičky, která nahradí vulgárních výrazů `Removed` výsledek, který zruší všechny vulgárních výrazů nebo `Tags` které přidá značky "vulgárních výrazů". Ve výchozím nastavení je `Masked`. |
+| `PunctuationMode` | Určuje způsob zpracování interpunkce v výsledky rozpoznávání. Platné hodnoty jsou `None` který zakáže interpunkční znaménka, `Dictated` což naznačuje explicitní interpunkce, `Automatic` které umožní dekodér řešit interpunkční znaménka, nebo `DictatedAndAutomatic` což naznačuje nařízeny interpunkční znaménka nebo automaticky. |
+| `AddWordLevelTimestamps` | Určuje, zda mají být do výstupu přidány časová razítka na úrovni aplikace Word. Přípustné hodnoty jsou `true`, které umožňují, aby byla časová razítka na úrovni aplikace Word a `false` (výchozí hodnota) zakázána. |
+| `AddSentiment` | Určuje mínění by měl být přidán do utterance. Přijaté hodnoty jsou `true`, které povolují mínění na utterance a `false` (výchozí hodnotu), která ho zakáže. |
+| `AddDiarization` | Určuje, že by měla být provedena analýza diarization na vstupu, u kterého se očekává, že kanál mono obsahuje dvě hlasy. Přípustné hodnoty jsou `true`, které povolují diarization a `false` (výchozí hodnota), která ji zakáže. Také je nutné, aby bylo `AddWordLevelTimestamps` nastaveno na hodnotu true.|
+|`TranscriptionResultsContainerUrl`|Volitelný token SAS pro zapisovatelný kontejner v Azure. Výsledek bude uložen v tomto kontejneru.
 
 ### <a name="storage"></a>Storage
 

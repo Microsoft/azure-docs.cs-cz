@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů VMware pomocí Azure Backup Serv
 description: V tomto článku se dozvíte, jak pomocí Azure Backup Server zálohovat virtuální počítače VMware běžící na serveru VMware vCenter/ESXi.
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: d1c8ec249e010d75bbe96f5c70072f41b9738370
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: df85cba42118a2e814a4a1c8338f3927e4d75f36
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173356"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152863"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů VMware pomocí Azure Backup Server
 
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak:
 
 ## <a name="before-you-start"></a>Než začnete
 
-- Ověřte, že používáte verzi vCenter/ESXi, která je podporovaná pro záložní verze 6,5, 6,0 a 5,5.
+- Ověřte, že používáte verzi vCenter/ESXi, která je podporovaná pro zálohování. Další informace najdete v [tématu](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)věnovaném matici podpory.
 - Ujistěte se, že jste nastavili Azure Backup Server. Pokud jste to ještě neudělali, [udělejte to předtím,](backup-azure-microsoft-azure-backup.md) než začnete. Měli byste používat Azure Backup Server s nejnovějšími aktualizacemi.
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>Vytvoření zabezpečeného připojení k vCenter Server
@@ -96,9 +96,11 @@ Pokud máte v rámci vaší organizace zabezpečený rozsah a nechcete používa
 
 1. Zkopírujte následující text do souboru. txt a vložte ho do něj.
 
-       ```text
-      Editor registru systému Windows verze 5,00 [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Microsoft data Protection Manager\VMWare] "IgnoreCertificateValidation" = DWORD: 00000001
-       ```
+```text
+Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
+"IgnoreCertificateValidation"=dword:00000001
+```
 
 2. Uložte soubor na Azure Backup Server počítači s názvem **DisableSecureAuthentication. reg**.
 
@@ -128,26 +130,41 @@ Azure Backup Server potřebuje uživatelský účet s oprávněními pro příst
 
 ### <a name="role-permissions"></a>Oprávnění role
 
-**verze 6.5/6.0** | **5.5**
---- | ---
-Úložiště dat. AllocateSpace | Úložiště dat. AllocateSpace
-Global.ManageCustomFields | Global.ManageCustomFields
-Global.SetCustomField |
-Host.Local.CreateVM | Síť. přiřadit
-Síť. přiřadit |
-Resource.AssignVMToPool |
-VirtualMachine.Config.AddNewDisk  | VirtualMachine.Config.AddNewDisk
-VirtualMachine. config. AdvancedConfig| VirtualMachine. config. AdvancedConfig
-VirtualMachine.Config.ChangeTracking| VirtualMachine.Config.ChangeTracking
-VirtualMachine. config. HostUSBDevice |
-VirtualMachine.Config.QueryUnownedFiles |
-VirtualMachine.Config.SwapPlacement| VirtualMachine.Config.SwapPlacement
-VirtualMachine.Interact.PowerOff| VirtualMachine.Interact.PowerOff
-VirtualMachine.Inventory.Create| VirtualMachine.Inventory.Create
-VirtualMachine.Provisioning.DiskRandomAccess |
-VirtualMachine.Provisioning.DiskRandomRead | VirtualMachine.Provisioning.DiskRandomRead
-VirtualMachine.State.CreateSnapshot | VirtualMachine.State.CreateSnapshot
-VirtualMachine. State. RemoveSnapshot | VirtualMachine. State. RemoveSnapshot
+| **Oprávnění pro Server vCenter 6,5 a vyšší uživatelský účet**        | **Oprávnění pro uživatelský účet vCenter 6,0**               | **Oprávnění pro uživatelský účet vCenter 5,5** |
+| ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------- |
+| Úložiště dat. AllocateSpace                                      |                                                           |                                             |
+| Úložiště dat. procházet úložiště dat                                   | Úložiště dat. AllocateSpace                                   | Síť. přiřadit                              |
+| Úložiště dat. operace se soubory na nízké úrovni                          | Globální. Správa vlastních atributů                           | Úložiště dat. AllocateSpace                     |
+| Cluster úložiště dat. Konfigurace clusteru datatstore             | Global. set – vlastní atribut                               | VirtualMachine.Config.ChangeTracking        |
+| Metody Global. disable                                       | Host. Local – operace. Vytvořit virtuální počítač              | VirtualMachine. State. RemoveSnapshot         |
+| Metody Global. Enable                                        | Síť. Přiřadit síť                                   | VirtualMachine.State.CreateSnapshot         |
+| Globální. licence                                              | Partner. Přiřadit virtuální počítač k fondu zdrojů         | VirtualMachine.Provisioning.DiskRandomRead  |
+| Global. log – událost                                             | Virtuální počítač. Konfigurace. Přidat nový disk                | VirtualMachine.Interact.PowerOff            |
+| Globální. Správa vlastních atributů                              | Virtuální počítač. Konfigurace. rozšířené                    | VirtualMachine.Inventory.Create             |
+| Global. set – vlastní atribut                                  | Virtuální počítač. Konfigurace. sledování změn disku        | VirtualMachine.Config.AddNewDisk            |
+| Síť. přiřaďte síť                                       | Virtuální počítač. Configuration. Host – zařízení USB             | VirtualMachine. config. HostUSBDevice         |
+| Partner. Přiřadit virtuální počítač k fondu zdrojů            | Virtuální počítač. Konfigurace. dotazování nevlastněných souborů         | VirtualMachine. config. AdvancedConfig        |
+| Virtuální počítač. Konfigurace. Přidat nový disk                   | Virtuální počítač. Umístění Configuration. swapfile          | VirtualMachine.Config.SwapPlacement         |
+| Virtuální počítač. Konfigurace. rozšířené                       | Virtuální počítač. Interakce. vypnutí                     | Global.ManageCustomFields                   |
+| Virtuální počítač. Konfigurace. sledování změn disku           | Virtuální počítač. Inventáře. Vytvořit nový                     |                                             |
+| Virtuální počítač. Konfigurace. zapůjčení disku                     | Virtuální počítač. Zřizování. povolení přístupu k disku            |                                             |
+| Virtuální počítač. Konfigurace. rozšíří se virtuální disk            | Virtuální počítač. Zřizování. Povolení přístupu k disku jen pro čtení |                                             |
+| Virtuální počítač. Operace hosta. změny operací hosta | Virtuální počítač. Správa snímků. Vytvořit snímek       |                                             |
+| Virtuální počítač. Operace hosta. spuštění programu operace hosta | Virtuální počítač. Správa snímků. Odebrat snímek       |                                             |
+| Virtuální počítač. Operace hosta. dotazy operace hosta     |                                                           |                                             |
+| Virtuální počítač. Působení. Připojení zařízení              |                                                           |                                             |
+| Virtuální počítač. Působení. Správa hostovaného operačního systému pomocí rozhraní VIX API |                                                           |                                             |
+| Virtuální počítač. Inventarizace. Register                          |                                                           |                                             |
+| Virtuální počítač. Inventář. odebrat                            |                                                           |                                             |
+| Virtuální počítač. Zřizování. povolení přístupu k disku              |                                                           |                                             |
+| Virtuální počítač. Zřizování. povolení přístupu k disku jen pro čtení    |                                                           |                                             |
+| Virtuální počítač. Zřizování. povolení stahování virtuálního počítače |                                                           |                                             |
+| Virtuální počítač. Správa snímků. Vytvoření snímku        |                                                           |                                             |
+| Virtuální počítač. Správa snímků. Odebrat snímek         |                                                           |                                             |
+| Virtuální počítač. Správa snímků. Vrátit se ke snímku      |                                                           |                                             |
+| vApp. Add – virtuální počítač                                     |                                                           |                                             |
+| vApp. Assign – fond zdrojů                                    |                                                           |                                             |
+| vApp. Unregister                                              |                                                           |                                             |
 
 ## <a name="create-a-vmware-account"></a>Vytvoření účtu VMware
 
@@ -227,7 +244,7 @@ Přidejte vCenter Server do Azure Backup Server.
 
     ![Zadat přihlašovací údaje](./media/backup-azure-backup-server-vmware/identify-creds.png)
 
-6. Kliknutím na **Přidat** přidejte server VMware do seznamu servery. Potom klikněte na tlačítko **Další**.
+6. Kliknutím na **Přidat** přidejte server VMware do seznamu servery. Pak klikněte na tlačítko **Další**.
 
     ![Přidat server VMWare a přihlašovací údaje](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
@@ -255,16 +272,16 @@ Přidejte virtuální počítače VMware pro zálohování. Skupiny ochrany shro
 
 1. Na stránce **Vybrat typ skupiny ochrany** vyberte **servery** a potom klikněte na **Další**. Zobrazí se stránka **Vybrat členy skupiny** .
 
-1. V části **Vybrat členy skupiny**vyberte virtuální počítače (nebo složky VM), které chcete zálohovat. Potom klikněte na tlačítko **Další**.
+1. V části **Vybrat členy skupiny**vyberte virtuální počítače (nebo složky VM), které chcete zálohovat. Pak klikněte na tlačítko **Další**.
 
     - Když vyberete složku nebo virtuální počítače nebo složky v této složce jsou také vybrány pro zálohování. Můžete zrušit kontrolu složek nebo virtuálních počítačů, které nechcete zálohovat.
 1. Pokud je už virtuální počítač nebo složka zálohovaný, nemůžete ho vybrat. Tím je zajištěno, že pro virtuální počítač nejsou vytvořeny duplicitní body obnovení.
 
     ![Vybrat členy skupiny](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
-1. Na stránce **Vybrat způsob ochrany dat** zadejte název skupiny ochrany a nastavení ochrany. Pokud chcete zálohovat do Azure, nastavte krátkodobou ochranu na **disk** a povolte online ochranu. Potom klikněte na tlačítko **Další**.
+1. Na stránce **Vybrat způsob ochrany dat** zadejte název skupiny ochrany a nastavení ochrany. Pokud chcete zálohovat do Azure, nastavte krátkodobou ochranu na **disk** a povolte online ochranu. Pak klikněte na tlačítko **Další**.
 
-    ![Vyberte způsob ochrany dat](./media/backup-azure-backup-server-vmware/name-protection-group.png)
+    ![Výběr způsobu ochrany dat](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
 1. V **nastavení zadat krátkodobé cíle**určete, jak dlouho chcete uchovávat data zálohovaná na disk.
    - V **oblasti uchovávání**zadejte počet dní, po které mají být udržovány body obnovení disku.
@@ -273,7 +290,7 @@ Přidejte virtuální počítače VMware pro zálohování. Skupiny ochrany shro
        - Krátkodobé zálohy jsou úplné zálohy a nejsou přírůstkově.
        - Klikněte na **Upravit** a změňte časy a data, kdy dojde k krátkodobému zálohování.
 
-         ![Zadat krátkodobé cíle](./media/backup-azure-backup-server-vmware/short-term-goals.png)
+         ![Určení krátkodobých cílů](./media/backup-azure-backup-server-vmware/short-term-goals.png)
 
 1. V části **Kontrola přidělení disku**Zkontrolujte místo na disku, které je k dispozici pro zálohování virtuálních počítačů. pro virtuální počítače.
 
@@ -293,17 +310,17 @@ Přidejte virtuální počítače VMware pro zálohování. Skupiny ochrany shro
 
     ![Výběr metody vytvoření repliky](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. V **Možnosti kontroly konzistence**vyberte, jak a kdy se mají automatizovat kontroly konzistence. Potom klikněte na tlačítko **Další**.
+1. V **Možnosti kontroly konzistence**vyberte, jak a kdy se mají automatizovat kontroly konzistence. Pak klikněte na tlačítko **Další**.
       - Můžete spouštět kontroly konzistence, když se data repliky neshodují, nebo podle nastaveného plánu.
       - Pokud nechcete konfigurovat automatické kontroly konzistence, můžete spustit ruční kontrolu. Provedete to tak, že kliknete pravým tlačítkem na skupinu ochrany > **provést kontrolu konzistence**.
 
-1. Na stránce **zadat data online ochrany** vyberte virtuální počítače nebo složky virtuálních počítačů, které chcete zálohovat. Můžete vybrat členy jednotlivě nebo kliknout na **Vybrat vše** pro výběr všech členů. Potom klikněte na tlačítko **Další**.
+1. Na stránce **zadat data online ochrany** vyberte virtuální počítače nebo složky virtuálních počítačů, které chcete zálohovat. Můžete vybrat členy jednotlivě nebo kliknout na **Vybrat vše** pro výběr všech členů. Pak klikněte na tlačítko **Další**.
 
     ![Zadat data online ochrany](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. Na stránce **zadat plán online zálohování** určete, jak často chcete zálohovat data z místního úložiště do Azure.
 
-    - Body obnovení cloudu pro data budou vygenerovány podle plánu. Potom klikněte na tlačítko **Další**.
+    - Body obnovení cloudu pro data budou vygenerovány podle plánu. Pak klikněte na tlačítko **Další**.
     - Po vygenerování bodu obnovení se přenese do trezoru Recovery Services v Azure.
 
     ![Zadat plán online zálohování](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
@@ -324,31 +341,31 @@ Přidejte virtuální počítače VMware pro zálohování. Skupiny ochrany shro
 Pokud chcete zálohovat vSphere 6,7, udělejte toto:
 
 - Povolit TLS 1,2 na serveru DPM
-  >[!Note]
-  >VMWare 6,7 a vyšší povolily TLS jako komunikační protokol.
+
+>[!NOTE]
+>VMWare 6,7 a vyšší má TLS povolený jako komunikační protokol.
 
 - Klíče registru nastavte takto:
 
-       ```text
+```text
+Windows Registry Editor Version 5.00
 
-        Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-        [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-       [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
-
-       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
-       ```
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
+```
 
 ## <a name="next-steps"></a>Další kroky
 

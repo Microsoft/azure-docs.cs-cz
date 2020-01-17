@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 0994ebe451bddea371f375e4d39172833df4d88a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 3d6f9f7d09664f9a5bd968ca5c0441b0846ceca3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028528"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122691"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 
@@ -105,7 +105,7 @@ V následující části je popsána konfigurace auditování pomocí Azure Port
 
 7. Pokud chcete nakonfigurovat zápis protokolů auditu do pracovního prostoru Log Analytics, vyberte **Log Analytics (Preview)** a otevřete **Log Analytics podrobnosti**. Vyberte nebo vytvořte Log Analytics pracovní prostor, do kterého budou zapsány protokoly, a pak klikněte na **OK**.
 
-    ![Pracovní prostor Log Analytics](./media/sql-database-auditing-get-started/auditing_select_oms.png)
+    ![Pracovní prostor služby Log Analytics](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
 8. Pokud chcete nakonfigurovat zápis protokolů auditu do centra událostí, vyberte **centrum událostí (Preview)** a otevřete **Podrobnosti centra událostí**. Vyberte centrum událostí, kam budou zapsány protokoly, a pak klikněte na **OK**. Ujistěte se, že centrum událostí je ve stejné oblasti jako databáze a Server.
 
@@ -249,11 +249,11 @@ V produkčním prostředí pravděpodobně pravidelně aktualizujete klíče úl
 
 - Informace o konfiguraci neměnného auditu v účtu úložiště najdete v tématu [Povolení zápisů v zabezpečeném připojení objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage#allow-protected-append-blobs-writes). Upozorňujeme, že název kontejneru pro auditování je **sqldbauditlogs**.
 
-> [!IMPORTANT] 
->  V současné době je k dispozici nastavení povolení chráněných objektů BLOB zápisů v závislosti na čase a viditelné pouze v následujících oblastech:
-> - Východní USA
-> - Středojižní USA
-> - Západní USA 2
+    > [!IMPORTANT]
+    > V současné době je k dispozici nastavení povolení chráněných objektů BLOB zápisů v závislosti na čase a viditelné pouze v následujících oblastech:
+    > - USA – východ
+    > - Středojižní USA
+    > - Západní USA 2
 
 
 ## <a id="subheading-7"></a>Správa Azure SQL Server a auditování databáze pomocí Azure PowerShell

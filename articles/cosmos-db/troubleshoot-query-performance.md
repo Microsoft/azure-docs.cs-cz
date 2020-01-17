@@ -4,172 +4,423 @@ description: Naučte se identifikovat, diagnostikovat a řešit potíže s Azure
 author: ginamr
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 07/10/2019
+ms.date: 01/14/2020
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 1859fa8f71b5c4c44d6e5da1b6a36ca9d9399516
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c004031ec40bedcf83d77d08a34ce1d0e28fecd8
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444730"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76157014"
 ---
-# <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Řešení potíží s výkonem dotazů pro Azure Cosmos DB
-Tento článek popisuje, jak identifikovat, diagnostikovat a řešit potíže s Azure Cosmos DB problémy s dotazy SQL. Chcete-li dosáhnout optimálního výkonu pro Azure Cosmos DB dotazy, postupujte podle následujících kroků pro řešení potíží. 
+# <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Řešení potíží s dotazy při použití Azure Cosmos DB
 
-## <a name="collocate-clients-in-same-azure-region"></a>Společné umístění klienti ve stejné oblasti Azure 
-Nejnižší možná latence se dosahuje tím, že se zaručí, že se volající aplikace nachází ve stejné oblasti Azure jako koncový bod zřízené Azure Cosmos DB. Seznam oblastí, které jsou k dispozici, najdete v článku [oblasti Azure](https://azure.microsoft.com/global-infrastructure/regions/#services) .
+Tento článek vás provede obecným doporučeným přístupem k řešení potíží s dotazy v Azure Cosmos DB. I když se postup uvedený v tomto dokumentu nesmí považovat za "zachytit vše" pro potenciální problémy s dotazy, zahrnuli jsme do něj nejběžnější tipy k výkonu. Tento dokument byste měli použít jako počáteční místo pro řešení potíží s pomalými nebo nákladnými dotazy v rozhraní API jádra Azure Cosmos DB (SQL). [Diagnostické protokoly](cosmosdb-monitor-resource-logs.md) můžete použít také k identifikaci dotazů, které jsou pomalé nebo využívají významné množství propustnosti.
 
-## <a name="check-consistency-level"></a>Kontrola úrovně konzistence
-[Úroveň konzistence](consistency-levels.md) může mít vliv na výkon a poplatky. Ujistěte se, že vaše úroveň konzistence je pro daný scénář vhodná. Další podrobnosti najdete v tématu [Výběr úrovně konzistence](consistency-levels-choosing.md).
+Optimalizace dotazů můžete široce kategorizovat v Azure Cosmos DB: optimalizace, které omezují náklady na žádost (RU) na dotaz a optimalizace, které pouze omezují latenci. Omezením poplatku za dotaz by se snížila i latence.
 
-## <a name="log-the-executed-sql-query"></a>Protokolovat spuštěný dotaz SQL 
+Tento dokument bude používat příklady, které se dají znovu vytvořit pomocí [nutriční](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) datové sady.
 
-Spuštěný dotaz SQL můžete protokolovat v účtu úložiště nebo v tabulce diagnostického protokolu. [Protokoly dotazů SQL prostřednictvím diagnostických protokolů](cosmosdb-monitor-resource-logs.md) umožňují protokolovat zavedený dotaz do účtu úložiště podle vašeho výběru. To vám umožní podívat se na protokoly a najít dotaz, který používá vyšší ru. Později můžete použít ID aktivity tak, aby odpovídalo skutečnému dotazu v QueryRuntimeStatistics. Dotaz je zakódován z důvodu zabezpečení a názvů parametrů dotazu a jejich hodnoty v klauzulích WHERE se liší od skutečných názvů a hodnot. Pomocí protokolování do účtu úložiště můžete zachovat dlouhodobé uchovávání provedených dotazů.  
+### <a name="obtaining-query-metrics"></a>Získávání metrik dotazů:
 
-## <a name="log-query-metrics"></a>Metriky dotazů protokolu
+Při optimalizaci dotazu v Azure Cosmos DB je prvním krokem vždy [získání metriky dotazu](profile-sql-api-query.md) pro dotaz. K dispozici jsou také prostřednictvím Azure Portal, jak je znázorněno níže:
 
-Použijte `QueryMetrics` k řešení potíží s pomalými nebo nákladnými dotazy. 
+[![získávání metriky dotazu](./media/troubleshoot-query-performance/obtain-query-metrics.png)](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
 
-  * Nastavte `FeedOptions.PopulateQueryMetrics = true`, aby `QueryMetrics` v odpovědi.
-  * Třída `QueryMetrics` má přetíženou `.ToString()` funkci, kterou lze vyvolat pro získání řetězcové reprezentace `QueryMetrics`. 
-  * Metriky je možné využít k odvození následujících přehledů, mimo jiné: 
-  
-      * Zda některé konkrétní součásti kanálu dotazů trvaly neobvykle dlouho (v pořadí stovek milisekund nebo více). 
+Po získání metriky dotazu Porovnejte počet načtených dokumentů s počtem výstupních dokumentů pro váš dotaz. Pomocí tohoto porovnání můžete určit relevantní oddíly pro odkaz níže.
 
-          * Podívejte se na `TotalExecutionTime`.
-          * Je-li `TotalExecutionTime` dotazu menší než čas ukončení spuštění, bude čas stráven na straně klienta nebo v síti. Překontrolujte, jestli se společně umístěného klient a oblast Azure.
-      
-      * Zda v analyzovaných dokumentech byly falešně pozitivní (Pokud je počet výstupních dokumentů mnohem menší než počet načtených dokumentů).  
+Počet načtených dokumentů je počet dokumentů, které vyžaduje dotaz k načtení. Počet výstupních dokumentů je počet dokumentů, které byly potřeba pro výsledky dotazu. Pokud je počet načtených dokumentů výrazně vyšší než počet výstupních dokumentů, měla by být alespoň jedna část dotazu, která nedokázala použít index a která je nutná k prohledání.
 
-          * Podívejte se na `Index Utilization`.
-          * `Index Utilization` = (počet vrácených dokumentů/počet načtených dokumentů)
-          * Pokud je počet vrácených dokumentů mnohem menší než počet načtený, bude analyzováno falešně pozitivních hodnot.
-          * Omezte počet dokumentů, které jsou načítány pomocí užších filtrů.  
+Na níže uvedený oddíl můžete získat informace, abyste pochopili relevantní optimalizace dotazů pro váš scénář:
 
-      * Způsob, jakým se fared jednotlivé zpáteční cesty (viz `Partition Execution Timeline` z řetězcové reprezentace `QueryMetrics`). 
-      * Určuje, zda dotaz využil požadavek na vysokou žádost. 
+### <a name="querys-ru-charge-is-too-high"></a>Poplatek za RU v dotazu je příliš vysoký.
 
-Další podrobnosti najdete v článku [o tom, jak získat metriky spouštění dotazů SQL](profile-sql-api-query.md) .
-      
-## <a name="tune-query-feed-options-parameters"></a>Ladění parametrů možností kanálu dotazů 
-Výkon dotazů je možné ladit přes parametry [možností kanálu](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions?view=azure-dotnet) požadavku. Zkuste nastavit následující možnosti:
+#### <a name="retrieved-document-count-is-significantly-greater-than-output-document-count"></a>Počet načtených dokumentů je podstatně větší než počet výstupních dokumentů.
 
-  * Nejprve nastavte `MaxDegreeOfParallelism` na hodnotu-1 a potom porovnejte výkon napříč různými hodnotami. 
-  * Nejprve nastavte `MaxBufferedItemCount` na hodnotu-1 a potom porovnejte výkon napříč různými hodnotami. 
-  * Nastavte `MaxItemCount` na hodnotu-1.
+- [Zajistěte, aby zásady indexování zahrnovaly nezbytné cesty.](#ensure-that-the-indexing-policy-includes-necessary-paths)
 
-Při porovnávání výkonu pro různé hodnoty zkuste například hodnoty 2, 4, 8, 16 atd.
- 
-## <a name="read-all-results-from-continuations"></a>Čtení všech výsledků z pokračování
-Pokud si myslíte, že se vám nezobrazují všechny výsledky, ujistěte se, že jste úplně vyprázdnili pokračování. Jinými slovy, pokračujete ve čtení výsledků, dokud token pro pokračování poskytuje další dokumenty.
+- [Informace o tom, které systémové funkce využívají index](#understand-which-system-functions-utilize-the-index)
 
-Úplného vyprázdnění je možné dosáhnout jedním z následujících způsobů:
+- [Optimalizujte dotazy pomocí filtru i klauzule ORDER BY.](#optimize-queries-with-both-a-filter-and-an-order-by-clause)
 
-  * Pokračovat ve zpracování výsledků při pokračování není prázdné.
-  * Pokračovat ve zpracování, zatímco dotaz má více výsledků. 
+- [Optimalizace dotazů, které používají DISTINCT](#optimize-queries-that-use-distinct)
 
-    ```csharp
-    // using AsDocumentQuery you get access to whether or not the query HasMoreResults
-    // If it does, just call ExecuteNextAsync until there are no more results
-    // No need to supply a continuation token here as the server keeps track of progress
-    var query = client.CreateDocumentQuery<Family>(collectionLink, options).AsDocumentQuery();
-    while (query.HasMoreResults)
-    {
-        foreach (Family family in await query.ExecuteNextAsync())
+- [Optimalizujte výrazy JOIN pomocí poddotazu.](#optimize-join-expressions-by-using-a-subquery)
+
+<br>
+
+#### <a name="retrieved-document-count-is-approximately-equal-to-output-document-count"></a>Počet načtených dokumentů je přibližně roven počtu výstupních dokumentů.
+
+- [Vyhnout se dotazům mezi oddíly](#avoid-cross-partition-queries)
+
+- [Optimalizace dotazů, které mají filtr na více vlastností](#optimize-queries-that-have-a-filter-on-multiple-properties)
+
+- [Optimalizujte dotazy pomocí filtru i klauzule ORDER BY.](#optimize-queries-with-both-a-filter-and-an-order-by-clause)
+
+<br>
+
+### <a name="querys-ru-charge-is-acceptable-but-latency-is-still-too-high"></a>Náklady na dotaz na RU jsou přijatelné, ale latence je stále příliš vysoká.
+
+- [Vylepšení blízkosti vaší aplikace a Azure Cosmos DB](#improving-proximity-between-your-app-and-azure-cosmos-db)
+
+- [Zvýšení zřízené propustnosti](#increasing-provisioned-throughput)
+
+- [Zvyšování MaxConcurrency](#increasing-maxconcurrency)
+
+- [Zvyšování MaxBufferedItemCount](#increasing-maxbuffereditemcount)
+
+## <a name="optimizations-for-queries-where-retrieved-document-count-significantly-exceeds-output-document-count"></a>Optimalizace pro dotazy, u kterých načtený počet dokumentů významně překračuje počet výstupních dokumentů:
+
+ Počet načtených dokumentů je počet dokumentů, které vyžaduje dotaz k načtení. Počet výstupních dokumentů je počet dokumentů, které byly potřeba pro výsledky dotazu. Pokud je počet načtených dokumentů výrazně vyšší než počet výstupních dokumentů, měla by být alespoň jedna část dotazu, která nedokázala použít index a která je nutná k prohledání.
+
+ Níže je uveden příklad skenovacího dotazu, který nebyl zcela obsluhován indexem.
+
+Dotaz:
+
+ ```sql
+SELECT VALUE c.description
+FROM c
+WHERE UPPER(c.description) = "BABYFOOD, DESSERT, FRUIT DESSERT, WITHOUT ASCORBIC ACID, JUNIOR"
+ ```
+
+Metriky dotazů:
+
+```
+Retrieved Document Count                 :          60,951
+Retrieved Document Size                  :     399,998,938 bytes
+Output Document Count                    :               7
+Output Document Size                     :             510 bytes
+Index Utilization                        :            0.00 %
+Total Query Execution Time               :        4,500.34 milliseconds
+  Query Preparation Times
+    Query Compilation Time               :            0.09 milliseconds
+    Logical Plan Build Time              :            0.05 milliseconds
+    Physical Plan Build Time             :            0.04 milliseconds
+    Query Optimization Time              :            0.01 milliseconds
+  Index Lookup Time                      :            0.01 milliseconds
+  Document Load Time                     :        4,177.66 milliseconds
+  Runtime Execution Times
+    Query Engine Times                   :          322.16 milliseconds
+    System Function Execution Time       :           85.74 milliseconds
+    User-defined Function Execution Time :            0.00 milliseconds
+  Document Write Time                    :            0.01 milliseconds
+Client Side Metrics
+  Retry Count                            :               0
+  Request Charge                         :        4,059.95 RUs
+```
+
+Počet načtených dokumentů (60 951) je podstatně větší než počet výstupních dokumentů (7), aby tento dotaz vyžadoval kontrolu. V tomto případě systémová funkce [Upper ()](sql-query-upper.md) nevyužívá index.
+
+## <a name="ensure-that-the-indexing-policy-includes-necessary-paths"></a>Zajistěte, aby zásady indexování zahrnovaly nezbytné cesty.
+
+Vaše zásada indexování by měla zahrnovat jakékoli vlastnosti zahrnuté v klauzulích `WHERE`, `ORDER BY` klauzulích, `JOIN`a většině systémových funkcí. Cesta zadaná v zásadách indexu by se měla shodovat s vlastností v dokumentech JSON (rozlišuje velká a malá písmena).
+
+Pokud spustíme jednoduchý dotaz na [nutriční](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) datovou sadu, při každém indexování je v případě, že je vlastnost v klauzuli `WHERE` indexována, zabereme mnohem nižší poplatek za ru.
+
+### <a name="original"></a>Původně
+
+Dotaz:
+
+```sql
+SELECT * FROM c WHERE c.description = "Malabar spinach, cooked"
+```
+
+Zásady indexování:
+
+```json
+{
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
         {
-            families.Add(family);
+            "path": "/*"
         }
+    ],
+    "excludedPaths": [
+        {
+            "path": "/description/*"
+        }
+    ]
+}
+```
+
+**Poplatek za ru:** 409,51 ru 's
+
+### <a name="optimized"></a>Optimalizované
+
+Zásady indexování se aktualizovaly:
+
+```json
+{
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/*"
+        }
+    ],
+    "excludedPaths": []
+}
+```
+
+**Poplatek za ru:** 2,98 ru 's
+
+K zásadám indexování můžete kdykoli přidat další vlastnosti bez dopadu na dostupnost nebo výkon zápisu. Pokud do indexu přidáte novou vlastnost, budou dotazy, které tuto vlastnost používají, okamžitě využívat nový dostupný index. Dotaz bude při sestavení používat nový index. Výsledkem je, že výsledky dotazu můžou být nekonzistentní, protože probíhá opětovné sestavení indexu. Pokud je nová vlastnost indexována, dotazy, které využívají pouze existující indexy, nebudou při opětovném sestavení indexu ovlivněny. [Průběh transformace indexu můžete sledovat](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
+
+## <a name="understand-which-system-functions-utilize-the-index"></a>Informace o tom, které systémové funkce využívají index
+
+Pokud je výraz možné přeložit na rozsah řetězcových hodnot, znamená to, že může využívat index, jinak ne.
+
+Tady je seznam řetězcových hodnot, které můžou využívat index:
+
+- STARTSWITH(str_expr, str_expr)
+- LEFT(str_expr, num_expr) = str_expr
+- SUBSTRING(str_expr, num_expr, num_expr) = str_expr, ale pouze pokud má první parametr num_expr hodnotu 0
+
+Některé běžné systémové funkce, které nepoužívají index a musí načíst každý dokument, jsou následující:
+
+| **Systémová funkce**                     | **Nápady pro optimalizaci**             |
+| --------------------------------------- |------------------------------------------------------------ |
+| CONTAINS                                | Použití Azure Search pro fulltextové vyhledávání                        |
+| HORNÍ/DOLNÍ                             | Namísto použití systémové funkce k normalizaci dat pokaždé pro porovnávání místo toho při vložení normalizují velká a malá písmena. Dotaz, jako je například ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'```, se jednoduše naplní ```SELECT * FROM c WHERE c.name = 'BOB'``` |
+| Matematické funkce (neagregace) | Pokud v dotazu potřebujete často vypočítat hodnotu, zvažte možnost Uložit tuto hodnotu jako vlastnost v dokumentu JSON. |
+
+------
+
+Ostatní části dotazu mohou i nadále využívat index navzdory tím, že systémové funkce nepoužívají index.
+
+## <a name="optimize-queries-with-both-a-filter-and-an-order-by-clause"></a>Optimalizujte dotazy pomocí filtru i klauzule ORDER BY.
+
+I když dotazy s filtrem a klauzulí `ORDER BY` obvykle využívají index rozsahu, budou efektivnější, pokud je lze zpracovat ze složeného indexu. Kromě změny zásad indexování byste měli do klauzule `ORDER BY` přidat všechny vlastnosti složeného indexu. Tato úprava dotazu zajistí, že bude používat složený index.  Můžete sledovat dopad spuštěním dotazu na [nutriční](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) datovou sadu.
+
+### <a name="original"></a>Původně
+
+Dotaz:
+
+```sql
+SELECT * FROM c WHERE c.foodGroup = “Soups, Sauces, and Gravies” ORDER BY c._ts ASC
+```
+
+Zásady indexování:
+
+```json
+{
+
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[]
+}
+```
+
+**Poplatek za ru:** 44,28 ru 's
+
+### <a name="optimized"></a>Optimalizované
+
+Aktualizovaný dotaz (zahrnuje obě vlastnosti v klauzuli `ORDER BY`):
+
+```sql
+SELECT * FROM c 
+WHERE c.foodGroup = “Soups, Sauces, and Gravies” 
+ORDER BY c.foodGroup, c._ts ASC
+```
+
+Zásady indexování se aktualizovaly:
+
+```json
+{  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/foodGroup",
+                    "order":"ascending"
+        },
+                {  
+                    "path":"/_ts",
+                    "order":"ascending"
+                }
+            ]
+        ]
     }
-    ```
 
-## <a name="choose-system-functions-that-utilize-index"></a>Zvolte systémové funkce využívající index.
-Pokud je výraz možné přeložit na rozsah řetězcových hodnot, znamená to, že může využívat index, jinak ne. 
+```
 
-Tady je seznam řetězcových hodnot, které můžou využívat index: 
-    
-  * STARTSWITH(str_expr, str_expr) 
-  * LEFT(str_expr, num_expr) = str_expr 
-  * SUBSTRING(str_expr, num_expr, num_expr) = str_expr, ale pouze pokud má první parametr num_expr hodnotu 0 
-    
-    Tady je několik příkladů dotazů: 
-    
-    ```sql
+**Poplatek za ru:** 8,86 ru 's
 
-    -- If there is a range index on r.name, STARTSWITH will utilize the index while ENDSWITH won't 
-    SELECT * 
-    FROM c 
-    WHERE STARTSWITH(c.name, 'J') AND ENDSWITH(c.name, 'n')
+## <a name="optimize-queries-that-use-distinct"></a>Optimalizace dotazů, které používají DISTINCT
 
-    ```
-    
-    ```sql
+Bude efektivnější najít `DISTINCT` sadu výsledků, pokud jsou duplicitní výsledky po sobě. Přidáním klauzule `ORDER BY` do dotazu a složeného indexu zajistíte, aby byly duplicitní výsledky po sobě. Pokud potřebujete `ORDER BY` více vlastností, přidejte složený index. Můžete sledovat dopad spuštěním dotazu na [nutriční](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) datovou sadu.
 
-    -- LEFT will utilize the index while RIGHT won't 
-    SELECT * 
-    FROM c 
-    WHERE LEFT(c.name, 2) = 'Jo' AND RIGHT(c.name, 2) = 'hn'
+### <a name="original"></a>Původně
 
-    ```
+Dotaz:
 
-  * Vyhněte se systémovým funkcím v filtru (nebo v klauzuli WHERE), které nejsou obsluhovány indexem. Mezi příklady takových systémových funkcí patří například obsahuje, Velká a malá písmena.
-  * Pokud je to možné, pište dotazy tak, aby používaly filtr klíče oddílu.
-  * Chcete-li dosáhnout provádění dotazů, vyhněte se volání hodnoty horní/nižší ve filtru. Místo toho Normalizujte velká a malá písmena hodnot při vložení. Pro každou z hodnot vložte hodnotu s požadovaným písmenem nebo vložte původní hodnotu a hodnotu s požadovaným velikostí písmen. 
+```sql
+SELECT DISTINCT c.foodGroup 
+FROM c
+```
 
-    Příklad:
-    
-    ```sql
+**Poplatek za ru:** 32,39 ru 's
 
-    SELECT * FROM c WHERE UPPER(c.name) = "JOE"
+### <a name="optimized"></a>Optimalizované
 
-    ```
-    
-    V tomto případě uložte "Jana" velkými písmeny nebo uložte obě "Jana" původní hodnotu a "Jana". 
-    
-    Pokud jsou data v datovém formátu JSON normalizována, bude dotaz:
-    
-    ```sql
+Aktualizovaný dotaz:
 
-    SELECT * FROM c WHERE c.name = "JOE"
+```sql
+SELECT DISTINCT c.foodGroup 
+FROM c 
+ORDER BY c.foodGroup
+```
 
-    ```
+**Poplatek za ru:** 3,38 ru 's
 
-    Druhý dotaz bude více proveden, protože nevyžaduje transformaci každé hodnoty za účelem porovnání hodnot s názvem "Jana".
+## <a name="optimize-join-expressions-by-using-a-subquery"></a>Optimalizujte výrazy JOIN pomocí poddotazu.
+Podhodnoty poddotazů mohou optimalizovat `JOIN` výrazy vložením predikátů za každý výraz SELECT-many místo po všech křížových spojeních v klauzuli `WHERE`.
 
-Další podrobnosti o systémové funkci najdete v článku [systémové funkce](sql-query-system-functions.md) .
+Zamyslete se nad následujícím dotazem:
 
-## <a name="check-indexing-policy"></a>Vyhledat zásady indexování
-Pokud chcete ověřit, že aktuální [zásady indexování](index-policy.md) jsou optimální:
+```sql
+SELECT Count(1) AS Count
+FROM c
+JOIN t IN c.tags
+JOIN n IN c.nutrients
+JOIN s IN c.servings
+WHERE t.name = 'infant formula' AND (n.nutritionValue > 0
+AND n.nutritionValue < 10) AND s.amount > 1
+```
 
-  * Zajistěte, aby všechny cesty JSON použité v dotazech byly zahrnuty v zásadách indexování pro rychlejší čtení.
-  * Vylučte cesty nepoužívané v dotazech pro provádění dalších operací zápisu.
+**Poplatek za ru:** 167,62 ru 's
 
-Další podrobnosti najdete v článku [Správa zásad indexování](how-to-manage-indexing-policy.md) .
+Pro tento dotaz bude index odpovídat jakémukoli dokumentu, který má značku s názvem "počáteční vzorec", nutritionValue větší než 0 a obsluhující množství větší než 1. Výraz `JOIN` v tomto případě provede všechny položky značek, živin a zařadí pole pro každý shodný dokument před použitím jakéhokoli filtru. Klauzule `WHERE` pak použije predikát filtru u každé `<c, t, n, s>` řazené kolekce členů.
 
-## <a name="spatial-data-check-ordering-of-points"></a>Prostorová data: kontrolovat řazení bodů
-Body v rámci mnohoúhelníku musí zadat v pořadí proti směru hodinových ručiček. Mnohoúhelník zadat v pořadí po směru hodinových ručiček představuje inverzní oblasti v rámci něj.
+Pokud má například odpovídající dokument 10 položek v každém ze tří polí, rozšíří se na 1 x 10 x 10 x 10 (tj. 1 000) řazené kolekce členů. Použití poddotazů tady může pomoci při filtrování propojených položek pole před připojením k dalšímu výrazu.
 
-## <a name="optimize-join-expressions"></a>Optimalizovat výrazy JOIN
-`JOIN` výrazy se můžou rozšířit na velké mezi produkty. Pokud je to možné, dotazování na menší místo pro hledání prostřednictvím užšího filtru.
+Tento dotaz je ekvivalentní předchozímu, ale používá poddotazy:
 
-Podhodnoty poddotazů mohou optimalizovat `JOIN` výrazy vložením predikátů za každý výraz SELECT-many místo po všech křížových spojeních v klauzuli `WHERE`. Podrobný příklad najdete v článku věnovaném [optimalizaci výrazů spojení](https://docs.microsoft.com/azure/cosmos-db/sql-query-subquery#optimize-join-expressions) .
+```sql
+SELECT Count(1) AS Count
+FROM c
+JOIN (SELECT VALUE t FROM t IN c.tags WHERE t.name = 'infant formula')
+JOIN (SELECT VALUE n FROM n IN c.nutrients WHERE n.nutritionValue > 0 AND n.nutritionValue < 10)
+JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
+```
 
-## <a name="optimize-order-by-expressions"></a>Optimalizovat pořadí podle výrazů 
-`ORDER BY` výkon dotazů může být zhoršený, pokud jsou pole zhuštěná nebo nejsou zahrnutá v zásadách indexů.
+**Poplatek za ru:** 22,17 ru 's
 
-  * Pro zhuštěná pole, jako je například čas, zmenšete hledaný prostor co nejvíce s filtry. 
-  * V případě `ORDER BY`jedné vlastnosti uveďte vlastnost include v zásadách indexování. 
-  * U více vlastností `ORDER BY` výrazů definujte [složený index](https://docs.microsoft.com/azure/cosmos-db/index-policy#composite-indexes) pro pole, která se řadí.  
+Předpokládejme, že filtr odpovídá pouze jedné položce v poli značek a existuje pět položek pro živiny i pole. Výrazy `JOIN` se pak rozbalí na 1 x 1 x 5 × 5 = 25 položek, a to na rozdíl od 1 000 položek v prvním dotazu.
 
-## <a name="many-large-documents-being-loaded-and-processed"></a>Načítá a zpracovává se mnoho velkých dokumentů.
-Čas a ru, které jsou vyžadovány dotazem, nejsou závislé na velikosti odpovědi, jsou také závislé na práci, kterou provádí kanál zpracování dotazů. Čas a ru se proporcionálně zvyšují s množstvím práce, kterou provádí celý kanál zpracování dotazů. U rozsáhlých dokumentů je prováděno více práce, což znamená více času a ru se vyžaduje pro načtení a zpracování velkých dokumentů.
+## <a name="optimizations-for-queries-where-retrieved-document-count-is-approximately-equal-to-output-document-count"></a>Optimalizace pro dotazy, kde se načtený počet dokumentů přibližně rovná počtu výstupních dokumentů:
 
-## <a name="low-provisioned-throughput"></a>Nízká zajištěná propustnost
-Zajistěte, aby zajištěná propustnost mohla zpracovávat úlohy. Zvyšte rozpočet RU pro ovlivněné kolekce.
+Pokud je počet načtených dokumentů přibližně roven výstupnímu počtu dokumentů, znamená to, že dotaz nemusel kontrolovat mnoho zbytečných dokumentů. Pro mnoho dotazů, jako jsou například ty, které používají klíčové slovo TOP, může počet načtených dokumentů překročit počet výstupních dokumentů o 1. To by nemělo způsobovat obavy.
 
-## <a name="try-upgrading-to-the-latest-sdk-version"></a>Zkuste upgradovat na nejnovější verzi sady SDK.
-Informace o tom, jak zjistit nejnovější sadu SDK, najdete v článku [Stažení sady SDK a poznámky k verzi](sql-api-sdk-dotnet.md) .
+## <a name="avoid-cross-partition-queries"></a>Vyhnout se dotazům mezi oddíly
+
+Azure Cosmos DB používá [dělení](partitioning-overview.md) ke škálování jednotlivých kontejnerů v případě, že se vyžadují jednotky žádosti a úložiště dat. Každý fyzický oddíl má samostatný a nezávislý index. Pokud má váš dotaz filtr rovnosti, který odpovídá klíči oddílu vašeho kontejneru, budete muset pouze ověřit index relevantního oddílu. Tato optimalizace snižuje celkový počet RU dotazů, které vyžaduje dotaz.
+
+Pokud máte velké množství zajištěných údajů RU (více než 30 000) nebo velký objem uložených dat (více než ~ 100 GB), pravděpodobně máte dostatečně velký kontejner, abyste viděli výrazné snížení nákladů na dotaz RU.
+
+Pokud například vytvoříme kontejner s klíčovým adaptérem oddílu, budou následující dotazy potřebovat pouze kontrolovat jeden fyzický oddíl:
+
+```sql
+SELECT * FROM c
+WHERE c.foodGroup = “Soups, Sauces, and Gravies” and c.description = "Mushroom, oyster, raw"
+```
+
+Tyto dotazy by taky byly optimalizované zahrnutím klíče oddílu do dotazu:
+
+```sql
+SELECT * FROM c
+WHERE c.foodGroup IN(“Soups, Sauces, and Gravies”, “"Vegetables and Vegetable Products”) and  c.description = "Mushroom, oyster, raw"
+```
+
+Dotazy, které mají na klíč oddílu filtry rozsahů, nebo nemají žádné filtry pro klíč oddílu, budou muset "ventilátor-out" a kontrolovat výsledky pro každý z indexu fyzického oddílu.
+
+```sql
+SELECT * FROM c
+WHERE c.description = "Mushroom, oyster, raw"
+```
+
+```sql
+SELECT * FROM c
+WHERE c.foodGroup > “Soups, Sauces, and Gravies” and c.description = "Mushroom, oyster, raw"
+```
+
+## <a name="optimize-queries-that-have-a-filter-on-multiple-properties"></a>Optimalizace dotazů, které mají filtr na více vlastností
+
+I když dotazy s filtry u více vlastností budou normálně využívat index rozsahu, budou efektivnější, pokud je lze zpracovat ze složeného indexu. U malých objemů dat tato optimalizace nebude mít významný dopad. U velkých objemů dat se ale může ukázat jako užitečné. V rámci složeného indexu můžete optimalizovat jenom jeden filtr nerovnosti. Pokud má váš dotaz více filtrů bez rovnosti, měli byste vybrat jeden z nich, který bude používat složený index. Zbytek bude dál používat indexy rozsahu. Filtr bez rovnosti musí být v složeném indexu definován jako poslední. [Další informace o složených indexech](index-policy.md#composite-indexes)
+
+Tady jsou některé příklady dotazů, které by mohly být optimalizované pomocí složeného indexu:
+
+```sql
+SELECT * FROM c
+WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts = 1575503264
+```
+
+```sql
+SELECT * FROM c
+WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts > 1575503264
+```
+
+Tady je příslušný složený index:
+
+```json
+{  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/foodGroup",
+                    "order":"ascending"
+                },
+                {  
+                    "path":"/_ts",
+                    "order":"ascending"
+                }
+            ]
+        ]
+}
+```
+
+## <a name="common-optimizations-that-reduce-query-latency-no-impact-on-ru-charge"></a>Běžné optimalizace, které snižují latenci dotazů (bez dopadu na poplatek za RU):
+
+V mnoha případech může být poplatek přijatelný, ale latence dotazů je stále příliš vysoká. Níže uvedené části poskytují přehled tipů pro snížení latence dotazů. Pokud stejný dotaz spouštíte několikrát pro stejnou datovou sadu, bude mít každý čas stejný poplatek za RU. Latence dotazů se ale může lišit mezi provedeními dotazu.
+
+## <a name="improving-proximity-between-your-app-and-azure-cosmos-db"></a>Vylepšení blízkosti vaší aplikace a Azure Cosmos DB
+
+Dotazy, které jsou spouštěny z jiné oblasti, než je účet Azure Cosmos DB, budou mít vyšší latenci, než kdyby byly spuštěny ve stejné oblasti. Pokud jste například spustili kód na stolním počítači, měli byste očekávat, že latence bude Desítková nebo stovka (nebo více) milisekund větší než v případě, že dotaz pochází z virtuálního počítače ve stejné oblasti Azure jako Azure Cosmos DB. [Globální distribuce dat v Azure Cosmos DB](distribute-data-globally.md) je jednoduchá, aby bylo zajištěno, že vaše data budou blíž do vaší aplikace.
+
+## <a name="increasing-provisioned-throughput"></a>Zvýšení zřízené propustnosti
+
+V Azure Cosmos DB se zřízená propustnost měří v jednotkách žádosti (RU). Představte si, že máte dotaz, který spotřebovává 5 RU propustnosti. Pokud například zřídíte 1 000 RU, budete moct spustit tento dotaz 200 krát za sekundu. Pokud jste se pokusili spustit dotaz, když není k dispozici dostatek propustnosti, Azure Cosmos DB by vrátil chybu HTTP 429. Po krátké době se tento dotaz automaticky zopakuje v jakékoli aktuální sadě SDK rozhraní API jádra (SQL). Omezené požadavky mohou trvat delší dobu, takže zvýšení zajištěné propustnosti může zlepšit latenci dotazů. [Celkový počet požadavků, které jsou omezeny požadavky](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors) , můžete sledovat v okně metriky Azure Portal.
+
+## <a name="increasing-maxconcurrency"></a>Zvyšování MaxConcurrency
+
+Paralelní dotazy fungují paralelně dotazování na více oddílů. Data z jednotlivých dělených kolekcí se ale v souvislosti s dotazem načítají sériově. To znamená, že úprava MaxConcurrency na počet oddílů má maximální šanci dosáhnout nejvíce výkonného dotazu, za předpokladu, že všechny ostatní systémové podmínky zůstanou stejné. Pokud neznáte počet oddílů, můžete nastavit MaxConcurrency (nebo MaxDegreesOfParallelism ve starších verzích sady SDK) na vysoké číslo a systém zvolí minimální úroveň paralelismu (počet oddílů, zadání uživatelem zadaných uživatelem).
+
+## <a name="increasing-maxbuffereditemcount"></a>Zvyšování MaxBufferedItemCount
+
+Dotazy jsou navržené tak, aby výsledky byly předem načteny, zatímco aktuální dávka výsledků je zpracovávána klientem. Předběžné načítání pomáhá při celkové latenci v rámci dotazu. Nastavení MaxBufferedItemCount omezuje počet předběžně načtených výsledků. Když nastavíte tuto hodnotu na očekávaný počet vrácených výsledků (nebo vyšší číslo), dotaz může získat maximální přínos před načtením. Nastavení této hodnoty na hodnotu-1 umožní systému automaticky rozhodovat o počtu položek do vyrovnávací paměti.
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o tom, jak měřit ru na dotaz, získat statistiku spouštění a vyladit dotazy a další informace:

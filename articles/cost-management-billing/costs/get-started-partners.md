@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/19/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: a320a446bf6a2ff5d5d923961b2614970ffa70f9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b337c1d57d253f55f3171e1de78a81b6de13ba31
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75988406"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76157139"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Začínáme s Azure Cost Management pro partnery
 
@@ -213,7 +213,7 @@ V souborech podrobností o využití a Cost Management rozhraní API se nacháze
 | Umístění | Normalizované umístění prostředku. | Nevztahuje se |
 | effectivePrice | Efektivní Jednotková cena služby v cenové měně. Jedinečné pro produkt, rodinu služeb, měřič a nabídku. Používá se s cenami v ceníku pro fakturační účet. V případě, že jsou k dispozici vrstvené ceny nebo zahrnuté množství, zobrazuje se za ni smíšená cena za spotřebu. | Jednotková cena po provedení úprav. |
 | Množství | Nakoupené nebo spotřebované měřené množství. Množství měřiče použitého během fakturačního období. | Počet jednotek Zajistěte, aby během odsouhlasení odpovídaly informacím v systému fakturace. |
-| unitOfMeasure | Určuje jednotku, ve které se služba účtuje. Například GB a hodiny. | Určuje jednotku, ve které se služba účtuje. Například GB, hodiny a 10, tisících. |
+| unitOfMeasure | Určuje jednotku, ve které se služba účtuje. Například GB a hodiny. | Určuje jednotku, ve které se služba účtuje. Například GB, hodiny a 10 000 s. |
 | pricingCurrency | Měna, která definuje jednotkovou cenu | Měna v ceníku|
 | billingCurrency | Měna definující fakturované náklady. | Měna geografické oblasti zákazníka |
 | chargeType | Definuje typ poplatků, který představuje náklady v Azure Cost Management jako nákup a refundace. | Typ poplatků nebo úprav. Není k dispozici pro aktuální aktivitu. |
@@ -228,7 +228,7 @@ V souborech podrobností o využití a Cost Management rozhraní API se nacháze
 | serviceInfo1 | Starší verze pole, která zachycuje volitelná metadata specifická pro službu. | Interní metadata služby Azure. |
 | serviceInfo2 | Starší verze pole, která zachycuje volitelná metadata specifická pro službu. | Informace o službě. Například typ obrázku pro virtuální počítač a název poskytovatele internetových služeb pro ExpressRoute.|
 | additionalInfo | Metadata konkrétních služeb. Například typ image u virtuálního počítače. | Jakékoli další informace, které nejsou pokryté v jiných sloupcích. Metadata specifická pro službu. Například typ image u virtuálního počítače.|
-| značek | Značka, kterou přiřadíte k měřiči. Pomocí značek můžete seskupovat záznamy fakturace. Pomocí značek můžete například distribuovat náklady podle oddělení, které používá měřič. | Značky přidané zákazníkem|
+| tags | Značka, kterou přiřadíte k měřiči. Pomocí značek můžete seskupovat záznamy fakturace. Pomocí značek můžete například distribuovat náklady podle oddělení, které používá měřič. | Značky přidané zákazníkem|
 | **partnerEarnedCreditRate** | Pokud je na základě přístupu k partnerovi pro správu partnerského serveru k dispozici kredity, je sazba uplatněna. | Míra získaného kreditu pro partnery (PEC). Například 0% nebo 15%. |
 | **partnerEarnedCreditApplied** | Označuje, zda byl použit partnerský kredit. | Nevztahuje se |
 
@@ -265,7 +265,11 @@ Uživatelé s přístupem RBAC k předplatnému můžou také exportovat náklad
 
 V Azure Portal se přihlaste k tenantovi partnera nebo zákazníkovi a vyberte **cost management + fakturace**. Vyberte příslušný obor, například fakturační účet, a pak vyberte **Analýza nákladů**. Po načtení stránky vyberte **exportovat**. Vyberte **Zobrazit všechny exporty** v části naplánovat export.
 
+![Vyberte exportovat a zobrazit všechny exporty.](./media/get-started-partners/export01.png)
+
 Potom vyberte **Přidat** a zadejte název a vyberte typ exportu. Vyberte kartu **úložiště** a zadejte požadované informace.
+
+![Přidat nový export a vybrat kartu úložiště](./media/get-started-partners/export02.png)
 
 Při vytváření exportu v partnerském tenantovi vyberte předplatné s průběžnými platbami v partnerském tenantovi. Vytvořte účet Azure Storage pomocí tohoto předplatného.
 
@@ -274,6 +278,8 @@ Pro uživatele RBAC v tenantovi zákazníka vyberte předplatné v tenantovi zá
 Zkontrolujte obsah a pak vyberte **vytvořit** a naplánujte export.
 
 Pokud chcete ověřit data v seznamu exportu, vyberte název účtu úložiště. Na stránce účet úložiště vyberte **kontejnery** a pak vyberte kontejner. Přejděte do odpovídající složky a vyberte soubor CSV. Vyberte **Stáhnout** a získejte soubor CSV a otevřete ho. Export exportovaných dat se podobá datovým datům, který se podobá podrobnostem o využití Azure Portal.
+
+![Příklad exportovaných dat](./media/get-started-partners/example-export-data.png)
 
 ## <a name="cost-management-rest-apis"></a>Rozhraní REST API pro Cost Management
 
@@ -371,7 +377,7 @@ Nejprve použijte následující příspěvek.
 POST https://management.azure.com/providers/Microsoft.Billing/BillingAccounts/{billingAccountName}/billingProfiles/{billingProfileID}/pricesheet/default/download?api-version=2019-10-01-preview&format=csv" -verbose
 ```
 
-Pak zavolejte hodnotu vlastnosti asynchronní operace. Příklad:
+Pak zavolejte hodnotu vlastnosti asynchronní operace. Například:
 
 ```
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileID}/pricesheetDownloadOperations/{operation}?sessiontoken=0:11186&api-version=2019-10-01-preview

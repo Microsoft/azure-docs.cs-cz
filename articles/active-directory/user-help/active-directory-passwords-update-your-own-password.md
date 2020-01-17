@@ -9,23 +9,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 01/15/2020
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c0d0fdf4e7df0401692eb026d55fe1a7c9322f1
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d8b46dbc0cc3c61396acdc7d21517c13d4650bf3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160799"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156280"
 ---
-# <a name="reset-your-work-or-school-password"></a>Resetování svého pracovního nebo školního hesla
+# <a name="reset-your-work-or-school-password-using-security-info"></a>Resetujte své pracovní nebo školní heslo pomocí bezpečnostních údajů
 
-Pokud jste zapomněli své heslo, nikdy jste ho od podpory vaší společnosti nedostali nebo vám byl zablokován účet, můžete své heslo resetovat pomocí svých bezpečnostních údajů a mobilního zařízení.
+Pokud jste zapomněli své pracovní nebo školní heslo, nikdy nebudete mít heslo z vaší organizace nebo jste jeho uzamčením nedostali svůj účet, můžete k resetování svého pracovního nebo školního hesla použít své bezpečnostní údaje a mobilní zařízení. Správce musí tuto funkci zapnout, abyste mohli nastavit vaše informace a resetovat svoje vlastní heslo.
 
->[!NOTE]
->Pokud znáte heslo a chcete ho jenom změnit, můžete přejít na postup [změny hesla](#how-to-change-your-password) v tomto článku.<br><br>
->Pokud se pokoušíte vrátit se k osobnímu účtu, jako je Xbox, hotmail.com nebo outlook.com, zkuste návrhy v části [když se nemůžete přihlásit k vašemu účet Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) článku.
+Pokud znáte heslo, ale chcete ho změnit, přečtěte si část [Změna kroků hesla](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) v tomto článku.
+
+>[!Important]
+>Tento článek je určený pro uživatele, kteří se pokoušejí obnovit zapomenuté nebo neznámé heslo pracovního nebo školního účtu. Pokud jste správcem a hledáte informace o tom, jak zapnout Samoobslužné resetování hesla pro vaše zaměstnance nebo jiné uživatele, přečtěte si téma [nasazení samoobslužného resetování hesla Azure AD a dalších článků](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment).
 
 ## <a name="how-to-reset-or-unlock-your-password-for-a-work-or-school-account"></a>Resetování nebo odemknutí hesla pro pracovní nebo školní účet
 
@@ -58,7 +59,7 @@ Pokud nemůžete získat přístup k účtu Azure Active Directory (Azure AD), m
     1. Vyberte **E-mail e**-mailem alternativní e-mail a pak vyberte **e-mail**.
 
     2. Do pole zadejte ověřovací kód z e-mailu a pak vyberte **Další**.
-    
+
     3. Zadejte a potvrďte nové heslo a pak vyberte **Dokončit**.
 
 - **Resetujte heslo pomocí textové zprávy.** Pošle textovou zprávu na telefonní číslo, které jste předtím nastavili v části informace o zabezpečení. Pokud váš správce zapnul prostředí informací o zabezpečení, najdete další informace o nastavení zasílání zpráv SMS v článku [Nastavení informací zabezpečení pro použití zasílání zpráv SMS (Preview)](security-info-setup-text-msg.md) . Pokud ještě nepoužíváte bezpečnostní údaje, najdete další informace o nastavení zasílání zpráv SMS v článku [Nastavení účtu pro dvoustupňové ověřování](multi-factor-authentication-end-user-first-time.md) .
@@ -100,7 +101,7 @@ Pokud nemůžete získat přístup k účtu Azure Active Directory (Azure AD), m
   3. Zadejte a potvrďte nové heslo a pak vyberte **Dokončit**.
 
   4. Jakmile se zobrazí zpráva s oznámením, že vaše heslo bylo resetováno, můžete se přihlásit ke svému účtu pomocí nového hesla.
-        
+
      Pokud stále nemáte přístup k vašemu účtu, měli byste požádat o další nápovědu správce vaší organizace.
 
 Po resetování hesla se může zobrazit potvrzovací e-mail, který pochází z účtu, jako je Microsoft jménem \<*your_organization*>. Pokud obdržíte podobný e-mail, ale nedávno jste neobnovili heslo, musíte se hned obrátit na správce vaší organizace.
@@ -160,13 +161,10 @@ Tady jsou některé běžné chybové případy a jejich řešení:
 |Při pokusu o změnu mého hesla se zobrazí chyba. |Heslo obsahuje slovo, frázi nebo vzor, který umožňuje snadnou možnost uhodnout heslo.| Zkuste to znovu s silnějším heslem.|
 |Když zadáte moje ID uživatele, přejdete na stránku s oznámením "kontaktujte správce."|Společnost Microsoft určila, že vaše heslo účtu uživatele spravuje správce v místním prostředí. V důsledku toho nemůžete resetovat heslo z odkazu "nepřístup k vašemu účtu". |Další nápovědu získáte od správce.|
 |Po zadání mého ID uživatele se zobrazí chyba s informacemi o tom, že váš účet není pro resetování hesla povolený.|Správce nevytvořil váš účet, takže můžete resetovat svoje vlastní heslo.|Správce nepovolil resetování hesla ve vaší organizaci z odkazu "nemáte přístup k vašemu účtu" nebo nemáte licenci k použití této funkce.<br><br> Pokud chcete resetovat heslo, musíte vybrat odkaz kontaktujte správce a poslat mu e-mail správci vaší společnosti a dát jim jistotu, že chcete heslo resetovat.|
-|Když zadáte moje ID uživatele, zobrazí se chyba oznamující, že se nám nepovedlo ověřit váš účet.|Procesu přihlašování se nepovedlo ověřit informace o účtu.|Tuto zprávu můžete zobrazit dvěma důvody.<br><br>1. váš správce vypnul resetování hesla ve vaší organizaci, ale nezaregistrovali jste ho k používání služby. Pokud se chcete zaregistrovat k resetování hesla, přečtěte si jeden z následujících článků na základě metody ověřování: [nastavte bezpečnostní údaje pro použití ověřovací aplikace (Preview)](security-info-setup-auth-app.md), [nastavte bezpečnostní údaje pro použití telefonního hovoru (Preview)](security-info-setup-phone-number.md), [nastavte bezpečnostní údaje, které se mají použít. textové zprávy (Preview)](security-info-setup-text-msg.md), [nastavte bezpečnostní údaje pro použití e-mailu (Preview)](security-info-setup-email.md)nebo [nastavte bezpečnostní údaje pro použití bezpečnostních otázek (Preview)](security-info-setup-questions.md).<br><br>2. váš správce nepovolil resetování hesla ve vaší organizaci. V takovém případě musíte vybrat odkaz "kontaktujte správce" a poslat mu e-mail s žádostí o resetování hesla.|
+|Když zadáte moje ID uživatele, zobrazí se chyba oznamující, že se nám nepovedlo ověřit váš účet.|Procesu přihlašování se nepovedlo ověřit informace o účtu.|Tuto zprávu můžete zobrazit dvěma důvody.<br><br>1. váš správce vypnul resetování hesla ve vaší organizaci, ale nezaregistrovali jste ho k používání služby. Pokud se chcete zaregistrovat k resetování hesla, podívejte se na některé z následujících článků na základě metody ověřování: [nastavte bezpečnostní údaje tak, aby používaly ověřovací aplikaci (Preview)](security-info-setup-auth-app.md), [nastavte bezpečnostní údaje pro použití telefonního hovoru (Preview)](security-info-setup-phone-number.md), nastavte bezpečnostní údaje pro použití [zasílání zpráv SMS](security-info-setup-text-msg.md)(Preview), nastavte bezpečnostní údaje pro použití [e-mailu](security-info-setup-email.md)(Preview), nebo nastavte bezpečnostní údaje, abyste [mohli používat bezpečnostní otázky (](security-info-setup-questions.md)Preview).<br><br>2. váš správce nepovolil resetování hesla ve vaší organizaci. V takovém případě musíte vybrat odkaz "kontaktujte správce" a poslat mu e-mail s žádostí o resetování hesla.|
 
 ## <a name="next-steps"></a>Další kroky
+
 - Informace o zabezpečení najdete v článku Přehled informací o zabezpečení [(Preview)](user-help-security-info-overview.md) .
 
-- Další informace o dvoustupňovém ověřování najdete v článku [Přehled ověřování dvou kroků](user-help-two-step-verification-overview.md) . 
-
-- Resetování hesla, pokud jste ho ztratili nebo zapomněli, na [portálu pro resetování hesla](https://passwordreset.microsoftonline.com/)
-
-- Získejte tipy pro řešení potíží a nápovědu k problémům s přihlášením v tématu se [nemůžete přihlásit k vašemu účet Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) .
+- Pokud se pokoušíte vrátit se k osobnímu účtu, jako je Xbox, hotmail.com nebo outlook.com, zkuste návrhy v části [když se nemůžete přihlásit k vašemu účet Microsoft článku](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).

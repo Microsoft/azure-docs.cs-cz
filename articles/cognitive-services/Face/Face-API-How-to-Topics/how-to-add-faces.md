@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 2f8a6272b02aea5948be79ddf72d105c4f72bb33
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 891614caddf729acb58bc363df977031ad62fb07
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744243"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156705"
 ---
 # <a name="add-faces-to-a-persongroup"></a>Přidání obličeje k osobě
 
@@ -60,7 +60,7 @@ static async Task WaitCallLimitPerSecondAsync()
 
 ## <a name="step-2-authorize-the-api-call"></a>Krok 2: Autorizace volání rozhraní API
 
-Při použití klientské knihovny musíte předat klíč předplatného konstruktoru třídy **FaceClient** . Příklad:
+Při použití klientské knihovny musíte předat klíč předplatného konstruktoru třídy **FaceClient** . Například:
 
 ```csharp
 private readonly IFaceClient faceClient = new FaceClient(
@@ -87,7 +87,7 @@ await faceClient.LargePersonGroup.CreateAsync(personGroupId, personGroupName);
 Osoby jsou vytvořeny souběžně a `await WaitCallLimitPerSecondAsync()` jsou také aplikovány, aby nedocházelo k překročení limitu volání.
 
 ```csharp
-CreatePersonResult[] persons = new CreatePersonResult[PersonCount];
+Person[] persons = new Person[PersonCount];
 Parallel.For(0, PersonCount, async i =>
 {
     await WaitCallLimitPerSecondAsync();

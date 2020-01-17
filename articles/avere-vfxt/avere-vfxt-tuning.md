@@ -4,30 +4,22 @@ description: Přehled vlastního nastavení pro optimalizaci výkonu v avere vFX
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 8e25b3408482d9be9cb870df338ba0e53af52507
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: df20f050ff87fdb59a3e5cca373098240f8bfbb9
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414333"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152931"
 ---
 # <a name="cluster-tuning"></a>Ladění clusteru
 
 K většině clusterů vFXT může dotěžit vlastní nastavení výkonu. Tato nastavení pomůžou clusteru fungovat nejlépe s vaším konkrétním pracovním postupem, datovou sadou a nástroji.
 
-Toto přizpůsobení by se mělo provést společně s zástupcem podpory, protože obvykle zahrnuje konfiguraci funkcí, které nejsou k dispozici v Ovládacích panelech avere.
+Toto přizpůsobení by se mělo provádět s technickou podporou od zástupce podpory, protože může zahrnovat konfiguraci funkcí, které nejsou k dispozici v Ovládacích panelech avere.
 
 Tato část popisuje některé vlastní ladění, které je možné provést.
-
-<!-- 
-[ xxx keep or not? \/ research this xxx ]
-
-> [!TIP]
-> The VDBench utility can be helpful in generating I/O workloads to test a vFXT cluster. Read [Measuring vFXT Performance](vdbench.md) to learn more.
-
--->
 
 ## <a name="general-optimizations"></a>Obecné optimalizace
 
@@ -42,19 +34,21 @@ Tyto změny se můžou doporučit na základě kvality datových sad nebo stylu 
 
 ## <a name="cloud-nas-or-cloud-gateway-optimizations"></a>Cloudové servery NAS nebo optimalizace Cloud Gateway
 
-Aby bylo možné využít vyšší rychlost datových přenosů mezi clusterem vFXT a cloudovým úložištěm ve scénáři cloudového nebo síťového serveru NAS (kde cluster vFXT poskytuje přístup ke každému cloudovém kontejneru pomocí serveru NAS), může váš zástupce doporučit změnu nastavení jako u více agresivní odesílání dat do svazku úložiště z mezipaměti:
+V případě cloudového serveru NAS nebo brány cluster vFXT poskytuje přístup ve stylu serveru NAS ke kontejneru cloudu. Aby bylo možné využít vyšší rychlosti dat mezi clusterem vFXT a cloudovým úložištěm, může váš zástupce doporučit změnu nastavení na více agresivních nabízených dat do svazku úložiště z mezipaměti. Například:
 
 * Zvyšte počet připojení TCP mezi clusterem a kontejnerem úložiště.
 
 ## <a name="cloud-bursting-or-hybrid-wan-optimizations"></a>Cloudové shlukování nebo optimalizace hybridní sítě WAN
 
-Ve scénáři shlukování cloudu nebo v případě optimalizace hybridního úložiště sítě WAN (kde cluster vFXT zajišťuje integraci mezi cloudovým a místním hardwarovým úložištěm) můžou tyto změny pomoci:
+Ve scénáři shlukování cloudu nebo v případě optimalizace hybridního úložiště pro sítě WAN poskytuje cluster vFXT integraci mezi cloudovým a místním hardwarovým úložištěm. Tyto změny mohou být užitečné:
 
 * Zvyšte počet připojení TCP povolených mezi clusterem a základní souborového
 * Povolte nastavení optimalizace sítě WAN pro vzdálenou službu Core souborového (Toto nastavení se dá použít pro vzdálené místní souborového nebo Cloud Core souborového v jiné oblasti Azure.)
-* Zvyšte velikost vyrovnávací paměti soketu TCP (v závislosti na úlohách a požadavcích na výkon).
-* Pokud chcete omezit redundantní soubory v mezipaměti (v závislosti na požadavcích na zatížení a výkon), povolte nastavení vždy předáno.
+* Zvyšte velikost vyrovnávací paměti soketu TCP<sup>*</sup>
+* Chcete-li omezit redundantní soubory v mezipaměti, povolte nastavení "vždy předáno"<sup>*</sup>
+
+<sup>*</sup> Tyto úpravy se nemusí vztahovat na všechny systémy v závislosti na potřebách úloh a výkonu.
 
 ## <a name="help-optimizing-your-avere-vfxt-for-azure"></a>Usnadnění optimalizace avere vFXT pro Azure
 
-Pomocí postupu popsaného v [tématu získáte pomoc s vaším systémem](avere-vfxt-open-ticket.md) pro kontaktování pracovníků podpory o těchto optimalizacích.
+Pokud chcete kontaktovat pracovníky podpory o těchto optimalizacích, použijte postup popsaný v tématu o [Získání pomoci s vaším systémem](avere-vfxt-open-ticket.md).

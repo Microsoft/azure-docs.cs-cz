@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 5d2fe5a00d131af54862551991cf984d8576b57e
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/15/2020
+ms.openlocfilehash: 5fc5ba447557aa89e8f0870c576d6d4c439f3353
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860941"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122555"
 ---
 # <a name="azure-digital-twins-security-best-practices"></a>Osvědčené postupy zabezpečení u digitálních vláken Azure
 
@@ -40,6 +40,7 @@ Mezi klíčové postupy pro bezpečné zabezpečení vašich zařízení IoT pat
 > * Omezí vstupně-výstupní operace a šířku pásma zařízení pro zlepšení výkonu. Omezení rychlosti může zlepšit zabezpečení tím, že se zabrání útokům DOS (Denial-of-Service).
 > * Udržujte firmware zařízení, operační systém a software v aktuálním stavu.
 > * Pravidelně auditujte a kontrolujte osvědčené postupy zabezpečení zařízení, softwaru, sítě a brány, protože se dále zlepšují a vyvíjí.
+> * Používejte důvěryhodné, certifikované a kompatibilní systémy zabezpečení, software a zařízení. Podívejte se například [na nabídku dodržování předpisů](https://azure.microsoft.com/overview/trusted-cloud/compliance/) pro cloud Azure.
 
 Mezi klíčové postupy pro bezpečné zabezpečení prostoru IoT patří:
 
@@ -67,8 +68,8 @@ Digitální vlákna Azure používá [Azure Active Directory](https://docs.micro
 > * Použijte certifikát vydaný důvěryhodnou [certifikační autoritou](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) namísto ověřování tajných klíčů aplikací.
 > * Omezení rozsahu OAuth 2,0 přístupu pro token.
 > * Ověřte, že doba platnosti tokenu je platná a zda token zůstává platný.
-> * Nastavte odpovídající délkové doby, pro které jsou tokeny platné.
-> * Aktualizujte tokeny, jejichž platnost vypršela.
+> * Nastavte odpovídající délkové doby, pro které jsou tokeny platné. Aktualizujte tokeny, jejichž platnost vypršela.
+> * Odeberte nepoužívané **identifikátory URI přesměrování** a oprávnění na [základě osvědčených postupů řízení přístupu založeného na rolích](#role-based-access-control-best-practices).
 
 ## <a name="role-based-access-control-best-practices"></a>Osvědčené postupy řízení přístupu založené na rolích
 

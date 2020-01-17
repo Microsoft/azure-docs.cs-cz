@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e3289ae5dbc2b0db410b3316834ae38a1f6b8523
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 782a23ba95519438dd369d3f69f52f7526461821
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974159"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156756"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Správa přístupu k virtuálnímu počítači pomocí za běhu
 
@@ -48,9 +48,8 @@ Když si uživatel požádá o přístup k virtuálnímu počítači, Security C
 
 | Umožnění uživateli: | Oprávnění k nastavení|
 | --- | --- |
-| Konfigurace nebo úprava zásad JIT pro virtuální počítač | *Přiřaďte k roli tyto akce:*  <ul><li>V oboru předplatného nebo skupiny prostředků, která je přidružená k virtuálnímu počítači:<br/> ```Microsoft.Security/locations/jitNetworkAccessPolicies/write``` </li><li> V oboru předplatného nebo skupiny prostředků nebo virtuálního počítače: <br/>```Microsoft.Compute/virtualMachines/write```</li></ul> | 
-| ||
-|Vyžádat přístup JIT k virtuálnímu počítači | *Přiřaďte uživatele k těmto akcím:*  <ul><li>V oboru předplatného nebo skupiny prostředků, která je přidružená k virtuálnímu počítači:<br/>  ```Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action``` </li><li>  V oboru předplatného nebo skupiny prostředků nebo virtuálního počítače:<br/> ```Microsoft.Compute/virtualMachines/read``` </li></ul>|
+| Konfigurace nebo úprava zásad JIT pro virtuální počítač | *Přiřaďte k roli tyto akce:*  <ul><li>V oboru předplatného nebo skupiny prostředků, která je přidružená k virtuálnímu počítači:<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> V oboru předplatného nebo skupiny prostředků nebo virtuálního počítače: <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
+|Vyžádat přístup JIT k virtuálnímu počítači | *Přiřaďte uživatele k těmto akcím:*  <ul><li>V oboru předplatného nebo skupiny prostředků, která je přidružená k virtuálnímu počítači:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action` </li><li>V oboru předplatného nebo skupiny prostředků, která je přidružená k virtuálnímu počítači:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/*/read` </li><li>  V oboru předplatného nebo skupiny prostředků nebo virtuálního počítače:<br/> `Microsoft.Compute/virtualMachines/read` </li><li>  V oboru předplatného nebo skupiny prostředků nebo virtuálního počítače:<br/> `Microsoft.Network/networkInterfaces/*/read` </li></ul>|
 
 
 ## <a name="configure-jit-on-a-vm"></a>Konfigurace JIT na virtuálním počítači
@@ -99,7 +98,7 @@ Z Security Center můžete nakonfigurovat zásady JIT a požádat o přístup k 
       - 5986 – WinRM
 6. Můžete taky nakonfigurovat vlastní porty:
 
-      1. Klikněte na tlačítko **Add** (Přidat). Otevře se okno **Přidat konfiguraci portu** .
+      1. Klikněte na tlačítko **Přidat**. Otevře se okno **Přidat konfiguraci portu** .
       2. Pro každý port, který se rozhodnete nakonfigurovat, můžete nastavit výchozí i vlastní, abyste mohli přizpůsobit následující nastavení:
 
     - **Typ protokolu**– protokol, který je na tomto portu povolený, když je žádost schválená.

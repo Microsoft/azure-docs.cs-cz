@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/24/2019
 ms.author: banders
-ms.openlocfilehash: 2a15ad41850fdf574262c396bf70e43b3b08399c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 13ac51fc4cefa4d66cf9d8310dce80704454bd93
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989680"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122147"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Začínáme s fakturačním účtem pro smlouvu s partnerem Microsoftu
 
@@ -53,7 +53,7 @@ Pomocí zásad můžete řídit, jestli uživatelé v organizacích zákazníků
 
 Postup zapnutí zásad:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
 
 1. Vyhledejte **Cost Management a fakturace**.
 
@@ -71,7 +71,7 @@ Postup zapnutí zásad:
 
 ## <a name="resellers"></a>Prodejci
 
-Nepřímí poskytovatelé v [dvouúrovňovém modelu](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview#azure-csp-direct-and-azure-csp-indirect) CSP můžou při vytváření předplatných pro zákazníky na webu Azure Portal vybrat prodejce. Po vytvoření můžou zobrazit seznam předplatných vyfiltrovaný podle prodejce a v analýze nákladů Azure analyzovat náklady na zákazníka podle prodejců.
+Nepřímí poskytovatelé v [dvouúrovňovém modelu](https://docs.microsoft.com/partner-center) CSP můžou při vytváření předplatných pro zákazníky na webu Azure Portal vybrat prodejce. Po vytvoření můžou zobrazit seznam předplatných vyfiltrovaný podle prodejce a v analýze nákladů Azure analyzovat náklady na zákazníka podle prodejců.
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Kontrola přístupu ke smlouvě s partnerem Microsoftu
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]

@@ -3,16 +3,16 @@ title: Nasazení prostředků pomocí REST API a šablony
 description: K nasazení prostředků do Azure použijte Azure Resource Manager a Správce prostředků REST API. Prostředky jsou definovány v šabloně Resource Manageru.
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.openlocfilehash: 3a3447746b3e7cbdfeeddd296ce78068e120a134
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc386f51073c256fd083a04bbed39316784827b1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484958"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152506"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Nasazení prostředků pomocí šablon Resource Manageru a jeho rozhraní REST API
 
-Tento článek vysvětluje, jak používat Správce prostředků REST API se šablonami Správce prostředků k nasazení prostředků do Azure.  
+Tento článek vysvětluje, jak používat Správce prostředků REST API se šablonami Správce prostředků k nasazení prostředků do Azure.
 
 Můžete buď zahrnout šablonu do textu žádosti nebo odkaz na soubor. Při použití souboru může být místním souborem nebo externím souborem, který je k dispozici prostřednictvím identifikátoru URI. Když je šablona v účtu úložiště, můžete omezit přístup k šabloně a poskytnout token sdíleného přístupového podpisu (SAS) během nasazování.
 
@@ -67,7 +67,7 @@ Příklady v tomto článku používají nasazení skupin prostředků.
 
 1. Před spuštěním ověřování ověřte jeho nasazení spuštěním operace [Ověření nasazení šablony](/rest/api/resources/deployments/validate) . Při testování nasazení zadejte parametry přesně stejně jako při spuštění nasazení (viz v dalším kroku).
 
-1. Pokud chcete nasadit šablonu, zadejte ID předplatného, název skupiny prostředků, název nasazení v identifikátoru URI požadavku. 
+1. Pokud chcete nasadit šablonu, zadejte ID předplatného, název skupiny prostředků, název nasazení v identifikátoru URI požadavku.
 
    ```HTTP
    PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2019-05-01
@@ -116,7 +116,7 @@ Příklady v tomto článku používají nasazení skupin prostředků.
 
     Účet úložiště můžete nastavit tak, aby používal token sdíleného přístupového podpisu (SAS). Další informace najdete v tématu [delegování přístupu pomocí sdíleného přístupového podpisu](/rest/api/storageservices/delegating-access-with-a-shared-access-signature).
 
-    Pokud potřebujete zadat citlivou hodnotu pro parametr (například heslo), přidejte tuto hodnotu do trezoru klíčů. Načtěte Trezor klíčů během nasazení, jak je znázorněno v předchozím příkladu. Další informace najdete v tématu [Předání zabezpečených hodnot během nasazování](key-vault-parameter.md). 
+    Pokud potřebujete zadat citlivou hodnotu pro parametr (například heslo), přidejte tuto hodnotu do trezoru klíčů. Načtěte Trezor klíčů během nasazení, jak je znázorněno v předchozím příkladu. Další informace najdete v tématu [Předání zabezpečených hodnot během nasazování](key-vault-parameter.md).
 
 1. Místo propojení se soubory pro šablonu a parametry je můžete zahrnout do textu žádosti. Následující příklad ukazuje tělo žádosti s vloženou šablonou a parametrem:
 
@@ -155,8 +155,8 @@ Příklady v tomto článku používají nasazení skupin prostředků.
         "resources": [
           {
             "type": "Microsoft.Storage/storageAccounts",
-            "name": "[variables('storageAccountName')]",
             "apiVersion": "2018-02-01",
+            "name": "[variables('storageAccountName')]",
             "location": "[parameters('location')]",
             "sku": {
               "name": "[parameters('storageAccountType')]"

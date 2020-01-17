@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 15b7dab7de2affb67fa080d69b4895a31bf9ba3b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c381d9413c4003bc2ab9a9357ff2769e84d14c3e
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462075"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121739"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Řízení přístupu Service Bus pomocí sdílených přístupových podpisů
 
@@ -82,7 +82,7 @@ SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-e
 * **`sr`** – identifikátor URI přistupované prostředku
 * **`sig`** -signatura
 
-`signature-string` je hodnota hash SHA-256 vypočítaná přes identifikátor URI prostředku (**Rozsah** jak je popsáno v předchozí části) a řetězcové vyjádření funkce vypršení platnosti tokenu, která je oddělená znaky CRLF.
+`signature-string` je hodnota hash SHA-256 vypočítaná přes identifikátor URI prostředku (**Rozsah** jak je popsáno v předchozí části) a řetězcové vyjádření doby vypršení platnosti tokenu, která je oddělená znakem LF.
 
 Výpočet hodnoty hash se podobá následujícímu pseudo kódu a vrací hodnotu hash s 256 bity a 32 bajty.
 

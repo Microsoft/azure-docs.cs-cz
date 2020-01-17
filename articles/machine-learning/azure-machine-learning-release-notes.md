@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: b413fd7efe865f1dc2062a8f2dcfae983ec2f27a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 0e613dd1c47a9942d95bd668f1e9f85e42649b5c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771917"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122368"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -220,7 +220,7 @@ Sada Azure Machine Learning SDK pro R používá balíček `reticulate` k vytvo�
 
 Mezi hlavní funkce sady SDK patří:
 
-+   Spravujte cloudové prostředky pro sledování, protokolování a organizování experimentů ve strojovém učení.
++   Správa cloudových prostředků pro monitorování, protokolování a organizaci experimentů strojového učení
 +   Výukové modely s využitím cloudových prostředků, včetně školení modelů pomocí GPU
 +   Nasaďte modely jako WebServices na Azure Container Instances (ACI) a Azure Kubernetes Service (AKS).
 
@@ -1488,7 +1488,7 @@ Azure Machine Learning Compute je možné vytvořit v Pythonu pomocí webu Azure
 + Kanály ML
   + Nové a aktualizované poznámkových bloků pro zahájení práce s kanály, rozsahu služby batch a styl přenos příklady: https://aka.ms/aml-pipeline-notebooks
   + Zjistěte, jak [vytvořit svůj první kanál](how-to-create-your-first-pipeline.md)
-  + Zjistěte, jak [spouštění predikcí služby batch pomocí kanálů](how-to-run-batch-predictions.md)
+  + Zjistěte, jak [spouštění predikcí služby batch pomocí kanálů](how-to-use-parallel-run-step.md)
 + Azure Machine Learning cíl výpočtů
   + [Ukázkové poznámkové bloky](https://aka.ms/aml-notebooks) se teď aktualizují tak, aby používaly nový spravovaný výpočetní výkon.
   + [Další informace o tomto výpočetní](how-to-set-up-training-targets.md#amlcompute)

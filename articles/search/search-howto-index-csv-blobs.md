@@ -1,7 +1,7 @@
 ---
 title: Hledání v případě objektů BLOB ve formátu CSV
 titleSuffix: Azure Cognitive Search
-description: Extrahujte a importujte CSV z úložiště objektů BLOB v Azure pomocí režimu analýzy delimitedText, který je aktuálně ve verzi Public Preview.
+description: Extrahujte a importujte CSV z úložiště objektů BLOB v Azure pomocí režimu analýzy delimitedText.
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -9,17 +9,14 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2166e100f03f21c218618d19dc37ee70c6ab29ef
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: bf600890bfed570e712a159005b8ef5267298cc0
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113033"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122317"
 ---
-# <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Indexování objektů BLOB ve formátu CSV pomocí režimu analýzy delimitedText a indexerů objektů BLOB v Azure Kognitivní hledání 
-
-> [!IMPORTANT] 
-> Režim analýzy delimitedText je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
+# <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Indexování objektů BLOB ve formátu CSV pomocí režimu analýzy delimitedText a indexerů objektů BLOB v Azure Kognitivní hledání
 
 Služba [Azure kognitivní hledání BLOB](search-howto-indexing-azure-blob-storage.md) ve výchozím nastavení analyzuje objekty BLOB s oddělovači textu jako jeden blok textu. Nicméně s objekty blob obsahujícími data CSV často chcete s každým řádkem v objektu BLOB zacházet jako se samostatným dokumentem. Například s ohledem na následující oddělený text můžete ho chtít analyzovat do dvou dokumentů, z nichž každý obsahuje pole ID, datePublished a Tags: 
 
@@ -46,7 +43,7 @@ Pokud objekty blob neobsahují počáteční řádek záhlaví, hlavičky by se 
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 
 
-Pomocí nastavení konfigurace `delimitedTextDelimiter` můžete přizpůsobit znak oddělovače. Příklad:
+Pomocí nastavení konfigurace `delimitedTextDelimiter` můžete přizpůsobit znak oddělovače. Například:
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
 
@@ -63,7 +60,7 @@ Zde jsou uvedeny kompletní příklady datové části.
 
 Datového 
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06-Preview
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -76,7 +73,7 @@ Datového
 
 Indexer
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06-Preview
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 

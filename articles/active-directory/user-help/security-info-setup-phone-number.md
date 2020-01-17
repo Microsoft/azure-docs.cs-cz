@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bb7d811b1d622fb14935b4d5ddf0cb60e44daa8
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c120c9092d9cf0e4029cadea1b412a73e858fa75
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278968"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156144"
 ---
 # <a name="set-up-a-phone-number-as-your-verification-method"></a>Nastavení telefonního čísla jako metody ověřování
 
@@ -30,7 +30,20 @@ Pokud se zobrazí výzva k nastavení hned po přihlášení k pracovnímu nebo 
 > [!Note]
 > Informace o zabezpečení nepodporují používání telefonních rozšíření. I když přidáte správný formát, + 1 4255551234X12345, rozšíření budou odebrána před tím, než se volání umístí.
 >
-> Pokud nevidíte možnost telefonu, je možné, že vaše organizace neumožňuje používat pro ověření telefonní číslo. V takovém případě budete muset zvolit jinou metodu, nebo požádejte správce o další nápovědu.
+> Pokud nevidíte možnost telefonu, je možné, že vám vaše organizace neumožní tuto možnost použít k ověření. V takovém případě budete muset zvolit jinou metodu nebo požádat o další pomoc oddělení technické podpory vaší organizace.
+
+## <a name="security-verification-versus-password-reset-authentication"></a>Ověření zabezpečení oproti ověřování hesla pro resetování hesla
+
+Metody bezpečnostních údajů se používají pro ověřování dvou faktorů zabezpečení i pro resetování hesla. Nicméně ne všechny metody lze použít pro obojí.
+
+| Metoda | Použití |
+| ------ | -------- |
+| Ověřovací aplikace | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Textové zprávy | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Telefonní hovory | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Bezpečnostní klíč | Dvojúrovňové ověřování a ověřování nového hesla. |
+| E-mailový účet | Jenom ověřování heslem. Budete muset zvolit jinou metodu pro dvojúrovňové ověřování. |
+| Bezpečnostní otázky | Jenom ověřování heslem. Budete muset zvolit jinou metodu pro dvojúrovňové ověřování. |
 
 ## <a name="set-up-phone-calls-from-the-security-info-page"></a>Nastavte telefonní hovory ze stránky bezpečnostní údaje.
 

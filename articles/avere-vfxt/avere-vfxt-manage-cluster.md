@@ -4,20 +4,22 @@ description: Jak spravovat cluster avere – přidání nebo odebrání uzlů, r
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: d963c951d2202b3f60f0dd93c440b36fabf6478d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 94db4a93025b6e3d633368d924e3e0c518d108ca
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415300"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153475"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Správa clusteru Avere vFXT
 
-Po vytvoření clusteru možná budete muset přidat uzly clusteru nebo zastavit nebo restartovat cluster. A po dokončení projektu potřebujete zjistit, jak cluster trvale zastavit a odebrat.
+V určitém okamžiku životního cyklu avere vFXT pro cluster Azure možná budete muset přidat uzly clusteru nebo spustit nebo restartovat cluster. Po dokončení projektu budete muset zjistit, jak cluster zastavit a trvale ho odebrat.
 
-V závislosti na úloze správy clusteru možná budete muset použít ovládací panel avere, skript pro vytvoření clusteru příkazového řádku vfxt.py nebo Azure Portal.
+Tento článek vysvětluje, jak přidat nebo odebrat uzly clusteru a další základní operace clusteru. Pokud potřebujete změnit nastavení clusteru nebo sledovat jeho práci, použijte [ovládací panel avere](avere-vfxt-cluster-gui.md).
+
+V závislosti na úloze správy bude možná nutné použít jeden ze tří různých nástrojů: avere Control Panel, vfxt.py Command line Cluster Management a Azure Portal.
 
 Tato tabulka obsahuje přehled toho, které nástroje lze pro jednotlivé úlohy použít.
 
@@ -50,7 +52,7 @@ Ovládací panel avere lze použít pro tyto úlohy:
 * Odebrání uzlu z clusteru
 * Zastavení nebo restartování celého clusteru
 
-Ovládací panel avere určuje prioritu integrity dat, takže se pokusí zapsat změněná data do back-endu úložiště před možnou destruktivní operací. Díky tomu je tato možnost bezpečnější než na portálu avere.
+Ovládací panel avere určuje prioritu integrity dat, takže se pokusí zapsat změněná data do back-endu úložiště před možnou destruktivní operací. Díky tomu je tato možnost bezpečnější než Azure Portal.
 
 Přístup k ovládacímu panelu avere z webového prohlížeče. Pokud potřebujete podporu, postupujte podle pokynů v [části přístup ke clusteru vFXT](avere-vfxt-cluster-gui.md) .
 
@@ -69,7 +71,7 @@ Další informace najdete v tématu [cluster > FXT Nodes](<https://azure.github.
 
 Stránka nastavení **údržby systému** obsahuje příkazy pro restartování clusterových služeb, restartování clusteru nebo bezpečného napájení clusteru. Podrobnosti naleznete v tématu [správa > údržba systému](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>) (v Průvodci nastavením clusteru avere).
 
-Když se cluster vypíná, na začátku pošle stavové zprávy na kartu **řídicí panel** . Po chvíli přestane relace ovládacího panelu avere reagovat, což znamená, že se cluster vypnul.
+Když se cluster začne vypínat, odešle stavové zprávy na kartu **řídicí panel** . Po chvíli se zprávy zastaví a nakonec relace ovládacího panelu avere přestane reagovat, což znamená, že se cluster vypnul.
 
 ## <a name="manage-the-cluster-with-vfxtpy"></a>Správa clusteru pomocí vfxt.py
 
@@ -83,7 +85,7 @@ Skript vfxt.py se dá použít pro tyto úlohy správy clusteru:
 * Zastavení nebo spuštění clusteru  
 * Zničit cluster
 
-Podobně jako v Ovládacích panelech avere se operace vfxt.py snaží zajistit, aby se změněná data ukládala trvale do back-endu úložiště před vypnutím nebo zničením clusteru nebo uzlu. Díky tomu je tato možnost bezpečnější než na portálu avere.
+Podobně jako v Ovládacích panelech avere se operace vfxt.py snaží zajistit, aby se změněná data ukládala trvale do back-endu úložiště před vypnutím nebo zničením clusteru nebo uzlu. Díky tomu je tato možnost bezpečnější než Azure Portal.
 
 Kompletní příručka k používání vfxt.py je k dispozici na GitHubu: [Správa cloudových clusterů pomocí vfxt.py](https://github.com/azure/averesdk/blob/master/docs/README.md)
 
@@ -95,7 +97,7 @@ Aby bylo možné použít tento příkaz, musí být spuštěn cluster.
 
 Zadejte následující hodnoty:
 
-* Název skupiny prostředků pro cluster, a to i pro prostředky sítě a úložiště, pokud se neshodují s clusterem
+* Název skupiny prostředků pro cluster, a to i pro prostředky sítě a úložiště, pokud nejsou ve stejné skupině prostředků jako cluster
 * Umístění clusteru
 * Síť a podsíť clusteru
 * Role přístupu k uzlu clusteru (použijte předdefinovaný [avere operátor](../role-based-access-control/built-in-roles.md#avere-operator)role)
@@ -139,7 +141,7 @@ Vzhledem k tomu, že je cluster zastavený, je nutné předat identifikátory in
 vfxt.py --cloud-type azure --from-environment --destroy --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET --management-address ADMIN_IP
 ```
 
-Možnost ``--quick-destroy`` lze použít, pokud nechcete zapisovat změněná data z mezipaměti clusteru.
+Možnost ``--quick-destroy`` lze použít, pokud nechcete ukládat změněná data z mezipaměti clusteru.
 
 Další informace najdete v [příručce k používání vfxt.py](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>) .
 
@@ -195,7 +197,7 @@ Kromě odstranění uzlů clusteru zvažte odebrání těchto součástí:
 * Datové disky přidružené k uzlům clusteru
 * Síťová rozhraní a veřejné IP adresy přidružené ke komponentám clusteru
 * Virtuální sítě
-* Účty úložiště (**jenom** v případě, že neobsahují žádná důležitá data)
+* Kontejnery úložiště a účty úložiště (**jenom** v případě, že neobsahují žádná důležitá data)
 * Skupina dostupnosti
 
 ![Azure Portal seznamu všechny prostředky zobrazující prostředky vytvořené pro testovací cluster](media/avere-vfxt-all-resources-list.png)

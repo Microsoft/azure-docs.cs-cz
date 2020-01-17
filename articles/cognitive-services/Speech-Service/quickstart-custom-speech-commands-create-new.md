@@ -3,19 +3,19 @@ title: 'Rychlý Start: Vytvoření vlastního příkazu (Preview) – služba Sp
 titleSuffix: Azure Cognitive Services
 description: V tomto článku vytvoříte a otestujete hostovanou aplikaci s vlastními příkazy.
 services: cognitive-services
-author: donkim
+author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: d8e28b88757fa7557b04ee471ede17012094bb9e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4ae8f13b4887bbc41b17defa3f9a20c07ed0cb45
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446874"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155583"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Rychlý Start: Vytvoření vlastního příkazu (Preview)
 
@@ -24,7 +24,7 @@ Aplikace rozpozná utterance jako "zapnout televizní program" a odpoví jednodu
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Předplatné pro rozpoznávání řeči. 
+- Předplatné pro rozpoznávání řeči.
 
 Pokud nemáte předplatné pro rozpoznávání řeči, můžete ho vytvořit tak, že přejdete do [studia pro rozpoznávání řeči](https://speech.microsoft.com/) a vyberete **vytvořit prostředek pro rozpoznávání řeči**.
 
@@ -73,7 +73,7 @@ Zobrazení by teď mělo být přehled vaší aplikace pro vlastní příkazy.
 
 ## <a name="update-luis-resources-optional"></a>Aktualizace prostředků LUIS (volitelné)
 
-Můžete aktualizovat sadu prostředků pro vytváření obsahu v okně Nový projekt a nastavit předpověď prostředku, který se používá k rozpoznávání vstupů za běhu. 
+Můžete aktualizovat sadu prostředků pro vytváření obsahu v okně Nový projekt a nastavit předpověď prostředku, který se používá k rozpoznávání vstupů za běhu.
 
 > [!NOTE]
 > Budete muset nastavit předpověď prostředků, než aplikace požaduje předpovědi nad rámec požadavků 1 000, které poskytuje prostředek pro vytváření.
