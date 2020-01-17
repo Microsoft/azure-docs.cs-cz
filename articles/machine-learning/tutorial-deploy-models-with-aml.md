@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1a749570fe2320be18c98bb6267656cf2687aa1
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 3c0ff63a360d96d0e9db18d430e755e567197de1
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533262"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122079"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Kurz: nasazení modelu klasifikace imagí v Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -389,6 +389,6 @@ service.delete()
 
 + Přečtěte si o všech [možnostech nasazení Azure Machine Learning](how-to-deploy-and-where.md).
 + Naučte se [vytvářet klienty pro webovou službu](how-to-consume-web-service.md).
-+  [Provádějte asynchronní předpovědi velké množství dat](how-to-run-batch-predictions.md) .
++  [Provádějte asynchronní předpovědi velké množství dat](how-to-use-parallel-run-step.md) .
 + Monitorujte Azure Machine Learning modely pomocí [Application Insights](how-to-enable-app-insights.md).
 + Vyzkoušejte kurz pro [Automatický výběr algoritmu](tutorial-auto-train-models.md) . 

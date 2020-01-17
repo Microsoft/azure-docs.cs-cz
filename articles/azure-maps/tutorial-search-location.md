@@ -1,20 +1,20 @@
 ---
 title: 'Kurz: hledání blízkých míst na mapě | Mapy Microsoft Azure'
-description: V tomto kurzu se naučíte, jak na mapě vyhledat umístění sousedních míst (bodů zájmu) pomocí map Microsoft Azure.
+description: V tomto kurzu se naučíte hledat body zájmu na mapě pomocí Microsoft Azurech map.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 65a091dbe935967d63a11c3c40dd834207f34782
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 974a60bafb3e9be56618824d6205d21c364d6601
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910830"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153016"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Kurz: hledání okolních bodů zájmu pomocí Azure Maps
 
@@ -30,7 +30,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlaste se k [Portálu Azure](https://portal.azure.com).
 
 <a id="createaccount"></a>
 
@@ -63,16 +63,16 @@ Po úspěšném vytvoření účtu Maps načtěte klíč, který vám umožní d
 
 ![Získat primární klíč v Azure Portal](./media/tutorial-search-location/get-key.png)
 
-Další podrobnosti o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
+Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
 <a id="createmap"></a>
 
 ## <a name="create-a-new-map"></a>Vytvoření nové mapy
 
-Rozhraní API pro mapové ovládací prvky je praktická klientská knihovna, která umožňuje snadnou integraci Maps do webové aplikace. Skrývá složitost prostých volání služby REST a zvyšuje produktivitu díky přizpůsobitelným komponentám, které umožňují změnu stylu. Následující kroky ukazují, jak vytvořit statickou stránku HTML s vloženým rozhraním API pro mapové ovládací prvky.
+Rozhraní Ovládací prvek Mapa API je praktická Klientská knihovna. Toto rozhraní API umožňuje snadno integrovat mapy do vaší webové aplikace. Skrývá složitost úplného volání služby REST a zvyšuje produktivitu díky přizpůsobitelným součástem. Následující kroky ukazují, jak vytvořit statickou stránku HTML s vloženým rozhraním API pro mapové ovládací prvky.
 
 1. Na místním počítači vytvořte nový soubor s názvem **MapSearch.html**.
-2. Přidejte do souboru následující komponenty HTML:
+2. Přidejte do souboru následující součásti HTML:
 
    ```HTML
     <!DOCTYPE html>
@@ -133,7 +133,7 @@ Rozhraní API pro mapové ovládací prvky je praktická klientská knihovna, kt
 
    Tento segment inicializuje rozhraní API pro mapové ovládací prvky pro váš klíč účtu Azure Maps. `atlas` je obor názvů, který obsahuje rozhraní API a související vizuální komponenty. `atlas.Map` poskytuje ovládací prvek pro vizuální a interaktivní webové mapování.
 
-4. Uložte provedené změny do souboru a otevřete stránku HTML v prohlížeči. Toto je nejzákladnější mapa, kterou můžete provést voláním `atlas.Map` pomocí klíče účtu.
+4. Uložte provedené změny do souboru a otevřete stránku HTML v prohlížeči. Zobrazená mapa je nejzákladnější mapa, kterou můžete provést voláním `atlas.Map` pomocí klíče účtu.
 
    ![Zobrazení mapy](./media/tutorial-search-location/basic-map.png)
 
@@ -163,7 +163,7 @@ Rozhraní API pro mapové ovládací prvky je praktická klientská knihovna, kt
     });
     ```
 
-   V tomto segmentu kódu se do mapy přidá událost `ready`, která se aktivuje, když se načtou prostředky mapy a že je k ní přistupovaná mapa připravena. V mapě `ready` obslužná rutina události, je vytvořen zdroj dat pro ukládání výsledných dat. Vytvoří se vrstva symbolů, která se připojí ke zdroji dat. Tato vrstva určuje, jak se mají vykreslit výsledná data ve zdroji dat, v tomto případě jako ikona tmavě modrého kulatého špendlíku ve středu souřadnic výsledku, který umožňuje překrytí jinými ikonami. Výsledná vrstva je přidána do vrstev mapy.
+   V tomto segmentu kódu se do mapy přidá událost `ready`, která se aktivuje, když se načtou prostředky mapy a že je k ní přistupovaná mapa připravena. V mapě `ready` obslužná rutina události, je vytvořen zdroj dat pro ukládání výsledných dat. Vytvoří se vrstva symbolů, která se připojí ke zdroji dat. Tato vrstva určuje, jak se mají vykreslovat data výsledku ve zdroji dat. V tomto případě se výsledek vykreslí s tmavě modrou kulatou ikonou pinu, na střed na souřadnici výsledků a umožňuje překrývat jiné ikony. Výsledná vrstva je přidána do vrstev mapy.
 
 <a id="usesearch"></a>
 
@@ -215,7 +215,7 @@ V této části se dozvíte, jak pomocí [rozhraní API pro vyhledávání](http
     });
     ```
 
-3. Uložte soubor **MapSearch.html** a aktualizujte prohlížeč. Nyní byste měli vidět, že mapa je vytvořená na střed Seattle s kulatými a modrými kolíky označujícími umístění benzinových stanic v oblasti.
+3. Uložte soubor **MapSearch.html** a aktualizujte prohlížeč. Mělo by se zobrazit Mapa centra Seattle s kulatými a modrými kolíky pro umístění benzinových stanic v oblasti.
 
    ![Zobrazení mapy s výsledky hledání](./media/tutorial-search-location/pins-map.png)
 
@@ -229,9 +229,9 @@ V tomto okamžiku může stránka MapSearch zobrazit umístění bodů zájmu, k
 
 ## <a name="add-interactive-data"></a>Přidání interaktivních dat
 
-Mapa, kterou jsme vytvořili, zatím z výsledků hledání používá pouze data o zeměpisné šířce a délce. Pokud se však podíváte na nezpracovaný JSON, který vrací vyhledávací služba Maps, uvidíte, že obsahuje další informace o jednotlivých čerpacích stanicích, včetně názvu a adresy. Tato data můžete zahrnout do mapy s použitím interaktivních, automaticky otevíraných oken.
+Mapa, kterou jsme vytvořili, zatím z výsledků hledání používá pouze data o zeměpisné šířce a délce. Nezpracovaný kód JSON, který vrací Služba Maps, ale obsahuje další informace o jednotlivých stanicích na bázi zemního plynu. Včetně názvu a adresy ulice. Tato data můžete zahrnout do mapy s použitím interaktivních, automaticky otevíraných oken.
 
-1. Přidejte následující řádky kódu do obslužné rutiny události `ready` mapy po kódu pro dotazování na službu přibližného vyhledávání. Tím se vytvoří instance metody Popup a do vrstvy symbolů se přidá událost mouseover.
+1. Přidejte následující řádky kódu do obslužné rutiny události `ready` mapy po kódu pro dotazování na službu přibližného vyhledávání. Tento kód vytvoří instanci místní nabídky a přidá událost MouseOver do vrstvy symbolů.
 
     ```JavaScript
    //Create a popup but leave it closed so we can update it and display it later.

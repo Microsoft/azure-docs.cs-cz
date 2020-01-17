@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: f5e36095c506918298404758523642073dfd19c7
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 6c501205812ac72da8cd970b61b71e493888cef1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864449"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156722"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Integrace dat pomocí Azure Data Factory a sdílení dat Azure
 
@@ -99,7 +99,7 @@ Pokud chcete zapnout ladění, klikněte na posuvník pro **ladění toku dat** 
 
 ![Portál](media/lab-data-flow-data-share/configure10.png)
 
-## <a name="ingest-data-from-azure-sql-db-into-adls-gen2-using-the-copy-activity"></a>Ingestování dat ze služby Azure SQL DB do ADLS Gen2 pomocí aktivity kopírování
+## <a name="ingest-data-using-the-copy-activity"></a>Ingestování dat pomocí aktivity kopírování
 
 V této části vytvoříte kanál s aktivitou kopírování, která ingestuje jednu tabulku z databáze SQL Azure do účtu úložiště ADLS Gen2. Naučíte se, jak přidat kanál, nakonfigurovat datovou sadu a ladit kanál prostřednictvím uživatelského rozhraní ADF. Vzor konfigurace použitý v této části lze použít pro kopírování z relačního úložiště dat do úložiště dat založeného na souborech.
 
@@ -392,7 +392,7 @@ Jakmile vytvoříte sdílenou složku dat, přepnete Hats a stane se *příjemce
 
 1. Pomocí rozevíracího seznamu *opakování* proveďte kontrolu **plánu snímků** a nakonfigurujte hodinovou aktualizaci dat.  
 
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
     Teď máte aktivní sdílení dat. Umožňuje zkontrolovat, co můžete vidět jako poskytovatele dat při vytváření sdílené složky dat. 
 

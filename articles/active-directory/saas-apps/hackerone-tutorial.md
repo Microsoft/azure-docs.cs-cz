@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e03aa99e53f4aa2c646dc425a18d848539d537b0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: effd0593384190eb1a1cf261305dd61818c3d0b0
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768193"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120741"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Kurz: Azure Active Directory integrace s HackerOne
 
@@ -107,7 +107,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí HackerOn
 
     ![Informace o jednotném přihlašování v doméně HackerOne a adresách URL](common/sp-identifier.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte následující: `https://hackerone.com/users/saml/auth`
+    a. Do textového pole **přihlašovací adresa URL** zadejte následující: `https://hackerone.com/users/saml/sign_in?email=<configured domain>`
 
     b. Do textového pole **identifikátor (ID entity)** zadejte následující: `hackerone.com`
 
@@ -155,7 +155,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí HackerOn
 
     a. Klikněte na **Spustit test**.
 
-    b. Pokud hodnota pole Status ( **stav** ) se rovná **Poslední stav testu: vytvořeno**, obraťte se na [tým podpory HackerOne](mailto:support@hackerone.com) s žádostí o kontrolu konfigurace.
+6. Po úspěšném dokončení testu a pole **stav** zobrazuje **Poslední stav testu: úspěch**vyberte tlačítko **ověření žádosti** , které se odešle do HackerOne ke schválení.
+
+    ![Odeslat do HackerOne ke schválení](./media/hackerone-tutorial/tutorial-hackerone-006.png)
+
+7. Jakmile HackerOne schválí nastavení, můžete vybrat tlačítko **migrace uživatelů** a vyžadovat pro všechny uživatele ověřování pomocí jednotného přihlašování.
+
+    ![Povolit SAML](./media/hackerone-tutorial/tutorial-hackerone-007.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -174,7 +180,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
     ![Dialogové okno uživatele](common/user-properties.png)
 
     a. Do pole **název** zadejte **BrittaSimon**.
-  
+
     b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 

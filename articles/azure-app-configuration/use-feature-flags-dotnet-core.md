@@ -1,6 +1,6 @@
 ---
-title: Kurz pro používání příznaků funkcí v aplikaci .NET Core | Dokumentace Microsoftu
-description: V tomto kurzu se dozvíte, jak implementovat příznaků funkcí v aplikacích .NET Core.
+title: Kurz použití příznaků funkcí v aplikaci .NET Core | Microsoft Docs
+description: V tomto kurzu se naučíte implementovat příznaky funkcí v aplikacích .NET Core.
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -14,30 +14,30 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 99559c0c77c3e4b29badec1c0be2d741df1f0621
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 4fe49c25ad71c48103f044915d187099b75b3d04
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798379"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121246"
 ---
-# <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Kurz: Použití příznaků funkcí v aplikaci ASP.NET Core
+# <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Kurz: používání příznaků funkcí v aplikaci ASP.NET Core
 
-Knihovny .NET Core funkce správy idiomatickou podporují implementace příznaků funkcí v aplikaci .NET nebo ASP.NET Core. Tyto knihovny umožňují deklarativně přidat příznaky funkcí pro váš kód tak, že nemusíte psát veškerý `if` příkazy pro ně ručně.
+Knihovny pro správu funkcí .NET Core poskytují podporu idiomatickou pro implementaci příznaků funkcí v aplikaci .NET nebo ASP.NET Core. Tyto knihovny umožňují deklarativní Přidání příznaků funkcí do kódu, takže nemusíte psát všechny příkazy `if` pro ně ručně.
 
-Knihovny správy funkce také spravovat životní cyklus příznak funkce na pozadí. Například knihovny aktualizovat a mezipaměti příznak stavy nebo zajištění neměnných příznak stavu během volání žádosti. Kromě toho knihovna ASP.NET Core nabízí integrace out-of-the-box, včetně akce řadiče MVC, zobrazení, cesty a middlewaru.
+Knihovny správy funkcí také spravují životní cykly příznaků funkcí na pozadí. Například knihovny aktualizace knihoven a příznak cache nebo zaručují, že stav příznaku by měl být během volání žádosti neměnný. Kromě toho knihovna ASP.NET Core nabízí předem připravené integrace, včetně akcí kontroleru MVC, zobrazení, tras a middlewaru.
 
-[Přidat příznaků funkcí do aplikace ASP.NET Core pro rychlý Start](./quickstart-feature-flag-aspnet-core.md) ukazuje několik způsobů, jak přidat příznaků funkcí v aplikaci ASP.NET Core. Tento kurz vysvětluje tyto metody podrobněji. Úplný popis najdete v článku [dokumentaci k ASP.NET Core funkci správy](https://go.microsoft.com/fwlink/?linkid=2091410).
+[Příznaky funkce přidat ASP.NET Core aplikace v rychlém](./quickstart-feature-flag-aspnet-core.md) startu zobrazují několik způsobů přidávání příznaků funkcí do aplikace ASP.NET Core. V tomto kurzu se tyto metody vysvětlují podrobněji. Úplný odkaz najdete v [dokumentaci ke správě funkcí ASP.NET Core](https://go.microsoft.com/fwlink/?linkid=2091410).
 
-V tomto kurzu se naučíte, jak:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Přidáte příznaků funkcí v klíčových částí aplikace pro řízení dostupnosti funkce.
-> * Integrace s konfigurace aplikace, když ho používáte ke správě příznaky funkcí.
+> * Přidání příznaků funkcí v klíčových částech vaší aplikace pro řízení dostupnosti funkcí.
+> * Integrujte s konfigurací aplikace, když ji používáte ke správě příznaků funkcí.
 
-## <a name="set-up-feature-management"></a>Nastavení správy pro funkce
+## <a name="set-up-feature-management"></a>Nastavení správy funkcí
 
-Správce funkce .NET Core `IFeatureManager` získá příznaky funkcí z rozhraní framework nativní konfigurace systému. V důsledku toho můžete definovat příznaků funkcí vaší aplikace pomocí libovolného konfigurace zdroje, který podporuje .NET Core, včetně místní *appsettings.json* proměnné souboru nebo prostředí. `IFeatureManager` spoléhá na .NET Core vkládání závislostí. Funkce služby správy můžete registrovat pomocí standardní konvence:
+Správce funkcí .NET Core `IFeatureManager` získá příznaky funkcí z nativního konfiguračního systému rozhraní. V důsledku toho můžete definovat příznaky funkcí aplikace pomocí libovolného zdroje konfigurace, který podporuje .NET Core, včetně místního souboru *appSettings. JSON* nebo proměnných prostředí. `IFeatureManager` spoléhá na vkládání závislostí .NET Core. Služby správy funkcí můžete zaregistrovat pomocí standardních konvencí:
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -51,7 +51,7 @@ public class Startup
 }
 ```
 
-Ve výchozím nastavení, funkce správce načte příznaků funkcí z `"FeatureManagement"` části .NET Core konfigurační data. Následující příklad určuje funkci správce ke čtení z jiného oddílu volat `"MyFeatureFlags"` místo:
+Ve výchozím nastavení nástroj Správce funkcí načítá příznaky funkcí z oddílu `"FeatureManagement"` konfiguračních dat .NET Core. Následující příklad oznamuje správci funkcí, aby načetl z jiného oddílu s názvem `"MyFeatureFlags"` místo toho:
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -68,7 +68,7 @@ public class Startup
 }
 ```
 
-Pokud použijete filtry ve vaší příznaky funkcí, musíte zahrnout další knihovny a zaregistrujte ho. Následující příklad ukazuje, jak použít filtr integrovanou funkci s názvem `PercentageFilter`:
+Pokud používáte filtry v příznacích funkcí, je třeba zahrnout další knihovnu a zaregistrovat ji. Následující příklad ukazuje, jak použít vestavěný filtr funkcí nazvaný `PercentageFilter`:
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -84,11 +84,11 @@ public class Startup
 }
 ```
 
-Doporučujeme zachovat příznaků funkcí mimo aplikaci a spravovat samostatně. To můžete kdykoli upravit příznak stavy a se tyto změny se projeví v aplikaci hned. Konfigurace aplikace poskytuje centrálním umístění pro uspořádání a řízení všech příznaků funkcí přes vyhrazené uživatelské rozhraní portálu. Konfigurace aplikace také nabízí příznaky do vaší aplikace přímo prostřednictvím klienta .NET Core knihovny.
+Doporučujeme zachovat příznaky funkcí mimo aplikaci a spravovat je samostatně. V takovém případě vám umožní kdykoli změnit stav příznaku a tyto změny se projeví v aplikaci hned. Konfigurace aplikací poskytuje centralizované místo pro organizování a řízení všech příznaků funkcí prostřednictvím vyhrazeného uživatelského rozhraní portálu. Konfigurace aplikace také poskytuje příznaky vaší aplikaci přímo prostřednictvím svých klientských knihoven .NET Core.
 
-Nejjednodušší způsob, jak připojit aplikaci ASP.NET Core do konfigurace aplikace je prostřednictvím poskytovatele konfigurace `Microsoft.Azure.AppConfiguration.AspNetCore`. Použijte následující postup použijte tento balíček NuGet.
+Nejjednodušší způsob, jak připojit aplikaci ASP.NET Core ke konfiguraci aplikace, je prostřednictvím `Microsoft.Azure.AppConfiguration.AspNetCore`poskytovatele konfigurace. Pro použití tohoto balíčku NuGet postupujte podle těchto kroků.
 
-1. Otevřít *Program.cs* a přidejte následující kód.
+1. Otevřete soubor *program.cs* a přidejte následující kód.
 
    ```csharp
    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
@@ -105,7 +105,7 @@ Nejjednodušší způsob, jak připojit aplikaci ASP.NET Core do konfigurace apl
               .UseStartup<Startup>();
    ```
 
-2. Otevřít *Startup.cs* a aktualizovat `Configure` způsob, jak přidat middleware pro povolení funkce hodnot příznaku se aktualizují v opakovaných intervalech při ASP.NET Core webová aplikace i nadále přijímat požadavky.
+2. Otevřete *Startup.cs* a aktualizujte metodu `Configure`, abyste přidali middlewari, který umožní aktualizace hodnot příznaků funkcí v opakovaném intervalu, zatímco webová aplikace ASP.NET Core nadále přijímá požadavky.
 
    ```csharp
    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -115,7 +115,7 @@ Nejjednodušší způsob, jak připojit aplikaci ASP.NET Core do konfigurace apl
    }
    ```
 
-Očekává se, že hodnoty příznak funkce v průběhu času měnit. Ve výchozím nastavení hodnoty příznaků funkcí jsou uložené v mezipaměti po dobu 30 sekund, takže operace aktualizace aktivuje, když middleware obdrží žádost by aktualizovat hodnotu, dokud nevyprší hodnota uložená v mezipaměti. Následující kód ukazuje, jak změnit čas vypršení platnosti mezipaměti nebo interval cyklického dotazování na 5 minut `options.UseFeatureFlags()` volání.
+Očekává se, že se v průběhu času mění hodnoty příznaků funkcí. Ve výchozím nastavení se hodnoty příznaku funkce ukládají do mezipaměti po dobu 30 sekund, takže se operace aktualizace aktivuje, když middleware obdrží žádost, aby neaktualizovala hodnotu, dokud nevyprší hodnota v mezipaměti. Následující kód ukazuje, jak změnit čas vypršení platnosti mezipaměti nebo interval dotazování na 5 minut ve volání `options.UseFeatureFlags()`.
 
 ```csharp
 config.AddAzureAppConfiguration(options => {
@@ -126,13 +126,13 @@ config.AddAzureAppConfiguration(options => {
 });
 ```
 
-## <a name="feature-flag-declaration"></a>Deklarace příznak funkce
+## <a name="feature-flag-declaration"></a>Deklarace příznaku funkce
 
-Každý příznak funkce má dvě části: název a seznam jednoho nebo více filtrů, které se používají k vyhodnocení, jestli je stav funkce *na* (to znamená, když je jeho hodnota `True`). Filtr definuje pro případ použití, když se funkce by měla být nastavená na on.
+Každý příznak funkce má dvě části: název a seznam jednoho nebo více filtrů, které se používají k vyhodnocení, jestli je stav funkce *zapnutý* (to znamená, když je jeho hodnota `True`). Filtr definuje případ použití, kdy má být funkce zapnuta.
 
-Pokud příznak funkce má několik filtrů, je seznam filtrů Procházet v pořadí, dokud jeden z filtrů zjistí, že je že povolena funkce. V tomto okamžiku je příznak funkce *na*, a všechny zbývající výsledky filtru jsou vynechány. Pokud žádný filtr. Tato funkce povolena, je příznak funkce *vypnout*.
+Pokud má příznak funkce více filtrů, seznam filtrů se prochází v pořadí, dokud jeden z filtrů neurčí, že by měla být funkce povolená. V tomto okamžiku je příznak funkce *zapnutý*a všechny zbývající výsledky filtru se přeskočí. Pokud žádný filtr neindikuje, že by měla být funkce povolená, příznak funkce je *vypnutý*.
 
-Podporuje funkce správce *appsettings.json* jako zdroj konfigurace pro příznaky funkcí. Následující příklad ukazuje, jak nastavit příznaky funkcí v souboru JSON:
+Správce funkcí podporuje jako zdroj konfigurace pro příznaky funkcí funkci *appSettings. JSON* . Následující příklad ukazuje, jak nastavit příznaky funkcí v souboru JSON:
 
 ```JSON
 "FeatureManagement": {
@@ -151,15 +151,15 @@ Podporuje funkce správce *appsettings.json* jako zdroj konfigurace pro přízna
 }
 ```
 
-Podle konvence `FeatureManagement` část tohoto dokumentu JSON se používá pro nastavení příznaku funkce. Předchozí příklad ukazuje tři příznaků funkcí s jejich filtrům definovaným v `EnabledFor` vlastnost:
+Podle konvence se pro nastavení příznaku funkce používá oddíl `FeatureManagement` tohoto dokumentu JSON. Předchozí příklad ukazuje tři příznaky funkcí s jejich filtry definovanými ve vlastnosti `EnabledFor`:
 
-* `FeatureA` je *na*.
-* `FeatureB` je *vypnout*.
-* `FeatureC` Určuje filtr s názvem `Percentage` s `Parameters` vlastnost. `Percentage` se dají Konfigurovat filtr. V tomto příkladu `Percentage` určuje pravděpodobnost 50 procent `FeatureC` příznak *na*.
+* `FeatureA` je *zapnuto*.
+* `FeatureB` je *vypnutý*.
+* `FeatureC` Určuje filtr s názvem `Percentage` s vlastností `Parameters`. `Percentage` je konfigurovatelný filtr. V tomto příkladu `Percentage` určuje pravděpodobnost 50% pro příznak `FeatureC`, který má být *zapnut*.
 
-## <a name="feature-flag-references"></a>Odkazy příznak funkce
+## <a name="feature-flag-references"></a>Odkazy na příznak funkce
 
-Tak, aby příznaky funkcí v kódu můžete snadno odkazovat, měli byste je definovat jako `enum` proměnné:
+Abyste mohli snadno odkazovat na příznaky funkcí v kódu, měli byste je definovat jako `enum` proměnné:
 
 ```csharp
 public enum MyFeatureFlags
@@ -170,14 +170,14 @@ public enum MyFeatureFlags
 }
 ```
 
-## <a name="feature-flag-checks"></a>Kontroly příznak funkce
+## <a name="feature-flag-checks"></a>Kontroly příznaků funkcí
 
-Základní princip funkce správy, je nejprve zkontrolujte Pokud příznak funkce nastavená na *na*. Pokud ano, funkce Správce pak spustí akce, který obsahuje funkci. Příklad:
+Základním vzorem správy funkcí je nejprve zjistit, zda je příznak funkce nastaven na hodnotu *zapnuto*. V takovém případě správce funkcí spustí akce, které funkce obsahuje. Například:
 
 ```csharp
 IFeatureManager featureManager;
 ...
-if (featureManager.IsEnabled(nameof(MyFeatureFlags.FeatureA)))
+if (await featureManager.IsEnabledAsync(nameof(MyFeatureFlags.FeatureA)))
 {
     // Run the following code
 }
@@ -185,7 +185,7 @@ if (featureManager.IsEnabled(nameof(MyFeatureFlags.FeatureA)))
 
 ## <a name="dependency-injection"></a>Injektáž závislosti
 
-V ASP.NET Core MVC, získáte přístup k funkci správce `IFeatureManager` pomocí vkládání závislostí:
+V ASP.NET Core MVC můžete k `IFeatureManager` správce funkcí přistupovat prostřednictvím injektáže závislosti:
 
 ```csharp
 public class HomeController : Controller
@@ -201,7 +201,7 @@ public class HomeController : Controller
 
 ## <a name="controller-actions"></a>Akce kontroleru
 
-V řadiče MVC, je použít `FeatureGate` atribut pro ovládací prvek, jestli je povolená třída celý kontroleru nebo konkrétní akci. Následující `HomeController` kontroler vyžaduje `FeatureA` bude *na* předtím, než je možné provést žádnou akci, která obsahuje třídy kontroleru:
+V řadičích MVC pomocí atributu `FeatureGate` určíte, zda je povolena celá třída řadiče nebo konkrétní akce. Následující kontroler `HomeController` vyžaduje, aby `FeatureA` být *zapnuté* , aby bylo možné provést jakoukoli akci, kterou třída Controller obsahuje:
 
 ```csharp
 [FeatureGate(MyFeatureFlags.FeatureA)]
@@ -211,7 +211,7 @@ public class HomeController : Controller
 }
 ```
 
-Následující `Index` akce vyžaduje `FeatureA` bude *na* před spuštěním:
+Následující akce `Index` vyžaduje, *aby předtím, než bude možné* spustit:, `FeatureA`.
 
 ```csharp
 [FeatureGate(MyFeatureFlags.FeatureA)]
@@ -221,11 +221,11 @@ public IActionResult Index()
 }
 ```
 
-Když MVC kontroler nebo akce je zablokovaná, protože je příznak řídící funkce *vypnout*, registrovaný `IDisabledFeaturesHandler` je názvem rozhraní. Výchozí hodnota `IDisabledFeaturesHandler` rozhraní vrátí stavový kód 404 klientovi s žádnou odpovědí.
+Když je kontroler MVC nebo akce zablokovaná, protože příznak řídicí funkce je *vypnutý*, zavolá se registrované `IDisabledFeaturesHandler` rozhraní. Výchozí `IDisabledFeaturesHandler` rozhraní vrátí klientovi stav 404 bez těla odpovědi.
 
 ## <a name="mvc-views"></a>Zobrazení MVC
 
-V zobrazení MVC, můžete použít `<feature>` značky k vykreslení obsahu založené na tom, zda je povoleno příznak funkce:
+V zobrazeních MVC můžete použít značku `<feature>` k vykreslení obsahu na základě toho, zda je povolen příznak funkce:
 
 ```html
 <feature name="FeatureA">
@@ -233,7 +233,7 @@ V zobrazení MVC, můžete použít `<feature>` značky k vykreslení obsahu zal
 </feature>
 ```
 
-K zobrazení alternativní obsahu, pokud nejsou splněny požadavky `negate` atribut lze použít.
+Chcete-li zobrazit alternativní obsah, pokud nejsou splněny požadavky, lze použít atribut `negate`.
 
 ```html
 <feature name="FeatureA" negate="true">
@@ -241,7 +241,7 @@ K zobrazení alternativní obsahu, pokud nejsou splněny požadavky `negate` atr
 </feature>
 ```
 
-Funkci `<feature>` značky lze použít také k zobrazení obsahu, pokud existuje nebo jsou povoleny všechny funkce v seznamu.
+Funkci `<feature>` značku lze také použít k zobrazení obsahu, pokud jsou povoleny některé nebo všechny funkce v seznamu.
 
 ```html
 <feature name="FeatureA, FeatureB" requirement="All">
@@ -254,7 +254,7 @@ Funkci `<feature>` značky lze použít také k zobrazení obsahu, pokud existuj
 
 ## <a name="mvc-filters"></a>Filtry MVC
 
-MVC filtry můžete nastavit tak, že jsou aktivovány, na základě stavu příznak funkce. Následující kód přidá filtr MVC s názvem `SomeMvcFilter`. Tento filtr se aktivuje v rámci pouze pokud kanál MVC `FeatureA` je povolená.
+Filtry MVC můžete nastavit tak, aby byly aktivovány na základě stavu příznaku funkce. Následující kód přidá filtr MVC s názvem `SomeMvcFilter`. Tento filtr se aktivuje v rámci kanálu MVC jenom v případě, že je povolená možnost `FeatureA`. Tato funkce je omezená na `IAsyncActionFilter`. 
 
 ```csharp
 using Microsoft.FeatureManagement.FeatureFilters;
@@ -269,25 +269,15 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-## <a name="routes"></a>Trasy
-
-Příznaky funkcí můžete dynamicky vystavit trasy. Následující kód přidá trasu, která nastavuje hodnoty `Beta` jako výchozí kontroler pouze tehdy, když `FeatureA` zapnutá:
-
-```csharp
-app.UseMvc(routes => {
-    routes.MapRouteForFeature(nameof(MyFeatureFlags.FeatureA), "betaDefault", "{controller=Beta}/{action=Index}/{id?}");
-});
-```
-
 ## <a name="middleware"></a>Middleware
 
-Příznaky funkcí můžete použít také podmíněně přidání větve aplikace a middleware. Následující kód vloží komponenta middlewaru v požadavku kanálu pouze tehdy, když `FeatureA` zapnutá:
+Příznaky funkcí můžete použít také k podmíněnému přidávání větví aplikace a middlewaru. Následující kód vloží součást middleware do kanálu požadavku pouze v případě, že je povolena `FeatureA`:
 
 ```csharp
 app.UseMiddlewareForFeature<ThirdPartyMiddleware>(nameof(MyFeatureFlags.FeatureA));
 ```
 
-Tento kód vytvoří mimo funkce obecné informace větvení celé aplikace založené na příznak funkce:
+Tento kód se sestaví na základě obecnější funkce pro vytvoření větve celé aplikace na základě příznaku funkce:
 
 ```csharp
 app.UseForFeature(featureName, appBuilder => {
@@ -295,10 +285,10 @@ app.UseForFeature(featureName, appBuilder => {
 });
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak implementovat příznaků funkcí v aplikaci ASP.NET Core s použitím `Microsoft.FeatureManagement` knihovny. Další informace o řízení podporovaných funkcích v ASP.NET Core a konfigurace aplikací najdete v článku na následujících odkazech:
+V tomto kurzu jste zjistili, jak implementovat příznaky funkcí v aplikaci ASP.NET Core pomocí knihoven `Microsoft.FeatureManagement`. Další informace o podpoře správy funkcí v ASP.NET Core a konfiguraci aplikací najdete v následujících zdrojích informací:
 
-* [Příznak funkce ASP.NET Core ukázkový kód](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
-* [Dokumentace ke službě Microsoft.FeatureManagement](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)
+* [Ukázkový kód příznaku funkce ASP.NET Core](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
+* [Dokumentace k Microsoft. FeatureManagement](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)
 * [Správa příznaků funkcí](./manage-feature-flags.md)

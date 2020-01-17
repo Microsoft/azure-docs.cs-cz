@@ -11,19 +11,19 @@ ms.author: trbye
 author: trevorbye
 ms.date: 11/19/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 8d80282044adfa723940aa6f68efc1e719e713c0
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 1e346d2542193ec1880ad0a56bd6afa1b0a46890
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533164"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122623"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Spuštění dávkového předpovědi pomocí návrháře Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto postupu se naučíte, jak používat návrháře k učení modelu a nastavení kanálu předpovědi a webové služby Batch. Předpovědi dávek umožňuje průběžné a vyhodnocování vyškolených modelů ve velkých sadách dat, volitelně nakonfigurovaných jako webová služba, která se dá aktivovat z libovolné knihovny HTTP. 
 
-Informace o nastavení služby Batch vyhodnocování pomocí sady SDK najdete v doprovodném [postupu](how-to-run-batch-predictions.md).
+Informace o nastavení služby Batch vyhodnocování pomocí sady SDK najdete v doprovodném [postupu](how-to-use-parallel-run-step.md).
 
 V tomto postupu se naučíte následující úlohy:
 

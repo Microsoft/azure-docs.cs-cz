@@ -16,14 +16,17 @@ ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 815cffab118f6900c1c9d42a7e44821f8af62532
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 25dd638c15fecbef787e4ceabea9ae7cb4359582
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081992"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120328"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adobe-creative-cloud"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Adobe Creative Cloud
+
+> [!NOTE]
+> Tento článek popisuje vlastní nastavení na bázi SAML v konzole pro správu společnosti Adobe pro Azure Active Directory (Azure AD). Pro branding – nové konfigurace doporučujeme použít [konektor Azure AD](https://helpx.adobe.com/enterprise/using/sso-setup-azure.html). Konektor Azure AD se dá nastavit během několika minut a zkrátí proces deklarace identity domény, nastavení jednotného přihlašování a synchronizaci uživatelů.
 
 V tomto kurzu se naučíte, jak integrovat Adobe Creative Cloud s Azure Active Directory (Azure AD). Když integrujete Adobe Creative Cloud s Azure AD, můžete:
 
@@ -100,16 +103,16 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho Adobe Creative Cloud aplikace očekává, že se v odpovědi SAML vrátí další atributy, které jsou uvedené dál. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut|
+    | Name (Název) | Zdrojový atribut|
     |----- | --------- |
-    | FirstName | user.givenname |
-    | LastName | user.surname |
-    | Email | user.mail |
+    | Jméno | user.givenname |
+    | Příjmení | user.surname |
+    | E-mail | user.mail |
 
     > [!NOTE]
     > Uživatelé musí mít platnou licenci Office 365 ExO pro hodnotu deklarace e-mailu, která se má vyplnit v odpovědi SAML.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML data federace**a pak vyberte **Stáhnout** a Stáhněte si soubor metadat XML a uložte ho do svého počítače.
 
     ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
@@ -149,31 +152,26 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-adobe-creative-cloud-sso"></a>Konfigurace Adobe Creative Cloud jednotného přihlašování
 
-1. V jiném okně webového prohlížeče se přihlaste ke [konzole správce Adobe](https://adminconsole.adobe.com) jako správce.
+1. V jiném okně webového prohlížeče se přihlaste ke [konzole správce Adobe](https://adminconsole.adobe.com) jako správce systému.
 
-2. V horním navigačním panelu vyberte **Nastavení** a pak zvolte **Identita**. Otevře se seznam domén. Klikněte na **Konfigurovat** odkaz na vaši doménu. Pak proveďte následující kroky v části **vyžadování konfigurace jednotného přihlašování** . Další informace najdete v tématu [nastavení domény](https://helpx.adobe.com/enterprise/using/set-up-domain.html) .
+1. V horním navigačním panelu vyberte **Nastavení** a pak zvolte **Identita**. Otevře se seznam adresářů. Vyberte federovaný adresář, který chcete.
 
-    ![Nastavení](https://helpx.adobe.com/content/dam/help/en/enterprise/using/configure-microsoft-azure-with-adobe-sso/_jcr_content/main-pars/procedure_719391630/proc_par/step_3/step_par/image/edit-sso-configuration.png "Nastavení")
+1. Na stránce s **podrobnostmi adresáře** vyberte **Konfigurovat**.
 
-    a. Kliknutím na **Procházet** nahrajte stažený certifikát z Azure AD do **IDP certifikátu**.
-
-    b. Do textového pole **vystavitele IDP** vložte hodnotu **identifikátoru služby Azure AD** , který jste zkopírovali z Azure Portal.
-
-    c. Do textového pole **Adresa URL pro přihlášení IDP** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
-
-    d. Jako **vazbu IDP**vyberte **http-redirect** .
-
-    e. Jako **Nastavení přihlášení uživatele**vyberte **e-mailová adresa** .
-
-    f. Klikněte na tlačítko **Uložit** tlačítko.
-
-3. Řídicí panel teď nabídne soubor XML pro **Stažení metadat** . Obsahuje adresu URL společnosti Adobe EntityDescriptor a adresu URL AssertionConsumerService. Otevřete prosím soubor a nakonfigurujte ho v aplikaci Azure AD.
+1. Zkopírujte ID entity a adresu URL služby ACS (adresa URL nebo adresa URL příjemce kontrolního výrazu). Zadejte adresy URL do příslušných polí v Azure Portal.
 
     ![Konfigurace jednotného přihlašování na straně aplikace](./media/adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_003.png)
 
-    a. Použijte hodnotu EntityDescriptor společnosti Adobe, kterou jste zadali pro **identifikátor** v dialogovém okně **Konfigurovat nastavení aplikace** .
+    a. Použijte hodnotu ID entity od společnosti Adobe, kterou jste zadali pro **identifikátor** v dialogovém okně **Konfigurovat nastavení aplikace** .
 
-    b. Použijte hodnotu AssertionConsumerService Adobe, kterou jste zadali pro **adresu URL odpovědi** v dialogovém okně **Konfigurovat nastavení aplikace** .
+    b. Pomocí adresy URL služby ACS (adresa URL služby assertion Consumer Service) od společnosti Adobe jste zadali **adresu URL odpovědi** v dialogovém okně **Konfigurovat nastavení aplikace** .
+
+1. V dolní části stránky nahrajte soubor **XML federačních dat** , který jste stáhli z Azure Portal. 
+
+    ![Soubor XML federačních dat](https://helpx.adobe.com/content/dam/help/en/enterprise/kb/configure-microsoft-azure-with-adobe-sso/jcr_content/main-pars/procedure/proc_par/step_228106403/step_par/image_copy/saml_signinig_certificate.png "XML metadata IdP")
+
+1. Vyberte **Save** (Uložit).
+
 
 ### <a name="create-adobe-creative-cloud-test-user"></a>Vytvořit Adobe Creative Cloud testovacího uživatele
 
@@ -196,7 +194,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 
 Po kliknutí na dlaždici Adobe Creative Cloud na přístupovém panelu byste měli být automaticky přihlášení do Adobe Creative Cloud, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -206,7 +204,7 @@ Po kliknutí na dlaždici Adobe Creative Cloud na přístupovém panelu byste m�
 
 - [Vyzkoušet Adobe Creative Cloud s využitím Azure AD](https://aad.portal.azure.com/)
 
-- [Nastavení domény (adobe.com)](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
+- [Nastavení identity (adobe.com)](https://helpx.adobe.com/enterprise/using/set-up-identity.html)
   
 - [Konfigurace Azure pro použití s Adobe SSO (adobe.com)](https://helpx.adobe.com/enterprise/kb/configure-microsoft-azure-with-adobe-sso.html)
 

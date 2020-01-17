@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7acd4b8014aad7b70f1a67c91368477599a97901
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: fda662d7de66bfb56feba8f405bd0e52c4cf3e76
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972417"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121331"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>Kurz: Azure Active Directory integrace s Snowflake
 
@@ -35,7 +35,7 @@ Integrace Snowflake s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s Snowflake potřebujete následující položky:
 
@@ -116,6 +116,8 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Snowflak
     ![Informace o jednotném přihlašování v doméně Snowflake a adresách URL](common/metadata-upload-additional-signon.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<SNOWFLAKE-URL>.snowflakecomputing.com`
+    
+    Do textového pole **odhlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<SNOWFLAKE-URL>.snowflakecomputing.com/fed/logout`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Snowflake](https://support.snowflake.net/s/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.

@@ -7,18 +7,16 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/07/2019
+ms.date: 01/14/2019
 ms.author: aahi
-ms.openlocfilehash: bce751da0e6f03d197951d2f207ac5c54d72c7ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b56bb8dfdce58de60f82693b511f7923b80fc37a
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75378755"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76158844"
 ---
 > [!IMPORTANT]
-> Pokud chcete najít klíč a koncový bod na Azure Portal:
-> 1. V https://portal.azure.com/ přejděte na prostředek Azure.
-> 2. Klikněte na **Rychlé spuštění**, které najdete pod **správou prostředků**.
+> Najděte svůj klíč a koncový bod tak, že přejdete k prostředku, který jste vytvořili. Budou se nacházet na stránce **rychlý Start** prostředku v části **Správa prostředků**.
 >
-> Nezapomeňte odebrat přihlašovací údaje z vašeho kódu, až budete hotovi, a nikdy je zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Například [Trezor klíčů Azure](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
+> Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Například [Trezor klíčů Azure](https://docs.microsoft.com/azure/key-vault/key-vault-overview).

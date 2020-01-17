@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bc721f4521c9ac9b8ed8fed2d6b41f6a1b8bd72
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 68474738aabde1b14752aa33789d7e40c3831908
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846398"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154835"
 ---
 # <a name="tutorial-complete-an-azure-multi-factor-authentication-pilot-roll-out"></a>Kurz: Dokončení zavedení pilotního nasazení služby Azure Multi-Factor Authentication
 
@@ -26,20 +26,20 @@ V tomto kurzu vás provedete konfigurací zásad podmíněného přístupu, kter
 > * Povolení služby Azure Multi-Factor Authentication
 > * Testování služby Azure Multi-Factor Authentication
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Funkční tenant Azure AD, který má přiřazenou alespoň zkušební licenci.
-* Účet s oprávněními globálního správce
+* Účet s oprávněními globálního správce.
 * Testovací účet uživatele bez oprávnění správce s heslem, které znáte. Pokud potřebujete účet uživatele vytvořit, podívejte se do článku [Rychlý start: Přidání nových uživatelů do služby Azure AD](../add-users-azure-active-directory.md).
 * Pilotní skupina pro testování, ve které je uživatel bez oprávnění správce členem. Pokud potřebujete skupinu vytvořit, podívejte se do článku [Vytvoření skupiny a přidání členů ve službě Azure AD](../active-directory-groups-create-azure-portal.md).
 
 ## <a name="enable-azure-multi-factor-authentication"></a>Povolení služby Azure Multi-Factor Authentication
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) jako globální správce.
-1. Přejít na **Azure Active Directory**, **podmíněný přístup**
+1. Přejít na **Azure Active Directory** > **zabezpečení** > **podmíněný přístup**
 1. Vyberte **Nová zásada**.
 1. Zásadu pojmenujte **MFA Pilot**.
-1. V části **Uživatelé a skupiny** zvolte přepínač **Vyberte uživatele a skupiny**.
+1. V části **Uživatelé a skupiny**vyberte přepínač **Vybrat uživatele a skupiny** .
     * Vyberte pilotní skupinu, kterou jste vytvořili jako součást požadavků tohoto článku.
     * Klikněte na **Hotovo**.
 1. V části **Cloudové aplikace** zvolte přepínač **Vybrat aplikace**.
@@ -69,10 +69,10 @@ Abyste prokázali, že vaše zásada podmíněného přístupu funguje, otestuje
 
 Pokud se rozhodnete, že už funkci nakonfigurovanou jako součást tohoto kurzu používat nechcete, proveďte následující.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-1. Přejděte na **Azure Active Directory**, **podmíněný přístup**.
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
+1. Přejděte na **Azure Active Directory** > **zabezpečení** > **podmíněný přístup**.
 1. Vyberte zásadu podmíněného přístupu, kterou jste vytvořili.
-1. Klikněte na **Odstranit**.
+1. Klikněte na tlačítko **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
