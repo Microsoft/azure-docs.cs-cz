@@ -8,6 +8,8 @@
   items:
     - name: Omezení služeb a předplatných
       href: azure-subscription-service-limits.md
+    - name: Pravidla pro názvy prostředků
+      href: resource-name-rules.md
     - name: Resource Manager a klasické nasazení
       href: deployment-models.md
     - name: Běžné atributy zabezpečení Azure

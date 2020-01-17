@@ -35,6 +35,8 @@
       href: rule-processing.md
     - name: Značky služeb
       href: service-tags.md
+    - name: Certifikace dodržování předpisů
+      href: compliance-certifications.md
 - name: Návody
   items:
     - name: Nasazení s využitím Azure PowerShellu

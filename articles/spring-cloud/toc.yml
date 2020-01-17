@@ -54,7 +54,7 @@
       href: spring-cloud-service-registration.md
     - name: Analýzy aplikačních protokolů a metrik
       href: diagnostic-services.md
-    - name: Streamování protokolů Azure Spring Cloudu pro okamžitou dostupnost
+    - name: Streamování protokolů aplikace Azure Spring Cloudu v reálném čase
       href: spring-cloud-howto-log-streaming.md
     - name: Automatizace kanálu CI/CD v Azure Spring Cloudu
       href: spring-cloud-howto-cicd.md

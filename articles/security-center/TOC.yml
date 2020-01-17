@@ -29,6 +29,10 @@
       href: security-center-compliance-dashboard.md
 - name: Koncepty
   items:
+    - name: Bezpečnostní skóre ve službě Security Center
+      href: security-center-secure-score.md
+    - name: Vylepšená služba Secure Score
+      href: secure-score-security-controls.md
     - name: Oprávnění
       href: security-center-permissions.md
     - name: Zabezpečení dat
@@ -73,8 +77,6 @@
           href: security-center-alert-validation.md
 - name: Návody
   items:
-    - name: Zlepšení skóre Secure Score
-      href: security-center-secure-score.md
     - name: Upgrade na pokročilé zabezpečení
       href: security-center-onboarding.md
     - name: Kontrola ohrožení zabezpečení virtuálních počítačů
